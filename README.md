@@ -1,15 +1,11 @@
 # Wordless
-An all-inclusive software solution for language &amp; translation studies.
+An integrated tool for language & translation studies.
 
 Designed and Developed by Ye Lei (叶磊)
 
-At Shanghai International Studies University, Shanghai, China
-
-用于语言研究及翻译研究的完善软件解决方案
+一款用于语言研究及翻译研究的集成工具。
 
 由叶磊设计并开发
-
-中国，上海，上海外国语大学
 
 ## License/开源许可
     Copyright (C) 2018 Ye Lei

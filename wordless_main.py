@@ -273,6 +273,9 @@ class Wordless_Main(QMainWindow):
 
         self.default_settings = {
                                     'general': {
+                                        'encoding_input': ('utf_8', 'All Languages'),
+                                        'encoding_output': ('utf_8', 'All Languages'),
+
                                         'precision': 5,
                                         'style_highlight': 'border: 1px solid Red;'
                                     },
@@ -509,6 +512,8 @@ class Wordless_Main(QMainWindow):
         menu_pref.addSeparator()
         menu_pref.addAction(action_show_statusbar)
 
+        action_citation = QAction(self.tr('Citation'), self)
+
         action_acknowledgements = QAction(self.tr('Acknowledgements'), self)
         action_acknowledgements.setStatusTip(self.tr('Show acknowledgements'))
         action_acknowledgements.triggered.connect(lambda: acknowledgements(self))
@@ -630,13 +635,12 @@ class Wordless_Main(QMainWindow):
                               self.tr('About Wordless'),
                               self.tr('''
                                       <div style="text-align: center">
-                                        <div style="margin-bottom: 10px; font-size: 16px; font-weight: bold;">Wordless (Version 1.0)</div>
-                                        <div style="margin-bottom: 5px;">An all-inclusive software solution for language & translation studies.</div>
-                                        <div style="margin-bottom: 5px;">Designed and Developed by Ye Lei (叶磊)</div>
-                                        <div style="margin-bottom: 5px;">At Shanghai International Studies University, Shanghai, China</div>
+                                        <div style="margin-bottom: 5px; font-size: 16px; font-weight: bold;">Wordless Version 1.0</div>
+                                        <div style="margin-bottom: 5px;">An integrated tool for language & translation studies.</div>
+                                        <div>Designed and Developed by Ye Lei (叶磊)</div>
                                         <hr style="margin-bottom: 5px">
-                                        <div style="margin-bottom: 5px">Licensed under GNU GPLv3</div>
-                                        <div>Copyright © 2018 Ye Lei (叶磊)</div>
+                                        <div style="margin-bottom: 5px">Licensed under GPL Version 3.0</div>
+                                        <div>Copyright (C) 2018 Ye Lei</div>
                                       </div>'''))
 
     def init_central_widget(self):

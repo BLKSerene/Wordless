@@ -21,12 +21,12 @@ def init(self):
 
         if self.settings['semantics']['search_for'] in ['Synonyms', 'Antonyms']:
             checkbox_recursive.setEnabled(False)
-            spinbox_depth_max.setEnabled(False)
+            spin_box_depth_max.setEnabled(False)
             checkbox_depth.setEnabled(False)
             checkbox_show_lemmas.setEnabled(False)
         else:
             checkbox_recursive.setEnabled(True)
-            spinbox_depth_max.setEnabled(True)
+            spin_box_depth_max.setEnabled(True)
             checkbox_depth.setEnabled(True)
             checkbox_show_lemmas.setEnabled(True)
 
@@ -35,30 +35,30 @@ def init(self):
         plot_settings_changed()
 
     def plot_settings_changed():
-        self.settings['semantics']['degree_max'] = spinbox_degree_max.value()
+        self.settings['semantics']['degree_max'] = spin_box_degree_max.value()
         self.settings['semantics']['degree_no_limit'] = checkbox_degree.isChecked()
         self.settings['semantics']['recursive'] = checkbox_recursive.isChecked()
-        self.settings['semantics']['depth_max'] = spinbox_depth_max.value()
+        self.settings['semantics']['depth_max'] = spin_box_depth_max.value()
         self.settings['semantics']['depth_no_limit'] = checkbox_depth.isChecked()
         self.settings['semantics']['show_lemmas'] = checkbox_show_lemmas.isChecked()
 
         if self.settings['semantics']['degree_no_limit']:
-            spinbox_degree_max.setEnabled(False)
+            spin_box_degree_max.setEnabled(False)
         else:
-            spinbox_degree_max.setEnabled(True)
+            spin_box_degree_max.setEnabled(True)
 
         if self.settings['semantics']['search_for'] not in ['Synonyms', 'Antonyms']:
             if self.settings['semantics']['recursive']:
-                spinbox_depth_max.setEnabled(True)
+                spin_box_depth_max.setEnabled(True)
                 checkbox_depth.setEnabled(True)
                 checkbox_show_lemmas.setEnabled(True)
 
                 if self.settings['semantics']['depth_no_limit']:
-                    spinbox_depth_max.setEnabled(False)
+                    spin_box_depth_max.setEnabled(False)
                 else:
-                    spinbox_depth_max.setEnabled(True)
+                    spin_box_depth_max.setEnabled(True)
             else:
-                spinbox_depth_max.setEnabled(False)
+                spin_box_depth_max.setEnabled(False)
                 checkbox_depth.setEnabled(False)
                 checkbox_show_lemmas.setEnabled(False)
 
@@ -67,9 +67,9 @@ def init(self):
         combobox_search_mode.setCurrentText(self.default_settings['semantics']['search_mode'])
         combobox_search_for.setCurrentText(self.default_settings['semantics']['search_for'])
 
-        spinbox_degree_max.setValue(self.default_settings['semantics']['degree_max'])
+        spin_box_degree_max.setValue(self.default_settings['semantics']['degree_max'])
         checkbox_degree.setChecked(self.default_settings['semantics']['degree_no_limit'])
-        spinbox_depth_max.setValue(self.default_settings['semantics']['depth_max'])
+        spin_box_depth_max.setValue(self.default_settings['semantics']['depth_max'])
         checkbox_depth.setChecked(self.default_settings['semantics']['depth_no_limit'])
         checkbox_recursive.setChecked(self.default_settings['semantics']['recursive'])
         checkbox_show_lemmas.setChecked(self.default_settings['semantics']['show_lemmas'])
@@ -150,27 +150,27 @@ def init(self):
     groupbox_plot_settings = QGroupBox('Plot Settings', self)
 
     label_degree_max = QLabel('Maximum Degree:', self)
-    spinbox_degree_max = QSpinBox(self)
+    spin_box_degree_max = QSpinBox(self)
     checkbox_degree  = QCheckBox('No Limit', self)
     label_depth_max = QLabel('Maximum Depth:', self)
-    spinbox_depth_max = QSpinBox(self)
+    spin_box_depth_max = QSpinBox(self)
     checkbox_depth = QCheckBox('No Limit', self)
     checkbox_recursive = QCheckBox('Recursive', self)
     checkbox_show_lemmas = QCheckBox('Show All Lemmas', self)
 
-    spinbox_degree_max.valueChanged.connect(plot_settings_changed)
+    spin_box_degree_max.valueChanged.connect(plot_settings_changed)
     checkbox_degree.stateChanged.connect(plot_settings_changed)
-    spinbox_depth_max.valueChanged.connect(plot_settings_changed)
+    spin_box_depth_max.valueChanged.connect(plot_settings_changed)
     checkbox_depth.stateChanged.connect(plot_settings_changed)
     checkbox_recursive.stateChanged.connect(plot_settings_changed)
     checkbox_show_lemmas.stateChanged.connect(plot_settings_changed)
 
     layout_plot_settings = QGridLayout()
     layout_plot_settings.addWidget(label_degree_max, 0, 0, 1, 2)
-    layout_plot_settings.addWidget(spinbox_degree_max, 1, 0)
+    layout_plot_settings.addWidget(spin_box_degree_max, 1, 0)
     layout_plot_settings.addWidget(checkbox_degree, 1, 1)
     layout_plot_settings.addWidget(label_depth_max, 2, 0, 1, 2)
-    layout_plot_settings.addWidget(spinbox_depth_max, 3, 0)
+    layout_plot_settings.addWidget(spin_box_depth_max, 3, 0)
     layout_plot_settings.addWidget(checkbox_depth, 3, 1)
     layout_plot_settings.addWidget(checkbox_recursive, 4, 0, 1, 2)
     layout_plot_settings.addWidget(checkbox_show_lemmas, 5, 0, 1, 2)

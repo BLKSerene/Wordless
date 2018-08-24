@@ -1,6 +1,6 @@
 import nltk
 
-from wordless_utils import wordless_utils, wordless_text
+from wordless_utils import wordless_misc, wordless_text
 
 class Wordless_Freq_Distribution(nltk.FreqDist):
     def _cumulative_frequencies(self, samples):

@@ -1,4 +1,4 @@
-True,Jane Eyre,en,English,E:\Wordless\Copora\Jane Eyre.txt,.txt,Text File,utf_8,All Languages(UTF-8 Without BOM), 
-False,Pride And Prejudice,en,English,E:\Wordless\Copora\Pride And Prejudice.txt,.txt,Text File,utf_8,All Languages(UTF-8 Without BOM), 
-False,Sense And Sensibility,en,English,E:\Wordless\Copora\Sense And Sensibility.txt,.txt,Text File,utf_8,All Languages(UTF-8 Without BOM), 
-False,傲慢与偏见,zh-cn,Chinese (Simplified),E:\Wordless\Copora\傲慢与偏见.txt,.txt,Text File,utf_8,All Languages(UTF-8 Without BOM),
+True,Jane Eyre,en,English,E:\Wordless\Copora\Jane Eyre.txt,.txt,Text File,Western Europe,Western Europe(ISO-8859-1), 
+False,Pride And Prejudice,en,English,E:\Wordless\Copora\Pride And Prejudice.txt,.txt,Text File,English,English(ASCII), 
+False,Sense And Sensibility,en,English,E:\Wordless\Copora\Sense And Sensibility.txt,.txt,Text File,English,English(ASCII), 
+False,傲慢与偏见,zh-cn,Chinese (Simplified),E:\Wordless\Copora\傲慢与偏见.txt,.txt,Text File,All Languages,All Languages(UTF-8 Without BOM),

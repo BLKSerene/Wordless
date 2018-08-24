@@ -67,8 +67,8 @@ def init(self):
 
     def search_settings_changed(widget_changed = None):
         self.settings['word_cluster']['cluster_size_sync'] = checkbox_cluster_size_sync.isChecked()
-        self.settings['word_cluster']['cluster_size_min'] = spinbox_cluster_size_min.value()
-        self.settings['word_cluster']['cluster_size_max'] = spinbox_cluster_size_max.value()
+        self.settings['word_cluster']['cluster_size_min'] = spin_box_cluster_size_min.value()
+        self.settings['word_cluster']['cluster_size_max'] = spin_box_cluster_size_max.value()
 
         self.settings['word_cluster']['search_term'] = lineedit_search_term.text()
         self.settings['word_cluster']['search_terms'] = list_search_terms.get_items()
@@ -83,17 +83,17 @@ def init(self):
         self.settings['word_cluster']['search_term_position_right'] = checkbox_search_term_position_right.isChecked()
         
         if self.settings['word_cluster']['cluster_size_sync']:
-            if widget_changed == spinbox_cluster_size_min:
-                spinbox_cluster_size_max.setValue(self.settings['word_cluster']['cluster_size_min'])
+            if widget_changed == spin_box_cluster_size_min:
+                spin_box_cluster_size_max.setValue(self.settings['word_cluster']['cluster_size_min'])
             else:
-                spinbox_cluster_size_min.setValue(self.settings['word_cluster']['cluster_size_max'])
+                spin_box_cluster_size_min.setValue(self.settings['word_cluster']['cluster_size_max'])
         else:
-            if (widget_changed == spinbox_cluster_size_min and 
+            if (widget_changed == spin_box_cluster_size_min and 
                 self.settings['word_cluster']['cluster_size_min'] > self.settings['word_cluster']['cluster_size_max']):
-                spinbox_cluster_size_max.setValue(self.settings['word_cluster']['cluster_size_min'])
-            elif (widget_changed == spinbox_cluster_size_max and 
+                spin_box_cluster_size_max.setValue(self.settings['word_cluster']['cluster_size_min'])
+            elif (widget_changed == spin_box_cluster_size_max and 
                   self.settings['word_cluster']['cluster_size_max'] < self.settings['word_cluster']['cluster_size_min']):
-                spinbox_cluster_size_min.setValue(self.settings['word_cluster']['cluster_size_max'])
+                spin_box_cluster_size_min.setValue(self.settings['word_cluster']['cluster_size_max'])
 
         if self.settings['word_cluster']['ignore_case']:
             checkbox_lowercase.setEnabled(False)
@@ -131,59 +131,59 @@ def init(self):
 
     def filter_settings_changed():
         self.settings['word_cluster']['freq_first_no_limit'] = checkbox_freq_first.isChecked()
-        self.settings['word_cluster']['freq_first_min'] = spinbox_freq_first_min.value()
+        self.settings['word_cluster']['freq_first_min'] = spin_box_freq_first_min.value()
         self.settings['word_cluster']['freq_first_max'] = (float('inf')
                                                            if checkbox_freq_first.isChecked()
-                                                           else spinbox_freq_first_max.value())
+                                                           else spin_box_freq_first_max.value())
 
         self.settings['word_cluster']['freq_total_no_limit'] = checkbox_freq_total.isChecked()
-        self.settings['word_cluster']['freq_total_min'] = spinbox_freq_total_min.value()
+        self.settings['word_cluster']['freq_total_min'] = spin_box_freq_total_min.value()
         self.settings['word_cluster']['freq_total_max'] = (float('inf')
                                                            if checkbox_freq_total.isChecked()
-                                                           else spinbox_freq_total_max.value())
+                                                           else spin_box_freq_total_max.value())
 
         self.settings['word_cluster']['rank_no_limit'] = checkbox_rank.isChecked()
-        self.settings['word_cluster']['rank_min'] = spinbox_rank_min.value()
+        self.settings['word_cluster']['rank_min'] = spin_box_rank_min.value()
         self.settings['word_cluster']['rank_max'] = (float('inf')
                                                      if checkbox_rank.isChecked()
-                                                     else spinbox_rank_max.value())
+                                                     else spin_box_rank_max.value())
 
         self.settings['word_cluster']['len_no_limit'] = checkbox_len.isChecked()
-        self.settings['word_cluster']['len_min'] = spinbox_len_min.value()
+        self.settings['word_cluster']['len_min'] = spin_box_len_min.value()
         self.settings['word_cluster']['len_max'] = (float('inf')
                                                     if checkbox_len.isChecked()
-                                                    else spinbox_len_max.value())
+                                                    else spin_box_len_max.value())
 
         self.settings['word_cluster']['files_no_limit'] = checkbox_files.isChecked()
-        self.settings['word_cluster']['files_min'] = spinbox_files_min.value()
+        self.settings['word_cluster']['files_min'] = spin_box_files_min.value()
         self.settings['word_cluster']['files_max'] = (float('inf')
                                                       if checkbox_files.isChecked()
-                                                      else spinbox_files_max.value())
+                                                      else spin_box_files_max.value())
 
         if self.settings['word_cluster']['freq_first_no_limit']:
-            spinbox_freq_first_max.setEnabled(False)
+            spin_box_freq_first_max.setEnabled(False)
         else:
-            spinbox_freq_first_max.setEnabled(True)
+            spin_box_freq_first_max.setEnabled(True)
 
         if self.settings['word_cluster']['freq_total_no_limit']:
-            spinbox_freq_total_max.setEnabled(False)
+            spin_box_freq_total_max.setEnabled(False)
         else:
-            spinbox_freq_total_max.setEnabled(True)
+            spin_box_freq_total_max.setEnabled(True)
 
         if self.settings['word_cluster']['rank_no_limit']:
-            spinbox_rank_max.setEnabled(False)
+            spin_box_rank_max.setEnabled(False)
         else:
-            spinbox_rank_max.setEnabled(True)
+            spin_box_rank_max.setEnabled(True)
 
         if self.settings['word_cluster']['len_no_limit']:
-            spinbox_len_max.setEnabled(False)
+            spin_box_len_max.setEnabled(False)
         else:
-            spinbox_len_max.setEnabled(True)
+            spin_box_len_max.setEnabled(True)
 
         if self.settings['word_cluster']['files_no_limit']:
-            spinbox_files_max.setEnabled(False)
+            spin_box_files_max.setEnabled(False)
         else:
-            spinbox_files_max.setEnabled(True)
+            spin_box_files_max.setEnabled(True)
 
     def restore_defaults():
         checkbox_words.setChecked(self.default_settings['word_cluster']['words'])
@@ -194,8 +194,8 @@ def init(self):
         checkbox_punctuations.setChecked(self.default_settings['word_cluster']['punctuations'])
 
         checkbox_cluster_size_sync.setChecked(self.default_settings['word_cluster']['cluster_size_sync'])
-        spinbox_cluster_size_min.setValue((self.default_settings['word_cluster']['cluster_size_min']))
-        spinbox_cluster_size_max.setValue((self.default_settings['word_cluster']['cluster_size_max']))
+        spin_box_cluster_size_min.setValue((self.default_settings['word_cluster']['cluster_size_min']))
+        spin_box_cluster_size_max.setValue((self.default_settings['word_cluster']['cluster_size_max']))
         lineedit_search_term.setText(self.default_settings['word_cluster']['search_term'])
         list_search_terms.clear()
         list_search_terms.addItems(self.default_settings['word_cluster']['search_terms'])
@@ -209,20 +209,20 @@ def init(self):
         checkbox_search_term_position_right.setChecked(self.default_settings['word_cluster']['search_term_position_right'])
 
         checkbox_freq_first.setChecked(self.default_settings['word_cluster']['freq_first_no_limit'])
-        spinbox_freq_first_min.setValue(self.default_settings['word_cluster']['freq_first_min'])
-        spinbox_freq_first_max.setValue(self.default_settings['word_cluster']['freq_first_max'])
+        spin_box_freq_first_min.setValue(self.default_settings['word_cluster']['freq_first_min'])
+        spin_box_freq_first_max.setValue(self.default_settings['word_cluster']['freq_first_max'])
         checkbox_freq_total.setChecked(self.default_settings['word_cluster']['freq_total_no_limit'])
-        spinbox_freq_total_min.setValue(self.default_settings['word_cluster']['freq_total_min'])
-        spinbox_freq_total_max.setValue(self.default_settings['word_cluster']['freq_total_max'])
+        spin_box_freq_total_min.setValue(self.default_settings['word_cluster']['freq_total_min'])
+        spin_box_freq_total_max.setValue(self.default_settings['word_cluster']['freq_total_max'])
         checkbox_rank.setChecked(self.default_settings['word_cluster']['rank_no_limit'])
-        spinbox_rank_min.setValue(self.default_settings['word_cluster']['rank_min'])
-        spinbox_rank_max.setValue(self.default_settings['word_cluster']['rank_max'])
+        spin_box_rank_min.setValue(self.default_settings['word_cluster']['rank_min'])
+        spin_box_rank_max.setValue(self.default_settings['word_cluster']['rank_max'])
         checkbox_len.setChecked(self.default_settings['word_cluster']['len_no_limit'])
-        spinbox_len_min.setValue(self.default_settings['word_cluster']['len_min'])
-        spinbox_len_max.setValue(self.default_settings['word_cluster']['len_max'])
+        spin_box_len_min.setValue(self.default_settings['word_cluster']['len_min'])
+        spin_box_len_max.setValue(self.default_settings['word_cluster']['len_max'])
         checkbox_files.setChecked(self.default_settings['word_cluster']['files_no_limit'])
-        spinbox_files_min.setValue(self.default_settings['word_cluster']['files_min'])
-        spinbox_files_max.setValue(self.default_settings['word_cluster']['files_max'])
+        spin_box_files_min.setValue(self.default_settings['word_cluster']['files_min'])
+        spin_box_files_max.setValue(self.default_settings['word_cluster']['files_max'])
 
         token_settings_changed()
         search_settings_changed()
@@ -288,9 +288,9 @@ def init(self):
     label_cluster_size = QLabel(self.tr('Cluster Size:'), self)
     checkbox_cluster_size_sync = QCheckBox(self.tr('Sync'), self)
     label_cluster_size_min = QLabel(self.tr('From'), self)
-    spinbox_cluster_size_min = QSpinBox(self)
+    spin_box_cluster_size_min = QSpinBox(self)
     label_cluster_size_max = QLabel(self.tr('To'), self)
-    spinbox_cluster_size_max = QSpinBox(self)
+    spin_box_cluster_size_max = QSpinBox(self)
 
     label_search_term = QLabel(self.tr('Search Term(s):'), self)
     lineedit_search_term = QLineEdit(self)
@@ -306,12 +306,12 @@ def init(self):
     checkbox_search_term_position_middle = QCheckBox(self.tr('In Middle'), self)
     checkbox_search_term_position_right = QCheckBox(self.tr('At Right'), self)
 
-    spinbox_cluster_size_min.setRange(1, 100)
-    spinbox_cluster_size_max.setRange(1, 100)
+    spin_box_cluster_size_min.setRange(1, 100)
+    spin_box_cluster_size_max.setRange(1, 100)
 
     checkbox_cluster_size_sync.stateChanged.connect(search_settings_changed)
-    spinbox_cluster_size_min.valueChanged.connect(lambda: search_settings_changed(spinbox_cluster_size_min))
-    spinbox_cluster_size_max.valueChanged.connect(lambda: search_settings_changed(spinbox_cluster_size_max))
+    spin_box_cluster_size_min.valueChanged.connect(lambda: search_settings_changed(spin_box_cluster_size_min))
+    spin_box_cluster_size_max.valueChanged.connect(lambda: search_settings_changed(spin_box_cluster_size_max))
 
     lineedit_search_term.textChanged.connect(search_settings_changed)
     lineedit_search_term.returnPressed.connect(table_word_cluster.button_begin_search.click)
@@ -345,9 +345,9 @@ def init(self):
     layout_search_settings.addWidget(label_cluster_size, 0, 0, 1, 3)
     layout_search_settings.addWidget(checkbox_cluster_size_sync, 0, 3)
     layout_search_settings.addWidget(label_cluster_size_min, 1, 0)
-    layout_search_settings.addWidget(spinbox_cluster_size_min, 1, 1)
+    layout_search_settings.addWidget(spin_box_cluster_size_min, 1, 1)
     layout_search_settings.addWidget(label_cluster_size_max, 1, 2)
-    layout_search_settings.addWidget(spinbox_cluster_size_max, 1, 3)
+    layout_search_settings.addWidget(spin_box_cluster_size_max, 1, 3)
 
     layout_search_settings.addWidget(label_search_term, 2, 0, 1, 4)
     layout_search_settings.addWidget(lineedit_search_term, 3, 0, 1, 4)
@@ -367,100 +367,100 @@ def init(self):
     label_freq_first = QLabel('Frequency (First File):', self)
     checkbox_freq_first = QCheckBox('No Limit', self)
     label_freq_first_min = QLabel('From', self)
-    spinbox_freq_first_min = QSpinBox(self)
+    spin_box_freq_first_min = QSpinBox(self)
     label_freq_first_max = QLabel('To', self)
-    spinbox_freq_first_max = QSpinBox(self)
+    spin_box_freq_first_max = QSpinBox(self)
 
     label_freq_total = QLabel('Frequency (Total):', self)
     checkbox_freq_total = QCheckBox('No Limit', self)
     label_freq_total_min = QLabel('From', self)
-    spinbox_freq_total_min = QSpinBox(self)
+    spin_box_freq_total_min = QSpinBox(self)
     label_freq_total_max = QLabel('To', self)
-    spinbox_freq_total_max = QSpinBox(self)
+    spin_box_freq_total_max = QSpinBox(self)
 
     label_rank = QLabel('Rank:', self)
     checkbox_rank = QCheckBox('No Limit', self)
     label_rank_min = QLabel('From', self)
-    spinbox_rank_min = QSpinBox(self)
+    spin_box_rank_min = QSpinBox(self)
     label_rank_max = QLabel('To', self)
-    spinbox_rank_max = QSpinBox(self)
+    spin_box_rank_max = QSpinBox(self)
 
     label_len = QLabel('Token Length:', self)
     checkbox_len = QCheckBox('No Limit', self)
     label_len_min = QLabel('From', self)
-    spinbox_len_min = QSpinBox(self)
+    spin_box_len_min = QSpinBox(self)
     label_len_max = QLabel('To', self)
-    spinbox_len_max = QSpinBox(self)
+    spin_box_len_max = QSpinBox(self)
 
     label_files = QLabel('Files Found:', self)
     checkbox_files = QCheckBox('No Limit', self)
     label_files_min = QLabel('From', self)
-    spinbox_files_min = QSpinBox(self)
+    spin_box_files_min = QSpinBox(self)
     label_files_max = QLabel('To', self)
-    spinbox_files_max = QSpinBox(self)
+    spin_box_files_max = QSpinBox(self)
 
-    spinbox_freq_first_min.setRange(1, 1000000)
-    spinbox_freq_first_max.setRange(1, 1000000)
-    spinbox_freq_total_min.setRange(1, 1000000)
-    spinbox_freq_total_max.setRange(1, 1000000)
-    spinbox_rank_min.setRange(1, 1000000)
-    spinbox_rank_max.setRange(1, 1000000)
-    spinbox_len_min.setRange(1, 100)
-    spinbox_len_max.setRange(1, 100)
-    spinbox_files_min.setRange(1, 10000)
-    spinbox_files_max.setRange(1, 10000)
+    spin_box_freq_first_min.setRange(1, 1000000)
+    spin_box_freq_first_max.setRange(1, 1000000)
+    spin_box_freq_total_min.setRange(1, 1000000)
+    spin_box_freq_total_max.setRange(1, 1000000)
+    spin_box_rank_min.setRange(1, 1000000)
+    spin_box_rank_max.setRange(1, 1000000)
+    spin_box_len_min.setRange(1, 100)
+    spin_box_len_max.setRange(1, 100)
+    spin_box_files_min.setRange(1, 10000)
+    spin_box_files_max.setRange(1, 10000)
 
     checkbox_freq_first.stateChanged.connect(filter_settings_changed)
-    spinbox_freq_first_min.valueChanged.connect(filter_settings_changed)
-    spinbox_freq_first_max.valueChanged.connect(filter_settings_changed)
+    spin_box_freq_first_min.valueChanged.connect(filter_settings_changed)
+    spin_box_freq_first_max.valueChanged.connect(filter_settings_changed)
     checkbox_freq_total.stateChanged.connect(filter_settings_changed)
-    spinbox_freq_total_min.valueChanged.connect(filter_settings_changed)
-    spinbox_freq_total_max.valueChanged.connect(filter_settings_changed)
+    spin_box_freq_total_min.valueChanged.connect(filter_settings_changed)
+    spin_box_freq_total_max.valueChanged.connect(filter_settings_changed)
     checkbox_rank.stateChanged.connect(filter_settings_changed)
-    spinbox_rank_min.valueChanged.connect(filter_settings_changed)
-    spinbox_rank_max.valueChanged.connect(filter_settings_changed)
+    spin_box_rank_min.valueChanged.connect(filter_settings_changed)
+    spin_box_rank_max.valueChanged.connect(filter_settings_changed)
     checkbox_len.stateChanged.connect(filter_settings_changed)
-    spinbox_len_min.valueChanged.connect(filter_settings_changed)
-    spinbox_len_max.valueChanged.connect(filter_settings_changed)
+    spin_box_len_min.valueChanged.connect(filter_settings_changed)
+    spin_box_len_max.valueChanged.connect(filter_settings_changed)
     checkbox_files.stateChanged.connect(filter_settings_changed)
-    spinbox_files_min.valueChanged.connect(filter_settings_changed)
-    spinbox_files_max.valueChanged.connect(filter_settings_changed)
+    spin_box_files_min.valueChanged.connect(filter_settings_changed)
+    spin_box_files_max.valueChanged.connect(filter_settings_changed)
 
     layout_filter_settings = QGridLayout()
     layout_filter_settings.addWidget(label_freq_first, 0, 0, 1, 3)
     layout_filter_settings.addWidget(checkbox_freq_first, 0, 3)
     layout_filter_settings.addWidget(label_freq_first_min, 1, 0)
-    layout_filter_settings.addWidget(spinbox_freq_first_min, 1, 1)
+    layout_filter_settings.addWidget(spin_box_freq_first_min, 1, 1)
     layout_filter_settings.addWidget(label_freq_first_max, 1, 2)
-    layout_filter_settings.addWidget(spinbox_freq_first_max, 1, 3)
+    layout_filter_settings.addWidget(spin_box_freq_first_max, 1, 3)
 
     layout_filter_settings.addWidget(label_freq_total, 2, 0, 1, 3)
     layout_filter_settings.addWidget(checkbox_freq_total, 2, 3)
     layout_filter_settings.addWidget(label_freq_total_min, 3, 0)
-    layout_filter_settings.addWidget(spinbox_freq_total_min, 3, 1)
+    layout_filter_settings.addWidget(spin_box_freq_total_min, 3, 1)
     layout_filter_settings.addWidget(label_freq_total_max, 3, 2)
-    layout_filter_settings.addWidget(spinbox_freq_total_max, 3, 3)
+    layout_filter_settings.addWidget(spin_box_freq_total_max, 3, 3)
 
     layout_filter_settings.addWidget(label_rank, 4, 0, 1, 3)
     layout_filter_settings.addWidget(checkbox_rank, 4, 3)
     layout_filter_settings.addWidget(label_rank_min, 5, 0)
-    layout_filter_settings.addWidget(spinbox_rank_min, 5, 1)
+    layout_filter_settings.addWidget(spin_box_rank_min, 5, 1)
     layout_filter_settings.addWidget(label_rank_max, 5, 2)
-    layout_filter_settings.addWidget(spinbox_rank_max, 5, 3)
+    layout_filter_settings.addWidget(spin_box_rank_max, 5, 3)
 
     layout_filter_settings.addWidget(label_len, 6, 0, 1, 3)
     layout_filter_settings.addWidget(checkbox_len, 6, 3)
     layout_filter_settings.addWidget(label_len_min, 7, 0)
-    layout_filter_settings.addWidget(spinbox_len_min, 7, 1)
+    layout_filter_settings.addWidget(spin_box_len_min, 7, 1)
     layout_filter_settings.addWidget(label_len_max, 7, 2)
-    layout_filter_settings.addWidget(spinbox_len_max, 7, 3)
+    layout_filter_settings.addWidget(spin_box_len_max, 7, 3)
 
     layout_filter_settings.addWidget(label_files, 8, 0, 1, 3)
     layout_filter_settings.addWidget(checkbox_files, 8, 3)
     layout_filter_settings.addWidget(label_files_min, 9, 0)
-    layout_filter_settings.addWidget(spinbox_files_min, 9, 1)
+    layout_filter_settings.addWidget(spin_box_files_min, 9, 1)
     layout_filter_settings.addWidget(label_files_max, 9, 2)
-    layout_filter_settings.addWidget(spinbox_files_max, 9, 3)
+    layout_filter_settings.addWidget(spin_box_files_max, 9, 3)
 
     groupbox_filter_settings.setLayout(layout_filter_settings)
 
