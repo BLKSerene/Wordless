@@ -19,7 +19,7 @@ class Wordless_Main(QMainWindow):
         super().__init__()
 
         self.setWindowTitle(self.tr('Wordless Version 1.0'))
-        self.setWindowIcon(QIcon('wordless_icon.png'))
+        self.setWindowIcon(QIcon('images/wordless_icon.png'))
 
         self.init_settings()
         self.init_central_widget()
