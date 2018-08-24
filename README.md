@@ -47,7 +47,7 @@ MLA (8th Edition):
 
 国标（GB/T 7714—2015）：
 
-    叶磊. Wordless, 2018. https://github.com/BLKSerene/Wordless.
+    叶磊. Wordless version 0.1 alpha[CP]. [2018]. https://github.com/BLKSerene/Wordless.
 
 ## Need Help?/需要帮助？
 If you encounter any problem while using Wordless, please feel free to contact me by emailing to blkserene@gmail.com and I will reply as soon as possible.
@@ -58,6 +58,10 @@ If you encounter any problem while using Wordless, please feel free to contact m
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.
 
 如您想要支持 Wordless 的开发，您可通过支付宝、微信、或 PayPal 来向 Wordless 提供捐助。
+
+PayPal: [blkserene@gmail.com](https://www.paypal.com/myaccount/transfer/homepage/send)
+
+<img src=https://github.com/BLKSerene/Wordless/blob/master/images/Alipay.jpg width="200"> <img src=https://github.com/BLKSerene/Wordless/blob/master/images/WeChat.png alt="WeChat" width="200">
 
 ## Contribution/帮助开发
 If you have found any bug while using Wordless, you might want to file it by [creating an issue](https://github.com/BLKSerene/Wordless/issues).
