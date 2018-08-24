@@ -5,6 +5,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_utils import *
+
 import wordless_settings
 import groupbox_files
 import tab_overview
@@ -26,8 +28,8 @@ class Wordless_Main(QMainWindow):
 
         self.init_menu()
 
-        self.statusbar = self.statusBar()
-        self.statusbar.showMessage(self.tr('Ready!'))
+        self.status_bar = self.statusBar()
+        self.status_bar.showMessage(self.tr('Ready!'))
 
         self.setStyleSheet('* {font-family: Arial, sans-serif; color: #292929; font-size: 12px}')
 
@@ -273,6 +275,9 @@ class Wordless_Main(QMainWindow):
 
         self.default_settings = {
                                     'general': {
+                                        'encoding_input': ('utf_8', 'All Languages'),
+                                        'encoding_output': ('utf_8', 'All Languages'),
+
                                         'precision': 5,
                                         'style_highlight': 'border: 1px solid Red;'
                                     },
@@ -446,82 +451,7 @@ class Wordless_Main(QMainWindow):
         self.wordless_settings = wordless_settings.Wordless_Settings(self)
 
     def init_menu(self):
-        menu = self.menuBar()
-        menu_file = menu.addMenu(self.tr('File'))
-        menu_pref = menu.addMenu(self.tr('Preferences'))
-        menu_help = menu.addMenu(self.tr('Help'))
-
-        action_open_file = QAction(self.tr('Open File...'), self)
-        action_open_file.setShortcut('Ctrl+O')
-        action_open_file.setStatusTip(self.tr('Open a file'))
-        action_open_file.triggered.connect(self.open_file)
-
-        action_open_files = QAction(self.tr('Open Files...'), self)
-        action_open_files.setStatusTip(self.tr('Open multile files'))
-        action_open_files.triggered.connect(self.open_files)
-
-        action_open_dir = QAction(self.tr('Open Folder...'), self)
-        action_open_dir.setStatusTip(self.tr('Open a folder'))
-        action_open_dir.triggered.connect(self.open_dir)
-
-        action_close_selected = QAction(self.tr('Close Selected File(s)'), self)
-        action_close_selected.setStatusTip(self.tr('Close selected file(s)'))
-        action_close_selected.triggered.connect(self.close_selected)
-
-        action_close_all = QAction(self.tr('Close All Files'), self)
-        action_close_all.setStatusTip(self.tr('Close all files'))
-        action_close_all.triggered.connect(self.close_all)
-
-        self.action_reopen = QAction(self.tr('Reopen Closed File(s)'), self)
-        self.action_reopen.setStatusTip(self.tr('Reopen closed file(s)'))
-        self.action_reopen.triggered.connect(self.reopen)
-
-        action_exit = QAction(self.tr('Exit...'), self)
-        action_exit.setStatusTip(self.tr('Exit the program'))
-        action_exit.triggered.connect(lambda: exit(self))
-
-        self.action_reopen.setEnabled(False)
-
-        menu_file.addAction(action_open_file)
-        menu_file.addAction(action_open_files)
-        menu_file.addAction(action_open_dir)
-        menu_file.addSeparator()
-        menu_file.addAction(action_close_selected)
-        menu_file.addAction(action_close_all)
-        menu_file.addSeparator()
-        menu_file.addAction(self.action_reopen)
-        menu_file.addSeparator()
-        menu_file.addAction(action_exit)
-
-        action_language = QAction(self.tr('Language'), self)
-        action_language.setStatusTip(self.tr('Change display language'))
-
-        action_settings = QAction(self.tr('Settings'), self)
-        action_settings.setStatusTip(self.tr('Change settings'))
-        action_settings.triggered.connect(self.wordless_settings.settings_load)
-
-        action_show_statusbar = QAction(self.tr('Show Status Bar'), self, checkable = True)
-        action_show_statusbar.setChecked(True)
-        action_show_statusbar.setStatusTip(self.tr('Show/Hide the status bar'))
-        action_show_statusbar.triggered.connect(lambda: show_statusbar(self))
-
-        menu_pref.addAction(action_settings)
-        menu_pref.addSeparator()
-        menu_pref.addAction(action_show_statusbar)
-
-        action_acknowledgements = QAction(self.tr('Acknowledgements'), self)
-        action_acknowledgements.setStatusTip(self.tr('Show acknowledgements'))
-        action_acknowledgements.triggered.connect(lambda: acknowledgements(self))
-
-        action_about_wordless = QAction(self.tr('About Wordless'), self)
-        action_about_wordless.setStatusTip(self.tr('Show information about Wordless'))
-        action_about_wordless.triggered.connect(lambda: about_wordless(self))
-
-        menu_help.addAction(action_acknowledgements)
-        menu_help.addSeparator()
-        menu_help.addAction(action_about_wordless)
-
-        def exit(self):
+        def exit():
             reply = QMessageBox.question(self,
                                          self.tr('Exit Confirmation'),
                                          self.tr('Do you really want to quit?'),
@@ -531,13 +461,78 @@ class Wordless_Main(QMainWindow):
             if reply == QMessageBox.Yes:
                 qApp.quit()
 
-        def show_statusbar(self):
-            if self.statusbar.isVisible():
-                self.statusbar.hide()
+        def show_status_bar():
+            if self.status_bar.isVisible():
+                self.status_bar.hide()
             else:
-                self.statusbar.show()
+                self.status_bar.show()
 
-        def acknowledgements(self):
+        def citation():
+            def citation_sys_changed():
+                if combo_box_citation_sys.currentIndex() == 0:
+                    text_edit_citation.setHtml('Ye Lei. Wordless, version 1.0, 2018, https://github.com/BLKSerene/Wordless.')
+                elif combo_box_citation_sys.currentIndex() == 1:
+                    text_edit_citation.setHtml('Ye, L. (2018) Wordless (Version 1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless')
+                elif combo_box_citation_sys.currentIndex() == 2:
+                    text_edit_citation.setHtml('Ye, Lei. <i>Wordless</i> (Version 1.0). Windows. Shanghai: Ye Lei, 2018.')
+                elif combo_box_citation_sys.currentIndex() == 3:
+                    text_edit_citation.setHtml('叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.')
+
+                if combo_box_citation_sys.currentIndex() <= 2:
+                    text_edit_citation.setFont(QFont('Times New Roman', 12))
+                elif combo_box_citation_sys.currentIndex() == 3:
+                    text_edit_citation.setFont(QFont('宋体', 12))
+
+            def copy():
+                text_edit_citation.setFocus()
+                text_edit_citation.selectAll()
+                text_edit_citation.copy()
+
+            dialog_citation = QDialog(self)
+
+            dialog_citation.setWindowTitle(self.tr('Citation'))
+
+            dialog_citation.setFixedSize(dialog_citation.sizeHint().width(), 160)
+
+            label_citation = QLabel(self.tr('If you publish work that uses Wordless, please cite Wordless as follows.'), self)
+            label_citation_sys = QLabel(self.tr('Citation System:'), self)
+            combo_box_citation_sys = QComboBox(self)
+            text_edit_citation = QTextEdit(self)
+
+            button_copy = QPushButton(self.tr('Copy'), self)
+            button_close = QPushButton(self.tr('Close'), self)
+
+            combo_box_citation_sys.addItems([
+                                                 self.tr('MLA (8th Edition)'),
+                                                 self.tr('APA (6th Edition)'),
+                                                 self.tr('Chicago (17th Edition)'),
+                                                 self.tr('GB (GB/T 7714—2015)')
+                                            ])
+
+            button_copy.setFixedWidth(100)
+            button_close.setFixedWidth(100)
+
+            text_edit_citation.setReadOnly(True)
+
+            combo_box_citation_sys.currentTextChanged.connect(citation_sys_changed)
+            button_copy.clicked.connect(copy)
+            button_close.clicked.connect(dialog_citation.accept)
+
+            layout_citation = QGridLayout()
+            layout_citation.addWidget(label_citation, 0, 0, 1, 2)
+            layout_citation.addWidget(label_citation_sys, 1, 0)
+            layout_citation.addWidget(combo_box_citation_sys, 1, 1)
+            layout_citation.addWidget(text_edit_citation, 2, 0, 1, 2)
+            layout_citation.addWidget(button_copy, 3, 0, Qt.AlignHCenter)
+            layout_citation.addWidget(button_close, 3, 1, Qt.AlignHCenter)
+
+            dialog_citation.setLayout(layout_citation)
+
+            citation_sys_changed()
+
+            dialog_citation.exec_()
+
+        def acknowledgements():
             QMessageBox.information(self,
                                     self.tr('Acknowledgements'),
                                     self.tr('''
@@ -625,19 +620,98 @@ class Wordless_Main(QMainWindow):
                                             '''),
                                     QMessageBox.Ok)
 
-        def about_wordless(self):
+        def about_wordless():
             QMessageBox.about(self,
                               self.tr('About Wordless'),
                               self.tr('''
                                       <div style="text-align: center">
-                                        <div style="margin-bottom: 10px; font-size: 16px; font-weight: bold;">Wordless (Version 1.0)</div>
-                                        <div style="margin-bottom: 5px;">An all-inclusive software solution for language & translation studies.</div>
-                                        <div style="margin-bottom: 5px;">Designed and Developed by Ye Lei (叶磊)</div>
-                                        <div style="margin-bottom: 5px;">At Shanghai International Studies University, Shanghai, China</div>
+                                        <div style="margin-bottom: 5px; font-size: 16px; font-weight: bold;">Wordless Version 1.0</div>
+                                        <div style="margin-bottom: 5px;">An integrated tool for language & translation studies.</div>
+                                        <div>Designed and Developed by Ye Lei (叶磊)</div>
                                         <hr style="margin-bottom: 5px">
-                                        <div style="margin-bottom: 5px">Licensed under GNU GPLv3</div>
-                                        <div>Copyright © 2018 Ye Lei (叶磊)</div>
+                                        <div style="margin-bottom: 5px">Licensed under GPL Version 3.0</div>
+                                        <div>Copyright (C) 2018 Ye Lei</div>
                                       </div>'''))
+
+        menu = self.menuBar()
+        menu_file = menu.addMenu(self.tr('File'))
+        menu_pref = menu.addMenu(self.tr('Preferences'))
+        menu_help = menu.addMenu(self.tr('Help'))
+
+        action_open_file = QAction(self.tr('Open File...'), self)
+        action_open_file.setShortcut('Ctrl+O')
+        action_open_file.setStatusTip(self.tr('Open a file'))
+        action_open_file.triggered.connect(self.open_file)
+
+        action_open_files = QAction(self.tr('Open Files...'), self)
+        action_open_files.setStatusTip(self.tr('Open multile files'))
+        action_open_files.triggered.connect(self.open_files)
+
+        action_open_dir = QAction(self.tr('Open Folder...'), self)
+        action_open_dir.setStatusTip(self.tr('Open a folder'))
+        action_open_dir.triggered.connect(self.open_dir)
+
+        action_close_selected = QAction(self.tr('Close Selected File(s)'), self)
+        action_close_selected.setStatusTip(self.tr('Close selected file(s)'))
+        action_close_selected.triggered.connect(self.close_selected)
+
+        action_close_all = QAction(self.tr('Close All Files'), self)
+        action_close_all.setStatusTip(self.tr('Close all files'))
+        action_close_all.triggered.connect(self.close_all)
+
+        self.action_reopen = QAction(self.tr('Reopen Closed File(s)'), self)
+        self.action_reopen.setStatusTip(self.tr('Reopen closed file(s)'))
+        self.action_reopen.triggered.connect(self.reopen)
+
+        action_exit = QAction(self.tr('Exit...'), self)
+        action_exit.setStatusTip(self.tr('Exit the program'))
+        action_exit.triggered.connect(lambda: exit(self))
+
+        self.action_reopen.setEnabled(False)
+
+        menu_file.addAction(action_open_file)
+        menu_file.addAction(action_open_files)
+        menu_file.addAction(action_open_dir)
+        menu_file.addSeparator()
+        menu_file.addAction(action_close_selected)
+        menu_file.addAction(action_close_all)
+        menu_file.addSeparator()
+        menu_file.addAction(self.action_reopen)
+        menu_file.addSeparator()
+        menu_file.addAction(action_exit)
+
+        action_language = QAction(self.tr('Language'), self)
+        action_language.setStatusTip(self.tr('Change display language'))
+
+        action_settings = QAction(self.tr('Settings'), self)
+        action_settings.setStatusTip(self.tr('Change settings'))
+        action_settings.triggered.connect(self.wordless_settings.settings_load)
+
+        action_show_status_bar = QAction(self.tr('Show Status Bar'), self, checkable = True)
+        action_show_status_bar.setChecked(True)
+        action_show_status_bar.setStatusTip(self.tr('Show/Hide the status bar'))
+        action_show_status_bar.triggered.connect(lambda: show_status_bar(self))
+
+        menu_pref.addAction(action_settings)
+        menu_pref.addSeparator()
+        menu_pref.addAction(action_show_status_bar)
+
+        action_citation = QAction(self.tr('Citation'), self)
+        action_citation.setStatusTip(self.tr('Show information about citation'))
+        action_citation.triggered.connect(citation)
+
+        action_acknowledgements = QAction(self.tr('Acknowledgements'), self)
+        action_acknowledgements.setStatusTip(self.tr('Show acknowledgements'))
+        action_acknowledgements.triggered.connect(acknowledgements)
+
+        action_about_wordless = QAction(self.tr('About Wordless'), self)
+        action_about_wordless.setStatusTip(self.tr('Show information about Wordless'))
+        action_about_wordless.triggered.connect(about_wordless)
+
+        menu_help.addAction(action_citation)
+        menu_help.addSeparator()
+        menu_help.addAction(action_acknowledgements)
+        menu_help.addAction(action_about_wordless)
 
     def init_central_widget(self):
         central_widget = QWidget(self)

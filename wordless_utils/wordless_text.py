@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import jieba
 import nltk
 
-from wordless_utils import wordless_utils, wordless_freq
+from wordless_utils import wordless_misc, wordless_freq
 
 def wordless_lemmatize(tokens, lang = 'en'):
     if lang == 'en':
@@ -85,7 +85,7 @@ class Wordless_Text(nltk.Text):
         if ignore_case:
             self._concordance_index = nltk.ConcordanceIndex(self.tokens, key=lambda s:s.lower())
 
-            tokens_matched = [token.lower() for token in tokens_matched]
+            tokens_matched = set([token.lower() for token in tokens_searched])
         else:
             self._concordance_index = nltk.ConcordanceIndex(self.tokens)
 

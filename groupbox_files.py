@@ -4,8 +4,81 @@ import os
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+import chardet
+import langdetect
 
 from wordless_utils import *
+
+class Wordless_File:
+    def __init__(self, parent, table, file_path, auto_detect = True):
+        self.parent = parent
+        self.table = table
+
+        if auto_detect:
+            self.selected = True
+            self.path = os.path.normpath(file_path)
+
+            path_name, file = os.path.split(file_path)
+            self.name, self.ext = os.path.splitext(file)
+            self.ext_text = wordless_misc.convert_ext(self.parent, self.ext)
+
+            with open(self.path, 'rb') as f:
+                encoding_detected = chardet.detect(f.read())
+
+                encoding_code = encoding_detected['encoding']
+                encoding_lang = encoding_detected.get('language')
+                # chardet
+                if encoding_code == None:
+                    self.encoding_code = 'UTF-8'
+                elif encoding_code == 'EUC-TW':
+                    self.encoding_code = 'Big5'
+                elif encoding_code == 'ISO-2022-CN':
+                    self.encoding_code = 'GB2312'
+                else:
+                    self.encoding_code = encoding_code.lower().replace('-', '_')
+                self.encoding_text = wordless_misc.convert_encoding(self.parent, self.encoding_code, encoding_lang)
+
+            try:
+                with open(self.path, 'r', encoding = self.encoding_code) as f:
+                    self.lang_code = langdetect.detect(f.read())
+            except UnicodeDecodeError:
+                self.lang_code = 'en'
+                QMessageBox.warning(self.parent,
+                                    'Auto-detection Failure',
+                                    'Failed to auto-detect language and encoding for the file "{}", please choose the right language and encoding manually!'.format(self.name),
+                                    QMessageBox.Ok)
+            finally:
+                self.lang_text = wordless_misc.convert_lang(self.parent, self.lang_code)
+
+            if self.lang_code in ['ja', 'ko', 'zh-cn', 'zh-tw']:
+                self.delimiter = ''
+            else:
+                self.delimiter = ' '
+
+    def write(self, row):
+        if row > self.table.rowCount() - 1:
+            self.table.setRowCount(self.table.rowCount() + 1)
+
+        checkbox_name = QTableWidgetItem(self.name)
+        combo_box_lang = wordless_widgets.Wordless_Combo_Box_Lang(self.parent)
+        combo_box_encoding = wordless_widgets.Wordless_Combo_Box_Encoding(self.parent)
+
+        if self.selected:
+            checkbox_name.setCheckState(Qt.Checked)
+        else:
+            checkbox_name.setCheckState(Qt.Unchecked)
+        combo_box_lang.setCurrentText(self.lang_text)
+        combo_box_encoding.setCurrentText(self.encoding_text)
+
+        combo_box_lang.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(row, 2)))
+        combo_box_encoding.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(row, 3)))
+        
+        self.table.setItem(row, 0, checkbox_name)
+        self.table.setCellWidget(row, 1, combo_box_lang)
+        self.table.setItem(row, 2, QTableWidgetItem(self.path))
+        self.table.setItem(row, 3, QTableWidgetItem(self.ext_text))
+        self.table.setCellWidget(row, 4, combo_box_encoding)
+
 
 class Wordless_Table_Files(wordless_table.Wordless_Table):
     def __init__(self, parent, headers, stretch_columns = []):
@@ -72,9 +145,9 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
 
                 file.selected = True if self.item(row, 0).checkState() == Qt.Checked else False
                 file.lang_text = self.cellWidget(row, 1).currentText()
-                file.lang_code = file.convert_lang(file.lang_text)
+                file.lang_code = wordless_misc.convert_lang(self.parent, file.lang_text)
                 file.encoding_text = self.cellWidget(row, 4).currentText()
-                file.encoding_code = file.convert_encoding(file.encoding_text)
+                file.encoding_code = wordless_misc.convert_encoding(self.parent, file.encoding_text)[1]
 
         if self.item(0, 0):
             self.button_select_all.setEnabled(True)
@@ -149,7 +222,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
 
         for file_path in file_paths:
             if os.path.splitext(file_path)[1] in self.parent.file_exts:
-                file = wordless_file.Wordless_File(self.parent, self, file_path)
+                file = Wordless_File(self.parent, self, file_path)
 
                 duplicate = False
 
@@ -275,7 +348,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
         if os.path.exists('wordless_files.csv'):
             with open('wordless_files.csv', 'r', encoding = 'UTF-8') as f:
                 for i, row in enumerate(csv.reader(f)):
-                    file = wordless_file.Wordless_File(self.parent, self, row[2], auto_detect = False)
+                    file = Wordless_File(self.parent, self, row[2], auto_detect = False)
 
                     file.selected = True if row[0] == 'True' else False
                     file.name = row[1]

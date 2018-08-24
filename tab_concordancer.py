@@ -175,7 +175,7 @@ def init(self):
         self.settings['concordancer']['punctuations'] = checkbox_punctuations.isChecked()
 
     def search_settings_changed():
-        self.settings['concordancer']['search_term'] = lineedit_search_term.text()
+        self.settings['concordancer']['search_term'] = line_edit_search_term.text()
         self.settings['concordancer']['search_terms'] = list_search_terms.get_items()
         self.settings['concordancer']['ignore_case'] = checkbox_ignore_case.isChecked()
         self.settings['concordancer']['lemmatized_forms'] = checkbox_lemmatized_forms.isChecked()
@@ -183,14 +183,14 @@ def init(self):
         self.settings['concordancer']['regex'] = checkbox_regex.isChecked()
         self.settings['concordancer']['multi_search'] = checkbox_multi_search.isChecked()
 
-        self.settings['concordancer']['line_width_mode'] = combobox_line_width.currentText()
-        self.settings['concordancer']['line_width_char'] = spinbox_line_width_char.value()
-        self.settings['concordancer']['line_width_token'] = spinbox_line_width_token.value()
-        self.settings['concordancer']['number_lines'] = None if checkbox_number_lines.isChecked() else spinbox_number_lines.value()
+        self.settings['concordancer']['line_width_mode'] = combo_box_line_width.currentText()
+        self.settings['concordancer']['line_width_char'] = spin_box_line_width_char.value()
+        self.settings['concordancer']['line_width_token'] = spin_box_line_width_token.value()
+        self.settings['concordancer']['number_lines'] = None if checkbox_number_lines.isChecked() else spin_box_number_lines.value()
         self.settings['concordancer']['number_lines_no_limit'] = checkbox_number_lines.isChecked()
         
         if self.settings['concordancer']['multi_search']:
-            lineedit_search_term.hide()
+            line_edit_search_term.hide()
 
             list_search_terms.show()
             list_search_terms.button_add.show()
@@ -204,7 +204,7 @@ def init(self):
                 list_search_terms.add_item()
                 list_search_terms.item(0).setText(self.settings['concordancer']['search_term'])
         else:
-            lineedit_search_term.show()
+            line_edit_search_term.show()
 
             list_search_terms.hide()
             list_search_terms.button_add.hide()
@@ -215,25 +215,25 @@ def init(self):
             list_search_terms.button_export.hide()
 
         if self.settings['concordancer']['line_width_mode'] == 'Characters':
-            spinbox_line_width_char.show()
-            spinbox_line_width_token.hide()
+            spin_box_line_width_char.show()
+            spin_box_line_width_token.hide()
         else:
-            spinbox_line_width_char.hide()
-            spinbox_line_width_token.show()
+            spin_box_line_width_char.hide()
+            spin_box_line_width_token.show()
 
         if self.settings['concordancer']['number_lines_no_limit']:
-            spinbox_number_lines.setEnabled(False)
+            spin_box_number_lines.setEnabled(False)
         else:
-            spinbox_number_lines.setEnabled(True)
+            spin_box_number_lines.setEnabled(True)
 
     def sorting_settings_changed():
-        self.settings['concordancer']['sort_by'][0] = combobox_sort_column.currentText()
-        self.settings['concordancer']['sort_by'][1] = combobox_sort_order.currentText()
+        self.settings['concordancer']['sort_by'][0] = combo_box_sort_column.currentText()
+        self.settings['concordancer']['sort_by'][1] = combo_box_sort_order.currentText()
         self.settings['concordancer']['multi_sort'] = checkbox_multi_sort.isChecked()
 
         if self.settings['concordancer']['multi_sort']:
-            combobox_sort_column.hide()
-            combobox_sort_order.hide()
+            combo_box_sort_column.hide()
+            combo_box_sort_order.hide()
 
             table_multi_sort.show()
             table_multi_sort.button_add.show()
@@ -243,8 +243,8 @@ def init(self):
 
             table_multi_sort.sort()
         else:
-            combobox_sort_column.show()
-            combobox_sort_order.show()
+            combo_box_sort_column.show()
+            combo_box_sort_order.show()
 
             table_multi_sort.hide()
             table_multi_sort.button_add.hide()
@@ -257,7 +257,7 @@ def init(self):
     def restore_defaults():
         checkbox_punctuations.setChecked(self.default_settings['concordancer']['punctuations'])
 
-        lineedit_search_term.setText(self.default_settings['concordancer']['search_term'])
+        line_edit_search_term.setText(self.default_settings['concordancer']['search_term'])
         list_search_terms.clear()
         list_search_terms.addItems(self.default_settings['concordancer']['search_terms'])
         checkbox_ignore_case.setChecked(self.default_settings['concordancer']['ignore_case'])
@@ -266,14 +266,14 @@ def init(self):
         checkbox_regex.setChecked(self.default_settings['concordancer']['regex'])
         checkbox_multi_search.setChecked(self.default_settings['concordancer']['multi_search'])
 
-        spinbox_line_width_char.setValue(self.default_settings['concordancer']['line_width_char'])
-        spinbox_line_width_token.setValue(self.default_settings['concordancer']['line_width_token'])
-        combobox_line_width.setCurrentText(self.default_settings['concordancer']['line_width_mode'])
-        spinbox_number_lines.setValue(self.default_settings['concordancer']['number_lines'])
+        spin_box_line_width_char.setValue(self.default_settings['concordancer']['line_width_char'])
+        spin_box_line_width_token.setValue(self.default_settings['concordancer']['line_width_token'])
+        combo_box_line_width.setCurrentText(self.default_settings['concordancer']['line_width_mode'])
+        spin_box_number_lines.setValue(self.default_settings['concordancer']['number_lines'])
         checkbox_number_lines.setChecked(self.default_settings['concordancer']['number_lines_no_limit'])
 
-        combobox_sort_column.setCurrentText(self.default_settings['concordancer']['sort_by'][0])
-        combobox_sort_order.setCurrentText(self.default_settings['concordancer']['sort_by'][1])
+        combo_box_sort_column.setCurrentText(self.default_settings['concordancer']['sort_by'][0])
+        combo_box_sort_order.setCurrentText(self.default_settings['concordancer']['sort_by'][1])
         checkbox_multi_sort.setChecked(self.default_settings['concordancer']['multi_sort'])
 
         table_multi_sort.reset_table()
@@ -297,7 +297,7 @@ def init(self):
     table_concordancer.button_generate_plot = QPushButton(self.tr('Generate Plot'), self)
 
     table_concordancer.button_search.clicked.connect(lambda: search(self, table_concordancer,
-                                                                    combobox_sort_column, table_multi_sort))
+                                                                    combo_box_sort_column, table_multi_sort))
     table_concordancer.button_generate_plot.clicked.connect(lambda: generate_plot(self))
 
     layout_concordancer_left = QGridLayout()
@@ -324,7 +324,7 @@ def init(self):
     groupbox_search_settings = QGroupBox(self.tr('Search Settings'), self)
 
     label_search_term = QLabel(self.tr('Search Term(s):'), self)
-    lineedit_search_term = QLineEdit(self)
+    line_edit_search_term = QLineEdit(self)
     list_search_terms = wordless_list.Wordless_List(self)
     checkbox_ignore_case = QCheckBox(self.tr('Ignore Case'), self)
     checkbox_lemmatized_forms = QCheckBox(self.tr('Match All Lemmatized Forms'), self)
@@ -333,25 +333,25 @@ def init(self):
     checkbox_multi_search = QCheckBox(self.tr('Multi-search Mode'), self)
 
     label_line_width = QLabel(self.tr('Line Width:'), self)
-    spinbox_line_width_char = QSpinBox(self)
-    spinbox_line_width_token = QSpinBox(self)
-    combobox_line_width = QComboBox(self)
+    spin_box_line_width_char = QSpinBox(self)
+    spin_box_line_width_token = QSpinBox(self)
+    combo_box_line_width = QComboBox(self)
 
     label_number_lines = QLabel(self.tr('Number of Lines:'), self)
-    spinbox_number_lines = QSpinBox(self)
+    spin_box_number_lines = QSpinBox(self)
     checkbox_number_lines = QCheckBox(self.tr('No Limit'), self)
 
-    combobox_line_width.addItems([
+    combo_box_line_width.addItems([
                                      self.tr('Tokens'),
                                      self.tr('Characters')
                                  ])
 
-    spinbox_line_width_char.setRange(1, 1000)
-    spinbox_line_width_token.setRange(1, 100)
-    spinbox_number_lines.setRange(1, 10000)
+    spin_box_line_width_char.setRange(1, 1000)
+    spin_box_line_width_token.setRange(1, 100)
+    spin_box_number_lines.setRange(1, 10000)
 
-    lineedit_search_term.textChanged.connect(search_settings_changed)
-    lineedit_search_term.returnPressed.connect(table_concordancer.button_search.click)
+    line_edit_search_term.textChanged.connect(search_settings_changed)
+    line_edit_search_term.returnPressed.connect(table_concordancer.button_search.click)
     list_search_terms.itemChanged.connect(search_settings_changed)
     checkbox_ignore_case.stateChanged.connect(search_settings_changed)
     checkbox_lemmatized_forms.stateChanged.connect(search_settings_changed)
@@ -359,11 +359,11 @@ def init(self):
     checkbox_regex.stateChanged.connect(search_settings_changed)
     checkbox_multi_search.stateChanged.connect(search_settings_changed)
 
-    spinbox_line_width_char.valueChanged.connect(search_settings_changed)
-    spinbox_line_width_token.valueChanged.connect(search_settings_changed)
-    combobox_line_width.currentTextChanged.connect(search_settings_changed)
+    spin_box_line_width_char.valueChanged.connect(search_settings_changed)
+    spin_box_line_width_token.valueChanged.connect(search_settings_changed)
+    combo_box_line_width.currentTextChanged.connect(search_settings_changed)
 
-    spinbox_number_lines.valueChanged.connect(search_settings_changed)
+    spin_box_number_lines.valueChanged.connect(search_settings_changed)
     checkbox_number_lines.stateChanged.connect(search_settings_changed)
 
     layout_search_terms = QGridLayout()
@@ -377,7 +377,7 @@ def init(self):
 
     layout_search_settings = QGridLayout()
     layout_search_settings.addWidget(label_search_term, 0, 0, 1, 2)
-    layout_search_settings.addWidget(lineedit_search_term, 1, 0, 1, 2)
+    layout_search_settings.addWidget(line_edit_search_term, 1, 0, 1, 2)
     layout_search_settings.addLayout(layout_search_terms, 2, 0, 1, 2)
     layout_search_settings.addWidget(checkbox_ignore_case, 3, 0, 1, 2)
     layout_search_settings.addWidget(checkbox_lemmatized_forms, 4, 0, 1, 2)
@@ -386,12 +386,12 @@ def init(self):
     layout_search_settings.addWidget(checkbox_multi_search, 7, 0, 1, 2)
 
     layout_search_settings.addWidget(label_line_width, 8, 0, 1, 2)
-    layout_search_settings.addWidget(spinbox_line_width_char, 9, 0)
-    layout_search_settings.addWidget(spinbox_line_width_token, 9, 0)
-    layout_search_settings.addWidget(combobox_line_width, 9, 1)
+    layout_search_settings.addWidget(spin_box_line_width_char, 9, 0)
+    layout_search_settings.addWidget(spin_box_line_width_token, 9, 0)
+    layout_search_settings.addWidget(combo_box_line_width, 9, 1)
 
     layout_search_settings.addWidget(label_number_lines, 10, 0, 1, 2)
-    layout_search_settings.addWidget(spinbox_number_lines, 11, 0)
+    layout_search_settings.addWidget(spin_box_number_lines, 11, 0)
     layout_search_settings.addWidget(checkbox_number_lines, 11, 1)
 
     groupbox_search_settings.setLayout(layout_search_settings)
@@ -400,15 +400,15 @@ def init(self):
     groupbox_sorting_settings = QGroupBox(self.tr('Sorting Settings'), self)
 
     label_sort = QLabel(self.tr('Sort Results by:'), self)
-    combobox_sort_column = QComboBox(self)
-    combobox_sort_order = QComboBox(self)
+    combo_box_sort_column = QComboBox(self)
+    combo_box_sort_order = QComboBox(self)
     checkbox_multi_sort = QCheckBox(self.tr('Multi-column Sorting'), self)
 
-    combobox_sort_column.addItems(['Offset', 'Query'])
-    combobox_sort_order.addItems(['In Ascending Order', 'In Descending Order'])
+    combo_box_sort_column.addItems(['Offset', 'Query'])
+    combo_box_sort_order.addItems(['In Ascending Order', 'In Descending Order'])
 
-    combobox_sort_column.currentTextChanged.connect(sorting_settings_changed)
-    combobox_sort_order.currentTextChanged.connect(sorting_settings_changed)
+    combo_box_sort_column.currentTextChanged.connect(sorting_settings_changed)
+    combo_box_sort_order.currentTextChanged.connect(sorting_settings_changed)
     checkbox_multi_sort.stateChanged.connect(sorting_settings_changed)
 
     # Multi-sort
@@ -425,8 +425,8 @@ def init(self):
 
     layout_sorting_settings = QGridLayout()
     layout_sorting_settings.addWidget(label_sort, 0, 0, 1, 2)
-    layout_sorting_settings.addWidget(combobox_sort_column, 1, 0)
-    layout_sorting_settings.addWidget(combobox_sort_order, 1, 1)
+    layout_sorting_settings.addWidget(combo_box_sort_column, 1, 0)
+    layout_sorting_settings.addWidget(combo_box_sort_order, 1, 1)
     layout_sorting_settings.addLayout(layout_multi_sort, 2, 0, 1, 2)
     layout_sorting_settings.addWidget(checkbox_multi_sort, 3, 0, 1, 2)
 
@@ -442,8 +442,8 @@ def init(self):
 
     wrapper_settings.setLayout(layout_settings)
 
-    scrollarea_settings = wordless_scroll_area.Wordless_Scroll_Area(self)
-    scrollarea_settings.setWidget(wrapper_settings)
+    scroll_area_settings = wordless_widgets.Wordless_Scroll_Area(self)
+    scroll_area_settings.setWidget(wrapper_settings)
 
     button_advanced_settings = QPushButton(self.tr('Advanced Settings'), self)
     button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
@@ -453,7 +453,7 @@ def init(self):
 
     layout_concordancer = QGridLayout()
     layout_concordancer.addLayout(layout_concordancer_left, 0, 0, 2, 1)
-    layout_concordancer.addWidget(scrollarea_settings, 0, 1, 1, 2)
+    layout_concordancer.addWidget(scroll_area_settings, 0, 1, 1, 2)
     layout_concordancer.addWidget(button_advanced_settings, 1, 1)
     layout_concordancer.addWidget(button_restore_defaults, 1, 2)
 
@@ -467,7 +467,7 @@ def init(self):
 
     return tab_concordancer
 
-def search(self, table, combobox_sort, table_multi_sort):
+def search(self, table, combo_box_sort, table_multi_sort):
     if self.settings['concordancer']['multi_search']:
         search_terms = self.settings['concordancer']['search_terms']
     else:
@@ -529,15 +529,15 @@ def search(self, table, combobox_sort, table_multi_sort):
                     else:
                         sort_columns_new.append('L' + str(i // 2 + 1))
 
-                if len(sort_columns_new) < combobox_sort.count():
-                    if combobox_sort.currentText() in sort_columns_new:
-                        for j in reversed(range(combobox_sort.count())):
+                if len(sort_columns_new) < combo_box_sort.count():
+                    if combo_box_sort.currentText() in sort_columns_new:
+                        for j in reversed(range(combo_box_sort.count())):
                             if j > len(sort_columns_new) - 1:
-                                combobox_sort.removeItem(j)
+                                combo_box_sort.removeItem(j)
                     else:
-                        combobox_sort.setCurrentIndex(0)
-                elif len(sort_columns_new) > combobox_sort.count():
-                    combobox_sort.addItems(sort_columns_new[-(len(sort_columns_new) - combobox_sort.count()):])
+                        combo_box_sort.setCurrentIndex(0)
+                elif len(sort_columns_new) > combo_box_sort.count():
+                    combo_box_sort.addItems(sort_columns_new[-(len(sort_columns_new) - combo_box_sort.count()):])
 
                 table_multi_sort.update_sort_columns(sort_columns_new)
 
@@ -558,7 +558,7 @@ def search(self, table, combobox_sort, table_multi_sort):
                             self.tr('Please enter your search term(s) first!'),
                             QMessageBox.Ok)
 
-    self.statusbar.showMessage('Done!')
+    self.status_bar.showMessage('Done!')
 
 def generate_plot(self):
     if self.settings['concordancer']['multi_search']:
@@ -579,4 +579,4 @@ def generate_plot(self):
                             self.tr('Please enter your search term(s) first!'),
                             QMessageBox.Ok)
 
-    self.statusbar.showMessage('Done!')
+    self.status_bar.showMessage('Done!')
