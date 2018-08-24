@@ -1,15 +1,11 @@
 # Wordless
-An all-inclusive software solution for language &amp; translation studies.
+An integrated tool for language & translation studies.
 
 Designed and Developed by Ye Lei (叶磊)
 
-At Shanghai International Studies University, Shanghai, China
-
-用于语言研究及翻译研究的完善软件解决方案
+一款用于语言研究及翻译研究的集成工具。
 
 由叶磊设计并开发
-
-中国，上海，上海外国语大学
 
 ## License/开源许可
     Copyright (C) 2018 Ye Lei
@@ -43,11 +39,19 @@ Thanks a million for the following open-source projects on which Wordless is bui
 ## Citation/引用
 MLA (8th Edition):
 
-    Ye Lei. Wordless, version 0.1 alpha, 2018, https://github.com/BLKSerene/Wordless.
+    Ye Lei. Wordless, version 1.0, 2018, https://github.com/BLKSerene/Wordless.
 
-国标（GB/T 7714—2015）：
+APA (6th Edition):
 
-    叶磊. Wordless, 2018. https://github.com/BLKSerene/Wordless.
+    Ye, L. (2018) Wordless (Version 1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless
+
+Chicago (17th Edition):
+
+    Ye, Lei. <i>Wordless</i> (Version 1.0). Windows. Shanghai: Ye Lei, 2018.
+
+GB (GB/T 7714—2015):
+
+    叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.
 
 ## Need Help?/需要帮助？
 If you encounter any problem while using Wordless, please feel free to contact me by emailing to blkserene@gmail.com and I will reply as soon as possible.
@@ -58,6 +62,10 @@ If you encounter any problem while using Wordless, please feel free to contact m
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.
 
 如您想要支持 Wordless 的开发，您可通过支付宝、微信、或 PayPal 来向 Wordless 提供捐助。
+
+PayPal: [blkserene@gmail.com](https://www.paypal.com/myaccount/transfer/homepage/send)
+
+<img src=https://github.com/BLKSerene/Wordless/blob/master/images/Alipay.jpg width="200"> <img src=https://github.com/BLKSerene/Wordless/blob/master/images/WeChat.png alt="WeChat" width="200">
 
 ## Contribution/帮助开发
 If you have found any bug while using Wordless, you might want to file it by [creating an issue](https://github.com/BLKSerene/Wordless/issues).
