@@ -15,18 +15,18 @@ class Wordless_Table_Semantics(wordless_table.Wordless_Table):
 
 def init(self):
     def search_settings_changed():
-        self.settings['semantics']['search_term'] = lineedit_search_term.text()
-        self.settings['semantics']['search_mode'] = combobox_search_mode.currentText()
-        self.settings['semantics']['search_for'] = combobox_search_for.currentText()
+        self.settings['semantics']['search_term'] = line_edit_search_term.text()
+        self.settings['semantics']['search_mode'] = combo_box_search_mode.currentText()
+        self.settings['semantics']['search_for'] = combo_box_search_for.currentText()
 
         if self.settings['semantics']['search_for'] in ['Synonyms', 'Antonyms']:
             checkbox_recursive.setEnabled(False)
-            spinbox_depth_max.setEnabled(False)
+            spin_box_depth_max.setEnabled(False)
             checkbox_depth.setEnabled(False)
             checkbox_show_lemmas.setEnabled(False)
         else:
             checkbox_recursive.setEnabled(True)
-            spinbox_depth_max.setEnabled(True)
+            spin_box_depth_max.setEnabled(True)
             checkbox_depth.setEnabled(True)
             checkbox_show_lemmas.setEnabled(True)
 
@@ -35,41 +35,41 @@ def init(self):
         plot_settings_changed()
 
     def plot_settings_changed():
-        self.settings['semantics']['degree_max'] = spinbox_degree_max.value()
+        self.settings['semantics']['degree_max'] = spin_box_degree_max.value()
         self.settings['semantics']['degree_no_limit'] = checkbox_degree.isChecked()
         self.settings['semantics']['recursive'] = checkbox_recursive.isChecked()
-        self.settings['semantics']['depth_max'] = spinbox_depth_max.value()
+        self.settings['semantics']['depth_max'] = spin_box_depth_max.value()
         self.settings['semantics']['depth_no_limit'] = checkbox_depth.isChecked()
         self.settings['semantics']['show_lemmas'] = checkbox_show_lemmas.isChecked()
 
         if self.settings['semantics']['degree_no_limit']:
-            spinbox_degree_max.setEnabled(False)
+            spin_box_degree_max.setEnabled(False)
         else:
-            spinbox_degree_max.setEnabled(True)
+            spin_box_degree_max.setEnabled(True)
 
         if self.settings['semantics']['search_for'] not in ['Synonyms', 'Antonyms']:
             if self.settings['semantics']['recursive']:
-                spinbox_depth_max.setEnabled(True)
+                spin_box_depth_max.setEnabled(True)
                 checkbox_depth.setEnabled(True)
                 checkbox_show_lemmas.setEnabled(True)
 
                 if self.settings['semantics']['depth_no_limit']:
-                    spinbox_depth_max.setEnabled(False)
+                    spin_box_depth_max.setEnabled(False)
                 else:
-                    spinbox_depth_max.setEnabled(True)
+                    spin_box_depth_max.setEnabled(True)
             else:
-                spinbox_depth_max.setEnabled(False)
+                spin_box_depth_max.setEnabled(False)
                 checkbox_depth.setEnabled(False)
                 checkbox_show_lemmas.setEnabled(False)
 
     def restore_defaults():
-        lineedit_search_term.setText(self.default_settings['semantics']['search_term'])
-        combobox_search_mode.setCurrentText(self.default_settings['semantics']['search_mode'])
-        combobox_search_for.setCurrentText(self.default_settings['semantics']['search_for'])
+        line_edit_search_term.setText(self.default_settings['semantics']['search_term'])
+        combo_box_search_mode.setCurrentText(self.default_settings['semantics']['search_mode'])
+        combo_box_search_for.setCurrentText(self.default_settings['semantics']['search_for'])
 
-        spinbox_degree_max.setValue(self.default_settings['semantics']['degree_max'])
+        spin_box_degree_max.setValue(self.default_settings['semantics']['degree_max'])
         checkbox_degree.setChecked(self.default_settings['semantics']['degree_no_limit'])
-        spinbox_depth_max.setValue(self.default_settings['semantics']['depth_max'])
+        spin_box_depth_max.setValue(self.default_settings['semantics']['depth_max'])
         checkbox_depth.setChecked(self.default_settings['semantics']['depth_no_limit'])
         checkbox_recursive.setChecked(self.default_settings['semantics']['recursive'])
         checkbox_show_lemmas.setChecked(self.default_settings['semantics']['show_lemmas'])
@@ -106,18 +106,18 @@ def init(self):
     groupbox_search_settings = QGroupBox('Search Settings', self)
 
     label_search_term = QLabel('Search Term:', self)
-    lineedit_search_term = QLineEdit(self)
+    line_edit_search_term = QLineEdit(self)
     label_search_mode = QLabel('Search Mode:', self)
-    combobox_search_mode = QComboBox(self)
+    combo_box_search_mode = QComboBox(self)
     label_search_for = QLabel('Search For:', self)
-    combobox_search_for = QComboBox(self)
+    combo_box_search_for = QComboBox(self)
 
-    combobox_search_mode.addItems([
+    combo_box_search_mode.addItems([
                                       self.tr('Word'),
                                       self.tr('Lemma'),
                                       self.tr('Synset')
                                   ])
-    combobox_search_for.addItems([
+    combo_box_search_for.addItems([
                                      self.tr('Synonyms'),
                                      self.tr('Antonyms'),
                                      self.tr('Hypernyms'),
@@ -131,18 +131,18 @@ def init(self):
                                      self.tr('Entailments')
                                   ])
 
-    lineedit_search_term.textChanged.connect(search_settings_changed)
-    lineedit_search_term.returnPressed.connect(table_semantics.button_search.click)
-    combobox_search_mode.currentTextChanged.connect(search_settings_changed)
-    combobox_search_for.currentTextChanged.connect(search_settings_changed)
+    line_edit_search_term.textChanged.connect(search_settings_changed)
+    line_edit_search_term.returnPressed.connect(table_semantics.button_search.click)
+    combo_box_search_mode.currentTextChanged.connect(search_settings_changed)
+    combo_box_search_for.currentTextChanged.connect(search_settings_changed)
 
     layout_search_settings = QGridLayout()
     layout_search_settings.addWidget(label_search_term, 0, 0)
-    layout_search_settings.addWidget(lineedit_search_term, 1, 0)
+    layout_search_settings.addWidget(line_edit_search_term, 1, 0)
     layout_search_settings.addWidget(label_search_mode, 2, 0)
-    layout_search_settings.addWidget(combobox_search_mode, 3, 0)
+    layout_search_settings.addWidget(combo_box_search_mode, 3, 0)
     layout_search_settings.addWidget(label_search_for, 4, 0)
-    layout_search_settings.addWidget(combobox_search_for, 5, 0)
+    layout_search_settings.addWidget(combo_box_search_for, 5, 0)
     
     groupbox_search_settings.setLayout(layout_search_settings)
 
@@ -150,27 +150,27 @@ def init(self):
     groupbox_plot_settings = QGroupBox('Plot Settings', self)
 
     label_degree_max = QLabel('Maximum Degree:', self)
-    spinbox_degree_max = QSpinBox(self)
+    spin_box_degree_max = QSpinBox(self)
     checkbox_degree  = QCheckBox('No Limit', self)
     label_depth_max = QLabel('Maximum Depth:', self)
-    spinbox_depth_max = QSpinBox(self)
+    spin_box_depth_max = QSpinBox(self)
     checkbox_depth = QCheckBox('No Limit', self)
     checkbox_recursive = QCheckBox('Recursive', self)
     checkbox_show_lemmas = QCheckBox('Show All Lemmas', self)
 
-    spinbox_degree_max.valueChanged.connect(plot_settings_changed)
+    spin_box_degree_max.valueChanged.connect(plot_settings_changed)
     checkbox_degree.stateChanged.connect(plot_settings_changed)
-    spinbox_depth_max.valueChanged.connect(plot_settings_changed)
+    spin_box_depth_max.valueChanged.connect(plot_settings_changed)
     checkbox_depth.stateChanged.connect(plot_settings_changed)
     checkbox_recursive.stateChanged.connect(plot_settings_changed)
     checkbox_show_lemmas.stateChanged.connect(plot_settings_changed)
 
     layout_plot_settings = QGridLayout()
     layout_plot_settings.addWidget(label_degree_max, 0, 0, 1, 2)
-    layout_plot_settings.addWidget(spinbox_degree_max, 1, 0)
+    layout_plot_settings.addWidget(spin_box_degree_max, 1, 0)
     layout_plot_settings.addWidget(checkbox_degree, 1, 1)
     layout_plot_settings.addWidget(label_depth_max, 2, 0, 1, 2)
-    layout_plot_settings.addWidget(spinbox_depth_max, 3, 0)
+    layout_plot_settings.addWidget(spin_box_depth_max, 3, 0)
     layout_plot_settings.addWidget(checkbox_depth, 3, 1)
     layout_plot_settings.addWidget(checkbox_recursive, 4, 0, 1, 2)
     layout_plot_settings.addWidget(checkbox_show_lemmas, 5, 0, 1, 2)
@@ -185,8 +185,8 @@ def init(self):
     layout_settings.addWidget(groupbox_plot_settings, 1, 0, Qt.AlignTop)
     wrapper_settings.setLayout(layout_settings)
 
-    scrollarea_settings = wordless_scroll_area.Wordless_Scroll_Area(self)
-    scrollarea_settings.setWidget(wrapper_settings)
+    scroll_area_settings = wordless_widgets.Wordless_Scroll_Area(self)
+    scroll_area_settings.setWidget(wrapper_settings)
 
     button_advanced_settings = QPushButton(self.tr('Advanced Settings'), self)
     button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
@@ -196,7 +196,7 @@ def init(self):
 
     layout_semantics = QGridLayout()
     layout_semantics.addLayout(layout_semantics_left, 0, 0, 2, 1)
-    layout_semantics.addWidget(scrollarea_settings, 0, 1, 1, 2)
+    layout_semantics.addWidget(scroll_area_settings, 0, 1, 1, 2)
     layout_semantics.addWidget(button_advanced_settings, 1, 1)
     layout_semantics.addWidget(button_restore_defaults , 1, 2)
 
@@ -305,7 +305,7 @@ def search(self, table):
                             self.tr('Please enter your search item first!'),
                             QMessageBox.Ok)
 
-    self.statusbar.showMessage('Done!')
+    self.status_bar.showMessage('Done!')
 
 def generate_plot(self):
     def search(graph, search_item):
@@ -397,4 +397,4 @@ def generate_plot(self):
                             self.tr('Please enter your search item first!'),
                             QMessageBox.Ok)
 
-    self.statusbar.showMessage('Done!')
+    self.status_bar.showMessage('Done!')

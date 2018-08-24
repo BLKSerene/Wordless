@@ -79,24 +79,24 @@ def init(self):
 
     def search_settings_changed(widget_changed = None):
         self.settings['ngrams']['ngram_size_sync'] = checkbox_ngram_size_sync.isChecked()
-        self.settings['ngrams']['ngram_size_min'] = spinbox_ngram_size_min.value()
-        self.settings['ngrams']['ngram_size_max'] = spinbox_ngram_size_max.value()
+        self.settings['ngrams']['ngram_size_min'] = spin_box_ngram_size_min.value()
+        self.settings['ngrams']['ngram_size_max'] = spin_box_ngram_size_max.value()
 
         self.settings['ngrams']['ignore_case'] = checkbox_ignore_case.isChecked()
         self.settings['ngrams']['lemmatization'] = checkbox_lemmatization.isChecked()
 
         if self.settings['ngrams']['ngram_size_sync']:
-            if widget_changed == spinbox_ngram_size_min:
-                spinbox_ngram_size_max.setValue(spinbox_ngram_size_min.value())
+            if widget_changed == spin_box_ngram_size_min:
+                spin_box_ngram_size_max.setValue(spin_box_ngram_size_min.value())
             else:
-                spinbox_ngram_size_min.setValue(spinbox_ngram_size_max.value())
+                spin_box_ngram_size_min.setValue(spin_box_ngram_size_max.value())
         else:
-            if (widget_changed == spinbox_ngram_size_min and 
+            if (widget_changed == spin_box_ngram_size_min and 
                 self.settings['ngrams']['ngram_size_min'] > self.settings['ngrams']['ngram_size_max']):
-                spinbox_ngram_size_max.setValue(self.settings['ngrams']['ngram_size_min'])
-            elif (widget_changed == spinbox_ngram_size_max and 
+                spin_box_ngram_size_max.setValue(self.settings['ngrams']['ngram_size_min'])
+            elif (widget_changed == spin_box_ngram_size_max and 
                   self.settings['ngrams']['ngram_size_max'] < self.settings['ngrams']['ngram_size_min']):
-                spinbox_ngram_size_min.setValue(self.settings['ngrams']['ngram_size_max'])
+                spin_box_ngram_size_min.setValue(self.settings['ngrams']['ngram_size_max'])
 
         if self.settings['ngrams']['ignore_case']:
             checkbox_lowercase.setEnabled(False)
@@ -112,59 +112,59 @@ def init(self):
 
     def filter_settings_changed():
         self.settings['ngrams']['freq_first_no_limit'] = checkbox_freq_first.isChecked()
-        self.settings['ngrams']['freq_first_min'] = spinbox_freq_first_min.value()
+        self.settings['ngrams']['freq_first_min'] = spin_box_freq_first_min.value()
         self.settings['ngrams']['freq_first_max'] = (float('inf')
                                                     if checkbox_freq_first.isChecked()
-                                                    else spinbox_freq_first_max.value())
+                                                    else spin_box_freq_first_max.value())
 
         self.settings['ngrams']['freq_total_no_limit'] = checkbox_freq_total.isChecked()
-        self.settings['ngrams']['freq_total_min'] = spinbox_freq_total_min.value()
+        self.settings['ngrams']['freq_total_min'] = spin_box_freq_total_min.value()
         self.settings['ngrams']['freq_total_max'] = (float('inf')
                                                     if checkbox_freq_total.isChecked()
-                                                    else spinbox_freq_total_max.value())
+                                                    else spin_box_freq_total_max.value())
 
         self.settings['ngrams']['rank_no_limit'] = checkbox_rank.isChecked()
-        self.settings['ngrams']['rank_min'] = spinbox_rank_min.value()
+        self.settings['ngrams']['rank_min'] = spin_box_rank_min.value()
         self.settings['ngrams']['rank_max'] = (float('inf')
                                               if checkbox_rank.isChecked()
-                                              else spinbox_rank_max.value())
+                                              else spin_box_rank_max.value())
 
         self.settings['ngrams']['len_no_limit'] = checkbox_len.isChecked()
-        self.settings['ngrams']['len_min'] = spinbox_len_min.value()
+        self.settings['ngrams']['len_min'] = spin_box_len_min.value()
         self.settings['ngrams']['len_max'] = (float('inf')
                                              if checkbox_len.isChecked()
-                                             else spinbox_len_max.value())
+                                             else spin_box_len_max.value())
 
         self.settings['ngrams']['files_no_limit'] = checkbox_files.isChecked()
-        self.settings['ngrams']['files_min'] = spinbox_files_min.value()
+        self.settings['ngrams']['files_min'] = spin_box_files_min.value()
         self.settings['ngrams']['files_max'] = (float('inf')
                                                if checkbox_files.isChecked()
-                                               else spinbox_files_max.value())
+                                               else spin_box_files_max.value())
 
         if self.settings['wordlist']['freq_first_no_limit']:
-            spinbox_freq_first_max.setEnabled(False)
+            spin_box_freq_first_max.setEnabled(False)
         else:
-            spinbox_freq_first_max.setEnabled(True)
+            spin_box_freq_first_max.setEnabled(True)
 
         if self.settings['wordlist']['freq_total_no_limit']:
-            spinbox_freq_total_max.setEnabled(False)
+            spin_box_freq_total_max.setEnabled(False)
         else:
-            spinbox_freq_total_max.setEnabled(True)
+            spin_box_freq_total_max.setEnabled(True)
 
         if self.settings['wordlist']['rank_no_limit']:
-            spinbox_rank_max.setEnabled(False)
+            spin_box_rank_max.setEnabled(False)
         else:
-            spinbox_rank_max.setEnabled(True)
+            spin_box_rank_max.setEnabled(True)
 
         if self.settings['wordlist']['len_no_limit']:
-            spinbox_len_max.setEnabled(False)
+            spin_box_len_max.setEnabled(False)
         else:
-            spinbox_len_max.setEnabled(True)
+            spin_box_len_max.setEnabled(True)
 
         if self.settings['wordlist']['files_no_limit']:
-            spinbox_files_max.setEnabled(False)
+            spin_box_files_max.setEnabled(False)
         else:
-            spinbox_files_max.setEnabled(True)
+            spin_box_files_max.setEnabled(True)
 
     def restore_defaults():
         checkbox_words.setChecked(self.default_settings['ngrams']['words'])
@@ -175,28 +175,28 @@ def init(self):
         checkbox_punctuations.setChecked(self.default_settings['ngrams']['punctuations'])
 
         checkbox_ngram_size_sync.setChecked(self.default_settings['ngrams']['ngram_size_sync'])
-        spinbox_ngram_size_min.setValue(self.default_settings['ngrams']['ngram_size_min'])
-        spinbox_ngram_size_max.setValue(self.default_settings['ngrams']['ngram_size_max'])
+        spin_box_ngram_size_min.setValue(self.default_settings['ngrams']['ngram_size_min'])
+        spin_box_ngram_size_max.setValue(self.default_settings['ngrams']['ngram_size_max'])
         checkbox_ignore_case.setChecked(self.default_settings['ngrams']['ignore_case'])
         checkbox_lemmatization.setChecked(self.default_settings['ngrams']['lemmatization'])
 
         checkbox_cumulative.setChecked(self.default_settings['ngrams']['cumulative'])
 
         checkbox_freq_first.setChecked(self.default_settings['ngrams']['freq_first_no_limit'])
-        spinbox_freq_first_min.setValue(self.default_settings['ngrams']['freq_first_min'])
-        spinbox_freq_first_max.setValue(self.default_settings['ngrams']['freq_first_max'])
+        spin_box_freq_first_min.setValue(self.default_settings['ngrams']['freq_first_min'])
+        spin_box_freq_first_max.setValue(self.default_settings['ngrams']['freq_first_max'])
         checkbox_freq_total.setChecked(self.default_settings['ngrams']['freq_total_no_limit'])
-        spinbox_freq_total_min.setValue(self.default_settings['ngrams']['freq_total_min'])
-        spinbox_freq_total_max.setValue(self.default_settings['ngrams']['freq_total_max'])
+        spin_box_freq_total_min.setValue(self.default_settings['ngrams']['freq_total_min'])
+        spin_box_freq_total_max.setValue(self.default_settings['ngrams']['freq_total_max'])
         checkbox_rank.setChecked(self.default_settings['ngrams']['rank_no_limit'])
-        spinbox_rank_min.setValue(self.default_settings['ngrams']['rank_min'])
-        spinbox_rank_max.setValue(self.default_settings['ngrams']['rank_max'])
+        spin_box_rank_min.setValue(self.default_settings['ngrams']['rank_min'])
+        spin_box_rank_max.setValue(self.default_settings['ngrams']['rank_max'])
         checkbox_len.setChecked(self.default_settings['ngrams']['len_no_limit'])
-        spinbox_len_min.setValue(self.default_settings['ngrams']['len_min'])
-        spinbox_len_max.setValue(self.default_settings['ngrams']['len_max'])
+        spin_box_len_min.setValue(self.default_settings['ngrams']['len_min'])
+        spin_box_len_max.setValue(self.default_settings['ngrams']['len_max'])
         checkbox_files.setChecked(self.default_settings['ngrams']['files_no_limit'])
-        spinbox_files_min.setValue(self.default_settings['ngrams']['files_min'])
-        spinbox_files_max.setValue(self.default_settings['ngrams']['files_max'])
+        spin_box_files_min.setValue(self.default_settings['ngrams']['files_min'])
+        spin_box_files_max.setValue(self.default_settings['ngrams']['files_max'])
 
         token_settings_changed()
         search_settings_changed()
@@ -263,18 +263,18 @@ def init(self):
     label_ngram_size = QLabel('N-gram Size:', self)
     checkbox_ngram_size_sync = QCheckBox('Sync')
     label_ngram_size_min = QLabel('From', self)
-    spinbox_ngram_size_min = QSpinBox(self)
+    spin_box_ngram_size_min = QSpinBox(self)
     label_ngram_size_max = QLabel('To', self)
-    spinbox_ngram_size_max = QSpinBox(self)
+    spin_box_ngram_size_max = QSpinBox(self)
     checkbox_ignore_case = QCheckBox('Ignore Case', self)
     checkbox_lemmatization = QCheckBox('Lemmatization', self)
 
-    spinbox_ngram_size_min.setRange(1, 100)
-    spinbox_ngram_size_max.setRange(1, 100)
+    spin_box_ngram_size_min.setRange(1, 100)
+    spin_box_ngram_size_max.setRange(1, 100)
 
     checkbox_ngram_size_sync.stateChanged.connect(search_settings_changed)
-    spinbox_ngram_size_min.valueChanged.connect(lambda: search_settings_changed(spinbox_ngram_size_min))
-    spinbox_ngram_size_max.valueChanged.connect(lambda: search_settings_changed(spinbox_ngram_size_max))
+    spin_box_ngram_size_min.valueChanged.connect(lambda: search_settings_changed(spin_box_ngram_size_min))
+    spin_box_ngram_size_max.valueChanged.connect(lambda: search_settings_changed(spin_box_ngram_size_max))
 
     checkbox_ignore_case.stateChanged.connect(search_settings_changed)
     checkbox_lemmatization.stateChanged.connect(search_settings_changed)
@@ -283,9 +283,9 @@ def init(self):
     layout_search_settings.addWidget(label_ngram_size, 0, 0, 1, 3)
     layout_search_settings.addWidget(checkbox_ngram_size_sync, 0, 3)
     layout_search_settings.addWidget(label_ngram_size_min, 1, 0)
-    layout_search_settings.addWidget(spinbox_ngram_size_min, 1, 1)
+    layout_search_settings.addWidget(spin_box_ngram_size_min, 1, 1)
     layout_search_settings.addWidget(label_ngram_size_max, 1, 2)
-    layout_search_settings.addWidget(spinbox_ngram_size_max, 1, 3)
+    layout_search_settings.addWidget(spin_box_ngram_size_max, 1, 3)
     layout_search_settings.addWidget(checkbox_ignore_case, 2, 0, 1, 4)
     layout_search_settings.addWidget(checkbox_lemmatization, 3, 0, 1, 4)
 
@@ -309,100 +309,100 @@ def init(self):
     label_freq_first = QLabel('Frequency (First File):', self)
     checkbox_freq_first = QCheckBox('No Limit', self)
     label_freq_first_min = QLabel('From', self)
-    spinbox_freq_first_min = QSpinBox(self)
+    spin_box_freq_first_min = QSpinBox(self)
     label_freq_first_max = QLabel('To', self)
-    spinbox_freq_first_max = QSpinBox(self)
+    spin_box_freq_first_max = QSpinBox(self)
 
     label_freq_total = QLabel('Frequency (Total):', self)
     checkbox_freq_total = QCheckBox('No Limit', self)
     label_freq_total_min = QLabel('From', self)
-    spinbox_freq_total_min = QSpinBox(self)
+    spin_box_freq_total_min = QSpinBox(self)
     label_freq_total_max = QLabel('To', self)
-    spinbox_freq_total_max = QSpinBox(self)
+    spin_box_freq_total_max = QSpinBox(self)
 
     label_rank = QLabel('Rank:', self)
     checkbox_rank = QCheckBox('No Limit', self)
     label_rank_min = QLabel('From', self)
-    spinbox_rank_min = QSpinBox(self)
+    spin_box_rank_min = QSpinBox(self)
     label_rank_max = QLabel('To', self)
-    spinbox_rank_max = QSpinBox(self)
+    spin_box_rank_max = QSpinBox(self)
 
     label_len = QLabel('N-gram Length:', self)
     checkbox_len = QCheckBox('No Limit', self)
     label_len_min = QLabel('From', self)
-    spinbox_len_min = QSpinBox(self)
+    spin_box_len_min = QSpinBox(self)
     label_len_max = QLabel('To', self)
-    spinbox_len_max = QSpinBox(self)
+    spin_box_len_max = QSpinBox(self)
 
     label_files = QLabel('Files Found:', self)
     checkbox_files = QCheckBox('No Limit', self)
     label_files_min = QLabel('From', self)
-    spinbox_files_min = QSpinBox(self)
+    spin_box_files_min = QSpinBox(self)
     label_files_max = QLabel('To', self)
-    spinbox_files_max = QSpinBox(self)
+    spin_box_files_max = QSpinBox(self)
 
-    spinbox_freq_first_min.setRange(1, 1000000)
-    spinbox_freq_first_max.setRange(1, 1000000)
-    spinbox_freq_total_min.setRange(1, 1000000)
-    spinbox_freq_total_max.setRange(1, 1000000)
-    spinbox_rank_min.setRange(1, 1000000)
-    spinbox_rank_max.setRange(1, 1000000)
-    spinbox_len_min.setRange(1, 100)
-    spinbox_len_max.setRange(1, 100)
-    spinbox_files_min.setRange(1, 10000)
-    spinbox_files_max.setRange(1, 10000)
+    spin_box_freq_first_min.setRange(1, 1000000)
+    spin_box_freq_first_max.setRange(1, 1000000)
+    spin_box_freq_total_min.setRange(1, 1000000)
+    spin_box_freq_total_max.setRange(1, 1000000)
+    spin_box_rank_min.setRange(1, 1000000)
+    spin_box_rank_max.setRange(1, 1000000)
+    spin_box_len_min.setRange(1, 100)
+    spin_box_len_max.setRange(1, 100)
+    spin_box_files_min.setRange(1, 10000)
+    spin_box_files_max.setRange(1, 10000)
 
     checkbox_freq_first.stateChanged.connect(filter_settings_changed)
-    spinbox_freq_first_min.valueChanged.connect(filter_settings_changed)
-    spinbox_freq_first_max.valueChanged.connect(filter_settings_changed)
+    spin_box_freq_first_min.valueChanged.connect(filter_settings_changed)
+    spin_box_freq_first_max.valueChanged.connect(filter_settings_changed)
     checkbox_freq_total.stateChanged.connect(filter_settings_changed)
-    spinbox_freq_total_min.valueChanged.connect(filter_settings_changed)
-    spinbox_freq_total_max.valueChanged.connect(filter_settings_changed)
+    spin_box_freq_total_min.valueChanged.connect(filter_settings_changed)
+    spin_box_freq_total_max.valueChanged.connect(filter_settings_changed)
     checkbox_rank.stateChanged.connect(filter_settings_changed)
-    spinbox_rank_min.valueChanged.connect(filter_settings_changed)
-    spinbox_rank_max.valueChanged.connect(filter_settings_changed)
+    spin_box_rank_min.valueChanged.connect(filter_settings_changed)
+    spin_box_rank_max.valueChanged.connect(filter_settings_changed)
     checkbox_len.stateChanged.connect(filter_settings_changed)
-    spinbox_len_min.valueChanged.connect(filter_settings_changed)
-    spinbox_len_max.valueChanged.connect(filter_settings_changed)
+    spin_box_len_min.valueChanged.connect(filter_settings_changed)
+    spin_box_len_max.valueChanged.connect(filter_settings_changed)
     checkbox_files.stateChanged.connect(filter_settings_changed)
-    spinbox_files_min.valueChanged.connect(filter_settings_changed)
-    spinbox_files_max.valueChanged.connect(filter_settings_changed)
+    spin_box_files_min.valueChanged.connect(filter_settings_changed)
+    spin_box_files_max.valueChanged.connect(filter_settings_changed)
 
     layout_filter_settings = QGridLayout()
     layout_filter_settings.addWidget(label_freq_first, 0, 0, 1, 3)
     layout_filter_settings.addWidget(checkbox_freq_first, 0, 3)
     layout_filter_settings.addWidget(label_freq_first_min, 1, 0)
-    layout_filter_settings.addWidget(spinbox_freq_first_min, 1, 1)
+    layout_filter_settings.addWidget(spin_box_freq_first_min, 1, 1)
     layout_filter_settings.addWidget(label_freq_first_max, 1, 2)
-    layout_filter_settings.addWidget(spinbox_freq_first_max, 1, 3)
+    layout_filter_settings.addWidget(spin_box_freq_first_max, 1, 3)
 
     layout_filter_settings.addWidget(label_freq_total, 2, 0, 1, 3)
     layout_filter_settings.addWidget(checkbox_freq_total, 2, 3)
     layout_filter_settings.addWidget(label_freq_total_min, 3, 0)
-    layout_filter_settings.addWidget(spinbox_freq_total_min, 3, 1)
+    layout_filter_settings.addWidget(spin_box_freq_total_min, 3, 1)
     layout_filter_settings.addWidget(label_freq_total_max, 3, 2)
-    layout_filter_settings.addWidget(spinbox_freq_total_max, 3, 3)
+    layout_filter_settings.addWidget(spin_box_freq_total_max, 3, 3)
 
     layout_filter_settings.addWidget(label_rank, 4, 0, 1, 3)
     layout_filter_settings.addWidget(checkbox_rank, 4, 3)
     layout_filter_settings.addWidget(label_rank_min, 5, 0)
-    layout_filter_settings.addWidget(spinbox_rank_min, 5, 1)
+    layout_filter_settings.addWidget(spin_box_rank_min, 5, 1)
     layout_filter_settings.addWidget(label_rank_max, 5, 2)
-    layout_filter_settings.addWidget(spinbox_rank_max, 5, 3)
+    layout_filter_settings.addWidget(spin_box_rank_max, 5, 3)
 
     layout_filter_settings.addWidget(label_len, 6, 0, 1, 3)
     layout_filter_settings.addWidget(checkbox_len, 6, 3)
     layout_filter_settings.addWidget(label_len_min, 7, 0)
-    layout_filter_settings.addWidget(spinbox_len_min, 7, 1)
+    layout_filter_settings.addWidget(spin_box_len_min, 7, 1)
     layout_filter_settings.addWidget(label_len_max, 7, 2)
-    layout_filter_settings.addWidget(spinbox_len_max, 7, 3)
+    layout_filter_settings.addWidget(spin_box_len_max, 7, 3)
 
     layout_filter_settings.addWidget(label_files, 8, 0, 1, 3)
     layout_filter_settings.addWidget(checkbox_files, 8, 3)
     layout_filter_settings.addWidget(label_files_min, 9, 0)
-    layout_filter_settings.addWidget(spinbox_files_min, 9, 1)
+    layout_filter_settings.addWidget(spin_box_files_min, 9, 1)
     layout_filter_settings.addWidget(label_files_max, 9, 2)
-    layout_filter_settings.addWidget(spinbox_files_max, 9, 3)
+    layout_filter_settings.addWidget(spin_box_files_max, 9, 3)
 
     groupbox_filter_settings.setLayout(layout_filter_settings)
 
@@ -417,8 +417,8 @@ def init(self):
 
     wrapper_settings.setLayout(layout_settings)
 
-    scrollarea_settings = wordless_scroll_area.Wordless_Scroll_Area(self)
-    scrollarea_settings.setWidget(wrapper_settings)
+    scroll_area_settings = wordless_widgets.Wordless_Scroll_Area(self)
+    scroll_area_settings.setWidget(wrapper_settings)
 
     button_advanced_settings = QPushButton(self.tr('Advanced Settings'), self)
     button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
@@ -428,7 +428,7 @@ def init(self):
 
     layout_ngrams = QGridLayout()
     layout_ngrams.addLayout(layout_ngrams_left, 0, 0, 2, 1)
-    layout_ngrams.addWidget(scrollarea_settings, 0, 1, 1, 2)
+    layout_ngrams.addWidget(scroll_area_settings, 0, 1, 1, 2)
     layout_ngrams.addWidget(button_advanced_settings, 1, 1)
     layout_ngrams.addWidget(button_restore_defaults, 1, 2)
 
@@ -537,7 +537,7 @@ def generate_ngrams(self, table):
 
     table.setSortingEnabled(True)
         
-    self.statusbar.showMessage('Done!')
+    self.status_bar.showMessage('Done!')
 
 def generate_plot(self):
     freq_distributions = wordless_freq.wordless_freq_distributions(self, files, mode = 'ngrams')
@@ -547,4 +547,4 @@ def generate_plot(self):
     else:
         freq_distributions.plot(cumulative = self.settings['ngrams']['cumulative'])
 
-    self.statusbar.showMessage('Done!')
+    self.status_bar.showMessage('Done!')

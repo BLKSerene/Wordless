@@ -112,4 +112,4 @@ def generate_stats(self, table):
         table.setItem(11, i, QTableWidgetItem(str(count_punctuations)))
         table.setItem(12, i, QTableWidgetItem(str(count_numbers)))
 
-    self.statusbar.showMessage('Done!')
+    self.status_bar.showMessage('Done!')
