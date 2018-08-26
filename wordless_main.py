@@ -467,6 +467,23 @@ class Wordless_Main(QMainWindow):
             else:
                 self.status_bar.show()
 
+        def need_help():
+            message_box = QMessageBox(QMessageBox.Information,
+                                      self.tr('Need Help?'),
+                                      self.tr('''
+                                              <div style="line-height: 1.2; text-align: justify;">
+                                                <div style="margin-bottom: 15px;">Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.</div>
+                                                <div style="margin-bottom: 5px">Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</div>
+                                                <div>Email: blkserene@gmail.com</div>
+                                              </div>
+                                              '''),
+                                      QMessageBox.Ok,
+                                      self)
+
+            message_box.setTextInteractionFlags(Qt.TextSelectableByMouse)
+
+            message_box.exec_()
+
         def citation():
             def citation_sys_changed():
                 if combo_box_citation_sys.currentIndex() == 0:
@@ -624,7 +641,7 @@ class Wordless_Main(QMainWindow):
             QMessageBox.about(self,
                               self.tr('About Wordless'),
                               self.tr('''
-                                      <div style="text-align: center">
+                                      <div style="line-height: 1.2; text-align: center">
                                         <div style="margin-bottom: 5px; font-size: 16px; font-weight: bold;">Wordless Version 1.0</div>
                                         <div style="margin-bottom: 5px;">An integrated tool for language & translation studies.</div>
                                         <div>Designed and Developed by Ye Lei (叶磊)</div>
@@ -696,6 +713,10 @@ class Wordless_Main(QMainWindow):
         menu_pref.addSeparator()
         menu_pref.addAction(action_show_status_bar)
 
+        action_need_help = QAction(self.tr('Need Help?'), self)
+        action_need_help.setStatusTip(self.tr('Show help information'))
+        action_need_help.triggered.connect(need_help)
+
         action_citation = QAction(self.tr('Citation'), self)
         action_citation.setStatusTip(self.tr('Show information about citation'))
         action_citation.triggered.connect(citation)
@@ -708,6 +729,7 @@ class Wordless_Main(QMainWindow):
         action_about_wordless.setStatusTip(self.tr('Show information about Wordless'))
         action_about_wordless.triggered.connect(about_wordless)
 
+        menu_help.addAction(action_need_help)
         menu_help.addAction(action_citation)
         menu_help.addSeparator()
         menu_help.addAction(action_acknowledgements)
