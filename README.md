@@ -37,6 +37,10 @@ Thanks a million for the following open-source projects on which Wordless is bui
 12. [“结巴”中文分词](https://github.com/fxsjy/jieba)
 
 ## Citation/引用
+If you publish work that uses Wordless, please cite Wordless as follows.
+
+如您在发表的作品中使用了 Wordless, 请按下述格式引用 Wordless。
+
 MLA (8th Edition):
 
     Ye Lei. Wordless, version 1.0, 2018, https://github.com/BLKSerene/Wordless.
@@ -54,9 +58,11 @@ GB (GB/T 7714—2015):
     叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.
 
 ## Need Help?/需要帮助？
-If you encounter any problem while using Wordless, please feel free to contact me by emailing to blkserene@gmail.com and I will reply as soon as possible.
+Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.
 
-如您在使用 Wordless 的过程中遇到了任何问题，欢迎随时发邮件至 blkserene@gmail.com，我会尽快给予回复。
+若您需要更多信息或在使用 Wordless 的过程中遇到了任何问题，欢迎随时联系我，我会尽快给予回复。
+
+Email: blkserene@gmail.com
 
 ## Donation/捐助
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.

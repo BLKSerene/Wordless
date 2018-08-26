@@ -467,6 +467,14 @@ class Wordless_Main(QMainWindow):
             else:
                 self.status_bar.show()
 
+        def need_help():
+            QMessageBox.information(self,
+                                    self.tr('Need Help?'),
+                                    self.tr('''
+                                            <div style="margin-bottom: 10px">Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.</div>
+                                            <div>Email: blkserene@gmail.com</div>
+                                            '''))
+
         def citation():
             def citation_sys_changed():
                 if combo_box_citation_sys.currentIndex() == 0:
@@ -696,6 +704,10 @@ class Wordless_Main(QMainWindow):
         menu_pref.addSeparator()
         menu_pref.addAction(action_show_status_bar)
 
+        action_need_help = QAction(self.tr('Need Help?'), self)
+        action_need_help.setStatusTip(self.tr('Show help information'))
+        action_need_help.triggered.connect(need_help)
+
         action_citation = QAction(self.tr('Citation'), self)
         action_citation.setStatusTip(self.tr('Show information about citation'))
         action_citation.triggered.connect(citation)
@@ -708,6 +720,7 @@ class Wordless_Main(QMainWindow):
         action_about_wordless.setStatusTip(self.tr('Show information about Wordless'))
         action_about_wordless.triggered.connect(about_wordless)
 
+        menu_help.addAction(action_need_help)
         menu_help.addAction(action_citation)
         menu_help.addSeparator()
         menu_help.addAction(action_acknowledgements)
