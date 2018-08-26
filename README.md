@@ -39,11 +39,17 @@ Thanks a million for the following open-source projects on which Wordless is bui
 ## Citation/引用
 MLA (8th Edition):
 
-    Ye Lei. Wordless, version 0.1 alpha, 2018, https://github.com/BLKSerene/Wordless.
+    Ye Lei. Wordless, version 1.0, 2018, https://github.com/BLKSerene/Wordless.
 
-国标（GB/T 7714—2015）：
+APA (6th Edition):
+    Ye, L. (2018) Wordless (Version 1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless
 
-    叶磊. Wordless version 0.1 alpha[CP]. [2018]. https://github.com/BLKSerene/Wordless.
+Chicago (17th Edition):
+    Ye, Lei. <i>Wordless</i> (Version 1.0). Windows. Shanghai: Ye Lei, 2018.
+
+GB (GB/T 7714—2015):
+
+    叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.
 
 ## Need Help?/需要帮助？
 If you encounter any problem while using Wordless, please feel free to contact me by emailing to blkserene@gmail.com and I will reply as soon as possible.

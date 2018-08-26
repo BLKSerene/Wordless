@@ -56,9 +56,9 @@ class Wordless_Settings(QDialog):
         groupbox_encoding = QGroupBox(self.tr('Default Encoding'), self)
 
         self.label_encoding_input = QLabel(self.tr('Input Encoding:'), self)
-        self.combo_box_encoding_input = wordless_combo_box.Wordless_Combo_Box_Encoding(self.parent)
+        self.combo_box_encoding_input = wordless_widgets.Wordless_Combo_Box_Encoding(self.parent)
         self.label_encoding_output = QLabel(self.tr('Output Encoding:'), self)
-        self.combo_box_encoding_output = wordless_combo_box.Wordless_Combo_Box_Encoding(self.parent)
+        self.combo_box_encoding_output = wordless_widgets.Wordless_Combo_Box_Encoding(self.parent)
 
         layout_encoding = QGridLayout()
         layout_encoding.addWidget(self.label_encoding_input, 0, 0)

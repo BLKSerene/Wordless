@@ -70,7 +70,7 @@ def init(self):
         self.settings['word_cluster']['cluster_size_min'] = spin_box_cluster_size_min.value()
         self.settings['word_cluster']['cluster_size_max'] = spin_box_cluster_size_max.value()
 
-        self.settings['word_cluster']['search_term'] = lineedit_search_term.text()
+        self.settings['word_cluster']['search_term'] = line_edit_search_term.text()
         self.settings['word_cluster']['search_terms'] = list_search_terms.get_items()
         self.settings['word_cluster']['ignore_case'] = checkbox_ignore_case.isChecked()
         self.settings['word_cluster']['lemmatized_forms'] = checkbox_lemmatized_forms.isChecked()
@@ -105,7 +105,7 @@ def init(self):
             checkbox_title_cased.setEnabled(True)
 
         if self.settings['word_cluster']['multi_search']:
-            lineedit_search_term.hide()
+            line_edit_search_term.hide()
 
             list_search_terms.show()
             list_search_terms.button_add.show()
@@ -119,7 +119,7 @@ def init(self):
                 list_search_terms.add_item()
                 list_search_terms.item(0).setText(self.settings['word_cluster']['search_term'])
         else:
-            lineedit_search_term.show()
+            line_edit_search_term.show()
 
             list_search_terms.hide()
             list_search_terms.button_add.hide()
@@ -196,7 +196,7 @@ def init(self):
         checkbox_cluster_size_sync.setChecked(self.default_settings['word_cluster']['cluster_size_sync'])
         spin_box_cluster_size_min.setValue((self.default_settings['word_cluster']['cluster_size_min']))
         spin_box_cluster_size_max.setValue((self.default_settings['word_cluster']['cluster_size_max']))
-        lineedit_search_term.setText(self.default_settings['word_cluster']['search_term'])
+        line_edit_search_term.setText(self.default_settings['word_cluster']['search_term'])
         list_search_terms.clear()
         list_search_terms.addItems(self.default_settings['word_cluster']['search_terms'])
         checkbox_ignore_case.setChecked(self.default_settings['word_cluster']['ignore_case'])
@@ -293,7 +293,7 @@ def init(self):
     spin_box_cluster_size_max = QSpinBox(self)
 
     label_search_term = QLabel(self.tr('Search Term(s):'), self)
-    lineedit_search_term = QLineEdit(self)
+    line_edit_search_term = QLineEdit(self)
     list_search_terms = wordless_list.Wordless_List(self)
     checkbox_ignore_case = QCheckBox(self.tr('Ignore Case'), self)
     checkbox_lemmatized_forms = QCheckBox(self.tr('Match All Lemmatized Forms'), self)
@@ -313,8 +313,8 @@ def init(self):
     spin_box_cluster_size_min.valueChanged.connect(lambda: search_settings_changed(spin_box_cluster_size_min))
     spin_box_cluster_size_max.valueChanged.connect(lambda: search_settings_changed(spin_box_cluster_size_max))
 
-    lineedit_search_term.textChanged.connect(search_settings_changed)
-    lineedit_search_term.returnPressed.connect(table_word_cluster.button_begin_search.click)
+    line_edit_search_term.textChanged.connect(search_settings_changed)
+    line_edit_search_term.returnPressed.connect(table_word_cluster.button_begin_search.click)
     list_search_terms.itemChanged.connect(search_settings_changed)
     checkbox_ignore_case.stateChanged.connect(search_settings_changed)
     checkbox_lemmatized_forms.stateChanged.connect(search_settings_changed)
@@ -350,7 +350,7 @@ def init(self):
     layout_search_settings.addWidget(spin_box_cluster_size_max, 1, 3)
 
     layout_search_settings.addWidget(label_search_term, 2, 0, 1, 4)
-    layout_search_settings.addWidget(lineedit_search_term, 3, 0, 1, 4)
+    layout_search_settings.addWidget(line_edit_search_term, 3, 0, 1, 4)
     layout_search_settings.addLayout(layout_search_terms, 4, 0, 1, 4)
     layout_search_settings.addWidget(checkbox_ignore_case, 5, 0, 1, 4)
     layout_search_settings.addWidget(checkbox_lemmatized_forms, 6, 0, 1, 4)
@@ -474,8 +474,8 @@ def init(self):
 
     wrapper_settings.setLayout(layout_settings)
 
-    scrollarea_settings = wordless_scroll_area.Wordless_Scroll_Area(self)
-    scrollarea_settings.setWidget(wrapper_settings)
+    scroll_area_settings = wordless_widgets.Wordless_Scroll_Area(self)
+    scroll_area_settings.setWidget(wrapper_settings)
 
     button_advanced_settings = QPushButton(self.tr('Advanced Settings'), self)
     button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
@@ -485,7 +485,7 @@ def init(self):
 
     layout_word_cluster = QGridLayout()
     layout_word_cluster.addLayout(layout_word_cluster_left, 0, 0, 2, 1)
-    layout_word_cluster.addWidget(scrollarea_settings, 0, 1, 1, 2)
+    layout_word_cluster.addWidget(scroll_area_settings, 0, 1, 1, 2)
     layout_word_cluster.addWidget(button_advanced_settings, 1, 1)
     layout_word_cluster.addWidget(button_restore_defaults, 1, 2)
 
@@ -605,7 +605,7 @@ def begin_search(self, table):
                             self.tr('Please enter your search term(s) first!'),
                             QMessageBox.Ok)
 
-    self.statusbar.showMessage('Done!')
+    self.status_bar.showMessage('Done!')
 
 def generate_plot(self):
     pass

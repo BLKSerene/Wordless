@@ -175,7 +175,7 @@ def init(self):
         self.settings['concordancer']['punctuations'] = checkbox_punctuations.isChecked()
 
     def search_settings_changed():
-        self.settings['concordancer']['search_term'] = lineedit_search_term.text()
+        self.settings['concordancer']['search_term'] = line_edit_search_term.text()
         self.settings['concordancer']['search_terms'] = list_search_terms.get_items()
         self.settings['concordancer']['ignore_case'] = checkbox_ignore_case.isChecked()
         self.settings['concordancer']['lemmatized_forms'] = checkbox_lemmatized_forms.isChecked()
@@ -190,7 +190,7 @@ def init(self):
         self.settings['concordancer']['number_lines_no_limit'] = checkbox_number_lines.isChecked()
         
         if self.settings['concordancer']['multi_search']:
-            lineedit_search_term.hide()
+            line_edit_search_term.hide()
 
             list_search_terms.show()
             list_search_terms.button_add.show()
@@ -204,7 +204,7 @@ def init(self):
                 list_search_terms.add_item()
                 list_search_terms.item(0).setText(self.settings['concordancer']['search_term'])
         else:
-            lineedit_search_term.show()
+            line_edit_search_term.show()
 
             list_search_terms.hide()
             list_search_terms.button_add.hide()
@@ -257,7 +257,7 @@ def init(self):
     def restore_defaults():
         checkbox_punctuations.setChecked(self.default_settings['concordancer']['punctuations'])
 
-        lineedit_search_term.setText(self.default_settings['concordancer']['search_term'])
+        line_edit_search_term.setText(self.default_settings['concordancer']['search_term'])
         list_search_terms.clear()
         list_search_terms.addItems(self.default_settings['concordancer']['search_terms'])
         checkbox_ignore_case.setChecked(self.default_settings['concordancer']['ignore_case'])
@@ -324,7 +324,7 @@ def init(self):
     groupbox_search_settings = QGroupBox(self.tr('Search Settings'), self)
 
     label_search_term = QLabel(self.tr('Search Term(s):'), self)
-    lineedit_search_term = QLineEdit(self)
+    line_edit_search_term = QLineEdit(self)
     list_search_terms = wordless_list.Wordless_List(self)
     checkbox_ignore_case = QCheckBox(self.tr('Ignore Case'), self)
     checkbox_lemmatized_forms = QCheckBox(self.tr('Match All Lemmatized Forms'), self)
@@ -350,8 +350,8 @@ def init(self):
     spin_box_line_width_token.setRange(1, 100)
     spin_box_number_lines.setRange(1, 10000)
 
-    lineedit_search_term.textChanged.connect(search_settings_changed)
-    lineedit_search_term.returnPressed.connect(table_concordancer.button_search.click)
+    line_edit_search_term.textChanged.connect(search_settings_changed)
+    line_edit_search_term.returnPressed.connect(table_concordancer.button_search.click)
     list_search_terms.itemChanged.connect(search_settings_changed)
     checkbox_ignore_case.stateChanged.connect(search_settings_changed)
     checkbox_lemmatized_forms.stateChanged.connect(search_settings_changed)
@@ -377,7 +377,7 @@ def init(self):
 
     layout_search_settings = QGridLayout()
     layout_search_settings.addWidget(label_search_term, 0, 0, 1, 2)
-    layout_search_settings.addWidget(lineedit_search_term, 1, 0, 1, 2)
+    layout_search_settings.addWidget(line_edit_search_term, 1, 0, 1, 2)
     layout_search_settings.addLayout(layout_search_terms, 2, 0, 1, 2)
     layout_search_settings.addWidget(checkbox_ignore_case, 3, 0, 1, 2)
     layout_search_settings.addWidget(checkbox_lemmatized_forms, 4, 0, 1, 2)
@@ -442,8 +442,8 @@ def init(self):
 
     wrapper_settings.setLayout(layout_settings)
 
-    scrollarea_settings = wordless_scroll_area.Wordless_Scroll_Area(self)
-    scrollarea_settings.setWidget(wrapper_settings)
+    scroll_area_settings = wordless_widgets.Wordless_Scroll_Area(self)
+    scroll_area_settings.setWidget(wrapper_settings)
 
     button_advanced_settings = QPushButton(self.tr('Advanced Settings'), self)
     button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
@@ -453,7 +453,7 @@ def init(self):
 
     layout_concordancer = QGridLayout()
     layout_concordancer.addLayout(layout_concordancer_left, 0, 0, 2, 1)
-    layout_concordancer.addWidget(scrollarea_settings, 0, 1, 1, 2)
+    layout_concordancer.addWidget(scroll_area_settings, 0, 1, 1, 2)
     layout_concordancer.addWidget(button_advanced_settings, 1, 1)
     layout_concordancer.addWidget(button_restore_defaults, 1, 2)
 
@@ -558,7 +558,7 @@ def search(self, table, combo_box_sort, table_multi_sort):
                             self.tr('Please enter your search term(s) first!'),
                             QMessageBox.Ok)
 
-    self.statusbar.showMessage('Done!')
+    self.status_bar.showMessage('Done!')
 
 def generate_plot(self):
     if self.settings['concordancer']['multi_search']:
@@ -579,4 +579,4 @@ def generate_plot(self):
                             self.tr('Please enter your search term(s) first!'),
                             QMessageBox.Ok)
 
-    self.statusbar.showMessage('Done!')
+    self.status_bar.showMessage('Done!')

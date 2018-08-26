@@ -367,8 +367,8 @@ def init(self):
 
     wrapper_settings.setLayout(layout_settings)
 
-    scrollarea_settings = wordless_scroll_area.Wordless_Scroll_Area(self)
-    scrollarea_settings.setWidget(wrapper_settings)
+    scroll_area_settings = wordless_widgets.Wordless_Scroll_Area(self)
+    scroll_area_settings.setWidget(wrapper_settings)
 
     button_advanced_settings = QPushButton(self.tr('Advanced Settings'), self)
     button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
@@ -378,7 +378,7 @@ def init(self):
 
     layout_wordlist = QGridLayout()
     layout_wordlist.addLayout(layout_wordlist_left, 0, 0, 2, 1)
-    layout_wordlist.addWidget(scrollarea_settings, 0, 1, 1, 2)
+    layout_wordlist.addWidget(scroll_area_settings, 0, 1, 1, 2)
     layout_wordlist.addWidget(button_advanced_settings, 1, 1)
     layout_wordlist.addWidget(button_restore_defaults, 1, 2)
 
@@ -487,7 +487,7 @@ def generate_wordlist(self, table):
 
     table.setSortingEnabled(True)
         
-    self.statusbar.showMessage('Done!')
+    self.status_bar.showMessage('Done!')
 
 def generate_plot(self):
     freq_distributions = wordless_freq.wordless_freq_distributions(self, files, mode = 'wordlist')
@@ -497,4 +497,4 @@ def generate_plot(self):
     else:
         freq_distributions.plot(cumulative = self.settings['wordlist']['cumulative'])
 
-    self.statusbar.showMessage('Done!')
+    self.status_bar.showMessage('Done!')

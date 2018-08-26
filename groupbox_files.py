@@ -60,8 +60,8 @@ class Wordless_File:
             self.table.setRowCount(self.table.rowCount() + 1)
 
         checkbox_name = QTableWidgetItem(self.name)
-        combo_box_lang = wordless_combo_box.Wordless_Combo_Box_Lang(self.parent)
-        combo_box_encoding = wordless_combo_box.Wordless_Combo_Box_Encoding(self.parent)
+        combo_box_lang = wordless_widgets.Wordless_Combo_Box_Lang(self.parent)
+        combo_box_encoding = wordless_widgets.Wordless_Combo_Box_Encoding(self.parent)
 
         if self.selected:
             checkbox_name.setCheckState(Qt.Checked)
