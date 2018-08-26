@@ -114,7 +114,7 @@ class Wordless_Text(nltk.Text):
                 for token_lemmatized in wordless_lemmatize(list(tokens_matched)):
                     tokens_matched.add(token_lemmatized)
 
-                for token, token_lemmatized in zip(self._concordance_index._offsets, wordless_lemmatize(self._concordance_index._offsets)):
+                for token, token_lemmatized in zip(self._concordance_index._offsets, wordless_lemmatize(list(self._concordance_index._offsets))):
                     if token_lemmatized in tokens_matched:
                         tokens_matched.add(token)
 

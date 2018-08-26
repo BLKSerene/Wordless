@@ -37,6 +37,7 @@ class Wordless_File:
                 else:
                     self.encoding_code = encoding_code.lower().replace('-', '_')
                 self.encoding_text = wordless_misc.convert_encoding(self.parent, self.encoding_code, encoding_lang)
+                print (self.encoding_code, self.encoding_text)
 
             try:
                 with open(self.path, 'r', encoding = self.encoding_code) as f:
@@ -147,7 +148,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
                 file.lang_text = self.cellWidget(row, 1).currentText()
                 file.lang_code = wordless_misc.convert_lang(self.parent, file.lang_text)
                 file.encoding_text = self.cellWidget(row, 4).currentText()
-                file.encoding_code = wordless_misc.convert_encoding(self.parent, file.encoding_text)[1]
+                file.encoding_code = wordless_misc.convert_encoding(self.parent, file.encoding_text)[0]
 
         if self.item(0, 0):
             self.button_select_all.setEnabled(True)
@@ -338,10 +339,15 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
             writer = csv.writer(f)
 
             for file in self.parent.files:
-                writer.writerow([file.selected, file.name,
-                                 file.lang_code, file.lang_text,
-                                 file.path, file.ext, file.ext_text,
-                                 file.encoding_code, file.encoding_text,
+                writer.writerow([file.selected,
+                                 file.name,
+                                 file.lang_code,
+                                 file.lang_text,
+                                 file.path,
+                                 file.ext,
+                                 file.ext_text,
+                                 file.encoding_code,
+                                 file.encoding_text,
                                  file.delimiter])
 
     def auto_restore(self):

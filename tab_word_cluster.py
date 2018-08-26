@@ -512,7 +512,7 @@ def begin_search(self, table):
         table.clear_table()
         table.setRowCount(0)
 
-        files = wordless_utils.fetch_files(self)
+        files = wordless_misc.fetch_files(self)
         
         for i, file in enumerate(files):
             table.insert_column(table.find_column('Total'), file.name)

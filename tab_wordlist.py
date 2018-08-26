@@ -399,7 +399,7 @@ def generate_wordlist(self, table):
     table.clear_table()
     table.setRowCount(0)
 
-    files = wordless_utils.fetch_files(self)
+    files = wordless_misc.fetch_files(self)
 
     for i, file in enumerate(files):
         table.insert_column(table.find_column('Total'), file.name)
@@ -490,7 +490,7 @@ def generate_wordlist(self, table):
     self.status_bar.showMessage('Done!')
 
 def generate_plot(self):
-    freq_distributions = wordless_freq.wordless_freq_distributions(self, files, mode = 'wordlist')
+    freq_distributions = wordless_freq.wordless_freq_distributions(self, wordless_misc.fetch_files(self), mode = 'wordlist')
 
     if self.settings['wordlist']['rank_max'] < float('inf'):
         freq_distributions.plot(self.settings['wordlist']['rank_max'], cumulative = self.settings['wordlist']['cumulative'])
