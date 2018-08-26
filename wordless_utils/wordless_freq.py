@@ -76,7 +76,7 @@ def wordless_freq_distributions(self, files, mode):
                 freq_distributions[token] = [0] * (i + 1)
                 freq_distributions[token][i] += freq
 
-    freq_distributions = dict(sorted(freq_distributions.items(), key = wordless_utils.multiple_sorting))
+    freq_distributions = dict(sorted(freq_distributions.items(), key = wordless_misc.multiple_sorting))
 
     # Filter
     if settings['freq_first_min'] > 1 or settings['freq_first_max'] < float('inf'):

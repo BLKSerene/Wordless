@@ -18,6 +18,46 @@ For license information, see [LICENSE.txt](https://github.com/BLKSerene/Wordless
 
 许可证信息请参看 [LICENSE.txt](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt)。
 
+## Citation/引用
+If you publish work that uses Wordless, please cite Wordless as follows.
+
+如您在发表的作品中使用了 Wordless, 请按下述格式引用 Wordless。
+
+MLA (8th Edition):
+
+    Ye Lei. Wordless, version 1.0, 2018, https://github.com/BLKSerene/Wordless.
+
+APA (6th Edition):
+
+    Ye, L. (2018) Wordless (Version 1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless
+
+Chicago (17th Edition):
+
+<pre><code>Ye, Lei. <i>Wordless</i> (Version 1.0). Windows. Shanghai: Ye Lei, 2018.</code></pre>
+
+GB (GB/T 7714—2015):
+
+    叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.
+
+## Need Help?/需要帮助？
+Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.
+
+若您需要更多信息或在使用 Wordless 的过程中遇到了任何问题，欢迎随时联系我，我会尽快给予回复。
+
+
+Home Page: https://github.com/BLKSerene/Wordless
+
+Email: blkserene@gmail.com
+
+## Feedback/反馈
+If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker [Issues](https://github.com/BLKSerene/Wordless/issues).
+
+Feedback, enhancement proposals, feature requests and code contribution are also welcomed.
+
+如您在使用 Wordless 的过程中发现了任何 Bug, 您可通过 Github 的 [Issues 功能](https://github.com/BLKSerene/Wordless/issues)来汇报该 Bug。
+
+同时也欢迎反馈信息、改进建议、功能建议及代码贡献。
+
 ## Acknowledgements/致谢
 Thanks a million for the following open-source projects on which Wordless is built on:
 
@@ -36,28 +76,6 @@ Thanks a million for the following open-source projects on which Wordless is bui
 11. [openpyxl](https://openpyxl.readthedocs.io/en/stable/#)
 12. [“结巴”中文分词](https://github.com/fxsjy/jieba)
 
-## Citation/引用
-MLA (8th Edition):
-
-    Ye Lei. Wordless, version 1.0, 2018, https://github.com/BLKSerene/Wordless.
-
-APA (6th Edition):
-
-    Ye, L. (2018) Wordless (Version 1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless
-
-Chicago (17th Edition):
-
-    Ye, Lei. <i>Wordless</i> (Version 1.0). Windows. Shanghai: Ye Lei, 2018.
-
-GB (GB/T 7714—2015):
-
-    叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.
-
-## Need Help?/需要帮助？
-If you encounter any problem while using Wordless, please feel free to contact me by emailing to blkserene@gmail.com and I will reply as soon as possible.
-
-如您在使用 Wordless 的过程中遇到了任何问题，欢迎随时发邮件至 blkserene@gmail.com，我会尽快给予回复。
-
 ## Donation/捐助
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.
 
@@ -66,12 +84,3 @@ If you would like to support the development of Wordless, you may choose to dona
 PayPal: [blkserene@gmail.com](https://www.paypal.com/myaccount/transfer/homepage/send)
 
 <img src=https://github.com/BLKSerene/Wordless/blob/master/images/Alipay.jpg width="200"> <img src=https://github.com/BLKSerene/Wordless/blob/master/images/WeChat.png alt="WeChat" width="200">
-
-## Contribution/帮助开发
-If you have found any bug while using Wordless, you might want to file it by [creating an issue](https://github.com/BLKSerene/Wordless/issues).
-
-Feedback, enhancement proposals, feature requests and code contribution are also welcomed.
-
-如您在使用 Wordless 的过程中发现了任何 Bug, 您可使用 [Issues 功能](https://github.com/BLKSerene/Wordless/issues)来汇报该 Bug。
-
-同时也欢迎反馈信息、改进建议、功能建议及代码贡献。
