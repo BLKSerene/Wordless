@@ -42,9 +42,11 @@ MLA (8th Edition):
     Ye Lei. Wordless, version 1.0, 2018, https://github.com/BLKSerene/Wordless.
 
 APA (6th Edition):
+
     Ye, L. (2018) Wordless (Version 1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless
 
 Chicago (17th Edition):
+
     Ye, Lei. <i>Wordless</i> (Version 1.0). Windows. Shanghai: Ye Lei, 2018.
 
 GB (GB/T 7714—2015):
