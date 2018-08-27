@@ -6,6 +6,9 @@
 # For license information, see LICENSE.txt.
 #
 
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 def convert_lang(parent, lang):
     # Text -> Code
@@ -59,3 +62,38 @@ def multiple_sorting(item):
     keys.append(item[0])
 
     return keys
+
+def check_search_term(function):
+    def wrapper(tab, *args, **kwargs):
+        parent = tab.parent
+
+        if tab.name == tab.tr('N-gram'):
+            settings = parent.settings['ngram']
+        elif tab.name == tab.tr('Collocation'):
+            settings = parent.settings['collocation']
+
+        if settings['show_all'] or (not settings['show_all'] and settings['search_terms']):
+            function(*args, **kwargs)
+        else:
+            QMessageBox.warning(parent,
+                                parent.tr('Empty Search Term'),
+                                parent.tr('Please enter your search term(s) first!'),
+                                QMessageBox.Ok)
+
+    return wrapper
+
+def check_results_table(function):
+    def wrapper(table, *args, **kwargs):
+        parent = table.parent
+
+        function(parent, table, *args, **kwargs)
+
+        if table.rowCount() == 0:
+            table.clear_table()
+
+            QMessageBox.information(parent,
+                                    parent.tr('No Results'),
+                                    parent.tr('There are no results to be shown in the table!<br>You might want to change your settings and try it again.'),
+                                    QMessageBox.Ok)
+
+    return wrapper

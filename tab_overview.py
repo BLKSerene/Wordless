@@ -6,7 +6,6 @@
 # For license information, see LICENSE.txt.
 #
 
-
 import os
 
 from PyQt5.QtCore import *
@@ -34,7 +33,7 @@ def init(self):
                                                        self.tr('Count of Punctuations'),
                                                        self.tr('Count of Numbers')
                                                    ],
-                                                   vertical_headers = True)
+                                                   orientation = 'Vertical')
 
     button_generate_stats = QPushButton('Generate Statistics', self)
 

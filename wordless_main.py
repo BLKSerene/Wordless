@@ -12,6 +12,7 @@ import sys
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+import nltk
 
 from wordless_utils import *
 
@@ -19,9 +20,9 @@ import wordless_settings
 import groupbox_files
 import tab_overview
 import tab_concordancer
-import tab_word_cluster
 import tab_wordlist
-import tab_ngrams
+import tab_ngram
+import tab_collocation
 import tab_semantics
 
 class Wordless_Main(QMainWindow):
@@ -283,10 +284,12 @@ class Wordless_Main(QMainWindow):
 
         self.default_settings = {
                                     'general': {
-                                        'encoding_input': ('utf_8', 'All Languages'),
-                                        'encoding_output': ('utf_8', 'All Languages'),
+                                        'encoding_input': ('utf_8', self.tr('All Languages')),
+                                        'encoding_output': ('utf_8', self.tr('All Languages')),
 
-                                        'precision': 5,
+                                        'font_monospaced': 'Consolas',
+
+                                        'precision': 2,
                                         'style_highlight': 'border: 1px solid Red;'
                                     },
         
@@ -316,8 +319,8 @@ class Wordless_Main(QMainWindow):
         
                                         'punctuations': False,
         
-                                        'sort_by': ['Offset', 'In Ascending Order'],
-                                        'multi_sort_by': [['Offset', 'Ascending']],
+                                        'sort_by': [self.tr('Offset'), self.tr('In Ascending Order')],
+                                        'multi_sort_by': [[self.tr('Offset'), self.tr('Ascending')]],
                                         'multi_sort_colors': [
                                             '#bb302d',
                                             '#c2691d',
@@ -330,47 +333,6 @@ class Wordless_Main(QMainWindow):
                                         'multi_sort': False
                                     },
         
-                                    'word_cluster': {
-                                        'words': True,
-                                        'lowercase': True,
-                                        'uppercase': True,
-                                        'title_cased': True,
-                                        'numerals': True,
-                                        'punctuations': False,
-        
-                                        'cluster_size_sync': False,
-                                        'cluster_size_min': 2,
-                                        'cluster_size_max': 2,
-                                        'search_term': '',
-                                        'search_terms': [],
-                                        'ignore_case': True,
-                                        'lemmatized_forms': True,
-                                        'whole_word': True,
-                                        'regex': False,
-                                        'multi_search': False,
-                                        'search_term_position_left': True,
-                                        'search_term_position_middle': True,
-                                        'search_term_position_right': True,
-                                        
-                                        'cumulative': False,
-
-                                        'freq_first_no_limit': True,
-                                        'freq_first_min': 1,
-                                        'freq_first_max': 1000,
-                                        'freq_total_no_limit': True,
-                                        'freq_total_min': 1,
-                                        'freq_total_max': 1000,
-                                        'rank_no_limit': True,
-                                        'rank_min': 1,
-                                        'rank_max': 50,
-                                        'len_no_limit': True,
-                                        'len_min': 1,
-                                        'len_max': 20,
-                                        'files_no_limit': True,
-                                        'files_min': 1,
-                                        'files_max': 100
-                                    },
-        
                                     'wordlist': {
                                         'words': True,
                                         'lowercase': True,
@@ -381,18 +343,20 @@ class Wordless_Main(QMainWindow):
         
                                         'ignore_case': True,
                                         'lemmatization': True,
-        
-                                        'cumulative': False,
-        
-                                        'freq_first_no_limit': True,
-                                        'freq_first_min': 1,
-                                        'freq_first_max': 1000,
-                                        'freq_total_no_limit': True,
-                                        'freq_total_min': 1,
-                                        'freq_total_max': 1000,
-                                        'rank_no_limit': True,
+
+                                        'show_pct': True,
+                                        'show_cumulative': True,
+                                        'show_breakdown': True,
+
+                                        'rank_no_limit': False,
                                         'rank_min': 1,
                                         'rank_max': 50,
+                                        'cumulative': False,
+        
+                                        'freq_no_limit': True,
+                                        'freq_min': 0,
+                                        'freq_max': 1000,
+                                        'freq_apply_to': 'Total',
                                         'len_no_limit': True,
                                         'len_min': 1,
                                         'len_max': 20,
@@ -401,7 +365,7 @@ class Wordless_Main(QMainWindow):
                                         'files_max': 100
                                     },
         
-                                    'ngrams': {
+                                    'ngram': {
                                         'words': True,
                                         'lowercase': True,
                                         'uppercase': True,
@@ -409,23 +373,79 @@ class Wordless_Main(QMainWindow):
                                         'numerals': True,
                                         'punctuations': False,
         
+                                        'search_terms': [],
+                                        'keyword_position_no_limit': True,
+                                        'keyword_position_min': 1,
+                                        'keyword_position_max': 2,
+                                        'ignore_case': True,
+                                        'lemmatization': True,
+                                        'whole_word': True,
+                                        'regex': False,
+                                        'multi_search': False,
+                                        'show_all': False,
+
                                         'ngram_size_sync': False,
                                         'ngram_size_min': 2,
                                         'ngram_size_max': 2,
-                                        'ignore_case': True,
-                                        'lemmatization': True,
+                                        'allow_skipped_tokens': 0,
+
+                                        'show_pct': True,
+                                        'show_cumulative': True,
+                                        'show_breakdown': True,
         
-                                        'cumulative': False,
-        
-                                        'freq_first_no_limit': True,
-                                        'freq_first_min': 1,
-                                        'freq_first_max': 1000,
-                                        'freq_total_no_limit': True,
-                                        'freq_total_min': 1,
-                                        'freq_total_max': 1000,
-                                        'rank_no_limit': True,
+                                        'rank_no_limit': False,
                                         'rank_min': 1,
                                         'rank_max': 50,
+                                        'cumulative': False,
+        
+                                        'freq_no_limit': True,
+                                        'freq_min': 0,
+                                        'freq_max': 1000,
+                                        'freq_apply_to': 'Total',
+                                        'len_no_limit': True,
+                                        'len_min': 1,
+                                        'len_max': 20,
+                                        'files_no_limit': True,
+                                        'files_min': 1,
+                                        'files_max': 100
+                                    },
+
+                                    'collocation': {
+                                        'words': True,
+                                        'lowercase': True,
+                                        'uppercase': True,
+                                        'title_cased': True,
+                                        'numerals': True,
+                                        'punctuations': False,
+        
+                                        'search_terms': [],
+                                        'ignore_case': True,
+                                        'lemmatization': True,
+                                        'whole_word': True,
+                                        'regex': False,
+                                        'multi_search': False,
+                                        'show_all': False,
+
+                                        'window_sync': False,
+                                        'window_left': ['L', 1],
+                                        'window_right': ['R', 1],
+                                        'search_for': self.tr('Bigrams'),
+                                        'assoc_measure': self.tr('Pearson\'s Chi-squared Test'),
+
+                                        'show_pct': True,
+                                        'show_cumulative': True,
+                                        'show_breakdown': True,
+
+        
+                                        'rank_no_limit': False,
+                                        'rank_min': 1,
+                                        'rank_max': 50,
+                                        'cumulative': False,
+
+                                        'score_no_limit': True,
+                                        'score_min': 1,
+                                        'score_max': 1000,
+                                        'score_apply_to': 'Total',
                                         'len_no_limit': True,
                                         'len_min': 1,
                                         'len_max': 20,
@@ -436,8 +456,8 @@ class Wordless_Main(QMainWindow):
         
                                     'semantics': {
                                         'search_term': '',
-                                        'search_mode': 'Word',
-                                        'search_for': 'Synonyms',
+                                        'search_mode': self.tr('Word'),
+                                        'search_for': self.tr('Synonyms'),
         
                                         'degree_max': 10,
                                         'degree_no_limit': True,
@@ -460,6 +480,71 @@ class Wordless_Main(QMainWindow):
 
         self.wordless_settings = wordless_settings.Wordless_Settings(self)
 
+        self.style_dialog = '''
+                            <head>
+                              <style>
+                                * {
+                                  margin: 0;
+                                  border: 0;
+                                  padding: 0;
+
+                                  line-height: 1.2;
+                                  text-align: justify;
+                                }
+
+                                h1 {
+                                  margin-bottom: 10px;
+                                  font-size: 16px;
+                                  font-weight: bold;
+                                }
+
+                                p {
+                                  margin-bottom: 5px;
+                                }
+
+                                table th {
+                                  font-weight: bold;
+                                }
+                              </style>
+                            </head>
+                            '''
+
+        self.assoc_measures_bigram = {
+            self.tr('Frequency'): nltk.collocations.BigramAssocMeasures().raw_freq,
+            self.tr('Student\'s T-test'): nltk.collocations.BigramAssocMeasures().student_t,
+            self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.BigramAssocMeasures().chi_sq,
+            self.tr('Phi Coefficient'): nltk.collocations.BigramAssocMeasures().phi_sq,
+            self.tr('A Variant of Mutual Information'): nltk.collocations.BigramAssocMeasures().mi_like,
+            self.tr('Pointwise Mutual Information'): nltk.collocations.BigramAssocMeasures().pmi,
+            self.tr('Likelihood Ratios'): nltk.collocations.BigramAssocMeasures().likelihood_ratio,
+            self.tr('Poisson-Stirling'): nltk.collocations.BigramAssocMeasures().poisson_stirling,
+            self.tr('Jaccard Index'): nltk.collocations.BigramAssocMeasures().jaccard,
+            self.tr('Fisher\'s Exact Test'): nltk.collocations.BigramAssocMeasures().fisher,
+            self.tr('Dice\'s coefficient'): nltk.collocations.BigramAssocMeasures().dice
+        }
+
+        self.assoc_measures_trigram = {
+            self.tr('Frequency'): nltk.collocations.TrigramAssocMeasures().raw_freq,
+            self.tr('Student\'s T-test'): nltk.collocations.TrigramAssocMeasures().student_t,
+            self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.TrigramAssocMeasures().chi_sq,
+            self.tr('A Variant of Mutual Information'): nltk.collocations.TrigramAssocMeasures().mi_like,
+            self.tr('Pointwise Mutual Information'): nltk.collocations.TrigramAssocMeasures().pmi,
+            self.tr('Likelihood Ratios'): nltk.collocations.TrigramAssocMeasures().likelihood_ratio,
+            self.tr('Poisson-Stirling'): nltk.collocations.TrigramAssocMeasures().poisson_stirling,
+            self.tr('Jaccard Index'): nltk.collocations.TrigramAssocMeasures().jaccard
+        }
+
+        self.assoc_measures_quadgram = {
+            self.tr('Frequency'): nltk.collocations.QuadgramAssocMeasures().raw_freq,
+            self.tr('Student\'s T-test'): nltk.collocations.QuadgramAssocMeasures().student_t,
+            self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.QuadgramAssocMeasures().chi_sq,
+            self.tr('A Variant of Mutual Information'): nltk.collocations.QuadgramAssocMeasures().mi_like,
+            self.tr('Pointwise Mutual Information'): nltk.collocations.QuadgramAssocMeasures().pmi,
+            self.tr('Likelihood Ratios'): nltk.collocations.QuadgramAssocMeasures().likelihood_ratio,
+            self.tr('Poisson-Stirling'): nltk.collocations.QuadgramAssocMeasures().poisson_stirling,
+            self.tr('Jaccard Index'): nltk.collocations.QuadgramAssocMeasures().jaccard
+        }
+
     def init_menu(self):
         def exit():
             reply = QMessageBox.question(self,
@@ -480,12 +565,13 @@ class Wordless_Main(QMainWindow):
         def need_help():
             message_box = QMessageBox(QMessageBox.Information,
                                       self.tr('Need Help?'),
-                                      self.tr('''
-                                              <div style="line-height: 1.2; text-align: justify;">
-                                                <div style="margin-bottom: 15px;">Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.</div>
-                                                <div style="margin-bottom: 5px">Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</div>
-                                                <div>Email: blkserene@gmail.com</div>
-                                              </div>
+                                      self.tr(self.style_dialog +
+                                              '''
+                                              <body>
+                                                <p>Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.</p>
+                                                <p>Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</p>
+                                                <p>Email: blkserene@gmail.com</p>
+                                              </body>
                                               '''),
                                       QMessageBox.Ok,
                                       self)
@@ -497,9 +583,12 @@ class Wordless_Main(QMainWindow):
         def feedback():
             QMessageBox.information(self,
                                     self.tr('Feedback'),
-                                    self.tr('''
-                                            <div style="margin-bottom: 5px;">If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker <a href="https://github.com/BLKSerene/Wordless/issues">Issues</a>.</div>
-                                            <div>Feedback, enhancement proposals, feature requests and code contribution are also welcomed.</div>
+                                    self.tr(self.style_dialog +
+                                            '''
+                                            <body>
+                                              <p>If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker <a href="https://github.com/BLKSerene/Wordless/issues">Issues</a>.</p>
+                                              <p>Feedback, enhancement proposals, feature requests and code contribution are also welcomed.</p>
+                                            </body>
                                             '''),
                                     QMessageBox.Ok)
 
@@ -571,103 +660,107 @@ class Wordless_Main(QMainWindow):
         def acknowledgements():
             QMessageBox.information(self,
                                     self.tr('Acknowledgements'),
-                                    self.tr('''
-                                            <div style="line-height: 1.5; margin-bottom: 5px;">Thanks a million for the following open-source projects on which Wordless is built on:</div>
-                                            <table>
-                                              <tr style="font-weight: bold;">
-                                                <td>Name</td>
-                                                <td>Version</td>
-                                                <td>Author</td>
-                                                <td>License</td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://www.python.org/">Python</a></td>
-                                                <td>3.6.6</td>
-                                                <td><a href="https://www.python.org/psf/">Python Software Foundation</a></td>
-                                                <td><a href="https://docs.python.org/3.6/license.html">PSF</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a></td>
-                                                <td>4.6.3</td>
-                                                <td><a href="https://www.crummy.com/self/contact.html">Leonard Richardson</a></td>
-                                                <td><a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://matplotlib.org/">Matplotlib</a></td>
-                                                <td>2.2.3</td>
-                                                <td><a href="https://github.com/matplotlib/matplotlib#contact">Matplotlib Development Team</a></td>
-                                                <td><a href="https://matplotlib.org/users/license.html">Matplotlib</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="http://www.nltk.org/">NLTK</a></td>
-                                                <td>3.3</td>
-                                                <td><a href="http://www.nltk.org/contribute.html">NLTK Project</a></td>
-                                                <td><a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="http://networkx.github.io/">NetworkX</a></td>
-                                                <td>2.1</td>
-                                                <td><a href="https://github.com/networkx/networkx#license">NetworkX Developers</a></td>
-                                                <td><a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="http://www.numpy.org/">NumPy</a></td>
-                                                <td>1.15.1</td>
-                                                <td>NumPy Developers</td>
-                                                <td><a href="http://www.numpy.org/license.html">NumPy</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a></td>
-                                                <td>5.11.2</td>
-                                                <td><a href="mailto:info@riverbankcomputing.com">Riverbank Computing Limited</a></td>
-                                                <td><a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://github.com/chardet/chardet">chardet</a></td>
-                                                <td>3.0.4</td>
-                                                <td><a href="mailto:dan.blanchard@gmail.com">Daniel Blanchard</a></td>
-                                                <td><a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPL-2.1</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://github.com/Mimino666/langdetect">langdetect</a></td>
-                                                <td>1.0.7</td>
-                                                <td><a href="mailto:michal.danilak@gmail.com">Michal "Mimino" Danilak</a></td>
-                                                <td><a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache-2.0</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://lxml.de/">lxml</a></td>
-                                                <td>4.2.4</td>
-                                                <td><a href="http://consulting.behnel.de/">Stefan Behnel</a></td>
-                                                <td><a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://openpyxl.readthedocs.io/en/stable/#">openpyxl</a></td>
-                                                <td>2.5.5</td>
-                                                <td>Eric Gazoni, <a href="mailto:charlie.clark@clark-consulting.eu">Charlie Clark</a></td>
-                                                <td><a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://github.com/fxsjy/jieba">“结巴”中文分词</a></td>
-                                                <td>0.39</td>
-                                                <td><a href="mailto:ccnusjy@gmail.com">Sun Junyi</a></td>
-                                                <td><a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a></td>
-                                              </tr>
-                                            </table>
+                                    self.tr(self.style_dialog +
+                                            '''
+                                            <body>
+                                              <p>Many thanks to the following open-source projects on which Wordless is built on:</p>
+                                              <table border="1">
+                                                <tr>
+                                                  <th class="name">Name</th>
+                                                  <th class="version">Version</th>
+                                                  <th class="author">Author</th>
+                                                  <th class="license">License</th>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://www.python.org/">Python</a></td>
+                                                  <td>3.6.6</td>
+                                                  <td><a href="https://www.python.org/psf/">Python Software Foundation</a></td>
+                                                  <td><a href="https://docs.python.org/3.6/license.html">PSF</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a></td>
+                                                  <td>4.6.3</td>
+                                                  <td><a href="https://www.crummy.com/self/contact.html">Leonard Richardson</a></td>
+                                                  <td><a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/  head:/LICENSE">MIT</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://matplotlib.org/">Matplotlib</a></td>
+                                                  <td>2.2.3</td>
+                                                  <td><a href="https://github.com/matplotlib/matplotlib#contact">Matplotlib Development   Team</a></td>
+                                                  <td><a href="https://matplotlib.org/users/license.html">Matplotlib</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="http://www.nltk.org/">NLTK</a></td>
+                                                  <td>3.3</td>
+                                                  <td><a href="http://www.nltk.org/contribute.html">NLTK Project</a></td>
+                                                  <td><a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="http://networkx.github.io/">NetworkX</a></td>
+                                                  <td>2.1</td>
+                                                  <td><a href="https://github.com/networkx/networkx#license">NetworkX Developers</a></td>
+                                                  <td><a href="https://github.com/networkx/networkx/blob/master/  LICENSE.txt">BSD-3-Clause</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="http://www.numpy.org/">NumPy</a></td>
+                                                  <td>1.15.1</td>
+                                                  <td>NumPy Developers</td>
+                                                  <td><a href="http://www.numpy.org/license.html">NumPy</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a></td>
+                                                  <td>5.11.2</td>
+                                                  <td><a href="mailto:info@riverbankcomputing.com">Riverbank Computing Limited</a></td>
+                                                  <td><a href="http://pyqt.sourceforge.net/Docs/  PyQt5/introduction.html#license">GPL-3.0</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://github.com/chardet/chardet">chardet</a></td>
+                                                  <td>3.0.4</td>
+                                                  <td><a href="mailto:dan.blanchard@gmail.com">Daniel Blanchard</a></td>
+                                                  <td><a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPL-2.1</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://github.com/Mimino666/langdetect">langdetect</a></td>
+                                                  <td>1.0.7</td>
+                                                  <td><a href="mailto:michal.danilak@gmail.com">Michal "Mimino" Danilak</a></td>
+                                                  <td><a href="https://github.com/Mimino666/langdetect/blob/master/  LICENSE">Apache-2.0</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://lxml.de/">lxml</a></td>
+                                                  <td>4.2.4</td>
+                                                  <td><a href="http://consulting.behnel.de/">Stefan Behnel</a></td>
+                                                  <td><a href="https://github.com/lxml/lxml/blob/master/doc/licenses/  BSD.txt">BSD-3-Clause</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://openpyxl.readthedocs.io/en/stable/#">openpyxl</a></td>
+                                                  <td>2.5.5</td>
+                                                  <td>Eric Gazoni, <a href="mailto:charlie.clark@clark-consulting.eu">Charlie   Clark</a></td>
+                                                  <td><a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca1368  76ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://github.com/fxsjy/jieba">“结巴”中文分词</a></td>
+                                                  <td>0.39</td>
+                                                  <td><a href="mailto:ccnusjy@gmail.com">Sun Junyi</a></td>
+                                                  <td><a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a></td>
+                                                </tr>
+                                              </table>
+                                            </body>
                                             '''),
                                     QMessageBox.Ok)
 
         def about_wordless():
             QMessageBox.about(self,
                               self.tr('About Wordless'),
-                              self.tr('''
-                                      <div style="line-height: 1.2; text-align: center">
-                                        <div style="margin-bottom: 5px; font-size: 16px; font-weight: bold;">Wordless Version 1.0</div>
-                                        <div style="margin-bottom: 5px;">An integrated tool for language & translation studies.</div>
-                                        <div>Designed and Developed by Ye Lei (叶磊)</div>
-                                        <hr style="margin-bottom: 5px">
-                                        <div style="margin-bottom: 5px">Licensed under GPL Version 3.0</div>
-                                        <div>Copyright (C) 2018 Ye Lei</div>
-                                      </div>'''))
+                              self.tr(self.style_dialog +
+                                      '''
+                                      <body style="text-align: center">
+                                        <h1>Wordless Version 1.0</h1>
+                                        <p>An integrated tool for language & translation studies.</p>
+                                        <p style="margin: 0;">Designed and Developed by Ye Lei (叶磊)</p>
+                                        <hr>
+                                        <p>Licensed under GPL Version 3.0</p>
+                                        <p>Copyright (C) 2018 Ye Lei</p>
+                                      </body>'''))
 
         menu = self.menuBar()
         menu_file = menu.addMenu(self.tr('File'))
@@ -791,9 +884,9 @@ class Wordless_Main(QMainWindow):
 
         tabs.addTab(tab_overview.init(self), self.tr('Overview'))
         tabs.addTab(tab_concordancer.init(self), self.tr('Concordancer'))
-        tabs.addTab(tab_word_cluster.init(self), self.tr('Word Cluster'))
         tabs.addTab(tab_wordlist.init(self), self.tr('Wordlist'))
-        tabs.addTab(tab_ngrams.init(self), self.tr('N-Grams'))
+        tabs.addTab(tab_ngram.init(self), self.tr('N-Gram'))
+        tabs.addTab(tab_collocation.init(self), self.tr('Collocation'))
         tabs.addTab(tab_semantics.init(self), self.tr('Semantics'))
 
         tabs.currentChanged.connect(current_tab_changed)

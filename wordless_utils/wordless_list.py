@@ -6,7 +6,6 @@
 # For license information, see LICENSE.txt.
 #
 
-
 import re
 
 from PyQt5.QtCore import *
@@ -92,21 +91,26 @@ class Wordless_List(QListWidget):
         i = 1
 
         while True:
-            if self.findItems('New Word ({})'.format(i), Qt.MatchExactly):
+            if self.findItems('New Item ({})'.format(i), Qt.MatchExactly):
                 i += 1
             else:
-                new_item = QListWidgetItem(self.tr('New Word ({})').format(i))
+                new_item = QListWidgetItem(self.tr('New Item ({})').format(i))
 
                 new_item.old_text = new_item.text()
                 new_item.setFlags(Qt.ItemIsEnabled | Qt.ItemIsSelectable | Qt.ItemIsEditable | Qt.ItemIsDragEnabled)
 
                 return new_item
 
-    def add_item(self):
+    def add_item(self, text = None):
         new_item = self._new_item()
 
         self.addItem(new_item)
-        self.editItem(new_item)
+
+        if text:
+            self.item(self.count() - 1).setText(text)
+        else:
+            self.editItem(new_item)
+            
         self.item(self.count() - 1).setSelected(True)
 
         self.item_changed()
@@ -138,11 +142,12 @@ class Wordless_List(QListWidget):
                                                 '.',
                                                 self.tr('Text File (*.txt)'))[0]
 
-        with open(file_path, 'r', encoding = 'UTF-8') as f:
-            for line in f:
-                self.addItem(line.rstrip())
+        if file_path:
+            with open(file_path, 'r', encoding = 'UTF-8') as f:
+                for line in f:
+                    self.addItem(line.rstrip())
 
-        self.item_changed()
+            self.item_changed()
 
     def export_list(self):
         file_path = QFileDialog.getSaveFileName(self.parent,
@@ -150,9 +155,10 @@ class Wordless_List(QListWidget):
                                                 '.',
                                                 self.tr('Text File (*.txt)'))[0]
 
-        with open(file_path, 'w', encoding = 'UTF-8') as f:
-            for item in self.get_items():
-                f.write(item + '\n')
+        if file_path:
+            with open(file_path, 'w', encoding = 'UTF-8') as f:
+                for item in self.get_items():
+                    f.write(item + '\n')
 
     def get_items(self):
         return list(set([self.item(i).text() for i in range(self.count())]))

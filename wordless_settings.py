@@ -29,9 +29,8 @@ class Wordless_Settings(QDialog):
         self.tabs_settings.addTab(self.init_settings_general(), self.tr('General'))
         self.tabs_settings.addTab(self.init_settings_file(), self.tr('File'))
         self.tabs_settings.addTab(self.init_settings_concordancer(), self.tr('Concordancer'))
-        self.tabs_settings.addTab(self.init_settings_word_cluster(), self.tr('Word Cluster'))
         self.tabs_settings.addTab(self.init_settings_wordlist(), self.tr('Wordlist'))
-        self.tabs_settings.addTab(self.init_settings_ngrams(), self.tr('N-grams'))
+        self.tabs_settings.addTab(self.init_settings_ngram(), self.tr('N-gram'))
         self.tabs_settings.addTab(self.init_settings_semantics(), self.tr('Semantics'))
 
         button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
@@ -79,7 +78,7 @@ class Wordless_Settings(QDialog):
         self.label_precision = QLabel(self.tr('Precision:'), self)
         self.spin_box_precision = QSpinBox(self)
 
-        self.spin_box_precision.setRange(1, 10)
+        self.spin_box_precision.setRange(0, 10)
 
         layout_settings_general = QGridLayout()
         layout_settings_general.addWidget(groupbox_encoding, 0, 0, 1, 2, Qt.AlignTop)
@@ -99,20 +98,15 @@ class Wordless_Settings(QDialog):
 
         return self.tab_settings_concordancer
 
-    def init_settings_word_cluster(self):
-        self.tab_settings_word_cluster = QWidget(self)
-
-        return self.tab_settings_word_cluster
-
     def init_settings_wordlist(self):
         self.tab_settings_wordlist = QWidget(self)
 
         return self.tab_settings_wordlist
 
-    def init_settings_ngrams(self):
-        self.tab_settings_ngrams = QWidget(self)
+    def init_settings_ngram(self):
+        self.tab_settings_ngram = QWidget(self)
 
-        return self.tab_settings_ngrams
+        return self.tab_settings_ngram
 
     def init_settings_semantics(self):
         self.tab_settings_semantics = QWidget(self)
@@ -142,5 +136,4 @@ class Wordless_Settings(QDialog):
     def settings_apply(self):
         self.parent.settings['general']['encoding_input'] = wordless_misc.convert_encoding(self.parent, self.combo_box_encoding_input.currentText())
         self.parent.settings['general']['encoding_output'] = wordless_misc.convert_encoding(self.parent, self.combo_box_encoding_output.currentText())
-        print(self.parent.settings['general']['encoding_input'])
         self.parent.settings['general']['precision'] = self.spin_box_precision.value()

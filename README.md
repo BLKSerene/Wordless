@@ -59,7 +59,7 @@ Feedback, enhancement proposals, feature requests and code contribution are also
 同时也欢迎反馈信息、改进建议、功能建议及代码贡献。
 
 ## Acknowledgements/致谢
-Thanks a million for the following open-source projects on which Wordless is built on:
+Many thanks to the following open-source projects on which Wordless is built on:
 
 非常感谢以下开源项目，Wordless 在其开发过程中使用了其部分功能：
 
