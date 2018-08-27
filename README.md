@@ -22,7 +22,7 @@ APA (6th Edition):
 
 Chicago (17th Edition):
 
-    Ye, Lei. *Wordless* (Version 1.0). Windows. Shanghai: Ye Lei, 2018.
+<pre><code>Ye, Lei. <i>Wordless</i> (Version 1.0). Windows. Shanghai: Ye Lei, 2018.</code></pre>
 
 GB (GB/T 7714—2015):
 
