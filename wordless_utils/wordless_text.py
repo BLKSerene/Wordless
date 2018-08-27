@@ -1,3 +1,12 @@
+#
+# Wordless: Utility Functions for Texts
+#
+# Copyright (C) 2018 Ye Lei
+#
+# For license information, see LICENSE.txt.
+#
+
+
 import re
 
 from bs4 import BeautifulSoup

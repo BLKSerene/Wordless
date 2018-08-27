@@ -1,3 +1,12 @@
+#
+# Wordless: Miscellaneous Utility Functions
+#
+# Copyright (C) 2018 Ye Lei
+#
+# For license information, see LICENSE.txt.
+#
+
+
 def convert_lang(parent, lang):
     # Text -> Code
     if lang[0].isupper():

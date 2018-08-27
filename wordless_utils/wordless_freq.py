@@ -1,3 +1,12 @@
+#
+# Wordless: Utility Functions for Frequency Distribution
+#
+# Copyright (C) 2018 Ye Lei
+#
+# For license information, see LICENSE.txt.
+#
+
+
 import nltk
 
 from wordless_utils import wordless_misc, wordless_text
@@ -36,7 +45,7 @@ def wordless_freq_distributions(self, files, mode):
                 search_terms = settings['search_terms']
             else:
                 search_terms = [settings['search_term']]
-
+            
             search_terms = text.match_tokens(search_terms,
                                              settings['ignore_case'],
                                              settings['lemmatized_forms'],
