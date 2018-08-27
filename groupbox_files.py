@@ -46,7 +46,6 @@ class Wordless_File:
                 else:
                     self.encoding_code = encoding_code.lower().replace('-', '_')
                 self.encoding_text = wordless_misc.convert_encoding(self.parent, self.encoding_code, encoding_lang)
-                print (self.encoding_code, self.encoding_text)
 
             try:
                 with open(self.path, 'r', encoding = self.encoding_code) as f:
