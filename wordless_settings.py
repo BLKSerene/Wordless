@@ -1,3 +1,11 @@
+#
+# Wordless: Settings
+#
+# Copyright (C) 2018 Ye Lei
+#
+# For license information, see LICENSE.txt.
+#
+
 import sys
 
 from PyQt5.QtCore import *
