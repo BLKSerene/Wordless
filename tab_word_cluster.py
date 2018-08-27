@@ -1,3 +1,12 @@
+#
+# Wordless: Word Cluster
+#
+# Copyright (C) 2018 Ye Lei
+#
+# For license information, see LICENSE.txt.
+#
+
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -129,6 +138,9 @@ def init(self):
             list_search_terms.button_import.hide()
             list_search_terms.button_export.hide()
 
+    def plot_settings_changed():
+        self.settings['word_cluster']['cumulative'] = checkbox_cumulative.isChecked()
+
     def filter_settings_changed():
         self.settings['word_cluster']['freq_first_no_limit'] = checkbox_freq_first.isChecked()
         self.settings['word_cluster']['freq_first_min'] = spin_box_freq_first_min.value()
@@ -207,6 +219,8 @@ def init(self):
         checkbox_search_term_position_left.setChecked(self.default_settings['word_cluster']['search_term_position_left'])
         checkbox_search_term_position_middle.setChecked(self.default_settings['word_cluster']['search_term_position_middle'])
         checkbox_search_term_position_right.setChecked(self.default_settings['word_cluster']['search_term_position_right'])
+
+        checkbox_cumulative.setChecked(self.default_settings['word_cluster']['cumulative'])
 
         checkbox_freq_first.setChecked(self.default_settings['word_cluster']['freq_first_no_limit'])
         spin_box_freq_first_min.setValue(self.default_settings['word_cluster']['freq_first_min'])
@@ -361,6 +375,18 @@ def init(self):
 
     groupbox_search_settings.setLayout(layout_search_settings)
 
+    # Plot Settings
+    groupbox_plot_settings = QGroupBox('Plot Settings', self)
+
+    checkbox_cumulative = QCheckBox('Cumulative', self)
+
+    checkbox_cumulative.stateChanged.connect(plot_settings_changed)
+
+    layout_plot_settings = QGridLayout()
+    layout_plot_settings.addWidget(checkbox_cumulative, 0, 0, Qt.AlignTop)
+
+    groupbox_plot_settings.setLayout(layout_plot_settings)
+
     # Filter Settings
     groupbox_filter_settings = QGroupBox('Filter Settings', self)
 
@@ -470,7 +496,8 @@ def init(self):
     layout_settings = QGridLayout()
     layout_settings.addWidget(groupbox_token_settings, 0, 0, Qt.AlignTop)
     layout_settings.addWidget(groupbox_search_settings, 1, 0, Qt.AlignTop)
-    layout_settings.addWidget(groupbox_filter_settings, 2, 0, Qt.AlignTop)
+    layout_settings.addWidget(groupbox_plot_settings, 2, 0, Qt.AlignTop)
+    layout_settings.addWidget(groupbox_filter_settings, 3, 0, Qt.AlignTop)
 
     wrapper_settings.setLayout(layout_settings)
 
@@ -608,4 +635,8 @@ def begin_search(self, table):
     self.status_bar.showMessage('Done!')
 
 def generate_plot(self):
-    pass
+    freq_distributions = wordless_freq.wordless_freq_distributions(self, wordless_misc.fetch_files(self), mode = 'word_cluster')
+
+    freq_distributions.plot(cumulative = self.settings['word_cluster']['cumulative'])
+
+    self.status_bar.showMessage('Done!')
