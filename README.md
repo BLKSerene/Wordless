@@ -7,6 +7,17 @@ Designed and Developed by Ye Lei (叶磊)
 
 由叶磊设计并开发
 
+## License/开源许可
+    Copyright (C) 2018 Ye Lei
+
+This project is licensed Under GNU GPL Version 3.0.
+
+For license information, see [LICENSE.txt](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt).
+
+本项目的开源许可协议为 GNU GPL Version 3.0。
+
+许可证信息请参看 [LICENSE.txt](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt)。
+
 ## Citation/引用
 If you publish work that uses Wordless, please cite Wordless as follows.
 
@@ -28,17 +39,6 @@ GB (GB/T 7714—2015):
 
     叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.
 
-## License/开源许可
-    Copyright (C) 2018 Ye Lei
-
-This project is licensed Under GNU GPL Version 3.0.
-
-For license information, see [LICENSE.txt](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt).
-
-本项目的开源许可协议为 GNU GPL Version 3.0。
-
-许可证信息请参看 [LICENSE.txt](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt)。
-
 ## Need Help?/需要帮助？
 Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.
 
@@ -58,15 +58,6 @@ Feedback, enhancement proposals, feature requests and code contribution are also
 
 同时也欢迎反馈信息、改进建议、功能建议及代码贡献。
 
-## Donation/捐助
-If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.
-
-如您想要支持 Wordless 的开发，您可通过支付宝、微信、或 PayPal 来向 Wordless 提供捐助。
-
-PayPal: [blkserene@gmail.com](https://www.paypal.com/myaccount/transfer/homepage/send)
-
-<img src=https://github.com/BLKSerene/Wordless/blob/master/images/Alipay.jpg width="200"> <img src=https://github.com/BLKSerene/Wordless/blob/master/images/WeChat.png alt="WeChat" width="200">
-
 ## Acknowledgements/致谢
 Thanks a million for the following open-source projects on which Wordless is built on:
 
@@ -84,3 +75,12 @@ Thanks a million for the following open-source projects on which Wordless is bui
 10. [lxml](https://lxml.de/)
 11. [openpyxl](https://openpyxl.readthedocs.io/en/stable/#)
 12. [“结巴”中文分词](https://github.com/fxsjy/jieba)
+
+## Donation/捐助
+If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.
+
+如您想要支持 Wordless 的开发，您可通过支付宝、微信、或 PayPal 来向 Wordless 提供捐助。
+
+PayPal: [blkserene@gmail.com](https://www.paypal.com/myaccount/transfer/homepage/send)
+
+<img src=https://github.com/BLKSerene/Wordless/blob/master/images/Alipay.jpg width="200"> <img src=https://github.com/BLKSerene/Wordless/blob/master/images/WeChat.png alt="WeChat" width="200">
