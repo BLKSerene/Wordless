@@ -12,6 +12,7 @@ import sys
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+import nltk
 
 from wordless_utils import *
 
@@ -19,9 +20,9 @@ import wordless_settings
 import groupbox_files
 import tab_overview
 import tab_concordancer
-import tab_word_cluster
 import tab_wordlist
-import tab_ngrams
+import tab_ngram
+import tab_collocation
 import tab_semantics
 
 class Wordless_Main(QMainWindow):
@@ -283,8 +284,8 @@ class Wordless_Main(QMainWindow):
 
         self.default_settings = {
                                     'general': {
-                                        'encoding_input': ('utf_8', 'All Languages'),
-                                        'encoding_output': ('utf_8', 'All Languages'),
+                                        'encoding_input': ('utf_8', self.tr('All Languages')),
+                                        'encoding_output': ('utf_8', self.tr('All Languages')),
 
                                         'precision': 5,
                                         'style_highlight': 'border: 1px solid Red;'
@@ -316,8 +317,8 @@ class Wordless_Main(QMainWindow):
         
                                         'punctuations': False,
         
-                                        'sort_by': ['Offset', 'In Ascending Order'],
-                                        'multi_sort_by': [['Offset', 'Ascending']],
+                                        'sort_by': [self.tr('Offset'), self.tr('In Ascending Order')],
+                                        'multi_sort_by': [[self.tr('Offset'), self.tr('Ascending')]],
                                         'multi_sort_colors': [
                                             '#bb302d',
                                             '#c2691d',
@@ -328,47 +329,6 @@ class Wordless_Main(QMainWindow):
                                             '#811570'
                                         ],
                                         'multi_sort': False
-                                    },
-        
-                                    'word_cluster': {
-                                        'words': True,
-                                        'lowercase': True,
-                                        'uppercase': True,
-                                        'title_cased': True,
-                                        'numerals': True,
-                                        'punctuations': False,
-        
-                                        'cluster_size_sync': False,
-                                        'cluster_size_min': 2,
-                                        'cluster_size_max': 2,
-                                        'search_term': '',
-                                        'search_terms': [],
-                                        'ignore_case': True,
-                                        'lemmatized_forms': True,
-                                        'whole_word': True,
-                                        'regex': False,
-                                        'multi_search': False,
-                                        'search_term_position_left': True,
-                                        'search_term_position_middle': True,
-                                        'search_term_position_right': True,
-                                        
-                                        'cumulative': False,
-
-                                        'freq_first_no_limit': True,
-                                        'freq_first_min': 1,
-                                        'freq_first_max': 1000,
-                                        'freq_total_no_limit': True,
-                                        'freq_total_min': 1,
-                                        'freq_total_max': 1000,
-                                        'rank_no_limit': True,
-                                        'rank_min': 1,
-                                        'rank_max': 50,
-                                        'len_no_limit': True,
-                                        'len_min': 1,
-                                        'len_max': 20,
-                                        'files_no_limit': True,
-                                        'files_min': 1,
-                                        'files_max': 100
                                     },
         
                                     'wordlist': {
@@ -401,7 +361,7 @@ class Wordless_Main(QMainWindow):
                                         'files_max': 100
                                     },
         
-                                    'ngrams': {
+                                    'ngram': {
                                         'words': True,
                                         'lowercase': True,
                                         'uppercase': True,
@@ -412,8 +372,16 @@ class Wordless_Main(QMainWindow):
                                         'ngram_size_sync': False,
                                         'ngram_size_min': 2,
                                         'ngram_size_max': 2,
+                                        'search_terms': [],
+                                        'search_term_position_left': True,
+                                        'search_term_position_middle': True,
+                                        'search_term_position_right': True,
                                         'ignore_case': True,
                                         'lemmatization': True,
+                                        'whole_word': True,
+                                        'regex': False,
+                                        'multi_search': False,
+                                        'show_all_ngrams': False,
         
                                         'cumulative': False,
         
@@ -436,8 +404,8 @@ class Wordless_Main(QMainWindow):
         
                                     'semantics': {
                                         'search_term': '',
-                                        'search_mode': 'Word',
-                                        'search_for': 'Synonyms',
+                                        'search_mode': self.tr('Word'),
+                                        'search_for': self.tr('Synonyms'),
         
                                         'degree_max': 10,
                                         'degree_no_limit': True,
@@ -459,6 +427,42 @@ class Wordless_Main(QMainWindow):
         self.settings = copy.deepcopy(self.default_settings)
 
         self.wordless_settings = wordless_settings.Wordless_Settings(self)
+
+        self.assoc_measures_bigram = {
+            self.tr('Frequency'): nltk.collocations.BigramAssocMeasures().raw_freq,
+            self.tr('Student\'s T-test'): nltk.collocations.BigramAssocMeasures().student_t,
+            self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.BigramAssocMeasures().chi_sq,
+            self.tr('Phi Coefficient'): nltk.collocations.BigramAssocMeasures().phi_sq,
+            self.tr('A Variant of Mutual Information'): nltk.collocations.BigramAssocMeasures().mi_like,
+            self.tr('Pointwise Mutual Information'): nltk.collocations.BigramAssocMeasures().pmi,
+            self.tr('Likelihood Ratios'): nltk.collocations.BigramAssocMeasures().likelihood_ratio,
+            self.tr('Poisson-Stirling'): nltk.collocations.BigramAssocMeasures().poisson_stirling,
+            self.tr('Jaccard Index'): nltk.collocations.BigramAssocMeasures().jaccard,
+            self.tr('Fisher\'s Exact Test'): nltk.collocations.BigramAssocMeasures().fisher,
+            self.tr('Dice\'s coefficient'): nltk.collocations.BigramAssocMeasures().dice
+        }
+
+        self.assoc_measures_trigram = {
+            self.tr('Frequency'): nltk.collocations.TrigramAssocMeasures().raw_freq,
+            self.tr('Student\'s T-test'): nltk.collocations.TrigramAssocMeasures().student_t,
+            self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.TrigramAssocMeasures().chi_sq,
+            self.tr('A Variant of Mutual Information'): nltk.collocations.TrigramAssocMeasures().mi_like,
+            self.tr('Pointwise Mutual Information'): nltk.collocations.TrigramAssocMeasures().pmi,
+            self.tr('Likelihood Ratios'): nltk.collocations.TrigramAssocMeasures().likelihood_ratio,
+            self.tr('Poisson-Stirling'): nltk.collocations.TrigramAssocMeasures().poisson_stirling,
+            self.tr('Jaccard Index'): nltk.collocations.TrigramAssocMeasures().jaccard
+        }
+
+        self.assoc_measures_quadgram = {
+            self.tr('Frequency'): nltk.collocations.QuadgramAssocMeasures().raw_freq,
+            self.tr('Student\'s T-test'): nltk.collocations.QuadgramAssocMeasures().student_t,
+            self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.QuadgramAssocMeasures().chi_sq,
+            self.tr('A Variant of Mutual Information'): nltk.collocations.QuadgramAssocMeasures().mi_like,
+            self.tr('Pointwise Mutual Information'): nltk.collocations.QuadgramAssocMeasures().pmi,
+            self.tr('Likelihood Ratios'): nltk.collocations.QuadgramAssocMeasures().likelihood_ratio,
+            self.tr('Poisson-Stirling'): nltk.collocations.QuadgramAssocMeasures().poisson_stirling,
+            self.tr('Jaccard Index'): nltk.collocations.QuadgramAssocMeasures().jaccard
+        }
 
     def init_menu(self):
         def exit():
@@ -791,9 +795,9 @@ class Wordless_Main(QMainWindow):
 
         tabs.addTab(tab_overview.init(self), self.tr('Overview'))
         tabs.addTab(tab_concordancer.init(self), self.tr('Concordancer'))
-        tabs.addTab(tab_word_cluster.init(self), self.tr('Word Cluster'))
         tabs.addTab(tab_wordlist.init(self), self.tr('Wordlist'))
-        tabs.addTab(tab_ngrams.init(self), self.tr('N-Grams'))
+        tabs.addTab(tab_ngram.init(self), self.tr('N-Gram'))
+        tabs.addTab(tab_collocation.init(self), self.tr('Collocation'))
         tabs.addTab(tab_semantics.init(self), self.tr('Semantics'))
 
         tabs.currentChanged.connect(current_tab_changed)
