@@ -6,7 +6,6 @@
 # For license information, see LICENSE.txt.
 #
 
-
 __all__ = [
     'wordless_misc',
     'wordless_widgets',

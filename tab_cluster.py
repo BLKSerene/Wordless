@@ -1,11 +1,10 @@
 #
-# Wordless: Word Cluster
+# Wordless: Cluster
 #
 # Copyright (C) 2018 Ye Lei
 #
 # For license information, see LICENSE.txt.
 #
-
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -67,44 +66,44 @@ def init(self):
             else:
                 checkbox_words.setCheckState(Qt.PartiallyChecked)
 
-        self.settings['word_cluster']['words'] = False if checkbox_words.checkState() == Qt.Unchecked else True
-        self.settings['word_cluster']['lowercase'] = checkbox_lowercase.isChecked()
-        self.settings['word_cluster']['uppercase'] = checkbox_uppercase.isChecked()
-        self.settings['word_cluster']['title_cased'] = checkbox_title_cased.isChecked()
-        self.settings['word_cluster']['numerals'] = checkbox_numerals.isChecked()
-        self.settings['word_cluster']['punctuations'] = checkbox_punctuations.isChecked()
+        self.settings['cluster']['words'] = False if checkbox_words.checkState() == Qt.Unchecked else True
+        self.settings['cluster']['lowercase'] = checkbox_lowercase.isChecked()
+        self.settings['cluster']['uppercase'] = checkbox_uppercase.isChecked()
+        self.settings['cluster']['title_cased'] = checkbox_title_cased.isChecked()
+        self.settings['cluster']['numerals'] = checkbox_numerals.isChecked()
+        self.settings['cluster']['punctuations'] = checkbox_punctuations.isChecked()
 
     def search_settings_changed(widget_changed = None):
-        self.settings['word_cluster']['cluster_size_sync'] = checkbox_cluster_size_sync.isChecked()
-        self.settings['word_cluster']['cluster_size_min'] = spin_box_cluster_size_min.value()
-        self.settings['word_cluster']['cluster_size_max'] = spin_box_cluster_size_max.value()
+        self.settings['cluster']['cluster_size_sync'] = checkbox_cluster_size_sync.isChecked()
+        self.settings['cluster']['cluster_size_min'] = spin_box_cluster_size_min.value()
+        self.settings['cluster']['cluster_size_max'] = spin_box_cluster_size_max.value()
 
-        self.settings['word_cluster']['search_term'] = line_edit_search_term.text()
-        self.settings['word_cluster']['search_terms'] = list_search_terms.get_items()
-        self.settings['word_cluster']['ignore_case'] = checkbox_ignore_case.isChecked()
-        self.settings['word_cluster']['lemmatized_forms'] = checkbox_lemmatized_forms.isChecked()
-        self.settings['word_cluster']['whole_word'] = checkbox_whole_word.isChecked()
-        self.settings['word_cluster']['regex'] = checkbox_regex.isChecked()
-        self.settings['word_cluster']['multi_search'] = checkbox_multi_search.isChecked()
+        self.settings['cluster']['search_term'] = line_edit_search_term.text()
+        self.settings['cluster']['search_terms'] = list_search_terms.get_items()
+        self.settings['cluster']['ignore_case'] = checkbox_ignore_case.isChecked()
+        self.settings['cluster']['lemmatized_forms'] = checkbox_lemmatized_forms.isChecked()
+        self.settings['cluster']['whole_word'] = checkbox_whole_word.isChecked()
+        self.settings['cluster']['regex'] = checkbox_regex.isChecked()
+        self.settings['cluster']['multi_search'] = checkbox_multi_search.isChecked()
 
-        self.settings['word_cluster']['search_term_position_left'] = checkbox_search_term_position_left.isChecked()
-        self.settings['word_cluster']['search_term_position_middle'] = checkbox_search_term_position_middle.isChecked()
-        self.settings['word_cluster']['search_term_position_right'] = checkbox_search_term_position_right.isChecked()
+        self.settings['cluster']['search_term_position_left'] = checkbox_search_term_position_left.isChecked()
+        self.settings['cluster']['search_term_position_middle'] = checkbox_search_term_position_middle.isChecked()
+        self.settings['cluster']['search_term_position_right'] = checkbox_search_term_position_right.isChecked()
         
-        if self.settings['word_cluster']['cluster_size_sync']:
+        if self.settings['cluster']['cluster_size_sync']:
             if widget_changed == spin_box_cluster_size_min:
-                spin_box_cluster_size_max.setValue(self.settings['word_cluster']['cluster_size_min'])
+                spin_box_cluster_size_max.setValue(self.settings['cluster']['cluster_size_min'])
             else:
-                spin_box_cluster_size_min.setValue(self.settings['word_cluster']['cluster_size_max'])
+                spin_box_cluster_size_min.setValue(self.settings['cluster']['cluster_size_max'])
         else:
             if (widget_changed == spin_box_cluster_size_min and 
-                self.settings['word_cluster']['cluster_size_min'] > self.settings['word_cluster']['cluster_size_max']):
-                spin_box_cluster_size_max.setValue(self.settings['word_cluster']['cluster_size_min'])
+                self.settings['cluster']['cluster_size_min'] > self.settings['cluster']['cluster_size_max']):
+                spin_box_cluster_size_max.setValue(self.settings['cluster']['cluster_size_min'])
             elif (widget_changed == spin_box_cluster_size_max and 
-                  self.settings['word_cluster']['cluster_size_max'] < self.settings['word_cluster']['cluster_size_min']):
-                spin_box_cluster_size_min.setValue(self.settings['word_cluster']['cluster_size_max'])
+                  self.settings['cluster']['cluster_size_max'] < self.settings['cluster']['cluster_size_min']):
+                spin_box_cluster_size_min.setValue(self.settings['cluster']['cluster_size_max'])
 
-        if self.settings['word_cluster']['ignore_case']:
+        if self.settings['cluster']['ignore_case']:
             checkbox_lowercase.setEnabled(False)
             checkbox_uppercase.setEnabled(False)
             checkbox_title_cased.setEnabled(False)
@@ -113,7 +112,7 @@ def init(self):
             checkbox_uppercase.setEnabled(True)
             checkbox_title_cased.setEnabled(True)
 
-        if self.settings['word_cluster']['multi_search']:
+        if self.settings['cluster']['multi_search']:
             line_edit_search_term.hide()
 
             list_search_terms.show()
@@ -124,9 +123,9 @@ def init(self):
             list_search_terms.button_import.show()
             list_search_terms.button_export.show()
 
-            if self.settings['word_cluster']['search_term'] and self.settings['word_cluster']['search_terms'] == []:
+            if self.settings['cluster']['search_term'] and self.settings['cluster']['search_terms'] == []:
                 list_search_terms.add_item()
-                list_search_terms.item(0).setText(self.settings['word_cluster']['search_term'])
+                list_search_terms.item(0).setText(self.settings['cluster']['search_term'])
         else:
             line_edit_search_term.show()
 
@@ -139,135 +138,135 @@ def init(self):
             list_search_terms.button_export.hide()
 
     def plot_settings_changed():
-        self.settings['word_cluster']['cumulative'] = checkbox_cumulative.isChecked()
+        self.settings['cluster']['cumulative'] = checkbox_cumulative.isChecked()
 
     def filter_settings_changed():
-        self.settings['word_cluster']['freq_first_no_limit'] = checkbox_freq_first.isChecked()
-        self.settings['word_cluster']['freq_first_min'] = spin_box_freq_first_min.value()
-        self.settings['word_cluster']['freq_first_max'] = (float('inf')
-                                                           if checkbox_freq_first.isChecked()
-                                                           else spin_box_freq_first_max.value())
+        self.settings['cluster']['freq_first_no_limit'] = checkbox_freq_first.isChecked()
+        self.settings['cluster']['freq_first_min'] = spin_box_freq_first_min.value()
+        self.settings['cluster']['freq_first_max'] = (float('inf')
+                                                      if checkbox_freq_first.isChecked()
+                                                      else spin_box_freq_first_max.value())
 
-        self.settings['word_cluster']['freq_total_no_limit'] = checkbox_freq_total.isChecked()
-        self.settings['word_cluster']['freq_total_min'] = spin_box_freq_total_min.value()
-        self.settings['word_cluster']['freq_total_max'] = (float('inf')
-                                                           if checkbox_freq_total.isChecked()
-                                                           else spin_box_freq_total_max.value())
+        self.settings['cluster']['freq_total_no_limit'] = checkbox_freq_total.isChecked()
+        self.settings['cluster']['freq_total_min'] = spin_box_freq_total_min.value()
+        self.settings['cluster']['freq_total_max'] = (float('inf')
+                                                      if checkbox_freq_total.isChecked()
+                                                      else spin_box_freq_total_max.value())
 
-        self.settings['word_cluster']['rank_no_limit'] = checkbox_rank.isChecked()
-        self.settings['word_cluster']['rank_min'] = spin_box_rank_min.value()
-        self.settings['word_cluster']['rank_max'] = (float('inf')
-                                                     if checkbox_rank.isChecked()
-                                                     else spin_box_rank_max.value())
+        self.settings['cluster']['rank_no_limit'] = checkbox_rank.isChecked()
+        self.settings['cluster']['rank_min'] = spin_box_rank_min.value()
+        self.settings['cluster']['rank_max'] = (float('inf')
+                                                if checkbox_rank.isChecked()
+                                                else spin_box_rank_max.value())
 
-        self.settings['word_cluster']['len_no_limit'] = checkbox_len.isChecked()
-        self.settings['word_cluster']['len_min'] = spin_box_len_min.value()
-        self.settings['word_cluster']['len_max'] = (float('inf')
+        self.settings['cluster']['len_no_limit'] = checkbox_len.isChecked()
+        self.settings['cluster']['len_min'] = spin_box_len_min.value()
+        self.settings['cluster']['len_max'] = (float('inf')
                                                     if checkbox_len.isChecked()
                                                     else spin_box_len_max.value())
 
-        self.settings['word_cluster']['files_no_limit'] = checkbox_files.isChecked()
-        self.settings['word_cluster']['files_min'] = spin_box_files_min.value()
-        self.settings['word_cluster']['files_max'] = (float('inf')
-                                                      if checkbox_files.isChecked()
-                                                      else spin_box_files_max.value())
+        self.settings['cluster']['files_no_limit'] = checkbox_files.isChecked()
+        self.settings['cluster']['files_min'] = spin_box_files_min.value()
+        self.settings['cluster']['files_max'] = (float('inf')
+                                                 if checkbox_files.isChecked()
+                                                 else spin_box_files_max.value())
 
-        if self.settings['word_cluster']['freq_first_no_limit']:
+        if self.settings['cluster']['freq_first_no_limit']:
             spin_box_freq_first_max.setEnabled(False)
         else:
             spin_box_freq_first_max.setEnabled(True)
 
-        if self.settings['word_cluster']['freq_total_no_limit']:
+        if self.settings['cluster']['freq_total_no_limit']:
             spin_box_freq_total_max.setEnabled(False)
         else:
             spin_box_freq_total_max.setEnabled(True)
 
-        if self.settings['word_cluster']['rank_no_limit']:
+        if self.settings['cluster']['rank_no_limit']:
             spin_box_rank_max.setEnabled(False)
         else:
             spin_box_rank_max.setEnabled(True)
 
-        if self.settings['word_cluster']['len_no_limit']:
+        if self.settings['cluster']['len_no_limit']:
             spin_box_len_max.setEnabled(False)
         else:
             spin_box_len_max.setEnabled(True)
 
-        if self.settings['word_cluster']['files_no_limit']:
+        if self.settings['cluster']['files_no_limit']:
             spin_box_files_max.setEnabled(False)
         else:
             spin_box_files_max.setEnabled(True)
 
     def restore_defaults():
-        checkbox_words.setChecked(self.default_settings['word_cluster']['words'])
-        checkbox_lowercase.setChecked(self.default_settings['word_cluster']['lowercase'])
-        checkbox_uppercase.setChecked(self.default_settings['word_cluster']['uppercase'])
-        checkbox_title_cased.setChecked(self.default_settings['word_cluster']['title_cased'])
-        checkbox_numerals.setChecked(self.default_settings['word_cluster']['numerals'])
-        checkbox_punctuations.setChecked(self.default_settings['word_cluster']['punctuations'])
+        checkbox_words.setChecked(self.default_settings['cluster']['words'])
+        checkbox_lowercase.setChecked(self.default_settings['cluster']['lowercase'])
+        checkbox_uppercase.setChecked(self.default_settings['cluster']['uppercase'])
+        checkbox_title_cased.setChecked(self.default_settings['cluster']['title_cased'])
+        checkbox_numerals.setChecked(self.default_settings['cluster']['numerals'])
+        checkbox_punctuations.setChecked(self.default_settings['cluster']['punctuations'])
 
-        checkbox_cluster_size_sync.setChecked(self.default_settings['word_cluster']['cluster_size_sync'])
-        spin_box_cluster_size_min.setValue((self.default_settings['word_cluster']['cluster_size_min']))
-        spin_box_cluster_size_max.setValue((self.default_settings['word_cluster']['cluster_size_max']))
-        line_edit_search_term.setText(self.default_settings['word_cluster']['search_term'])
+        checkbox_cluster_size_sync.setChecked(self.default_settings['cluster']['cluster_size_sync'])
+        spin_box_cluster_size_min.setValue((self.default_settings['cluster']['cluster_size_min']))
+        spin_box_cluster_size_max.setValue((self.default_settings['cluster']['cluster_size_max']))
+        line_edit_search_term.setText(self.default_settings['cluster']['search_term'])
         list_search_terms.clear()
-        list_search_terms.addItems(self.default_settings['word_cluster']['search_terms'])
-        checkbox_ignore_case.setChecked(self.default_settings['word_cluster']['ignore_case'])
-        checkbox_lemmatized_forms.setChecked(self.default_settings['word_cluster']['lemmatized_forms'])
-        checkbox_whole_word.setChecked(self.default_settings['word_cluster']['whole_word'])
-        checkbox_regex.setChecked(self.default_settings['word_cluster']['regex'])
-        checkbox_multi_search.setChecked(self.default_settings['word_cluster']['multi_search'])
-        checkbox_search_term_position_left.setChecked(self.default_settings['word_cluster']['search_term_position_left'])
-        checkbox_search_term_position_middle.setChecked(self.default_settings['word_cluster']['search_term_position_middle'])
-        checkbox_search_term_position_right.setChecked(self.default_settings['word_cluster']['search_term_position_right'])
+        list_search_terms.addItems(self.default_settings['cluster']['search_terms'])
+        checkbox_ignore_case.setChecked(self.default_settings['cluster']['ignore_case'])
+        checkbox_lemmatized_forms.setChecked(self.default_settings['cluster']['lemmatized_forms'])
+        checkbox_whole_word.setChecked(self.default_settings['cluster']['whole_word'])
+        checkbox_regex.setChecked(self.default_settings['cluster']['regex'])
+        checkbox_multi_search.setChecked(self.default_settings['cluster']['multi_search'])
+        checkbox_search_term_position_left.setChecked(self.default_settings['cluster']['search_term_position_left'])
+        checkbox_search_term_position_middle.setChecked(self.default_settings['cluster']['search_term_position_middle'])
+        checkbox_search_term_position_right.setChecked(self.default_settings['cluster']['search_term_position_right'])
 
-        checkbox_cumulative.setChecked(self.default_settings['word_cluster']['cumulative'])
+        checkbox_cumulative.setChecked(self.default_settings['cluster']['cumulative'])
 
-        checkbox_freq_first.setChecked(self.default_settings['word_cluster']['freq_first_no_limit'])
-        spin_box_freq_first_min.setValue(self.default_settings['word_cluster']['freq_first_min'])
-        spin_box_freq_first_max.setValue(self.default_settings['word_cluster']['freq_first_max'])
-        checkbox_freq_total.setChecked(self.default_settings['word_cluster']['freq_total_no_limit'])
-        spin_box_freq_total_min.setValue(self.default_settings['word_cluster']['freq_total_min'])
-        spin_box_freq_total_max.setValue(self.default_settings['word_cluster']['freq_total_max'])
-        checkbox_rank.setChecked(self.default_settings['word_cluster']['rank_no_limit'])
-        spin_box_rank_min.setValue(self.default_settings['word_cluster']['rank_min'])
-        spin_box_rank_max.setValue(self.default_settings['word_cluster']['rank_max'])
-        checkbox_len.setChecked(self.default_settings['word_cluster']['len_no_limit'])
-        spin_box_len_min.setValue(self.default_settings['word_cluster']['len_min'])
-        spin_box_len_max.setValue(self.default_settings['word_cluster']['len_max'])
-        checkbox_files.setChecked(self.default_settings['word_cluster']['files_no_limit'])
-        spin_box_files_min.setValue(self.default_settings['word_cluster']['files_min'])
-        spin_box_files_max.setValue(self.default_settings['word_cluster']['files_max'])
+        checkbox_freq_first.setChecked(self.default_settings['cluster']['freq_first_no_limit'])
+        spin_box_freq_first_min.setValue(self.default_settings['cluster']['freq_first_min'])
+        spin_box_freq_first_max.setValue(self.default_settings['cluster']['freq_first_max'])
+        checkbox_freq_total.setChecked(self.default_settings['cluster']['freq_total_no_limit'])
+        spin_box_freq_total_min.setValue(self.default_settings['cluster']['freq_total_min'])
+        spin_box_freq_total_max.setValue(self.default_settings['cluster']['freq_total_max'])
+        checkbox_rank.setChecked(self.default_settings['cluster']['rank_no_limit'])
+        spin_box_rank_min.setValue(self.default_settings['cluster']['rank_min'])
+        spin_box_rank_max.setValue(self.default_settings['cluster']['rank_max'])
+        checkbox_len.setChecked(self.default_settings['cluster']['len_no_limit'])
+        spin_box_len_min.setValue(self.default_settings['cluster']['len_min'])
+        spin_box_len_max.setValue(self.default_settings['cluster']['len_max'])
+        checkbox_files.setChecked(self.default_settings['cluster']['files_no_limit'])
+        spin_box_files_min.setValue(self.default_settings['cluster']['files_min'])
+        spin_box_files_max.setValue(self.default_settings['cluster']['files_max'])
 
         token_settings_changed()
         search_settings_changed()
         filter_settings_changed()
 
-    tab_word_cluster = QWidget(self)
+    tab_cluster = QWidget(self)
 
-    table_word_cluster = Wordless_Table_Word_Cluster(self, [
-                                                               self.tr('Rank'),
-                                                               self.tr('Word Cluster'),
-                                                               self.tr('Total'),
-                                                               self.tr('Total (%)'),
-                                                               self.tr('Cumulative Total'),
-                                                               self.tr('Cumulative Total (%)'),
-                                                               self.tr('Files Found'),
-                                                               self.tr('Files Found (%)')
-                                                           ])
+    table_cluster = Wordless_Table_Word_Cluster(self, [
+                                                          self.tr('Rank'),
+                                                          self.tr('Cluster'),
+                                                          self.tr('Total'),
+                                                          self.tr('Total (%)'),
+                                                          self.tr('Cumulative Total'),
+                                                          self.tr('Cumulative Total (%)'),
+                                                          self.tr('Files Found'),
+                                                          self.tr('Files Found (%)')
+                                                      ])
 
-    table_word_cluster.button_begin_search = QPushButton('Begin Search', self)
-    table_word_cluster.button_generate_plot = QPushButton('Generate Plot', self)
+    table_cluster.button_begin_search = QPushButton('Begin Search', self)
+    table_cluster.button_generate_plot = QPushButton('Generate Plot', self)
 
-    table_word_cluster.button_begin_search.clicked.connect(lambda: begin_search(self, table_word_cluster))
-    table_word_cluster.button_generate_plot.clicked.connect(lambda: generate_plot(self))
+    table_cluster.button_begin_search.clicked.connect(lambda: begin_search(self, table_cluster))
+    table_cluster.button_generate_plot.clicked.connect(lambda: generate_plot(self))
 
-    layout_word_cluster_left = QGridLayout()
-    layout_word_cluster_left.addWidget(table_word_cluster, 0, 0, 1, 5)
-    layout_word_cluster_left.addWidget(table_word_cluster.button_begin_search, 1, 0)
-    layout_word_cluster_left.addWidget(table_word_cluster.button_generate_plot, 1, 1)
-    layout_word_cluster_left.addWidget(table_word_cluster.button_export_selected, 1, 2)
-    layout_word_cluster_left.addWidget(table_word_cluster.button_export_all, 1, 3)
-    layout_word_cluster_left.addWidget(table_word_cluster.button_clear, 1, 4)
+    layout_cluster_left = QGridLayout()
+    layout_cluster_left.addWidget(table_cluster, 0, 0, 1, 5)
+    layout_cluster_left.addWidget(table_cluster.button_begin_search, 1, 0)
+    layout_cluster_left.addWidget(table_cluster.button_generate_plot, 1, 1)
+    layout_cluster_left.addWidget(table_cluster.button_export_selected, 1, 2)
+    layout_cluster_left.addWidget(table_cluster.button_export_all, 1, 3)
+    layout_cluster_left.addWidget(table_cluster.button_clear, 1, 4)
 
     # Token Settings
     groupbox_token_settings = QGroupBox('Token Settings', self)
@@ -328,7 +327,7 @@ def init(self):
     spin_box_cluster_size_max.valueChanged.connect(lambda: search_settings_changed(spin_box_cluster_size_max))
 
     line_edit_search_term.textChanged.connect(search_settings_changed)
-    line_edit_search_term.returnPressed.connect(table_word_cluster.button_begin_search.click)
+    line_edit_search_term.returnPressed.connect(table_cluster.button_begin_search.click)
     list_search_terms.itemChanged.connect(search_settings_changed)
     checkbox_ignore_case.stateChanged.connect(search_settings_changed)
     checkbox_lemmatized_forms.stateChanged.connect(search_settings_changed)
@@ -507,30 +506,30 @@ def init(self):
     button_advanced_settings = QPushButton(self.tr('Advanced Settings'), self)
     button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
 
-    button_advanced_settings.clicked.connect(lambda: self.wordless_settings.settings_load('Word Cluster'))
+    button_advanced_settings.clicked.connect(lambda: self.wordless_settings.settings_load('Cluster'))
     button_restore_defaults.clicked.connect(restore_defaults)
 
-    layout_word_cluster = QGridLayout()
-    layout_word_cluster.addLayout(layout_word_cluster_left, 0, 0, 2, 1)
-    layout_word_cluster.addWidget(scroll_area_settings, 0, 1, 1, 2)
-    layout_word_cluster.addWidget(button_advanced_settings, 1, 1)
-    layout_word_cluster.addWidget(button_restore_defaults, 1, 2)
+    layout_cluster = QGridLayout()
+    layout_cluster.addLayout(layout_cluster_left, 0, 0, 2, 1)
+    layout_cluster.addWidget(scroll_area_settings, 0, 1, 1, 2)
+    layout_cluster.addWidget(button_advanced_settings, 1, 1)
+    layout_cluster.addWidget(button_restore_defaults, 1, 2)
 
-    layout_word_cluster.setColumnStretch(0, 8)
-    layout_word_cluster.setColumnStretch(1, 1)
-    layout_word_cluster.setColumnStretch(2, 1)
+    layout_cluster.setColumnStretch(0, 8)
+    layout_cluster.setColumnStretch(1, 1)
+    layout_cluster.setColumnStretch(2, 1)
 
-    tab_word_cluster.setLayout(layout_word_cluster)
+    tab_cluster.setLayout(layout_cluster)
 
     restore_defaults()
 
-    return tab_word_cluster
+    return tab_cluster
 
 def begin_search(self, table):
-    if self.settings['word_cluster']['multi_search']:
-        search_terms = self.settings['word_cluster']['search_terms']
+    if self.settings['cluster']['multi_search']:
+        search_terms = self.settings['cluster']['search_terms']
     else:
-        search_terms = [self.settings['word_cluster']['search_term']]
+        search_terms = [self.settings['cluster']['search_term']]
 
     if search_terms and search_terms[0]:
         freq_previous = -1
@@ -553,9 +552,9 @@ def begin_search(self, table):
         column_files_found = table.find_column('Files Found')
         column_files_found_percentage = table.find_column('Files Found (%)')
 
-        freq_distributions = wordless_freq.wordless_freq_distributions(self, files, mode = 'word_cluster')
+        freq_distributions = wordless_freq.wordless_freq_distributions(self, files, mode = 'cluster')
 
-        for i, (word_cluster, freqs) in enumerate(freq_distributions.items()):
+        for i, (cluster, freqs) in enumerate(freq_distributions.items()):
             table.setRowCount(table.rowCount() + 1)
 
             # Rank
@@ -566,7 +565,7 @@ def begin_search(self, table):
                 table.item(i, 0).setData(Qt.DisplayRole, i + 1)
 
             # N-gram
-            table.setItem(i, 1, QTableWidgetItem(word_cluster))
+            table.setItem(i, 1, QTableWidgetItem(cluster))
             # Frequency
             for j, freq in enumerate(freqs):
                 table.setItem(i, j + 2, QTableWidgetItem())
@@ -616,7 +615,7 @@ def begin_search(self, table):
                                                                                 self.settings['general']['precision']))
 
         if table.rowCount() > 0:
-            table.sortByColumn(table.find_column('Word Cluster') + 1, Qt.DescendingOrder)
+            table.sortByColumn(table.find_column('Cluster') + 1, Qt.DescendingOrder)
         else:
             table.clear_table()
 
@@ -635,8 +634,8 @@ def begin_search(self, table):
     self.status_bar.showMessage('Done!')
 
 def generate_plot(self):
-    freq_distributions = wordless_freq.wordless_freq_distributions(self, wordless_misc.fetch_files(self), mode = 'word_cluster')
+    freq_distributions = wordless_freq.wordless_freq_distributions(self, wordless_misc.fetch_files(self), mode = 'cluster')
 
-    freq_distributions.plot(cumulative = self.settings['word_cluster']['cumulative'])
+    freq_distributions.plot(cumulative = self.settings['cluster']['cumulative'])
 
     self.status_bar.showMessage('Done!')

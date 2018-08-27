@@ -6,7 +6,6 @@
 # For license information, see LICENSE.txt.
 #
 
-
 import re
 
 from PyQt5.QtCore import *

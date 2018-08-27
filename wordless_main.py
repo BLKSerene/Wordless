@@ -19,7 +19,7 @@ import wordless_settings
 import groupbox_files
 import tab_overview
 import tab_concordancer
-import tab_word_cluster
+import tab_cluster
 import tab_wordlist
 import tab_ngrams
 import tab_semantics
@@ -330,7 +330,7 @@ class Wordless_Main(QMainWindow):
                                         'multi_sort': False
                                     },
         
-                                    'word_cluster': {
+                                    'cluster': {
                                         'words': True,
                                         'lowercase': True,
                                         'uppercase': True,
@@ -791,7 +791,7 @@ class Wordless_Main(QMainWindow):
 
         tabs.addTab(tab_overview.init(self), self.tr('Overview'))
         tabs.addTab(tab_concordancer.init(self), self.tr('Concordancer'))
-        tabs.addTab(tab_word_cluster.init(self), self.tr('Word Cluster'))
+        tabs.addTab(tab_cluster.init(self), self.tr('Cluster'))
         tabs.addTab(tab_wordlist.init(self), self.tr('Wordlist'))
         tabs.addTab(tab_ngrams.init(self), self.tr('N-Grams'))
         tabs.addTab(tab_semantics.init(self), self.tr('Semantics'))

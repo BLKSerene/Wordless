@@ -6,7 +6,6 @@
 # For license information, see LICENSE.txt.
 #
 
-
 import re
 
 from bs4 import BeautifulSoup
@@ -239,10 +238,10 @@ class Wordless_Text(nltk.Text):
 
         return sorted(wordless_freq.Wordless_Freq_Distribution(ngrams).items(), key = lambda x: x[1], reverse = True)
 
-    def word_cluster(self, words, lowercase, uppercase, title_cased, numerals, punctuations,
-                     ignore_case, lemmatization,
-                     ngram_size_min, ngram_size_max,
-                     search_terms, search_term_position_left, search_term_position_middle, search_term_position_right):
+    def cluster(self, words, lowercase, uppercase, title_cased, numerals, punctuations,
+                ignore_case, lemmatization,
+                ngram_size_min, ngram_size_max,
+                search_terms, search_term_position_left, search_term_position_middle, search_term_position_right):
         freq_distribution = self.ngrams(words, lowercase, uppercase, title_cased, numerals, punctuations,
                                         ignore_case, lemmatization,
                                         ngram_size_min, ngram_size_max)

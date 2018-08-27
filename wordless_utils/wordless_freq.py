@@ -6,7 +6,6 @@
 # For license information, see LICENSE.txt.
 #
 
-
 import nltk
 
 from wordless_utils import wordless_misc, wordless_text
@@ -40,8 +39,8 @@ def wordless_freq_distributions(self, files, mode):
                                               settings['punctuations'],
                                               settings['ignore_case'],
                                               settings['lemmatization'])
-        elif mode == 'word_cluster':
-            if self.settings['word_cluster']['multi_search']:
+        elif mode == 'cluster':
+            if self.settings['cluster']['multi_search']:
                 search_terms = settings['search_terms']
             else:
                 search_terms = [settings['search_term']]
@@ -52,20 +51,20 @@ def wordless_freq_distributions(self, files, mode):
                                              settings['whole_word'],
                                              settings['regex'])
 
-            freq_distribution = text.word_cluster(settings['words'],
-                                                  settings['lowercase'],
-                                                  settings['uppercase'],
-                                                  settings['title_cased'],
-                                                  settings['numerals'],
-                                                  settings['punctuations'],
-                                                  settings['ignore_case'],
-                                                  settings['lemmatized_forms'],
-                                                  settings['cluster_size_min'],
-                                                  settings['cluster_size_max'],
-                                                  search_terms,
-                                                  settings['search_term_position_left'],
-                                                  settings['search_term_position_middle'],
-                                                  settings['search_term_position_right'])
+            freq_distribution = text.cluster(settings['words'],
+                                             settings['lowercase'],
+                                             settings['uppercase'],
+                                             settings['title_cased'],
+                                             settings['numerals'],
+                                             settings['punctuations'],
+                                             settings['ignore_case'],
+                                             settings['lemmatized_forms'],
+                                             settings['cluster_size_min'],
+                                             settings['cluster_size_max'],
+                                             search_terms,
+                                             settings['search_term_position_left'],
+                                             settings['search_term_position_middle'],
+                                             settings['search_term_position_right'])
         elif mode == 'ngrams':
             freq_distribution = text.ngrams(settings['words'],
                                             settings['lowercase'],

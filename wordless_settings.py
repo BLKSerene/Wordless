@@ -29,7 +29,7 @@ class Wordless_Settings(QDialog):
         self.tabs_settings.addTab(self.init_settings_general(), self.tr('General'))
         self.tabs_settings.addTab(self.init_settings_file(), self.tr('File'))
         self.tabs_settings.addTab(self.init_settings_concordancer(), self.tr('Concordancer'))
-        self.tabs_settings.addTab(self.init_settings_word_cluster(), self.tr('Word Cluster'))
+        self.tabs_settings.addTab(self.init_settings_cluster(), self.tr('Cluster'))
         self.tabs_settings.addTab(self.init_settings_wordlist(), self.tr('Wordlist'))
         self.tabs_settings.addTab(self.init_settings_ngrams(), self.tr('N-grams'))
         self.tabs_settings.addTab(self.init_settings_semantics(), self.tr('Semantics'))
@@ -99,10 +99,10 @@ class Wordless_Settings(QDialog):
 
         return self.tab_settings_concordancer
 
-    def init_settings_word_cluster(self):
-        self.tab_settings_word_cluster = QWidget(self)
+    def init_settings_cluster(self):
+        self.tab_settings_cluster = QWidget(self)
 
-        return self.tab_settings_word_cluster
+        return self.tab_settings_cluster
 
     def init_settings_wordlist(self):
         self.tab_settings_wordlist = QWidget(self)

@@ -6,7 +6,6 @@
 # For license information, see LICENSE.txt.
 #
 
-
 def convert_lang(parent, lang):
     # Text -> Code
     if lang[0].isupper():
