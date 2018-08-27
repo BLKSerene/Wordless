@@ -1,3 +1,11 @@
+#
+# Wordless: An integrated tool for language & translation studies.
+#
+# Copyright (C) 2018 Ye Lei
+#
+# For license information, see LICENSE.txt.
+#
+
 import copy
 import sys
 
@@ -343,7 +351,9 @@ class Wordless_Main(QMainWindow):
                                         'search_term_position_left': True,
                                         'search_term_position_middle': True,
                                         'search_term_position_right': True,
-        
+                                        
+                                        'cumulative': False,
+
                                         'freq_first_no_limit': True,
                                         'freq_first_min': 1,
                                         'freq_first_max': 1000,

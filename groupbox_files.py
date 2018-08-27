@@ -1,3 +1,12 @@
+#
+# Wordless: Files
+#
+# Copyright (C) 2018 Ye Lei
+#
+# For license information, see LICENSE.txt.
+#
+
+
 import csv
 import os
 
