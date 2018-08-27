@@ -1,3 +1,12 @@
+#
+# Wordless: N-grams
+#
+# Copyright (C) 2018 Ye Lei
+#
+# For license information, see LICENSE.txt.
+#
+
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -540,11 +549,8 @@ def generate_ngrams(self, table):
     self.status_bar.showMessage('Done!')
 
 def generate_plot(self):
-    freq_distributions = wordless_freq.wordless_freq_distributions(self, files, mode = 'ngrams')
+    freq_distributions = wordless_freq.wordless_freq_distributions(self, wordless_misc.fetch_files(self), mode = 'ngrams')
 
-    if self.settings['ngrams']['rank_max'] < float('inf'):
-        freq_distributions.plot(self.settings['ngrams']['rank_max'], cumulative = self.settings['ngrams']['cumulative'])
-    else:
-        freq_distributions.plot(cumulative = self.settings['ngrams']['cumulative'])
+    freq_distributions.plot(cumulative = self.settings['ngrams']['cumulative'])
 
     self.status_bar.showMessage('Done!')

@@ -1,3 +1,12 @@
+#
+# Wordless: Wordlist
+#
+# Copyright (C) 2018 Ye Lei
+#
+# For license information, see LICENSE.txt.
+#
+
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -492,9 +501,6 @@ def generate_wordlist(self, table):
 def generate_plot(self):
     freq_distributions = wordless_freq.wordless_freq_distributions(self, wordless_misc.fetch_files(self), mode = 'wordlist')
 
-    if self.settings['wordlist']['rank_max'] < float('inf'):
-        freq_distributions.plot(self.settings['wordlist']['rank_max'], cumulative = self.settings['wordlist']['cumulative'])
-    else:
-        freq_distributions.plot(cumulative = self.settings['wordlist']['cumulative'])
+    freq_distributions.plot(cumulative = self.settings['wordlist']['cumulative'])
 
     self.status_bar.showMessage('Done!')
