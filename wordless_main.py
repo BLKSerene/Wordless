@@ -484,6 +484,15 @@ class Wordless_Main(QMainWindow):
 
             message_box.exec_()
 
+        def feedback():
+            QMessageBox.information(self,
+                                    self.tr('Feedback'),
+                                    self.tr('''
+                                            <div style="margin-bottom: 5px;">If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker <a href="https://github.com/BLKSerene/Wordless/issues">Issues</a>.</div>
+                                            <div>Feedback, enhancement proposals, feature requests and code contribution are also welcomed.</div>
+                                            '''),
+                                    QMessageBox.Ok)
+
         def citation():
             def citation_sys_changed():
                 if combo_box_citation_sys.currentIndex() == 0:
@@ -717,6 +726,10 @@ class Wordless_Main(QMainWindow):
         action_need_help.setStatusTip(self.tr('Show help information'))
         action_need_help.triggered.connect(need_help)
 
+        action_feedback = QAction(self.tr('Feedback'), self)
+        action_feedback.setStatusTip(self.tr('Show information about feedback'))
+        action_feedback.triggered.connect(feedback)
+
         action_citation = QAction(self.tr('Citation'), self)
         action_citation.setStatusTip(self.tr('Show information about citation'))
         action_citation.triggered.connect(citation)
@@ -730,6 +743,8 @@ class Wordless_Main(QMainWindow):
         action_about_wordless.triggered.connect(about_wordless)
 
         menu_help.addAction(action_need_help)
+        menu_help.addAction(action_feedback)
+        menu_help.addSeparator()
         menu_help.addAction(action_citation)
         menu_help.addSeparator()
         menu_help.addAction(action_acknowledgements)
