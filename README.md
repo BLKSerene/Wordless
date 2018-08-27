@@ -7,35 +7,6 @@ Designed and Developed by Ye Lei (叶磊)
 
 由叶磊设计并开发
 
-## License/开源许可
-    Copyright (C) 2018 Ye Lei
-
-This project is licensed Under GNU GPL Version 3.0.
-
-For license information, see [LICENSE.txt](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt).
-
-本项目的开源许可协议为 GNU GPL Version 3.0。
-
-许可证信息请参看 [LICENSE.txt](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt)。
-
-## Acknowledgements/致谢
-Thanks a million for the following open-source projects on which Wordless is built on:
-
-非常感谢以下开源项目，Wordless 在其开发过程中使用了其部分功能：
-
-1. [Python](https://www.python.org/)
-2. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
-3. [Matplotlib](https://matplotlib.org/)
-4. [NLTK](http://www.nltk.org/)
-5. [NetworkX](http://networkx.github.io/)
-6. [NumPy](http://www.numpy.org/)
-7. [PyQt](https://www.riverbankcomputing.com/software/pyqt/intro)
-8. [chardet](https://github.com/chardet/chardet)
-9. [langdetect](https://github.com/Mimino666/langdetect)
-10. [lxml](https://lxml.de/)
-11. [openpyxl](https://openpyxl.readthedocs.io/en/stable/#)
-12. [“结巴”中文分词](https://github.com/fxsjy/jieba)
-
 ## Citation/引用
 If you publish work that uses Wordless, please cite Wordless as follows.
 
@@ -51,16 +22,30 @@ APA (6th Edition):
 
 Chicago (17th Edition):
 
-    Ye, Lei. <i>Wordless</i> (Version 1.0). Windows. Shanghai: Ye Lei, 2018.
+    Ye, Lei. *Wordless* (Version 1.0). Windows. Shanghai: Ye Lei, 2018.
 
 GB (GB/T 7714—2015):
 
     叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.
 
+## License/开源许可
+    Copyright (C) 2018 Ye Lei
+
+This project is licensed Under GNU GPL Version 3.0.
+
+For license information, see [LICENSE.txt](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt).
+
+本项目的开源许可协议为 GNU GPL Version 3.0。
+
+许可证信息请参看 [LICENSE.txt](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt)。
+
 ## Need Help?/需要帮助？
 Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.
 
 若您需要更多信息或在使用 Wordless 的过程中遇到了任何问题，欢迎随时联系我，我会尽快给予回复。
+
+
+Home Page: https://github.com/BLKSerene/Wordless
 
 Email: blkserene@gmail.com
 
@@ -81,3 +66,21 @@ Feedback, enhancement proposals, feature requests and code contribution are also
 如您在使用 Wordless 的过程中发现了任何 Bug, 您可使用 [Issues 功能](https://github.com/BLKSerene/Wordless/issues)来汇报该 Bug。
 
 同时也欢迎反馈信息、改进建议、功能建议及代码贡献。
+
+## Acknowledgements/致谢
+Thanks a million for the following open-source projects on which Wordless is built on:
+
+非常感谢以下开源项目，Wordless 在其开发过程中使用了其部分功能：
+
+1. [Python](https://www.python.org/)
+2. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
+3. [Matplotlib](https://matplotlib.org/)
+4. [NLTK](http://www.nltk.org/)
+5. [NetworkX](http://networkx.github.io/)
+6. [NumPy](http://www.numpy.org/)
+7. [PyQt](https://www.riverbankcomputing.com/software/pyqt/intro)
+8. [chardet](https://github.com/chardet/chardet)
+9. [langdetect](https://github.com/Mimino666/langdetect)
+10. [lxml](https://lxml.de/)
+11. [openpyxl](https://openpyxl.readthedocs.io/en/stable/#)
+12. [“结巴”中文分词](https://github.com/fxsjy/jieba)

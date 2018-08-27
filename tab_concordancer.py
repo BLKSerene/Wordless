@@ -474,7 +474,7 @@ def search(self, table, combo_box_sort, table_multi_sort):
         search_terms = [self.settings['concordancer']['search_term']]
 
     if search_terms and search_terms[0]:
-        files = wordless_utils.fetch_files(self)
+        files = wordless_misc.fetch_files(self)
 
         if files:
             table.clear_table()

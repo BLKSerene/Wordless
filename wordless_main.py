@@ -468,12 +468,21 @@ class Wordless_Main(QMainWindow):
                 self.status_bar.show()
 
         def need_help():
-            QMessageBox.information(self,
-                                    self.tr('Need Help?'),
-                                    self.tr('''
-                                            <div style="margin-bottom: 10px">Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.</div>
-                                            <div>Email: blkserene@gmail.com</div>
-                                            '''))
+            message_box = QMessageBox(QMessageBox.Information,
+                                      self.tr('Need Help?'),
+                                      self.tr('''
+                                              <div style="line-height: 1.2; text-align: justify;">
+                                                <div style="margin-bottom: 15px;">Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.</div>
+                                                <div style="margin-bottom: 5px">Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</div>
+                                                <div>Email: blkserene@gmail.com</div>
+                                              </div>
+                                              '''),
+                                      QMessageBox.Ok,
+                                      self)
+
+            message_box.setTextInteractionFlags(Qt.TextSelectableByMouse)
+
+            message_box.exec_()
 
         def citation():
             def citation_sys_changed():
@@ -632,7 +641,7 @@ class Wordless_Main(QMainWindow):
             QMessageBox.about(self,
                               self.tr('About Wordless'),
                               self.tr('''
-                                      <div style="text-align: center">
+                                      <div style="line-height: 1.2; text-align: center">
                                         <div style="margin-bottom: 5px; font-size: 16px; font-weight: bold;">Wordless Version 1.0</div>
                                         <div style="margin-bottom: 5px;">An integrated tool for language & translation studies.</div>
                                         <div>Designed and Developed by Ye Lei (叶磊)</div>
