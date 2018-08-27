@@ -49,6 +49,15 @@ Home Page: https://github.com/BLKSerene/Wordless
 
 Email: blkserene@gmail.com
 
+## Feedback/反馈
+If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker [Issues](https://github.com/BLKSerene/Wordless/issues).
+
+Feedback, enhancement proposals, feature requests and code contribution are also welcomed.
+
+如您在使用 Wordless 的过程中发现了任何 Bug, 您可通过 Github 的 [Issues 功能](https://github.com/BLKSerene/Wordless/issues)来汇报该 Bug。
+
+同时也欢迎反馈信息、改进建议、功能建议及代码贡献。
+
 ## Donation/捐助
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.
 
@@ -57,15 +66,6 @@ If you would like to support the development of Wordless, you may choose to dona
 PayPal: [blkserene@gmail.com](https://www.paypal.com/myaccount/transfer/homepage/send)
 
 <img src=https://github.com/BLKSerene/Wordless/blob/master/images/Alipay.jpg width="200"> <img src=https://github.com/BLKSerene/Wordless/blob/master/images/WeChat.png alt="WeChat" width="200">
-
-## Contribution/帮助开发
-If you have found any bug while using Wordless, you might want to file it by [creating an issue](https://github.com/BLKSerene/Wordless/issues).
-
-Feedback, enhancement proposals, feature requests and code contribution are also welcomed.
-
-如您在使用 Wordless 的过程中发现了任何 Bug, 您可使用 [Issues 功能](https://github.com/BLKSerene/Wordless/issues)来汇报该 Bug。
-
-同时也欢迎反馈信息、改进建议、功能建议及代码贡献。
 
 ## Acknowledgements/致谢
 Thanks a million for the following open-source projects on which Wordless is built on:
