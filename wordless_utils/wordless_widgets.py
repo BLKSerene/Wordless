@@ -9,6 +9,7 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+import nltk
 
 class Wordless_Scroll_Area(QScrollArea):
     def __init__(self, parent):
@@ -46,3 +47,23 @@ class Wordless_Combo_Box_Encoding(Wordless_Combo_Box):
         super().__init__(parent)
 
         self.addItems(parent.file_encodings)
+
+class Wordless_Combo_Box_Collocation_Ngram(Wordless_Combo_Box):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.addItems([
+            self.tr('Bigrams'),
+            self.tr('Trigrams'),
+            self.tr('Quadgrams')
+        ])
+
+    def text_changed(self, assoc_measures):
+        self.assoc_measures.clear()
+
+        if self.currentText() == self.tr('Bigrams'):
+            self.assoc_measures.addItems(self.parent.assoc_measures_bigram)
+        elif self.currentText() == self.tr('Trigrams'):
+            self.assoc_measures.addItems(self.parent.assoc_measures_trigram)
+        elif self.currentText() == self.tr('Quadgrams'):
+            self.assoc_measures.addItems(self.parent.assoc_measures_quadgram)

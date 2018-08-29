@@ -39,43 +39,28 @@ def wordless_freq_distributions(self, files, mode):
                                               settings['punctuations'],
                                               settings['ignore_case'],
                                               settings['lemmatization'])
-        elif mode == 'cluster':
-            if self.settings['cluster']['multi_search']:
-                search_terms = settings['search_terms']
-            else:
-                search_terms = [settings['search_term']]
-            
-            search_terms = text.match_tokens(search_terms,
+        elif mode == 'ngram':
+            search_terms = text.match_tokens(settings['search_terms'],
                                              settings['ignore_case'],
-                                             settings['lemmatized_forms'],
+                                             settings['lemmatization'],
                                              settings['whole_word'],
                                              settings['regex'])
 
-            freq_distribution = text.cluster(settings['words'],
-                                             settings['lowercase'],
-                                             settings['uppercase'],
-                                             settings['title_cased'],
-                                             settings['numerals'],
-                                             settings['punctuations'],
-                                             settings['ignore_case'],
-                                             settings['lemmatized_forms'],
-                                             settings['cluster_size_min'],
-                                             settings['cluster_size_max'],
-                                             search_terms,
-                                             settings['search_term_position_left'],
-                                             settings['search_term_position_middle'],
-                                             settings['search_term_position_right'])
-        elif mode == 'ngrams':
             freq_distribution = text.ngrams(settings['words'],
                                             settings['lowercase'],
                                             settings['uppercase'],
                                             settings['title_cased'],
                                             settings['numerals'],
                                             settings['punctuations'],
+                                            settings['ngram_size_min'],
+                                            settings['ngram_size_max'],
+                                            search_terms,
+                                            settings['search_term_position_left'],
+                                            settings['search_term_position_middle'],
+                                            settings['search_term_position_right'],
                                             settings['ignore_case'],
                                             settings['lemmatization'],
-                                            settings['ngram_size_min'],
-                                            settings['ngram_size_max'])
+                                            settings['show_all_ngrams'])
 
         for token, freq in freq_distribution:
             if token in freq_distributions:

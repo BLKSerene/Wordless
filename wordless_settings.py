@@ -29,9 +29,8 @@ class Wordless_Settings(QDialog):
         self.tabs_settings.addTab(self.init_settings_general(), self.tr('General'))
         self.tabs_settings.addTab(self.init_settings_file(), self.tr('File'))
         self.tabs_settings.addTab(self.init_settings_concordancer(), self.tr('Concordancer'))
-        self.tabs_settings.addTab(self.init_settings_cluster(), self.tr('Cluster'))
         self.tabs_settings.addTab(self.init_settings_wordlist(), self.tr('Wordlist'))
-        self.tabs_settings.addTab(self.init_settings_ngrams(), self.tr('N-grams'))
+        self.tabs_settings.addTab(self.init_settings_ngram(), self.tr('N-gram'))
         self.tabs_settings.addTab(self.init_settings_semantics(), self.tr('Semantics'))
 
         button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
@@ -99,20 +98,15 @@ class Wordless_Settings(QDialog):
 
         return self.tab_settings_concordancer
 
-    def init_settings_cluster(self):
-        self.tab_settings_cluster = QWidget(self)
-
-        return self.tab_settings_cluster
-
     def init_settings_wordlist(self):
         self.tab_settings_wordlist = QWidget(self)
 
         return self.tab_settings_wordlist
 
-    def init_settings_ngrams(self):
-        self.tab_settings_ngrams = QWidget(self)
+    def init_settings_ngram(self):
+        self.tab_settings_ngram = QWidget(self)
 
-        return self.tab_settings_ngrams
+        return self.tab_settings_ngram
 
     def init_settings_semantics(self):
         self.tab_settings_semantics = QWidget(self)

@@ -89,13 +89,12 @@ class Wordless_Text(nltk.Text):
                      ignore_case, lemmatized_forms, whole_word, regex):
         tokens_matched = set()
 
+        # Construct a new concordance index
+        self._concordance_index = nltk.ConcordanceIndex(self.tokens)
+
         # Ignore Case
         if ignore_case:
-            self._concordance_index = nltk.ConcordanceIndex(self.tokens, key=lambda s:s.lower())
-
-            tokens_matched = set([token.lower() for token in tokens_searched])
-        else:
-            self._concordance_index = nltk.ConcordanceIndex(self.tokens)
+            tokens_matched = set([token for token in list(self._concordance_index._offsets) if token.lower() in tokens_searched])
 
         for token_searched in tokens_searched:
             # Regular Expression
@@ -203,8 +202,9 @@ class Wordless_Text(nltk.Text):
         return sorted(wordless_freq.Wordless_Freq_Distribution(self.tokens).items(), key = lambda x: x[1], reverse = True)
 
     def ngrams(self, words, lowercase, uppercase, title_cased, numerals, punctuations,
-               ignore_case, lemmatization,
-               ngram_size_min, ngram_size_max):
+               ngram_size_min, ngram_size_max,
+               search_terms, search_term_position_left, search_term_position_middle, search_term_position_right,
+               ignore_case, lemmatization, show_all_ngrams):
         ngrams = []
 
         if ignore_case:
@@ -236,37 +236,30 @@ class Wordless_Text(nltk.Text):
 
         ngrams = [self.delimiter.join(tokens) for tokens in ngrams]
 
-        return sorted(wordless_freq.Wordless_Freq_Distribution(ngrams).items(), key = lambda x: x[1], reverse = True)
+        freq_distribution = sorted(wordless_freq.Wordless_Freq_Distribution(ngrams).items(), key = lambda x: x[1], reverse = True)
 
-    def cluster(self, words, lowercase, uppercase, title_cased, numerals, punctuations,
-                ignore_case, lemmatization,
-                ngram_size_min, ngram_size_max,
-                search_terms, search_term_position_left, search_term_position_middle, search_term_position_right):
-        freq_distribution = self.ngrams(words, lowercase, uppercase, title_cased, numerals, punctuations,
-                                        ignore_case, lemmatization,
-                                        ngram_size_min, ngram_size_max)
+        if not show_all_ngrams:
+            freq_distribution = [(ngram, freq)
+                                 for ngram, freq in freq_distribution
+                                 for search_term in search_terms
+                                 if (ngram.startswith(search_term + self.delimiter) or
+                                     ngram.find(self.delimiter + search_term + self.delimiter) > -1 or
+                                     ngram.endswith(self.delimiter + search_term))]
 
-        freq_distribution = [(ngram, freq)
-                             for ngram, freq in freq_distribution
-                             for search_term in search_terms
-                             if (ngram.startswith(search_term + self.delimiter) or
-                                 ngram.find(self.delimiter + search_term + self.delimiter) > -1 or
-                                 ngram.endswith(self.delimiter + search_term))]
+            for search_term in search_terms:
+                if search_term_position_left == False:
+                    freq_distribution = [(ngram, freq)
+                                         for ngram, freq in freq_distribution
+                                         if not ngram.startswith(search_term + self.delimiter)]
 
-        for search_term in search_terms:
-            if search_term_position_left == False:
-                freq_distribution = [(ngram, freq)
-                                     for ngram, freq in freq_distribution
-                                     if not ngram.startswith(search_term + self.delimiter)]
+                if search_term_position_middle == False:
+                    freq_distribution = [(ngram, freq)
+                                         for ngram, freq in freq_distribution
+                                         if ngram.find(self.delimiter + search_term + self.delimiter) == -1]
 
-            if search_term_position_middle == False:
-                freq_distribution = [(ngram, freq)
-                                     for ngram, freq in freq_distribution
-                                     if ngram.find(self.delimiter + search_term + self.delimiter) == -1]
-
-            if search_term_position_right == False:
-                freq_distribution = [(ngram, freq)
-                                     for ngram, freq in freq_distribution
-                                     if not ngram.endswith(self.delimiter + search_term)]
+                if search_term_position_right == False:
+                    freq_distribution = [(ngram, freq)
+                                         for ngram, freq in freq_distribution
+                                         if not ngram.endswith(self.delimiter + search_term)]
 
         return freq_distribution
