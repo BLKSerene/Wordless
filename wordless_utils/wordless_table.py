@@ -11,33 +11,42 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 class Wordless_Table_Item(QTableWidgetItem):
-    def fetch_text(self, item):
-        if item.text():
-            return item.text()
+    def read_data(self):
+        item_text = self.text()
+
+        if item_text:
+            if self.column() in self.tableWidget().cols_pct:
+                return self.raw_value
+            elif item_text.replace('.', '', 1).isdigit():
+                return float(item_text)
+            else:
+                return item_text
         else:
-            cell_widget = item.tableWidget().cellWidget(item.row(), item.column())
+            cell_widget = self.tableWidget().cellWidget(self.row(), self.column())
+
             if isinstance(cell_widget, QComboBox):
                 return cell_widget.currentText()
             elif isinstance(cell_widget, QLineEdit):
                 return cell_widget.text()
 
     def __lt__(self, other):
-        return self.fetch_text(self) < self.fetch_text(other)
+        return self.read_data() < other.read_data()
 
 class Wordless_Table(QTableWidget):
-    def __init__(self, parent, headers, vertical_headers = False, stretch_columns = []):
+    def __init__(self, parent, headers, orientation = 'Horizontal', cols_stretch = []):
         self.parent = parent
         self.headers = headers
-        self.vertical_headers = vertical_headers
+        self.orientation = orientation
+        self.cols_pct = []
 
-        if vertical_headers:
-            super().__init__(len(self.headers), 1, self.parent)
-
-            self.setVerticalHeaderLabels(self.headers)
-        else:
+        if orientation == 'Horizontal':
             super().__init__(1, len(self.headers), self.parent)
 
             self.setHorizontalHeaderLabels(headers)
+        else:
+            super().__init__(len(self.headers), 1, self.parent)
+
+            self.setVerticalHeaderLabels(self.headers)
 
         self.setEditTriggers(QTableWidget.NoEditTriggers)
         self.setSelectionBehavior(QTableWidget.SelectRows)
@@ -45,13 +54,17 @@ class Wordless_Table(QTableWidget):
         self.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.verticalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
 
-        for column in stretch_columns:
+        for column in cols_stretch:
             self.horizontalHeader().setSectionResizeMode(self.find_column(column), QHeaderView.Stretch)
 
         self.setStyleSheet('QHeaderView {color: #4169E1; font-weight: bold}')
 
         self.itemChanged.connect(self.item_changed)
         self.itemSelectionChanged.connect(self.selection_changed)
+        if orientation == 'Horizontal':
+            self.horizontalHeader().sortIndicatorChanged.connect(self.sorting_changed)
+        else:
+            self.verticalHeader().sortIndicatorChanged.connect(self.sorting_changed)
 
         self.button_export_selected = QPushButton(self.tr('Export Selected...'), self)
         self.button_export_all = QPushButton(self.tr('Export All...'), self)
@@ -59,17 +72,41 @@ class Wordless_Table(QTableWidget):
 
         self.button_export_selected.clicked.connect(self.export_selected)
         self.button_export_all.clicked.connect(self.export_all)
-        self.button_clear.clicked.connect(self.clear_table)
+        self.button_clear.clicked.connect(lambda: self.clear_table())
+
+        self.clear_table()
+
+    def setCellWidget(self, row, column, widget):
+        super().setCellWidget(row, column, widget)
+
+        self.setItem(row, column, Wordless_Table_Item(''))
 
     def insert_column(self, i, label = ''):
         super().insertColumn(i)
 
         self.setHorizontalHeaderItem(i, QTableWidgetItem(label))
 
-    def setCellWidget(self, row, column, widget):
-        super().setCellWidget(row, column, widget)
+    def set_item_with_pct(self, row, column, value, total, show_pct = True):
+        precision = self.parent.settings['general']['precision']
+        len_value = len('{:,}'.format(total))
+        len_total = 5 + precision
 
-        self.setItem(row, column, Wordless_Table_Item(''))
+        item = Wordless_Table_Item()
+
+        item.raw_value = value
+        item.raw_total = total
+
+        if show_pct:
+            item.setText('{:>{len_value},}/{:<{len_total}.{precision}%}'.format(value, value / total,
+                                                                                len_value = len_value, len_total = len_total,
+                                                                                precision = precision))
+        else:
+            item.setText('{:>{len_value},}'.format(value, len_value = len_value))
+
+        item.setFont(QFont(self.parent.settings['general']['font_monospaced']))
+        item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+
+        super().setItem(row, column, item)
 
     def item_changed(self):
         if self.item(0, 0) or self.cellWidget(0, 0):
@@ -84,6 +121,53 @@ class Wordless_Table(QTableWidget):
             self.button_export_selected.setEnabled(True)
         else:
             self.button_export_selected.setEnabled(False)
+
+    def sorting_changed(self, logicalIndex, order):
+        rank_prev = 1
+        data_prev = ''
+
+        col_rank = self.find_column(self.tr('Rank'))
+        cols_cumulative = self.find_columns_cumulative()
+
+        self.hide()
+        self.sortItems(logicalIndex, order)
+
+        # Do not re-calculate rank if the sorted column itself contains rank
+        if logicalIndex != col_rank:
+            for row in range(self.rowCount()):
+                if not self.isRowHidden(row):
+                    data_cur = self.item(row, logicalIndex).read_data()
+
+                    self.setItem(row, col_rank, Wordless_Table_Item())
+
+                    if data_cur == data_prev:
+                        self.item(row, col_rank).setData(Qt.DisplayRole, self.item(row - 1, col_rank).data(Qt.DisplayRole))
+                    else:
+                        self.item(row, col_rank).setData(Qt.DisplayRole, rank_prev)
+
+                    rank_prev += 1
+                    data_prev = data_cur
+
+        # Do not re-calculate cumulative data if the sorted column itself contains cumulative data
+        if logicalIndex in cols_cumulative:
+            cols_cumulative.remove(logicalIndex)
+
+        for col in cols_cumulative:
+            data_cumulative_prev = 0
+            data_cumulative = []
+
+            for row in range(self.rowCount()):
+                if not self.isRowHidden(row):
+                    data_cumulative_prev += self.item(row, col - 1).read_data()
+                    data_cumulative.append(data_cumulative_prev)
+
+            data_total = data_cumulative_prev
+
+            for row in range(self.rowCount()):
+                if not self.isRowHidden(row):
+                    self.set_item_with_pct(row, col, data_cumulative.pop(0), data_total)
+
+        self.show()
 
     def fetch_selected_rows(self, descending = False):
         selected_rows = set([index.row() for index in self.selectedIndexes()])
@@ -102,30 +186,43 @@ class Wordless_Table(QTableWidget):
     def export_all(self):
         pass
 
-    def clear_table(self):
+    def clear_table(self, header_count = 1):
         self.clearContents()
 
-        if self.vertical_headers:
+        if self.orientation == 'Horizontal':
+            self.setColumnCount(len(self.headers))
+            self.setRowCount(header_count)
+            self.setHorizontalHeaderLabels(self.headers)
+        else:
             self.setRowCount(len(self.headers))
-            self.setColumnCount(1)
+            self.setColumnCount(header_count)
 
             self.setVerticalHeaderLabels(self.headers)
-        else:
-            self.setColumnCount(len(self.headers))
-            self.setRowCount(1)
 
-            self.setHorizontalHeaderLabels(self.headers)
+        self.setSortingEnabled(False)
 
         self.item_changed()
 
-    def find_column(self, column):
+    def find_column(self, column, fuzzy_search = False):
         for i in range(self.columnCount()):
-            if column == self.horizontalHeaderItem(i).text():
-                return i
+            if fuzzy_search:
+                if self.horizontalHeaderItem(i).text().find(column) > -1:
+                    return i
+            else:
+                if column == self.horizontalHeaderItem(i).text():
+                    return i
+
+    def find_columns_cumulative(self):
+        return [column
+                for column in range(self.columnCount())
+                if self.horizontalHeaderItem(column).text().find(self.tr('Cumulative')) > -1]
+
+    def find_columns_breakdown(self):
+        return list(range(self.find_column('Rank') + 2, self.find_column('Total', fuzzy_search = True)))
 
 class Wordless_Table_Multi_Sort(Wordless_Table):
     def __init__(self, parent, sort_columns):
-        super().__init__(parent, headers = ['Column', 'Order'], stretch_columns = ['Order'])
+        super().__init__(parent, headers = ['Column', 'Order'], cols_stretch = ['Order'])
 
         self.sort_columns = sort_columns
 
@@ -143,11 +240,14 @@ class Wordless_Table_Multi_Sort(Wordless_Table):
         self.button_remove.clicked.connect(self.remove_row)
         self.button_reset.clicked.connect(self.reset_table)
 
+        self.itemChanged.connect(self.sorting_item_changed)
+        self.itemSelectionChanged.connect(self.sorting_selection_changed)
+
         self.reset_table()
 
         self.setFixedHeight(self.cellWidget(0, 0).sizeHint().height() * 5)
 
-    def item_changed(self, item = None):
+    def sorting_item_changed(self, item = None):
         super().item_changed()
 
         if self.rowCount() < len(self.sort_columns):
@@ -181,7 +281,7 @@ class Wordless_Table_Multi_Sort(Wordless_Table):
         if type(item) == QComboBox:
             self.sort()
 
-    def selection_changed(self):
+    def sorting_selection_changed(self):
         if self.selectedIndexes() and self.rowCount() < len(self.sort_columns):
             self.button_insert.setEnabled(True)
         else:
@@ -231,8 +331,8 @@ class Wordless_Table_Multi_Sort(Wordless_Table):
 
                 break
 
-        combobox_sort_column.currentTextChanged.connect(lambda: self.item_changed(combobox_sort_column))
-        combobox_sort_order.currentTextChanged.connect(lambda: self.item_changed(combobox_sort_column))
+        combobox_sort_column.currentTextChanged.connect(lambda: self.sorting_item_changed(combobox_sort_column))
+        combobox_sort_order.currentTextChanged.connect(lambda: self.sorting_item_changed(combobox_sort_column))
 
         return (combobox_sort_column, combobox_sort_order)
 

@@ -33,7 +33,7 @@ def init(self):
                                                        self.tr('Count of Punctuations'),
                                                        self.tr('Count of Numbers')
                                                    ],
-                                                   vertical_headers = True)
+                                                   orientation = 'Vertical')
 
     button_generate_stats = QPushButton('Generate Statistics', self)
 

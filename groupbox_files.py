@@ -6,7 +6,6 @@
 # For license information, see LICENSE.txt.
 #
 
-
 import csv
 import os
 
@@ -52,9 +51,17 @@ class Wordless_File:
                     self.lang_code = langdetect.detect(f.read())
             except UnicodeDecodeError:
                 self.lang_code = 'en'
+
                 QMessageBox.warning(self.parent,
                                     'Auto-detection Failure',
-                                    'Failed to auto-detect language and encoding for the file "{}", please choose the right language and encoding manually!'.format(self.name),
+                                    'Failed to auto-detect the encoding of file "{}", please select one manually!'.format(self.name),
+                                    QMessageBox.Ok)
+            except langdetect.lang_detect_exception.LangDetectException:
+                self.lang_code = 'en'
+
+                QMessageBox.warning(self.parent,
+                                    'Auto-detection Failure',
+                                    'Failed to auto-detect the language of file "{}", please select one manually!'.format(self.name),
                                     QMessageBox.Ok)
             finally:
                 self.lang_text = wordless_misc.convert_lang(self.parent, self.lang_code)
@@ -90,10 +97,10 @@ class Wordless_File:
 
 
 class Wordless_Table_Files(wordless_table.Wordless_Table):
-    def __init__(self, parent, headers, stretch_columns = []):
-        super().__init__(parent, headers, stretch_columns = stretch_columns)
+    def __init__(self, parent, headers, cols_stretch = []):
+        super().__init__(parent, headers, cols_stretch = cols_stretch)
 
-        self.itemClicked.connect(self.item_changed)
+        self.itemClicked.connect(self.file_item_changed)
 
         self.button_move_up = QPushButton(self.tr('Move Up'))
         self.button_move_down = QPushButton(self.tr('Move Down'))
@@ -147,7 +154,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
 
         self.auto_restore()
 
-    def item_changed(self):
+    def file_item_changed(self):
         for row in range(self.rowCount()):
             if self.cellWidget(row, 4):
                 file = self.parent.files[row]
@@ -176,10 +183,10 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
         else:
             self.button_reopen.setEnabled(False)
 
-        self.selection_changed()
+        self.file_selection_changed()
         self.auto_save()
 
-    def selection_changed(self):
+    def file_selection_changed(self):
         if self.selectedIndexes() and self.item(0, 0):
             self.button_move_up.setEnabled(True)
             self.button_move_down.setEnabled(True)
@@ -253,7 +260,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
                                     self.tr('Skipped {} duplicate files!'.format(count_duplicate)),
                                     QMessageBox.Ok)
 
-        self.item_changed()
+        self.file_item_changed()
 
     def open_file(self):
         file_path = QFileDialog.getOpenFileName(self.parent,
@@ -300,7 +307,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
         if self.rowCount() == 0:
             self.setRowCount(1)
 
-        self.item_changed()
+        self.file_item_changed()
 
     def close_all(self):
         self.parent.files_closed.append(self.parent.files.copy())
@@ -308,14 +315,14 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
 
         self.clear_table()
 
-        self.item_changed()
+        self.file_item_changed()
 
     def reopen(self):
         for file in self.parent.files_closed.pop():
             self.parent.files.append(file)
             file.write(self.parent.files.index(file))
 
-        self.item_changed()
+        self.file_item_changed()
 
     def select_all(self):
         if self.item(0, 0):
@@ -340,7 +347,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
     def import_list(self):
 
 
-        self.item_changed()
+        self.file_item_changed()
 
     def auto_save(self):
         with open('wordless_files.csv', 'w', encoding = 'UTF-8', newline = '') as f:
@@ -378,20 +385,20 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
                     self.parent.files.append(file)
                     file.write(i)
 
-        self.item_changed()
+        self.file_item_changed()
 
 def init(self):
     groupbox_files = QGroupBox(self.tr('File List'), self)
 
     table_files = Wordless_Table_Files(self,
                                        headers = [
-                                                     self.tr('Name'),
-                                                     self.tr('Language'),
-                                                     self.tr('Path'),
-                                                     self.tr('Type'),
-                                                     self.tr('Encoding')
-                                                 ],
-                                       stretch_columns = ['Path'])
+                                           self.tr('Name'),
+                                           self.tr('Language'),
+                                           self.tr('Path'),
+                                           self.tr('Type'),
+                                           self.tr('Encoding')
+                                       ],
+                                       cols_stretch = ['Path'])
 
     layout_upper = QGridLayout()
     layout_upper.addWidget(table_files, 0, 0, 6, 1)
