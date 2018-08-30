@@ -31,36 +31,11 @@ def wordless_freq_distributions(self, files, mode):
         text = wordless_text.Wordless_Text(file)
 
         if mode == 'wordlist':
-            freq_distribution = text.wordlist(settings['words'],
-                                              settings['lowercase'],
-                                              settings['uppercase'],
-                                              settings['title_cased'],
-                                              settings['numerals'],
-                                              settings['punctuations'],
-                                              settings['ignore_case'],
-                                              settings['lemmatization'])
+            freq_distribution = text.wordlist(settings)
         elif mode == 'ngram':
-            search_terms = text.match_tokens(settings['search_terms'],
-                                             settings['ignore_case'],
-                                             settings['lemmatization'],
-                                             settings['whole_word'],
-                                             settings['regex'])
-
-            freq_distribution = text.ngrams(settings['words'],
-                                            settings['lowercase'],
-                                            settings['uppercase'],
-                                            settings['title_cased'],
-                                            settings['numerals'],
-                                            settings['punctuations'],
-                                            settings['ngram_size_min'],
-                                            settings['ngram_size_max'],
-                                            search_terms,
-                                            settings['search_term_position_left'],
-                                            settings['search_term_position_middle'],
-                                            settings['search_term_position_right'],
-                                            settings['ignore_case'],
-                                            settings['lemmatization'],
-                                            settings['show_all_ngrams'])
+            freq_distribution = text.ngram(settings)
+        elif mode == 'collocation':
+            freq_distribution = text.collocation(settings)
 
         for token, freq in freq_distribution:
             if token in freq_distributions:

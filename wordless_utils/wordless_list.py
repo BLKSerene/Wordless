@@ -91,21 +91,26 @@ class Wordless_List(QListWidget):
         i = 1
 
         while True:
-            if self.findItems('New Word ({})'.format(i), Qt.MatchExactly):
+            if self.findItems('New Item ({})'.format(i), Qt.MatchExactly):
                 i += 1
             else:
-                new_item = QListWidgetItem(self.tr('New Word ({})').format(i))
+                new_item = QListWidgetItem(self.tr('New Item ({})').format(i))
 
                 new_item.old_text = new_item.text()
                 new_item.setFlags(Qt.ItemIsEnabled | Qt.ItemIsSelectable | Qt.ItemIsEditable | Qt.ItemIsDragEnabled)
 
                 return new_item
 
-    def add_item(self):
+    def add_item(self, text = None):
         new_item = self._new_item()
 
         self.addItem(new_item)
-        self.editItem(new_item)
+
+        if value:
+            self.item(self.count() - 1), setText(text)
+        else:
+            self.editItem(new_item)
+            
         self.item(self.count() - 1).setSelected(True)
 
         self.item_changed()

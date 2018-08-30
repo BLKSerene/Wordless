@@ -287,7 +287,9 @@ class Wordless_Main(QMainWindow):
                                         'encoding_input': ('utf_8', self.tr('All Languages')),
                                         'encoding_output': ('utf_8', self.tr('All Languages')),
 
-                                        'precision': 5,
+                                        'font_monospaced': 'Consolas',
+
+                                        'precision': 2,
                                         'style_highlight': 'border: 1px solid Red;'
                                     },
         
@@ -341,6 +343,10 @@ class Wordless_Main(QMainWindow):
         
                                         'ignore_case': True,
                                         'lemmatization': True,
+
+                                        'show_pct': True,
+                                        'show_cumulative': True,
+                                        'show_breakdown': True,
         
                                         'cumulative': False,
         
@@ -401,6 +407,47 @@ class Wordless_Main(QMainWindow):
                                         'files_min': 1,
                                         'files_max': 100
                                     },
+
+                                    'collocation': {
+                                        'words': True,
+                                        'lowercase': True,
+                                        'uppercase': True,
+                                        'title_cased': True,
+                                        'numerals': True,
+                                        'punctuations': False,
+        
+                                        'window_sync': False,
+                                        'window_left': ['L', 1],
+                                        'window_right': ['R', 1],
+                                        'search_for': self.tr('Bigrams'),
+                                        'assoc_measure': self.tr('Pearson\'s Chi-squared Test'),
+
+                                        'search_terms': [],
+                                        'ignore_case': True,
+                                        'lemmatization': True,
+                                        'whole_word': True,
+                                        'regex': False,
+                                        'multi_search': False,
+                                        'show_all_collocates': False,
+        
+                                        'cumulative': False,
+        
+                                        'freq_first_no_limit': True,
+                                        'freq_first_min': 1,
+                                        'freq_first_max': 1000,
+                                        'freq_total_no_limit': True,
+                                        'freq_total_min': 1,
+                                        'freq_total_max': 1000,
+                                        'rank_no_limit': True,
+                                        'rank_min': 1,
+                                        'rank_max': 50,
+                                        'len_no_limit': True,
+                                        'len_min': 1,
+                                        'len_max': 20,
+                                        'files_no_limit': True,
+                                        'files_min': 1,
+                                        'files_max': 100
+                                    },
         
                                     'semantics': {
                                         'search_term': '',
@@ -428,8 +475,36 @@ class Wordless_Main(QMainWindow):
 
         self.wordless_settings = wordless_settings.Wordless_Settings(self)
 
+        self.style_dialog = '''
+                            <head>
+                              <style>
+                                * {
+                                  margin: 0;
+                                  border: 0;
+                                  padding: 0;
+
+                                  line-height: 1.2;
+                                  text-align: justify;
+                                }
+
+                                h1 {
+                                  margin-bottom: 10px;
+                                  font-size: 16px;
+                                  font-weight: bold;
+                                }
+
+                                p {
+                                  margin-bottom: 5px;
+                                }
+
+                                table th {
+                                  font-weight: bold;
+                                }
+                              </style>
+                            </head>
+                            '''
+
         self.assoc_measures_bigram = {
-            self.tr('Frequency'): nltk.collocations.BigramAssocMeasures().raw_freq,
             self.tr('Student\'s T-test'): nltk.collocations.BigramAssocMeasures().student_t,
             self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.BigramAssocMeasures().chi_sq,
             self.tr('Phi Coefficient'): nltk.collocations.BigramAssocMeasures().phi_sq,
@@ -443,7 +518,6 @@ class Wordless_Main(QMainWindow):
         }
 
         self.assoc_measures_trigram = {
-            self.tr('Frequency'): nltk.collocations.TrigramAssocMeasures().raw_freq,
             self.tr('Student\'s T-test'): nltk.collocations.TrigramAssocMeasures().student_t,
             self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.TrigramAssocMeasures().chi_sq,
             self.tr('A Variant of Mutual Information'): nltk.collocations.TrigramAssocMeasures().mi_like,
@@ -454,7 +528,6 @@ class Wordless_Main(QMainWindow):
         }
 
         self.assoc_measures_quadgram = {
-            self.tr('Frequency'): nltk.collocations.QuadgramAssocMeasures().raw_freq,
             self.tr('Student\'s T-test'): nltk.collocations.QuadgramAssocMeasures().student_t,
             self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.QuadgramAssocMeasures().chi_sq,
             self.tr('A Variant of Mutual Information'): nltk.collocations.QuadgramAssocMeasures().mi_like,
@@ -484,12 +557,13 @@ class Wordless_Main(QMainWindow):
         def need_help():
             message_box = QMessageBox(QMessageBox.Information,
                                       self.tr('Need Help?'),
-                                      self.tr('''
-                                              <div style="line-height: 1.2; text-align: justify;">
-                                                <div style="margin-bottom: 15px;">Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.</div>
-                                                <div style="margin-bottom: 5px">Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</div>
-                                                <div>Email: blkserene@gmail.com</div>
-                                              </div>
+                                      self.tr(self.style_dialog +
+                                              '''
+                                              <body>
+                                                <p>Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.</p>
+                                                <p>Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</p>
+                                                <p>Email: blkserene@gmail.com</p>
+                                              </body>
                                               '''),
                                       QMessageBox.Ok,
                                       self)
@@ -501,9 +575,12 @@ class Wordless_Main(QMainWindow):
         def feedback():
             QMessageBox.information(self,
                                     self.tr('Feedback'),
-                                    self.tr('''
-                                            <div style="margin-bottom: 5px;">If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker <a href="https://github.com/BLKSerene/Wordless/issues">Issues</a>.</div>
-                                            <div>Feedback, enhancement proposals, feature requests and code contribution are also welcomed.</div>
+                                    self.tr(self.style_dialog +
+                                            '''
+                                            <body>
+                                              <p>If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker <a href="https://github.com/BLKSerene/Wordless/issues">Issues</a>.</p>
+                                              <p>Feedback, enhancement proposals, feature requests and code contribution are also welcomed.</p>
+                                            </body>
                                             '''),
                                     QMessageBox.Ok)
 
@@ -575,14 +652,15 @@ class Wordless_Main(QMainWindow):
         def acknowledgements():
             QMessageBox.information(self,
                                     self.tr('Acknowledgements'),
-                                    self.tr('''
-                                            <div style="line-height: 1.5; margin-bottom: 5px;">Thanks a million for the following open-source projects on which Wordless is built on:</div>
-                                            <table>
-                                              <tr style="font-weight: bold;">
-                                                <td>Name</td>
-                                                <td>Version</td>
-                                                <td>Author</td>
-                                                <td>License</td>
+                                    self.tr(self.style_dialog +
+                                            '''
+                                            <p>Thanks a million for the following open-source projects on which Wordless is built on:</p>
+                                            <table border="1">
+                                              <tr>
+                                                <th class="name">Name</th>
+                                                <th class="version">Version</th>
+                                                <th class="author">Author</th>
+                                                <th class="license">License</th>
                                               </tr>
                                               <tr>
                                                 <td><a href="https://www.python.org/">Python</a></td>
@@ -663,15 +741,16 @@ class Wordless_Main(QMainWindow):
         def about_wordless():
             QMessageBox.about(self,
                               self.tr('About Wordless'),
-                              self.tr('''
-                                      <div style="line-height: 1.2; text-align: center">
-                                        <div style="margin-bottom: 5px; font-size: 16px; font-weight: bold;">Wordless Version 1.0</div>
-                                        <div style="margin-bottom: 5px;">An integrated tool for language & translation studies.</div>
-                                        <div>Designed and Developed by Ye Lei (叶磊)</div>
-                                        <hr style="margin-bottom: 5px">
-                                        <div style="margin-bottom: 5px">Licensed under GPL Version 3.0</div>
-                                        <div>Copyright (C) 2018 Ye Lei</div>
-                                      </div>'''))
+                              self.tr(self.style_dialog +
+                                      '''
+                                      <body style="text-align: center">
+                                        <h1>Wordless Version 1.0</h1>
+                                        <p>An integrated tool for language & translation studies.</p>
+                                        <p style="margin: 0;">Designed and Developed by Ye Lei (叶磊)</p>
+                                        <hr>
+                                        <p>Licensed under GPL Version 3.0</p>
+                                        <p>Copyright (C) 2018 Ye Lei</p>
+                                      </body>'''))
 
         menu = self.menuBar()
         menu_file = menu.addMenu(self.tr('File'))

@@ -11,18 +11,25 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 class Wordless_Table_Item(QTableWidgetItem):
-    def fetch_text(self, item):
-        if item.text():
-            return item.text()
+    def compare_item(self):
+        if self.text():
+            if self.text().find('/') > -1:
+                return self.strip_pct()
+            else:
+                return self.text()
         else:
-            cell_widget = item.tableWidget().cellWidget(item.row(), item.column())
+            cell_widget = self.tableWidget().cellWidget(self.row(), self.column())
+
             if isinstance(cell_widget, QComboBox):
                 return cell_widget.currentText()
             elif isinstance(cell_widget, QLineEdit):
                 return cell_widget.text()
 
+    def strip_pct(self):
+        return float(self.text().split('/')[0].replace(',', ''))
+
     def __lt__(self, other):
-        return self.fetch_text(self) < self.fetch_text(other)
+        return self.compare_item() < other.compare_item()
 
 class Wordless_Table(QTableWidget):
     def __init__(self, parent, headers, vertical_headers = False, stretch_columns = []):
@@ -66,6 +73,25 @@ class Wordless_Table(QTableWidget):
 
         self.setHorizontalHeaderItem(i, QTableWidgetItem(label))
 
+    def set_item_with_pct(self, row, column, value, total):
+        precision = self.parent.settings['general']['precision']
+        len_value = len('{:,}'.format(total))
+        len_total = 5 + precision
+
+        item = Wordless_Table_Item('')
+
+        if self.show_pct:
+            item.setText('{:>{len_value},}/{:<{len_total}.{precision}%}'.format(value, value / total,
+                                                                                len_value = len_value, len_total = len_total,
+                                                                                precision = precision))
+        else:
+            item.setText('{:>{len_value},}'.format(value, len_value = len_value))
+
+        item.setFont(QFont(self.parent.settings['general']['font_monospaced']))
+        item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+
+        super().setItem(row, column, item)
+
     def setCellWidget(self, row, column, widget):
         super().setCellWidget(row, column, widget)
 
@@ -102,17 +128,17 @@ class Wordless_Table(QTableWidget):
     def export_all(self):
         pass
 
-    def clear_table(self):
+    def clear_table(self, header_count = 1):
         self.clearContents()
 
         if self.vertical_headers:
             self.setRowCount(len(self.headers))
-            self.setColumnCount(1)
+            self.setColumnCount(header_count)
 
             self.setVerticalHeaderLabels(self.headers)
         else:
             self.setColumnCount(len(self.headers))
-            self.setRowCount(1)
+            self.setRowCount(header_count)
 
             self.setHorizontalHeaderLabels(self.headers)
 

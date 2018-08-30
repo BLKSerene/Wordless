@@ -328,6 +328,7 @@ def init(self):
     checkbox_punctuations = QCheckBox(self.tr('Punctuations'), self)
 
     checkbox_words.clicked.connect(lambda: token_settings_changed(checkbox_words))
+    checkbox_lowercase.clicked.connect(token_settings_changed)
     checkbox_uppercase.clicked.connect(token_settings_changed)
     checkbox_title_cased.clicked.connect(token_settings_changed)
     checkbox_numerals.clicked.connect(token_settings_changed)
@@ -590,12 +591,12 @@ def generate_ngrams(self, table):
 
         table.setSortingEnabled(False)
 
-        column_total = table.find_column('Total')
-        column_total_percentage = table.find_column('Total (%)')
-        column_cumulative_total = table.find_column('Cumulative Total')
-        column_cumulative_total_percentage = table.find_column('Cumulative Total (%)')
-        column_files_found = table.find_column('Files Found')
-        column_files_found_percentage = table.find_column('Files Found (%)')
+        col_total = table.find_column('Total')
+        col_total_pct = table.find_column('Total (%)')
+        col_cumulative_total = table.find_column('Cumulative Total')
+        col_cumulative_total_pct = table.find_column('Cumulative Total (%)')
+        col_files_found = table.find_column('Files Found')
+        col_files_found_pct = table.find_column('Files Found (%)')
 
         freq_distributions = wordless_freq.wordless_freq_distributions(self, files, mode = 'ngram')
 
@@ -617,47 +618,46 @@ def generate_ngrams(self, table):
                 table.item(i, j + 2).setData(Qt.DisplayRole, freq)
 
             # Total
-            table.setItem(i, column_total, QTableWidgetItem())
-            table.item(i, column_total).setData(Qt.DisplayRole, sum(freqs))
+            table.setItem(i, col_total, QTableWidgetItem())
+            table.item(i, col_total).setData(Qt.DisplayRole, sum(freqs))
 
             # Files Found
-            table.setItem(i, column_files_found, QTableWidgetItem())
-            table.item(i, column_files_found).setData(Qt.DisplayRole, len([freq for freq in freqs if freq]))
+            table.setItem(i, col_files_found, QTableWidgetItem())
+            table.item(i, col_files_found).setData(Qt.DisplayRole, len([freq for freq in freqs if freq]))
             # Files Found (%)
-            table.setItem(i, column_files_found_percentage, QTableWidgetItem())
-            table.item(i, column_files_found_percentage).setData(Qt.DisplayRole,
-                                                                 round(table.item(i, column_files_found).data(Qt.DisplayRole) /
-                                                                       len(files) * 100,
-                                                                       self.settings['general']['precision']))
+            table.setItem(i, col_files_found_pct, QTableWidgetItem())
+            table.item(i, col_files_found_pct).setData(Qt.DisplayRole,
+                                                       round(table.item(i, col_files_found).data(Qt.DisplayRole) / len(files) * 100,
+                                                             self.settings['general']['precision']))
 
             freq_previous = freqs[0]
             freq_total += sum(freqs)
 
         for i in range(table.rowCount()):
             # Total (%)
-            table.setItem(i, column_total_percentage, QTableWidgetItem())
-            table.item(i, column_total_percentage).setData(Qt.DisplayRole,
-                                                           round(table.item(i, column_total).data(Qt.DisplayRole) /
-                                                                 freq_total * 100,
-                                                                 self.settings['general']['precision']))
+            table.setItem(i, col_total_pct, QTableWidgetItem())
+            table.item(i, col_total_pct).setData(Qt.DisplayRole,
+                                                 round(table.item(i, col_total).data(Qt.DisplayRole) / freq_total * 100,
+                                                       self.settings['general']['precision']))
 
             # Cumulative Total & Cumulative Total (%)
-            table.setItem(i, column_cumulative_total, QTableWidgetItem())
-            table.setItem(i, column_cumulative_total_percentage, QTableWidgetItem())
+            table.setItem(i, col_cumulative_total, QTableWidgetItem())
+            table.setItem(i, col_cumulative_total_pct, QTableWidgetItem())
 
             if i == 0:
-                table.item(i, column_cumulative_total).setData(Qt.DisplayRole,
-                                                               table.item(i, column_total).data(Qt.DisplayRole))
-                table.item(i, column_cumulative_total_percentage).setData(Qt.DisplayRole,
-                                                                          table.item(i, column_total_percentage).data(Qt.DisplayRole))
+                table.item(i, col_cumulative_total).setData(Qt.DisplayRole,
+                                                            table.item(i, col_total).data(Qt.DisplayRole))
+                table.item(i, col_cumulative_total_pct).setData(Qt.DisplayRole,
+                                                                table.item(i, col_total_pct).data(Qt.DisplayRole))
             else:
-                table.item(i, column_cumulative_total).setData(Qt.DisplayRole,
-                                                               round(table.item(i - 1,column_cumulative_total).data(Qt.DisplayRole) +
-                                                                     table.item(i, column_total).data(Qt.DisplayRole),
-                                                                     self.settings['general']['precision']))
-                table.item(i, column_cumulative_total_percentage).setData(Qt.DisplayRole,
-                                                                          round(table.item(i, column_cumulative_total).data(Qt.DisplayRole) / freq_total * 100,
-                                                                                self.settings['general']['precision']))
+                table.item(i, col_cumulative_total).setData(Qt.DisplayRole,
+                                                            round(table.item(i - 1,col_cumulative_total).data(Qt.DisplayRole) +
+                                                                  table.item(i, col_total).data(Qt.DisplayRole),
+                                                                  self.settings['general']['precision']))
+                table.item(i, col_cumulative_total_pct).setData(Qt.DisplayRole,
+                                                                round(table.item(i, col_cumulative_total).data(Qt.DisplayRole) /
+                                                                      freq_total * 100,
+                                                                      self.settings['general']['precision']))
 
         if table.rowCount() > 0:
             table.sortByColumn(table.find_column('N-grams') + 1, Qt.DescendingOrder)

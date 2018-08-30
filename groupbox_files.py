@@ -6,7 +6,6 @@
 # For license information, see LICENSE.txt.
 #
 
-
 import csv
 import os
 
