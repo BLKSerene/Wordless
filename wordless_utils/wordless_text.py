@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 import jieba
 import nltk
 
-from wordless_utils import wordless_misc, wordless_freq
+from wordless_utils import wordless_misc, wordless_distribution
 
 def wordless_lemmatize(tokens, lang = 'en'):
     if lang == 'en':
@@ -82,6 +82,7 @@ class Wordless_Text(nltk.Text):
 
         super().__init__(tokens)
 
+        self.parent = file.parent
         self.lang = file.lang_code
         self.delimiter = file.delimiter
 
@@ -175,91 +176,116 @@ class Wordless_Text(nltk.Text):
 
         return concordance_results
 
-    def wordlist(self, words, lowercase, uppercase, title_cased, numerals, punctuations,
-                 ignore_case, lemmatization):
-        if ignore_case:
+    def wordlist(self, settings):
+        if settings['ignore_case']:
             self.tokens = [token.lower() for token in self.tokens]
         
-        if lemmatization:
+        if settings['lemmatization']:
             self.tokens = wordless_lemmatize(self.tokens)
         
-        if words:
-            if not ignore_case:
-                if lowercase == False:
+        if settings['words']:
+            if not settings['ignore_case']:
+                if settings['lowercase'] == False:
                     self.tokens = [token for token in self.tokens if not token.islower()]
-                if uppercase == False:
+                if settings['uppercase'] == False:
                     self.tokens = [token for token in self.tokens if not token.isupper()]
-                if title_cased == False:
+                if settings['title_cased'] == False:
                     self.tokens = [token for token in self.tokens if not token.istitle()]
         else:
             self.tokens = [token for token in self.tokens if not token.isalpha()]
         
-        if numerals == False:
+        if settings['numerals'] == False:
             self.tokens = [token for token in self.tokens if not token.isnumeric()]
-        if punctuations == False:
+        if settings['punctuations'] == False:
             self.tokens = [token for token in self.tokens if token.isalnum()]
 
-        return sorted(wordless_freq.Wordless_Freq_Distribution(self.tokens).items(), key = lambda x: x[1], reverse = True)
+        return wordless_distribution.Wordless_Freq_Distribution(self.tokens)
 
-    def ngrams(self, words, lowercase, uppercase, title_cased, numerals, punctuations,
-               ngram_size_min, ngram_size_max,
-               search_terms, search_term_position_left, search_term_position_middle, search_term_position_right,
-               ignore_case, lemmatization, show_all_ngrams):
-        ngrams = []
+    def ngram(self, settings):
+        search_terms = self.match_tokens(settings['search_terms'],
+                                         settings['ignore_case'],
+                                         settings['lemmatization'],
+                                         settings['whole_word'],
+                                         settings['regex'])
 
-        if ignore_case:
+        if settings['ignore_case']:
             self.tokens = [token.lower() for token in self.tokens]
 
-        if lemmatization:
+        if settings['lemmatization']:
             self.tokens = wordless_lemmatize(self.tokens)
 
-        if punctuations == False:
+        if settings['punctuations'] == False:
             self.tokens = [token for token in self.tokens if token.isalnum()]
 
-        for degree in range(ngram_size_min, ngram_size_max + 1):
-            for ngram in nltk.ngrams(self.tokens, degree):
-                ngrams.append(ngram)
-
-        if words:
-            if not ignore_case:
-                if lowercase == False:
-                    ngrams = [ngram for ngram in ngrams if not all(map(str.islower, tokens))]
-                if uppercase == False:
-                    ngrams = [ngram for ngram in ngrams if not all(map(str.isupper, tokens))]
-                if title_cased == False:
-                    ngrams = [ngram for ngram in ngrams if not all(map(str.istitle, tokens))]
+        if settings['allow_skipped_tokens'] == 0:
+            ngrams = list(nltk.everygrams(self.tokens, settings['ngram_size_min'], settings['ngram_size_max']))
         else:
-            ngrams = [ngram for ngram in ngrams if not all(map(str.isalpha, tokens))]
+            ngrams = []
 
-        if numerals == False:
-            ngrams = [ngram for ngram in ngrams if not all(map(str.isnumeric, tokens))]
+            for i in range(settings['ngram_size_min'], settings['ngram_size_max'] + 1):
+                ngrams.extend(list(nltk.skipgrams(self.tokens, i, settings['allow_skipped_tokens'])))
 
-        ngrams = [self.delimiter.join(tokens) for tokens in ngrams]
+        if settings['words']:
+            if not settings['ignore_case']:
+                if settings['lowercase'] == False:
+                    ngrams = [ngram for ngram in ngrams if not all(map(str.islower, ngram))]
+                if settings['uppercase'] == False:
+                    ngrams = [ngram for ngram in ngrams if not all(map(str.isupper, ngram))]
+                if settings['title_cased'] == False:
+                    ngrams = [ngram for ngram in ngrams if not all(map(str.istitle, ngram))]
+        else:
+            ngrams = [ngram for ngram in ngrams if not all(map(str.isalpha, ngram))]
 
-        freq_distribution = sorted(wordless_freq.Wordless_Freq_Distribution(ngrams).items(), key = lambda x: x[1], reverse = True)
+        if settings['numerals'] == False:
+            ngrams = [ngram for ngram in ngrams if not all(map(str.isnumeric, ngram))]
 
-        if not show_all_ngrams:
-            freq_distribution = [(ngram, freq)
-                                 for ngram, freq in freq_distribution
+        freq_distribution = wordless_distribution.Wordless_Freq_Distribution(ngrams)
+
+        if not settings['show_all']:
+            freq_distribution = {ngram: freq
+                                 for ngram, freq in freq_distribution.items()
                                  for search_term in search_terms
-                                 if (ngram.startswith(search_term + self.delimiter) or
-                                     ngram.find(self.delimiter + search_term + self.delimiter) > -1 or
-                                     ngram.endswith(self.delimiter + search_term))]
+                                 if search_term in ngram and
+                                 settings['keyword_position_min'] <= ngram.index(search_term) + 1 <= settings['keyword_position_max']}
 
-            for search_term in search_terms:
-                if search_term_position_left == False:
-                    freq_distribution = [(ngram, freq)
-                                         for ngram, freq in freq_distribution
-                                         if not ngram.startswith(search_term + self.delimiter)]
-
-                if search_term_position_middle == False:
-                    freq_distribution = [(ngram, freq)
-                                         for ngram, freq in freq_distribution
-                                         if ngram.find(self.delimiter + search_term + self.delimiter) == -1]
-
-                if search_term_position_right == False:
-                    freq_distribution = [(ngram, freq)
-                                         for ngram, freq in freq_distribution
-                                         if not ngram.endswith(self.delimiter + search_term)]
+        freq_distribution = {self.delimiter.join(ngram): freq for ngram, freq in freq_distribution.items()}
 
         return freq_distribution
+
+    def collocation(self, settings):
+        search_terms = self.match_tokens(settings['search_terms'],
+                                         settings['ignore_case'],
+                                         settings['lemmatization'],
+                                         settings['whole_word'],
+                                         settings['regex'])
+
+        if settings['ignore_case']:
+            self.tokens = [token.lower() for token in self.tokens]
+
+        if settings['lemmatization']:
+            self.tokens = wordless_lemmatize(self.tokens)
+
+        if settings['punctuations'] == False:
+            self.tokens = [token for token in self.tokens if token.isalnum()]
+
+        if settings['search_for'] == self.parent.tr('Bigrams'):
+            finder = nltk.collocations.BigramCollocationFinder.from_words(self.tokens)
+            assoc_measure = self.parent.assoc_measures_bigram[settings['assoc_measure']]
+        elif settings['search_for'] == self.parent.tr('Trigrams'):
+            finder = nltk.collocations.TrigramCollocationFinder.from_words(self.tokens)
+            assoc_measure = self.parent.assoc_measures_trigram[settings['assoc_measure']]
+        elif settings['search_for'] == self.parent.tr('Quadgrams'):
+            finder = nltk.collocations.QuadgramCollocationFinder.from_words(self.tokens)
+            assoc_measure = self.parent.assoc_measures_quadgram[settings['assoc_measure']]
+
+        collocation_scores = {collocate: score for collocate, score in finder.score_ngrams(assoc_measure)}
+
+        if not settings['show_all']:
+            collocation_scores = {collocate: score
+                                  for collocate, score in collocation_scores
+                                  for search_term in search_terms
+                                  if search_term in collocate}
+
+        collocation_scores = {self.delimiter.join(collocate): score for collocate, score in collocation_scores.items()}
+
+        return collocation_scores

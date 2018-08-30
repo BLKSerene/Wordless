@@ -78,7 +78,7 @@ class Wordless_Settings(QDialog):
         self.label_precision = QLabel(self.tr('Precision:'), self)
         self.spin_box_precision = QSpinBox(self)
 
-        self.spin_box_precision.setRange(1, 10)
+        self.spin_box_precision.setRange(0, 10)
 
         layout_settings_general = QGridLayout()
         layout_settings_general.addWidget(groupbox_encoding, 0, 0, 1, 2, Qt.AlignTop)
@@ -136,5 +136,4 @@ class Wordless_Settings(QDialog):
     def settings_apply(self):
         self.parent.settings['general']['encoding_input'] = wordless_misc.convert_encoding(self.parent, self.combo_box_encoding_input.currentText())
         self.parent.settings['general']['encoding_output'] = wordless_misc.convert_encoding(self.parent, self.combo_box_encoding_output.currentText())
-        print(self.parent.settings['general']['encoding_input'])
         self.parent.settings['general']['precision'] = self.spin_box_precision.value()

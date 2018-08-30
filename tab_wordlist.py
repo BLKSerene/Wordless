@@ -13,66 +13,27 @@ import nltk
 
 from wordless_utils import *
 
-class Wordless_Table_Wordlist(wordless_table.Wordless_Table):
-    def __init__(self, parent, headers):
-        super().__init__(parent, headers)
-
-        self.item_changed()
-
 def init(self):
-    def token_settings_changed(widget_changed = None):
-        if widget_changed == checkbox_words:
-            checkbox_words.setTristate(False)
-
-            if checkbox_words.checkState() == Qt.Checked:
-                checkbox_lowercase.setEnabled(True)
-                checkbox_uppercase.setEnabled(True)
-                checkbox_title_cased.setEnabled(True)
-
-                checkbox_ignore_case.setEnabled(True)
-                checkbox_lemmatization.setEnabled(True)
-
-                checkbox_lowercase.setChecked(True)
-                checkbox_uppercase.setChecked(True)
-                checkbox_title_cased.setChecked(True)
-
-                search_settings_changed()
-            else:
-                checkbox_lowercase.setEnabled(False)
-                checkbox_uppercase.setEnabled(False)
-                checkbox_title_cased.setEnabled(False)
-
-                checkbox_ignore_case.setEnabled(False)
-                checkbox_lemmatization.setEnabled(False)
-
-                checkbox_lowercase.setChecked(False)
-                checkbox_uppercase.setChecked(False)
-                checkbox_title_cased.setChecked(False)
-        else:
-            if (checkbox_lowercase.isChecked() and
-                checkbox_uppercase.isChecked() and
-                checkbox_title_cased.isChecked()):
-                checkbox_words.setCheckState(Qt.Checked)
-            elif (not checkbox_lowercase.isChecked() and
-                  not checkbox_uppercase.isChecked() and
-                  not checkbox_title_cased.isChecked()):
-                checkbox_words.setCheckState(Qt.Unchecked)
-
-                checkbox_lowercase.setEnabled(False)
-                checkbox_uppercase.setEnabled(False)
-                checkbox_title_cased.setEnabled(False)
-
-                checkbox_ignore_case.setEnabled(False)
-                checkbox_lemmatization.setEnabled(False)
-            else:
-                checkbox_words.setCheckState(Qt.PartiallyChecked)
-
+    def token_settings_changed():
         self.settings['wordlist']['words'] = False if checkbox_words.checkState() == Qt.Unchecked else True
         self.settings['wordlist']['lowercase'] = checkbox_lowercase.isChecked()
         self.settings['wordlist']['uppercase'] = checkbox_uppercase.isChecked()
         self.settings['wordlist']['title_cased'] = checkbox_title_cased.isChecked()
         self.settings['wordlist']['numerals'] = checkbox_numerals.isChecked()
         self.settings['wordlist']['punctuations'] = checkbox_punctuations.isChecked()
+
+        if checkbox_words.checkState() == Qt.Unchecked:
+            checkbox_ignore_case.setEnabled(False)
+            checkbox_lemmatization.setEnabled(False)
+        else:
+            checkbox_ignore_case.setEnabled(True)
+            checkbox_lemmatization.setEnabled(True)
+
+        if (not checkbox_lowercase.isChecked() and
+            not checkbox_uppercase.isChecked() and
+            not checkbox_title_cased.isChecked()):
+            checkbox_ignore_case.setEnabled(False)
+            checkbox_lemmatization.setEnabled(False)
 
     def search_settings_changed():
         self.settings['wordlist']['ignore_case'] = checkbox_ignore_case.isChecked()
@@ -87,64 +48,41 @@ def init(self):
             checkbox_uppercase.setEnabled(True)
             checkbox_title_cased.setEnabled(True)
 
+    def table_settings_changed():
+        self.settings['wordlist']['show_pct'] = checkbox_show_pct.isChecked()
+        self.settings['wordlist']['show_cumulative'] = checkbox_show_cumulative.isChecked()
+        self.settings['wordlist']['show_breakdown'] = checkbox_show_breakdown.isChecked()
+
     def plot_settings_changed():
+        self.settings['wordlist']['rank_no_limit'] = checkbox_rank_no_limit.isChecked()
+        self.settings['wordlist']['rank_min'] = spin_box_rank_min.value()
+        self.settings['wordlist']['rank_max'] = (None
+                                                 if checkbox_rank_no_limit.isChecked()
+                                                 else spin_box_rank_max.value())
+
         self.settings['wordlist']['cumulative'] = checkbox_cumulative.isChecked()
 
     def filter_settings_changed():
-        self.settings['wordlist']['freq_first_no_limit'] = checkbox_freq_first.isChecked()
-        self.settings['wordlist']['freq_first_min'] = spin_box_freq_first_min.value()
-        self.settings['wordlist']['freq_first_max'] = (float('inf')
-                                                    if checkbox_freq_first.isChecked()
-                                                    else spin_box_freq_first_max.value())
+        self.settings['wordlist']['freq_no_limit'] = checkbox_freq_no_limit.isChecked()
+        self.settings['wordlist']['freq_min'] = spin_box_freq_min.value()
+        self.settings['wordlist']['freq_max'] = (float('inf')
+                                                 if checkbox_freq_no_limit.isChecked()
+                                                 else spin_box_freq_max.value())
+        self.settings['wordlist']['freq_apply_to'] = table_wordlist.combo_box_freq_apply_to.currentText()
 
-        self.settings['wordlist']['freq_total_no_limit'] = checkbox_freq_total.isChecked()
-        self.settings['wordlist']['freq_total_min'] = spin_box_freq_total_min.value()
-        self.settings['wordlist']['freq_total_max'] = (float('inf')
-                                                    if checkbox_freq_total.isChecked()
-                                                    else spin_box_freq_total_max.value())
-
-        self.settings['wordlist']['rank_no_limit'] = checkbox_rank.isChecked()
-        self.settings['wordlist']['rank_min'] = spin_box_rank_min.value()
-        self.settings['wordlist']['rank_max'] = (float('inf')
-                                              if checkbox_rank.isChecked()
-                                              else spin_box_rank_max.value())
-
-        self.settings['wordlist']['len_no_limit'] = checkbox_len.isChecked()
+        self.settings['wordlist']['len_no_limit'] = checkbox_len_no_limit.isChecked()
         self.settings['wordlist']['len_min'] = spin_box_len_min.value()
         self.settings['wordlist']['len_max'] = (float('inf')
-                                             if checkbox_len.isChecked()
-                                             else spin_box_len_max.value())
+                                                if checkbox_len_no_limit.isChecked()
+                                                else spin_box_len_max.value())
 
-        self.settings['wordlist']['files_no_limit'] = checkbox_files.isChecked()
+        self.settings['wordlist']['files_no_limit'] = checkbox_files_no_limit.isChecked()
         self.settings['wordlist']['files_min'] = spin_box_files_min.value()
         self.settings['wordlist']['files_max'] = (float('inf')
-                                               if checkbox_files.isChecked()
-                                               else spin_box_files_max.value())
+                                                  if checkbox_files_no_limit.isChecked()
+                                                  else spin_box_files_max.value())
 
-        if self.settings['wordlist']['freq_first_no_limit']:
-            spin_box_freq_first_max.setEnabled(False)
-        else:
-            spin_box_freq_first_max.setEnabled(True)
-
-        if self.settings['wordlist']['freq_total_no_limit']:
-            spin_box_freq_total_max.setEnabled(False)
-        else:
-            spin_box_freq_total_max.setEnabled(True)
-
-        if self.settings['wordlist']['rank_no_limit']:
-            spin_box_rank_max.setEnabled(False)
-        else:
-            spin_box_rank_max.setEnabled(True)
-
-        if self.settings['wordlist']['len_no_limit']:
-            spin_box_len_max.setEnabled(False)
-        else:
-            spin_box_len_max.setEnabled(True)
-
-        if self.settings['wordlist']['files_no_limit']:
-            spin_box_files_max.setEnabled(False)
-        else:
-            spin_box_files_max.setEnabled(True)
+        checkbox_show_pct.stateChanged.emit(self.settings['wordlist']['show_pct'])
 
     def restore_defaults():
         checkbox_words.setChecked(self.default_settings['wordlist']['words'])
@@ -157,72 +95,74 @@ def init(self):
         checkbox_ignore_case.setChecked(self.default_settings['wordlist']['ignore_case'])
         checkbox_lemmatization.setChecked(self.default_settings['wordlist']['lemmatization'])
 
-        checkbox_cumulative.setChecked(self.default_settings['wordlist']['cumulative'])
+        checkbox_show_pct.setChecked(self.default_settings['wordlist']['show_pct'])
+        checkbox_show_cumulative.setChecked(self.default_settings['wordlist']['show_cumulative'])
+        checkbox_show_breakdown.setChecked(self.default_settings['wordlist']['show_breakdown'])
 
-        checkbox_freq_first.setChecked(self.default_settings['wordlist']['freq_first_no_limit'])
-        spin_box_freq_first_min.setValue(self.default_settings['wordlist']['freq_first_min'])
-        spin_box_freq_first_max.setValue(self.default_settings['wordlist']['freq_first_max'])
-        checkbox_freq_total.setChecked(self.default_settings['wordlist']['freq_total_no_limit'])
-        spin_box_freq_total_min.setValue(self.default_settings['wordlist']['freq_total_min'])
-        spin_box_freq_total_max.setValue(self.default_settings['wordlist']['freq_total_max'])
-        checkbox_rank.setChecked(self.default_settings['wordlist']['rank_no_limit'])
+        checkbox_rank_no_limit.setChecked(self.default_settings['wordlist']['rank_no_limit'])
         spin_box_rank_min.setValue(self.default_settings['wordlist']['rank_min'])
         spin_box_rank_max.setValue(self.default_settings['wordlist']['rank_max'])
-        checkbox_len.setChecked(self.default_settings['wordlist']['len_no_limit'])
+        checkbox_cumulative.setChecked(self.default_settings['wordlist']['cumulative'])
+
+        checkbox_freq_no_limit.setChecked(self.default_settings['wordlist']['freq_no_limit'])
+        spin_box_freq_min.setValue(self.default_settings['wordlist']['freq_min'])
+        spin_box_freq_max.setValue(self.default_settings['wordlist']['freq_max'])
+        table_wordlist.combo_box_freq_apply_to.setCurrentText(self.default_settings['wordlist']['freq_apply_to'])
+
+        checkbox_len_no_limit.setChecked(self.default_settings['wordlist']['len_no_limit'])
         spin_box_len_min.setValue(self.default_settings['wordlist']['len_min'])
         spin_box_len_max.setValue(self.default_settings['wordlist']['len_max'])
-        checkbox_files.setChecked(self.default_settings['wordlist']['files_no_limit'])
+
+        checkbox_files_no_limit.setChecked(self.default_settings['wordlist']['files_no_limit'])
         spin_box_files_min.setValue(self.default_settings['wordlist']['files_min'])
         spin_box_files_max.setValue(self.default_settings['wordlist']['files_max'])
 
         token_settings_changed()
         search_settings_changed()
+        table_settings_changed()
         plot_settings_changed()
         filter_settings_changed()
 
-    tab_wordlist = QWidget(self)
+    tab_wordlist = wordless_tab.Wordless_Tab(self, self.tr('Wordlist'))
 
-    table_wordlist = Wordless_Table_Wordlist(self, [
+    table_wordlist = wordless_table.Wordless_Table(self,
+                                                   headers = [
                                                        self.tr('Rank'),
                                                        self.tr('Tokens'),
                                                        self.tr('Total'),
-                                                       self.tr('Total (%)'),
-                                                       self.tr('Cumulative Total'),
-                                                       self.tr('Cumulative Total (%)'),
+                                                       self.tr('Total (Cumulative)'),
                                                        self.tr('Files Found'),
-                                                       self.tr('Files Found (%)')
                                                    ])
 
-    table_wordlist.button_generate_wordlist = QPushButton('Generate Wordlist', self)
-    table_wordlist.button_generate_plot = QPushButton('Generate Plot', self)
+    table_wordlist.button_generate_data = QPushButton(self.tr('Generate Wordlist'), self)
+    table_wordlist.button_generate_plot = QPushButton(self.tr('Generate Plot'), self)
 
-    table_wordlist.button_generate_wordlist.clicked.connect(lambda: generate_wordlist(self, table_wordlist))
+    table_wordlist.button_generate_data.clicked.connect(lambda: generate_data(table_wordlist))
     table_wordlist.button_generate_plot.clicked.connect(lambda: generate_plot(self))
 
-    layout_wordlist_left = QGridLayout()
-    layout_wordlist_left.addWidget(table_wordlist, 0, 0, 1, 5)
-    layout_wordlist_left.addWidget(table_wordlist.button_generate_wordlist, 1, 0)
-    layout_wordlist_left.addWidget(table_wordlist.button_generate_plot, 1, 1)
-    layout_wordlist_left.addWidget(table_wordlist.button_export_selected, 1, 2)
-    layout_wordlist_left.addWidget(table_wordlist.button_export_all, 1, 3)
-    layout_wordlist_left.addWidget(table_wordlist.button_clear, 1, 4)
+    tab_wordlist.layout_table.addWidget(table_wordlist, 0, 0, 1, 5)
+    tab_wordlist.layout_table.addWidget(table_wordlist.button_generate_data, 1, 0)
+    tab_wordlist.layout_table.addWidget(table_wordlist.button_generate_plot, 1, 1)
+    tab_wordlist.layout_table.addWidget(table_wordlist.button_export_selected, 1, 2)
+    tab_wordlist.layout_table.addWidget(table_wordlist.button_export_all, 1, 3)
+    tab_wordlist.layout_table.addWidget(table_wordlist.button_clear, 1, 4)
 
     # Token Settings
-    groupbox_token_settings = QGroupBox('Token Settings', self)
+    group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
 
-    checkbox_words = QCheckBox('Words', self)
-    checkbox_lowercase = QCheckBox('Lowercase', self)
-    checkbox_uppercase = QCheckBox('Uppercase', self)
-    checkbox_title_cased = QCheckBox('Title Cased', self)
-    checkbox_numerals = QCheckBox('Numerals', self)
-    checkbox_punctuations = QCheckBox('Punctuations', self)
+    (checkbox_words,
+     checkbox_lowercase,
+     checkbox_uppercase,
+     checkbox_title_cased,
+     checkbox_numerals,
+     checkbox_punctuations) = wordless_widgets.wordless_widgets_token_settings(self)
 
-    checkbox_words.clicked.connect(lambda: token_settings_changed(checkbox_words))
-    checkbox_lowercase.clicked.connect(token_settings_changed)
-    checkbox_uppercase.clicked.connect(token_settings_changed)
-    checkbox_title_cased.clicked.connect(token_settings_changed)
-    checkbox_numerals.clicked.connect(token_settings_changed)
-    checkbox_punctuations.clicked.connect(token_settings_changed)
+    checkbox_words.stateChanged.connect(token_settings_changed)
+    checkbox_lowercase.stateChanged.connect(token_settings_changed)
+    checkbox_uppercase.stateChanged.connect(token_settings_changed)
+    checkbox_title_cased.stateChanged.connect(token_settings_changed)
+    checkbox_numerals.stateChanged.connect(token_settings_changed)
+    checkbox_punctuations.stateChanged.connect(token_settings_changed)
 
     layout_token_settings = QGridLayout()
     layout_token_settings.addWidget(checkbox_words, 0, 0)
@@ -232,13 +172,28 @@ def init(self):
     layout_token_settings.addWidget(checkbox_numerals, 1, 0)
     layout_token_settings.addWidget(checkbox_punctuations, 2, 0)
 
-    groupbox_token_settings.setLayout(layout_token_settings)
+    group_box_token_settings.setLayout(layout_token_settings)
 
     # Search Settings
-    groupbox_search_settings = QGroupBox('Search Settings', self)
+    group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
 
-    checkbox_ignore_case = QCheckBox('Ignore Case', self)
-    checkbox_lemmatization = QCheckBox('Lemmatization', self)
+    (label_search_term,
+     line_edit_search_term,
+     list_search_terms,
+     checkbox_ignore_case,
+     checkbox_lemmatization,
+     checkbox_whole_word,
+     checkbox_regex,
+     checkbox_multi_search,
+     checkbox_show_all) = wordless_widgets.wordless_widgets_search_settings(self)
+
+    label_search_term.hide()
+    line_edit_search_term.hide()
+    list_search_terms.hide()
+    checkbox_whole_word.hide()
+    checkbox_regex.hide()
+    checkbox_multi_search.hide()
+    checkbox_show_all.hide()
 
     checkbox_ignore_case.stateChanged.connect(search_settings_changed)
     checkbox_lemmatization.stateChanged.connect(search_settings_changed)
@@ -247,259 +202,202 @@ def init(self):
     layout_search_settings.addWidget(checkbox_ignore_case, 0, 0)
     layout_search_settings.addWidget(checkbox_lemmatization, 1, 0)
 
-    groupbox_search_settings.setLayout(layout_search_settings)
+    group_box_search_settings.setLayout(layout_search_settings)
+
+    # Table Settings
+    group_box_table_settings = QGroupBox(self.tr('Table Settings'))
+
+    (checkbox_show_pct,
+     checkbox_show_cumulative,
+     checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(self, table_wordlist)
+
+    checkbox_show_pct.stateChanged.connect(table_settings_changed)
+    checkbox_show_cumulative.stateChanged.connect(table_settings_changed)
+    checkbox_show_breakdown.stateChanged.connect(table_settings_changed)
+
+    layout_table_settings = QGridLayout()
+    layout_table_settings.addWidget(checkbox_show_pct, 0, 0)
+    layout_table_settings.addWidget(checkbox_show_cumulative, 1, 0)
+    layout_table_settings.addWidget(checkbox_show_breakdown, 2, 0)
+
+    group_box_table_settings.setLayout(layout_table_settings)
 
     # Plot Settings
-    groupbox_plot_settings = QGroupBox('Plot Settings', self)
+    group_box_plot_settings = QGroupBox(self.tr('Plot Settings'), self)
 
-    checkbox_cumulative = QCheckBox('Cumulative', self)
+    label_rank = QLabel(self.tr('Rank:'), self)
+    (checkbox_rank_no_limit,
+     label_rank_min,
+     spin_box_rank_min,
+     label_rank_max,
+     spin_box_rank_max) = wordless_widgets.wordless_widgets_filter(self, 1, 10000)
+    checkbox_cumulative = QCheckBox(self.tr('Cumulative'), self)
 
+    checkbox_rank_no_limit.stateChanged.connect(plot_settings_changed)
+    spin_box_rank_min.valueChanged.connect(plot_settings_changed)
+    spin_box_rank_max.valueChanged.connect(plot_settings_changed)
     checkbox_cumulative.stateChanged.connect(plot_settings_changed)
 
     layout_plot_settings = QGridLayout()
-    layout_plot_settings.addWidget(checkbox_cumulative, 0, 0, Qt.AlignTop)
+    layout_plot_settings.addWidget(label_rank, 0, 0, 1, 3)
+    layout_plot_settings.addWidget(checkbox_rank_no_limit, 0, 3)
+    layout_plot_settings.addWidget(label_rank_min, 1, 0)
+    layout_plot_settings.addWidget(spin_box_rank_min, 1, 1)
+    layout_plot_settings.addWidget(label_rank_max, 1, 2)
+    layout_plot_settings.addWidget(spin_box_rank_max, 1, 3)
+    layout_plot_settings.addWidget(checkbox_cumulative, 2, 0, 1, 4)
 
-    groupbox_plot_settings.setLayout(layout_plot_settings)
+    group_box_plot_settings.setLayout(layout_plot_settings)
 
     # Filter Settings
-    groupbox_filter_settings = QGroupBox('Filter Settings', self)
+    group_box_filter_settings = QGroupBox(self.tr('Filter Settings'), self)
 
-    label_freq_first = QLabel('Frequency (First File):', self)
-    checkbox_freq_first = QCheckBox('No Limit', self)
-    label_freq_first_min = QLabel('From', self)
-    spin_box_freq_first_min = QSpinBox(self)
-    label_freq_first_max = QLabel('To', self)
-    spin_box_freq_first_max = QSpinBox(self)
+    label_freq = QLabel(self.tr('Frequency:'), self)
+    (checkbox_freq_no_limit,
+     label_freq_min,
+     spin_box_freq_min,
+     label_freq_max,
+     spin_box_freq_max,
+     label_freq_apply_to,
+     table_wordlist.combo_box_freq_apply_to) = wordless_widgets.wordless_widgets_filter(self,
+                                                                                        filter_min = 0,
+                                                                                        filter_max = 10000,
+                                                                                        table = table_wordlist,
+                                                                                        column = 'Total')
 
-    label_freq_total = QLabel('Frequency (Total):', self)
-    checkbox_freq_total = QCheckBox('No Limit', self)
-    label_freq_total_min = QLabel('From', self)
-    spin_box_freq_total_min = QSpinBox(self)
-    label_freq_total_max = QLabel('To', self)
-    spin_box_freq_total_max = QSpinBox(self)
+    label_len = QLabel(self.tr('Token Length:'), self)
+    (checkbox_len_no_limit,
+     label_len_min,
+     spin_box_len_min,
+     label_len_max,
+     spin_box_len_max) = wordless_widgets.wordless_widgets_filter(self, table = table_wordlist, column = 'Tokens')
 
-    label_rank = QLabel('Rank:', self)
-    checkbox_rank = QCheckBox('No Limit', self)
-    label_rank_min = QLabel('From', self)
-    spin_box_rank_min = QSpinBox(self)
-    label_rank_max = QLabel('To', self)
-    spin_box_rank_max = QSpinBox(self)
+    label_files = QLabel(self.tr('Files Found:'), self)
+    (checkbox_files_no_limit,
+     label_files_min,
+     spin_box_files_min,
+     label_files_max,
+     spin_box_files_max) = wordless_widgets.wordless_widgets_filter(self, filter_min = 1, filter_max = 1000,
+                                                                    table = table_wordlist, column = 'Files Found')
 
-    label_len = QLabel('Token Length:', self)
-    checkbox_len = QCheckBox('No Limit', self)
-    label_len_min = QLabel('From', self)
-    spin_box_len_min = QSpinBox(self)
-    label_len_max = QLabel('To', self)
-    spin_box_len_max = QSpinBox(self)
+    checkbox_freq_no_limit.stateChanged.connect(filter_settings_changed)
+    spin_box_freq_min.editingFinished.connect(filter_settings_changed)
+    spin_box_freq_max.editingFinished.connect(filter_settings_changed)
+    table_wordlist.combo_box_freq_apply_to.currentTextChanged.connect(filter_settings_changed)
 
-    label_files = QLabel('Files Found:', self)
-    checkbox_files = QCheckBox('No Limit', self)
-    label_files_min = QLabel('From', self)
-    spin_box_files_min = QSpinBox(self)
-    label_files_max = QLabel('To', self)
-    spin_box_files_max = QSpinBox(self)
+    checkbox_len_no_limit.stateChanged.connect(filter_settings_changed)
+    spin_box_len_min.editingFinished.connect(filter_settings_changed)
+    spin_box_len_max.editingFinished.connect(filter_settings_changed)
 
-    spin_box_freq_first_min.setRange(1, 1000000)
-    spin_box_freq_first_max.setRange(1, 1000000)
-    spin_box_freq_total_min.setRange(1, 1000000)
-    spin_box_freq_total_max.setRange(1, 1000000)
-    spin_box_rank_min.setRange(1, 1000000)
-    spin_box_rank_max.setRange(1, 1000000)
-    spin_box_len_min.setRange(1, 100)
-    spin_box_len_max.setRange(1, 100)
-    spin_box_files_min.setRange(1, 10000)
-    spin_box_files_max.setRange(1, 10000)
-
-    checkbox_freq_first.stateChanged.connect(filter_settings_changed)
-    spin_box_freq_first_min.valueChanged.connect(filter_settings_changed)
-    spin_box_freq_first_max.valueChanged.connect(filter_settings_changed)
-    checkbox_freq_total.stateChanged.connect(filter_settings_changed)
-    spin_box_freq_total_min.valueChanged.connect(filter_settings_changed)
-    spin_box_freq_total_max.valueChanged.connect(filter_settings_changed)
-    checkbox_rank.stateChanged.connect(filter_settings_changed)
-    spin_box_rank_min.valueChanged.connect(filter_settings_changed)
-    spin_box_rank_max.valueChanged.connect(filter_settings_changed)
-    checkbox_len.stateChanged.connect(filter_settings_changed)
-    spin_box_len_min.valueChanged.connect(filter_settings_changed)
-    spin_box_len_max.valueChanged.connect(filter_settings_changed)
-    checkbox_files.stateChanged.connect(filter_settings_changed)
-    spin_box_files_min.valueChanged.connect(filter_settings_changed)
-    spin_box_files_max.valueChanged.connect(filter_settings_changed)
+    checkbox_files_no_limit.stateChanged.connect(filter_settings_changed)
+    spin_box_files_min.editingFinished.connect(filter_settings_changed)
+    spin_box_files_max.editingFinished.connect(filter_settings_changed)
 
     layout_filter_settings = QGridLayout()
-    layout_filter_settings.addWidget(label_freq_first, 0, 0, 1, 3)
-    layout_filter_settings.addWidget(checkbox_freq_first, 0, 3)
-    layout_filter_settings.addWidget(label_freq_first_min, 1, 0)
-    layout_filter_settings.addWidget(spin_box_freq_first_min, 1, 1)
-    layout_filter_settings.addWidget(label_freq_first_max, 1, 2)
-    layout_filter_settings.addWidget(spin_box_freq_first_max, 1, 3)
+    layout_filter_settings.addWidget(label_freq, 0, 0, 1, 3)
+    layout_filter_settings.addWidget(checkbox_freq_no_limit, 0, 3)
+    layout_filter_settings.addWidget(label_freq_min, 1, 0)
+    layout_filter_settings.addWidget(spin_box_freq_min, 1, 1)
+    layout_filter_settings.addWidget(label_freq_max, 1, 2)
+    layout_filter_settings.addWidget(spin_box_freq_max, 1, 3)
+    layout_filter_settings.addWidget(label_freq_apply_to, 2, 0)
+    layout_filter_settings.addWidget(table_wordlist.combo_box_freq_apply_to, 2, 1, 1, 3)
 
-    layout_filter_settings.addWidget(label_freq_total, 2, 0, 1, 3)
-    layout_filter_settings.addWidget(checkbox_freq_total, 2, 3)
-    layout_filter_settings.addWidget(label_freq_total_min, 3, 0)
-    layout_filter_settings.addWidget(spin_box_freq_total_min, 3, 1)
-    layout_filter_settings.addWidget(label_freq_total_max, 3, 2)
-    layout_filter_settings.addWidget(spin_box_freq_total_max, 3, 3)
+    layout_filter_settings.addWidget(label_len, 4, 0, 1, 3)
+    layout_filter_settings.addWidget(checkbox_len_no_limit, 4, 3)
+    layout_filter_settings.addWidget(label_len_min, 5, 0)
+    layout_filter_settings.addWidget(spin_box_len_min, 5, 1)
+    layout_filter_settings.addWidget(label_len_max, 5, 2)
+    layout_filter_settings.addWidget(spin_box_len_max, 5, 3)
 
-    layout_filter_settings.addWidget(label_rank, 4, 0, 1, 3)
-    layout_filter_settings.addWidget(checkbox_rank, 4, 3)
-    layout_filter_settings.addWidget(label_rank_min, 5, 0)
-    layout_filter_settings.addWidget(spin_box_rank_min, 5, 1)
-    layout_filter_settings.addWidget(label_rank_max, 5, 2)
-    layout_filter_settings.addWidget(spin_box_rank_max, 5, 3)
+    layout_filter_settings.addWidget(label_files, 6, 0, 1, 3)
+    layout_filter_settings.addWidget(checkbox_files_no_limit, 6, 3)
+    layout_filter_settings.addWidget(label_files_min, 7, 0)
+    layout_filter_settings.addWidget(spin_box_files_min, 7, 1)
+    layout_filter_settings.addWidget(label_files_max, 7, 2)
+    layout_filter_settings.addWidget(spin_box_files_max, 7, 3)
 
-    layout_filter_settings.addWidget(label_len, 6, 0, 1, 3)
-    layout_filter_settings.addWidget(checkbox_len, 6, 3)
-    layout_filter_settings.addWidget(label_len_min, 7, 0)
-    layout_filter_settings.addWidget(spin_box_len_min, 7, 1)
-    layout_filter_settings.addWidget(label_len_max, 7, 2)
-    layout_filter_settings.addWidget(spin_box_len_max, 7, 3)
+    group_box_filter_settings.setLayout(layout_filter_settings)
 
-    layout_filter_settings.addWidget(label_files, 8, 0, 1, 3)
-    layout_filter_settings.addWidget(checkbox_files, 8, 3)
-    layout_filter_settings.addWidget(label_files_min, 9, 0)
-    layout_filter_settings.addWidget(spin_box_files_min, 9, 1)
-    layout_filter_settings.addWidget(label_files_max, 9, 2)
-    layout_filter_settings.addWidget(spin_box_files_max, 9, 3)
+    tab_wordlist.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
+    tab_wordlist.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
+    tab_wordlist.layout_settings.addWidget(group_box_table_settings, 2, 0, Qt.AlignTop)
+    tab_wordlist.layout_settings.addWidget(group_box_plot_settings, 3, 0, Qt.AlignTop)
+    tab_wordlist.layout_settings.addWidget(group_box_filter_settings, 4, 0, Qt.AlignTop)
 
-    groupbox_filter_settings.setLayout(layout_filter_settings)
-
-    # Scroll Area Wrapper
-    wrapper_settings = QWidget(self)
-
-    layout_settings = QGridLayout()
-    layout_settings.addWidget(groupbox_token_settings, 0, 0, Qt.AlignTop)
-    layout_settings.addWidget(groupbox_search_settings, 1, 0, Qt.AlignTop)
-    layout_settings.addWidget(groupbox_plot_settings, 2, 0, Qt.AlignTop)
-    layout_settings.addWidget(groupbox_filter_settings, 3, 0, Qt.AlignTop)
-
-    wrapper_settings.setLayout(layout_settings)
-
-    scroll_area_settings = wordless_widgets.Wordless_Scroll_Area(self)
-    scroll_area_settings.setWidget(wrapper_settings)
-
-    button_advanced_settings = QPushButton(self.tr('Advanced Settings'), self)
-    button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
-
-    button_advanced_settings.clicked.connect(lambda: self.wordless_settings.settings_load('Wordlist'))
-    button_restore_defaults.clicked.connect(restore_defaults)
-
-    layout_wordlist = QGridLayout()
-    layout_wordlist.addLayout(layout_wordlist_left, 0, 0, 2, 1)
-    layout_wordlist.addWidget(scroll_area_settings, 0, 1, 1, 2)
-    layout_wordlist.addWidget(button_advanced_settings, 1, 1)
-    layout_wordlist.addWidget(button_restore_defaults, 1, 2)
-
-    layout_wordlist.setColumnStretch(0, 8)
-    layout_wordlist.setColumnStretch(1, 1)
-    layout_wordlist.setColumnStretch(2, 1)
-
-    tab_wordlist.setLayout(layout_wordlist)
+    tab_wordlist.button_restore_defaults.clicked.connect(restore_defaults)
 
     restore_defaults()
 
     return tab_wordlist
 
-def generate_wordlist(self, table):
-    freq_previous = -1
-    freq_total = 0
-
+@wordless_misc.check_results_table
+def generate_data(self, table):
     table.clear_table()
-    table.setRowCount(0)
 
     files = wordless_misc.fetch_files(self)
 
+    # Update filter settings
+    apply_to_text_old = table.combo_box_freq_apply_to.currentText()
+    table.combo_box_freq_apply_to.clear()
+
     for i, file in enumerate(files):
-        table.insert_column(table.find_column('Total'), file.name)
+        table.insert_column(table.find_column(self.tr('Total')), file.name)
+        table.insert_column(table.find_column(self.tr('Total')), file.name + self.tr(' (Cumulative)'))
+
+        table.combo_box_freq_apply_to.addItem(file.name)
+    table.combo_box_freq_apply_to.addItem('Total')
+
+    if apply_to_text_old == file.name:
+            table.combo_box_freq_apply_to.setCurrentText(file.name)
+
+    table.cols_pct = list(range(2, table.columnCount()))
+
+    freq_distributions = wordless_distribution.wordless_distributions(self, files, mode = 'wordlist')
+
+    col_total = table.find_column(self.tr('Total'))
+    col_files_found = table.find_column(self.tr('Files Found'))
+
+    freqs_files = [freqs for freqs in zip(*freq_distributions.values())]
+    total_files = [sum(freqs) for freqs in freqs_files]
+    freqs_total = sum([sum(freqs) for freqs in freqs_files])
+    len_files = len(files)
 
     table.setSortingEnabled(False)
-
-    column_total = table.find_column('Total')
-    column_total_percentage = table.find_column('Total (%)')
-    column_cumulative_total = table.find_column('Cumulative Total')
-    column_cumulative_total_percentage = table.find_column('Cumulative Total (%)')
-    column_files_found = table.find_column('Files Found')
-    column_files_found_percentage = table.find_column('Files Found (%)')
-
-    freq_distributions = wordless_freq.wordless_freq_distributions(self, files, mode = 'wordlist')
+    table.setUpdatesEnabled(False)
+    table.setRowCount(len(freq_distributions))
 
     for i, (token, freqs) in enumerate(freq_distributions.items()):
-        table.setRowCount(table.rowCount() + 1)
+        # Tokens
+        table.setItem(i, 1, wordless_table.Wordless_Table_Item(token))
 
-        # Rank
-        table.setItem(i, 0, QTableWidgetItem())
-        if freqs[0] == freq_previous:
-            table.item(i, 0).setData(Qt.DisplayRole, table.item(i - 1, 0).data(Qt.DisplayRole))
-        else:
-            table.item(i, 0).setData(Qt.DisplayRole, i + 1)
-
-        # Token
-        table.setItem(i, 1, QTableWidgetItem(token))
         # Frequency
         for j, freq in enumerate(freqs):
-            table.setItem(i, j + 2, QTableWidgetItem())
-            table.item(i, j + 2).setData(Qt.DisplayRole, freq)
+            table.set_item_with_pct(i, 2 + j * 2, freq, total_files[j])
 
         # Total
-        table.setItem(i, column_total, QTableWidgetItem())
-        table.item(i, column_total).setData(Qt.DisplayRole, sum(freqs))
+        table.set_item_with_pct(i, col_total, sum(freqs), freqs_total)
 
         # Files Found
-        table.setItem(i, column_files_found, QTableWidgetItem())
-        table.item(i, column_files_found).setData(Qt.DisplayRole, len([freq for freq in freqs if freq]))
-        # Files Found (%)
-        table.setItem(i, column_files_found_percentage, QTableWidgetItem())
-        table.item(i, column_files_found_percentage).setData(Qt.DisplayRole,
-                                                             round(table.item(i, column_files_found).data(Qt.DisplayRole) /
-                                                                   len(files) * 100,
-                                                                   self.settings['general']['precision']))
+        table.set_item_with_pct(i, col_files_found, len([freq for freq in freqs if freq > 0]), len_files)
 
-        freq_previous = freqs[0]
-        freq_total += sum(freqs)
+    table.sortByColumn(table.find_column('Tokens') + 1, Qt.DescendingOrder)
 
-    for i in range(table.rowCount()):
-        # Total (%)
-        table.setItem(i, column_total_percentage, QTableWidgetItem())
-        table.item(i, column_total_percentage).setData(Qt.DisplayRole,
-                                                       round(table.item(i, column_total).data(Qt.DisplayRole) /
-                                                             freq_total * 100,
-                                                             self.settings['general']['precision']))
-
-        # Cumulative Total & Cumulative Total (%)
-        table.setItem(i, column_cumulative_total, QTableWidgetItem())
-        table.setItem(i, column_cumulative_total_percentage, QTableWidgetItem())
-
-        if i == 0:
-            table.item(i, column_cumulative_total).setData(Qt.DisplayRole,
-                                                           table.item(i, column_total).data(Qt.DisplayRole))
-            table.item(i, column_cumulative_total_percentage).setData(Qt.DisplayRole,
-                                                                      table.item(i, column_total_percentage).data(Qt.DisplayRole))
-        else:
-            table.item(i, column_cumulative_total).setData(Qt.DisplayRole,
-                                                           round(table.item(i - 1,column_cumulative_total).data(Qt.DisplayRole) +
-                                                                 table.item(i, column_total).data(Qt.DisplayRole),
-                                                                 self.settings['general']['precision']))
-            table.item(i, column_cumulative_total_percentage).setData(Qt.DisplayRole,
-                                                                      round(table.item(i, column_cumulative_total).data(Qt.DisplayRole) / freq_total * 100,
-                                                                            self.settings['general']['precision']))
-
-    if table.rowCount() > 0:
-        table.sortByColumn(table.find_column('Tokens') + 1, Qt.DescendingOrder)
-    else:
-        table.clear_table()
-
-        QMessageBox.information(self,
-                                self.tr('No Search Results'),
-                                self.tr('There are no results for your search!<br>You might want to change your settings and try it again.'),
-                                QMessageBox.Ok)
+    table.combo_box_freq_apply_to.currentTextChanged.emit('')
 
     table.setSortingEnabled(True)
+    table.setUpdatesEnabled(True)
         
-    self.status_bar.showMessage('Done!')
+    self.status_bar.showMessage(self.tr('Done!'))
 
 def generate_plot(self):
-    freq_distributions = wordless_freq.wordless_freq_distributions(self, wordless_misc.fetch_files(self), mode = 'wordlist')
+    files = wordless_misc.fetch_files(self)
 
-    freq_distributions.plot(cumulative = self.settings['wordlist']['cumulative'])
+    freq_distributions = wordless_distribution.wordless_distributions(self, files, mode = 'wordlist')
 
-    self.status_bar.showMessage('Done!')
+    freq_distributions.plot(files = files,
+                            start = self.settings['wordlist']['rank_min'] - 1,
+                            end = self.settings['wordlist']['rank_max'],
+                            cumulative = self.settings['wordlist']['cumulative'])
+
+    self.status_bar.showMessage(self.tr('Done!'))

@@ -13,12 +13,6 @@ import nltk
 
 from wordless_utils import *
 
-class Wordless_Table_Concordancer(wordless_table.Wordless_Table):
-    def __init__(self, parent, headers, stretch_columns = []):
-        super().__init__(parent, headers = headers, stretch_columns = stretch_columns)
-
-        self.item_changed()
-
 class Wordless_Table_Multi_Sort_Concordancer(wordless_table.Wordless_Table_Multi_Sort):
     def __init__(self, parent, sort_table, sort_columns):
         self.sort_table = sort_table
@@ -290,16 +284,16 @@ def init(self):
         search_settings_changed()
         sorting_settings_changed()
 
-    tab_concordancer = QWidget(self)
+    tab_concordancer = wordless_tab.Wordless_Tab(self, self.tr('Concordancer'))
 
-    table_concordancer = Wordless_Table_Concordancer(self,
-                                                     [
-                                                         self.tr('File Name'),
-                                                         self.tr('Offset'),
-                                                         self.tr('Left'),
-                                                         self.tr('Query'),
-                                                         self.tr('Right')
-                                                     ])
+    table_concordancer = wordless_table.Wordless_Table(self,
+                                                       headers = [
+                                                           self.tr('File Name'),
+                                                           self.tr('Offset'),
+                                                           self.tr('Left'),
+                                                           self.tr('Query'),
+                                                           self.tr('Right')
+                                                       ])
 
     table_concordancer.button_search = QPushButton(self.tr('Begin Search'), self)
     table_concordancer.button_generate_plot = QPushButton(self.tr('Generate Plot'), self)
@@ -308,13 +302,12 @@ def init(self):
                                                                     combo_box_sort_column, table_multi_sort))
     table_concordancer.button_generate_plot.clicked.connect(lambda: generate_plot(self))
 
-    layout_concordancer_left = QGridLayout()
-    layout_concordancer_left.addWidget(table_concordancer, 0, 0, 1, 5)
-    layout_concordancer_left.addWidget(table_concordancer.button_search, 1, 0)
-    layout_concordancer_left.addWidget(table_concordancer.button_generate_plot, 1, 1)
-    layout_concordancer_left.addWidget(table_concordancer.button_export_selected, 1, 2)
-    layout_concordancer_left.addWidget(table_concordancer.button_export_all, 1, 3)
-    layout_concordancer_left.addWidget(table_concordancer.button_clear, 1, 4)
+    tab_concordancer.layout_table.addWidget(table_concordancer, 0, 0, 1, 5)
+    tab_concordancer.layout_table.addWidget(table_concordancer.button_search, 1, 0)
+    tab_concordancer.layout_table.addWidget(table_concordancer.button_generate_plot, 1, 1)
+    tab_concordancer.layout_table.addWidget(table_concordancer.button_export_selected, 1, 2)
+    tab_concordancer.layout_table.addWidget(table_concordancer.button_export_all, 1, 3)
+    tab_concordancer.layout_table.addWidget(table_concordancer.button_clear, 1, 4)
 
     # Token Settings
     groupbox_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -349,10 +342,7 @@ def init(self):
     spin_box_number_lines = QSpinBox(self)
     checkbox_number_lines = QCheckBox(self.tr('No Limit'), self)
 
-    combo_box_line_width.addItems([
-                                     self.tr('Tokens'),
-                                     self.tr('Characters')
-                                 ])
+    combo_box_line_width.addItems([self.tr('Tokens'), self.tr('Characters')])
 
     spin_box_line_width_char.setRange(1, 1000)
     spin_box_line_width_token.setRange(1, 100)
@@ -440,36 +430,11 @@ def init(self):
 
     groupbox_sorting_settings.setLayout(layout_sorting_settings)
 
-    # Scroll Area Wrapper
-    wrapper_settings = QWidget(self)
+    tab_concordancer.layout_settings.addWidget(groupbox_token_settings, 0, 0, Qt.AlignTop)
+    tab_concordancer.layout_settings.addWidget(groupbox_search_settings, 1, 0, Qt.AlignTop)
+    tab_concordancer.layout_settings.addWidget(groupbox_sorting_settings, 2, 0, Qt.AlignTop)
 
-    layout_settings = QGridLayout()
-    layout_settings.addWidget(groupbox_token_settings, 0, 0, Qt.AlignTop)
-    layout_settings.addWidget(groupbox_search_settings, 1, 0, Qt.AlignTop)
-    layout_settings.addWidget(groupbox_sorting_settings, 2, 0, Qt.AlignTop)
-
-    wrapper_settings.setLayout(layout_settings)
-
-    scroll_area_settings = wordless_widgets.Wordless_Scroll_Area(self)
-    scroll_area_settings.setWidget(wrapper_settings)
-
-    button_advanced_settings = QPushButton(self.tr('Advanced Settings'), self)
-    button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
-
-    button_advanced_settings.clicked.connect(lambda: self.wordless_settings.settings_load('Concordancer'))
-    button_restore_defaults.clicked.connect(restore_defaults)
-
-    layout_concordancer = QGridLayout()
-    layout_concordancer.addLayout(layout_concordancer_left, 0, 0, 2, 1)
-    layout_concordancer.addWidget(scroll_area_settings, 0, 1, 1, 2)
-    layout_concordancer.addWidget(button_advanced_settings, 1, 1)
-    layout_concordancer.addWidget(button_restore_defaults, 1, 2)
-
-    layout_concordancer.setColumnStretch(0, 8)
-    layout_concordancer.setColumnStretch(1, 1)
-    layout_concordancer.setColumnStretch(2, 1)
-
-    tab_concordancer.setLayout(layout_concordancer)
+    tab_concordancer.button_restore_defaults.clicked.connect(restore_defaults)
 
     restore_defaults()
 
