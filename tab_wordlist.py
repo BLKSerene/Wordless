@@ -168,12 +168,12 @@ def init(self):
      checkbox_numerals,
      checkbox_punctuations) = wordless_widgets.wordless_widgets_token_settings(self)
 
-    checkbox_words.clicked.connect(token_settings_changed)
-    checkbox_lowercase.clicked.connect(token_settings_changed)
-    checkbox_uppercase.clicked.connect(token_settings_changed)
-    checkbox_title_cased.clicked.connect(token_settings_changed)
-    checkbox_numerals.clicked.connect(token_settings_changed)
-    checkbox_punctuations.clicked.connect(token_settings_changed)
+    checkbox_words.stateChanged.connect(token_settings_changed)
+    checkbox_lowercase.stateChanged.connect(token_settings_changed)
+    checkbox_uppercase.stateChanged.connect(token_settings_changed)
+    checkbox_title_cased.stateChanged.connect(token_settings_changed)
+    checkbox_numerals.stateChanged.connect(token_settings_changed)
+    checkbox_punctuations.stateChanged.connect(token_settings_changed)
 
     layout_token_settings = QGridLayout()
     layout_token_settings.addWidget(checkbox_words, 0, 0)
@@ -372,8 +372,10 @@ def init(self):
 
 def generate_wordlist(self, table):
     freq_previous = -1
+    freq_cumulative = 0
+    total_cumulative = 0
 
-    table.clear_table(0)
+    table.clear_table()
 
     files = wordless_misc.fetch_files(self)
 
@@ -381,21 +383,21 @@ def generate_wordlist(self, table):
         table.insert_column(table.find_column(self.tr('Total')), file.name)
         table.insert_column(table.find_column(self.tr('Total')), file.name + self.tr(' (Cumulative)'))
 
-    table.setSortingEnabled(False)
+    freq_distributions = wordless_freq.wordless_freq_distributions(self, files, mode = 'wordlist')
 
     col_total = table.find_column(self.tr('Total'))
     col_total_cumulative = table.find_column(self.tr('Total (Cumulative)'))
     col_files_found = table.find_column(self.tr('Files Found'))
 
-    freq_distributions = wordless_freq.wordless_freq_distributions(self, files, mode = 'wordlist')
-
-    # Calculate the total frequency of all tokens for each file
     freqs_files = [freqs for freqs in zip(*freq_distributions.values())]
     total_files = [sum(freqs) for freqs in freqs_files]
+    freqs_total = sum([sum(freqs) for freqs in freqs_files])
+    len_files = len(files)
+
+    table.setSortingEnabled(False)
+    table.setRowCount(len(freq_distributions))
 
     for i, (token, freqs) in enumerate(freq_distributions.items()):
-        table.setRowCount(table.rowCount() + 1)
-
         # Rank
         table.setItem(i, 0, QTableWidgetItem())
         if freqs[0] == freq_previous:
@@ -409,20 +411,26 @@ def generate_wordlist(self, table):
         # Frequency
         for j, freq in enumerate(freqs):
             table.set_item_with_pct(i, 2 + j * 2, freq, total_files[j])
-            table.set_item_with_pct(i, 3 + j * 2, sum(freqs_files[j][: i + 1]), total_files[j])
+
+            freq_cumulative += freq
+
+            # Frequency (Cumulative)
+            table.set_item_with_pct(i, 3 + j * 2, freq_cumulative, total_files[j])
 
         # Total
-        table.set_item_with_pct(i, col_total, sum(freqs), sum(total_files))
+        table.set_item_with_pct(i, col_total, sum(freqs), freqs_total)
+
+        total_cumulative += sum(freqs)
 
         # Total (Cumulative)
-        table.set_item_with_pct(i, col_total_cumulative,
-                                sum([sum(freqs) for freqs in list(freq_distributions.values())[: i + 1]]),
-                                sum(total_files))
+        table.set_item_with_pct(i, col_total_cumulative, total_cumulative, total_files[j])
 
         # Files Found
-        table.set_item_with_pct(i, col_files_found, len([freq for freq in freqs if freq]), len(files))
+        table.set_item_with_pct(i, col_files_found, len([freq for freq in freqs if freq]), len_files)
 
         freq_previous = freqs[0]
+
+    table.setSortingEnabled(True)
 
     if table.rowCount() > 0:
         table.sortByColumn(table.find_column('Tokens') + 1, Qt.DescendingOrder)
@@ -433,8 +441,6 @@ def generate_wordlist(self, table):
                                 self.tr('No Search Results'),
                                 self.tr('There are no results for your search!<br>You might want to change your settings and try it again.'),
                                 QMessageBox.Ok)
-
-    table.setSortingEnabled(True)
         
     self.status_bar.showMessage(self.tr('Done!'))
 

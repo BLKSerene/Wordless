@@ -78,7 +78,7 @@ class Wordless_Table(QTableWidget):
         len_value = len('{:,}'.format(total))
         len_total = 5 + precision
 
-        item = Wordless_Table_Item('')
+        item = Wordless_Table_Item()
 
         if self.show_pct:
             item.setText('{:>{len_value},}/{:<{len_total}.{precision}%}'.format(value, value / total,

@@ -387,7 +387,11 @@ class Wordless_Main(QMainWindow):
                                         'whole_word': True,
                                         'regex': False,
                                         'multi_search': False,
-                                        'show_all_ngrams': False,
+                                        'show_all': False,
+
+                                        'show_pct': True,
+                                        'show_cumulative': True,
+                                        'show_breakdown': True,
         
                                         'cumulative': False,
         
@@ -654,87 +658,89 @@ class Wordless_Main(QMainWindow):
                                     self.tr('Acknowledgements'),
                                     self.tr(self.style_dialog +
                                             '''
-                                            <p>Thanks a million for the following open-source projects on which Wordless is built on:</p>
-                                            <table border="1">
-                                              <tr>
-                                                <th class="name">Name</th>
-                                                <th class="version">Version</th>
-                                                <th class="author">Author</th>
-                                                <th class="license">License</th>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://www.python.org/">Python</a></td>
-                                                <td>3.6.6</td>
-                                                <td><a href="https://www.python.org/psf/">Python Software Foundation</a></td>
-                                                <td><a href="https://docs.python.org/3.6/license.html">PSF</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a></td>
-                                                <td>4.6.3</td>
-                                                <td><a href="https://www.crummy.com/self/contact.html">Leonard Richardson</a></td>
-                                                <td><a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://matplotlib.org/">Matplotlib</a></td>
-                                                <td>2.2.3</td>
-                                                <td><a href="https://github.com/matplotlib/matplotlib#contact">Matplotlib Development Team</a></td>
-                                                <td><a href="https://matplotlib.org/users/license.html">Matplotlib</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="http://www.nltk.org/">NLTK</a></td>
-                                                <td>3.3</td>
-                                                <td><a href="http://www.nltk.org/contribute.html">NLTK Project</a></td>
-                                                <td><a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="http://networkx.github.io/">NetworkX</a></td>
-                                                <td>2.1</td>
-                                                <td><a href="https://github.com/networkx/networkx#license">NetworkX Developers</a></td>
-                                                <td><a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="http://www.numpy.org/">NumPy</a></td>
-                                                <td>1.15.1</td>
-                                                <td>NumPy Developers</td>
-                                                <td><a href="http://www.numpy.org/license.html">NumPy</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a></td>
-                                                <td>5.11.2</td>
-                                                <td><a href="mailto:info@riverbankcomputing.com">Riverbank Computing Limited</a></td>
-                                                <td><a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://github.com/chardet/chardet">chardet</a></td>
-                                                <td>3.0.4</td>
-                                                <td><a href="mailto:dan.blanchard@gmail.com">Daniel Blanchard</a></td>
-                                                <td><a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPL-2.1</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://github.com/Mimino666/langdetect">langdetect</a></td>
-                                                <td>1.0.7</td>
-                                                <td><a href="mailto:michal.danilak@gmail.com">Michal "Mimino" Danilak</a></td>
-                                                <td><a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache-2.0</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://lxml.de/">lxml</a></td>
-                                                <td>4.2.4</td>
-                                                <td><a href="http://consulting.behnel.de/">Stefan Behnel</a></td>
-                                                <td><a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://openpyxl.readthedocs.io/en/stable/#">openpyxl</a></td>
-                                                <td>2.5.5</td>
-                                                <td>Eric Gazoni, <a href="mailto:charlie.clark@clark-consulting.eu">Charlie Clark</a></td>
-                                                <td><a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a></td>
-                                              </tr>
-                                              <tr>
-                                                <td><a href="https://github.com/fxsjy/jieba">“结巴”中文分词</a></td>
-                                                <td>0.39</td>
-                                                <td><a href="mailto:ccnusjy@gmail.com">Sun Junyi</a></td>
-                                                <td><a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a></td>
-                                              </tr>
-                                            </table>
+                                            <body>
+                                              <p>Thanks a million for the following open-source projects on which Wordless is built   on:</p>
+                                              <table border="1">
+                                                <tr>
+                                                  <th class="name">Name</th>
+                                                  <th class="version">Version</th>
+                                                  <th class="author">Author</th>
+                                                  <th class="license">License</th>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://www.python.org/">Python</a></td>
+                                                  <td>3.6.6</td>
+                                                  <td><a href="https://www.python.org/psf/">Python Software Foundation</a></td>
+                                                  <td><a href="https://docs.python.org/3.6/license.html">PSF</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a></td>
+                                                  <td>4.6.3</td>
+                                                  <td><a href="https://www.crummy.com/self/contact.html">Leonard Richardson</a></td>
+                                                  <td><a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/  head:/LICENSE">MIT</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://matplotlib.org/">Matplotlib</a></td>
+                                                  <td>2.2.3</td>
+                                                  <td><a href="https://github.com/matplotlib/matplotlib#contact">Matplotlib Development   Team</a></td>
+                                                  <td><a href="https://matplotlib.org/users/license.html">Matplotlib</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="http://www.nltk.org/">NLTK</a></td>
+                                                  <td>3.3</td>
+                                                  <td><a href="http://www.nltk.org/contribute.html">NLTK Project</a></td>
+                                                  <td><a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="http://networkx.github.io/">NetworkX</a></td>
+                                                  <td>2.1</td>
+                                                  <td><a href="https://github.com/networkx/networkx#license">NetworkX Developers</a></td>
+                                                  <td><a href="https://github.com/networkx/networkx/blob/master/  LICENSE.txt">BSD-3-Clause</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="http://www.numpy.org/">NumPy</a></td>
+                                                  <td>1.15.1</td>
+                                                  <td>NumPy Developers</td>
+                                                  <td><a href="http://www.numpy.org/license.html">NumPy</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a></td>
+                                                  <td>5.11.2</td>
+                                                  <td><a href="mailto:info@riverbankcomputing.com">Riverbank Computing Limited</a></td>
+                                                  <td><a href="http://pyqt.sourceforge.net/Docs/  PyQt5/introduction.html#license">GPL-3.0</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://github.com/chardet/chardet">chardet</a></td>
+                                                  <td>3.0.4</td>
+                                                  <td><a href="mailto:dan.blanchard@gmail.com">Daniel Blanchard</a></td>
+                                                  <td><a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPL-2.1</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://github.com/Mimino666/langdetect">langdetect</a></td>
+                                                  <td>1.0.7</td>
+                                                  <td><a href="mailto:michal.danilak@gmail.com">Michal "Mimino" Danilak</a></td>
+                                                  <td><a href="https://github.com/Mimino666/langdetect/blob/master/  LICENSE">Apache-2.0</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://lxml.de/">lxml</a></td>
+                                                  <td>4.2.4</td>
+                                                  <td><a href="http://consulting.behnel.de/">Stefan Behnel</a></td>
+                                                  <td><a href="https://github.com/lxml/lxml/blob/master/doc/licenses/  BSD.txt">BSD-3-Clause</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://openpyxl.readthedocs.io/en/stable/#">openpyxl</a></td>
+                                                  <td>2.5.5</td>
+                                                  <td>Eric Gazoni, <a href="mailto:charlie.clark@clark-consulting.eu">Charlie   Clark</a></td>
+                                                  <td><a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca1368  76ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td><a href="https://github.com/fxsjy/jieba">“结巴”中文分词</a></td>
+                                                  <td>0.39</td>
+                                                  <td><a href="mailto:ccnusjy@gmail.com">Sun Junyi</a></td>
+                                                  <td><a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a></td>
+                                                </tr>
+                                              </table>
+                                            </body>
                                             '''),
                                     QMessageBox.Ok)
 

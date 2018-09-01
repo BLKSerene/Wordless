@@ -235,7 +235,7 @@ class Wordless_Text(nltk.Text):
 
         freq_distribution = sorted(wordless_freq.Wordless_Freq_Distribution(ngrams).items(), key = lambda x: x[1], reverse = True)
 
-        if not settings['show_all_ngrams']:
+        if not settings['show_all']:
             search_terms = self.match_tokens(settings['search_terms'],
                                              settings['ignore_case'],
                                              settings['lemmatization'],

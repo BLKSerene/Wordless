@@ -263,41 +263,34 @@ def wordless_widgets_filter_settings(parent):
 
     return [checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max]
 
-def wordless_widgets_collocation(parent, default_assoc_measure):
-    def ngram_changed():
-        text_old = assoc_measures.currentText()
+def wordless_widgets_size(parent):
+    def size_sync_changed():
+        if checkbox_size_sync.isChecked():
+            spin_box_size_min.setValue(spin_box_size_max.value())
 
-        assoc_measures.clear()
-    
-        if ngram.currentText() == parent.tr('Bigrams'):
-            assoc_measures.addItems(parent.assoc_measures_bigram)
-        elif ngram.currentText() == parent.tr('Trigrams'):
-            assoc_measures.addItems(parent.assoc_measures_trigram)
-        elif ngram.currentText() == parent.tr('Quadgrams'):
-            assoc_measures.addItems(parent.assoc_measures_quadgram)
+    def size_min_changed():
+        if checkbox_size_sync.isChecked() or spin_box_size_min.value() > spin_box_size_max.value():
+            spin_box_size_max.setValue(spin_box_size_min.value())
 
-        for i in range(assoc_measures.count()):
-            if assoc_measures.itemText(i) == text_old:
-                assoc_measures.setCurrentIndex(i)
+    def size_max_changed():
+        if checkbox_size_sync.isChecked() or spin_box_size_min.value() > spin_box_size_max.value():
+            spin_box_size_min.setValue(spin_box_size_max.value())
 
-                break
-            else:
-                assoc_measures.setCurrentText(default_assoc_measure)
+    checkbox_size_sync = QCheckBox(parent.tr('Sync'), parent)
+    label_size_min = QLabel(parent.tr('From'), parent)
+    spin_box_size_min = QSpinBox(parent)
+    label_size_max = QLabel(parent.tr('To'), parent)
+    spin_box_size_max = QSpinBox(parent)
 
-    ngram = QComboBox(parent)
-    assoc_measures = QComboBox(parent)
+    checkbox_size_sync.stateChanged.connect(size_sync_changed)
+    spin_box_size_min.valueChanged.connect(size_min_changed)
+    spin_box_size_max.valueChanged.connect(size_max_changed)
 
-    ngram.addItems([
-        parent.tr('Bigrams'),
-        parent.tr('Trigrams'),
-        parent.tr('Quadgrams')
-    ])
+    size_sync_changed()
+    size_min_changed()
+    size_max_changed()
 
-    ngram.currentTextChanged.connect(ngram_changed)
-
-    ngram_changed()
-
-    return ngram, assoc_measures
+    return checkbox_size_sync, label_size_min, spin_box_size_min, label_size_max, spin_box_size_max
 
 def wordless_widgets_window(parent):
     def sync_changed():
@@ -344,3 +337,39 @@ def wordless_widgets_window(parent):
     right_changed()
 
     return window_sync, window_left, window_right
+
+def wordless_widgets_collocation(parent, default_assoc_measure):
+    def ngram_changed():
+        text_old = assoc_measures.currentText()
+
+        assoc_measures.clear()
+    
+        if ngram.currentText() == parent.tr('Bigrams'):
+            assoc_measures.addItems(parent.assoc_measures_bigram)
+        elif ngram.currentText() == parent.tr('Trigrams'):
+            assoc_measures.addItems(parent.assoc_measures_trigram)
+        elif ngram.currentText() == parent.tr('Quadgrams'):
+            assoc_measures.addItems(parent.assoc_measures_quadgram)
+
+        for i in range(assoc_measures.count()):
+            if assoc_measures.itemText(i) == text_old:
+                assoc_measures.setCurrentIndex(i)
+
+                break
+            else:
+                assoc_measures.setCurrentText(default_assoc_measure)
+
+    ngram = QComboBox(parent)
+    assoc_measures = QComboBox(parent)
+
+    ngram.addItems([
+        parent.tr('Bigrams'),
+        parent.tr('Trigrams'),
+        parent.tr('Quadgrams')
+    ])
+
+    ngram.currentTextChanged.connect(ngram_changed)
+
+    ngram_changed()
+
+    return ngram, assoc_measures
