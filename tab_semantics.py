@@ -15,12 +15,6 @@ import nltk
 
 from wordless_utils import *
 
-class Wordless_Table_Semantics(wordless_table.Wordless_Table):
-    def __init__(self, parent, headers, stretch_columns = []):
-        super().__init__(parent, headers, stretch_columns = stretch_columns)
-
-        self.item_changed()
-
 def init(self):
     def search_settings_changed():
         self.settings['semantics']['search_term'] = line_edit_search_term.text()
@@ -84,17 +78,17 @@ def init(self):
 
         search_settings_changed()
 
-    tab_semantics = QWidget(self)
+    tab_semantics = wordless_tab.Wordless_Tab(self, self.tr('Semantics'))
 
-    table_semantics = Wordless_Table_Semantics(self,
-                                               [
-                                                   self.tr('Synsets'),
-                                                   self.tr('Part of Speech'),
-                                                   '',
-                                                   self.tr('Definition'),
-                                                   self.tr('Examples')
-                                               ],
-                                               stretch_columns = ['Examples'])
+    table_semantics = wordless_table.Wordless_Table(self,
+                                                    headers = [
+                                                        self.tr('Synsets'),
+                                                        self.tr('Part of Speech'),
+                                                        '',
+                                                        self.tr('Definition'),
+                                                        self.tr('Examples')
+                                                    ],
+                                                    cols_stretch = ['Examples'])
 
     table_semantics.button_search = QPushButton('Begin Search', self)
     table_semantics.button_generate_plot = QPushButton('Generate Plot', self)
@@ -102,13 +96,12 @@ def init(self):
     table_semantics.button_search.clicked.connect(lambda: search(self, table_semantics))
     table_semantics.button_generate_plot.clicked.connect(lambda: generate_plot(self))
 
-    layout_semantics_left = QGridLayout()
-    layout_semantics_left.addWidget(table_semantics, 0, 0, 1, 5)
-    layout_semantics_left.addWidget(table_semantics.button_search, 1, 0)
-    layout_semantics_left.addWidget(table_semantics.button_generate_plot, 1, 1)
-    layout_semantics_left.addWidget(table_semantics.button_export_selected, 1, 2)
-    layout_semantics_left.addWidget(table_semantics.button_export_all, 1, 3)
-    layout_semantics_left.addWidget(table_semantics.button_clear, 1, 4)
+    tab_semantics.layout_table.addWidget(table_semantics, 0, 0, 1, 5)
+    tab_semantics.layout_table.addWidget(table_semantics.button_search, 1, 0)
+    tab_semantics.layout_table.addWidget(table_semantics.button_generate_plot, 1, 1)
+    tab_semantics.layout_table.addWidget(table_semantics.button_export_selected, 1, 2)
+    tab_semantics.layout_table.addWidget(table_semantics.button_export_all, 1, 3)
+    tab_semantics.layout_table.addWidget(table_semantics.button_clear, 1, 4)
 
     # Search Settings
     groupbox_search_settings = QGroupBox('Search Settings', self)
@@ -185,34 +178,10 @@ def init(self):
 
     groupbox_plot_settings.setLayout(layout_plot_settings)
 
-    # Scroll Area Wrapper
-    wrapper_settings = QWidget(self)
-
-    layout_settings = QGridLayout()
-    layout_settings.addWidget(groupbox_search_settings, 0, 0, Qt.AlignTop)
-    layout_settings.addWidget(groupbox_plot_settings, 1, 0, Qt.AlignTop)
-    wrapper_settings.setLayout(layout_settings)
-
-    scroll_area_settings = wordless_widgets.Wordless_Scroll_Area(self)
-    scroll_area_settings.setWidget(wrapper_settings)
-
-    button_advanced_settings = QPushButton(self.tr('Advanced Settings'), self)
-    button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
-
-    button_advanced_settings.clicked.connect(lambda: self.wordless_settings.settings_load('Semantics'))
-    button_restore_defaults.clicked.connect(restore_defaults)
-
-    layout_semantics = QGridLayout()
-    layout_semantics.addLayout(layout_semantics_left, 0, 0, 2, 1)
-    layout_semantics.addWidget(scroll_area_settings, 0, 1, 1, 2)
-    layout_semantics.addWidget(button_advanced_settings, 1, 1)
-    layout_semantics.addWidget(button_restore_defaults , 1, 2)
-
-    layout_semantics.setColumnStretch(0, 8)
-    layout_semantics.setColumnStretch(1, 1)
-    layout_semantics.setColumnStretch(2, 1)
-
-    tab_semantics.setLayout(layout_semantics)
+    tab_semantics.layout_settings.addWidget(groupbox_search_settings, 0, 0, Qt.AlignTop)
+    tab_semantics.layout_settings.addWidget(groupbox_plot_settings, 1, 0, Qt.AlignTop)
+    
+    tab_semantics.button_restore_defaults.clicked.connect(restore_defaults)
 
     restore_defaults()
 

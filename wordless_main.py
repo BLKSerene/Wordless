@@ -347,18 +347,16 @@ class Wordless_Main(QMainWindow):
                                         'show_pct': True,
                                         'show_cumulative': True,
                                         'show_breakdown': True,
-        
-                                        'cumulative': False,
-        
-                                        'freq_first_no_limit': True,
-                                        'freq_first_min': 1,
-                                        'freq_first_max': 1000,
-                                        'freq_total_no_limit': True,
-                                        'freq_total_min': 1,
-                                        'freq_total_max': 1000,
-                                        'rank_no_limit': True,
+
+                                        'rank_no_limit': False,
                                         'rank_min': 1,
                                         'rank_max': 50,
+                                        'cumulative': False,
+        
+                                        'freq_no_limit': True,
+                                        'freq_min': 0,
+                                        'freq_max': 1000,
+                                        'freq_apply_to': 'Total',
                                         'len_no_limit': True,
                                         'len_min': 1,
                                         'len_max': 20,
@@ -375,13 +373,10 @@ class Wordless_Main(QMainWindow):
                                         'numerals': True,
                                         'punctuations': False,
         
-                                        'ngram_size_sync': False,
-                                        'ngram_size_min': 2,
-                                        'ngram_size_max': 2,
                                         'search_terms': [],
-                                        'search_term_position_left': True,
-                                        'search_term_position_middle': True,
-                                        'search_term_position_right': True,
+                                        'keyword_position_no_limit': True,
+                                        'keyword_position_min': 1,
+                                        'keyword_position_max': 2,
                                         'ignore_case': True,
                                         'lemmatization': True,
                                         'whole_word': True,
@@ -389,21 +384,24 @@ class Wordless_Main(QMainWindow):
                                         'multi_search': False,
                                         'show_all': False,
 
+                                        'ngram_size_sync': False,
+                                        'ngram_size_min': 2,
+                                        'ngram_size_max': 2,
+                                        'allow_skipped_tokens': 0,
+
                                         'show_pct': True,
                                         'show_cumulative': True,
                                         'show_breakdown': True,
         
-                                        'cumulative': False,
-        
-                                        'freq_first_no_limit': True,
-                                        'freq_first_min': 1,
-                                        'freq_first_max': 1000,
-                                        'freq_total_no_limit': True,
-                                        'freq_total_min': 1,
-                                        'freq_total_max': 1000,
-                                        'rank_no_limit': True,
+                                        'rank_no_limit': False,
                                         'rank_min': 1,
                                         'rank_max': 50,
+                                        'cumulative': False,
+        
+                                        'freq_no_limit': True,
+                                        'freq_min': 0,
+                                        'freq_max': 1000,
+                                        'freq_apply_to': 'Total',
                                         'len_no_limit': True,
                                         'len_min': 1,
                                         'len_max': 20,
@@ -420,31 +418,34 @@ class Wordless_Main(QMainWindow):
                                         'numerals': True,
                                         'punctuations': False,
         
-                                        'window_sync': False,
-                                        'window_left': ['L', 1],
-                                        'window_right': ['R', 1],
-                                        'search_for': self.tr('Bigrams'),
-                                        'assoc_measure': self.tr('Pearson\'s Chi-squared Test'),
-
                                         'search_terms': [],
                                         'ignore_case': True,
                                         'lemmatization': True,
                                         'whole_word': True,
                                         'regex': False,
                                         'multi_search': False,
-                                        'show_all_collocates': False,
+                                        'show_all': False,
+
+                                        'window_sync': False,
+                                        'window_left': ['L', 1],
+                                        'window_right': ['R', 1],
+                                        'search_for': self.tr('Bigrams'),
+                                        'assoc_measure': self.tr('Pearson\'s Chi-squared Test'),
+
+                                        'show_pct': True,
+                                        'show_cumulative': True,
+                                        'show_breakdown': True,
+
         
-                                        'cumulative': False,
-        
-                                        'freq_first_no_limit': True,
-                                        'freq_first_min': 1,
-                                        'freq_first_max': 1000,
-                                        'freq_total_no_limit': True,
-                                        'freq_total_min': 1,
-                                        'freq_total_max': 1000,
-                                        'rank_no_limit': True,
+                                        'rank_no_limit': False,
                                         'rank_min': 1,
                                         'rank_max': 50,
+                                        'cumulative': False,
+
+                                        'score_no_limit': True,
+                                        'score_min': 1,
+                                        'score_max': 1000,
+                                        'score_apply_to': 'Total',
                                         'len_no_limit': True,
                                         'len_min': 1,
                                         'len_max': 20,
@@ -509,6 +510,7 @@ class Wordless_Main(QMainWindow):
                             '''
 
         self.assoc_measures_bigram = {
+            self.tr('Frequency'): nltk.collocations.BigramAssocMeasures().raw_freq,
             self.tr('Student\'s T-test'): nltk.collocations.BigramAssocMeasures().student_t,
             self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.BigramAssocMeasures().chi_sq,
             self.tr('Phi Coefficient'): nltk.collocations.BigramAssocMeasures().phi_sq,
@@ -522,6 +524,7 @@ class Wordless_Main(QMainWindow):
         }
 
         self.assoc_measures_trigram = {
+            self.tr('Frequency'): nltk.collocations.TrigramAssocMeasures().raw_freq,
             self.tr('Student\'s T-test'): nltk.collocations.TrigramAssocMeasures().student_t,
             self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.TrigramAssocMeasures().chi_sq,
             self.tr('A Variant of Mutual Information'): nltk.collocations.TrigramAssocMeasures().mi_like,
@@ -532,6 +535,7 @@ class Wordless_Main(QMainWindow):
         }
 
         self.assoc_measures_quadgram = {
+            self.tr('Frequency'): nltk.collocations.QuadgramAssocMeasures().raw_freq,
             self.tr('Student\'s T-test'): nltk.collocations.QuadgramAssocMeasures().student_t,
             self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.QuadgramAssocMeasures().chi_sq,
             self.tr('A Variant of Mutual Information'): nltk.collocations.QuadgramAssocMeasures().mi_like,
@@ -659,7 +663,7 @@ class Wordless_Main(QMainWindow):
                                     self.tr(self.style_dialog +
                                             '''
                                             <body>
-                                              <p>Thanks a million for the following open-source projects on which Wordless is built   on:</p>
+                                              <p>Many thanks to the following open-source projects on which Wordless is built on:</p>
                                               <table border="1">
                                                 <tr>
                                                   <th class="name">Name</th>

@@ -13,14 +13,7 @@ import nltk
 
 from wordless_utils import wordless_list
 
-class Wordless_Scroll_Area(QScrollArea):
-    def __init__(self, parent):
-        super().__init__(parent)
-
-        self.setWidgetResizable(True)
-
-        self.setBackgroundRole(QPalette.Light)
-
+# Text Editor
 class Wordless_Text_Edit(QTextEdit):
     def __init__(self, parent):
         super().__init__(parent)
@@ -32,6 +25,7 @@ class Wordless_Text_Edit(QTextEdit):
         
         self.setFixedHeight(self.document().size().height() + 20)
 
+# Combo Box
 class Wordless_Combo_Box(QComboBox):
     def __init__(self, parent):
         super().__init__(parent)
@@ -50,6 +44,7 @@ class Wordless_Combo_Box_Encoding(Wordless_Combo_Box):
 
         self.addItems(parent.file_encodings)
 
+# Spin Box
 class Wordless_Spin_Box_Window(QSpinBox):
     def __init__(self, parent):
         super().__init__(parent)
@@ -74,7 +69,7 @@ class Wordless_Spin_Box_Window(QSpinBox):
             self.setValue(-self.value() + 1)
 
 def wordless_widgets_token_settings(parent):
-    def words_settings_changed():
+    def words_changed():
         checkbox_words.setTristate(False)
 
         if checkbox_words.isChecked():
@@ -94,7 +89,7 @@ def wordless_widgets_token_settings(parent):
             checkbox_uppercase.setEnabled(False)
             checkbox_title_cased.setEnabled(False)
 
-    def case_settings_changed():
+    def case_changed():
         if (checkbox_lowercase.isChecked() and
             checkbox_uppercase.isChecked() and
             checkbox_title_cased.isChecked()):
@@ -117,19 +112,19 @@ def wordless_widgets_token_settings(parent):
     checkbox_numerals = QCheckBox(parent.tr('Numerals'), parent)
     checkbox_punctuations = QCheckBox(parent.tr('Punctuations'), parent)
 
-    checkbox_words.clicked.connect(words_settings_changed)
-    checkbox_lowercase.clicked.connect(case_settings_changed)
-    checkbox_uppercase.clicked.connect(case_settings_changed)
-    checkbox_title_cased.clicked.connect(case_settings_changed)
+    checkbox_words.clicked.connect(words_changed)
+    checkbox_lowercase.clicked.connect(case_changed)
+    checkbox_uppercase.clicked.connect(case_changed)
+    checkbox_title_cased.clicked.connect(case_changed)
 
-    words_settings_changed()
-    case_settings_changed()
+    words_changed()
+    case_changed()
 
     return [checkbox_words, checkbox_lowercase, checkbox_uppercase, checkbox_title_cased,
             checkbox_numerals, checkbox_punctuations]
 
-def wordless_widgets_search_settings(parent, widgets = list(range(9))):
-    def search_settings_changed():
+def wordless_widgets_search_settings(parent):
+    def multi_search_changed():
         if checkbox_multi_search.isChecked():
             label_search_term.setText(parent.tr('Search Terms:'))
 
@@ -158,6 +153,7 @@ def wordless_widgets_search_settings(parent, widgets = list(range(9))):
             list_search_terms.button_import.hide()
             list_search_terms.button_export.hide()
 
+    def show_all_changed():
         if checkbox_show_all.isChecked():
             checkbox_lemmatization.setText(parent.tr('Lemmatization'))
 
@@ -190,66 +186,127 @@ def wordless_widgets_search_settings(parent, widgets = list(range(9))):
 
     checkbox_show_all.setChecked(True)
 
-    checkbox_multi_search.stateChanged.connect(search_settings_changed)
-    checkbox_show_all.stateChanged.connect(search_settings_changed)
+    checkbox_multi_search.stateChanged.connect(multi_search_changed)
+    checkbox_show_all.stateChanged.connect(show_all_changed)
 
-    search_settings_changed()
+    multi_search_changed()
+    show_all_changed()
 
-    widgets_all = [
-        label_search_term, line_edit_search_term, list_search_terms,
-        checkbox_ignore_case, checkbox_lemmatization, checkbox_whole_word, checkbox_regex,
-        checkbox_multi_search, checkbox_show_all
-    ]
+    return (label_search_term, line_edit_search_term, list_search_terms,
+            checkbox_ignore_case, checkbox_lemmatization, checkbox_whole_word, checkbox_regex,
+            checkbox_multi_search, checkbox_show_all)
 
-    for i, widget in enumerate(widgets_all):
-        if i not in widgets:
-            widget.hide()
+def wordless_widgets_table_settings(parent, table):
+    def show_pct_changed():
+        if table.item(0, 0) or table.cellWidget(0, 0):
+            cols_cumulative = table.find_columns_cumulative()
+            col_files_found = table.find_column(parent.tr('Files Found'))
+            show_pct = checkbox_show_pct.isChecked()
 
-    return [widgets_all[i] for i in widgets]
+            table.hide()
+            table.setSortingEnabled(False)
 
-def wordless_widgets_display_settings(parent, table):
-    def display_settings_changed():
-        col_cumulative = [col
-                          for col in range(table.columnCount())
-                          if table.horizontalHeaderItem(col).text().find(parent.tr('Cumulative')) > -1]
+            for col in table.cols_pct:
+                if col in cols_cumulative:
+                    total = sum([table.item(row, col - 1).raw_value
+                                 for row in range(table.rowCount())
+                                 if not table.isRowHidden(row)])
+                elif col == col_files_found:
+                    total = table.item(0, col_files_found).raw_total
+                else:
+                    total = sum([table.item(row, col).raw_value
+                                 for row in range(table.rowCount())
+                                 if not table.isRowHidden(row)])
 
-        for col in col_cumulative:
+                for row in range(table.rowCount()):
+                    value = table.item(row, col).raw_value
+
+                    table.set_item_with_pct(row, col, value, total, show_pct = show_pct)
+
+            table.setSortingEnabled(True)
+            table.show()
+
+    def show_cumulative_changed():
+        cols_cumulative = table.find_columns_cumulative()
+        cols_breakdown = table.find_columns_breakdown()
+
+        table.hide()
+
+        for col in cols_cumulative:
             if checkbox_show_cumulative.isChecked():
-                table.showColumn(col)
-            else:
-                table.hideColumn(col)
-
-        # Search for the end index of breakdown
-        for col in col_cumulative:
-            if table.horizontalHeaderItem(col).text().find(parent.tr('Total')) > -1:
-                col_breakdown = col - 2
-
-                break
-
-        for col in range(2, col_breakdown + 1):
-            if checkbox_show_breakdown.isChecked():
-                if col not in col_cumulative:
+                if checkbox_show_breakdown.isChecked() or col not in cols_breakdown:
                     table.showColumn(col)
             else:
                 table.hideColumn(col)
+
+        table.show()
+
+    def show_breakdown_changed():
+        cols_cumulative = table.find_columns_cumulative()
+        cols_breakdown = table.find_columns_breakdown()
+
+        table.hide()
+
+        for col in cols_breakdown:
+            if checkbox_show_breakdown.isChecked():
+                if checkbox_show_cumulative.isChecked() or col not in cols_cumulative:
+                    table.showColumn(col)
+            else:
+                table.hideColumn(col)
+
+        table.show()
 
     checkbox_show_pct = QCheckBox(parent.tr('Show Percentage'), parent)
     checkbox_show_cumulative = QCheckBox(parent.tr('Show Cumulative Data'), parent)
     checkbox_show_breakdown = QCheckBox(parent.tr('Show Breakdown'), parent)
 
-    checkbox_show_cumulative.stateChanged.connect(display_settings_changed)
-    checkbox_show_breakdown.stateChanged.connect(display_settings_changed)
+    checkbox_show_pct.stateChanged.connect(show_pct_changed)
+    checkbox_show_cumulative.stateChanged.connect(show_cumulative_changed)
+    checkbox_show_breakdown.stateChanged.connect(show_breakdown_changed)
 
-    display_settings_changed()
+    show_pct_changed()
+    show_cumulative_changed()
+    show_breakdown_changed()
 
     return [checkbox_show_pct, checkbox_show_cumulative, checkbox_show_breakdown]
 
-def wordless_widgets_filter_settings(parent):
-    def filter_settings_changed():
+def wordless_widgets_filter(parent, filter_min = 1, filter_max = 100, table = None, column = ''):
+    def filter_changed():
         if checkbox_no_limit.isChecked():
             spin_box_max.setEnabled(False)
         else:
             spin_box_max.setEnabled(True)
+
+        if table and (table.item(0, 0) or table.cellWidget(0, 0)):
+            if column == 'Total':
+                col_filter = table.find_column(combo_box_apply_to.currentText(), fuzzy_search = True)
+            else:
+                col_filter = table.find_column(column)
+
+            filter_type = type(table.item(0, col_filter).read_data())
+            filter_min = spin_box_min.value()
+            filter_max = spin_box_max.value() if not checkbox_no_limit.isChecked() else float('inf')
+
+            table.setUpdatesEnabled(False)
+
+            for i in range(table.rowCount()):
+                filter_data = table.item(i, col_filter).read_data()
+
+                if filter_type in [int, float]:
+                    if filter_min <= filter_data <= filter_max:
+                        table.showRow(i)
+                    else:
+                        table.hideRow(i)
+                elif filter_type == str:
+                    if filter_min <= len(filter_data) - filter_data.count(' ') <= filter_max:
+                        table.showRow(i)
+                    else:
+                        table.hideRow(i)
+
+            table.sorting_changed(table.horizontalHeader().sortIndicatorSection(),
+                                  table.horizontalHeader().sortIndicatorOrder())
+
+            table.setUpdatesEnabled(True)
 
     checkbox_no_limit = QCheckBox(parent.tr('No Limit'), parent)
     label_min = QLabel(parent.tr('From'), parent)
@@ -257,13 +314,29 @@ def wordless_widgets_filter_settings(parent):
     label_max = QLabel(parent.tr('To'), parent)
     spin_box_max = QSpinBox(parent)
 
-    checkbox_no_limit.stateChanged.connect(filter_settings_changed)
+    if column == 'Total':
+        label_apply_to = QLabel(parent.tr('Apply to:'), parent)
+        combo_box_apply_to = QComboBox(parent)
 
-    filter_settings_changed()
+        combo_box_apply_to.addItem('Total')
 
-    return [checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max]
+        combo_box_apply_to.currentTextChanged.connect(filter_changed)
 
-def wordless_widgets_size(parent):
+    spin_box_min.setRange(filter_min, filter_max)
+    spin_box_max.setRange(filter_min, filter_max)
+
+    checkbox_no_limit.stateChanged.connect(filter_changed)
+    spin_box_min.editingFinished.connect(filter_changed)
+    spin_box_max.editingFinished.connect(filter_changed)
+
+    filter_changed()
+
+    if column == 'Total':
+        return [checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max, label_apply_to, combo_box_apply_to]
+    else:
+        return [checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max]
+
+def wordless_widgets_size(parent, size_min = 1, size_max = 20):
     def size_sync_changed():
         if checkbox_size_sync.isChecked():
             spin_box_size_min.setValue(spin_box_size_max.value())
@@ -282,6 +355,9 @@ def wordless_widgets_size(parent):
     label_size_max = QLabel(parent.tr('To'), parent)
     spin_box_size_max = QSpinBox(parent)
 
+    spin_box_size_min.setRange(size_min, size_max)
+    spin_box_size_max.setRange(size_min, size_max)
+
     checkbox_size_sync.stateChanged.connect(size_sync_changed)
     spin_box_size_min.valueChanged.connect(size_min_changed)
     spin_box_size_max.valueChanged.connect(size_max_changed)
@@ -293,83 +369,90 @@ def wordless_widgets_size(parent):
     return checkbox_size_sync, label_size_min, spin_box_size_min, label_size_max, spin_box_size_max
 
 def wordless_widgets_window(parent):
-    def sync_changed():
-        if window_sync.isChecked():
-            window_left.setPrefix(window_right.prefix())
-            window_left.setValue(window_right.value())
+    def window_sync_changed():
+        if checkbox_window_sync.isChecked():
+            spin_box_window_left.setPrefix(window_right.prefix())
+            spin_box_window_left.setValue(window_right.value())
 
-    def left_changed():
-        if window_sync.isChecked():
-            window_right.setPrefix(window_left.prefix())
-            window_right.setValue(window_left.value())
+    def window_left_changed():
+        if checkbox_window_sync.isChecked():
+            spin_box_window_right.setPrefix(spin_box_window_left.prefix())
+            spin_box_window_right.setValue(spin_box_window_left.value())
         else:
-            if (window_left.prefix() == 'L' and window_right.prefix() == 'L' and
-                window_left.value() < window_right.value() or
-                window_left.prefix() == 'R' and window_right.prefix() == 'R' and
-                window_left.value() > window_right.value() or
-                window_left.prefix() == 'R' and window_right.prefix() == 'L'):
-                window_right.setPrefix(window_left.prefix())
-                window_right.setValue(window_left.value())
+            if (spin_box_window_left.prefix() == 'L' and spin_box_window_right.prefix() == 'L' and
+                spin_box_window_left.value() < spin_box_window_right.value() or
+                spin_box_window_left.prefix() == 'R' and spin_box_window_right.prefix() == 'R' and
+                spin_box_window_left.value() > spin_box_window_right.value() or
+                spin_box_window_left.prefix() == 'R' and spin_box_window_right.prefix() == 'L'):
+                spin_box_window_right.setPrefix(spin_box_window_left.prefix())
+                spin_box_window_right.setValue(spin_box_window_left.value())
 
-    def right_changed():
-        if window_sync.isChecked():
-            window_left.setPrefix(window_right.prefix())
-            window_left.setValue(window_right.value())
+    def window_right_changed():
+        if checkbox_window_sync.isChecked():
+            spin_box_window_left.setPrefix(spin_box_window_right.prefix())
+            spin_box_window_left.setValue(spin_box_window_right.value())
         else:
-            if (window_left.prefix() == 'L' and window_right.prefix() == 'L' and
-                window_left.value() < window_right.value() or
-                window_left.prefix() == 'R' and window_right.prefix() == 'R' and
-                window_left.value() > window_right.value() or
-                window_left.prefix() == 'R' and window_right.prefix() == 'L'):
-                window_left.setPrefix(window_right.prefix())
-                window_left.setValue(window_right.value())
+            if (spin_box_window_left.prefix() == 'L' and spin_box_window_right.prefix() == 'L' and
+                spin_box_window_left.value() < spin_box_window_right.value() or
+                spin_box_window_left.prefix() == 'R' and spin_box_window_right.prefix() == 'R' and
+                spin_box_window_left.value() > spin_box_window_right.value() or
+                spin_box_window_left.prefix() == 'R' and spin_box_window_right.prefix() == 'L'):
+                spin_box_window_left.setPrefix(spin_box_window_right.prefix())
+                spin_box_window_left.setValue(spin_box_window_right.value())
 
-    window_sync = QCheckBox(parent.tr('Sync'), parent)
-    window_left = Wordless_Spin_Box_Window(parent)
-    window_right = Wordless_Spin_Box_Window(parent)
+    checkbox_window_sync = QCheckBox(parent.tr('Sync'), parent)
+    label_window_left = QLabel(parent.tr('From'), parent)
+    spin_box_window_left = Wordless_Spin_Box_Window(parent)
+    label_window_right = QLabel(parent.tr('To'), parent)
+    spin_box_window_right = Wordless_Spin_Box_Window(parent)
 
-    window_sync.stateChanged.connect(sync_changed)
-    window_left.valueChanged.connect(left_changed)
-    window_right.valueChanged.connect(right_changed)
+    spin_box_window_left.setRange(-100, 100)
+    spin_box_window_right.setRange(-100, 100)
 
-    sync_changed()
-    left_changed()
-    right_changed()
+    checkbox_window_sync.stateChanged.connect(window_sync_changed)
+    spin_box_window_left.valueChanged.connect(window_left_changed)
+    spin_box_window_right.valueChanged.connect(window_right_changed)
 
-    return window_sync, window_left, window_right
+    window_sync_changed()
+    window_left_changed()
+    window_right_changed()
+
+    return [checkbox_window_sync, label_window_left, spin_box_window_left, label_window_right, spin_box_window_right]
 
 def wordless_widgets_collocation(parent, default_assoc_measure):
-    def ngram_changed():
-        text_old = assoc_measures.currentText()
+    def search_for_changed():
+        text_old = combobox_assoc_measure.currentText()
 
-        assoc_measures.clear()
+        combobox_assoc_measure.clear()
     
-        if ngram.currentText() == parent.tr('Bigrams'):
-            assoc_measures.addItems(parent.assoc_measures_bigram)
-        elif ngram.currentText() == parent.tr('Trigrams'):
-            assoc_measures.addItems(parent.assoc_measures_trigram)
-        elif ngram.currentText() == parent.tr('Quadgrams'):
-            assoc_measures.addItems(parent.assoc_measures_quadgram)
+        if combo_box_search_for.currentText() == parent.tr('Bigrams'):
+            combobox_assoc_measure.addItems(parent.assoc_measures_bigram)
+        elif combo_box_search_for.currentText() == parent.tr('Trigrams'):
+            combobox_assoc_measure.addItems(parent.assoc_measures_trigram)
+        elif combo_box_search_for.currentText() == parent.tr('Quadgrams'):
+            combobox_assoc_measure.addItems(parent.assoc_measures_quadgram)
 
-        for i in range(assoc_measures.count()):
-            if assoc_measures.itemText(i) == text_old:
-                assoc_measures.setCurrentIndex(i)
+        for i in range(combobox_assoc_measure.count()):
+            if combobox_assoc_measure.itemText(i) == text_old:
+                combobox_assoc_measure.setCurrentIndex(i)
 
                 break
             else:
-                assoc_measures.setCurrentText(default_assoc_measure)
+                combobox_assoc_measure.setCurrentText(default_assoc_measure)
 
-    ngram = QComboBox(parent)
-    assoc_measures = QComboBox(parent)
+    label_search_for = QLabel(parent.tr('Search for:'), parent)
+    combo_box_search_for = QComboBox(parent)
+    label_assoc_measure = QLabel(parent.tr('Association Measure:'), parent)
+    combobox_assoc_measure = QComboBox(parent)
 
-    ngram.addItems([
+    combo_box_search_for.addItems([
         parent.tr('Bigrams'),
         parent.tr('Trigrams'),
         parent.tr('Quadgrams')
     ])
 
-    ngram.currentTextChanged.connect(ngram_changed)
+    combo_box_search_for.currentTextChanged.connect(search_for_changed)
 
-    ngram_changed()
+    search_for_changed()
 
-    return ngram, assoc_measures
+    return [label_search_for, combo_box_search_for, label_assoc_measure, combobox_assoc_measure]

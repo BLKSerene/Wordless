@@ -106,8 +106,8 @@ class Wordless_List(QListWidget):
 
         self.addItem(new_item)
 
-        if value:
-            self.item(self.count() - 1), setText(text)
+        if text:
+            self.item(self.count() - 1).setText(text)
         else:
             self.editItem(new_item)
             
@@ -142,11 +142,12 @@ class Wordless_List(QListWidget):
                                                 '.',
                                                 self.tr('Text File (*.txt)'))[0]
 
-        with open(file_path, 'r', encoding = 'UTF-8') as f:
-            for line in f:
-                self.addItem(line.rstrip())
+        if file_path:
+            with open(file_path, 'r', encoding = 'UTF-8') as f:
+                for line in f:
+                    self.addItem(line.rstrip())
 
-        self.item_changed()
+            self.item_changed()
 
     def export_list(self):
         file_path = QFileDialog.getSaveFileName(self.parent,
@@ -154,9 +155,10 @@ class Wordless_List(QListWidget):
                                                 '.',
                                                 self.tr('Text File (*.txt)'))[0]
 
-        with open(file_path, 'w', encoding = 'UTF-8') as f:
-            for item in self.get_items():
-                f.write(item + '\n')
+        if file_path:
+            with open(file_path, 'w', encoding = 'UTF-8') as f:
+                for item in self.get_items():
+                    f.write(item + '\n')
 
     def get_items(self):
         return list(set([self.item(i).text() for i in range(self.count())]))
