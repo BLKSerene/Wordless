@@ -14,24 +14,21 @@ import nltk
 from wordless_utils import *
 
 class Wordless_Table_Multi_Sort_Concordancer(wordless_table.Wordless_Table_Multi_Sort):
-    def __init__(self, parent, sort_table, sort_columns):
-        self.sort_table = sort_table
-
-        super().__init__(parent, sort_columns)
-
     def sort(self, sort_by = None):
+        if isinstance(self.main, QGroupBox):
+            print(self)
         if sort_by:
-            self.parent.settings['concordancer']['multi_sort_by'] = [sort_by]
+            self.main.settings['concordancer']['multi_sort_by'] = [sort_by]
         else:
-            self.parent.settings['concordancer']['multi_sort_by'] = []
+            self.main.settings['concordancer']['multi_sort_by'] = []
 
             for i in range(self.rowCount()):
-                self.parent.settings['concordancer']['multi_sort_by'].append([self.cellWidget(i, 0).currentText(),
+                self.main.settings['concordancer']['multi_sort_by'].append([self.cellWidget(i, 0).currentText(),
                                                                               self.cellWidget(i, 1).currentText()])
 
         if self.sort_table.item(0, 0):
-            multi_sort_by = self.parent.settings['concordancer']['multi_sort_by']
-            multi_sort_colors = self.parent.settings['concordancer']['multi_sort_colors']
+            multi_sort_by = self.main.settings['concordancer']['multi_sort_by']
+            multi_sort_colors = self.main.settings['concordancer']['multi_sort_colors']
             width_left = (len(self.sort_columns) - 2) // 2
             width_right = len(self.sort_columns) - 2 - width_left
             columns_left = []
@@ -278,11 +275,11 @@ def init(self):
         combo_box_sort_order.setCurrentText(self.default_settings['concordancer']['sort_by'][1])
         checkbox_multi_sort.setChecked(self.default_settings['concordancer']['multi_sort'])
 
-        table_multi_sort.reset_table()
-
         token_settings_changed()
         search_settings_changed()
         sorting_settings_changed()
+
+        table_multi_sort.reset_table()
 
     tab_concordancer = wordless_tab.Wordless_Tab(self, self.tr('Concordancer'))
 
@@ -310,7 +307,7 @@ def init(self):
     tab_concordancer.layout_table.addWidget(table_concordancer.button_clear, 1, 4)
 
     # Token Settings
-    groupbox_token_settings = QGroupBox(self.tr('Token Settings'), self)
+    group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
 
     checkbox_punctuations = QCheckBox(self.tr('Punctuations'), self)
 
@@ -319,10 +316,10 @@ def init(self):
     layout_token_settings = QGridLayout()
     layout_token_settings.addWidget(checkbox_punctuations)
 
-    groupbox_token_settings.setLayout(layout_token_settings)
+    group_box_token_settings.setLayout(layout_token_settings)
 
     # Search Settings
-    groupbox_search_settings = QGroupBox(self.tr('Search Settings'), self)
+    group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
 
     label_search_term = QLabel(self.tr('Search Term(s):'), self)
     line_edit_search_term = QLineEdit(self)
@@ -392,10 +389,10 @@ def init(self):
     layout_search_settings.addWidget(spin_box_number_lines, 11, 0)
     layout_search_settings.addWidget(checkbox_number_lines, 11, 1)
 
-    groupbox_search_settings.setLayout(layout_search_settings)
+    group_box_search_settings.setLayout(layout_search_settings)
 
     # Sorting Settings
-    groupbox_sorting_settings = QGroupBox(self.tr('Sorting Settings'), self)
+    group_box_sorting_settings = QGroupBox(self.tr('Sorting Settings'), self)
 
     label_sort = QLabel(self.tr('Sort Results by:'), self)
     combo_box_sort_column = QComboBox(self)
@@ -428,11 +425,11 @@ def init(self):
     layout_sorting_settings.addLayout(layout_multi_sort, 2, 0, 1, 2)
     layout_sorting_settings.addWidget(checkbox_multi_sort, 3, 0, 1, 2)
 
-    groupbox_sorting_settings.setLayout(layout_sorting_settings)
+    group_box_sorting_settings.setLayout(layout_sorting_settings)
 
-    tab_concordancer.layout_settings.addWidget(groupbox_token_settings, 0, 0, Qt.AlignTop)
-    tab_concordancer.layout_settings.addWidget(groupbox_search_settings, 1, 0, Qt.AlignTop)
-    tab_concordancer.layout_settings.addWidget(groupbox_sorting_settings, 2, 0, Qt.AlignTop)
+    tab_concordancer.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
+    tab_concordancer.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
+    tab_concordancer.layout_settings.addWidget(group_box_sorting_settings, 2, 0, Qt.AlignTop)
 
     tab_concordancer.button_restore_defaults.clicked.connect(restore_defaults)
 
