@@ -6,18 +6,17 @@
 # For license information, see LICENSE.txt.
 #
 
-import copy
+import pickle
 import sys
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-import nltk
 
 from wordless_utils import *
 
 import wordless_settings
-import groupbox_files
+import wordless_files
 import tab_overview
 import tab_concordancer
 import tab_wordlist
@@ -32,7 +31,8 @@ class Wordless_Main(QMainWindow):
         self.setWindowTitle(self.tr('Wordless Version 1.0'))
         self.setWindowIcon(QIcon('images/wordless_icon.png'))
 
-        self.init_settings()
+        wordless_settings.load_settings(self)
+
         self.init_central_widget()
 
         self.init_menu()
@@ -42,520 +42,20 @@ class Wordless_Main(QMainWindow):
 
         self.setStyleSheet('* {font-family: Arial, sans-serif; color: #292929; font-size: 12px}')
 
-    def init_settings(self):
-        self.files = []
-        self.files_closed = []
-
-        self.file_langs = {
-                              self.tr('Afrikaans'): 'af',
-                              self.tr('Albanian'): 'sq',
-                              self.tr('Arabic'): 'ar',
-                              self.tr('Bengali'): 'bn',
-                              self.tr('Bulgarian'): 'bg',
-                              self.tr('Catalan, Valencian'): 'ca',
-                              self.tr('Chinese (Simplified)'): 'zh-cn',
-                              self.tr('Chinese (Traditional)'): 'zh-tw',
-                              self.tr('Croatian'): 'hr',
-                              self.tr('Czech'): 'cs',
-                              self.tr('Danish'): 'da',
-                              self.tr('Dutch, Flemish'): 'nl',
-                              self.tr('English'): 'en',
-                              self.tr('Estonian'): 'et',
-                              self.tr('Finnish'): 'fi',
-                              self.tr('French'): 'fr',
-                              self.tr('German'): 'de',
-                              self.tr('Greek'): 'el',
-                              self.tr('Gujarati'): 'gu',
-                              self.tr('Hebrew (modern)'): 'he',
-                              self.tr('Hindi'): 'hi',
-                              self.tr('Hungarian'): 'hu',
-                              self.tr('Indonesian'): 'id',
-                              self.tr('Italian'): 'it',
-                              self.tr('Japanese'): 'ja',
-                              self.tr('Kannada'): 'kn',
-                              self.tr('Korean'): 'ko',
-                              self.tr('Latvian'): 'lv',
-                              self.tr('Lithuanian'): 'lt',
-                              self.tr('Macedonian'): 'mk',
-                              self.tr('Malayalam'): 'ml',
-                              self.tr('Marathi'): 'mr',
-                              self.tr('Nepali'): 'ne',
-                              self.tr('Norwegian'): 'no',
-                              self.tr('Panjabi, Punjabi'): 'pa',
-                              self.tr('Persian'): 'fa',
-                              self.tr('Polish'): 'pl',
-                              self.tr('Portuguese'): 'pt',
-                              self.tr('Romanian, Moldavian, Moldova'): 'ro',
-                              self.tr('Russian'): 'ru',
-                              self.tr('Slovak'): 'sk',
-                              self.tr('Slovenian'): 'sl',
-                              self.tr('Somali'): 'so',
-                              self.tr('Spanish, Castilian'): 'es',
-                              self.tr('Swahili'): 'sw',
-                              self.tr('Swedish'): 'sv',
-                              self.tr('Tagalog'): 'tl',
-                              self.tr('Tamil'): 'ta',
-                              self.tr('Telugu'): 'te',
-                              self.tr('Thai'): 'th',
-                              self.tr('Turkish'): 'tr',
-                              self.tr('Ukrainian'): 'uk',
-                              self.tr('Urdu'): 'ur',
-                              self.tr('Vietnamese'): 'vi',
-                              self.tr('Welsh'): 'cy'
-                          }
-
-        self.file_exts = {
-                             '.txt': self.tr('Text File (*.txt)'),
-                             '.htm': self.tr('HTML Page (*.htm; *.html)'),
-                             '.html': self.tr('HTML Page (*.htm; *.html)')
-                         }
-
-        self.file_encodings = {
-                                  self.tr('All Languages(UTF-8 Without BOM)'): 'utf_8',
-                                  self.tr('All Languages(UTF-8 With BOM)'): 'utf_8_sig',
-                                  self.tr('All Languages(UTF-16)'): 'utf_16',
-                                  self.tr('All Languages(UTF-16 Big Endian)'): 'utf_16_be',
-                                  self.tr('All Languages(UTF-16 Little Endian)'): 'utf_16_le',
-                                  self.tr('All Languages(UTF-32)'): 'utf_32',
-                                  self.tr('All Languages(UTF-32 Big Endian)'): 'utf_32_be',
-                                  self.tr('All Languages(UTF-32 Little Endian)'): 'utf_32_le',
-                                  self.tr('All Languages(UTF-7)'): 'utf_7',
-                                  self.tr('All Languages(CP65001)'): 'cp65001',
-
-                                  self.tr('Baltic Languages(CP775)'): 'cp775',
-                                  self.tr('Baltic Languages(Windows-1257)'): 'cp1257',
-                                  self.tr('Baltic Languages(ISO-8859-4)'): 'iso8859_4',
-                                  self.tr('Baltic Languages(ISO-8859-13)'): 'iso8859_13',
-
-                                  self.tr('Celtic Languages(ISO-8859-14)'): 'iso8859_14',
-
-                                  self.tr('Nordic Languages(ISO-8859-10)'): 'iso8859_10',
-
-                                  self.tr('Europe(HP Roman-8)'): 'hp_roman8',
-
-                                  self.tr('Central Europe(Mac OS Central European)'): 'mac_centeuro',
-                                  self.tr('Central Europe(Mac OS Latin 2)'): 'mac_latin2',
-
-                                  self.tr('Central and Eastern Europe(CP852)'): 'cp852',
-                                  self.tr('Central and Eastern Europe(Windows-1250)'): 'cp1250',
-                                  self.tr('Central and Eastern Europe(ISO-8859-2)'): 'iso8859_2',
-                                  self.tr('Central and Eastern Europe(Mac Latin)'): 'mac_latin2',
-
-                                  self.tr('South-Eastern Europe(ISO-8859-16)'): 'iso8859_16',
-
-                                  self.tr('Western Europe(EBCDIC 500)'): 'cp500',
-                                  self.tr('Western Europe(CP850)'): 'cp850',
-                                  self.tr('Western Europe(CP858)'): 'cp858',
-                                  self.tr('Western Europe(CP1140)'): 'cp1140',
-                                  self.tr('Western Europe(Windows-1252)'): 'windows_1252',
-                                  self.tr('Western Europe(ISO-2022-JP-2)'): 'iso2022_jp_2',
-                                  self.tr('Western Europe(ISO-8859-1)'): 'iso_8859_1',
-                                  self.tr('Western Europe(ISO-8859-15)'): 'iso_8859_15',
-                                  self.tr('Western Europe(Mac OS Roman)'): 'mac_roman',
-
-                                  self.tr('Arabic(CP720)'): 'cp720',
-                                  self.tr('Arabic(CP864)'): 'cp864',
-                                  self.tr('Arabic(Windows-1256)'): 'cp1256',
-                                  self.tr('Arabic(ISO-8859-6)'): 'iso_8859_6',
-                                  self.tr('Arabic(Mac OS Arabic)'): 'mac_arabic',
-
-                                  self.tr('Bulgarian(IBM855)'): 'cp855',
-                                  self.tr('Bulgarian(Windows-1251)'): 'windows_1251',
-                                  self.tr('Bulgarian(ISO-8859-5)'): 'iso_8859_5',
-                                  self.tr('Bulgarian(Mac OS Cyrillic)'): 'mac_cyrillic',
-
-                                  self.tr('Byelorussian(IBM855)'): 'cp855',
-                                  self.tr('Byelorussian(Windows-1251)'): 'cp1251',
-                                  self.tr('Byelorussian(ISO-8859-5)'): 'iso_8859_5',
-                                  self.tr('Byelorussian(Mac OS Cyrillic)'): 'mac_cyrillic',
-
-                                  self.tr('Canadian(CP863)'): 'cp863',
-
-                                  self.tr('Simplified Chinese(GB2312)'): 'gb2312',
-                                  self.tr('Simplified Chinese(HZ)'): 'hz_gb_2312',
-                                  self.tr('Simplified Chinese(ISO-2022-JP-2)'): 'iso2022_jp_2',
-
-                                  self.tr('Traditional Chinese(Big-5)'): 'big5',
-                                  self.tr('Traditional Chinese(Big5-HKSCS)'): 'big5hkscs',
-                                  self.tr('Traditional Chinese(CP950)'): 'cp950',
-
-                                  self.tr('Unified Chinese(GBK)'): 'gbk',
-                                  self.tr('Unified Chinese(GB18030)'): 'gb18030',
-
-                                  self.tr('Croatian(Mac OS Croatian)'): 'mac_croatian',
-
-                                  self.tr('Danish(CP865)'): 'cp865',
-
-                                  self.tr('English(ASCII)'): 'ascii',
-                                  self.tr('English(EBCDIC 037)'): 'cp037',
-                                  self.tr('English(CP437)'): 'cp437',
-
-                                  self.tr('Esperanto(ISO-8859-3)'): 'iso_8859_3',
-
-                                  self.tr('German(EBCDIC 273)'): 'cp273',
-
-                                  self.tr('Greek(CP737)'): 'cp737',
-                                  self.tr('Greek(CP869)'): 'cp869',
-                                  self.tr('Greek(CP875)'): 'cp875',
-                                  self.tr('Greek(Windows-1253)'): 'windows_1253',
-                                  self.tr('Greek(ISO-2022-JP-2)'): 'iso2022_jp_2',
-                                  self.tr('Greek(ISO-8859-7)'): 'iso_8859_7',
-                                  self.tr('Greek(Mac OS Greek)'): 'mac_greek',
-
-                                  self.tr('Hebrew(EBCDIC 424)'): 'cp424',
-                                  self.tr('Hebrew(CP856)'): 'cp856',
-                                  self.tr('Hebrew(CP862)'): 'cp862',
-                                  self.tr('Hebrew(Windows-1255)'): 'windows_1255',
-                                  self.tr('Hebrew(ISO-8859-8)'): 'iso_8859_8',
-
-                                  self.tr('Icelandic(CP861)'): 'cp861',
-                                  self.tr('Icelandic(Mac OS Icelandic)'): 'mac_iceland',
-
-                                  self.tr('Japanese(CP932)'): 'cp932',
-                                  self.tr('Japanese(EUC-JP)'): 'euc_jp',
-                                  self.tr('Japanese(EUC-JIS-2004)'): 'euc_jis_2004',
-                                  self.tr('Japanese(EUC-JISx0213)'): 'euc_jisx0213',
-                                  self.tr('Japanese(ISO-2022-JP)'): 'iso_2022_jp',
-                                  self.tr('Japanese(ISO-2022-JP-1)'): 'iso2022_jp_1',
-                                  self.tr('Japanese(ISO-2022-JP-2)'): 'iso2022_jp_2',
-                                  self.tr('Japanese(ISO-2022-JP-2)'): 'iso2022_jp_2004',
-                                  self.tr('Japanese(ISO-2022-JP-3)'): 'iso2022_jp_3',
-                                  self.tr('Japanese(ISO-2022-JP-EXT)'): 'iso2022_jp_ext',
-                                  self.tr('Japanese(Shift_JIS)'): 'shift_jis',
-                                  self.tr('Japanese(Shift_JIS-2004)'): 'shift_jis_2004',
-                                  self.tr('Japanese(Shift_JISx0213)'): 'shift_jisx0213',
-
-                                  self.tr('Kazakh(KZ-1048)'): 'kz1048',
-                                  self.tr('Kazakh(PTCP154)'): 'ptcp154',
-
-                                  self.tr('Korean(Windows-949)'): 'cp949',
-                                  self.tr('Korean(EUC-KR)'): 'euc_kr',
-                                  self.tr('Korean(ISO-2022-JP-2)'): 'iso2022_jp_2',
-                                  self.tr('Korean(ISO-2022-KR)'): 'iso_2022_kr',
-                                  self.tr('Korean(JOHAB)'): 'johab',
-
-                                  self.tr('Macedonian(IBM855)'): 'cp855',
-                                  self.tr('Macedonian(Windows-1251)'): 'cp1251',
-                                  self.tr('Macedonian(ISO-8859-5)'): 'iso_8859_5',
-                                  self.tr('Macedonian(Mac OS Cyrillic)'): 'maccyrillic',
-
-                                  self.tr('Maltese(ISO-8859-3)'): 'iso_8859_3',
-
-                                  self.tr('Norwegian(CP865)'): 'cp865',
-
-                                  self.tr('Persian(Mac OS Farsi)'): 'mac_farsi',
-
-                                  self.tr('Portuguese(CP860)'): 'cp860',
-
-                                  self.tr('Romanian(Mac OS Romanian)'): 'mac_romanian',
-
-                                  self.tr('Russian(IBM855)'): 'ibm855',
-                                  self.tr('Russian(IBM866)'): 'ibm866',
-                                  self.tr('Russian(Windows-1251)'): 'windows_1251',
-                                  self.tr('Russian(ISO-8859-5)'): 'iso_8859_5',
-                                  self.tr('Russian(KOI8-R)'): 'koi8_r',
-                                  self.tr('Russian(Mac OS Cyrillic)'): 'maccyrillic',
-
-                                  self.tr('Serbian(IBM855)'): 'cp855',
-                                  self.tr('Serbian(Windows-1251)'): 'cp1251',
-                                  self.tr('Serbian(ISO-8859-5)'): 'iso8859_5',
-                                  self.tr('Serbian(Mac OS Cyrillic)'): 'maccyrillic',
-
-                                  self.tr('Tajik(KOI8-T)'): 'koi8_t',
-
-                                  self.tr('Thai(CP874)'): 'cp874',
-                                  self.tr('Thai(ISO-8859-11)'): 'iso8859_11',
-                                  self.tr('Thai(TIS-620)'): 'tis_620',
-
-                                  self.tr('Turkish(CP857)'): 'cp857',
-                                  self.tr('Turkish(EBCDIC 1026)'): 'cp1026',
-                                  self.tr('Turkish(Windows-1254)'): 'cp1254',
-                                  self.tr('Turkish(ISO-8859-9)'): 'iso_8859_9',
-                                  self.tr('Turkish(Mac OS Turkish)'): 'mac_turkish',
-
-                                  self.tr('Ukranian(CP1125)'): 'cp1125',
-                                  self.tr('Ukranian(KOI8-U)'): 'koi8_u',
-
-                                  self.tr('Urdu(CP1006)'): 'cp1006',
-                                  self.tr('Urdu(Mac OS Farsi)'): 'mac_farsi',
-
-                                  self.tr('Vietnamese(CP1258)'): 'cp1258'
-                              }
-
-        self.default_settings = {
-                                    'general': {
-                                        'encoding_input': ('utf_8', self.tr('All Languages')),
-                                        'encoding_output': ('utf_8', self.tr('All Languages')),
-
-                                        'font_monospaced': 'Consolas',
-
-                                        'precision': 2,
-                                        'style_highlight': 'border: 1px solid Red;'
-                                    },
-        
-                                    'file': {
-        
-                                    },
-        
-                                    'overview': {
-        
-                                    },
-        
-                                    'concordancer': {
-                                        'search_term': '',
-                                        'search_terms': [],
-                                        'ignore_case': True,
-                                        'lemmatized_forms': True,
-                                        'whole_word': True,
-                                        'regex': False,
-                                        'multi_search': False,
-        
-                                        'line_width_char': 80,
-                                        'line_width_token': 20,
-                                        'line_width_mode': 'Tokens',
-        
-                                        'number_lines': 25,
-                                        'number_lines_no_limit': True,
-        
-                                        'punctuations': False,
-        
-                                        'sort_by': [self.tr('Offset'), self.tr('In Ascending Order')],
-                                        'multi_sort_by': [[self.tr('Offset'), self.tr('Ascending')]],
-                                        'multi_sort_colors': [
-                                            '#bb302d',
-                                            '#c2691d',
-                                            '#cbbe01',
-                                            '#569834',
-                                            '#428989',
-                                            '#172e7c',
-                                            '#811570'
-                                        ],
-                                        'multi_sort': False
-                                    },
-        
-                                    'wordlist': {
-                                        'words': True,
-                                        'lowercase': True,
-                                        'uppercase': True,
-                                        'title_cased': True,
-                                        'numerals': True,
-                                        'punctuations': False,
-        
-                                        'ignore_case': True,
-                                        'lemmatization': True,
-
-                                        'show_pct': True,
-                                        'show_cumulative': True,
-                                        'show_breakdown': True,
-
-                                        'rank_no_limit': False,
-                                        'rank_min': 1,
-                                        'rank_max': 50,
-                                        'cumulative': False,
-        
-                                        'freq_no_limit': True,
-                                        'freq_min': 0,
-                                        'freq_max': 1000,
-                                        'freq_apply_to': 'Total',
-                                        'len_no_limit': True,
-                                        'len_min': 1,
-                                        'len_max': 20,
-                                        'files_no_limit': True,
-                                        'files_min': 1,
-                                        'files_max': 100
-                                    },
-        
-                                    'ngram': {
-                                        'words': True,
-                                        'lowercase': True,
-                                        'uppercase': True,
-                                        'title_cased': True,
-                                        'numerals': True,
-                                        'punctuations': False,
-        
-                                        'search_terms': [],
-                                        'keyword_position_no_limit': True,
-                                        'keyword_position_min': 1,
-                                        'keyword_position_max': 2,
-                                        'ignore_case': True,
-                                        'lemmatization': True,
-                                        'whole_word': True,
-                                        'regex': False,
-                                        'multi_search': False,
-                                        'show_all': False,
-
-                                        'ngram_size_sync': False,
-                                        'ngram_size_min': 2,
-                                        'ngram_size_max': 2,
-                                        'allow_skipped_tokens': 0,
-
-                                        'show_pct': True,
-                                        'show_cumulative': True,
-                                        'show_breakdown': True,
-        
-                                        'rank_no_limit': False,
-                                        'rank_min': 1,
-                                        'rank_max': 50,
-                                        'cumulative': False,
-        
-                                        'freq_no_limit': True,
-                                        'freq_min': 0,
-                                        'freq_max': 1000,
-                                        'freq_apply_to': 'Total',
-                                        'len_no_limit': True,
-                                        'len_min': 1,
-                                        'len_max': 20,
-                                        'files_no_limit': True,
-                                        'files_min': 1,
-                                        'files_max': 100
-                                    },
-
-                                    'collocation': {
-                                        'words': True,
-                                        'lowercase': True,
-                                        'uppercase': True,
-                                        'title_cased': True,
-                                        'numerals': True,
-                                        'punctuations': False,
-        
-                                        'search_terms': [],
-                                        'ignore_case': True,
-                                        'lemmatization': True,
-                                        'whole_word': True,
-                                        'regex': False,
-                                        'multi_search': False,
-                                        'show_all': False,
-
-                                        'window_sync': False,
-                                        'window_left': ['L', 1],
-                                        'window_right': ['R', 1],
-                                        'search_for': self.tr('Bigrams'),
-                                        'assoc_measure': self.tr('Pearson\'s Chi-squared Test'),
-
-                                        'show_pct': True,
-                                        'show_cumulative': True,
-                                        'show_breakdown': True,
-
-        
-                                        'rank_no_limit': False,
-                                        'rank_min': 1,
-                                        'rank_max': 50,
-                                        'cumulative': False,
-
-                                        'score_no_limit': True,
-                                        'score_min': 1,
-                                        'score_max': 1000,
-                                        'score_apply_to': 'Total',
-                                        'len_no_limit': True,
-                                        'len_min': 1,
-                                        'len_max': 20,
-                                        'files_no_limit': True,
-                                        'files_min': 1,
-                                        'files_max': 100
-                                    },
-        
-                                    'semantics': {
-                                        'search_term': '',
-                                        'search_mode': self.tr('Word'),
-                                        'search_for': self.tr('Synonyms'),
-        
-                                        'degree_max': 10,
-                                        'degree_no_limit': True,
-                                        'depth_max': 5,
-                                        'depth_no_limit': True,
-                                        'recursive': True,
-                                        'show_lemmas': True,
-        
-                                        'parts_of_speech': {
-                                            'n': self.tr('Noun'),
-                                            'v': self.tr('Verb'),
-                                            'a': self.tr('Adjective'),
-                                            's': self.tr('Adjective Satellite'),
-                                            'r': self.tr('Adverb')
-                                        }
-                                    }
-                                }
-
-        self.settings = copy.deepcopy(self.default_settings)
-
-        self.wordless_settings = wordless_settings.Wordless_Settings(self)
-
-        self.style_dialog = '''
-                            <head>
-                              <style>
-                                * {
-                                  margin: 0;
-                                  border: 0;
-                                  padding: 0;
-
-                                  line-height: 1.2;
-                                  text-align: justify;
-                                }
-
-                                h1 {
-                                  margin-bottom: 10px;
-                                  font-size: 16px;
-                                  font-weight: bold;
-                                }
-
-                                p {
-                                  margin-bottom: 5px;
-                                }
-
-                                table th {
-                                  font-weight: bold;
-                                }
-                              </style>
-                            </head>
-                            '''
-
-        self.assoc_measures_bigram = {
-            self.tr('Frequency'): nltk.collocations.BigramAssocMeasures().raw_freq,
-            self.tr('Student\'s T-test'): nltk.collocations.BigramAssocMeasures().student_t,
-            self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.BigramAssocMeasures().chi_sq,
-            self.tr('Phi Coefficient'): nltk.collocations.BigramAssocMeasures().phi_sq,
-            self.tr('A Variant of Mutual Information'): nltk.collocations.BigramAssocMeasures().mi_like,
-            self.tr('Pointwise Mutual Information'): nltk.collocations.BigramAssocMeasures().pmi,
-            self.tr('Likelihood Ratios'): nltk.collocations.BigramAssocMeasures().likelihood_ratio,
-            self.tr('Poisson-Stirling'): nltk.collocations.BigramAssocMeasures().poisson_stirling,
-            self.tr('Jaccard Index'): nltk.collocations.BigramAssocMeasures().jaccard,
-            self.tr('Fisher\'s Exact Test'): nltk.collocations.BigramAssocMeasures().fisher,
-            self.tr('Dice\'s coefficient'): nltk.collocations.BigramAssocMeasures().dice
-        }
-
-        self.assoc_measures_trigram = {
-            self.tr('Frequency'): nltk.collocations.TrigramAssocMeasures().raw_freq,
-            self.tr('Student\'s T-test'): nltk.collocations.TrigramAssocMeasures().student_t,
-            self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.TrigramAssocMeasures().chi_sq,
-            self.tr('A Variant of Mutual Information'): nltk.collocations.TrigramAssocMeasures().mi_like,
-            self.tr('Pointwise Mutual Information'): nltk.collocations.TrigramAssocMeasures().pmi,
-            self.tr('Likelihood Ratios'): nltk.collocations.TrigramAssocMeasures().likelihood_ratio,
-            self.tr('Poisson-Stirling'): nltk.collocations.TrigramAssocMeasures().poisson_stirling,
-            self.tr('Jaccard Index'): nltk.collocations.TrigramAssocMeasures().jaccard
-        }
-
-        self.assoc_measures_quadgram = {
-            self.tr('Frequency'): nltk.collocations.QuadgramAssocMeasures().raw_freq,
-            self.tr('Student\'s T-test'): nltk.collocations.QuadgramAssocMeasures().student_t,
-            self.tr('Pearson\'s Chi-squared Test'): nltk.collocations.QuadgramAssocMeasures().chi_sq,
-            self.tr('A Variant of Mutual Information'): nltk.collocations.QuadgramAssocMeasures().mi_like,
-            self.tr('Pointwise Mutual Information'): nltk.collocations.QuadgramAssocMeasures().pmi,
-            self.tr('Likelihood Ratios'): nltk.collocations.QuadgramAssocMeasures().likelihood_ratio,
-            self.tr('Poisson-Stirling'): nltk.collocations.QuadgramAssocMeasures().poisson_stirling,
-            self.tr('Jaccard Index'): nltk.collocations.QuadgramAssocMeasures().jaccard
-        }
+    def closeEvent(self, event):
+        reply = QMessageBox.question(self,
+                                     self.tr('Exit Confirmation'),
+                                     self.tr('Do you really want to quit?'),
+                                     QMessageBox.Yes | QMessageBox.No,
+                                     QMessageBox.No)
+
+        if reply == QMessageBox.Yes:
+            with open('wordless_settings.pkl', 'wb') as f:
+                pickle.dump(self.settings, f)
+
+            event.accept()
 
     def init_menu(self):
-        def exit():
-            reply = QMessageBox.question(self,
-                                         self.tr('Exit Confirmation'),
-                                         self.tr('Do you really want to quit?'),
-                                         QMessageBox.Yes | QMessageBox.No,
-                                         QMessageBox.No)
-
-            if reply == QMessageBox.Yes:
-                qApp.quit()
-
         def show_status_bar():
             if self.status_bar.isVisible():
                 self.status_bar.hide()
@@ -767,13 +267,8 @@ class Wordless_Main(QMainWindow):
         menu_pref = menu.addMenu(self.tr('Preferences'))
         menu_help = menu.addMenu(self.tr('Help'))
 
-        action_open_file = QAction(self.tr('Open File...'), self)
-        action_open_file.setShortcut('Ctrl+O')
-        action_open_file.setStatusTip(self.tr('Open a file'))
-        action_open_file.triggered.connect(self.open_file)
-
-        action_open_files = QAction(self.tr('Open Files...'), self)
-        action_open_files.setStatusTip(self.tr('Open multile files'))
+        action_open_files = QAction(self.tr('Open File(s)...'), self)
+        action_open_files.setStatusTip(self.tr('Open file(s)'))
         action_open_files.triggered.connect(self.open_files)
 
         action_open_dir = QAction(self.tr('Open Folder...'), self)
@@ -794,11 +289,10 @@ class Wordless_Main(QMainWindow):
 
         action_exit = QAction(self.tr('Exit...'), self)
         action_exit.setStatusTip(self.tr('Exit the program'))
-        action_exit.triggered.connect(lambda: exit(self))
+        action_exit.triggered.connect(self.close)
 
         self.action_reopen.setEnabled(False)
 
-        menu_file.addAction(action_open_file)
         menu_file.addAction(action_open_files)
         menu_file.addAction(action_open_dir)
         menu_file.addSeparator()
@@ -856,13 +350,13 @@ class Wordless_Main(QMainWindow):
     def init_central_widget(self):
         central_widget = QWidget(self)
 
-        self.groupbox_files = groupbox_files.init(self)
+        self.widget_files = wordless_files.init(self)
 
         self.layout_central_widget = QGridLayout()
         self.layout_central_widget.addWidget(self.init_tabs(), 0, 0)
-        self.layout_central_widget.addWidget(self.groupbox_files, 1, 0)
+        self.layout_central_widget.addWidget(self.widget_files, 1, 0)
 
-        self.layout_central_widget.setRowStretch(0, 5)
+        self.layout_central_widget.setRowStretch(0, 2)
         self.layout_central_widget.setRowStretch(1, 1)
 
         central_widget.setLayout(self.layout_central_widget)
@@ -872,11 +366,11 @@ class Wordless_Main(QMainWindow):
     def init_tabs(self):
         def current_tab_changed():
             if tabs.currentIndex() == 5:
-                self.groupbox_files.hide()
+                self.widget_files.hide()
 
                 self.layout_central_widget.setRowStretch(1, 0)
             else:
-                self.groupbox_files.show()
+                self.widget_files.show()
 
                 self.layout_central_widget.setRowStretch(1, 1)
 

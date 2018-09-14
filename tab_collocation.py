@@ -431,19 +431,19 @@ def generate_data(self, table):
     files = wordless_misc.fetch_files(self)
 
     # Update filter settings
-    apply_to_text_old = table.combo_box_freq_apply_to.currentText()
-    table.combo_box_freq_apply_to.clear()
+    apply_to_text_old = table.combo_box_score_apply_to.currentText()
+    table.combo_box_score_apply_to.clear()
     
     for i, file in enumerate(files):
         table.insert_column(table.find_column(self.tr('Total Score')), file.name)
 
-        table.combo_box_freq_apply_to.addItem(file.name)
-    table.combo_box_freq_apply_to.addItem('Total')
+        table.combo_box_score_apply_to.addItem(file.name)
+    table.combo_box_score_apply_to.addItem(self.tr('Total'))
 
     if apply_to_text_old == file.name:
-        table.combo_box_freq_apply_to.setCurrentText(file.name)
+        table.combo_box_score_apply_to.setCurrentText(file.name)
 
-    collocation_scores = wordless_distribution.wordless_distributions(self, files, mode = 'collocation')
+    score_distributions = wordless_distribution.wordless_score_distributions(self, files, mode = 'collocation')
 
     col_total_score = table.find_column(self.tr('Total Score'))
     col_files_found = table.find_column(self.tr('Files Found'))
@@ -452,19 +452,26 @@ def generate_data(self, table):
 
     table.setSortingEnabled(False)
     table.setUpdatesEnabled(False)
-    table.setRowCount(len(collocation_scores))
+    table.setRowCount(len(score_distributions))
 
-    for i, (collocate, scores) in enumerate(collocation_scores.items()):
+    for i, (collocate, scores) in enumerate(score_distributions.items()):
         # Collocates
         table.setItem(i, 1, wordless_table.Wordless_Table_Item(collocate))
 
-        # Score
+        score_files = list(zip(*score_distributions.values()))
+
         for j, score in enumerate(scores):
-            table.setItem(i, 2 + j, wordless_table.Wordless_Table_Item())
-            table.item(i, 2 + j).setData(Qt.DisplayRole, score)
+            score_max = max(score_files[j])
+
+            # Score
+            table.set_item_data(i, 2 + j, score, score_max)
+
+            # Total Score
+            if j == len_files - 1:
+                table.set_item_data(i, col_total_score, score, score_max)
 
         # Files Found
-        table.set_item_with_pct(i, col_files_found, len([score for score in scores if score > 0]), len_files)
+        table.set_item_with_pct(i, col_files_found, len([score for score in scores[:-1] if score != 0]), len_files)
     
     table.sortByColumn(table.find_column('Collocates') + 1, Qt.DescendingOrder)
 
