@@ -10,6 +10,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_utils import wordless_widgets
+
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
         item_text = self.text()
@@ -17,10 +19,11 @@ class Wordless_Table_Item(QTableWidgetItem):
         if item_text:
             if self.column() in self.tableWidget().cols_pct:
                 return self.raw_value
-            elif item_text.replace('.', '', 1).isdigit():
-                return float(item_text)
             else:
-                return item_text
+                try:
+                    return float(item_text)
+                except:
+                    return item_text
         else:
             cell_widget = self.tableWidget().cellWidget(self.row(), self.column())
 
@@ -33,23 +36,30 @@ class Wordless_Table_Item(QTableWidgetItem):
         return self.read_data() < other.read_data()
 
 class Wordless_Table(QTableWidget):
-    def __init__(self, parent, headers, orientation = 'Horizontal', cols_stretch = []):
-        self.parent = parent
+    def __init__(self, parent, headers, orientation = 'Horizontal', cols_stretch = [], drag_drop_enabled = False):
+        self.main = parent
         self.headers = headers
         self.orientation = orientation
         self.cols_pct = []
 
         if orientation == 'Horizontal':
-            super().__init__(1, len(self.headers), self.parent)
+            super().__init__(1, len(self.headers), self.main)
 
             self.setHorizontalHeaderLabels(headers)
         else:
-            super().__init__(len(self.headers), 1, self.parent)
+            super().__init__(len(self.headers), 1, self.main)
 
             self.setVerticalHeaderLabels(self.headers)
 
         self.setEditTriggers(QTableWidget.NoEditTriggers)
         self.setSelectionBehavior(QTableWidget.SelectRows)
+
+        if drag_drop_enabled:
+            self.setDragEnabled(True)
+            self.setAcceptDrops(True)
+            self.viewport().setAcceptDrops(True)
+            self.setDragDropMode(QAbstractItemView.InternalMove)
+            self.setDragDropOverwriteMode(False)
 
         self.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.verticalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
@@ -86,24 +96,43 @@ class Wordless_Table(QTableWidget):
 
         self.setHorizontalHeaderItem(i, QTableWidgetItem(label))
 
+    def set_item_data(self, row, column, value, value_max):
+        precision = self.main.settings['general']['precision']
+        len_value = len('{:.{precision}f}'.format(value_max, precision = precision))
+
+        item = Wordless_Table_Item()
+
+        item.setText('{:>{len_value}.{precision}f}'.format(value, len_value = len_value, precision = precision))
+
+        item.setFont(QFont(self.main.settings['general']['font_monospaced']))
+        item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+
+        super().setItem(row, column, item)
+
     def set_item_with_pct(self, row, column, value, total, show_pct = True):
-        precision = self.parent.settings['general']['precision']
+        precision = self.main.settings['general']['precision']
         len_value = len('{:,}'.format(total))
-        len_total = 5 + precision
+        len_pct = 5 + precision
 
         item = Wordless_Table_Item()
 
         item.raw_value = value
         item.raw_total = total
 
+        if total == 0:
+            ratio = value
+        else:
+            ratio = value / total
+
         if show_pct:
-            item.setText('{:>{len_value},}/{:<{len_total}.{precision}%}'.format(value, value / total,
-                                                                                len_value = len_value, len_total = len_total,
-                                                                                precision = precision))
+            item.setText('{:>{len_value},}/{:<{len_pct}.{precision}%}'.format(value, ratio,
+                                                                              len_value = len_value,
+                                                                              len_pct = len_pct,
+                                                                              precision = precision))
         else:
             item.setText('{:>{len_value},}'.format(value, len_value = len_value))
 
-        item.setFont(QFont(self.parent.settings['general']['font_monospaced']))
+        item.setFont(QFont(self.main.settings['general']['font_monospaced']))
         item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         super().setItem(row, column, item)
@@ -121,6 +150,50 @@ class Wordless_Table(QTableWidget):
             self.button_export_selected.setEnabled(True)
         else:
             self.button_export_selected.setEnabled(False)
+
+    def dropEvent(self, event):
+        rows_dragged = []
+
+        if self.indexAt(event.pos()).row() == -1:
+            row_dropped = self.rowCount()
+        else:
+            row_dropped = self.indexAt(event.pos()).row()
+
+        selected_rows = self.selected_rows()
+
+        for row in selected_rows:
+            rows_dragged.append([])
+
+            for column in range(self.columnCount()):
+                item_text = self.item(row, column).text()
+
+                if item_text:
+                    rows_dragged[-1].append(self.takeItem(row, column))
+                else:
+                    rows_dragged[-1].append(self.cellWidget(row, column))
+
+        for i in reversed(selected_rows):
+            self.removeRow(i)
+
+            if i < row_dropped:
+                row_dropped -= 1
+
+        for row, items in enumerate(rows_dragged):
+            self.insertRow(row_dropped + row)
+
+            for column, item in enumerate(items):
+                if isinstance(item, QTableWidgetItem):
+                    self.setItem(row_dropped + row, column, item)
+                elif isinstance(item, QComboBox):
+                    item_combo_box = wordless_widgets.Wordless_Combo_Box(self.main)
+                    item_combo_box.addItems([item.itemText(i) for i in range(item.count())])
+                    item_combo_box.setCurrentText(item.currentText())
+
+                    self.setCellWidget(row_dropped + row, column, item_combo_box)
+
+                self.item(row, column).setSelected(True)
+
+        event.accept()
 
     def sorting_changed(self, logicalIndex, order):
         rank_prev = 1
@@ -169,13 +242,8 @@ class Wordless_Table(QTableWidget):
 
         self.show()
 
-    def fetch_selected_rows(self, descending = False):
-        selected_rows = set([index.row() for index in self.selectedIndexes()])
-
-        if descending:
-            return sorted(selected_rows, reverse = True)
-        else:
-            return sorted(selected_rows)
+    def selected_rows(self):
+        return sorted(set([index.row() for index in self.selectedIndexes()]))
 
     def import_table(self):
         pass
@@ -221,9 +289,10 @@ class Wordless_Table(QTableWidget):
         return list(range(self.find_column('Rank') + 2, self.find_column('Total', fuzzy_search = True)))
 
 class Wordless_Table_Multi_Sort(Wordless_Table):
-    def __init__(self, parent, sort_columns):
+    def __init__(self, parent, sort_table, sort_columns):
         super().__init__(parent, headers = ['Column', 'Order'], cols_stretch = ['Order'])
 
+        self.sort_table = sort_table
         self.sort_columns = sort_columns
 
         self.button_add = QPushButton('Add')
@@ -261,7 +330,7 @@ class Wordless_Table_Multi_Sort(Wordless_Table):
 
                 if item != combobox_current and item.currentText() == combobox_current.currentText():
                     item.setStyleSheet(self.settings['general']['style_highlight'])
-                    combobox_current.setStyleSheet(self.parent.settings['general']['style_highlight'])
+                    combobox_current.setStyleSheet(self.main.settings['general']['style_highlight'])
 
                     QMessageBox.warning(self.parent,
                                         'Column Sorted More Than Once',
@@ -346,7 +415,7 @@ class Wordless_Table_Multi_Sort(Wordless_Table):
         self.sort()
 
     def insert_row(self):
-        row = self.fetch_selected_rows()[0]
+        row = self.selected_rows()[0]
 
         combobox_sort_column, combobox_sort_order = self._new_row()
 
@@ -358,7 +427,7 @@ class Wordless_Table_Multi_Sort(Wordless_Table):
         self.sort()
 
     def remove_row(self):
-        for i in self.fetch_selected_rows(descending = True):
+        for i in reversed(self.selected_rows()):
             self.removeRow(i)
 
         self.sort()
