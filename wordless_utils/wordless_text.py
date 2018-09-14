@@ -29,6 +29,18 @@ def wordless_lemmatize(tokens, lang = 'en'):
                 tokens[i] = lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB)
             else:
                 tokens[i] = lemmatizer.lemmatize(token)
+    else:
+        pass
+
+    return tokens
+
+def wordless_word_tokenize(text, lang):
+    tokens = []
+
+    if lang == 'en':
+        tokens.extend(nltk.word_tokenize(text))
+    elif lang in ['zh-cn', 'zh-tw']:
+        tokens.extend(jieba.lcut(text))
 
     return tokens
 
@@ -64,21 +76,22 @@ def find_concordance(self, word, width=80, lines=25):
 nltk.ConcordanceIndex.find_concordance = find_concordance
 
 class Wordless_Text(nltk.Text):
-    def __init__(self, file):
-        with open(file.path, 'r', encoding = file.encoding_code) as f:
-            tokens = []
+    def __init__(self, files):
+        if type(files) != list:
+            files = [files]
 
-            for line in f:
-                if file.ext in ['.txt']:
-                    text = line.rstrip()
-                elif file.ext in ['.htm', '.html']:
-                    soup = BeautifulSoup(line.rstrip(), 'lxml')
-                    text = soup.get_text()
-                
-                if file.lang_code == 'en':
-                    tokens.extend(nltk.word_tokenize(text))
-                elif file.lang_code in ['zh-cn', 'zh-tw']:
-                    tokens.extend(jieba.lcut(text))
+        tokens = []
+
+        for file in files:
+            with open(file.path, 'r', encoding = file.encoding_code) as f:
+                for line in f:
+                    if file.ext in ['.txt']:
+                        text = line.rstrip()
+                    elif file.ext in ['.htm', '.html']:
+                        soup = BeautifulSoup(line.rstrip(), 'lxml')
+                        text = soup.get_text()
+                    
+                    tokens.extend(wordless_word_tokenize(text, file.lang_code))
 
         super().__init__(tokens)
 
@@ -93,14 +106,13 @@ class Wordless_Text(nltk.Text):
         # Construct a new concordance index
         self._concordance_index = nltk.ConcordanceIndex(self.tokens)
 
-        # Ignore Case
+        # Ignore case
         if ignore_case:
             tokens_matched = set([token for token in list(self._concordance_index._offsets) if token.lower() in tokens_searched])
 
         for token_searched in tokens_searched:
-            # Regular Expression
+            # Use regular expression & match whole word only
             if regex:
-                # Whole Word
                 if whole_word:
                     if token_searched[:2] != r'\b':
                         token_searched = r'\b' + token_searched
@@ -109,7 +121,6 @@ class Wordless_Text(nltk.Text):
 
                 tokens_matched = set([token for token in self._concordance_index._offsets if re.search(token_searched, token)])
             else:
-                # Whole Word
                 if whole_word:
                     tokens_matched.add(token_searched)
                 else:
@@ -117,7 +128,7 @@ class Wordless_Text(nltk.Text):
                         if token.find(token_searched) > -1:
                             tokens_matched.add(token)
 
-            # Lemmatized Forms
+            # Lemmatization
             if lemmatized_forms:
                 for token_lemmatized in wordless_lemmatize(list(tokens_matched)):
                     tokens_matched.add(token_lemmatized)
@@ -278,14 +289,14 @@ class Wordless_Text(nltk.Text):
             finder = nltk.collocations.QuadgramCollocationFinder.from_words(self.tokens)
             assoc_measure = self.parent.assoc_measures_quadgram[settings['assoc_measure']]
 
-        collocation_scores = {collocate: score for collocate, score in finder.score_ngrams(assoc_measure)}
+        score_distribution = {collocate: score for collocate, score in finder.score_ngrams(assoc_measure)}
 
         if not settings['show_all']:
-            collocation_scores = {collocate: score
-                                  for collocate, score in collocation_scores
+            score_distribution = {collocate: score
+                                  for collocate, score in score_distribution.items()
                                   for search_term in search_terms
                                   if search_term in collocate}
 
-        collocation_scores = {self.delimiter.join(collocate): score for collocate, score in collocation_scores.items()}
+        score_distribution = {self.delimiter.join(collocate): score for collocate, score in score_distribution.items()}
 
-        return collocation_scores
+        return score_distribution
