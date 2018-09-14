@@ -487,7 +487,7 @@ def generate_data(self, table):
 
     table.cols_pct = list(range(2, table.columnCount()))
 
-    freq_distributions = wordless_distribution.wordless_distributions(self, files, mode = 'ngram')
+    freq_distributions = wordless_distribution.wordless_freq_distributions(self, files, mode = 'ngram')
 
     col_total = table.find_column(self.tr('Total'))
     col_files_found = table.find_column(self.tr('Files Found'))
@@ -528,7 +528,7 @@ def generate_data(self, table):
 def generate_plot(self):
     files = wordless_misc.fetch_files(self)
 
-    freq_distributions = wordless_distribution.wordless_distributions(self, files, mode = 'ngram')
+    freq_distributions = wordless_distribution.wordless_freq_distributions(self, files, mode = 'ngram')
 
     freq_distributions.plot(files = files,
                             start = self.settings['ngram']['rank_min'] - 1,
