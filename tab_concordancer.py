@@ -11,6 +11,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import nltk
 
+from wordless_widgets import *
 from wordless_utils import *
 
 class Wordless_Table_Multi_Sort_Concordancer(wordless_table.Wordless_Table_Multi_Sort):
@@ -18,17 +19,17 @@ class Wordless_Table_Multi_Sort_Concordancer(wordless_table.Wordless_Table_Multi
         if isinstance(self.main, QGroupBox):
             print(self)
         if sort_by:
-            self.main.settings['concordancer']['multi_sort_by'] = [sort_by]
+            self.main.settings_custom['concordancer']['multi_sort_by'] = [sort_by]
         else:
-            self.main.settings['concordancer']['multi_sort_by'] = []
+            self.main.settings_custom['concordancer']['multi_sort_by'] = []
 
             for i in range(self.rowCount()):
-                self.main.settings['concordancer']['multi_sort_by'].append([self.cellWidget(i, 0).currentText(),
+                self.main.settings_custom['concordancer']['multi_sort_by'].append([self.cellWidget(i, 0).currentText(),
                                                                               self.cellWidget(i, 1).currentText()])
 
         if self.sort_table.item(0, 0):
-            multi_sort_by = self.main.settings['concordancer']['multi_sort_by']
-            multi_sort_colors = self.main.settings['concordancer']['multi_sort_colors']
+            multi_sort_by = self.main.settings_custom['concordancer']['multi_sort_by']
+            multi_sort_colors = self.main.settings_custom['concordancer']['multi_sort_colors']
             width_left = (len(self.sort_columns) - 2) // 2
             width_right = len(self.sort_columns) - 2 - width_left
             columns_left = []
@@ -171,24 +172,24 @@ class Wordless_Table_Multi_Sort_Concordancer(wordless_table.Wordless_Table_Multi
 
 def init(self):
     def token_settings_changed():
-        self.settings['concordancer']['punctuations'] = checkbox_punctuations.isChecked()
+        self.settings_custom['concordancer']['punctuations'] = checkbox_punctuations.isChecked()
 
     def search_settings_changed():
-        self.settings['concordancer']['search_term'] = line_edit_search_term.text()
-        self.settings['concordancer']['search_terms'] = list_search_terms.get_items()
-        self.settings['concordancer']['ignore_case'] = checkbox_ignore_case.isChecked()
-        self.settings['concordancer']['lemmatized_forms'] = checkbox_lemmatized_forms.isChecked()
-        self.settings['concordancer']['whole_word'] = checkbox_whole_word.isChecked()
-        self.settings['concordancer']['regex'] = checkbox_regex.isChecked()
-        self.settings['concordancer']['multi_search'] = checkbox_multi_search.isChecked()
+        self.settings_custom['concordancer']['search_term'] = line_edit_search_term.text()
+        self.settings_custom['concordancer']['search_terms'] = list_search_terms.get_items()
+        self.settings_custom['concordancer']['ignore_case'] = checkbox_ignore_case.isChecked()
+        self.settings_custom['concordancer']['lemmatized_forms'] = checkbox_lemmatized_forms.isChecked()
+        self.settings_custom['concordancer']['whole_word'] = checkbox_whole_word.isChecked()
+        self.settings_custom['concordancer']['regex'] = checkbox_regex.isChecked()
+        self.settings_custom['concordancer']['multi_search'] = checkbox_multi_search.isChecked()
 
-        self.settings['concordancer']['line_width_mode'] = combo_box_line_width.currentText()
-        self.settings['concordancer']['line_width_char'] = spin_box_line_width_char.value()
-        self.settings['concordancer']['line_width_token'] = spin_box_line_width_token.value()
-        self.settings['concordancer']['number_lines'] = None if checkbox_number_lines.isChecked() else spin_box_number_lines.value()
-        self.settings['concordancer']['number_lines_no_limit'] = checkbox_number_lines.isChecked()
+        self.settings_custom['concordancer']['line_width_mode'] = combo_box_line_width.currentText()
+        self.settings_custom['concordancer']['line_width_char'] = spin_box_line_width_char.value()
+        self.settings_custom['concordancer']['line_width_token'] = spin_box_line_width_token.value()
+        self.settings_custom['concordancer']['number_lines'] = None if checkbox_number_lines.isChecked() else spin_box_number_lines.value()
+        self.settings_custom['concordancer']['number_lines_no_limit'] = checkbox_number_lines.isChecked()
         
-        if self.settings['concordancer']['multi_search']:
+        if self.settings_custom['concordancer']['multi_search']:
             line_edit_search_term.hide()
 
             list_search_terms.show()
@@ -199,9 +200,9 @@ def init(self):
             list_search_terms.button_import.show()
             list_search_terms.button_export.show()
 
-            if self.settings['concordancer']['search_term'] and self.settings['concordancer']['search_terms'] == []:
+            if self.settings_custom['concordancer']['search_term'] and self.settings_custom['concordancer']['search_terms'] == []:
                 list_search_terms.add_item()
-                list_search_terms.item(0).setText(self.settings['concordancer']['search_term'])
+                list_search_terms.item(0).setText(self.settings_custom['concordancer']['search_term'])
         else:
             line_edit_search_term.show()
 
@@ -213,24 +214,24 @@ def init(self):
             list_search_terms.button_import.hide()
             list_search_terms.button_export.hide()
 
-        if self.settings['concordancer']['line_width_mode'] == 'Characters':
+        if self.settings_custom['concordancer']['line_width_mode'] == 'Characters':
             spin_box_line_width_char.show()
             spin_box_line_width_token.hide()
         else:
             spin_box_line_width_char.hide()
             spin_box_line_width_token.show()
 
-        if self.settings['concordancer']['number_lines_no_limit']:
+        if self.settings_custom['concordancer']['number_lines_no_limit']:
             spin_box_number_lines.setEnabled(False)
         else:
             spin_box_number_lines.setEnabled(True)
 
     def sorting_settings_changed():
-        self.settings['concordancer']['sort_by'][0] = combo_box_sort_column.currentText()
-        self.settings['concordancer']['sort_by'][1] = combo_box_sort_order.currentText()
-        self.settings['concordancer']['multi_sort'] = checkbox_multi_sort.isChecked()
+        self.settings_custom['concordancer']['sort_by'][0] = combo_box_sort_column.currentText()
+        self.settings_custom['concordancer']['sort_by'][1] = combo_box_sort_order.currentText()
+        self.settings_custom['concordancer']['multi_sort'] = checkbox_multi_sort.isChecked()
 
-        if self.settings['concordancer']['multi_sort']:
+        if self.settings_custom['concordancer']['multi_sort']:
             combo_box_sort_column.hide()
             combo_box_sort_order.hide()
 
@@ -251,29 +252,29 @@ def init(self):
             table_multi_sort.button_remove.hide()
             table_multi_sort.button_reset.hide()
 
-            table_multi_sort.sort(sort_by = self.settings['concordancer']['sort_by'])
+            table_multi_sort.sort(sort_by = self.settings_custom['concordancer']['sort_by'])
 
     def restore_defaults():
-        checkbox_punctuations.setChecked(self.default_settings['concordancer']['punctuations'])
+        checkbox_punctuations.setChecked(self.settings_default['concordancer']['punctuations'])
 
-        line_edit_search_term.setText(self.default_settings['concordancer']['search_term'])
+        line_edit_search_term.setText(self.settings_default['concordancer']['search_term'])
         list_search_terms.clear()
-        list_search_terms.addItems(self.default_settings['concordancer']['search_terms'])
-        checkbox_ignore_case.setChecked(self.default_settings['concordancer']['ignore_case'])
-        checkbox_lemmatized_forms.setChecked(self.default_settings['concordancer']['lemmatized_forms'])
-        checkbox_whole_word.setChecked(self.default_settings['concordancer']['whole_word'])
-        checkbox_regex.setChecked(self.default_settings['concordancer']['regex'])
-        checkbox_multi_search.setChecked(self.default_settings['concordancer']['multi_search'])
+        list_search_terms.addItems(self.settings_default['concordancer']['search_terms'])
+        checkbox_ignore_case.setChecked(self.settings_default['concordancer']['ignore_case'])
+        checkbox_lemmatized_forms.setChecked(self.settings_default['concordancer']['lemmatized_forms'])
+        checkbox_whole_word.setChecked(self.settings_default['concordancer']['whole_word'])
+        checkbox_regex.setChecked(self.settings_default['concordancer']['regex'])
+        checkbox_multi_search.setChecked(self.settings_default['concordancer']['multi_search'])
 
-        spin_box_line_width_char.setValue(self.default_settings['concordancer']['line_width_char'])
-        spin_box_line_width_token.setValue(self.default_settings['concordancer']['line_width_token'])
-        combo_box_line_width.setCurrentText(self.default_settings['concordancer']['line_width_mode'])
-        spin_box_number_lines.setValue(self.default_settings['concordancer']['number_lines'])
-        checkbox_number_lines.setChecked(self.default_settings['concordancer']['number_lines_no_limit'])
+        spin_box_line_width_char.setValue(self.settings_default['concordancer']['line_width_char'])
+        spin_box_line_width_token.setValue(self.settings_default['concordancer']['line_width_token'])
+        combo_box_line_width.setCurrentText(self.settings_default['concordancer']['line_width_mode'])
+        spin_box_number_lines.setValue(self.settings_default['concordancer']['number_lines'])
+        checkbox_number_lines.setChecked(self.settings_default['concordancer']['number_lines_no_limit'])
 
-        combo_box_sort_column.setCurrentText(self.default_settings['concordancer']['sort_by'][0])
-        combo_box_sort_order.setCurrentText(self.default_settings['concordancer']['sort_by'][1])
-        checkbox_multi_sort.setChecked(self.default_settings['concordancer']['multi_sort'])
+        combo_box_sort_column.setCurrentText(self.settings_default['concordancer']['sort_by'][0])
+        combo_box_sort_order.setCurrentText(self.settings_default['concordancer']['sort_by'][1])
+        checkbox_multi_sort.setChecked(self.settings_default['concordancer']['multi_sort'])
 
         token_settings_changed()
         search_settings_changed()
@@ -281,7 +282,7 @@ def init(self):
 
         table_multi_sort.reset_table()
 
-    tab_concordancer = wordless_tab.Wordless_Tab(self, self.tr('Concordancer'))
+    tab_concordancer = wordless_layout.Wordless_Tab(self, self.tr('Concordancer'))
 
     table_concordancer = wordless_table.Wordless_Table(self,
                                                        headers = [
@@ -409,7 +410,7 @@ def init(self):
     # Multi-sort
     table_multi_sort = Wordless_Table_Multi_Sort_Concordancer(self,
                                                               sort_table = table_concordancer,
-                                                              sort_columns = ['Offset', 'Query'])
+                                                              sort_cols = ['Offset', 'Query'])
 
     layout_multi_sort = QGridLayout()
     layout_multi_sort.addWidget(table_multi_sort, 0, 0, 1, 2)
@@ -431,17 +432,15 @@ def init(self):
     tab_concordancer.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
     tab_concordancer.layout_settings.addWidget(group_box_sorting_settings, 2, 0, Qt.AlignTop)
 
-    tab_concordancer.button_restore_defaults.clicked.connect(restore_defaults)
-
     restore_defaults()
 
     return tab_concordancer
 
 def search(self, table, combo_box_sort, table_multi_sort):
-    if self.settings['concordancer']['multi_search']:
-        search_terms = self.settings['concordancer']['search_terms']
+    if self.settings_custom['concordancer']['multi_search']:
+        search_terms = self.settings_custom['concordancer']['search_terms']
     else:
-        search_terms = [self.settings['concordancer']['search_term']]
+        search_terms = [self.settings_custom['concordancer']['search_term']]
 
     if search_terms and search_terms[0]:
         files = wordless_misc.fetch_files(self)
@@ -453,29 +452,29 @@ def search(self, table, combo_box_sort, table_multi_sort):
             for file in files:
                 text = wordless_text.Wordless_Text(file)
 
-                if self.settings['concordancer']['line_width_mode'] == 'Tokens':
-                    width = self.settings['concordancer']['line_width_token'] * 4
-                    width_left = (self.settings['concordancer']['line_width_token'] - 1) // 2
-                    width_right = self.settings['concordancer']['line_width_token'] - 1 - width_left
+                if self.settings_custom['concordancer']['line_width_mode'] == 'Tokens':
+                    width = self.settings_custom['concordancer']['line_width_token'] * 4
+                    width_left = (self.settings_custom['concordancer']['line_width_token'] - 1) // 2
+                    width_right = self.settings_custom['concordancer']['line_width_token'] - 1 - width_left
                 else:
-                    width = self.settings['concordancer']['line_width_char']
+                    width = self.settings_custom['concordancer']['line_width_char']
 
-                table.punctuations = self.settings['concordancer']['punctuations']
+                table.punctuations = self.settings_custom['concordancer']['punctuations']
 
                 for search_term in text.match_tokens(search_terms,
-                                                     self.settings['concordancer']['ignore_case'],
-                                                     self.settings['concordancer']['lemmatized_forms'],
-                                                     self.settings['concordancer']['whole_word'],
-                                                     self.settings['concordancer']['regex']):
+                                                     self.settings_custom['concordancer']['ignore_case'],
+                                                     self.settings_custom['concordancer']['lemmatized_forms'],
+                                                     self.settings_custom['concordancer']['whole_word'],
+                                                     self.settings_custom['concordancer']['regex']):
                     for concordance_line in text.concordance_list(search_term,
                                                                   width,
-                                                                  self.settings['concordancer']['number_lines'],
-                                                                  self.settings['concordancer']['punctuations']):
+                                                                  self.settings_custom['concordancer']['number_lines'],
+                                                                  self.settings_custom['concordancer']['punctuations']):
                         table.setRowCount(table.rowCount() + 1)
                         table.setItem(table.rowCount() - 1, 0, QTableWidgetItem(file.name))
                         table.setItem(table.rowCount() - 1, 1, QTableWidgetItem())
                         table.item(table.rowCount() - 1, 1).setData(Qt.DisplayRole, concordance_line.offset)
-                        if self.settings['concordancer']['line_width_mode'] == 'Tokens':
+                        if self.settings_custom['concordancer']['line_width_mode'] == 'Tokens':
                             table.setItem(table.rowCount() - 1, 2, QTableWidgetItem(file.delimiter.join(concordance_line.left[-width_left:])))
                             table.setItem(table.rowCount() - 1, 3, QTableWidgetItem(concordance_line.query))
                             table.setItem(table.rowCount() - 1, 4, QTableWidgetItem(file.delimiter.join(concordance_line.right[:width_right])))
@@ -488,10 +487,10 @@ def search(self, table, combo_box_sort, table_multi_sort):
                 # Update sorting settings
                 sort_columns_new = ['Offset', 'Query']
 
-                if self.settings['concordancer']['line_width_mode'] == 'Tokens':
-                    line_width = self.settings['concordancer']['line_width_token']
+                if self.settings_custom['concordancer']['line_width_mode'] == 'Tokens':
+                    line_width = self.settings_custom['concordancer']['line_width_token']
                 else:
-                    line_width = self.settings['concordancer']['line_width_char'] // 10
+                    line_width = self.settings_custom['concordancer']['line_width_char'] // 10
 
                 for i in range(line_width - 1):
                     if i % 2 == 0:
@@ -511,10 +510,10 @@ def search(self, table, combo_box_sort, table_multi_sort):
 
                 table_multi_sort.update_sort_columns(sort_columns_new)
 
-                if self.settings['concordancer']['multi_sort']:
+                if self.settings_custom['concordancer']['multi_sort']:
                     table_multi_sort.sort()
                 else:
-                    table_multi_sort.sort(self.settings['concordancer']['sort_by'])
+                    table_multi_sort.sort(self.settings_custom['concordancer']['sort_by'])
             else:
                 table.clear_table()
 
@@ -531,10 +530,10 @@ def search(self, table, combo_box_sort, table_multi_sort):
     self.status_bar.showMessage('Done!')
 
 def generate_plot(self):
-    if self.settings['concordancer']['multi_search']:
-        search_terms = self.settings['concordancer']['search_terms']
+    if self.settings_custom['concordancer']['multi_search']:
+        search_terms = self.settings_custom['concordancer']['search_terms']
     else:
-        search_terms = [self.settings['concordancer']['search_term']]
+        search_terms = [self.settings_custom['concordancer']['search_term']]
 
     if search_terms:
         files = wordless_utils.fetch_files(self)

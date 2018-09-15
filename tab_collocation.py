@@ -6,20 +6,133 @@
 # For license information, see LICENSE.txt.
 #
 
+import copy
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_widgets import *
 from wordless_utils import *
 
-def init(self):
+class Wordless_Table_Collocation(wordless_table.Wordless_Table):
+    def __init__(self, main):
+        super().__init__(main,
+                         headers = [
+                             main.tr('Rank'),
+                             main.tr('Collocates'),
+                             main.tr('Total Score'),
+                             main.tr('Files Found'),
+                         ],
+                         cols_with_pct = [
+                             main.tr('Files Found')
+                         ])
+
+    def update_filters(self):
+        settings = self.main.settings_custom['collocation']
+
+        col_score = self.find_col(settings['score_apply_to'])
+        col_collocates = self.find_col('Collocates')
+        col_files_found = self.find_col('Files Found')
+
+        score_min = settings['score_min']
+        score_max = settings['score_max'] if not settings['score_no_limit'] else float('inf')
+        len_min = settings['len_min']
+        len_max = settings['len_max'] if not settings['len_no_limit'] else float('inf')
+        files_min = settings['files_min']
+        files_max = settings['files_max'] if not settings['files_no_limit'] else float('inf')
+
+        self.row_filters = [{} for i in range(self.rowCount())]
+
+        for i in range(self.rowCount()):
+            if score_min <= self.item(i, col_score).read_data() <= score_max:
+                self.row_filters[i][self.tr('Total')] = True
+            else:
+                self.row_filters[i][self.tr('Total')] = False
+
+            if len_min <= len(str(self.item(i, col_collocates).read_data()).replace(' ', '')) <= len_max:
+                self.row_filters[i][self.tr('Collocates')] = True
+            else:
+                self.row_filters[i][self.tr('Collocates')] = False
+
+            print(self.item(i, col_files_found).raw_value)
+            if files_min <= self.item(i, col_files_found).read_data() <= files_max:
+                self.row_filters[i][self.tr('Files Found')] = True
+            else:
+                self.row_filters[i][self.tr('Files Found')] = False
+
+        self.filter_table()
+
+def init(main):
+    def load_settings(defaults = False):
+        if defaults:
+            settings = copy.deepcopy(main.settings_default['collocation'])
+        else:
+            settings = copy.deepcopy(main.settings_custom['collocation'])
+
+        checkbox_words.setChecked(settings['words'])
+        checkbox_lowercase.setChecked(settings['lowercase'])
+        checkbox_uppercase.setChecked(settings['uppercase'])
+        checkbox_title_cased.setChecked(settings['title_cased'])
+        checkbox_numerals.setChecked(settings['numerals'])
+        checkbox_punctuations.setChecked(settings['punctuations'])
+
+        line_edit_search_term.setText(settings['search_term'])
+        list_search_terms.clear()
+        for search_term in settings['search_terms']:
+            list_search_terms.add_item(search_term)
+
+        checkbox_ignore_case.setChecked(settings['ignore_case'])
+        checkbox_lemmatization.setChecked(settings['lemmatization'])
+        checkbox_whole_word.setChecked(settings['whole_word'])
+        checkbox_regex.setChecked(settings['regex'])
+        checkbox_multi_search.setChecked(settings['multi_search'])
+        checkbox_show_all.setChecked(settings['show_all'])
+
+        checkbox_window_sync.setChecked(settings['window_sync'])
+        spin_box_window_left.setPrefix(settings['window_left'][0])
+        spin_box_window_left.setValue(settings['window_left'][1])
+        spin_box_window_right.setPrefix(settings['window_right'][0])
+        spin_box_window_right.setValue(settings['window_right'][1])
+        combo_box_search_for.setCurrentText(settings['search_for'])
+        combo_box_assoc_measure.setCurrentText(settings['assoc_measure'])
+
+        checkbox_show_pct.setChecked(settings['show_pct'])
+        checkbox_show_cumulative.setChecked(settings['show_cumulative'])
+        checkbox_show_breakdown.setChecked(settings['show_breakdown'])
+
+        checkbox_rank_no_limit.setChecked(settings['rank_no_limit'])
+        spin_box_rank_min.setValue(settings['rank_min'])
+        spin_box_rank_max.setValue(settings['rank_max'])
+        checkbox_cumulative.setChecked(settings['cumulative'])
+
+        checkbox_score_no_limit.setChecked(settings['score_no_limit'])
+        spin_box_score_min.setValue(settings['score_min'])
+        spin_box_score_max.setValue(settings['score_max'])
+        combo_box_score_apply_to.setCurrentText(settings['score_apply_to'])
+
+        checkbox_len_no_limit.setChecked(settings['len_no_limit'])
+        spin_box_len_min.setValue(settings['len_min'])
+        spin_box_len_max.setValue(settings['len_max'])
+
+        checkbox_files_no_limit.setChecked(settings['files_no_limit'])
+        spin_box_files_min.setValue(settings['files_min'])
+        spin_box_files_max.setValue(settings['files_max'])
+
+        token_settings_changed()
+        search_settings_changed()
+        generation_settings_changed()
+        table_settings_changed()
+        plot_settings_changed()
+        filter_settings_changed()
+
     def token_settings_changed():
-        self.settings['collocation']['words'] = False if checkbox_words.checkState() == Qt.Unchecked else True
-        self.settings['collocation']['lowercase'] = checkbox_lowercase.isChecked()
-        self.settings['collocation']['uppercase'] = checkbox_uppercase.isChecked()
-        self.settings['collocation']['title_cased'] = checkbox_title_cased.isChecked()
-        self.settings['collocation']['numerals'] = checkbox_numerals.isChecked()
-        self.settings['collocation']['punctuations'] = checkbox_punctuations.isChecked()
+        main.settings_custom['collocation']['words'] = False if checkbox_words.checkState() == Qt.Unchecked else True
+        main.settings_custom['collocation']['lowercase'] = checkbox_lowercase.isChecked()
+        main.settings_custom['collocation']['uppercase'] = checkbox_uppercase.isChecked()
+        main.settings_custom['collocation']['title_cased'] = checkbox_title_cased.isChecked()
+        main.settings_custom['collocation']['numerals'] = checkbox_numerals.isChecked()
+        main.settings_custom['collocation']['punctuations'] = checkbox_punctuations.isChecked()
 
         if checkbox_words.checkState() == Qt.Unchecked:
             checkbox_ignore_case.setEnabled(False)
@@ -35,22 +148,22 @@ def init(self):
             checkbox_lemmatization.setEnabled(False)
 
     def search_settings_changed():
-        if self.settings['collocation']['multi_search']:
+        if main.settings_custom['collocation']['multi_search']:
             list_search_terms.get_items()
         else:
             if line_edit_search_term.text():
-                self.settings['collocation']['search_terms'] = [line_edit_search_term.text()]
+                main.settings_custom['collocation']['search_terms'] = [line_edit_search_term.text()]
             else:
-                self.settings['collocation']['search_terms'] = []
+                main.settings_custom['collocation']['search_terms'] = []
 
-        self.settings['collocation']['ignore_case'] = checkbox_ignore_case.isChecked()
-        self.settings['collocation']['lemmatization'] = checkbox_lemmatization.isChecked()
-        self.settings['collocation']['whole_word'] = checkbox_whole_word.isChecked()
-        self.settings['collocation']['regex'] = checkbox_regex.isChecked()
-        self.settings['collocation']['multi_search'] = checkbox_multi_search.isChecked()
-        self.settings['collocation']['show_all'] = checkbox_show_all.isChecked()
+        main.settings_custom['collocation']['ignore_case'] = checkbox_ignore_case.isChecked()
+        main.settings_custom['collocation']['lemmatization'] = checkbox_lemmatization.isChecked()
+        main.settings_custom['collocation']['whole_word'] = checkbox_whole_word.isChecked()
+        main.settings_custom['collocation']['regex'] = checkbox_regex.isChecked()
+        main.settings_custom['collocation']['multi_search'] = checkbox_multi_search.isChecked()
+        main.settings_custom['collocation']['show_all'] = checkbox_show_all.isChecked()
 
-        if self.settings['collocation']['ignore_case']:
+        if main.settings_custom['collocation']['ignore_case']:
             checkbox_lowercase.setEnabled(False)
             checkbox_uppercase.setEnabled(False)
             checkbox_title_cased.setEnabled(False)
@@ -59,123 +172,55 @@ def init(self):
             checkbox_uppercase.setEnabled(True)
             checkbox_title_cased.setEnabled(True)
 
-        if self.settings['collocation']['show_all']:
-            table_collocation.button_generate_data.setText(self.tr('Generate Collocates'))
+        if main.settings_custom['collocation']['show_all']:
+            table_collocation.button_generate_data.setText(main.tr('Generate Collocates'))
         else:
-            table_collocation.button_generate_data.setText(self.tr('Begin Search'))
+            table_collocation.button_generate_data.setText(main.tr('Begin Search'))
 
     def generation_settings_changed():
-        self.settings['collocation']['window_sync'] = checkbox_window_sync.isChecked()
-        self.settings['collocation']['window_left'][0] = spin_box_window_left.prefix()
-        self.settings['collocation']['window_left'][1] = spin_box_window_left.value()
-        self.settings['collocation']['window_right'][0] = spin_box_window_right.prefix()
-        self.settings['collocation']['window_right'][1] = spin_box_window_right.value()
-        self.settings['collocation']['search_for'] = combo_box_search_for.currentText()
-        self.settings['collocation']['assoc_measure'] = combo_box_assoc_measure.currentText()
+        main.settings_custom['collocation']['window_sync'] = checkbox_window_sync.isChecked()
+        main.settings_custom['collocation']['window_left'][0] = spin_box_window_left.prefix()
+        main.settings_custom['collocation']['window_left'][1] = spin_box_window_left.value()
+        main.settings_custom['collocation']['window_right'][0] = spin_box_window_right.prefix()
+        main.settings_custom['collocation']['window_right'][1] = spin_box_window_right.value()
+        main.settings_custom['collocation']['search_for'] = combo_box_search_for.currentText()
+        main.settings_custom['collocation']['assoc_measure'] = combo_box_assoc_measure.currentText()
 
     def table_settings_changed():
-        self.settings['collocation']['show_pct'] = checkbox_show_pct.isChecked()
-        self.settings['collocation']['show_cumulative'] = checkbox_show_cumulative.isChecked()
-        self.settings['collocation']['show_breakdown'] = checkbox_show_breakdown.isChecked()
+        main.settings_custom['collocation']['show_pct'] = checkbox_show_pct.isChecked()
+        main.settings_custom['collocation']['show_cumulative'] = checkbox_show_cumulative.isChecked()
+        main.settings_custom['collocation']['show_breakdown'] = checkbox_show_breakdown.isChecked()
 
     def plot_settings_changed():
-        self.settings['collocation']['rank_no_limit'] = checkbox_rank_no_limit.isChecked()
-        self.settings['collocation']['rank_min'] = spin_box_rank_min.value()
-        self.settings['collocation']['rank_max'] = (None
-                                              if checkbox_rank_no_limit.isChecked()
-                                              else spin_box_rank_max.value())
+        main.settings_custom['collocation']['rank_no_limit'] = checkbox_rank_no_limit.isChecked()
+        main.settings_custom['collocation']['rank_min'] = spin_box_rank_min.value()
+        main.settings_custom['collocation']['rank_max'] = spin_box_rank_max.value()
 
-        self.settings['collocation']['cumulative'] = checkbox_cumulative.isChecked()
+        main.settings_custom['collocation']['cumulative'] = checkbox_cumulative.isChecked()
 
     def filter_settings_changed():
-        self.settings['collocation']['score_no_limit'] = checkbox_score_no_limit.isChecked()
-        self.settings['collocation']['score_min'] = spin_box_score_min.value()
-        self.settings['collocation']['score_max'] = (float('inf')
-                                                     if checkbox_score_no_limit.isChecked()
-                                                     else spin_box_score_max.value())
-        self.settings['collocation']['score_apply_to'] = table_collocation.combo_box_score_apply_to.currentText()
+        main.settings_custom['collocation']['score_no_limit'] = checkbox_score_no_limit.isChecked()
+        main.settings_custom['collocation']['score_min'] = spin_box_score_min.value()
+        main.settings_custom['collocation']['score_max'] = spin_box_score_max.value()
+        main.settings_custom['collocation']['score_apply_to'] = combo_box_score_apply_to.currentText()
 
-        self.settings['collocation']['len_no_limit'] = checkbox_len_no_limit.isChecked()
-        self.settings['collocation']['len_min'] = spin_box_len_min.value()
-        self.settings['collocation']['len_max'] = (float('inf')
-                                                   if checkbox_len_no_limit.isChecked()
-                                                   else spin_box_len_max.value())
+        main.settings_custom['collocation']['len_no_limit'] = checkbox_len_no_limit.isChecked()
+        main.settings_custom['collocation']['len_min'] = spin_box_len_min.value()
+        main.settings_custom['collocation']['len_max'] = spin_box_len_max.value()
 
-        self.settings['collocation']['files_no_limit'] = checkbox_files_no_limit.isChecked()
-        self.settings['collocation']['files_min'] = spin_box_files_min.value()
-        self.settings['collocation']['files_max'] = (float('inf')
-                                                     if checkbox_files_no_limit.isChecked()
-                                                     else spin_box_files_max.value())
+        main.settings_custom['collocation']['files_no_limit'] = checkbox_files_no_limit.isChecked()
+        main.settings_custom['collocation']['files_min'] = spin_box_files_min.value()
+        main.settings_custom['collocation']['files_max'] = spin_box_files_max.value()
 
-    def restore_defaults():
-        checkbox_words.setChecked(self.default_settings['collocation']['words'])
-        checkbox_lowercase.setChecked(self.default_settings['collocation']['lowercase'])
-        checkbox_uppercase.setChecked(self.default_settings['collocation']['uppercase'])
-        checkbox_title_cased.setChecked(self.default_settings['collocation']['title_cased'])
-        checkbox_numerals.setChecked(self.default_settings['collocation']['numerals'])
-        checkbox_punctuations.setChecked(self.default_settings['collocation']['punctuations'])
-
-        line_edit_search_term.clear()
-        list_search_terms.clear()
-        checkbox_ignore_case.setChecked(self.default_settings['collocation']['ignore_case'])
-        checkbox_lemmatization.setChecked(self.default_settings['collocation']['lemmatization'])
-        checkbox_whole_word.setChecked(self.default_settings['collocation']['whole_word'])
-        checkbox_regex.setChecked(self.default_settings['collocation']['regex'])
-        checkbox_multi_search.setChecked(self.default_settings['collocation']['multi_search'])
-        checkbox_show_all.setChecked(self.default_settings['collocation']['show_all'])
-
-        checkbox_window_sync.setChecked(self.default_settings['collocation']['window_sync'])
-        spin_box_window_left.setPrefix(self.default_settings['collocation']['window_left'][0])
-        spin_box_window_left.setValue(self.default_settings['collocation']['window_left'][1])
-        spin_box_window_right.setPrefix(self.default_settings['collocation']['window_right'][0])
-        spin_box_window_right.setValue(self.default_settings['collocation']['window_right'][1])
-        combo_box_search_for.setCurrentText(self.default_settings['collocation']['search_for'])
-        combo_box_assoc_measure.setCurrentText(self.default_settings['collocation']['assoc_measure'])
-
-        checkbox_show_pct.setChecked(self.default_settings['collocation']['show_pct'])
-        checkbox_show_cumulative.setChecked(self.default_settings['collocation']['show_cumulative'])
-        checkbox_show_breakdown.setChecked(self.default_settings['collocation']['show_breakdown'])
-
-        checkbox_rank_no_limit.setChecked(self.default_settings['collocation']['rank_no_limit'])
-        spin_box_rank_min.setValue(self.default_settings['collocation']['rank_min'])
-        spin_box_rank_max.setValue(self.default_settings['collocation']['rank_max'])
-        checkbox_cumulative.setChecked(self.default_settings['collocation']['cumulative'])
-
-        checkbox_score_no_limit.setChecked(self.default_settings['collocation']['score_no_limit'])
-        spin_box_score_min.setValue(self.default_settings['collocation']['score_min'])
-        spin_box_score_max.setValue(self.default_settings['collocation']['score_max'])
-        table_collocation.combo_box_score_apply_to.setCurrentText(self.default_settings['collocation']['score_apply_to'])
-
-        checkbox_len_no_limit.setChecked(self.default_settings['collocation']['len_no_limit'])
-        spin_box_len_min.setValue(self.default_settings['collocation']['len_min'])
-        spin_box_len_max.setValue(self.default_settings['collocation']['len_max'])
-
-        checkbox_files_no_limit.setChecked(self.default_settings['collocation']['files_no_limit'])
-        spin_box_files_min.setValue(self.default_settings['collocation']['files_min'])
-        spin_box_files_max.setValue(self.default_settings['collocation']['files_max'])
-
-        token_settings_changed()
-        search_settings_changed()
-        generation_settings_changed()
-        table_settings_changed()
-        plot_settings_changed()
-        filter_settings_changed()
-
-    tab_collocation = wordless_tab.Wordless_Tab(self, self.tr('Collocation'))
+    tab_collocation = wordless_layout.Wordless_Tab(main, load_settings)
     
-    table_collocation = wordless_table.Wordless_Table(self,
-                                                      headers = [
-                                                          self.tr('Rank'),
-                                                          self.tr('Collocates'),
-                                                          self.tr('Total Score'),
-                                                          self.tr('Files Found'),
-                                                      ])
+    table_collocation = Wordless_Table_Collocation(main)
 
-    table_collocation.button_generate_data = QPushButton(self.tr('Generate Collocates'), self)
-    table_collocation.button_generate_plot = QPushButton(self.tr('Generate Plot'), self)
+    table_collocation.button_generate_data = QPushButton(main.tr('Generate Collocates'), main)
+    table_collocation.button_generate_plot = QPushButton(main.tr('Generate Plot'), main)
 
-    table_collocation.button_generate_data.clicked.connect(lambda: generate_data(tab_collocation, table_collocation))
-    table_collocation.button_generate_plot.clicked.connect(lambda: generate_plot(tab_collocation))
+    table_collocation.button_generate_data.clicked.connect(lambda: generate_data(main, tab_collocation, table_collocation))
+    table_collocation.button_generate_plot.clicked.connect(lambda: generate_plot(main, tab_collocation))
 
     tab_collocation.layout_table.addWidget(table_collocation, 0, 0, 1, 5)
     tab_collocation.layout_table.addWidget(table_collocation.button_generate_data, 1, 0)
@@ -185,14 +230,17 @@ def init(self):
     tab_collocation.layout_table.addWidget(table_collocation.button_clear, 1, 4)
 
     # Token Settings
-    group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
+    group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
 
     (checkbox_words,
      checkbox_lowercase,
      checkbox_uppercase,
      checkbox_title_cased,
+     checkbox_ignore_case,
+     checkbox_lemmatization,
+     checkbox_filter_stopwords,
      checkbox_numerals,
-     checkbox_punctuations) = wordless_widgets.wordless_widgets_token_settings(self)
+     checkbox_punctuations) = wordless_widgets.wordless_widgets_token(main)
 
     checkbox_words.stateChanged.connect(token_settings_changed)
     checkbox_lowercase.stateChanged.connect(token_settings_changed)
@@ -200,6 +248,7 @@ def init(self):
     checkbox_title_cased.stateChanged.connect(token_settings_changed)
     checkbox_numerals.stateChanged.connect(token_settings_changed)
     checkbox_punctuations.stateChanged.connect(token_settings_changed)
+    checkbox_filter_stopwords.stateChanged.connect(token_settings_changed)
 
     layout_token_settings = QGridLayout()
     layout_token_settings.addWidget(checkbox_words, 0, 0)
@@ -208,11 +257,12 @@ def init(self):
     layout_token_settings.addWidget(checkbox_uppercase, 1, 1)
     layout_token_settings.addWidget(checkbox_punctuations, 2, 0)
     layout_token_settings.addWidget(checkbox_title_cased, 2, 1)
+    layout_token_settings.addWidget(checkbox_filter_stopwords, 3, 0, 1, 2)
 
     group_box_token_settings.setLayout(layout_token_settings)
 
     # Search Settings
-    group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
+    group_box_search_settings = QGroupBox(main.tr('Search Settings'), main)
 
     (label_search_term,
      line_edit_search_term,
@@ -222,9 +272,9 @@ def init(self):
      checkbox_whole_word,
      checkbox_regex,
      checkbox_multi_search,
-     checkbox_show_all) = wordless_widgets.wordless_widgets_search_settings(self)
+     checkbox_show_all) = wordless_widgets.wordless_widgets_search_settings(main)
 
-    checkbox_show_all.setText(self.tr('Show All Collocates'))
+    checkbox_show_all.setText(main.tr('Show All Collocates'))
 
     line_edit_search_term.textChanged.connect(search_settings_changed)
     line_edit_search_term.returnPressed.connect(table_collocation.button_generate_data.click)
@@ -259,19 +309,19 @@ def init(self):
     group_box_search_settings.setLayout(layout_search_settings)
 
     # Generation Settings
-    group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
+    group_box_generation_settings = QGroupBox(main.tr('Generation Settings'))
 
-    label_window = QLabel(self.tr('Collocational Window:'), self)
+    label_window = QLabel(main.tr('Collocational Window:'), main)
     (checkbox_window_sync,
      label_window_left,
      spin_box_window_left,
      label_window_right,
-     spin_box_window_right) = wordless_widgets.wordless_widgets_window(self)
+     spin_box_window_right) = wordless_widgets.wordless_widgets_window(main)
     (label_search_for,
      combo_box_search_for,
      label_assoc_measure,
-     combo_box_assoc_measure) = wordless_widgets.wordless_widgets_collocation(self,
-                                                                              self.default_settings['collocation']['assoc_measure'])
+     combo_box_assoc_measure) = wordless_widgets.wordless_widgets_collocation(main,
+                                                                              main.settings_default['collocation']['assoc_measure'])
 
     checkbox_window_sync.stateChanged.connect(generation_settings_changed)
     spin_box_window_left.valueChanged.connect(generation_settings_changed)
@@ -294,11 +344,11 @@ def init(self):
     group_box_generation_settings.setLayout(layout_generation_settings)
 
     # Table Settings
-    group_box_table_settings = QGroupBox(self.tr('Table Settings'))
+    group_box_table_settings = QGroupBox(main.tr('Table Settings'))
 
     (checkbox_show_pct,
      checkbox_show_cumulative,
-     checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(self, table_collocation)
+     checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(main, table_collocation)
 
     checkbox_show_cumulative.hide()
 
@@ -312,15 +362,15 @@ def init(self):
     group_box_table_settings.setLayout(layout_table_settings)
 
     # Plot Settings
-    group_box_plot_settings = QGroupBox(self.tr('Plot Settings'), self)
+    group_box_plot_settings = QGroupBox(main.tr('Plot Settings'), main)
 
-    label_rank = QLabel(self.tr('Rank:'), self)
+    label_rank = QLabel(main.tr('Rank:'), main)
     (checkbox_rank_no_limit,
      label_rank_min,
      spin_box_rank_min,
      label_rank_max,
-     spin_box_rank_max) = wordless_widgets.wordless_widgets_filter(self, 1, 10000)
-    checkbox_cumulative = QCheckBox(self.tr('Cumulative'), self)
+     spin_box_rank_max) = wordless_widgets.wordless_widgets_filter(main, 1, 10000)
+    checkbox_cumulative = QCheckBox(main.tr('Cumulative'), main)
 
     checkbox_rank_no_limit.stateChanged.connect(plot_settings_changed)
     spin_box_rank_min.valueChanged.connect(plot_settings_changed)
@@ -339,40 +389,45 @@ def init(self):
     group_box_plot_settings.setLayout(layout_plot_settings)
 
     # Filter Settings
-    group_box_filter_settings = QGroupBox(self.tr('Filter Settings'), self)
+    group_box_filter_settings = QGroupBox(main.tr('Filter Settings'), main)
 
-    label_score = QLabel(self.tr('Score:'), self)
+    label_score = QLabel(main.tr('Score:'), main)
     (checkbox_score_no_limit,
      label_score_min,
      spin_box_score_min,
      label_score_max,
      spin_box_score_max,
      label_score_apply_to,
-     table_collocation.combo_box_score_apply_to) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                            filter_min = 0,
-                                                                                            filter_max = 10000,
-                                                                                            table = table_collocation,
-                                                                                            column = 'Total')
+     combo_box_score_apply_to) = wordless_widgets.wordless_widgets_filter(main,
+                                                                          filter_min = 0,
+                                                                          filter_max = 10000,
+                                                                          table = table_collocation,
+                                                                          col = 'Total')
 
-    label_len = QLabel(self.tr('N-gram Length:'), self)
+    label_len = QLabel(main.tr('N-gram Length:'), main)
     (checkbox_len_no_limit,
      label_len_min,
      spin_box_len_min,
      label_len_max,
-     spin_box_len_max) = wordless_widgets.wordless_widgets_filter(self, table = table_collocation, column = 'Collocates')
+     spin_box_len_max) = wordless_widgets.wordless_widgets_filter(main,
+                                                                  table = table_collocation,
+                                                                  col = 'Collocates')
 
-    label_files = QLabel(self.tr('Files Found:'), self)
+    label_files = QLabel(main.tr('Files Found:'), main)
     (checkbox_files_no_limit,
      label_files_min,
      spin_box_files_min,
      label_files_max,
-     spin_box_files_max) = wordless_widgets.wordless_widgets_filter(self, filter_min = 1, filter_max = 1000,
-                                                                    table = table_collocation, column = 'Files Found')
+     spin_box_files_max) = wordless_widgets.wordless_widgets_filter(main,
+                                                                    filter_min = 1,
+                                                                    filter_max = 1000,
+                                                                    table = table_collocation,
+                                                                    col = 'Files Found')
 
     checkbox_score_no_limit.stateChanged.connect(filter_settings_changed)
     spin_box_score_min.editingFinished.connect(filter_settings_changed)
     spin_box_score_max.editingFinished.connect(filter_settings_changed)
-    table_collocation.combo_box_score_apply_to.currentTextChanged.connect(filter_settings_changed)
+    combo_box_score_apply_to.currentTextChanged.connect(filter_settings_changed)
 
     checkbox_len_no_limit.stateChanged.connect(filter_settings_changed)
     spin_box_len_min.editingFinished.connect(filter_settings_changed)
@@ -390,7 +445,7 @@ def init(self):
     layout_filter_settings.addWidget(label_score_max, 1, 2)
     layout_filter_settings.addWidget(spin_box_score_max, 1, 3)
     layout_filter_settings.addWidget(label_score_apply_to, 2, 0)
-    layout_filter_settings.addWidget(table_collocation.combo_box_score_apply_to, 2, 1, 1, 3)
+    layout_filter_settings.addWidget(combo_box_score_apply_to, 2, 1, 1, 3)
 
     layout_filter_settings.addWidget(label_len, 4, 0, 1, 3)
     layout_filter_settings.addWidget(checkbox_len_no_limit, 4, 3)
@@ -415,43 +470,55 @@ def init(self):
     tab_collocation.layout_settings.addWidget(group_box_plot_settings, 4, 0, Qt.AlignTop)
     tab_collocation.layout_settings.addWidget(group_box_filter_settings, 5, 0, Qt.AlignTop)
 
-    tab_collocation.button_restore_defaults.clicked.connect(restore_defaults)
-
-    restore_defaults()
+    load_settings()
 
     return tab_collocation
 
+def generate_score_distributions(main, files):
+    score_distributions = []
+
+    for i, file in enumerate(files):
+        text = wordless_text.Wordless_Text(main, file)
+        
+        score_distributions.append(text.collocation(main.settings_custom['collocation']))
+
+    score_distributions = wordless_misc.merge_dicts(score_distributions)
+
+    # Calculate the total score of all texts
+    text_total = wordless_text.Wordless_Text(main, files)
+
+    score_distribution_total = text_total.collocation(main.settings_custom['collocation'])
+
+    # Append total scores
+    for token, score in score_distribution_total.items():
+        if token in score_distributions:
+            score_distributions[token].append(score)
+
+    return wordless_distribution.Wordless_Freq_Distribution(score_distributions)
+
 @wordless_misc.check_search_term
 @wordless_misc.check_results_table
-def generate_data(self, table):
-    score_previous = -1
-
+def generate_data(main, table):
     table.clear_table()
 
-    files = wordless_misc.fetch_files(self)
+    files = main.wordless_files.selected_files()
 
-    # Update filter settings
-    apply_to_text_old = table.combo_box_score_apply_to.currentText()
-    table.combo_box_score_apply_to.clear()
-    
     for i, file in enumerate(files):
-        table.insert_column(table.find_column(self.tr('Total Score')), file.name)
+        table.insert_column(table.find_column(main.tr('Total Score')), file['name'])
 
-        table.combo_box_score_apply_to.addItem(file.name)
-    table.combo_box_score_apply_to.addItem(self.tr('Total'))
+    table.sortByColumn(table.find_column('Collocates') + 1, Qt.DescendingOrder)
 
-    if apply_to_text_old == file.name:
-        table.combo_box_score_apply_to.setCurrentText(file.name)
+    score_distributions = generate_score_distributions(main, files)
 
-    score_distributions = wordless_distribution.wordless_score_distributions(self, files, mode = 'collocation')
-
-    col_total_score = table.find_column(self.tr('Total Score'))
-    col_files_found = table.find_column(self.tr('Files Found'))
+    col_total_score = table.find_column(main.tr('Total Score'))
+    col_files_found = table.find_column(main.tr('Files Found'))
 
     len_files = len(files)
 
+    table.blockSignals(True)
     table.setSortingEnabled(False)
     table.setUpdatesEnabled(False)
+
     table.setRowCount(len(score_distributions))
 
     for i, (collocate, scores) in enumerate(score_distributions.items()):
@@ -473,11 +540,10 @@ def generate_data(self, table):
         # Files Found
         table.set_item_with_pct(i, col_files_found, len([score for score in scores[:-1] if score != 0]), len_files)
     
-    table.sortByColumn(table.find_column('Collocates') + 1, Qt.DescendingOrder)
-
-    table.combo_box_score_apply_to.currentTextChanged.emit('')
-
+    table.blockSignals(False)
     table.setSortingEnabled(True)
     table.setUpdatesEnabled(True)
+
+    table.update_filters()
     
-    self.status_bar.showMessage('Done!')
+    main.status_bar.showMessage('Done!')

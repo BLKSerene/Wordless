@@ -1,5 +1,5 @@
 #
-# Wordless: Utility Functions for Lists
+# Wordless: List
 #
 # Copyright (C) 2018 Ye Lei
 #
@@ -67,6 +67,7 @@ class Wordless_List(QListWidget):
                         if item.text() == self.item(i).text():
                             item.setForeground(QColor('#F00'))
                             self.item(i).setForeground(QColor('#F00'))
+                            
                             QMessageBox.warning(self.parent,
                                                 self.tr('Duplicate Search Terms'),
                                                 self.tr('Please refrain from searching the same item more than once!'),
@@ -91,7 +92,7 @@ class Wordless_List(QListWidget):
         i = 1
 
         while True:
-            if self.findItems('New Item ({})'.format(i), Qt.MatchExactly):
+            if self.findItems(self.tr(f'New Item ({i})'), Qt.MatchExactly):
                 i += 1
             else:
                 new_item = QListWidgetItem(self.tr('New Item ({})').format(i))
