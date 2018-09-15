@@ -6,692 +6,975 @@
 # For license information, see LICENSE.txt.
 #
 
-import copy
-import os
-import pickle
+import json
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import nltk
 
+from wordless_widgets import *
 from wordless_utils import *
+
+class Wordless_Table_Stop_Words(wordless_table.Wordless_Table):
+    def __init__(self, main):
+        super().__init__(main,
+                         headers = ['1', '2', '3', '4', '5'],
+                         cols_stretch = ['1', '2', '3', '4', '5'])
+
+        self.horizontalHeader().setHidden(True)
+        self.verticalHeader().setHidden(True)
+
+        self.setSelectionBehavior(QAbstractItemView.SelectItems)
+
+        self.button_export_selected.hide()
+        self.button_export_all.hide()
+        self.button_clear.hide()
+
+    def set_items(self, tokens):
+        self.clear_table()
+
+        self.setRowCount((len(tokens) - 1) // self.columnCount() + 1) 
+
+        for i, token in enumerate(tokens):
+            row = i // self.columnCount()
+            col = i % self.columnCount()
+
+            self.setItem(row, col, QTableWidgetItem(token))
 
 class Wordless_Settings(QDialog):
     def __init__(self, parent):
-        def item_clicked(item):
+        def selection_changed():
             self.settings_general.hide()
             self.settings_lemmatization.hide()
+            self.settings_stop_words.hide()
 
-            if item.text(0) == 'General':
-                self.settings_general.show()
-            elif item.text(0) == 'Lemmatization':
-                self.settings_lemmatization.show()
+            selected_items = self.tree_settings.selectedItems()
+            if not selected_items:
+                self.tree_settings.findItems(self.tr('General'), Qt.MatchExactly)[0].setSelected(True)
+            else:
+                if selected_items[0].text(0) == 'General':
+                    self.settings_general.show()
+                elif selected_items[0].text(0) == 'Lemmatization':
+                    self.settings_lemmatization.show()
+                elif selected_items[0].text(0) == 'Stop Words':
+                    self.settings_stop_words.show()
 
         super().__init__(parent)
 
         self.main = parent
 
         self.setWindowTitle(self.tr('Settings'))
+        self.setFixedHeight(600)
 
-        self.accepted.connect(self.settings_apply)
+        self.accepted.connect(self.apply)
 
         self.tree_settings = wordless_tree.Wordless_Tree(self)
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('General')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Lemmatization')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Stop Words')]))
 
-        self.tree_settings.itemClicked.connect(item_clicked)
+        self.tree_settings.itemSelectionChanged.connect(selection_changed)
+
+        wrapper_settings = QWidget()
+
+        wrapper_settings.setLayout(QGridLayout())
+        wrapper_settings.layout().addWidget(self.init_settings_general(), 0, 0)
+        wrapper_settings.layout().addWidget(self.init_settings_lemmatization(), 0, 0)
+        wrapper_settings.layout().addWidget(self.init_settings_stop_words(), 0, 0)
+
+        scroll_area_settings = wordless_layout.Wordless_Scroll_Area(self.main, wrapper_settings)
 
         button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
         button_save = QPushButton(self.tr('Save'), self)
         button_apply = QPushButton(self.tr('Apply'), self)
         button_cancel = QPushButton(self.tr('Cancel'), self)
 
-        button_restore_defaults.setFixedWidth(150)
-        button_save.setFixedWidth(100)
-        button_cancel.setFixedWidth(100)
-        button_apply.setFixedWidth(100)
-
-        button_restore_defaults.clicked.connect(self.restore_defaults)
+        button_restore_defaults.clicked.connect(lambda: self.load_settings(defaults = True))
         button_save.clicked.connect(self.accept)
-        button_apply.clicked.connect(self.settings_apply)
+        button_apply.clicked.connect(self.apply)
         button_cancel.clicked.connect(self.reject)
 
-        layout_settings_buttons = QGridLayout()
-        layout_settings_buttons.addWidget(button_restore_defaults, 0, 0)
-        layout_settings_buttons.addWidget(button_save, 0, 1)
-        layout_settings_buttons.addWidget(button_apply, 0, 2)
-        layout_settings_buttons.addWidget(button_cancel, 0, 3)
+        layout_buttons_right = QGridLayout()
+        layout_buttons_right.addWidget(button_save, 0, 0)
+        layout_buttons_right.addWidget(button_apply, 0, 1)
+        layout_buttons_right.addWidget(button_cancel, 0, 2)
 
-        layout_settings = QGridLayout()
-        layout_settings.addWidget(self.tree_settings, 0, 0)
-        layout_settings.addWidget(self.init_settings_general(), 0, 1)
-        layout_settings.addWidget(self.init_settings_lemmatization(), 0, 1)
-        layout_settings.addLayout(layout_settings_buttons, 1, 0, 1, 2, Qt.AlignRight)
+        self.setLayout(QGridLayout())
+        self.layout().addWidget(self.tree_settings, 0, 0)
+        self.layout().addWidget(scroll_area_settings, 0, 1)
+        self.layout().addWidget(button_restore_defaults, 1, 0, Qt.AlignLeft)
+        self.layout().addLayout(layout_buttons_right, 1, 1, Qt.AlignRight)
 
-        layout_settings.setColumnStretch(0, 1)
-        layout_settings.setColumnStretch(1, 4)
+        self.layout().setColumnStretch(0, 1)
+        self.layout().setColumnStretch(1, 4)
 
-        self.setLayout(layout_settings)
+        selection_changed()
 
     def init_settings_general(self):
         self.settings_general = QWidget(self)
 
-        group_box_encoding = QGroupBox(self.tr('Default Encodings'))
+        group_box_encoding = QGroupBox(self.tr('Default Encodings'), self)
 
         self.label_encoding_input = QLabel(self.tr('Input Encoding:'), self)
         self.combo_box_encoding_input = wordless_widgets.Wordless_Combo_Box_Encoding(self.main)
         self.label_encoding_output = QLabel(self.tr('Output Encoding:'), self)
         self.combo_box_encoding_output = wordless_widgets.Wordless_Combo_Box_Encoding(self.main)
 
-        layout_encoding = QGridLayout()
-        layout_encoding.addWidget(self.label_encoding_input, 0, 0)
-        layout_encoding.addWidget(self.combo_box_encoding_input, 0, 1)
-        layout_encoding.addWidget(self.label_encoding_output, 1, 0)
-        layout_encoding.addWidget(self.combo_box_encoding_output, 1, 1)
-
-        group_box_encoding.setLayout(layout_encoding)
+        group_box_encoding.setLayout(QGridLayout())
+        group_box_encoding.layout().addWidget(self.label_encoding_input, 0, 0)
+        group_box_encoding.layout().addWidget(self.combo_box_encoding_input, 0, 1)
+        group_box_encoding.layout().addWidget(self.label_encoding_output, 1, 0)
+        group_box_encoding.layout().addWidget(self.combo_box_encoding_output, 1, 1)
 
         self.label_precision = QLabel(self.tr('Precision:'), self)
         self.spin_box_precision = QSpinBox(self)
 
         self.spin_box_precision.setRange(0, 10)
 
-        layout_settings_general = QGridLayout()
-        layout_settings_general.addWidget(group_box_encoding, 0, 0, 1, 2, Qt.AlignTop)
-        layout_settings_general.addWidget(self.label_precision, 1, 0, Qt.AlignTop)
-        layout_settings_general.addWidget(self.spin_box_precision, 1, 1, Qt.AlignTop)
-
-        self.settings_general.setLayout(layout_settings_general)
+        self.settings_general.setLayout(QGridLayout())
+        self.settings_general.layout().addWidget(group_box_encoding, 0, 0, 1, 2, Qt.AlignTop)
+        self.settings_general.layout().addWidget(self.label_precision, 1, 0, Qt.AlignTop)
+        self.settings_general.layout().addWidget(self.spin_box_precision, 1, 1, Qt.AlignTop)
 
         return self.settings_general
 
     def init_settings_lemmatization(self):
+        def preview_changed():
+            lang = wordless_conversion.to_lang_code(self.main, self.combo_box_lemmatization_select_lang.currentText())
+            lemmatizer = self.__dict__['combo_box_lemmatizer_' + lang].currentText()
+
+            self.text_edit_lemmatization_preview.clear()
+
+            for sample_line in self.text_edit_lemmatization_samples.toPlainText().split('\n'):
+                samples = wordless_text.wordless_word_tokenize(sample_line, lang)
+                lemmas = wordless_text.wordless_lemmatize(self.main, samples, lang, lemmatizer = lemmatizer)
+
+                self.text_edit_lemmatization_preview.append(wordless_conversion.to_word_delimiter(lang).join(lemmas))
+
+        settings = self.main.settings_global['lemmatizers']
+
         self.settings_lemmatization = QWidget(self)
 
-        self.layout_settings_lemmatization = QGridLayout()
+        # Lemmatizers
+        group_box_lemmatizers = QGroupBox(self.tr('Lemmatizers'), self)
+        wrapper_lemmatizers = QWidget(self)
 
-        self.settings_lemmatization.setLayout(self.layout_settings_lemmatization)
+        self.label_lemmatizer_eng = QLabel(self.tr('English:'), self)
+        self.combo_box_lemmatizer_eng = QComboBox(self)
+        self.label_lemmatizer_ast = QLabel(self.tr('Asturian:'), self)
+        self.combo_box_lemmatizer_ast = QComboBox(self)
+        self.label_lemmatizer_bul = QLabel(self.tr('Bulgarian:'), self)
+        self.combo_box_lemmatizer_bul = QComboBox(self)
+        self.label_lemmatizer_cat = QLabel(self.tr('Catalan:'), self)
+        self.combo_box_lemmatizer_cat = QComboBox(self)
+        self.label_lemmatizer_ces = QLabel(self.tr('Czech:'), self)
+        self.combo_box_lemmatizer_ces = QComboBox(self)
+        self.label_lemmatizer_est = QLabel(self.tr('Estonian:'), self)
+        self.combo_box_lemmatizer_est = QComboBox(self)
+        self.label_lemmatizer_fra = QLabel(self.tr('French:'), self)
+        self.combo_box_lemmatizer_fra = QComboBox(self)
+        self.label_lemmatizer_gla = QLabel(self.tr('Gaelic (Scots):'), self)
+        self.combo_box_lemmatizer_gla = QComboBox(self)
+        self.label_lemmatizer_glg = QLabel(self.tr('Galician:'), self)
+        self.combo_box_lemmatizer_glg = QComboBox(self)
+        self.label_lemmatizer_deu = QLabel(self.tr('German:'), self)
+        self.combo_box_lemmatizer_deu = QComboBox(self)
+        self.label_lemmatizer_hun = QLabel(self.tr('Hungarian:'), self)
+        self.combo_box_lemmatizer_hun = QComboBox(self)
+        self.label_lemmatizer_gle = QLabel(self.tr('Irish:'), self)
+        self.combo_box_lemmatizer_gle = QComboBox(self)
+        self.label_lemmatizer_ita = QLabel(self.tr('Italian:'), self)
+        self.combo_box_lemmatizer_ita = QComboBox(self)
+        self.label_lemmatizer_glv = QLabel(self.tr('Manx:'), self)
+        self.combo_box_lemmatizer_glv = QComboBox(self)
+        self.label_lemmatizer_fas = QLabel(self.tr('Persian:'), self)
+        self.combo_box_lemmatizer_fas = QComboBox(self)
+        self.label_lemmatizer_por = QLabel(self.tr('Portuguese:'), self)
+        self.combo_box_lemmatizer_por = QComboBox(self)
+        self.label_lemmatizer_ron = QLabel(self.tr('Romanian:'), self)
+        self.combo_box_lemmatizer_ron = QComboBox(self)
+        self.label_lemmatizer_slk = QLabel(self.tr('Slovak:'), self)
+        self.combo_box_lemmatizer_slk = QComboBox(self)
+        self.label_lemmatizer_slv = QLabel(self.tr('Slovenian:'), self)
+        self.combo_box_lemmatizer_slv = QComboBox(self)
+        self.label_lemmatizer_spa = QLabel(self.tr('Spanish (Castilian):'), self)
+        self.combo_box_lemmatizer_spa = QComboBox(self)
+        self.label_lemmatizer_swe = QLabel(self.tr('Swedish:'), self)
+        self.combo_box_lemmatizer_swe = QComboBox(self)
+        self.label_lemmatizer_ukr = QLabel(self.tr('Ukrainian:'), self)
+        self.combo_box_lemmatizer_ukr = QComboBox(self)
+        self.label_lemmatizer_cym = QLabel(self.tr('Welsh:'), self)
+        self.combo_box_lemmatizer_cym = QComboBox(self)
+
+        self.combo_box_lemmatizer_eng.addItems(settings[self.label_lemmatizer_eng.text().rstrip(':')])
+        self.combo_box_lemmatizer_ast.addItems(settings[self.label_lemmatizer_ast.text().rstrip(':')])
+        self.combo_box_lemmatizer_bul.addItems(settings[self.label_lemmatizer_bul.text().rstrip(':')])
+        self.combo_box_lemmatizer_cat.addItems(settings[self.label_lemmatizer_cat.text().rstrip(':')])
+        self.combo_box_lemmatizer_ces.addItems(settings[self.label_lemmatizer_ces.text().rstrip(':')])
+        self.combo_box_lemmatizer_est.addItems(settings[self.label_lemmatizer_est.text().rstrip(':')])
+        self.combo_box_lemmatizer_fra.addItems(settings[self.label_lemmatizer_fra.text().rstrip(':')])
+        self.combo_box_lemmatizer_gla.addItems(settings[self.label_lemmatizer_gla.text().rstrip(':')])
+        self.combo_box_lemmatizer_glg.addItems(settings[self.label_lemmatizer_glg.text().rstrip(':')])
+        self.combo_box_lemmatizer_deu.addItems(settings[self.label_lemmatizer_deu.text().rstrip(':')])
+        self.combo_box_lemmatizer_hun.addItems(settings[self.label_lemmatizer_hun.text().rstrip(':')])
+        self.combo_box_lemmatizer_gle.addItems(settings[self.label_lemmatizer_gle.text().rstrip(':')])
+        self.combo_box_lemmatizer_ita.addItems(settings[self.label_lemmatizer_ita.text().rstrip(':')])
+        self.combo_box_lemmatizer_glv.addItems(settings[self.label_lemmatizer_glv.text().rstrip(':')])
+        self.combo_box_lemmatizer_fas.addItems(settings[self.label_lemmatizer_fas.text().rstrip(':')])
+        self.combo_box_lemmatizer_por.addItems(settings[self.label_lemmatizer_por.text().rstrip(':')])
+        self.combo_box_lemmatizer_ron.addItems(settings[self.label_lemmatizer_ron.text().rstrip(':')])
+        self.combo_box_lemmatizer_slk.addItems(settings[self.label_lemmatizer_slk.text().rstrip(':')])
+        self.combo_box_lemmatizer_slv.addItems(settings[self.label_lemmatizer_slv.text().rstrip(':')])
+        self.combo_box_lemmatizer_spa.addItems(settings[self.label_lemmatizer_spa.text().rstrip(':')])
+        self.combo_box_lemmatizer_swe.addItems(settings[self.label_lemmatizer_swe.text().rstrip(':')])
+        self.combo_box_lemmatizer_ukr.addItems(settings[self.label_lemmatizer_ukr.text().rstrip(':')])
+        self.combo_box_lemmatizer_cym.addItems(settings[self.label_lemmatizer_cym.text().rstrip(':')])
+
+        self.combo_box_lemmatizer_eng.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_ast.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_bul.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_cat.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_ces.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_est.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_fra.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_gla.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_glg.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_deu.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_hun.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_gle.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_ita.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_glv.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_fas.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_por.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_ron.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_slk.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_slv.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_spa.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_swe.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_ukr.currentTextChanged.connect(preview_changed)
+        self.combo_box_lemmatizer_cym.currentTextChanged.connect(preview_changed)
+
+        wrapper_lemmatizers.setLayout(QGridLayout())
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_eng, 0, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_eng, 0, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_ast, 1, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_ast, 1, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_bul, 2, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_bul, 2, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_cat, 3, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_cat, 3, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_ces, 4, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_ces, 4, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_est, 5, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_est, 5, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_fra, 6, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_fra, 6, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_gla, 7, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_gla, 7, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_glg, 8, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_glg, 8, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_deu, 9, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_deu, 9, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_hun, 10, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_hun, 10, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_gle, 11, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_gle, 11, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_ita, 12, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_ita, 12, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_glv, 13, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_glv, 13, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_fas, 14, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_fas, 14, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_por, 15, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_por, 15, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_ron, 16, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_ron, 16, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_slk, 17, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_slk, 17, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_slv, 18, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_slv, 18, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_spa, 19, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_spa, 19, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_swe, 20, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_swe, 20, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_ukr, 21, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_ukr, 21, 1)
+        wrapper_lemmatizers.layout().addWidget(self.label_lemmatizer_cym, 22, 0)
+        wrapper_lemmatizers.layout().addWidget(self.combo_box_lemmatizer_cym, 22, 1)
+
+        scroll_area_lemmatizers = wordless_layout.Wordless_Scroll_Area(self, wrapper_lemmatizers)
+        scroll_area_lemmatizers.setFrameShape(QFrame.NoFrame)
+
+        group_box_lemmatizers.setLayout(QGridLayout())
+        group_box_lemmatizers.layout().addWidget(scroll_area_lemmatizers, 0, 0)
+
+        # Preview
+        group_box_preview = QGroupBox(self.tr('Preview'), self)
+
+        self.label_lemmatization_select_lang = QLabel(self.tr('Select a Language:'), self)
+        self.combo_box_lemmatization_select_lang = wordless_widgets.Wordless_Combo_Box(self)
+        self.text_edit_lemmatization_samples = QTextEdit(self)
+        self.text_edit_lemmatization_preview = QTextEdit(self)
+
+        self.combo_box_lemmatization_select_lang.addItems(list(settings.keys()))
+
+        self.text_edit_lemmatization_preview.setReadOnly(True)
+
+        self.combo_box_lemmatization_select_lang.currentTextChanged.connect(preview_changed)
+        self.text_edit_lemmatization_samples.textChanged.connect(preview_changed)
+
+        layout_select_lang = QGridLayout()
+        layout_select_lang.addWidget(self.label_lemmatization_select_lang, 0, 0)
+        layout_select_lang.addWidget(self.combo_box_lemmatization_select_lang, 0, 1)
+
+        group_box_preview.setLayout(QGridLayout())
+        group_box_preview.layout().addLayout(layout_select_lang, 0, 0, 1, 2, Qt.AlignLeft)
+        group_box_preview.layout().addWidget(self.text_edit_lemmatization_samples, 1, 0)
+        group_box_preview.layout().addWidget(self.text_edit_lemmatization_preview, 1, 1)
+
+        self.settings_lemmatization.setLayout(QGridLayout())
+        self.settings_lemmatization.layout().addWidget(group_box_lemmatizers, 0, 0)
+        self.settings_lemmatization.layout().addWidget(group_box_preview, 1, 0)
+
+        preview_changed()
 
         return self.settings_lemmatization
 
-    def settings_load(self, tab = 'General'):
-        self.combo_box_encoding_input.setCurrentText(wordless_misc.convert_encoding(self.main, *self.main.settings['general']['encoding_input']))
-        self.combo_box_encoding_output.setCurrentText(wordless_misc.convert_encoding(self.main, *self.main.settings['general']['encoding_output']))
+    def init_settings_stop_words(self):
+        def preview_changed():
+            lang_text = self.combo_box_stop_words_select_lang.currentText()
+            lang_code_639_3 = wordless_conversion.to_lang_code(self.main, lang_text)
+            lang_code_639_1 = wordless_conversion.to_iso_639_1(self.main, lang_code_639_3)
+            word_list = self.__dict__[f'combo_box_stop_words_{lang_code_639_3}'].currentText()
 
-        self.spin_box_precision.setValue(self.main.settings['general']['precision'])
+            if word_list == 'NLTK':
+                if lang_text == 'Spanish (Castilian)':
+                    lang_text = 'Spanish'
 
-        self.settings_general.hide()
-        self.settings_lemmatization.hide()
+                stop_words = nltk.corpus.stopwords.words(lang_text)
+            elif word_list == 'Stopwords ISO':
+                if lang_code_639_1 == 'zh_cn':
+                    lang_code_639_1 = 'zh'
 
-        self.settings_general.show()
+                with open(r'stop_words/Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
+                    stop_words = json.load(f)[lang_code_639_1]
+            elif word_list == 'stopwords-json':
+                if lang_code_639_1 == 'zh_cn':
+                    lang_code_639_1 = 'zh'
+
+                with open(r'stop_words/stopwords-json/stopwords-all.json', 'r', encoding = 'utf_8') as f:
+                    stop_words = json.load(f)[lang_code_639_1]
+
+            self.label_stop_words_count.setText(self.tr('Count of Stop Words: ') + str(len(stop_words)))
+            self.table_stop_words_preview.set_items(stop_words)
+
+        settings = self.main.settings_global['stop_words']
+
+        self.settings_stop_words = QWidget(self)
+
+        # Stop Words
+        group_box_stop_words = QGroupBox(self.tr('Stop Words'), self)
+        wrapper_stop_words = QWidget(self)
+
+        self.label_stop_words_eng = QLabel(self.tr('English:'), self)
+        self.combo_box_stop_words_eng = QComboBox(self)
+        self.label_stop_words_afr = QLabel(self.tr('Afrikaans:'), self)
+        self.combo_box_stop_words_afr = QComboBox(self)
+        self.label_stop_words_ara = QLabel(self.tr('Arabic:'), self)
+        self.combo_box_stop_words_ara = QComboBox(self)
+        self.label_stop_words_hye = QLabel(self.tr('Armenian:'), self)
+        self.combo_box_stop_words_hye = QComboBox(self)
+        self.label_stop_words_aze = QLabel(self.tr('Azerbaijani:'), self)
+        self.combo_box_stop_words_aze = QComboBox(self)
+        self.label_stop_words_eus = QLabel(self.tr('Basque:'), self)
+        self.combo_box_stop_words_eus = QComboBox(self)
+        self.label_stop_words_ben = QLabel(self.tr('Bengali:'), self)
+        self.combo_box_stop_words_ben = QComboBox(self)
+        self.label_stop_words_bre = QLabel(self.tr('Breton:'), self)
+        self.combo_box_stop_words_bre = QComboBox(self)
+        self.label_stop_words_bul = QLabel(self.tr('Bulgarian:'), self)
+        self.combo_box_stop_words_bul = QComboBox(self)
+        self.label_stop_words_cat = QLabel(self.tr('Catalan:'), self)
+        self.combo_box_stop_words_cat = QComboBox(self)
+        self.label_stop_words_zho_cn = QLabel(self.tr('Chinese (Simplified):'), self)
+        self.combo_box_stop_words_zho_cn = QComboBox(self)
+        self.label_stop_words_hrv = QLabel(self.tr('Croatian:'), self)
+        self.combo_box_stop_words_hrv = QComboBox(self)
+        self.label_stop_words_ces = QLabel(self.tr('Czech:'), self)
+        self.combo_box_stop_words_ces = QComboBox(self)
+        self.label_stop_words_dan = QLabel(self.tr('Danish:'), self)
+        self.combo_box_stop_words_dan = QComboBox(self)
+        self.label_stop_words_nld = QLabel(self.tr('Dutch:'), self)
+        self.combo_box_stop_words_nld = QComboBox(self)
+        self.label_stop_words_epo = QLabel(self.tr('Esperanto:'), self)
+        self.combo_box_stop_words_epo = QComboBox(self)
+        self.label_stop_words_est = QLabel(self.tr('Estonian:'), self)
+        self.combo_box_stop_words_est = QComboBox(self)
+        self.label_stop_words_fin = QLabel(self.tr('Finnish:'), self)
+        self.combo_box_stop_words_fin = QComboBox(self)
+        self.label_stop_words_fra = QLabel(self.tr('French:'), self)
+        self.combo_box_stop_words_fra = QComboBox(self)
+        self.label_stop_words_glg = QLabel(self.tr('Galician:'), self)
+        self.combo_box_stop_words_glg = QComboBox(self)
+        self.label_stop_words_deu = QLabel(self.tr('German:'), self)
+        self.combo_box_stop_words_deu = QComboBox(self)
+        self.label_stop_words_ell = QLabel(self.tr('Greek:'), self)
+        self.combo_box_stop_words_ell = QComboBox(self)
+        self.label_stop_words_hau = QLabel(self.tr('Hausa:'), self)
+        self.combo_box_stop_words_hau = QComboBox(self)
+        self.label_stop_words_heb = QLabel(self.tr('Hebrew:'), self)
+        self.combo_box_stop_words_heb = QComboBox(self)
+        self.label_stop_words_hin = QLabel(self.tr('Hindi:'), self)
+        self.combo_box_stop_words_hin = QComboBox(self)
+        self.label_stop_words_hun = QLabel(self.tr('Hungarian:'), self)
+        self.combo_box_stop_words_hun = QComboBox(self)
+        self.label_stop_words_ind = QLabel(self.tr('Indonesian:'), self)
+        self.combo_box_stop_words_ind = QComboBox(self)
+        self.label_stop_words_gle = QLabel(self.tr('Irish:'), self)
+        self.combo_box_stop_words_gle = QComboBox(self)
+        self.label_stop_words_ita = QLabel(self.tr('Italian:'), self)
+        self.combo_box_stop_words_ita = QComboBox(self)
+        self.label_stop_words_jpn = QLabel(self.tr('Japanese:'), self)
+        self.combo_box_stop_words_jpn = QComboBox(self)
+        self.label_stop_words_kaz = QLabel(self.tr('Kazakh:'), self)
+        self.combo_box_stop_words_kaz = QComboBox(self)
+        self.label_stop_words_kor = QLabel(self.tr('Korean:'), self)
+        self.combo_box_stop_words_kor = QComboBox(self)
+        self.label_stop_words_kur = QLabel(self.tr('Kurdish:'), self)
+        self.combo_box_stop_words_kur = QComboBox(self)
+        self.label_stop_words_lat = QLabel(self.tr('Latin:'), self)
+        self.combo_box_stop_words_lat = QComboBox(self)
+        self.label_stop_words_lav = QLabel(self.tr('Latvian:'), self)
+        self.combo_box_stop_words_lav = QComboBox(self)
+        self.label_stop_words_mar = QLabel(self.tr('Marathi:'), self)
+        self.combo_box_stop_words_mar = QComboBox(self)
+        self.label_stop_words_msa = QLabel(self.tr('Malay:'), self)
+        self.combo_box_stop_words_msa = QComboBox(self)
+        self.label_stop_words_nep = QLabel(self.tr('Nepali:'), self)
+        self.combo_box_stop_words_nep = QComboBox(self)
+        self.label_stop_words_nor = QLabel(self.tr('Norwegian:'), self)
+        self.combo_box_stop_words_nor = QComboBox(self)
+        self.label_stop_words_fas = QLabel(self.tr('Persian:'), self)
+        self.combo_box_stop_words_fas = QComboBox(self)
+        self.label_stop_words_pol = QLabel(self.tr('Polish:'), self)
+        self.combo_box_stop_words_pol = QComboBox(self)
+        self.label_stop_words_por = QLabel(self.tr('Portuguese:'), self)
+        self.combo_box_stop_words_por = QComboBox(self)
+        self.label_stop_words_ron = QLabel(self.tr('Romanian:'), self)
+        self.combo_box_stop_words_ron = QComboBox(self)
+        self.label_stop_words_rus = QLabel(self.tr('Russian:'), self)
+        self.combo_box_stop_words_rus = QComboBox(self)
+        self.label_stop_words_slk = QLabel(self.tr('Slovak:'), self)
+        self.combo_box_stop_words_slk = QComboBox(self)
+        self.label_stop_words_slv = QLabel(self.tr('Slovenian:'), self)
+        self.combo_box_stop_words_slv = QComboBox(self)
+        self.label_stop_words_sot = QLabel(self.tr('Sotho, Southern:'), self)
+        self.combo_box_stop_words_sot = QComboBox(self)
+        self.label_stop_words_som = QLabel(self.tr('Somali:'), self)
+        self.combo_box_stop_words_som = QComboBox(self)
+        self.label_stop_words_spa = QLabel(self.tr('Spanish (Castilian):'), self)
+        self.combo_box_stop_words_spa = QComboBox(self)
+        self.label_stop_words_swa = QLabel(self.tr('Swahili:'), self)
+        self.combo_box_stop_words_swa = QComboBox(self)
+        self.label_stop_words_swe = QLabel(self.tr('Swedish:'), self)
+        self.combo_box_stop_words_swe = QComboBox(self)
+        self.label_stop_words_tgl = QLabel(self.tr('Tagalog:'), self)
+        self.combo_box_stop_words_tgl = QComboBox(self)
+        self.label_stop_words_tha = QLabel(self.tr('Thai:'), self)
+        self.combo_box_stop_words_tha = QComboBox(self)
+        self.label_stop_words_tur = QLabel(self.tr('Turkish:'), self)
+        self.combo_box_stop_words_tur = QComboBox(self)
+        self.label_stop_words_ukr = QLabel(self.tr('Ukrainian:'), self)
+        self.combo_box_stop_words_ukr = QComboBox(self)
+        self.label_stop_words_urd = QLabel(self.tr('Urdu:'), self)
+        self.combo_box_stop_words_urd = QComboBox(self)
+        self.label_stop_words_vie = QLabel(self.tr('Vietnamese:'), self)
+        self.combo_box_stop_words_vie = QComboBox(self)
+        self.label_stop_words_yor = QLabel(self.tr('Yoruba:'), self)
+        self.combo_box_stop_words_yor = QComboBox(self)
+        self.label_stop_words_zul = QLabel(self.tr('Zulu:'), self)
+        self.combo_box_stop_words_zul = QComboBox(self)
+
+        self.combo_box_stop_words_eng.addItems(settings[self.label_stop_words_eng.text().rstrip(':')])
+        self.combo_box_stop_words_afr.addItems(settings[self.label_stop_words_afr.text().rstrip(':')])
+        self.combo_box_stop_words_ara.addItems(settings[self.label_stop_words_ara.text().rstrip(':')])
+        self.combo_box_stop_words_hye.addItems(settings[self.label_stop_words_hye.text().rstrip(':')])
+        self.combo_box_stop_words_aze.addItems(settings[self.label_stop_words_aze.text().rstrip(':')])
+        self.combo_box_stop_words_eus.addItems(settings[self.label_stop_words_eus.text().rstrip(':')])
+        self.combo_box_stop_words_ben.addItems(settings[self.label_stop_words_ben.text().rstrip(':')])
+        self.combo_box_stop_words_bre.addItems(settings[self.label_stop_words_bre.text().rstrip(':')])
+        self.combo_box_stop_words_bul.addItems(settings[self.label_stop_words_bul.text().rstrip(':')])
+        self.combo_box_stop_words_cat.addItems(settings[self.label_stop_words_cat.text().rstrip(':')])
+        self.combo_box_stop_words_zho_cn.addItems(settings[self.label_stop_words_zho_cn.text().rstrip(':')])
+        self.combo_box_stop_words_hrv.addItems(settings[self.label_stop_words_hrv.text().rstrip(':')])
+        self.combo_box_stop_words_ces.addItems(settings[self.label_stop_words_ces.text().rstrip(':')])
+        self.combo_box_stop_words_dan.addItems(settings[self.label_stop_words_dan.text().rstrip(':')])
+        self.combo_box_stop_words_nld.addItems(settings[self.label_stop_words_nld.text().rstrip(':')])
+        self.combo_box_stop_words_epo.addItems(settings[self.label_stop_words_epo.text().rstrip(':')])
+        self.combo_box_stop_words_est.addItems(settings[self.label_stop_words_est.text().rstrip(':')])
+        self.combo_box_stop_words_fin.addItems(settings[self.label_stop_words_fin.text().rstrip(':')])
+        self.combo_box_stop_words_fra.addItems(settings[self.label_stop_words_fra.text().rstrip(':')])
+        self.combo_box_stop_words_glg.addItems(settings[self.label_stop_words_glg.text().rstrip(':')])
+        self.combo_box_stop_words_deu.addItems(settings[self.label_stop_words_deu.text().rstrip(':')])
+        self.combo_box_stop_words_ell.addItems(settings[self.label_stop_words_ell.text().rstrip(':')])
+        self.combo_box_stop_words_hau.addItems(settings[self.label_stop_words_hau.text().rstrip(':')])
+        self.combo_box_stop_words_heb.addItems(settings[self.label_stop_words_heb.text().rstrip(':')])
+        self.combo_box_stop_words_hin.addItems(settings[self.label_stop_words_hin.text().rstrip(':')])
+        self.combo_box_stop_words_hun.addItems(settings[self.label_stop_words_hun.text().rstrip(':')])
+        self.combo_box_stop_words_ind.addItems(settings[self.label_stop_words_ind.text().rstrip(':')])
+        self.combo_box_stop_words_gle.addItems(settings[self.label_stop_words_gle.text().rstrip(':')])
+        self.combo_box_stop_words_ita.addItems(settings[self.label_stop_words_ita.text().rstrip(':')])
+        self.combo_box_stop_words_jpn.addItems(settings[self.label_stop_words_jpn.text().rstrip(':')])
+        self.combo_box_stop_words_kaz.addItems(settings[self.label_stop_words_kaz.text().rstrip(':')])
+        self.combo_box_stop_words_kor.addItems(settings[self.label_stop_words_kor.text().rstrip(':')])
+        self.combo_box_stop_words_kur.addItems(settings[self.label_stop_words_kur.text().rstrip(':')])
+        self.combo_box_stop_words_lat.addItems(settings[self.label_stop_words_lat.text().rstrip(':')])
+        self.combo_box_stop_words_lav.addItems(settings[self.label_stop_words_lav.text().rstrip(':')])
+        self.combo_box_stop_words_mar.addItems(settings[self.label_stop_words_mar.text().rstrip(':')])
+        self.combo_box_stop_words_msa.addItems(settings[self.label_stop_words_msa.text().rstrip(':')])
+        self.combo_box_stop_words_nep.addItems(settings[self.label_stop_words_nep.text().rstrip(':')])
+        self.combo_box_stop_words_nor.addItems(settings[self.label_stop_words_nor.text().rstrip(':')])
+        self.combo_box_stop_words_fas.addItems(settings[self.label_stop_words_fas.text().rstrip(':')])
+        self.combo_box_stop_words_pol.addItems(settings[self.label_stop_words_pol.text().rstrip(':')])
+        self.combo_box_stop_words_por.addItems(settings[self.label_stop_words_por.text().rstrip(':')])
+        self.combo_box_stop_words_ron.addItems(settings[self.label_stop_words_ron.text().rstrip(':')])
+        self.combo_box_stop_words_rus.addItems(settings[self.label_stop_words_rus.text().rstrip(':')])
+        self.combo_box_stop_words_slk.addItems(settings[self.label_stop_words_slk.text().rstrip(':')])
+        self.combo_box_stop_words_slv.addItems(settings[self.label_stop_words_slv.text().rstrip(':')])
+        self.combo_box_stop_words_sot.addItems(settings[self.label_stop_words_sot.text().rstrip(':')])
+        self.combo_box_stop_words_som.addItems(settings[self.label_stop_words_som.text().rstrip(':')])
+        self.combo_box_stop_words_spa.addItems(settings[self.label_stop_words_spa.text().rstrip(':')])
+        self.combo_box_stop_words_swa.addItems(settings[self.label_stop_words_swa.text().rstrip(':')])
+        self.combo_box_stop_words_swe.addItems(settings[self.label_stop_words_swe.text().rstrip(':')])
+        self.combo_box_stop_words_tgl.addItems(settings[self.label_stop_words_tgl.text().rstrip(':')])
+        self.combo_box_stop_words_tha.addItems(settings[self.label_stop_words_tha.text().rstrip(':')])
+        self.combo_box_stop_words_tur.addItems(settings[self.label_stop_words_tur.text().rstrip(':')])
+        self.combo_box_stop_words_ukr.addItems(settings[self.label_stop_words_ukr.text().rstrip(':')])
+        self.combo_box_stop_words_urd.addItems(settings[self.label_stop_words_urd.text().rstrip(':')])
+        self.combo_box_stop_words_vie.addItems(settings[self.label_stop_words_vie.text().rstrip(':')])
+        self.combo_box_stop_words_yor.addItems(settings[self.label_stop_words_yor.text().rstrip(':')])
+        self.combo_box_stop_words_zul.addItems(settings[self.label_stop_words_zul.text().rstrip(':')])
+
+        self.combo_box_stop_words_eng.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_afr.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_ara.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_hye.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_aze.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_eus.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_ben.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_bre.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_bul.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_cat.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_zho_cn.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_hrv.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_ces.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_dan.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_nld.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_epo.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_est.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_fin.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_fra.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_glg.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_deu.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_ell.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_hau.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_heb.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_hin.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_hun.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_ind.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_gle.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_ita.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_jpn.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_kaz.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_kor.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_kur.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_lat.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_lav.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_mar.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_msa.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_nep.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_nor.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_fas.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_pol.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_por.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_ron.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_rus.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_slk.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_slv.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_sot.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_som.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_spa.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_swa.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_swe.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_tgl.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_tha.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_tur.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_ukr.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_urd.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_vie.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_yor.currentTextChanged.connect(preview_changed)
+        self.combo_box_stop_words_zul.currentTextChanged.connect(preview_changed)
+
+        wrapper_stop_words.setLayout(QGridLayout())
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_eng, 0, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_eng, 0, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_afr, 1, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_afr, 1, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_ara, 2, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_ara, 2, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_hye, 3, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_hye, 3, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_aze, 4, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_aze, 4, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_eus, 5, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_eus, 5, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_ben, 6, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_ben, 6, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_bre, 7, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_bre, 7, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_bul, 8, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_bul, 8, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_cat, 9, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_cat, 9, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_zho_cn, 10, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_zho_cn, 10, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_hrv, 11, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_hrv, 11, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_ces, 12, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_ces, 12, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_dan, 13, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_dan, 13, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_nld, 14, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_nld, 14, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_epo, 15, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_epo, 15, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_est, 16, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_est, 16, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_fin, 17, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_fin, 17, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_fra, 18, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_fra, 18, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_glg, 19, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_glg, 19, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_deu, 20, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_deu, 20, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_ell, 21, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_ell, 21, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_hau, 22, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_hau, 22, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_heb, 23, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_heb, 23, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_hin, 24, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_hin, 24, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_hun, 25, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_hun, 25, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_ind, 26, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_ind, 26, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_gle, 27, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_gle, 27, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_ita, 28, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_ita, 28, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_jpn, 29, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_jpn, 29, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_kaz, 30, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_kaz, 30, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_kor, 31, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_kor, 31, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_kur, 32, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_kur, 32, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_lat, 33, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_lat, 33, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_lav, 34, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_lav, 34, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_mar, 35, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_mar, 35, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_msa, 36, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_msa, 36, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_nep, 37, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_nep, 37, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_nor, 38, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_nor, 38, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_fas, 39, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_fas, 39, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_pol, 40, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_pol, 40, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_por, 41, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_por, 41, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_ron, 42, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_ron, 42, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_rus, 43, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_rus, 43, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_slk, 44, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_slk, 44, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_slv, 45, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_slv, 45, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_sot, 46, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_sot, 46, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_som, 47, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_som, 47, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_spa, 48, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_spa, 48, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_swa, 49, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_swa, 49, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_swe, 50, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_swe, 50, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_tgl, 51, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_tgl, 51, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_tha, 52, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_tha, 52, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_tur, 53, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_tur, 53, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_ukr, 54, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_ukr, 54, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_urd, 55, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_urd, 55, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_vie, 56, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_vie, 56, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_yor, 57, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_yor, 57, 1)
+        wrapper_stop_words.layout().addWidget(self.label_stop_words_zul, 58, 0)
+        wrapper_stop_words.layout().addWidget(self.combo_box_stop_words_zul, 58, 1)
+
+        scroll_area_stop_words = wordless_layout.Wordless_Scroll_Area(self, wrapper_stop_words)
+        scroll_area_stop_words.setFrameShape(QFrame.NoFrame)
+
+        group_box_stop_words.setLayout(QGridLayout())
+        group_box_stop_words.layout().addWidget(scroll_area_stop_words, 0, 0)
+
+        # Preview
+        group_box_preview = QGroupBox(self.tr('Preview'), self)
+
+        self.label_stop_words_select_lang = QLabel(self.tr('Select a Language:'), self)
+        self.combo_box_stop_words_select_lang = wordless_widgets.Wordless_Combo_Box(self)
+        self.combo_box_stop_words_select_lang.addItems(list(settings.keys()))
+
+        self.combo_box_stop_words_select_lang.currentTextChanged.connect(preview_changed)
+
+        layout_select_lang = QGridLayout()
+        layout_select_lang.addWidget(self.label_stop_words_select_lang, 0, 0)
+        layout_select_lang.addWidget(self.combo_box_stop_words_select_lang, 0, 1)
+
+        self.label_stop_words_count = QLabel('', self)
+
+        self.table_stop_words_preview = Wordless_Table_Stop_Words(self)
+
+        group_box_preview.setLayout(QGridLayout())
+        group_box_preview.layout().addLayout(layout_select_lang, 0, 0, Qt.AlignLeft)
+        group_box_preview.layout().addWidget(self.label_stop_words_count, 0, 1, Qt.AlignRight)
+        group_box_preview.layout().addWidget(self.table_stop_words_preview, 1, 0, 1, 2)
+
+        self.settings_stop_words.setLayout(QGridLayout())
+        self.settings_stop_words.layout().addWidget(group_box_stop_words, 0, 0)
+        self.settings_stop_words.layout().addWidget(group_box_preview, 1, 0)
+
+        preview_changed()
+
+        return self.settings_stop_words
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = self.main.settings_default
+        else:
+            settings = self.main.settings_custom
+
+        # General
+        self.combo_box_encoding_input.setCurrentText(wordless_conversion.to_encoding_text(self.main, *settings['general']['encoding_input']))
+        self.combo_box_encoding_output.setCurrentText(wordless_conversion.to_encoding_text(self.main, *settings['general']['encoding_output']))
+
+        self.spin_box_precision.setValue(settings['general']['precision'])
+
+        # Lemmatization
+        self.combo_box_lemmatizer_eng.setCurrentText(settings['lemmatization']['eng'])
+        self.combo_box_lemmatizer_ast.setCurrentText(settings['lemmatization']['ast'])
+        self.combo_box_lemmatizer_bul.setCurrentText(settings['lemmatization']['bul'])
+        self.combo_box_lemmatizer_cat.setCurrentText(settings['lemmatization']['cat'])
+        self.combo_box_lemmatizer_ces.setCurrentText(settings['lemmatization']['ces'])
+        self.combo_box_lemmatizer_est.setCurrentText(settings['lemmatization']['est'])
+        self.combo_box_lemmatizer_fra.setCurrentText(settings['lemmatization']['fra'])
+        self.combo_box_lemmatizer_gla.setCurrentText(settings['lemmatization']['gla'])
+        self.combo_box_lemmatizer_glg.setCurrentText(settings['lemmatization']['glg'])
+        self.combo_box_lemmatizer_deu.setCurrentText(settings['lemmatization']['deu'])
+        self.combo_box_lemmatizer_hun.setCurrentText(settings['lemmatization']['hun'])
+        self.combo_box_lemmatizer_gle.setCurrentText(settings['lemmatization']['gle'])
+        self.combo_box_lemmatizer_ita.setCurrentText(settings['lemmatization']['ita'])
+        self.combo_box_lemmatizer_glv.setCurrentText(settings['lemmatization']['glv'])
+        self.combo_box_lemmatizer_fas.setCurrentText(settings['lemmatization']['fas'])
+        self.combo_box_lemmatizer_por.setCurrentText(settings['lemmatization']['por'])
+        self.combo_box_lemmatizer_ron.setCurrentText(settings['lemmatization']['ron'])
+        self.combo_box_lemmatizer_slk.setCurrentText(settings['lemmatization']['slk'])
+        self.combo_box_lemmatizer_slv.setCurrentText(settings['lemmatization']['slv'])
+        self.combo_box_lemmatizer_spa.setCurrentText(settings['lemmatization']['spa'])
+        self.combo_box_lemmatizer_swe.setCurrentText(settings['lemmatization']['swe'])
+        self.combo_box_lemmatizer_ukr.setCurrentText(settings['lemmatization']['ukr'])
+        self.combo_box_lemmatizer_cym.setCurrentText(settings['lemmatization']['cym'])
+
+        self.combo_box_lemmatization_select_lang.setCurrentText(settings['lemmatization']['select_lang'])
+        self.text_edit_lemmatization_samples.setText(settings['lemmatization']['samples'])
+
+        # Stop Words
+        self.combo_box_stop_words_eng.setCurrentText(settings['stop_words']['eng'])
+        self.combo_box_stop_words_afr.setCurrentText(settings['stop_words']['afr'])
+        self.combo_box_stop_words_ara.setCurrentText(settings['stop_words']['ara'])
+        self.combo_box_stop_words_hye.setCurrentText(settings['stop_words']['hye'])
+        self.combo_box_stop_words_aze.setCurrentText(settings['stop_words']['aze'])
+        self.combo_box_stop_words_eus.setCurrentText(settings['stop_words']['eus'])
+        self.combo_box_stop_words_ben.setCurrentText(settings['stop_words']['ben'])
+        self.combo_box_stop_words_bre.setCurrentText(settings['stop_words']['bre'])
+        self.combo_box_stop_words_bul.setCurrentText(settings['stop_words']['bul'])
+        self.combo_box_stop_words_cat.setCurrentText(settings['stop_words']['cat'])
+        self.combo_box_stop_words_zho_cn.setCurrentText(settings['stop_words']['zho_cn'])
+        self.combo_box_stop_words_hrv.setCurrentText(settings['stop_words']['hrv'])
+        self.combo_box_stop_words_ces.setCurrentText(settings['stop_words']['ces'])
+        self.combo_box_stop_words_dan.setCurrentText(settings['stop_words']['dan'])
+        self.combo_box_stop_words_nld.setCurrentText(settings['stop_words']['nld'])
+        self.combo_box_stop_words_epo.setCurrentText(settings['stop_words']['epo'])
+        self.combo_box_stop_words_est.setCurrentText(settings['stop_words']['est'])
+        self.combo_box_stop_words_fin.setCurrentText(settings['stop_words']['fin'])
+        self.combo_box_stop_words_fra.setCurrentText(settings['stop_words']['fra'])
+        self.combo_box_stop_words_glg.setCurrentText(settings['stop_words']['glg'])
+        self.combo_box_stop_words_deu.setCurrentText(settings['stop_words']['deu'])
+        self.combo_box_stop_words_ell.setCurrentText(settings['stop_words']['ell'])
+        self.combo_box_stop_words_hau.setCurrentText(settings['stop_words']['hau'])
+        self.combo_box_stop_words_heb.setCurrentText(settings['stop_words']['heb'])
+        self.combo_box_stop_words_hin.setCurrentText(settings['stop_words']['hin'])
+        self.combo_box_stop_words_hun.setCurrentText(settings['stop_words']['hun'])
+        self.combo_box_stop_words_ind.setCurrentText(settings['stop_words']['ind'])
+        self.combo_box_stop_words_gle.setCurrentText(settings['stop_words']['gle'])
+        self.combo_box_stop_words_ita.setCurrentText(settings['stop_words']['ita'])
+        self.combo_box_stop_words_jpn.setCurrentText(settings['stop_words']['jpn'])
+        self.combo_box_stop_words_kaz.setCurrentText(settings['stop_words']['kaz'])
+        self.combo_box_stop_words_kor.setCurrentText(settings['stop_words']['kor'])
+        self.combo_box_stop_words_kur.setCurrentText(settings['stop_words']['kur'])
+        self.combo_box_stop_words_lat.setCurrentText(settings['stop_words']['lat'])
+        self.combo_box_stop_words_lav.setCurrentText(settings['stop_words']['lav'])
+        self.combo_box_stop_words_mar.setCurrentText(settings['stop_words']['mar'])
+        self.combo_box_stop_words_msa.setCurrentText(settings['stop_words']['msa'])
+        self.combo_box_stop_words_nep.setCurrentText(settings['stop_words']['nep'])
+        self.combo_box_stop_words_nor.setCurrentText(settings['stop_words']['nor'])
+        self.combo_box_stop_words_fas.setCurrentText(settings['stop_words']['fas'])
+        self.combo_box_stop_words_pol.setCurrentText(settings['stop_words']['pol'])
+        self.combo_box_stop_words_por.setCurrentText(settings['stop_words']['por'])
+        self.combo_box_stop_words_ron.setCurrentText(settings['stop_words']['ron'])
+        self.combo_box_stop_words_rus.setCurrentText(settings['stop_words']['rus'])
+        self.combo_box_stop_words_slk.setCurrentText(settings['stop_words']['slk'])
+        self.combo_box_stop_words_slv.setCurrentText(settings['stop_words']['slv'])
+        self.combo_box_stop_words_sot.setCurrentText(settings['stop_words']['sot'])
+        self.combo_box_stop_words_som.setCurrentText(settings['stop_words']['som'])
+        self.combo_box_stop_words_spa.setCurrentText(settings['stop_words']['spa'])
+        self.combo_box_stop_words_swa.setCurrentText(settings['stop_words']['swa'])
+        self.combo_box_stop_words_swe.setCurrentText(settings['stop_words']['swe'])
+        self.combo_box_stop_words_tgl.setCurrentText(settings['stop_words']['tgl'])
+        self.combo_box_stop_words_tha.setCurrentText(settings['stop_words']['tha'])
+        self.combo_box_stop_words_tur.setCurrentText(settings['stop_words']['tur'])
+        self.combo_box_stop_words_ukr.setCurrentText(settings['stop_words']['ukr'])
+        self.combo_box_stop_words_urd.setCurrentText(settings['stop_words']['urd'])
+        self.combo_box_stop_words_vie.setCurrentText(settings['stop_words']['vie'])
+        self.combo_box_stop_words_yor.setCurrentText(settings['stop_words']['yor'])
+        self.combo_box_stop_words_zul.setCurrentText(settings['stop_words']['zul'])
+
+        self.combo_box_stop_words_select_lang.setCurrentText(settings['stop_words']['select_lang'])
+
+    def apply(self):
+        settings = self.main.settings_custom
+        # General
+        settings['general']['encoding_input'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_encoding_input.currentText())
+        settings['general']['encoding_output'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_encoding_output.currentText())
+
+        settings['general']['precision'] = self.spin_box_precision.value()
+
+        # Lemmatization
+        settings['lemmatization']['eng'] = self.combo_box_lemmatizer_eng.currentText()
+        settings['lemmatization']['ast'] = self.combo_box_lemmatizer_ast.currentText()
+        settings['lemmatization']['bul'] = self.combo_box_lemmatizer_bul.currentText()
+        settings['lemmatization']['cat'] = self.combo_box_lemmatizer_cat.currentText()
+        settings['lemmatization']['ces'] = self.combo_box_lemmatizer_ces.currentText()
+        settings['lemmatization']['est'] = self.combo_box_lemmatizer_est.currentText()
+        settings['lemmatization']['fra'] = self.combo_box_lemmatizer_fra.currentText()
+        settings['lemmatization']['gla'] = self.combo_box_lemmatizer_gla.currentText()
+        settings['lemmatization']['glg'] = self.combo_box_lemmatizer_glg.currentText()
+        settings['lemmatization']['deu'] = self.combo_box_lemmatizer_deu.currentText()
+        settings['lemmatization']['hun'] = self.combo_box_lemmatizer_hun.currentText()
+        settings['lemmatization']['gle'] = self.combo_box_lemmatizer_gle.currentText()
+        settings['lemmatization']['ita'] = self.combo_box_lemmatizer_ita.currentText()
+        settings['lemmatization']['glv'] = self.combo_box_lemmatizer_glv.currentText()
+        settings['lemmatization']['fas'] = self.combo_box_lemmatizer_fas.currentText()
+        settings['lemmatization']['por'] = self.combo_box_lemmatizer_por.currentText()
+        settings['lemmatization']['ron'] = self.combo_box_lemmatizer_ron.currentText()
+        settings['lemmatization']['slk'] = self.combo_box_lemmatizer_slk.currentText()
+        settings['lemmatization']['slv'] = self.combo_box_lemmatizer_slv.currentText()
+        settings['lemmatization']['spa'] = self.combo_box_lemmatizer_spa.currentText()
+        settings['lemmatization']['swe'] = self.combo_box_lemmatizer_swe.currentText()
+        settings['lemmatization']['ukr'] = self.combo_box_lemmatizer_ukr.currentText()
+        settings['lemmatization']['cym'] = self.combo_box_lemmatizer_cym.currentText()
+
+        # Stop Words
+        settings['stop_words']['eng'] = self.combo_box_stop_words_eng.currentText()
+        settings['stop_words']['afr'] = self.combo_box_stop_words_afr.currentText()
+        settings['stop_words']['ara'] = self.combo_box_stop_words_ara.currentText()
+        settings['stop_words']['hye'] = self.combo_box_stop_words_hye.currentText()
+        settings['stop_words']['aze'] = self.combo_box_stop_words_aze.currentText()
+        settings['stop_words']['eus'] = self.combo_box_stop_words_eus.currentText()
+        settings['stop_words']['ben'] = self.combo_box_stop_words_ben.currentText()
+        settings['stop_words']['bre'] = self.combo_box_stop_words_bre.currentText()
+        settings['stop_words']['bul'] = self.combo_box_stop_words_bul.currentText()
+        settings['stop_words']['cat'] = self.combo_box_stop_words_cat.currentText()
+        settings['stop_words']['zho_cn'] = self.combo_box_stop_words_zho_cn.currentText()
+        settings['stop_words']['hrv'] = self.combo_box_stop_words_hrv.currentText()
+        settings['stop_words']['ces'] = self.combo_box_stop_words_ces.currentText()
+        settings['stop_words']['dan'] = self.combo_box_stop_words_dan.currentText()
+        settings['stop_words']['nld'] = self.combo_box_stop_words_nld.currentText()
+        settings['stop_words']['epo'] = self.combo_box_stop_words_epo.currentText()
+        settings['stop_words']['est'] = self.combo_box_stop_words_est.currentText()
+        settings['stop_words']['fin'] = self.combo_box_stop_words_fin.currentText()
+        settings['stop_words']['fra'] = self.combo_box_stop_words_fra.currentText()
+        settings['stop_words']['glg'] = self.combo_box_stop_words_glg.currentText()
+        settings['stop_words']['deu'] = self.combo_box_stop_words_deu.currentText()
+        settings['stop_words']['ell'] = self.combo_box_stop_words_ell.currentText()
+        settings['stop_words']['hau'] = self.combo_box_stop_words_hau.currentText()
+        settings['stop_words']['heb'] = self.combo_box_stop_words_heb.currentText()
+        settings['stop_words']['hin'] = self.combo_box_stop_words_hin.currentText()
+        settings['stop_words']['hun'] = self.combo_box_stop_words_hun.currentText()
+        settings['stop_words']['ind'] = self.combo_box_stop_words_ind.currentText()
+        settings['stop_words']['gle'] = self.combo_box_stop_words_gle.currentText()
+        settings['stop_words']['ita'] = self.combo_box_stop_words_ita.currentText()
+        settings['stop_words']['jpn'] = self.combo_box_stop_words_jpn.currentText()
+        settings['stop_words']['kaz'] = self.combo_box_stop_words_kaz.currentText()
+        settings['stop_words']['kor'] = self.combo_box_stop_words_kor.currentText()
+        settings['stop_words']['kur'] = self.combo_box_stop_words_kur.currentText()
+        settings['stop_words']['lat'] = self.combo_box_stop_words_lat.currentText()
+        settings['stop_words']['lav'] = self.combo_box_stop_words_lav.currentText()
+        settings['stop_words']['mar'] = self.combo_box_stop_words_mar.currentText()
+        settings['stop_words']['msa'] = self.combo_box_stop_words_msa.currentText()
+        settings['stop_words']['nep'] = self.combo_box_stop_words_nep.currentText()
+        settings['stop_words']['nor'] = self.combo_box_stop_words_nor.currentText()
+        settings['stop_words']['fas'] = self.combo_box_stop_words_fas.currentText()
+        settings['stop_words']['pol'] = self.combo_box_stop_words_pol.currentText()
+        settings['stop_words']['por'] = self.combo_box_stop_words_por.currentText()
+        settings['stop_words']['ron'] = self.combo_box_stop_words_ron.currentText()
+        settings['stop_words']['rus'] = self.combo_box_stop_words_rus.currentText()
+        settings['stop_words']['slk'] = self.combo_box_stop_words_slk.currentText()
+        settings['stop_words']['slv'] = self.combo_box_stop_words_slv.currentText()
+        settings['stop_words']['sot'] = self.combo_box_stop_words_sot.currentText()
+        settings['stop_words']['som'] = self.combo_box_stop_words_som.currentText()
+        settings['stop_words']['spa'] = self.combo_box_stop_words_spa.currentText()
+        settings['stop_words']['swa'] = self.combo_box_stop_words_swa.currentText()
+        settings['stop_words']['swe'] = self.combo_box_stop_words_swe.currentText()
+        settings['stop_words']['tgl'] = self.combo_box_stop_words_tgl.currentText()
+        settings['stop_words']['tha'] = self.combo_box_stop_words_tha.currentText()
+        settings['stop_words']['tur'] = self.combo_box_stop_words_tur.currentText()
+        settings['stop_words']['ukr'] = self.combo_box_stop_words_ukr.currentText()
+        settings['stop_words']['urd'] = self.combo_box_stop_words_urd.currentText()
+        settings['stop_words']['vie'] = self.combo_box_stop_words_vie.currentText()
+        settings['stop_words']['yor'] = self.combo_box_stop_words_yor.currentText()
+        settings['stop_words']['zul'] = self.combo_box_stop_words_zul.currentText()
+
+        settings['stop_words']['select_lang'] = self.combo_box_stop_words_select_lang.currentText()
+
+    def load(self):
+        self.load_settings()
+
+        self.tree_settings.clearSelection()
 
         self.exec()
-
-    def restore_defaults(self):
-        self.combo_box_encoding_input.setCurrentText(wordless_misc.convert_encoding(self.main, *self.main.default_settings['general']['encoding_input']))
-        self.combo_box_encoding_output.setCurrentText(wordless_misc.convert_encoding(self.main, *self.main.default_settings['general']['encoding_output']))
-
-        self.spin_box_precision.setValue(self.main.default_settings['general']['precision'])
-
-    def settings_apply(self):
-        self.main.settings['general']['encoding_input'] = wordless_misc.convert_encoding(self.main, self.combo_box_encoding_input.currentText())
-        self.main.settings['general']['encoding_output'] = wordless_misc.convert_encoding(self.main, self.combo_box_encoding_output.currentText())
-        self.main.settings['general']['precision'] = self.spin_box_precision.value()
-
-def load_settings(main):
-    main.file_langs = {
-        main.tr('Afrikaans'): 'afr',
-        main.tr('Albanian'): 'sqi',
-        main.tr('Arabic'): 'ara',
-        main.tr('Bengali'): 'ben',
-        main.tr('Bulgarian'): 'bul',
-        main.tr('Catalan'): 'cat',
-        main.tr('Chinese (Simplified)'): 'zho-cn',
-        main.tr('Chinese (Traditional)'): 'zho-tw',
-        main.tr('Croatian'): 'hrv',
-        main.tr('Czech'): 'ces',
-        main.tr('Danish'): 'dan',
-        main.tr('Dutch'): 'nld',
-        main.tr('English'): 'eng',
-        main.tr('Estonian'): 'est',
-        main.tr('Finnish'): 'fin',
-        main.tr('French'): 'fra',
-        main.tr('Gaelic (Scots)'): 'gla',
-        main.tr('German'): 'deu',
-        main.tr('Greek'): 'ell',
-        main.tr('Gujarati'): 'guj',
-        main.tr('Hebrew'): 'heb',
-        main.tr('Hindi'): 'hin',
-        main.tr('Hungarian'): 'hun',
-        main.tr('Indonesian'): 'ind',
-        main.tr('Italian'): 'ita',
-        main.tr('Japanese'): 'jpn',
-        main.tr('Kannada'): 'kan',
-        main.tr('Korean'): 'kor',
-        main.tr('Latvian'): 'lav',
-        main.tr('Lithuanian'): 'lit',
-        main.tr('Macedonian'): 'mkd',
-        main.tr('Malayalam'): 'mal',
-        main.tr('Manx'): 'glv',
-        main.tr('Marathi'): 'mar',
-        main.tr('Nepali'): 'nep',
-        main.tr('Norwegian'): 'nno',
-        main.tr('Panjabi/Punjabi'): 'pan',
-        main.tr('Persian'): 'fas',
-        main.tr('Polish'): 'pol',
-        main.tr('Portuguese'): 'por',
-        main.tr('Romanian'): 'ron',
-        main.tr('Russian'): 'rus',
-        main.tr('Slovak'): 'slk',
-        main.tr('Slovenian'): 'slv',
-        main.tr('Somali'): 'som',
-        main.tr('Spanish (Castilian)'): 'spa',
-        main.tr('Swahili'): 'swa',
-        main.tr('Swedish'): 'swe',
-        main.tr('Tagalog'): 'tgl',
-        main.tr('Tamil'): 'tam',
-        main.tr('Telugu'): 'tel',
-        main.tr('Thai'): 'tha',
-        main.tr('Turkish'): 'tur',
-        main.tr('Ukrainian'): 'ukr',
-        main.tr('Urdu'): 'urd',
-        main.tr('Vietnamese'): 'vie',
-        main.tr('Welsh'): 'cym'
-    }
-
-    main.file_exts = {
-        '.txt': main.tr('Text File (*.txt)'),
-        '.htm': main.tr('HTML Page (*.htm; *.html)'),
-        '.html': main.tr('HTML Page (*.htm; *.html)')
-    }
-
-    main.file_encodings = {
-        main.tr('All Languages(UTF-8 Without BOM)'): 'utf_8',
-        main.tr('All Languages(UTF-8 With BOM)'): 'utf_8_sig',
-        main.tr('All Languages(UTF-16)'): 'utf_16',
-        main.tr('All Languages(UTF-16 Big Endian)'): 'utf_16_be',
-        main.tr('All Languages(UTF-16 Little Endian)'): 'utf_16_le',
-        main.tr('All Languages(UTF-32)'): 'utf_32',
-        main.tr('All Languages(UTF-32 Big Endian)'): 'utf_32_be',
-        main.tr('All Languages(UTF-32 Little Endian)'): 'utf_32_le',
-        main.tr('All Languages(UTF-7)'): 'utf_7',
-        main.tr('All Languages(CP65001)'): 'cp65001',
-
-        main.tr('Baltic Languages(CP775)'): 'cp775',
-        main.tr('Baltic Languages(Windows-1257)'): 'cp1257',
-        main.tr('Baltic Languages(ISO-8859-4)'): 'iso8859_4',
-        main.tr('Baltic Languages(ISO-8859-13)'): 'iso8859_13',
-
-        main.tr('Celtic Languages(ISO-8859-14)'): 'iso8859_14',
-
-        main.tr('Nordic Languages(ISO-8859-10)'): 'iso8859_10',
-
-        main.tr('Europe(HP Roman-8)'): 'hp_roman8',
-
-        main.tr('Central Europe(Mac OS Central European)'): 'mac_centeuro',
-        main.tr('Central Europe(Mac OS Latin 2)'): 'mac_latin2',
-
-        main.tr('Central and Eastern Europe(CP852)'): 'cp852',
-        main.tr('Central and Eastern Europe(Windows-1250)'): 'cp1250',
-        main.tr('Central and Eastern Europe(ISO-8859-2)'): 'iso8859_2',
-        main.tr('Central and Eastern Europe(Mac Latin)'): 'mac_latin2',
-
-        main.tr('South-Eastern Europe(ISO-8859-16)'): 'iso8859_16',
-
-        main.tr('Western Europe(EBCDIC 500)'): 'cp500',
-        main.tr('Western Europe(CP850)'): 'cp850',
-        main.tr('Western Europe(CP858)'): 'cp858',
-        main.tr('Western Europe(CP1140)'): 'cp1140',
-        main.tr('Western Europe(Windows-1252)'): 'windows_1252',
-        main.tr('Western Europe(ISO-2022-JP-2)'): 'iso2022_jp_2',
-        main.tr('Western Europe(ISO-8859-1)'): 'iso_8859_1',
-        main.tr('Western Europe(ISO-8859-15)'): 'iso_8859_15',
-        main.tr('Western Europe(Mac OS Roman)'): 'mac_roman',
-
-        main.tr('Arabic(CP720)'): 'cp720',
-        main.tr('Arabic(CP864)'): 'cp864',
-        main.tr('Arabic(Windows-1256)'): 'cp1256',
-        main.tr('Arabic(ISO-8859-6)'): 'iso_8859_6',
-        main.tr('Arabic(Mac OS Arabic)'): 'mac_arabic',
-
-        main.tr('Bulgarian(IBM855)'): 'cp855',
-        main.tr('Bulgarian(Windows-1251)'): 'windows_1251',
-        main.tr('Bulgarian(ISO-8859-5)'): 'iso_8859_5',
-        main.tr('Bulgarian(Mac OS Cyrillic)'): 'mac_cyrillic',
-
-        main.tr('Byelorussian(IBM855)'): 'cp855',
-        main.tr('Byelorussian(Windows-1251)'): 'cp1251',
-        main.tr('Byelorussian(ISO-8859-5)'): 'iso_8859_5',
-        main.tr('Byelorussian(Mac OS Cyrillic)'): 'mac_cyrillic',
-
-        main.tr('Canadian(CP863)'): 'cp863',
-
-        main.tr('Simplified Chinese(GB2312)'): 'gb2312',
-        main.tr('Simplified Chinese(HZ)'): 'hz_gb_2312',
-        main.tr('Simplified Chinese(ISO-2022-JP-2)'): 'iso2022_jp_2',
-
-        main.tr('Traditional Chinese(Big-5)'): 'big5',
-        main.tr('Traditional Chinese(Big5-HKSCS)'): 'big5hkscs',
-        main.tr('Traditional Chinese(CP950)'): 'cp950',
-
-        main.tr('Unified Chinese(GBK)'): 'gbk',
-        main.tr('Unified Chinese(GB18030)'): 'gb18030',
-
-        main.tr('Croatian(Mac OS Croatian)'): 'mac_croatian',
-
-        main.tr('Danish(CP865)'): 'cp865',
-
-        main.tr('English(ASCII)'): 'ascii',
-        main.tr('English(EBCDIC 037)'): 'cp037',
-        main.tr('English(CP437)'): 'cp437',
-
-        main.tr('Esperanto(ISO-8859-3)'): 'iso_8859_3',
-
-        main.tr('German(EBCDIC 273)'): 'cp273',
-
-        main.tr('Greek(CP737)'): 'cp737',
-        main.tr('Greek(CP869)'): 'cp869',
-        main.tr('Greek(CP875)'): 'cp875',
-        main.tr('Greek(Windows-1253)'): 'windows_1253',
-        main.tr('Greek(ISO-2022-JP-2)'): 'iso2022_jp_2',
-        main.tr('Greek(ISO-8859-7)'): 'iso_8859_7',
-        main.tr('Greek(Mac OS Greek)'): 'mac_greek',
-
-        main.tr('Hebrew(EBCDIC 424)'): 'cp424',
-        main.tr('Hebrew(CP856)'): 'cp856',
-        main.tr('Hebrew(CP862)'): 'cp862',
-        main.tr('Hebrew(Windows-1255)'): 'windows_1255',
-        main.tr('Hebrew(ISO-8859-8)'): 'iso_8859_8',
-
-        main.tr('Icelandic(CP861)'): 'cp861',
-        main.tr('Icelandic(Mac OS Icelandic)'): 'mac_iceland',
-
-        main.tr('Japanese(CP932)'): 'cp932',
-        main.tr('Japanese(EUC-JP)'): 'euc_jp',
-        main.tr('Japanese(EUC-JIS-2004)'): 'euc_jis_2004',
-        main.tr('Japanese(EUC-JISx0213)'): 'euc_jisx0213',
-        main.tr('Japanese(ISO-2022-JP)'): 'iso_2022_jp',
-        main.tr('Japanese(ISO-2022-JP-1)'): 'iso2022_jp_1',
-        main.tr('Japanese(ISO-2022-JP-2)'): 'iso2022_jp_2',
-        main.tr('Japanese(ISO-2022-JP-2)'): 'iso2022_jp_2004',
-        main.tr('Japanese(ISO-2022-JP-3)'): 'iso2022_jp_3',
-        main.tr('Japanese(ISO-2022-JP-EXT)'): 'iso2022_jp_ext',
-        main.tr('Japanese(Shift_JIS)'): 'shift_jis',
-        main.tr('Japanese(Shift_JIS-2004)'): 'shift_jis_2004',
-        main.tr('Japanese(Shift_JISx0213)'): 'shift_jisx0213',
-
-        main.tr('Kazakh(KZ-1048)'): 'kz1048',
-        main.tr('Kazakh(PTCP154)'): 'ptcp154',
-
-        main.tr('Korean(Windows-949)'): 'cp949',
-        main.tr('Korean(EUC-KR)'): 'euc_kr',
-        main.tr('Korean(ISO-2022-JP-2)'): 'iso2022_jp_2',
-        main.tr('Korean(ISO-2022-KR)'): 'iso_2022_kr',
-        main.tr('Korean(JOHAB)'): 'johab',
-
-        main.tr('Macedonian(IBM855)'): 'cp855',
-        main.tr('Macedonian(Windows-1251)'): 'cp1251',
-        main.tr('Macedonian(ISO-8859-5)'): 'iso_8859_5',
-        main.tr('Macedonian(Mac OS Cyrillic)'): 'maccyrillic',
-
-        main.tr('Maltese(ISO-8859-3)'): 'iso_8859_3',
-
-        main.tr('Norwegian(CP865)'): 'cp865',
-
-        main.tr('Persian(Mac OS Farsi)'): 'mac_farsi',
-
-        main.tr('Portuguese(CP860)'): 'cp860',
-
-        main.tr('Romanian(Mac OS Romanian)'): 'mac_romanian',
-
-        main.tr('Russian(IBM855)'): 'ibm855',
-        main.tr('Russian(IBM866)'): 'ibm866',
-        main.tr('Russian(Windows-1251)'): 'windows_1251',
-        main.tr('Russian(ISO-8859-5)'): 'iso_8859_5',
-        main.tr('Russian(KOI8-R)'): 'koi8_r',
-        main.tr('Russian(Mac OS Cyrillic)'): 'maccyrillic',
-
-        main.tr('Serbian(IBM855)'): 'cp855',
-        main.tr('Serbian(Windows-1251)'): 'cp1251',
-        main.tr('Serbian(ISO-8859-5)'): 'iso8859_5',
-        main.tr('Serbian(Mac OS Cyrillic)'): 'maccyrillic',
-
-        main.tr('Tajik(KOI8-T)'): 'koi8_t',
-
-        main.tr('Thai(CP874)'): 'cp874',
-        main.tr('Thai(ISO-8859-11)'): 'iso8859_11',
-        main.tr('Thai(TIS-620)'): 'tis_620',
-
-        main.tr('Turkish(CP857)'): 'cp857',
-        main.tr('Turkish(EBCDIC 1026)'): 'cp1026',
-        main.tr('Turkish(Windows-1254)'): 'cp1254',
-        main.tr('Turkish(ISO-8859-9)'): 'iso_8859_9',
-        main.tr('Turkish(Mac OS Turkish)'): 'mac_turkish',
-
-        main.tr('Ukranian(CP1125)'): 'cp1125',
-        main.tr('Ukranian(KOI8-U)'): 'koi8_u',
-
-        main.tr('Urdu(CP1006)'): 'cp1006',
-        main.tr('Urdu(Mac OS Farsi)'): 'mac_farsi',
-
-        main.tr('Vietnamese(CP1258)'): 'cp1258'
-    }
-
-    main.lemmatization = {
-        'English': ['NLTK (NLTK Project)', 'Lemmatization List (Michal Boleslav Měchura)'],
-        'Austurian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Catalan': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Czech': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Estonian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'French': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Galician': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'German': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Hungarian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Irish': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Manx': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Italian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Persian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Polish': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Portuguese': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Romanian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Scottish Gaelic': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Slovak': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Slovene': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Spanish': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Swedish': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Ukrainian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Welsh': ['Lemmatization List (Michal Boleslav Měchura)']
-    }
-
-    main.style_dialog = '''
-        <head>
-          <style>
-            * {
-              margin: 0;
-              border: 0;
-              padding: 0;
-
-              line-height: 1.2;
-              text-align: justify;
-            }
-
-            h1 {
-              margin-bottom: 10px;
-              font-size: 16px;
-              font-weight: bold;
-            }
-
-            p {
-              margin-bottom: 5px;
-            }
-
-            table th {
-              font-weight: bold;
-            }
-          </style>
-        </head>
-    '''
-
-    main.assoc_measures_bigram = {
-        main.tr('Frequency'): nltk.collocations.BigramAssocMeasures().raw_freq,
-        main.tr('Student\'s T-test'): nltk.collocations.BigramAssocMeasures().student_t,
-        main.tr('Pearson\'s Chi-squared Test'): nltk.collocations.BigramAssocMeasures().chi_sq,
-        main.tr('Phi Coefficient'): nltk.collocations.BigramAssocMeasures().phi_sq,
-        main.tr('Pointwise Mutual Information'): nltk.collocations.BigramAssocMeasures().pmi,
-        main.tr('Likelihood Ratios'): nltk.collocations.BigramAssocMeasures().likelihood_ratio,
-        main.tr('Poisson-Stirling'): nltk.collocations.BigramAssocMeasures().poisson_stirling,
-        main.tr('Jaccard Index'): nltk.collocations.BigramAssocMeasures().jaccard,
-        main.tr('Fisher\'s Exact Test'): nltk.collocations.BigramAssocMeasures().fisher,
-        main.tr('Dice\'s coefficient'): nltk.collocations.BigramAssocMeasures().dice
-    }
-
-    main.assoc_measures_trigram = {
-        main.tr('Frequency'): nltk.collocations.TrigramAssocMeasures().raw_freq,
-        main.tr('Student\'s T-test'): nltk.collocations.TrigramAssocMeasures().student_t,
-        main.tr('Pearson\'s Chi-squared Test'): nltk.collocations.TrigramAssocMeasures().chi_sq,
-        main.tr('Pointwise Mutual Information'): nltk.collocations.TrigramAssocMeasures().pmi,
-        main.tr('Likelihood Ratios'): nltk.collocations.TrigramAssocMeasures().likelihood_ratio,
-        main.tr('Poisson-Stirling'): nltk.collocations.TrigramAssocMeasures().poisson_stirling,
-        main.tr('Jaccard Index'): nltk.collocations.TrigramAssocMeasures().jaccard
-    }
-
-    main.assoc_measures_quadgram = {
-        main.tr('Frequency'): nltk.collocations.QuadgramAssocMeasures().raw_freq,
-        main.tr('Student\'s T-test'): nltk.collocations.QuadgramAssocMeasures().student_t,
-        main.tr('Pearson\'s Chi-squared Test'): nltk.collocations.QuadgramAssocMeasures().chi_sq,
-        main.tr('Pointwise Mutual Information'): nltk.collocations.QuadgramAssocMeasures().pmi,
-        main.tr('Likelihood Ratios'): nltk.collocations.QuadgramAssocMeasures().likelihood_ratio,
-        main.tr('Poisson-Stirling'): nltk.collocations.QuadgramAssocMeasures().poisson_stirling,
-        main.tr('Jaccard Index'): nltk.collocations.QuadgramAssocMeasures().jaccard
-    }
-
-    main.default_settings = {
-        'general': {
-            'encoding_input': ('utf_8', main.tr('All Languages')),
-            'encoding_output': ('utf_8', main.tr('All Languages')),
-
-            'font_monospaced': 'Consolas',
-
-            'precision': 2,
-            'style_highlight': 'border: 1px solid Red;'
-        },
-    
-        'file': {
-            'files_open': [],
-            'files_closed': []
-        },
-
-        'lemmatization': {
-            'English': 'NLTK (NLTK Project)',
-            'Austurian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Catalan': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Czech': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Estonian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'French': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Galician': 'Lemmatization List (Michal Boleslav Měchura)',
-            'German': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Hungarian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Irish': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Manx': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Italian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Persian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Polish': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Portuguese': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Romanian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Scottish Gaelic': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Slovak': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Slovene': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Spanish': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Swedish': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Ukrainian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Welsh': 'Lemmatization List (Michal Boleslav Měchura)'
-        },
-    
-        'overview': {
-    
-        },
-    
-        'concordancer': {
-            'search_term': '',
-            'search_terms': [],
-            'ignore_case': True,
-            'lemmatized_forms': True,
-            'whole_word': True,
-            'regex': False,
-            'multi_search': False,
-    
-            'line_width_char': 80,
-            'line_width_token': 20,
-            'line_width_mode': 'Tokens',
-    
-            'number_lines': 25,
-            'number_lines_no_limit': True,
-    
-            'punctuations': False,
-    
-            'sort_by': [main.tr('Offset'), main.tr('In Ascending Order')],
-            'multi_sort_by': [[main.tr('Offset'), main.tr('Ascending')]],
-            'multi_sort_colors': [
-                '#bb302d',
-                '#c2691d',
-                '#cbbe01',
-                '#569834',
-                '#428989',
-                '#172e7c',
-                '#811570'
-            ],
-            'multi_sort': False
-        },
-    
-        'wordlist': {
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_cased': True,
-            'numerals': True,
-            'punctuations': False,
-    
-            'ignore_case': True,
-            'lemmatization': True,
-
-            'show_pct': True,
-            'show_cumulative': True,
-            'show_breakdown': True,
-
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
-            'cumulative': False,
-    
-            'freq_no_limit': True,
-            'freq_min': 0,
-            'freq_max': 1000,
-            'freq_apply_to': 'Total',
-            'len_no_limit': True,
-            'len_min': 1,
-            'len_max': 20,
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
-        },
-    
-        'ngram': {
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_cased': True,
-            'numerals': True,
-            'punctuations': False,
-    
-            'search_terms': [],
-            'keyword_position_no_limit': True,
-            'keyword_position_min': 1,
-            'keyword_position_max': 2,
-            'ignore_case': True,
-            'lemmatization': True,
-            'whole_word': True,
-            'regex': False,
-            'multi_search': False,
-            'show_all': False,
-
-            'ngram_size_sync': False,
-            'ngram_size_min': 2,
-            'ngram_size_max': 2,
-            'allow_skipped_tokens': 0,
-
-            'show_pct': True,
-            'show_cumulative': True,
-            'show_breakdown': True,
-    
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
-            'cumulative': False,
-    
-            'freq_no_limit': True,
-            'freq_min': 0,
-            'freq_max': 1000,
-            'freq_apply_to': 'Total',
-            'len_no_limit': True,
-            'len_min': 1,
-            'len_max': 20,
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
-        },
-
-        'collocation': {
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_cased': True,
-            'numerals': True,
-            'punctuations': False,
-    
-            'search_terms': [],
-            'ignore_case': True,
-            'lemmatization': True,
-            'whole_word': True,
-            'regex': False,
-            'multi_search': False,
-            'show_all': False,
-
-            'window_sync': False,
-            'window_left': ['L', 1],
-            'window_right': ['R', 1],
-            'search_for': main.tr('Bigrams'),
-            'assoc_measure': main.tr('Pearson\'s Chi-squared Test'),
-
-            'show_pct': True,
-            'show_cumulative': True,
-            'show_breakdown': True,
-
-    
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
-            'cumulative': False,
-
-            'score_no_limit': True,
-            'score_min': 1,
-            'score_max': 1000,
-            'score_apply_to': 'Total',
-            'len_no_limit': True,
-            'len_min': 1,
-            'len_max': 20,
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
-        },
-    
-        'semantics': {
-            'search_term': '',
-            'search_mode': main.tr('Word'),
-            'search_for': main.tr('Synonyms'),
-    
-            'degree_max': 10,
-            'degree_no_limit': True,
-            'depth_max': 5,
-            'depth_no_limit': True,
-            'recursive': True,
-            'show_lemmas': True,
-    
-            'parts_of_speech': {
-                'n': main.tr('Noun'),
-                'v': main.tr('Verb'),
-                'a': main.tr('Adjective'),
-                's': main.tr('Adjective Satellite'),
-                'r': main.tr('Adverb')
-            }
-        }
-    }
-
-    if os.path.exists('wordless_settings.pkl'):
-        with open(r'wordless_settings.pkl', 'rb') as f:
-            main.settings = pickle.load(f)
-    else:
-        main.settings = copy.deepcopy(main.default_settings)
-
-    main.wordless_settings = Wordless_Settings(main)

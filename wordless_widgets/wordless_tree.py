@@ -1,5 +1,5 @@
 #
-# Wordless: Utility Functions for Trees
+# Wordless: Tree
 #
 # Copyright (C) 2018 Ye Lei
 #
