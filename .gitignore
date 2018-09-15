@@ -104,4 +104,6 @@ venv.bak/
 .mypy_cache/
 
 # Micellaneous
+Test/
 Misc/
+*.pkl

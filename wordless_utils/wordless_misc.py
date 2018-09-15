@@ -6,91 +6,70 @@
 # For license information, see LICENSE.txt.
 #
 
+import collections
+import copy
+import os
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-def convert_lang(main, lang):
-    # Text -> Code
-    if lang[0].isupper():
-        return main.file_langs[lang]
-    # Code -> Text
-    else:
-        for lang_text, lang_code in main.file_langs.items():
-            if lang_code == lang:
-                return lang_text
+from wordless_utils import wordless_message, wordless_text
 
-def convert_ext(main, ext):
-    # Text -> Code
-    return main.file_exts[ext].split(' (')[0]
-
-def convert_encoding(main, encoding, lang = None):
-    # Text -> Code
-    if encoding.find('(') > -1:
-        encoding_code = main.file_encodings[encoding]
-        encoding_lang = encoding.split('(')[0]
-
-        return (encoding_code, encoding_lang)
-
-    # Code -> Text
-    else:
-        for encoding_text, encoding_code in main.file_encodings.items():
-            if encoding == encoding_code:
-                # Distinguish between different languages
-                if lang:
-                    if encoding_text.find(lang) > -1:
-                        return encoding_text
-                else:
-                    return encoding_text
-
-def convert_word_delimiter(lang):
-    if lang in ['jpn', 'kor', 'zho-cn', 'zho-tw']:
-        word_delimiter = ''
-    else:
-        word_delimiter = ' '
-
-    return word_delimiter
-
-def multiple_sorting(item):
+def multi_sorting(item):
     keys = []
 
-    for freq in item[1]:
-        keys.append(-freq)
+    for value in item[1]:
+        if isinstance(value, collections.Iterable):
+            mid = len(value) // 2
+
+            keys.extend([-val for val in value[mid:]])
+            keys.extend([-val for val in value[:mid]])
+        else:
+            keys.append(-value)
+
     keys.append(item[0])
 
     return keys
 
-def check_search_term(function):
-    def wrapper(tab, *args, **kwargs):
-        main = tab.main
+def merge_dicts(dicts_to_be_merged):
+    dict_merged = {}
 
-        if tab.name == tab.tr('N-gram'):
-            settings = main.settings['ngram']
-        elif tab.name == tab.tr('Collocation'):
-            settings = main.settings['collocation']
+    values_2d = isinstance(list(dicts_to_be_merged[0].values())[0], collections.Iterable)
+    
+    if values_2d:
+        value_2d = [[0] * len(list(dicts_to_be_merged[0].values())[0]) for i in range(len(dicts_to_be_merged))]
+    else:
+        value_1d = [0] * len(dicts_to_be_merged)
 
-        if settings['show_all'] or (not settings['show_all'] and settings['search_terms']):
-            function(*args, **kwargs)
+    for i, dict_to_be_merged in enumerate(dicts_to_be_merged):
+        for key, values in dict_to_be_merged.items():
+            if key not in dict_merged:
+                if values_2d:
+                    dict_merged[key] = copy.deepcopy(value_2d)
+                else:
+                    dict_merged[key] = copy.copy(value_1d)
+
+            dict_merged[key][i] = values
+
+    return dict_merged
+
+def check_file_existence(main, files):
+    files_found = []
+    files_missing = []
+
+    if type(files) != list:
+        files = [files]
+
+    for file in files:
+        if os.path.exists(file['path']):
+            files_found.append(file)
         else:
-            QMessageBox.warning(main,
-                                main.tr('Empty Search Term'),
-                                main.tr('Please enter your search term(s) first!'),
-                                QMessageBox.Ok)
+            files_missing.append(file['path'])
 
-    return wrapper
+    if files_missing:
+        QMessageBox.warning(main,
+                            main.tr('Files Missing'),
+                            main.tr('The following files no longer exist:<br>{}<br>Please check and try again.'.format('<br>'.join(files_missing))))
 
-def check_results_table(function):
-    def wrapper(table, *args, **kwargs):
-        main = table.main
-
-        function(main, table, *args, **kwargs)
-
-        if table.rowCount() == 0:
-            table.clear_table()
-
-            QMessageBox.information(main,
-                                    main.tr('No Results'),
-                                    main.tr('There are no results to be shown in the table!<br>You might want to change your settings and try it again.'),
-                                    QMessageBox.Ok)
-
-    return wrapper
+    return files_found

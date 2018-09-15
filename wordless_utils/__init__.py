@@ -7,9 +7,10 @@
 #
 
 __all__ = [
+	'wordless_conversion',
+	'wordless_detection',
+	'wordless_distribution',
+	'wordless_message',
     'wordless_misc',
-    'wordless_detection',
-    'wordless_widgets',
-    'wordless_tree', 'wordless_tab', 'wordless_table', 'wordless_list',
-    'wordless_text', 'wordless_distribution'
+    'wordless_text'
 ]
