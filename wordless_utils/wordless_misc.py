@@ -6,6 +6,8 @@
 # For license information, see LICENSE.txt.
 #
 
+import os
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -59,6 +61,26 @@ def multiple_sorting(item):
     keys.append(item[0])
 
     return keys
+
+def check_file_existence(main, files):
+    files_found = []
+    files_missing = []
+
+    if type(files) != list:
+        files = [files]
+
+    for file in files:
+        if os.path.exists(file['path']):
+            files_found.append(file)
+        else:
+            files_missing.append(file['path'])
+
+    if files_missing:
+        QMessageBox.warning(main,
+                            main.tr('Files Missing'),
+                            main.tr('The following files no longer exist:<br>{}<br>Please check and try again.'.format('<br>'.join(files_missing))))
+
+    return files_found
 
 def check_search_term(function):
     def wrapper(tab, *args, **kwargs):

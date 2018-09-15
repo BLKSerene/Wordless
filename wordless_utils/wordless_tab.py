@@ -12,11 +12,12 @@ from PyQt5.QtWidgets import *
 
 # Scroll Area
 class Wordless_Scroll_Area(QScrollArea):
-    def __init__(self, parent):
+    def __init__(self, parent, wrapped_widget):
         super().__init__(parent)
 
-        self.setWidgetResizable(True)
+        self.setWidget(wrapped_widget)
 
+        self.setWidgetResizable(True)
         self.setBackgroundRole(QPalette.Light)
 
 # Tab
@@ -24,6 +25,7 @@ class Wordless_Tab(QWidget):
     def __init__(self, parent, name):
         super().__init__(parent)
 
+        self.main = parent
         self.name = name
 
         self.layout_table = QGridLayout()
@@ -31,10 +33,10 @@ class Wordless_Tab(QWidget):
         wrapper_settings = QWidget(parent)
 
         self.layout_settings = QGridLayout()
+
         wrapper_settings.setLayout(self.layout_settings)
 
-        scroll_area_settings = Wordless_Scroll_Area(parent)
-        scroll_area_settings.setWidget(wrapper_settings)
+        scroll_area_settings = Wordless_Scroll_Area(parent, wrapper_settings)
 
         self.button_restore_defaults = QPushButton(self.tr('Restore Defaults'), parent)
 

@@ -6,17 +6,20 @@
 # For license information, see LICENSE.txt.
 #
 
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 import chardet
 import langdetect
 
 from wordless_utils import wordless_misc
 
-def detect_encoding(main, file, auto_detect = True):
+def detect_encoding(main, file):
     # Defaults
     encoding_code = 'utf_8'
-    encoding_text = wordless_misc.convert_encoding(main, encoding_code)
+    encoding_lang = None
 
-    if auto_detect:
+    if main.settings['file']['auto_detect_encoding']:
         with open(file['path'], 'rb') as f:
             encoding_detected = chardet.detect(f.read())
 
@@ -32,8 +35,6 @@ def detect_encoding(main, file, auto_detect = True):
             else:
                 encoding_code = encoding_code.lower().replace('-', '_')
 
-            encoding_text = wordless_misc.convert_encoding(main, encoding_code, encoding_lang)
-
         try:
             open(file['path'], 'r', encoding = encoding_code)
         except UnicodeDecodeError:
@@ -41,12 +42,10 @@ def detect_encoding(main, file, auto_detect = True):
                                 'Auto-detection Failure',
                                 'Failed to auto-detect the encoding of file "{}", please select one manually!'.format(file.name),
                                 QMessageBox.Ok)
-        finally:
-            encoding_text = wordless_misc.convert_encoding(main, encoding_code, encoding_lang)
 
-    return encoding_code, encoding_text
+    return encoding_code, encoding_lang
 
-def detect_lang(main, file, auto_detect = True):
+def detect_lang(main, file):
     # Map ISO 639-2 codes to ISO 639-3 codes
     lang_mappings = {
         'af': 'afr',
@@ -108,20 +107,15 @@ def detect_lang(main, file, auto_detect = True):
 
     # Defaults
     lang_code = 'eng'
-    lang_text = wordless_misc.convert_lang(main, lang_code)
-    word_delimiter = ' '
 
-    if auto_detect:
+    if main.settings['file']['auto_detect_lang']:
         try:
             with open(file['path'], 'r', encoding = file['encoding_code']) as f:
                 lang_code = lang_mappings[langdetect.detect(f.read())]
         except langdetect.lang_detect_exception.LangDetectException:
             QMessageBox.warning(main,
                                 'Auto-detection Failure',
-                                'Failed to auto-detect the language of file "{}", please select one manually!'.format(file.name),
+                                'Failed to auto-detect the language of file "{}", please select one manually!'.format(file['name']),
                                 QMessageBox.Ok)
-        finally:
-            lang_text = wordless_misc.convert_lang(main, lang_code)
-            word_delimiter = wordless_misc.convert_word_delimiter(lang_code)
 
-    return lang_code, lang_text, word_delimiter
+    return lang_code

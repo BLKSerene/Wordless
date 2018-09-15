@@ -14,8 +14,10 @@ import nltk
 
 from wordless_utils import wordless_misc, wordless_distribution
 
-def wordless_lemmatize(tokens, lang = 'en'):
-    if lang == 'en':
+def wordless_lemmatize(main, tokens, lang):
+    lemmatizer_setting = main.settings['lemmatization'][main.convert_lang(main, lang)]
+
+    if lemmatizer_setting == main.tr('NLTK (NLTK Project)'):
         lemmatizer = nltk.WordNetLemmatizer()
 
         for i, (token, pos) in enumerate(nltk.pos_tag(tokens)):
@@ -29,8 +31,17 @@ def wordless_lemmatize(tokens, lang = 'en'):
                 tokens[i] = lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB)
             else:
                 tokens[i] = lemmatizer.lemmatize(token)
-    else:
-        pass
+    elif lemmatizer_setting == main.tr('Lemmatization List (Michal Boleslav Měchura)'):
+        lemmatizer = {}
+
+        with open('lemmatization/lemmatization-{}.txt'.format(lang), 'r', encoding = 'utf_8') as f:
+            for line in f:
+                lemma, token = line.rstrip().split()
+                lemmatizer[token] = lemma
+
+        for i, token in enumerate(tokens):
+            if token in lemmatizer:
+                tokens[i] = lemmatizer[token]
 
     return tokens
 
@@ -95,7 +106,7 @@ class Wordless_Text(nltk.Text):
 
         super().__init__(tokens)
 
-        self.parent = file.parent
+        self.main = file.main
         self.lang = file.lang_code
         self.delimiter = file.delimiter
 
@@ -130,10 +141,10 @@ class Wordless_Text(nltk.Text):
 
             # Lemmatization
             if lemmatized_forms:
-                for token_lemmatized in wordless_lemmatize(list(tokens_matched)):
+                for token_lemmatized in wordless_lemmatize(self.main, list(tokens_matched)):
                     tokens_matched.add(token_lemmatized)
 
-                for token, token_lemmatized in zip(self._concordance_index._offsets, wordless_lemmatize(list(self._concordance_index._offsets))):
+                for token, token_lemmatized in zip(self._concordance_index._offsets, wordless_lemmatize(self.main, list(self._concordance_index._offsets))):
                     if token_lemmatized in tokens_matched:
                         tokens_matched.add(token)
 
@@ -192,7 +203,7 @@ class Wordless_Text(nltk.Text):
             self.tokens = [token.lower() for token in self.tokens]
         
         if settings['lemmatization']:
-            self.tokens = wordless_lemmatize(self.tokens)
+            self.tokens = wordless_lemmatize(self.main, self.tokens)
         
         if settings['words']:
             if not settings['ignore_case']:
@@ -223,7 +234,7 @@ class Wordless_Text(nltk.Text):
             self.tokens = [token.lower() for token in self.tokens]
 
         if settings['lemmatization']:
-            self.tokens = wordless_lemmatize(self.tokens)
+            self.tokens = wordless_lemmatize(self.main, self.tokens)
 
         if settings['punctuations'] == False:
             self.tokens = [token for token in self.tokens if token.isalnum()]
@@ -274,7 +285,7 @@ class Wordless_Text(nltk.Text):
             self.tokens = [token.lower() for token in self.tokens]
 
         if settings['lemmatization']:
-            self.tokens = wordless_lemmatize(self.tokens)
+            self.tokens = wordless_lemmatize(self.main, self.tokens)
 
         if settings['punctuations'] == False:
             self.tokens = [token for token in self.tokens if token.isalnum()]

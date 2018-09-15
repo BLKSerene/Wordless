@@ -19,29 +19,44 @@ from wordless_utils import *
 
 class Wordless_Settings(QDialog):
     def __init__(self, parent):
-        def item_clicked(item):
+        def selection_changed():
             self.settings_general.hide()
             self.settings_lemmatization.hide()
 
-            if item.text(0) == 'General':
-                self.settings_general.show()
-            elif item.text(0) == 'Lemmatization':
-                self.settings_lemmatization.show()
+            selected_items = self.tree_settings.selectedItems()
+            if not selected_items:
+                self.tree_settings.findItems(self.tr('General'), Qt.MatchExactly)[0].setSelected(True)
+            else:
+                if selected_items[0].text(0) == 'General':
+                    self.settings_general.show()
+                elif selected_items[0].text(0) == 'Lemmatization':
+                    self.settings_lemmatization.show()
 
         super().__init__(parent)
 
         self.main = parent
 
         self.setWindowTitle(self.tr('Settings'))
+        self.setFixedHeight(600)
 
-        self.accepted.connect(self.settings_apply)
+        self.accepted.connect(self.apply)
 
         self.tree_settings = wordless_tree.Wordless_Tree(self)
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('General')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Lemmatization')]))
 
-        self.tree_settings.itemClicked.connect(item_clicked)
+        self.tree_settings.itemSelectionChanged.connect(selection_changed)
+
+        wrapper_settings = QWidget()
+
+        layout_wrapper_settings = QGridLayout()
+        layout_wrapper_settings.addWidget(self.init_settings_general(), 0, 0)
+        layout_wrapper_settings.addWidget(self.init_settings_lemmatization(), 0, 0)
+
+        wrapper_settings.setLayout(layout_wrapper_settings)
+
+        scroll_area_settings = wordless_tab.Wordless_Scroll_Area(self.main, wrapper_settings)
 
         button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
         button_save = QPushButton(self.tr('Save'), self)
@@ -53,9 +68,9 @@ class Wordless_Settings(QDialog):
         button_cancel.setFixedWidth(100)
         button_apply.setFixedWidth(100)
 
-        button_restore_defaults.clicked.connect(self.restore_defaults)
+        button_restore_defaults.clicked.connect(lambda: self.load_settings(defaults = True))
         button_save.clicked.connect(self.accept)
-        button_apply.clicked.connect(self.settings_apply)
+        button_apply.clicked.connect(self.apply)
         button_cancel.clicked.connect(self.reject)
 
         layout_settings_buttons = QGridLayout()
@@ -66,14 +81,15 @@ class Wordless_Settings(QDialog):
 
         layout_settings = QGridLayout()
         layout_settings.addWidget(self.tree_settings, 0, 0)
-        layout_settings.addWidget(self.init_settings_general(), 0, 1)
-        layout_settings.addWidget(self.init_settings_lemmatization(), 0, 1)
+        layout_settings.addWidget(scroll_area_settings, 0, 1)
         layout_settings.addLayout(layout_settings_buttons, 1, 0, 1, 2, Qt.AlignRight)
 
         layout_settings.setColumnStretch(0, 1)
         layout_settings.setColumnStretch(1, 4)
 
         self.setLayout(layout_settings)
+
+        selection_changed()
 
     def init_settings_general(self):
         self.settings_general = QWidget(self)
@@ -110,39 +126,205 @@ class Wordless_Settings(QDialog):
     def init_settings_lemmatization(self):
         self.settings_lemmatization = QWidget(self)
 
-        self.layout_settings_lemmatization = QGridLayout()
+        self.label_lemmatization_eng = QLabel(self.tr('English:'), self.main)
+        self.combo_box_lemmatization_eng = QComboBox(self.main)
+        self.label_lemmatization_ast = QLabel(self.tr('Asturian:'), self.main)
+        self.combo_box_lemmatization_ast = QComboBox(self.main)
+        self.label_lemmatization_bul = QLabel(self.tr('Bulgarian:'), self.main)
+        self.combo_box_lemmatization_bul = QComboBox(self.main)
+        self.label_lemmatization_cat = QLabel(self.tr('Catalan:'), self.main)
+        self.combo_box_lemmatization_cat = QComboBox(self.main)
+        self.label_lemmatization_ces = QLabel(self.tr('Czech:'), self.main)
+        self.combo_box_lemmatization_ces = QComboBox(self.main)
+        self.label_lemmatization_est = QLabel(self.tr('Estonian:'), self.main)
+        self.combo_box_lemmatization_est = QComboBox(self.main)
+        self.label_lemmatization_fra = QLabel(self.tr('French:'), self.main)
+        self.combo_box_lemmatization_fra = QComboBox(self.main)
+        self.label_lemmatization_gla = QLabel(self.tr('Gaelic (Scots):'), self.main)
+        self.combo_box_lemmatization_gla = QComboBox(self.main)
+        self.label_lemmatization_glg = QLabel(self.tr('Galician:'), self.main)
+        self.combo_box_lemmatization_glg = QComboBox(self.main)
+        self.label_lemmatization_deu = QLabel(self.tr('German:'), self.main)
+        self.combo_box_lemmatization_deu = QComboBox(self.main)
+        self.label_lemmatization_hun = QLabel(self.tr('Hungarian:'), self.main)
+        self.combo_box_lemmatization_hun = QComboBox(self.main)
+        self.label_lemmatization_gle = QLabel(self.tr('Irish:'), self.main)
+        self.combo_box_lemmatization_gle = QComboBox(self.main)
+        self.label_lemmatization_ita = QLabel(self.tr('Italian:'), self.main)
+        self.combo_box_lemmatization_ita = QComboBox(self.main)
+        self.label_lemmatization_glv = QLabel(self.tr('Manx:'), self.main)
+        self.combo_box_lemmatization_glv = QComboBox(self.main)
+        self.label_lemmatization_fas = QLabel(self.tr('Persian:'), self.main)
+        self.combo_box_lemmatization_fas = QComboBox(self.main)
+        self.label_lemmatization_por = QLabel(self.tr('Portuguese:'), self.main)
+        self.combo_box_lemmatization_por = QComboBox(self.main)
+        self.label_lemmatization_ron = QLabel(self.tr('Romanian:'), self.main)
+        self.combo_box_lemmatization_ron = QComboBox(self.main)
+        self.label_lemmatization_slk = QLabel(self.tr('Slovak:'), self.main)
+        self.combo_box_lemmatization_slk = QComboBox(self.main)
+        self.label_lemmatization_slv = QLabel(self.tr('Slovenian:'), self.main)
+        self.combo_box_lemmatization_slv = QComboBox(self.main)
+        self.label_lemmatization_spa = QLabel(self.tr('Spanish:'), self.main)
+        self.combo_box_lemmatization_spa = QComboBox(self.main)
+        self.label_lemmatization_swe = QLabel(self.tr('Swedish:'), self.main)
+        self.combo_box_lemmatization_swe = QComboBox(self.main)
+        self.label_lemmatization_ukr = QLabel(self.tr('Ukrainian:'), self.main)
+        self.combo_box_lemmatization_ukr = QComboBox(self.main)
+        self.label_lemmatization_cym = QLabel(self.tr('Welsh:'), self.main)
+        self.combo_box_lemmatization_cym = QComboBox(self.main)
 
-        self.settings_lemmatization.setLayout(self.layout_settings_lemmatization)
+        self.combo_box_lemmatization_eng.addItems(self.main.lemmatizers[self.tr('English')])
+        self.combo_box_lemmatization_ast.addItems(self.main.lemmatizers[self.tr('Asturian')])
+        self.combo_box_lemmatization_bul.addItems(self.main.lemmatizers[self.tr('Bulgarian')])
+        self.combo_box_lemmatization_cat.addItems(self.main.lemmatizers[self.tr('Catalan')])
+        self.combo_box_lemmatization_ces.addItems(self.main.lemmatizers[self.tr('Czech')])
+        self.combo_box_lemmatization_est.addItems(self.main.lemmatizers[self.tr('Estonian')])
+        self.combo_box_lemmatization_fra.addItems(self.main.lemmatizers[self.tr('French')])
+        self.combo_box_lemmatization_gla.addItems(self.main.lemmatizers[self.tr('Gaelic (Scots)')])
+        self.combo_box_lemmatization_glg.addItems(self.main.lemmatizers[self.tr('Galician')])
+        self.combo_box_lemmatization_deu.addItems(self.main.lemmatizers[self.tr('German')])
+        self.combo_box_lemmatization_hun.addItems(self.main.lemmatizers[self.tr('Hungarian')])
+        self.combo_box_lemmatization_gle.addItems(self.main.lemmatizers[self.tr('Irish')])
+        self.combo_box_lemmatization_ita.addItems(self.main.lemmatizers[self.tr('Italian')])
+        self.combo_box_lemmatization_glv.addItems(self.main.lemmatizers[self.tr('Manx')])
+        self.combo_box_lemmatization_fas.addItems(self.main.lemmatizers[self.tr('Persian')])
+        self.combo_box_lemmatization_por.addItems(self.main.lemmatizers[self.tr('Portuguese')])
+        self.combo_box_lemmatization_ron.addItems(self.main.lemmatizers[self.tr('Romanian')])
+        self.combo_box_lemmatization_slk.addItems(self.main.lemmatizers[self.tr('Slovak')])
+        self.combo_box_lemmatization_slv.addItems(self.main.lemmatizers[self.tr('Slovenian')])
+        self.combo_box_lemmatization_spa.addItems(self.main.lemmatizers[self.tr('Spanish')])
+        self.combo_box_lemmatization_swe.addItems(self.main.lemmatizers[self.tr('Swedish')])
+        self.combo_box_lemmatization_ukr.addItems(self.main.lemmatizers[self.tr('Ukrainian')])
+        self.combo_box_lemmatization_cym.addItems(self.main.lemmatizers[self.tr('Welsh')])
+
+        layout_settings_lemmatization = QGridLayout()
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_eng, 0, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_eng, 0, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_ast, 1, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_ast, 1, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_bul, 2, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_bul, 2, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_cat, 3, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_cat, 3, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_ces, 4, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_ces, 4, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_est, 5, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_est, 5, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_fra, 6, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_fra, 6, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_gla, 7, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_gla, 7, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_glg, 8, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_glg, 8, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_deu, 9, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_deu, 9, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_hun, 10, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_hun, 10, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_gle, 11, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_gle, 11, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_ita, 12, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_ita, 12, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_glv, 13, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_glv, 13, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_fas, 14, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_fas, 14, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_por, 15, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_por, 15, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_ron, 16, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_ron, 16, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_slk, 17, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_slk, 17, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_slv, 18, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_slv, 18, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_spa, 19, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_spa, 19, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_swe, 20, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_swe, 20, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_ukr, 21, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_ukr, 21, 1)
+        layout_settings_lemmatization.addWidget(self.label_lemmatization_cym, 22, 0)
+        layout_settings_lemmatization.addWidget(self.combo_box_lemmatization_cym, 22, 1)
+
+        self.settings_lemmatization.setLayout(layout_settings_lemmatization)
 
         return self.settings_lemmatization
 
-    def settings_load(self, tab = 'General'):
-        self.combo_box_encoding_input.setCurrentText(wordless_misc.convert_encoding(self.main, *self.main.settings['general']['encoding_input']))
-        self.combo_box_encoding_output.setCurrentText(wordless_misc.convert_encoding(self.main, *self.main.settings['general']['encoding_output']))
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = self.main.default_settings
+        else:
+            settings = self.main.settings
 
-        self.spin_box_precision.setValue(self.main.settings['general']['precision'])
+        self.combo_box_encoding_input.setCurrentText(wordless_misc.convert_encoding(self.main, *settings['general']['encoding_input']))
+        self.combo_box_encoding_output.setCurrentText(wordless_misc.convert_encoding(self.main, *settings['general']['encoding_output']))
 
-        self.settings_general.hide()
-        self.settings_lemmatization.hide()
+        self.spin_box_precision.setValue(settings['general']['precision'])
 
-        self.settings_general.show()
+        self.combo_box_lemmatization_eng.setCurrentText(settings['lemmatization'][self.tr('English')])
+        self.combo_box_lemmatization_ast.setCurrentText(settings['lemmatization'][self.tr('Austurian')])
+        self.combo_box_lemmatization_bul.setCurrentText(settings['lemmatization'][self.tr('Bulgarian')])
+        self.combo_box_lemmatization_cat.setCurrentText(settings['lemmatization'][self.tr('Catalan')])
+        self.combo_box_lemmatization_ces.setCurrentText(settings['lemmatization'][self.tr('Czech')])
+        self.combo_box_lemmatization_est.setCurrentText(settings['lemmatization'][self.tr('Estonian')])
+        self.combo_box_lemmatization_fra.setCurrentText(settings['lemmatization'][self.tr('French')])
+        self.combo_box_lemmatization_gla.setCurrentText(settings['lemmatization'][self.tr('Gaelic (Scots)')])
+        self.combo_box_lemmatization_glg.setCurrentText(settings['lemmatization'][self.tr('Galician')])
+        self.combo_box_lemmatization_deu.setCurrentText(settings['lemmatization'][self.tr('German')])
+        self.combo_box_lemmatization_hun.setCurrentText(settings['lemmatization'][self.tr('Hungarian')])
+        self.combo_box_lemmatization_gle.setCurrentText(settings['lemmatization'][self.tr('Irish')])
+        self.combo_box_lemmatization_ita.setCurrentText(settings['lemmatization'][self.tr('Italian')])
+        self.combo_box_lemmatization_glv.setCurrentText(settings['lemmatization'][self.tr('Manx')])
+        self.combo_box_lemmatization_fas.setCurrentText(settings['lemmatization'][self.tr('Persian')])
+        self.combo_box_lemmatization_por.setCurrentText(settings['lemmatization'][self.tr('Portuguese')])
+        self.combo_box_lemmatization_ron.setCurrentText(settings['lemmatization'][self.tr('Romanian')])
+        self.combo_box_lemmatization_slk.setCurrentText(settings['lemmatization'][self.tr('Slovak')])
+        self.combo_box_lemmatization_slv.setCurrentText(settings['lemmatization'][self.tr('Slovenian')])
+        self.combo_box_lemmatization_spa.setCurrentText(settings['lemmatization'][self.tr('Spanish')])
+        self.combo_box_lemmatization_swe.setCurrentText(settings['lemmatization'][self.tr('Swedish')])
+        self.combo_box_lemmatization_ukr.setCurrentText(settings['lemmatization'][self.tr('Ukrainian')])
+        self.combo_box_lemmatization_cym.setCurrentText(settings['lemmatization'][self.tr('Welsh')])
+
+    def apply(self):
+        self.main.settings['general']['encoding_input'] = wordless_misc.convert_encoding(self.main, self.combo_box_encoding_input.currentText())
+        self.main.settings['general']['encoding_output'] = wordless_misc.convert_encoding(self.main, self.combo_box_encoding_output.currentText())
+
+        self.main.settings['general']['precision'] = self.spin_box_precision.value()
+
+        self.main.settings['lemmatization'][self.tr('English')] = self.combo_box_lemmatization_eng.currentText()
+        self.main.settings['lemmatization'][self.tr('Austurian')] = self.combo_box_lemmatization_ast.currentText()
+        self.main.settings['lemmatization'][self.tr('Bulgarian')] = self.combo_box_lemmatization_bul.currentText()
+        self.main.settings['lemmatization'][self.tr('Catalan')] = self.combo_box_lemmatization_cat.currentText()
+        self.main.settings['lemmatization'][self.tr('Czech')] = self.combo_box_lemmatization_ces.currentText()
+        self.main.settings['lemmatization'][self.tr('Estonian')] = self.combo_box_lemmatization_est.currentText()
+        self.main.settings['lemmatization'][self.tr('French')] = self.combo_box_lemmatization_fra.currentText()
+        self.main.settings['lemmatization'][self.tr('Gaelic (Scots)')] = self.combo_box_lemmatization_gla.currentText()
+        self.main.settings['lemmatization'][self.tr('Galician')] = self.combo_box_lemmatization_glg.currentText()
+        self.main.settings['lemmatization'][self.tr('German')] = self.combo_box_lemmatization_deu.currentText()
+        self.main.settings['lemmatization'][self.tr('Hungarian')] = self.combo_box_lemmatization_hun.currentText()
+        self.main.settings['lemmatization'][self.tr('Irish')] = self.combo_box_lemmatization_gle.currentText()
+        self.main.settings['lemmatization'][self.tr('Italian')] = self.combo_box_lemmatization_ita.currentText()
+        self.main.settings['lemmatization'][self.tr('Manx')] = self.combo_box_lemmatization_glv.currentText()
+        self.main.settings['lemmatization'][self.tr('Persian')] = self.combo_box_lemmatization_fas.currentText()
+        self.main.settings['lemmatization'][self.tr('Portuguese')] = self.combo_box_lemmatization_por.currentText()
+        self.main.settings['lemmatization'][self.tr('Romanian')] = self.combo_box_lemmatization_ron.currentText()
+        self.main.settings['lemmatization'][self.tr('Slovak')] = self.combo_box_lemmatization_slk.currentText()
+        self.main.settings['lemmatization'][self.tr('Slovenian')] = self.combo_box_lemmatization_slv.currentText()
+        self.main.settings['lemmatization'][self.tr('Spanish')] = self.combo_box_lemmatization_spa.currentText()
+        self.main.settings['lemmatization'][self.tr('Swedish')] = self.combo_box_lemmatization_swe.currentText()
+        self.main.settings['lemmatization'][self.tr('Ukrainian')] = self.combo_box_lemmatization_ukr.currentText()
+        self.main.settings['lemmatization'][self.tr('Welsh')] = self.combo_box_lemmatization_cym.currentText()
+
+    def load(self):
+        self.load_settings()
+
+        self.tree_settings.clearSelection()
 
         self.exec()
 
-    def restore_defaults(self):
-        self.combo_box_encoding_input.setCurrentText(wordless_misc.convert_encoding(self.main, *self.main.default_settings['general']['encoding_input']))
-        self.combo_box_encoding_output.setCurrentText(wordless_misc.convert_encoding(self.main, *self.main.default_settings['general']['encoding_output']))
-
-        self.spin_box_precision.setValue(self.main.default_settings['general']['precision'])
-
-    def settings_apply(self):
-        self.main.settings['general']['encoding_input'] = wordless_misc.convert_encoding(self.main, self.combo_box_encoding_input.currentText())
-        self.main.settings['general']['encoding_output'] = wordless_misc.convert_encoding(self.main, self.combo_box_encoding_output.currentText())
-        self.main.settings['general']['precision'] = self.spin_box_precision.value()
-
-def load_settings(main):
+def init_settings(main):
     main.file_langs = {
         main.tr('Afrikaans'): 'afr',
+        main.tr('Asturian'): 'ast',
         main.tr('Albanian'): 'sqi',
         main.tr('Arabic'): 'ara',
         main.tr('Bengali'): 'ben',
@@ -159,6 +341,7 @@ def load_settings(main):
         main.tr('Finnish'): 'fin',
         main.tr('French'): 'fra',
         main.tr('Gaelic (Scots)'): 'gla',
+        main.tr('Galician'): 'glg',
         main.tr('German'): 'deu',
         main.tr('Greek'): 'ell',
         main.tr('Gujarati'): 'guj',
@@ -166,6 +349,7 @@ def load_settings(main):
         main.tr('Hindi'): 'hin',
         main.tr('Hungarian'): 'hun',
         main.tr('Indonesian'): 'ind',
+        main.tr('Irish'): 'gle',
         main.tr('Italian'): 'ita',
         main.tr('Japanese'): 'jpn',
         main.tr('Kannada'): 'kan',
@@ -370,8 +554,8 @@ def load_settings(main):
         main.tr('Turkish(ISO-8859-9)'): 'iso_8859_9',
         main.tr('Turkish(Mac OS Turkish)'): 'mac_turkish',
 
-        main.tr('Ukranian(CP1125)'): 'cp1125',
-        main.tr('Ukranian(KOI8-U)'): 'koi8_u',
+        main.tr('Ukrainian(CP1125)'): 'cp1125',
+        main.tr('Ukrainian(KOI8-U)'): 'koi8_u',
 
         main.tr('Urdu(CP1006)'): 'cp1006',
         main.tr('Urdu(Mac OS Farsi)'): 'mac_farsi',
@@ -379,30 +563,34 @@ def load_settings(main):
         main.tr('Vietnamese(CP1258)'): 'cp1258'
     }
 
-    main.lemmatization = {
-        'English': ['NLTK (NLTK Project)', 'Lemmatization List (Michal Boleslav Měchura)'],
-        'Austurian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Catalan': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Czech': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Estonian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'French': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Galician': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'German': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Hungarian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Irish': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Manx': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Italian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Persian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Polish': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Portuguese': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Romanian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Scottish Gaelic': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Slovak': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Slovene': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Spanish': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Swedish': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Ukrainian': ['Lemmatization List (Michal Boleslav Měchura)'],
-        'Welsh': ['Lemmatization List (Michal Boleslav Měchura)']
+    main.lemmatizers = {
+        main.tr('English'): [
+            main.tr('NLTK (NLTK Project)'),
+            main.tr('Lemmatization List (Michal Boleslav Měchura)')
+        ],
+
+        main.tr('Asturian'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Bulgarian'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Catalan'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Czech'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Estonian'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('French'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Gaelic (Scots)'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Galician'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('German'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Hungarian'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Irish'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Italian'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Manx'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Persian'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Portuguese'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Romanian'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Slovak'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Slovenian'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Spanish'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Swedish'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Ukrainian'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')],
+        main.tr('Welsh'): [main.tr('Lemmatization List (Michal Boleslav Měchura)')]
     }
 
     main.style_dialog = '''
@@ -480,29 +668,35 @@ def load_settings(main):
     
         'file': {
             'files_open': [],
-            'files_closed': []
+            'files_closed': [],
+            'root_path': '.',
+
+            'subfolders': True,
+
+            'auto_detect_encoding': True,
+            'auto_detect_lang': True
         },
 
         'lemmatization': {
             'English': 'NLTK (NLTK Project)',
             'Austurian': 'Lemmatization List (Michal Boleslav Měchura)',
+            'Bulgarian': 'Lemmatization List (Michal Boleslav Měchura)',
             'Catalan': 'Lemmatization List (Michal Boleslav Měchura)',
             'Czech': 'Lemmatization List (Michal Boleslav Měchura)',
             'Estonian': 'Lemmatization List (Michal Boleslav Měchura)',
             'French': 'Lemmatization List (Michal Boleslav Měchura)',
+            'Gaelic (Scots)': 'Lemmatization List (Michal Boleslav Měchura)',
             'Galician': 'Lemmatization List (Michal Boleslav Měchura)',
             'German': 'Lemmatization List (Michal Boleslav Měchura)',
             'Hungarian': 'Lemmatization List (Michal Boleslav Měchura)',
             'Irish': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Manx': 'Lemmatization List (Michal Boleslav Měchura)',
             'Italian': 'Lemmatization List (Michal Boleslav Měchura)',
+            'Manx': 'Lemmatization List (Michal Boleslav Měchura)',
             'Persian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Polish': 'Lemmatization List (Michal Boleslav Měchura)',
             'Portuguese': 'Lemmatization List (Michal Boleslav Měchura)',
             'Romanian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Scottish Gaelic': 'Lemmatization List (Michal Boleslav Měchura)',
             'Slovak': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Slovene': 'Lemmatization List (Michal Boleslav Měchura)',
+            'Slovenian': 'Lemmatization List (Michal Boleslav Měchura)',
             'Spanish': 'Lemmatization List (Michal Boleslav Měchura)',
             'Swedish': 'Lemmatization List (Michal Boleslav Měchura)',
             'Ukrainian': 'Lemmatization List (Michal Boleslav Měchura)',

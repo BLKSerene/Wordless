@@ -138,7 +138,7 @@ class Wordless_Table(QTableWidget):
         super().setItem(row, column, item)
 
     def item_changed(self):
-        if self.item(0, 0) or self.cellWidget(0, 0):
+        if self.item(0, 0):
             self.button_export_all.setEnabled(True)
         else:
             self.button_export_all.setEnabled(False)
@@ -146,7 +146,7 @@ class Wordless_Table(QTableWidget):
         self.selection_changed()
 
     def selection_changed(self):
-        if self.selectedIndexes() and (self.item(0, 0) or self.cellWidget(0, 0)):
+        if self.selectedIndexes() and self.item(0, 0):
             self.button_export_selected.setEnabled(True)
         else:
             self.button_export_selected.setEnabled(False)
@@ -244,9 +244,6 @@ class Wordless_Table(QTableWidget):
 
     def selected_rows(self):
         return sorted(set([index.row() for index in self.selectedIndexes()]))
-
-    def import_table(self):
-        pass
 
     def export_selected(self):
         pass
