@@ -12,6 +12,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_widgets import *
 from wordless_utils import *
 
 def init(self):
@@ -107,11 +108,11 @@ def generate_stats(self, table):
         table.setItem(4, i, QTableWidgetItem(str(count_words)))
         table.setItem(5, i, QTableWidgetItem(str(count_word_types)))
         if count_word_types:
-            table.setItem(6, i, QTableWidgetItem(str(round(count_words / count_word_types, self.settings['general']['precision']))))
+            table.setItem(6, i, QTableWidgetItem(str(round(count_words / count_word_types, self.settings_custom['general']['precision']))))
         else:
             table.setItem(6, i, QTableWidgetItem(str(0)))
         if count_words:
-            table.setItem(7, i, QTableWidgetItem(str(round(len_words / count_words, self.settings['general']['precision']))))
+            table.setItem(7, i, QTableWidgetItem(str(round(len_words / count_words, self.settings_custom['general']['precision']))))
         else:
             table.setItem(7, i, QTableWidgetItem(str(0)))
         table.setItem(8, i, QTableWidgetItem(str(count_words_lowercase)))
