@@ -67,6 +67,7 @@ class Wordless_List(QListWidget):
                         if item.text() == self.item(i).text():
                             item.setForeground(QColor('#F00'))
                             self.item(i).setForeground(QColor('#F00'))
+                            
                             QMessageBox.warning(self.parent,
                                                 self.tr('Duplicate Search Terms'),
                                                 self.tr('Please refrain from searching the same item more than once!'),

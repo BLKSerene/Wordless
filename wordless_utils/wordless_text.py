@@ -15,43 +15,52 @@ import nltk
 from wordless_utils import wordless_misc, wordless_distribution
 
 def wordless_lemmatize(main, tokens, lang):
-    lemmatizer_setting = main.settings['lemmatization'][main.convert_lang(main, lang)]
+    if lang in main.settings['lemmatization']:
+        lemmas = []
 
-    if lemmatizer_setting == main.tr('NLTK (NLTK Project)'):
-        lemmatizer = nltk.WordNetLemmatizer()
+        lemmatizer_setting = main.settings['lemmatization'][lang]
 
-        for i, (token, pos) in enumerate(nltk.pos_tag(tokens)):
-            if pos in ['JJ', 'JJR', 'JJS']:
-                tokens[i] = lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADJ)
-            elif pos in ['NN', 'NNS', 'NNP', 'NNPS']:
-                tokens[i] = lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.NOUN)
-            elif pos in ['RB', 'RBR', 'RBS']:
-                tokens[i] = lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADV)
-            elif pos in ['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ']:
-                tokens[i] = lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB)
-            else:
-                tokens[i] = lemmatizer.lemmatize(token)
-    elif lemmatizer_setting == main.tr('Lemmatization List (Michal Boleslav Měchura)'):
-        lemmatizer = {}
+        if lemmatizer_setting == main.tr('NLTK (NLTK Project)'):
+            lemmatizer = nltk.WordNetLemmatizer()
 
-        with open('lemmatization/lemmatization-{}.txt'.format(lang), 'r', encoding = 'utf_8') as f:
-            for line in f:
-                lemma, token = line.rstrip().split()
-                lemmatizer[token] = lemma
+            for i, (token, pos) in enumerate(nltk.pos_tag(tokens)):
+                if pos in ['JJ', 'JJR', 'JJS']:
+                    lemmas.append(lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADJ))
+                elif pos in ['NN', 'NNS', 'NNP', 'NNPS']:
+                    lemmas.append(lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.NOUN))
+                elif pos in ['RB', 'RBR', 'RBS']:
+                    lemmas.append(lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADV))
+                elif pos in ['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ']:
+                    lemmas.append(lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
+                else:
+                    lemmas.append(lemmatizer.lemmatize(token))
+        elif lemmatizer_setting == main.tr('Lemmatization List (Michal Boleslav Měchura)'):
+            lemmatizer = {}
 
-        for i, token in enumerate(tokens):
-            if token in lemmatizer:
-                tokens[i] = lemmatizer[token]
+            with open('lemmatization/lemmatization-{}.txt'.format(lang), 'r', encoding = 'utf_8') as f:
+                for line in f:
+                    lemma, token = line.rstrip().split()
+                    lemmatizer[token] = lemma
 
-    return tokens
+            for i, token in enumerate(tokens):
+                if token in lemmatizer:
+                    lemmas.append(lemmatizer[token])
+                else:
+                    lemmas.append(token)
+
+        return lemmas
+    else:
+        return tokens
 
 def wordless_word_tokenize(text, lang):
     tokens = []
 
-    if lang == 'en':
+    if lang == 'eng':
         tokens.extend(nltk.word_tokenize(text))
-    elif lang in ['zh-cn', 'zh-tw']:
+    elif lang in ['zho-cn', 'zho-tw']:
         tokens.extend(jieba.lcut(text))
+    else:
+        tokens.extend(nltk.word_tokenize(text))
 
     return tokens
 
@@ -87,71 +96,69 @@ def find_concordance(self, word, width=80, lines=25):
 nltk.ConcordanceIndex.find_concordance = find_concordance
 
 class Wordless_Text(nltk.Text):
-    def __init__(self, files):
+    def __init__(self, main, files):
         if type(files) != list:
             files = [files]
 
         tokens = []
 
         for file in files:
-            with open(file.path, 'r', encoding = file.encoding_code) as f:
+            with open(file['path'], 'r', encoding = file['encoding_code']) as f:
                 for line in f:
-                    if file.ext in ['.txt']:
+                    if file['ext'] in ['.txt']:
                         text = line.rstrip()
-                    elif file.ext in ['.htm', '.html']:
+                    elif file['ext'] in ['.htm', '.html']:
                         soup = BeautifulSoup(line.rstrip(), 'lxml')
                         text = soup.get_text()
-                    
-                    tokens.extend(wordless_word_tokenize(text, file.lang_code))
+
+                    tokens.extend(wordless_word_tokenize(text, file['lang_code']))
 
         super().__init__(tokens)
 
-        self.main = file.main
-        self.lang = file.lang_code
-        self.delimiter = file.delimiter
+        self.main = main
+        self.lang = file['lang_code']
+        self.word_delimiter = file['word_delimiter']
 
-    def match_tokens(self, tokens_searched,
-                     ignore_case, lemmatized_forms, whole_word, regex):
+    def match_tokens(self, search_terms,
+                     ignore_case, lemmatization, whole_word, regex):
         tokens_matched = set()
 
-        # Construct a new concordance index
-        self._concordance_index = nltk.ConcordanceIndex(self.tokens)
+        tokens = set(self.tokens)
 
         # Ignore case
         if ignore_case:
-            tokens_matched = set([token for token in list(self._concordance_index._offsets) if token.lower() in tokens_searched])
+            tokens_matched = set([token for token in tokens if token.lower() in search_terms])
 
-        for token_searched in tokens_searched:
+        for search_term in search_terms:
             # Use regular expression & match whole word only
             if regex:
                 if whole_word:
-                    if token_searched[:2] != r'\b':
-                        token_searched = r'\b' + token_searched
-                    if token_searched[-2:] != r'\b':
-                        token_searched += r'\b'
+                    if search_term[:2] != r'\b':
+                        search_term = r'\b' + search_term
+                    if search_term[-2:] != r'\b':
+                        search_term += r'\b'
 
-                tokens_matched = set([token for token in self._concordance_index._offsets if re.search(token_searched, token)])
+                tokens_matched = set([token for token in tokens if re.search(search_term, token)])
             else:
                 if whole_word:
-                    tokens_matched.add(token_searched)
+                    tokens_matched.add(search_term)
                 else:
-                    for token in self._concordance_index._offsets:
-                        if token.find(token_searched) > -1:
+                    for token in tokens:
+                        if token.find(search_term) > -1:
                             tokens_matched.add(token)
 
             # Lemmatization
-            if lemmatized_forms:
-                for token_lemmatized in wordless_lemmatize(self.main, list(tokens_matched)):
+            if lemmatization:
+                for token_lemmatized in wordless_lemmatize(self.main, list(tokens_matched), self.lang):
                     tokens_matched.add(token_lemmatized)
 
-                for token, token_lemmatized in zip(self._concordance_index._offsets, wordless_lemmatize(self.main, list(self._concordance_index._offsets))):
+                for token, token_lemmatized in zip(tokens, wordless_lemmatize(self.main, tokens, self.lang)):
                     if token_lemmatized in tokens_matched:
                         tokens_matched.add(token)
 
         return tokens_matched
 
-    def concordance_list(self, search_term, width, lines,
-                         punctuations):
+    def concordance_list(self, search_term, width, lines, punctuations):
         concordance_results = self._concordance_index.find_concordance(search_term, width, lines)
 
         # Punctuations
@@ -199,14 +206,14 @@ class Wordless_Text(nltk.Text):
         return concordance_results
 
     def wordlist(self, settings):
-        if settings['ignore_case']:
+        if settings['generation_ignore_case']:
             self.tokens = [token.lower() for token in self.tokens]
         
-        if settings['lemmatization']:
-            self.tokens = wordless_lemmatize(self.main, self.tokens)
+        if settings['generation_lemmatization']:
+            self.tokens = wordless_lemmatize(self.main, self.tokens, self.lang)
         
         if settings['words']:
-            if not settings['ignore_case']:
+            if not settings['generation_ignore_case']:
                 if settings['lowercase'] == False:
                     self.tokens = [token for token in self.tokens if not token.islower()]
                 if settings['uppercase'] == False:

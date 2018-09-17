@@ -99,11 +99,6 @@ class Wordless_Files():
 
         self.table.blockSignals(False)
 
-        for row in range(self.table.rowCount()):
-            for column in range(self.table.columnCount()):
-                if self.table.cellWidget(row, column):
-                    self.table.cellWidget(row, column).blockSignals(False)
-
         self.table.itemChanged.emit(self.table.item(0, 0))
 
     def selected_files(self):
@@ -178,16 +173,17 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
                         break
 
             for row in range(self.rowCount()):
-                file = self.main.wordless_files._new_file(self.item(row, 2).text(), auto_detect = False)
+                if self.item(row, 4):
+                    file = self.main.wordless_files._new_file(self.item(row, 2).text(), auto_detect = False)
 
-                file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
-                file['lang_text'] = self.cellWidget(row, 1).currentText()
-                file['lang_code'] = wordless_misc.convert_lang(self.main, file['lang_text'])
-                file['word_delimiter'] = wordless_misc.convert_word_delimiter(file['lang_code'])
-                file['encoding_text'] = self.cellWidget(row, 4).currentText()
-                file['encoding_code'] = wordless_misc.convert_encoding(self.main, file['encoding_text'])[0]
+                    file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
+                    file['lang_text'] = self.cellWidget(row, 1).currentText()
+                    file['lang_code'] = wordless_misc.convert_lang(self.main, file['lang_text'])
+                    file['word_delimiter'] = wordless_misc.convert_word_delimiter(file['lang_code'])
+                    file['encoding_text'] = self.cellWidget(row, 4).currentText()
+                    file['encoding_code'] = wordless_misc.convert_encoding(self.main, file['encoding_text'])[0]
 
-                self.main.settings['file']['files_open'].append(file)
+                    self.main.settings['file']['files_open'].append(file)
 
         if self.item(0, 0):
             self.button_select_all.setEnabled(True)
@@ -284,13 +280,6 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
         self.main.wordless_files.remove_files(list(range(len(self.main.settings['file']['files_open']))))
 
 def init(main):
-    def folder_settings_changed():
-        main.settings['file']['subfolders'] = checkbox_subfolders.isChecked()
-
-    def auto_detection_settings_changed():
-        main.settings['file']['auto_detect_encoding'] = checkbox_auto_detect_encoding.isChecked()
-        main.settings['file']['auto_detect_lang'] = checkbox_auto_detect_lang.isChecked()
-
     def load_settings(defaults = False):
         if defaults:
             settings = copy.deepcopy(main.default_settings)
@@ -304,6 +293,13 @@ def init(main):
 
         folder_settings_changed()
         auto_detection_settings_changed()
+
+    def folder_settings_changed():
+        main.settings['file']['subfolders'] = checkbox_subfolders.isChecked()
+
+    def auto_detection_settings_changed():
+        main.settings['file']['auto_detect_encoding'] = checkbox_auto_detect_encoding.isChecked()
+        main.settings['file']['auto_detect_lang'] = checkbox_auto_detect_lang.isChecked()
 
     def restore_defaults():
         reply = QMessageBox.question(main,

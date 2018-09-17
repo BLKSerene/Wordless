@@ -65,16 +65,17 @@ Many thanks to the following open-source projects on which Wordless is built on:
 
 1. [Python](https://www.python.org/)
 2. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
-3. [Matplotlib](https://matplotlib.org/)
-4. [NLTK](http://www.nltk.org/)
-5. [NetworkX](http://networkx.github.io/)
-6. [NumPy](http://www.numpy.org/)
-7. [PyQt](https://www.riverbankcomputing.com/software/pyqt/intro)
-8. [chardet](https://github.com/chardet/chardet)
-9. [langdetect](https://github.com/Mimino666/langdetect)
-10. [lxml](https://lxml.de/)
-11. [openpyxl](https://openpyxl.readthedocs.io/en/stable/#)
-12. [“结巴”中文分词](https://github.com/fxsjy/jieba)
+3. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists)
+4. [Matplotlib](https://matplotlib.org/)
+5. [NLTK](http://www.nltk.org/)
+6. [NetworkX](http://networkx.github.io/)
+7. [NumPy](http://www.numpy.org/)
+8. [PyQt](https://www.riverbankcomputing.com/software/pyqt/intro)
+9. [chardet](https://github.com/chardet/chardet)
+10. [langdetect](https://github.com/Mimino666/langdetect)
+11. [lxml](https://lxml.de/)
+12. [openpyxl](https://openpyxl.readthedocs.io/en/stable/#)
+13. [“结巴”中文分词](https://github.com/fxsjy/jieba)
 
 ## Donation/捐助
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.

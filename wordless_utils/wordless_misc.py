@@ -12,6 +12,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_utils import wordless_text
+
 def convert_lang(main, lang):
     # Text -> Code
     if lang[0].isupper():

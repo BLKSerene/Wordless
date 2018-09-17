@@ -37,7 +37,7 @@ class Wordless_Freq_Distribution(nltk.FreqDist):
             ylabel = 'Counts'
 
         for i, file in enumerate(files):
-            pyplot.plot([datasets[i] for datasets in freqs], label = file.name, **kwargs)
+            pyplot.plot([datasets[i] for datasets in freqs], label = file['name'], **kwargs)
 
         pyplot.xticks(range(len(samples)), samples, rotation = 90)
         pyplot.xlabel('Samples')
@@ -46,14 +46,14 @@ class Wordless_Freq_Distribution(nltk.FreqDist):
         pyplot.legend()
         pyplot.show()
 
-def wordless_freq_distributions(self, files, mode):
+def wordless_freq_distributions(main, files, mode):
     freq_distributions = {}
 
-    settings = self.settings[mode]
+    settings = main.settings[mode]
 
     for i, file in enumerate(files):
-        text = wordless_text.Wordless_Text(file)
-
+        text = wordless_text.Wordless_Text(main, file)
+        
         if mode == 'wordlist':
             freq_distribution = text.wordlist(settings)
         elif mode == 'ngram':
@@ -73,13 +73,13 @@ def wordless_freq_distributions(self, files, mode):
     
     return Wordless_Freq_Distribution(freq_distributions)
 
-def wordless_score_distributions(self, files, mode):
+def wordless_score_distributions(main, files, mode):
     score_distributions = {}
 
-    settings = self.settings[mode]
+    settings = main.settings[mode]
 
     for i, file in enumerate(files):
-        text = wordless_text.Wordless_Text(file)
+        text = wordless_text.Wordless_Text(main, file)
 
         if mode == 'collocation':
             score_distribution = text.collocation(settings)

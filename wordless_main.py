@@ -187,6 +187,12 @@ class Wordless_Main(QMainWindow):
                                                   <td><a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/  head:/LICENSE">MIT</a></td>
                                                 </tr>
                                                 <tr>
+                                                  <td><a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a></td>
+                                                  <td></td>
+                                                  <td><a href="http://www.lexiconista.com/en/#contact">Michal Boleslav Měchura</a></td>
+                                                  <td><a href="https://github.com/michmech/lemmatization-lists/blob/master/LICENCE">ODbL</a></td>
+                                                </tr>
+                                                <tr>
                                                   <td><a href="https://matplotlib.org/">Matplotlib</a></td>
                                                   <td>2.2.3</td>
                                                   <td><a href="https://github.com/matplotlib/matplotlib#contact">Matplotlib Development   Team</a></td>

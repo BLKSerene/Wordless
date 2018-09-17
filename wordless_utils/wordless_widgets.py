@@ -68,7 +68,7 @@ class Wordless_Spin_Box_Window(QSpinBox):
 
             self.setValue(-self.value() + 1)
 
-def wordless_widgets_token_settings(parent):
+def wordless_widgets_token_settings(main):
     def words_changed():
         checkbox_words.setTristate(False)
 
@@ -105,12 +105,12 @@ def wordless_widgets_token_settings(parent):
         else:
             checkbox_words.setCheckState(Qt.PartiallyChecked)
 
-    checkbox_words = QCheckBox(parent.tr('Words'), parent)
-    checkbox_lowercase = QCheckBox(parent.tr('Lowercase'), parent)
-    checkbox_uppercase = QCheckBox(parent.tr('Uppercase'), parent)
-    checkbox_title_cased = QCheckBox(parent.tr('Title Cased'), parent)
-    checkbox_numerals = QCheckBox(parent.tr('Numerals'), parent)
-    checkbox_punctuations = QCheckBox(parent.tr('Punctuations'), parent)
+    checkbox_words = QCheckBox(main.tr('Words'), main)
+    checkbox_lowercase = QCheckBox(main.tr('Lowercase'), main)
+    checkbox_uppercase = QCheckBox(main.tr('Uppercase'), main)
+    checkbox_title_cased = QCheckBox(main.tr('Title Cased'), main)
+    checkbox_numerals = QCheckBox(main.tr('Numerals'), main)
+    checkbox_punctuations = QCheckBox(main.tr('Punctuations'), main)
 
     checkbox_words.clicked.connect(words_changed)
     checkbox_lowercase.clicked.connect(case_changed)
@@ -123,10 +123,10 @@ def wordless_widgets_token_settings(parent):
     return [checkbox_words, checkbox_lowercase, checkbox_uppercase, checkbox_title_cased,
             checkbox_numerals, checkbox_punctuations]
 
-def wordless_widgets_search_settings(parent):
+def wordless_widgets_search_settings(main):
     def multi_search_changed():
         if checkbox_multi_search.isChecked():
-            label_search_term.setText(parent.tr('Search Terms:'))
+            label_search_term.setText(main.tr('Search Terms:'))
 
             if line_edit_search_term.text() and list_search_terms.count() == 0:
                 list_search_terms.add_item(line_edit_search_term.text())
@@ -141,7 +141,7 @@ def wordless_widgets_search_settings(parent):
             list_search_terms.button_import.show()
             list_search_terms.button_export.show()
         else:
-            label_search_term.setText(parent.tr('Search Term:'))
+            label_search_term.setText(main.tr('Search Term:'))
 
             line_edit_search_term.show()
 
@@ -155,7 +155,7 @@ def wordless_widgets_search_settings(parent):
 
     def show_all_changed():
         if checkbox_show_all.isChecked():
-            checkbox_lemmatization.setText(parent.tr('Lemmatization'))
+            checkbox_lemmatization.setText(main.tr('Lemmatization'))
 
             line_edit_search_term.setEnabled(False)
             list_search_terms.setEnabled(False)
@@ -164,7 +164,7 @@ def wordless_widgets_search_settings(parent):
             checkbox_regex.setEnabled(False)
             checkbox_multi_search.setEnabled(False)
         else:
-            checkbox_lemmatization.setText(parent.tr('Match All Lemmatized Forms'))
+            checkbox_lemmatization.setText(main.tr('Match All Lemmatized Forms'))
 
             line_edit_search_term.setEnabled(True)
             list_search_terms.setEnabled(True)
@@ -173,18 +173,16 @@ def wordless_widgets_search_settings(parent):
             checkbox_regex.setEnabled(True)
             checkbox_multi_search.setEnabled(True)
 
-    label_search_term = QLabel(parent.tr('Search Term:'), parent)
-    line_edit_search_term = QLineEdit(parent)
-    list_search_terms = wordless_list.Wordless_List(parent)
+    label_search_term = QLabel(main.tr('Search Term:'), main)
+    line_edit_search_term = QLineEdit(main)
+    list_search_terms = wordless_list.Wordless_List(main)
 
-    checkbox_ignore_case = QCheckBox(parent.tr('Ignore Case'), parent)
-    checkbox_lemmatization = QCheckBox(parent.tr('Lemmatization'), parent)
-    checkbox_whole_word = QCheckBox(parent.tr('Match Whole Word Only'), parent)
-    checkbox_regex = QCheckBox(parent.tr('Use Regular Expression'), parent)
-    checkbox_multi_search = QCheckBox(parent.tr('Multi-search Mode'), parent)
-    checkbox_show_all = QCheckBox(parent.tr('Show All Items'), parent)
-
-    checkbox_show_all.setChecked(True)
+    checkbox_ignore_case = QCheckBox(main.tr('Ignore Case'), main)
+    checkbox_lemmatization = QCheckBox(main.tr('Lemmatization'), main)
+    checkbox_whole_word = QCheckBox(main.tr('Match Whole Word Only'), main)
+    checkbox_regex = QCheckBox(main.tr('Use Regular Expression'), main)
+    checkbox_multi_search = QCheckBox(main.tr('Multi-search Mode'), main)
+    checkbox_show_all = QCheckBox(main.tr('Show All Items'), main)
 
     checkbox_multi_search.stateChanged.connect(multi_search_changed)
     checkbox_show_all.stateChanged.connect(show_all_changed)
@@ -196,12 +194,13 @@ def wordless_widgets_search_settings(parent):
             checkbox_ignore_case, checkbox_lemmatization, checkbox_whole_word, checkbox_regex,
             checkbox_multi_search, checkbox_show_all)
 
-def wordless_widgets_table_settings(parent, table):
+def wordless_widgets_table_settings(main, table):
     def show_pct_changed():
-        if table.item(0, 0) or table.cellWidget(0, 0):
+        table.show_pct = checkbox_show_pct.isChecked()
+
+        if table.item(0, 0):
             cols_cumulative = table.find_columns_cumulative()
-            col_files_found = table.find_column(parent.tr('Files Found'))
-            show_pct = checkbox_show_pct.isChecked()
+            col_files_found = table.find_column(main.tr('Files Found'))
 
             table.hide()
             table.setSortingEnabled(False)
@@ -221,7 +220,7 @@ def wordless_widgets_table_settings(parent, table):
                 for row in range(table.rowCount()):
                     value = table.item(row, col).raw_value
 
-                    table.set_item_with_pct(row, col, value, total, show_pct = show_pct)
+                    table.set_item_with_pct(row, col, value, total, show_pct = table.show_pct)
 
             table.setSortingEnabled(True)
             table.show()
@@ -256,13 +255,18 @@ def wordless_widgets_table_settings(parent, table):
 
         table.show()
 
-    checkbox_show_pct = QCheckBox(parent.tr('Show Percentage'), parent)
-    checkbox_show_cumulative = QCheckBox(parent.tr('Show Cumulative Data'), parent)
-    checkbox_show_breakdown = QCheckBox(parent.tr('Show Breakdown'), parent)
+    def table_item_changed():
+        table.cols_pct = list(range(2, table.columnCount()))
+
+    checkbox_show_pct = QCheckBox(main.tr('Show Percentage'), main)
+    checkbox_show_cumulative = QCheckBox(main.tr('Show Cumulative Data'), main)
+    checkbox_show_breakdown = QCheckBox(main.tr('Show Breakdown'), main)
 
     checkbox_show_pct.stateChanged.connect(show_pct_changed)
     checkbox_show_cumulative.stateChanged.connect(show_cumulative_changed)
     checkbox_show_breakdown.stateChanged.connect(show_breakdown_changed)
+
+    table.itemChanged.connect(table_item_changed)
 
     show_pct_changed()
     show_cumulative_changed()
@@ -270,14 +274,29 @@ def wordless_widgets_table_settings(parent, table):
 
     return [checkbox_show_pct, checkbox_show_cumulative, checkbox_show_breakdown]
 
-def wordless_widgets_filter(parent, filter_min = 1, filter_max = 100, table = None, column = ''):
-    def filter_changed():
+def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None, column = ''):
+    def filter_no_limit_changed():
         if checkbox_no_limit.isChecked():
             spin_box_max.setEnabled(False)
         else:
             spin_box_max.setEnabled(True)
 
-        if table and (table.item(0, 0) or table.cellWidget(0, 0)):
+        if table:
+            filter_changed()
+
+    def filter_min_changed():
+        if spin_box_min.value() > spin_box_max.value():
+            spin_box_max.setValue(spin_box_min.value())
+
+    def filter_max_changed():
+        if spin_box_min.value() > spin_box_max.value():
+            spin_box_min.setValue(spin_box_max.value())
+
+    def filter_changed():
+        table.blockSignals(True)
+        table.hide()
+
+        if table and table.item(0, 1):
             if column == 'Total':
                 col_filter = table.find_column(combo_box_apply_to.currentText(), fuzzy_search = True)
             else:
@@ -287,36 +306,60 @@ def wordless_widgets_filter(parent, filter_min = 1, filter_max = 100, table = No
             filter_min = spin_box_min.value()
             filter_max = spin_box_max.value() if not checkbox_no_limit.isChecked() else float('inf')
 
-            table.setUpdatesEnabled(False)
-
             for i in range(table.rowCount()):
                 filter_data = table.item(i, col_filter).read_data()
 
                 if filter_type in [int, float]:
                     if filter_min <= filter_data <= filter_max:
-                        table.showRow(i)
+                        table.row_filters[i][column] = True
                     else:
-                        table.hideRow(i)
+                        table.row_filters[i][column] = False
                 elif filter_type == str:
-                    if filter_min <= len(filter_data) - filter_data.count(' ') <= filter_max:
-                        table.showRow(i)
+                    if filter_min <= len(str(filter_data)) - str(filter_data).count(' ') <= filter_max:
+                        table.row_filters[i][column] = True
                     else:
-                        table.hideRow(i)
+                        table.row_filters[i][column] = False
 
-            table.sorting_changed(table.horizontalHeader().sortIndicatorSection(),
-                                  table.horizontalHeader().sortIndicatorOrder())
+                if all(list(table.row_filters[i].values())):
+                    table.showRow(i)
+                else:
+                    table.hideRow(i)
 
-            table.setUpdatesEnabled(True)
+            table.sorting_changed(table.horizontalHeader().sortIndicatorSection(), table.horizontalHeader().sortIndicatorOrder())
+            
+        table.blockSignals(False)
+        table.show()
 
-    checkbox_no_limit = QCheckBox(parent.tr('No Limit'), parent)
-    label_min = QLabel(parent.tr('From'), parent)
-    spin_box_min = QSpinBox(parent)
-    label_max = QLabel(parent.tr('To'), parent)
-    spin_box_max = QSpinBox(parent)
+    def table_item_changed():
+        if column == 'Total':
+            apply_to_old = combo_box_apply_to.currentText()
+
+            combo_box_apply_to.blockSignals(True)
+            combo_box_apply_to.clear()
+
+            for i in table.find_columns_breakdown():
+                combo_box_apply_to.addItem(table.horizontalHeaderItem(i).text())
+            combo_box_apply_to.addItem(main.tr('Total'))
+
+            for i in range(combo_box_apply_to.count()):
+                if combo_box_apply_to.itemText(i) == apply_to_old:
+                    combo_box_apply_to.setCurrentIndex(i)
+
+                    break
+
+            combo_box_apply_to.blockSignals(False)
+
+        filter_changed()
+
+    checkbox_no_limit = QCheckBox(main.tr('No Limit'), main)
+    label_min = QLabel(main.tr('From'), main)
+    spin_box_min = QSpinBox(main)
+    label_max = QLabel(main.tr('To'), main)
+    spin_box_max = QSpinBox(main)
 
     if column == 'Total':
-        label_apply_to = QLabel(parent.tr('Apply to:'), parent)
-        combo_box_apply_to = QComboBox(parent)
+        label_apply_to = QLabel(main.tr('Apply to:'), main)
+        combo_box_apply_to = QComboBox(main)
 
         combo_box_apply_to.addItem('Total')
 
@@ -325,18 +368,27 @@ def wordless_widgets_filter(parent, filter_min = 1, filter_max = 100, table = No
     spin_box_min.setRange(filter_min, filter_max)
     spin_box_max.setRange(filter_min, filter_max)
 
-    checkbox_no_limit.stateChanged.connect(filter_changed)
+    checkbox_no_limit.stateChanged.connect(filter_no_limit_changed)
+    spin_box_min.valueChanged.connect(filter_min_changed)
     spin_box_min.editingFinished.connect(filter_changed)
+    spin_box_max.valueChanged.connect(filter_max_changed)
     spin_box_max.editingFinished.connect(filter_changed)
 
-    filter_changed()
+    filter_no_limit_changed()
+    filter_min_changed()
+    filter_max_changed()
+
+    if table:
+        table.filters.append(column)
+
+        table.itemChanged.connect(table_item_changed)
 
     if column == 'Total':
         return [checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max, label_apply_to, combo_box_apply_to]
     else:
         return [checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max]
 
-def wordless_widgets_size(parent, size_min = 1, size_max = 20):
+def wordless_widgets_size(main, size_min = 1, size_max = 20):
     def size_sync_changed():
         if checkbox_size_sync.isChecked():
             spin_box_size_min.setValue(spin_box_size_max.value())
@@ -349,11 +401,11 @@ def wordless_widgets_size(parent, size_min = 1, size_max = 20):
         if checkbox_size_sync.isChecked() or spin_box_size_min.value() > spin_box_size_max.value():
             spin_box_size_min.setValue(spin_box_size_max.value())
 
-    checkbox_size_sync = QCheckBox(parent.tr('Sync'), parent)
-    label_size_min = QLabel(parent.tr('From'), parent)
-    spin_box_size_min = QSpinBox(parent)
-    label_size_max = QLabel(parent.tr('To'), parent)
-    spin_box_size_max = QSpinBox(parent)
+    checkbox_size_sync = QCheckBox(main.tr('Sync'), main)
+    label_size_min = QLabel(main.tr('From'), main)
+    spin_box_size_min = QSpinBox(main)
+    label_size_max = QLabel(main.tr('To'), main)
+    spin_box_size_max = QSpinBox(main)
 
     spin_box_size_min.setRange(size_min, size_max)
     spin_box_size_max.setRange(size_min, size_max)
@@ -368,7 +420,7 @@ def wordless_widgets_size(parent, size_min = 1, size_max = 20):
 
     return checkbox_size_sync, label_size_min, spin_box_size_min, label_size_max, spin_box_size_max
 
-def wordless_widgets_window(parent):
+def wordless_widgets_window(main):
     def window_sync_changed():
         if checkbox_window_sync.isChecked():
             spin_box_window_left.setPrefix(window_right.prefix())
@@ -400,11 +452,11 @@ def wordless_widgets_window(parent):
                 spin_box_window_left.setPrefix(spin_box_window_right.prefix())
                 spin_box_window_left.setValue(spin_box_window_right.value())
 
-    checkbox_window_sync = QCheckBox(parent.tr('Sync'), parent)
-    label_window_left = QLabel(parent.tr('From'), parent)
-    spin_box_window_left = Wordless_Spin_Box_Window(parent)
-    label_window_right = QLabel(parent.tr('To'), parent)
-    spin_box_window_right = Wordless_Spin_Box_Window(parent)
+    checkbox_window_sync = QCheckBox(main.tr('Sync'), main)
+    label_window_left = QLabel(main.tr('From'), main)
+    spin_box_window_left = Wordless_Spin_Box_Window(main)
+    label_window_right = QLabel(main.tr('To'), main)
+    spin_box_window_right = Wordless_Spin_Box_Window(main)
 
     spin_box_window_left.setRange(-100, 100)
     spin_box_window_right.setRange(-100, 100)
@@ -419,18 +471,18 @@ def wordless_widgets_window(parent):
 
     return [checkbox_window_sync, label_window_left, spin_box_window_left, label_window_right, spin_box_window_right]
 
-def wordless_widgets_collocation(parent, default_assoc_measure):
+def wordless_widgets_collocation(main, default_assoc_measure):
     def search_for_changed():
         text_old = combobox_assoc_measure.currentText()
 
         combobox_assoc_measure.clear()
     
-        if combo_box_search_for.currentText() == parent.tr('Bigrams'):
-            combobox_assoc_measure.addItems(parent.assoc_measures_bigram)
-        elif combo_box_search_for.currentText() == parent.tr('Trigrams'):
-            combobox_assoc_measure.addItems(parent.assoc_measures_trigram)
-        elif combo_box_search_for.currentText() == parent.tr('Quadgrams'):
-            combobox_assoc_measure.addItems(parent.assoc_measures_quadgram)
+        if combo_box_search_for.currentText() == main.tr('Bigrams'):
+            combobox_assoc_measure.addItems(main.assoc_measures_bigram)
+        elif combo_box_search_for.currentText() == main.tr('Trigrams'):
+            combobox_assoc_measure.addItems(main.assoc_measures_trigram)
+        elif combo_box_search_for.currentText() == main.tr('Quadgrams'):
+            combobox_assoc_measure.addItems(main.assoc_measures_quadgram)
 
         for i in range(combobox_assoc_measure.count()):
             if combobox_assoc_measure.itemText(i) == text_old:
@@ -440,15 +492,15 @@ def wordless_widgets_collocation(parent, default_assoc_measure):
             else:
                 combobox_assoc_measure.setCurrentText(default_assoc_measure)
 
-    label_search_for = QLabel(parent.tr('Search for:'), parent)
-    combo_box_search_for = QComboBox(parent)
-    label_assoc_measure = QLabel(parent.tr('Association Measure:'), parent)
-    combobox_assoc_measure = QComboBox(parent)
+    label_search_for = QLabel(main.tr('Search for:'), main)
+    combo_box_search_for = QComboBox(main)
+    label_assoc_measure = QLabel(main.tr('Association Measure:'), main)
+    combobox_assoc_measure = QComboBox(main)
 
     combo_box_search_for.addItems([
-        parent.tr('Bigrams'),
-        parent.tr('Trigrams'),
-        parent.tr('Quadgrams')
+        main.tr('Bigrams'),
+        main.tr('Trigrams'),
+        main.tr('Quadgrams')
     ])
 
     combo_box_search_for.currentTextChanged.connect(search_for_changed)

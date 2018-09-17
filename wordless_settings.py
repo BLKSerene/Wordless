@@ -260,29 +260,29 @@ class Wordless_Settings(QDialog):
 
         self.spin_box_precision.setValue(settings['general']['precision'])
 
-        self.combo_box_lemmatization_eng.setCurrentText(settings['lemmatization'][self.tr('English')])
-        self.combo_box_lemmatization_ast.setCurrentText(settings['lemmatization'][self.tr('Austurian')])
-        self.combo_box_lemmatization_bul.setCurrentText(settings['lemmatization'][self.tr('Bulgarian')])
-        self.combo_box_lemmatization_cat.setCurrentText(settings['lemmatization'][self.tr('Catalan')])
-        self.combo_box_lemmatization_ces.setCurrentText(settings['lemmatization'][self.tr('Czech')])
-        self.combo_box_lemmatization_est.setCurrentText(settings['lemmatization'][self.tr('Estonian')])
-        self.combo_box_lemmatization_fra.setCurrentText(settings['lemmatization'][self.tr('French')])
-        self.combo_box_lemmatization_gla.setCurrentText(settings['lemmatization'][self.tr('Gaelic (Scots)')])
-        self.combo_box_lemmatization_glg.setCurrentText(settings['lemmatization'][self.tr('Galician')])
-        self.combo_box_lemmatization_deu.setCurrentText(settings['lemmatization'][self.tr('German')])
-        self.combo_box_lemmatization_hun.setCurrentText(settings['lemmatization'][self.tr('Hungarian')])
-        self.combo_box_lemmatization_gle.setCurrentText(settings['lemmatization'][self.tr('Irish')])
-        self.combo_box_lemmatization_ita.setCurrentText(settings['lemmatization'][self.tr('Italian')])
-        self.combo_box_lemmatization_glv.setCurrentText(settings['lemmatization'][self.tr('Manx')])
-        self.combo_box_lemmatization_fas.setCurrentText(settings['lemmatization'][self.tr('Persian')])
-        self.combo_box_lemmatization_por.setCurrentText(settings['lemmatization'][self.tr('Portuguese')])
-        self.combo_box_lemmatization_ron.setCurrentText(settings['lemmatization'][self.tr('Romanian')])
-        self.combo_box_lemmatization_slk.setCurrentText(settings['lemmatization'][self.tr('Slovak')])
-        self.combo_box_lemmatization_slv.setCurrentText(settings['lemmatization'][self.tr('Slovenian')])
-        self.combo_box_lemmatization_spa.setCurrentText(settings['lemmatization'][self.tr('Spanish')])
-        self.combo_box_lemmatization_swe.setCurrentText(settings['lemmatization'][self.tr('Swedish')])
-        self.combo_box_lemmatization_ukr.setCurrentText(settings['lemmatization'][self.tr('Ukrainian')])
-        self.combo_box_lemmatization_cym.setCurrentText(settings['lemmatization'][self.tr('Welsh')])
+        self.combo_box_lemmatization_eng.setCurrentText(settings['lemmatization']['eng'])
+        self.combo_box_lemmatization_ast.setCurrentText(settings['lemmatization']['ast'])
+        self.combo_box_lemmatization_bul.setCurrentText(settings['lemmatization']['bul'])
+        self.combo_box_lemmatization_cat.setCurrentText(settings['lemmatization']['cat'])
+        self.combo_box_lemmatization_ces.setCurrentText(settings['lemmatization']['ces'])
+        self.combo_box_lemmatization_est.setCurrentText(settings['lemmatization']['est'])
+        self.combo_box_lemmatization_fra.setCurrentText(settings['lemmatization']['fra'])
+        self.combo_box_lemmatization_gla.setCurrentText(settings['lemmatization']['gla'])
+        self.combo_box_lemmatization_glg.setCurrentText(settings['lemmatization']['glg'])
+        self.combo_box_lemmatization_deu.setCurrentText(settings['lemmatization']['deu'])
+        self.combo_box_lemmatization_hun.setCurrentText(settings['lemmatization']['hun'])
+        self.combo_box_lemmatization_gle.setCurrentText(settings['lemmatization']['gle'])
+        self.combo_box_lemmatization_ita.setCurrentText(settings['lemmatization']['ita'])
+        self.combo_box_lemmatization_glv.setCurrentText(settings['lemmatization']['glv'])
+        self.combo_box_lemmatization_fas.setCurrentText(settings['lemmatization']['fas'])
+        self.combo_box_lemmatization_por.setCurrentText(settings['lemmatization']['por'])
+        self.combo_box_lemmatization_ron.setCurrentText(settings['lemmatization']['ron'])
+        self.combo_box_lemmatization_slk.setCurrentText(settings['lemmatization']['slk'])
+        self.combo_box_lemmatization_slv.setCurrentText(settings['lemmatization']['slv'])
+        self.combo_box_lemmatization_spa.setCurrentText(settings['lemmatization']['spa'])
+        self.combo_box_lemmatization_swe.setCurrentText(settings['lemmatization']['swe'])
+        self.combo_box_lemmatization_ukr.setCurrentText(settings['lemmatization']['ukr'])
+        self.combo_box_lemmatization_cym.setCurrentText(settings['lemmatization']['cym'])
 
     def apply(self):
         self.main.settings['general']['encoding_input'] = wordless_misc.convert_encoding(self.main, self.combo_box_encoding_input.currentText())
@@ -290,29 +290,29 @@ class Wordless_Settings(QDialog):
 
         self.main.settings['general']['precision'] = self.spin_box_precision.value()
 
-        self.main.settings['lemmatization'][self.tr('English')] = self.combo_box_lemmatization_eng.currentText()
-        self.main.settings['lemmatization'][self.tr('Austurian')] = self.combo_box_lemmatization_ast.currentText()
-        self.main.settings['lemmatization'][self.tr('Bulgarian')] = self.combo_box_lemmatization_bul.currentText()
-        self.main.settings['lemmatization'][self.tr('Catalan')] = self.combo_box_lemmatization_cat.currentText()
-        self.main.settings['lemmatization'][self.tr('Czech')] = self.combo_box_lemmatization_ces.currentText()
-        self.main.settings['lemmatization'][self.tr('Estonian')] = self.combo_box_lemmatization_est.currentText()
-        self.main.settings['lemmatization'][self.tr('French')] = self.combo_box_lemmatization_fra.currentText()
-        self.main.settings['lemmatization'][self.tr('Gaelic (Scots)')] = self.combo_box_lemmatization_gla.currentText()
-        self.main.settings['lemmatization'][self.tr('Galician')] = self.combo_box_lemmatization_glg.currentText()
-        self.main.settings['lemmatization'][self.tr('German')] = self.combo_box_lemmatization_deu.currentText()
-        self.main.settings['lemmatization'][self.tr('Hungarian')] = self.combo_box_lemmatization_hun.currentText()
-        self.main.settings['lemmatization'][self.tr('Irish')] = self.combo_box_lemmatization_gle.currentText()
-        self.main.settings['lemmatization'][self.tr('Italian')] = self.combo_box_lemmatization_ita.currentText()
-        self.main.settings['lemmatization'][self.tr('Manx')] = self.combo_box_lemmatization_glv.currentText()
-        self.main.settings['lemmatization'][self.tr('Persian')] = self.combo_box_lemmatization_fas.currentText()
-        self.main.settings['lemmatization'][self.tr('Portuguese')] = self.combo_box_lemmatization_por.currentText()
-        self.main.settings['lemmatization'][self.tr('Romanian')] = self.combo_box_lemmatization_ron.currentText()
-        self.main.settings['lemmatization'][self.tr('Slovak')] = self.combo_box_lemmatization_slk.currentText()
-        self.main.settings['lemmatization'][self.tr('Slovenian')] = self.combo_box_lemmatization_slv.currentText()
-        self.main.settings['lemmatization'][self.tr('Spanish')] = self.combo_box_lemmatization_spa.currentText()
-        self.main.settings['lemmatization'][self.tr('Swedish')] = self.combo_box_lemmatization_swe.currentText()
-        self.main.settings['lemmatization'][self.tr('Ukrainian')] = self.combo_box_lemmatization_ukr.currentText()
-        self.main.settings['lemmatization'][self.tr('Welsh')] = self.combo_box_lemmatization_cym.currentText()
+        self.main.settings['lemmatization']['eng'] = self.combo_box_lemmatization_eng.currentText()
+        self.main.settings['lemmatization']['ast'] = self.combo_box_lemmatization_ast.currentText()
+        self.main.settings['lemmatization']['bul'] = self.combo_box_lemmatization_bul.currentText()
+        self.main.settings['lemmatization']['cat'] = self.combo_box_lemmatization_cat.currentText()
+        self.main.settings['lemmatization']['ces'] = self.combo_box_lemmatization_ces.currentText()
+        self.main.settings['lemmatization']['est'] = self.combo_box_lemmatization_est.currentText()
+        self.main.settings['lemmatization']['fra'] = self.combo_box_lemmatization_fra.currentText()
+        self.main.settings['lemmatization']['gla'] = self.combo_box_lemmatization_gla.currentText()
+        self.main.settings['lemmatization']['glg'] = self.combo_box_lemmatization_glg.currentText()
+        self.main.settings['lemmatization']['deu'] = self.combo_box_lemmatization_deu.currentText()
+        self.main.settings['lemmatization']['hun'] = self.combo_box_lemmatization_hun.currentText()
+        self.main.settings['lemmatization']['gle'] = self.combo_box_lemmatization_gle.currentText()
+        self.main.settings['lemmatization']['ita'] = self.combo_box_lemmatization_ita.currentText()
+        self.main.settings['lemmatization']['glv'] = self.combo_box_lemmatization_glv.currentText()
+        self.main.settings['lemmatization']['fas'] = self.combo_box_lemmatization_fas.currentText()
+        self.main.settings['lemmatization']['por'] = self.combo_box_lemmatization_por.currentText()
+        self.main.settings['lemmatization']['ron'] = self.combo_box_lemmatization_ron.currentText()
+        self.main.settings['lemmatization']['slk'] = self.combo_box_lemmatization_slk.currentText()
+        self.main.settings['lemmatization']['slv'] = self.combo_box_lemmatization_slv.currentText()
+        self.main.settings['lemmatization']['spa'] = self.combo_box_lemmatization_spa.currentText()
+        self.main.settings['lemmatization']['swe'] = self.combo_box_lemmatization_swe.currentText()
+        self.main.settings['lemmatization']['ukr'] = self.combo_box_lemmatization_ukr.currentText()
+        self.main.settings['lemmatization']['cym'] = self.combo_box_lemmatization_cym.currentText()
 
     def load(self):
         self.load_settings()
@@ -678,31 +678,31 @@ def init_settings(main):
         },
 
         'lemmatization': {
-            'English': 'NLTK (NLTK Project)',
-            'Austurian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Bulgarian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Catalan': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Czech': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Estonian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'French': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Gaelic (Scots)': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Galician': 'Lemmatization List (Michal Boleslav Měchura)',
-            'German': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Hungarian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Irish': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Italian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Manx': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Persian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Portuguese': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Romanian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Slovak': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Slovenian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Spanish': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Swedish': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Ukrainian': 'Lemmatization List (Michal Boleslav Měchura)',
-            'Welsh': 'Lemmatization List (Michal Boleslav Měchura)'
+            'eng': 'NLTK (NLTK Project)',
+            'ast': 'Lemmatization List (Michal Boleslav Měchura)',
+            'bul': 'Lemmatization List (Michal Boleslav Měchura)',
+            'cat': 'Lemmatization List (Michal Boleslav Měchura)',
+            'ces': 'Lemmatization List (Michal Boleslav Měchura)',
+            'est': 'Lemmatization List (Michal Boleslav Měchura)',
+            'fra': 'Lemmatization List (Michal Boleslav Měchura)',
+            'gla': 'Lemmatization List (Michal Boleslav Měchura)',
+            'glg': 'Lemmatization List (Michal Boleslav Měchura)',
+            'deu': 'Lemmatization List (Michal Boleslav Měchura)',
+            'hun': 'Lemmatization List (Michal Boleslav Měchura)',
+            'gle': 'Lemmatization List (Michal Boleslav Měchura)',
+            'ita': 'Lemmatization List (Michal Boleslav Měchura)',
+            'glv': 'Lemmatization List (Michal Boleslav Měchura)',
+            'fas': 'Lemmatization List (Michal Boleslav Měchura)',
+            'por': 'Lemmatization List (Michal Boleslav Měchura)',
+            'ron': 'Lemmatization List (Michal Boleslav Měchura)',
+            'slk': 'Lemmatization List (Michal Boleslav Měchura)',
+            'slv': 'Lemmatization List (Michal Boleslav Měchura)',
+            'spa': 'Lemmatization List (Michal Boleslav Měchura)',
+            'swe': 'Lemmatization List (Michal Boleslav Měchura)',
+            'ukr': 'Lemmatization List (Michal Boleslav Měchura)',
+            'cym': 'Lemmatization List (Michal Boleslav Měchura)'
         },
-    
+
         'overview': {
     
         },
@@ -747,8 +747,16 @@ def init_settings(main):
             'numerals': True,
             'punctuations': False,
     
+            'search_term': '',
+            'search_terms': [],
             'ignore_case': True,
             'lemmatization': True,
+            'whole_word': True,
+            'regex': False,
+            'multi_search': False,
+
+            'generation_ignore_case': True,
+            'generation_lemmatization': True,
 
             'show_pct': True,
             'show_cumulative': True,
