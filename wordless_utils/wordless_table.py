@@ -36,12 +36,14 @@ class Wordless_Table_Item(QTableWidgetItem):
         return self.read_data() < other.read_data()
 
 class Wordless_Table(QTableWidget):
-    def __init__(self, parent, headers, orientation = 'Horizontal', cols_stretch = [], drag_drop_enabled = False):
+    def __init__(self, parent, headers, orientation = 'Horizontal', cols_stretch = [],
+                 sorting_enabled = False, drag_drop_enabled = False):
         self.main = parent
         self.headers = headers
         self.orientation = orientation
+
         self.show_pct = True
-        self.cols_pct = []
+
         self.filters = []
 
         if orientation == 'Horizontal':
@@ -56,6 +58,19 @@ class Wordless_Table(QTableWidget):
         self.setEditTriggers(QTableWidget.NoEditTriggers)
         self.setSelectionBehavior(QTableWidget.SelectRows)
 
+        for i in cols_stretch:
+            self.horizontalHeader().setSectionResizeMode(self.find_column(i), QHeaderView.Stretch)
+
+        self.setStyleSheet('QHeaderView {color: #4169E1; font-weight: bold}')
+
+        if sorting_enabled:
+            self.setSortingEnabled(True)
+
+            if orientation == 'Horizontal':
+                self.horizontalHeader().sortIndicatorChanged.connect(self.sorting_changed)
+            else:
+                self.verticalHeader().sortIndicatorChanged.connect(self.sorting_changed)
+
         if drag_drop_enabled:
             self.setDragEnabled(True)
             self.setAcceptDrops(True)
@@ -66,17 +81,9 @@ class Wordless_Table(QTableWidget):
         self.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.verticalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
 
-        for column in cols_stretch:
-            self.horizontalHeader().setSectionResizeMode(self.find_column(column), QHeaderView.Stretch)
-
-        self.setStyleSheet('QHeaderView {color: #4169E1; font-weight: bold}')
-
         self.itemChanged.connect(self.item_changed)
         self.itemSelectionChanged.connect(self.selection_changed)
-        if orientation == 'Horizontal':
-            self.horizontalHeader().sortIndicatorChanged.connect(self.sorting_changed)
-        else:
-            self.verticalHeader().sortIndicatorChanged.connect(self.sorting_changed)
+        self.horizontalHeader().sectionCountChanged.connect(self.header_changed)
 
         self.button_export_selected = QPushButton(self.tr('Export Selected...'), self)
         self.button_export_all = QPushButton(self.tr('Export All...'), self)
@@ -153,6 +160,69 @@ class Wordless_Table(QTableWidget):
         else:
             self.button_export_selected.setEnabled(False)
 
+    def header_changed(self):
+        self.cols_pct = list(range(2, self.columnCount()))
+
+    def sorting_changed(self, logicalIndex, order):
+        if any([self.item(0, i) for i in range(self.columnCount())]):
+            rank_prev = 1
+            data_prev = ''
+
+            rows_hidden = [row for row in range(self.rowCount()) if self.isRowHidden(row)]
+
+            col_rank = self.find_column(self.tr('Rank'))
+            cols_cumulative = self.find_columns_cumulative()
+
+            self.blockSignals(True)
+            self.setSortingEnabled(False)
+            self.sortByColumn(logicalIndex, order)
+
+            # Do not re-calculate rank if the sorted column itself contains rank
+            if logicalIndex != col_rank:
+                for row in range(self.rowCount()):
+                    if row not in rows_hidden:
+                        data_cur = self.item(row, logicalIndex).read_data()
+
+                        self.setItem(row, col_rank, Wordless_Table_Item())
+
+                        if data_cur == data_prev:
+                            self.item(row, col_rank).setData(Qt.DisplayRole, self.item(row - 1, col_rank).data(Qt.DisplayRole))
+                        else:
+                            self.item(row, col_rank).setData(Qt.DisplayRole, rank_prev)
+
+                        rank_prev += 1
+                        data_prev = data_cur
+
+            # Do not re-calculate cumulative data if the sorted column itself contains cumulative data
+            if logicalIndex in cols_cumulative:
+                cols_cumulative.remove(logicalIndex)
+
+            for col in cols_cumulative:
+                data_cumulative_prev = 0
+                data_cumulative = []
+
+                for row in range(self.rowCount()):
+                    if row not in rows_hidden:
+                        data_cumulative_prev += self.item(row, col - 1).read_data()
+                        data_cumulative.append(data_cumulative_prev)
+
+                data_total = data_cumulative_prev
+
+                for row in range(self.rowCount()):
+                    if row not in rows_hidden:
+                        self.set_item_with_pct(row, col - 1, self.item(row, col - 1).read_data(), data_total, show_pct = self.show_pct)
+                        self.set_item_with_pct(row, col, data_cumulative.pop(0), data_total, show_pct = self.show_pct)
+
+            self.blockSignals(False)
+            self.setSortingEnabled(True)
+
+            self.setUpdatesEnabled(False)
+
+            for i in rows_hidden:
+                self.hideRow(i)
+
+            self.setUpdatesEnabled(True)
+
     def dropEvent(self, event):
         rows_dragged = []
 
@@ -197,60 +267,36 @@ class Wordless_Table(QTableWidget):
 
         event.accept()
 
-    def sorting_changed(self, logicalIndex, order):
-        rank_prev = 1
-        data_prev = ''
-
-        col_rank = self.find_column(self.tr('Rank'))
-        cols_cumulative = self.find_columns_cumulative()
-
-        self.hide()
-        self.blockSignals(True)
-        self.setSortingEnabled(False)
-        self.sortItems(logicalIndex, order)
-
-        # Do not re-calculate rank if the sorted column itself contains rank
-        if logicalIndex != col_rank:
-            for row in range(self.rowCount()):
-                if not self.isRowHidden(row):
-                    data_cur = self.item(row, logicalIndex).read_data()
-
-                    self.setItem(row, col_rank, Wordless_Table_Item())
-
-                    if data_cur == data_prev:
-                        self.item(row, col_rank).setData(Qt.DisplayRole, self.item(row - 1, col_rank).data(Qt.DisplayRole))
-                    else:
-                        self.item(row, col_rank).setData(Qt.DisplayRole, rank_prev)
-
-                    rank_prev += 1
-                    data_prev = data_cur
-
-        # Do not re-calculate cumulative data if the sorted column itself contains cumulative data
-        if logicalIndex in cols_cumulative:
-            cols_cumulative.remove(logicalIndex)
-
-        for col in cols_cumulative:
-            data_cumulative_prev = 0
-            data_cumulative = []
-
-            for row in range(self.rowCount()):
-                if not self.isRowHidden(row):
-                    data_cumulative_prev += self.item(row, col - 1).read_data()
-                    data_cumulative.append(data_cumulative_prev)
-
-            data_total = data_cumulative_prev
-
-            for row in range(self.rowCount()):
-                if not self.isRowHidden(row):
-                    self.set_item_with_pct(row, col - 1, self.item(row, col - 1).read_data(), data_total, show_pct = self.show_pct)
-                    self.set_item_with_pct(row, col, data_cumulative.pop(0), data_total, show_pct = self.show_pct)
-
-        self.blockSignals(False)
-        self.setSortingEnabled(True)
-        self.show()
-
     def selected_rows(self):
         return sorted(set([index.row() for index in self.selectedIndexes()]))
+
+    def find_column(self, column):
+        for i in range(self.columnCount()):
+            if self.horizontalHeaderItem(i) and self.horizontalHeaderItem(i).text().find(column) > -1:
+                return i
+
+    def find_columns_cumulative(self):
+        return [column
+                for column in range(self.columnCount())
+                if self.horizontalHeaderItem(column).text().find(self.tr('Cumulative')) > -1]
+
+    def find_columns_breakdown(self):
+        return [column
+                for column in range(self.find_column('Rank') + 2, self.find_column('Total'))
+                if self.horizontalHeaderItem(column)]
+
+    def filter_table(self):
+        self.setUpdatesEnabled(False)
+        
+        for i in range(self.rowCount()):
+            if all(list(self.row_filters[i].values())):
+                self.showRow(i)
+            else:
+                self.hideRow(i)
+
+        self.setUpdatesEnabled(True)
+
+        self.sorting_changed(self.horizontalHeader().sortIndicatorSection(), self.horizontalHeader().sortIndicatorOrder())
 
     def export_selected(self):
         pass
@@ -275,26 +321,8 @@ class Wordless_Table(QTableWidget):
         for i in range(self.rowCount()):
             self.showRow(i)
 
-        self.setSortingEnabled(False)
-
         self.item_changed()
-
-    def find_column(self, column, fuzzy_search = False):
-        for i in range(self.columnCount()):
-            if fuzzy_search:
-                if self.horizontalHeaderItem(i).text().find(column) > -1:
-                    return i
-            else:
-                if column == self.horizontalHeaderItem(i).text():
-                    return i
-
-    def find_columns_cumulative(self):
-        return [column
-                for column in range(self.columnCount())
-                if self.horizontalHeaderItem(column).text().find(self.tr('Cumulative')) > -1]
-
-    def find_columns_breakdown(self):
-        return list(range(self.find_column('Rank') + 2, self.find_column('Total', fuzzy_search = True)))
+        self.header_changed()
 
 class Wordless_Table_Multi_Sort(Wordless_Table):
     def __init__(self, parent, sort_table, sort_columns):

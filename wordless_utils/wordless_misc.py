@@ -64,6 +64,21 @@ def multiple_sorting(item):
 
     return keys
 
+def merge_dicts(dicts_to_be_merged):
+    dict_merged = {}
+
+    for i, dict_to_be_merged in enumerate(dicts_to_be_merged):
+        for values in dict_merged.values():
+            values.append(0)
+
+        for key, value in dict_to_be_merged.items():
+            if key not in dict_merged:
+                dict_merged[key] = [0] * (i + 1)
+
+            dict_merged[key][i] = value
+
+    return dict(sorted(dict_merged.items(), key = multiple_sorting))
+
 def check_file_existence(main, files):
     files_found = []
     files_missing = []
@@ -85,16 +100,14 @@ def check_file_existence(main, files):
     return files_found
 
 def check_search_term(function):
-    def wrapper(tab, *args, **kwargs):
-        main = tab.main
-
+    def wrapper(main, tab, *args, **kwargs):
         if tab.name == tab.tr('N-gram'):
             settings = main.settings['ngram']
         elif tab.name == tab.tr('Collocation'):
             settings = main.settings['collocation']
 
         if settings['show_all'] or (not settings['show_all'] and settings['search_terms']):
-            function(*args, **kwargs)
+            function(main, *args, **kwargs)
         else:
             QMessageBox.warning(main,
                                 main.tr('Empty Search Term'),
@@ -104,9 +117,7 @@ def check_search_term(function):
     return wrapper
 
 def check_results_table(function):
-    def wrapper(table, *args, **kwargs):
-        main = table.main
-
+    def wrapper(main, table, *args, **kwargs):
         function(main, table, *args, **kwargs)
 
         if table.rowCount() == 0:

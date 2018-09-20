@@ -15,6 +15,51 @@ import nltk
 
 from wordless_utils import *
 
+class Wordless_Table_Wordlist(wordless_table.Wordless_Table):
+    def __init__(self, main):
+        super().__init__(main,
+                         headers = [
+                             main.tr('Rank'),
+                             main.tr('Tokens'),
+                             main.tr('Total'),
+                             main.tr('Total (Cumulative)'),
+                             main.tr('Files Found'),
+                         ])
+
+    def update_filters(self):
+        settings = self.main.settings['wordlist']
+
+        col_freq = self.find_column(settings['freq_apply_to'])
+        col_tokens = self.find_column('Tokens')
+        col_files_found = self.find_column('Files Found')
+
+        freq_min = settings['freq_min']
+        freq_max = settings['freq_max'] if not settings['freq_no_limit'] else float('inf')
+        len_min = settings['len_min']
+        len_max = settings['len_max'] if not settings['len_no_limit'] else float('inf')
+        files_min = settings['files_min']
+        files_max = settings['files_max'] if not settings['files_no_limit'] else float('inf')
+
+        self.row_filters = [{} for i in range(self.rowCount())]
+
+        for i in range(self.rowCount()):
+            if freq_min <= self.item(i, col_freq).read_data() <= freq_max:
+                self.row_filters[i]['Total'] = True
+            else:
+                self.row_filters[i]['Total'] = False
+
+            if len_min <= len(str(self.item(i, col_tokens).read_data()).replace(' ', '')) <= len_max:
+                self.row_filters[i]['Tokens'] = True
+            else:
+                self.row_filters[i]['Tokens'] = False
+
+            if files_min <= self.item(i, col_files_found).read_data() <= files_max:
+                self.row_filters[i]['Files Found'] = True
+            else:
+                self.row_filters[i]['Files Found'] = False
+
+        self.filter_table()
+
 def init(main):
     def load_settings(defaults = False):
         if defaults:
@@ -30,7 +75,6 @@ def init(main):
         checkbox_numerals.setChecked(settings['numerals'])
 
         line_edit_search_term.setText(settings['search_term'])
-
         list_search_terms.clear()
         for search_term in settings['search_terms']:
             list_search_terms.add_item(search_term)
@@ -153,19 +197,12 @@ def init(main):
 
     tab_wordlist = wordless_tab.Wordless_Tab(main, main.tr('Wordlist'))
 
-    table_wordlist = wordless_table.Wordless_Table(main,
-                                                   headers = [
-                                                       main.tr('Rank'),
-                                                       main.tr('Tokens'),
-                                                       main.tr('Total'),
-                                                       main.tr('Total (Cumulative)'),
-                                                       main.tr('Files Found'),
-                                                   ])
+    table_wordlist = Wordless_Table_Wordlist(main)
 
     table_wordlist.button_generate_data = QPushButton(main.tr('Generate Wordlist'), main)
     table_wordlist.button_generate_plot = QPushButton(main.tr('Generate Plot'), main)
 
-    table_wordlist.button_generate_data.clicked.connect(lambda: generate_data(table_wordlist))
+    table_wordlist.button_generate_data.clicked.connect(lambda: generate_data(main, table_wordlist))
     table_wordlist.button_generate_plot.clicked.connect(lambda: generate_plot(main))
 
     tab_wordlist.layout_table.addWidget(table_wordlist, 0, 0, 1, 5)
@@ -408,10 +445,18 @@ def init(main):
 
     return tab_wordlist
 
+def generate_freq_distributions(main, files):
+    freq_distributions = []
+
+    for i, file in enumerate(files):
+        text = wordless_text.Wordless_Text(main, file)
+        
+        freq_distributions.append(text.wordlist(main.settings['wordlist']))
+
+    return wordless_distribution.Wordless_Freq_Distribution(wordless_misc.merge_dicts(freq_distributions))
+
 @wordless_misc.check_results_table
 def generate_data(main, table):
-    table.row_filters = {}
-
     table.clear_table()
 
     files = main.wordless_files.selected_files()
@@ -422,7 +467,9 @@ def generate_data(main, table):
         table.insert_column(table.find_column(main.tr('Total')), file['name'])
         table.insert_column(table.find_column(main.tr('Total')), file['name'] + main.tr(' (Cumulative)'))
 
-    freq_distributions = wordless_distribution.wordless_freq_distributions(main, files, mode = 'wordlist')
+    table.sortByColumn(table.find_column('Tokens') + 1, Qt.DescendingOrder)
+
+    freq_distributions = generate_freq_distributions(main, files)
 
     col_total = table.find_column(main.tr('Total'))
     col_files_found = table.find_column(main.tr('Files Found'))
@@ -432,11 +479,9 @@ def generate_data(main, table):
     freqs_total = sum([sum(freqs) for freqs in freqs_files])
     len_files = len(files)
 
-    table.itemChanged.emit(table.item(0, 0))
-
     table.blockSignals(True)
     table.setSortingEnabled(False)
-    table.hide()
+    table.setUpdatesEnabled(False)
 
     table.setRowCount(len(freq_distributions))
 
@@ -454,17 +499,11 @@ def generate_data(main, table):
         # Files Found
         table.set_item_with_pct(i, col_files_found, len([freq for freq in freqs if freq > 0]), len_files)
 
-    table.sortByColumn(table.find_column('Tokens') + 1, Qt.DescendingOrder)
-
     table.blockSignals(False)
-
-    for i in range(table.rowCount()):
-        table.row_filters[i] = {column: True for column in table.filters}
-
-    table.itemChanged.emit(table.item(0, 0))
-
     table.setSortingEnabled(True)
-    table.show()
+    table.setUpdatesEnabled(True)
+
+    table.update_filters()
     
     main.status_bar.showMessage(main.tr('Done!'))
 
@@ -598,7 +637,7 @@ def clear_highlights(main, table):
 def generate_plot(main):
     files = main.wordless_files.selected_files()
 
-    freq_distributions = wordless_distribution.wordless_freq_distributions(main, files, mode = 'wordlist')
+    freq_distributions = generate_freq_distributions(main, files)
 
     freq_distributions.plot(files = files,
                             start = main.settings['wordlist']['rank_min'] - 1,

@@ -241,7 +241,7 @@ class Wordless_Text(nltk.Text):
             self.tokens = [token.lower() for token in self.tokens]
 
         if settings['lemmatization']:
-            self.tokens = wordless_lemmatize(self.main, self.tokens)
+            self.tokens = wordless_lemmatize(self.main, self.tokens, self.lang)
 
         if settings['punctuations'] == False:
             self.tokens = [token for token in self.tokens if token.isalnum()]
@@ -277,7 +277,7 @@ class Wordless_Text(nltk.Text):
                                  if search_term in ngram and
                                  settings['keyword_position_min'] <= ngram.index(search_term) + 1 <= settings['keyword_position_max']}
 
-        freq_distribution = {self.delimiter.join(ngram): freq for ngram, freq in freq_distribution.items()}
+        freq_distribution = {self.word_delimiter.join(ngram): freq for ngram, freq in freq_distribution.items()}
 
         return freq_distribution
 

@@ -203,6 +203,7 @@ def wordless_widgets_table_settings(main, table):
             col_files_found = table.find_column(main.tr('Files Found'))
 
             table.hide()
+            table.blockSignals(True)
             table.setSortingEnabled(False)
 
             for col in table.cols_pct:
@@ -222,14 +223,15 @@ def wordless_widgets_table_settings(main, table):
 
                     table.set_item_with_pct(row, col, value, total, show_pct = table.show_pct)
 
-            table.setSortingEnabled(True)
             table.show()
+            table.blockSignals(False)
+            table.setSortingEnabled(True)
 
     def show_cumulative_changed():
         cols_cumulative = table.find_columns_cumulative()
         cols_breakdown = table.find_columns_breakdown()
 
-        table.hide()
+        table.setUpdatesEnabled(False)
 
         for col in cols_cumulative:
             if checkbox_show_cumulative.isChecked():
@@ -238,13 +240,13 @@ def wordless_widgets_table_settings(main, table):
             else:
                 table.hideColumn(col)
 
-        table.show()
+        table.setUpdatesEnabled(True)
 
     def show_breakdown_changed():
         cols_cumulative = table.find_columns_cumulative()
         cols_breakdown = table.find_columns_breakdown()
 
-        table.hide()
+        table.setUpdatesEnabled(False)
 
         for col in cols_breakdown:
             if checkbox_show_breakdown.isChecked():
@@ -253,10 +255,7 @@ def wordless_widgets_table_settings(main, table):
             else:
                 table.hideColumn(col)
 
-        table.show()
-
-    def table_item_changed():
-        table.cols_pct = list(range(2, table.columnCount()))
+        table.setUpdatesEnabled(True)
 
     checkbox_show_pct = QCheckBox(main.tr('Show Percentage'), main)
     checkbox_show_cumulative = QCheckBox(main.tr('Show Cumulative Data'), main)
@@ -265,8 +264,6 @@ def wordless_widgets_table_settings(main, table):
     checkbox_show_pct.stateChanged.connect(show_pct_changed)
     checkbox_show_cumulative.stateChanged.connect(show_cumulative_changed)
     checkbox_show_breakdown.stateChanged.connect(show_breakdown_changed)
-
-    table.itemChanged.connect(table_item_changed)
 
     show_pct_changed()
     show_cumulative_changed()
@@ -281,8 +278,7 @@ def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None
         else:
             spin_box_max.setEnabled(True)
 
-        if table:
-            filter_changed()
+        filter_changed()
 
     def filter_min_changed():
         if spin_box_min.value() > spin_box_max.value():
@@ -293,12 +289,9 @@ def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None
             spin_box_min.setValue(spin_box_max.value())
 
     def filter_changed():
-        table.blockSignals(True)
-        table.hide()
-
         if table and table.item(0, 1):
             if column == 'Total':
-                col_filter = table.find_column(combo_box_apply_to.currentText(), fuzzy_search = True)
+                col_filter = table.find_column(combo_box_apply_to.currentText())
             else:
                 col_filter = table.find_column(column)
 
@@ -320,36 +313,25 @@ def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None
                     else:
                         table.row_filters[i][column] = False
 
-                if all(list(table.row_filters[i].values())):
-                    table.showRow(i)
-                else:
-                    table.hideRow(i)
+            table.filter_table()
 
-            table.sorting_changed(table.horizontalHeader().sortIndicatorSection(), table.horizontalHeader().sortIndicatorOrder())
-            
-        table.blockSignals(False)
-        table.show()
+    def table_header_changed():
+        apply_to_old = combo_box_apply_to.currentText()
 
-    def table_item_changed():
-        if column == 'Total':
-            apply_to_old = combo_box_apply_to.currentText()
+        combo_box_apply_to.blockSignals(True)
+        combo_box_apply_to.clear()
 
-            combo_box_apply_to.blockSignals(True)
-            combo_box_apply_to.clear()
+        for i in table.find_columns_breakdown():
+            combo_box_apply_to.addItem(table.horizontalHeaderItem(i).text())
+        combo_box_apply_to.addItem(main.tr('Total'))
 
-            for i in table.find_columns_breakdown():
-                combo_box_apply_to.addItem(table.horizontalHeaderItem(i).text())
-            combo_box_apply_to.addItem(main.tr('Total'))
+        for i in range(combo_box_apply_to.count()):
+            if combo_box_apply_to.itemText(i) == apply_to_old:
+                combo_box_apply_to.setCurrentIndex(i)
 
-            for i in range(combo_box_apply_to.count()):
-                if combo_box_apply_to.itemText(i) == apply_to_old:
-                    combo_box_apply_to.setCurrentIndex(i)
+                break
 
-                    break
-
-            combo_box_apply_to.blockSignals(False)
-
-        filter_changed()
+        combo_box_apply_to.blockSignals(False)
 
     checkbox_no_limit = QCheckBox(main.tr('No Limit'), main)
     label_min = QLabel(main.tr('From'), main)
@@ -361,9 +343,11 @@ def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None
         label_apply_to = QLabel(main.tr('Apply to:'), main)
         combo_box_apply_to = QComboBox(main)
 
-        combo_box_apply_to.addItem('Total')
-
         combo_box_apply_to.currentTextChanged.connect(filter_changed)
+
+        table.horizontalHeader().sectionCountChanged.connect(table_header_changed)
+
+        table_header_changed()
 
     spin_box_min.setRange(filter_min, filter_max)
     spin_box_max.setRange(filter_min, filter_max)
@@ -377,11 +361,10 @@ def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None
     filter_no_limit_changed()
     filter_min_changed()
     filter_max_changed()
+    filter_changed()
 
     if table:
         table.filters.append(column)
-
-        table.itemChanged.connect(table_item_changed)
 
     if column == 'Total':
         return [checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max, label_apply_to, combo_box_apply_to]

@@ -57,6 +57,8 @@ class Wordless_Main(QMainWindow):
                 pickle.dump(self.settings, f)
 
             event.accept()
+        else:
+            event.ignore()
 
     def init_menu(self):
         def show_status_bar():
@@ -194,7 +196,7 @@ class Wordless_Main(QMainWindow):
                                                 </tr>
                                                 <tr>
                                                   <td><a href="https://matplotlib.org/">Matplotlib</a></td>
-                                                  <td>2.2.3</td>
+                                                  <td>3.0.0</td>
                                                   <td><a href="https://github.com/matplotlib/matplotlib#contact">Matplotlib Development   Team</a></td>
                                                   <td><a href="https://matplotlib.org/users/license.html">Matplotlib</a></td>
                                                 </tr>

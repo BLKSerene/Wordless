@@ -787,6 +787,7 @@ def init_settings(main):
             'numerals': True,
             'punctuations': False,
     
+            'search_term': '',
             'search_terms': [],
             'keyword_position_no_limit': True,
             'keyword_position_min': 1,
