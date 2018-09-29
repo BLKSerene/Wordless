@@ -14,6 +14,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import nltk
 
+from wordless_widgets import *
 from wordless_utils import *
 
 class Wordless_Table_Ngram(wordless_table.Wordless_Table):
@@ -26,12 +27,15 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table):
                              main.tr('Total (Cumulative)'),
                              main.tr('Files Found'),
                          ],
+                         cols_with_pct = [
+                             main.tr('Total'),
+                             main.tr('Total (Cumulative)'),
+                             main.tr('Files Found')
+                         ],
                          sorting_enabled = True)
 
-        self.main = main
-
     def update_filters(self):
-        settings = self.main.settings['ngram']
+        settings = self.main.settings_custom['ngram']
 
         col_freq = self.find_column(settings['freq_apply_to'])
         col_ngrams = self.find_column('N-grams')
@@ -48,28 +52,28 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table):
 
         for i in range(self.rowCount()):
             if freq_min <= self.item(i, col_freq).read_data() <= freq_max:
-                self.row_filters[i]['Total'] = True
+                self.row_filters[i][self.tr('Total')] = True
             else:
-                self.row_filters[i]['Total'] = False
+                self.row_filters[i][self.tr('Total')] = False
 
             if len_min <= len(str(self.item(i, col_ngrams).read_data()).replace(' ', '')) <= len_max:
-                self.row_filters[i]['N-grams'] = True
+                self.row_filters[i][self.tr('N-grams')] = True
             else:
-                self.row_filters[i]['N-grams'] = False
+                self.row_filters[i][self.tr('N-grams')] = False
 
             if files_min <= self.item(i, col_files_found).read_data() <= files_max:
-                self.row_filters[i]['Files Found'] = True
+                self.row_filters[i][self.tr('Files Found')] = True
             else:
-                self.row_filters[i]['Files Found'] = False
+                self.row_filters[i][self.tr('Files Found')] = False
 
         self.filter_table()
 
 def init(main):
     def load_settings(defaults = False):
         if defaults:
-            settings = copy.deepcopy(main.default_settings['ngram'])
+            settings = copy.deepcopy(main.settings_default['ngram'])
         else:
-            settings = copy.deepcopy(main.settings['ngram'])
+            settings = copy.deepcopy(main.settings_custom['ngram'])
 
         checkbox_words.setChecked(settings['words'])
         checkbox_lowercase.setChecked(settings['lowercase'])
@@ -128,12 +132,12 @@ def init(main):
         filter_settings_changed()
 
     def token_settings_changed():
-        main.settings['ngram']['words'] = False if checkbox_words.checkState() == Qt.Unchecked else True
-        main.settings['ngram']['lowercase'] = checkbox_lowercase.isChecked()
-        main.settings['ngram']['uppercase'] = checkbox_uppercase.isChecked()
-        main.settings['ngram']['title_cased'] = checkbox_title_cased.isChecked()
-        main.settings['ngram']['numerals'] = checkbox_numerals.isChecked()
-        main.settings['ngram']['punctuations'] = checkbox_punctuations.isChecked()
+        main.settings_custom['ngram']['words'] = False if checkbox_words.checkState() == Qt.Unchecked else True
+        main.settings_custom['ngram']['lowercase'] = checkbox_lowercase.isChecked()
+        main.settings_custom['ngram']['uppercase'] = checkbox_uppercase.isChecked()
+        main.settings_custom['ngram']['title_cased'] = checkbox_title_cased.isChecked()
+        main.settings_custom['ngram']['numerals'] = checkbox_numerals.isChecked()
+        main.settings_custom['ngram']['punctuations'] = checkbox_punctuations.isChecked()
 
         if checkbox_words.checkState() == Qt.Unchecked:
             checkbox_ignore_case.setEnabled(False)
@@ -149,25 +153,25 @@ def init(main):
             checkbox_lemmatization.setEnabled(False)
 
     def search_settings_changed():
-        if main.settings['ngram']['multi_search']:
+        if main.settings_custom['ngram']['multi_search']:
             list_search_terms.get_items()
         else:
             if line_edit_search_term.text():
-                main.settings['ngram']['search_terms'] = [line_edit_search_term.text()]
+                main.settings_custom['ngram']['search_terms'] = [line_edit_search_term.text()]
             else:
-                main.settings['ngram']['search_terms'] = []
+                main.settings_custom['ngram']['search_terms'] = []
 
-        main.settings['ngram']['keyword_position_no_limit'] = checkbox_keyword_position_no_limit.isChecked()
-        main.settings['ngram']['keyword_position_min'] = spin_box_keyword_position_min.value()
-        main.settings['ngram']['keyword_position_max'] = spin_box_keyword_position_max.value()
-        main.settings['ngram']['ignore_case'] = checkbox_ignore_case.isChecked()
-        main.settings['ngram']['lemmatization'] = checkbox_lemmatization.isChecked()
-        main.settings['ngram']['whole_word'] = checkbox_whole_word.isChecked()
-        main.settings['ngram']['regex'] = checkbox_regex.isChecked()
-        main.settings['ngram']['multi_search'] = checkbox_multi_search.isChecked()
-        main.settings['ngram']['show_all'] = checkbox_show_all.isChecked()
+        main.settings_custom['ngram']['keyword_position_no_limit'] = checkbox_keyword_position_no_limit.isChecked()
+        main.settings_custom['ngram']['keyword_position_min'] = spin_box_keyword_position_min.value()
+        main.settings_custom['ngram']['keyword_position_max'] = spin_box_keyword_position_max.value()
+        main.settings_custom['ngram']['ignore_case'] = checkbox_ignore_case.isChecked()
+        main.settings_custom['ngram']['lemmatization'] = checkbox_lemmatization.isChecked()
+        main.settings_custom['ngram']['whole_word'] = checkbox_whole_word.isChecked()
+        main.settings_custom['ngram']['regex'] = checkbox_regex.isChecked()
+        main.settings_custom['ngram']['multi_search'] = checkbox_multi_search.isChecked()
+        main.settings_custom['ngram']['show_all'] = checkbox_show_all.isChecked()
 
-        if main.settings['ngram']['ignore_case']:
+        if main.settings_custom['ngram']['ignore_case']:
             checkbox_lowercase.setEnabled(False)
             checkbox_uppercase.setEnabled(False)
             checkbox_title_cased.setEnabled(False)
@@ -176,7 +180,7 @@ def init(main):
             checkbox_uppercase.setEnabled(True)
             checkbox_title_cased.setEnabled(True)
 
-        if main.settings['ngram']['show_all']:
+        if main.settings_custom['ngram']['show_all']:
             table_ngram.button_generate_data.setText(main.tr('Generate N-grams'))
             label_ngram_size.setText(main.tr('N-gram Size:'))
 
@@ -190,62 +194,52 @@ def init(main):
             checkbox_keyword_position_no_limit.setEnabled(True)
             spin_box_keyword_position_min.setEnabled(True)
 
-            if not main.settings['ngram']['keyword_position_no_limit']:
+            if not main.settings_custom['ngram']['keyword_position_no_limit']:
                 spin_box_keyword_position_max.setEnabled(True)
 
     def generation_settings_changed():
-        main.settings['ngram']['ngram_size_sync'] = checkbox_ngram_size_sync.isChecked()
-        main.settings['ngram']['ngram_size_min'] = spin_box_ngram_size_min.value()
-        main.settings['ngram']['ngram_size_max'] = spin_box_ngram_size_max.value()
-        main.settings['ngram']['allow_skipped_tokens'] = spin_box_allow_skipped_tokens.value()
+        main.settings_custom['ngram']['ngram_size_sync'] = checkbox_ngram_size_sync.isChecked()
+        main.settings_custom['ngram']['ngram_size_min'] = spin_box_ngram_size_min.value()
+        main.settings_custom['ngram']['ngram_size_max'] = spin_box_ngram_size_max.value()
+        main.settings_custom['ngram']['allow_skipped_tokens'] = spin_box_allow_skipped_tokens.value()
 
-        if (main.settings['ngram']['keyword_position_no_limit'] and
+        if (main.settings_custom['ngram']['keyword_position_no_limit'] and
             spin_box_keyword_position_max.value() == spin_box_keyword_position_max.maximum()):
-            spin_box_keyword_position_min.setMaximum(main.settings['ngram']['ngram_size_max'])
-            spin_box_keyword_position_max.setMaximum(main.settings['ngram']['ngram_size_max'])
+            spin_box_keyword_position_min.setMaximum(main.settings_custom['ngram']['ngram_size_max'])
+            spin_box_keyword_position_max.setMaximum(main.settings_custom['ngram']['ngram_size_max'])
 
-            spin_box_keyword_position_max.setValue(main.settings['ngram']['ngram_size_max'])
+            spin_box_keyword_position_max.setValue(main.settings_custom['ngram']['ngram_size_max'])
         else:
-            spin_box_keyword_position_min.setMaximum(main.settings['ngram']['ngram_size_max'])
-            spin_box_keyword_position_max.setMaximum(main.settings['ngram']['ngram_size_max'])
+            spin_box_keyword_position_min.setMaximum(main.settings_custom['ngram']['ngram_size_max'])
+            spin_box_keyword_position_max.setMaximum(main.settings_custom['ngram']['ngram_size_max'])
 
     def table_settings_changed():
-        main.settings['ngram']['show_pct'] = checkbox_show_pct.isChecked()
-        main.settings['ngram']['show_cumulative'] = checkbox_show_cumulative.isChecked()
-        main.settings['ngram']['show_breakdown'] = checkbox_show_breakdown.isChecked()
+        main.settings_custom['ngram']['show_pct'] = checkbox_show_pct.isChecked()
+        main.settings_custom['ngram']['show_cumulative'] = checkbox_show_cumulative.isChecked()
+        main.settings_custom['ngram']['show_breakdown'] = checkbox_show_breakdown.isChecked()
 
     def plot_settings_changed():
-        main.settings['ngram']['rank_no_limit'] = checkbox_rank_no_limit.isChecked()
-        main.settings['ngram']['rank_min'] = spin_box_rank_min.value()
-        main.settings['ngram']['rank_max'] = spin_box_rank_max.value()
+        main.settings_custom['ngram']['rank_no_limit'] = checkbox_rank_no_limit.isChecked()
+        main.settings_custom['ngram']['rank_min'] = spin_box_rank_min.value()
+        main.settings_custom['ngram']['rank_max'] = spin_box_rank_max.value()
 
-        main.settings['ngram']['cumulative'] = checkbox_cumulative.isChecked()
+        main.settings_custom['ngram']['cumulative'] = checkbox_cumulative.isChecked()
 
     def filter_settings_changed():
-        main.settings['ngram']['freq_no_limit'] = checkbox_freq_no_limit.isChecked()
-        main.settings['ngram']['freq_min'] = spin_box_freq_min.value()
-        main.settings['ngram']['freq_max'] = spin_box_freq_max.value()
-        main.settings['ngram']['freq_apply_to'] = combo_box_freq_apply_to.currentText()
+        main.settings_custom['ngram']['freq_no_limit'] = checkbox_freq_no_limit.isChecked()
+        main.settings_custom['ngram']['freq_min'] = spin_box_freq_min.value()
+        main.settings_custom['ngram']['freq_max'] = spin_box_freq_max.value()
+        main.settings_custom['ngram']['freq_apply_to'] = combo_box_freq_apply_to.currentText()
 
-        main.settings['ngram']['len_no_limit'] = checkbox_len_no_limit.isChecked()
-        main.settings['ngram']['len_min'] = spin_box_len_min.value()
-        main.settings['ngram']['len_max'] = spin_box_len_max.value()
+        main.settings_custom['ngram']['len_no_limit'] = checkbox_len_no_limit.isChecked()
+        main.settings_custom['ngram']['len_min'] = spin_box_len_min.value()
+        main.settings_custom['ngram']['len_max'] = spin_box_len_max.value()
 
-        main.settings['ngram']['files_no_limit'] = checkbox_files_no_limit.isChecked()
-        main.settings['ngram']['files_min'] = spin_box_files_min.value()
-        main.settings['ngram']['files_max'] = spin_box_files_max.value()
+        main.settings_custom['ngram']['files_no_limit'] = checkbox_files_no_limit.isChecked()
+        main.settings_custom['ngram']['files_min'] = spin_box_files_min.value()
+        main.settings_custom['ngram']['files_max'] = spin_box_files_max.value()
 
-    def restore_defaults():
-        reply = QMessageBox.question(main,
-                                     main.tr('Restore Defaults'),
-                                     main.tr('Do you really want to reset all settings to defaults?'),
-                                     QMessageBox.Yes | QMessageBox.No,
-                                     QMessageBox.No)
-
-        if reply == QMessageBox.Yes:
-            load_settings(defaults = True)
-
-    tab_ngram = wordless_tab.Wordless_Tab(main, main.tr('N-gram'))
+    tab_ngram = wordless_layout.Wordless_Tab(main, load_settings)
     
     table_ngram = Wordless_Table_Ngram(main)
 
@@ -269,8 +263,11 @@ def init(main):
      checkbox_lowercase,
      checkbox_uppercase,
      checkbox_title_cased,
+     checkbox_ignore_case,
+     checkbox_lemmatization,
+     checkbox_filter_stopwords,
      checkbox_numerals,
-     checkbox_punctuations) = wordless_widgets.wordless_widgets_token_settings(main)
+     checkbox_punctuations) = wordless_widgets.wordless_widgets_token(main)
 
     checkbox_words.stateChanged.connect(token_settings_changed)
     checkbox_lowercase.stateChanged.connect(token_settings_changed)
@@ -278,6 +275,7 @@ def init(main):
     checkbox_title_cased.stateChanged.connect(token_settings_changed)
     checkbox_numerals.stateChanged.connect(token_settings_changed)
     checkbox_punctuations.stateChanged.connect(token_settings_changed)
+    checkbox_filter_stopwords.stateChanged.connect(token_settings_changed)
 
     layout_token_settings = QGridLayout()
     layout_token_settings.addWidget(checkbox_words, 0, 0)
@@ -286,6 +284,7 @@ def init(main):
     layout_token_settings.addWidget(checkbox_uppercase, 1, 1)
     layout_token_settings.addWidget(checkbox_punctuations, 2, 0)
     layout_token_settings.addWidget(checkbox_title_cased, 2, 1)
+    layout_token_settings.addWidget(checkbox_filter_stopwords, 3, 0, 1, 2)
 
     group_box_token_settings.setLayout(layout_token_settings)
 
@@ -442,14 +441,16 @@ def init(main):
                                                                          filter_min = 0,
                                                                          filter_max = 10000,
                                                                          table = table_ngram,
-                                                                         column = 'Total')
+                                                                         col = 'Total')
 
     label_len = QLabel(main.tr('N-gram Length:'), main)
     (checkbox_len_no_limit,
      label_len_min,
      spin_box_len_min,
      label_len_max,
-     spin_box_len_max) = wordless_widgets.wordless_widgets_filter(main, table = table_ngram, column = 'N-grams')
+     spin_box_len_max) = wordless_widgets.wordless_widgets_filter(main,
+                                                                  table = table_ngram,
+                                                                  col = 'N-grams')
 
     label_files = QLabel(main.tr('Files Found:'), main)
     (checkbox_files_no_limit,
@@ -460,7 +461,7 @@ def init(main):
                                                                     filter_min = 1,
                                                                     filter_max = 1000,
                                                                     table = table_ngram,
-                                                                    column = 'Files Found')
+                                                                    col = 'Files Found')
 
     checkbox_freq_no_limit.stateChanged.connect(filter_settings_changed)
     spin_box_freq_min.editingFinished.connect(filter_settings_changed)
@@ -508,8 +509,6 @@ def init(main):
     tab_ngram.layout_settings.addWidget(group_box_plot_settings, 4, 0, Qt.AlignTop)
     tab_ngram.layout_settings.addWidget(group_box_filter_settings, 5, 0, Qt.AlignTop)
 
-    tab_ngram.button_restore_defaults.clicked.connect(restore_defaults)
-
     load_settings()
 
     return tab_ngram
@@ -520,7 +519,7 @@ def generate_freq_distributions(main, files):
     for i, file in enumerate(files):
         text = wordless_text.Wordless_Text(main, file)
         
-        freq_distributions.append(text.ngram(main.settings['ngram']))
+        freq_distributions.append(text.ngram(main.settings_custom['ngram']))
 
     return wordless_distribution.Wordless_Freq_Distribution(wordless_misc.merge_dicts(freq_distributions))
 
@@ -532,8 +531,8 @@ def generate_data(main, table):
     files = main.wordless_files.selected_files()
 
     for i, file in enumerate(files):
-        table.insert_column(table.find_column(main.tr('Total')), file['name'])
-        table.insert_column(table.find_column(main.tr('Total')), file['name'] + main.tr(' (Cumulative)'))
+        table.insert_column(table.find_column(main.tr('Total')), file['name'], with_pct = True)
+        table.insert_column(table.find_column(main.tr('Total')), file['name'] + main.tr(' (Cumulative)'), with_pct = True)
 
     table.sortByColumn(table.find_column('N-grams') + 1, Qt.DescendingOrder)
 
@@ -577,13 +576,13 @@ def generate_data(main, table):
 
 @wordless_misc.check_search_term
 def generate_plot(main):
-    files = wordless_misc.fetch_files(main)
+    files = main.wordless_files.selected_files()
 
     freq_distributions = generate_freq_distributions(main, files)
 
     freq_distributions.plot(files = files,
-                            start = main.settings['ngram']['rank_min'] - 1,
-                            end = main.settings['ngram']['rank_max'],
-                            cumulative = main.settings['ngram']['cumulative'])
+                            start = main.settings_custom['ngram']['rank_min'] - 1,
+                            end = main.settings_custom['ngram']['rank_max'],
+                            cumulative = main.settings_custom['ngram']['cumulative'])
 
     main.status_bar.showMessage(main.tr('Done!'))

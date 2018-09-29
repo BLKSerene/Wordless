@@ -14,47 +14,6 @@ from PyQt5.QtWidgets import *
 
 from wordless_utils import wordless_text
 
-def convert_lang(main, lang):
-    # Text -> Code
-    if lang[0].isupper():
-        return main.file_langs[lang]
-    # Code -> Text
-    else:
-        for lang_text, lang_code in main.file_langs.items():
-            if lang_code == lang:
-                return lang_text
-
-def convert_ext(main, ext):
-    # Text -> Code
-    return main.file_exts[ext].split(' (')[0]
-
-def convert_encoding(main, encoding, lang = None):
-    # Text -> Code
-    if encoding.find('(') > -1:
-        encoding_code = main.file_encodings[encoding]
-        encoding_lang = encoding.split('(')[0]
-
-        return (encoding_code, encoding_lang)
-
-    # Code -> Text
-    else:
-        for encoding_text, encoding_code in main.file_encodings.items():
-            if encoding == encoding_code:
-                # Distinguish between different languages
-                if lang:
-                    if encoding_text.find(lang) > -1:
-                        return encoding_text
-                else:
-                    return encoding_text
-
-def convert_word_delimiter(lang):
-    if lang in ['jpn', 'kor', 'zho-cn', 'zho-tw']:
-        word_delimiter = ''
-    else:
-        word_delimiter = ' '
-
-    return word_delimiter
-
 def multiple_sorting(item):
     keys = []
 
@@ -100,14 +59,19 @@ def check_file_existence(main, files):
     return files_found
 
 def check_search_term(function):
-    def wrapper(main, tab, *args, **kwargs):
-        if tab.name == tab.tr('N-gram'):
-            settings = main.settings['ngram']
-        elif tab.name == tab.tr('Collocation'):
-            settings = main.settings['collocation']
+    def wrapper(main, *args, **kwargs):
+        tab_text = main.tabs.tabText(main.tabs.indexOf(main.tabs.currentWidget()))
 
-        if settings['show_all'] or (not settings['show_all'] and settings['search_terms']):
-            function(main, *args, **kwargs)
+        if tab_text == main.tr('Wordlist'):
+            settings = main.settings_custom['wordlist']
+        if tab_text == main.tr('N-gram'):
+            settings = main.settings_custom['ngram']
+        elif tab_text == main.tr('Collocation'):
+            settings = main.settings_custom['collocation']
+
+        if (settings['multi_search'] and settings['search_terms'] or
+            not settings['multi_search'] and settings['search_term']):
+            return function(main, *args, **kwargs)
         else:
             QMessageBox.warning(main,
                                 main.tr('Empty Search Term'),

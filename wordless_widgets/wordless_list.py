@@ -1,5 +1,5 @@
 #
-# Wordless: Utility Functions for Lists
+# Wordless: List
 #
 # Copyright (C) 2018 Ye Lei
 #
@@ -92,7 +92,7 @@ class Wordless_List(QListWidget):
         i = 1
 
         while True:
-            if self.findItems('New Item ({})'.format(i), Qt.MatchExactly):
+            if self.findItems(self.tr(f'New Item ({i})'), Qt.MatchExactly):
                 i += 1
             else:
                 new_item = QListWidgetItem(self.tr('New Item ({})').format(i))
