@@ -40,7 +40,7 @@ GB (GB/T 7714—2015):
     叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.
 
 ## Need Help?/需要帮助？
-Should you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.
+If you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.
 
 若您需要更多信息或在使用 Wordless 的过程中遇到了任何问题，欢迎随时联系我，我会尽快给予回复。
 
@@ -71,11 +71,14 @@ Many thanks to the following open-source projects on which Wordless is built on:
 6. [NetworkX](http://networkx.github.io/)
 7. [NumPy](http://www.numpy.org/)
 8. [PyQt](https://www.riverbankcomputing.com/software/pyqt/intro)
-9. [chardet](https://github.com/chardet/chardet)
-10. [langdetect](https://github.com/Mimino666/langdetect)
-11. [lxml](https://lxml.de/)
-12. [openpyxl](https://openpyxl.readthedocs.io/en/stable/#)
-13. [“结巴”中文分词](https://github.com/fxsjy/jieba)
+9. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)
+10. [chardet](https://github.com/chardet/chardet)
+11. [e_lemma.txt](https://lexically.net/downloads/BNC_wordlists/e_lemma.txt)
+12. [langdetect](https://github.com/Mimino666/langdetect)
+13. [lxml](https://lxml.de/)
+14. [openpyxl](https://openpyxl.readthedocs.io/en/stable/#)
+15. [stopwords-json](https://github.com/6/stopwords-json)
+16. [“结巴”中文分词](https://github.com/fxsjy/jieba)
 
 ## Donation/捐助
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.
