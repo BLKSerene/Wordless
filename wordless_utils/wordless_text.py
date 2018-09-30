@@ -6,6 +6,7 @@
 # For license information, see LICENSE.txt.
 #
 
+import collections
 import json
 import re
 
@@ -13,28 +14,27 @@ from bs4 import BeautifulSoup
 import jieba
 import nltk
 
-from wordless_utils import wordless_conversion, wordless_distribution, wordless_misc
+#from wordless_utils import wordless_conversion, wordless_distribution, wordless_misc
 
 def wordless_word_tokenize(text, lang):
     tokens = []
 
     if lang == 'eng':
         tokens.extend(nltk.word_tokenize(text))
-    elif lang in ['zho-cn', 'zho-tw']:
+    elif lang in ['zho_cn', 'zho_tw']:
         tokens.extend(jieba.lcut(text))
     else:
         tokens.extend(nltk.word_tokenize(text))
 
     return tokens
 
-def wordless_lemmatize(main, tokens, lang, lemmatizer = ''):
-    lang_text = wordless_conversion.to_lang_text(main, lang)
+def wordless_lemmatize(main, tokens, lang_code, lemmatizer = ''):
+    lemmas = []
+    lemma_list = {}
 
-    if lang_text in main.settings_global['lemmatizers']:
-        lemmas = []
-
+    if lang_code in main.settings_global['lemmatizers']:
         if not lemmatizer:
-            lemmatizer = main.settings_custom['lemmatization'][lang]
+            lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang_code]
 
         if lemmatizer == 'NLTK':
             lemmatizer_nltk = nltk.WordNetLemmatizer()
@@ -51,8 +51,6 @@ def wordless_lemmatize(main, tokens, lang, lemmatizer = ''):
                 else:
                     lemmas.append(lemmatizer_nltk.lemmatize(token))
         elif lemmatizer == 'e_lemma.txt':
-            lemma_list = {}
-
             with open('lemmatization/e_lemma.txt', 'r', encoding = 'utf_16') as f:
                 for line in f:
                     if not line.startswith(';'):
@@ -64,10 +62,9 @@ def wordless_lemmatize(main, tokens, lang, lemmatizer = ''):
             lemmas = [lemma_list.get(token, token) for token in tokens]
 
         elif lemmatizer == 'Lemmatization Lists':
-            lang = wordless_misc.convert_lang_code(main, lang)
-            lemma_list = {}
+            lang_code = wordless_conversion.to_iso_639_1(main, lang_code)
 
-            with open(f'lemmatization/Lemmatization Lists/lemmatization-{lang}.txt', 'r', encoding = 'utf_8') as f:
+            with open(f'lemmatization/Lemmatization Lists/lemmatization-{lang_code}.txt', 'r', encoding = 'utf_8') as f:
                 for line in f:
                     try:
                         lemma, word = line.rstrip().split('\t')
@@ -82,18 +79,15 @@ def wordless_lemmatize(main, tokens, lang, lemmatizer = ''):
     else:
         return tokens
 
-def wordless_filter_stop_words(main, tokens, lang_code):
+def wordless_filter_stop_words(main, items, lang_code):
     lang_text = wordless_conversion.to_lang_text(main, lang_code)
     lang_code_639_3 = lang_code
     lang_code_639_1 = wordless_conversion.to_iso_639_1(main, lang_code_639_3)
 
-    if lang_text in main.settings_global['stop_words']:
-        word_list = main.settings_custom['stop_words'][lang_code_639_3]
+    if lang_code_639_3 in main.settings_global['stop_words']:
+        word_list = main.settings_custom['stop_words']['stop_words'][lang_code_639_3]
 
         if word_list == 'NLTK':
-            if lang_text == 'Spanish (Castilian)':
-                lang_text = 'Spanish'
-
             stop_words = nltk.corpus.stopwords.words(lang_text)
         elif word_list == 'Stopwords ISO':
             if lang_code_639_1 == 'zh_cn':
@@ -108,9 +102,14 @@ def wordless_filter_stop_words(main, tokens, lang_code):
             with open(r'stop_words/stopwords-json/stopwords-all.json', 'r', encoding = 'utf_8') as f:
                 stop_words = json.load(f)[lang_code_639_1]
 
-        return [token for token in tokens if token not in stop_words]
+        if type(items[0]) == str:
+            items_filtered = [token for token in items if token not in stop_words]
+        elif type(items[0]) in [list, tuple, set]:
+            items_filtered = [ngram for ngram in items if not [token for token in ngram if token in stop_words]]
+
+        return items_filtered
     else:
-        return tokens
+        return items
 
 # Overload to fix a bug for left_context
 def find_concordance(self, word, width=80, lines=25):
@@ -164,19 +163,19 @@ class Wordless_Text(nltk.Text):
         self.word_delimiter = file['word_delimiter']
 
     def match_tokens(self, search_terms,
-                     case_sensitive, lemmatized_forms, whole_word, regex):
+                     ignore_case, match_inflected_forms, match_whole_word, use_regex):
         tokens_matched = set()
 
         tokens = set(self.tokens)
 
-        # Case sensitive
-        if not case_sensitive:
+        # Ignore case
+        if ignore_case:
             tokens_matched = set([token for token in tokens if token.lower() in search_terms])
 
         for search_term in search_terms:
             # Use regular expression & match whole word only
-            if regex:
-                if whole_word:
+            if use_regex:
+                if match_whole_word:
                     if search_term[:2] != r'\b':
                         search_term = r'\b' + search_term
                     if search_term[-2:] != r'\b':
@@ -184,15 +183,15 @@ class Wordless_Text(nltk.Text):
 
                 tokens_matched = set([token for token in tokens if re.search(search_term, token)])
             else:
-                if whole_word:
+                if match_whole_word:
                     tokens_matched.add(search_term)
                 else:
                     for token in tokens:
                         if token.find(search_term) > -1:
                             tokens_matched.add(token)
 
-            # Match all lemmatized forms
-            if lemmatized_forms:
+            # Match all inflected forms
+            if match_inflected_forms:
                 for token_lemmatized in wordless_lemmatize(self.main, list(tokens_matched), self.lang):
                     tokens_matched.add(token_lemmatized)
 
@@ -248,92 +247,3 @@ class Wordless_Text(nltk.Text):
                                                                 concordance_results[-1].line)
 
         return concordance_results
-
-    def ngram(self, settings):
-        search_terms = self.match_tokens(settings['search_terms'],
-                                         settings['ignore_case'],
-                                         settings['lemmatization'],
-                                         settings['whole_word'],
-                                         settings['regex'])
-
-        if settings['ignore_case']:
-            self.tokens = [token.lower() for token in self.tokens]
-
-        if settings['lemmatization']:
-            self.tokens = wordless_lemmatize(self.main, self.tokens, self.lang)
-
-        if settings['punctuations'] == False:
-            self.tokens = [token for token in self.tokens if token.isalnum()]
-
-        if settings['allow_skipped_tokens'] == 0:
-            ngrams = list(nltk.everygrams(self.tokens, settings['ngram_size_min'], settings['ngram_size_max']))
-        else:
-            ngrams = []
-
-            for i in range(settings['ngram_size_min'], settings['ngram_size_max'] + 1):
-                ngrams.extend(list(nltk.skipgrams(self.tokens, i, settings['allow_skipped_tokens'])))
-
-        if settings['words']:
-            if not settings['ignore_case']:
-                if settings['lowercase'] == False:
-                    ngrams = [ngram for ngram in ngrams if not all(map(str.islower, ngram))]
-                if settings['uppercase'] == False:
-                    ngrams = [ngram for ngram in ngrams if not all(map(str.isupper, ngram))]
-                if settings['title_cased'] == False:
-                    ngrams = [ngram for ngram in ngrams if not all(map(str.istitle, ngram))]
-        else:
-            ngrams = [ngram for ngram in ngrams if not all(map(str.isalpha, ngram))]
-
-        if settings['numerals'] == False:
-            ngrams = [ngram for ngram in ngrams if not all(map(str.isnumeric, ngram))]
-
-        freq_distribution = wordless_distribution.Wordless_Freq_Distribution(ngrams)
-
-        if not settings['show_all']:
-            freq_distribution = {ngram: freq
-                                 for ngram, freq in freq_distribution.items()
-                                 for search_term in search_terms
-                                 if search_term in ngram and
-                                 settings['keyword_position_min'] <= ngram.index(search_term) + 1 <= settings['keyword_position_max']}
-
-        freq_distribution = {self.word_delimiter.join(ngram): freq for ngram, freq in freq_distribution.items()}
-
-        return freq_distribution
-
-    def collocation(self, settings):
-        search_terms = self.match_tokens(settings['search_terms'],
-                                         settings['ignore_case'],
-                                         settings['lemmatization'],
-                                         settings['whole_word'],
-                                         settings['regex'])
-
-        if settings['ignore_case']:
-            self.tokens = [token.lower() for token in self.tokens]
-
-        if settings['lemmatization']:
-            self.tokens = wordless_lemmatize(self.main, self.tokens, self.lang)
-
-        if settings['punctuations'] == False:
-            self.tokens = [token for token in self.tokens if token.isalnum()]
-
-        if settings['search_for'] == self.main.tr('Bigrams'):
-            finder = nltk.collocations.BigramCollocationFinder.from_words(self.tokens)
-            assoc_measure = self.main.assoc_measures_bigram[settings['assoc_measure']]
-        elif settings['search_for'] == self.main.tr('Trigrams'):
-            finder = nltk.collocations.TrigramCollocationFinder.from_words(self.tokens)
-            assoc_measure = self.main.assoc_measures_trigram[settings['assoc_measure']]
-        elif settings['search_for'] == self.main.tr('Quadgrams'):
-            finder = nltk.collocations.QuadgramCollocationFinder.from_words(self.tokens)
-            assoc_measure = self.main.assoc_measures_quadgram[settings['assoc_measure']]
-
-        score_distribution = {collocate: score for collocate, score in finder.score_ngrams(assoc_measure)}
-
-        if not settings['show_all']:
-            score_distribution = {collocate: score
-                                  for collocate, score in score_distribution.items()
-                                  for search_term in search_terms
-                                  if search_term in collocate}
-
-        score_distribution = {self.word_delimiter.join(collocate): score for collocate, score in score_distribution.items()}
-
-        return score_distribution

@@ -15,13 +15,19 @@ import langdetect
 from wordless_utils import wordless_conversion, wordless_misc
 
 def detect_encoding(main, file):
-    # Defaults
+    text_sample = b''
     encoding_code = 'utf_8'
     encoding_lang = None
 
     if main.settings_custom['file']['auto_detect_encoding']:
         with open(file['path'], 'rb') as f:
-            encoding_detected = chardet.detect(f.read())
+            for i, line in enumerate(f):
+                if i < 100:
+                    text_sample += line
+                else:
+                    break
+
+            encoding_detected = chardet.detect(text_sample)
 
             encoding_code = encoding_detected['encoding']
             encoding_lang = encoding_detected.get('language')
@@ -39,23 +45,29 @@ def detect_encoding(main, file):
             open(file['path'], 'r', encoding = encoding_code)
         except UnicodeDecodeError:
             QMessageBox.warning(main,
-                                main.tr('Auto-detection Failure'),
+                                main.tr('Encoding Detection Failed'),
                                 main.tr('Failed to auto-detect the encoding of file "{file["name"]}", please select one manually!'),
                                 QMessageBox.Ok)
 
     return encoding_code, encoding_lang
 
 def detect_lang(main, file):
-    # Defaults
+    text_sample = ''
     lang_code = 'eng'
 
     if main.settings_custom['file']['auto_detect_lang']:
         try:
             with open(file['path'], 'r', encoding = file['encoding_code']) as f:
-                lang_code = wordless_conversion.to_iso_639_3(main, langdetect.detect(f.read()))
+                for i, line in enumerate(f):
+                    if i < 100:
+                        text_sample += line
+                    else:
+                        break
+
+                lang_code = wordless_conversion.to_iso_639_3(main, langdetect.detect(text_sample))
         except langdetect.lang_detect_exception.LangDetectException:
             QMessageBox.warning(main,
-                                main.tr('Auto-detection Failure'),
+                                main.tr('Language Detection Failed'),
                                 main.tr(f'Failed to auto-detect the language of file "{file["name"]}", please select one manually!'),
                                 QMessageBox.Ok)
 
