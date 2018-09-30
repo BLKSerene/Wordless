@@ -1,5 +1,5 @@
 #
-# Wordless: An integrated tool for language & translation studies.
+# Wordless: Main Window
 #
 # Copyright (C) 2018 Ye Lei
 #
@@ -432,7 +432,7 @@ class Wordless_Main(QMainWindow):
         self.tabs.addTab(tab_overview.init(self), self.tr('Overview'))
         self.tabs.addTab(tab_concordancer.init(self), self.tr('Concordancer'))
         self.tabs.addTab(tab_wordlist.init(self), self.tr('Wordlist'))
-        self.tabs.addTab(tab_ngram.init(self), self.tr('N-Gram'))
+        self.tabs.addTab(tab_ngram.init(self), self.tr('N-gram'))
         self.tabs.addTab(tab_collocation.init(self), self.tr('Collocation'))
         self.tabs.addTab(tab_semantics.init(self), self.tr('Semantics'))
 

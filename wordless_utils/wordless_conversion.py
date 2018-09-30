@@ -7,12 +7,18 @@
 #
 
 def to_lang_code(main, lang_text):
-    return main.settings_global['langs'][lang_text]
+    if type(lang_text) == list:
+        return [main.settings_global['langs'][item] for item in lang_text]
+    else:
+        return main.settings_global['langs'][lang_text]
 
 def to_lang_text(main, lang_code):
-    for text, code in main.settings_global['langs'].items():
-        if lang_code == code:
-            return text
+    langs = {lang_code: lang_text for lang_text, lang_code in main.settings_global['langs'].items()}
+
+    if type(lang_code) == list:
+        return [langs[item] for item in lang_code]
+    else:
+        return langs[lang_code]
 
 def to_iso_639_3(main, lang_code):
     for lang_code_3, lang_code_2 in main.settings_global['lang_codes'].items():
