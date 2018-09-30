@@ -34,10 +34,11 @@ def init_settings_global(main):
             main.tr('Basque'): 'eus',
             main.tr('Belarusian'): 'bel',
             main.tr('Bengali'): 'ben',
+            main.tr('Breton'): 'bre',
             main.tr('Bulgarian'): 'bul',
             main.tr('Catalan'): 'cat',
-            main.tr('Chinese (Simplified)'): 'zho_cn',
-            main.tr('Chinese (Traditional)'): 'zho_tw',
+            main.tr('Chinese (Simplified)'): 'zho_CN',
+            main.tr('Chinese (Traditional)'): 'zho_TW',
             main.tr('Croatian'): 'hrv',
             main.tr('Czech'): 'ces',
             main.tr('Danish'): 'dan',
@@ -47,7 +48,6 @@ def init_settings_global(main):
             main.tr('Estonian'): 'est',
             main.tr('Finnish'): 'fin',
             main.tr('French'): 'fra',
-            main.tr('Gaelic (Scots)'): 'gla',
             main.tr('Galician'): 'glg',
             main.tr('German'): 'deu',
             main.tr('Greek'): 'ell',
@@ -69,25 +69,26 @@ def init_settings_global(main):
             main.tr('Latvian'): 'lav',
             main.tr('Lithuanian'): 'lit',
             main.tr('Macedonian'): 'mkd',
-            main.tr('Malay (generic)'): 'msa',
+            main.tr('Malay'): 'msa',
             main.tr('Malayalam'): 'mal',
             main.tr('Maltese'): 'mlt',
             main.tr('Manx'): 'glv',
             main.tr('Marathi'): 'mar',
             main.tr('Nepali'): 'nep',
             main.tr('Norwegian'): 'nor',
-            main.tr('Panjabi/Punjabi'): 'pan',
+            main.tr('Punjabi'): 'pan',
             main.tr('Persian'): 'fas',
             main.tr('Polish'): 'pol',
             main.tr('Portuguese'): 'por',
             main.tr('Romanian'): 'ron',
             main.tr('Russian'): 'rus',
+            main.tr('Scottish Gaelic'): 'gla',
             main.tr('Serbian'): 'srp',
             main.tr('Slovak'): 'slk',
             main.tr('Slovenian'): 'slv',
             main.tr('Sotho, Southern'): 'sot',
             main.tr('Somali'): 'som',
-            main.tr('Spanish (Castilian)'): 'spa',
+            main.tr('Spanish'): 'spa',
             main.tr('Swahili'): 'swa',
             main.tr('Swedish'): 'swe',
             main.tr('Tagalog'): 'tgl',
@@ -114,10 +115,11 @@ def init_settings_global(main):
             'eus': 'eu',
             'bel': 'be',
             'ben': 'bn',
+            'bre': 'br',
             'bul': 'bg',
             'cat': 'ca',
-            'zho_cn': 'zh_cn',
-            'zho_tw': 'zh_tw',
+            'zho_CN': 'zh_CN',
+            'zho_TW': 'zh_TW',
             'hrv': 'hr',
             'ces': 'cs',
             'dan': 'da',
@@ -127,7 +129,6 @@ def init_settings_global(main):
             'est': 'et',
             'fin': 'fi',
             'fra': 'fr',
-            'gla': 'gd',
             'glg': 'gl',
             'deu': 'de',
             'ell': 'el',
@@ -162,6 +163,7 @@ def init_settings_global(main):
             'por': 'pt',
             'ron': 'ro',
             'rus': 'ru',
+            'gla': 'gd',
             'srp': 'sr',
             'slk': 'sk',
             'slv': 'sl',
@@ -249,7 +251,7 @@ def init_settings_global(main):
             main.tr('Belarusian(ISO-8859-5)'): 'iso_8859_5',
             main.tr('Belarusian(Mac OS Cyrillic)'): 'mac_cyrillic',
 
-            main.tr('Canadian(CP863)'): 'cp863',
+            main.tr('Canadian French(CP863)'): 'cp863',
 
             main.tr('Simplified Chinese(GB2312)'): 'gb2312',
             main.tr('Simplified Chinese(HZ)'): 'hz_gb_2312',
@@ -363,360 +365,340 @@ def init_settings_global(main):
         },
 
         'lemmatizers': {
-            main.tr('English'): [
+            'eng': [
                 'NLTK',
                 'e_lemma.txt',
                 'Lemmatization Lists'
             ],
 
-            main.tr('Asturian'): [
+            'ast': [
                 'Lemmatization Lists'
             ],
-            main.tr('Bulgarian'): [
+            'bul': [
                 'Lemmatization Lists'
             ],
-            main.tr('Catalan'): [
+            'cat': [
                 'Lemmatization Lists'
             ],
-            main.tr('Czech'): [
+            'ces': [
                 'Lemmatization Lists'
             ],
-            main.tr('Estonian'): [
+            'est': [
                 'Lemmatization Lists'
             ],
-            main.tr('French'): [
+            'fra': [
                 'Lemmatization Lists'
             ],
-            main.tr('Gaelic (Scots)'): [
+            'glg': [
                 'Lemmatization Lists'
             ],
-            main.tr('Galician'): [
+            'deu': [
                 'Lemmatization Lists'
             ],
-            main.tr('German'): [
+            'hun': [
                 'Lemmatization Lists'
             ],
-            main.tr('Hungarian'): [
+            'gle': [
                 'Lemmatization Lists'
             ],
-            main.tr('Irish'): [
+            'ita': [
                 'Lemmatization Lists'
             ],
-            main.tr('Italian'): [
+            'glv': [
                 'Lemmatization Lists'
             ],
-            main.tr('Manx'): [
+            'fas': [
                 'Lemmatization Lists'
             ],
-            main.tr('Persian'): [
+            'por': [
                 'Lemmatization Lists'
             ],
-            main.tr('Portuguese'): [
+            'ron': [
                 'Lemmatization Lists'
             ],
-            main.tr('Romanian'): [
+            'gla': [
                 'Lemmatization Lists'
             ],
-            main.tr('Slovak'): [
+            'slk': [
                 'Lemmatization Lists'
             ],
-            main.tr('Slovenian'): [
+            'slv': [
                 'Lemmatization Lists'
             ],
-            main.tr('Spanish (Castilian)'): [
+            'spa': [
                 'Lemmatization Lists'
             ],
-            main.tr('Swedish'): [
+            'swe': [
                 'Lemmatization Lists'
             ],
-            main.tr('Ukrainian'): [
+            'ukr': [
                 'Lemmatization Lists'
             ],
-            main.tr('Welsh'): [
+            'cym': [
                 'Lemmatization Lists'
             ]
         },
 
         'stop_words': {
-            main.tr('English'): [
+            'eng': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
 
-            main.tr('Afrikaans'): [
+            'afr': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Arabic'): [
+            'ara': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Armenian'): [
+            'hye': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Azerbaijani'): [
+            'aze': [
                 'NLTK'
             ],
-            main.tr('Basque'): [
+            'eus': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Bengali'): [
+            'ben': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Breton'): [
+            'bre': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Bulgarian'): [
+            'bul': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Catalan'): [
+            'cat': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Chinese (Simplified)'): [
+            'zho_CN': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Croatian'): [
+            'hrv': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Czech'): [
+            'ces': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Danish'): [
+            'dan': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Dutch'): [
+            'nld': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Esperanto'): [
+            'epo': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Estonian'): [
+            'est': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Finnish'): [
+            'fin': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('French'): [
+            'fra': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Galician'): [
+            'glg': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('German'): [
+            'deu': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Greek'): [
+            'ell': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Hausa'): [
+            'hau': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Hebrew'): [
+            'heb': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Hindi'): [
+            'hin': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Hungarian'): [
+            'hun': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Indonesian'): [
+            'ind': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Irish'): [
+            'gle': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Italian'): [
+            'ita': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Japanese'): [
+            'jpn': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Kazakh'): [
+            'kaz': [
                 'NLTK'
             ],
-            main.tr('Korean'): [
+            'kor': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Kurdish'): [
+            'kur': [
                 'Stopwords ISO'
             ],
-            main.tr('Latin'): [
+            'lat': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Latvian'): [
+            'lav': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Marathi'): [
+            'mar': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Malay'): [
+            'msa': [
                 'Stopwords ISO'
             ],
-            main.tr('Nepali'): [
+            'nep': [
                 'NLTK'
             ],
-            main.tr('Norwegian'): [
+            'nor': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Persian'): [
+            'fas': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Polish'): [
+            'pol': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Portuguese'): [
+            'por': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Romanian'): [
+            'ron': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Russian'): [
+            'rus': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Slovak'): [
+            'slk': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Slovenian'): [
+            'slv': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Sotho, Southern'): [
+            'sot': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Somali'): [
+            'som': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Spanish (Castilian)'): [
+            'spa': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Swahili'): [
+            'swa': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Swedish'): [
+            'swe': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Tagalog'): [
+            'tgl': [
                 'Stopwords ISO'
             ],
-            main.tr('Thai'): [
+            'tha': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Turkish'): [
+            'tur': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Ukrainian'): [
+            'ukr': [
                 'Stopwords ISO'
             ],
-            main.tr('Urdu'): [
+            'urd': [
                 'Stopwords ISO'
             ],
-            main.tr('Vietnamese'): [
+            'vie': [
                 'Stopwords ISO'
             ],
-            main.tr('Yoruba'): [
+            'yor': [
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            main.tr('Zulu'): [
+            'zul': [
                 'Stopwords ISO',
                 'stopwords-json'
             ]
         },
 
-        'assoc_measures_bigram': {
+        'assoc_measures': {
             main.tr('Frequency'): nltk.collocations.BigramAssocMeasures().raw_freq,
             main.tr('Student\'s T-test'): nltk.collocations.BigramAssocMeasures().student_t,
             main.tr('Pearson\'s Chi-squared Test'): nltk.collocations.BigramAssocMeasures().chi_sq,
             main.tr('Phi Coefficient'): nltk.collocations.BigramAssocMeasures().phi_sq,
             main.tr('Pointwise Mutual Information'): nltk.collocations.BigramAssocMeasures().pmi,
-            main.tr('Likelihood Ratios'): nltk.collocations.BigramAssocMeasures().likelihood_ratio,
+            main.tr('Likelihood Ratio'): nltk.collocations.BigramAssocMeasures().likelihood_ratio,
             main.tr('Poisson-Stirling'): nltk.collocations.BigramAssocMeasures().poisson_stirling,
             main.tr('Jaccard Index'): nltk.collocations.BigramAssocMeasures().jaccard,
             main.tr('Fisher\'s Exact Test'): nltk.collocations.BigramAssocMeasures().fisher,
-            main.tr('Dice\'s coefficient'): nltk.collocations.BigramAssocMeasures().dice
-        },
-
-        'assoc_measures_trigram': {
-            main.tr('Frequency'): nltk.collocations.TrigramAssocMeasures().raw_freq,
-            main.tr('Student\'s T-test'): nltk.collocations.TrigramAssocMeasures().student_t,
-            main.tr('Pearson\'s Chi-squared Test'): nltk.collocations.TrigramAssocMeasures().chi_sq,
-            main.tr('Pointwise Mutual Information'): nltk.collocations.TrigramAssocMeasures().pmi,
-            main.tr('Likelihood Ratios'): nltk.collocations.TrigramAssocMeasures().likelihood_ratio,
-            main.tr('Poisson-Stirling'): nltk.collocations.TrigramAssocMeasures().poisson_stirling,
-            main.tr('Jaccard Index'): nltk.collocations.TrigramAssocMeasures().jaccard
-        },
-
-        'assoc_measures_quadgram': {
-            main.tr('Frequency'): nltk.collocations.QuadgramAssocMeasures().raw_freq,
-            main.tr('Student\'s T-test'): nltk.collocations.QuadgramAssocMeasures().student_t,
-            main.tr('Pearson\'s Chi-squared Test'): nltk.collocations.QuadgramAssocMeasures().chi_sq,
-            main.tr('Pointwise Mutual Information'): nltk.collocations.QuadgramAssocMeasures().pmi,
-            main.tr('Likelihood Ratios'): nltk.collocations.QuadgramAssocMeasures().likelihood_ratio,
-            main.tr('Poisson-Stirling'): nltk.collocations.QuadgramAssocMeasures().poisson_stirling,
-            main.tr('Jaccard Index'): nltk.collocations.QuadgramAssocMeasures().jaccard
+            main.tr('Dice\'s Coefficient'): nltk.collocations.BigramAssocMeasures().dice
         },
 
         'style_dialog': '''
@@ -769,97 +751,101 @@ def init_settings_default(main):
         },
 
         'lemmatization': {
-            'eng': 'NLTK',
-            'ast': 'Lemmatization Lists',
-            'bul': 'Lemmatization Lists',
-            'cat': 'Lemmatization Lists',
-            'ces': 'Lemmatization Lists',
-            'est': 'Lemmatization Lists',
-            'fra': 'Lemmatization Lists',
-            'gla': 'Lemmatization Lists',
-            'glg': 'Lemmatization Lists',
-            'deu': 'Lemmatization Lists',
-            'hun': 'Lemmatization Lists',
-            'gle': 'Lemmatization Lists',
-            'ita': 'Lemmatization Lists',
-            'glv': 'Lemmatization Lists',
-            'fas': 'Lemmatization Lists',
-            'por': 'Lemmatization Lists',
-            'ron': 'Lemmatization Lists',
-            'slk': 'Lemmatization Lists',
-            'slv': 'Lemmatization Lists',
-            'spa': 'Lemmatization Lists',
-            'swe': 'Lemmatization Lists',
-            'ukr': 'Lemmatization Lists',
-            'cym': 'Lemmatization Lists',
+            'lemmatizers': {
+                'eng': 'NLTK',
+                'ast': 'Lemmatization Lists',
+                'bul': 'Lemmatization Lists',
+                'cat': 'Lemmatization Lists',
+                'ces': 'Lemmatization Lists',
+                'est': 'Lemmatization Lists',
+                'fra': 'Lemmatization Lists',
+                'gla': 'Lemmatization Lists',
+                'glg': 'Lemmatization Lists',
+                'deu': 'Lemmatization Lists',
+                'hun': 'Lemmatization Lists',
+                'gle': 'Lemmatization Lists',
+                'ita': 'Lemmatization Lists',
+                'glv': 'Lemmatization Lists',
+                'fas': 'Lemmatization Lists',
+                'por': 'Lemmatization Lists',
+                'ron': 'Lemmatization Lists',
+                'slk': 'Lemmatization Lists',
+                'slv': 'Lemmatization Lists',
+                'spa': 'Lemmatization Lists',
+                'swe': 'Lemmatization Lists',
+                'ukr': 'Lemmatization Lists',
+                'cym': 'Lemmatization Lists'
+            },
 
-            'select_lang': main.tr('English'),
-            'samples': '',
+            'preview_lang': 'eng',
+            'preview_samples': '',
 
         },
 
         'stop_words': {
-            'eng': 'NLTK',
-            'afr': 'Stopwords ISO',
-            'ara': 'NLTK',
-            'hye': 'Stopwords ISO',
-            'aze': 'NLTK',
-            'eus': 'Stopwords ISO',
-            'ben': 'Stopwords ISO',
-            'bre': 'Stopwords ISO',
-            'bul': 'Stopwords ISO',
-            'cat': 'Stopwords ISO',
-            'zho_cn': 'Stopwords ISO',
-            'hrv': 'Stopwords ISO',
-            'ces': 'Stopwords ISO',
-            'dan': 'NLTK',
-            'nld': 'NLTK',
-            'epo': 'Stopwords ISO',
-            'est': 'Stopwords ISO',
-            'fin': 'NLTK',
-            'fra': 'NLTK',
-            'glg': 'Stopwords ISO',
-            'deu': 'NLTK',
-            'ell': 'NLTK',
-            'hau': 'Stopwords ISO',
-            'heb': 'Stopwords ISO',
-            'hin': 'Stopwords ISO',
-            'hun': 'NLTK',
-            'ind': 'NLTK',
-            'gle': 'Stopwords ISO',
-            'ita': 'NLTK',
-            'jpn': 'Stopwords ISO',
-            'kaz': 'NLTK',
-            'kor': 'Stopwords ISO',
-            'kur': 'Stopwords ISO',
-            'lat': 'Stopwords ISO',
-            'lav': 'Stopwords ISO',
-            'mar': 'Stopwords ISO',
-            'msa': 'Stopwords ISO',
-            'nep': 'NLTK',
-            'nor': 'NLTK',
-            'fas': 'Stopwords ISO',
-            'pol': 'Stopwords ISO',
-            'por': 'NLTK',
-            'ron': 'NLTK',
-            'rus': 'NLTK',
-            'slk': 'Stopwords ISO',
-            'slv': 'Stopwords ISO',
-            'sot': 'Stopwords ISO',
-            'som': 'Stopwords ISO',
-            'spa': 'NLTK',
-            'swa': 'Stopwords ISO',
-            'swe': 'NLTK',
-            'tgl': 'Stopwords ISO',
-            'tha': 'Stopwords ISO',
-            'tur': 'NLTK',
-            'ukr': 'Stopwords ISO',
-            'urd': 'Stopwords ISO',
-            'vie': 'Stopwords ISO',
-            'yor': 'Stopwords ISO',
-            'zul': 'Stopwords ISO',
+            'stop_words': {
+                'eng': 'NLTK',
+                'afr': 'Stopwords ISO',
+                'ara': 'NLTK',
+                'hye': 'Stopwords ISO',
+                'aze': 'NLTK',
+                'eus': 'Stopwords ISO',
+                'ben': 'Stopwords ISO',
+                'bre': 'Stopwords ISO',
+                'bul': 'Stopwords ISO',
+                'cat': 'Stopwords ISO',
+                'zho_CN': 'Stopwords ISO',
+                'hrv': 'Stopwords ISO',
+                'ces': 'Stopwords ISO',
+                'dan': 'NLTK',
+                'nld': 'NLTK',
+                'epo': 'Stopwords ISO',
+                'est': 'Stopwords ISO',
+                'fin': 'NLTK',
+                'fra': 'NLTK',
+                'glg': 'Stopwords ISO',
+                'deu': 'NLTK',
+                'ell': 'NLTK',
+                'hau': 'Stopwords ISO',
+                'heb': 'Stopwords ISO',
+                'hin': 'Stopwords ISO',
+                'hun': 'NLTK',
+                'ind': 'NLTK',
+                'gle': 'Stopwords ISO',
+                'ita': 'NLTK',
+                'jpn': 'Stopwords ISO',
+                'kaz': 'NLTK',
+                'kor': 'Stopwords ISO',
+                'kur': 'Stopwords ISO',
+                'lat': 'Stopwords ISO',
+                'lav': 'Stopwords ISO',
+                'mar': 'Stopwords ISO',
+                'msa': 'Stopwords ISO',
+                'nep': 'NLTK',
+                'nor': 'NLTK',
+                'fas': 'Stopwords ISO',
+                'pol': 'Stopwords ISO',
+                'por': 'NLTK',
+                'ron': 'NLTK',
+                'rus': 'NLTK',
+                'slk': 'Stopwords ISO',
+                'slv': 'Stopwords ISO',
+                'sot': 'Stopwords ISO',
+                'som': 'Stopwords ISO',
+                'spa': 'NLTK',
+                'swa': 'Stopwords ISO',
+                'swe': 'NLTK',
+                'tgl': 'Stopwords ISO',
+                'tha': 'Stopwords ISO',
+                'tur': 'NLTK',
+                'ukr': 'Stopwords ISO',
+                'urd': 'Stopwords ISO',
+                'vie': 'Stopwords ISO',
+                'yor': 'Stopwords ISO',
+                'zul': 'Stopwords ISO',
+            },
 
-            'select_lang': main.tr('English'),
+            'preview_lang': 'eng',
         },
 
         'overview': {
@@ -903,23 +889,23 @@ def init_settings_default(main):
             'lowercase': True,
             'uppercase': True,
             'title_case': True,
-            'ignore_case': True,
-            'lemmatization': False,
+            'treat_as_lowercase': True,
+            'lemmatize': False,
             'filter_stop_words': False,
 
-            'numerals': True,
-            'punctuations': False,
+            'nums': True,
+            'puncs': False,
     
             'search_term': '',
             'search_terms': [],
-            'case_sensitive': False,
-            'lemmatized_forms': True,
-            'whole_word': True,
-            'regex': False,
-            'multi_search': False,
+            'ignore_case': True,
+            'match_inflected_forms': True,
+            'match_whole_word': True,
+            'use_regex': False,
+            'multi_search_mode': False,
 
             'show_pct': True,
-            'show_cumulative': True,
+            'show_cumulative': False,
             'show_breakdown': True,
 
             'rank_no_limit': False,
@@ -930,10 +916,12 @@ def init_settings_default(main):
             'freq_no_limit': True,
             'freq_min': 0,
             'freq_max': 1000,
-            'freq_apply_to': 'Total',
+            'freq_apply_to': main.tr('Total'),
+
             'len_no_limit': True,
             'len_min': 1,
             'len_max': 20,
+
             'files_no_limit': True,
             'files_min': 1,
             'files_max': 100
@@ -943,22 +931,26 @@ def init_settings_default(main):
             'words': True,
             'lowercase': True,
             'uppercase': True,
-            'title_cased': True,
-            'numerals': True,
-            'punctuations': False,
+            'title_case': True,
+            'treat_as_lowercase': True,
+            'lemmatize': False,
             'filter_stop_words': False,
+
+            'nums': True,
+            'puncs': False,
     
+            'show_all': False,
             'search_term': '',
             'search_terms': [],
             'keyword_position_no_limit': True,
             'keyword_position_min': 1,
             'keyword_position_max': 2,
+
             'ignore_case': True,
-            'lemmatization': True,
-            'whole_word': True,
-            'regex': False,
-            'multi_search': False,
-            'show_all': False,
+            'match_inflected_forms': True,
+            'match_whole_word': True,
+            'use_regex': False,
+            'multi_search_mode': False,
 
             'ngram_size_sync': False,
             'ngram_size_min': 2,
@@ -966,7 +958,7 @@ def init_settings_default(main):
             'allow_skipped_tokens': 0,
 
             'show_pct': True,
-            'show_cumulative': True,
+            'show_cumulative': False,
             'show_breakdown': True,
     
             'rank_no_limit': False,
@@ -977,10 +969,12 @@ def init_settings_default(main):
             'freq_no_limit': True,
             'freq_min': 0,
             'freq_max': 1000,
-            'freq_apply_to': 'Total',
+            'freq_apply_to': main.tr('Total'),
+
             'len_no_limit': True,
             'len_min': 1,
             'len_max': 20,
+
             'files_no_limit': True,
             'files_min': 1,
             'files_max': 100
@@ -990,42 +984,60 @@ def init_settings_default(main):
             'words': True,
             'lowercase': True,
             'uppercase': True,
-            'title_cased': True,
-            'numerals': True,
-            'punctuations': False,
-            'filter_stopwords': False,
+            'title_case': True,
+            'treat_as_lowercase': True,
+            'lemmatize': False,
+            'filter_stop_words': False,
+
+            'nums': True,
+            'puncs': False,
     
             'search_term': '',
             'search_terms': [],
             'ignore_case': True,
-            'lemmatization': True,
-            'whole_word': True,
-            'regex': False,
-            'multi_search': False,
+            'match_inflected_forms': True,
+            'match_whole_word': True,
+            'use_regex': False,
+            'multi_search_mode': False,
             'show_all': False,
 
             'window_sync': False,
-            'window_left': ['L', 1],
-            'window_right': ['R', 1],
-            'search_for': main.tr('Bigrams'),
+            'window_left': -5,
+            'window_right': 5,
             'assoc_measure': main.tr('Pearson\'s Chi-squared Test'),
 
             'show_pct': True,
-            'show_cumulative': True,
-            'show_breakdown': True,
+            'show_cumulative': False,
+            'show_breakdown_position': True,
+            'show_breakdown_file': True,
 
             'rank_no_limit': False,
             'rank_min': 1,
             'rank_max': 50,
             'cumulative': False,
 
-            'score_no_limit': True,
-            'score_min': 1,
-            'score_max': 1000,
-            'score_apply_to': 'Total',
+            'freq_left_no_limit': True,
+            'freq_left_min': 1,
+            'freq_left_max': 1000,
+            'freq_left_apply_to': main.tr('Total'),
+            'freq_right_no_limit': True,
+            'freq_right_min': 1,
+            'freq_right_max': 1000,
+            'freq_right_apply_to': main.tr('Total'),
+
+            'score_left_no_limit': True,
+            'score_left_min': 1,
+            'score_left_max': 1000,
+            'score_left_apply_to': main.tr('Total'),
+            'score_right_no_limit': True,
+            'score_right_min': 1,
+            'score_right_max': 1000,
+            'score_right_apply_to': main.tr('Total'),
+
             'len_no_limit': True,
             'len_min': 1,
             'len_max': 20,
+
             'files_no_limit': True,
             'files_min': 1,
             'files_max': 100

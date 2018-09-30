@@ -58,75 +58,28 @@ class Wordless_Spin_Box_Window(QSpinBox):
 
 def wordless_widgets_token(main):
     def words_changed():
-        checkbox_words.setTristate(False)
-
-        checkbox_lowercase.blockSignals(True)
-        checkbox_uppercase.blockSignals(True)
-        checkbox_title_case.blockSignals(True)
-
         if checkbox_words.isChecked():
             checkbox_lowercase.setEnabled(True)
             checkbox_uppercase.setEnabled(True)
             checkbox_title_case.setEnabled(True)
 
-            checkbox_ignore_case.setEnabled(True)
-            checkbox_lemmatization.setEnabled(True)
+            checkbox_treat_as_lowercase.setEnabled(True)
+            checkbox_lemmatize.setEnabled(True)
             checkbox_filter_stop_words.setEnabled(True)
-
-            if (not checkbox_lowercase.isChecked() and
-                not checkbox_uppercase.isChecked() and
-                not checkbox_title_case.isChecked()):
-                checkbox_lowercase.setChecked(True)
-                checkbox_uppercase.setChecked(True)
-                checkbox_title_case.setChecked(True)
         else:
             checkbox_lowercase.setEnabled(False)
             checkbox_uppercase.setEnabled(False)
             checkbox_title_case.setEnabled(False)
 
-            checkbox_ignore_case.setEnabled(False)
-            checkbox_lemmatization.setEnabled(False)
+            checkbox_treat_as_lowercase.setEnabled(False)
+            checkbox_lemmatize.setEnabled(False)
             checkbox_filter_stop_words.setEnabled(False)
 
-        checkbox_lowercase.blockSignals(False)
-        checkbox_uppercase.blockSignals(False)
-        checkbox_title_case.blockSignals(False)
-
-    def case_changed():
-        checkbox_words.blockSignals(True)
-
-        if (checkbox_lowercase.isChecked() and
-            checkbox_uppercase.isChecked() and
-            checkbox_title_case.isChecked()):
-            checkbox_words.setCheckState(Qt.Checked)
-
-            checkbox_lowercase.setEnabled(True)
-            checkbox_uppercase.setEnabled(True)
-            checkbox_title_case.setEnabled(True)
-
-            checkbox_ignore_case.setEnabled(True)
-            checkbox_lemmatization.setEnabled(True)
-            checkbox_filter_stop_words.setEnabled(True)
-        elif (not checkbox_lowercase.isChecked() and
-              not checkbox_uppercase.isChecked() and
-              not checkbox_title_case.isChecked()):
-            checkbox_words.setCheckState(Qt.Unchecked)
-
-            checkbox_lowercase.setEnabled(False)
-            checkbox_uppercase.setEnabled(False)
-            checkbox_title_case.setEnabled(False)
-
-            checkbox_ignore_case.setEnabled(False)
-            checkbox_lemmatization.setEnabled(False)
-            checkbox_filter_stop_words.setEnabled(False)
-        else:
-            checkbox_words.setCheckState(Qt.PartiallyChecked)
-
-        checkbox_words.blockSignals(False)
+        ignore_case_changed()
 
     def ignore_case_changed():
-        if checkbox_words.isEnabled():
-            if checkbox_ignore_case.isChecked():
+        if checkbox_treat_as_lowercase.isEnabled():
+            if checkbox_treat_as_lowercase.isChecked():
                 checkbox_lowercase.setEnabled(False)
                 checkbox_uppercase.setEnabled(False)
                 checkbox_title_case.setEnabled(False)
@@ -139,30 +92,57 @@ def wordless_widgets_token(main):
     checkbox_lowercase = QCheckBox(main.tr('Lowercase'), main)
     checkbox_uppercase = QCheckBox(main.tr('Uppercase'), main)
     checkbox_title_case = QCheckBox(main.tr('Title Case'), main)
-    checkbox_ignore_case = QCheckBox(main.tr('Ignore Case'), main)
-    checkbox_lemmatization = QCheckBox(main.tr('Lemmatization'), main)
+    checkbox_treat_as_lowercase = QCheckBox(main.tr('Treat as All Lowercase'), main)
+    checkbox_lemmatize = QCheckBox(main.tr('Lemmatize'), main)
     checkbox_filter_stop_words = QCheckBox(main.tr('Filter Stop Words'), main)
 
-    checkbox_numerals = QCheckBox(main.tr('Numerals'), main)
-    checkbox_punctuations = QCheckBox(main.tr('Punctuations'), main)
+    checkbox_nums = QCheckBox(main.tr('Numerals'), main)
+    checkbox_puncs = QCheckBox(main.tr('Punctuations'), main)
 
     checkbox_words.stateChanged.connect(words_changed)
-    checkbox_lowercase.stateChanged.connect(case_changed)
-    checkbox_uppercase.stateChanged.connect(case_changed)
-    checkbox_title_case.stateChanged.connect(case_changed)
-    checkbox_ignore_case.stateChanged.connect(ignore_case_changed)
+    checkbox_treat_as_lowercase.stateChanged.connect(ignore_case_changed)
 
     words_changed()
-    case_changed()
-    ignore_case_changed()
 
     return [checkbox_words, checkbox_lowercase, checkbox_uppercase, checkbox_title_case,
-            checkbox_ignore_case, checkbox_lemmatization, checkbox_filter_stop_words,
-            checkbox_numerals, checkbox_punctuations]
+            checkbox_treat_as_lowercase, checkbox_lemmatize, checkbox_filter_stop_words,
+            checkbox_nums, checkbox_puncs]
 
-def wordless_widgets_search_settings(main):
+def wordless_widgets_search(main):
+    def show_all_changed():
+        if checkbox_show_all.isChecked():
+            line_edit_search_term.setEnabled(False)
+            list_search_terms.setEnabled(False)
+            list_search_terms.button_add.setEnabled(False)
+            list_search_terms.button_insert.setEnabled(False)
+            list_search_terms.button_remove.setEnabled(False)
+            list_search_terms.button_clear.setEnabled(False)
+            list_search_terms.button_import.setEnabled(False)
+            list_search_terms.button_export.setEnabled(False)
+
+            checkbox_ignore_case.setEnabled(False)
+            checkbox_match_inflected_forms.setEnabled(False)
+            checkbox_match_whole_word.setEnabled(False)
+            checkbox_use_regex.setEnabled(False)
+            checkbox_multi_search_mode.setEnabled(False)
+        else:
+            line_edit_search_term.setEnabled(True)
+            list_search_terms.setEnabled(True)
+            list_search_terms.button_add.setEnabled(True)
+            list_search_terms.button_insert.setEnabled(True)
+            list_search_terms.button_remove.setEnabled(True)
+            list_search_terms.button_clear.setEnabled(True)
+            list_search_terms.button_import.setEnabled(True)
+            list_search_terms.button_export.setEnabled(True)
+
+            checkbox_ignore_case.setEnabled(True)
+            checkbox_match_inflected_forms.setEnabled(True)
+            checkbox_match_whole_word.setEnabled(True)
+            checkbox_use_regex.setEnabled(True)
+            checkbox_multi_search_mode.setEnabled(True)
+
     def multi_search_changed():
-        if checkbox_multi_search.isChecked():
+        if checkbox_multi_search_mode.isChecked():
             label_search_term.setText(main.tr('Search Terms:'))
 
             if line_edit_search_term.text() and list_search_terms.count() == 0:
@@ -190,107 +170,46 @@ def wordless_widgets_search_settings(main):
             list_search_terms.button_import.hide()
             list_search_terms.button_export.hide()
 
-    def show_all_changed():
-        if checkbox_show_all.isChecked():
-            checkbox_lemmatized_forms.setText(main.tr('Lemmatization'))
-
-            line_edit_search_term.setEnabled(False)
-            list_search_terms.setEnabled(False)
-
-            checkbox_whole_word.setEnabled(False)
-            checkbox_regex.setEnabled(False)
-            checkbox_multi_search.setEnabled(False)
-        else:
-            checkbox_lemmatized_forms.setText(main.tr('Match All Lemmatized Forms'))
-
-            line_edit_search_term.setEnabled(True)
-            list_search_terms.setEnabled(True)
-
-            checkbox_whole_word.setEnabled(True)
-            checkbox_regex.setEnabled(True)
-            checkbox_multi_search.setEnabled(True)
-
     label_search_term = QLabel(main.tr('Search Term:'), main)
+    checkbox_show_all = QCheckBox(main.tr('Show All Results'), main)
     line_edit_search_term = QLineEdit(main)
     list_search_terms = wordless_list.Wordless_List(main)
 
-    checkbox_case_sensitive = QCheckBox(main.tr('Case Sensitive'), main)
-    checkbox_lemmatized_forms = QCheckBox(main.tr('Match All Lemmatized Forms'), main)
-    checkbox_whole_word = QCheckBox(main.tr('Match Whole Word Only'), main)
-    checkbox_regex = QCheckBox(main.tr('Use Regular Expression'), main)
-    checkbox_multi_search = QCheckBox(main.tr('Multi-search Mode'), main)
-    checkbox_show_all = QCheckBox(main.tr('Show All Items'), main)
+    checkbox_ignore_case = QCheckBox(main.tr('Ignore Case'), main)
+    checkbox_match_inflected_forms = QCheckBox(main.tr('Match All Inflected Forms'), main)
+    checkbox_match_whole_word = QCheckBox(main.tr('Match Whole Word Only'), main)
+    checkbox_use_regex = QCheckBox(main.tr('Use Regular Expression'), main)
+    checkbox_multi_search_mode = QCheckBox(main.tr('Multi-search Mode'), main)
 
-    checkbox_multi_search.stateChanged.connect(multi_search_changed)
     checkbox_show_all.stateChanged.connect(show_all_changed)
+    checkbox_multi_search_mode.stateChanged.connect(multi_search_changed)
 
-    multi_search_changed()
     show_all_changed()
+    multi_search_changed()
 
-    return (label_search_term, line_edit_search_term, list_search_terms,
-            checkbox_case_sensitive, checkbox_lemmatized_forms, checkbox_whole_word, checkbox_regex,
-            checkbox_multi_search, checkbox_show_all)
+    return (label_search_term, checkbox_show_all, line_edit_search_term, list_search_terms,
+            checkbox_ignore_case, checkbox_match_inflected_forms, checkbox_match_whole_word, checkbox_use_regex,
+            checkbox_multi_search_mode)
 
-def wordless_widgets_table_settings(main, table):
+def wordless_widgets_table(main, table):
     def show_pct_changed():
         table.show_pct = checkbox_show_pct.isChecked()
 
-        if table.item(0, 0):
-            cols_cumulative = table.find_cols_cumulative()
-            col_files_found = table.find_col(main.tr('Files Found'))
-
-            table.hide()
-            table.blockSignals(True)
-            table.setSortingEnabled(False)
-
-            for col_with_pct in table.cols_with_pct:
-                col = table.find_col(col_with_pct)
-                
-                if col in cols_cumulative:
-                    total = sum([table.item(row, col - 1).raw_value
-                                 for row in range(table.rowCount())
-                                 if not table.isRowHidden(row)])
-                elif col == col_files_found:
-                    total = table.item(0, col_files_found).raw_total
-                else:
-                    total = sum([table.item(row, col).raw_value
-                                 for row in range(table.rowCount())
-                                 if not table.isRowHidden(row)])
-
-                for row in range(table.rowCount()):
-                    value = table.item(row, col).raw_value
-
-                    table.set_item_with_pct(row, col, value, total, show_pct = table.show_pct)
-
-            table.show()
-            table.blockSignals(False)
-            table.setSortingEnabled(True)
+        table.update_items_pct()
 
     def show_cumulative_changed():
-        cols_cumulative = table.find_cols_cumulative()
-        cols_breakdown = table.find_cols_breakdown()
+        table.show_cumulative = checkbox_show_cumulative.isChecked()
 
-        table.setUpdatesEnabled(False)
-
-        for col in cols_cumulative:
-            if checkbox_show_cumulative.isChecked():
-                if checkbox_show_breakdown.isChecked() or col not in cols_breakdown:
-                    table.showColumn(col)
-            else:
-                table.hideColumn(col)
-
-        table.setUpdatesEnabled(True)
+        table.update_items_pct()
 
     def show_breakdown_changed():
-        cols_cumulative = table.find_cols_cumulative()
-        cols_breakdown = table.find_cols_breakdown()
+        cols_breakdown = table.cols_breakdown
 
         table.setUpdatesEnabled(False)
 
         for col in cols_breakdown:
             if checkbox_show_breakdown.isChecked():
-                if checkbox_show_cumulative.isChecked() or col not in cols_cumulative:
-                    table.showColumn(col)
+                table.showColumn(col)
             else:
                 table.hideColumn(col)
 
@@ -310,14 +229,12 @@ def wordless_widgets_table_settings(main, table):
 
     return [checkbox_show_pct, checkbox_show_cumulative, checkbox_show_breakdown]
 
-def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None, col = ''):
+def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None, col = '', apply_to = False):
     def filter_no_limit_changed():
         if checkbox_no_limit.isChecked():
             spin_box_max.setEnabled(False)
         else:
             spin_box_max.setEnabled(True)
-
-        filter_changed()
 
     def filter_min_changed():
         if spin_box_min.value() > spin_box_max.value():
@@ -327,41 +244,14 @@ def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None
         if spin_box_min.value() > spin_box_max.value():
             spin_box_min.setValue(spin_box_max.value())
 
-    def filter_changed():
-        if table and table.item(0, 1):
-            if col == 'Total':
-                col_filter = table.find_col(combo_box_apply_to.currentText())
-            else:
-                col_filter = table.find_col(col)
-
-            filter_type = type(table.item(0, col_filter).read_data())
-            filter_min = spin_box_min.value()
-            filter_max = spin_box_max.value() if not checkbox_no_limit.isChecked() else float('inf')
-
-            for i in range(table.rowCount()):
-                filter_data = table.item(i, col_filter).read_data()
-
-                if filter_type in [int, float]:
-                    if filter_min <= filter_data <= filter_max:
-                        table.row_filters[i][col] = True
-                    else:
-                        table.row_filters[i][col] = False
-                elif filter_type == str:
-                    if filter_min <= len(str(filter_data)) - str(filter_data).count(' ') <= filter_max:
-                        table.row_filters[i][col] = True
-                    else:
-                        table.row_filters[i][col] = False
-
-            table.filter_table()
-
     def table_header_changed():
         apply_to_old = combo_box_apply_to.currentText()
 
         combo_box_apply_to.blockSignals(True)
         combo_box_apply_to.clear()
 
-        for i in table.find_cols_breakdown():
-            combo_box_apply_to.addItem(table.horizontalHeaderItem(i).text())
+        for file in table.files:
+            combo_box_apply_to.addItem(file['name'])
         combo_box_apply_to.addItem(main.tr('Total'))
 
         for i in range(combo_box_apply_to.count()):
@@ -378,11 +268,9 @@ def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None
     label_max = QLabel(main.tr('To'), main)
     spin_box_max = QSpinBox(main)
 
-    if col == 'Total':
+    if apply_to:
         label_apply_to = QLabel(main.tr('Apply to:'), main)
         combo_box_apply_to = QComboBox(main)
-
-        combo_box_apply_to.currentTextChanged.connect(filter_changed)
 
         table.horizontalHeader().sectionCountChanged.connect(table_header_changed)
 
@@ -393,19 +281,13 @@ def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None
 
     checkbox_no_limit.stateChanged.connect(filter_no_limit_changed)
     spin_box_min.valueChanged.connect(filter_min_changed)
-    spin_box_min.editingFinished.connect(filter_changed)
     spin_box_max.valueChanged.connect(filter_max_changed)
-    spin_box_max.editingFinished.connect(filter_changed)
 
     filter_no_limit_changed()
     filter_min_changed()
     filter_max_changed()
-    filter_changed()
 
-    if table:
-        table.filters.append(col)
-
-    if col == 'Total':
+    if apply_to:
         return [checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max, label_apply_to, combo_box_apply_to]
     else:
         return [checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max]
@@ -492,41 +374,3 @@ def wordless_widgets_window(main):
     window_right_changed()
 
     return [checkbox_window_sync, label_window_left, spin_box_window_left, label_window_right, spin_box_window_right]
-
-def wordless_widgets_collocation(main, default_assoc_measure):
-    def search_for_changed():
-        text_old = combobox_assoc_measure.currentText()
-
-        combobox_assoc_measure.clear()
-    
-        if combo_box_search_for.currentText() == main.tr('Bigrams'):
-            combobox_assoc_measure.addItems(main.settings_global['assoc_measures_bigram'])
-        elif combo_box_search_for.currentText() == main.tr('Trigrams'):
-            combobox_assoc_measure.addItems(main.settings_global['assoc_measures_trigram'])
-        elif combo_box_search_for.currentText() == main.tr('Quadgrams'):
-            combobox_assoc_measure.addItems(main.settings_global['assoc_measures_quadgram'])
-
-        for i in range(combobox_assoc_measure.count()):
-            if combobox_assoc_measure.itemText(i) == text_old:
-                combobox_assoc_measure.setCurrentIndex(i)
-
-                break
-            else:
-                combobox_assoc_measure.setCurrentText(default_assoc_measure)
-
-    label_search_for = QLabel(main.tr('Search for:'), main)
-    combo_box_search_for = QComboBox(main)
-    label_assoc_measure = QLabel(main.tr('Association Measure:'), main)
-    combobox_assoc_measure = QComboBox(main)
-
-    combo_box_search_for.addItems([
-        main.tr('Bigrams'),
-        main.tr('Trigrams'),
-        main.tr('Quadgrams')
-    ])
-
-    combo_box_search_for.currentTextChanged.connect(search_for_changed)
-
-    search_for_changed()
-
-    return [label_search_for, combo_box_search_for, label_assoc_measure, combobox_assoc_measure]
