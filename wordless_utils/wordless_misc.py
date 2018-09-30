@@ -6,19 +6,28 @@
 # For license information, see LICENSE.txt.
 #
 
+import collections
+import copy
 import os
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_utils import wordless_text
+from wordless_utils import wordless_message, wordless_text
 
-def multiple_sorting(item):
+def multi_sorting(item):
     keys = []
 
-    for freq in item[1]:
-        keys.append(-freq)
+    for value in item[1]:
+        if isinstance(value, collections.Iterable):
+            mid = len(value) // 2
+
+            keys.extend([-val for val in value[mid:]])
+            keys.extend([-val for val in value[:mid]])
+        else:
+            keys.append(-value)
+
     keys.append(item[0])
 
     return keys
@@ -26,17 +35,24 @@ def multiple_sorting(item):
 def merge_dicts(dicts_to_be_merged):
     dict_merged = {}
 
+    values_2d = isinstance(list(dicts_to_be_merged[0].values())[0], collections.Iterable)
+    
+    if values_2d:
+        value_2d = [[0] * len(list(dicts_to_be_merged[0].values())[0]) for i in range(len(dicts_to_be_merged))]
+    else:
+        value_1d = [0] * len(dicts_to_be_merged)
+
     for i, dict_to_be_merged in enumerate(dicts_to_be_merged):
-        for values in dict_merged.values():
-            values.append(0)
-
-        for key, value in dict_to_be_merged.items():
+        for key, values in dict_to_be_merged.items():
             if key not in dict_merged:
-                dict_merged[key] = [0] * (i + 1)
+                if values_2d:
+                    dict_merged[key] = copy.deepcopy(value_2d)
+                else:
+                    dict_merged[key] = copy.copy(value_1d)
 
-            dict_merged[key][i] = value
+            dict_merged[key][i] = values
 
-    return dict(sorted(dict_merged.items(), key = multiple_sorting))
+    return dict_merged
 
 def check_file_existence(main, files):
     files_found = []
@@ -57,39 +73,3 @@ def check_file_existence(main, files):
                             main.tr('The following files no longer exist:<br>{}<br>Please check and try again.'.format('<br>'.join(files_missing))))
 
     return files_found
-
-def check_search_term(function):
-    def wrapper(main, *args, **kwargs):
-        tab_text = main.tabs.tabText(main.tabs.indexOf(main.tabs.currentWidget()))
-
-        if tab_text == main.tr('Wordlist'):
-            settings = main.settings_custom['wordlist']
-        if tab_text == main.tr('N-gram'):
-            settings = main.settings_custom['ngram']
-        elif tab_text == main.tr('Collocation'):
-            settings = main.settings_custom['collocation']
-
-        if (settings['multi_search'] and settings['search_terms'] or
-            not settings['multi_search'] and settings['search_term']):
-            return function(main, *args, **kwargs)
-        else:
-            QMessageBox.warning(main,
-                                main.tr('Empty Search Term'),
-                                main.tr('Please enter your search term(s) first!'),
-                                QMessageBox.Ok)
-
-    return wrapper
-
-def check_results_table(function):
-    def wrapper(main, table, *args, **kwargs):
-        function(main, table, *args, **kwargs)
-
-        if table.rowCount() == 0:
-            table.clear_table()
-
-            QMessageBox.information(main,
-                                    main.tr('No Results'),
-                                    main.tr('There are no results to be shown in the table!<br>You might want to change your settings and try it again.'),
-                                    QMessageBox.Ok)
-
-    return wrapper

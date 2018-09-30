@@ -106,7 +106,7 @@ class Wordless_Files():
         selected_files = [file for file in self.main.settings_custom['file']['files_open'] if file['selected']]
 
         if selected_files == []:
-            QMessageBox.warning(self,
+            QMessageBox.warning(self.main,
                                 self.main.tr('Empty Input'),
                                 self.main.tr('There are no files being currently selected! Please check and try again.'),
                                 QMessageBox.Ok)
