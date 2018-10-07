@@ -528,7 +528,8 @@ def generate_data(main, table):
                 # Files Found
                 table.set_item_pct(i, col_files_found, len([freq for freq in freqs if freq]), len_files)
 
-            table.update_items_pct()
+            table.toggle_pct()
+            table.toggle_breakdown()
 
             table.blockSignals(False)
             table.setSortingEnabled(True)

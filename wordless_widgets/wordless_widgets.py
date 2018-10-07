@@ -195,25 +195,17 @@ def wordless_widgets_table(main, table):
     def show_pct_changed():
         table.show_pct = checkbox_show_pct.isChecked()
 
-        table.update_items_pct()
+        table.toggle_pct()
 
     def show_cumulative_changed():
         table.show_cumulative = checkbox_show_cumulative.isChecked()
 
-        table.update_items_pct()
+        table.toggle_pct()
 
     def show_breakdown_changed():
-        cols_breakdown = table.cols_breakdown
+        table.show_breakdown = checkbox_show_breakdown.isChecked()
 
-        table.setUpdatesEnabled(False)
-
-        for col in cols_breakdown:
-            if checkbox_show_breakdown.isChecked():
-                table.showColumn(col)
-            else:
-                table.hideColumn(col)
-
-        table.setUpdatesEnabled(True)
+        table.toggle_breakdown()
 
     checkbox_show_pct = QCheckBox(main.tr('Show Percentage'), main)
     checkbox_show_cumulative = QCheckBox(main.tr('Show Cumulative Data'), main)

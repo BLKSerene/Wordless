@@ -141,113 +141,6 @@ class Wordless_Table(QTableWidget):
 
         event.accept()
 
-    def insert_col(self, i, label, pct = False, cumulative = False, breakdown = False):
-        cols_pct = [self.horizontalHeaderItem(col).text() for col in self.cols_pct]
-        cols_cumulative = [self.horizontalHeaderItem(col).text() for col in self.cols_cumulative]
-        cols_breakdown = [self.horizontalHeaderItem(col).text() for col in self.cols_breakdown]
-
-        super().insertColumn(i)
-
-        self.setHorizontalHeaderItem(i, QTableWidgetItem(label))
-
-        if pct:
-            cols_pct += [label]
-        if cumulative:
-            cols_cumulative += [label]
-        if breakdown:
-            cols_breakdown += [label]
-
-        self.cols_pct = set(self.find_col(cols_pct))
-        self.cols_cumulative = set(self.find_col(cols_cumulative))
-        self.cols_breakdown = set(self.find_col(cols_breakdown))
-
-    def set_item_num(self, row, col, val, val_max):
-        precision = self.main.settings_custom['general']['precision']
-        len_val = len(f'{val_max:.{precision}f}')
-
-        item = Wordless_Table_Item()
-
-        item.val = val
-
-        item.setText(f'{val:>{len_val}.{precision}f}')
-
-        item.setFont(QFont(self.main.settings_custom['general']['font_monospaced']))
-        item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-
-        super().setItem(row, col, item)
-
-    def set_item_pct(self, row, col, val, total):
-        item = Wordless_Table_Item()
-
-        item.val = val
-        item.total = total
-
-        if col in self.cols_cumulative:
-            if row == 0:
-                item.val_cumulative = val
-            else:
-                item.val_cumulative = self.item(row - 1, col).val_cumulative + val
-
-        item.setFont(QFont(self.main.settings_custom['general']['font_monospaced']))
-        item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-
-        super().setItem(row, col, item)
-
-    def update_items_pct(self):
-        if any([self.item(0, i) for i in range(self.columnCount())]):
-            precision = self.main.settings_custom['general']['precision']
-            len_pct = 5 + precision
-
-            rows_hidden = [row for row in range(self.rowCount()) if self.isRowHidden(row)]
-
-            self.hide()
-            self.blockSignals(True)
-            self.setSortingEnabled(False)
-
-            for col in self.cols_pct:
-                len_val = len(f'{self.item(0, col).total:,}')
-                total = self.item(0, col).total
-
-                if self.show_cumulative and col in self.cols_cumulative:
-                    val_cumulative = 0
-
-                    for row in range(self.rowCount()):
-                        if not self.isRowHidden(row):
-                            item = self.item(row, col)
-
-                            val_cumulative += item.val
-                            pct = val_cumulative / total if total else 0
-
-                            if self.show_pct:
-                                item.setText(f'{val_cumulative:>{len_val},}/{pct:<{len_pct}.{precision}%}')
-                            else:
-                                item.setText(f'{val_cumulative:>{len_val},}')
-
-                            item.val_cumulative = val_cumulative
-                else:
-                    for row in range(self.rowCount()):
-                        if not self.isRowHidden(row):
-                            item = self.item(row, col)
-
-                            val = item.val
-                            pct = val / total if total else 0
-
-                            if self.show_pct:
-                                item.setText(f'{val:>{len_val},}/{pct:<{len_pct}.{precision}%}')
-                            else:
-                                item.setText(f'{val:>{len_val},}')
-
-            self.show()
-            self.blockSignals(False)
-            self.setSortingEnabled(True)
-
-            self.setUpdatesEnabled(False)
-
-            for i in rows_hidden:
-                self.hideRow(i)
-
-            self.setUpdatesEnabled(True)
-
     def item_changed(self):
         if self.item(0, 0):
             self.button_export_all.setEnabled(True)
@@ -305,7 +198,125 @@ class Wordless_Table(QTableWidget):
 
             self.setUpdatesEnabled(True)
 
-            self.update_items_pct()
+            self.toggle_pct()
+
+    def insert_col(self, i, label, pct = False, cumulative = False, breakdown = False):
+        cols_pct = [self.horizontalHeaderItem(col).text() for col in self.cols_pct]
+        cols_cumulative = [self.horizontalHeaderItem(col).text() for col in self.cols_cumulative]
+        cols_breakdown = [self.horizontalHeaderItem(col).text() for col in self.cols_breakdown]
+
+        super().insertColumn(i)
+
+        self.setHorizontalHeaderItem(i, QTableWidgetItem(label))
+
+        if pct:
+            cols_pct += [label]
+        if cumulative:
+            cols_cumulative += [label]
+        if breakdown:
+            cols_breakdown += [label]
+
+        self.cols_pct = set(self.find_col(cols_pct))
+        self.cols_cumulative = set(self.find_col(cols_cumulative))
+        self.cols_breakdown = set(self.find_col(cols_breakdown))
+
+    def set_item_num(self, row, col, val, val_max):
+        precision = self.main.settings_custom['general']['precision']
+        len_val = len(f'{val_max:.{precision}f}')
+
+        item = Wordless_Table_Item()
+
+        item.val = val
+
+        item.setText(f'{val:>{len_val}.{precision}f}')
+
+        item.setFont(QFont(self.main.settings_custom['general']['font_monospaced']))
+        item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+
+        super().setItem(row, col, item)
+
+    def set_item_pct(self, row, col, val, total):
+        item = Wordless_Table_Item()
+
+        item.val = val
+        item.total = total
+
+        if col in self.cols_cumulative:
+            if row == 0:
+                item.val_cumulative = val
+            else:
+                item.val_cumulative = self.item(row - 1, col).val_cumulative + val
+
+        item.setFont(QFont(self.main.settings_custom['general']['font_monospaced']))
+        item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+
+        super().setItem(row, col, item)
+
+    def toggle_pct(self):
+        if any([self.item(0, i) for i in range(self.columnCount())]):
+            precision = self.main.settings_custom['general']['precision']
+            len_pct = 5 + precision
+
+            rows_hidden = [row for row in range(self.rowCount()) if self.isRowHidden(row)]
+
+            self.hide()
+            self.blockSignals(True)
+            self.setSortingEnabled(False)
+
+            for col in self.cols_pct:
+                len_val = len(f'{self.item(0, col).total:,}')
+                total = self.item(0, col).total
+
+                if self.show_cumulative and col in self.cols_cumulative:
+                    val_cumulative = 0
+
+                    for row in range(self.rowCount()):
+                        if not self.isRowHidden(row):
+                            item = self.item(row, col)
+
+                            val_cumulative += item.val
+                            pct = val_cumulative / total if total else 0
+
+                            if self.show_pct:
+                                item.setText(f'{val_cumulative:>{len_val},}/{pct:<{len_pct}.{precision}%}')
+                            else:
+                                item.setText(f'{val_cumulative:>{len_val},}')
+
+                            item.val_cumulative = val_cumulative
+                else:
+                    for row in range(self.rowCount()):
+                        if not self.isRowHidden(row):
+                            item = self.item(row, col)
+
+                            val = item.val
+                            pct = val / total if total else 0
+
+                            if self.show_pct:
+                                item.setText(f'{val:>{len_val},}/{pct:<{len_pct}.{precision}%}')
+                            else:
+                                item.setText(f'{val:>{len_val},}')
+
+            self.show()
+            self.blockSignals(False)
+            self.setSortingEnabled(True)
+
+            self.setUpdatesEnabled(False)
+
+            for i in rows_hidden:
+                self.hideRow(i)
+
+            self.setUpdatesEnabled(True)
+
+    def toggle_breakdown(self):
+        self.setUpdatesEnabled(False)
+
+        for col in self.cols_breakdown:
+            if self.show_breakdown:
+                self.showColumn(col)
+            else:
+                self.hideColumn(col)
+
+        self.setUpdatesEnabled(True)
 
     def filter_table(self):
         self.setUpdatesEnabled(False)
@@ -378,10 +389,12 @@ class Wordless_Table(QTableWidget):
 
         for i in range(self.rowCount()):
             self.showRow(i)
+        for i in range(self.columnCount()):
+            self.showColumn(i)
 
-        self.cols_pct = self.find_col(self.cols_pct_old)
-        self.cols_cumulative = self.find_col(self.cols_cumulative_old)
-        self.cols_breakdown = self.find_col(self.cols_breakdown_old)
+        self.cols_pct = set(self.find_col(self.cols_pct_old))
+        self.cols_cumulative = set(self.find_col(self.cols_cumulative_old))
+        self.cols_breakdown = set(self.find_col(self.cols_breakdown_old))
         self.files = []
 
         self.item_changed()

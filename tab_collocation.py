@@ -30,6 +30,35 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table):
                          ],
                          sorting_enabled = True)
 
+    def toggle_breakdown(self):
+        settings = self.main.settings_custom['collocation']
+
+        self.setUpdatesEnabled(False)
+
+        for col in self.cols_breakdown | self.cols_breakdown_position:
+            if col in self.cols_breakdown and col in self.cols_breakdown_position:
+                if settings['show_breakdown_file'] and settings['show_breakdown_position']:
+                    self.showColumn(col)
+                else:
+                    self.hideColumn(col)
+            elif col in self.cols_breakdown:
+                if settings['show_breakdown_file']:
+                    self.showColumn(col)
+                else:
+                    self.hideColumn(col)
+            elif col in self.cols_breakdown_position:
+                if settings['show_breakdown_position']:
+                    self.showColumn(col)
+                else:
+                    self.hideColumn(col)
+
+        self.setUpdatesEnabled(True)
+
+    def clear_table(self, count = 1):
+        super().clear_table(count)
+
+        self.cols_breakdown_position = set()
+
     def update_filters(self):
         if any([self.item(0, i) for i in range(self.columnCount())]):
             settings = self.main.settings_custom['collocation']
@@ -420,7 +449,9 @@ def init(main):
     checkbox_show_pct.stateChanged.connect(table_settings_changed)
     checkbox_show_cumulative.stateChanged.connect(table_settings_changed)
     checkbox_show_breakdown_position.stateChanged.connect(table_settings_changed)
+    checkbox_show_breakdown_position.stateChanged.connect(table_collocation.toggle_breakdown)
     checkbox_show_breakdown_file.stateChanged.connect(table_settings_changed)
+    checkbox_show_breakdown_file.stateChanged.connect(table_collocation.toggle_breakdown)
 
     group_box_table_settings.setLayout(QGridLayout())
     group_box_table_settings.layout().addWidget(checkbox_show_pct, 0, 0)
@@ -619,12 +650,13 @@ def init(main):
 
     return tab_collocation
 
-def generate_collocates(main, text):
-    freq_distribution = {}
-    score_distribution = {}
+def generate_collocates(main, files):
+    freq_distributions = []
+    score_distributions = []
+    search_terms_total = set()
+    tokens_files = []
 
     settings = main.settings_custom['collocation']
-    tokens = text.tokens.copy()
 
     if settings['window_left'] < 0 and settings['window_right'] > 0:
         window_size_left = abs(settings['window_left'])
@@ -637,86 +669,101 @@ def generate_collocates(main, text):
         window_size_right = 0
     window_size = window_size_left + window_size_right
 
-    if settings['words']:
-        if settings['treat_as_lowercase']:
-            tokens = [token.lower() for token in tokens]
-
-        if settings['lemmatize']:
-            tokens = wordless_lemmatize(main, tokens, text.lang)
-
-    if not settings['puncs']:
-        tokens = [token for token in tokens if token.isalnum()]
-
-    # Frequency distribution
-    for ngram in nltk.ngrams(tokens, abs(settings['window_right']) + 1, pad_right = True):
-        w1 = ngram[0]
-
-        for i, w2 in enumerate(ngram[1:]):
-            if w2 is not None:
-                if (w1, w2) not in freq_distribution:
-                    freq_distribution[(w1, w2)] = [0] * window_size
-
-                freq_distribution[(w1, w2)][window_size_left + i] += 1
-
-    for ngram in nltk.ngrams(tokens, abs(settings['window_left']) + 1, pad_right = True):
-        w1 = ngram[0]
-
-        for i, w2 in enumerate(ngram[1:]):
-            if w2 is not None:
-                if (w2, w1) not in freq_distribution:
-                    freq_distribution[(w2, w1)] = [0] * window_size
-
-                freq_distribution[(w2, w1)][-window_size_right + i] += 1
-
-    finder_left = nltk.collocations.BigramCollocationFinder.from_words(tokens, window_size = abs(settings['window_left']) + 1)
-    finder_right = nltk.collocations.BigramCollocationFinder.from_words(tokens, window_size = abs(settings['window_right']) + 1)
     assoc_measure = main.settings_global['assoc_measures'][settings['assoc_measure']]
 
-    for collocate, score in finder_right.score_ngrams(assoc_measure):
-        if collocate not in score_distribution:
-            score_distribution[collocate] = [0, 0]
+    for i, file in enumerate(files):
+        text = wordless_text.Wordless_Text(main, file)
 
-        score_distribution[collocate][1] = score
+        tokens = text.tokens.copy()
 
-    for collocate, score in finder_left.score_ngrams(assoc_measure):
-        collocate_reversed = tuple(reversed(collocate))
+        if settings['words']:
+            if settings['treat_as_lowercase']:
+                tokens = [token.lower() for token in tokens]
 
-        if collocate_reversed not in score_distribution:
-            score_distribution[collocate_reversed] = [0, 0]
+            if settings['lemmatize']:
+                tokens = wordless_lemmatize(main, tokens, text.lang)
 
-        score_distribution[collocate_reversed][0] = score
+        if not settings['puncs']:
+            tokens = [token for token in tokens if token.isalnum()]
 
-    if not settings['show_all']:
-        if settings['multi_search_mode']:
-            search_terms = settings['search_terms']
-        else:
-            if settings['search_term']:
-                search_terms = [settings['search_term']]
+        if not settings['show_all']:
+            if settings['multi_search_mode']:
+                search_terms = settings['search_terms']
             else:
-                search_terms = []
+                if settings['search_term']:
+                    search_terms = [settings['search_term']]
+                else:
+                    search_terms = []
 
-        search_terms = text.match_tokens(search_terms,
-                                         settings['ignore_case'],
-                                         settings['match_inflected_forms'],
-                                         settings['match_whole_word'],
-                                         settings['use_regex'])
+            search_terms_total |= text.match_tokens(search_terms,
+                                                    settings['ignore_case'],
+                                                    settings['match_inflected_forms'],
+                                                    settings['match_whole_word'],
+                                                    settings['use_regex'])
+
+        tokens_files.append(tokens)
+    tokens_files.append([token for tokens in tokens_files for token in tokens])
+
+    # Frequency distribution
+    for tokens in tokens_files[:-1]:
+        freq_distribution = {}
+
+        for ngram in nltk.ngrams(tokens, abs(settings['window_right']) + 1, pad_right = True):
+            w1 = ngram[0]
+
+            for i, w2 in enumerate(ngram[1:]):
+                if w2 is not None:
+                    if (w1, w2) not in freq_distribution:
+                        freq_distribution[(w1, w2)] = [0] * window_size
+
+                    freq_distribution[(w1, w2)][window_size_left + i] += 1
+
+        for ngram in nltk.ngrams(tokens, abs(settings['window_left']) + 1, pad_right = True):
+            w1 = ngram[0]
+
+            for i, w2 in enumerate(ngram[1:]):
+                if w2 is not None:
+                    if (w2, w1) not in freq_distribution:
+                        freq_distribution[(w2, w1)] = [0] * window_size
+
+                    freq_distribution[(w2, w1)][-window_size_right + i] += 1
 
         freq_distribution = {collocate: freqs
                              for collocate, freqs in freq_distribution.items()
-                             for search_term in search_terms
-                             if search_term == collocate[0]}
+                             if collocate[0] in search_terms_total}
+
+        freq_distributions.append(freq_distribution)
+
+    # Score distribution
+    for tokens in tokens_files:
+        score_distribution = {}
+
+        finder_left = nltk.collocations.BigramCollocationFinder.from_words(tokens, window_size = abs(settings['window_left']) + 1)
+        finder_right = nltk.collocations.BigramCollocationFinder.from_words(tokens, window_size = abs(settings['window_right']) + 1)
+
+        for collocate, score in finder_right.score_ngrams(assoc_measure):
+            if collocate not in score_distribution:
+                score_distribution[collocate] = [0, 0]
+
+            score_distribution[collocate][1] = score
+
+        for collocate, score in finder_left.score_ngrams(assoc_measure):
+            collocate_reversed = tuple(reversed(collocate))
+
+            if collocate_reversed not in score_distribution:
+                score_distribution[collocate_reversed] = [0, 0]
+
+            score_distribution[collocate_reversed][0] = score
 
         score_distribution = {collocate: scores
                               for collocate, scores in score_distribution.items()
-                              for search_term in search_terms
-                              if search_term == collocate[0]}
+                              if collocate[0] in search_terms_total}
 
-    return freq_distribution, score_distribution
+        score_distributions.append(score_distribution)
+
+    return wordless_misc.merge_dicts(freq_distributions), wordless_misc.merge_dicts(score_distributions)
 
 def generate_data(main, table):
-    freq_distributions = []
-    score_distributions = []
-
     settings = main.settings_custom['collocation']
     files = main.wordless_files.selected_files()
 
@@ -740,29 +787,26 @@ def generate_data(main, table):
                 window_size_right = 0
             window_size = window_size_left + window_size_right
 
-            for i, file in enumerate(files):
-                freq_distribution, score_distribution = generate_collocates(main, wordless_text.Wordless_Text(main, file))
-
-                freq_distributions.append(freq_distribution)
-                score_distributions.append(score_distribution)
-
-            freq_distribution = wordless_misc.merge_dicts(freq_distributions)
-            score_distribution = wordless_misc.merge_dicts(score_distributions)
+            freq_distribution, score_distribution = generate_collocates(main, files)
 
             if freq_distribution:
                 table.clear_table()
+
+                table.files = files
 
                 # Insert columns
                 for i, file in enumerate(files):
                     for i in range(settings['window_left'], settings['window_right'] + 1):
                         if i < 0:
                             table.insert_col(table.columnCount() - 1,
-                                             main.tr(f'[{file["name"]}] Freq/L{-i}'),
+                                             main.tr(f'[{file["name"]}] L{-i}'),
                                              pct = True, cumulative = True, breakdown = True)
                         elif i > 0:
                             table.insert_col(table.columnCount() - 1,
-                                             main.tr(f'[{file["name"]}] Freq/R{i}'),
+                                             main.tr(f'[{file["name"]}] R{i}'),
                                              pct = True, cumulative = True, breakdown = True)
+
+                        table.cols_breakdown_position.add(table.columnCount() - 2)
 
                     if window_left:
                         table.insert_col(table.columnCount() - 1,
@@ -784,12 +828,14 @@ def generate_data(main, table):
                 for i in range(settings['window_left'], settings['window_right'] + 1):
                     if i < 0:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'Total Freq/L{-i}'),
+                                         main.tr(f'Total L{-i}'),
                                          pct = True, cumulative = True)
                     elif i > 0:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'Total Freq/R{i}'),
+                                         main.tr(f'Total R{i}'),
                                          pct = True, cumulative = True)
+
+                    table.cols_breakdown_position.add(table.columnCount() - 2)
 
                 if window_left:
                     table.insert_col(table.columnCount() - 1,
@@ -806,6 +852,8 @@ def generate_data(main, table):
 
                 table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}] Score/R')), Qt.DescendingOrder)
 
+                col_keywords = table.find_col(main.tr('Keywords'))
+                col_collocates = table.find_col(main.tr('Collocates'))
                 cols_freq = table.find_col([main.tr(f'[{file["name"]}]') for file in files], fuzzy_matching = True)
                 cols_freq_left = table.find_col([main.tr(f'[{file["name"]}] Freq/L') for file in files])
                 cols_freq_right = table.find_col([main.tr(f'[{file["name"]}] Freq/R') for file in files])
@@ -824,8 +872,10 @@ def generate_data(main, table):
                 total_freq_right = sum(total_freqs[window_size_right:])
                 total_freq = total_freq_left + total_freq_right
 
-                score_left_max = max([sum(list(zip(*scores))[0]) for scores in score_distribution.values()])
-                score_right_max = max([sum(list(zip(*scores))[1]) for scores in score_distribution.values()])
+                score_max = [[max(scores_direction) for scores_direction in zip(*scores)] for scores in zip(*score_distribution.values())]
+                score_max_left = list(zip(*score_max))[0]
+                score_max_right = list(zip(*score_max))[1]
+
                 len_files = len(files)
 
                 table.blockSignals(True)
@@ -834,21 +884,26 @@ def generate_data(main, table):
 
                 table.setRowCount(len(freq_distribution))
 
-                for i, (collocate, scores) in enumerate(sorted(score_distribution.items(), key = wordless_misc.multi_sorting)):
-                    # Score
-                    for j, (score_left, score_right) in enumerate(scores):
-                        if window_left:
-                            table.set_item_num(i, cols_score_left[j], score_left, score_left_max)
-                        if window_right:
-                            table.set_item_num(i, cols_score_right[j], score_right, score_right_max)
-
-                for i, ((keyword, collocate), freqs) in enumerate(sorted(freq_distribution.items(), key = wordless_misc.multi_sorting)):
-                    total_freq_positions = [sum(freqs_position) for freqs_position in zip(*freqs)]
-
+                for i, ((keyword, collocate), scores) in enumerate(sorted(score_distribution.items(), key = wordless_misc.multi_sorting)):
                     # Keywords
                     table.setItem(i, 1, wordless_table.Wordless_Table_Item(keyword))
                     # Collocates
                     table.setItem(i, 2, wordless_table.Wordless_Table_Item(collocate))
+
+                    # Score
+                    for j, (score_left, score_right) in enumerate(scores[:-1]):
+                        if window_left:
+                            table.set_item_num(i, cols_score_left[j], score_left, score_max_left[j])
+                        if window_right:
+                            table.set_item_num(i, cols_score_right[j], score_right, score_max_right[j])
+
+                    # Total Score
+                    table.set_item_num(i, col_total_score_left, scores[-1][0], score_max_left[-1])
+                    table.set_item_num(i, col_total_score_right, scores[-1][1], score_max_right[-1])
+
+                for i in range(table.rowCount()):
+                    freqs = freq_distribution[(table.item(i, col_keywords).text(), table.item(i, col_collocates).text())]
+                    total_freq_positions = [sum(freqs_position) for freqs_position in zip(*freqs)]
 
                     # Frequency
                     for j, freq_positions in enumerate(freqs):
@@ -881,7 +936,8 @@ def generate_data(main, table):
                     table.set_item_pct(i, col_files_found,
                                        len([freqs_position for freqs_position in freqs if any(freqs_position)]), len_files)
 
-                table.update_items_pct()
+                table.toggle_pct()
+                table.toggle_breakdown()
                 
                 table.blockSignals(False)
                 table.setSortingEnabled(True)
