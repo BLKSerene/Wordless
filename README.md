@@ -71,14 +71,15 @@ Many thanks to the following open-source projects on which Wordless is built on:
 6. [NetworkX](http://networkx.github.io/)
 7. [NumPy](http://www.numpy.org/)
 8. [PyQt](https://www.riverbankcomputing.com/software/pyqt/intro)
-9. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)
-10. [chardet](https://github.com/chardet/chardet)
-11. [e_lemma.txt](https://lexically.net/downloads/BNC_wordlists/e_lemma.txt)
-12. [langdetect](https://github.com/Mimino666/langdetect)
-13. [lxml](https://lxml.de/)
-14. [openpyxl](https://openpyxl.readthedocs.io/en/stable/#)
-15. [stopwords-json](https://github.com/6/stopwords-json)
-16. [“结巴”中文分词](https://github.com/fxsjy/jieba)
+9. [SciPy](https://www.scipy.org/)
+10. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)
+11. [chardet](https://github.com/chardet/chardet)
+12. [e_lemma.txt](https://lexically.net/downloads/BNC_wordlists/e_lemma.txt)
+13. [langdetect](https://github.com/Mimino666/langdetect)
+14. [lxml](https://lxml.de/)
+15. [openpyxl](https://openpyxl.readthedocs.io/en/stable/#)
+16. [stopwords-json](https://github.com/6/stopwords-json)
+17. [“结巴”中文分词](https://github.com/fxsjy/jieba)
 
 ## Donation/捐助
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.
