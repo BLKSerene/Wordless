@@ -141,7 +141,7 @@ def init_settings_global(main):
             'gle': 'ga',
             'isl': 'is',
             'ita': 'it',
-            'jpn': 'jp',
+            'jpn': 'ja',
             'kan': 'kn',
             'kaz': 'kk',
             'kor': 'ko',
@@ -911,12 +911,15 @@ def init_settings_default(main):
             'rank_no_limit': False,
             'rank_min': 1,
             'rank_max': 50,
-            'cumulative': False,
+
+            'use_pct': False,
+            'use_cumulative': False,
     
             'freq_no_limit': True,
             'freq_min': 0,
             'freq_max': 1000,
-            'freq_apply_to': main.tr('Total'),
+
+            'apply_to': main.tr('Total'),
 
             'len_no_limit': True,
             'len_min': 1,
@@ -964,12 +967,15 @@ def init_settings_default(main):
             'rank_no_limit': False,
             'rank_min': 1,
             'rank_max': 50,
-            'cumulative': False,
+
+            'use_pct': False,
+            'use_cumulative': False,
     
             'freq_no_limit': True,
             'freq_min': 0,
             'freq_max': 1000,
-            'freq_apply_to': main.tr('Total'),
+            
+            'apply_to': main.tr('Total'),
 
             'len_no_limit': True,
             'len_min': 1,
@@ -1014,25 +1020,25 @@ def init_settings_default(main):
             'rank_no_limit': False,
             'rank_min': 1,
             'rank_max': 50,
-            'cumulative': False,
+            
+            'use_pct': False,
+            'use_cumulative': False,
 
             'freq_left_no_limit': True,
             'freq_left_min': 0,
             'freq_left_max': 1000,
-            'freq_left_apply_to': main.tr('Total'),
             'freq_right_no_limit': True,
             'freq_right_min': 0,
             'freq_right_max': 1000,
-            'freq_right_apply_to': main.tr('Total'),
 
             'score_left_no_limit': True,
             'score_left_min': 0,
             'score_left_max': 100,
-            'score_left_apply_to': main.tr('Total'),
             'score_right_no_limit': True,
             'score_right_min': 0,
             'score_right_max': 100,
-            'score_right_apply_to': main.tr('Total'),
+            
+            'apply_to': main.tr('Total'),
 
             'len_no_limit': True,
             'len_min': 1,
