@@ -14,14 +14,14 @@ from wordless_widgets import wordless_widgets
 
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
-        item_text = self.text()
+        try:
+            item_text = self.text()
 
-        if item_text:
             try:
-                return self.val
+                return self.val_raw
             except:
                 return item_text
-        else:
+        except:
             cell_widget = self.tableWidget().cellWidget(self.row(), self.column())
 
             if isinstance(cell_widget, QComboBox):
@@ -157,48 +157,10 @@ class Wordless_Table(QTableWidget):
 
     def sorting_changed(self, logicalIndex, order):
         if any([self.item(0, i) for i in range(self.columnCount())]):
-            rank_prev = 1
-            rank_next = 1
-            data_prev = ''
+            self.update_ranks()
 
-            col_rank = self.find_col(self.tr('Rank'))
-
-            rows_hidden = [self.item(row, 1).text() for row in range(self.rowCount()) if self.isRowHidden(row)]
-
-            self.blockSignals(True)
-            self.setSortingEnabled(False)
-            self.sortItems(logicalIndex, order)
-
-            # Do not re-calculate rank if the sorted column itself contains rank
-            if logicalIndex != col_rank:
-                for row in range(self.rowCount()):
-                    if row not in rows_hidden:
-                        data_cur = self.item(row, logicalIndex).read_data()
-
-                        self.setItem(row, col_rank, Wordless_Table_Item())
-
-                        if data_cur == data_prev:
-                            self.item(row, col_rank).setData(Qt.DisplayRole, rank_prev)
-                        else:
-                            self.item(row, col_rank).setData(Qt.DisplayRole, rank_next)
-
-                            rank_prev = rank_next
-
-                        rank_next += 1
-                        data_prev = data_cur
-
-            self.blockSignals(False)
-            self.setSortingEnabled(True)
-
-            self.setUpdatesEnabled(False)
-
-            for text in rows_hidden:
-                if self.findItems(text, Qt.MatchExactly)[0].column() == 1:
-                    self.hideRow(self.findItems(text, Qt.MatchExactly)[0].row())
-
-            self.setUpdatesEnabled(True)
-
-            self.toggle_pct()
+            if self.show_cumulative:
+                self.toggle_cumulative()
 
     def insert_col(self, i, label, pct = False, cumulative = False, breakdown = False):
         cols_pct = [self.horizontalHeaderItem(col).text() for col in self.cols_pct]
@@ -239,73 +201,120 @@ class Wordless_Table(QTableWidget):
         item = Wordless_Table_Item()
 
         item.val = val
+        item.val_raw = val
+        item.val_cumulative = 0
         item.total = total
-
-        if col in self.cols_cumulative:
-            if row == 0:
-                item.val_cumulative = val
-            else:
-                item.val_cumulative = self.item(row - 1, col).val_cumulative + val
 
         item.setFont(QFont(self.main.settings_custom['general']['font_monospaced']))
         item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         super().setItem(row, col, item)
 
-    def toggle_pct(self):
-        if any([self.item(0, i) for i in range(self.columnCount())]):
-            precision = self.main.settings_custom['general']['precision']
-            len_pct = 5 + precision
+    def update_ranks(self):
+        data_prev = ''
+        rank_prev = 1
+        rank_next = 1
 
-            rows_hidden = [row for row in range(self.rowCount()) if self.isRowHidden(row)]
+        sort_section = self.horizontalHeader().sortIndicatorSection()
+        col_rank = self.find_col(self.tr('Rank'))
+        rows_hidden = [self.item(row, 1).text() for row in range(self.rowCount()) if self.isRowHidden(row)]
 
-            self.hide()
-            self.blockSignals(True)
-            self.setSortingEnabled(False)
+        self.blockSignals(True)
+        self.setSortingEnabled(False)
+        self.sortByColumn(sort_section, self.horizontalHeader().sortIndicatorOrder())
 
-            for col in self.cols_pct:
-                len_val = len(f'{self.item(0, col).total:,}')
-                total = self.item(0, col).total
+        rows_hidden_sorted = []
 
-                if self.show_cumulative and col in self.cols_cumulative:
-                    val_cumulative = 0
+        for text in rows_hidden:
+            if self.findItems(text, Qt.MatchExactly)[0].column() == 1:
+                rows_hidden_sorted.append(self.findItems(text, Qt.MatchExactly)[0].row())
 
-                    for row in range(self.rowCount()):
-                        if not self.isRowHidden(row):
-                            item = self.item(row, col)
+        for row in range(self.rowCount()):
+            if row not in rows_hidden_sorted:
+                data_cur = self.item(row, sort_section).read_data()
 
-                            val_cumulative += item.val
-                            pct = val_cumulative / total if total else 0
-
-                            if self.show_pct:
-                                item.setText(f'{val_cumulative:>{len_val},}/{pct:<{len_pct}.{precision}%}')
-                            else:
-                                item.setText(f'{val_cumulative:>{len_val},}')
-
-                            item.val_cumulative = val_cumulative
+                if data_cur == data_prev:
+                    self.item(row, col_rank).setData(Qt.DisplayRole, rank_prev)
                 else:
-                    for row in range(self.rowCount()):
-                        if not self.isRowHidden(row):
-                            item = self.item(row, col)
+                    self.item(row, col_rank).setData(Qt.DisplayRole, rank_next)
 
-                            val = item.val
-                            pct = val / total if total else 0
+                    rank_prev = rank_next
 
-                            if self.show_pct:
-                                item.setText(f'{val:>{len_val},}/{pct:<{len_pct}.{precision}%}')
-                            else:
-                                item.setText(f'{val:>{len_val},}')
+                rank_next += 1
+                data_prev = data_cur
 
-            self.show()
-            self.blockSignals(False)
-            self.setSortingEnabled(True)
+        self.blockSignals(False)
+        self.setSortingEnabled(True)
 
-            self.setUpdatesEnabled(False)
+        self.setUpdatesEnabled(False)
 
-            for i in rows_hidden:
-                self.hideRow(i)
+        for row in rows_hidden_sorted:
+            self.hideRow(row)
 
-            self.setUpdatesEnabled(True)
+        self.setUpdatesEnabled(True)
+
+    def toggle_pct(self):
+        precision = self.main.settings_custom['general']['precision']
+        len_pct = 5 + precision
+
+        rows_hidden = [row for row in range(self.rowCount()) if self.isRowHidden(row)]
+
+        self.hide()
+        self.blockSignals(True)
+        self.setSortingEnabled(False)
+
+        for col in self.cols_pct:
+            len_val = len(f'{self.item(0, col).total:,}')
+
+            if self.show_pct:
+                for row in range(self.rowCount()):
+                    item = self.item(row, col)
+
+                    pct = item.val / item.total if item.total else 0
+
+                    if not self.isRowHidden(row):
+                        item.setText(f'{item.val:>{len_val},}/{pct:<{len_pct}.{precision}%}')
+            else:
+                for row in range(self.rowCount()):
+                    item = self.item(row, col)
+
+                    pct = item.val / item.total if item.total else 0
+
+                    if not self.isRowHidden(row):
+                        item.setText(f'{item.val:>{len_val},}')
+
+        self.show()
+        self.blockSignals(False)
+        self.setSortingEnabled(True)
+
+        self.setUpdatesEnabled(False)
+
+        for i in rows_hidden:
+            self.hideRow(i)
+
+        self.setUpdatesEnabled(True)
+
+    def toggle_cumulative(self):
+        for col in self.cols_cumulative:
+            val_cumulative = 0
+
+            for row in range(self.rowCount()):
+                if not self.isRowHidden(row):
+                    item = self.item(row, col)
+
+                    val_cumulative += item.val
+                    item.val_cumulative = val_cumulative
+
+        if self.show_cumulative:
+            for col in self.cols_cumulative:
+                for row in range(self.rowCount()):
+                    item.val = item.val_cumulative
+        else:
+            for col in self.cols_cumulative:
+                for row in range(self.rowCount()):
+                    item.val = item.val_raw
+
+        self.toggle_pct()
 
     def toggle_breakdown(self):
         self.setUpdatesEnabled(False)
@@ -319,17 +328,22 @@ class Wordless_Table(QTableWidget):
         self.setUpdatesEnabled(True)
 
     def filter_table(self):
+        rank_prev = 1
+        rank_next = 1
+        data_prev = ''
+
         self.setUpdatesEnabled(False)
         
         for i, filters in enumerate(self.row_filters):
-            if all(list(filters.values())):
-                self.showRow(i)
-            else:
+            if [val for val in filters.values() if not val]:
                 self.hideRow(i)
+            else:
+                self.showRow(i)
 
         self.setUpdatesEnabled(True)
 
-        self.sorting_changed(self.horizontalHeader().sortIndicatorSection(), self.horizontalHeader().sortIndicatorOrder())
+        self.update_ranks()
+        self.toggle_cumulative()
 
     def selected_rows(self):
         return sorted(set([index.row() for index in self.selectedIndexes()]))
