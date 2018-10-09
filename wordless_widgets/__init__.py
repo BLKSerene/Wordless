@@ -7,6 +7,7 @@
 #
 
 __all__ = [
+	'wordless_box',
     'wordless_dialog',
     'wordless_editor',
     'wordless_layout',
