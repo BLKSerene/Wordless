@@ -11,50 +11,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import nltk
 
-from wordless_widgets import wordless_list
-
-# Combo Box
-class Wordless_Combo_Box(QComboBox):
-    def __init__(self, parent):
-        super().__init__(parent)
-
-        self.setMaxVisibleItems(25)
-
-class Wordless_Combo_Box_Lang(Wordless_Combo_Box):
-    def __init__(self, main):
-        super().__init__(main)
-
-        self.addItems(sorted(main.settings_global['langs']))
-
-class Wordless_Combo_Box_Encoding(Wordless_Combo_Box):
-    def __init__(self, main):
-        super().__init__(main)
-
-        self.addItems(main.settings_global['file_encodings'])
-
-# Spin Box
-class Wordless_Spin_Box_Window(QSpinBox):
-    def __init__(self, parent):
-        super().__init__(parent)
-
-        self.setRange(-100, 100)
-
-        self.valueChanged.connect(self.value_changed)
-
-    def stepBy(self, steps):
-        if self.prefix() == 'L':
-            super().stepBy(-steps)
-        elif self.prefix() == 'R':
-            super().stepBy(steps)
-
-    def value_changed(self):
-        if self.value() <= 0:
-            if self.prefix() == 'L':
-                self.setPrefix('R')
-            else:
-                self.setPrefix('L')
-
-            self.setValue(-self.value() + 1)
+from wordless_widgets import wordless_box, wordless_list
 
 def wordless_widgets_token(main):
     def words_changed():
@@ -195,19 +152,21 @@ def wordless_widgets_table(main, table):
     def show_pct_changed():
         table.show_pct = checkbox_show_pct.isChecked()
 
-        table.toggle_pct()
+        if any([table.item(0, i) for i in range(table.columnCount())]):
+            table.toggle_pct()
 
     def show_cumulative_changed():
         table.show_cumulative = checkbox_show_cumulative.isChecked()
 
-        table.toggle_pct()
+        if any([table.item(0, i) for i in range(table.columnCount())]):
+            table.toggle_cumulative()
 
     def show_breakdown_changed():
         table.show_breakdown = checkbox_show_breakdown.isChecked()
 
         table.toggle_breakdown()
 
-    checkbox_show_pct = QCheckBox(main.tr('Show Percentage'), main)
+    checkbox_show_pct = QCheckBox(main.tr('Show Percentage Data'), main)
     checkbox_show_cumulative = QCheckBox(main.tr('Show Cumulative Data'), main)
     checkbox_show_breakdown = QCheckBox(main.tr('Show Breakdown'), main)
 
@@ -221,7 +180,7 @@ def wordless_widgets_table(main, table):
 
     return [checkbox_show_pct, checkbox_show_cumulative, checkbox_show_breakdown]
 
-def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None, col = '', apply_to = False):
+def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None, col = ''):
     def filter_no_limit_changed():
         if checkbox_no_limit.isChecked():
             spin_box_max.setEnabled(False)
@@ -236,37 +195,11 @@ def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None
         if spin_box_min.value() > spin_box_max.value():
             spin_box_min.setValue(spin_box_max.value())
 
-    def table_header_changed():
-        apply_to_old = combo_box_apply_to.currentText()
-
-        combo_box_apply_to.blockSignals(True)
-        combo_box_apply_to.clear()
-
-        for file in table.files:
-            combo_box_apply_to.addItem(file['name'])
-        combo_box_apply_to.addItem(main.tr('Total'))
-
-        for i in range(combo_box_apply_to.count()):
-            if combo_box_apply_to.itemText(i) == apply_to_old:
-                combo_box_apply_to.setCurrentIndex(i)
-
-                break
-
-        combo_box_apply_to.blockSignals(False)
-
     checkbox_no_limit = QCheckBox(main.tr('No Limit'), main)
     label_min = QLabel(main.tr('From'), main)
     spin_box_min = QSpinBox(main)
     label_max = QLabel(main.tr('To'), main)
     spin_box_max = QSpinBox(main)
-
-    if apply_to:
-        label_apply_to = QLabel(main.tr('Apply to:'), main)
-        combo_box_apply_to = QComboBox(main)
-
-        table.horizontalHeader().sectionCountChanged.connect(table_header_changed)
-
-        table_header_changed()
 
     spin_box_min.setRange(filter_min, filter_max)
     spin_box_max.setRange(filter_min, filter_max)
@@ -279,10 +212,7 @@ def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None
     filter_min_changed()
     filter_max_changed()
 
-    if apply_to:
-        return [checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max, label_apply_to, combo_box_apply_to]
-    else:
-        return [checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max]
+    return checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max
 
 def wordless_widgets_size(main, size_min = 1, size_max = 20):
     def size_sync_changed():
@@ -319,8 +249,8 @@ def wordless_widgets_size(main, size_min = 1, size_max = 20):
 def wordless_widgets_window(main):
     def window_sync_changed():
         if checkbox_window_sync.isChecked():
-            spin_box_window_left.setPrefix(window_right.prefix())
-            spin_box_window_left.setValue(window_right.value())
+            spin_box_window_left.setPrefix(spin_box_window_right.prefix())
+            spin_box_window_left.setValue(spin_box_window_right.value())
 
     def window_left_changed():
         if checkbox_window_sync.isChecked():
@@ -350,9 +280,9 @@ def wordless_widgets_window(main):
 
     checkbox_window_sync = QCheckBox(main.tr('Sync'), main)
     label_window_left = QLabel(main.tr('From'), main)
-    spin_box_window_left = Wordless_Spin_Box_Window(main)
+    spin_box_window_left = wordless_box.Wordless_Spin_Box_Window(main)
     label_window_right = QLabel(main.tr('To'), main)
-    spin_box_window_right = Wordless_Spin_Box_Window(main)
+    spin_box_window_right = wordless_box.Wordless_Spin_Box_Window(main)
 
     spin_box_window_left.setRange(-100, 100)
     spin_box_window_right.setRange(-100, 100)
