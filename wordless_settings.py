@@ -118,9 +118,9 @@ class Wordless_Settings(QDialog):
         group_box_encoding = QGroupBox(self.tr('Default Encodings'), self)
 
         self.label_encoding_input = QLabel(self.tr('Input Encoding:'), self)
-        self.combo_box_encoding_input = wordless_widgets.Wordless_Combo_Box_Encoding(self.main)
+        self.combo_box_encoding_input = wordless_box.Wordless_Combo_Box_Encoding(self.main)
         self.label_encoding_output = QLabel(self.tr('Output Encoding:'), self)
-        self.combo_box_encoding_output = wordless_widgets.Wordless_Combo_Box_Encoding(self.main)
+        self.combo_box_encoding_output = wordless_box.Wordless_Combo_Box_Encoding(self.main)
 
         group_box_encoding.setLayout(QGridLayout())
         group_box_encoding.layout().addWidget(self.label_encoding_input, 0, 0)
@@ -169,7 +169,7 @@ class Wordless_Settings(QDialog):
 
         for lang_code in settings_global:
             self.__dict__[f'label_lemmatizer_{lang_code}'] = QLabel(wordless_conversion.to_lang_text(self.main, lang_code) + ':', self)
-            self.__dict__[f'combo_box_lemmatizer_{lang_code}'] = wordless_widgets.Wordless_Combo_Box(self)
+            self.__dict__[f'combo_box_lemmatizer_{lang_code}'] = wordless_box.Wordless_Combo_Box(self)
 
             self.__dict__[f'combo_box_lemmatizer_{lang_code}'].addItems(settings_global[lang_code])
 
@@ -191,7 +191,7 @@ class Wordless_Settings(QDialog):
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
         self.label_lemmatization_preview_lang = QLabel(self.tr('Select a Language:'), self)
-        self.combo_box_lemmatization_preview_lang = wordless_widgets.Wordless_Combo_Box(self)
+        self.combo_box_lemmatization_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.text_edit_lemmatization_preview_samples = QTextEdit(self)
         self.text_edit_lemmatization_preview_results = QTextEdit(self)
 
@@ -258,7 +258,7 @@ class Wordless_Settings(QDialog):
 
         for lang_code in settings_global:
             self.__dict__[f'label_stop_words_{lang_code}'] = QLabel(wordless_conversion.to_lang_text(self.main, lang_code) + ':', self)
-            self.__dict__[f'combo_box_stop_words_{lang_code}'] = wordless_widgets.Wordless_Combo_Box(self)
+            self.__dict__[f'combo_box_stop_words_{lang_code}'] = wordless_box.Wordless_Combo_Box(self)
 
             self.__dict__[f'combo_box_stop_words_{lang_code}'].addItems(settings_global[lang_code])
 
@@ -280,7 +280,7 @@ class Wordless_Settings(QDialog):
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
         self.label_stop_words_preview_lang = QLabel(self.tr('Select a Language:'), self)
-        self.combo_box_stop_words_preview_lang = wordless_widgets.Wordless_Combo_Box(self)
+        self.combo_box_stop_words_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.combo_box_stop_words_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
 
         self.combo_box_stop_words_preview_lang.currentTextChanged.connect(preview_changed)

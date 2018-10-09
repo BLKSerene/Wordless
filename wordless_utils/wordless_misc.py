@@ -6,9 +6,9 @@
 # For license information, see LICENSE.txt.
 #
 
-import collections
 import copy
 import os
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -16,11 +16,39 @@ from PyQt5.QtWidgets import *
 
 from wordless_utils import wordless_message, wordless_text
 
+def log_timing(message):
+    def decorater(func):
+
+        def wrapper(widget, *args, **kwargs):
+            if isinstance(widget, QMainWindow):
+                main = widget
+            else:
+                main = widget.main
+
+            time_start = time.time()
+
+            func(widget, *args, **kwargs)
+
+            time_elapsed = time.time() - time_start
+            time_elapsed_min = int(time_elapsed // 60)
+            time_elapsed_sec = time_elapsed % 60
+
+            if time_elapsed_min == 0:
+                main.status_bar.showMessage(main.tr(f'{message}! (In {time_elapsed_sec:.2f} seconds)'))
+            elif time_elapsed_min == 1:
+                main.status_bar.showMessage(main.tr(f'{message}! (In 1 minute {time_elapsed_sec:.2f} seconds)'))
+            else:
+                main.status_bar.showMessage(main.tr(f'{message}! (In {time_elapsed_min} minutes {time_elapsed_sec:.2f} seconds)'))
+
+        return wrapper
+
+    return decorater
+
 def multi_sorting(item):
     keys = []
 
     for value in item[1]:
-        if isinstance(value, collections.Iterable):
+        if type(value) == list:
             mid = len(value) // 2
 
             keys.extend([-val for val in value[mid:]])
@@ -35,10 +63,19 @@ def multi_sorting(item):
 def merge_dicts(dicts_to_be_merged):
     dict_merged = {}
 
-    values_2d = isinstance(list(dicts_to_be_merged[0].values())[0], collections.Iterable)
+    if any(dicts_to_be_merged):
+        for i, dict_to_be_merged in enumerate(dicts_to_be_merged):
+            if dict_to_be_merged:
+                i_dict = i
+
+                values_2d = type(list(dict_to_be_merged.values())[0]) == list
+
+                break
+    else:
+        return
     
     if values_2d:
-        value_2d = [[0] * len(list(dicts_to_be_merged[0].values())[0]) for i in range(len(dicts_to_be_merged))]
+        value_2d = [[0] * len(list(dicts_to_be_merged[i_dict].values())[0]) for i in range(len(dicts_to_be_merged))]
     else:
         value_1d = [0] * len(dicts_to_be_merged)
 
