@@ -368,7 +368,7 @@ class Wordless_Main(QMainWindow):
         action_show_status_bar = QAction(self.tr('Show Status Bar'), self, checkable = True)
         action_show_status_bar.setChecked(True)
         action_show_status_bar.setStatusTip(self.tr('Show/Hide the status bar'))
-        action_show_status_bar.triggered.connect(lambda: show_status_bar(self))
+        action_show_status_bar.triggered.connect(show_status_bar)
 
         menu_pref.addAction(action_settings)
         menu_pref.addSeparator()

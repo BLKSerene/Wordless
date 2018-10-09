@@ -44,6 +44,7 @@ class Wordless_Files():
 
         return file
 
+    @ wordless_misc.log_timing('Files added')
     def add_files(self, file_paths):
         for file_path in file_paths:
             if os.path.splitext(file_path)[1] in self.main.settings_global['file_exts']:
@@ -76,8 +77,8 @@ class Wordless_Files():
 
             for i, file in enumerate(files):
                 checkbox_name = QTableWidgetItem(file['name'])
-                combo_box_lang = wordless_widgets.Wordless_Combo_Box_Lang(self.main)
-                combo_box_encoding = wordless_widgets.Wordless_Combo_Box_Encoding(self.main)
+                combo_box_lang = wordless_box.Wordless_Combo_Box_Lang(self.main)
+                combo_box_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
 
                 if file['selected']:
                     checkbox_name.setCheckState(Qt.Checked)
