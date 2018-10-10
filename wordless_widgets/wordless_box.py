@@ -43,7 +43,6 @@ class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
     def table_header_changed(self):
         apply_to_old = self.currentText()
 
-        self.blockSignals(True)
         self.clear()
 
         for file in self.table.files:
@@ -55,8 +54,6 @@ class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
                 self.setCurrentIndex(i)
 
                 break
-
-        self.blockSignals(False)
 
 # Spin Box
 class Wordless_Spin_Box_Window(QSpinBox):
