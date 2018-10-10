@@ -10,7 +10,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_widgets import wordless_widgets
+from wordless_widgets import wordless_box
 
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
@@ -107,6 +107,8 @@ class Wordless_Table(QTableWidget):
 
         selected_rows = self.selected_rows()
 
+        self.blockSignals(True)
+
         for row in selected_rows:
             rows_dragged.append([])
 
@@ -131,13 +133,15 @@ class Wordless_Table(QTableWidget):
                 if isinstance(item, QTableWidgetItem):
                     self.setItem(row_dropped + row, col, item)
                 elif isinstance(item, QComboBox):
-                    item_combo_box = wordless_widgets.Wordless_Combo_Box(self.main)
+                    item_combo_box = wordless_box.Wordless_Combo_Box(self.main)
                     item_combo_box.addItems([item.itemText(i) for i in range(item.count())])
                     item_combo_box.setCurrentText(item.currentText())
 
                     self.setCellWidget(row_dropped + row, col, item_combo_box)
 
                 self.item(row, col).setSelected(True)
+
+        self.blockSignals(False)
 
         event.accept()
 

@@ -101,7 +101,7 @@ class Wordless_Files():
 
         self.table.blockSignals(False)
 
-        self.table.itemChanged.emit(self.table.item(0, 0))
+        self.table.file_item_changed()
 
     def selected_files(self):
         selected_files = [file for file in self.main.settings_custom['file']['files_open'] if file['selected']]
@@ -173,7 +173,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
 
         self.main.settings_custom['file']['files_open'].clear()
 
-        if self.item(0, 0):
+        if any([self.item(0, i) for i in range(self.columnCount())]):
             for row in reversed(list(range(self.rowCount()))):
                 for row_above in range(row):
                     if self.item(row, 2).text() == self.item(row_above, 2).text():
@@ -184,19 +184,18 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
                         break
 
             for row in range(self.rowCount()):
-                if self.item(row, 4):
-                    file = self.main.wordless_files._new_file(self.item(row, 2).text(), auto_detect = False)
+                file = self.main.wordless_files._new_file(self.item(row, 2).text(), auto_detect = False)
 
-                    file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
-                    file['lang_text'] = self.cellWidget(row, 1).currentText()
-                    file['lang_code'] = wordless_conversion.to_lang_code(self.main, file['lang_text'])
-                    file['word_delimiter'] = wordless_conversion.to_word_delimiter(file['lang_code'])
-                    file['encoding_text'] = self.cellWidget(row, 4).currentText()
-                    file['encoding_code'] = wordless_conversion.to_encoding_code(self.main, file['encoding_text'])[0]
+                file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
+                file['lang_text'] = self.cellWidget(row, 1).currentText()
+                file['lang_code'] = wordless_conversion.to_lang_code(self.main, file['lang_text'])
+                file['word_delimiter'] = wordless_conversion.to_word_delimiter(file['lang_code'])
+                file['encoding_text'] = self.cellWidget(row, 4).currentText()
+                file['encoding_code'] = wordless_conversion.to_encoding_code(self.main, file['encoding_text'])[0]
 
-                    self.main.settings_custom['file']['files_open'].append(file)
+                self.main.settings_custom['file']['files_open'].append(file)
 
-        if self.item(0, 0):
+        if any([self.item(0, i) for i in range(self.columnCount())]):
             self.button_select_all.setEnabled(True)
             self.button_inverse.setEnabled(True)
             self.button_deselect_all.setEnabled(True)
@@ -226,10 +225,11 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
                                     QMessageBox.Ok)
 
     def file_selection_changed(self):
-        if self.item(0, 0) and self.selectedIndexes():
-            self.button_close_selected.setEnabled(True)
-        else:
-            self.button_close_selected.setEnabled(False)
+        if any([self.item(0, i) for i in range(self.columnCount())]):
+            if self.selectedIndexes():
+                self.button_close_selected.setEnabled(True)
+            else:
+                self.button_close_selected.setEnabled(False)
 
     def open_files(self):
         file_paths = QFileDialog.getOpenFileNames(self.main,
