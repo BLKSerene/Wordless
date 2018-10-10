@@ -11,7 +11,9 @@ import copy
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+
 import nltk
+import numpy
 
 from wordless_widgets import *
 from wordless_utils import *
@@ -107,12 +109,12 @@ def init(main):
         checkbox_show_cumulative.setChecked(settings_loaded['show_cumulative'])
         checkbox_show_breakdown.setChecked(settings_loaded['show_breakdown'])
 
+        checkbox_use_pct.setChecked(settings_loaded['use_pct'])
+        checkbox_use_cumulative.setChecked(settings_loaded['use_cumulative'])
+
         checkbox_rank_no_limit.setChecked(settings_loaded['rank_no_limit'])
         spin_box_rank_min.setValue(settings_loaded['rank_min'])
         spin_box_rank_max.setValue(settings_loaded['rank_max'])
-
-        checkbox_use_pct.setChecked(settings_loaded['use_pct'])
-        checkbox_use_cumulative.setChecked(settings_loaded['use_cumulative'])
 
         checkbox_freq_no_limit.setChecked(settings_loaded['freq_no_limit'])
         spin_box_freq_min.setValue(settings_loaded['freq_min'])
@@ -162,12 +164,12 @@ def init(main):
         settings['show_breakdown'] = checkbox_show_breakdown.isChecked()
 
     def plot_settings_changed():
+        settings['use_pct'] = checkbox_use_pct.isChecked()
+        settings['use_cumulative'] = checkbox_use_cumulative.isChecked()
+
         settings['rank_no_limit'] = checkbox_rank_no_limit.isChecked()
         settings['rank_min'] = spin_box_rank_min.value()
         settings['rank_max'] = spin_box_rank_max.value()
-
-        settings['use_pct'] = checkbox_use_pct.isChecked()
-        settings['use_cumulative'] = checkbox_use_cumulative.isChecked()
 
     def filter_settings_changed():
         settings['freq_no_limit'] = checkbox_freq_no_limit.isChecked()
@@ -323,6 +325,11 @@ def init(main):
     # Plot Settings
     group_box_plot_settings = QGroupBox(main.tr('Plot Settings'), main)
 
+    checkbox_use_pct = QCheckBox(main.tr('Use Percentage Data'), main)
+    checkbox_use_cumulative = QCheckBox(main.tr('Use Cumulative Data'), main)
+
+    separator_plot_settings = wordless_layout.Wordless_Separator(main)
+
     label_rank = QLabel(main.tr('Rank:'), main)
     (checkbox_rank_no_limit,
      label_rank_min,
@@ -332,28 +339,25 @@ def init(main):
 
     separator_plot_settings = wordless_layout.Wordless_Separator(main)
 
-    checkbox_use_pct = QCheckBox(main.tr('Use Percentage Data'), main)
-    checkbox_use_cumulative = QCheckBox(main.tr('Use Cumulative Data'), main)
+    checkbox_use_pct.stateChanged.connect(plot_settings_changed)
+    checkbox_use_cumulative.stateChanged.connect(plot_settings_changed)
 
     checkbox_rank_no_limit.stateChanged.connect(plot_settings_changed)
     spin_box_rank_min.valueChanged.connect(plot_settings_changed)
     spin_box_rank_max.valueChanged.connect(plot_settings_changed)
 
-    checkbox_use_pct.stateChanged.connect(plot_settings_changed)
-    checkbox_use_cumulative.stateChanged.connect(plot_settings_changed)
-
     group_box_plot_settings.setLayout(QGridLayout())
-    group_box_plot_settings.layout().addWidget(label_rank, 0, 0, 1, 3)
-    group_box_plot_settings.layout().addWidget(checkbox_rank_no_limit, 0, 3)
-    group_box_plot_settings.layout().addWidget(label_rank_min, 1, 0)
-    group_box_plot_settings.layout().addWidget(spin_box_rank_min, 1, 1)
-    group_box_plot_settings.layout().addWidget(label_rank_max, 1, 2)
-    group_box_plot_settings.layout().addWidget(spin_box_rank_max, 1, 3)
+    group_box_plot_settings.layout().addWidget(checkbox_use_pct, 0, 0, 1, 4)
+    group_box_plot_settings.layout().addWidget(checkbox_use_cumulative, 1, 0, 1, 4)
 
     group_box_plot_settings.layout().addWidget(separator_plot_settings, 2, 0, 1, 4)
 
-    group_box_plot_settings.layout().addWidget(checkbox_use_pct, 3, 0, 1, 4)
-    group_box_plot_settings.layout().addWidget(checkbox_use_cumulative, 4, 0, 1, 4)
+    group_box_plot_settings.layout().addWidget(label_rank, 3, 0, 1, 3)
+    group_box_plot_settings.layout().addWidget(checkbox_rank_no_limit, 3, 3)
+    group_box_plot_settings.layout().addWidget(label_rank_min, 4, 0)
+    group_box_plot_settings.layout().addWidget(spin_box_rank_min, 4, 1)
+    group_box_plot_settings.layout().addWidget(label_rank_max, 4, 2)
+    group_box_plot_settings.layout().addWidget(spin_box_rank_max, 4, 3)
 
     # Filter Settings
     group_box_filter_settings = QGroupBox(main.tr('Filter Settings'), main)
@@ -526,8 +530,8 @@ def generate_data(main, table):
             col_total_freq = table.find_col(main.tr('Total Freq'))
             col_files_found = table.find_col(main.tr('Files Found'))
 
-            total_freqs = [sum(freqs) for freqs in zip(*freq_distribution.values())]
-            total_freq = sum(total_freqs)
+            freqs_total_files = numpy.array(list(freq_distribution.values())).sum(axis = 0)
+            freqs_total = sum(freqs_total_files)
             len_files = len(files)
 
             table.blockSignals(True)
@@ -545,10 +549,10 @@ def generate_data(main, table):
 
                 # Frequency
                 for j, freq in enumerate(freqs):
-                    table.set_item_pct(i, 2 + j, freq, total_freqs[j])
+                    table.set_item_pct(i, 2 + j, freq, freqs_total_files[j])
 
                 # Total
-                table.set_item_pct(i, col_total_freq, sum(freqs), total_freq)
+                table.set_item_pct(i, col_total_freq, sum(freqs), freqs_total)
 
                 # Files Found
                 table.set_item_pct(i, col_files_found, len([freq for freq in freqs if freq]), len_files)
