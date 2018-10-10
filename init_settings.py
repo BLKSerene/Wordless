@@ -1017,12 +1017,13 @@ def init_settings_default(main):
             'show_breakdown_position': True,
             'show_breakdown_file': True,
 
+            'use_data': main.tr('Score (Right)'),
+            'use_pct': False,
+            'use_cumulative': False,
+
             'rank_no_limit': False,
             'rank_min': 1,
             'rank_max': 50,
-            
-            'use_pct': False,
-            'use_cumulative': False,
 
             'freq_left_no_limit': True,
             'freq_left_min': 0,
