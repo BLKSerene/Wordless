@@ -16,24 +16,63 @@ import nltk
 
 from wordless_utils import wordless_conversion
 
-def wordless_word_tokenize(text, lang):
+def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'Default'):
+    if lang_code not in ['eng', 'ces', 'dan', 'nld', 'est', 'fin', 'fra', 'deu', 'ell', 'ita',
+                         'nor', 'pol', 'por', 'slv', 'spa', 'swe', 'tur']:
+        lang_code = 'eng'
+
+    lang_text = wordless_conversion.to_lang_text(main, lang_code)
+
+    return nltk.sent_tokenize(text, language = lang_text.lower())
+
+def wordless_word_tokenize(main, text, lang_code, word_tokenizer = 'Default'):
     tokens = []
 
-    if lang == 'eng':
-        tokens.extend(nltk.word_tokenize(text))
-    elif lang in ['zho_cn', 'zho_tw']:
-        tokens.extend(jieba.lcut(text))
+    if lang_code not in ['eng', 'zho_CN', 'zho_TW', 'ces', 'dan', 'nld', 'est', 'fin', 'fra', 'deu', 'ell', 'ita',
+                         'nor', 'pol', 'por', 'slv', 'spa', 'swe', 'tur']:
+        lang_code = 'eng'
+
+    if word_tokenizer == 'Default':
+        word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang_code]
+
+    # English
+    if word_tokenizer == 'NLTK - Treebank Tokenizer':
+        sentences = wordless_sentence_tokenize(main, text, lang_code)
+
+        for sentence in sentences:
+            tokens.extend(nltk.TreebankWordTokenizer().tokenize(sentence))
+    elif word_tokenizer == 'NLTK - Twitter Tokenizer':
+        sentences = wordless_sentence_tokenize(main, text, lang_code)
+
+        for sentence in sentences:
+            tokens.extend(nltk.casual_tokenize(sentence))
+    elif word_tokenizer == 'NLTK - Tok-tok Tokenizer':
+        sentences = wordless_sentence_tokenize(main, text, lang_code)
+
+        for sentence in sentences:
+            tokens.extend(nltk.ToktokTokenizer().tokenize(sentence))
+    elif word_tokenizer == 'NLTK - Word Punctuation Tokenizer':
+        tokens = nltk.wordpunct_tokenize(text)
+    elif word_tokenizer == 'NLTK - Whitespace Tokenizer':
+        tokens = text.split()
+    elif word_tokenizer == 'NLTK - Regular-Expression Tokenizer':
+        tokens = nltk.regexp_tokenize(text, main.settings_custom['word_tokenization']['regex_tokenizers'][lang_code], gaps = True)
+    # Chinese
+    elif word_tokenizer == 'jieba (“结巴”中文分词) - With HMM':
+        tokens = jieba.cut(text)
+    elif word_tokenizer == 'jieba (“结巴”中文分词) - Without HMM':
+        tokens = jieba.cut(text, HMM = False)
     else:
-        tokens.extend(nltk.word_tokenize(text))
+        tokens = nltk.word_tokenize(text)
 
     return tokens
 
-def wordless_lemmatize(main, tokens, lang_code, lemmatizer = ''):
+def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'Default'):
     lemmas = []
     lemma_list = {}
 
     if lang_code in main.settings_global['lemmatizers']:
-        if not lemmatizer:
+        if lemmatizer == 'Default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang_code]
 
         if lemmatizer == 'NLTK':
