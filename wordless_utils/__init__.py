@@ -9,7 +9,6 @@
 __all__ = [
     'wordless_conversion',
     'wordless_detection',
-    'wordless_message',
     'wordless_misc',
     'wordless_plot',
     'wordless_text'

@@ -10,10 +10,16 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+import jpype
+
+from wordless_widgets import wordless_dialog
+
 # Combo Box
 class Wordless_Combo_Box(QComboBox):
     def __init__(self, parent):
         super().__init__(parent)
+
+        self.main = parent
 
         self.setMaxVisibleItems(25)
 
@@ -33,7 +39,6 @@ class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
     def __init__(self, main, table):
         super().__init__(main)
 
-        self.main = main
         self.table = table
 
         self.table.horizontalHeader().sectionCountChanged.connect(self.table_header_changed)
@@ -54,6 +59,25 @@ class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
                 self.setCurrentIndex(i)
 
                 break
+
+class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.currentTextChanged.connect(self.text_changed)
+
+        self.text_changed()
+
+    def text_changed(self):
+        if self.currentText().find('HanLP') > -1:
+            try:
+                jpype.getDefaultJVMPath()
+            except:
+                wordless_dialog.wordless_message_jre_not_installed(self.main)
+
+                self.setCurrentText(self.text_old)
+
+        self.text_old = self.currentText()
 
 # Spin Box
 class Wordless_Spin_Box_Window(QSpinBox):

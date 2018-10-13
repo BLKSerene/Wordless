@@ -14,7 +14,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_utils import wordless_message, wordless_text
+from wordless_widgets import wordless_dialog
+from wordless_utils import wordless_text
 
 def log_timing(message):
     def decorater(func):
