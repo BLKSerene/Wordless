@@ -1,0 +1,29 @@
+;;; -*- mode: fundamental; coding: utf-8; indent-tabs-mode: t; -*-
+
+;;;
+;;; Copyright (c) 2012 -- 2012 Stephan Oepen (oe@ifi.uio.no); 
+;;; see `LICENSE' for conditions.
+;;;
+
+;;;
+;;; in `regular' pre-processing for the ERG, we allow ourselves a handful of
+;;; deviations from the PTB.  in cases where strict compliance is required, as
+;;; for example in the production of the UiO Conan Doyle Corpus, go the extra
+;;; mile in this optional set of rules.
+;;;
+!([Cc][Aa][Nn])([Nn][Oo][Tt])					\1 \2 
+!([Dd])[’']([Yy][Ee])						\1’ \2 
+!([Gg][Ii][Mm])([Mm][Ee])					\1 \2 
+!([Gg][Oo][Nn])([Nn][Aa])					\1 \2 
+!([Gg][Oo][Tt])([Tt][Aa])					\1 \2 
+!([Ll][Ee][Mm])([Mm][Ee]) 					\1 \2 
+!([Mm][Oo][Rr][Ee])[’']([Nn]) 					\1 ’\2 
+![’']([Tt])([Ii][Ss]) 						’\1 \1 
+![’']([Tt])([Ww][Aa][Ss]) 					’\1 \2 
+!([Ww][Aa][Nn])([Nn][Aa]) 					\1 \2 
+
+;;
+;; following are idiosyncracies we discovered when comparing to actual PTB
+;; tokenization, including the notorious extra period after sentence-final U.S.
+;;
+!(U\.S) (\.)( *)$						\1\2 .\3

@@ -1,0 +1,33 @@
+;;; -*- mode: fundamental; coding: utf-8; indent-tabs-mode: t; -*-
+
+;;;
+;;; Copyright (c) 2012 -- 2012 Stephan Oepen (oe@ifi.uio.no); 
+;;; see `LICENSE' for conditions.
+;;;
+
+;;;
+;;; HTML or XML character entities that need escaping when not part of markup,
+;;; hence must not be converted to regular characters already in the initial
+;;; XML module, but postponed until HTML or XML (or wiki) markup processing is
+;;; complete.
+;;;
+
+!&amp;|&#((?i)x26);|&#38;					&
+!&lt;|&#((?i)x3c);|&#60;					<
+!&gt;|&#((?i)x3e);|&#62;					>
+
+;;
+;; apply the same strategy for quote disambiguation (from `quotes.rpp' above):
+;; opening quotes are preceded by a token boundary (white space), with a small
+;; number of additional, token-initial characters than can intervene.  anything
+;; else, we assume, is a closing quote.
+;;
+
+#1
+!(^| [[({“‘]*)&quot;						\1“
+!&quot;								”
+!(^| [[({“‘]*)&apos;						\1‘
+!&apos;								’
+#
+
+>1

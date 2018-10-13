@@ -565,7 +565,7 @@ def generate_data(main, table):
             table.toggle_cumulative()
             table.toggle_breakdown()
         else:
-            wordless_message.empty_results_table(main)
+            wordless_dialog.wordless_message_empty_results_table(main)
         
 def find_next(main, table):
     items_found = find_all(main, table)
@@ -677,11 +677,11 @@ def find_all(main, table):
                 table.blockSignals(False)
                 table.show()
             else:
-                wordless_message.empty_results_table(main)
+                wordless_dialog.wordless_message_empty_results_table(main)
 
             main.status_bar.showMessage(main.tr(f'Found {len(items_found):,} item(s).'))
         else:
-            wordless_message.empty_search_term(main)
+            wordless_dialog.wordless_message_empty_search_term(main)
     else:
         QMessageBox.information(main,
                                 main.tr('Search Failed'),
@@ -718,4 +718,4 @@ def generate_plot(main):
                                              use_cumulative = settings['use_cumulative'],
                                              label_x = main.tr('Tokens'))
         else:
-            wordless_message.empty_results_plot(main)
+            wordless_dialog.wordless_message_empty_results_plot(main)
