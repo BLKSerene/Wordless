@@ -1,0 +1,44 @@
+;;; -*- mode: fundamental; coding: utf-8; indent-tabs-mode: t; -*-
+
+;;;
+;;; Copyright (c) 2012 -- 2012 Stephan Oepen (oe@ifi.uio.no); 
+;;; see `LICENSE' for conditions.
+;;;
+
+
+;;;
+;;; _fix_me_
+;;; following are a set of `cheap and cheerful' REPP rules to make simplified
+;;; HTML text palatable to parsing with the ERG.  for the time being, we are
+;;; mostly just throwing out markup, with the exception of italics, emphasis,
+;;; et al., which can signal use--mention distinctions.
+;;;
+
+!</?(?:a|b|code|h[0-9]|li|small|strong|title)>			
+!<em[^>]*>((?:(?!</em>).)*)</em>				¦i \1 i¦
+!<i[^>]*>((?:(?!</i>).)*)</i>					¦i \1 i¦
+;;
+;; in blogs, authors at times try to be witty and use HTML strike-through to
+;; show changes of mind or otherwise inappropriate content.
+;;
+!<s[^>]*>((?!</s>).)*</s>					 
+
+;;
+;; _fix_me_
+;; what about sub- and super-scripts?  a task for the GMLC.     (5-mar-12; oe)
+;;
+!</?su(?:b|p)>						
+
+;;
+;; as we do for wikipedia text, collapse pieces of non-English into a token
+;; that the grammar treats much like a proper name.  for robustness, enforce
+;; token boundaries around these.
+;;
+!<code[^>]*>(?:(?!</code>).)*</code>				 <code/> 
+!<img[^>]*>(?:(?!</img>).)*</img>				 <img/> 
+!<kbd[^>]*>(?:(?!</kbd>).)*</kbd>				 <kbd/> 
+
+;;
+;; finally, for peace of mind, normalize whitespace sequences to a single space
+;; 
+!  +								 

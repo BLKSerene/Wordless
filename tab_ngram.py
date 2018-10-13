@@ -678,9 +678,9 @@ def generate_data(main, table):
                 table.toggle_cumulative()
                 table.toggle_breakdown()
             else:
-                wordless_message.empty_results_table(main)
+                wordless_dialog.wordless_message_empty_results_table(main)
         else:
-            wordless_message.empty_search_term(main)
+            wordless_dialog.wordless_message_empty_search_term(main)
 
 @ wordless_misc.log_timing('Plot generation completed')
 def generate_plot(main):
@@ -702,6 +702,6 @@ def generate_plot(main):
                                                  use_cumulative = settings['use_cumulative'],
                                                  label_x = main.tr('N-grams'))
             else:
-                wordless_message.empty_results_plot(main)
+                wordless_dialog.wordless_message_empty_results_plot(main)
         else:
-            wordless_message.empty_search_term(main)
+            wordless_dialog.wordless_message_empty_search_term(main)

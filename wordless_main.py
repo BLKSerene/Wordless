@@ -28,10 +28,129 @@ import tab_semantics
 
 class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
-        def table_item_clicked(item):
-            table_acknowledgements.cellWidget(item.row(), item.column())
+        super().__init__(main, main.tr('Acknowledgements'))
 
-        super().__init__(main, main.tr('Acknlwdgements'))
+        acknowledgements = [
+            ['<a href="https://www.python.org/">Python</a>',
+             '3.7.0',
+             'Guido van Rossum<br>Python Software Foundation',
+             '<a href="mailto:guido@python.org">guido@python.org</a><br><a href="mailto:psf@python.org">psf@python.org</a>',
+             '<a href="https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release">PSF</a>'],
+
+            ['<a href="https://github.com/jpype-project/jpype/">JPype</a>',
+             '0.6.3',
+             'Steve Menard<br>Luis Nell',
+             '',
+             '<a href="https://github.com/jpype-project/jpype/blob/master/LICENSE">Apache-2.0</a>'],
+
+            ['<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
+             '5.11.3',
+             'Riverbank Computing Limited',
+             '<a href="mailto:info@riverbankcomputing.com">info@riverbankcomputing.com</a>',
+             '<a href="http://pyqt.sourceforge.net/Docs/  PyQt5/introduction.html#license">GPL-3.0</a>'],
+
+            ['<a href="https://github.com/fxsjy/jieba">jieba (“结巴”中文分词)</a>',
+             '0.39',
+             'Sun Junyi',
+             '<a href="mailto:ccnusjy@gmail.com">ccnusjy@gmail.com</a>',
+             '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
+
+            ['<a href="http://www.nltk.org/">NLTK</a>',
+             '3.3',
+             'NLTK Project',
+             '<a href="http://www.nltk.org/contribute.html">http://www.nltk.org/contribute.html</a>',
+             '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
+
+            ['<a href="https://github.com/delph-in/pydelphin">PyDelphin</a>',
+             '0.8.0',
+             'Michael Wayne Goodman',
+             '<a href="mailto:goodman.m.w@gmail.com">goodman.m.w@gmail.com</a>',
+             '<a href="https://github.com/delph-in/pydelphin/blob/develop/LICENSE">MIT</a>'],
+
+            ['<a href="https://github.com/hankcs/pyhanlp">pyhanlp</a>',
+             '0.1.44',
+             'He Han (何晗)',
+             '<a href="mailto:hankcs.cn@gmail.com">hankcs.cn@gmail.com</a>',
+             '<a href="https://github.com/hankcs/pyhanlp/blob/master/LICENSE">Apache-2</a>'],
+
+            ['<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
+             '4.6.3',
+             'Leonard Richardson',
+             '<a href="https://www.crummy.com/self/contact.html">https://www.crummy.com/self/contact.html</a>',
+             '<a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a>'],
+
+            ['<a href="https://github.com/chardet/chardet">chardet</a>',
+             '3.0.4',
+             'Daniel Blanchard',
+             '<a href="mailto:dan.blanchard@gmail.com">dan.blanchard@gmail.com</a>',
+             '<a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPL-2.1</a>'],
+
+            ['<a href="https://github.com/Mimino666/langdetect">langdetect</a>',
+             '1.0.7',
+             'Michal Mimino Danilak',
+             '<a href="mailto:michal.danilak@gmail.com">michal.danilak@gmail.com</a>',
+             '<a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache-2.0</a>'],
+
+            ['<a href="https://lxml.de/">lxml</a>',
+             '4.2.5',
+             'Stefan Behnel',
+             '<a href="http://consulting.behnel.de">http://consulting.behnel.de</a>',
+             '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'],
+
+            ['<a href="https://matplotlib.org/">Matplotlib</a>',
+             '3.0.0',
+             'Matplotlib Development Team',
+             '<a href="https://github.com/matplotlib/matplotlib#contact">https://github.com/matplotlib/matplotlib#contact</a>',
+             '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'],
+
+            ['<a href="http://networkx.github.io/">NetworkX</a>',
+             '2.1',
+             'Aric Hagberg<br>Dan Schult<br>Pieter Swart',
+             '<a href="mailto:hagberg@lanl.gov">hagberg@lanl.gov</a><br><a href="mailto:dschult@colgate.edu">dschult@colgate.edu</a><br><a href="mailto:swart@lanl.gov">swart@lanl.gov</a>',
+             '<a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a>'],
+
+             ['<a href="http://www.numpy.org/">NumPy</a>',
+             '1.15.2',
+             'NumPy Developers',
+             '',
+             '<a href="http://www.numpy.org/license.html">BSD-3-Clause</a>'],
+
+            ['<a href="https://openpyxl.readthedocs.io/en/stable/">openpyxl</a>',
+             '2.5.8',
+             'Eric Gazoni<br>Charlie Clark',
+             '<br><a href="mailto:charlie.clark@clark-consulting.eu">charlie.clark@clark-consulting.eu</a>',
+             '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>'],
+
+            ['<a href="https://www.scipy.org/">SciPy</a>',
+             '1.1.0',
+             'SciPy developers',
+             '',
+             '<a href="https://www.scipy.org/scipylib/license.html">BSD-3-Clause</a>'],
+
+            ['<a href="https://lexically.net/downloads/BNC_wordlists/e_lemma.txt">e_lemma.txt</a>',
+             '2',
+             'Yasumasa Someya (染谷泰正)',
+             '<a href="http://www.someya-net.com/index2.html">http://www.someya-net.com/index2.html</a>',
+             '<a href="https://lexically.net/downloads/BNC_wordlists/e_lemma.txt">Free to use for any research;<br>and/or educational purposes.</a>'],
+
+            ['<a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a>',
+             '',
+             'Michal Boleslav Měchura',
+             '<a href="http://www.lexiconista.com/en/#contact">http://www.lexiconista.com/en/#contact</a>',
+             '<a href="https://github.com/michmech/lemmatization-lists/blob/master/LICENCE">ODbL</a>'],
+
+            ['<a href="https://github.com/stopwords-iso/stopwords-iso">Stopwords ISO</a>',
+             '0.4.0',
+             'Gene Diaz',
+             '<a href="mailto:genediazjr@gmail.com">genediazjr@gmail.com</a>',
+             '<a href="https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE">MIT</a>'],
+
+            ['<a href="https://github.com/6/stopwords-json">stopwords-json</a>',
+             '',
+             'Peter Graham',
+             '<a href="mailto:pete@gigadrill.com">pete@gigadrill.com</a>',
+             '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>'],
+        ]
 
         self.setFixedSize(850, 500)
 
@@ -49,117 +168,20 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
                                                                    self.tr('Contact')
                                                                ])
 
-        table_acknowledgements.setSelectionMode(QAbstractItemView.NoSelection)
-
-        table_acknowledgements.itemClicked.connect(table_item_clicked)
-
         table_acknowledgements.button_export_selected.hide()
         table_acknowledgements.button_export_all.hide()
         table_acknowledgements.button_clear.hide()
 
-        table_acknowledgements.setRowCount(16)
+        table_acknowledgements.setSelectionMode(QAbstractItemView.NoSelection)
 
-        table_acknowledgements.setCellWidget(0, 0, QLabel('<a href="https://www.python.org/">Python</a>', self))
-        table_acknowledgements.setCellWidget(0, 1, QLabel('3.6.6', self))
-        table_acknowledgements.setCellWidget(0, 2, QLabel('Python Software Foundation', self))
-        table_acknowledgements.setCellWidget(0, 3, QLabel('<a href="https://www.python.org/psf/">https://www.python.org/psf/</a>', self))
-        table_acknowledgements.setCellWidget(0, 4, QLabel('<a href="https://docs.python.org/3.6/license.html">PSF</a>', self))
+        table_acknowledgements.setRowCount(len(acknowledgements))
 
-        table_acknowledgements.setCellWidget(1, 0, QLabel('<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>', self))
-        table_acknowledgements.setCellWidget(1, 1, QLabel('4.6.3', self))
-        table_acknowledgements.setCellWidget(1, 2, QLabel('Leonard Richardson', self))
-        table_acknowledgements.setCellWidget(1, 3, QLabel('<a href="https://www.crummy.com/self/contact.html">https://www.crummy.com/self/contact.html</a>', self))
-        table_acknowledgements.setCellWidget(1, 4, QLabel('<a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a>', self))
-
-        table_acknowledgements.setCellWidget(2, 0, QLabel('<a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a>', self))
-        table_acknowledgements.setCellWidget(2, 1, QLabel('', self))
-        table_acknowledgements.setCellWidget(2, 2, QLabel('Michal Boleslav Měchura', self))
-        table_acknowledgements.setCellWidget(2, 3, QLabel('<a href="http://www.lexiconista.com/en/#contact">http://www.lexiconista.com/en/#contact</a>', self))
-        table_acknowledgements.setCellWidget(2, 4, QLabel('<a href="https://github.com/michmech/lemmatization-lists/blob/master/LICENCE">ODbL</a>', self))
-
-        table_acknowledgements.setCellWidget(3, 0, QLabel('<a href="https://matplotlib.org/">Matplotlib</a>', self))
-        table_acknowledgements.setCellWidget(3, 1, QLabel('3.0.0', self))
-        table_acknowledgements.setCellWidget(3, 2, QLabel('Matplotlib Development Team', self))
-        table_acknowledgements.setCellWidget(3, 3, QLabel('<a href="https://github.com/matplotlib/matplotlib#contact">https://github.com/matplotlib/matplotlib#contact</a>', self))
-        table_acknowledgements.setCellWidget(3, 4, QLabel('<a href="https://matplotlib.org/users/license.html">Matplotlib</a>', self))
-
-        table_acknowledgements.setCellWidget(4, 0, QLabel('<a href="http://www.nltk.org/">NLTK</a>', self))
-        table_acknowledgements.setCellWidget(4, 1, QLabel('3.3', self))
-        table_acknowledgements.setCellWidget(4, 2, QLabel('NLTK Project', self))
-        table_acknowledgements.setCellWidget(4, 3, QLabel('<a href="http://www.nltk.org/contribute.html">http://www.nltk.org/contribute.html</a>', self))
-        table_acknowledgements.setCellWidget(4, 4, QLabel('<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a></td>', self))
-
-        table_acknowledgements.setCellWidget(5, 0, QLabel('<a href="http://networkx.github.io/">NetworkX</a>', self))
-        table_acknowledgements.setCellWidget(5, 1, QLabel('2.1', self))
-        table_acknowledgements.setCellWidget(5, 2, QLabel('Aric Hagberg<br>Dan Schult<br>Pieter Swart', self))
-        table_acknowledgements.setCellWidget(5, 3, QLabel('hagberg@lanl.gov<br>dschult@colgate.edu<br>swart@lanl.gov', self))
-        table_acknowledgements.setCellWidget(5, 4, QLabel('<a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a>', self))
-        
-        table_acknowledgements.setCellWidget(6, 0, QLabel('<a href="http://www.numpy.org/">NumPy</a>', self))
-        table_acknowledgements.setCellWidget(6, 1, QLabel('1.15.2', self))
-        table_acknowledgements.setCellWidget(6, 2, QLabel('Aric Hagberg<br>Dan Schult<br>Pieter Swart', self))
-        table_acknowledgements.setCellWidget(6, 3, QLabel('hagberg@lanl.gov<br>dschult@colgate.edu<br>swart@lanl.gov', self))
-        table_acknowledgements.setCellWidget(6, 4, QLabel('<a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a>', self))
-
-        table_acknowledgements.setCellWidget(7, 0, QLabel('<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>', self))
-        table_acknowledgements.setCellWidget(7, 1, QLabel('5.11.2', self))
-        table_acknowledgements.setCellWidget(7, 2, QLabel('Riverbank Computing Limited', self))
-        table_acknowledgements.setCellWidget(7, 3, QLabel('info@riverbankcomputing.com', self))
-        table_acknowledgements.setCellWidget(7, 4, QLabel('<a href="http://pyqt.sourceforge.net/Docs/  PyQt5/introduction.html#license">GPL-3.0</a>', self))
-
-        table_acknowledgements.setCellWidget(8, 0, QLabel('<a href="https://www.scipy.org/">SciPy</a>', self))
-        table_acknowledgements.setCellWidget(8, 1, QLabel('1.1.0', self))
-        table_acknowledgements.setCellWidget(8, 2, QLabel('SciPy developers', self))
-        table_acknowledgements.setCellWidget(8, 3, QLabel('', self))
-        table_acknowledgements.setCellWidget(8, 4, QLabel('<a href="https://www.scipy.org/scipylib/license.html">BSD-3-Clause</a>', self))
-
-        table_acknowledgements.setCellWidget(9, 0, QLabel('<a href="https://github.com/stopwords-iso/stopwords-iso">Stopwords ISO</a>', self))
-        table_acknowledgements.setCellWidget(9, 1, QLabel('0.4.0', self))
-        table_acknowledgements.setCellWidget(9, 2, QLabel('Gene Diaz', self))
-        table_acknowledgements.setCellWidget(9, 3, QLabel('genediazjr@gmail.com', self))
-        table_acknowledgements.setCellWidget(9, 4, QLabel('<a href="https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE">MIT</a>', self))
-
-        table_acknowledgements.setCellWidget(10, 0, QLabel('<a href="https://github.com/chardet/chardet">chardet</a>', self))
-        table_acknowledgements.setCellWidget(10, 1, QLabel('3.0.4', self))
-        table_acknowledgements.setCellWidget(10, 2, QLabel('Daniel Blanchard', self))
-        table_acknowledgements.setCellWidget(10, 3, QLabel('dan.blanchard@gmail.com', self))
-        table_acknowledgements.setCellWidget(10, 4, QLabel('<a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPL-2.1</a>', self))
-        
-        table_acknowledgements.setCellWidget(11, 0, QLabel('<a href="https://lexically.net/downloads/BNC_wordlists/e_lemma.txt">e_lemma.txt</a>', self))
-        table_acknowledgements.setCellWidget(11, 1, QLabel('2', self))
-        table_acknowledgements.setCellWidget(11, 2, QLabel('Yasumasa Someya (染谷泰正)', self))
-        table_acknowledgements.setCellWidget(11, 3, QLabel('<a href="http://www.someya-net.com/index2.html">http://www.someya-net.com/index2.html</a>', self))
-        table_acknowledgements.setCellWidget(11, 4, QLabel('<a href="https://lexically.net/downloads/BNC_wordlists/e_lemma.txt">Free to use for any research;<br>and/or educational purposes.</a>', self))
-
-        table_acknowledgements.setCellWidget(12, 0, QLabel('<a href="https://github.com/Mimino666/langdetect">langdetect</a>', self))
-        table_acknowledgements.setCellWidget(12, 1, QLabel('1.0.7', self))
-        table_acknowledgements.setCellWidget(12, 2, QLabel('Michal Mimino Danilak', self))
-        table_acknowledgements.setCellWidget(12, 3, QLabel('michal.danilak@gmail.com', self))
-        table_acknowledgements.setCellWidget(12, 4, QLabel('<a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache-2.0</a>', self))
-
-        table_acknowledgements.setCellWidget(13, 0, QLabel('<a href="https://lxml.de/">lxml</a>', self))
-        table_acknowledgements.setCellWidget(13, 1, QLabel('4.2.4', self))
-        table_acknowledgements.setCellWidget(13, 2, QLabel('Stefan Behnel', self))
-        table_acknowledgements.setCellWidget(13, 3, QLabel('<a href="http://consulting.behnel.de">http://consulting.behnel.de</a>', self))
-        table_acknowledgements.setCellWidget(13, 4, QLabel('<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/  BSD.txt">BSD-3-Clause</a>', self))
-
-        table_acknowledgements.setCellWidget(14, 0, QLabel('<a href="https://openpyxl.readthedocs.io/en/stable/#">openpyxl</a>', self))
-        table_acknowledgements.setCellWidget(14, 1, QLabel('2.5.5', self))
-        table_acknowledgements.setCellWidget(14, 2, QLabel('Eric Gazoni<br>Charlie Clark', self))
-        table_acknowledgements.setCellWidget(14, 3, QLabel('<br>charlie.clark@clark-consulting.eu', self))
-        table_acknowledgements.setCellWidget(14, 4, QLabel('<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>', self))
-
-        table_acknowledgements.setCellWidget(15, 0, QLabel('<a href="https://github.com/6/stopwords-json">stopwords-json</a>', self))
-        table_acknowledgements.setCellWidget(15, 1, QLabel('', self))
-        table_acknowledgements.setCellWidget(15, 2, QLabel('Peter Graham', self))
-        table_acknowledgements.setCellWidget(15, 3, QLabel('pete@gigadrill.com', self))
-        table_acknowledgements.setCellWidget(15, 4, QLabel('<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca1368  76ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>', self))
-
-        table_acknowledgements.setCellWidget(16, 0, QLabel('<a href="https://github.com/fxsjy/jieba">“结巴”中文分词</a>', self))
-        table_acknowledgements.setCellWidget(16, 1, QLabel('0.39', self))
-        table_acknowledgements.setCellWidget(16, 2, QLabel('Sun Junyi', self))
-        table_acknowledgements.setCellWidget(16, 3, QLabel('ccnusjy@gmail.com', self))
-        table_acknowledgements.setCellWidget(16, 4, QLabel('<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>', self))
+        for i, (name, ver, authors, contact, license) in enumerate(acknowledgements):
+            table_acknowledgements.setCellWidget(i, 0, QLabel(name, self))
+            table_acknowledgements.setCellWidget(i, 1, QLabel(ver, self))
+            table_acknowledgements.setCellWidget(i, 2, QLabel(authors, self))
+            table_acknowledgements.setCellWidget(i, 3, QLabel(contact, self))
+            table_acknowledgements.setCellWidget(i, 4, QLabel(license, self))
 
         self.wrapper_info.setLayout(QGridLayout())
         self.wrapper_info.layout().addWidget(label_acknowledgements, 0, 0)
