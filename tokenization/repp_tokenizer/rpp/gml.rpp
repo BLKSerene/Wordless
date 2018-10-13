@@ -1,0 +1,71 @@
+;;; -*- mode: fundamental; coding: utf-8; indent-tabs-mode: t; -*-
+
+;;;
+;;; Copyright (c) 2012 -- 2012 Stephan Oepen (oe@ifi.uio.no); 
+;;; see `LICENSE' for conditions.
+;;;
+
+;;
+;; some tags (for the time being) have no relevance to syntactic analysis and
+;; will often be unmatched within one sentence; hence, we may as well ditch
+;; these early on.
+;;
+!⌊•|•⌋								
+!⌊#|#⌋								
+!⌊:|:⌋								
+!⌊⇥|⇥⌋								
+!⌊"|"⌋								
+!⌊[↑↓]|[↑↓]⌋							
+!⌊[,^]|[,^]⌋							
+
+#1
+!⌊δ((?:(?!δ⌋).)*)δ⌋						\1
+!⌊=((?:(?!¦[0-9]+=⌋).)*)¦[0-9]+=⌋				\1
+!⌊∗((?:(?!∗⌋).)*)∗⌋						\1
+;;
+;; _fix_me_
+;; it appears we may have ran out of time for adding GML 1.0 support to the
+;; 1212 release of the ERG; hence mimic GML 0.1 for now, but using an interim
+;; delimiter character, while inside GML processing.           (19-feb-13; oe)
+;;
+!⌊/((?:(?!/⌋).)*)/⌋						⠇i \1 i⠇
+!⌊-((?:(?!-⌋).)*)-⌋						\1
+!⌊_((?:(?!-⌋).)*)_⌋						\1
+!⌊>((?:(?!>⌋).)*)>⌋						\1
+!⌊<((?:(?!<⌋).)*)<⌋						\1
+!⌊τ((?:(?!τ⌋).)*)τ⌋						\1
+
+;;
+;; _fix_me_
+;; preferably, we should make these ersatzes self-closing GML tags now.
+;;                                                              (19-feb-13; oe)
+!⌊×(?:(?!×⌋).)*×⌋						<math/>
+!⌊◊(?:(?!◊⌋).)*◊⌋						<code/>
+!⌊π(?:(?!π⌋).)*π⌋						<code/>
+#
+>1
+
+;;
+;; _fix_me_
+;; at this point, only template calls remain (which are harder to parse, owing
+;; to variability in the number of parameters); however, once we make ersatzes
+;; self-closing GML tags, this will need review.                (19-feb-13; oe)
+;;
+#2
+!⌊λ[^⌊⌋]+¦IPAλ⌋							<ipa/>
+!⌊λ[^⌊⌋]+¦Langλ⌋						<foreign/>
+!⌊λ[^⌊⌋]+¦Nihongoλ⌋						<foreign/>
+;;
+;; when all else is done, replace remaining templates with their expansion text
+;;
+!⌊λ([^¦])+(?:(?!λ⌋).)*λ⌋					\1
+#
+>2
+
+;;
+;; finally, ditch all remaining GML elements, and return to GML 0.1 for italics
+;;
+!⌊.								
+!.⌋								
+!⠇i								¦i
+!i⠇								i¦

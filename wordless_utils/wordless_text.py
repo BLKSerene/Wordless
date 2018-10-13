@@ -11,29 +11,106 @@ import json
 import re
 
 from bs4 import BeautifulSoup
+import delphin.repp
 import jieba
+import jpype
 import nltk
 
 from wordless_utils import wordless_conversion
 
-def wordless_word_tokenize(text, lang):
+def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'Default'):
+    if lang_code not in ['eng', 'ces', 'dan', 'nld', 'est', 'fin', 'fra', 'deu', 'ell', 'ita',
+                         'nor', 'pol', 'por', 'slv', 'spa', 'swe', 'tur']:
+        lang_code = 'eng'
+
+    lang_text = wordless_conversion.to_lang_text(main, lang_code)
+
+    return nltk.sent_tokenize(text, language = lang_text.lower())
+
+def wordless_word_tokenize(main, text, lang_code, word_tokenizer = 'Default'):
     tokens = []
 
-    if lang == 'eng':
-        tokens.extend(nltk.word_tokenize(text))
-    elif lang in ['zho_cn', 'zho_tw']:
-        tokens.extend(jieba.lcut(text))
-    else:
-        tokens.extend(nltk.word_tokenize(text))
+    if lang_code not in ['eng', 'zho_CN', 'zho_TW', 'ces', 'dan', 'nld', 'est', 'fin', 'fra', 'deu', 'ell', 'ita',
+                         'nor', 'pol', 'por', 'slv', 'spa', 'swe', 'tur']:
+        lang_code = 'other'
+
+    if word_tokenizer == 'Default':
+        word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang_code]
+
+    if word_tokenizer.find('HanLP') > -1:
+        import pyhanlp
+
+    # English
+    if word_tokenizer == main.tr('NLTK - Treebank Tokenizer'):
+        sentences = wordless_sentence_tokenize(main, text, lang_code)
+
+        for sentence in sentences:
+            tokens.extend(nltk.TreebankWordTokenizer().tokenize(sentence))
+    elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
+        sentences = wordless_sentence_tokenize(main, text, lang_code)
+
+        for sentence in sentences:
+            tokens.extend(nltk.ToktokTokenizer().tokenize(sentence))
+    elif word_tokenizer == main.tr('NLTK - Twitter Tokenizer'):
+        sentences = wordless_sentence_tokenize(main, text, lang_code)
+
+        for sentence in sentences:
+            tokens.extend(nltk.casual_tokenize(sentence))
+    elif word_tokenizer == main.tr('NLTK - Word Punctuation Tokenizer'):
+        tokens = nltk.wordpunct_tokenize(text)
+    elif word_tokenizer == main.tr('PyDelphin - Repp Tokenizer'):
+        repp_tokenizer = delphin.repp.REPP.from_config('tokenization/repp_tokenizer/repp.set')
+        sentences = wordless_sentence_tokenize(main, text, lang_code)
+
+        for sentence in sentences:
+            tokens.extend([token.form for token in repp_tokenizer.tokenize(text).tokens])
+    elif word_tokenizer == main.tr('NLTK - Regular-Expression Tokenizer'):
+        tokens = nltk.regexp_tokenize(text, main.settings_custom['word_tokenization']['regex_tokenizers'][lang_code], gaps = True)
+    # Chinese
+    elif word_tokenizer == main.tr('jieba (“结巴”中文分词) - With HMM'):
+        tokens = jieba.cut(text)
+    elif word_tokenizer == main.tr('jieba (“结巴”中文分词) - Without HMM'):
+        tokens = jieba.cut(text, HMM = False)
+    elif word_tokenizer == main.tr('HanLP - Standard Tokenizer'):
+        standard_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.StandardTokenizer')
+
+        tokens = [token.word for token in standard_tokenizer.segment(text)]
+    elif word_tokenizer == main.tr('HanLP - NLP Tokenizer'):
+        nlp_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.NLPTokenizer')
+
+        tokens = [token.word for token in nlp_tokenizer.segment(text)]
+    elif word_tokenizer == main.tr('HanLP - N-shortest Path Tokenizer'):
+        NShortSegment = jpype.JClass('com.hankcs.hanlp.seg.NShort.NShortSegment')
+        nshortest_tokenizer = NShortSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
+
+        tokens = [token.word for token in nshortest_tokenizer.seg(text)]
+    elif word_tokenizer == main.tr('HanLP - Dijkstra Tokenizer'):
+        DijkstraSegment = jpype.JClass('com.hankcs.hanlp.seg.Dijkstra.DijkstraSegment')
+        dijkstra_tokenizer = DijkstraSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
+
+        tokens = [token.word for token in dijkstra_tokenizer.seg(text)]
+    elif word_tokenizer == main.tr('HanLP - Viterbi Tokenizer'):
+        ViterbiSegment = jpype.JClass('com.hankcs.hanlp.seg.Viterbi.ViterbiSegment')
+        viterbi_tokenizer = ViterbiSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
+
+        tokens = [token.word for token in viterbi_tokenizer.seg(text)]
+    elif word_tokenizer == main.tr('HanLP - CRF Tokenizer'):
+        crf_tokenizer = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')
+
+        tokens = [token for token in crf_tokenizer().analyze(text).toWordArray()]
+    elif word_tokenizer == main.tr('HanLP - High-speed Tokenizer'):
+        highspeed_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.SpeedTokenizer')
+
+        tokens = [token.word for token in highspeed_tokenizer.segment(text)]
 
     return tokens
 
-def wordless_lemmatize(main, tokens, lang_code, lemmatizer = ''):
+def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'Default'):
     lemmas = []
     lemma_list = {}
 
     if lang_code in main.settings_global['lemmatizers']:
-        if not lemmatizer:
+        if lemmatizer == 'Default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang_code]
 
         if lemmatizer == 'NLTK':
