@@ -1,0 +1,19 @@
+;;; -*- mode: fundamental; coding: utf-8; indent-tabs-mode: t; -*-
+
+;;
+;; a ‘micro’-tokenizer, i.e. mimicry of token splitting rules in chart mapping;
+;; in late 2012, this code is used in ERG-external tokenization experiments.
+;;
+
+#1
+!([+-]?[0-9]+(?:\.[0-9]*)?)[–-]([0-9]+(?:\.[0-9]*)?)	    \1 – \2
+#
+>1
+
+#2
+!(.+)[–-]([a-zA-Z0-9]+-?)				    \1- \2
+!(.+)/([a-zA-Z0-9]+)					    \1 / \2
+#
+>2
+
+:[ \t]+

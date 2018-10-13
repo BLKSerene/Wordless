@@ -1,0 +1,60 @@
+;;; -*- mode: fundamental; coding: utf-8; indent-tabs-mode: t; -*-
+
+;;;
+;;; Copyright (c) 2009 -- 2010 Stephan Oepen (oe@ifi.uio.no); 
+;;; see `LICENSE' for conditions.
+;;;
+
+;;;
+;;; an optional REPP module to re-attach (affix) punctuation marks to adjacent
+;;; tokens, effectively un-doing the PTB-style separation.  this is a stand-in
+;;; for the new token mapping rule set, which for now is only supported in PET.
+;;; for the majority of inputs, these rules should allow parse success in the
+;;; LKB.  however, compared to the token mapping rules, this is approximative.
+;;;
+
+
+;;
+;; one more time, make sure our string does not contain any double spaces
+;;   
+!  +							 
+
+;;
+;; _fix_me_
+;; corner cases like |Abrams' chair| currently fail to work.  i am not really
+;; sure why the |'d| et al. rule below protects against the preceding token
+;; ending in `s', either.                                      (21-mar-10; oe)
+;; 
+!([[({“‘]+) 						\1
+! ([])}”’,;.!?]+)					\1
+!([^s]) [’']([^dDlLmMrRsSvV])				\1'\2
+!(.) +n[’']t						\1n't
+
+;;
+;; replicate some of the NE rules from `tmr.tdl', purely for the benefit of
+;; interactive use in the LKB, i.e. when giving demos.
+;;
+!<?[a-zA-Z0-9._-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+>?	_generic_proper_ne_
+!<?http://[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+(/.*)?>?	_generic_proper_ne_
+!<?www(\.[a-zA-Z0-9_-]+)+(/.*)?>?			_generic_proper_ne_
+!<[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+(/.*)?>		_generic_proper_ne_
+
+;;
+;; make hyphen a token in its own right between numbers (an n-dash, actually),
+;; e.g. |50-60|.  otherwise, break at hyphens following alphabetic prefixes,
+;; but keep the hyphen on the prefix, e.g. |sub-discipline|.
+;;
+!([+-]?[0-9]+(?:\.[0-9]*)?)-([0-9]+(?:\.[0-9]*)?)	\1 – \2
+!(.+-)([a-zA-Z0-9]+-?)					\1 \2
+!((?:co(?:unter)?|mis|p?re|un)-) ([a-zA-Z0-9]+)		\1\2
+!(.+)/([a-zA-Z0-9]+)					\1 / \2
+
+;;
+;; a second pass at lightweight NEs, now that we have further split up tokens
+;; at hyphens and dashes.
+;;
+!(1[0-9])?[0-9]0[sS]					_generic_plur_ne_
+![+-~]?[1-9][0-9]*\.?					_generic_card_ne_
+![+-~]?[0-9]*\.[0-9]+					_generic_card_ne_
+![+-]?[1-9][0-9]{0,2}([,.][0-9]{3})+([,.]([0-9]*|-))?	_generic_card_ne_
+![0-9]*((^|[^1])(1st|2nd|3rd)|(11|12|13|[04-9])th)	_generic_ord_ne_

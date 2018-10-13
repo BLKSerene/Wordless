@@ -1,0 +1,9 @@
+;;;
+;;; in our ‘raw’ text version of the WSJ corpus, single quotes appear in left
+;;; vs. right variants (using LaTeX-style conventions), but double quotes are
+;;; just straight, typewriter double quotes.  thus, we need /both/ LaTeX-style
+;;; quote normalization and heuristic quote disambiguation.  in principle, if
+;;; we were to encounter the inverse blend of styles, we may have to split up
+;;; quote treatment into separate modules for single vs. double quotes ...
+;;;
+repp-calls := xml ascii latex lgt quotes.
