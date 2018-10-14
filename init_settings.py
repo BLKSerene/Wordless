@@ -102,7 +102,9 @@ def init_settings_global(main):
             main.tr('Vietnamese'): 'vie',
             main.tr('Welsh'): 'cym',
             main.tr('Yoruba'): 'yor',
-            main.tr('Zulu'): 'zul'
+            main.tr('Zulu'): 'zul',
+
+            main.tr('Other Languages'): 'other'
         },
 
         'lang_codes': {
@@ -183,7 +185,9 @@ def init_settings_global(main):
             'vie': 'vi',
             'cym': 'cy',
             'yor': 'yo',
-            'zul': 'zu'
+            'zul': 'zu',
+
+            'other': 'other',
         },
 
         'file_exts': {
@@ -367,167 +371,205 @@ def init_settings_global(main):
         'word_tokenizers': {
             'eng': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
 
             'zho_CN': [
                 main.tr('jieba (“结巴”中文分词) - With HMM'),
                 main.tr('jieba (“结巴”中文分词) - Without HMM'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('HanLP - Standard Tokenizer'),
+                main.tr('HanLP - NLP Tokenizer'),
+                main.tr('HanLP - N-shortest Path Tokenizer'),
+                main.tr('HanLP - Dijkstra Tokenizer'),
+                main.tr('HanLP - Viterbi Tokenizer'),
+                main.tr('HanLP - CRF Tokenizer'),
+                main.tr('HanLP - High-speed Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'zho_TW': [
                 main.tr('jieba (“结巴”中文分词) - With HMM'),
                 main.tr('jieba (“结巴”中文分词) - Without HMM'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('HanLP - Standard Tokenizer'),
+                main.tr('HanLP - NLP Tokenizer'),
+                main.tr('HanLP - N-shortest Path Tokenizer'),
+                main.tr('HanLP - Dijkstra Tokenizer'),
+                main.tr('HanLP - Viterbi Tokenizer'),
+                main.tr('HanLP - CRF Tokenizer'),
+                main.tr('HanLP - High-speed Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'ces': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'dan': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'nld': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'est': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'fin': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'fra': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'deu': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'ell': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'ita': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'nor': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
+            ],
+            'fas': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'pol': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'por': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
+            ],
+            'rus': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'slv': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'spa': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'swe': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
+            ],
+            'tgk': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ],
             'tur': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Repp Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('NLTK - Whitespace Tokenizer'),
-                main.tr('NLTK - Regular-Expression Tokenizer')
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
+            ],
+            'vie': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
+            ],
+
+            'other': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('NLTK - Regular Expression Tokenizer')
             ]
         },
 
@@ -932,12 +974,18 @@ def init_settings_default(main):
                 'ell': main.tr('NLTK - Treebank Tokenizer'),
                 'ita': main.tr('NLTK - Treebank Tokenizer'),
                 'nor': main.tr('NLTK - Treebank Tokenizer'),
+                'fas': main.tr('NLTK - Treebank Tokenizer'),
                 'pol': main.tr('NLTK - Treebank Tokenizer'),
                 'por': main.tr('NLTK - Treebank Tokenizer'),
+                'rus': main.tr('NLTK - Treebank Tokenizer'),
                 'slv': main.tr('NLTK - Treebank Tokenizer'),
                 'spa': main.tr('NLTK - Treebank Tokenizer'),
                 'swe': main.tr('NLTK - Treebank Tokenizer'),
-                'tur': main.tr('NLTK - Treebank Tokenizer')
+                'tgk': main.tr('NLTK - Treebank Tokenizer'),
+                'tur': main.tr('NLTK - Treebank Tokenizer'),
+                'vie': main.tr('NLTK - Treebank Tokenizer'),
+
+                'other': main.tr('NLTK - Treebank Tokenizer')
             },
 
             'regex_tokenizers': {
@@ -954,12 +1002,18 @@ def init_settings_default(main):
                 'ell': '\\s',
                 'ita': '\\s',
                 'nor': '\\s',
+                'fas': '\\s',
                 'pol': '\\s',
                 'por': '\\s',
+                'rus': '\\s',
                 'slv': '\\s',
                 'spa': '\\s',
                 'swe': '\\s',
-                'tur': '\\s'
+                'tgk': '\\s',
+                'tur': '\\s',
+                'vie': '\\s',
+
+                'other': '\\s'
             },
 
             'preview_lang': 'eng',

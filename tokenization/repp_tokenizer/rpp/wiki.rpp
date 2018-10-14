@@ -1,0 +1,163 @@
+;;; -*- mode: fundamental; coding: utf-8; indent-tabs-mode: t; -*-
+
+;;;
+;;; Copyright (c) 2009 -- 2010 Stephan Oepen (oe@ifi.uio.no); 
+;;; see `LICENSE' for conditions.
+;;;
+
+
+;;;
+;;; _fix_me_
+;;; following are a set of `cheap and cheerful' REPP rules to make Wikipedia
+;;; text palatable to parsing with the ERG.  for the time being, we are mostly
+;;; just throwing out all markup.  obviously, in some cases this will inhibit
+;;; adequate analysis.  for example use--mention distinction are often made by
+;;; means of font attributes, typically italics:
+;;;
+;;;   English adjectives include ''big'', ''old'', and ''tired'', ...
+;;;
+;;; we still need to decide how to inject markup information into grammatical
+;;; analysis.                                                  (23-sep-08; oe) 
+;;;
+;;; --- for italics, we have started down this road in the meantime, inserting
+;;; markup tokens in our latest invention: Grammar Markup Language (GML).
+;;;                                                            (30-nov-08; oe)
+
+;;;
+;;; _fix_me_
+;;; as we prepare for HTML inputs, i realize the original ordering, running
+;;; XML (aka character entities) prior to wiki (which can contain HTML) seems
+;;; wrong.  at least the magic characters for HTML (|&lt;|, |&gt;|, et al.),
+;;; we should leave until after wiki or HTML markup has been processed.  move
+;;; relevant character entities into a new module `lgt.rpp'.    (4-feb-12; oe)
+
+;;
+;; _fix_me_
+;; to treat the `markup escape' properly, i guess, we would have to `ersatz' it
+;; (hiding it from other rules), and later put the original string back in.
+;;                                                              (23-sep-08; oe)
+!</?nowiki>						
+
+;;
+;; wiki links come in two flavours, internal (double brackets) and external
+;; (using a pair of single brackets).  there is at least one occurence of
+;; nesting of internal links, hence use a group for those.  in principle, why
+;; should it be illegitimate to also nest internal with external links?  that
+;; structure, i believe, takes us out of regular languages, as single brackets
+;; could indicate an external link, or could be a prefix or suffix of double
+;; brackets, i.e. an internal link.  yet, with nesting of iterative groups, it
+;; seems, we can `parse' those structures: find all innermost internal links
+;; first, unless we can match no more; then look for external links (a pair of
+;; matching single brackets), one at a time; now search for additional internal
+;; links, before accepting more external ones.  repeat the full procedure until
+;; things stabilize.                                            (23-sep-08; oe)
+;;
+;; it turns out that external links need to be followed by a URL.  according to
+;; `http://en.wikipedia.org/wiki/Help:URL', only |http://| and |ftp://| are
+;; legitimate URL prefixes.  this is relevant to avoid mis-interpreting text in
+;; square brackets as URLs, e.g. in |the IBM [computer] was frustrating.|
+;;
+#1
+#2
+!\[\[(?:[^[|\]]+\|)?([^[|\]]+)\]\]			\1
+#
+>2
+!\[(?:http|ftp)://(?:[^[\] ]+ )?([^[\]]+)\]		\1
+#
+>1
+
+;;
+;; as we are starting to look at the interactions of (wiki) mark-up and syntax,
+;; we assume an abstract, internal mark-up language.  the various REPP modules
+;; map actual mark-up (wiki, XML, LaTeX) into our `grammar mark-up language'
+;; (call that GML).  for the time being, we only care about italics ...
+;;
+;; in wiki mark-up, two single ticks are italics, three bold face, and five
+;; italic bold.  that probably means that |''''foo''''| is just neutral.
+;;
+!(^|[^'])''([^']+)((?:'[^']+)*)''([^']|$)		\1 ¦i \2\3 i¦ \4
+!(^|[^'])'''''([^']+)((?:'[^']+)*)'''''([^']|$)		\1 ¦i \2\3 i¦ \4
+!'''							
+
+;;
+;; headings: we have synthesized the <article> tag when concatenating multiple
+;; articles into one file.  the various levels of section headings must appear
+;; in the periphery of a line by itself, i.e. there cannot be any additional
+;; material surrounding the heading on the same line.  however, the top-level
+;; REPP module `pads' its input with whitespace (to simplify rules, but maybe
+;; that is no longer a good idea).  for now, allow that much context ...
+;;
+!</?article>						
+!^ *=====(.+)===== *$					\1
+!^ *====(.+)==== *$					\1
+!^ *===(.+)=== *$					\1
+!^ *==(.+)== *$						\1
+!^ *=(.+)= *$						\1
+
+;;
+;; treat `block quote' markup as a variant of opening and closing quotes.  this
+;; is not quite right, since inside a block quote the top-level quote marks, i
+;; presume, are still double.  whereas inside of double quotes, we would expect
+;; the next level of embedded quoting to use single quotes.
+;;
+!<blockquote>						“
+!</blockquote>						”
+
+;;
+;; various font attributes: HTML-style bold, strike-out, underline, et al.
+;;
+!</?b>							
+!</?big>						
+!</?center>						
+!</?s>							
+!</?small>						
+!</?span(?: [^>]*)?>					
+!</?tt>							
+!</?u>							
+
+;;
+;; _fix_me_
+;; what about sub- and super-scripts?  use `_' and `^'?          (4-sep-08; oe)
+;;
+!</?su(?:b|p)>						
+
+;;
+;; some elements introduce their own specialized sub-syntax; as we are not in
+;; the business of parsing Java or LaTeX, just make these a single token for
+;; now (this resembles our now deprecated `ersatz' strategy).  one day, maybe
+;; we should find a better way of passing these through.
+;;
+!{{IAST\|([^}]+(?:}[^}]+)*)}}				\1
+!{{IPA[^}]+(?:}[^}]+)*}}				<ipa/>
+!{{Javadoc[^}]+(?:}[^}]+)*}}				<javadoc/>
+!{{Harvtxt[^}]+(?:}[^}]+)*}}				<citation/>
+!{{lang\|[^}]+(?:}[^}]+)*}}				<foreign/>
+!{{transl\|[^}]+(?:}[^}]+)*}}				<foreign/>
+!{{[Nn]ihongo\|[^}]+(?:}[^}]+)*}}			<foreign/>
+!<code[^>]*>(?:(?!</code>).)*</code>			<code/>
+!<math[^>]*>(?:(?!</math>).)*</math>			<math/>
+!<source[^>]*>(?:(?!</source>).)*</source>		<source/>
+
+
+;;
+;; line-initial markup: indentation; bulleted, numbered, and definition lists.
+;;
+;; _fix_me_
+;; in principle, lists (of all types) can nest inside of each other.  i expect
+;; these actually call for an iterative group.                  (23-sep-08; oe)
+;;
+!^ *[:*#]+						
+;;
+;; _fix_me_
+;; definition lists, i think, should always introduce sentence breaks.  they
+;; occur relatively rarely with the colon and `body' of the definition on the 
+;; same line, hence we should probably normalize definition lists as part of
+;; the initial text pre-processing.                             (23-sep-08; oe)
+;;
+!^ *;([^:]+)(:)						\1 \2
+!^ *;							
+
+;;
+;; ditch a few funny characters, e.g. for arbitrary footnote-like indication
+;;
+!†							

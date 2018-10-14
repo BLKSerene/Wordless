@@ -37,6 +37,12 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="mailto:guido@python.org">guido@python.org</a><br><a href="mailto:psf@python.org">psf@python.org</a>',
              '<a href="https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release">PSF</a>'],
 
+            ['<a href="https://github.com/jpype-project/jpype/">JPype</a>',
+             '0.6.3',
+             'Steve Menard<br>Luis Nell',
+             '',
+             '<a href="https://github.com/jpype-project/jpype/blob/master/LICENSE">Apache-2.0</a>'],
+
             ['<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
              '5.11.3',
              'Riverbank Computing Limited',
@@ -60,6 +66,12 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'Sun Junyi',
              '<a href="mailto:ccnusjy@gmail.com">ccnusjy@gmail.com</a>',
              '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
+
+            ['<a href="https://github.com/delph-in/pydelphin">PyDelphin</a>',
+             '0.8.0',
+             'Michael Wayne Goodman',
+             '<a href="mailto:goodman.m.w@gmail.com">goodman.m.w@gmail.com</a>',
+             '<a href="https://github.com/delph-in/pydelphin/blob/develop/LICENSE">MIT</a>'],
 
             ['<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
              '4.6.3',

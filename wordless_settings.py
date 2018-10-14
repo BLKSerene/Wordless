@@ -13,6 +13,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+import jpype
 import nltk
 
 from wordless_widgets import *
@@ -149,9 +150,6 @@ class Wordless_Settings(QDialog):
 
     def init_settings_word_tokenization(self):
         def preview_settings_changed():
-            for lang_code in settings_global:
-                settings_custom['regex_tokenizers'][lang_code] = self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'].text()
-
             settings_custom['preview_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_word_tokenization_preview_lang.currentText())
             settings_custom['preview_samples'] = self.text_edit_word_tokenization_preview_samples.toPlainText()
 
@@ -186,15 +184,14 @@ class Wordless_Settings(QDialog):
 
         for lang_code in settings_global:
             self.__dict__[f'label_word_tokenizer_{lang_code}'] = QLabel(wordless_conversion.to_lang_text(self.main, lang_code) + ':', self)
-            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box(self)
+            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box_Jre_Required(self)
 
-            self.__dict__[f'label_regex_tokenizer_{lang_code}'] = QLabel(self.tr('Match token delimiters with regular expression:'))
+            self.__dict__[f'label_regex_tokenizer_{lang_code}'] = QLabel(self.tr('Regular expression for token delimiters:'))
             self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'] = QLineEdit(self)
 
             self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].addItems(settings_global[lang_code])
 
             self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentTextChanged.connect(preview_results_changed)
-            self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'].editingFinished.connect(preview_settings_changed)
             self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'].editingFinished.connect(preview_results_changed)
 
         wrapper_word_tokenizers.setLayout(QGridLayout())
@@ -430,7 +427,7 @@ class Wordless_Settings(QDialog):
 
         self.spin_box_precision.setValue(settings_loaded['general']['precision'])
 
-        # Tokenization
+        # Word Tokenization
         for lang_code in settings_loaded['word_tokenization']['word_tokenizers']:
             self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].setCurrentText(settings_loaded['word_tokenization']['word_tokenizers'][lang_code])
             self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'].setText(settings_loaded['word_tokenization']['regex_tokenizers'][lang_code])
@@ -459,6 +456,11 @@ class Wordless_Settings(QDialog):
         settings['general']['encoding_output'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_encoding_output.currentText())
 
         settings['general']['precision'] = self.spin_box_precision.value()
+
+        # Word Tokenization
+        for lang_code in settings['word_tokenization']['word_tokenizers']:
+            settings['word_tokenization']['word_tokenizers'][lang_code] = self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentText()
+            settings['word_tokenization']['regex_tokenizers'][lang_code] = self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'].text()
 
         # Lemmatization
         for lang_code in settings['lemmatization']['lemmatizers']:
