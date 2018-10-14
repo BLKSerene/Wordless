@@ -49,23 +49,17 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="mailto:info@riverbankcomputing.com">info@riverbankcomputing.com</a>',
              '<a href="http://pyqt.sourceforge.net/Docs/  PyQt5/introduction.html#license">GPL-3.0</a>'],
 
-            ['<a href="http://www.nltk.org/">NLTK</a>',
-             '3.3',
-             'NLTK Project',
-             '<a href="http://www.nltk.org/contribute.html">http://www.nltk.org/contribute.html</a>',
-             '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
-
-            ['<a href="https://github.com/hankcs/pyhanlp">pyhanlp</a>',
-             '0.1.44',
-             'He Han (何晗)',
-             '<a href="mailto:hankcs.cn@gmail.com">hankcs.cn@gmail.com</a>',
-             '<a href="https://github.com/hankcs/pyhanlp/blob/master/LICENSE">Apache-2</a>'],
-
             ['<a href="https://github.com/fxsjy/jieba">jieba (“结巴”中文分词)</a>',
              '0.39',
              'Sun Junyi',
              '<a href="mailto:ccnusjy@gmail.com">ccnusjy@gmail.com</a>',
              '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
+
+            ['<a href="http://www.nltk.org/">NLTK</a>',
+             '3.3',
+             'NLTK Project',
+             '<a href="http://www.nltk.org/contribute.html">http://www.nltk.org/contribute.html</a>',
+             '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
 
             ['<a href="https://github.com/delph-in/pydelphin">PyDelphin</a>',
              '0.8.0',
@@ -73,35 +67,17 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="mailto:goodman.m.w@gmail.com">goodman.m.w@gmail.com</a>',
              '<a href="https://github.com/delph-in/pydelphin/blob/develop/LICENSE">MIT</a>'],
 
+            ['<a href="https://github.com/hankcs/pyhanlp">pyhanlp</a>',
+             '0.1.44',
+             'He Han (何晗)',
+             '<a href="mailto:hankcs.cn@gmail.com">hankcs.cn@gmail.com</a>',
+             '<a href="https://github.com/hankcs/pyhanlp/blob/master/LICENSE">Apache-2</a>'],
+
             ['<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
              '4.6.3',
              'Leonard Richardson',
              '<a href="https://www.crummy.com/self/contact.html">https://www.crummy.com/self/contact.html</a>',
              '<a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a>'],
-
-            ['<a href="https://matplotlib.org/">Matplotlib</a>',
-             '3.0.0',
-             'Matplotlib Development Team',
-             '<a href="https://github.com/matplotlib/matplotlib#contact">https://github.com/matplotlib/matplotlib#contact</a>',
-             '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'],
-
-            ['<a href="http://networkx.github.io/">NetworkX</a>',
-             '2.1',
-             'Aric Hagberg<br>Dan Schult<br>Pieter Swart',
-             '<a href="mailto:hagberg@lanl.gov">hagberg@lanl.gov</a><br><a href="mailto:dschult@colgate.edu">dschult@colgate.edu</a><br><a href="mailto:swart@lanl.gov">swart@lanl.gov</a>',
-             '<a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a>'],
-
-             ['<a href="http://www.numpy.org/">NumPy</a>',
-             '1.15.2',
-             'NumPy Developers',
-             '',
-             '<a href="http://www.numpy.org/license.html">BSD-3-Clause</a>'],
-
-            ['<a href="https://www.scipy.org/">SciPy</a>',
-             '1.1.0',
-             'SciPy developers',
-             '',
-             '<a href="https://www.scipy.org/scipylib/license.html">BSD-3-Clause</a>'],
 
             ['<a href="https://github.com/chardet/chardet">chardet</a>',
              '3.0.4',
@@ -121,11 +97,41 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="http://consulting.behnel.de">http://consulting.behnel.de</a>',
              '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'],
 
-            ['<a href="https://openpyxl.readthedocs.io/en/stable/#">openpyxl</a>',
+            ['<a href="https://matplotlib.org/">Matplotlib</a>',
+             '3.0.0',
+             'Matplotlib Development Team',
+             '<a href="https://github.com/matplotlib/matplotlib#contact">https://github.com/matplotlib/matplotlib#contact</a>',
+             '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'],
+
+            ['<a href="http://networkx.github.io/">NetworkX</a>',
+             '2.1',
+             'Aric Hagberg<br>Dan Schult<br>Pieter Swart',
+             '<a href="mailto:hagberg@lanl.gov">hagberg@lanl.gov</a><br><a href="mailto:dschult@colgate.edu">dschult@colgate.edu</a><br><a href="mailto:swart@lanl.gov">swart@lanl.gov</a>',
+             '<a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a>'],
+
+             ['<a href="http://www.numpy.org/">NumPy</a>',
+             '1.15.2',
+             'NumPy Developers',
+             '',
+             '<a href="http://www.numpy.org/license.html">BSD-3-Clause</a>'],
+
+            ['<a href="https://openpyxl.readthedocs.io/en/stable/">openpyxl</a>',
              '2.5.8',
              'Eric Gazoni<br>Charlie Clark',
              '<br><a href="mailto:charlie.clark@clark-consulting.eu">charlie.clark@clark-consulting.eu</a>',
              '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>'],
+
+            ['<a href="https://www.scipy.org/">SciPy</a>',
+             '1.1.0',
+             'SciPy developers',
+             '',
+             '<a href="https://www.scipy.org/scipylib/license.html">BSD-3-Clause</a>'],
+
+            ['<a href="https://lexically.net/downloads/BNC_wordlists/e_lemma.txt">e_lemma.txt</a>',
+             '2',
+             'Yasumasa Someya (染谷泰正)',
+             '<a href="http://www.someya-net.com/index2.html">http://www.someya-net.com/index2.html</a>',
+             '<a href="https://lexically.net/downloads/BNC_wordlists/e_lemma.txt">Free to use for any research;<br>and/or educational purposes.</a>'],
 
             ['<a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a>',
              '',
@@ -138,12 +144,6 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'Gene Diaz',
              '<a href="mailto:genediazjr@gmail.com">genediazjr@gmail.com</a>',
              '<a href="https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE">MIT</a>'],
-
-            ['<a href="https://lexically.net/downloads/BNC_wordlists/e_lemma.txt">e_lemma.txt</a>',
-             '2',
-             'Yasumasa Someya (染谷泰正)',
-             '<a href="http://www.someya-net.com/index2.html">http://www.someya-net.com/index2.html</a>',
-             '<a href="https://lexically.net/downloads/BNC_wordlists/e_lemma.txt">Free to use for any research;<br>and/or educational purposes.</a>'],
 
             ['<a href="https://github.com/6/stopwords-json">stopwords-json</a>',
              '',
