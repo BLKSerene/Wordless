@@ -49,6 +49,7 @@ class Wordless_Settings(QDialog):
     def __init__(self, parent):
         def selection_changed():
             self.settings_general.hide()
+            self.settings_sentence_tokenization.hide()
             self.settings_word_tokenization.hide()
             self.settings_lemmatization.hide()
             self.settings_stop_words.hide()
@@ -59,6 +60,8 @@ class Wordless_Settings(QDialog):
             else:
                 if selected_items[0].text(0) == 'General':
                     self.settings_general.show()
+                elif selected_items[0].text(0) == 'Sentence Tokenization':
+                    self.settings_sentence_tokenization.show()
                 elif selected_items[0].text(0) == 'Word Tokenization':
                     self.settings_word_tokenization.show()
                 elif selected_items[0].text(0) == 'Lemmatization':
@@ -78,6 +81,7 @@ class Wordless_Settings(QDialog):
         self.tree_settings = wordless_tree.Wordless_Tree(self)
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('General')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Sentence Tokenization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Word Tokenization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Lemmatization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Stop Words')]))
@@ -88,6 +92,7 @@ class Wordless_Settings(QDialog):
 
         wrapper_settings.setLayout(QGridLayout())
         wrapper_settings.layout().addWidget(self.init_settings_general(), 0, 0)
+        wrapper_settings.layout().addWidget(self.init_settings_sentence_tokenization(), 0, 0)
         wrapper_settings.layout().addWidget(self.init_settings_word_tokenization(), 0, 0)
         wrapper_settings.layout().addWidget(self.init_settings_lemmatization(), 0, 0)
         wrapper_settings.layout().addWidget(self.init_settings_stop_words(), 0, 0)
@@ -116,7 +121,7 @@ class Wordless_Settings(QDialog):
         self.layout().addLayout(layout_buttons_right, 1, 1, Qt.AlignRight)
 
         self.layout().setColumnStretch(0, 1)
-        self.layout().setColumnStretch(1, 4)
+        self.layout().setColumnStretch(1, 3)
 
         selection_changed()
 
@@ -148,20 +153,91 @@ class Wordless_Settings(QDialog):
 
         return self.settings_general
 
+    def init_settings_sentence_tokenization(self):
+        def preview_settings_changed():
+            settings_custom['preview_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_sentence_tokenization_preview_lang.currentText())
+            settings_custom['preview_samples'] = self.text_edit_sentence_tokenization_preview_samples.toPlainText()
+
+        def preview_results_changed():
+            lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_sentence_tokenization_preview_lang.currentText())
+
+            sentence_tokenizer = self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].currentText()
+
+            self.text_edit_sentence_tokenization_preview_results.clear()
+
+            for sample_line in settings_custom['preview_samples'].split('\n'):
+                sentences = wordless_text.wordless_sentence_tokenize(self.main, sample_line, lang_code, sentence_tokenizer = sentence_tokenizer)
+
+                self.text_edit_sentence_tokenization_preview_results.append('<span style="color: #F00; font-weight: bold;">/</span>'.join(sentences) + '<span style="color: #F00; font-weight: bold;">/</span>')
+
+        settings_global = self.main.settings_global['sentence_tokenizers']
+        settings_custom = self.main.settings_custom['sentence_tokenization']
+
+        self.settings_sentence_tokenization = QWidget(self)
+
+        # Sentence Tokenizers
+        group_box_sentence_tokenizers = QGroupBox(self.tr('Sentence Tokenizers'), self)
+        wrapper_sentence_tokenizers = QWidget(self)
+
+        for lang_code in settings_global:
+            self.__dict__[f'label_sentence_tokenizer_{lang_code}'] = QLabel(wordless_conversion.to_lang_text(self.main, lang_code) + ':', self)
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box_Jre_Required(self)
+
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].addItems(settings_global[lang_code])
+
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].currentTextChanged.connect(preview_results_changed)
+        wrapper_sentence_tokenizers.setLayout(QGridLayout())
+
+        for i, lang_code in enumerate(settings_global):
+            wrapper_sentence_tokenizers.layout().addWidget(self.__dict__[f'label_sentence_tokenizer_{lang_code}'], i, 0)
+            wrapper_sentence_tokenizers.layout().addWidget(self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'], i, 1)
+
+        scroll_area_sentence_tokenizers = wordless_layout.Wordless_Scroll_Area(self, wrapper_sentence_tokenizers)
+        scroll_area_sentence_tokenizers.setFrameShape(QFrame.NoFrame)
+
+        group_box_sentence_tokenizers.setLayout(QGridLayout())
+        group_box_sentence_tokenizers.layout().addWidget(scroll_area_sentence_tokenizers, 0, 0)
+
+        # Preview
+        group_box_preview = QGroupBox(self.tr('Preview'), self)
+
+        self.label_sentence_tokenization_preview_lang = QLabel(self.tr('Select a Language:'), self)
+        self.combo_box_sentence_tokenization_preview_lang = wordless_box.Wordless_Combo_Box(self)
+        self.text_edit_sentence_tokenization_preview_samples = QTextEdit(self)
+        self.text_edit_sentence_tokenization_preview_results = QTextEdit(self)
+
+        self.combo_box_sentence_tokenization_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
+
+        self.text_edit_sentence_tokenization_preview_results.setReadOnly(True)
+
+        self.combo_box_sentence_tokenization_preview_lang.currentTextChanged.connect(preview_settings_changed)
+        self.combo_box_sentence_tokenization_preview_lang.currentTextChanged.connect(preview_results_changed)
+        self.text_edit_sentence_tokenization_preview_samples.textChanged.connect(preview_settings_changed)
+        self.text_edit_sentence_tokenization_preview_samples.textChanged.connect(preview_results_changed)
+
+        layout_preview_lang = QGridLayout()
+        layout_preview_lang.addWidget(self.label_sentence_tokenization_preview_lang, 0, 0)
+        layout_preview_lang.addWidget(self.combo_box_sentence_tokenization_preview_lang, 0, 1)
+
+        group_box_preview.setLayout(QGridLayout())
+        group_box_preview.layout().addLayout(layout_preview_lang, 0, 0, 1, 2, Qt.AlignLeft)
+        group_box_preview.layout().addWidget(self.text_edit_sentence_tokenization_preview_samples, 1, 0)
+        group_box_preview.layout().addWidget(self.text_edit_sentence_tokenization_preview_results, 1, 1)
+
+        self.settings_sentence_tokenization.setLayout(QGridLayout())
+        self.settings_sentence_tokenization.layout().addWidget(group_box_sentence_tokenizers, 0, 0)
+        self.settings_sentence_tokenization.layout().addWidget(group_box_preview, 1, 0)
+
+        preview_results_changed()
+
+        return self.settings_sentence_tokenization
+
     def init_settings_word_tokenization(self):
         def preview_settings_changed():
             settings_custom['preview_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_word_tokenization_preview_lang.currentText())
             settings_custom['preview_samples'] = self.text_edit_word_tokenization_preview_samples.toPlainText()
 
         def preview_results_changed():
-            for lang_code in settings_global:
-                if self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentText() == self.tr('NLTK - Regular-Expression Tokenizer'):
-                    self.__dict__[f'label_regex_tokenizer_{lang_code}'].show()
-                    self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'].show()
-                else:
-                    self.__dict__[f'label_regex_tokenizer_{lang_code}'].hide()
-                    self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'].hide()
-
             lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_word_tokenization_preview_lang.currentText())
 
             word_tokenizer = self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentText()
@@ -186,22 +262,14 @@ class Wordless_Settings(QDialog):
             self.__dict__[f'label_word_tokenizer_{lang_code}'] = QLabel(wordless_conversion.to_lang_text(self.main, lang_code) + ':', self)
             self.__dict__[f'combo_box_word_tokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box_Jre_Required(self)
 
-            self.__dict__[f'label_regex_tokenizer_{lang_code}'] = QLabel(self.tr('Regular expression for token delimiters:'))
-            self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'] = QLineEdit(self)
-
             self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].addItems(settings_global[lang_code])
 
             self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentTextChanged.connect(preview_results_changed)
-            self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'].editingFinished.connect(preview_results_changed)
-
         wrapper_word_tokenizers.setLayout(QGridLayout())
 
         for i, lang_code in enumerate(settings_global):
-            wrapper_word_tokenizers.layout().addWidget(self.__dict__[f'label_word_tokenizer_{lang_code}'], i * 2, 0)
-            wrapper_word_tokenizers.layout().addWidget(self.__dict__[f'combo_box_word_tokenizer_{lang_code}'], i * 2, 1, 1, 2)
-
-            wrapper_word_tokenizers.layout().addWidget(self.__dict__[f'label_regex_tokenizer_{lang_code}'], i * 2 + 1, 1)
-            wrapper_word_tokenizers.layout().addWidget(self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'], i * 2 + 1, 2)
+            wrapper_word_tokenizers.layout().addWidget(self.__dict__[f'label_word_tokenizer_{lang_code}'], i, 0)
+            wrapper_word_tokenizers.layout().addWidget(self.__dict__[f'combo_box_word_tokenizer_{lang_code}'], i, 1)
 
         scroll_area_word_tokenizers = wordless_layout.Wordless_Scroll_Area(self, wrapper_word_tokenizers)
         scroll_area_word_tokenizers.setFrameShape(QFrame.NoFrame)
@@ -427,10 +495,16 @@ class Wordless_Settings(QDialog):
 
         self.spin_box_precision.setValue(settings_loaded['general']['precision'])
 
+        # Sentence Tokenization
+        for lang_code in settings_loaded['sentence_tokenization']['sentence_tokenizers']:
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].setCurrentText(settings_loaded['sentence_tokenization']['sentence_tokenizers'][lang_code])
+
+        self.combo_box_sentence_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['sentence_tokenization']['preview_lang']))
+        self.text_edit_sentence_tokenization_preview_samples.setText(settings_loaded['sentence_tokenization']['preview_samples'])
+
         # Word Tokenization
         for lang_code in settings_loaded['word_tokenization']['word_tokenizers']:
             self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].setCurrentText(settings_loaded['word_tokenization']['word_tokenizers'][lang_code])
-            self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'].setText(settings_loaded['word_tokenization']['regex_tokenizers'][lang_code])
 
         self.combo_box_word_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['word_tokenization']['preview_lang']))
         self.text_edit_word_tokenization_preview_samples.setText(settings_loaded['word_tokenization']['preview_samples'])
@@ -457,10 +531,13 @@ class Wordless_Settings(QDialog):
 
         settings['general']['precision'] = self.spin_box_precision.value()
 
+        # Sentence Tokenization
+        for lang_code in settings['sentence_tokenization']['sentence_tokenizers']:
+            settings['sentence_tokenization']['sentence_tokenizers'][lang_code] = self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].currentText()
+
         # Word Tokenization
         for lang_code in settings['word_tokenization']['word_tokenizers']:
             settings['word_tokenization']['word_tokenizers'][lang_code] = self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentText()
-            settings['word_tokenization']['regex_tokenizers'][lang_code] = self.__dict__[f'line_edit_regex_tokenizer_{lang_code}'].text()
 
         # Lemmatization
         for lang_code in settings['lemmatization']['lemmatizers']:
