@@ -19,7 +19,7 @@ import numpy
 from wordless_widgets import *
 from wordless_utils import *
 
-class Wordless_Table_Collocation(wordless_table.Wordless_Table):
+class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data):
     def __init__(self, main):
         super().__init__(main,
                          headers = [

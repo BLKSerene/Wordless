@@ -168,10 +168,6 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
                                                                    self.tr('Contact')
                                                                ])
 
-        table_acknowledgements.button_export_selected.hide()
-        table_acknowledgements.button_export_all.hide()
-        table_acknowledgements.button_clear.hide()
-
         table_acknowledgements.setSelectionMode(QAbstractItemView.NoSelection)
 
         table_acknowledgements.setRowCount(len(acknowledgements))

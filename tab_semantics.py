@@ -81,15 +81,15 @@ def init(self):
 
     tab_semantics = wordless_layout.Wordless_Tab(self, self.tr('Semantics'))
 
-    table_semantics = wordless_table.Wordless_Table(self,
-                                                    headers = [
-                                                        self.tr('Synsets'),
-                                                        self.tr('Part of Speech'),
-                                                        '',
-                                                        self.tr('Definition'),
-                                                        self.tr('Examples')
-                                                    ],
-                                                    cols_stretch = ['Examples'])
+    table_semantics = wordless_table.Wordless_Table_Data(self,
+                                                         headers = [
+                                                             self.tr('Synsets'),
+                                                             self.tr('Part of Speech'),
+                                                             '',
+                                                             self.tr('Definition'),
+                                                             self.tr('Examples')
+                                                         ],
+                                                         cols_stretch = ['Examples'])
 
     table_semantics.button_search = QPushButton('Begin Search', self)
     table_semantics.button_generate_plot = QPushButton('Generate Plot', self)

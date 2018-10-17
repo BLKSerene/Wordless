@@ -284,14 +284,14 @@ def init(self):
 
     tab_concordancer = wordless_layout.Wordless_Tab(self, self.tr('Concordancer'))
 
-    table_concordancer = wordless_table.Wordless_Table(self,
-                                                       headers = [
-                                                           self.tr('File Name'),
-                                                           self.tr('Offset'),
-                                                           self.tr('Left'),
-                                                           self.tr('Query'),
-                                                           self.tr('Right')
-                                                       ])
+    table_concordancer = wordless_table.Wordless_Table_Data(self,
+                                                            headers = [
+                                                                self.tr('File Name'),
+                                                                self.tr('Offset'),
+                                                                self.tr('Left'),
+                                                                self.tr('Query'),
+                                                                self.tr('Right')
+                                                            ])
 
     table_concordancer.button_search = QPushButton(self.tr('Begin Search'), self)
     table_concordancer.button_generate_plot = QPushButton(self.tr('Generate Plot'), self)

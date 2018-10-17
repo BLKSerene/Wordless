@@ -114,7 +114,7 @@ class Wordless_Files():
 
         return selected_files
 
-class Wordless_Table_Files(wordless_table.Wordless_Table):
+class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
     def __init__(self, main):
         super().__init__(main,
                          headers = [
