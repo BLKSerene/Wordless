@@ -1,9 +1,9 @@
 #
 # Wordless: Initialization of Settings
 #
-# Copyright (C) 2018 Ye Lei
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# For license information, see LICENSE.txt.
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
@@ -197,175 +197,175 @@ def init_settings_global(main):
         },
 
         'file_encodings': {
-            main.tr('All Languages(UTF-8 Without BOM)'): 'utf_8',
-            main.tr('All Languages(UTF-8 with BOM)'): 'utf_8_sig',
-            main.tr('All Languages(UTF-16 with BOM)'): 'utf_16',
-            main.tr('All Languages(UTF-16 Big Endian Without BOM)'): 'utf_16_be',
-            main.tr('All Languages(UTF-16 Little Endian Without BOM)'): 'utf_16_le',
-            main.tr('All Languages(UTF-32 with BOM)'): 'utf_32',
-            main.tr('All Languages(UTF-32 Big Endian Without BOM)'): 'utf_32_be',
-            main.tr('All Languages(UTF-32 Little Endian Without BOM)'): 'utf_32_le',
-            main.tr('All Languages(UTF-7)'): 'utf_7',
-            main.tr('All Languages(CP65001)'): 'cp65001',
+            main.tr('All Languages (UTF-8 Without BOM)'): 'utf_8',
+            main.tr('All Languages (UTF-8 with BOM)'): 'utf_8_sig',
+            main.tr('All Languages (UTF-16 with BOM)'): 'utf_16',
+            main.tr('All Languages (UTF-16 Big Endian Without BOM)'): 'utf_16_be',
+            main.tr('All Languages (UTF-16 Little Endian Without BOM)'): 'utf_16_le',
+            main.tr('All Languages (UTF-32 with BOM)'): 'utf_32',
+            main.tr('All Languages (UTF-32 Big Endian Without BOM)'): 'utf_32_be',
+            main.tr('All Languages (UTF-32 Little Endian Without BOM)'): 'utf_32_le',
+            main.tr('All Languages (UTF-7)'): 'utf_7',
+            main.tr('All Languages (CP65001)'): 'cp65001',
 
-            main.tr('Baltic Languages(CP775)'): 'cp775',
-            main.tr('Baltic Languages(Windows-1257)'): 'cp1257',
-            main.tr('Baltic Languages(ISO-8859-4)'): 'iso8859_4',
-            main.tr('Baltic Languages(ISO-8859-13)'): 'iso8859_13',
+            main.tr('Baltic Languages (CP775)'): 'cp775',
+            main.tr('Baltic Languages (Windows-1257)'): 'cp1257',
+            main.tr('Baltic Languages (ISO-8859-4)'): 'iso8859_4',
+            main.tr('Baltic Languages (ISO-8859-13)'): 'iso8859_13',
 
-            main.tr('Celtic Languages(ISO-8859-14)'): 'iso8859_14',
+            main.tr('Celtic Languages (ISO-8859-14)'): 'iso8859_14',
 
-            main.tr('Nordic Languages(ISO-8859-10)'): 'iso8859_10',
+            main.tr('Nordic Languages (ISO-8859-10)'): 'iso8859_10',
 
-            main.tr('Europe(HP Roman-8)'): 'hp_roman8',
+            main.tr('Europe (HP Roman-8)'): 'hp_roman8',
 
-            main.tr('Central Europe(Mac OS Central European)'): 'mac_centeuro',
-            main.tr('Central Europe(Mac OS Latin 2)'): 'mac_latin2',
+            main.tr('Central Europe (Mac OS Central European)'): 'mac_centeuro',
+            main.tr('Central Europe (Mac OS Latin 2)'): 'mac_latin2',
 
-            main.tr('Central and Eastern Europe(CP852)'): 'cp852',
-            main.tr('Central and Eastern Europe(Windows-1250)'): 'cp1250',
-            main.tr('Central and Eastern Europe(ISO-8859-2)'): 'iso8859_2',
-            main.tr('Central and Eastern Europe(Mac Latin)'): 'mac_latin2',
+            main.tr('Central and Eastern Europe (CP852)'): 'cp852',
+            main.tr('Central and Eastern Europe (Windows-1250)'): 'cp1250',
+            main.tr('Central and Eastern Europe (ISO-8859-2)'): 'iso8859_2',
+            main.tr('Central and Eastern Europe (Mac Latin)'): 'mac_latin2',
 
-            main.tr('South-Eastern Europe(ISO-8859-16)'): 'iso8859_16',
+            main.tr('South-Eastern Europe (ISO-8859-16)'): 'iso8859_16',
 
-            main.tr('Western Europe(EBCDIC 500)'): 'cp500',
-            main.tr('Western Europe(CP850)'): 'cp850',
-            main.tr('Western Europe(CP858)'): 'cp858',
-            main.tr('Western Europe(CP1140)'): 'cp1140',
-            main.tr('Western Europe(Windows-1252)'): 'windows_1252',
-            main.tr('Western Europe(ISO-2022-JP-2)'): 'iso2022_jp_2',
-            main.tr('Western Europe(ISO-8859-1)'): 'iso_8859_1',
-            main.tr('Western Europe(ISO-8859-15)'): 'iso_8859_15',
-            main.tr('Western Europe(Mac OS Roman)'): 'mac_roman',
+            main.tr('Western Europe (EBCDIC 500)'): 'cp500',
+            main.tr('Western Europe (CP850)'): 'cp850',
+            main.tr('Western Europe (CP858)'): 'cp858',
+            main.tr('Western Europe (CP1140)'): 'cp1140',
+            main.tr('Western Europe (Windows-1252)'): 'windows_1252',
+            main.tr('Western Europe (ISO-2022-JP-2)'): 'iso2022_jp_2',
+            main.tr('Western Europe (ISO-8859-1)'): 'iso_8859_1',
+            main.tr('Western Europe (ISO-8859-15)'): 'iso_8859_15',
+            main.tr('Western Europe (Mac OS Roman)'): 'mac_roman',
 
-            main.tr('Arabic(CP720)'): 'cp720',
-            main.tr('Arabic(CP864)'): 'cp864',
-            main.tr('Arabic(Windows-1256)'): 'cp1256',
-            main.tr('Arabic(ISO-8859-6)'): 'iso_8859_6',
-            main.tr('Arabic(Mac OS Arabic)'): 'mac_arabic',
+            main.tr('Arabic (CP720)'): 'cp720',
+            main.tr('Arabic (CP864)'): 'cp864',
+            main.tr('Arabic (Windows-1256)'): 'cp1256',
+            main.tr('Arabic (ISO-8859-6)'): 'iso_8859_6',
+            main.tr('Arabic (Mac OS Arabic)'): 'mac_arabic',
 
-            main.tr('Bulgarian(IBM855)'): 'cp855',
-            main.tr('Bulgarian(Windows-1251)'): 'windows_1251',
-            main.tr('Bulgarian(ISO-8859-5)'): 'iso_8859_5',
-            main.tr('Bulgarian(Mac OS Cyrillic)'): 'mac_cyrillic',
+            main.tr('Bulgarian (IBM855)'): 'cp855',
+            main.tr('Bulgarian (Windows-1251)'): 'windows_1251',
+            main.tr('Bulgarian (ISO-8859-5)'): 'iso_8859_5',
+            main.tr('Bulgarian (Mac OS Cyrillic)'): 'mac_cyrillic',
 
-            main.tr('Belarusian(IBM855)'): 'cp855',
-            main.tr('Belarusian(Windows-1251)'): 'cp1251',
-            main.tr('Belarusian(ISO-8859-5)'): 'iso_8859_5',
-            main.tr('Belarusian(Mac OS Cyrillic)'): 'mac_cyrillic',
+            main.tr('Belarusian (IBM855)'): 'cp855',
+            main.tr('Belarusian (Windows-1251)'): 'cp1251',
+            main.tr('Belarusian (ISO-8859-5)'): 'iso_8859_5',
+            main.tr('Belarusian (Mac OS Cyrillic)'): 'mac_cyrillic',
 
-            main.tr('Canadian French(CP863)'): 'cp863',
+            main.tr('Canadian French (CP863)'): 'cp863',
 
-            main.tr('Simplified Chinese(GB2312)'): 'gb2312',
-            main.tr('Simplified Chinese(HZ)'): 'hz_gb_2312',
-            main.tr('Simplified Chinese(ISO-2022-JP-2)'): 'iso2022_jp_2',
+            main.tr('Simplified Chinese (GB2312)'): 'gb2312',
+            main.tr('Simplified Chinese (HZ)'): 'hz_gb_2312',
+            main.tr('Simplified Chinese (ISO-2022-JP-2)'): 'iso2022_jp_2',
 
-            main.tr('Traditional Chinese(Big-5)'): 'big5',
-            main.tr('Traditional Chinese(Big5-HKSCS)'): 'big5hkscs',
-            main.tr('Traditional Chinese(CP950)'): 'cp950',
+            main.tr('Traditional Chinese (Big-5)'): 'big5',
+            main.tr('Traditional Chinese (Big5-HKSCS)'): 'big5hkscs',
+            main.tr('Traditional Chinese (CP950)'): 'cp950',
 
-            main.tr('Unified Chinese(GBK)'): 'gbk',
-            main.tr('Unified Chinese(GB18030)'): 'gb18030',
+            main.tr('Unified Chinese (GBK)'): 'gbk',
+            main.tr('Unified Chinese (GB18030)'): 'gb18030',
 
-            main.tr('Croatian(Mac OS Croatian)'): 'mac_croatian',
+            main.tr('Croatian (Mac OS Croatian)'): 'mac_croatian',
 
-            main.tr('Danish(CP865)'): 'cp865',
+            main.tr('Danish (CP865)'): 'cp865',
 
-            main.tr('English(ASCII)'): 'ascii',
-            main.tr('English(EBCDIC 037)'): 'cp037',
-            main.tr('English(CP437)'): 'cp437',
+            main.tr('English (ASCII)'): 'ascii',
+            main.tr('English (EBCDIC 037)'): 'cp037',
+            main.tr('English (CP437)'): 'cp437',
 
-            main.tr('Esperanto(ISO-8859-3)'): 'iso_8859_3',
+            main.tr('Esperanto (ISO-8859-3)'): 'iso_8859_3',
 
-            main.tr('German(EBCDIC 273)'): 'cp273',
+            main.tr('German (EBCDIC 273)'): 'cp273',
 
-            main.tr('Greek(CP737)'): 'cp737',
-            main.tr('Greek(CP869)'): 'cp869',
-            main.tr('Greek(CP875)'): 'cp875',
-            main.tr('Greek(Windows-1253)'): 'windows_1253',
-            main.tr('Greek(ISO-2022-JP-2)'): 'iso2022_jp_2',
-            main.tr('Greek(ISO-8859-7)'): 'iso_8859_7',
-            main.tr('Greek(Mac OS Greek)'): 'mac_greek',
+            main.tr('Greek (CP737)'): 'cp737',
+            main.tr('Greek (CP869)'): 'cp869',
+            main.tr('Greek (CP875)'): 'cp875',
+            main.tr('Greek (Windows-1253)'): 'windows_1253',
+            main.tr('Greek (ISO-2022-JP-2)'): 'iso2022_jp_2',
+            main.tr('Greek (ISO-8859-7)'): 'iso_8859_7',
+            main.tr('Greek (Mac OS Greek)'): 'mac_greek',
 
-            main.tr('Hebrew(EBCDIC 424)'): 'cp424',
-            main.tr('Hebrew(CP856)'): 'cp856',
-            main.tr('Hebrew(CP862)'): 'cp862',
-            main.tr('Hebrew(Windows-1255)'): 'windows_1255',
-            main.tr('Hebrew(ISO-8859-8)'): 'iso_8859_8',
+            main.tr('Hebrew (EBCDIC 424)'): 'cp424',
+            main.tr('Hebrew (CP856)'): 'cp856',
+            main.tr('Hebrew (CP862)'): 'cp862',
+            main.tr('Hebrew (Windows-1255)'): 'windows_1255',
+            main.tr('Hebrew (ISO-8859-8)'): 'iso_8859_8',
 
-            main.tr('Icelandic(CP861)'): 'cp861',
-            main.tr('Icelandic(Mac OS Icelandic)'): 'mac_iceland',
+            main.tr('Icelandic (CP861)'): 'cp861',
+            main.tr('Icelandic (Mac OS Icelandic)'): 'mac_iceland',
 
-            main.tr('Japanese(CP932)'): 'cp932',
-            main.tr('Japanese(EUC-JP)'): 'euc_jp',
-            main.tr('Japanese(EUC-JIS-2004)'): 'euc_jis_2004',
-            main.tr('Japanese(EUC-JISx0213)'): 'euc_jisx0213',
-            main.tr('Japanese(ISO-2022-JP)'): 'iso_2022_jp',
-            main.tr('Japanese(ISO-2022-JP-1)'): 'iso2022_jp_1',
-            main.tr('Japanese(ISO-2022-JP-2)'): 'iso2022_jp_2',
-            main.tr('Japanese(ISO-2022-JP-2)'): 'iso2022_jp_2004',
-            main.tr('Japanese(ISO-2022-JP-3)'): 'iso2022_jp_3',
-            main.tr('Japanese(ISO-2022-JP-EXT)'): 'iso2022_jp_ext',
-            main.tr('Japanese(Shift_JIS)'): 'shift_jis',
-            main.tr('Japanese(Shift_JIS-2004)'): 'shift_jis_2004',
-            main.tr('Japanese(Shift_JISx0213)'): 'shift_jisx0213',
+            main.tr('Japanese (CP932)'): 'cp932',
+            main.tr('Japanese (EUC-JP)'): 'euc_jp',
+            main.tr('Japanese (EUC-JIS-2004)'): 'euc_jis_2004',
+            main.tr('Japanese (EUC-JISx0213)'): 'euc_jisx0213',
+            main.tr('Japanese (ISO-2022-JP)'): 'iso_2022_jp',
+            main.tr('Japanese (ISO-2022-JP-1)'): 'iso2022_jp_1',
+            main.tr('Japanese (ISO-2022-JP-2)'): 'iso2022_jp_2',
+            main.tr('Japanese (ISO-2022-JP-2)'): 'iso2022_jp_2004',
+            main.tr('Japanese (ISO-2022-JP-3)'): 'iso2022_jp_3',
+            main.tr('Japanese (ISO-2022-JP-EXT)'): 'iso2022_jp_ext',
+            main.tr('Japanese (Shift_JIS)'): 'shift_jis',
+            main.tr('Japanese (Shift_JIS-2004)'): 'shift_jis_2004',
+            main.tr('Japanese (Shift_JISx0213)'): 'shift_jisx0213',
 
-            main.tr('Kazakh(KZ-1048)'): 'kz1048',
-            main.tr('Kazakh(PTCP154)'): 'ptcp154',
+            main.tr('Kazakh (KZ-1048)'): 'kz1048',
+            main.tr('Kazakh (PTCP154)'): 'ptcp154',
 
-            main.tr('Korean(Windows-949)'): 'cp949',
-            main.tr('Korean(EUC-KR)'): 'euc_kr',
-            main.tr('Korean(ISO-2022-JP-2)'): 'iso2022_jp_2',
-            main.tr('Korean(ISO-2022-KR)'): 'iso_2022_kr',
-            main.tr('Korean(JOHAB)'): 'johab',
+            main.tr('Korean (Windows-949)'): 'cp949',
+            main.tr('Korean (EUC-KR)'): 'euc_kr',
+            main.tr('Korean (ISO-2022-JP-2)'): 'iso2022_jp_2',
+            main.tr('Korean (ISO-2022-KR)'): 'iso_2022_kr',
+            main.tr('Korean (JOHAB)'): 'johab',
 
-            main.tr('Macedonian(IBM855)'): 'cp855',
-            main.tr('Macedonian(Windows-1251)'): 'cp1251',
-            main.tr('Macedonian(ISO-8859-5)'): 'iso_8859_5',
-            main.tr('Macedonian(Mac OS Cyrillic)'): 'maccyrillic',
+            main.tr('Macedonian (IBM855)'): 'cp855',
+            main.tr('Macedonian (Windows-1251)'): 'cp1251',
+            main.tr('Macedonian (ISO-8859-5)'): 'iso_8859_5',
+            main.tr('Macedonian (Mac OS Cyrillic)'): 'maccyrillic',
 
-            main.tr('Maltese(ISO-8859-3)'): 'iso_8859_3',
+            main.tr('Maltese (ISO-8859-3)'): 'iso_8859_3',
 
-            main.tr('Norwegian(CP865)'): 'cp865',
+            main.tr('Norwegian (CP865)'): 'cp865',
 
-            main.tr('Persian(Mac OS Farsi)'): 'mac_farsi',
+            main.tr('Persian (Mac OS Farsi)'): 'mac_farsi',
 
-            main.tr('Portuguese(CP860)'): 'cp860',
+            main.tr('Portuguese (CP860)'): 'cp860',
 
-            main.tr('Romanian(Mac OS Romanian)'): 'mac_romanian',
+            main.tr('Romanian (Mac OS Romanian)'): 'mac_romanian',
 
-            main.tr('Russian(IBM855)'): 'ibm855',
-            main.tr('Russian(IBM866)'): 'ibm866',
-            main.tr('Russian(Windows-1251)'): 'windows_1251',
-            main.tr('Russian(ISO-8859-5)'): 'iso_8859_5',
-            main.tr('Russian(KOI8-R)'): 'koi8_r',
-            main.tr('Russian(Mac OS Cyrillic)'): 'maccyrillic',
+            main.tr('Russian (IBM855)'): 'ibm855',
+            main.tr('Russian (IBM866)'): 'ibm866',
+            main.tr('Russian (Windows-1251)'): 'windows_1251',
+            main.tr('Russian (ISO-8859-5)'): 'iso_8859_5',
+            main.tr('Russian (KOI8-R)'): 'koi8_r',
+            main.tr('Russian (Mac OS Cyrillic)'): 'maccyrillic',
 
-            main.tr('Serbian(IBM855)'): 'cp855',
-            main.tr('Serbian(Windows-1251)'): 'cp1251',
-            main.tr('Serbian(ISO-8859-5)'): 'iso8859_5',
-            main.tr('Serbian(Mac OS Cyrillic)'): 'maccyrillic',
+            main.tr('Serbian (IBM855)'): 'cp855',
+            main.tr('Serbian (Windows-1251)'): 'cp1251',
+            main.tr('Serbian (ISO-8859-5)'): 'iso8859_5',
+            main.tr('Serbian (Mac OS Cyrillic)'): 'maccyrillic',
 
-            main.tr('Tajik(KOI8-T)'): 'koi8_t',
+            main.tr('Tajik (KOI8-T)'): 'koi8_t',
 
-            main.tr('Thai(CP874)'): 'cp874',
-            main.tr('Thai(ISO-8859-11)'): 'iso8859_11',
-            main.tr('Thai(TIS-620)'): 'tis_620',
+            main.tr('Thai (CP874)'): 'cp874',
+            main.tr('Thai (ISO-8859-11)'): 'iso8859_11',
+            main.tr('Thai (TIS-620)'): 'tis_620',
 
-            main.tr('Turkish(CP857)'): 'cp857',
-            main.tr('Turkish(EBCDIC 1026)'): 'cp1026',
-            main.tr('Turkish(Windows-1254)'): 'cp1254',
-            main.tr('Turkish(ISO-8859-9)'): 'iso_8859_9',
-            main.tr('Turkish(Mac OS Turkish)'): 'mac_turkish',
+            main.tr('Turkish (CP857)'): 'cp857',
+            main.tr('Turkish (EBCDIC 1026)'): 'cp1026',
+            main.tr('Turkish (Windows-1254)'): 'cp1254',
+            main.tr('Turkish (ISO-8859-9)'): 'iso_8859_9',
+            main.tr('Turkish (Mac OS Turkish)'): 'mac_turkish',
 
-            main.tr('Ukrainian(CP1125)'): 'cp1125',
-            main.tr('Ukrainian(KOI8-U)'): 'koi8_u',
+            main.tr('Ukrainian (CP1125)'): 'cp1125',
+            main.tr('Ukrainian (KOI8-U)'): 'koi8_u',
 
-            main.tr('Urdu(CP1006)'): 'cp1006',
-            main.tr('Urdu(Mac OS Farsi)'): 'mac_farsi',
+            main.tr('Urdu (CP1006)'): 'cp1006',
+            main.tr('Urdu (Mac OS Farsi)'): 'mac_farsi',
 
-            main.tr('Vietnamese(CP1258)'): 'cp1258'
+            main.tr('Vietnamese (CP1258)'): 'cp1258'
         },
 
         'sentence_tokenizers': {
@@ -452,8 +452,8 @@ def init_settings_global(main):
             ],
 
             'zho_CN': [
-                main.tr('jieba (“结巴”中文分词) - With HMM'),
-                main.tr('jieba (“结巴”中文分词) - Without HMM'),
+                main.tr('jieba - With HMM'),
+                main.tr('jieba - Without HMM'),
                 main.tr('HanLP - Standard Tokenizer'),
                 main.tr('HanLP - Basic Tokenizer'),
                 main.tr('HanLP - NLP Tokenizer'),
@@ -466,8 +466,8 @@ def init_settings_global(main):
                 main.tr('HanLP - Viterbi Segmenter')
             ],
             'zho_TW': [
-                main.tr('jieba (“结巴”中文分词) - With HMM'),
-                main.tr('jieba (“结巴”中文分词) - Without HMM'),
+                main.tr('jieba - With HMM'),
+                main.tr('jieba - Without HMM'),
                 main.tr('HanLP - Standard Tokenizer'),
                 main.tr('HanLP - Basic Tokenizer'),
                 main.tr('HanLP - NLP Tokenizer'),
@@ -550,13 +550,6 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
-            'fas': [
-                main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer'),
-            ],
             'pol': [
                 main.tr('NLTK - Treebank Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
@@ -565,13 +558,6 @@ def init_settings_global(main):
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'por': [
-                main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer'),
-            ],
-            'rus': [
                 main.tr('NLTK - Treebank Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
@@ -599,21 +585,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
-            'tgk': [
-                main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer'),
-            ],
             'tur': [
-                main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer'),
-            ],
-            'vie': [
                 main.tr('NLTK - Treebank Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
@@ -628,6 +600,36 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ]
+        },
+
+        'pos_taggers': {
+            'eng': {
+                main.tr('NLTK - Perceptron POS Tagger'): 'Penn Treebank'
+            },
+
+            'zho_CN': {
+                main.tr('jieba'): 'jieba',
+                main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
+                main.tr('HanLP - Perceptron Lexical Analyzer'): 'HanLP'
+            },
+            'zho_TW': {
+                main.tr('jieba'): 'jieba',
+                main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
+                main.tr('HanLP - Perceptron Lexical Analyzer'): 'HanLP'
+            },
+            'rus': {
+                main.tr('NLTK - Perceptron POS Tagger'): 'Russian National Corpus'
+            }
+        },
+
+        'tagsets': {
+            # English
+            'Penn Treebank': 'en-ptb',
+            # Chinese
+            'jieba': 'zho_jieba',
+            'HanLP': 'zho_hanlp',
+            # Russian
+            'Russian National Corpus': 'rus_russian_national_corpus'
         },
 
         'lemmatizers': {
@@ -749,6 +751,12 @@ def init_settings_global(main):
                 'stopwords-json'
             ],
             'zho_CN': [
+                'HanLP',
+                'Stopwords ISO',
+                'stopwords-json'
+            ],
+            'zho_TW': [
+                'HanLP',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
@@ -1020,8 +1028,8 @@ def init_settings_default(main):
             'sentence_tokenizers': {
                 'eng': main.tr('NLTK - Punkt Sentence Tokenizer'),
 
-                'zho_CN': main.tr('Wordless - Sentence Tokenizer'),
-                'zho_TW': main.tr('Wordless - Sentence Tokenizer'),
+                'zho_CN': main.tr('Wordless - Chinese Sentence Tokenizer'),
+                'zho_TW': main.tr('Wordless - Chinese Sentence Tokenizer'),
                 'ces': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'dan': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'nld': main.tr('NLTK - Punkt Sentence Tokenizer'),
@@ -1049,8 +1057,8 @@ def init_settings_default(main):
         'word_tokenization': {
             'word_tokenizers': {
                 'eng': main.tr('NLTK - Treebank Tokenizer'),
-                'zho_CN': main.tr('jieba (“结巴”中文分词”) - With HMM'),
-                'zho_TW': main.tr('jieba (“结巴”中文分词”) - With HMM'),
+                'zho_CN': main.tr('jieba - With HMM'),
+                'zho_TW': main.tr('jieba - With HMM'),
                 'ces': main.tr('NLTK - Treebank Tokenizer'),
                 'dan': main.tr('NLTK - Treebank Tokenizer'),
                 'nld': main.tr('NLTK - Treebank Tokenizer'),
@@ -1061,18 +1069,27 @@ def init_settings_default(main):
                 'ell': main.tr('NLTK - Treebank Tokenizer'),
                 'ita': main.tr('NLTK - Treebank Tokenizer'),
                 'nor': main.tr('NLTK - Treebank Tokenizer'),
-                'fas': main.tr('NLTK - Treebank Tokenizer'),
                 'pol': main.tr('NLTK - Treebank Tokenizer'),
                 'por': main.tr('NLTK - Treebank Tokenizer'),
-                'rus': main.tr('NLTK - Treebank Tokenizer'),
                 'slv': main.tr('NLTK - Treebank Tokenizer'),
                 'spa': main.tr('NLTK - Treebank Tokenizer'),
                 'swe': main.tr('NLTK - Treebank Tokenizer'),
-                'tgk': main.tr('NLTK - Treebank Tokenizer'),
                 'tur': main.tr('NLTK - Treebank Tokenizer'),
-                'vie': main.tr('NLTK - Treebank Tokenizer'),
 
                 'other': main.tr('NLTK - Treebank Tokenizer')
+            },
+
+            'preview_lang': 'eng',
+            'preview_samples': ''
+        },
+
+        'pos_tagging': {
+            'pos_taggers': {
+                'eng': main.tr('NLTK - Perceptron POS Tagger'),
+
+                'zho_CN': main.tr('jieba'),
+                'zho_TW':  main.tr('jieba'),
+                'rus': main.tr('NLTK - Perceptron POS Tagger')
             },
 
             'preview_lang': 'eng',
@@ -1082,6 +1099,7 @@ def init_settings_default(main):
         'lemmatization': {
             'lemmatizers': {
                 'eng': 'NLTK',
+
                 'ast': 'Lemmatization Lists',
                 'bul': 'Lemmatization Lists',
                 'cat': 'Lemmatization Lists',
@@ -1114,6 +1132,7 @@ def init_settings_default(main):
         'stop_words': {
             'stop_words': {
                 'eng': 'NLTK',
+
                 'afr': 'Stopwords ISO',
                 'ara': 'NLTK',
                 'hye': 'Stopwords ISO',
@@ -1123,7 +1142,8 @@ def init_settings_default(main):
                 'bre': 'Stopwords ISO',
                 'bul': 'Stopwords ISO',
                 'cat': 'Stopwords ISO',
-                'zho_CN': 'Stopwords ISO',
+                'zho_CN': 'HanLP',
+                'zho_TW': 'HanLP',
                 'hrv': 'Stopwords ISO',
                 'ces': 'Stopwords ISO',
                 'dan': 'NLTK',

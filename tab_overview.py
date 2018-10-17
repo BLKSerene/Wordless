@@ -1,9 +1,9 @@
 #
 # Wordless: Overview
 #
-# Copyright (C) 2018 Ye Lei
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# For license information, see LICENSE.txt.
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import os
@@ -18,23 +18,23 @@ from wordless_utils import *
 def init(self):
     tab_overview = QWidget(self)
 
-    table_overview = wordless_table.Wordless_Table(self,
-                                                   [
-                                                       self.tr('File Name'),
-                                                       self.tr('Count of Characters'),
-                                                       self.tr('Count of Tokens'),
-                                                       self.tr('Count of Types'),
-                                                       self.tr('Count of Word Tokens'),
-                                                       self.tr('Count of Word Types'),
-                                                       self.tr('Lexical Diversity'),
-                                                       self.tr('Average Word Length'),
-                                                       self.tr('Count of Lowercase Words'),
-                                                       self.tr('Count of Uppercase Words'),
-                                                       self.tr('Count of Title Cased Words'),
-                                                       self.tr('Count of Punctuations'),
-                                                       self.tr('Count of Numbers')
-                                                   ],
-                                                   orientation = 'Vertical')
+    table_overview = wordless_table.Wordless_Table_Data(self,
+                                                        [
+                                                            self.tr('File Name'),
+                                                            self.tr('Count of Characters'),
+                                                            self.tr('Count of Tokens'),
+                                                            self.tr('Count of Types'),
+                                                            self.tr('Count of Word Tokens'),
+                                                            self.tr('Count of Word Types'),
+                                                            self.tr('Lexical Diversity'),
+                                                            self.tr('Average Word Length'),
+                                                            self.tr('Count of Lowercase Words'),
+                                                            self.tr('Count of Uppercase Words'),
+                                                            self.tr('Count of Title Cased Words'),
+                                                            self.tr('Count of Punctuations'),
+                                                            self.tr('Count of Numbers')
+                                                        ],
+                                                        orientation = 'Vertical')
 
     button_generate_stats = QPushButton('Generate Statistics', self)
 

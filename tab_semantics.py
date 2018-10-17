@@ -1,9 +1,9 @@
 #
 # Wordless: Semantics
 #
-# Copyright (C) 2018 Ye Lei
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# For license information, see LICENSE.txt.
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 from PyQt5.QtCore import *
@@ -81,15 +81,15 @@ def init(self):
 
     tab_semantics = wordless_layout.Wordless_Tab(self, self.tr('Semantics'))
 
-    table_semantics = wordless_table.Wordless_Table(self,
-                                                    headers = [
-                                                        self.tr('Synsets'),
-                                                        self.tr('Part of Speech'),
-                                                        '',
-                                                        self.tr('Definition'),
-                                                        self.tr('Examples')
-                                                    ],
-                                                    cols_stretch = ['Examples'])
+    table_semantics = wordless_table.Wordless_Table_Data(self,
+                                                         headers = [
+                                                             self.tr('Synsets'),
+                                                             self.tr('Part of Speech'),
+                                                             '',
+                                                             self.tr('Definition'),
+                                                             self.tr('Examples')
+                                                         ],
+                                                         cols_stretch = ['Examples'])
 
     table_semantics.button_search = QPushButton('Begin Search', self)
     table_semantics.button_generate_plot = QPushButton('Generate Plot', self)
