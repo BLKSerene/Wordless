@@ -1,9 +1,9 @@
 #
 # Wordless: Files
 #
-# Copyright (C) 2018 Ye Lei
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# For license information, see LICENSE.txt.
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
@@ -114,7 +114,7 @@ class Wordless_Files():
 
         return selected_files
 
-class Wordless_Table_Files(wordless_table.Wordless_Table):
+class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
     def __init__(self, main):
         super().__init__(main,
                          headers = [
