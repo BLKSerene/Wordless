@@ -1,9 +1,9 @@
 #
 # Wordless: Main Window
 #
-# Copyright (C) 2018 Ye Lei
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# For license information, see LICENSE.txt.
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import pickle
@@ -72,6 +72,18 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'He Han (何晗)',
              '<a href="mailto:hankcs.cn@gmail.com">hankcs.cn@gmail.com</a>',
              '<a href="https://github.com/hankcs/pyhanlp/blob/master/LICENSE">Apache-2</a>'],
+
+            ['<a href="https://stanfordnlp.github.io/CoreNLP/">Stanford CoreNLP</a>',
+             '3.9.2',
+             'Stanford NLP',
+             '<a href="mailto:java-nlp-support@lists.stanford.edu">java-nlp-support@lists.stanford.edu</a>',
+             '<a href="https://github.com/stanfordnlp/CoreNLP/blob/master/LICENSE.txt">GPL-3.0</a>'],
+
+            ['<a href="https://github.com/stanfordnlp/python-stanford-corenlp">Stanford CoreNLP Python Interface</a>',
+             '3.8.0',
+             'Stanford NLP',
+             '<a href="mailto:java-nlp-support@lists.stanford.edu">java-nlp-support@lists.stanford.edu</a>',
+             '<a href="https://github.com/stanfordnlp/python-stanford-corenlp/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
              '4.6.3',
@@ -167,10 +179,6 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
                                                                cols_stretch = [
                                                                    self.tr('Contact')
                                                                ])
-
-        table_acknowledgements.button_export_selected.hide()
-        table_acknowledgements.button_export_all.hide()
-        table_acknowledgements.button_clear.hide()
 
         table_acknowledgements.setSelectionMode(QAbstractItemView.NoSelection)
 

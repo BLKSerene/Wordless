@@ -1,9 +1,9 @@
 #
 # Wordless: Wordlist
 #
-# Copyright (C) 2018 Ye Lei
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# For license information, see LICENSE.txt.
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
@@ -18,7 +18,7 @@ import numpy
 from wordless_widgets import *
 from wordless_utils import *
 
-class Wordless_Table_Wordlist(wordless_table.Wordless_Table):
+class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data):
     def __init__(self, main):
         super().__init__(main,
                          headers = [
