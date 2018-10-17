@@ -1,0 +1,69 @@
+#
+# Wordless: Mapping Table (jieba Tagset -> Universal Part-of-speech Tagset)
+#
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
+#
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+
+#
+# jieba Tagset: https://gist.github.com/hscspring/c985355e0814f01437eaf8fd55fd7998
+#
+# Universal Part-of-speech Tagset: https://github.com/slavpetrov/universal-pos-tags/blob/master/README
+#
+
+a	ADJ
+ad	ADJ
+ag	ADJ
+an	ADJ
+b	PRT
+c	CONJ
+d	ADV
+df	ADV
+dg	ADV
+e	X
+f	PRT
+g	X
+h	PRT
+i	X
+j	X
+k	PRT
+l	X
+m	NUM
+mg	NUM
+mq	NUM
+n	NOUN
+ng	NOUN
+nr	NOUN
+nrfg	NOUN
+nrt	NOUN
+ns	NOUN
+nt	NOUN
+nz	NOUN
+o	X
+p	ADP
+q	NUM
+r	PRON
+rg	PRON
+rr	PRON
+rz	PRON
+s	PRT
+t	PRT
+tg	PRT
+u	PRT
+ud	PRT
+ug	PRT
+uj	PRT
+ul	PRT
+uv	PRT
+uz	PRT
+v	VERB
+vd	VERB
+vg	VERB
+vi	VERB
+vn	VERB
+vq	VERB
+x	.
+y	X
+z	PRT
+zg	PRT

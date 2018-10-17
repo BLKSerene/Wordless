@@ -1,9 +1,9 @@
 #
 # Wordless: Boxes
 #
-# Copyright (C) 2018 Ye Lei
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# For license information, see LICENSE.txt.
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 from PyQt5.QtCore import *
@@ -72,6 +72,8 @@ class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
         if self.currentText().find('HanLP') > -1:
             try:
                 jpype.getDefaultJVMPath()
+
+                import pyhanlp
             except:
                 wordless_dialog.wordless_message_jre_not_installed(self.main)
 

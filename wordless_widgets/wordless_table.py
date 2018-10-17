@@ -1,9 +1,9 @@
 #
 # Wordless: Table
 #
-# Copyright (C) 2018 Ye Lei
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# For license information, see LICENSE.txt.
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 from PyQt5.QtCore import *
@@ -33,16 +33,10 @@ class Wordless_Table_Item(QTableWidgetItem):
         return self.read_data() < other.read_data()
 
 class Wordless_Table(QTableWidget):
-    def __init__(self, parent, headers = [], orientation = 'Horizontal',
-                 cols_stretch = [], cols_pct = [], cols_cumulative = [], cols_breakdown = [],
-                 sorting_enabled = False, drag_drop_enabled = False):
+    def __init__(self, parent, headers, orientation = 'Horizontal', cols_stretch = []):
         self.main = parent
         self.headers = headers
         self.orientation = orientation
-
-        self.cols_pct_old = cols_pct
-        self.cols_cumulative_old = cols_cumulative
-        self.cols_breakdown_old = cols_breakdown
 
         if orientation == 'Horizontal':
             super().__init__(1, len(self.headers), self.main)
@@ -55,6 +49,61 @@ class Wordless_Table(QTableWidget):
 
         self.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
+
+        self.verticalHeader().setDefaultSectionSize(22)
+
+        self.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.verticalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+
+        for col in self.find_col(cols_stretch):
+            self.horizontalHeader().setSectionResizeMode(col, QHeaderView.Stretch)
+
+        self.setStyleSheet('QHeaderView {color: #4169E1; font-weight: bold}')
+
+    def clear_table(self, header_count = 1):
+        self.clearContents()
+
+        if self.orientation == 'Horizontal':
+            self.setColumnCount(len(self.headers))
+            self.setRowCount(header_count)
+
+            self.setHorizontalHeaderLabels(self.headers)
+        else:
+            self.setRowCount(len(self.headers))
+            self.setColumnCount(header_count)
+
+            self.setVerticalHeaderLabels(self.headers)
+
+    def find_col(self, text, fuzzy_matching = False):
+        def find(text):
+            for col in range(self.columnCount()):
+                if fuzzy_matching:
+                    if self.horizontalHeaderItem(col) and self.horizontalHeaderItem(col).text().find(text) > -1:
+                        return col
+                else:
+                    if self.horizontalHeaderItem(col) and self.horizontalHeaderItem(col).text() == text:
+                        return col
+
+        if type(text) == list:
+            return [find(text_item)
+                    for text_item in text]
+        else:
+            return find(text)
+
+    def find_cols(self, text):
+        return [col
+                for col in range(self.columnCount())
+                if self.horizontalHeaderItem(col) and self.horizontalHeaderItem(col).text().find(text) > -1]
+
+class Wordless_Table_Data(Wordless_Table):
+    def __init__(self, parent, headers, orientation = 'Horizontal', cols_stretch = [],
+                 cols_pct = [], cols_cumulative = [], cols_breakdown = [],
+                 sorting_enabled = False, drag_drop_enabled = False):
+        super().__init__(parent, headers, orientation, cols_stretch)
+
+        self.cols_pct_old = cols_pct
+        self.cols_cumulative_old = cols_cumulative
+        self.cols_breakdown_old = cols_breakdown
 
         if sorting_enabled:
             self.setSortingEnabled(True)
@@ -71,16 +120,8 @@ class Wordless_Table(QTableWidget):
             self.setDragDropMode(QAbstractItemView.InternalMove)
             self.setDragDropOverwriteMode(False)
 
-        self.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
-        self.verticalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
-
-        for col in self.find_col(cols_stretch):
-            self.horizontalHeader().setSectionResizeMode(col, QHeaderView.Stretch)
-
         self.itemChanged.connect(self.item_changed)
         self.itemSelectionChanged.connect(self.selection_changed)
-
-        self.setStyleSheet('QHeaderView {color: #4169E1; font-weight: bold}')
 
         self.button_export_selected = QPushButton(self.tr('Export Selected...'), self)
         self.button_export_all = QPushButton(self.tr('Export All...'), self)
@@ -352,27 +393,6 @@ class Wordless_Table(QTableWidget):
     def selected_rows(self):
         return sorted(set([index.row() for index in self.selectedIndexes()]))
 
-    def find_col(self, text, fuzzy_matching = False):
-        def find(text):
-            for col in range(self.columnCount()):
-                if fuzzy_matching:
-                    if self.horizontalHeaderItem(col) and self.horizontalHeaderItem(col).text().find(text) > -1:
-                        return col
-                else:
-                    if self.horizontalHeaderItem(col) and self.horizontalHeaderItem(col).text() == text:
-                        return col
-
-        if type(text) == list:
-            return [find(text_item)
-                    for text_item in text]
-        else:
-            return find(text)
-
-    def find_cols(self, text):
-        return [col
-                for col in range(self.columnCount())
-                if self.horizontalHeaderItem(col) and self.horizontalHeaderItem(col).text().find(text) > -1]
-
     def export_selected(self):
         pass
 
@@ -417,7 +437,7 @@ class Wordless_Table(QTableWidget):
 
         self.item_changed()
 
-class Wordless_Table_Multi_Sort(Wordless_Table):
+class Wordless_Table_Multi_Sort(Wordless_Table_Data):
     def __init__(self, parent, sort_table, sort_cols):
         super().__init__(parent, headers = ['Column', 'Order'], cols_stretch = ['Order'])
 

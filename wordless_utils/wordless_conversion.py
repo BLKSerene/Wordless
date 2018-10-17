@@ -1,10 +1,14 @@
 #
 # Wordless: Conversion
 #
-# Copyright (C) 2018 Ye Lei
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# For license information, see LICENSE.txt.
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
+
+import os
+
+import nltk
 
 def to_lang_code(main, lang_text):
     if type(lang_text) == list:
@@ -54,3 +58,16 @@ def to_word_delimiter(lang_code):
         word_delimiter = ' '
 
     return word_delimiter
+
+def to_universal_tagset(main, tagset, tag):
+    tagset = main.settings_global['tagsets'][tagset]
+
+    if os.path.exists(f'tagsets/{tagset}.txt'):
+        with open(f'tagsets/{tagset}.txt', 'r', encoding = 'utf_8') as f:
+            tagset_mapping = {line.rstrip().split()[0]: line.rstrip().split()[1]
+                              for line in f
+                              if not line.startswith('#') and line.rstrip()}
+
+        return tagset_mapping[tag]
+    else:
+        return nltk.map_tag(tagset, 'universal', tag)
