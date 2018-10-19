@@ -1,3 +1,11 @@
+#
+# Wordless: Converter of Simplified Chinese Stopwords to Traditional Chinese Stopwords
+#
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
+#
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+
 import json
 
 import pyhanlp

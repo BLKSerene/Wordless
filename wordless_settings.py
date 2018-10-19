@@ -1,9 +1,9 @@
 #
 # Wordless: Settings
 #
-# Copyright (C) 2018 Ye Lei
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# For license information, see LICENSE.txt.
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
@@ -318,15 +318,28 @@ class Wordless_Settings(QDialog):
             settings_custom['preview_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_pos_tagging_preview_lang.currentText())
             settings_custom['preview_samples'] = self.text_edit_pos_tagging_preview_samples.toPlainText()
 
+            for i, lang_code in enumerate(settings_global):
+                pos_tagger = self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentText()
+                tagset_old = self.__dict__[f'combo_box_tagset_{lang_code}'].currentText()
+
+                table_pos_taggers.cellWidget(i, 2).clear()
+                table_pos_taggers.cellWidget(i, 2).addItems([self.main.settings_global['pos_taggers'][lang_code][pos_tagger], 'Universal'])
+
+                if tagset_old == 'Universal':
+                    self.__dict__[f'combo_box_tagset_{lang_code}'].setCurrentText('Universal')
+
         def preview_results_changed():
             lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_pos_tagging_preview_lang.currentText())
 
             pos_tagger = self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentText()
+            tagset = self.__dict__[f'combo_box_tagset_{lang_code}'].currentText()
 
             self.text_edit_pos_tagging_preview_results.clear()
 
             for sample_line in settings_custom['preview_samples'].split('\n'):
-                tokens_tagged = wordless_text.wordless_pos_tag(self.main, sample_line, lang_code, pos_tagger = pos_tagger)
+                tokens_tagged = wordless_text.wordless_pos_tag(self.main, sample_line, lang_code,
+                                                               pos_tagger = pos_tagger, tagset = tagset)
+                tokens_tagged = [f'{token}_{tag}' for token, tag in tokens_tagged]
 
                 self.text_edit_pos_tagging_preview_results.append(' '.join(tokens_tagged))
 
@@ -356,10 +369,18 @@ class Wordless_Settings(QDialog):
 
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'] = wordless_box.Wordless_Combo_Box_Jre_Required(self)
 
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].addItems(settings_global[lang_code])
+            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].addItems(list(settings_global[lang_code].keys()))
+
+            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentTextChanged.connect(preview_settings_changed)
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentTextChanged.connect(preview_results_changed)
 
             table_pos_taggers.setCellWidget(i, 1, self.__dict__[f'combo_box_pos_tagger_{lang_code}'])
+
+            self.__dict__[f'combo_box_tagset_{lang_code}'] = wordless_box.Wordless_Combo_Box(self)
+
+            self.__dict__[f'combo_box_tagset_{lang_code}'].currentTextChanged.connect(preview_results_changed)
+
+            table_pos_taggers.setCellWidget(i, 2, self.__dict__[f'combo_box_tagset_{lang_code}'])
 
         group_box_pos_taggers.setLayout(QGridLayout())
         group_box_pos_taggers.layout().addWidget(table_pos_taggers, 0, 0)
@@ -611,6 +632,13 @@ class Wordless_Settings(QDialog):
         self.combo_box_word_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['word_tokenization']['preview_lang']))
         self.text_edit_word_tokenization_preview_samples.setText(settings_loaded['word_tokenization']['preview_samples'])
 
+        # POS Tagging
+        for lang_code in settings_loaded['pos_tagging']['pos_taggers']:
+            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].setCurrentText(settings_loaded['pos_tagging']['pos_taggers'][lang_code])
+
+        self.combo_box_pos_tagging_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['pos_tagging']['preview_lang']))
+        self.text_edit_pos_tagging_preview_samples.setText(settings_loaded['pos_tagging']['preview_samples'])
+
         # Lemmatization
         for lang_code in settings_loaded['lemmatization']['lemmatizers']:
             self.__dict__[f'combo_box_lemmatizer_{lang_code}'].setCurrentText(settings_loaded['lemmatization']['lemmatizers'][lang_code])
@@ -640,6 +668,10 @@ class Wordless_Settings(QDialog):
         # Word Tokenization
         for lang_code in settings['word_tokenization']['word_tokenizers']:
             settings['word_tokenization']['word_tokenizers'][lang_code] = self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentText()
+
+        # POS Tagging
+        for lang_code in settings['pos_tagging']['pos_taggers']:
+            settings['pos_tagging']['pos_taggers'][lang_code] = self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentText()
 
         # Lemmatization
         for lang_code in settings['lemmatization']['lemmatizers']:

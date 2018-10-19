@@ -1,9 +1,9 @@
 #
 # Wordless: Initialization of Settings
 #
-# Copyright (C) 2018 Ye Lei
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# For license information, see LICENSE.txt.
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
@@ -603,19 +603,33 @@ def init_settings_global(main):
         },
 
         'pos_taggers': {
-            'eng': [
-                main.tr('NLTK - Perceptron POS Tagger')
-            ],
+            'eng': {
+                main.tr('NLTK - Perceptron POS Tagger'): 'Penn Treebank'
+            },
 
-            'zho_CN': [
-                main.tr('jieba'),
-            ],
-            'zho_TW': [
-                main.tr('jieba'),
-            ],
-            'rus': [
-                main.tr('NLTK - Perceptron POS Tagger')
-            ]
+            'zho_CN': {
+                main.tr('jieba'): 'jieba',
+                main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
+                main.tr('HanLP - Perceptron Lexical Analyzer'): 'HanLP'
+            },
+            'zho_TW': {
+                main.tr('jieba'): 'jieba',
+                main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
+                main.tr('HanLP - Perceptron Lexical Analyzer'): 'HanLP'
+            },
+            'rus': {
+                main.tr('NLTK - Perceptron POS Tagger'): 'Russian National Corpus'
+            }
+        },
+
+        'tagsets': {
+            # English
+            'Penn Treebank': 'en-ptb',
+            # Chinese
+            'jieba': 'zho_jieba',
+            'HanLP': 'zho_hanlp',
+            # Russian
+            'Russian National Corpus': 'rus_russian_national_corpus'
         },
 
         'lemmatizers': {
@@ -1014,8 +1028,8 @@ def init_settings_default(main):
             'sentence_tokenizers': {
                 'eng': main.tr('NLTK - Punkt Sentence Tokenizer'),
 
-                'zho_CN': main.tr('Wordless - Sentence Tokenizer'),
-                'zho_TW': main.tr('Wordless - Sentence Tokenizer'),
+                'zho_CN': main.tr('Wordless - Chinese Sentence Tokenizer'),
+                'zho_TW': main.tr('Wordless - Chinese Sentence Tokenizer'),
                 'ces': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'dan': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'nld': main.tr('NLTK - Punkt Sentence Tokenizer'),
@@ -1043,8 +1057,8 @@ def init_settings_default(main):
         'word_tokenization': {
             'word_tokenizers': {
                 'eng': main.tr('NLTK - Treebank Tokenizer'),
-                'zho_CN': main.tr('jieba (“结巴”中文分词”) - With HMM'),
-                'zho_TW': main.tr('jieba (“结巴”中文分词”) - With HMM'),
+                'zho_CN': main.tr('jieba - With HMM'),
+                'zho_TW': main.tr('jieba - With HMM'),
                 'ces': main.tr('NLTK - Treebank Tokenizer'),
                 'dan': main.tr('NLTK - Treebank Tokenizer'),
                 'nld': main.tr('NLTK - Treebank Tokenizer'),
@@ -1071,11 +1085,11 @@ def init_settings_default(main):
 
         'pos_tagging': {
             'pos_taggers': {
-                'eng': main.tr('NLTK - Textblob Averaged Perceptron POS Tagger'),
+                'eng': main.tr('NLTK - Perceptron POS Tagger'),
 
-                'zho_CN': main.tr('jieba (“结巴”中文分词)'),
-                'zho_TW':  main.tr('jieba (“结巴”中文分词)'),
-                'rus': main.tr('NLTK - Textblob Averaged Perceptron POS Tagger')
+                'zho_CN': main.tr('jieba'),
+                'zho_TW':  main.tr('jieba'),
+                'rus': main.tr('NLTK - Perceptron POS Tagger')
             },
 
             'preview_lang': 'eng',

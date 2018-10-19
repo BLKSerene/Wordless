@@ -1,9 +1,9 @@
 #
 # Wordless: Text
 #
-# Copyright (C) 2018 Ye Lei
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# For license information, see LICENSE.txt.
+# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import collections
@@ -13,6 +13,7 @@ import re
 from bs4 import BeautifulSoup
 import delphin.repp
 import jieba
+import jieba.posseg
 import jpype
 import nltk
 
@@ -86,9 +87,6 @@ def wordless_word_tokenize(main, text, lang_code, word_tokenizer = 'Default'):
 
     if word_tokenizer == 'Default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang_code]
-
-    if word_tokenizer.find('HanLP') > -1:
-        import pyhanlp
 
     # English
     if word_tokenizer == main.tr('NLTK - Treebank Tokenizer'):
@@ -171,16 +169,38 @@ def wordless_word_tokenize(main, text, lang_code, word_tokenizer = 'Default'):
 
     return tokens
 
-def wordless_pos_tag(main, text, lang_code, pos_tagger = 'Default'):
+def wordless_pos_tag(main, text, lang_code, pos_tagger = 'Default', tagset = 'Universal'):
     tokens_tagged = []
-
-    sentences = wordless_sentence_tokenize(main, text, lang_code)
 
     if pos_tagger == 'Default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang_code]
 
-    if pos_tagger == main.tr('NLTK - Perceptron POS Tagger'):
-        pass
+    if pos_tagger == main.tr(main.tr('NLTK - Perceptron POS Tagger')):
+        sentences = wordless_sentence_tokenize(main, text, lang_code)
+
+        for sentence in sentences:
+            tokens_tagged.extend(nltk.pos_tag(wordless_word_tokenize(main, sentence, lang_code), lang = lang_code))
+    elif pos_tagger == main.tr('jieba'):
+        sentences = wordless_sentence_tokenize(main, text, lang_code)
+
+        for sentence in sentences:
+            tokens_tagged.extend(jieba.posseg.lcut(sentence))
+    elif pos_tagger == main.tr('HanLP - CRF Lexical Analyzer'):
+        crf_tagger = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')
+
+        tokens_tagged.extend(list(zip(*crf_tagger().analyze(text).toWordTagArray())))
+    elif pos_tagger == main.tr('HanLP - Perceptron Lexical Analyzer'):
+
+        perceptron_tagger = jpype.JClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')
+
+        tokens_tagged.extend(list(zip(*perceptron_tagger().analyze(text).toWordTagArray())))
+
+    # Convert to Universal Tagset
+    if tagset == 'Universal':
+        tagset_source = main.settings_global['pos_taggers'][lang_code][pos_tagger]
+
+        tokens_tagged = [(token, wordless_conversion.to_universal_tagset(main, tagset_source, tag))
+                         for token, tag in tokens_tagged]
 
     return tokens_tagged
 
