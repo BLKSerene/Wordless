@@ -157,11 +157,15 @@ def wordless_widgets_table(main, table):
         if any([table.item(0, i) for i in range(table.columnCount())]):
             table.toggle_pct()
 
+            table.update_items_width()
+
     def show_cumulative_changed():
         table.show_cumulative = checkbox_show_cumulative.isChecked()
 
         if any([table.item(0, i) for i in range(table.columnCount())]):
             table.toggle_cumulative()
+
+            table.update_items_width()
 
     def show_breakdown_changed():
         table.show_breakdown = checkbox_show_breakdown.isChecked()

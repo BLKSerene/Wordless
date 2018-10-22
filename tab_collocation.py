@@ -28,7 +28,11 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
                              main.tr('Collocates'),
                              main.tr('Files Found'),
                          ],
-                         cols_pct = [
+                         headers_num = [
+                             main.tr('Rank'),
+                             main.tr('Files Found'),
+                         ],
+                         headers_pct = [
                              main.tr('Files Found')
                          ],
                          sorting_enabled = True)
@@ -719,7 +723,7 @@ def generate_collocates(main, files):
             if settings['filter_stop_words']:
                 tokens_filtered = wordless_text.wordless_filter_stop_words(main,
                                                                            [collocate[1] for collocate in distribution.keys()],
-                                                                           text.lang)
+                                                                           text.lang_code)
 
                 distribution = {collocate: vals
                                 for collocate, vals in distribution.items()
@@ -764,17 +768,15 @@ def generate_collocates(main, files):
     for i, file in enumerate(files):
         text = wordless_text.Wordless_Text(main, file)
 
-        tokens = text.tokens.copy()
-
         if settings['words']:
             if settings['treat_as_lowercase']:
-                tokens = [token.lower() for token in tokens]
+                text.tokens = [token.lower() for token in text.tokens]
 
             if settings['lemmatize']:
-                tokens = wordless_text.wordless_lemmatize(main, tokens, text.lang)
+                text.tokens = wordless_text.wordless_lemmatize(main, text.tokens, text.lang_code)
 
         if not settings['puncs']:
-            tokens = [token for token in tokens if token.isalnum()]
+            text.tokens = [token for token in text.tokens if token.isalnum()]
 
         if not settings['show_all']:
             if settings['multi_search_mode']:
@@ -788,7 +790,7 @@ def generate_collocates(main, files):
                                                     settings['match_whole_word'],
                                                     settings['use_regex'])
 
-        tokens_files.append(tokens)
+        tokens_files.append(text.tokens)
     tokens_files.append([token for tokens in tokens_files for token in tokens])
 
     # Frequency distribution
@@ -884,55 +886,57 @@ def generate_data(main, table):
                         if i < 0:
                             table.insert_col(table.columnCount() - 1,
                                              main.tr(f'[{file["name"]}] L{-i}'),
-                                             pct = True, cumulative = True, breakdown = True)
+                                             num = True, pct = True, cumulative = True, breakdown = True)
                         elif i > 0:
                             table.insert_col(table.columnCount() - 1,
                                              main.tr(f'[{file["name"]}] R{i}'),
-                                             pct = True, cumulative = True, breakdown = True)
+                                             num = True, pct = True, cumulative = True, breakdown = True)
 
                         table.cols_breakdown_position.add(table.columnCount() - 2)
 
                     if window_size_left:
                         table.insert_col(table.columnCount() - 1,
                                          main.tr(f'[{file["name"]}] Freq/L'),
-                                         pct = True, cumulative = True, breakdown = True)
+                                         num = True, pct = True, cumulative = True, breakdown = True)
                     if window_size_right:
                         table.insert_col(table.columnCount() - 1,
                                          main.tr(f'[{file["name"]}] Freq/R'),
-                                         pct = True, cumulative = True, breakdown = True)
+                                         num = True, pct = True, cumulative = True, breakdown = True)
                     if window_size_left:
                         table.insert_col(table.columnCount() - 1,
                                          main.tr(f'[{file["name"]}] Score/L'),
-                                         breakdown = True)
+                                         num = True, breakdown = True)
                     if window_size_right:
                         table.insert_col(table.columnCount() - 1,
                                          main.tr(f'[{file["name"]}] Score/R'),
-                                         breakdown = True)
+                                         num = True, breakdown = True)
 
                 for i in range(settings['window_left'], settings['window_right'] + 1):
                     if i < 0:
                         table.insert_col(table.columnCount() - 1,
                                          main.tr(f'Total L{-i}'),
-                                         pct = True, cumulative = True)
+                                         num = True, pct = True, cumulative = True)
                     elif i > 0:
                         table.insert_col(table.columnCount() - 1,
                                          main.tr(f'Total R{i}'),
-                                         pct = True, cumulative = True)
+                                         num = True, pct = True, cumulative = True)
 
                     table.cols_breakdown_position.add(table.columnCount() - 2)
 
                 if window_size_left:
                     table.insert_col(table.columnCount() - 1,
                                      main.tr(f'Total Freq/L'),
-                                     pct = True, cumulative = True)
+                                     num = True, pct = True, cumulative = True)
                 if window_size_right:
                     table.insert_col(table.columnCount() - 1,
                                      main.tr(f'Total Freq/R'),
-                                     pct = True, cumulative = True)
+                                     num = True, pct = True, cumulative = True)
                 if window_size_left:
-                    table.insert_col(table.columnCount() - 1, main.tr(f'Total Score/L'))
+                    table.insert_col(table.columnCount() - 1, main.tr(f'Total Score/L'),
+                                     num = True)
                 if window_size_right:
-                    table.insert_col(table.columnCount() - 1, main.tr(f'Total Score/R'))
+                    table.insert_col(table.columnCount() - 1, main.tr(f'Total Score/R'),
+                                     num = True)
 
                 table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}] Score/R')), Qt.DescendingOrder)
 
@@ -950,20 +954,6 @@ def generate_data(main, table):
                 col_total_score_right = table.find_col(main.tr('Total Score/R'))
                 col_files_found = table.find_col(main.tr('Files Found'))
 
-                freqs = numpy.array(list(freq_distribution.values()))
-                scores = numpy.array(list(score_distribution.values()))
-
-                freqs_total_files_positions = freqs.sum(axis = 0)
-                freqs_total_files = freqs.sum(axis = 2).sum(axis = 0)
-                freqs_total_positions = freqs.sum(axis = 1).sum(axis = 0)
-                freqs_total_left = sum(freqs_total_positions[:window_size_left])
-                freqs_total_right = sum(freqs_total_positions[window_size_right:])
-                freqs_total = freqs_total_left + freqs_total_right
-
-                scores_max_files_directions = scores.max(axis = 0)
-                scores_max_files_left = scores_max_files_directions[:, 0]
-                scores_max_files_right = scores_max_files_directions[:, 1]
-
                 len_files = len(files)
 
                 table.blockSignals(True)
@@ -974,7 +964,7 @@ def generate_data(main, table):
 
                 for i, ((keyword, collocate), scores) in enumerate(sorted(score_distribution.items(), key = wordless_misc.multi_sorting)):
                     # Rank
-                    table.setItem(i, 0, wordless_table.Wordless_Table_Item())
+                    table.set_item_num_int(i, 0, -1)
 
                     # Keywords
                     table.setItem(i, 1, wordless_table.Wordless_Table_Item(keyword))
@@ -984,15 +974,15 @@ def generate_data(main, table):
                     # Score
                     for j, (score_left, score_right) in enumerate(scores[:-1]):
                         if window_size_left:
-                            table.set_item_num(i, cols_score_left[j], score_left, scores_max_files_left[j])
+                            table.set_item_num_float(i, cols_score_left[j], score_left)
                         if window_size_right:
-                            table.set_item_num(i, cols_score_right[j], score_right, scores_max_files_right[j])
+                            table.set_item_num_float(i, cols_score_right[j], score_right)
 
                     # Total Score
                     if window_size_left:
-                        table.set_item_num(i, col_total_score_left, scores[-1][0], scores_max_files_left[-1])
+                        table.set_item_num_float(i, col_total_score_left, scores[-1][0])
                     if window_size_right:
-                        table.set_item_num(i, col_total_score_right, scores[-1][1], scores_max_files_right[-1])
+                        table.set_item_num_float(i, col_total_score_right, scores[-1][1])
 
                 for i in range(table.rowCount()):
                     freq_files_positions = freq_distribution[(table.item(i, col_keywords).text(), table.item(i, col_collocates).text())]
@@ -1002,41 +992,43 @@ def generate_data(main, table):
                     # Frequency
                     for j, freq_file_positions in enumerate(freq_files_positions):
                         for k, freq in enumerate(freq_file_positions):
-                            table.set_item_pct(i, cols_freq[j] + k, freq, freqs_total_files_positions[j][k])
+                            table.set_item_num_cumulative(i, cols_freq[j] + k, freq)
 
                         if window_size_left:
-                            table.set_item_pct(i, cols_freq_left[j],
-                                               sum(freq_positions[:window_size_left]),
-                                               sum(freqs_total_files_positions[j][:window_size_left]))
+                            table.set_item_num_cumulative(i, cols_freq_left[j],
+                                                          sum(freq_positions[:window_size_left]))
                         if window_size_right:
-                            table.set_item_pct(i, cols_freq_right[j],
-                                               sum(freq_positions[-window_size_right:]),
-                                               sum(freqs_total_files_positions[j][-window_size_right:]))
+                            table.set_item_num_cumulative(i, cols_freq_right[j],
+                                                          sum(freq_positions[-window_size_right:]))
 
                     # Total Frequency
                     for j, freq_position in enumerate(freq_positions):
-                        table.set_item_pct(i, cols_freq_total[j], freq_position, freqs_total_positions[j])
+                        table.set_item_num_cumulative(i, cols_freq_total[j], freq_position)
 
                     if window_size_left:
-                        table.set_item_pct(i, col_total_freq_left,
-                                           sum(freq_positions[:window_size_left]),
-                                           freqs_total_left)
+                        table.set_item_num_cumulative(i, col_total_freq_left,
+                                                      sum(freq_positions[:window_size_left]))
                     if window_size_right:
-                        table.set_item_pct(i, col_total_freq_right,
-                                           sum(freq_positions[-window_size_right:]),
-                                           freqs_total_left)
+                        table.set_item_num_cumulative(i, col_total_freq_right,
+                                                      sum(freq_positions[-window_size_right:]))
 
                     # Files Found
-                    table.set_item_pct(i, col_files_found,
-                                       len([freq_file for freq_file in freq_files if freq_file]), len_files)
+                    table.set_item_num_pct(i, col_files_found,
+                                           len([freq_file for freq_file in freq_files if freq_file]),
+                                           len_files)
 
                 table.blockSignals(False)
                 table.setSortingEnabled(True)
                 table.setUpdatesEnabled(True)
 
-                table.update_ranks()
+                table.toggle_pct()
                 table.toggle_cumulative()
                 table.toggle_breakdown()
+                table.update_ranks()
+
+                table.update_items_width()
+
+                table.item_changed()
             else:
                 wordless_dialog.wordless_message_empty_results_table(main)
         else:

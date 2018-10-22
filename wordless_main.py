@@ -470,3 +470,4 @@ if __name__ == '__main__':
     wordless_main.showMaximized()
 
     sys.exit(app.exec_())
+    

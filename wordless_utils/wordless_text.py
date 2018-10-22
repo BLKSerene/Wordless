@@ -421,8 +421,6 @@ class Wordless_Text(nltk.Text):
                         if re.search(lemma_matched, lemma):
                             tokens_matched.add(token)
 
-        print(tokens_matched)
-
         return tokens_matched
 
     def concordance_list(self, search_term, width, lines, punctuations):
