@@ -10,7 +10,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_widgets import wordless_box
+from wordless_widgets import wordless_box, wordless_dialog
 
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
@@ -20,7 +20,10 @@ class Wordless_Table_Item(QTableWidgetItem):
             try:
                 return self.val_raw
             except:
-                return item_text
+                try:
+                    return float(item_text)
+                except:
+                    return item_text
         except:
             cell_widget = self.tableWidget().cellWidget(self.row(), self.column())
 
@@ -49,8 +52,6 @@ class Wordless_Table(QTableWidget):
 
         self.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
-
-        self.verticalHeader().setDefaultSectionSize(22)
 
         self.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.verticalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
@@ -187,7 +188,7 @@ class Wordless_Table_Data(Wordless_Table):
         event.accept()
 
     def item_changed(self):
-        if self.item(0, 0):
+        if [i for i in range(self.columnCount()) if self.item(0, i)]:
             self.button_export_all.setEnabled(True)
         else:
             self.button_export_all.setEnabled(False)
@@ -195,13 +196,13 @@ class Wordless_Table_Data(Wordless_Table):
         self.selection_changed()
 
     def selection_changed(self):
-        if self.selectedIndexes() and self.item(0, 0):
+        if self.selectedIndexes() and [i for i in range(self.columnCount()) if self.item(0, i)]:
             self.button_export_selected.setEnabled(True)
         else:
             self.button_export_selected.setEnabled(False)
 
     def sorting_changed(self, logicalIndex, order):
-        if any([self.item(0, i) for i in range(self.columnCount())]):
+        if [i for i in range(self.columnCount()) if self.item(0, i)]:
             self.update_ranks()
 
             if self.show_cumulative:
@@ -290,6 +291,8 @@ class Wordless_Table_Data(Wordless_Table):
 
         self.blockSignals(False)
         self.setSortingEnabled(True)
+
+        self.item_changed()
 
         self.setUpdatesEnabled(False)
 
@@ -436,6 +439,33 @@ class Wordless_Table_Data(Wordless_Table):
         self.files = []
 
         self.item_changed()
+
+class Wordless_Table_Data_Search(Wordless_Table_Data):
+    def __init__(self, parent, headers, orientation = 'Horizontal', cols_stretch = [],
+                 cols_pct = [], cols_cumulative = [], cols_breakdown = [],
+                 sorting_enabled = False, drag_drop_enabled = False):
+        super().__init__(parent, headers, orientation, cols_stretch,
+                         cols_pct, cols_cumulative, cols_breakdown,
+                         sorting_enabled, drag_drop_enabled)
+
+        self.label_number_results = QLabel()
+        self.button_search_results = QPushButton(self.tr('Search in Results'), self)
+
+        self.item_changed = self.results_changed
+
+        self.results_changed()
+
+    def results_changed(self):
+        super().item_changed()
+
+        if [i for i in range(self.columnCount()) if self.item(0, i)]:
+            self.label_number_results.setText(self.tr(f'Number of Results: {self.rowCount()}'))
+
+            self.button_search_results.setEnabled(True)
+        else:
+            self.label_number_results.setText(self.tr('Number of Results: 0'))
+
+            self.button_search_results.setEnabled(False)
 
 class Wordless_Table_Multi_Sort(Wordless_Table_Data):
     def __init__(self, parent, sort_table, sort_cols):
