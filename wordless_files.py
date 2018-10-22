@@ -34,13 +34,14 @@ class Wordless_Files():
         if auto_detect:
             file['encoding_code'], file['encoding_lang'] = wordless_detection.detect_encoding(self.main, file)
             file['encoding_text'] = wordless_conversion.to_encoding_text(self.main, file['encoding_code'], file['encoding_lang'])
-
             file['lang_code'] = wordless_detection.detect_lang(self.main, file)
-            file['lang_text'] = wordless_conversion.to_lang_text(self.main, file['lang_code'])
-            file['word_delimiter'] = wordless_conversion.to_word_delimiter(file['lang_code'])
         else:
             file['encoding_code'] = 'utf_8'
+            file['encoding_text'] = wordless_conversion.to_encoding_text(self.main, file['encoding_code'])
             file['lang_code'] = 'eng'
+
+        file['lang_text'] = wordless_conversion.to_lang_text(self.main, file['lang_code'])
+        file['word_delimiter'] = wordless_conversion.to_word_delimiter(file['lang_code'])
 
         return file
 
@@ -361,7 +362,7 @@ def init(main):
     widget_files.layout_settings.addWidget(group_box_folder_settings, 0, 0, Qt.AlignTop)
     widget_files.layout_settings.addWidget(group_box_auto_detection_settings, 1, 0, Qt.AlignTop)
 
-    widget_files.layout_tab.setColumnStretch(0, 5)
+    widget_files.layout().setColumnStretch(0, 5)
 
     load_settings()
 
