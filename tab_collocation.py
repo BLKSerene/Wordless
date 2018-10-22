@@ -764,17 +764,15 @@ def generate_collocates(main, files):
     for i, file in enumerate(files):
         text = wordless_text.Wordless_Text(main, file)
 
-        tokens = text.tokens.copy()
-
         if settings['words']:
             if settings['treat_as_lowercase']:
-                tokens = [token.lower() for token in tokens]
+                text.tokens = [token.lower() for token in text.tokens]
 
             if settings['lemmatize']:
-                tokens = wordless_text.wordless_lemmatize(main, tokens, text.lang)
+                text.tokens = wordless_text.wordless_lemmatize(main, text.tokens, text.lang)
 
         if not settings['puncs']:
-            tokens = [token for token in tokens if token.isalnum()]
+            text.tokens = [token for token in text.tokens if token.isalnum()]
 
         if not settings['show_all']:
             if settings['multi_search_mode']:
@@ -788,7 +786,7 @@ def generate_collocates(main, files):
                                                     settings['match_whole_word'],
                                                     settings['use_regex'])
 
-        tokens_files.append(tokens)
+        tokens_files.append(text.tokens)
     tokens_files.append([token for tokens in tokens_files for token in tokens])
 
     # Frequency distribution

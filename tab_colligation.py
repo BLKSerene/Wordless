@@ -699,18 +699,24 @@ def generate_collocates(main, files):
     for i, file in enumerate(files):
         text = wordless_text.Wordless_Text(main, file)
 
-        tokens_tagged = wordless_text.wordless_pos_tag(main, text.text, text.lang)
+        tokens_tagged = wordless_text.wordless_pos_tag(main, text.text, text.lang_code)
 
         if settings['treat_as_lowercase']:
+            text.tokens = [token.lower() for token in text.tokens]
+
             tokens_tagged = [(token.lower(), tag) for token, tag in tokens_tagged]
 
         if settings['lemmatize']:
+            text.tokens = wordless_text.wordless_lemmatize(main, text.tokens, text.lang)
+
             tokens_lemmatized = wordless_text.wordless_lemmatize(main, numpy.array(tokens_tagged)[:, 0], text.lang)
 
             tokens_tagged = [(token, tag)
                              for token, tag in zip(tokens_lemmatized, numpy.array(tokens_tagged)[:, 1])]
 
         if not settings['puncs']:
+            text.tokens = [token for token in text.tokens if token.isalnum()]
+
             tokens_tagged = [(token, tag) for token, tag in tokens_tagged if token.isalnum()]
 
         if not settings['show_all']:
@@ -768,7 +774,7 @@ def generate_collocates(main, files):
                     for i, w2 in enumerate(ngram[1:]):
                         if w2 is not None:
                             if settings['search_type'] == main.tr('Token'):
-                                if settings['show_all'] or ngram[0][0] in search_terms_files:
+                                if settings['show_all'] or w2[0] in search_terms_files:
                                     w2 = w2[0]
                                 else:
                                     w2 = w2[1]
