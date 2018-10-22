@@ -129,6 +129,7 @@ class Wordless_Settings(QDialog):
     def init_settings_general(self):
         self.settings_general = QWidget(self)
 
+        # Default Encodings
         group_box_encoding = QGroupBox(self.tr('Default Encodings'), self)
 
         self.label_encoding_input = QLabel(self.tr('Input Encoding:'), self)
@@ -142,15 +143,26 @@ class Wordless_Settings(QDialog):
         group_box_encoding.layout().addWidget(self.label_encoding_output, 1, 0)
         group_box_encoding.layout().addWidget(self.combo_box_encoding_output, 1, 1)
 
-        self.label_precision = QLabel(self.tr('Precision:'), self)
-        self.spin_box_precision = QSpinBox(self)
+        # Precision
+        group_box_precision = QGroupBox(self.tr('Precision'), self)
 
-        self.spin_box_precision.setRange(0, 10)
+        self.label_precision_decimal = QLabel(self.tr('Decimal:'), self)
+        self.spin_box_precision_decimal = QSpinBox(self)
+        self.label_precision_pct = QLabel(self.tr('Percentage'), self)
+        self.spin_box_precision_pct = QSpinBox(self)
+
+        self.spin_box_precision_decimal.setRange(0, 10)
+        self.spin_box_precision_pct.setRange(0, 10)
+
+        group_box_precision.setLayout(QGridLayout())
+        group_box_precision.layout().addWidget(self.label_precision_decimal, 0, 0)
+        group_box_precision.layout().addWidget(self.spin_box_precision_decimal, 0, 1)
+        group_box_precision.layout().addWidget(self.label_precision_pct, 1, 0)
+        group_box_precision.layout().addWidget(self.spin_box_precision_pct, 1, 1)
 
         self.settings_general.setLayout(QGridLayout())
-        self.settings_general.layout().addWidget(group_box_encoding, 0, 0, 1, 2, Qt.AlignTop)
-        self.settings_general.layout().addWidget(self.label_precision, 1, 0, Qt.AlignTop)
-        self.settings_general.layout().addWidget(self.spin_box_precision, 1, 1, Qt.AlignTop)
+        self.settings_general.layout().addWidget(group_box_encoding, 0, 0, Qt.AlignTop)
+        self.settings_general.layout().addWidget(group_box_precision, 1, 0, Qt.AlignTop)
 
         return self.settings_general
 
@@ -627,7 +639,8 @@ class Wordless_Settings(QDialog):
         self.combo_box_encoding_input.setCurrentText(wordless_conversion.to_encoding_text(self.main, *settings_loaded['general']['encoding_input']))
         self.combo_box_encoding_output.setCurrentText(wordless_conversion.to_encoding_text(self.main, *settings_loaded['general']['encoding_output']))
 
-        self.spin_box_precision.setValue(settings_loaded['general']['precision'])
+        self.spin_box_precision_decimal.setValue(settings_loaded['general']['precision_decimal'])
+        self.spin_box_precision_pct.setValue(settings_loaded['general']['precision_pct'])
 
         # Sentence Tokenization
         for lang_code in settings_loaded['sentence_tokenization']['sentence_tokenizers']:
@@ -671,7 +684,8 @@ class Wordless_Settings(QDialog):
         settings['general']['encoding_input'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_encoding_input.currentText())
         settings['general']['encoding_output'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_encoding_output.currentText())
 
-        settings['general']['precision'] = self.spin_box_precision.value()
+        settings['general']['precision_decimal'] = self.spin_box_precision_decimal.value()
+        settings['general']['precision_pct'] = self.spin_box_precision_pct.value()
 
         # Sentence Tokenization
         for lang_code in settings['sentence_tokenization']['sentence_tokenizers']:
