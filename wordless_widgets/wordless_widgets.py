@@ -59,6 +59,8 @@ def wordless_widgets_token(main):
     checkbox_words.stateChanged.connect(words_changed)
     checkbox_treat_as_lowercase.stateChanged.connect(ignore_case_changed)
 
+    checkbox_words.setChecked(True)
+
     words_changed()
 
     return [checkbox_words, checkbox_lowercase, checkbox_uppercase, checkbox_title_case,

@@ -18,7 +18,7 @@ import numpy
 from wordless_widgets import *
 from wordless_utils import *
 
-class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data):
+class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
     def __init__(self, main):
         super().__init__(main,
                          headers = [
@@ -35,6 +35,19 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data):
                              main.tr('Total Freq')
                          ],
                          sorting_enabled = True)
+
+        dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
+                                                               tab = 'ngram',
+                                                               table = self,
+                                                               cols_search = self.tr('N-grams'))
+
+        self.button_search_results.clicked.connect(dialog_search.load)
+
+        self.button_generate_data = QPushButton(self.tr('Generate N-grams'), self.main)
+        self.button_generate_plot = QPushButton(self.tr('Generate Plot'), self.main)
+
+        self.button_generate_data.clicked.connect(lambda: generate_data(self.main, self))
+        self.button_generate_plot.clicked.connect(lambda: generate_plot(self.main))
 
     @ wordless_misc.log_timing('Filtering')
     def update_filters(self):
@@ -94,10 +107,11 @@ def init(main):
         checkbox_nums.setChecked(settings_loaded['nums'])
         checkbox_puncs.setChecked(settings_loaded['puncs'])
 
-        line_edit_search_term.setText(settings_loaded['search_term'])
-        list_search_terms.clear()
-        for search_term in settings_loaded['search_terms']:
-            list_search_terms.add_item(search_term)
+        if not defaults:
+            line_edit_search_term.setText(settings_loaded['search_term'])
+
+            for search_term in settings_loaded['search_terms']:
+                list_search_terms.add_item(search_term)
 
         checkbox_keyword_position_no_limit.setChecked(settings_loaded['keyword_position_no_limit'])
         spin_box_keyword_position_min.setValue(settings_loaded['keyword_position_min'])
@@ -196,7 +210,7 @@ def init(main):
         settings['ngram_size_max'] = spin_box_ngram_size_max.value()
         settings['allow_skipped_tokens'] = spin_box_allow_skipped_tokens.value()
 
-        if (main.settings_custom['ngram']['keyword_position_no_limit'] and
+        if (settings['keyword_position_no_limit'] and
             spin_box_keyword_position_max.value() == spin_box_keyword_position_max.maximum()):
             spin_box_keyword_position_min.setMaximum(settings['ngram_size_max'])
             spin_box_keyword_position_max.setMaximum(settings['ngram_size_max'])
@@ -240,18 +254,14 @@ def init(main):
     
     table_ngram = Wordless_Table_Ngram(main)
 
-    table_ngram.button_generate_data = QPushButton(main.tr('Generate N-grams'), main)
-    table_ngram.button_generate_plot = QPushButton(main.tr('Generate Plot'), main)
-
-    table_ngram.button_generate_data.clicked.connect(lambda: generate_data(main, table_ngram))
-    table_ngram.button_generate_plot.clicked.connect(lambda: generate_plot(main))
-
-    tab_ngram.layout_table.addWidget(table_ngram, 0, 0, 1, 5)
-    tab_ngram.layout_table.addWidget(table_ngram.button_generate_data, 1, 0)
-    tab_ngram.layout_table.addWidget(table_ngram.button_generate_plot, 1, 1)
-    tab_ngram.layout_table.addWidget(table_ngram.button_export_selected, 1, 2)
-    tab_ngram.layout_table.addWidget(table_ngram.button_export_all, 1, 3)
-    tab_ngram.layout_table.addWidget(table_ngram.button_clear, 1, 4)
+    tab_ngram.layout_table.addWidget(table_ngram.label_number_results, 0, 0)
+    tab_ngram.layout_table.addWidget(table_ngram.button_search_results, 0, 4)
+    tab_ngram.layout_table.addWidget(table_ngram, 1, 0, 1, 5)
+    tab_ngram.layout_table.addWidget(table_ngram.button_generate_data, 2, 0)
+    tab_ngram.layout_table.addWidget(table_ngram.button_generate_plot, 2, 1)
+    tab_ngram.layout_table.addWidget(table_ngram.button_export_selected, 2, 2)
+    tab_ngram.layout_table.addWidget(table_ngram.button_export_all, 2, 3)
+    tab_ngram.layout_table.addWidget(table_ngram.button_clear, 2, 4)
 
     # Token Settings
     group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
@@ -266,8 +276,6 @@ def init(main):
 
      checkbox_nums,
      checkbox_puncs) = wordless_widgets.wordless_widgets_token(main)
-
-    separator_token_settings = wordless_layout.Wordless_Separator(main)
 
     checkbox_words.stateChanged.connect(token_settings_changed)
     checkbox_lowercase.stateChanged.connect(token_settings_changed)
@@ -289,7 +297,7 @@ def init(main):
     group_box_token_settings.layout().addWidget(checkbox_lemmatize, 3, 0, 1, 2)
     group_box_token_settings.layout().addWidget(checkbox_filter_stop_words, 4, 0, 1, 2)
 
-    group_box_token_settings.layout().addWidget(separator_token_settings, 5, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 5, 0, 1, 2)
 
     group_box_token_settings.layout().addWidget(checkbox_nums, 6, 0)
     group_box_token_settings.layout().addWidget(checkbox_puncs, 6, 1)
@@ -409,8 +417,6 @@ def init(main):
     checkbox_use_pct = QCheckBox(main.tr('Use Percentage Data'), main)
     checkbox_use_cumulative = QCheckBox(main.tr('Use Cumulative Data'), main)
 
-    separator_plot_settings = wordless_layout.Wordless_Separator(main)
-
     label_rank = QLabel(main.tr('Rank:'), main)
     (checkbox_rank_no_limit,
      label_rank_min,
@@ -429,7 +435,7 @@ def init(main):
     group_box_plot_settings.layout().addWidget(checkbox_use_pct, 0, 0, 1, 4)
     group_box_plot_settings.layout().addWidget(checkbox_use_cumulative, 1, 0, 1, 4)
 
-    group_box_plot_settings.layout().addWidget(separator_plot_settings, 2, 0, 1, 4)
+    group_box_plot_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 2, 0, 1, 4)
 
     group_box_plot_settings.layout().addWidget(label_rank, 3, 0, 1, 3)
     group_box_plot_settings.layout().addWidget(checkbox_rank_no_limit, 3, 3)
@@ -454,7 +460,6 @@ def init(main):
 
     label_apply_to = QLabel(main.tr('Apply to:'), main)
     combo_box_apply_to = wordless_box.Wordless_Combo_Box_Apply_To(main, table_ngram)
-    separator_filter_settings = wordless_layout.Wordless_Separator(main)
 
     label_len = QLabel(main.tr('N-gram Length:'), main)
     (checkbox_len_no_limit,
@@ -504,7 +509,8 @@ def init(main):
 
     group_box_filter_settings.layout().addWidget(label_apply_to, 2, 0)
     group_box_filter_settings.layout().addWidget(combo_box_apply_to, 2, 1, 1, 3)
-    group_box_filter_settings.layout().addWidget(separator_filter_settings, 3, 0, 1, 4)
+    
+    group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 3, 0, 1, 4)
 
     group_box_filter_settings.layout().addWidget(label_len, 4, 0, 1, 3)
     group_box_filter_settings.layout().addWidget(checkbox_len_no_limit, 4, 3)
@@ -542,23 +548,22 @@ def generate_ngrams(main, files):
         ngrams = []
 
         text = wordless_text.Wordless_Text(main, file)
-        tokens = text.tokens.copy()
 
         if settings['words']:
             if settings['treat_as_lowercase']:
-                tokens = [token.lower() for token in tokens]
+                text.tokens = [token.lower() for token in text.tokens]
 
             if settings['lemmatize']:
-                tokens = wordless_text.wordless_lemmatize(main, tokens, text.lang)
+                text.tokens = wordless_text.wordless_lemmatize(main, text.tokens, text.lang)
 
         if not settings['puncs']:
-            tokens = [token for token in tokens if [char for char in token if char.isalnum()]]
+            text.tokens = [token for token in text.tokens if [char for char in token if char.isalnum()]]
 
         if settings['allow_skipped_tokens'] == 0:
-            ngrams = list(nltk.everygrams(tokens, settings['ngram_size_min'], settings['ngram_size_max']))
+            ngrams = list(nltk.everygrams(text.tokens, settings['ngram_size_min'], settings['ngram_size_max']))
         else:
             for i in range(settings['ngram_size_min'], settings['ngram_size_max'] + 1):
-                ngrams.extend(list(nltk.skipgrams(tokens, i, settings['allow_skipped_tokens'])))
+                ngrams.extend(list(nltk.skipgrams(text.tokens, i, settings['allow_skipped_tokens'])))
 
         freq_distribution = nltk.FreqDist(ngrams)
 
@@ -595,10 +600,7 @@ def generate_ngrams(main, files):
             if settings['multi_search_mode']:
                 search_terms = settings['search_terms']
             else:
-                if settings['search_term']:
-                    search_terms = [settings['search_term']]
-                else:
-                    search_terms = []
+                search_terms = [settings['search_term']]
 
             search_terms = text.match_tokens(search_terms,
                                              settings['ignore_case'],
