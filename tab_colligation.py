@@ -1,11 +1,12 @@
 #
-# Wordless: Collocation
+# Wordless: Colligation
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
 # License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
+import collections
 import copy
 import re
 
@@ -19,7 +20,7 @@ import numpy
 from wordless_widgets import *
 from wordless_utils import *
 
-class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
+class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
     def __init__(self, main):
         super().__init__(main,
                          headers = [
@@ -37,8 +38,11 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
                          ],
                          sorting_enabled = True)
 
+        self.button_generate_data = QPushButton(self.tr('Generate Collocates'), self.main)
+        self.button_generate_plot = QPushButton(self.tr('Generate Plot'), self.main)
+
         dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
-                                                               tab = 'collocation',
+                                                               tab = 'colligation',
                                                                table = self,
                                                                cols_search = [
                                                                    self.tr('Keywords'),
@@ -47,14 +51,11 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
 
         self.button_search_results.clicked.connect(dialog_search.load)
 
-        self.button_generate_data = QPushButton(main.tr('Generate Collocates'), main)
-        self.button_generate_plot = QPushButton(main.tr('Generate Plot'), main)
-
         self.button_generate_data.clicked.connect(lambda: generate_data(self.main, self))
         self.button_generate_plot.clicked.connect(lambda: generate_plot(self.main))
 
     def toggle_breakdown(self):
-        settings = self.main.settings_custom['collocation']
+        settings = self.main.settings_custom['colligation']
 
         self.setUpdatesEnabled(False)
 
@@ -84,7 +85,7 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
 
     @ wordless_misc.log_timing('Filtering')
     def update_filters(self):
-        if any([self.item(0, i) for i in range(self.columnCount())]):
+        if [i for i in range(self.columnCount()) if self.item(0, i)]:
             settings = self.main.settings_custom['collocation']
 
             if settings['apply_to'] == self.tr('Total'):
@@ -98,7 +99,6 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
                 col_score_left = self.find_col(self.tr(f'[{settings["score_left_apply_to"]}] Score/L'))
                 col_score_right = self.find_col(self.tr(f'[{settings["score_right_apply_to"]}] Score/R'))
 
-            col_collocates = self.find_col('Collocates')
             col_files_found = self.find_col('Files Found')
 
             freq_left_min = settings['freq_left_min']
@@ -109,8 +109,6 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
             score_left_max = settings['score_left_max'] if not settings['score_left_no_limit'] else float('inf')
             score_right_min = settings['score_right_min']
             score_right_max = settings['score_right_max'] if not settings['score_right_no_limit'] else float('inf')
-            len_min = settings['len_min']
-            len_max = settings['len_max'] if not settings['len_no_limit'] else float('inf')
             files_min = settings['files_min']
             files_max = settings['files_max'] if not settings['files_no_limit'] else float('inf')
 
@@ -135,11 +133,6 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
                 else:
                     self.row_filters[i][self.tr('Score/R')] = False
 
-                if len_min <= len(self.item(i, col_collocates).text().replace(' ', '')) <= len_max:
-                    self.row_filters[i][self.tr('Collocates')] = True
-                else:
-                    self.row_filters[i][self.tr('Collocates')] = False
-
                 if files_min <= self.item(i, col_files_found).val_raw <= files_max:
                     self.row_filters[i][self.tr('Files Found')] = True
                 else:
@@ -150,19 +143,13 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
 def init(main):
     def load_settings(defaults = False):
         if defaults:
-            settings_loaded = copy.deepcopy(main.settings_default['collocation'])
+            settings_loaded = copy.deepcopy(main.settings_default['colligation'])
         else:
-            settings_loaded = copy.deepcopy(main.settings_custom['collocation'])
+            settings_loaded = copy.deepcopy(main.settings_custom['colligation'])
 
-        checkbox_words.setChecked(settings_loaded['words'])
-        checkbox_lowercase.setChecked(settings_loaded['lowercase'])
-        checkbox_uppercase.setChecked(settings_loaded['uppercase'])
-        checkbox_title_case.setChecked(settings_loaded['title_case'])
         checkbox_treat_as_lowercase.setChecked(settings_loaded['treat_as_lowercase'])
         checkbox_lemmatize.setChecked(settings_loaded['lemmatize'])
-        checkbox_filter_stop_words.setChecked(settings_loaded['filter_stop_words'])
 
-        checkbox_nums.setChecked(settings_loaded['nums'])
         checkbox_puncs.setChecked(settings_loaded['puncs'])
 
         if not defaults:
@@ -170,6 +157,8 @@ def init(main):
 
             for search_term in settings_loaded['search_terms']:
                 list_search_terms.add_item(search_term)
+
+        combo_box_search_type.setCurrentText(settings_loaded['search_type'])
 
         checkbox_ignore_case.setChecked(settings_loaded['ignore_case'])
         checkbox_match_inflected_forms.setChecked(settings_loaded['match_inflected_forms'])
@@ -222,10 +211,6 @@ def init(main):
 
         combo_box_apply_to.setCurrentText(settings_loaded['apply_to'])
 
-        checkbox_len_no_limit.setChecked(settings_loaded['len_no_limit'])
-        spin_box_len_min.setValue(settings_loaded['len_min'])
-        spin_box_len_max.setValue(settings_loaded['len_max'])
-
         checkbox_files_no_limit.setChecked(settings_loaded['files_no_limit'])
         spin_box_files_min.setValue(settings_loaded['files_min'])
         spin_box_files_max.setValue(settings_loaded['files_max'])
@@ -238,20 +223,15 @@ def init(main):
         filter_settings_changed()
 
     def token_settings_changed():
-        settings['words'] = checkbox_words.isChecked()
-        settings['lowercase'] = checkbox_lowercase.isChecked()
-        settings['uppercase'] = checkbox_uppercase.isChecked()
-        settings['title_case'] = checkbox_title_case.isChecked()
         settings['treat_as_lowercase'] = checkbox_treat_as_lowercase.isChecked()
         settings['lemmatize'] = checkbox_lemmatize.isChecked()
-        settings['filter_stop_words'] = checkbox_filter_stop_words.isChecked()
 
-        settings['nums'] = checkbox_nums.isChecked()
         settings['puncs'] = checkbox_puncs.isChecked()
 
     def search_settings_changed():
         settings['search_term'] = line_edit_search_term.text()
         settings['search_terms'] = list_search_terms.get_items()
+        settings['search_type'] = combo_box_search_type.currentText()
 
         settings['ignore_case'] = checkbox_ignore_case.isChecked()
         settings['match_inflected_forms'] = checkbox_match_inflected_forms.isChecked()
@@ -261,9 +241,14 @@ def init(main):
         settings['show_all'] = checkbox_show_all.isChecked()
 
         if settings['show_all']:
-            table_collocation.button_generate_data.setText(main.tr('Generate Collocates'))
+            table_colligation.button_generate_data.setText(main.tr('Generate Collocates'))
         else:
-            table_collocation.button_generate_data.setText(main.tr('Search Collocates'))
+            table_colligation.button_generate_data.setText(main.tr('Search Collocates'))
+
+            if settings['search_type'] == main.tr('Token'):
+                checkbox_match_inflected_forms.setEnabled(True)
+            else:
+                checkbox_match_inflected_forms.setEnabled(False)
 
     def generation_settings_changed():
         settings['window_sync'] = checkbox_window_sync.isChecked()
@@ -338,28 +323,24 @@ def init(main):
 
         settings['apply_to'] = combo_box_apply_to.currentText()
 
-        settings['len_no_limit'] = checkbox_len_no_limit.isChecked()
-        settings['len_min'] = spin_box_len_min.value()
-        settings['len_max'] = spin_box_len_max.value()
-
         settings['files_no_limit'] = checkbox_files_no_limit.isChecked()
         settings['files_min'] = spin_box_files_min.value()
         settings['files_max'] = spin_box_files_max.value()
 
-    settings = main.settings_custom['collocation']
+    settings = main.settings_custom['colligation']
 
-    tab_collocation = wordless_layout.Wordless_Tab(main, load_settings)
+    tab_colligation = wordless_layout.Wordless_Tab(main, load_settings)
     
-    table_collocation = Wordless_Table_Collocation(main)
+    table_colligation = Wordless_Table_Colligation(main)
 
-    tab_collocation.layout_table.addWidget(table_collocation.label_number_results, 0, 0)
-    tab_collocation.layout_table.addWidget(table_collocation.button_search_results, 0, 4)
-    tab_collocation.layout_table.addWidget(table_collocation, 1, 0, 1, 5)
-    tab_collocation.layout_table.addWidget(table_collocation.button_generate_data, 2, 0)
-    tab_collocation.layout_table.addWidget(table_collocation.button_generate_plot, 2, 1)
-    tab_collocation.layout_table.addWidget(table_collocation.button_export_selected, 2, 2)
-    tab_collocation.layout_table.addWidget(table_collocation.button_export_all, 2, 3)
-    tab_collocation.layout_table.addWidget(table_collocation.button_clear, 2, 4)
+    tab_colligation.layout_table.addWidget(table_colligation.label_number_results, 0, 0)
+    tab_colligation.layout_table.addWidget(table_colligation.button_search_results, 0, 4)
+    tab_colligation.layout_table.addWidget(table_colligation, 1, 0, 1, 5)
+    tab_colligation.layout_table.addWidget(table_colligation.button_generate_data, 2, 0)
+    tab_colligation.layout_table.addWidget(table_colligation.button_generate_plot, 2, 1)
+    tab_colligation.layout_table.addWidget(table_colligation.button_export_selected, 2, 2)
+    tab_colligation.layout_table.addWidget(table_colligation.button_export_all, 2, 3)
+    tab_colligation.layout_table.addWidget(table_colligation.button_clear, 2, 4)
 
     # Token Settings
     group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
@@ -375,30 +356,26 @@ def init(main):
      checkbox_nums,
      checkbox_puncs) = wordless_widgets.wordless_widgets_token(main)
 
-    checkbox_words.stateChanged.connect(token_settings_changed)
-    checkbox_lowercase.stateChanged.connect(token_settings_changed)
-    checkbox_uppercase.stateChanged.connect(token_settings_changed)
-    checkbox_title_case.stateChanged.connect(token_settings_changed)
+    checkbox_words.setHidden(True)
+    checkbox_lowercase.setHidden(True)
+    checkbox_uppercase.setHidden(True)
+    checkbox_title_case.setHidden(True)
+    checkbox_filter_stop_words.setHidden(True)
+
+    checkbox_nums.setHidden(True)
+
     checkbox_treat_as_lowercase.stateChanged.connect(token_settings_changed)
     checkbox_lemmatize.stateChanged.connect(token_settings_changed)
-    checkbox_filter_stop_words.stateChanged.connect(token_settings_changed)
 
-    checkbox_nums.stateChanged.connect(token_settings_changed)
     checkbox_puncs.stateChanged.connect(token_settings_changed)
 
     group_box_token_settings.setLayout(QGridLayout())
-    group_box_token_settings.layout().addWidget(checkbox_words, 0, 0)
-    group_box_token_settings.layout().addWidget(checkbox_lowercase, 0, 1)
-    group_box_token_settings.layout().addWidget(checkbox_uppercase, 1, 0)
-    group_box_token_settings.layout().addWidget(checkbox_title_case, 1, 1)
-    group_box_token_settings.layout().addWidget(checkbox_treat_as_lowercase, 2, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_lemmatize, 3, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_filter_stop_words, 4, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_treat_as_lowercase, 0, 0)
+    group_box_token_settings.layout().addWidget(checkbox_lemmatize, 1, 0)
 
-    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 5, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 2, 0)
 
-    group_box_token_settings.layout().addWidget(checkbox_nums, 6, 0)
-    group_box_token_settings.layout().addWidget(checkbox_puncs, 6, 1)
+    group_box_token_settings.layout().addWidget(checkbox_puncs, 3, 0)
 
     # Search Settings
     group_box_search_settings = QGroupBox(main.tr('Search Settings'), main)
@@ -413,9 +390,18 @@ def init(main):
      checkbox_use_regex,
      checkbox_multi_search_mode) = wordless_widgets.wordless_widgets_search(main)
 
+    label_search_type = QLabel(main.tr('Search Type:'), main)
+    combo_box_search_type = wordless_box.Wordless_Combo_Box(main)
+
+    combo_box_search_type.addItems([
+        main.tr('Token'),
+        main.tr('Part of Speech')
+    ])
+
     line_edit_search_term.textChanged.connect(search_settings_changed)
-    line_edit_search_term.returnPressed.connect(table_collocation.button_generate_data.click)
+    line_edit_search_term.returnPressed.connect(table_colligation.button_generate_data.click)
     list_search_terms.itemChanged.connect(search_settings_changed)
+    combo_box_search_type.currentTextChanged.connect(search_settings_changed)
 
     checkbox_ignore_case.stateChanged.connect(search_settings_changed)
     checkbox_match_inflected_forms.stateChanged.connect(search_settings_changed)
@@ -438,15 +424,17 @@ def init(main):
     layout_search_terms.addWidget(list_search_terms.button_export, 5, 1)
 
     group_box_search_settings.setLayout(QGridLayout())
-    group_box_search_settings.layout().addLayout(layout_show_all, 0, 0)
-    group_box_search_settings.layout().addWidget(line_edit_search_term, 1, 0)
-    group_box_search_settings.layout().addLayout(layout_search_terms, 2, 0)
+    group_box_search_settings.layout().addLayout(layout_show_all, 0, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(line_edit_search_term, 1, 0, 1, 2)
+    group_box_search_settings.layout().addLayout(layout_search_terms, 2, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(label_search_type, 3, 0)
+    group_box_search_settings.layout().addWidget(combo_box_search_type, 3, 1)
 
-    group_box_search_settings.layout().addWidget(checkbox_ignore_case, 3, 0)
-    group_box_search_settings.layout().addWidget(checkbox_match_inflected_forms, 4, 0)
-    group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 5, 0)
-    group_box_search_settings.layout().addWidget(checkbox_use_regex, 6, 0)
-    group_box_search_settings.layout().addWidget(checkbox_multi_search_mode, 7, 0)
+    group_box_search_settings.layout().addWidget(checkbox_ignore_case, 4, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_match_inflected_forms, 5, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 6, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_use_regex, 7, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_multi_search_mode, 8, 0, 1, 2)
 
     # Generation Settings
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'))
@@ -483,7 +471,7 @@ def init(main):
 
     (checkbox_show_pct,
      checkbox_show_cumulative,
-     checkbox_show_breakdown_file) = wordless_widgets.wordless_widgets_table(main, table_collocation)
+     checkbox_show_breakdown_file) = wordless_widgets.wordless_widgets_table(main, table_colligation)
 
     checkbox_show_breakdown_file.setText('Show Breakdown by File')
     checkbox_show_breakdown_position = QCheckBox('Show Breakdown by Span Position', main)
@@ -491,9 +479,9 @@ def init(main):
     checkbox_show_pct.stateChanged.connect(table_settings_changed)
     checkbox_show_cumulative.stateChanged.connect(table_settings_changed)
     checkbox_show_breakdown_position.stateChanged.connect(table_settings_changed)
-    checkbox_show_breakdown_position.stateChanged.connect(table_collocation.toggle_breakdown)
+    checkbox_show_breakdown_position.stateChanged.connect(table_colligation.toggle_breakdown)
     checkbox_show_breakdown_file.stateChanged.connect(table_settings_changed)
-    checkbox_show_breakdown_file.stateChanged.connect(table_collocation.toggle_breakdown)
+    checkbox_show_breakdown_file.stateChanged.connect(table_colligation.toggle_breakdown)
 
     group_box_table_settings.setLayout(QGridLayout())
     group_box_table_settings.layout().addWidget(checkbox_show_pct, 0, 0)
@@ -555,7 +543,7 @@ def init(main):
      spin_box_freq_left_max) = wordless_widgets.wordless_widgets_filter(main,
                                                                         filter_min = 0,
                                                                         filter_max = 10000,
-                                                                        table = table_collocation,
+                                                                        table = table_colligation,
                                                                         col = main.tr('Freq/L'))
 
     label_freq_right = QLabel(main.tr('Frequency (Right):'), main)
@@ -566,7 +554,7 @@ def init(main):
      spin_box_freq_right_max) = wordless_widgets.wordless_widgets_filter(main,
                                                                          filter_min = 0,
                                                                          filter_max = 10000,
-                                                                         table = table_collocation,
+                                                                         table = table_colligation,
                                                                          col = main.tr('Freq/R'))
 
     label_score_left = QLabel(main.tr('Score (Left):'), main)
@@ -577,7 +565,7 @@ def init(main):
      spin_box_score_left_max) = wordless_widgets.wordless_widgets_filter(main,
                                                                          filter_min = 0,
                                                                          filter_max = 10000,
-                                                                         table = table_collocation,
+                                                                         table = table_colligation,
                                                                          col = main.tr('Score/L'))
 
     label_score_right = QLabel(main.tr('Score (Right):'), main)
@@ -588,20 +576,11 @@ def init(main):
      spin_box_score_right_max) = wordless_widgets.wordless_widgets_filter(main,
                                                                           filter_min = 0,
                                                                           filter_max = 10000,
-                                                                          table = table_collocation,
+                                                                          table = table_colligation,
                                                                           col = main.tr('Score/R'))
 
     label_apply_to = QLabel(main.tr('Apply to:'), main)
-    combo_box_apply_to = wordless_box.Wordless_Combo_Box_Apply_To(main, table_collocation)
-
-    label_len = QLabel(main.tr('Collocate Length:'), main)
-    (checkbox_len_no_limit,
-     label_len_min,
-     spin_box_len_min,
-     label_len_max,
-     spin_box_len_max) = wordless_widgets.wordless_widgets_filter(main,
-                                                                  table = table_collocation,
-                                                                  col = main.tr('Collocates'))
+    combo_box_apply_to = wordless_box.Wordless_Combo_Box_Apply_To(main, table_colligation)
 
     label_files = QLabel(main.tr('Files Found:'), main)
     (checkbox_files_no_limit,
@@ -611,7 +590,7 @@ def init(main):
      spin_box_files_max) = wordless_widgets.wordless_widgets_filter(main,
                                                                     filter_min = 1,
                                                                     filter_max = 1000,
-                                                                    table = table_collocation,
+                                                                    table = table_colligation,
                                                                     col = main.tr('Files Found'))
 
     button_filter_results = QPushButton(main.tr('Filter Results'), main)
@@ -632,15 +611,11 @@ def init(main):
 
     combo_box_apply_to.currentTextChanged.connect(filter_settings_changed)
 
-    checkbox_len_no_limit.stateChanged.connect(filter_settings_changed)
-    spin_box_len_min.valueChanged.connect(filter_settings_changed)
-    spin_box_len_max.valueChanged.connect(filter_settings_changed)
-
     checkbox_files_no_limit.stateChanged.connect(filter_settings_changed)
     spin_box_files_min.valueChanged.connect(filter_settings_changed)
     spin_box_files_max.valueChanged.connect(filter_settings_changed)
 
-    button_filter_results.clicked.connect(lambda: table_collocation.update_filters())
+    button_filter_results.clicked.connect(lambda: table_colligation.update_filters())
 
     group_box_filter_settings.setLayout(QGridLayout())
     group_box_filter_settings.layout().addWidget(label_freq_left, 0, 0, 1, 3)
@@ -676,68 +651,28 @@ def init(main):
 
     group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 9, 0, 1, 4)
 
-    group_box_filter_settings.layout().addWidget(label_len, 10, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_len_no_limit, 10, 3)
-    group_box_filter_settings.layout().addWidget(label_len_min, 11, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_len_min, 11, 1)
-    group_box_filter_settings.layout().addWidget(label_len_max, 11, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_len_max, 11, 3)
+    group_box_filter_settings.layout().addWidget(label_files, 10, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_files_no_limit, 10, 3)
+    group_box_filter_settings.layout().addWidget(label_files_min, 11, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_files_min, 11, 1)
+    group_box_filter_settings.layout().addWidget(label_files_max, 11, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_files_max, 11, 3)
 
-    group_box_filter_settings.layout().addWidget(label_files, 12, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_files_no_limit, 12, 3)
-    group_box_filter_settings.layout().addWidget(label_files_min, 13, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_files_min, 13, 1)
-    group_box_filter_settings.layout().addWidget(label_files_max, 13, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_files_max, 13, 3)
+    group_box_filter_settings.layout().addWidget(button_filter_results, 12, 0, 1, 4)
 
-    group_box_filter_settings.layout().addWidget(button_filter_results, 14, 0, 1, 4)
-
-    tab_collocation.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
-    tab_collocation.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
-    tab_collocation.layout_settings.addWidget(group_box_generation_settings, 2, 0, Qt.AlignTop)
-    tab_collocation.layout_settings.addWidget(group_box_table_settings, 3, 0, Qt.AlignTop)
-    tab_collocation.layout_settings.addWidget(group_box_plot_settings, 4, 0, Qt.AlignTop)
-    tab_collocation.layout_settings.addWidget(group_box_filter_settings, 5, 0, Qt.AlignTop)
+    tab_colligation.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
+    tab_colligation.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
+    tab_colligation.layout_settings.addWidget(group_box_generation_settings, 2, 0, Qt.AlignTop)
+    tab_colligation.layout_settings.addWidget(group_box_table_settings, 3, 0, Qt.AlignTop)
+    tab_colligation.layout_settings.addWidget(group_box_plot_settings, 4, 0, Qt.AlignTop)
+    tab_colligation.layout_settings.addWidget(group_box_filter_settings, 5, 0, Qt.AlignTop)
 
     load_settings()
 
-    return tab_collocation
+    return tab_colligation
 
 def generate_collocates(main, files):
     def filter_distribution(distribution):
-        if settings['words']:
-            if not settings['treat_as_lowercase']:
-                if not settings['lowercase']:
-                    distribution = {collocate: vals
-                                    for collocate, vals in distribution.items()
-                                    if not collocate[1].islower()}
-                if not settings['uppercase']:
-                    distribution = {collocate: vals
-                                    for collocate, vals in distribution.items()
-                                    if not collocate[1].isupper()}
-                if not settings['title_case']:
-                    distribution = {collocate: vals
-                                    for collocate, vals in distribution.items()
-                                    if not collocate[1].istitle()}
-
-            if settings['filter_stop_words']:
-                tokens_filtered = wordless_text.wordless_filter_stop_words(main,
-                                                                           [collocate[1] for collocate in distribution.keys()],
-                                                                           text.lang_code)
-
-                distribution = {collocate: vals
-                                for collocate, vals in distribution.items()
-                                if collocate[1] in tokens_filtered}
-        else:
-            distribution = {collocate: vals
-                            for collocate, vals in distribution.items()
-                            if all([not char.isalpha() for char in collocate[1]])}
-        
-        if not settings['nums']:
-            distribution = {collocate: vals
-                            for collocate, vals in distribution.items()
-                            if not collocate[1].isnumeric()}
-
         if not settings['show_all']:
             distribution = {collocate: vals
                             for collocate, vals in distribution.items()
@@ -748,9 +683,9 @@ def generate_collocates(main, files):
     freq_distributions = []
     score_distributions = []
     search_terms_files = set()
-    tokens_files = []
+    tokens_tagged_files = []
 
-    settings = main.settings_custom['collocation']
+    settings = main.settings_custom['colligation']
 
     if settings['window_left'] < 0 and settings['window_right'] > 0:
         window_size_left = abs(settings['window_left'])
@@ -768,15 +703,25 @@ def generate_collocates(main, files):
     for i, file in enumerate(files):
         text = wordless_text.Wordless_Text(main, file)
 
-        if settings['words']:
-            if settings['treat_as_lowercase']:
-                text.tokens = [token.lower() for token in text.tokens]
+        tokens_tagged = wordless_text.wordless_pos_tag(main, text.text, text.lang_code)
 
-            if settings['lemmatize']:
-                text.tokens = wordless_text.wordless_lemmatize(main, text.tokens, text.lang_code)
+        if settings['treat_as_lowercase']:
+            text.tokens = [token.lower() for token in text.tokens]
+
+            tokens_tagged = [(token.lower(), tag) for token, tag in tokens_tagged]
+
+        if settings['lemmatize']:
+            text.tokens = wordless_text.wordless_lemmatize(main, text.tokens, text.lang_code)
+
+            tokens_lemmatized = wordless_text.wordless_lemmatize(main, numpy.array(tokens_tagged)[:, 0], text.lang_code)
+
+            tokens_tagged = [(token, tag)
+                             for token, tag in zip(tokens_lemmatized, numpy.array(tokens_tagged)[:, 1])]
 
         if not settings['puncs']:
             text.tokens = [token for token in text.tokens if token.isalnum()]
+
+            tokens_tagged = [(token, tag) for token, tag in tokens_tagged if token.isalnum()]
 
         if not settings['show_all']:
             if settings['multi_search_mode']:
@@ -784,37 +729,62 @@ def generate_collocates(main, files):
             else:
                 search_terms = [settings['search_term']]
 
-            search_terms_files |= text.match_tokens(search_terms,
-                                                    settings['ignore_case'],
-                                                    settings['match_inflected_forms'],
-                                                    settings['match_whole_word'],
-                                                    settings['use_regex'])
+            if settings['search_type'] == main.tr('Token'):
+                search_terms_files |= text.match_tokens(search_terms,
+                                                        settings['ignore_case'],
+                                                        settings['match_inflected_forms'],
+                                                        settings['match_whole_word'],
+                                                        settings['use_regex'])
+            else:
+                text.tokens = numpy.array(tokens_tagged)[:, 1]
 
-        tokens_files.append(text.tokens)
-    tokens_files.append([token for tokens in tokens_files for token in tokens])
+                search_terms_files |= text.match_tokens(search_terms,
+                                                        settings['ignore_case'],
+                                                        False,
+                                                        settings['match_whole_word'],
+                                                        settings['use_regex'])
+
+        tokens_tagged_files.append(tokens_tagged)
+    tokens_tagged_files.append([token_tagged for tokens_tagged in tokens_tagged_files for token_tagged in tokens_tagged])
 
     # Frequency distribution
-    for tokens in tokens_files[:-1]:
+    for tokens_tagged in tokens_tagged_files[:-1]:
         freq_distribution = {}
 
-        if tokens:
+        if tokens_tagged:
             if window_size_right:
-                for ngram in nltk.ngrams(tokens, window_size_right + 1, pad_right = True):
-                    w1 = ngram[0]
+                for ngram in nltk.ngrams(tokens_tagged, window_size_right + 1, pad_right = True):
+                    if settings['search_type'] == main.tr('Token'):
+                        if settings['show_all'] or ngram[0][0] in search_terms_files:
+                            w1 = ngram[0][0]
+                        else:
+                            w1 = ngram[0][1]
+                    else:
+                        w1 = ngram[0][1]
 
                     for i, w2 in enumerate(ngram[1:]):
                         if w2 is not None:
+                            w2 = w2[1]
+
                             if (w1, w2) not in freq_distribution:
                                 freq_distribution[(w1, w2)] = [0] * window_size
 
                             freq_distribution[(w1, w2)][window_size_left + i] += 1
 
             if window_size_left:
-                for ngram in nltk.ngrams(tokens, window_size_left + 1, pad_right = True):
-                    w1 = ngram[0]
+                for ngram in nltk.ngrams(tokens_tagged, window_size_left + 1, pad_right = True):
+                    w1 = ngram[0][1]
 
                     for i, w2 in enumerate(ngram[1:]):
                         if w2 is not None:
+                            if settings['search_type'] == main.tr('Token'):
+                                if settings['show_all'] or w2[0] in search_terms_files:
+                                    w2 = w2[0]
+                                else:
+                                    w2 = w2[1]
+                            else:
+                                w2 = w2[1]
+
                             if (w2, w1) not in freq_distribution:
                                 freq_distribution[(w2, w1)] = [0] * window_size
 
@@ -823,12 +793,36 @@ def generate_collocates(main, files):
         freq_distributions.append(filter_distribution(freq_distribution))
 
     # Score distribution
-    for tokens in tokens_files:
+    for i, tokens_tagged in enumerate(tokens_tagged_files):
+        freq_distribution_tokens = collections.Counter()
         score_distribution = {}
 
-        if tokens:
+        if tokens_tagged:
+            for token, tag in tokens_tagged:
+                if settings['search_type'] == main.tr('Token'):
+                    if settings['show_all'] or token in search_terms_files:
+                        freq_distribution_tokens[token] += 1
+
+                freq_distribution_tokens[tag] += 1
+
             if window_size_right:
-                finder_right = nltk.collocations.BigramCollocationFinder.from_words(tokens, window_size = window_size_right + 1)
+                finder_right = nltk.collocations.BigramCollocationFinder.from_words(tokens_tagged, window_size = window_size_right + 1)
+
+                finder_right.word_fd = freq_distribution_tokens.copy()
+                finder_right.ngram_fd = collections.Counter()
+
+                for ngram in nltk.ngrams(tokens_tagged, window_size_right + 1, pad_right = True):
+                    if settings['search_type'] == main.tr('Token'):
+                        if settings['show_all'] or ngram[0][0] in search_terms_files:
+                            w1 = ngram[0][0]
+                        else:
+                            w1 = ngram[0][1]
+                    else:
+                        w1 = ngram[0][1]
+
+                    for i, w2 in enumerate(ngram[1:]):
+                        if w2 is not None:
+                            finder_right.ngram_fd[(w1, w2[1])] += 1
 
                 for collocate, score in finder_right.score_ngrams(assoc_measure):
                     if collocate not in score_distribution:
@@ -837,7 +831,23 @@ def generate_collocates(main, files):
                     score_distribution[collocate][1] = score
 
             if window_size_left:
-                finder_left = nltk.collocations.BigramCollocationFinder.from_words(tokens, window_size = window_size_left + 1)
+                finder_left = nltk.collocations.BigramCollocationFinder.from_words(tokens_tagged, window_size = window_size_left + 1)
+
+                finder_left.word_fd = freq_distribution_tokens.copy()
+                finder_left.ngram_fd = collections.Counter()
+
+                for ngram in nltk.ngrams(tokens_tagged, window_size_left + 1, pad_right = True):
+                    w1 = ngram[0][1]
+
+                    for i, w2 in enumerate(ngram[1:]):
+                        if w2 is not None:
+                            if settings['search_type'] == main.tr('Token'):
+                                if settings['show_all'] or w2[0] in search_terms_files:
+                                    finder_left.ngram_fd[(w1, w2[0])] += 1
+                                else:
+                                    finder_left.ngram_fd[(w1, w2[1])] += 1
+                            else:
+                                finder_left.ngram_fd[(w1, w2[1])] += 1
 
                 for collocate, score in finder_left.score_ngrams(assoc_measure):
                     collocate_reversed = tuple(reversed(collocate))
@@ -853,7 +863,7 @@ def generate_collocates(main, files):
 
 @ wordless_misc.log_timing('Data generation completed')
 def generate_data(main, table):
-    settings = main.settings_custom['collocation']
+    settings = main.settings_custom['colligation']
     files = main.wordless_files.selected_files()
 
     if files:
@@ -861,6 +871,9 @@ def generate_data(main, table):
             not settings['show_all'] and (settings['multi_search_mode'] and settings['search_terms'] or
                                           not settings['multi_search_mode'] and settings['search_term'])):
             table.files = files
+
+            window_left = True if settings['window_left'] < 0 else False
+            window_right = True if settings['window_right'] > 0 else False
 
             if settings['window_left'] < 0 and settings['window_right'] > 0:
                 window_size_left = abs(settings['window_left'])
@@ -894,19 +907,19 @@ def generate_data(main, table):
 
                         table.cols_breakdown_position.add(table.columnCount() - 2)
 
-                    if window_size_left:
+                    if window_left:
                         table.insert_col(table.columnCount() - 1,
                                          main.tr(f'[{file["name"]}] Freq/L'),
                                          num = True, pct = True, cumulative = True, breakdown = True)
-                    if window_size_right:
+                    if window_right:
                         table.insert_col(table.columnCount() - 1,
                                          main.tr(f'[{file["name"]}] Freq/R'),
                                          num = True, pct = True, cumulative = True, breakdown = True)
-                    if window_size_left:
+                    if window_left:
                         table.insert_col(table.columnCount() - 1,
                                          main.tr(f'[{file["name"]}] Score/L'),
                                          num = True, breakdown = True)
-                    if window_size_right:
+                    if window_right:
                         table.insert_col(table.columnCount() - 1,
                                          main.tr(f'[{file["name"]}] Score/R'),
                                          num = True, breakdown = True)
@@ -923,18 +936,18 @@ def generate_data(main, table):
 
                     table.cols_breakdown_position.add(table.columnCount() - 2)
 
-                if window_size_left:
+                if window_left:
                     table.insert_col(table.columnCount() - 1,
                                      main.tr(f'Total Freq/L'),
                                      num = True, pct = True, cumulative = True)
-                if window_size_right:
+                if window_right:
                     table.insert_col(table.columnCount() - 1,
                                      main.tr(f'Total Freq/R'),
                                      num = True, pct = True, cumulative = True)
-                if window_size_left:
+                if window_left:
                     table.insert_col(table.columnCount() - 1, main.tr(f'Total Score/L'),
                                      num = True)
-                if window_size_right:
+                if window_right:
                     table.insert_col(table.columnCount() - 1, main.tr(f'Total Score/R'),
                                      num = True)
 
@@ -973,15 +986,15 @@ def generate_data(main, table):
 
                     # Score
                     for j, (score_left, score_right) in enumerate(scores[:-1]):
-                        if window_size_left:
+                        if window_left:
                             table.set_item_num_float(i, cols_score_left[j], score_left)
-                        if window_size_right:
+                        if window_right:
                             table.set_item_num_float(i, cols_score_right[j], score_right)
 
                     # Total Score
-                    if window_size_left:
+                    if window_left:
                         table.set_item_num_float(i, col_total_score_left, scores[-1][0])
-                    if window_size_right:
+                    if window_right:
                         table.set_item_num_float(i, col_total_score_right, scores[-1][1])
 
                 for i in range(table.rowCount()):
@@ -994,10 +1007,10 @@ def generate_data(main, table):
                         for k, freq in enumerate(freq_file_positions):
                             table.set_item_num_cumulative(i, cols_freq[j] + k, freq)
 
-                        if window_size_left:
+                        if window_left:
                             table.set_item_num_cumulative(i, cols_freq_left[j],
                                                           sum(freq_positions[:window_size_left]))
-                        if window_size_right:
+                        if window_right:
                             table.set_item_num_cumulative(i, cols_freq_right[j],
                                                           sum(freq_positions[-window_size_right:]))
 
@@ -1005,10 +1018,10 @@ def generate_data(main, table):
                     for j, freq_position in enumerate(freq_positions):
                         table.set_item_num_cumulative(i, cols_freq_total[j], freq_position)
 
-                    if window_size_left:
+                    if window_left:
                         table.set_item_num_cumulative(i, col_total_freq_left,
                                                       sum(freq_positions[:window_size_left]))
-                    if window_size_right:
+                    if window_right:
                         table.set_item_num_cumulative(i, col_total_freq_right,
                                                       sum(freq_positions[-window_size_right:]))
 
@@ -1036,7 +1049,7 @@ def generate_data(main, table):
 
 @ wordless_misc.log_timing('Plot generation completed')
 def generate_plot(main):
-    settings = main.settings_custom['collocation']
+    settings = main.settings_custom['colligation']
 
     files = main.wordless_files.selected_files()
 

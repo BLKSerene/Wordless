@@ -24,6 +24,7 @@ import tab_concordancer
 import tab_wordlist
 import tab_ngram
 import tab_collocation
+import tab_colligation
 import tab_semantics
 
 class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
@@ -33,138 +34,126 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
         acknowledgements = [
             ['<a href="https://www.python.org/">Python</a>',
              '3.7.0',
-             'Guido van Rossum<br>Python Software Foundation',
-             '<a href="mailto:guido@python.org">guido@python.org</a><br><a href="mailto:psf@python.org">psf@python.org</a>',
+             '<a href="mailto:guido@python.org">Guido van Rossum</a><br><a href="mailto:psf@python.org">Python Software Foundation</a>',
              '<a href="https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release">PSF</a>'],
 
             ['<a href="https://github.com/jpype-project/jpype/">JPype</a>',
              '0.6.3',
              'Steve Menard<br>Luis Nell',
-             '',
              '<a href="https://github.com/jpype-project/jpype/blob/master/LICENSE">Apache-2.0</a>'],
 
             ['<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
              '5.11.3',
-             'Riverbank Computing Limited',
-             '<a href="mailto:info@riverbankcomputing.com">info@riverbankcomputing.com</a>',
-             '<a href="http://pyqt.sourceforge.net/Docs/  PyQt5/introduction.html#license">GPL-3.0</a>'],
+             '<a href="mailto:info@riverbankcomputing.com">Riverbank Computing Limited</a>',
+             '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a>'],
 
-            ['<a href="https://github.com/fxsjy/jieba">jieba (“结巴”中文分词)</a>',
+            ['<a href="http://hanlp.com/">HanLP</a>',
+             '1.68',
+             '<a href="mailto:hankcs.cn@gmail.com">He Han (何晗)</a>',
+             '<a href="https://github.com/hankcs/HanLP/blob/master/LICENSE">Apache-2.0</a>'],
+
+            ['<a href="https://github.com/hankcs/pyhanlp">pyhanlp</a>',
+             '0.1.44',
+             '<a href="mailto:hankcs.cn@gmail.com">He Han (何晗)</a>',
+             '<a href="https://github.com/hankcs/pyhanlp/blob/master/LICENSE">Apache-2.0</a>'],
+
+            [main.tr('<a href="https://github.com/fxsjy/jieba">jieba</a>'),
              '0.39',
-             'Sun Junyi',
-             '<a href="mailto:ccnusjy@gmail.com">ccnusjy@gmail.com</a>',
+             '<a href="mailto:ccnusjy@gmail.com">Sun Junyi</a>',
              '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="http://www.nltk.org/">NLTK</a>',
              '3.3',
-             'NLTK Project',
-             '<a href="http://www.nltk.org/contribute.html">http://www.nltk.org/contribute.html</a>',
+             '<a href="http://www.nltk.org/contribute.html">NLTK Project</a>',
              '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
 
             ['<a href="https://github.com/delph-in/pydelphin">PyDelphin</a>',
              '0.8.0',
-             'Michael Wayne Goodman',
-             '<a href="mailto:goodman.m.w@gmail.com">goodman.m.w@gmail.com</a>',
+             '<a href="mailto:goodman.m.w@gmail.com">Michael Wayne Goodman</a>',
              '<a href="https://github.com/delph-in/pydelphin/blob/develop/LICENSE">MIT</a>'],
 
-            ['<a href="https://github.com/hankcs/pyhanlp">pyhanlp</a>',
-             '0.1.44',
-             'He Han (何晗)',
-             '<a href="mailto:hankcs.cn@gmail.com">hankcs.cn@gmail.com</a>',
-             '<a href="https://github.com/hankcs/pyhanlp/blob/master/LICENSE">Apache-2</a>'],
+            ['<a href="https://spacy.io/">spaCy</a>',
+             '2.0.16',
+             '<a href="mailto:matt@explosion.ai">Matthew Honnibal</a><br>spaCy GmbH<br><a href="mailto:contact@explosion.ai">ExplosionAI UG (haftungsbeschränkt)</a>',
+             '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://stanfordnlp.github.io/CoreNLP/">Stanford CoreNLP</a>',
              '3.9.2',
-             'Stanford NLP',
-             '<a href="mailto:java-nlp-support@lists.stanford.edu">java-nlp-support@lists.stanford.edu</a>',
+             '<a href="mailto:java-nlp-support@lists.stanford.edu">Stanford NLP</a>',
              '<a href="https://github.com/stanfordnlp/CoreNLP/blob/master/LICENSE.txt">GPL-3.0</a>'],
 
             ['<a href="https://github.com/stanfordnlp/python-stanford-corenlp">Stanford CoreNLP Python Interface</a>',
              '3.8.0',
-             'Stanford NLP',
-             '<a href="mailto:java-nlp-support@lists.stanford.edu">java-nlp-support@lists.stanford.edu</a>',
+             '<a href="mailto:java-nlp-support@lists.stanford.edu">Stanford NLP</a>',
              '<a href="https://github.com/stanfordnlp/python-stanford-corenlp/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
              '4.6.3',
-             'Leonard Richardson',
-             '<a href="https://www.crummy.com/self/contact.html">https://www.crummy.com/self/contact.html</a>',
+             '<a href="https://www.crummy.com/self/contact.html">Leonard Richardson</a>',
              '<a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a>'],
 
             ['<a href="https://github.com/chardet/chardet">chardet</a>',
              '3.0.4',
-             'Daniel Blanchard',
-             '<a href="mailto:dan.blanchard@gmail.com">dan.blanchard@gmail.com</a>',
+             '<a href="mailto:dan.blanchard@gmail.com">Daniel Blanchard</a>',
              '<a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPL-2.1</a>'],
 
             ['<a href="https://github.com/Mimino666/langdetect">langdetect</a>',
              '1.0.7',
-             'Michal Mimino Danilak',
-             '<a href="mailto:michal.danilak@gmail.com">michal.danilak@gmail.com</a>',
+             '<a href="mailto:michal.danilak@gmail.com">Michal Mimino Danilak</a>',
              '<a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache-2.0</a>'],
 
             ['<a href="https://lxml.de/">lxml</a>',
              '4.2.5',
-             'Stefan Behnel',
-             '<a href="http://consulting.behnel.de">http://consulting.behnel.de</a>',
+             '<a href="http://consulting.behnel.de">Stefan Behnel</a>',
              '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'],
 
             ['<a href="https://matplotlib.org/">Matplotlib</a>',
              '3.0.0',
-             'Matplotlib Development Team',
-             '<a href="https://github.com/matplotlib/matplotlib#contact">https://github.com/matplotlib/matplotlib#contact</a>',
+             '<a href="https://github.com/matplotlib/matplotlib#contact">Matplotlib Development Team</a>',
              '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'],
 
             ['<a href="http://networkx.github.io/">NetworkX</a>',
              '2.1',
-             'Aric Hagberg<br>Dan Schult<br>Pieter Swart',
-             '<a href="mailto:hagberg@lanl.gov">hagberg@lanl.gov</a><br><a href="mailto:dschult@colgate.edu">dschult@colgate.edu</a><br><a href="mailto:swart@lanl.gov">swart@lanl.gov</a>',
+             '<a href="mailto:hagberg@lanl.gov">Aric Hagberg</a><br><a href="mailto:dschult@colgate.edu">Dan Schult</a><br><a href="mailto:swart@lanl.gov">Pieter Swart</a>',
              '<a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a>'],
 
              ['<a href="http://www.numpy.org/">NumPy</a>',
              '1.15.2',
              'NumPy Developers',
-             '',
              '<a href="http://www.numpy.org/license.html">BSD-3-Clause</a>'],
 
             ['<a href="https://openpyxl.readthedocs.io/en/stable/">openpyxl</a>',
              '2.5.8',
-             'Eric Gazoni<br>Charlie Clark',
-             '<br><a href="mailto:charlie.clark@clark-consulting.eu">charlie.clark@clark-consulting.eu</a>',
+             'Eric Gazoni<br><a href="mailto:charlie.clark@clark-consulting.eu">Charlie Clark</a>',
              '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>'],
 
             ['<a href="https://www.scipy.org/">SciPy</a>',
              '1.1.0',
              'SciPy developers',
-             '',
              '<a href="https://www.scipy.org/scipylib/license.html">BSD-3-Clause</a>'],
 
             ['<a href="https://lexically.net/downloads/BNC_wordlists/e_lemma.txt">e_lemma.txt</a>',
              '2',
-             'Yasumasa Someya (染谷泰正)',
-             '<a href="http://www.someya-net.com/index2.html">http://www.someya-net.com/index2.html</a>',
+             '<a href="http://www.someya-net.com/index2.html">Yasumasa Someya (染谷泰正)</a>',
              '<a href="https://lexically.net/downloads/BNC_wordlists/e_lemma.txt">Free to use for any research;<br>and/or educational purposes.</a>'],
 
             ['<a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a>',
              '',
-             'Michal Boleslav Měchura',
-             '<a href="http://www.lexiconista.com/en/#contact">http://www.lexiconista.com/en/#contact</a>',
+             '<a href="http://www.lexiconista.com/en/#contact">Michal Boleslav Měchura</a>',
              '<a href="https://github.com/michmech/lemmatization-lists/blob/master/LICENCE">ODbL</a>'],
 
             ['<a href="https://github.com/stopwords-iso/stopwords-iso">Stopwords ISO</a>',
              '0.4.0',
-             'Gene Diaz',
-             '<a href="mailto:genediazjr@gmail.com">genediazjr@gmail.com</a>',
+             '<a href="mailto:genediazjr@gmail.com">Gene Diaz</a>',
              '<a href="https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://github.com/6/stopwords-json">stopwords-json</a>',
              '',
-             'Peter Graham',
-             '<a href="mailto:pete@gigadrill.com">pete@gigadrill.com</a>',
+             '<a href="mailto:pete@gigadrill.com">Peter Graham</a>',
              '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>'],
         ]
 
-        self.setFixedSize(850, 500)
+        self.setFixedSize(700, 400)
 
         label_acknowledgements = QLabel(self.tr('Many thanks to the following open-source projects on which Wordless is built on:'), self)
 
@@ -173,23 +162,21 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
                                                                    self.tr('Name'),
                                                                    self.tr('Version'),
                                                                    self.tr('Author(s)'),
-                                                                   self.tr('Contact'),
                                                                    self.tr('License')
                                                                ],
                                                                cols_stretch = [
-                                                                   self.tr('Contact')
+                                                                   self.tr('Author(s)')
                                                                ])
 
         table_acknowledgements.setSelectionMode(QAbstractItemView.NoSelection)
 
         table_acknowledgements.setRowCount(len(acknowledgements))
 
-        for i, (name, ver, authors, contact, license) in enumerate(acknowledgements):
+        for i, (name, ver, authors, license) in enumerate(acknowledgements):
             table_acknowledgements.setCellWidget(i, 0, QLabel(name, self))
             table_acknowledgements.setCellWidget(i, 1, QLabel(ver, self))
             table_acknowledgements.setCellWidget(i, 2, QLabel(authors, self))
-            table_acknowledgements.setCellWidget(i, 3, QLabel(contact, self))
-            table_acknowledgements.setCellWidget(i, 4, QLabel(license, self))
+            table_acknowledgements.setCellWidget(i, 3, QLabel(license, self))
 
         self.wrapper_info.setLayout(QGridLayout())
         self.wrapper_info.layout().addWidget(label_acknowledgements, 0, 0)
@@ -454,7 +441,7 @@ class Wordless_Main(QMainWindow):
 
     def init_tabs(self):
         def current_tab_changed():
-            if self.tabs.currentIndex() == 5:
+            if self.tabs.currentIndex() == 6:
                 self.widget_files.hide()
 
                 self.centralWidget().layout().setRowStretch(1, 0)
@@ -464,12 +451,12 @@ class Wordless_Main(QMainWindow):
                 self.centralWidget().layout().setRowStretch(1, 1)
 
         self.tabs = QTabWidget(self)
-
         self.tabs.addTab(tab_overview.init(self), self.tr('Overview'))
         self.tabs.addTab(tab_concordancer.init(self), self.tr('Concordancer'))
         self.tabs.addTab(tab_wordlist.init(self), self.tr('Wordlist'))
         self.tabs.addTab(tab_ngram.init(self), self.tr('N-gram'))
         self.tabs.addTab(tab_collocation.init(self), self.tr('Collocation'))
+        self.tabs.addTab(tab_colligation.init(self), self.tr('Colligation'))
         self.tabs.addTab(tab_semantics.init(self), self.tr('Semantics'))
 
         self.tabs.currentChanged.connect(current_tab_changed)
@@ -483,3 +470,4 @@ if __name__ == '__main__':
     wordless_main.showMaximized()
 
     sys.exit(app.exec_())
+    

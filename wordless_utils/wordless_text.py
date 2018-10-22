@@ -31,51 +31,52 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'Defa
     if sentence_tokenizer.find('HanLP') > -1:
         import pyhanlp
 
-    # English
-    if sentence_tokenizer == main.tr('NLTK - Punkt Sentence Tokenizer'):
-        if lang_code == 'other':
-            lang_text = 'english'
-        else:
-            lang_text = wordless_conversion.to_lang_text(main, lang_code).lower()
+    for line in text.split('\n'):
+        # English
+        if sentence_tokenizer == main.tr('NLTK - Punkt Sentence Tokenizer'):
+            if lang_code == 'other':
+                lang_text = 'english'
+            else:
+                lang_text = wordless_conversion.to_lang_text(main, lang_code).lower()
 
-        sentences = nltk.sent_tokenize(text, language = lang_text)
-    # Chinese
-    elif sentence_tokenizer == main.tr('Wordless - Chinese Sentence Tokenizer'):
-        sentence_start = 0
+            sentences.extend(nltk.sent_tokenize(line, language = lang_text))
+        # Chinese
+        elif sentence_tokenizer == main.tr('Wordless - Chinese Sentence Tokenizer'):
+            sentence_start = 0
 
-        for i, char in enumerate(text):
-            if char in ['。', '！', '？', '!', '?']:
-                for j, sentence_end in enumerate(text[i + 1 :]):
-                    if sentence_end not in ['。', '！', '？', '!', '?', '’', '”', '）', ')']:
-                        sentences.append(text[sentence_start : i + 1 + j])
+            for i, char in enumerate(line):
+                if char in ['。', '！', '？', '!', '?']:
+                    for j, sentence_end in enumerate(line[i + 1 :]):
+                        if sentence_end not in ['。', '！', '？', '!', '?', '’', '”', '）', ')']:
+                            sentences.append(line[sentence_start : i + 1 + j])
 
-                        sentence_start = i + 1 + j
+                            sentence_start = i + 1 + j
 
-                        break
+                            break
 
-        if sentence_start <= len(text):
-            sentences.append(text[sentence_start:])
+            if sentence_start <= len(line):
+                sentences.append(line[sentence_start:])
 
-    elif sentence_tokenizer == main.tr('HanLP - Standard Tokenizer'):
-        standard_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.StandardTokenizer')
+        elif sentence_tokenizer == main.tr('HanLP - Standard Tokenizer'):
+            standard_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.StandardTokenizer')
 
-        for sentence in standard_tokenizer.seg2sentence(text):
-            sentences.append(''.join([term.word for term in sentence]))
-    elif sentence_tokenizer == main.tr('HanLP - Basic Tokenizer'):
-        basic_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.BasicTokenizer')
+            for sentence in standard_tokenizer.seg2sentence(line):
+                sentences.append(''.join([term.word for term in sentence]))
+        elif sentence_tokenizer == main.tr('HanLP - Basic Tokenizer'):
+            basic_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.BasicTokenizer')
 
-        for sentence in basic_tokenizer.seg2sentence(text):
-            sentences.append(''.join([term.word for term in sentence]))
-    elif sentence_tokenizer == main.tr('HanLP - NLP Tokenizer'):
-        nlp_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.NLPTokenizer')
+            for sentence in basic_tokenizer.seg2sentence(line):
+                sentences.append(''.join([term.word for term in sentence]))
+        elif sentence_tokenizer == main.tr('HanLP - NLP Tokenizer'):
+            nlp_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.NLPTokenizer')
 
-        for sentence in nlp_tokenizer.seg2sentence(text):
-            sentences.append(''.join([term.word for term in sentence]))
-    elif sentence_tokenizer == main.tr('HanLP - Speed Tokenizer'):
-        speed_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.SpeedTokenizer')
+            for sentence in nlp_tokenizer.seg2sentence(line):
+                sentences.append(''.join([term.word for term in sentence]))
+        elif sentence_tokenizer == main.tr('HanLP - Speed Tokenizer'):
+            speed_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.SpeedTokenizer')
 
-        for sentence in speed_tokenizer.seg2sentence(text):
-            sentences.append(''.join([term.word for term in sentence]))
+            for sentence in speed_tokenizer.seg2sentence(line):
+                sentences.append(''.join([term.word for term in sentence]))
 
     return sentences
 
@@ -88,112 +89,121 @@ def wordless_word_tokenize(main, text, lang_code, word_tokenizer = 'Default'):
     if word_tokenizer == 'Default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang_code]
 
+    sentences = wordless_sentence_tokenize(main, text, lang_code)
+
     # English
     if word_tokenizer == main.tr('NLTK - Treebank Tokenizer'):
-        sentences = wordless_sentence_tokenize(main, text, lang_code)
-
         for sentence in sentences:
             tokens.extend(nltk.TreebankWordTokenizer().tokenize(sentence))
     elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
-        sentences = wordless_sentence_tokenize(main, text, lang_code)
-
         for sentence in sentences:
             tokens.extend(nltk.ToktokTokenizer().tokenize(sentence))
     elif word_tokenizer == main.tr('NLTK - Twitter Tokenizer'):
-        sentences = wordless_sentence_tokenize(main, text, lang_code)
-
         for sentence in sentences:
             tokens.extend(nltk.casual_tokenize(sentence))
     elif word_tokenizer == main.tr('NLTK - Word Punctuation Tokenizer'):
-        tokens = nltk.wordpunct_tokenize(text)
+        for sentence in sentences:
+            tokens = nltk.wordpunct_tokenize(text)
     elif word_tokenizer == main.tr('PyDelphin - Repp Tokenizer'):
         repp_tokenizer = delphin.repp.REPP.from_config('tokenization/repp_tokenizer/erg/repp.set')
-        sentences = wordless_sentence_tokenize(main, text, lang_code)
 
         for sentence in sentences:
             tokens.extend([token.form for token in repp_tokenizer.tokenize(text).tokens])
     # Chinese
     elif word_tokenizer == main.tr('jieba - With HMM'):
-        tokens = jieba.cut(text)
+        for sentence in sentences:
+            tokens = jieba.cut(text)
     elif word_tokenizer == main.tr('jieba - Without HMM'):
-        tokens = jieba.cut(text, HMM = False)
+        for sentence in sentences:
+            tokens = jieba.cut(text, HMM = False)
     elif word_tokenizer == main.tr('HanLP - Standard Tokenizer'):
         standard_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.StandardTokenizer')
 
-        tokens = [token.word for token in standard_tokenizer.segment(text)]
+        for sentence in sentences:
+            tokens = [token.word for token in standard_tokenizer.segment(text)]
     elif word_tokenizer == main.tr('HanLP - Basic Tokenizer'):
         basic_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.BasicTokenizer')
 
-        tokens = [token.word for token in basic_tokenizer.segment(text)]
+        for sentence in sentences:
+            tokens = [token.word for token in basic_tokenizer.segment(text)]
     elif word_tokenizer == main.tr('HanLP - NLP Tokenizer'):
         nlp_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.NLPTokenizer')
 
-        tokens = [token.word for token in nlp_tokenizer.segment(text)]
+        for sentence in sentences:
+            tokens = [token.word for token in nlp_tokenizer.segment(text)]
     elif word_tokenizer == main.tr('HanLP - Speed Tokenizer'):
         speed_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.SpeedTokenizer')
 
-        tokens = [token.word for token in speed_tokenizer.segment(text)]
+        for sentence in sentences:
+            tokens = [token.word for token in speed_tokenizer.segment(text)]
     elif word_tokenizer == main.tr('HanLP - Traditional Chinese Tokenizer'):
         zh_tw_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.TraditionalChineseTokenizer')
 
-        tokens = [token.word for token in zh_tw_tokenizer.segment(text)]
+        for sentence in sentences:
+            tokens = [token.word for token in zh_tw_tokenizer.segment(text)]
     elif word_tokenizer == main.tr('HanLP - URL Tokenizer'):
         url_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.URLTokenizer')
 
-        tokens = [token.word for token in url_tokenizer.segment(text)]
-
+        for sentence in sentences:
+            tokens = [token.word for token in url_tokenizer.segment(text)]
     elif word_tokenizer == main.tr('HanLP - CRF Lexical Analyzer'):
-        crf_tokenizer = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')
+        crf_tokenizer = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
 
-        tokens = [token for token in crf_tokenizer().segment(text)]
+        for sentence in sentences:
+            tokens = [token for token in crf_tokenizer.segment(text)]
     elif word_tokenizer == main.tr('HanLP - Perceptron Lexical Analyzer'):
-        perceptron_tokenizer = jpype.JClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')
+        perceptron_tokenizer = jpype.JClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
 
-        tokens = [token for token in perceptron_tokenizer().segment(text)]
-
+        for sentence in sentences:
+            tokens = [token for token in perceptron_tokenizer.segment(text)]
     elif word_tokenizer == main.tr('HanLP - Dijkstra Segmenter'):
         DijkstraSegment = jpype.JClass('com.hankcs.hanlp.seg.Dijkstra.DijkstraSegment')
         dijkstra_tokenizer = DijkstraSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
 
-        tokens = [token.word for token in dijkstra_tokenizer.seg(text)]
+        for sentence in sentences:
+            tokens = [token.word for token in dijkstra_tokenizer.seg(text)]
     elif word_tokenizer == main.tr('HanLP - N-shortest Path Segmenter'):
         NShortSegment = jpype.JClass('com.hankcs.hanlp.seg.NShort.NShortSegment')
         nshortest_tokenizer = NShortSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
 
-        tokens = [token.word for token in nshortest_tokenizer.seg(text)]
+        for sentence in sentences:
+            tokens = [token.word for token in nshortest_tokenizer.seg(text)]
     elif word_tokenizer == main.tr('HanLP - Viterbi Segmenter'):
         ViterbiSegment = jpype.JClass('com.hankcs.hanlp.seg.Viterbi.ViterbiSegment')
         viterbi_tokenizer = ViterbiSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
 
-        tokens = [token.word for token in viterbi_tokenizer.seg(text)]
+        for sentence in sentences:
+            tokens = [token.word for token in viterbi_tokenizer.seg(text)]
 
     return tokens
 
-def wordless_pos_tag(main, text, lang_code, pos_tagger = 'Default', tagset = 'Universal'):
+def wordless_pos_tag(main, text, lang_code, pos_tagger = 'Default', tagset = 'Default'):
     tokens_tagged = []
 
     if pos_tagger == 'Default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang_code]
 
-    if pos_tagger == main.tr(main.tr('NLTK - Perceptron POS Tagger')):
-        sentences = wordless_sentence_tokenize(main, text, lang_code)
+    sentences = wordless_sentence_tokenize(main, text, lang_code)
 
+    if pos_tagger == main.tr(main.tr('NLTK - Perceptron POS Tagger')):
         for sentence in sentences:
             tokens_tagged.extend(nltk.pos_tag(wordless_word_tokenize(main, sentence, lang_code), lang = lang_code))
     elif pos_tagger == main.tr('jieba'):
-        sentences = wordless_sentence_tokenize(main, text, lang_code)
-
         for sentence in sentences:
             tokens_tagged.extend(jieba.posseg.lcut(sentence))
     elif pos_tagger == main.tr('HanLP - CRF Lexical Analyzer'):
-        crf_tagger = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')
+        crf_tagger = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
 
-        tokens_tagged.extend(list(zip(*crf_tagger().analyze(text).toWordTagArray())))
+        for sentence in sentences:
+            tokens_tagged.extend(list(zip(*crf_tagger.analyze(text).toWordTagArray())))
     elif pos_tagger == main.tr('HanLP - Perceptron Lexical Analyzer'):
+        perceptron_tagger = jpype.JClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
 
-        perceptron_tagger = jpype.JClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')
+        for sentence in sentences:
+            tokens_tagged.extend(list(zip(*perceptron_tagger.analyze(text).toWordTagArray())))
 
-        tokens_tagged.extend(list(zip(*perceptron_tagger().analyze(text).toWordTagArray())))
+    if tagset == 'Default':
+        tagset = main.settings_custom['pos_tagging']['tagsets'][lang_code]
 
     # Convert to Universal Tagset
     if tagset == 'Universal':
@@ -205,27 +215,32 @@ def wordless_pos_tag(main, text, lang_code, pos_tagger = 'Default', tagset = 'Un
     return tokens_tagged
 
 def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'Default'):
-    lemmas = []
     lemma_list = {}
+    lemmas = []
 
-    if lang_code in main.settings_global['lemmatizers']:
+    if tokens and lang_code in main.settings_global['lemmatizers']:
+        tokens = list(tokens)
+
+        len_tokens = [len(token.split()) for token in tokens]
+        tokens = [token for ngram in tokens for token in ngram.split()]
+
         if lemmatizer == 'Default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang_code]
 
         if lemmatizer == 'NLTK':
-            lemmatizer_nltk = nltk.WordNetLemmatizer()
+            word_net_lemmatizer = nltk.WordNetLemmatizer()
 
             for i, (token, pos) in enumerate(nltk.pos_tag(tokens)):
                 if pos in ['JJ', 'JJR', 'JJS']:
-                    lemmas.append(lemmatizer_nltk.lemmatize(token, pos = nltk.corpus.wordnet.ADJ))
+                    lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADJ))
                 elif pos in ['NN', 'NNS', 'NNP', 'NNPS']:
-                    lemmas.append(lemmatizer_nltk.lemmatize(token, pos = nltk.corpus.wordnet.NOUN))
+                    lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.NOUN))
                 elif pos in ['RB', 'RBR', 'RBS']:
-                    lemmas.append(lemmatizer_nltk.lemmatize(token, pos = nltk.corpus.wordnet.ADV))
+                    lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADV))
                 elif pos in ['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ']:
-                    lemmas.append(lemmatizer_nltk.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
+                    lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
                 else:
-                    lemmas.append(lemmatizer_nltk.lemmatize(token))
+                    lemmas.append(word_net_lemmatizer.lemmatize(token))
         elif lemmatizer == 'e_lemma.txt':
             with open('lemmatization/e_lemma.txt', 'r', encoding = 'utf_16') as f:
                 for line in f:
@@ -251,9 +266,12 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'Default'):
 
             lemmas = [lemma_list.get(token, token) for token in tokens]
 
-        return lemmas
+        lemmas = [wordless_conversion.to_word_delimiter(lang_code).join([lemmas.pop(0) for i in range(len_token)])
+                  for len_token in len_tokens]
     else:
-        return tokens
+        lemmas = tokens
+
+    return lemmas
 
 def wordless_filter_stop_words(main, items, lang_code):
     lang_text = wordless_conversion.to_lang_text(main, lang_code)
@@ -331,60 +349,77 @@ nltk.ConcordanceIndex.find_concordance = find_concordance
 
 class Wordless_Text(nltk.Text):
     def __init__(self, main, file):
+        text = ''
         tokens = []
 
         with open(file['path'], 'r', encoding = file['encoding_code']) as f:
             for line in f:
                 if file['ext_code'] in ['.txt']:
-                    text = line.rstrip()
+                    line_text = line.rstrip()
                 elif file['ext_code'] in ['.htm', '.html']:
                     soup = BeautifulSoup(line.rstrip(), 'lxml')
-                    text = soup.get_text()
+                    line_text = soup.get_text()
 
-                tokens.extend(wordless_word_tokenize(main, text, file['lang_code']))
+                text += f'{line_text}\n'
+                tokens.extend(wordless_word_tokenize(main, line_text, file['lang_code']))
 
         super().__init__(tokens)
 
         self.main = main
-        self.lang = file['lang_code']
+        self.text = text
+        self.lang_code = file['lang_code']
         self.word_delimiter = file['word_delimiter']
 
     def match_tokens(self, search_terms,
                      ignore_case, match_inflected_forms, match_whole_word, use_regex):
         tokens_matched = set()
 
-        tokens = set(self.tokens)
+        if type(self.tokens[0]) in [list, tuple, set]:
+            tokens = set([wordless_conversion.to_word_delimiter(self.lang_code).join(ngram) for ngram in self.tokens])
+        else:
+            tokens = set(self.tokens)
 
-        # Ignore case
-        if ignore_case:
-            tokens_matched = set([token for token in tokens if token.lower() in search_terms])
-
-        for search_term in search_terms:
-            # Use regular expression & match whole word only
-            if use_regex:
+        if use_regex:
+            for search_term in search_terms:
                 if match_whole_word:
-                    if search_term[:2] != r'\b':
-                        search_term = r'\b' + search_term
-                    if search_term[-2:] != r'\b':
-                        search_term += r'\b'
+                    search_term = fr'\b{search_term}\b'
 
-                tokens_matched = set([token for token in tokens if re.search(search_term, token)])
-            else:
-                if match_whole_word:
-                    tokens_matched.add(search_term)
+                if ignore_case:
+                    tokens_matched |= set([token for token in tokens if re.search(search_term, token, re.IGNORECASE)])
                 else:
-                    for token in tokens:
-                        if token.find(search_term) > -1:
+                    tokens_matched |= set([token for token in tokens if re.search(search_term, token)])
+        else:
+            tokens_matched |= set(search_terms)
+
+            for token_matched in tokens_matched.copy():
+                if match_whole_word:
+                    token_matched = fr'\b{token_matched}\b'
+
+                if ignore_case:
+                    tokens_matched |= set([token
+                                           for token in tokens
+                                           if re.search(token_matched, token, re.IGNORECASE)])
+                else:
+                    tokens_matched |= set([token
+                                           for token in tokens
+                                           if re.search(token_matched, token)])
+
+        if match_inflected_forms:
+            lemmas = wordless_lemmatize(self.main, tokens, self.lang_code)
+
+            for lemma_matched in wordless_lemmatize(self.main, tokens_matched, self.lang_code):
+                if match_whole_word:
+                    lemma_matched = fr'\b{lemma_matched}\b'
+
+                if ignore_case:
+                    for token, lemma in zip(tokens, lemmas):
+                        if re.search(lemma_matched, lemma, re.IGNORECASE):
                             tokens_matched.add(token)
 
-            # Match all inflected forms
-            if match_inflected_forms:
-                for token_lemmatized in wordless_lemmatize(self.main, list(tokens_matched), self.lang):
-                    tokens_matched.add(token_lemmatized)
-
-                for token, token_lemmatized in zip(tokens, wordless_lemmatize(self.main, tokens, self.lang)):
-                    if token_lemmatized in tokens_matched:
-                        tokens_matched.add(token)
+                else:
+                    for token, lemma in zip(tokens, lemmas):
+                        if re.search(lemma_matched, lemma):
+                            tokens_matched.add(token)
 
         return tokens_matched
 

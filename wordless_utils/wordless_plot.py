@@ -41,11 +41,13 @@ def wordless_plot_freq(main, freq_distribution, rank_min, rank_max, use_pct, use
         for i, file in enumerate(main.wordless_files.selected_files()):
             pyplot.plot([freq_files[i] / total_freqs[i] * 100  for freq_files in freqs], label = file['name'])
 
+        # Total Frequency
         pyplot.plot([sum(freq_files) / total_freq * 100 for freq_files in freqs], label = main.tr('Total'))
     else:
         for i, file in enumerate(main.wordless_files.selected_files()):
             pyplot.plot([freq_files[i] for freq_files in freqs], label = file['name'])
 
+        # Total Frequency
         pyplot.plot([sum(freq_files) for freq_files in freqs], label = main.tr('Total'))
 
     pyplot.xlabel(label_x)
@@ -64,6 +66,9 @@ def wordless_plot_score(main, score_distribution, rank_min, rank_max, label_x):
 
     for i, file in enumerate(main.wordless_files.selected_files()):
         pyplot.plot([scores_files[i] for scores_files in scores], label = file['name'])
+
+    # Total Score
+    pyplot.plot([scores_files[-1] for scores_files in scores], label = main.tr('Total'))
 
     pyplot.xlabel(label_x)
     pyplot.ylabel(main.tr('Score'))

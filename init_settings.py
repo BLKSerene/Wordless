@@ -1007,21 +1007,12 @@ def init_settings_default(main):
             'encoding_input': ('utf_8', main.tr('All Languages')),
             'encoding_output': ('utf_8', main.tr('All Languages')),
 
+            'precision_decimal': 2,
+            'precision_pct': 2,
+
             'font_monospaced': 'Consolas',
 
-            'precision': 2,
             'style_highlight': 'border: 1px solid Red;'
-        },
-    
-        'file': {
-            'files_open': [],
-            'files_closed': [],
-            'root_path': '.',
-
-            'subfolders': True,
-
-            'auto_detect_encoding': True,
-            'auto_detect_lang': True
         },
 
         'sentence_tokenization': {
@@ -1090,6 +1081,14 @@ def init_settings_default(main):
                 'zho_CN': main.tr('jieba'),
                 'zho_TW':  main.tr('jieba'),
                 'rus': main.tr('NLTK - Perceptron POS Tagger')
+            },
+
+            'tagsets': {
+                'eng': 'Penn Treebank',
+
+                'zho_CN': 'jieba',
+                'zho_TW':  'jieba',
+                'rus': 'Russian National Corpus'
             },
 
             'preview_lang': 'eng',
@@ -1197,8 +1196,34 @@ def init_settings_default(main):
             'preview_lang': 'eng',
         },
 
+        'file': {
+            'files_open': [],
+            'files_closed': [],
+            'root_path': '.',
+
+            'subfolders': True,
+
+            'auto_detect_encoding': True,
+            'auto_detect_lang': True
+        },
+
         'overview': {
-    
+            'words': True,
+            'lowercase': True,
+            'uppercase': True,
+            'title_case': True,
+            'treat_as_lowercase': True,
+            'lemmatize': False,
+            'filter_stop_words': False,
+
+            'nums': True,
+            'puncs': False,
+
+            'base_sttr': 1000,
+
+            'show_pct': True,
+            'show_cumulative': False,
+            'show_breakdown': True,
         },
     
         'concordancer': {
@@ -1234,6 +1259,17 @@ def init_settings_default(main):
         },
     
         'wordlist': {
+            'search_results': {
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False,
+                'multi_search_mode': False
+            },
+
             'words': True,
             'lowercase': True,
             'uppercase': True,
@@ -1244,14 +1280,6 @@ def init_settings_default(main):
 
             'nums': True,
             'puncs': False,
-    
-            'search_term': '',
-            'search_terms': [],
-            'ignore_case': True,
-            'match_inflected_forms': True,
-            'match_whole_word': True,
-            'use_regex': False,
-            'multi_search_mode': False,
 
             'show_pct': True,
             'show_cumulative': False,
@@ -1280,6 +1308,17 @@ def init_settings_default(main):
         },
     
         'ngram': {
+            'search_results': {
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False,
+                'multi_search_mode': False
+            },
+            
             'words': True,
             'lowercase': True,
             'uppercase': True,
@@ -1336,6 +1375,17 @@ def init_settings_default(main):
         },
 
         'collocation': {
+            'search_results': {
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False,
+                'multi_search_mode': False
+            },
+
             'words': True,
             'lowercase': True,
             'uppercase': True,
@@ -1393,6 +1443,73 @@ def init_settings_default(main):
             'len_no_limit': True,
             'len_min': 1,
             'len_max': 20,
+
+            'files_no_limit': True,
+            'files_min': 1,
+            'files_max': 100
+        },
+
+        'colligation': {
+            'search_results': {
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False,
+                'multi_search_mode': False
+            },
+
+            'treat_as_lowercase': True,
+            'lemmatize': False,
+
+            'puncs': False,
+    
+            'search_term': '',
+            'search_terms': [],
+            'search_type': main.tr('Token'),
+
+            'ignore_case': True,
+            'match_inflected_forms': True,
+            'match_whole_word': True,
+            'use_regex': False,
+            'multi_search_mode': False,
+            'show_all': False,
+
+            'window_sync': False,
+            'window_left': -5,
+            'window_right': 5,
+            'assoc_measure': main.tr('Pearson\'s Chi-squared Test'),
+
+            'show_pct': True,
+            'show_cumulative': False,
+            'show_breakdown_position': True,
+            'show_breakdown_file': True,
+
+            'use_data': main.tr('Score (Right)'),
+            'use_pct': False,
+            'use_cumulative': False,
+
+            'rank_no_limit': False,
+            'rank_min': 1,
+            'rank_max': 50,
+
+            'freq_left_no_limit': True,
+            'freq_left_min': 0,
+            'freq_left_max': 1000,
+            'freq_right_no_limit': True,
+            'freq_right_min': 0,
+            'freq_right_max': 1000,
+
+            'score_left_no_limit': True,
+            'score_left_min': 0,
+            'score_left_max': 100,
+            'score_right_no_limit': True,
+            'score_right_min': 0,
+            'score_right_max': 100,
+            
+            'apply_to': main.tr('Total'),
 
             'files_no_limit': True,
             'files_min': 1,
