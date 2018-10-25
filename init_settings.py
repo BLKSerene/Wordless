@@ -1007,21 +1007,12 @@ def init_settings_default(main):
             'encoding_input': ('utf_8', main.tr('All Languages')),
             'encoding_output': ('utf_8', main.tr('All Languages')),
 
+            'precision_decimal': 2,
+            'precision_pct': 2,
+
             'font_monospaced': 'Consolas',
 
-            'precision': 2,
             'style_highlight': 'border: 1px solid Red;'
-        },
-    
-        'file': {
-            'files_open': [],
-            'files_closed': [],
-            'root_path': '.',
-
-            'subfolders': True,
-
-            'auto_detect_encoding': True,
-            'auto_detect_lang': True
         },
 
         'sentence_tokenization': {
@@ -1205,8 +1196,34 @@ def init_settings_default(main):
             'preview_lang': 'eng',
         },
 
+        'file': {
+            'files_open': [],
+            'files_closed': [],
+            'root_path': '.',
+
+            'subfolders': True,
+
+            'auto_detect_encoding': True,
+            'auto_detect_lang': True
+        },
+
         'overview': {
-    
+            'words': True,
+            'lowercase': True,
+            'uppercase': True,
+            'title_case': True,
+            'treat_as_lowercase': True,
+            'lemmatize': False,
+            'filter_stop_words': False,
+
+            'nums': True,
+            'puncs': False,
+
+            'base_sttr': 1000,
+
+            'show_pct': True,
+            'show_cumulative': False,
+            'show_breakdown': True,
         },
     
         'concordancer': {

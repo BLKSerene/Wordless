@@ -13,7 +13,6 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 import nltk
-import numpy
 
 from wordless_widgets import *
 from wordless_utils import *
@@ -27,11 +26,16 @@ class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Search):
                              main.tr('Total Freq'),
                              main.tr('Files Found')
                          ],
-                         cols_pct = [
+                         headers_num = [
+                             main.tr('Rank'),
                              main.tr('Total Freq'),
                              main.tr('Files Found')
                          ],
-                         cols_cumulative = [
+                         headers_pct = [
+                             main.tr('Total Freq'),
+                             main.tr('Files Found')
+                         ],
+                         headers_cumulative = [
                              main.tr('Total Freq')
                          ],
                          sorting_enabled = True)
@@ -387,7 +391,7 @@ def generate_wordlists(main, files):
                 tokens = [token.lower() for token in tokens]
 
             if settings['lemmatize']:
-                tokens = wordless_text.wordless_lemmatize(text.main, tokens, text.lang)
+                tokens = wordless_text.wordless_lemmatize(text.main, tokens, text.lang_code)
 
         freq_distribution = nltk.FreqDist(tokens)
 
@@ -407,13 +411,13 @@ def generate_wordlists(main, files):
                                          if not token.istitle()}
 
             if settings['filter_stop_words']:
-                tokens_filtered = wordless_text.wordless_filter_stop_words(main, list(freq_distribution.keys()), text.lang)
+                tokens_filtered = wordless_text.wordless_filter_stop_words(main, list(freq_distribution.keys()), text.lang_code)
 
                 freq_distribution = {token: freq_distribution[token] for token in tokens_filtered}
         else:
             freq_distribution = {token: freq
                                  for token, freq in freq_distribution.items()
-                                 if all([not char.isalpha() for char in token])}
+                                 if not [char for char in token if char.isalpha()]}
         
         if not settings['nums']:
             freq_distribution = {token: freq
@@ -422,7 +426,7 @@ def generate_wordlists(main, files):
         if not settings['puncs']:
             freq_distribution = {token: freq
                                  for token, freq in freq_distribution.items()
-                                 if any([char.isalnum() for char in token])}
+                                 if [char for char in token if char.isalnum()]}
 
         freq_distributions.append(freq_distribution)
 
@@ -443,15 +447,13 @@ def generate_data(main, table):
             for i, file in enumerate(files):
                 table.insert_col(table.columnCount() - 2,
                                  main.tr(f'[{file["name"]}] Freq'),
-                                 pct = True, cumulative = True, breakdown = True)
+                                 num = True, pct = True, cumulative = True, breakdown = True)
 
             table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}] Freq')), Qt.DescendingOrder)
 
             col_total_freq = table.find_col(main.tr('Total Freq'))
             col_files_found = table.find_col(main.tr('Files Found'))
 
-            freqs_total_files = numpy.array(list(freq_distribution.values())).sum(axis = 0)
-            freqs_total = sum(freqs_total_files)
             len_files = len(files)
 
             table.blockSignals(True)
@@ -462,28 +464,33 @@ def generate_data(main, table):
 
             for i, (token, freqs) in enumerate(sorted(freq_distribution.items(), key = wordless_misc.multi_sorting)):
                 # Rank
-                table.setItem(i, 0, wordless_table.Wordless_Table_Item())
+                table.set_item_num_int(i, 0, -1)
 
                 # Tokens
                 table.setItem(i, 1, wordless_table.Wordless_Table_Item(token))
 
                 # Frequency
                 for j, freq in enumerate(freqs):
-                    table.set_item_pct(i, 2 + j, freq, freqs_total_files[j])
+                    table.set_item_num_cumulative(i, 2 + j, freq)
 
                 # Total
-                table.set_item_pct(i, col_total_freq, sum(freqs), freqs_total)
+                table.set_item_num_cumulative(i, col_total_freq, sum(freqs))
 
                 # Files Found
-                table.set_item_pct(i, col_files_found, len([freq for freq in freqs if freq]), len_files)
+                table.set_item_num_pct(i, col_files_found, len([freq for freq in freqs if freq]), len_files)
 
             table.blockSignals(False)
             table.setSortingEnabled(True)
             table.setUpdatesEnabled(True)
 
-            table.update_ranks()
+            table.toggle_pct()
             table.toggle_cumulative()
             table.toggle_breakdown()
+            table.update_ranks()
+
+            table.update_items_width()
+
+            table.item_changed()
         else:
             wordless_dialog.wordless_message_empty_results_table(main)
 
