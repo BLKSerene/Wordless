@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
@@ -23,20 +23,20 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
                          headers = [
                              main.tr('Rank'),
                              main.tr('N-grams'),
-                             main.tr('Total Freq'),
+                             main.tr('Total\nFrequency'),
                              main.tr('Files Found'),
                          ],
                          headers_num = [
                              main.tr('Rank'),
-                             main.tr('Total Freq'),
+                             main.tr('Total\nFrequency'),
                              main.tr('Files Found')
                          ],
                          headers_pct = [
-                             main.tr('Total Freq'),
+                             main.tr('Total\nFrequency'),
                              main.tr('Files Found')
                          ],
                          headers_cumulative = [
-                             main.tr('Total Freq')
+                             main.tr('Total\nFrequency')
                          ],
                          sorting_enabled = True)
 
@@ -47,21 +47,21 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
 
         self.button_search_results.clicked.connect(dialog_search.load)
 
-        self.button_generate_data = QPushButton(self.tr('Generate N-grams'), self.main)
+        self.button_generate_table = QPushButton(self.tr('Generate Table'), self.main)
         self.button_generate_plot = QPushButton(self.tr('Generate Plot'), self.main)
 
-        self.button_generate_data.clicked.connect(lambda: generate_data(self.main, self))
+        self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_plot.clicked.connect(lambda: generate_plot(self.main))
 
-    @ wordless_misc.log_timing('Filtering')
+    @ wordless_misc.log_timing
     def update_filters(self):
         if any([self.item(0, i) for i in range(self.columnCount())]):
             settings = self.main.settings_custom['ngram']
 
             if settings['apply_to'] == self.tr('Total'):
-                col_freq = self.find_col(self.tr('Total Freq'))
+                col_freq = self.find_col(self.tr('Total\nFrequency'))
             else:
-                col_freq = self.find_col(self.tr(f'[{settings["apply_to"]}] Freq'))
+                col_freq = self.find_col(self.tr(f'[{settings["apply_to"]}]\nFrequency'))
 
             col_ngrams = self.find_col('N-grams')
             col_files_found = self.find_col('Files Found')
@@ -73,25 +73,27 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
             files_min = settings['files_min']
             files_max = settings['files_max'] if not settings['files_no_limit'] else float('inf')
 
-            self.row_filters = [{} for i in range(self.rowCount())]
+            self.row_filters = [[] for i in range(self.rowCount())]
 
             for i in range(self.rowCount()):
                 if freq_min <= self.item(i, col_freq).val_raw <= freq_max:
-                    self.row_filters[i][self.tr('Freq')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Freq')] = False
+                    self.row_filters[i].append(False)
 
                 if len_min <= len(self.item(i, col_ngrams).text().replace(' ', '')) <= len_max:
-                    self.row_filters[i][self.tr('N-grams')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('N-grams')] = False
+                    self.row_filters[i].append(False)
 
-                if files_min <= self.item(i, col_files_found).val_raw <= files_max:
-                    self.row_filters[i][self.tr('Files Found')] = True
+                if files_min <= self.item(i, col_files_found).val <= files_max:
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Files Found')] = False
+                    self.row_filters[i].append(False)
 
             self.filter_table()
+
+        self.main.status_bar.showMessage(self.tr('Filtering completed!'))
 
 def init(main):
     def load_settings(defaults = False):
@@ -192,14 +194,12 @@ def init(main):
         settings['show_all'] = checkbox_show_all.isChecked()
 
         if settings['show_all']:
-            table_ngram.button_generate_data.setText(main.tr('Generate N-grams'))
             label_ngram_size.setText(main.tr('N-gram Size:'))
 
             checkbox_keyword_position_no_limit.setEnabled(False)
             spin_box_keyword_position_min.setEnabled(False)
             spin_box_keyword_position_max.setEnabled(False)
         else:
-            table_ngram.button_generate_data.setText(main.tr('Generate Word Clusters'))
             label_ngram_size.setText(main.tr('Cluster Size:'))
 
             checkbox_keyword_position_no_limit.setEnabled(True)
@@ -261,7 +261,7 @@ def init(main):
     tab_ngram.layout_table.addWidget(table_ngram.label_number_results, 0, 0)
     tab_ngram.layout_table.addWidget(table_ngram.button_search_results, 0, 4)
     tab_ngram.layout_table.addWidget(table_ngram, 1, 0, 1, 5)
-    tab_ngram.layout_table.addWidget(table_ngram.button_generate_data, 2, 0)
+    tab_ngram.layout_table.addWidget(table_ngram.button_generate_table, 2, 0)
     tab_ngram.layout_table.addWidget(table_ngram.button_generate_plot, 2, 1)
     tab_ngram.layout_table.addWidget(table_ngram.button_export_selected, 2, 2)
     tab_ngram.layout_table.addWidget(table_ngram.button_export_all, 2, 3)
@@ -327,7 +327,7 @@ def init(main):
      spin_box_keyword_position_max) = wordless_widgets.wordless_widgets_filter(main)
 
     line_edit_search_term.textChanged.connect(search_settings_changed)
-    line_edit_search_term.returnPressed.connect(table_ngram.button_generate_data.click)
+    line_edit_search_term.returnPressed.connect(table_ngram.button_generate_table.click)
     list_search_terms.itemChanged.connect(search_settings_changed)
     checkbox_keyword_position_no_limit.stateChanged.connect(search_settings_changed)
     spin_box_keyword_position_min.valueChanged.connect(search_settings_changed)
@@ -426,7 +426,7 @@ def init(main):
      label_rank_min,
      spin_box_rank_min,
      label_rank_max,
-     spin_box_rank_max) = wordless_widgets.wordless_widgets_filter(main, 1, 10000)
+     spin_box_rank_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 10000)
 
     checkbox_use_pct.stateChanged.connect(plot_settings_changed)
     checkbox_use_cumulative.stateChanged.connect(plot_settings_changed)
@@ -456,11 +456,7 @@ def init(main):
      label_freq_min,
      spin_box_freq_min,
      label_freq_max,
-     spin_box_freq_max) = wordless_widgets.wordless_widgets_filter(main,
-                                                                   filter_min = 0,
-                                                                   filter_max = 10000,
-                                                                   table = table_ngram,
-                                                                   col = main.tr('Freq'))
+     spin_box_freq_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 0, filter_max = 1000000)
 
     label_apply_to = QLabel(main.tr('Apply to:'), main)
     combo_box_apply_to = wordless_box.Wordless_Combo_Box_Apply_To(main, table_ngram)
@@ -470,20 +466,14 @@ def init(main):
      label_len_min,
      spin_box_len_min,
      label_len_max,
-     spin_box_len_max) = wordless_widgets.wordless_widgets_filter(main,
-                                                                  table = table_ngram,
-                                                                  col = main.tr('N-grams'))
+     spin_box_len_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 1000)
 
     label_files = QLabel(main.tr('Files Found:'), main)
     (checkbox_files_no_limit,
      label_files_min,
      spin_box_files_min,
      label_files_max,
-     spin_box_files_max) = wordless_widgets.wordless_widgets_filter(main,
-                                                                    filter_min = 1,
-                                                                    filter_max = 1000,
-                                                                    table = table_ngram,
-                                                                    col = main.tr('Files Found'))
+     spin_box_files_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100000)
 
     button_filter_results = QPushButton(main.tr('Filter Results'), main)
 
@@ -504,33 +494,33 @@ def init(main):
     button_filter_results.clicked.connect(lambda: table_ngram.update_filters())
 
     group_box_filter_settings.setLayout(QGridLayout())
-    group_box_filter_settings.layout().addWidget(label_freq, 0, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_freq_no_limit, 0, 3)
-    group_box_filter_settings.layout().addWidget(label_freq_min, 1, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_freq_min, 1, 1)
-    group_box_filter_settings.layout().addWidget(label_freq_max, 1, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_freq_max, 1, 3)
+    group_box_filter_settings.layout().addWidget(label_apply_to, 0, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(combo_box_apply_to, 1, 0, 1, 4)
 
-    group_box_filter_settings.layout().addWidget(label_apply_to, 2, 0)
-    group_box_filter_settings.layout().addWidget(combo_box_apply_to, 2, 1, 1, 3)
-    
-    group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 3, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(label_freq, 2, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_freq_no_limit, 2, 3)
+    group_box_filter_settings.layout().addWidget(label_freq_min, 3, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_freq_min, 3, 1)
+    group_box_filter_settings.layout().addWidget(label_freq_max, 3, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_freq_max, 3, 3)
 
-    group_box_filter_settings.layout().addWidget(label_len, 4, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_len_no_limit, 4, 3)
-    group_box_filter_settings.layout().addWidget(label_len_min, 5, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_len_min, 5, 1)
-    group_box_filter_settings.layout().addWidget(label_len_max, 5, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_len_max, 5, 3)
+    group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 4, 0, 1, 4)
 
-    group_box_filter_settings.layout().addWidget(label_files, 6, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_files_no_limit, 6, 3)
-    group_box_filter_settings.layout().addWidget(label_files_min, 7, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_files_min, 7, 1)
-    group_box_filter_settings.layout().addWidget(label_files_max, 7, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_files_max, 7, 3)
+    group_box_filter_settings.layout().addWidget(label_len, 5, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_len_no_limit, 5, 3)
+    group_box_filter_settings.layout().addWidget(label_len_min, 6, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_len_min, 6, 1)
+    group_box_filter_settings.layout().addWidget(label_len_max, 6, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_len_max, 6, 3)
 
-    group_box_filter_settings.layout().addWidget(button_filter_results, 8, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(label_files, 7, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_files_no_limit, 7, 3)
+    group_box_filter_settings.layout().addWidget(label_files_min, 8, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_files_min, 8, 1)
+    group_box_filter_settings.layout().addWidget(label_files_max, 8, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_files_max, 8, 3)
+
+    group_box_filter_settings.layout().addWidget(button_filter_results, 9, 0, 1, 4)
 
     tab_ngram.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
     tab_ngram.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
@@ -622,11 +612,11 @@ def generate_ngrams(main, files):
 
     return wordless_misc.merge_dicts(freq_distributions)
 
-@ wordless_misc.log_timing('Data generation completed')
-def generate_data(main, table):
+@ wordless_misc.log_timing
+def generate_table(main, table):
     settings = main.settings_custom['ngram']
 
-    files = main.wordless_files.selected_files()
+    files = main.wordless_files.get_selected_files()
 
     if files:
         if (settings['show_all'] or
@@ -637,16 +627,16 @@ def generate_data(main, table):
             if freq_distribution:
                 table.clear_table()
 
-                table.files = files
+                table.settings = main.settings_custom
 
                 for i, file in enumerate(files):
                     table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}] Freq'),
+                                     main.tr(f'[{file["name"]}]\nFrequency'),
                                      num = True, pct = True, cumulative = True, breakdown = True)
 
-                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}] Freq')), Qt.DescendingOrder)
+                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')), Qt.DescendingOrder)
 
-                col_total_freq = table.find_col(main.tr('Total Freq'))
+                col_total_freq = table.find_col(main.tr('Total\nFrequency'))
                 col_files_found = table.find_col(main.tr('Files Found'))
 
                 len_files = len(files)
@@ -657,7 +647,8 @@ def generate_data(main, table):
 
                 table.setRowCount(len(freq_distribution))
 
-                for i, (ngram, freqs) in enumerate(sorted(freq_distribution.items(), key = wordless_misc.multi_sorting)):
+                for i, (ngram, freqs) in enumerate(sorted(freq_distribution.items(),
+                                                          key = wordless_misc.multi_sorting_freq)):
                     # Rank
                     table.set_item_num_int(i, 0, -1)
 
@@ -687,15 +678,17 @@ def generate_data(main, table):
 
                 table.item_changed()
             else:
-                wordless_dialog.wordless_message_empty_results_table(main)
+                wordless_dialog.wordless_message_no_results_table(main)
         else:
             wordless_dialog.wordless_message_empty_search_term(main)
 
-@ wordless_misc.log_timing('Plot generation completed')
+    main.status_bar.showMessage(main.tr('Data generation completed!'))
+
+@ wordless_misc.log_timing
 def generate_plot(main):
     settings = main.settings_custom['ngram']
 
-    files = main.wordless_files.selected_files()
+    files = main.wordless_files.get_selected_files()
 
     if files:
         if (settings['show_all'] or
@@ -711,6 +704,8 @@ def generate_plot(main):
                                                  use_cumulative = settings['use_cumulative'],
                                                  label_x = main.tr('N-grams'))
             else:
-                wordless_dialog.wordless_message_empty_results_plot(main)
+                wordless_dialog.wordless_message_no_results_plot(main)
         else:
             wordless_dialog.wordless_message_empty_search_term(main)
+
+    main.status_bar.showMessage(main.tr('Plot generation completed!'))
