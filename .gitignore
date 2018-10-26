@@ -103,7 +103,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# Micellaneous
+# Custom
+export/*.xlsx
 Test/
 Misc/
 *.pkl

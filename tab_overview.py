@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
@@ -37,7 +37,7 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
                              main.tr('Count of Numbers'),
                              main.tr('Count of Punctuations')
                          ],
-                         orientation = 'vertical',
+                         header_orientation = 'vertical',
                          headers_num = [
                              main.tr('Count of Characters'),
                              main.tr('Count of Paragraphs'),
@@ -83,9 +83,9 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
                              main.tr('Count of Punctuations')
                          ])
 
-        self.button_generate_stats = QPushButton(self.tr('Generate Statistics'), self.main)
+        self.button_generate_table = QPushButton(self.tr('Generate Table'), self.main)
 
-        self.button_generate_stats.clicked.connect(lambda: generate_stats(self.main, self))
+        self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
 
     def clear_table(self, count_headers = 1):
         super().clear_table(0)
@@ -147,11 +147,11 @@ def init(main):
     table_overview = Wordless_Table_Overview(main)
 
     tab_overview.layout_table.addWidget(table_overview, 0, 0, 1, 4)
-    tab_overview.layout_table.addWidget(table_overview.button_generate_stats, 1, 0)
+    tab_overview.layout_table.addWidget(table_overview.button_generate_table, 1, 0)
     tab_overview.layout_table.addWidget(table_overview.button_export_selected, 1, 1)
     tab_overview.layout_table.addWidget(table_overview.button_export_all, 1, 2)
     tab_overview.layout_table.addWidget(table_overview.button_clear, 1, 3)
-
+    
     # Token Settings
     group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
 
@@ -229,18 +229,18 @@ def init(main):
 
     return tab_overview
 
-@ wordless_misc.log_timing('Statistics generation completed')
-def generate_stats(main, table):
+@ wordless_misc.log_timing
+def generate_table(main, table):
     texts = []
+    len_tokens_files = []
 
     settings = main.settings_custom['overview']
-    files = main.wordless_files.selected_files()
+    files = main.wordless_files.get_selected_files()
 
     if files:
         table.clear_table()
 
         table.blockSignals(True)
-        table.setSortingEnabled(False)
         table.setUpdatesEnabled(False)
 
         for i, file in enumerate(files):
@@ -302,6 +302,9 @@ def generate_stats(main, table):
                     count_paras += 1
                     count_sentences += len(wordless_text.wordless_sentence_tokenize(main, para, text.lang_code))
 
+            len_tokens = {len_token + 1: 0
+                          for len_token in range(max([len(token) for token in set(text.tokens)]))}
+
             for token in text.tokens:
                 count_chars += len(token)
 
@@ -319,8 +322,12 @@ def generate_stats(main, table):
                 else:
                     count_puncs += 1
 
+                len_tokens[len(token)] += 1
+            len_tokens_files.append(len_tokens)
+
             count_tokens = len(text.tokens_filtered)
             count_types = len(set(text.tokens_filtered))
+
             ttr = count_types / count_tokens
 
             if count_tokens <= base_sttr:
@@ -351,13 +358,27 @@ def generate_stats(main, table):
             table.set_item_num_cumulative(15, i, count_nums)
             table.set_item_num_cumulative(16, i, count_puncs)
 
+        # Count of n-length Tokens
+        len_tokens_total = wordless_misc.merge_dicts(len_tokens_files)
+
+        for i in range(max(len_tokens_total)):
+            table.insert_row(table.rowCount() - 6,
+                             main.tr(f'Count of {i + 1}-length Tokens'),
+                             num = True, pct = True, cumulative = True)
+
+        for i, (len_token, freqs) in enumerate(len_tokens_total.items()):
+            for j, freq in enumerate(freqs):
+                table.set_item_num_cumulative(table.rowCount() - 6 - max(len_tokens_total) + i, j, freq)
+
         table.blockSignals(False)
-        table.setSortingEnabled(True)
         table.setUpdatesEnabled(True)
 
         table.toggle_pct()
         table.toggle_cumulative()
         table.toggle_breakdown()
+
         table.update_items_width()
 
         table.item_changed()
+
+    main.status_bar.showMessage(main.tr('Data generation completed!'))

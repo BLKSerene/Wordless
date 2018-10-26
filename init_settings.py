@@ -12,6 +12,9 @@ import pickle
 
 import nltk
 
+from wordless_widgets import *
+from wordless_utils import *
+
 def init_settings(main):
     init_settings_global(main)
     init_settings_default(main)
@@ -463,7 +466,8 @@ def init_settings_global(main):
                 main.tr('HanLP - Perceptron Lexical Analyzer'),
                 main.tr('HanLP - Dijkstra Segmenter'),
                 main.tr('HanLP - N-shortest Path Segmenter'),
-                main.tr('HanLP - Viterbi Segmenter')
+                main.tr('HanLP - Viterbi Segmenter'),
+                main.tr('Wordless - Single Character Splitter')
             ],
             'zho_TW': [
                 main.tr('jieba - With HMM'),
@@ -478,7 +482,8 @@ def init_settings_global(main):
                 main.tr('HanLP - Perceptron Lexical Analyzer'),
                 main.tr('HanLP - Dijkstra Segmenter'),
                 main.tr('HanLP - N-shortest Path Segmenter'),
-                main.tr('HanLP - Viterbi Segmenter')
+                main.tr('HanLP - Viterbi Segmenter'),
+                main.tr('Wordless - Single Character Splitter')
             ],
             'ces': [
                 main.tr('NLTK - Treebank Tokenizer'),
@@ -962,6 +967,100 @@ def init_settings_global(main):
             ]
         },
 
+        'significance_tests': {
+            main.tr('Raw Frequency'): {
+                'cols': [main.tr('Raw Freq'), None],
+                'func': wordless_measures.raw_freq
+            },
+
+            main.tr('Student\'s t-test'): {
+                'cols': [main.tr('t-value'), main.tr('p-value')],
+                'func': wordless_measures.students_t_test
+            },
+
+            main.tr('Pearson\'s Chi-squared Test'): {
+                'cols': [main.tr('χ2'), main.tr('p-value')],
+                'func': wordless_measures.chi_squared_test
+            },
+
+            main.tr('Yates\'s Chi-squared Test'): {
+                'cols': [main.tr('χ2'), main.tr('p-value')],
+                'func': wordless_measures.chi_squared_test_yates
+            },
+
+            main.tr('Fisher\'s Exact Test'): {
+                'cols': [None, main.tr('p-value')],
+                'func': wordless_measures.fishers_exact_test
+            },
+
+            main.tr('Log-likelihood Ratio Test'): {
+                'cols': [main.tr('Log-likelihood Ratio'), main.tr('p-value')],
+                'func': wordless_measures.log_likehood_ratio_test
+            },
+
+            main.tr('Pointwise Mutual Information'): {
+                'cols': [main.tr('PMI'), None],
+                'func': wordless_measures.pmi
+            },
+
+            main.tr('Mutual Information'): {
+                'cols': [main.tr('MI'), None],
+                'func': wordless_measures.mi
+            },
+
+            main.tr('Poisson-Stirling'): {
+                'cols': [main.tr('Poisson-Stirling'), None],
+                'func': wordless_measures.poisson_stirling
+            }
+        },
+
+        'effect_size_measures': {
+            main.tr('Phi Coefficient'): {
+                'col': main.tr('Phi Coefficient'),
+                'func': wordless_measures.phi_coeff
+            },
+
+            main.tr('Sørensen-Dice Coefficient'): {
+                'col': main.tr('Sørensen-Dice Coefficient'),
+                'func': wordless_measures.sorensen_dice_coeff
+            },
+
+            main.tr('Jaccard Index'): {
+                'col': main.tr('Jaccard Index'),
+                'func': wordless_measures.jaccard_index
+            },
+
+            main.tr('Odds Ratio'): {
+                'col': main.tr('Odds Ratio'),
+                'func': wordless_measures.odds_ratio
+            },
+
+            main.tr('Risk Ratio'): {
+                'col': main.tr('Risk Ratio'),
+                'func': wordless_measures.risk_ratio
+            },
+
+            main.tr('Log Ratio'): {
+                'col': main.tr('Log Ratio'),
+                'func': wordless_measures.log_ratio
+            },
+
+            main.tr('Difference Coefficient'): {
+                'col': main.tr('Difference Coefficient'),
+                'func': wordless_measures.diff_coeff
+            },
+
+            main.tr('% DIFF'): {
+                'col': main.tr('% DIFF'),
+                'func': wordless_measures.pct_diff
+            },
+
+            main.tr('Yule\'s Q'): {
+                'col': main.tr('Yule\'s Q'),
+                'func': wordless_measures.yules_q
+            }
+        },
+
         'assoc_measures': {
             main.tr('Frequency'): nltk.collocations.BigramAssocMeasures().raw_freq,
             main.tr('Student\'s T-test'): nltk.collocations.BigramAssocMeasures().student_t,
@@ -1009,6 +1108,10 @@ def init_settings_default(main):
 
             'precision_decimal': 2,
             'precision_pct': 2,
+            'precision_p_value': 5,
+
+            'default_paths_open_files': '.',
+            'default_paths_export': './export/',
 
             'font_monospaced': 'Consolas',
 
@@ -1199,7 +1302,6 @@ def init_settings_default(main):
         'file': {
             'files_open': [],
             'files_closed': [],
-            'root_path': '.',
 
             'subfolders': True,
 
@@ -1291,12 +1393,12 @@ def init_settings_default(main):
 
             'use_pct': False,
             'use_cumulative': False,
+
+            'apply_to': main.tr('Total'),
     
             'freq_no_limit': True,
             'freq_min': 0,
             'freq_max': 1000,
-
-            'apply_to': main.tr('Total'),
 
             'len_no_limit': True,
             'len_min': 1,
@@ -1358,12 +1460,12 @@ def init_settings_default(main):
 
             'use_pct': False,
             'use_cumulative': False,
+
+            'apply_to': main.tr('Total'),
     
             'freq_no_limit': True,
             'freq_min': 0,
             'freq_max': 1000,
-            
-            'apply_to': main.tr('Total'),
 
             'len_no_limit': True,
             'len_min': 1,
@@ -1424,6 +1526,8 @@ def init_settings_default(main):
             'rank_min': 1,
             'rank_max': 50,
 
+            'apply_to': main.tr('Total'),
+
             'freq_left_no_limit': True,
             'freq_left_min': 0,
             'freq_left_max': 1000,
@@ -1437,8 +1541,6 @@ def init_settings_default(main):
             'score_right_no_limit': True,
             'score_right_min': 0,
             'score_right_max': 100,
-            
-            'apply_to': main.tr('Total'),
 
             'len_no_limit': True,
             'len_min': 1,
@@ -1495,6 +1597,8 @@ def init_settings_default(main):
             'rank_min': 1,
             'rank_max': 50,
 
+            'apply_to': main.tr('Total'),
+
             'freq_left_no_limit': True,
             'freq_left_min': 0,
             'freq_left_max': 1000,
@@ -1508,8 +1612,72 @@ def init_settings_default(main):
             'score_right_no_limit': True,
             'score_right_min': 0,
             'score_right_max': 100,
-            
+
+            'files_no_limit': True,
+            'files_min': 1,
+            'files_max': 100
+        },
+
+        'keywords': {
+            'search_results': {
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False,
+                'multi_search_mode': False
+            },
+
+            'words': True,
+            'lowercase': True,
+            'uppercase': True,
+            'title_case': True,
+            'treat_as_lowercase': True,
+            'lemmatize': False,
+            'filter_stop_words': False,
+
+            'nums': True,
+            'puncs': False,
+    
+            'ref_file': '',
+            'significance_test': main.tr('Pearson\'s Chi-squared Test'),
+            'effect_size_measure': main.tr('Phi Coefficient'),
+
+            'show_pct': True,
+            'show_cumulative': False,
+            'show_breakdown': True,
+
+            'use_data': main.tr('Effect Size'),
+            'use_pct': False,
+            'use_cumulative': False,
+
+            'rank_no_limit': False,
+            'rank_min': 1,
+            'rank_max': 50,
+
             'apply_to': main.tr('Total'),
+
+            'freq_no_limit': True,
+            'freq_min': 0,
+            'freq_max': 1000,
+
+            'test_stats_no_limit': True,
+            'test_stats_min': 0,
+            'test_stats_max': 100,
+
+            'p_value_no_limit': True,
+            'p_value_min': 0,
+            'p_value_max': 0.5,
+
+            'effect_size_no_limit': True,
+            'effect_size_min': 0,
+            'effect_size_max': 100,
+
+            'len_no_limit': True,
+            'len_min': 1,
+            'len_max': 20,
 
             'files_no_limit': True,
             'files_min': 1,

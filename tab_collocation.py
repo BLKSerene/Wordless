@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
@@ -47,10 +47,10 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
 
         self.button_search_results.clicked.connect(dialog_search.load)
 
-        self.button_generate_data = QPushButton(main.tr('Generate Collocates'), main)
+        self.button_generate_table = QPushButton(main.tr('Generate Table'), main)
         self.button_generate_plot = QPushButton(main.tr('Generate Plot'), main)
 
-        self.button_generate_data.clicked.connect(lambda: generate_data(self.main, self))
+        self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_plot.clicked.connect(lambda: generate_plot(self.main))
 
     def toggle_breakdown(self):
@@ -82,21 +82,21 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
 
         self.cols_breakdown_position = set()
 
-    @ wordless_misc.log_timing('Filtering')
+    @ wordless_misc.log_timing
     def update_filters(self):
         if any([self.item(0, i) for i in range(self.columnCount())]):
             settings = self.main.settings_custom['collocation']
 
             if settings['apply_to'] == self.tr('Total'):
-                col_freq_left = self.find_col(self.tr('Total Freq/L'))
-                col_freq_right = self.find_col(self.tr('Total Freq/R'))
-                col_score_left = self.find_col(self.tr('Total Score/L'))
-                col_score_right = self.find_col(self.tr('Total Score/R'))
+                col_freq_left = self.find_col(self.tr('Total\nFrequency/L'))
+                col_freq_right = self.find_col(self.tr('Total\nFrequency/R'))
+                col_score_left = self.find_col(self.tr('Total\nScore/L'))
+                col_score_right = self.find_col(self.tr('Total\nScore/R'))
             else:
-                col_freq_left = self.find_col(self.tr(f'[{settings["freq_left_apply_to"]}] Freq/L'))
-                col_freq_right = self.find_col(self.tr(f'[{settings["freq_right_apply_to"]}] Freq/R'))
-                col_score_left = self.find_col(self.tr(f'[{settings["score_left_apply_to"]}] Score/L'))
-                col_score_right = self.find_col(self.tr(f'[{settings["score_right_apply_to"]}] Score/R'))
+                col_freq_left = self.find_col(self.tr(f'[{settings["apply_to"]}]\nFrequency/L'))
+                col_freq_right = self.find_col(self.tr(f'[{settings["apply_to"]}]\nFrequency/R'))
+                col_score_left = self.find_col(self.tr(f'[{settings["apply_to"]}]\nScore/L'))
+                col_score_right = self.find_col(self.tr(f'[{settings["apply_to"]}]\nScore/R'))
 
             col_collocates = self.find_col('Collocates')
             col_files_found = self.find_col('Files Found')
@@ -105,47 +105,52 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
             freq_left_max = settings['freq_left_max'] if not settings['freq_left_no_limit'] else float('inf')
             freq_right_min = settings['freq_right_min']
             freq_right_max = settings['freq_right_max'] if not settings['freq_right_no_limit'] else float('inf')
+
             score_left_min = settings['score_left_min']
             score_left_max = settings['score_left_max'] if not settings['score_left_no_limit'] else float('inf')
             score_right_min = settings['score_right_min']
             score_right_max = settings['score_right_max'] if not settings['score_right_no_limit'] else float('inf')
+
             len_min = settings['len_min']
             len_max = settings['len_max'] if not settings['len_no_limit'] else float('inf')
+
             files_min = settings['files_min']
             files_max = settings['files_max'] if not settings['files_no_limit'] else float('inf')
 
-            self.row_filters = [{} for i in range(self.rowCount())]
+            self.row_filters = [[] for i in range(self.rowCount())]
 
             for i in range(self.rowCount()):
                 if freq_left_min <= self.item(i, col_freq_left).val_raw <= freq_left_max:
-                    self.row_filters[i][self.tr('Freq/L')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Freq/L')] = False
+                    self.row_filters[i].append(False)
                 if freq_right_min <= self.item(i, col_freq_right).val_raw <= freq_right_max:
-                    self.row_filters[i][self.tr('Freq/R')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Freq/R')] = False
+                    self.row_filters[i].append(False)
 
                 if score_left_min <= self.item(i, col_score_left).val <= score_left_max:
-                    self.row_filters[i][self.tr('Score/L')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Score/L')] = False
+                    self.row_filters[i].append(False)
                 if score_right_min <= self.item(i, col_score_right).val <= score_right_max:
-                    self.row_filters[i][self.tr('Score/R')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Score/R')] = False
+                    self.row_filters[i].append(False)
 
                 if len_min <= len(self.item(i, col_collocates).text().replace(' ', '')) <= len_max:
-                    self.row_filters[i][self.tr('Collocates')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Collocates')] = False
+                    self.row_filters[i].append(False)
 
-                if files_min <= self.item(i, col_files_found).val_raw <= files_max:
-                    self.row_filters[i][self.tr('Files Found')] = True
+                if files_min <= self.item(i, col_files_found).val <= files_max:
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Files Found')] = False
+                    self.row_filters[i].append(False)
 
             self.filter_table()
+
+        self.main.status_bar.showMessage(self.tr('Filtering completed!'))
 
 def init(main):
     def load_settings(defaults = False):
@@ -206,6 +211,8 @@ def init(main):
         spin_box_rank_min.setValue(settings_loaded['rank_min'])
         spin_box_rank_max.setValue(settings_loaded['rank_max'])
 
+        combo_box_apply_to.setCurrentText(settings_loaded['apply_to'])
+
         checkbox_freq_left_no_limit.setChecked(settings_loaded['freq_left_no_limit'])
         spin_box_freq_left_min.setValue(settings_loaded['freq_left_min'])
         spin_box_freq_left_max.setValue(settings_loaded['freq_left_max'])
@@ -219,8 +226,6 @@ def init(main):
         checkbox_score_right_no_limit.setChecked(settings_loaded['score_right_no_limit'])
         spin_box_score_right_min.setValue(settings_loaded['score_right_min'])
         spin_box_score_right_max.setValue(settings_loaded['score_right_max'])
-
-        combo_box_apply_to.setCurrentText(settings_loaded['apply_to'])
 
         checkbox_len_no_limit.setChecked(settings_loaded['len_no_limit'])
         spin_box_len_min.setValue(settings_loaded['len_min'])
@@ -259,11 +264,6 @@ def init(main):
         settings['use_regex'] = checkbox_use_regex.isChecked()
         settings['multi_search_mode'] = checkbox_multi_search_mode.isChecked()
         settings['show_all'] = checkbox_show_all.isChecked()
-
-        if settings['show_all']:
-            table_collocation.button_generate_data.setText(main.tr('Generate Collocates'))
-        else:
-            table_collocation.button_generate_data.setText(main.tr('Search Collocates'))
 
     def generation_settings_changed():
         settings['window_sync'] = checkbox_window_sync.isChecked()
@@ -322,6 +322,8 @@ def init(main):
             checkbox_use_cumulative.setEnabled(True)
 
     def filter_settings_changed():
+        settings['apply_to'] = combo_box_apply_to.currentText()
+
         settings['freq_left_no_limit'] = checkbox_freq_left_no_limit.isChecked()
         settings['freq_left_min'] = spin_box_freq_left_min.value()
         settings['freq_left_max'] = spin_box_freq_left_max.value()
@@ -335,8 +337,6 @@ def init(main):
         settings['score_right_no_limit'] = checkbox_score_right_no_limit.isChecked()
         settings['score_right_min'] = spin_box_score_right_min.value()
         settings['score_right_max'] = spin_box_score_right_max.value()
-
-        settings['apply_to'] = combo_box_apply_to.currentText()
 
         settings['len_no_limit'] = checkbox_len_no_limit.isChecked()
         settings['len_min'] = spin_box_len_min.value()
@@ -355,7 +355,7 @@ def init(main):
     tab_collocation.layout_table.addWidget(table_collocation.label_number_results, 0, 0)
     tab_collocation.layout_table.addWidget(table_collocation.button_search_results, 0, 4)
     tab_collocation.layout_table.addWidget(table_collocation, 1, 0, 1, 5)
-    tab_collocation.layout_table.addWidget(table_collocation.button_generate_data, 2, 0)
+    tab_collocation.layout_table.addWidget(table_collocation.button_generate_table, 2, 0)
     tab_collocation.layout_table.addWidget(table_collocation.button_generate_plot, 2, 1)
     tab_collocation.layout_table.addWidget(table_collocation.button_export_selected, 2, 2)
     tab_collocation.layout_table.addWidget(table_collocation.button_export_all, 2, 3)
@@ -414,7 +414,7 @@ def init(main):
      checkbox_multi_search_mode) = wordless_widgets.wordless_widgets_search(main)
 
     line_edit_search_term.textChanged.connect(search_settings_changed)
-    line_edit_search_term.returnPressed.connect(table_collocation.button_generate_data.click)
+    line_edit_search_term.returnPressed.connect(table_collocation.button_generate_table.click)
     list_search_terms.itemChanged.connect(search_settings_changed)
 
     checkbox_ignore_case.stateChanged.connect(search_settings_changed)
@@ -514,7 +514,7 @@ def init(main):
      label_rank_min,
      spin_box_rank_min,
      label_rank_max,
-     spin_box_rank_max) = wordless_widgets.wordless_widgets_filter(main, 1, 10000)
+     spin_box_rank_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 10000)
 
     combo_box_use_data.currentTextChanged.connect(plot_settings_changed)
     checkbox_use_pct.stateChanged.connect(plot_settings_changed)
@@ -547,74 +547,54 @@ def init(main):
     # Filter Settings
     group_box_filter_settings = QGroupBox(main.tr('Filter Settings'), main)
 
+    label_apply_to = QLabel(main.tr('Apply Following Filters to:'), main)
+    combo_box_apply_to = wordless_box.Wordless_Combo_Box_Apply_To(main, table_collocation)
+
     label_freq_left = QLabel(main.tr('Frequency (Left):'), main)
     (checkbox_freq_left_no_limit,
      label_freq_left_min,
      spin_box_freq_left_min,
      label_freq_left_max,
-     spin_box_freq_left_max) = wordless_widgets.wordless_widgets_filter(main,
-                                                                        filter_min = 0,
-                                                                        filter_max = 10000,
-                                                                        table = table_collocation,
-                                                                        col = main.tr('Freq/L'))
+     spin_box_freq_left_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 0, filter_max = 1000000)
 
     label_freq_right = QLabel(main.tr('Frequency (Right):'), main)
     (checkbox_freq_right_no_limit,
      label_freq_right_min,
      spin_box_freq_right_min,
      label_freq_right_max,
-     spin_box_freq_right_max) = wordless_widgets.wordless_widgets_filter(main,
-                                                                         filter_min = 0,
-                                                                         filter_max = 10000,
-                                                                         table = table_collocation,
-                                                                         col = main.tr('Freq/R'))
+     spin_box_freq_right_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 0, filter_max = 1000000)
 
     label_score_left = QLabel(main.tr('Score (Left):'), main)
     (checkbox_score_left_no_limit,
      label_score_left_min,
      spin_box_score_left_min,
      label_score_left_max,
-     spin_box_score_left_max) = wordless_widgets.wordless_widgets_filter(main,
-                                                                         filter_min = 0,
-                                                                         filter_max = 10000,
-                                                                         table = table_collocation,
-                                                                         col = main.tr('Score/L'))
+     spin_box_score_left_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 0.0, filter_max = 10000.0)
 
     label_score_right = QLabel(main.tr('Score (Right):'), main)
     (checkbox_score_right_no_limit,
      label_score_right_min,
      spin_box_score_right_min,
      label_score_right_max,
-     spin_box_score_right_max) = wordless_widgets.wordless_widgets_filter(main,
-                                                                          filter_min = 0,
-                                                                          filter_max = 10000,
-                                                                          table = table_collocation,
-                                                                          col = main.tr('Score/R'))
-
-    label_apply_to = QLabel(main.tr('Apply to:'), main)
-    combo_box_apply_to = wordless_box.Wordless_Combo_Box_Apply_To(main, table_collocation)
+     spin_box_score_right_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 0.0, filter_max = 10000.0)
 
     label_len = QLabel(main.tr('Collocate Length:'), main)
     (checkbox_len_no_limit,
      label_len_min,
      spin_box_len_min,
      label_len_max,
-     spin_box_len_max) = wordless_widgets.wordless_widgets_filter(main,
-                                                                  table = table_collocation,
-                                                                  col = main.tr('Collocates'))
+     spin_box_len_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100)
 
     label_files = QLabel(main.tr('Files Found:'), main)
     (checkbox_files_no_limit,
      label_files_min,
      spin_box_files_min,
      label_files_max,
-     spin_box_files_max) = wordless_widgets.wordless_widgets_filter(main,
-                                                                    filter_min = 1,
-                                                                    filter_max = 1000,
-                                                                    table = table_collocation,
-                                                                    col = main.tr('Files Found'))
+     spin_box_files_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100000)
 
     button_filter_results = QPushButton(main.tr('Filter Results'), main)
+
+    combo_box_apply_to.currentTextChanged.connect(filter_settings_changed)
 
     checkbox_freq_left_no_limit.stateChanged.connect(filter_settings_changed)
     spin_box_freq_left_min.valueChanged.connect(filter_settings_changed)
@@ -630,8 +610,6 @@ def init(main):
     spin_box_score_right_min.valueChanged.connect(filter_settings_changed)
     spin_box_score_right_max.valueChanged.connect(filter_settings_changed)
 
-    combo_box_apply_to.currentTextChanged.connect(filter_settings_changed)
-
     checkbox_len_no_limit.stateChanged.connect(filter_settings_changed)
     spin_box_len_min.valueChanged.connect(filter_settings_changed)
     spin_box_len_max.valueChanged.connect(filter_settings_changed)
@@ -643,54 +621,54 @@ def init(main):
     button_filter_results.clicked.connect(lambda: table_collocation.update_filters())
 
     group_box_filter_settings.setLayout(QGridLayout())
-    group_box_filter_settings.layout().addWidget(label_freq_left, 0, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_freq_left_no_limit, 0, 3)
-    group_box_filter_settings.layout().addWidget(label_freq_left_min, 1, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_freq_left_min, 1, 1)
-    group_box_filter_settings.layout().addWidget(label_freq_left_max, 1, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_freq_left_max, 1, 3)
+    group_box_filter_settings.layout().addWidget(label_apply_to, 0, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(combo_box_apply_to, 1, 0, 1, 4)
 
-    group_box_filter_settings.layout().addWidget(label_freq_right, 2, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_freq_right_no_limit, 2, 3)
-    group_box_filter_settings.layout().addWidget(label_freq_right_min, 3, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_freq_right_min, 3, 1)
-    group_box_filter_settings.layout().addWidget(label_freq_right_max, 3, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_freq_right_max, 3, 3)
+    group_box_filter_settings.layout().addWidget(label_freq_left, 2, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_freq_left_no_limit, 2, 3)
+    group_box_filter_settings.layout().addWidget(label_freq_left_min, 3, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_freq_left_min, 3, 1)
+    group_box_filter_settings.layout().addWidget(label_freq_left_max, 3, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_freq_left_max, 3, 3)
 
-    group_box_filter_settings.layout().addWidget(label_score_left, 4, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_score_left_no_limit, 4, 3)
-    group_box_filter_settings.layout().addWidget(label_score_left_min, 5, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_score_left_min, 5, 1)
-    group_box_filter_settings.layout().addWidget(label_score_left_max, 5, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_score_left_max, 5, 3)
+    group_box_filter_settings.layout().addWidget(label_freq_right, 4, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_freq_right_no_limit, 4, 3)
+    group_box_filter_settings.layout().addWidget(label_freq_right_min, 5, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_freq_right_min, 5, 1)
+    group_box_filter_settings.layout().addWidget(label_freq_right_max, 5, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_freq_right_max, 5, 3)
 
-    group_box_filter_settings.layout().addWidget(label_score_right, 6, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_score_right_no_limit, 6, 3)
-    group_box_filter_settings.layout().addWidget(label_score_right_min, 7, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_score_right_min, 7, 1)
-    group_box_filter_settings.layout().addWidget(label_score_right_max, 7, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_score_right_max, 7, 3)
+    group_box_filter_settings.layout().addWidget(label_score_left, 6, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_score_left_no_limit, 6, 3)
+    group_box_filter_settings.layout().addWidget(label_score_left_min, 7, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_score_left_min, 7, 1)
+    group_box_filter_settings.layout().addWidget(label_score_left_max, 7, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_score_left_max, 7, 3)
 
-    group_box_filter_settings.layout().addWidget(label_apply_to, 8, 0)
-    group_box_filter_settings.layout().addWidget(combo_box_apply_to, 8, 1, 1, 3)
+    group_box_filter_settings.layout().addWidget(label_score_right, 8, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_score_right_no_limit, 8, 3)
+    group_box_filter_settings.layout().addWidget(label_score_right_min, 9, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_score_right_min, 9, 1)
+    group_box_filter_settings.layout().addWidget(label_score_right_max, 9, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_score_right_max, 9, 3)
 
-    group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 9, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 10, 0, 1, 4)
 
-    group_box_filter_settings.layout().addWidget(label_len, 10, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_len_no_limit, 10, 3)
-    group_box_filter_settings.layout().addWidget(label_len_min, 11, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_len_min, 11, 1)
-    group_box_filter_settings.layout().addWidget(label_len_max, 11, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_len_max, 11, 3)
+    group_box_filter_settings.layout().addWidget(label_len, 11, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_len_no_limit, 11, 3)
+    group_box_filter_settings.layout().addWidget(label_len_min, 12, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_len_min, 12, 1)
+    group_box_filter_settings.layout().addWidget(label_len_max, 12, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_len_max, 12, 3)
 
-    group_box_filter_settings.layout().addWidget(label_files, 12, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_files_no_limit, 12, 3)
-    group_box_filter_settings.layout().addWidget(label_files_min, 13, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_files_min, 13, 1)
-    group_box_filter_settings.layout().addWidget(label_files_max, 13, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_files_max, 13, 3)
+    group_box_filter_settings.layout().addWidget(label_files, 13, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_files_no_limit, 13, 3)
+    group_box_filter_settings.layout().addWidget(label_files_min, 14, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_files_min, 14, 1)
+    group_box_filter_settings.layout().addWidget(label_files_max, 14, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_files_max, 14, 3)
 
-    group_box_filter_settings.layout().addWidget(button_filter_results, 14, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(button_filter_results, 15, 0, 1, 4)
 
     tab_collocation.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
     tab_collocation.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
@@ -851,17 +829,15 @@ def generate_collocates(main, files):
 
     return wordless_misc.merge_dicts(freq_distributions), wordless_misc.merge_dicts(score_distributions)
 
-@ wordless_misc.log_timing('Data generation completed')
-def generate_data(main, table):
+@ wordless_misc.log_timing
+def generate_table(main, table):
     settings = main.settings_custom['collocation']
-    files = main.wordless_files.selected_files()
+    files = main.wordless_files.get_selected_files()
 
     if files:
         if (settings['show_all'] or
             not settings['show_all'] and (settings['multi_search_mode'] and settings['search_terms'] or
                                           not settings['multi_search_mode'] and settings['search_term'])):
-            table.files = files
-
             if settings['window_left'] < 0 and settings['window_right'] > 0:
                 window_size_left = abs(settings['window_left'])
                 window_size_right = abs(settings['window_right'])
@@ -878,80 +854,78 @@ def generate_data(main, table):
             if freq_distribution:
                 table.clear_table()
 
-                table.files = files
+                table.settings = main.settings_custom
 
                 # Insert columns
                 for i, file in enumerate(files):
                     for i in range(settings['window_left'], settings['window_right'] + 1):
                         if i < 0:
                             table.insert_col(table.columnCount() - 1,
-                                             main.tr(f'[{file["name"]}] L{-i}'),
+                                             main.tr(f'[{file["name"]}]\nL{-i}'),
                                              num = True, pct = True, cumulative = True, breakdown = True)
                         elif i > 0:
                             table.insert_col(table.columnCount() - 1,
-                                             main.tr(f'[{file["name"]}] R{i}'),
+                                             main.tr(f'[{file["name"]}]\nR{i}'),
                                              num = True, pct = True, cumulative = True, breakdown = True)
 
                         table.cols_breakdown_position.add(table.columnCount() - 2)
 
                     if window_size_left:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}] Freq/L'),
+                                         main.tr(f'[{file["name"]}]\nFrequency/L'),
                                          num = True, pct = True, cumulative = True, breakdown = True)
                     if window_size_right:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}] Freq/R'),
+                                         main.tr(f'[{file["name"]}]\nFrequency/R'),
                                          num = True, pct = True, cumulative = True, breakdown = True)
                     if window_size_left:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}] Score/L'),
+                                         main.tr(f'[{file["name"]}]\nScore/L'),
                                          num = True, breakdown = True)
                     if window_size_right:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}] Score/R'),
+                                         main.tr(f'[{file["name"]}]\nScore/R'),
                                          num = True, breakdown = True)
 
                 for i in range(settings['window_left'], settings['window_right'] + 1):
                     if i < 0:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'Total L{-i}'),
+                                         main.tr(f'Total\nL{-i}'),
                                          num = True, pct = True, cumulative = True)
                     elif i > 0:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'Total R{i}'),
+                                         main.tr(f'Total\nR{i}'),
                                          num = True, pct = True, cumulative = True)
 
                     table.cols_breakdown_position.add(table.columnCount() - 2)
 
                 if window_size_left:
                     table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'Total Freq/L'),
+                                     main.tr(f'Total\nFrequency/L'),
                                      num = True, pct = True, cumulative = True)
                 if window_size_right:
                     table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'Total Freq/R'),
+                                     main.tr(f'Total\nFrequency/R'),
                                      num = True, pct = True, cumulative = True)
                 if window_size_left:
-                    table.insert_col(table.columnCount() - 1, main.tr(f'Total Score/L'),
+                    table.insert_col(table.columnCount() - 1, main.tr(f'Total\nScore/L'),
                                      num = True)
                 if window_size_right:
-                    table.insert_col(table.columnCount() - 1, main.tr(f'Total Score/R'),
+                    table.insert_col(table.columnCount() - 1, main.tr(f'Total\nScore/R'),
                                      num = True)
 
-                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}] Score/R')), Qt.DescendingOrder)
+                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\nScore/R')), Qt.DescendingOrder)
 
-                col_keywords = table.find_col(main.tr('Keywords'))
-                col_collocates = table.find_col(main.tr('Collocates'))
                 cols_freq = table.find_col([main.tr(f'[{file["name"]}]') for file in files], fuzzy_matching = True)
-                cols_freq_left = table.find_col([main.tr(f'[{file["name"]}] Freq/L') for file in files])
-                cols_freq_right = table.find_col([main.tr(f'[{file["name"]}] Freq/R') for file in files])
-                cols_score_left = table.find_col([main.tr(f'[{file["name"]}] Score/L') for file in files])
-                cols_score_right = table.find_col([main.tr(f'[{file["name"]}] Score/R') for file in files])
+                cols_freq_left = table.find_col([main.tr(f'[{file["name"]}]\nFrequency/L') for file in files])
+                cols_freq_right = table.find_col([main.tr(f'[{file["name"]}]\nFrequency/R') for file in files])
+                cols_score_left = table.find_col([main.tr(f'[{file["name"]}]\nScore/L') for file in files])
+                cols_score_right = table.find_col([main.tr(f'[{file["name"]}]\nScore/R') for file in files])
                 cols_freq_total = table.find_cols(main.tr('Total'))
-                col_total_freq_left = table.find_col(main.tr('Total Freq/L'))
-                col_total_freq_right = table.find_col(main.tr('Total Freq/R'))
-                col_total_score_left = table.find_col(main.tr('Total Score/L'))
-                col_total_score_right = table.find_col(main.tr('Total Score/R'))
+                col_total_freq_left = table.find_col(main.tr('Total\nFrequency/L'))
+                col_total_freq_right = table.find_col(main.tr('Total\nFrequency/R'))
+                col_total_score_left = table.find_col(main.tr('Total\nScore/L'))
+                col_total_score_right = table.find_col(main.tr('Total\nScore/R'))
                 col_files_found = table.find_col(main.tr('Files Found'))
 
                 len_files = len(files)
@@ -962,7 +936,8 @@ def generate_data(main, table):
 
                 table.setRowCount(len(freq_distribution))
 
-                for i, ((keyword, collocate), scores) in enumerate(sorted(score_distribution.items(), key = wordless_misc.multi_sorting)):
+                for i, ((keyword, collocate), scores) in enumerate(sorted(score_distribution.items(),
+                                                                          key = wordless_misc.multi_sorting_score)):
                     # Rank
                     table.set_item_num_int(i, 0, -1)
 
@@ -985,7 +960,7 @@ def generate_data(main, table):
                         table.set_item_num_float(i, col_total_score_right, scores[-1][1])
 
                 for i in range(table.rowCount()):
-                    freq_files_positions = freq_distribution[(table.item(i, col_keywords).text(), table.item(i, col_collocates).text())]
+                    freq_files_positions = freq_distribution[(table.item(i, 1).text(), table.item(i, 2).text())]
                     freq_files = numpy.array(freq_files_positions).sum(axis = 1)
                     freq_positions = numpy.array(freq_files_positions).sum(axis = 0)
 
@@ -1030,15 +1005,17 @@ def generate_data(main, table):
 
                 table.item_changed()
             else:
-                wordless_dialog.wordless_message_empty_results_table(main)
+                wordless_dialog.wordless_message_no_results_table(main)
         else:
             wordless_dialog.wordless_message_empty_search_term(main)
 
-@ wordless_misc.log_timing('Plot generation completed')
+    main.status_bar.showMessage(main.tr('Data generation completed!'))
+
+@ wordless_misc.log_timing
 def generate_plot(main):
     settings = main.settings_custom['collocation']
 
-    files = main.wordless_files.selected_files()
+    files = main.wordless_files.get_selected_files()
 
     if files:
         if (settings['show_all'] or
@@ -1086,6 +1063,8 @@ def generate_plot(main):
                                                   rank_max = settings['rank_max'],
                                                   label_x = main.tr('Collocates'))
             else:
-                wordless_dialog.wordless_message_empty_results_plot(main)
+                wordless_dialog.wordless_message_no_results_plot(main)
         else:
             wordless_dialog.wordless_message_empty_search_term(main)
+
+    main.status_bar.showMessage(main.tr('Plot generation completed!'))
