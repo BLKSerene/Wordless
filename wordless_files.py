@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
@@ -45,13 +45,30 @@ class Wordless_Files():
 
         return file
 
-    @ wordless_misc.log_timing('Files added')
+    @ wordless_misc.log_timing
     def add_files(self, file_paths):
+        len_files_old = len(self.main.settings_custom['file']['files_open'])
+
         for file_path in file_paths:
             if os.path.splitext(file_path)[1] in self.main.settings_global['file_exts']:
-                self.main.settings_custom['file']['files_open'].append(self._new_file(file_path))
+                if os.path.getsize(file_path):
+                    self.main.settings_custom['file']['files_open'].append(self._new_file(file_path))
+                else:
+                    QMessageBox.warning(self.main,
+                                        self.main.tr('Empty File'),
+                                        self.main.tr(f'File "{file_path}" is empty!'),
+                                        QMessageBox.Ok)
 
         self.write_table()
+
+        len_files_new = len(self.main.settings_custom['file']['files_open'])
+
+        if len_files_new - len_files_old == 0:
+            self.main.status_bar.showMessage('No files are newly opened!')
+        elif len_files_new - len_files_old == 1:
+            self.main.status_bar.showMessage('1 file has been successfully loaded.')
+        else:
+            self.main.status_bar.showMessage(f'{len_files_new - len_files_old} files have been successfully loaded.')
 
     def remove_files(self, indexes):
         self.main.settings_custom['file']['files_closed'].append([])
@@ -102,18 +119,18 @@ class Wordless_Files():
 
         self.table.blockSignals(False)
 
-        self.table.file_item_changed()
+        self.table.itemChanged.emit(self.table.item(0, 0))
 
-    def selected_files(self):
-        selected_files = [file for file in self.main.settings_custom['file']['files_open'] if file['selected']]
+    def get_selected_files(self, warning = True):
+        files_selected = [file for file in self.main.settings_custom['file']['files_open'] if file['selected']]
 
-        if selected_files == []:
+        if warning and not files_selected:
             QMessageBox.warning(self.main,
-                                self.main.tr('Empty Input'),
+                                self.main.tr('No Selected Files'),
                                 self.main.tr('There are no files being currently selected! Please check and try again.'),
                                 QMessageBox.Ok)
 
-        return selected_files
+        return files_selected
 
 class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
     def __init__(self, main):
@@ -132,7 +149,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
         self.itemClicked.connect(self.file_item_changed)
         self.itemSelectionChanged.connect(self.file_selection_changed)
 
-        self.button_open_files = QPushButton(self.tr('Add Files...'))
+        self.button_open_files = QPushButton(self.tr('Add File(s)...'))
         self.button_open_dir = QPushButton(self.tr('Add Folder...'))
 
         self.button_close_selected = QPushButton(self.tr('Close Selected File(s)'))
@@ -166,8 +183,6 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
 
         self.main.wordless_files = Wordless_Files(self)
         self.main.wordless_files.write_table()
-
-        self.file_item_changed()
 
     def file_item_changed(self):
         duplicate_files = 0
@@ -235,35 +250,35 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
     def open_files(self):
         file_paths = QFileDialog.getOpenFileNames(self.main,
                                                   self.tr('Choose multiple files'),
-                                                  self.main.settings_custom['file']['root_path'],
+                                                  self.main.settings_custom['general']['default_paths_open_files'],
                                                   ';;'.join(self.main.settings_global['file_exts'].values()))[0]
 
         if file_paths:
             self.main.wordless_files.add_files(file_paths)
 
-            self.main.settings_custom['file']['root_path'] = os.path.realpath(os.path.split(file_paths[0])[0])
+            self.main.settings_custom['general']['default_paths_open_files'] = os.path.split(file_paths[0])[0]
 
     def open_dir(self, subfolders = True):
         file_paths = []
 
-        root_path = QFileDialog.getExistingDirectory(self.main,
+        file_dir = QFileDialog.getExistingDirectory(self.main,
                                                      self.tr('Choose a folder'),
-                                                     self.main.settings_custom['file']['root_path'],)
+                                                     self.main.settings_custom['general']['default_paths_open_files'],)
 
-        if root_path:
+        if file_dir:
             if subfolders:
-                for dir_path, dir_names, file_names in os.walk(root_path):
+                for dir_path, dir_names, file_names in os.walk(file_dir):
                     for file_name in file_names:
                         file_paths.append(os.path.realpath(os.path.join(dir_path, file_name)))
             else:
-                file_names = list(os.walk(root_path))[0][2]
+                file_names = list(os.walk(file_dir))[0][2]
 
                 for file_name in file_names:
-                    file_paths.append(os.path.realpath(os.path.join(root_path, file_name)))
+                    file_paths.append(os.path.realpath(os.path.join(file_dir, file_name)))
 
             self.main.wordless_files.add_files(file_paths)
 
-            self.main.settings_custom['file']['root_path'] = root_path
+            self.main.settings_custom['general']['default_paths_open_files'] = file_dir
 
     def reopen(self):
         self.main.wordless_files.reopen_files()
@@ -361,8 +376,6 @@ def init(main):
 
     widget_files.layout_settings.addWidget(group_box_folder_settings, 0, 0, Qt.AlignTop)
     widget_files.layout_settings.addWidget(group_box_auto_detection_settings, 1, 0, Qt.AlignTop)
-
-    widget_files.layout().setColumnStretch(0, 5)
 
     load_settings()
 
