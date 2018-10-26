@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 from PyQt5.QtCore import *
@@ -218,6 +218,8 @@ class Wordless_Table_Data(Wordless_Table):
 
         self.blockSignals(False)
 
+        self.itemChanged.emit(self.item(0, 0))
+
         event.accept()
 
     def item_changed(self):
@@ -326,7 +328,6 @@ class Wordless_Table_Data(Wordless_Table):
         self.set_item_num(row, col, item)
 
     def update_items_width(self):
-        precision_val = self.main.settings_custom['general']['precision_decimal']
         precision_pct = self.main.settings_custom['general']['precision_pct']
         len_pct = precision_pct + 5
 
@@ -339,12 +340,20 @@ class Wordless_Table_Data(Wordless_Table):
 
         if self.orientation == 'horizontal':
             for col in self.headers_num:
-                max_val = max([self.item(row, col).val for row in range(self.rowCount())])
+                max_val = max([self.item(row, col).val
+                               for row in range(self.rowCount())
+                               if self.item(row, col).val != float('inf')])
+
+                # p-value
+                if self.horizontalHeaderItem(col).text().find(self.tr('p-value')) > -1:
+                    precision_val = self.main.settings_custom['general']['precision_p_value']
+                else:
+                    precision_val = self.main.settings_custom['general']['precision_decimal']
 
                 if type(max_val) == int:
                     len_val = len(f'{max_val:,}')
                 else:
-                    len_val = len(f'{max_val:.{precision_val}}')
+                    len_val = len(f'{max_val:.{precision_val}f}')
 
                 if col in self.headers_pct and self.show_pct:
                     pct_max = max([self.item(row, col).pct for row in range(self.rowCount())])
@@ -361,7 +370,12 @@ class Wordless_Table_Data(Wordless_Table):
                             if not self.isRowHidden(row):
                                 item = self.item(row, col)
 
-                                item.setText(f'{item.val:>{len_val}.{precision_val}}/{item.pct:<{len_pct}.{precision_pct}%}')
+                                if item.val == float('inf'):
+                                    item.setText('+ ∞')
+                                elif item.val == float('-inf'):
+                                    item.setText('- ∞')
+                                else:
+                                    item.setText(f'{item.val:>{len_val}.{precision_val}}/{item.pct:<{len_pct}.{precision_pct}%}')
                 else:
                     if type(max_val) == int:
                         for row in range(self.rowCount()):
@@ -374,7 +388,12 @@ class Wordless_Table_Data(Wordless_Table):
                             if not self.isRowHidden(row):
                                 item = self.item(row, col)
 
-                                item.setText(f'{item.val:>{len_val}.{precision_val}f}')
+                                if item.val == float('inf'):
+                                    item.setText('+ ∞')
+                                elif item.val == float('-inf'):
+                                    item.setText('- ∞')
+                                else:
+                                    item.setText(f'{item.val:>{len_val}.{precision_val}f}')
         else:
             for row in self.headers_num:
                 max_val = max([self.item(row, col).val for col in range(self.columnCount())])
@@ -555,7 +574,7 @@ class Wordless_Table_Data(Wordless_Table):
         self.setUpdatesEnabled(False)
         
         for i, filters in enumerate(self.row_filters):
-            if [val for val in filters.values() if not val]:
+            if [val for val in filters if not val]:
                 self.hideRow(i)
             else:
                 self.showRow(i)
@@ -613,7 +632,7 @@ class Wordless_Table_Data(Wordless_Table):
         self.headers_pct = set(self.find_header(self.headers_pct_old))
         self.headers_cumulative = set(self.find_header(self.headers_cumulative_old))
         self.cols_breakdown = set(self.find_col(self.cols_breakdown_old))
-        self.files = []
+        self.settings = self.main.settings_default
 
         self.item_changed()
 

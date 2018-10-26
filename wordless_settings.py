@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
@@ -42,6 +42,8 @@ class Wordless_Table_Stop_Words(wordless_table.Wordless_Table):
             self.setItem(row, col, QTableWidgetItem(token))
 
 class Wordless_Settings(QDialog):
+    wordless_settings_changed = pyqtSignal()
+
     def __init__(self, parent):
         def selection_changed():
             self.settings_general.hide()
@@ -148,17 +150,22 @@ class Wordless_Settings(QDialog):
 
         self.label_precision_decimal = QLabel(self.tr('Decimal:'), self)
         self.spin_box_precision_decimal = QSpinBox(self)
-        self.label_precision_pct = QLabel(self.tr('Percentage'), self)
+        self.label_precision_pct = QLabel(self.tr('Percentage:'), self)
         self.spin_box_precision_pct = QSpinBox(self)
+        self.label_precision_p_value = QLabel(self.tr('p-value:'), self)
+        self.spin_box_precision_p_value = QSpinBox(self)
 
         self.spin_box_precision_decimal.setRange(0, 10)
         self.spin_box_precision_pct.setRange(0, 10)
+        self.spin_box_precision_p_value.setRange(0, 15)
 
         group_box_precision.setLayout(QGridLayout())
         group_box_precision.layout().addWidget(self.label_precision_decimal, 0, 0)
         group_box_precision.layout().addWidget(self.spin_box_precision_decimal, 0, 1)
         group_box_precision.layout().addWidget(self.label_precision_pct, 1, 0)
         group_box_precision.layout().addWidget(self.spin_box_precision_pct, 1, 1)
+        group_box_precision.layout().addWidget(self.label_precision_p_value, 2, 0)
+        group_box_precision.layout().addWidget(self.spin_box_precision_p_value, 2, 1)
 
         self.settings_general.setLayout(QGridLayout())
         self.settings_general.layout().addWidget(group_box_encoding, 0, 0, Qt.AlignTop)
@@ -641,6 +648,7 @@ class Wordless_Settings(QDialog):
 
         self.spin_box_precision_decimal.setValue(settings_loaded['general']['precision_decimal'])
         self.spin_box_precision_pct.setValue(settings_loaded['general']['precision_pct'])
+        self.spin_box_precision_p_value.setValue(settings_loaded['general']['precision_p_value'])
 
         # Sentence Tokenization
         for lang_code in settings_loaded['sentence_tokenization']['sentence_tokenizers']:
@@ -686,6 +694,7 @@ class Wordless_Settings(QDialog):
 
         settings['general']['precision_decimal'] = self.spin_box_precision_decimal.value()
         settings['general']['precision_pct'] = self.spin_box_precision_pct.value()
+        settings['general']['precision_p_value'] = self.spin_box_precision_p_value.value()
 
         # Sentence Tokenization
         for lang_code in settings['sentence_tokenization']['sentence_tokenizers']:
@@ -707,6 +716,8 @@ class Wordless_Settings(QDialog):
         # Stop Words
         for lang_code in settings['stop_words']['stop_words']:
             settings['stop_words']['stop_words'][lang_code] = self.__dict__[f'combo_box_stop_words_{lang_code}'].currentText()
+
+        self.wordless_settings_changed.emit()
 
     def load(self):
         self.load_settings()

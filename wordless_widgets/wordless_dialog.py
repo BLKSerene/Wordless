@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
@@ -15,7 +15,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_widgets import wordless_layout, wordless_widgets
-from wordless_utils import wordless_text
+from wordless_utils import wordless_text, wordless_misc
 
 def wordless_message_jre_not_installed(main):
     sys_bit = platform.architecture()[0][:2]
@@ -46,13 +46,13 @@ def wordless_message_no_search_results(main):
                         main.tr('There is nothing that could be found in the table.'),
                         QMessageBox.Ok)
 
-def wordless_message_empty_results_table(main):
+def wordless_message_no_results_table(main):
     QMessageBox.information(main,
                             main.tr('No Search Results'),
                             main.tr('There is nothing to be shown in the table.<br>You might want to change your search term(s) and/or your settings, and then try again.'),
                             QMessageBox.Ok)
 
-def wordless_message_empty_results_plot(main):
+def wordless_message_no_results_plot(main):
     QMessageBox.information(main,
                             main.tr('No Search Results'),
                             main.tr('There is nothing to be shown in the figure.<br>You might want to change your search term(s) and/or your settings, and then try again.'),
@@ -125,10 +125,10 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
 
-        self.button_find_next.clicked.connect(self.find_next)
-        self.button_find_prev.clicked.connect(self.find_prev)
-        self.button_find_all.clicked.connect(self.find_all)
-        self.button_clear_highlights.clicked.connect(self.clear_highlights)
+        self.button_find_next.clicked.connect(lambda: self.find_next())
+        self.button_find_prev.clicked.connect(lambda: self.find_prev())
+        self.button_find_all.clicked.connect(lambda: self.find_all())
+        self.button_clear_highlights.clicked.connect(lambda: self.clear_highlights())
 
         self.button_restore_defaults.clicked.connect(lambda: self.load_settings(defaults = True))
 
@@ -201,6 +201,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         else:
             self.setFixedSize(300, 200)
 
+    @ wordless_misc.log_timing
     def find_next(self):
         items_found = self.find_all()
 
@@ -234,6 +235,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.table.blockSignals(False)
         self.table.show()
 
+    @ wordless_misc.log_timing
     def find_prev(self):
         items_found = self.find_all()
 
@@ -267,6 +269,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.table.blockSignals(False)
         self.table.show()
 
+    @ wordless_misc.log_timing
     def find_all(self):
         search_terms_files = set()
         items_found = []
@@ -292,14 +295,15 @@ class Wordless_Dialog_Search(Wordless_Dialog):
             with open('wordless_text_temp.txt', 'r', encoding = 'utf_8') as f:
                 file_temp_text.tokens = [line.rstrip().split() for line in f]
 
-            for file in self.table.files:
-                file_temp_text.lang = file['lang_code']
+            for file in self.table.settings['file']['files_open']:
+                if file['selected']:
+                    file_temp_text.lang = file['lang_code']
 
-                search_terms_files |= file_temp_text.match_tokens(search_terms,
-                                                                  self.settings['ignore_case'],
-                                                                  self.settings['match_inflected_forms'],
-                                                                  self.settings['match_whole_word'],
-                                                                  self.settings['use_regex'])
+                    search_terms_files |= file_temp_text.match_tokens(search_terms,
+                                                                      self.settings['ignore_case'],
+                                                                      self.settings['match_inflected_forms'],
+                                                                      self.settings['match_whole_word'],
+                                                                      self.settings['use_regex'])
 
             os.remove('wordless_text_temp.txt')
 
@@ -325,12 +329,16 @@ class Wordless_Dialog_Search(Wordless_Dialog):
             else:
                 wordless_message_no_search_results(self.main)
 
-            self.main.status_bar.showMessage(self.tr(f'Found {len(items_found):,} item(s).'))
+            if len(items_found) == 1:
+                self.main.status_bar.showMessage(self.tr('Found 1 item.'))
+            else:
+                self.main.status_bar.showMessage(self.tr(f'Found {len(items_found):,} items.'))
         else:
             wordless_message_empty_search_term(self.main)
 
         return items_found
 
+    @ wordless_misc.log_timing
     def clear_highlights(self):
         self.table.hide()
         self.table.blockSignals(True)
@@ -344,6 +352,8 @@ class Wordless_Dialog_Search(Wordless_Dialog):
 
         self.table.blockSignals(False)
         self.table.show()
+
+        self.main.status_bar.showMessage(self.tr('Highlights Cleared!'))
 
     def load(self):
         self.load_settings()

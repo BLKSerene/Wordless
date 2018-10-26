@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
@@ -83,9 +83,9 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
                              main.tr('Count of Punctuations')
                          ])
 
-        self.button_generate_stats = QPushButton(self.tr('Generate Statistics'), self.main)
+        self.button_generate_table = QPushButton(self.tr('Generate Table'), self.main)
 
-        self.button_generate_stats.clicked.connect(lambda: generate_stats(self.main, self))
+        self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
 
     def clear_table(self, count_headers = 1):
         super().clear_table(0)
@@ -147,7 +147,7 @@ def init(main):
     table_overview = Wordless_Table_Overview(main)
 
     tab_overview.layout_table.addWidget(table_overview, 0, 0, 1, 4)
-    tab_overview.layout_table.addWidget(table_overview.button_generate_stats, 1, 0)
+    tab_overview.layout_table.addWidget(table_overview.button_generate_table, 1, 0)
     tab_overview.layout_table.addWidget(table_overview.button_export_selected, 1, 1)
     tab_overview.layout_table.addWidget(table_overview.button_export_all, 1, 2)
     tab_overview.layout_table.addWidget(table_overview.button_clear, 1, 3)
@@ -229,8 +229,8 @@ def init(main):
 
     return tab_overview
 
-@ wordless_misc.log_timing('Statistics generation completed')
-def generate_stats(main, table):
+@ wordless_misc.log_timing
+def generate_table(main, table):
     texts = []
 
     settings = main.settings_custom['overview']
@@ -361,3 +361,5 @@ def generate_stats(main, table):
         table.update_items_width()
 
         table.item_changed()
+
+    main.status_bar.showMessage(main.tr('Statistics generation completed!'))
