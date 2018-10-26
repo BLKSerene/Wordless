@@ -8,15 +8,15 @@ Designed and Developed by Ye Lei (叶磊)
 由叶磊设计并开发
 
 ## License/开源许可
-    Copyright (C) 2018 Ye Lei
+    Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 
 This project is licensed Under GNU GPL Version 3.0.
 
-For license information, see [LICENSE.txt](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt).
+License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 
 本项目的开源许可协议为 GNU GPL Version 3.0。
 
-许可证信息请参看 [LICENSE.txt](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt)。
+许可证信息：[https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt)。
 
 ## Citation/引用
 If you publish work that uses Wordless, please cite Wordless as follows.
@@ -69,24 +69,25 @@ Many thanks to the following open-source projects on which Wordless is built on:
 4. [HanLP](http://hanlp.com/)
 5. [pyhanlp](https://github.com/hankcs/pyhanlp)
 6. [jieba (“结巴”中文分词)](https://github.com/fxsjy/jieba)
-7. [NLTK](http://www.nltk.org/)
-8. [PyDelphin](https://github.com/delph-in/pydelphin)
-9. [spaCy](https://spacy.io/)
-10. [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/)
-11. [Stanford CoreNLP Python Interface](https://github.com/stanfordnlp/python-stanford-corenlp)
-12. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
-13. [chardet](https://github.com/chardet/chardet)
-14. [langdetect](https://github.com/Mimino666/langdetect)
-15. [lxml](https://lxml.de/)
-16. [Matplotlib](https://matplotlib.org/)
-17. [NetworkX](http://networkx.github.io/)
-18. [NumPy](http://www.numpy.org/)
-19. [openpyxl](https://openpyxl.readthedocs.io/en/stable/)
-20. [SciPy](https://www.scipy.org/)
-21. [e_lemma.txt](https://lexically.net/downloads/BNC_wordlists/e_lemma.txt)
-22. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists)
-23. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)
-24. [stopwords-json](https://github.com/6/stopwords-json)
+7. [Ngram Statistics Package](http://ngram.sourceforge.net)
+8. [NLTK](http://www.nltk.org/)
+9. [PyDelphin](https://github.com/delph-in/pydelphin)
+10. [spaCy](https://spacy.io/)
+11. [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/)
+12. [Stanford CoreNLP Python Interface](https://github.com/stanfordnlp/python-stanford-corenlp)
+13. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
+14. [chardet](https://github.com/chardet/chardet)
+15. [langdetect](https://github.com/Mimino666/langdetect)
+16. [lxml](https://lxml.de/)
+17. [Matplotlib](https://matplotlib.org/)
+18. [NetworkX](http://networkx.github.io/)
+19. [NumPy](http://www.numpy.org/)
+20. [openpyxl](https://openpyxl.readthedocs.io/en/stable/)
+21. [SciPy](https://www.scipy.org/)
+22. [e_lemma.txt](https://lexically.net/downloads/BNC_wordlists/e_lemma.txt)
+23. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists)
+24. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)
+25. [stopwords-json](https://github.com/6/stopwords-json)
 
 ## Donation/捐助
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.

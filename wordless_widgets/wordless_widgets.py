@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 from PyQt5.QtCore import *
@@ -186,7 +186,7 @@ def wordless_widgets_table(main, table):
 
     return [checkbox_show_pct, checkbox_show_cumulative, checkbox_show_breakdown]
 
-def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None, col = ''):
+def wordless_widgets_filter(main, filter_min = 0, filter_max = 100):
     def filter_no_limit_changed():
         if checkbox_no_limit.isChecked():
             spin_box_max.setEnabled(False)
@@ -201,14 +201,47 @@ def wordless_widgets_filter(main, filter_min = 1, filter_max = 100, table = None
         if spin_box_min.value() > spin_box_max.value():
             spin_box_min.setValue(spin_box_max.value())
 
+    def precision_decimal_changed():
+        spin_box_min.setDecimals(settings['precision_decimal'])
+        spin_box_max.setDecimals(settings['precision_decimal'])
+
+        spin_box_min.setSingleStep(0.1 ** settings['precision_decimal'])
+        spin_box_max.setSingleStep(0.1 ** settings['precision_decimal'])
+
+    def precision_p_value_changed():
+        spin_box_min.setDecimals(settings['precision_p_value'])
+        spin_box_max.setDecimals(settings['precision_p_value'])
+
+        spin_box_min.setSingleStep(0.1 ** settings['precision_p_value'])
+        spin_box_max.setSingleStep(0.1 ** settings['precision_p_value'])
+
+    settings = main.settings_custom['general']
+
     checkbox_no_limit = QCheckBox(main.tr('No Limit'), main)
     label_min = QLabel(main.tr('From'), main)
-    spin_box_min = QSpinBox(main)
     label_max = QLabel(main.tr('To'), main)
-    spin_box_max = QSpinBox(main)
 
-    spin_box_min.setRange(filter_min, filter_max)
-    spin_box_max.setRange(filter_min, filter_max)
+    if type(filter_min) == int:
+        spin_box_min = QSpinBox(main)
+        spin_box_max = QSpinBox(main)
+
+        spin_box_min.setRange(filter_min, filter_max)
+        spin_box_max.setRange(filter_min, filter_max)
+    else:
+        spin_box_min = QDoubleSpinBox(main)
+        spin_box_max = QDoubleSpinBox(main)
+
+        spin_box_min.setRange(filter_min, filter_max)
+        spin_box_max.setRange(filter_min, filter_max)
+
+        if filter_min == 0.0 and filter_max == 1.0:
+            main.wordless_settings.wordless_settings_changed.connect(precision_p_value_changed)
+
+            precision_p_value_changed()
+        else:
+            main.wordless_settings.wordless_settings_changed.connect(precision_decimal_changed)
+
+            precision_decimal_changed()
 
     checkbox_no_limit.stateChanged.connect(filter_no_limit_changed)
     spin_box_min.valueChanged.connect(filter_min_changed)

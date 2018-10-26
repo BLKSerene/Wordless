@@ -3,14 +3,17 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
+
+import os
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 import numpy
+import openpyxl
 
 from wordless_widgets import wordless_box, wordless_dialog
 
@@ -27,22 +30,19 @@ class Wordless_Table_Item(QTableWidgetItem):
         return self.read_data() < other.read_data()
 
 class Wordless_Table(QTableWidget):
-    def __init__(self, parent, headers, orientation = 'horizontal', cols_stretch = []):
-        self.main = parent
+    def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = []):
+        self.main = main
         self.headers = headers
-        self.orientation = orientation
+        self.header_orientation = header_orientation
 
-        if orientation == 'horizontal':
+        if header_orientation == 'horizontal':
             super().__init__(1, len(self.headers), self.main)
 
-            self.setHorizontalHeaderLabels(headers)
+            self.setHorizontalHeaderLabels(self.headers)
         else:
             super().__init__(len(self.headers), 1, self.main)
 
             self.setVerticalHeaderLabels(self.headers)
-
-        self.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        self.setSelectionBehavior(QAbstractItemView.SelectRows)
 
         self.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.verticalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
@@ -50,12 +50,97 @@ class Wordless_Table(QTableWidget):
         for col in self.find_col(cols_stretch):
             self.horizontalHeader().setSectionResizeMode(col, QHeaderView.Stretch)
 
-        self.setStyleSheet('QHeaderView {color: #4169E1; font-weight: bold}')
+        self.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.horizontalHeader().setHighlightSections(False)
+        self.verticalHeader().setHighlightSections(False)
+
+        if self.header_orientation == 'horizontal':
+            self.setStyleSheet(''' 
+                                   QTableView {
+                                       outline: none;
+                                       color: #292929;
+                                   }
+
+                                   QTableView::item:hover {
+                                       background-color: #EEE;
+                                   }
+                                   QTableView::item:selected {
+                                       background-color: #EEE;
+                                       color: #292929;
+                                   }
+
+                                   QHeaderView::section {
+                                       color: #FFF;
+                                       font-weight: bold;
+                                   }
+
+                                   QHeaderView::section:horizontal {
+                                       background-color: #5C88C5;
+                                   }
+                                   QHeaderView::section:horizontal:hover {
+                                       background-color: #3265B2;
+                                   }
+                                   QHeaderView::section:horizontal:pressed {
+                                       background-color: #264E8C;
+                                   }
+
+                                   QHeaderView::section:vertical {
+                                       background-color: #888;
+                                   }
+                                   QHeaderView::section:vertical:hover {
+                                       background-color: #777;
+                                   }
+                                   QHeaderView::section:vertical:pressed {
+                                       background-color: #666;
+                                   }
+                               ''')
+        else:
+            self.setStyleSheet('''
+
+                                   QTableView {
+                                       outline: none;
+                                       color: #292929;
+                                   }
+
+                                   QTableView::item:hover {
+                                       background-color: #EEE;
+                                   }
+                                   QTableView::item:selected {
+                                       background-color: #EEE;
+                                       color: #292929;
+                                   }
+
+                                   QHeaderView::section {
+                                       color: #FFF;
+                                       font-weight: bold;
+                                   }
+
+                                   QHeaderView::section:horizontal {
+                                       background-color: #888;
+                                   }
+                                   QHeaderView::section:horizontal:hover {
+                                       background-color: #777;
+                                   }
+                                   QHeaderView::section:horizontal:pressed {
+                                       background-color: #666;
+                                   }
+
+                                   QHeaderView::section:vertical {
+                                       background-color: #5C88C5;
+                                   }
+                                   QHeaderView::section:vertical:hover {
+                                       background-color: #3265B2;
+                                   }
+                                   QHeaderView::section:vertical:pressed {
+                                       background-color: #264E8C;
+                                   }
+                               ''')
 
     def insert_row(self, i, label):
         super().insertRow(i)
 
-        self.setHorizontalHeaderItem(i, QTableWidgetItem(label))
+        self.setVerticalHeaderItem(i, QTableWidgetItem(label))
 
     def insert_col(self, i, label):
         super().insertColumn(i)
@@ -65,7 +150,7 @@ class Wordless_Table(QTableWidget):
     def clear_table(self, header_count = 1):
         self.clearContents()
 
-        if self.orientation == 'horizontal':
+        if self.header_orientation == 'horizontal':
             self.setColumnCount(len(self.headers))
             self.setRowCount(header_count)
 
@@ -117,32 +202,34 @@ class Wordless_Table(QTableWidget):
                 if self.horizontalHeaderItem(col).text().find(text) > -1]
 
     def find_header(self, text, fuzzy_matching = False):
-        if self.orientation == 'horizontal':
+        if self.header_orientation == 'horizontal':
             return self.find_col(text, fuzzy_matching)
         else:
             return self.find_row(text, fuzzy_matching)
 
     def find_headers(self, text):
-        if self.orientation == 'horizontal':
+        if self.header_orientation == 'horizontal':
             return self.find_cols(text)
         else:
             return self.find_rows(text)
 
 class Wordless_Table_Data(Wordless_Table):
-    def __init__(self, parent, headers, orientation = 'horizontal', cols_stretch = [],
+    def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
                  headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
                  sorting_enabled = False, drag_drop_enabled = False):
-        super().__init__(parent, headers, orientation, cols_stretch)
+        super().__init__(main, headers, header_orientation, cols_stretch)
 
         self.headers_num_old = headers_num
         self.headers_pct_old = headers_pct
         self.headers_cumulative_old = headers_cumulative
         self.cols_breakdown_old = cols_breakdown
 
+        self.sorting_enabled = sorting_enabled
+
         if sorting_enabled:
             self.setSortingEnabled(True)
 
-            if orientation == 'horizontal':
+            if header_orientation == 'horizontal':
                 self.horizontalHeader().sortIndicatorChanged.connect(self.sorting_changed)
             else:
                 self.verticalHeader().sortIndicatorChanged.connect(self.sorting_changed)
@@ -218,6 +305,8 @@ class Wordless_Table_Data(Wordless_Table):
 
         self.blockSignals(False)
 
+        self.itemChanged.emit(self.item(0, 0))
+
         event.accept()
 
     def item_changed(self):
@@ -246,9 +335,9 @@ class Wordless_Table_Data(Wordless_Table):
             self.update_items_width()
 
     def insert_row(self, i, label, num = False, pct = False, cumulative = False):
-        headers_num = [self.horizontalHeaderItem(col).text() for col in self.headers_num]
-        headers_pct = [self.horizontalHeaderItem(col).text() for col in self.headers_pct]
-        headers_cumulative = [self.horizontalHeaderItem(col).text() for col in self.headers_cumulative]
+        headers_num = [self.verticalHeaderItem(row).text() for row in self.headers_num]
+        headers_pct = [self.verticalHeaderItem(row).text() for row in self.headers_pct]
+        headers_cumulative = [self.verticalHeaderItem(row).text() for row in self.headers_cumulative]
 
         super().insert_row(i, label)
 
@@ -259,12 +348,12 @@ class Wordless_Table_Data(Wordless_Table):
         if cumulative:
             headers_cumulative += [label]
 
-        self.headers_num = set(self.find_col(headers_num))
-        self.headers_pct = set(self.find_col(headers_pct))
-        self.headers_cumulative = set(self.find_col(headers_cumulative))
+        self.headers_num = set(self.find_row(headers_num))
+        self.headers_pct = set(self.find_row(headers_pct))
+        self.headers_cumulative = set(self.find_row(headers_cumulative))
 
     def insert_col(self, i, label, num = False, pct = False, cumulative = False, breakdown = False):
-        if self.orientation == 'horizontal':
+        if self.header_orientation == 'horizontal':
             headers_num = [self.horizontalHeaderItem(col).text() for col in self.headers_num]
             headers_pct = [self.horizontalHeaderItem(col).text() for col in self.headers_pct]
             headers_cumulative = [self.horizontalHeaderItem(col).text() for col in self.headers_cumulative]
@@ -281,7 +370,7 @@ class Wordless_Table_Data(Wordless_Table):
         if breakdown:
             cols_breakdown += [label]
 
-        if self.orientation == 'horizontal':
+        if self.header_orientation == 'horizontal':
             self.headers_num = set(self.find_col(headers_num))
             self.headers_pct = set(self.find_col(headers_pct))
             self.headers_cumulative = set(self.find_col(headers_cumulative))
@@ -334,17 +423,28 @@ class Wordless_Table_Data(Wordless_Table):
 
         self.hide()
         self.blockSignals(True)
-        self.setSortingEnabled(False)
+
+        if self.sorting_enabled:
+            self.setSortingEnabled(False)
+
         self.setUpdatesEnabled(False)
 
-        if self.orientation == 'horizontal':
+        if self.header_orientation == 'horizontal':
             for col in self.headers_num:
-                max_val = max([self.item(row, col).val for row in range(self.rowCount())])
+                max_val = max([self.item(row, col).val
+                               for row in range(self.rowCount())
+                               if self.item(row, col).val != float('inf')])
+
+                # p-value
+                if self.horizontalHeaderItem(col).text().find(self.tr('p-value')) > -1:
+                    precision_val = self.main.settings_custom['general']['precision_p_value']
+                else:
+                    precision_val = self.main.settings_custom['general']['precision_decimal']
 
                 if type(max_val) == int:
                     len_val = len(f'{max_val:,}')
                 else:
-                    len_val = len(f'{max_val:.{precision_val}}')
+                    len_val = len(f'{max_val:,.{precision_val}f}')
 
                 if col in self.headers_pct and self.show_pct:
                     pct_max = max([self.item(row, col).pct for row in range(self.rowCount())])
@@ -361,7 +461,12 @@ class Wordless_Table_Data(Wordless_Table):
                             if not self.isRowHidden(row):
                                 item = self.item(row, col)
 
-                                item.setText(f'{item.val:>{len_val}.{precision_val}}/{item.pct:<{len_pct}.{precision_pct}%}')
+                                if item.val == float('inf'):
+                                    item.setText('+ ∞')
+                                elif item.val == float('-inf'):
+                                    item.setText('- ∞')
+                                else:
+                                    item.setText(f'{item.val:>{len_val},.{precision_val}}/{item.pct:<{len_pct}.{precision_pct}%}')
                 else:
                     if type(max_val) == int:
                         for row in range(self.rowCount()):
@@ -374,40 +479,64 @@ class Wordless_Table_Data(Wordless_Table):
                             if not self.isRowHidden(row):
                                 item = self.item(row, col)
 
-                                item.setText(f'{item.val:>{len_val}.{precision_val}f}')
+                                if item.val == float('inf'):
+                                    item.setText('+ ∞')
+                                elif item.val == float('-inf'):
+                                    item.setText('- ∞')
+                                else:
+                                    item.setText(f'{item.val:>{len_val},.{precision_val}f}')
         else:
-            for row in self.headers_num:
-                max_val = max([self.item(row, col).val for col in range(self.columnCount())])
+            len_vals = []
 
+            max_vals = [max([self.item(row, col).val
+                             for row in range(self.rowCount())])
+                        for col in range(self.columnCount())]
+            max_pcts = [max([self.item(row, col).pct
+                             for row in range(self.rowCount())
+                             if row in self.headers_pct])
+                        for col in range(self.columnCount())]
+
+            for max_val in max_vals:
+                if type(max_val) == int:
+                    len_vals.append(len(f'{max_val:,}'))
+                else:
+                    len_vals.append(len(f'{max_val:,.{precision_val}f}'))
+
+            len_pcts = [len(f'{max_pct:.{precision_pct}%}') for max_pct in max_pcts]
+
+            for row in self.headers_num:
                 if row in self.headers_pct and self.show_pct:
-                    if type(max_val) == int:
+                    if type(self.item(row, 0).val) == int:
                         for col in range(self.columnCount()):
                             if not self.isColumnHidden(col):
                                 item = self.item(row, col)
                                 
-                                item.setText(f'{item.val:>}/{item.pct:<.{precision_pct}%}')
+                                item.setText(f'{item.val:>{len_vals[col]},}/{item.pct:<{len_pcts[col]}.{precision_pct}%}')
                     else:
                         for col in range(self.columnCount()):
                             if not self.isColumnHidden(col):
                                 item = self.item(row, col)
 
-                                item.setText(f'{item.val:>.{precision_val}}/{item.pct:<.{precision_pct}%}')
+                                item.setText(f'{item.val:>{len_vals[col]},.{precision_val}}/{item.pct:<{len_pcts[col]}.{precision_pct}%}')
                 else:
-                    if type(max_val) == int:
+                    if type(self.item(row, 0).val) == int:
                         for col in range(self.columnCount()):
                             if not self.isColumnHidden(col):
                                 item = self.item(row, col)
 
-                                item.setText(f'{item.val:,}')
+                                item.setText(f'{item.val:{len_vals[col]},}')
                     else:
                         for col in range(self.columnCount()):
                             if not self.isColumnHidden(col):
                                 item = self.item(row, col)
 
-                                item.setText(f'{item.val:.{precision_val}f}')
+                                item.setText(f'{item.val:{len_vals[col]},.{precision_val}f}')
 
         self.blockSignals(False)
-        self.setSortingEnabled(True)
+
+        if self.sorting_enabled:
+            self.setSortingEnabled(True)
+
         self.setUpdatesEnabled(True)
         self.show()
 
@@ -457,7 +586,7 @@ class Wordless_Table_Data(Wordless_Table):
         self.setUpdatesEnabled(True)
 
     def toggle_pct(self):
-        if self.orientation == 'horizontal':
+        if self.header_orientation == 'horizontal':
             for col in self.headers_pct:
                 if self.item(0, col) and not hasattr(self.item(0, col), 'total'):
                     total = sum([self.item(row, col).val_raw for row in range(self.rowCount())])
@@ -483,7 +612,7 @@ class Wordless_Table_Data(Wordless_Table):
                     item.pct = item.val / item.total if item.total else 0
 
     def toggle_cumulative(self):
-        if self.orientation == 'horizontal':
+        if self.header_orientation == 'horizontal':
             for col in self.headers_cumulative:
                 val_cumulative = 0
 
@@ -555,7 +684,7 @@ class Wordless_Table_Data(Wordless_Table):
         self.setUpdatesEnabled(False)
         
         for i, filters in enumerate(self.row_filters):
-            if [val for val in filters.values() if not val]:
+            if [val for val in filters if not val]:
                 self.hideRow(i)
             else:
                 self.showRow(i)
@@ -576,12 +705,103 @@ class Wordless_Table_Data(Wordless_Table):
         pass
 
     def export_all(self):
-        pass
+        def set_cell_styles(cell, item, item_type = 'item'):
+            if item_type == 'header_horizontal':
+                cell.font = openpyxl.styles.Font(name = self.main.font().family(),
+                                                 size = 8,
+                                                 bold = True,
+                                                 color = 'FFFFFF')
+
+                if self.header_orientation == 'horizontal':
+                    cell.fill = openpyxl.styles.PatternFill(fill_type = 'solid', fgColor = '5C88C5')
+                else:
+                    cell.fill = openpyxl.styles.PatternFill(fill_type = 'solid', fgColor = '888888')
+            elif item_type == 'header_vertical':
+                cell.font = openpyxl.styles.Font(name = self.main.font().family(),
+                                                 size = 8,
+                                                 bold = True,
+                                                 color = 'FFFFFF')
+
+                cell.fill = openpyxl.styles.PatternFill(fill_type = 'solid', fgColor = '5C88C5')
+            else:
+                cell.font = openpyxl.styles.Font(name = self.main.font().family(),
+                                                 size = 8,
+                                                 color = '292929')
+
+            cell.alignment = openpyxl.styles.Alignment(horizontal = 'center',
+                                                       vertical = 'center',
+                                                       wrap_text = True)
+
+        export_path = QFileDialog.getSaveFileName(self,
+                                                  self.tr('Export Table'),
+                                                  self.main.settings_custom['general']['default_paths_export'],
+                                                  self.tr('Excel Files (*.xlsx)'))[0]
+
+        if export_path:
+            workbook = openpyxl.Workbook()
+            worksheet = workbook.active
+
+            worksheet.freeze_panes = 'B2'
+
+            dpi_x = QApplication.primaryScreen().logicalDotsPerInchX()
+            dpi_y = QApplication.primaryScreen().logicalDotsPerInchY()
+
+            if self.header_orientation == 'horizontal':
+                # Horizontal Headers
+                for col in range(self.columnCount()):
+                    worksheet.cell(1, 1 + col).value = self.horizontalHeaderItem(col).text()
+
+                    set_cell_styles(worksheet.cell(1, 1 + col), self.horizontalHeaderItem(col), item_type = 'header_horizontal')
+
+                    worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.horizontalHeader().sectionSize(col) / dpi_x * 13
+
+                # Cells
+                for row in range(self.rowCount()):
+                    for col in range(self.columnCount()):
+                        worksheet.cell(2 + row, 1 + col).value = self.item(row, col).text()
+
+                        set_cell_styles(worksheet.cell(2 + row, 1 + col), self.item(row, col))
+            else:
+                # Horizontal Headers
+                for col in range(self.columnCount()):
+                    worksheet.cell(1, 2 + col).value = self.horizontalHeaderItem(col).text()
+
+                    set_cell_styles(worksheet.cell(1, 2 + col), self.horizontalHeaderItem(col), item_type = 'header_horizontal')
+
+                    worksheet.column_dimensions[openpyxl.utils.get_column_letter(2 + col)].width = self.horizontalHeader().sectionSize(col) / dpi_x * 13
+
+                worksheet.column_dimensions[openpyxl.utils.get_column_letter(1)].width = max([self.verticalHeader().sectionSizeFromContents(row).width() / dpi_x * 13 for row in range(self.rowCount())])
+
+                # Vertical Headers
+                for row in range(self.rowCount()):
+                    worksheet.cell(2 + row, 1).value = self.verticalHeaderItem(row).text()
+
+                    set_cell_styles(worksheet.cell(2 + row, 1), self.verticalHeaderItem(row), item_type = 'header_vertical')
+
+                # Cells
+                for row in range(self.rowCount()):
+                    for col in range(self.columnCount()):
+                        worksheet.cell(2 + row, 2 + col).value = self.item(row, col).text()
+
+                        set_cell_styles(worksheet.cell(2 + row, 2 + col), self.item(row, col))
+
+            # Row Height
+            for i, _ in enumerate(worksheet.rows):
+                worksheet.row_dimensions[i + 1].height = self.verticalHeader().sectionSize(0) / dpi_y * 72
+
+            workbook.save(export_path)
+
+            self.main.settings_custom['general']['default_paths_export'] = os.path.split(export_path)[0]
+
+            QMessageBox.information(self,
+                                    self.tr('Export Completed'),
+                                    self.tr(f'Export to file "{export_path}" completed successfully.'),
+                                    QMessageBox.Ok)
 
     def clear_table(self, header_count = 1):
         self.clearContents()
 
-        if self.orientation == 'horizontal':
+        if self.header_orientation == 'horizontal':
             self.horizontalHeader().blockSignals(True)
 
             self.setColumnCount(len(self.headers))
@@ -613,15 +833,15 @@ class Wordless_Table_Data(Wordless_Table):
         self.headers_pct = set(self.find_header(self.headers_pct_old))
         self.headers_cumulative = set(self.find_header(self.headers_cumulative_old))
         self.cols_breakdown = set(self.find_col(self.cols_breakdown_old))
-        self.files = []
+        self.settings = self.main.settings_default
 
         self.item_changed()
 
 class Wordless_Table_Data_Search(Wordless_Table_Data):
-    def __init__(self, parent, headers, orientation = 'horizontal', cols_stretch = [],
+    def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
                  headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
                  sorting_enabled = False, drag_drop_enabled = False):
-        super().__init__(parent, headers, orientation, cols_stretch,
+        super().__init__(main, headers, header_orientation, cols_stretch,
                          headers_num, headers_pct, headers_cumulative, cols_breakdown,
                          sorting_enabled, drag_drop_enabled)
 
@@ -647,8 +867,8 @@ class Wordless_Table_Data_Search(Wordless_Table_Data):
             self.button_search_results.setEnabled(False)
 
 class Wordless_Table_Multi_Sort(Wordless_Table_Data):
-    def __init__(self, parent, sort_table, sort_cols):
-        super().__init__(parent, headers = ['Column', 'Order'], cols_stretch = ['Order'])
+    def __init__(self, main, sort_table, sort_cols):
+        super().__init__(main, headers = ['Column', 'Order'], cols_stretch = ['Order'])
 
         self.sort_table = sort_table
         self.sort_cols = sort_cols
@@ -690,7 +910,7 @@ class Wordless_Table_Multi_Sort(Wordless_Table_Data):
                     item.setStyleSheet(self.settings['general']['style_highlight'])
                     combobox_current.setStyleSheet(self.main.settings['general']['style_highlight'])
 
-                    QMessageBox.warning(self.parent,
+                    QMessageBox.warning(self.main,
                                         'Column Sorted More Than Once',
                                         'Please refrain from sorting the same column more than once.',
                                         QMessageBox.Ok)
