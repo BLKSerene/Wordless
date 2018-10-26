@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 from PyQt5.QtCore import *
@@ -46,12 +46,16 @@ class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
         self.table_header_changed()
 
     def table_header_changed(self):
-        apply_to_old = self.currentText()
+        if self.count() == 1:
+            apply_to_old = ''
+        else:
+            apply_to_old = self.currentText()
 
         self.clear()
 
-        for file in self.table.files:
-            self.addItem(file['name'])
+        for file in self.table.settings['file']['files_open']:
+            if file['selected']:
+                self.addItem(file['name'])
         self.addItem(self.main.tr('Total'))
 
         for i in range(self.count()):

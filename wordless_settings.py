@@ -3,17 +3,17 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import copy
 import json
+import os
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-import jpype
 import nltk
 
 from wordless_widgets import *
@@ -42,6 +42,8 @@ class Wordless_Table_Stop_Words(wordless_table.Wordless_Table):
             self.setItem(row, col, QTableWidgetItem(token))
 
 class Wordless_Settings(QDialog):
+    wordless_settings_changed = pyqtSignal()
+
     def __init__(self, parent):
         def selection_changed():
             self.settings_general.hide()
@@ -75,8 +77,6 @@ class Wordless_Settings(QDialog):
         self.setWindowTitle(self.tr('Settings'))
         self.setFixedSize(800, 600)
 
-        self.accepted.connect(self.apply)
-
         self.tree_settings = wordless_tree.Wordless_Tree(self)
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('General')]))
@@ -100,13 +100,13 @@ class Wordless_Settings(QDialog):
 
         scroll_area_settings = wordless_layout.Wordless_Scroll_Area(self.main, wrapper_settings)
 
-        button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self)
+        button_restore_default_settings = QPushButton(self.tr('Restore Default Settings'), self)
         button_save = QPushButton(self.tr('Save'), self)
         button_apply = QPushButton(self.tr('Apply'), self)
         button_cancel = QPushButton(self.tr('Cancel'), self)
 
-        button_restore_defaults.clicked.connect(lambda: self.load_settings(defaults = True))
-        button_save.clicked.connect(self.accept)
+        button_restore_default_settings.clicked.connect(self.restore_default_settings)
+        button_save.clicked.connect(self.save)
         button_apply.clicked.connect(self.apply)
         button_cancel.clicked.connect(self.reject)
 
@@ -118,7 +118,7 @@ class Wordless_Settings(QDialog):
         self.setLayout(QGridLayout())
         self.layout().addWidget(self.tree_settings, 0, 0)
         self.layout().addWidget(scroll_area_settings, 0, 1)
-        self.layout().addWidget(button_restore_defaults, 1, 0, Qt.AlignLeft)
+        self.layout().addWidget(button_restore_default_settings, 1, 0)
         self.layout().addLayout(layout_buttons_right, 1, 1, Qt.AlignRight)
 
         self.layout().setColumnStretch(0, 1)
@@ -127,42 +127,85 @@ class Wordless_Settings(QDialog):
         selection_changed()
 
     def init_settings_general(self):
+        def browse_open_files():
+            path_open_files = QFileDialog.getExistingDirectory(self,
+                                                               self.tr('Browse'),
+                                                               self.main.settings_custom['general']['default_paths_open_files'])
+
+            if path_open_files:
+                self.line_edit_default_paths_open_files.setText(os.path.realpath(path_open_files))
+
+        def browse_export():
+            path_export = QFileDialog.getExistingDirectory(self,
+                                                               self.tr('Browse'),
+                                                               self.main.settings_custom['general']['default_paths_export'])
+
+            if path_export:
+                self.line_edit_default_paths_export.setText(os.path.realpath(path_export))
+
         self.settings_general = QWidget(self)
 
         # Default Encodings
-        group_box_encoding = QGroupBox(self.tr('Default Encodings'), self)
+        group_box_default_encoding = QGroupBox(self.tr('Default Encodings'), self)
 
-        self.label_encoding_input = QLabel(self.tr('Input Encoding:'), self)
-        self.combo_box_encoding_input = wordless_box.Wordless_Combo_Box_Encoding(self.main)
-        self.label_encoding_output = QLabel(self.tr('Output Encoding:'), self)
-        self.combo_box_encoding_output = wordless_box.Wordless_Combo_Box_Encoding(self.main)
+        self.label_default_encoding_input = QLabel(self.tr('Input Encoding:'), self)
+        self.combo_box_default_encoding_input = wordless_box.Wordless_Combo_Box_Encoding(self.main)
+        self.label_default_encoding_output = QLabel(self.tr('Output Encoding:'), self)
+        self.combo_box_default_encoding_output = wordless_box.Wordless_Combo_Box_Encoding(self.main)
 
-        group_box_encoding.setLayout(QGridLayout())
-        group_box_encoding.layout().addWidget(self.label_encoding_input, 0, 0)
-        group_box_encoding.layout().addWidget(self.combo_box_encoding_input, 0, 1)
-        group_box_encoding.layout().addWidget(self.label_encoding_output, 1, 0)
-        group_box_encoding.layout().addWidget(self.combo_box_encoding_output, 1, 1)
+        group_box_default_encoding.setLayout(QGridLayout())
+        group_box_default_encoding.layout().addWidget(self.label_default_encoding_input, 0, 0)
+        group_box_default_encoding.layout().addWidget(self.combo_box_default_encoding_input, 0, 1)
+        group_box_default_encoding.layout().addWidget(self.label_default_encoding_output, 1, 0)
+        group_box_default_encoding.layout().addWidget(self.combo_box_default_encoding_output, 1, 1)
+
+        # Default Paths
+        group_box_default_paths = QGroupBox(self.tr('Default Paths'), self)
+
+        self.label_default_paths_open_files = QLabel(self.tr('Open Files:'), self)
+        self.line_edit_default_paths_open_files = QLineEdit(self)
+        self.button_default_paths_open_files = QPushButton(self.tr('Browse'), self)
+        self.label_default_paths_export = QLabel(self.tr('Export:'), self)
+        self.line_edit_default_paths_export = QLineEdit(self)
+        self.button_default_paths_export = QPushButton(self.tr('Browse'), self)
+
+        self.button_default_paths_open_files.clicked.connect(browse_open_files)
+        self.button_default_paths_export.clicked.connect(browse_export)
+
+        group_box_default_paths.setLayout(QGridLayout())
+        group_box_default_paths.layout().addWidget(self.label_default_paths_open_files, 0, 0)
+        group_box_default_paths.layout().addWidget(self.line_edit_default_paths_open_files, 0, 1)
+        group_box_default_paths.layout().addWidget(self.button_default_paths_open_files, 0, 2)
+        group_box_default_paths.layout().addWidget(self.label_default_paths_export, 1, 0)
+        group_box_default_paths.layout().addWidget(self.line_edit_default_paths_export, 1, 1)
+        group_box_default_paths.layout().addWidget(self.button_default_paths_export, 1, 2)
 
         # Precision
         group_box_precision = QGroupBox(self.tr('Precision'), self)
 
         self.label_precision_decimal = QLabel(self.tr('Decimal:'), self)
         self.spin_box_precision_decimal = QSpinBox(self)
-        self.label_precision_pct = QLabel(self.tr('Percentage'), self)
+        self.label_precision_pct = QLabel(self.tr('Percentage:'), self)
         self.spin_box_precision_pct = QSpinBox(self)
+        self.label_precision_p_value = QLabel(self.tr('p-value:'), self)
+        self.spin_box_precision_p_value = QSpinBox(self)
 
         self.spin_box_precision_decimal.setRange(0, 10)
         self.spin_box_precision_pct.setRange(0, 10)
+        self.spin_box_precision_p_value.setRange(0, 15)
 
         group_box_precision.setLayout(QGridLayout())
         group_box_precision.layout().addWidget(self.label_precision_decimal, 0, 0)
         group_box_precision.layout().addWidget(self.spin_box_precision_decimal, 0, 1)
         group_box_precision.layout().addWidget(self.label_precision_pct, 1, 0)
         group_box_precision.layout().addWidget(self.spin_box_precision_pct, 1, 1)
+        group_box_precision.layout().addWidget(self.label_precision_p_value, 2, 0)
+        group_box_precision.layout().addWidget(self.spin_box_precision_p_value, 2, 1)
 
         self.settings_general.setLayout(QGridLayout())
-        self.settings_general.layout().addWidget(group_box_encoding, 0, 0, Qt.AlignTop)
-        self.settings_general.layout().addWidget(group_box_precision, 1, 0, Qt.AlignTop)
+        self.settings_general.layout().addWidget(group_box_default_encoding, 0, 0, Qt.AlignTop)
+        self.settings_general.layout().addWidget(group_box_default_paths, 1, 0, Qt.AlignTop)
+        self.settings_general.layout().addWidget(group_box_precision, 2, 0, Qt.AlignTop)
 
         return self.settings_general
 
@@ -636,11 +679,15 @@ class Wordless_Settings(QDialog):
             settings_loaded = copy.deepcopy(self.main.settings_custom)
 
         # General
-        self.combo_box_encoding_input.setCurrentText(wordless_conversion.to_encoding_text(self.main, *settings_loaded['general']['encoding_input']))
-        self.combo_box_encoding_output.setCurrentText(wordless_conversion.to_encoding_text(self.main, *settings_loaded['general']['encoding_output']))
+        self.combo_box_default_encoding_input.setCurrentText(wordless_conversion.to_encoding_text(self.main, *settings_loaded['general']['encoding_input']))
+        self.combo_box_default_encoding_output.setCurrentText(wordless_conversion.to_encoding_text(self.main, *settings_loaded['general']['encoding_output']))
+
+        self.line_edit_default_paths_open_files.setText(os.path.realpath(settings_loaded['general']['default_paths_open_files']))
+        self.line_edit_default_paths_export.setText(os.path.realpath(settings_loaded['general']['default_paths_export']))
 
         self.spin_box_precision_decimal.setValue(settings_loaded['general']['precision_decimal'])
         self.spin_box_precision_pct.setValue(settings_loaded['general']['precision_pct'])
+        self.spin_box_precision_p_value.setValue(settings_loaded['general']['precision_p_value'])
 
         # Sentence Tokenization
         for lang_code in settings_loaded['sentence_tokenization']['sentence_tokenizers']:
@@ -677,15 +724,47 @@ class Wordless_Settings(QDialog):
 
         self.combo_box_stop_words_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['stop_words']['preview_lang']))
 
+    def restore_default_settings(self):
+        reply = wordless_dialog.wordless_restore_default_settings(self)
+
+        if reply == QMessageBox.Yes:
+            self.load_settings(defaults = True)
+
+    def save(self):
+        if self.apply():
+            self.accept()
+
     def apply(self):
         settings = self.main.settings_custom
 
+        # Validation
+        if not os.path.exists(self.line_edit_default_paths_open_files.text()):
+            wordless_dialog.wordless_message_path_invalid(self, self.line_edit_default_paths_open_files.text())
+
+            self.line_edit_default_paths_open_files.setFocus()
+            self.line_edit_default_paths_open_files.selectAll()
+
+            return False
+
+        if not os.path.exists(self.line_edit_default_paths_export.text()):
+            reply = wordless_dialog.wordless_message_path_does_not_exist(self, self.line_edit_default_paths_export.text())
+
+            if reply == QMessageBox.No:
+                self.line_edit_default_paths_export.setFocus()
+                self.line_edit_default_paths_export.selectAll()
+
+                return False
+
         # General
-        settings['general']['encoding_input'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_encoding_input.currentText())
-        settings['general']['encoding_output'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_encoding_output.currentText())
+        settings['general']['encoding_input'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_default_encoding_input.currentText())
+        settings['general']['encoding_output'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_default_encoding_output.currentText())
+
+        settings['general']['default_paths_open_files'] = self.line_edit_default_paths_open_files.text()
+        settings['general']['default_paths_export'] = self.line_edit_default_paths_export.text()
 
         settings['general']['precision_decimal'] = self.spin_box_precision_decimal.value()
         settings['general']['precision_pct'] = self.spin_box_precision_pct.value()
+        settings['general']['precision_p_value'] = self.spin_box_precision_p_value.value()
 
         # Sentence Tokenization
         for lang_code in settings['sentence_tokenization']['sentence_tokenizers']:
@@ -707,6 +786,10 @@ class Wordless_Settings(QDialog):
         # Stop Words
         for lang_code in settings['stop_words']['stop_words']:
             settings['stop_words']['stop_words'][lang_code] = self.__dict__[f'combo_box_stop_words_{lang_code}'].currentText()
+
+        self.wordless_settings_changed.emit()
+
+        return True
 
     def load(self):
         self.load_settings()

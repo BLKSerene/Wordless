@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import pickle
@@ -25,6 +25,7 @@ import tab_wordlist
 import tab_ngram
 import tab_collocation
 import tab_colligation
+import tab_keywords
 import tab_semantics
 
 class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
@@ -61,6 +62,11 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '0.39',
              '<a href="mailto:ccnusjy@gmail.com">Sun Junyi</a>',
              '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
+
+            ['<a href="http://ngram.sourceforge.net/">Ngram Statistics Package</a>',
+             '1.31',
+             '<a href="http://www.d.umn.edu/~tpederse/contact.html">Ted Pedersen</a><br><a href="https://twitter.com/satanjeev">Satanjeev Banerjee</a><br><a href="https://sites.google.com/site/amruta81/">Amruta Purandare</a><br>Bridget Thomson-McInnes<br><a href="http://www.cs.cmu.edu/~maheshj/">Mahesh Joshi</a><br><a href="http://www.d.umn.edu/~kohli003/">Saiyam Kohli</a><br><a href="https://sites.google.com/site/yingliuindex/">Ying Liu</a>',
+             '<a href="https://metacpan.org/pod/distribution/Text-NSP/doc/README.pod#COPYRIGHT">GPL-3.0</a>'],
 
             ['<a href="http://www.nltk.org/">NLTK</a>',
              '3.3',
@@ -441,7 +447,7 @@ class Wordless_Main(QMainWindow):
 
     def init_tabs(self):
         def current_tab_changed():
-            if self.tabs.currentIndex() == 6:
+            if self.tabs.currentIndex() == 7:
                 self.widget_files.hide()
 
                 self.centralWidget().layout().setRowStretch(1, 0)
@@ -457,6 +463,7 @@ class Wordless_Main(QMainWindow):
         self.tabs.addTab(tab_ngram.init(self), self.tr('N-gram'))
         self.tabs.addTab(tab_collocation.init(self), self.tr('Collocation'))
         self.tabs.addTab(tab_colligation.init(self), self.tr('Colligation'))
+        self.tabs.addTab(tab_keywords.init(self), self.tr('Keywords'))
         self.tabs.addTab(tab_semantics.init(self), self.tr('Semantics'))
 
         self.tabs.currentChanged.connect(current_tab_changed)

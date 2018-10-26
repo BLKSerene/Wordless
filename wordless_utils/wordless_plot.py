@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 from matplotlib import pyplot
@@ -38,13 +38,13 @@ def wordless_plot_freq(main, freq_distribution, rank_min, rank_max, use_pct, use
                 freqs[i] = [freq_cumulative + freq for freq_cumulative, freq in zip(freqs[i - 1], freq_files)]
 
     if use_pct:
-        for i, file in enumerate(main.wordless_files.selected_files()):
+        for i, file in enumerate(main.wordless_files.get_selected_files()):
             pyplot.plot([freq_files[i] / total_freqs[i] * 100  for freq_files in freqs], label = file['name'])
 
         # Total Frequency
         pyplot.plot([sum(freq_files) / total_freq * 100 for freq_files in freqs], label = main.tr('Total'))
     else:
-        for i, file in enumerate(main.wordless_files.selected_files()):
+        for i, file in enumerate(main.wordless_files.get_selected_files()):
             pyplot.plot([freq_files[i] for freq_files in freqs], label = file['name'])
 
         # Total Frequency
@@ -64,7 +64,7 @@ def wordless_plot_score(main, score_distribution, rank_min, rank_max, label_x):
     collocates = [item[0] for item in score_distribution[rank_min - 1 : rank_max - 1]]
     scores = [item[1] for item in score_distribution if item[0] in collocates]
 
-    for i, file in enumerate(main.wordless_files.selected_files()):
+    for i, file in enumerate(main.wordless_files.get_selected_files()):
         pyplot.plot([scores_files[i] for scores_files in scores], label = file['name'])
 
     # Total Score

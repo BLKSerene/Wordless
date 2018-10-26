@@ -3,7 +3,7 @@
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
 import collections
@@ -174,6 +174,8 @@ def wordless_word_tokenize(main, text, lang_code, word_tokenizer = 'Default'):
 
         for sentence in sentences:
             tokens = [token.word for token in viterbi_tokenizer.seg(text)]
+    elif word_tokenizer == main.tr('Wordless - Single Character Splitter'):
+        tokens = [char for sentence in sentences for char in sentence]
 
     return tokens
 
@@ -392,6 +394,8 @@ class Wordless_Text(nltk.Text):
             tokens_matched |= set(search_terms)
 
             for token_matched in tokens_matched.copy():
+                token_matched = re.escape(token_matched)
+
                 if match_whole_word:
                     token_matched = fr'\b{token_matched}\b'
 
@@ -408,6 +412,8 @@ class Wordless_Text(nltk.Text):
             lemmas = wordless_lemmatize(self.main, tokens, self.lang_code)
 
             for lemma_matched in wordless_lemmatize(self.main, tokens_matched, self.lang_code):
+                lemma_matched = re.escape(lemma_matched)
+
                 if match_whole_word:
                     lemma_matched = fr'\b{lemma_matched}\b'
 
