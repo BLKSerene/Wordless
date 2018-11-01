@@ -640,7 +640,7 @@ def generate_table(main, table):
     settings = main.settings_custom['keywords']
 
     if settings['ref_file']:
-        files = [file for file in main.wordless_files.selected_files(warning = False) if file['name'] != settings['ref_file']]
+        files = [file for file in main.wordless_files.get_selected_files(warning = False) if file['name'] != settings['ref_file']]
 
         if files:
             table.clear_table()
@@ -653,8 +653,9 @@ def generate_table(main, table):
 
                     break
 
-            cols_significance_test = main.settings_global['significance_tests'][settings['significance_test']]['cols']
-            col_effect_size_measure =  main.settings_global['effect_size_measures'][settings['effect_size_measure']]['col']
+            (col_text_test_stats,
+             col_text_p_value) = main.settings_global['significance_tests'][settings['significance_test']]['cols']
+            col_text_effect_size =  main.settings_global['effect_size_measures'][settings['effect_size_measure']]['col']
 
             # Insert columns
             for file in files:
@@ -662,54 +663,60 @@ def generate_table(main, table):
                                  main.tr(f'[{file["name"]}]\nFrequency'),
                                  num = True, pct = True, cumulative = True, breakdown = True)
 
-                for col in cols_significance_test:
-                    if col:
-                        table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}]\n{col}'),
-                                         num = True, breakdown = True)
+                if col_text_test_stats:
+                    table.insert_col(table.columnCount() - 1,
+                                     main.tr(f'[{file["name"]}]\n{col_text_test_stats}'),
+                                     num = True, breakdown = True)
+                if col_text_p_value:
+                    table.insert_col(table.columnCount() - 1,
+                                     main.tr(f'[{file["name"]}]\n{col_text_p_value}'),
+                                     num = True, breakdown = True)
 
                 table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'[{file["name"]}]\n{col_effect_size_measure}'),
+                                 main.tr(f'[{file["name"]}]\n{col_text_effect_size}'),
                                  num = True, breakdown = True)
 
             table.insert_col(table.columnCount() - 1,
                              main.tr(f'Total\nFrequency'),
                              num = True, pct = True, cumulative = True)
 
-            for col in cols_significance_test:
-                if col:
-                    table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'Total\n{col}'),
-                                     num = True)
+            if col_text_test_stats:
+                table.insert_col(table.columnCount() - 1,
+                                 main.tr(f'Total\n{col_text_test_stats}'),
+                                 num = True)
+            if col_text_p_value:
+                table.insert_col(table.columnCount() - 1,
+                                 main.tr(f'Total\n{col_text_p_value}'),
+                                 num = True)
 
             table.insert_col(table.columnCount() - 1,
-                             main.tr(f'Total\n{col_effect_size_measure}'),
+                             main.tr(f'Total\n{col_text_effect_size}'),
                              num = True)
 
             table.insert_col(table.columnCount() - 1,
                              main.tr(f'[{ref_file["name"]}]\nFrequency'),
                              num = True, pct = True, cumulative = True)
 
-            if cols_significance_test[1]:
+            if col_text_p_value:
                 # p-value
-                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\np-value')),
+                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{col_text_p_value}')),
                                    Qt.AscendingOrder)
             else:
                 # Test Statistics
-                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{cols_significance_test[0]}')),
+                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{col_text_test_stats}')),
                                    Qt.DescendingOrder)
 
             cols_freq = table.find_cols(main.tr('Frequency'))
 
-            if cols_significance_test[0] and cols_significance_test[1]:
+            if col_text_test_stats and col_text_p_value:
                 cols_test_stats = [col + 1 for col in cols_freq[:-1]]
-                cols_p_value = table.find_cols(main.tr('p-value'))
-            elif cols_significance_test[0]:
+                cols_p_value = [col + 2 for col in cols_freq[:-1]]
+            elif col_text_test_stats:
                 cols_test_stats = [col + 1 for col in cols_freq[:-1]]
-            elif cols_significance_test[1]:
-                cols_p_value = table.find_cols(main.tr('p-value'))
+            elif col_text_p_value:
+                cols_p_value = [col + 1 for col in cols_freq[:-1]]
 
-            cols_effect_size = table.find_cols(col_effect_size_measure)
+            cols_effect_size = table.find_cols(col_text_effect_size)
             col_files_found = table.find_col(main.tr('Files Found'))
 
             len_files = len(files)
@@ -771,3 +778,6 @@ def generate_table(main, table):
                             main.tr('Missing Reference File'),
                             main.tr('Please open and select your reference file first!'),
                             QMessageBox.Ok)
+
+def generate_plot(main):
+    pass

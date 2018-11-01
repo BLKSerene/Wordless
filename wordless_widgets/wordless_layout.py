@@ -10,6 +10,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_widgets import wordless_dialog
+
 class Wordless_Splitter(QSplitter):
     def __init__(self, parent):
         super().__init__(parent)
@@ -44,13 +46,13 @@ class Wordless_Tab(QWidget):
         wrapper_settings.setLayout(QGridLayout())
 
         self.scroll_area_settings = Wordless_Scroll_Area(self.main, wrapper_settings)
-        button_restore_defaults = QPushButton(self.tr('Restore Defaults'), self.main)
+        button_restore_default_settings = QPushButton(self.tr('Restore Default Settings'), self.main)
 
-        button_restore_defaults.clicked.connect(self.restore_defaults)
+        button_restore_default_settings.clicked.connect(self.restore_default_settings)
 
         self.wrapper_right.setLayout(QGridLayout())
         self.wrapper_right.layout().addWidget(self.scroll_area_settings, 0, 0)
-        self.wrapper_right.layout().addWidget(button_restore_defaults, 1, 0)
+        self.wrapper_right.layout().addWidget(button_restore_default_settings, 1, 0)
 
         self.splitter_tab = Wordless_Splitter(self)
         self.splitter_tab.addWidget(self.wrapper_left)
@@ -64,12 +66,8 @@ class Wordless_Tab(QWidget):
         self.layout_table = self.wrapper_left.layout()
         self.layout_settings = wrapper_settings.layout()
 
-    def restore_defaults(self):
-        reply = QMessageBox.question(self.main,
-                                     self.tr('Restore Defaults'),
-                                     self.tr('Do you really want to reset all settings to defaults?'),
-                                     QMessageBox.Yes | QMessageBox.No,
-                                     QMessageBox.No)
+    def restore_default_settings(self):
+        reply = wordless_dialog.wordless_restore_default_settings(self)
 
         if reply == QMessageBox.Yes:
             self.load_settings(defaults = True)

@@ -23,20 +23,20 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
                          headers = [
                              main.tr('Rank'),
                              main.tr('N-grams'),
-                             main.tr('Total Freq'),
+                             main.tr('Total\nFrequency'),
                              main.tr('Files Found'),
                          ],
                          headers_num = [
                              main.tr('Rank'),
-                             main.tr('Total Freq'),
+                             main.tr('Total\nFrequency'),
                              main.tr('Files Found')
                          ],
                          headers_pct = [
-                             main.tr('Total Freq'),
+                             main.tr('Total\nFrequency'),
                              main.tr('Files Found')
                          ],
                          headers_cumulative = [
-                             main.tr('Total Freq')
+                             main.tr('Total\nFrequency')
                          ],
                          sorting_enabled = True)
 
@@ -59,9 +59,9 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
             settings = self.main.settings_custom['ngram']
 
             if settings['apply_to'] == self.tr('Total'):
-                col_freq = self.find_col(self.tr('Total Freq'))
+                col_freq = self.find_col(self.tr('Total\nFrequency'))
             else:
-                col_freq = self.find_col(self.tr(f'[{settings["apply_to"]}] Freq'))
+                col_freq = self.find_col(self.tr(f'[{settings["apply_to"]}]\nFrequency'))
 
             col_ngrams = self.find_col('N-grams')
             col_files_found = self.find_col('Files Found')
@@ -73,23 +73,23 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
             files_min = settings['files_min']
             files_max = settings['files_max'] if not settings['files_no_limit'] else float('inf')
 
-            self.row_filters = [{} for i in range(self.rowCount())]
+            self.row_filters = [[] for i in range(self.rowCount())]
 
             for i in range(self.rowCount()):
                 if freq_min <= self.item(i, col_freq).val_raw <= freq_max:
-                    self.row_filters[i][self.tr('Freq')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Freq')] = False
+                    self.row_filters[i].append(False)
 
                 if len_min <= len(self.item(i, col_ngrams).text().replace(' ', '')) <= len_max:
-                    self.row_filters[i][self.tr('N-grams')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('N-grams')] = False
+                    self.row_filters[i].append(False)
 
                 if files_min <= self.item(i, col_files_found).val <= files_max:
-                    self.row_filters[i][self.tr('Files Found')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Files Found')] = False
+                    self.row_filters[i].append(False)
 
             self.filter_table()
 
@@ -616,7 +616,7 @@ def generate_ngrams(main, files):
 def generate_table(main, table):
     settings = main.settings_custom['ngram']
 
-    files = main.wordless_files.selected_files()
+    files = main.wordless_files.get_selected_files()
 
     if files:
         if (settings['show_all'] or
@@ -631,12 +631,12 @@ def generate_table(main, table):
 
                 for i, file in enumerate(files):
                     table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}] Freq'),
+                                     main.tr(f'[{file["name"]}]\nFrequency'),
                                      num = True, pct = True, cumulative = True, breakdown = True)
 
-                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}] Freq')), Qt.DescendingOrder)
+                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')), Qt.DescendingOrder)
 
-                col_total_freq = table.find_col(main.tr('Total Freq'))
+                col_total_freq = table.find_col(main.tr('Total\nFrequency'))
                 col_files_found = table.find_col(main.tr('Files Found'))
 
                 len_files = len(files)
@@ -647,7 +647,8 @@ def generate_table(main, table):
 
                 table.setRowCount(len(freq_distribution))
 
-                for i, (ngram, freqs) in enumerate(sorted(freq_distribution.items(), key = wordless_misc.multi_sorting)):
+                for i, (ngram, freqs) in enumerate(sorted(freq_distribution.items(),
+                                                          key = wordless_misc.multi_sorting_freq)):
                     # Rank
                     table.set_item_num_int(i, 0, -1)
 
@@ -687,7 +688,7 @@ def generate_table(main, table):
 def generate_plot(main):
     settings = main.settings_custom['ngram']
 
-    files = main.wordless_files.selected_files()
+    files = main.wordless_files.get_selected_files()
 
     if files:
         if (settings['show_all'] or

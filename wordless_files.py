@@ -51,7 +51,13 @@ class Wordless_Files():
 
         for file_path in file_paths:
             if os.path.splitext(file_path)[1] in self.main.settings_global['file_exts']:
-                self.main.settings_custom['file']['files_open'].append(self._new_file(file_path))
+                if os.path.getsize(file_path):
+                    self.main.settings_custom['file']['files_open'].append(self._new_file(file_path))
+                else:
+                    QMessageBox.warning(self.main,
+                                        self.main.tr('Empty File'),
+                                        self.main.tr(f'File "{file_path}" is empty!'),
+                                        QMessageBox.Ok)
 
         self.write_table()
 
@@ -115,16 +121,16 @@ class Wordless_Files():
 
         self.table.itemChanged.emit(self.table.item(0, 0))
 
-    def selected_files(self, warning = True):
-        selected_files = [file for file in self.main.settings_custom['file']['files_open'] if file['selected']]
+    def get_selected_files(self, warning = True):
+        files_selected = [file for file in self.main.settings_custom['file']['files_open'] if file['selected']]
 
-        if warning and not selected_files:
+        if warning and not files_selected:
             QMessageBox.warning(self.main,
                                 self.main.tr('No Selected Files'),
                                 self.main.tr('There are no files being currently selected! Please check and try again.'),
                                 QMessageBox.Ok)
 
-        return selected_files
+        return files_selected
 
 class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
     def __init__(self, main):
@@ -244,35 +250,35 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
     def open_files(self):
         file_paths = QFileDialog.getOpenFileNames(self.main,
                                                   self.tr('Choose multiple files'),
-                                                  self.main.settings_custom['file']['root_path'],
+                                                  self.main.settings_custom['general']['default_paths_open_files'],
                                                   ';;'.join(self.main.settings_global['file_exts'].values()))[0]
 
         if file_paths:
             self.main.wordless_files.add_files(file_paths)
 
-            self.main.settings_custom['file']['root_path'] = os.path.realpath(os.path.split(file_paths[0])[0])
+            self.main.settings_custom['general']['default_paths_open_files'] = os.path.split(file_paths[0])[0]
 
     def open_dir(self, subfolders = True):
         file_paths = []
 
-        root_path = QFileDialog.getExistingDirectory(self.main,
+        file_dir = QFileDialog.getExistingDirectory(self.main,
                                                      self.tr('Choose a folder'),
-                                                     self.main.settings_custom['file']['root_path'],)
+                                                     self.main.settings_custom['general']['default_paths_open_files'],)
 
-        if root_path:
+        if file_dir:
             if subfolders:
-                for dir_path, dir_names, file_names in os.walk(root_path):
+                for dir_path, dir_names, file_names in os.walk(file_dir):
                     for file_name in file_names:
                         file_paths.append(os.path.realpath(os.path.join(dir_path, file_name)))
             else:
-                file_names = list(os.walk(root_path))[0][2]
+                file_names = list(os.walk(file_dir))[0][2]
 
                 for file_name in file_names:
-                    file_paths.append(os.path.realpath(os.path.join(root_path, file_name)))
+                    file_paths.append(os.path.realpath(os.path.join(file_dir, file_name)))
 
             self.main.wordless_files.add_files(file_paths)
 
-            self.main.settings_custom['file']['root_path'] = root_path
+            self.main.settings_custom['general']['default_paths_open_files'] = file_dir
 
     def reopen(self):
         self.main.wordless_files.reopen_files()

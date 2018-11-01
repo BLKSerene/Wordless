@@ -17,45 +17,75 @@ from PyQt5.QtWidgets import *
 from wordless_widgets import wordless_layout, wordless_widgets
 from wordless_utils import wordless_text, wordless_misc
 
-def wordless_message_jre_not_installed(main):
+def wordless_message_path_invalid(parent, path):
+    QMessageBox.warning(parent,
+                        parent.tr('Invalid Path'),
+                        parent.tr(f'''
+                                     <p>The specified path "{path}" does not exist!</p>
+                                     <p>Please change your settings and try again.</p>
+                                  '''),
+                        QMessageBox.Ok)
+
+def wordless_message_path_does_not_exist(parent, path):
+    reply = QMessageBox.question(parent,
+                                 parent.tr('Path Does Not Exist'),
+                                 parent.tr(f'''
+                                              <p>The specified path "{path}" does not exist.</p>
+                                              <p>Do you want to create the directory?</p>
+                                           '''),
+                                 QMessageBox.Yes | QMessageBox.No,
+                                 QMessageBox.No)
+
+    return reply
+
+def wordless_message_jre_not_installed(parent):
     sys_bit = platform.architecture()[0][:2]
     if sys_bit == '32':
         sys_bit_x = 'x86'
     else:
         sys_bit_x = 'x64'
 
-    QMessageBox.information(main,
-                            main.tr('Java Runtime Environment Not Installed'),
-                            main.tr(f'''
-                                        <p>The HanLP library requires Java Runtime Environment (JRE) to be installed on your computer.</p>
-                                        <p>You can download the latest version of JRE here: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html">https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html</a>.</p>
-                                        <p>After JRE is properly installed, please try again.</p>
-                                        <p>Note: You are running the {sys_bit}-bit version of Wordless, so you should install the {sys_bit_x} version of JRE!</p>
-                                    '''),
+    QMessageBox.information(parent,
+                            parent.tr('Java Runtime Environment Not Installed'),
+                            parent.tr(f'''
+                                          <p>The HanLP library requires Java Runtime Environment (JRE) to be installed on your computer.</p>
+                                          <p>You can download the latest version of JRE here: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html">https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html</a>.</p>
+                                          <p>After JRE is properly installed, please try again.</p>
+                                          <p>Note: You are running the {sys_bit}-bit version of Wordless, so you should install the {sys_bit_x} version of JRE!</p>
+                                      '''),
                             QMessageBox.Ok)
 
+def wordless_restore_default_settings(parent):
+    reply = QMessageBox.question(parent,
+                                 parent.tr('Restore Default Settings'),
+                                 parent.tr('Do you really want to reset all settings to defaults?'),
+                                 QMessageBox.Yes | QMessageBox.No,
+                                 QMessageBox.No)
+
+    return reply
+
 def wordless_message_empty_search_term(main):
-    QMessageBox.warning(main,
-                        main.tr('Empty Search Term'),
-                        main.tr('Please enter your search term(s) first!'),
+    QMessageBox.warning(parent,
+                        parent.tr('Empty Search Term'),
+                        parent.tr('Please enter your search term(s) first!'),
                         QMessageBox.Ok)
 
 def wordless_message_no_search_results(main):
-    QMessageBox.warning(main,
-                        main.tr('No Search Results'),
-                        main.tr('There is nothing that could be found in the table.'),
+    QMessageBox.warning(parent,
+                        parent.tr('No Search Results'),
+                        parent.tr('There is nothing that could be found in the table.'),
                         QMessageBox.Ok)
 
 def wordless_message_no_results_table(main):
-    QMessageBox.information(main,
-                            main.tr('No Search Results'),
-                            main.tr('There is nothing to be shown in the table.<br>You might want to change your search term(s) and/or your settings, and then try again.'),
+    QMessageBox.information(parent,
+                            parent.tr('No Search Results'),
+                            parent.tr('There is nothing to be shown in the table.<br>You might want to change your search term(s) and/or your settings, and then try again.'),
                             QMessageBox.Ok)
 
 def wordless_message_no_results_plot(main):
-    QMessageBox.information(main,
-                            main.tr('No Search Results'),
-                            main.tr('There is nothing to be shown in the figure.<br>You might want to change your search term(s) and/or your settings, and then try again.'),
+    QMessageBox.information(parent,
+                            parent.tr('No Search Results'),
+                            parent.tr('There is nothing to be shown in the figure.<br>You might want to change your search term(s) and/or your settings, and then try again.'),
                             QMessageBox.Ok)
 
 class Wordless_Dialog(QDialog):
@@ -322,7 +352,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
 
                 for item in items_found:
                     item.setForeground(QBrush(QColor('#FFF')))
-                    item.setBackground(QBrush(QColor('#F00')))
+                    item.setBackground(QBrush(QColor('#E53E3A')))
 
                 self.table.blockSignals(False)
                 self.table.show()

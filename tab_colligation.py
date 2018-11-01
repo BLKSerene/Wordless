@@ -86,18 +86,18 @@ class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
     @ wordless_misc.log_timing
     def update_filters(self):
         if [i for i in range(self.columnCount()) if self.item(0, i)]:
-            settings = self.main.settings_custom['collocation']
+            settings = self.main.settings_custom['colligation']
 
             if settings['apply_to'] == self.tr('Total'):
-                col_freq_left = self.find_col(self.tr('Total Freq/L'))
-                col_freq_right = self.find_col(self.tr('Total Freq/R'))
-                col_score_left = self.find_col(self.tr('Total Score/L'))
-                col_score_right = self.find_col(self.tr('Total Score/R'))
+                col_freq_left = self.find_col(self.tr('Total\nFrequency/L'))
+                col_freq_right = self.find_col(self.tr('Total\nFrequency/R'))
+                col_score_left = self.find_col(self.tr('Total\nScore/L'))
+                col_score_right = self.find_col(self.tr('Total\nScore/R'))
             else:
-                col_freq_left = self.find_col(self.tr(f'[{settings["apply_to"]}] Freq/L'))
-                col_freq_right = self.find_col(self.tr(f'[{settings["apply_to"]}] Freq/R'))
-                col_score_left = self.find_col(self.tr(f'[{settings["apply_to"]}] Score/L'))
-                col_score_right = self.find_col(self.tr(f'[{settings["apply_to"]}] Score/R'))
+                col_freq_left = self.find_col(self.tr(f'[{settings["apply_to"]}]\nFrequency/L'))
+                col_freq_right = self.find_col(self.tr(f'[{settings["apply_to"]}]\nFrequency/R'))
+                col_score_left = self.find_col(self.tr(f'[{settings["apply_to"]}]\nScore/L'))
+                col_score_right = self.find_col(self.tr(f'[{settings["apply_to"]}]\nScore/R'))
 
             col_files_found = self.find_col('Files Found')
 
@@ -105,38 +105,40 @@ class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
             freq_left_max = settings['freq_left_max'] if not settings['freq_left_no_limit'] else float('inf')
             freq_right_min = settings['freq_right_min']
             freq_right_max = settings['freq_right_max'] if not settings['freq_right_no_limit'] else float('inf')
+
             score_left_min = settings['score_left_min']
             score_left_max = settings['score_left_max'] if not settings['score_left_no_limit'] else float('inf')
             score_right_min = settings['score_right_min']
             score_right_max = settings['score_right_max'] if not settings['score_right_no_limit'] else float('inf')
+
             files_min = settings['files_min']
             files_max = settings['files_max'] if not settings['files_no_limit'] else float('inf')
 
-            self.row_filters = [{} for i in range(self.rowCount())]
+            self.row_filters = [[] for i in range(self.rowCount())]
 
             for i in range(self.rowCount()):
                 if freq_left_min <= self.item(i, col_freq_left).val_raw <= freq_left_max:
-                    self.row_filters[i][self.tr('Freq/L')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Freq/L')] = False
+                    self.row_filters[i].append(False)
                 if freq_right_min <= self.item(i, col_freq_right).val_raw <= freq_right_max:
-                    self.row_filters[i][self.tr('Freq/R')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Freq/R')] = False
+                    self.row_filters[i].append(False)
 
                 if score_left_min <= self.item(i, col_score_left).val <= score_left_max:
-                    self.row_filters[i][self.tr('Score/L')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Score/L')] = False
+                    self.row_filters[i].append(False)
                 if score_right_min <= self.item(i, col_score_right).val <= score_right_max:
-                    self.row_filters[i][self.tr('Score/R')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Score/R')] = False
+                    self.row_filters[i].append(False)
 
                 if files_min <= self.item(i, col_files_found).val <= files_max:
-                    self.row_filters[i][self.tr('Files Found')] = True
+                    self.row_filters[i].append(True)
                 else:
-                    self.row_filters[i][self.tr('Files Found')] = False
+                    self.row_filters[i].append(False)
 
             self.filter_table()
 
@@ -842,7 +844,7 @@ def generate_collocates(main, files):
 @ wordless_misc.log_timing
 def generate_table(main, table):
     settings = main.settings_custom['colligation']
-    files = main.wordless_files.selected_files()
+    files = main.wordless_files.get_selected_files()
 
     if files:
         if (settings['show_all'] or
@@ -874,71 +876,71 @@ def generate_table(main, table):
                     for i in range(settings['window_left'], settings['window_right'] + 1):
                         if i < 0:
                             table.insert_col(table.columnCount() - 1,
-                                             main.tr(f'[{file["name"]}] L{-i}'),
+                                             main.tr(f'[{file["name"]}]\nL{-i}'),
                                              num = True, pct = True, cumulative = True, breakdown = True)
                         elif i > 0:
                             table.insert_col(table.columnCount() - 1,
-                                             main.tr(f'[{file["name"]}] R{i}'),
+                                             main.tr(f'[{file["name"]}]\nR{i}'),
                                              num = True, pct = True, cumulative = True, breakdown = True)
 
                         table.cols_breakdown_position.add(table.columnCount() - 2)
 
                     if window_left:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}] Freq/L'),
+                                         main.tr(f'[{file["name"]}]\nFrequency/L'),
                                          num = True, pct = True, cumulative = True, breakdown = True)
                     if window_right:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}] Freq/R'),
+                                         main.tr(f'[{file["name"]}]\nFrequency/R'),
                                          num = True, pct = True, cumulative = True, breakdown = True)
                     if window_left:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}] Score/L'),
+                                         main.tr(f'[{file["name"]}]\nScore/L'),
                                          num = True, breakdown = True)
                     if window_right:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}] Score/R'),
+                                         main.tr(f'[{file["name"]}]\nScore/R'),
                                          num = True, breakdown = True)
 
                 for i in range(settings['window_left'], settings['window_right'] + 1):
                     if i < 0:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'Total L{-i}'),
+                                         main.tr(f'Total\nL{-i}'),
                                          num = True, pct = True, cumulative = True)
                     elif i > 0:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'Total R{i}'),
+                                         main.tr(f'Total\nR{i}'),
                                          num = True, pct = True, cumulative = True)
 
                     table.cols_breakdown_position.add(table.columnCount() - 2)
 
                 if window_left:
                     table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'Total Freq/L'),
+                                     main.tr(f'Total\nFrequency/L'),
                                      num = True, pct = True, cumulative = True)
                 if window_right:
                     table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'Total Freq/R'),
+                                     main.tr(f'Total\nFrequency/R'),
                                      num = True, pct = True, cumulative = True)
                 if window_left:
-                    table.insert_col(table.columnCount() - 1, main.tr(f'Total Score/L'),
+                    table.insert_col(table.columnCount() - 1, main.tr(f'Total\nScore/L'),
                                      num = True)
                 if window_right:
-                    table.insert_col(table.columnCount() - 1, main.tr(f'Total Score/R'),
+                    table.insert_col(table.columnCount() - 1, main.tr(f'Total\nScore/R'),
                                      num = True)
 
-                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}] Score/R')), Qt.DescendingOrder)
+                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\nScore/R')), Qt.DescendingOrder)
 
                 cols_freq = table.find_col([main.tr(f'[{file["name"]}]') for file in files], fuzzy_matching = True)
-                cols_freq_left = table.find_col([main.tr(f'[{file["name"]}] Freq/L') for file in files])
-                cols_freq_right = table.find_col([main.tr(f'[{file["name"]}] Freq/R') for file in files])
-                cols_score_left = table.find_col([main.tr(f'[{file["name"]}] Score/L') for file in files])
-                cols_score_right = table.find_col([main.tr(f'[{file["name"]}] Score/R') for file in files])
+                cols_freq_left = table.find_col([main.tr(f'[{file["name"]}]\nFrequency/L') for file in files])
+                cols_freq_right = table.find_col([main.tr(f'[{file["name"]}]\nFrequency/R') for file in files])
+                cols_score_left = table.find_col([main.tr(f'[{file["name"]}]\nScore/L') for file in files])
+                cols_score_right = table.find_col([main.tr(f'[{file["name"]}]\nScore/R') for file in files])
                 cols_freq_total = table.find_cols(main.tr('Total'))
-                col_total_freq_left = table.find_col(main.tr('Total Freq/L'))
-                col_total_freq_right = table.find_col(main.tr('Total Freq/R'))
-                col_total_score_left = table.find_col(main.tr('Total Score/L'))
-                col_total_score_right = table.find_col(main.tr('Total Score/R'))
+                col_total_freq_left = table.find_col(main.tr('Total\nFrequency/L'))
+                col_total_freq_right = table.find_col(main.tr('Total\nFrequency/R'))
+                col_total_score_left = table.find_col(main.tr('Total\nScore/L'))
+                col_total_score_right = table.find_col(main.tr('Total\nScore/R'))
                 col_files_found = table.find_col(main.tr('Files Found'))
 
                 len_files = len(files)
@@ -949,7 +951,8 @@ def generate_table(main, table):
 
                 table.setRowCount(len(freq_distribution))
 
-                for i, ((keyword, collocate), scores) in enumerate(sorted(score_distribution.items(), key = wordless_misc.multi_sorting)):
+                for i, ((keyword, collocate), scores) in enumerate(sorted(score_distribution.items(),
+                                                                          key = wordless_misc.multi_sorting_score)):
                     # Rank
                     table.set_item_num_int(i, 0, -1)
 
@@ -1027,7 +1030,7 @@ def generate_table(main, table):
 def generate_plot(main):
     settings = main.settings_custom['colligation']
 
-    files = main.wordless_files.selected_files()
+    files = main.wordless_files.get_selected_files()
 
     if files:
         if (settings['show_all'] or

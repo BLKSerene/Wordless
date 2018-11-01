@@ -466,7 +466,8 @@ def init_settings_global(main):
                 main.tr('HanLP - Perceptron Lexical Analyzer'),
                 main.tr('HanLP - Dijkstra Segmenter'),
                 main.tr('HanLP - N-shortest Path Segmenter'),
-                main.tr('HanLP - Viterbi Segmenter')
+                main.tr('HanLP - Viterbi Segmenter'),
+                main.tr('Wordless - Single Character Splitter')
             ],
             'zho_TW': [
                 main.tr('jieba - With HMM'),
@@ -481,7 +482,8 @@ def init_settings_global(main):
                 main.tr('HanLP - Perceptron Lexical Analyzer'),
                 main.tr('HanLP - Dijkstra Segmenter'),
                 main.tr('HanLP - N-shortest Path Segmenter'),
-                main.tr('HanLP - Viterbi Segmenter')
+                main.tr('HanLP - Viterbi Segmenter'),
+                main.tr('Wordless - Single Character Splitter')
             ],
             'ces': [
                 main.tr('NLTK - Treebank Tokenizer'),
@@ -1108,6 +1110,9 @@ def init_settings_default(main):
             'precision_pct': 2,
             'precision_p_value': 5,
 
+            'default_paths_open_files': '.',
+            'default_paths_export': './export/',
+
             'font_monospaced': 'Consolas',
 
             'style_highlight': 'border: 1px solid Red;'
@@ -1297,7 +1302,6 @@ def init_settings_default(main):
         'file': {
             'files_open': [],
             'files_closed': [],
-            'root_path': '.',
 
             'subfolders': True,
 

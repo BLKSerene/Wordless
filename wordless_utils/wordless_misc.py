@@ -51,19 +51,31 @@ def log_timing(func):
 
     return wrapper
 
-def multi_sorting(item):
+def multi_sorting_freq(item):
     keys = []
 
     for value in item[1]:
-        if type(value) == list:
-            mid = len(value) // 2
+        # Frequency
+        keys.append(-value)
 
-            keys.extend([-val for val in value[mid:]])
-            keys.extend([-val for val in value[:mid]])
-        else:
-            keys.append(-value)
-
+    # Token & N-gram
     keys.append(item[0])
+
+    return keys
+
+def multi_sorting_score(item):
+    keys = []
+
+    for scores in item[1]:
+        # Score (Right)
+        keys.append(-scores[1])
+        # Score (Left)
+        keys.append(-scores[0])
+
+    # Keywords
+    keys.append(item[0][0])
+    # Collocates
+    keys.append(item[0][1])
 
     return keys
 
