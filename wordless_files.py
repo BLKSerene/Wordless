@@ -35,12 +35,13 @@ class Wordless_Files():
             file['encoding_code'], file['encoding_lang'] = wordless_detection.detect_encoding(self.main, file)
             file['encoding_text'] = wordless_conversion.to_encoding_text(self.main, file['encoding_code'], file['encoding_lang'])
             file['lang_code'] = wordless_detection.detect_lang(self.main, file)
+            file['lang_text'] = wordless_conversion.to_lang_text(self.main, file['lang_code'])
         else:
-            file['encoding_code'] = 'utf_8'
-            file['encoding_text'] = wordless_conversion.to_encoding_text(self.main, file['encoding_code'])
-            file['lang_code'] = 'eng'
+            file['encoding_code'] = wordless_conversion.to_encoding_code(self.main, self.main.settings_custom['general']['file_default_encoding'])
+            file['encoding_text'] = self.main.settings_custom['general']['file_default_encoding']
+            file['lang_code'] = self.main.settings_custom['general']['file_default_lang']
+            file['lang_text'] = wordless_conversion.to_lang_text(self.main, self.main.settings_custom['general']['file_default_lang'])
 
-        file['lang_text'] = wordless_conversion.to_lang_text(self.main, file['lang_code'])
         file['word_delimiter'] = wordless_conversion.to_word_delimiter(file['lang_code'])
 
         return file
@@ -54,10 +55,7 @@ class Wordless_Files():
                 if os.path.getsize(file_path):
                     self.main.settings_custom['file']['files_open'].append(self._new_file(file_path))
                 else:
-                    QMessageBox.warning(self.main,
-                                        self.main.tr('Empty File'),
-                                        self.main.tr(f'File "{file_path}" is empty!'),
-                                        QMessageBox.Ok)
+                    wordless_dialog.wordless_message_empty_file(self.main, file_path)
 
         self.write_table()
 
@@ -126,8 +124,13 @@ class Wordless_Files():
 
         if warning and not files_selected:
             QMessageBox.warning(self.main,
-                                self.main.tr('No Selected Files'),
-                                self.main.tr('There are no files being currently selected! Please check and try again.'),
+                                self.main.tr('No Files Selected'),
+                                self.main.tr(f'''{self.main.settings_global['style_dialog']}
+                                                 <body>
+                                                     <p>There are no files being currently selected!</p>
+                                                     <p>Please check and try again.</p>
+                                                 </body>
+                                             '''),
                                 QMessageBox.Ok)
 
         return files_selected
@@ -207,7 +210,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
                 file['lang_code'] = wordless_conversion.to_lang_code(self.main, file['lang_text'])
                 file['word_delimiter'] = wordless_conversion.to_word_delimiter(file['lang_code'])
                 file['encoding_text'] = self.cellWidget(row, 4).currentText()
-                file['encoding_code'] = wordless_conversion.to_encoding_code(self.main, file['encoding_text'])[0]
+                file['encoding_code'] = wordless_conversion.to_encoding_code(self.main, file['encoding_text'])
 
                 self.main.settings_custom['file']['files_open'].append(file)
 
@@ -250,20 +253,20 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
     def open_files(self):
         file_paths = QFileDialog.getOpenFileNames(self.main,
                                                   self.tr('Choose multiple files'),
-                                                  self.main.settings_custom['general']['default_paths_open_files'],
+                                                  self.main.settings_custom['general']['file_default_path'],
                                                   ';;'.join(self.main.settings_global['file_exts'].values()))[0]
 
         if file_paths:
             self.main.wordless_files.add_files(file_paths)
 
-            self.main.settings_custom['general']['default_paths_open_files'] = os.path.split(file_paths[0])[0]
+            self.main.settings_custom['general']['file_default_path'] = os.path.split(file_paths[0])[0]
 
     def open_dir(self, subfolders = True):
         file_paths = []
 
         file_dir = QFileDialog.getExistingDirectory(self.main,
                                                      self.tr('Choose a folder'),
-                                                     self.main.settings_custom['general']['default_paths_open_files'],)
+                                                     self.main.settings_custom['general']['file_default_path'],)
 
         if file_dir:
             if subfolders:
@@ -278,7 +281,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
 
             self.main.wordless_files.add_files(file_paths)
 
-            self.main.settings_custom['general']['default_paths_open_files'] = file_dir
+            self.main.settings_custom['general']['file_default_path'] = file_dir
 
     def reopen(self):
         self.main.wordless_files.reopen_files()

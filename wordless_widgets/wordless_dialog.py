@@ -38,54 +38,109 @@ def wordless_message_path_does_not_exist(parent, path):
 
     return reply
 
-def wordless_message_jre_not_installed(parent):
+def wordless_message_jre_not_installed(main):
     sys_bit = platform.architecture()[0][:2]
     if sys_bit == '32':
         sys_bit_x = 'x86'
     else:
         sys_bit_x = 'x64'
 
-    QMessageBox.information(parent,
-                            parent.tr('Java Runtime Environment Not Installed'),
-                            parent.tr(f'''
-                                          <p>The HanLP library requires Java Runtime Environment (JRE) to be installed on your computer.</p>
-                                          <p>You can download the latest version of JRE here: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html">https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html</a>.</p>
-                                          <p>After JRE is properly installed, please try again.</p>
-                                          <p>Note: You are running the {sys_bit}-bit version of Wordless, so you should install the {sys_bit_x} version of JRE!</p>
+    QMessageBox.information(main,
+                            main.tr('Java Runtime Environment Not Installed'),
+                            main.tr(f'''{main.settings_global['style_dialog']}
+                                        <body>
+                                            <p>The HanLP library requires Java Runtime Environment (JRE) to be installed on your computer.</p>
+                                            <p>You can download the latest version of JRE here: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html">https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html</a>.</p>
+                                            <p>After JRE is properly installed, please try again.</p>
+                                            <p>Note: You are running the {sys_bit}-bit version of Wordless, so you should install the {sys_bit_x} version of JRE!</p>
+                                        </body>
                                       '''),
                             QMessageBox.Ok)
 
-def wordless_restore_default_settings(parent):
-    reply = QMessageBox.question(parent,
-                                 parent.tr('Restore Default Settings'),
-                                 parent.tr('Do you really want to reset all settings to defaults?'),
+def wordless_restore_default_settings(main):
+    reply = QMessageBox.question(main,
+                                 main.tr('Restore Default Settings'),
+                                 main.tr(f'''{main.settings_global['style_dialog']}
+                                             <body>
+                                                 <p>Do you really want to reset all settings to defaults?</p>
+                                             </body>
+                                         '''),
                                  QMessageBox.Yes | QMessageBox.No,
                                  QMessageBox.No)
 
     return reply
 
+def wordless_message_empty_file(main, file_path):
+    QMessageBox.warning(main,
+                        main.tr('Empty File'),
+                        main.tr(f'''{main.settings_global['style_dialog']}
+                                    <body>
+                                        <p>The specified file "{file_path}" is empty!</p>
+                                        <p>Please check and try again.</p>
+                                    </body>
+                                '''),
+                        QMessageBox.Ok)
+
 def wordless_message_empty_search_term(main):
-    QMessageBox.warning(parent,
-                        parent.tr('Empty Search Term'),
-                        parent.tr('Please enter your search term(s) first!'),
+    QMessageBox.warning(main,
+                        main.tr('Empty Search Term'),
+                        main.tr(f'''{main.settings_global['style_dialog']}
+                                    <body>
+                                        <p>Please enter your search term(s) first!</p>
+                                    </body>
+                                '''),
                         QMessageBox.Ok)
 
 def wordless_message_no_search_results(main):
-    QMessageBox.warning(parent,
-                        parent.tr('No Search Results'),
-                        parent.tr('There is nothing that could be found in the table.'),
-                        QMessageBox.Ok)
+    QMessageBox.information(main,
+                            main.tr('No Search Results'),
+                            main.tr(f'''{main.settings_global['style_dialog']}
+                                        <body>
+                                            <p>There is nothing that could be found in the table.</p>
+                                        </body>
+                                    '''),
+                            QMessageBox.Ok)
 
 def wordless_message_no_results_table(main):
-    QMessageBox.information(parent,
-                            parent.tr('No Search Results'),
-                            parent.tr('There is nothing to be shown in the table.<br>You might want to change your search term(s) and/or your settings, and then try again.'),
+    QMessageBox.information(main,
+                            main.tr('No Search Results'),
+                            main.tr(f'''{main.settings_global['style_dialog']}
+                                        <body>
+                                            <p>There is nothing to be shown in the table.</p>
+                                            <p>You might want to change your search term(s) and/or your settings, and then try again.</p>
+                                        </body>
+                                    '''),
                             QMessageBox.Ok)
 
 def wordless_message_no_results_plot(main):
-    QMessageBox.information(parent,
-                            parent.tr('No Search Results'),
-                            parent.tr('There is nothing to be shown in the figure.<br>You might want to change your search term(s) and/or your settings, and then try again.'),
+    QMessageBox.information(main,
+                            main.tr('No Search Results'),
+                            main.tr(f'''{main.settings_global['style_dialog']}
+                                        <body>
+                                            <p>There is nothing to be shown in the figure.</p>
+                                            <p>You might want to change your search term(s) and/or your settings, and then try again.</p>
+                                        </body>
+                                    '''),
+                            QMessageBox.Ok)
+
+def wordless_message_export_completed_search_terms(main, file_path):
+    QMessageBox.information(main,
+                            main.tr('Export Completed'),
+                            main.tr(f'''{main.settings_global['style_dialog']}
+                                        <body>
+                                            <p>The search terms has been successfully exported to "{file_path}".</p>
+                                        </body>
+                                    '''),
+                            QMessageBox.Ok)
+
+def wordless_message_export_completed_table(main, file_path):
+    QMessageBox.information(main,
+                            main.tr('Export Completed'),
+                            main.tr(f'''{main.settings_global['style_dialog']}
+                                        <body>
+                                            <p>The table has been successfully exported to "{file_path}".</p>
+                                        </body>
+                                    '''),
                             QMessageBox.Ok)
 
 class Wordless_Dialog(QDialog):
@@ -359,7 +414,9 @@ class Wordless_Dialog_Search(Wordless_Dialog):
             else:
                 wordless_message_no_search_results(self.main)
 
-            if len(items_found) == 1:
+            if len(items_found) == 0:
+                self.main.status_bar.showMessage(self.tr('No items found.'))
+            elif len(items_found) == 1:
                 self.main.status_bar.showMessage(self.tr('Found 1 item.'))
             else:
                 self.main.status_bar.showMessage(self.tr(f'Found {len(items_found):,} items.'))
