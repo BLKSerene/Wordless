@@ -9,7 +9,6 @@
 __all__ = [
 	'wordless_box',
     'wordless_dialog',
-    'wordless_editor',
     'wordless_layout',
     'wordless_list',
     'wordless_table',
