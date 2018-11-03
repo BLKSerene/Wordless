@@ -14,7 +14,7 @@ def wordless_plot_freq(main, freq_distribution, rank_min, rank_max, use_pct, use
     total_freqs = [sum(freqs_file) for freqs_file in zip(*freq_distribution.values())]
     total_freq = sum(total_freqs)
 
-    freq_distribution = sorted(freq_distribution.items(), key = wordless_misc.multi_sorting)
+    freq_distribution = sorted(freq_distribution.items(), key = wordless_misc.multi_sorting_freq)
 
     tokens = [item[0] for item in freq_distribution[rank_min - 1 : rank_max - 1]]
     freqs = [item[1] for item in freq_distribution if item[0] in tokens]
@@ -59,7 +59,7 @@ def wordless_plot_freq(main, freq_distribution, rank_min, rank_max, use_pct, use
     pyplot.show()
 
 def wordless_plot_score(main, score_distribution, rank_min, rank_max, label_x):
-    score_distribution = sorted(score_distribution.items(), key = wordless_misc.multi_sorting)
+    score_distribution = sorted(score_distribution.items(), key = wordless_misc.multi_sorting_score)
 
     collocates = [item[0] for item in score_distribution[rank_min - 1 : rank_max - 1]]
     scores = [item[1] for item in score_distribution if item[0] in collocates]
