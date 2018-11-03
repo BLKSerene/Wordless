@@ -20,10 +20,11 @@ class Wordless_Splitter(QSplitter):
         self.setChildrenCollapsible(False)
 
 class Wordless_Scroll_Area(QScrollArea):
-    def __init__(self, parent, wrapped_widget):
+    def __init__(self, parent, wrapped_widget = None):
         super().__init__(parent)
 
-        self.setWidget(wrapped_widget)
+        if wrapped_widget:
+            self.setWidget(wrapped_widget)
 
         self.setWidgetResizable(True)
         self.setBackgroundRole(QPalette.Light)
@@ -67,7 +68,7 @@ class Wordless_Tab(QWidget):
         self.layout_settings = wrapper_settings.layout()
 
     def restore_default_settings(self):
-        reply = wordless_dialog.wordless_restore_default_settings(self)
+        reply = wordless_dialog.wordless_restore_default_settings(self.main)
 
         if reply == QMessageBox.Yes:
             self.load_settings(defaults = True)

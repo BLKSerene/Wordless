@@ -1,22 +1,26 @@
 #
-# Wordless: List
+# Wordless: Lists
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
+import os
 import re
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-class Wordless_List(QListWidget):
-    def __init__(self, parent):
-        super().__init__(parent)
+from wordless_widgets import wordless_dialog
+from wordless_utils import wordless_conversion
 
-        self.parent = parent
+class Wordless_List(QListWidget):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.main = main
 
         self.setSelectionMode(QAbstractItemView.ExtendedSelection)
         self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked)
@@ -27,10 +31,10 @@ class Wordless_List(QListWidget):
         self.itemChanged.connect(self.item_changed, Qt.QueuedConnection)
         self.itemSelectionChanged.connect(self.selection_changed)
 
-        self.button_add    = QPushButton(self.tr('Add'), self)
+        self.button_add = QPushButton(self.tr('Add'), self)
         self.button_insert = QPushButton(self.tr('Insert'), self)
         self.button_remove = QPushButton(self.tr('Remove'), self)
-        self.button_clear  = QPushButton(self.tr('Clear'), self)
+        self.button_clear = QPushButton(self.tr('Clear'), self)
         self.button_import = QPushButton(self.tr('Import'), self)
         self.button_export = QPushButton(self.tr('Export'), self)
 
@@ -41,8 +45,7 @@ class Wordless_List(QListWidget):
         self.button_import.clicked.connect(self.import_list)
         self.button_export.clicked.connect(self.export_list)
 
-        self.item_changed()
-        self.selection_changed()
+        self.clear_list()
 
     def item_changed(self, item = None):
         if self.count():
@@ -54,31 +57,38 @@ class Wordless_List(QListWidget):
 
         if item:
             if re.search(r'^\s*$', item.text()):
-                QMessageBox.warning(self.parent,
+                QMessageBox.warning(self.main,
                                     self.tr('Empty Search Term'),
-                                    self.tr('Please enter your search term!'),
+                                    self.tr('Empty search term is not allowed!'),
                                     QMessageBox.Ok)
 
-                self.editItem(item)
                 item.setText(item.old_text)
+                self.editItem(item)
             else:
                 for i in range(self.count()):
-                    if i != self.row(item):
+                    if self.item(i) != item:
                         if item.text() == self.item(i).text():
+                            self.blockSignals(True)
+
                             item.setForeground(QColor('#F00'))
                             self.item(i).setForeground(QColor('#F00'))
+
+                            self.blockSignals(False)
                             
-                            QMessageBox.warning(self.parent,
+                            QMessageBox.warning(self.main,
                                                 self.tr('Duplicate Search Terms'),
                                                 self.tr('Please refrain from searching the same item more than once!'),
                                                 QMessageBox.Ok)
 
-                            self.editItem(item)
                             item.setText(item.old_text)
+                            self.editItem(item)
+
+                            item.setForeground(QColor('#292929'))
+                            self.item(i).setForeground(QColor('#292929'))
 
                             break
 
-                    item.old_text = item.text()
+                item.old_text = item.text()
 
     def selection_changed(self):
         if self.selectedIndexes():
@@ -114,7 +124,7 @@ class Wordless_List(QListWidget):
             
         self.item(self.count() - 1).setSelected(True)
 
-        self.item_changed()
+        self.itemChanged.emit(self.item(0))
 
     def insert_item(self):
         i = self.selectedIndexes()[0].row()
@@ -124,42 +134,66 @@ class Wordless_List(QListWidget):
         self.editItem(new_item)
         self.item(i).setSelected(True)
 
-        self.item_changed()
+        self.itemChanged.emit(self.item(0))
 
     def remove_item(self):
         for index in sorted(self.selectedIndexes(), reverse = True):
             self.takeItem(index.row())
 
-        self.item_changed()
+        self.itemChanged.emit(self.item(0))
 
     def clear_list(self):
         self.clear()
 
-        self.item_changed()
+        self.itemChanged.emit(self.item(0))
+        self.selection_changed()
 
     def import_list(self):
-        file_path = QFileDialog.getOpenFileName(self.parent,
-                                                self.tr('Import word list from file'),
-                                                '.',
+        file_path = QFileDialog.getOpenFileName(self.main,
+                                                self.tr('Import Search Terms from File'),
+                                                self.main.settings_custom['import']['search_terms_default_path'],
                                                 self.tr('Text File (*.txt)'))[0]
 
         if file_path:
-            with open(file_path, 'r', encoding = 'UTF-8') as f:
-                for line in f:
-                    self.addItem(line.rstrip())
+            file_encoding_text = self.main.settings_custom['import']['search_terms_default_encoding']
+            file_encoding_code = wordless_conversion.to_encoding_code(self.main, file_encoding_text)
 
-            self.item_changed()
+            try:
+                with open(file_path, 'r', encoding = file_encoding_code) as f:
+                    if os.path.getsize(file_path) == 0:
+                        wordless_dialog.wordless_message_empty_file(self.main, file_path)
+                    else:
+                        for line in f:
+                            if line.strip():
+                                self.addItem(line.strip())
+
+                        self.itemChanged.emit(self.item(0))
+            except:
+                QMessageBox.warning(self.main,
+                                    self.tr('Import Failed'),
+                                    self.tr(f'''{self.main.settings_global['style_dialog']}
+                                                <body>
+                                                    <p>Failed to open the specified file with encoding "{file_encoding_text}".</p>
+                                                    <p>You can change the default file encoding in "Preferences -> Settings -> General -> Import" and try again.</p>
+                                                </body>
+                                            '''))
+
+            self.main.settings_custom['import']['search_terms_default_path'] = os.path.split(file_path)[0]
 
     def export_list(self):
-        file_path = QFileDialog.getSaveFileName(self.parent,
-                                                self.tr('Export word list to file'),
-                                                '.',
+        file_path = QFileDialog.getSaveFileName(self.main,
+                                                self.tr('Export Search Terms to File'),
+                                                self.main.settings_custom['export']['search_terms_default_path'],
                                                 self.tr('Text File (*.txt)'))[0]
 
         if file_path:
-            with open(file_path, 'w', encoding = 'UTF-8') as f:
+            file_encoding = wordless_conversion.to_encoding_code(self.main, self.main.settings_custom['export']['search_terms_default_encoding'])
+
+            with open(file_path, 'w', encoding = file_encoding) as f:
                 for item in self.get_items():
                     f.write(item + '\n')
 
+            wordless_dialog.wordless_message_export_completed_search_terms(self.main, file_path)
+
     def get_items(self):
-        return list(set([self.item(i).text() for i in range(self.count())]))
+        return [self.item(i).text() for i in range(self.count())]

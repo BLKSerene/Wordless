@@ -210,7 +210,11 @@ class Wordless_Main(QMainWindow):
     def closeEvent(self, event):
         reply = QMessageBox.question(self,
                                      self.tr('Exit Confirmation'),
-                                     self.tr('Do you really want to quit?'),
+                                     self.tr(f'''{self.settings_global['style_dialog']}
+		                                         <body>
+		                                             <p>Do you really want to quit?</p>
+		                                         </body>
+		                                     '''),
                                      QMessageBox.Yes | QMessageBox.No,
                                      QMessageBox.No)
 
@@ -235,13 +239,12 @@ class Wordless_Main(QMainWindow):
         def need_help():
             message_box = QMessageBox(QMessageBox.Information,
                                       self.tr('Need Help?'),
-                                      self.tr(self.style_dialog +
-                                              '''
-                                              <body>
-                                                <p>If you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.</p>
-                                                <p>Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</p>
-                                                <p>Email: blkserene@gmail.com</p>
-                                              </body>
+                                      self.tr(f'''{self.settings_global['style_dialog']}
+                                                  <body>
+                                                      <p>If you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.</p>
+                                                      <p>Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</p>
+                                                      <p>Email: blkserene@gmail.com</p>
+                                                  </body>
                                               '''),
                                       QMessageBox.Ok,
                                       self)
@@ -253,12 +256,11 @@ class Wordless_Main(QMainWindow):
         def feedback():
             QMessageBox.information(self,
                                     self.tr('Feedback'),
-                                    self.tr(self.style_dialog +
-                                            '''
-                                            <body>
-                                              <p>If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker <a href="https://github.com/BLKSerene/Wordless/issues">Issues</a>.</p>
-                                              <p>Feedback, enhancement proposals, feature requests and code contribution are also welcomed.</p>
-                                            </body>
+                                    self.tr(f'''{self.settings_global['style_dialog']}
+                                                <body>
+                                                    <p>If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker <a href="https://github.com/BLKSerene/Wordless/issues">Issues</a>.</p>
+                                                    <p>Feedback, enhancement proposals, feature requests and code contribution are also welcomed.</p>
+                                                </body>
                                             '''),
                                     QMessageBox.Ok)
 
@@ -335,16 +337,15 @@ class Wordless_Main(QMainWindow):
         def about_wordless():
             QMessageBox.about(self,
                               self.tr('About Wordless'),
-                              self.tr(self.style_dialog +
-                                      '''
-                                      <body style="text-align: center">
-                                        <h1>Wordless Version 1.0</h1>
-                                        <p>An integrated tool for language & translation studies.</p>
-                                        <p style="margin: 0;">Designed and Developed by Ye Lei (叶磊)</p>
-                                        <hr>
-                                        <p>Licensed under GPL Version 3.0</p>
-                                        <p>Copyright (C) 2018 Ye Lei</p>
-                                      </body>'''))
+                              self.tr(f'''{self.settings_global['style_dialog']}
+                                          <body style="text-align: center">
+                                              <h1>Wordless Version 1.0</h1>
+                                              <p>An integrated tool for language & translation studies.</p>
+                                              <p style="margin: 0;">Designed and Developed by Ye Lei (叶磊)</p>
+                                              <hr>
+                                              <p>Licensed under GPL Version 3.0</p>
+                                              <p>Copyright (C) 2018 Ye Lei</p>
+                                          </body>'''))
 
         menu = self.menuBar()
         menu_file = menu.addMenu(self.tr('File'))

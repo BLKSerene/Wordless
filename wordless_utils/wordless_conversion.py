@@ -40,9 +40,8 @@ def to_ext_text(main, ext_code):
 
 def to_encoding_code(main, encoding_text):
     encoding_code = main.settings_global['file_encodings'][encoding_text]
-    encoding_lang = encoding_text.split('(')[0]
 
-    return (encoding_code, encoding_lang)
+    return encoding_code
 
 def to_encoding_text(main, encoding_code, encoding_lang = None):
     for text, code in main.settings_global['file_encodings'].items():
