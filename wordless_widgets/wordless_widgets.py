@@ -100,6 +100,9 @@ def wordless_widgets_search(main):
             checkbox_use_regex.setEnabled(True)
             checkbox_multi_search_mode.setEnabled(True)
 
+        list_search_terms.item_changed()
+        list_search_terms.selection_changed()
+
     def multi_search_changed():
         if checkbox_multi_search_mode.isChecked():
             label_search_term.setText(main.tr('Search Terms:'))

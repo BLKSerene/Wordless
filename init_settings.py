@@ -1076,26 +1076,26 @@ def init_settings_global(main):
 
         'style_dialog': '''
             <head>
-              <style>
-                * {
-                  margin: 0;
-                  border: 0;
-                  padding: 0;
+                <style>
+                    * {
+                        margin: 0;
+                        border: 0;
+                        padding: 0;
 
-                  line-height: 1.2;
-                  text-align: justify;
-                }
+                        line-height: 1.2;
+                        text-align: justify;
+                    }
 
-                h1 {
-                  margin-bottom: 10px;
-                  font-size: 16px;
-                  font-weight: bold;
-                }
+                    h1 {
+                        margin-bottom: 10px;
+                        font-size: 16px;
+                        font-weight: bold;
+                    }
 
-                p {
-                  margin-bottom: 5px;
-                }
-              </style>
+                    p {
+                        margin-bottom: 5px;
+                    }
+                </style>
             </head>
         '''
     }
@@ -1103,19 +1103,31 @@ def init_settings_global(main):
 def init_settings_default(main):
     main.settings_default = {
         'general': {
-            'encoding_input': ('utf_8', main.tr('All Languages')),
-            'encoding_output': ('utf_8', main.tr('All Languages')),
+            'file_default_path': '.',
+            'file_default_lang': 'eng',
+            'file_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
 
             'precision_decimal': 2,
             'precision_pct': 2,
             'precision_p_value': 5,
 
-            'default_paths_open_files': '.',
-            'default_paths_export': './export/',
-
             'font_monospaced': 'Consolas',
 
             'style_highlight': 'border: 1px solid Red;'
+        },
+
+        'import': {
+            'search_terms_default_path': '.',
+            'search_terms_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
+        },
+
+        'export': {
+            'table_default_path': './export/',
+            'table_default_type': main.tr('Excel Workbook (*.xlsx)'),
+            'table_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
+
+            'search_terms_default_path': './export/',
+            'search_terms_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
         },
 
         'sentence_tokenization': {
