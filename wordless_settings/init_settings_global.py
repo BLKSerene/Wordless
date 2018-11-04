@@ -1,29 +1,14 @@
 #
-# Wordless: Initialization of Settings
+# Wordless: Initialization of Global Settings
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
 # License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
-import copy
-import os
-import pickle
-
 import nltk
 
-from wordless_widgets import *
-from wordless_utils import *
-
-def init_settings(main):
-    init_settings_global(main)
-    init_settings_default(main)
-
-    if os.path.exists('wordless_settings.pkl'):
-        with open(r'wordless_settings.pkl', 'rb') as f:
-            main.settings_custom = pickle.load(f)
-    else:
-        main.settings_custom = copy.deepcopy(main.settings_default)
+from wordless_measures import *
 
 def init_settings_global(main):
     main.settings_global = {
@@ -199,6 +184,13 @@ def init_settings_global(main):
             '.html': main.tr('HTML Page (*.htm; *.html)')
         },
 
+        'file_types': {
+            'export_tables': [
+                main.tr('Excel Workbook (*.xlsx)'),
+                main.tr('CSV (Comma Delimited) (*.csv)')
+            ]
+        },
+
         'file_encodings': {
             main.tr('All Languages (UTF-8 Without BOM)'): 'utf_8',
             main.tr('All Languages (UTF-8 with BOM)'): 'utf_8_sig',
@@ -372,24 +364,13 @@ def init_settings_global(main):
         },
 
         'sentence_tokenizers': {
-            'eng': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
-            ],
-
             'zho_CN': [
                 main.tr('Wordless - Chinese Sentence Tokenizer'),
-                main.tr('HanLP - Standard Tokenizer'),
-                main.tr('HanLP - Basic Tokenizer'),
-                main.tr('HanLP - NLP Tokenizer'),
-                main.tr('HanLP - Speed Tokenizer'),
+                main.tr('HanLP - Sentence Segmenter'),
             ],
             'zho_TW': [
                 main.tr('Wordless - Chinese Sentence Tokenizer'),
-                main.tr('HanLP - Standard Tokenizer'),
-                main.tr('HanLP - Basic Tokenizer'),
-                main.tr('HanLP - NLP Tokenizer'),
-                main.tr('HanLP - Speed Tokenizer'),
-                main.tr('HanLP - Traditional Chinese Tokenizer'),
+                main.tr('HanLP - Sentence Segmenter'),
             ],
             'ces': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
@@ -398,6 +379,9 @@ def init_settings_global(main):
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
             'nld': [
+                main.tr('NLTK - Punkt Sentence Tokenizer')
+            ],
+            'eng': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
             'est': [
@@ -446,21 +430,12 @@ def init_settings_global(main):
         },
 
         'word_tokenizers': {
-            'eng': [
-                main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer'),
-            ],
-
             'zho_CN': [
                 main.tr('jieba - With HMM'),
                 main.tr('jieba - Without HMM'),
                 main.tr('HanLP - Standard Tokenizer'),
                 main.tr('HanLP - Basic Tokenizer'),
-                main.tr('HanLP - NLP Tokenizer'),
-                main.tr('HanLP - Speed Tokenizer'),
+                main.tr('HanLP - High-speed Tokenizer'),
                 main.tr('HanLP - URL Tokenizer'),
                 main.tr('HanLP - CRF Lexical Analyzer'),
                 main.tr('HanLP - Perceptron Lexical Analyzer'),
@@ -474,8 +449,7 @@ def init_settings_global(main):
                 main.tr('jieba - Without HMM'),
                 main.tr('HanLP - Standard Tokenizer'),
                 main.tr('HanLP - Basic Tokenizer'),
-                main.tr('HanLP - NLP Tokenizer'),
-                main.tr('HanLP - Speed Tokenizer'),
+                main.tr('HanLP - High-speed Tokenizer'),
                 main.tr('HanLP - Traditional Chinese Tokenizer'),
                 main.tr('HanLP - URL Tokenizer'),
                 main.tr('HanLP - CRF Lexical Analyzer'),
@@ -487,131 +461,188 @@ def init_settings_global(main):
             ],
             'ces': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'dan': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'nld': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+            ],
+            'eng': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'est': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'fin': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'fra': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'deu': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'ell': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'ita': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'nor': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'pol': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'por': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'slv': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'spa': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'swe': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'tur': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
 
             'other': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ]
         },
 
-        'pos_taggers': {
-            'eng': {
-                main.tr('NLTK - Perceptron POS Tagger'): 'Penn Treebank'
-            },
+        'word_detokenizers': {
+            'zho_CN': [
+                main.tr('Wordless - Chinese Word Detokenizer')
+            ],
 
+            'zho_TW': [
+                main.tr('Wordless - Chinese Word Detokenizer')
+            ],
+
+            'eng': [
+                main.tr('NLTK - Moses Detokenizer')
+            ],
+
+            'other': [
+                main.tr('NLTK - Moses Detokenizer')
+            ]
+        },
+
+        'pos_taggers': {
             'zho_CN': {
                 main.tr('jieba'): 'jieba',
                 main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
@@ -622,28 +653,25 @@ def init_settings_global(main):
                 main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
                 main.tr('HanLP - Perceptron Lexical Analyzer'): 'HanLP'
             },
+            'eng': {
+                main.tr('NLTK - Perceptron POS Tagger'): 'Penn Treebank'
+            },
             'rus': {
                 main.tr('NLTK - Perceptron POS Tagger'): 'Russian National Corpus'
             }
         },
 
         'tagsets': {
-            # English
-            'Penn Treebank': 'en-ptb',
             # Chinese
             'jieba': 'zho_jieba',
             'HanLP': 'zho_hanlp',
+            # English
+            'Penn Treebank': 'en-ptb',
             # Russian
             'Russian National Corpus': 'rus_russian_national_corpus'
         },
 
         'lemmatizers': {
-            'eng': [
-                'NLTK',
-                'e_lemma.txt',
-                'Lemmatization Lists'
-            ],
-
             'ast': [
                 'Lemmatization Lists'
             ],
@@ -654,6 +682,11 @@ def init_settings_global(main):
                 'Lemmatization Lists'
             ],
             'ces': [
+                'Lemmatization Lists'
+            ],
+            'eng': [
+                'NLTK',
+                'e_lemma.txt',
                 'Lemmatization Lists'
             ],
             'est': [
@@ -713,12 +746,6 @@ def init_settings_global(main):
         },
 
         'stop_words': {
-            'eng': [
-                'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
-            ],
-
             'afr': [
                 'Stopwords ISO',
                 'stopwords-json'
@@ -779,6 +806,11 @@ def init_settings_global(main):
                 'stopwords-json'
             ],
             'nld': [
+                'NLTK',
+                'Stopwords ISO',
+                'stopwords-json'
+            ],
+            'eng': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
@@ -967,97 +999,255 @@ def init_settings_global(main):
             ]
         },
 
-        'significance_tests': {
-            main.tr('Raw Frequency'): {
-                'cols': [main.tr('Raw Freq'), None],
-                'func': wordless_measures.raw_freq
+        'measures_dispersion': {
+            main.tr('Juilland\'s D'): {
+                'col': main.tr('Juilland\'s D'),
+                'func': measures_dispersion.juillands_d
             },
 
-            main.tr('Student\'s t-test'): {
-                'cols': [main.tr('t-value'), main.tr('p-value')],
-                'func': wordless_measures.students_t_test
+            main.tr('Carroll\'s D₂'): {
+                'col': main.tr('Carroll\'s D₂'),
+                'func': measures_dispersion.carrolls_d2
             },
 
-            main.tr('Pearson\'s Chi-squared Test'): {
-                'cols': [main.tr('χ2'), main.tr('p-value')],
-                'func': wordless_measures.chi_squared_test
+            main.tr('Lyne\'s D₃'): {
+                'col': main.tr('Lyne\'s D₃'),
+                'func': measures_dispersion.lynes_d3
             },
 
-            main.tr('Yates\'s Chi-squared Test'): {
-                'cols': [main.tr('χ2'), main.tr('p-value')],
-                'func': wordless_measures.chi_squared_test_yates
+            main.tr('Rosengren\'s S'): {
+                'col': main.tr('Rosengren\'s S'),
+                'func': measures_dispersion.rosengrens_s
             },
 
-            main.tr('Fisher\'s Exact Test'): {
-                'cols': [None, main.tr('p-value')],
-                'func': wordless_measures.fishers_exact_test
-            },
-
-            main.tr('Log-likelihood Ratio Test'): {
-                'cols': [main.tr('Log-likelihood Ratio'), main.tr('p-value')],
-                'func': wordless_measures.log_likehood_ratio_test
-            },
-
-            main.tr('Pointwise Mutual Information'): {
-                'cols': [main.tr('PMI'), None],
-                'func': wordless_measures.pmi
-            },
-
-            main.tr('Mutual Information'): {
-                'cols': [main.tr('MI'), None],
-                'func': wordless_measures.mi
-            },
-
-            main.tr('Poisson-Stirling'): {
-                'cols': [main.tr('Poisson-Stirling'), None],
-                'func': wordless_measures.poisson_stirling
+            main.tr('Distributional Consistency'): {
+                'col': main.tr('Distributional Consistency'),
+                'func': measures_dispersion.distributional_consistency
             }
         },
 
-        'effect_size_measures': {
-            main.tr('Phi Coefficient'): {
-                'col': main.tr('Phi Coefficient'),
-                'func': wordless_measures.phi_coeff
+        'measures_adjusted_freq': {
+            main.tr('Juilland\'s U'): {
+                'col': main.tr('Juilland\'s U'),
+                'func': measures_adjusted_freq.juillands_u
             },
 
-            main.tr('Sørensen-Dice Coefficient'): {
-                'col': main.tr('Sørensen-Dice Coefficient'),
-                'func': wordless_measures.sorensen_dice_coeff
+            main.tr('Carroll\'s Uₘ'): {
+                'col': main.tr('Carroll\'s Uₘ'),
+                'func': measures_adjusted_freq.carrolls_um
             },
 
-            main.tr('Jaccard Index'): {
-                'col': main.tr('Jaccard Index'),
-                'func': wordless_measures.jaccard_index
+            main.tr('Rosengren\'s KF'): {
+                'col': main.tr('Rosengren\'s KF'),
+                'func': measures_adjusted_freq.rosengrens_kf
             },
 
-            main.tr('Odds Ratio'): {
-                'col': main.tr('Odds Ratio'),
-                'func': wordless_measures.odds_ratio
+            main.tr('Engvall\'s Measure'): {
+                'col': main.tr('Engvall\'s Measure'),
+                'func': measures_adjusted_freq.engvalls_measure
             },
 
-            main.tr('Risk Ratio'): {
-                'col': main.tr('Risk Ratio'),
-                'func': wordless_measures.risk_ratio
+            main.tr('Kromer\'s Uᵣ'): {
+                'col': main.tr('Kromer\'s Uᵣ'),
+                'func': measures_adjusted_freq.kromers_ur
+            }
+        },
+
+        'tests_significance': {
+            'collocation': {
+                main.tr('z-score'): {
+                    'cols': [
+                        main.tr('z-score'),
+                        main.tr('p-value'),
+                        None
+                    ],
+
+                    'func': measures_statistical_significance.z_score
+                },
+
+                main.tr('Student\'s t-test (One-sample)'): {
+                    'cols': [
+                        main.tr('t-statistic'),
+                        main.tr('p-value'),
+                        None
+                    ],
+
+                    'func': measures_statistical_significance.students_t_test_one_sample
+                },
+
+                main.tr('Pearson\'s Chi-squared Test'): {
+                    'cols': [
+                        main.tr('χ2'),
+                        main.tr('p-value'),
+                        None
+                    ],
+
+                    'func': measures_statistical_significance.pearsons_chi_squared_test
+                },
+
+                main.tr('Log-likelihood Ratio Test'): {
+                    'cols': [
+                        main.tr('Log-likelihood Ratio'),
+                        main.tr('p-value'),
+                        main.tr('Bayes Factor')
+                    ],
+
+                    'func': measures_statistical_significance.log_likehood_ratio_test
+                },
+
+                main.tr('Fisher\'s Exact Test'): {
+                    'cols': [
+                        None,
+                        main.tr('p-value'),
+                        None
+                    ],
+
+                    'func': measures_statistical_significance.fishers_exact_test
+                }
             },
 
-            main.tr('Log Ratio'): {
-                'col': main.tr('Log Ratio'),
-                'func': wordless_measures.log_ratio
+            'keywords': {
+                main.tr('Student\'s t-test (Two-sample)'): {
+                    'cols': [
+                        main.tr('t-statistic'),
+                        main.tr('p-value'),
+                        main.tr('Bayes Factor')
+                    ],
+
+                    'func': measures_statistical_significance.students_t_test_two_sample
+                },
+
+                main.tr('Pearson\'s Chi-squared Test'): {
+                    'cols': [
+                        main.tr('χ2'),
+                        main.tr('p-value'),
+                        None
+                    ],
+
+                    'func': measures_statistical_significance.pearsons_chi_squared_test
+                },
+
+
+                main.tr('Fisher\'s Exact Test'): {
+                    'cols': [
+                        None,
+                        main.tr('p-value'),
+                        None
+                    ],
+
+                    'func': measures_statistical_significance.fishers_exact_test
+                },
+
+                main.tr('Log-likelihood Ratio Test'): {
+                    'cols': [
+                        main.tr('Log-likelihood Ratio'),
+                        main.tr('p-value'),
+                        main.tr('Bayes Factor')
+                    ],
+
+                    'func': measures_statistical_significance.log_likehood_ratio_test
+                },
+
+                main.tr('Mann-Whitney U Test'): {
+                    'cols': [
+                        main.tr('U Statistic'),
+                        main.tr('p-value'),
+                        None
+                    ],
+
+                    'func': measures_statistical_significance.mann_whitney_u_test
+                }
+            }
+        },
+
+        'measures_effect_size': {
+            'collocation': {
+                main.tr('Pointwise Mutual Information'): {
+                    'col': main.tr('PMI'),
+                    'func': measures_effect_size.pmi
+                },
+
+                main.tr('Mutual Dependency'): {
+                    'col': main.tr('MD'),
+                    'func': measures_effect_size.mutual_dependency
+                },
+
+                main.tr('Log-Frequency Biased MD'): {
+                    'col': main.tr('LFMD'),
+                    'func': measures_effect_size.log_freq_biased_md
+                },
+
+                main.tr('Cubic Association Ratio'): {
+                    'col': main.tr('Cubic Association Ratio'),
+                    'func': measures_effect_size.cubic_association_ratio
+                },
+
+                main.tr('MI.log-f'): {
+                    'col': main.tr('MI.log-f'),
+                    'func': measures_effect_size.mi_lof_f
+                },
+
+                main.tr('Mutual Information'): {
+                    'col': main.tr('MI'),
+                    'func': measures_effect_size.mi
+                },
+
+                main.tr('Squared Phi Coefficient'): {
+                    'col': main.tr('φ2'),
+                    'func': measures_effect_size.squared_phi_coeff
+                },
+
+                main.tr('Dice\'s Coefficient'): {
+                    'col': main.tr('Dice\'s Coefficient'),
+                    'func': measures_effect_size.dices_coeff
+                },
+
+                main.tr('logDice'): {
+                    'col': main.tr('logDice'),
+                    'func': measures_effect_size.log_dice
+                },
+
+                main.tr('Mutual Expectation'): {
+                    'col': main.tr('Mutual Expectation'),
+                    'func': measures_effect_size.mutual_expectation
+                },
+
+                main.tr('Jaccard Index'): {
+                    'col': main.tr('Jaccard Index'),
+                    'func': measures_effect_size.jaccard_index
+                },
+
+                main.tr('Minimum Sensitivity'): {
+                    'col': main.tr('Minimum Sensitivity'),
+                    'func': measures_effect_size.min_sensitivity
+                }
             },
 
-            main.tr('Difference Coefficient'): {
-                'col': main.tr('Difference Coefficient'),
-                'func': wordless_measures.diff_coeff
-            },
+            'keywords': {
+                main.tr('Kilgarriff\'s Ratio'): {
+                    'col': main.tr('Kilgarriff\'s Ratio'),
+                    'func': measures_effect_size.kilgarriffs_ratio
+                },
 
-            main.tr('% DIFF'): {
-                'col': main.tr('% DIFF'),
-                'func': wordless_measures.pct_diff
-            },
+                main.tr('Odds Ratio'): {
+                    'col': main.tr('Odds Ratio'),
+                    'func': measures_effect_size.odds_ratio
+                },
 
-            main.tr('Yule\'s Q'): {
-                'col': main.tr('Yule\'s Q'),
-                'func': wordless_measures.yules_q
+                main.tr('Log Ratio'): {
+                    'col': main.tr('Log Ratio'),
+                    'func': measures_effect_size.log_ratio
+                },
+
+                main.tr('Difference Coefficient'): {
+                    'col': main.tr('Difference Coefficient'),
+                    'func': measures_effect_size.diff_coeff
+                },
+
+                main.tr('%DIFF'): {
+                    'col': main.tr('%DIFF'),
+                    'func': measures_effect_size.pct_diff
+                }
             }
         },
 
@@ -1097,623 +1287,24 @@ def init_settings_global(main):
                     }
                 </style>
             </head>
-        '''
-    }
-
-def init_settings_default(main):
-    main.settings_default = {
-        'general': {
-            'file_default_path': '.',
-            'file_default_lang': 'eng',
-            'file_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
-
-            'precision_decimal': 2,
-            'precision_pct': 2,
-            'precision_p_value': 5,
-
-            'font_monospaced': 'Consolas',
-
-            'style_highlight': 'border: 1px solid Red;'
-        },
-
-        'import': {
-            'search_terms_default_path': '.',
-            'search_terms_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
-        },
-
-        'export': {
-            'table_default_path': './export/',
-            'table_default_type': main.tr('Excel Workbook (*.xlsx)'),
-            'table_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
-
-            'search_terms_default_path': './export/',
-            'search_terms_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
-        },
-
-        'sentence_tokenization': {
-            'sentence_tokenizers': {
-                'eng': main.tr('NLTK - Punkt Sentence Tokenizer'),
-
-                'zho_CN': main.tr('Wordless - Chinese Sentence Tokenizer'),
-                'zho_TW': main.tr('Wordless - Chinese Sentence Tokenizer'),
-                'ces': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'dan': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'nld': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'est': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'fin': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'fra': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'deu': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'ell': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'ita': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'nor': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'pol': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'por': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'slv': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'spa': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'swe': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'tur': main.tr('NLTK - Punkt Sentence Tokenizer'),
-
-                'other': main.tr('NLTK - Punkt Sentence Tokenizer'),
-            },
-
-            'preview_lang': 'eng',
-            'preview_samples': ''
-        },
-
-        'word_tokenization': {
-            'word_tokenizers': {
-                'eng': main.tr('NLTK - Treebank Tokenizer'),
-                'zho_CN': main.tr('jieba - With HMM'),
-                'zho_TW': main.tr('jieba - With HMM'),
-                'ces': main.tr('NLTK - Treebank Tokenizer'),
-                'dan': main.tr('NLTK - Treebank Tokenizer'),
-                'nld': main.tr('NLTK - Treebank Tokenizer'),
-                'est': main.tr('NLTK - Treebank Tokenizer'),
-                'fin': main.tr('NLTK - Treebank Tokenizer'),
-                'fra': main.tr('NLTK - Treebank Tokenizer'),
-                'deu': main.tr('NLTK - Treebank Tokenizer'),
-                'ell': main.tr('NLTK - Treebank Tokenizer'),
-                'ita': main.tr('NLTK - Treebank Tokenizer'),
-                'nor': main.tr('NLTK - Treebank Tokenizer'),
-                'pol': main.tr('NLTK - Treebank Tokenizer'),
-                'por': main.tr('NLTK - Treebank Tokenizer'),
-                'slv': main.tr('NLTK - Treebank Tokenizer'),
-                'spa': main.tr('NLTK - Treebank Tokenizer'),
-                'swe': main.tr('NLTK - Treebank Tokenizer'),
-                'tur': main.tr('NLTK - Treebank Tokenizer'),
-
-                'other': main.tr('NLTK - Treebank Tokenizer')
-            },
-
-            'preview_lang': 'eng',
-            'preview_samples': ''
-        },
-
-        'pos_tagging': {
-            'pos_taggers': {
-                'eng': main.tr('NLTK - Perceptron POS Tagger'),
-
-                'zho_CN': main.tr('jieba'),
-                'zho_TW':  main.tr('jieba'),
-                'rus': main.tr('NLTK - Perceptron POS Tagger')
-            },
-
-            'tagsets': {
-                'eng': 'Penn Treebank',
-
-                'zho_CN': 'jieba',
-                'zho_TW':  'jieba',
-                'rus': 'Russian National Corpus'
-            },
-
-            'preview_lang': 'eng',
-            'preview_samples': ''
-        },
-
-        'lemmatization': {
-            'lemmatizers': {
-                'eng': 'NLTK',
-
-                'ast': 'Lemmatization Lists',
-                'bul': 'Lemmatization Lists',
-                'cat': 'Lemmatization Lists',
-                'ces': 'Lemmatization Lists',
-                'est': 'Lemmatization Lists',
-                'fra': 'Lemmatization Lists',
-                'gla': 'Lemmatization Lists',
-                'glg': 'Lemmatization Lists',
-                'deu': 'Lemmatization Lists',
-                'hun': 'Lemmatization Lists',
-                'gle': 'Lemmatization Lists',
-                'ita': 'Lemmatization Lists',
-                'glv': 'Lemmatization Lists',
-                'fas': 'Lemmatization Lists',
-                'por': 'Lemmatization Lists',
-                'ron': 'Lemmatization Lists',
-                'slk': 'Lemmatization Lists',
-                'slv': 'Lemmatization Lists',
-                'spa': 'Lemmatization Lists',
-                'swe': 'Lemmatization Lists',
-                'ukr': 'Lemmatization Lists',
-                'cym': 'Lemmatization Lists'
-            },
-
-            'preview_lang': 'eng',
-            'preview_samples': '',
-
-        },
-
-        'stop_words': {
-            'stop_words': {
-                'eng': 'NLTK',
-
-                'afr': 'Stopwords ISO',
-                'ara': 'NLTK',
-                'hye': 'Stopwords ISO',
-                'aze': 'NLTK',
-                'eus': 'Stopwords ISO',
-                'ben': 'Stopwords ISO',
-                'bre': 'Stopwords ISO',
-                'bul': 'Stopwords ISO',
-                'cat': 'Stopwords ISO',
-                'zho_CN': 'HanLP',
-                'zho_TW': 'HanLP',
-                'hrv': 'Stopwords ISO',
-                'ces': 'Stopwords ISO',
-                'dan': 'NLTK',
-                'nld': 'NLTK',
-                'epo': 'Stopwords ISO',
-                'est': 'Stopwords ISO',
-                'fin': 'NLTK',
-                'fra': 'NLTK',
-                'glg': 'Stopwords ISO',
-                'deu': 'NLTK',
-                'ell': 'NLTK',
-                'hau': 'Stopwords ISO',
-                'heb': 'Stopwords ISO',
-                'hin': 'Stopwords ISO',
-                'hun': 'NLTK',
-                'ind': 'NLTK',
-                'gle': 'Stopwords ISO',
-                'ita': 'NLTK',
-                'jpn': 'Stopwords ISO',
-                'kaz': 'NLTK',
-                'kor': 'Stopwords ISO',
-                'kur': 'Stopwords ISO',
-                'lat': 'Stopwords ISO',
-                'lav': 'Stopwords ISO',
-                'mar': 'Stopwords ISO',
-                'msa': 'Stopwords ISO',
-                'nep': 'NLTK',
-                'nor': 'NLTK',
-                'fas': 'Stopwords ISO',
-                'pol': 'Stopwords ISO',
-                'por': 'NLTK',
-                'ron': 'NLTK',
-                'rus': 'NLTK',
-                'slk': 'Stopwords ISO',
-                'slv': 'Stopwords ISO',
-                'sot': 'Stopwords ISO',
-                'som': 'Stopwords ISO',
-                'spa': 'NLTK',
-                'swa': 'Stopwords ISO',
-                'swe': 'NLTK',
-                'tgl': 'Stopwords ISO',
-                'tha': 'Stopwords ISO',
-                'tur': 'NLTK',
-                'ukr': 'Stopwords ISO',
-                'urd': 'Stopwords ISO',
-                'vie': 'Stopwords ISO',
-                'yor': 'Stopwords ISO',
-                'zul': 'Stopwords ISO',
-            },
-
-            'preview_lang': 'eng',
-        },
-
-        'file': {
-            'files_open': [],
-            'files_closed': [],
-
-            'subfolders': True,
-
-            'auto_detect_encoding': True,
-            'auto_detect_lang': True
-        },
-
-        'overview': {
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_case': True,
-            'treat_as_lowercase': True,
-            'lemmatize': False,
-            'filter_stop_words': False,
-
-            'nums': True,
-            'puncs': False,
-
-            'base_sttr': 1000,
-
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown': True,
-        },
-    
-        'concordancer': {
-            'search_term': '',
-            'search_terms': [],
-            'ignore_case': True,
-            'lemmatized_forms': True,
-            'whole_word': True,
-            'regex': False,
-            'multi_search': False,
-    
-            'line_width_char': 80,
-            'line_width_token': 20,
-            'line_width_mode': main.tr('Tokens'),
-    
-            'number_lines': 25,
-            'number_lines_no_limit': True,
-    
-            'punctuations': False,
-    
-            'sort_by': [main.tr('Offset'), main.tr('In Ascending Order')],
-            'multi_sort_by': [[main.tr('Offset'), main.tr('Ascending')]],
-            'multi_sort_colors': [
-                '#bb302d',
-                '#c2691d',
-                '#cbbe01',
-                '#569834',
-                '#428989',
-                '#172e7c',
-                '#811570'
-            ],
-            'multi_sort': False
-        },
-    
-        'wordlist': {
-            'search_results': {
-                'search_term': '',
-                'search_terms': [],
-
-                'ignore_case': True,
-                'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False,
-                'multi_search_mode': False
-            },
-
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_case': True,
-            'treat_as_lowercase': True,
-            'lemmatize': False,
-            'filter_stop_words': False,
-
-            'nums': True,
-            'puncs': False,
-
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown': True,
-
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
-
-            'use_pct': False,
-            'use_cumulative': False,
-
-            'apply_to': main.tr('Total'),
-    
-            'freq_no_limit': True,
-            'freq_min': 0,
-            'freq_max': 1000,
-
-            'len_no_limit': True,
-            'len_min': 1,
-            'len_max': 20,
-
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
-        },
-    
-        'ngram': {
-            'search_results': {
-                'search_term': '',
-                'search_terms': [],
-
-                'ignore_case': True,
-                'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False,
-                'multi_search_mode': False
-            },
-            
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_case': True,
-            'treat_as_lowercase': True,
-            'lemmatize': False,
-            'filter_stop_words': False,
-
-            'nums': True,
-            'puncs': False,
-    
-            'show_all': False,
-            'search_term': '',
-            'search_terms': [],
-            'keyword_position_no_limit': True,
-            'keyword_position_min': 1,
-            'keyword_position_max': 2,
-
-            'ignore_case': True,
-            'match_inflected_forms': True,
-            'match_whole_word': True,
-            'use_regex': False,
-            'multi_search_mode': False,
-
-            'ngram_size_sync': False,
-            'ngram_size_min': 2,
-            'ngram_size_max': 2,
-            'allow_skipped_tokens': 0,
-
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown': True,
-    
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
-
-            'use_pct': False,
-            'use_cumulative': False,
-
-            'apply_to': main.tr('Total'),
-    
-            'freq_no_limit': True,
-            'freq_min': 0,
-            'freq_max': 1000,
-
-            'len_no_limit': True,
-            'len_min': 1,
-            'len_max': 20,
-
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
-        },
-
-        'collocation': {
-            'search_results': {
-                'search_term': '',
-                'search_terms': [],
-
-                'ignore_case': True,
-                'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False,
-                'multi_search_mode': False
-            },
-
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_case': True,
-            'treat_as_lowercase': True,
-            'lemmatize': False,
-            'filter_stop_words': False,
-
-            'nums': True,
-            'puncs': False,
-    
-            'search_term': '',
-            'search_terms': [],
-            'ignore_case': True,
-            'match_inflected_forms': True,
-            'match_whole_word': True,
-            'use_regex': False,
-            'multi_search_mode': False,
-            'show_all': False,
-
-            'window_sync': False,
-            'window_left': -5,
-            'window_right': 5,
-            'assoc_measure': main.tr('Pearson\'s Chi-squared Test'),
-
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown_position': True,
-            'show_breakdown_file': True,
-
-            'use_data': main.tr('Score (Right)'),
-            'use_pct': False,
-            'use_cumulative': False,
-
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
-
-            'apply_to': main.tr('Total'),
-
-            'freq_left_no_limit': True,
-            'freq_left_min': 0,
-            'freq_left_max': 1000,
-            'freq_right_no_limit': True,
-            'freq_right_min': 0,
-            'freq_right_max': 1000,
-
-            'score_left_no_limit': True,
-            'score_left_min': 0,
-            'score_left_max': 100,
-            'score_right_no_limit': True,
-            'score_right_min': 0,
-            'score_right_max': 100,
-
-            'len_no_limit': True,
-            'len_min': 1,
-            'len_max': 20,
-
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
-        },
-
-        'colligation': {
-            'search_results': {
-                'search_term': '',
-                'search_terms': [],
-
-                'ignore_case': True,
-                'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False,
-                'multi_search_mode': False
-            },
-
-            'treat_as_lowercase': True,
-            'lemmatize': False,
-
-            'puncs': False,
-    
-            'search_term': '',
-            'search_terms': [],
-            'search_type': main.tr('Token'),
-
-            'ignore_case': True,
-            'match_inflected_forms': True,
-            'match_whole_word': True,
-            'use_regex': False,
-            'multi_search_mode': False,
-            'show_all': False,
-
-            'window_sync': False,
-            'window_left': -5,
-            'window_right': 5,
-            'assoc_measure': main.tr('Pearson\'s Chi-squared Test'),
-
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown_position': True,
-            'show_breakdown_file': True,
-
-            'use_data': main.tr('Score (Right)'),
-            'use_pct': False,
-            'use_cumulative': False,
-
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
-
-            'apply_to': main.tr('Total'),
-
-            'freq_left_no_limit': True,
-            'freq_left_min': 0,
-            'freq_left_max': 1000,
-            'freq_right_no_limit': True,
-            'freq_right_min': 0,
-            'freq_right_max': 1000,
-
-            'score_left_no_limit': True,
-            'score_left_min': 0,
-            'score_left_max': 100,
-            'score_right_no_limit': True,
-            'score_right_min': 0,
-            'score_right_max': 100,
-
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
-        },
-
-        'keywords': {
-            'search_results': {
-                'search_term': '',
-                'search_terms': [],
-
-                'ignore_case': True,
-                'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False,
-                'multi_search_mode': False
-            },
-
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_case': True,
-            'treat_as_lowercase': True,
-            'lemmatize': False,
-            'filter_stop_words': False,
-
-            'nums': True,
-            'puncs': False,
-    
-            'ref_file': '',
-            'significance_test': main.tr('Pearson\'s Chi-squared Test'),
-            'effect_size_measure': main.tr('Phi Coefficient'),
-
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown': True,
-
-            'use_data': main.tr('Effect Size'),
-            'use_pct': False,
-            'use_cumulative': False,
-
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
-
-            'apply_to': main.tr('Total'),
-
-            'freq_no_limit': True,
-            'freq_min': 0,
-            'freq_max': 1000,
-
-            'test_stats_no_limit': True,
-            'test_stats_min': 0,
-            'test_stats_max': 100,
-
-            'p_value_no_limit': True,
-            'p_value_min': 0,
-            'p_value_max': 0.5,
-
-            'effect_size_no_limit': True,
-            'effect_size_min': 0,
-            'effect_size_max': 100,
-
-            'len_no_limit': True,
-            'len_min': 1,
-            'len_max': 20,
-
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
-        },
-    
-        'semantics': {
-            'search_term': '',
-            'search_mode': main.tr('Word'),
-            'search_for': main.tr('Synonyms'),
-    
-            'degree_max': 10,
-            'degree_no_limit': True,
-            'depth_max': 5,
-            'depth_no_limit': True,
-            'recursive': True,
-            'show_lemmas': True,
-    
-            'parts_of_speech': {
-                'n': main.tr('Noun'),
-                'v': main.tr('Verb'),
-                'a': main.tr('Adjective'),
-                's': main.tr('Adjective Satellite'),
-                'r': main.tr('Adverb')
-            }
+        ''',
+
+        'styles': {
+            'style_hints': '''
+                <head>
+                    <style>
+                        * {
+                            margin: 0;
+                            border: 0;
+                            padding: 0;
+
+                            line-height: 1.2;
+                            text-align: justify;
+
+                            color: #777;
+                        }
+                    </style>
+                </head>
+            '''
         }
     }

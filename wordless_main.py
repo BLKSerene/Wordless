@@ -6,6 +6,8 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
+import copy
+import os
 import pickle
 import sys
 
@@ -13,20 +15,19 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_widgets import *
+from wordless_settings import *
 from wordless_utils import *
+from wordless_widgets import *
 
-import init_settings
-import wordless_settings
 import wordless_files
+
 import tab_overview
 import tab_concordancer
 import tab_wordlist
-import tab_ngram
+import tab_ngrams
 import tab_collocation
 import tab_colligation
 import tab_keywords
-import tab_semantics
 
 class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
@@ -49,7 +50,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a>'],
 
             ['<a href="http://hanlp.com/">HanLP</a>',
-             '1.68',
+             '1.7.0',
              '<a href="mailto:hankcs.cn@gmail.com">He Han (何晗)</a>',
              '<a href="https://github.com/hankcs/HanLP/blob/master/LICENSE">Apache-2.0</a>'],
 
@@ -63,13 +64,8 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="mailto:ccnusjy@gmail.com">Sun Junyi</a>',
              '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
 
-            ['<a href="http://ngram.sourceforge.net/">Ngram Statistics Package</a>',
-             '1.31',
-             '<a href="http://www.d.umn.edu/~tpederse/contact.html">Ted Pedersen</a><br><a href="https://twitter.com/satanjeev">Satanjeev Banerjee</a><br><a href="https://sites.google.com/site/amruta81/">Amruta Purandare</a><br>Bridget Thomson-McInnes<br><a href="http://www.cs.cmu.edu/~maheshj/">Mahesh Joshi</a><br><a href="http://www.d.umn.edu/~kohli003/">Saiyam Kohli</a><br><a href="https://sites.google.com/site/yingliuindex/">Ying Liu</a>',
-             '<a href="https://metacpan.org/pod/distribution/Text-NSP/doc/README.pod#COPYRIGHT">GPL-3.0</a>'],
-
             ['<a href="http://www.nltk.org/">NLTK</a>',
-             '3.3',
+             '3.4',
              '<a href="http://www.nltk.org/contribute.html">NLTK Project</a>',
              '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
 
@@ -92,6 +88,11 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '3.8.0',
              '<a href="mailto:java-nlp-support@lists.stanford.edu">Stanford NLP</a>',
              '<a href="https://github.com/stanfordnlp/python-stanford-corenlp/blob/master/LICENSE">MIT</a>'],
+
+            ['<a href="https://amueller.github.io/word_cloud/">wordcloud</a>',
+             '1.5.0',
+             '<a href="mailto:t3kcit+githubspam@gmail.com">Andreas Christian Mueller</a>',
+             '<a href="https://github.com/amueller/word_cloud/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
              '4.6.3',
@@ -117,11 +118,6 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '3.0.0',
              '<a href="https://github.com/matplotlib/matplotlib#contact">Matplotlib Development Team</a>',
              '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'],
-
-            ['<a href="http://networkx.github.io/">NetworkX</a>',
-             '2.1',
-             '<a href="mailto:hagberg@lanl.gov">Aric Hagberg</a><br><a href="mailto:dschult@colgate.edu">Dan Schult</a><br><a href="mailto:swart@lanl.gov">Pieter Swart</a>',
-             '<a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a>'],
 
              ['<a href="http://www.numpy.org/">NumPy</a>',
              '1.15.2',
@@ -192,29 +188,49 @@ class Wordless_Main(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle(self.tr('Wordless Version 1.0'))
+        self.setWindowTitle(self.tr('Wordless v1.0'))
         self.setWindowIcon(QIcon('images/wordless_icon.png'))
 
-        init_settings.init_settings(self)
+        # Settings
+        init_settings_global.init_settings_global(self)
+        init_settings_default.init_settings_default(self)
+
+        if os.path.exists('wordless_settings.pkl'):
+            with open(r'wordless_settings.pkl', 'rb') as f:
+                self.settings_custom = pickle.load(f)
+        else:
+            self.settings_custom = copy.deepcopy(self.settings_default)
+
         self.wordless_settings = wordless_settings.Wordless_Settings(self)
+
+        # Tabs
+        tab_cur = self.settings_custom['current_tab']
 
         self.init_central_widget()
 
+        for i in range(self.tabs.count()):
+            if self.tabs.tabText(i) == tab_cur:
+                self.tabs.setCurrentIndex(i)
+
+                break
+
+        # Menu
         self.init_menu()
 
+        # Status Bar
         self.status_bar = self.statusBar()
         self.status_bar.showMessage(self.tr('Ready!'))
 
-        self.setStyleSheet('* {font-family: Arial, sans-serif; color: #292929; font-size: 12px}')
+        self.setStyleSheet('* {font-family: Arial, sans-serif; color: #292929; font-size: 12px;}')
 
     def closeEvent(self, event):
         reply = QMessageBox.question(self,
                                      self.tr('Exit Confirmation'),
                                      self.tr(f'''{self.settings_global['style_dialog']}
-		                                         <body>
-		                                             <p>Do you really want to quit?</p>
-		                                         </body>
-		                                     '''),
+                                                 <body>
+                                                     <p>Do you really want to quit?</p>
+                                                 </body>
+                                             '''),
                                      QMessageBox.Yes | QMessageBox.No,
                                      QMessageBox.No)
 
@@ -340,11 +356,12 @@ class Wordless_Main(QMainWindow):
                               self.tr(f'''{self.settings_global['style_dialog']}
                                           <body style="text-align: center">
                                               <h1>Wordless Version 1.0</h1>
-                                              <p>An integrated tool for language & translation studies.</p>
-                                              <p style="margin: 0;">Designed and Developed by Ye Lei (叶磊)</p>
+                                              <p>An Integrated Corpus Tool for the Scientific Study of Language, Literature and Translation</p>
+                                              <p>Designed and Developed by Ye Lei (叶磊)</p>
+                                              <p>MA Student of Shanghai International Studies University</p>
                                               <hr>
                                               <p>Licensed under GPL Version 3.0</p>
-                                              <p>Copyright (C) 2018 Ye Lei</p>
+                                              <p>Copyright (C) 2018 Ye Lei (叶磊)</p>
                                           </body>'''))
 
         menu = self.menuBar()
@@ -447,27 +464,21 @@ class Wordless_Main(QMainWindow):
         self.setCentralWidget(central_widget)
 
     def init_tabs(self):
-        def current_tab_changed():
-            if self.tabs.currentIndex() == 7:
-                self.widget_files.hide()
-
-                self.centralWidget().layout().setRowStretch(1, 0)
-            else:
-                self.widget_files.show()
-
-                self.centralWidget().layout().setRowStretch(1, 1)
+        def tab_changed():
+            self.settings_custom['current_tab'] = self.tabs.tabText(self.tabs.currentIndex())
 
         self.tabs = QTabWidget(self)
         self.tabs.addTab(tab_overview.init(self), self.tr('Overview'))
         self.tabs.addTab(tab_concordancer.init(self), self.tr('Concordancer'))
         self.tabs.addTab(tab_wordlist.init(self), self.tr('Wordlist'))
-        self.tabs.addTab(tab_ngram.init(self), self.tr('N-gram'))
+        self.tabs.addTab(tab_ngrams.init(self), self.tr('N-grams'))
         self.tabs.addTab(tab_collocation.init(self), self.tr('Collocation'))
         self.tabs.addTab(tab_colligation.init(self), self.tr('Colligation'))
         self.tabs.addTab(tab_keywords.init(self), self.tr('Keywords'))
-        self.tabs.addTab(tab_semantics.init(self), self.tr('Semantics'))
 
-        self.tabs.currentChanged.connect(current_tab_changed)
+        self.tabs.currentChanged.connect(tab_changed)
+
+        tab_changed()
 
         return self.tabs
 

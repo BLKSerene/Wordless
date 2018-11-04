@@ -12,8 +12,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_widgets import *
+from wordless_text import *
 from wordless_utils import *
+from wordless_widgets import *
 
 class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
     def __init__(self, main):
@@ -95,32 +96,37 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
 def init(main):
     def load_settings(defaults = False):
         if defaults:
-            settings_loaded = copy.deepcopy(main.settings_default['overview'])
+            settings = copy.deepcopy(main.settings_default['overview'])
         else:
-            settings_loaded = copy.deepcopy(main.settings_custom['overview'])
+            settings = copy.deepcopy(main.settings_custom['overview'])
 
-        checkbox_words.setChecked(settings_loaded['words'])
-        checkbox_lowercase.setChecked(settings_loaded['lowercase'])
-        checkbox_uppercase.setChecked(settings_loaded['uppercase'])
-        checkbox_title_case.setChecked(settings_loaded['title_case'])
-        checkbox_treat_as_lowercase.setChecked(settings_loaded['treat_as_lowercase'])
-        checkbox_lemmatize.setChecked(settings_loaded['lemmatize'])
-        checkbox_filter_stop_words.setChecked(settings_loaded['filter_stop_words'])
+        # Token Settings
+        checkbox_words.setChecked(settings['token_settings']['words'])
+        checkbox_lowercase.setChecked(settings['token_settings']['lowercase'])
+        checkbox_uppercase.setChecked(settings['token_settings']['uppercase'])
+        checkbox_title_case.setChecked(settings['token_settings']['title_case'])
+        checkbox_treat_as_lowercase.setChecked(settings['token_settings']['treat_as_lowercase'])
+        checkbox_lemmatize.setChecked(settings['token_settings']['lemmatize'])
+        checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
-        checkbox_nums.setChecked(settings_loaded['nums'])
-        checkbox_puncs.setChecked(settings_loaded['puncs'])
+        checkbox_nums.setChecked(settings['token_settings']['nums'])
+        checkbox_puncs.setChecked(settings['token_settings']['puncs'])
 
-        spin_box_base_sttr.setValue(settings_loaded['base_sttr'])
+        # Generation Settings
+        spin_box_base_sttr.setValue(settings['generation_settings']['base_sttr'])
 
-        checkbox_show_pct.setChecked(settings_loaded['show_pct'])
-        checkbox_show_cumulative.setChecked(settings_loaded['show_cumulative'])
-        checkbox_show_breakdown.setChecked(settings_loaded['show_breakdown'])
+        # Table Settings
+        checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
+        checkbox_show_cumulative.setChecked(settings['table_settings']['show_cumulative'])
+        checkbox_show_breakdown.setChecked(settings['table_settings']['show_breakdown'])
 
         token_settings_changed()
         generation_settings_changed()
         table_settings_changed()
 
     def token_settings_changed():
+        settings = main.settings_custom['overview']['token_settings']
+
         settings['words'] = checkbox_words.isChecked()
         settings['lowercase'] = checkbox_lowercase.isChecked()
         settings['uppercase'] = checkbox_uppercase.isChecked()
@@ -133,14 +139,16 @@ def init(main):
         settings['puncs'] = checkbox_puncs.isChecked()
 
     def generation_settings_changed():
+        settings = main.settings_custom['overview']['generation_settings']
+
         settings['base_sttr'] = spin_box_base_sttr.value()
 
     def table_settings_changed():
+        settings = main.settings_custom['overview']['table_settings']
+
         settings['show_pct'] = checkbox_show_pct.isChecked()
         settings['show_cumulative'] = checkbox_show_cumulative.isChecked()
         settings['show_breakdown'] = checkbox_show_breakdown.isChecked()
-
-    settings = main.settings_custom['overview']
 
     tab_overview = wordless_layout.Wordless_Tab(main, load_settings)
 
@@ -164,7 +172,7 @@ def init(main):
      checkbox_filter_stop_words,
 
      checkbox_nums,
-     checkbox_puncs) = wordless_widgets.wordless_widgets_token(main)
+     checkbox_puncs) = wordless_widgets.wordless_widgets_token_settings(main)
 
     checkbox_words.stateChanged.connect(token_settings_changed)
     checkbox_lowercase.stateChanged.connect(token_settings_changed)
@@ -210,7 +218,7 @@ def init(main):
 
     (checkbox_show_pct,
      checkbox_show_cumulative,
-     checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table(main, table_overview)
+     checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(main, table_overview)
 
     checkbox_show_pct.stateChanged.connect(table_settings_changed)
     checkbox_show_cumulative.stateChanged.connect(table_settings_changed)
@@ -221,9 +229,11 @@ def init(main):
     group_box_table_settings.layout().addWidget(checkbox_show_cumulative, 1, 0)
     group_box_table_settings.layout().addWidget(checkbox_show_breakdown, 2, 0)
 
-    tab_overview.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
-    tab_overview.layout_settings.addWidget(group_box_generation_settings, 1, 0, Qt.AlignTop)
-    tab_overview.layout_settings.addWidget(group_box_table_settings, 2, 0, Qt.AlignTop)
+    tab_overview.layout_settings.addWidget(group_box_token_settings, 0, 0)
+    tab_overview.layout_settings.addWidget(group_box_generation_settings, 1, 0)
+    tab_overview.layout_settings.addWidget(group_box_table_settings, 2, 0)
+
+    tab_overview.layout_settings.setRowStretch(3, 1)
 
     load_settings()
 
@@ -250,45 +260,44 @@ def generate_table(main, table):
 
             text.tokens_filtered = text.tokens.copy()
 
-            if settings['words']:
-                if not settings['lowercase']:
+            if settings['token_settings']['words']:
+                if not settings['token_settings']['lowercase']:
                     text.tokens_filtered = [token for token in text.tokens_filtered if not token.islower()]
-                if not settings['uppercase']:
+                if not settings['token_settings']['uppercase']:
                     text.tokens_filtered = [token for token in text.tokens_filtered if not token.isupper()]
-                if not settings['title_case']:
+                if not settings['token_settings']['title_case']:
                     text.tokens_filtered = [token for token in text.tokens_filtered if not token.istitle()]
 
-                if settings['treat_as_lowercase']:
+                if settings['token_settings']['treat_as_lowercase']:
                     text.tokens_filtered = [token.lower() for token in text.tokens_filtered]
 
-                if settings['lemmatize']:
-                    text.tokens_filtered = wordless_text.wordless_lemmatize(text.main, text.tokens_filtered, text.lang_code)
+                if settings['token_settings']['lemmatize']:
+                    text.tokens_filtered = wordless_text_processing.wordless_lemmatize(text.main, text.tokens_filtered, text.lang_code)
 
-                if settings['filter_stop_words']:
-                    text.tokens_filtered = wordless_text.wordless_filter_stop_words(main, text.tokens_filtered, text.lang_code)
+                if settings['token_settings']['filter_stop_words']:
+                    text.tokens_filtered = wordless_text_processing.wordless_filter_stop_words(main, text.tokens_filtered, text.lang_code)
             else:
                 text.tokens_filtered = [token for token in text.tokens_filtered if not [char for char in token if char.isalpha()]]
             
-            if not settings['nums']:
+            if not settings['token_settings']['nums']:
                 text.tokens_filtered = [token for token in text.tokens_filtered if not token.isnumeric()]
-            if not settings['puncs']:
+            if not settings['token_settings']['puncs']:
                 text.tokens_filtered = [token for token in text.tokens_filtered if [char for char in token if char.isalnum()]]
 
             texts.append(text)
 
         text_total = wordless_text.Wordless_Text(main, files[0])
-        text_total.text = '\n'.join([text.text for text in texts])
+        text_total.paras = [para for text in texts for para in text.paras]
+        text_total.sentences = [sentence for text in texts for sentence in text.sentences]
         text_total.tokens = [token for text in texts for token in text.tokens]
         text_total.tokens_filtered = [token for text in texts for token in text.tokens_filtered]
 
         texts.append(text_total)
 
-        base_sttr = settings['base_sttr']
+        base_sttr = settings['generation_settings']['base_sttr']
 
         for i, text in enumerate(texts):
             count_chars = 0
-            count_paras = 0
-            count_sentences = 0
             count_words = 0
             count_words_lowercase = 0
             count_words_uppercase = 0
@@ -297,10 +306,8 @@ def generate_table(main, table):
             count_puncs = 0
             ttrs = []
 
-            for para in text.text.split('\n'):
-                if para:
-                    count_paras += 1
-                    count_sentences += len(wordless_text.wordless_sentence_tokenize(main, para, text.lang_code))
+            count_paras = len(text.paras)
+            count_sentences = len(text.sentences)
 
             len_tokens = {len_token + 1: 0
                           for len_token in range(max([len(token) for token in set(text.tokens)]))}
@@ -381,4 +388,8 @@ def generate_table(main, table):
 
         table.item_changed()
 
-    main.status_bar.showMessage(main.tr('Data generation completed!'))
+        wordless_message.wordless_message_generate_table_success(main)
+    else:
+        wordless_message_box.wordless_message_box_no_files_selected(main)
+
+        wordless_message.wordless_message_generate_table_error(main)
