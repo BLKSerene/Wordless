@@ -17,22 +17,37 @@ from PyQt5.QtWidgets import *
 from wordless_widgets import wordless_layout, wordless_widgets
 from wordless_utils import wordless_text, wordless_misc
 
-def wordless_message_path_invalid(parent, path):
-    QMessageBox.warning(parent,
-                        parent.tr('Invalid Path'),
-                        parent.tr(f'''
-                                     <p>The specified path "{path}" does not exist!</p>
-                                     <p>Please change your settings and try again.</p>
-                                  '''),
+def wordless_message_path_not_dir(main, path):
+    QMessageBox.warning(main,
+                        main.tr('Invalid Path'),
+                        main.tr(f'''{main.settings_global['style_dialog']}
+                                    <body>
+                                        <p>The specified path "{path}" should be a directory, not a file!</p>
+                                        <p>Please change your settings and try again.</p>
+                                    </body>
+                                '''),
                         QMessageBox.Ok)
 
-def wordless_message_path_does_not_exist(parent, path):
-    reply = QMessageBox.question(parent,
-                                 parent.tr('Path Does Not Exist'),
-                                 parent.tr(f'''
-                                              <p>The specified path "{path}" does not exist.</p>
-                                              <p>Do you want to create the directory?</p>
-                                           '''),
+def wordless_message_path_not_exist(main, path):
+    QMessageBox.warning(main,
+                        main.tr('Invalid Path'),
+                        main.tr(f'''{main.settings_global['style_dialog']}
+                                    <body>
+                                        <p>The specified path "{path}" does not exist!</p>
+                                        <p>Please change your settings and try again.</p>
+                                    </body>
+                                '''),
+                        QMessageBox.Ok)
+
+def wordless_message_path_not_exist_confirm(main, path):
+    reply = QMessageBox.question(main,
+                                 main.tr('Path Not Exist'),
+                                 main.tr(f'''{main.settings_global['style_dialog']}
+                                             <body>
+                                                 <p>The specified path "{path}" does not exist.</p>
+                                                 <p>Do you want to create the directory?</p>
+                                             </body>
+                                         '''),
                                  QMessageBox.Yes | QMessageBox.No,
                                  QMessageBox.No)
 

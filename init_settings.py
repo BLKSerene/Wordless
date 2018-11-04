@@ -199,6 +199,13 @@ def init_settings_global(main):
             '.html': main.tr('HTML Page (*.htm; *.html)')
         },
 
+        'file_types': {
+            'export_tables': [
+                main.tr('Excel Workbook (*.xlsx)'),
+                main.tr('CSV (Comma Delimited) (*.csv)')
+            ]
+        },
+
         'file_encodings': {
             main.tr('All Languages (UTF-8 Without BOM)'): 'utf_8',
             main.tr('All Languages (UTF-8 with BOM)'): 'utf_8_sig',
@@ -372,10 +379,6 @@ def init_settings_global(main):
         },
 
         'sentence_tokenizers': {
-            'eng': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
-            ],
-
             'zho_CN': [
                 main.tr('Wordless - Chinese Sentence Tokenizer'),
                 main.tr('HanLP - Standard Tokenizer'),
@@ -398,6 +401,9 @@ def init_settings_global(main):
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
             'nld': [
+                main.tr('NLTK - Punkt Sentence Tokenizer')
+            ],
+            'eng': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
             'est': [
@@ -446,14 +452,6 @@ def init_settings_global(main):
         },
 
         'word_tokenizers': {
-            'eng': [
-                main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer'),
-            ],
-
             'zho_CN': [
                 main.tr('jieba - With HMM'),
                 main.tr('jieba - Without HMM'),
@@ -500,6 +498,13 @@ def init_settings_global(main):
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'nld': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+            ],
+            'eng': [
                 main.tr('NLTK - Treebank Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
@@ -608,10 +613,6 @@ def init_settings_global(main):
         },
 
         'pos_taggers': {
-            'eng': {
-                main.tr('NLTK - Perceptron POS Tagger'): 'Penn Treebank'
-            },
-
             'zho_CN': {
                 main.tr('jieba'): 'jieba',
                 main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
@@ -622,28 +623,25 @@ def init_settings_global(main):
                 main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
                 main.tr('HanLP - Perceptron Lexical Analyzer'): 'HanLP'
             },
+            'eng': {
+                main.tr('NLTK - Perceptron POS Tagger'): 'Penn Treebank'
+            },
             'rus': {
                 main.tr('NLTK - Perceptron POS Tagger'): 'Russian National Corpus'
             }
         },
 
         'tagsets': {
-            # English
-            'Penn Treebank': 'en-ptb',
             # Chinese
             'jieba': 'zho_jieba',
             'HanLP': 'zho_hanlp',
+            # English
+            'Penn Treebank': 'en-ptb',
             # Russian
             'Russian National Corpus': 'rus_russian_national_corpus'
         },
 
         'lemmatizers': {
-            'eng': [
-                'NLTK',
-                'e_lemma.txt',
-                'Lemmatization Lists'
-            ],
-
             'ast': [
                 'Lemmatization Lists'
             ],
@@ -654,6 +652,11 @@ def init_settings_global(main):
                 'Lemmatization Lists'
             ],
             'ces': [
+                'Lemmatization Lists'
+            ],
+            'eng': [
+                'NLTK',
+                'e_lemma.txt',
                 'Lemmatization Lists'
             ],
             'est': [
@@ -713,12 +716,6 @@ def init_settings_global(main):
         },
 
         'stop_words': {
-            'eng': [
-                'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
-            ],
-
             'afr': [
                 'Stopwords ISO',
                 'stopwords-json'
@@ -779,6 +776,11 @@ def init_settings_global(main):
                 'stopwords-json'
             ],
             'nld': [
+                'NLTK',
+                'Stopwords ISO',
+                'stopwords-json'
+            ],
+            'eng': [
                 'NLTK',
                 'Stopwords ISO',
                 'stopwords-json'
@@ -1103,7 +1105,7 @@ def init_settings_global(main):
 def init_settings_default(main):
     main.settings_default = {
         'general': {
-            'file_default_path': '.',
+            'file_default_path': os.path.realpath('.'),
             'file_default_lang': 'eng',
             'file_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
 
@@ -1117,28 +1119,27 @@ def init_settings_default(main):
         },
 
         'import': {
-            'search_terms_default_path': '.',
+            'search_terms_default_path': os.path.realpath('.'),
             'search_terms_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
         },
 
         'export': {
-            'table_default_path': './export/',
-            'table_default_type': main.tr('Excel Workbook (*.xlsx)'),
-            'table_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
+            'tables_default_path': os.path.realpath('./export/'),
+            'tables_default_type': main.tr('Excel Workbook (*.xlsx)'),
+            'tables_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
 
-            'search_terms_default_path': './export/',
+            'search_terms_default_path': os.path.realpath('./export/'),
             'search_terms_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
         },
 
         'sentence_tokenization': {
             'sentence_tokenizers': {
-                'eng': main.tr('NLTK - Punkt Sentence Tokenizer'),
-
                 'zho_CN': main.tr('Wordless - Chinese Sentence Tokenizer'),
                 'zho_TW': main.tr('Wordless - Chinese Sentence Tokenizer'),
                 'ces': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'dan': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'nld': main.tr('NLTK - Punkt Sentence Tokenizer'),
+                'eng': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'est': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'fin': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'fra': main.tr('NLTK - Punkt Sentence Tokenizer'),
@@ -1162,12 +1163,12 @@ def init_settings_default(main):
 
         'word_tokenization': {
             'word_tokenizers': {
-                'eng': main.tr('NLTK - Treebank Tokenizer'),
                 'zho_CN': main.tr('jieba - With HMM'),
                 'zho_TW': main.tr('jieba - With HMM'),
                 'ces': main.tr('NLTK - Treebank Tokenizer'),
                 'dan': main.tr('NLTK - Treebank Tokenizer'),
                 'nld': main.tr('NLTK - Treebank Tokenizer'),
+                'eng': main.tr('NLTK - Treebank Tokenizer'),
                 'est': main.tr('NLTK - Treebank Tokenizer'),
                 'fin': main.tr('NLTK - Treebank Tokenizer'),
                 'fra': main.tr('NLTK - Treebank Tokenizer'),
@@ -1191,18 +1192,16 @@ def init_settings_default(main):
 
         'pos_tagging': {
             'pos_taggers': {
-                'eng': main.tr('NLTK - Perceptron POS Tagger'),
-
                 'zho_CN': main.tr('jieba'),
                 'zho_TW':  main.tr('jieba'),
+                'eng': main.tr('NLTK - Perceptron POS Tagger'),
                 'rus': main.tr('NLTK - Perceptron POS Tagger')
             },
 
             'tagsets': {
-                'eng': 'Penn Treebank',
-
                 'zho_CN': 'jieba',
-                'zho_TW':  'jieba',
+                'zho_TW': 'jieba',
+                'eng': 'Penn Treebank',
                 'rus': 'Russian National Corpus'
             },
 
@@ -1212,12 +1211,11 @@ def init_settings_default(main):
 
         'lemmatization': {
             'lemmatizers': {
-                'eng': 'NLTK',
-
                 'ast': 'Lemmatization Lists',
                 'bul': 'Lemmatization Lists',
                 'cat': 'Lemmatization Lists',
                 'ces': 'Lemmatization Lists',
+                'eng': 'NLTK',
                 'est': 'Lemmatization Lists',
                 'fra': 'Lemmatization Lists',
                 'gla': 'Lemmatization Lists',
@@ -1245,8 +1243,6 @@ def init_settings_default(main):
 
         'stop_words': {
             'stop_words': {
-                'eng': 'NLTK',
-
                 'afr': 'Stopwords ISO',
                 'ara': 'NLTK',
                 'hye': 'Stopwords ISO',
@@ -1262,6 +1258,7 @@ def init_settings_default(main):
                 'ces': 'Stopwords ISO',
                 'dan': 'NLTK',
                 'nld': 'NLTK',
+                'eng': 'NLTK',
                 'epo': 'Stopwords ISO',
                 'est': 'Stopwords ISO',
                 'fin': 'NLTK',
