@@ -17,6 +17,7 @@ import numpy
 import openpyxl
 
 from wordless_widgets import wordless_box, wordless_dialog
+from wordless_utils import wordless_conversion
 
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
@@ -166,7 +167,7 @@ class Wordless_Table(QTableWidget):
         def find(text):
             for row in range(self.rowCount()):
                 if fuzzy_matching:
-                    if self.verticalHeaderItem(row).text().find(text) > -1:
+                    if text in self.verticalHeaderItem(row).text():
                         return row
                 else:
                     if self.verticalHeaderItem(row).text() == text:
@@ -180,13 +181,13 @@ class Wordless_Table(QTableWidget):
     def find_rows(self, text):
         return [row
                 for row in range(self.columnCount())
-                if self.verticalHeaderItem(row).text().find(text) > -1]
+                if text in self.verticalHeaderItem(row).text()]
 
     def find_col(self, text, fuzzy_matching = False):
         def find(text):
             for col in range(self.columnCount()):
                 if fuzzy_matching:
-                    if self.horizontalHeaderItem(col).text().find(text) > -1:
+                    if text in self.horizontalHeaderItem(col).text():
                         return col
                 else:
                     if self.horizontalHeaderItem(col).text() == text:
@@ -200,7 +201,7 @@ class Wordless_Table(QTableWidget):
     def find_cols(self, text):
         return [col
                 for col in range(self.columnCount())
-                if self.horizontalHeaderItem(col).text().find(text) > -1]
+                if text in self.horizontalHeaderItem(col).text()]
 
     def find_header(self, text, fuzzy_matching = False):
         if self.header_orientation == 'horizontal':
@@ -254,11 +255,6 @@ class Wordless_Table_Data(Wordless_Table):
         self.button_clear.clicked.connect(lambda: self.clear_table())
 
         self.clear_table()
-
-    def setCellWidget(self, row, col, widget):
-        super().setCellWidget(row, col, widget)
-
-        self.setItem(row, col, Wordless_Table_Item(''))
 
     def dropEvent(self, event):
         rows_dragged = []
@@ -401,6 +397,7 @@ class Wordless_Table_Data(Wordless_Table):
         item = Wordless_Table_Item()
 
         item.val = int(val)
+
         if total > -1:
             item.total = int(total)
 
@@ -437,7 +434,7 @@ class Wordless_Table_Data(Wordless_Table):
                                if self.item(row, col).val != float('inf')])
 
                 # p-value
-                if self.horizontalHeaderItem(col).text().find(self.tr('p-value')) > -1:
+                if self.tr('p-value') in self.horizontalHeaderItem(col).text():
                     precision_val = self.main.settings_custom['general']['precision_p_value']
                 else:
                     precision_val = self.main.settings_custom['general']['precision_decimal']
@@ -735,14 +732,15 @@ class Wordless_Table_Data(Wordless_Table):
                                                        vertical = 'center',
                                                        wrap_text = True)
 
-        (export_path,
-         export_ext) = QFileDialog.getSaveFileName(self,
-                                                   self.tr('Export Table'),
-                                                   self.main.settings_custom['general']['default_paths_export'],
-                                                   self.tr('Excel Workbook (*.xlsx);;CSV (Comma Delimited) (*.csv)'))
+        (file_path,
+         file_type) = QFileDialog.getSaveFileName(self,
+                                                  self.tr('Export Table'),
+                                                  self.main.settings_custom['export']['tables_default_path'],
+                                                  ';;'.join(self.main.settings_global['file_types']['export_tables']),
+                                                  self.main.settings_custom['export']['tables_default_type'])
 
-        if export_path:
-            if export_ext == self.tr('Excel Workbook (*.xlsx)'):
+        if file_path:
+            if file_type == self.tr('Excel Workbook (*.xlsx)'):
                 workbook = openpyxl.Workbook()
                 worksheet = workbook.active
 
@@ -809,9 +807,11 @@ class Wordless_Table_Data(Wordless_Table):
                                                                                          top = border,
                                                                                          bottom = border)
 
-                workbook.save(export_path)
-            elif export_ext == self.tr('CSV (Comma Delimited) (*.csv)'):
-                with open(export_path, 'w', encoding = 'utf_8', newline = '') as f:
+                workbook.save(file_path)
+            elif file_type == self.tr('CSV (Comma Delimited) (*.csv)'):
+                file_encoding = wordless_conversion.to_encoding_code(self.main, self.main.settings_custom['export']['tables_default_encoding'])
+
+                with open(file_path, 'w', encoding = file_encoding, newline = '') as f:
                     csv_writer = csv.writer(f)
 
                     if not rows_export:
@@ -835,9 +835,10 @@ class Wordless_Table_Data(Wordless_Table):
                             csv_writer.writerow([self.verticalHeaderItem(row).text().strip()] +
                                                 [self.item(row, col).text().strip() for col in range(self.columnCount())])
 
-            self.main.settings_custom['general']['default_paths_export'] = os.path.split(export_path)[0]
+            self.main.settings_custom['export']['tables_default_path'] = os.path.split(file_path)[0]
+            self.main.settings_custom['export']['tables_default_type'] = file_type
 
-            wordless_dialog.wordless_message_export_completed_table(self.main, export_path)
+            wordless_dialog.wordless_message_export_completed_table(self.main, file_path)
 
     def clear_table(self, header_count = 1):
         self.clearContents()

@@ -9,6 +9,7 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+
 import chardet
 import langdetect
 
@@ -16,10 +17,10 @@ from wordless_utils import wordless_conversion, wordless_misc
 
 def detect_encoding(main, file):
     text_sample = b''
-    encoding_code = 'utf_8'
+    encoding_code = wordless_conversion.to_encoding_code(main, main.settings_custom['general']['file_default_encoding'])
     encoding_lang = None
 
-    if main.settings_custom['file']['auto_detect_encoding']:
+    if main.settings_custom['file']['detect_encodings']:
         with open(file['path'], 'rb') as f:
             for i, line in enumerate(f):
                 if i < 100:
@@ -46,16 +47,21 @@ def detect_encoding(main, file):
         except UnicodeDecodeError:
             QMessageBox.warning(main,
                                 main.tr('Encoding Detection Failed'),
-                                main.tr('Failed to auto-detect the encoding of file "{file["name"]}", please select one manually!'),
+                                main.tr(f'''{main.settings_global['style_dialog']}
+                                            <body>
+                                                <p>Failed to auto-detect the encoding of file "{file["name"]}"!</p>
+                                                <p>Please select the correct encoding manually.</p>
+                                            </body>
+                                        '''),
                                 QMessageBox.Ok)
 
     return encoding_code, encoding_lang
 
 def detect_lang(main, file):
     text_sample = ''
-    lang_code = 'eng'
+    lang_code = main.settings_custom['general']['file_default_lang']
 
-    if main.settings_custom['file']['auto_detect_lang']:
+    if main.settings_custom['file']['detect_langs']:
         try:
             with open(file['path'], 'r', encoding = file['encoding_code']) as f:
                 for i, line in enumerate(f):
@@ -68,7 +74,12 @@ def detect_lang(main, file):
         except langdetect.lang_detect_exception.LangDetectException:
             QMessageBox.warning(main,
                                 main.tr('Language Detection Failed'),
-                                main.tr(f'Failed to auto-detect the language of file "{file["name"]}", please select one manually!'),
+                                main.tr(f'''{main.settings_global['style_dialog']}
+                                            <body>
+                                                <p>Failed to auto-detect the language of file "{file["name"]}"!</p>
+                                                <p>Please select the correct language manually.</p>
+                                            </body>
+                                        '''),
                                 QMessageBox.Ok)
 
     return lang_code
