@@ -16,7 +16,8 @@ from PyQt5.QtWidgets import *
 import numpy
 import openpyxl
 
-from wordless_widgets import wordless_box, wordless_dialog
+from wordless_widgets import wordless_box, wordless_message_box
+from wordless_utils import wordless_conversion
 
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
@@ -55,6 +56,9 @@ class Wordless_Table(QTableWidget):
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.horizontalHeader().setHighlightSections(False)
         self.verticalHeader().setHighlightSections(False)
+
+        self.setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
+        self.setHorizontalScrollMode(QAbstractItemView.ScrollPerPixel)
 
         if self.header_orientation == 'horizontal':
             self.setStyleSheet(''' 
@@ -162,15 +166,14 @@ class Wordless_Table(QTableWidget):
 
             self.setVerticalHeaderLabels(self.headers)
 
-    def find_row(self, text, fuzzy_matching = False):
+    def get_selected_rows(self):
+        return list(set([index.row() for index in self.selectedIndexes()]))
+
+    def find_row(self, text):
         def find(text):
             for row in range(self.rowCount()):
-                if fuzzy_matching:
-                    if self.verticalHeaderItem(row).text().find(text) > -1:
-                        return row
-                else:
-                    if self.verticalHeaderItem(row).text() == text:
-                        return row
+                if self.verticalHeaderItem(row).text() == text:
+                    return row
 
         if type(text) == list:
             return [find(text_item) for text_item in text]
@@ -180,17 +183,13 @@ class Wordless_Table(QTableWidget):
     def find_rows(self, text):
         return [row
                 for row in range(self.columnCount())
-                if self.verticalHeaderItem(row).text().find(text) > -1]
+                if text in self.verticalHeaderItem(row).text()]
 
-    def find_col(self, text, fuzzy_matching = False):
+    def find_col(self, text):
         def find(text):
             for col in range(self.columnCount()):
-                if fuzzy_matching:
-                    if self.horizontalHeaderItem(col).text().find(text) > -1:
-                        return col
-                else:
-                    if self.horizontalHeaderItem(col).text() == text:
-                        return col
+                if self.horizontalHeaderItem(col).text() == text:
+                    return col
 
         if type(text) == list:
             return [find(text_item) for text_item in text]
@@ -200,13 +199,13 @@ class Wordless_Table(QTableWidget):
     def find_cols(self, text):
         return [col
                 for col in range(self.columnCount())
-                if self.horizontalHeaderItem(col).text().find(text) > -1]
+                if text in self.horizontalHeaderItem(col).text()]
 
-    def find_header(self, text, fuzzy_matching = False):
+    def find_header(self, text):
         if self.header_orientation == 'horizontal':
-            return self.find_col(text, fuzzy_matching)
+            return self.find_col(text)
         else:
-            return self.find_row(text, fuzzy_matching)
+            return self.find_row(text)
 
     def find_headers(self, text):
         if self.header_orientation == 'horizontal':
@@ -255,11 +254,6 @@ class Wordless_Table_Data(Wordless_Table):
 
         self.clear_table()
 
-    def setCellWidget(self, row, col, widget):
-        super().setCellWidget(row, col, widget)
-
-        self.setItem(row, col, Wordless_Table_Item(''))
-
     def dropEvent(self, event):
         rows_dragged = []
 
@@ -276,9 +270,7 @@ class Wordless_Table_Data(Wordless_Table):
             rows_dragged.append([])
 
             for col in range(self.columnCount()):
-                item_text = self.item(row, col).text()
-
-                if item_text:
+                if self.item(row, col):
                     rows_dragged[-1].append(self.takeItem(row, col))
                 else:
                     rows_dragged[-1].append(self.cellWidget(row, col))
@@ -295,14 +287,14 @@ class Wordless_Table_Data(Wordless_Table):
             for col, item in enumerate(items):
                 if isinstance(item, QTableWidgetItem):
                     self.setItem(row_dropped + row, col, item)
+
+                    self.item(row, col).setSelected(True)
                 elif isinstance(item, QComboBox):
                     item_combo_box = wordless_box.Wordless_Combo_Box(self.main)
                     item_combo_box.addItems([item.itemText(i) for i in range(item.count())])
                     item_combo_box.setCurrentText(item.currentText())
 
                     self.setCellWidget(row_dropped + row, col, item_combo_box)
-
-                self.item(row, col).setSelected(True)
 
         self.blockSignals(False)
 
@@ -378,7 +370,7 @@ class Wordless_Table_Data(Wordless_Table):
         self.cols_breakdown = set(self.find_col(cols_breakdown))
 
     def set_item_num(self, row, col, item):
-        item.setFont(QFont(self.main.settings_custom['general']['font_monospaced']))
+        item.setFont(QFont(self.main.settings_custom['general']['font_monospace']))
         item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         super().setItem(row, col, item)
@@ -401,6 +393,7 @@ class Wordless_Table_Data(Wordless_Table):
         item = Wordless_Table_Item()
 
         item.val = int(val)
+
         if total > -1:
             item.total = int(total)
 
@@ -437,7 +430,7 @@ class Wordless_Table_Data(Wordless_Table):
                                if self.item(row, col).val != float('inf')])
 
                 # p-value
-                if self.horizontalHeaderItem(col).text().find(self.tr('p-value')) > -1:
+                if self.tr('p-value') in self.horizontalHeaderItem(col).text():
                     precision_val = self.main.settings_custom['general']['precision_p_value']
                 else:
                     precision_val = self.main.settings_custom['general']['precision_decimal']
@@ -463,9 +456,9 @@ class Wordless_Table_Data(Wordless_Table):
                                 item = self.item(row, col)
 
                                 if item.val == float('inf'):
-                                    item.setText('+ ∞')
+                                    item.setText('+∞')
                                 elif item.val == float('-inf'):
-                                    item.setText('- ∞')
+                                    item.setText('-∞')
                                 else:
                                     item.setText(f'{item.val:>{len_val},.{precision_val}}/{item.pct:<{len_pct}.{precision_pct}%}')
                 else:
@@ -555,15 +548,17 @@ class Wordless_Table_Data(Wordless_Table):
 
         sorting_section = self.horizontalHeader().sortIndicatorSection()
         col_rank = self.find_col(self.tr('Rank'))
-        rows_hidden = [self.item(row, 1).text() for row in range(self.rowCount()) if self.isRowHidden(row)]
+        rows_hidden = [(self.item(row, 0).text(), self.item(row, 1).text())
+                       for row in range(self.rowCount()) if self.isRowHidden(row)]
 
         self.sortByColumn(sorting_section, self.horizontalHeader().sortIndicatorOrder())
 
         rows_hidden_sorted = []
 
-        for text in rows_hidden:
-            if self.findItems(text, Qt.MatchExactly)[0].column() == 1:
-                rows_hidden_sorted.append(self.findItems(text, Qt.MatchExactly)[0].row())
+        for text0, text1 in rows_hidden:
+            if (self.findItems(text0, Qt.MatchExactly)[0].column() == 0 and
+                self.findItems(text1, Qt.MatchExactly)[0].column() == 1):
+                rows_hidden_sorted.append(self.findItems(text0, Qt.MatchExactly)[0].row())
 
         for row in range(self.rowCount()):
             if row not in rows_hidden_sorted:
@@ -685,19 +680,18 @@ class Wordless_Table_Data(Wordless_Table):
         self.setUpdatesEnabled(False)
         
         for i, filters in enumerate(self.row_filters):
-            if [val for val in filters if not val]:
-                self.hideRow(i)
-            else:
+            if all(filters):
                 self.showRow(i)
+            else:
+                self.hideRow(i)
 
         self.setUpdatesEnabled(True)
 
         self.toggle_cumulative()
-
         self.update_ranks()
         self.update_items_width()
 
-        self.item_changed()
+        self.itemChanged.emit(self.item(0, 0))
 
     def selected_rows(self):
         return sorted(set([index.row() for index in self.selectedIndexes()]))
@@ -735,14 +729,15 @@ class Wordless_Table_Data(Wordless_Table):
                                                        vertical = 'center',
                                                        wrap_text = True)
 
-        (export_path,
-         export_ext) = QFileDialog.getSaveFileName(self,
-                                                   self.tr('Export Table'),
-                                                   self.main.settings_custom['general']['default_paths_export'],
-                                                   self.tr('Excel Workbook (*.xlsx);;CSV (Comma Delimited) (*.csv)'))
+        (file_path,
+         file_type) = QFileDialog.getSaveFileName(self,
+                                                  self.tr('Export Table'),
+                                                  self.main.settings_custom['export']['tables_default_path'],
+                                                  ';;'.join(self.main.settings_global['file_types']['export_tables']),
+                                                  self.main.settings_custom['export']['tables_default_type'])
 
-        if export_path:
-            if export_ext == self.tr('Excel Workbook (*.xlsx)'):
+        if file_path:
+            if file_type == self.tr('Excel Workbook (*.xlsx)'):
                 workbook = openpyxl.Workbook()
                 worksheet = workbook.active
 
@@ -809,9 +804,11 @@ class Wordless_Table_Data(Wordless_Table):
                                                                                          top = border,
                                                                                          bottom = border)
 
-                workbook.save(export_path)
-            elif export_ext == self.tr('CSV (Comma Delimited) (*.csv)'):
-                with open(export_path, 'w', encoding = 'utf_8', newline = '') as f:
+                workbook.save(file_path)
+            elif file_type == self.tr('CSV (Comma Delimited) (*.csv)'):
+                file_encoding = wordless_conversion.to_encoding_code(self.main, self.main.settings_custom['export']['tables_default_encoding'])
+
+                with open(file_path, 'w', encoding = file_encoding, newline = '') as f:
                     csv_writer = csv.writer(f)
 
                     if not rows_export:
@@ -835,9 +832,10 @@ class Wordless_Table_Data(Wordless_Table):
                             csv_writer.writerow([self.verticalHeaderItem(row).text().strip()] +
                                                 [self.item(row, col).text().strip() for col in range(self.columnCount())])
 
-            self.main.settings_custom['general']['default_paths_export'] = os.path.split(export_path)[0]
+            self.main.settings_custom['export']['tables_default_path'] = os.path.split(file_path)[0]
+            self.main.settings_custom['export']['tables_default_type'] = file_type
 
-            wordless_dialog.wordless_message_export_completed_table(self.main, export_path)
+            wordless_message_box.wordless_message_box_export_completed_table(self.main, file_path)
 
     def clear_table(self, header_count = 1):
         self.clearContents()
@@ -889,13 +887,11 @@ class Wordless_Table_Data_Search(Wordless_Table_Data):
         self.label_number_results = QLabel()
         self.button_search_results = QPushButton(self.tr('Search in Results'), self)
 
-        self.item_changed = self.results_changed
+        self.itemChanged.connect(self.results_changed)
 
         self.results_changed()
 
     def results_changed(self):
-        super().item_changed()
-
         rows_visible = len([i for i in range(self.rowCount()) if not self.isRowHidden(i)])
 
         if [i for i in range(self.columnCount()) if self.item(0, i)] and rows_visible:
@@ -906,153 +902,3 @@ class Wordless_Table_Data_Search(Wordless_Table_Data):
             self.label_number_results.setText(self.tr('Number of Results: 0'))
 
             self.button_search_results.setEnabled(False)
-
-class Wordless_Table_Multi_Sort(Wordless_Table_Data):
-    def __init__(self, main, sort_table, sort_cols):
-        super().__init__(main, headers = ['Column', 'Order'], cols_stretch = ['Order'])
-
-        self.sort_table = sort_table
-        self.sort_cols = sort_cols
-
-        self.button_add = QPushButton('Add')
-        self.button_insert = QPushButton('Insert')
-        self.button_remove = QPushButton('Remove')
-        self.button_reset = QPushButton('Reset')
-    
-        self.button_clear.hide()
-        self.button_export_selected.hide()
-        self.button_export_all.hide()
-    
-        self.button_add.clicked.connect(self.add_row)
-        self.button_insert.clicked.connect(self.insert_row)
-        self.button_remove.clicked.connect(self.remove_row)
-        self.button_reset.clicked.connect(self.reset_table)
-
-        self.itemChanged.connect(self.sorting_item_changed)
-        self.itemSelectionChanged.connect(self.sorting_selection_changed)
-
-        self.reset_table()
-
-        self.setFixedHeight(self.cellWidget(0, 0).sizeHint().height() * 5)
-
-    def sorting_item_changed(self, item = None):
-        super().item_changed()
-
-        if self.rowCount() < len(self.sort_cols):
-            self.button_add.setEnabled(True)
-        else:
-            self.button_add.setEnabled(False)
-
-        if type(item) == QComboBox and item.currentText() not in ['Ascending', 'Descending']:
-            for i in range(self.rowCount()):
-                combobox_current = self.cellWidget(i, 0)
-
-                if item != combobox_current and item.currentText() == combobox_current.currentText():
-                    item.setStyleSheet(self.settings['general']['style_highlight'])
-                    combobox_current.setStyleSheet(self.main.settings['general']['style_highlight'])
-
-                    QMessageBox.warning(self.main,
-                                        'Column Sorted More Than Once',
-                                        'Please refrain from sorting the same column more than once.',
-                                        QMessageBox.Ok)
-
-                    item.setStyleSheet('')
-                    combobox_current.setStyleSheet('')
-
-                    item.setCurrentText(item.old_text)
-                    item.showPopup()
-
-                    return
-
-            item.old_text = item.currentText()
-
-        if type(item) == QComboBox:
-            self.sort()
-
-    def sorting_selection_changed(self):
-        if self.selectedIndexes() and self.rowCount() < len(self.sort_cols):
-            self.button_insert.setEnabled(True)
-        else:
-            self.button_insert.setEnabled(False)
-
-        if self.selectedIndexes() and self.rowCount() > 1:
-            self.button_remove.setEnabled(True)
-        else:
-            self.button_remove.setEnabled(False)
-
-    def update_sort_cols(self, sort_cols_new):
-        sort_cols_old = self.sort_cols
-        self.sort_cols = sort_cols_new
-
-        for i in reversed(range(self.rowCount())):
-            sort_col = self.cellWidget(i, 0)
-
-            if len(sort_cols_new) < len(sort_cols_old):
-                if sort_col.currentText() in sort_cols_new:
-                    for j in reversed(range(sort_col.count())):
-                        if j > len(sort_cols_new) - 1:
-                            sort_col.removeItem(j)
-                else:
-                    self.removeRow(i)
-            elif len(sort_cols_new) > len(sort_cols_old):
-                sort_col.addItems(sort_cols_new[-(len(sort_cols_new) - len(sort_cols_old)):])
-
-        if self.rowCount() == 0:
-            self.reset_table()
-
-    def sort(self):
-        pass
-
-    def _new_row(self):
-        combobox_sort_col = QComboBox(self)
-        combobox_sort_order = QComboBox(self)
-
-        combobox_sort_col.addItems(self.sort_cols)
-        combobox_sort_order.addItems(['Ascending', 'Descending'])
-
-        for i in range(combobox_sort_col.count()):
-            text = combobox_sort_col.itemText(i)
-
-            if text not in [self.cellWidget(j, 0).currentText() for j in range(self.rowCount())]:
-                combobox_sort_col.setCurrentText(text)
-                combobox_sort_col.old_text = text
-
-                break
-
-        combobox_sort_col.currentTextChanged.connect(lambda: self.sorting_item_changed(combobox_sort_col))
-        combobox_sort_order.currentTextChanged.connect(lambda: self.sorting_item_changed(combobox_sort_col))
-
-        return (combobox_sort_col, combobox_sort_order)
-
-    def add_row(self):
-        combobox_sort_col, combobox_sort_order = self._new_row()
-        
-        self.setRowCount(self.rowCount() + 1)
-        self.setCellWidget(self.rowCount() - 1, 0, combobox_sort_col)
-        self.setCellWidget(self.rowCount() - 1, 1, combobox_sort_order)
-
-        self.sort()
-
-    def insert_row(self):
-        row = self.selected_rows()[0]
-
-        combobox_sort_col, combobox_sort_order = self._new_row()
-
-        self.insertRow(row)
-
-        self.setCellWidget(row, 0, combobox_sort_col)
-        self.setCellWidget(row, 1, combobox_sort_order)
-
-        self.sort()
-
-    def remove_row(self):
-        for i in reversed(self.selected_rows()):
-            self.removeRow(i)
-
-        self.sort()
-
-    def reset_table(self):
-        self.clearContents()
-        self.setRowCount(0)
-
-        self.add_row()

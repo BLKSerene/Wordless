@@ -12,9 +12,9 @@ from PyQt5.QtWidgets import *
 
 import jpype
 
-from wordless_widgets import wordless_dialog
+from wordless_widgets import wordless_message_box
 
-# Combo Box
+# Combo Boxes
 class Wordless_Combo_Box(QComboBox):
     def __init__(self, parent):
         super().__init__(parent)
@@ -35,35 +35,33 @@ class Wordless_Combo_Box_Encoding(Wordless_Combo_Box):
 
         self.addItems(main.settings_global['file_encodings'])
 
-class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
-    def __init__(self, main, table):
+class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box):
+    def __init__(self, main):
         super().__init__(main)
 
-        self.table = table
+        main.wordless_files.table.itemChanged.connect(self.wordless_files_changed)
 
-        self.table.horizontalHeader().sectionCountChanged.connect(self.table_header_changed)
+        self.wordless_files_changed()
 
-        self.table_header_changed()
-
-    def table_header_changed(self):
-        if self.count() == 1:
-            apply_to_old = ''
+    def wordless_files_changed(self):
+        if self.currentText() == self.tr('*** None ***'):
+            use_file_old = ''
         else:
-            apply_to_old = self.currentText()
+            use_file_old = self.currentText()
 
         self.clear()
 
-        for file in self.table.settings['file']['files_open']:
-            if file['selected']:
-                self.addItem(file['name'])
-        self.addItem(self.main.tr('Total'))
+        for file in self.main.wordless_files.get_selected_files():
+            self.addItem(file['name'])
 
-        for i in range(self.count()):
-            if self.itemText(i) == apply_to_old:
-                self.setCurrentIndex(i)
+        if self.count() > 0:
+            if self.findText(use_file_old) > -1:
+                self.setCurrentText(use_file_old)
+        else:
+            self.addItem(self.tr('*** None ***'))
 
-                break
 
+# Combo Boxes (Settings)
 class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
     def __init__(self, main):
         super().__init__(main)
@@ -73,19 +71,19 @@ class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
         self.text_changed()
 
     def text_changed(self):
-        if self.currentText().find('HanLP') > -1:
+        if 'HanLP' in self.currentText():
             try:
                 jpype.getDefaultJVMPath()
 
                 import pyhanlp
             except:
-                wordless_dialog.wordless_message_jre_not_installed(self.main)
+                wordless_message_box.wordless_message_box_jre_not_installed(self.main)
 
                 self.setCurrentText(self.text_old)
 
         self.text_old = self.currentText()
 
-# Spin Box
+# Spin Boxes
 class Wordless_Spin_Box_Window(QSpinBox):
     def __init__(self, parent):
         super().__init__(parent)

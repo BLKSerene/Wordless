@@ -8,140 +8,14 @@
 
 import copy
 import os
-import platform
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_widgets import wordless_layout, wordless_widgets
-from wordless_utils import wordless_text, wordless_misc
-
-def wordless_message_path_invalid(parent, path):
-    QMessageBox.warning(parent,
-                        parent.tr('Invalid Path'),
-                        parent.tr(f'''
-                                     <p>The specified path "{path}" does not exist!</p>
-                                     <p>Please change your settings and try again.</p>
-                                  '''),
-                        QMessageBox.Ok)
-
-def wordless_message_path_does_not_exist(parent, path):
-    reply = QMessageBox.question(parent,
-                                 parent.tr('Path Does Not Exist'),
-                                 parent.tr(f'''
-                                              <p>The specified path "{path}" does not exist.</p>
-                                              <p>Do you want to create the directory?</p>
-                                           '''),
-                                 QMessageBox.Yes | QMessageBox.No,
-                                 QMessageBox.No)
-
-    return reply
-
-def wordless_message_jre_not_installed(main):
-    sys_bit = platform.architecture()[0][:2]
-    if sys_bit == '32':
-        sys_bit_x = 'x86'
-    else:
-        sys_bit_x = 'x64'
-
-    QMessageBox.information(main,
-                            main.tr('Java Runtime Environment Not Installed'),
-                            main.tr(f'''{main.settings_global['style_dialog']}
-                                        <body>
-                                            <p>The HanLP library requires Java Runtime Environment (JRE) to be installed on your computer.</p>
-                                            <p>You can download the latest version of JRE here: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html">https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html</a>.</p>
-                                            <p>After JRE is properly installed, please try again.</p>
-                                            <p>Note: You are running the {sys_bit}-bit version of Wordless, so you should install the {sys_bit_x} version of JRE!</p>
-                                        </body>
-                                      '''),
-                            QMessageBox.Ok)
-
-def wordless_restore_default_settings(main):
-    reply = QMessageBox.question(main,
-                                 main.tr('Restore Default Settings'),
-                                 main.tr(f'''{main.settings_global['style_dialog']}
-                                             <body>
-                                                 <p>Do you really want to reset all settings to defaults?</p>
-                                             </body>
-                                         '''),
-                                 QMessageBox.Yes | QMessageBox.No,
-                                 QMessageBox.No)
-
-    return reply
-
-def wordless_message_empty_file(main, file_path):
-    QMessageBox.warning(main,
-                        main.tr('Empty File'),
-                        main.tr(f'''{main.settings_global['style_dialog']}
-                                    <body>
-                                        <p>The specified file "{file_path}" is empty!</p>
-                                        <p>Please check and try again.</p>
-                                    </body>
-                                '''),
-                        QMessageBox.Ok)
-
-def wordless_message_empty_search_term(main):
-    QMessageBox.warning(main,
-                        main.tr('Empty Search Term'),
-                        main.tr(f'''{main.settings_global['style_dialog']}
-                                    <body>
-                                        <p>Please enter your search term(s) first!</p>
-                                    </body>
-                                '''),
-                        QMessageBox.Ok)
-
-def wordless_message_no_search_results(main):
-    QMessageBox.information(main,
-                            main.tr('No Search Results'),
-                            main.tr(f'''{main.settings_global['style_dialog']}
-                                        <body>
-                                            <p>There is nothing that could be found in the table.</p>
-                                        </body>
-                                    '''),
-                            QMessageBox.Ok)
-
-def wordless_message_no_results_table(main):
-    QMessageBox.information(main,
-                            main.tr('No Search Results'),
-                            main.tr(f'''{main.settings_global['style_dialog']}
-                                        <body>
-                                            <p>There is nothing to be shown in the table.</p>
-                                            <p>You might want to change your search term(s) and/or your settings, and then try again.</p>
-                                        </body>
-                                    '''),
-                            QMessageBox.Ok)
-
-def wordless_message_no_results_plot(main):
-    QMessageBox.information(main,
-                            main.tr('No Search Results'),
-                            main.tr(f'''{main.settings_global['style_dialog']}
-                                        <body>
-                                            <p>There is nothing to be shown in the figure.</p>
-                                            <p>You might want to change your search term(s) and/or your settings, and then try again.</p>
-                                        </body>
-                                    '''),
-                            QMessageBox.Ok)
-
-def wordless_message_export_completed_search_terms(main, file_path):
-    QMessageBox.information(main,
-                            main.tr('Export Completed'),
-                            main.tr(f'''{main.settings_global['style_dialog']}
-                                        <body>
-                                            <p>The search terms has been successfully exported to "{file_path}".</p>
-                                        </body>
-                                    '''),
-                            QMessageBox.Ok)
-
-def wordless_message_export_completed_table(main, file_path):
-    QMessageBox.information(main,
-                            main.tr('Export Completed'),
-                            main.tr(f'''{main.settings_global['style_dialog']}
-                                        <body>
-                                            <p>The table has been successfully exported to "{file_path}".</p>
-                                        </body>
-                                    '''),
-                            QMessageBox.Ok)
+from wordless_text import *
+from wordless_widgets import wordless_layout, wordless_message_box, wordless_widgets
+from wordless_utils import *
 
 class Wordless_Dialog(QDialog):
     def __init__(self, main, title):
@@ -179,27 +53,25 @@ class Wordless_Dialog_Search(Wordless_Dialog):
             self.cols_search = cols_search
 
         self.settings = self.main.settings_custom[self.tab]['search_results']
-        self.size_old = self.sizeHint()
 
         (self.label_search_term,
-         self.checkbox_show_all,
+         self.checkbox_multi_search_mode,
          self.line_edit_search_term,
          self.list_search_terms,
+
          self.checkbox_ignore_case,
          self.checkbox_match_inflected_forms,
          self.checkbox_match_whole_word,
-         self.checkbox_use_regex,
-         self.checkbox_multi_search_mode) = wordless_widgets.wordless_widgets_search(main)
-
-        self.checkbox_show_all.hide()
+         self.checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
 
         self.button_find_next = QPushButton(main.tr('Find Next'), main)
         self.button_find_prev = QPushButton(main.tr('Find Previous'), main)
         self.button_find_all = QPushButton(main.tr('Find All'), main)
         self.button_clear_highlights = QPushButton(main.tr('Clear Highlights'), main)
         
-        self.button_restore_defaults = QPushButton(main.tr('Restore Defaults'), main)
+        self.button_restore_default_settings = QPushButton(main.tr('Restore Default Settings'), main)
 
+        self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.returnPressed.connect(self.button_find_next.click)
         self.list_search_terms.itemChanged.connect(self.search_settings_changed)
@@ -208,14 +80,13 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_whole_word.stateChanged.connect(self.search_settings_changed)
         self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
 
         self.button_find_next.clicked.connect(lambda: self.find_next())
         self.button_find_prev.clicked.connect(lambda: self.find_prev())
         self.button_find_all.clicked.connect(lambda: self.find_all())
         self.button_clear_highlights.clicked.connect(lambda: self.clear_highlights())
 
-        self.button_restore_defaults.clicked.connect(lambda: self.load_settings(defaults = True))
+        self.button_restore_default_settings.clicked.connect(lambda: self.load_settings(defaults = True))
 
         layout_search_terms = QGridLayout()
         layout_search_terms.addWidget(self.list_search_terms, 0, 0, 6, 1)
@@ -232,24 +103,24 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         layout_search_buttons.addWidget(self.button_find_all, 2, 0)
         layout_search_buttons.addWidget(self.button_clear_highlights, 4, 0)
 
-        layout_search_buttons.addWidget(self.button_restore_defaults, 5, 0, Qt.AlignBottom)
+        layout_search_buttons.addWidget(self.button_restore_default_settings, 5, 0, Qt.AlignBottom)
 
         self.setLayout(QGridLayout())
         self.layout().addWidget(self.label_search_term, 0, 0)
-        self.layout().addWidget(self.line_edit_search_term, 1, 0)
-        self.layout().addLayout(layout_search_terms, 2, 0)
+        self.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
+        self.layout().addWidget(self.line_edit_search_term, 1, 0, 1, 2)
+        self.layout().addLayout(layout_search_terms, 2, 0, 1, 2)
 
-        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 3, 0)
+        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 3, 0, 1, 2)
 
-        self.layout().addWidget(self.checkbox_ignore_case, 4, 0)
-        self.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0)
-        self.layout().addWidget(self.checkbox_match_whole_word, 6, 0)
-        self.layout().addWidget(self.checkbox_use_regex, 7, 0)
-        self.layout().addWidget(self.checkbox_multi_search_mode, 8, 0)
+        self.layout().addWidget(self.checkbox_ignore_case, 4, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_whole_word, 6, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_use_regex, 7, 0, 1, 2)
 
-        self.layout().addWidget(wordless_layout.Wordless_Separator(self, orientation = 'Vertical'), 0, 1, 9, 1)
+        self.layout().addWidget(wordless_layout.Wordless_Separator(self, orientation = 'Vertical'), 0, 2, 8, 1)
 
-        self.layout().addLayout(layout_search_buttons, 0, 2, 9, 1)
+        self.layout().addLayout(layout_search_buttons, 0, 3, 8, 1)
 
         self.main.tabs.currentChanged.connect(self.accept)
 
@@ -412,7 +283,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
                 self.table.blockSignals(False)
                 self.table.show()
             else:
-                wordless_message_no_search_results(self.main)
+                wordless_message_box.wordless_message_box_no_search_results(self.main)
 
             if len(items_found) == 0:
                 self.main.status_bar.showMessage(self.tr('No items found.'))
@@ -421,7 +292,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
             else:
                 self.main.status_bar.showMessage(self.tr(f'Found {len(items_found):,} items.'))
         else:
-            wordless_message_empty_search_term(self.main)
+            wordless_message_box.wordless_message_box_empty_search_term(self.main)
 
         return items_found
 
@@ -445,4 +316,322 @@ class Wordless_Dialog_Search(Wordless_Dialog):
     def load(self):
         self.load_settings()
 
+        self.search_settings_changed()
+
         self.show()
+
+class Wordless_Dialog_Context_Settings(Wordless_Dialog):
+    def __init__(self, main, tab):
+        super().__init__(main, main.tr('Context Settings'))
+
+        self.tab = tab
+
+        self.settings = self.main.settings_custom[self.tab]['context_settings']
+
+        # Inclusion
+        self.group_box_inclusion = QGroupBox(self.tr('Inclusion'), self)
+
+        self.group_box_inclusion.setCheckable(True)
+
+        (self.label_inclusion_search_term,
+         self.checkbox_inclusion_multi_search_mode,
+         self.line_edit_inclusion_search_term,
+         self.list_inclusion_search_terms,
+
+         self.checkbox_inclusion_ignore_case,
+         self.checkbox_inclusion_match_inflected_forms,
+         self.checkbox_inclusion_match_whole_word,
+         self.checkbox_inclusion_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
+
+        self.label_inclusion_context_window = QLabel(self.tr('Context Window:'), self)
+        (self.checkbox_inclusion_context_window_sync,
+         self.label_inclusion_context_window_left,
+         self.spin_box_inclusion_context_window_left,
+         self.label_inclusion_context_window_right,
+         self.spin_box_inclusion_context_window_right) = wordless_widgets.wordless_widgets_window(main)
+
+        self.group_box_inclusion.toggled.connect(self.inclusion_changed)
+
+        self.checkbox_inclusion_multi_search_mode.stateChanged.connect(self.inclusion_changed)
+        self.checkbox_inclusion_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
+        self.line_edit_inclusion_search_term.textChanged.connect(self.inclusion_changed)
+        self.list_inclusion_search_terms.itemChanged.connect(self.inclusion_changed)
+
+        self.checkbox_inclusion_ignore_case.stateChanged.connect(self.inclusion_changed)
+        self.checkbox_inclusion_match_inflected_forms.stateChanged.connect(self.inclusion_changed)
+        self.checkbox_inclusion_match_whole_word.stateChanged.connect(self.inclusion_changed)
+        self.checkbox_inclusion_use_regex.stateChanged.connect(self.inclusion_changed)
+
+        self.checkbox_inclusion_context_window_sync.stateChanged.connect(self.inclusion_changed)
+        self.spin_box_inclusion_context_window_left.valueChanged.connect(self.inclusion_changed)
+        self.spin_box_inclusion_context_window_right.valueChanged.connect(self.inclusion_changed)
+
+        layout_inclusion_multi_search_mode = QGridLayout()
+        layout_inclusion_multi_search_mode.addWidget(self.label_inclusion_search_term, 0, 0)
+        layout_inclusion_multi_search_mode.addWidget(self.checkbox_inclusion_multi_search_mode, 0, 1, Qt.AlignRight)
+
+        layout_inclusion_search_terms = QGridLayout()
+        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms, 0, 0, 6, 1)
+        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_add, 0, 1)
+        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_insert, 1, 1)
+        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_remove, 2, 1)
+        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_clear, 3, 1)
+        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_import, 4, 1)
+        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_export, 5, 1)
+
+        self.group_box_inclusion.setLayout(QGridLayout())
+        self.group_box_inclusion.layout().addLayout(layout_inclusion_multi_search_mode, 0, 0, 1, 4)
+        self.group_box_inclusion.layout().addWidget(self.line_edit_inclusion_search_term, 1, 0, 1, 4)
+        self.group_box_inclusion.layout().addLayout(layout_inclusion_search_terms, 2, 0, 1, 4)
+
+        self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_ignore_case, 4, 0, 1, 4)
+        self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_match_inflected_forms, 5, 0, 1, 4)
+        self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_match_whole_word, 6, 0, 1, 4)
+        self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_use_regex, 7, 0, 1, 4)
+
+        self.group_box_inclusion.layout().addWidget(wordless_layout.Wordless_Separator(self), 8, 0, 1, 4)
+
+        self.group_box_inclusion.layout().addWidget(self.label_inclusion_context_window, 9, 0, 1, 3)
+        self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_context_window_sync, 9, 3, Qt.AlignRight)
+        self.group_box_inclusion.layout().addWidget(self.label_inclusion_context_window_left, 10, 0)
+        self.group_box_inclusion.layout().addWidget(self.spin_box_inclusion_context_window_left, 10, 1)
+        self.group_box_inclusion.layout().addWidget(self.label_inclusion_context_window_right, 10, 2)
+        self.group_box_inclusion.layout().addWidget(self.spin_box_inclusion_context_window_right, 10, 3)
+
+        self.group_box_inclusion.layout().setRowStretch(11, 1)
+        self.group_box_inclusion.layout().setColumnStretch(1, 1)
+        self.group_box_inclusion.layout().setColumnStretch(3, 1)
+
+        # Exclusion
+        self.group_box_exclusion = QGroupBox(self.tr('Exclusion'), self)
+
+        self.group_box_exclusion.setCheckable(True)
+
+        (self.label_exclusion_search_term,
+         self.checkbox_exclusion_multi_search_mode,
+         self.line_edit_exclusion_search_term,
+         self.list_exclusion_search_terms,
+
+         self.checkbox_exclusion_ignore_case,
+         self.checkbox_exclusion_match_inflected_forms,
+         self.checkbox_exclusion_match_whole_word,
+         self.checkbox_exclusion_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
+
+        self.label_exclusion_context_window = QLabel(self.tr('Context Window:'), self)
+        (self.checkbox_exclusion_context_window_sync,
+         self.label_exclusion_context_window_left,
+         self.spin_box_exclusion_context_window_left,
+         self.label_exclusion_context_window_right,
+         self.spin_box_exclusion_context_window_right) = wordless_widgets.wordless_widgets_window(main)
+
+        self.group_box_exclusion.toggled.connect(self.exclusion_changed)
+
+        self.checkbox_exclusion_multi_search_mode.stateChanged.connect(self.exclusion_changed)
+        self.checkbox_exclusion_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
+        self.line_edit_exclusion_search_term.textChanged.connect(self.exclusion_changed)
+        self.list_exclusion_search_terms.itemChanged.connect(self.exclusion_changed)
+
+        self.checkbox_exclusion_ignore_case.stateChanged.connect(self.exclusion_changed)
+        self.checkbox_exclusion_match_inflected_forms.stateChanged.connect(self.exclusion_changed)
+        self.checkbox_exclusion_match_whole_word.stateChanged.connect(self.exclusion_changed)
+        self.checkbox_exclusion_use_regex.stateChanged.connect(self.exclusion_changed)
+
+        self.checkbox_exclusion_context_window_sync.stateChanged.connect(self.exclusion_changed)
+        self.spin_box_exclusion_context_window_left.valueChanged.connect(self.exclusion_changed)
+        self.spin_box_exclusion_context_window_right.valueChanged.connect(self.exclusion_changed)
+
+        layout_exclusion_multi_search_mode = QGridLayout()
+        layout_exclusion_multi_search_mode.addWidget(self.label_exclusion_search_term, 0, 0)
+        layout_exclusion_multi_search_mode.addWidget(self.checkbox_exclusion_multi_search_mode, 0, 1, Qt.AlignRight)
+
+        layout_exclusion_search_terms = QGridLayout()
+        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms, 0, 0, 6, 1)
+        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_add, 0, 1)
+        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_insert, 1, 1)
+        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_remove, 2, 1)
+        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_clear, 3, 1)
+        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_import, 4, 1)
+        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_export, 5, 1)
+
+        self.group_box_exclusion.setLayout(QGridLayout())
+        self.group_box_exclusion.layout().addLayout(layout_exclusion_multi_search_mode, 0, 0, 1, 4)
+        self.group_box_exclusion.layout().addWidget(self.line_edit_exclusion_search_term, 1, 0, 1, 4)
+        self.group_box_exclusion.layout().addLayout(layout_exclusion_search_terms, 2, 0, 1, 4)
+
+        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_ignore_case, 4, 0, 1, 4)
+        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_match_inflected_forms, 5, 0, 1, 4)
+        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_match_whole_word, 6, 0, 1, 4)
+        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_use_regex, 7, 0, 1, 4)
+
+        self.group_box_exclusion.layout().addWidget(wordless_layout.Wordless_Separator(self), 8, 0, 1, 4)
+
+        self.group_box_exclusion.layout().addWidget(self.label_exclusion_context_window, 9, 0, 1, 3)
+        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_context_window_sync, 9, 3, Qt.AlignRight)
+        self.group_box_exclusion.layout().addWidget(self.label_exclusion_context_window_left, 10, 0)
+        self.group_box_exclusion.layout().addWidget(self.spin_box_exclusion_context_window_left, 10, 1)
+        self.group_box_exclusion.layout().addWidget(self.label_exclusion_context_window_right, 10, 2)
+        self.group_box_exclusion.layout().addWidget(self.spin_box_exclusion_context_window_right, 10, 3)
+
+        self.group_box_exclusion.layout().setRowStretch(11, 1)
+        self.group_box_exclusion.layout().setColumnStretch(1, 1)
+        self.group_box_exclusion.layout().setColumnStretch(3, 1)
+
+        self.button_restore_default_settings = QPushButton(self.tr('Restore Default Settings'), self)
+        self.button_ok = QPushButton(self.tr('OK'), self)
+
+        self.button_restore_default_settings.clicked.connect(self.restore_default_settings)
+        self.button_ok.clicked.connect(self.accept)
+
+        self.button_restore_default_settings.setFixedWidth(150)
+
+        self.setLayout(QGridLayout())
+        self.layout().addWidget(self.group_box_inclusion, 0, 0, Qt.AlignTop)
+        self.layout().addWidget(self.group_box_exclusion, 0, 1, Qt.AlignTop)
+        self.layout().addWidget(self.button_restore_default_settings, 1, 0, Qt.AlignLeft)
+        self.layout().addWidget(self.button_ok, 1, 1, Qt.AlignRight)
+
+        self.layout().setColumnStretch(0, 1)
+        self.layout().setColumnStretch(1, 1)
+
+        self.multi_search_mode_changed()
+
+        self.load_settings()
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.main.settings_default[self.tab]['context_settings'])
+        else:
+            settings = copy.deepcopy(self.settings)
+
+        # Inclusion
+        self.group_box_inclusion.setChecked(settings['inclusion']['inclusion'])
+
+        self.checkbox_inclusion_multi_search_mode.setChecked(settings['inclusion']['multi_search_mode'])
+
+        self.line_edit_inclusion_search_term.setText(settings['inclusion']['search_term'])
+
+        self.list_inclusion_search_terms.clear()
+
+        for search_term in settings['inclusion']['search_terms']:
+            self.list_inclusion_search_terms.add_item(search_term)
+
+        self.checkbox_inclusion_ignore_case.setChecked(settings['inclusion']['ignore_case'])
+        self.checkbox_inclusion_match_inflected_forms.setChecked(settings['inclusion']['match_inflected_forms'])
+        self.checkbox_inclusion_match_whole_word.setChecked(settings['inclusion']['match_whole_word'])
+        self.checkbox_inclusion_use_regex.setChecked(settings['inclusion']['use_regex'])
+
+        self.checkbox_inclusion_context_window_sync.setChecked(settings['inclusion']['context_window_sync'])
+
+        if settings['inclusion']['context_window_left'] < 0:
+            self.spin_box_inclusion_context_window_left.setPrefix('L')
+            self.spin_box_inclusion_context_window_left.setValue(-settings['inclusion']['context_window_left'])
+        else:
+            self.spin_box_inclusion_context_window_left.setPrefix('R')
+            self.spin_box_inclusion_context_window_left.setValue(settings['inclusion']['context_window_left'])
+
+        if settings['inclusion']['context_window_right'] < 0:
+            self.spin_box_inclusion_context_window_right.setPrefix('L')
+            self.spin_box_inclusion_context_window_right.setValue(-settings['inclusion']['context_window_right'])
+        else:
+            self.spin_box_inclusion_context_window_right.setPrefix('R')
+            self.spin_box_inclusion_context_window_right.setValue(settings['inclusion']['context_window_right'])
+
+        self.line_edit_inclusion_search_term.returnPressed.connect(self.button_ok.click)
+
+        # Exclusion
+        self.group_box_exclusion.setChecked(settings['exclusion']['exclusion'])
+
+        self.checkbox_exclusion_multi_search_mode.setChecked(settings['exclusion']['multi_search_mode'])
+
+        self.line_edit_exclusion_search_term.setText(settings['exclusion']['search_term'])
+
+        self.list_exclusion_search_terms.clear()
+
+        for search_term in settings['exclusion']['search_terms']:
+            self.list_exclusion_search_terms.add_item(search_term)
+
+        self.checkbox_exclusion_ignore_case.setChecked(settings['exclusion']['ignore_case'])
+        self.checkbox_exclusion_match_inflected_forms.setChecked(settings['exclusion']['match_inflected_forms'])
+        self.checkbox_exclusion_match_whole_word.setChecked(settings['exclusion']['match_whole_word'])
+        self.checkbox_exclusion_use_regex.setChecked(settings['exclusion']['use_regex'])
+
+        self.checkbox_exclusion_context_window_sync.setChecked(settings['exclusion']['context_window_sync'])
+
+        if settings['exclusion']['context_window_left'] < 0:
+            self.spin_box_exclusion_context_window_left.setPrefix('L')
+            self.spin_box_exclusion_context_window_left.setValue(-settings['exclusion']['context_window_left'])
+        else:
+            self.spin_box_exclusion_context_window_left.setPrefix('R')
+            self.spin_box_exclusion_context_window_left.setValue(settings['exclusion']['context_window_left'])
+            
+        if settings['exclusion']['context_window_right'] < 0:
+            self.spin_box_exclusion_context_window_right.setPrefix('L')
+            self.spin_box_exclusion_context_window_right.setValue(-settings['exclusion']['context_window_right'])
+        else:
+            self.spin_box_exclusion_context_window_right.setPrefix('R')
+            self.spin_box_exclusion_context_window_right.setValue(settings['exclusion']['context_window_right'])
+
+        self.line_edit_exclusion_search_term.returnPressed.connect(self.button_ok.click)
+
+    def inclusion_changed(self):
+        self.settings['inclusion']['inclusion'] = self.group_box_inclusion.isChecked()
+
+        self.settings['inclusion']['multi_search_mode'] = self.checkbox_inclusion_multi_search_mode.isChecked()
+        self.settings['inclusion']['search_term'] = self.line_edit_inclusion_search_term.text()
+        self.settings['inclusion']['search_terms'] = self.list_inclusion_search_terms.get_items()
+
+        self.settings['inclusion']['ignore_case'] = self.checkbox_inclusion_ignore_case.isChecked()
+        self.settings['inclusion']['match_inflected_forms'] = self.checkbox_inclusion_match_inflected_forms.isChecked()
+        self.settings['inclusion']['match_whole_word'] = self.checkbox_inclusion_match_whole_word.isChecked()
+        self.settings['inclusion']['use_regex'] = self.checkbox_inclusion_use_regex.isChecked()
+        
+        self.settings['inclusion']['context_window_sync'] = self.checkbox_inclusion_context_window_sync.isChecked()
+
+        if self.spin_box_inclusion_context_window_left.prefix() == 'L':
+            self.settings['inclusion']['context_window_left'] = -self.spin_box_inclusion_context_window_left.value()
+        else:
+            self.settings['inclusion']['context_window_left'] = self.spin_box_inclusion_context_window_left.value()
+            
+        if self.spin_box_inclusion_context_window_right.prefix() == 'L':
+            self.settings['inclusion']['context_window_right'] = -self.spin_box_inclusion_context_window_right.value()
+        else:
+            self.settings['inclusion']['context_window_right'] = self.spin_box_inclusion_context_window_right.value()
+
+    def exclusion_changed(self):
+        self.settings['exclusion']['exclusion'] = self.group_box_exclusion.isChecked()
+
+        self.settings['exclusion']['multi_search_mode'] = self.checkbox_exclusion_multi_search_mode.isChecked()
+        self.settings['exclusion']['search_term'] = self.line_edit_exclusion_search_term.text()
+        self.settings['exclusion']['search_terms'] = self.list_exclusion_search_terms.get_items()
+
+        self.settings['exclusion']['ignore_case'] = self.checkbox_exclusion_ignore_case.isChecked()
+        self.settings['exclusion']['match_inflected_forms'] = self.checkbox_exclusion_match_inflected_forms.isChecked()
+        self.settings['exclusion']['match_whole_word'] = self.checkbox_exclusion_match_whole_word.isChecked()
+        self.settings['exclusion']['use_regex'] = self.checkbox_exclusion_use_regex.isChecked()
+        
+        self.settings['exclusion']['context_window_sync'] = self.checkbox_exclusion_context_window_sync.isChecked()
+        
+        if self.spin_box_exclusion_context_window_left.prefix() == 'L':
+            self.settings['exclusion']['context_window_left'] = -self.spin_box_exclusion_context_window_left.value()
+        else:
+            self.settings['exclusion']['context_window_left'] = self.spin_box_exclusion_context_window_left.value()
+            
+        if self.spin_box_exclusion_context_window_right.prefix() == 'L':
+            self.settings['exclusion']['context_window_right'] = -self.spin_box_exclusion_context_window_right.value()
+        else:
+            self.settings['exclusion']['context_window_right'] = self.spin_box_exclusion_context_window_right.value()
+
+    def multi_search_mode_changed(self):
+        if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
+            self.setFixedSize(500, 440)
+        else:
+            self.setFixedSize(500, 290)
+
+    def restore_default_settings(self):
+        reply = wordless_message_box.wordless_message_box_restore_default_settings(self.main)
+
+        if reply == QMessageBox.Yes:
+            self.load_settings(defaults = True)
+
+    def load(self):
+        self.exec_()

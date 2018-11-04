@@ -1,11 +1,9 @@
 # Wordless
-An integrated tool for language & translation studies.
+An Integrated Corpus Tool for the Scientific Study of Language, Literature and Translation
 
 Designed and Developed by Ye Lei (叶磊)
 
-一款用于语言研究及翻译研究的集成工具。
-
-由叶磊设计并开发
+MA Student in Interpreting Studies at Shanghai International Studies University (上海外国语大学)
 
 ## License/开源许可
     Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
@@ -44,7 +42,6 @@ If you need any further information or encounter any problems while using Wordle
 
 若您需要更多信息或在使用 Wordless 的过程中遇到了任何问题，欢迎随时联系我，我会尽快给予回复。
 
-
 Home Page: https://github.com/BLKSerene/Wordless
 
 Email: blkserene@gmail.com
@@ -69,25 +66,24 @@ Many thanks to the following open-source projects on which Wordless is built on:
 4. [HanLP](http://hanlp.com/)
 5. [pyhanlp](https://github.com/hankcs/pyhanlp)
 6. [jieba (“结巴”中文分词)](https://github.com/fxsjy/jieba)
-7. [Ngram Statistics Package](http://ngram.sourceforge.net)
-8. [NLTK](http://www.nltk.org/)
-9. [PyDelphin](https://github.com/delph-in/pydelphin)
-10. [spaCy](https://spacy.io/)
-11. [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/)
-12. [Stanford CoreNLP Python Interface](https://github.com/stanfordnlp/python-stanford-corenlp)
+7. [NLTK](http://www.nltk.org/)
+8. [PyDelphin](https://github.com/delph-in/pydelphin)
+9. [spaCy](https://spacy.io/)
+10. [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/)
+11. [Stanford CoreNLP Python Interface](https://github.com/stanfordnlp/python-stanford-corenlp)
+12. [wordcloud](https://amueller.github.io/word_cloud/)
 13. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)
 14. [chardet](https://github.com/chardet/chardet)
 15. [langdetect](https://github.com/Mimino666/langdetect)
 16. [lxml](https://lxml.de/)
 17. [Matplotlib](https://matplotlib.org/)
-18. [NetworkX](http://networkx.github.io/)
-19. [NumPy](http://www.numpy.org/)
-20. [openpyxl](https://openpyxl.readthedocs.io/en/stable/)
-21. [SciPy](https://www.scipy.org/)
-22. [e_lemma.txt](https://lexically.net/downloads/BNC_wordlists/e_lemma.txt)
-23. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists)
-24. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)
-25. [stopwords-json](https://github.com/6/stopwords-json)
+18. [NumPy](http://www.numpy.org/)
+19. [openpyxl](https://openpyxl.readthedocs.io/en/stable/)
+20. [SciPy](https://www.scipy.org/)
+21. [e_lemma.txt](https://lexically.net/downloads/BNC_wordlists/e_lemma.txt)
+22. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists)
+23. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)
+24. [stopwords-json](https://github.com/6/stopwords-json)
 
 ## Donation/捐助
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.

@@ -1,5 +1,5 @@
 #
-# Wordless: Utility Functions
+# Wordless: Text
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -7,8 +7,8 @@
 #
 
 __all__ = [
-    'wordless_conversion',
-    'wordless_detection',
-    'wordless_misc',
-    'wordless_sorting'
+	'wordless_matching',
+    'wordless_text',
+    'wordless_text_processing',
+    'wordless_text_utils'
 ]
