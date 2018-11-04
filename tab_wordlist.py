@@ -119,6 +119,8 @@ def init(main):
         checkbox_show_cumulative.setChecked(settings_loaded['show_cumulative'])
         checkbox_show_breakdown.setChecked(settings_loaded['show_breakdown'])
 
+        combo_box_plot_type.setCurrentText(settings_loaded['plot_type'])
+        combo_box_use_data_file.setCurrentText(settings_loaded['use_data_file'])
         checkbox_use_pct.setChecked(settings_loaded['use_pct'])
         checkbox_use_cumulative.setChecked(settings_loaded['use_cumulative'])
 
@@ -163,12 +165,25 @@ def init(main):
         settings['show_breakdown'] = checkbox_show_breakdown.isChecked()
 
     def plot_settings_changed():
+        settings['plot_type'] = combo_box_plot_type.currentText()
+        settings['use_data_file'] = combo_box_use_data_file.currentText()
         settings['use_pct'] = checkbox_use_pct.isChecked()
         settings['use_cumulative'] = checkbox_use_cumulative.isChecked()
 
         settings['rank_no_limit'] = checkbox_rank_no_limit.isChecked()
         settings['rank_min'] = spin_box_rank_min.value()
         settings['rank_max'] = spin_box_rank_max.value()
+
+        if settings['plot_type'] == main.tr('Line Chart'):
+            combo_box_use_data_file.setEnabled(False)
+
+            checkbox_use_pct.setEnabled(True)
+            checkbox_use_cumulative.setEnabled(True)
+        elif settings['plot_type'] == main.tr('Word Cloud'):
+            combo_box_use_data_file.setEnabled(True)
+
+            checkbox_use_pct.setEnabled(False)
+            checkbox_use_cumulative.setEnabled(False)
 
     def filter_settings_changed():
         settings['apply_to'] = combo_box_apply_to.currentText()
@@ -258,6 +273,10 @@ def init(main):
     # Plot Settings
     group_box_plot_settings = QGroupBox(main.tr('Plot Settings'), main)
 
+    label_plot_type = QLabel(main.tr('Plot Type:'), main)
+    combo_box_plot_type = wordless_box.Wordless_Combo_Box(main)
+    label_use_data_file = QLabel(main.tr('Use Data File:'), main)
+    combo_box_use_data_file = wordless_box.Wordless_Combo_Box_Use_Data_File(main)
     checkbox_use_pct = QCheckBox(main.tr('Use Percentage Data'), main)
     checkbox_use_cumulative = QCheckBox(main.tr('Use Cumulative Data'), main)
 
@@ -268,6 +287,11 @@ def init(main):
      label_rank_max,
      spin_box_rank_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 10000)
 
+    combo_box_plot_type.addItems([main.tr('Line Chart'),
+                                  main.tr('Word Cloud')])
+
+    combo_box_plot_type.currentTextChanged.connect(plot_settings_changed)
+    combo_box_use_data_file.currentTextChanged.connect(plot_settings_changed)
     checkbox_use_pct.stateChanged.connect(plot_settings_changed)
     checkbox_use_cumulative.stateChanged.connect(plot_settings_changed)
 
@@ -275,23 +299,37 @@ def init(main):
     spin_box_rank_min.valueChanged.connect(plot_settings_changed)
     spin_box_rank_max.valueChanged.connect(plot_settings_changed)
 
+    layout_plot_type = QGridLayout()
+    layout_plot_type.addWidget(label_plot_type, 0, 0)
+    layout_plot_type.addWidget(combo_box_plot_type, 0, 1)
+
+    layout_plot_type.setColumnStretch(1, 1)
+
+    layout_use_data_file = QGridLayout()
+    layout_use_data_file.addWidget(label_use_data_file, 0, 0)
+    layout_use_data_file.addWidget(combo_box_use_data_file, 0, 1)
+
+    layout_use_data_file.setColumnStretch(1, 1)
+
     group_box_plot_settings.setLayout(QGridLayout())
-    group_box_plot_settings.layout().addWidget(checkbox_use_pct, 0, 0, 1, 4)
-    group_box_plot_settings.layout().addWidget(checkbox_use_cumulative, 1, 0, 1, 4)
+    group_box_plot_settings.layout().addLayout(layout_plot_type, 0, 0, 1, 4)
+    group_box_plot_settings.layout().addLayout(layout_use_data_file, 1, 0, 1, 4)
+    group_box_plot_settings.layout().addWidget(checkbox_use_pct, 2, 0, 1, 4)
+    group_box_plot_settings.layout().addWidget(checkbox_use_cumulative, 3, 0, 1, 4)
 
-    group_box_plot_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 2, 0, 1, 4)
+    group_box_plot_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 4, 0, 1, 4)
 
-    group_box_plot_settings.layout().addWidget(label_rank, 3, 0, 1, 3)
-    group_box_plot_settings.layout().addWidget(checkbox_rank_no_limit, 3, 3)
-    group_box_plot_settings.layout().addWidget(label_rank_min, 4, 0)
-    group_box_plot_settings.layout().addWidget(spin_box_rank_min, 4, 1)
-    group_box_plot_settings.layout().addWidget(label_rank_max, 4, 2)
-    group_box_plot_settings.layout().addWidget(spin_box_rank_max, 4, 3)
+    group_box_plot_settings.layout().addWidget(label_rank, 5, 0, 1, 3)
+    group_box_plot_settings.layout().addWidget(checkbox_rank_no_limit, 5, 3)
+    group_box_plot_settings.layout().addWidget(label_rank_min, 6, 0)
+    group_box_plot_settings.layout().addWidget(spin_box_rank_min, 6, 1)
+    group_box_plot_settings.layout().addWidget(label_rank_max, 6, 2)
+    group_box_plot_settings.layout().addWidget(spin_box_rank_max, 6, 3)
 
     # Filter Settings
     group_box_filter_settings = QGroupBox(main.tr('Filter Settings'), main)
 
-    label_apply_to = QLabel(main.tr('Apply Following Filters to:'), main)
+    label_apply_to = QLabel(main.tr('Apply Filter to:'), main)
     combo_box_apply_to = wordless_box.Wordless_Combo_Box_Apply_To(main, table_wordlist)
 
     label_freq = QLabel(main.tr('Frequency:'), main)
@@ -333,39 +371,46 @@ def init(main):
 
     button_filter_results.clicked.connect(lambda: table_wordlist.update_filters())
 
+    layout_apply_to = QGridLayout()
+    layout_apply_to.addWidget(label_apply_to, 0, 0)
+    layout_apply_to.addWidget(combo_box_apply_to, 0, 1)
+
+    layout_apply_to.setColumnStretch(1, 1)
+
     group_box_filter_settings.setLayout(QGridLayout())
-    group_box_filter_settings.layout().addWidget(label_apply_to, 0, 0, 1, 4)
-    group_box_filter_settings.layout().addWidget(combo_box_apply_to, 1, 0, 1, 4)
+    group_box_filter_settings.layout().addLayout(layout_apply_to, 0, 0, 1, 4)
 
-    group_box_filter_settings.layout().addWidget(label_freq, 2, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_freq_no_limit, 2, 3)
-    group_box_filter_settings.layout().addWidget(label_freq_min, 3, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_freq_min, 3, 1)
-    group_box_filter_settings.layout().addWidget(label_freq_max, 3, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_freq_max, 3, 3)
+    group_box_filter_settings.layout().addWidget(label_freq, 1, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_freq_no_limit, 1, 3)
+    group_box_filter_settings.layout().addWidget(label_freq_min, 2, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_freq_min, 2, 1)
+    group_box_filter_settings.layout().addWidget(label_freq_max, 2, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_freq_max, 2, 3)
 
-    group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 4, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 3, 0, 1, 4)
 
-    group_box_filter_settings.layout().addWidget(label_len, 5, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_len_no_limit, 5, 3)
-    group_box_filter_settings.layout().addWidget(label_len_min, 6, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_len_min, 6, 1)
-    group_box_filter_settings.layout().addWidget(label_len_max, 6, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_len_max, 6, 3)
+    group_box_filter_settings.layout().addWidget(label_len, 4, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_len_no_limit, 4, 3)
+    group_box_filter_settings.layout().addWidget(label_len_min, 5, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_len_min, 5, 1)
+    group_box_filter_settings.layout().addWidget(label_len_max, 5, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_len_max, 5, 3)
 
-    group_box_filter_settings.layout().addWidget(label_files, 7, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_files_no_limit, 7, 3)
-    group_box_filter_settings.layout().addWidget(label_files_min, 8, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_files_min, 8, 1)
-    group_box_filter_settings.layout().addWidget(label_files_max, 8, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_files_max, 8, 3)
+    group_box_filter_settings.layout().addWidget(label_files, 6, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_files_no_limit, 6, 3)
+    group_box_filter_settings.layout().addWidget(label_files_min, 7, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_files_min, 7, 1)
+    group_box_filter_settings.layout().addWidget(label_files_max, 7, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_files_max, 7, 3)
 
-    group_box_filter_settings.layout().addWidget(button_filter_results, 9, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(button_filter_results, 8, 0, 1, 4)
 
     tab_wordlist.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
     tab_wordlist.layout_settings.addWidget(group_box_table_settings, 1, 0, Qt.AlignTop)
     tab_wordlist.layout_settings.addWidget(group_box_plot_settings, 2, 0, Qt.AlignTop)
     tab_wordlist.layout_settings.addWidget(group_box_filter_settings, 3, 0, Qt.AlignTop)
+
+    tab_wordlist.layout_settings.setRowStretch(4, 1)
 
     load_settings()
 
@@ -457,7 +502,7 @@ def generate_table(main, table):
             table.setRowCount(len(freq_distribution))
 
             for i, (token, freqs) in enumerate(sorted(freq_distribution.items(),
-                                                      key = wordless_misc.multi_sorting_freq)):
+                                                      key = wordless_misc.multi_sorting_freqs)):
                 # Rank
                 table.set_item_num_int(i, 0, -1)
 
@@ -488,6 +533,8 @@ def generate_table(main, table):
             table.item_changed()
         else:
             wordless_dialog.wordless_message_no_results_table(main)
+    else:
+        wordless_dialog.wordless_message_no_files_selected(main)
 
     main.status_bar.showMessage(main.tr('Data generation completed!'))
 
@@ -502,12 +549,16 @@ def generate_plot(main):
 
         if freq_distribution:
             wordless_plot.wordless_plot_freq(main, freq_distribution,
-                                             rank_min = settings['rank_min'],
-                                             rank_max = settings['rank_max'],
+                                             plot_type = settings['plot_type'],
+                                             use_data_file = settings['use_data_file'],
                                              use_pct = settings['use_pct'],
                                              use_cumulative = settings['use_cumulative'],
+                                             rank_min = settings['rank_min'],
+                                             rank_max = settings['rank_max'],
                                              label_x = main.tr('Tokens'))
         else:
             wordless_dialog.wordless_message_no_results_plot(main)
+    else:
+        wordless_dialog.wordless_message_no_files_selected(main)
 
     main.status_bar.showMessage(main.tr('Plot generation completed!'))

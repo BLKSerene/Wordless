@@ -25,7 +25,7 @@ def to_lang_text(main, lang_code):
         return langs[lang_code]
 
 def to_iso_639_3(main, lang_code):
-    if lang_code.find('-') > -1:
+    if '-' in lang_code:
         lang_code = f'{lang_code.split("-")[0]}_{lang_code.split("-")[1].upper()}'
 
     for lang_code_3, lang_code_2 in main.settings_global['lang_codes'].items():
@@ -48,7 +48,7 @@ def to_encoding_text(main, encoding_code, encoding_lang = None):
         if encoding_code == code:
             # Distinguish between different languages
             if encoding_lang:
-                if text.find(encoding_lang) > -1:
+                if encoding_lang in text:
                     return text
             else:
                 return text

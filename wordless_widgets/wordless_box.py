@@ -35,6 +35,33 @@ class Wordless_Combo_Box_Encoding(Wordless_Combo_Box):
 
         self.addItems(main.settings_global['file_encodings'])
 
+class Wordless_Combo_Box_Use_Data_File(Wordless_Combo_Box):
+    def __init__(self, main):
+        super().__init__(main)
+
+        main.wordless_files.table.itemChanged.connect(self.wordless_files_changed)
+
+        self.wordless_files_changed()
+
+    def wordless_files_changed(self):
+        if self.count() == 1:
+            data_file_old = ''
+        else:
+            data_file_old = self.currentText()
+
+        self.clear()
+
+        for file in self.main.wordless_files.get_selected_files():
+            self.addItem(file['name'])
+
+        self.addItem(self.tr('Total'))
+
+        for i in range(self.count()):
+            if self.itemText(i) == data_file_old:
+                self.setCurrentIndex(i)
+
+                break
+
 class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
     def __init__(self, main, table):
         super().__init__(main)
@@ -47,19 +74,20 @@ class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
 
     def table_header_changed(self):
         if self.count() == 1:
-            apply_to_old = ''
+            file_old = ''
         else:
-            apply_to_old = self.currentText()
+            file_old = self.currentText()
 
         self.clear()
 
         for file in self.table.settings['file']['files_open']:
             if file['selected']:
                 self.addItem(file['name'])
-        self.addItem(self.main.tr('Total'))
+
+        self.addItem(self.tr('Total'))
 
         for i in range(self.count()):
-            if self.itemText(i) == apply_to_old:
+            if self.itemText(i) == file_old:
                 self.setCurrentIndex(i)
 
                 break
@@ -73,7 +101,7 @@ class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
         self.text_changed()
 
     def text_changed(self):
-        if self.currentText().find('HanLP') > -1:
+        if 'HanLP' in self.currentText():
             try:
                 jpype.getDefaultJVMPath()
 

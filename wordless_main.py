@@ -93,6 +93,11 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="mailto:java-nlp-support@lists.stanford.edu">Stanford NLP</a>',
              '<a href="https://github.com/stanfordnlp/python-stanford-corenlp/blob/master/LICENSE">MIT</a>'],
 
+            ['<a href="https://amueller.github.io/word_cloud/">wordcloud</a>',
+             '1.5.0',
+             '<a href="mailto:t3kcit+githubspam@gmail.com">Andreas Mueller</a>',
+             '<a href="https://github.com/amueller/word_cloud/blob/master/LICENSE">MIT</a>'],
+
             ['<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
              '4.6.3',
              '<a href="https://www.crummy.com/self/contact.html">Leonard Richardson</a>',
