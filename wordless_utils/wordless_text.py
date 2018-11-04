@@ -28,10 +28,10 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'Defa
     if sentence_tokenizer == 'Default':
         sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizers'][lang_code]
 
-    if sentence_tokenizer.find('HanLP') > -1:
+    if 'HanLP' in sentence_tokenizer:
         import pyhanlp
 
-    for line in text.split('\n'):
+    for line in text.splitlines():
         # English
         if sentence_tokenizer == main.tr('NLTK - Punkt Sentence Tokenizer'):
             if lang_code == 'other':
@@ -45,12 +45,12 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'Defa
             sentence_start = 0
 
             for i, char in enumerate(line):
-                if char in ['。', '！', '？', '!', '?']:
-                    for j, sentence_end in enumerate(line[i + 1 :]):
-                        if sentence_end not in ['。', '！', '？', '!', '?', '’', '”', '）', ')']:
-                            sentences.append(line[sentence_start : i + 1 + j])
+                if i >= sentence_start and char in ['。', '！', '？', '!', '?']:
+                    for j, char_next in enumerate(line):
+                        if j > i and char_next not in ['。', '！', '？', '!', '?', '’', '”', '）', ')']:
+                            sentences.append(line[sentence_start : j])
 
-                            sentence_start = i + 1 + j
+                            sentence_start = j
 
                             break
 

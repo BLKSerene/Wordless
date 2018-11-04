@@ -51,19 +51,33 @@ def log_timing(func):
 
     return wrapper
 
-def multi_sorting_freq(item):
+def multi_sorting_freqs(item):
     keys = []
 
     for value in item[1]:
         # Frequency
         keys.append(-value)
 
-    # Token & N-gram
+    # Tokens & N-grams
     keys.append(item[0])
 
     return keys
 
-def multi_sorting_score(item):
+def multi_sorting_scores(item):
+    keys = []
+
+    for score in item[1]:
+        # Score
+        keys.append(-score)
+
+    # Keywords
+    keys.append(item[0][0])
+    # Collocates
+    keys.append(item[0][1])
+
+    return keys
+
+def multi_sorting_scores_directions(item):
     keys = []
 
     for scores in item[1]:
@@ -95,27 +109,27 @@ def multi_sorting_keyness(item):
 
     return keys
 
-def merge_dicts(dicts_to_be_merged):
+def merge_dicts(dicts_to_merge):
     dict_merged = {}
 
-    if any(dicts_to_be_merged):
-        for i, dict_to_be_merged in enumerate(dicts_to_be_merged):
-            if dict_to_be_merged:
+    if any(dicts_to_merge):
+        for i, dict_to_merge in enumerate(dicts_to_merge):
+            if dict_to_merge:
                 i_dict = i
 
-                values_2d = type(list(dict_to_be_merged.values())[0]) == list
+                values_2d = type(list(dict_to_merge.values())[0]) == list
 
                 break
     else:
         return
     
     if values_2d:
-        value_2d = [[0] * len(list(dicts_to_be_merged[i_dict].values())[0]) for i in range(len(dicts_to_be_merged))]
+        value_2d = [[0] * len(list(dicts_to_merge[i_dict].values())[0]) for i in range(len(dicts_to_merge))]
     else:
-        value_1d = [0] * len(dicts_to_be_merged)
+        value_1d = [0] * len(dicts_to_merge)
 
-    for i, dict_to_be_merged in enumerate(dicts_to_be_merged):
-        for key, values in dict_to_be_merged.items():
+    for i, dict_to_merge in enumerate(dicts_to_merge):
+        for key, values in dict_to_merge.items():
             if key not in dict_merged:
                 if values_2d:
                     dict_merged[key] = copy.deepcopy(value_2d)
