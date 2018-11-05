@@ -28,10 +28,10 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'Defa
     if sentence_tokenizer == 'Default':
         sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizers'][lang_code]
 
-    if sentence_tokenizer.find('HanLP') > -1:
+    if 'HanLP' in sentence_tokenizer:
         import pyhanlp
 
-    for line in text.split('\n'):
+    for line in text.splitlines():
         # English
         if sentence_tokenizer == main.tr('NLTK - Punkt Sentence Tokenizer'):
             if lang_code == 'other':

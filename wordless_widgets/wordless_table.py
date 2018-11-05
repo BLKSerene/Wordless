@@ -167,7 +167,7 @@ class Wordless_Table(QTableWidget):
         def find(text):
             for row in range(self.rowCount()):
                 if fuzzy_matching:
-                    if self.verticalHeaderItem(row).text().find(text) > -1:
+                    if text in self.verticalHeaderItem(row).text():
                         return row
                 else:
                     if self.verticalHeaderItem(row).text() == text:
@@ -181,13 +181,13 @@ class Wordless_Table(QTableWidget):
     def find_rows(self, text):
         return [row
                 for row in range(self.columnCount())
-                if self.verticalHeaderItem(row).text().find(text) > -1]
+                if text in self.verticalHeaderItem(row).text()]
 
     def find_col(self, text, fuzzy_matching = False):
         def find(text):
             for col in range(self.columnCount()):
                 if fuzzy_matching:
-                    if self.horizontalHeaderItem(col).text().find(text) > -1:
+                    if text in self.horizontalHeaderItem(col).text():
                         return col
                 else:
                     if self.horizontalHeaderItem(col).text() == text:
@@ -201,7 +201,7 @@ class Wordless_Table(QTableWidget):
     def find_cols(self, text):
         return [col
                 for col in range(self.columnCount())
-                if self.horizontalHeaderItem(col).text().find(text) > -1]
+                if text in self.horizontalHeaderItem(col).text()]
 
     def find_header(self, text, fuzzy_matching = False):
         if self.header_orientation == 'horizontal':
@@ -397,6 +397,7 @@ class Wordless_Table_Data(Wordless_Table):
         item = Wordless_Table_Item()
 
         item.val = int(val)
+
         if total > -1:
             item.total = int(total)
 
@@ -433,7 +434,7 @@ class Wordless_Table_Data(Wordless_Table):
                                if self.item(row, col).val != float('inf')])
 
                 # p-value
-                if self.horizontalHeaderItem(col).text().find(self.tr('p-value')) > -1:
+                if self.tr('p-value') in self.horizontalHeaderItem(col).text():
                     precision_val = self.main.settings_custom['general']['precision_p_value']
                 else:
                     precision_val = self.main.settings_custom['general']['precision_decimal']

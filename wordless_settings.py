@@ -103,9 +103,7 @@ class Wordless_Settings(QDialog):
         self.layout().setColumnStretch(1, 3)
 
     def selection_changed(self):
-        settings_valid = self.settings_validate()
-
-        if settings_valid:
+        if self.settings_validate():
             self.wrapper_settings_general.hide()
             self.wrapper_settings_import.hide()
             self.wrapper_settings_export.hide()
@@ -248,6 +246,12 @@ class Wordless_Settings(QDialog):
         return wrapper_settings_import
 
     def init_settings_export(self):
+        def tables_default_type_changed():
+            if self.combo_box_export_tables_default_type.currentText() == self.tr('Excel Workbook (*.xlsx)'):
+                self.combo_box_export_tables_default_encoding.setEnabled(False)
+            else:
+                self.combo_box_export_tables_default_encoding.setEnabled(True)
+
         def browse_tables():
             path_file = QFileDialog.getExistingDirectory(self,
                                                          self.tr('Browse'),
@@ -280,6 +284,7 @@ class Wordless_Settings(QDialog):
         self.combo_box_export_tables_default_type.addItems(self.main.settings_global['file_types']['export_tables'])
 
         self.button_export_tables_default_path.clicked.connect(browse_tables)
+        self.combo_box_export_tables_default_type.currentTextChanged.connect(tables_default_type_changed)
 
         group_box_export_tables.setLayout(QGridLayout())
         group_box_export_tables.layout().addWidget(self.label_export_tables_default_path, 0, 0)
@@ -314,6 +319,8 @@ class Wordless_Settings(QDialog):
 
         wrapper_settings_export.layout().setRowStretch(2, 1)
 
+        tables_default_type_changed()
+
         return wrapper_settings_export
 
     def init_settings_sentence_tokenization(self):
@@ -330,7 +337,7 @@ class Wordless_Settings(QDialog):
                 sentence_tokenizer = self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].currentText()
 
                 if settings_custom['preview_samples']:
-                    for sample_line in settings_custom['preview_samples'].split('\n'):
+                    for sample_line in settings_custom['preview_samples'].splitlines():
                         sentences = wordless_text.wordless_sentence_tokenize(self.main, sample_line, lang_code, sentence_tokenizer = sentence_tokenizer)
 
                         self.text_edit_sentence_tokenization_preview_results.append('<span style="color: #F00; font-weight: bold;">/</span>'.join(sentences) + '<span style="color: #F00; font-weight: bold;">/</span>')
@@ -420,7 +427,7 @@ class Wordless_Settings(QDialog):
 
                 word_tokenizer = self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentText()
 
-                for sample_line in settings_custom['preview_samples'].split('\n'):
+                for sample_line in settings_custom['preview_samples'].splitlines():
                     tokens = wordless_text.wordless_word_tokenize(self.main, sample_line, lang_code, word_tokenizer = word_tokenizer)
 
                     self.text_edit_word_tokenization_preview_results.append(' '.join(tokens))
@@ -528,7 +535,7 @@ class Wordless_Settings(QDialog):
                 pos_tagger = self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentText()
                 tagset = self.__dict__[f'combo_box_tagset_{lang_code}'].currentText()
 
-                for sample_line in settings_custom['preview_samples'].split('\n'):
+                for sample_line in settings_custom['preview_samples'].splitlines():
                     tokens_tagged = wordless_text.wordless_pos_tag(self.main, sample_line, lang_code,
                                                                    pos_tagger = pos_tagger, tagset = tagset)
                     tokens_tagged = [f'{token}_{tag}' for token, tag in tokens_tagged]
@@ -630,7 +637,7 @@ class Wordless_Settings(QDialog):
                 lang_code = wordless_conversion.to_lang_code(self.main, lang_text)
                 lemmatizer = self.__dict__[f'combo_box_lemmatizer_{lang_code}'].currentText()
 
-                for sample_line in settings_custom['preview_samples'].split('\n'):
+                for sample_line in settings_custom['preview_samples'].splitlines():
                     samples = wordless_text.wordless_word_tokenize(self.main, sample_line, lang_code)
                     lemmas = wordless_text.wordless_lemmatize(self.main, samples, lang_code, lemmatizer = lemmatizer)
 

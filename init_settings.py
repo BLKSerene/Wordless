@@ -1314,8 +1314,8 @@ def init_settings_default(main):
 
             'subfolders': True,
 
-            'auto_detect_encoding': True,
-            'auto_detect_lang': True
+            'detect_langs': True,
+            'detect_encodings': True
         },
 
         'overview': {
@@ -1396,12 +1396,14 @@ def init_settings_default(main):
             'show_cumulative': False,
             'show_breakdown': True,
 
+            'plot_type': main.tr('Line Chart'),
+            'use_data_file': main.tr('Total'),
+            'use_pct': False,
+            'use_cumulative': False,
+
             'rank_no_limit': False,
             'rank_min': 1,
             'rank_max': 50,
-
-            'use_pct': False,
-            'use_cumulative': False,
 
             'apply_to': main.tr('Total'),
     
@@ -1462,13 +1464,15 @@ def init_settings_default(main):
             'show_pct': True,
             'show_cumulative': False,
             'show_breakdown': True,
+
+            'plot_type': main.tr('Line Chart'),
+            'use_data_file': main.tr('Total'),
+            'use_pct': False,
+            'use_cumulative': False,
     
             'rank_no_limit': False,
             'rank_min': 1,
             'rank_max': 50,
-
-            'use_pct': False,
-            'use_cumulative': False,
 
             'apply_to': main.tr('Total'),
     
@@ -1527,7 +1531,9 @@ def init_settings_default(main):
             'show_breakdown_position': True,
             'show_breakdown_file': True,
 
-            'use_data': main.tr('Score (Right)'),
+            'plot_type': main.tr('Line Chart'),
+            'use_data_file': main.tr('Total'),
+            'use_data_col': main.tr('Score (Right)'),
             'use_pct': False,
             'use_cumulative': False,
 
@@ -1598,7 +1604,9 @@ def init_settings_default(main):
             'show_breakdown_position': True,
             'show_breakdown_file': True,
 
-            'use_data': main.tr('Score (Right)'),
+            'plot_type': main.tr('Line Chart'),
+            'use_data_file': main.tr('Total'),
+            'use_data_col': main.tr('Score (Right)'),
             'use_pct': False,
             'use_cumulative': False,
 

@@ -225,6 +225,8 @@ def init(main):
     tab_overview.layout_settings.addWidget(group_box_generation_settings, 1, 0, Qt.AlignTop)
     tab_overview.layout_settings.addWidget(group_box_table_settings, 2, 0, Qt.AlignTop)
 
+    tab_overview.layout_settings.setRowStretch(3, 1)
+
     load_settings()
 
     return tab_overview
@@ -380,5 +382,7 @@ def generate_table(main, table):
         table.update_items_width()
 
         table.item_changed()
+    else:
+        wordless_dialog.wordless_message_no_files_selected(main)
 
     main.status_bar.showMessage(main.tr('Data generation completed!'))
