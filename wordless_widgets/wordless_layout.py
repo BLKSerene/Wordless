@@ -10,7 +10,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_widgets import wordless_dialog
+from wordless_widgets import wordless_message_box
 
 class Wordless_Splitter(QSplitter):
     def __init__(self, parent):
@@ -68,7 +68,7 @@ class Wordless_Tab(QWidget):
         self.layout_settings = wrapper_settings.layout()
 
     def restore_default_settings(self):
-        reply = wordless_dialog.wordless_restore_default_settings(self.main)
+        reply = wordless_message_box.wordless_message_box_restore_default_settings(self.main)
 
         if reply == QMessageBox.Yes:
             self.load_settings(defaults = True)

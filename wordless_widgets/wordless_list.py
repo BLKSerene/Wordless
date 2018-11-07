@@ -13,7 +13,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_widgets import wordless_dialog
+from wordless_widgets import wordless_message_box
 from wordless_utils import wordless_conversion
 
 class Wordless_List(QListWidget):
@@ -161,7 +161,7 @@ class Wordless_List(QListWidget):
             try:
                 with open(file_path, 'r', encoding = file_encoding_code) as f:
                     if os.path.getsize(file_path) == 0:
-                        wordless_dialog.wordless_message_empty_file(self.main, file_path)
+                        wordless_message_box.wordless_message_box_empty_file(self.main, file_path)
                     else:
                         for line in f:
                             if line.strip():
@@ -193,7 +193,7 @@ class Wordless_List(QListWidget):
                 for item in self.get_items():
                     f.write(item + '\n')
 
-            wordless_dialog.wordless_message_export_completed_search_terms(self.main, file_path)
+            wordless_message_box.wordless_message_box_export_completed_search_terms(self.main, file_path)
 
     def get_items(self):
         return [self.item(i).text() for i in range(self.count())]
