@@ -56,11 +56,17 @@ class Wordless_Combo_Box_Use_Data_File(Wordless_Combo_Box):
 
         self.addItem(self.tr('Total'))
 
-        for i in range(self.count()):
-            if self.itemText(i) == data_file_old:
-                self.setCurrentIndex(i)
+        if self.findText(data_file_old) > -1:
+            self.setCurrentText(data_file_old)
 
-                break
+class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box_Use_Data_File):
+    def wordless_files_changed(self):
+        super().wordless_files_changed()
+
+        self.removeItem(self.findText(self.tr('Total')))
+
+        if self.count() == 0:
+            self.addItem(main.tr('*** None ***'))
 
 class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
     def __init__(self, main, table):
@@ -86,11 +92,8 @@ class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
 
         self.addItem(self.tr('Total'))
 
-        for i in range(self.count()):
-            if self.itemText(i) == file_old:
-                self.setCurrentIndex(i)
-
-                break
+        if self.findText(file_old) > -1:
+            self.setCurrentText(file_old)
 
 class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
     def __init__(self, main):

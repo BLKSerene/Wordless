@@ -151,7 +151,9 @@ def init(main):
         checkbox_show_cumulative.setChecked(settings_loaded['show_cumulative'])
         checkbox_show_breakdown.setChecked(settings_loaded['show_breakdown'])
 
-        combo_box_use_data.setCurrentText(settings_loaded['use_data'])
+        combo_box_plot_type.setCurrentText(settings_loaded['plot_type'])
+        combo_box_use_data_file.setCurrentText(settings_loaded['use_data_file'])
+        combo_box_use_data_col.setCurrentText(settings_loaded['use_data_col'])
         checkbox_use_pct.setChecked(settings_loaded['use_pct'])
         checkbox_use_cumulative.setChecked(settings_loaded['use_cumulative'])
 
@@ -200,37 +202,41 @@ def init(main):
         settings['puncs'] = checkbox_puncs.isChecked()
 
     def generation_settings_changed():
-        ref_file_old = combo_box_ref_file.currentText()
+        if combo_box_ref_file.currentText() == main.tr('*** None ***'):
+            settings['ref_file'] = ''
+        else:
+            settings['ref_file'] = combo_box_ref_file.currentText()
 
-        combo_box_ref_file.blockSignals(True)
-
-        combo_box_ref_file.clear()
-        combo_box_ref_file.addItems([file['name'] for file in main.settings_custom['file']['files_open']])
-
-        if combo_box_ref_file.findText(ref_file_old) > -1:
-            combo_box_ref_file.setCurrentIndex(combo_box_ref_file.findText(ref_file_old))
-
-        combo_box_ref_file.blockSignals(False)
-
-        settings['ref_file'] = combo_box_ref_file.currentText()
         settings['significance_test'] = combo_box_significance_test.currentText()
         settings['effect_size_measure'] = combo_box_effect_size_measure.currentText()
 
-        # Use Data
-        use_data_old = combo_box_use_data.currentIndex()
+        # Use Data File
+        use_file_old = combo_box_use_data_file.currentText()
 
-        combo_box_use_data.clear()
+        combo_box_use_data_file.wordless_files_changed()
 
-        combo_box_use_data.addItem(main.tr('Frequency'))
+        combo_box_use_data_file.removeItem(combo_box_use_data_file.findText(settings['ref_file']))
+
+        if combo_box_use_data_file.findText(use_file_old) > -1:
+            combo_box_use_data_file.setCurrentText(use_file_old)
+        else:
+            combo_box_use_data_file.setCurrentIndex(0)
+
+        # Use Data Column
+        data_col_old = combo_box_use_data_col.currentIndex()
+
+        combo_box_use_data_col.clear()
+
+        combo_box_use_data_col.addItem(main.tr('Frequency'))
 
         for col in main.settings_global['significance_tests'][settings['significance_test']]['cols']:
             if col:
-                combo_box_use_data.addItem(col)
+                combo_box_use_data_col.addItem(col)
 
-        combo_box_use_data.addItem(main.settings_global['effect_size_measures'][settings['effect_size_measure']]['col'])
+        combo_box_use_data_col.addItem(main.settings_global['effect_size_measures'][settings['effect_size_measure']]['col'])
 
-        if use_data_old > -1:
-            combo_box_use_data.setCurrentIndex(use_data_old)
+        if data_col_old > -1:
+            combo_box_use_data_col.setCurrentIndex(data_col_old)
 
     def table_settings_changed():
         settings['show_pct'] = checkbox_show_pct.isChecked()
@@ -238,7 +244,9 @@ def init(main):
         settings['show_breakdown'] = checkbox_show_breakdown.isChecked()
 
     def plot_settings_changed():
-        settings['use_data'] = combo_box_use_data.currentText()
+        settings['plot_type'] = combo_box_plot_type.currentText()
+        settings['use_data_file'] = combo_box_use_data_file.currentText()
+        settings['use_data_col'] = combo_box_use_data_col.currentText()
         settings['use_pct'] = checkbox_use_pct.isChecked()
         settings['use_cumulative'] = checkbox_use_cumulative.isChecked()
 
@@ -246,12 +254,20 @@ def init(main):
         settings['rank_min'] = spin_box_rank_min.value()
         settings['rank_max'] = spin_box_rank_max.value()
 
-        if settings['use_data'] in [main.tr('Test Statistics'), main.tr('Effect Size')]:
+        if settings['plot_type'] == main.tr('Line Chart'):
+            combo_box_use_data_file.setEnabled(False)
+
+            if settings['use_data_col'] == main.tr('Frequency'):
+                checkbox_use_pct.setEnabled(True)
+                checkbox_use_cumulative.setEnabled(True)
+            else:
+                checkbox_use_pct.setEnabled(False)
+                checkbox_use_cumulative.setEnabled(False)
+        elif settings['plot_type'] == main.tr('Word Cloud'):
+            combo_box_use_data_file.setEnabled(True)
+
             checkbox_use_pct.setEnabled(False)
             checkbox_use_cumulative.setEnabled(False)
-        else:
-            checkbox_use_pct.setEnabled(True)
-            checkbox_use_cumulative.setEnabled(True)
 
     def filter_settings_changed():
         if combo_box_apply_to.findText(settings['ref_file']) > -1:
@@ -337,7 +353,7 @@ def init(main):
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'))
 
     label_ref_file = QLabel(main.tr('Reference File:'), main)
-    combo_box_ref_file = wordless_box.Wordless_Combo_Box(main)
+    combo_box_ref_file = wordless_box.Wordless_Combo_Box_Ref_File(main)
 
     label_significance_test = QLabel(main.tr('Significance Test:'), main)
     combo_box_significance_test = wordless_box.Wordless_Combo_Box(main)
@@ -348,7 +364,6 @@ def init(main):
     combo_box_significance_test.addItem(list(main.settings_global['significance_tests'].keys())[5])
     combo_box_effect_size_measure.addItems(list(main.settings_global['effect_size_measures'].keys()))
 
-    main.wordless_files.table.itemChanged.connect(lambda: generation_settings_changed())
     combo_box_ref_file.currentTextChanged.connect(generation_settings_changed)
 
     combo_box_significance_test.currentTextChanged.connect(generation_settings_changed)
@@ -382,8 +397,12 @@ def init(main):
     # Plot Settings
     group_box_plot_settings = QGroupBox(main.tr('Plot Settings'), main)
 
-    label_use_data = QLabel(main.tr('Use Data:'), main)
-    combo_box_use_data = wordless_box.Wordless_Combo_Box(main)
+    label_plot_type = QLabel(main.tr('Plot Type:'), main)
+    combo_box_plot_type = wordless_box.Wordless_Combo_Box(main)
+    label_use_data_file = QLabel(main.tr('Use Data File:'), main)
+    combo_box_use_data_file = wordless_box.Wordless_Combo_Box_Ref_File(main)
+    label_use_data_col = QLabel(main.tr('Use Data Column:'), main)
+    combo_box_use_data_col = wordless_box.Wordless_Combo_Box(main)
     checkbox_use_pct = QCheckBox(main.tr('Use Percentage Data'), main)
     checkbox_use_cumulative = QCheckBox(main.tr('Use Cumulative Data'), main)
 
@@ -394,7 +413,13 @@ def init(main):
      label_rank_max,
      spin_box_rank_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 10000)
 
-    combo_box_use_data.currentTextChanged.connect(plot_settings_changed)
+    combo_box_plot_type.addItems([main.tr('Line Chart'),
+                                  main.tr('Word Cloud')])
+
+    combo_box_plot_type.currentTextChanged.connect(plot_settings_changed)
+    main.wordless_files.table.itemChanged.connect(generation_settings_changed)
+    combo_box_use_data_file.currentTextChanged.connect(plot_settings_changed)
+    combo_box_use_data_col.currentTextChanged.connect(plot_settings_changed)
     checkbox_use_pct.stateChanged.connect(plot_settings_changed)
     checkbox_use_cumulative.stateChanged.connect(plot_settings_changed)
 
@@ -402,30 +427,44 @@ def init(main):
     spin_box_rank_min.valueChanged.connect(plot_settings_changed)
     spin_box_rank_max.valueChanged.connect(plot_settings_changed)
 
-    layout_use_data = QGridLayout()
-    layout_use_data.addWidget(label_use_data, 0, 0)
-    layout_use_data.addWidget(combo_box_use_data, 0, 1)
+    layout_plot_type = QGridLayout()
+    layout_plot_type.addWidget(label_plot_type, 0, 0)
+    layout_plot_type.addWidget(combo_box_plot_type, 0, 1)
 
-    layout_use_data.setColumnStretch(1, 10)
+    layout_plot_type.setColumnStretch(1, 1)
+
+    layout_use_data_file = QGridLayout()
+    layout_use_data_file.addWidget(label_use_data_file, 0, 0)
+    layout_use_data_file.addWidget(combo_box_use_data_file, 0, 1)
+
+    layout_use_data_file.setColumnStretch(1, 1)
+
+    layout_use_data_col = QGridLayout()
+    layout_use_data_col.addWidget(label_use_data_col, 0, 0)
+    layout_use_data_col.addWidget(combo_box_use_data_col, 0, 1)
+
+    layout_use_data_col.setColumnStretch(1, 1)
 
     group_box_plot_settings.setLayout(QGridLayout())
-    group_box_plot_settings.layout().addLayout(layout_use_data, 0, 0, 1, 4)
-    group_box_plot_settings.layout().addWidget(checkbox_use_pct, 1, 0, 1, 4)
-    group_box_plot_settings.layout().addWidget(checkbox_use_cumulative, 2, 0, 1, 4)
+    group_box_plot_settings.layout().addLayout(layout_plot_type, 0, 0, 1, 4)
+    group_box_plot_settings.layout().addLayout(layout_use_data_file, 1, 0, 1, 4)
+    group_box_plot_settings.layout().addLayout(layout_use_data_col, 2, 0, 1, 4)
+    group_box_plot_settings.layout().addWidget(checkbox_use_pct, 3, 0, 1, 4)
+    group_box_plot_settings.layout().addWidget(checkbox_use_cumulative, 4, 0, 1, 4)
     
-    group_box_plot_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 3, 0, 1, 4)
+    group_box_plot_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 5, 0, 1, 4)
 
-    group_box_plot_settings.layout().addWidget(label_rank, 4, 0, 1, 3)
-    group_box_plot_settings.layout().addWidget(checkbox_rank_no_limit, 4, 3)
-    group_box_plot_settings.layout().addWidget(label_rank_min, 5, 0)
-    group_box_plot_settings.layout().addWidget(spin_box_rank_min, 5, 1)
-    group_box_plot_settings.layout().addWidget(label_rank_max, 5, 2)
-    group_box_plot_settings.layout().addWidget(spin_box_rank_max, 5, 3)
+    group_box_plot_settings.layout().addWidget(label_rank, 6, 0, 1, 3)
+    group_box_plot_settings.layout().addWidget(checkbox_rank_no_limit, 6, 3)
+    group_box_plot_settings.layout().addWidget(label_rank_min, 7, 0)
+    group_box_plot_settings.layout().addWidget(spin_box_rank_min, 7, 1)
+    group_box_plot_settings.layout().addWidget(label_rank_max, 7, 2)
+    group_box_plot_settings.layout().addWidget(spin_box_rank_max, 7, 3)
 
     # Filter Settings
     group_box_filter_settings = QGroupBox(main.tr('Filter Settings'), main)
 
-    label_apply_to = QLabel(main.tr('Apply Following Filters to:'), main)
+    label_apply_to = QLabel(main.tr('Apply Filters to:'), main)
     combo_box_apply_to = wordless_box.Wordless_Combo_Box_Apply_To(main, table_keywords)
 
     label_freq = QLabel(main.tr('Frequency:'), main)
@@ -500,55 +539,60 @@ def init(main):
 
     button_filter_results.clicked.connect(lambda: table_keywords.update_filters())
 
+    layout_apply_to = QGridLayout()
+    layout_apply_to.addWidget(label_apply_to, 0, 0)
+    layout_apply_to.addWidget(combo_box_apply_to, 0, 1)
+
+    layout_apply_to.setColumnStretch(1, 1)
+
     group_box_filter_settings.setLayout(QGridLayout())
-    group_box_filter_settings.layout().addWidget(label_apply_to, 0, 0, 1, 4)
-    group_box_filter_settings.layout().addWidget(combo_box_apply_to, 1, 0, 1, 4)
+    group_box_filter_settings.layout().addLayout(layout_apply_to, 0, 0, 1, 4)
 
-    group_box_filter_settings.layout().addWidget(label_freq, 2, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_freq_no_limit, 2, 3)
-    group_box_filter_settings.layout().addWidget(label_freq_min, 3, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_freq_min, 3, 1)
-    group_box_filter_settings.layout().addWidget(label_freq_max, 3, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_freq_max, 3, 3)
+    group_box_filter_settings.layout().addWidget(label_freq, 1, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_freq_no_limit, 1, 3)
+    group_box_filter_settings.layout().addWidget(label_freq_min, 2, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_freq_min, 2, 1)
+    group_box_filter_settings.layout().addWidget(label_freq_max, 2, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_freq_max, 2, 3)
 
-    group_box_filter_settings.layout().addWidget(label_test_stats, 4, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_test_stats_no_limit, 4, 3)
-    group_box_filter_settings.layout().addWidget(label_test_stats_min, 5, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_test_stats_min, 5, 1)
-    group_box_filter_settings.layout().addWidget(label_test_stats_max, 5, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_test_stats_max, 5, 3)
+    group_box_filter_settings.layout().addWidget(label_test_stats, 3, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_test_stats_no_limit, 3, 3)
+    group_box_filter_settings.layout().addWidget(label_test_stats_min, 4, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_test_stats_min, 4, 1)
+    group_box_filter_settings.layout().addWidget(label_test_stats_max, 4, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_test_stats_max, 4, 3)
 
-    group_box_filter_settings.layout().addWidget(label_p_value, 6, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_p_value_no_limit, 6, 3)
-    group_box_filter_settings.layout().addWidget(label_p_value_min, 7, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_p_value_min, 7, 1)
-    group_box_filter_settings.layout().addWidget(label_p_value_max, 7, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_p_value_max, 7, 3)
+    group_box_filter_settings.layout().addWidget(label_p_value, 5, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_p_value_no_limit, 5, 3)
+    group_box_filter_settings.layout().addWidget(label_p_value_min, 6, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_p_value_min, 6, 1)
+    group_box_filter_settings.layout().addWidget(label_p_value_max, 6, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_p_value_max, 6, 3)
 
-    group_box_filter_settings.layout().addWidget(label_effect_size, 8, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_effect_size_no_limit, 8, 3)
-    group_box_filter_settings.layout().addWidget(label_effect_size_min, 9, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_effect_size_min, 9, 1)
-    group_box_filter_settings.layout().addWidget(label_effect_size_max, 9, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_effect_size_max, 9, 3)
+    group_box_filter_settings.layout().addWidget(label_effect_size, 7, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_effect_size_no_limit, 7, 3)
+    group_box_filter_settings.layout().addWidget(label_effect_size_min, 8, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_effect_size_min, 8, 1)
+    group_box_filter_settings.layout().addWidget(label_effect_size_max, 8, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_effect_size_max, 8, 3)
 
-    group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 10, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 9, 0, 1, 4)
 
-    group_box_filter_settings.layout().addWidget(label_len, 11, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_len_no_limit, 11, 3)
-    group_box_filter_settings.layout().addWidget(label_len_min, 12, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_len_min, 12, 1)
-    group_box_filter_settings.layout().addWidget(label_len_max, 12, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_len_max, 12, 3)
+    group_box_filter_settings.layout().addWidget(label_len, 10, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_len_no_limit, 10, 3)
+    group_box_filter_settings.layout().addWidget(label_len_min, 11, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_len_min, 11, 1)
+    group_box_filter_settings.layout().addWidget(label_len_max, 11, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_len_max, 11, 3)
 
-    group_box_filter_settings.layout().addWidget(label_files, 13, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(checkbox_files_no_limit, 13, 3)
-    group_box_filter_settings.layout().addWidget(label_files_min, 14, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_files_min, 14, 1)
-    group_box_filter_settings.layout().addWidget(label_files_max, 14, 2)
-    group_box_filter_settings.layout().addWidget(spin_box_files_max, 14, 3)
+    group_box_filter_settings.layout().addWidget(label_files, 12, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(checkbox_files_no_limit, 12, 3)
+    group_box_filter_settings.layout().addWidget(label_files_min, 13, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_files_min, 13, 1)
+    group_box_filter_settings.layout().addWidget(label_files_max, 13, 2)
+    group_box_filter_settings.layout().addWidget(spin_box_files_max, 13, 3)
 
-    group_box_filter_settings.layout().addWidget(button_filter_results, 15, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(button_filter_results, 14, 0, 1, 4)
 
     tab_keywords.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
     tab_keywords.layout_settings.addWidget(group_box_generation_settings, 1, 0, Qt.AlignTop)
@@ -556,14 +600,16 @@ def init(main):
     tab_keywords.layout_settings.addWidget(group_box_plot_settings, 3, 0, Qt.AlignTop)
     tab_keywords.layout_settings.addWidget(group_box_filter_settings, 4, 0, Qt.AlignTop)
 
+    tab_keywords.layout_settings.setRowStretch(5, 1)
+
     load_settings()
 
     return tab_keywords
 
 def generate_keywords(main, files, ref_file):
     texts = []
-    keywords_freq = []
-    keywords_keyness = []
+    keywords_freqs_files = []
+    keywords_keyness_files = []
 
     settings = main.settings_custom['keywords']
 
@@ -595,7 +641,7 @@ def generate_keywords(main, files, ref_file):
         if not settings['puncs']:
             text.tokens = [token for token in text.tokens if [char for char in token if char.isalnum()]]
 
-        keywords_freq.append(collections.Counter(text.tokens))
+        keywords_freqs_files.append(collections.Counter(text.tokens))
 
         if i < len(files):
             texts.append(text)
@@ -605,12 +651,12 @@ def generate_keywords(main, files, ref_file):
 
     text_total = wordless_text.Wordless_Text(main, files[0])
     text_total.tokens = [token for text in texts for token in text.tokens]
-    keywords_freq.insert(-1, collections.Counter(text_total.tokens))
+    keywords_freqs_files.insert(-1, collections.Counter(text_total.tokens))
 
     text_total_types = set(text_total.tokens)
 
-    keywords_freq[-1] = {token: freq
-                         for token, freq in keywords_freq[-1].items()
+    keywords_freqs_files[-1] = {token: freq
+                         for token, freq in keywords_freqs_files[-1].items()
                          if token in text_total_types}
 
     # Test Statistics & Effect Size
@@ -618,36 +664,36 @@ def generate_keywords(main, files, ref_file):
     effect_size_measure = main.settings_global['effect_size_measures'][settings['effect_size_measure']]['func']
 
     for i, text in enumerate(texts + [text_total]):
-        keyness = {}
+        keywords_keyness = {}
 
         len_tokens = len(text.tokens)
 
         for token in set(text.tokens):
-            c11 = keywords_freq[i][token]
-            c12 = keywords_freq[-1].get(token, 0)
+            c11 = keywords_freqs_files[i][token]
+            c12 = keywords_freqs_files[-1].get(token, 0)
             c21 = len_tokens - c11
             c22 = len_tokens_ref - c12
 
-            keyness[token] = significance_test(c11, c12, c21, c22) + [effect_size_measure(c11, c12, c21, c22)]
+            keywords_keyness[token] = significance_test(c11, c12, c21, c22) + [effect_size_measure(c11, c12, c21, c22)]
 
-        keywords_keyness.append(keyness)
+        keywords_keyness_files.append(keywords_keyness)
 
-    return (wordless_misc.merge_dicts(keywords_freq),
-            wordless_misc.merge_dicts(keywords_keyness))
+    return (wordless_misc.merge_dicts(keywords_freqs_files),
+            wordless_misc.merge_dicts(keywords_keyness_files))
 
 @ wordless_misc.log_timing
 def generate_table(main, table):
     settings = main.settings_custom['keywords']
 
     if settings['ref_file']:
-        files = [file for file in main.wordless_files.get_selected_files(warning = False) if file['name'] != settings['ref_file']]
+        files = [file for file in main.wordless_files.get_selected_files() if file['name'] != settings['ref_file']]
 
         if files:
             table.clear_table()
 
             table.settings = main.settings_custom
 
-            for file in main.settings_custom['file']['files_open']:
+            for file in main.wordless_files.get_selected_files():
                 if file['name'] == settings['ref_file']:
                     ref_file = file
 
@@ -725,12 +771,11 @@ def generate_table(main, table):
             table.setSortingEnabled(False)
             table.setUpdatesEnabled(False)
 
-            keywords_freq, keywords_keyness = generate_keywords(main, files, ref_file)
+            keywords_freqs, keywords_keyness = generate_keywords(main, files, ref_file)
 
-            table.setRowCount(len(keywords_freq))
+            table.setRowCount(len(keywords_freqs))
 
-            for i, (keyword, keyness_files) in enumerate(sorted(keywords_keyness.items(),
-                                                                key = wordless_misc.multi_sorting_keyness)):
+            for i, (keyword, keyness_files) in enumerate(wordless_sorting.sorted_keyness_files(keywords_keyness)):
                 # Rank
                 table.set_item_num_int(i, 0, -1)
 
@@ -745,7 +790,7 @@ def generate_table(main, table):
                     table.set_item_num_float(i, cols_effect_size[j], effect_size)
 
             for i in range(table.rowCount()):
-                freq_files = keywords_freq[table.item(i, 1).text()]
+                freq_files = keywords_freqs[table.item(i, 1).text()]
 
                 # Frequency
                 for j, freq in enumerate(freq_files):
@@ -769,15 +814,50 @@ def generate_table(main, table):
 
             main.status_bar.showMessage(main.tr('Data generation completed!'))
         else:
-            QMessageBox.warning(main,
-                                main.tr('Missing Observed File(s)'),
-                                main.tr('There are no files other than the reference file being currently selected!'),
-                                QMessageBox.Ok)
+            wordless_dialog.wordless_message_missing_observed_files(main)
     else:
-        QMessageBox.warning(main,
-                            main.tr('Missing Reference File'),
-                            main.tr('Please open and select your reference file first!'),
-                            QMessageBox.Ok)
+        wordless_dialog.wordless_message_missing_ref_file(main)
 
 def generate_plot(main):
-    pass
+    settings = main.settings_custom['keywords']
+
+    if settings['ref_file']:
+        files = [file for file in main.wordless_files.get_selected_files() if file['name'] != settings['ref_file']]
+
+        if files:
+            for file in main.wordless_files.get_selected_files():
+                if file['name'] == settings['ref_file']:
+                    ref_file = file
+
+                    break
+
+            keywords_freqs, keywords_keyness = generate_keywords(main, files, ref_file)
+
+            if main.tr('Frequency') in settings['use_data_col'] and keywords_freqs:
+                wordless_plot.wordless_plot_freqs_ref(main, keywords_freqs,
+                                                      ref_file = ref_file,
+                                                      plot_type = settings['plot_type'],
+                                                      use_data_file = settings['use_data_file'],
+                                                      use_pct = settings['use_pct'],
+                                                      use_cumulative = settings['use_cumulative'],
+                                                      rank_min = settings['rank_min'],
+                                                      rank_max = settings['rank_max'],
+                                                      label_x = main.tr('Keywords'))
+            elif main.tr('Score') in settings['use_data_col'] and keywords_keyness:
+                if settings['use_data_col'] == main.tr('Score (Left)'):
+                    keywords_keyness = {collocate: numpy.array(scores)[:, 0] for collocate, scores in keywords_keyness.items()}
+                else:
+                    keywords_keyness = {collocate: numpy.array(scores)[:, 1] for collocate, scores in keywords_keyness.items()}
+
+                wordless_plot.wordless_plot_score(main, keywords_keyness,
+                                                  plot_type = settings['plot_type'],
+                                                  use_data_file = settings['use_data_file'],
+                                                  rank_min = settings['rank_min'],
+                                                  rank_max = settings['rank_max'],
+                                                  label_x = main.tr('Keywords'))
+        else:
+            wordless_dialog.wordless_message_missing_observed_files(main)
+    else:
+        wordless_dialog.wordless_message_missing_ref_file(main)
+
+    main.status_bar.showMessage(main.tr('Plot generation completed!'))

@@ -579,7 +579,7 @@ def init(main):
     return tab_ngram
 
 def generate_ngrams(main, files):
-    freq_distributions = []
+    freqs_files = []
 
     settings = main.settings_custom['ngram']
 
@@ -604,36 +604,36 @@ def generate_ngrams(main, files):
             for i in range(settings['ngram_size_min'], settings['ngram_size_max'] + 1):
                 ngrams.extend(list(nltk.skipgrams(text.tokens, i, settings['allow_skipped_tokens'])))
 
-        freq_distribution = nltk.FreqDist(ngrams)
+        freqs_file = nltk.FreqDist(ngrams)
 
         if settings['words']:
             if not settings['treat_as_lowercase']:
                 if not settings['lowercase']:
-                    freq_distribution = {ngram: freq
-                                         for ngram, freq in freq_distribution.items()
-                                         if not [token for token in ngram if token.islower()]}
+                    freqs_file = {ngram: freq
+                                  for ngram, freq in freqs_file.items()
+                                  if not [token for token in ngram if token.islower()]}
                 if not settings['uppercase']:
-                    freq_distribution = {ngram: freq
-                                         for ngram, freq in freq_distribution.items()
-                                         if not [token for token in ngram if token.isupper()]}
+                    freqs_file = {ngram: freq
+                                  for ngram, freq in freqs_file.items()
+                                  if not [token for token in ngram if token.isupper()]}
                 if not settings['title_case']:
-                    freq_distribution = {ngram: freq
-                                         for ngram, freq in freq_distribution.items()
-                                         if not [token for token in ngram if token.istitle()]}
+                    freqs_file = {ngram: freq
+                                  for ngram, freq in freqs_file.items()
+                                  if not [token for token in ngram if token.istitle()]}
 
             if settings['filter_stop_words']:
-                ngrams_filtered = wordless_text.wordless_filter_stop_words(main, list(freq_distribution.keys()), text.lang_code)
+                ngrams_filtered = wordless_text.wordless_filter_stop_words(main, list(freqs_file.keys()), text.lang_code)
                 
-                freq_distribution = {ngram: freq_distribution[ngram] for ngram in ngrams_filtered}
+                freqs_file = {ngram: freqs_file[ngram] for ngram in ngrams_filtered}
         else:
-            freq_distribution = {ngram: freq
-                                 for ngram, freq in freq_distribution.items()
-                                 if not [char for char in ''.join(ngram) if char.isalpha()]}
+            freqs_file = {ngram: freq
+                          for ngram, freq in freqs_file.items()
+                          if not [char for char in ''.join(ngram) if char.isalpha()]}
 
         if not settings['nums']:
-            freq_distribution = {ngram: freq
-                                 for ngram, freq in freq_distribution.items()
-                                 if [token for token in ngram if not token.isnumeric()]}
+            freqs_file = {ngram: freq
+                          for ngram, freq in freqs_file.items()
+                          if [token for token in ngram if not token.isnumeric()]}
 
         if not settings['show_all']:
             if settings['multi_search_mode']:
@@ -647,15 +647,15 @@ def generate_ngrams(main, files):
                                              settings['match_whole_word'],
                                              settings['use_regex'])
 
-            freq_distribution = {ngram: freq
-                                 for ngram, freq in freq_distribution.items()
-                                 for search_term in search_terms
-                                 if search_term in ngram and
-                                    settings['keyword_position_min'] <= ngram.index(search_term) + 1 <= settings['keyword_position_max']}
+            freqs_file = {ngram: freq
+                          for ngram, freq in freqs_file.items()
+                          for search_term in search_terms
+                          if (search_term in ngram and
+                              settings['keyword_position_min'] <= ngram.index(search_term) + 1 <= settings['keyword_position_max'])}
 
-        freq_distributions.append({text.word_delimiter.join(ngram): freq for ngram, freq in freq_distribution.items()})
+        freqs_files.append({text.word_delimiter.join(ngram): freq for ngram, freq in freqs_file.items()})
 
-    return wordless_misc.merge_dicts(freq_distributions)
+    return wordless_misc.merge_dicts(freqs_files)
 
 @ wordless_misc.log_timing
 def generate_table(main, table):
@@ -667,9 +667,9 @@ def generate_table(main, table):
         if (settings['show_all'] or
             not settings['show_all'] and (settings['multi_search_mode'] and settings['search_terms'] or
                                           not settings['multi_search_mode'] and settings['search_term'])):
-            freq_distribution = generate_ngrams(main, files)
+            freqs_files = generate_ngrams(main, files)
 
-            if freq_distribution:
+            if freqs_files:
                 table.clear_table()
 
                 table.settings = main.settings_custom
@@ -690,10 +690,9 @@ def generate_table(main, table):
                 table.setSortingEnabled(False)
                 table.setUpdatesEnabled(False)
 
-                table.setRowCount(len(freq_distribution))
+                table.setRowCount(len(freqs_files))
 
-                for i, (ngram, freqs) in enumerate(sorted(freq_distribution.items(),
-                                                          key = wordless_misc.multi_sorting_freqs)):
+                for i, (ngram, freqs) in enumerate(wordless_sorting.sorted_freqs_files(freqs_files)):
                     # Rank
                     table.set_item_num_int(i, 0, -1)
 
@@ -741,10 +740,10 @@ def generate_plot(main):
         if (settings['show_all'] or
             not settings['show_all'] and (settings['multi_search_mode'] and settings['search_terms'] or
                                           not settings['multi_search_mode'] and settings['search_term'])):
-            freq_distribution = generate_ngrams(main, files)
+            freqs_files = generate_ngrams(main, files)
 
-            if freq_distribution:
-                wordless_plot.wordless_plot_freq(main, freq_distribution,
+            if freqs_files:
+                wordless_plot.wordless_plot_freq(main, freqs_files,
                                                  plot_type = settings['plot_type'],
                                                  use_data_file = settings['use_data_file'],
                                                  use_pct = settings['use_pct'],

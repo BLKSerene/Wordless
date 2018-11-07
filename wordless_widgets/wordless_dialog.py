@@ -28,6 +28,26 @@ def wordless_message_no_files_selected(main):
                                 '''),
                         QMessageBox.Ok)
 
+def wordless_message_missing_ref_file(main):
+    QMessageBox.warning(main,
+                        main.tr('Missing Reference File'),
+                        main.tr(f'''{main.settings_global['style_dialog']}
+                                    <body>
+                                        <p>Please open and select your reference file first!</p>
+                                    </body>
+                                '''),
+                        QMessageBox.Ok)
+
+def wordless_message_missing_observed_files(main):
+    QMessageBox.warning(main,
+                        main.tr('Missing Observed File(s)'),
+                        main.tr(f'''{main.settings_global['style_dialog']}
+                                    <body>
+                                        <p>Please open and select your observed file(s) first!</p>
+                                    </body>
+                                '''),
+                        QMessageBox.Ok)
+
 def wordless_message_path_not_dir(main, path):
     QMessageBox.warning(main,
                         main.tr('Invalid Path'),

@@ -1666,7 +1666,9 @@ def init_settings_default(main):
             'show_cumulative': False,
             'show_breakdown': True,
 
-            'use_data': main.tr('Effect Size'),
+            'plot_type': main.tr('Line Chart'),
+            'use_data_file': main.tr('Total'),
+            'use_data_col': main.tr('Phi Coefficient'),
             'use_pct': False,
             'use_cumulative': False,
 

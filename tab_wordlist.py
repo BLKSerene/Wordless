@@ -417,7 +417,7 @@ def init(main):
     return tab_wordlist
 
 def generate_wordlists(main, files):
-    freq_distributions = []
+    freqs_files = []
 
     settings = main.settings_custom['wordlist']
 
@@ -432,53 +432,53 @@ def generate_wordlists(main, files):
             if settings['lemmatize']:
                 tokens = wordless_text.wordless_lemmatize(text.main, tokens, text.lang_code)
 
-        freq_distribution = nltk.FreqDist(tokens)
+        freqs_file = nltk.FreqDist(tokens)
 
         if settings['words']:
             if not settings['treat_as_lowercase']:
                 if not settings['lowercase']:
-                    freq_distribution = {token: freq
-                                         for token, freq in freq_distribution.items()
-                                         if not token.islower()}
+                    freqs_file = {token: freq
+                                  for token, freq in freqs_file.items()
+                                  if not token.islower()}
                 if not settings['uppercase']:
-                    freq_distribution = {token: freq
-                                         for token, freq in freq_distribution.items()
-                                         if not token.isupper()}
+                    freqs_file = {token: freq
+                                  for token, freq in freqs_file.items()
+                                  if not token.isupper()}
                 if not settings['title_case']:
-                    freq_distribution = {token: freq
-                                         for token, freq in freq_distribution.items()
-                                         if not token.istitle()}
+                    freqs_file = {token: freq
+                                  for token, freq in freqs_file.items()
+                                  if not token.istitle()}
 
             if settings['filter_stop_words']:
-                tokens_filtered = wordless_text.wordless_filter_stop_words(main, list(freq_distribution.keys()), text.lang_code)
+                tokens_filtered = wordless_text.wordless_filter_stop_words(main, list(freqs_file.keys()), text.lang_code)
 
-                freq_distribution = {token: freq_distribution[token] for token in tokens_filtered}
+                freqs_file = {token: freqs_file[token] for token in tokens_filtered}
         else:
-            freq_distribution = {token: freq
-                                 for token, freq in freq_distribution.items()
-                                 if not [char for char in token if char.isalpha()]}
+            freqs_file = {token: freq
+                          for token, freq in freqs_file.items()
+                          if not [char for char in token if char.isalpha()]}
         
         if not settings['nums']:
-            freq_distribution = {token: freq
-                                 for token, freq in freq_distribution.items()
-                                 if not token.isnumeric()}
+            freqs_file = {token: freq
+                          for token, freq in freqs_file.items()
+                          if not token.isnumeric()}
         if not settings['puncs']:
-            freq_distribution = {token: freq
-                                 for token, freq in freq_distribution.items()
-                                 if [char for char in token if char.isalnum()]}
+            freqs_file = {token: freq
+                          for token, freq in freqs_file.items()
+                          if [char for char in token if char.isalnum()]}
 
-        freq_distributions.append(freq_distribution)
+        freqs_files.append(freqs_file)
 
-    return wordless_misc.merge_dicts(freq_distributions)
+    return wordless_misc.merge_dicts(freqs_files)
 
 @ wordless_misc.log_timing
 def generate_table(main, table):
     files = main.wordless_files.get_selected_files()
 
     if files:
-        freq_distribution = generate_wordlists(main, files)
+        freqs_files = generate_wordlists(main, files)
 
-        if freq_distribution:
+        if freqs_files:
             table.clear_table()
 
             table.settings = main.settings_custom
@@ -499,10 +499,9 @@ def generate_table(main, table):
             table.setSortingEnabled(False)
             table.setUpdatesEnabled(False)
 
-            table.setRowCount(len(freq_distribution))
+            table.setRowCount(len(freqs_files))
 
-            for i, (token, freqs) in enumerate(sorted(freq_distribution.items(),
-                                                      key = wordless_misc.multi_sorting_freqs)):
+            for i, (token, freqs) in enumerate(wordless_sorting.sorted_freqs_files(freqs_files)):
                 # Rank
                 table.set_item_num_int(i, 0, -1)
 
@@ -545,10 +544,10 @@ def generate_plot(main):
     files = main.wordless_files.get_selected_files()
 
     if files:
-        freq_distribution = generate_wordlists(main, files)
+        freqs_files = generate_wordlists(main, files)
 
-        if freq_distribution:
-            wordless_plot.wordless_plot_freq(main, freq_distribution,
+        if freqs_files:
+            wordless_plot.wordless_plot_freq(main, freqs_files,
                                              plot_type = settings['plot_type'],
                                              use_data_file = settings['use_data_file'],
                                              use_pct = settings['use_pct'],

@@ -272,9 +272,7 @@ class Wordless_Table_Data(Wordless_Table):
             rows_dragged.append([])
 
             for col in range(self.columnCount()):
-                item_text = self.item(row, col).text()
-
-                if item_text:
+                if self.item(row, col):
                     rows_dragged[-1].append(self.takeItem(row, col))
                 else:
                     rows_dragged[-1].append(self.cellWidget(row, col))
@@ -291,14 +289,14 @@ class Wordless_Table_Data(Wordless_Table):
             for col, item in enumerate(items):
                 if isinstance(item, QTableWidgetItem):
                     self.setItem(row_dropped + row, col, item)
+
+                    self.item(row, col).setSelected(True)
                 elif isinstance(item, QComboBox):
                     item_combo_box = wordless_box.Wordless_Combo_Box(self.main)
                     item_combo_box.addItems([item.itemText(i) for i in range(item.count())])
                     item_combo_box.setCurrentText(item.currentText())
 
                     self.setCellWidget(row_dropped + row, col, item_combo_box)
-
-                self.item(row, col).setSelected(True)
 
         self.blockSignals(False)
 

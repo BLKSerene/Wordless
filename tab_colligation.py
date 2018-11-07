@@ -262,8 +262,10 @@ def init(main):
             settings['window_right'] = -spin_box_window_right.value()
         else:
             settings['window_right'] = spin_box_window_right.value()
+
         settings['assoc_measure'] = combo_box_assoc_measure.currentText()
 
+        # Use Data Column
         data_col_old = settings['use_data_col']
 
         combo_box_use_data_col.clear()
@@ -273,6 +275,7 @@ def init(main):
                 combo_box_use_data_col.addItem(main.tr(f'Frequency (L{-i})'))
             elif i > 0:
                 combo_box_use_data_col.addItem(main.tr(f'Frequency (R{i})'))
+
         combo_box_use_data_col.addItems([
                                         main.tr('Frequency (Left)'),
                                         main.tr('Frequency (Right)'),
@@ -280,11 +283,10 @@ def init(main):
                                         main.tr('Score (Right)')
                                     ])
 
-        for i in range(combo_box_use_data_col.count()):
-            if combo_box_use_data_col.itemText(i) == data_col_old:
-                combo_box_use_data_col.setCurrentIndex(i)
-
-                break
+        if combo_box_use_data_col.findText(data_col_old) > -1:
+            combo_box_use_data_col.setCurrentText(data_col_old)
+        else:
+            combo_box_use_data_col.setCurrentText(main.settings_default['colligation']['use_data_col'])
 
     def table_settings_changed():
         settings['show_pct'] = checkbox_show_pct.isChecked()
@@ -702,8 +704,8 @@ def generate_collocates(main, files):
 
         return distribution
 
-    freq_distributions = []
-    score_distributions = []
+    freqs_files = []
+    scores_files = []
     search_terms_files = set()
     tokens_tagged_files = []
 
@@ -771,7 +773,7 @@ def generate_collocates(main, files):
 
     # Frequency distribution
     for tokens_tagged in tokens_tagged_files[:-1]:
-        freq_distribution = {}
+        freqs_file = {}
 
         if tokens_tagged:
             if window_size_right:
@@ -788,10 +790,10 @@ def generate_collocates(main, files):
                         if w2 is not None:
                             w2 = w2[1]
 
-                            if (w1, w2) not in freq_distribution:
-                                freq_distribution[(w1, w2)] = [0] * window_size
+                            if (w1, w2) not in freqs_file:
+                                freqs_file[(w1, w2)] = [0] * window_size
 
-                            freq_distribution[(w1, w2)][window_size_left + i] += 1
+                            freqs_file[(w1, w2)][window_size_left + i] += 1
 
             if window_size_left:
                 for ngram in nltk.ngrams(tokens_tagged, window_size_left + 1, pad_right = True):
@@ -807,30 +809,30 @@ def generate_collocates(main, files):
                             else:
                                 w2 = w2[1]
 
-                            if (w2, w1) not in freq_distribution:
-                                freq_distribution[(w2, w1)] = [0] * window_size
+                            if (w2, w1) not in freqs_file:
+                                freqs_file[(w2, w1)] = [0] * window_size
 
-                            freq_distribution[(w2, w1)][window_size_left - 1 - i] += 1
+                            freqs_file[(w2, w1)][window_size_left - 1 - i] += 1
 
-        freq_distributions.append(filter_distribution(freq_distribution))
+        freqs_files.append(filter_distribution(freqs_file))
 
     # Score distribution
     for i, tokens_tagged in enumerate(tokens_tagged_files):
-        freq_distribution_tokens = collections.Counter()
-        score_distribution = {}
+        freqs_files_tokens = collections.Counter()
+        scores_file = {}
 
         if tokens_tagged:
             for token, tag in tokens_tagged:
                 if settings['search_type'] == main.tr('Token'):
                     if settings['show_all'] or token in search_terms_files:
-                        freq_distribution_tokens[token] += 1
+                        freqs_files_tokens[token] += 1
 
-                freq_distribution_tokens[tag] += 1
+                freqs_files_tokens[tag] += 1
 
             if window_size_right:
                 finder_right = nltk.collocations.BigramCollocationFinder.from_words(tokens_tagged, window_size = window_size_right + 1)
 
-                finder_right.word_fd = freq_distribution_tokens.copy()
+                finder_right.word_fd = freqs_files_tokens.copy()
                 finder_right.ngram_fd = collections.Counter()
 
                 for ngram in nltk.ngrams(tokens_tagged, window_size_right + 1, pad_right = True):
@@ -847,15 +849,15 @@ def generate_collocates(main, files):
                             finder_right.ngram_fd[(w1, w2[1])] += 1
 
                 for collocate, score in finder_right.score_ngrams(assoc_measure):
-                    if collocate not in score_distribution:
-                        score_distribution[collocate] = [0, 0]
+                    if collocate not in scores_file:
+                        scores_file[collocate] = [0, 0]
 
-                    score_distribution[collocate][1] = score
+                    scores_file[collocate][1] = score
 
             if window_size_left:
                 finder_left = nltk.collocations.BigramCollocationFinder.from_words(tokens_tagged, window_size = window_size_left + 1)
 
-                finder_left.word_fd = freq_distribution_tokens.copy()
+                finder_left.word_fd = freqs_files_tokens.copy()
                 finder_left.ngram_fd = collections.Counter()
 
                 for ngram in nltk.ngrams(tokens_tagged, window_size_left + 1, pad_right = True):
@@ -874,14 +876,14 @@ def generate_collocates(main, files):
                 for collocate, score in finder_left.score_ngrams(assoc_measure):
                     collocate_reversed = tuple(reversed(collocate))
 
-                    if collocate_reversed not in score_distribution:
-                        score_distribution[collocate_reversed] = [0, 0]
+                    if collocate_reversed not in scores_file:
+                        scores_file[collocate_reversed] = [0, 0]
 
-                    score_distribution[collocate_reversed][0] = score
+                    scores_file[collocate_reversed][0] = score
 
-        score_distributions.append(filter_distribution(score_distribution))
+        scores_files.append(filter_distribution(scores_file))
 
-    return wordless_misc.merge_dicts(freq_distributions), wordless_misc.merge_dicts(score_distributions)
+    return wordless_misc.merge_dicts(freqs_files), wordless_misc.merge_dicts(scores_files)
 
 @ wordless_misc.log_timing
 def generate_table(main, table):
@@ -906,9 +908,9 @@ def generate_table(main, table):
                 window_size_right = 0
             window_size = window_size_left + window_size_right
 
-            freq_distribution, score_distribution = generate_collocates(main, files)
+            freqs_files, scores_files = generate_collocates(main, files)
 
-            if freq_distribution:
+            if freqs_files:
                 table.clear_table()
 
                 table.settings = main.settings_custom
@@ -991,10 +993,9 @@ def generate_table(main, table):
                 table.setSortingEnabled(False)
                 table.setUpdatesEnabled(False)
 
-                table.setRowCount(len(freq_distribution))
+                table.setRowCount(len(freqs_files))
 
-                for i, ((keyword, collocate), scores) in enumerate(sorted(score_distribution.items(),
-                                                                          key = wordless_misc.multi_sorting_scores_directions)):
+                for i, ((keyword, collocate), scores) in enumerate(wordless_sorting.sorted_scores_files_directions(scores_files)):
                     # Rank
                     table.set_item_num_int(i, 0, -1)
 
@@ -1017,7 +1018,7 @@ def generate_table(main, table):
                         table.set_item_num_float(i, col_total_score_right, scores[-1][1])
 
                 for i in range(table.rowCount()):
-                    freq_files_positions = freq_distribution[(table.item(i, 1).text(), table.item(i, 2).text())]
+                    freq_files_positions = freqs_files[(table.item(i, 1).text(), table.item(i, 2).text())]
                     freq_files = numpy.array(freq_files_positions).sum(axis = 1)
                     freq_positions = numpy.array(freq_files_positions).sum(axis = 0)
 
@@ -1028,10 +1029,10 @@ def generate_table(main, table):
 
                         if window_left:
                             table.set_item_num_cumulative(i, cols_freq_left[j],
-                                                          sum(freq_positions[:window_size_left]))
+                                                          sum(freq_file_positions[:window_size_left]))
                         if window_right:
                             table.set_item_num_cumulative(i, cols_freq_right[j],
-                                                          sum(freq_positions[-window_size_right:]))
+                                                          sum(freq_file_positions[-window_size_right:]))
 
                     # Total Frequency
                     for j, freq_position in enumerate(freq_positions):
@@ -1090,22 +1091,22 @@ def generate_plot(main):
                 window_size_left = settings['window_right'] - settings['window_left'] + 1
                 window_size_right = 0
 
-            freq_distribution, score_distribution = generate_collocates(main, files)
+            freqs_files, scores_files = generate_collocates(main, files)
 
-            if main.tr('Frequency') in settings['use_data_col'] and freq_distribution:
+            if main.tr('Frequency') in settings['use_data_col'] and freqs_files:
                 if settings['use_data_col'] == main.tr('Frequency (Left)'):
-                    freq_distribution = {collocate: numpy.array(freqs)[:, :window_size_left].sum(axis = 1) for collocate, freqs in freq_distribution.items()}
+                    freqs_files = {collocate: numpy.array(freqs)[:, :window_size_left].sum(axis = 1) for collocate, freqs in freqs_files.items()}
                 elif settings['use_data_col'] == main.tr('Frequency (Right)'):
-                    freq_distribution = {collocate: numpy.array(freqs)[:, -window_size_right:].sum(axis = 1) for collocate, freqs in freq_distribution.items()}
+                    freqs_files = {collocate: numpy.array(freqs)[:, -window_size_right:].sum(axis = 1) for collocate, freqs in freqs_files.items()}
                 else:
                     dist = int(re.findall(r'[0-9]+', settings['use_data_col'])[0])
 
                     if '(L' in settings['use_data_col']:
-                        freq_distribution = {collocate: numpy.array(freqs)[:, -dist - settings['window_left']] for collocate, freqs in freq_distribution.items()}
+                        freqs_files = {collocate: numpy.array(freqs)[:, -dist - settings['window_left']] for collocate, freqs in freqs_files.items()}
                     else:
-                        freq_distribution = {collocate: numpy.array(freqs)[:, dist - settings['window_left'] - 1] for collocate, freqs in freq_distribution.items()}
+                        freqs_files = {collocate: numpy.array(freqs)[:, dist - settings['window_left'] - 1] for collocate, freqs in freqs_files.items()}
 
-                wordless_plot.wordless_plot_freq(main, freq_distribution,
+                wordless_plot.wordless_plot_freq(main, freqs_files,
                                                  plot_type = settings['plot_type'],
                                                  use_data_file = settings['use_data_file'],
                                                  use_pct = settings['use_pct'],
@@ -1113,13 +1114,13 @@ def generate_plot(main):
                                                  rank_min = settings['rank_min'],
                                                  rank_max = settings['rank_max'],
                                                  label_x = main.tr('Collocates'))
-            elif main.tr('Score') in settings['use_data_col'] and score_distribution:
+            elif main.tr('Score') in settings['use_data_col'] and scores_files:
                 if settings['use_data_col'] == main.tr('Score (Left)'):
-                    score_distribution = {collocate: numpy.array(scores)[:, 0] for collocate, scores in score_distribution.items()}
+                    scores_files = {collocate: numpy.array(scores)[:, 0] for collocate, scores in scores_files.items()}
                 else:
-                    score_distribution = {collocate: numpy.array(scores)[:, 1] for collocate, scores in score_distribution.items()}
+                    scores_files = {collocate: numpy.array(scores)[:, 1] for collocate, scores in scores_files.items()}
 
-                wordless_plot.wordless_plot_score(main, score_distribution,
+                wordless_plot.wordless_plot_score(main, scores_files,
                                                   plot_type = settings['plot_type'],
                                                   use_data_file = settings['use_data_file'],
                                                   rank_min = settings['rank_min'],

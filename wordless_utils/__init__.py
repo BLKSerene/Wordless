@@ -12,5 +12,6 @@ __all__ = [
     'wordless_measures',
     'wordless_misc',
     'wordless_plot',
+    'wordless_sorting',
     'wordless_text'
 ]
