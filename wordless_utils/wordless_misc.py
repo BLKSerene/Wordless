@@ -14,9 +14,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_widgets import wordless_dialog
-from wordless_utils import wordless_text
-
 def log_timing(func):
     def wrapper(widget, *args, **kwargs):
         if isinstance(widget, QMainWindow):
@@ -50,64 +47,6 @@ def log_timing(func):
             main.status_bar.showMessage(f'{message_timing}')
 
     return wrapper
-
-def multi_sorting_freqs(item):
-    keys = []
-
-    for value in item[1]:
-        # Frequency
-        keys.append(-value)
-
-    # Tokens & N-grams
-    keys.append(item[0])
-
-    return keys
-
-def multi_sorting_scores(item):
-    keys = []
-
-    for score in item[1]:
-        # Score
-        keys.append(-score)
-
-    # Keywords
-    keys.append(item[0][0])
-    # Collocates
-    keys.append(item[0][1])
-
-    return keys
-
-def multi_sorting_scores_directions(item):
-    keys = []
-
-    for scores in item[1]:
-        # Score (Right)
-        keys.append(-scores[1])
-        # Score (Left)
-        keys.append(-scores[0])
-
-    # Keywords
-    keys.append(item[0][0])
-    # Collocates
-    keys.append(item[0][1])
-
-    return keys
-
-def multi_sorting_keyness(item):
-    keys = []
-
-    for stats in item[1]:
-        # p-value
-        keys.append(stats[1])
-        # Test Statistics
-        keys.append(stats[0])
-        # Effect Size
-        keys.append(stats[2])
-
-    # Keywords
-    keys.append(item[0])
-
-    return keys
 
 def merge_dicts(dicts_to_merge):
     dict_merged = {}
