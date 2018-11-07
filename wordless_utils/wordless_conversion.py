@@ -53,14 +53,6 @@ def to_encoding_text(main, encoding_code, encoding_lang = None):
             else:
                 return text
 
-def to_word_delimiter(lang_code):
-    if lang_code in ['jpn', 'kor', 'zho-cn', 'zho-tw']:
-        word_delimiter = ''
-    else:
-        word_delimiter = ' '
-
-    return word_delimiter
-
 def to_universal_tagset(main, tagset, tag):
     tagset = main.settings_global['tagsets'][tagset]
 
