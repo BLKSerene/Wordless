@@ -13,6 +13,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+import numpy
+
 from wordless_widgets import *
 from wordless_utils import *
 
@@ -400,7 +402,7 @@ def init(main):
     label_plot_type = QLabel(main.tr('Plot Type:'), main)
     combo_box_plot_type = wordless_box.Wordless_Combo_Box(main)
     label_use_data_file = QLabel(main.tr('Use Data File:'), main)
-    combo_box_use_data_file = wordless_box.Wordless_Combo_Box_Ref_File(main)
+    combo_box_use_data_file = wordless_box.Wordless_Combo_Box_Use_Data_File(main)
     label_use_data_col = QLabel(main.tr('Use Data Column:'), main)
     combo_box_use_data_col = wordless_box.Wordless_Combo_Box(main)
     checkbox_use_pct = QCheckBox(main.tr('Use Percentage Data'), main)
@@ -608,8 +610,8 @@ def init(main):
 
 def generate_keywords(main, files, ref_file):
     texts = []
-    keywords_freqs_files = []
-    keywords_keyness_files = []
+    freqs_files = []
+    keynesses_files = []
 
     settings = main.settings_custom['keywords']
 
@@ -641,7 +643,7 @@ def generate_keywords(main, files, ref_file):
         if not settings['puncs']:
             text.tokens = [token for token in text.tokens if [char for char in token if char.isalnum()]]
 
-        keywords_freqs_files.append(collections.Counter(text.tokens))
+        freqs_files.append(collections.Counter(text.tokens))
 
         if i < len(files):
             texts.append(text)
@@ -651,12 +653,12 @@ def generate_keywords(main, files, ref_file):
 
     text_total = wordless_text.Wordless_Text(main, files[0])
     text_total.tokens = [token for text in texts for token in text.tokens]
-    keywords_freqs_files.insert(-1, collections.Counter(text_total.tokens))
+    freqs_files.insert(-1, collections.Counter(text_total.tokens))
 
     text_total_types = set(text_total.tokens)
 
-    keywords_freqs_files[-1] = {token: freq
-                         for token, freq in keywords_freqs_files[-1].items()
+    freqs_files[-1] = {token: freq
+                         for token, freq in freqs_files[-1].items()
                          if token in text_total_types}
 
     # Test Statistics & Effect Size
@@ -664,22 +666,22 @@ def generate_keywords(main, files, ref_file):
     effect_size_measure = main.settings_global['effect_size_measures'][settings['effect_size_measure']]['func']
 
     for i, text in enumerate(texts + [text_total]):
-        keywords_keyness = {}
+        keynesses_file = {}
 
         len_tokens = len(text.tokens)
 
         for token in set(text.tokens):
-            c11 = keywords_freqs_files[i][token]
-            c12 = keywords_freqs_files[-1].get(token, 0)
+            c11 = freqs_files[i][token]
+            c12 = freqs_files[-1].get(token, 0)
             c21 = len_tokens - c11
             c22 = len_tokens_ref - c12
 
-            keywords_keyness[token] = significance_test(c11, c12, c21, c22) + [effect_size_measure(c11, c12, c21, c22)]
+            keynesses_file[token] = significance_test(c11, c12, c21, c22) + [effect_size_measure(c11, c12, c21, c22)]
 
-        keywords_keyness_files.append(keywords_keyness)
+        keynesses_files.append(keynesses_file)
 
-    return (wordless_misc.merge_dicts(keywords_freqs_files),
-            wordless_misc.merge_dicts(keywords_keyness_files))
+    return (wordless_misc.merge_dicts(freqs_files),
+            wordless_misc.merge_dicts(keynesses_files))
 
 @ wordless_misc.log_timing
 def generate_table(main, table):
@@ -771,11 +773,11 @@ def generate_table(main, table):
             table.setSortingEnabled(False)
             table.setUpdatesEnabled(False)
 
-            keywords_freqs, keywords_keyness = generate_keywords(main, files, ref_file)
+            freqs_files, keynesses_files = generate_keywords(main, files, ref_file)
 
-            table.setRowCount(len(keywords_freqs))
+            table.setRowCount(len(freqs_files))
 
-            for i, (keyword, keyness_files) in enumerate(wordless_sorting.sorted_keyness_files(keywords_keyness)):
+            for i, (keyword, keyness_files) in enumerate(wordless_sorting.sorted_keynesses_files_stats(keynesses_files)):
                 # Rank
                 table.set_item_num_int(i, 0, -1)
 
@@ -790,7 +792,7 @@ def generate_table(main, table):
                     table.set_item_num_float(i, cols_effect_size[j], effect_size)
 
             for i in range(table.rowCount()):
-                freq_files = keywords_freqs[table.item(i, 1).text()]
+                freq_files = freqs_files[table.item(i, 1).text()]
 
                 # Frequency
                 for j, freq in enumerate(freq_files):
@@ -821,6 +823,10 @@ def generate_table(main, table):
 def generate_plot(main):
     settings = main.settings_custom['keywords']
 
+    (col_text_test_stats,
+     col_text_p_value) = main.settings_global['significance_tests'][settings['significance_test']]['cols']
+    col_text_effect_size =  main.settings_global['effect_size_measures'][settings['effect_size_measure']]['col']
+
     if settings['ref_file']:
         files = [file for file in main.wordless_files.get_selected_files() if file['name'] != settings['ref_file']]
 
@@ -831,10 +837,10 @@ def generate_plot(main):
 
                     break
 
-            keywords_freqs, keywords_keyness = generate_keywords(main, files, ref_file)
+            freqs_files, keynesses_files = generate_keywords(main, files, ref_file)
 
-            if main.tr('Frequency') in settings['use_data_col'] and keywords_freqs:
-                wordless_plot.wordless_plot_freqs_ref(main, keywords_freqs,
+            if settings['use_data_col'] == main.tr('Frequency') and freqs_files:
+                wordless_plot.wordless_plot_freqs_ref(main, freqs_files,
                                                       ref_file = ref_file,
                                                       plot_type = settings['plot_type'],
                                                       use_data_file = settings['use_data_file'],
@@ -843,18 +849,27 @@ def generate_plot(main):
                                                       rank_min = settings['rank_min'],
                                                       rank_max = settings['rank_max'],
                                                       label_x = main.tr('Keywords'))
-            elif main.tr('Score') in settings['use_data_col'] and keywords_keyness:
-                if settings['use_data_col'] == main.tr('Score (Left)'):
-                    keywords_keyness = {collocate: numpy.array(scores)[:, 0] for collocate, scores in keywords_keyness.items()}
-                else:
-                    keywords_keyness = {collocate: numpy.array(scores)[:, 1] for collocate, scores in keywords_keyness.items()}
+            elif keynesses_files:
+                if settings['use_data_col'] == col_text_test_stats:
+                    keynesses_files = {collocate: numpy.array(keyness)[:, 0] for collocate, keyness in keynesses_files.items()}
 
-                wordless_plot.wordless_plot_score(main, keywords_keyness,
-                                                  plot_type = settings['plot_type'],
-                                                  use_data_file = settings['use_data_file'],
-                                                  rank_min = settings['rank_min'],
-                                                  rank_max = settings['rank_max'],
-                                                  label_x = main.tr('Keywords'))
+                    label_y = col_text_test_stats
+                elif settings['use_data_col'] == col_text_p_value:
+                    keynesses_files = {collocate: numpy.array(keyness)[:, 1] for collocate, keyness in keynesses_files.items()}
+
+                    label_y = col_text_p_value
+                else:
+                    keynesses_files = {collocate: numpy.array(keyness)[:, 2] for collocate, keyness in keynesses_files.items()}
+
+                    label_y = col_text_effect_size
+
+                wordless_plot.wordless_plot_keynesses(main, keynesses_files,
+                                                      ref_file = ref_file,
+                                                      plot_type = settings['plot_type'],
+                                                      use_data_file = settings['use_data_file'],
+                                                      rank_min = settings['rank_min'],
+                                                      rank_max = settings['rank_max'],
+                                                      label_y = label_y)
         else:
             wordless_dialog.wordless_message_missing_observed_files(main)
     else:

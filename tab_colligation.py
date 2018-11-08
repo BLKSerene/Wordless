@@ -1120,7 +1120,7 @@ def generate_plot(main):
                 else:
                     scores_files = {collocate: numpy.array(scores)[:, 1] for collocate, scores in scores_files.items()}
 
-                wordless_plot.wordless_plot_score(main, scores_files,
+                wordless_plot.wordless_plot_scores(main, scores_files,
                                                   plot_type = settings['plot_type'],
                                                   use_data_file = settings['use_data_file'],
                                                   rank_min = settings['rank_min'],

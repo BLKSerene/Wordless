@@ -6,7 +6,7 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
-def sorted_freqs_files(freqs):
+def sorted_freqs_files(freqs_files):
     def key_freqs_files(item):
         keys = []
 
@@ -19,9 +19,9 @@ def sorted_freqs_files(freqs):
 
         return keys
 
-    return sorted(freqs.items(), key = key_freqs_files)
+    return sorted(freqs_files.items(), key = key_freqs_files)
 
-def sorted_freqs_file(freqs, i_file):
+def sorted_freqs_file(freqs_files, i_file):
     def key_freqs_file(item):
         keys = []
 
@@ -33,9 +33,9 @@ def sorted_freqs_file(freqs, i_file):
 
         return keys
 
-    return sorted(freqs.items(), key = key_freqs_file)
+    return sorted(freqs_files.items(), key = key_freqs_file)
 
-def sorted_scores_files(scores):
+def sorted_scores_files(scores_files):
     def key_scores_files(item):
         keys = []
 
@@ -50,9 +50,9 @@ def sorted_scores_files(scores):
 
         return keys
 
-    return sorted(scores.items(), key = key_scores_files)
+    return sorted(scores_files.items(), key = key_scores_files)
 
-def sorted_scores_file(scores, i_file):
+def sorted_scores_file(scores_files, i_file):
     def key_scores_file(item):
         keys = []
 
@@ -66,9 +66,9 @@ def sorted_scores_file(scores, i_file):
 
         return keys
 
-    return sorted(scores.items(), key = key_scores_file)
+    return sorted(scores_files.items(), key = key_scores_file)
 
-def sorted_scores_files_directions(scores):
+def sorted_scores_files_directions(scores_files_directions):
     def key_scores_files_directions(item):
         keys = []
 
@@ -85,23 +85,58 @@ def sorted_scores_files_directions(scores):
 
         return keys
 
-    return sorted(scores.items(), key = key_scores_files_directions)
+    return sorted(scores_files_directions.items(), key = key_scores_files_directions)
 
-def sorted_keyness_files(keyness):
-    def key_keyness_files(item):
+def sorted_keynesses_files(keynesses_files, sorting_order):
+    def key_keynesses_files(item):
         keys = []
 
-        for stats in item[1]:
-            # p-value
-            keys.append(stats[1])
-            # Test Statistics
-            keys.append(stats[0])
-            # Effect Size
-            keys.append(stats[2])
+        for keyness in item[1]:
+            # Keyness
+            if sorting_order == 'ascending':
+                keys.append(keyness)
+            else:
+                keys.append(-keyness)
 
         # Keywords
         keys.append(item[0])
 
         return keys
 
-    return sorted(keyness.items(), key = key_keyness_files)
+    return sorted(keynesses_files.items(), key = key_keynesses_files)
+
+def sorted_keynesses_file(keynesses_files, i_file, sorting_order):
+    def key_keynesses_file(item):
+        keys = []
+
+        # Keyness
+        if sorting_order == 'ascending':
+            keys.append(item[1][i_file])
+        else:
+            keys.append(-item[1][i_file])
+
+        # Keywords
+        keys.append(item[0])
+
+        return keys
+
+    return sorted(keynesses_files.items(), key = key_keynesses_file)
+
+def sorted_keynesses_files_stats(keynesses_files_stats):
+    def key_keynesses_files_stats(item):
+        keys = []
+
+        for stats in item[1]:
+            # p-value
+            keys.append(stats[1])
+            # Test Statistics
+            keys.append(-stats[0])
+            # Effect Size
+            keys.append(-stats[2])
+
+        # Keywords
+        keys.append(item[0])
+
+        return keys
+
+    return sorted(keynesses_files_stats.items(), key = key_keynesses_files_stats)

@@ -214,22 +214,25 @@ def wordless_plot_freqs_ref(main, freqs_files, ref_file, plot_type,
         matplotlib.pyplot.axis('off')
         matplotlib.pyplot.show()
 
-def wordless_plot_score(main, score_distribution, plot_type,
-                        use_data_file,
-                        rank_min, rank_max, label_x):
-    score_distribution = {' '.join(collocate): scores for collocate, scores in score_distribution.items()}
+def wordless_plot_scores(main, scores_files, plot_type,
+                         use_data_file,
+                         rank_min, rank_max,
+                         label_x):
+    scores_files = {' '.join(collocate): scores for collocate, scores in scores_files.items()}
 
     if plot_type == main.tr('Line Chart'):
-        score_distribution = wordless_sorting.sorted_scores_files(score_distribution)
+        scores_files = wordless_sorting.sorted_scores_files(scores_files)
 
-        collocates = [item[0] for item in score_distribution[rank_min - 1 : rank_max]]
-        scores = [item[1] for item in score_distribution if item[0] in collocates]
+        collocates = [item[0] for item in scores_files[rank_min - 1 : rank_max]]
+        scores = [item[1] for item in scores_files if item[0] in collocates]
 
         for i, file in enumerate(main.wordless_files.get_selected_files()):
-            matplotlib.pyplot.plot([scores_files[i] for scores_files in scores], label = file['name'])
+            matplotlib.pyplot.plot([scores_files[i] for scores_files in scores],
+                                   label = file['name'])
 
         # Total Score
-        matplotlib.pyplot.plot([scores_files[-1] for scores_files in scores], label = main.tr('Total'))
+        matplotlib.pyplot.plot([scores_files[-1] for scores_files in scores],
+                               label = main.tr('Total'))
 
         matplotlib.pyplot.xlabel(label_x)
         matplotlib.pyplot.ylabel(main.tr('Score'))
@@ -246,23 +249,98 @@ def wordless_plot_score(main, score_distribution, plot_type,
                                          max_words = rank_max - rank_min + 1)
 
         if use_data_file == main.tr('Total'):
-            score_distribution = wordless_sorting.sorted_scores_file(score_distribution, -1)
+            scores_files = wordless_sorting.sorted_scores_file(scores_files, -1)
 
-            score_distribution = {collocate: scores[-1]
-                                 for collocate, scores in score_distribution[rank_min - 1 : rank_max]}
+            scores_files = {collocate: scores[-1]
+                                 for collocate, scores in scores_files[rank_min - 1 : rank_max]}
         else:
             for i, file in enumerate(main.wordless_files.get_selected_files()):
                 if file['name'] == use_data_file:
-                    score_distribution = wordless_sorting.sorted_scores_file(score_distribution, i)
+                    scores_files = wordless_sorting.sorted_scores_file(scores_files, i)
 
-                    score_distribution = {collocate: scores[i]
-                                          for collocate, scores in score_distribution[rank_min - 1 : rank_max]}
+                    scores_files = {collocate: scores[i]
+                                          for collocate, scores in scores_files[rank_min - 1 : rank_max]}
 
                     break
 
-        score_distribution = {collocate: score for collocate, score in score_distribution.items() if score}
+        scores_files = {collocate: score for collocate, score in scores_files.items() if score}
 
-        word_cloud.generate_from_frequencies(score_distribution)
+        word_cloud.generate_from_frequencies(scores_files)
+
+        matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
+        matplotlib.pyplot.axis('off')
+        matplotlib.pyplot.show()
+
+def wordless_plot_keynesses(main, keynesses_files, ref_file, plot_type,
+                            use_data_file,
+                            rank_min, rank_max,
+                            label_y):
+    files_selected = main.wordless_files.get_selected_files()
+
+    for file in files_selected:
+        if file['name'] == ref_file['name']:
+            files_selected.remove(ref_file)
+
+            break
+
+    if plot_type == main.tr('Line Chart'):
+        if label_y == main.tr('p-value'):
+            keynesses_files = wordless_sorting.sorted_keynesses_files(keynesses_files, sorting_order = 'ascending')
+        else:
+            keynesses_files = wordless_sorting.sorted_keynesses_files(keynesses_files, sorting_order = 'descending')
+
+        keywords = [item[0] for item in keynesses_files[rank_min - 1 : rank_max]]
+        keynesses = [item[1] for item in keynesses_files if item[0] in keywords]
+
+        for i, file in enumerate(files_selected):
+            matplotlib.pyplot.plot([keynesses_files[i] for keynesses_files in keynesses],
+                                   label = file['name'])
+
+        # Total Score
+        matplotlib.pyplot.plot([keynesses_files[-1] for keynesses_files in keynesses],
+                               label = main.tr('Total'))
+
+        matplotlib.pyplot.xlabel(main.tr('Keywords'))
+        matplotlib.pyplot.ylabel(label_y)
+        matplotlib.pyplot.xticks(range(len(keywords)), keywords, rotation = 90)
+
+        matplotlib.pyplot.grid(True, color = 'silver')
+
+        matplotlib.pyplot.legend()
+        matplotlib.pyplot.show()
+    elif plot_type == main.tr('Word Cloud'):
+        word_cloud = wordcloud.WordCloud(width = QDesktopWidget().width(),
+                                         height = QDesktopWidget().height(),
+                                         background_color = 'white',
+                                         max_words = rank_max - rank_min + 1)
+
+        if use_data_file == main.tr('Total'):
+            if label_y == main.tr('p-value'):
+                keynesses_files = wordless_sorting.sorted_keynesses_file(keynesses_files, -1, sorting_order = 'ascending')
+            else:
+                keynesses_files = wordless_sorting.sorted_keynesses_file(keynesses_files, -1, sorting_order = 'descending')
+
+            keynesses_files = {keyword: keynesses[-1]
+                               for keyword, keynesses in keynesses_files[rank_min - 1 : rank_max]}
+        else:
+            for i, file in enumerate(files_selected):
+                if file['name'] == use_data_file:
+                    if label_y == main.tr('p-value'):
+                        keynesses_files = wordless_sorting.sorted_keynesses_file(keynesses_files, i, sorting_order = 'ascending')
+                    else:
+                        keynesses_files = wordless_sorting.sorted_keynesses_file(keynesses_files, i, sorting_order = 'descending')
+
+                    keynesses_files = {keyword: keynesses[i]
+                                       for keyword, keynesses in keynesses_files[rank_min - 1 : rank_max]}
+
+                    break
+
+        if label_y == main.tr('p-value'):
+            keynesses_files = {keyword: 1 - keyness for keyword, keyness in keynesses_files.items()}
+
+        keynesses_files = {keyword: keyness for keyword, keyness in keynesses_files.items() if keyness}
+
+        word_cloud.generate_from_frequencies(keynesses_files)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
         matplotlib.pyplot.axis('off')
