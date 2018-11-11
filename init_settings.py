@@ -381,18 +381,11 @@ def init_settings_global(main):
         'sentence_tokenizers': {
             'zho_CN': [
                 main.tr('Wordless - Chinese Sentence Tokenizer'),
-                main.tr('HanLP - Standard Tokenizer'),
-                main.tr('HanLP - Basic Tokenizer'),
-                main.tr('HanLP - NLP Tokenizer'),
-                main.tr('HanLP - Speed Tokenizer'),
+                main.tr('HanLP - Sentence Segmenter'),
             ],
             'zho_TW': [
                 main.tr('Wordless - Chinese Sentence Tokenizer'),
-                main.tr('HanLP - Standard Tokenizer'),
-                main.tr('HanLP - Basic Tokenizer'),
-                main.tr('HanLP - NLP Tokenizer'),
-                main.tr('HanLP - Speed Tokenizer'),
-                main.tr('HanLP - Traditional Chinese Tokenizer'),
+                main.tr('HanLP - Sentence Segmenter'),
             ],
             'ces': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
@@ -457,8 +450,7 @@ def init_settings_global(main):
                 main.tr('jieba - Without HMM'),
                 main.tr('HanLP - Standard Tokenizer'),
                 main.tr('HanLP - Basic Tokenizer'),
-                main.tr('HanLP - NLP Tokenizer'),
-                main.tr('HanLP - Speed Tokenizer'),
+                main.tr('HanLP - High-speed Tokenizer'),
                 main.tr('HanLP - URL Tokenizer'),
                 main.tr('HanLP - CRF Lexical Analyzer'),
                 main.tr('HanLP - Perceptron Lexical Analyzer'),
@@ -472,8 +464,7 @@ def init_settings_global(main):
                 main.tr('jieba - Without HMM'),
                 main.tr('HanLP - Standard Tokenizer'),
                 main.tr('HanLP - Basic Tokenizer'),
-                main.tr('HanLP - NLP Tokenizer'),
-                main.tr('HanLP - Speed Tokenizer'),
+                main.tr('HanLP - High-speed Tokenizer'),
                 main.tr('HanLP - Traditional Chinese Tokenizer'),
                 main.tr('HanLP - URL Tokenizer'),
                 main.tr('HanLP - CRF Lexical Analyzer'),
@@ -485,128 +476,146 @@ def init_settings_global(main):
             ],
             'ces': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'dan': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'nld': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'eng': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'est': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'fin': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'fra': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'deu': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'ell': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'ita': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'nor': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'pol': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'por': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'slv': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'spa': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'swe': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
             'tur': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ],
 
             'other': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
             ]
@@ -1113,7 +1122,7 @@ def init_settings_default(main):
             'precision_pct': 2,
             'precision_p_value': 5,
 
-            'font_monospaced': 'Consolas',
+            'font_monospace': 'Consolas',
 
             'style_highlight': 'border: 1px solid Red;'
         },
@@ -1319,117 +1328,189 @@ def init_settings_default(main):
         },
 
         'overview': {
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_case': True,
-            'treat_as_lowercase': True,
-            'lemmatize': False,
-            'filter_stop_words': False,
+            'token_settings': {
+                'words': True,
+                'lowercase': True,
+                'uppercase': True,
+                'title_case': True,
+                'treat_as_lowercase': True,
+                'lemmatize': False,
+                'filter_stop_words': False,
 
-            'nums': True,
-            'puncs': False,
+                'nums': True,
+                'puncs': False
+            },
 
-            'base_sttr': 1000,
+            'generation_settings': {
+                'base_sttr': 1000
+            },
 
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown': True,
+            'table_settings': {
+                'show_pct': True,
+                'show_cumulative': False,
+                'show_breakdown': True
+            }
         },
     
         'concordancer': {
-            'search_term': '',
-            'search_terms': [],
-            'ignore_case': True,
-            'lemmatized_forms': True,
-            'whole_word': True,
-            'regex': False,
-            'multi_search': False,
-    
-            'line_width_char': 80,
-            'line_width_token': 20,
-            'line_width_mode': main.tr('Tokens'),
-    
-            'number_lines': 25,
-            'number_lines_no_limit': True,
-    
-            'punctuations': False,
-    
-            'sort_by': [main.tr('Offset'), main.tr('In Ascending Order')],
-            'multi_sort_by': [[main.tr('Offset'), main.tr('Ascending')]],
-            'multi_sort_colors': [
-                '#bb302d',
-                '#c2691d',
-                '#cbbe01',
-                '#569834',
-                '#428989',
-                '#172e7c',
-                '#811570'
-            ],
-            'multi_sort': False
-        },
-    
-        'wordlist': {
-            'search_results': {
+            'token_settings': {
+                'puncs': False
+            },
+            
+            'search_settings': {
+                'multi_search_mode': False,
                 'search_term': '',
                 'search_terms': [],
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False,
-                'multi_search_mode': False
+                'match_whole_word': False,
+                'use_regex': False
             },
 
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_case': True,
-            'treat_as_lowercase': True,
-            'lemmatize': False,
-            'filter_stop_words': False,
+            'context_settings': {
+                'inclusion': True,
 
-            'nums': True,
-            'puncs': False,
+                'inclusion_multi_search_mode': False,
+                'inclusion_search_term': '',
+                'inclusion_search_terms': [],
 
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown': True,
+                'inclusion_ignore_case': True,
+                'inclusion_match_inflected_forms': True,
+                'inclusion_match_whole_word': False,
+                'inclusion_use_regex': False,
+                
+                'inclusion_context_window_sync': False,
+                'inclusion_context_window_left': -5,
+                'inclusion_context_window_right': 5,
 
-            'plot_type': main.tr('Line Chart'),
-            'use_data_file': main.tr('Total'),
-            'use_pct': False,
-            'use_cumulative': False,
+                'exclusion': True,
 
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
+                'exclusion_multi_search_mode': False,
+                'exclusion_search_term': '',
+                'exclusion_search_terms': [],
 
-            'apply_to': main.tr('Total'),
+                'exclusion_ignore_case': True,
+                'exclusion_match_inflected_forms': True,
+                'exclusion_match_whole_word': False,
+                'exclusion_use_regex': False,
+                
+                'exclusion_context_window_sync': False,
+                'exclusion_context_window_left': -5,
+                'exclusion_context_window_right': 5
+            },
+            
+            'generation_settings': {
+                'width_left_token': 10,
+                'width_left_char': 50,
+                'width_right_token': 10,
+                'width_right_char': 50,
+                'width_unit': main.tr('Token'),
+                
+                'number_lines_no_limit': True,
+                'number_lines': 25
+            },
+
+            'table_settings': {
+                'show_pct': True
+            },
+
+            'plot_settings': {
+                'sort_results_by': main.tr('File')
+            },
+
+            'sorting_settings': {
+                'sorting_rules': [
+                    [main.tr('File'), main.tr('Ascending')],
+                    [main.tr('Token No.'), main.tr('Ascending')]
+                ],
+
+                'highlight_colors': [
+                    # Red
+                    '#F00',
+                    # Orange
+                    '#C2691D',
+                    # Yellow
+                    '#CBBE00',
+                    # Green
+                    '#3F864C',
+                    # Blue
+                    '#264E8C',
+                    # Purple
+                    '#491D76'
+                ]
+            }
+        },
     
-            'freq_no_limit': True,
-            'freq_min': 0,
-            'freq_max': 1000,
+        'wordlist': {
+            'token_settings': {
+                'words': True,
+                'lowercase': True,
+                'uppercase': True,
+                'title_case': True,
+                'treat_as_lowercase': True,
+                'lemmatize': False,
+                'filter_stop_words': False,
 
-            'len_no_limit': True,
-            'len_min': 1,
-            'len_max': 20,
+                'nums': True,
+                'puncs': False
+            },
 
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
+            'table_settings': {
+                'show_pct': True,
+                'show_cumulative': False,
+                'show_breakdown': True
+            },
+
+            'plot_settings': {
+                'plot_type': main.tr('Line Chart'),
+                'use_data_file': main.tr('Total'),
+                'use_pct': False,
+                'use_cumulative': False,
+
+                'rank_no_limit': False,
+                'rank_min': 1,
+                'rank_max': 50
+            },
+
+            'filter_settings': {
+                'apply_to': main.tr('Total'),
+    
+                'freq_no_limit': True,
+                'freq_min': 0,
+                'freq_max': 1000,
+
+                'len_no_limit': True,
+                'len_min': 1,
+                'len_max': 20,
+
+                'files_no_limit': True,
+                'files_min': 1,
+                'files_max': 100
+            },
+
+            'search_results': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': False,
+                'use_regex': False
+            }
         },
     
         'ngram': {
             'search_results': {
+                'multi_search_mode': False,
                 'search_term': '',
                 'search_terms': [],
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False,
-                'multi_search_mode': False
+                'match_whole_word': False,
+                'use_regex': False
             },
             
             'words': True,
@@ -1442,8 +1523,10 @@ def init_settings_default(main):
 
             'nums': True,
             'puncs': False,
-    
-            'show_all': False,
+            
+            'search_settings': True,
+
+            'multi_search_mode': False,
             'search_term': '',
             'search_terms': [],
             'keyword_position_no_limit': True,
@@ -1452,9 +1535,8 @@ def init_settings_default(main):
 
             'ignore_case': True,
             'match_inflected_forms': True,
-            'match_whole_word': True,
+            'match_whole_word': False,
             'use_regex': False,
-            'multi_search_mode': False,
 
             'ngram_size_sync': False,
             'ngram_size_min': 2,
@@ -1491,14 +1573,14 @@ def init_settings_default(main):
 
         'collocation': {
             'search_results': {
+                'multi_search_mode': False,
                 'search_term': '',
                 'search_terms': [],
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False,
-                'multi_search_mode': False
+                'match_whole_word': False,
+                'use_regex': False
             },
 
             'words': True,
@@ -1511,15 +1593,17 @@ def init_settings_default(main):
 
             'nums': True,
             'puncs': False,
-    
+            
+            'search_settings': True,
+
+            'multi_search_mode': False,
             'search_term': '',
             'search_terms': [],
+
             'ignore_case': True,
             'match_inflected_forms': True,
-            'match_whole_word': True,
+            'match_whole_word': False,
             'use_regex': False,
-            'multi_search_mode': False,
-            'show_all': False,
 
             'window_sync': False,
             'window_left': -5,
@@ -1568,32 +1652,33 @@ def init_settings_default(main):
 
         'colligation': {
             'search_results': {
+                'multi_search_mode': False,
                 'search_term': '',
                 'search_terms': [],
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False,
-                'multi_search_mode': False
+                'match_whole_word': False,
+                'use_regex': False
             },
 
             'treat_as_lowercase': True,
             'lemmatize': False,
 
             'puncs': False,
-    
+            
+            'search_settings': True,
+
+            'multi_search_mode': False,
             'search_term': '',
             'search_terms': [],
-            'search_type': main.tr('Token'),
 
             'ignore_case': True,
             'match_inflected_forms': True,
-            'match_whole_word': True,
+            'match_whole_word': False,
             'use_regex': False,
-            'multi_search_mode': False,
-            'show_all': False,
 
+            'keyword_type': main.tr('Token'),
             'window_sync': False,
             'window_left': -5,
             'window_right': 5,
@@ -1637,14 +1722,14 @@ def init_settings_default(main):
 
         'keywords': {
             'search_results': {
+                'multi_search_mode': False,
                 'search_term': '',
                 'search_terms': [],
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False,
-                'multi_search_mode': False
+                'match_whole_word': False,
+                'use_regex': False
             },
 
             'words': True,

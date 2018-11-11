@@ -17,7 +17,7 @@ from wordless_utils import wordless_sorting
 def wordless_plot_freq(main, freqs_files, plot_type,
                        use_data_file, use_pct, use_cumulative,
                        rank_min, rank_max,
-                       label_x,):
+                       label_x):
     if type(list(freqs_files.keys())[0]) != str:
         freqs_files = {' '.join(ngram): freqs for ngram, freqs in freqs_files.items()}
 
@@ -66,8 +66,8 @@ def wordless_plot_freq(main, freqs_files, plot_type,
         matplotlib.pyplot.xlabel(label_x)
         matplotlib.pyplot.xticks(range(len(tokens)), tokens, rotation = 90)
 
+        matplotlib.pyplot.title(main.tr('Frequency Distribution'))
         matplotlib.pyplot.grid(True, color = 'silver')
-
         matplotlib.pyplot.legend()
         matplotlib.pyplot.show()
     elif plot_type == main.tr('Word Cloud'):
@@ -99,6 +99,8 @@ def wordless_plot_freq(main, freqs_files, plot_type,
         word_cloud.generate_from_frequencies(freqs_files)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
+
+        matplotlib.pyplot.title(main.tr('Frequency Distribution'))
         matplotlib.pyplot.axis('off')
         matplotlib.pyplot.show()
 
@@ -181,8 +183,8 @@ def wordless_plot_freqs_ref(main, freqs_files, ref_file, plot_type,
         matplotlib.pyplot.xlabel(label_x)
         matplotlib.pyplot.xticks(range(len(tokens)), tokens, rotation = 90)
 
+        matplotlib.pyplot.title(main.tr('Frequency Distribution'))
         matplotlib.pyplot.grid(True, color = 'silver')
-
         matplotlib.pyplot.legend()
         matplotlib.pyplot.show()
     elif plot_type == main.tr('Word Cloud'):
@@ -211,6 +213,8 @@ def wordless_plot_freqs_ref(main, freqs_files, ref_file, plot_type,
         word_cloud.generate_from_frequencies(freqs_files)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
+
+        matplotlib.pyplot.title(main.tr('Frequency Distribution'))
         matplotlib.pyplot.axis('off')
         matplotlib.pyplot.show()
 
@@ -235,11 +239,12 @@ def wordless_plot_scores(main, scores_files, plot_type,
                                label = main.tr('Total'))
 
         matplotlib.pyplot.xlabel(label_x)
-        matplotlib.pyplot.ylabel(main.tr('Score'))
         matplotlib.pyplot.xticks(range(len(collocates)), collocates, rotation = 90)
 
-        matplotlib.pyplot.grid(True, color = 'silver')
+        matplotlib.pyplot.ylabel(main.tr('Score'))
 
+        matplotlib.pyplot.title(main.tr('Scores'))
+        matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()
         matplotlib.pyplot.show()
     elif plot_type == main.tr('Word Cloud'):
@@ -268,6 +273,8 @@ def wordless_plot_scores(main, scores_files, plot_type,
         word_cloud.generate_from_frequencies(scores_files)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
+
+        matplotlib.pyplot.title(main.tr('Scores'))
         matplotlib.pyplot.axis('off')
         matplotlib.pyplot.show()
 
@@ -301,11 +308,12 @@ def wordless_plot_keynesses(main, keynesses_files, ref_file, plot_type,
                                label = main.tr('Total'))
 
         matplotlib.pyplot.xlabel(main.tr('Keywords'))
+
         matplotlib.pyplot.ylabel(label_y)
         matplotlib.pyplot.xticks(range(len(keywords)), keywords, rotation = 90)
 
+        matplotlib.pyplot.title(main.tr('Keyness'))
         matplotlib.pyplot.grid(True, color = 'silver')
-
         matplotlib.pyplot.legend()
         matplotlib.pyplot.show()
     elif plot_type == main.tr('Word Cloud'):
@@ -343,5 +351,7 @@ def wordless_plot_keynesses(main, keynesses_files, ref_file, plot_type,
         word_cloud.generate_from_frequencies(keynesses_files)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
+
+        matplotlib.pyplot.title(main.tr('Keyness'))
         matplotlib.pyplot.axis('off')
         matplotlib.pyplot.show()

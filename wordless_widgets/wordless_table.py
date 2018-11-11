@@ -16,7 +16,7 @@ from PyQt5.QtWidgets import *
 import numpy
 import openpyxl
 
-from wordless_widgets import wordless_box, wordless_dialog
+from wordless_widgets import wordless_box, wordless_message_box
 from wordless_utils import wordless_conversion
 
 class Wordless_Table_Item(QTableWidgetItem):
@@ -56,6 +56,9 @@ class Wordless_Table(QTableWidget):
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.horizontalHeader().setHighlightSections(False)
         self.verticalHeader().setHighlightSections(False)
+
+        self.setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
+        self.setHorizontalScrollMode(QAbstractItemView.ScrollPerPixel)
 
         if self.header_orientation == 'horizontal':
             self.setStyleSheet(''' 
@@ -162,6 +165,9 @@ class Wordless_Table(QTableWidget):
             self.setColumnCount(header_count)
 
             self.setVerticalHeaderLabels(self.headers)
+
+    def get_selected_rows(self):
+        return list(set([index.row() for index in self.selectedIndexes()]))
 
     def find_row(self, text, fuzzy_matching = False):
         def find(text):
@@ -372,7 +378,7 @@ class Wordless_Table_Data(Wordless_Table):
         self.cols_breakdown = set(self.find_col(cols_breakdown))
 
     def set_item_num(self, row, col, item):
-        item.setFont(QFont(self.main.settings_custom['general']['font_monospaced']))
+        item.setFont(QFont(self.main.settings_custom['general']['font_monospace']))
         item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         super().setItem(row, col, item)
@@ -836,7 +842,7 @@ class Wordless_Table_Data(Wordless_Table):
             self.main.settings_custom['export']['tables_default_path'] = os.path.split(file_path)[0]
             self.main.settings_custom['export']['tables_default_type'] = file_type
 
-            wordless_dialog.wordless_message_export_completed_table(self.main, file_path)
+            wordless_message_box.wordless_message_box_export_completed_table(self.main, file_path)
 
     def clear_table(self, header_count = 1):
         self.clearContents()
@@ -905,153 +911,3 @@ class Wordless_Table_Data_Search(Wordless_Table_Data):
             self.label_number_results.setText(self.tr('Number of Results: 0'))
 
             self.button_search_results.setEnabled(False)
-
-class Wordless_Table_Multi_Sort(Wordless_Table_Data):
-    def __init__(self, main, sort_table, sort_cols):
-        super().__init__(main, headers = ['Column', 'Order'], cols_stretch = ['Order'])
-
-        self.sort_table = sort_table
-        self.sort_cols = sort_cols
-
-        self.button_add = QPushButton('Add')
-        self.button_insert = QPushButton('Insert')
-        self.button_remove = QPushButton('Remove')
-        self.button_reset = QPushButton('Reset')
-    
-        self.button_clear.hide()
-        self.button_export_selected.hide()
-        self.button_export_all.hide()
-    
-        self.button_add.clicked.connect(self.add_row)
-        self.button_insert.clicked.connect(self.insert_row)
-        self.button_remove.clicked.connect(self.remove_row)
-        self.button_reset.clicked.connect(self.reset_table)
-
-        self.itemChanged.connect(self.sorting_item_changed)
-        self.itemSelectionChanged.connect(self.sorting_selection_changed)
-
-        self.reset_table()
-
-        self.setFixedHeight(self.cellWidget(0, 0).sizeHint().height() * 5)
-
-    def sorting_item_changed(self, item = None):
-        super().item_changed()
-
-        if self.rowCount() < len(self.sort_cols):
-            self.button_add.setEnabled(True)
-        else:
-            self.button_add.setEnabled(False)
-
-        if type(item) == QComboBox and item.currentText() not in ['Ascending', 'Descending']:
-            for i in range(self.rowCount()):
-                combobox_current = self.cellWidget(i, 0)
-
-                if item != combobox_current and item.currentText() == combobox_current.currentText():
-                    item.setStyleSheet(self.settings['general']['style_highlight'])
-                    combobox_current.setStyleSheet(self.main.settings['general']['style_highlight'])
-
-                    QMessageBox.warning(self.main,
-                                        'Column Sorted More Than Once',
-                                        'Please refrain from sorting the same column more than once.',
-                                        QMessageBox.Ok)
-
-                    item.setStyleSheet('')
-                    combobox_current.setStyleSheet('')
-
-                    item.setCurrentText(item.old_text)
-                    item.showPopup()
-
-                    return
-
-            item.old_text = item.currentText()
-
-        if type(item) == QComboBox:
-            self.sort()
-
-    def sorting_selection_changed(self):
-        if self.selectedIndexes() and self.rowCount() < len(self.sort_cols):
-            self.button_insert.setEnabled(True)
-        else:
-            self.button_insert.setEnabled(False)
-
-        if self.selectedIndexes() and self.rowCount() > 1:
-            self.button_remove.setEnabled(True)
-        else:
-            self.button_remove.setEnabled(False)
-
-    def update_sort_cols(self, sort_cols_new):
-        sort_cols_old = self.sort_cols
-        self.sort_cols = sort_cols_new
-
-        for i in reversed(range(self.rowCount())):
-            sort_col = self.cellWidget(i, 0)
-
-            if len(sort_cols_new) < len(sort_cols_old):
-                if sort_col.currentText() in sort_cols_new:
-                    for j in reversed(range(sort_col.count())):
-                        if j > len(sort_cols_new) - 1:
-                            sort_col.removeItem(j)
-                else:
-                    self.removeRow(i)
-            elif len(sort_cols_new) > len(sort_cols_old):
-                sort_col.addItems(sort_cols_new[-(len(sort_cols_new) - len(sort_cols_old)):])
-
-        if self.rowCount() == 0:
-            self.reset_table()
-
-    def sort(self):
-        pass
-
-    def _new_row(self):
-        combobox_sort_col = QComboBox(self)
-        combobox_sort_order = QComboBox(self)
-
-        combobox_sort_col.addItems(self.sort_cols)
-        combobox_sort_order.addItems(['Ascending', 'Descending'])
-
-        for i in range(combobox_sort_col.count()):
-            text = combobox_sort_col.itemText(i)
-
-            if text not in [self.cellWidget(j, 0).currentText() for j in range(self.rowCount())]:
-                combobox_sort_col.setCurrentText(text)
-                combobox_sort_col.old_text = text
-
-                break
-
-        combobox_sort_col.currentTextChanged.connect(lambda: self.sorting_item_changed(combobox_sort_col))
-        combobox_sort_order.currentTextChanged.connect(lambda: self.sorting_item_changed(combobox_sort_col))
-
-        return (combobox_sort_col, combobox_sort_order)
-
-    def add_row(self):
-        combobox_sort_col, combobox_sort_order = self._new_row()
-        
-        self.setRowCount(self.rowCount() + 1)
-        self.setCellWidget(self.rowCount() - 1, 0, combobox_sort_col)
-        self.setCellWidget(self.rowCount() - 1, 1, combobox_sort_order)
-
-        self.sort()
-
-    def insert_row(self):
-        row = self.selected_rows()[0]
-
-        combobox_sort_col, combobox_sort_order = self._new_row()
-
-        self.insertRow(row)
-
-        self.setCellWidget(row, 0, combobox_sort_col)
-        self.setCellWidget(row, 1, combobox_sort_order)
-
-        self.sort()
-
-    def remove_row(self):
-        for i in reversed(self.selected_rows()):
-            self.removeRow(i)
-
-        self.sort()
-
-    def reset_table(self):
-        self.clearContents()
-        self.setRowCount(0)
-
-        self.add_row()

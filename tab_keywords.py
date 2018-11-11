@@ -126,7 +126,7 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Search):
 
             self.filter_table()
 
-        self.main.status_bar.showMessage(self.tr('Filtering completed!'))
+        wordless_message.wordless_message_filter_table_done(self.main)
 
 def init(main):
     def load_settings(defaults = False):
@@ -511,7 +511,7 @@ def init(main):
      label_files_max,
      spin_box_files_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100000)
 
-    button_filter_results = QPushButton(main.tr('Filter Results'), main)
+    button_filter_table = QPushButton(main.tr('Filter Results in Table'), main)
 
     combo_box_apply_to.currentTextChanged.connect(filter_settings_changed)
 
@@ -539,7 +539,7 @@ def init(main):
     spin_box_files_min.valueChanged.connect(filter_settings_changed)
     spin_box_files_max.valueChanged.connect(filter_settings_changed)
 
-    button_filter_results.clicked.connect(lambda: table_keywords.update_filters())
+    button_filter_table.clicked.connect(lambda: table_keywords.update_filters())
 
     layout_apply_to = QGridLayout()
     layout_apply_to.addWidget(label_apply_to, 0, 0)
@@ -594,7 +594,7 @@ def init(main):
     group_box_filter_settings.layout().addWidget(label_files_max, 13, 2)
     group_box_filter_settings.layout().addWidget(spin_box_files_max, 13, 3)
 
-    group_box_filter_settings.layout().addWidget(button_filter_results, 14, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(button_filter_table, 14, 0, 1, 4)
 
     tab_keywords.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
     tab_keywords.layout_settings.addWidget(group_box_generation_settings, 1, 0, Qt.AlignTop)
@@ -691,9 +691,9 @@ def generate_table(main, table):
         files = [file for file in main.wordless_files.get_selected_files() if file['name'] != settings['ref_file']]
 
         if files:
-            table.clear_table()
-
             table.settings = main.settings_custom
+
+            table.clear_table()
 
             for file in main.wordless_files.get_selected_files():
                 if file['name'] == settings['ref_file']:
@@ -814,12 +814,17 @@ def generate_table(main, table):
 
             table.item_changed()
 
-            main.status_bar.showMessage(main.tr('Data generation completed!'))
+            wordless_message.wordless_message_generate_table_success(main)
         else:
-            wordless_dialog.wordless_message_missing_observed_files(main)
-    else:
-        wordless_dialog.wordless_message_missing_ref_file(main)
+            wordless_message_box.wordless_message_box_missing_observed_files(main)
 
+            wordless_message.wordless_message_generate_table_error(main)
+    else:
+        wordless_message_box.wordless_message_box_missing_ref_file(main)
+
+        wordless_message.wordless_message_generate_table_error(main)
+
+@ wordless_misc.log_timing
 def generate_plot(main):
     settings = main.settings_custom['keywords']
 
@@ -839,7 +844,7 @@ def generate_plot(main):
 
             freqs_files, keynesses_files = generate_keywords(main, files, ref_file)
 
-            if settings['use_data_col'] == main.tr('Frequency') and freqs_files:
+            if settings['use_data_col'] == main.tr('Frequency'):
                 wordless_plot.wordless_plot_freqs_ref(main, freqs_files,
                                                       ref_file = ref_file,
                                                       plot_type = settings['plot_type'],
@@ -849,7 +854,7 @@ def generate_plot(main):
                                                       rank_min = settings['rank_min'],
                                                       rank_max = settings['rank_max'],
                                                       label_x = main.tr('Keywords'))
-            elif keynesses_files:
+            else:
                 if settings['use_data_col'] == col_text_test_stats:
                     keynesses_files = {collocate: numpy.array(keyness)[:, 0] for collocate, keyness in keynesses_files.items()}
 
@@ -870,9 +875,13 @@ def generate_plot(main):
                                                       rank_min = settings['rank_min'],
                                                       rank_max = settings['rank_max'],
                                                       label_y = label_y)
-        else:
-            wordless_dialog.wordless_message_missing_observed_files(main)
-    else:
-        wordless_dialog.wordless_message_missing_ref_file(main)
 
-    main.status_bar.showMessage(main.tr('Plot generation completed!'))
+            wordless_message.wordless_message_generate_plot_success(main)
+        else:
+            wordless_message_box.wordless_message_box_missing_observed_files(main)
+
+            wordless_message.wordless_message_generate_plot_error(main)
+    else:
+        wordless_message_box.wordless_message_box_missing_ref_file(main)
+
+        wordless_message.wordless_message_generate_plot_error(main)

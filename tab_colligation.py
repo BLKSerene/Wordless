@@ -142,7 +142,7 @@ class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
 
             self.filter_table()
 
-        self.main.status_bar.showMessage(self.tr('Filtering completed!'))
+        wordless_message.wordless_message_filter_table_done(self.main)
 
 def init(main):
     def load_settings(defaults = False):
@@ -156,21 +156,22 @@ def init(main):
 
         checkbox_puncs.setChecked(settings_loaded['puncs'])
 
+        group_box_search_settings.setChecked(settings_loaded['search_settings'])
+
+        checkbox_multi_search_mode.setChecked(settings_loaded['multi_search_mode'])
+
         if not defaults:
             line_edit_search_term.setText(settings_loaded['search_term'])
 
             for search_term in settings_loaded['search_terms']:
                 list_search_terms.add_item(search_term)
 
-        combo_box_search_type.setCurrentText(settings_loaded['search_type'])
-
         checkbox_ignore_case.setChecked(settings_loaded['ignore_case'])
         checkbox_match_inflected_forms.setChecked(settings_loaded['match_inflected_forms'])
         checkbox_match_whole_word.setChecked(settings_loaded['match_whole_word'])
         checkbox_use_regex.setChecked(settings_loaded['use_regex'])
-        checkbox_multi_search_mode.setChecked(settings_loaded['multi_search_mode'])
-        checkbox_show_all.setChecked(settings_loaded['show_all'])
 
+        combo_box_keyword_type.setCurrentText(settings_loaded['keyword_type'])
         checkbox_window_sync.setChecked(settings_loaded['window_sync'])
         if settings_loaded['window_left'] < 0:
             spin_box_window_left.setPrefix('L')
@@ -235,35 +236,40 @@ def init(main):
         settings['puncs'] = checkbox_puncs.isChecked()
 
     def search_settings_changed():
+        settings['search_settings'] = group_box_search_settings.isChecked()
+
+        settings['multi_search_mode'] = checkbox_multi_search_mode.isChecked()
         settings['search_term'] = line_edit_search_term.text()
         settings['search_terms'] = list_search_terms.get_items()
-        settings['search_type'] = combo_box_search_type.currentText()
 
         settings['ignore_case'] = checkbox_ignore_case.isChecked()
         settings['match_inflected_forms'] = checkbox_match_inflected_forms.isChecked()
         settings['match_whole_word'] = checkbox_match_whole_word.isChecked()
         settings['use_regex'] = checkbox_use_regex.isChecked()
-        settings['multi_search_mode'] = checkbox_multi_search_mode.isChecked()
-        settings['show_all'] = checkbox_show_all.isChecked()
-
-        if not settings['show_all']:
-            if settings['search_type'] == main.tr('Token'):
-                checkbox_match_inflected_forms.setEnabled(True)
-            else:
-                checkbox_match_inflected_forms.setEnabled(False)
 
     def generation_settings_changed():
+        settings['keyword_type'] = combo_box_keyword_type.currentText()
+
         settings['window_sync'] = checkbox_window_sync.isChecked()
+
         if spin_box_window_left.prefix() == 'L':
             settings['window_left'] = -spin_box_window_left.value()
         else:
             settings['window_left'] = spin_box_window_left.value()
+            
         if spin_box_window_right.prefix() == 'L':
             settings['window_right'] = -spin_box_window_right.value()
         else:
             settings['window_right'] = spin_box_window_right.value()
 
         settings['assoc_measure'] = combo_box_assoc_measure.currentText()
+
+        # Match Inflected Forms
+        if settings['search_settings']:
+            if settings['keyword_type'] == main.tr('Token'):
+                checkbox_match_inflected_forms.setEnabled(True)
+            else:
+                checkbox_match_inflected_forms.setEnabled(False)
 
         # Use Data Column
         data_col_old = settings['use_data_col']
@@ -395,38 +401,24 @@ def init(main):
     group_box_search_settings = QGroupBox(main.tr('Search Settings'), main)
 
     (label_search_term,
-     checkbox_show_all,
+     checkbox_multi_search_mode,
      line_edit_search_term,
      list_search_terms,
+
      checkbox_ignore_case,
      checkbox_match_inflected_forms,
      checkbox_match_whole_word,
-     checkbox_use_regex,
-     checkbox_multi_search_mode) = wordless_widgets.wordless_widgets_search(main)
+     checkbox_use_regex) = wordless_widgets.wordless_widgets_search(main)
 
-    label_search_type = QLabel(main.tr('Search Type:'), main)
-    combo_box_search_type = wordless_box.Wordless_Combo_Box(main)
-
-    combo_box_search_type.addItems([
-        main.tr('Token'),
-        main.tr('Part of Speech')
-    ])
-
+    checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
     line_edit_search_term.textChanged.connect(search_settings_changed)
     line_edit_search_term.returnPressed.connect(table_colligation.button_generate_table.click)
     list_search_terms.itemChanged.connect(search_settings_changed)
-    combo_box_search_type.currentTextChanged.connect(search_settings_changed)
 
     checkbox_ignore_case.stateChanged.connect(search_settings_changed)
     checkbox_match_inflected_forms.stateChanged.connect(search_settings_changed)
     checkbox_match_whole_word.stateChanged.connect(search_settings_changed)
     checkbox_use_regex.stateChanged.connect(search_settings_changed)
-    checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
-    checkbox_show_all.stateChanged.connect(search_settings_changed)
-
-    layout_show_all = QGridLayout()
-    layout_show_all.addWidget(label_search_term, 0, 0, Qt.AlignLeft)
-    layout_show_all.addWidget(checkbox_show_all, 0, 1, Qt.AlignRight)
 
     layout_search_terms = QGridLayout()
     layout_search_terms.addWidget(list_search_terms, 0, 0, 6, 1)
@@ -438,20 +430,21 @@ def init(main):
     layout_search_terms.addWidget(list_search_terms.button_export, 5, 1)
 
     group_box_search_settings.setLayout(QGridLayout())
-    group_box_search_settings.layout().addLayout(layout_show_all, 0, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(label_search_term, 0, 0)
+    group_box_search_settings.layout().addWidget(checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
     group_box_search_settings.layout().addWidget(line_edit_search_term, 1, 0, 1, 2)
     group_box_search_settings.layout().addLayout(layout_search_terms, 2, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(label_search_type, 3, 0)
-    group_box_search_settings.layout().addWidget(combo_box_search_type, 3, 1)
 
     group_box_search_settings.layout().addWidget(checkbox_ignore_case, 4, 0, 1, 2)
     group_box_search_settings.layout().addWidget(checkbox_match_inflected_forms, 5, 0, 1, 2)
     group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 6, 0, 1, 2)
     group_box_search_settings.layout().addWidget(checkbox_use_regex, 7, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_multi_search_mode, 8, 0, 1, 2)
 
     # Generation Settings
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'))
+
+    label_keyword_type = QLabel(main.tr('Keyword Type:'), main)
+    combo_box_keyword_type = wordless_box.Wordless_Combo_Box(main)
 
     label_window = QLabel(main.tr('Collocational Window:'), main)
     (checkbox_window_sync,
@@ -463,22 +456,34 @@ def init(main):
     label_assoc_measure = QLabel(main.tr('Association Measure:'), main)
     combo_box_assoc_measure = QComboBox(main)
 
+    combo_box_keyword_type.addItems([
+        main.tr('Token'),
+        main.tr('Part of Speech')
+    ])
     combo_box_assoc_measure.addItems(main.settings_global['assoc_measures'])
 
+    combo_box_keyword_type.currentTextChanged.connect(generation_settings_changed)
     checkbox_window_sync.stateChanged.connect(generation_settings_changed)
     spin_box_window_left.valueChanged.connect(generation_settings_changed)
     spin_box_window_right.valueChanged.connect(generation_settings_changed)
     combo_box_assoc_measure.currentTextChanged.connect(generation_settings_changed)
 
+    layout_keyword_type = QGridLayout()
+    layout_keyword_type.addWidget(label_keyword_type, 0, 0)
+    layout_keyword_type.addWidget(combo_box_keyword_type, 0, 1)
+
+    layout_keyword_type.setColumnStretch(1, 1)
+
     group_box_generation_settings.setLayout(QGridLayout())
-    group_box_generation_settings.layout().addWidget(label_window, 0, 0, 1, 3)
-    group_box_generation_settings.layout().addWidget(checkbox_window_sync, 0, 3)
-    group_box_generation_settings.layout().addWidget(label_window_left, 1, 0)
-    group_box_generation_settings.layout().addWidget(spin_box_window_left, 1, 1)
-    group_box_generation_settings.layout().addWidget(label_window_right, 1, 2)
-    group_box_generation_settings.layout().addWidget(spin_box_window_right, 1, 3)
-    group_box_generation_settings.layout().addWidget(label_assoc_measure, 2, 0, 1, 4)
-    group_box_generation_settings.layout().addWidget(combo_box_assoc_measure, 3, 0, 1, 4)
+    group_box_generation_settings.layout().addLayout(layout_keyword_type, 0, 0, 1, 4)
+    group_box_generation_settings.layout().addWidget(label_window, 1, 0, 1, 3)
+    group_box_generation_settings.layout().addWidget(checkbox_window_sync, 1, 3)
+    group_box_generation_settings.layout().addWidget(label_window_left, 2, 0)
+    group_box_generation_settings.layout().addWidget(spin_box_window_left, 2, 1)
+    group_box_generation_settings.layout().addWidget(label_window_right, 2, 2)
+    group_box_generation_settings.layout().addWidget(spin_box_window_right, 2, 3)
+    group_box_generation_settings.layout().addWidget(label_assoc_measure, 3, 0, 1, 4)
+    group_box_generation_settings.layout().addWidget(combo_box_assoc_measure, 4, 0, 1, 4)
 
     # Table Settings
     group_box_table_settings = QGroupBox(main.tr('Table Settings'))
@@ -487,8 +492,8 @@ def init(main):
      checkbox_show_cumulative,
      checkbox_show_breakdown_file) = wordless_widgets.wordless_widgets_table(main, table_colligation)
 
-    checkbox_show_breakdown_file.setText('Show Breakdown by File')
-    checkbox_show_breakdown_position = QCheckBox('Show Breakdown by Span Position', main)
+    checkbox_show_breakdown_file.setText(main.tr('Show Breakdown by File'))
+    checkbox_show_breakdown_position = QCheckBox(main.tr('Show Breakdown by Span Position'), main)
 
     checkbox_show_pct.stateChanged.connect(table_settings_changed)
     checkbox_show_cumulative.stateChanged.connect(table_settings_changed)
@@ -610,7 +615,7 @@ def init(main):
      label_files_max,
      spin_box_files_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100000)
 
-    button_filter_results = QPushButton(main.tr('Filter Results'), main)
+    button_filter_table = QPushButton(main.tr('Filter Results in Table'), main)
 
     combo_box_apply_to.currentTextChanged.connect(filter_settings_changed)
 
@@ -632,7 +637,7 @@ def init(main):
     spin_box_files_min.valueChanged.connect(filter_settings_changed)
     spin_box_files_max.valueChanged.connect(filter_settings_changed)
 
-    button_filter_results.clicked.connect(lambda: table_colligation.update_filters())
+    button_filter_table.clicked.connect(lambda: table_colligation.update_filters())
 
     layout_apply_to = QGridLayout()
     layout_apply_to.addWidget(label_apply_to, 0, 0)
@@ -680,7 +685,7 @@ def init(main):
     group_box_filter_settings.layout().addWidget(label_files_max, 11, 2)
     group_box_filter_settings.layout().addWidget(spin_box_files_max, 11, 3)
 
-    group_box_filter_settings.layout().addWidget(button_filter_results, 12, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(button_filter_table, 12, 0, 1, 4)
 
     tab_colligation.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
     tab_colligation.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
@@ -727,7 +732,7 @@ def generate_collocates(main, files):
     for i, file in enumerate(files):
         text = wordless_text.Wordless_Text(main, file)
 
-        tokens_tagged = wordless_text.wordless_pos_tag(main, text.text, text.lang_code)
+        tokens_tagged = wordless_text.wordless_pos_tag(main, '\n'.join(text.paras), text.lang_code)
 
         if settings['treat_as_lowercase']:
             text.tokens = [token.lower() for token in text.tokens]
@@ -754,19 +759,19 @@ def generate_collocates(main, files):
                 search_terms = [settings['search_term']]
 
             if settings['search_type'] == main.tr('Token'):
-                search_terms_files |= text.match_tokens(search_terms,
-                                                        settings['ignore_case'],
-                                                        settings['match_inflected_forms'],
-                                                        settings['match_whole_word'],
-                                                        settings['use_regex'])
+                search_terms_files |= text.match_search_terms(search_terms,
+                                                              settings['ignore_case'],
+                                                              settings['match_inflected_forms'],
+                                                              settings['match_whole_word'],
+                                                              settings['use_regex'])
             else:
                 text.tokens = numpy.array(tokens_tagged)[:, 1]
 
-                search_terms_files |= text.match_tokens(search_terms,
-                                                        settings['ignore_case'],
-                                                        False,
-                                                        settings['match_whole_word'],
-                                                        settings['use_regex'])
+                search_terms_files |= text.match_search_terms(search_terms,
+                                                              settings['ignore_case'],
+                                                              False,
+                                                              settings['match_whole_word'],
+                                                              settings['use_regex'])
 
         tokens_tagged_files.append(tokens_tagged)
     tokens_tagged_files.append([token_tagged for tokens_tagged in tokens_tagged_files for token_tagged in tokens_tagged])
@@ -911,9 +916,9 @@ def generate_table(main, table):
             freqs_files, scores_files = generate_collocates(main, files)
 
             if freqs_files:
-                table.clear_table()
-
                 table.settings = main.settings_custom
+
+                table.clear_table()
 
                 # Insert columns
                 for i, file in enumerate(files):
@@ -1062,14 +1067,20 @@ def generate_table(main, table):
                 table.update_items_width()
 
                 table.item_changed()
-            else:
-                wordless_dialog.wordless_message_no_results_table(main)
-        else:
-            wordless_dialog.wordless_message_empty_search_term(main)
-    else:
-        wordless_dialog.wordless_message_no_files_selected(main)
 
-    main.status_bar.showMessage(main.tr('Data generation completed!'))
+                wordless_message.wordless_message_generate_table_success(main)
+            else:
+                wordless_message_box.wordless_message_box_no_results_table(main)
+
+                wordless_message.wordless_message_generate_table_error(main)
+        else:
+            wordless_message_box.wordless_message_box_empty_search_term(main)
+
+            wordless_message.wordless_message_generate_table_error(main)
+    else:
+        wordless_message_box.wordless_message_box_no_files_selected(main)
+
+        wordless_message.wordless_message_generate_table_error(main)
 
 @ wordless_misc.log_timing
 def generate_plot(main):
@@ -1126,11 +1137,17 @@ def generate_plot(main):
                                                   rank_min = settings['rank_min'],
                                                   rank_max = settings['rank_max'],
                                                   label_x = main.tr('Collocates'))
-            else:
-                wordless_dialog.wordless_message_no_results_plot(main)
-        else:
-            wordless_dialog.wordless_message_empty_search_term(main)
-    else:
-        wordless_dialog.wordless_message_no_files_selected(main)
 
-    main.status_bar.showMessage(main.tr('Plot generation completed!'))
+                wordless_message.wordless_message_generate_plot_success(main)
+            else:
+                wordless_message_box.wordless_message_box_no_results_plot(main)
+
+                wordless_message.wordless_message_generate_plot_error(main)
+        else:
+            wordless_message_box.wordless_message_box_empty_search_term(main)
+
+            wordless_message.wordless_message_generate_plot_error(main)
+    else:
+        wordless_message_box.wordless_message_box_no_files_selected(main)
+
+        wordless_message.wordless_message_generate_plot_error(main)

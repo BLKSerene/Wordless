@@ -7,6 +7,7 @@
 #
 
 import collections
+import copy
 import json
 import re
 
@@ -16,6 +17,7 @@ import jieba
 import jieba.posseg
 import jpype
 import nltk
+import nltk.tokenize.nist
 
 from wordless_utils import wordless_conversion
 
@@ -42,46 +44,33 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'Defa
             sentences.extend(nltk.sent_tokenize(line, language = lang_text))
         # Chinese
         elif sentence_tokenizer == main.tr('Wordless - Chinese Sentence Tokenizer'):
-            sentence_start = 0
+            i_sentence = 0
 
             for i, char in enumerate(line):
-                if i >= sentence_start and char in ['。', '！', '？', '!', '?']:
-                    for j, char_next in enumerate(line):
-                        if j > i and char_next not in ['。', '！', '？', '!', '?', '’', '”', '）', ')']:
-                            sentences.append(line[sentence_start : j])
+                if i >= i_sentence and char in ['。', '！', '？', '!', '?']:
+                    for j, char in enumerate(line):
+                        if j > i and char not in ['。', '！', '？', '!', '?', '’', '”', '）', ')']:
+                            sentences.append(line[i_sentence : j])
 
-                            sentence_start = j
+                            i_sentence = j
 
                             break
 
-            if sentence_start <= len(line):
-                sentences.append(line[sentence_start:])
+            if i_sentence <= len(line):
+                sentences.append(line[i_sentence:])
 
-        elif sentence_tokenizer == main.tr('HanLP - Standard Tokenizer'):
-            standard_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.StandardTokenizer')
+        elif sentence_tokenizer == main.tr('HanLP - Sentence Segmenter'):
+            sentences_util = jpype.JClass('com.hankcs.hanlp.utility.SentencesUtil')
 
-            for sentence in standard_tokenizer.seg2sentence(line):
-                sentences.append(''.join([term.word for term in sentence]))
-        elif sentence_tokenizer == main.tr('HanLP - Basic Tokenizer'):
-            basic_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.BasicTokenizer')
-
-            for sentence in basic_tokenizer.seg2sentence(line):
-                sentences.append(''.join([term.word for term in sentence]))
-        elif sentence_tokenizer == main.tr('HanLP - NLP Tokenizer'):
-            nlp_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.NLPTokenizer')
-
-            for sentence in nlp_tokenizer.seg2sentence(line):
-                sentences.append(''.join([term.word for term in sentence]))
-        elif sentence_tokenizer == main.tr('HanLP - Speed Tokenizer'):
-            speed_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.SpeedTokenizer')
-
-            for sentence in speed_tokenizer.seg2sentence(line):
-                sentences.append(''.join([term.word for term in sentence]))
+            sentences = sentences_util.toSentenceList(line, shortest = False)
 
     return sentences
 
-def wordless_word_tokenize(main, text, lang_code, word_tokenizer = 'Default'):
+def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'Default'):
     tokens = []
+
+    if type(sentences) == str:
+        sentences = [sentences]
 
     if lang_code not in main.settings_global['word_tokenizers']:
         lang_code = 'other'
@@ -89,91 +78,97 @@ def wordless_word_tokenize(main, text, lang_code, word_tokenizer = 'Default'):
     if word_tokenizer == 'Default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang_code]
 
-    sentences = wordless_sentence_tokenize(main, text, lang_code)
-
     # English
     if word_tokenizer == main.tr('NLTK - Treebank Tokenizer'):
+        treebank_tokenizer = nltk.TreebankWordTokenizer()
+
         for sentence in sentences:
-            tokens.extend(nltk.TreebankWordTokenizer().tokenize(sentence))
-    elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
-        for sentence in sentences:
-            tokens.extend(nltk.ToktokTokenizer().tokenize(sentence))
+            tokens.extend(treebank_tokenizer.tokenize(sentence))
     elif word_tokenizer == main.tr('NLTK - Twitter Tokenizer'):
+        tweet_tokenizer = nltk.TweetTokenizer()
+
         for sentence in sentences:
-            tokens.extend(nltk.casual_tokenize(sentence))
+            tokens.extend(tweet_tokenizer.tokenize(sentence))
+    elif word_tokenizer == main.tr('NLTK - NIST Tokenizer'):
+        nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
+
+        for sentence in sentences:
+            tokens.extend(nist_tokenizer.tokenize(sentence))
+    elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
+        toktok_tokenizer = nltk.ToktokTokenizer()
+
+        for sentence in sentences:
+            tokens.extend(toktok_tokenizer.tokenize(sentence))
     elif word_tokenizer == main.tr('NLTK - Word Punctuation Tokenizer'):
+        word_punct_tokenizer = nltk.WordPunctTokenizer()
+
         for sentence in sentences:
-            tokens = nltk.wordpunct_tokenize(text)
+            tokens.extend(nltk.word_punct_tokenizer(sentence))
     elif word_tokenizer == main.tr('PyDelphin - Repp Tokenizer'):
         repp_tokenizer = delphin.repp.REPP.from_config('tokenization/repp_tokenizer/erg/repp.set')
 
         for sentence in sentences:
-            tokens.extend([token.form for token in repp_tokenizer.tokenize(text).tokens])
+            tokens.extend([token.form for token in repp_tokenizer.tokenize(sentence).tokens])
     # Chinese
     elif word_tokenizer == main.tr('jieba - With HMM'):
         for sentence in sentences:
-            tokens = jieba.cut(text)
+            tokens.extend(jieba.cut(sentence))
     elif word_tokenizer == main.tr('jieba - Without HMM'):
         for sentence in sentences:
-            tokens = jieba.cut(text, HMM = False)
+            tokens.extend(jieba.cut(sentence, HMM = False))
     elif word_tokenizer == main.tr('HanLP - Standard Tokenizer'):
         standard_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.StandardTokenizer')
 
         for sentence in sentences:
-            tokens = [token.word for token in standard_tokenizer.segment(text)]
+            tokens.extend([token.word for token in standard_tokenizer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - Basic Tokenizer'):
         basic_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.BasicTokenizer')
 
         for sentence in sentences:
-            tokens = [token.word for token in basic_tokenizer.segment(text)]
-    elif word_tokenizer == main.tr('HanLP - NLP Tokenizer'):
-        nlp_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.NLPTokenizer')
-
-        for sentence in sentences:
-            tokens = [token.word for token in nlp_tokenizer.segment(text)]
-    elif word_tokenizer == main.tr('HanLP - Speed Tokenizer'):
+            tokens.extend([token.word for token in basic_tokenizer.segment(sentence)])
+    elif word_tokenizer == main.tr('HanLP - High-speed Tokenizer'):
         speed_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.SpeedTokenizer')
 
         for sentence in sentences:
-            tokens = [token.word for token in speed_tokenizer.segment(text)]
+            tokens.extend([token.word for token in speed_tokenizer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - Traditional Chinese Tokenizer'):
         zh_tw_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.TraditionalChineseTokenizer')
 
         for sentence in sentences:
-            tokens = [token.word for token in zh_tw_tokenizer.segment(text)]
+            tokens.extend([token.word for token in zh_tw_tokenizer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - URL Tokenizer'):
         url_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.URLTokenizer')
 
         for sentence in sentences:
-            tokens = [token.word for token in url_tokenizer.segment(text)]
+            tokens.extend([token.word for token in url_tokenizer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - CRF Lexical Analyzer'):
         crf_tokenizer = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
 
         for sentence in sentences:
-            tokens = [token for token in crf_tokenizer.segment(text)]
+            tokens.extend([token for token in crf_tokenizer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - Perceptron Lexical Analyzer'):
         perceptron_tokenizer = jpype.JClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
 
         for sentence in sentences:
-            tokens = [token for token in perceptron_tokenizer.segment(text)]
+            tokens.extend([token for token in perceptron_tokenizer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - Dijkstra Segmenter'):
         DijkstraSegment = jpype.JClass('com.hankcs.hanlp.seg.Dijkstra.DijkstraSegment')
         dijkstra_tokenizer = DijkstraSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
 
         for sentence in sentences:
-            tokens = [token.word for token in dijkstra_tokenizer.seg(text)]
+            tokens.extend([token.word for token in dijkstra_tokenizer.seg(sentence)])
     elif word_tokenizer == main.tr('HanLP - N-shortest Path Segmenter'):
         NShortSegment = jpype.JClass('com.hankcs.hanlp.seg.NShort.NShortSegment')
         nshortest_tokenizer = NShortSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
 
         for sentence in sentences:
-            tokens = [token.word for token in nshortest_tokenizer.seg(text)]
+            tokens.extend([token.word for token in nshortest_tokenizer.seg(sentence)])
     elif word_tokenizer == main.tr('HanLP - Viterbi Segmenter'):
         ViterbiSegment = jpype.JClass('com.hankcs.hanlp.seg.Viterbi.ViterbiSegment')
         viterbi_tokenizer = ViterbiSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
 
         for sentence in sentences:
-            tokens = [token.word for token in viterbi_tokenizer.seg(text)]
+            tokens.extend([token.word for token in viterbi_tokenizer.seg(sentence)])
     elif word_tokenizer == main.tr('Wordless - Single Character Splitter'):
         tokens = [char for sentence in sentences for char in sentence]
 
@@ -223,9 +218,6 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'Default'):
     if tokens and lang_code in main.settings_global['lemmatizers']:
         tokens = list(tokens)
 
-        len_tokens = [len(token.split()) for token in tokens]
-        tokens = [token for ngram in tokens for token in ngram.split()]
-
         if lemmatizer == 'Default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang_code]
 
@@ -267,9 +259,6 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'Default'):
                         pass
 
             lemmas = [lemma_list.get(token, token) for token in tokens]
-
-        lemmas = [wordless_conversion.to_word_delimiter(lang_code).join([lemmas.pop(0) for i in range(len_token)])
-                  for len_token in len_tokens]
     else:
         lemmas = tokens
 
@@ -318,160 +307,124 @@ def wordless_filter_stop_words(main, items, lang_code):
     else:
         return items
 
-# Overload to fix a bug for left_context
-def find_concordance(self, word, width=80, lines=25):
-    """
-    Find the concordance lines given the query word.
-    """
-    half_width = (width - len(word) - 2) // 2
-    context = width // 4  # approx number of words of context
+class Wordless_Text():
+    def __init__(self, main, file, merge_puncs = False):
+        self.main = main
+        self.lang_code = file['lang_code']
+        self.word_divider = file['word_divider']
 
-    # Find the instances of the word to create the ConcordanceLine
-    concordance_list = []
-    offsets = self.offsets(word)
-    if offsets:
-        for i in offsets:
-            query_word = self._tokens[i]
-            # Find the context of query word.
-            left_context = self._tokens[max(0, i-context):i]
-            right_context = self._tokens[i+1:i+context]
-            # Create the pretty lines with the query_word in the middle.
-            left_print= ' '.join(left_context)[-half_width:]
-            right_print = ' '.join(right_context)[:half_width]
-            # The WYSIWYG line of the concordance.
-            line_print = ' '.join([left_print, query_word, right_print])
-            # Create the ConcordanceLine
-            concordance_line = nltk.text.ConcordanceLine(left_context, query_word,
-                                                         right_context, i,
-                                                         left_print, right_print, line_print)
-            concordance_list.append(concordance_line)
-    return concordance_list[:lines]
-
-nltk.ConcordanceIndex.find_concordance = find_concordance
-
-class Wordless_Text(nltk.Text):
-    def __init__(self, main, file):
-        text = ''
-        tokens = []
+        self.paras = []
+        self.para_offsets = []
+        self.sentences = []
+        self.sentence_offsets = []
+        self.tokens = []
 
         with open(file['path'], 'r', encoding = file['encoding_code']) as f:
             for line in f:
                 if file['ext_code'] in ['.txt']:
-                    line_text = line.rstrip()
+                    text = line.rstrip()
                 elif file['ext_code'] in ['.htm', '.html']:
                     soup = BeautifulSoup(line.rstrip(), 'lxml')
-                    line_text = soup.get_text()
+                    text = soup.get_text()
 
-                text += f'{line_text}\n'
-                tokens.extend(wordless_word_tokenize(main, line_text, file['lang_code']))
+                if text:
+                    self.paras.append(text)
+                    self.para_offsets.append(len(self.tokens))
 
-        super().__init__(tokens)
+                    for sentence in wordless_sentence_tokenize(main, text, file['lang_code']):
+                        self.sentences.append(sentence)
+                        self.sentence_offsets.append(len(self.tokens))
 
-        self.main = main
-        self.text = text
-        self.lang_code = file['lang_code']
-        self.word_delimiter = file['word_delimiter']
+                        self.tokens.extend(wordless_word_tokenize(main, sentence, file['lang_code']))
 
-    def match_tokens(self, search_terms,
-                     ignore_case, match_inflected_forms, match_whole_word, use_regex):
-        tokens_matched = set()
+    def match_search_terms(self, search_terms, puncs,
+                           ignore_case, match_inflected_forms, match_whole_word, use_regex):
+        ngrams_matched = set()
 
-        if type(self.tokens[0]) in [list, tuple, set]:
-            tokens = set([wordless_conversion.to_word_delimiter(self.lang_code).join(ngram) for ngram in self.tokens])
+        if puncs:
+            tokens_text = self.tokens.copy()
         else:
-            tokens = set(self.tokens)
+            tokens_text = [token for token in self.tokens if [char for char in token if char.isalnum()]]
+
+        search_terms = [wordless_word_tokenize(self.main, search_term, self.lang_code)
+                        for search_term in search_terms]
 
         if use_regex:
-            for search_term in search_terms:
+            for ngram_search in search_terms:
+                len_ngram_search = len(ngram_search)
+
                 if match_whole_word:
-                    search_term = fr'\b{search_term}\b'
+                    ngram_search = [fr'(^|\s){token}(\s|$)' for token in ngram_search]
 
                 if ignore_case:
-                    tokens_matched |= set([token for token in tokens if re.search(search_term, token, re.IGNORECASE)])
+                    flags = re.IGNORECASE
                 else:
-                    tokens_matched |= set([token for token in tokens if re.search(search_term, token)])
+                    flags = 0
+
+                for ngram_text in nltk.ngrams(tokens_text, len_ngram_search):
+                    ngram_matched = True
+
+                    for token_search, token_text in zip(ngram_search, ngram_text):
+                        if not re.search(token_search, token_text, flags = flags):
+                            ngram_matched = False
+
+                            break
+
+                    if ngram_matched:
+                        ngrams_matched.add(ngram_text)
         else:
-            tokens_matched |= set(search_terms)
+            for ngram_search in search_terms:
+                len_ngram_search = len(ngram_search)
 
-            for token_matched in tokens_matched.copy():
-                token_matched = re.escape(token_matched)
+                ngram_search = [re.escape(token) for token in ngram_search]
 
                 if match_whole_word:
-                    token_matched = fr'\b{token_matched}\b'
+                    ngram_search = [fr'(^|\s){token}(\s|$)' for token in ngram_search]
 
                 if ignore_case:
-                    tokens_matched |= set([token
-                                           for token in tokens
-                                           if re.search(token_matched, token, re.IGNORECASE)])
+                    flags = re.IGNORECASE
                 else:
-                    tokens_matched |= set([token
-                                           for token in tokens
-                                           if re.search(token_matched, token)])
+                    flags = 0
+
+                for ngram_text in nltk.ngrams(tokens_text, len_ngram_search):
+                    matched = True
+
+                    for token_search, token_text in zip(ngram_search, ngram_text):
+                        if not re.search(token_search, token_text, flags = flags):
+                            matched = False
+
+                            break
+
+                    if matched:
+                        ngrams_matched.add(ngram_text)
 
         if match_inflected_forms:
-            lemmas = wordless_lemmatize(self.main, tokens, self.lang_code)
+            tokens_text_lemma = wordless_lemmatize(self.main, tokens_text, self.lang_code)
+            ngrams_matched_lemma = [wordless_lemmatize(self.main, ngram, self.lang_code)
+                                    for ngram in ngrams_matched | set([tuple(search_term) for search_term in search_terms])]
 
-            for lemma_matched in wordless_lemmatize(self.main, tokens_matched, self.lang_code):
-                lemma_matched = re.escape(lemma_matched)
+            for ngram_matched_lemma in ngrams_matched_lemma:
+                len_ngram_matched_lemma = len(ngram_matched_lemma)
 
-                if match_whole_word:
-                    lemma_matched = fr'\b{lemma_matched}\b'
+                ngram_matched_lemma = [re.escape(token) for token in ngram_matched_lemma]
+                ngram_matched_lemma = [fr'(^|\s){token}(\s|$)' for token in ngram_matched_lemma]
 
                 if ignore_case:
-                    for token, lemma in zip(tokens, lemmas):
-                        if re.search(lemma_matched, lemma, re.IGNORECASE):
-                            tokens_matched.add(token)
-
+                    flags = re.IGNORECASE
                 else:
-                    for token, lemma in zip(tokens, lemmas):
-                        if re.search(lemma_matched, lemma):
-                            tokens_matched.add(token)
+                    flags = 0
 
-        return tokens_matched
+                for (ngram_text, ngram_text_lemma) in zip(nltk.ngrams(tokens_text, len_ngram_matched_lemma),
+                                                          nltk.ngrams(tokens_text_lemma, len_ngram_matched_lemma)):
+                    matched = True
 
-    def concordance_list(self, search_term, width, lines, punctuations):
-        concordance_results = self._concordance_index.find_concordance(search_term, width, lines)
+                    for token_text_lemma, token_matched_lemma in zip(ngram_text_lemma, ngram_matched_lemma):
+                        if not re.search(token_matched_lemma, token_text_lemma, flags = flags):
+                            matched = False
 
-        # Punctuations
-        if not punctuations:
-            for i, concordance_line in enumerate(concordance_results):
-                for j, token in reversed(list(enumerate(concordance_line.left))):
-                    if not any(map(str.isalnum, token)):
-                        if j == 0:
-                            del concordance_line.left[j]
-                        else:
-                            concordance_line.left[j - 1:j + 1] = ['{} {}'.format(concordance_line.left[j - 1], token)]
+                            break
 
-                for j, token in reversed(list(enumerate(concordance_line.right))):
-                    if not any(map(str.isalnum, token)):
-                        if j == 0:
-                            concordance_results[i] = nltk.text.ConcordanceLine(concordance_line.left,
-                                                                               concordance_line.query + token,
-                                                                               concordance_line.right,
-                                                                               concordance_line.offset,
-                                                                               concordance_line.left_print,
-                                                                               concordance_line.right_print,
-                                                                               concordance_line.line)
-                        else:
-                            concordance_line.right[j - 1:j + 1] = ['{} {}'.format(concordance_line.right[j - 1], token)]
+                    if matched:
+                        ngrams_matched.add(ngram_text)
 
-        # Check for empty context
-        concordance_results = sorted(concordance_results, key = lambda x: x.offset)
-        if concordance_results[0].left == []:
-            concordance_results[0] = nltk.text.ConcordanceLine(['<Start of File>'],
-                                                               concordance_results[0].query,
-                                                               concordance_results[0].right,
-                                                               concordance_results[0].offset,
-                                                               '<Start of File>',
-                                                               concordance_results[0].right_print,
-                                                               concordance_results[0].line)
-        if concordance_results[-1].right == []:
-            concordance_results[-1] = nltk.text.ConcordanceLine(concordance_results[-1].left,
-                                                                concordance_results[-1].query,
-                                                                ['<End of File>'],
-                                                                concordance_results[-1].offset,
-                                                                concordance_results[-1].left_print,
-                                                                '<End of File>',
-                                                                concordance_results[-1].line)
-
-        return concordance_results
+        return ngrams_matched

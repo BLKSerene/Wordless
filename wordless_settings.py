@@ -329,7 +329,7 @@ class Wordless_Settings(QDialog):
             settings_custom['preview_samples'] = self.text_edit_sentence_tokenization_preview_samples.toPlainText()
 
         def preview_results_changed():
-            self.text_edit_sentence_tokenization_preview_results.clear()
+            results = []
 
             if settings_custom['preview_samples']:
                 lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_sentence_tokenization_preview_lang.currentText())
@@ -337,10 +337,13 @@ class Wordless_Settings(QDialog):
                 sentence_tokenizer = self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].currentText()
 
                 if settings_custom['preview_samples']:
-                    for sample_line in settings_custom['preview_samples'].splitlines():
-                        sentences = wordless_text.wordless_sentence_tokenize(self.main, sample_line, lang_code, sentence_tokenizer = sentence_tokenizer)
+                    for line in settings_custom['preview_samples'].splitlines():
+                        results.extend(wordless_text.wordless_sentence_tokenize(self.main, line, lang_code,
+                                                                                sentence_tokenizer = sentence_tokenizer))
 
-                        self.text_edit_sentence_tokenization_preview_results.append('<span style="color: #F00; font-weight: bold;">/</span>'.join(sentences) + '<span style="color: #F00; font-weight: bold;">/</span>')
+                self.text_edit_sentence_tokenization_preview_results.setPlainText('\n'.join(results))
+            else:
+                self.text_edit_sentence_tokenization_preview_results.clear()
 
         settings_global = self.main.settings_global['sentence_tokenizers']
         settings_custom = self.main.settings_custom['sentence_tokenization']
@@ -387,6 +390,8 @@ class Wordless_Settings(QDialog):
 
         self.combo_box_sentence_tokenization_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
 
+
+        self.text_edit_sentence_tokenization_preview_samples.setAcceptRichText(False)
         self.text_edit_sentence_tokenization_preview_results.setReadOnly(True)
 
         self.combo_box_sentence_tokenization_preview_lang.currentTextChanged.connect(preview_settings_changed)
@@ -420,17 +425,23 @@ class Wordless_Settings(QDialog):
             settings_custom['preview_samples'] = self.text_edit_word_tokenization_preview_samples.toPlainText()
 
         def preview_results_changed():
-            self.text_edit_word_tokenization_preview_results.clear()
+            results = []
 
             if settings_custom['preview_samples']:
                 lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_word_tokenization_preview_lang.currentText())
 
                 word_tokenizer = self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentText()
 
-                for sample_line in settings_custom['preview_samples'].splitlines():
-                    tokens = wordless_text.wordless_word_tokenize(self.main, sample_line, lang_code, word_tokenizer = word_tokenizer)
+                for line in settings_custom['preview_samples'].splitlines():
+                    sentences = wordless_text.wordless_sentence_tokenize(self.main, line, lang_code)
+                    tokens = wordless_text.wordless_word_tokenize(self.main, sentences, lang_code,
+                                                                  word_tokenizer = word_tokenizer)
+                    
+                    results.append(' '.join(tokens))
 
-                    self.text_edit_word_tokenization_preview_results.append(' '.join(tokens))
+                self.text_edit_word_tokenization_preview_results.setPlainText('\n'.join(results))
+            else:
+                self.text_edit_word_tokenization_preview_results.clear()
 
         settings_global = self.main.settings_global['word_tokenizers']
         settings_custom = self.main.settings_custom['word_tokenization']
@@ -477,6 +488,7 @@ class Wordless_Settings(QDialog):
 
         self.combo_box_word_tokenization_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
 
+        self.text_edit_word_tokenization_preview_samples.setAcceptRichText(False)
         self.text_edit_word_tokenization_preview_results.setReadOnly(True)
 
         self.combo_box_word_tokenization_preview_lang.currentTextChanged.connect(preview_settings_changed)
@@ -527,7 +539,7 @@ class Wordless_Settings(QDialog):
             settings_custom['preview_samples'] = self.text_edit_pos_tagging_preview_samples.toPlainText()
 
         def preview_results_changed():
-            self.text_edit_pos_tagging_preview_results.clear()
+            results = []
 
             if settings_custom['preview_samples']:
                 lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_pos_tagging_preview_lang.currentText())
@@ -538,9 +550,11 @@ class Wordless_Settings(QDialog):
                 for sample_line in settings_custom['preview_samples'].splitlines():
                     tokens_tagged = wordless_text.wordless_pos_tag(self.main, sample_line, lang_code,
                                                                    pos_tagger = pos_tagger, tagset = tagset)
-                    tokens_tagged = [f'{token}_{tag}' for token, tag in tokens_tagged]
+                    results.append(' '.join([f'{token}_{tag}' for token, tag in tokens_tagged]))
 
-                    self.text_edit_pos_tagging_preview_results.append(' '.join(tokens_tagged))
+                self.text_edit_pos_tagging_preview_results.setPlainText('\n'.join(results))
+            else:
+                self.text_edit_pos_tagging_preview_results.clear()
 
         settings_global = self.main.settings_global['pos_taggers']
         settings_custom = self.main.settings_custom['pos_tagging']
@@ -595,6 +609,7 @@ class Wordless_Settings(QDialog):
 
         self.combo_box_pos_tagging_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
 
+        self.text_edit_pos_tagging_preview_samples.setAcceptRichText(False)
         self.text_edit_pos_tagging_preview_results.setReadOnly(True)
 
         self.combo_box_pos_tagging_preview_lang.currentTextChanged.connect(preview_settings_changed)
@@ -630,7 +645,7 @@ class Wordless_Settings(QDialog):
             settings_custom['preview_samples'] = self.text_edit_lemmatization_preview_samples.toPlainText()
 
         def preview_results_changed():
-            self.text_edit_lemmatization_preview_results.clear()
+            results = []
 
             if settings_custom['preview_samples']:
                 lang_text = self.combo_box_lemmatization_preview_lang.currentText()
@@ -641,7 +656,11 @@ class Wordless_Settings(QDialog):
                     samples = wordless_text.wordless_word_tokenize(self.main, sample_line, lang_code)
                     lemmas = wordless_text.wordless_lemmatize(self.main, samples, lang_code, lemmatizer = lemmatizer)
 
-                    self.text_edit_lemmatization_preview_results.append(wordless_conversion.to_word_delimiter(lang_code).join(lemmas))
+                    results.append(wordless_conversion.to_word_divider(lang_code).join(lemmas))
+
+                self.text_edit_lemmatization_preview_results.setPlainText('\n'.join(results))
+            else:
+                self.text_edit_lemmatization_preview_results.clear()
 
         settings_global = self.main.settings_global['lemmatizers']
         settings_custom = self.main.settings_custom['lemmatization']
@@ -688,6 +707,7 @@ class Wordless_Settings(QDialog):
 
         self.combo_box_lemmatization_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
 
+        self.text_edit_lemmatization_preview_samples.setAcceptRichText(False)
         self.text_edit_lemmatization_preview_results.setReadOnly(True)
 
         self.combo_box_lemmatization_preview_lang.currentTextChanged.connect(preview_settings_changed)
@@ -888,7 +908,7 @@ class Wordless_Settings(QDialog):
         self.combo_box_stop_words_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['stop_words']['preview_lang']))
 
     def restore_default_settings(self):
-        reply = wordless_dialog.wordless_restore_default_settings(self.main)
+        reply = wordless_message_box.wordless_restore_default_settings(self.main)
 
         if reply == QMessageBox.Yes:
             self.load_settings(defaults = True)
@@ -896,14 +916,14 @@ class Wordless_Settings(QDialog):
     def settings_validate(self):
         def validate_path(line_edit):
             if not os.path.exists(line_edit.text()):
-                wordless_dialog.wordless_message_path_not_exist(self.main, line_edit.text())
+                wordless_message_box.wordless_message_box_path_not_exist(self.main, line_edit.text())
 
                 line_edit.setFocus()
                 line_edit.selectAll()
 
                 return False
             elif not os.path.isdir(line_edit.text()):
-                wordless_dialog.wordless_message_path_not_dir(self.main, line_edit.text())
+                wordless_message_box.wordless_message_box_path_not_dir(self.main, line_edit.text())
 
                 line_edit.setFocus()
                 line_edit.selectAll()

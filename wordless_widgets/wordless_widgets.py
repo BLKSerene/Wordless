@@ -68,42 +68,7 @@ def wordless_widgets_token(main):
             checkbox_nums, checkbox_puncs]
 
 def wordless_widgets_search(main):
-    def show_all_changed():
-        if checkbox_show_all.isChecked():
-            line_edit_search_term.setEnabled(False)
-            list_search_terms.setEnabled(False)
-            list_search_terms.button_add.setEnabled(False)
-            list_search_terms.button_insert.setEnabled(False)
-            list_search_terms.button_remove.setEnabled(False)
-            list_search_terms.button_clear.setEnabled(False)
-            list_search_terms.button_import.setEnabled(False)
-            list_search_terms.button_export.setEnabled(False)
-
-            checkbox_ignore_case.setEnabled(False)
-            checkbox_match_inflected_forms.setEnabled(False)
-            checkbox_match_whole_word.setEnabled(False)
-            checkbox_use_regex.setEnabled(False)
-            checkbox_multi_search_mode.setEnabled(False)
-        else:
-            line_edit_search_term.setEnabled(True)
-            list_search_terms.setEnabled(True)
-            list_search_terms.button_add.setEnabled(True)
-            list_search_terms.button_insert.setEnabled(True)
-            list_search_terms.button_remove.setEnabled(True)
-            list_search_terms.button_clear.setEnabled(True)
-            list_search_terms.button_import.setEnabled(True)
-            list_search_terms.button_export.setEnabled(True)
-
-            checkbox_ignore_case.setEnabled(True)
-            checkbox_match_inflected_forms.setEnabled(True)
-            checkbox_match_whole_word.setEnabled(True)
-            checkbox_use_regex.setEnabled(True)
-            checkbox_multi_search_mode.setEnabled(True)
-
-        list_search_terms.item_changed()
-        list_search_terms.selection_changed()
-
-    def multi_search_changed():
+    def multi_search_mode_changed():
         if checkbox_multi_search_mode.isChecked():
             label_search_term.setText(main.tr('Search Terms:'))
 
@@ -133,7 +98,7 @@ def wordless_widgets_search(main):
             list_search_terms.button_export.hide()
 
     label_search_term = QLabel(main.tr('Search Term:'), main)
-    checkbox_show_all = QCheckBox(main.tr('Show All Results'), main)
+    checkbox_multi_search_mode = QCheckBox(main.tr('Multi-search Mode'), main)
     line_edit_search_term = QLineEdit(main)
     list_search_terms = wordless_list.Wordless_List(main)
 
@@ -141,17 +106,13 @@ def wordless_widgets_search(main):
     checkbox_match_inflected_forms = QCheckBox(main.tr('Match All Inflected Forms'), main)
     checkbox_match_whole_word = QCheckBox(main.tr('Match Whole Word Only'), main)
     checkbox_use_regex = QCheckBox(main.tr('Use Regular Expression'), main)
-    checkbox_multi_search_mode = QCheckBox(main.tr('Multi-search Mode'), main)
 
-    checkbox_show_all.stateChanged.connect(show_all_changed)
-    checkbox_multi_search_mode.stateChanged.connect(multi_search_changed)
+    checkbox_multi_search_mode.stateChanged.connect(multi_search_mode_changed)
 
-    show_all_changed()
-    multi_search_changed()
+    multi_search_mode_changed()
 
-    return (label_search_term, checkbox_show_all, line_edit_search_term, list_search_terms,
-            checkbox_ignore_case, checkbox_match_inflected_forms, checkbox_match_whole_word, checkbox_use_regex,
-            checkbox_multi_search_mode)
+    return (label_search_term, checkbox_multi_search_mode, line_edit_search_term, list_search_terms,
+            checkbox_ignore_case, checkbox_match_inflected_forms, checkbox_match_whole_word, checkbox_use_regex)
 
 def wordless_widgets_table(main, table):
     def show_pct_changed():

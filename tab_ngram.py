@@ -93,7 +93,7 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
 
             self.filter_table()
 
-        self.main.status_bar.showMessage(self.tr('Filtering completed!'))
+        wordless_message.wordless_message_filter_table_done(self.main)
 
 def init(main):
     def load_settings(defaults = False):
@@ -113,6 +113,10 @@ def init(main):
         checkbox_nums.setChecked(settings_loaded['nums'])
         checkbox_puncs.setChecked(settings_loaded['puncs'])
 
+        group_box_search_settings.setChecked(settings_loaded['search_settings'])
+        
+        checkbox_multi_search_mode.setChecked(settings_loaded['multi_search_mode'])
+
         if not defaults:
             line_edit_search_term.setText(settings_loaded['search_term'])
 
@@ -127,8 +131,6 @@ def init(main):
         checkbox_match_inflected_forms.setChecked(settings_loaded['match_inflected_forms'])
         checkbox_match_whole_word.setChecked(settings_loaded['match_whole_word'])
         checkbox_use_regex.setChecked(settings_loaded['use_regex'])
-        checkbox_multi_search_mode.setChecked(settings_loaded['multi_search_mode'])
-        checkbox_show_all.setChecked(settings_loaded['show_all'])
 
         checkbox_ngram_size_sync.setChecked(settings_loaded['ngram_size_sync'])
         spin_box_ngram_size_min.setValue(settings_loaded['ngram_size_min'])
@@ -182,6 +184,9 @@ def init(main):
         settings['puncs'] = checkbox_puncs.isChecked()
 
     def search_settings_changed():
+        settings['search_settings'] = group_box_search_settings.isChecked()
+
+        settings['multi_search_mode'] = checkbox_multi_search_mode.isChecked()
         settings['search_term'] = line_edit_search_term.text()
         settings['search_terms'] = list_search_terms.get_items()
         settings['keyword_position_no_limit'] = checkbox_keyword_position_no_limit.isChecked()
@@ -192,23 +197,11 @@ def init(main):
         settings['match_inflected_forms'] = checkbox_match_inflected_forms.isChecked()
         settings['match_whole_word'] = checkbox_match_whole_word.isChecked()
         settings['use_regex'] = checkbox_use_regex.isChecked()
-        settings['multi_search_mode'] = checkbox_multi_search_mode.isChecked()
-        settings['show_all'] = checkbox_show_all.isChecked()
 
-        if settings['show_all']:
+        if settings['search_settings']:
             label_ngram_size.setText(main.tr('N-gram Size:'))
-
-            checkbox_keyword_position_no_limit.setEnabled(False)
-            spin_box_keyword_position_min.setEnabled(False)
-            spin_box_keyword_position_max.setEnabled(False)
         else:
             label_ngram_size.setText(main.tr('Cluster Size:'))
-
-            checkbox_keyword_position_no_limit.setEnabled(True)
-            spin_box_keyword_position_min.setEnabled(True)
-
-            if not settings['keyword_position_no_limit']:
-                spin_box_keyword_position_max.setEnabled(True)
 
     def generation_settings_changed():
         settings['ngram_size_sync'] = checkbox_ngram_size_sync.isChecked()
@@ -324,15 +317,19 @@ def init(main):
     # Search Settings
     group_box_search_settings = QGroupBox(main.tr('Search Settings'), main)
 
+    group_box_search_settings.setCheckable(True)
+
+    group_box_search_settings.toggled.connect(search_settings_changed)
+
     (label_search_term,
-     checkbox_show_all,
+     checkbox_multi_search_mode,
      line_edit_search_term,
      list_search_terms,
+
      checkbox_ignore_case,
      checkbox_match_inflected_forms,
      checkbox_match_whole_word,
-     checkbox_use_regex,
-     checkbox_multi_search_mode) = wordless_widgets.wordless_widgets_search(main)
+     checkbox_use_regex) = wordless_widgets.wordless_widgets_search(main)
 
     label_keyword_position = QLabel(main.tr('Keyword Position:'), main)
     (checkbox_keyword_position_no_limit,
@@ -341,6 +338,7 @@ def init(main):
      label_keyword_position_max,
      spin_box_keyword_position_max) = wordless_widgets.wordless_widgets_filter(main)
 
+    checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
     line_edit_search_term.textChanged.connect(search_settings_changed)
     line_edit_search_term.returnPressed.connect(table_ngram.button_generate_table.click)
     list_search_terms.itemChanged.connect(search_settings_changed)
@@ -352,12 +350,10 @@ def init(main):
     checkbox_match_inflected_forms.stateChanged.connect(search_settings_changed)
     checkbox_match_whole_word.stateChanged.connect(search_settings_changed)
     checkbox_use_regex.stateChanged.connect(search_settings_changed)
-    checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
-    checkbox_show_all.stateChanged.connect(search_settings_changed)
 
-    layout_show_all = QGridLayout()
-    layout_show_all.addWidget(label_search_term, 0, 0, Qt.AlignLeft)
-    layout_show_all.addWidget(checkbox_show_all, 0, 1, Qt.AlignRight)
+    layout_multi_search_mode = QGridLayout()
+    layout_multi_search_mode.addWidget(label_search_term, 0, 0)
+    layout_multi_search_mode.addWidget(checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
 
     layout_search_terms = QGridLayout()
     layout_search_terms.addWidget(list_search_terms, 0, 0, 6, 1)
@@ -369,7 +365,7 @@ def init(main):
     layout_search_terms.addWidget(list_search_terms.button_export, 5, 1)
 
     group_box_search_settings.setLayout(QGridLayout())
-    group_box_search_settings.layout().addLayout(layout_show_all, 0, 0, 1, 4)
+    group_box_search_settings.layout().addLayout(layout_multi_search_mode, 0, 0, 1, 4)
     group_box_search_settings.layout().addWidget(line_edit_search_term, 1, 0, 1, 4)
     group_box_search_settings.layout().addLayout(layout_search_terms, 2, 0, 1, 4)
     group_box_search_settings.layout().addWidget(label_keyword_position, 3, 0, 1, 3)
@@ -383,7 +379,6 @@ def init(main):
     group_box_search_settings.layout().addWidget(checkbox_match_inflected_forms, 6, 0, 1, 4)
     group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 7, 0, 1, 4)
     group_box_search_settings.layout().addWidget(checkbox_use_regex, 8, 0, 1, 4)
-    group_box_search_settings.layout().addWidget(checkbox_multi_search_mode, 9, 0, 1, 4)
 
     # Generation Settings
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'))
@@ -513,7 +508,7 @@ def init(main):
      label_files_max,
      spin_box_files_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100000)
 
-    button_filter_results = QPushButton(main.tr('Filter Results'), main)
+    button_filter_table = QPushButton(main.tr('Filter Results in Table'), main)
 
     checkbox_freq_no_limit.stateChanged.connect(filter_settings_changed)
     spin_box_freq_min.valueChanged.connect(filter_settings_changed)
@@ -529,7 +524,7 @@ def init(main):
     spin_box_files_min.valueChanged.connect(filter_settings_changed)
     spin_box_files_max.valueChanged.connect(filter_settings_changed)
 
-    button_filter_results.clicked.connect(lambda: table_ngram.update_filters())
+    button_filter_table.clicked.connect(lambda: table_ngram.update_filters())
 
     layout_apply_to = QGridLayout()
     layout_apply_to.addWidget(label_apply_to, 0, 0)
@@ -563,7 +558,7 @@ def init(main):
     group_box_filter_settings.layout().addWidget(label_files_max, 7, 2)
     group_box_filter_settings.layout().addWidget(spin_box_files_max, 7, 3)
 
-    group_box_filter_settings.layout().addWidget(button_filter_results, 8, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(button_filter_table, 8, 0, 1, 4)
 
     tab_ngram.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
     tab_ngram.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
@@ -641,11 +636,11 @@ def generate_ngrams(main, files):
             else:
                 search_terms = [settings['search_term']]
 
-            search_terms = text.match_tokens(search_terms,
-                                             settings['ignore_case'],
-                                             settings['match_inflected_forms'],
-                                             settings['match_whole_word'],
-                                             settings['use_regex'])
+            search_terms = text.match_search_terms(search_terms,
+                                                   settings['ignore_case'],
+                                                   settings['match_inflected_forms'],
+                                                   settings['match_whole_word'],
+                                                   settings['use_regex'])
 
             freqs_file = {ngram: freq
                           for ngram, freq in freqs_file.items()
@@ -653,7 +648,7 @@ def generate_ngrams(main, files):
                           if (search_term in ngram and
                               settings['keyword_position_min'] <= ngram.index(search_term) + 1 <= settings['keyword_position_max'])}
 
-        freqs_files.append({text.word_delimiter.join(ngram): freq for ngram, freq in freqs_file.items()})
+        freqs_files.append({text.word_divider.join(ngram): freq for ngram, freq in freqs_file.items()})
 
     return wordless_misc.merge_dicts(freqs_files)
 
@@ -670,9 +665,9 @@ def generate_table(main, table):
             freqs_files = generate_ngrams(main, files)
 
             if freqs_files:
-                table.clear_table()
-
                 table.settings = main.settings_custom
+
+                table.clear_table()
 
                 for i, file in enumerate(files):
                     table.insert_col(table.columnCount() - 2,
@@ -721,14 +716,20 @@ def generate_table(main, table):
                 table.update_items_width()
 
                 table.item_changed()
-            else:
-                wordless_dialog.wordless_message_no_results_table(main)
-        else:
-            wordless_dialog.wordless_message_empty_search_term(main)
-    else:
-        wordless_dialog.wordless_message_no_files_selected(main)
 
-    main.status_bar.showMessage(main.tr('Data generation completed!'))
+                wordless_message.wordless_message_generate_table_success(main)
+            else:
+                wordless_message_box.wordless_message_box_no_results_table(main)
+
+                wordless_message.wordless_message_generate_table_error(main)
+        else:
+            wordless_message_box.wordless_message_box_empty_search_term(main)
+
+            wordless_message.wordless_message_generate_table_error(main)
+    else:
+        wordless_message_box.wordless_message_box_no_files_selected(main)
+
+        wordless_message.wordless_message_generate_table_error(main)
 
 @ wordless_misc.log_timing
 def generate_plot(main):
@@ -751,11 +752,17 @@ def generate_plot(main):
                                                  rank_min = settings['rank_min'],
                                                  rank_max = settings['rank_max'],
                                                  label_x = main.tr('N-grams'))
-            else:
-                wordless_dialog.wordless_message_no_results_plot(main)
-        else:
-            wordless_dialog.wordless_message_empty_search_term(main)
-    else:
-        wordless_dialog.wordless_message_no_files_selected(main)
 
-    main.status_bar.showMessage(main.tr('Plot generation completed!'))
+                wordless_message.wordless_message_generate_plot_success(main)
+            else:
+                wordless_message_box.wordless_message_box_no_results_plot(main)
+
+                wordless_message.wordless_message_generate_plot_error(main)
+        else:
+            wordless_message_box.wordless_message_box_empty_search_term(main)
+
+            wordless_message.wordless_message_generate_plot_error(main)
+    else:
+        wordless_message_box.wordless_message_box_no_files_selected(main)
+
+        wordless_message.wordless_message_generate_plot_error(main)

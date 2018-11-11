@@ -197,7 +197,7 @@ class Wordless_Main(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle(self.tr('Wordless Version 1.0'))
+        self.setWindowTitle(self.tr('Wordless v1.0'))
         self.setWindowIcon(QIcon('images/wordless_icon.png'))
 
         init_settings.init_settings(self)
@@ -210,7 +210,7 @@ class Wordless_Main(QMainWindow):
         self.status_bar = self.statusBar()
         self.status_bar.showMessage(self.tr('Ready!'))
 
-        self.setStyleSheet('* {font-family: Arial, sans-serif; color: #292929; font-size: 12px}')
+        self.setStyleSheet('* {font-family: Arial, sans-serif; color: #292929; font-size: 12px;}')
 
     def closeEvent(self, event):
         reply = QMessageBox.question(self,

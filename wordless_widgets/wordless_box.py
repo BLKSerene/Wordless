@@ -12,7 +12,7 @@ from PyQt5.QtWidgets import *
 
 import jpype
 
-from wordless_widgets import wordless_dialog
+from wordless_widgets import wordless_message_box
 
 # Combo Box
 class Wordless_Combo_Box(QComboBox):
@@ -66,7 +66,7 @@ class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box_Use_Data_File):
         self.removeItem(self.findText(self.tr('Total')))
 
         if self.count() == 0:
-            self.addItem(main.tr('*** None ***'))
+            self.addItem(self.tr('*** None ***'))
 
 class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
     def __init__(self, main, table):
@@ -110,7 +110,7 @@ class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
 
                 import pyhanlp
             except:
-                wordless_dialog.wordless_message_jre_not_installed(self.main)
+                wordless_message_box.wordless_message_box_jre_not_installed(self.main)
 
                 self.setCurrentText(self.text_old)
 
