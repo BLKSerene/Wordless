@@ -60,6 +60,7 @@ class Wordless_Settings(QDialog):
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Sentence Tokenization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Word Tokenization')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Word Detokenization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('POS Tagging')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Lemmatization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Stop Words')]))
@@ -74,6 +75,7 @@ class Wordless_Settings(QDialog):
 
         self.wrapper_settings_sentence_tokenization = self.init_settings_sentence_tokenization()
         self.wrapper_settings_word_tokenization = self.init_settings_word_tokenization()
+        self.wrapper_settings_word_detokenization = self.init_settings_word_detokenization()
         self.wrapper_settings_pos_tagging = self.init_settings_pos_tagging()
         self.wrapper_settings_lemmatization = self.init_settings_lemmatization()
         self.wrapper_settings_stop_words = self.init_settings_stop_words()
@@ -129,6 +131,8 @@ class Wordless_Settings(QDialog):
                 settings_cur = self.wrapper_settings_sentence_tokenization
             elif item_selected.text(0) == self.tr('Word Tokenization'):
                 settings_cur = self.wrapper_settings_word_tokenization
+            elif item_selected.text(0) == self.tr('Word Detokenization'):
+                settings_cur = self.wrapper_settings_word_detokenization
             elif item_selected.text(0) == self.tr('POS Tagging'):
                 settings_cur = self.wrapper_settings_pos_tagging
             elif item_selected.text(0) == self.tr('Lemmatization'):
@@ -516,6 +520,102 @@ class Wordless_Settings(QDialog):
 
         return wrapper_settings_word_tokenization
 
+    def init_settings_word_detokenization(self):
+        def preview_settings_changed():
+            settings_custom['preview_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_word_detokenization_preview_lang.currentText())
+            settings_custom['preview_samples'] = self.text_edit_word_detokenization_preview_samples.toPlainText()
+
+        def preview_results_changed():
+            results = []
+
+            if settings_custom['preview_samples']:
+                lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_word_detokenization_preview_lang.currentText())
+
+                word_detokenizer = self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].currentText()
+
+                for line in settings_custom['preview_samples'].splitlines():
+                    text = wordless_text.wordless_word_detokenize(self.main, line.split(), lang_code,
+                                                                  word_detokenizer = word_detokenizer)
+                    
+                    results.append(text)
+
+                self.text_edit_word_detokenization_preview_results.setPlainText('\n'.join(results))
+            else:
+                self.text_edit_word_detokenization_preview_results.clear()
+
+        settings_global = self.main.settings_global['word_detokenizers']
+        settings_custom = self.main.settings_custom['word_detokenization']
+
+        wrapper_settings_word_detokenization = QWidget(self)
+
+        # Word Detokenizer Settings
+        group_box_word_detokenizer_settings = QGroupBox(self.tr('Word Detokenizer Settings'), self)
+
+        table_word_detokenizers = wordless_table.Wordless_Table(self,
+                                                                headers = [
+                                                                    self.tr('Languages'),
+                                                                    self.tr('Word Detokenizers')
+                                                                ],
+                                                                cols_stretch = [
+                                                                    self.tr('Word Detokenizers')
+                                                                ])
+
+        table_word_detokenizers.verticalHeader().setHidden(True)
+
+        table_word_detokenizers.setRowCount(len(settings_global))
+
+        for i, lang_code in enumerate(settings_global):
+            table_word_detokenizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
+
+            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box(self)
+
+            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].addItems(settings_global[lang_code])
+
+            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].currentTextChanged.connect(preview_results_changed)
+
+            table_word_detokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_word_detokenizer_{lang_code}'])
+
+        group_box_word_detokenizer_settings.setLayout(QGridLayout())
+        group_box_word_detokenizer_settings.layout().addWidget(table_word_detokenizers, 0, 0)
+
+        # Preview
+        group_box_preview = QGroupBox(self.tr('Preview'), self)
+
+        self.label_word_detokenization_preview_lang = QLabel(self.tr('Select a Language:'), self)
+        self.combo_box_word_detokenization_preview_lang = wordless_box.Wordless_Combo_Box(self)
+        self.text_edit_word_detokenization_preview_samples = QTextEdit(self)
+        self.text_edit_word_detokenization_preview_results = QTextEdit(self)
+
+        self.combo_box_word_detokenization_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
+
+        self.text_edit_word_detokenization_preview_samples.setAcceptRichText(False)
+        self.text_edit_word_detokenization_preview_results.setReadOnly(True)
+
+        self.combo_box_word_detokenization_preview_lang.currentTextChanged.connect(preview_settings_changed)
+        self.combo_box_word_detokenization_preview_lang.currentTextChanged.connect(preview_results_changed)
+        self.text_edit_word_detokenization_preview_samples.textChanged.connect(preview_settings_changed)
+        self.text_edit_word_detokenization_preview_samples.textChanged.connect(preview_results_changed)
+
+        layout_preview_lang = QGridLayout()
+        layout_preview_lang.addWidget(self.label_word_detokenization_preview_lang, 0, 0)
+        layout_preview_lang.addWidget(self.combo_box_word_detokenization_preview_lang, 0, 1)
+
+        group_box_preview.setLayout(QGridLayout())
+        group_box_preview.layout().addLayout(layout_preview_lang, 0, 0, 1, 2, Qt.AlignLeft)
+        group_box_preview.layout().addWidget(self.text_edit_word_detokenization_preview_samples, 1, 0)
+        group_box_preview.layout().addWidget(self.text_edit_word_detokenization_preview_results, 1, 1)
+
+        wrapper_settings_word_detokenization.setLayout(QGridLayout())
+        wrapper_settings_word_detokenization.layout().addWidget(group_box_word_detokenizer_settings, 0, 0,)
+        wrapper_settings_word_detokenization.layout().addWidget(group_box_preview, 1, 0)
+
+        wrapper_settings_word_detokenization.layout().setRowStretch(0, 2)
+        wrapper_settings_word_detokenization.layout().setRowStretch(1, 1)
+
+        preview_results_changed()
+
+        return wrapper_settings_word_detokenization
+
     def init_settings_pos_tagging(self):
         def pos_tagger_changed():
             for i, lang_code in enumerate(settings_global):
@@ -656,7 +756,7 @@ class Wordless_Settings(QDialog):
                     samples = wordless_text.wordless_word_tokenize(self.main, sample_line, lang_code)
                     lemmas = wordless_text.wordless_lemmatize(self.main, samples, lang_code, lemmatizer = lemmatizer)
 
-                    results.append(wordless_conversion.to_word_divider(lang_code).join(lemmas))
+                    results.append(wordless_text.wordless_word_detokenize(self.main, lemmas, lang_code))
 
                 self.text_edit_lemmatization_preview_results.setPlainText('\n'.join(results))
             else:
@@ -886,6 +986,13 @@ class Wordless_Settings(QDialog):
         self.combo_box_word_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['word_tokenization']['preview_lang']))
         self.text_edit_word_tokenization_preview_samples.setText(settings_loaded['word_tokenization']['preview_samples'])
 
+        # Word Detokenization
+        for lang_code in settings_loaded['word_detokenization']['word_detokenizers']:
+            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].setCurrentText(settings_loaded['word_detokenization']['word_detokenizers'][lang_code])
+
+        self.combo_box_word_detokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['word_detokenization']['preview_lang']))
+        self.text_edit_word_detokenization_preview_samples.setText(settings_loaded['word_detokenization']['preview_samples'])
+
         # POS Tagging
         for lang_code in settings_loaded['pos_tagging']['pos_taggers']:
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'].setCurrentText(settings_loaded['pos_tagging']['pos_taggers'][lang_code])
@@ -985,6 +1092,10 @@ class Wordless_Settings(QDialog):
             # Word Tokenization
             for lang_code in settings['word_tokenization']['word_tokenizers']:
                 settings['word_tokenization']['word_tokenizers'][lang_code] = self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentText()
+
+            # Word Detokenization
+            for lang_code in settings['word_detokenization']['word_detokenizers']:
+                settings['word_detokenization']['word_detokenizers'][lang_code] = self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].currentText()
 
             # POS Tagging
             for lang_code in settings['pos_tagging']['pos_taggers']:

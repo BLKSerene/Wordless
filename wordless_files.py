@@ -42,8 +42,6 @@ class Wordless_Files():
             file['lang_code'] = self.main.settings_custom['general']['file_default_lang']
             file['lang_text'] = wordless_conversion.to_lang_text(self.main, self.main.settings_custom['general']['file_default_lang'])
 
-        file['word_divider'] = wordless_conversion.to_word_divider(file['lang_code'])
-
         return file
 
     @ wordless_misc.log_timing
@@ -197,7 +195,6 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
                 file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
                 file['lang_text'] = self.cellWidget(row, 1).currentText()
                 file['lang_code'] = wordless_conversion.to_lang_code(self.main, file['lang_text'])
-                file['word_divider'] = wordless_conversion.to_word_divider(file['lang_code'])
                 file['encoding_text'] = self.cellWidget(row, 4).currentText()
                 file['encoding_code'] = wordless_conversion.to_encoding_code(self.main, file['encoding_text'])
 

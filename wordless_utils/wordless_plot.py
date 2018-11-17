@@ -18,9 +18,6 @@ def wordless_plot_freq(main, freqs_files, plot_type,
                        use_data_file, use_pct, use_cumulative,
                        rank_min, rank_max,
                        label_x):
-    if type(list(freqs_files.keys())[0]) != str:
-        freqs_files = {' '.join(ngram): freqs for ngram, freqs in freqs_files.items()}
-
     if plot_type == main.tr('Line Chart'):
         freqs_files = wordless_sorting.sorted_freqs_files(freqs_files)
 
@@ -67,7 +64,7 @@ def wordless_plot_freq(main, freqs_files, plot_type,
         matplotlib.pyplot.xticks(range(len(tokens)), tokens, rotation = 90)
 
         matplotlib.pyplot.title(main.tr('Frequency Distribution'))
-        matplotlib.pyplot.grid(True, color = 'silver')
+        matplotlib.pyplot.grid(True)
         matplotlib.pyplot.legend()
         matplotlib.pyplot.show()
     elif plot_type == main.tr('Word Cloud'):

@@ -6,7 +6,9 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
+import collections
 import copy
+import itertools
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -24,16 +26,16 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
                              main.tr('Rank'),
                              main.tr('N-grams'),
                              main.tr('Total\nFrequency'),
-                             main.tr('Files Found'),
+                             main.tr('Number of\nFiles Found'),
                          ],
                          headers_num = [
                              main.tr('Rank'),
                              main.tr('Total\nFrequency'),
-                             main.tr('Files Found')
+                             main.tr('Number of\nFiles Found')
                          ],
                          headers_pct = [
                              main.tr('Total\nFrequency'),
-                             main.tr('Files Found')
+                             main.tr('Number of\nFiles Found')
                          ],
                          headers_cumulative = [
                              main.tr('Total\nFrequency')
@@ -56,7 +58,7 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
     @ wordless_misc.log_timing
     def update_filters(self):
         if any([self.item(0, i) for i in range(self.columnCount())]):
-            settings = self.main.settings_custom['ngram']
+            settings = self.main.settings_custom['ngram']['filter_settings']
 
             if settings['apply_to'] == self.tr('Total'):
                 col_freq = self.find_col(self.tr('Total\nFrequency'))
@@ -64,7 +66,7 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
                 col_freq = self.find_col(self.tr(f'[{settings["apply_to"]}]\nFrequency'))
 
             col_ngrams = self.find_col('N-grams')
-            col_files_found = self.find_col('Files Found')
+            col_files_found = self.find_col('Number of\nFiles Found')
 
             freq_min = settings['freq_min']
             freq_max = settings['freq_max'] if not settings['freq_no_limit'] else float('inf')
@@ -81,7 +83,7 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
                 else:
                     self.row_filters[i].append(False)
 
-                if len_min <= len(self.item(i, col_ngrams).text().replace(' ', '')) <= len_max:
+                if len_min <= sum([len(token) for token in self.item(i, col_ngrams).text_raw]) <= len_max:
                     self.row_filters[i].append(True)
                 else:
                     self.row_filters[i].append(False)
@@ -98,71 +100,77 @@ class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Search):
 def init(main):
     def load_settings(defaults = False):
         if defaults:
-            settings_loaded = copy.deepcopy(main.settings_default['ngram'])
+            settings = copy.deepcopy(main.settings_default['ngram'])
         else:
-            settings_loaded = copy.deepcopy(main.settings_custom['ngram'])
+            settings = copy.deepcopy(main.settings_custom['ngram'])
 
-        checkbox_words.setChecked(settings_loaded['words'])
-        checkbox_lowercase.setChecked(settings_loaded['lowercase'])
-        checkbox_uppercase.setChecked(settings_loaded['uppercase'])
-        checkbox_title_case.setChecked(settings_loaded['title_case'])
-        checkbox_treat_as_lowercase.setChecked(settings_loaded['treat_as_lowercase'])
-        checkbox_lemmatize.setChecked(settings_loaded['lemmatize'])
-        checkbox_filter_stop_words.setChecked(settings_loaded['filter_stop_words'])
+        # Token Settings
+        checkbox_words.setChecked(settings['token_settings']['words'])
+        checkbox_lowercase.setChecked(settings['token_settings']['lowercase'])
+        checkbox_uppercase.setChecked(settings['token_settings']['uppercase'])
+        checkbox_title_case.setChecked(settings['token_settings']['title_case'])
+        checkbox_treat_as_lowercase.setChecked(settings['token_settings']['treat_as_lowercase'])
+        checkbox_lemmatize.setChecked(settings['token_settings']['lemmatize'])
+        checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
-        checkbox_nums.setChecked(settings_loaded['nums'])
-        checkbox_puncs.setChecked(settings_loaded['puncs'])
+        checkbox_nums.setChecked(settings['token_settings']['nums'])
+        checkbox_puncs.setChecked(settings['token_settings']['puncs'])
 
-        group_box_search_settings.setChecked(settings_loaded['search_settings'])
+        # Search Settings
+        group_box_search_settings.setChecked(settings['search_settings']['search_settings'])
         
-        checkbox_multi_search_mode.setChecked(settings_loaded['multi_search_mode'])
+        checkbox_multi_search_mode.setChecked(settings['search_settings']['multi_search_mode'])
 
         if not defaults:
-            line_edit_search_term.setText(settings_loaded['search_term'])
+            line_edit_search_term.setText(settings['search_settings']['search_term'])
 
-            for search_term in settings_loaded['search_terms']:
+            for search_term in settings['search_settings']['search_terms']:
                 list_search_terms.add_item(search_term)
 
-        checkbox_keyword_position_no_limit.setChecked(settings_loaded['keyword_position_no_limit'])
-        spin_box_keyword_position_min.setValue(settings_loaded['keyword_position_min'])
-        spin_box_keyword_position_max.setValue(settings_loaded['keyword_position_max'])
+        checkbox_keyword_position_no_limit.setChecked(settings['search_settings']['keyword_position_no_limit'])
+        spin_box_keyword_position_min.setValue(settings['search_settings']['keyword_position_min'])
+        spin_box_keyword_position_max.setValue(settings['search_settings']['keyword_position_max'])
 
-        checkbox_ignore_case.setChecked(settings_loaded['ignore_case'])
-        checkbox_match_inflected_forms.setChecked(settings_loaded['match_inflected_forms'])
-        checkbox_match_whole_word.setChecked(settings_loaded['match_whole_word'])
-        checkbox_use_regex.setChecked(settings_loaded['use_regex'])
+        checkbox_ignore_case.setChecked(settings['search_settings']['ignore_case'])
+        checkbox_match_inflected_forms.setChecked(settings['search_settings']['match_inflected_forms'])
+        checkbox_match_whole_word.setChecked(settings['search_settings']['match_whole_word'])
+        checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
 
-        checkbox_ngram_size_sync.setChecked(settings_loaded['ngram_size_sync'])
-        spin_box_ngram_size_min.setValue(settings_loaded['ngram_size_min'])
-        spin_box_ngram_size_max.setValue(settings_loaded['ngram_size_max'])
-        spin_box_allow_skipped_tokens.setValue(settings_loaded['allow_skipped_tokens'])
+        # Generation Settings
+        checkbox_ngram_size_sync.setChecked(settings['generation_settings']['ngram_size_sync'])
+        spin_box_ngram_size_min.setValue(settings['generation_settings']['ngram_size_min'])
+        spin_box_ngram_size_max.setValue(settings['generation_settings']['ngram_size_max'])
+        spin_box_allow_skipped_tokens.setValue(settings['generation_settings']['allow_skipped_tokens'])
 
-        checkbox_show_pct.setChecked(settings_loaded['show_pct'])
-        checkbox_show_cumulative.setChecked(settings_loaded['show_cumulative'])
-        checkbox_show_breakdown.setChecked(settings_loaded['show_breakdown'])
+        # Table Settings
+        checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
+        checkbox_show_cumulative.setChecked(settings['table_settings']['show_cumulative'])
+        checkbox_show_breakdown.setChecked(settings['table_settings']['show_breakdown'])
 
-        combo_box_plot_type.setCurrentText(settings_loaded['plot_type'])
-        combo_box_use_data_file.setCurrentText(settings_loaded['use_data_file'])
-        checkbox_use_pct.setChecked(settings_loaded['use_pct'])
-        checkbox_use_cumulative.setChecked(settings_loaded['use_cumulative'])
+        # Plot Settings
+        combo_box_plot_type.setCurrentText(settings['plot_settings']['plot_type'])
+        combo_box_use_data_file.setCurrentText(settings['plot_settings']['use_data_file'])
+        checkbox_use_pct.setChecked(settings['plot_settings']['use_pct'])
+        checkbox_use_cumulative.setChecked(settings['plot_settings']['use_cumulative'])
 
-        checkbox_rank_no_limit.setChecked(settings_loaded['rank_no_limit'])
-        spin_box_rank_min.setValue(settings_loaded['rank_min'])
-        spin_box_rank_max.setValue(settings_loaded['rank_max'])
+        checkbox_rank_no_limit.setChecked(settings['plot_settings']['rank_no_limit'])
+        spin_box_rank_min.setValue(settings['plot_settings']['rank_min'])
+        spin_box_rank_max.setValue(settings['plot_settings']['rank_max'])
 
-        combo_box_apply_to.setCurrentText(settings_loaded['apply_to'])
+        # Filter Settings
+        combo_box_apply_to.setCurrentText(settings['filter_settings']['apply_to'])
 
-        checkbox_freq_no_limit.setChecked(settings_loaded['freq_no_limit'])
-        spin_box_freq_min.setValue(settings_loaded['freq_min'])
-        spin_box_freq_max.setValue(settings_loaded['freq_max'])
+        checkbox_freq_no_limit.setChecked(settings['filter_settings']['freq_no_limit'])
+        spin_box_freq_min.setValue(settings['filter_settings']['freq_min'])
+        spin_box_freq_max.setValue(settings['filter_settings']['freq_max'])
 
-        checkbox_len_no_limit.setChecked(settings_loaded['len_no_limit'])
-        spin_box_len_min.setValue(settings_loaded['len_min'])
-        spin_box_len_max.setValue(settings_loaded['len_max'])
+        checkbox_len_no_limit.setChecked(settings['filter_settings']['len_no_limit'])
+        spin_box_len_min.setValue(settings['filter_settings']['len_min'])
+        spin_box_len_max.setValue(settings['filter_settings']['len_max'])
 
-        checkbox_files_no_limit.setChecked(settings_loaded['files_no_limit'])
-        spin_box_files_min.setValue(settings_loaded['files_min'])
-        spin_box_files_max.setValue(settings_loaded['files_max'])
+        checkbox_files_no_limit.setChecked(settings['filter_settings']['files_no_limit'])
+        spin_box_files_min.setValue(settings['filter_settings']['files_min'])
+        spin_box_files_max.setValue(settings['filter_settings']['files_max'])
 
         token_settings_changed()
         search_settings_changed()
@@ -172,6 +180,8 @@ def init(main):
         filter_settings_changed()
 
     def token_settings_changed():
+        settings = main.settings_custom['ngram']['token_settings']
+
         settings['words'] = checkbox_words.isChecked()
         settings['lowercase'] = checkbox_lowercase.isChecked()
         settings['uppercase'] = checkbox_uppercase.isChecked()
@@ -184,6 +194,8 @@ def init(main):
         settings['puncs'] = checkbox_puncs.isChecked()
 
     def search_settings_changed():
+        settings = main.settings_custom['ngram']['search_settings']
+
         settings['search_settings'] = group_box_search_settings.isChecked()
 
         settings['multi_search_mode'] = checkbox_multi_search_mode.isChecked()
@@ -204,12 +216,14 @@ def init(main):
             label_ngram_size.setText(main.tr('Cluster Size:'))
 
     def generation_settings_changed():
+        settings = main.settings_custom['ngram']['generation_settings']
+
         settings['ngram_size_sync'] = checkbox_ngram_size_sync.isChecked()
         settings['ngram_size_min'] = spin_box_ngram_size_min.value()
         settings['ngram_size_max'] = spin_box_ngram_size_max.value()
         settings['allow_skipped_tokens'] = spin_box_allow_skipped_tokens.value()
 
-        if (settings['keyword_position_no_limit'] and
+        if (main.settings_custom['ngram']['search_settings']['keyword_position_no_limit'] and
             spin_box_keyword_position_max.value() == spin_box_keyword_position_max.maximum()):
             spin_box_keyword_position_min.setMaximum(settings['ngram_size_max'])
             spin_box_keyword_position_max.setMaximum(settings['ngram_size_max'])
@@ -220,11 +234,15 @@ def init(main):
             spin_box_keyword_position_max.setMaximum(settings['ngram_size_max'])
 
     def table_settings_changed():
+        settings = main.settings_custom['ngram']['table_settings']
+
         settings['show_pct'] = checkbox_show_pct.isChecked()
         settings['show_cumulative'] = checkbox_show_cumulative.isChecked()
         settings['show_breakdown'] = checkbox_show_breakdown.isChecked()
 
     def plot_settings_changed():
+        settings = main.settings_custom['ngram']['plot_settings']
+
         settings['plot_type'] = combo_box_plot_type.currentText()
         settings['use_data_file'] = combo_box_use_data_file.currentText()
         settings['use_pct'] = checkbox_use_pct.isChecked()
@@ -246,6 +264,8 @@ def init(main):
             checkbox_use_cumulative.setEnabled(False)
 
     def filter_settings_changed():
+        settings = main.settings_custom['ngram']['filter_settings']
+
         settings['freq_no_limit'] = checkbox_freq_no_limit.isChecked()
         settings['freq_min'] = spin_box_freq_min.value()
         settings['freq_max'] = spin_box_freq_max.value()
@@ -259,8 +279,6 @@ def init(main):
         settings['files_no_limit'] = checkbox_files_no_limit.isChecked()
         settings['files_min'] = spin_box_files_min.value()
         settings['files_max'] = spin_box_files_max.value()
-
-    settings = main.settings_custom['ngram']
 
     tab_ngram = wordless_layout.Wordless_Tab(main, load_settings)
     
@@ -336,7 +354,9 @@ def init(main):
      label_keyword_position_min,
      spin_box_keyword_position_min,
      label_keyword_position_max,
-     spin_box_keyword_position_max) = wordless_widgets.wordless_widgets_filter(main)
+     spin_box_keyword_position_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1)
+
+    button_context_settings = QPushButton(main.tr('Context Settings'), main)
 
     checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
     line_edit_search_term.textChanged.connect(search_settings_changed)
@@ -350,6 +370,8 @@ def init(main):
     checkbox_match_inflected_forms.stateChanged.connect(search_settings_changed)
     checkbox_match_whole_word.stateChanged.connect(search_settings_changed)
     checkbox_use_regex.stateChanged.connect(search_settings_changed)
+
+    button_context_settings.clicked.connect(lambda: wordless_dialog.Wordless_Dialog_Context_Settings(main, tab = 'ngram'))
 
     layout_multi_search_mode = QGridLayout()
     layout_multi_search_mode.addWidget(label_search_term, 0, 0)
@@ -379,6 +401,8 @@ def init(main):
     group_box_search_settings.layout().addWidget(checkbox_match_inflected_forms, 6, 0, 1, 4)
     group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 7, 0, 1, 4)
     group_box_search_settings.layout().addWidget(checkbox_use_regex, 8, 0, 1, 4)
+
+    group_box_search_settings.layout().addWidget(button_context_settings, 9, 0, 1, 4)
 
     # Generation Settings
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'))
@@ -501,14 +525,14 @@ def init(main):
      label_len_max,
      spin_box_len_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 1000)
 
-    label_files = QLabel(main.tr('Files Found:'), main)
+    label_files = QLabel(main.tr('Number of Files Found:'), main)
     (checkbox_files_no_limit,
      label_files_min,
      spin_box_files_min,
      label_files_max,
      spin_box_files_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100000)
 
-    button_filter_table = QPushButton(main.tr('Filter Results in Table'), main)
+    button_filter_results = QPushButton(main.tr('Filter Results in Table'), main)
 
     checkbox_freq_no_limit.stateChanged.connect(filter_settings_changed)
     spin_box_freq_min.valueChanged.connect(filter_settings_changed)
@@ -524,7 +548,7 @@ def init(main):
     spin_box_files_min.valueChanged.connect(filter_settings_changed)
     spin_box_files_max.valueChanged.connect(filter_settings_changed)
 
-    button_filter_table.clicked.connect(lambda: table_ngram.update_filters())
+    button_filter_results.clicked.connect(lambda: table_ngram.update_filters())
 
     layout_apply_to = QGridLayout()
     layout_apply_to.addWidget(label_apply_to, 0, 0)
@@ -558,7 +582,7 @@ def init(main):
     group_box_filter_settings.layout().addWidget(label_files_max, 7, 2)
     group_box_filter_settings.layout().addWidget(spin_box_files_max, 7, 3)
 
-    group_box_filter_settings.layout().addWidget(button_filter_table, 8, 0, 1, 4)
+    group_box_filter_settings.layout().addWidget(button_filter_results, 8, 0, 1, 4)
 
     tab_ngram.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
     tab_ngram.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
@@ -575,48 +599,153 @@ def init(main):
 
 def generate_ngrams(main, files):
     freqs_files = []
+    ngrams_text = {}
 
     settings = main.settings_custom['ngram']
+
+    if settings['search_settings']['multi_search_mode']:
+        search_terms = settings['search_settings']['search_terms']
+    else:
+        search_terms = [settings['search_settings']['search_term']]
+
+    if settings['context_settings']['inclusion']:
+        if settings['context_settings']['inclusion_multi_search_mode']:
+            search_terms_inclusion = settings['context_settings']['inclusion_search_terms']
+        else:
+            if settings['context_settings']['inclusion_search_term']:
+                search_terms_inclusion = [settings['context_settings']['inclusion_search_term']]
+            else:
+                search_terms_inclusion = []
+
+    if settings['context_settings']['exclusion']:
+        if settings['context_settings']['exclusion_multi_search_mode']:
+            search_terms_exclusion = settings['context_settings']['exclusion_search_terms']
+        else:
+            if settings['context_settings']['exclusion_search_term']:
+                search_terms_exclusion = [settings['context_settings']['exclusion_search_term']]
+            else:
+                search_terms_exclusion = []
 
     for file in files:
         ngrams = []
 
         text = wordless_text.Wordless_Text(main, file)
 
-        if settings['words']:
-            if settings['treat_as_lowercase']:
+        if settings['token_settings']['words']:
+            if settings['token_settings']['treat_as_lowercase']:
                 text.tokens = [token.lower() for token in text.tokens]
 
-            if settings['lemmatize']:
+            if settings['token_settings']['lemmatize']:
                 text.tokens = wordless_text.wordless_lemmatize(main, text.tokens, text.lang_code)
 
-        if not settings['puncs']:
+        if not settings['token_settings']['puncs']:
             text.tokens = [token for token in text.tokens if [char for char in token if char.isalnum()]]
 
-        if settings['allow_skipped_tokens'] == 0:
-            ngrams = list(nltk.everygrams(text.tokens, settings['ngram_size_min'], settings['ngram_size_max']))
+        search_terms_file = text.match_search_terms(search_terms,
+                                                    settings['token_settings']['puncs'],
+                                                    settings['search_settings']['ignore_case'],
+                                                    settings['search_settings']['match_inflected_forms'],
+                                                    settings['search_settings']['match_whole_word'],
+                                                    settings['search_settings']['use_regex'])
+
+        if settings['context_settings']['inclusion'] and search_terms_inclusion:
+            search_terms_inclusion_file = text.match_search_terms(search_terms_inclusion,
+                                                                  settings['token_settings']['puncs'],
+                                                                  settings['search_settings']['ignore_case'],
+                                                                  settings['search_settings']['match_inflected_forms'],
+                                                                  settings['search_settings']['match_whole_word'],
+                                                                  settings['search_settings']['use_regex'])
         else:
-            for i in range(settings['ngram_size_min'], settings['ngram_size_max'] + 1):
-                ngrams.extend(list(nltk.skipgrams(text.tokens, i, settings['allow_skipped_tokens'])))
+            search_terms_inclusion_file = []
 
-        freqs_file = nltk.FreqDist(ngrams)
+        if settings['context_settings']['exclusion'] and search_terms_exclusion:
+            search_terms_exclusion_file = text.match_search_terms(search_terms_exclusion,
+                                                                  settings['token_settings']['puncs'],
+                                                                  settings['search_settings']['ignore_case'],
+                                                                  settings['search_settings']['match_inflected_forms'],
+                                                                  settings['search_settings']['match_whole_word'],
+                                                                  settings['search_settings']['use_regex'])
+        else:
+            search_terms_exclusion_file = []
 
-        if settings['words']:
-            if not settings['treat_as_lowercase']:
-                if not settings['lowercase']:
+        if settings['generation_settings']['allow_skipped_tokens'] == 0:
+            for ngram_size in range(settings['generation_settings']['ngram_size_min'],
+                           settings['generation_settings']['ngram_size_max'] + 1):
+                for i, ngram in enumerate(nltk.ngrams(text.tokens, ngram_size)):
+                    if wordless_text.check_context(i, text.tokens,
+                                                   context_settings = settings['context_settings'],
+                                                   search_terms_inclusion = search_terms_inclusion_file,
+                                                   search_terms_exclusion = search_terms_exclusion_file):
+                        ngrams.append(ngram)
+            
+        else:
+            SENTINEL = object()
+
+            for ngram_size in range(settings['generation_settings']['ngram_size_min'],
+                           settings['generation_settings']['ngram_size_max'] + 1):
+                for search_term in search_terms_file:
+                    len_search_term = len(search_term)
+
+                    if len_search_term < ngram_size:
+                        for i, ngram in enumerate(nltk.ngrams(text.tokens,
+                                                              ngram_size + settings['generation_settings']['allow_skipped_tokens'],
+                                                              pad_right = True,
+                                                              right_pad_symbol = SENTINEL)):
+                            for j in range(ngram_size + settings['generation_settings']['allow_skipped_tokens'] - len_search_term + 1):
+                                if ngram[j : j + len_search_term] == search_term:
+                                    ngram_cur = list(ngram)
+                                    ngram_cur[j : j + len_search_term] = [ngram_cur[j : j + len_search_term]]
+
+                                    head = ngram_cur[0]
+                                    tail = ngram_cur[1:]
+
+                                    for skip_tail in itertools.combinations(tail, ngram_size - len_search_term):
+                                        ngram_matched = []
+
+                                        if type(head) == list:
+                                            ngram_matched.extend(head)
+                                        else:
+                                            ngram_matched.append(head)
+
+                                        for item in skip_tail:
+                                            if type(item) == list:
+                                                ngram_matched.extend(item)
+                                            else:
+                                                ngram_matched.append(item)
+
+                                        if skip_tail and skip_tail[-1] != SENTINEL and len(ngram_matched) == ngram_size:
+                                            if wordless_text.check_context(i + j, text.tokens,
+                                                                           context_settings = settings['context_settings'],
+                                                                           search_terms_inclusion = search_terms_inclusion_file,
+                                                                           search_terms_exclusion = search_terms_exclusion_file):
+                                                ngrams.append(tuple(ngram_matched))
+                    elif len_search_term == ngram_size:
+                        for i, ngram in enumerate(nltk.ngrams(text.tokens, ngram_size)):
+                            if ngram == search_term:
+                                if wordless_text.check_context(i, text.tokens,
+                                                               context_settings = settings['context_settings'],
+                                                               search_terms_inclusion = search_terms_inclusion_file,
+                                                               search_terms_exclusion = search_terms_exclusion_file):
+                                    ngrams.append(ngram)
+
+        freqs_file = collections.Counter(ngrams)
+
+        if settings['token_settings']['words']:
+            if not settings['token_settings']['treat_as_lowercase']:
+                if not settings['token_settings']['lowercase']:
                     freqs_file = {ngram: freq
                                   for ngram, freq in freqs_file.items()
                                   if not [token for token in ngram if token.islower()]}
-                if not settings['uppercase']:
+                if not settings['token_settings']['uppercase']:
                     freqs_file = {ngram: freq
                                   for ngram, freq in freqs_file.items()
                                   if not [token for token in ngram if token.isupper()]}
-                if not settings['title_case']:
+                if not settings['token_settings']['title_case']:
                     freqs_file = {ngram: freq
                                   for ngram, freq in freqs_file.items()
                                   if not [token for token in ngram if token.istitle()]}
 
-            if settings['filter_stop_words']:
+            if settings['token_settings']['filter_stop_words']:
                 ngrams_filtered = wordless_text.wordless_filter_stop_words(main, list(freqs_file.keys()), text.lang_code)
                 
                 freqs_file = {ngram: freqs_file[ngram] for ngram in ngrams_filtered}
@@ -625,32 +754,40 @@ def generate_ngrams(main, files):
                           for ngram, freq in freqs_file.items()
                           if not [char for char in ''.join(ngram) if char.isalpha()]}
 
-        if not settings['nums']:
+        if not settings['token_settings']['nums']:
             freqs_file = {ngram: freq
                           for ngram, freq in freqs_file.items()
                           if [token for token in ngram if not token.isnumeric()]}
 
-        if not settings['show_all']:
-            if settings['multi_search_mode']:
-                search_terms = settings['search_terms']
+        # Filter search terms
+        if settings['search_settings']['search_settings']:
+            freqs_file_filtered = {}
+
+            if settings['search_settings']['keyword_position_no_limit']:
+                keyword_position_min = 0
+                keyword_position_max = settings['generation_settings']['ngram_size_max']
             else:
-                search_terms = [settings['search_term']]
+                keyword_position_min = settings['search_settings']['keyword_position_min'] - 1
+                keyword_position_max = settings['search_settings']['keyword_position_max']
 
-            search_terms = text.match_search_terms(search_terms,
-                                                   settings['ignore_case'],
-                                                   settings['match_inflected_forms'],
-                                                   settings['match_whole_word'],
-                                                   settings['use_regex'])
+            for search_term in search_terms_file:
+                len_search_term = len(search_term)
 
-            freqs_file = {ngram: freq
-                          for ngram, freq in freqs_file.items()
-                          for search_term in search_terms
-                          if (search_term in ngram and
-                              settings['keyword_position_min'] <= ngram.index(search_term) + 1 <= settings['keyword_position_max'])}
+                for ngram, freq in freqs_file.items():
+                    for i in range(keyword_position_min, keyword_position_max):
+                        if ngram[i : i + len_search_term] == search_term:
+                            freqs_file_filtered[ngram] = freq
 
-        freqs_files.append({text.word_divider.join(ngram): freq for ngram, freq in freqs_file.items()})
+                            ngrams_text[ngram] = wordless_text.wordless_word_detokenize(main, ngram, text.lang_code)
 
-    return wordless_misc.merge_dicts(freqs_files)
+            freqs_files.append(freqs_file_filtered)
+        else:
+            for ngram, freq in freqs_file.items():
+                ngrams_text[ngram] = wordless_text.wordless_word_detokenize(main, ngram, text.lang_code)
+
+            freqs_files.append(freqs_file)
+
+    return wordless_misc.merge_dicts(freqs_files), ngrams_text
 
 @ wordless_misc.log_timing
 def generate_table(main, table):
@@ -659,10 +796,10 @@ def generate_table(main, table):
     files = main.wordless_files.get_selected_files()
 
     if files:
-        if (settings['show_all'] or
-            not settings['show_all'] and (settings['multi_search_mode'] and settings['search_terms'] or
-                                          not settings['multi_search_mode'] and settings['search_term'])):
-            freqs_files = generate_ngrams(main, files)
+        if (not settings['search_settings']['search_settings'] or
+            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms'] or
+            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']):
+            freqs_files, ngrams_text = generate_ngrams(main, files)
 
             if freqs_files:
                 table.settings = main.settings_custom
@@ -677,7 +814,7 @@ def generate_table(main, table):
                 table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')), Qt.DescendingOrder)
 
                 col_total_freq = table.find_col(main.tr('Total\nFrequency'))
-                col_files_found = table.find_col(main.tr('Files Found'))
+                col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
 
                 len_files = len(files)
 
@@ -687,12 +824,16 @@ def generate_table(main, table):
 
                 table.setRowCount(len(freqs_files))
 
-                for i, (ngram, freqs) in enumerate(wordless_sorting.sorted_freqs_files(freqs_files)):
+                freqs_files = wordless_sorting.sorted_freqs_files(freqs_files)
+
+                for i, (ngram, freqs) in enumerate(freqs_files):
                     # Rank
                     table.set_item_num_int(i, 0, -1)
 
                     # N-gram
-                    table.setItem(i, 1, wordless_table.Wordless_Table_Item(ngram))
+                    table.setItem(i, 1, wordless_table.Wordless_Table_Item(ngrams_text[ngram]))
+
+                    table.item(i, 1).text_raw = ngram
 
                     # Frequency
                     for j, freq in enumerate(freqs):
@@ -701,7 +842,7 @@ def generate_table(main, table):
                     # Total
                     table.set_item_num_cumulative(i, col_total_freq, sum(freqs))
 
-                    # Files Found
+                    # Number of Files Found
                     table.set_item_num_pct(i, col_files_found, len([freq for freq in freqs if freq]), len_files)
 
                 table.blockSignals(False)
@@ -738,19 +879,22 @@ def generate_plot(main):
     files = main.wordless_files.get_selected_files()
 
     if files:
-        if (settings['show_all'] or
-            not settings['show_all'] and (settings['multi_search_mode'] and settings['search_terms'] or
-                                          not settings['multi_search_mode'] and settings['search_term'])):
-            freqs_files = generate_ngrams(main, files)
+        if (settings['search_settings']['search_settings'] or
+            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms'] or
+            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']):
+            freqs_files, ngrams_text = generate_ngrams(main, files)
+
+            freqs_files = {ngrams_text[ngram]: freqs
+                           for ngram, freqs in freqs_files.items()}
 
             if freqs_files:
                 wordless_plot.wordless_plot_freq(main, freqs_files,
-                                                 plot_type = settings['plot_type'],
-                                                 use_data_file = settings['use_data_file'],
-                                                 use_pct = settings['use_pct'],
-                                                 use_cumulative = settings['use_cumulative'],
-                                                 rank_min = settings['rank_min'],
-                                                 rank_max = settings['rank_max'],
+                                                 plot_type = settings['plot_settings']['plot_type'],
+                                                 use_data_file = settings['plot_settings']['use_data_file'],
+                                                 use_pct = settings['plot_settings']['use_pct'],
+                                                 use_cumulative = settings['plot_settings']['use_cumulative'],
+                                                 rank_min = settings['plot_settings']['rank_min'],
+                                                 rank_max = settings['plot_settings']['rank_max'],
                                                  label_x = main.tr('N-grams'))
 
                 wordless_message.wordless_message_generate_plot_success(main)

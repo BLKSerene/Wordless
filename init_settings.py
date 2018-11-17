@@ -621,6 +621,24 @@ def init_settings_global(main):
             ]
         },
 
+        'word_detokenizers': {
+            'zho_CN': [
+                main.tr('Wordless - Chinese Word Detokenizer')
+            ],
+
+            'zho_TW': [
+                main.tr('Wordless - Chinese Word Detokenizer')
+            ],
+
+            'eng': [
+                main.tr('NLTK - Moses Detokenizer')
+            ],
+
+            'other': [
+                main.tr('NLTK - Moses Detokenizer')
+            ]
+        },
+
         'pos_taggers': {
             'zho_CN': {
                 main.tr('jieba'): 'jieba',
@@ -1199,6 +1217,19 @@ def init_settings_default(main):
             'preview_samples': ''
         },
 
+        'word_detokenization': {
+            'word_detokenizers': {
+                'zho_CN': main.tr('Wordless - Chinese Word Detokenizer'),
+                'zho_TW': main.tr('Wordless - Chinese Word Detokenizer'),
+                'eng': main.tr('NLTK - Moses Detokenizer'),
+
+                'other': main.tr('NLTK - Moses Detokenizer')
+            },
+
+            'preview_lang': 'eng',
+            'preview_samples': ''
+        },
+
         'pos_tagging': {
             'pos_taggers': {
                 'zho_CN': main.tr('jieba'),
@@ -1364,7 +1395,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_word': True,
                 'use_regex': False
             },
 
@@ -1377,7 +1408,7 @@ def init_settings_default(main):
 
                 'inclusion_ignore_case': True,
                 'inclusion_match_inflected_forms': True,
-                'inclusion_match_whole_word': False,
+                'inclusion_match_whole_word': True,
                 'inclusion_use_regex': False,
                 
                 'inclusion_context_window_sync': False,
@@ -1392,7 +1423,7 @@ def init_settings_default(main):
 
                 'exclusion_ignore_case': True,
                 'exclusion_match_inflected_forms': True,
-                'exclusion_match_whole_word': False,
+                'exclusion_match_whole_word': True,
                 'exclusion_use_regex': False,
                 
                 'exclusion_context_window_sync': False,
@@ -1496,12 +1527,113 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_word': True,
                 'use_regex': False
             }
         },
     
         'ngram': {
+            'token_settings': {
+                'words': True,
+                'lowercase': True,
+                'uppercase': True,
+                'title_case': True,
+                'treat_as_lowercase': True,
+                'lemmatize': False,
+                'filter_stop_words': False,
+
+                'nums': True,
+                'puncs': False
+            },
+            
+            'search_settings': {
+                'search_settings': True,
+
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+                'keyword_position_no_limit': True,
+                'keyword_position_min': 1,
+                'keyword_position_max': 2,
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False
+            },
+
+            'context_settings': {
+                'inclusion': True,
+
+                'inclusion_multi_search_mode': False,
+                'inclusion_search_term': '',
+                'inclusion_search_terms': [],
+
+                'inclusion_ignore_case': True,
+                'inclusion_match_inflected_forms': True,
+                'inclusion_match_whole_word': True,
+                'inclusion_use_regex': False,
+                
+                'inclusion_context_window_sync': False,
+                'inclusion_context_window_left': -5,
+                'inclusion_context_window_right': 5,
+
+                'exclusion': True,
+
+                'exclusion_multi_search_mode': False,
+                'exclusion_search_term': '',
+                'exclusion_search_terms': [],
+
+                'exclusion_ignore_case': True,
+                'exclusion_match_inflected_forms': True,
+                'exclusion_match_whole_word': True,
+                'exclusion_use_regex': False,
+                
+                'exclusion_context_window_sync': False,
+                'exclusion_context_window_left': -5,
+                'exclusion_context_window_right': 5
+            },
+            
+            'generation_settings': {
+                'ngram_size_sync': False,
+                'ngram_size_min': 2,
+                'ngram_size_max': 2,
+                'allow_skipped_tokens': 0
+            },
+
+            'table_settings': {
+                'show_pct': True,
+                'show_cumulative': False,
+                'show_breakdown': True
+            },
+
+            'plot_settings': {
+                'plot_type': main.tr('Line Chart'),
+                'use_data_file': main.tr('Total'),
+                'use_pct': False,
+                'use_cumulative': False,
+        
+                'rank_no_limit': False,
+                'rank_min': 1,
+                'rank_max': 50
+            },
+
+            'filter_settings': {
+                'apply_to': main.tr('Total'),
+        
+                'freq_no_limit': True,
+                'freq_min': 0,
+                'freq_max': 1000,
+
+                'len_no_limit': True,
+                'len_min': 1,
+                'len_max': 20,
+
+                'files_no_limit': True,
+                'files_min': 1,
+                'files_max': 100
+            },
+
             'search_results': {
                 'multi_search_mode': False,
                 'search_term': '',
@@ -1509,66 +1641,9 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_word': True,
                 'use_regex': False
-            },
-            
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_case': True,
-            'treat_as_lowercase': True,
-            'lemmatize': False,
-            'filter_stop_words': False,
-
-            'nums': True,
-            'puncs': False,
-            
-            'search_settings': True,
-
-            'multi_search_mode': False,
-            'search_term': '',
-            'search_terms': [],
-            'keyword_position_no_limit': True,
-            'keyword_position_min': 1,
-            'keyword_position_max': 2,
-
-            'ignore_case': True,
-            'match_inflected_forms': True,
-            'match_whole_word': False,
-            'use_regex': False,
-
-            'ngram_size_sync': False,
-            'ngram_size_min': 2,
-            'ngram_size_max': 2,
-            'allow_skipped_tokens': 0,
-
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown': True,
-
-            'plot_type': main.tr('Line Chart'),
-            'use_data_file': main.tr('Total'),
-            'use_pct': False,
-            'use_cumulative': False,
-    
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
-
-            'apply_to': main.tr('Total'),
-    
-            'freq_no_limit': True,
-            'freq_min': 0,
-            'freq_max': 1000,
-
-            'len_no_limit': True,
-            'len_min': 1,
-            'len_max': 20,
-
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
+            }
         },
 
         'collocation': {
@@ -1579,7 +1654,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_word': True,
                 'use_regex': False
             },
 
@@ -1602,7 +1677,7 @@ def init_settings_default(main):
 
             'ignore_case': True,
             'match_inflected_forms': True,
-            'match_whole_word': False,
+            'match_whole_word': True,
             'use_regex': False,
 
             'window_sync': False,
@@ -1658,7 +1733,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_word': True,
                 'use_regex': False
             },
 
@@ -1675,7 +1750,7 @@ def init_settings_default(main):
 
             'ignore_case': True,
             'match_inflected_forms': True,
-            'match_whole_word': False,
+            'match_whole_word': True,
             'use_regex': False,
 
             'keyword_type': main.tr('Token'),
@@ -1728,7 +1803,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_word': True,
                 'use_regex': False
             },
 

@@ -323,7 +323,9 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
     def __init__(self, main, tab):
         super().__init__(main, main.tr('Context Settings'))
 
-        self.settings = self.main.settings_custom[tab]['context_settings']
+        self.tab = tab
+
+        self.settings = self.main.settings_custom[self.tab]['context_settings']
 
         # Inclusion
         self.group_box_inclusion = QGroupBox(self.tr('Inclusion'), self)
@@ -473,7 +475,7 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         self.button_ok = QPushButton(self.tr('OK'), self)
 
         self.button_restore_default_settings.clicked.connect(self.restore_default_settings)
-        self.button_ok.clicked.connect(self.hide)
+        self.button_ok.clicked.connect(self.accept)
 
         self.button_restore_default_settings.setFixedWidth(150)
 
@@ -532,6 +534,8 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
             self.spin_box_inclusion_context_window_right.setPrefix('R')
             self.spin_box_inclusion_context_window_right.setValue(settings['inclusion_context_window_right'])
 
+        self.line_edit_inclusion_search_term.returnPressed.connect(self.button_ok.click)
+
         # Exclusion
         self.group_box_exclusion.setChecked(settings['exclusion'])
 
@@ -565,6 +569,8 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         else:
             self.spin_box_exclusion_context_window_right.setPrefix('R')
             self.spin_box_exclusion_context_window_right.setValue(settings['exclusion_context_window_right'])
+
+        self.line_edit_exclusion_search_term.returnPressed.connect(self.button_ok.click)
 
     def inclusion_changed(self):
         self.settings['inclusion'] = self.group_box_inclusion.isChecked()

@@ -6,13 +6,12 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
+import collections
 import copy
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-
-import nltk
 
 from wordless_widgets import *
 from wordless_utils import *
@@ -24,16 +23,16 @@ class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Search):
                              main.tr('Rank'),
                              main.tr('Tokens'),
                              main.tr('Total\nFrequency'),
-                             main.tr('Files Found')
+                             main.tr('Number of\nFiles Found')
                          ],
                          headers_num = [
                              main.tr('Rank'),
                              main.tr('Total\nFrequency'),
-                             main.tr('Files Found')
+                             main.tr('Number of\nFiles Found')
                          ],
                          headers_pct = [
                              main.tr('Total\nFrequency'),
-                             main.tr('Files Found')
+                             main.tr('Number of\nFiles Found')
                          ],
                          headers_cumulative = [
                              main.tr('Total\nFrequency')
@@ -56,7 +55,7 @@ class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Search):
     @ wordless_misc.log_timing
     def update_filters(self):
         if any([self.item(0, i) for i in range(self.columnCount())]):
-            settings = self.main.settings_custom['wordlist']
+            settings = self.main.settings_custom['wordlist']['filter_settings']
 
             if settings['apply_to'] == self.tr('Total'):
                 col_freq = self.find_col(self.tr('Total\nFrequency'))
@@ -64,7 +63,7 @@ class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Search):
                 col_freq = self.find_col(self.tr(f'[{settings["apply_to"]}]\nFrequency'))
 
             col_tokens = self.find_col(self.tr('Tokens'))
-            col_files_found = self.find_col(self.tr('Files Found'))
+            col_files_found = self.find_col(self.tr('Number of\nFiles Found'))
 
             freq_min = settings['freq_min']
             freq_max = settings['freq_max'] if not settings['freq_no_limit'] else float('inf')
@@ -83,7 +82,7 @@ class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Search):
                 else:
                     self.row_filters[i].append(False)
 
-                if len_min <= len(self.item(i, col_tokens).text().replace(' ', '')) <= len_max:
+                if len_min <= len(self.item(i, col_tokens).text()) <= len_max:
                     self.row_filters[i].append(True)
                 else:
                     self.row_filters[i].append(False)
@@ -356,7 +355,7 @@ def init(main):
      label_len_max,
      spin_box_len_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100)
 
-    label_files = QLabel(main.tr('Files Found:'), main)
+    label_files = QLabel(main.tr('Number of Files Found:'), main)
     (checkbox_files_no_limit,
      label_files_min,
      spin_box_files_min,
@@ -442,7 +441,7 @@ def generate_wordlists(main, files):
             if settings['token_settings']['lemmatize']:
                 tokens = wordless_text.wordless_lemmatize(text.main, tokens, text.lang_code)
 
-        freqs_file = nltk.FreqDist(tokens)
+        freqs_file = collections.Counter(tokens)
 
         if settings['token_settings']['words']:
             if not settings['token_settings']['treat_as_lowercase']:
@@ -500,7 +499,7 @@ def generate_table(main, table):
         table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')), Qt.DescendingOrder)
 
         col_total_freq = table.find_col(main.tr('Total\nFrequency'))
-        col_files_found = table.find_col(main.tr('Files Found'))
+        col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
 
         len_files = len(files)
 
@@ -524,7 +523,7 @@ def generate_table(main, table):
             # Total
             table.set_item_num_cumulative(i, col_total_freq, sum(freqs))
 
-            # Files Found
+            # Number of Files Found
             table.set_item_num_pct(i, col_files_found, len([freq for freq in freqs if freq]), len_files)
 
         table.blockSignals(False)

@@ -21,13 +21,13 @@ import nltk.tokenize.nist
 
 from wordless_utils import wordless_conversion
 
-def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'Default'):
+def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'default'):
     sentences = []
 
     if lang_code not in main.settings_global['sentence_tokenizers']:
         lang_code = 'other'
 
-    if sentence_tokenizer == 'Default':
+    if sentence_tokenizer == 'default':
         sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizers'][lang_code]
 
     if 'HanLP' in sentence_tokenizer:
@@ -60,13 +60,13 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'Defa
                 sentences.append(line[i_sentence:])
 
         elif sentence_tokenizer == main.tr('HanLP - Sentence Segmenter'):
-            sentences_util = jpype.JClass('com.hankcs.hanlp.utility.SentencesUtil')
+            sentences_util = jpype.JClass('com.hankcs.hanlp.tokenizer.StandardTokenizer')
 
-            sentences = sentences_util.toSentenceList(line, shortest = False)
+            sentences = standard_tokenizer.SEGMENT.seg2sentence(line, False)
 
     return sentences
 
-def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'Default'):
+def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default'):
     tokens = []
 
     if type(sentences) == str:
@@ -75,7 +75,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'Default
     if lang_code not in main.settings_global['word_tokenizers']:
         lang_code = 'other'
 
-    if word_tokenizer == 'Default':
+    if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang_code]
 
     # English
@@ -174,10 +174,51 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'Default
 
     return tokens
 
-def wordless_pos_tag(main, text, lang_code, pos_tagger = 'Default', tagset = 'Default'):
+def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'default'):
+    text = ''
+
+    if word_detokenizer == 'default':
+        word_detokenizer = main.settings_custom['word_detokenization']['word_detokenizers'][lang_code]
+
+    if word_detokenizer == main.tr('NLTK - Moses Detokenizer'):
+        texts = []
+
+        moses_detokenizer = nltk.tokenize.treebank.TreebankWordDetokenizer()
+
+        for sentence in wordless_sentence_tokenize(main, ' '.join(tokens), lang_code):
+            texts.append(moses_detokenizer.tokenize(sentence.split()))
+
+        text = ' '.join(texts)
+    elif word_detokenizer == main.tr('Wordless - Chinese Word Detokenizer'):
+        non_cjkv_start = 0
+
+        for i, token in enumerate(tokens):
+            if i >= non_cjkv_start:
+                if re.search(r'[\u2E80-\u9FFF]', token):
+                    text += token
+
+                    non_cjkv_start += 1
+                else:
+                    for j, token in enumerate(tokens):
+                        if j > i and re.search(r'[\u2E80-\u9FFF]', token):
+                            text += wordless_word_detokenize(main, tokens[non_cjkv_start:j], 'eng')
+
+                            non_cjkv_start = j
+
+                            break
+                        elif j == len(tokens) - 1:
+                            text += wordless_word_detokenize(main, tokens[non_cjkv_start:], 'eng')
+
+                            non_cjkv_start = j + 1
+
+                            break
+
+    return text
+
+def wordless_pos_tag(main, text, lang_code, pos_tagger = 'default', tagset = 'default'):
     tokens_tagged = []
 
-    if pos_tagger == 'Default':
+    if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang_code]
 
     sentences = wordless_sentence_tokenize(main, text, lang_code)
@@ -187,7 +228,7 @@ def wordless_pos_tag(main, text, lang_code, pos_tagger = 'Default', tagset = 'De
             tokens_tagged.extend(nltk.pos_tag(wordless_word_tokenize(main, sentence, lang_code), lang = lang_code))
     elif pos_tagger == main.tr('jieba'):
         for sentence in sentences:
-            tokens_tagged.extend(jieba.posseg.lcut(sentence))
+            tokens_tagged.extend(jieba.posseg.cut(sentence))
     elif pos_tagger == main.tr('HanLP - CRF Lexical Analyzer'):
         crf_tagger = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
 
@@ -199,7 +240,7 @@ def wordless_pos_tag(main, text, lang_code, pos_tagger = 'Default', tagset = 'De
         for sentence in sentences:
             tokens_tagged.extend(list(zip(*perceptron_tagger.analyze(text).toWordTagArray())))
 
-    if tagset == 'Default':
+    if tagset == 'default':
         tagset = main.settings_custom['pos_tagging']['tagsets'][lang_code]
 
     # Convert to Universal Tagset
@@ -211,14 +252,14 @@ def wordless_pos_tag(main, text, lang_code, pos_tagger = 'Default', tagset = 'De
 
     return tokens_tagged
 
-def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'Default'):
+def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'default'):
     lemma_list = {}
     lemmas = []
 
     if tokens and lang_code in main.settings_global['lemmatizers']:
         tokens = list(tokens)
 
-        if lemmatizer == 'Default':
+        if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang_code]
 
         if lemmatizer == 'NLTK':
@@ -307,11 +348,59 @@ def wordless_filter_stop_words(main, items, lang_code):
     else:
         return items
 
+def check_context(i, tokens, context_settings,
+                  search_terms_inclusion, search_terms_exclusion):
+    len_tokens = len(tokens)
+
+    # Inclusion
+    if context_settings['inclusion'] and search_terms_inclusion:
+        inclusion_matched = False
+
+        for search_term in search_terms_inclusion:
+            if inclusion_matched:
+                break
+
+            for j in range(context_settings['inclusion_context_window_left'],
+                           context_settings['inclusion_context_window_right'] + 1):
+                if i + j < 0 or i + j > len_tokens - 1:
+                    continue
+
+                if j != 0:
+                    if tokens[i + j : i + j + len(search_term)] == list(search_term):
+                        inclusion_matched = True
+
+                        break
+    else:
+        inclusion_matched = True
+
+    # Exclusion
+    exclusion_matched = True
+
+    if context_settings['exclusion'] and search_terms_exclusion:
+        for search_term in search_terms_exclusion:
+            if not exclusion_matched:
+                break
+
+            for j in range(context_settings['exclusion_context_window_left'],
+                           context_settings['exclusion_context_window_right'] + 1):
+                if i + j < 0 or i + j > len_tokens - 1:
+                    continue
+
+                if j != 0:
+                    if tokens[i + j : i + j + len(search_term)] == list(search_term):
+                        exclusion_matched = False
+
+                        break
+
+    if inclusion_matched and exclusion_matched:
+        return True
+    else:
+        return False
+
 class Wordless_Text():
     def __init__(self, main, file, merge_puncs = False):
         self.main = main
         self.lang_code = file['lang_code']
-        self.word_divider = file['word_divider']
 
         self.paras = []
         self.para_offsets = []

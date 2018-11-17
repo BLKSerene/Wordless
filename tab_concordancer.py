@@ -339,7 +339,7 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
                     token_no, sentence_no, para_no, file) in enumerate(sorted(results, key = key_concordancer)):
                 for file_open in self.table.settings['file']['files_open']:
                     if file_open['selected'] and file_open['name'] == file:
-                        word_divider = file_open['word_divider']
+                        lang_code = file_open['lang_code']
 
                 # Remove empty tokens
                 left = [token for token in left if token]
@@ -375,9 +375,9 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
 
                         i_highlight_color_right += 1
 
-                self.table.cellWidget(i, 0).setText(word_divider.join(left))
+                self.table.cellWidget(i, 0).setText(wordless_text.wordless_word_detokenize(self.main, left, lang_code))
                 self.table.cellWidget(i, 1).setText(node)
-                self.table.cellWidget(i, 2).setText(word_divider.join(right))
+                self.table.cellWidget(i, 2).setText(wordless_text.wordless_word_detokenize(self.main, right, lang_code))
 
                 self.table.item(i, 3).val = token_no
                 self.table.item(i, 4).val = sentence_no
@@ -742,21 +742,25 @@ def generate_table(main, table):
                                                             settings['search_settings']['match_whole_word'],
                                                             settings['search_settings']['use_regex'])
 
-                if settings['context_settings']['inclusion']:
+                if settings['context_settings']['inclusion'] and search_terms_inclusion:
                     search_terms_inclusion_file = text.match_search_terms(search_terms_inclusion,
                                                                           settings['token_settings']['puncs'],
                                                                           settings['search_settings']['ignore_case'],
                                                                           settings['search_settings']['match_inflected_forms'],
                                                                           settings['search_settings']['match_whole_word'],
                                                                           settings['search_settings']['use_regex'])
+                else:
+                    search_terms_inclusion_file = []
 
-                if settings['context_settings']['exclusion']:
+                if settings['context_settings']['exclusion'] and search_terms_exclusion:
                     search_terms_exclusion_file = text.match_search_terms(search_terms_exclusion,
                                                                           settings['token_settings']['puncs'],
                                                                           settings['search_settings']['ignore_case'],
                                                                           settings['search_settings']['match_inflected_forms'],
                                                                           settings['search_settings']['match_whole_word'],
                                                                           settings['search_settings']['use_regex'])
+                else:
+                    search_terms_exclusion_file = []
 
                 if not settings['token_settings']['puncs']:
                     text.tokens_no_puncs = [token for token in text.tokens if [char for char in token if char.isalnum()]]
@@ -799,86 +803,37 @@ def generate_table(main, table):
                 else:
                     tokens_text = text.tokens_no_puncs
 
-                len_tokens_text = len(tokens_text)
-
                 for search_term in search_terms_file:
                     len_search_term = len(search_term)
 
                     for i, ngram in enumerate(nltk.ngrams(tokens_text, len_search_term)):
                         if ngram == search_term:
-                            if settings['context_settings']['inclusion'] and search_terms_inclusion:
-                                inclusion_matched = False
-
-                                for search_term_inclusion in search_terms_inclusion_file:
-                                    if inclusion_matched:
-                                        break
-
-                                    for j in range(settings['context_settings']['inclusion_context_window_left'],
-                                                   settings['context_settings']['inclusion_context_window_right'] + 1):
-                                        if i + j < 0 or i + j > len_tokens_text - 1:
-                                            continue
-
-                                        if j != 0:
-                                            if tokens_text[i + j : i + j + len(search_term_inclusion)] == list(search_term_inclusion):
-                                                inclusion_matched = True
-
-                                                break
-                            else:
-                                inclusion_matched = True
-
-                            exclusion_matched = True
-
-                            if settings['context_settings']['exclusion']:
-                                for search_term_exclusion in search_terms_exclusion_file:
-                                    if not exclusion_matched:
-                                        break
-
-                                    for j in range(settings['context_settings']['exclusion_context_window_left'],
-                                                   settings['context_settings']['exclusion_context_window_right'] + 1):
-                                        if i + j < 0 or i + j > len_tokens_text - 1:
-                                            continue
-
-                                        if j != 0:
-                                            if tokens_text[i + j : i + j + len(search_term_exclusion)] == list(search_term_exclusion):
-                                                exclusion_matched = False
-
-                                                break
-
-                            if inclusion_matched and exclusion_matched:
+                            if wordless_text.check_context(i, tokens_text,
+                                                           context_settings = settings['context_settings'],
+                                                           search_terms_inclusion = search_terms_inclusion_file,
+                                                           search_terms_exclusion = search_terms_exclusion_file):
                                 if not settings['token_settings']['puncs']:
                                     ngram = [text.tokens[i + j] for j in range(len(ngram))]
 
                                 table.setRowCount(table.rowCount() + 1)
 
                                 # Node
+                                node_text = html.escape(wordless_text.wordless_word_detokenize(main, ngram, text.lang_code))
+
                                 table.setCellWidget(table.rowCount() - 1, 1,
                                                     QLabel(f'''
                                                                 <span style="color: {settings["sorting_settings"]["highlight_colors"][0]};
                                                                              font-weight: bold;">
-                                                                    {html.escape(text.word_divider.join(ngram))}
+                                                                    {node_text}
                                                                 </span>
                                                             ''', main))
 
+                                table.cellWidget(table.rowCount() - 1, 1).setTextFormat(Qt.RichText)
                                 table.cellWidget(table.rowCount() - 1, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
                                 if settings['generation_settings']['width_unit'] == main.tr('Token'):
                                     context_left = text.tokens[max(0, i - settings['generation_settings']['width_left_token']) : i]
                                     context_right = text.tokens[i + len_search_term : min(i + len_search_term + settings['generation_settings']['width_right_token'], len_tokens)]
-
-                                    context_left = [html.escape(token) for token in context_left]
-                                    context_right = [html.escape(token) for token in context_right]
-
-                                    # Left
-                                    table.setCellWidget(table.rowCount() - 1, 0,
-                                                        QLabel(text.word_divider.join(context_left), main))
-
-                                    table.cellWidget(table.rowCount() - 1, 0).text_raw = context_left
-
-                                    # Right
-                                    table.setCellWidget(table.rowCount() - 1, 2,
-                                                        QLabel(text.word_divider.join(context_right), main))
-
-                                    table.cellWidget(table.rowCount() - 1, 2).text_raw = context_right
                                 else:
                                     len_context_left = 0
                                     len_context_right = 0
@@ -940,26 +895,28 @@ def generate_table(main, table):
 
                                         len_context_right += len(token_next)
 
-                                    context_left = [html.escape(token) for token in context_left]
-                                    context_right = [html.escape(token) for token in context_right]
+                                context_left = [html.escape(token) for token in context_left]
+                                context_right = [html.escape(token) for token in context_right]
 
-                                    # Left
-                                    table.setCellWidget(table.rowCount() - 1, 0,
-                                                        QLabel(text.word_divider.join(context_left), main))
+                                context_left_text = wordless_text.wordless_word_detokenize(main, context_left, text.lang_code)
+                                context_right_text = wordless_text.wordless_word_detokenize(main, context_right, text.lang_code)
 
-                                    table.cellWidget(table.rowCount() - 1, 0).text_raw = context_left
-
-                                    # Right
-                                    table.setCellWidget(table.rowCount() - 1, 2,
-                                                        QLabel(text.word_divider.join(context_right), main))
-
-                                    table.cellWidget(table.rowCount() - 1, 2).text_raw = context_right
+                                # Left
+                                table.setCellWidget(table.rowCount() - 1, 0,
+                                                    QLabel(context_left_text, main))
 
                                 table.cellWidget(table.rowCount() - 1, 0).setTextFormat(Qt.RichText)
-                                table.cellWidget(table.rowCount() - 1, 1).setTextFormat(Qt.RichText)
+                                table.cellWidget(table.rowCount() - 1, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+
+                                table.cellWidget(table.rowCount() - 1, 0).text_raw = context_left
+
+                                # Right
+                                table.setCellWidget(table.rowCount() - 1, 2,
+                                                    QLabel(context_right_text, main))
+
                                 table.cellWidget(table.rowCount() - 1, 2).setTextFormat(Qt.RichText)
 
-                                table.cellWidget(table.rowCount() - 1, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                                table.cellWidget(table.rowCount() - 1, 2).text_raw = context_right
 
                                 # Token
                                 table.set_item_num_pct(table.rowCount() - 1, 3,
@@ -1048,7 +1005,7 @@ def generate_plot(main):
 
                 for search_term in search_terms_file:
                     search_terms_total.add(search_term)
-                    search_terms_labels.add(text.word_divider.join(search_term))
+                    search_terms_labels.add(wordless_text.wordless_word_detokenize(main, search_term, text.lang_code))
 
             len_files = len(files)
             len_tokens_total = sum([len(text.tokens) for text in texts])
@@ -1080,41 +1037,23 @@ def generate_plot(main):
                     x_ticks = [0]
                     x_tick_labels = ['']
 
-                    points_dividers = [(0, i) for i in range(len_files + 1)]
-
                     for i, search_term in enumerate(search_terms_total):
                         x_tick_start = len_tokens_total * i + i + 1
 
-                        # 1/4
-                        x_ticks.append(x_tick_start + len_tokens_total / 4)
                         # 1/2
                         x_ticks.append(x_tick_start + len_tokens_total / 2)
-                        # 3/4
-                        x_ticks.append(x_tick_start + len_tokens_total * 3 / 4)
                         # Divider
                         x_ticks.append(x_tick_start + len_tokens_total + 1)
 
-                        points_dividers.extend([(x_tick_start + len_tokens_total, y)
-                                                for y in range(len_files + 1)])
-
                     for search_term in search_terms_labels:
-                        # 1/4
-                        x_tick_labels.append('')
                         # 1/2
                         x_tick_labels.append(search_term)
-                        # 3/4
-                        x_tick_labels.append('')
                         # Divider
                         x_tick_labels.append('')
 
                     matplotlib.pyplot.plot(numpy.array(points)[:, 0],
                                            numpy.array(points)[:, 1],
                                            'b|')
-
-                    # Dividers
-                    matplotlib.pyplot.plot(numpy.array(points_dividers)[:, 0],
-                                           numpy.array(points_dividers)[:, 1],
-                                           'r|')
 
                     matplotlib.pyplot.xlabel(main.tr('Search Terms'))
                     matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r')
@@ -1143,43 +1082,25 @@ def generate_plot(main):
                     x_ticks = [0]
                     x_tick_labels = ['']
 
-                    points_dividers = [(0, i) for i in range(len(search_terms_total))]
-
                     for i, text in enumerate(texts):
                         x_tick_start = sum([len(text.tokens)
                                             for j, text in enumerate(texts)
                                             if j < i]) + j + 1
 
-                        # 1/4
-                        x_ticks.append(x_tick_start + len(text.tokens) / 4)
                         # 1/2
                         x_ticks.append(x_tick_start + len(text.tokens) / 2)
-                        # 3/4
-                        x_ticks.append(x_tick_start + len(text.tokens) * 3 / 4)
                         # Divider
                         x_ticks.append(x_tick_start + len(text.tokens) + 1)
 
-                        points_dividers.extend([(x_tick_start + len(text.tokens), y)
-                                                for y in range(len_search_terms_total)])
-
                     for file in files:
-                        # 1/4
-                        x_tick_labels.append('')
                         # 1/2
                         x_tick_labels.append(file['name'])
-                        # 3/4
-                        x_tick_labels.append('')
                         # Divider
                         x_tick_labels.append('')
 
                     matplotlib.pyplot.plot(numpy.array(points)[:, 0],
                                            numpy.array(points)[:, 1],
                                            'b|')
-
-                    # Dividers
-                    matplotlib.pyplot.plot(numpy.array(points_dividers)[:, 0],
-                                           numpy.array(points_dividers)[:, 1],
-                                           'r|')
 
                     matplotlib.pyplot.xlabel(main.tr('Files'))
                     matplotlib.pyplot.xticks(x_ticks, x_tick_labels)
@@ -1192,6 +1113,7 @@ def generate_plot(main):
 
             if points:
                 matplotlib.pyplot.title(main.tr('Dispersion Plot'))
+                matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
                 matplotlib.pyplot.show()
 
                 wordless_message.wordless_message_generate_plot_success(main)
