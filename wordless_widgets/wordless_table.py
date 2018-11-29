@@ -894,13 +894,11 @@ class Wordless_Table_Data_Search(Wordless_Table_Data):
         self.label_number_results = QLabel()
         self.button_search_results = QPushButton(self.tr('Search in Results'), self)
 
-        self.item_changed = self.results_changed
+        self.itemChanged.connect(self.results_changed)
 
         self.results_changed()
 
     def results_changed(self):
-        super().item_changed()
-
         rows_visible = len([i for i in range(self.rowCount()) if not self.isRowHidden(i)])
 
         if [i for i in range(self.columnCount()) if self.item(0, i)] and rows_visible:

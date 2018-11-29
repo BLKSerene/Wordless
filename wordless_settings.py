@@ -54,31 +54,45 @@ class Wordless_Settings(QDialog):
 
         self.tree_settings = wordless_tree.Wordless_Tree(self)
 
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('General')]))
-        self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem(self.tree_settings.topLevelItem(0), [self.tr('Import')]))
-        self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem(self.tree_settings.topLevelItem(0), [self.tr('Export')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('General')]))
+        self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem([self.tr('Import')]))
+        self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem([self.tr('Export')]))
 
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Sentence Tokenization')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Word Tokenization')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Word Detokenization')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('POS Tagging')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Lemmatization')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem(self.tree_settings, [self.tr('Stop Words')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Tokenization')]))
+        self.tree_settings.topLevelItem(1).addChild(QTreeWidgetItem([self.tr('Sentence Tokenization')]))
+        self.tree_settings.topLevelItem(1).addChild(QTreeWidgetItem([self.tr('Word Tokenization')]))
+        self.tree_settings.topLevelItem(1).addChild(QTreeWidgetItem([self.tr('Word Detokenization')]))
+
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('POS Tagging')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Lemmatization')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Stop Words')]))
+
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Measures')]))
+        self.tree_settings.topLevelItem(5).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
+        self.tree_settings.topLevelItem(5).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
+        self.tree_settings.topLevelItem(5).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
+        self.tree_settings.topLevelItem(5).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
 
         self.tree_settings.itemSelectionChanged.connect(self.selection_changed)
 
         self.scroll_area_settings = wordless_layout.Wordless_Scroll_Area(self.main)
 
-        self.wrapper_settings_general = self.init_settings_general()
-        self.wrapper_settings_import = self.init_settings_import()
-        self.wrapper_settings_export = self.init_settings_export()
+        self.init_settings_general()
+        self.init_settings_import()
+        self.init_settings_export()
 
-        self.wrapper_settings_sentence_tokenization = self.init_settings_sentence_tokenization()
-        self.wrapper_settings_word_tokenization = self.init_settings_word_tokenization()
-        self.wrapper_settings_word_detokenization = self.init_settings_word_detokenization()
-        self.wrapper_settings_pos_tagging = self.init_settings_pos_tagging()
-        self.wrapper_settings_lemmatization = self.init_settings_lemmatization()
-        self.wrapper_settings_stop_words = self.init_settings_stop_words()
+        self.init_settings_sentence_tokenization()
+        self.init_settings_word_tokenization()
+        self.init_settings_word_detokenization()
+
+        self.init_settings_pos_tagging()
+        self.init_settings_lemmatization()
+        self.init_settings_stop_words()
+
+        self.init_settings_dispersion()
+        self.init_settings_adjusted_freq()
+        self.init_settings_statistical_significance()
+        self.init_settings_effect_size()
 
         button_restore_default_settings = QPushButton(self.tr('Restore Default Settings'), self)
         button_save = QPushButton(self.tr('Save'), self)
@@ -105,53 +119,79 @@ class Wordless_Settings(QDialog):
         self.layout().setColumnStretch(1, 3)
 
     def selection_changed(self):
-        if self.settings_validate():
-            self.wrapper_settings_general.hide()
-            self.wrapper_settings_import.hide()
-            self.wrapper_settings_export.hide()
+        settings_cur = None
 
-            self.wrapper_settings_sentence_tokenization.hide()
-            self.wrapper_settings_word_tokenization.hide()
-            self.wrapper_settings_pos_tagging.hide()
-            self.wrapper_settings_lemmatization.hide()
-            self.wrapper_settings_stop_words.hide()
+        if self.tree_settings.selectedItems():
+            if self.settings_validate():
+                item_selected = self.tree_settings.selectedItems()[0]
+                item_selected_text = item_selected.text(0)
 
-            self.scroll_area_settings.takeWidget()
+                if item_selected_text == self.tr('General'):
+                    item_selected.setExpanded(True)
+                    settings_cur = self.settings_general
+                elif item_selected_text == self.tr('Import'):
+                    settings_cur = self.settings_import
+                elif item_selected_text == self.tr('Export'):
+                    settings_cur = self.settings_export
 
-            item_selected = self.tree_settings.selectedItems()[0]
+                elif item_selected_text == self.tr('Tokenization'):
+                    item_selected.setExpanded(True)
+                elif item_selected_text == self.tr('Sentence Tokenization'):
+                    settings_cur = self.settings_sentence_tokenization
+                elif item_selected_text == self.tr('Word Tokenization'):
+                    settings_cur = self.settings_word_tokenization
+                elif item_selected_text == self.tr('Word Detokenization'):
+                    settings_cur = self.settings_word_detokenization
 
-            if item_selected.text(0) == self.tr('General'):
-                settings_cur = self.wrapper_settings_general
-            elif item_selected.text(0) == self.tr('Import'):
-                settings_cur = self.wrapper_settings_import
-            elif item_selected.text(0) == self.tr('Export'):
-                settings_cur = self.wrapper_settings_export
+                elif item_selected_text == self.tr('POS Tagging'):
+                    settings_cur = self.settings_pos_tagging
+                elif item_selected_text == self.tr('Lemmatization'):
+                    settings_cur = self.settings_lemmatization
+                elif item_selected_text == self.tr('Stop Words'):
+                    settings_cur = self.settings_stop_words
 
-            elif item_selected.text(0) == self.tr('Sentence Tokenization'):
-                settings_cur = self.wrapper_settings_sentence_tokenization
-            elif item_selected.text(0) == self.tr('Word Tokenization'):
-                settings_cur = self.wrapper_settings_word_tokenization
-            elif item_selected.text(0) == self.tr('Word Detokenization'):
-                settings_cur = self.wrapper_settings_word_detokenization
-            elif item_selected.text(0) == self.tr('POS Tagging'):
-                settings_cur = self.wrapper_settings_pos_tagging
-            elif item_selected.text(0) == self.tr('Lemmatization'):
-                settings_cur = self.wrapper_settings_lemmatization
-            elif item_selected.text(0) == self.tr('Stop Words'):
-                settings_cur = self.wrapper_settings_stop_words
+                elif item_selected_text == self.tr('Measures'):
+                    item_selected.setExpanded(True)
+                elif item_selected_text == self.tr('Dispersion'):
+                    settings_cur = self.settings_dispersion
+                elif item_selected_text == self.tr('Adjusted Frequency'):
+                    settings_cur = self.settings_adjusted_freq
+                elif item_selected_text == self.tr('Statistical Significance'):
+                    settings_cur = self.settings_statistical_significance
+                elif item_selected_text == self.tr('Effect Size'):
+                    settings_cur = self.settings_effect_size
 
-            settings_cur.show()
+                if settings_cur:
+                    self.settings_general.hide()
+                    self.settings_import.hide()
+                    self.settings_export.hide()
 
-            self.scroll_area_settings.setWidget(settings_cur)
+                    self.settings_sentence_tokenization.hide()
+                    self.settings_word_tokenization.hide()
+                    self.settings_word_detokenization.hide()
 
-            self.tree_settings.item_selected_old = item_selected
-        else:
-            self.tree_settings.blockSignals(True)
+                    self.settings_pos_tagging.hide()
+                    self.settings_lemmatization.hide()
+                    self.settings_stop_words.hide()
 
-            self.tree_settings.clearSelection()
-            self.tree_settings.item_selected_old.setSelected(True)
+                    self.settings_dispersion.hide()
+                    self.settings_adjusted_freq.hide()
+                    self.settings_statistical_significance.hide()
+                    self.settings_effect_size.hide()
 
-            self.tree_settings.blockSignals(False)
+                    self.scroll_area_settings.takeWidget()
+                    self.scroll_area_settings.setWidget(settings_cur)
+
+                    settings_cur.show()
+
+                self.tree_settings.item_selected_old = item_selected
+            else:
+                self.tree_settings.blockSignals(True)
+
+                self.tree_settings.clearSelection()
+                self.tree_settings.item_selected_old.setSelected(True)
+
+                self.tree_settings.blockSignals(False)
 
     def init_settings_general(self):
         def browse_file():
@@ -162,7 +202,7 @@ class Wordless_Settings(QDialog):
             if path_file:
                 self.line_edit_file_default_path.setText(path_file)
 
-        wrapper_settings_general = QWidget(self)
+        self.settings_general = QWidget(self)
 
         # File Settings
         group_box_file_settings = QGroupBox(self.tr('File Settings'), self)
@@ -208,13 +248,11 @@ class Wordless_Settings(QDialog):
         group_box_precision_settings.layout().addWidget(self.label_precision_p_value, 2, 0)
         group_box_precision_settings.layout().addWidget(self.spin_box_precision_p_value, 2, 1)
 
-        wrapper_settings_general.setLayout(QGridLayout())
-        wrapper_settings_general.layout().addWidget(group_box_file_settings, 0, 0, Qt.AlignTop)
-        wrapper_settings_general.layout().addWidget(group_box_precision_settings, 1, 0, Qt.AlignTop)
+        self.settings_general.setLayout(QGridLayout())
+        self.settings_general.layout().addWidget(group_box_file_settings, 0, 0, Qt.AlignTop)
+        self.settings_general.layout().addWidget(group_box_precision_settings, 1, 0, Qt.AlignTop)
 
-        wrapper_settings_general.layout().setRowStretch(2, 1)
-
-        return wrapper_settings_general
+        self.settings_general.layout().setRowStretch(2, 1)
 
     def init_settings_import(self):
         def browse_search_terms():
@@ -225,7 +263,7 @@ class Wordless_Settings(QDialog):
             if path_file:
                 self.line_edit_import_search_terms_default_path.setText(path_file)
 
-        wrapper_settings_import = QWidget(self)
+        self.settings_import = QWidget(self)
 
         group_box_import_search_terms = QGroupBox(self.tr('Search Terms'), self)
 
@@ -244,10 +282,8 @@ class Wordless_Settings(QDialog):
         group_box_import_search_terms.layout().addWidget(self.label_import_search_terms_default_encoding, 1, 0)
         group_box_import_search_terms.layout().addWidget(self.combo_box_import_search_terms_default_encoding, 1, 1, 1, 2)
 
-        wrapper_settings_import.setLayout(QGridLayout())
-        wrapper_settings_import.layout().addWidget(group_box_import_search_terms, 0, 0, Qt.AlignTop)
-
-        return wrapper_settings_import
+        self.settings_import.setLayout(QGridLayout())
+        self.settings_import.layout().addWidget(group_box_import_search_terms, 0, 0, Qt.AlignTop)
 
     def init_settings_export(self):
         def tables_default_type_changed():
@@ -272,7 +308,7 @@ class Wordless_Settings(QDialog):
             if path_file:
                 self.line_edit_export_search_terms_default_path.setText(path_file)
 
-        wrapper_settings_export = QWidget(self)
+        self.settings_export = QWidget(self)
 
         # Tables
         group_box_export_tables = QGroupBox(self.tr('Tables'), self)
@@ -317,15 +353,13 @@ class Wordless_Settings(QDialog):
         group_box_export_search_terms.layout().addWidget(self.label_export_search_terms_default_encoding, 1, 0)
         group_box_export_search_terms.layout().addWidget(self.combo_box_export_search_terms_default_encoding, 1, 1, 1, 2)
 
-        wrapper_settings_export.setLayout(QGridLayout())
-        wrapper_settings_export.layout().addWidget(group_box_export_tables, 0, 0, Qt.AlignTop)
-        wrapper_settings_export.layout().addWidget(group_box_export_search_terms, 1, 0, Qt.AlignTop)
+        self.settings_export.setLayout(QGridLayout())
+        self.settings_export.layout().addWidget(group_box_export_tables, 0, 0, Qt.AlignTop)
+        self.settings_export.layout().addWidget(group_box_export_search_terms, 1, 0, Qt.AlignTop)
 
-        wrapper_settings_export.layout().setRowStretch(2, 1)
+        self.settings_export.layout().setRowStretch(2, 1)
 
         tables_default_type_changed()
-
-        return wrapper_settings_export
 
     def init_settings_sentence_tokenization(self):
         def preview_settings_changed():
@@ -352,7 +386,7 @@ class Wordless_Settings(QDialog):
         settings_global = self.main.settings_global['sentence_tokenizers']
         settings_custom = self.main.settings_custom['sentence_tokenization']
 
-        wrapper_settings_sentence_tokenization = QWidget(self)
+        self.settings_sentence_tokenization = QWidget(self)
 
         # Sentence Tokenizer Settings
         group_box_sentence_tokenizer_settings = QGroupBox(self.tr('Sentence Tokenizer Settings'), self)
@@ -412,16 +446,14 @@ class Wordless_Settings(QDialog):
         group_box_preview.layout().addWidget(self.text_edit_sentence_tokenization_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_sentence_tokenization_preview_results, 1, 1)
 
-        wrapper_settings_sentence_tokenization.setLayout(QGridLayout())
-        wrapper_settings_sentence_tokenization.layout().addWidget(group_box_sentence_tokenizer_settings, 0, 0)
-        wrapper_settings_sentence_tokenization.layout().addWidget(group_box_preview, 1, 0)
+        self.settings_sentence_tokenization.setLayout(QGridLayout())
+        self.settings_sentence_tokenization.layout().addWidget(group_box_sentence_tokenizer_settings, 0, 0)
+        self.settings_sentence_tokenization.layout().addWidget(group_box_preview, 1, 0)
 
-        wrapper_settings_sentence_tokenization.layout().setRowStretch(0, 2)
-        wrapper_settings_sentence_tokenization.layout().setRowStretch(1, 1)
+        self.settings_sentence_tokenization.layout().setRowStretch(0, 2)
+        self.settings_sentence_tokenization.layout().setRowStretch(1, 1)
 
         preview_results_changed()
-
-        return wrapper_settings_sentence_tokenization
 
     def init_settings_word_tokenization(self):
         def preview_settings_changed():
@@ -450,7 +482,7 @@ class Wordless_Settings(QDialog):
         settings_global = self.main.settings_global['word_tokenizers']
         settings_custom = self.main.settings_custom['word_tokenization']
 
-        wrapper_settings_word_tokenization = QWidget(self)
+        self.settings_word_tokenization = QWidget(self)
 
         # Word Tokenizer Settings
         group_box_word_tokenizer_settings = QGroupBox(self.tr('Word Tokenizer Settings'), self)
@@ -509,16 +541,14 @@ class Wordless_Settings(QDialog):
         group_box_preview.layout().addWidget(self.text_edit_word_tokenization_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_word_tokenization_preview_results, 1, 1)
 
-        wrapper_settings_word_tokenization.setLayout(QGridLayout())
-        wrapper_settings_word_tokenization.layout().addWidget(group_box_word_tokenizer_settings, 0, 0,)
-        wrapper_settings_word_tokenization.layout().addWidget(group_box_preview, 1, 0)
+        self.settings_word_tokenization.setLayout(QGridLayout())
+        self.settings_word_tokenization.layout().addWidget(group_box_word_tokenizer_settings, 0, 0,)
+        self.settings_word_tokenization.layout().addWidget(group_box_preview, 1, 0)
 
-        wrapper_settings_word_tokenization.layout().setRowStretch(0, 2)
-        wrapper_settings_word_tokenization.layout().setRowStretch(1, 1)
+        self.settings_word_tokenization.layout().setRowStretch(0, 2)
+        self.settings_word_tokenization.layout().setRowStretch(1, 1)
 
         preview_results_changed()
-
-        return wrapper_settings_word_tokenization
 
     def init_settings_word_detokenization(self):
         def preview_settings_changed():
@@ -546,7 +576,7 @@ class Wordless_Settings(QDialog):
         settings_global = self.main.settings_global['word_detokenizers']
         settings_custom = self.main.settings_custom['word_detokenization']
 
-        wrapper_settings_word_detokenization = QWidget(self)
+        self.settings_word_detokenization = QWidget(self)
 
         # Word Detokenizer Settings
         group_box_word_detokenizer_settings = QGroupBox(self.tr('Word Detokenizer Settings'), self)
@@ -605,16 +635,14 @@ class Wordless_Settings(QDialog):
         group_box_preview.layout().addWidget(self.text_edit_word_detokenization_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_word_detokenization_preview_results, 1, 1)
 
-        wrapper_settings_word_detokenization.setLayout(QGridLayout())
-        wrapper_settings_word_detokenization.layout().addWidget(group_box_word_detokenizer_settings, 0, 0,)
-        wrapper_settings_word_detokenization.layout().addWidget(group_box_preview, 1, 0)
+        self.settings_word_detokenization.setLayout(QGridLayout())
+        self.settings_word_detokenization.layout().addWidget(group_box_word_detokenizer_settings, 0, 0,)
+        self.settings_word_detokenization.layout().addWidget(group_box_preview, 1, 0)
 
-        wrapper_settings_word_detokenization.layout().setRowStretch(0, 2)
-        wrapper_settings_word_detokenization.layout().setRowStretch(1, 1)
+        self.settings_word_detokenization.layout().setRowStretch(0, 2)
+        self.settings_word_detokenization.layout().setRowStretch(1, 1)
 
         preview_results_changed()
-
-        return wrapper_settings_word_detokenization
 
     def init_settings_pos_tagging(self):
         def pos_tagger_changed():
@@ -659,7 +687,7 @@ class Wordless_Settings(QDialog):
         settings_global = self.main.settings_global['pos_taggers']
         settings_custom = self.main.settings_custom['pos_tagging']
 
-        wrapper_settings_pos_tagging = QWidget(self)
+        self.settings_pos_tagging = QWidget(self)
 
         # POS Taggers
         group_box_pos_tagger_settings = QGroupBox(self.tr('POS Tagger Settings'), self)
@@ -726,16 +754,14 @@ class Wordless_Settings(QDialog):
         group_box_preview.layout().addWidget(self.text_edit_pos_tagging_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_pos_tagging_preview_results, 1, 1)
 
-        wrapper_settings_pos_tagging.setLayout(QGridLayout())
-        wrapper_settings_pos_tagging.layout().addWidget(group_box_pos_tagger_settings, 0, 0)
-        wrapper_settings_pos_tagging.layout().addWidget(group_box_preview, 1, 0)
+        self.settings_pos_tagging.setLayout(QGridLayout())
+        self.settings_pos_tagging.layout().addWidget(group_box_pos_tagger_settings, 0, 0)
+        self.settings_pos_tagging.layout().addWidget(group_box_preview, 1, 0)
 
-        wrapper_settings_pos_tagging.layout().setRowStretch(0, 2)
-        wrapper_settings_pos_tagging.layout().setRowStretch(1, 1)
+        self.settings_pos_tagging.layout().setRowStretch(0, 2)
+        self.settings_pos_tagging.layout().setRowStretch(1, 1)
 
         pos_tagger_changed()
-
-        return wrapper_settings_pos_tagging
 
     def init_settings_lemmatization(self):
         def preview_settings_changed():
@@ -765,7 +791,7 @@ class Wordless_Settings(QDialog):
         settings_global = self.main.settings_global['lemmatizers']
         settings_custom = self.main.settings_custom['lemmatization']
 
-        wrapper_settings_lemmatization = QWidget(self)
+        self.settings_lemmatization = QWidget(self)
 
         # Lemmatizer Settings
         group_box_lemmatizer_settings = QGroupBox(self.tr('Lemmatizer Settings'), self)
@@ -824,16 +850,14 @@ class Wordless_Settings(QDialog):
         group_box_preview.layout().addWidget(self.text_edit_lemmatization_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_lemmatization_preview_results, 1, 1)
 
-        wrapper_settings_lemmatization.setLayout(QGridLayout())
-        wrapper_settings_lemmatization.layout().addWidget(group_box_lemmatizer_settings, 0, 0)
-        wrapper_settings_lemmatization.layout().addWidget(group_box_preview, 1, 0)
+        self.settings_lemmatization.setLayout(QGridLayout())
+        self.settings_lemmatization.layout().addWidget(group_box_lemmatizer_settings, 0, 0)
+        self.settings_lemmatization.layout().addWidget(group_box_preview, 1, 0)
 
-        wrapper_settings_lemmatization.layout().setRowStretch(0, 2)
-        wrapper_settings_lemmatization.layout().setRowStretch(1, 1)
+        self.settings_lemmatization.layout().setRowStretch(0, 2)
+        self.settings_lemmatization.layout().setRowStretch(1, 1)
 
         preview_results_changed()
-
-        return wrapper_settings_lemmatization
 
     def init_settings_stop_words(self):
         def preview_settings_changed():
@@ -879,7 +903,7 @@ class Wordless_Settings(QDialog):
         settings_global = self.main.settings_global['stop_words']
         settings_custom = self.main.settings_custom['stop_words']
 
-        wrapper_settings_stop_words = QWidget(self)
+        self.settings_stop_words = QWidget(self)
 
         # Stop Words Settings
         group_box_stop_words_settings = QGroupBox(self.tr('Stop Words Settings'), self)
@@ -934,85 +958,284 @@ class Wordless_Settings(QDialog):
         group_box_preview.layout().addWidget(self.label_stop_words_preview_count, 0, 1, Qt.AlignRight)
         group_box_preview.layout().addWidget(self.table_stop_words_preview_results, 1, 0, 1, 2)
 
-        wrapper_settings_stop_words.setLayout(QGridLayout())
-        wrapper_settings_stop_words.layout().addWidget(group_box_stop_words_settings, 0, 0)
-        wrapper_settings_stop_words.layout().addWidget(group_box_preview, 1, 0)
+        self.settings_stop_words.setLayout(QGridLayout())
+        self.settings_stop_words.layout().addWidget(group_box_stop_words_settings, 0, 0)
+        self.settings_stop_words.layout().addWidget(group_box_preview, 1, 0)
 
-        wrapper_settings_stop_words.layout().setRowStretch(0, 2)
-        wrapper_settings_stop_words.layout().setRowStretch(1, 1)
+        self.settings_stop_words.layout().setRowStretch(0, 2)
+        self.settings_stop_words.layout().setRowStretch(1, 1)
 
         preview_results_changed()
 
-        return wrapper_settings_stop_words
+    def init_settings_dispersion(self):
+        self.settings_dispersion = QWidget(self)
+
+        # General
+        group_box_general = QGroupBox(self.tr('General'), self)
+
+        (self.label_dispersion_divide,
+         self.spin_box_dispersion_number_sections,
+         self.label_dispersion_sections) = wordless_widgets.wordless_widgets_number_sections(self)
+
+        group_box_general.setLayout(QGridLayout())
+        group_box_general.layout().addWidget(self.label_dispersion_divide, 0, 0)
+        group_box_general.layout().addWidget(self.spin_box_dispersion_number_sections, 0, 1)
+        group_box_general.layout().addWidget(self.label_dispersion_sections, 0, 2)
+
+        group_box_general.layout().setColumnStretch(3, 1)
+
+        self.settings_dispersion.setLayout(QGridLayout())
+        self.settings_dispersion.layout().addWidget(group_box_general, 0, 0)
+
+        self.settings_dispersion.layout().setRowStretch(1, 1)
+
+    def init_settings_adjusted_freq(self):
+        def use_same_settings_changed():
+            if self.checkbox_use_same_settings_dispersion.isChecked():
+                self.spin_box_adjusted_freq_number_sections.setEnabled(False)
+            else:
+                self.spin_box_adjusted_freq_number_sections.setEnabled(True)
+
+        self.settings_adjusted_freq = QWidget(self)
+
+        # General
+        group_box_general = QGroupBox(self.tr('General'), self)
+
+        (self.label_adjusted_freq_divide,
+         self.spin_box_adjusted_freq_number_sections,
+         self.label_adjusted_freq_sections) = wordless_widgets.wordless_widgets_number_sections(self)
+        self.checkbox_use_same_settings_dispersion = QCheckBox(self.tr('Use same settings in "Settings -> Measures -> Dispersion"'), self)
+
+        self.checkbox_use_same_settings_dispersion.stateChanged.connect(use_same_settings_changed)
+
+        group_box_general.setLayout(QGridLayout())
+        group_box_general.layout().addWidget(self.label_adjusted_freq_divide, 0, 0)
+        group_box_general.layout().addWidget(self.spin_box_adjusted_freq_number_sections, 0, 1)
+        group_box_general.layout().addWidget(self.label_adjusted_freq_sections, 0, 2)
+        group_box_general.layout().addWidget(self.checkbox_use_same_settings_dispersion, 1, 0, 1, 4)
+
+        group_box_general.layout().setColumnStretch(3, 1)
+
+        self.settings_adjusted_freq.setLayout(QGridLayout())
+        self.settings_adjusted_freq.layout().addWidget(group_box_general, 0, 0)
+
+        self.settings_adjusted_freq.layout().setRowStretch(1, 1)
+
+        use_same_settings_changed()
+
+    def init_settings_statistical_significance(self):
+        self.settings_statistical_significance = QWidget(self)
+
+        # Student's t-test (Two-sample)
+        group_box_students_t_test_two_sample = QGroupBox(self.tr('Student\'s t-test (Two-sample)'), self)
+
+        (self.label_students_t_test_two_sample_divide,
+         self.spin_box_students_t_test_two_sample_number_sections,
+         self.label_students_t_test_two_sample_sections) = wordless_widgets.wordless_widgets_number_sections(self)
+
+        (self.label_students_t_test_two_sample_use_data,
+         self.combo_box_students_t_test_two_sample_use_data) = wordless_widgets.wordless_widgets_use_data_freq(self)
+        self.label_students_t_test_two_sample_variances = QLabel(self.tr('Variances:'), self)
+        self.combo_box_students_t_test_two_sample_variances = QComboBox(self)
+        self.label_welchs_t_test = QLabel(self.tr(f'''{self.main.settings_global["styles"]["style_hints"]}
+                                                      <body>
+                                                          <p>
+                                                              * If variances are set to "Unequal", the Welch\'s t-test will be performed instead.
+                                                          </p>
+                                                  '''), self)
+
+        self.combo_box_students_t_test_two_sample_variances.addItems([self.tr('Equal'),
+                                                                      self.tr('Unequal')])
+
+        layout_students_t_test_two_sample_number_sections = QGridLayout()
+        layout_students_t_test_two_sample_number_sections.addWidget(self.label_students_t_test_two_sample_divide, 0, 0)
+        layout_students_t_test_two_sample_number_sections.addWidget(self.spin_box_students_t_test_two_sample_number_sections, 0, 1)
+        layout_students_t_test_two_sample_number_sections.addWidget(self.label_students_t_test_two_sample_sections, 0, 2)
+
+        layout_students_t_test_two_sample_number_sections.setColumnStretch(3, 1)
+
+        group_box_students_t_test_two_sample.setLayout(QGridLayout())
+        group_box_students_t_test_two_sample.layout().addLayout(layout_students_t_test_two_sample_number_sections, 0, 0, 1, 3)
+        group_box_students_t_test_two_sample.layout().addWidget(self.label_students_t_test_two_sample_use_data, 1, 0)
+        group_box_students_t_test_two_sample.layout().addWidget(self.combo_box_students_t_test_two_sample_use_data, 1, 1)
+        group_box_students_t_test_two_sample.layout().addWidget(self.label_students_t_test_two_sample_variances, 2, 0)
+        group_box_students_t_test_two_sample.layout().addWidget(self.combo_box_students_t_test_two_sample_variances, 2, 1)
+        group_box_students_t_test_two_sample.layout().addWidget(self.label_welchs_t_test, 3, 0, 1, 3)
+
+        group_box_students_t_test_two_sample.layout().setColumnStretch(2, 1)
+
+        # Pearson's Chi-squared Test
+        group_box_pearsons_chi_squared_test = QGroupBox(self.tr('Pearson\'s Chi-squared Test'), self)
+
+        self.checkbox_pearsons_chi_squared_test_apply_correction = QCheckBox(self.tr('Apply Yates\'s correction for continuity'))
+
+        group_box_pearsons_chi_squared_test.setLayout(QGridLayout())
+        group_box_pearsons_chi_squared_test.layout().addWidget(self.checkbox_pearsons_chi_squared_test_apply_correction, 0, 0)
+
+        # Fisher's Exact Test
+        group_box_fishers_exact_test = QGroupBox(self.tr('Fisher\'s Exact Test'), self)
+
+        (self.label_fishers_exact_test_direction,
+         self.combo_box_fishers_exact_test_direction) = wordless_widgets.wordless_widgets_direction(self)
+
+        group_box_fishers_exact_test.setLayout(QGridLayout())
+        group_box_fishers_exact_test.layout().addWidget(self.label_fishers_exact_test_direction, 0, 0)
+        group_box_fishers_exact_test.layout().addWidget(self.combo_box_fishers_exact_test_direction, 0, 1)
+
+        group_box_fishers_exact_test.layout().setColumnStretch(2, 1)
+
+        # Mann-Whitney U Test
+        group_box_mann_whitney_u_test = QGroupBox(self.tr('Mann-Whitney U Test'), self)
+
+        (self.label_mann_whitney_u_test_divide,
+         self.spin_box_mann_whitney_u_test_number_sections,
+         self.label_mann_whitney_u_test_sections) = wordless_widgets.wordless_widgets_number_sections(self)
+
+        (self.label_mann_whitney_u_test_use_data,
+         self.combo_box_mann_whitney_u_test_use_data) = wordless_widgets.wordless_widgets_use_data_freq(self)
+        (self.label_mann_whitney_u_test_direction,
+         self.combo_box_mann_whitney_u_test_direction) = wordless_widgets.wordless_widgets_direction(self)
+        self.checkbox_mann_whitney_u_test_apply_correction = QCheckBox(self.tr('Apply continuity correction'), self)
+
+        layout_mann_whitney_u_test_number_sections = QGridLayout()
+        layout_mann_whitney_u_test_number_sections.addWidget(self.label_mann_whitney_u_test_divide, 0, 0)
+        layout_mann_whitney_u_test_number_sections.addWidget(self.spin_box_mann_whitney_u_test_number_sections, 0, 1)
+        layout_mann_whitney_u_test_number_sections.addWidget(self.label_mann_whitney_u_test_sections, 0, 2)
+
+        layout_mann_whitney_u_test_number_sections.setColumnStretch(3, 1)
+
+        group_box_mann_whitney_u_test.setLayout(QGridLayout())
+        group_box_mann_whitney_u_test.layout().addLayout(layout_mann_whitney_u_test_number_sections, 0, 0, 1, 3)
+        group_box_mann_whitney_u_test.layout().addWidget(self.label_mann_whitney_u_test_use_data, 1, 0)
+        group_box_mann_whitney_u_test.layout().addWidget(self.combo_box_mann_whitney_u_test_use_data, 1, 1)
+        group_box_mann_whitney_u_test.layout().addWidget(self.label_mann_whitney_u_test_direction, 2, 0)
+        group_box_mann_whitney_u_test.layout().addWidget(self.combo_box_mann_whitney_u_test_direction, 2, 1)
+        group_box_mann_whitney_u_test.layout().addWidget(self.checkbox_mann_whitney_u_test_apply_correction, 3, 0, 1, 3)
+
+        group_box_mann_whitney_u_test.layout().setColumnStretch(3, 1)
+
+        self.settings_statistical_significance.setLayout(QGridLayout())
+        self.settings_statistical_significance.layout().addWidget(group_box_students_t_test_two_sample, 0, 0)
+        self.settings_statistical_significance.layout().addWidget(group_box_pearsons_chi_squared_test, 1, 0)
+        self.settings_statistical_significance.layout().addWidget(group_box_fishers_exact_test, 2, 0)
+        self.settings_statistical_significance.layout().addWidget(group_box_mann_whitney_u_test, 3, 0)
+
+        self.settings_statistical_significance.layout().setRowStretch(4, 1)
+
+    def init_settings_effect_size(self):
+        self.settings_effect_size = QWidget(self)
+
+        # Kilgarriff's Ratio
+        group_box_kilgarriffs_ratio = QGroupBox(self.tr('Kilgarriff\'s Ratio'), self)
+
+        self.label_kilgarriffs_ratio_smoothing_parameter = QLabel(self.tr('Smoothing Parameter'), self)
+        self.spin_box_kilgarriffs_ratio_smoothing_parameter = QDoubleSpinBox(self)
+
+        self.spin_box_kilgarriffs_ratio_smoothing_parameter.setRange(0.01, 10000)
+
+        group_box_kilgarriffs_ratio.setLayout(QGridLayout())
+        group_box_kilgarriffs_ratio.layout().addWidget(self.label_kilgarriffs_ratio_smoothing_parameter, 0, 0)
+        group_box_kilgarriffs_ratio.layout().addWidget(self.spin_box_kilgarriffs_ratio_smoothing_parameter, 0, 1)
+
+        group_box_kilgarriffs_ratio.layout().setColumnStretch(2, 1)
+
+        self.settings_effect_size.setLayout(QGridLayout())
+        self.settings_effect_size.layout().addWidget(group_box_kilgarriffs_ratio, 0, 0)
+
+        self.settings_effect_size.layout().setRowStretch(1, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings_loaded = self.main.settings_default
+            settings = self.main.settings_default
         else:
-            settings_loaded = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.main.settings_custom)
 
         # General
-        self.line_edit_file_default_path.setText(settings_loaded['general']['file_default_path'])
-        self.combo_box_file_default_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['general']['file_default_lang']))
-        self.combo_box_file_default_encoding.setCurrentText(settings_loaded['general']['file_default_encoding'])
+        self.line_edit_file_default_path.setText(settings['general']['file_default_path'])
+        self.combo_box_file_default_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['general']['file_default_lang']))
+        self.combo_box_file_default_encoding.setCurrentText(settings['general']['file_default_encoding'])
 
-        self.spin_box_precision_decimal.setValue(settings_loaded['general']['precision_decimal'])
-        self.spin_box_precision_pct.setValue(settings_loaded['general']['precision_pct'])
-        self.spin_box_precision_p_value.setValue(settings_loaded['general']['precision_p_value'])
+        self.spin_box_precision_decimal.setValue(settings['general']['precision_decimal'])
+        self.spin_box_precision_pct.setValue(settings['general']['precision_pct'])
+        self.spin_box_precision_p_value.setValue(settings['general']['precision_p_value'])
 
-        # Import
-        self.line_edit_import_search_terms_default_path.setText(settings_loaded['import']['search_terms_default_path'])
-        self.combo_box_import_search_terms_default_encoding.setCurrentText(settings_loaded['import']['search_terms_default_encoding'])
+        # General -> Import
+        self.line_edit_import_search_terms_default_path.setText(settings['import']['search_terms_default_path'])
+        self.combo_box_import_search_terms_default_encoding.setCurrentText(settings['import']['search_terms_default_encoding'])
 
-        # Export
-        self.line_edit_export_tables_default_path.setText(settings_loaded['export']['tables_default_path'])
-        self.combo_box_export_tables_default_type.setCurrentText(settings_loaded['export']['tables_default_type'])
-        self.combo_box_export_tables_default_encoding.setCurrentText(settings_loaded['export']['tables_default_encoding'])
+        # General -> Export
+        self.line_edit_export_tables_default_path.setText(settings['export']['tables_default_path'])
+        self.combo_box_export_tables_default_type.setCurrentText(settings['export']['tables_default_type'])
+        self.combo_box_export_tables_default_encoding.setCurrentText(settings['export']['tables_default_encoding'])
 
-        self.line_edit_export_search_terms_default_path.setText(settings_loaded['export']['search_terms_default_path'])
-        self.combo_box_export_search_terms_default_encoding.setCurrentText(settings_loaded['export']['search_terms_default_encoding'])
+        self.line_edit_export_search_terms_default_path.setText(settings['export']['search_terms_default_path'])
+        self.combo_box_export_search_terms_default_encoding.setCurrentText(settings['export']['search_terms_default_encoding'])
 
-        # Sentence Tokenization
-        for lang_code in settings_loaded['sentence_tokenization']['sentence_tokenizers']:
-            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].setCurrentText(settings_loaded['sentence_tokenization']['sentence_tokenizers'][lang_code])
+        # Tokenization -> Sentence Tokenization
+        for lang_code in settings['sentence_tokenization']['sentence_tokenizers']:
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].setCurrentText(settings['sentence_tokenization']['sentence_tokenizers'][lang_code])
 
-        self.combo_box_sentence_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['sentence_tokenization']['preview_lang']))
-        self.text_edit_sentence_tokenization_preview_samples.setText(settings_loaded['sentence_tokenization']['preview_samples'])
+        self.combo_box_sentence_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['sentence_tokenization']['preview_lang']))
+        self.text_edit_sentence_tokenization_preview_samples.setText(settings['sentence_tokenization']['preview_samples'])
 
-        # Word Tokenization
-        for lang_code in settings_loaded['word_tokenization']['word_tokenizers']:
-            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].setCurrentText(settings_loaded['word_tokenization']['word_tokenizers'][lang_code])
+        # Tokenization -> Word Tokenization
+        for lang_code in settings['word_tokenization']['word_tokenizers']:
+            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].setCurrentText(settings['word_tokenization']['word_tokenizers'][lang_code])
 
-        self.combo_box_word_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['word_tokenization']['preview_lang']))
-        self.text_edit_word_tokenization_preview_samples.setText(settings_loaded['word_tokenization']['preview_samples'])
+        self.combo_box_word_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['word_tokenization']['preview_lang']))
+        self.text_edit_word_tokenization_preview_samples.setText(settings['word_tokenization']['preview_samples'])
 
-        # Word Detokenization
-        for lang_code in settings_loaded['word_detokenization']['word_detokenizers']:
-            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].setCurrentText(settings_loaded['word_detokenization']['word_detokenizers'][lang_code])
+        # Tokenization -> Word Detokenization
+        for lang_code in settings['word_detokenization']['word_detokenizers']:
+            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].setCurrentText(settings['word_detokenization']['word_detokenizers'][lang_code])
 
-        self.combo_box_word_detokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['word_detokenization']['preview_lang']))
-        self.text_edit_word_detokenization_preview_samples.setText(settings_loaded['word_detokenization']['preview_samples'])
+        self.combo_box_word_detokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['word_detokenization']['preview_lang']))
+        self.text_edit_word_detokenization_preview_samples.setText(settings['word_detokenization']['preview_samples'])
 
         # POS Tagging
-        for lang_code in settings_loaded['pos_tagging']['pos_taggers']:
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].setCurrentText(settings_loaded['pos_tagging']['pos_taggers'][lang_code])
-            self.__dict__[f'combo_box_tagset_{lang_code}'].setCurrentText(settings_loaded['pos_tagging']['tagsets'][lang_code])
+        for lang_code in settings['pos_tagging']['pos_taggers']:
+            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].setCurrentText(settings['pos_tagging']['pos_taggers'][lang_code])
+            self.__dict__[f'combo_box_tagset_{lang_code}'].setCurrentText(settings['pos_tagging']['tagsets'][lang_code])
 
-        self.combo_box_pos_tagging_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['pos_tagging']['preview_lang']))
-        self.text_edit_pos_tagging_preview_samples.setText(settings_loaded['pos_tagging']['preview_samples'])
+        self.combo_box_pos_tagging_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['pos_tagging']['preview_lang']))
+        self.text_edit_pos_tagging_preview_samples.setText(settings['pos_tagging']['preview_samples'])
 
         # Lemmatization
-        for lang_code in settings_loaded['lemmatization']['lemmatizers']:
-            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].setCurrentText(settings_loaded['lemmatization']['lemmatizers'][lang_code])
+        for lang_code in settings['lemmatization']['lemmatizers']:
+            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].setCurrentText(settings['lemmatization']['lemmatizers'][lang_code])
 
-        self.combo_box_lemmatization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['lemmatization']['preview_lang']))
-        self.text_edit_lemmatization_preview_samples.setText(settings_loaded['lemmatization']['preview_samples'])
+        self.combo_box_lemmatization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['lemmatization']['preview_lang']))
+        self.text_edit_lemmatization_preview_samples.setText(settings['lemmatization']['preview_samples'])
 
         # Stop Words
-        for lang_code in settings_loaded['stop_words']['stop_words']:
-            self.__dict__[f'combo_box_stop_words_{lang_code}'].setCurrentText(settings_loaded['stop_words']['stop_words'][lang_code])
+        for lang_code in settings['stop_words']['stop_words']:
+            self.__dict__[f'combo_box_stop_words_{lang_code}'].setCurrentText(settings['stop_words']['stop_words'][lang_code])
 
-        self.combo_box_stop_words_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings_loaded['stop_words']['preview_lang']))
+        self.combo_box_stop_words_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['stop_words']['preview_lang']))
+
+        # Measures -> Dispersion
+        self.spin_box_dispersion_number_sections.setValue(settings['measures']['dispersion']['general']['number_sections'])
+
+        # Measures -> Adjusted Frequency
+        self.spin_box_adjusted_freq_number_sections.setValue(settings['measures']['adjusted_freq']['general']['number_sections'])
+        self.checkbox_use_same_settings_dispersion.setChecked(settings['measures']['adjusted_freq']['general']['use_same_settings_dispersion'])
+
+        # Measures -> Statistical Significance
+        self.spin_box_students_t_test_two_sample_number_sections.setValue(settings['measures']['statistical_significance']['students_t_test_two_sample']['number_sections'])
+        self.combo_box_students_t_test_two_sample_use_data.setCurrentText(settings['measures']['statistical_significance']['students_t_test_two_sample']['use_data'])
+        self.combo_box_students_t_test_two_sample_variances.setCurrentText(settings['measures']['statistical_significance']['students_t_test_two_sample']['variances'])
+
+        self.checkbox_pearsons_chi_squared_test_apply_correction.setChecked(settings['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'])
+
+        self.combo_box_fishers_exact_test_direction.setCurrentText(settings['measures']['statistical_significance']['fishers_exact_test']['direction'])
+
+        self.spin_box_mann_whitney_u_test_number_sections.setValue(settings['measures']['statistical_significance']['mann_whitney_u_test']['number_sections'])
+        self.combo_box_mann_whitney_u_test_use_data.setCurrentText(settings['measures']['statistical_significance']['mann_whitney_u_test']['use_data'])
+        self.combo_box_mann_whitney_u_test_direction.setCurrentText(settings['measures']['statistical_significance']['mann_whitney_u_test']['direction'])
+        self.checkbox_mann_whitney_u_test_apply_correction.setChecked(settings['measures']['statistical_significance']['mann_whitney_u_test']['apply_correction'])
+
+        # Measures -> Effect Size
+        self.spin_box_kilgarriffs_ratio_smoothing_parameter.setValue(settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_parameter'])
 
     def restore_default_settings(self):
         reply = wordless_message_box.wordless_restore_default_settings(self.main)
@@ -1073,11 +1296,11 @@ class Wordless_Settings(QDialog):
             settings['general']['precision_pct'] = self.spin_box_precision_pct.value()
             settings['general']['precision_p_value'] = self.spin_box_precision_p_value.value()
 
-            # Import
+            # General -> Import
             settings['import']['search_terms_default_path'] = self.line_edit_import_search_terms_default_path.text()
             settings['import']['search_terms_default_encoding'] = self.combo_box_import_search_terms_default_encoding.currentText()
 
-            # Export
+            # General -> Export
             settings['export']['tables_default_path'] = self.line_edit_export_tables_default_path.text()
             settings['export']['tables_default_type'] = self.combo_box_export_tables_default_type.currentText()
             settings['export']['tables_default_encoding'] = self.combo_box_export_tables_default_encoding.currentText()
@@ -1085,15 +1308,15 @@ class Wordless_Settings(QDialog):
             settings['export']['search_terms_default_path'] = self.line_edit_export_search_terms_default_path.text()
             settings['export']['search_terms_default_encoding'] = self.combo_box_export_search_terms_default_encoding.currentText()
 
-            # Sentence Tokenization
+            # Tokenization -> Sentence Tokenization
             for lang_code in settings['sentence_tokenization']['sentence_tokenizers']:
                 settings['sentence_tokenization']['sentence_tokenizers'][lang_code] = self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].currentText()
 
-            # Word Tokenization
+            # Tokenization -> Word Tokenization
             for lang_code in settings['word_tokenization']['word_tokenizers']:
                 settings['word_tokenization']['word_tokenizers'][lang_code] = self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentText()
 
-            # Word Detokenization
+            # Tokenization -> Word Detokenization
             for lang_code in settings['word_detokenization']['word_detokenizers']:
                 settings['word_detokenization']['word_detokenizers'][lang_code] = self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].currentText()
 
@@ -1110,15 +1333,50 @@ class Wordless_Settings(QDialog):
             for lang_code in settings['stop_words']['stop_words']:
                 settings['stop_words']['stop_words'][lang_code] = self.__dict__[f'combo_box_stop_words_{lang_code}'].currentText()
 
+            # Measures -> Dispersion
+            settings['measures']['dispersion']['general']['number_sections'] = self.spin_box_dispersion_number_sections.value()
+
+            # Measures -> Adjusted Frequency
+            settings['measures']['adjusted_freq']['general']['number_sections'] = self.spin_box_adjusted_freq_number_sections.value()
+            settings['measures']['adjusted_freq']['general']['ues_same_settings_dispersion'] = self.checkbox_use_same_settings_dispersion.isChecked()
+
+            # Measures -> Statistical Significance
+            settings['measures']['statistical_significance']['students_t_test_two_sample']['number_sections'] = self.spin_box_students_t_test_two_sample_number_sections.value()
+            settings['measures']['statistical_significance']['students_t_test_two_sample']['use_data'] = self.combo_box_students_t_test_two_sample_use_data.currentText()
+            settings['measures']['statistical_significance']['students_t_test_two_sample']['variances'] = self.combo_box_students_t_test_two_sample_variances.currentText()
+
+            settings['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'] = self.checkbox_pearsons_chi_squared_test_apply_correction.isChecked()
+
+            settings['measures']['statistical_significance']['fishers_exact_test']['direction'] = self.combo_box_fishers_exact_test_direction.currentText()
+
+            settings['measures']['statistical_significance']['mann_whitney_u_test']['number_sections'] = self.spin_box_mann_whitney_u_test_number_sections.value()
+            settings['measures']['statistical_significance']['mann_whitney_u_test']['use_data'] = self.combo_box_mann_whitney_u_test_use_data.currentText()
+            settings['measures']['statistical_significance']['mann_whitney_u_test']['direction'] = self.combo_box_mann_whitney_u_test_direction.currentText()
+            settings['measures']['statistical_significance']['mann_whitney_u_test']['apply_correction'] = self.checkbox_mann_whitney_u_test_apply_correction.isChecked()
+
+            # Measures -> Effect Size
+            settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_parameter'] = self.spin_box_kilgarriffs_ratio_smoothing_parameter.value()
+
             self.wordless_settings_changed.emit()
 
         return settings_valid
 
-    def load(self):
+    def load(self, tab = None):
         self.load_settings()
 
-        if not self.tree_settings.selectedItems():
+        if tab:
+            item_selected = self.tree_settings.findItems(tab, Qt.MatchRecursive)[0]
+
+            self.tree_settings.item_selected_old = item_selected
+
+            self.tree_settings.clearSelection()
+            item_selected.setSelected(True)
+
+            if not self.tree_settings.findItems(tab, Qt.MatchExactly):
+                item_selected.parent().setExpanded(True)
+        elif not self.tree_settings.selectedItems():
             self.tree_settings.item_selected_old = self.tree_settings.topLevelItem(0)
+
             self.tree_settings.topLevelItem(0).setSelected(True)
 
         self.exec()

@@ -26,7 +26,6 @@ import tab_ngram
 import tab_collocation
 import tab_colligation
 import tab_keywords
-import tab_semantics
 
 class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
@@ -49,7 +48,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a>'],
 
             ['<a href="http://hanlp.com/">HanLP</a>',
-             '1.68',
+             '1.7.0',
              '<a href="mailto:hankcs.cn@gmail.com">He Han (何晗)</a>',
              '<a href="https://github.com/hankcs/HanLP/blob/master/LICENSE">Apache-2.0</a>'],
 
@@ -69,7 +68,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="https://metacpan.org/pod/distribution/Text-NSP/doc/README.pod#COPYRIGHT">GPL-3.0</a>'],
 
             ['<a href="http://www.nltk.org/">NLTK</a>',
-             '3.3',
+             '3.4',
              '<a href="http://www.nltk.org/contribute.html">NLTK Project</a>',
              '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
 
@@ -122,11 +121,6 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '3.0.0',
              '<a href="https://github.com/matplotlib/matplotlib#contact">Matplotlib Development Team</a>',
              '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'],
-
-            ['<a href="http://networkx.github.io/">NetworkX</a>',
-             '2.1',
-             '<a href="mailto:hagberg@lanl.gov">Aric Hagberg</a><br><a href="mailto:dschult@colgate.edu">Dan Schult</a><br><a href="mailto:swart@lanl.gov">Pieter Swart</a>',
-             '<a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a>'],
 
              ['<a href="http://www.numpy.org/">NumPy</a>',
              '1.15.2',
@@ -452,16 +446,6 @@ class Wordless_Main(QMainWindow):
         self.setCentralWidget(central_widget)
 
     def init_tabs(self):
-        def current_tab_changed():
-            if self.tabs.currentIndex() == 7:
-                self.widget_files.hide()
-
-                self.centralWidget().layout().setRowStretch(1, 0)
-            else:
-                self.widget_files.show()
-
-                self.centralWidget().layout().setRowStretch(1, 1)
-
         self.tabs = QTabWidget(self)
         self.tabs.addTab(tab_overview.init(self), self.tr('Overview'))
         self.tabs.addTab(tab_concordancer.init(self), self.tr('Concordancer'))
@@ -470,9 +454,6 @@ class Wordless_Main(QMainWindow):
         self.tabs.addTab(tab_collocation.init(self), self.tr('Collocation'))
         self.tabs.addTab(tab_colligation.init(self), self.tr('Colligation'))
         self.tabs.addTab(tab_keywords.init(self), self.tr('Keywords'))
-        self.tabs.addTab(tab_semantics.init(self), self.tr('Semantics'))
-
-        self.tabs.currentChanged.connect(current_tab_changed)
 
         return self.tabs
 

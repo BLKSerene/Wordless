@@ -12,6 +12,7 @@ import pickle
 
 import nltk
 
+from wordless_measures import *
 from wordless_widgets import *
 from wordless_utils import *
 
@@ -996,97 +997,114 @@ def init_settings_global(main):
             ]
         },
 
+        'dispersion_measures': {
+            main.tr('Juilland\'s D'): {
+                'col': main.tr('Juilland\'s D'),
+                'func': measures_dispersion.juillands_d
+            },
+
+            main.tr('Carroll\'s D₂'): {
+                'col': main.tr('Carroll\'s D₂'),
+                'func': measures_dispersion.carrolls_d2
+            },
+
+            main.tr('Lyne\'s D₃'): {
+                'col': main.tr('Lyne\'s D₃'),
+                'func': measures_dispersion.lynes_d3
+            },
+
+            main.tr('Rosengren\'s S'): {
+                'col': main.tr('Rosengren\'s S'),
+                'func': measures_dispersion.rosengrens_s
+            },
+
+            main.tr('Distributional Consistency'): {
+                'col': main.tr('Distributional Consistency'),
+                'func': measures_dispersion.distributional_consistency
+            },
+        },
+
         'significance_tests': {
-            main.tr('Raw Frequency'): {
-                'cols': [main.tr('Raw Freq'), None],
-                'func': wordless_measures.raw_freq
-            },
+            'keywords': {
+                main.tr('Student\'s t-test (Two-sample)'): {
+                    'cols': [
+                        main.tr('t-statistic'),
+                        main.tr('p-value'),
+                        main.tr('Bayes Factor')
+                    ],
 
-            main.tr('Student\'s t-test'): {
-                'cols': [main.tr('t-value'), main.tr('p-value')],
-                'func': wordless_measures.students_t_test
-            },
+                    'func': measures_statistical_significance.students_t_test_two_sample
+                },
 
-            main.tr('Pearson\'s Chi-squared Test'): {
-                'cols': [main.tr('χ2'), main.tr('p-value')],
-                'func': wordless_measures.chi_squared_test
-            },
+                main.tr('Pearson\'s Chi-squared Test'): {
+                    'cols': [
+                        main.tr('χ2'),
+                        main.tr('p-value'),
+                        None
+                    ],
 
-            main.tr('Yates\'s Chi-squared Test'): {
-                'cols': [main.tr('χ2'), main.tr('p-value')],
-                'func': wordless_measures.chi_squared_test_yates
-            },
+                    'func': measures_statistical_significance.pearsons_chi_squared_test
+                },
 
-            main.tr('Fisher\'s Exact Test'): {
-                'cols': [None, main.tr('p-value')],
-                'func': wordless_measures.fishers_exact_test
-            },
 
-            main.tr('Log-likelihood Ratio Test'): {
-                'cols': [main.tr('Log-likelihood Ratio'), main.tr('p-value')],
-                'func': wordless_measures.log_likehood_ratio_test
-            },
+                main.tr('Fisher\'s Exact Test'): {
+                    'cols': [
+                        None,
+                        main.tr('p-value'),
+                        None
+                    ],
 
-            main.tr('Pointwise Mutual Information'): {
-                'cols': [main.tr('PMI'), None],
-                'func': wordless_measures.pmi
-            },
+                    'func': measures_statistical_significance.fishers_exact_test
+                },
 
-            main.tr('Mutual Information'): {
-                'cols': [main.tr('MI'), None],
-                'func': wordless_measures.mi
-            },
+                main.tr('Log-likelihood Ratio Test'): {
+                    'cols': [
+                        main.tr('Log-likelihood Ratio'),
+                        main.tr('p-value'),
+                        main.tr('Bayes Factor')
+                    ],
 
-            main.tr('Poisson-Stirling'): {
-                'cols': [main.tr('Poisson-Stirling'), None],
-                'func': wordless_measures.poisson_stirling
+                    'func': measures_statistical_significance.log_likehood_ratio_test
+                },
+
+                main.tr('Mann-Whitney U Test'): {
+                    'cols': [
+                        main.tr('U Statistic'),
+                        main.tr('p-value'),
+                        None
+                    ],
+
+                    'func': measures_statistical_significance.mann_whitney_u_test
+                }
             }
         },
 
         'effect_size_measures': {
-            main.tr('Phi Coefficient'): {
-                'col': main.tr('Phi Coefficient'),
-                'func': wordless_measures.phi_coeff
-            },
+            'keywords': {
+                main.tr('Kilgarriff\'s Ratio'): {
+                    'col': main.tr('Kilgarriff\'s Ratio'),
+                    'func': measures_effect_size.kilgarriffs_ratio
+                },
 
-            main.tr('Sørensen-Dice Coefficient'): {
-                'col': main.tr('Sørensen-Dice Coefficient'),
-                'func': wordless_measures.sorensen_dice_coeff
-            },
+                main.tr('Odds Ratio'): {
+                    'col': main.tr('Odds Ratio'),
+                    'func': measures_effect_size.odds_ratio
+                },
 
-            main.tr('Jaccard Index'): {
-                'col': main.tr('Jaccard Index'),
-                'func': wordless_measures.jaccard_index
-            },
+                main.tr('Log Ratio'): {
+                    'col': main.tr('Log Ratio'),
+                    'func': measures_effect_size.log_ratio
+                },
 
-            main.tr('Odds Ratio'): {
-                'col': main.tr('Odds Ratio'),
-                'func': wordless_measures.odds_ratio
-            },
+                main.tr('Difference Coefficient'): {
+                    'col': main.tr('Difference Coefficient'),
+                    'func': measures_effect_size.diff_coeff
+                },
 
-            main.tr('Risk Ratio'): {
-                'col': main.tr('Risk Ratio'),
-                'func': wordless_measures.risk_ratio
-            },
-
-            main.tr('Log Ratio'): {
-                'col': main.tr('Log Ratio'),
-                'func': wordless_measures.log_ratio
-            },
-
-            main.tr('Difference Coefficient'): {
-                'col': main.tr('Difference Coefficient'),
-                'func': wordless_measures.diff_coeff
-            },
-
-            main.tr('% DIFF'): {
-                'col': main.tr('% DIFF'),
-                'func': wordless_measures.pct_diff
-            },
-
-            main.tr('Yule\'s Q'): {
-                'col': main.tr('Yule\'s Q'),
-                'func': wordless_measures.yules_q
+                main.tr('%DIFF'): {
+                    'col': main.tr('%DIFF'),
+                    'func': measures_effect_size.pct_diff
+                }
             }
         },
 
@@ -1126,7 +1144,26 @@ def init_settings_global(main):
                     }
                 </style>
             </head>
-        '''
+        ''',
+
+        'styles': {
+            'style_hints': '''
+                <head>
+                    <style>
+                        * {
+                            margin: 0;
+                            border: 0;
+                            padding: 0;
+
+                            line-height: 1.2;
+                            text-align: justify;
+
+                            color: #777;
+                        }
+                    </style>
+                </head>
+            '''
+        }
     }
 
 def init_settings_default(main):
@@ -1348,6 +1385,50 @@ def init_settings_default(main):
             'preview_lang': 'eng',
         },
 
+        'measures': {
+            'dispersion': {
+                'general': {
+                    'number_sections': 5
+                }
+            },
+
+            'adjusted_freq': {
+                'general': {
+                    'number_sections': 5,
+                    'use_same_settings_dispersion': True
+                }
+            },
+
+            'statistical_significance': {
+                'students_t_test_two_sample': {
+                    'number_sections': 5,
+                    'use_data': main.tr('Relative Frequency'),
+                    'variances': main.tr('Equal'),
+                },
+
+                'pearsons_chi_squared_test': {
+                    'apply_correction': True
+                },
+
+                'fishers_exact_test': {
+                    'direction': main.tr('Two-tailed')
+                },
+
+                'mann_whitney_u_test': {
+                    'number_sections': 5,
+                    'use_data': main.tr('Relative Frequency'),
+                    'direction': main.tr('Two-tailed'),
+                    'apply_correction': True
+                }
+            },
+
+            'effect_size': {
+                'kilgarriffs_ratio': {
+                    'smoothing_parameter': 1.00
+                }
+            }
+        },
+
         'file': {
             'files_open': [],
             'files_closed': [],
@@ -1505,7 +1586,7 @@ def init_settings_default(main):
             },
 
             'filter_settings': {
-                'apply_to': main.tr('Total'),
+                'filter_file': main.tr('Total'),
     
                 'freq_no_limit': True,
                 'freq_min': 0,
@@ -1619,7 +1700,7 @@ def init_settings_default(main):
             },
 
             'filter_settings': {
-                'apply_to': main.tr('Total'),
+                'filter_file': main.tr('Total'),
         
                 'freq_no_limit': True,
                 'freq_min': 0,
@@ -1700,7 +1781,7 @@ def init_settings_default(main):
             'rank_min': 1,
             'rank_max': 50,
 
-            'apply_to': main.tr('Total'),
+            'filter_file': main.tr('Total'),
 
             'freq_left_no_limit': True,
             'freq_left_min': 0,
@@ -1774,7 +1855,7 @@ def init_settings_default(main):
             'rank_min': 1,
             'rank_max': 50,
 
-            'apply_to': main.tr('Total'),
+            'filter_file': main.tr('Total'),
 
             'freq_left_no_limit': True,
             'freq_left_min': 0,
@@ -1796,6 +1877,89 @@ def init_settings_default(main):
         },
 
         'keywords': {
+            'token_settings': {
+                'words': True,
+                'lowercase': True,
+                'uppercase': True,
+                'title_case': True,
+                'treat_as_lowercase': True,
+                'lemmatize': False,
+                'filter_stop_words': False,
+
+                'nums': True,
+                'puncs': False
+            },
+
+            'generation_settings': {
+                'ref_file': '',
+                'significance_test': main.tr('Log-likelihood Ratio Test'),
+                'effect_size_measure': main.tr('Kilgarriff\'s Ratio'),
+                'dispersion_measure': main.tr('Juilland\'s D')
+            },
+            
+            'table_settings': {
+                'show_pct': True,
+                'show_cumulative': False,
+                'show_breakdown': True
+            },
+
+            'plot_settings': {
+                'plot_type': main.tr('Line Chart'),
+                'use_file': main.tr('Total'),
+                'use_data': main.tr('p-value'),
+                'use_pct': False,
+                'use_cumulative': False,
+
+                'rank_min': 1,
+                'rank_min_no_limit': True,
+                'rank_max': 50,
+                'rank_max_no_limit': False
+            },
+
+            'filter_settings': {
+                'freq_min': 0,
+                'freq_min_no_limit': True,
+                'freq_max': 1000,
+                'freq_max_no_limit': True,
+
+                'test_stat_min': -100,
+                'test_stat_min_no_limit': True,
+                'test_stat_max': 100,
+                'test_stat_max_no_limit': True,
+
+                'p_value_min': 0,
+                'p_value_min_no_limit': True,
+                'p_value_max': 0.05,
+                'p_value_max_no_limit': True,
+
+                'bayes_factor_min': -100,
+                'bayes_factor_min_no_limit': True,
+                'bayes_factor_max': 100,
+                'bayes_factor_max_no_limit': True,
+
+                'effect_size_min': -100,
+                'effect_size_min_no_limit': True,
+                'effect_size_max': 100,
+                'effect_size_max_no_limit': True,
+
+                'dispersion_min': -100,
+                'dispersion_min_no_limit': True,
+                'dispersion_max': 100,
+                'dispersion_max_no_limit': True,
+
+                'len_keyword_min': 1,
+                'len_keyword_min_no_limit': True,
+                'len_keyword_max': 20,
+                'len_keyword_max_no_limit': True,
+
+                'number_files_found_min': 1,
+                'number_files_found_min_no_limit': True,
+                'number_files_found_max': 100,
+                'number_files_found_max_no_limit': True,
+
+                'filter_file': main.tr('Total')
+            },
+
             'search_results': {
                 'multi_search_mode': False,
                 'search_term': '',
@@ -1805,82 +1969,6 @@ def init_settings_default(main):
                 'match_inflected_forms': True,
                 'match_whole_word': True,
                 'use_regex': False
-            },
-
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_case': True,
-            'treat_as_lowercase': True,
-            'lemmatize': False,
-            'filter_stop_words': False,
-
-            'nums': True,
-            'puncs': False,
-    
-            'ref_file': '',
-            'significance_test': main.tr('Pearson\'s Chi-squared Test'),
-            'effect_size_measure': main.tr('Phi Coefficient'),
-
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown': True,
-
-            'plot_type': main.tr('Line Chart'),
-            'use_data_file': main.tr('Total'),
-            'use_data_col': main.tr('Phi Coefficient'),
-            'use_pct': False,
-            'use_cumulative': False,
-
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
-
-            'apply_to': main.tr('Total'),
-
-            'freq_no_limit': True,
-            'freq_min': 0,
-            'freq_max': 1000,
-
-            'test_stats_no_limit': True,
-            'test_stats_min': 0,
-            'test_stats_max': 100,
-
-            'p_value_no_limit': True,
-            'p_value_min': 0,
-            'p_value_max': 0.5,
-
-            'effect_size_no_limit': True,
-            'effect_size_min': 0,
-            'effect_size_max': 100,
-
-            'len_no_limit': True,
-            'len_min': 1,
-            'len_max': 20,
-
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
-        },
-    
-        'semantics': {
-            'search_term': '',
-            'search_mode': main.tr('Word'),
-            'search_for': main.tr('Synonyms'),
-    
-            'degree_max': 10,
-            'degree_no_limit': True,
-            'depth_max': 5,
-            'depth_no_limit': True,
-            'recursive': True,
-            'show_lemmas': True,
-    
-            'parts_of_speech': {
-                'n': main.tr('Noun'),
-                'v': main.tr('Verb'),
-                'a': main.tr('Adjective'),
-                's': main.tr('Adjective Satellite'),
-                'r': main.tr('Adverb')
             }
         }
     }

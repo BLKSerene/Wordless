@@ -14,7 +14,7 @@ import jpype
 
 from wordless_widgets import wordless_message_box
 
-# Combo Box
+# Combo Boxes
 class Wordless_Combo_Box(QComboBox):
     def __init__(self, parent):
         super().__init__(parent)
@@ -35,7 +35,7 @@ class Wordless_Combo_Box_Encoding(Wordless_Combo_Box):
 
         self.addItems(main.settings_global['file_encodings'])
 
-class Wordless_Combo_Box_Use_Data_File(Wordless_Combo_Box):
+class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box):
     def __init__(self, main):
         super().__init__(main)
 
@@ -44,41 +44,34 @@ class Wordless_Combo_Box_Use_Data_File(Wordless_Combo_Box):
         self.wordless_files_changed()
 
     def wordless_files_changed(self):
-        if self.count() == 1:
-            data_file_old = ''
+        if self.currentText() == self.tr('*** None ***'):
+            use_file_old = ''
         else:
-            data_file_old = self.currentText()
+            use_file_old = self.currentText()
 
         self.clear()
 
         for file in self.main.wordless_files.get_selected_files():
             self.addItem(file['name'])
 
-        self.addItem(self.tr('Total'))
-
-        if self.findText(data_file_old) > -1:
-            self.setCurrentText(data_file_old)
-
-class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box_Use_Data_File):
-    def wordless_files_changed(self):
-        super().wordless_files_changed()
-
-        self.removeItem(self.findText(self.tr('Total')))
-
-        if self.count() == 0:
+        if self.count() > 0:
+            if self.findText(use_file_old) > -1:
+                self.setCurrentText(use_file_old)
+        else:
             self.addItem(self.tr('*** None ***'))
 
-class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
+# Filter Settings
+class Wordless_Combo_Box_Filter_File(Wordless_Combo_Box):
     def __init__(self, main, table):
         super().__init__(main)
 
         self.table = table
 
-        self.table.horizontalHeader().sectionCountChanged.connect(self.table_header_changed)
+        self.table.itemChanged.connect(self.table_item_changed)
 
-        self.table_header_changed()
+        self.table_item_changed()
 
-    def table_header_changed(self):
+    def table_item_changed(self):
         if self.count() == 1:
             file_old = ''
         else:
@@ -95,6 +88,7 @@ class Wordless_Combo_Box_Apply_To(Wordless_Combo_Box):
         if self.findText(file_old) > -1:
             self.setCurrentText(file_old)
 
+# Combo Boxes (Settings)
 class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
     def __init__(self, main):
         super().__init__(main)
@@ -116,7 +110,7 @@ class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
 
         self.text_old = self.currentText()
 
-# Spin Box
+# Spin Boxes
 class Wordless_Spin_Box_Window(QSpinBox):
     def __init__(self, parent):
         super().__init__(parent)

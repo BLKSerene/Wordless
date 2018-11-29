@@ -171,7 +171,7 @@ def init(main):
      checkbox_filter_stop_words,
 
      checkbox_nums,
-     checkbox_puncs) = wordless_widgets.wordless_widgets_token(main)
+     checkbox_puncs) = wordless_widgets.wordless_widgets_token_settings(main)
 
     checkbox_words.stateChanged.connect(token_settings_changed)
     checkbox_lowercase.stateChanged.connect(token_settings_changed)
@@ -217,7 +217,7 @@ def init(main):
 
     (checkbox_show_pct,
      checkbox_show_cumulative,
-     checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table(main, table_overview)
+     checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(main, table_overview)
 
     checkbox_show_pct.stateChanged.connect(table_settings_changed)
     checkbox_show_cumulative.stateChanged.connect(table_settings_changed)

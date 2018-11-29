@@ -88,16 +88,16 @@ class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
         if [i for i in range(self.columnCount()) if self.item(0, i)]:
             settings = self.main.settings_custom['colligation']
 
-            if settings['apply_to'] == self.tr('Total'):
+            if settings['filter_file'] == self.tr('Total'):
                 col_freq_left = self.find_col(self.tr('Total\nFrequency/L'))
                 col_freq_right = self.find_col(self.tr('Total\nFrequency/R'))
                 col_score_left = self.find_col(self.tr('Total\nScore/L'))
                 col_score_right = self.find_col(self.tr('Total\nScore/R'))
             else:
-                col_freq_left = self.find_col(self.tr(f'[{settings["apply_to"]}]\nFrequency/L'))
-                col_freq_right = self.find_col(self.tr(f'[{settings["apply_to"]}]\nFrequency/R'))
-                col_score_left = self.find_col(self.tr(f'[{settings["apply_to"]}]\nScore/L'))
-                col_score_right = self.find_col(self.tr(f'[{settings["apply_to"]}]\nScore/R'))
+                col_freq_left = self.find_col(self.tr(f'[{settings["filter_file"]}]\nFrequency/L'))
+                col_freq_right = self.find_col(self.tr(f'[{settings["filter_file"]}]\nFrequency/R'))
+                col_score_left = self.find_col(self.tr(f'[{settings["filter_file"]}]\nScore/L'))
+                col_score_right = self.find_col(self.tr(f'[{settings["filter_file"]}]\nScore/R'))
 
             col_files_found = self.find_col('Files Found')
 
@@ -202,7 +202,7 @@ def init(main):
         spin_box_rank_min.setValue(settings_loaded['rank_min'])
         spin_box_rank_max.setValue(settings_loaded['rank_max'])
 
-        combo_box_apply_to.setCurrentText(settings_loaded['apply_to'])
+        combo_box_filter_file.setCurrentText(settings_loaded['filter_file'])
 
         checkbox_freq_left_no_limit.setChecked(settings_loaded['freq_left_no_limit'])
         spin_box_freq_left_min.setValue(settings_loaded['freq_left_min'])
@@ -327,7 +327,7 @@ def init(main):
             checkbox_use_cumulative.setEnabled(False)
 
     def filter_settings_changed():
-        settings['apply_to'] = combo_box_apply_to.currentText()
+        settings['filter_file'] = combo_box_filter_file.currentText()
 
         settings['freq_left_no_limit'] = checkbox_freq_left_no_limit.isChecked()
         settings['freq_left_min'] = spin_box_freq_left_min.value()
@@ -374,7 +374,7 @@ def init(main):
      checkbox_filter_stop_words,
 
      checkbox_nums,
-     checkbox_puncs) = wordless_widgets.wordless_widgets_token(main)
+     checkbox_puncs) = wordless_widgets.wordless_widgets_token_settings(main)
 
     checkbox_words.setHidden(True)
     checkbox_lowercase.setHidden(True)
@@ -408,7 +408,7 @@ def init(main):
      checkbox_ignore_case,
      checkbox_match_inflected_forms,
      checkbox_match_whole_word,
-     checkbox_use_regex) = wordless_widgets.wordless_widgets_search(main)
+     checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
 
     checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
     line_edit_search_term.textChanged.connect(search_settings_changed)
@@ -490,7 +490,7 @@ def init(main):
 
     (checkbox_show_pct,
      checkbox_show_cumulative,
-     checkbox_show_breakdown_file) = wordless_widgets.wordless_widgets_table(main, table_colligation)
+     checkbox_show_breakdown_file) = wordless_widgets.wordless_widgets_table_settings(main, table_colligation)
 
     checkbox_show_breakdown_file.setText(main.tr('Show Breakdown by File'))
     checkbox_show_breakdown_position = QCheckBox(main.tr('Show Breakdown by Span Position'), main)
@@ -514,7 +514,7 @@ def init(main):
     label_plot_type = QLabel(main.tr('Plot Type:'), main)
     combo_box_plot_type = wordless_box.Wordless_Combo_Box(main)
     label_use_data_file = QLabel(main.tr('Use Data File:'), main)
-    combo_box_use_data_file = wordless_box.Wordless_Combo_Box_Use_Data_File(main)
+    combo_box_use_data_file = wordless_box.Wordless_Combo_Box(main)
     label_use_data_col = QLabel(main.tr('Use Data Column:'), main)
     combo_box_use_data_col = wordless_box.Wordless_Combo_Box(main)
     checkbox_use_pct = QCheckBox(main.tr('Use Percentage Data'), main)
@@ -525,7 +525,7 @@ def init(main):
      label_rank_min,
      spin_box_rank_min,
      label_rank_max,
-     spin_box_rank_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 10000)
+     spin_box_rank_max) = wordless_widgets.wordless_widgets_filter1(main, filter_min = 1, filter_max = 10000)
 
     combo_box_plot_type.addItems([main.tr('Line Chart'),
                                   main.tr('Word Cloud')])
@@ -577,47 +577,47 @@ def init(main):
     # Filter Settings
     group_box_filter_settings = QGroupBox(main.tr('Filter Settings'), main)
 
-    label_apply_to = QLabel(main.tr('Apply Filters to:'), main)
-    combo_box_apply_to = wordless_box.Wordless_Combo_Box_Apply_To(main, table_colligation)
+    label_filter_file = QLabel(main.tr('Filter File:'), main)
+    combo_box_filter_file = wordless_box.Wordless_Combo_Box_Filter_File(main, table_colligation)
 
     label_freq_left = QLabel(main.tr('Frequency (Left):'), main)
     (checkbox_freq_left_no_limit,
      label_freq_left_min,
      spin_box_freq_left_min,
      label_freq_left_max,
-     spin_box_freq_left_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 0, filter_max = 1000000)
+     spin_box_freq_left_max) = wordless_widgets.wordless_widgets_filter1(main, filter_min = 0, filter_max = 1000000)
 
     label_freq_right = QLabel(main.tr('Frequency (Right):'), main)
     (checkbox_freq_right_no_limit,
      label_freq_right_min,
      spin_box_freq_right_min,
      label_freq_right_max,
-     spin_box_freq_right_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 0, filter_max = 1000000)
+     spin_box_freq_right_max) = wordless_widgets.wordless_widgets_filter1(main, filter_min = 0, filter_max = 1000000)
 
     label_score_left = QLabel(main.tr('Score (Left):'), main)
     (checkbox_score_left_no_limit,
      label_score_left_min,
      spin_box_score_left_min,
      label_score_left_max,
-     spin_box_score_left_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 0.0, filter_max = 10000.0)
+     spin_box_score_left_max) = wordless_widgets.wordless_widgets_filter1(main, filter_min = 0.0, filter_max = 10000.0)
 
     label_score_right = QLabel(main.tr('Score (Right):'), main)
     (checkbox_score_right_no_limit,
      label_score_right_min,
      spin_box_score_right_min,
      label_score_right_max,
-     spin_box_score_right_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 0.0, filter_max = 10000.0)
+     spin_box_score_right_max) = wordless_widgets.wordless_widgets_filter1(main, filter_min = 0.0, filter_max = 10000.0)
 
     label_files = QLabel(main.tr('Files Found:'), main)
     (checkbox_files_no_limit,
      label_files_min,
      spin_box_files_min,
      label_files_max,
-     spin_box_files_max) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100000)
+     spin_box_files_max) = wordless_widgets.wordless_widgets_filter1(main, filter_min = 1, filter_max = 100000)
 
     button_filter_table = QPushButton(main.tr('Filter Results in Table'), main)
 
-    combo_box_apply_to.currentTextChanged.connect(filter_settings_changed)
+    combo_box_filter_file.currentTextChanged.connect(filter_settings_changed)
 
     checkbox_freq_left_no_limit.stateChanged.connect(filter_settings_changed)
     spin_box_freq_left_min.valueChanged.connect(filter_settings_changed)
@@ -639,14 +639,14 @@ def init(main):
 
     button_filter_table.clicked.connect(lambda: table_colligation.update_filters())
 
-    layout_apply_to = QGridLayout()
-    layout_apply_to.addWidget(label_apply_to, 0, 0)
-    layout_apply_to.addWidget(combo_box_apply_to, 0, 1)
+    layout_filter_file = QGridLayout()
+    layout_filter_file.addWidget(label_filter_file, 0, 0)
+    layout_filter_file.addWidget(combo_box_filter_file, 0, 1)
 
-    layout_apply_to.setColumnStretch(1, 1)
+    layout_filter_file.setColumnStretch(1, 1)
 
     group_box_filter_settings.setLayout(QGridLayout())
-    group_box_filter_settings.layout().addLayout(layout_apply_to, 0, 0, 1, 4)
+    group_box_filter_settings.layout().addLayout(layout_filter_file, 0, 0, 1, 4)
 
     group_box_filter_settings.layout().addWidget(label_freq_left, 1, 0, 1, 3)
     group_box_filter_settings.layout().addWidget(checkbox_freq_left_no_limit, 1, 3)

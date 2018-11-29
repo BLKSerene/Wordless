@@ -81,14 +81,13 @@ Many thanks to the following open-source projects on which Wordless is built on:
 16. [langdetect](https://github.com/Mimino666/langdetect)
 17. [lxml](https://lxml.de/)
 18. [Matplotlib](https://matplotlib.org/)
-19. [NetworkX](http://networkx.github.io/)
-20. [NumPy](http://www.numpy.org/)
-21. [openpyxl](https://openpyxl.readthedocs.io/en/stable/)
-22. [SciPy](https://www.scipy.org/)
-23. [e_lemma.txt](https://lexically.net/downloads/BNC_wordlists/e_lemma.txt)
-24. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists)
-25. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)
-26. [stopwords-json](https://github.com/6/stopwords-json)
+19. [NumPy](http://www.numpy.org/)
+20. [openpyxl](https://openpyxl.readthedocs.io/en/stable/)
+21. [SciPy](https://www.scipy.org/)
+22. [e_lemma.txt](https://lexically.net/downloads/BNC_wordlists/e_lemma.txt)
+23. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists)
+24. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)
+25. [stopwords-json](https://github.com/6/stopwords-json)
 
 ## Donation/捐助
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.

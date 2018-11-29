@@ -15,7 +15,7 @@ import wordcloud
 from wordless_utils import wordless_sorting
 
 def wordless_plot_freq(main, freqs_files, plot_type,
-                       use_data_file, use_pct, use_cumulative,
+                       use_file, use_pct, use_cumulative,
                        rank_min, rank_max,
                        label_x):
     if plot_type == main.tr('Line Chart'):
@@ -76,14 +76,14 @@ def wordless_plot_freq(main, freqs_files, plot_type,
         freqs_files = {token: freqs + [sum(freqs)]
                        for token, freqs in freqs_files.items()}
 
-        if use_data_file == main.tr('Total'):
+        if use_file == main.tr('Total'):
             freqs_files = wordless_sorting.sorted_freqs_file(freqs_files, -1)
 
             freqs_files = {token: sum(freqs)
                            for token, freqs in freqs_files[rank_min - 1 : rank_max]}
         else:
             for i, file in enumerate(main.wordless_files.get_selected_files()):
-                if file['name'] == use_data_file:
+                if file['name'] == use_file:
                     freqs_files = wordless_sorting.sorted_freqs_file(freqs_files, i)
 
                     freqs_files = {token: freqs[i]
@@ -102,31 +102,26 @@ def wordless_plot_freq(main, freqs_files, plot_type,
         matplotlib.pyplot.show()
 
 def wordless_plot_freqs_ref(main, freqs_files, ref_file, plot_type,
-                            use_data_file, use_pct, use_cumulative,
+                            use_file, use_pct, use_cumulative,
                             rank_min, rank_max,
                             label_x):
     files_selected = main.wordless_files.get_selected_files()
-
-    for file in files_selected:
-        if file['name'] == ref_file['name']:
-            files_selected.remove(ref_file)
-
-            break
+    files_selected.remove(ref_file)
 
     if type(list(freqs_files.keys())[0]) != str:
         freqs_files = {' '.join(ngram): freqs for ngram, freqs in freqs_files.items()}
 
     if plot_type == main.tr('Line Chart'):
-        freqs_files = wordless_sorting.sorted_freqs_files(freqs_files)
+        freqs_files = wordless_sorting.sorted_freqs_files_ref(freqs_files)
 
         total_freqs = numpy.array([item[1] for item in freqs_files]).sum(axis = 0)
-        total_freq_total = total_freqs[-2]
-        total_freq_ref = total_freqs[-1]
+        total_freq_ref = total_freqs[0]
+        total_freq_total = total_freqs[-1]
 
         tokens = [item[0] for item in freqs_files[rank_min - 1 : rank_max]]
-        freqs_observed = [item[1][:-2] for item in freqs_files if item[0] in tokens]
-        freqs_total = [item[1][-2] for item in freqs_files if item[0] in tokens]
-        freqs_ref = [item[1][-1] for item in freqs_files if item[0] in tokens]
+        freqs_ref = [item[1][0] for item in freqs_files if item[0] in tokens]
+        freqs_observed = [item[1][1:-1] for item in freqs_files if item[0] in tokens]
+        freqs_total = [item[1][-1] for item in freqs_files if item[0] in tokens]
 
         if use_pct:
             if use_cumulative:
@@ -190,17 +185,17 @@ def wordless_plot_freqs_ref(main, freqs_files, ref_file, plot_type,
                                          background_color = 'white',
                                          max_words = rank_max - rank_min + 1)
 
-        if use_data_file == main.tr('Total'):
-            freqs_files = wordless_sorting.sorted_freqs_file(freqs_files, -2)
+        if use_file == main.tr('Total'):
+            freqs_files = wordless_sorting.sorted_freqs_file(freqs_files, -1)
 
-            freqs_files = {token: freq_files[-2]
+            freqs_files = {token: freq_files[-1]
                            for token, freq_files in freqs_files[rank_min - 1 : rank_max]}
         else:
             for i, file in enumerate(files_selected):
-                if file['name'] == use_data_file:
-                    freqs_files = wordless_sorting.sorted_freqs_file(freqs_files, i)
+                if file['name'] == use_file:
+                    freqs_files = wordless_sorting.sorted_freqs_file(freqs_files, 1 + i)
 
-                    freqs_files = {token: freq_files[i]
+                    freqs_files = {token: freq_files[1 + i]
                                    for token, freq_files in freqs_files[rank_min - 1 : rank_max]}
 
                     break
@@ -216,7 +211,7 @@ def wordless_plot_freqs_ref(main, freqs_files, ref_file, plot_type,
         matplotlib.pyplot.show()
 
 def wordless_plot_scores(main, scores_files, plot_type,
-                         use_data_file,
+                         use_file,
                          rank_min, rank_max,
                          label_x):
     scores_files = {' '.join(collocate): scores for collocate, scores in scores_files.items()}
@@ -250,14 +245,14 @@ def wordless_plot_scores(main, scores_files, plot_type,
                                          background_color = 'white',
                                          max_words = rank_max - rank_min + 1)
 
-        if use_data_file == main.tr('Total'):
+        if use_file == main.tr('Total'):
             scores_files = wordless_sorting.sorted_scores_file(scores_files, -1)
 
             scores_files = {collocate: scores[-1]
                                  for collocate, scores in scores_files[rank_min - 1 : rank_max]}
         else:
             for i, file in enumerate(main.wordless_files.get_selected_files()):
-                if file['name'] == use_data_file:
+                if file['name'] == use_file:
                     scores_files = wordless_sorting.sorted_scores_file(scores_files, i)
 
                     scores_files = {collocate: scores[i]
@@ -276,16 +271,11 @@ def wordless_plot_scores(main, scores_files, plot_type,
         matplotlib.pyplot.show()
 
 def wordless_plot_keynesses(main, keynesses_files, ref_file, plot_type,
-                            use_data_file,
+                            use_file,
                             rank_min, rank_max,
                             label_y):
     files_selected = main.wordless_files.get_selected_files()
-
-    for file in files_selected:
-        if file['name'] == ref_file['name']:
-            files_selected.remove(ref_file)
-
-            break
+    files_selected.remove(ref_file)
 
     if plot_type == main.tr('Line Chart'):
         if label_y == main.tr('p-value'):
@@ -319,7 +309,7 @@ def wordless_plot_keynesses(main, keynesses_files, ref_file, plot_type,
                                          background_color = 'white',
                                          max_words = rank_max - rank_min + 1)
 
-        if use_data_file == main.tr('Total'):
+        if use_file == main.tr('Total'):
             if label_y == main.tr('p-value'):
                 keynesses_files = wordless_sorting.sorted_keynesses_file(keynesses_files, -1, sorting_order = 'ascending')
             else:
@@ -329,7 +319,7 @@ def wordless_plot_keynesses(main, keynesses_files, ref_file, plot_type,
                                for keyword, keynesses in keynesses_files[rank_min - 1 : rank_max]}
         else:
             for i, file in enumerate(files_selected):
-                if file['name'] == use_data_file:
+                if file['name'] == use_file:
                     if label_y == main.tr('p-value'):
                         keynesses_files = wordless_sorting.sorted_keynesses_file(keynesses_files, i, sorting_order = 'ascending')
                     else:

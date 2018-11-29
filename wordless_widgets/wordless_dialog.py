@@ -61,7 +61,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
          self.checkbox_ignore_case,
          self.checkbox_match_inflected_forms,
          self.checkbox_match_whole_word,
-         self.checkbox_use_regex) = wordless_widgets.wordless_widgets_search(main)
+         self.checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
 
         self.button_find_next = QPushButton(main.tr('Find Next'), main)
         self.button_find_prev = QPushButton(main.tr('Find Previous'), main)

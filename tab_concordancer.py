@@ -552,7 +552,7 @@ def init(main):
      checkbox_ignore_case,
      checkbox_match_inflected_forms,
      checkbox_match_whole_word,
-     checkbox_use_regex) = wordless_widgets.wordless_widgets_search(main)
+     checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
 
     button_context_settings = QPushButton(main.tr('Context Settings'), main)
 
@@ -645,7 +645,7 @@ def init(main):
 
     (checkbox_show_pct,
      checkbox_show_cumulative,
-     checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table(main, table_concordancer)
+     checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(main, table_concordancer)
 
     checkbox_show_cumulative.hide()
     checkbox_show_breakdown.hide()

@@ -122,6 +122,11 @@ class Wordless_Files():
 
         return files_selected
 
+    def find_selected_file(self, file_name):
+        for file in self.get_selected_files():
+            if file['name'] == file_name:
+                return file
+
 class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
     def __init__(self, main):
         super().__init__(main,

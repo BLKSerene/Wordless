@@ -21,6 +21,25 @@ def sorted_freqs_files(freqs_files):
 
     return sorted(freqs_files.items(), key = key_freqs_files)
 
+def sorted_freqs_files_ref(freqs_files):
+    def key_freqs_files(item):
+        keys = []
+
+        for i, value in enumerate(item[1]):
+            # Frequency (Observed)
+            if i > 0:
+                keys.append(-value)
+
+        # Frequency (Reference)
+        keys.append(-item[1][0])
+
+        # Tokens & N-grams
+        keys.append(item[0])
+
+        return keys
+
+    return sorted(freqs_files.items(), key = key_freqs_files)
+
 def sorted_freqs_file(freqs_files, i_file):
     def key_freqs_file(item):
         keys = []
@@ -105,6 +124,31 @@ def sorted_keynesses_files(keynesses_files, sorting_order):
 
     return sorted(keynesses_files.items(), key = key_keynesses_files)
 
+def sorted_keynesses_files_stats(keynesses_files_stats):
+    def key_keynesses_files_stats(item):
+        keys = []
+
+        for stats in item[1]:
+            # p-value
+            keys.append(stats[1])
+            # Test Statistic
+            if stats[0]:
+                keys.append(-stats[0])
+            # Bayes Factor
+            if stats[2]:
+                keys.append(-stats[2])
+            # Effect Size
+            keys.append(-stats[3])
+            # Dispersion
+            keys.append(-stats[4])
+
+        # Keywords
+        keys.append(item[0])
+
+        return keys
+
+    return sorted(keynesses_files_stats.items(), key = key_keynesses_files_stats)
+
 def sorted_keynesses_file(keynesses_files, i_file, sorting_order):
     def key_keynesses_file(item):
         keys = []
@@ -121,22 +165,3 @@ def sorted_keynesses_file(keynesses_files, i_file, sorting_order):
         return keys
 
     return sorted(keynesses_files.items(), key = key_keynesses_file)
-
-def sorted_keynesses_files_stats(keynesses_files_stats):
-    def key_keynesses_files_stats(item):
-        keys = []
-
-        for stats in item[1]:
-            # p-value
-            keys.append(stats[1])
-            # Test Statistics
-            keys.append(-stats[0])
-            # Effect Size
-            keys.append(-stats[2])
-
-        # Keywords
-        keys.append(item[0])
-
-        return keys
-
-    return sorted(keynesses_files_stats.items(), key = key_keynesses_files_stats)
