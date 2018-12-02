@@ -13,8 +13,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_text import *
 from wordless_widgets import wordless_layout, wordless_message_box, wordless_widgets
-from wordless_utils import wordless_text, wordless_misc
+from wordless_utils import *
 
 class Wordless_Dialog(QDialog):
     def __init__(self, main, title):
@@ -340,7 +341,7 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
          self.checkbox_inclusion_ignore_case,
          self.checkbox_inclusion_match_inflected_forms,
          self.checkbox_inclusion_match_whole_word,
-         self.checkbox_inclusion_use_regex) = wordless_widgets.wordless_widgets_search(main)
+         self.checkbox_inclusion_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
 
         self.label_inclusion_context_window = QLabel(self.tr('Context Window:'), self)
         (self.checkbox_inclusion_context_window_sync,
@@ -412,7 +413,7 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
          self.checkbox_exclusion_ignore_case,
          self.checkbox_exclusion_match_inflected_forms,
          self.checkbox_exclusion_match_whole_word,
-         self.checkbox_exclusion_use_regex) = wordless_widgets.wordless_widgets_search(main)
+         self.checkbox_exclusion_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
 
         self.label_exclusion_context_window = QLabel(self.tr('Context Window:'), self)
         (self.checkbox_exclusion_context_window_sync,

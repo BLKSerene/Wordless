@@ -624,21 +624,26 @@ def init(main):
     checkbox_number_lines.stateChanged.connect(generation_settings_changed)
     spin_box_number_lines.valueChanged.connect(generation_settings_changed)
 
+    layout_width = QGridLayout()
+    layout_width.addWidget(label_width_left, 0, 0)
+    layout_width.addWidget(spin_box_width_left_token, 0, 1)
+    layout_width.addWidget(spin_box_width_left_char, 0, 1)
+    layout_width.addWidget(label_width_right, 1, 0)
+    layout_width.addWidget(spin_box_width_right_token, 1, 1)
+    layout_width.addWidget(spin_box_width_right_char, 1, 1)
+    layout_width.addWidget(label_width_unit, 2, 0)
+    layout_width.addWidget(combo_box_width_unit, 2, 1)
+
+    layout_width.setColumnStretch(1, 1)
+
     group_box_generation_settings.setLayout(QGridLayout())
-    group_box_generation_settings.layout().addWidget(label_width_left, 0, 0)
-    group_box_generation_settings.layout().addWidget(spin_box_width_left_token, 0, 1)
-    group_box_generation_settings.layout().addWidget(spin_box_width_left_char, 0, 1)
-    group_box_generation_settings.layout().addWidget(label_width_right, 1, 0)
-    group_box_generation_settings.layout().addWidget(spin_box_width_right_token, 1, 1)
-    group_box_generation_settings.layout().addWidget(spin_box_width_right_char, 1, 1)
-    group_box_generation_settings.layout().addWidget(label_width_unit, 2, 0)
-    group_box_generation_settings.layout().addWidget(combo_box_width_unit, 2, 1)
+    group_box_generation_settings.layout().addLayout(layout_width, 0, 0, 1, 2)
 
-    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 3, 0, 1, 2)
+    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 1, 0, 1, 2)
 
-    group_box_generation_settings.layout().addWidget(label_number_lines, 4, 0)
-    group_box_generation_settings.layout().addWidget(checkbox_number_lines, 4, 1, Qt.AlignRight)
-    group_box_generation_settings.layout().addWidget(spin_box_number_lines, 5, 0, 1, 2)
+    group_box_generation_settings.layout().addWidget(label_number_lines, 2, 0)
+    group_box_generation_settings.layout().addWidget(checkbox_number_lines, 2, 1, Qt.AlignRight)
+    group_box_generation_settings.layout().addWidget(spin_box_number_lines, 3, 0, 1, 2)
 
     # Table Settings
     group_box_table_settings = QGroupBox(main.tr('Table Settings'), main)

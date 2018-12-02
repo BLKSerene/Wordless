@@ -16,6 +16,7 @@ from PyQt5.QtWidgets import *
 
 import nltk
 
+from wordless_text import *
 from wordless_widgets import *
 from wordless_utils import *
 
@@ -1364,6 +1365,11 @@ class Wordless_Settings(QDialog):
     def load(self, tab = None):
         self.load_settings()
 
+        if not self.tree_settings.selectedItems():
+            self.tree_settings.item_selected_old = self.tree_settings.topLevelItem(0)
+
+            self.tree_settings.topLevelItem(0).setSelected(True)
+
         if tab:
             item_selected = self.tree_settings.findItems(tab, Qt.MatchRecursive)[0]
 
@@ -1374,9 +1380,5 @@ class Wordless_Settings(QDialog):
 
             if not self.tree_settings.findItems(tab, Qt.MatchExactly):
                 item_selected.parent().setExpanded(True)
-        elif not self.tree_settings.selectedItems():
-            self.tree_settings.item_selected_old = self.tree_settings.topLevelItem(0)
-
-            self.tree_settings.topLevelItem(0).setSelected(True)
 
         self.exec()

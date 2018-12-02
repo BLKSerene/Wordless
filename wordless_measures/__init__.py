@@ -7,7 +7,7 @@
 #
 
 __all__ = [
-    'measures_adjusted_frequency',
+    'measures_adjusted_freq',
     'measures_bayes_factor',
     'measures_dispersion',
     'measures_effect_size',

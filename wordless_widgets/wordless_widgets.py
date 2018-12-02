@@ -200,35 +200,45 @@ def wordless_widgets_window(main):
 
     return checkbox_window_sync, label_window_left, spin_box_window_left, label_window_right, spin_box_window_right
 
-def wordless_widgets_dispersion_measure(main):
-    label_dispersion_measure = QLabel(main.tr('Dispersion Measure:'), main)
-    button_settings = QPushButton(main.tr('Settings'), main)
-    combo_box_dispersion_measure = wordless_box.Wordless_Combo_Box(main)
+def wordless_widgets_measure_dispersion(main):
+    label_measure_dispersion = QLabel(main.tr('Measure of Dispersion:'), main)
+    combo_box_measure_dispersion = wordless_box.Wordless_Combo_Box(main)
 
-    button_settings.clicked.connect(lambda: main.wordless_settings.load(tab = main.tr('Dispersion')))
+    combo_box_measure_dispersion.addItems(list(main.settings_global['measures_dispersion'].keys()))
 
-    return (label_dispersion_measure, button_settings,
-            combo_box_dispersion_measure)
+    return (label_measure_dispersion,
+            combo_box_measure_dispersion)
 
-def wordless_widgets_significance_test(main):
-    label_significance_test = QLabel(main.tr('Significance Test:'), main)
-    button_settings = QPushButton(main.tr('Settings'), main)
-    combo_box_significance_test = wordless_box.Wordless_Combo_Box(main)
+def wordless_widgets_measure_adjusted_freq(main):
+    label_measure_adjusted_freq = QLabel(main.tr('Measure of Adjusted Frequency:'), main)
+    combo_box_measure_adjusted_freq = wordless_box.Wordless_Combo_Box(main)
 
-    button_settings.clicked.connect(lambda: main.wordless_settings.load(tab = main.tr('Statistical Significance')))
+    combo_box_measure_adjusted_freq.addItems(list(main.settings_global['measures_adjusted_freq'].keys()))
 
-    return (label_significance_test, button_settings,
-            combo_box_significance_test)
+    return (label_measure_adjusted_freq,
+            combo_box_measure_adjusted_freq)
 
-def wordless_widgets_effect_size_measure(main):
-    label_effect_size_measure = QLabel(main.tr('Effect Size Measure:'), main)
-    button_settings = QPushButton(main.tr('Settings'), main)
-    combo_box_effect_size_measure = wordless_box.Wordless_Combo_Box(main)
+def wordless_widgets_test_significance(main):
+    label_test_significance = QLabel(main.tr('Test of Statistical Significance:'), main)
+    combo_box_test_significance = wordless_box.Wordless_Combo_Box(main)
 
-    button_settings.clicked.connect(lambda: main.wordless_settings.load(tab = main.tr('Effect Size')))
+    return (label_test_significance,
+            combo_box_test_significance)
 
-    return (label_effect_size_measure, button_settings,
-            combo_box_effect_size_measure)
+def wordless_widgets_measure_effect_size(main):
+    label_measure_effect_size = QLabel(main.tr('Measure of Effect Size:'), main)
+    combo_box_measure_effect_size = wordless_box.Wordless_Combo_Box(main)
+
+    return (label_measure_effect_size,
+            combo_box_measure_effect_size)
+
+def wordless_widgets_settings_measures(main, tab):
+    label_settings_measures = QLabel(main.tr('Advanced Settings:'), main)
+    button_settings_measures = QPushButton(main.tr('Settings...'), main)
+
+    button_settings_measures.clicked.connect(lambda: main.wordless_settings.load(tab = tab))
+
+    return label_settings_measures, button_settings_measures
 
 # Table Settings
 def wordless_widgets_table_settings(main, table):
@@ -272,11 +282,22 @@ def wordless_widgets_plot_settings(main):
     def plot_type_changed():
         if combo_box_plot_type.currentText() == main.tr('Line Chart'):
             combo_box_use_file.setEnabled(False)
+
+            use_data_changed()
         elif combo_box_plot_type.currentText() == main.tr('Word Cloud'):
             combo_box_use_file.setEnabled(True)
 
             checkbox_use_pct.setEnabled(False)
             checkbox_use_cumulative.setEnabled(False)
+
+    def use_data_changed():
+        if combo_box_plot_type.currentText() == main.tr('Line Chart'):
+            if combo_box_use_data.currentText() == main.tr('Frequency'):
+                checkbox_use_pct.setEnabled(True)
+                checkbox_use_cumulative.setEnabled(True)
+            else:
+                checkbox_use_pct.setEnabled(False)
+                checkbox_use_cumulative.setEnabled(False)
 
     def wordless_files_changed():
         if combo_box_use_file.count() == 1:
@@ -308,11 +329,14 @@ def wordless_widgets_plot_settings(main):
                                   main.tr('Word Cloud')])
 
     combo_box_plot_type.currentTextChanged.connect(plot_type_changed)
+    combo_box_use_data.currentTextChanged.connect(use_data_changed)
+
     main.wordless_files.table.itemChanged.connect(wordless_files_changed)
 
     combo_box_use_file.wordless_files_changed = wordless_files_changed
 
     plot_type_changed()
+    use_data_changed()
     wordless_files_changed()
 
     return (label_plot_type, combo_box_plot_type,

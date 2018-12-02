@@ -14,9 +14,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_widgets import wordless_dialog
-from wordless_utils import wordless_text
-
 def log_timing(func):
     def wrapper(widget, *args, **kwargs):
         if isinstance(widget, QMainWindow):

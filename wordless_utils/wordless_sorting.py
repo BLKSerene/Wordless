@@ -6,89 +6,58 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
-def sorted_freqs_files(freqs_files):
-    def key_freqs_files(item):
+# Frequency
+def sorted_tokens_freq_files(tokens_freq_files):
+    def key(item):
         keys = []
 
         for value in item[1]:
             # Frequency
             keys.append(-value)
 
-        # Tokens & N-grams
+        # Tokens/N-grams
         keys.append(item[0])
 
         return keys
 
-    return sorted(freqs_files.items(), key = key_freqs_files)
+    return sorted(tokens_freq_files.items(), key = key)
 
-def sorted_freqs_files_ref(freqs_files):
-    def key_freqs_files(item):
-        keys = []
-
-        for i, value in enumerate(item[1]):
-            # Frequency (Observed)
-            if i > 0:
-                keys.append(-value)
-
-        # Frequency (Reference)
-        keys.append(-item[1][0])
-
-        # Tokens & N-grams
-        keys.append(item[0])
-
-        return keys
-
-    return sorted(freqs_files.items(), key = key_freqs_files)
-
-def sorted_freqs_file(freqs_files, i_file):
-    def key_freqs_file(item):
+def sorted_tokens_freq_file(tokens_freq_files, i_file):
+    def key(item):
         keys = []
 
         # Frequency
         keys.append(-item[1][i_file])
 
-        # Tokens & N-grams
+        # Tokens/N-grams
         keys.append(item[0])
 
         return keys
 
-    return sorted(freqs_files.items(), key = key_freqs_file)
+    return sorted(tokens_freq_files.items(), key = key)
 
-def sorted_scores_files(scores_files):
-    def key_scores_files(item):
+def sorted_tokens_freq_files_ref(tokens_freq_files):
+    def key(item):
         keys = []
 
-        for score in item[1]:
-            # Score
-            keys.append(-score)
+        # Frequency in observed files
+        for i, freq in enumerate(item[1]):
+            if i > 0:
+                keys.append(-freq)
 
-        # Keywords
-        keys.append(item[0][0])
-        # Collocates
-        keys.append(item[0][1])
+        # Frequency in reference file
+        keys.append(-item[1][0])
+
+        # Tokens
+        keys.append(item[0])
 
         return keys
 
-    return sorted(scores_files.items(), key = key_scores_files)
+    return sorted(tokens_freq_files.items(), key = key)
 
-def sorted_scores_file(scores_files, i_file):
-    def key_scores_file(item):
-        keys = []
-
-        # Score
-        keys.append(-item[1][i_file])
-
-        # Keywords
-        keys.append(item[0][0])
-        # Collocates
-        keys.append(item[0][1])
-
-        return keys
-
-    return sorted(scores_files.items(), key = key_scores_file)
-
+# Statistic
 def sorted_scores_files_directions(scores_files_directions):
-    def key_scores_files_directions(item):
+    def key(item):
         keys = []
 
         for scores in item[1]:
@@ -104,56 +73,117 @@ def sorted_scores_files_directions(scores_files_directions):
 
         return keys
 
-    return sorted(scores_files_directions.items(), key = key_scores_files_directions)
+    return sorted(scores_files_directions.items(), key = key)
 
-def sorted_keynesses_files(keynesses_files, sorting_order):
-    def key_keynesses_files(item):
+def sorted_tokens_stat_files(tokens_stat_files):
+    def key(item):
         keys = []
 
-        for keyness in item[1]:
-            # Keyness
-            if sorting_order == 'ascending':
-                keys.append(keyness)
-            else:
-                keys.append(-keyness)
+        # Statistic
+        for stat in item[1]:
+            keys.append(-stat)
 
-        # Keywords
+        # Tokens
         keys.append(item[0])
 
         return keys
 
-    return sorted(keynesses_files.items(), key = key_keynesses_files)
+    return sorted(tokens_stat_files.items(), key = key)
 
-def sorted_keynesses_files_stats(keynesses_files_stats):
-    def key_keynesses_files_stats(item):
+def sorted_ngrams_stat_files(ngrams_stat_files):
+    def key(item):
         keys = []
 
-        for stats in item[1]:
+        # Statistic
+        for stat in item[1]:
+            keys.append(-stat)
+
+        # N-grams
+        for token in item[0]:
+            keys.append(token)
+
+        return keys
+
+    return sorted(ngrams_stat_files.items(), key = key)
+
+def sorted_tokens_stat_file(tokens_stat_files, i_file):
+    def key(item):
+        keys = []
+
+        # Statistic
+        keys.append(-item[1][i_file])
+
+        # Token
+        keys.append(item[0])
+
+        return keys
+
+    return sorted(tokens_stat_files.items(), key = key)
+
+def sorted_ngrams_stat_file(ngrams_stat_files, i_file):
+    def key(item):
+        keys = []
+
+        # Statistic
+        keys.append(-item[1][i_file])
+
+        # N-grams
+        for token in item[0]:
+            keys.append(token)
+
+        return keys
+
+    return sorted(ngrams_stat_files.items(), key = key)
+
+# Keyness
+def sorted_keywords_stats_files(keywords_stats_files):
+    def key(item):
+        keys = []
+
+        for stats_file in item[1]:
             # p-value
-            keys.append(stats[1])
+            keys.append(stats_file[1])
             # Test Statistic
-            if stats[0]:
-                keys.append(-stats[0])
+            if stats_file[0]:
+                keys.append(-stats_file[0])
             # Bayes Factor
-            if stats[2]:
-                keys.append(-stats[2])
+            if stats_file[2]:
+                keys.append(-stats_file[2])
             # Effect Size
-            keys.append(-stats[3])
+            keys.append(-stats_file[3])
             # Dispersion
-            keys.append(-stats[4])
+            keys.append(-stats_file[4])
 
         # Keywords
         keys.append(item[0])
 
         return keys
 
-    return sorted(keynesses_files_stats.items(), key = key_keynesses_files_stats)
+    return sorted(keywords_stats_files.items(), key = key)
 
-def sorted_keynesses_file(keynesses_files, i_file, sorting_order):
-    def key_keynesses_file(item):
+def sorted_keywords_stat_files(keywords_stat_files, sorting_order):
+    def key(item):
         keys = []
 
-        # Keyness
+        # Statistic
+        for stat in item[1]:
+            if sorting_order == 'ascending':
+                keys.append(stat)
+            else:
+                keys.append(-stat)
+
+        # Keywords
+        keys.append(item[0])
+
+        return keys
+
+    return sorted(keywords_stat_files.items(), key = key)
+
+def sorted_keywords_stat_file(keywords_stat_files, i_file, sorting_order):
+    def key(item):
+        keys = []
+
+        # Statistic
         if sorting_order == 'ascending':
             keys.append(item[1][i_file])
         else:
@@ -164,4 +194,4 @@ def sorted_keynesses_file(keynesses_files, i_file, sorting_order):
 
         return keys
 
-    return sorted(keynesses_files.items(), key = key_keynesses_file)
+    return sorted(keywords_stat_files.items(), key = key)

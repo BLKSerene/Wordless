@@ -14,9 +14,14 @@ import scipy.stats
 # Reference:
 #     Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.
 def juillands_d(freqs):
-    cv = statistics.pstdev(freqs) / statistics.mean(freqs)
+    if statistics.mean(freqs) == 0:
+        d = 0
+    else:
+        cv = statistics.pstdev(freqs) / statistics.mean(freqs)
     
-    return 1 - cv / math.sqrt(len(freqs) - 1)
+        d = 1 - cv / math.sqrt(len(freqs) - 1)
+
+    return d
 
 # Reference:
 #     Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
@@ -47,10 +52,15 @@ def rosengrens_s(freqs):
 # Reference:
 #     Zhang Huarui, et al. "Distribution Consistency: As a General Method for Defining a Core Lexicon." Proceedings of Fourth International Conference on Language Resources and Evaluation, Lisbon, 26-28 May 2004.
 def distributional_consistency(freqs):
-    number_sections = len(freqs)
+    if sum(freqs) == 0:
+        dc = 0
+    else:
+        number_sections = len(freqs)
 
-    return ((sum([math.sqrt(freq) for freq in freqs]) / number_sections) ** 2 /
-            (sum(freqs) / number_sections))
+        dc = ((sum([math.sqrt(freq) for freq in freqs]) / number_sections) ** 2 /
+              (sum(freqs) / number_sections))
+
+    return dc
 
 # Reference:
 #     Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, pp. 403-37.

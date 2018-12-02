@@ -698,7 +698,7 @@ class Wordless_Table_Data(Wordless_Table):
         self.update_ranks()
         self.update_items_width()
 
-        self.item_changed()
+        self.itemChanged.emit(self.item(0, 0))
 
     def selected_rows(self):
         return sorted(set([index.row() for index in self.selectedIndexes()]))

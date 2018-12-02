@@ -997,7 +997,7 @@ def init_settings_global(main):
             ]
         },
 
-        'dispersion_measures': {
+        'measures_dispersion': {
             main.tr('Juilland\'s D'): {
                 'col': main.tr('Juilland\'s D'),
                 'func': measures_dispersion.juillands_d
@@ -1021,10 +1021,37 @@ def init_settings_global(main):
             main.tr('Distributional Consistency'): {
                 'col': main.tr('Distributional Consistency'),
                 'func': measures_dispersion.distributional_consistency
-            },
+            }
         },
 
-        'significance_tests': {
+        'measures_adjusted_freq': {
+            main.tr('Juilland\'s U'): {
+                'col': main.tr('Juilland\'s U'),
+                'func': measures_adjusted_freq.juillands_u
+            },
+
+            main.tr('Carroll\'s Uₘ'): {
+                'col': main.tr('Carroll\'s Uₘ'),
+                'func': measures_adjusted_freq.carrolls_um
+            },
+
+            main.tr('Rosengren\'s KF'): {
+                'col': main.tr('Rosengren\'s KF'),
+                'func': measures_adjusted_freq.rosengrens_kf
+            },
+
+            main.tr('Engvall\'s Measure'): {
+                'col': main.tr('Engvall\'s Measure'),
+                'func': measures_adjusted_freq.engvalls_measure
+            },
+
+            main.tr('Kromer\'s Uᵣ'): {
+                'col': main.tr('Kromer\'s Uᵣ'),
+                'func': measures_adjusted_freq.kromers_ur
+            }
+        },
+
+        'tests_significance': {
             'keywords': {
                 main.tr('Student\'s t-test (Two-sample)'): {
                     'cols': [
@@ -1079,7 +1106,7 @@ def init_settings_global(main):
             }
         },
 
-        'effect_size_measures': {
+        'measures_effect_size': {
             'keywords': {
                 main.tr('Kilgarriff\'s Ratio'): {
                     'col': main.tr('Kilgarriff\'s Ratio'),
@@ -1568,6 +1595,11 @@ def init_settings_default(main):
                 'puncs': False
             },
 
+            'generation_settings': {
+                'measure_dispersion': main.tr('Juilland\'s D'),
+                'measure_adjusted_freq': main.tr('Juilland\'s U')
+            },
+
             'table_settings': {
                 'show_pct': True,
                 'show_cumulative': False,
@@ -1576,29 +1608,44 @@ def init_settings_default(main):
 
             'plot_settings': {
                 'plot_type': main.tr('Line Chart'),
-                'use_data_file': main.tr('Total'),
+                'use_file': main.tr('Total'),
+                'use_data': main.tr('Frequency'),
                 'use_pct': False,
                 'use_cumulative': False,
 
-                'rank_no_limit': False,
                 'rank_min': 1,
-                'rank_max': 50
+                'rank_min_no_limit': True,
+                'rank_max': 50,
+                'rank_max_no_limit': False,
             },
 
             'filter_settings': {
-                'filter_file': main.tr('Total'),
-    
-                'freq_no_limit': True,
                 'freq_min': 0,
+                'freq_min_no_limit': True,
                 'freq_max': 1000,
+                'freq_max_no_limit': True,
 
-                'len_no_limit': True,
-                'len_min': 1,
-                'len_max': 20,
+                'dispersion_min': -100,
+                'dispersion_min_no_limit': True,
+                'dispersion_max': 100,
+                'dispersion_max_no_limit': True,
 
-                'files_no_limit': True,
-                'files_min': 1,
-                'files_max': 100
+                'adjusted_freq_min': 0,
+                'adjusted_freq_min_no_limit': True,
+                'adjusted_freq_max': 1000,
+                'adjusted_freq_max_no_limit': True,
+
+                'len_token_min': 1,
+                'len_token_min_no_limit': True,
+                'len_token_max': 20,
+                'len_token_max_no_limit': True,
+
+                'number_files_found_min': 1,
+                'number_files_found_min_no_limit': True,
+                'number_files_found_max': 100,
+                'number_files_found_max_no_limit': True,
+
+                'filter_file': main.tr('Total')
             },
 
             'search_results': {
@@ -1892,9 +1939,9 @@ def init_settings_default(main):
 
             'generation_settings': {
                 'ref_file': '',
-                'significance_test': main.tr('Log-likelihood Ratio Test'),
-                'effect_size_measure': main.tr('Kilgarriff\'s Ratio'),
-                'dispersion_measure': main.tr('Juilland\'s D')
+                'test_significance': main.tr('Log-likelihood Ratio Test'),
+                'measure_effect_size': main.tr('Kilgarriff\'s Ratio'),
+                'measure_dispersion': main.tr('Juilland\'s D')
             },
             
             'table_settings': {
