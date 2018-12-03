@@ -577,8 +577,11 @@ def init(main):
     # Filter Settings
     group_box_filter_settings = QGroupBox(main.tr('Filter Settings'), main)
 
-    label_filter_file = QLabel(main.tr('Filter File:'), main)
-    combo_box_filter_file = wordless_box.Wordless_Combo_Box_Filter_File(main, table_colligation)
+    (label_filter_file,
+     combo_box_filter_file,
+     button_filter_results) = wordless_widgets.wordless_widgets_filter_results(main, table_colligation)
+
+    button_filter_results.hide()
 
     label_freq_left = QLabel(main.tr('Frequency (Left):'), main)
     (checkbox_freq_left_no_limit,
@@ -732,7 +735,7 @@ def generate_collocates(main, files):
     for i, file in enumerate(files):
         text = wordless_text.Wordless_Text(main, file)
 
-        tokens_tagged = wordless_text.wordless_pos_tag(main, '\n'.join(text.paras), text.lang_code)
+        tokens_tagged = wordless_text_processing.wordless_pos_tag(main, '\n'.join(text.paras), text.lang_code)
 
         if settings['treat_as_lowercase']:
             text.tokens = [token.lower() for token in text.tokens]
@@ -740,9 +743,9 @@ def generate_collocates(main, files):
             tokens_tagged = [(token.lower(), tag) for token, tag in tokens_tagged]
 
         if settings['lemmatize']:
-            text.tokens = wordless_text.wordless_lemmatize(main, text.tokens, text.lang_code)
+            text.tokens = wordless_text_processing.wordless_lemmatize(main, text.tokens, text.lang_code)
 
-            tokens_lemmatized = wordless_text.wordless_lemmatize(main, numpy.array(tokens_tagged)[:, 0], text.lang_code)
+            tokens_lemmatized = wordless_text_processing.wordless_lemmatize(main, numpy.array(tokens_tagged)[:, 0], text.lang_code)
 
             tokens_tagged = [(token, tag)
                              for token, tag in zip(tokens_lemmatized, numpy.array(tokens_tagged)[:, 1])]

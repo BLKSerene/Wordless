@@ -1195,6 +1195,591 @@ def init_settings_global(main):
 
 def init_settings_default(main):
     main.settings_default = {
+        'current_tab': main.tr('Overview'),
+
+        'file': {
+            'files_open': [],
+            'files_closed': [],
+
+            'subfolders': True,
+
+            'detect_langs': True,
+            'detect_encodings': True
+        },
+
+        'overview': {
+            'token_settings': {
+                'words': True,
+                'lowercase': True,
+                'uppercase': True,
+                'title_case': True,
+                'treat_as_lowercase': True,
+                'lemmatize': False,
+                'filter_stop_words': False,
+
+                'nums': True,
+                'puncs': False
+            },
+
+            'generation_settings': {
+                'base_sttr': 1000
+            },
+
+            'table_settings': {
+                'show_pct': True,
+                'show_cumulative': False,
+                'show_breakdown': True
+            }
+        },
+    
+        'concordancer': {
+            'token_settings': {
+                'puncs': False
+            },
+            
+            'search_settings': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False
+            },
+
+            'context_settings': {
+                'inclusion': True,
+
+                'inclusion_multi_search_mode': False,
+                'inclusion_search_term': '',
+                'inclusion_search_terms': [],
+
+                'inclusion_ignore_case': True,
+                'inclusion_match_inflected_forms': True,
+                'inclusion_match_whole_word': True,
+                'inclusion_use_regex': False,
+                
+                'inclusion_context_window_sync': False,
+                'inclusion_context_window_left': -5,
+                'inclusion_context_window_right': 5,
+
+                'exclusion': True,
+
+                'exclusion_multi_search_mode': False,
+                'exclusion_search_term': '',
+                'exclusion_search_terms': [],
+
+                'exclusion_ignore_case': True,
+                'exclusion_match_inflected_forms': True,
+                'exclusion_match_whole_word': True,
+                'exclusion_use_regex': False,
+                
+                'exclusion_context_window_sync': False,
+                'exclusion_context_window_left': -5,
+                'exclusion_context_window_right': 5
+            },
+            
+            'generation_settings': {
+                'width_left_token': 10,
+                'width_left_char': 50,
+                'width_right_token': 10,
+                'width_right_char': 50,
+                'width_unit': main.tr('Token'),
+                
+                'number_lines_no_limit': True,
+                'number_lines': 25
+            },
+
+            'table_settings': {
+                'show_pct': True
+            },
+
+            'plot_settings': {
+                'sort_results_by': main.tr('File')
+            },
+
+            'sorting_settings': {
+                'sorting_rules': [
+                    [main.tr('File'), main.tr('Ascending')],
+                    [main.tr('Token No.'), main.tr('Ascending')]
+                ],
+
+                'highlight_colors': [
+                    # Red
+                    '#F00',
+                    # Orange
+                    '#C2691D',
+                    # Yellow
+                    '#CBBE00',
+                    # Green
+                    '#3F864C',
+                    # Blue
+                    '#264E8C',
+                    # Purple
+                    '#491D76'
+                ]
+            }
+        },
+    
+        'wordlist': {
+            'token_settings': {
+                'words': True,
+                'lowercase': True,
+                'uppercase': True,
+                'title_case': True,
+                'treat_as_lowercase': True,
+                'lemmatize': False,
+                'filter_stop_words': False,
+
+                'nums': True,
+                'puncs': False
+            },
+
+            'generation_settings': {
+                'measure_dispersion': main.tr('Juilland\'s D'),
+                'measure_adjusted_freq': main.tr('Juilland\'s U')
+            },
+
+            'table_settings': {
+                'show_pct': True,
+                'show_cumulative': False,
+                'show_breakdown': True
+            },
+
+            'plot_settings': {
+                'plot_type': main.tr('Line Chart'),
+                'use_file': main.tr('Total'),
+                'use_data': main.tr('Frequency'),
+                'use_pct': False,
+                'use_cumulative': False,
+
+                'rank_min': 1,
+                'rank_min_no_limit': True,
+                'rank_max': 50,
+                'rank_max_no_limit': False,
+            },
+
+            'filter_settings': {
+                'freq_min': 0,
+                'freq_min_no_limit': True,
+                'freq_max': 1000,
+                'freq_max_no_limit': True,
+
+                'dispersion_min': -100,
+                'dispersion_min_no_limit': True,
+                'dispersion_max': 100,
+                'dispersion_max_no_limit': True,
+
+                'adjusted_freq_min': 0,
+                'adjusted_freq_min_no_limit': True,
+                'adjusted_freq_max': 1000,
+                'adjusted_freq_max_no_limit': True,
+
+                'len_token_min': 1,
+                'len_token_min_no_limit': True,
+                'len_token_max': 20,
+                'len_token_max_no_limit': True,
+
+                'number_files_found_min': 1,
+                'number_files_found_min_no_limit': True,
+                'number_files_found_max': 100,
+                'number_files_found_max_no_limit': True,
+
+                'filter_file': main.tr('Total')
+            },
+
+            'search_results': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False
+            }
+        },
+    
+        'ngrams': {
+            'token_settings': {
+                'words': True,
+                'lowercase': True,
+                'uppercase': True,
+                'title_case': True,
+                'treat_as_lowercase': True,
+                'lemmatize': False,
+                'filter_stop_words': False,
+
+                'nums': True,
+                'puncs': False
+            },
+
+            'search_settings': {
+                'search_settings': True,
+
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False,
+
+                'keyword_position_min': 1,
+                'keyword_position_min_no_limit': True,
+                'keyword_position_max': 2,
+                'keyword_position_max_no_limit': True
+            },
+
+            'context_settings': {
+                'inclusion': True,
+
+                'inclusion_multi_search_mode': False,
+                'inclusion_search_term': '',
+                'inclusion_search_terms': [],
+
+                'inclusion_ignore_case': True,
+                'inclusion_match_inflected_forms': True,
+                'inclusion_match_whole_word': True,
+                'inclusion_use_regex': False,
+                
+                'inclusion_context_window_sync': False,
+                'inclusion_context_window_left': -5,
+                'inclusion_context_window_right': 5,
+
+                'exclusion': True,
+
+                'exclusion_multi_search_mode': False,
+                'exclusion_search_term': '',
+                'exclusion_search_terms': [],
+
+                'exclusion_ignore_case': True,
+                'exclusion_match_inflected_forms': True,
+                'exclusion_match_whole_word': True,
+                'exclusion_use_regex': False,
+                
+                'exclusion_context_window_sync': False,
+                'exclusion_context_window_left': -5,
+                'exclusion_context_window_right': 5
+            },
+            
+            'generation_settings': {
+                'ngram_size_sync': False,
+                'ngram_size_min': 2,
+                'ngram_size_max': 2,
+                'allow_skipped_tokens': 0,
+
+                'measure_dispersion': main.tr('Juilland\'s D'),
+                'measure_adjusted_freq': main.tr('Juilland\'s U')
+            },
+
+            'table_settings': {
+                'show_pct': True,
+                'show_cumulative': False,
+                'show_breakdown': True
+            },
+
+            'plot_settings': {
+                'plot_type': main.tr('Line Chart'),
+                'use_file': main.tr('Total'),
+                'use_data': main.tr('Frequency'),
+                'use_pct': False,
+                'use_cumulative': False,
+
+                'rank_min': 1,
+                'rank_min_no_limit': True,
+                'rank_max': 50,
+                'rank_max_no_limit': False,
+            },
+
+            'filter_settings': {
+                'freq_min': 0,
+                'freq_min_no_limit': True,
+                'freq_max': 1000,
+                'freq_max_no_limit': True,
+
+                'dispersion_min': -100,
+                'dispersion_min_no_limit': True,
+                'dispersion_max': 100,
+                'dispersion_max_no_limit': True,
+
+                'adjusted_freq_min': 0,
+                'adjusted_freq_min_no_limit': True,
+                'adjusted_freq_max': 1000,
+                'adjusted_freq_max_no_limit': True,
+
+                'len_ngram_min': 1,
+                'len_ngram_min_no_limit': True,
+                'len_ngram_max': 20,
+                'len_ngram_max_no_limit': True,
+
+                'number_files_found_min': 1,
+                'number_files_found_min_no_limit': True,
+                'number_files_found_max': 100,
+                'number_files_found_max_no_limit': True,
+
+                'filter_file': main.tr('Total')
+            },
+
+            'search_results': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False
+            }
+        },
+
+        'collocation': {
+            'search_results': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False
+            },
+
+            'words': True,
+            'lowercase': True,
+            'uppercase': True,
+            'title_case': True,
+            'treat_as_lowercase': True,
+            'lemmatize': False,
+            'filter_stop_words': False,
+
+            'nums': True,
+            'puncs': False,
+            
+            'search_settings': True,
+
+            'multi_search_mode': False,
+            'search_term': '',
+            'search_terms': [],
+
+            'ignore_case': True,
+            'match_inflected_forms': True,
+            'match_whole_word': True,
+            'use_regex': False,
+
+            'window_sync': False,
+            'window_left': -5,
+            'window_right': 5,
+            'assoc_measure': main.tr('Pearson\'s Chi-squared Test'),
+
+            'show_pct': True,
+            'show_cumulative': False,
+            'show_breakdown_position': True,
+            'show_breakdown_file': True,
+
+            'plot_type': main.tr('Line Chart'),
+            'use_data_file': main.tr('Total'),
+            'use_data_col': main.tr('Score (Right)'),
+            'use_pct': False,
+            'use_cumulative': False,
+
+            'rank_no_limit': False,
+            'rank_min': 1,
+            'rank_max': 50,
+
+            'filter_file': main.tr('Total'),
+
+            'freq_left_no_limit': True,
+            'freq_left_min': 0,
+            'freq_left_max': 1000,
+            'freq_right_no_limit': True,
+            'freq_right_min': 0,
+            'freq_right_max': 1000,
+
+            'score_left_no_limit': True,
+            'score_left_min': 0,
+            'score_left_max': 100,
+            'score_right_no_limit': True,
+            'score_right_min': 0,
+            'score_right_max': 100,
+
+            'len_no_limit': True,
+            'len_min': 1,
+            'len_max': 20,
+
+            'files_no_limit': True,
+            'files_min': 1,
+            'files_max': 100
+        },
+
+        'colligation': {
+            'search_results': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False
+            },
+
+            'treat_as_lowercase': True,
+            'lemmatize': False,
+
+            'puncs': False,
+            
+            'search_settings': True,
+
+            'multi_search_mode': False,
+            'search_term': '',
+            'search_terms': [],
+
+            'ignore_case': True,
+            'match_inflected_forms': True,
+            'match_whole_word': True,
+            'use_regex': False,
+
+            'keyword_type': main.tr('Token'),
+            'window_sync': False,
+            'window_left': -5,
+            'window_right': 5,
+            'assoc_measure': main.tr('Pearson\'s Chi-squared Test'),
+
+            'show_pct': True,
+            'show_cumulative': False,
+            'show_breakdown_position': True,
+            'show_breakdown_file': True,
+
+            'plot_type': main.tr('Line Chart'),
+            'use_data_file': main.tr('Total'),
+            'use_data_col': main.tr('Score (Right)'),
+            'use_pct': False,
+            'use_cumulative': False,
+
+            'rank_no_limit': False,
+            'rank_min': 1,
+            'rank_max': 50,
+
+            'filter_file': main.tr('Total'),
+
+            'freq_left_no_limit': True,
+            'freq_left_min': 0,
+            'freq_left_max': 1000,
+            'freq_right_no_limit': True,
+            'freq_right_min': 0,
+            'freq_right_max': 1000,
+
+            'score_left_no_limit': True,
+            'score_left_min': 0,
+            'score_left_max': 100,
+            'score_right_no_limit': True,
+            'score_right_min': 0,
+            'score_right_max': 100,
+
+            'files_no_limit': True,
+            'files_min': 1,
+            'files_max': 100
+        },
+
+        'keywords': {
+            'token_settings': {
+                'words': True,
+                'lowercase': True,
+                'uppercase': True,
+                'title_case': True,
+                'treat_as_lowercase': True,
+                'lemmatize': False,
+                'filter_stop_words': False,
+
+                'nums': True,
+                'puncs': False
+            },
+
+            'generation_settings': {
+                'ref_file': '',
+                'test_significance': main.tr('Log-likelihood Ratio Test'),
+                'measure_effect_size': main.tr('Kilgarriff\'s Ratio'),
+                'measure_dispersion': main.tr('Juilland\'s D')
+            },
+            
+            'table_settings': {
+                'show_pct': True,
+                'show_cumulative': False,
+                'show_breakdown': True
+            },
+
+            'plot_settings': {
+                'plot_type': main.tr('Line Chart'),
+                'use_file': main.tr('Total'),
+                'use_data': main.tr('p-value'),
+                'use_pct': False,
+                'use_cumulative': False,
+
+                'rank_min': 1,
+                'rank_min_no_limit': True,
+                'rank_max': 50,
+                'rank_max_no_limit': False
+            },
+
+            'filter_settings': {
+                'freq_min': 0,
+                'freq_min_no_limit': True,
+                'freq_max': 1000,
+                'freq_max_no_limit': True,
+
+                'test_stat_min': -100,
+                'test_stat_min_no_limit': True,
+                'test_stat_max': 100,
+                'test_stat_max_no_limit': True,
+
+                'p_value_min': 0,
+                'p_value_min_no_limit': True,
+                'p_value_max': 0.05,
+                'p_value_max_no_limit': True,
+
+                'bayes_factor_min': -100,
+                'bayes_factor_min_no_limit': True,
+                'bayes_factor_max': 100,
+                'bayes_factor_max_no_limit': True,
+
+                'effect_size_min': -100,
+                'effect_size_min_no_limit': True,
+                'effect_size_max': 100,
+                'effect_size_max_no_limit': True,
+
+                'dispersion_min': -100,
+                'dispersion_min_no_limit': True,
+                'dispersion_max': 100,
+                'dispersion_max_no_limit': True,
+
+                'len_keyword_min': 1,
+                'len_keyword_min_no_limit': True,
+                'len_keyword_max': 20,
+                'len_keyword_max_no_limit': True,
+
+                'number_files_found_min': 1,
+                'number_files_found_min_no_limit': True,
+                'number_files_found_max': 100,
+                'number_files_found_max_no_limit': True,
+
+                'filter_file': main.tr('Total')
+            },
+
+            'search_results': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False
+            }
+        },
+
         'general': {
             'file_default_path': os.path.realpath('.'),
             'file_default_lang': 'eng',
@@ -1453,569 +2038,6 @@ def init_settings_default(main):
                 'kilgarriffs_ratio': {
                     'smoothing_parameter': 1.00
                 }
-            }
-        },
-
-        'file': {
-            'files_open': [],
-            'files_closed': [],
-
-            'subfolders': True,
-
-            'detect_langs': True,
-            'detect_encodings': True
-        },
-
-        'overview': {
-            'token_settings': {
-                'words': True,
-                'lowercase': True,
-                'uppercase': True,
-                'title_case': True,
-                'treat_as_lowercase': True,
-                'lemmatize': False,
-                'filter_stop_words': False,
-
-                'nums': True,
-                'puncs': False
-            },
-
-            'generation_settings': {
-                'base_sttr': 1000
-            },
-
-            'table_settings': {
-                'show_pct': True,
-                'show_cumulative': False,
-                'show_breakdown': True
-            }
-        },
-    
-        'concordancer': {
-            'token_settings': {
-                'puncs': False
-            },
-            
-            'search_settings': {
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-
-                'ignore_case': True,
-                'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False
-            },
-
-            'context_settings': {
-                'inclusion': True,
-
-                'inclusion_multi_search_mode': False,
-                'inclusion_search_term': '',
-                'inclusion_search_terms': [],
-
-                'inclusion_ignore_case': True,
-                'inclusion_match_inflected_forms': True,
-                'inclusion_match_whole_word': True,
-                'inclusion_use_regex': False,
-                
-                'inclusion_context_window_sync': False,
-                'inclusion_context_window_left': -5,
-                'inclusion_context_window_right': 5,
-
-                'exclusion': True,
-
-                'exclusion_multi_search_mode': False,
-                'exclusion_search_term': '',
-                'exclusion_search_terms': [],
-
-                'exclusion_ignore_case': True,
-                'exclusion_match_inflected_forms': True,
-                'exclusion_match_whole_word': True,
-                'exclusion_use_regex': False,
-                
-                'exclusion_context_window_sync': False,
-                'exclusion_context_window_left': -5,
-                'exclusion_context_window_right': 5
-            },
-            
-            'generation_settings': {
-                'width_left_token': 10,
-                'width_left_char': 50,
-                'width_right_token': 10,
-                'width_right_char': 50,
-                'width_unit': main.tr('Token'),
-                
-                'number_lines_no_limit': True,
-                'number_lines': 25
-            },
-
-            'table_settings': {
-                'show_pct': True
-            },
-
-            'plot_settings': {
-                'sort_results_by': main.tr('File')
-            },
-
-            'sorting_settings': {
-                'sorting_rules': [
-                    [main.tr('File'), main.tr('Ascending')],
-                    [main.tr('Token No.'), main.tr('Ascending')]
-                ],
-
-                'highlight_colors': [
-                    # Red
-                    '#F00',
-                    # Orange
-                    '#C2691D',
-                    # Yellow
-                    '#CBBE00',
-                    # Green
-                    '#3F864C',
-                    # Blue
-                    '#264E8C',
-                    # Purple
-                    '#491D76'
-                ]
-            }
-        },
-    
-        'wordlist': {
-            'token_settings': {
-                'words': True,
-                'lowercase': True,
-                'uppercase': True,
-                'title_case': True,
-                'treat_as_lowercase': True,
-                'lemmatize': False,
-                'filter_stop_words': False,
-
-                'nums': True,
-                'puncs': False
-            },
-
-            'generation_settings': {
-                'measure_dispersion': main.tr('Juilland\'s D'),
-                'measure_adjusted_freq': main.tr('Juilland\'s U')
-            },
-
-            'table_settings': {
-                'show_pct': True,
-                'show_cumulative': False,
-                'show_breakdown': True
-            },
-
-            'plot_settings': {
-                'plot_type': main.tr('Line Chart'),
-                'use_file': main.tr('Total'),
-                'use_data': main.tr('Frequency'),
-                'use_pct': False,
-                'use_cumulative': False,
-
-                'rank_min': 1,
-                'rank_min_no_limit': True,
-                'rank_max': 50,
-                'rank_max_no_limit': False,
-            },
-
-            'filter_settings': {
-                'freq_min': 0,
-                'freq_min_no_limit': True,
-                'freq_max': 1000,
-                'freq_max_no_limit': True,
-
-                'dispersion_min': -100,
-                'dispersion_min_no_limit': True,
-                'dispersion_max': 100,
-                'dispersion_max_no_limit': True,
-
-                'adjusted_freq_min': 0,
-                'adjusted_freq_min_no_limit': True,
-                'adjusted_freq_max': 1000,
-                'adjusted_freq_max_no_limit': True,
-
-                'len_token_min': 1,
-                'len_token_min_no_limit': True,
-                'len_token_max': 20,
-                'len_token_max_no_limit': True,
-
-                'number_files_found_min': 1,
-                'number_files_found_min_no_limit': True,
-                'number_files_found_max': 100,
-                'number_files_found_max_no_limit': True,
-
-                'filter_file': main.tr('Total')
-            },
-
-            'search_results': {
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-
-                'ignore_case': True,
-                'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False
-            }
-        },
-    
-        'ngram': {
-            'token_settings': {
-                'words': True,
-                'lowercase': True,
-                'uppercase': True,
-                'title_case': True,
-                'treat_as_lowercase': True,
-                'lemmatize': False,
-                'filter_stop_words': False,
-
-                'nums': True,
-                'puncs': False
-            },
-            
-            'search_settings': {
-                'search_settings': True,
-
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-                'keyword_position_no_limit': True,
-                'keyword_position_min': 1,
-                'keyword_position_max': 2,
-
-                'ignore_case': True,
-                'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False
-            },
-
-            'context_settings': {
-                'inclusion': True,
-
-                'inclusion_multi_search_mode': False,
-                'inclusion_search_term': '',
-                'inclusion_search_terms': [],
-
-                'inclusion_ignore_case': True,
-                'inclusion_match_inflected_forms': True,
-                'inclusion_match_whole_word': True,
-                'inclusion_use_regex': False,
-                
-                'inclusion_context_window_sync': False,
-                'inclusion_context_window_left': -5,
-                'inclusion_context_window_right': 5,
-
-                'exclusion': True,
-
-                'exclusion_multi_search_mode': False,
-                'exclusion_search_term': '',
-                'exclusion_search_terms': [],
-
-                'exclusion_ignore_case': True,
-                'exclusion_match_inflected_forms': True,
-                'exclusion_match_whole_word': True,
-                'exclusion_use_regex': False,
-                
-                'exclusion_context_window_sync': False,
-                'exclusion_context_window_left': -5,
-                'exclusion_context_window_right': 5
-            },
-            
-            'generation_settings': {
-                'ngram_size_sync': False,
-                'ngram_size_min': 2,
-                'ngram_size_max': 2,
-                'allow_skipped_tokens': 0
-            },
-
-            'table_settings': {
-                'show_pct': True,
-                'show_cumulative': False,
-                'show_breakdown': True
-            },
-
-            'plot_settings': {
-                'plot_type': main.tr('Line Chart'),
-                'use_data_file': main.tr('Total'),
-                'use_pct': False,
-                'use_cumulative': False,
-        
-                'rank_no_limit': False,
-                'rank_min': 1,
-                'rank_max': 50
-            },
-
-            'filter_settings': {
-                'filter_file': main.tr('Total'),
-        
-                'freq_no_limit': True,
-                'freq_min': 0,
-                'freq_max': 1000,
-
-                'len_no_limit': True,
-                'len_min': 1,
-                'len_max': 20,
-
-                'files_no_limit': True,
-                'files_min': 1,
-                'files_max': 100
-            },
-
-            'search_results': {
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-
-                'ignore_case': True,
-                'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False
-            }
-        },
-
-        'collocation': {
-            'search_results': {
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-
-                'ignore_case': True,
-                'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False
-            },
-
-            'words': True,
-            'lowercase': True,
-            'uppercase': True,
-            'title_case': True,
-            'treat_as_lowercase': True,
-            'lemmatize': False,
-            'filter_stop_words': False,
-
-            'nums': True,
-            'puncs': False,
-            
-            'search_settings': True,
-
-            'multi_search_mode': False,
-            'search_term': '',
-            'search_terms': [],
-
-            'ignore_case': True,
-            'match_inflected_forms': True,
-            'match_whole_word': True,
-            'use_regex': False,
-
-            'window_sync': False,
-            'window_left': -5,
-            'window_right': 5,
-            'assoc_measure': main.tr('Pearson\'s Chi-squared Test'),
-
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown_position': True,
-            'show_breakdown_file': True,
-
-            'plot_type': main.tr('Line Chart'),
-            'use_data_file': main.tr('Total'),
-            'use_data_col': main.tr('Score (Right)'),
-            'use_pct': False,
-            'use_cumulative': False,
-
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
-
-            'filter_file': main.tr('Total'),
-
-            'freq_left_no_limit': True,
-            'freq_left_min': 0,
-            'freq_left_max': 1000,
-            'freq_right_no_limit': True,
-            'freq_right_min': 0,
-            'freq_right_max': 1000,
-
-            'score_left_no_limit': True,
-            'score_left_min': 0,
-            'score_left_max': 100,
-            'score_right_no_limit': True,
-            'score_right_min': 0,
-            'score_right_max': 100,
-
-            'len_no_limit': True,
-            'len_min': 1,
-            'len_max': 20,
-
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
-        },
-
-        'colligation': {
-            'search_results': {
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-
-                'ignore_case': True,
-                'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False
-            },
-
-            'treat_as_lowercase': True,
-            'lemmatize': False,
-
-            'puncs': False,
-            
-            'search_settings': True,
-
-            'multi_search_mode': False,
-            'search_term': '',
-            'search_terms': [],
-
-            'ignore_case': True,
-            'match_inflected_forms': True,
-            'match_whole_word': True,
-            'use_regex': False,
-
-            'keyword_type': main.tr('Token'),
-            'window_sync': False,
-            'window_left': -5,
-            'window_right': 5,
-            'assoc_measure': main.tr('Pearson\'s Chi-squared Test'),
-
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown_position': True,
-            'show_breakdown_file': True,
-
-            'plot_type': main.tr('Line Chart'),
-            'use_data_file': main.tr('Total'),
-            'use_data_col': main.tr('Score (Right)'),
-            'use_pct': False,
-            'use_cumulative': False,
-
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
-
-            'filter_file': main.tr('Total'),
-
-            'freq_left_no_limit': True,
-            'freq_left_min': 0,
-            'freq_left_max': 1000,
-            'freq_right_no_limit': True,
-            'freq_right_min': 0,
-            'freq_right_max': 1000,
-
-            'score_left_no_limit': True,
-            'score_left_min': 0,
-            'score_left_max': 100,
-            'score_right_no_limit': True,
-            'score_right_min': 0,
-            'score_right_max': 100,
-
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
-        },
-
-        'keywords': {
-            'token_settings': {
-                'words': True,
-                'lowercase': True,
-                'uppercase': True,
-                'title_case': True,
-                'treat_as_lowercase': True,
-                'lemmatize': False,
-                'filter_stop_words': False,
-
-                'nums': True,
-                'puncs': False
-            },
-
-            'generation_settings': {
-                'ref_file': '',
-                'test_significance': main.tr('Log-likelihood Ratio Test'),
-                'measure_effect_size': main.tr('Kilgarriff\'s Ratio'),
-                'measure_dispersion': main.tr('Juilland\'s D')
-            },
-            
-            'table_settings': {
-                'show_pct': True,
-                'show_cumulative': False,
-                'show_breakdown': True
-            },
-
-            'plot_settings': {
-                'plot_type': main.tr('Line Chart'),
-                'use_file': main.tr('Total'),
-                'use_data': main.tr('p-value'),
-                'use_pct': False,
-                'use_cumulative': False,
-
-                'rank_min': 1,
-                'rank_min_no_limit': True,
-                'rank_max': 50,
-                'rank_max_no_limit': False
-            },
-
-            'filter_settings': {
-                'freq_min': 0,
-                'freq_min_no_limit': True,
-                'freq_max': 1000,
-                'freq_max_no_limit': True,
-
-                'test_stat_min': -100,
-                'test_stat_min_no_limit': True,
-                'test_stat_max': 100,
-                'test_stat_max_no_limit': True,
-
-                'p_value_min': 0,
-                'p_value_min_no_limit': True,
-                'p_value_max': 0.05,
-                'p_value_max_no_limit': True,
-
-                'bayes_factor_min': -100,
-                'bayes_factor_min_no_limit': True,
-                'bayes_factor_max': 100,
-                'bayes_factor_max_no_limit': True,
-
-                'effect_size_min': -100,
-                'effect_size_min_no_limit': True,
-                'effect_size_max': 100,
-                'effect_size_max_no_limit': True,
-
-                'dispersion_min': -100,
-                'dispersion_min_no_limit': True,
-                'dispersion_max': 100,
-                'dispersion_max_no_limit': True,
-
-                'len_keyword_min': 1,
-                'len_keyword_min_no_limit': True,
-                'len_keyword_max': 20,
-                'len_keyword_max_no_limit': True,
-
-                'number_files_found_min': 1,
-                'number_files_found_min_no_limit': True,
-                'number_files_found_max': 100,
-                'number_files_found_max_no_limit': True,
-
-                'filter_file': main.tr('Total')
-            },
-
-            'search_results': {
-                'multi_search_mode': False,
-                'search_term': '',
-                'search_terms': [],
-
-                'ignore_case': True,
-                'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False
             }
         }
     }

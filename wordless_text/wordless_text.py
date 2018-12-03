@@ -9,8 +9,9 @@
 import re
 
 import bs4
+import nltk
 
-from wordless_text import wordless_preprocess
+from wordless_text import wordless_text_processing
 
 class Wordless_Text():
     def __init__(self, main, file, merge_puncs = False):
@@ -35,11 +36,11 @@ class Wordless_Text():
                     self.paras.append(text)
                     self.para_offsets.append(len(self.tokens))
 
-                    for sentence in wordless_preprocess.wordless_sentence_tokenize(main, text, file['lang_code']):
+                    for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text, file['lang_code']):
                         self.sentences.append(sentence)
                         self.sentence_offsets.append(len(self.tokens))
 
-                        self.tokens.extend(wordless_preprocess.wordless_word_tokenize(main, sentence, file['lang_code']))
+                        self.tokens.extend(wordless_text_processing.wordless_word_tokenize(main, sentence, file['lang_code']))
 
     def match_search_terms(self, search_terms, puncs,
                            ignore_case, match_inflected_forms, match_whole_word, use_regex):
@@ -50,7 +51,7 @@ class Wordless_Text():
         else:
             tokens_text = [token for token in self.tokens if [char for char in token if char.isalnum()]]
 
-        search_terms = [wordless_preprocess.wordless_word_tokenize(self.main, search_term, self.lang_code)
+        search_terms = [wordless_text_processing.wordless_word_tokenize(self.main, search_term, self.lang_code)
                         for search_term in search_terms]
 
         if use_regex:
@@ -103,8 +104,8 @@ class Wordless_Text():
                         ngrams_matched.add(ngram_text)
 
         if match_inflected_forms:
-            tokens_text_lemma = wordless_preprocess.wordless_lemmatize(self.main, tokens_text, self.lang_code)
-            ngrams_matched_lemma = [wordless_preprocess.wordless_lemmatize(self.main, ngram, self.lang_code)
+            tokens_text_lemma = wordless_text_processing.wordless_lemmatize(self.main, tokens_text, self.lang_code)
+            ngrams_matched_lemma = [wordless_text_processing.wordless_lemmatize(self.main, ngram, self.lang_code)
                                     for ngram in ngrams_matched | set([tuple(search_term) for search_term in search_terms])]
 
             for ngram_matched_lemma in ngrams_matched_lemma:

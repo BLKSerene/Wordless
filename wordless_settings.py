@@ -377,8 +377,8 @@ class Wordless_Settings(QDialog):
 
                 if settings_custom['preview_samples']:
                     for line in settings_custom['preview_samples'].splitlines():
-                        results.extend(wordless_text.wordless_sentence_tokenize(self.main, line, lang_code,
-                                                                                sentence_tokenizer = sentence_tokenizer))
+                        results.extend(wordless_text_processing.wordless_sentence_tokenize(self.main, line, lang_code,
+                                                                                           sentence_tokenizer = sentence_tokenizer))
 
                 self.text_edit_sentence_tokenization_preview_results.setPlainText('\n'.join(results))
             else:
@@ -470,9 +470,9 @@ class Wordless_Settings(QDialog):
                 word_tokenizer = self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentText()
 
                 for line in settings_custom['preview_samples'].splitlines():
-                    sentences = wordless_text.wordless_sentence_tokenize(self.main, line, lang_code)
-                    tokens = wordless_text.wordless_word_tokenize(self.main, sentences, lang_code,
-                                                                  word_tokenizer = word_tokenizer)
+                    sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line, lang_code)
+                    tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentences, lang_code,
+                                                                             word_tokenizer = word_tokenizer)
                     
                     results.append(' '.join(tokens))
 
@@ -565,8 +565,8 @@ class Wordless_Settings(QDialog):
                 word_detokenizer = self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].currentText()
 
                 for line in settings_custom['preview_samples'].splitlines():
-                    text = wordless_text.wordless_word_detokenize(self.main, line.split(), lang_code,
-                                                                  word_detokenizer = word_detokenizer)
+                    text = wordless_text_processing.wordless_word_detokenize(self.main, line.split(), lang_code,
+                                                                             word_detokenizer = word_detokenizer)
                     
                     results.append(text)
 
@@ -677,8 +677,9 @@ class Wordless_Settings(QDialog):
                 tagset = self.__dict__[f'combo_box_tagset_{lang_code}'].currentText()
 
                 for sample_line in settings_custom['preview_samples'].splitlines():
-                    tokens_tagged = wordless_text.wordless_pos_tag(self.main, sample_line, lang_code,
-                                                                   pos_tagger = pos_tagger, tagset = tagset)
+                    tokens_tagged = wordless_text_processing.wordless_pos_tag(self.main, sample_line, lang_code,
+                                                                              pos_tagger = pos_tagger,
+                                                                              tagset = tagset)
                     results.append(' '.join([f'{token}_{tag}' for token, tag in tokens_tagged]))
 
                 self.text_edit_pos_tagging_preview_results.setPlainText('\n'.join(results))
@@ -780,10 +781,11 @@ class Wordless_Settings(QDialog):
                 lemmatizer = self.__dict__[f'combo_box_lemmatizer_{lang_code}'].currentText()
 
                 for sample_line in settings_custom['preview_samples'].splitlines():
-                    samples = wordless_text.wordless_word_tokenize(self.main, sample_line, lang_code)
-                    lemmas = wordless_text.wordless_lemmatize(self.main, samples, lang_code, lemmatizer = lemmatizer)
+                    samples = wordless_text_processing.wordless_word_tokenize(self.main, sample_line, lang_code)
+                    lemmas = wordless_text_processing.wordless_lemmatize(self.main, samples, lang_code,
+                                                                         lemmatizer = lemmatizer)
 
-                    results.append(wordless_text.wordless_word_detokenize(self.main, lemmas, lang_code))
+                    results.append(wordless_text_processing.wordless_word_detokenize(self.main, lemmas, lang_code))
 
                 self.text_edit_lemmatization_preview_results.setPlainText('\n'.join(results))
             else:

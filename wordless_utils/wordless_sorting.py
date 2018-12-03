@@ -83,28 +83,12 @@ def sorted_tokens_stat_files(tokens_stat_files):
         for stat in item[1]:
             keys.append(-stat)
 
-        # Tokens
+        # Tokens/N-gram
         keys.append(item[0])
 
         return keys
 
     return sorted(tokens_stat_files.items(), key = key)
-
-def sorted_ngrams_stat_files(ngrams_stat_files):
-    def key(item):
-        keys = []
-
-        # Statistic
-        for stat in item[1]:
-            keys.append(-stat)
-
-        # N-grams
-        for token in item[0]:
-            keys.append(token)
-
-        return keys
-
-    return sorted(ngrams_stat_files.items(), key = key)
 
 def sorted_tokens_stat_file(tokens_stat_files, i_file):
     def key(item):
@@ -113,27 +97,12 @@ def sorted_tokens_stat_file(tokens_stat_files, i_file):
         # Statistic
         keys.append(-item[1][i_file])
 
-        # Token
+        # Token/N-gram
         keys.append(item[0])
 
         return keys
 
     return sorted(tokens_stat_files.items(), key = key)
-
-def sorted_ngrams_stat_file(ngrams_stat_files, i_file):
-    def key(item):
-        keys = []
-
-        # Statistic
-        keys.append(-item[1][i_file])
-
-        # N-grams
-        for token in item[0]:
-            keys.append(token)
-
-        return keys
-
-    return sorted(ngrams_stat_files.items(), key = key)
 
 # Keyness
 def sorted_keywords_stats_files(keywords_stats_files):

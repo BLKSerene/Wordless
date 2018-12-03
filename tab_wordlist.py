@@ -73,20 +73,30 @@ class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Search):
             col_tokens = self.find_col(self.tr('Tokens'))
             col_number_files_found = self.find_col(self.tr('Number of\nFiles Found'))
 
-            freq_min = float('-inf') if settings['freq_min_no_limit'] else settings['freq_min']
-            freq_max = float('inf') if settings['freq_max_no_limit'] else settings['freq_max']
+            freq_min = (float('-inf')
+                        if settings['freq_min_no_limit'] else settings['freq_min'])
+            freq_max = (float('inf')
+                        if settings['freq_max_no_limit'] else settings['freq_max'])
 
-            dispersion_min = float('-inf') if settings['dispersion_min_no_limit'] else settings['dispersion_min']
-            dispersion_max = float('inf') if settings['dispersion_max_no_limit'] else settings['dispersion_max']
+            dispersion_min = (float('-inf')
+                              if settings['dispersion_min_no_limit'] else settings['dispersion_min'])
+            dispersion_max = (float('inf')
+                              if settings['dispersion_max_no_limit'] else settings['dispersion_max'])
 
-            adjusted_freq_min = float('-inf') if settings['adjusted_freq_min_no_limit'] else settings['adjusted_freq_min']
-            adjusted_freq_max = float('inf') if settings['adjusted_freq_max_no_limit'] else settings['adjusted_freq_max']
+            adjusted_freq_min = (float('-inf')
+                                 if settings['adjusted_freq_min_no_limit'] else settings['adjusted_freq_min'])
+            adjusted_freq_max = (float('inf')
+                                 if settings['adjusted_freq_max_no_limit'] else settings['adjusted_freq_max'])
 
-            len_token_min = float('-inf') if settings['len_token_min_no_limit'] else settings['len_token_min']
-            len_token_max = float('inf') if settings['len_token_max_no_limit'] else settings['len_token_max']
+            len_token_min = (float('-inf')
+                             if settings['len_token_min_no_limit'] else settings['len_token_min'])
+            len_token_max = (float('inf')
+                             if settings['len_token_max_no_limit'] else settings['len_token_max'])
 
-            number_files_found_min = float('-inf') if settings['number_files_found_min_no_limit'] else settings['number_files_found_min']
-            number_files_found_max = float('inf') if settings['number_files_found_max_no_limit'] else settings['number_files_found_max']
+            number_files_found_min = (float('-inf')
+                                      if settings['number_files_found_min_no_limit'] else settings['number_files_found_min'])
+            number_files_found_max = (float('inf')
+                                      if settings['number_files_found_max_no_limit'] else settings['number_files_found_max'])
 
             self.row_filters = [[] for i in range(self.rowCount())]
 
@@ -462,14 +472,6 @@ def init(main):
      spin_box_freq_max,
      checkbox_freq_max_no_limit) = wordless_widgets.wordless_widgets_filter(main, filter_min = 0, filter_max = 1000000)
 
-    label_len_token = QLabel(main.tr('Token Length:'), main)
-    (label_len_token_min,
-     spin_box_len_token_min,
-     checkbox_len_token_min_no_limit,
-     label_len_token_max,
-     spin_box_len_token_max,
-     checkbox_len_token_max_no_limit) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100)
-
     label_dispersion = QLabel(main.tr('Dispersion:'), main)
     (label_dispersion_min,
      spin_box_dispersion_min,
@@ -486,6 +488,14 @@ def init(main):
      spin_box_adjusted_freq_max,
      checkbox_adjusted_freq_max_no_limit) = wordless_widgets.wordless_widgets_filter(main, filter_min = 0, filter_max = 1000000)
 
+    label_len_token = QLabel(main.tr('Token Length:'), main)
+    (label_len_token_min,
+     spin_box_len_token_min,
+     checkbox_len_token_min_no_limit,
+     label_len_token_max,
+     spin_box_len_token_max,
+     checkbox_len_token_max_no_limit) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100)
+
     label_number_files_found = QLabel(main.tr('Number of Files Found:'), main)
     (label_number_files_found_min,
      spin_box_number_files_found_min,
@@ -494,9 +504,9 @@ def init(main):
      spin_box_number_files_found_max,
      checkbox_number_files_found_max_no_limit) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100000)
 
-    label_filter_file = QLabel(main.tr('Filter File:'), main)
-    combo_box_filter_file = wordless_box.Wordless_Combo_Box_Filter_File(main, table_wordlist)
-    button_filter_results = QPushButton(main.tr('Filter Results in Table'), main)
+    (label_filter_file,
+     combo_box_filter_file,
+     button_filter_results) = wordless_widgets.wordless_widgets_filter_results(main, table_wordlist)
 
     spin_box_freq_min.valueChanged.connect(filter_settings_changed)
     checkbox_freq_min_no_limit.stateChanged.connect(filter_settings_changed)
@@ -524,9 +534,8 @@ def init(main):
     checkbox_number_files_found_max_no_limit.stateChanged.connect(filter_settings_changed)
 
     combo_box_filter_file.currentTextChanged.connect(filter_settings_changed)
-    button_filter_results.clicked.connect(lambda: table_wordlist.update_filters())
 
-    combo_box_filter_file.table.itemChanged.connect(table_item_changed)
+    table_wordlist.itemChanged.connect(table_item_changed)
 
     layout_filter_file = QGridLayout()
     layout_filter_file.addWidget(label_filter_file, 0, 0)
@@ -613,7 +622,7 @@ def generate_wordlists(main, files):
     for file in files:
         text = wordless_text.Wordless_Text(main, file)
 
-        text.tokens = wordless_preprocess.wordless_preprocess_tokens(main, text.tokens,
+        text.tokens = wordless_text_processing.wordless_preprocess_tokens(main, text.tokens,
                                                                      lang_code = text.lang_code,
                                                                      settings = settings['token_settings'])
 
@@ -627,6 +636,7 @@ def generate_wordlists(main, files):
         text_total.tokens = [token for text in texts for token in text.tokens]
 
         texts.append(text_total)
+        
         tokens_freq_files.append(collections.Counter(text_total.tokens))
 
     # Dispersion & Adjusted Frequency
@@ -638,17 +648,17 @@ def generate_wordlists(main, files):
 
     tokens = tokens_freq_files[-1]
 
-    for i, text in enumerate(texts):
+    for text in texts:
         tokens_stats_file = {}
 
         # Dispersion
         number_sections = main.settings_custom['measures']['dispersion']['general']['number_sections']
 
         sections_freq = [collections.Counter(section)
-                         for section in wordless_utils_text.to_sections(text.tokens, number_sections)]
+                         for section in wordless_text_utils.to_sections(text.tokens, number_sections)]
 
         for token in tokens:
-            counts = [section_freq.get(token, 0) for section_freq in sections_freq]
+            counts = [section_freq[token] for section_freq in sections_freq]
 
             tokens_stats_file[token] = [measure_dispersion(counts)]
 
@@ -657,18 +667,18 @@ def generate_wordlists(main, files):
             number_sections = main.settings_custom['measures']['adjusted_freq']['general']['number_sections']
 
             sections_freq = [collections.Counter(section)
-                             for section in wordless_utils_text.to_sections(text.tokens, number_sections)]
+                             for section in wordless_text_utils.to_sections(text.tokens, number_sections)]
 
         for token in tokens:
-            counts = [section_freq.get(token, 0) for section_freq in sections_freq]
+            counts = [section_freq[token] for section_freq in sections_freq]
 
             tokens_stats_file[token].append(measure_adjusted_freq(counts))
 
         tokens_stats_files.append(tokens_stats_file)
 
     if len(files) == 1:
-        tokens_freq_files = tokens_freq_files * 2
-        tokens_stats_files = tokens_stats_files * 2
+        tokens_freq_files *= 2
+        tokens_stats_files *= 2
 
     return (wordless_misc.merge_dicts(tokens_freq_files),
             wordless_misc.merge_dicts(tokens_stats_files))

@@ -11,7 +11,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import nltk
 
-from wordless_widgets import wordless_box, wordless_list
+from wordless_widgets import wordless_box, wordless_dialog, wordless_list
 
 # Token Settings
 def wordless_widgets_token_settings(main):
@@ -72,7 +72,7 @@ def wordless_widgets_token_settings(main):
 def wordless_widgets_search_settings(main):
     def multi_search_mode_changed():
         if checkbox_multi_search_mode.isChecked():
-            label_search_term.setText(main.tr('Search Terms:'))
+            label_search_term.setText(main.tr('Search Term(s):'))
 
             if line_edit_search_term.text() and list_search_terms.count() == 0:
                 list_search_terms.add_item(line_edit_search_term.text())
@@ -116,8 +116,16 @@ def wordless_widgets_search_settings(main):
     return (label_search_term, checkbox_multi_search_mode, line_edit_search_term, list_search_terms,
             checkbox_ignore_case, checkbox_match_inflected_forms, checkbox_match_whole_word, checkbox_use_regex)
 
+def wordless_widgets_context_settings(main, tab):
+    label_context_settings = QLabel(main.tr('Context Settings:'), main)
+    button_context_settings = QPushButton(main.tr('Settings...'), main)
+
+    button_context_settings.clicked.connect(lambda: wordless_dialog.Wordless_Dialog_Context_Settings(main, tab = tab))
+
+    return label_context_settings, button_context_settings
+
 # Generation Settings
-def wordless_widgets_size(main, size_min = 1, size_max = 20):
+def wordless_widgets_size(main, size_min = 1, size_max = 100):
     def size_sync_changed():
         if checkbox_size_sync.isChecked():
             spin_box_size_min.setValue(spin_box_size_max.value())
@@ -537,6 +545,37 @@ def wordless_widgets_filter_p_value(main):
 
     return (label_min, spin_box_min, checkbox_min_no_limit,
             label_max, spin_box_max, checkbox_max_no_limit)
+
+def wordless_widgets_filter_results(main, table):
+    def table_item_changed():
+        if combo_box_filter_file.count() == 1:
+            file_old = ''
+        else:
+            file_old = combo_box_filter_file.currentText()
+
+        combo_box_filter_file.clear()
+
+        for file in table.settings['file']['files_open']:
+            if file['selected']:
+                combo_box_filter_file.addItem(file['name'])
+
+        combo_box_filter_file.addItem(main.tr('Total'))
+
+        if combo_box_filter_file.findText(file_old) > -1:
+            combo_box_filter_file.setCurrentText(file_old)
+
+    label_filter_file = QLabel(main.tr('Filter File:'), main)
+    combo_box_filter_file = wordless_box.Wordless_Combo_Box(main)
+    button_filter_results = QPushButton(main.tr('Filter Results in Table'), main)
+
+    button_filter_results.clicked.connect(lambda: table.update_filters())
+
+    table.itemChanged.connect(table_item_changed)
+
+    table_item_changed()
+
+    return (label_filter_file, combo_box_filter_file,
+            button_filter_results)
 
 # Settings -> Measures
 def wordless_widgets_number_sections(parent):

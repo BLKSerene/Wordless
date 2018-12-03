@@ -272,10 +272,10 @@ def generate_table(main, table):
                     text.tokens_filtered = [token.lower() for token in text.tokens_filtered]
 
                 if settings['token_settings']['lemmatize']:
-                    text.tokens_filtered = wordless_text.wordless_lemmatize(text.main, text.tokens_filtered, text.lang_code)
+                    text.tokens_filtered = wordless_text_processing.wordless_lemmatize(text.main, text.tokens_filtered, text.lang_code)
 
                 if settings['token_settings']['filter_stop_words']:
-                    text.tokens_filtered = wordless_text.wordless_filter_stop_words(main, text.tokens_filtered, text.lang_code)
+                    text.tokens_filtered = wordless_text_processing.wordless_filter_stop_words(main, text.tokens_filtered, text.lang_code)
             else:
                 text.tokens_filtered = [token for token in text.tokens_filtered if not [char for char in token if char.isalpha()]]
             

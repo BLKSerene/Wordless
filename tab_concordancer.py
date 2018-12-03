@@ -375,9 +375,9 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
 
                         i_highlight_color_right += 1
 
-                self.table.cellWidget(i, 0).setText(wordless_text.wordless_word_detokenize(self.main, left, lang_code))
+                self.table.cellWidget(i, 0).setText(wordless_text_processing.wordless_word_detokenize(self.main, left, lang_code))
                 self.table.cellWidget(i, 1).setText(node)
-                self.table.cellWidget(i, 2).setText(wordless_text.wordless_word_detokenize(self.main, right, lang_code))
+                self.table.cellWidget(i, 2).setText(wordless_text_processing.wordless_word_detokenize(self.main, right, lang_code))
 
                 self.table.item(i, 3).val = token_no
                 self.table.item(i, 4).val = sentence_no
@@ -554,7 +554,8 @@ def init(main):
      checkbox_match_whole_word,
      checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
 
-    button_context_settings = QPushButton(main.tr('Context Settings'), main)
+    (label_context_settings,
+     button_context_settings) = wordless_widgets.wordless_widgets_context_settings(main, tab = 'concordancer')
 
     checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
     line_edit_search_term.textChanged.connect(search_settings_changed)
@@ -566,8 +567,6 @@ def init(main):
     checkbox_match_whole_word.stateChanged.connect(search_settings_changed)
     checkbox_use_regex.stateChanged.connect(search_settings_changed)
 
-    button_context_settings.clicked.connect(lambda: wordless_dialog.Wordless_Dialog_Context_Settings(main, tab = 'concordancer'))
-
     layout_search_terms = QGridLayout()
     layout_search_terms.addWidget(list_search_terms, 0, 0, 6, 1)
     layout_search_terms.addWidget(list_search_terms.button_add, 0, 1)
@@ -576,6 +575,12 @@ def init(main):
     layout_search_terms.addWidget(list_search_terms.button_clear, 3, 1)
     layout_search_terms.addWidget(list_search_terms.button_import, 4, 1)
     layout_search_terms.addWidget(list_search_terms.button_export, 5, 1)
+
+    layout_context_settings = QGridLayout()
+    layout_context_settings.addWidget(label_context_settings, 0, 0)
+    layout_context_settings.addWidget(button_context_settings, 0, 1)
+
+    layout_context_settings.setColumnStretch(1, 1)
 
     group_box_search_settings.setLayout(QGridLayout())
     group_box_search_settings.layout().addWidget(label_search_term, 0, 0)
@@ -588,7 +593,9 @@ def init(main):
     group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 5, 0, 1, 2)
     group_box_search_settings.layout().addWidget(checkbox_use_regex, 6, 0, 1, 2)
 
-    group_box_search_settings.layout().addWidget(button_context_settings, 7, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0, 1, 2)
+
+    group_box_search_settings.layout().addLayout(layout_context_settings, 8, 0, 1, 2)
 
     # Generation Settings
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'), main)
@@ -778,10 +785,10 @@ def generate_table(main, table):
                     for para in text.paras:
                         text.para_offsets.append(len(text.tokens))
 
-                        for sentence in wordless_text.wordless_sentence_tokenize(main, para, file['lang_code']):
+                        for sentence in wordless_text_processing.wordless_sentence_tokenize(main, para, file['lang_code']):
                             text.sentence_offsets.append(len(text.tokens))
 
-                            for token in wordless_text.wordless_word_tokenize(main, sentence, file['lang_code']):
+                            for token in wordless_text_processing.wordless_word_tokenize(main, sentence, file['lang_code']):
                                 if text.tokens:
                                     if [char for char in token if char.isalnum()]:
                                         text.tokens.append(token)
@@ -813,17 +820,17 @@ def generate_table(main, table):
 
                     for i, ngram in enumerate(nltk.ngrams(tokens_text, len_search_term)):
                         if ngram == search_term:
-                            if wordless_text.check_context(i, tokens_text,
-                                                           context_settings = settings['context_settings'],
-                                                           search_terms_inclusion = search_terms_inclusion_file,
-                                                           search_terms_exclusion = search_terms_exclusion_file):
+                            if wordless_text_utils.check_context(i, tokens_text,
+                                                                 context_settings = settings['context_settings'],
+                                                                 search_terms_inclusion = search_terms_inclusion_file,
+                                                                 search_terms_exclusion = search_terms_exclusion_file):
                                 if not settings['token_settings']['puncs']:
                                     ngram = [text.tokens[i + j] for j in range(len(ngram))]
 
                                 table.setRowCount(table.rowCount() + 1)
 
                                 # Node
-                                node_text = html.escape(wordless_text.wordless_word_detokenize(main, ngram, text.lang_code))
+                                node_text = html.escape(wordless_text_processing.wordless_word_detokenize(main, ngram, text.lang_code))
 
                                 table.setCellWidget(table.rowCount() - 1, 1,
                                                     QLabel(f'''
@@ -903,8 +910,8 @@ def generate_table(main, table):
                                 context_left = [html.escape(token) for token in context_left]
                                 context_right = [html.escape(token) for token in context_right]
 
-                                context_left_text = wordless_text.wordless_word_detokenize(main, context_left, text.lang_code)
-                                context_right_text = wordless_text.wordless_word_detokenize(main, context_right, text.lang_code)
+                                context_left_text = wordless_text_processing.wordless_word_detokenize(main, context_left, text.lang_code)
+                                context_right_text = wordless_text_processing.wordless_word_detokenize(main, context_right, text.lang_code)
 
                                 # Left
                                 table.setCellWidget(table.rowCount() - 1, 0,
@@ -1010,7 +1017,7 @@ def generate_plot(main):
 
                 for search_term in search_terms_file:
                     search_terms_total.add(search_term)
-                    search_terms_labels.add(wordless_text.wordless_word_detokenize(main, search_term, text.lang_code))
+                    search_terms_labels.add(wordless_text_processing.wordless_word_detokenize(main, search_term, text.lang_code))
 
             len_files = len(files)
             len_tokens_total = sum([len(text.tokens) for text in texts])

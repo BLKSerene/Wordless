@@ -586,8 +586,11 @@ def init(main):
     # Filter Settings
     group_box_filter_settings = QGroupBox(main.tr('Filter Settings'), main)
 
-    label_filter_file = QLabel(main.tr('Filter File:'), main)
-    combo_box_filter_file = wordless_box.Wordless_Combo_Box_Filter_File(main, table_collocation)
+    (label_filter_file,
+     combo_box_filter_file,
+     button_filter_results) = wordless_widgets.wordless_widgets_filter_results(main, table_collocation)
+
+    button_filter_results.hide()
 
     label_freq_left = QLabel(main.tr('Frequency (Left):'), main)
     (checkbox_freq_left_no_limit,
@@ -745,9 +748,9 @@ def generate_collocates(main, files):
                                     if not collocate[1].istitle()}
 
             if settings['filter_stop_words']:
-                tokens_filtered = wordless_text.wordless_filter_stop_words(main,
-                                                                           [collocate[1] for collocate in distribution.keys()],
-                                                                           text.lang_code)
+                tokens_filtered = wordless_text_processing.wordless_filter_stop_words(main,
+                                                                                      [collocate[1] for collocate in distribution.keys()],
+                                                                                      text.lang_code)
 
                 distribution = {collocate: vals
                                 for collocate, vals in distribution.items()
@@ -797,7 +800,7 @@ def generate_collocates(main, files):
                 text.tokens = [token.lower() for token in text.tokens]
 
             if settings['lemmatize']:
-                text.tokens = wordless_text.wordless_lemmatize(main, text.tokens, text.lang_code)
+                text.tokens = wordless_text_processing.wordless_lemmatize(main, text.tokens, text.lang_code)
 
         if not settings['puncs']:
             text.tokens = [token for token in text.tokens if token.isalnum()]

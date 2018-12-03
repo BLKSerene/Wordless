@@ -19,10 +19,11 @@ from wordless_utils import *
 import init_settings
 import wordless_settings
 import wordless_files
+
 import tab_overview
 import tab_concordancer
 import tab_wordlist
-import tab_ngram
+import tab_ngrams
 import tab_collocation
 import tab_colligation
 import tab_keywords
@@ -61,11 +62,6 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '0.39',
              '<a href="mailto:ccnusjy@gmail.com">Sun Junyi</a>',
              '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
-
-            ['<a href="http://ngram.sourceforge.net/">Ngram Statistics Package</a>',
-             '1.31',
-             '<a href="http://www.d.umn.edu/~tpederse/contact.html">Ted Pedersen</a><br><a href="https://twitter.com/satanjeev">Satanjeev Banerjee</a><br><a href="https://sites.google.com/site/amruta81/">Amruta Purandare</a><br>Bridget Thomson-McInnes<br><a href="http://www.cs.cmu.edu/~maheshj/">Mahesh Joshi</a><br><a href="http://www.d.umn.edu/~kohli003/">Saiyam Kohli</a><br><a href="https://sites.google.com/site/yingliuindex/">Ying Liu</a>',
-             '<a href="https://metacpan.org/pod/distribution/Text-NSP/doc/README.pod#COPYRIGHT">GPL-3.0</a>'],
 
             ['<a href="http://www.nltk.org/">NLTK</a>',
              '3.4',
@@ -194,13 +190,25 @@ class Wordless_Main(QMainWindow):
         self.setWindowTitle(self.tr('Wordless v1.0'))
         self.setWindowIcon(QIcon('images/wordless_icon.png'))
 
+        # Settings
         init_settings.init_settings(self)
         self.wordless_settings = wordless_settings.Wordless_Settings(self)
 
+        # Tabs
+        tab_cur = self.settings_custom['current_tab']
+
         self.init_central_widget()
 
+        for i in range(self.tabs.count()):
+            if self.tabs.tabText(i) == tab_cur:
+                self.tabs.setCurrentIndex(i)
+
+                break
+
+        # Menu
         self.init_menu()
 
+        # Status Bar
         self.status_bar = self.statusBar()
         self.status_bar.showMessage(self.tr('Ready!'))
 
@@ -210,10 +218,10 @@ class Wordless_Main(QMainWindow):
         reply = QMessageBox.question(self,
                                      self.tr('Exit Confirmation'),
                                      self.tr(f'''{self.settings_global['style_dialog']}
-		                                         <body>
-		                                             <p>Do you really want to quit?</p>
-		                                         </body>
-		                                     '''),
+                                                 <body>
+                                                     <p>Do you really want to quit?</p>
+                                                 </body>
+                                             '''),
                                      QMessageBox.Yes | QMessageBox.No,
                                      QMessageBox.No)
 
@@ -446,14 +454,21 @@ class Wordless_Main(QMainWindow):
         self.setCentralWidget(central_widget)
 
     def init_tabs(self):
+        def tab_changed():
+            self.settings_custom['current_tab'] = self.tabs.tabText(self.tabs.currentIndex())
+
         self.tabs = QTabWidget(self)
         self.tabs.addTab(tab_overview.init(self), self.tr('Overview'))
         self.tabs.addTab(tab_concordancer.init(self), self.tr('Concordancer'))
         self.tabs.addTab(tab_wordlist.init(self), self.tr('Wordlist'))
-        self.tabs.addTab(tab_ngram.init(self), self.tr('N-gram'))
+        self.tabs.addTab(tab_ngrams.init(self), self.tr('N-grams'))
         self.tabs.addTab(tab_collocation.init(self), self.tr('Collocation'))
         self.tabs.addTab(tab_colligation.init(self), self.tr('Colligation'))
         self.tabs.addTab(tab_keywords.init(self), self.tr('Keywords'))
+
+        self.tabs.currentChanged.connect(tab_changed)
+
+        tab_changed()
 
         return self.tabs
 

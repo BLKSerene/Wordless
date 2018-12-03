@@ -83,29 +83,45 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Search):
             col_keywords = self.find_col('Keywords')
             col_number_files_found = self.find_col('Number of\nFiles Found')
 
-            freq_min = float('-inf') if settings['freq_min_no_limit'] else settings['freq_min']
-            freq_max = float('inf') if settings['freq_max_no_limit'] else settings['freq_max']
+            freq_min = (float('-inf')
+                        if settings['freq_min_no_limit'] else settings['freq_min'])
+            freq_max = (float('inf')
+                        if settings['freq_max_no_limit'] else settings['freq_max'])
 
-            test_stat_min = float('-inf') if settings['test_stat_min_no_limit'] else settings['test_stat_min']
-            test_stat_max = float('inf') if settings['test_stat_max_no_limit'] else settings['test_stat_max']
+            test_stat_min = (float('-inf')
+                             if settings['test_stat_min_no_limit'] else settings['test_stat_min'])
+            test_stat_max = (float('inf')
+                             if settings['test_stat_max_no_limit'] else settings['test_stat_max'])
 
-            p_value_min = float('-inf') if settings['p_value_min_no_limit'] else settings['p_value_min']
-            p_value_max = float('inf') if settings['p_value_max_no_limit'] else settings['p_value_max']
+            p_value_min = (float('-inf')
+                           if settings['p_value_min_no_limit'] else settings['p_value_min'])
+            p_value_max = (float('inf')
+                           if settings['p_value_max_no_limit'] else settings['p_value_max'])
 
-            bayes_factor_min = float('-inf') if settings['bayes_factor_min_no_limit'] else settings['bayes_factor_min']
-            bayes_factor_max = float('inf') if settings['bayes_factor_max_no_limit'] else settings['bayes_factor_max']
+            bayes_factor_min = (float('-inf')
+                                if settings['bayes_factor_min_no_limit'] else settings['bayes_factor_min'])
+            bayes_factor_max = (float('inf')
+                                if settings['bayes_factor_max_no_limit'] else settings['bayes_factor_max'])
 
-            effect_size_min = float('-inf') if settings['effect_size_min_no_limit'] else settings['effect_size_min']
-            effect_size_max = float('inf') if settings['effect_size_max_no_limit'] else settings['effect_size_max']
+            effect_size_min = (float('-inf')
+                               if settings['effect_size_min_no_limit'] else settings['effect_size_min'])
+            effect_size_max = (float('inf')
+                               if settings['effect_size_max_no_limit'] else settings['effect_size_max'])
 
-            dispersion_min = float('-inf') if settings['dispersion_min_no_limit'] else settings['dispersion_min']
-            dispersion_max = float('inf') if settings['dispersion_max_no_limit'] else settings['dispersion_max']
+            dispersion_min = (float('-inf')
+                              if settings['dispersion_min_no_limit'] else settings['dispersion_min'])
+            dispersion_max = (float('inf')
+                              if settings['dispersion_max_no_limit'] else settings['dispersion_max'])
 
-            len_keyword_min = float('-inf') if settings['len_keyword_min_no_limit'] else settings['len_keyword_min']
-            len_keyword_max = float('inf') if settings['len_keyword_max_no_limit'] else settings['len_keyword_max']
+            len_keyword_min = (float('-inf')
+                               if settings['len_keyword_min_no_limit'] else settings['len_keyword_min'])
+            len_keyword_max = (float('inf')
+                               if settings['len_keyword_max_no_limit'] else settings['len_keyword_max'])
 
-            number_files_found_min = float('-inf') if settings['number_files_found_min_no_limit'] else settings['number_files_found_min']
-            number_files_found_max = float('inf') if settings['number_files_found_max_no_limit'] else settings['number_files_found_max']
+            number_files_found_min = (float('-inf')
+                                      if settings['number_files_found_min_no_limit'] else settings['number_files_found_min'])
+            number_files_found_max = (float('inf')
+                                      if settings['number_files_found_max_no_limit'] else settings['number_files_found_max'])
 
             self.row_filters = [[] for i in range(self.rowCount())]
 
@@ -671,9 +687,9 @@ def init(main):
      spin_box_number_files_found_max,
      checkbox_number_files_found_max_no_limit) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100000)
 
-    label_filter_file = QLabel(main.tr('Filter File:'), main)
-    combo_box_filter_file = wordless_box.Wordless_Combo_Box_Filter_File(main, table_keywords)
-    button_filter_table = QPushButton(main.tr('Filter Results in Table'), main)
+    (label_filter_file,
+     combo_box_filter_file,
+     button_filter_results) = wordless_widgets.wordless_widgets_filter_results(main, table_keywords)
 
     spin_box_freq_min.valueChanged.connect(filter_settings_changed)
     checkbox_freq_min_no_limit.stateChanged.connect(filter_settings_changed)
@@ -716,9 +732,8 @@ def init(main):
     checkbox_number_files_found_max_no_limit.stateChanged.connect(filter_settings_changed)
 
     combo_box_filter_file.currentTextChanged.connect(filter_settings_changed)
-    button_filter_table.clicked.connect(lambda: table_keywords.update_filters())
 
-    combo_box_filter_file.table.itemChanged.connect(table_item_changed)
+    table_keywords.itemChanged.connect(table_item_changed)
 
     layout_filter_file = QGridLayout()
     layout_filter_file.addWidget(label_filter_file, 0, 0)
@@ -808,7 +823,7 @@ def init(main):
     group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 31, 0, 1, 3)
 
     group_box_filter_settings.layout().addLayout(layout_filter_file, 32, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(button_filter_table, 33, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(button_filter_results, 33, 0, 1, 3)
 
     group_box_filter_settings.layout().setColumnStretch(1, 1)
 
@@ -835,9 +850,9 @@ def generate_keywords(main, files, ref_file):
     for i, file in enumerate([ref_file] + files):
         text = wordless_text.Wordless_Text(main, file)
 
-        text.tokens = wordless_preprocess.wordless_preprocess_tokens(main, text.tokens,
-                                                                     lang_code = text.lang_code,
-                                                                     settings = settings['token_settings'])
+        text.tokens = wordless_text_processing.wordless_preprocess_tokens(main, text.tokens,
+                                                                          lang_code = text.lang_code,
+                                                                          settings = settings['token_settings'])
 
         keywords_freq_files.append(collections.Counter(text.tokens))
 
@@ -875,7 +890,7 @@ def generate_keywords(main, files, ref_file):
     keywords_freq_file_observed = keywords_freq_files[-1]
     keywords_freq_file_ref = keywords_freq_files[0]
 
-    for i, text in enumerate(texts):
+    for text in texts:
         keywords_stats_file = {}
 
         tokens_observed = text.tokens
@@ -891,8 +906,8 @@ def generate_keywords(main, files, ref_file):
                 number_sections = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['number_sections']
                 use_data = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']
 
-            sections_observed = wordless_utils_text.to_sections(tokens_observed, number_sections)
-            sections_ref = wordless_utils_text.to_sections(tokens_ref, number_sections)
+            sections_observed = wordless_text_utils.to_sections(tokens_observed, number_sections)
+            sections_ref = wordless_text_utils.to_sections(tokens_ref, number_sections)
 
             sections_freq_observed = [collections.Counter(section) for section in sections_observed]
             sections_freq_ref = [collections.Counter(section) for section in sections_observed]
@@ -940,10 +955,10 @@ def generate_keywords(main, files, ref_file):
         number_sections = main.settings_custom['measures']['dispersion']['general']['number_sections']
 
         sections_freq = [collections.Counter(section)
-                         for section in wordless_utils_text.to_sections(tokens_observed, number_sections)]
+                         for section in wordless_text_utils.to_sections(tokens_observed, number_sections)]
 
         for token in keywords_freq_file_observed:
-            counts = [section_freq.get(token, 0) for section_freq in sections_freq]
+            counts = [section_freq[token] for section_freq in sections_freq]
 
             keywords_stats_file[token].append(measure_dispersion(counts))
 
@@ -951,7 +966,7 @@ def generate_keywords(main, files, ref_file):
 
     if len(files) == 1:
         keywords_freq_files.append(keywords_freq_files[1])
-        keywords_stats_files = keywords_stats_files * 2
+        keywords_stats_files *= 2
 
     return (wordless_misc.merge_dicts(keywords_freq_files),
             wordless_misc.merge_dicts(keywords_stats_files))

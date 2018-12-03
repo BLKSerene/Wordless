@@ -8,7 +8,7 @@
 
 __all__ = [
 	'wordless_plot',
-    'wordless_preprocess',
-    'wordless_text',
-    'wordless_utils_text'
+	'wordless_text',
+    'wordless_text_processing',
+    'wordless_text_utils'
 ]

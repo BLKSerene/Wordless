@@ -60,33 +60,6 @@ class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box):
         else:
             self.addItem(self.tr('*** None ***'))
 
-# Filter Settings
-class Wordless_Combo_Box_Filter_File(Wordless_Combo_Box):
-    def __init__(self, main, table):
-        super().__init__(main)
-
-        self.table = table
-
-        self.table.itemChanged.connect(self.table_item_changed)
-
-        self.table_item_changed()
-
-    def table_item_changed(self):
-        if self.count() == 1:
-            file_old = ''
-        else:
-            file_old = self.currentText()
-
-        self.clear()
-
-        for file in self.table.settings['file']['files_open']:
-            if file['selected']:
-                self.addItem(file['name'])
-
-        self.addItem(self.tr('Total'))
-
-        if self.findText(file_old) > -1:
-            self.setCurrentText(file_old)
 
 # Combo Boxes (Settings)
 class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
