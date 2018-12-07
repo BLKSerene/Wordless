@@ -17,8 +17,8 @@ import numpy
 
 from wordless_measures import *
 from wordless_text import *
-from wordless_widgets import *
 from wordless_utils import *
+from wordless_widgets import *
 
 class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Search):
     def __init__(self, main):
@@ -200,6 +200,7 @@ def init(main):
 
         token_settings_changed()
         generation_settings_changed()
+        measures_changed()
         table_settings_changed()
         plot_settings_changed()
         filter_settings_changed()
@@ -224,6 +225,9 @@ def init(main):
         settings['measure_dispersion'] = combo_box_measure_dispersion.currentText()
         settings['measure_adjusted_freq'] = combo_box_measure_adjusted_freq.currentText()
 
+    def measures_changed():
+        settings = main.settings_custom['wordlist']['generation_settings']
+
         # Use Data
         use_data_old = combo_box_use_data.currentText()
 
@@ -238,6 +242,8 @@ def init(main):
 
         if combo_box_use_data.findText(use_data_old) > -1:
             combo_box_use_data.setCurrentText(use_data_old)
+        else:
+            combo_box_use_data.setCurrentText(main.settings_default['wordlist']['plot_settings']['use_data'])
 
     def table_settings_changed():
         settings = main.settings_custom['wordlist']['table_settings']
@@ -367,7 +373,9 @@ def init(main):
                                                                                      tab = main.tr('Dispersion'))
 
     combo_box_measure_dispersion.currentTextChanged.connect(generation_settings_changed)
+    combo_box_measure_dispersion.currentTextChanged.connect(measures_changed)
     combo_box_measure_adjusted_freq.currentTextChanged.connect(generation_settings_changed)
+    combo_box_measure_adjusted_freq.currentTextChanged.connect(measures_changed)
 
     layout_settings_measures = QGridLayout()
     layout_settings_measures.addWidget(label_settings_measures, 0, 0)
@@ -423,7 +431,6 @@ def init(main):
      checkbox_rank_max_no_limit) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100000)
 
     combo_box_plot_type.currentTextChanged.connect(plot_settings_changed)
-    main.wordless_files.table.itemChanged.connect(plot_settings_changed)
     combo_box_use_file.currentTextChanged.connect(plot_settings_changed)
     combo_box_use_data.currentTextChanged.connect(plot_settings_changed)
     checkbox_use_pct.stateChanged.connect(plot_settings_changed)
@@ -623,8 +630,11 @@ def generate_wordlists(main, files):
         text = wordless_text.Wordless_Text(main, file)
 
         text.tokens = wordless_text_processing.wordless_preprocess_tokens(main, text.tokens,
-                                                                     lang_code = text.lang_code,
-                                                                     settings = settings['token_settings'])
+                                                                          lang_code = text.lang_code,
+                                                                          settings = settings['token_settings'])
+        text.tokens = wordless_text_processing.wordless_postprocess_tokens(main, text.tokens,
+                                                                           lang_code = text.lang_code,
+                                                                           settings = settings['token_settings'])
 
         tokens_freq_files.append(collections.Counter(text.tokens))
 
@@ -646,7 +656,7 @@ def generate_wordlists(main, files):
     measure_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
     measure_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
 
-    tokens = tokens_freq_files[-1]
+    tokens_total = tokens_freq_files[-1].keys()
 
     for text in texts:
         tokens_stats_file = {}
@@ -657,7 +667,7 @@ def generate_wordlists(main, files):
         sections_freq = [collections.Counter(section)
                          for section in wordless_text_utils.to_sections(text.tokens, number_sections)]
 
-        for token in tokens:
+        for token in tokens_total:
             counts = [section_freq[token] for section_freq in sections_freq]
 
             tokens_stats_file[token] = [measure_dispersion(counts)]
@@ -669,7 +679,7 @@ def generate_wordlists(main, files):
             sections_freq = [collections.Counter(section)
                              for section in wordless_text_utils.to_sections(text.tokens, number_sections)]
 
-        for token in tokens:
+        for token in tokens_total:
             counts = [section_freq[token] for section_freq in sections_freq]
 
             tokens_stats_file[token].append(measure_adjusted_freq(counts))
@@ -793,25 +803,20 @@ def generate_table(main, table):
 def generate_plot(main):
     settings = main.settings_custom['wordlist']
 
-    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-    text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
-
-    col_text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-    col_text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
-
     files = main.wordless_files.get_selected_files()
 
     if files:
+        text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+        text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+
+        col_text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
+        col_text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
+        
         tokens_freq_files, tokens_stats_files = generate_wordlists(main, files)
 
         if settings['plot_settings']['use_data'] == main.tr('Frequency'):
             wordless_plot.wordless_plot_freq(main, tokens_freq_files,
-                                             plot_type = settings['plot_settings']['plot_type'],
-                                             use_file = settings['plot_settings']['use_file'],
-                                             use_pct = settings['plot_settings']['use_pct'],
-                                             use_cumulative = settings['plot_settings']['use_cumulative'],
-                                             rank_min = settings['plot_settings']['rank_min'],
-                                             rank_max = settings['plot_settings']['rank_max'],
+                                             settings = settings['plot_settings'],
                                              label_x = main.tr('Tokens'))
         else:
             if settings['plot_settings']['use_data'] == col_text_dispersion:
@@ -826,10 +831,7 @@ def generate_plot(main):
                 label_y = col_text_adjusted_freq
 
             wordless_plot.wordless_plot_stat(main, tokens_stat_files,
-                                             plot_type = settings['plot_settings']['plot_type'],
-                                             use_file = settings['plot_settings']['use_file'],
-                                             rank_min = settings['plot_settings']['rank_min'],
-                                             rank_max = settings['plot_settings']['rank_max'],
+                                             settings = settings['plot_settings'],
                                              label_x = main.tr('Tokens'),
                                              label_y = label_y)
 

@@ -6,6 +6,8 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
+import copy
+import os
 import pickle
 import sys
 
@@ -13,11 +15,10 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_widgets import *
+from wordless_settings import *
 from wordless_utils import *
+from wordless_widgets import *
 
-import init_settings
-import wordless_settings
 import wordless_files
 
 import tab_overview
@@ -90,7 +91,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
 
             ['<a href="https://amueller.github.io/word_cloud/">wordcloud</a>',
              '1.5.0',
-             '<a href="mailto:t3kcit+githubspam@gmail.com">Andreas Mueller</a>',
+             '<a href="mailto:t3kcit+githubspam@gmail.com">Andreas Christian Mueller</a>',
              '<a href="https://github.com/amueller/word_cloud/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
@@ -191,7 +192,15 @@ class Wordless_Main(QMainWindow):
         self.setWindowIcon(QIcon('images/wordless_icon.png'))
 
         # Settings
-        init_settings.init_settings(self)
+        init_settings_global.init_settings_global(self)
+        init_settings_default.init_settings_default(self)
+
+        if os.path.exists('wordless_settings.pkl'):
+            with open(r'wordless_settings.pkl', 'rb') as f:
+                self.settings_custom = pickle.load(f)
+        else:
+            self.settings_custom = copy.deepcopy(self.settings_default)
+
         self.wordless_settings = wordless_settings.Wordless_Settings(self)
 
         # Tabs
@@ -347,11 +356,12 @@ class Wordless_Main(QMainWindow):
                               self.tr(f'''{self.settings_global['style_dialog']}
                                           <body style="text-align: center">
                                               <h1>Wordless Version 1.0</h1>
-                                              <p>An integrated tool for language & translation studies.</p>
-                                              <p style="margin: 0;">Designed and Developed by Ye Lei (叶磊)</p>
+                                              <p>An Integrated Corpus Tool for the Scientific Study of Language, Literature and Translation</p>
+                                              <p>Designed and Developed by Ye Lei (叶磊)</p>
+                                              <p>MA Student of Shanghai International Studies University</p>
                                               <hr>
                                               <p>Licensed under GPL Version 3.0</p>
-                                              <p>Copyright (C) 2018 Ye Lei</p>
+                                              <p>Copyright (C) 2018 Ye Lei (叶磊)</p>
                                           </body>'''))
 
         menu = self.menuBar()

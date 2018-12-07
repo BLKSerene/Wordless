@@ -14,14 +14,22 @@ import wordcloud
 
 from wordless_utils import wordless_sorting
 
-def wordless_plot_freq(main, tokens_freq_files, plot_type,
-                       use_file, use_pct, use_cumulative,
-                       rank_min, rank_max,
-                       label_x):
+def wordless_plot_freq(main, tokens_freq_files,
+                       settings, label_x):
     files = main.wordless_files.get_selected_files()
     files += [{'name': main.tr('Total')}]
 
-    if plot_type == main.tr('Line Chart'):
+    if settings['rank_min_no_limit']:
+        rank_min = 1
+    else:
+        rank_min = settings['rank_min']
+
+    if settings['rank_max_no_limit']:
+        rank_max = None
+    else:
+        rank_max = settings['rank_max']
+
+    if settings['plot_type'] == main.tr('Line Chart'):
         tokens_freq_files = wordless_sorting.sorted_tokens_freq_files(tokens_freq_files)
 
         total_freqs = numpy.array(list(zip(*tokens_freq_files))[1]).sum(axis = 0)
@@ -30,24 +38,24 @@ def wordless_plot_freq(main, tokens_freq_files, plot_type,
         tokens = [item[0] for item in tokens_freq_files[rank_min - 1 : rank_max]]
         freqs = [item[1] for item in tokens_freq_files if item[0] in tokens]
 
-        if use_pct:
-            if use_cumulative:
+        if settings['use_pct']:
+            if settings['use_cumulative']:
                 matplotlib.pyplot.ylabel(main.tr('Cumulative Percentage Frequency'))
             else:
                 matplotlib.pyplot.ylabel(main.tr('Percentage Frequency'))
         else:
-            if use_cumulative:
+            if settings['use_cumulative']:
                 matplotlib.pyplot.ylabel(main.tr('Cumulative Frequency'))
             else:
                 matplotlib.pyplot.ylabel(main.tr('Frequency'))
 
-        if use_cumulative:
+        if settings['use_cumulative']:
             for i, freq_files in enumerate(freqs):
                 if i >= 1:
                     freqs[i] = [freq_cumulative + freq
                                 for freq_cumulative, freq in zip(freqs[i - 1], freq_files)]
 
-        if use_pct:
+        if settings['use_pct']:
             for i, file in enumerate(files):
                 matplotlib.pyplot.plot([freq_files[i] / total_freqs[i] * 100  for freq_files in freqs],
                                        label = file['name'])
@@ -59,18 +67,22 @@ def wordless_plot_freq(main, tokens_freq_files, plot_type,
         matplotlib.pyplot.xlabel(label_x)
         matplotlib.pyplot.xticks(range(len(tokens)), tokens, rotation = 90)
 
-        matplotlib.pyplot.title(main.tr('Frequency Distribution'))
         matplotlib.pyplot.grid(True)
         matplotlib.pyplot.legend()
         matplotlib.pyplot.show()
-    elif plot_type == main.tr('Word Cloud'):
+    elif settings['plot_type'] == main.tr('Word Cloud'):
+        if rank_max == None:
+            max_words = len(tokens_freq_files) - rank_min + 1
+        else:
+            max_words = rank_max - rank_min + 1
+
         word_cloud = wordcloud.WordCloud(width = QDesktopWidget().width(),
                                          height = QDesktopWidget().height(),
                                          background_color = 'white',
-                                         max_words = rank_max - rank_min + 1)
+                                         max_words = max_words)
 
         for i, file in enumerate(files):
-            if file['name'] == use_file:
+            if file['name'] == settings['use_file']:
                 tokens_freq_files = wordless_sorting.sorted_tokens_freq_file(tokens_freq_files, i)
 
                 tokens_freq_file = {token: freqs[i]
@@ -78,32 +90,34 @@ def wordless_plot_freq(main, tokens_freq_files, plot_type,
 
                 break
 
-        tokens_freq_file = {token: freq for token, freq in tokens_freq_file.items() if freq}
+        # Fix zero frequencies
+        for token, freq in tokens_freq_file.items():
+            if freq == 0:
+                tokens_freq_file[token] += 0.000000000000001
 
         word_cloud.generate_from_frequencies(tokens_freq_file)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
 
-        matplotlib.pyplot.title(main.tr('Frequency Distribution'))
         matplotlib.pyplot.axis('off')
         matplotlib.pyplot.show()
 
-def wordless_plot_freq_ref(main, tokens_freq_files, ref_file, plot_type,
-                           use_file, use_pct, use_cumulative,
-                           rank_min, rank_max,
-                           label_x):
+def wordless_plot_freq_ref(main, tokens_freq_files, ref_file,
+                           settings, label_x):
     files = main.wordless_files.get_selected_files()
     files += [{'name': main.tr('Total')}]
 
-    if type(list(tokens_freq_files.keys())[0]) != str:
-        tokens_ngram = True
+    if settings['rank_min_no_limit']:
+        rank_min = 1
     else:
-        tokens_ngram = False
+        rank_min = settings['rank_min']
 
-    if tokens_ngram:
-        tokens_freq_files = {' '.join(ngram): freq_files for ngram, freq_files in tokens_freq_files.items()}
+    if settings['rank_max_no_limit']:
+        rank_max = None
+    else:
+        rank_max = settings['rank_max']
 
-    if plot_type == main.tr('Line Chart'):
+    if settings['plot_type'] == main.tr('Line Chart'):
         tokens_freq_files = wordless_sorting.sorted_tokens_freq_files_ref(tokens_freq_files)
 
         total_freqs = numpy.array([item[1] for item in tokens_freq_files]).sum(axis = 0)
@@ -113,24 +127,24 @@ def wordless_plot_freq_ref(main, tokens_freq_files, ref_file, plot_type,
         tokens = [item[0] for item in tokens_freq_files[rank_min - 1 : rank_max]]
         freqs = [item[1] for item in tokens_freq_files if item[0] in tokens]
 
-        if use_pct:
-            if use_cumulative:
+        if settings['use_pct']:
+            if settings['use_cumulative']:
                 matplotlib.pyplot.ylabel(main.tr('Cumulative Percentage Frequency'))
             else:
                 matplotlib.pyplot.ylabel(main.tr('Percentage Frequency'))
         else:
-            if use_cumulative:
+            if settings['use_cumulative']:
                 matplotlib.pyplot.ylabel(main.tr('Cumulative Frequency'))
             else:
                 matplotlib.pyplot.ylabel(main.tr('Frequency'))
 
-        if use_cumulative:
+        if settings['use_cumulative']:
             for i, freq_files in enumerate(freqs):
                 if i >= 1:
                     freqs[i] = [freq_cumulative + freq
                                 for freq_cumulative, freq in zip(freqs[i - 1], freq_files)]
 
-        if use_pct:
+        if settings['use_pct']:
             for i, file in enumerate(files):
                 matplotlib.pyplot.plot([freq_files[i] / total_freqs[i] * 100  for freq_files in freqs],
                                        label = file['name'])
@@ -142,20 +156,24 @@ def wordless_plot_freq_ref(main, tokens_freq_files, ref_file, plot_type,
         matplotlib.pyplot.xlabel(label_x)
         matplotlib.pyplot.xticks(range(len(tokens)), tokens, rotation = 90)
 
-        matplotlib.pyplot.title(main.tr('Frequency Distribution'))
         matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()
         matplotlib.pyplot.show()
-    elif plot_type == main.tr('Word Cloud'):
+    elif settings['plot_type'] == main.tr('Word Cloud'):
         files.remove(ref_file)
+
+        if rank_max == None:
+            max_words = len(tokens_freq_files) - rank_min + 1
+        else:
+            max_words = rank_max - rank_min + 1
 
         word_cloud = wordcloud.WordCloud(width = QDesktopWidget().width(),
                                          height = QDesktopWidget().height(),
                                          background_color = 'white',
-                                         max_words = rank_max - rank_min + 1)
+                                         max_words = max_words)
 
         for i, file in enumerate(files):
-            if file['name'] == use_file:
+            if file['name'] == settings['use_file']:
                 tokens_freq_files = wordless_sorting.sorted_tokens_freq_file(tokens_freq_files, i + 1)
 
                 tokens_freq_file = {token: freq_files[i + 1]
@@ -165,32 +183,36 @@ def wordless_plot_freq_ref(main, tokens_freq_files, ref_file, plot_type,
 
         tokens_freq_file = {token: freq for token, freq in tokens_freq_file.items() if freq}
 
+        # Fix zero frequencies
+        for token, freq in tokens_freq_file.items():
+            if freq == 0:
+                tokens_freq_file[token] += 0.000000000000001
+
         word_cloud.generate_from_frequencies(tokens_freq_file)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
 
-        matplotlib.pyplot.title(main.tr('Frequency Distribution'))
         matplotlib.pyplot.axis('off')
         matplotlib.pyplot.show()
 
-def wordless_plot_stat(main, tokens_stat_files, plot_type,
-                       use_file,
-                       rank_min, rank_max,
-                       label_x, label_y):
+def wordless_plot_stat(main, tokens_stat_files,
+                       settings, label_x, label_y):
     files = main.wordless_files.get_selected_files()
     files += [{'name': main.tr('Total')}]
 
-    if type(list(tokens_stat_files.keys())[0]) != str:
-        tokens_ngram = True
+    if settings['rank_min_no_limit']:
+        rank_min = 1
     else:
-        tokens_ngram = False
+        rank_min = settings['rank_min']
 
-    if tokens_ngram:
-        tokens_stat_files = {' '.join(ngram): stat_files for ngram, stat_files in tokens_stat_files.items()}
+    if settings['rank_max_no_limit']:
+        rank_max = None
+    else:
+        rank_max = settings['rank_max']
 
-    if plot_type == main.tr('Line Chart'):
-        if tokens_ngram:
-            tokens_stat_files = wordless_sorting.sorted_ngrams_stat_files(tokens_stat_files)
+    if settings['plot_type'] == main.tr('Line Chart'):
+        if label_y == main.tr('p-value'):
+            tokens_stat_files = list(reversed(wordless_sorting.sorted_tokens_stat_files(tokens_stat_files)))
         else:
             tokens_stat_files = wordless_sorting.sorted_tokens_stat_files(tokens_stat_files)
 
@@ -206,20 +228,24 @@ def wordless_plot_stat(main, tokens_stat_files, plot_type,
 
         matplotlib.pyplot.ylabel(label_y)
 
-        matplotlib.pyplot.title(main.tr('Scores'))
         matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()
         matplotlib.pyplot.show()
-    elif plot_type == main.tr('Word Cloud'):
+    elif settings['plot_type'] == main.tr('Word Cloud'):
+        if rank_max == None:
+            max_words = len(tokens_freq_files) - rank_min + 1
+        else:
+            max_words = rank_max - rank_min + 1
+
         word_cloud = wordcloud.WordCloud(width = QDesktopWidget().width(),
                                          height = QDesktopWidget().height(),
                                          background_color = 'white',
-                                         max_words = rank_max - rank_min + 1)
+                                         max_words = max_words)
 
         for i, file in enumerate(files):
-            if file['name'] == use_file:
-                if tokens_ngram:
-                    tokens_stat_files = wordless_sorting.sorted_ngrams_stat_file(tokens_stat_files, i)
+            if file['name'] == settings['use_file']:
+                if label_y == main.tr('p-value'):
+                    tokens_stat_files = list(reversed(wordless_sorting.sorted_tokens_stat_file(tokens_stat_files, i)))
                 else:
                     tokens_stat_files = wordless_sorting.sorted_tokens_stat_file(tokens_stat_files, i)
 
@@ -228,29 +254,39 @@ def wordless_plot_stat(main, tokens_stat_files, plot_type,
 
                 break
 
+        # Fix zero frequencies
+        for token, stat in tokens_stat_file.items():
+            if stat == 0:
+                tokens_stat_file[token] += 0.000000000000001
+
         word_cloud.generate_from_frequencies(tokens_stat_file)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
 
-        matplotlib.pyplot.title(main.tr('Statistics'))
         matplotlib.pyplot.axis('off')
         matplotlib.pyplot.show()
 
-def wordless_plot_keyness(main, keywords_stat_files, ref_file, plot_type,
-                          use_file,
-                          rank_min, rank_max,
-                          label_y):
+def wordless_plot_keyness(main, keywords_stat_files, ref_file,
+                          settings, label_y):
     files = main.wordless_files.get_selected_files()
     files += [{'name': main.tr('Total')}]
     files.remove(ref_file)
 
-    if plot_type == main.tr('Line Chart'):
+    if settings['rank_min_no_limit']:
+        rank_min = 1
+    else:
+        rank_min = settings['rank_min']
+
+    if settings['rank_max_no_limit']:
+        rank_max = None
+    else:
+        rank_max = settings['rank_max']
+
+    if settings['plot_type'] == main.tr('Line Chart'):
         if label_y == main.tr('p-value'):
-            keywords_stat_files = wordless_sorting.sorted_keywords_stat_files(keywords_stat_files,
-                                                                              sorting_order = 'ascending')
+            keywords_stat_files = list(reversed(wordless_sorting.sorted_keywords_stat_files(keywords_stat_files)))
         else:
-            keywords_stat_files = wordless_sorting.sorted_keywords_stat_files(keywords_stat_files,
-                                                                              sorting_order = 'descending')
+            keywords_stat_files = wordless_sorting.sorted_keywords_stat_files(keywords_stat_files)
 
         keywords = [item[0] for item in keywords_stat_files[rank_min - 1 : rank_max]]
         stats = [item[1] for item in keywords_stat_files if item[0] in keywords]
@@ -264,24 +300,26 @@ def wordless_plot_keyness(main, keywords_stat_files, ref_file, plot_type,
         matplotlib.pyplot.ylabel(label_y)
         matplotlib.pyplot.xticks(range(len(keywords)), keywords, rotation = 90)
 
-        matplotlib.pyplot.title(main.tr('Keyness'))
         matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()
         matplotlib.pyplot.show()
-    elif plot_type == main.tr('Word Cloud'):
+    elif settings['plot_type'] == main.tr('Word Cloud'):
+        if rank_max == None:
+            max_words = len(tokens_freq_files) - rank_min + 1
+        else:
+            max_words = rank_max - rank_min + 1
+
         word_cloud = wordcloud.WordCloud(width = QDesktopWidget().width(),
                                          height = QDesktopWidget().height(),
                                          background_color = 'white',
-                                         max_words = rank_max - rank_min + 1)
+                                         max_words = max_words)
 
         for i, file in enumerate(files):
-            if file['name'] == use_file:
+            if file['name'] == settings['use_file']:
                 if label_y == main.tr('p-value'):
-                    keywords_stat_files = wordless_sorting.sorted_keywords_stat_file(keywords_stat_files, i,
-                                                                                     sorting_order = 'ascending')
+                    keywords_stat_files = list(reversed(wordless_sorting.sorted_keywords_stat_file(keywords_stat_files, i)))
                 else:
-                    keywords_stat_files = wordless_sorting.sorted_keywords_stat_file(keywords_stat_files, i,
-                                                                                     sorting_order = 'descending')
+                    keywords_stat_files = wordless_sorting.sorted_keywords_stat_file(keywords_stat_files, i)
 
                 keywords_stat_file = {keyword: stat_files[i]
                                       for keyword, stat_files in keywords_stat_files[rank_min - 1 : rank_max]}
@@ -294,10 +332,14 @@ def wordless_plot_keyness(main, keywords_stat_files, ref_file, plot_type,
 
         keywords_stat_file = {keyword: stat for keyword, stat in keywords_stat_file.items() if stat}
 
+        # Fix zero frequencies
+        for keyword, stat in keywords_stat_file.items():
+            if stat == 0:
+                keywords_stat_file[keyword] += 0.000000000000001
+        
         word_cloud.generate_from_frequencies(keywords_stat_file)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
 
-        matplotlib.pyplot.title(main.tr('Keyness'))
         matplotlib.pyplot.axis('off')
         matplotlib.pyplot.show()

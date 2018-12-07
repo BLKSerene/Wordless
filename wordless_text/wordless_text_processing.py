@@ -91,6 +91,11 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
         for sentence in sentences:
             tokens.extend(nist_tokenizer.tokenize(sentence))
+    elif word_tokenizer == main.tr('NLTK - NIST Tokenizer (International Mode)'):
+        nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
+
+        for sentence in sentences:
+            tokens.extend(nist_tokenizer.international_tokenize(sentence))
     elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
         toktok_tokenizer = nltk.ToktokTokenizer()
 
@@ -351,6 +356,12 @@ def wordless_preprocess_tokens(main, tokens, lang_code, settings):
         if settings['lemmatize']:
             tokens = wordless_lemmatize(main, tokens, lang_code)
 
+    if not settings['puncs']:
+        tokens = [token for token in tokens if [char for char in token if char.isalnum()]]
+
+    return tokens
+
+def wordless_postprocess_tokens(main, tokens, lang_code, settings):
     if settings['words']:
         if not settings['treat_as_lowercase']:
             if not settings['lowercase']:
@@ -367,7 +378,47 @@ def wordless_preprocess_tokens(main, tokens, lang_code, settings):
     
     if not settings['nums']:
         tokens = [token for token in tokens if not token.isnumeric()]
-    if not settings['puncs']:
-        tokens = [token for token in tokens if [char for char in token if char.isalnum()]]
 
     return tokens
+
+def wordless_postprocess_freq_ngrams(main, ngrams_freq_file, lang_code, settings):
+    if settings['words']:
+        if not settings['treat_as_lowercase']:
+            if not settings['lowercase']:
+                ngrams_freq_file = {ngram: freq
+                                    for ngram, freq in ngrams_freq_file.items()
+                                    if not [token for token in ngram if token.islower()]}
+            if not settings['uppercase']:
+                ngrams_freq_file = {ngram: freq
+                                    for ngram, freq in ngrams_freq_file.items()
+                                    if not [token for token in ngram if token.isupper()]}
+            if not settings['title_case']:
+                ngrams_freq_file = {ngram: freq
+                                    for ngram, freq in ngrams_freq_file.items()
+                                    if not [token for token in ngram if token.istitle()]}
+
+        if settings['filter_stop_words']:
+            ngrams_filtered = wordless_filter_stop_words(main, list(ngrams_freq_file.keys()), lang_code)
+            
+            ngrams_freq_file = {ngram: ngrams_freq_file[ngram] for ngram in ngrams_filtered}
+    else:
+        ngrams_freq_file = {ngram: freq
+                            for ngram, freq in ngrams_freq_file.items()
+                            if not [char for char in ''.join(ngram) if char.isalpha()]}
+
+    if not settings['nums']:
+        ngrams_freq_file = {ngram: freq
+                            for ngram, freq in ngrams_freq_file.items()
+                            if [token for token in ngram if not token.isnumeric()]}
+
+    return ngrams_freq_file
+
+def wordless_postprocess_freq_collocation(main, collocates_freq_file, lang_code, settings):
+    collocates = {collocate[1]: freq_files
+                  for collocate, freq_files in collocates_freq_file.items()}
+
+    collocates_filtered = wordless_postprocess_tokens(main, collocates, lang_code, settings)
+
+    return {collocate: freq_files
+            for collocate, freq_files in collocates_freq_file.items()
+            if collocate[1] in collocates_filtered}

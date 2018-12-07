@@ -17,8 +17,8 @@ import nltk
 import numpy
 import matplotlib.pyplot
 
-from wordless_widgets import *
 from wordless_utils import *
+from wordless_widgets import *
 
 class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data):
     def __init__(self, main):
@@ -821,7 +821,7 @@ def generate_table(main, table):
                     for i, ngram in enumerate(nltk.ngrams(tokens_text, len_search_term)):
                         if ngram == search_term:
                             if wordless_text_utils.check_context(i, tokens_text,
-                                                                 context_settings = settings['context_settings'],
+                                                                 settings = settings['context_settings'],
                                                                  search_terms_inclusion = search_terms_inclusion_file,
                                                                  search_terms_exclusion = search_terms_exclusion_file):
                                 if not settings['token_settings']['puncs']:

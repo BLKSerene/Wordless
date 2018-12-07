@@ -6,20 +6,20 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
-def check_context(i, tokens, context_settings,
+def check_context(i, tokens, settings,
                   search_terms_inclusion, search_terms_exclusion):
     len_tokens = len(tokens)
 
     # Inclusion
-    if context_settings['inclusion'] and search_terms_inclusion:
+    if settings['inclusion'] and search_terms_inclusion:
         inclusion_matched = False
 
         for search_term in search_terms_inclusion:
             if inclusion_matched:
                 break
 
-            for j in range(context_settings['inclusion_context_window_left'],
-                           context_settings['inclusion_context_window_right'] + 1):
+            for j in range(settings['inclusion_context_window_left'],
+                           settings['inclusion_context_window_right'] + 1):
                 if i + j < 0 or i + j > len_tokens - 1:
                     continue
 
@@ -34,13 +34,13 @@ def check_context(i, tokens, context_settings,
     # Exclusion
     exclusion_matched = True
 
-    if context_settings['exclusion'] and search_terms_exclusion:
+    if settings['exclusion'] and search_terms_exclusion:
         for search_term in search_terms_exclusion:
             if not exclusion_matched:
                 break
 
-            for j in range(context_settings['exclusion_context_window_left'],
-                           context_settings['exclusion_context_window_right'] + 1):
+            for j in range(settings['exclusion_context_window_left'],
+                           settings['exclusion_context_window_right'] + 1):
                 if i + j < 0 or i + j > len_tokens - 1:
                     continue
 

@@ -1,11 +1,9 @@
 # Wordless
-An integrated tool for language & translation studies.
+An Integrated Corpus Tool for the Scientific Study of Language, Literature and Translation
 
 Designed and Developed by Ye Lei (叶磊)
 
-一款用于语言研究及翻译研究的集成工具。
-
-由叶磊设计并开发
+MA Student of Shanghai International Studies University
 
 ## License/开源许可
     Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>

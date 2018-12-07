@@ -169,15 +169,11 @@ class Wordless_Table(QTableWidget):
     def get_selected_rows(self):
         return list(set([index.row() for index in self.selectedIndexes()]))
 
-    def find_row(self, text, fuzzy_matching = False):
+    def find_row(self, text):
         def find(text):
             for row in range(self.rowCount()):
-                if fuzzy_matching:
-                    if text in self.verticalHeaderItem(row).text():
-                        return row
-                else:
-                    if self.verticalHeaderItem(row).text() == text:
-                        return row
+                if self.verticalHeaderItem(row).text() == text:
+                    return row
 
         if type(text) == list:
             return [find(text_item) for text_item in text]
@@ -189,15 +185,11 @@ class Wordless_Table(QTableWidget):
                 for row in range(self.columnCount())
                 if text in self.verticalHeaderItem(row).text()]
 
-    def find_col(self, text, fuzzy_matching = False):
+    def find_col(self, text):
         def find(text):
             for col in range(self.columnCount()):
-                if fuzzy_matching:
-                    if text in self.horizontalHeaderItem(col).text():
-                        return col
-                else:
-                    if self.horizontalHeaderItem(col).text() == text:
-                        return col
+                if self.horizontalHeaderItem(col).text() == text:
+                    return col
 
         if type(text) == list:
             return [find(text_item) for text_item in text]
@@ -209,11 +201,11 @@ class Wordless_Table(QTableWidget):
                 for col in range(self.columnCount())
                 if text in self.horizontalHeaderItem(col).text()]
 
-    def find_header(self, text, fuzzy_matching = False):
+    def find_header(self, text):
         if self.header_orientation == 'horizontal':
-            return self.find_col(text, fuzzy_matching)
+            return self.find_col(text)
         else:
-            return self.find_row(text, fuzzy_matching)
+            return self.find_row(text)
 
     def find_headers(self, text):
         if self.header_orientation == 'horizontal':
@@ -464,9 +456,9 @@ class Wordless_Table_Data(Wordless_Table):
                                 item = self.item(row, col)
 
                                 if item.val == float('inf'):
-                                    item.setText('+ ∞')
+                                    item.setText('+∞')
                                 elif item.val == float('-inf'):
-                                    item.setText('- ∞')
+                                    item.setText('-∞')
                                 else:
                                     item.setText(f'{item.val:>{len_val},.{precision_val}}/{item.pct:<{len_pct}.{precision_pct}%}')
                 else:
@@ -556,15 +548,17 @@ class Wordless_Table_Data(Wordless_Table):
 
         sorting_section = self.horizontalHeader().sortIndicatorSection()
         col_rank = self.find_col(self.tr('Rank'))
-        rows_hidden = [self.item(row, 1).text() for row in range(self.rowCount()) if self.isRowHidden(row)]
+        rows_hidden = [(self.item(row, 0).text(), self.item(row, 1).text())
+                       for row in range(self.rowCount()) if self.isRowHidden(row)]
 
         self.sortByColumn(sorting_section, self.horizontalHeader().sortIndicatorOrder())
 
         rows_hidden_sorted = []
 
-        for text in rows_hidden:
-            if self.findItems(text, Qt.MatchExactly)[0].column() == 1:
-                rows_hidden_sorted.append(self.findItems(text, Qt.MatchExactly)[0].row())
+        for text0, text1 in rows_hidden:
+            if (self.findItems(text0, Qt.MatchExactly)[0].column() == 0 and
+                self.findItems(text1, Qt.MatchExactly)[0].column() == 1):
+                rows_hidden_sorted.append(self.findItems(text0, Qt.MatchExactly)[0].row())
 
         for row in range(self.rowCount()):
             if row not in rows_hidden_sorted:
@@ -686,15 +680,14 @@ class Wordless_Table_Data(Wordless_Table):
         self.setUpdatesEnabled(False)
         
         for i, filters in enumerate(self.row_filters):
-            if [val for val in filters if not val]:
-                self.hideRow(i)
-            else:
+            if all(filters):
                 self.showRow(i)
+            else:
+                self.hideRow(i)
 
         self.setUpdatesEnabled(True)
 
         self.toggle_cumulative()
-
         self.update_ranks()
         self.update_items_width()
 

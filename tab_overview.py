@@ -13,8 +13,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_text import *
-from wordless_widgets import *
 from wordless_utils import *
+from wordless_widgets import *
 
 class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
     def __init__(self, main):

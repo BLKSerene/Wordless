@@ -6,18 +6,18 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
-import statistics
 import math
 
+import numpy
 import scipy.stats
 
 # Reference:
 #     Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.
 def juillands_d(freqs):
-    if statistics.mean(freqs) == 0:
+    if numpy.mean(freqs) == 0:
         d = 0
     else:
-        cv = statistics.pstdev(freqs) / statistics.mean(freqs)
+        cv = numpy.std(freqs) / numpy.mean(freqs)
     
         d = 1 - cv / math.sqrt(len(freqs) - 1)
 

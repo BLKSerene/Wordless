@@ -17,8 +17,8 @@ from PyQt5.QtWidgets import *
 import nltk
 import numpy
 
-from wordless_widgets import *
 from wordless_utils import *
+from wordless_widgets import *
 
 class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
     def __init__(self, main):

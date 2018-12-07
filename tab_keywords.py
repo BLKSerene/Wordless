@@ -17,8 +17,8 @@ import numpy
 
 from wordless_text import *
 from wordless_measures import *
-from wordless_widgets import *
 from wordless_utils import *
+from wordless_widgets import *
 
 class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Search):
     def __init__(self, main):
@@ -137,11 +137,10 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Search):
                     else:
                         self.row_filters[i].append(False)
 
-                if col_text_p_value:
-                    if p_value_min <= self.item(i, col_p_value).val <= p_value_max:
-                        self.row_filters[i].append(True)
-                    else:
-                        self.row_filters[i].append(False)
+                if p_value_min <= self.item(i, col_p_value).val <= p_value_max:
+                    self.row_filters[i].append(True)
+                else:
+                    self.row_filters[i].append(False)
 
                 if col_text_bayes_factor:
                     if bayes_factor_min <= self.item(i, col_bayes_factor).val <= bayes_factor_max:
@@ -260,6 +259,7 @@ def init(main):
 
         token_settings_changed()
         generation_settings_changed()
+        measures_changed()
         table_settings_changed()
         plot_settings_changed()
         filter_settings_changed()
@@ -290,6 +290,9 @@ def init(main):
         settings['measure_effect_size'] = combo_box_measure_effect_size.currentText()
         settings['measure_dispersion'] = combo_box_measure_dispersion.currentText()
 
+    def measures_changed():
+        settings = main.settings_custom['keywords']['generation_settings']
+
         # Use File
         use_file_old = combo_box_use_file.currentText()
 
@@ -297,7 +300,9 @@ def init(main):
 
         combo_box_use_file.removeItem(combo_box_use_file.findText(settings['ref_file']))
 
-        if combo_box_use_file.findText(use_file_old) == -1:
+        if combo_box_use_file.findText(use_file_old) > -1:
+            combo_box_use_file.setCurrentText(use_file_old)
+        else:
             combo_box_use_file.setCurrentIndex(0)
 
         # Use Data
@@ -311,15 +316,16 @@ def init(main):
 
         combo_box_use_data.addItem(main.tr('Frequency'))
 
-        for col in main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']:
-            if col:
-                combo_box_use_data.addItem(col)
-
+        combo_box_use_data.addItems([col
+                                     for col in main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
+                                     if col])
         combo_box_use_data.addItem(main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col'])
         combo_box_use_data.addItem(main.settings_global['measures_dispersion'][text_measure_dispersion]['col'])
 
         if combo_box_use_data.findText(use_data_old) > -1:
             combo_box_use_data.setCurrentText(use_data_old)
+        else:
+            combo_box_use_data.setCurrentText(main.settings_default['keywords']['plot_settings']['use_data'])
 
     def table_settings_changed():
         settings = main.settings_custom['keywords']['table_settings']
@@ -513,8 +519,11 @@ def init(main):
 
     combo_box_ref_file.currentTextChanged.connect(generation_settings_changed)
     combo_box_test_significance.currentTextChanged.connect(generation_settings_changed)
+    combo_box_test_significance.currentTextChanged.connect(measures_changed)
     combo_box_measure_effect_size.currentTextChanged.connect(generation_settings_changed)
+    combo_box_measure_effect_size.currentTextChanged.connect(measures_changed)
     combo_box_measure_dispersion.currentTextChanged.connect(generation_settings_changed)
+    combo_box_measure_dispersion.currentTextChanged.connect(measures_changed)
 
     layout_ref_file = QGridLayout()
     layout_ref_file.addWidget(label_ref_file, 0, 0)
@@ -582,7 +591,6 @@ def init(main):
      checkbox_rank_max_no_limit) = wordless_widgets.wordless_widgets_filter(main, filter_min = 1, filter_max = 100000)
 
     combo_box_plot_type.currentTextChanged.connect(plot_settings_changed)
-    main.wordless_files.table.itemChanged.connect(generation_settings_changed)
     combo_box_use_file.currentTextChanged.connect(plot_settings_changed)
     combo_box_use_data.currentTextChanged.connect(plot_settings_changed)
     checkbox_use_pct.stateChanged.connect(plot_settings_changed)
@@ -853,6 +861,9 @@ def generate_keywords(main, files, ref_file):
         text.tokens = wordless_text_processing.wordless_preprocess_tokens(main, text.tokens,
                                                                           lang_code = text.lang_code,
                                                                           settings = settings['token_settings'])
+        text.tokens = wordless_text_processing.wordless_postprocess_tokens(main, text.tokens,
+                                                                           lang_code = text.lang_code,
+                                                                           settings = settings['token_settings'])
 
         keywords_freq_files.append(collections.Counter(text.tokens))
 
@@ -975,6 +986,16 @@ def generate_keywords(main, files, ref_file):
 def generate_table(main, table):
     settings = main.settings_custom['keywords']
 
+    text_test_significance = settings['generation_settings']['test_significance']
+    text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+
+    (col_text_test_stat,
+     col_text_p_value,
+     col_text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
+    col_text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+    col_text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
+
     if settings['generation_settings']['ref_file']:
         files = [file
                  for file in main.wordless_files.get_selected_files()
@@ -986,16 +1007,6 @@ def generate_table(main, table):
             table.settings = copy.deepcopy(main.settings_custom)
 
             ref_file = main.wordless_files.find_selected_file(settings['generation_settings']['ref_file'])
-
-            text_test_significance = settings['generation_settings']['test_significance']
-            text_measure_effect_size = settings['generation_settings']['measure_effect_size']
-            text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-
-            (col_text_test_stat,
-             col_text_p_value,
-             col_text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-            col_text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
-            col_text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
 
             # Insert columns (Files)
             table.insert_col(table.columnCount() - 1,
@@ -1057,15 +1068,14 @@ def generate_table(main, table):
                              num = True)
 
             # Sort by p-value of the first file
-            table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{col_text_p_value}')),
-                                   Qt.AscendingOrder)
+            table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{col_text_p_value}')), Qt.AscendingOrder)
 
             keywords_freq_files, keywords_stats_files = generate_keywords(main, files, ref_file)
 
             cols_freq = table.find_cols(main.tr('\nFrequency'))
 
             if col_text_test_stat:
-                cols_test_stat = [col + 1 for col in cols_freq[1:]]
+                cols_test_stat = table.find_cols(main.tr(f'\n{col_text_test_stat}'))
 
             cols_p_value = table.find_cols(main.tr('\np-value'))
 
@@ -1109,11 +1119,11 @@ def generate_table(main, table):
                     if col_text_bayes_factor:
                         table.set_item_num_float(i, cols_bayes_factor[j], bayes_factor)
 
-                    # Dispersion
-                    table.set_item_num_float(i, cols_dispersion[j], dispersion)
-
                     # Effect Size
                     table.set_item_num_float(i, cols_effect_size[j], effect_size)
+
+                    # Dispersion
+                    table.set_item_num_float(i, cols_dispersion[j], dispersion)
 
                 # Number of Files Found
                 table.set_item_num_pct(i, col_number_files_found,
@@ -1147,16 +1157,6 @@ def generate_table(main, table):
 def generate_plot(main):
     settings = main.settings_custom['keywords']
 
-    text_test_significance = settings['generation_settings']['test_significance']
-    text_measure_effect_size = settings['generation_settings']['measure_effect_size']
-    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-
-    (col_text_test_stat,
-     col_text_p_value,
-     col_text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-    col_text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
-    col_text_effect_size =  main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-
     if settings['generation_settings']['ref_file']:
         files = [file
                  for file in main.wordless_files.get_selected_files()
@@ -1164,51 +1164,54 @@ def generate_plot(main):
 
         if files:
             ref_file = main.wordless_files.find_selected_file(settings['generation_settings']['ref_file'])
+
+            text_test_significance = settings['generation_settings']['test_significance']
+            text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+            text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+
+            (col_text_test_stat,
+             col_text_p_value,
+             col_text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
+            col_text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+            col_text_dispersion =  main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
+
             keywords_freq_files, keywords_stats_files = generate_keywords(main, files, ref_file)
 
             if settings['plot_settings']['use_data'] == main.tr('Frequency'):
                 wordless_plot.wordless_plot_freq_ref(main, keywords_freq_files,
                                                      ref_file = ref_file,
-                                                     plot_type = settings['plot_settings']['plot_type'],
-                                                     use_file = settings['plot_settings']['use_file'],
-                                                     use_pct = settings['plot_settings']['use_pct'],
-                                                     use_cumulative = settings['plot_settings']['use_cumulative'],
-                                                     rank_min = settings['plot_settings']['rank_min'],
-                                                     rank_max = settings['plot_settings']['rank_max'],
+                                                     settings = settings['plot_settings'],
                                                      label_x = main.tr('Keywords'))
             else:
                 if settings['plot_settings']['use_data'] == col_text_test_stat:
-                    keywords_stat_files = {collocate: numpy.array(stats_files)[:, 0]
-                                   for collocate, stats_files in keywords_stats_files.items()}
+                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 0]
+                                   for keyword, stats_files in keywords_stats_files.items()}
 
                     label_y = col_text_test_stat
                 elif settings['plot_settings']['use_data'] == col_text_p_value:
-                    keywords_stat_files = {collocate: numpy.array(stats_files)[:, 1]
-                                   for collocate, stats_files in keywords_stats_files.items()}
+                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 1]
+                                   for keyword, stats_files in keywords_stats_files.items()}
 
                     label_y = col_text_p_value
                 elif settings['plot_settings']['use_data'] == col_text_bayes_factor:
-                    keywords_stat_files = {collocate: numpy.array(stats_files)[:, 2]
-                                   for collocate, stats_files in keywords_stats_files.items()}
+                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 2]
+                                   for keyword, stats_files in keywords_stats_files.items()}
 
                     label_y = col_text_bayes_factor
                 elif settings['plot_settings']['use_data'] == col_text_effect_size:
-                    keywords_stat_files = {collocate: numpy.array(stats_files)[:, 3]
-                                   for collocate, stats_files in keywords_stats_files.items()}
+                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 3]
+                                   for keyword, stats_files in keywords_stats_files.items()}
 
                     label_y = col_text_effect_size
                 elif settings['plot_settings']['use_data'] == col_text_dispersion:
-                    keywords_stat_files = {collocate: numpy.array(stats_files)[:, 4]
-                                   for collocate, stats_files in keywords_stats_files.items()}
+                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 4]
+                                   for keyword, stats_files in keywords_stats_files.items()}
 
                     label_y = col_text_dispersion
 
                 wordless_plot.wordless_plot_keyness(main, keywords_stat_files,
                                                     ref_file = ref_file,
-                                                    plot_type = settings['plot_settings']['plot_type'],
-                                                    use_file = settings['plot_settings']['use_file'],
-                                                    rank_min = settings['plot_settings']['rank_min'],
-                                                    rank_max = settings['plot_settings']['rank_max'],
+                                                    settings = settings['plot_settings'],
                                                     label_y = label_y)
 
             wordless_message.wordless_message_generate_plot_success(main)

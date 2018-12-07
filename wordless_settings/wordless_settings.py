@@ -1029,6 +1029,18 @@ class Wordless_Settings(QDialog):
     def init_settings_statistical_significance(self):
         self.settings_statistical_significance = QWidget(self)
 
+        # z-score
+        group_box_z_score = QGroupBox(self.tr('z-score'), self)
+
+        (self.label_z_score_direction,
+         self.combo_box_z_score_direction) = wordless_widgets.wordless_widgets_direction_2(self)
+
+        group_box_z_score.setLayout(QGridLayout())
+        group_box_z_score.layout().addWidget(self.label_z_score_direction, 0, 0)
+        group_box_z_score.layout().addWidget(self.combo_box_z_score_direction, 0, 1)
+
+        group_box_z_score.layout().setColumnStretch(2, 1)
+
         # Student's t-test (Two-sample)
         group_box_students_t_test_two_sample = QGroupBox(self.tr('Student\'s t-test (Two-sample)'), self)
 
@@ -1118,12 +1130,13 @@ class Wordless_Settings(QDialog):
         group_box_mann_whitney_u_test.layout().setColumnStretch(3, 1)
 
         self.settings_statistical_significance.setLayout(QGridLayout())
-        self.settings_statistical_significance.layout().addWidget(group_box_students_t_test_two_sample, 0, 0)
-        self.settings_statistical_significance.layout().addWidget(group_box_pearsons_chi_squared_test, 1, 0)
-        self.settings_statistical_significance.layout().addWidget(group_box_fishers_exact_test, 2, 0)
-        self.settings_statistical_significance.layout().addWidget(group_box_mann_whitney_u_test, 3, 0)
+        self.settings_statistical_significance.layout().addWidget(group_box_z_score, 0, 0)
+        self.settings_statistical_significance.layout().addWidget(group_box_students_t_test_two_sample, 1, 0)
+        self.settings_statistical_significance.layout().addWidget(group_box_pearsons_chi_squared_test, 2, 0)
+        self.settings_statistical_significance.layout().addWidget(group_box_fishers_exact_test, 3, 0)
+        self.settings_statistical_significance.layout().addWidget(group_box_mann_whitney_u_test, 4, 0)
 
-        self.settings_statistical_significance.layout().setRowStretch(4, 1)
+        self.settings_statistical_significance.layout().setRowStretch(5, 1)
 
     def init_settings_effect_size(self):
         self.settings_effect_size = QWidget(self)
@@ -1224,6 +1237,8 @@ class Wordless_Settings(QDialog):
         self.checkbox_use_same_settings_dispersion.setChecked(settings['measures']['adjusted_freq']['general']['use_same_settings_dispersion'])
 
         # Measures -> Statistical Significance
+        self.combo_box_z_score_direction.setCurrentText(settings['measures']['statistical_significance']['z_score']['direction'])
+
         self.spin_box_students_t_test_two_sample_number_sections.setValue(settings['measures']['statistical_significance']['students_t_test_two_sample']['number_sections'])
         self.combo_box_students_t_test_two_sample_use_data.setCurrentText(settings['measures']['statistical_significance']['students_t_test_two_sample']['use_data'])
         self.combo_box_students_t_test_two_sample_variances.setCurrentText(settings['measures']['statistical_significance']['students_t_test_two_sample']['variances'])
@@ -1344,6 +1359,8 @@ class Wordless_Settings(QDialog):
             settings['measures']['adjusted_freq']['general']['ues_same_settings_dispersion'] = self.checkbox_use_same_settings_dispersion.isChecked()
 
             # Measures -> Statistical Significance
+            settings['measures']['statistical_significance']['z_score']['direction'] = self.combo_box_z_score_direction.currentText()
+
             settings['measures']['statistical_significance']['students_t_test_two_sample']['number_sections'] = self.spin_box_students_t_test_two_sample_number_sections.value()
             settings['measures']['statistical_significance']['students_t_test_two_sample']['use_data'] = self.combo_box_students_t_test_two_sample_use_data.currentText()
             settings['measures']['statistical_significance']['students_t_test_two_sample']['variances'] = self.combo_box_students_t_test_two_sample_variances.currentText()

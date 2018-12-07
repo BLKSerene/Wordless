@@ -392,13 +392,15 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         self.group_box_inclusion.layout().addWidget(wordless_layout.Wordless_Separator(self), 8, 0, 1, 4)
 
         self.group_box_inclusion.layout().addWidget(self.label_inclusion_context_window, 9, 0, 1, 3)
-        self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_context_window_sync, 9, 3)
+        self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_context_window_sync, 9, 3, Qt.AlignRight)
         self.group_box_inclusion.layout().addWidget(self.label_inclusion_context_window_left, 10, 0)
         self.group_box_inclusion.layout().addWidget(self.spin_box_inclusion_context_window_left, 10, 1)
         self.group_box_inclusion.layout().addWidget(self.label_inclusion_context_window_right, 10, 2)
         self.group_box_inclusion.layout().addWidget(self.spin_box_inclusion_context_window_right, 10, 3)
 
         self.group_box_inclusion.layout().setRowStretch(11, 1)
+        self.group_box_inclusion.layout().setColumnStretch(1, 1)
+        self.group_box_inclusion.layout().setColumnStretch(3, 1)
 
         # Exclusion
         self.group_box_exclusion = QGroupBox(self.tr('Exclusion'), self)
@@ -464,13 +466,15 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         self.group_box_exclusion.layout().addWidget(wordless_layout.Wordless_Separator(self), 8, 0, 1, 4)
 
         self.group_box_exclusion.layout().addWidget(self.label_exclusion_context_window, 9, 0, 1, 3)
-        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_context_window_sync, 9, 3)
+        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_context_window_sync, 9, 3, Qt.AlignRight)
         self.group_box_exclusion.layout().addWidget(self.label_exclusion_context_window_left, 10, 0)
         self.group_box_exclusion.layout().addWidget(self.spin_box_exclusion_context_window_left, 10, 1)
         self.group_box_exclusion.layout().addWidget(self.label_exclusion_context_window_right, 10, 2)
         self.group_box_exclusion.layout().addWidget(self.spin_box_exclusion_context_window_right, 10, 3)
 
         self.group_box_exclusion.layout().setRowStretch(11, 1)
+        self.group_box_exclusion.layout().setColumnStretch(1, 1)
+        self.group_box_exclusion.layout().setColumnStretch(3, 1)
 
         self.button_restore_default_settings = QPushButton(self.tr('Restore Default Settings'), self)
         self.button_ok = QPushButton(self.tr('OK'), self)

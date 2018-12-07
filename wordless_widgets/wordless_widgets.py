@@ -72,7 +72,7 @@ def wordless_widgets_token_settings(main):
 def wordless_widgets_search_settings(main):
     def multi_search_mode_changed():
         if checkbox_multi_search_mode.isChecked():
-            label_search_term.setText(main.tr('Search Term(s):'))
+            label_search_term.setText(main.tr('Search Terms:'))
 
             if line_edit_search_term.text() and list_search_terms.count() == 0:
                 list_search_terms.add_item(line_edit_search_term.text())
@@ -603,5 +603,14 @@ def wordless_widgets_direction(parent):
     combo_box_direction.addItems([parent.tr('Two-tailed'),
                                   parent.tr('Left-tailed'),
                                   parent.tr('Right-tailed')])
+
+    return label_direction, combo_box_direction
+
+def wordless_widgets_direction_2(parent):
+    label_direction = QLabel(parent.tr('Direction:'), parent)
+    combo_box_direction = wordless_box.Wordless_Combo_Box(parent)
+
+    combo_box_direction.addItems([parent.tr('Two-tailed'),
+                                  parent.tr('One-tailed')])
 
     return label_direction, combo_box_direction
