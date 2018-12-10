@@ -120,7 +120,9 @@ def wordless_widgets_context_settings(main, tab):
     label_context_settings = QLabel(main.tr('Context Settings:'), main)
     button_context_settings = QPushButton(main.tr('Settings...'), main)
 
-    button_context_settings.clicked.connect(lambda: wordless_dialog.Wordless_Dialog_Context_Settings(main, tab = tab))
+    main.__dict__[f'wordless_context_settings_{tab}'] = wordless_dialog.Wordless_Dialog_Context_Settings(main, tab = tab)
+
+    button_context_settings.clicked.connect(main.__dict__[f'wordless_context_settings_{tab}'].load)
 
     return label_context_settings, button_context_settings
 

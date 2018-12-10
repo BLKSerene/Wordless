@@ -493,11 +493,9 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         self.layout().setColumnStretch(0, 1)
         self.layout().setColumnStretch(1, 1)
 
-        self.load_settings()
-
         self.multi_search_mode_changed()
 
-        self.exec_()
+        self.load_settings()
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -506,127 +504,125 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
             settings = copy.deepcopy(self.settings)
 
         # Inclusion
-        self.group_box_inclusion.setChecked(settings['inclusion'])
+        self.group_box_inclusion.setChecked(settings['inclusion']['inclusion'])
 
-        self.checkbox_inclusion_multi_search_mode.setChecked(settings['inclusion_multi_search_mode'])
+        self.checkbox_inclusion_multi_search_mode.setChecked(settings['inclusion']['multi_search_mode'])
 
-        if not defaults:
-            self.line_edit_inclusion_search_term.setText(settings['inclusion_search_term'])
+        self.line_edit_inclusion_search_term.setText(settings['inclusion']['search_term'])
 
-            self.list_inclusion_search_terms.clear()
+        self.list_inclusion_search_terms.clear()
 
-            for search_term in settings['inclusion_search_terms']:
-                self.list_inclusion_search_terms.add_item(search_term)
+        for search_term in settings['inclusion']['search_terms']:
+            self.list_inclusion_search_terms.add_item(search_term)
 
-        self.checkbox_inclusion_ignore_case.setChecked(settings['inclusion_ignore_case'])
-        self.checkbox_inclusion_match_inflected_forms.setChecked(settings['inclusion_match_inflected_forms'])
-        self.checkbox_inclusion_match_whole_word.setChecked(settings['inclusion_match_whole_word'])
-        self.checkbox_inclusion_use_regex.setChecked(settings['inclusion_use_regex'])
+        self.checkbox_inclusion_ignore_case.setChecked(settings['inclusion']['ignore_case'])
+        self.checkbox_inclusion_match_inflected_forms.setChecked(settings['inclusion']['match_inflected_forms'])
+        self.checkbox_inclusion_match_whole_word.setChecked(settings['inclusion']['match_whole_word'])
+        self.checkbox_inclusion_use_regex.setChecked(settings['inclusion']['use_regex'])
 
-        self.checkbox_inclusion_context_window_sync.setChecked(settings['inclusion_context_window_sync'])
+        self.checkbox_inclusion_context_window_sync.setChecked(settings['inclusion']['context_window_sync'])
 
-        if settings['inclusion_context_window_left'] < 0:
+        if settings['inclusion']['context_window_left'] < 0:
             self.spin_box_inclusion_context_window_left.setPrefix('L')
-            self.spin_box_inclusion_context_window_left.setValue(-settings['inclusion_context_window_left'])
+            self.spin_box_inclusion_context_window_left.setValue(-settings['inclusion']['context_window_left'])
         else:
             self.spin_box_inclusion_context_window_left.setPrefix('R')
-            self.spin_box_inclusion_context_window_left.setValue(settings['inclusion_context_window_left'])
+            self.spin_box_inclusion_context_window_left.setValue(settings['inclusion']['context_window_left'])
 
-        if settings['inclusion_context_window_right'] < 0:
+        if settings['inclusion']['context_window_right'] < 0:
             self.spin_box_inclusion_context_window_right.setPrefix('L')
-            self.spin_box_inclusion_context_window_right.setValue(-settings['inclusion_context_window_right'])
+            self.spin_box_inclusion_context_window_right.setValue(-settings['inclusion']['context_window_right'])
         else:
             self.spin_box_inclusion_context_window_right.setPrefix('R')
-            self.spin_box_inclusion_context_window_right.setValue(settings['inclusion_context_window_right'])
+            self.spin_box_inclusion_context_window_right.setValue(settings['inclusion']['context_window_right'])
 
         self.line_edit_inclusion_search_term.returnPressed.connect(self.button_ok.click)
 
         # Exclusion
-        self.group_box_exclusion.setChecked(settings['exclusion'])
+        self.group_box_exclusion.setChecked(settings['exclusion']['exclusion'])
 
-        self.checkbox_exclusion_multi_search_mode.setChecked(settings['exclusion_multi_search_mode'])
+        self.checkbox_exclusion_multi_search_mode.setChecked(settings['exclusion']['multi_search_mode'])
 
-        if not defaults:
-            self.line_edit_exclusion_search_term.setText(settings['exclusion_search_term'])
+        self.line_edit_exclusion_search_term.setText(settings['exclusion']['search_term'])
 
-            self.list_exclusion_search_terms.clear()
+        self.list_exclusion_search_terms.clear()
 
-            for search_term in settings['exclusion_search_terms']:
-                self.list_exclusion_search_terms.add_item(search_term)
+        for search_term in settings['exclusion']['search_terms']:
+            self.list_exclusion_search_terms.add_item(search_term)
 
-        self.checkbox_exclusion_ignore_case.setChecked(settings['exclusion_ignore_case'])
-        self.checkbox_exclusion_match_inflected_forms.setChecked(settings['exclusion_match_inflected_forms'])
-        self.checkbox_exclusion_match_whole_word.setChecked(settings['exclusion_match_whole_word'])
-        self.checkbox_exclusion_use_regex.setChecked(settings['exclusion_use_regex'])
+        self.checkbox_exclusion_ignore_case.setChecked(settings['exclusion']['ignore_case'])
+        self.checkbox_exclusion_match_inflected_forms.setChecked(settings['exclusion']['match_inflected_forms'])
+        self.checkbox_exclusion_match_whole_word.setChecked(settings['exclusion']['match_whole_word'])
+        self.checkbox_exclusion_use_regex.setChecked(settings['exclusion']['use_regex'])
 
-        self.checkbox_exclusion_context_window_sync.setChecked(settings['exclusion_context_window_sync'])
+        self.checkbox_exclusion_context_window_sync.setChecked(settings['exclusion']['context_window_sync'])
 
-        if settings['exclusion_context_window_left'] < 0:
+        if settings['exclusion']['context_window_left'] < 0:
             self.spin_box_exclusion_context_window_left.setPrefix('L')
-            self.spin_box_exclusion_context_window_left.setValue(-settings['exclusion_context_window_left'])
+            self.spin_box_exclusion_context_window_left.setValue(-settings['exclusion']['context_window_left'])
         else:
             self.spin_box_exclusion_context_window_left.setPrefix('R')
-            self.spin_box_exclusion_context_window_left.setValue(settings['exclusion_context_window_left'])
+            self.spin_box_exclusion_context_window_left.setValue(settings['exclusion']['context_window_left'])
             
-        if settings['exclusion_context_window_right'] < 0:
+        if settings['exclusion']['context_window_right'] < 0:
             self.spin_box_exclusion_context_window_right.setPrefix('L')
-            self.spin_box_exclusion_context_window_right.setValue(-settings['exclusion_context_window_right'])
+            self.spin_box_exclusion_context_window_right.setValue(-settings['exclusion']['context_window_right'])
         else:
             self.spin_box_exclusion_context_window_right.setPrefix('R')
-            self.spin_box_exclusion_context_window_right.setValue(settings['exclusion_context_window_right'])
+            self.spin_box_exclusion_context_window_right.setValue(settings['exclusion']['context_window_right'])
 
         self.line_edit_exclusion_search_term.returnPressed.connect(self.button_ok.click)
 
     def inclusion_changed(self):
-        self.settings['inclusion'] = self.group_box_inclusion.isChecked()
+        self.settings['inclusion']['inclusion'] = self.group_box_inclusion.isChecked()
 
-        self.settings['inclusion_multi_search_mode'] = self.checkbox_inclusion_multi_search_mode.isChecked()
-        self.settings['inclusion_search_term'] = self.line_edit_inclusion_search_term.text()
-        self.settings['inclusion_search_terms'] = self.list_inclusion_search_terms.get_items()
+        self.settings['inclusion']['multi_search_mode'] = self.checkbox_inclusion_multi_search_mode.isChecked()
+        self.settings['inclusion']['search_term'] = self.line_edit_inclusion_search_term.text()
+        self.settings['inclusion']['search_terms'] = self.list_inclusion_search_terms.get_items()
 
-        self.settings['inclusion_ignore_case'] = self.checkbox_inclusion_ignore_case.isChecked()
-        self.settings['inclusion_match_inflected_forms'] = self.checkbox_inclusion_match_inflected_forms.isChecked()
-        self.settings['inclusion_match_whole_word'] = self.checkbox_inclusion_match_whole_word.isChecked()
-        self.settings['inclusion_use_regex'] = self.checkbox_inclusion_use_regex.isChecked()
+        self.settings['inclusion']['ignore_case'] = self.checkbox_inclusion_ignore_case.isChecked()
+        self.settings['inclusion']['match_inflected_forms'] = self.checkbox_inclusion_match_inflected_forms.isChecked()
+        self.settings['inclusion']['match_whole_word'] = self.checkbox_inclusion_match_whole_word.isChecked()
+        self.settings['inclusion']['use_regex'] = self.checkbox_inclusion_use_regex.isChecked()
         
-        self.settings['inclusion_context_window_sync'] = self.checkbox_inclusion_context_window_sync.isChecked()
+        self.settings['inclusion']['context_window_sync'] = self.checkbox_inclusion_context_window_sync.isChecked()
 
         if self.spin_box_inclusion_context_window_left.prefix() == 'L':
-            self.settings['inclusion_context_window_left'] = -self.spin_box_inclusion_context_window_left.value()
+            self.settings['inclusion']['context_window_left'] = -self.spin_box_inclusion_context_window_left.value()
         else:
-            self.settings['inclusion_context_window_left'] = self.spin_box_inclusion_context_window_left.value()
+            self.settings['inclusion']['context_window_left'] = self.spin_box_inclusion_context_window_left.value()
             
         if self.spin_box_inclusion_context_window_right.prefix() == 'L':
-            self.settings['inclusion_context_window_right'] = -self.spin_box_inclusion_context_window_right.value()
+            self.settings['inclusion']['context_window_right'] = -self.spin_box_inclusion_context_window_right.value()
         else:
-            self.settings['inclusion_context_window_right'] = self.spin_box_inclusion_context_window_right.value()
+            self.settings['inclusion']['context_window_right'] = self.spin_box_inclusion_context_window_right.value()
 
     def exclusion_changed(self):
-        self.settings['exclusion'] = self.group_box_exclusion.isChecked()
+        self.settings['exclusion']['exclusion'] = self.group_box_exclusion.isChecked()
 
-        self.settings['exclusion_multi_search_mode'] = self.checkbox_exclusion_multi_search_mode.isChecked()
-        self.settings['exclusion_search_term'] = self.line_edit_exclusion_search_term.text()
-        self.settings['exclusion_search_terms'] = self.list_exclusion_search_terms.get_items()
+        self.settings['exclusion']['multi_search_mode'] = self.checkbox_exclusion_multi_search_mode.isChecked()
+        self.settings['exclusion']['search_term'] = self.line_edit_exclusion_search_term.text()
+        self.settings['exclusion']['search_terms'] = self.list_exclusion_search_terms.get_items()
 
-        self.settings['exclusion_ignore_case'] = self.checkbox_exclusion_ignore_case.isChecked()
-        self.settings['exclusion_match_inflected_forms'] = self.checkbox_exclusion_match_inflected_forms.isChecked()
-        self.settings['exclusion_match_whole_word'] = self.checkbox_exclusion_match_whole_word.isChecked()
-        self.settings['exclusion_use_regex'] = self.checkbox_exclusion_use_regex.isChecked()
+        self.settings['exclusion']['ignore_case'] = self.checkbox_exclusion_ignore_case.isChecked()
+        self.settings['exclusion']['match_inflected_forms'] = self.checkbox_exclusion_match_inflected_forms.isChecked()
+        self.settings['exclusion']['match_whole_word'] = self.checkbox_exclusion_match_whole_word.isChecked()
+        self.settings['exclusion']['use_regex'] = self.checkbox_exclusion_use_regex.isChecked()
         
-        self.settings['exclusion_context_window_sync'] = self.checkbox_exclusion_context_window_sync.isChecked()
+        self.settings['exclusion']['context_window_sync'] = self.checkbox_exclusion_context_window_sync.isChecked()
         
         if self.spin_box_exclusion_context_window_left.prefix() == 'L':
-            self.settings['exclusion_context_window_left'] = -self.spin_box_exclusion_context_window_left.value()
+            self.settings['exclusion']['context_window_left'] = -self.spin_box_exclusion_context_window_left.value()
         else:
-            self.settings['exclusion_context_window_left'] = self.spin_box_exclusion_context_window_left.value()
+            self.settings['exclusion']['context_window_left'] = self.spin_box_exclusion_context_window_left.value()
             
         if self.spin_box_exclusion_context_window_right.prefix() == 'L':
-            self.settings['exclusion_context_window_right'] = -self.spin_box_exclusion_context_window_right.value()
+            self.settings['exclusion']['context_window_right'] = -self.spin_box_exclusion_context_window_right.value()
         else:
-            self.settings['exclusion_context_window_right'] = self.spin_box_exclusion_context_window_right.value()
+            self.settings['exclusion']['context_window_right'] = self.spin_box_exclusion_context_window_right.value()
 
     def multi_search_mode_changed(self):
-        if self.settings['inclusion_multi_search_mode'] or self.settings['exclusion_multi_search_mode']:
+        if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
             self.setFixedSize(500, 440)
         else:
             self.setFixedSize(500, 290)
@@ -636,3 +632,6 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
 
         if reply == QMessageBox.Yes:
             self.load_settings(defaults = True)
+
+    def load(self):
+        self.exec_()

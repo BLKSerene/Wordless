@@ -18,6 +18,7 @@ import nltk
 import numpy
 
 from wordless_measures import *
+from wordless_plot import *
 from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
@@ -172,6 +173,10 @@ def init(main):
         spin_box_keyword_position_max.setValue(settings['search_settings']['keyword_position_max'])
         checkbox_keyword_position_max_no_limit.setChecked(settings['search_settings']['keyword_position_max_no_limit'])
 
+        # Context Settings
+        if defaults:
+            main.wordless_context_settings_ngrams.load_settings(defaults = True)
+
         # Generation Settings
         checkbox_ngram_size_sync.setChecked(settings['generation_settings']['ngram_size_sync'])
         spin_box_ngram_size_min.setValue(settings['generation_settings']['ngram_size_min'])
@@ -229,6 +234,7 @@ def init(main):
         token_settings_changed()
         search_settings_changed()
         generation_settings_changed()
+        ngram_size_max_changed()
         measures_changed()
         table_settings_changed()
         plot_settings_changed()
@@ -282,6 +288,9 @@ def init(main):
 
         settings['measure_dispersion'] = combo_box_measure_dispersion.currentText()
         settings['measure_adjusted_freq'] = combo_box_measure_adjusted_freq.currentText()
+
+    def ngram_size_max_changed():
+        settings = main.settings_custom['ngrams']['generation_settings']
 
         if spin_box_keyword_position_max.value() == spin_box_keyword_position_max.maximum():
             spin_box_keyword_position_min.setMaximum(settings['ngram_size_max'])
@@ -430,10 +439,6 @@ def init(main):
     # Search Settings
     group_box_search_settings = QGroupBox(main.tr('Search Settings'), main)
 
-    group_box_search_settings.setCheckable(True)
-
-    group_box_search_settings.toggled.connect(search_settings_changed)
-
     (label_search_term,
      checkbox_multi_search_mode,
      line_edit_search_term,
@@ -454,6 +459,10 @@ def init(main):
 
     (label_context_settings,
      button_context_settings) = wordless_widgets.wordless_widgets_context_settings(main, tab = 'ngrams')
+
+    group_box_search_settings.setCheckable(True)
+
+    group_box_search_settings.toggled.connect(search_settings_changed)
 
     checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
     line_edit_search_term.textChanged.connect(search_settings_changed)
@@ -541,6 +550,7 @@ def init(main):
     checkbox_ngram_size_sync.stateChanged.connect(generation_settings_changed)
     spin_box_ngram_size_min.valueChanged.connect(generation_settings_changed)
     spin_box_ngram_size_max.valueChanged.connect(generation_settings_changed)
+    spin_box_ngram_size_max.valueChanged.connect(ngram_size_max_changed)
     spin_box_allow_skipped_tokens.valueChanged.connect(generation_settings_changed)
 
     combo_box_measure_dispersion.currentTextChanged.connect(generation_settings_changed)
@@ -817,29 +827,6 @@ def generate_ngrams(main, files):
 
     settings = main.settings_custom['ngrams']
 
-    if settings['search_settings']['multi_search_mode']:
-        search_terms = settings['search_settings']['search_terms']
-    else:
-        search_terms = [settings['search_settings']['search_term']]
-
-    if settings['context_settings']['inclusion']:
-        if settings['context_settings']['inclusion_multi_search_mode']:
-            search_terms_inclusion = settings['context_settings']['inclusion_search_terms']
-        else:
-            if settings['context_settings']['inclusion_search_term']:
-                search_terms_inclusion = [settings['context_settings']['inclusion_search_term']]
-            else:
-                search_terms_inclusion = []
-
-    if settings['context_settings']['exclusion']:
-        if settings['context_settings']['exclusion_multi_search_mode']:
-            search_terms_exclusion = settings['context_settings']['exclusion_search_terms']
-        else:
-            if settings['context_settings']['exclusion_search_term']:
-                search_terms_exclusion = [settings['context_settings']['exclusion_search_term']]
-            else:
-                search_terms_exclusion = []
-
     # Frequency
     for file in files:
         ngrams = []
@@ -850,32 +837,10 @@ def generate_ngrams(main, files):
                                                                           lang_code = text.lang_code,
                                                                           settings = settings['token_settings'])
 
-        search_terms_file = text.match_search_terms(search_terms,
-                                                    settings['token_settings']['puncs'],
-                                                    settings['search_settings']['ignore_case'],
-                                                    settings['search_settings']['match_inflected_forms'],
-                                                    settings['search_settings']['match_whole_word'],
-                                                    settings['search_settings']['use_regex'])
-
-        if settings['context_settings']['inclusion'] and search_terms_inclusion:
-            search_terms_inclusion_file = text.match_search_terms(search_terms_inclusion,
-                                                                  settings['token_settings']['puncs'],
-                                                                  settings['search_settings']['ignore_case'],
-                                                                  settings['search_settings']['match_inflected_forms'],
-                                                                  settings['search_settings']['match_whole_word'],
-                                                                  settings['search_settings']['use_regex'])
-        else:
-            search_terms_inclusion_file = []
-
-        if settings['context_settings']['exclusion'] and search_terms_exclusion:
-            search_terms_exclusion_file = text.match_search_terms(search_terms_exclusion,
-                                                                  settings['token_settings']['puncs'],
-                                                                  settings['search_settings']['ignore_case'],
-                                                                  settings['search_settings']['match_inflected_forms'],
-                                                                  settings['search_settings']['match_whole_word'],
-                                                                  settings['search_settings']['use_regex'])
-        else:
-            search_terms_exclusion_file = []
+        (search_terms_inclusion,
+         search_terms_exclusion) = wordless_matching.match_search_terms_context(main, text.tokens,
+                                                                                lang_code = text.lang_code,
+                                                                                settings = settings['context_settings'])
 
         if settings['generation_settings']['allow_skipped_tokens'] == 0:
             for ngram_size in range(settings['generation_settings']['ngram_size_min'],
@@ -883,8 +848,8 @@ def generate_ngrams(main, files):
                 for i, ngram in enumerate(nltk.ngrams(text.tokens, ngram_size)):
                     if wordless_text_utils.check_context(i, text.tokens,
                                                          settings = settings['context_settings'],
-                                                         search_terms_inclusion = search_terms_inclusion_file,
-                                                         search_terms_exclusion = search_terms_exclusion_file):
+                                                         search_terms_inclusion = search_terms_inclusion,
+                                                         search_terms_exclusion = search_terms_exclusion):
                         ngrams.append(ngram)
             
         else:
@@ -926,16 +891,16 @@ def generate_ngrams(main, files):
                                             if skip_tail and skip_tail[-1] != SENTINEL and len(ngram_matched) == ngram_size:
                                                 if wordless_text_utils.check_context(i + j, text.tokens,
                                                                                      settings = settings['context_settings'],
-                                                                                     search_terms_inclusion = search_terms_inclusion_file,
-                                                                                     search_terms_exclusion = search_terms_exclusion_file):
+                                                                                     search_terms_inclusion = search_terms_inclusion,
+                                                                                     search_terms_exclusion = search_terms_exclusion):
                                                     ngrams.append(tuple(ngram_matched))
                         elif len_search_term == ngram_size:
                             for i, ngram in enumerate(nltk.ngrams(text.tokens, ngram_size)):
                                 if ngram == search_term:
                                     if wordless_text_utils.check_context(i, text.tokens,
                                                                          settings = settings['context_settings'],
-                                                                         search_terms_inclusion = search_terms_inclusion_file,
-                                                                         search_terms_exclusion = search_terms_exclusion_file):
+                                                                         search_terms_inclusion = search_terms_inclusion,
+                                                                         search_terms_exclusion = search_terms_exclusion):
                                         ngrams.append(ngram)
             else:
                 for ngram_size in range(settings['generation_settings']['ngram_size_min'],
@@ -952,8 +917,8 @@ def generate_ngrams(main, files):
                                 if skip_tail != SENTINEL:
                                     if wordless_text_utils.check_context(i + j, text.tokens,
                                                                          settings = settings['context_settings'],
-                                                                         search_terms_inclusion = search_terms_inclusion_file,
-                                                                         search_terms_exclusion = search_terms_exclusion_file):
+                                                                         search_terms_inclusion = search_terms_inclusion,
+                                                                         search_terms_exclusion = search_terms_exclusion):
                                         ngrams.append((head, skip_tail))
 
         ngrams_freq_file = collections.Counter(ngrams)
@@ -963,6 +928,10 @@ def generate_ngrams(main, files):
                                                                                      settings = settings['token_settings'])
 
         # Filter search terms
+        search_terms = wordless_matching.match_search_terms(main, text.tokens,
+                                                            lang_code = text.lang_code,
+                                                            settings = settings['search_settings'])
+
         if settings['search_settings']['search_settings']:
             ngrams_freq_file_filtered = {}
 
@@ -976,11 +945,11 @@ def generate_ngrams(main, files):
             else:
                 keyword_position_max = settings['search_settings']['keyword_position_max'] - 1
 
-            for search_term in search_terms_file:
+            for search_term in search_terms:
                 len_search_term = len(search_term)
 
                 for ngram, freq in ngrams_freq_file.items():
-                    for i in range(keyword_position_min, keyword_position_max):
+                    for i in range(keyword_position_min, keyword_position_max + 1):
                         if ngram[i : i + len_search_term] == search_term:
                             ngrams_freq_file_filtered[ngram] = freq
 
@@ -1212,9 +1181,9 @@ def generate_plot(main):
                     ngrams_freq_files = {ngrams_text[ngram]: freqs
                                          for ngram, freqs in ngrams_freq_files.items()}
 
-                    wordless_plot.wordless_plot_freq(main, ngrams_freq_files,
-                                                     settings = settings['plot_settings'],
-                                                     label_x = main.tr('N-grams'))
+                    wordless_plot_freq.wordless_plot_freq(main, ngrams_freq_files,
+                                                          settings = settings['plot_settings'],
+                                                          label_x = main.tr('N-grams'))
                 else:
                     ngrams_stats_files = {ngrams_text[ngram]: stats
                                           for ngram, stats in ngrams_stats_files.items()}
@@ -1230,10 +1199,10 @@ def generate_plot(main):
 
                         label_y = col_text_adjusted_freq
 
-                    wordless_plot.wordless_plot_stat(main, ngrams_stat_files,
-                                                     settings = settings['plot_settings'],
-                                                     label_x = main.tr('N-grams'),
-                                                     label_y = label_y)
+                    wordless_plot_stat.wordless_plot_stat(main, ngrams_stat_files,
+                                                          settings = settings['plot_settings'],
+                                                          label_x = main.tr('N-grams'),
+                                                          label_y = label_y)
 
                 wordless_message.wordless_message_generate_plot_success(main)
             else:

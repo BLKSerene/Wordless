@@ -18,6 +18,7 @@ import nltk
 import numpy
 
 from wordless_measures import *
+from wordless_plot import *
 from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
@@ -236,14 +237,20 @@ def init(main):
         checkbox_match_whole_word.setChecked(settings['search_settings']['match_whole_word'])
         checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
 
+        # Context Settings
+        if defaults:
+            main.wordless_context_settings_collocation.load_settings(defaults = True)
+
         # Generation Settings
         checkbox_window_sync.setChecked(settings['generation_settings']['window_sync'])
+
         if settings['generation_settings']['window_left'] < 0:
             spin_box_window_left.setPrefix('L')
             spin_box_window_left.setValue(-settings['generation_settings']['window_left'])
         else:
             spin_box_window_left.setPrefix('R')
             spin_box_window_left.setValue(settings['generation_settings']['window_left'])
+
         if settings['generation_settings']['window_right'] < 0:
             spin_box_window_right.setPrefix('L')
             spin_box_window_right.setValue(-settings['generation_settings']['window_right'])
@@ -351,10 +358,12 @@ def init(main):
         settings = main.settings_custom['collocation']['generation_settings']
 
         settings['window_sync'] = checkbox_window_sync.isChecked()
+
         if spin_box_window_left.prefix() == 'L':
             settings['window_left'] = -spin_box_window_left.value()
         else:
             settings['window_left'] = spin_box_window_left.value()
+
         if spin_box_window_right.prefix() == 'L':
             settings['window_right'] = -spin_box_window_right.value()
         else:
@@ -574,10 +583,6 @@ def init(main):
     # Search Settings
     group_box_search_settings = QGroupBox(main.tr('Search Settings'), main)
 
-    group_box_search_settings.setCheckable(True)
-
-    group_box_search_settings.toggled.connect(search_settings_changed)
-
     (label_search_term,
      checkbox_multi_search_mode,
      line_edit_search_term,
@@ -590,6 +595,10 @@ def init(main):
 
     (label_context_settings,
      button_context_settings) = wordless_widgets.wordless_widgets_context_settings(main, tab = 'collocation')
+
+    group_box_search_settings.setCheckable(True)
+
+    group_box_search_settings.toggled.connect(search_settings_changed)
 
     checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
     line_edit_search_term.textChanged.connect(search_settings_changed)
@@ -983,35 +992,12 @@ def init(main):
 
 def generate_collocates(main, files):
     texts = []
-    ngrams_freq_files_sizes = []
+    ngrams_freq_files = []
     collocates_freqs_files = []
     collocates_stats_files = []
     nodes_text = {}
 
     settings = main.settings_custom['collocation']
-
-    if settings['search_settings']['multi_search_mode']:
-        search_terms = settings['search_settings']['search_terms']
-    else:
-        search_terms = [settings['search_settings']['search_term']]
-
-    if settings['context_settings']['inclusion']:
-        if settings['context_settings']['inclusion_multi_search_mode']:
-            search_terms_inclusion = settings['context_settings']['inclusion_search_terms']
-        else:
-            if settings['context_settings']['inclusion_search_term']:
-                search_terms_inclusion = [settings['context_settings']['inclusion_search_term']]
-            else:
-                search_terms_inclusion = []
-
-    if settings['context_settings']['exclusion']:
-        if settings['context_settings']['exclusion_multi_search_mode']:
-            search_terms_exclusion = settings['context_settings']['exclusion_search_terms']
-        else:
-            if settings['context_settings']['exclusion_search_term']:
-                search_terms_exclusion = [settings['context_settings']['exclusion_search_term']]
-            else:
-                search_terms_exclusion = []
 
     if settings['generation_settings']['window_left'] < 0 and settings['generation_settings']['window_right'] > 0:
         window_size_left = abs(settings['generation_settings']['window_left'])
@@ -1028,7 +1014,6 @@ def generate_collocates(main, files):
     # Frequency
     for i, file in enumerate(files):
         collocates_freqs_file = {}
-        ngrams_freq_file_sizes = {}
 
         text = wordless_text.Wordless_Text(main, file)
 
@@ -1036,36 +1021,18 @@ def generate_collocates(main, files):
                                                                           lang_code = text.lang_code,
                                                                           settings = settings['token_settings'])
 
-        search_terms_file = text.match_search_terms(search_terms,
-                                                    settings['token_settings']['puncs'],
-                                                    settings['search_settings']['ignore_case'],
-                                                    settings['search_settings']['match_inflected_forms'],
-                                                    settings['search_settings']['match_whole_word'],
-                                                    settings['search_settings']['use_regex'])
+        search_terms = wordless_matching.match_search_terms(main, text.tokens,
+                                                            lang_code = text.lang_code,
+                                                            settings = settings['search_settings'])
 
-        if settings['context_settings']['inclusion'] and search_terms_inclusion:
-            search_terms_inclusion_file = text.match_search_terms(search_terms_inclusion,
-                                                                  settings['token_settings']['puncs'],
-                                                                  settings['search_settings']['ignore_case'],
-                                                                  settings['search_settings']['match_inflected_forms'],
-                                                                  settings['search_settings']['match_whole_word'],
-                                                                  settings['search_settings']['use_regex'])
-        else:
-            search_terms_inclusion_file = []
+        (search_terms_inclusion,
+         search_terms_exclusion) = wordless_matching.match_search_terms_context(main, text.tokens,
+                                                                                lang_code = text.lang_code,
+                                                                                settings = settings['context_settings'])
 
-        if settings['context_settings']['exclusion'] and search_terms_exclusion:
-            search_terms_exclusion_file = text.match_search_terms(search_terms_exclusion,
-                                                                  settings['token_settings']['puncs'],
-                                                                  settings['search_settings']['ignore_case'],
-                                                                  settings['search_settings']['match_inflected_forms'],
-                                                                  settings['search_settings']['match_whole_word'],
-                                                                  settings['search_settings']['use_regex'])
-        else:
-            search_terms_exclusion_file = []
-
-        if search_terms_file:
-            len_search_term_min = min([len(search_term) for search_term in search_terms_file])
-            len_search_term_max = max([len(search_term) for search_term in search_terms_file])
+        if search_terms:
+            len_search_term_min = min([len(search_term) for search_term in search_terms])
+            len_search_term_max = max([len(search_term) for search_term in search_terms])
         else:
             len_search_term_min = 1
             len_search_term_max = 1
@@ -1075,8 +1042,8 @@ def generate_collocates(main, files):
                 for j, collocate in enumerate(reversed(text.tokens[max(0, i - window_size_left) : i])):
                     if wordless_text_utils.check_context(i, text.tokens,
                                                          settings = settings['context_settings'],
-                                                         search_terms_inclusion = search_terms_inclusion_file,
-                                                         search_terms_exclusion = search_terms_exclusion_file):
+                                                         search_terms_inclusion = search_terms_inclusion,
+                                                         search_terms_exclusion = search_terms_exclusion):
                         if (ngram, collocate) not in collocates_freqs_file:
                             collocates_freqs_file[(ngram, collocate)] = [0] * window_size
 
@@ -1085,8 +1052,8 @@ def generate_collocates(main, files):
                 for j, collocate in enumerate(text.tokens[i + ngram_size: i + ngram_size + window_size_right]):
                     if wordless_text_utils.check_context(i, text.tokens,
                                                          settings = settings['context_settings'],
-                                                         search_terms_inclusion = search_terms_inclusion_file,
-                                                         search_terms_exclusion = search_terms_exclusion_file):
+                                                         search_terms_inclusion = search_terms_inclusion,
+                                                         search_terms_exclusion = search_terms_exclusion):
                         if (ngram, collocate) not in collocates_freqs_file:
                             collocates_freqs_file[(ngram, collocate)] = [0] * window_size
 
@@ -1100,7 +1067,7 @@ def generate_collocates(main, files):
         if settings['search_settings']['search_settings']:
             collocates_freqs_file_filtered = {}
 
-            for search_term in search_terms_file:
+            for search_term in search_terms:
                 len_search_term = len(search_term)
 
                 for (node, collocate), freqs in collocates_freqs_file.items():
@@ -1113,13 +1080,8 @@ def generate_collocates(main, files):
             collocates_freqs_files.append(collocates_freqs_file)
 
         # Frequency (N-grams)
-        for i in range(len_search_term_min, len_search_term_max + 1):
-            ngrams_freq_file_sizes[i] = collections.Counter(nltk.ngrams(text.tokens, i))
-
-        if 1 not in ngrams_freq_file_sizes:
-            ngrams_freq_file_sizes[1] = collections.Counter(text.tokens)
-
-        ngrams_freq_files_sizes.append(ngrams_freq_file_sizes)
+        for i in {1} | set(range(len_search_term_min, len_search_term_max + 1)):
+            ngrams_freq_files.append(collections.Counter(nltk.ngrams(text.tokens, i)))
 
         # Nodes Text
         for (node, collocate) in collocates_freqs_file:
@@ -1129,18 +1091,13 @@ def generate_collocates(main, files):
 
     # Total
     if len(files) > 1:
-        ngrams_freq_total_sizes = {}
         collocates_freqs_total = {}
 
         text_total = wordless_text.Wordless_Text(main, files[0])
         text_total.tokens = [token for text in texts for token in text.tokens]
 
-        for ngram_size in ngrams_freq_files_sizes[0]:
-            ngrams_freq_total_sizes[ngram_size] = sum([ngrams_freq_file_sizes[ngram_size]
-                                                       for ngrams_freq_file_sizes in ngrams_freq_files_sizes],
-                                                      collections.Counter())
-
-        ngrams_freq_files_sizes.append(ngrams_freq_total_sizes)
+        texts.append(text_total)
+        ngrams_freq_files.append(sum(ngrams_freq_files, collections.Counter()))
 
         for collocates_freqs_file in collocates_freqs_files:
             for collocate, freqs in collocates_freqs_file.items():
@@ -1160,10 +1117,12 @@ def generate_collocates(main, files):
 
     collocates_total = collocates_freqs_files[-1].keys()
 
-    for ngrams_freq_file_sizes, collocates_freqs_file in zip(ngrams_freq_files_sizes, collocates_freqs_files):
+    for text, ngrams_freq_file, collocates_freqs_file in zip(texts,
+                                                             ngrams_freq_files,
+                                                             collocates_freqs_files):
         collocates_stats_file = {}
 
-        len_tokens = sum(list(ngrams_freq_file_sizes[1].values()))
+        len_tokens = len(text.tokens)
 
         for node, collocate in collocates_total:
             len_node = len(node)
@@ -1173,9 +1132,9 @@ def generate_collocates(main, files):
             else:
                 c11 = 0
 
-            c12 = max(0, ngrams_freq_file_sizes[len_node][node] - c11)
-            c21 = max(0, ngrams_freq_file_sizes[1][collocate] - c11)
-            c22 = max(0, len_tokens - c11 - c12 - c21)
+            c12 = max(0, ngrams_freq_file[node] - c11)
+            c21 = max(0, ngrams_freq_file[(collocate,)] - c11)
+            c22 = len_tokens - c11 - c12 - c21
 
             collocates_stats_file[(node, collocate)] = test_significance(main, c11, c12, c21, c22)
             collocates_stats_file[(node, collocate)].append(measure_effect_size(main, c11, c12, c21, c22))
@@ -1419,16 +1378,16 @@ def generate_plot(main):
                     collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
                                              for (node, collocate), freqs in collocates_freqs_files.items()}
 
-                    wordless_plot.wordless_plot_freq(main, collocates_freq_files,
-                                                     settings = settings['plot_settings'],
-                                                     label_x = main.tr('Collocates'))
+                    wordless_plot_freq.wordless_plot_freq(main, collocates_freq_files,
+                                                          settings = settings['plot_settings'],
+                                                          label_x = main.tr('Collocates'))
                 elif settings['plot_settings']['use_data'] == main.tr('Frequency'):
                     collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
                                              for (node, collocate), freqs in collocates_freqs_files.items()}
 
-                    wordless_plot.wordless_plot_freq(main, collocates_freq_files,
-                                                     settings = settings['plot_settings'],
-                                                     label_x = main.tr('Collocates'))
+                    wordless_plot_freq.wordless_plot_freq(main, collocates_freq_files,
+                                                          settings = settings['plot_settings'],
+                                                          label_x = main.tr('Collocates'))
                 else:
                     collocates_stats_files = {', '.join([nodes_text[node], collocate]): freqs
                                               for (node, collocate), freqs in collocates_stats_files.items()}
@@ -1454,10 +1413,10 @@ def generate_plot(main):
 
                         label_y = col_text_effect_size
 
-                    wordless_plot.wordless_plot_stat(main, collocates_stat_files,
-                                                     settings = settings['plot_settings'],
-                                                     label_x = main.tr('Collocates'),
-                                                     label_y = label_y)
+                    wordless_plot_stat.wordless_plot_stat(main, collocates_stat_files,
+                                                          settings = settings['plot_settings'],
+                                                          label_x = main.tr('Collocates'),
+                                                          label_y = label_y)
 
                 wordless_message.wordless_message_generate_plot_success(main)
             else:

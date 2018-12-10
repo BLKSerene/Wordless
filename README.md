@@ -3,7 +3,7 @@ An Integrated Corpus Tool for the Scientific Study of Language, Literature and T
 
 Designed and Developed by Ye Lei (叶磊)
 
-MA Student of Shanghai International Studies University
+MA Student in Interpreting Studies at Shanghai International Studies University (上海外国语大学)
 
 ## License/开源许可
     Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
@@ -41,7 +41,6 @@ GB (GB/T 7714—2015):
 If you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.
 
 若您需要更多信息或在使用 Wordless 的过程中遇到了任何问题，欢迎随时联系我，我会尽快给予回复。
-
 
 Home Page: https://github.com/BLKSerene/Wordless
 

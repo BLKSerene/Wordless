@@ -17,6 +17,7 @@ import nltk
 import numpy
 import matplotlib.pyplot
 
+from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
 
@@ -425,6 +426,10 @@ def init(main):
         checkbox_match_whole_word.setChecked(settings['search_settings']['match_whole_word'])
         checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
 
+        # Context Settings
+        if defaults:
+            main.wordless_context_settings_concordancer.load_settings(defaults = True)
+
         # Generation Settings
         spin_box_width_left_token.setValue(settings['generation_settings']['width_left_token'])
         spin_box_width_left_char.setValue(settings['generation_settings']['width_left_char'])
@@ -721,58 +726,8 @@ def generate_table(main, table):
 
             table.settings = main.settings_custom
 
-            if settings['search_settings']['multi_search_mode']:
-                search_terms = settings['search_settings']['search_terms']
-            else:
-                search_terms = [settings['search_settings']['search_term']]
-
-            if settings['context_settings']['inclusion']:
-                if settings['context_settings']['inclusion_multi_search_mode']:
-                    search_terms_inclusion = settings['context_settings']['inclusion_search_terms']
-                else:
-                    if settings['context_settings']['inclusion_search_term']:
-                        search_terms_inclusion = [settings['context_settings']['inclusion_search_term']]
-                    else:
-                        search_terms_inclusion = []
-
-            if settings['context_settings']['exclusion']:
-                if settings['context_settings']['exclusion_multi_search_mode']:
-                    search_terms_exclusion = settings['context_settings']['exclusion_search_terms']
-                else:
-                    if settings['context_settings']['exclusion_search_term']:
-                        search_terms_exclusion = [settings['context_settings']['exclusion_search_term']]
-                    else:
-                        search_terms_exclusion = []
-
             for file in files:
                 text = wordless_text.Wordless_Text(main, file)
-
-                search_terms_file = text.match_search_terms(search_terms,
-                                                            settings['token_settings']['puncs'],
-                                                            settings['search_settings']['ignore_case'],
-                                                            settings['search_settings']['match_inflected_forms'],
-                                                            settings['search_settings']['match_whole_word'],
-                                                            settings['search_settings']['use_regex'])
-
-                if settings['context_settings']['inclusion'] and search_terms_inclusion:
-                    search_terms_inclusion_file = text.match_search_terms(search_terms_inclusion,
-                                                                          settings['token_settings']['puncs'],
-                                                                          settings['search_settings']['ignore_case'],
-                                                                          settings['search_settings']['match_inflected_forms'],
-                                                                          settings['search_settings']['match_whole_word'],
-                                                                          settings['search_settings']['use_regex'])
-                else:
-                    search_terms_inclusion_file = []
-
-                if settings['context_settings']['exclusion'] and search_terms_exclusion:
-                    search_terms_exclusion_file = text.match_search_terms(search_terms_exclusion,
-                                                                          settings['token_settings']['puncs'],
-                                                                          settings['search_settings']['ignore_case'],
-                                                                          settings['search_settings']['match_inflected_forms'],
-                                                                          settings['search_settings']['match_whole_word'],
-                                                                          settings['search_settings']['use_regex'])
-                else:
-                    search_terms_exclusion_file = []
 
                 if not settings['token_settings']['puncs']:
                     text.tokens_no_puncs = [token for token in text.tokens if [char for char in token if char.isalnum()]]
@@ -815,15 +770,24 @@ def generate_table(main, table):
                 else:
                     tokens_text = text.tokens_no_puncs
 
-                for search_term in search_terms_file:
+                search_terms = wordless_matching.match_search_terms(main, tokens_text,
+                                                                lang_code = text.lang_code,
+                                                                settings = settings['search_settings'])
+
+                (search_terms_inclusion,
+                 search_terms_exclusion) = wordless_matching.match_search_terms_context(main, tokens_text,
+                                                                                        lang_code = text.lang_code,
+                                                                                        settings = settings['context_settings'])
+
+                for search_term in search_terms:
                     len_search_term = len(search_term)
 
                     for i, ngram in enumerate(nltk.ngrams(tokens_text, len_search_term)):
                         if ngram == search_term:
                             if wordless_text_utils.check_context(i, tokens_text,
                                                                  settings = settings['context_settings'],
-                                                                 search_terms_inclusion = search_terms_inclusion_file,
-                                                                 search_terms_exclusion = search_terms_exclusion_file):
+                                                                 search_terms_inclusion = search_terms_inclusion,
+                                                                 search_terms_exclusion = search_terms_exclusion):
                                 if not settings['token_settings']['puncs']:
                                     ngram = [text.tokens[i + j] for j in range(len(ngram))]
 

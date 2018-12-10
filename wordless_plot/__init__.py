@@ -1,5 +1,5 @@
 #
-# Wordless: Text
+# Wordless: Plots
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -7,8 +7,6 @@
 #
 
 __all__ = [
-	'wordless_matching',
-    'wordless_text',
-    'wordless_text_processing',
-    'wordless_text_utils'
+	'wordless_plot_freq',
+	'wordless_plot_stat'
 ]

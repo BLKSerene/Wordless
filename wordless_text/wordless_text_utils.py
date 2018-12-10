@@ -11,20 +11,20 @@ def check_context(i, tokens, settings,
     len_tokens = len(tokens)
 
     # Inclusion
-    if settings['inclusion'] and search_terms_inclusion:
+    if settings['inclusion']['inclusion'] and search_terms_inclusion:
         inclusion_matched = False
 
         for search_term in search_terms_inclusion:
             if inclusion_matched:
                 break
 
-            for j in range(settings['inclusion_context_window_left'],
-                           settings['inclusion_context_window_right'] + 1):
+            for j in range(settings['inclusion']['context_window_left'],
+                           settings['inclusion']['context_window_right'] + 1):
                 if i + j < 0 or i + j > len_tokens - 1:
                     continue
 
                 if j != 0:
-                    if tokens[i + j : i + j + len(search_term)] == list(search_term):
+                    if tuple(tokens[i + j : i + j + len(search_term)]) == tuple(search_term):
                         inclusion_matched = True
 
                         break
@@ -34,18 +34,18 @@ def check_context(i, tokens, settings,
     # Exclusion
     exclusion_matched = True
 
-    if settings['exclusion'] and search_terms_exclusion:
+    if settings['exclusion']['exclusion'] and search_terms_exclusion:
         for search_term in search_terms_exclusion:
             if not exclusion_matched:
                 break
 
-            for j in range(settings['exclusion_context_window_left'],
-                           settings['exclusion_context_window_right'] + 1):
+            for j in range(settings['exclusion']['context_window_left'],
+                           settings['exclusion']['context_window_right'] + 1):
                 if i + j < 0 or i + j > len_tokens - 1:
                     continue
 
                 if j != 0:
-                    if tokens[i + j : i + j + len(search_term)] == list(search_term):
+                    if tuple(tokens[i + j : i + j + len(search_term)]) == tuple(search_term):
                         exclusion_matched = False
 
                         break

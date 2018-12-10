@@ -15,8 +15,9 @@ from PyQt5.QtWidgets import *
 
 import numpy
 
-from wordless_text import *
 from wordless_measures import *
+from wordless_plot import *
+from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
 
@@ -1178,10 +1179,10 @@ def generate_plot(main):
             keywords_freq_files, keywords_stats_files = generate_keywords(main, files, ref_file)
 
             if settings['plot_settings']['use_data'] == main.tr('Frequency'):
-                wordless_plot.wordless_plot_freq_ref(main, keywords_freq_files,
-                                                     ref_file = ref_file,
-                                                     settings = settings['plot_settings'],
-                                                     label_x = main.tr('Keywords'))
+                wordless_plot_freq.wordless_plot_freq_ref(main, keywords_freq_files,
+                                                          ref_file = ref_file,
+                                                          settings = settings['plot_settings'],
+                                                          label_x = main.tr('Keywords'))
             else:
                 if settings['plot_settings']['use_data'] == col_text_test_stat:
                     keywords_stat_files = {keyword: numpy.array(stats_files)[:, 0]
@@ -1209,10 +1210,10 @@ def generate_plot(main):
 
                     label_y = col_text_dispersion
 
-                wordless_plot.wordless_plot_keyness(main, keywords_stat_files,
-                                                    ref_file = ref_file,
-                                                    settings = settings['plot_settings'],
-                                                    label_y = label_y)
+                wordless_plot_stat.wordless_plot_stat_ref(main, keywords_stat_files,
+                                                          ref_file = ref_file,
+                                                          settings = settings['plot_settings'],
+                                                          label_y = label_y)
 
             wordless_message.wordless_message_generate_plot_success(main)
         else:

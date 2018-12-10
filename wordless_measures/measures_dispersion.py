@@ -14,14 +14,14 @@ import scipy.stats
 # Reference:
 #     Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.
 def juillands_d(freqs):
-    if numpy.mean(freqs) == 0:
+    if sum(freqs) == 0:
         d = 0
     else:
         cv = numpy.std(freqs) / numpy.mean(freqs)
     
         d = 1 - cv / math.sqrt(len(freqs) - 1)
 
-    return d
+    return max(0, d)
 
 # Reference:
 #     Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.

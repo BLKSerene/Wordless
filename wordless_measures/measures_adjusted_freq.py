@@ -5,10 +5,10 @@
 #
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
+import math
 
+import numpy
 import scipy.special
-
-from wordless_measures import measures_dispersion
 
 # Euler-Mascheroni Constant
 C = -scipy.special.digamma(1)
@@ -16,7 +16,14 @@ C = -scipy.special.digamma(1)
 # Reference:
 #     Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.
 def juillands_u(freqs):
-    return measures_dispersion.juillands_d(freqs) * sum(freqs)
+    if numpy.mean(freqs) == 0:
+        d = 0
+    else:
+        cv = numpy.std(freqs) / numpy.mean(freqs)
+    
+        d = 1 - cv / math.sqrt(len(freqs) - 1)
+
+    return max(0, d) * sum(freqs)
 
 # Reference:
 #     Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
@@ -29,7 +36,7 @@ def carrolls_um(freqs):
 # Reference:
 #     Rosengren, Inger. "The Quantitative Concept of Language and Its Relation to The Structure of Frequency Dictionaries." Études De Linguistique Appliquée, n.s.1, 1971, pp. 103-27.
 def rosengrens_kf(freqs):
-    return measures_dispersion.rosengrens_s(freqs) * sum(freqs)
+    return sum([math.sqrt(freq) for freq in freqs]) ** 2 / len(freqs)
 
 # Reference:
 #     Engwall, Gunnel. Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Broché, 1974.
@@ -43,8 +50,6 @@ def kromers_ur(freqs):
 
 # Testing
 if __name__ == '__main__':
-    import measures_dispersion
-
     # Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
     print('Juilland\'s U:\n    ', end = '')
     print(juillands_u([0, 4, 3, 2, 1])) # 6.46

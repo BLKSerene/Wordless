@@ -64,35 +64,39 @@ def init_settings_default(main):
             },
 
             'context_settings': {
-                'inclusion': True,
+                'inclusion': {
+                    'inclusion': True,
 
-                'inclusion_multi_search_mode': False,
-                'inclusion_search_term': '',
-                'inclusion_search_terms': [],
+                    'multi_search_mode': False,
+                    'search_term': '',
+                    'search_terms': [],
 
-                'inclusion_ignore_case': True,
-                'inclusion_match_inflected_forms': True,
-                'inclusion_match_whole_word': True,
-                'inclusion_use_regex': False,
+                    'ignore_case': True,
+                    'match_inflected_forms': True,
+                    'match_whole_word': True,
+                    'use_regex': False,
+                    
+                    'context_window_sync': False,
+                    'context_window_left': -5,
+                    'context_window_right': 5
+                },
                 
-                'inclusion_context_window_sync': False,
-                'inclusion_context_window_left': -5,
-                'inclusion_context_window_right': 5,
+                'exclusion': {
+                    'exclusion': True,
 
-                'exclusion': True,
+                    'multi_search_mode': False,
+                    'search_term': '',
+                    'search_terms': [],
 
-                'exclusion_multi_search_mode': False,
-                'exclusion_search_term': '',
-                'exclusion_search_terms': [],
-
-                'exclusion_ignore_case': True,
-                'exclusion_match_inflected_forms': True,
-                'exclusion_match_whole_word': True,
-                'exclusion_use_regex': False,
-                
-                'exclusion_context_window_sync': False,
-                'exclusion_context_window_left': -5,
-                'exclusion_context_window_right': 5
+                    'ignore_case': True,
+                    'match_inflected_forms': True,
+                    'match_whole_word': True,
+                    'use_regex': False,
+                    
+                    'context_window_sync': False,
+                    'context_window_left': -5,
+                    'context_window_right': 5
+                }
             },
             
             'generation_settings': {
@@ -249,35 +253,39 @@ def init_settings_default(main):
             },
 
             'context_settings': {
-                'inclusion': True,
+                'inclusion': {
+                    'inclusion': True,
 
-                'inclusion_multi_search_mode': False,
-                'inclusion_search_term': '',
-                'inclusion_search_terms': [],
+                    'multi_search_mode': False,
+                    'search_term': '',
+                    'search_terms': [],
 
-                'inclusion_ignore_case': True,
-                'inclusion_match_inflected_forms': True,
-                'inclusion_match_whole_word': True,
-                'inclusion_use_regex': False,
+                    'ignore_case': True,
+                    'match_inflected_forms': True,
+                    'match_whole_word': True,
+                    'use_regex': False,
+                    
+                    'context_window_sync': False,
+                    'context_window_left': -5,
+                    'context_window_right': 5
+                },
                 
-                'inclusion_context_window_sync': False,
-                'inclusion_context_window_left': -5,
-                'inclusion_context_window_right': 5,
+                'exclusion': {
+                    'exclusion': True,
 
-                'exclusion': True,
+                    'multi_search_mode': False,
+                    'search_term': '',
+                    'search_terms': [],
 
-                'exclusion_multi_search_mode': False,
-                'exclusion_search_term': '',
-                'exclusion_search_terms': [],
-
-                'exclusion_ignore_case': True,
-                'exclusion_match_inflected_forms': True,
-                'exclusion_match_whole_word': True,
-                'exclusion_use_regex': False,
-                
-                'exclusion_context_window_sync': False,
-                'exclusion_context_window_left': -5,
-                'exclusion_context_window_right': 5
+                    'ignore_case': True,
+                    'match_inflected_forms': True,
+                    'match_whole_word': True,
+                    'use_regex': False,
+                    
+                    'context_window_sync': False,
+                    'context_window_left': -5,
+                    'context_window_right': 5
+                }
             },
             
             'generation_settings': {
@@ -378,35 +386,39 @@ def init_settings_default(main):
             },
 
             'context_settings': {
-                'inclusion': True,
+                'inclusion': {
+                    'inclusion': True,
 
-                'inclusion_multi_search_mode': False,
-                'inclusion_search_term': '',
-                'inclusion_search_terms': [],
+                    'multi_search_mode': False,
+                    'search_term': '',
+                    'search_terms': [],
 
-                'inclusion_ignore_case': True,
-                'inclusion_match_inflected_forms': True,
-                'inclusion_match_whole_word': True,
-                'inclusion_use_regex': False,
+                    'ignore_case': True,
+                    'match_inflected_forms': True,
+                    'match_whole_word': True,
+                    'use_regex': False,
+                    
+                    'context_window_sync': False,
+                    'context_window_left': -5,
+                    'context_window_right': 5
+                },
                 
-                'inclusion_context_window_sync': False,
-                'inclusion_context_window_left': -5,
-                'inclusion_context_window_right': 5,
+                'exclusion': {
+                    'exclusion': True,
 
-                'exclusion': True,
+                    'multi_search_mode': False,
+                    'search_term': '',
+                    'search_terms': [],
 
-                'exclusion_multi_search_mode': False,
-                'exclusion_search_term': '',
-                'exclusion_search_terms': [],
-
-                'exclusion_ignore_case': True,
-                'exclusion_match_inflected_forms': True,
-                'exclusion_match_whole_word': True,
-                'exclusion_use_regex': False,
-                
-                'exclusion_context_window_sync': False,
-                'exclusion_context_window_left': -5,
-                'exclusion_context_window_right': 5
+                    'ignore_case': True,
+                    'match_inflected_forms': True,
+                    'match_whole_word': True,
+                    'use_regex': False,
+                    
+                    'context_window_sync': False,
+                    'context_window_left': -5,
+                    'context_window_right': 5
+                }
             },
             
             'generation_settings': {
@@ -491,7 +503,22 @@ def init_settings_default(main):
         },
 
         'colligation': {
-            'search_results': {
+            'token_settings': {
+                'words': True,
+                'lowercase': True,
+                'uppercase': True,
+                'title_case': True,
+                'treat_as_lowercase': True,
+                'lemmatize': False,
+                'filter_stop_words': False,
+
+                'nums': True,
+                'puncs': False
+            },
+
+            'search_settings': {
+                'search_settings': True,
+
                 'multi_search_mode': False,
                 'search_term': '',
                 'search_terms': [],
@@ -502,62 +529,122 @@ def init_settings_default(main):
                 'use_regex': False
             },
 
-            'treat_as_lowercase': True,
-            'lemmatize': False,
+            'context_settings': {
+                'inclusion': {
+                    'inclusion': True,
 
-            'puncs': False,
+                    'multi_search_mode': False,
+                    'search_term': '',
+                    'search_terms': [],
+
+                    'ignore_case': True,
+                    'match_inflected_forms': False,
+                    'match_whole_word': True,
+                    'use_regex': False,
+                    
+                    'context_window_sync': False,
+                    'context_window_left': -5,
+                    'context_window_right': 5
+                },
+                
+                'exclusion': {
+                    'exclusion': True,
+
+                    'multi_search_mode': False,
+                    'search_term': '',
+                    'search_terms': [],
+
+                    'ignore_case': True,
+                    'match_inflected_forms': False,
+                    'match_whole_word': True,
+                    'use_regex': False,
+                    
+                    'context_window_sync': False,
+                    'context_window_left': -5,
+                    'context_window_right': 5
+                }
+            },
             
-            'search_settings': True,
+            'generation_settings': {
+                'node_type': main.tr('Token'),
+                'window_sync': False,
+                'window_left': -5,
+                'window_right': 5,
 
-            'multi_search_mode': False,
-            'search_term': '',
-            'search_terms': [],
+                'test_significance': main.tr('Pearson\'s Chi-squared Test'),
+                'measure_effect_size': main.tr('Pointwise Mutual Information')
+            },
 
-            'ignore_case': True,
-            'match_inflected_forms': True,
-            'match_whole_word': True,
-            'use_regex': False,
+            'table_settings': {
+                'show_pct': True,
+                'show_cumulative': False,
+                'show_breakdown_position': True,
+                'show_breakdown_file': True
+            },
 
-            'keyword_type': main.tr('Token'),
-            'window_sync': False,
-            'window_left': -5,
-            'window_right': 5,
-            'assoc_measure': main.tr('Pearson\'s Chi-squared Test'),
+            'plot_settings': {
+                'plot_type': main.tr('Line Chart'),
+                'use_file': main.tr('Total'),
+                'use_data': main.tr('p-value'),
+                'use_pct': False,
+                'use_cumulative': False,
 
-            'show_pct': True,
-            'show_cumulative': False,
-            'show_breakdown_position': True,
-            'show_breakdown_file': True,
+                'rank_min': 1,
+                'rank_min_no_limit': True,
+                'rank_max': 50,
+                'rank_max_no_limit': False
+            },
 
-            'plot_type': main.tr('Line Chart'),
-            'use_data_file': main.tr('Total'),
-            'use_data_col': main.tr('Score (Right)'),
-            'use_pct': False,
-            'use_cumulative': False,
+            'filter_settings': {
+                'freq_filter_data': main.tr('Total'),
+                'freq_min': 0,
+                'freq_min_no_limit': True,
+                'freq_max': 1000,
+                'freq_max_no_limit': True,
 
-            'rank_no_limit': False,
-            'rank_min': 1,
-            'rank_max': 50,
+                'test_stat_min': -100,
+                'test_stat_min_no_limit': True,
+                'test_stat_max': 100,
+                'test_stat_max_no_limit': True,
 
-            'filter_file': main.tr('Total'),
+                'p_value_min': 0,
+                'p_value_min_no_limit': True,
+                'p_value_max': 0.05,
+                'p_value_max_no_limit': True,
 
-            'freq_left_no_limit': True,
-            'freq_left_min': 0,
-            'freq_left_max': 1000,
-            'freq_right_no_limit': True,
-            'freq_right_min': 0,
-            'freq_right_max': 1000,
+                'bayes_factor_min': -100,
+                'bayes_factor_min_no_limit': True,
+                'bayes_factor_max': 100,
+                'bayes_factor_max_no_limit': True,
 
-            'score_left_no_limit': True,
-            'score_left_min': 0,
-            'score_left_max': 100,
-            'score_right_no_limit': True,
-            'score_right_min': 0,
-            'score_right_max': 100,
+                'effect_size_min': -100,
+                'effect_size_min_no_limit': True,
+                'effect_size_max': 100,
+                'effect_size_max_no_limit': True,
 
-            'files_no_limit': True,
-            'files_min': 1,
-            'files_max': 100
+                'len_collocate_min': 1,
+                'len_collocate_min_no_limit': True,
+                'len_collocate_max': 20,
+                'len_collocate_max_no_limit': True,
+
+                'number_files_found_min': 1,
+                'number_files_found_min_no_limit': True,
+                'number_files_found_max': 100,
+                'number_files_found_max_no_limit': True,
+
+                'filter_file': main.tr('Total')
+            },
+
+            'search_results': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False
+            },
         },
 
         'keywords': {

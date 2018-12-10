@@ -1207,8 +1207,8 @@ def init_settings_global(main):
                     'func': measures_effect_size.log_dice
                 },
 
-                main.tr('Mutual Dependency'): {
-                    'col': main.tr('Mutual Dependency'),
+                main.tr('Mutual Expectation'): {
+                    'col': main.tr('Mutual Expectation'),
                     'func': measures_effect_size.mutual_expectation
                 },
 

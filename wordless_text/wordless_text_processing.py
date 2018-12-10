@@ -15,6 +15,7 @@ import jieba.posseg
 import jpype
 import nltk
 import nltk.tokenize.nist
+import numpy
 
 from wordless_utils import wordless_conversion
 
@@ -74,6 +75,9 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang_code]
+
+    if 'HanLP' in word_tokenizer:
+        import pyhanlp
 
     # English
     if word_tokenizer == main.tr('NLTK - Treebank Tokenizer'):
@@ -342,7 +346,9 @@ def wordless_filter_stop_words(main, items, lang_code):
         if type(items[0]) == str:
             items_filtered = [token for token in items if token not in stop_words]
         elif type(items[0]) in [list, tuple, set]:
-            items_filtered = [ngram for ngram in items if not [token for token in ngram if token in stop_words]]
+            items_filtered = [ngram
+                              for ngram in items
+                              if not [token for token in ngram if token in stop_words]]
 
         return items_filtered
     else:
@@ -360,6 +366,23 @@ def wordless_preprocess_tokens(main, tokens, lang_code, settings):
         tokens = [token for token in tokens if [char for char in token if char.isalnum()]]
 
     return tokens
+
+def wordless_preprocess_tokens_tagged(main, tokens_tagged, lang_code, settings):
+    if settings['treat_as_lowercase']:
+        tokens_tagged = [(token.lower(), tag) for token, tag in tokens_tagged]
+
+    if settings['lemmatize']:
+        tokens_lemmatized = wordless_lemmatize(main, numpy.array(tokens_tagged)[:, 0], lang_code)
+
+        tokens_tagged = [(token, tag)
+                         for token, tag in zip(tokens_lemmatized, numpy.array(tokens_tagged)[:, 1])]
+
+    if not settings['puncs']:
+        tokens_tagged = [(token, tag)
+                         for token, tag in tokens_tagged
+                         if [char for char in token if char.isalnum()]]
+
+    return tokens_tagged
 
 def wordless_postprocess_tokens(main, tokens, lang_code, settings):
     if settings['words']:
@@ -414,11 +437,21 @@ def wordless_postprocess_freq_ngrams(main, ngrams_freq_file, lang_code, settings
     return ngrams_freq_file
 
 def wordless_postprocess_freq_collocation(main, collocates_freq_file, lang_code, settings):
-    collocates = {collocate[1]: freq_files
-                  for collocate, freq_files in collocates_freq_file.items()}
+    collocates = [collocate[1] for collocate in collocates_freq_file]
 
     collocates_filtered = wordless_postprocess_tokens(main, collocates, lang_code, settings)
 
-    return {collocate: freq_files
-            for collocate, freq_files in collocates_freq_file.items()
-            if collocate[1] in collocates_filtered}
+    collocates_freq_file = {collocate: freq_files
+                            for collocate, freq_files in collocates_freq_file.items()
+                            if collocate[1] in collocates_filtered}
+
+    return collocates_freq_file
+
+def wordless_postprocess_freq_colligation(main, collocates_freq_file, tokens, lang_code, settings):
+    tokens_filtered = wordless_postprocess_tokens(main, tokens, lang_code, settings)
+
+    collocates_freq_file = {collocate: freq_files
+                            for (collocate, freq_files), token in zip(collocates_freq_file.items(), tokens_filtered)
+                            if token in tokens_filtered}
+
+    return collocates_freq_file

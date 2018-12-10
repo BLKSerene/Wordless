@@ -815,9 +815,9 @@ def generate_plot(main):
         tokens_freq_files, tokens_stats_files = generate_wordlists(main, files)
 
         if settings['plot_settings']['use_data'] == main.tr('Frequency'):
-            wordless_plot.wordless_plot_freq(main, tokens_freq_files,
-                                             settings = settings['plot_settings'],
-                                             label_x = main.tr('Tokens'))
+            wordless_plot_freq.wordless_plot_freq(main, tokens_freq_files,
+                                                  settings = settings['plot_settings'],
+                                                  label_x = main.tr('Tokens'))
         else:
             if settings['plot_settings']['use_data'] == col_text_dispersion:
                 tokens_stat_files = {token: numpy.array(stats_files)[:, 0]
@@ -830,10 +830,10 @@ def generate_plot(main):
 
                 label_y = col_text_adjusted_freq
 
-            wordless_plot.wordless_plot_stat(main, tokens_stat_files,
-                                             settings = settings['plot_settings'],
-                                             label_x = main.tr('Tokens'),
-                                             label_y = label_y)
+            wordless_plot_stat.wordless_plot_stat(main, tokens_stat_files,
+                                                  settings = settings['plot_settings'],
+                                                  label_x = main.tr('Tokens'),
+                                                  label_y = label_y)
 
         wordless_message.wordless_message_generate_plot_success(main)
     else:
