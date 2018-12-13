@@ -611,13 +611,12 @@ def init(main):
     checkbox_use_regex.stateChanged.connect(search_settings_changed)
 
     layout_search_terms = QGridLayout()
-    layout_search_terms.addWidget(list_search_terms, 0, 0, 6, 1)
+    layout_search_terms.addWidget(list_search_terms, 0, 0, 5, 1)
     layout_search_terms.addWidget(list_search_terms.button_add, 0, 1)
-    layout_search_terms.addWidget(list_search_terms.button_insert, 1, 1)
-    layout_search_terms.addWidget(list_search_terms.button_remove, 2, 1)
-    layout_search_terms.addWidget(list_search_terms.button_clear, 3, 1)
-    layout_search_terms.addWidget(list_search_terms.button_import, 4, 1)
-    layout_search_terms.addWidget(list_search_terms.button_export, 5, 1)
+    layout_search_terms.addWidget(list_search_terms.button_remove, 1, 1)
+    layout_search_terms.addWidget(list_search_terms.button_clear, 2, 1)
+    layout_search_terms.addWidget(list_search_terms.button_import, 3, 1)
+    layout_search_terms.addWidget(list_search_terms.button_export, 4, 1)
 
     layout_context_settings = QGridLayout()
     layout_context_settings.addWidget(label_context_settings, 0, 0)

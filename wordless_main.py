@@ -197,7 +197,12 @@ class Wordless_Main(QMainWindow):
 
         if os.path.exists('wordless_settings.pkl'):
             with open(r'wordless_settings.pkl', 'rb') as f:
-                self.settings_custom = pickle.load(f)
+                settings_custom = pickle.load(f)
+
+            if wordless_misc.check_custom_settings(settings_custom, self.settings_default):
+                self.settings_custom = settings_custom
+            else:
+                self.settings_custom = copy.deepcopy(self.settings_default)
         else:
             self.settings_custom = copy.deepcopy(self.settings_default)
 

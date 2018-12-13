@@ -1356,7 +1356,7 @@ class Wordless_Settings(QDialog):
 
             # Measures -> Adjusted Frequency
             settings['measures']['adjusted_freq']['general']['number_sections'] = self.spin_box_adjusted_freq_number_sections.value()
-            settings['measures']['adjusted_freq']['general']['ues_same_settings_dispersion'] = self.checkbox_use_same_settings_dispersion.isChecked()
+            settings['measures']['adjusted_freq']['general']['use_same_settings_dispersion'] = self.checkbox_use_same_settings_dispersion.isChecked()
 
             # Measures -> Statistical Significance
             settings['measures']['statistical_significance']['z_score']['direction'] = self.combo_box_z_score_direction.currentText()

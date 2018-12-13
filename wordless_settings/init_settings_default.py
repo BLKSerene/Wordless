@@ -65,7 +65,7 @@ def init_settings_default(main):
 
             'context_settings': {
                 'inclusion': {
-                    'inclusion': True,
+                    'inclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -82,7 +82,7 @@ def init_settings_default(main):
                 },
                 
                 'exclusion': {
-                    'exclusion': True,
+                    'exclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -105,9 +105,11 @@ def init_settings_default(main):
                 'width_right_token': 10,
                 'width_right_char': 50,
                 'width_unit': main.tr('Token'),
-                
+
+                'number_lines': 100,
                 'number_lines_no_limit': True,
-                'number_lines': 25
+                'every_nth_line': 2,
+                'every_nth_line_no_limit': True
             },
 
             'table_settings': {
@@ -138,6 +140,17 @@ def init_settings_default(main):
                     # Purple
                     '#491D76'
                 ]
+            },
+
+            'search_results': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False,
             }
         },
     
@@ -254,7 +267,7 @@ def init_settings_default(main):
 
             'context_settings': {
                 'inclusion': {
-                    'inclusion': True,
+                    'inclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -271,7 +284,7 @@ def init_settings_default(main):
                 },
                 
                 'exclusion': {
-                    'exclusion': True,
+                    'exclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -387,7 +400,7 @@ def init_settings_default(main):
 
             'context_settings': {
                 'inclusion': {
-                    'inclusion': True,
+                    'inclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -404,7 +417,7 @@ def init_settings_default(main):
                 },
                 
                 'exclusion': {
-                    'exclusion': True,
+                    'exclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -451,7 +464,7 @@ def init_settings_default(main):
             },
 
             'filter_settings': {
-                'freq_filter_data': main.tr('Total'),
+                'freq_filter_data': main.tr('Frequency'),
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
@@ -531,7 +544,7 @@ def init_settings_default(main):
 
             'context_settings': {
                 'inclusion': {
-                    'inclusion': True,
+                    'inclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -548,7 +561,7 @@ def init_settings_default(main):
                 },
                 
                 'exclusion': {
-                    'exclusion': True,
+                    'exclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -596,7 +609,7 @@ def init_settings_default(main):
             },
 
             'filter_settings': {
-                'freq_filter_data': main.tr('Total'),
+                'freq_filter_data': main.tr('Frequency'),
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
