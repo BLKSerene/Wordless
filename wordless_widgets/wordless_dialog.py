@@ -515,12 +515,13 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
 
         self.checkbox_inclusion_multi_search_mode.setChecked(settings['inclusion']['multi_search_mode'])
 
-        self.line_edit_inclusion_search_term.setText(settings['inclusion']['search_term'])
+        if not defaults:
+            self.line_edit_inclusion_search_term.setText(settings['inclusion']['search_term'])
 
-        self.list_inclusion_search_terms.clear()
+            self.list_inclusion_search_terms.clear()
 
-        for search_term in settings['inclusion']['search_terms']:
-            self.list_inclusion_search_terms.add_item(search_term)
+            for search_term in settings['inclusion']['search_terms']:
+                self.list_inclusion_search_terms.add_item(search_term)
 
         self.checkbox_inclusion_ignore_case.setChecked(settings['inclusion']['ignore_case'])
         self.checkbox_inclusion_match_inflected_forms.setChecked(settings['inclusion']['match_inflected_forms'])
@@ -550,12 +551,13 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
 
         self.checkbox_exclusion_multi_search_mode.setChecked(settings['exclusion']['multi_search_mode'])
 
-        self.line_edit_exclusion_search_term.setText(settings['exclusion']['search_term'])
+        if not defaults:
+            self.line_edit_exclusion_search_term.setText(settings['exclusion']['search_term'])
 
-        self.list_exclusion_search_terms.clear()
+            self.list_exclusion_search_terms.clear()
 
-        for search_term in settings['exclusion']['search_terms']:
-            self.list_exclusion_search_terms.add_item(search_term)
+            for search_term in settings['exclusion']['search_terms']:
+                self.list_exclusion_search_terms.add_item(search_term)
 
         self.checkbox_exclusion_ignore_case.setChecked(settings['exclusion']['ignore_case'])
         self.checkbox_exclusion_match_inflected_forms.setChecked(settings['exclusion']['match_inflected_forms'])

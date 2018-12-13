@@ -448,8 +448,10 @@ def init(main):
         spin_box_width_right_char.setValue(settings['generation_settings']['width_right_char'])
         combo_box_width_unit.setCurrentText(settings['generation_settings']['width_unit'])
 
-        checkbox_number_lines.setChecked(settings['generation_settings']['number_lines_no_limit'])
         spin_box_number_lines.setValue(settings['generation_settings']['number_lines'])
+        checkbox_number_lines.setChecked(settings['generation_settings']['number_lines_no_limit'])
+        spin_box_every_nth_line.setValue(settings['generation_settings']['every_nth_line'])
+        checkbox_every_nth_line.setChecked(settings['generation_settings']['every_nth_line_no_limit'])
 
         # Table Settings
         checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
@@ -500,8 +502,10 @@ def init(main):
         settings['width_right_char'] = spin_box_width_right_char.value()
         settings['width_unit'] = combo_box_width_unit.currentText()
 
-        settings['number_lines_no_limit'] = checkbox_number_lines.isChecked()
         settings['number_lines'] = spin_box_number_lines.value()
+        settings['number_lines_no_limit'] = checkbox_number_lines.isChecked()
+        settings['every_nth_line'] = spin_box_every_nth_line.value()
+        settings['every_nth_line_no_limit'] = checkbox_every_nth_line.isChecked()
 
         if settings['width_unit'] == main.tr('Token'):
             spin_box_width_left_token.show()
@@ -515,11 +519,6 @@ def init(main):
 
             spin_box_width_left_char.show()
             spin_box_width_right_char.show()
-
-        if settings['number_lines_no_limit']:
-            spin_box_number_lines.setEnabled(False)
-        else:
-            spin_box_number_lines.setEnabled(True)
 
     def table_settings_changed():
         settings = main.settings_custom['concordancer']['table_settings']
@@ -626,18 +625,22 @@ def init(main):
     label_width_unit = QLabel('Width Unit:', main)
     combo_box_width_unit = wordless_box.Wordless_Combo_Box(main)
 
-    label_number_lines = QLabel(main.tr('Number of Lines:'), main)
-    checkbox_number_lines = QCheckBox(main.tr('No Limit'), main)
-    spin_box_number_lines = QSpinBox(main)
+    label_number_lines = QLabel(main.tr('Limit number of lines in each file:'), main)
+    (spin_box_number_lines,
+     checkbox_number_lines) = wordless_widgets.wordless_widgets_no_limit(main)
+    label_every_nth_line = QLabel(main.tr('Only show every nth line in each file:'), main)
+    (spin_box_every_nth_line,
+     checkbox_every_nth_line) = wordless_widgets.wordless_widgets_no_limit(main)
 
     combo_box_width_unit.addItems([main.tr('Token'), main.tr('Character')])
 
     spin_box_width_left_token.setRange(0, 100)
-    spin_box_width_left_char.setRange(0, 1000)
+    spin_box_width_left_char.setRange(0, 500)
     spin_box_width_right_token.setRange(0, 100)
-    spin_box_width_right_char.setRange(0, 1000)
+    spin_box_width_right_char.setRange(0, 500)
 
-    spin_box_number_lines.setRange(1, 10000)
+    spin_box_number_lines.setRange(1, 100000)
+    spin_box_every_nth_line.setRange(2, 100000)
 
     spin_box_width_left_token.valueChanged.connect(generation_settings_changed)
     spin_box_width_left_char.valueChanged.connect(generation_settings_changed)
@@ -645,8 +648,10 @@ def init(main):
     spin_box_width_right_char.valueChanged.connect(generation_settings_changed)
     combo_box_width_unit.currentTextChanged.connect(generation_settings_changed)
 
-    checkbox_number_lines.stateChanged.connect(generation_settings_changed)
     spin_box_number_lines.valueChanged.connect(generation_settings_changed)
+    checkbox_number_lines.stateChanged.connect(generation_settings_changed)
+    spin_box_every_nth_line.valueChanged.connect(generation_settings_changed)
+    checkbox_every_nth_line.stateChanged.connect(generation_settings_changed)
 
     layout_width = QGridLayout()
     layout_width.addWidget(label_width_left, 0, 0)
@@ -665,9 +670,14 @@ def init(main):
 
     group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 1, 0, 1, 2)
 
-    group_box_generation_settings.layout().addWidget(label_number_lines, 2, 0)
-    group_box_generation_settings.layout().addWidget(checkbox_number_lines, 2, 1, Qt.AlignRight)
-    group_box_generation_settings.layout().addWidget(spin_box_number_lines, 3, 0, 1, 2)
+    group_box_generation_settings.layout().addWidget(label_number_lines, 2, 0, 1, 2)
+    group_box_generation_settings.layout().addWidget(spin_box_number_lines, 3, 0)
+    group_box_generation_settings.layout().addWidget(checkbox_number_lines, 3, 1)
+    group_box_generation_settings.layout().addWidget(label_every_nth_line, 4, 0, 1, 2)
+    group_box_generation_settings.layout().addWidget(spin_box_every_nth_line, 5, 0)
+    group_box_generation_settings.layout().addWidget(checkbox_every_nth_line, 5, 1)
+
+    group_box_generation_settings.layout().setColumnStretch(0, 1)
 
     # Table Settings
     group_box_table_settings = QGroupBox(main.tr('Table Settings'), main)
@@ -740,6 +750,9 @@ def generate_table(main, table):
             table.settings = main.settings_custom
 
             for file in files:
+                number_lines = 0
+                number_lines_nth = 0
+
                 text = wordless_text.Wordless_Text(main, file)
 
                 if not settings['token_settings']['puncs']:
@@ -802,138 +815,182 @@ def generate_table(main, table):
                 node_color = settings['sorting_settings']['highlight_colors'][0]
 
                 for len_search_term in range(len_search_term_min, len_search_term_max + 1):
+                    # Check number of lines
+                    if not settings['generation_settings']['number_lines_no_limit']:
+                        if number_lines >= settings['generation_settings']['number_lines']:
+                            break
+
                     for i, ngram in enumerate(nltk.ngrams(tokens_text, len_search_term)):
-                        if ngram in search_terms:
-                            if wordless_text_utils.check_context(i, tokens_text,
-                                                                 settings = settings['context_settings'],
-                                                                 search_terms_inclusion = search_terms_inclusion,
-                                                                 search_terms_exclusion = search_terms_exclusion):
-                                # Search Results
-                                text_search = ngram
-
-                                if not settings['token_settings']['puncs']:
-                                    ngram = text.tokens[i : i + len_search_term]
-
-                                table.setRowCount(table.rowCount() + 1)
-
-                                # Node
-                                node_text = html.escape(wordless_text_processing.wordless_word_detokenize(main, ngram, text.lang_code))
-
-                                label_node = wordless_table.Wordless_Label_Html(f'''
-                                                                                    <span style="color: {node_color};
-                                                                                                 font-weight: bold;">
-                                                                                        {node_text}
-                                                                                    </span>
-                                                                                ''', main)
-
-                                table.setCellWidget(table.rowCount() - 1, 1, label_node)
-
-                                table.cellWidget(table.rowCount() - 1, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-
-                                table.cellWidget(table.rowCount() - 1, 1).text_raw = ngram
-                                table.cellWidget(table.rowCount() - 1, 1).text_search = text_search
-
-                                if settings['generation_settings']['width_unit'] == main.tr('Token'):
-                                    context_left = text.tokens[max(0, i - settings['generation_settings']['width_left_token']) : i]
-                                    context_right = text.tokens[i + len_search_term : min(i + len_search_term + settings['generation_settings']['width_right_token'], len_tokens)]
-
-                                    # Search Results
-                                    if settings['token_settings']['puncs']:
-                                        text_search_left = copy.deepcopy(context_left)
-                                        text_search_right = copy.deepcopy(context_right)
-                                    else:
-                                        text_search_left = tokens_text[max(0, i - settings['generation_settings']['width_left_token']) : i]
-                                        text_search_right = tokens_text[i + len_search_term : min(i + len_search_term + settings['generation_settings']['width_right_token'], len_tokens)]
+                        if (ngram in search_terms and
+                            wordless_text_utils.check_context(i, tokens_text,
+                                                              settings = settings['context_settings'],
+                                                              search_terms_inclusion = search_terms_inclusion,
+                                                              search_terms_exclusion = search_terms_exclusion)):
+                            # Check number of lines
+                            if not settings['generation_settings']['number_lines_no_limit']:
+                                if number_lines < settings['generation_settings']['number_lines']:
+                                    number_lines += 1
                                 else:
-                                    len_context_left = 0
-                                    len_context_right = 0
+                                    break
 
-                                    context_left = []
-                                    context_right = []
+                            # Check every nth line
+                            if not settings['generation_settings']['every_nth_line_no_limit']:
+                                number_lines_nth += 1
 
-                                    while len_context_left < settings['generation_settings']['width_left_char']:
-                                        if i - 1 - len(context_left) < 0:
-                                            break
-                                        else:
-                                            token_next = tokens_text[i - 1 - len(context_left)]
-                                            len_token_next = len(token_next)
+                                if (number_lines_nth - 1) % settings['generation_settings']['every_nth_line'] > 0:
+                                    continue
 
-                                        if len_context_left + len_token_next > settings['generation_settings']['width_left_char']:
-                                            context_left.insert(0, token_next[-(settings['generation_settings']['width_left_char'] - len_context_left):])
-                                        else:
-                                            context_left.insert(0, token_next)
+                            # Search Results
+                            text_search = ngram
 
-                                        len_context_left += len_token_next
+                            if not settings['token_settings']['puncs']:
+                                ngram = text.tokens[i : i + len_search_term]
 
-                                    while len_context_right < settings['generation_settings']['width_right_char']:
-                                        if i + 1 + len(context_right) > len(text.tokens) - 1:
-                                            break
-                                        else:
-                                            token_next = tokens_text[i + len_search_term + len(context_right)]
-                                            len_token_next = len(token_next)
+                            table.setRowCount(table.rowCount() + 1)
 
-                                        if len_context_right + len_token_next > settings['generation_settings']['width_right_char']:
-                                            context_right.append(token_next[: settings['generation_settings']['width_right_char'] - len_context_right + 1])
-                                        else:
-                                            context_right.append(token_next)
+                            # Node
+                            node_text = html.escape(wordless_text_processing.wordless_word_detokenize(main, ngram, text.lang_code))
 
-                                        len_context_right += len(token_next)
+                            label_node = wordless_table.Wordless_Label_Html(f'''
+                                                                                <span style="color: {node_color}; font-weight: bold;">
+                                                                                    {node_text}
+                                                                                </span>
+                                                                            ''', main)
 
-                                    # Search Results
+                            table.setCellWidget(table.rowCount() - 1, 1, label_node)
+
+                            table.cellWidget(table.rowCount() - 1, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+
+                            table.cellWidget(table.rowCount() - 1, 1).text_raw = ngram
+                            table.cellWidget(table.rowCount() - 1, 1).text_search = text_search
+
+                            if settings['generation_settings']['width_unit'] == main.tr('Token'):
+                                context_left = text.tokens[max(0, i - settings['generation_settings']['width_left_token']) : i]
+                                context_right = text.tokens[i + len_search_term : min(i + len_search_term + settings['generation_settings']['width_right_token'], len_tokens)]
+
+                                # Search Results
+                                if settings['token_settings']['puncs']:
                                     text_search_left = copy.deepcopy(context_left)
                                     text_search_right = copy.deepcopy(context_right)
-
-                                    if not settings['token_settings']['puncs']:
-                                        context_left = text.tokens[i - len(context_left) : i]
-                                        context_right = text.tokens[i + len_search_term : i + len_search_term + len(context_right)]
-
-                                context_left = [html.escape(token) for token in context_left]
-                                context_right = [html.escape(token) for token in context_right]
-
-                                context_left_text = wordless_text_processing.wordless_word_detokenize(main, context_left, text.lang_code)
-                                context_right_text = wordless_text_processing.wordless_word_detokenize(main, context_right, text.lang_code)
-
-                                # Left
-                                table.setCellWidget(table.rowCount() - 1, 0,
-                                                    wordless_table.Wordless_Label_Html(context_left_text, main))
-
-                                table.cellWidget(table.rowCount() - 1, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-
-                                table.cellWidget(table.rowCount() - 1, 0).text_raw = context_left
-                                table.cellWidget(table.rowCount() - 1, 0).text_search = text_search_left
-
-                                # Right
-                                table.setCellWidget(table.rowCount() - 1, 2,
-                                                    wordless_table.Wordless_Label_Html(context_right_text, main))
-
-                                table.cellWidget(table.rowCount() - 1, 2).text_raw = context_right
-                                table.cellWidget(table.rowCount() - 1, 2).text_search = text_search_right
-
-                                # Token
-                                table.set_item_num_pct(table.rowCount() - 1, 3,
-                                                       i + 1, len_tokens)
-                                # Sentence
-                                if text.sentence_offsets[-1] < i:
-                                    table.set_item_num_pct(table.rowCount() - 1, 4, len_sentences, len_sentences)
                                 else:
-                                    for j, i_sentence in enumerate(text.sentence_offsets):
-                                        if i_sentence > i:
-                                            table.set_item_num_pct(table.rowCount() - 1, 4, j, len_sentences)
+                                    text_search_left = tokens_text[max(0, i - settings['generation_settings']['width_left_token']) : i]
+                                    text_search_right = tokens_text[i + len_search_term : min(i + len_search_term + settings['generation_settings']['width_right_token'], len_tokens)]
+                            else:
+                                len_context_left = 0
+                                len_context_right = 0
 
-                                            break
+                                context_left = []
+                                context_right = []
 
-                                # Paragraph
-                                if text.para_offsets[-1] < i:
-                                    table.set_item_num_pct(table.rowCount() - 1, 5, len_paras, len_paras)
-                                else:
-                                    for j, i_para in enumerate(text.para_offsets):
-                                        if i_para > i:
-                                            table.set_item_num_pct(table.rowCount() - 1, 5, j, len_paras)
+                                while len_context_left < settings['generation_settings']['width_left_char']:
+                                    if i - 1 - len(context_left) < 0:
+                                        break
+                                    else:
+                                        token_next = tokens_text[i - 1 - len(context_left)]
+                                        len_token_next = len(token_next)
 
-                                            break
+                                    if len_context_left + len_token_next > settings['generation_settings']['width_left_char']:
+                                        context_left.insert(0, token_next[-(settings['generation_settings']['width_left_char'] - len_context_left):])
+                                    else:
+                                        context_left.insert(0, token_next)
 
-                                # File
-                                table.setItem(table.rowCount() - 1, 6, QTableWidgetItem(file['name']))
+                                    len_context_left += len_token_next
+
+                                while len_context_right < settings['generation_settings']['width_right_char']:
+                                    if i + 1 + len(context_right) > len(text.tokens) - 1:
+                                        break
+                                    else:
+                                        token_next = tokens_text[i + len_search_term + len(context_right)]
+                                        len_token_next = len(token_next)
+
+                                    if len_context_right + len_token_next > settings['generation_settings']['width_right_char']:
+                                        context_right.append(token_next[: settings['generation_settings']['width_right_char'] - len_context_right])
+                                    else:
+                                        context_right.append(token_next)
+
+                                    len_context_right += len(token_next)
+
+                                # Search Results
+                                text_search_left = copy.deepcopy(context_left)
+                                text_search_right = copy.deepcopy(context_right)
+
+                                if not settings['token_settings']['puncs']:
+                                    context_left_first_puncs = text.tokens[i - len(context_left)]
+                                    context_right_last_puncs = text.tokens[i + len_search_term + len(context_right) - 1]
+                                    context_left_first = ''
+                                    context_right_last = ''
+
+                                    len_context_left_first = 0
+                                    len_context_right_last = 0
+
+                                    while len_context_left_first < len(context_left[0]):
+                                        char_next = context_left_first_puncs[-(len(context_left_first) + 1)]
+
+                                        context_left_first = char_next + context_left_first
+
+                                        if char_next.isalnum():
+                                            len_context_left_first += 1
+
+                                    while len_context_right_last < len(context_right[-1]):
+                                        char_next = context_right_last_puncs[len(context_right_last)]
+
+                                        context_right_last += char_next
+
+                                        if char_next.isalnum():
+                                            len_context_right_last += 1
+
+                                    context_left = ([context_left_first] +
+                                                    text.tokens[i - len(context_left) + 1: i])
+                                    context_right = (text.tokens[i + len_search_term : i + len_search_term + len(context_right) - 1] +
+                                                     [context_right_last])
+
+                            context_left = [html.escape(token) for token in context_left]
+                            context_right = [html.escape(token) for token in context_right]
+
+                            context_left_text = wordless_text_processing.wordless_word_detokenize(main, context_left, text.lang_code)
+                            context_right_text = wordless_text_processing.wordless_word_detokenize(main, context_right, text.lang_code)
+
+                            # Left
+                            table.setCellWidget(table.rowCount() - 1, 0,
+                                                wordless_table.Wordless_Label_Html(context_left_text, main))
+
+                            table.cellWidget(table.rowCount() - 1, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+
+                            table.cellWidget(table.rowCount() - 1, 0).text_raw = context_left
+                            table.cellWidget(table.rowCount() - 1, 0).text_search = text_search_left
+
+                            # Right
+                            table.setCellWidget(table.rowCount() - 1, 2,
+                                                wordless_table.Wordless_Label_Html(context_right_text, main))
+
+                            table.cellWidget(table.rowCount() - 1, 2).text_raw = context_right
+                            table.cellWidget(table.rowCount() - 1, 2).text_search = text_search_right
+
+                            # Token
+                            table.set_item_num_pct(table.rowCount() - 1, 3,
+                                                   i + 1, len_tokens)
+                            # Sentence
+                            if text.sentence_offsets[-1] < i:
+                                table.set_item_num_pct(table.rowCount() - 1, 4, len_sentences, len_sentences)
+                            else:
+                                for j, i_sentence in enumerate(text.sentence_offsets):
+                                    if i_sentence > i:
+                                        table.set_item_num_pct(table.rowCount() - 1, 4, j, len_sentences)
+
+                                        break
+
+                            # Paragraph
+                            if text.para_offsets[-1] < i:
+                                table.set_item_num_pct(table.rowCount() - 1, 5, len_paras, len_paras)
+                            else:
+                                for j, i_para in enumerate(text.para_offsets):
+                                    if i_para > i:
+                                        table.set_item_num_pct(table.rowCount() - 1, 5, j, len_paras)
+
+                                        break
+
+                            # File
+                            table.setItem(table.rowCount() - 1, 6, QTableWidgetItem(file['name']))
 
                 table.blockSignals(False)
                 table.setUpdatesEnabled(True)
