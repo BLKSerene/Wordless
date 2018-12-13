@@ -19,6 +19,12 @@ import openpyxl
 from wordless_widgets import wordless_box, wordless_message_box
 from wordless_utils import wordless_conversion
 
+class Wordless_Label_Html(QLabel):
+    def __init__(self, label, parent):
+        super().__init__(label, parent)
+
+        self.setTextFormat(Qt.RichText)
+
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
         if self.column() in self.tableWidget().headers_cumulative:
@@ -60,6 +66,8 @@ class Wordless_Table(QTableWidget):
         self.setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
         self.setHorizontalScrollMode(QAbstractItemView.ScrollPerPixel)
 
+        self.setMouseTracking(True)
+
         if self.header_orientation == 'horizontal':
             self.setStyleSheet(''' 
                                    QTableView {
@@ -69,6 +77,7 @@ class Wordless_Table(QTableWidget):
 
                                    QTableView::item:hover {
                                        background-color: #EEE;
+                                       color: #292929;
                                    }
                                    QTableView::item:selected {
                                        background-color: #EEE;
@@ -87,17 +96,17 @@ class Wordless_Table(QTableWidget):
                                        background-color: #3265B2;
                                    }
                                    QHeaderView::section:horizontal:pressed {
-                                       background-color: #264E8C;
+                                       background-color: #3265B2;
                                    }
 
                                    QHeaderView::section:vertical {
-                                       background-color: #888;
+                                       background-color: #737373;
                                    }
                                    QHeaderView::section:vertical:hover {
-                                       background-color: #777;
+                                       background-color: #606060;
                                    }
                                    QHeaderView::section:vertical:pressed {
-                                       background-color: #666;
+                                       background-color: #606060;
                                    }
                                ''')
         else:

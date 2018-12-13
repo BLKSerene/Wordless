@@ -138,6 +138,17 @@ def init_settings_default(main):
                     # Purple
                     '#491D76'
                 ]
+            },
+
+            'search_results': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_word': True,
+                'use_regex': False,
             }
         },
     
@@ -451,7 +462,7 @@ def init_settings_default(main):
             },
 
             'filter_settings': {
-                'freq_filter_data': main.tr('Total'),
+                'freq_filter_data': main.tr('Frequency'),
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
@@ -596,7 +607,7 @@ def init_settings_default(main):
             },
 
             'filter_settings': {
-                'freq_filter_data': main.tr('Total'),
+                'freq_filter_data': main.tr('Frequency'),
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
