@@ -6,8 +6,6 @@
 # License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
-import nltk
-
 from wordless_measures import *
 
 def init_settings_global(main):
@@ -686,7 +684,6 @@ def init_settings_global(main):
             ],
             'eng': [
                 'NLTK',
-                'e_lemma.txt',
                 'Lemmatization Lists'
             ],
             'est': [
@@ -1251,45 +1248,32 @@ def init_settings_global(main):
             }
         },
 
-        'assoc_measures': {
-            main.tr('Frequency'): nltk.collocations.BigramAssocMeasures().raw_freq,
-            main.tr('Student\'s T-test'): nltk.collocations.BigramAssocMeasures().student_t,
-            main.tr('Pearson\'s Chi-squared Test'): nltk.collocations.BigramAssocMeasures().chi_sq,
-            main.tr('Phi Coefficient'): nltk.collocations.BigramAssocMeasures().phi_sq,
-            main.tr('Pointwise Mutual Information'): nltk.collocations.BigramAssocMeasures().pmi,
-            main.tr('Likelihood Ratio'): nltk.collocations.BigramAssocMeasures().likelihood_ratio,
-            main.tr('Poisson-Stirling'): nltk.collocations.BigramAssocMeasures().poisson_stirling,
-            main.tr('Jaccard Index'): nltk.collocations.BigramAssocMeasures().jaccard,
-            main.tr('Fisher\'s Exact Test'): nltk.collocations.BigramAssocMeasures().fisher,
-            main.tr('Dice\'s Coefficient'): nltk.collocations.BigramAssocMeasures().dice
-        },
-
-        'style_dialog': '''
-            <head>
-                <style>
-                    * {
-                        margin: 0;
-                        border: 0;
-                        padding: 0;
-
-                        line-height: 1.2;
-                        text-align: justify;
-                    }
-
-                    h1 {
-                        margin-bottom: 10px;
-                        font-size: 16px;
-                        font-weight: bold;
-                    }
-
-                    p {
-                        margin-bottom: 5px;
-                    }
-                </style>
-            </head>
-        ''',
-
         'styles': {
+            'style_dialog': '''
+                <head>
+                    <style>
+                        * {
+                            margin: 0;
+                            border: 0;
+                            padding: 0;
+
+                            line-height: 1.2;
+                            text-align: justify;
+                        }
+
+                        h1 {
+                            margin-bottom: 10px;
+                            font-size: 16px;
+                            font-weight: bold;
+                        }
+
+                        p {
+                            margin-bottom: 5px;
+                        }
+                    </style>
+                </head>
+            ''',
+
             'style_hints': '''
                 <head>
                     <style>
