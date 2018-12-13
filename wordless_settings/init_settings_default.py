@@ -65,7 +65,7 @@ def init_settings_default(main):
 
             'context_settings': {
                 'inclusion': {
-                    'inclusion': True,
+                    'inclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -82,7 +82,7 @@ def init_settings_default(main):
                 },
                 
                 'exclusion': {
-                    'exclusion': True,
+                    'exclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -105,9 +105,11 @@ def init_settings_default(main):
                 'width_right_token': 10,
                 'width_right_char': 50,
                 'width_unit': main.tr('Token'),
-                
+
+                'number_lines': 100,
                 'number_lines_no_limit': True,
-                'number_lines': 25
+                'every_nth_line': 2,
+                'every_nth_line_no_limit': True
             },
 
             'table_settings': {
@@ -265,7 +267,7 @@ def init_settings_default(main):
 
             'context_settings': {
                 'inclusion': {
-                    'inclusion': True,
+                    'inclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -282,7 +284,7 @@ def init_settings_default(main):
                 },
                 
                 'exclusion': {
-                    'exclusion': True,
+                    'exclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -398,7 +400,7 @@ def init_settings_default(main):
 
             'context_settings': {
                 'inclusion': {
-                    'inclusion': True,
+                    'inclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -415,7 +417,7 @@ def init_settings_default(main):
                 },
                 
                 'exclusion': {
-                    'exclusion': True,
+                    'exclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -542,7 +544,7 @@ def init_settings_default(main):
 
             'context_settings': {
                 'inclusion': {
-                    'inclusion': True,
+                    'inclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
@@ -559,7 +561,7 @@ def init_settings_default(main):
                 },
                 
                 'exclusion': {
-                    'exclusion': True,
+                    'exclusion': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
