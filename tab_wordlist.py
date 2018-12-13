@@ -40,7 +40,9 @@ class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Search):
         dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
                                                                tab = 'wordlist',
                                                                table = self,
-                                                               cols_search = self.tr('Tokens'))
+                                                               cols_search = [
+                                                                   self.tr('Tokens')
+                                                               ])
 
         self.button_search_results.clicked.connect(dialog_search.load)
 

@@ -43,7 +43,9 @@ class Wordless_Table_Ngrams(wordless_table.Wordless_Table_Data_Search):
         dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
                                                                tab = 'ngrams',
                                                                table = self,
-                                                               cols_search = self.tr('N-grams'))
+                                                               cols_search = [
+                                                                   self.tr('N-grams')
+                                                               ])
 
         self.button_search_results.clicked.connect(dialog_search.load)
 
@@ -480,13 +482,12 @@ def init(main):
     checkbox_keyword_position_max_no_limit.stateChanged.connect(search_settings_changed)
 
     layout_search_terms = QGridLayout()
-    layout_search_terms.addWidget(list_search_terms, 0, 0, 6, 1)
+    layout_search_terms.addWidget(list_search_terms, 0, 0, 5, 1)
     layout_search_terms.addWidget(list_search_terms.button_add, 0, 1)
-    layout_search_terms.addWidget(list_search_terms.button_insert, 1, 1)
-    layout_search_terms.addWidget(list_search_terms.button_remove, 2, 1)
-    layout_search_terms.addWidget(list_search_terms.button_clear, 3, 1)
-    layout_search_terms.addWidget(list_search_terms.button_import, 4, 1)
-    layout_search_terms.addWidget(list_search_terms.button_export, 5, 1)
+    layout_search_terms.addWidget(list_search_terms.button_remove, 1, 1)
+    layout_search_terms.addWidget(list_search_terms.button_clear, 2, 1)
+    layout_search_terms.addWidget(list_search_terms.button_import, 3, 1)
+    layout_search_terms.addWidget(list_search_terms.button_export, 4, 1)
 
     layout_keyword_position = QGridLayout()
     layout_keyword_position.addWidget(label_keyword_position, 0, 0, 1, 3)
