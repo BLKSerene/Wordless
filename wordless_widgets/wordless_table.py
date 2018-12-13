@@ -24,6 +24,7 @@ class Wordless_Label_Html(QLabel):
         super().__init__(label, parent)
 
         self.setTextFormat(Qt.RichText)
+        self.setOpenExternalLinks(True)
 
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
