@@ -14,6 +14,27 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+def check_custom_settings(settings_custom, settings_default):
+    def get_keys(settings, keys):
+        for key, value in settings.items():
+            keys.append(key)
+
+            if type(value) == dict:
+                get_keys(value, keys)
+
+        return keys
+    
+    keys_custom = []
+    keys_default = []
+
+    keys_custom = get_keys(settings_custom, keys_custom)
+    keys_default = get_keys(settings_default, keys_default)
+
+    if keys_custom == keys_default:
+        return True
+    else:
+        return False
+
 def log_timing(func):
     def wrapper(widget, *args, **kwargs):
         if isinstance(widget, QMainWindow):
@@ -23,7 +44,7 @@ def log_timing(func):
 
         time_start = time.time()
 
-        func(widget, *args, **kwargs)
+        return_val = func(widget, *args, **kwargs)
 
         time_elapsed = time.time() - time_start
         time_elapsed_min = int(time_elapsed // 60)
@@ -46,7 +67,29 @@ def log_timing(func):
         else:
             main.status_bar.showMessage(f'{message_timing}')
 
+        return return_val
+
     return wrapper
+
+def check_file_existence(main, files):
+    files_found = []
+    files_missing = []
+
+    if type(files) != list:
+        files = [files]
+
+    for file in files:
+        if os.path.exists(file['path']):
+            files_found.append(file)
+        else:
+            files_missing.append(file['path'])
+
+    if files_missing:
+        QMessageBox.warning(main,
+                            main.tr('Files Missing'),
+                            main.tr('The following files no longer exist:<br>{}<br>Please check and try again.'.format('<br>'.join(files_missing))))
+
+    return files_found
 
 def merge_dicts(dicts_to_merge):
     dict_merged = {}
@@ -78,23 +121,3 @@ def merge_dicts(dicts_to_merge):
             dict_merged[key][i] = values
 
     return dict_merged
-
-def check_file_existence(main, files):
-    files_found = []
-    files_missing = []
-
-    if type(files) != list:
-        files = [files]
-
-    for file in files:
-        if os.path.exists(file['path']):
-            files_found.append(file)
-        else:
-            files_missing.append(file['path'])
-
-    if files_missing:
-        QMessageBox.warning(main,
-                            main.tr('Files Missing'),
-                            main.tr('The following files no longer exist:<br>{}<br>Please check and try again.'.format('<br>'.join(files_missing))))
-
-    return files_found

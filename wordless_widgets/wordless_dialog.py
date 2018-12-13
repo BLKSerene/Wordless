@@ -7,15 +7,17 @@
 #
 
 import copy
-import os
+import html
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_text import *
-from wordless_widgets import wordless_layout, wordless_message_box, wordless_widgets
-from wordless_utils import *
+import nltk
+
+from wordless_text import wordless_matching
+from wordless_widgets import wordless_layout, wordless_message_box, wordless_table, wordless_widgets
+from wordless_utils import wordless_misc, wordless_sorting
 
 class Wordless_Dialog(QDialog):
     def __init__(self, main, title):
@@ -46,11 +48,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
 
         self.tab = tab
         self.table = table
-
-        if type(cols_search) != list:
-            self.cols_search = [cols_search]
-        else:
-            self.cols_search = cols_search
+        self.cols_search = self.table.find_col(cols_search)
 
         self.settings = self.main.settings_custom[self.tab]['search_results']
 
@@ -67,9 +65,9 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.button_find_next = QPushButton(main.tr('Find Next'), main)
         self.button_find_prev = QPushButton(main.tr('Find Previous'), main)
         self.button_find_all = QPushButton(main.tr('Find All'), main)
-        self.button_clear_highlights = QPushButton(main.tr('Clear Highlights'), main)
         
         self.button_restore_default_settings = QPushButton(main.tr('Restore Default Settings'), main)
+        self.button_close = QPushButton(main.tr('Close'), main)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
@@ -84,26 +82,28 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.button_find_next.clicked.connect(lambda: self.find_next())
         self.button_find_prev.clicked.connect(lambda: self.find_prev())
         self.button_find_all.clicked.connect(lambda: self.find_all())
-        self.button_clear_highlights.clicked.connect(lambda: self.clear_highlights())
 
         self.button_restore_default_settings.clicked.connect(lambda: self.load_settings(defaults = True))
+        self.button_close.clicked.connect(self.accept)
 
         layout_search_terms = QGridLayout()
-        layout_search_terms.addWidget(self.list_search_terms, 0, 0, 6, 1)
+        layout_search_terms.addWidget(self.list_search_terms, 0, 0, 5, 1)
         layout_search_terms.addWidget(self.list_search_terms.button_add, 0, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_insert, 1, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_remove, 2, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_clear, 3, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_import, 4, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_export, 5, 1)
+        layout_search_terms.addWidget(self.list_search_terms.button_remove, 1, 1)
+        layout_search_terms.addWidget(self.list_search_terms.button_clear, 2, 1)
+        layout_search_terms.addWidget(self.list_search_terms.button_import, 3, 1)
+        layout_search_terms.addWidget(self.list_search_terms.button_export, 4, 1)
 
-        layout_search_buttons = QGridLayout()
-        layout_search_buttons.addWidget(self.button_find_next, 0, 0)
-        layout_search_buttons.addWidget(self.button_find_prev, 1, 0)
-        layout_search_buttons.addWidget(self.button_find_all, 2, 0)
-        layout_search_buttons.addWidget(self.button_clear_highlights, 4, 0)
+        layout_buttons_right = QGridLayout()
+        layout_buttons_right.addWidget(self.button_find_next, 0, 0)
+        layout_buttons_right.addWidget(self.button_find_prev, 1, 0)
+        layout_buttons_right.addWidget(self.button_find_all, 2, 0)
 
-        layout_search_buttons.addWidget(self.button_restore_default_settings, 5, 0, Qt.AlignBottom)
+        layout_buttons_right.setRowStretch(3, 1)
+
+        layout_buttons_bottom = QGridLayout()
+        layout_buttons_bottom.addWidget(self.button_restore_default_settings, 0, 0)
+        layout_buttons_bottom.addWidget(self.button_close, 0, 1, Qt.AlignRight)
 
         self.setLayout(QGridLayout())
         self.layout().addWidget(self.label_search_term, 0, 0)
@@ -111,18 +111,31 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.layout().addWidget(self.line_edit_search_term, 1, 0, 1, 2)
         self.layout().addLayout(layout_search_terms, 2, 0, 1, 2)
 
-        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 3, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_ignore_case, 3, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_inflected_forms, 4, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_whole_word, 5, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_use_regex, 6, 0, 1, 2)
 
-        self.layout().addWidget(self.checkbox_ignore_case, 4, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_match_whole_word, 6, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_use_regex, 7, 0, 1, 2)
+        self.layout().addWidget(wordless_layout.Wordless_Separator(self, orientation = 'Vertical'), 0, 2, 7, 1)
 
-        self.layout().addWidget(wordless_layout.Wordless_Separator(self, orientation = 'Vertical'), 0, 2, 8, 1)
+        self.layout().addLayout(layout_buttons_right, 0, 3, 7, 1)
 
-        self.layout().addLayout(layout_search_buttons, 0, 3, 8, 1)
+        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 7, 0, 1, 4)
+
+        self.layout().addLayout(layout_buttons_bottom, 8, 0, 1, 4)
+
+        self.layout().setRowStretch(9, 1)
 
         self.main.tabs.currentChanged.connect(self.accept)
+
+        self.load_settings()
+
+        self.search_settings_changed()
+
+    def closeEvent(self, event):
+        self.clear_highlights()
+
+        event.accept()
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -153,171 +166,167 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.settings['multi_search_mode'] = self.checkbox_multi_search_mode.isChecked()
 
         if self.settings['multi_search_mode']:
-            self.setFixedSize(350, 350)
+            self.setFixedSize(345, 320)
         else:
-            self.setFixedSize(300, 200)
+            self.setFixedSize(345, 205)
 
     @ wordless_misc.log_timing
     def find_next(self):
-        items_found = self.find_all()
+        indexes_found = self.find_all()
 
         self.table.hide()
         self.table.blockSignals(True)
 
         # Scroll to the next found item
-        if items_found:
+        if indexes_found:
             selected_rows = self.table.selected_rows()
 
             self.table.clearSelection()
 
             if selected_rows:
-                for item in items_found:
-                    if item.row() > selected_rows[-1]:
-                        self.table.selectRow(item.row())
+                for row, _ in indexes_found:
+                    if row > selected_rows[-1]:
+                        self.table.selectRow(row)
                         self.table.setFocus()
 
-                        self.table.scrollToItem(item)
+                        self.table.scrollToItem(self.table.item(row, 0))
 
                         break
             else:
-                self.table.scrollToItem(items_found[0])
-                self.table.selectRow(items_found[0].row())
+                self.table.scrollToItem(self.table.item(indexes_found[0][0], 0))
+                self.table.selectRow(indexes_found[0][0])
 
-            # Scroll to top if no next items exist
+            # Scroll to top if this is the last item
             if not self.table.selectedItems():
-                self.table.scrollToItem(items_found[0])
-                self.table.selectRow(items_found[0].row())
+                self.table.scrollToItem(self.table.item(indexes_found[0][0], 0))
+                self.table.selectRow(indexes_found[0][0])
 
         self.table.blockSignals(False)
         self.table.show()
 
     @ wordless_misc.log_timing
     def find_prev(self):
-        items_found = self.find_all()
+        indexes_found = self.find_all()
 
         self.table.hide()
         self.table.blockSignals(True)
 
         # Scroll to the previous found item
-        if items_found:
+        if indexes_found:
             selected_rows = self.table.selected_rows()
 
             self.table.clearSelection()
 
             if selected_rows:
-                for item in reversed(items_found):
-                    if item.row() < selected_rows[0]:
-                        self.table.selectRow(item.row())
+                for row, _ in reversed(indexes_found):
+                    if row < selected_rows[0]:
+                        self.table.selectRow(row)
                         self.table.setFocus()
 
-                        self.table.scrollToItem(item)
+                        self.table.scrollToItem(self.table.item(row, 0))
 
                         break
             else:
-                self.table.scrollToItem(items_found[-1])
-                self.table.selectRow(items_found[-1].row())
+                self.table.scrollToItem(self.table.item(indexes_found[-1][0], 0))
+                self.table.selectRow(indexes_found[-1][0])
 
             # Scroll to top if no next items exist
             if not self.table.selectedItems():
-                self.table.scrollToItem(items_found[-1])
-                self.table.selectRow(items_found[-1].row())
+                self.table.scrollToItem(self.table.item(indexes_found[-1][0], 0))
+                self.table.selectRow(indexes_found[-1][0])
 
         self.table.blockSignals(False)
         self.table.show()
 
     @ wordless_misc.log_timing
     def find_all(self):
-        search_terms_files = set()
-        items_found = []
-
-        cols_search = self.table.find_col(self.cols_search)
+        search_terms = set()
+        indexes_found = []
 
         if (self.settings['multi_search_mode'] and self.settings['search_terms'] or
             not self.settings['multi_search_mode'] and self.settings['search_term']):
-            if self.settings['multi_search_mode']:
-                search_terms = self.settings['search_terms']
-            else:
-                search_terms = [self.settings['search_term']]
+            results = {}
 
-            # Create temporary file
-            with open('wordless_text_temp.txt', 'w', encoding = 'utf_8') as f:
+            self.clear_highlights()
+
+            if self.tab == 'concordancer':
                 for row in range(self.table.rowCount()):
-                    for col in cols_search:
-                        f.write(f'{self.table.item(row, col).text()}\n')
+                    for col in self.cols_search:
+                        results[(row, col)] = self.table.cellWidget(row, col).text_search
+            else:
+                for row in range(self.table.rowCount()):
+                    for col in self.cols_search:
+                        try:
+                            results[(row, col)] = self.table.item(row, col).text_raw
+                        except:
+                            results[(row, col)] = [self.table.item(row, col).text()]
 
-            file_temp = self.main.wordless_files._new_file('wordless_text_temp.txt', auto_detect = False)
-            file_temp_text = wordless_text.Wordless_Text(self.main, file_temp)
-
-            with open('wordless_text_temp.txt', 'r', encoding = 'utf_8') as f:
-                file_temp_text.tokens = [line.rstrip().split() for line in f]
+            items = [token for text in results.values() for token in text]
 
             for file in self.table.settings['file']['files_open']:
                 if file['selected']:
-                    file_temp_text.lang = file['lang_code']
+                    search_terms |= wordless_matching.match_search_terms(self.main, items,
+                                                                         lang_code = file['lang_code'],
+                                                                         settings = self.settings)
 
-                    search_terms_files |= file_temp_text.match_tokens(search_terms,
-                                                                      self.settings['ignore_case'],
-                                                                      self.settings['match_inflected_forms'],
-                                                                      self.settings['match_whole_word'],
-                                                                      self.settings['use_regex'])
+            for search_term in search_terms:
+                len_search_term = len(search_term)
 
-            os.remove('wordless_text_temp.txt')
+                for (row, col), text in results.items():
+                    for ngram in nltk.ngrams(text, len_search_term):
+                        if ngram == search_term:
+                            indexes_found.append([row, col])
 
-            for row in range(self.table.rowCount()):
-                for col in cols_search:
-                    item = self.table.item(row, col)
-
-                    if item.text() in search_terms_files:
-                        items_found.append(item)
-
-            if items_found:
-                self.clear_highlights()
-
+            if indexes_found:
                 self.table.hide()
                 self.table.blockSignals(True)
+                self.table.setUpdatesEnabled(False)
 
-                for item in items_found:
-                    item.setForeground(QBrush(QColor('#FFF')))
-                    item.setBackground(QBrush(QColor('#E53E3A')))
+                if self.tab == 'concordancer':
+                    for row, col in indexes_found:
+                        self.table.cellWidget(row, col).setStyleSheet('border: 1px solid #E53E3A;')
+                else:
+                    for row, col in indexes_found:
+                        self.table.item(row, col).setForeground(QBrush(QColor('#FFF')))
+                        self.table.item(row, col).setBackground(QBrush(QColor('#E53E3A')))
 
                 self.table.blockSignals(False)
+                self.table.setUpdatesEnabled(True)
                 self.table.show()
             else:
                 wordless_message_box.wordless_message_box_no_search_results(self.main)
 
-            if len(items_found) == 0:
+            if len(indexes_found) == 0:
                 self.main.status_bar.showMessage(self.tr('No items found.'))
-            elif len(items_found) == 1:
+            elif len(indexes_found) == 1:
                 self.main.status_bar.showMessage(self.tr('Found 1 item.'))
             else:
-                self.main.status_bar.showMessage(self.tr(f'Found {len(items_found):,} items.'))
+                self.main.status_bar.showMessage(self.tr(f'Found {len(indexes_found):,} items.'))
         else:
             wordless_message_box.wordless_message_box_empty_search_term(self.main)
 
-        return items_found
+        return sorted(indexes_found)
 
-    @ wordless_misc.log_timing
     def clear_highlights(self):
         self.table.hide()
         self.table.blockSignals(True)
+        self.table.setUpdatesEnabled(False)
 
-        for row in range(self.table.rowCount()):
-            for col in range(self.table.columnCount()):
-                item = self.table.item(row, col)
-
-                item.setForeground(QBrush(QColor('#292929')))
-                item.setBackground(QBrush(QColor('#FFF')))
+        if self.tab == 'concordancer':
+            for row in range(self.table.rowCount()):
+                for col in self.cols_search:
+                    self.table.cellWidget(row, col).setStyleSheet('border: 0')
+        else:
+            for row in range(self.table.rowCount()):
+                for col in self.cols_search:
+                    self.table.item(row, col).setForeground(QBrush(QColor('#292929')))
+                    self.table.item(row, col).setBackground(QBrush(QColor('#FFF')))
 
         self.table.blockSignals(False)
+        self.table.setUpdatesEnabled(True)
         self.table.show()
 
-        self.main.status_bar.showMessage(self.tr('Highlights Cleared!'))
-
     def load(self):
-        self.load_settings()
-
-        self.search_settings_changed()
-
         self.show()
 
 class Wordless_Dialog_Context_Settings(Wordless_Dialog):
@@ -371,13 +380,12 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         layout_inclusion_multi_search_mode.addWidget(self.checkbox_inclusion_multi_search_mode, 0, 1, Qt.AlignRight)
 
         layout_inclusion_search_terms = QGridLayout()
-        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms, 0, 0, 6, 1)
+        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms, 0, 0, 5, 1)
         layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_add, 0, 1)
-        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_insert, 1, 1)
-        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_remove, 2, 1)
-        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_clear, 3, 1)
-        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_import, 4, 1)
-        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_export, 5, 1)
+        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_remove, 1, 1)
+        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_clear, 2, 1)
+        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_import, 3, 1)
+        layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_export, 4, 1)
 
         self.group_box_inclusion.setLayout(QGridLayout())
         self.group_box_inclusion.layout().addLayout(layout_inclusion_multi_search_mode, 0, 0, 1, 4)
@@ -445,13 +453,12 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         layout_exclusion_multi_search_mode.addWidget(self.checkbox_exclusion_multi_search_mode, 0, 1, Qt.AlignRight)
 
         layout_exclusion_search_terms = QGridLayout()
-        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms, 0, 0, 6, 1)
+        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms, 0, 0, 5, 1)
         layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_add, 0, 1)
-        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_insert, 1, 1)
-        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_remove, 2, 1)
-        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_clear, 3, 1)
-        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_import, 4, 1)
-        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_export, 5, 1)
+        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_remove, 1, 1)
+        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_clear, 2, 1)
+        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_import, 3, 1)
+        layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_export, 4, 1)
 
         self.group_box_exclusion.setLayout(QGridLayout())
         self.group_box_exclusion.layout().addLayout(layout_exclusion_multi_search_mode, 0, 0, 1, 4)
@@ -508,12 +515,13 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
 
         self.checkbox_inclusion_multi_search_mode.setChecked(settings['inclusion']['multi_search_mode'])
 
-        self.line_edit_inclusion_search_term.setText(settings['inclusion']['search_term'])
+        if not defaults:
+            self.line_edit_inclusion_search_term.setText(settings['inclusion']['search_term'])
 
-        self.list_inclusion_search_terms.clear()
+            self.list_inclusion_search_terms.clear()
 
-        for search_term in settings['inclusion']['search_terms']:
-            self.list_inclusion_search_terms.add_item(search_term)
+            for search_term in settings['inclusion']['search_terms']:
+                self.list_inclusion_search_terms.add_item(search_term)
 
         self.checkbox_inclusion_ignore_case.setChecked(settings['inclusion']['ignore_case'])
         self.checkbox_inclusion_match_inflected_forms.setChecked(settings['inclusion']['match_inflected_forms'])
@@ -543,12 +551,13 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
 
         self.checkbox_exclusion_multi_search_mode.setChecked(settings['exclusion']['multi_search_mode'])
 
-        self.line_edit_exclusion_search_term.setText(settings['exclusion']['search_term'])
+        if not defaults:
+            self.line_edit_exclusion_search_term.setText(settings['exclusion']['search_term'])
 
-        self.list_exclusion_search_terms.clear()
+            self.list_exclusion_search_terms.clear()
 
-        for search_term in settings['exclusion']['search_terms']:
-            self.list_exclusion_search_terms.add_item(search_term)
+            for search_term in settings['exclusion']['search_terms']:
+                self.list_exclusion_search_terms.add_item(search_term)
 
         self.checkbox_exclusion_ignore_case.setChecked(settings['exclusion']['ignore_case'])
         self.checkbox_exclusion_match_inflected_forms.setChecked(settings['exclusion']['match_inflected_forms'])

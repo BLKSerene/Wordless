@@ -13,6 +13,26 @@ import nltk
 
 from wordless_widgets import wordless_box, wordless_dialog, wordless_list
 
+def wordless_widgets_no_limit(main, double = False):
+    def no_limit_changed():
+        if checkbox_no_limit.isChecked():
+            spin_box_no_limit.setEnabled(False)
+        else:
+            spin_box_no_limit.setEnabled(True)
+
+    if double:
+        spin_box_no_limit = QDoubleSpinBox(main)
+    else:
+        spin_box_no_limit = QSpinBox(main)
+
+    checkbox_no_limit = QCheckBox(main.tr('No Limit'), main)
+
+    checkbox_no_limit.stateChanged.connect(no_limit_changed)
+
+    no_limit_changed()
+
+    return spin_box_no_limit, checkbox_no_limit
+
 # Token Settings
 def wordless_widgets_token_settings(main):
     def words_changed():
@@ -81,7 +101,6 @@ def wordless_widgets_search_settings(main):
 
             list_search_terms.show()
             list_search_terms.button_add.show()
-            list_search_terms.button_insert.show()
             list_search_terms.button_remove.show()
             list_search_terms.button_clear.show()
             list_search_terms.button_import.show()
@@ -93,7 +112,6 @@ def wordless_widgets_search_settings(main):
 
             list_search_terms.hide()
             list_search_terms.button_add.hide()
-            list_search_terms.button_insert.hide()
             list_search_terms.button_remove.hide()
             list_search_terms.button_clear.hide()
             list_search_terms.button_import.hide()
@@ -355,53 +373,7 @@ def wordless_widgets_plot_settings(main):
             checkbox_use_pct, checkbox_use_cumulative)
 
 # Filter Settings
-def wordless_widgets_filter1(main, filter_min = 0, filter_max = 100):
-    def filter_no_limit_changed():
-        if checkbox_no_limit.isChecked():
-            spin_box_max.setEnabled(False)
-        else:
-            spin_box_max.setEnabled(True)
-
-    def filter_min_changed():
-        if spin_box_min.value() > spin_box_max.value():
-            spin_box_max.setValue(spin_box_min.value())
-
-    def filter_max_changed():
-        if spin_box_min.value() > spin_box_max.value():
-            spin_box_min.setValue(spin_box_max.value())
-
-    checkbox_no_limit = QCheckBox(main.tr('No Limit'), main)
-    label_min = QLabel(main.tr('From'), main)
-    label_max = QLabel(main.tr('To'), main)
-
-    spin_box_min = QSpinBox(main)
-    spin_box_max = QSpinBox(main)
-
-    spin_box_min.setRange(filter_min, filter_max)
-    spin_box_max.setRange(filter_min, filter_max)
-
-    checkbox_no_limit.stateChanged.connect(filter_no_limit_changed)
-    spin_box_min.valueChanged.connect(filter_min_changed)
-    spin_box_max.valueChanged.connect(filter_max_changed)
-
-    filter_no_limit_changed()
-    filter_min_changed()
-    filter_max_changed()
-
-    return checkbox_no_limit, label_min, spin_box_min, label_max, spin_box_max
-
 def wordless_widgets_filter(main, filter_min, filter_max):
-    def no_limit_changed():
-        if checkbox_min_no_limit.isChecked():
-            spin_box_min.setEnabled(False)
-        else:
-            spin_box_min.setEnabled(True)
-
-        if checkbox_max_no_limit.isChecked():
-            spin_box_max.setEnabled(False)
-        else:
-            spin_box_max.setEnabled(True)
-
     def min_changed():
         if spin_box_min.value() > spin_box_max.value():
             spin_box_max.setValue(spin_box_min.value())
@@ -411,41 +383,26 @@ def wordless_widgets_filter(main, filter_min, filter_max):
             spin_box_min.setValue(spin_box_max.value())
 
     label_min = QLabel(main.tr('From'), main)
-    spin_box_min = QSpinBox(main)
-    checkbox_min_no_limit = QCheckBox(main.tr('No Limit'), main)
+    (spin_box_min,
+     checkbox_min_no_limit) = wordless_widgets_no_limit(main)
 
     label_max = QLabel(main.tr('To'), main)
-    spin_box_max = QSpinBox(main)
-    checkbox_max_no_limit = QCheckBox(main.tr('No Limit'), main)
+    (spin_box_max,
+     checkbox_max_no_limit) = wordless_widgets_no_limit(main)
 
     spin_box_min.setRange(filter_min, filter_max)
     spin_box_max.setRange(filter_min, filter_max)
 
     spin_box_min.valueChanged.connect(min_changed)
-    checkbox_min_no_limit.stateChanged.connect(no_limit_changed)
-
     spin_box_max.valueChanged.connect(max_changed)
-    checkbox_max_no_limit.stateChanged.connect(no_limit_changed)
 
     min_changed()
     max_changed()
-    no_limit_changed()
 
     return (label_min, spin_box_min, checkbox_min_no_limit,
             label_max, spin_box_max, checkbox_max_no_limit)
 
 def wordless_widgets_filter_measures(main, filter_min = -10000, filter_max = 10000):
-    def no_limit_changed():
-        if checkbox_min_no_limit.isChecked():
-            spin_box_min.setEnabled(False)
-        else:
-            spin_box_min.setEnabled(True)
-
-        if checkbox_max_no_limit.isChecked():
-            spin_box_max.setEnabled(False)
-        else:
-            spin_box_max.setEnabled(True)
-
     def min_changed():
         if spin_box_min.value() > spin_box_max.value():
             spin_box_max.setValue(spin_box_min.value())
@@ -464,27 +421,23 @@ def wordless_widgets_filter_measures(main, filter_min = -10000, filter_max = 100
         spin_box_max.setSingleStep(0.1 ** precision)
 
     label_min = QLabel(main.tr('From'), main)
-    spin_box_min = QDoubleSpinBox(main)
-    checkbox_min_no_limit = QCheckBox(main.tr('No Limit'), main)
+    (spin_box_min,
+     checkbox_min_no_limit) = wordless_widgets_no_limit(main, double = True)
 
     label_max = QLabel(main.tr('To'), main)
-    spin_box_max = QDoubleSpinBox(main)
-    checkbox_max_no_limit = QCheckBox(main.tr('No Limit'), main)
+    (spin_box_max,
+     checkbox_max_no_limit) = wordless_widgets_no_limit(main, double = True)
 
     spin_box_min.setRange(filter_min, filter_max)
     spin_box_max.setRange(filter_min, filter_max)
 
     spin_box_min.valueChanged.connect(min_changed)
-    checkbox_min_no_limit.stateChanged.connect(no_limit_changed)
-
     spin_box_max.valueChanged.connect(max_changed)
-    checkbox_max_no_limit.stateChanged.connect(no_limit_changed)
 
     main.wordless_settings.wordless_settings_changed.connect(precision_changed)
 
     min_changed()
     max_changed()
-    no_limit_changed()
     
     precision_changed()
 
@@ -492,17 +445,6 @@ def wordless_widgets_filter_measures(main, filter_min = -10000, filter_max = 100
             label_max, spin_box_max, checkbox_max_no_limit)
 
 def wordless_widgets_filter_p_value(main):
-    def no_limit_changed():
-        if checkbox_min_no_limit.isChecked():
-            spin_box_min.setEnabled(False)
-        else:
-            spin_box_min.setEnabled(True)
-
-        if checkbox_max_no_limit.isChecked():
-            spin_box_max.setEnabled(False)
-        else:
-            spin_box_max.setEnabled(True)
-
     def min_changed():
         if spin_box_min.value() > spin_box_max.value():
             spin_box_max.setValue(spin_box_min.value())
@@ -521,27 +463,23 @@ def wordless_widgets_filter_p_value(main):
         spin_box_max.setSingleStep(0.1 ** precision)
 
     label_min = QLabel(main.tr('From'), main)
-    spin_box_min = QDoubleSpinBox(main)
-    checkbox_min_no_limit = QCheckBox(main.tr('No Limit'), main)
+    (spin_box_min,
+     checkbox_min_no_limit) = wordless_widgets_no_limit(main, double = True)
 
     label_max = QLabel(main.tr('To'), main)
-    spin_box_max = QDoubleSpinBox(main)
-    checkbox_max_no_limit = QCheckBox(main.tr('No Limit'), main)
+    (spin_box_max,
+     checkbox_max_no_limit) = wordless_widgets_no_limit(main, double = True)
 
     spin_box_min.setRange(0, 1)
     spin_box_max.setRange(0, 1)
 
     spin_box_min.valueChanged.connect(min_changed)
-    checkbox_min_no_limit.stateChanged.connect(no_limit_changed)
-
     spin_box_max.valueChanged.connect(max_changed)
-    checkbox_max_no_limit.stateChanged.connect(no_limit_changed)
 
     main.wordless_settings.wordless_settings_changed.connect(precision_changed)
 
     min_changed()
     max_changed()
-    no_limit_changed()
 
     precision_changed()
 

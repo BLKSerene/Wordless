@@ -183,6 +183,9 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'default'):
     text = ''
 
+    if lang_code not in main.settings_global['word_detokenizers']:
+        lang_code = 'other'
+
     if word_detokenizer == 'default':
         word_detokenizer = main.settings_custom['word_detokenization']['word_detokenizers'][lang_code]
 

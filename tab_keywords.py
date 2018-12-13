@@ -41,7 +41,9 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Search):
         dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
                                                                tab = 'keywords',
                                                                table = self,
-                                                               cols_search = [self.tr('Keywords')])
+                                                               cols_search = [
+                                                                   self.tr('Keywords')
+                                                               ])
 
         self.button_search_results.clicked.connect(dialog_search.load)
 
