@@ -66,13 +66,18 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
 
             ['<a href="http://www.nltk.org/">NLTK</a>',
              '3.4',
-             'Steven Bird, Edward Loper, Ewan Klein',
+             'Steven Bird, Liling Tan, Dan Garrette,<br>Peter Ljunglöf, Joel Nothman, Mikhail Korobov,<br>Alexis Dimitriadis',
              '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
 
             ['<a href="https://github.com/delph-in/pydelphin">PyDelphin</a>',
              '0.9.1',
              'Michael Wayne Goodman, T.J. Trimble, Guy Emerson,<br>Alex Kuhnle, Francis Bond, Angie McMillan-Major',
              '<a href="https://github.com/delph-in/pydelphin/blob/develop/LICENSE">MIT</a>'],
+
+            ['<a href="https://github.com/alvations/sacremoses">SacreMoses</a>',
+             '0.0.5',
+             'Liling Tan',
+             '<a href="https://github.com/alvations/sacremoses#license">LGPL-2.1</a>'],
 
             ['<a href="https://spacy.io/">spaCy</a>',
              '2.0.16',
