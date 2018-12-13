@@ -32,14 +32,12 @@ class Wordless_List(QListWidget):
         self.itemSelectionChanged.connect(self.selection_changed)
 
         self.button_add = QPushButton(self.tr('Add'), self)
-        self.button_insert = QPushButton(self.tr('Insert'), self)
         self.button_remove = QPushButton(self.tr('Remove'), self)
         self.button_clear = QPushButton(self.tr('Clear'), self)
         self.button_import = QPushButton(self.tr('Import'), self)
         self.button_export = QPushButton(self.tr('Export'), self)
 
         self.button_add.clicked.connect(self.add_item)
-        self.button_insert.clicked.connect(self.insert_item)
         self.button_remove.clicked.connect(self.remove_item)
         self.button_clear.clicked.connect(self.clear_list)
         self.button_import.clicked.connect(self.import_list)
@@ -92,10 +90,8 @@ class Wordless_List(QListWidget):
 
     def selection_changed(self):
         if self.selectedIndexes():
-            self.button_insert.setEnabled(True)
             self.button_remove.setEnabled(True)
         else:
-            self.button_insert.setEnabled(False)
             self.button_remove.setEnabled(False)
 
     def _new_item(self):
@@ -123,16 +119,6 @@ class Wordless_List(QListWidget):
             self.editItem(new_item)
             
         self.item(self.count() - 1).setSelected(True)
-
-        self.itemChanged.emit(self.item(0))
-
-    def insert_item(self):
-        i = self.selectedIndexes()[0].row()
-        new_item = self._new_item()
-
-        self.insertItem(i, new_item)
-        self.editItem(new_item)
-        self.item(i).setSelected(True)
 
         self.itemChanged.emit(self.item(0))
 

@@ -21,7 +21,7 @@ from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
 
-class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data):
+class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Search):
     def __init__(self, main):
         super().__init__(main,
                          headers = [
@@ -43,6 +43,17 @@ class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data):
                              main.tr('Sentence No.'),
                              main.tr('Paragraph No.')
                          ])
+
+        dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
+                                                               tab = 'concordancer',
+                                                               table = self,
+                                                               cols_search = [
+                                                                   self.tr('Left'),
+                                                                   self.tr('Node'),
+                                                                   self.tr('Right')
+                                                               ])
+
+        self.button_search_results.clicked.connect(dialog_search.load)
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_plot = QPushButton(self.tr('Generate Plot'), self)
@@ -529,12 +540,14 @@ def init(main):
 
     table_concordancer = Wordless_Table_Concordancer(main)
 
-    tab_concordancer.layout_table.addWidget(table_concordancer, 0, 0, 1, 5)
-    tab_concordancer.layout_table.addWidget(table_concordancer.button_generate_table, 1, 0)
-    tab_concordancer.layout_table.addWidget(table_concordancer.button_generate_plot, 1, 1)
-    tab_concordancer.layout_table.addWidget(table_concordancer.button_export_selected, 1, 2)
-    tab_concordancer.layout_table.addWidget(table_concordancer.button_export_all, 1, 3)
-    tab_concordancer.layout_table.addWidget(table_concordancer.button_clear, 1, 4)
+    tab_concordancer.layout_table.addWidget(table_concordancer.label_number_results, 0, 0)
+    tab_concordancer.layout_table.addWidget(table_concordancer.button_search_results, 0, 4)
+    tab_concordancer.layout_table.addWidget(table_concordancer, 1, 0, 1, 5)
+    tab_concordancer.layout_table.addWidget(table_concordancer.button_generate_table, 2, 0)
+    tab_concordancer.layout_table.addWidget(table_concordancer.button_generate_plot, 2, 1)
+    tab_concordancer.layout_table.addWidget(table_concordancer.button_export_selected, 2, 2)
+    tab_concordancer.layout_table.addWidget(table_concordancer.button_export_all, 2, 3)
+    tab_concordancer.layout_table.addWidget(table_concordancer.button_clear, 2, 4)
 
     # Token Settings
     group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
@@ -573,13 +586,12 @@ def init(main):
     checkbox_use_regex.stateChanged.connect(search_settings_changed)
 
     layout_search_terms = QGridLayout()
-    layout_search_terms.addWidget(list_search_terms, 0, 0, 6, 1)
+    layout_search_terms.addWidget(list_search_terms, 0, 0, 5, 1)
     layout_search_terms.addWidget(list_search_terms.button_add, 0, 1)
-    layout_search_terms.addWidget(list_search_terms.button_insert, 1, 1)
-    layout_search_terms.addWidget(list_search_terms.button_remove, 2, 1)
-    layout_search_terms.addWidget(list_search_terms.button_clear, 3, 1)
-    layout_search_terms.addWidget(list_search_terms.button_import, 4, 1)
-    layout_search_terms.addWidget(list_search_terms.button_export, 5, 1)
+    layout_search_terms.addWidget(list_search_terms.button_remove, 1, 1)
+    layout_search_terms.addWidget(list_search_terms.button_clear, 2, 1)
+    layout_search_terms.addWidget(list_search_terms.button_import, 3, 1)
+    layout_search_terms.addWidget(list_search_terms.button_export, 4, 1)
 
     layout_context_settings = QGridLayout()
     layout_context_settings.addWidget(label_context_settings, 0, 0)
@@ -717,6 +729,7 @@ def init(main):
 @ wordless_misc.log_timing
 def generate_table(main, table):
     settings = main.settings_custom['concordancer']
+
     files = main.wordless_files.get_selected_files()
 
     if files:
@@ -762,6 +775,7 @@ def generate_table(main, table):
                 len_sentences = len(text.sentences)
                 len_tokens = len(text.tokens)
 
+                table.hide()
                 table.blockSignals(True)
                 table.setUpdatesEnabled(False)
 
@@ -771,45 +785,65 @@ def generate_table(main, table):
                     tokens_text = text.tokens_no_puncs
 
                 search_terms = wordless_matching.match_search_terms(main, tokens_text,
-                                                                lang_code = text.lang_code,
-                                                                settings = settings['search_settings'])
+                                                                    lang_code = text.lang_code,
+                                                                    settings = settings['search_settings'])
 
                 (search_terms_inclusion,
                  search_terms_exclusion) = wordless_matching.match_search_terms_context(main, tokens_text,
                                                                                         lang_code = text.lang_code,
                                                                                         settings = settings['context_settings'])
+                if search_terms:
+                    len_search_term_min = min([len(search_term) for search_term in search_terms])
+                    len_search_term_max = max([len(search_term) for search_term in search_terms])
+                else:
+                    len_search_term_min = 0
+                    len_search_term_max = 0
 
-                for search_term in search_terms:
-                    len_search_term = len(search_term)
+                node_color = settings['sorting_settings']['highlight_colors'][0]
 
+                for len_search_term in range(len_search_term_min, len_search_term_max + 1):
                     for i, ngram in enumerate(nltk.ngrams(tokens_text, len_search_term)):
-                        if ngram == search_term:
+                        if ngram in search_terms:
                             if wordless_text_utils.check_context(i, tokens_text,
                                                                  settings = settings['context_settings'],
                                                                  search_terms_inclusion = search_terms_inclusion,
                                                                  search_terms_exclusion = search_terms_exclusion):
+                                # Search Results
+                                text_search = ngram
+
                                 if not settings['token_settings']['puncs']:
-                                    ngram = [text.tokens[i + j] for j in range(len(ngram))]
+                                    ngram = text.tokens[i : i + len_search_term]
 
                                 table.setRowCount(table.rowCount() + 1)
 
                                 # Node
                                 node_text = html.escape(wordless_text_processing.wordless_word_detokenize(main, ngram, text.lang_code))
 
-                                table.setCellWidget(table.rowCount() - 1, 1,
-                                                    QLabel(f'''
-                                                                <span style="color: {settings["sorting_settings"]["highlight_colors"][0]};
-                                                                             font-weight: bold;">
-                                                                    {node_text}
-                                                                </span>
-                                                            ''', main))
+                                label_node = wordless_table.Wordless_Label_Html(f'''
+                                                                                    <span style="color: {node_color};
+                                                                                                 font-weight: bold;">
+                                                                                        {node_text}
+                                                                                    </span>
+                                                                                ''', main)
 
-                                table.cellWidget(table.rowCount() - 1, 1).setTextFormat(Qt.RichText)
+                                table.setCellWidget(table.rowCount() - 1, 1, label_node)
+
                                 table.cellWidget(table.rowCount() - 1, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+
+                                table.cellWidget(table.rowCount() - 1, 1).text_raw = ngram
+                                table.cellWidget(table.rowCount() - 1, 1).text_search = text_search
 
                                 if settings['generation_settings']['width_unit'] == main.tr('Token'):
                                     context_left = text.tokens[max(0, i - settings['generation_settings']['width_left_token']) : i]
                                     context_right = text.tokens[i + len_search_term : min(i + len_search_term + settings['generation_settings']['width_right_token'], len_tokens)]
+
+                                    # Search Results
+                                    if settings['token_settings']['puncs']:
+                                        text_search_left = copy.deepcopy(context_left)
+                                        text_search_right = copy.deepcopy(context_right)
+                                    else:
+                                        text_search_left = tokens_text[max(0, i - settings['generation_settings']['width_left_token']) : i]
+                                        text_search_right = tokens_text[i + len_search_term : min(i + len_search_term + settings['generation_settings']['width_right_token'], len_tokens)]
                                 else:
                                     len_context_left = 0
                                     len_context_right = 0
@@ -821,24 +855,11 @@ def generate_table(main, table):
                                         if i - 1 - len(context_left) < 0:
                                             break
                                         else:
-                                            token_next = text.tokens[i - 1 - len(context_left)]
-
-                                            if settings['token_settings']['puncs']:
-                                                len_token_next = len(token_next)
-                                            else:
-                                                len_token_next = len(token_next) - len([char for char in token_next if not char.isalnum()])
+                                            token_next = tokens_text[i - 1 - len(context_left)]
+                                            len_token_next = len(token_next)
 
                                         if len_context_left + len_token_next > settings['generation_settings']['width_left_char']:
-                                            if settings['token_settings']['puncs']:
-                                                context_left.insert(0, token_next[-(settings['generation_settings']['width_left_char'] - len_context_left):])
-                                            else:
-                                                for j, char in reversed(list(enumerate(token_next))):
-                                                    token_next_seg = token_next[j:]
-
-                                                    if len(token_next_seg) - len([char for char in token_next_seg if not char.isalnum()]) == settings['generation_settings']['width_left_char'] - len_context_left:
-                                                        context_left.insert(0, token_next_seg)
-
-                                                        break
+                                            context_left.insert(0, token_next[-(settings['generation_settings']['width_left_char'] - len_context_left):])
                                         else:
                                             context_left.insert(0, token_next)
 
@@ -848,28 +869,23 @@ def generate_table(main, table):
                                         if i + 1 + len(context_right) > len(text.tokens) - 1:
                                             break
                                         else:
-                                            token_next = text.tokens[i + len_search_term + len(context_right)]
-
-                                            if settings['token_settings']['puncs']:
-                                                len_token_next = len(token_next)
-                                            else:
-                                                len_token_next = len(token_next) - len([char for char in token_next if not char.isalnum()])
+                                            token_next = tokens_text[i + len_search_term + len(context_right)]
+                                            len_token_next = len(token_next)
 
                                         if len_context_right + len_token_next > settings['generation_settings']['width_right_char']:
-                                            if settings['token_settings']['puncs']:
-                                                context_right.append(token_next[: settings['generation_settings']['width_right_char'] - len_context_right + 1])
-                                            else:
-                                                for j, char in enumerate(token_next):
-                                                    token_next_seg = token_next[: j + 1]
-
-                                                    if len(token_next_seg) - len([char for char in token_next_seg if not char.isalnum()]) == settings['generation_settings']['width_right_char'] - len_context_right:
-                                                        context_right.append(token_next_seg)
-
-                                                        break
+                                            context_right.append(token_next[: settings['generation_settings']['width_right_char'] - len_context_right + 1])
                                         else:
                                             context_right.append(token_next)
 
                                         len_context_right += len(token_next)
+
+                                    # Search Results
+                                    text_search_left = copy.deepcopy(context_left)
+                                    text_search_right = copy.deepcopy(context_right)
+
+                                    if not settings['token_settings']['puncs']:
+                                        context_left = text.tokens[i - len(context_left) : i]
+                                        context_right = text.tokens[i + len_search_term : i + len_search_term + len(context_right)]
 
                                 context_left = [html.escape(token) for token in context_left]
                                 context_right = [html.escape(token) for token in context_right]
@@ -879,20 +895,19 @@ def generate_table(main, table):
 
                                 # Left
                                 table.setCellWidget(table.rowCount() - 1, 0,
-                                                    QLabel(context_left_text, main))
+                                                    wordless_table.Wordless_Label_Html(context_left_text, main))
 
-                                table.cellWidget(table.rowCount() - 1, 0).setTextFormat(Qt.RichText)
                                 table.cellWidget(table.rowCount() - 1, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                                 table.cellWidget(table.rowCount() - 1, 0).text_raw = context_left
+                                table.cellWidget(table.rowCount() - 1, 0).text_search = text_search_left
 
                                 # Right
                                 table.setCellWidget(table.rowCount() - 1, 2,
-                                                    QLabel(context_right_text, main))
-
-                                table.cellWidget(table.rowCount() - 1, 2).setTextFormat(Qt.RichText)
+                                                    wordless_table.Wordless_Label_Html(context_right_text, main))
 
                                 table.cellWidget(table.rowCount() - 1, 2).text_raw = context_right
+                                table.cellWidget(table.rowCount() - 1, 2).text_search = text_search_right
 
                                 # Token
                                 table.set_item_num_pct(table.rowCount() - 1, 3,
@@ -922,6 +937,7 @@ def generate_table(main, table):
 
                 table.blockSignals(False)
                 table.setUpdatesEnabled(True)
+                table.show()
 
             if table.rowCount() > 0:
                 table.toggle_pct()
@@ -970,12 +986,9 @@ def generate_plot(main):
                 text = wordless_text.Wordless_Text(main, file)
                 texts.append(wordless_text.Wordless_Text(main, file))
 
-                search_terms_file = text.match_search_terms(search_terms,
-                                                            settings['token_settings']['puncs'],
-                                                            settings['search_settings']['ignore_case'],
-                                                            settings['search_settings']['match_inflected_forms'],
-                                                            settings['search_settings']['match_whole_word'],
-                                                            settings['search_settings']['use_regex'])
+                search_terms_file = wordless_matching.match_search_terms(main, text.tokens,
+                                                                         lang_code = text.lang_code,
+                                                                         settings = settings['search_settings'])
 
                 search_terms_files.append(sorted(search_terms_file, key = lambda item: [token for token in item]))
 
@@ -998,16 +1011,17 @@ def generate_plot(main):
                     y_start = len_files
 
                     for j, text in enumerate(texts):
-                        x_start_total = x_start + sum([len(text.tokens)
-                                                       for k, text in enumerate(texts)
-                                                       if k < j])
-                        len_tokens = len(text.tokens)
+                        if search_term in search_terms_files[j]:
+                            x_start_total = x_start + sum([len(text.tokens)
+                                                           for k, text in enumerate(texts)
+                                                           if k < j])
+                            len_tokens = len(text.tokens)
 
-                        for k, ngram in enumerate(nltk.ngrams(text.tokens, len_search_term)):
-                            if ngram == search_term:
-                                points.append([x_start + k / len_tokens * len_tokens_total, y_start - j])
-                                # Total
-                                points.append([x_start_total + k, 0])
+                            for k, ngram in enumerate(nltk.ngrams(text.tokens, len_search_term)):
+                                if ngram == search_term:
+                                    points.append([x_start + k / len_tokens * len_tokens_total, y_start - j])
+                                    # Total
+                                    points.append([x_start_total + k, 0])
 
                 if points:
                     x_ticks = [0]
@@ -1046,13 +1060,14 @@ def generate_plot(main):
                     len_search_term = len(search_term)
 
                     for j, text in enumerate(texts):
-                        x_start = sum([len(text.tokens)
-                                       for k, text in enumerate(texts)
-                                       if k < j]) + j + 2
+                        if search_term in search_terms_files[j]:
+                            x_start = sum([len(text.tokens)
+                                           for k, text in enumerate(texts)
+                                           if k < j]) + j + 2
 
-                        for k, ngram in enumerate(nltk.ngrams(text.tokens, len_search_term)):
-                            if ngram == search_term:
-                                points.append([x_start + k, i])
+                            for k, ngram in enumerate(nltk.ngrams(text.tokens, len_search_term)):
+                                if ngram == search_term:
+                                    points.append([x_start + k, i])
 
                 if points:
                     x_ticks = [0]
