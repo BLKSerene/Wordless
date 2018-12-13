@@ -81,7 +81,6 @@ def wordless_widgets_search_settings(main):
 
             list_search_terms.show()
             list_search_terms.button_add.show()
-            list_search_terms.button_insert.show()
             list_search_terms.button_remove.show()
             list_search_terms.button_clear.show()
             list_search_terms.button_import.show()
@@ -93,7 +92,6 @@ def wordless_widgets_search_settings(main):
 
             list_search_terms.hide()
             list_search_terms.button_add.hide()
-            list_search_terms.button_insert.hide()
             list_search_terms.button_remove.hide()
             list_search_terms.button_clear.hide()
             list_search_terms.button_import.hide()

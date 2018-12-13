@@ -88,57 +88,112 @@ class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
 
     @ wordless_misc.log_timing
     def update_filters(self):
-        if [i for i in range(self.columnCount()) if self.item(0, i)]:
-            settings = self.main.settings_custom['colligation']
+        if any([self.item(0, i) for i in range(self.columnCount())]):
+            settings = self.main.settings_custom['collocation']['filter_settings']
+
+            text_test_significance = self.settings['collocation']['generation_settings']['test_significance']
+            text_measure_effect_size = self.settings['collocation']['generation_settings']['measure_effect_size']
+
+            (col_text_test_stat,
+             col_text_p_value,
+             col_text_bayes_factor) = self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
+            col_text_effect_size = self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
 
             if settings['filter_file'] == self.tr('Total'):
-                col_freq_left = self.find_col(self.tr('Total\nFrequency/L'))
-                col_freq_right = self.find_col(self.tr('Total\nFrequency/R'))
-                col_score_left = self.find_col(self.tr('Total\nScore/L'))
-                col_score_right = self.find_col(self.tr('Total\nScore/R'))
+                if settings['freq_filter_data'] == self.tr('Total'):
+                    col_freq = self.find_col(self.tr('Total\nFrequency'))
+                else:
+                    col_freq = self.find_col(self.tr(f'Total\n{settings["freq_filter_data"]}'))
+
+                col_test_stat = self.find_col(self.tr(f'Total\n{col_text_test_stat}'))
+                col_p_value = self.find_col(self.tr(f'Total\n{col_text_p_value}'))
+                col_bayes_factor = self.find_col(self.tr(f'Total\n{col_text_bayes_factor}'))
+                col_effect_size = self.find_col(self.tr(f'Total\n{col_text_effect_size}'))
             else:
-                col_freq_left = self.find_col(self.tr(f'[{settings["filter_file"]}]\nFrequency/L'))
-                col_freq_right = self.find_col(self.tr(f'[{settings["filter_file"]}]\nFrequency/R'))
-                col_score_left = self.find_col(self.tr(f'[{settings["filter_file"]}]\nScore/L'))
-                col_score_right = self.find_col(self.tr(f'[{settings["filter_file"]}]\nScore/R'))
+                if settings['freq_filter_data'] == self.tr('Total'):
+                    col_freq = self.find_col(self.tr(f'[{settings["filter_file"]}]\nFrequency'))
+                else:
+                    col_freq = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{settings["freq_filter_data"]}'))
 
-            col_files_found = self.find_col('Number of\nFiles Found')
+                col_test_stat = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{col_text_test_stat}'))
+                col_p_value = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{col_text_p_value}'))
+                col_bayes_factor = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{col_text_bayes_factor}'))
+                col_effect_size = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{col_text_effect_size}'))
 
-            freq_left_min = settings['freq_left_min']
-            freq_left_max = settings['freq_left_max'] if not settings['freq_left_no_limit'] else float('inf')
-            freq_right_min = settings['freq_right_min']
-            freq_right_max = settings['freq_right_max'] if not settings['freq_right_no_limit'] else float('inf')
+            col_collocates = self.find_col('Collocates')
+            col_number_files_found = self.find_col('Number of\nFiles Found')
 
-            score_left_min = settings['score_left_min']
-            score_left_max = settings['score_left_max'] if not settings['score_left_no_limit'] else float('inf')
-            score_right_min = settings['score_right_min']
-            score_right_max = settings['score_right_max'] if not settings['score_right_no_limit'] else float('inf')
+            freq_min = (float('-inf')
+                        if settings['freq_min_no_limit'] else settings['freq_min'])
+            freq_max = (float('inf')
+                        if settings['freq_max_no_limit'] else settings['freq_max'])
 
-            files_min = settings['files_min']
-            files_max = settings['files_max'] if not settings['files_no_limit'] else float('inf')
+            test_stat_min = (float('-inf')
+                             if settings['test_stat_min_no_limit'] else settings['test_stat_min'])
+            test_stat_max = (float('inf')
+                             if settings['test_stat_max_no_limit'] else settings['test_stat_max'])
+
+            p_value_min = (float('-inf')
+                           if settings['p_value_min_no_limit'] else settings['p_value_min'])
+            p_value_max = (float('inf')
+                           if settings['p_value_max_no_limit'] else settings['p_value_max'])
+
+            bayes_factor_min = (float('-inf')
+                                if settings['bayes_factor_min_no_limit'] else settings['bayes_factor_min'])
+            bayes_factor_max = (float('inf')
+                                if settings['bayes_factor_max_no_limit'] else settings['bayes_factor_max'])
+
+            effect_size_min = (float('-inf')
+                               if settings['effect_size_min_no_limit'] else settings['effect_size_min'])
+            effect_size_max = (float('inf')
+                               if settings['effect_size_max_no_limit'] else settings['effect_size_max'])
+
+            len_collocate_min = (float('-inf')
+                                 if settings['len_collocate_min_no_limit'] else settings['len_collocate_min'])
+            len_collocate_max = (float('inf')
+                                 if settings['len_collocate_max_no_limit'] else settings['len_collocate_max'])
+
+            number_files_found_min = (float('-inf')
+                                      if settings['number_files_found_min_no_limit'] else settings['number_files_found_min'])
+            number_files_found_max = (float('inf')
+                                      if settings['number_files_found_max_no_limit'] else settings['number_files_found_max'])
 
             self.row_filters = [[] for i in range(self.rowCount())]
 
             for i in range(self.rowCount()):
-                if freq_left_min <= self.item(i, col_freq_left).val_raw <= freq_left_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-                if freq_right_min <= self.item(i, col_freq_right).val_raw <= freq_right_max:
+                if freq_min <= self.item(i, col_freq).val_raw <= freq_max:
                     self.row_filters[i].append(True)
                 else:
                     self.row_filters[i].append(False)
 
-                if score_left_min <= self.item(i, col_score_left).val <= score_left_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-                if score_right_min <= self.item(i, col_score_right).val <= score_right_max:
+                if col_text_test_stat:
+                    if test_stat_min <= self.item(i, col_test_stat).val <= test_stat_max:
+                        self.row_filters[i].append(True)
+                    else:
+                        self.row_filters[i].append(False)
+
+                if p_value_min <= self.item(i, col_p_value).val <= p_value_max:
                     self.row_filters[i].append(True)
                 else:
                     self.row_filters[i].append(False)
 
-                if files_min <= self.item(i, col_files_found).val <= files_max:
+                if col_text_bayes_factor:
+                    if bayes_factor_min <= self.item(i, col_bayes_factor).val <= bayes_factor_max:
+                        self.row_filters[i].append(True)
+                    else:
+                        self.row_filters[i].append(False)
+
+                if effect_size_min <= self.item(i, col_effect_size).val <= effect_size_max:
+                    self.row_filters[i].append(True)
+                else:
+                    self.row_filters[i].append(False)
+
+                if len_collocate_min <= len(self.item(i, col_collocates).text()) <= len_collocate_max:
+                    self.row_filters[i].append(True)
+                else:
+                    self.row_filters[i].append(False)
+
+                if number_files_found_min <= self.item(i, col_number_files_found).val <= number_files_found_max:
                     self.row_filters[i].append(True)
                 else:
                     self.row_filters[i].append(False)
@@ -568,13 +623,12 @@ def init(main):
     main.wordless_context_settings_colligation.checkbox_exclusion_match_inflected_forms.setEnabled(False)
 
     layout_search_terms = QGridLayout()
-    layout_search_terms.addWidget(list_search_terms, 0, 0, 6, 1)
+    layout_search_terms.addWidget(list_search_terms, 0, 0, 5, 1)
     layout_search_terms.addWidget(list_search_terms.button_add, 0, 1)
-    layout_search_terms.addWidget(list_search_terms.button_insert, 1, 1)
-    layout_search_terms.addWidget(list_search_terms.button_remove, 2, 1)
-    layout_search_terms.addWidget(list_search_terms.button_clear, 3, 1)
-    layout_search_terms.addWidget(list_search_terms.button_import, 4, 1)
-    layout_search_terms.addWidget(list_search_terms.button_export, 5, 1)
+    layout_search_terms.addWidget(list_search_terms.button_remove, 1, 1)
+    layout_search_terms.addWidget(list_search_terms.button_clear, 2, 1)
+    layout_search_terms.addWidget(list_search_terms.button_import, 3, 1)
+    layout_search_terms.addWidget(list_search_terms.button_export, 4, 1)
 
     layout_context_settings = QGridLayout()
     layout_context_settings.addWidget(label_context_settings, 0, 0)
@@ -1359,54 +1413,71 @@ def generate_plot(main):
     files = main.wordless_files.get_selected_files()
 
     if files:
-        if (settings['show_all'] or
-            not settings['show_all'] and (settings['multi_search_mode'] and settings['search_terms'] or
-                                          not settings['multi_search_mode'] and settings['search_term'])):
-            if settings['window_left'] < 0 and settings['window_right'] > 0:
-                window_size_left = abs(settings['window_left'])
-                window_size_right = abs(settings['window_right'])
-            elif settings['window_left'] > 0 and settings['window_right'] > 0:
-                window_size_left = 0
-                window_size_right = settings['window_right'] - settings['window_left'] + 1
-            elif settings['window_left'] < 0 and settings['window_right'] < 0:
-                window_size_left = settings['window_right'] - settings['window_left'] + 1
-                window_size_right = 0
+        if (settings['search_settings']['search_settings'] or
+            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms'] or
+            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']):
+            text_test_significance = settings['generation_settings']['test_significance']
+            text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-            freqs_files, scores_files = generate_collocates(main, files)
+            (col_text_test_stat,
+             col_text_p_value,
+             col_text_bayes_factor) = main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
+            col_text_effect_size =  main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
 
-            if main.tr('Frequency') in settings['use_data_col'] and freqs_files:
-                if settings['use_data_col'] == main.tr('Frequency (Left)'):
-                    freqs_files = {collocate: numpy.array(freqs)[:, :window_size_left].sum(axis = 1) for collocate, freqs in freqs_files.items()}
-                elif settings['use_data_col'] == main.tr('Frequency (Right)'):
-                    freqs_files = {collocate: numpy.array(freqs)[:, -window_size_right:].sum(axis = 1) for collocate, freqs in freqs_files.items()}
-                else:
-                    dist = int(re.findall(r'[0-9]+', settings['use_data_col'])[0])
+            collocates_freqs_files, collocates_stats_files, nodes_text = generate_collocates(main, files)
 
-                    if '(L' in settings['use_data_col']:
-                        freqs_files = {collocate: numpy.array(freqs)[:, -dist - settings['window_left']] for collocate, freqs in freqs_files.items()}
+            if collocates_freqs_files:
+                if re.search(r'^[LR][0-9]+$', settings['plot_settings']['use_data']):
+                    span_positions = (list(range(settings['generation_settings']['window_left'], 0)) +
+                                      list(range(1, settings['generation_settings']['window_right'] + 1)))
+
+                    if 'L' in settings['plot_settings']['use_data']:
+                        span_position = span_positions.index(-int(settings['plot_settings']['use_data'][1:]))
                     else:
-                        freqs_files = {collocate: numpy.array(freqs)[:, dist - settings['window_left'] - 1] for collocate, freqs in freqs_files.items()}
+                        span_position = span_positions.index(int(settings['plot_settings']['use_data'][1:]))
 
-                wordless_plot.wordless_plot_freq(main, freqs_files,
-                                                 plot_type = settings['plot_type'],
-                                                 use_data_file = settings['use_data_file'],
-                                                 use_pct = settings['use_pct'],
-                                                 use_cumulative = settings['use_cumulative'],
-                                                 rank_min = settings['rank_min'],
-                                                 rank_max = settings['rank_max'],
-                                                 label_x = main.tr('Collocates'))
-            elif main.tr('Score') in settings['use_data_col'] and scores_files:
-                if settings['use_data_col'] == main.tr('Score (Left)'):
-                    scores_files = {collocate: numpy.array(scores)[:, 0] for collocate, scores in scores_files.items()}
+                    collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
+                                             for (node, collocate), freqs in collocates_freqs_files.items()}
+
+                    wordless_plot_freq.wordless_plot_freq(main, collocates_freq_files,
+                                                          settings = settings['plot_settings'],
+                                                          label_x = main.tr('Collocates'))
+                elif settings['plot_settings']['use_data'] == main.tr('Frequency'):
+                    collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
+                                             for (node, collocate), freqs in collocates_freqs_files.items()}
+
+                    wordless_plot_freq.wordless_plot_freq(main, collocates_freq_files,
+                                                          settings = settings['plot_settings'],
+                                                          label_x = main.tr('Collocates'))
                 else:
-                    scores_files = {collocate: numpy.array(scores)[:, 1] for collocate, scores in scores_files.items()}
+                    collocates_stats_files = {', '.join([nodes_text[node], collocate]): freqs
+                                              for (node, collocate), freqs in collocates_stats_files.items()}
 
-                wordless_plot.wordless_plot_scores(main, scores_files,
-                                                  plot_type = settings['plot_type'],
-                                                  use_data_file = settings['use_data_file'],
-                                                  rank_min = settings['rank_min'],
-                                                  rank_max = settings['rank_max'],
-                                                  label_x = main.tr('Collocates'))
+                    if settings['plot_settings']['use_data'] == col_text_test_stat:
+                        collocates_stat_files = {collocate: numpy.array(stats_files)[:, 0]
+                                                 for collocate, stats_files in collocates_stats_files.items()}
+
+                        label_y = col_text_test_stat
+                    elif settings['plot_settings']['use_data'] == col_text_p_value:
+                        collocates_stat_files = {collocate: numpy.array(stats_files)[:, 1]
+                                                 for collocate, stats_files in collocates_stats_files.items()}
+
+                        label_y = col_text_p_value
+                    elif settings['plot_settings']['use_data'] == col_text_bayes_factor:
+                        collocates_stat_files = {collocate: numpy.array(stats_files)[:, 2]
+                                                 for collocate, stats_files in collocates_stats_files.items()}
+
+                        label_y = col_text_bayes_factor
+                    elif settings['plot_settings']['use_data'] == col_text_effect_size:
+                        collocates_stat_files = {collocate: numpy.array(stats_files)[:, 3]
+                                                 for collocate, stats_files in collocates_stats_files.items()}
+
+                        label_y = col_text_effect_size
+
+                    wordless_plot_stat.wordless_plot_stat(main, collocates_stat_files,
+                                                          settings = settings['plot_settings'],
+                                                          label_x = main.tr('Collocates'),
+                                                          label_y = label_y)
 
                 wordless_message.wordless_message_generate_plot_success(main)
             else:
