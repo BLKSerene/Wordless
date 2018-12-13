@@ -9,7 +9,7 @@
 import json
 import re
 
-#import delphin.repp
+import delphin.repp
 import jieba
 import jieba.posseg
 import jpype
@@ -283,17 +283,6 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'default'):
                     lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
                 else:
                     lemmas.append(word_net_lemmatizer.lemmatize(token))
-        elif lemmatizer == 'e_lemma.txt':
-            with open('lemmatization/e_lemma.txt', 'r', encoding = 'utf_16') as f:
-                for line in f:
-                    if not line.startswith(';'):
-                        lemma, words = line.rstrip().split('->')
-
-                        for word in words.split(','):
-                            mapping_lemmas[word.strip()] = lemma.strip()
-
-            lemmas = [mapping_lemmas.get(token, token) for token in tokens]
-
         elif lemmatizer == 'Lemmatization Lists':
             lang_code = wordless_conversion.to_iso_639_1(main, lang_code)
 
