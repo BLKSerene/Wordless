@@ -35,123 +35,113 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
 
         acknowledgements = [
             ['<a href="https://www.python.org/">Python</a>',
-             '3.7.0',
-             '<a href="mailto:guido@python.org">Guido van Rossum</a><br><a href="mailto:psf@python.org">Python Software Foundation</a>',
+             '3.7.1',
+             'Guido van Rossum, Python Software Foundation',
              '<a href="https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release">PSF</a>'],
 
             ['<a href="https://github.com/jpype-project/jpype/">JPype</a>',
              '0.6.3',
-             'Steve Menard<br>Luis Nell',
+             'Steve Menard, Luis Nell',
              '<a href="https://github.com/jpype-project/jpype/blob/master/LICENSE">Apache-2.0</a>'],
 
             ['<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
              '5.11.3',
-             '<a href="mailto:info@riverbankcomputing.com">Riverbank Computing Limited</a>',
+             'Riverbank Computing Limited',
              '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a>'],
 
             ['<a href="http://hanlp.com/">HanLP</a>',
              '1.7.0',
-             '<a href="mailto:hankcs.cn@gmail.com">He Han (何晗)</a>',
+             'He Han (何晗)',
              '<a href="https://github.com/hankcs/HanLP/blob/master/LICENSE">Apache-2.0</a>'],
 
             ['<a href="https://github.com/hankcs/pyhanlp">pyhanlp</a>',
              '0.1.44',
-             '<a href="mailto:hankcs.cn@gmail.com">He Han (何晗)</a>',
+             'He Han (何晗)',
              '<a href="https://github.com/hankcs/pyhanlp/blob/master/LICENSE">Apache-2.0</a>'],
 
-            [main.tr('<a href="https://github.com/fxsjy/jieba">jieba</a>'),
+            ['<a href="https://github.com/fxsjy/jieba">jieba (“结巴”中文分词)</a>',
              '0.39',
-             '<a href="mailto:ccnusjy@gmail.com">Sun Junyi</a>',
+             'Sun Junyi',
              '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="http://www.nltk.org/">NLTK</a>',
              '3.4',
-             '<a href="http://www.nltk.org/contribute.html">NLTK Project</a>',
+             'Steven Bird, Liling Tan, Dan Garrette,<br>Peter Ljunglöf, Joel Nothman, Mikhail Korobov,<br>Alexis Dimitriadis',
              '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
 
             ['<a href="https://github.com/delph-in/pydelphin">PyDelphin</a>',
-             '0.8.0',
-             '<a href="mailto:goodman.m.w@gmail.com">Michael Wayne Goodman</a>',
+             '0.9.1',
+             'Michael Wayne Goodman, T.J. Trimble, Guy Emerson,<br>Alex Kuhnle, Francis Bond, Angie McMillan-Major',
              '<a href="https://github.com/delph-in/pydelphin/blob/develop/LICENSE">MIT</a>'],
+
+            ['<a href="https://github.com/alvations/sacremoses">SacreMoses</a>',
+             '0.0.5',
+             'Liling Tan',
+             '<a href="https://github.com/alvations/sacremoses#license">LGPL-2.1</a>'],
 
             ['<a href="https://spacy.io/">spaCy</a>',
              '2.0.16',
-             '<a href="mailto:matt@explosion.ai">Matthew Honnibal</a><br>spaCy GmbH<br><a href="mailto:contact@explosion.ai">ExplosionAI UG (haftungsbeschränkt)</a>',
+             'Matthew Honnibal, Ines Montani',
              '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'],
-
-            ['<a href="https://stanfordnlp.github.io/CoreNLP/">Stanford CoreNLP</a>',
-             '3.9.2',
-             '<a href="mailto:java-nlp-support@lists.stanford.edu">Stanford NLP</a>',
-             '<a href="https://github.com/stanfordnlp/CoreNLP/blob/master/LICENSE.txt">GPL-3.0</a>'],
-
-            ['<a href="https://github.com/stanfordnlp/python-stanford-corenlp">Stanford CoreNLP Python Interface</a>',
-             '3.8.0',
-             '<a href="mailto:java-nlp-support@lists.stanford.edu">Stanford NLP</a>',
-             '<a href="https://github.com/stanfordnlp/python-stanford-corenlp/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://amueller.github.io/word_cloud/">wordcloud</a>',
              '1.5.0',
-             '<a href="mailto:t3kcit+githubspam@gmail.com">Andreas Christian Mueller</a>',
+             'Andreas Christian Mueller',
              '<a href="https://github.com/amueller/word_cloud/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
              '4.6.3',
-             '<a href="https://www.crummy.com/self/contact.html">Leonard Richardson</a>',
+             'Leonard Richardson',
              '<a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a>'],
 
             ['<a href="https://github.com/chardet/chardet">chardet</a>',
              '3.0.4',
-             '<a href="mailto:dan.blanchard@gmail.com">Daniel Blanchard</a>',
+             'Daniel Blanchard',
              '<a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPL-2.1</a>'],
 
             ['<a href="https://github.com/Mimino666/langdetect">langdetect</a>',
              '1.0.7',
-             '<a href="mailto:michal.danilak@gmail.com">Michal Mimino Danilak</a>',
+             'Michal Mimino Danilak',
              '<a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache-2.0</a>'],
 
             ['<a href="https://lxml.de/">lxml</a>',
              '4.2.5',
-             '<a href="http://consulting.behnel.de">Stefan Behnel</a>',
+             'Stefan Behnel',
              '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'],
 
             ['<a href="https://matplotlib.org/">Matplotlib</a>',
-             '3.0.0',
-             '<a href="https://github.com/matplotlib/matplotlib#contact">Matplotlib Development Team</a>',
+             '3.0.2',
+             'Matplotlib Development Team',
              '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'],
 
              ['<a href="http://www.numpy.org/">NumPy</a>',
-             '1.15.2',
+             '1.15.4',
              'NumPy Developers',
              '<a href="http://www.numpy.org/license.html">BSD-3-Clause</a>'],
 
             ['<a href="https://openpyxl.readthedocs.io/en/stable/">openpyxl</a>',
-             '2.5.8',
-             'Eric Gazoni<br><a href="mailto:charlie.clark@clark-consulting.eu">Charlie Clark</a>',
+             '2.5.12',
+             'Eric Gazoni, Charlie Clark',
              '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>'],
 
             ['<a href="https://www.scipy.org/">SciPy</a>',
              '1.1.0',
-             'SciPy developers',
+             'SciPy Developers',
              '<a href="https://www.scipy.org/scipylib/license.html">BSD-3-Clause</a>'],
 
-            ['<a href="https://lexically.net/downloads/BNC_wordlists/e_lemma.txt">e_lemma.txt</a>',
-             '2',
-             '<a href="http://www.someya-net.com/index2.html">Yasumasa Someya (染谷泰正)</a>',
-             '<a href="https://lexically.net/downloads/BNC_wordlists/e_lemma.txt">Free to use for any research;<br>and/or educational purposes.</a>'],
-
             ['<a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a>',
-             '',
-             '<a href="http://www.lexiconista.com/en/#contact">Michal Boleslav Měchura</a>',
+             '/',
+             'Michal Boleslav Měchura',
              '<a href="https://github.com/michmech/lemmatization-lists/blob/master/LICENCE">ODbL</a>'],
 
             ['<a href="https://github.com/stopwords-iso/stopwords-iso">Stopwords ISO</a>',
              '0.4.0',
-             '<a href="mailto:genediazjr@gmail.com">Gene Diaz</a>',
+             'Gene Diaz',
              '<a href="https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://github.com/6/stopwords-json">stopwords-json</a>',
-             '',
-             '<a href="mailto:pete@gigadrill.com">Peter Graham</a>',
+             '/',
+             'Peter Graham',
              '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>'],
         ]
 
@@ -169,16 +159,14 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
                                                                cols_stretch = [
                                                                    self.tr('Author(s)')
                                                                ])
-
-        table_acknowledgements.setSelectionMode(QAbstractItemView.NoSelection)
-
+        
         table_acknowledgements.setRowCount(len(acknowledgements))
 
         for i, (name, ver, authors, license) in enumerate(acknowledgements):
-            table_acknowledgements.setCellWidget(i, 0, QLabel(name, self))
-            table_acknowledgements.setCellWidget(i, 1, QLabel(ver, self))
-            table_acknowledgements.setCellWidget(i, 2, QLabel(authors, self))
-            table_acknowledgements.setCellWidget(i, 3, QLabel(license, self))
+            table_acknowledgements.setCellWidget(i, 0, wordless_table.Wordless_Label_Html(name, self))
+            table_acknowledgements.setCellWidget(i, 1, wordless_table.Wordless_Label_Html(ver, self))
+            table_acknowledgements.setCellWidget(i, 2, wordless_table.Wordless_Label_Html(authors, self))
+            table_acknowledgements.setCellWidget(i, 3, wordless_table.Wordless_Label_Html(license, self))
 
         self.wrapper_info.setLayout(QGridLayout())
         self.wrapper_info.layout().addWidget(label_acknowledgements, 0, 0)
@@ -231,7 +219,7 @@ class Wordless_Main(QMainWindow):
     def closeEvent(self, event):
         reply = QMessageBox.question(self,
                                      self.tr('Exit Confirmation'),
-                                     self.tr(f'''{self.settings_global['style_dialog']}
+                                     self.tr(f'''{self.settings_global['styles']['style_dialog']}
                                                  <body>
                                                      <p>Do you really want to quit?</p>
                                                  </body>
@@ -260,7 +248,7 @@ class Wordless_Main(QMainWindow):
         def need_help():
             message_box = QMessageBox(QMessageBox.Information,
                                       self.tr('Need Help?'),
-                                      self.tr(f'''{self.settings_global['style_dialog']}
+                                      self.tr(f'''{self.settings_global['styles']['style_dialog']}
                                                   <body>
                                                       <p>If you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.</p>
                                                       <p>Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</p>
@@ -277,7 +265,7 @@ class Wordless_Main(QMainWindow):
         def feedback():
             QMessageBox.information(self,
                                     self.tr('Feedback'),
-                                    self.tr(f'''{self.settings_global['style_dialog']}
+                                    self.tr(f'''{self.settings_global['styles']['style_dialog']}
                                                 <body>
                                                     <p>If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker <a href="https://github.com/BLKSerene/Wordless/issues">Issues</a>.</p>
                                                     <p>Feedback, enhancement proposals, feature requests and code contribution are also welcomed.</p>
@@ -358,7 +346,7 @@ class Wordless_Main(QMainWindow):
         def about_wordless():
             QMessageBox.about(self,
                               self.tr('About Wordless'),
-                              self.tr(f'''{self.settings_global['style_dialog']}
+                              self.tr(f'''{self.settings_global['styles']['style_dialog']}
                                           <body style="text-align: center">
                                               <h1>Wordless Version 1.0</h1>
                                               <p>An Integrated Corpus Tool for the Scientific Study of Language, Literature and Translation</p>
