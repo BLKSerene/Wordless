@@ -810,49 +810,59 @@ def init_settings_default(main):
             },
 
             'preview_lang': 'eng',
-            'preview_samples': ''
+            'preview_samples': '',
+            'preview_results': ''
         },
 
         'word_tokenization': {
             'word_tokenizers': {
+                'cat': main.tr('SacreMoses - Moses Tokenizer'),
                 'zho_CN': main.tr('jieba - With HMM'),
                 'zho_TW': main.tr('jieba - With HMM'),
-                'ces': main.tr('NLTK - Treebank Tokenizer'),
-                'dan': main.tr('NLTK - Treebank Tokenizer'),
-                'nld': main.tr('NLTK - Treebank Tokenizer'),
+                'ces': main.tr('NLTK - Tok-tok Tokenizer'),
+                'nld': main.tr('SacreMoses - Moses Tokenizer'),
                 'eng': main.tr('NLTK - Treebank Tokenizer'),
-                'est': main.tr('NLTK - Treebank Tokenizer'),
-                'fin': main.tr('NLTK - Treebank Tokenizer'),
-                'fra': main.tr('NLTK - Treebank Tokenizer'),
-                'deu': main.tr('NLTK - Treebank Tokenizer'),
-                'ell': main.tr('NLTK - Treebank Tokenizer'),
-                'ita': main.tr('NLTK - Treebank Tokenizer'),
-                'nor': main.tr('NLTK - Treebank Tokenizer'),
-                'pol': main.tr('NLTK - Treebank Tokenizer'),
-                'por': main.tr('NLTK - Treebank Tokenizer'),
-                'slv': main.tr('NLTK - Treebank Tokenizer'),
-                'spa': main.tr('NLTK - Treebank Tokenizer'),
-                'swe': main.tr('NLTK - Treebank Tokenizer'),
-                'tur': main.tr('NLTK - Treebank Tokenizer'),
+                'fin': main.tr('SacreMoses - Moses Tokenizer'),
+                'fra': main.tr('NLTK - Tok-tok Tokenizer'),
+                'deu': main.tr('NLTK - Tok-tok Tokenizer'),
+                'ell': main.tr('SacreMoses - Moses Tokenizer'),
+                'hun': main.tr('SacreMoses - Moses Tokenizer'),
+                'isl': main.tr('SacreMoses - Moses Tokenizer'),
+                'ita': main.tr('SacreMoses - Moses Tokenizer'),
+                'lav': main.tr('SacreMoses - Moses Tokenizer'),
+                'fas': main.tr('NLTK - Tok-tok Tokenizer'),
+                'pol': main.tr('SacreMoses - Moses Tokenizer'),
+                'por': main.tr('SacreMoses - Moses Tokenizer'),
+                'ron': main.tr('SacreMoses - Moses Tokenizer'),
+                'rus': main.tr('NLTK - Tok-tok Tokenizer'),
+                'slk': main.tr('SacreMoses - Moses Tokenizer'),
+                'slv': main.tr('SacreMoses - Moses Tokenizer'),
+                'spa': main.tr('SacreMoses - Moses Tokenizer'),
+                'swe': main.tr('SacreMoses - Moses Tokenizer'),
+                'tgk': main.tr('NLTK - Tok-tok Tokenizer'),
+                'tam': main.tr('SacreMoses - Moses Tokenizer'),
+                'vie': main.tr('NLTK - Tok-tok Tokenizer'),
 
                 'other': main.tr('NLTK - Treebank Tokenizer')
             },
 
             'preview_lang': 'eng',
-            'preview_samples': ''
+            'preview_samples': '',
+            'preview_results': ''
         },
 
         'word_detokenization': {
             'word_detokenizers': {
                 'zho_CN': main.tr('Wordless - Chinese Word Detokenizer'),
                 'zho_TW': main.tr('Wordless - Chinese Word Detokenizer'),
-                'eng': main.tr('NLTK - Moses Detokenizer'),
+                'eng': main.tr('SacreMoses - Moses Detokenizer'),
 
-                'other': main.tr('NLTK - Moses Detokenizer')
+                'other': main.tr('SacreMoses - Moses Detokenizer')
             },
 
             'preview_lang': 'eng',
-            'preview_samples': ''
+            'preview_samples': '',
+            'preview_results': ''
         },
 
         'pos_tagging': {
@@ -871,7 +881,8 @@ def init_settings_default(main):
             },
 
             'preview_lang': 'eng',
-            'preview_samples': ''
+            'preview_samples': '',
+            'preview_results': ''
         },
 
         'lemmatization': {
@@ -903,6 +914,7 @@ def init_settings_default(main):
 
             'preview_lang': 'eng',
             'preview_samples': '',
+            'preview_results': ''
 
         },
 

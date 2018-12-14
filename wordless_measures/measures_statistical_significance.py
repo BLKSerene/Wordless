@@ -6,6 +6,13 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
+# Testing
+if __name__ == '__main__':
+    import sys
+
+    sys.path.append('E:/Wordless/')
+
+
 import math
 
 import numpy
@@ -229,8 +236,6 @@ def mann_whitney_u_test(main, counts_observed, counts_ref):
 # Testing
 if __name__ == '__main__':
     from PyQt5.QtCore import *
-
-    import measures_bayes_factor
 
     main = QObject()
     main.settings_custom = {

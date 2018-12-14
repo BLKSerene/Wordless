@@ -16,6 +16,7 @@ import jpype
 import nltk
 import nltk.tokenize.nist
 import numpy
+import sacremoses
 
 from wordless_utils import wordless_conversion
 
@@ -58,9 +59,10 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'defa
                 sentences.append(line[i_sentence:])
 
         elif sentence_tokenizer == main.tr('HanLP - Sentence Segmenter'):
-            sentences_util = jpype.JClass('com.hankcs.hanlp.tokenizer.StandardTokenizer')
+            standard_tokenizer = pyhanlp.SafeJClass('com.hankcs.hanlp.tokenizer.StandardTokenizer')
 
-            sentences = standard_tokenizer.SEGMENT.seg2sentence(line, False)
+            for sentence in standard_tokenizer.SEGMENT.seg2sentence(line, False):
+                sentences.append(''.join([token.word for token in sentence]))
 
     return sentences
 
@@ -79,7 +81,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
     if 'HanLP' in word_tokenizer:
         import pyhanlp
 
-    # English
+    # English & Other Languages
     if word_tokenizer == main.tr('NLTK - Treebank Tokenizer'):
         treebank_tokenizer = nltk.TreebankWordTokenizer()
 
@@ -115,13 +117,15 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
         for sentence in sentences:
             tokens.extend([token.form for token in repp_tokenizer.tokenize(sentence).tokens])
+    elif word_tokenizer == main.tr('SacreMoses - Moses Tokenizer'):
+        moses_tokenizer = sacremoses.MosesTokenizer()
+
+        for sentence in sentences:
+            tokens.extend(moses_tokenizer.tokenize(sentence))
     # Chinese
-    elif word_tokenizer == main.tr('jieba - With HMM'):
+    elif word_tokenizer == main.tr('jieba Tokenizer'):
         for sentence in sentences:
             tokens.extend(jieba.cut(sentence))
-    elif word_tokenizer == main.tr('jieba - Without HMM'):
-        for sentence in sentences:
-            tokens.extend(jieba.cut(sentence, HMM = False))
     elif word_tokenizer == main.tr('HanLP - Standard Tokenizer'):
         standard_tokenizer = jpype.JClass('com.hankcs.hanlp.tokenizer.StandardTokenizer')
 
@@ -175,8 +179,6 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
         for sentence in sentences:
             tokens.extend([token.word for token in viterbi_tokenizer.seg(sentence)])
-    elif word_tokenizer == main.tr('Wordless - Single Character Splitter'):
-        tokens = [char for sentence in sentences for char in sentence]
 
     return tokens
 
@@ -189,13 +191,13 @@ def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'defaul
     if word_detokenizer == 'default':
         word_detokenizer = main.settings_custom['word_detokenization']['word_detokenizers'][lang_code]
 
-    if word_detokenizer == main.tr('NLTK - Moses Detokenizer'):
+    if word_detokenizer == main.tr('SacreMoses - Moses Detokenizer'):
         texts = []
 
-        moses_detokenizer = nltk.tokenize.treebank.TreebankWordDetokenizer()
+        moses_detokenizer = sacremoses.MosesDetokenizer()
 
         for sentence in wordless_sentence_tokenize(main, ' '.join(tokens), lang_code):
-            texts.append(moses_detokenizer.tokenize(sentence.split()))
+            texts.append(moses_detokenizer.detokenize(sentence.split()))
 
         text = ' '.join(texts)
     elif word_detokenizer == main.tr('Wordless - Chinese Word Detokenizer'):
@@ -203,7 +205,7 @@ def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'defaul
 
         for i, token in enumerate(tokens):
             if i >= non_cjkv_start:
-                if re.search(r'[\u2E80-\u9FFF]', token):
+                if not re.search(r'[^\u2E80-\u9FFF]', token):
                     text += token
 
                     non_cjkv_start += 1
