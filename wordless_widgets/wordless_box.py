@@ -74,8 +74,6 @@ class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
         if 'HanLP' in self.currentText():
             try:
                 jpype.getDefaultJVMPath()
-
-                import pyhanlp
             except:
                 wordless_message_box.wordless_message_box_jre_not_installed(self.main)
 
