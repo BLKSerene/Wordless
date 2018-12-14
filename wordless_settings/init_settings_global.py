@@ -428,9 +428,19 @@ def init_settings_global(main):
         },
 
         'word_tokenizers': {
+            'cat': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
+            ],
+
             'zho_CN': [
-                main.tr('jieba - With HMM'),
-                main.tr('jieba - Without HMM'),
+                main.tr('jieba Tokenizer'),
                 main.tr('HanLP - Standard Tokenizer'),
                 main.tr('HanLP - Basic Tokenizer'),
                 main.tr('HanLP - High-speed Tokenizer'),
@@ -440,11 +450,11 @@ def init_settings_global(main):
                 main.tr('HanLP - Dijkstra Segmenter'),
                 main.tr('HanLP - N-shortest Path Segmenter'),
                 main.tr('HanLP - Viterbi Segmenter'),
-                main.tr('Wordless - Single Character Splitter')
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
             'zho_TW': [
-                main.tr('jieba - With HMM'),
-                main.tr('jieba - Without HMM'),
+                main.tr('jieba Tokenizer'),
                 main.tr('HanLP - Standard Tokenizer'),
                 main.tr('HanLP - Basic Tokenizer'),
                 main.tr('HanLP - High-speed Tokenizer'),
@@ -455,170 +465,271 @@ def init_settings_global(main):
                 main.tr('HanLP - Dijkstra Segmenter'),
                 main.tr('HanLP - N-shortest Path Segmenter'),
                 main.tr('HanLP - Viterbi Segmenter'),
-                main.tr('Wordless - Single Character Splitter')
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
             'ces': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer'),
-            ],
-            'dan': [
-                main.tr('NLTK - Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
             'nld': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
             'eng': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Word Punctuation Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer'),
-            ],
-            'est': [
-                main.tr('NLTK - Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
             'fin': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
             'fra': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
             'deu': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
             'ell': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
+            'hun': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
+            ],
+
+            'isl': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
+            ],
+
             'ita': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
-            'nor': [
+
+            'lav': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
+            'fas': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
+            ],
+
             'pol': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
             'por': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
+            'ron': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
+            ],
+
+            'rus': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
+            ],
+
+            'slk': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
+            ],
+
             'slv': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
             'spa': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
+
             'swe': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
-            'tur': [
+
+            'tgk': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
+            ],
+
+            'tam': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
+            ],
+
+            'vie': [
+                main.tr('NLTK - Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Word Punctuation Tokenizer'),
+                main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ],
 
             'other': [
                 main.tr('NLTK - Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer (International Mode)'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer')
             ]
         },
 
@@ -632,11 +743,11 @@ def init_settings_global(main):
             ],
 
             'eng': [
-                main.tr('NLTK - Moses Detokenizer')
+                main.tr('SacreMoses - Moses Detokenizer')
             ],
 
             'other': [
-                main.tr('NLTK - Moses Detokenizer')
+                main.tr('SacreMoses - Moses Detokenizer')
             ]
         },
 
