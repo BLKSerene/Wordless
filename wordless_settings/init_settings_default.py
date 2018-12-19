@@ -822,7 +822,7 @@ def init_settings_default(main):
                 'zho_tw': main.tr('jieba'),
                 'ces': main.tr('NLTK - Tok-tok Tokenizer'),
                 'nld': main.tr('SacreMoses - Moses Tokenizer'),
-                'eng': main.tr('NLTK - Treebank Tokenizer'),
+                'eng': main.tr('NLTK - Penn Treebank Tokenizer'),
                 'fin': main.tr('SacreMoses - Moses Tokenizer'),
                 'fra': main.tr('NLTK - Tok-tok Tokenizer'),
                 'deu': main.tr('NLTK - Tok-tok Tokenizer'),
@@ -844,7 +844,7 @@ def init_settings_default(main):
                 'tam': main.tr('SacreMoses - Moses Tokenizer'),
                 'vie': main.tr('NLTK - Tok-tok Tokenizer'),
 
-                'other': main.tr('NLTK - Treebank Tokenizer')
+                'other': main.tr('NLTK - Penn Treebank Tokenizer')
             },
 
             'preview_lang': 'eng',
@@ -859,7 +859,7 @@ def init_settings_default(main):
                 'zho_tw': main.tr('Wordless - Chinese Word Detokenizer'),
                 'ces': main.tr('SacreMoses - Moses Detokenizer'),
                 'nld': main.tr('SacreMoses - Moses Detokenizer'),
-                'eng': main.tr('SacreMoses - Moses Detokenizer'),
+                'eng': main.tr('NLTK - Penn Treebank Detokenizer'),
                 'fin': main.tr('SacreMoses - Moses Detokenizer'),
                 'fra': main.tr('SacreMoses - Moses Detokenizer'),
                 'deu': main.tr('SacreMoses - Moses Detokenizer'),
@@ -878,7 +878,7 @@ def init_settings_default(main):
                 'swe': main.tr('SacreMoses - Moses Detokenizer'),
                 'tam': main.tr('SacreMoses - Moses Detokenizer'),
 
-                'other': main.tr('SacreMoses - Moses Detokenizer')
+                'other': main.tr('NLTK - Penn Treebank Detokenizer')
             },
 
             'preview_lang': 'eng',

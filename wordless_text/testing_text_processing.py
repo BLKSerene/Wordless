@@ -85,7 +85,7 @@ for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_e
                                                                     sentence_tokenizer = 'NLTK - Punkt Sentence Tokenizer'):
     print(f'\t{sentence}')
 
-print('Word Tokenization (NLTK - Treebank Tokenizer):')
+print('Word Tokenization (NLTK - Penn Treebank Tokenizer):')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
                                                          word_tokenizer = 'NLTK - Treebank Tokenizer')
@@ -127,6 +127,20 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'en
 
 print(f"\t{' '.join(tokens)}")
 
+print('Word Tokenization (SacreMoses - Moses Tokenizer):')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+                                                         word_tokenizer = 'SacreMoses - Moses Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Word Tokenization (SacreMoses - Penn Treebank Tokenizer):')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+                                                         word_tokenizer = 'SacreMoses - Penn Treebank Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
 print('Word Tokenization (PyDelphin - Repp Tokenizer):')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
@@ -134,12 +148,12 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'en
 
 print(f"\t{' '.join(tokens)}")
 
-print('Word Tokenization (SacreMoses - Moses Tokenizer):')
+print('Word Detokenization (NLTK - Penn Treebank Detokenizer):')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
-                                                         word_tokenizer = 'SacreMoses - Moses Tokenizer')
+text = wordless_text_processing.wordless_word_detokenize(main, tokens, 'eng',
+                                                         word_detokenizer = 'NLTK - Penn Treebank Detokenizer')
 
-print(f"\t{' '.join(tokens)}")
+print(f'\t{text}')
 
 print('Word Detokenization (SacreMoses - Moses Detokenizer):')
 
