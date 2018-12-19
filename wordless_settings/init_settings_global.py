@@ -23,8 +23,8 @@ def init_settings_global(main):
             main.tr('Breton'): 'bre',
             main.tr('Bulgarian'): 'bul',
             main.tr('Catalan'): 'cat',
-            main.tr('Chinese (Simplified)'): 'zho_CN',
-            main.tr('Chinese (Traditional)'): 'zho_TW',
+            main.tr('Chinese (Simplified)'): 'zho_cn',
+            main.tr('Chinese (Traditional)'): 'zho_tw',
             main.tr('Croatian'): 'hrv',
             main.tr('Czech'): 'ces',
             main.tr('Danish'): 'dan',
@@ -106,8 +106,8 @@ def init_settings_global(main):
             'bre': 'br',
             'bul': 'bg',
             'cat': 'ca',
-            'zho_CN': 'zh_CN',
-            'zho_TW': 'zh_TW',
+            'zho_cn': 'zh_cn',
+            'zho_tw': 'zh_tw',
             'hrv': 'hr',
             'ces': 'cs',
             'dan': 'da',
@@ -362,62 +362,84 @@ def init_settings_global(main):
         },
 
         'sentence_tokenizers': {
-            'zho_CN': [
+            'zho_cn': [
                 main.tr('Wordless - Chinese Sentence Tokenizer'),
                 main.tr('HanLP - Sentence Segmenter'),
             ],
-            'zho_TW': [
+
+            'zho_tw': [
                 main.tr('Wordless - Chinese Sentence Tokenizer'),
                 main.tr('HanLP - Sentence Segmenter'),
             ],
+
             'ces': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'dan': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'nld': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'eng': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'est': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'fin': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'fra': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'deu': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'ell': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'ita': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
+            'jpn': [
+                main.tr('Wordless - Japanese Sentence Tokenizer')
+            ],
+
             'nor': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'pol': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'por': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'slv': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'spa': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'swe': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
+
             'tur': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
@@ -439,8 +461,8 @@ def init_settings_global(main):
                 main.tr('SacreMoses - Moses Tokenizer')
             ],
 
-            'zho_CN': [
-                main.tr('jieba Tokenizer'),
+            'zho_cn': [
+                main.tr('jieba'),
                 main.tr('HanLP - Standard Tokenizer'),
                 main.tr('HanLP - Basic Tokenizer'),
                 main.tr('HanLP - High-speed Tokenizer'),
@@ -453,8 +475,8 @@ def init_settings_global(main):
                 main.tr('SacreMoses - Moses Tokenizer')
             ],
 
-            'zho_TW': [
-                main.tr('jieba Tokenizer'),
+            'zho_tw': [
+                main.tr('jieba'),
                 main.tr('HanLP - Standard Tokenizer'),
                 main.tr('HanLP - Basic Tokenizer'),
                 main.tr('HanLP - High-speed Tokenizer'),
@@ -576,6 +598,10 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('PyDelphin - Repp Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer')
+            ],
+
+            'jpn': [
+                main.tr('Nagisa')
             ],
 
             'lav': [
@@ -734,15 +760,95 @@ def init_settings_global(main):
         },
 
         'word_detokenizers': {
-            'zho_CN': [
+            'cat': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'zho_cn': [
                 main.tr('Wordless - Chinese Word Detokenizer')
             ],
 
-            'zho_TW': [
+            'zho_tw': [
                 main.tr('Wordless - Chinese Word Detokenizer')
+            ],
+
+            'ces': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'nld': [
+                main.tr('SacreMoses - Moses Detokenizer')
             ],
 
             'eng': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'fin': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'fra': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'deu': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'ell': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'hun': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'isl': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'jpn': [
+                main.tr('Wordless - Japanese Word Detokenizer')
+            ],
+
+            'lav': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'pol': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'por': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'ron': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'rus': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'slk': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'slv': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'spa': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'swe': [
+                main.tr('SacreMoses - Moses Detokenizer')
+            ],
+
+            'tam': [
                 main.tr('SacreMoses - Moses Detokenizer')
             ],
 
@@ -752,19 +858,26 @@ def init_settings_global(main):
         },
 
         'pos_taggers': {
-            'zho_CN': {
+            'zho_cn': {
                 main.tr('jieba'): 'jieba',
                 main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
                 main.tr('HanLP - Perceptron Lexical Analyzer'): 'HanLP'
             },
-            'zho_TW': {
+
+            'zho_tw': {
                 main.tr('jieba'): 'jieba',
                 main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
                 main.tr('HanLP - Perceptron Lexical Analyzer'): 'HanLP'
             },
+
             'eng': {
                 main.tr('NLTK - Perceptron POS Tagger'): 'Penn Treebank'
             },
+
+            'jpn': {
+                main.tr('Nagisa'): 'UniDic'
+            },
+
             'rus': {
                 main.tr('NLTK - Perceptron POS Tagger'): 'Russian National Corpus'
             }
@@ -775,7 +888,9 @@ def init_settings_global(main):
             'jieba': 'zho_jieba',
             'HanLP': 'zho_hanlp',
             # English
-            'Penn Treebank': 'en-ptb',
+            'Penn Treebank': 'eng_penn_treebank',
+            # Japanese
+            'UniDic': 'jpn_unidic',
             # Russian
             'Russian National Corpus': 'rus_russian_national_corpus'
         },
@@ -890,12 +1005,12 @@ def init_settings_global(main):
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            'zho_CN': [
+            'zho_cn': [
                 'HanLP',
                 'Stopwords ISO',
                 'stopwords-json'
             ],
-            'zho_TW': [
+            'zho_tw': [
                 'HanLP',
                 'Stopwords ISO',
                 'stopwords-json'
