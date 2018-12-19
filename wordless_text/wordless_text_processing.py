@@ -84,7 +84,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
         import pyhanlp
 
     # English & Other Languages
-    if word_tokenizer == main.tr('NLTK - Treebank Tokenizer'):
+    if word_tokenizer == main.tr('NLTK - Penn Treebank Tokenizer'):
         treebank_tokenizer = nltk.TreebankWordTokenizer()
 
         for sentence in sentences:
@@ -114,16 +114,21 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
         for sentence in sentences:
             tokens.extend(word_punct_tokenizer.tokenize(sentence))
-    elif word_tokenizer == main.tr('PyDelphin - Repp Tokenizer'):
-        repp_tokenizer = delphin.repp.REPP.from_config('tokenization/repp_tokenizer/erg/repp.set')
-
-        for sentence in sentences:
-            tokens.extend([token.form for token in repp_tokenizer.tokenize(sentence).tokens])
     elif word_tokenizer == main.tr('SacreMoses - Moses Tokenizer'):
         moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang_code))
 
         for sentence in sentences:
             tokens.extend(moses_tokenizer.tokenize(sentence))
+    elif word_tokenizer == main.tr('SacreMoses - Penn Treebank Tokenizer'):
+        moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang_code))
+
+        for sentence in sentences:
+            tokens.extend(moses_tokenizer.penn_tokenize(sentence))
+    elif word_tokenizer == main.tr('PyDelphin - Repp Tokenizer'):
+        repp_tokenizer = delphin.repp.REPP.from_config('tokenization/repp_tokenizer/erg/repp.set')
+
+        for sentence in sentences:
+            tokens.extend([token.form for token in repp_tokenizer.tokenize(sentence).tokens])
     # Chinese
     elif word_tokenizer == main.tr('jieba'):
         for sentence in sentences:
@@ -185,6 +190,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
     return tokens
 
 def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'default'):
+    sentences = []
     text = ''
 
     if lang_code not in main.settings_global['word_detokenizers']:
@@ -194,15 +200,20 @@ def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'defaul
         word_detokenizer = main.settings_custom['word_detokenization']['word_detokenizers'][lang_code]
 
     # English & Other Languages
-    if word_detokenizer == main.tr('SacreMoses - Moses Detokenizer'):
-        texts = []
+    if word_detokenizer == main.tr('NLTK - Penn Treebank Detokenizer'):
+        treebank_detokenizer = nltk.tokenize.treebank.TreebankWordDetokenizer()
 
+        for sentence in wordless_sentence_tokenize(main, ' '.join(tokens), lang_code):
+            sentences.append(treebank_detokenizer.tokenize(sentence.split()))
+
+        text = ' '.join(sentences)
+    elif word_detokenizer == main.tr('SacreMoses - Moses Detokenizer'):
         moses_detokenizer = sacremoses.MosesDetokenizer(lang = wordless_conversion.to_iso_639_1(main, lang_code))
 
         for sentence in wordless_sentence_tokenize(main, ' '.join(tokens), lang_code):
-            texts.append(moses_detokenizer.detokenize(sentence.split()))
+            sentences.append(moses_detokenizer.detokenize(sentence.split()))
 
-        text = ' '.join(texts)
+        text = ' '.join(sentences)
     # Chinese & Japanese
     elif (word_detokenizer == main.tr('Wordless - Chinese Word Detokenizer') or
           word_detokenizer == main.tr('Wordless - Japanese Word Detokenizer')):

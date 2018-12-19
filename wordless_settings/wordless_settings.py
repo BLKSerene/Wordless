@@ -1332,15 +1332,16 @@ class Wordless_Settings(QDialog):
 
             self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].blockSignals(False)
 
-        self.combo_box_sentence_tokenization_preview_lang.blockSignals(True)
-        self.text_edit_sentence_tokenization_preview_samples.blockSignals(True)
+        if not defaults:
+            self.combo_box_sentence_tokenization_preview_lang.blockSignals(True)
+            self.text_edit_sentence_tokenization_preview_samples.blockSignals(True)
 
-        self.combo_box_sentence_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['sentence_tokenization']['preview_lang']))
-        self.text_edit_sentence_tokenization_preview_samples.setText(settings['sentence_tokenization']['preview_samples'])
-        self.text_edit_sentence_tokenization_preview_results.setText(settings['sentence_tokenization']['preview_results'])
+            self.combo_box_sentence_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['sentence_tokenization']['preview_lang']))
+            self.text_edit_sentence_tokenization_preview_samples.setText(settings['sentence_tokenization']['preview_samples'])
+            self.text_edit_sentence_tokenization_preview_results.setText(settings['sentence_tokenization']['preview_results'])
 
-        self.combo_box_sentence_tokenization_preview_lang.blockSignals(False)
-        self.text_edit_sentence_tokenization_preview_samples.blockSignals(False)
+            self.combo_box_sentence_tokenization_preview_lang.blockSignals(False)
+            self.text_edit_sentence_tokenization_preview_samples.blockSignals(False)
 
         # Tokenization -> Word Tokenization
         for lang_code in settings['word_tokenization']['word_tokenizers']:
@@ -1350,15 +1351,16 @@ class Wordless_Settings(QDialog):
 
             self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].blockSignals(False)
 
-        self.combo_box_word_tokenization_preview_lang.blockSignals(True)
-        self.text_edit_word_tokenization_preview_samples.blockSignals(True)
+        if not defaults:
+            self.combo_box_word_tokenization_preview_lang.blockSignals(True)
+            self.text_edit_word_tokenization_preview_samples.blockSignals(True)
 
-        self.combo_box_word_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['word_tokenization']['preview_lang']))
-        self.text_edit_word_tokenization_preview_samples.setText(settings['word_tokenization']['preview_samples'])
-        self.text_edit_word_tokenization_preview_results.setText(settings['word_tokenization']['preview_results'])
+            self.combo_box_word_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['word_tokenization']['preview_lang']))
+            self.text_edit_word_tokenization_preview_samples.setText(settings['word_tokenization']['preview_samples'])
+            self.text_edit_word_tokenization_preview_results.setText(settings['word_tokenization']['preview_results'])
 
-        self.combo_box_word_tokenization_preview_lang.blockSignals(False)
-        self.text_edit_word_tokenization_preview_samples.blockSignals(False)
+            self.combo_box_word_tokenization_preview_lang.blockSignals(False)
+            self.text_edit_word_tokenization_preview_samples.blockSignals(False)
 
         # Tokenization -> Word Detokenization
         for lang_code in settings['word_detokenization']['word_detokenizers']:
@@ -1368,15 +1370,16 @@ class Wordless_Settings(QDialog):
 
             self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].blockSignals(False)
 
-        self.combo_box_word_detokenization_preview_lang.blockSignals(True)
-        self.text_edit_word_detokenization_preview_samples.blockSignals(True)
+        if not defaults:
+            self.combo_box_word_detokenization_preview_lang.blockSignals(True)
+            self.text_edit_word_detokenization_preview_samples.blockSignals(True)
 
-        self.combo_box_word_detokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['word_detokenization']['preview_lang']))
-        self.text_edit_word_detokenization_preview_samples.setText(settings['word_detokenization']['preview_samples'])
-        self.text_edit_word_detokenization_preview_results.setText(settings['word_detokenization']['preview_results'])
+            self.combo_box_word_detokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['word_detokenization']['preview_lang']))
+            self.text_edit_word_detokenization_preview_samples.setText(settings['word_detokenization']['preview_samples'])
+            self.text_edit_word_detokenization_preview_results.setText(settings['word_detokenization']['preview_results'])
 
-        self.combo_box_word_detokenization_preview_lang.blockSignals(False)
-        self.text_edit_word_detokenization_preview_samples.blockSignals(False)
+            self.combo_box_word_detokenization_preview_lang.blockSignals(False)
+            self.text_edit_word_detokenization_preview_samples.blockSignals(False)
 
         # POS Tagging
         for lang_code in settings['pos_tagging']['pos_taggers']:
@@ -1389,28 +1392,31 @@ class Wordless_Settings(QDialog):
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'].blockSignals(False)
             self.__dict__[f'combo_box_tagset_{lang_code}'].blockSignals(False)
 
-        self.combo_box_pos_tagging_preview_lang.blockSignals(True)
-        self.text_edit_pos_tagging_preview_samples.blockSignals(True)
+        if not defaults:
+            self.combo_box_pos_tagging_preview_lang.blockSignals(True)
+            self.text_edit_pos_tagging_preview_samples.blockSignals(True)
 
-        self.combo_box_pos_tagging_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['pos_tagging']['preview_lang']))
-        self.text_edit_pos_tagging_preview_samples.setText(settings['pos_tagging']['preview_samples'])
-        self.text_edit_pos_tagging_preview_results.setText(settings['pos_tagging']['preview_results'])
+            self.combo_box_pos_tagging_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['pos_tagging']['preview_lang']))
+            self.text_edit_pos_tagging_preview_samples.setText(settings['pos_tagging']['preview_samples'])
+            self.text_edit_pos_tagging_preview_results.setText(settings['pos_tagging']['preview_results'])
 
-        self.combo_box_pos_tagging_preview_lang.blockSignals(False)
-        self.text_edit_pos_tagging_preview_samples.blockSignals(False)
+            self.combo_box_pos_tagging_preview_lang.blockSignals(False)
+            self.text_edit_pos_tagging_preview_samples.blockSignals(False)
 
         # Lemmatization
         for lang_code in settings['lemmatization']['lemmatizers']:
             self.__dict__[f'combo_box_lemmatizer_{lang_code}'].setCurrentText(settings['lemmatization']['lemmatizers'][lang_code])
 
-        self.combo_box_lemmatization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['lemmatization']['preview_lang']))
-        self.text_edit_lemmatization_preview_samples.setText(settings['lemmatization']['preview_samples'])
+        if not defaults:
+            self.combo_box_lemmatization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['lemmatization']['preview_lang']))
+            self.text_edit_lemmatization_preview_samples.setText(settings['lemmatization']['preview_samples'])
 
         # Stop Words
         for lang_code in settings['stop_words']['stop_words']:
             self.__dict__[f'combo_box_stop_words_{lang_code}'].setCurrentText(settings['stop_words']['stop_words'][lang_code])
 
-        self.combo_box_stop_words_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['stop_words']['preview_lang']))
+        if not defaults:
+            self.combo_box_stop_words_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['stop_words']['preview_lang']))
 
         # Measures -> Dispersion
         self.spin_box_dispersion_number_sections.setValue(settings['measures']['dispersion']['general']['number_sections'])
