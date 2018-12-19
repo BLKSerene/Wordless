@@ -6,10 +6,6 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
-import os
-
-import nltk
-
 def to_lang_code(main, lang_text):
     if type(lang_text) == list:
         return [main.settings_global['langs'][item] for item in lang_text]
@@ -56,12 +52,9 @@ def to_encoding_text(main, encoding_code, encoding_lang = None):
 def to_universal_tagset(main, tagset, tag):
     tagset = main.settings_global['tagsets'][tagset]
 
-    if os.path.exists(f'tagsets/{tagset}.txt'):
-        with open(f'tagsets/{tagset}.txt', 'r', encoding = 'utf_8') as f:
-            tagset_mapping = {line.rstrip().split()[0]: line.rstrip().split()[1]
-                              for line in f
-                              if not line.startswith('#') and line.rstrip()}
+    with open(f'tagsets/{tagset}.txt', 'r', encoding = 'utf_8') as f:
+        tagset_mapping = {line.rstrip().split()[0]: line.rstrip().split()[1]
+                          for line in f
+                          if line.find('\t') > -1}
 
-        return tagset_mapping[tag]
-    else:
-        return nltk.map_tag(tagset, 'universal', tag)
+    return tagset_mapping[tag]
