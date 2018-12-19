@@ -49,6 +49,7 @@ class Wordless_Settings(QDialog):
     preview_results_updated_sentence_tokenization = pyqtSignal(str, list)
     preview_results_updated_word_tokenization = pyqtSignal(str, list)
     preview_results_updated_word_detokenization = pyqtSignal(str, list)
+    preview_results_updated_pos_tagging = pyqtSignal(str, list)
     preview_results_updated_lemmatization = pyqtSignal(str, list)
 
     def __init__(self, parent):
@@ -59,6 +60,7 @@ class Wordless_Settings(QDialog):
         self.preview_processing_sentence_tokenization = False
         self.preview_processing_word_tokenization = False
         self.preview_processing_word_detokenization = False
+        self.preview_processing_pos_tagging = False
         self.preview_processing_lemmatization = False
 
         self.setWindowTitle(self.tr('Settings'))
@@ -387,14 +389,13 @@ class Wordless_Settings(QDialog):
 
         def preview_results_changed():
             def preview():
-                lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_sentence_tokenization_preview_lang.currentText())
-                sentence_tokenizer = self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].currentText()
-                preview_samples = settings_custom['preview_samples']
+                sentence_tokenizer = self.__dict__[f'combo_box_sentence_tokenizer_{settings_custom["preview_lang"]}'].currentText()
 
-                results = wordless_text_processing.wordless_sentence_tokenize(self.main, preview_samples, lang_code,
+                results = wordless_text_processing.wordless_sentence_tokenize(self.main, settings_custom['preview_samples'],
+                                                                              lang_code = settings_custom['preview_lang'],
                                                                               sentence_tokenizer = sentence_tokenizer)
 
-                self.preview_results_updated_sentence_tokenization.emit(preview_samples, results)
+                self.preview_results_updated_sentence_tokenization.emit(settings_custom['preview_samples'], results)
 
                 self.preview_processing_sentence_tokenization = False
 
@@ -506,18 +507,15 @@ class Wordless_Settings(QDialog):
             def preview():
                 results = []
 
-                lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_word_tokenization_preview_lang.currentText())
-                word_tokenizer = self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentText()
-                preview_samples = settings_custom['preview_samples']
-
-                for line in preview_samples.splitlines():
+                for line in settings_custom['preview_samples'].splitlines():
                     sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line, lang_code)
-                    tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentences, lang_code,
+                    tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentences,
+                                                                             lang_code = settings_custom['preview_lang'],
                                                                              word_tokenizer = word_tokenizer)
                     
                     results.append(' '.join(tokens))
 
-                self.preview_results_updated_word_tokenization.emit(preview_samples, results)
+                self.preview_results_updated_word_tokenization.emit(settings_custom['preview_samples'], results)
 
                 self.preview_processing_word_tokenization = False
 
@@ -526,6 +524,16 @@ class Wordless_Settings(QDialog):
 
                 if not self.preview_processing_word_tokenization:
                     self.preview_processing_word_tokenization = True
+
+                    word_tokenizer = self.__dict__[f'combo_box_word_tokenizer_{settings_custom["preview_lang"]}'].currentText()
+
+                    if 'HanLP' in word_tokenizer:
+                        import pyhanlp
+
+                    if word_tokenizer == self.tr('HanLP - CRF Lexical Analyzer') and 'crf_analyzer' not in self.main.__dict__:
+                        self.main.crf_analyzer = pyhanlp.SafeJClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
+                    elif word_tokenizer == self.tr('HanLP - Perceptron Lexical Analyzer') and 'perceptron_analyzer' not in self.main.__dict__:
+                        self.main.perceptron_analyzer == pyhanlp.SafeJClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
 
                     threading.Thread(target = preview).start()
             else:
@@ -616,27 +624,49 @@ class Wordless_Settings(QDialog):
         self.settings_word_tokenization.layout().setRowStretch(1, 1)
 
     def init_settings_word_detokenization(self):
-        def preview_settings_changed():
+        def word_detokenizers_changed(lang_code):
+            if lang_code == settings_custom['preview_lang']:
+                preview_results_changed()
+
+        def preview_changed():
             settings_custom['preview_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_word_detokenization_preview_lang.currentText())
             settings_custom['preview_samples'] = self.text_edit_word_detokenization_preview_samples.toPlainText()
+            settings_custom['preview_results'] = self.text_edit_word_detokenization_preview_results.toPlainText()
 
         def preview_results_changed():
-            results = []
+            def preview():
+                results = []
 
-            if settings_custom['preview_samples']:
-                lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_word_detokenization_preview_lang.currentText())
-
-                word_detokenizer = self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].currentText()
+                word_detokenizer = self.__dict__[f'combo_box_word_detokenizer_{settings_custom["preview_lang"]}'].currentText()
 
                 for line in settings_custom['preview_samples'].splitlines():
-                    text = wordless_text_processing.wordless_word_detokenize(self.main, line.split(), lang_code,
+                    text = wordless_text_processing.wordless_word_detokenize(self.main, line.split(),
+                                                                             lang_code = settings_custom['preview_lang'],
                                                                              word_detokenizer = word_detokenizer)
                     
                     results.append(text)
 
-                self.text_edit_word_detokenization_preview_results.setPlainText('\n'.join(results))
+                self.preview_results_updated_word_detokenization.emit(settings_custom['preview_samples'], results)
+
+                self.preview_processing_word_detokenization = False
+
+            if settings_custom['preview_samples']:
+                self.label_word_detokenization_preview_processing.setText(self.tr('Processing ...'))
+
+                if not self.preview_processing_word_detokenization:
+                    self.preview_processing_word_detokenization = True
+
+                    threading.Thread(target = preview).start()
             else:
                 self.text_edit_word_detokenization_preview_results.clear()
+
+        def preview_results_updated(preview_samples, results):
+            if preview_samples == settings_custom['preview_samples']:
+                self.text_edit_word_detokenization_preview_results.setPlainText('\n'.join(results))
+
+                self.label_word_detokenization_preview_processing.setText('')
+            else:
+                preview_results_changed()
 
         settings_global = self.main.settings_global['word_detokenizers']
         settings_custom = self.main.settings_custom['word_detokenization']
@@ -666,7 +696,7 @@ class Wordless_Settings(QDialog):
 
             self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].addItems(settings_global[lang_code])
 
-            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].currentTextChanged.connect(preview_results_changed)
+            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: word_detokenizers_changed(lang_code))
 
             table_word_detokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_word_detokenizer_{lang_code}'])
 
@@ -678,6 +708,7 @@ class Wordless_Settings(QDialog):
 
         self.label_word_detokenization_preview_lang = QLabel(self.tr('Select a Language:'), self)
         self.combo_box_word_detokenization_preview_lang = wordless_box.Wordless_Combo_Box(self)
+        self.label_word_detokenization_preview_processing = QLabel('', self)
         self.text_edit_word_detokenization_preview_samples = QTextEdit(self)
         self.text_edit_word_detokenization_preview_results = QTextEdit(self)
 
@@ -686,17 +717,23 @@ class Wordless_Settings(QDialog):
         self.text_edit_word_detokenization_preview_samples.setAcceptRichText(False)
         self.text_edit_word_detokenization_preview_results.setReadOnly(True)
 
-        self.combo_box_word_detokenization_preview_lang.currentTextChanged.connect(preview_settings_changed)
+        self.combo_box_word_detokenization_preview_lang.currentTextChanged.connect(preview_changed)
         self.combo_box_word_detokenization_preview_lang.currentTextChanged.connect(preview_results_changed)
-        self.text_edit_word_detokenization_preview_samples.textChanged.connect(preview_settings_changed)
+        self.text_edit_word_detokenization_preview_samples.textChanged.connect(preview_changed)
         self.text_edit_word_detokenization_preview_samples.textChanged.connect(preview_results_changed)
+        self.text_edit_word_detokenization_preview_results.textChanged.connect(preview_changed)
 
-        layout_preview_lang = QGridLayout()
-        layout_preview_lang.addWidget(self.label_word_detokenization_preview_lang, 0, 0)
-        layout_preview_lang.addWidget(self.combo_box_word_detokenization_preview_lang, 0, 1)
+        self.preview_results_updated_word_detokenization.connect(preview_results_updated)
+
+        layout_preview_settings = QGridLayout()
+        layout_preview_settings.addWidget(self.label_word_detokenization_preview_lang, 0, 0)
+        layout_preview_settings.addWidget(self.combo_box_word_detokenization_preview_lang, 0, 1)
+        layout_preview_settings.addWidget(self.label_word_detokenization_preview_processing, 0, 3)
+
+        layout_preview_settings.setColumnStretch(2, 1)
 
         group_box_preview.setLayout(QGridLayout())
-        group_box_preview.layout().addLayout(layout_preview_lang, 0, 0, 1, 2, Qt.AlignLeft)
+        group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
         group_box_preview.layout().addWidget(self.text_edit_word_detokenization_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_word_detokenization_preview_results, 1, 1)
 
@@ -707,48 +744,78 @@ class Wordless_Settings(QDialog):
         self.settings_word_detokenization.layout().setRowStretch(0, 2)
         self.settings_word_detokenization.layout().setRowStretch(1, 1)
 
-        preview_results_changed()
-
     def init_settings_pos_tagging(self):
-        def pos_tagger_changed():
-            for i, lang_code in enumerate(settings_global):
-                pos_tagger = self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentText()
-                tagset_old = self.__dict__[f'combo_box_tagset_{lang_code}'].currentText()
+        def pos_taggers_changed(lang_code):
+            for i, lang_code_global in enumerate(settings_global):
+                pos_tagger = self.__dict__[f'combo_box_pos_tagger_{lang_code_global}'].currentText()
+                tagset_old = self.__dict__[f'combo_box_tagset_{lang_code_global}'].currentText()
 
                 table_pos_taggers.cellWidget(i, 2).blockSignals(True)
 
                 table_pos_taggers.cellWidget(i, 2).clear()
-                table_pos_taggers.cellWidget(i, 2).addItems([self.main.settings_global['pos_taggers'][lang_code][pos_tagger], 'Universal'])
+                table_pos_taggers.cellWidget(i, 2).addItems([self.main.settings_global['pos_taggers'][lang_code_global][pos_tagger], 'Universal'])
 
                 table_pos_taggers.cellWidget(i, 2).blockSignals(False)
 
                 if tagset_old == 'Universal':
-                    self.__dict__[f'combo_box_tagset_{lang_code}'].setCurrentText('Universal')
+                    self.__dict__[f'combo_box_tagset_{lang_code_global}'].setCurrentText('Universal')
 
-            preview_results_changed()
+            if lang_code == settings_custom['preview_lang']:
+                preview_results_changed()
 
-        def preview_settings_changed():
+        def tagsets_changed(lang_code):
+            if lang_code == settings_custom['preview_lang']:
+                preview_results_changed()
+
+        def preview_changed():
             settings_custom['preview_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_pos_tagging_preview_lang.currentText())
             settings_custom['preview_samples'] = self.text_edit_pos_tagging_preview_samples.toPlainText()
+            settings_custom['preview_results'] = self.text_edit_pos_tagging_preview_results.toPlainText()
 
         def preview_results_changed():
-            results = []
+            def preview():
+                results = []
 
-            if settings_custom['preview_samples']:
-                lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_pos_tagging_preview_lang.currentText())
-
-                pos_tagger = self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentText()
-                tagset = self.__dict__[f'combo_box_tagset_{lang_code}'].currentText()
-
-                for sample_line in settings_custom['preview_samples'].splitlines():
-                    tokens_tagged = wordless_text_processing.wordless_pos_tag(self.main, sample_line, lang_code,
+                for line in settings_custom['preview_samples'].splitlines():
+                    tokens_tagged = wordless_text_processing.wordless_pos_tag(self.main, line,
+                                                                              lang_code = settings_custom['preview_lang'],
                                                                               pos_tagger = pos_tagger,
                                                                               tagset = tagset)
+
                     results.append(' '.join([f'{token}_{tag}' for token, tag in tokens_tagged]))
 
-                self.text_edit_pos_tagging_preview_results.setPlainText('\n'.join(results))
+                self.preview_results_updated_pos_tagging.emit(settings_custom['preview_samples'], results)
+
+                self.preview_processing_pos_tagging = False
+
+            if settings_custom['preview_samples']:
+                self.label_pos_tagging_preview_processing.setText(self.tr('Processing ...'))
+
+                if not self.preview_processing_pos_tagging:
+                    self.preview_processing_pos_tagging = True
+
+                    pos_tagger = self.__dict__[f'combo_box_pos_tagger_{settings_custom["preview_lang"]}'].currentText()
+                    tagset = self.__dict__[f'combo_box_tagset_{settings_custom["preview_lang"]}'].currentText()
+
+                    if 'HanLP' in pos_tagger:
+                        import pyhanlp
+
+                    if pos_tagger == self.tr('HanLP - CRF Lexical Analyzer') and 'crf_analyzer' not in self.main.__dict__:
+                        self.main.crf_analyzer = pyhanlp.SafeJClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
+                    elif pos_tagger == self.tr('HanLP - Perceptron Lexical Analyzer') and 'perceptron_analyzer' not in self.main.__dict__:
+                        self.main.perceptron_analyzer == pyhanlp.SafeJClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
+
+                    threading.Thread(target = preview).start()
             else:
                 self.text_edit_pos_tagging_preview_results.clear()
+
+        def preview_results_updated(preview_samples, results):
+            if preview_samples == settings_custom['preview_samples']:
+                self.text_edit_pos_tagging_preview_results.setPlainText('\n'.join(results))
+
+                self.label_pos_tagging_preview_processing.setText('')
+            else:
+                preview_results_changed()
 
         settings_global = self.main.settings_global['pos_taggers']
         settings_custom = self.main.settings_custom['pos_tagging']
@@ -779,14 +846,13 @@ class Wordless_Settings(QDialog):
 
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'].addItems(list(settings_global[lang_code].keys()))
 
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentTextChanged.connect(pos_tagger_changed)
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentTextChanged.connect(preview_results_changed)
+            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: pos_taggers_changed(lang_code))
 
             table_pos_taggers.setCellWidget(i, 1, self.__dict__[f'combo_box_pos_tagger_{lang_code}'])
 
             self.__dict__[f'combo_box_tagset_{lang_code}'] = wordless_box.Wordless_Combo_Box(self)
 
-            self.__dict__[f'combo_box_tagset_{lang_code}'].currentTextChanged.connect(preview_results_changed)
+            self.__dict__[f'combo_box_tagset_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: tagsets_changed(lang_code))
 
             table_pos_taggers.setCellWidget(i, 2, self.__dict__[f'combo_box_tagset_{lang_code}'])
 
@@ -798,6 +864,7 @@ class Wordless_Settings(QDialog):
 
         self.label_pos_tagging_preview_lang = QLabel(self.tr('Select a Language:'), self)
         self.combo_box_pos_tagging_preview_lang = wordless_box.Wordless_Combo_Box(self)
+        self.label_pos_tagging_preview_processing = QLabel('', self)
         self.text_edit_pos_tagging_preview_samples = QTextEdit(self)
         self.text_edit_pos_tagging_preview_results = QTextEdit(self)
 
@@ -806,17 +873,23 @@ class Wordless_Settings(QDialog):
         self.text_edit_pos_tagging_preview_samples.setAcceptRichText(False)
         self.text_edit_pos_tagging_preview_results.setReadOnly(True)
 
-        self.combo_box_pos_tagging_preview_lang.currentTextChanged.connect(preview_settings_changed)
+        self.combo_box_pos_tagging_preview_lang.currentTextChanged.connect(preview_changed)
         self.combo_box_pos_tagging_preview_lang.currentTextChanged.connect(preview_results_changed)
-        self.text_edit_pos_tagging_preview_samples.textChanged.connect(preview_settings_changed)
+        self.text_edit_pos_tagging_preview_samples.textChanged.connect(preview_changed)
         self.text_edit_pos_tagging_preview_samples.textChanged.connect(preview_results_changed)
+        self.text_edit_pos_tagging_preview_results.textChanged.connect(preview_changed)
 
-        layout_preview_lang = QGridLayout()
-        layout_preview_lang.addWidget(self.label_pos_tagging_preview_lang, 0, 0)
-        layout_preview_lang.addWidget(self.combo_box_pos_tagging_preview_lang, 0, 1)
+        self.preview_results_updated_pos_tagging.connect(preview_results_updated)
+
+        layout_preview_settings = QGridLayout()
+        layout_preview_settings.addWidget(self.label_pos_tagging_preview_lang, 0, 0)
+        layout_preview_settings.addWidget(self.combo_box_pos_tagging_preview_lang, 0, 1)
+        layout_preview_settings.addWidget(self.label_pos_tagging_preview_processing, 0, 3)
+
+        layout_preview_settings.setColumnStretch(2, 1)
 
         group_box_preview.setLayout(QGridLayout())
-        group_box_preview.layout().addLayout(layout_preview_lang, 0, 0, 1, 2, Qt.AlignLeft)
+        group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
         group_box_preview.layout().addWidget(self.text_edit_pos_tagging_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_pos_tagging_preview_results, 1, 1)
 
@@ -827,7 +900,7 @@ class Wordless_Settings(QDialog):
         self.settings_pos_tagging.layout().setRowStretch(0, 2)
         self.settings_pos_tagging.layout().setRowStretch(1, 1)
 
-        pos_tagger_changed()
+        pos_taggers_changed('')
 
     def init_settings_lemmatization(self):
         def preview_settings_changed():
@@ -935,7 +1008,7 @@ class Wordless_Settings(QDialog):
             lang_code_639_3 = wordless_conversion.to_lang_code(self.main, lang_text)
             lang_code_639_1 = wordless_conversion.to_iso_639_1(self.main, lang_code_639_3)
 
-            if lang_code_639_1 == 'zh_CN':
+            if lang_code_639_1 == 'zh_cn':
                 lang_code_639_1 = 'zh'
 
             word_list = self.__dict__[f'combo_box_stop_words_{lang_code_639_3}'].currentText()
@@ -943,22 +1016,22 @@ class Wordless_Settings(QDialog):
             if word_list == 'NLTK':
                 stop_words = nltk.corpus.stopwords.words(lang_text)
             elif word_list == 'Stopwords ISO':
-                if lang_code_639_1 == 'zh_TW':
-                    with open(r'stop_words/Stopwords ISO/stopwords_zh_TW.txt', 'r', encoding = 'utf_8') as f:
+                if lang_code_639_1 == 'zh_tw':
+                    with open(r'stop_words/Stopwords ISO/stopwords_zh_tw.txt', 'r', encoding = 'utf_8') as f:
                         stop_words = [line.rstrip() for line in f]
                 else:
                     with open(r'stop_words/Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
                         stop_words = json.load(f)[lang_code_639_1]
             elif word_list == 'stopwords-json':
-                if lang_code_639_1 == 'zh_TW':
-                    with open(r'stop_words/stopwords-json/stopwords_zh_TW.txt', 'r', encoding = 'utf_8') as f:
+                if lang_code_639_1 == 'zh_tw':
+                    with open(r'stop_words/stopwords-json/stopwords_zh_tw.txt', 'r', encoding = 'utf_8') as f:
                         stop_words = [line.rstrip() for line in f]
                 else:
                     with open(r'stop_words/stopwords-json/stopwords-all.json', 'r', encoding = 'utf_8') as f:
                         stop_words = json.load(f)[lang_code_639_1]
             elif word_list == 'HanLP':
-                if lang_code_639_1 == 'zh_TW':
-                    with open(r'stop_words/HanLP/stopwords_zh_TW.txt', 'r', encoding = 'utf_8') as f:
+                if lang_code_639_1 == 'zh_tw':
+                    with open(r'stop_words/HanLP/stopwords_zh_tw.txt', 'r', encoding = 'utf_8') as f:
                         stop_words = [line.rstrip() for line in f]
                 else:
                     with open(r'stop_words/HanLP/stopwords.txt', 'r', encoding = 'utf_8') as f:
@@ -1277,8 +1350,8 @@ class Wordless_Settings(QDialog):
 
             self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].blockSignals(False)
 
-        self.text_edit_word_tokenization_preview_samples.blockSignals(True)
         self.combo_box_word_tokenization_preview_lang.blockSignals(True)
+        self.text_edit_word_tokenization_preview_samples.blockSignals(True)
 
         self.combo_box_word_tokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['word_tokenization']['preview_lang']))
         self.text_edit_word_tokenization_preview_samples.setText(settings['word_tokenization']['preview_samples'])
@@ -1289,18 +1362,42 @@ class Wordless_Settings(QDialog):
 
         # Tokenization -> Word Detokenization
         for lang_code in settings['word_detokenization']['word_detokenizers']:
+            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].blockSignals(True)
+
             self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].setCurrentText(settings['word_detokenization']['word_detokenizers'][lang_code])
+
+            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].blockSignals(False)
+
+        self.combo_box_word_detokenization_preview_lang.blockSignals(True)
+        self.text_edit_word_detokenization_preview_samples.blockSignals(True)
 
         self.combo_box_word_detokenization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['word_detokenization']['preview_lang']))
         self.text_edit_word_detokenization_preview_samples.setText(settings['word_detokenization']['preview_samples'])
+        self.text_edit_word_detokenization_preview_results.setText(settings['word_detokenization']['preview_results'])
+
+        self.combo_box_word_detokenization_preview_lang.blockSignals(False)
+        self.text_edit_word_detokenization_preview_samples.blockSignals(False)
 
         # POS Tagging
         for lang_code in settings['pos_tagging']['pos_taggers']:
+            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].blockSignals(True)
+            self.__dict__[f'combo_box_tagset_{lang_code}'].blockSignals(True)
+
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'].setCurrentText(settings['pos_tagging']['pos_taggers'][lang_code])
             self.__dict__[f'combo_box_tagset_{lang_code}'].setCurrentText(settings['pos_tagging']['tagsets'][lang_code])
 
+            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].blockSignals(False)
+            self.__dict__[f'combo_box_tagset_{lang_code}'].blockSignals(False)
+
+        self.combo_box_pos_tagging_preview_lang.blockSignals(True)
+        self.text_edit_pos_tagging_preview_samples.blockSignals(True)
+
         self.combo_box_pos_tagging_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['pos_tagging']['preview_lang']))
         self.text_edit_pos_tagging_preview_samples.setText(settings['pos_tagging']['preview_samples'])
+        self.text_edit_pos_tagging_preview_results.setText(settings['pos_tagging']['preview_results'])
+
+        self.combo_box_pos_tagging_preview_lang.blockSignals(False)
+        self.text_edit_pos_tagging_preview_samples.blockSignals(False)
 
         # Lemmatization
         for lang_code in settings['lemmatization']['lemmatizers']:

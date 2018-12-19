@@ -64,6 +64,11 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'Sun Junyi',
              '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
 
+            ['<a href="https://github.com/taishi-i/nagisa">Nagisa</a>',
+             '0.1.1',
+             'Taishi Ikeda (池田大志)',
+             '<a href="https://github.com/taishi-i/nagisa/blob/master/LICENSE.txt">MIT</a>'],
+
             ['<a href="http://www.nltk.org/">NLTK</a>',
              '3.4',
              'Steven Bird, Liling Tan, Dan Garrette,<br>Peter Ljunglöf, Joel Nothman, Mikhail Korobov,<br>Alexis Dimitriadis',

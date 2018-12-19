@@ -786,8 +786,8 @@ def init_settings_default(main):
 
         'sentence_tokenization': {
             'sentence_tokenizers': {
-                'zho_CN': main.tr('Wordless - Chinese Sentence Tokenizer'),
-                'zho_TW': main.tr('Wordless - Chinese Sentence Tokenizer'),
+                'zho_cn': main.tr('Wordless - Chinese Sentence Tokenizer'),
+                'zho_tw': main.tr('Wordless - Chinese Sentence Tokenizer'),
                 'ces': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'dan': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'nld': main.tr('NLTK - Punkt Sentence Tokenizer'),
@@ -798,6 +798,7 @@ def init_settings_default(main):
                 'deu': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'ell': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'ita': main.tr('NLTK - Punkt Sentence Tokenizer'),
+                'jpn': main.tr('Wordless - Japanese Sentence Tokenizer'),
                 'nor': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'pol': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'por': main.tr('NLTK - Punkt Sentence Tokenizer'),
@@ -817,8 +818,8 @@ def init_settings_default(main):
         'word_tokenization': {
             'word_tokenizers': {
                 'cat': main.tr('SacreMoses - Moses Tokenizer'),
-                'zho_CN': main.tr('jieba - With HMM'),
-                'zho_TW': main.tr('jieba - With HMM'),
+                'zho_cn': main.tr('jieba'),
+                'zho_tw': main.tr('jieba'),
                 'ces': main.tr('NLTK - Tok-tok Tokenizer'),
                 'nld': main.tr('SacreMoses - Moses Tokenizer'),
                 'eng': main.tr('NLTK - Treebank Tokenizer'),
@@ -853,9 +854,29 @@ def init_settings_default(main):
 
         'word_detokenization': {
             'word_detokenizers': {
-                'zho_CN': main.tr('Wordless - Chinese Word Detokenizer'),
-                'zho_TW': main.tr('Wordless - Chinese Word Detokenizer'),
+                'cat': main.tr('SacreMoses - Moses Detokenizer'),
+                'zho_cn': main.tr('Wordless - Chinese Word Detokenizer'),
+                'zho_tw': main.tr('Wordless - Chinese Word Detokenizer'),
+                'ces': main.tr('SacreMoses - Moses Detokenizer'),
+                'nld': main.tr('SacreMoses - Moses Detokenizer'),
                 'eng': main.tr('SacreMoses - Moses Detokenizer'),
+                'fin': main.tr('SacreMoses - Moses Detokenizer'),
+                'fra': main.tr('SacreMoses - Moses Detokenizer'),
+                'deu': main.tr('SacreMoses - Moses Detokenizer'),
+                'ell': main.tr('SacreMoses - Moses Detokenizer'),
+                'hun': main.tr('SacreMoses - Moses Detokenizer'),
+                'isl': main.tr('SacreMoses - Moses Detokenizer'),
+                'jpn': main.tr('Wordless - Japanese Word Detokenizer'),
+                'lav': main.tr('SacreMoses - Moses Detokenizer'),
+                'pol': main.tr('SacreMoses - Moses Detokenizer'),
+                'por': main.tr('SacreMoses - Moses Detokenizer'),
+                'ron': main.tr('SacreMoses - Moses Detokenizer'),
+                'rus': main.tr('SacreMoses - Moses Detokenizer'),
+                'slk': main.tr('SacreMoses - Moses Detokenizer'),
+                'slv': main.tr('SacreMoses - Moses Detokenizer'),
+                'spa': main.tr('SacreMoses - Moses Detokenizer'),
+                'swe': main.tr('SacreMoses - Moses Detokenizer'),
+                'tam': main.tr('SacreMoses - Moses Detokenizer'),
 
                 'other': main.tr('SacreMoses - Moses Detokenizer')
             },
@@ -867,16 +888,18 @@ def init_settings_default(main):
 
         'pos_tagging': {
             'pos_taggers': {
-                'zho_CN': main.tr('jieba'),
-                'zho_TW':  main.tr('jieba'),
+                'zho_cn': main.tr('jieba'),
+                'zho_tw':  main.tr('jieba'),
                 'eng': main.tr('NLTK - Perceptron POS Tagger'),
+                'jpn': main.tr('Nagisa'),
                 'rus': main.tr('NLTK - Perceptron POS Tagger')
             },
 
             'tagsets': {
-                'zho_CN': 'jieba',
-                'zho_TW': 'jieba',
+                'zho_cn': 'jieba',
+                'zho_tw': 'jieba',
                 'eng': 'Penn Treebank',
+                'jpn': 'UniDic',
                 'rus': 'Russian National Corpus'
             },
 
@@ -929,8 +952,8 @@ def init_settings_default(main):
                 'bre': 'Stopwords ISO',
                 'bul': 'Stopwords ISO',
                 'cat': 'Stopwords ISO',
-                'zho_CN': 'HanLP',
-                'zho_TW': 'HanLP',
+                'zho_cn': 'HanLP',
+                'zho_tw': 'HanLP',
                 'hrv': 'Stopwords ISO',
                 'ces': 'Stopwords ISO',
                 'dan': 'NLTK',
