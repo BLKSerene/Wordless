@@ -124,8 +124,8 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
         for sentence in sentences:
             tokens.extend(moses_tokenizer.penn_tokenize(sentence))
-    elif word_tokenizer == main.tr('PyDelphin - Repp Tokenizer'):
-        repp_tokenizer = delphin.repp.REPP.from_config('tokenization/repp_tokenizer/erg/repp.set')
+    elif word_tokenizer == main.tr('PyDelphin - REPP Tokenizer'):
+        repp_tokenizer = delphin.repp.REPP.from_config('tokenization/repp_tokenizer/repp.set')
 
         for sentence in sentences:
             tokens.extend([token.form for token in repp_tokenizer.tokenize(sentence).tokens])
@@ -183,7 +183,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
         for sentence in sentences:
             tokens.extend([token.word for token in viterbi_tokenizer.seg(sentence)])
     # Japanese
-    elif word_tokenizer == main.tr('Nagisa'):
+    elif word_tokenizer == main.tr('nagisa'):
         for sentence in sentences:
             tokens.extend(nagisa.tagging(sentence).words)
 

@@ -759,7 +759,7 @@ def init_settings_default(main):
         'general': {
             'file_default_path': os.path.realpath('.'),
             'file_default_lang': 'eng',
-            'file_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
+            'file_default_encoding': 'utf_8',
 
             'precision_decimal': 2,
             'precision_pct': 2,
@@ -772,16 +772,24 @@ def init_settings_default(main):
 
         'import': {
             'search_terms_default_path': os.path.realpath('.'),
-            'search_terms_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
+            'search_terms_default_encoding': 'utf_8',
         },
 
         'export': {
             'tables_default_path': os.path.realpath('./export/'),
             'tables_default_type': main.tr('Excel Workbook (*.xlsx)'),
-            'tables_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
+            'tables_default_encoding': 'utf_8',
 
             'search_terms_default_path': os.path.realpath('./export/'),
-            'search_terms_default_encoding': main.tr('All Languages (UTF-8 Without BOM)'),
+            'search_terms_default_encoding': 'utf_8',
+        },
+
+        'lang_detection': {
+            'detection_settings': {
+                'detection_engine': 'langid.py',
+                'number_lines': 100,
+                'number_lines_no_limit': False
+            }
         },
 
         'sentence_tokenization': {
@@ -891,7 +899,7 @@ def init_settings_default(main):
                 'zho_cn': main.tr('jieba'),
                 'zho_tw':  main.tr('jieba'),
                 'eng': main.tr('NLTK - Perceptron POS Tagger'),
-                'jpn': main.tr('Nagisa'),
+                'jpn': main.tr('nagisa'),
                 'rus': main.tr('NLTK - Perceptron POS Tagger')
             },
 

@@ -21,7 +21,7 @@ class Wordless_Files():
         self.main = table.main
         self.table = table
 
-    def _new_file(self, file_path, auto_detect = True):
+    def _new_file(self, file_path, detection = True):
         file = {}
 
         file['selected'] = True
@@ -31,16 +31,11 @@ class Wordless_Files():
         file['name'], file['ext_code'] = os.path.splitext(file_name)
         file['ext_text'] = wordless_conversion.to_ext_text(self.main, file['ext_code'])
 
-        if auto_detect:
-            file['encoding_code'], file['encoding_lang'] = wordless_detection.detect_encoding(self.main, file)
-            file['encoding_text'] = wordless_conversion.to_encoding_text(self.main, file['encoding_code'], file['encoding_lang'])
+        if detection:
+            file['encoding_code'] = wordless_detection.detect_encoding(self.main, file)
+            file['encoding_text'] = wordless_conversion.to_encoding_text(self.main, file['encoding_code'])
             file['lang_code'] = wordless_detection.detect_lang(self.main, file)
             file['lang_text'] = wordless_conversion.to_lang_text(self.main, file['lang_code'])
-        else:
-            file['encoding_code'] = wordless_conversion.to_encoding_code(self.main, self.main.settings_custom['general']['file_default_encoding'])
-            file['encoding_text'] = self.main.settings_custom['general']['file_default_encoding']
-            file['lang_code'] = self.main.settings_custom['general']['file_default_lang']
-            file['lang_text'] = wordless_conversion.to_lang_text(self.main, self.main.settings_custom['general']['file_default_lang'])
 
         return file
 
@@ -195,7 +190,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
                         break
 
             for row in range(self.rowCount()):
-                file = self.main.wordless_files._new_file(self.item(row, 2).text(), auto_detect = False)
+                file = self.main.wordless_files._new_file(self.item(row, 2).text(), detection = False)
 
                 file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
                 file['lang_text'] = self.cellWidget(row, 1).currentText()
