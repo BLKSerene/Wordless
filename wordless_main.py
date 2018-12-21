@@ -64,15 +64,15 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'Sun Junyi',
              '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
 
-            ['<a href="https://github.com/taishi-i/nagisa">Nagisa</a>',
-             '0.1.1',
-             'Taishi Ikeda (池田大志)',
-             '<a href="https://github.com/taishi-i/nagisa/blob/master/LICENSE.txt">MIT</a>'],
-
             ['<a href="http://www.nltk.org/">NLTK</a>',
              '3.4',
              'Steven Bird, Liling Tan, Dan Garrette,<br>Peter Ljunglöf, Joel Nothman, Mikhail Korobov,<br>Alexis Dimitriadis',
              '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
+
+            ['<a href="https://github.com/taishi-i/nagisa">nagisa</a>',
+             '0.1.1',
+             'Taishi Ikeda (池田大志)',
+             '<a href="https://github.com/taishi-i/nagisa/blob/master/LICENSE.txt">MIT</a>'],
 
             ['<a href="https://github.com/delph-in/pydelphin">PyDelphin</a>',
              '0.9.1',
@@ -108,6 +108,11 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '1.0.7',
              'Michal Mimino Danilak',
              '<a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache-2.0</a>'],
+
+            ['<a href="https://github.com/saffsd/langid.py">langid.py</a>',
+             '1.1.6',
+             'Marco Lui',
+             '<a href="https://github.com/saffsd/langid.py/blob/master/LICENSE">BSD-2-Clause</a>'],
 
             ['<a href="https://lxml.de/">lxml</a>',
              '4.2.5',

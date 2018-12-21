@@ -12,14 +12,18 @@ def init_settings_global(main):
     main.settings_global = {
         'langs': {
             main.tr('Afrikaans'): 'afr',
-            main.tr('Armenian'): 'hye',
-            main.tr('Asturian'): 'ast',
             main.tr('Albanian'): 'sqi',
+            main.tr('Amharric'): 'amh',
             main.tr('Arabic'): 'ara',
+            main.tr('Aragonese'): 'arg',
+            main.tr('Armenian'): 'hye',
+            main.tr('Assamese'): 'asm',
+            main.tr('Asturian'): 'ast', # Lemmatization
             main.tr('Azerbaijani'): 'aze',
             main.tr('Basque'): 'eus',
             main.tr('Belarusian'): 'bel',
             main.tr('Bengali'): 'ben',
+            main.tr('Bosnian'): 'bos',
             main.tr('Breton'): 'bre',
             main.tr('Bulgarian'): 'bul',
             main.tr('Catalan'): 'cat',
@@ -29,16 +33,20 @@ def init_settings_global(main):
             main.tr('Czech'): 'ces',
             main.tr('Danish'): 'dan',
             main.tr('Dutch'): 'nld',
+            main.tr('Dzongkha'): 'dzo',
             main.tr('English'): 'eng',
             main.tr('Esperanto'): 'epo',
             main.tr('Estonian'): 'est',
+            main.tr('Faroese'): 'fao',
             main.tr('Finnish'): 'fin',
             main.tr('French'): 'fra',
             main.tr('Galician'): 'glg',
+            main.tr('Georgian'): 'kat',
             main.tr('German'): 'deu',
             main.tr('Greek'): 'ell',
             main.tr('Gujarati'): 'guj',
-            main.tr('Hausa'): 'hau',
+            main.tr('Haitian'): 'hat',
+            main.tr('Hausa'): 'hau', # Stop Words
             main.tr('Hebrew'): 'heb',
             main.tr('Hindi'): 'hin',
             main.tr('Hungarian'): 'hun',
@@ -47,47 +55,67 @@ def init_settings_global(main):
             main.tr('Islandic'): 'isl',
             main.tr('Italian'): 'ita',
             main.tr('Japanese'): 'jpn',
+            main.tr('Javanese'): 'jav',
             main.tr('Kannada'): 'kan',
             main.tr('Kazakh'): 'kaz',
+            main.tr('Khmer'): 'khm',
+            main.tr('Kinyarwanda'): 'kin',
             main.tr('Korean'): 'kor',
             main.tr('Kurdish'): 'kur',
+            main.tr('Kyrgyz'): 'kir',
+            main.tr('Lao'): 'lao',
             main.tr('Latin'): 'lat',
             main.tr('Latvian'): 'lav',
             main.tr('Lithuanian'): 'lit',
+            main.tr('Luxembourg'): 'ltz',
             main.tr('Macedonian'): 'mkd',
+            main.tr('Malagasy'): 'mlg',
             main.tr('Malay'): 'msa',
             main.tr('Malayalam'): 'mal',
             main.tr('Maltese'): 'mlt',
-            main.tr('Manx'): 'glv',
+            main.tr('Manx'): 'glv', # Lemmatization
             main.tr('Marathi'): 'mar',
+            main.tr('Mongolian'): 'mon',
             main.tr('Nepali'): 'nep',
             main.tr('Norwegian'): 'nor',
-            main.tr('Punjabi'): 'pan',
+            main.tr('Norwegian Bokmål'): 'nob',
+            main.tr('Norwegian Nynorsk'): 'nno',
+            main.tr('Occitan'): 'oci',
+            main.tr('Oriya'): 'ori',
+            main.tr('Pashto'): 'pus',
             main.tr('Persian'): 'fas',
             main.tr('Polish'): 'pol',
             main.tr('Portuguese'): 'por',
+            main.tr('Punjabi'): 'pan',
+            main.tr('Quechua'): 'que',
             main.tr('Romanian'): 'ron',
             main.tr('Russian'): 'rus',
-            main.tr('Scottish Gaelic'): 'gla',
+            main.tr('Sami (Northern)'): 'sme',
+            main.tr('Scottish Gaelic'): 'gla', # Lemmatization
             main.tr('Serbian'): 'srp',
+            main.tr('Sinhala'): 'sin',
             main.tr('Slovak'): 'slk',
-            main.tr('Slovene'): 'slv',
-            main.tr('Sotho, Southern'): 'sot',
-            main.tr('Somali'): 'som',
+            main.tr('Slovenian'): 'slv',
+            main.tr('Somali'): 'som', # Stop Words
+            main.tr('Sotho (Southern)'): 'sot', # Stop Words
             main.tr('Spanish'): 'spa',
             main.tr('Swahili'): 'swa',
             main.tr('Swedish'): 'swe',
             main.tr('Tagalog'): 'tgl',
-            main.tr('Tajik'): 'tgk',
+            main.tr('Tajik'): 'tgk', # Word Tokenization
             main.tr('Tamil'): 'tam',
             main.tr('Telugu'): 'tel',
             main.tr('Thai'): 'tha',
             main.tr('Turkish'): 'tur',
             main.tr('Ukrainian'): 'ukr',
             main.tr('Urdu'): 'urd',
+            main.tr('Uyghur'): 'uig',
             main.tr('Vietnamese'): 'vie',
+            main.tr('Volapük'): 'vol',
+            main.tr('Walloon'): 'wln',
             main.tr('Welsh'): 'cym',
-            main.tr('Yoruba'): 'yor',
+            main.tr('Xhosa'): 'xho',
+            main.tr('Yoruba'): 'yor', # Stop Words
             main.tr('Zulu'): 'zul',
 
             main.tr('Other Languages'): 'other'
@@ -95,82 +123,110 @@ def init_settings_global(main):
 
         'lang_codes': {
             'afr': 'af',
-            'hye': 'hy',
-            'ast': 'ast',
-            'sqi': 'sq',
+            'amh': 'am',
             'ara': 'ar',
+            'arg': 'an',
+            'asm': 'as',
+            'ast': 'ast', # Lemmatization
             'aze': 'az',
-            'eus': 'eu',
             'bel': 'be',
             'ben': 'bn',
+            'bos': 'bs',
             'bre': 'br',
             'bul': 'bg',
             'cat': 'ca',
-            'zho_cn': 'zh_cn',
-            'zho_tw': 'zh_tw',
-            'hrv': 'hr',
             'ces': 'cs',
+            'cym': 'cy',
             'dan': 'da',
-            'nld': 'nl',
+            'deu': 'de',
+            'dzo': 'dz',
+            'ell': 'el',
             'eng': 'en',
             'epo': 'eo',
             'est': 'et',
+            'eus': 'eu',
+            'fao': 'fo',
+            'fas': 'fa',
             'fin': 'fi',
             'fra': 'fr',
+            'gla': 'gd', # Lemmatization
+            'gle': 'ga',
             'glg': 'gl',
-            'deu': 'de',
-            'ell': 'el',
+            'glv': 'gv', # Lemmatization
             'guj': 'gu',
+            'hat': 'ht',
             'hau': 'ha',
             'heb': 'he',
             'hin': 'hi',
+            'hrv': 'hr',
             'hun': 'hu',
+            'hye': 'hy',
             'ind': 'id',
-            'gle': 'ga',
             'isl': 'is',
             'ita': 'it',
+            'jav': 'jv',
             'jpn': 'ja',
             'kan': 'kn',
+            'kat': 'ka',
             'kaz': 'kk',
+            'khm': 'km',
+            'kin': 'rw',
+            'kir': 'ky',
             'kor': 'ko',
             'kur': 'ku',
+            'lao': 'lo',
             'lat': 'la',
             'lav': 'lv',
             'lit': 'lt',
-            'mkd': 'mk',
-            'msa': 'ms',
+            'ltz': 'lb',
             'mal': 'ml',
-            'mlt': 'mt',
-            'glv': 'gv',
             'mar': 'mr',
+            'mkd': 'mk',
+            'mlg': 'mg',
+            'mlt': 'mt',
+            'mon': 'mn',
+            'msa': 'ms',
             'nep': 'ne',
+            'nld': 'nl',
+            'nno': 'nn',
+            'nob': 'nb',
             'nor': 'no',
+            'oci': 'oc',
+            'ori': 'or',
             'pan': 'pa',
-            'fas': 'fa',
             'pol': 'pl',
             'por': 'pt',
+            'pus': 'ps',
+            'que': 'qu',
             'ron': 'ro',
             'rus': 'ru',
-            'gla': 'gd',
-            'srp': 'sr',
+            'sin': 'si',
             'slk': 'sk',
             'slv': 'sl',
-            'sot': 'st',
-            'som': 'so',
+            'sme': 'se',
+            'som': 'so', # Stop Words
+            'sot': 'st', # Stop Words
             'spa': 'es',
+            'sqi': 'sq',
+            'srp': 'sr',
             'swa': 'sw',
             'swe': 'sv',
-            'tgl': 'tl',
-            'tgk': 'tg',
             'tam': 'ta',
             'tel': 'te',
+            'tgk': 'tg',
+            'tgl': 'tl',
             'tha': 'th',
             'tur': 'tr',
+            'uig': 'ug',
             'ukr': 'uk',
             'urd': 'ur',
             'vie': 'vi',
-            'cym': 'cy',
+            'vol': 'vo',
+            'wln': 'wa',
+            'xho': 'xh',
             'yor': 'yo',
+            'zho_cn': 'zh-cn',
+            'zho_tw': 'zh-tw',
             'zul': 'zu',
 
             'other': 'other',
@@ -201,91 +257,67 @@ def init_settings_global(main):
             main.tr('All Languages (UTF-7)'): 'utf_7',
             main.tr('All Languages (CP65001)'): 'cp65001',
 
+            main.tr('Arabic (CP720)'): 'cp720',
+            main.tr('Arabic (CP864)'): 'cp864',
+            main.tr('Arabic (ISO-8859-6)'): 'iso8859_6',
+            main.tr('Arabic (Mac OS Arabic)'): 'mac_arabic',
+            main.tr('Arabic (Windows-1256)'): 'cp1256',
+
             main.tr('Baltic Languages (CP775)'): 'cp775',
-            main.tr('Baltic Languages (Windows-1257)'): 'cp1257',
             main.tr('Baltic Languages (ISO-8859-4)'): 'iso8859_4',
             main.tr('Baltic Languages (ISO-8859-13)'): 'iso8859_13',
+            main.tr('Baltic Languages (Windows-1257)'): 'cp1257',
 
             main.tr('Celtic Languages (ISO-8859-14)'): 'iso8859_14',
 
-            main.tr('Nordic Languages (ISO-8859-10)'): 'iso8859_10',
+            main.tr('Central European (CP852)'): 'cp852',
+            main.tr('Central European (ISO-8859-2)'): 'iso8859_2',
+            main.tr('Central European (Mac OS Central European)'): 'mac_latin2',
+            main.tr('Central European (Mac OS Latin)'): 'mac_latin2',
+            main.tr('Central European (Windows-1250)'): 'cp1250',
 
-            main.tr('Europe (HP Roman-8)'): 'hp_roman8',
+            main.tr('Chinese (GB18030)'): 'gb18030',
+            main.tr('Chinese (GBK)'): 'gbk',
 
-            main.tr('Central Europe (Mac OS Central European)'): 'mac_centeuro',
-            main.tr('Central Europe (Mac OS Latin 2)'): 'mac_latin2',
+            main.tr('Chinese (Simplified) (GB2312)'): 'gb2312',
+            main.tr('Chinese (Simplified) (HZ)'): 'hz_gb_2312',
 
-            main.tr('Central and Eastern Europe (CP852)'): 'cp852',
-            main.tr('Central and Eastern Europe (Windows-1250)'): 'cp1250',
-            main.tr('Central and Eastern Europe (ISO-8859-2)'): 'iso8859_2',
-            main.tr('Central and Eastern Europe (Mac Latin)'): 'mac_latin2',
-
-            main.tr('South-Eastern Europe (ISO-8859-16)'): 'iso8859_16',
-
-            main.tr('Western Europe (EBCDIC 500)'): 'cp500',
-            main.tr('Western Europe (CP850)'): 'cp850',
-            main.tr('Western Europe (CP858)'): 'cp858',
-            main.tr('Western Europe (CP1140)'): 'cp1140',
-            main.tr('Western Europe (Windows-1252)'): 'windows_1252',
-            main.tr('Western Europe (ISO-2022-JP-2)'): 'iso2022_jp_2',
-            main.tr('Western Europe (ISO-8859-1)'): 'iso_8859_1',
-            main.tr('Western Europe (ISO-8859-15)'): 'iso_8859_15',
-            main.tr('Western Europe (Mac OS Roman)'): 'mac_roman',
-
-            main.tr('Arabic (CP720)'): 'cp720',
-            main.tr('Arabic (CP864)'): 'cp864',
-            main.tr('Arabic (Windows-1256)'): 'cp1256',
-            main.tr('Arabic (ISO-8859-6)'): 'iso_8859_6',
-            main.tr('Arabic (Mac OS Arabic)'): 'mac_arabic',
-
-            main.tr('Bulgarian (IBM855)'): 'cp855',
-            main.tr('Bulgarian (Windows-1251)'): 'windows_1251',
-            main.tr('Bulgarian (ISO-8859-5)'): 'iso_8859_5',
-            main.tr('Bulgarian (Mac OS Cyrillic)'): 'mac_cyrillic',
-
-            main.tr('Belarusian (IBM855)'): 'cp855',
-            main.tr('Belarusian (Windows-1251)'): 'cp1251',
-            main.tr('Belarusian (ISO-8859-5)'): 'iso_8859_5',
-            main.tr('Belarusian (Mac OS Cyrillic)'): 'mac_cyrillic',
-
-            main.tr('Canadian French (CP863)'): 'cp863',
-
-            main.tr('Simplified Chinese (GB2312)'): 'gb2312',
-            main.tr('Simplified Chinese (HZ)'): 'hz_gb_2312',
-            main.tr('Simplified Chinese (ISO-2022-JP-2)'): 'iso2022_jp_2',
-
-            main.tr('Traditional Chinese (Big-5)'): 'big5',
-            main.tr('Traditional Chinese (Big5-HKSCS)'): 'big5hkscs',
-            main.tr('Traditional Chinese (CP950)'): 'cp950',
-
-            main.tr('Unified Chinese (GBK)'): 'gbk',
-            main.tr('Unified Chinese (GB18030)'): 'gb18030',
+            main.tr('Chinese (Traditional) (Big-5)'): 'big5',
+            main.tr('Chinese (Traditional) (Big5-HKSCS)'): 'big5hkscs',
+            main.tr('Chinese (Traditional) (CP950)'): 'cp950',
 
             main.tr('Croatian (Mac OS Croatian)'): 'mac_croatian',
 
-            main.tr('Danish (CP865)'): 'cp865',
+            main.tr('Cyrillic (CP855)'): 'cp855',
+            main.tr('Cyrillic (CP866)'): 'cp866',
+            main.tr('Cyrillic (ISO-8859-5)'): 'iso8859_5',
+            main.tr('Cyrillic (Mac OS Cyrillic)'): 'mac_cyrillic',
+            main.tr('Cyrillic (Windows-1251)'): 'cp1251',
 
             main.tr('English (ASCII)'): 'ascii',
             main.tr('English (EBCDIC 037)'): 'cp037',
             main.tr('English (CP437)'): 'cp437',
 
-            main.tr('Esperanto (ISO-8859-3)'): 'iso_8859_3',
+            main.tr('Esperanto/Maltese (ISO-8859-3)'): 'iso8859_3',
+
+            main.tr('European (HP Roman-8)'): 'hp_roman8',
+
+            main.tr('French (CP863)'): 'cp863',
 
             main.tr('German (EBCDIC 273)'): 'cp273',
 
             main.tr('Greek (CP737)'): 'cp737',
             main.tr('Greek (CP869)'): 'cp869',
             main.tr('Greek (CP875)'): 'cp875',
-            main.tr('Greek (Windows-1253)'): 'windows_1253',
-            main.tr('Greek (ISO-2022-JP-2)'): 'iso2022_jp_2',
-            main.tr('Greek (ISO-8859-7)'): 'iso_8859_7',
+            main.tr('Greek (ISO-8859-7)'): 'iso8859_7',
             main.tr('Greek (Mac OS Greek)'): 'mac_greek',
+            main.tr('Greek (Windows-1253)'): 'windows_1253',
 
-            main.tr('Hebrew (EBCDIC 424)'): 'cp424',
             main.tr('Hebrew (CP856)'): 'cp856',
             main.tr('Hebrew (CP862)'): 'cp862',
+            main.tr('Hebrew (EBCDIC 424)'): 'cp424',
+            main.tr('Hebrew (ISO-8859-8)'): 'iso8859_8',
             main.tr('Hebrew (Windows-1255)'): 'windows_1255',
-            main.tr('Hebrew (ISO-8859-8)'): 'iso_8859_8',
 
             main.tr('Icelandic (CP861)'): 'cp861',
             main.tr('Icelandic (Mac OS Icelandic)'): 'mac_iceland',
@@ -294,10 +326,10 @@ def init_settings_global(main):
             main.tr('Japanese (EUC-JP)'): 'euc_jp',
             main.tr('Japanese (EUC-JIS-2004)'): 'euc_jis_2004',
             main.tr('Japanese (EUC-JISx0213)'): 'euc_jisx0213',
-            main.tr('Japanese (ISO-2022-JP)'): 'iso_2022_jp',
+            main.tr('Japanese (ISO-2022-JP)'): 'iso2022_jp',
             main.tr('Japanese (ISO-2022-JP-1)'): 'iso2022_jp_1',
             main.tr('Japanese (ISO-2022-JP-2)'): 'iso2022_jp_2',
-            main.tr('Japanese (ISO-2022-JP-2)'): 'iso2022_jp_2004',
+            main.tr('Japanese (ISO-2022-JP-2004)'): 'iso2022_jp_2004',
             main.tr('Japanese (ISO-2022-JP-3)'): 'iso2022_jp_3',
             main.tr('Japanese (ISO-2022-JP-EXT)'): 'iso2022_jp_ext',
             main.tr('Japanese (Shift_JIS)'): 'shift_jis',
@@ -307,20 +339,13 @@ def init_settings_global(main):
             main.tr('Kazakh (KZ-1048)'): 'kz1048',
             main.tr('Kazakh (PTCP154)'): 'ptcp154',
 
-            main.tr('Korean (Windows-949)'): 'cp949',
             main.tr('Korean (EUC-KR)'): 'euc_kr',
-            main.tr('Korean (ISO-2022-JP-2)'): 'iso2022_jp_2',
-            main.tr('Korean (ISO-2022-KR)'): 'iso_2022_kr',
+            main.tr('Korean (ISO-2022-KR)'): 'iso2022_kr',
             main.tr('Korean (JOHAB)'): 'johab',
+            main.tr('Korean (Windows-949)'): 'cp949',
 
-            main.tr('Macedonian (IBM855)'): 'cp855',
-            main.tr('Macedonian (Windows-1251)'): 'cp1251',
-            main.tr('Macedonian (ISO-8859-5)'): 'iso_8859_5',
-            main.tr('Macedonian (Mac OS Cyrillic)'): 'maccyrillic',
-
-            main.tr('Maltese (ISO-8859-3)'): 'iso_8859_3',
-
-            main.tr('Norwegian (CP865)'): 'cp865',
+            main.tr('Nordic Languages (CP865)'): 'cp865',
+            main.tr('Nordic Languages (ISO-8859-10)'): 'iso8859_10',
 
             main.tr('Persian (Mac OS Farsi)'): 'mac_farsi',
 
@@ -328,17 +353,9 @@ def init_settings_global(main):
 
             main.tr('Romanian (Mac OS Romanian)'): 'mac_romanian',
 
-            main.tr('Russian (IBM855)'): 'ibm855',
-            main.tr('Russian (IBM866)'): 'ibm866',
-            main.tr('Russian (Windows-1251)'): 'windows_1251',
-            main.tr('Russian (ISO-8859-5)'): 'iso_8859_5',
             main.tr('Russian (KOI8-R)'): 'koi8_r',
-            main.tr('Russian (Mac OS Cyrillic)'): 'maccyrillic',
 
-            main.tr('Serbian (IBM855)'): 'cp855',
-            main.tr('Serbian (Windows-1251)'): 'cp1251',
-            main.tr('Serbian (ISO-8859-5)'): 'iso8859_5',
-            main.tr('Serbian (Mac OS Cyrillic)'): 'maccyrillic',
+            main.tr('South-Eastern European (ISO-8859-16)'): 'iso8859_16',
 
             main.tr('Tajik (KOI8-T)'): 'koi8_t',
 
@@ -348,9 +365,9 @@ def init_settings_global(main):
 
             main.tr('Turkish (CP857)'): 'cp857',
             main.tr('Turkish (EBCDIC 1026)'): 'cp1026',
-            main.tr('Turkish (Windows-1254)'): 'cp1254',
-            main.tr('Turkish (ISO-8859-9)'): 'iso_8859_9',
+            main.tr('Turkish (ISO-8859-9)'): 'iso8859_9',
             main.tr('Turkish (Mac OS Turkish)'): 'mac_turkish',
+            main.tr('Turkish (Windows-1254)'): 'cp1254',
 
             main.tr('Ukrainian (CP1125)'): 'cp1125',
             main.tr('Ukrainian (KOI8-U)'): 'koi8_u',
@@ -358,7 +375,16 @@ def init_settings_global(main):
             main.tr('Urdu (CP1006)'): 'cp1006',
             main.tr('Urdu (Mac OS Farsi)'): 'mac_farsi',
 
-            main.tr('Vietnamese (CP1258)'): 'cp1258'
+            main.tr('Vietnamese (CP1258)'): 'cp1258',
+
+            main.tr('Western European (EBCDIC 500)'): 'cp500',
+            main.tr('Western European (CP850)'): 'cp850',
+            main.tr('Western European (CP858)'): 'cp858',
+            main.tr('Western European (CP1140)'): 'cp1140',
+            main.tr('Western European (ISO-8859-1)'): 'latin_1',
+            main.tr('Western European (ISO-8859-15)'): 'iso8859_15',
+            main.tr('Western European (Mac OS Roman)'): 'mac_roman',
+            main.tr('Western European (Windows-1252)'): 'windows_1252',
         },
 
         'sentence_tokenizers': {
@@ -459,7 +485,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'zho_cn': [
@@ -500,7 +526,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'nld': [
@@ -512,7 +538,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'eng': [
@@ -524,7 +550,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'fin': [
@@ -536,7 +562,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'fra': [
@@ -548,7 +574,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'deu': [
@@ -560,7 +586,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'ell': [
@@ -572,7 +598,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'hun': [
@@ -584,7 +610,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'isl': [
@@ -596,7 +622,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'ita': [
@@ -608,11 +634,11 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'jpn': [
-                main.tr('Nagisa')
+                main.tr('nagisa')
             ],
 
             'lav': [
@@ -624,7 +650,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'fas': [
@@ -636,7 +662,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'pol': [
@@ -648,7 +674,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'por': [
@@ -660,7 +686,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'ron': [
@@ -672,7 +698,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'rus': [
@@ -684,7 +710,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'slk': [
@@ -696,7 +722,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'slv': [
@@ -708,7 +734,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'spa': [
@@ -720,7 +746,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'swe': [
@@ -732,7 +758,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'tgk': [
@@ -744,7 +770,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'tam': [
@@ -756,7 +782,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'vie': [
@@ -768,7 +794,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ],
 
             'other': [
@@ -780,7 +806,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Word Punctuation Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - Repp Tokenizer')
+                main.tr('PyDelphin - REPP Tokenizer')
             ]
         },
 
@@ -921,7 +947,7 @@ def init_settings_global(main):
             },
 
             'jpn': {
-                main.tr('Nagisa'): 'UniDic'
+                main.tr('nagisa'): 'UniDic'
             },
 
             'rus': {
@@ -945,70 +971,92 @@ def init_settings_global(main):
             'ast': [
                 'Lemmatization Lists'
             ],
+
             'bul': [
                 'Lemmatization Lists'
             ],
+
             'cat': [
                 'Lemmatization Lists'
             ],
+
             'ces': [
                 'Lemmatization Lists'
             ],
+
             'eng': [
                 'NLTK',
                 'Lemmatization Lists'
             ],
+
             'est': [
                 'Lemmatization Lists'
             ],
+
             'fra': [
                 'Lemmatization Lists'
             ],
+
             'glg': [
                 'Lemmatization Lists'
             ],
+
             'deu': [
                 'Lemmatization Lists'
             ],
+
             'hun': [
                 'Lemmatization Lists'
             ],
+
             'gle': [
                 'Lemmatization Lists'
             ],
+
             'ita': [
                 'Lemmatization Lists'
             ],
+
             'glv': [
                 'Lemmatization Lists'
             ],
+
             'fas': [
                 'Lemmatization Lists'
             ],
+
             'por': [
                 'Lemmatization Lists'
             ],
+
             'ron': [
                 'Lemmatization Lists'
             ],
+
             'gla': [
                 'Lemmatization Lists'
             ],
+
             'slk': [
                 'Lemmatization Lists'
             ],
+
             'slv': [
                 'Lemmatization Lists'
             ],
+
             'spa': [
                 'Lemmatization Lists'
             ],
+
             'swe': [
                 'Lemmatization Lists'
             ],
+
             'ukr': [
                 'Lemmatization Lists'
             ],
+
             'cym': [
                 'Lemmatization Lists'
             ]

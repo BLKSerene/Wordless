@@ -816,9 +816,9 @@ class Wordless_Table_Data(Wordless_Table):
 
                 workbook.save(file_path)
             elif file_type == self.tr('CSV (Comma Delimited) (*.csv)'):
-                file_encoding = wordless_conversion.to_encoding_code(self.main, self.main.settings_custom['export']['tables_default_encoding'])
+                encoding = self.main.settings_custom['export']['tables_default_encoding']
 
-                with open(file_path, 'w', encoding = file_encoding, newline = '') as f:
+                with open(file_path, 'w', encoding = encoding, newline = '') as f:
                     csv_writer = csv.writer(f)
 
                     if not rows_export:
