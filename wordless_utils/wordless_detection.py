@@ -12,13 +12,15 @@ from PyQt5.QtWidgets import *
 
 import chardet
 import langdetect
+import langid
 
 from wordless_utils import wordless_conversion, wordless_misc
 
 def detect_encoding(main, file):
     text_sample = b''
-    encoding_code = wordless_conversion.to_encoding_code(main, main.settings_custom['general']['file_default_encoding'])
-    encoding_lang = None
+
+    # Default Encoding
+    encoding_code = main.settings_custom['general']['file_default_encoding']
 
     if main.settings_custom['file']['detect_encodings']:
         with open(file['path'], 'rb') as f:
@@ -28,10 +30,7 @@ def detect_encoding(main, file):
                 else:
                     break
 
-            encoding_detected = chardet.detect(text_sample)
-
-            encoding_code = encoding_detected['encoding']
-            encoding_lang = encoding_detected.get('language')
+            encoding_code = chardet.detect(text_sample)['encoding']
             
             if encoding_code == None:
                 encoding_code = 'utf_8'
@@ -47,7 +46,7 @@ def detect_encoding(main, file):
         except UnicodeDecodeError:
             QMessageBox.warning(main,
                                 main.tr('Encoding Detection Failed'),
-                                main.tr(f'''{main.settings_global['style_dialog']}
+                                main.tr(f'''{main.settings_global['styles']['style_dialog']}
                                             <body>
                                                 <p>Failed to auto-detect the encoding of file "{file["name"]}"!</p>
                                                 <p>Please select the correct encoding manually.</p>
@@ -55,31 +54,44 @@ def detect_encoding(main, file):
                                         '''),
                                 QMessageBox.Ok)
 
-    return encoding_code, encoding_lang
+    return encoding_code
 
 def detect_lang(main, file):
-    text_sample = ''
+    text = ''
+
+    # Default Language
     lang_code = main.settings_custom['general']['file_default_lang']
 
+    detection_engine = main.settings_custom['lang_detection']['detection_settings']['detection_engine']
+
     if main.settings_custom['file']['detect_langs']:
-        try:
-            with open(file['path'], 'r', encoding = file['encoding_code']) as f:
+        with open(file['path'], 'r', encoding = file['encoding_code']) as f:
+            if main.settings_custom['lang_detection']['detection_settings']['number_lines_no_limit']:
+                for line in f:
+                    text += line
+            else:
                 for i, line in enumerate(f):
-                    if i < 100:
-                        text_sample += line
+                    if i < main.settings_custom['lang_detection']['detection_settings']['number_lines']:
+                        text += line
                     else:
                         break
 
-                lang_code = wordless_conversion.to_iso_639_3(main, langdetect.detect(text_sample))
-        except langdetect.lang_detect_exception.LangDetectException:
-            QMessageBox.warning(main,
-                                main.tr('Language Detection Failed'),
-                                main.tr(f'''{main.settings_global['style_dialog']}
-                                            <body>
-                                                <p>Failed to auto-detect the language of file "{file["name"]}"!</p>
-                                                <p>Please select the correct language manually.</p>
-                                            </body>
-                                        '''),
-                                QMessageBox.Ok)
+            if detection_engine == 'langid.py':
+                lang_code_639_1 = langid.classify(text)[0]
+
+                if lang_code_639_1 == 'zh':
+                    # Default to Chinese (Simplified)
+                    lang_code_639_1 = 'zh-cn'
+
+                    for lang in sorted(langdetect.detect_langs(text), key = lambda item: -item.prob):
+                        if lang.lang in ['zh-cn', 'zh-tw']:
+                            lang_code_639_1 = lang.lang
+
+                            break
+
+            elif detection_engine == 'langdetect':
+                lang_code_639_1 = langdetect.detect(text)
+
+            lang_code = wordless_conversion.to_iso_639_3(main, lang_code_639_1)
 
     return lang_code
