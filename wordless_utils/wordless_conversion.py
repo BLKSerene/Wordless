@@ -21,12 +21,9 @@ def to_lang_text(main, lang_code):
         return langs[lang_code]
 
 def to_iso_639_3(main, lang_code):
-    if '-' in lang_code:
-        lang_code = f'{lang_code.split("-")[0]}_{lang_code.split("-")[1].upper()}'
-
-    for lang_code_3, lang_code_2 in main.settings_global['lang_codes'].items():
-        if lang_code == lang_code_2:
-            return lang_code_3
+    for lang_code_639_3, lang_code_639_2 in main.settings_global['lang_codes'].items():
+        if lang_code == lang_code_639_2:
+            return lang_code_639_3
 
 def to_iso_639_1(main, lang_code):
     return main.settings_global['lang_codes'][lang_code]
@@ -35,19 +32,12 @@ def to_ext_text(main, ext_code):
     return main.settings_global['file_exts'][ext_code].split(' (')[0]
 
 def to_encoding_code(main, encoding_text):
-    encoding_code = main.settings_global['file_encodings'][encoding_text]
+    return main.settings_global['file_encodings'][encoding_text]
 
-    return encoding_code
-
-def to_encoding_text(main, encoding_code, encoding_lang = None):
+def to_encoding_text(main, encoding_code):
     for text, code in main.settings_global['file_encodings'].items():
         if encoding_code == code:
-            # Distinguish between different languages
-            if encoding_lang:
-                if encoding_lang in text:
-                    return text
-            else:
-                return text
+            return text
 
 def to_universal_tagset(main, tagset, tag):
     tagset = main.settings_global['tagsets'][tagset]

@@ -105,6 +105,5 @@ venv.bak/
 
 # Custom
 export/
-Test/
 Misc/
 *.pkl
