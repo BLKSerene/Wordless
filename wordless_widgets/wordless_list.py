@@ -141,11 +141,11 @@ class Wordless_List(QListWidget):
                                                 self.tr('Text File (*.txt)'))[0]
 
         if file_path:
-            file_encoding_text = self.main.settings_custom['import']['search_terms_default_encoding']
-            file_encoding_code = wordless_conversion.to_encoding_code(self.main, file_encoding_text)
+            encoding_code = self.main.settings_custom['import']['search_terms_default_encoding']
+            encoding_text = wordless_conversion.to_encoding_text(self.main, encoding_code)
 
             try:
-                with open(file_path, 'r', encoding = file_encoding_code) as f:
+                with open(file_path, 'r', encoding = encoding_code) as f:
                     if os.path.getsize(file_path) == 0:
                         wordless_message_box.wordless_message_box_empty_file(self.main, file_path)
                     else:
@@ -157,9 +157,9 @@ class Wordless_List(QListWidget):
             except:
                 QMessageBox.warning(self.main,
                                     self.tr('Import Failed'),
-                                    self.tr(f'''{self.main.settings_global['style_dialog']}
+                                    self.tr(f'''{self.main.settings_global['styles']['style_dialog']}
                                                 <body>
-                                                    <p>Failed to open the specified file with encoding "{file_encoding_text}".</p>
+                                                    <p>Failed to open the specified file with encoding "{encoding_text}".</p>
                                                     <p>You can change the default file encoding in "Preferences -> Settings -> General -> Import" and try again.</p>
                                                 </body>
                                             '''))
@@ -173,9 +173,9 @@ class Wordless_List(QListWidget):
                                                 self.tr('Text File (*.txt)'))[0]
 
         if file_path:
-            file_encoding = wordless_conversion.to_encoding_code(self.main, self.main.settings_custom['export']['search_terms_default_encoding'])
+            encoding = self.main.settings_custom['export']['search_terms_default_encoding']
 
-            with open(file_path, 'w', encoding = file_encoding) as f:
+            with open(file_path, 'w', encoding = encoding) as f:
                 for item in self.get_items():
                     f.write(item + '\n')
 
