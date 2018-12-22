@@ -73,7 +73,12 @@ class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
     def text_changed(self):
         if 'HanLP' in self.currentText():
             try:
-                jpype.getDefaultJVMPath()
+                import pyhanlp
+
+                if self.currentText() == self.tr('HanLP - CRF Lexical Analyzer') and 'crf_analyzer' not in self.main.__dict__:
+                        self.main.crf_analyzer = pyhanlp.SafeJClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
+                elif self.currentText() == self.tr('HanLP - Perceptron Lexical Analyzer') and 'perceptron_analyzer' not in self.main.__dict__:
+                    self.main.perceptron_analyzer == pyhanlp.SafeJClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
             except:
                 wordless_message_box.wordless_message_box_jre_not_installed(self.main)
 

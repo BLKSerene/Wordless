@@ -242,16 +242,11 @@ def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'defaul
 
     return text
 
-def wordless_pos_tag(main, text, lang_code, pos_tagger = 'default', tagset = 'default'):
+def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset = 'default'):
     tokens_tagged = []
 
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang_code]
-
-    if 'HanLP' in pos_tagger:
-        import pyhanlp
-
-    sentences = wordless_sentence_tokenize(main, text, lang_code)
 
     # English & Russian
     if pos_tagger == main.tr(main.tr('NLTK - Perceptron POS Tagger')):
@@ -263,14 +258,12 @@ def wordless_pos_tag(main, text, lang_code, pos_tagger = 'default', tagset = 'de
             tokens_tagged.extend(jieba.posseg.cut(sentence))
     elif pos_tagger == main.tr('HanLP - CRF Lexical Analyzer'):
         for sentence in sentences:
-            tokens_tagged.extend(list(zip(*main.crf_analyzer.analyze(text).toWordTagArray())))
+            tokens_tagged.extend(list(zip(*main.crf_analyzer.analyze(sentence).toWordTagArray())))
     elif pos_tagger == main.tr('HanLP - Perceptron Lexical Analyzer'):
-        perceptron_tagger = pyhanlp.SafeJClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
-
         for sentence in sentences:
-            tokens_tagged.extend(list(zip(*main.perceptron_analyzer.analyze(text).toWordTagArray())))
+            tokens_tagged.extend(list(zip(*main.perceptron_analyzer.analyze(sentence).toWordTagArray())))
     # Japanese
-    elif pos_tagger == main.tr('Nagisa'):
+    elif pos_tagger == main.tr('nagisa'):
         for sentence in sentences:
             tagged_tokens = nagisa.tagging(sentence)
 
@@ -313,7 +306,7 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'default'):
         elif lemmatizer == 'Lemmatization Lists':
             lang_code = wordless_conversion.to_iso_639_1(main, lang_code)
 
-            with open(f'lemmatization/Lemmatization Lists/lemmatization-{lang_code}.txt', 'r', encoding = 'utf_8') as f:
+            with open(f'lemmatization/Lemmatization Lists/lemmatization-{lang_code}.txt', 'r', encoding = 'utf_8_sig') as f:
                 for line in f:
                     try:
                         lemma, word = line.rstrip().split('\t')
