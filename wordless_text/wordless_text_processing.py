@@ -6,6 +6,7 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
+import importlib
 import json
 import re
 
@@ -36,7 +37,11 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'defa
     for line in text.splitlines():
         # English
         if sentence_tokenizer == main.tr('NLTK - Punkt Sentence Tokenizer'):
-            if lang_code == 'other':
+            # Norwegian Bokmål & Norwegian Nynorsk
+            if lang_code in ['nob', 'nno']:
+                lang_text = 'norwegian'
+            # Other Languages
+            elif lang_code == 'other':
                 lang_text = 'english'
             else:
                 lang_text = wordless_conversion.to_lang_text(main, lang_code).lower()
@@ -321,39 +326,57 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'default'):
 
     return lemmas
 
-def wordless_filter_stop_words(main, items, lang_code):
-    lang_text = wordless_conversion.to_lang_text(main, lang_code)
+def wordless_get_stop_words(main, lang_code, word_list = 'default'):
+    if word_list == 'default':
+        word_list = main.settings_custom['stop_words']['stop_words'][lang_code]
+
     lang_code_639_1 = wordless_conversion.to_iso_639_1(main, lang_code)
 
+    # Chinese (Simplified)
     if lang_code_639_1 == 'zh_cn':
         lang_code_639_1 = 'zh'
 
-    if lang_code in main.settings_global['stop_words']:
-        word_list = main.settings_custom['stop_words']['stop_words'][lang_code]
+    if word_list == 'Stopwords ISO':
+        # Norwegian Bokmål & Norwegian Nynorsk
+        if lang_code_639_1 in ['nb', 'nn']:
+            lang_code_639_1 = 'no'
 
-        if word_list == 'NLTK':
-            stop_words = nltk.corpus.stopwords.words(lang_text)
-        elif word_list == 'Stopwords ISO':
-            if lang_code_639_1 == 'zh_tw':
-                with open(r'stop_words/Stopwords ISO/stopwords_zh_tw.txt', 'r', encoding = 'utf_8') as f:
-                    stop_words = [line.rstrip() for line in f]
-            else:
-                with open(r'stop_words/Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
-                    stop_words = json.load(f)[lang_code_639_1]
-        elif word_list == 'stopwords-json':
-            if lang_code_639_1 == 'zh_tw':
-                with open(r'stop_words/stopwords-json/stopwords_zh_tw.txt', 'r', encoding = 'utf_8') as f:
-                    stop_words = [line.rstrip() for line in f]
-            else:
-                with open(r'stop_words/stopwords-json/stopwords-all.json', 'r', encoding = 'utf_8') as f:
-                    stop_words = json.load(f)[lang_code_639_1]
-        elif word_list == 'HanLP':
-            if lang_code_639_1 == 'zh_tw':
-                with open(r'stop_words/HanLP/stopwords_zh_tw.txt', 'r', encoding = 'utf_8') as f:
-                    stop_words = [line.rstrip() for line in f]
-            else:
-                with open(r'stop_words/HanLP/stopwords.txt', 'r', encoding = 'utf_8') as f:
-                    stop_words = [line.rstrip() for line in f]
+        # Chinese (Traditional)
+        if lang_code_639_1 == 'zh_tw':
+            with open(r'stop_words/Stopwords ISO/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
+                stop_words = [line.rstrip() for line in f]
+        else:
+            with open(r'stop_words/Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
+                stop_words = json.load(f)[lang_code_639_1]
+    elif word_list == 'spaCy':
+        if lang_code_639_1 == 'zh_tw':
+            with open(r'stop_words/spaCy/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
+                stop_words = [line.rstrip() for line in f]
+        else:
+            spacy_lang = importlib.import_module(f'spacy.lang.{lang_code_639_1}')
+
+            stop_words = spacy_lang.STOP_WORDS
+    elif word_list == 'NLTK':
+        # Norwegian Bokmål & Norwegian Nynorsk
+        if lang_code_639_1 in ['nb', 'nn']:
+            lang_code_639_1 = 'no'
+
+        lang_text = wordless_conversion.to_lang_text(main, lang_code)
+
+        stop_words = nltk.corpus.stopwords.words(lang_text)
+    elif word_list == 'HanLP':
+        if lang_code_639_1 == 'zh_tw':
+            with open(r'stop_words/HanLP/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
+                stop_words = [line.rstrip() for line in f]
+        else:
+            with open(r'stop_words/HanLP/stop_words_zh_cn.txt', 'r', encoding = 'utf_8') as f:
+                stop_words = [line.rstrip() for line in f]
+
+    return sorted(stop_words)
+
+def wordless_filter_stop_words(main, items, lang_code):
+    if lang_code in main.settings_global['stop_words']:
+        stop_words = wordless_get_stop_words(main, lang_code)
 
         if type(items[0]) == str:
             items_filtered = [token for token in items if token not in stop_words]

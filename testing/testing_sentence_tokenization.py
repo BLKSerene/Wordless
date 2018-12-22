@@ -56,3 +56,21 @@ print('Japanese / Wordless - Japanese Sentence Tokenizer:')
 for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_jpn, 'jpn',
                                                                     sentence_tokenizer = 'Wordless - Japanese Sentence Tokenizer'):
     print(f'\t{sentence}')
+
+# Norwegian Bokmål
+text_nob = 'Norsk er et nordisk språk som snakkes som morsmål av rundt 5 millioner mennesker,[1][trenger bedre kilde] først og fremst i Norge, hvor det er offisielt språk. Det snakkes også av over 50 000 norsk-amerikanere i USA, spesielt i Midtvesten. Norsk, svensk og dansk utgjør sammen de fastlandsnordiske språkene, et kontinuum av mer eller mindre innbyrdes forståelige dialekter i Skandinavia.[2] Norsk kan føres tilbake til de vestnordiske dialektene av norrønt, som også islandsk og færøysk har utgått fra, men avstanden til disse øynordiske språkene er i dag langt større enn avstanden til de østnordiske språkene dansk og svensk. Det er vanskelig å avgrense norsk mot svensk og dansk etter rent språklige kriterier; i praksis kan moderne norsk sies å være de skandinaviske dialekter og standardspråk som har geografisk tilknytning til Norge.'
+
+print('Norwegian Bokmål / NLTK - Punkt Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_nob, 'nob',
+                                                                    sentence_tokenizer = 'NLTK - Punkt Sentence Tokenizer'):
+    print(f'\t{sentence}')
+
+# Norwegian Nynorsk
+text_nno = 'Norsk er eit germansk språk som høyrer til den nordiske, eller nordgermanske, greina. Norsk blir for det meste snakka i Noreg, men òg i norske utvandrarsamfunn, som blant norsk-amerikanarar i USA. I dei gamle norske provinsane i Sverige — Jemtland, Herjedalen og Båhuslen — har dialektane mange likskapar med norsk, særleg nord i området.[1]'
+
+print('Norwegian Nynorsk / NLTK - Punkt Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_nno, 'nno',
+                                                                    sentence_tokenizer = 'NLTK - Punkt Sentence Tokenizer'):
+    print(f'\t{sentence}')

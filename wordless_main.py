@@ -64,15 +64,15 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'Sun Junyi',
              '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
 
-            ['<a href="http://www.nltk.org/">NLTK</a>',
-             '3.4',
-             'Steven Bird, Liling Tan, Dan Garrette,<br>Peter Ljunglöf, Joel Nothman, Mikhail Korobov,<br>Alexis Dimitriadis',
-             '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
-
             ['<a href="https://github.com/taishi-i/nagisa">nagisa</a>',
              '0.1.1',
              'Taishi Ikeda (池田大志)',
              '<a href="https://github.com/taishi-i/nagisa/blob/master/LICENSE.txt">MIT</a>'],
+
+            ['<a href="http://www.nltk.org/">NLTK</a>',
+             '3.4',
+             'Steven Bird, Liling Tan, Dan Garrette,<br>Peter Ljunglöf, Joel Nothman, Mikhail Korobov,<br>Alexis Dimitriadis',
+             '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
 
             ['<a href="https://github.com/delph-in/pydelphin">PyDelphin</a>',
              '0.9.1',
@@ -85,7 +85,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="https://github.com/alvations/sacremoses#license">LGPL-2.1</a>'],
 
             ['<a href="https://spacy.io/">spaCy</a>',
-             '2.0.16',
+             '2.0.18',
              'Matthew Honnibal, Ines Montani',
              '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'],
 
@@ -148,11 +148,6 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '0.4.0',
              'Gene Diaz',
              '<a href="https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE">MIT</a>'],
-
-            ['<a href="https://github.com/6/stopwords-json">stopwords-json</a>',
-             '/',
-             'Peter Graham',
-             '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>'],
         ]
 
         self.setFixedSize(700, 400)
