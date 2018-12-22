@@ -77,7 +77,6 @@ def init_settings_global(main):
             main.tr('Marathi'): 'mar',
             main.tr('Mongolian'): 'mon',
             main.tr('Nepali'): 'nep',
-            main.tr('Norwegian'): 'nor',
             main.tr('Norwegian Bokmål'): 'nob',
             main.tr('Norwegian Nynorsk'): 'nno',
             main.tr('Occitan'): 'oci',
@@ -104,6 +103,7 @@ def init_settings_global(main):
             main.tr('Tagalog'): 'tgl',
             main.tr('Tajik'): 'tgk', # Word Tokenization
             main.tr('Tamil'): 'tam',
+            main.tr('Tatar'): 'tat', # Stop Words
             main.tr('Telugu'): 'tel',
             main.tr('Thai'): 'tha',
             main.tr('Turkish'): 'tur',
@@ -190,7 +190,6 @@ def init_settings_global(main):
             'nld': 'nl',
             'nno': 'nn',
             'nob': 'nb',
-            'nor': 'no',
             'oci': 'oc',
             'ori': 'or',
             'pan': 'pa',
@@ -212,6 +211,7 @@ def init_settings_global(main):
             'swa': 'sw',
             'swe': 'sv',
             'tam': 'ta',
+            'tat': 'tt', # Stop Words
             'tel': 'te',
             'tgk': 'tg',
             'tgl': 'tl',
@@ -225,8 +225,8 @@ def init_settings_global(main):
             'wln': 'wa',
             'xho': 'xh',
             'yor': 'yo',
-            'zho_cn': 'zh-cn',
-            'zho_tw': 'zh-tw',
+            'zho_cn': 'zh_cn',
+            'zho_tw': 'zh_tw',
             'zul': 'zu',
 
             'other': 'other',
@@ -442,7 +442,11 @@ def init_settings_global(main):
                 main.tr('Wordless - Japanese Sentence Tokenizer')
             ],
 
-            'nor': [
+            'nob': [
+                main.tr('NLTK - Punkt Sentence Tokenizer')
+            ],
+
+            'nno': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
 
@@ -1064,255 +1068,312 @@ def init_settings_global(main):
 
         'stop_words': {
             'afr': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'ara': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'hye': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'aze': [
                 'NLTK'
             ],
+
             'eus': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'ben': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'bre': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'bul': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'cat': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'zho_cn': [
                 'HanLP',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'zho_tw': [
                 'HanLP',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'hrv': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'ces': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'dan': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'nld': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'eng': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'epo': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'est': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'fin': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'fra': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'glg': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'deu': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'ell': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'hau': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'heb': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'hin': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'hun': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'ind': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'gle': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'ita': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'jpn': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'kaz': [
                 'NLTK'
             ],
+
             'kor': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'kur': [
                 'Stopwords ISO'
             ],
+
             'lat': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'lav': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'mar': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'msa': [
                 'Stopwords ISO'
             ],
+
             'nep': [
                 'NLTK'
             ],
-            'nor': [
+
+            'nob': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
+            'nno': [
+                'NLTK',
+                'Stopwords ISO'
+            ],
+
             'fas': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'pol': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'por': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'ron': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'rus': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
+            'sin': [
+                'spaCy'
+            ],
+
             'slk': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'slv': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'sot': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'som': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'spa': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'swa': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'swe': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'tgl': [
                 'Stopwords ISO'
             ],
-            'tha': [
-                'Stopwords ISO',
-                'stopwords-json'
+
+            'tat': [
+                'spaCy'
             ],
+
+            'tel': [
+                'spaCy'
+            ],
+
+            'tha': [
+                'spaCy',
+                'Stopwords ISO'
+            ],
+
             'tur': [
                 'NLTK',
-                'Stopwords ISO',
-                'stopwords-json'
+                'spaCy',
+                'Stopwords ISO'
             ],
+
             'ukr': [
                 'Stopwords ISO'
             ],
+
             'urd': [
+                'spaCy',
                 'Stopwords ISO'
             ],
+
             'vie': [
+                'spaCy',
                 'Stopwords ISO'
             ],
+
             'yor': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ],
+
             'zul': [
-                'Stopwords ISO',
-                'stopwords-json'
+                'Stopwords ISO'
             ]
         },
 

@@ -66,8 +66,8 @@ Many thanks to the following open-source projects on which Wordless is built on:
 4. [HanLP](http://hanlp.com/) by He Han (何晗)
 5. [pyhanlp](https://github.com/hankcs/pyhanlp) by He Han (何晗)
 6. [jieba (“结巴”中文分词)](https://github.com/fxsjy/jieba) by Sun Junyi
-7. [NLTK](http://www.nltk.org/) by Steven Bird, Liling Tan, Dan Garrette, Peter Ljunglöf, Joel Nothman, Mikhail Korobov, Alexis Dimitriadis
-8. [nagisa](https://github.com/taishi-i/nagisa) by Taishi Ikeda (池田大志)
+7. [nagisa](https://github.com/taishi-i/nagisa) by Taishi Ikeda (池田大志)
+8. [NLTK](http://www.nltk.org/) by Steven Bird, Liling Tan, Dan Garrette, Peter Ljunglöf, Joel Nothman, Mikhail Korobov, Alexis Dimitriadis
 9. [PyDelphin](https://github.com/delph-in/pydelphin) by Michael Wayne Goodman, T.J. Trimble, Guy Emerson, Alex Kuhnle, Francis Bond, Angie McMillan-Major
 10. [SacreMoses](https://github.com/alvations/sacremoses) by Liling Tan
 11. [spaCy](https://spacy.io/) by Matthew Honnibal, Ines Montani
@@ -83,7 +83,6 @@ Many thanks to the following open-source projects on which Wordless is built on:
 21. [SciPy](https://www.scipy.org/) by SciPy Developers
 22. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
 23. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
-24. [stopwords-json](https://github.com/6/stopwords-json) by Peter Graham
 
 ## Donation/捐助
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.
