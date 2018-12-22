@@ -1,5 +1,5 @@
 #
-# Wordless: Converter of Simplified Chinese Stopwords to Traditional Chinese Stopwords
+# Wordless: Converter of Stop Words from Simplified Chinese to Traditional Chinese
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -9,31 +9,35 @@
 import json
 
 import pyhanlp
+import spacy.lang.zh
 
-def stopwords_to_zh_tw():
-	# Stopwords ISO
-	with open(r'Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
-		stop_words = json.load(f)['zh']
+# Stopwords ISO
+with open(r'Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
+	stop_words = json.load(f)['zh']
 
-	with open(r'Stopwords ISO/stopwords_zh_tw.txt', 'w', encoding = 'utf_8') as f:
-		for stop_word in stop_words:
-			f.write(f'{pyhanlp.HanLP.convertToTraditionalChinese(stop_word)}\n')
+with open(r'Stopwords ISO/stop_words_zh_tw.txt', 'w', encoding = 'utf_8') as f:
+	for stop_word in stop_words:
+		f.write(f'{pyhanlp.HanLP.convertToTraditionalChinese(stop_word)}\n')
 
-	# stopwords-json
-	with open(r'stopwords-json/stopwords-all.json', 'r', encoding = 'utf_8') as f:
-		stop_words = json.load(f)['zh']
+# stopwords-json
+with open(r'stopwords-json/stopwords-all.json', 'r', encoding = 'utf_8') as f:
+	stop_words = json.load(f)['zh']
 
-	with open(r'stopwords-json/stopwords_zh_tw.txt', 'w', encoding = 'utf_8') as f:
-		for stop_word in stop_words:
-			f.write(f'{pyhanlp.HanLP.convertToTraditionalChinese(stop_word)}\n')
+with open(r'stopwords-json/stop_words_zh_tw.txt', 'w', encoding = 'utf_8') as f:
+	for stop_word in stop_words:
+		f.write(f'{pyhanlp.HanLP.convertToTraditionalChinese(stop_word)}\n')
 
-	# HanLP
-	with open(r'HanLP/stopwords.txt', 'r', encoding = 'utf_8') as f:
-		stop_words = [line.rstrip() for line in f]
+# HanLP
+with open(r'HanLP/stop_words_zh_cn.txt', 'r', encoding = 'utf_8') as f:
+	stop_words = [line.rstrip() for line in f]
 
-	with open(r'HanLP/stopwords_zh_tw.txt', 'w', encoding = 'utf_8') as f:
-		for stop_word in stop_words:
-			f.write(f'{pyhanlp.HanLP.convertToTraditionalChinese(stop_word)}\n')
+with open(r'HanLP/stop_words_zh_tw.txt', 'w', encoding = 'utf_8') as f:
+	for stop_word in stop_words:
+		f.write(f'{pyhanlp.HanLP.convertToTraditionalChinese(stop_word)}\n')
 
-if __name__ == '__main__':
-	stopwords_to_zh_tw()
+# spaCy
+stop_words = sorted(spacy.lang.zh.STOP_WORDS)
+
+with open(r'spaCy/stop_words_zh_tw.txt', 'w', encoding = 'utf_8') as f:
+	for stop_word in stop_words:
+		f.write(f'{pyhanlp.HanLP.convertToTraditionalChinese(stop_word)}\n')

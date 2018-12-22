@@ -85,7 +85,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="https://github.com/alvations/sacremoses#license">LGPL-2.1</a>'],
 
             ['<a href="https://spacy.io/">spaCy</a>',
-             '2.0.16',
+             '2.0.18',
              'Matthew Honnibal, Ines Montani',
              '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'],
 
