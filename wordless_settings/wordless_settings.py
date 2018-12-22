@@ -559,6 +559,8 @@ class Wordless_Settings(QDialog):
             def preview():
                 results = []
 
+                word_tokenizer = self.__dict__[f'combo_box_word_tokenizer_{settings_custom["preview_lang"]}'].currentText()
+
                 for line in settings_custom['preview_samples'].splitlines():
                     sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line, lang_code)
                     tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentences,
@@ -576,16 +578,6 @@ class Wordless_Settings(QDialog):
 
                 if not self.preview_processing_word_tokenization:
                     self.preview_processing_word_tokenization = True
-
-                    word_tokenizer = self.__dict__[f'combo_box_word_tokenizer_{settings_custom["preview_lang"]}'].currentText()
-
-                    if 'HanLP' in word_tokenizer:
-                        import pyhanlp
-
-                    if word_tokenizer == self.tr('HanLP - CRF Lexical Analyzer') and 'crf_analyzer' not in self.main.__dict__:
-                        self.main.crf_analyzer = pyhanlp.SafeJClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
-                    elif word_tokenizer == self.tr('HanLP - Perceptron Lexical Analyzer') and 'perceptron_analyzer' not in self.main.__dict__:
-                        self.main.perceptron_analyzer == pyhanlp.SafeJClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
 
                     threading.Thread(target = preview).start()
             else:
@@ -623,7 +615,7 @@ class Wordless_Settings(QDialog):
         for i, lang_code in enumerate(settings_global):
             table_word_tokenizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
 
-            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box_Jre_Required(self)
+            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box_Jre_Required(self.main)
 
             self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].addItems(settings_global[lang_code])
 
@@ -828,8 +820,14 @@ class Wordless_Settings(QDialog):
             def preview():
                 results = []
 
+                pos_tagger = self.__dict__[f'combo_box_pos_tagger_{settings_custom["preview_lang"]}'].currentText()
+                tagset = self.__dict__[f'combo_box_tagset_{settings_custom["preview_lang"]}'].currentText()
+
                 for line in settings_custom['preview_samples'].splitlines():
-                    tokens_tagged = wordless_text_processing.wordless_pos_tag(self.main, line,
+                    sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line,
+                                                                                    lang_code = settings_custom['preview_lang'])
+
+                    tokens_tagged = wordless_text_processing.wordless_pos_tag(self.main, sentences,
                                                                               lang_code = settings_custom['preview_lang'],
                                                                               pos_tagger = pos_tagger,
                                                                               tagset = tagset)
@@ -845,17 +843,6 @@ class Wordless_Settings(QDialog):
 
                 if not self.preview_processing_pos_tagging:
                     self.preview_processing_pos_tagging = True
-
-                    pos_tagger = self.__dict__[f'combo_box_pos_tagger_{settings_custom["preview_lang"]}'].currentText()
-                    tagset = self.__dict__[f'combo_box_tagset_{settings_custom["preview_lang"]}'].currentText()
-
-                    if 'HanLP' in pos_tagger:
-                        import pyhanlp
-
-                    if pos_tagger == self.tr('HanLP - CRF Lexical Analyzer') and 'crf_analyzer' not in self.main.__dict__:
-                        self.main.crf_analyzer = pyhanlp.SafeJClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
-                    elif pos_tagger == self.tr('HanLP - Perceptron Lexical Analyzer') and 'perceptron_analyzer' not in self.main.__dict__:
-                        self.main.perceptron_analyzer == pyhanlp.SafeJClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
 
                     threading.Thread(target = preview).start()
             else:
@@ -894,7 +881,7 @@ class Wordless_Settings(QDialog):
         for i, lang_code in enumerate(settings_global):
             table_pos_taggers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
 
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'] = wordless_box.Wordless_Combo_Box_Jre_Required(self)
+            self.__dict__[f'combo_box_pos_tagger_{lang_code}'] = wordless_box.Wordless_Combo_Box_Jre_Required(self.main)
 
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'].addItems(list(settings_global[lang_code].keys()))
 
@@ -955,30 +942,49 @@ class Wordless_Settings(QDialog):
         pos_taggers_changed('')
 
     def init_settings_lemmatization(self):
-        def preview_settings_changed():
-            lang_text = self.combo_box_lemmatization_preview_lang.currentText()
+        def lemmatizers_changed():
+            if lang_code == settings_custom['preview_lang']:
+                preview_results_changed()
 
-            settings_custom['preview_lang'] = wordless_conversion.to_lang_code(self.main, lang_text)
+        def preview_changed():
+            settings_custom['preview_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_lemmatization_preview_lang.currentText())
             settings_custom['preview_samples'] = self.text_edit_lemmatization_preview_samples.toPlainText()
+            settings_custom['preview_results'] = self.text_edit_lemmatization_preview_results.toPlainText()
 
         def preview_results_changed():
-            results = []
+            def preview():
+                results = []
 
-            if settings_custom['preview_samples']:
-                lang_text = self.combo_box_lemmatization_preview_lang.currentText()
-                lang_code = wordless_conversion.to_lang_code(self.main, lang_text)
-                lemmatizer = self.__dict__[f'combo_box_lemmatizer_{lang_code}'].currentText()
+                lemmatizer = self.__dict__[f'combo_box_lemmatizer_{settings_custom["preview_lang"]}'].currentText()
 
-                for sample_line in settings_custom['preview_samples'].splitlines():
-                    samples = wordless_text_processing.wordless_word_tokenize(self.main, sample_line, lang_code)
-                    lemmas = wordless_text_processing.wordless_lemmatize(self.main, samples, lang_code,
+                for line in settings_custom['preview_samples'].splitlines():
+                    tokens = wordless_text_processing.wordless_word_tokenize(self.main, line, lang_code)
+                    lemmas = wordless_text_processing.wordless_lemmatize(self.main, tokens, lang_code,
                                                                          lemmatizer = lemmatizer)
 
                     results.append(wordless_text_processing.wordless_word_detokenize(self.main, lemmas, lang_code))
 
-                self.text_edit_lemmatization_preview_results.setPlainText('\n'.join(results))
+                self.preview_results_updated_lemmatization.emit(settings_custom['preview_samples'], results)
+
+                self.preview_processing_lemmatization = False
+
+            if settings_custom['preview_samples']:
+                self.label_lemmatization_preview_processing.setText(self.tr('Processing ...'))
+
+                if not self.preview_processing_lemmatization:
+                    self.preview_processing_lemmatization = True
+
+                    threading.Thread(target = preview).start()
             else:
                 self.text_edit_lemmatization_preview_results.clear()
+
+        def preview_results_updated(preview_samples, results):
+            if preview_samples == settings_custom['preview_samples']:
+                self.text_edit_lemmatization_preview_results.setPlainText('\n'.join(results))
+
+                self.label_lemmatization_preview_processing.setText('')
+            else:
+                preview_results_changed()
 
         settings_global = self.main.settings_global['lemmatizers']
         settings_custom = self.main.settings_custom['lemmatization']
@@ -1008,7 +1014,7 @@ class Wordless_Settings(QDialog):
 
             self.__dict__[f'combo_box_lemmatizer_{lang_code}'].addItems(settings_global[lang_code])
 
-            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].currentTextChanged.connect(preview_results_changed)
+            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].currentTextChanged.connect(lemmatizers_changed)
 
             table_lemmatizers.setCellWidget(i, 1, self.__dict__[f'combo_box_lemmatizer_{lang_code}'])
 
@@ -1020,6 +1026,7 @@ class Wordless_Settings(QDialog):
 
         self.label_lemmatization_preview_lang = QLabel(self.tr('Select a Language:'), self)
         self.combo_box_lemmatization_preview_lang = wordless_box.Wordless_Combo_Box(self)
+        self.label_lemmatization_preview_processing = QLabel('', self)
         self.text_edit_lemmatization_preview_samples = QTextEdit(self)
         self.text_edit_lemmatization_preview_results = QTextEdit(self)
 
@@ -1028,17 +1035,23 @@ class Wordless_Settings(QDialog):
         self.text_edit_lemmatization_preview_samples.setAcceptRichText(False)
         self.text_edit_lemmatization_preview_results.setReadOnly(True)
 
-        self.combo_box_lemmatization_preview_lang.currentTextChanged.connect(preview_settings_changed)
+        self.combo_box_lemmatization_preview_lang.currentTextChanged.connect(preview_changed)
         self.combo_box_lemmatization_preview_lang.currentTextChanged.connect(preview_results_changed)
-        self.text_edit_lemmatization_preview_samples.textChanged.connect(preview_settings_changed)
+        self.text_edit_lemmatization_preview_samples.textChanged.connect(preview_changed)
         self.text_edit_lemmatization_preview_samples.textChanged.connect(preview_results_changed)
+        self.text_edit_lemmatization_preview_results.textChanged.connect(preview_changed)
 
-        layout_preview_lang = QGridLayout()
-        layout_preview_lang.addWidget(self.label_lemmatization_preview_lang, 0, 0)
-        layout_preview_lang.addWidget(self.combo_box_lemmatization_preview_lang, 0, 1)
+        self.preview_results_updated_lemmatization.connect(preview_results_updated)
+
+        layout_preview_settings = QGridLayout()
+        layout_preview_settings.addWidget(self.label_lemmatization_preview_lang, 0, 0)
+        layout_preview_settings.addWidget(self.combo_box_lemmatization_preview_lang, 0, 1)
+        layout_preview_settings.addWidget(self.label_lemmatization_preview_processing, 0, 3)
+
+        layout_preview_settings.setColumnStretch(2, 1)
 
         group_box_preview.setLayout(QGridLayout())
-        group_box_preview.layout().addLayout(layout_preview_lang, 0, 0, 1, 2, Qt.AlignLeft)
+        group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
         group_box_preview.layout().addWidget(self.text_edit_lemmatization_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_lemmatization_preview_results, 1, 1)
 
@@ -1048,8 +1061,6 @@ class Wordless_Settings(QDialog):
 
         self.settings_lemmatization.layout().setRowStretch(0, 2)
         self.settings_lemmatization.layout().setRowStretch(1, 1)
-
-        preview_results_changed()
 
     def init_settings_stop_words(self):
         def preview_settings_changed():
@@ -1478,11 +1489,22 @@ class Wordless_Settings(QDialog):
 
         # Lemmatization
         for lang_code in settings['lemmatization']['lemmatizers']:
+            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].blockSignals(True)
+
             self.__dict__[f'combo_box_lemmatizer_{lang_code}'].setCurrentText(settings['lemmatization']['lemmatizers'][lang_code])
 
+            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].blockSignals(False)
+
         if not defaults:
+            self.combo_box_lemmatization_preview_lang.blockSignals(True)
+            self.text_edit_lemmatization_preview_samples.blockSignals(True)
+
             self.combo_box_lemmatization_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['lemmatization']['preview_lang']))
             self.text_edit_lemmatization_preview_samples.setText(settings['lemmatization']['preview_samples'])
+            self.text_edit_lemmatization_preview_results.setText(settings['lemmatization']['preview_results'])
+
+            self.combo_box_lemmatization_preview_lang.blockSignals(False)
+            self.text_edit_lemmatization_preview_samples.blockSignals(False)
 
         # Stop Words
         for lang_code in settings['stop_words']['stop_words']:

@@ -1,0 +1,197 @@
+# -*- coding: utf-8 -*-
+
+#
+# Wordless: Testing for Word Tokenization
+#
+# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
+#
+# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+
+import sys
+
+from PyQt5.QtCore import *
+
+import jpype
+import pyhanlp
+
+sys.path.append('E:/Wordless')
+
+from wordless_text import wordless_text_processing
+from wordless_settings import init_settings_default, init_settings_global
+
+main = QObject()
+
+init_settings_default.init_settings_default(main)
+init_settings_global.init_settings_global(main)
+
+main.settings_custom = main.settings_default
+
+main.crf_analyzer = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
+main.perceptron_analyzer = jpype.JClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
+
+# Chinese (Simplified)
+sentence_zho_cn = '作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。'
+
+print('Chinese (Simplified) / jieba:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+                                                         word_tokenizer = 'jieba')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Chinese (Simplified) / HanLP - Standard Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+                                                         word_tokenizer = 'HanLP - Standard Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Chinese (Simplified) / HanLP - Basic Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+                                                         word_tokenizer = 'HanLP - Basic Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Chinese (Simplified) / HanLP - High-speed Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+                                                         word_tokenizer = 'HanLP - High-speed Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Chinese (Simplified) / HanLP - URL Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+                                                         word_tokenizer = 'HanLP - URL Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Chinese (Simplified) / HanLP - CRF Lexical Analyzer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+                                                         word_tokenizer = 'HanLP - CRF Lexical Analyzer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Chinese (Simplified) / HanLP - Perceptron Lexical Analyzer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+                                                         word_tokenizer = 'HanLP - Perceptron Lexical Analyzer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Chinese (Simplified) / HanLP - Dijkstra Segmenter:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+                                                         word_tokenizer = 'HanLP - Dijkstra Segmenter')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Chinese (Simplified) / HanLP - N-shortest Path Segmenter:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+                                                         word_tokenizer = 'HanLP - N-shortest Path Segmenter')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Chinese (Simplified) / HanLP - N-shortest Path Segmenter:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+                                                         word_tokenizer = 'HanLP - Viterbi Segmenter')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Chinese (Simplified) / SacreMoses - Moses Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+                                                         word_tokenizer = 'SacreMoses - Moses Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+# Chinese (Traditional)
+sentence_zho_tw = '作為語言而言，為世界使用人數最多的語言，目前世界有五分之一人口做為母語。'
+
+print('Chinese (Traditional) / HanLP - Traditional Chinese Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_tw, 'zho_tw',
+                                                         word_tokenizer = 'HanLP - Traditional Chinese Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+# English
+sentence_eng = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.'
+
+print('English / NLTK - Penn Treebank Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+                                                         word_tokenizer = 'NLTK - Penn Treebank Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('English / NLTK - Twitter Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+                                                         word_tokenizer = 'NLTK - Twitter Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('English / NLTK - NIST Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+                                                         word_tokenizer = 'NLTK - NIST Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('English / NLTK - NIST Tokenizer (International Mode):')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+                                                         word_tokenizer = 'NLTK - NIST Tokenizer (International Mode)')
+
+print(f"\t{' '.join(tokens)}")
+
+print('English / NLTK - Tok-tok Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+                                                         word_tokenizer = 'NLTK - Tok-tok Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('English / NLTK - Word Punctuation Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+                                                         word_tokenizer = 'NLTK - Word Punctuation Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('English / SacreMoses - Moses Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+                                                         word_tokenizer = 'SacreMoses - Moses Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('English / SacreMoses - Penn Treebank Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+                                                         word_tokenizer = 'SacreMoses - Penn Treebank Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('English / PyDelphin - REPP Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+                                                         word_tokenizer = 'PyDelphin - REPP Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+# Japanese
+sentence_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。'
+
+print('Japanese / nagisa:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn, 'jpn',
+                                                         word_tokenizer = 'nagisa')
+
+print(f"\t{' '.join(tokens)}")
