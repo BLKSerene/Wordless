@@ -7,6 +7,7 @@
 #
 
 import copy
+import importlib
 import json
 import os
 import threading
@@ -942,7 +943,7 @@ class Wordless_Settings(QDialog):
         pos_taggers_changed('')
 
     def init_settings_lemmatization(self):
-        def lemmatizers_changed():
+        def lemmatizers_changed(lang_code):
             if lang_code == settings_custom['preview_lang']:
                 preview_results_changed()
 
@@ -1014,7 +1015,7 @@ class Wordless_Settings(QDialog):
 
             self.__dict__[f'combo_box_lemmatizer_{lang_code}'].addItems(settings_global[lang_code])
 
-            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].currentTextChanged.connect(lemmatizers_changed)
+            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: lemmatizers_changed(lang_code))
 
             table_lemmatizers.setCellWidget(i, 1, self.__dict__[f'combo_box_lemmatizer_{lang_code}'])
 
@@ -1063,45 +1064,21 @@ class Wordless_Settings(QDialog):
         self.settings_lemmatization.layout().setRowStretch(1, 1)
 
     def init_settings_stop_words(self):
+        def stop_words_changed(lang_code):
+            if lang_code == settings_custom['preview_lang']:
+                preview_results_changed()
+
         def preview_settings_changed():
             settings_custom['preview_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_stop_words_preview_lang.currentText())
 
         def preview_results_changed():
-            lang_text = self.combo_box_stop_words_preview_lang.currentText()
-            lang_code_639_3 = wordless_conversion.to_lang_code(self.main, lang_text)
-            lang_code_639_1 = wordless_conversion.to_iso_639_1(self.main, lang_code_639_3)
-
-            if lang_code_639_1 == 'zh_cn':
-                lang_code_639_1 = 'zh'
-
-            word_list = self.__dict__[f'combo_box_stop_words_{lang_code_639_3}'].currentText()
-
-            if word_list == 'NLTK':
-                stop_words = nltk.corpus.stopwords.words(lang_text)
-            elif word_list == 'Stopwords ISO':
-                if lang_code_639_1 == 'zh_tw':
-                    with open(r'stop_words/Stopwords ISO/stopwords_zh_tw.txt', 'r', encoding = 'utf_8') as f:
-                        stop_words = [line.rstrip() for line in f]
-                else:
-                    with open(r'stop_words/Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
-                        stop_words = json.load(f)[lang_code_639_1]
-            elif word_list == 'stopwords-json':
-                if lang_code_639_1 == 'zh_tw':
-                    with open(r'stop_words/stopwords-json/stopwords_zh_tw.txt', 'r', encoding = 'utf_8') as f:
-                        stop_words = [line.rstrip() for line in f]
-                else:
-                    with open(r'stop_words/stopwords-json/stopwords-all.json', 'r', encoding = 'utf_8') as f:
-                        stop_words = json.load(f)[lang_code_639_1]
-            elif word_list == 'HanLP':
-                if lang_code_639_1 == 'zh_tw':
-                    with open(r'stop_words/HanLP/stopwords_zh_tw.txt', 'r', encoding = 'utf_8') as f:
-                        stop_words = [line.rstrip() for line in f]
-                else:
-                    with open(r'stop_words/HanLP/stopwords.txt', 'r', encoding = 'utf_8') as f:
-                        stop_words = [line.rstrip() for line in f]
+            lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_stop_words_preview_lang.currentText())
+            word_list = self.__dict__[f'combo_box_stop_words_{lang_code}'].currentText()
+            
+            stop_words = wordless_text_processing.wordless_get_stop_words(self.main, lang_code, word_list = word_list)
 
             self.label_stop_words_preview_count.setText(self.tr(f'Count of Stop Words: {len(stop_words)}'))
-            self.table_stop_words_preview_results.set_items(stop_words)
+            self.table_stop_words_preview_results.set_items(sorted(stop_words))
 
         settings_global = self.main.settings_global['stop_words']
         settings_custom = self.main.settings_custom['stop_words']
@@ -1131,7 +1108,7 @@ class Wordless_Settings(QDialog):
 
             self.__dict__[f'combo_box_stop_words_{lang_code}'].addItems(settings_global[lang_code])
 
-            self.__dict__[f'combo_box_stop_words_{lang_code}'].currentTextChanged.connect(preview_results_changed)
+            self.__dict__[f'combo_box_stop_words_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: stop_words_changed(lang_code))
 
             table_stop_words.setCellWidget(i, 1, self.__dict__[f'combo_box_stop_words_{lang_code}'])
 
