@@ -81,7 +81,7 @@ def detect_lang(main, file):
 
                 if lang_code_639_1 == 'zh':
                     # Default to Chinese (Simplified)
-                    lang_code_639_1 = 'zh-cn'
+                    lang_code_639_1 = 'zh_cn'
 
                     for lang in sorted(langdetect.detect_langs(text), key = lambda item: -item.prob):
                         if lang.lang in ['zh-cn', 'zh-tw']:
@@ -92,6 +92,6 @@ def detect_lang(main, file):
             elif detection_engine == 'langdetect':
                 lang_code_639_1 = langdetect.detect(text)
 
-            lang_code = wordless_conversion.to_iso_639_3(main, lang_code_639_1)
+            lang_code = wordless_conversion.to_iso_639_3(main, lang_code_639_1.replace('-', '_'))
 
     return lang_code
