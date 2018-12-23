@@ -130,24 +130,10 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'en
 
 print(f"\t{' '.join(tokens)}")
 
-print('English / NLTK - Twitter Tokenizer:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
-                                                         word_tokenizer = 'NLTK - Twitter Tokenizer')
-
-print(f"\t{' '.join(tokens)}")
-
 print('English / NLTK - NIST Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
                                                          word_tokenizer = 'NLTK - NIST Tokenizer')
-
-print(f"\t{' '.join(tokens)}")
-
-print('English / NLTK - NIST Tokenizer (International Mode):')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
-                                                         word_tokenizer = 'NLTK - NIST Tokenizer (International Mode)')
 
 print(f"\t{' '.join(tokens)}")
 
@@ -158,10 +144,17 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'en
 
 print(f"\t{' '.join(tokens)}")
 
-print('English / NLTK - Word Punctuation Tokenizer:')
+print('English / NLTK - Twitter Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
-                                                         word_tokenizer = 'NLTK - Word Punctuation Tokenizer')
+                                                         word_tokenizer = 'NLTK - Twitter Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+print('English / PyDelphin - REPP Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+                                                         word_tokenizer = 'PyDelphin - REPP Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
@@ -179,13 +172,6 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'en
 
 print(f"\t{' '.join(tokens)}")
 
-print('English / PyDelphin - REPP Tokenizer:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
-                                                         word_tokenizer = 'PyDelphin - REPP Tokenizer')
-
-print(f"\t{' '.join(tokens)}")
-
 # Japanese
 sentence_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。'
 
@@ -193,5 +179,15 @@ print('Japanese / nagisa:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn, 'jpn',
                                                          word_tokenizer = 'nagisa')
+
+print(f"\t{' '.join(tokens)}")
+
+# Vietnamese
+sentence_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ngữ, là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại Việt Nam.'
+
+print('Vietnamese / Pyvi:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_vie, 'vie',
+                                                         word_tokenizer = 'Pyvi')
 
 print(f"\t{' '.join(tokens)}")

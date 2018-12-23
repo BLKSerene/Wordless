@@ -1,5 +1,5 @@
 #
-# Wordless: Mapping Table (Russian National Corpus Tagset -> Universal Part-of-speech Tagset)
+# Wordless: Mapping Table (Russian National Corpus Tagset -> Universal POS Tags)
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -9,7 +9,7 @@
 #
 # Russian National Corpus Tagset: http://www.ruscorpora.ru/en/corpora-morph.html
 #
-# Universal Part-of-speech Tagset: https://github.com/slavpetrov/universal-pos-tags/blob/master/README
+# Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
 S	NOUN	# Noun

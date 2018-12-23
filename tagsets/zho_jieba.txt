@@ -1,5 +1,5 @@
 #
-# Wordless: Mapping Table (jieba Tagset -> Universal Part-of-speech Tagset)
+# Wordless: Mapping Table (jieba Tagset -> Universal POS Tags)
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -9,7 +9,7 @@
 #
 # jieba Tagset: https://gist.github.com/hscspring/c985355e0814f01437eaf8fd55fd7998
 #
-# Universal Part-of-speech Tagset: https://github.com/slavpetrov/universal-pos-tags/blob/master/README
+# Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
 a	ADJ	# 形容词
