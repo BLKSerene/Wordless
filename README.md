@@ -71,22 +71,23 @@ Many thanks to the following open-source projects on which Wordless is built on:
 7. [nagisa](https://github.com/taishi-i/nagisa) by Taishi Ikeda (池田大志)
 8. [NLTK](http://www.nltk.org/) by Steven Bird, Liling Tan, Dan Garrette, Peter Ljunglöf, Joel Nothman, Mikhail Korobov, Alexis Dimitriadis
 9. [PyDelphin](https://github.com/delph-in/pydelphin) by Michael Wayne Goodman, T.J. Trimble, Guy Emerson, Alex Kuhnle, Francis Bond, Angie McMillan-Major
-10. [SacreMoses](https://github.com/alvations/sacremoses) by Liling Tan
-11. [spaCy](https://spacy.io/) by Matthew Honnibal, Ines Montani
-12. [wordcloud](https://amueller.github.io/word_cloud/) by Andreas Christian Mueller
+10. [Pyvi](https://github.com/trungtv/pyvi) by Viet-Trung Tran
+11. [SacreMoses](https://github.com/alvations/sacremoses) by Liling Tan
+12. [spaCy](https://spacy.io/) by Matthew Honnibal, Ines Montani
+13. [wordcloud](https://amueller.github.io/word_cloud/) by Andreas Christian Mueller
 
-13. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) by Leonard Richardson
-14. [chardet](https://github.com/chardet/chardet) by Daniel Blanchard
-15. [langdetect](https://github.com/Mimino666/langdetect) by Michal Mimino Danilak
-16. [langid.py](https://github.com/saffsd/langid.py) by Marco Lui
-17. [lxml](https://lxml.de/) by Stefan Behnel
-18. [Matplotlib](https://matplotlib.org/) by Matplotlib Development Team
-19. [NumPy](http://www.numpy.org/) by NumPy Developers
-20. [openpyxl](https://openpyxl.readthedocs.io/en/stable/) by Eric Gazoni, Charlie Clark
-21. [SciPy](https://www.scipy.org/) by SciPy Developers
+14. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) by Leonard Richardson
+15. [chardet](https://github.com/chardet/chardet) by Daniel Blanchard
+16. [langdetect](https://github.com/Mimino666/langdetect) by Michal Mimino Danilak
+17. [langid.py](https://github.com/saffsd/langid.py) by Marco Lui
+18. [lxml](https://lxml.de/) by Stefan Behnel
+19. [Matplotlib](https://matplotlib.org/) by Matplotlib Development Team
+20. [NumPy](http://www.numpy.org/) by NumPy Developers
+21. [openpyxl](https://openpyxl.readthedocs.io/en/stable/) by Eric Gazoni, Charlie Clark
+22. [SciPy](https://www.scipy.org/) by SciPy Developers
 
-22. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
-23. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
+23. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
+24. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
 
 ## Donation/捐助
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.
