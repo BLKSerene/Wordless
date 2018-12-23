@@ -62,7 +62,9 @@ Many thanks to the following open-source projects on which Wordless is built on:
 
 1. [Python](https://www.python.org/) by Guido van Rossum, Python Software Foundation
 2. [JPype](https://github.com/jpype-project/jpype/) by Steve Menard, Luis Nell
+
 3. [PyQt](https://www.riverbankcomputing.com/software/pyqt/intro) by Riverbank Computing Limited
+
 4. [HanLP](http://hanlp.com/) by He Han (何晗)
 5. [pyhanlp](https://github.com/hankcs/pyhanlp) by He Han (何晗)
 6. [jieba (“结巴”中文分词)](https://github.com/fxsjy/jieba) by Sun Junyi
@@ -72,6 +74,7 @@ Many thanks to the following open-source projects on which Wordless is built on:
 10. [SacreMoses](https://github.com/alvations/sacremoses) by Liling Tan
 11. [spaCy](https://spacy.io/) by Matthew Honnibal, Ines Montani
 12. [wordcloud](https://amueller.github.io/word_cloud/) by Andreas Christian Mueller
+
 13. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) by Leonard Richardson
 14. [chardet](https://github.com/chardet/chardet) by Daniel Blanchard
 15. [langdetect](https://github.com/Mimino666/langdetect) by Michal Mimino Danilak
@@ -81,6 +84,7 @@ Many thanks to the following open-source projects on which Wordless is built on:
 19. [NumPy](http://www.numpy.org/) by NumPy Developers
 20. [openpyxl](https://openpyxl.readthedocs.io/en/stable/) by Eric Gazoni, Charlie Clark
 21. [SciPy](https://www.scipy.org/) by SciPy Developers
+
 22. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
 23. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
 
