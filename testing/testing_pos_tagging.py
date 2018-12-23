@@ -107,3 +107,17 @@ tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sente
 
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
+
+# Vietnamese
+sentence_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ngữ, là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại Việt Nam.'
+
+print('Vietnamese / Pyvi:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_vie], 'vie',
+                                                          pos_tagger = 'Pyvi')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_vie], 'vie',
+                                                                    pos_tagger = 'Pyvi',
+                                                                    tagset = 'Universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
