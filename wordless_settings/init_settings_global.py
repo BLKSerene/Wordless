@@ -482,13 +482,12 @@ def init_settings_global(main):
         'word_tokenizers': {
             'cat': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'zho_cn': [
@@ -522,112 +521,102 @@ def init_settings_global(main):
 
             'ces': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'nld': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'eng': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'fin': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'fra': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'deu': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'ell': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'hun': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'isl': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'ita': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'jpn': [
@@ -636,156 +625,142 @@ def init_settings_global(main):
 
             'lav': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'fas': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'pol': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'por': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'ron': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'rus': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'slk': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'slv': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'spa': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'swe': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'tgk': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'tam': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'vie': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
             'other': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer (International Mode)'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('PyDelphin - REPP Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('PyDelphin - REPP Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer')
             ]
         },
 
