@@ -114,11 +114,6 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
         for sentence in sentences:
             tokens.extend(toktok_tokenizer.tokenize(sentence))
-    elif word_tokenizer == main.tr('NLTK - Word Punctuation Tokenizer'):
-        word_punct_tokenizer = nltk.WordPunctTokenizer()
-
-        for sentence in sentences:
-            tokens.extend(word_punct_tokenizer.tokenize(sentence))
     elif word_tokenizer == main.tr('SacreMoses - Moses Tokenizer'):
         moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang_code))
 
