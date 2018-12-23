@@ -77,7 +77,6 @@ def init_settings_global(main):
             main.tr('Marathi'): 'mar',
             main.tr('Mongolian'): 'mon',
             main.tr('Nepali'): 'nep',
-            main.tr('Norwegian'): 'nor',
             main.tr('Norwegian Bokmål'): 'nob',
             main.tr('Norwegian Nynorsk'): 'nno',
             main.tr('Occitan'): 'oci',
@@ -191,7 +190,6 @@ def init_settings_global(main):
             'nld': 'nl',
             'nno': 'nn',
             'nob': 'nb',
-            'nor': 'no',
             'oci': 'oc',
             'ori': 'or',
             'pan': 'pa',
@@ -444,7 +442,11 @@ def init_settings_global(main):
                 main.tr('Wordless - Japanese Sentence Tokenizer')
             ],
 
-            'nor': [
+            'nob': [
+                main.tr('NLTK - Punkt Sentence Tokenizer')
+            ],
+
+            'nno': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
 
@@ -1088,7 +1090,7 @@ def init_settings_global(main):
             ],
 
             'ben': [
-                'spaCy'，
+                'spaCy',
                 'Stopwords ISO'
             ],
 
@@ -1254,13 +1256,15 @@ def init_settings_global(main):
                 'NLTK'
             ],
 
-            'nor': [
+            'nob': [
                 'NLTK',
+                'spaCy',
                 'Stopwords ISO'
             ],
 
-            'nob': [
-                'spaCy'
+            'nno': [
+                'NLTK',
+                'Stopwords ISO'
             ],
 
             'fas': [
