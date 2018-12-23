@@ -79,6 +79,11 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'Michael Wayne Goodman, T.J. Trimble, Guy Emerson,<br>Alex Kuhnle, Francis Bond, Angie McMillan-Major',
              '<a href="https://github.com/delph-in/pydelphin/blob/develop/LICENSE">MIT</a>'],
 
+            ['<a href="https://github.com/trungtv/pyvi">Pyvi</a>',
+             '0.0.9.1',
+             'Viet-Trung Tran',
+             '<a href="https://github.com/trungtv/pyvi/blob/master/LICENSE.txt">MIT</a>'],
+
             ['<a href="https://github.com/alvations/sacremoses">SacreMoses</a>',
              '0.0.5',
              'Liling Tan',

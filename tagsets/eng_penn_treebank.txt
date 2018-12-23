@@ -1,5 +1,5 @@
 #
-# Wordless: Mapping Table (Penn Treebank Tagset -> Universal Part-of-speech Tagset)
+# Wordless: Mapping Table (Penn Treebank Tagset -> Universal POS Tags)
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -9,7 +9,7 @@
 #
 # Penn Treebank Tagset: https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
 #
-# Universal Part-of-speech Tagset: https://github.com/slavpetrov/universal-pos-tags/blob/master/README
+# Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
 CC	CCONJ	# Coordinating conjunction
@@ -25,7 +25,7 @@ JJR	ADJ	# Adjective, comparative
 JJS	ADJ	# Adjective, superlative
 
 LS	SYM	# List item marker
-MD	PART	# Modal
+MD	AUX	# Modal
 
 NN	NOUN	# Noun, singular or mass
 NNS	NOUN	# Noun, plural

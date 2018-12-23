@@ -744,6 +744,7 @@ def init_settings_global(main):
             ],
 
             'vie': [
+                main.tr('Pyvi'),
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
@@ -906,6 +907,10 @@ def init_settings_global(main):
 
             'rus': {
                 main.tr('NLTK - Perceptron POS Tagger'): 'Russian National Corpus'
+            },
+
+            'vie': {
+                main.tr('Pyvi'): 'Pyvi'
             }
         },
 
@@ -918,7 +923,9 @@ def init_settings_global(main):
             # Japanese
             'UniDic': 'jpn_unidic',
             # Russian
-            'Russian National Corpus': 'rus_russian_national_corpus'
+            'Russian National Corpus': 'rus_russian_national_corpus',
+            # Vietnamese
+            'Pyvi': 'vie_pyvi'
         },
 
         'lemmatizers': {
