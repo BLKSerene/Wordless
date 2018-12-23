@@ -332,7 +332,14 @@ def wordless_get_stop_words(main, lang_code, word_list = 'default'):
     if word_list == 'default':
         word_list = main.settings_custom['stop_words']['stop_words'][lang_code]
 
-    if word_list == 'spaCy':
+    if word_list == 'Stopwords ISO':
+        if lang_code_639_1 == 'zh_tw':
+            with open(r'stop_words/Stopwords ISO/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
+                stop_words = [line.rstrip() for line in f]
+        else:
+            with open(r'stop_words/Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
+                stop_words = json.load(f)[lang_code_639_1]
+    elif word_list == 'spaCy':
         if lang_code_639_1 == 'zh_tw':
             with open(r'stop_words/spaCy/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
                 stop_words = [line.rstrip() for line in f]
@@ -342,20 +349,6 @@ def wordless_get_stop_words(main, lang_code, word_list = 'default'):
             stop_words = spacy_lang.STOP_WORDS
     elif word_list == 'NLTK':
         stop_words = nltk.corpus.stopwords.words(lang_text)
-    elif word_list == 'Stopwords ISO':
-        if lang_code_639_1 == 'zh_tw':
-            with open(r'stop_words/Stopwords ISO/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
-                stop_words = [line.rstrip() for line in f]
-        else:
-            with open(r'stop_words/Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
-                stop_words = json.load(f)[lang_code_639_1]
-    elif word_list == 'stopwords-json':
-        if lang_code_639_1 == 'zh_tw':
-            with open(r'stop_words/stopwords-json/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
-                stop_words = [line.rstrip() for line in f]
-        else:
-            with open(r'stop_words/stopwords-json/stopwords-all.json', 'r', encoding = 'utf_8') as f:
-                stop_words = json.load(f)[lang_code_639_1]
     elif word_list == 'HanLP':
         if lang_code_639_1 == 'zh_tw':
             with open(r'stop_words/HanLP/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
