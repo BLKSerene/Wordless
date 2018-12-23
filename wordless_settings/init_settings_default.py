@@ -851,7 +851,7 @@ def init_settings_default(main):
                 'swe': main.tr('SacreMoses - Moses Tokenizer'),
                 'tgk': main.tr('NLTK - Tok-tok Tokenizer'),
                 'tam': main.tr('SacreMoses - Moses Tokenizer'),
-                'vie': main.tr('NLTK - Tok-tok Tokenizer'),
+                'vie': main.tr('Pyvi'),
 
                 'other': main.tr('NLTK - Penn Treebank Tokenizer')
             },
@@ -901,7 +901,8 @@ def init_settings_default(main):
                 'zho_tw':  main.tr('jieba'),
                 'eng': main.tr('NLTK - Perceptron POS Tagger'),
                 'jpn': main.tr('nagisa'),
-                'rus': main.tr('NLTK - Perceptron POS Tagger')
+                'rus': main.tr('NLTK - Perceptron POS Tagger'),
+                'vie': main.tr('Pyvi')
             },
 
             'tagsets': {
@@ -909,7 +910,8 @@ def init_settings_default(main):
                 'zho_tw': 'jieba',
                 'eng': 'Penn Treebank',
                 'jpn': 'UniDic',
-                'rus': 'Russian National Corpus'
+                'rus': 'Russian National Corpus',
+                'vie': 'Pyvi'
             },
 
             'preview_lang': 'eng',
