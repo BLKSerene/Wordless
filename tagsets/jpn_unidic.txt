@@ -1,5 +1,5 @@
 #
-# Wordless: Mapping Table (UniDic Tagset -> Universal Part-of-speech Tagset)
+# Wordless: Mapping Table (UniDic Tagset -> Universal POS Tags)
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -9,12 +9,12 @@
 #
 # UniDic Tagset: https://gist.github.com/masayu-a/e3eee0637c07d4019ec9
 #
-# Universal Part-of-speech Tagset: https://github.com/slavpetrov/universal-pos-tags/blob/master/README
+# Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
 代名詞	PRON	# Pronoun
 副詞	ADV	# Adverb
-助動詞	PART	# Auxiliary verb
+助動詞	AUX	# Auxiliary verb
 助詞	PART	# Particle
 動詞	VERB	# Verb
 名詞	NOUN	# Noun

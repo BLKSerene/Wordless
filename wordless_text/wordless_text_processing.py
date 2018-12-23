@@ -18,6 +18,8 @@ import nagisa
 import nltk
 import nltk.tokenize.nist
 import numpy
+import pyvi.ViTokenizer
+import pyvi.ViPosTagger
 import sacremoses
 
 from wordless_utils import wordless_conversion
@@ -104,16 +106,16 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
         for sentence in sentences:
             tokens.extend(nist_tokenizer.tokenize(sentence))
-    elif word_tokenizer == main.tr('NLTK - NIST Tokenizer (International Mode)'):
-        nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
-
-        for sentence in sentences:
-            tokens.extend(nist_tokenizer.international_tokenize(sentence))
     elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
         toktok_tokenizer = nltk.ToktokTokenizer()
 
         for sentence in sentences:
             tokens.extend(toktok_tokenizer.tokenize(sentence))
+    elif word_tokenizer == main.tr('PyDelphin - REPP Tokenizer'):
+        repp_tokenizer = delphin.repp.REPP.from_config('tokenization/repp_tokenizer/repp.set')
+
+        for sentence in sentences:
+            tokens.extend([token.form for token in repp_tokenizer.tokenize(sentence).tokens])
     elif word_tokenizer == main.tr('SacreMoses - Moses Tokenizer'):
         moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang_code))
 
@@ -124,11 +126,6 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
         for sentence in sentences:
             tokens.extend(moses_tokenizer.penn_tokenize(sentence))
-    elif word_tokenizer == main.tr('PyDelphin - REPP Tokenizer'):
-        repp_tokenizer = delphin.repp.REPP.from_config('tokenization/repp_tokenizer/repp.set')
-
-        for sentence in sentences:
-            tokens.extend([token.form for token in repp_tokenizer.tokenize(sentence).tokens])
     # Chinese
     elif word_tokenizer == main.tr('jieba'):
         for sentence in sentences:
@@ -186,6 +183,9 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
     elif word_tokenizer == main.tr('nagisa'):
         for sentence in sentences:
             tokens.extend(nagisa.tagging(sentence).words)
+    elif word_tokenizer == main.tr('Pyvi'):
+        for sentence in sentences:
+            tokens.extend(pyvi.ViTokenizer.tokenize(sentence).split())
 
     return tokens
 
@@ -251,7 +251,9 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
     # English & Russian
     if pos_tagger == main.tr(main.tr('NLTK - Perceptron POS Tagger')):
         for sentence in sentences:
-            tokens_tagged.extend(nltk.pos_tag(wordless_word_tokenize(main, sentence, lang_code), lang = lang_code))
+            tokens = wordless_word_tokenize(main, sentence, lang_code)
+
+            tokens_tagged.extend(nltk.pos_tag(tokens, lang = lang_code))
     # Chinese
     elif pos_tagger == main.tr('jieba'):
         for sentence in sentences:
@@ -268,6 +270,14 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
             tagged_tokens = nagisa.tagging(sentence)
 
             tokens_tagged.extend(zip(tagged_tokens.words, tagged_tokens.postags))
+    # Vietnamese
+    elif pos_tagger == main.tr('Pyvi'):
+        for sentence in sentences:
+            tokens = wordless_word_tokenize(main, sentence, lang_code)
+
+            tokens, tags = pyvi.ViPosTagger.postagging(' '.join(tokens))
+
+            tokens_tagged.extend(zip(tokens, tags))
 
     if tagset == 'default':
         tagset = main.settings_custom['pos_tagging']['tagsets'][lang_code]

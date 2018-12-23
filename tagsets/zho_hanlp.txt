@@ -1,5 +1,5 @@
 #
-# Wordless: Mapping Table (HanLP Tagset -> Universal Part-of-speech Tagset)
+# Wordless: Mapping Table (HanLP Tagset -> Universal POS Tags)
 #
 # Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -9,7 +9,7 @@
 #
 # HanLP Tagset: http://www.hankcs.com/nlp/part-of-speech-tagging.html
 #
-# Universal Part-of-speech Tagset: https://github.com/slavpetrov/universal-pos-tags/blob/master/README
+# Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
 a	ADJ	# 形容词
