@@ -620,7 +620,8 @@ def init_settings_global(main):
             ],
 
             'jpn': [
-                main.tr('nagisa')
+                main.tr('nagisa'),
+                main.tr('Wordless - Japanese Character Splitter')
             ],
 
             'lav': [
@@ -743,7 +744,7 @@ def init_settings_global(main):
                 main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
-            'thai': [
+            'tha': [
                 main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'),
                 main.tr('PyThaiNLP - Maximum Matching Algorithm'),
                 main.tr('PyThaiNLP - Longest Matching'),

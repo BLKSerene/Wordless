@@ -182,6 +182,13 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn, 'jp
 
 print(f"\t{' '.join(tokens)}")
 
+print('Japanese / Wordless - Japanese Character Splitter:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn, 'jpn',
+                                                         word_tokenizer = 'Wordless - Japanese Character Splitter')
+
+print(f"\t{' '.join(tokens)}")
+
 # Thai
 sentence_tha = 'ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย'
 
