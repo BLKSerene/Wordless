@@ -743,6 +743,12 @@ def init_settings_global(main):
                 main.tr('SacreMoses - Penn Treebank Tokenizer')
             ],
 
+            'thai': [
+                main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'),
+                main.tr('PyThaiNLP - Maximum Matching Algorithm'),
+                main.tr('PyThaiNLP - Longest Matching'),
+            ],
+
             'vie': [
                 main.tr('Pyvi'),
                 main.tr('NLTK - Penn Treebank Tokenizer'),
