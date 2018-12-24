@@ -16,6 +16,7 @@ from PyQt5.QtWidgets import *
 import numpy
 
 from wordless_measures import *
+from wordless_plot import *
 from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
