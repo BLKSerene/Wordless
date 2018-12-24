@@ -389,13 +389,13 @@ def init_settings_global(main):
 
         'sentence_tokenizers': {
             'zho_cn': [
-                main.tr('Wordless - Chinese Sentence Tokenizer'),
-                main.tr('HanLP - Sentence Segmenter'),
+                main.tr('HanLP - Chinese Sentence Tokenizer'),
+                main.tr('Wordless - Chinese Sentence Tokenizer')
             ],
 
             'zho_tw': [
-                main.tr('Wordless - Chinese Sentence Tokenizer'),
-                main.tr('HanLP - Sentence Segmenter'),
+                main.tr('HanLP - Chinese Sentence Tokenizer'),
+                main.tr('Wordless - Chinese Sentence Tokenizer')
             ],
 
             'ces': [
@@ -468,6 +468,11 @@ def init_settings_global(main):
 
             'swe': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
+            ],
+
+            'tha': [
+                main.tr('PyThaiNLP - Thai Sentence Tokenizer'),
+                main.tr('Wordless - Thai Sentence Tokenizer')
             ],
 
             'tur': [
