@@ -182,6 +182,30 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn, 'jp
 
 print(f"\t{' '.join(tokens)}")
 
+# Thai
+sentence_tha = 'ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย'
+
+print('Thai / PyThaiNLP - Maximum Matching Algorithm + TCC:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_tha, 'tha',
+                                                         word_tokenizer = 'PyThaiNLP - Maximum Matching Algorithm + TCC')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Thai / PyThaiNLP - Maximum Matching Algorithm:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_tha, 'tha',
+                                                         word_tokenizer = 'PyThaiNLP - Maximum Matching Algorithm')
+
+print(f"\t{' '.join(tokens)}")
+
+print('Thai / PyThaiNLP - Longest Matching:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_tha, 'tha',
+                                                         word_tokenizer = 'PyThaiNLP - Longest Matching')
+
+print(f"\t{' '.join(tokens)}")
+
 # Vietnamese
 sentence_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ngữ, là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại Việt Nam.'
 

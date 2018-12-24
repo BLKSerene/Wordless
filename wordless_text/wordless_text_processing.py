@@ -18,6 +18,7 @@ import nagisa
 import nltk
 import nltk.tokenize.nist
 import numpy
+import pythainlp
 import pyvi.ViTokenizer
 import pyvi.ViPosTagger
 import sacremoses
@@ -126,6 +127,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
         for sentence in sentences:
             tokens.extend(moses_tokenizer.penn_tokenize(sentence))
+
     # Chinese
     elif word_tokenizer == main.tr('jieba'):
         for sentence in sentences:
@@ -179,6 +181,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
         for sentence in sentences:
             tokens.extend([token.word for token in viterbi_tokenizer.seg(sentence)])
+
     # Japanese
     elif word_tokenizer == main.tr('nagisa'):
         for sentence in sentences:
@@ -186,6 +189,17 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
     elif word_tokenizer == main.tr('Pyvi'):
         for sentence in sentences:
             tokens.extend(pyvi.ViTokenizer.tokenize(sentence).split())
+
+    # Thai
+    elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'):
+        for sentence in sentences:
+            tokens.extend(pythainlp.tokenize.word_tokenize(sentence, engine = 'newmm', whitespaces = False))
+    elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm'):
+        for sentence in sentences:
+            tokens.extend(pythainlp.tokenize.word_tokenize(sentence, engine = 'mm', whitespaces = False))
+    elif word_tokenizer == main.tr('PyThaiNLP - Longest Matching'):
+        for sentence in sentences:
+            tokens.extend(pythainlp.tokenize.word_tokenize(sentence, engine = 'longest-matching', whitespaces = False))
 
     return tokens
 
