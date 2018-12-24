@@ -76,20 +76,19 @@ class Wordless_Settings(QDialog):
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Auto-detection')]))
         self.tree_settings.topLevelItem(1).addChild(QTreeWidgetItem([self.tr('Language Detection')]))
 
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Tokenization')]))
-        self.tree_settings.topLevelItem(2).addChild(QTreeWidgetItem([self.tr('Sentence Tokenization')]))
-        self.tree_settings.topLevelItem(2).addChild(QTreeWidgetItem([self.tr('Word Tokenization')]))
-        self.tree_settings.topLevelItem(2).addChild(QTreeWidgetItem([self.tr('Word Detokenization')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Sentence Tokenization')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Word Tokenization')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Word Detokenization')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('POS Tagging')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Lemmatization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Stop Words')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Measures')]))
-        self.tree_settings.topLevelItem(6).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
-        self.tree_settings.topLevelItem(6).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
-        self.tree_settings.topLevelItem(6).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
-        self.tree_settings.topLevelItem(6).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
+        self.tree_settings.topLevelItem(8).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
+        self.tree_settings.topLevelItem(8).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
+        self.tree_settings.topLevelItem(8).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
+        self.tree_settings.topLevelItem(8).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
 
         self.tree_settings.itemSelectionChanged.connect(self.selection_changed)
 
@@ -165,15 +164,12 @@ class Wordless_Settings(QDialog):
                 elif item_selected_text == self.tr('Language Detection'):
                     settings_cur = self.settings_lang_detection
 
-                elif item_selected_text == self.tr('Tokenization'):
-                    item_selected.setExpanded(True)
                 elif item_selected_text == self.tr('Sentence Tokenization'):
                     settings_cur = self.settings_sentence_tokenization
                 elif item_selected_text == self.tr('Word Tokenization'):
                     settings_cur = self.settings_word_tokenization
                 elif item_selected_text == self.tr('Word Detokenization'):
                     settings_cur = self.settings_word_detokenization
-
                 elif item_selected_text == self.tr('POS Tagging'):
                     settings_cur = self.settings_pos_tagging
                 elif item_selected_text == self.tr('Lemmatization'):
@@ -202,7 +198,6 @@ class Wordless_Settings(QDialog):
                     self.settings_sentence_tokenization.hide()
                     self.settings_word_tokenization.hide()
                     self.settings_word_detokenization.hide()
-
                     self.settings_pos_tagging.hide()
                     self.settings_lemmatization.hide()
                     self.settings_stop_words.hide()

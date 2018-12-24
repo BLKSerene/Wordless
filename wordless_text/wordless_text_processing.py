@@ -23,7 +23,7 @@ import pyvi.ViTokenizer
 import pyvi.ViPosTagger
 import sacremoses
 
-from wordless_utils import wordless_conversion
+from wordless_utils import wordless_conversion, wordless_unicode
 
 def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'default'):
     sentences = []
@@ -186,6 +186,39 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
     elif word_tokenizer == main.tr('nagisa'):
         for sentence in sentences:
             tokens.extend(nagisa.tagging(sentence).words)
+
+        # Remove full-width whitespace
+        tokens = [token for token in tokens if token != '\u3000']
+    elif word_tokenizer == main.tr('Wordless - Japanese Character Splitter'):
+        for sentence in sentences:
+            non_cjk_start = 0
+
+            for i, char in enumerate(sentence):
+                if i >= non_cjk_start:
+                    if wordless_unicode.is_cjk(char) and not wordless_unicode.is_kana(char):
+                        tokens.append(char)
+
+                        non_cjk_start += 1
+                    else:
+                        for j, char in enumerate(sentence[i:]):
+                            if i + j + 1 < len(sentence):
+                                if (wordless_unicode.is_cjk(sentence[i + j + 1]) and
+                                    not wordless_unicode.is_kana(sentence[i + j + 1])):
+                                    tokens.extend(wordless_word_tokenize(main, sentence[non_cjk_start : i + j + 1],
+                                                                         lang_code = lang_code,
+                                                                         word_tokenizer = main.tr('nagisa')))
+
+                                    non_cjk_start = i + j + 1
+
+                                    break
+                            else:
+                                tokens.extend(wordless_word_tokenize(main, sentence[non_cjk_start:],
+                                                                     lang_code = lang_code,
+                                                                     word_tokenizer = main.tr('nagisa')))
+
+                                non_cjk_start = i + j + 1
+
+    # Vietnamese
     elif word_tokenizer == main.tr('Pyvi'):
         for sentence in sentences:
             tokens.extend(pyvi.ViTokenizer.tokenize(sentence).split())
