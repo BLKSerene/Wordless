@@ -50,29 +50,49 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'defa
                 lang_text = wordless_conversion.to_lang_text(main, lang_code).lower()
 
             sentences.extend(nltk.sent_tokenize(line, language = lang_text))
+
         # Chinese & Japanese
         elif (sentence_tokenizer == main.tr('Wordless - Chinese Sentence Tokenizer') or
               sentence_tokenizer == main.tr('Wordless - Japanese Sentence Tokenizer')):
-            i_sentence = 0
+            sentence_start = 0
 
             for i, char in enumerate(line):
-                if i >= i_sentence and char in ['。', '！', '？', '!', '?']:
+                if i >= sentence_start and char in ['。', '！', '？', '!', '?']:
                     for j, char in enumerate(line):
                         if j > i and char not in ['。', '！', '？', '!', '?', '’', '”', '）', ')']:
-                            sentences.append(line[i_sentence : j])
+                            sentences.append(line[sentence_start : j])
 
-                            i_sentence = j
+                            sentence_start = j
 
                             break
 
-            if i_sentence <= len(line):
-                sentences.append(line[i_sentence:])
-
-        elif sentence_tokenizer == main.tr('HanLP - Sentence Segmenter'):
+            if sentence_start <= len(line):
+                sentences.append(line[sentence_start:])
+        elif sentence_tokenizer == main.tr('HanLP - Chinese Sentence Tokenizer'):
             sentences_util = pyhanlp.SafeJClass('com.hankcs.hanlp.utility.SentencesUtil')
 
-            for sentence in sentences_util.toSentenceList(jpype.JString(line), False):
-                sentences.append(sentence)
+            sentences.extend(sentences_util.toSentenceList(jpype.JString(line), False))
+
+        # Thai
+        elif sentence_tokenizer == 'Wordless - Thai Sentence Tokenizer':
+            segments = line.split()
+
+            sentences.append(segments[0])
+
+            for segment in segments[1:]:
+                if wordless_unicode.has_thai(segment):
+                    if len(wordless_word_tokenize(main, segment, lang_code = 'tha')) == 1:
+                        sentences[-1] += segment
+                    else:
+                        sentences.append(segment)
+                else:
+                    sentences[-1] += ' ' + segment + ' '
+
+            # Remove whitespace at the end of each sentence
+            sentences = [sentence.rstrip() for sentence in sentences]
+
+        elif sentence_tokenizer == 'PyThaiNLP - Thai Sentence Tokenizer':
+            sentences.extend(pythainlp.tokenize.sent_tokenize(line))
 
     return sentences
 
