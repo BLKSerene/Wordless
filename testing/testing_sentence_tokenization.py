@@ -27,16 +27,16 @@ main.settings_custom = main.settings_default
 # Chinese (Simplified)
 text_zho_cn = '作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。汉语有多种分支，当中标准官话最为流行，为中华人民共和国的国家通用语言（又称为普通话）、以及中华民国的国语。此外，汉语还是联合国官方语文[3]，并被上海合作组织等国际组织采用为官方语言。在中国大陆，汉语通称为“汉语”。在联合国、台湾、香港及澳门，通称为“中文”。在新加坡及马来西亚，通称为“华语”[注 1]。'
 
+print('Chinese (Simplified) / HanLP - Chinese Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_zho_cn, 'zho_cn',
+                                                                    sentence_tokenizer = 'HanLP - Sentence Segmenter'):
+    print(f'\t{sentence}')
+
 print('Chinese (Simplified) / Wordless - Chinese Sentence Tokenizer:')
 
 for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_zho_cn, 'zho_cn',
                                                                     sentence_tokenizer = 'Wordless - Chinese Sentence Tokenizer'):
-    print(f'\t{sentence}')
-
-print('Chinese (Simplified) / HanLP - Sentence Segmenter:')
-
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_zho_cn, 'zho_cn',
-                                                                    sentence_tokenizer = 'HanLP - Sentence Segmenter'):
     print(f'\t{sentence}')
 
 # English
@@ -73,4 +73,20 @@ print('Norwegian Nynorsk / NLTK - Punkt Sentence Tokenizer:')
 
 for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_nno, 'nno',
                                                                     sentence_tokenizer = 'NLTK - Punkt Sentence Tokenizer'):
+    print(f'\t{sentence}')
+
+# Thai
+text_tha = 'ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย ภาษาไทยเป็นภ าษาในกลุ่มภาษาไท ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาไท-กะได สันนิษฐานว่า ภาษาในตระกูลนี้มีถิ่นกำเนิดจากทางตอนใต้ของประเทศจีน และนักภาษาศาสตร์บางส่วนเสนอว่า ภาษาไทยน่าจะมีความเชื่อมโยงกับตระกูลภาษาออสโตร-เอเชียติก ตระกูลภาษาออสโตรนีเซียน และตระกูลภาษาจีน-ทิเบต'
+
+print('Thai / PyThaiNLP - Thai Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_tha, 'tha',
+                                                                    sentence_tokenizer = 'PyThaiNLP - Thai Sentence Tokenizer'):
+    print(f'\t{sentence}')
+
+
+print('Thai / Wordless - Thai Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_tha, 'tha',
+                                                                    sentence_tokenizer = 'Wordless - Thai Sentence Tokenizer'):
     print(f'\t{sentence}')

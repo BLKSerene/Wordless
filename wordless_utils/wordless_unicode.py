@@ -6,6 +6,8 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
+import re
+
 import sacremoses
 
 # Unicode Blocks: https://en.wikipedia.org/wiki/Unicode_block
@@ -44,3 +46,10 @@ def is_kana(char):
 	return any([unicode_start <= ord(char) <= unicode_end
 		        for unicode_start, unicode_end in unicode_kana])
 
+def is_thai(char):
+	# Thai:
+	#     https://en.wikipedia.org/wiki/Thai_(Unicode_block)
+	return 0x0E00 <= ord(char) <= 0x0E7F
+
+def has_thai(token):
+	return re.search(r'[\u0E00-\u0E7F]', token)
