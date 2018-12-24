@@ -851,6 +851,7 @@ def init_settings_default(main):
                 'swe': main.tr('SacreMoses - Moses Tokenizer'),
                 'tgk': main.tr('NLTK - Tok-tok Tokenizer'),
                 'tam': main.tr('SacreMoses - Moses Tokenizer'),
+                'tha': main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'),
                 'vie': main.tr('Pyvi'),
 
                 'other': main.tr('NLTK - Penn Treebank Tokenizer')
