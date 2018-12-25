@@ -161,13 +161,6 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'en
 
 print(f"\t{' '.join(tokens)}")
 
-print('English / PyDelphin - REPP Tokenizer:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
-                                                         word_tokenizer = 'PyDelphin - REPP Tokenizer')
-
-print(f"\t{' '.join(tokens)}")
-
 print('English / SacreMoses - Moses Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
