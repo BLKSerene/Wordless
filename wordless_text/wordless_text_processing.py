@@ -10,7 +10,6 @@ import importlib
 import json
 import re
 
-import delphin.repp
 import jieba
 import jieba.posseg
 import jpype
@@ -154,11 +153,6 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
         for sentence in sentences:
             token_groups.append(toktok_tokenizer.tokenize(sentence))
-    elif word_tokenizer == main.tr('PyDelphin - REPP Tokenizer'):
-        repp_tokenizer = delphin.repp.REPP.from_config('tokenization/repp_tokenizer/repp.set')
-
-        for sentence in sentences:
-            token_groups.append([token.form for token in repp_tokenizer.tokenize(sentence).tokens])
     elif word_tokenizer == main.tr('SacreMoses - Moses Tokenizer'):
         moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang_code))
 
@@ -404,7 +398,7 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
     # Japanese
     elif pos_tagger == main.tr('nagisa'):
         for sentence in sentences:
-            tagged_tokens = nagisa.tagging(sentence)
+            tagged_tokens = nagisa.tagging(str(sentence))
 
             tokens_tagged.extend(zip(tagged_tokens.words, tagged_tokens.postags))
     # Vietnamese
