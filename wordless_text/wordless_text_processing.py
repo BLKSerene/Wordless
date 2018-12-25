@@ -23,10 +23,12 @@ import pyvi.ViTokenizer
 import pyvi.ViPosTagger
 import sacremoses
 
+from wordless_text import wordless_text
 from wordless_utils import wordless_conversion, wordless_unicode
 
 def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'default'):
     sentences = []
+    boundary_start = 0
 
     if lang_code not in main.settings_global['sentence_tokenizers']:
         lang_code = 'other'
@@ -81,23 +83,38 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'defa
 
             for segment in segments[1:]:
                 if wordless_unicode.has_thai(segment):
-                    if len(wordless_word_tokenize(main, segment, lang_code = 'tha')) == 1:
-                        sentences[-1] += segment
-                    else:
+                    if wordless_unicode.is_thai(sentences[-1][-1]):
                         sentences.append(segment)
+                    else:
+                        sentences[-1] += ' ' + segment
                 else:
-                    sentences[-1] += ' ' + segment + ' '
-
-            # Remove whitespace at the end of each sentence
-            sentences = [sentence.rstrip() for sentence in sentences]
+                    sentences[-1] += ' ' + segment
 
         elif sentence_tokenizer == 'PyThaiNLP - Thai Sentence Tokenizer':
             sentences.extend(pythainlp.tokenize.sent_tokenize(line))
 
+    # Strip whitespace characters
+    sentences = [sentence.strip() for sentence in sentences]
+
+    # Record sentence boundaries
+    text = text.replace('\n', '')
+
+    for i, sentence in enumerate(sentences):
+        boundary = re.search(r'^\s+', text[boundary_start + len(sentence):])
+
+        if boundary == None:
+            boundary = ''
+        else:
+            boundary = boundary.group()
+
+        sentences[i] = wordless_text.Wordless_Token(sentences[i], boundary = boundary)
+
+        boundary_start += len(sentence) + len(boundary)
+
     return sentences
 
 def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default'):
-    tokens = []
+    token_groups = []
 
     if type(sentences) == str:
         sentences = [sentences]
@@ -116,101 +133,99 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
         treebank_tokenizer = nltk.TreebankWordTokenizer()
 
         for sentence in sentences:
-            tokens.extend(treebank_tokenizer.tokenize(sentence))
+            token_groups.append(treebank_tokenizer.tokenize(sentence))
     elif word_tokenizer == main.tr('NLTK - Twitter Tokenizer'):
         tweet_tokenizer = nltk.TweetTokenizer()
 
         for sentence in sentences:
-            tokens.extend(tweet_tokenizer.tokenize(sentence))
+            token_groups.append(tweet_tokenizer.tokenize(sentence))
     elif word_tokenizer == main.tr('NLTK - NIST Tokenizer'):
         nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
 
         for sentence in sentences:
-            tokens.extend(nist_tokenizer.tokenize(sentence))
+            token_groups.append(nist_tokenizer.tokenize(sentence))
     elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
         toktok_tokenizer = nltk.ToktokTokenizer()
 
         for sentence in sentences:
-            tokens.extend(toktok_tokenizer.tokenize(sentence))
+            token_groups.append(toktok_tokenizer.tokenize(sentence))
     elif word_tokenizer == main.tr('PyDelphin - REPP Tokenizer'):
         repp_tokenizer = delphin.repp.REPP.from_config('tokenization/repp_tokenizer/repp.set')
 
         for sentence in sentences:
-            tokens.extend([token.form for token in repp_tokenizer.tokenize(sentence).tokens])
+            token_groups.append([token.form for token in repp_tokenizer.tokenize(sentence).tokens])
     elif word_tokenizer == main.tr('SacreMoses - Moses Tokenizer'):
         moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang_code))
 
         for sentence in sentences:
-            tokens.extend(moses_tokenizer.tokenize(sentence))
+            token_groups.append(moses_tokenizer.tokenize(sentence))
     elif word_tokenizer == main.tr('SacreMoses - Penn Treebank Tokenizer'):
         moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang_code))
 
         for sentence in sentences:
-            tokens.extend(moses_tokenizer.penn_tokenize(sentence))
+            token_groups.append(moses_tokenizer.penn_tokenize(sentence))
 
     # Chinese
     elif word_tokenizer == main.tr('jieba'):
         for sentence in sentences:
-            tokens.extend(jieba.cut(sentence))
+            token_groups.append(jieba.cut(sentence))
     elif word_tokenizer == main.tr('HanLP - Standard Tokenizer'):
         standard_tokenizer = pyhanlp.SafeJClass('com.hankcs.hanlp.tokenizer.StandardTokenizer')
 
         for sentence in sentences:
-            tokens.extend([token.word for token in standard_tokenizer.segment(sentence)])
+            token_groups.append([token.word for token in standard_tokenizer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - Basic Tokenizer'):
         basic_tokenizer = pyhanlp.SafeJClass('com.hankcs.hanlp.tokenizer.BasicTokenizer')
 
         for sentence in sentences:
-            tokens.extend([token.word for token in basic_tokenizer.segment(sentence)])
+            token_groups.append([token.word for token in basic_tokenizer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - High-speed Tokenizer'):
         speed_tokenizer = pyhanlp.SafeJClass('com.hankcs.hanlp.tokenizer.SpeedTokenizer')
 
         for sentence in sentences:
-            tokens.extend([token.word for token in speed_tokenizer.segment(sentence)])
+            token_groups.append([token.word for token in speed_tokenizer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - Traditional Chinese Tokenizer'):
         zh_tw_tokenizer = pyhanlp.SafeJClass('com.hankcs.hanlp.tokenizer.TraditionalChineseTokenizer')
 
         for sentence in sentences:
-            tokens.extend([token.word for token in zh_tw_tokenizer.segment(sentence)])
+            token_groups.append([token.word for token in zh_tw_tokenizer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - URL Tokenizer'):
         url_tokenizer = pyhanlp.SafeJClass('com.hankcs.hanlp.tokenizer.URLTokenizer')
 
         for sentence in sentences:
-            tokens.extend([token.word for token in url_tokenizer.segment(sentence)])
+            token_groups.append([token.word for token in url_tokenizer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - CRF Lexical Analyzer'):
         for sentence in sentences:
-            tokens.extend([token for token in main.crf_analyzer.segment(sentence)])
+            token_groups.append([token for token in main.crf_analyzer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - Perceptron Lexical Analyzer'):
         for sentence in sentences:
-            tokens.extend([token for token in main.perceptron_analyzer.segment(sentence)])
+            token_groups.append([token for token in main.perceptron_analyzer.segment(sentence)])
     elif word_tokenizer == main.tr('HanLP - Dijkstra Segmenter'):
         DijkstraSegment = pyhanlp.SafeJClass('com.hankcs.hanlp.seg.Dijkstra.DijkstraSegment')
         dijkstra_tokenizer = DijkstraSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
 
         for sentence in sentences:
-            tokens.extend([token.word for token in dijkstra_tokenizer.seg(sentence)])
+            token_groups.append([token.word for token in dijkstra_tokenizer.seg(sentence)])
     elif word_tokenizer == main.tr('HanLP - N-shortest Path Segmenter'):
         NShortSegment = pyhanlp.SafeJClass('com.hankcs.hanlp.seg.NShort.NShortSegment')
         nshortest_tokenizer = NShortSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
 
         for sentence in sentences:
-            tokens.extend([token.word for token in nshortest_tokenizer.seg(sentence)])
+            token_groups.append([token.word for token in nshortest_tokenizer.seg(sentence)])
     elif word_tokenizer == main.tr('HanLP - Viterbi Segmenter'):
         ViterbiSegment = pyhanlp.SafeJClass('com.hankcs.hanlp.seg.Viterbi.ViterbiSegment')
         viterbi_tokenizer = ViterbiSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
 
         for sentence in sentences:
-            tokens.extend([token.word for token in viterbi_tokenizer.seg(sentence)])
+            token_groups.append([token.word for token in viterbi_tokenizer.seg(sentence)])
 
     # Japanese
     elif word_tokenizer == main.tr('nagisa'):
         for sentence in sentences:
-            tokens.extend(nagisa.tagging(sentence).words)
-
-        # Remove full-width whitespace
-        tokens = [token for token in tokens if token != '\u3000']
+            token_groups.append(nagisa.tagging(str(sentence)).words)
     elif word_tokenizer == main.tr('Wordless - Japanese Character Splitter'):
         for sentence in sentences:
+            tokens = []
             non_cjk_start = 0
 
             for i, char in enumerate(sentence):
@@ -238,21 +253,50 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
                                 non_cjk_start = i + j + 1
 
+                token_groups.append(tokens)
+
     # Vietnamese
     elif word_tokenizer == main.tr('Pyvi'):
         for sentence in sentences:
-            tokens.extend(pyvi.ViTokenizer.tokenize(sentence).split())
+            token_groups.append(pyvi.ViTokenizer.tokenize(sentence).split())
 
     # Thai
     elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'):
         for sentence in sentences:
-            tokens.extend(pythainlp.tokenize.word_tokenize(sentence, engine = 'newmm', whitespaces = False))
+            token_groups.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'newmm'))
     elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm'):
         for sentence in sentences:
-            tokens.extend(pythainlp.tokenize.word_tokenize(sentence, engine = 'mm', whitespaces = False))
+            token_groups.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'mm'))
     elif word_tokenizer == main.tr('PyThaiNLP - Longest Matching'):
         for sentence in sentences:
-            tokens.extend(pythainlp.tokenize.word_tokenize(sentence, engine = 'longest-matching', whitespaces = False))
+            token_groups.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'longest-matching'))
+
+    token_groups = [list(tokens) for tokens in token_groups]
+
+    for sentence, tokens in zip(sentences, token_groups):
+        tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = sentence.boundary, sentence_ending = True)
+
+    # Remove empty tokens
+    tokens = [token for tokens in token_groups for token in tokens if token]
+
+    # Record token boundaries
+    if lang_code in ['zho_cn', 'zho_tw', 'jpn', 'tha']:
+        token_start = 0
+
+        for i, token in enumerate(tokens):
+            if type(token) == str:
+                boundary = re.search(r'^\s+', sentence[i + len(token):])
+
+                if boundary == None:
+                    boundary = ''
+                else:
+                    boundary = boundary.group()
+
+                tokens[i] = wordless_text.Wordless_Token(tokens[i], boundary = '')
+
+                token_start += len(token) + len(boundary)
+            else:
+                token_start += len(token) + len(token.boundary)
 
     return tokens
 
@@ -284,28 +328,40 @@ def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'defaul
     # Chinese & Japanese
     elif (word_detokenizer == main.tr('Wordless - Chinese Word Detokenizer') or
           word_detokenizer == main.tr('Wordless - Japanese Word Detokenizer')):
-        non_cjk_start = 0
+        # Settings - > Word Detokenization
+        if type(tokens[0]) == str:
+            non_cjk_start = 0
 
-        for i, token in enumerate(tokens):
-            if i >= non_cjk_start:
-                if re.search(r'^[\u2E80-\u9FFF]+$', token):
-                    text += token
+            for i, token in enumerate(tokens):
+                if i >= non_cjk_start:
+                    if re.search(r'^[\u2E80-\u9FFF]+$', token):
+                        text += token
 
-                    non_cjk_start += 1
-                else:
-                    for j, token in enumerate(tokens):
-                        if j > i and re.search(r'^[\u2E80-\u9FFF]+$', token):
-                            text += wordless_word_detokenize(main, tokens[non_cjk_start:j], 'eng')
+                        non_cjk_start += 1
+                    else:
+                        for j, token in enumerate(tokens):
+                            if j > i and re.search(r'^[\u2E80-\u9FFF]+$', token):
+                                text += wordless_word_detokenize(main, tokens[non_cjk_start:j], 'eng')
 
-                            non_cjk_start = j
+                                non_cjk_start = j
 
-                            break
-                        elif j == len(tokens) - 1:
-                            text += wordless_word_detokenize(main, tokens[non_cjk_start:], 'eng')
+                                break
+                            elif j == len(tokens) - 1:
+                                text += wordless_word_detokenize(main, tokens[non_cjk_start:], 'eng')
 
-                            non_cjk_start = j + 1
+                                non_cjk_start = j + 1
 
-                            break
+                                break
+        else:
+            text = ''.join([token + token.boundary for token in tokens])
+
+    # Thai
+    elif word_detokenizer == main.tr('Wordless - Thai Word Detokenizer'):
+        # Settings -> Detokenization
+        if type(tokens[0]) == str:
+            text = ''.join(tokens)
+        else:
+            text = ''.join([token + token.boundary for token in tokens])
 
     return text
 

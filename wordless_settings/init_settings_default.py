@@ -840,6 +840,7 @@ def init_settings_default(main):
                 'hun': main.tr('SacreMoses - Moses Tokenizer'),
                 'isl': main.tr('SacreMoses - Moses Tokenizer'),
                 'ita': main.tr('SacreMoses - Moses Tokenizer'),
+                'jpn': main.tr('nagisa'),
                 'lav': main.tr('SacreMoses - Moses Tokenizer'),
                 'fas': main.tr('NLTK - Tok-tok Tokenizer'),
                 'pol': main.tr('SacreMoses - Moses Tokenizer'),
@@ -888,6 +889,7 @@ def init_settings_default(main):
                 'spa': main.tr('SacreMoses - Moses Detokenizer'),
                 'swe': main.tr('SacreMoses - Moses Detokenizer'),
                 'tam': main.tr('SacreMoses - Moses Detokenizer'),
+                'tha': main.tr('Wordless - Thai Word Detokenizer'),
 
                 'other': main.tr('NLTK - Penn Treebank Detokenizer')
             },

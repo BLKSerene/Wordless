@@ -96,7 +96,7 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 
 
 print(f"\t{' '.join(tokens)}")
 
-print('Chinese (Simplified) / HanLP - N-shortest Path Segmenter:')
+print('Chinese (Simplified) / HanLP - HanLP - Viterbi Segmenter:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
                                                          word_tokenizer = 'HanLP - Viterbi Segmenter')
