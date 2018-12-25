@@ -890,6 +890,10 @@ def init_settings_global(main):
                 main.tr('SacreMoses - Moses Detokenizer')
             ],
 
+            'tha': [
+                main.tr('Wordless - Thai Word Detokenization')
+            ],
+
             'other': [
                 main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('SacreMoses - Moses Detokenizer')
