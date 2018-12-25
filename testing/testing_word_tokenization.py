@@ -17,7 +17,7 @@ import pyhanlp
 
 sys.path.append('E:/Wordless')
 
-from wordless_text import wordless_text_processing
+from wordless_text import wordless_text, wordless_text_processing
 from wordless_settings import init_settings_default, init_settings_global
 
 main = QObject()
@@ -30,13 +30,23 @@ main.settings_custom = main.settings_default
 main.crf_analyzer = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
 main.perceptron_analyzer = jpype.JClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
 
+# Arabic
+sentence_ara = 'اللُّغَة العَرَبِيّة هي أكثر اللغات تحدثاً ونطقاً ضمن مجموعة اللغات السامية، وإحدى أكثر اللغات انتشاراً في العالم، يتحدثها أكثر من 467 مليون نسمة،[4](1) ويتوزع متحدثوها في الوطن العربي، بالإضافة إلى العديد من المناطق الأخرى المجاورة كالأحواز وتركيا وتشاد ومالي والسنغال وإرتيريا وإثيوبيا وجنوب السودان وإيران.'
+
+print('Arabic / spaCy - Arabic Word Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_ara, 'ara',
+                                                         word_tokenizer = 'spaCy - Arabic Word Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
 # Chinese (Simplified)
 sentence_zho_cn = '作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。'
 
-print('Chinese (Simplified) / jieba:')
+print('Chinese (Simplified) / jieba - Chinese Word Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
-                                                         word_tokenizer = 'jieba')
+                                                         word_tokenizer = 'jieba - Chinese Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
@@ -175,10 +185,10 @@ print(f"\t{' '.join(tokens)}")
 # Japanese
 sentence_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。'
 
-print('Japanese / nagisa:')
+print('Japanese / nagisa - Japanese Word Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn, 'jpn',
-                                                         word_tokenizer = 'nagisa')
+                                                         word_tokenizer = 'nagisa - Japanese Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
@@ -216,9 +226,9 @@ print(f"\t{' '.join(tokens)}")
 # Vietnamese
 sentence_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ngữ, là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại Việt Nam.'
 
-print('Vietnamese / Pyvi:')
+print('Vietnamese / Pyvi - Vietnamese Word Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_vie, 'vie',
-                                                         word_tokenizer = 'Pyvi')
+                                                         word_tokenizer = 'Pyvi - Vietnamese Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
