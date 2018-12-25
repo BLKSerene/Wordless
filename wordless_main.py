@@ -74,11 +74,6 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'Steven Bird, Liling Tan, Dan Garrette,<br>Peter Ljunglöf, Joel Nothman, Mikhail Korobov,<br>Alexis Dimitriadis',
              '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
 
-            ['<a href="https://github.com/delph-in/pydelphin">PyDelphin</a>',
-             '0.9.1',
-             'Michael Wayne Goodman, T.J. Trimble, Guy Emerson,<br>Alex Kuhnle, Francis Bond, Angie McMillan-Major',
-             '<a href="https://github.com/delph-in/pydelphin/blob/develop/LICENSE">MIT</a>'],
-
             ['<a href="https://github.com/PyThaiNLP/pythainlp">PyThaiNLP</a>',
              '1.7.1',
              'Wannaphong Phatthiyaphaibun',
