@@ -10,8 +10,16 @@ import bs4
 
 from wordless_text import wordless_text_processing
 
+class Wordless_Token(str):
+    def __new__(cls, string, *args, **kwargs):
+        return super().__new__(cls, string)
+
+    def __init__(self, string, boundary, sentence_ending = False):
+        self.boundary = boundary
+        self.sentence_ending = sentence_ending
+
 class Wordless_Text():
-    def __init__(self, main, file, merge_puncs = False):
+    def __init__(self, main, file):
         self.main = main
         self.lang_code = file['lang_code']
 
