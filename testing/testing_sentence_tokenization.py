@@ -30,7 +30,7 @@ text_zho_cn = '作为语言而言，为世界使用人数最多的语言，目�
 print('Chinese (Simplified) / HanLP - Chinese Sentence Tokenizer:')
 
 for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_zho_cn, 'zho_cn',
-                                                                    sentence_tokenizer = 'HanLP - Sentence Segmenter'):
+                                                                    sentence_tokenizer = 'HanLP - Chinese Sentence Tokenizer'):
     print(f'\t{sentence}')
 
 print('Chinese (Simplified) / Wordless - Chinese Sentence Tokenizer:')
