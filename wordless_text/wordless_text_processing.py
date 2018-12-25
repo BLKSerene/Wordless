@@ -22,6 +22,7 @@ import pythainlp
 import pyvi.ViTokenizer
 import pyvi.ViPosTagger
 import sacremoses
+import spacy
 
 from wordless_text import wordless_text
 from wordless_utils import wordless_conversion, wordless_unicode
@@ -116,8 +117,12 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'defa
 def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default'):
     token_groups = []
 
-    if type(sentences) == str:
+    if type(sentences) != list:
         sentences = [sentences]
+
+    for i, sentence in enumerate(sentences):
+        if type(sentence) != wordless_text.Wordless_Token:
+            sentences[i] = wordless_text.Wordless_Token(sentence)
 
     if lang_code not in main.settings_global['word_tokenizers']:
         lang_code = 'other'
@@ -164,9 +169,14 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
         for sentence in sentences:
             token_groups.append(moses_tokenizer.penn_tokenize(sentence))
+    elif 'spaCy' in word_tokenizer:
+        nlp = spacy.blank(wordless_conversion.to_iso_639_1(main, lang_code))
+
+        for sentence in sentences:
+            token_groups.append([token.text for token in nlp(str(sentence))])
 
     # Chinese
-    elif word_tokenizer == main.tr('jieba'):
+    elif word_tokenizer == main.tr('jieba - Chinese Word Tokenizer'):
         for sentence in sentences:
             token_groups.append(jieba.cut(sentence))
     elif word_tokenizer == main.tr('HanLP - Standard Tokenizer'):
@@ -220,7 +230,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
             token_groups.append([token.word for token in viterbi_tokenizer.seg(sentence)])
 
     # Japanese
-    elif word_tokenizer == main.tr('nagisa'):
+    elif word_tokenizer == main.tr('nagisa - Japanese Word Tokenizer'):
         for sentence in sentences:
             token_groups.append(nagisa.tagging(str(sentence)).words)
     elif word_tokenizer == main.tr('Wordless - Japanese Character Splitter'):
@@ -241,7 +251,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
                                     not wordless_unicode.is_kana(sentence[i + j + 1])):
                                     tokens.extend(wordless_word_tokenize(main, sentence[non_cjk_start : i + j + 1],
                                                                          lang_code = lang_code,
-                                                                         word_tokenizer = main.tr('nagisa')))
+                                                                         word_tokenizer = main.tr('nagisa - Japanese Word Tokenizer')))
 
                                     non_cjk_start = i + j + 1
 
@@ -249,14 +259,14 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
                             else:
                                 tokens.extend(wordless_word_tokenize(main, sentence[non_cjk_start:],
                                                                      lang_code = lang_code,
-                                                                     word_tokenizer = main.tr('nagisa')))
+                                                                     word_tokenizer = main.tr('nagisa - Japanese Word Tokenizer')))
 
                                 non_cjk_start = i + j + 1
 
-                token_groups.append(tokens)
+            token_groups.append(tokens)
 
     # Vietnamese
-    elif word_tokenizer == main.tr('Pyvi'):
+    elif word_tokenizer == main.tr('Pyvi - Vietnamese Word Tokenizer'):
         for sentence in sentences:
             token_groups.append(pyvi.ViTokenizer.tokenize(sentence).split())
 
@@ -273,32 +283,36 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
     token_groups = [list(tokens) for tokens in token_groups]
 
-    for sentence, tokens in zip(sentences, token_groups):
-        tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = sentence.boundary, sentence_ending = True)
-
     # Remove empty tokens
-    tokens = [token for tokens in token_groups for token in tokens if token]
+    for i, tokens in enumerate(token_groups):
+        token_groups[i] = [token for token in tokens if re.search(r'\S', token)]
 
     # Record token boundaries
     if lang_code in ['zho_cn', 'zho_tw', 'jpn', 'tha']:
-        token_start = 0
+        for sentence, tokens in zip(sentences, token_groups):
+            token_start = 0
 
-        for i, token in enumerate(tokens):
-            if type(token) == str:
-                boundary = re.search(r'^\s+', sentence[i + len(token):])
+            for i, token in enumerate(tokens):
+                if type(token) != wordless_text.Wordless_Token:
+                    boundary = re.search(r'^\s+', sentence[token_start + len(token):])
 
-                if boundary == None:
-                    boundary = ''
+                    if boundary == None:
+                        boundary = ''
+                    else:
+                        boundary = boundary.group()
+
+                    tokens[i] = wordless_text.Wordless_Token(token, boundary = boundary)
+
+                    token_start += len(token) + len(boundary)
                 else:
-                    boundary = boundary.group()
+                    token_start += len(token) + len(token.boundary)
 
-                tokens[i] = wordless_text.Wordless_Token(tokens[i], boundary = '')
+            tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = sentence.boundary, sentence_ending = True)
+    else:
+        for sentence, tokens in zip(sentences, token_groups):
+            tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = sentence.boundary, sentence_ending = True)
 
-                token_start += len(token) + len(boundary)
-            else:
-                token_start += len(token) + len(token.boundary)
-
-    return tokens
+    return [token for tokens in token_groups for token in tokens]
 
 def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'default'):
     sentences = []
