@@ -58,7 +58,7 @@ text = wordless_text_processing.wordless_word_detokenize(main, tokens, 'eng',
 print(f'\t{text}')
 
 # Japanese
-text_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。統計によって前後する場合もあるが、この数は世界の母語話者数で上位10位以内に入る人数である。'
+text_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。統計によって前後す 173 る場合もあるが、この数は世界の母語話者数で上位10位以内に入る人数である。'
 
 sentences = wordless_text_processing.wordless_sentence_tokenize(main, text_jpn, 'jpn')
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentences, 'jpn')
@@ -75,9 +75,6 @@ text_tha = 'ภาษาไทย หรือ ภาษาไทยกลาง
 
 sentences = wordless_text_processing.wordless_sentence_tokenize(main, text_tha, 'tha')
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentences, 'tha')
-
-print(sentences, sentences[0].boundary)
-print(tokens, tokens[0].boundary)
 
 print('Thai / Wordless - Thai Word Detokenizer:')
 

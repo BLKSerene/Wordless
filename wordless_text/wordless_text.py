@@ -14,7 +14,7 @@ class Wordless_Token(str):
     def __new__(cls, string, *args, **kwargs):
         return super().__new__(cls, string)
 
-    def __init__(self, string, boundary, sentence_ending = False):
+    def __init__(self, string, boundary = '', sentence_ending = False):
         self.boundary = boundary
         self.sentence_ending = sentence_ending
 
