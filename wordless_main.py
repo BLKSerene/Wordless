@@ -65,7 +65,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://github.com/taishi-i/nagisa">nagisa</a>',
-             '0.1.1',
+             '0.1.2',
              'Taishi Ikeda (池田大志)',
              '<a href="https://github.com/taishi-i/nagisa/blob/master/LICENSE.txt">MIT</a>'],
 
