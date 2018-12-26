@@ -485,6 +485,7 @@ def wordless_get_stop_words(main, lang_code, word_list = 'default'):
             with open(r'stop_words/Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
                 stop_words = json.load(f)[lang_code_639_1]
     elif word_list == 'spaCy':
+        # Chinese (Traditional)
         if lang_code_639_1 == 'zh_tw':
             with open(r'stop_words/spaCy/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
                 stop_words = [line.rstrip() for line in f]
@@ -500,13 +501,20 @@ def wordless_get_stop_words(main, lang_code, word_list = 'default'):
         lang_text = wordless_conversion.to_lang_text(main, lang_code)
 
         stop_words = nltk.corpus.stopwords.words(lang_text)
+
+    # Chinese
     elif word_list == 'HanLP':
+        # Chinese (Traditional)
         if lang_code_639_1 == 'zh_tw':
             with open(r'stop_words/HanLP/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
                 stop_words = [line.rstrip() for line in f]
         else:
             with open(r'stop_words/HanLP/stop_words_zh_cn.txt', 'r', encoding = 'utf_8') as f:
                 stop_words = [line.rstrip() for line in f]
+
+    # Thai
+    elif word_list == 'PyThaiNLP':
+        stop_words = pythainlp.corpus.stopwords.words('thai')
 
     return sorted(stop_words)
 

@@ -1440,6 +1440,7 @@ def init_settings_global(main):
             ],
 
             'tha': [
+                'PyThaiNLP',
                 'spaCy',
                 'Stopwords ISO'
             ],

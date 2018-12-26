@@ -1029,7 +1029,7 @@ def init_settings_default(main):
                 'tgl': 'Stopwords ISO',
                 'tat': 'spaCy',
                 'tel': 'spaCy',
-                'tha': 'Stopwords ISO',
+                'tha': 'PyThaiNLP',
                 'tur': 'Stopwords ISO',
                 'ukr': 'Stopwords ISO',
                 'urd': 'Stopwords ISO',
