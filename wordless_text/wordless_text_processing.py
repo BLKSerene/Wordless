@@ -262,7 +262,9 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
     # Vietnamese
     elif word_tokenizer == main.tr('Pyvi - Vietnamese Word Tokenizer'):
         for sentence in sentences:
-            token_groups.append(pyvi.ViTokenizer.tokenize(sentence).split())
+            tokens = [token.replace('_', ' ') for token in pyvi.ViTokenizer.spacy_tokenize(sentence)[0]]
+
+            token_groups.append(tokens)
 
     # Thai
     elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'):
