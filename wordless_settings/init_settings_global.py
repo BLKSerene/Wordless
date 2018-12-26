@@ -766,7 +766,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer'),
+                main.tr('spaCy - Russian Word Tokenizer')
             ],
 
             'sin': [
