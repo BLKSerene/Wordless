@@ -223,4 +223,4 @@ print('Vietnamese / Pyvi - Vietnamese Word Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_vie, 'vie',
                                                          word_tokenizer = 'Pyvi - Vietnamese Word Tokenizer')
-print(f"\t{' '.join([token.replace(' ', '_') for token in tokens])}")
+print(f"\t{' '.join(tokens)}")
