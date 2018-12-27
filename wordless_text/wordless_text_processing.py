@@ -429,8 +429,10 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
     # Convert to Universal Tagset
     if tagset == 'Universal':
         tagset_source = main.settings_global['pos_taggers'][lang_code][pos_tagger]
+        mappings = {tag: tag_universal
+                    for tag, tag_universal, _, _ in main.settings_custom['tagsets']['mappings'][tagset_source]}
 
-        tokens_tagged = [(token, wordless_conversion.to_universal_tagset(main, tagset_source, tag))
+        tokens_tagged = [(token, mappings[tag])
                          for token, tag in tokens_tagged]
 
     return tokens_tagged
