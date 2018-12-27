@@ -262,7 +262,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
     # Vietnamese
     elif word_tokenizer == main.tr('Pyvi - Vietnamese Word Tokenizer'):
         for sentence in sentences:
-            tokens = [token.replace('_', ' ') for token in pyvi.ViTokenizer.spacy_tokenize(sentence)[0]]
+            tokens = pyvi.ViTokenizer.spacy_tokenize(sentence)[0]
 
             token_groups.append(tokens)
 
@@ -311,6 +311,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
     return [token for tokens in token_groups for token in tokens]
 
 def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'default'):
+    sentence_start = 0
     sentences = []
     text = ''
 
@@ -320,21 +321,25 @@ def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'defaul
     if word_detokenizer == 'default':
         word_detokenizer = main.settings_custom['word_detokenization']['word_detokenizers'][lang_code]
 
+    for i, token in enumerate(tokens):
+        if type(token) == wordless_text.Wordless_Token and token.sentence_ending:
+            sentences.append(tokens[sentence_start : i + 1])
+
+            sentence_start = i + 1
+        elif i == len(tokens) - 1:
+            sentences.append(tokens[sentence_start:])
+
     # English & Other Languages
     if word_detokenizer == main.tr('NLTK - Penn Treebank Detokenizer'):
         treebank_detokenizer = nltk.tokenize.treebank.TreebankWordDetokenizer()
 
-        for sentence in wordless_sentence_tokenize(main, ' '.join(tokens), lang_code):
-            sentences.append(treebank_detokenizer.tokenize(sentence.split()))
-
-        text = ' '.join(sentences)
+        for sentence in sentences:
+            text += treebank_detokenizer.tokenize(tokens)
     elif word_detokenizer == main.tr('SacreMoses - Moses Detokenizer'):
         moses_detokenizer = sacremoses.MosesDetokenizer(lang = wordless_conversion.to_iso_639_1(main, lang_code))
 
-        for sentence in wordless_sentence_tokenize(main, ' '.join(tokens), lang_code):
-            sentences.append(moses_detokenizer.detokenize(sentence.split()))
-
-        text = ' '.join(sentences)
+        for sentence in sentences:
+            text += moses_detokenizer.detokenize(sentence)
     # Chinese & Japanese
     elif (word_detokenizer == main.tr('Wordless - Chinese Word Detokenizer') or
           word_detokenizer == main.tr('Wordless - Japanese Word Detokenizer')):
@@ -378,6 +383,9 @@ def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'defaul
 def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset = 'default'):
     tokens_tagged = []
 
+    if type(sentences) != list:
+        sentences = [sentences]
+
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang_code]
 
@@ -387,8 +395,9 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
             tokens = wordless_word_tokenize(main, sentence, lang_code)
 
             tokens_tagged.extend(nltk.pos_tag(tokens, lang = lang_code))
+
     # Chinese
-    elif pos_tagger == main.tr('jieba'):
+    elif pos_tagger == main.tr('jieba - Chinese POS Tagger'):
         for sentence in sentences:
             tokens_tagged.extend(jieba.posseg.cut(sentence))
     elif pos_tagger == main.tr('HanLP - CRF Lexical Analyzer'):
@@ -397,14 +406,16 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
     elif pos_tagger == main.tr('HanLP - Perceptron Lexical Analyzer'):
         for sentence in sentences:
             tokens_tagged.extend(list(zip(*main.perceptron_analyzer.analyze(sentence).toWordTagArray())))
+
     # Japanese
-    elif pos_tagger == main.tr('nagisa'):
+    elif pos_tagger == main.tr('nagisa - Japanese POS Tagger'):
         for sentence in sentences:
             tagged_tokens = nagisa.tagging(str(sentence))
 
             tokens_tagged.extend(zip(tagged_tokens.words, tagged_tokens.postags))
+
     # Vietnamese
-    elif pos_tagger == main.tr('Pyvi'):
+    elif pos_tagger == main.tr('Pyvi - Vietnamese POS Tagger'):
         for sentence in sentences:
             tokens = wordless_word_tokenize(main, sentence, lang_code)
 
