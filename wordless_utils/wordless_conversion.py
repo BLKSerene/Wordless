@@ -38,13 +38,3 @@ def to_encoding_text(main, encoding_code):
     for text, code in main.settings_global['file_encodings'].items():
         if encoding_code == code:
             return text
-
-def to_universal_tagset(main, tagset, tag):
-    tagset = main.settings_global['tagsets'][tagset]
-
-    with open(f'tagsets/{tagset}.txt', 'r', encoding = 'utf_8') as f:
-        tagset_mapping = {line.rstrip().split()[0]: line.rstrip().split()[1]
-                          for line in f
-                          if line.find('\t') > -1}
-
-    return tagset_mapping[tag]
