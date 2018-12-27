@@ -33,12 +33,14 @@ main.perceptron_analyzer = jpype.JClass('com.hankcs.hanlp.model.perceptron.Perce
 # Chinese (Simplified)
 sentence_zho_cn = '作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。'
 
-print('Chinese / jieba:')
+print('Chinese / jieba - Chinese POS Tagger:')
 
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn], 'zho_cn',
-                                                          pos_tagger = 'jieba')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn], 'zho_cn',
-                                                                    pos_tagger = 'jieba',
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_zho_cn,
+                                                          lang_code = 'zho_cn',
+                                                          pos_tagger = 'jieba - Chinese POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_zho_cn,
+                                                                    lang_code = 'zho_cn',
+                                                                    pos_tagger = 'jieba - Chinese POS Tagger',
                                                                     tagset = 'Universal')
 
 print(f"\t{tokens_tagged}")
@@ -46,9 +48,11 @@ print(f"\t{tokens_tagged_universal}")
 
 print('Chinese / HanLP - CRF Lexical Analyzer:')
 
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn], 'zho_cn',
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn],
+                                                          lang_code = 'zho_cn',
                                                           pos_tagger = 'HanLP - CRF Lexical Analyzer')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn], 'zho_cn',
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn],
+                                                                    lang_code = 'zho_cn',
                                                                     pos_tagger = 'HanLP - CRF Lexical Analyzer',
                                                                     tagset = 'Universal')
 
@@ -57,9 +61,11 @@ print(f"\t{tokens_tagged_universal}")
 
 print('Chinese / HanLP - Perceptron Lexical Analyzer:')
 
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn], 'zho_cn',
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn],
+                                                          lang_code = 'zho_cn',
                                                           pos_tagger = 'HanLP - Perceptron Lexical Analyzer')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn], 'zho_cn',
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn],
+                                                                    lang_code = 'zho_cn',
                                                                     pos_tagger = 'HanLP - Perceptron Lexical Analyzer',
                                                                     tagset = 'Universal')
 
@@ -71,9 +77,11 @@ sentence_eng = 'English is a West Germanic language that was first spoken in ear
 
 print('English / NLTK - Perceptron POS Tagger:')
 
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_eng], 'eng',
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_eng,
+                                                          lang_code = 'eng',
                                                           pos_tagger = 'NLTK - Perceptron POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_eng], 'eng',
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_eng,
+                                                                    lang_code = 'eng',
                                                                     pos_tagger = 'NLTK - Perceptron POS Tagger',
                                                                     tagset = 'Universal')
 
@@ -83,25 +91,29 @@ print(f"\t{tokens_tagged_universal}")
 # Japanese
 sentence_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。'
 
-print('Japanese / nagisa:')
+print('Japanese / nagisa - Japanese POS Tagger:')
 
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_jpn], 'jpn',
-                                                          pos_tagger = 'nagisa')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_jpn], 'jpn',
-                                                                    pos_tagger = 'nagisa',
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_jpn,
+                                                          lang_code = 'jpn',
+                                                          pos_tagger = 'nagisa - Japanese POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_jpn,
+                                                                    lang_code = 'jpn',
+                                                                    pos_tagger = 'nagisa - Japanese POS Tagger',
                                                                     tagset = 'Universal')
 
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
 
 # Russian
-sentence_rus = 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать)[~ 3][⇨] — один из восточнославянских языков, национальный язык русского народа. '
+sentence_rus = 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать)[~ 3][⇨] — один из восточнославянских языков, национальный язык русского народа.'
 
 print('Russian / NLTK - Perceptron POS Tagger:')
 
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_rus], 'rus',
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
+                                                          lang_code = 'rus',
                                                           pos_tagger = 'NLTK - Perceptron POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_rus], 'rus',
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
+                                                                    lang_code = 'rus',
                                                                     pos_tagger = 'NLTK - Perceptron POS Tagger',
                                                                     tagset = 'Universal')
 
@@ -111,12 +123,14 @@ print(f"\t{tokens_tagged_universal}")
 # Vietnamese
 sentence_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ngữ, là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại Việt Nam.'
 
-print('Vietnamese / Pyvi:')
+print('Vietnamese / Pyvi - Vietnamese POS Tagger:')
 
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_vie], 'vie',
-                                                          pos_tagger = 'Pyvi')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_vie], 'vie',
-                                                                    pos_tagger = 'Pyvi',
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_vie,
+                                                          lang_code = 'vie',
+                                                          pos_tagger = 'Pyvi - Vietnamese POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_vie,
+                                                                    lang_code = 'vie',
+                                                                    pos_tagger = 'Pyvi - Vietnamese POS Tagger',
                                                                     tagset = 'Universal')
 
 print(f"\t{tokens_tagged}")

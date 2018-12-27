@@ -8,6 +8,8 @@
 
 import os
 
+from wordless_tagsets import *
+
 def init_settings_default(main):
     main.settings_default = {
         'current_tab': main.tr('Overview'),
@@ -915,12 +917,12 @@ def init_settings_default(main):
 
         'pos_tagging': {
             'pos_taggers': {
-                'zho_cn': main.tr('jieba'),
-                'zho_tw':  main.tr('jieba'),
+                'zho_cn': main.tr('jieba - Chinese POS Tagger'),
+                'zho_tw':  main.tr('jieba - Chinese POS Tagger'),
                 'eng': main.tr('NLTK - Perceptron POS Tagger'),
-                'jpn': main.tr('nagisa'),
+                'jpn': main.tr('nagisa - Japanese POS Tagger'),
                 'rus': main.tr('NLTK - Perceptron POS Tagger'),
-                'vie': main.tr('Pyvi')
+                'vie': main.tr('Pyvi - Vietnamese POS Tagger')
             },
 
             'tagsets': {
@@ -935,6 +937,21 @@ def init_settings_default(main):
             'preview_lang': 'eng',
             'preview_samples': '',
             'preview_results': ''
+        },
+
+        'tagsets': {
+            'preview_lang': 'eng',
+            'preview_pos_tagger': main.tr('NLTK - Perceptron POS Tagger'),
+
+            'mappings': {
+                'jieba': zho_jieba.mappings,
+                'HanLP': zho_hanlp.mappings,
+                'Penn Treebank': eng_penn_treebank.mappings,
+                'UniDic': jpn_unidic.mappings,
+                'OpenCorpora': rus_open_corpora.mappings,
+                'Russian National Corpus': rus_russian_national_corpus.mappings,
+                'Pyvi': vie_pyvi.mappings
+            }
         },
 
         'lemmatization': {
