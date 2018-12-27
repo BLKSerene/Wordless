@@ -1015,7 +1015,7 @@ def init_settings_global(main):
             ],
 
             'tha': [
-                main.tr('Wordless - Thai Word Detokenization')
+                main.tr('Wordless - Thai Word Detokenizer')
             ],
 
             'other': [
@@ -1026,13 +1026,13 @@ def init_settings_global(main):
 
         'pos_taggers': {
             'zho_cn': {
-                main.tr('jieba'): 'jieba',
+                main.tr('jieba - Chinese POS Tagger'): 'jieba',
                 main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
                 main.tr('HanLP - Perceptron Lexical Analyzer'): 'HanLP'
             },
 
             'zho_tw': {
-                main.tr('jieba'): 'jieba',
+                main.tr('jieba - Chinese POS Tagger'): 'jieba',
                 main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
                 main.tr('HanLP - Perceptron Lexical Analyzer'): 'HanLP'
             },
@@ -1042,30 +1042,17 @@ def init_settings_global(main):
             },
 
             'jpn': {
-                main.tr('nagisa'): 'UniDic'
+                main.tr('nagisa - Japanese POS Tagger'): 'UniDic'
             },
 
             'rus': {
-                main.tr('NLTK - Perceptron POS Tagger'): 'Russian National Corpus'
+                main.tr('NLTK - Perceptron POS Tagger'): 'Russian National Corpus',
+                main.tr('pymorphy2 - Russian POS Tagger'): 'OpenCorpora'
             },
 
             'vie': {
-                main.tr('Pyvi'): 'Pyvi'
+                main.tr('Pyvi - Vietnamese POS Tagger'): 'Pyvi',
             }
-        },
-
-        'tagsets': {
-            # Chinese
-            'jieba': 'zho_jieba',
-            'HanLP': 'zho_hanlp',
-            # English
-            'Penn Treebank': 'eng_penn_treebank',
-            # Japanese
-            'UniDic': 'jpn_unidic',
-            # Russian
-            'Russian National Corpus': 'rus_russian_national_corpus',
-            # Vietnamese
-            'Pyvi': 'vie_pyvi'
         },
 
         'lemmatizers': {
