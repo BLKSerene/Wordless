@@ -1061,96 +1061,101 @@ def init_settings_global(main):
 
         'lemmatizers': {
             'ast': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'bul': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'cat': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'ces': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'eng': [
-                'NLTK',
-                'Lemmatization Lists'
+                main.tr('NLTK - WordNet Lemmatizer'),
+                main.tr('Lemmatization Lists')
             ],
 
             'est': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'fra': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'glg': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'deu': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'hun': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'gle': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'ita': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'glv': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'fas': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'por': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'ron': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
+            ],
+
+            'rus': [
+                main.tr('pymorphy2 - Morphological Analyzer')
             ],
 
             'gla': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'slk': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'slv': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'spa': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'swe': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ],
 
             'ukr': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists'),
+                main.tr('pymorphy2 - Morphological Analyzer')
             ],
 
             'cym': [
-                'Lemmatization Lists'
+                main.tr('Lemmatization Lists')
             ]
         },
 

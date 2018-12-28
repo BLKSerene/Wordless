@@ -26,20 +26,44 @@ main.settings_custom = main.settings_default
 
 # English
 sentence_eng = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.'
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, lang_code = 'eng')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
-                                                         word_tokenizer = 'NLTK - Penn Treebank Tokenizer')
+print('English / NLTK - WordNet Lemmatizer:')
 
-print('English / NLTK:')
-
-lemmas = wordless_text_processing.wordless_lemmatize(main, tokens, 'eng',
-                                                     lemmatizer = 'NLTK')
+lemmas = wordless_text_processing.wordless_lemmatize(main, tokens,
+                                                     lang_code = 'eng',
+                                                     lemmatizer = 'NLTK - WordNet Lemmatizer')
 
 print(f"\t{lemmas}")
 
 print('English / Lemmatization Lists:')
 
-lemmas = wordless_text_processing.wordless_lemmatize(main, tokens, 'eng',
+lemmas = wordless_text_processing.wordless_lemmatize(main, tokens,
+                                                     lang_code = 'eng',
                                                      lemmatizer = 'Lemmatization Lists')
+
+print(f"\t{lemmas}")
+
+# Russian
+sentence_rus = 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать)[~ 3][⇨] — один из восточнославянских языков, национальный язык русского народа.'
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_rus, lang_code = 'rus')
+
+print('Russian / pymorphy2 - Morphological Analyzer:')
+
+lemmas = wordless_text_processing.wordless_lemmatize(main, tokens,
+                                                     lang_code = 'rus',
+                                                     lemmatizer = 'pymorphy2 - Morphological Analyzer')
+
+print(f"\t{lemmas}")
+
+# Ukrainian
+sentence_ukr = 'Украї́нська мо́ва (МФА: [ʊkrɐˈjɪɲsʲkɐ ˈmɔwɐ], історичні назви — ру́ська, руси́нська[9][10][11][* 2]) — національна мова українців.'
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_ukr, lang_code = 'ukr')
+
+print('Ukrainian / pymorphy2 - Morphological Analyzer:')
+
+lemmas = wordless_text_processing.wordless_lemmatize(main, tokens,
+                                                     lang_code = 'ukr',
+                                                     lemmatizer = 'pymorphy2 - Morphological Analyzer')
 
 print(f"\t{lemmas}")
