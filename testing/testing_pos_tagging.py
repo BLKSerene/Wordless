@@ -120,6 +120,35 @@ tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, senten
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
 
+print('Russian / pymorphy2 - Morphological Analyzer:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
+                                                          lang_code = 'rus',
+                                                          pos_tagger = 'pymorphy2 - Morphological Analyzer')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
+                                                                    lang_code = 'rus',
+                                                                    pos_tagger = 'pymorphy2 - Morphological Analyzer',
+                                                                    tagset = 'Universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
+# Ukrainian
+sentence_ukr = 'Украї́нська мо́ва (МФА: [ʊkrɐˈjɪɲsʲkɐ ˈmɔwɐ], історичні назви — ру́ська, руси́нська[9][10][11][* 2]) — національна мова українців.'
+
+print('Ukrainian / pymorphy2 - Morphological Analyzer:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_ukr,
+                                                          lang_code = 'ukr',
+                                                          pos_tagger = 'pymorphy2 - Morphological Analyzer')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_ukr,
+                                                                    lang_code = 'ukr',
+                                                                    pos_tagger = 'pymorphy2 - Morphological Analyzer',
+                                                                    tagset = 'Universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
 # Vietnamese
 sentence_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ngữ, là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại Việt Nam.'
 
