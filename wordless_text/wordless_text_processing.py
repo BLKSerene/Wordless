@@ -17,6 +17,7 @@ import nagisa
 import nltk
 import nltk.tokenize.nist
 import numpy
+import pymorphy2
 import pythainlp
 import pyvi.ViTokenizer
 import pyvi.ViPosTagger
@@ -413,6 +414,19 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
             tagged_tokens = nagisa.tagging(str(sentence))
 
             tokens_tagged.extend(zip(tagged_tokens.words, tagged_tokens.postags))
+
+    # Russian & Ukrainian
+    elif pos_tagger == main.tr('pymorphy2 - Morphological Analyzer'):
+        if lang_code == 'rus':
+            morphological_analyzer = pymorphy2.MorphAnalyzer(lang = 'ru')
+        elif lang_code == 'ukr':
+            morphological_analyzer = pymorphy2.MorphAnalyzer(lang = 'uk')
+
+        for sentence in sentences:
+            tokens = wordless_word_tokenize(main, sentence, lang_code)
+
+            for token in tokens:
+                tokens_tagged.append((token, morphological_analyzer.parse(token)[0].tag._POS))
 
     # Vietnamese
     elif pos_tagger == main.tr('Pyvi - Vietnamese POS Tagger'):
