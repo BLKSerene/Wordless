@@ -113,10 +113,10 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 
 
 print(f"\t{' '.join(tokens)}")
 
-print('Chinese (Simplified) / SacreMoses - Moses Tokenizer:')
+print('Chinese (Simplified) / Wordless - Chinese Character Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
-                                                         word_tokenizer = 'SacreMoses - Moses Tokenizer')
+                                                         word_tokenizer = 'Wordless - Chinese Character Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
@@ -185,10 +185,20 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn, 'jp
 
 print(f"\t{' '.join(tokens)}")
 
-print('Japanese / Wordless - Japanese Character Splitter:')
+print('Japanese / Wordless - Japanese Kanji Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn, 'jpn',
-                                                         word_tokenizer = 'Wordless - Japanese Character Splitter')
+                                                         word_tokenizer = 'Wordless - Japanese Kanji Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+# Russian
+sentence_rus = 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать)[~ 3][⇨] — один из восточнославянских языков, национальный язык русского народа.'
+
+print('Russian / spaCy - Russian Word Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_rus, 'rus',
+                                                         word_tokenizer = 'spaCy - Russian Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
