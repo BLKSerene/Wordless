@@ -495,7 +495,8 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'default'):
         if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang_code]
 
-        if lemmatizer == 'NLTK':
+        # English
+        if lemmatizer == main.tr('NLTK - WordNet Lemmatizer'):
             word_net_lemmatizer = nltk.WordNetLemmatizer()
 
             for i, (token, pos) in enumerate(nltk.pos_tag(tokens)):
@@ -509,7 +510,16 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'default'):
                     lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
                 else:
                     lemmas.append(word_net_lemmatizer.lemmatize(token))
-        elif lemmatizer == 'Lemmatization Lists':
+        elif lemmatizer == main.tr('pymorphy2 - Morphological Analyzer'):
+            if lang_code == 'rus':
+                morphological_analyzer = pymorphy2.MorphAnalyzer(lang = 'ru')
+            else:
+                morphological_analyzer = pymorphy2.MorphAnalyzer(lang = 'uk')
+
+            for token in tokens:
+                lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
+        # Other Languages
+        elif lemmatizer == main.tr('Lemmatization Lists'):
             lang_code = wordless_conversion.to_iso_639_1(main, lang_code)
 
             with open(f'lemmatization/Lemmatization Lists/lemmatization-{lang_code}.txt', 'r', encoding = 'utf_8_sig') as f:
