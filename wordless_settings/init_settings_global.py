@@ -1047,7 +1047,11 @@ def init_settings_global(main):
 
             'rus': {
                 main.tr('NLTK - Perceptron POS Tagger'): 'Russian National Corpus',
-                main.tr('pymorphy2 - Russian POS Tagger'): 'OpenCorpora'
+                main.tr('pymorphy2 - Morphological Analyzer'): 'OpenCorpora'
+            },
+
+            'ukr': {
+                main.tr('pymorphy2 - Morphological Analyzer'): 'OpenCorpora'
             },
 
             'vie': {
