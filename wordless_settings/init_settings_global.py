@@ -526,7 +526,7 @@ def init_settings_global(main):
                 main.tr('HanLP - Dijkstra Segmenter'),
                 main.tr('HanLP - N-shortest Path Segmenter'),
                 main.tr('HanLP - Viterbi Segmenter'),
-                main.tr('SacreMoses - Moses Tokenizer')
+                main.tr('Wordless - Chinese Character Tokenizer')
             ],
 
             'zho_tw': [
@@ -541,7 +541,7 @@ def init_settings_global(main):
                 main.tr('HanLP - Dijkstra Segmenter'),
                 main.tr('HanLP - N-shortest Path Segmenter'),
                 main.tr('HanLP - Viterbi Segmenter'),
-                main.tr('SacreMoses - Moses Tokenizer')
+                main.tr('Wordless - Chinese Character Tokenizer')
             ],
 
             'hrv': [
@@ -699,7 +699,7 @@ def init_settings_global(main):
 
             'jpn': [
                 main.tr('nagisa - Japanese Word Tokenizer'),
-                main.tr('Wordless - Japanese Character Splitter')
+                main.tr('Wordless - Japanese Kanji Tokenizer')
             ],
 
             'lav': [
