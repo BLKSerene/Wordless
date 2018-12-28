@@ -922,6 +922,7 @@ def init_settings_default(main):
                 'eng': main.tr('NLTK - Perceptron POS Tagger'),
                 'jpn': main.tr('nagisa - Japanese POS Tagger'),
                 'rus': main.tr('NLTK - Perceptron POS Tagger'),
+                'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'vie': main.tr('Pyvi - Vietnamese POS Tagger')
             },
 
@@ -931,6 +932,7 @@ def init_settings_default(main):
                 'eng': 'Penn Treebank',
                 'jpn': 'UniDic',
                 'rus': 'Russian National Corpus',
+                'ukr': 'Russian National Corpus',
                 'vie': 'Pyvi'
             },
 
