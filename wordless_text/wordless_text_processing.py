@@ -224,41 +224,77 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
         for sentence in sentences:
             token_groups.append([token.word for token in viterbi_tokenizer.seg(sentence)])
 
+    # Chinese & Japanese
+    elif (word_tokenizer == main.tr('Wordless - Chinese Character Tokenizer') or
+          word_tokenizer == main.tr('Wordless - Japanese Kanji Tokenizer')):
+        for sentence in sentences:
+            tokens = []
+            non_han_start = 0
+
+            for i, char in enumerate(sentence):
+                if i >= non_han_start:
+                    if wordless_unicode.is_han(char):
+                        tokens.append(char)
+
+                        non_han_start += 1
+                    else:
+                        # Japanese Kana
+                        if wordless_unicode.is_kana(char):
+                            for j, char in enumerate(sentence[i:]):
+                                if i + j + 1 < len(sentence):
+                                    if not wordless_unicode.is_kana(sentence[i + j + 1]):
+                                        tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
+                                                                             lang_code = 'jpn',
+                                                                             word_tokenizer = main.tr('nagisa - Japanese Word Tokenizer')))
+
+                                        non_han_start = i + j + 1
+
+                                        break
+                                else:
+                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start:],
+                                                                         lang_code = 'jpn',
+                                                                         word_tokenizer = main.tr('nagisa - Japanese Word Tokenizer')))
+
+                                    non_han_start = i + j + 1
+                        # Thai
+                        elif wordless_unicode.is_thai(char):
+                            for j, char in enumerate(sentence[i:]):
+                                if i + j + 1 < len(sentence):
+                                    if not wordless_unicode.is_thai(sentence[i + j + 1]):
+                                        tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
+                                                                             lang_code = 'tha'))
+
+                                        non_han_start = i + j + 1
+
+                                        break
+                                else:
+                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start:],
+                                                                         lang_code = 'tha'))
+
+                                    non_han_start = i + j + 1
+                        # Other Languages
+                        else:
+                            for j, char in enumerate(sentence[i:]):
+                                if i + j + 1 < len(sentence):
+                                    if wordless_unicode.is_han(sentence[i + j + 1]):
+                                        tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
+                                                                             lang_code = 'other'))
+
+                                        non_han_start = i + j + 1
+
+                                        break
+                                else:
+                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start:],
+                                                                         lang_code = 'other'))
+
+                                    non_han_start = i + j + 1
+
+            token_groups.append(tokens)
+
     # Japanese
     elif word_tokenizer == main.tr('nagisa - Japanese Word Tokenizer'):
         for sentence in sentences:
             token_groups.append(nagisa.tagging(str(sentence)).words)
-    elif word_tokenizer == main.tr('Wordless - Japanese Character Splitter'):
-        for sentence in sentences:
-            tokens = []
-            non_cjk_start = 0
-
-            for i, char in enumerate(sentence):
-                if i >= non_cjk_start:
-                    if wordless_unicode.is_cjk(char) and not wordless_unicode.is_kana(char):
-                        tokens.append(char)
-
-                        non_cjk_start += 1
-                    else:
-                        for j, char in enumerate(sentence[i:]):
-                            if i + j + 1 < len(sentence):
-                                if (wordless_unicode.is_cjk(sentence[i + j + 1]) and
-                                    not wordless_unicode.is_kana(sentence[i + j + 1])):
-                                    tokens.extend(wordless_word_tokenize(main, sentence[non_cjk_start : i + j + 1],
-                                                                         lang_code = lang_code,
-                                                                         word_tokenizer = main.tr('nagisa - Japanese Word Tokenizer')))
-
-                                    non_cjk_start = i + j + 1
-
-                                    break
-                            else:
-                                tokens.extend(wordless_word_tokenize(main, sentence[non_cjk_start:],
-                                                                     lang_code = lang_code,
-                                                                     word_tokenizer = main.tr('nagisa - Japanese Word Tokenizer')))
-
-                                non_cjk_start = i + j + 1
-
-            token_groups.append(tokens)
 
     # Vietnamese
     elif word_tokenizer == main.tr('Pyvi - Vietnamese Word Tokenizer'):
