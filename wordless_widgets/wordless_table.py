@@ -67,8 +67,6 @@ class Wordless_Table(QTableWidget):
         self.setVerticalScrollMode(QAbstractItemView.ScrollPerPixel)
         self.setHorizontalScrollMode(QAbstractItemView.ScrollPerPixel)
 
-        self.setMouseTracking(True)
-
         if self.header_orientation == 'horizontal':
             self.setStyleSheet(''' 
                                    QTableView {

@@ -8,12 +8,7 @@
 
 import re
 
-import sacremoses
-
 # Unicode Blocks: https://en.wikipedia.org/wiki/Unicode_block
-
-def is_cjk(char):
-    return sacremoses.util.is_cjk(char)
 
 def is_han(char):
     unicode_han = [

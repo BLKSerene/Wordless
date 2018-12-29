@@ -14,8 +14,12 @@ __all__ = [
 	'rus_open_corpora',
 	'rus_russian_national_corpus',
 
+	'tha_orchid',
+
 	'vie_pyvi',
 
 	'zho_hanlp',
-	'zho_jieba'
+	'zho_jieba',
+
+	'universal'
 ]

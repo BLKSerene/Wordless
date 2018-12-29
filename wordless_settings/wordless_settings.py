@@ -799,24 +799,6 @@ class Wordless_Settings(QDialog):
 
     def init_settings_pos_tagging(self):
         def pos_taggers_changed(lang_code):
-            for i, lang_code_global in enumerate(settings_global):
-                pos_tagger = self.__dict__[f'combo_box_pos_tagger_{lang_code_global}'].currentText()
-                tagset_old = self.__dict__[f'combo_box_tagset_{lang_code_global}'].currentText()
-
-                table_pos_taggers.cellWidget(i, 2).blockSignals(True)
-
-                table_pos_taggers.cellWidget(i, 2).clear()
-                table_pos_taggers.cellWidget(i, 2).addItems([settings_global[lang_code_global][pos_tagger], 'Universal'])
-
-                table_pos_taggers.cellWidget(i, 2).blockSignals(False)
-
-                if tagset_old == 'Universal':
-                    self.__dict__[f'combo_box_tagset_{lang_code_global}'].setCurrentText('Universal')
-
-            if lang_code == settings_custom['preview_lang']:
-                preview_results_changed()
-
-        def tagsets_changed(lang_code):
             if lang_code == settings_custom['preview_lang']:
                 preview_results_changed()
 
@@ -830,7 +812,11 @@ class Wordless_Settings(QDialog):
                 results = []
 
                 pos_tagger = self.__dict__[f'combo_box_pos_tagger_{settings_custom["preview_lang"]}'].currentText()
-                tagset = self.__dict__[f'combo_box_tagset_{settings_custom["preview_lang"]}'].currentText()
+
+                if self.checkbox_to_universal_pos_tags.isChecked():
+                    tagset = 'universal'
+                else:
+                    tagset = 'default'
 
                 for line in settings_custom['preview_samples'].splitlines():
                     sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line,
@@ -875,22 +861,23 @@ class Wordless_Settings(QDialog):
         # POS Tagger Settings
         group_box_pos_tagger_settings = QGroupBox(self.tr('POS Tagger Settings'), self)
 
-        table_pos_taggers = wordless_table.Wordless_Table(self,
+        self.table_pos_taggers = wordless_table.Wordless_Table(self,
                                                           headers = [
                                                               self.tr('Languages'),
-                                                              self.tr('POS Taggers'),
-                                                              self.tr('Tagsets')
+                                                              self.tr('POS Taggers')
                                                           ],
                                                           cols_stretch = [
                                                               self.tr('POS Taggers')
                                                           ])
 
-        table_pos_taggers.verticalHeader().setHidden(True)
+        self.checkbox_to_universal_pos_tags = QCheckBox(self.tr('Convert all POS tags to Universal POS Tags'))
 
-        table_pos_taggers.setRowCount(len(settings_global))
+        self.table_pos_taggers.verticalHeader().setHidden(True)
+
+        self.table_pos_taggers.setRowCount(len(settings_global))
 
         for i, lang_code in enumerate(settings_global):
-            table_pos_taggers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
+            self.table_pos_taggers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
 
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'] = wordless_box.Wordless_Combo_Box_Jre_Required(self.main)
 
@@ -898,16 +885,13 @@ class Wordless_Settings(QDialog):
 
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: pos_taggers_changed(lang_code))
 
-            table_pos_taggers.setCellWidget(i, 1, self.__dict__[f'combo_box_pos_tagger_{lang_code}'])
+            self.table_pos_taggers.setCellWidget(i, 1, self.__dict__[f'combo_box_pos_tagger_{lang_code}'])
 
-            self.__dict__[f'combo_box_tagset_{lang_code}'] = wordless_box.Wordless_Combo_Box(self)
-
-            self.__dict__[f'combo_box_tagset_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: tagsets_changed(lang_code))
-
-            table_pos_taggers.setCellWidget(i, 2, self.__dict__[f'combo_box_tagset_{lang_code}'])
+        self.checkbox_to_universal_pos_tags.stateChanged.connect(preview_results_changed)
 
         group_box_pos_tagger_settings.setLayout(QGridLayout())
-        group_box_pos_tagger_settings.layout().addWidget(table_pos_taggers, 0, 0)
+        group_box_pos_tagger_settings.layout().addWidget(self.table_pos_taggers, 0, 0)
+        group_box_pos_tagger_settings.layout().addWidget(self.checkbox_to_universal_pos_tags, 1, 0)
 
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
@@ -949,8 +933,6 @@ class Wordless_Settings(QDialog):
 
         self.settings_pos_tagging.layout().setRowStretch(0, 2)
         self.settings_pos_tagging.layout().setRowStretch(1, 1)
-
-        pos_taggers_changed('')
 
     def init_settings_tagsets(self):
         def preview_settings_changed():
@@ -995,8 +977,8 @@ class Wordless_Settings(QDialog):
                     'DET',
                     'NUM',
                     'PART',
-
                     'INTJ',
+
                     'PUNCT',
                     'SYM',
                     'X'
@@ -1012,6 +994,13 @@ class Wordless_Settings(QDialog):
                 self.table_mappings.setItem(i, 2, QTableWidgetItem(description))
                 self.table_mappings.setItem(i, 3, QTableWidgetItem(examples))
 
+            self.table_mappings.resizeRowsToContents()
+
+            # Disable editing if the default tagset is Universal POS tags
+            if tagset == 'Universal':
+                for i in range(self.table_mappings.rowCount()):
+                    self.table_mappings.cellWidget(i, 1).setEnabled(False)
+
         settings_global = self.main.settings_global['pos_taggers']
         settings_custom = self.main.settings_custom['tagsets']
 
@@ -1026,6 +1015,8 @@ class Wordless_Settings(QDialog):
         self.combo_box_tagsets_pos_tagger = wordless_box.Wordless_Combo_Box(self)
 
         self.combo_box_tagsets_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
+
+        self.combo_box_tagsets_pos_tagger.setSizeAdjustPolicy(QComboBox.AdjustToContents)
 
         self.combo_box_tagsets_lang.currentTextChanged.connect(preview_settings_changed)
         self.combo_box_tagsets_lang.currentTextChanged.connect(lang_changed)
@@ -1046,12 +1037,9 @@ class Wordless_Settings(QDialog):
         self.table_mappings = wordless_table.Wordless_Table(self,
                                                             headers = [
                                                                 self.tr('POS Tags'),
-                                                                self.tr('Universal POS Tags'),
+                                                                self.tr('Universal Tags'),
                                                                 self.tr('Description'),
                                                                 self.tr('Example(s)')
-                                                            ],
-                                                            cols_stretch = [
-                                                                self.tr('Description')
                                                             ])
 
         group_box_mapping_settings.setLayout(QGridLayout())
@@ -1566,13 +1554,16 @@ class Wordless_Settings(QDialog):
         # POS Tagging
         for lang_code in settings['pos_tagging']['pos_taggers']:
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'].blockSignals(True)
-            self.__dict__[f'combo_box_tagset_{lang_code}'].blockSignals(True)
 
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'].setCurrentText(settings['pos_tagging']['pos_taggers'][lang_code])
-            self.__dict__[f'combo_box_tagset_{lang_code}'].setCurrentText(settings['pos_tagging']['tagsets'][lang_code])
 
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'].blockSignals(False)
-            self.__dict__[f'combo_box_tagset_{lang_code}'].blockSignals(False)
+
+        self.checkbox_to_universal_pos_tags.blockSignals(True)
+
+        self.checkbox_to_universal_pos_tags.setChecked(settings['pos_tagging']['to_universal_pos_tags'])
+
+        self.checkbox_to_universal_pos_tags.blockSignals(False)
 
         if not defaults:
             self.combo_box_pos_tagging_preview_lang.blockSignals(True)
@@ -1738,7 +1729,8 @@ class Wordless_Settings(QDialog):
             # POS Tagging
             for lang_code in settings['pos_tagging']['pos_taggers']:
                 settings['pos_tagging']['pos_taggers'][lang_code] = self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentText()
-                settings['pos_tagging']['tagsets'][lang_code] = self.__dict__[f'combo_box_tagset_{lang_code}'].currentText()
+
+            settings['pos_tagging']['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
 
             # POS Taggin -> Tagsets
             preview_lang = settings['tagsets']['preview_lang']
