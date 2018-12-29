@@ -30,16 +30,6 @@ main.settings_custom = main.settings_default
 main.crf_analyzer = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
 main.perceptron_analyzer = jpype.JClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
 
-# Arabic
-sentence_ara = 'اللُّغَة العَرَبِيّة هي أكثر اللغات تحدثاً ونطقاً ضمن مجموعة اللغات السامية، وإحدى أكثر اللغات انتشاراً في العالم، يتحدثها أكثر من 467 مليون نسمة،[4](1) ويتوزع متحدثوها في الوطن العربي، بالإضافة إلى العديد من المناطق الأخرى المجاورة كالأحواز وتركيا وتشاد ومالي والسنغال وإرتيريا وإثيوبيا وجنوب السودان وإيران.'
-
-print('Arabic / spaCy - Arabic Word Tokenizer:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_ara, 'ara',
-                                                         word_tokenizer = 'spaCy - Arabic Word Tokenizer')
-
-print(f"\t{' '.join(tokens)}")
-
 # Chinese (Simplified)
 sentence_zho_cn = '作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。'
 
