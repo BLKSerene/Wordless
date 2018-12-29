@@ -41,7 +41,7 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_zho_cn,
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_zho_cn,
                                                                     lang_code = 'zho_cn',
                                                                     pos_tagger = 'jieba - Chinese POS Tagger',
-                                                                    tagset = 'Universal')
+                                                                    tagset = 'universal')
 
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
@@ -54,7 +54,7 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn],
                                                                     lang_code = 'zho_cn',
                                                                     pos_tagger = 'HanLP - CRF Lexical Analyzer',
-                                                                    tagset = 'Universal')
+                                                                    tagset = 'universal')
 
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
@@ -67,7 +67,7 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn],
                                                                     lang_code = 'zho_cn',
                                                                     pos_tagger = 'HanLP - Perceptron Lexical Analyzer',
-                                                                    tagset = 'Universal')
+                                                                    tagset = 'universal')
 
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
@@ -83,7 +83,7 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_eng,
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_eng,
                                                                     lang_code = 'eng',
                                                                     pos_tagger = 'NLTK - Perceptron POS Tagger',
-                                                                    tagset = 'Universal')
+                                                                    tagset = 'universal')
 
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
@@ -99,7 +99,7 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_jpn,
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_jpn,
                                                                     lang_code = 'jpn',
                                                                     pos_tagger = 'nagisa - Japanese POS Tagger',
-                                                                    tagset = 'Universal')
+                                                                    tagset = 'universal')
 
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
@@ -115,7 +115,7 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
                                                                     lang_code = 'rus',
                                                                     pos_tagger = 'NLTK - Perceptron POS Tagger',
-                                                                    tagset = 'Universal')
+                                                                    tagset = 'universal')
 
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
@@ -128,10 +128,34 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
                                                                     lang_code = 'rus',
                                                                     pos_tagger = 'pymorphy2 - Morphological Analyzer',
-                                                                    tagset = 'Universal')
+                                                                    tagset = 'universal')
 
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
+
+# Thai
+sentence_tha = 'ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย'
+
+print('Thai / PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
+                                                          lang_code = 'tha',
+                                                          pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
+                                                                    lang_code = 'tha',
+                                                                    pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
+print('Thai / PyThaiNLP - Perceptron POS Tagger - PUD Corpus:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
+                                                          lang_code = 'tha',
+                                                          pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - PUD Corpus')
+
+print(f"\t{tokens_tagged}")
 
 # Ukrainian
 sentence_ukr = 'Украї́нська мо́ва (МФА: [ʊkrɐˈjɪɲsʲkɐ ˈmɔwɐ], історичні назви — ру́ська, руси́нська[9][10][11][* 2]) — національна мова українців.'
@@ -144,7 +168,7 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_ukr,
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_ukr,
                                                                     lang_code = 'ukr',
                                                                     pos_tagger = 'pymorphy2 - Morphological Analyzer',
-                                                                    tagset = 'Universal')
+                                                                    tagset = 'universal')
 
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
@@ -160,7 +184,7 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_vie,
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_vie,
                                                                     lang_code = 'vie',
                                                                     pos_tagger = 'Pyvi - Vietnamese POS Tagger',
-                                                                    tagset = 'Universal')
+                                                                    tagset = 'universal')
 
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
