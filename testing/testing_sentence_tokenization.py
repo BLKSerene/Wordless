@@ -33,6 +33,15 @@ for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_z
                                                                     sentence_tokenizer = 'Wordless - Chinese Sentence Tokenizer'):
     print(f'\t{sentence}')
 
+# Dutch
+text_nld = 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname. In de Europese Unie spreken ongeveer 23 miljoen mensen Nederlands als eerste taal, en een bijkomende vijf miljoen als tweede taal. Verder is het Nederlands ook een officiële taal van de Caraïbische (ei)landen Aruba, Curaçao en Sint-Maarten, terwijl de Franse Westhoek en de regio rondom de Duitse stad Kleef van oudsher Nederlandstalige gebieden zijn, en daar Nederlandse dialecten mogelijk nog gesproken worden door de oudste generaties. Ook in de voormalige kolonie Indonesië kunnen in sommige gebieden de oudste generaties nog Nederlands spreken. Het aantal sprekers van het Nederlands in Verenigde Staten, Canada en Australië wordt geschat op ruim een half miljoen. De Kaap-Hollandse dialecten van Zuid-Afrika en Namibië werden gestandaardiseerd tot Afrikaans, een dochtertaal van het Nederlands.'
+
+print('Dutch / spaCy - Dutch Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_nld, 'nld',
+                                                                    sentence_tokenizer = 'spaCy - Dutch Sentence Tokenizer'):
+    print(f'\t{sentence}')
+
 # English
 text_eng = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.[4][5] Named after the Angles, one of the Germanic tribes that migrated to the area of Great Britain that would later take their name, England, both names ultimately deriving from the Anglia peninsula in the Baltic Sea. It is closely related to the Frisian languages, but its vocabulary has been significantly influenced by other Germanic languages, particularly Norse (a North Germanic language), as well as by Latin and French.[6]'
 
@@ -46,6 +55,33 @@ print('English / spaCy - English Sentence Tokenizer:')
 
 for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_eng, 'eng',
                                                                     sentence_tokenizer = 'spaCy - English Sentence Tokenizer'):
+    print(f'\t{sentence}')
+
+# French
+text_fra = "Le français est une langue indo-européenne de la famille des langues romanes. Le français s'est formé en France (variété de la « langue d’oïl », qui est la langue de la partie septentrionale du pays) et est en 2018 parlé sur tous les continents par environ 300 millions de personnes1,4 dont 235 millions l'utilisent quotidiennement, 90 millions2 en étant des locuteurs natifs. En 2018, 80 millions d'élèves et étudiants s'instruisent en français dans le monde5. Elle est une des six langues officielles et une des deux langues de travail (avec l’anglais) de l’Organisation des Nations unies, et langue officielle ou de travail de plusieurs organisations internationales ou régionales, dont l’Union européenne. Après avoir été à l’époque de l’Ancien Régime la langue des cours royales et princières, des tsars de Russie aux rois d’Espagne et d'Angleterre en passant par les princes de l’Allemagne, elle demeure une langue importante de la diplomatie internationale aux côtés de l’anglais."
+
+print('French / spaCy - French Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_fra, 'fra',
+                                                                    sentence_tokenizer = 'spaCy - French Sentence Tokenizer'):
+    print(f'\t{sentence}')
+
+# German
+text_deu = 'Ihr Sprachraum umfasst Deutschland, Österreich, die Deutschschweiz, Liechtenstein, Luxemburg, Ostbelgien, Südtirol, das Elsass und Lothringen sowie Nordschleswig. Außerdem ist sie eine Minderheitensprache in einigen europäischen und außereuropäischen Ländern, z. B. in Rumänien und Südafrika, sowie Nationalsprache im afrikanischen Namibia.'
+
+print('German / spaCy - German Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_deu, 'deu',
+                                                                    sentence_tokenizer = 'spaCy - German Sentence Tokenizer'):
+    print(f'\t{sentence}')
+
+# Italian
+text_ita = "È classificato al 21º posto tra le lingue per numero di parlanti nel mondo e, in Italia, è utilizzato da circa 58 milioni di residenti.[4] Viene considerato la lingua materna del 95% dei cittadini italiani residenti in Italia,[5] che spesso lo acquisiscono e lo usano insieme alle varianti regionali dell'italiano, alle lingue regionali e ai dialetti. In Italia viene ampiamente usato per tutti i tipi di comunicazione della vita quotidiana ed è la lingua della quasi totalità dei mezzi di comunicazione nazionali, dell'editoria e dell'amministrazione pubblica dello Stato italiano."
+
+print('Italian / spaCy - Italian Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_ita, 'ita',
+                                                                    sentence_tokenizer = 'spaCy - Italian Sentence Tokenizer'):
     print(f'\t{sentence}')
 
 # Japanese
@@ -73,6 +109,24 @@ print('Norwegian Nynorsk / NLTK - Punkt Sentence Tokenizer:')
 
 for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_nno, 'nno',
                                                                     sentence_tokenizer = 'NLTK - Punkt Sentence Tokenizer'):
+    print(f'\t{sentence}')
+
+# Portuguese
+text_por = 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal. Com a criação do Reino de Portugal em 1139 e a expansão para o sul como parte da Reconquista deu-se a difusão da língua pelas terras conquistadas e mais tarde, com as descobertas portuguesas, para o Brasil, África e outras partes do mundo.[3] O português foi usado, naquela época, não somente nas cidades conquistadas pelos portugueses, mas também por muitos governantes locais nos seus contatos com outros estrangeiros poderosos. Especialmente nessa altura a língua portuguesa também influenciou várias línguas.[4]'
+
+print('Portuguese / spaCy - Portuguese Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_por, 'por',
+                                                                    sentence_tokenizer = 'spaCy - Portuguese Sentence Tokenizer'):
+    print(f'\t{sentence}')
+
+# Spanish
+text_spa = 'El idioma español o castellano es una lengua romance procedente del latín hablado. Pertenece al grupo ibérico y es originaria de Castilla, reino medieval de la península ibérica. Se conoce también por el americanismo coloquial castilla (por ejemplo: «hablar castilla», «entender castilla»),nota 1​32​33​ común en áreas rurales e indígenas entre México, Perú y la Patagonia.34​'
+
+print('Spanish / spaCy - Spanish Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_spa, 'spa',
+                                                                    sentence_tokenizer = 'spaCy - Spanish Sentence Tokenizer'):
     print(f'\t{sentence}')
 
 # Thai
