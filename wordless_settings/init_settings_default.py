@@ -926,7 +926,7 @@ def init_settings_default(main):
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'vie': main.tr('Pyvi - Vietnamese POS Tagger')
             },
-            
+
             'to_universal_pos_tags': False,
 
             'preview_lang': 'eng',
@@ -940,7 +940,6 @@ def init_settings_default(main):
 
             'mappings': {
                 'jieba': zho_jieba.mappings,
-                'HanLP': zho_hanlp.mappings,
                 'Penn Treebank': eng_penn_treebank.mappings,
                 'UniDic': jpn_unidic.mappings,
                 'OpenCorpora': rus_open_corpora.mappings,
@@ -996,8 +995,8 @@ def init_settings_default(main):
                 'bre': 'Stopwords ISO',
                 'bul': 'Stopwords ISO',
                 'cat': 'Stopwords ISO',
-                'zho_cn': 'HanLP',
-                'zho_tw': 'HanLP',
+                'zho_cn': 'Stopwords ISO',
+                'zho_tw': 'Stopwords ISO',
                 'hrv': 'Stopwords ISO',
                 'ces': 'Stopwords ISO',
                 'dan': 'Stopwords ISO',
