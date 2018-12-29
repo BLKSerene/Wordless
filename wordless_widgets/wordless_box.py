@@ -60,32 +60,6 @@ class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box):
         else:
             self.addItem(self.tr('*** None ***'))
 
-
-# Combo Boxes (Settings)
-class Wordless_Combo_Box_Jre_Required(Wordless_Combo_Box):
-    def __init__(self, main):
-        super().__init__(main)
-
-        self.currentTextChanged.connect(self.text_changed)
-
-        self.text_changed()
-
-    def text_changed(self):
-        if 'HanLP' in self.currentText():
-            try:
-                import pyhanlp
-
-                if self.currentText() == self.tr('HanLP - CRF Lexical Analyzer') and 'crf_analyzer' not in self.main.__dict__:
-                        self.main.crf_analyzer = pyhanlp.SafeJClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
-                elif self.currentText() == self.tr('HanLP - Perceptron Lexical Analyzer') and 'perceptron_analyzer' not in self.main.__dict__:
-                    self.main.perceptron_analyzer == pyhanlp.SafeJClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
-            except:
-                wordless_message_box.wordless_message_box_jre_not_installed(self.main)
-
-                self.setCurrentText(self.text_old)
-
-        self.text_old = self.currentText()
-
 # Spin Boxes
 class Wordless_Spin_Box_Window(QSpinBox):
     def __init__(self, parent):
