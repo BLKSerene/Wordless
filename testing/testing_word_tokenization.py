@@ -12,9 +12,6 @@ import sys
 
 from PyQt5.QtCore import *
 
-import jpype
-import pyhanlp
-
 sys.path.append('E:/Wordless')
 
 from wordless_text import wordless_text, wordless_text_processing
@@ -27,9 +24,6 @@ init_settings_global.init_settings_global(main)
 
 main.settings_custom = main.settings_default
 
-main.crf_analyzer = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
-main.perceptron_analyzer = jpype.JClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
-
 # Chinese (Simplified)
 sentence_zho_cn = '作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。'
 
@@ -38,85 +32,10 @@ print('Chinese (Simplified) / jieba - Chinese Word Tokenizer:')
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
                                                          word_tokenizer = 'jieba - Chinese Word Tokenizer')
 
-print(f"\t{' '.join(tokens)}")
-
-print('Chinese (Simplified) / HanLP - Standard Tokenizer:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
-                                                         word_tokenizer = 'HanLP - Standard Tokenizer')
-
-print(f"\t{' '.join(tokens)}")
-
-print('Chinese (Simplified) / HanLP - Basic Tokenizer:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
-                                                         word_tokenizer = 'HanLP - Basic Tokenizer')
-
-print(f"\t{' '.join(tokens)}")
-
-print('Chinese (Simplified) / HanLP - High-speed Tokenizer:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
-                                                         word_tokenizer = 'HanLP - High-speed Tokenizer')
-
-print(f"\t{' '.join(tokens)}")
-
-print('Chinese (Simplified) / HanLP - URL Tokenizer:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
-                                                         word_tokenizer = 'HanLP - URL Tokenizer')
-
-print(f"\t{' '.join(tokens)}")
-
-print('Chinese (Simplified) / HanLP - CRF Lexical Analyzer:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
-                                                         word_tokenizer = 'HanLP - CRF Lexical Analyzer')
-
-print(f"\t{' '.join(tokens)}")
-
-print('Chinese (Simplified) / HanLP - Perceptron Lexical Analyzer:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
-                                                         word_tokenizer = 'HanLP - Perceptron Lexical Analyzer')
-
-print(f"\t{' '.join(tokens)}")
-
-print('Chinese (Simplified) / HanLP - Dijkstra Segmenter:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
-                                                         word_tokenizer = 'HanLP - Dijkstra Segmenter')
-
-print(f"\t{' '.join(tokens)}")
-
-print('Chinese (Simplified) / HanLP - N-shortest Path Segmenter:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
-                                                         word_tokenizer = 'HanLP - N-shortest Path Segmenter')
-
-print(f"\t{' '.join(tokens)}")
-
-print('Chinese (Simplified) / HanLP - HanLP - Viterbi Segmenter:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
-                                                         word_tokenizer = 'HanLP - Viterbi Segmenter')
-
-print(f"\t{' '.join(tokens)}")
-
 print('Chinese (Simplified) / Wordless - Chinese Character Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
                                                          word_tokenizer = 'Wordless - Chinese Character Tokenizer')
-
-print(f"\t{' '.join(tokens)}")
-
-# Chinese (Traditional)
-sentence_zho_tw = '作為語言而言，為世界使用人數最多的語言，目前世界有五分之一人口做為母語。'
-
-print('Chinese (Traditional) / HanLP - Traditional Chinese Tokenizer:')
-
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_tw, 'zho_tw',
-                                                         word_tokenizer = 'HanLP - Traditional Chinese Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 

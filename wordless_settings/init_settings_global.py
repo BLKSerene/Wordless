@@ -389,12 +389,10 @@ def init_settings_global(main):
 
         'sentence_tokenizers': {
             'zho_cn': [
-                main.tr('HanLP - Chinese Sentence Tokenizer'),
                 main.tr('Wordless - Chinese Sentence Tokenizer')
             ],
 
             'zho_tw': [
-                main.tr('HanLP - Chinese Sentence Tokenizer'),
                 main.tr('Wordless - Chinese Sentence Tokenizer')
             ],
 
@@ -411,7 +409,8 @@ def init_settings_global(main):
             ],
 
             'eng': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - English Sentence Tokenizer')
             ],
 
             'est': [
@@ -516,30 +515,11 @@ def init_settings_global(main):
 
             'zho_cn': [
                 main.tr('jieba - Chinese Word Tokenizer'),
-                main.tr('HanLP - Standard Tokenizer'),
-                main.tr('HanLP - Basic Tokenizer'),
-                main.tr('HanLP - High-speed Tokenizer'),
-                main.tr('HanLP - URL Tokenizer'),
-                main.tr('HanLP - CRF Lexical Analyzer'),
-                main.tr('HanLP - Perceptron Lexical Analyzer'),
-                main.tr('HanLP - Dijkstra Segmenter'),
-                main.tr('HanLP - N-shortest Path Segmenter'),
-                main.tr('HanLP - Viterbi Segmenter'),
                 main.tr('Wordless - Chinese Character Tokenizer')
             ],
 
             'zho_tw': [
                 main.tr('jieba - Chinese Word Tokenizer'),
-                main.tr('HanLP - Standard Tokenizer'),
-                main.tr('HanLP - Basic Tokenizer'),
-                main.tr('HanLP - High-speed Tokenizer'),
-                main.tr('HanLP - Traditional Chinese Tokenizer'),
-                main.tr('HanLP - URL Tokenizer'),
-                main.tr('HanLP - CRF Lexical Analyzer'),
-                main.tr('HanLP - Perceptron Lexical Analyzer'),
-                main.tr('HanLP - Dijkstra Segmenter'),
-                main.tr('HanLP - N-shortest Path Segmenter'),
-                main.tr('HanLP - Viterbi Segmenter'),
                 main.tr('Wordless - Chinese Character Tokenizer')
             ],
 
@@ -1025,15 +1005,11 @@ def init_settings_global(main):
 
         'pos_taggers': {
             'zho_cn': {
-                main.tr('jieba - Chinese POS Tagger'): 'jieba',
-                main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
-                main.tr('HanLP - Perceptron Lexical Analyzer'): 'HanLP'
+                main.tr('jieba - Chinese POS Tagger'): 'jieba'
             },
 
             'zho_tw': {
-                main.tr('jieba - Chinese POS Tagger'): 'jieba',
-                main.tr('HanLP - CRF Lexical Analyzer'): 'HanLP',
-                main.tr('HanLP - Perceptron Lexical Analyzer'): 'HanLP'
+                main.tr('jieba - Chinese POS Tagger'): 'jieba'
             },
 
             'eng': {
@@ -1205,13 +1181,11 @@ def init_settings_global(main):
             ],
 
             'zho_cn': [
-                'HanLP',
                 'spaCy',
                 'Stopwords ISO'
             ],
 
             'zho_tw': [
-                'HanLP',
                 'spaCy',
                 'Stopwords ISO'
             ],
