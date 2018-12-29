@@ -417,7 +417,7 @@ def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'defaul
 
     return text
 
-def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset = 'default'):
+def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset = 'custom'):
     tokens_tagged = []
 
     if type(sentences) != list:
@@ -473,14 +473,12 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
 
             tokens_tagged.extend(zip(tokens, tags))
 
-    if tagset == 'default':
-        tagset = main.settings_custom['pos_tagging']['tagsets'][lang_code]
-
     # Convert to Universal Tagset
-    if tagset == 'Universal':
-        tagset_source = main.settings_global['pos_taggers'][lang_code][pos_tagger]
+    if (tagset == 'custom' and main.settings_custom['pos_tagging']['to_universal_pos_tags'] or
+        tagset == 'universal'):
+        tagset_default = main.settings_global['pos_taggers'][lang_code][pos_tagger]
         mappings = {tag: tag_universal
-                    for tag, tag_universal, _, _ in main.settings_custom['tagsets']['mappings'][tagset_source]}
+                    for tag, tag_universal, _, _ in main.settings_custom['tagsets']['mappings'][tagset_default]}
 
         tokens_tagged = [(token, mappings[tag])
                          for token, tag in tokens_tagged]
