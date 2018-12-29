@@ -6,8 +6,6 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
-import sys
-
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -78,26 +76,6 @@ def wordless_message_box_path_not_exist_confirm(main, path):
                                  QMessageBox.No)
 
     return reply
-
-def wordless_message_box_jre_not_installed(main):
-    if sys.maxsize > 2**32:
-        sys_bit = '64'
-        sys_bit_x = 'x64'
-    else:
-        sys_bit = '32'
-        sys_bit_x = 'x86'
-
-    QMessageBox.information(main,
-                            main.tr('Java Runtime Environment Not Installed'),
-                            main.tr(f'''{main.settings_global['styles']['style_dialog']}
-                                        <body>
-                                            <p>The HanLP library requires Java Runtime Environment (JRE) to be installed on your computer.</p>
-                                            <p>You can download the latest version of JRE here: <a href="https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html">https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html</a>.</p>
-                                            <p>After JRE is properly installed, please try again.</p>
-                                            <p>Note: You are running the {sys_bit}-bit version of Wordless, so you should install the {sys_bit_x} version of JRE!</p>
-                                        </body>
-                                      '''),
-                            QMessageBox.Ok)
 
 def wordless_message_box_restore_default_settings(main):
     reply = QMessageBox.question(main,

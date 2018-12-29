@@ -405,7 +405,8 @@ def init_settings_global(main):
             ],
 
             'nld': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Dutch Sentence Tokenizer')
             ],
 
             'eng': [
@@ -422,11 +423,13 @@ def init_settings_global(main):
             ],
 
             'fra': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - French Sentence Tokenizer')
             ],
 
             'deu': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - German Sentence Tokenizer')
             ],
 
             'ell': [
@@ -434,7 +437,8 @@ def init_settings_global(main):
             ],
 
             'ita': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Italian Sentence Tokenizer')
             ],
 
             'jpn': [
@@ -454,7 +458,8 @@ def init_settings_global(main):
             ],
 
             'por': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Portuguese Sentence Tokenizer')
             ],
 
             'slv': [
@@ -462,7 +467,8 @@ def init_settings_global(main):
             ],
 
             'spa': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Spanish Sentence Tokenizer')
             ],
 
             'swe': [
