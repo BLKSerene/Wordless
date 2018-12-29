@@ -502,7 +502,7 @@ class Wordless_Settings(QDialog):
         for i, lang_code in enumerate(settings_global):
             table_sentence_tokenizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
 
-            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box_Jre_Required(self.main)
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box(self.main)
 
             self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].addItems(settings_global[lang_code])
 
@@ -624,7 +624,7 @@ class Wordless_Settings(QDialog):
         for i, lang_code in enumerate(settings_global):
             table_word_tokenizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
 
-            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box_Jre_Required(self.main)
+            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box(self.main)
 
             self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].addItems(settings_global[lang_code])
 
@@ -879,7 +879,7 @@ class Wordless_Settings(QDialog):
         for i, lang_code in enumerate(settings_global):
             self.table_pos_taggers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
 
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'] = wordless_box.Wordless_Combo_Box_Jre_Required(self.main)
+            self.__dict__[f'combo_box_pos_tagger_{lang_code}'] = wordless_box.Wordless_Combo_Box(self.main)
 
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'].addItems(list(settings_global[lang_code]))
 

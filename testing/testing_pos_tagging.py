@@ -12,9 +12,6 @@ import sys
 
 from PyQt5.QtCore import *
 
-import jpype
-import pyhanlp
-
 sys.path.append('E:/Wordless')
 
 from wordless_text import wordless_text_processing
@@ -27,9 +24,6 @@ init_settings_global.init_settings_global(main)
 
 main.settings_custom = main.settings_default
 
-main.crf_analyzer = jpype.JClass('com.hankcs.hanlp.model.crf.CRFLexicalAnalyzer')()
-main.perceptron_analyzer = jpype.JClass('com.hankcs.hanlp.model.perceptron.PerceptronLexicalAnalyzer')()
-
 # Chinese (Simplified)
 sentence_zho_cn = '作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。'
 
@@ -41,32 +35,6 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_zho_cn,
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_zho_cn,
                                                                     lang_code = 'zho_cn',
                                                                     pos_tagger = 'jieba - Chinese POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-print('Chinese / HanLP - CRF Lexical Analyzer:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn],
-                                                          lang_code = 'zho_cn',
-                                                          pos_tagger = 'HanLP - CRF Lexical Analyzer')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn],
-                                                                    lang_code = 'zho_cn',
-                                                                    pos_tagger = 'HanLP - CRF Lexical Analyzer',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-print('Chinese / HanLP - Perceptron Lexical Analyzer:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn],
-                                                          lang_code = 'zho_cn',
-                                                          pos_tagger = 'HanLP - Perceptron Lexical Analyzer')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, [sentence_zho_cn],
-                                                                    lang_code = 'zho_cn',
-                                                                    pos_tagger = 'HanLP - Perceptron Lexical Analyzer',
                                                                     tagset = 'universal')
 
 print(f"\t{tokens_tagged}")

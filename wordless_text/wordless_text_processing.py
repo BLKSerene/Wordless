@@ -12,7 +12,6 @@ import re
 
 import jieba
 import jieba.posseg
-import jpype
 import nagisa
 import nltk
 import nltk.tokenize.nist
@@ -37,9 +36,6 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'defa
     if sentence_tokenizer == 'default':
         sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizers'][lang_code]
 
-    if 'HanLP' in sentence_tokenizer:
-        import pyhanlp
-
     for line in text.splitlines():
         # English
         if sentence_tokenizer == main.tr('NLTK - Punkt Sentence Tokenizer'):
@@ -53,6 +49,16 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'defa
                 lang_text = wordless_conversion.to_lang_text(main, lang_code).lower()
 
             sentences.extend(nltk.sent_tokenize(line, language = lang_text))
+        elif 'spaCy' in sentence_tokenizer:
+            # English
+            if lang_code == 'eng':
+                nlp = spacy.load('en_core_web_sm')
+            else:
+                pass
+
+            doc = nlp(text)
+
+            sentences.extend([sentence.text for sentence in doc.sents])
 
         # Chinese & Japanese
         elif (sentence_tokenizer == main.tr('Wordless - Chinese Sentence Tokenizer') or
@@ -71,10 +77,6 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'defa
 
             if sentence_start <= len(line):
                 sentences.append(line[sentence_start:])
-        elif sentence_tokenizer == main.tr('HanLP - Chinese Sentence Tokenizer'):
-            sentences_util = pyhanlp.SafeJClass('com.hankcs.hanlp.utility.SentencesUtil')
-
-            sentences.extend(sentences_util.toSentenceList(jpype.JString(line), False))
 
         # Thai
         elif sentence_tokenizer == 'PyThaiNLP - Thai Sentence Tokenizer':
@@ -115,9 +117,6 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang_code]
-
-    if 'HanLP' in word_tokenizer:
-        import pyhanlp
 
     # English & Other Languages
     if word_tokenizer == main.tr('NLTK - Penn Treebank Tokenizer'):
@@ -160,55 +159,6 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
     elif word_tokenizer == main.tr('jieba - Chinese Word Tokenizer'):
         for sentence in sentences:
             token_groups.append(jieba.cut(sentence))
-    elif word_tokenizer == main.tr('HanLP - Standard Tokenizer'):
-        standard_tokenizer = pyhanlp.SafeJClass('com.hankcs.hanlp.tokenizer.StandardTokenizer')
-
-        for sentence in sentences:
-            token_groups.append([token.word for token in standard_tokenizer.segment(sentence)])
-    elif word_tokenizer == main.tr('HanLP - Basic Tokenizer'):
-        basic_tokenizer = pyhanlp.SafeJClass('com.hankcs.hanlp.tokenizer.BasicTokenizer')
-
-        for sentence in sentences:
-            token_groups.append([token.word for token in basic_tokenizer.segment(sentence)])
-    elif word_tokenizer == main.tr('HanLP - High-speed Tokenizer'):
-        speed_tokenizer = pyhanlp.SafeJClass('com.hankcs.hanlp.tokenizer.SpeedTokenizer')
-
-        for sentence in sentences:
-            token_groups.append([token.word for token in speed_tokenizer.segment(sentence)])
-    elif word_tokenizer == main.tr('HanLP - Traditional Chinese Tokenizer'):
-        zh_tw_tokenizer = pyhanlp.SafeJClass('com.hankcs.hanlp.tokenizer.TraditionalChineseTokenizer')
-
-        for sentence in sentences:
-            token_groups.append([token.word for token in zh_tw_tokenizer.segment(sentence)])
-    elif word_tokenizer == main.tr('HanLP - URL Tokenizer'):
-        url_tokenizer = pyhanlp.SafeJClass('com.hankcs.hanlp.tokenizer.URLTokenizer')
-
-        for sentence in sentences:
-            token_groups.append([token.word for token in url_tokenizer.segment(sentence)])
-    elif word_tokenizer == main.tr('HanLP - CRF Lexical Analyzer'):
-        for sentence in sentences:
-            token_groups.append([token for token in main.crf_analyzer.segment(sentence)])
-    elif word_tokenizer == main.tr('HanLP - Perceptron Lexical Analyzer'):
-        for sentence in sentences:
-            token_groups.append([token for token in main.perceptron_analyzer.segment(sentence)])
-    elif word_tokenizer == main.tr('HanLP - Dijkstra Segmenter'):
-        DijkstraSegment = pyhanlp.SafeJClass('com.hankcs.hanlp.seg.Dijkstra.DijkstraSegment')
-        dijkstra_tokenizer = DijkstraSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
-
-        for sentence in sentences:
-            token_groups.append([token.word for token in dijkstra_tokenizer.seg(sentence)])
-    elif word_tokenizer == main.tr('HanLP - N-shortest Path Segmenter'):
-        NShortSegment = pyhanlp.SafeJClass('com.hankcs.hanlp.seg.NShort.NShortSegment')
-        nshortest_tokenizer = NShortSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
-
-        for sentence in sentences:
-            token_groups.append([token.word for token in nshortest_tokenizer.seg(sentence)])
-    elif word_tokenizer == main.tr('HanLP - Viterbi Segmenter'):
-        ViterbiSegment = pyhanlp.SafeJClass('com.hankcs.hanlp.seg.Viterbi.ViterbiSegment')
-        viterbi_tokenizer = ViterbiSegment().enableCustomDictionary(False).enablePlaceRecognize(True).enableOrganizationRecognize(True)
-
-        for sentence in sentences:
-            token_groups.append([token.word for token in viterbi_tokenizer.seg(sentence)])
 
     # Chinese & Japanese
     elif (word_tokenizer == main.tr('Wordless - Chinese Character Tokenizer') or
@@ -423,12 +373,6 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
     elif pos_tagger == main.tr('jieba - Chinese POS Tagger'):
         for sentence in sentences:
             tokens_tagged.extend(jieba.posseg.cut(sentence))
-    elif pos_tagger == main.tr('HanLP - CRF Lexical Analyzer'):
-        for sentence in sentences:
-            tokens_tagged.extend(list(zip(*main.crf_analyzer.analyze(sentence).toWordTagArray())))
-    elif pos_tagger == main.tr('HanLP - Perceptron Lexical Analyzer'):
-        for sentence in sentences:
-            tokens_tagged.extend(list(zip(*main.perceptron_analyzer.analyze(sentence).toWordTagArray())))
 
     # Japanese
     elif pos_tagger == main.tr('nagisa - Japanese POS Tagger'):
@@ -514,6 +458,7 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'default'):
 
             for token in tokens:
                 lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
+
         # Other Languages
         elif lemmatizer == main.tr('Lemmatization Lists'):
             lang_code = wordless_conversion.to_iso_639_1(main, lang_code)
@@ -572,16 +517,6 @@ def wordless_get_stop_words(main, lang_code, word_list = 'default'):
         lang_text = wordless_conversion.to_lang_text(main, lang_code)
 
         stop_words = nltk.corpus.stopwords.words(lang_text)
-
-    # Chinese
-    elif word_list == 'HanLP':
-        # Chinese (Traditional)
-        if lang_code_639_1 == 'zh_tw':
-            with open(r'stop_words/HanLP/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
-                stop_words = [line.rstrip() for line in f]
-        else:
-            with open(r'stop_words/HanLP/stop_words_zh_cn.txt', 'r', encoding = 'utf_8') as f:
-                stop_words = [line.rstrip() for line in f]
 
     # Thai
     elif word_list == 'PyThaiNLP':
