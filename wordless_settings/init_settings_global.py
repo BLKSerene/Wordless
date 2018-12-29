@@ -471,8 +471,7 @@ def init_settings_global(main):
             ],
 
             'tha': [
-                main.tr('PyThaiNLP - Thai Sentence Tokenizer'),
-                main.tr('Wordless - Thai Sentence Tokenizer')
+                main.tr('PyThaiNLP - Thai Sentence Tokenizer')
             ],
 
             'tur': [
@@ -1051,10 +1050,8 @@ def init_settings_global(main):
             },
 
             'tha': {
-                main.tr('PyThaiNLP - Perceptron Tagger - ORCHID Corpus'): 'ORCHID',
-                main.tr('PyThaiNLP - Perceptron Tagger - PUD Corpus'): 'Universal',
-                main.tr('PyThaiNLP - Unigram Tagger - ORCHID Corpus'): 'ORCHID',
-                main.tr('PyThaiNLP - Unigram Tagger - PUD Corpus'): 'Universal'
+                main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'): 'ORCHID',
+                main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus'): 'Universal'
             },
 
             'ukr': {

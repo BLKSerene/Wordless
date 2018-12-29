@@ -83,10 +83,3 @@ print('Thai / PyThaiNLP - Thai Sentence Tokenizer:')
 for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_tha, 'tha',
                                                                     sentence_tokenizer = 'PyThaiNLP - Thai Sentence Tokenizer'):
     print(f'\t{sentence}')
-
-
-print('Thai / Wordless - Thai Sentence Tokenizer:')
-
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_tha, 'tha',
-                                                                    sentence_tokenizer = 'Wordless - Thai Sentence Tokenizer'):
-    print(f'\t{sentence}')
