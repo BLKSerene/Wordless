@@ -77,20 +77,6 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'defa
             sentences.extend(sentences_util.toSentenceList(jpype.JString(line), False))
 
         # Thai
-        elif sentence_tokenizer == 'Wordless - Thai Sentence Tokenizer':
-            segments = line.split()
-
-            sentences.append(segments[0])
-
-            for segment in segments[1:]:
-                if wordless_unicode.has_thai(segment):
-                    if wordless_unicode.is_thai(sentences[-1][-1]):
-                        sentences.append(segment)
-                    else:
-                        sentences[-1] += ' ' + segment
-                else:
-                    sentences[-1] += ' ' + segment
-
         elif sentence_tokenizer == 'PyThaiNLP - Thai Sentence Tokenizer':
             sentences.extend(pythainlp.tokenize.sent_tokenize(line))
 
@@ -463,6 +449,18 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
 
             for token in tokens:
                 tokens_tagged.append((token, morphological_analyzer.parse(token)[0].tag._POS))
+
+    # Thai
+    elif pos_tagger == main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'):
+        for sentence in sentences:
+            tokens = wordless_word_tokenize(main, sentence, lang_code = 'tha')
+
+            tokens_tagged.extend(pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid'))
+    elif pos_tagger == main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus'):
+        for sentence in sentences:
+            tokens = wordless_word_tokenize(main, sentence, lang_code = 'tha')
+
+            tokens_tagged.extend(pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud'))
 
     # Vietnamese
     elif pos_tagger == main.tr('Pyvi - Vietnamese POS Tagger'):

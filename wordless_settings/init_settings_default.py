@@ -816,7 +816,7 @@ def init_settings_default(main):
                 'slv': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'spa': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'swe': main.tr('NLTK - Punkt Sentence Tokenizer'),
-                'tha': main.tr('Wordless - Thai Sentence Tokenizer'),
+                'tha': main.tr('PyThaiNLP - Thai Sentence Tokenizer'),
                 'tur': main.tr('NLTK - Punkt Sentence Tokenizer'),
 
                 'other': main.tr('NLTK - Punkt Sentence Tokenizer')
