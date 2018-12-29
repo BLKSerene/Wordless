@@ -921,20 +921,13 @@ def init_settings_default(main):
                 'zho_tw':  main.tr('jieba - Chinese POS Tagger'),
                 'eng': main.tr('NLTK - Perceptron POS Tagger'),
                 'jpn': main.tr('nagisa - Japanese POS Tagger'),
-                'rus': main.tr('NLTK - Perceptron POS Tagger'),
+                'rus': main.tr('pymorphy2 - Morphological Analyzer'),
+                'tha': main.tr('PyThaiNLP - Perceptron Tagger - ORCHID Corpus'),
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'vie': main.tr('Pyvi - Vietnamese POS Tagger')
             },
-
-            'tagsets': {
-                'zho_cn': 'jieba',
-                'zho_tw': 'jieba',
-                'eng': 'Penn Treebank',
-                'jpn': 'UniDic',
-                'rus': 'Russian National Corpus',
-                'ukr': 'Russian National Corpus',
-                'vie': 'Pyvi'
-            },
+            
+            'to_universal_pos_tags': False,
 
             'preview_lang': 'eng',
             'preview_samples': '',
@@ -951,8 +944,10 @@ def init_settings_default(main):
                 'Penn Treebank': eng_penn_treebank.mappings,
                 'UniDic': jpn_unidic.mappings,
                 'OpenCorpora': rus_open_corpora.mappings,
+                'ORCHID': tha_orchid.mappings,
                 'Russian National Corpus': rus_russian_national_corpus.mappings,
-                'Pyvi': vie_pyvi.mappings
+                'Pyvi': vie_pyvi.mappings,
+                'Universal': universal.mappings
             }
         },
 

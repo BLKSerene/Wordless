@@ -1050,6 +1050,13 @@ def init_settings_global(main):
                 main.tr('pymorphy2 - Morphological Analyzer'): 'OpenCorpora'
             },
 
+            'tha': {
+                main.tr('PyThaiNLP - Perceptron Tagger - ORCHID Corpus'): 'ORCHID',
+                main.tr('PyThaiNLP - Perceptron Tagger - PUD Corpus'): 'Universal',
+                main.tr('PyThaiNLP - Unigram Tagger - ORCHID Corpus'): 'ORCHID',
+                main.tr('PyThaiNLP - Unigram Tagger - PUD Corpus'): 'Universal'
+            },
+
             'ukr': {
                 main.tr('pymorphy2 - Morphological Analyzer'): 'OpenCorpora'
             },
