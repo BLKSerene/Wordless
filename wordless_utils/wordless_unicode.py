@@ -51,6 +51,7 @@ def is_han(char):
         # CJK Unified Ideographs:
         #     https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_(Unicode_block)
         (0x4E00, 0x9FFF),
+        
         # Yi Syllables:
         #     https://en.wikipedia.org/wiki/Yi_Syllables
         (0xA000, 0xA48F),
@@ -66,6 +67,20 @@ def is_han(char):
         # CJK Compatibility Forms:
         #     https://en.wikipedia.org/wiki/CJK_Compatibility_Forms
         (0xFE30, 0xFE4F),
+
+        # Ideographic Symbols and Punctuation:
+        #     https://en.wikipedia.org/wiki/Ideographic_Symbols_and_Punctuation
+        (0x16FE0, 0x16FFF),
+        # Tangut:
+        #     https://en.wikipedia.org/wiki/Tangut_(Unicode_block)
+        (0x17000, 0x187FF),
+        # Tangut Components:
+        #     https://en.wikipedia.org/wiki/Tangut_Components
+        (0x18800, 0x18AFF),
+        # Nushu:
+        #     https://en.wikipedia.org/wiki/Nushu_(Unicode_block)
+        (0x1B170, 0x1B2FF),
+
         # CJK Unified Ideographs Extension B:
         #     https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_B
         (0x20000, 0x2A6DF),
