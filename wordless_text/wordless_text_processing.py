@@ -26,6 +26,30 @@ import spacy
 from wordless_text import wordless_text
 from wordless_utils import wordless_conversion, wordless_unicode
 
+def check_spacy_models(main, lang_code):
+    if f'spacy_nlp_{lang_code}' not in main.__dict__:
+        # Dutch
+        if lang_code == 'nld':
+            main.__dict__[f'spacy_nlp_{lang_code}'] = spacy.load('nl_core_news_sm')
+        # English
+        elif lang_code == 'eng':
+            main.__dict__[f'spacy_nlp_{lang_code}'] = spacy.load('en_core_web_sm')
+        # French
+        elif lang_code == 'fra':
+            main.__dict__[f'spacy_nlp_{lang_code}'] = spacy.load('fr_core_news_sm')
+        # German
+        elif lang_code == 'deu':
+            main.__dict__[f'spacy_nlp_{lang_code}'] = spacy.load('de_core_news_sm')
+        # Italian
+        elif lang_code == 'ita':
+            main.__dict__[f'spacy_nlp_{lang_code}'] = spacy.load('it_core_news_sm')
+        # Portuguese
+        elif lang_code == 'por':
+            main.__dict__[f'spacy_nlp_{lang_code}'] = spacy.load('pt_core_news_sm')
+        # Spanish
+        elif lang_code == 'spa':
+            main.__dict__[f'spacy_nlp_{lang_code}'] = spacy.load('es_core_news_sm')
+
 def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'default'):
     sentences = []
     boundary_start = 0
@@ -50,13 +74,10 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'defa
 
             sentences.extend(nltk.sent_tokenize(line, language = lang_text))
         elif 'spaCy' in sentence_tokenizer:
-            # English
-            if lang_code == 'eng':
-                nlp = spacy.load('en_core_web_sm')
-            else:
-                pass
+            check_spacy_models(main, lang_code)
 
-            doc = nlp(text)
+            nlp = main.__dict__[f'spacy_nlp_{lang_code}']
+            doc = nlp(line)
 
             sentences.extend([sentence.text for sentence in doc.sents])
 
