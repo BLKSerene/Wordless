@@ -27,12 +27,6 @@ main.settings_custom = main.settings_default
 # Chinese (Simplified)
 text_zho_cn = '作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。汉语有多种分支，当中标准官话最为流行，为中华人民共和国的国家通用语言（又称为普通话）、以及中华民国的国语。此外，汉语还是联合国官方语文[3]，并被上海合作组织等国际组织采用为官方语言。在中国大陆，汉语通称为“汉语”。在联合国、台湾、香港及澳门，通称为“中文”。在新加坡及马来西亚，通称为“华语”[注 1]。'
 
-print('Chinese (Simplified) / HanLP - Chinese Sentence Tokenizer:')
-
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_zho_cn, 'zho_cn',
-                                                                    sentence_tokenizer = 'HanLP - Chinese Sentence Tokenizer'):
-    print(f'\t{sentence}')
-
 print('Chinese (Simplified) / Wordless - Chinese Sentence Tokenizer:')
 
 for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_zho_cn, 'zho_cn',
@@ -46,6 +40,12 @@ print('English / NLTK - Punkt Sentence Tokenizer:')
 
 for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_eng, 'eng',
                                                                     sentence_tokenizer = 'NLTK - Punkt Sentence Tokenizer'):
+    print(f'\t{sentence}')
+
+print('English / spaCy - English Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_eng, 'eng',
+                                                                    sentence_tokenizer = 'spaCy - English Sentence Tokenizer'):
     print(f'\t{sentence}')
 
 # Japanese

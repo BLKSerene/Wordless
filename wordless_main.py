@@ -39,25 +39,10 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'Guido van Rossum, Python Software Foundation',
              '<a href="https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release">PSF</a>'],
 
-            ['<a href="https://github.com/jpype-project/jpype/">JPype</a>',
-             '0.6.3',
-             'Steve Menard, Luis Nell',
-             '<a href="https://github.com/jpype-project/jpype/blob/master/LICENSE">Apache-2.0</a>'],
-
             ['<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
              '5.11.3',
              'Riverbank Computing Limited',
              '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a>'],
-
-            ['<a href="http://hanlp.com/">HanLP</a>',
-             '1.7.0',
-             'He Han (何晗)',
-             '<a href="https://github.com/hankcs/HanLP/blob/master/LICENSE">Apache-2.0</a>'],
-
-            ['<a href="https://github.com/hankcs/pyhanlp">pyhanlp</a>',
-             '0.1.44',
-             'He Han (何晗)',
-             '<a href="https://github.com/hankcs/pyhanlp/blob/master/LICENSE">Apache-2.0</a>'],
 
             ['<a href="https://github.com/fxsjy/jieba">jieba (“结巴”中文分词)</a>',
              '0.39',
