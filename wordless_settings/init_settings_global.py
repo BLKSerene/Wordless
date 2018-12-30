@@ -564,7 +564,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer'),
+                main.tr('spaCy - Dutch Word Tokenizer')
             ],
 
             'eng': [
@@ -573,7 +574,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer'),
+                main.tr('spaCy - English Word Tokenizer')
             ],
 
             'fin': [
@@ -592,7 +594,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer'),
+                main.tr('spaCy - French Word Tokenizer')
             ],
 
             'deu': [
@@ -601,7 +604,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer'),
+                main.tr('spaCy - German Word Tokenizer')
             ],
 
             'ell': [
@@ -679,7 +683,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer'),
+                main.tr('spaCy - Italian Word Tokenizer')
             ],
 
             'jpn': [
@@ -732,7 +737,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer'),
+                main.tr('spaCy - Portuguese Word Tokenizer')
             ],
 
             'ron': [
@@ -789,7 +795,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer'),
+                main.tr('spaCy - Spanish Word Tokenizer')
             ],
 
             'swe': [
@@ -882,7 +889,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer'),
+                main.tr('spaCy - English Word Tokenizer')
             ]
         },
 
