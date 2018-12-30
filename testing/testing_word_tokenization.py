@@ -39,6 +39,16 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 
 
 print(f"\t{' '.join(tokens)}")
 
+# Dutch
+sentence_nld = 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
+
+print('Dutch / spaCy - Dutch Word Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_nld, 'nld',
+                                                         word_tokenizer = 'spaCy - Dutch Word Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
 # English
 sentence_eng = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.'
 
@@ -84,6 +94,36 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'en
 
 print(f"\t{' '.join(tokens)}")
 
+# French
+sentence_fra = 'Le français est une langue indo-européenne de la famille des langues romanes.'
+
+print('French / spaCy - French Word Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_fra, 'fra',
+                                                         word_tokenizer = 'spaCy - French Word Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+# German
+sentence_deu = 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ]; abgekürzt Dt. oder Dtsch.) ist eine westgermanische Sprache.'
+
+print('German / spaCy - German Word Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_deu, 'deu',
+                                                         word_tokenizer = 'spaCy - German Word Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+# Italian
+sentence_ita = "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
+
+print('Italian / spaCy - Italian Word Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_ita, 'ita',
+                                                         word_tokenizer = 'spaCy - Italian Word Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
 # Japanese
 sentence_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。'
 
@@ -101,6 +141,16 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn, 'jp
 
 print(f"\t{' '.join(tokens)}")
 
+# Portuguese
+sentence_por = 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.'
+
+print('Portuguese / spaCy - Portuguese Word Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_por, 'por',
+                                                         word_tokenizer = 'spaCy - Portuguese Word Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
 # Russian
 sentence_rus = 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать)[~ 3][⇨] — один из восточнославянских языков, национальный язык русского народа.'
 
@@ -108,6 +158,16 @@ print('Russian / spaCy - Russian Word Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_rus, 'rus',
                                                          word_tokenizer = 'spaCy - Russian Word Tokenizer')
+
+print(f"\t{' '.join(tokens)}")
+
+# Spanish
+sentence_spa = 'El idioma español o castellano es una lengua romance procedente del latín hablado.'
+
+print('Spanish / spaCy - Spanish Word Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_spa, 'spa',
+                                                         word_tokenizer = 'spaCy - Spanish Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
