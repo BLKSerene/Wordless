@@ -1018,39 +1018,39 @@ def init_settings_global(main):
         },
 
         'pos_taggers': {
-            'zho_cn': {
-                main.tr('jieba - Chinese POS Tagger'): 'jieba'
-            },
+            'zho_cn': [
+                main.tr('jieba - Chinese POS Tagger')
+            ],
 
-            'zho_tw': {
-                main.tr('jieba - Chinese POS Tagger'): 'jieba'
-            },
+            'zho_tw': [
+                main.tr('jieba - Chinese POS Tagger')
+            ],
 
-            'eng': {
-                main.tr('NLTK - Perceptron POS Tagger'): 'Penn Treebank'
-            },
+            'eng': [
+                main.tr('NLTK - Perceptron POS Tagger')
+            ],
 
-            'jpn': {
-                main.tr('nagisa - Japanese POS Tagger'): 'UniDic'
-            },
+            'jpn': [
+                main.tr('nagisa - Japanese POS Tagger')
+            ],
 
-            'rus': {
-                main.tr('NLTK - Perceptron POS Tagger'): 'Russian National Corpus',
-                main.tr('pymorphy2 - Morphological Analyzer'): 'OpenCorpora'
-            },
+            'rus': [
+                main.tr('NLTK - Perceptron POS Tagger'),
+                main.tr('pymorphy2 - Morphological Analyzer')
+            ],
 
-            'tha': {
-                main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'): 'ORCHID',
-                main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus'): 'Universal'
-            },
+            'tha': [
+                main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'),
+                main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus')
+            ],
 
-            'ukr': {
-                main.tr('pymorphy2 - Morphological Analyzer'): 'OpenCorpora'
-            },
+            'ukr': [
+                main.tr('pymorphy2 - Morphological Analyzer')
+            ],
 
-            'vie': {
-                main.tr('Pyvi - Vietnamese POS Tagger'): 'Pyvi',
-            }
+            'vie': [
+                main.tr('Pyvi - Vietnamese POS Tagger')
+            ]
         },
 
         'lemmatizers': {
