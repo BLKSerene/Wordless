@@ -470,8 +470,16 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'default'):
         if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang_code]
 
+        # English & Other Languages
+        if 'spaCy' in lemmatizer:
+            check_spacy_models(main, lang_code)
+
+            nlp = main.__dict__[f'spacy_nlp_{lang_code}']
+
+            lemmas.extend([token.lemma_ for token in nlp(wordless_word_detokenize(main, tokens, lang_code))])
+
         # English
-        if lemmatizer == main.tr('NLTK - WordNet Lemmatizer'):
+        elif lemmatizer == main.tr('NLTK - WordNet Lemmatizer'):
             word_net_lemmatizer = nltk.WordNetLemmatizer()
 
             for i, (token, pos) in enumerate(nltk.pos_tag(tokens)):
@@ -485,6 +493,8 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'default'):
                     lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
                 else:
                     lemmas.append(word_net_lemmatizer.lemmatize(token))
+
+        # Russian & Ukrainian
         elif lemmatizer == main.tr('pymorphy2 - Morphological Analyzer'):
             if lang_code == 'rus':
                 morphological_analyzer = pymorphy2.MorphAnalyzer(lang = 'ru')
