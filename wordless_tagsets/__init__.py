@@ -7,19 +7,19 @@
 #
 
 __all__ = [
-	'eng_penn_treebank',
-	
-	'jpn_unidic',
+    'all_universal',
 
-	'rus_open_corpora',
-	'rus_russian_national_corpus',
+    'eng_penn_treebank',
+    
+    'jpn_unidic',
 
-	'tha_orchid',
+    'rus_open_corpora',
+    'rus_russian_national_corpus',
 
-	'vie_pyvi',
+    'tha_orchid',
 
-	'zho_hanlp',
-	'zho_jieba',
+    'vie_pyvi',
 
-	'universal'
+    'zho_hanlp',
+    'zho_jieba'
 ]
