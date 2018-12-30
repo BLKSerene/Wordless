@@ -1068,11 +1068,14 @@ class Wordless_Settings(QDialog):
                 lemmatizer = self.__dict__[f'combo_box_lemmatizer_{settings_custom["preview_lang"]}'].currentText()
 
                 for line in settings_custom['preview_samples'].splitlines():
-                    tokens = wordless_text_processing.wordless_word_tokenize(self.main, line, lang_code)
-                    lemmas = wordless_text_processing.wordless_lemmatize(self.main, tokens, lang_code,
+                    tokens = wordless_text_processing.wordless_word_tokenize(self.main, line,
+                                                                             lang_code = settings_custom["preview_lang"])
+                    lemmas = wordless_text_processing.wordless_lemmatize(self.main, tokens,
+                                                                         lang_code = settings_custom["preview_lang"],
                                                                          lemmatizer = lemmatizer)
 
-                    results.append(wordless_text_processing.wordless_word_detokenize(self.main, lemmas, lang_code))
+                    results.append(wordless_text_processing.wordless_word_detokenize(self.main, lemmas,
+                                                                                     lang_code = settings_custom["preview_lang"]))
 
                 self.preview_results_updated_lemmatization.emit(settings_custom['preview_samples'], results)
 

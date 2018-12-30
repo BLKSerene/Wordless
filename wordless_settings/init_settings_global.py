@@ -1070,9 +1070,14 @@ def init_settings_global(main):
                 main.tr('Lemmatization Lists')
             ],
 
+            'nld': [
+                main.tr('spaCy - Dutch Lemmatizer')
+            ],
+
             'eng': [
                 main.tr('NLTK - WordNet Lemmatizer'),
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists'),
+                main.tr('spaCy - English Lemmatizer')
             ],
 
             'est': [
@@ -1080,7 +1085,8 @@ def init_settings_global(main):
             ],
 
             'fra': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists'),
+                main.tr('spaCy - French Lemmatizer')
             ],
 
             'glg': [
@@ -1088,7 +1094,8 @@ def init_settings_global(main):
             ],
 
             'deu': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists'),
+                main.tr('spaCy - German Lemmatizer')
             ],
 
             'hun': [
@@ -1100,7 +1107,8 @@ def init_settings_global(main):
             ],
 
             'ita': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists'),
+                main.tr('spaCy - Italian Lemmatizer')
             ],
 
             'glv': [
@@ -1112,7 +1120,8 @@ def init_settings_global(main):
             ],
 
             'por': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists'),
+                main.tr('spaCy - Portuguese Lemmatizer')
             ],
 
             'ron': [
@@ -1136,7 +1145,8 @@ def init_settings_global(main):
             ],
 
             'spa': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists'),
+                main.tr('spaCy - Spanish Lemmatizer')
             ],
 
             'swe': [
