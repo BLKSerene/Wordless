@@ -171,10 +171,24 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
         for sentence in sentences:
             token_groups.append(moses_tokenizer.penn_tokenize(sentence))
     elif 'spaCy' in word_tokenizer:
-        nlp = spacy.blank(wordless_conversion.to_iso_639_1(main, lang_code))
+        # Languages with models
+        if lang_code in ['nld', 'eng', 'fra', 'deu', 'ita', 'por', 'spa', 'other']:
+            # Other Languages
+            if lang_code == 'other':
+                lang_code = 'eng'
 
-        for sentence in sentences:
-            token_groups.append([token.text for token in nlp(str(sentence))])
+            check_spacy_models(main, lang_code)
+
+            nlp = main.__dict__[f'spacy_nlp_{lang_code}']
+
+            for sentence in sentences:
+                token_groups.append([token.text for token in nlp(str(sentence))])
+        # Languages without models
+        else:
+            nlp = spacy.blank(wordless_conversion.to_iso_639_1(main, lang_code))
+
+            for sentence in sentences:
+                token_groups.append([token.text for token in nlp(str(sentence))])
 
     # Chinese
     elif word_tokenizer == main.tr('jieba - Chinese Word Tokenizer'):

@@ -275,19 +275,17 @@ class Wordless_Main(QMainWindow):
 
         def citation():
             def citation_sys_changed():
-                if combo_box_citation_sys.currentIndex() == 0:
+                if combo_box_citation_sys.currentText() == self.tr('MLA (8th Edition)'):
                     text_edit_citation.setHtml('Ye Lei. Wordless, version 1.0, 2018, https://github.com/BLKSerene/Wordless.')
-                elif combo_box_citation_sys.currentIndex() == 1:
+                elif combo_box_citation_sys.currentText() == self.tr('APA (6th Edition)'):
                     text_edit_citation.setHtml('Ye, L. (2018) Wordless (Version 1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless')
-                elif combo_box_citation_sys.currentIndex() == 2:
-                    text_edit_citation.setHtml('Ye, Lei. <i>Wordless</i> (Version 1.0). Windows. Shanghai: Ye Lei, 2018.')
-                elif combo_box_citation_sys.currentIndex() == 3:
+                elif combo_box_citation_sys.currentText() == self.tr('GB (GB/T 7714—2015)'):
                     text_edit_citation.setHtml('叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.')
 
-                if combo_box_citation_sys.currentIndex() <= 2:
-                    text_edit_citation.setFont(QFont('Times New Roman', 12))
-                elif combo_box_citation_sys.currentIndex() == 3:
+                if combo_box_citation_sys.currentText() == self.tr('GB (GB/T 7714—2015)'):
                     text_edit_citation.setFont(QFont('宋体', 12))
+                else:
+                    text_edit_citation.setFont(QFont('Times New Roman', 12))
 
             def copy():
                 text_edit_citation.setFocus()
@@ -311,7 +309,6 @@ class Wordless_Main(QMainWindow):
             combo_box_citation_sys.addItems([
                                                  self.tr('MLA (8th Edition)'),
                                                  self.tr('APA (6th Edition)'),
-                                                 self.tr('Chicago (17th Edition)'),
                                                  self.tr('GB (GB/T 7714—2015)')
                                             ])
 
