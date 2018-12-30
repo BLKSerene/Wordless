@@ -17,6 +17,7 @@ from PyQt5.QtWidgets import *
 
 import nltk
 
+from wordless_tagsets import *
 from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
@@ -881,7 +882,7 @@ class Wordless_Settings(QDialog):
 
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'] = wordless_box.Wordless_Combo_Box(self.main)
 
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].addItems(list(settings_global[lang_code]))
+            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].addItems(settings_global[lang_code])
 
             self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: pos_taggers_changed(lang_code))
 
@@ -902,7 +903,7 @@ class Wordless_Settings(QDialog):
         self.text_edit_pos_tagging_preview_samples = QTextEdit(self)
         self.text_edit_pos_tagging_preview_results = QTextEdit(self)
 
-        self.combo_box_pos_tagging_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
+        self.combo_box_pos_tagging_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global)))
 
         self.text_edit_pos_tagging_preview_samples.setAcceptRichText(False)
         self.text_edit_pos_tagging_preview_results.setReadOnly(True)
@@ -944,15 +945,14 @@ class Wordless_Settings(QDialog):
 
             self.combo_box_tagsets_pos_tagger.clear()
 
-            self.combo_box_tagsets_pos_tagger.addItems(list(settings_global[settings_custom['preview_lang']]))
+            self.combo_box_tagsets_pos_tagger.addItems(settings_global[settings_custom['preview_lang']])
 
             self.combo_box_tagsets_pos_tagger.blockSignals(False)
 
             self.combo_box_tagsets_pos_tagger.currentTextChanged.emit('')
 
         def pos_tagger_changed():
-            tagset = settings_global[settings_custom['preview_lang']][settings_custom['preview_pos_tagger']]
-            mappings = settings_custom['mappings'][tagset]
+            mappings = settings_custom['mappings'][settings_custom['preview_lang']][settings_custom['preview_pos_tagger']]
 
             self.table_mappings.clear_table()
 
@@ -997,7 +997,7 @@ class Wordless_Settings(QDialog):
             self.table_mappings.resizeRowsToContents()
 
             # Disable editing if the default tagset is Universal POS tags
-            if tagset == 'Universal':
+            if mappings == all_universal.mappings:
                 for i in range(self.table_mappings.rowCount()):
                     self.table_mappings.cellWidget(i, 1).setEnabled(False)
 
@@ -1014,7 +1014,7 @@ class Wordless_Settings(QDialog):
         self.label_tagsets_pos_tagger = QLabel(self.tr('POS Tagger:'), self)
         self.combo_box_tagsets_pos_tagger = wordless_box.Wordless_Combo_Box(self)
 
-        self.combo_box_tagsets_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
+        self.combo_box_tagsets_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global)))
 
         self.combo_box_tagsets_pos_tagger.setSizeAdjustPolicy(QComboBox.AdjustToContents)
 
