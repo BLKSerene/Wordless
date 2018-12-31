@@ -16,8 +16,7 @@ mappings = [
     ['CC', 'CCONJ', 'Coordinating conjunction', ''],
     ['CD', 'NUM', 'Cardinal number', ''],
     ['DT', 'DET', 'Determiner', ''],
-    # Issue #6: https://github.com/slavpetrov/universal-pos-tags/issues/6
-    ['EX', 'PRON', 'Existential "there"', 'there'],
+    ['EX', 'ADV', 'Existential "there"', 'there'],
     ['FW', 'X', 'Foreign word', ''],
     ['IN', 'ADP/SCONJ', 'Preposition or subordinating conjunction', ''],
 
@@ -60,14 +59,14 @@ mappings = [
     ['WP$', 'PRON', 'Possessive wh-pronoun', ''],
     ['WRB', 'ADV', 'Wh-adverb', ''],
 
-    ['\'\'', 'PUNCT', 'Single quotes', '\''],
-    ['(', 'PUNCT', 'Left round and curly brackets', '( {'],
-    [')', 'PUNCT', 'Right round and curly brackets', ') }'],
+    ['\'\'', 'PUNCT', 'Single quotation mark', '\''],
+    ['(', 'PUNCT', 'Left round and curly bracket', '( {'],
+    [')', 'PUNCT', 'Right round and curly bracket', ') }'],
     [',', 'PUNCT', 'Comma', ','],
-    ['.', 'PUNCT', 'Period, question marks and exclamation marks', ', ? !'],
-    [':', 'PUNCT', 'Colon, semicolon', ': ;'],
-    ['``', 'PUNCT', 'Double quote, backtick', '" `'],
+    ['.', 'PUNCT', 'Period, question mark and exclamation mark', '. ? !'],
+    [':', 'PUNCT', 'Colon and semicolon', ': ;'],
+    ['``', 'PUNCT', 'Double quotation mark and backtick', '" `'],
 
     ['#', 'SYM', 'Number sign', '#'],
-    ['$', 'SYM', 'Dollar sign', '$'],
+    ['$', 'SYM', 'Dollar sign', '$']
 ]

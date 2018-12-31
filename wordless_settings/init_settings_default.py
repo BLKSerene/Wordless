@@ -919,7 +919,7 @@ def init_settings_default(main):
             'pos_taggers': {
                 'zho_cn': main.tr('jieba - Chinese POS Tagger'),
                 'zho_tw':  main.tr('jieba - Chinese POS Tagger'),
-                'eng': main.tr('NLTK - Perceptron POS Tagger'),
+                'eng': main.tr('spaCy - English POS Tagger'),
                 'jpn': main.tr('nagisa - Japanese POS Tagger'),
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
                 'tha': main.tr('PyThaiNLP - Perceptron Tagger - ORCHID Corpus'),
@@ -948,7 +948,8 @@ def init_settings_default(main):
                 },
                 
                 'eng': {
-                    main.tr('NLTK - Perceptron POS Tagger'): eng_penn_treebank.mappings
+                    main.tr('NLTK - Perceptron POS Tagger'): eng_penn_treebank.mappings,
+                    main.tr('spaCy - English POS Tagger'): eng_penn_treebank_onto_notes_5.mappings
                 },
 
                 'jpn': {
