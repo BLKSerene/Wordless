@@ -1738,10 +1738,9 @@ class Wordless_Settings(QDialog):
             # POS Taggin -> Tagsets
             preview_lang = settings['tagsets']['preview_lang']
             preview_pos_tagger = settings['tagsets']['preview_pos_tagger']
-            tagset = self.main.settings_global['pos_taggers'][preview_lang][preview_pos_tagger]
 
             for i in range(self.table_mappings.rowCount()):
-                settings['tagsets']['mappings'][tagset][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
+                settings['tagsets']['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
 
             # Lemmatization
             for lang_code in settings['lemmatization']['lemmatizers']:
