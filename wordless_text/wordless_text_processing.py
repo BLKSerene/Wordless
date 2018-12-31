@@ -314,7 +314,8 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
             tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = sentence.boundary, sentence_ending = True)
     else:
         for sentence, tokens in zip(sentences, token_groups):
-            tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = sentence.boundary, sentence_ending = True)
+            if tokens:
+                tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = sentence.boundary, sentence_ending = True)
 
     return [token for tokens in token_groups for token in tokens]
 
@@ -397,17 +398,26 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang_code]
 
+    # Chinese
+    if pos_tagger == main.tr('jieba - Chinese POS Tagger'):
+        for sentence in sentences:
+            tokens_tagged.extend(jieba.posseg.cut(sentence))
+
+    # Dutch, English, French, German, Italian, Portuguese and Spanish
+    elif 'spaCy' in pos_tagger:
+        check_spacy_models(main, lang_code)
+
+        nlp = main.__dict__[f'spacy_nlp_{lang_code}']
+
+        for sentence in sentences:
+            tokens_tagged.extend([(token.text, token.tag_) for token in nlp(str(sentence))])
+
     # English & Russian
-    if pos_tagger == main.tr(main.tr('NLTK - Perceptron POS Tagger')):
+    elif pos_tagger == main.tr('NLTK - Perceptron POS Tagger'):
         for sentence in sentences:
             tokens = wordless_word_tokenize(main, sentence, lang_code)
 
             tokens_tagged.extend(nltk.pos_tag(tokens, lang = lang_code))
-
-    # Chinese
-    elif pos_tagger == main.tr('jieba - Chinese POS Tagger'):
-        for sentence in sentences:
-            tokens_tagged.extend(jieba.posseg.cut(sentence))
 
     # Japanese
     elif pos_tagger == main.tr('nagisa - Japanese POS Tagger'):
@@ -453,9 +463,9 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
     # Convert to Universal Tagset
     if (tagset == 'custom' and main.settings_custom['pos_tagging']['to_universal_pos_tags'] or
         tagset == 'universal'):
-        tagset_default = main.settings_global['pos_taggers'][lang_code][pos_tagger]
+
         mappings = {tag: tag_universal
-                    for tag, tag_universal, _, _ in main.settings_custom['tagsets']['mappings'][tagset_default]}
+                    for tag, tag_universal, _, _ in main.settings_custom['tagsets']['mappings'][lang_code][pos_tagger]}
 
         tokens_tagged = [(token, mappings[tag])
                          for token, tag in tokens_tagged]
