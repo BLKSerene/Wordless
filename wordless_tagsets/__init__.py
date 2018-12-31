@@ -10,6 +10,7 @@ __all__ = [
     'all_universal',
 
     'eng_penn_treebank',
+    'eng_penn_treebank_onto_notes_5',
     
     'jpn_unidic',
 
@@ -20,6 +21,5 @@ __all__ = [
 
     'vie_pyvi',
 
-    'zho_hanlp',
     'zho_jieba'
 ]

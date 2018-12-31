@@ -1027,7 +1027,8 @@ def init_settings_global(main):
             ],
 
             'eng': [
-                main.tr('NLTK - Perceptron POS Tagger')
+                main.tr('NLTK - Perceptron POS Tagger'),
+                main.tr('spaCy - English POS Tagger')
             ],
 
             'jpn': [
