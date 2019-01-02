@@ -11,6 +11,8 @@ __all__ = [
 
     'eng_penn_treebank',
     'eng_penn_treebank_onto_notes_5',
+
+    'deu_tiger_treebank',
     
     'jpn_unidic',
 

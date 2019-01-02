@@ -971,7 +971,7 @@ class Wordless_Settings(QDialog):
                     'AUX',
 
                     'ADP',
-                    'CCONJ/SCONJ', # Coordinating/Subordinating Conjunctions
+                    'CONJ', # Coordinating/Subordinating Conjunctions
                     'CCONJ',
                     'SCONJ',
                     'DET',

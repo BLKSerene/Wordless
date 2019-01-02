@@ -59,7 +59,7 @@ mappings = [
     ['CVBL', 'PART', 'Verbal classifier', ''],
 
     ['JCRG', 'CCONJ', 'Coordinating conjunction', ''],
-    ['JCMP', 'CCONJ', 'Comparative conjunction', ''],
+    ['JCMP', 'CONJ', 'Comparative conjunction', ''],
     ['JSBR', 'SCONJ', 'Subordinating conjunctino', ''],
 
     ['RPRE', 'ADP', 'Preposition', ''],
