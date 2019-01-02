@@ -6,7 +6,7 @@ Designed and Developed by Ye Lei (叶磊)
 MA Student in Interpreting Studies at Shanghai International Studies University (上海外国语大学)
 
 ## License
-    Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
+    Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
 
 This project is licensed Under GNU GPL Version 3.0.
 
@@ -17,15 +17,15 @@ If you publish work that uses Wordless, please cite Wordless as follows.
 
 MLA (8th Edition):
 
-    Ye Lei. Wordless, version 1.0, 2018, https://github.com/BLKSerene/Wordless.
+    Ye Lei. Wordless, version 1.0, 2019, https://github.com/BLKSerene/Wordless.
 
 APA (6th Edition):
 
-    Ye, L. (2018) Wordless (Version 1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless
+    Ye, L. (2019) Wordless (Version 1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless
 
 GB (GB/T 7714—2015):
 
-    叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.
+    叶磊. Wordless version 1.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
 
 ## User Guide & Documentation
 [English Documentation Here](#doc-eng)
