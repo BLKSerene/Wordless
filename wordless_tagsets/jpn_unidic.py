@@ -23,7 +23,7 @@ mappings = [
     ['形状詞', 'NOUN', 'Adjectival noun', ''],
     ['感動詞', 'INTJ', 'Interjection', ''],
     ['接尾辞', 'PART', 'Suffix', ''],
-    ['接続詞', 'CCONJ/SCONJ', 'Conjunction', ''],
+    ['接続詞', 'CONJ', 'Conjunction', ''],
     ['接頭辞', 'PART', 'Prefix', ''],
     ['空白', 'X', 'Whitespace', ''],
     ['補助記号', 'PUNCT/SYM', 'Supplementary symbol', ''],

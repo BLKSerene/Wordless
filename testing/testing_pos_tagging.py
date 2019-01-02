@@ -40,6 +40,22 @@ tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, senten
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
 
+# Dutch
+sentence_nld = 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
+
+print('Dutch / spaCy - Dutch POS Tagger:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_nld,
+                                                          lang_code = 'nld',
+                                                          pos_tagger = 'spaCy - Dutch POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_nld,
+                                                                    lang_code = 'nld',
+                                                                    pos_tagger = 'spaCy - Dutch POS Tagger',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
 # English
 sentence_eng = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.'
 
@@ -69,6 +85,54 @@ tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, senten
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
 
+# French
+sentence_fra = 'Le français est une langue indo-européenne de la famille des langues romanes.'
+
+print('French / spaCy - French POS Tagger:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_fra,
+                                                          lang_code = 'fra',
+                                                          pos_tagger = 'spaCy - French POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_fra,
+                                                                    lang_code = 'fra',
+                                                                    pos_tagger = 'spaCy - French POS Tagger',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
+# German
+sentence_deu = 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ]; abgekürzt Dt. oder Dtsch.) ist eine westgermanische Sprache.'
+
+print('German / spaCy - German POS Tagger:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_deu,
+                                                          lang_code = 'deu',
+                                                          pos_tagger = 'spaCy - German POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_deu,
+                                                                    lang_code = 'deu',
+                                                                    pos_tagger = 'spaCy - German POS Tagger',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
+# Italian
+sentence_ita = "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
+
+print('Italian / spaCy - Italian POS Tagger:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_ita,
+                                                          lang_code = 'ita',
+                                                          pos_tagger = 'spaCy - Italian POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_ita,
+                                                                    lang_code = 'ita',
+                                                                    pos_tagger = 'spaCy - Italian POS Tagger',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
 # Japanese
 sentence_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。'
 
@@ -80,6 +144,22 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_jpn,
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_jpn,
                                                                     lang_code = 'jpn',
                                                                     pos_tagger = 'nagisa - Japanese POS Tagger',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
+# Portuguese
+sentence_por = 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.'
+
+print('Portuguese / spaCy - Portuguese POS Tagger:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_por,
+                                                          lang_code = 'por',
+                                                          pos_tagger = 'spaCy - Portuguese POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_por,
+                                                                    lang_code = 'por',
+                                                                    pos_tagger = 'spaCy - Portuguese POS Tagger',
                                                                     tagset = 'universal')
 
 print(f"\t{tokens_tagged}")
@@ -109,6 +189,22 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
                                                                     lang_code = 'rus',
                                                                     pos_tagger = 'pymorphy2 - Morphological Analyzer',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
+# Spanish
+sentence_tha = 'El idioma español o castellano es una lengua romance procedente del latín hablado.'
+
+print('Spanish / spaCy - Spanish POS Tagger:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
+                                                          lang_code = 'spa',
+                                                          pos_tagger = 'spaCy - Spanish POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
+                                                                    lang_code = 'spa',
+                                                                    pos_tagger = 'spaCy - Spanish POS Tagger',
                                                                     tagset = 'universal')
 
 print(f"\t{tokens_tagged}")

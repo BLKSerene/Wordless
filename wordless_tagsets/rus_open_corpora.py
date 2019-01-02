@@ -29,7 +29,7 @@ mappings = [
     ['NPRO', 'PRON', 'Pronoun-noun', 'он'],
     ['PRED', 'PART', 'Predicative', 'некогда'],
     ['PREP', 'ADP', 'Preposition', 'в'],
-    ['CONJ', 'CCONJ/SCONJ', 'Conjunction', 'и'],
+    ['CONJ', 'CONJ', 'Conjunction', 'и'],
     ['PRCL', 'PART', 'Particle', 'бы, же, лишь'],
     ['INTJ', 'INTJ', 'Interjection', 'ой'],
 
