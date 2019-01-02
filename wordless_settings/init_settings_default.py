@@ -923,6 +923,7 @@ def init_settings_default(main):
                 'deu': main.tr('spaCy - German POS Tagger'),
                 'jpn': main.tr('nagisa - Japanese POS Tagger'),
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
+                'spa': main.tr('spaCy - Spanish POS Tagger'),
                 'tha': main.tr('PyThaiNLP - Perceptron Tagger - ORCHID Corpus'),
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'vie': main.tr('Pyvi - Vietnamese POS Tagger')
@@ -963,7 +964,11 @@ def init_settings_default(main):
 
                 'rus': {
                     main.tr('NLTK - Perceptron POS Tagger'): rus_russian_national_corpus.mappings,
-                    main.tr('pymorphy2 - Morphological Analyzer'): rus_open_corpora.mappings,
+                    main.tr('pymorphy2 - Morphological Analyzer'): rus_open_corpora.mappings
+                },
+
+                'spa': {
+                    main.tr('spaCy - Spanish POS Tagger'): spa_spacy.mappings
                 },
 
                 'tha': {
@@ -972,11 +977,11 @@ def init_settings_default(main):
                 },
 
                 'ukr': {
-                    main.tr('pymorphy2 - Morphological Analyzer'): rus_open_corpora.mappings,
+                    main.tr('pymorphy2 - Morphological Analyzer'): rus_open_corpora.mappings
                 },
 
                 'vie': {
-                    main.tr('Pyvi - Vietnamese POS Tagger'): vie_pyvi.mappings,
+                    main.tr('Pyvi - Vietnamese POS Tagger'): vie_pyvi.mappings
                 }
             }
         },

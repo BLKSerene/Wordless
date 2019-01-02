@@ -963,21 +963,20 @@ class Wordless_Settings(QDialog):
 
                 combo_box_tag_univsersal.addItems([
                     'ADJ',
-                    'ADV',
-                    'NOUN',
-                    'PROPN',
-                    'PRON',
-                    'VERB',
-                    'AUX',
-
                     'ADP',
+                    'ADV',
+                    'AUX',
                     'CONJ', # Coordinating/Subordinating Conjunctions
                     'CCONJ',
                     'SCONJ',
                     'DET',
+                    'INTJ',
+                    'NOUN',
+                    'PROPN',
                     'NUM',
                     'PART',
-                    'INTJ',
+                    'PRON',
+                    'VERB',
 
                     'PUNCT',
                     'SYM',

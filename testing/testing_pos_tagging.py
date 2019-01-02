@@ -130,6 +130,22 @@ tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, senten
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
 
+# Spanish
+sentence_tha = 'El idioma español o castellano es una lengua romance procedente del latín hablado.'
+
+print('Spanish / spaCy - Spanish POS Tagger:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
+                                                          lang_code = 'spa',
+                                                          pos_tagger = 'spaCy - Spanish POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
+                                                                    lang_code = 'spa',
+                                                                    pos_tagger = 'spaCy - Spanish POS Tagger',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
 # Thai
 sentence_tha = 'ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย'
 
