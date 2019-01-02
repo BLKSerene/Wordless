@@ -1031,6 +1031,10 @@ def init_settings_global(main):
                 main.tr('spaCy - English POS Tagger')
             ],
 
+            'deu': [
+                main.tr('spaCy - German POS Tagger')
+            ],
+
             'jpn': [
                 main.tr('nagisa - Japanese POS Tagger')
             ],
