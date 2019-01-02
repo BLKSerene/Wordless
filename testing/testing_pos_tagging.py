@@ -69,6 +69,22 @@ tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, senten
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
 
+# German
+sentence_deu = 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ]; abgekürzt Dt. oder Dtsch.) ist eine westgermanische Sprache.'
+
+print('German / spaCy - German POS Tagger:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_deu,
+                                                          lang_code = 'deu',
+                                                          pos_tagger = 'spaCy - German POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_deu,
+                                                                    lang_code = 'deu',
+                                                                    pos_tagger = 'spaCy - German POS Tagger',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
 # Japanese
 sentence_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。'
 
