@@ -19,6 +19,8 @@ __all__ = [
     'rus_open_corpora',
     'rus_russian_national_corpus',
 
+    'spa_spacy',
+
     'tha_orchid',
 
     'vie_pyvi',

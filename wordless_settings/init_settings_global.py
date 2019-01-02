@@ -1044,6 +1044,10 @@ def init_settings_global(main):
                 main.tr('pymorphy2 - Morphological Analyzer')
             ],
 
+            'spa': [
+                main.tr('spaCy - Spanish POS Tagger'),
+            ],
+
             'tha': [
                 main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'),
                 main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus')
