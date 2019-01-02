@@ -1,7 +1,7 @@
 #
 # Wordless: Concordancer
 #
-# Copyright (C) 2018 Ye Lei (叶磊) <blkserene@gmail.com>
+# Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
 #
 # License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
