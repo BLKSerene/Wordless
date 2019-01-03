@@ -922,6 +922,7 @@ def init_settings_default(main):
                 'eng': main.tr('spaCy - English POS Tagger'),
                 'deu': main.tr('spaCy - German POS Tagger'),
                 'jpn': main.tr('nagisa - Japanese POS Tagger'),
+                'por': main.tr('spaCy - Portuguese POS Tagger'),
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
                 'spa': main.tr('spaCy - Spanish POS Tagger'),
                 'tha': main.tr('PyThaiNLP - Perceptron Tagger - ORCHID Corpus'),
@@ -960,6 +961,10 @@ def init_settings_default(main):
 
                 'jpn': {
                     main.tr('nagisa - Japanese POS Tagger'): jpn_unidic.mappings
+                },
+
+                'por': {
+                    main.tr('spaCy - Portuguese POS Tagger'): por_spacy.mappings
                 },
 
                 'rus': {
