@@ -1039,6 +1039,10 @@ def init_settings_global(main):
                 main.tr('nagisa - Japanese POS Tagger')
             ],
 
+            'por': [
+                main.tr('spaCy - Portuguese POS Tagger')
+            ],
+
             'rus': [
                 main.tr('NLTK - Perceptron POS Tagger'),
                 main.tr('pymorphy2 - Morphological Analyzer')
