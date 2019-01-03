@@ -16,6 +16,8 @@ __all__ = [
     
     'jpn_unidic',
 
+    'por_spacy',
+
     'rus_open_corpora',
     'rus_russian_national_corpus',
 
