@@ -40,6 +40,22 @@ tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, senten
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
 
+# Dutch
+sentence_nld = 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
+
+print('Dutch / spaCy - Dutch POS Tagger:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_nld,
+                                                          lang_code = 'nld',
+                                                          pos_tagger = 'spaCy - Dutch POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_nld,
+                                                                    lang_code = 'nld',
+                                                                    pos_tagger = 'spaCy - Dutch POS Tagger',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
 # English
 sentence_eng = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.'
 
@@ -69,6 +85,22 @@ tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, senten
 print(f"\t{tokens_tagged}")
 print(f"\t{tokens_tagged_universal}")
 
+# French
+sentence_fra = 'Le français est une langue indo-européenne de la famille des langues romanes.'
+
+print('French / spaCy - French POS Tagger:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_fra,
+                                                          lang_code = 'fra',
+                                                          pos_tagger = 'spaCy - French POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_fra,
+                                                                    lang_code = 'fra',
+                                                                    pos_tagger = 'spaCy - French POS Tagger',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
 # German
 sentence_deu = 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ]; abgekürzt Dt. oder Dtsch.) ist eine westgermanische Sprache.'
 
@@ -80,6 +112,22 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_deu,
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_deu,
                                                                     lang_code = 'deu',
                                                                     pos_tagger = 'spaCy - German POS Tagger',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
+# Italian
+sentence_ita = "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
+
+print('Italian / spaCy - Italian POS Tagger:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_ita,
+                                                          lang_code = 'ita',
+                                                          pos_tagger = 'spaCy - Italian POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_ita,
+                                                                    lang_code = 'ita',
+                                                                    pos_tagger = 'spaCy - Italian POS Tagger',
                                                                     tagset = 'universal')
 
 print(f"\t{tokens_tagged}")

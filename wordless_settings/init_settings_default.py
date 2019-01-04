@@ -919,8 +919,11 @@ def init_settings_default(main):
             'pos_taggers': {
                 'zho_cn': main.tr('jieba - Chinese POS Tagger'),
                 'zho_tw':  main.tr('jieba - Chinese POS Tagger'),
+                'nld': main.tr('spaCy - Dutch POS Tagger'),
                 'eng': main.tr('spaCy - English POS Tagger'),
+                'fra': main.tr('spaCy - French POS Tagger'),
                 'deu': main.tr('spaCy - German POS Tagger'),
+                'ita': main.tr('spaCy - Italian POS Tagger'),
                 'jpn': main.tr('nagisa - Japanese POS Tagger'),
                 'por': main.tr('spaCy - Portuguese POS Tagger'),
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
@@ -949,14 +952,26 @@ def init_settings_default(main):
                 'zho_tw': {
                     main.tr('jieba - Chinese POS Tagger'): zho_jieba.mappings
                 },
+
+                'nld': {
+                    main.tr('spaCy - Dutch POS Tagger'): nld_spacy.mappings
+                },
                 
                 'eng': {
                     main.tr('NLTK - Perceptron POS Tagger'): eng_penn_treebank.mappings,
                     main.tr('spaCy - English POS Tagger'): eng_penn_treebank_onto_notes_5.mappings
                 },
 
+                'fra': {
+                    main.tr('spaCy - French POS Tagger'): fra_spacy.mappings
+                },
+
                 'deu': {
                     main.tr('spaCy - German POS Tagger'): deu_tiger_treebank.mappings
+                },
+
+                'ita': {
+                    main.tr('spaCy - Italian POS Tagger'): ita_spacy.mappings
                 },
 
                 'jpn': {
