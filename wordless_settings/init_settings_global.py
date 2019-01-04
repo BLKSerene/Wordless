@@ -1026,13 +1026,25 @@ def init_settings_global(main):
                 main.tr('jieba - Chinese POS Tagger')
             ],
 
+            'nld': [
+                main.tr('spaCy - Dutch POS Tagger')
+            ],
+
             'eng': [
                 main.tr('NLTK - Perceptron POS Tagger'),
                 main.tr('spaCy - English POS Tagger')
             ],
 
+            'fra': [
+                main.tr('spaCy - French POS Tagger')
+            ],
+
             'deu': [
                 main.tr('spaCy - German POS Tagger')
+            ],
+
+            'ita': [
+                main.tr('spaCy - Italian POS Tagger')
             ],
 
             'jpn': [
