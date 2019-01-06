@@ -33,6 +33,7 @@ mappings = [
     ['LS', 'SYM', 'List item marker', ''],
     ['MD', 'AUX', 'Verb, modal auxiliary', ''],
     ['NFP', 'PUNCT', 'Superfluous punctuation', ''],
+    ['NIL', 'X', 'Missing tag', ''],
 
     ['NN', 'NOUN', 'Noun, singular or mass', ''],
     ['NNS', 'NOUN', 'Noun, plural', ''],
@@ -76,6 +77,5 @@ mappings = [
     ['', 'PUNCT', 'Punctuation mark, em dash', '—'],
 
     ['_SP', 'X', 'Space', ' '],
-    ['XX', 'X', 'Unknown', ''],
-    ['NIL', 'X', 'Missing tag', '']
+    ['XX', 'X', 'Unknown', '']
 ]

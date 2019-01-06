@@ -23,6 +23,12 @@ class Wordless_Combo_Box(QComboBox):
 
         self.setMaxVisibleItems(25)
 
+class Wordless_Combo_Box_Adjustable(Wordless_Combo_Box):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.setSizeAdjustPolicy(QComboBox.AdjustToContents)
+
 class Wordless_Combo_Box_Lang(Wordless_Combo_Box):
     def __init__(self, main):
         super().__init__(main)
