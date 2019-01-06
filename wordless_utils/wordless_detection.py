@@ -79,8 +79,8 @@ def detect_lang(main, file):
             if detection_engine == 'langid.py':
                 lang_code_639_1 = langid.classify(text)[0]
 
+                # Chinese (Simplified) & Chinese (Traditional)
                 if lang_code_639_1 == 'zh':
-                    # Default to Chinese (Simplified)
                     lang_code_639_1 = 'zh_cn'
 
                     for lang in sorted(langdetect.detect_langs(text), key = lambda item: -item.prob):
@@ -88,9 +88,17 @@ def detect_lang(main, file):
                             lang_code_639_1 = lang.lang
 
                             break
-
+                # Norwegian
+                elif lang_code_639_1 == 'no':
+                    lang_code_639_1 = 'nb'
             elif detection_engine == 'langdetect':
                 lang_code_639_1 = langdetect.detect(text)
+
+                # Norwegian Bokmål & Norwegian Nynorsk
+                if lang_code_639_1 == 'no':
+                    langid.set_languages(['nb', 'nn'])
+
+                    lang_code_639_1 = langid.classify(text)[0]
 
             lang_code = wordless_conversion.to_iso_639_3(main, lang_code_639_1.replace('-', '_'))
 

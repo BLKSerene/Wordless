@@ -944,7 +944,6 @@ class Wordless_Settings(QDialog):
             self.combo_box_tagsets_pos_tagger.blockSignals(True)
 
             self.combo_box_tagsets_pos_tagger.clear()
-
             self.combo_box_tagsets_pos_tagger.addItems(settings_global[settings_custom['preview_lang']])
 
             self.combo_box_tagsets_pos_tagger.blockSignals(False)
@@ -954,8 +953,10 @@ class Wordless_Settings(QDialog):
         def pos_tagger_changed():
             mappings = settings_custom['mappings'][settings_custom['preview_lang']][settings_custom['preview_pos_tagger']]
 
-            self.table_mappings.clear_table()
+            self.table_mappings.blockSignals(True)
+            self.table_mappings.setUpdatesEnabled(False)
 
+            self.table_mappings.clear_table()
             self.table_mappings.setRowCount(len(mappings))
 
             for i, (tag, tag_universal, description, examples) in enumerate(mappings):
@@ -993,7 +994,10 @@ class Wordless_Settings(QDialog):
                 self.table_mappings.setItem(i, 2, QTableWidgetItem(description))
                 self.table_mappings.setItem(i, 3, QTableWidgetItem(examples))
 
-            self.table_mappings.resizeRowsToContents()
+            self.table_mappings.blockSignals(False)
+            self.table_mappings.setUpdatesEnabled(True)
+
+            self.table_mappings.itemChanged.emit(self.table_mappings.item(0, 0))
 
             # Disable editing if the default tagset is Universal POS tags
             if mappings == all_universal.mappings:
@@ -1011,11 +1015,9 @@ class Wordless_Settings(QDialog):
         self.label_tagsets_lang = QLabel(self.tr('Language:'), self)
         self.combo_box_tagsets_lang = wordless_box.Wordless_Combo_Box(self)
         self.label_tagsets_pos_tagger = QLabel(self.tr('POS Tagger:'), self)
-        self.combo_box_tagsets_pos_tagger = wordless_box.Wordless_Combo_Box(self)
+        self.combo_box_tagsets_pos_tagger = wordless_box.Wordless_Combo_Box_Adjustable(self)
 
         self.combo_box_tagsets_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global)))
-
-        self.combo_box_tagsets_pos_tagger.setSizeAdjustPolicy(QComboBox.AdjustToContents)
 
         self.combo_box_tagsets_lang.currentTextChanged.connect(preview_settings_changed)
         self.combo_box_tagsets_lang.currentTextChanged.connect(lang_changed)

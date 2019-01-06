@@ -10,6 +10,91 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+# Files
+def wordless_message_box_error_open_files(main,
+                                          files_nonexistent, files_unsupported,
+                                          files_empty, files_duplicate):
+    message_warning = main.tr('<p>Some files are skipped because an error occurred during the process of loading.</p>')
+
+    if files_nonexistent or files_unsupported or files_empty or files_duplicate:
+        if files_nonexistent:
+            list_files = ''.join([f'<li>{file}</li>' for file in files_nonexistent])
+
+            if len(files_nonexistent) == 1:
+                message_warning += main.tr(f'''
+                                       <p>The following file no longer exists in its original location:</p>
+                                       <ul>{list_files}</ul>
+                                   ''')
+            else:
+                message_warning += main.tr(f'''
+                                       <p>The following files no longer exists in their original location:</p>
+                                       <ul>{list_files}</ul>
+                                   ''')
+
+        if files_unsupported:
+            list_files = ''.join([f'<li>{file}</li>' for file in files_unsupported])
+
+            if len(files_unsupported) == 1:
+                message_warning += main.tr(f'''
+                                       <p>Failed to open the following file because the file type is not currently supported by Wordless:</p>
+                                       <ul>{list_files}</ul>
+                                   ''')
+            else:
+                message_warning += main.tr(f'''
+                                       <p>Failed to open the following files because the file types are not currently supported by Wordless:</p>
+                                       <ul>{list_files}</ul>
+                                   ''')
+
+        if files_empty:
+            list_files = ''.join([f'<li>{file}</li>' for file in files_empty])
+
+            if len(files_empty) == 1:
+                message_warning += main.tr(f'''
+                                       <p>The following file is empty:</p>
+                                       <ul>{list_files}</ul>
+                                   ''')
+            else:
+                message_warning += main.tr(f'''
+                                       <p>The following files are empty:</p>
+                                       <ul>{list_files}</ul>
+                                   ''')
+
+        if files_duplicate:
+            list_files = ''.join([f'<li>{file}</li>' for file in files_duplicate])
+
+            if len(files_duplicate) == 1:
+                message_warning += main.tr(f'''
+                                       <p>The following file has already been opened:</p>
+                                       <ul>{list_files}</ul>
+                                   ''')
+            else:
+                message_warning += main.tr(f'''
+                                       <p>The following files have already been opened:</p>
+                                       <ul>{list_files}</ul>
+                                   ''')
+
+        QMessageBox.warning(main,
+                            main.tr('File(s) Skipped'),
+                            main.tr(f'''{main.settings_global['styles']['style_dialog']}
+                                        <body>
+                                            {message_warning}
+                                        </body>
+                                    '''),
+                            QMessageBox.Ok)
+
+
+def wordless_message_box_duplicate_file_name(main):
+    QMessageBox.warning(main,
+                        main.tr('Duplicate File Name'),
+                        main.tr(f'''{main.settings_global['styles']['style_dialog']}
+                                    <body>
+                                        <p>There is already a file with the same name that has been loaded into Wordless.</p>
+                                        <p>Please specify a different file name.</p>
+                                    </body>
+                                '''),
+                        QMessageBox.Ok)
+
+# Tabs
 def wordless_message_box_no_files_selected(main):
     QMessageBox.warning(main,
                         main.tr('No Files Selected'),
