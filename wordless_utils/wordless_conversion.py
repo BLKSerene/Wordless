@@ -28,6 +28,11 @@ def to_iso_639_3(main, lang_code):
 def to_iso_639_1(main, lang_code):
     return main.settings_global['lang_codes'][lang_code]
 
+def to_ext_code(main, ext_text):
+    for code, text in main.settings_global['file_exts'].items():
+        if ext_text in text:
+            return code
+
 def to_ext_text(main, ext_code):
     return main.settings_global['file_exts'][ext_code].split(' (')[0]
 

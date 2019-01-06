@@ -14,6 +14,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_widgets import wordless_message_box
+
 def check_custom_settings(settings_custom, settings_default):
     def get_keys(settings, keys):
         for key, value in settings.items():
@@ -71,25 +73,45 @@ def log_timing(func):
 
     return wrapper
 
-def check_file_existence(main, files):
-    files_found = []
-    files_missing = []
+def check_files_by_path(main, file_paths):
+    files_nonexistent = []
+    files_unsupported = []
+    files_empty = []
+    files_duplicate = []
+    files_ok = []
 
-    if type(files) != list:
-        files = [files]
+    for file_path in file_paths:
+        file_path = os.path.normpath(file_path)
+
+        if not os.path.exists(file_path):
+            files_nonexistent.append(file_path)
+        elif os.path.splitext(file_path)[1] not in main.settings_global['file_exts']:
+            files_unsupported.append(file_path)
+        elif os.path.getsize(file_path) == 0:
+            files_empty.append(file_path)
+        elif main.wordless_files.find_file_by_path(file_path):
+            files_duplicate.append(file_path)
+        else:
+            files_ok.append(file_path)
+
+    wordless_message_box.wordless_message_box_error_open_files(main,
+                                                               files_nonexistent = files_nonexistent,
+                                                               files_unsupported = files_unsupported,
+                                                               files_empty = files_empty,
+                                                               files_duplicate = files_duplicate)
+
+    return files_ok
+
+def check_files(main, files):
+    files_ok = []
+
+    file_paths = check_files_by_path(main, [file['path'] for file in files])
 
     for file in files:
-        if os.path.exists(file['path']):
-            files_found.append(file)
-        else:
-            files_missing.append(file['path'])
+        if file['path'] in file_paths:
+            files_ok.append(file)
 
-    if files_missing:
-        QMessageBox.warning(main,
-                            main.tr('Files Missing'),
-                            main.tr('The following files no longer exist:<br>{}<br>Please check and try again.'.format('<br>'.join(files_missing))))
-
-    return files_found
+    return files_ok
 
 def merge_dicts(dicts_to_merge):
     dict_merged = {}
