@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #
 # Wordless: Testing for Detection
 #
@@ -84,6 +82,8 @@ file_deu = new_file('testing/Languages/German.txt')
 file_ita = new_file('testing/Languages/Italian.txt')
 file_jpn = new_file('testing/Languages/Japanese.txt')
 file_kor = new_file('testing/Languages/Korean.txt')
+file_nob = new_file('testing/Languages/Norwegian Bokmål.txt')
+file_nno = new_file('testing/Languages/Norwegian Nynorsk.txt')
 file_por = new_file('testing/Languages/Portuguese.txt')
 file_rus = new_file('testing/Languages/Russian.txt')
 file_spa = new_file('testing/Languages/Spanish.txt')
@@ -101,6 +101,8 @@ detect_lang(file_deu)
 detect_lang(file_ita)
 detect_lang(file_jpn)
 detect_lang(file_kor)
+detect_lang(file_nob)
+detect_lang(file_nno)
 detect_lang(file_por)
 detect_lang(file_rus)
 detect_lang(file_spa)
@@ -118,6 +120,8 @@ detect_lang(file_deu)
 detect_lang(file_ita)
 detect_lang(file_jpn)
 detect_lang(file_kor)
+detect_lang(file_nob)
+detect_lang(file_nno)
 detect_lang(file_por)
 detect_lang(file_rus)
 detect_lang(file_spa)

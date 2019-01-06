@@ -43,6 +43,7 @@ class Wordless_Table(QTableWidget):
         self.main = main
         self.headers = headers
         self.header_orientation = header_orientation
+        self.cols_stretch = cols_stretch
 
         if header_orientation == 'horizontal':
             super().__init__(1, len(self.headers), self.main)
@@ -61,6 +62,7 @@ class Wordless_Table(QTableWidget):
 
         self.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
+
         self.horizontalHeader().setHighlightSections(False)
         self.verticalHeader().setHighlightSections(False)
 
@@ -149,6 +151,17 @@ class Wordless_Table(QTableWidget):
                                        background-color: #264E8C;
                                    }
                                ''')
+
+        self.itemChanged.connect(self.item_changed)
+
+    def item_changed(self):
+        cols_stretch = self.find_col(self.cols_stretch)
+
+        self.resizeRowsToContents()
+
+        for i in range(self.columnCount()):
+            if i not in cols_stretch:
+                self.resizeColumnToContents(i)
 
     def insert_row(self, i, label):
         super().insertRow(i)
@@ -317,6 +330,8 @@ class Wordless_Table_Data(Wordless_Table):
             self.button_export_all.setEnabled(True)
         else:
             self.button_export_all.setEnabled(False)
+
+        super().item_changed()
 
         self.selection_changed()
 

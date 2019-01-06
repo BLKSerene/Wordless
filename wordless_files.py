@@ -21,34 +21,52 @@ class Wordless_Files():
         self.main = table.main
         self.table = table
 
-    def _new_file(self, file_path, detection = True):
+    def _new_file(self, file_path):
         file = {}
 
         file['selected'] = True
 
         file['path'] = os.path.normpath(file_path)
-        _, file_name = os.path.split(file['path'])
-        file['name'], file['ext_code'] = os.path.splitext(file_name)
+        file['name'], file['ext_code'] = os.path.splitext(os.path.basename(file['path']))
         file['ext_text'] = wordless_conversion.to_ext_text(self.main, file['ext_code'])
 
-        if detection:
-            file['encoding_code'] = wordless_detection.detect_encoding(self.main, file)
-            file['encoding_text'] = wordless_conversion.to_encoding_text(self.main, file['encoding_code'])
-            file['lang_code'] = wordless_detection.detect_lang(self.main, file)
-            file['lang_text'] = wordless_conversion.to_lang_text(self.main, file['lang_code'])
+        file['encoding_code'] = wordless_detection.detect_encoding(self.main, file)
+        file['encoding_text'] = wordless_conversion.to_encoding_text(self.main, file['encoding_code'])
+
+        file['lang_code'] = wordless_detection.detect_lang(self.main, file)
+        file['lang_text'] = wordless_conversion.to_lang_text(self.main, file['lang_code'])
+
+        file['name_old'] = file['name']
 
         return file
 
     @ wordless_misc.log_timing
     def add_files(self, file_paths):
+        files_nonexistent = []
+        files_unsupported = []
+        files_empty = []
+        files_duplicate = []
+
         len_files_old = len(self.main.settings_custom['file']['files_open'])
 
-        for file_path in file_paths:
-            if os.path.splitext(file_path)[1] in self.main.settings_global['file_exts']:
-                if os.path.getsize(file_path):
-                    self.main.settings_custom['file']['files_open'].append(self._new_file(file_path))
-                else:
-                    wordless_message_box.wordless_message_box_empty_file(self.main, file_path)
+        for file_path in wordless_misc.check_files_by_path(self.main, file_paths):
+            new_file = self._new_file(file_path)
+
+            # Check duplicate file name
+            if self.find_file_by_name(new_file['name']):
+                i = 1
+
+                while True:
+                    file_name = f"{new_file['name']} ({i})"
+
+                    if self.find_file_by_name(file_name):
+                        i += 1
+                    else:
+                        new_file['name'] = new_file['name_old'] = file_name
+
+                        break
+
+            self.main.settings_custom['file']['files_open'].append(new_file)
 
         self.write_table()
 
@@ -57,9 +75,9 @@ class Wordless_Files():
         if len_files_new - len_files_old == 0:
             self.main.status_bar.showMessage('No files are newly opened!')
         elif len_files_new - len_files_old == 1:
-            self.main.status_bar.showMessage('1 file has been successfully loaded.')
+            self.main.status_bar.showMessage('1 file has been successfully opened.')
         else:
-            self.main.status_bar.showMessage(f'{len_files_new - len_files_old} files have been successfully loaded.')
+            self.main.status_bar.showMessage(f'{len_files_new - len_files_old} files have been successfully opened.')
 
     def remove_files(self, indexes):
         self.main.settings_custom['file']['files_closed'].append([])
@@ -69,17 +87,19 @@ class Wordless_Files():
 
         self.write_table()
 
-    def reopen_files(self):
-        files = self.main.settings_custom['file']['files_closed'].pop()
+    def write_table(self, check_files = False):
+        if check_files:
+            files = copy.deepcopy(self.main.settings_custom['file']['files_open'])
 
-        self.main.settings_custom['file']['files_open'].extend(wordless_misc.check_file_existence(self.main, files))
+            self.main.settings_custom['file']['files_open'].clear()
 
-        self.write_table()
-
-    def write_table(self):
-        files = wordless_misc.check_file_existence(self.main, self.main.settings_custom['file']['files_open'])
+            for file in wordless_misc.check_files(self.main, files):
+                self.main.settings_custom['file']['files_open'].append(file)
 
         self.table.blockSignals(True)
+        self.table.setUpdatesEnabled(False)
+
+        files = self.main.settings_custom['file']['files_open']
 
         if files:
             self.table.clear_table(len(files))
@@ -99,7 +119,7 @@ class Wordless_Files():
 
                 combo_box_lang.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 1)))
                 combo_box_encoding.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 4)))
-                
+
                 self.table.setItem(i, 0, checkbox_name)
                 self.table.setCellWidget(i, 1, combo_box_lang)
                 self.table.setItem(i, 2, QTableWidgetItem(file['path']))
@@ -109,6 +129,7 @@ class Wordless_Files():
             self.table.clear_table(1)
 
         self.table.blockSignals(False)
+        self.table.setUpdatesEnabled(True)
 
         self.table.itemChanged.emit(self.table.item(0, 0))
 
@@ -117,10 +138,29 @@ class Wordless_Files():
 
         return files_selected
 
-    def find_selected_file(self, file_name):
-        for file in self.get_selected_files():
+    def find_file_by_name(self, file_name, selected_only = False):
+        if selected_only:
+            files = self.get_selected_files()
+        else:
+            files = self.main.settings_custom['file']['files_open']
+
+        for file in files:
             if file['name'] == file_name:
                 return file
+
+        return None
+
+    def find_file_by_path(self, file_path, selected_only = False):
+        if selected_only:
+            files = self.get_selected_files()
+        else:
+            files = self.main.settings_custom['file']['files_open']
+            
+        for file in files:
+            if file['path'] == file_path:
+                return file
+
+        return None
 
 class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
     def __init__(self, main):
@@ -138,6 +178,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
         self.itemChanged.connect(self.file_item_changed)
         self.itemClicked.connect(self.file_item_changed)
         self.itemSelectionChanged.connect(self.file_selection_changed)
+        self.cellDoubleClicked.connect(self.cell_double_clicked)
 
         self.button_open_files = QPushButton(self.tr('Add File(s)...'))
         self.button_open_dir = QPushButton(self.tr('Add Folder...'))
@@ -171,36 +212,54 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
         self.main.__class__.close_all = self.close_all
         self.main.__class__.reopen = self.reopen
 
-        self.main.wordless_files = Wordless_Files(self)
-        self.main.wordless_files.write_table()
+        self.file_item_changed()
 
     def file_item_changed(self):
-        duplicate_files = 0
-
-        self.main.settings_custom['file']['files_open'].clear()
-
         if any([self.item(0, i) for i in range(self.columnCount())]):
-            for row in reversed(list(range(self.rowCount()))):
-                for row_above in range(row):
-                    if self.item(row, 2).text() == self.item(row_above, 2).text():
-                        self.removeRow(row)
+            # Check duplicate file name
+            for row in range(self.rowCount()):
+                file_name = self.item(row, 0).text()
+                file_path = self.item(row, 2).text()
 
-                        duplicate_files += 1
+                file = self.main.wordless_files.find_file_by_path(file_path)
 
-                        break
+                if file_name != file['name_old']:
+                    if self.main.wordless_files.find_file_by_name(file_name):
+                        self.blockSignals(True)
+
+                        self.item(row, 0).setText(file['name_old'])
+                        
+                        self.blockSignals(False)
+
+                        wordless_message_box.wordless_message_box_duplicate_file_name(self.main)
+
+                        self.closePersistentEditor(self.item(row, 0))
+                        self.editItem(self.item(row, 0))
+
+                    break
+
+            self.main.settings_custom['file']['files_open'].clear()
 
             for row in range(self.rowCount()):
-                file = self.main.wordless_files._new_file(self.item(row, 2).text(), detection = False)
+                new_file = {}
 
-                file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
-                file['lang_text'] = self.cellWidget(row, 1).currentText()
-                file['lang_code'] = wordless_conversion.to_lang_code(self.main, file['lang_text'])
-                file['encoding_text'] = self.cellWidget(row, 4).currentText()
-                file['encoding_code'] = wordless_conversion.to_encoding_code(self.main, file['encoding_text'])
+                new_file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
 
-                self.main.settings_custom['file']['files_open'].append(file)
+                new_file['name'] = new_file['name_old'] = self.item(row, 0).text()
 
-        if any([self.item(0, i) for i in range(self.columnCount())]):
+                new_file['lang_text'] = self.cellWidget(row, 1).currentText()
+                new_file['lang_code'] = wordless_conversion.to_lang_code(self.main, new_file['lang_text'])
+
+                new_file['path'] = self.item(row, 2).text()
+
+                new_file['ext_text'] = self.item(row, 3).text()
+                new_file['ext_code'] = wordless_conversion.to_ext_code(self.main, new_file['ext_text'])
+
+                new_file['encoding_text'] = self.cellWidget(row, 4).currentText()
+                new_file['encoding_code'] = wordless_conversion.to_encoding_code(self.main, new_file['encoding_text'])
+
+                self.main.settings_custom['file']['files_open'].append(new_file)
+
             self.button_select_all.setEnabled(True)
             self.button_inverse.setEnabled(True)
             self.button_deselect_all.setEnabled(True)
@@ -223,18 +282,16 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
 
         self.file_selection_changed()
 
-        if duplicate_files:
-            QMessageBox.information(self.main,
-                                    self.tr('Duplicate Files Found'),
-                                    self.tr(f'{duplicate_files} duplicate files have been removed.'),
-                                    QMessageBox.Ok)
-
     def file_selection_changed(self):
         if any([self.item(0, i) for i in range(self.columnCount())]):
             if self.selectedIndexes():
                 self.button_close_selected.setEnabled(True)
             else:
                 self.button_close_selected.setEnabled(False)
+
+    def cell_double_clicked(self, row, col):
+        if col == self.find_col(self.tr('File Name')):
+            self.editItem(self.item(row, col))
 
     def open_files(self):
         file_paths = QFileDialog.getOpenFileNames(self.main,
@@ -270,7 +327,9 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
             self.main.settings_custom['general']['file_default_path'] = file_dir
 
     def reopen(self):
-        self.main.wordless_files.reopen_files()
+        files = self.main.settings_custom['file']['files_closed'].pop()
+
+        self.main.wordless_files.add_files([file['path'] for file in files])
 
     def select_all(self):
         if self.item(0, 0):
@@ -365,5 +424,8 @@ def init(main):
     tab_files.layout_settings.setRowStretch(2, 1)
 
     load_settings()
+
+    main.wordless_files = Wordless_Files(table_files)
+    main.wordless_files.write_table(check_files = True)
 
     return tab_files
