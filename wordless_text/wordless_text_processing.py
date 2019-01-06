@@ -492,14 +492,17 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'default'):
         elif lemmatizer == main.tr('NLTK - WordNet Lemmatizer'):
             word_net_lemmatizer = nltk.WordNetLemmatizer()
 
-            for i, (token, pos) in enumerate(nltk.pos_tag(tokens)):
-                if pos in ['JJ', 'JJR', 'JJS']:
+            for token, pos in wordless_pos_tag(main, tokens,
+                                               lang_code = 'eng',
+                                               pos_tagger = 'NLTK - Perceptron POS Tagger',
+                                               tagset = 'universal'):
+                if pos == 'ADJ':
                     lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADJ))
-                elif pos in ['NN', 'NNS', 'NNP', 'NNPS']:
+                elif pos in ['NOUN', 'PROPN']:
                     lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.NOUN))
-                elif pos in ['RB', 'RBR', 'RBS']:
+                elif pos == 'ADV':
                     lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADV))
-                elif pos in ['VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ']:
+                elif pos in ['VERB', 'AUX']:
                     lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
                 else:
                     lemmas.append(word_net_lemmatizer.lemmatize(token))
