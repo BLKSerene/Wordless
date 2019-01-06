@@ -234,8 +234,8 @@ def init_settings_global(main):
 
         'file_exts': {
             '.txt': main.tr('Text File (*.txt)'),
-            '.htm': main.tr('HTML Page (*.htm; *.html)'),
-            '.html': main.tr('HTML Page (*.htm; *.html)')
+            '.html': main.tr('HTML Page (*.htm; *.html)'),
+            '.htm': main.tr('HTML Page (*.htm; *.html)')
         },
 
         'file_types': {

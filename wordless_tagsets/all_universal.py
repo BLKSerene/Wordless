@@ -20,7 +20,7 @@ mappings = [
     ['AUX', 'AUX', 'Auxiliary', 'has (done), is (doing), will (do)\nwas (done), got (done)\nshould (do), must (do)\nis (He is a teacher.)'],
 
     ['ADP', 'ADP', 'Adposition', 'in, to, during'],
-    ['CONJ', 'CONJ', 'Coordinating or subordinating conjunction', 'and, or, but\nthat (I believe that he will come), if, while'],
+    ['CONJ', 'CONJ', 'Conjunction', 'and, or, but\nthat (I believe that he will come), if, while'],
     ['CCONJ', 'CCONJ', 'Coordinating conjunction', 'and, or, but'],
     ['SCONJ', 'SCONJ', 'Subordinating conjunction', 'that (I believe that he will come), if, while'],
     ['DET', 'DET', 'Determiner', 'the, a, an\n[Czech] můj, tvůj, jeho, její, náš, váš, jejich; [English] my, your\nthis (I saw this car yesterday)\nwhich (Which car do you like?)\nwhich (I wonder which car you like.)\nany, all, no (We have no cars available.)'],

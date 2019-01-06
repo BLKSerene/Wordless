@@ -1009,7 +1009,8 @@ def generate_table(main, table):
 
             table.settings = copy.deepcopy(main.settings_custom)
 
-            ref_file = main.wordless_files.find_selected_file(settings['generation_settings']['ref_file'])
+            ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
+                                                             selected_only = True)
 
             # Insert columns (Files)
             table.insert_col(table.columnCount() - 1,
@@ -1166,7 +1167,8 @@ def generate_plot(main):
                  if file['name'] != settings['generation_settings']['ref_file']]
 
         if files:
-            ref_file = main.wordless_files.find_selected_file(settings['generation_settings']['ref_file'])
+            ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
+                                                             selected_only = True)
 
             text_test_significance = settings['generation_settings']['test_significance']
             text_measure_effect_size = settings['generation_settings']['measure_effect_size']
