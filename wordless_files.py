@@ -283,11 +283,10 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
         self.file_selection_changed()
 
     def file_selection_changed(self):
-        if any([self.item(0, i) for i in range(self.columnCount())]):
-            if self.selectedIndexes():
-                self.button_close_selected.setEnabled(True)
-            else:
-                self.button_close_selected.setEnabled(False)
+        if any([self.item(0, i) for i in range(self.columnCount())]) and self.selectedIndexes():
+            self.button_close_selected.setEnabled(True)
+        else:
+            self.button_close_selected.setEnabled(False)
 
     def cell_double_clicked(self, row, col):
         if col == self.find_col(self.tr('File Name')):
