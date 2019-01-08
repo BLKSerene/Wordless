@@ -85,7 +85,7 @@ def check_files_by_path(main, file_paths):
 
         if not os.path.exists(file_path):
             files_nonexistent.append(file_path)
-        elif os.path.splitext(file_path)[1] not in main.settings_global['file_exts']:
+        elif os.path.splitext(file_path)[1].lower() not in main.settings_global['file_exts']:
             files_unsupported.append(file_path)
         elif os.path.getsize(file_path) == 0:
             files_empty.append(file_path)
@@ -112,6 +112,22 @@ def check_files(main, files):
             files_ok.append(file)
 
     return files_ok
+
+def check_new_name(new_name, names):
+    i = 2
+
+    if new_name in names:
+        while True:
+            new_name_valid = f"{new_name} ({i})"
+
+            if new_name_valid in names:
+                i += 1
+            else:
+                break
+    else:
+        new_name_valid = new_name
+
+    return new_name_valid
 
 def merge_dicts(dicts_to_merge):
     dict_merged = {}
