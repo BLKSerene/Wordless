@@ -20,7 +20,7 @@ def detect_encoding(main, file):
     text_sample = b''
 
     # Default Encoding
-    encoding_code = main.settings_custom['general']['file_default_encoding']
+    encoding_code = main.settings_custom['import']['files']['default_encoding']
 
     if main.settings_custom['file']['detect_encodings']:
         with open(file['path'], 'rb') as f:
@@ -60,7 +60,7 @@ def detect_lang(main, file):
     text = ''
 
     # Default Language
-    lang_code = main.settings_custom['general']['file_default_lang']
+    lang_code = main.settings_custom['import']['files']['default_lang']
 
     detection_engine = main.settings_custom['lang_detection']['detection_settings']['detection_engine']
 

@@ -137,11 +137,11 @@ class Wordless_List(QListWidget):
     def import_list(self):
         file_path = QFileDialog.getOpenFileName(self.main,
                                                 self.tr('Import Search Terms from File'),
-                                                self.main.settings_custom['import']['search_terms_default_path'],
+                                                self.main.settings_custom['import']['search_terms']['default_path'],
                                                 self.tr('Text File (*.txt)'))[0]
 
         if file_path:
-            encoding_code = self.main.settings_custom['import']['search_terms_default_encoding']
+            encoding_code = self.main.settings_custom['import']['search_terms']['default_encoding']
             encoding_text = wordless_conversion.to_encoding_text(self.main, encoding_code)
 
             try:
@@ -164,16 +164,16 @@ class Wordless_List(QListWidget):
                                                 </body>
                                             '''))
 
-            self.main.settings_custom['import']['search_terms_default_path'] = os.path.split(file_path)[0]
+            self.main.settings_custom['import']['search_terms']['default_path'] = os.path.split(file_path)[0]
 
     def export_list(self):
         file_path = QFileDialog.getSaveFileName(self.main,
                                                 self.tr('Export Search Terms to File'),
-                                                self.main.settings_custom['export']['search_terms_default_path'],
+                                                self.main.settings_custom['export']['search_terms']['default_path'],
                                                 self.tr('Text File (*.txt)'))[0]
 
         if file_path:
-            encoding = self.main.settings_custom['export']['search_terms_default_encoding']
+            encoding = self.main.settings_custom['export']['search_terms']['default_encoding']
 
             with open(file_path, 'w', encoding = encoding) as f:
                 for item in self.get_items():

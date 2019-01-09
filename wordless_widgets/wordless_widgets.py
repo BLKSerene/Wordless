@@ -412,7 +412,7 @@ def wordless_widgets_filter_measures(main, filter_min = -10000, filter_max = 100
             spin_box_min.setValue(spin_box_max.value())
 
     def precision_changed():
-        precision = main.settings_custom['general']['precision_decimal']
+        precision = main.settings_custom['data']['precision_decimal']
 
         spin_box_min.setDecimals(precision)
         spin_box_max.setDecimals(precision)
@@ -454,7 +454,7 @@ def wordless_widgets_filter_p_value(main):
             spin_box_min.setValue(spin_box_max.value())
 
     def precision_changed():
-        precision = main.settings_custom['general']['precision_p_value']
+        precision = main.settings_custom['data']['precision_p_value']
 
         spin_box_min.setDecimals(precision)
         spin_box_max.setDecimals(precision)
