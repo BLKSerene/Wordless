@@ -104,6 +104,7 @@ venv.bak/
 .mypy_cache/
 
 # Custom
-export/
+Import/
+Export/
 Misc/
 *.pkl

@@ -432,8 +432,8 @@ class Wordless_Table_Data(Wordless_Table):
         self.set_item_num(row, col, item)
 
     def update_items_width(self):
-        precision_val = self.main.settings_custom['general']['precision_decimal']
-        precision_pct = self.main.settings_custom['general']['precision_pct']
+        precision_val = self.main.settings_custom['data']['precision_decimal']
+        precision_pct = self.main.settings_custom['data']['precision_pct']
         len_pct = precision_pct + 5
 
         rows_hidden = [row for row in range(self.rowCount()) if self.isRowHidden(row)]
@@ -454,9 +454,9 @@ class Wordless_Table_Data(Wordless_Table):
 
                 # p-value
                 if self.tr('p-value') in self.horizontalHeaderItem(col).text():
-                    precision_val = self.main.settings_custom['general']['precision_p_value']
+                    precision_val = self.main.settings_custom['data']['precision_p_value']
                 else:
-                    precision_val = self.main.settings_custom['general']['precision_decimal']
+                    precision_val = self.main.settings_custom['data']['precision_decimal']
 
                 if type(max_val) == int:
                     len_val = len(f'{max_val:,}')
@@ -755,9 +755,9 @@ class Wordless_Table_Data(Wordless_Table):
         (file_path,
          file_type) = QFileDialog.getSaveFileName(self,
                                                   self.tr('Export Table'),
-                                                  self.main.settings_custom['export']['tables_default_path'],
+                                                  self.main.settings_custom['export']['tables']['default_path'],
                                                   ';;'.join(self.main.settings_global['file_types']['export_tables']),
-                                                  self.main.settings_custom['export']['tables_default_type'])
+                                                  self.main.settings_custom['export']['tables']['default_type'])
 
         if file_path:
             if file_type == self.tr('Excel Workbook (*.xlsx)'):
@@ -828,8 +828,8 @@ class Wordless_Table_Data(Wordless_Table):
                                                                                          bottom = border)
 
                 workbook.save(file_path)
-            elif file_type == self.tr('CSV (Comma Delimited) (*.csv)'):
-                encoding = self.main.settings_custom['export']['tables_default_encoding']
+            elif file_type == self.tr('CSV File (*.csv)'):
+                encoding = self.main.settings_custom['export']['tables']['default_encoding']
 
                 with open(file_path, 'w', encoding = encoding, newline = '') as f:
                     csv_writer = csv.writer(f)
@@ -855,8 +855,8 @@ class Wordless_Table_Data(Wordless_Table):
                             csv_writer.writerow([self.verticalHeaderItem(row).text().strip()] +
                                                 [self.item(row, col).text().strip() for col in range(self.columnCount())])
 
-            self.main.settings_custom['export']['tables_default_path'] = os.path.split(file_path)[0]
-            self.main.settings_custom['export']['tables_default_type'] = file_type
+            self.main.settings_custom['export']['tables']['default_path'] = os.path.split(file_path)[0]
+            self.main.settings_custom['export']['tables']['default_type'] = file_type
 
             wordless_message_box.wordless_message_box_export_completed_table(self.main, file_path)
 

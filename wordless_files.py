@@ -6,6 +6,7 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
+import collections
 import copy
 import os
 
@@ -316,24 +317,24 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
             self.editItem(self.item(row, col))
 
     def open_files(self):
-        file_exts = ';;'.join(set(self.main.settings_global['file_exts'].values()))
-        
+        file_exts = list(collections.OrderedDict.fromkeys(self.main.settings_global['file_exts'].values()))
+
         file_paths = QFileDialog.getOpenFileNames(self.main,
                                                   self.tr('Choose multiple files'),
-                                                  self.main.settings_custom['general']['file_default_path'],
-                                                  file_exts)[0]
+                                                  self.main.settings_custom['import']['files']['default_path'],
+                                                  ';;'.join(file_exts))[0]
 
         if file_paths:
             self.main.wordless_files.add_files(file_paths)
 
-            self.main.settings_custom['general']['file_default_path'] = os.path.split(file_paths[0])[0]
+            self.main.settings_custom['import']['files']['default_path'] = os.path.split(file_paths[0])[0]
 
     def open_dir(self, subfolders = True):
         file_paths = []
 
         file_dir = QFileDialog.getExistingDirectory(self.main,
                                                      self.tr('Choose a folder'),
-                                                     self.main.settings_custom['general']['file_default_path'],)
+                                                     self.main.settings_custom['import']['files']['default_path'])
 
         if file_dir:
             if subfolders:
@@ -348,7 +349,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
 
             self.main.wordless_files.add_files(file_paths)
 
-            self.main.settings_custom['general']['file_default_path'] = file_dir
+            self.main.settings_custom['import']['files']['default_path'] = file_dir
 
     def reopen(self):
         files = self.main.settings_custom['file']['files_closed'].pop()
