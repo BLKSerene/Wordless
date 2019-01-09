@@ -235,13 +235,14 @@ def init_settings_global(main):
         'file_exts': {
             '.txt': main.tr('Text File (*.txt)'),
             '.html': main.tr('HTML Page (*.htm; *.html)'),
-            '.htm': main.tr('HTML Page (*.htm; *.html)')
+            '.htm': main.tr('HTML Page (*.htm; *.html)'),
+            '.tmx': main.tr('Translation Memory File (*.tmx)')
         },
 
         'file_types': {
             'export_tables': [
                 main.tr('Excel Workbook (*.xlsx)'),
-                main.tr('CSV (Comma Delimited) (*.csv)')
+                main.tr('CSV File (*.csv)')
             ]
         },
 
