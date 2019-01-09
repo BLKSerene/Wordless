@@ -759,31 +759,40 @@ def init_settings_default(main):
         },
 
         'general': {
-            'file_default_path': os.path.realpath('.'),
-            'file_default_lang': 'eng',
-            'file_default_encoding': 'utf_8',
-
-            'precision_decimal': 2,
-            'precision_pct': 2,
-            'precision_p_value': 5,
-
             'font_monospace': 'Consolas',
-
             'style_highlight': 'border: 1px solid Red;'
         },
 
         'import': {
-            'search_terms_default_path': os.path.realpath('.'),
-            'search_terms_default_encoding': 'utf_8',
+            'files': {
+                'default_path': os.path.realpath('.'),
+                'default_lang': 'eng',
+                'default_encoding': 'utf_8'
+            },
+
+            'search_terms': {
+                'default_path': os.path.realpath('.'),
+                'default_encoding': 'utf_8'
+            }
         },
 
         'export': {
-            'tables_default_path': os.path.realpath('./export/'),
-            'tables_default_type': main.tr('Excel Workbook (*.xlsx)'),
-            'tables_default_encoding': 'utf_8',
+            'tables': {
+                'default_path': os.path.realpath('./export/'),
+                'default_type': main.tr('Excel Workbook (*.xlsx)'),
+                'default_encoding': 'utf_8'
+            },
 
-            'search_terms_default_path': os.path.realpath('./export/'),
-            'search_terms_default_encoding': 'utf_8',
+            'search_terms': {
+                'default_path': os.path.realpath('./export/'),
+                'default_encoding': 'utf_8'
+            }
+        },
+
+        'data': {
+            'precision_decimal': 2,
+            'precision_pct': 2,
+            'precision_p_value': 5
         },
 
         'lang_detection': {
