@@ -13,6 +13,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+import bs4
+
 from wordless_widgets import *
 from wordless_utils import *
 
@@ -28,6 +30,8 @@ class Wordless_Files():
 
         file['path'] = os.path.normpath(file_path)
         file['name'], file['ext_code'] = os.path.splitext(os.path.basename(file['path']))
+
+        file['ext_code'] = file['ext_code'].lower()
         file['ext_text'] = wordless_conversion.to_ext_text(self.main, file['ext_code'])
 
         file['encoding_code'] = wordless_detection.detect_encoding(self.main, file)
@@ -50,23 +54,42 @@ class Wordless_Files():
         len_files_old = len(self.main.settings_custom['file']['files_open'])
 
         for file_path in wordless_misc.check_files_by_path(self.main, file_paths):
-            new_file = self._new_file(file_path)
+            path_head, ext = os.path.splitext(file_path)
 
-            # Check duplicate file name
-            if self.find_file_by_name(new_file['name']):
-                i = 1
+            if ext in ['.txt', '.html', '.htm']:
+                new_files = [self._new_file(file_path)]
+            elif ext in ['.tmx']:
+                lines_src = []
+                lines_target = []
 
-                while True:
-                    file_name = f"{new_file['name']} ({i})"
+                encoding = wordless_detection.detect_encoding(self.main, self._new_file(file_path))
 
-                    if self.find_file_by_name(file_name):
-                        i += 1
-                    else:
-                        new_file['name'] = new_file['name_old'] = file_name
+                with open(file_path, 'r', encoding = encoding) as f:
+                    soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
 
-                        break
+                    for tu in soup.find_all('tu'):
+                        seg_src, seg_target = tu.find_all('seg')
 
-            self.main.settings_custom['file']['files_open'].append(new_file)
+                        lines_src.append(seg_src.get_text())
+                        lines_target.append(seg_target.get_text())
+
+                path_src = f'{path_head}_source.txt'
+                path_target = f'{path_head}_target.txt'
+
+                with open(path_src, 'w', encoding = encoding) as f:
+                    f.write('\n'.join(lines_src))
+
+                with open(path_target, 'w', encoding = encoding) as f:
+                    f.write('\n'.join(lines_target))
+
+                new_files = [self._new_file(path_src),
+                             self._new_file(path_target)]
+
+            for new_file in new_files:
+                file_names = [file['name'] for file in self.main.settings_custom['file']['files_open']]
+                new_file['name'] = new_file['name_old'] = wordless_misc.check_new_name(new_file['name'], file_names)
+
+                self.main.settings_custom['file']['files_open'].append(new_file)
 
         self.write_table()
 
@@ -157,7 +180,7 @@ class Wordless_Files():
             files = self.main.settings_custom['file']['files_open']
             
         for file in files:
-            if file['path'] == file_path:
+            if os.path.normcase(file['path']) == os.path.normcase(file_path):
                 return file
 
         return None
@@ -293,10 +316,12 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
             self.editItem(self.item(row, col))
 
     def open_files(self):
+        file_exts = ';;'.join(set(self.main.settings_global['file_exts'].values()))
+        
         file_paths = QFileDialog.getOpenFileNames(self.main,
                                                   self.tr('Choose multiple files'),
                                                   self.main.settings_custom['general']['file_default_path'],
-                                                  ';;'.join(self.main.settings_global['file_exts'].values()))[0]
+                                                  file_exts)[0]
 
         if file_paths:
             self.main.wordless_files.add_files(file_paths)
