@@ -94,8 +94,8 @@ def check_files_unsupported(main, file_paths):
 
     return files_ok, files_unsupported
 
-def check_files_failed_to_open(main, file_paths):
-    files_failed_to_open = []
+def check_files_encoding_error(main, file_paths):
+    files_encoding_error = []
     files_ok = []
 
     for file_path in file_paths:
@@ -110,23 +110,23 @@ def check_files_failed_to_open(main, file_paths):
             try:
                 open(file_path, 'r', encoding = encoding_code).read()
             except UnicodeDecodeError:
-                files_failed_to_open.append(file_path)
+                files_encoding_error.append(file_path)
             else:
                 files_ok.append(file_path)
         else:
             files_ok.append(file_path)
 
-    return files_ok, files_failed_to_open
+    return files_ok, files_encoding_error
 
 def check_files_all(main, file_paths):
     file_paths, files_missing = check_files_missing(main, file_paths)
     file_paths, files_empty = check_files_empty(main, file_paths)
     file_paths, files_duplicate = check_files_duplicate(main, file_paths)
     file_paths, files_unsupported = check_files_unsupported(main, file_paths)
-    file_paths, files_failed_to_open = check_files_failed_to_open(main, file_paths)
+    file_paths, files_encoding_error = check_files_encoding_error(main, file_paths)
 
     return (file_paths,
-            files_missing, files_empty, files_duplicate, files_unsupported, files_failed_to_open)
+            files_missing, files_empty, files_duplicate, files_unsupported, files_encoding_error)
 
 def check_new_name(new_name, names):
     i = 2

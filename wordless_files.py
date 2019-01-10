@@ -71,14 +71,14 @@ class Wordless_Files():
          files_empty,
          files_duplicate,
          files_unsupported,
-         files_failed_to_open) = wordless_checking.check_files_all(self.main, file_paths)
+         files_encoding_error) = wordless_checking.check_files_all(self.main, file_paths)
 
         wordless_message_box.wordless_message_box_error_open_files(self.main,
                                                                    files_missing = files_missing,
                                                                    files_empty = files_empty,
                                                                    files_duplicate = files_duplicate,
                                                                    files_unsupported = files_unsupported,
-                                                                   files_failed_to_open = files_failed_to_open)
+                                                                   files_encoding_error = files_encoding_error)
 
         for file_path in file_paths:
             path_head, ext = os.path.splitext(file_path)
@@ -385,7 +385,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
         if file_paths:
             self.main.wordless_files.add_files(file_paths)
 
-            self.main.settings_custom['import']['files']['default_path'] = os.path.split(file_paths[0])[0]
+            self.main.settings_custom['import']['files']['default_path'] = os.path.dirname(file_paths[0])
 
     def open_dir(self, subfolders = True):
         file_paths = []
