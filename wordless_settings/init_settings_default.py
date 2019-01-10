@@ -18,10 +18,14 @@ def init_settings_default(main):
             'files_open': [],
             'files_closed': [],
 
-            'subfolders': True,
+            'folder_settings': {
+                'subfolders': True
+            },
 
-            'detect_langs': True,
-            'detect_encodings': True
+            'auto_detection_settings': {
+                'detect_langs': True,
+                'detect_encodings': True
+            }
         },
 
         'overview': {
@@ -765,14 +769,12 @@ def init_settings_default(main):
 
         'import': {
             'files': {
-                'default_path': os.path.realpath('.'),
-                'default_lang': 'eng',
-                'default_encoding': 'utf_8'
+                'default_path': os.path.realpath('.')
             },
 
             'search_terms': {
                 'default_path': os.path.realpath('.'),
-                'default_encoding': 'utf_8'
+                'detect_encodings': True
             }
         },
 
@@ -800,6 +802,16 @@ def init_settings_default(main):
                 'detection_engine': 'langid.py',
                 'number_lines': 100,
                 'number_lines_no_limit': False
+            },
+
+            'default_settings': {
+                'default_lang': 'eng'
+            }
+        },
+
+        'encoding_detection': {
+            'default_settings': {
+                'default_encoding': 'utf_8'
             }
         },
 

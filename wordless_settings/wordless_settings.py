@@ -77,6 +77,7 @@ class Wordless_Settings(QDialog):
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Auto-detection')]))
         self.tree_settings.topLevelItem(2).addChild(QTreeWidgetItem([self.tr('Language Detection')]))
+        self.tree_settings.topLevelItem(2).addChild(QTreeWidgetItem([self.tr('Encoding Detection')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Sentence Tokenization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Word Tokenization')]))
@@ -104,6 +105,7 @@ class Wordless_Settings(QDialog):
         self.init_settings_data()
 
         self.init_settings_lang_detection()
+        self.init_settings_encoding_detection()
 
         self.init_settings_sentence_tokenization()
         self.init_settings_word_tokenization()
@@ -172,6 +174,8 @@ class Wordless_Settings(QDialog):
                     item_selected.setExpanded(True)
                 elif item_selected_text == self.tr('Language Detection'):
                     settings_cur = self.settings_lang_detection
+                elif item_selected_text == self.tr('Encoding Detection'):
+                    settings_cur = self.settings_encoding_detection
 
                 elif item_selected_text == self.tr('Sentence Tokenization'):
                     settings_cur = self.settings_sentence_tokenization
@@ -210,6 +214,7 @@ class Wordless_Settings(QDialog):
                     self.settings_data.hide()
 
                     self.settings_lang_detection.hide()
+                    self.settings_encoding_detection.hide()
 
                     self.settings_sentence_tokenization.hide()
                     self.settings_word_tokenization.hide()
@@ -245,7 +250,7 @@ class Wordless_Settings(QDialog):
         def browse_file():
             path_file = QFileDialog.getExistingDirectory(self,
                                                          self.tr('Browse'),
-                                                         self.main.settings_custom['general']['file_default_path'])
+                                                         self.main.settings_custom['import']['files']['default_path'])
 
             if path_file:
                 self.line_edit_file_default_path.setText(path_file)
@@ -253,7 +258,7 @@ class Wordless_Settings(QDialog):
         def browse_search_terms():
             path_file = QFileDialog.getExistingDirectory(self,
                                                          self.tr('Browse'),
-                                                         self.main.settings_custom['import']['search_terms_default_path'])
+                                                         self.main.settings_custom['import']['search_terms']['default_path'])
 
             if path_file:
                 self.line_edit_import_search_terms_default_path.setText(path_file)
@@ -266,10 +271,6 @@ class Wordless_Settings(QDialog):
         self.label_import_files_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_import_files_default_path = QLineEdit(self)
         self.button_import_files_browse = QPushButton(self.tr('Browse'), self)
-        self.label_import_files_default_lang = QLabel(self.tr('Default Language:'), self)
-        self.combo_box_import_files_default_lang = wordless_box.Wordless_Combo_Box_Lang(self.main)
-        self.label_import_files_default_encoding = QLabel(self.tr('Default Encoding:'), self)
-        self.combo_box_import_files_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
 
         self.button_import_files_browse.clicked.connect(browse_file)
 
@@ -277,18 +278,13 @@ class Wordless_Settings(QDialog):
         group_box_import_files.layout().addWidget(self.label_import_files_default_path, 0, 0)
         group_box_import_files.layout().addWidget(self.line_edit_import_files_default_path, 0, 1)
         group_box_import_files.layout().addWidget(self.button_import_files_browse, 0, 2)
-        group_box_import_files.layout().addWidget(self.label_import_files_default_lang, 1, 0)
-        group_box_import_files.layout().addWidget(self.combo_box_import_files_default_lang, 1, 1, 1, 2)
-        group_box_import_files.layout().addWidget(self.label_import_files_default_encoding, 2, 0)
-        group_box_import_files.layout().addWidget(self.combo_box_import_files_default_encoding, 2, 1, 1, 2)
 
         group_box_import_search_terms = QGroupBox(self.tr('Search Terms'), self)
 
         self.label_import_search_terms_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_import_search_terms_default_path = QLineEdit(self)
         self.button_import_search_terms_browse = QPushButton(self.tr('Browse'), self)
-        self.label_import_search_terms_default_encoding = QLabel(self.tr('Default Encoding:'), self)
-        self.combo_box_import_search_terms_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
+        self.checkbox_import_search_terms_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'))
 
         self.button_import_search_terms_browse.clicked.connect(browse_search_terms)
 
@@ -296,8 +292,7 @@ class Wordless_Settings(QDialog):
         group_box_import_search_terms.layout().addWidget(self.label_import_search_terms_default_path, 0, 0)
         group_box_import_search_terms.layout().addWidget(self.line_edit_import_search_terms_default_path, 0, 1)
         group_box_import_search_terms.layout().addWidget(self.button_import_search_terms_browse, 0, 2)
-        group_box_import_search_terms.layout().addWidget(self.label_import_search_terms_default_encoding, 1, 0)
-        group_box_import_search_terms.layout().addWidget(self.combo_box_import_search_terms_default_encoding, 1, 1, 1, 2)
+        group_box_import_search_terms.layout().addWidget(self.checkbox_import_search_terms_detect_encodings, 1, 0, 1, 3)
 
         self.settings_import.setLayout(QGridLayout())
         self.settings_import.layout().addWidget(group_box_import_files, 0, 0)
@@ -316,7 +311,7 @@ class Wordless_Settings(QDialog):
         def browse_tables():
             path_file = QFileDialog.getExistingDirectory(self,
                                                          self.tr('Browse'),
-                                                         self.main.settings_custom['export']['tables_default_path'])
+                                                         self.main.settings_custom['export']['tables']['default_path'])
 
             if path_file:
                 self.line_edit_export_tables_default_path.setText(path_file)
@@ -324,7 +319,7 @@ class Wordless_Settings(QDialog):
         def browse_search_terms():
             path_file = QFileDialog.getExistingDirectory(self,
                                                          self.tr('Browse'),
-                                                         self.main.settings_custom['export']['search_terms_default_path'])
+                                                         self.main.settings_custom['export']['search_terms']['default_path'])
 
             if path_file:
                 self.line_edit_export_search_terms_default_path.setText(path_file)
@@ -420,7 +415,7 @@ class Wordless_Settings(QDialog):
         self.settings_lang_detection = QWidget(self)
 
         # Detection Settings
-        group_box_lang_detection_settings = QGroupBox(self.tr('Detection Settings'), self)
+        group_box_detection_settings = QGroupBox(self.tr('Detection Settings'), self)
 
         self.label_lang_detection_engine = QLabel(self.tr('Detection Engine:'), self)
         self.combo_box_lang_detection_engine = wordless_box.Wordless_Combo_Box(self)
@@ -440,17 +435,50 @@ class Wordless_Settings(QDialog):
 
         layout_number_lines.setColumnStretch(3, 1)
 
-        group_box_lang_detection_settings.setLayout(QGridLayout())
-        group_box_lang_detection_settings.layout().addWidget(self.label_lang_detection_engine, 0, 0)
-        group_box_lang_detection_settings.layout().addWidget(self.combo_box_lang_detection_engine, 0, 1)
-        group_box_lang_detection_settings.layout().addLayout(layout_number_lines, 1, 0, 1, 3)
+        group_box_detection_settings.setLayout(QGridLayout())
+        group_box_detection_settings.layout().addWidget(self.label_lang_detection_engine, 0, 0)
+        group_box_detection_settings.layout().addWidget(self.combo_box_lang_detection_engine, 0, 1)
+        group_box_detection_settings.layout().addLayout(layout_number_lines, 1, 0, 1, 3)
 
-        group_box_lang_detection_settings.layout().setColumnStretch(2, 1)
+        group_box_detection_settings.layout().setColumnStretch(2, 1)
+
+        # Default Settings
+        group_box_default_settings = QGroupBox(self.tr('Default Settings'), self)
+
+        self.label_lang_detection_default_lang = QLabel(self.tr('Default Language:'), self)
+        self.combo_box_lang_detection_default_lang = wordless_box.Wordless_Combo_Box_Lang(self.main)
+
+        group_box_default_settings.setLayout(QGridLayout())
+        group_box_default_settings.layout().addWidget(self.label_lang_detection_default_lang, 0, 0)
+        group_box_default_settings.layout().addWidget(self.combo_box_lang_detection_default_lang, 0, 1)
+
+        group_box_default_settings.layout().setColumnStretch(2, 1)
 
         self.settings_lang_detection.setLayout(QGridLayout())
-        self.settings_lang_detection.layout().addWidget(group_box_lang_detection_settings, 0, 0)
+        self.settings_lang_detection.layout().addWidget(group_box_detection_settings, 0, 0)
+        self.settings_lang_detection.layout().addWidget(group_box_default_settings, 1, 0)
 
-        self.settings_lang_detection.layout().setRowStretch(1, 1)
+        self.settings_lang_detection.layout().setRowStretch(2, 1)
+
+    # Settings -> Auto-detection -> Encoding Detection
+    def init_settings_encoding_detection(self):
+        self.settings_encoding_detection = QWidget(self)
+
+        group_box_default_settings = QGroupBox(self.tr('Default Settings'), self)
+
+        self.label_encoding_detection_default_encoding = QLabel(self.tr('Default Encoding:'), self)
+        self.combo_box_encoding_detection_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
+
+        group_box_default_settings.setLayout(QGridLayout())
+        group_box_default_settings.layout().addWidget(self.label_encoding_detection_default_encoding, 0, 0)
+        group_box_default_settings.layout().addWidget(self.combo_box_encoding_detection_default_encoding, 0, 1)
+
+        group_box_default_settings.layout().setColumnStretch(2, 1)
+
+        self.settings_encoding_detection.setLayout(QGridLayout())
+        self.settings_encoding_detection.layout().addWidget(group_box_default_settings, 0, 0)
+
+        self.settings_encoding_detection.layout().setRowStretch(1, 1)
 
     # Settings -> Sentence Tokenization
     def init_settings_sentence_tokenization(self):
@@ -1486,15 +1514,12 @@ class Wordless_Settings(QDialog):
         else:
             self.line_edit_import_files_default_path.setText(self.main.settings_default['import']['files']['default_path'])
 
-        self.combo_box_import_files_default_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['import']['files']['default_lang']))
-        self.combo_box_import_files_default_encoding.setCurrentText(wordless_conversion.to_encoding_text(self.main, settings['import']['files']['default_encoding']))
-
         if os.path.exists(settings['import']['search_terms']['default_path']):
             self.line_edit_import_search_terms_default_path.setText(settings['import']['search_terms']['default_path'])
         else:
             self.line_edit_import_search_terms_default_path.setText(self.main.settings_default['import']['search_terms']['default_path'])
 
-        self.combo_box_import_search_terms_default_encoding.setCurrentText(settings['import']['search_terms']['default_encoding'])
+        self.checkbox_import_search_terms_detect_encodings.setChecked(settings['import']['search_terms']['detect_encodings'])
 
         # Files -> Export
         if os.path.exists(settings['export']['tables']['default_path']):
@@ -1521,6 +1546,11 @@ class Wordless_Settings(QDialog):
         self.combo_box_lang_detection_engine.setCurrentText(settings['lang_detection']['detection_settings']['detection_engine'])
         self.spin_box_lang_detection_number_lines.setValue(settings['lang_detection']['detection_settings']['number_lines'])
         self.checkbox_lang_detection_number_lines_no_limit.setChecked(settings['lang_detection']['detection_settings']['number_lines_no_limit'])
+
+        self.combo_box_lang_detection_default_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['lang_detection']['default_settings']['default_lang']))
+
+        # Auto-detection -> Encoding Detection
+        self.combo_box_encoding_detection_default_encoding.setCurrentText(wordless_conversion.to_encoding_text(self.main, settings['encoding_detection']['default_settings']['default_encoding']))
 
         # Tokenization -> Sentence Tokenization
         for lang_code in settings['sentence_tokenization']['sentence_tokenizers']:
@@ -1718,11 +1748,9 @@ class Wordless_Settings(QDialog):
 
             # Files -> Import
             settings['import']['files']['default_path'] = self.line_edit_import_files_default_path.text()
-            settings['import']['files']['default_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_import_files_default_lang.currentText())
-            settings['import']['files']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_import_files_default_encoding.currentText())
 
             settings['import']['search_terms']['default_path'] = self.line_edit_import_search_terms_default_path.text()
-            settings['import']['search_terms']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_import_search_terms_default_encoding.currentText())
+            settings['import']['search_terms']['detect_encodings'] = self.checkbox_import_search_terms_detect_encodings.isChecked()
 
             # Files -> Export
             settings['export']['tables']['default_path'] = self.line_edit_export_tables_default_path.text()
@@ -1741,6 +1769,11 @@ class Wordless_Settings(QDialog):
             settings['lang_detection']['detection_settings']['detection_engine'] = self.combo_box_lang_detection_engine.currentText()
             settings['lang_detection']['detection_settings']['number_lines'] = self.spin_box_lang_detection_number_lines.value()
             settings['lang_detection']['detection_settings']['number_lines_no_limit'] = self.checkbox_lang_detection_number_lines_no_limit.isChecked()
+
+            settings['lang_detection']['default_settings']['default_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_lang_detection_default_lang.currentText())
+
+            # Auto-detection -> Encoding Detection
+            settings['encoding_detection']['default_settings']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_encoding_detection_default_encoding.currentText())
 
             # Tokenization -> Sentence Tokenization
             for lang_code in settings['sentence_tokenization']['sentence_tokenizers']:

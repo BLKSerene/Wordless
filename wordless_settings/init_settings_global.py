@@ -232,14 +232,14 @@ def init_settings_global(main):
             'other': 'other',
         },
 
-        'file_exts': {
-            '.txt': main.tr('Text File (*.txt)'),
-            '.html': main.tr('HTML Page (*.htm; *.html)'),
-            '.htm': main.tr('HTML Page (*.htm; *.html)'),
-            '.tmx': main.tr('Translation Memory File (*.tmx)')
-        },
-
         'file_types': {
+            'files': [
+                main.tr('Text File (*.txt)'),
+                main.tr('HTML Page (*.htm; *.html)'),
+                main.tr('Translation Memory File (*.tmx)'),
+                main.tr('All Files (*.*)')
+            ],
+
             'export_tables': [
                 main.tr('Excel Workbook (*.xlsx)'),
                 main.tr('CSV File (*.csv)')
@@ -1756,6 +1756,7 @@ def init_settings_global(main):
                 <head>
                     <style>
                         * {
+                            outline: none;
                             margin: 0;
                             border: 0;
                             padding: 0;
@@ -1771,7 +1772,15 @@ def init_settings_global(main):
                         }
 
                         p {
-                            margin-bottom: 5px;
+                            margin-bottom: 3px;
+                        }
+
+                        ol, ul {
+                            list-style-type: none;
+                        }
+
+                        li {
+                            margin-left: -20px;
                         }
                     </style>
                 </head>
