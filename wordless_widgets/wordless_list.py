@@ -135,13 +135,18 @@ class Wordless_List(QListWidget):
         self.selection_changed()
 
     def import_list(self):
-        file_path = QFileDialog.getOpenFileName(self.main,
-                                                self.tr('Import Search Terms from File'),
-                                                self.main.settings_custom['import']['search_terms']['default_path'],
-                                                self.tr('Text File (*.txt)'))[0]
+        file_paths = QFileDialog.getOpenFileNames(self.main,
+                                                  self.tr('Import Search Terms from File(s)'),
+                                                  self.main.settings_custom['import']['search_terms']['default_path'],
+                                                  self.tr('Text File (*.txt)'))[0]
 
-        if file_path:
-            encoding_code = self.main.settings_custom['import']['search_terms']['default_encoding']
+        if file_paths:
+            # Detect encoding
+            if self.main.settings_custom['import']['search_terms']['detect_encoding']:
+                encoding_code = wordless_detection.detect_encoding(main, {'path': file_path})
+            else:
+                encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['encoding']
+
             encoding_text = wordless_conversion.to_encoding_text(self.main, encoding_code)
 
             try:

@@ -16,55 +16,43 @@ import langid
 
 from wordless_utils import wordless_conversion, wordless_misc
 
-def detect_encoding(main, file):
+def detect_encoding(main, file_path):
     text_sample = b''
+    success = True
 
-    # Default Encoding
-    encoding_code = main.settings_custom['import']['files']['default_encoding']
-
-    if main.settings_custom['file']['detect_encodings']:
-        with open(file['path'], 'rb') as f:
-            for i, line in enumerate(f):
-                if i < 100:
-                    text_sample += line
-                else:
-                    break
-
-            encoding_code = chardet.detect(text_sample)['encoding']
-            
-            if encoding_code == None:
-                encoding_code = 'utf_8'
-            elif encoding_code == 'EUC-TW':
-                encoding_code = 'big5'
-            elif encoding_code == 'ISO-2022-CN':
-                encoding_code = 'gb2312'
+    with open(file_path, 'rb') as f:
+        for i, line in enumerate(f):
+            if i < 100:
+                text_sample += line
             else:
-                encoding_code = encoding_code.lower().replace('-', '_')
+                break
 
-        try:
-            open(file['path'], 'r', encoding = encoding_code)
-        except UnicodeDecodeError:
-            QMessageBox.warning(main,
-                                main.tr('Encoding Detection Failed'),
-                                main.tr(f'''{main.settings_global['styles']['style_dialog']}
-                                            <body>
-                                                <p>Failed to auto-detect the encoding of file "{file["name"]}"!</p>
-                                                <p>Please select the correct encoding manually.</p>
-                                            </body>
-                                        '''),
-                                QMessageBox.Ok)
+        encoding_code = chardet.detect(text_sample)['encoding']
+        
+        if encoding_code == None:
+            encoding_code = 'utf_8'
 
-    return encoding_code
+            success = False
+        elif encoding_code == 'EUC-TW':
+            encoding_code = 'big5'
+        elif encoding_code == 'ISO-2022-CN':
+            encoding_code = 'gb2312'
+        else:
+            encoding_code = encoding_code.lower().replace('-', '_')
+
+    try:
+        open(file_path, 'r', encoding = encoding_code)
+    except:
+        success = False
+
+    return encoding_code, success
 
 def detect_lang(main, file):
     text = ''
 
-    # Default Language
-    lang_code = main.settings_custom['import']['files']['default_lang']
-
     detection_engine = main.settings_custom['lang_detection']['detection_settings']['detection_engine']
 
-    if main.settings_custom['file']['detect_langs']:
+    try:
         with open(file['path'], 'r', encoding = file['encoding_code']) as f:
             if main.settings_custom['lang_detection']['detection_settings']['number_lines_no_limit']:
                 for line in f:
@@ -101,5 +89,11 @@ def detect_lang(main, file):
                     lang_code_639_1 = langid.classify(text)[0]
 
             lang_code = wordless_conversion.to_iso_639_3(main, lang_code_639_1.replace('-', '_'))
+            
+            success = True
+    except:
+        lang_code = main.settings_custom['lang_detection']['default_settings']['default_lang']
 
-    return lang_code
+        success = False
+
+    return lang_code, success

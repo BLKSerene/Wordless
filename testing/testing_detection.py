@@ -27,7 +27,7 @@ def new_file(file_path):
     file = {}
 
     file['path'] = os.path.realpath(file_path)
-    file['name'] = os.path.split(file['path'])[1]
+    file['name'] = os.path.basename(file['path'])
 
     file['encoding_code'] = 'utf_8'
 
@@ -35,11 +35,15 @@ def new_file(file_path):
 
 def detect_encoding(file):
 	print(f'Detect the encoding of file "{file["name"]}": ', end = '')
-	print(wordless_detection.detect_encoding(main, file))
+
+	encoding_code, success = wordless_detection.detect_encoding(main, file["path"])
+	print(f"{encoding_code} ({'Success' if success else 'Fail'})")
 
 def detect_lang(file):
 	print(f'Detect the language of file "{file["name"]}": ', end = '')
-	print(wordless_detection.detect_lang(main, file))
+
+	lang_code, success = wordless_detection.detect_lang(main, file)
+	print(f"{lang_code} ({'Success' if success else 'Fail'})")
 
 # Encodings
 file_gb2312 = new_file('testing/Encodings/Chinese (Simplified) (GB2312).txt')
