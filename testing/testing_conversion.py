@@ -35,12 +35,6 @@ def testing_to_iso_639_3(lang_code):
 def testing_to_iso_639_1(lang_code):
     print(f'{lang_code:6} -> {wordless_conversion.to_iso_639_1(main, lang_code)}')
 
-def testing_to_ext_code(ext_text):
-    print(f'{ext_text:10} -> {wordless_conversion.to_ext_code(main, ext_text)}')
-
-def testing_to_ext_text(ext_code):
-    print(f'{ext_code:5} -> {wordless_conversion.to_ext_text(main, ext_code)}')
-
 def testing_to_encoding_code(encoding_text):
     print(f'{encoding_text:35} -> {wordless_conversion.to_encoding_code(main, encoding_text)}')
 
@@ -114,17 +108,6 @@ testing_to_iso_639_1('nno')
 testing_to_iso_639_1('por')
 testing_to_iso_639_1('rus')
 testing_to_iso_639_1('spa')
-
-print('---------- Extension Text -> Extension Code ----------')
-
-testing_to_ext_code('Text File')
-testing_to_ext_code('HTML Page')
-
-print('---------- Extension Code -> Extension Text ----------')
-
-testing_to_ext_text('.txt')
-testing_to_ext_text('.html')
-testing_to_ext_text('.htm')
 
 print('---------- Encoding Text -> Encoding Code ----------')
 

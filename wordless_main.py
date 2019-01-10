@@ -187,7 +187,7 @@ class Wordless_Main(QMainWindow):
             with open(r'wordless_settings.pkl', 'rb') as f:
                 settings_custom = pickle.load(f)
 
-            if wordless_misc.check_custom_settings(settings_custom, self.settings_default):
+            if wordless_checking.check_custom_settings(settings_custom, self.settings_default):
                 self.settings_custom = settings_custom
             else:
                 self.settings_custom = copy.deepcopy(self.settings_default)
@@ -215,6 +215,8 @@ class Wordless_Main(QMainWindow):
         self.status_bar.showMessage(self.tr('Ready!'))
 
         self.setStyleSheet('* {font-family: Arial, sans-serif; color: #292929; font-size: 12px;}')
+
+        self.showMaximized()
 
     def closeEvent(self, event):
         reply = QMessageBox.question(self,
@@ -476,7 +478,6 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     wordless_main = Wordless_Main()
-    wordless_main.showMaximized()
 
     sys.exit(app.exec_())
     
