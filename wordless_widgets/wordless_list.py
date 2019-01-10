@@ -14,7 +14,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_widgets import wordless_message_box
-from wordless_utils import wordless_conversion
+from wordless_utils import wordless_checking, wordless_conversion, wordless_detection
 
 class Wordless_List(QListWidget):
     def __init__(self, main):
@@ -135,41 +135,40 @@ class Wordless_List(QListWidget):
         self.selection_changed()
 
     def import_list(self):
+        files_encoding_error = []
+
         file_paths = QFileDialog.getOpenFileNames(self.main,
                                                   self.tr('Import Search Terms from File(s)'),
                                                   self.main.settings_custom['import']['search_terms']['default_path'],
                                                   self.tr('Text File (*.txt)'))[0]
 
         if file_paths:
-            # Detect encoding
-            if self.main.settings_custom['import']['search_terms']['detect_encoding']:
-                encoding_code = wordless_detection.detect_encoding(main, {'path': file_path})
-            else:
-                encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['encoding']
+            file_paths, files_empty = wordless_checking.check_files_empty(self.main, file_paths)
 
-            encoding_text = wordless_conversion.to_encoding_text(self.main, encoding_code)
+            for file_path in file_paths:
+                file_path = os.path.normpath(file_path)
 
-            try:
-                with open(file_path, 'r', encoding = encoding_code) as f:
-                    if os.path.getsize(file_path) == 0:
-                        wordless_message_box.wordless_message_box_empty_file(self.main, file_path)
-                    else:
+                # Detect encoding
+                if self.main.settings_custom['import']['search_terms']['detect_encodings']:
+                    encoding_code, _ = wordless_detection.detect_encoding(self.main, file_path)
+                else:
+                    encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['default_encoding']
+
+                try:
+                    with open(file_path, 'r', encoding = encoding_code) as f:
                         for line in f:
                             if line.strip():
                                 self.addItem(line.strip())
 
                         self.itemChanged.emit(self.item(0))
-            except:
-                QMessageBox.warning(self.main,
-                                    self.tr('Import Failed'),
-                                    self.tr(f'''{self.main.settings_global['styles']['style_dialog']}
-                                                <body>
-                                                    <p>Failed to open the specified file with encoding "{encoding_text}".</p>
-                                                    <p>You can change the default file encoding in "Preferences -> Settings -> General -> Import" and try again.</p>
-                                                </body>
-                                            '''))
+                except:
+                    files_encoding_error.append(file_path)
 
-            self.main.settings_custom['import']['search_terms']['default_path'] = os.path.split(file_path)[0]
+            wordless_message_box.wordless_message_box_error_open_files(self.main,
+                                                                       files_empty = files_empty,
+                                                                       files_encoding_error = files_encoding_error)
+
+            self.main.settings_custom['import']['search_terms']['default_path'] = os.path.dirname(file_paths[0])
 
     def export_list(self):
         file_path = QFileDialog.getSaveFileName(self.main,
