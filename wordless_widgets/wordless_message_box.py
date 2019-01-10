@@ -16,10 +16,10 @@ def wordless_message_box_error_open_files(main,
                                           files_duplicate = [],
                                           files_empty = [],
                                           files_unsupported = [],
-                                          files_failed_to_open = []):
+                                          files_encoding_error = []):
     message = ''
 
-    if files_missing or files_duplicate or files_empty or files_unsupported or files_failed_to_open:
+    if files_missing or files_duplicate or files_empty or files_unsupported or files_encoding_error:
         if files_missing:
             list_files = ''.join([f'<li>{file}</li>' for file in files_missing])
 
@@ -76,10 +76,10 @@ def wordless_message_box_error_open_files(main,
                                <ol>{list_files}</ol>
                            ''')
 
-        if files_failed_to_open:
-            list_files = ''.join([f'<li>{file}</li>' for file in files_failed_to_open])
+        if files_encoding_error:
+            list_files = ''.join([f'<li>{file}</li>' for file in files_encoding_error])
 
-            if len(files_failed_to_open) == 1:
+            if len(files_encoding_error) == 1:
                 message += main.tr(f'''
                                <p>Failed to open the following file due to an encoding error:</p>
                                <ul>{list_files}</ul>
