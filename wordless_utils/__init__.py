@@ -7,6 +7,7 @@
 #
 
 __all__ = [
+	'wordless_checking',
     'wordless_conversion',
     'wordless_detection',
     'wordless_misc',
