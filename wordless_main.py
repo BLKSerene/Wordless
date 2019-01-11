@@ -50,7 +50,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://github.com/taishi-i/nagisa">nagisa</a>',
-             '0.1.2',
+             '0.2.0',
              'Taishi Ikeda (池田大志)',
              '<a href="https://github.com/taishi-i/nagisa/blob/master/LICENSE.txt">MIT</a>'],
 
@@ -65,8 +65,8 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="https://github.com/kmike/pymorphy2/#pymorphy2">MIT</a>'],
 
             ['<a href="https://github.com/PyThaiNLP/pythainlp">PyThaiNLP</a>',
-             '1.7.1',
-             'Wannaphong Phatthiyaphaibun',
+             '1.7.2',
+             'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
              '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache-2.0</a>'],
 
             ['<a href="https://github.com/trungtv/pyvi">Pyvi</a>',
@@ -90,7 +90,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="https://github.com/amueller/word_cloud/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
-             '4.6.3',
+             '4.7.1',
              'Leonard Richardson',
              '<a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a>'],
 
@@ -110,7 +110,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="https://github.com/saffsd/langid.py/blob/master/LICENSE">BSD-2-Clause</a>'],
 
             ['<a href="https://lxml.de/">lxml</a>',
-             '4.2.5',
+             '4.3.0',
              'Stefan Behnel',
              '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'],
 
