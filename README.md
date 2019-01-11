@@ -53,7 +53,7 @@ Many thanks to the following open-source projects on which Wordless is built on:
 4. [nagisa](https://github.com/taishi-i/nagisa) by Taishi Ikeda (池田大志)
 5. [NLTK](http://www.nltk.org/) by Steven Bird, Liling Tan, Dan Garrette, Peter Ljunglöf, Joel Nothman, Mikhail Korobov, Alexis Dimitriadis
 6. [pymorphy2](https://github.com/kmike/pymorphy2/) by Mikhail Korobov
-7. [PyThaiNLP](https://github.com/PyThaiNLP/pythainlp) by Wannaphong Phatthiyaphaibun
+7. [PyThaiNLP](https://github.com/PyThaiNLP/pythainlp) by Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)
 8. [Pyvi](https://github.com/trungtv/pyvi) by Viet-Trung Tran
 9. [SacreMoses](https://github.com/alvations/sacremoses) by Liling Tan
 10. [spaCy](https://spacy.io/) by Matthew Honnibal, Ines Montani
