@@ -769,24 +769,28 @@ def init_settings_default(main):
 
         'import': {
             'files': {
-                'default_path': os.path.realpath('.')
+                'default_path': os.path.normpath(os.path.realpath('.'))
             },
 
             'search_terms': {
-                'default_path': os.path.realpath('.'),
+                'default_path': os.path.normpath(os.path.realpath('.')),
                 'detect_encodings': True
+            },
+
+            'temp_files': {
+                'default_path': os.path.normpath(os.path.realpath('Import/'))
             }
         },
 
         'export': {
             'tables': {
-                'default_path': os.path.realpath('./export/'),
+                'default_path': os.path.normpath(os.path.realpath('Export/')),
                 'default_type': main.tr('Excel Workbook (*.xlsx)'),
                 'default_encoding': 'utf_8'
             },
 
             'search_terms': {
-                'default_path': os.path.realpath('./export/'),
+                'default_path': os.path.normpath(os.path.realpath('Export/')),
                 'default_encoding': 'utf_8'
             }
         },
