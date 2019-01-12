@@ -31,11 +31,7 @@ class Wordless_Text():
 
         with open(file['path'], 'r', encoding = file['encoding_code']) as f:
             for line in f:
-                if file['ext_code'] in ['.txt']:
-                    text = line.rstrip()
-                elif file['ext_code'] in ['.htm', '.html']:
-                    soup = bs4.BeautifulSoup(line.rstrip(), 'lxml')
-                    text = soup.get_text()
+                text = line.rstrip()
 
                 if text:
                     self.paras.append(text)
