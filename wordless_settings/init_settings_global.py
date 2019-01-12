@@ -237,6 +237,7 @@ def init_settings_global(main):
                 main.tr('Text File (*.txt)'),
                 main.tr('HTML Page (*.htm; *.html)'),
                 main.tr('Translation Memory File (*.tmx)'),
+                main.tr('Lyrics File (*.lrc)'),
                 main.tr('All Files (*.*)')
             ],
 

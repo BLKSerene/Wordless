@@ -247,13 +247,13 @@ class Wordless_Settings(QDialog):
 
     # Settings -> Files -> Import
     def init_settings_import(self):
-        def browse_file():
+        def browse_files():
             path_file = QFileDialog.getExistingDirectory(self,
                                                          self.tr('Browse'),
                                                          self.main.settings_custom['import']['files']['default_path'])
 
             if path_file:
-                self.line_edit_file_default_path.setText(path_file)
+                self.line_edit_import_files_default_path.setText(os.path.normpath(path_file))
 
         def browse_search_terms():
             path_file = QFileDialog.getExistingDirectory(self,
@@ -261,24 +261,33 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['import']['search_terms']['default_path'])
 
             if path_file:
-                self.line_edit_import_search_terms_default_path.setText(path_file)
+                self.line_edit_import_search_terms_default_path.setText(os.path.normpath(path_file))
+
+        def browse_temp_files():
+            path_file = QFileDialog.getExistingDirectory(self,
+                                                         self.tr('Browse'),
+                                                         self.main.settings_custom['import']['temp_files']['default_path'])
+
+            if path_file:
+                self.line_edit_import_temp_files_default_path.setText(os.path.normpath(path_file))
 
         self.settings_import = QWidget(self)
 
-        # File Settings
+        # Files
         group_box_import_files = QGroupBox(self.tr('Files'), self)
 
         self.label_import_files_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_import_files_default_path = QLineEdit(self)
-        self.button_import_files_browse = QPushButton(self.tr('Browse'), self)
+        self.button_import_files_browse = QPushButton(self.tr('Browse...'), self)
 
-        self.button_import_files_browse.clicked.connect(browse_file)
+        self.button_import_files_browse.clicked.connect(browse_files)
 
         group_box_import_files.setLayout(QGridLayout())
         group_box_import_files.layout().addWidget(self.label_import_files_default_path, 0, 0)
         group_box_import_files.layout().addWidget(self.line_edit_import_files_default_path, 0, 1)
         group_box_import_files.layout().addWidget(self.button_import_files_browse, 0, 2)
 
+        # Search Terms
         group_box_import_search_terms = QGroupBox(self.tr('Search Terms'), self)
 
         self.label_import_search_terms_default_path = QLabel(self.tr('Default Path:'), self)
@@ -294,11 +303,26 @@ class Wordless_Settings(QDialog):
         group_box_import_search_terms.layout().addWidget(self.button_import_search_terms_browse, 0, 2)
         group_box_import_search_terms.layout().addWidget(self.checkbox_import_search_terms_detect_encodings, 1, 0, 1, 3)
 
+        # Temporary Files
+        group_box_import_temp_files = QGroupBox(self.tr('Temporary Files'), self)
+
+        self.label_import_temp_files_default_path = QLabel(self.tr('Default Path:'), self)
+        self.line_edit_import_temp_files_default_path = QLineEdit(self)
+        self.button_import_temp_files_browse = QPushButton(self.tr('Browse...'), self)
+
+        self.button_import_temp_files_browse.clicked.connect(browse_temp_files)
+
+        group_box_import_temp_files.setLayout(QGridLayout())
+        group_box_import_temp_files.layout().addWidget(self.label_import_temp_files_default_path, 0, 0)
+        group_box_import_temp_files.layout().addWidget(self.line_edit_import_temp_files_default_path, 0, 1)
+        group_box_import_temp_files.layout().addWidget(self.button_import_temp_files_browse, 0, 2)
+
         self.settings_import.setLayout(QGridLayout())
         self.settings_import.layout().addWidget(group_box_import_files, 0, 0)
         self.settings_import.layout().addWidget(group_box_import_search_terms, 1, 0)
+        self.settings_import.layout().addWidget(group_box_import_temp_files, 2, 0)
 
-        self.settings_import.layout().setRowStretch(2, 1)
+        self.settings_import.layout().setRowStretch(3, 1)
 
     # Settings -> Files -> Export
     def init_settings_export(self):
@@ -314,7 +338,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['export']['tables']['default_path'])
 
             if path_file:
-                self.line_edit_export_tables_default_path.setText(path_file)
+                self.line_edit_export_tables_default_path.setText(os.path.normpath(path_file))
 
         def browse_search_terms():
             path_file = QFileDialog.getExistingDirectory(self,
@@ -322,7 +346,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['export']['search_terms']['default_path'])
 
             if path_file:
-                self.line_edit_export_search_terms_default_path.setText(path_file)
+                self.line_edit_export_search_terms_default_path.setText(os.path.normpath(path_file))
 
         self.settings_export = QWidget(self)
 
@@ -1521,20 +1545,14 @@ class Wordless_Settings(QDialog):
 
         self.checkbox_import_search_terms_detect_encodings.setChecked(settings['import']['search_terms']['detect_encodings'])
 
-        # Files -> Export
-        if os.path.exists(settings['export']['tables']['default_path']):
-            self.line_edit_export_tables_default_path.setText(settings['export']['tables']['default_path'])
-        else:
-            self.line_edit_export_tables_default_path.setText(self.main.settings_default['export']['tables']['default_path'])
+        self.line_edit_import_temp_files_default_path.setText(settings['import']['temp_files']['default_path'])
 
+        # Files -> Export
+        self.line_edit_export_tables_default_path.setText(settings['export']['tables']['default_path'])
         self.combo_box_export_tables_default_type.setCurrentText(settings['export']['tables']['default_type'])
         self.combo_box_export_tables_default_encoding.setCurrentText(settings['export']['tables']['default_encoding'])
 
-        if os.path.exists(settings['export']['search_terms']['default_path']):
-            self.line_edit_export_search_terms_default_path.setText(settings['export']['search_terms']['default_path'])
-        else:
-            self.line_edit_export_search_terms_default_path.setText(self.main.settings_default['export']['search_terms']['default_path'])
-
+        self.line_edit_export_search_terms_default_path.setText(settings['export']['search_terms']['default_path'])
         self.combo_box_export_search_terms_default_encoding.setCurrentText(settings['export']['search_terms']['default_encoding'])
 
         # Data
@@ -1721,15 +1739,35 @@ class Wordless_Settings(QDialog):
             else:
                 return True
 
-        if self.tree_settings.item_selected_old.text(0) == self.tr('General'):
-            if validate_path(self.line_edit_file_default_path):
+        def confirm_path(line_edit):
+            if not os.path.exists(line_edit.text()):
+                reply = wordless_message_box.wordless_message_box_path_not_exist_confirm(self.main, line_edit.text())
+
+                if reply == QMessageBox.Yes:
+                    return True
+                else:
+                    line_edit.setFocus()
+                    line_edit.selectAll()
+
+                    return False
+            elif not os.path.isdir(line_edit.text()):
+                wordless_message_box.wordless_message_box_path_not_dir(self.main, line_edit.text())
+
+                line_edit.setFocus()
+                line_edit.selectAll()
+
+                return False
+            else:
                 return True
-        elif self.tree_settings.item_selected_old.text(0) == self.tr('Import'):
-            if validate_path(self.line_edit_import_search_terms_default_path):
+
+        if self.tree_settings.item_selected_old.text(0) == self.tr('Import'):
+            if (validate_path(self.line_edit_import_files_default_path) and
+                validate_path(self.line_edit_import_search_terms_default_path) and
+                confirm_path(self.line_edit_import_temp_files_default_path)):
                 return True
         elif self.tree_settings.item_selected_old.text(0) == self.tr('Export'):
-            if (validate_path(self.line_edit_export_tables_default_path) and
-                validate_path(self.line_edit_export_search_terms_default_path)):
+            if (confirm_path(self.line_edit_export_tables_default_path) and
+                confirm_path(self.line_edit_export_search_terms_default_path)):
                 return True
         else:
             return True
@@ -1751,6 +1789,8 @@ class Wordless_Settings(QDialog):
 
             settings['import']['search_terms']['default_path'] = self.line_edit_import_search_terms_default_path.text()
             settings['import']['search_terms']['detect_encodings'] = self.checkbox_import_search_terms_detect_encodings.isChecked()
+
+            settings['import']['temp_files']['default_path'] = self.line_edit_import_temp_files_default_path.text()
 
             # Files -> Export
             settings['export']['tables']['default_path'] = self.line_edit_export_tables_default_path.text()
