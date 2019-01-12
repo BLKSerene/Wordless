@@ -137,12 +137,19 @@ class Wordless_List(QListWidget):
     def import_list(self):
         files_encoding_error = []
 
+        if os.path.exists(self.main.settings_custom['import']['search_terms']['default_path']):
+            default_dir = self.main.settings_custom['import']['search_terms']['default_path']
+        else:
+            default_dir = self.main.settings_default['import']['search_terms']['default_path']
+
         file_paths = QFileDialog.getOpenFileNames(self.main,
                                                   self.tr('Import Search Terms from File(s)'),
-                                                  self.main.settings_custom['import']['search_terms']['default_path'],
+                                                  default_dir,
                                                   self.tr('Text File (*.txt)'))[0]
 
         if file_paths:
+            self.main.settings_custom['import']['search_terms']['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
+
             file_paths, files_empty = wordless_checking.check_files_empty(self.main, file_paths)
 
             for file_path in file_paths:
@@ -168,12 +175,12 @@ class Wordless_List(QListWidget):
                                                                        files_empty = files_empty,
                                                                        files_encoding_error = files_encoding_error)
 
-            self.main.settings_custom['import']['search_terms']['default_path'] = os.path.dirname(file_paths[0])
-
     def export_list(self):
+        default_dir = self.main.settings_custom['export']['search_terms']['default_path']
+
         file_path = QFileDialog.getSaveFileName(self.main,
                                                 self.tr('Export Search Terms to File'),
-                                                self.main.settings_custom['export']['search_terms']['default_path'],
+                                                wordless_checking.check_dir(default_dir),
                                                 self.tr('Text File (*.txt)'))[0]
 
         if file_path:
@@ -184,6 +191,8 @@ class Wordless_List(QListWidget):
                     f.write(item + '\n')
 
             wordless_message_box.wordless_message_box_export_completed_search_terms(self.main, file_path)
+
+            self.main.settings_custom['export']['search_terms']['default_path'] = os.path.normpath(os.path.dirname(file_path))
 
     def get_items(self):
         return [self.item(i).text() for i in range(self.count())]

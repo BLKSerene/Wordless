@@ -10,6 +10,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_utils import wordless_checking
+
 # Files
 def wordless_message_box_error_open_files(main,
                                           files_missing = [],
@@ -157,6 +159,20 @@ def wordless_message_box_duplicate_file_name(main):
                         QMessageBox.Ok)
 
 # Tabs
+def wordless_message_box_restore_default_settings(main):
+    reply = QMessageBox.question(main,
+                                 main.tr('Restore Default Settings'),
+                                 main.tr(f'''
+                                     {main.settings_global['styles']['style_dialog']}
+                                     <body>
+                                         <p>Do you really want to reset all settings to defaults?</p>
+                                     </body>
+                                 '''),
+                                 QMessageBox.Yes | QMessageBox.No,
+                                 QMessageBox.No)
+
+    return reply
+
 def wordless_message_box_no_files_selected(main):
     QMessageBox.warning(main,
                         main.tr('No Files Selected'),
@@ -191,71 +207,7 @@ def wordless_message_box_missing_observed_files(main):
                         '''),
                         QMessageBox.Ok)
 
-def wordless_message_box_path_not_dir(main, path):
-    QMessageBox.warning(main,
-                        main.tr('Invalid Path'),
-                        main.tr(f'''
-                            {main.settings_global['styles']['style_dialog']}
-                            <body>
-                                <p>The specified path "{path}" should be a directory, not a file!</p>
-                                <p>Please change your settings and try again.</p>
-                            </body>
-                        '''),
-                        QMessageBox.Ok)
-
-def wordless_message_box_path_not_exist(main, path):
-    QMessageBox.warning(main,
-                        main.tr('Invalid Path'),
-                        main.tr(f'''
-                            {main.settings_global['styles']['style_dialog']}
-                            <body>
-                                <p>The specified path "{path}" does not exist!</p>
-                                <p>Please change your settings and try again.</p>
-                            </body>
-                        '''),
-                        QMessageBox.Ok)
-
-def wordless_message_box_path_not_exist_confirm(main, path):
-    reply = QMessageBox.question(main,
-                                 main.tr('Path Not Exist'),
-                                 main.tr(f'''
-                                     {main.settings_global['styles']['style_dialog']}
-                                     <body>
-                                         <p>The specified path "{path}" does not exist.</p>
-                                         <p>Do you want to create the directory?</p>
-                                     </body>
-                                 '''),
-                                 QMessageBox.Yes | QMessageBox.No,
-                                 QMessageBox.No)
-
-    return reply
-
-def wordless_message_box_restore_default_settings(main):
-    reply = QMessageBox.question(main,
-                                 main.tr('Restore Default Settings'),
-                                 main.tr(f'''
-                                     {main.settings_global['styles']['style_dialog']}
-                                     <body>
-                                         <p>Do you really want to reset all settings to defaults?</p>
-                                     </body>
-                                 '''),
-                                 QMessageBox.Yes | QMessageBox.No,
-                                 QMessageBox.No)
-
-    return reply
-
-def wordless_message_box_empty_file(main, file_path):
-    QMessageBox.warning(main,
-                        main.tr('Empty File'),
-                        main.tr(f'''
-                            {main.settings_global['styles']['style_dialog']}
-                            <body>
-                                <p>The specified file "{file_path}" is empty!</p>
-                                <p>Please check and try again.</p>
-                            </body>
-                        '''),
-                        QMessageBox.Ok)
-
+# Search Terms
 def wordless_message_box_empty_search_term(main):
     QMessageBox.warning(main,
                         main.tr('Empty Search Term'),
@@ -278,6 +230,7 @@ def wordless_message_box_no_search_results(main):
                             '''),
                             QMessageBox.Ok)
 
+# Results
 def wordless_message_box_no_results_table(main):
     QMessageBox.information(main,
                             main.tr('No Search Results'),
@@ -302,6 +255,7 @@ def wordless_message_box_no_results_plot(main):
                             '''),
                             QMessageBox.Ok)
 
+# Export
 def wordless_message_box_export_completed_search_terms(main, file_path):
     QMessageBox.information(main,
                             main.tr('Export Completed'),
@@ -323,3 +277,46 @@ def wordless_message_box_export_completed_table(main, file_path):
                                 </body>
                             '''),
                             QMessageBox.Ok)
+
+# Settings
+def wordless_message_box_path_not_exist(main, path):
+    QMessageBox.warning(main,
+                        main.tr('Invalid Path'),
+                        main.tr(f'''
+                            {main.settings_global['styles']['style_dialog']}
+                            <body>
+                                <p>The specified path "{path}" does not exist!</p>
+                                <p>Please change your settings and try again.</p>
+                            </body>
+                        '''),
+                        QMessageBox.Ok)
+
+def wordless_message_box_path_not_dir(main, path):
+    QMessageBox.warning(main,
+                        main.tr('Invalid Path'),
+                        main.tr(f'''
+                            {main.settings_global['styles']['style_dialog']}
+                            <body>
+                                <p>The specified path "{path}" should be a directory, not a file!</p>
+                                <p>Please change your settings and try again.</p>
+                            </body>
+                        '''),
+                        QMessageBox.Ok)
+
+def wordless_message_box_path_not_exist_confirm(main, path):
+    reply = QMessageBox.question(main,
+                                 main.tr('Path Not Exist'),
+                                 main.tr(f'''
+                                     {main.settings_global['styles']['style_dialog']}
+                                     <body>
+                                         <p>The specified path "{path}" does not exist.</p>
+                                         <p>Do you want to create the directory?</p>
+                                     </body>
+                                 '''),
+                                 QMessageBox.Yes | QMessageBox.No,
+                                 QMessageBox.No)
+
+    if reply == QMessageBox.Yes:
+        wordless_checking.check_dir(path)
+
+    return reply

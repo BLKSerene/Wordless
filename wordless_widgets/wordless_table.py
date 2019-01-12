@@ -17,7 +17,7 @@ import numpy
 import openpyxl
 
 from wordless_widgets import wordless_box, wordless_message_box
-from wordless_utils import wordless_conversion
+from wordless_utils import wordless_checking, wordless_conversion
 
 class Wordless_Label_Html(QLabel):
     def __init__(self, label, parent):
@@ -752,10 +752,12 @@ class Wordless_Table_Data(Wordless_Table):
                                                        vertical = 'center',
                                                        wrap_text = True)
 
+        default_dir = self.main.settings_custom['export']['tables']['default_path']
+
         (file_path,
          file_type) = QFileDialog.getSaveFileName(self,
                                                   self.tr('Export Table'),
-                                                  self.main.settings_custom['export']['tables']['default_path'],
+                                                  wordless_checking.check_dir(default_dir),
                                                   ';;'.join(self.main.settings_global['file_types']['export_tables']),
                                                   self.main.settings_custom['export']['tables']['default_type'])
 
@@ -855,7 +857,7 @@ class Wordless_Table_Data(Wordless_Table):
                             csv_writer.writerow([self.verticalHeaderItem(row).text().strip()] +
                                                 [self.item(row, col).text().strip() for col in range(self.columnCount())])
 
-            self.main.settings_custom['export']['tables']['default_path'] = os.path.split(file_path)[0]
+            self.main.settings_custom['export']['tables']['default_path'] = os.path.normpath(os.path.dirname(file_path))
             self.main.settings_custom['export']['tables']['default_type'] = file_type
 
             wordless_message_box.wordless_message_box_export_completed_table(self.main, file_path)
