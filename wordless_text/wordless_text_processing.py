@@ -18,10 +18,9 @@ import nltk.tokenize.nist
 import numpy
 import pymorphy2
 import pythainlp
-import pyvi.ViTokenizer
-import pyvi.ViPosTagger
 import sacremoses
 import spacy
+import underthesea
 
 from wordless_text import wordless_text
 from wordless_utils import wordless_conversion, wordless_unicode
@@ -268,11 +267,9 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
             token_groups.append(nagisa.tagging(str(sentence)).words)
 
     # Vietnamese
-    elif word_tokenizer == main.tr('Pyvi - Vietnamese Word Tokenizer'):
+    elif word_tokenizer == main.tr('Underthesea - Vietnamese Word Tokenizer'):
         for sentence in sentences:
-            tokens = pyvi.ViTokenizer.spacy_tokenize(sentence)[0]
-
-            token_groups.append(tokens)
+            token_groups.append(underthesea.word_tokenize(str(sentence)))
 
     # Thai
     elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'):
@@ -452,13 +449,9 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
             tokens_tagged.extend(pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud'))
 
     # Vietnamese
-    elif pos_tagger == main.tr('Pyvi - Vietnamese POS Tagger'):
+    elif pos_tagger == main.tr('Underthesea - Vietnamese POS Tagger'):
         for sentence in sentences:
-            tokens = wordless_word_tokenize(main, sentence, lang_code)
-
-            tokens, tags = pyvi.ViPosTagger.postagging(' '.join(tokens))
-
-            tokens_tagged.extend(zip(tokens, tags))
+            tokens_tagged.extend(underthesea.pos_tag(str(sentence)))
 
     # Convert to Universal Tagset
     if (tagset == 'custom' and main.settings_custom['pos_tagging']['to_universal_pos_tags'] or

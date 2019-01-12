@@ -31,7 +31,7 @@ __all__ = [
 
     'tha_orchid',
 
-    'vie_pyvi',
+    'vie_underthesea',
 
     'zho_jieba'
 ]

@@ -876,13 +876,7 @@ def init_settings_global(main):
             ],
 
             'vie': [
-                main.tr('Pyvi - Vietnamese Word Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer')
+                main.tr('Underthesea - Vietnamese Word Tokenizer')
             ],
 
             'other': [
@@ -1076,7 +1070,7 @@ def init_settings_global(main):
             ],
 
             'vie': [
-                main.tr('Pyvi - Vietnamese POS Tagger')
+                main.tr('Underthesea - Vietnamese POS Tagger')
             ]
         },
 
