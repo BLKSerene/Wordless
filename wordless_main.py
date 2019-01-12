@@ -56,7 +56,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
 
             ['<a href="http://www.nltk.org/">NLTK</a>',
              '3.4',
-             'Steven Bird, Liling Tan, Dan Garrette,<br>Peter Ljunglöf, Joel Nothman, Mikhail Korobov,<br>Alexis Dimitriadis',
+             'Steven Bird, Liling Tan',
              '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
 
             ['<a href="https://github.com/kmike/pymorphy2/">pymorphy2</a>',
@@ -69,11 +69,6 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
              '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache-2.0</a>'],
 
-            ['<a href="https://github.com/trungtv/pyvi">Pyvi</a>',
-             '0.0.9.1',
-             'Viet-Trung Tran',
-             '<a href="https://github.com/trungtv/pyvi/blob/master/LICENSE.txt">MIT</a>'],
-
             ['<a href="https://github.com/alvations/sacremoses">SacreMoses</a>',
              '0.0.5',
              'Liling Tan',
@@ -83,6 +78,11 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '2.0.18',
              'Matthew Honnibal, Ines Montani',
              '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'],
+
+            ['<a href="http://undertheseanlp.com/">Underthesea</a>',
+             '1.1.9',
+             'Vu Anh',
+             '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPL-3.0</a>'],
 
             ['<a href="https://amueller.github.io/word_cloud/">wordcloud</a>',
              '1.5.0',
