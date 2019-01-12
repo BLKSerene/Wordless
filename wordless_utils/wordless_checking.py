@@ -7,8 +7,10 @@
 #
 
 import os
+import pathlib
 import re
 
+from wordless_utils import wordless_detection
 from wordless_widgets import wordless_message_box
 
 # Settings
@@ -101,7 +103,7 @@ def check_files_encoding_error(main, file_paths):
     for file_path in file_paths:
         file_path = os.path.normpath(file_path)
 
-        if os.path.splitext(file_path)[1] in ['.tmx']:
+        if os.path.splitext(file_path)[1] in ['.htm', '.html', '.tmx', '.lrc']:
             if main.settings_custom['file']['auto_detection_settings']['detect_encodings']:
                 encoding_code, _ = wordless_detection.detect_encoding(main, file_path)
             else:
@@ -127,6 +129,12 @@ def check_files_all(main, file_paths):
 
     return (file_paths,
             files_missing, files_empty, files_duplicate, files_unsupported, files_encoding_error)
+
+def check_dir(dir_name):
+    if not os.path.exists(dir_name):
+        pathlib.Path(dir_name).mkdir(parents = True, exist_ok = True)
+
+    return dir_name
 
 def check_new_name(new_name, names):
     i = 2

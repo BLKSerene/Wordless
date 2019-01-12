@@ -9,6 +9,7 @@
 import collections
 import copy
 import os
+import re
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -64,7 +65,7 @@ class Wordless_Files():
         files_encoding_detection_failed = []
         files_lang_detection_failed = []
 
-        len_files_old = len(self.main.settings_custom['file']['files_open'])
+        self.main.settings_custom['import']['files']['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
         (file_paths,
          files_missing,
@@ -81,9 +82,12 @@ class Wordless_Files():
                                                                    files_encoding_error = files_encoding_error)
 
         for file_path in file_paths:
-            path_head, ext = os.path.splitext(file_path)
+            default_dir = wordless_checking.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
+            file_name, file_ext = os.path.splitext(os.path.basename(file_path))
+            file_ext = file_ext.lower()
 
-            if ext in ['.txt', '.html', '.htm']:
+            # Text Files
+            if file_ext == '.txt':
                 (new_file,
                  success_encoding_detection,
                  success_lang_detection) = self._new_file(file_path)
@@ -95,38 +99,85 @@ class Wordless_Files():
 
                 if not success_lang_detection:
                     files_lang_detection_failed.append(new_file['path'])
-            elif ext in ['.tmx']:
-                lines_src = []
-                lines_target = []
-
+            elif file_ext in ['.htm', '.html', '.tmx', '.lrc']:
                 # Detect encoding
                 if self.main.settings_custom['file']['auto_detection_settings']['detect_encodings']:
                     encoding_code, _ = wordless_detection.detect_encoding(self.main, file_path)
                 else:
                     encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['default_encoding']
 
-                with open(file_path, 'r', encoding = encoding_code) as f:
-                    soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
+                # HTML Files
+                if file_ext in ['.htm', '.html']:
+                    with open(file_path, 'r', encoding = encoding_code) as f:
+                        soup = bs4.BeautifulSoup(f.read(), 'lxml')
 
-                    for tu in soup.find_all('tu'):
-                        seg_src, seg_target = tu.find_all('seg')
+                    new_path = wordless_checking.check_new_path(f'{default_dir}{file_name}.txt')
 
-                        lines_src.append(seg_src.get_text())
-                        lines_target.append(seg_target.get_text())
+                    with open(new_path, 'w', encoding = encoding_code) as f:
+                        f.write(soup.get_text())
 
-                path_src = wordless_checking.check_new_path(f'{path_head}_source.txt')
-                path_target = wordless_checking.check_new_path(f'{path_head}_target.txt')
+                    new_paths = [new_path]
+                # TMX Files
+                elif file_ext in ['.tmx']:
+                    lines_src = []
+                    lines_target = []
 
-                with open(path_src, 'w', encoding = encoding_code) as f:
-                    f.write('\n'.join(lines_src))
+                    with open(file_path, 'r', encoding = encoding_code) as f:
+                        soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
 
-                with open(path_target, 'w', encoding = encoding_code) as f:
-                    f.write('\n'.join(lines_target))
+                        for tu in soup.find_all('tu'):
+                            seg_src, seg_target = tu.find_all('seg')
 
-                for file_path in [path_src, path_target]:
+                            lines_src.append(seg_src.get_text())
+                            lines_target.append(seg_target.get_text())
+
+                    path_src = wordless_checking.check_new_path(f'{default_dir}{file_name}_source.txt')
+                    path_target = wordless_checking.check_new_path(f'{default_dir}{file_name}_target.txt')
+
+                    with open(path_src, 'w', encoding = encoding_code) as f:
+                        f.write('\n'.join(lines_src))
+                        f.write('\n')
+
+                    with open(path_target, 'w', encoding = encoding_code) as f:
+                        f.write('\n'.join(lines_target))
+                        f.write('\n')
+
+                    new_paths = [path_src, path_target]
+                elif file_ext in ['.lrc']:
+                    lyrics = {}
+
+                    with open(file_path, 'r', encoding = encoding_code) as f:
+                        for line in f:
+                            time_tags = []
+
+                            line = line.strip()
+
+                            # Strip time tags
+                            while re.search(r'^\[[^\]]+?\]', line):
+                                time_tags.append(re.search(r'^\[[^\]]+?\]', line).group())
+
+                                line = line[len(time_tags[-1]):].strip()
+
+                            # Strip word time tags
+                            line = re.sub(r'<[^>]+?>', r'', line)
+                            line = re.sub(r'\s{2,}', r' ', line).strip()
+
+                            for time_tag in time_tags:
+                                if re.search(r'^\[[0-9]{2}:[0-5][0-9]\.[0-9]{2}\]$', time_tag):
+                                    lyrics[time_tag] = line
+
+                    new_path = wordless_checking.check_new_path(f'{default_dir}{file_name}.txt')
+
+                    with open(new_path, 'w', encoding = encoding_code) as f:
+                        for _, lyrics in sorted(lyrics.items()):
+                            f.write(f'{lyrics}\n')
+
+                    new_paths = [new_path]
+
+                for new_path in new_paths:
                     (new_file,
                      success_encoding_detection,
-                     success_lang_detection) = self._new_file(file_path)
+                     success_lang_detection) = self._new_file(new_path)
 
                     new_files.append(new_file)
 
@@ -135,6 +186,8 @@ class Wordless_Files():
 
                     if not success_lang_detection:
                         files_lang_detection_failed.append(new_file['path'])
+
+        len_files_old = len(self.main.settings_custom['file']['files_open'])
 
         for new_file in new_files:
             file_names = [file['name'] for file in self.main.settings_custom['file']['files_open']]
@@ -377,15 +430,18 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
             self.editItem(self.item(row, col))
 
     def open_files(self):
+        if os.path.exists(self.main.settings_custom['import']['files']['default_path']):
+            default_dir = self.main.settings_custom['import']['files']['default_path']
+        else:
+            default_dir = self.main.settings_default['import']['files']['default_path']
+
         file_paths = QFileDialog.getOpenFileNames(self.main,
                                                   self.tr('Choose multiple files'),
-                                                  self.main.settings_custom['import']['files']['default_path'],
+                                                  wordless_checking.check_dir(default_dir),
                                                   ';;'.join(self.main.settings_global['file_types']['files']))[0]
 
         if file_paths:
             self.main.wordless_files.add_files(file_paths)
-
-            self.main.settings_custom['import']['files']['default_path'] = os.path.dirname(file_paths[0])
 
     def open_dir(self, subfolders = True):
         file_paths = []
@@ -406,8 +462,6 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
                     file_paths.append(os.path.realpath(os.path.join(file_dir, file_name)))
 
             self.main.wordless_files.add_files(file_paths)
-
-            self.main.settings_custom['import']['files']['default_path'] = file_dir
 
     def reopen(self):
         files = self.main.settings_custom['file']['files_closed'].pop()
