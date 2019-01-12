@@ -1,5 +1,5 @@
 #
-# Wordless: Mapping Table (Pyvi Tagset -> Universal POS Tags)
+# Wordless: Mapping Table (Underthesea Tagset -> Universal POS Tags)
 #
 # Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -7,7 +7,7 @@
 #
 
 #
-# Pyvi Tagset: https://github.com/trungtv/pyvi#python-vietnamese-toolkit
+# Underthesea Tagset: https://github.com/trungtv/pyvi#python-vietnamese-toolkit
 #
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
@@ -30,5 +30,5 @@ mappings = [
     ['T', 'AUX', 'Auxiliary, modal words', ''],
     ['V', 'VERB', 'Verb', ''],
     ['X', 'X', 'Unknown', ''],
-    ['F', 'PUNCT', 'Filtered out (punctuation)', ''],
+    ['CH', 'PUNCT', 'Filtered out (punctuation)', ''],
 ]

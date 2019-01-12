@@ -8,6 +8,7 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
+import re
 import sys
 
 from PyQt5.QtCore import *
@@ -198,8 +199,10 @@ print(f"\t{' '.join(tokens)}")
 # Vietnamese
 sentence_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ngữ, là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại Việt Nam.'
 
-print('Vietnamese / Pyvi - Vietnamese Word Tokenizer:')
+print('Vietnamese / Underthesea - Vietnamese Word Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_vie, 'vie',
-                                                         word_tokenizer = 'Pyvi - Vietnamese Word Tokenizer')
+                                                         word_tokenizer = 'Underthesea - Vietnamese Word Tokenizer')
+tokens = [re.sub(r'\s+', r'_', token) for token in tokens]
+
 print(f"\t{' '.join(tokens)}")
