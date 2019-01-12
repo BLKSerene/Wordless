@@ -9,6 +9,7 @@
 import copy
 import json
 import os
+import re
 import threading
 
 from PyQt5.QtCore import *
@@ -639,10 +640,15 @@ class Wordless_Settings(QDialog):
                 word_tokenizer = self.__dict__[f'combo_box_word_tokenizer_{settings_custom["preview_lang"]}'].currentText()
 
                 for line in settings_custom['preview_samples'].splitlines():
-                    sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line, lang_code)
+                    sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line,
+                                                                                    lang_code = settings_custom['preview_lang'])
                     tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentences,
                                                                              lang_code = settings_custom['preview_lang'],
                                                                              word_tokenizer = word_tokenizer)
+
+                    # Vietnamese
+                    if settings_custom['preview_lang'] == 'vie':
+                        tokens = [re.sub(r'\s+', r'_', token) for token in tokens]
                     
                     results.append(' '.join(tokens))
 

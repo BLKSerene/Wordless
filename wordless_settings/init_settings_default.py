@@ -895,7 +895,7 @@ def init_settings_default(main):
                 'tha': main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'),
                 'tur': main.tr('spaCy - Turkish Word Tokenizer'),
                 'urd': main.tr('spaCy - Urdu Word Tokenizer'),
-                'vie': main.tr('Pyvi - Vietnamese Word Tokenizer'),
+                'vie': main.tr('Underthesea - Vietnamese Word Tokenizer'),
 
                 'other': main.tr('spaCy - English Word Tokenizer')
             },
@@ -955,7 +955,7 @@ def init_settings_default(main):
                 'spa': main.tr('spaCy - Spanish POS Tagger'),
                 'tha': main.tr('PyThaiNLP - Perceptron Tagger - ORCHID Corpus'),
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
-                'vie': main.tr('Pyvi - Vietnamese POS Tagger')
+                'vie': main.tr('Underthesea - Vietnamese POS Tagger')
             },
 
             'to_universal_pos_tags': False,
@@ -1026,7 +1026,7 @@ def init_settings_default(main):
                 },
 
                 'vie': {
-                    main.tr('Pyvi - Vietnamese POS Tagger'): vie_pyvi.mappings
+                    main.tr('Underthesea - Vietnamese POS Tagger'): vie_underthesea.mappings
                 }
             }
         },
