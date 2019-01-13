@@ -843,6 +843,7 @@ def init_settings_default(main):
                 'swe': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'tha': main.tr('PyThaiNLP - Thai Sentence Tokenizer'),
                 'tur': main.tr('NLTK - Punkt Sentence Tokenizer'),
+                'vie': main.tr('Underthesea - Vietnamese Sentence Tokenizer'),
 
                 'other': main.tr('NLTK - Punkt Sentence Tokenizer')
             },
