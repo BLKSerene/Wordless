@@ -137,3 +137,12 @@ print('Thai / PyThaiNLP - Thai Sentence Tokenizer:')
 for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_tha, 'tha',
                                                                     sentence_tokenizer = 'PyThaiNLP - Thai Sentence Tokenizer'):
     print(f'\t{sentence}')
+
+# Vietnamese
+text_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ngữ, là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại Việt Nam. Đây là tiếng mẹ đẻ của khoảng 85% dân cư Việt Nam, cùng với hơn bốn triệu người Việt hải ngoại. Tiếng Việt còn là ngôn ngữ thứ hai của các dân tộc thiểu số tại Việt Nam. Mặc dù tiếng Việt có một số từ vựng vay mượn từ tiếng Hán và trước đây dùng chữ Nôm — một hệ chữ dựa trên chữ Hán — để viết nhưng tiếng Việt được coi là một trong số các ngôn ngữ thuộc ngữ hệ Nam Á có số người nói nhiều nhất (nhiều hơn một số lần so với các ngôn ngữ khác cùng hệ cộng lại). Ngày nay, tiếng Việt dùng bảng chữ cái Latinh, gọi là chữ Quốc ngữ, cùng các dấu thanh để viết.'
+
+print('Vietnamese / Underthesea - Vietnamese Sentence Tokenizer:')
+
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_vie, 'vie',
+                                                                    sentence_tokenizer = 'Underthesea - Vietnamese Sentence Tokenizer'):
+    print(f'\t{sentence}')
