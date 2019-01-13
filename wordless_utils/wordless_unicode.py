@@ -147,4 +147,15 @@ def is_tibetan(char):
     #     https://en.wikipedia.org/wiki/Tibetan_(Unicode_block)
     return 0x0F00 <= ord(char) <= 0x0FFF
 
+def has_han(token):
+    return any([char for char in tokens if is_han(char)])
+
+def has_kana(token):
+    return any([char for char in tokens if is_kana(char)])
+
+def has_thai(token):
+    return any([char for char in tokens if is_thai(char)])
+
+def has_tibetan(token):
+    return any([char for char in tokens if is_tibetan(char)])
 
