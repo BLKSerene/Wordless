@@ -85,7 +85,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://github.com/undertheseanlp/underthesea">Underthesea</a>',
-             '1.1.10',
+             '1.1.11',
              'Vu Anh',
              '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPL-3.0</a>'],
 

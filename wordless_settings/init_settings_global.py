@@ -487,6 +487,10 @@ def init_settings_global(main):
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
 
+            'vie': [
+                main.tr('Underthesea - Vietnamese Sentence Tokenizer')
+            ],
+
             'other': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ]

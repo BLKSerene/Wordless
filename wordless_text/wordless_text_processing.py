@@ -60,30 +60,31 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'defa
     if sentence_tokenizer == 'default':
         sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizers'][lang_code]
 
-    for line in text.splitlines():
-        # English
-        if sentence_tokenizer == main.tr('NLTK - Punkt Sentence Tokenizer'):
-            # Norwegian Bokmål & Norwegian Nynorsk
-            if lang_code in ['nob', 'nno']:
-                lang_text = 'norwegian'
-            # Other Languages
-            elif lang_code == 'other':
-                lang_text = 'english'
-            else:
-                lang_text = wordless_conversion.to_lang_text(main, lang_code).lower()
+    # English
+    if sentence_tokenizer == main.tr('NLTK - Punkt Sentence Tokenizer'):
+        # Norwegian Bokmål & Norwegian Nynorsk
+        if lang_code in ['nob', 'nno']:
+            lang_text = 'norwegian'
+        # Other Languages
+        elif lang_code == 'other':
+            lang_text = 'english'
+        else:
+            lang_text = wordless_conversion.to_lang_text(main, lang_code).lower()
 
+        for line in text.splitlines():
             sentences.extend(nltk.sent_tokenize(line, language = lang_text))
-        elif 'spaCy' in sentence_tokenizer:
-            check_spacy_models(main, lang_code)
+    elif 'spaCy' in sentence_tokenizer:
+        check_spacy_models(main, lang_code)
 
-            nlp = main.__dict__[f'spacy_nlp_{lang_code}']
-            doc = nlp(line)
+        nlp = main.__dict__[f'spacy_nlp_{lang_code}']
 
-            sentences.extend([sentence.text for sentence in doc.sents])
+        for line in text.splitlines():
+            sentences.extend([sentence.text for sentence in nlp(line).sents])
 
-        # Chinese & Japanese
-        elif (sentence_tokenizer == main.tr('Wordless - Chinese Sentence Tokenizer') or
-              sentence_tokenizer == main.tr('Wordless - Japanese Sentence Tokenizer')):
+    # Chinese & Japanese
+    elif (sentence_tokenizer == main.tr('Wordless - Chinese Sentence Tokenizer') or
+          sentence_tokenizer == main.tr('Wordless - Japanese Sentence Tokenizer')):
+        for line in text.splitlines():
             sentence_start = 0
 
             for i, char in enumerate(line):
@@ -99,9 +100,15 @@ def wordless_sentence_tokenize(main, text, lang_code, sentence_tokenizer = 'defa
             if sentence_start <= len(line):
                 sentences.append(line[sentence_start:])
 
-        # Thai
-        elif sentence_tokenizer == 'PyThaiNLP - Thai Sentence Tokenizer':
+    # Thai
+    elif sentence_tokenizer == 'PyThaiNLP - Thai Sentence Tokenizer':
+        for line in text.splitlines():
             sentences.extend(pythainlp.tokenize.sent_tokenize(line))
+
+    # Vietnamese
+    elif sentence_tokenizer == 'Underthesea - Vietnamese Sentence Tokenizer':
+        for line in text.splitlines():
+            sentences.extend(underthesea.sent_tokenize(line))
 
     # Strip whitespace characters
     sentences = [sentence.strip() for sentence in sentences]
