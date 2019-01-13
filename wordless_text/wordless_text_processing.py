@@ -209,9 +209,19 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
                         non_han_start += 1
                     else:
+                        # English
+                        if wordless_unicode.is_eng(char):
+                            for j, char in enumerate(sentence[i:]):
+                                if i + j + 1 == len(sentence) or not wordless_unicode.is_eng(sentence[i + j + 1]):
+                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
+                                                                         lang_code = 'eng'))
+
+                                    non_han_start = i + j + 1
+
+                                    break
                         # Japanese Kana
-                        if wordless_unicode.is_kana(char):
-                            for j, char in enumerate(sentence[i + 1:]):
+                        elif wordless_unicode.is_kana(char):
+                            for j, char in enumerate(sentence[i:]):
                                 if i + j + 1 == len(sentence) or not wordless_unicode.is_kana(sentence[i + j + 1]):
                                     tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
                                                                          lang_code = 'jpn',
@@ -222,7 +232,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
                                     break
                         # Thai
                         elif wordless_unicode.is_thai(char):
-                            for j, char in enumerate(sentence[i + 1:]):
+                            for j, char in enumerate(sentence[i:]):
                                 if i + j + 1 == len(sentence) or not wordless_unicode.is_thai(sentence[i + j + 1]):
                                     tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
                                                                          lang_code = 'tha'))
@@ -232,7 +242,7 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
                                     break
                         # Other Languages
                         else:
-                            for j, char in enumerate(sentence[i + 1:]):
+                            for j, char in enumerate(sentence[i:]):
                                 if i + j + 1 == len(sentence) or wordless_unicode.is_han(sentence[i + j + 1]):
                                     tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
                                                                          lang_code = 'other'))
@@ -350,23 +360,38 @@ def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'defaul
 
                         non_cjk_start += 1
                     else:
-                        if wordless_unicode.has_thai(token):
-                            for j, token in enumerate(tokens[i + 1:]):
-                                if i + j + 2 < len(tokens):
-                                    if wordless_unicode.has_thai(tokens[i + j + 1]):
-                                        text += wordless_word_detokenize(main, tokens[non_cjk_start:j], 'eng')
+                        # English
+                        if wordless_unicode.is_eng_token(token):
+                            for j, token in enumerate(tokens[i:]):
+                                if i + j + 1 == len(tokens) or not wordless_unicode.is_eng_token(tokens[i + j + 1]):
+                                    text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
+                                                                     lang_code = 'eng')
 
-                                        non_cjk_start = i + j + 2
-
-                                        break
-                                else:
-                                    text += wordless_word_detokenize(main, tokens[non_cjk_start:], 'eng')
-
-                                    non_cjk_start = j + 1
+                                    non_cjk_start = i + j + 1
 
                                     break
+                        # Thai
+                        elif wordless_unicode.has_thai(token):
+                            for j, token in enumerate(tokens[i:]):
+                                if i + j + 1 == len(tokens) or not wordless_unicode.has_thai(tokens[i + j + 1]):
+                                    text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
+                                                                     lang_code = 'tha')
+
+                                    non_cjk_start = i + j + 1
+
+                                    break
+                        # Other Languages
                         else:
-                            pass
+                            for j, token in enumerate(tokens[i:]):
+                                if (i + j + 1 == len(tokens) or
+                                    wordless_unicode.has_han(tokens[i + j + 1]) or
+                                    wordless_unicode.has_kana(tokens[i + j + 1])):
+                                    text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
+                                                                     lang_code = 'other')
+
+                                    non_cjk_start = i + j + 1
+
+                                    break
         else:
             text = ''.join([token + token.boundary for token in tokens])
 
