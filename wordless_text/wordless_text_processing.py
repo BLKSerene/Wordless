@@ -211,54 +211,35 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
                     else:
                         # Japanese Kana
                         if wordless_unicode.is_kana(char):
-                            for j, char in enumerate(sentence[i:]):
-                                if i + j + 1 < len(sentence):
-                                    if not wordless_unicode.is_kana(sentence[i + j + 1]):
-                                        tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
-                                                                             lang_code = 'jpn',
-                                                                             word_tokenizer = main.tr('nagisa - Japanese Word Tokenizer')))
-
-                                        non_han_start = i + j + 1
-
-                                        break
-                                else:
-                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start:],
+                            for j, char in enumerate(sentence[i + 1:]):
+                                if i + j + 1 == len(sentence) or not wordless_unicode.is_kana(sentence[i + j + 1]):
+                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
                                                                          lang_code = 'jpn',
                                                                          word_tokenizer = main.tr('nagisa - Japanese Word Tokenizer')))
 
                                     non_han_start = i + j + 1
+
+                                    break
                         # Thai
                         elif wordless_unicode.is_thai(char):
-                            for j, char in enumerate(sentence[i:]):
-                                if i + j + 1 < len(sentence):
-                                    if not wordless_unicode.is_thai(sentence[i + j + 1]):
-                                        tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
-                                                                             lang_code = 'tha'))
-
-                                        non_han_start = i + j + 1
-
-                                        break
-                                else:
-                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start:],
+                            for j, char in enumerate(sentence[i + 1:]):
+                                if i + j + 1 == len(sentence) or not wordless_unicode.is_thai(sentence[i + j + 1]):
+                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
                                                                          lang_code = 'tha'))
 
                                     non_han_start = i + j + 1
+
+                                    break
                         # Other Languages
                         else:
-                            for j, char in enumerate(sentence[i:]):
-                                if i + j + 1 < len(sentence):
-                                    if wordless_unicode.is_han(sentence[i + j + 1]):
-                                        tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
-                                                                             lang_code = 'other'))
-
-                                        non_han_start = i + j + 1
-
-                                        break
-                                else:
-                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start:],
+                            for j, char in enumerate(sentence[i + 1:]):
+                                if i + j + 1 == len(sentence) or wordless_unicode.is_han(sentence[i + j + 1]):
+                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
                                                                          lang_code = 'other'))
 
                                     non_han_start = i + j + 1
+
+                                    break
 
             token_groups.append(tokens)
 
@@ -364,24 +345,28 @@ def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'defaul
 
             for i, token in enumerate(tokens):
                 if i >= non_cjk_start:
-                    if re.search(r'^[\u2E80-\u9FFF]+$', token):
+                    if wordless_unicode.has_han(token) or wordless_unicode.has_kana(token):
                         text += token
 
                         non_cjk_start += 1
                     else:
-                        for j, token in enumerate(tokens):
-                            if j > i and re.search(r'^[\u2E80-\u9FFF]+$', token):
-                                text += wordless_word_detokenize(main, tokens[non_cjk_start:j], 'eng')
+                        if wordless_unicode.has_thai(token):
+                            for j, token in enumerate(tokens[i + 1:]):
+                                if i + j + 2 < len(tokens):
+                                    if wordless_unicode.has_thai(tokens[i + j + 1]):
+                                        text += wordless_word_detokenize(main, tokens[non_cjk_start:j], 'eng')
 
-                                non_cjk_start = j
+                                        non_cjk_start = i + j + 2
 
-                                break
-                            elif j == len(tokens) - 1:
-                                text += wordless_word_detokenize(main, tokens[non_cjk_start:], 'eng')
+                                        break
+                                else:
+                                    text += wordless_word_detokenize(main, tokens[non_cjk_start:], 'eng')
 
-                                non_cjk_start = j + 1
+                                    non_cjk_start = j + 1
 
-                                break
+                                    break
+                        else:
+                            pass
         else:
             text = ''.join([token + token.boundary for token in tokens])
 
