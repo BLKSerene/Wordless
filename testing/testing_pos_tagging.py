@@ -234,6 +234,22 @@ tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
 
 print(f"\t{tokens_tagged}")
 
+# Tibetan
+sentence_bod = '༄༅། །རྒྱ་གར་སྐད་དུ། བོ་དྷི་སཏྭ་ཙརྻ་ཨ་བ་ཏ་ར། བོད་སྐད་དུ། བྱང་ཆུབ་སེམས་དཔའི་སྤྱོད་པ་ལ་འཇུག་པ། །སངས་རྒྱས་དང་བྱང་ཆུབ་སེམས་དཔའ་ཐམས་ཅད་ལ་ཕྱག་འཚལ་ལོ། །བདེ་གཤེགས་ཆོས་ཀྱི་སྐུ་མངའ་སྲས་བཅས་དང༌། །ཕྱག་འོས་ཀུན་ལའང་གུས་པར་ཕྱག་འཚལ་ཏེ། །བདེ་གཤེགས་སྲས་ཀྱི་སྡོམ་ལ་འཇུག་པ་ནི། །ལུང་བཞིན་མདོར་བསྡུས་ནས་ནི་བརྗོད་པར་བྱ། །'
+
+print('Tibetan / pybo - Tibetan POS Tagger:')
+
+tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_bod,
+                                                          lang_code = 'bod',
+                                                          pos_tagger = 'pybo - Tibetan POS Tagger')
+tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_bod,
+                                                                    lang_code = 'bod',
+                                                                    pos_tagger = 'pybo - Tibetan POS Tagger',
+                                                                    tagset = 'universal')
+
+print(f"\t{tokens_tagged}")
+print(f"\t{tokens_tagged_universal}")
+
 # Ukrainian
 sentence_ukr = 'Украї́нська мо́ва (МФА: [ʊkrɐˈjɪɲsʲkɐ ˈmɔwɐ], історичні назви — ру́ська, руси́нська[9][10][11][* 2]) — національна мова українців.'
 

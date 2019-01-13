@@ -56,11 +56,11 @@ lemmas = wordless_text_processing.wordless_lemmatize(main, tokens,
 
 print(f"\t{lemmas}")
 
-print('English / spaCy - English Lemmaatizer:')
+print('English / spaCy - English Lemmatizer:')
 
 lemmas = wordless_text_processing.wordless_lemmatize(main, tokens,
                                                      lang_code = 'eng',
-                                                     lemmatizer = 'spaCy - English Lemmaatizer')
+                                                     lemmatizer = 'spaCy - English Lemmatizer')
 
 print(f"\t{lemmas}")
 
@@ -133,6 +133,18 @@ print('Spanish / spaCy - Spanish Lemmatizer:')
 lemmas = wordless_text_processing.wordless_lemmatize(main, tokens,
 													 lang_code = 'spa',
                                                      lemmatizer = 'spaCy - Spanish Lemmatizer')
+
+print(f"\t{lemmas}")
+
+# Tibetan
+sentence_bod = '༄༅། །རྒྱ་གར་སྐད་དུ། བོ་དྷི་སཏྭ་ཙརྻ་ཨ་བ་ཏ་ར། བོད་སྐད་དུ། བྱང་ཆུབ་སེམས་དཔའི་སྤྱོད་པ་ལ་འཇུག་པ། །སངས་རྒྱས་དང་བྱང་ཆུབ་སེམས་དཔའ་ཐམས་ཅད་ལ་ཕྱག་འཚལ་ལོ། །བདེ་གཤེགས་ཆོས་ཀྱི་སྐུ་མངའ་སྲས་བཅས་དང༌། །ཕྱག་འོས་ཀུན་ལའང་གུས་པར་ཕྱག་འཚལ་ཏེ། །བདེ་གཤེགས་སྲས་ཀྱི་སྡོམ་ལ་འཇུག་པ་ནི། །ལུང་བཞིན་མདོར་བསྡུས་ནས་ནི་བརྗོད་པར་བྱ། །'
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_bod, lang_code = 'bod')
+
+print('Tibetan / pybo - Tibetan Lemmatizer:')
+
+lemmas = wordless_text_processing.wordless_lemmatize(main, tokens,
+                                                     lang_code = 'bod',
+                                                     lemmatizer = 'pybo - Tibetan Lemmatizer')
 
 print(f"\t{lemmas}")
 

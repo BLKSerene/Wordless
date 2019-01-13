@@ -893,6 +893,7 @@ def init_settings_default(main):
                 'tat': main.tr('spaCy - Tatar Word Tokenizer'),
                 'tel': main.tr('spaCy - Telugu Word Tokenizer'),
                 'tha': main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'),
+                'bod': main.tr('pybo - Tibetan Word Tokenizer'),
                 'tur': main.tr('spaCy - Turkish Word Tokenizer'),
                 'urd': main.tr('spaCy - Urdu Word Tokenizer'),
                 'vie': main.tr('Underthesea - Vietnamese Word Tokenizer'),
@@ -954,6 +955,7 @@ def init_settings_default(main):
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
                 'spa': main.tr('spaCy - Spanish POS Tagger'),
                 'tha': main.tr('PyThaiNLP - Perceptron Tagger - ORCHID Corpus'),
+                'bod': main.tr('pybo - Tibetan POS Tagger'),
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'vie': main.tr('Underthesea - Vietnamese POS Tagger')
             },
@@ -1021,6 +1023,10 @@ def init_settings_default(main):
                     main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus'): all_universal.mappings
                 },
 
+                'bod': {
+                    main.tr('pybo - Tibetan POS Tagger'): bod_pybo.mappings
+                },
+
                 'ukr': {
                     main.tr('pymorphy2 - Morphological Analyzer'): rus_open_corpora.mappings
                 },
@@ -1056,6 +1062,7 @@ def init_settings_default(main):
                 'slv': main.tr('Lemmatization Lists'),
                 'spa': main.tr('spaCy - Spanish Lemmatizer'),
                 'swe': main.tr('Lemmatization Lists'),
+                'bod': main.tr('pybo - Tibetan Lemmatizer'),
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'cym': main.tr('Lemmatization Lists')
             },
