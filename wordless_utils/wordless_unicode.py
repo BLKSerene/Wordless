@@ -6,8 +6,6 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
-import re
-
 # Unicode Blocks: https://en.wikipedia.org/wiki/Unicode_block
 
 def is_han(char):
@@ -144,5 +142,9 @@ def is_thai(char):
     #     https://en.wikipedia.org/wiki/Thai_(Unicode_block)
     return 0x0E00 <= ord(char) <= 0x0E7F
 
-def has_thai(token):
-    return re.search(r'[\u0E00-\u0E7F]', token)
+def is_tibetan(char):
+    # Tibetan:
+    #     https://en.wikipedia.org/wiki/Tibetan_(Unicode_block)
+    return 0x0F00 <= ord(char) <= 0x0FFF
+
+

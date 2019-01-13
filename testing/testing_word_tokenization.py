@@ -33,6 +33,8 @@ print('Chinese (Simplified) / jieba - Chinese Word Tokenizer:')
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
                                                          word_tokenizer = 'jieba - Chinese Word Tokenizer')
 
+print(f"\t{' '.join(tokens)}")
+
 print('Chinese (Simplified) / Wordless - Chinese Character Tokenizer:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
@@ -193,6 +195,16 @@ print('Thai / PyThaiNLP - Longest Matching:')
 
 tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_tha, 'tha',
                                                          word_tokenizer = 'PyThaiNLP - Longest Matching')
+
+print(f"\t{' '.join(tokens)}")
+
+# Tibetan
+sentence_bod = '༄༅། །རྒྱ་གར་སྐད་དུ། བོ་དྷི་སཏྭ་ཙརྻ་ཨ་བ་ཏ་ར། བོད་སྐད་དུ། བྱང་ཆུབ་སེམས་དཔའི་སྤྱོད་པ་ལ་འཇུག་པ། །སངས་རྒྱས་དང་བྱང་ཆུབ་སེམས་དཔའ་ཐམས་ཅད་ལ་ཕྱག་འཚལ་ལོ། །བདེ་གཤེགས་ཆོས་ཀྱི་སྐུ་མངའ་སྲས་བཅས་དང༌། །ཕྱག་འོས་ཀུན་ལའང་གུས་པར་ཕྱག་འཚལ་ཏེ། །བདེ་གཤེགས་སྲས་ཀྱི་སྡོམ་ལ་འཇུག་པ་ནི། །ལུང་བཞིན་མདོར་བསྡུས་ནས་ནི་བརྗོད་པར་བྱ། །'
+
+print('Tibetan / pybo - Tibetan Word Tokenizer:')
+
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_bod, 'bod',
+                                                         word_tokenizer = 'pybo - Tibetan Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
