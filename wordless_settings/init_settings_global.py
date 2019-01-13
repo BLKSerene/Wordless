@@ -106,6 +106,7 @@ def init_settings_global(main):
             main.tr('Tatar'): 'tat', # Stop Words
             main.tr('Telugu'): 'tel',
             main.tr('Thai'): 'tha',
+            main.tr('Tibetan'): 'bod', # Word Tokenization, POS Tagging, Lemmatization
             main.tr('Turkish'): 'tur',
             main.tr('Ukrainian'): 'ukr',
             main.tr('Urdu'): 'urd',
@@ -131,6 +132,7 @@ def init_settings_global(main):
             'aze': 'az',
             'bel': 'be',
             'ben': 'bn',
+            'bod': 'bo', # Word Tokenization, POS Tagging, Lemmatization
             'bos': 'bs',
             'bre': 'br',
             'bul': 'bg',
@@ -855,6 +857,10 @@ def init_settings_global(main):
                 main.tr('PyThaiNLP - Longest Matching'),
             ],
 
+            'bod': [
+                main.tr('pybo - Tibetan Word Tokenizer')
+            ],
+
             'tur': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
@@ -1065,6 +1071,10 @@ def init_settings_global(main):
                 main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus')
             ],
 
+            'bod': [
+                main.tr('pybo - Tibetan POS Tagger')
+            ],
+
             'ukr': [
                 main.tr('pymorphy2 - Morphological Analyzer')
             ],
@@ -1172,6 +1182,10 @@ def init_settings_global(main):
 
             'swe': [
                 main.tr('Lemmatization Lists')
+            ],
+
+            'bod': [
+                main.tr('pybo - Tibetan Lemmatizer')
             ],
 
             'ukr': [

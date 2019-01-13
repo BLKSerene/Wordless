@@ -59,6 +59,11 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'Steven Bird, Liling Tan',
              '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
 
+            ['<a href="https://github.com/Esukhia/pybo">pybo</a>',
+             '0.2.20',
+             'Hélios Drupchen Hildt',
+             '<a href="https://github.com/Esukhia/pybo/blob/master/LICENSE">Apache-2.0</a>'],
+
             ['<a href="https://github.com/kmike/pymorphy2/">pymorphy2</a>',
              '0.8',
              'Mikhail Korobov',
@@ -79,8 +84,8 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'Matthew Honnibal, Ines Montani',
              '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'],
 
-            ['<a href="http://undertheseanlp.com/">Underthesea</a>',
-             '1.1.9',
+            ['<a href="https://github.com/undertheseanlp/underthesea">Underthesea</a>',
+             '1.1.10',
              'Vu Anh',
              '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPL-3.0</a>'],
 
