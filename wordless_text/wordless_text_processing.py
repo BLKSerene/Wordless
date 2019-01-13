@@ -16,6 +16,7 @@ import nagisa
 import nltk
 import nltk.tokenize.nist
 import numpy
+import pybo
 import pymorphy2
 import pythainlp
 import sacremoses
@@ -266,11 +267,6 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
         for sentence in sentences:
             token_groups.append(nagisa.tagging(str(sentence)).words)
 
-    # Vietnamese
-    elif word_tokenizer == main.tr('Underthesea - Vietnamese Word Tokenizer'):
-        for sentence in sentences:
-            token_groups.append(underthesea.word_tokenize(str(sentence)))
-
     # Thai
     elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'):
         for sentence in sentences:
@@ -281,6 +277,19 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
     elif word_tokenizer == main.tr('PyThaiNLP - Longest Matching'):
         for sentence in sentences:
             token_groups.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'longest-matching'))
+
+    # Tibetan
+    elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer'):
+        if 'pybo_bo_tokenizer' not in main.__dict__:
+            main.pybo_bo_tokenizer = pybo.BoTokenizer('POS')
+
+        for sentence in sentences:
+            token_groups.append([token.content for token in main.pybo_bo_tokenizer.tokenize(sentence)])
+
+    # Vietnamese
+    elif word_tokenizer == main.tr('Underthesea - Vietnamese Word Tokenizer'):
+        for sentence in sentences:
+            token_groups.append(underthesea.word_tokenize(str(sentence)))
 
     token_groups = [list(tokens) for tokens in token_groups]
 
@@ -448,6 +457,14 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
 
             tokens_tagged.extend(pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud'))
 
+    # Tibetan
+    elif pos_tagger == main.tr('pybo - Tibetan POS Tagger'):
+        if 'pybo_bo_tokenizer' not in main.__dict__:
+            main.pybo_bo_tokenizer = pybo.BoTokenizer('POS')
+
+        for sentence in sentences:
+            tokens_tagged.extend([(token.content, token.pos) for token in main.pybo_bo_tokenizer.tokenize(sentence)])
+
     # Vietnamese
     elif pos_tagger == main.tr('Underthesea - Vietnamese POS Tagger'):
         for sentence in sentences:
@@ -509,6 +526,18 @@ def wordless_lemmatize(main, tokens, lang_code, lemmatizer = 'default'):
 
             for token in tokens:
                 lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
+
+        # Tibetan
+        elif lemmatizer == main.tr('pybo - Tibetan Lemmatizer'):
+            if 'pybo_bo_tokenizer' not in main.__dict__:
+                main.pybo_bo_tokenizer = pybo.BoTokenizer('POS')
+
+            for token in tokens:
+                for token in main.pybo_bo_tokenizer.tokenize(token):
+                    if token.lemma:
+                        lemmas.append(token.lemma)
+                    else:
+                        lemmas.append(token.content)
 
         # Other Languages
         elif lemmatizer == main.tr('Lemmatization Lists'):

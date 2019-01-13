@@ -108,3 +108,5 @@ Import/
 Export/
 Misc/
 *.pkl
+*.pickled
+*.yaml

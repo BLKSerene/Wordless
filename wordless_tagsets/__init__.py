@@ -31,6 +31,8 @@ __all__ = [
 
     'tha_orchid',
 
+    'bod_pybo',
+
     'vie_underthesea',
 
     'zho_jieba'
