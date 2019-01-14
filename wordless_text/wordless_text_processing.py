@@ -12,7 +12,6 @@ import re
 
 import jieba
 import jieba.posseg
-import nagisa
 import nltk
 import nltk.tokenize.nist
 import numpy
@@ -262,6 +261,8 @@ def wordless_word_tokenize(main, sentences, lang_code, word_tokenizer = 'default
 
     # Japanese
     elif word_tokenizer == main.tr('nagisa - Japanese Word Tokenizer'):
+        import nagisa
+
         for sentence in sentences:
             token_groups.append(nagisa.tagging(str(sentence)).words)
 
@@ -444,6 +445,8 @@ def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset 
 
     # Japanese
     elif pos_tagger == main.tr('nagisa - Japanese POS Tagger'):
+        import nagisa
+
         for sentence in sentences:
             tagged_tokens = nagisa.tagging(str(sentence))
 

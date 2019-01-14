@@ -61,7 +61,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
 
             ['<a href="https://github.com/Esukhia/pybo">pybo</a>',
-             '0.2.20',
+             '0.2.21',
              'Hélios Drupchen Hildt',
              '<a href="https://github.com/Esukhia/pybo/blob/master/LICENSE">Apache-2.0</a>'],
 
@@ -76,7 +76,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache-2.0</a>'],
 
             ['<a href="https://github.com/alvations/sacremoses">SacreMoses</a>',
-             '0.0.5',
+             '0.0.7',
              'Liling Tan',
              '<a href="https://github.com/alvations/sacremoses#license">LGPL-2.1</a>'],
 
@@ -134,6 +134,11 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '2.5.12',
              'Eric Gazoni, Charlie Clark',
              '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>'],
+
+            ['<a href="https://github.com/python-openxml/python-docx">python-docx</a>',
+             '0.8.10',
+             'Steve Canny',
+             '<a href="https://github.com/python-openxml/python-docx/blob/master/LICENSE">MIT</a>'],
 
             ['<a href="https://www.scipy.org/">SciPy</a>',
              '1.2.0',
