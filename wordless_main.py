@@ -10,6 +10,7 @@ import copy
 import os
 import pickle
 import sys
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -177,6 +178,28 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
         self.wrapper_info.layout().addWidget(label_acknowledgements, 0, 0)
         self.wrapper_info.layout().addWidget(table_acknowledgements, 1, 0)
 
+class Wordless_Loading(QSplashScreen):
+    def __init__(self):
+        super().__init__(QPixmap('images/wordless_loading.png'))
+
+        self.setFont(QFont('Times New Roman', pointSize = 12))
+        self.showMessage(self.tr('Loading Wordless...\nPlease wait, it may take a few seconds.'), alignment = Qt.AlignHCenter | Qt.AlignBottom, color = Qt.white)
+
+    def fade_in(self):
+        self.setWindowOpacity(0)
+        self.show()
+
+        while self.windowOpacity() < 1:
+            self.setWindowOpacity(self.windowOpacity() + 0.05)
+
+            time.sleep(0.05)
+
+    def fade_out(self):
+        while self.windowOpacity() > 0:
+            self.setWindowOpacity(self.windowOpacity() - 0.05)
+
+            time.sleep(0.05)
+
 class Wordless_Main(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -220,8 +243,6 @@ class Wordless_Main(QMainWindow):
         self.status_bar.showMessage(self.tr('Ready!'))
 
         self.setStyleSheet('* {font-family: Arial, sans-serif; color: #292929; font-size: 12px;}')
-
-        self.showMaximized()
 
     def closeEvent(self, event):
         reply = QMessageBox.question(self,
@@ -482,7 +503,19 @@ class Wordless_Main(QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 
+    wordless_loading = Wordless_Loading()
+
+    wordless_loading.fade_in()
+    wordless_loading.raise_()
+
+    app.processEvents()
+
     wordless_main = Wordless_Main()
+
+    wordless_loading.fade_out()
+    wordless_loading.finish(wordless_main)
+
+    wordless_main.showMaximized()
 
     sys.exit(app.exec_())
     
