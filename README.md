@@ -67,9 +67,10 @@ Many thanks to the following open-source projects on which Wordless is built on:
 18. [Matplotlib](https://matplotlib.org/) by Matplotlib Development Team
 19. [NumPy](http://www.numpy.org/) by NumPy Developers
 20. [openpyxl](https://openpyxl.readthedocs.io/en/stable/) by Eric Gazoni, Charlie Clark
-21. [SciPy](https://www.scipy.org/) by SciPy Developers
-22. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
-23. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
+21. [python-docx](https://github.com/python-openxml/python-docx) by Steve Canny
+22. [SciPy](https://www.scipy.org/) by SciPy Developers
+23. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
+24. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
 
 ## Donation
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.

@@ -16,6 +16,12 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 import bs4
+import docx
+from docx.document import Document
+from docx.oxml.table import CT_Tbl
+from docx.oxml.text.paragraph import CT_P
+from docx.table import _Cell, Table
+from docx.text.paragraph import Paragraph
 
 from wordless_widgets import *
 from wordless_utils import *
@@ -60,6 +66,60 @@ class Wordless_Files():
 
     @ wordless_misc.log_timing
     def add_files(self, file_paths):
+        # python-docx/Issue #276: https://github.com/python-openxml/python-docx/issues/276
+        def iter_block_items(parent):
+            """
+            Yield each paragraph and table child within *parent*, in document order.
+            Each returned value is an instance of either Table or Paragraph. *parent*
+            would most commonly be a reference to a main Document object, but
+            also works for a _Cell object, which itself can contain paragraphs and tables.
+            """
+            if isinstance(parent, Document):
+                parent_elm = parent.element.body
+            elif isinstance(parent, _Cell):
+                parent_elm = parent._tc
+            else:
+                raise ValueError("something's not right")
+
+            for child in parent_elm.iterchildren():
+                if isinstance(child, CT_P):
+                    yield Paragraph(child, parent)
+                elif isinstance(child, CT_Tbl):
+                    yield Table(child, parent)
+
+        def iter_cell_items(parent):
+            parent_elm = parent._tc
+
+            for child in parent_elm.iterchildren():
+                if isinstance(child, CT_P):
+                    yield Paragraph(child, parent)
+                elif isinstance(child, CT_Tbl):
+                    table = Table(child, parent)
+
+                    for row in table.rows:
+                        for cell in row.cells:
+                            yield from iter_cell_items(cell)
+
+        # python-docx/Issue #40: https://github.com/python-openxml/python-docx/issues/40
+        def iter_visual_cells(table):
+            prior_tcs = []
+            visual_cells = []
+
+            for row in table.rows:
+                visual_cells.append([])
+
+                for cell in row.cells:
+                    this_tc = cell._tc
+
+                    if this_tc in prior_tcs:  # skip cells pointing to same `<w:tc>` element
+                        continue
+                    else:
+                        prior_tcs.append(this_tc)
+
+                        visual_cells[-1].append(cell)
+
+            return visual_cells
+
         new_files = []
 
         files_encoding_detection_failed = []
@@ -99,26 +159,54 @@ class Wordless_Files():
 
                 if not success_lang_detection:
                     files_lang_detection_failed.append(new_file['path'])
-            elif file_ext in ['.htm', '.html', '.tmx', '.lrc']:
+            else:
                 # Detect encoding
                 if self.main.settings_custom['file']['auto_detection_settings']['detect_encodings']:
                     encoding_code, _ = wordless_detection.detect_encoding(self.main, file_path)
                 else:
                     encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['default_encoding']
 
+                # Microsoft Documents
+                if file_ext == '.docx':
+                    lines = []
+
+                    doc = docx.Document(file_path)
+
+                    for block in iter_block_items(doc):
+                        if type(block) == docx.text.paragraph.Paragraph:
+                            lines.append(block.text)
+                        elif type(block) == docx.table.Table:
+                            rows = []
+
+                            for row in iter_visual_cells(block):
+                                cells = []
+
+                                for cell in row:
+                                    cells.append(' '.join([item.text for item in iter_cell_items(cell)]))
+
+                                rows.append('\t'.join(cells))
+
+                            lines.append('\n'.join(rows))
+
+                    new_path = wordless_checking.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+
+                    with open(new_path, 'w', encoding = encoding_code) as f:
+                        f.write('\n'.join(lines))
+
+                    new_paths = [new_path]
                 # HTML Files
-                if file_ext in ['.htm', '.html']:
+                elif file_ext in ['.htm', '.html']:
                     with open(file_path, 'r', encoding = encoding_code) as f:
                         soup = bs4.BeautifulSoup(f.read(), 'lxml')
 
-                    new_path = wordless_checking.check_new_path(f'{default_dir}{file_name}.txt')
+                    new_path = wordless_checking.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
 
                     with open(new_path, 'w', encoding = encoding_code) as f:
                         f.write(soup.get_text())
 
                     new_paths = [new_path]
-                # TMX Files
-                elif file_ext in ['.tmx']:
+                # Translation Memory Files
+                elif file_ext == '.tmx':
                     lines_src = []
                     lines_target = []
 
@@ -131,8 +219,8 @@ class Wordless_Files():
                             lines_src.append(seg_src.get_text())
                             lines_target.append(seg_target.get_text())
 
-                    path_src = wordless_checking.check_new_path(f'{default_dir}{file_name}_source.txt')
-                    path_target = wordless_checking.check_new_path(f'{default_dir}{file_name}_target.txt')
+                    path_src = wordless_checking.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
+                    path_target = wordless_checking.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
 
                     with open(path_src, 'w', encoding = encoding_code) as f:
                         f.write('\n'.join(lines_src))
@@ -143,7 +231,8 @@ class Wordless_Files():
                         f.write('\n')
 
                     new_paths = [path_src, path_target]
-                elif file_ext in ['.lrc']:
+                # Lyrics Files
+                elif file_ext == '.lrc':
                     lyrics = {}
 
                     with open(file_path, 'r', encoding = encoding_code) as f:
