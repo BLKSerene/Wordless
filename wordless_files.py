@@ -22,6 +22,7 @@ from docx.oxml.table import CT_Tbl
 from docx.oxml.text.paragraph import CT_P
 from docx.table import _Cell, Table
 from docx.text.paragraph import Paragraph
+import openpyxl
 
 from wordless_widgets import *
 from wordless_utils import *
@@ -166,7 +167,7 @@ class Wordless_Files():
                 else:
                     encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['default_encoding']
 
-                # Microsoft Documents
+                # Word Documents
                 if file_ext == '.docx':
                     lines = []
 
@@ -194,6 +195,25 @@ class Wordless_Files():
                         f.write('\n'.join(lines))
 
                     new_paths = [new_path]
+
+                # Excel Workbooks
+                elif file_ext == '.xlsx':
+                    new_path = wordless_checking.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+
+                    with open(new_path, 'w', encoding = encoding_code) as f:
+                        workbook = openpyxl.load_workbook(file_path, data_only = True)
+
+                        for worksheet_name in workbook.sheetnames:
+                            worksheet = workbook[worksheet_name]
+
+                            for row in worksheet.rows:
+                                line = '\t'.join([(cell.value if cell.value != None else '')
+                                                  for cell in row])
+
+                                f.write(f'{line}\n')
+
+                    new_paths = [new_path]
+
                 # HTML Files
                 elif file_ext in ['.htm', '.html']:
                     with open(file_path, 'r', encoding = encoding_code) as f:
@@ -205,6 +225,7 @@ class Wordless_Files():
                         f.write(soup.get_text())
 
                     new_paths = [new_path]
+
                 # Translation Memory Files
                 elif file_ext == '.tmx':
                     lines_src = []
@@ -231,6 +252,7 @@ class Wordless_Files():
                         f.write('\n')
 
                     new_paths = [path_src, path_target]
+
                 # Lyrics Files
                 elif file_ext == '.lrc':
                     lyrics = {}
