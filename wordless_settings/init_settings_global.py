@@ -238,6 +238,7 @@ def init_settings_global(main):
             'files': [
                 main.tr('Text File (*.txt)'),
                 main.tr('Word Document (*.docx)'),
+                main.tr('Excel Workbook (*.xls; *.xlsx)'),
                 main.tr('HTML Page (*.htm; *.html)'),
                 main.tr('Translation Memory File (*.tmx)'),
                 main.tr('Lyrics File (*.lrc)'),
