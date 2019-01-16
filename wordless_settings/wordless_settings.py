@@ -70,31 +70,29 @@ class Wordless_Settings(QDialog):
 
         self.tree_settings = wordless_tree.Wordless_Tree(self)
 
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Files')]))
-        self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem([self.tr('Import')]))
-        self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem([self.tr('Export')]))
-
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Import')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Export')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Data')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Auto-detection')]))
-        self.tree_settings.topLevelItem(2).addChild(QTreeWidgetItem([self.tr('Language Detection')]))
-        self.tree_settings.topLevelItem(2).addChild(QTreeWidgetItem([self.tr('Encoding Detection')]))
+        self.tree_settings.topLevelItem(3).addChild(QTreeWidgetItem([self.tr('Language Detection')]))
+        self.tree_settings.topLevelItem(3).addChild(QTreeWidgetItem([self.tr('Encoding Detection')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Sentence Tokenization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Word Tokenization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Word Detokenization')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('POS Tagging')]))
-        self.tree_settings.topLevelItem(6).addChild(QTreeWidgetItem([self.tr('Tagsets')]))
+        self.tree_settings.topLevelItem(7).addChild(QTreeWidgetItem([self.tr('Tagsets')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Lemmatization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Stop Words')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Measures')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
+        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
+        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
+        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
+        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
 
         self.tree_settings.itemSelectionChanged.connect(self.selection_changed)
 
@@ -102,7 +100,6 @@ class Wordless_Settings(QDialog):
 
         self.init_settings_import()
         self.init_settings_export()
-
         self.init_settings_data()
 
         self.init_settings_lang_detection()
@@ -149,9 +146,8 @@ class Wordless_Settings(QDialog):
 
         self.load_settings()
         
-        self.tree_settings.item_selected_old = self.tree_settings.topLevelItem(0).child(0)
-        self.tree_settings.topLevelItem(0).setExpanded(True)
-        self.tree_settings.topLevelItem(0).child(0).setSelected(True)
+        self.tree_settings.item_selected_old = self.tree_settings.topLevelItem(0)
+        self.tree_settings.topLevelItem(0).setSelected(True)
 
     def selection_changed(self):
         settings_cur = None
@@ -161,9 +157,7 @@ class Wordless_Settings(QDialog):
                 item_selected = self.tree_settings.selectedItems()[0]
                 item_selected_text = item_selected.text(0)
 
-                if item_selected_text == self.tr('Files'):
-                    item_selected.setExpanded(True)
-                elif item_selected_text == self.tr('Import'):
+                if item_selected_text == self.tr('Import'):
                     settings_cur = self.settings_import
                 elif item_selected_text == self.tr('Export'):
                     settings_cur = self.settings_export
@@ -211,7 +205,6 @@ class Wordless_Settings(QDialog):
                 if settings_cur:
                     self.settings_import.hide()
                     self.settings_export.hide()
-
                     self.settings_data.hide()
 
                     self.settings_lang_detection.hide()
@@ -1543,7 +1536,7 @@ class Wordless_Settings(QDialog):
         else:
             settings = copy.deepcopy(self.main.settings_custom)
 
-        # Files -> Import
+        # Import
         if os.path.exists(settings['import']['files']['default_path']):
             self.line_edit_import_files_default_path.setText(settings['import']['files']['default_path'])
         else:
@@ -1558,7 +1551,7 @@ class Wordless_Settings(QDialog):
 
         self.line_edit_import_temp_files_default_path.setText(settings['import']['temp_files']['default_path'])
 
-        # Files -> Export
+        # Export
         self.line_edit_export_tables_default_path.setText(settings['export']['tables']['default_path'])
         self.combo_box_export_tables_default_type.setCurrentText(settings['export']['tables']['default_type'])
         self.combo_box_export_tables_default_encoding.setCurrentText(settings['export']['tables']['default_encoding'])
@@ -1795,7 +1788,7 @@ class Wordless_Settings(QDialog):
         if settings_valid:
             settings = self.main.settings_custom
 
-            # Files -> Import
+            # Import
             settings['import']['files']['default_path'] = self.line_edit_import_files_default_path.text()
 
             settings['import']['search_terms']['default_path'] = self.line_edit_import_search_terms_default_path.text()
@@ -1803,7 +1796,7 @@ class Wordless_Settings(QDialog):
 
             settings['import']['temp_files']['default_path'] = self.line_edit_import_temp_files_default_path.text()
 
-            # Files -> Export
+            # Export
             settings['export']['tables']['default_path'] = self.line_edit_export_tables_default_path.text()
             settings['export']['tables']['default_type'] = self.combo_box_export_tables_default_type.currentText()
             settings['export']['tables']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_export_tables_default_encoding.currentText())
