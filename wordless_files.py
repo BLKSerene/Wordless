@@ -23,6 +23,7 @@ from docx.oxml.text.paragraph import CT_P
 from docx.table import _Cell, Table
 from docx.text.paragraph import Paragraph
 import openpyxl
+import xlrd
 
 from wordless_widgets import *
 from wordless_utils import *
@@ -209,6 +210,21 @@ class Wordless_Files():
                             for row in worksheet.rows:
                                 line = '\t'.join([(cell.value if cell.value != None else '')
                                                   for cell in row])
+
+                                f.write(f'{line}\n')
+
+                    new_paths = [new_path]
+                elif file_ext == '.xls':
+                    new_path = wordless_checking.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+
+                    with open(new_path, 'w', encoding = encoding_code) as f:
+                        workbook = xlrd.open_workbook(file_path)
+
+                        for i_sheet in range(workbook.nsheets):
+                            worksheet = workbook.sheet_by_index(i_sheet)
+
+                            for row in range(worksheet.nrows):
+                                line = '\t'.join([worksheet.cell_value(row, col) for col in range(worksheet.ncols)])
 
                                 f.write(f'{line}\n')
 
