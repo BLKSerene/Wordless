@@ -778,7 +778,8 @@ def init_settings_default(main):
             },
 
             'temp_files': {
-                'default_path': os.path.normpath(os.path.realpath('Import/'))
+                'default_path': os.path.normpath(os.path.realpath('Import/')),
+                'default_encoding': 'utf_8'
             }
         },
 
