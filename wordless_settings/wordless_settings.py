@@ -303,6 +303,8 @@ class Wordless_Settings(QDialog):
         self.label_import_temp_files_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_import_temp_files_default_path = QLineEdit(self)
         self.button_import_temp_files_browse = QPushButton(self.tr('Browse...'), self)
+        self.label_import_temp_files_default_encoding = QLabel(self.tr('Default Encoding:'), self)
+        self.combo_box_import_temp_files_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
 
         self.button_import_temp_files_browse.clicked.connect(browse_temp_files)
 
@@ -310,6 +312,8 @@ class Wordless_Settings(QDialog):
         group_box_import_temp_files.layout().addWidget(self.label_import_temp_files_default_path, 0, 0)
         group_box_import_temp_files.layout().addWidget(self.line_edit_import_temp_files_default_path, 0, 1)
         group_box_import_temp_files.layout().addWidget(self.button_import_temp_files_browse, 0, 2)
+        group_box_import_temp_files.layout().addWidget(self.label_import_temp_files_default_encoding, 1, 0)
+        group_box_import_temp_files.layout().addWidget(self.combo_box_import_temp_files_default_encoding, 1, 1, 1, 2)
 
         self.settings_import.setLayout(QGridLayout())
         self.settings_import.layout().addWidget(group_box_import_files, 0, 0)
@@ -1550,14 +1554,15 @@ class Wordless_Settings(QDialog):
         self.checkbox_import_search_terms_detect_encodings.setChecked(settings['import']['search_terms']['detect_encodings'])
 
         self.line_edit_import_temp_files_default_path.setText(settings['import']['temp_files']['default_path'])
+        self.combo_box_import_temp_files_default_encoding.setCurrentText(wordless_conversion.to_encoding_text(self.main, settings['import']['temp_files']['default_encoding']))
 
         # Export
         self.line_edit_export_tables_default_path.setText(settings['export']['tables']['default_path'])
         self.combo_box_export_tables_default_type.setCurrentText(settings['export']['tables']['default_type'])
-        self.combo_box_export_tables_default_encoding.setCurrentText(settings['export']['tables']['default_encoding'])
+        self.combo_box_export_tables_default_encoding.setCurrentText(wordless_conversion.to_encoding_text(self.main, settings['export']['tables']['default_encoding']))
 
         self.line_edit_export_search_terms_default_path.setText(settings['export']['search_terms']['default_path'])
-        self.combo_box_export_search_terms_default_encoding.setCurrentText(settings['export']['search_terms']['default_encoding'])
+        self.combo_box_export_search_terms_default_encoding.setCurrentText(wordless_conversion.to_encoding_text(self.main, settings['export']['search_terms']['default_encoding']))
 
         # Data
         self.spin_box_precision_decimal.setValue(settings['data']['precision_decimal'])
@@ -1795,6 +1800,7 @@ class Wordless_Settings(QDialog):
             settings['import']['search_terms']['detect_encodings'] = self.checkbox_import_search_terms_detect_encodings.isChecked()
 
             settings['import']['temp_files']['default_path'] = self.line_edit_import_temp_files_default_path.text()
+            settings['import']['temp_files']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_import_temp_files_default_encoding.currentText())
 
             # Export
             settings['export']['tables']['default_path'] = self.line_edit_export_tables_default_path.text()
