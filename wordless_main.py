@@ -148,7 +148,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
             ['<a href="https://github.com/python-excel/xlrd">xlrd</a>',
              '1.2.0',
              'Stephen John Machin, Lingfo Pty Ltd',
-             '<a href="https://github.com/python-excel/xlrd/blob/master/LICENSE">BSD-2-Clause/BSD-3-Clause</a>'],
+             '<a href="https://github.com/python-excel/xlrd/blob/master/LICENSE">BSD-3-Clause/BSD-4-Clause</a>'],
 
             ['<a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a>',
              '/',
