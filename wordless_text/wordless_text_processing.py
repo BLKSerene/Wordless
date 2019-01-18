@@ -617,28 +617,36 @@ def wordless_get_stop_words(main, lang_code, word_list = 'default'):
 
         lang_text = wordless_conversion.to_lang_text(main, lang_code)
 
+        # Greek
+        if lang_text == main.tr('Greek (Modern)'):
+            lang_text = main.tr('Greek')
+
         stop_words = nltk.corpus.stopwords.words(lang_text)
 
     # Thai
     elif word_list == 'PyThaiNLP':
         stop_words = pythainlp.corpus.stopwords.words('thai')
 
+    # Custom Lists
+    elif word_list == main.tr('Custom List'):
+        stop_words = main.settings_custom['stop_words']['custom_lists'][lang_code]
+
     return sorted(stop_words)
 
 def wordless_filter_stop_words(main, items, lang_code):
-    if lang_code in main.settings_global['stop_words']:
-        stop_words = wordless_get_stop_words(main, lang_code)
+    if lang_code not in main.settings_global['stop_words']:
+        lang_code == 'other'
 
-        if type(items[0]) == str:
-            items_filtered = [token for token in items if token not in stop_words]
-        elif type(items[0]) in [list, tuple, set]:
-            items_filtered = [ngram
-                              for ngram in items
-                              if not [token for token in ngram if token in stop_words]]
+    stop_words = wordless_get_stop_words(main, lang_code)
 
-        return items_filtered
-    else:
-        return items
+    if type(items[0]) == str:
+        items_filtered = [token for token in items if token not in stop_words]
+    elif type(items[0]) in [list, tuple, set]:
+        items_filtered = [ngram
+                          for ngram in items
+                          if not [token for token in ngram if token in stop_words]]
+
+    return items_filtered
 
 def wordless_preprocess_tokens(main, tokens, lang_code, settings):
     if settings['words']:
