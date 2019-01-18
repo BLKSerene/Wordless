@@ -43,7 +43,8 @@ def init_settings_global(main):
             main.tr('Galician'): 'glg',
             main.tr('Georgian'): 'kat',
             main.tr('German'): 'deu',
-            main.tr('Greek'): 'ell',
+            main.tr('Greek (Ancient)'): 'grc', # Stop Words & Lemmatization
+            main.tr('Greek (Modern)'): 'ell',
             main.tr('Gujarati'): 'guj',
             main.tr('Haitian'): 'hat',
             main.tr('Hausa'): 'hau', # Stop Words
@@ -155,6 +156,7 @@ def init_settings_global(main):
             'gle': 'ga',
             'glg': 'gl',
             'glv': 'gv', # Lemmatization
+            'grc': 'grc', # Stop Words & Lemmatization
             'guj': 'gu',
             'hat': 'ht',
             'hau': 'ha',
@@ -1207,311 +1209,379 @@ def init_settings_global(main):
 
         'stop_words': {
             'afr': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'ara': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'hye': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'aze': [
-                'NLTK'
+                'NLTK',
+                main.tr('Custom List')
             ],
 
             'eus': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'ben': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'bre': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'bul': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'cat': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'zho_cn': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'zho_tw': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'hrv': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'ces': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'dan': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'nld': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'eng': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'epo': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'est': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'fin': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'fra': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'glg': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'deu': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'ell': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'hau': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'heb': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'hin': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'hun': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'ind': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'gle': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'ita': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'jpn': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'kaz': [
-                'NLTK'
+                'NLTK',
+                main.tr('Custom List')
             ],
 
             'kor': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'kur': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'lat': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'lav': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'mar': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'msa': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'nep': [
-                'NLTK'
+                'NLTK',
+                main.tr('Custom List')
             ],
 
             'nob': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'nno': [
                 'NLTK',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'fas': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'pol': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'por': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'ron': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'rus': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'sin': [
-                'spaCy'
+                'spaCy',
+                main.tr('Custom List')
             ],
 
             'slk': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'slv': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'sot': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'som': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'spa': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'swa': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'swe': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'tgl': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'tat': [
-                'spaCy'
+                'spaCy',
+                main.tr('Custom List')
             ],
 
             'tel': [
-                'spaCy'
+                'spaCy',
+                main.tr('Custom List')
             ],
 
             'tha': [
                 'PyThaiNLP',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'tur': [
                 'NLTK',
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'ukr': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'urd': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'vie': [
                 'spaCy',
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'yor': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
             ],
 
             'zul': [
-                'Stopwords ISO'
+                'Stopwords ISO',
+                main.tr('Custom List')
+            ],
+
+            'other': [
+                main.tr('Custom List')
             ]
         },
 
