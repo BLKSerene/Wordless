@@ -28,7 +28,7 @@ class Wordless_List(QListWidget):
         self.setAcceptDrops(True)
         self.setDragDropMode(QAbstractItemView.InternalMove)
 
-        self.itemChanged.connect(self.item_changed, Qt.QueuedConnection)
+        self.itemChanged.connect(self.item_changed)
         self.itemSelectionChanged.connect(self.selection_changed)
 
         self.button_add = QPushButton(self.tr('Add'), self)
@@ -61,28 +61,22 @@ class Wordless_List(QListWidget):
                                     QMessageBox.Ok)
 
                 item.setText(item.old_text)
+
+                self.closePersistentEditor(item)
                 self.editItem(item)
             else:
                 for i in range(self.count()):
                     if self.item(i) != item:
                         if item.text() == self.item(i).text():
-                            self.blockSignals(True)
-
-                            item.setForeground(QColor('#F00'))
-                            self.item(i).setForeground(QColor('#F00'))
-
-                            self.blockSignals(False)
-                            
                             QMessageBox.warning(self.main,
                                                 self.tr('Duplicate Search Terms'),
                                                 self.tr('Please refrain from searching the same item more than once!'),
                                                 QMessageBox.Ok)
 
                             item.setText(item.old_text)
-                            self.editItem(item)
 
-                            item.setForeground(QColor('#292929'))
-                            self.item(i).setForeground(QColor('#292929'))
+                            self.closePersistentEditor(item)
+                            self.editItem(item)
 
                             break
 

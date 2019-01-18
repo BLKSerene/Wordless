@@ -23,27 +23,61 @@ from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
 
-class Wordless_Table_Stop_Words(wordless_table.Wordless_Table):
+class Wordless_List_Stop_Words(wordless_list.Wordless_List):
     def __init__(self, main):
-        super().__init__(main,
-                         headers = ['1', '2', '3', '4', '5'],
-                         cols_stretch = ['1', '2', '3', '4', '5'])
+        super().__init__(main)
 
-        self.horizontalHeader().setHidden(True)
-        self.verticalHeader().setHidden(True)
+    def load_stop_words(self, stop_words):
+        self.clear_list()
 
-        self.setSelectionBehavior(QAbstractItemView.SelectItems)
+        self.addItems(sorted(stop_words))
 
-    def set_items(self, tokens):
-        self.clear_table()
+        self.scrollToTop()
 
-        self.setRowCount((len(tokens) - 1) // self.columnCount() + 1) 
+    def item_changed_default(self):
+        self.button_clear.setEnabled(False)
+        self.button_export.setEnabled(True)
 
-        for i, token in enumerate(tokens):
-            row = i // self.columnCount()
-            col = i % self.columnCount()
+    def selection_changed_default(self):
+        self.button_remove.setEnabled(False)
 
-            self.setItem(row, col, QTableWidgetItem(token))
+    def switch_to_custom(self):
+        self.setDragEnabled(True)
+
+        for i in range(self.count()):
+            self.item(0).setFlags(Qt.ItemIsSelectable |
+                                  Qt.ItemIsEditable |
+                                  Qt.ItemIsDragEnabled |
+                                  Qt.ItemIsEnabled)
+
+        self.button_add.setEnabled(True)
+        self.button_import.setEnabled(True)
+
+        self.itemChanged.disconnect()
+        self.itemSelectionChanged.disconnect()
+
+        self.itemChanged.connect(self.item_changed)
+        self.itemSelectionChanged.connect(self.selection_changed)
+
+        self.item_changed()
+        self.selection_changed()
+
+    def switch_to_default(self):
+        self.setDragEnabled(False)
+
+        self.button_add.setEnabled(False)
+        self.button_import.setEnabled(False)
+
+        self.itemChanged.disconnect()
+        self.itemSelectionChanged.disconnect()
+
+        self.itemChanged.connect(self.item_changed)
+        self.itemChanged.connect(self.item_changed_default)
+        self.itemSelectionChanged.connect(self.selection_changed)
+        self.itemSelectionChanged.connect(self.selection_changed_default)
+
+        self.item_changed_default()
+        self.selection_changed_default()
 
 class Wordless_Settings(QDialog):
     wordless_settings_changed = pyqtSignal()
@@ -617,8 +651,8 @@ class Wordless_Settings(QDialog):
         self.settings_sentence_tokenization.layout().addWidget(group_box_sentence_tokenizer_settings, 0, 0)
         self.settings_sentence_tokenization.layout().addWidget(group_box_preview, 1, 0)
 
-        self.settings_sentence_tokenization.layout().setRowStretch(0, 2)
-        self.settings_sentence_tokenization.layout().setRowStretch(1, 1)
+        self.settings_sentence_tokenization.layout().setRowStretch(0, 3)
+        self.settings_sentence_tokenization.layout().setRowStretch(1, 2)
 
     # Settings -> Word Tokenization
     def init_settings_word_tokenization(self):
@@ -746,8 +780,8 @@ class Wordless_Settings(QDialog):
         self.settings_word_tokenization.layout().addWidget(group_box_word_tokenizer_settings, 0, 0,)
         self.settings_word_tokenization.layout().addWidget(group_box_preview, 1, 0)
 
-        self.settings_word_tokenization.layout().setRowStretch(0, 2)
-        self.settings_word_tokenization.layout().setRowStretch(1, 1)
+        self.settings_word_tokenization.layout().setRowStretch(0, 3)
+        self.settings_word_tokenization.layout().setRowStretch(1, 2)
 
     # Settings -> Word Detokenization
     def init_settings_word_detokenization(self):
@@ -869,8 +903,8 @@ class Wordless_Settings(QDialog):
         self.settings_word_detokenization.layout().addWidget(group_box_word_detokenizer_settings, 0, 0,)
         self.settings_word_detokenization.layout().addWidget(group_box_preview, 1, 0)
 
-        self.settings_word_detokenization.layout().setRowStretch(0, 2)
-        self.settings_word_detokenization.layout().setRowStretch(1, 1)
+        self.settings_word_detokenization.layout().setRowStretch(0, 3)
+        self.settings_word_detokenization.layout().setRowStretch(1, 2)
 
     # Settings -> POS Tagging
     def init_settings_pos_tagging(self):
@@ -1008,8 +1042,8 @@ class Wordless_Settings(QDialog):
         self.settings_pos_tagging.layout().addWidget(group_box_pos_tagger_settings, 0, 0)
         self.settings_pos_tagging.layout().addWidget(group_box_preview, 1, 0)
 
-        self.settings_pos_tagging.layout().setRowStretch(0, 2)
-        self.settings_pos_tagging.layout().setRowStretch(1, 1)
+        self.settings_pos_tagging.layout().setRowStretch(0, 3)
+        self.settings_pos_tagging.layout().setRowStretch(1, 2)
 
     # Settings -> POS Tagging -> Tagsets
     def init_settings_tagsets(self):
@@ -1252,8 +1286,8 @@ class Wordless_Settings(QDialog):
         self.settings_lemmatization.layout().addWidget(group_box_lemmatizer_settings, 0, 0)
         self.settings_lemmatization.layout().addWidget(group_box_preview, 1, 0)
 
-        self.settings_lemmatization.layout().setRowStretch(0, 2)
-        self.settings_lemmatization.layout().setRowStretch(1, 1)
+        self.settings_lemmatization.layout().setRowStretch(0, 3)
+        self.settings_lemmatization.layout().setRowStretch(1, 2)
 
     # Settings -> Stop words
     def init_settings_stop_words(self):
@@ -1271,7 +1305,12 @@ class Wordless_Settings(QDialog):
             stop_words = wordless_text_processing.wordless_get_stop_words(self.main, lang_code, word_list = word_list)
 
             self.label_stop_words_preview_count.setText(self.tr(f'Count of Stop Words: {len(stop_words)}'))
-            self.table_stop_words_preview_results.set_items(sorted(stop_words))
+            self.list_stop_words_preview_results.load_stop_words(stop_words)
+
+            if word_list == self.tr('Custom List'):
+                self.list_stop_words_preview_results.switch_to_custom()
+            else:
+                self.list_stop_words_preview_results.switch_to_default()
 
         settings_global = self.main.settings_global['stop_words']
         settings_custom = self.main.settings_custom['stop_words']
@@ -1314,29 +1353,35 @@ class Wordless_Settings(QDialog):
         self.label_stop_words_preview_lang = QLabel(self.tr('Select a Language:'), self)
         self.combo_box_stop_words_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.combo_box_stop_words_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
+        self.label_stop_words_preview_count = QLabel('', self)
+
+        self.list_stop_words_preview_results = Wordless_List_Stop_Words(self.main)
 
         self.combo_box_stop_words_preview_lang.currentTextChanged.connect(preview_settings_changed)
         self.combo_box_stop_words_preview_lang.currentTextChanged.connect(preview_results_changed)
 
-        layout_preview_lang = QGridLayout()
-        layout_preview_lang.addWidget(self.label_stop_words_preview_lang, 0, 0)
-        layout_preview_lang.addWidget(self.combo_box_stop_words_preview_lang, 0, 1)
+        layout_preview_settings = QGridLayout()
+        layout_preview_settings.addWidget(self.label_stop_words_preview_lang, 0, 0)
+        layout_preview_settings.addWidget(self.combo_box_stop_words_preview_lang, 0, 1)
+        layout_preview_settings.addWidget(self.label_stop_words_preview_count, 0, 3)
 
-        self.label_stop_words_preview_count = QLabel('', self)
-
-        self.table_stop_words_preview_results = Wordless_Table_Stop_Words(self)
+        layout_preview_settings.setColumnStretch(2, 1)
 
         group_box_preview.setLayout(QGridLayout())
-        group_box_preview.layout().addLayout(layout_preview_lang, 0, 0, Qt.AlignLeft)
-        group_box_preview.layout().addWidget(self.label_stop_words_preview_count, 0, 1, Qt.AlignRight)
-        group_box_preview.layout().addWidget(self.table_stop_words_preview_results, 1, 0, 1, 2)
+        group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 5)
+        group_box_preview.layout().addWidget(self.list_stop_words_preview_results, 1, 0, 1, 5)
+        group_box_preview.layout().addWidget(self.list_stop_words_preview_results.button_add, 2, 0)
+        group_box_preview.layout().addWidget(self.list_stop_words_preview_results.button_remove, 2, 1)
+        group_box_preview.layout().addWidget(self.list_stop_words_preview_results.button_clear, 2, 2)
+        group_box_preview.layout().addWidget(self.list_stop_words_preview_results.button_import, 2, 3)
+        group_box_preview.layout().addWidget(self.list_stop_words_preview_results.button_export, 2, 4)
 
         self.settings_stop_words.setLayout(QGridLayout())
         self.settings_stop_words.layout().addWidget(group_box_stop_words_settings, 0, 0)
         self.settings_stop_words.layout().addWidget(group_box_preview, 1, 0)
 
-        self.settings_stop_words.layout().setRowStretch(0, 2)
-        self.settings_stop_words.layout().setRowStretch(1, 1)
+        self.settings_stop_words.layout().setRowStretch(0, 3)
+        self.settings_stop_words.layout().setRowStretch(1, 2)
 
         preview_results_changed()
 
@@ -1669,7 +1714,7 @@ class Wordless_Settings(QDialog):
         if defaults:
             self.main.settings_custom['tagsets']['mappings'] = copy.deepcopy(self.main.settings_default['tagsets']['mappings'])
 
-        self.combo_box_tagsets_lang.currentTextChanged.emit('')
+        self.combo_box_tagsets_lang.currentTextChanged.emit(self.combo_box_tagsets_lang.currentText())
 
         # Lemmatization
         for lang_code in settings['lemmatization']['lemmatizers']:
@@ -1696,6 +1741,11 @@ class Wordless_Settings(QDialog):
 
         if not defaults:
             self.combo_box_stop_words_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['stop_words']['preview_lang']))
+
+        if defaults:
+            self.main.settings_custom['stop_words']['custom_lists'] = copy.deepcopy(self.main.settings_default['stop_words']['custom_lists'])
+
+        self.combo_box_stop_words_preview_lang.currentTextChanged.emit(self.combo_box_stop_words_preview_lang.currentText())
 
         # Measures -> Dispersion
         self.spin_box_dispersion_number_sections.setValue(settings['measures']['dispersion']['general']['number_sections'])
@@ -1843,7 +1893,7 @@ class Wordless_Settings(QDialog):
 
             settings['pos_tagging']['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
 
-            # POS Taggin -> Tagsets
+            # POS Tagging -> Tagsets
             preview_lang = settings['tagsets']['preview_lang']
             preview_pos_tagger = settings['tagsets']['preview_pos_tagger']
 
@@ -1857,6 +1907,9 @@ class Wordless_Settings(QDialog):
             # Stop Words
             for lang_code in settings['stop_words']['stop_words']:
                 settings['stop_words']['stop_words'][lang_code] = self.__dict__[f'combo_box_stop_words_{lang_code}'].currentText()
+
+            if settings['stop_words']['stop_words'][settings['stop_words']['preview_lang']] == self.tr('Custom List'):
+                settings['stop_words']['custom_lists'][settings['stop_words']['preview_lang']] = self.list_stop_words_preview_results.get_items()
 
             # Measures -> Dispersion
             settings['measures']['dispersion']['general']['number_sections'] = self.spin_box_dispersion_number_sections.value()
