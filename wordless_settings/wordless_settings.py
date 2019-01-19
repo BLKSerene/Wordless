@@ -24,8 +24,72 @@ from wordless_utils import *
 from wordless_widgets import *
 
 class Wordless_List_Stop_Words(wordless_list.Wordless_List):
-    def __init__(self, main):
-        super().__init__(main)
+    def item_changed_default(self):
+        self.button_clear.setEnabled(False)
+        self.button_export.setEnabled(True)
+
+    def selection_changed_default(self):
+        self.button_remove.setEnabled(False)
+
+    def import_list(self):
+        files_encoding_error = []
+
+        if os.path.exists(self.main.settings_custom['import']['stop_words']['default_path']):
+            default_dir = self.main.settings_custom['import']['stop_words']['default_path']
+        else:
+            default_dir = self.main.settings_default['import']['stop_words']['default_path']
+
+        file_paths = QFileDialog.getOpenFileNames(self.main,
+                                                  self.tr('Import Stop Words from File(s)'),
+                                                  default_dir,
+                                                  self.tr('Text File (*.txt)'))[0]
+
+        if file_paths:
+            self.main.settings_custom['import']['stop_words']['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
+
+            file_paths, files_empty = wordless_checking.check_files_empty(self.main, file_paths)
+
+            for file_path in file_paths:
+                file_path = os.path.normpath(file_path)
+
+                # Detect encoding
+                if self.main.settings_custom['import']['stop_words']['detect_encodings']:
+                    encoding_code, _ = wordless_detection.detect_encoding(self.main, file_path)
+                else:
+                    encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['default_encoding']
+
+                try:
+                    with open(file_path, 'r', encoding = encoding_code) as f:
+                        for line in f:
+                            if line.strip():
+                                self.addItem(line.strip())
+
+                        self.itemChanged.emit(self.item(0))
+                except:
+                    files_encoding_error.append(file_path)
+
+            wordless_message_box.wordless_message_box_error_open_files(self.main,
+                                                                       files_empty = files_empty,
+                                                                       files_encoding_error = files_encoding_error)
+
+    def export_list(self):
+        default_dir = self.main.settings_custom['export']['stop_words']['default_path']
+
+        file_path = QFileDialog.getSaveFileName(self.main,
+                                                self.tr('Export Stop Words to File'),
+                                                wordless_checking.check_dir(default_dir),
+                                                self.tr('Text File (*.txt)'))[0]
+
+        if file_path:
+            encoding = self.main.settings_custom['export']['stop_words']['default_encoding']
+
+            with open(file_path, 'w', encoding = encoding) as f:
+                for item in self.get_items():
+                    f.write(item + '\n')
+
+            wordless_message_box.wordless_message_box_export_completed_search_terms(self.main, file_path)
+
+            self.main.settings_custom['export']['stop_words']['default_path'] = os.path.normpath(os.path.dirname(file_path))
 
     def load_stop_words(self, stop_words):
         self.clear_list()
@@ -33,13 +97,6 @@ class Wordless_List_Stop_Words(wordless_list.Wordless_List):
         self.addItems(sorted(stop_words))
 
         self.scrollToTop()
-
-    def item_changed_default(self):
-        self.button_clear.setEnabled(False)
-        self.button_export.setEnabled(True)
-
-    def selection_changed_default(self):
-        self.button_remove.setEnabled(False)
 
     def switch_to_custom(self):
         self.setDragEnabled(True)
@@ -291,6 +348,11 @@ class Wordless_Settings(QDialog):
             if path_file:
                 self.line_edit_import_search_terms_default_path.setText(os.path.normpath(path_file))
 
+        def browse_stop_words():
+            path_file = QFileDialog.getExistingDirectory(self,
+                                                         self.tr('Browse'),
+                                                         self.main.settings_custom['import']['stop_words']['default_path'])
+
         def browse_temp_files():
             path_file = QFileDialog.getExistingDirectory(self,
                                                          self.tr('Browse'),
@@ -331,6 +393,22 @@ class Wordless_Settings(QDialog):
         group_box_import_search_terms.layout().addWidget(self.button_import_search_terms_browse, 0, 2)
         group_box_import_search_terms.layout().addWidget(self.checkbox_import_search_terms_detect_encodings, 1, 0, 1, 3)
 
+        # Stop Words
+        group_box_import_stop_words = QGroupBox(self.tr('Stop Words'), self)
+
+        self.label_import_stop_words_default_path = QLabel(self.tr('Default Path:'), self)
+        self.line_edit_import_stop_words_default_path = QLineEdit(self)
+        self.button_import_stop_words_browse = QPushButton(self.tr('Browse'), self)
+        self.checkbox_import_stop_words_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'))
+
+        self.button_import_stop_words_browse.clicked.connect(browse_stop_words)
+
+        group_box_import_stop_words.setLayout(QGridLayout())
+        group_box_import_stop_words.layout().addWidget(self.label_import_stop_words_default_path, 0, 0)
+        group_box_import_stop_words.layout().addWidget(self.line_edit_import_stop_words_default_path, 0, 1)
+        group_box_import_stop_words.layout().addWidget(self.button_import_stop_words_browse, 0, 2)
+        group_box_import_stop_words.layout().addWidget(self.checkbox_import_stop_words_detect_encodings, 1, 0, 1, 3)
+
         # Temporary Files
         group_box_import_temp_files = QGroupBox(self.tr('Temporary Files'), self)
 
@@ -352,9 +430,10 @@ class Wordless_Settings(QDialog):
         self.settings_import.setLayout(QGridLayout())
         self.settings_import.layout().addWidget(group_box_import_files, 0, 0)
         self.settings_import.layout().addWidget(group_box_import_search_terms, 1, 0)
-        self.settings_import.layout().addWidget(group_box_import_temp_files, 2, 0)
+        self.settings_import.layout().addWidget(group_box_import_stop_words, 2, 0)
+        self.settings_import.layout().addWidget(group_box_import_temp_files, 3, 0)
 
-        self.settings_import.layout().setRowStretch(3, 1)
+        self.settings_import.layout().setRowStretch(4, 1)
 
     # Settings -> Files -> Export
     def init_settings_export(self):
@@ -379,6 +458,14 @@ class Wordless_Settings(QDialog):
 
             if path_file:
                 self.line_edit_export_search_terms_default_path.setText(os.path.normpath(path_file))
+
+        def browse_stop_words():
+            path_file = QFileDialog.getExistingDirectory(self,
+                                                         self.tr('Browse'),
+                                                         self.main.settings_custom['export']['stop_words']['default_path'])
+
+            if path_file:
+                self.line_edit_export_stop_words_default_path.setText(os.path.normpath(path_file))
 
         self.settings_export = QWidget(self)
 
@@ -425,11 +512,30 @@ class Wordless_Settings(QDialog):
         group_box_export_search_terms.layout().addWidget(self.label_export_search_terms_default_encoding, 1, 0)
         group_box_export_search_terms.layout().addWidget(self.combo_box_export_search_terms_default_encoding, 1, 1, 1, 2)
 
-        self.settings_export.setLayout(QGridLayout())
-        self.settings_export.layout().addWidget(group_box_export_tables, 0, 0, Qt.AlignTop)
-        self.settings_export.layout().addWidget(group_box_export_search_terms, 1, 0, Qt.AlignTop)
+        # Stop Words
+        group_box_export_stop_words = QGroupBox(self.tr('Stop Words'), self)
 
-        self.settings_export.layout().setRowStretch(2, 1)
+        self.label_export_stop_words_default_path = QLabel(self.tr('Default Path:'), self)
+        self.line_edit_export_stop_words_default_path = QLineEdit(self)
+        self.button_export_stop_words_default_path = QPushButton(self.tr('Browse'), self)
+        self.label_export_stop_words_default_encoding = QLabel(self.tr('Default Encoding:'), self)
+        self.combo_box_export_stop_words_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
+
+        self.button_export_stop_words_default_path.clicked.connect(browse_stop_words)
+
+        group_box_export_stop_words.setLayout(QGridLayout())
+        group_box_export_stop_words.layout().addWidget(self.label_export_stop_words_default_path, 0, 0)
+        group_box_export_stop_words.layout().addWidget(self.line_edit_export_stop_words_default_path, 0, 1)
+        group_box_export_stop_words.layout().addWidget(self.button_export_stop_words_default_path, 0, 2)
+        group_box_export_stop_words.layout().addWidget(self.label_export_stop_words_default_encoding, 1, 0)
+        group_box_export_stop_words.layout().addWidget(self.combo_box_export_stop_words_default_encoding, 1, 1, 1, 2)
+
+        self.settings_export.setLayout(QGridLayout())
+        self.settings_export.layout().addWidget(group_box_export_tables, 0, 0)
+        self.settings_export.layout().addWidget(group_box_export_search_terms, 1, 0)
+        self.settings_export.layout().addWidget(group_box_export_stop_words, 2, 0)
+
+        self.settings_export.layout().setRowStretch(3, 1)
 
         tables_default_type_changed()
 
@@ -1598,6 +1704,13 @@ class Wordless_Settings(QDialog):
 
         self.checkbox_import_search_terms_detect_encodings.setChecked(settings['import']['search_terms']['detect_encodings'])
 
+        if os.path.exists(settings['import']['stop_words']['default_path']):
+            self.line_edit_import_stop_words_default_path.setText(settings['import']['stop_words']['default_path'])
+        else:
+            self.line_edit_import_stop_words_default_path.setText(self.main.settings_default['import']['stop_words']['default_path'])
+
+        self.checkbox_import_stop_words_detect_encodings.setChecked(settings['import']['stop_words']['detect_encodings'])
+
         self.line_edit_import_temp_files_default_path.setText(settings['import']['temp_files']['default_path'])
         self.combo_box_import_temp_files_default_encoding.setCurrentText(wordless_conversion.to_encoding_text(self.main, settings['import']['temp_files']['default_encoding']))
 
@@ -1608,6 +1721,9 @@ class Wordless_Settings(QDialog):
 
         self.line_edit_export_search_terms_default_path.setText(settings['export']['search_terms']['default_path'])
         self.combo_box_export_search_terms_default_encoding.setCurrentText(wordless_conversion.to_encoding_text(self.main, settings['export']['search_terms']['default_encoding']))
+
+        self.line_edit_export_stop_words_default_path.setText(settings['export']['stop_words']['default_path'])
+        self.combo_box_export_stop_words_default_encoding.setCurrentText(wordless_conversion.to_encoding_text(self.main, settings['export']['stop_words']['default_encoding']))
 
         # Data
         self.spin_box_precision_decimal.setValue(settings['data']['precision_decimal'])
@@ -1822,11 +1938,13 @@ class Wordless_Settings(QDialog):
         if self.tree_settings.item_selected_old.text(0) == self.tr('Import'):
             if (validate_path(self.line_edit_import_files_default_path) and
                 validate_path(self.line_edit_import_search_terms_default_path) and
+                validate_path(self.line_edit_import_stop_words_default_path) and
                 confirm_path(self.line_edit_import_temp_files_default_path)):
                 return True
         elif self.tree_settings.item_selected_old.text(0) == self.tr('Export'):
             if (confirm_path(self.line_edit_export_tables_default_path) and
-                confirm_path(self.line_edit_export_search_terms_default_path)):
+                confirm_path(self.line_edit_export_search_terms_default_path) and
+                confirm_path(self.line_edit_export_stop_words_default_path)):
                 return True
         else:
             return True
@@ -1849,6 +1967,9 @@ class Wordless_Settings(QDialog):
             settings['import']['search_terms']['default_path'] = self.line_edit_import_search_terms_default_path.text()
             settings['import']['search_terms']['detect_encodings'] = self.checkbox_import_search_terms_detect_encodings.isChecked()
 
+            settings['import']['stop_words']['default_path'] = self.line_edit_import_stop_words_default_path.text()
+            settings['import']['stop_words']['detect_encodings'] = self.checkbox_import_stop_words_detect_encodings.isChecked()
+
             settings['import']['temp_files']['default_path'] = self.line_edit_import_temp_files_default_path.text()
             settings['import']['temp_files']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_import_temp_files_default_encoding.currentText())
 
@@ -1859,6 +1980,9 @@ class Wordless_Settings(QDialog):
 
             settings['export']['search_terms']['default_path'] = self.line_edit_export_search_terms_default_path.text()
             settings['export']['search_terms']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_export_search_terms_default_encoding.currentText())
+
+            settings['export']['stop_words']['default_path'] = self.line_edit_export_stop_words_default_path.text()
+            settings['export']['stop_words']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_export_stop_words_default_encoding.currentText())
 
             # Data
             settings['data']['precision_decimal'] = self.spin_box_precision_decimal.value()
