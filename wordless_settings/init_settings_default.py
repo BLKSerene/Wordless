@@ -777,6 +777,11 @@ def init_settings_default(main):
                 'detect_encodings': True
             },
 
+            'stop_words': {
+                'default_path': os.path.normpath(os.path.realpath('.')),
+                'detect_encodings': True
+            },
+
             'temp_files': {
                 'default_path': os.path.normpath(os.path.realpath('Import/')),
                 'default_encoding': 'utf_8'
@@ -791,6 +796,11 @@ def init_settings_default(main):
             },
 
             'search_terms': {
+                'default_path': os.path.normpath(os.path.realpath('Export/')),
+                'default_encoding': 'utf_8'
+            },
+
+            'stop_words': {
                 'default_path': os.path.normpath(os.path.realpath('Export/')),
                 'default_encoding': 'utf_8'
             }
