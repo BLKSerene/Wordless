@@ -8,6 +8,7 @@
 
 import csv
 import os
+import re
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -39,7 +40,7 @@ class Wordless_Table_Item(QTableWidgetItem):
         return self.read_data() < other.read_data()
 
 class Wordless_Table(QTableWidget):
-    def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = []):
+    def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [], drag_drop_enabled = False):
         self.main = main
         self.headers = headers
         self.header_orientation = header_orientation
@@ -60,8 +61,16 @@ class Wordless_Table(QTableWidget):
         for col in self.find_col(cols_stretch):
             self.horizontalHeader().setSectionResizeMode(col, QHeaderView.Stretch)
 
+
         self.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
+
+        if drag_drop_enabled:
+            self.setDragEnabled(True)
+            self.setAcceptDrops(True)
+            self.viewport().setAcceptDrops(True)
+            self.setDragDropMode(QAbstractItemView.InternalMove)
+            self.setDragDropOverwriteMode(False)
 
         self.horizontalHeader().setHighlightSections(False)
         self.verticalHeader().setHighlightSections(False)
@@ -154,6 +163,55 @@ class Wordless_Table(QTableWidget):
 
         self.itemChanged.connect(self.item_changed)
 
+    def dropEvent(self, event):
+        rows_dragged = []
+
+        if self.indexAt(event.pos()).row() == -1:
+            row_dropped = self.rowCount()
+        else:
+            row_dropped = self.indexAt(event.pos()).row()
+
+        selected_rows = self.get_selected_rows()
+
+        self.blockSignals(True)
+
+        for row in selected_rows:
+            rows_dragged.append([])
+
+            for col in range(self.columnCount()):
+                if self.item(row, col):
+                    rows_dragged[-1].append(self.takeItem(row, col))
+                else:
+                    rows_dragged[-1].append(self.cellWidget(row, col))
+
+        for i in reversed(selected_rows):
+            self.removeRow(i)
+
+            if i < row_dropped:
+                row_dropped -= 1
+
+        for row, items in enumerate(rows_dragged):
+            self.insertRow(row_dropped + row)
+
+            for col, item in enumerate(items):
+                if isinstance(item, QTableWidgetItem):
+                    self.setItem(row_dropped + row, col, item)
+
+                    self.item(row, col).setSelected(True)
+                elif isinstance(item, QComboBox):
+                    item_combo_box = wordless_box.Wordless_Combo_Box(self.main)
+                    item_combo_box.addItems([item.itemText(i) for i in range(item.count())])
+                    item_combo_box.setCurrentText(item.currentText())
+
+                    self.setCellWidget(row_dropped + row, col, item_combo_box)
+
+        self.blockSignals(False)
+
+        self.itemChanged.emit(self.item(0, 0))
+
+        event.accept()
+
+
     def item_changed(self):
         cols_stretch = self.find_col(self.cols_stretch)
 
@@ -188,7 +246,7 @@ class Wordless_Table(QTableWidget):
             self.setVerticalHeaderLabels(self.headers)
 
     def get_selected_rows(self):
-        return list(set([index.row() for index in self.selectedIndexes()]))
+        return sorted(set([index.row() for index in self.selectedIndexes()]))
 
     def find_row(self, text):
         def find(text):
@@ -238,7 +296,7 @@ class Wordless_Table_Data(Wordless_Table):
     def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
                  headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
                  sorting_enabled = False, drag_drop_enabled = False):
-        super().__init__(main, headers, header_orientation, cols_stretch)
+        super().__init__(main, headers, header_orientation, cols_stretch, drag_drop_enabled)
 
         self.headers_num_old = headers_num
         self.headers_pct_old = headers_pct
@@ -255,13 +313,6 @@ class Wordless_Table_Data(Wordless_Table):
             else:
                 self.verticalHeader().sortIndicatorChanged.connect(self.sorting_changed)
 
-        if drag_drop_enabled:
-            self.setDragEnabled(True)
-            self.setAcceptDrops(True)
-            self.viewport().setAcceptDrops(True)
-            self.setDragDropMode(QAbstractItemView.InternalMove)
-            self.setDragDropOverwriteMode(False)
-
         self.itemChanged.connect(self.item_changed)
         self.itemSelectionChanged.connect(self.selection_changed)
 
@@ -274,54 +325,6 @@ class Wordless_Table_Data(Wordless_Table):
         self.button_clear.clicked.connect(lambda: self.clear_table())
 
         self.clear_table()
-
-    def dropEvent(self, event):
-        rows_dragged = []
-
-        if self.indexAt(event.pos()).row() == -1:
-            row_dropped = self.rowCount()
-        else:
-            row_dropped = self.indexAt(event.pos()).row()
-
-        selected_rows = self.selected_rows()
-
-        self.blockSignals(True)
-
-        for row in selected_rows:
-            rows_dragged.append([])
-
-            for col in range(self.columnCount()):
-                if self.item(row, col):
-                    rows_dragged[-1].append(self.takeItem(row, col))
-                else:
-                    rows_dragged[-1].append(self.cellWidget(row, col))
-
-        for i in reversed(selected_rows):
-            self.removeRow(i)
-
-            if i < row_dropped:
-                row_dropped -= 1
-
-        for row, items in enumerate(rows_dragged):
-            self.insertRow(row_dropped + row)
-
-            for col, item in enumerate(items):
-                if isinstance(item, QTableWidgetItem):
-                    self.setItem(row_dropped + row, col, item)
-
-                    self.item(row, col).setSelected(True)
-                elif isinstance(item, QComboBox):
-                    item_combo_box = wordless_box.Wordless_Combo_Box(self.main)
-                    item_combo_box.addItems([item.itemText(i) for i in range(item.count())])
-                    item_combo_box.setCurrentText(item.currentText())
-
-                    self.setCellWidget(row_dropped + row, col, item_combo_box)
-
-        self.blockSignals(False)
-
-        self.itemChanged.emit(self.item(0, 0))
-
-        event.accept()
 
     def item_changed(self):
         rows_visible = len([i for i in range(self.rowCount()) if not self.isRowHidden(i)])
@@ -716,9 +719,6 @@ class Wordless_Table_Data(Wordless_Table):
 
         self.itemChanged.emit(self.item(0, 0))
 
-    def selected_rows(self):
-        return sorted(set([index.row() for index in self.selectedIndexes()]))
-
     def export_selected(self):
         rows_export = sorted({index.row() for index in self.selectedIndexes()})
 
@@ -860,7 +860,7 @@ class Wordless_Table_Data(Wordless_Table):
             self.main.settings_custom['export']['tables']['default_path'] = os.path.normpath(os.path.dirname(file_path))
             self.main.settings_custom['export']['tables']['default_type'] = file_type
 
-            wordless_message_box.wordless_message_box_export_completed_table(self.main, file_path)
+            wordless_message_box.wordless_message_box_export_table(self.main, file_path)
 
     def clear_table(self, header_count = 1):
         self.clearContents()
@@ -890,6 +890,7 @@ class Wordless_Table_Data(Wordless_Table):
 
         for i in range(self.rowCount()):
             self.showRow(i)
+
         for i in range(self.columnCount()):
             self.showColumn(i)
 
@@ -927,3 +928,160 @@ class Wordless_Table_Data_Search(Wordless_Table_Data):
             self.label_number_results.setText(self.tr('Number of Results: 0'))
 
             self.button_search_results.setEnabled(False)
+
+class Wordless_Table_Tags(Wordless_Table):
+    def __init__(self, main):
+        super().__init__(main,
+                         headers = [
+                             main.tr('Opening Tag'),
+                             main.tr('Closing Tag'),
+                             main.tr('Preview')
+                         ],
+                         header_orientation = 'horizontal',
+                         cols_stretch = [
+                             main.tr('Preview')
+                         ],
+                         drag_drop_enabled = True)
+
+        self.verticalHeader().setHidden(True)
+        self.setFixedHeight(125)
+
+        self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked)
+
+        self.itemChanged.connect(self.item_changed)
+
+        self.button_add = QPushButton(self.tr('Add'), self)
+        self.button_remove = QPushButton(self.tr('Remove'), self)
+        self.button_reset = QPushButton(self.tr('Reset'), self)
+
+        self.button_add.clicked.connect(self.add_item)
+        self.button_remove.clicked.connect(self.remove_item)
+        self.button_reset.clicked.connect(self.reset_table)
+
+        self.reset_table()
+
+    def item_changed(self, item = None):
+        self.blockSignals(True)
+
+        if item:
+            # Opening Tag
+            if item.column() == 0:
+                if re.search(r'^\s*$', item.text()):
+                    QMessageBox.warning(self.main,
+                                        self.tr('Empty Opening Tag'),
+                                        self.tr(f'''
+                                            {self.main.settings_global['styles']['style_dialog']}
+                                            <body>
+                                                <p>The opening tag should not be left empty!</p>
+                                            </body>
+                                        '''))
+
+                    item.setText(item.text_old)
+
+                    self.closePersistentEditor(item)
+                    self.editItem(item)
+
+                    return
+            # Closing Tag
+            elif item.column() == 1:
+                if re.search(r'^\s*$', item.text()):
+                    item.setText('')
+
+            for row in range(self.rowCount()):
+                if row != item.row():
+                    if (self.item(row, 0).text() == self.item(item.row(), 0).text() and
+                        self.item(row, 1).text() == self.item(item.row(), 1).text()):
+                        wordless_message_box.wordless_message_box_duplicate_tags(self.main)
+
+                        item.setText(item.text_old)
+
+                        self.closePersistentEditor(item)
+                        self.editItem(item)
+
+                        return
+        
+        for row in range(self.rowCount()):
+            for col in range(self.columnCount()):
+                if col < 2:
+                    self.item(row, col).text_old = self.item(row, col).text()
+
+            self.item(row, 2).setText(self.tr(f'token{self.item(row, 0).text()}TAG{self.item(row, 1).text()}'))
+
+        self.blockSignals(False)
+
+    def _new_item(self, text = None):
+        i = 1
+
+        if text == None:
+            while True:
+                if self.findItems(self.tr(f'New Tag ({i})'), Qt.MatchExactly):
+                    i += 1
+                else:
+                    new_item = QTableWidgetItem(self.tr('New Tag ({})').format(i))
+
+                    break
+        else:
+            new_item = QTableWidgetItem(text)
+
+        new_item.text_old = new_item.text()
+        
+        return new_item
+
+    def add_item(self, texts = []):
+        self.blockSignals(True)
+
+        self.setRowCount(self.rowCount() + 1)
+
+        if texts:
+            for i in range(self.columnCount()):
+                if i < 2:
+                    self.setItem(self.rowCount() - 1, i, self._new_item(text = texts[i]))
+                else:
+                    self.setItem(self.rowCount() - 1, i, QTableWidgetItem(''))
+        else:
+            for i in range(self.columnCount()):
+                if i < 1:
+                    self.setItem(self.rowCount() - 1, i, self._new_item())
+                else:
+                    self.setItem(self.rowCount() - 1, i, QTableWidgetItem(''))
+
+                self.item(self.rowCount() - 1, i).setSelected(True)
+
+            self.editItem(self.item(self.rowCount() - 1, 0))
+
+        self.item(self.rowCount() - 1, self.columnCount() - 1).setFlags(Qt.ItemIsSelectable |
+                                                                        Qt.ItemIsDragEnabled |
+                                                                        Qt.ItemIsEnabled)
+
+        self.blockSignals(False)
+
+        self.item_changed()
+
+    def remove_item(self):
+        if len(self.get_selected_rows()) == self.rowCount():
+            QMessageBox.warning(self.main,
+                                self.tr('Empty Tag'),
+                                self.tr(f'You should specify at least 1 (pair of) tag in the table!'))
+        else:
+            self.blockSignals(True)
+
+            for i in reversed(self.get_selected_rows()):
+                self.removeRow(i)
+
+            self.blockSignals(False)
+
+    def reset_table(self):
+        self.blockSignals(True)
+
+        self.setRowCount(0)
+
+        self.blockSignals(False)
+
+    def get_tags(self):
+        tags = []
+
+        for row in range(self.rowCount()):
+            tags.append([self.item(row, 0).text(),
+                         self.item(row, 1).text()])
+
+        return tags
