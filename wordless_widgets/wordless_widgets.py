@@ -120,7 +120,7 @@ def wordless_widgets_search_settings(main):
     label_search_term = QLabel(main.tr('Search Term:'), main)
     checkbox_multi_search_mode = QCheckBox(main.tr('Multi-search Mode'), main)
     line_edit_search_term = QLineEdit(main)
-    list_search_terms = wordless_list.Wordless_List(main)
+    list_search_terms = wordless_list.Wordless_List_Search_Terms(main)
 
     checkbox_ignore_case = QCheckBox(main.tr('Ignore Case'), main)
     checkbox_match_inflected_forms = QCheckBox(main.tr('Match All Inflected Forms'), main)

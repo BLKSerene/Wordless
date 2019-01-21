@@ -179,7 +179,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
 
         # Scroll to the next found item
         if indexes_found:
-            selected_rows = self.table.selected_rows()
+            selected_rows = self.table.get_selected_rows()
 
             self.table.clearSelection()
 
@@ -213,7 +213,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
 
         # Scroll to the previous found item
         if indexes_found:
-            selected_rows = self.table.selected_rows()
+            selected_rows = self.table.get_selected_rows()
 
             self.table.clearSelection()
 
