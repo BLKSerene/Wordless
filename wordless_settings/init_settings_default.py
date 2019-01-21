@@ -806,12 +806,6 @@ def init_settings_default(main):
             }
         },
 
-        'data': {
-            'precision_decimal': 2,
-            'precision_pct': 2,
-            'precision_p_value': 5
-        },
-
         'lang_detection': {
             'detection_settings': {
                 'detection_engine': 'langid.py',
@@ -828,6 +822,25 @@ def init_settings_default(main):
             'default_settings': {
                 'default_encoding': 'utf_8'
             }
+        },
+
+        'data': {
+            'precision_decimal': 2,
+            'precision_pct': 2,
+            'precision_p_value': 5
+        },
+
+        'tags': {
+            'tags_pos': [
+                ['_', ''],
+                ['/', '']
+            ],
+
+            'tags_non_pos': [
+                ['<', '>'],
+                ['</', '>'],
+                ['[', ']']
+            ]
         },
 
         'sentence_tokenization': {

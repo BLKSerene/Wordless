@@ -615,7 +615,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
                     self.item(i, 0).setCheckState(Qt.Unchecked)
 
     def close_selected(self):
-        self.main.wordless_files.remove_files(self.selected_rows())
+        self.main.wordless_files.remove_files(self.get_selected_rows())
 
     def close_all(self):
         self.main.wordless_files.remove_files(list(range(len(self.main.settings_custom['file']['files_open']))))

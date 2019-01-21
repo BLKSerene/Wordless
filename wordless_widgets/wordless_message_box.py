@@ -146,6 +146,7 @@ def wordless_message_box_auto_detection_failed(main,
                                 '''),
                                 QMessageBox.Ok)
 
+# Duplicates
 def wordless_message_box_duplicate_file_name(main):
     QMessageBox.warning(main,
                         main.tr('Duplicate File Name'),
@@ -157,6 +158,36 @@ def wordless_message_box_duplicate_file_name(main):
                             </body>
                         '''),
                         QMessageBox.Ok)
+
+def wordless_message_box_duplicate_search_terms(main):
+    QMessageBox.warning(main,
+                        main.tr('Duplicate Search Terms'),
+                        main.tr(f'''
+                            {main.settings_global['styles']['style_dialog']}
+                            <body>
+                                <p>The search term you have entered already exists in the list!</p>
+                            </body>
+                        '''))
+
+def wordless_message_box_duplicate_tags(main):
+    QMessageBox.warning(main,
+                        main.tr('Duplicate Tags'),
+                        main.tr(f'''
+                            {main.settings_global['styles']['style_dialog']}
+                            <body>
+                                <p>The (pair of) tag you have entered already exists in the table!</p>
+                            </body>
+                        '''))
+
+def wordless_message_box_duplicate_stop_words(main):
+    QMessageBox.warning(main,
+                        main.tr('Duplicate Stop Words'),
+                        main.tr(f'''
+                            {main.settings_global['styles']['style_dialog']}
+                            <body>
+                                <p>The stop word you have entered already exists in the list!</p>
+                            </body>
+                        '''))
 
 # Tabs
 def wordless_message_box_restore_default_settings(main):
@@ -256,24 +287,35 @@ def wordless_message_box_no_results_plot(main):
                             QMessageBox.Ok)
 
 # Export
-def wordless_message_box_export_completed_search_terms(main, file_path):
-    QMessageBox.information(main,
-                            main.tr('Export Completed'),
-                            main.tr(f'''
-                                {main.settings_global['styles']['style_dialog']}
-                                <body>
-                                    <p>The search terms has been successfully exported to "{file_path}".</p>
-                                </body>
-                            '''),
-                            QMessageBox.Ok)
-
-def wordless_message_box_export_completed_table(main, file_path):
+def wordless_message_box_export_table(main, file_path):
     QMessageBox.information(main,
                             main.tr('Export Completed'),
                             main.tr(f'''
                                 {main.settings_global['styles']['style_dialog']}
                                 <body>
                                     <p>The table has been successfully exported to "{file_path}".</p>
+                                </body>
+                            '''),
+                            QMessageBox.Ok)
+
+def wordless_message_box_export_search_terms(main, file_path):
+    QMessageBox.information(main,
+                            main.tr('Export Completed'),
+                            main.tr(f'''
+                                {main.settings_global['styles']['style_dialog']}
+                                <body>
+                                    <p>The search terms have been successfully exported to "{file_path}".</p>
+                                </body>
+                            '''),
+                            QMessageBox.Ok)
+
+def wordless_message_box_export_stop_words(main, file_path):
+    QMessageBox.information(main,
+                            main.tr('Export Completed'),
+                            main.tr(f'''
+                                {main.settings_global['styles']['style_dialog']}
+                                <body>
+                                    <p>The stop words have been successfully exported to "{file_path}".</p>
                                 </body>
                             '''),
                             QMessageBox.Ok)

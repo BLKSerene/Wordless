@@ -45,42 +45,13 @@ class Wordless_List(QListWidget):
 
         self.clear_list()
 
-    def item_changed(self, item = None):
+    def item_changed(self):
         if self.count():
             self.button_clear.setEnabled(True)
             self.button_export.setEnabled(True)
         else:
             self.button_clear.setEnabled(False)
             self.button_export.setEnabled(False)
-
-        if item:
-            if re.search(r'^\s*$', item.text()):
-                QMessageBox.warning(self.main,
-                                    self.tr('Empty Search Term'),
-                                    self.tr('Empty search term is not allowed!'),
-                                    QMessageBox.Ok)
-
-                item.setText(item.old_text)
-
-                self.closePersistentEditor(item)
-                self.editItem(item)
-            else:
-                for i in range(self.count()):
-                    if self.item(i) != item:
-                        if item.text() == self.item(i).text():
-                            QMessageBox.warning(self.main,
-                                                self.tr('Duplicate Search Terms'),
-                                                self.tr('Please refrain from searching the same item more than once!'),
-                                                QMessageBox.Ok)
-
-                            item.setText(item.old_text)
-
-                            self.closePersistentEditor(item)
-                            self.editItem(item)
-
-                            break
-
-                item.old_text = item.text()
 
     def selection_changed(self):
         if self.selectedIndexes():
@@ -89,18 +60,7 @@ class Wordless_List(QListWidget):
             self.button_remove.setEnabled(False)
 
     def _new_item(self):
-        i = 1
-
-        while True:
-            if self.findItems(self.tr(f'New Item ({i})'), Qt.MatchExactly):
-                i += 1
-            else:
-                new_item = QListWidgetItem(self.tr('New Item ({})').format(i))
-
-                new_item.old_text = new_item.text()
-                new_item.setFlags(Qt.ItemIsEnabled | Qt.ItemIsSelectable | Qt.ItemIsEditable | Qt.ItemIsDragEnabled)
-
-                return new_item
+        pass
 
     def add_item(self, text = None):
         new_item = self._new_item()
@@ -129,6 +89,54 @@ class Wordless_List(QListWidget):
         self.selection_changed()
 
     def import_list(self):
+        pass
+
+    def export_list(self):
+        pass
+
+    def get_items(self):
+        return [self.item(i).text() for i in range(self.count())]
+
+class Wordless_List_Search_Terms(Wordless_List):
+    def item_changed(self, item = None):
+        super().item_changed()
+
+        if item:
+            if re.search(r'^\s*$', item.text()):
+                item.setText(item.old_text)
+            else:
+                for i in range(self.count()):
+                    if self.item(i) != item:
+                        if item.text() == self.item(i).text():
+                            wordless_message_box.wordless_message_box_duplicate_search_terms(self.main)
+
+                            item.setText(item.old_text)
+
+                            self.closePersistentEditor(item)
+                            self.editItem(item)
+
+                            break
+
+                item.old_text = item.text()
+
+    def _new_item(self):
+        i = 1
+
+        while True:
+            if self.findItems(self.tr(f'New Search Term ({i})'), Qt.MatchExactly):
+                i += 1
+            else:
+                new_item = QListWidgetItem(self.tr('New Search Term ({})').format(i))
+
+                new_item.old_text = new_item.text()
+                new_item.setFlags(Qt.ItemIsSelectable |
+                                  Qt.ItemIsEditable |
+                                  Qt.ItemIsDragEnabled |
+                                  Qt.ItemIsEnabled)
+
+                return new_item
+
+    def import_list(self):
         files_encoding_error = []
 
         if os.path.exists(self.main.settings_custom['import']['search_terms']['default_path']):
@@ -137,7 +145,7 @@ class Wordless_List(QListWidget):
             default_dir = self.main.settings_default['import']['search_terms']['default_path']
 
         file_paths = QFileDialog.getOpenFileNames(self.main,
-                                                  self.tr('Import Search Terms from File(s)'),
+                                                  self.tr('Import from File(s)'),
                                                   default_dir,
                                                   self.tr('Text File (*.txt)'))[0]
 
@@ -173,7 +181,7 @@ class Wordless_List(QListWidget):
         default_dir = self.main.settings_custom['export']['search_terms']['default_path']
 
         file_path = QFileDialog.getSaveFileName(self.main,
-                                                self.tr('Export Search Terms to File'),
+                                                self.tr('Export to File'),
                                                 wordless_checking.check_dir(default_dir),
                                                 self.tr('Text File (*.txt)'))[0]
 
@@ -184,9 +192,157 @@ class Wordless_List(QListWidget):
                 for item in self.get_items():
                     f.write(item + '\n')
 
-            wordless_message_box.wordless_message_box_export_completed_search_terms(self.main, file_path)
+            wordless_message_box.wordless_message_box_export_search_terms(self.main, file_path)
 
             self.main.settings_custom['export']['search_terms']['default_path'] = os.path.normpath(os.path.dirname(file_path))
 
-    def get_items(self):
-        return [self.item(i).text() for i in range(self.count())]
+class Wordless_List_Stop_Words(Wordless_List):
+    def item_changed(self, item = None):
+        super().item_changed()
+
+        if item:
+            if re.search(r'^\s*$', item.text()):
+                item.setText(item.old_text)
+            else:
+                for i in range(self.count()):
+                    if self.item(i) != item:
+                        if item.text() == self.item(i).text():
+                            wordless_message_box.wordless_message_box_duplicate_stop_words(self.main)
+
+                            item.setText(item.old_text)
+
+                            self.closePersistentEditor(item)
+                            self.editItem(item)
+
+                            break
+
+                item.old_text = item.text()
+
+    def item_changed_default(self):
+        self.button_clear.setEnabled(False)
+        self.button_export.setEnabled(True)
+
+    def selection_changed_default(self):
+        self.button_remove.setEnabled(False)
+
+    def _new_item(self):
+        i = 1
+
+        while True:
+            if self.findItems(self.tr(f'New Stop Word ({i})'), Qt.MatchExactly):
+                i += 1
+            else:
+                new_item = QListWidgetItem(self.tr('New Stop Word ({})').format(i))
+
+                new_item.old_text = new_item.text()
+                new_item.setFlags(Qt.ItemIsSelectable |
+                                  Qt.ItemIsEditable |
+                                  Qt.ItemIsDragEnabled |
+                                  Qt.ItemIsEnabled)
+
+                return new_item
+
+    def import_list(self):
+        files_encoding_error = []
+
+        if os.path.exists(self.main.settings_custom['import']['stop_words']['default_path']):
+            default_dir = self.main.settings_custom['import']['stop_words']['default_path']
+        else:
+            default_dir = self.main.settings_default['import']['stop_words']['default_path']
+
+        file_paths = QFileDialog.getOpenFileNames(self.main,
+                                                  self.tr('Import from File(s)'),
+                                                  default_dir,
+                                                  self.tr('Text File (*.txt)'))[0]
+
+        if file_paths:
+            self.main.settings_custom['import']['stop_words']['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
+
+            file_paths, files_empty = wordless_checking.check_files_empty(self.main, file_paths)
+
+            for file_path in file_paths:
+                file_path = os.path.normpath(file_path)
+
+                # Detect encoding
+                if self.main.settings_custom['import']['stop_words']['detect_encodings']:
+                    encoding_code, _ = wordless_detection.detect_encoding(self.main, file_path)
+                else:
+                    encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['default_encoding']
+
+                try:
+                    with open(file_path, 'r', encoding = encoding_code) as f:
+                        for line in f:
+                            if line.strip():
+                                self.addItem(line.strip())
+
+                        self.itemChanged.emit(self.item(0))
+                except:
+                    files_encoding_error.append(file_path)
+
+            wordless_message_box.wordless_message_box_error_open_files(self.main,
+                                                                       files_empty = files_empty,
+                                                                       files_encoding_error = files_encoding_error)
+
+    def export_list(self):
+        default_dir = self.main.settings_custom['export']['stop_words']['default_path']
+
+        file_path = QFileDialog.getSaveFileName(self.main,
+                                                self.tr('Export to File'),
+                                                wordless_checking.check_dir(default_dir),
+                                                self.tr('Text File (*.txt)'))[0]
+
+        if file_path:
+            encoding = self.main.settings_custom['export']['stop_words']['default_encoding']
+
+            with open(file_path, 'w', encoding = encoding) as f:
+                for item in self.get_items():
+                    f.write(item + '\n')
+
+            wordless_message_box.wordless_message_box_export_stop_words(self.main, file_path)
+
+            self.main.settings_custom['export']['stop_words']['default_path'] = os.path.normpath(os.path.dirname(file_path))
+
+    def load_stop_words(self, stop_words):
+        self.clear_list()
+
+        self.addItems(sorted(stop_words))
+
+        self.scrollToTop()
+
+    def switch_to_custom(self):
+        self.setDragEnabled(True)
+
+        for i in range(self.count()):
+            self.item(0).setFlags(Qt.ItemIsSelectable |
+                                  Qt.ItemIsEditable |
+                                  Qt.ItemIsDragEnabled |
+                                  Qt.ItemIsEnabled)
+
+        self.button_add.setEnabled(True)
+        self.button_import.setEnabled(True)
+
+        self.itemChanged.disconnect()
+        self.itemSelectionChanged.disconnect()
+
+        self.itemChanged.connect(self.item_changed)
+        self.itemSelectionChanged.connect(self.selection_changed)
+
+        self.item_changed()
+        self.selection_changed()
+
+    def switch_to_default(self):
+        self.setDragEnabled(False)
+
+        self.button_add.setEnabled(False)
+        self.button_import.setEnabled(False)
+
+        self.itemChanged.disconnect()
+        self.itemSelectionChanged.disconnect()
+
+        self.itemChanged.connect(self.item_changed)
+        self.itemChanged.connect(self.item_changed_default)
+        self.itemSelectionChanged.connect(self.selection_changed)
+        self.itemSelectionChanged.connect(self.selection_changed_default)
+
+        self.item_changed_default()
+        self.selection_changed_default()
