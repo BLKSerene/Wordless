@@ -61,6 +61,8 @@ file_iso_8859_5 = new_file('testing/Encodings/Russian (ISO-8859-5).txt')
 file_koi8_r = new_file('testing/Encodings/Russian (KOI8-R).txt')
 file_windows_1251 = new_file('testing/Encodings/Russian (Windows-1251).txt')
 
+print('---------- Encoding Detection ----------')
+
 detect_encoding(file_gb2312)
 detect_encoding(file_hz)
 detect_encoding(file_big5)
@@ -92,28 +94,7 @@ file_por = new_file('testing/Languages/Portuguese.txt')
 file_rus = new_file('testing/Languages/Russian.txt')
 file_spa = new_file('testing/Languages/Spanish.txt')
 
-print('---------- langid.py ----------')
-
-main.settings_custom['lang_detection']['detection_settings']['detection_engine'] = 'langid.py'
-
-detect_lang(file_ara)
-detect_lang(file_zho_cn)
-detect_lang(file_zho_tw)
-detect_lang(file_eng)
-detect_lang(file_fra)
-detect_lang(file_deu)
-detect_lang(file_ita)
-detect_lang(file_jpn)
-detect_lang(file_kor)
-detect_lang(file_nob)
-detect_lang(file_nno)
-detect_lang(file_por)
-detect_lang(file_rus)
-detect_lang(file_spa)
-
-print('---------- langdetect ----------')
-
-main.settings_custom['lang_detection']['detection_settings']['detection_engine'] = 'langdetect'
+print('---------- Language Detection ----------')
 
 detect_lang(file_ara)
 detect_lang(file_zho_cn)
