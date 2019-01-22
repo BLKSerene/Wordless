@@ -35,6 +35,12 @@ class Wordless_Combo_Box_Lang(Wordless_Combo_Box):
 
         self.addItems(sorted(main.settings_global['langs']))
 
+class Wordless_Combo_Box_Text_Type(Wordless_Combo_Box):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.addItems(main.settings_global['text_types'])
+
 class Wordless_Combo_Box_Encoding(Wordless_Combo_Box):
     def __init__(self, main):
         super().__init__(main)

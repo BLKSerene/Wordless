@@ -52,6 +52,8 @@ class Wordless_Files():
 
         new_file['encoding_text'] = wordless_conversion.to_encoding_text(self.main, new_file['encoding_code'])
 
+        new_file['text_type'] = self.main.tr('Untokenized/Not Tagged')
+
         # Detect language
         if self.main.settings_custom['file']['auto_detection_settings']['detect_langs']:
             (new_file['lang_code'],
@@ -344,26 +346,7 @@ class Wordless_Files():
 
         self.write_table()
 
-    def write_table(self, check_files = False):
-        if check_files:
-            files_ok = []
-
-            files = copy.deepcopy(self.main.settings_custom['file']['files_open'])
-            file_paths = [file['path'] for file in files]
-
-            file_paths, files_missing = wordless_checking.check_files_missing(self.main, file_paths)
-            file_paths, files_empty = wordless_checking.check_files_empty(self.main, file_paths)
-
-            wordless_message_box.wordless_message_box_error_open_files(self.main,
-                                                                       files_missing = files_missing,
-                                                                       files_empty = files_empty)
-
-            self.main.settings_custom['file']['files_open'].clear()
-
-            for file in files:
-                if file['path'] in file_paths:
-                    self.main.settings_custom['file']['files_open'].append(file)
-
+    def write_table(self):
         self.table.blockSignals(True)
         self.table.setUpdatesEnabled(False)
 
@@ -375,6 +358,7 @@ class Wordless_Files():
             for i, file in enumerate(files):
                 checkbox_name = QTableWidgetItem(file['name'])
                 combo_box_lang = wordless_box.Wordless_Combo_Box_Lang(self.main)
+                combo_box_text_type = wordless_box.Wordless_Combo_Box_Text_Type(self.main)
                 combo_box_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
 
                 if file['selected']:
@@ -383,15 +367,18 @@ class Wordless_Files():
                     checkbox_name.setCheckState(Qt.Unchecked)
 
                 combo_box_lang.setCurrentText(file['lang_text'])
+                combo_box_text_type.setCurrentText(file['text_type'])
                 combo_box_encoding.setCurrentText(file['encoding_text'])
 
                 combo_box_lang.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 1)))
-                combo_box_encoding.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 3)))
+                combo_box_text_type.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 2)))
+                combo_box_encoding.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 4)))
 
                 self.table.setItem(i, 0, checkbox_name)
                 self.table.setCellWidget(i, 1, combo_box_lang)
-                self.table.setItem(i, 2, QTableWidgetItem(file['path']))
-                self.table.setCellWidget(i, 3, combo_box_encoding)
+                self.table.setCellWidget(i, 2, combo_box_text_type)
+                self.table.setItem(i, 3, QTableWidgetItem(file['path']))
+                self.table.setCellWidget(i, 4, combo_box_encoding)
         else:
             self.table.clear_table(1)
 
@@ -435,10 +422,10 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
                          headers = [
                              main.tr('File Name'),
                              main.tr('Language'),
+                             main.tr('Text Type'),
                              main.tr('Path'),
                              main.tr('Encoding')
                          ],
-                         cols_stretch = [main.tr('Path')],
                          drag_drop_enabled = True)
 
         self.itemChanged.connect(self.file_item_changed)
@@ -485,7 +472,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
             # Check duplicate file name
             for row in range(self.rowCount()):
                 file_name = self.item(row, 0).text()
-                file_path = self.item(row, 2).text()
+                file_path = self.item(row, 3).text()
 
                 file = self.main.wordless_files.find_file_by_path(file_path)
 
@@ -516,9 +503,11 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
                 new_file['lang_text'] = self.cellWidget(row, 1).currentText()
                 new_file['lang_code'] = wordless_conversion.to_lang_code(self.main, new_file['lang_text'])
 
-                new_file['path'] = self.item(row, 2).text()
+                new_file['text_type'] = self.cellWidget(row, 2).currentText()
 
-                new_file['encoding_text'] = self.cellWidget(row, 3).currentText()
+                new_file['path'] = self.item(row, 3).text()
+
+                new_file['encoding_text'] = self.cellWidget(row, 4).currentText()
                 new_file['encoding_code'] = wordless_conversion.to_encoding_code(self.main, new_file['encoding_text'])
 
                 self.main.settings_custom['file']['files_open'].append(new_file)
@@ -562,7 +551,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
             default_dir = self.main.settings_default['import']['files']['default_path']
 
         file_paths = QFileDialog.getOpenFileNames(self.main,
-                                                  self.tr('Choose multiple files'),
+                                                  self.tr('Open File(s)'),
                                                   wordless_checking.check_dir(default_dir),
                                                   ';;'.join(self.main.settings_global['file_types']['files']))[0]
 
@@ -573,7 +562,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
         file_paths = []
 
         file_dir = QFileDialog.getExistingDirectory(self.main,
-                                                     self.tr('Choose a folder'),
+                                                     self.tr('Open Folder'),
                                                      self.main.settings_custom['import']['files']['default_path'])
 
         if file_dir:
@@ -690,7 +679,25 @@ def init(main):
 
     load_settings()
 
+    # Load files
     main.wordless_files = Wordless_Files(table_files)
-    main.wordless_files.write_table(check_files = True)
+
+    files = copy.deepcopy(main.settings_custom['file']['files_open'])
+    file_paths = [file['path'] for file in files]
+
+    file_paths, files_missing = wordless_checking.check_files_missing(main, file_paths)
+    file_paths, files_empty = wordless_checking.check_files_empty(main, file_paths)
+
+    wordless_message_box.wordless_message_box_error_open_files(main,
+                                                               files_missing = files_missing,
+                                                               files_empty = files_empty)
+
+    main.settings_custom['file']['files_open'].clear()
+
+    for file in files:
+        if file['path'] in file_paths:
+            main.settings_custom['file']['files_open'].append(file)
+
+    main.wordless_files.write_table()
 
     return tab_files
