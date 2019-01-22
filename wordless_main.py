@@ -100,6 +100,11 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              'Leonard Richardson',
              '<a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a>'],
 
+            ['<a href="https://github.com/PyYoshi/cChardet">cChardet</a>',
+             '2.1.4',
+             'Yoshihiro Misawa',
+             '<a href="https://github.com/PyYoshi/cChardet/blob/master/COPYING">MPL-1.1/GPL-2.0/LGPL-2.1</a>'],
+
             ['<a href="https://github.com/chardet/chardet">chardet</a>',
              '3.0.4',
              'Daniel Blanchard',
