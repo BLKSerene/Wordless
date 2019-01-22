@@ -236,23 +236,14 @@ def init_settings_global(main):
             'other': 'other',
         },
 
-        'file_types': {
-            'files': [
-                main.tr('Text File (*.txt)'),
-                main.tr('Word Document (*.docx)'),
-                main.tr('Excel Workbook (*.xls; *.xlsx)'),
-                main.tr('CSV File(*.csv)'),
-                main.tr('HTML Page (*.htm; *.html)'),
-                main.tr('Translation Memory File (*.tmx)'),
-                main.tr('Lyrics File (*.lrc)'),
-                main.tr('All Files (*.*)')
-            ],
-
-            'export_tables': [
-                main.tr('Excel Workbook (*.xlsx)'),
-                main.tr('CSV File (*.csv)')
-            ]
-        },
+        'text_types': [
+            main.tr('Untokenized / UnTagged'),
+            main.tr('Untokenized / Tagged (Non-POS)'),
+            main.tr('Tokenized / UnTagged'),
+            main.tr('Tokenized / Tagged (POS)'),
+            main.tr('Tokenized / Tagged (Non-POS)'),
+            main.tr('Tokenized / Tagged (Both)')
+        ],
 
         'file_encodings': {
             main.tr('All Languages (UTF-8 Without BOM)'): 'utf_8',
@@ -394,6 +385,24 @@ def init_settings_global(main):
             main.tr('Western European (ISO-8859-15)'): 'iso8859_15',
             main.tr('Western European (Mac OS Roman)'): 'mac_roman',
             main.tr('Western European (Windows-1252)'): 'windows_1252',
+        },
+
+        'file_types': {
+            'files': [
+                main.tr('Text File (*.txt)'),
+                main.tr('Word Document (*.docx)'),
+                main.tr('Excel Workbook (*.xls; *.xlsx)'),
+                main.tr('CSV File(*.csv)'),
+                main.tr('HTML Page (*.htm; *.html)'),
+                main.tr('Translation Memory File (*.tmx)'),
+                main.tr('Lyrics File (*.lrc)'),
+                main.tr('All Files (*.*)')
+            ],
+
+            'export_tables': [
+                main.tr('Excel Workbook (*.xlsx)'),
+                main.tr('CSV File (*.csv)')
+            ]
         },
 
         'sentence_tokenizers': {
