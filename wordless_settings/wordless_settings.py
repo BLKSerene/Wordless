@@ -451,30 +451,18 @@ class Wordless_Settings(QDialog):
         # Detection Settings
         group_box_detection_settings = QGroupBox(self.tr('Detection Settings'), self)
 
-        self.label_lang_detection_engine = QLabel(self.tr('Detection Engine:'), self)
-        self.combo_box_lang_detection_engine = wordless_box.Wordless_Combo_Box(self)
         self.label_lang_detection_number_lines = QLabel(self.tr('Number of lines to scan in each file:'), self)
         (self.spin_box_lang_detection_number_lines,
          self.checkbox_lang_detection_number_lines_no_limit) = wordless_widgets.wordless_widgets_no_limit(self.main)
 
-        self.combo_box_lang_detection_engine.addItems(['langid.py',
-                                                       'langdetect'])
-
         self.spin_box_lang_detection_number_lines.setRange(1, 1000000)
 
-        layout_number_lines = QGridLayout()
-        layout_number_lines.addWidget(self.label_lang_detection_number_lines, 0, 0)
-        layout_number_lines.addWidget(self.spin_box_lang_detection_number_lines, 0, 1)
-        layout_number_lines.addWidget(self.checkbox_lang_detection_number_lines_no_limit, 0, 2)
-
-        layout_number_lines.setColumnStretch(3, 1)
-
         group_box_detection_settings.setLayout(QGridLayout())
-        group_box_detection_settings.layout().addWidget(self.label_lang_detection_engine, 0, 0)
-        group_box_detection_settings.layout().addWidget(self.combo_box_lang_detection_engine, 0, 1)
-        group_box_detection_settings.layout().addLayout(layout_number_lines, 1, 0, 1, 3)
+        group_box_detection_settings.layout().addWidget(self.label_lang_detection_number_lines, 0, 0)
+        group_box_detection_settings.layout().addWidget(self.spin_box_lang_detection_number_lines, 0, 1)
+        group_box_detection_settings.layout().addWidget(self.checkbox_lang_detection_number_lines_no_limit, 0, 2)
 
-        group_box_detection_settings.layout().setColumnStretch(2, 1)
+        group_box_detection_settings.layout().setColumnStretch(3, 1)
 
         # Default Settings
         group_box_default_settings = QGroupBox(self.tr('Default Settings'), self)
@@ -1663,7 +1651,6 @@ class Wordless_Settings(QDialog):
         self.combo_box_export_stop_words_default_encoding.setCurrentText(wordless_conversion.to_encoding_text(self.main, settings['export']['stop_words']['default_encoding']))
 
         # Auto-detection -> Language Detection
-        self.combo_box_lang_detection_engine.setCurrentText(settings['lang_detection']['detection_settings']['detection_engine'])
         self.spin_box_lang_detection_number_lines.setValue(settings['lang_detection']['detection_settings']['number_lines'])
         self.checkbox_lang_detection_number_lines_no_limit.setChecked(settings['lang_detection']['detection_settings']['number_lines_no_limit'])
 
@@ -1933,7 +1920,6 @@ class Wordless_Settings(QDialog):
             settings['export']['stop_words']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_export_stop_words_default_encoding.currentText())
 
             # Auto-detection -> Language Detection
-            settings['lang_detection']['detection_settings']['detection_engine'] = self.combo_box_lang_detection_engine.currentText()
             settings['lang_detection']['detection_settings']['number_lines'] = self.spin_box_lang_detection_number_lines.value()
             settings['lang_detection']['detection_settings']['number_lines_no_limit'] = self.checkbox_lang_detection_number_lines_no_limit.isChecked()
 
