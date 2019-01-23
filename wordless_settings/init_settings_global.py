@@ -264,7 +264,6 @@ def init_settings_global(main):
             main.tr('Arabic (Windows-1256)'): 'cp1256',
 
             main.tr('Baltic Languages (CP775)'): 'cp775',
-            main.tr('Baltic Languages (ISO-8859-4)'): 'iso8859_4',
             main.tr('Baltic Languages (ISO-8859-13)'): 'iso8859_13',
             main.tr('Baltic Languages (Windows-1257)'): 'cp1257',
 
@@ -273,7 +272,6 @@ def init_settings_global(main):
             main.tr('Central European (CP852)'): 'cp852',
             main.tr('Central European (ISO-8859-2)'): 'iso8859_2',
             main.tr('Central European (Mac OS Central European)'): 'mac_latin2',
-            main.tr('Central European (Mac OS Latin)'): 'mac_latin2',
             main.tr('Central European (Windows-1250)'): 'cp1250',
 
             main.tr('Chinese (GB18030)'): 'gb18030',
@@ -346,6 +344,8 @@ def init_settings_global(main):
 
             main.tr('Nordic Languages (CP865)'): 'cp865',
             main.tr('Nordic Languages (ISO-8859-10)'): 'iso8859_10',
+
+            main.tr('North European (ISO-8859-4)'): 'iso8859_4',
 
             main.tr('Persian (Mac OS Farsi)'): 'mac_farsi',
 

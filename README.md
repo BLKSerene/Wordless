@@ -60,18 +60,19 @@ Many thanks to the following open-source projects on which Wordless is built on:
 11. [Underthesea](https://github.com/undertheseanlp/underthesea) by Vu Anh
 12. [wordcloud](https://amueller.github.io/word_cloud/) by Andreas Christian Mueller
 13. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) by Leonard Richardson
-14. [chardet](https://github.com/chardet/chardet) by Daniel Blanchard
-15. [langdetect](https://github.com/Mimino666/langdetect) by Michal Mimino Danilak
-16. [langid.py](https://github.com/saffsd/langid.py) by Marco Lui
-17. [lxml](https://lxml.de/) by Stefan Behnel
-18. [Matplotlib](https://matplotlib.org/) by Matplotlib Development Team
-19. [NumPy](http://www.numpy.org/) by NumPy Developers
-20. [openpyxl](https://openpyxl.readthedocs.io/en/stable/) by Eric Gazoni, Charlie Clark
-21. [python-docx](https://github.com/python-openxml/python-docx) by Steve Canny
-22. [SciPy](https://www.scipy.org/) by SciPy Developers
-23. [xlrd](https://github.com/python-excel/xlrd) by Stephen John Machin, Lingfo Pty Ltd
-24. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
-25. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
+14. [cChardet](https://github.com/PyYoshi/cChardet) by Yoshihiro Misawa
+15. [chardet](https://github.com/chardet/chardet) by Daniel Blanchard
+16. [langdetect](https://github.com/Mimino666/langdetect) by Michal Mimino Danilak
+17. [langid.py](https://github.com/saffsd/langid.py) by Marco Lui
+18. [lxml](https://lxml.de/) by Stefan Behnel
+19. [Matplotlib](https://matplotlib.org/) by Matplotlib Development Team
+20. [NumPy](http://www.numpy.org/) by NumPy Developers
+21. [openpyxl](https://openpyxl.readthedocs.io/en/stable/) by Eric Gazoni, Charlie Clark
+22. [python-docx](https://github.com/python-openxml/python-docx) by Steve Canny
+23. [SciPy](https://www.scipy.org/) by SciPy Developers
+24. [xlrd](https://github.com/python-excel/xlrd) by Stephen John Machin, Lingfo Pty Ltd
+25. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
+26. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
 
 ## Donation
 If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.

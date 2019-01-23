@@ -806,20 +806,14 @@ def init_settings_default(main):
             }
         },
 
-        'lang_detection': {
+        'auto_detection': {
             'detection_settings': {
-                'detection_engine': 'langid.py',
                 'number_lines': 100,
                 'number_lines_no_limit': False
             },
 
             'default_settings': {
-                'default_lang': 'eng'
-            }
-        },
-
-        'encoding_detection': {
-            'default_settings': {
+                'default_lang': 'eng',
                 'default_encoding': 'utf_8'
             }
         },

@@ -1,0 +1,297 @@
+
+[peida]
+Tule ja osale keeletoimetamistalgutel!
+Samuti on hetkel käimas lõimumisteemaline artiklikonkurss.
+
+Eesti keel
+Jump to navigationJump to search
+Edit-copy orange button.svg	See artikkel vajab toimetamist. (August 2006) 
+Palun aita artiklit toimetada. (Kuidas ja millal see märkus eemaldada?)
+Disambig gray.svg	 See artikkel on keele kohta; 1922–1940 ilmunud ajakirja kohta vaata artiklit Eesti Keel.
+eesti keel (eesti keel)
+Kõneldakse	Eesti Eesti (920 000)
+Soome Soome (48 000)
+Venemaa Venemaa (15 500)
+Rootsi Rootsi (umbes 10 000)
+Kanada Kanada (6385)	
+Ameerika Ühendriigid Ameerika Ühendriigid (5938)
+Austraalia Austraalia (5255)
+Piirkonnad	Põhja-Euroopa
+Kokku kõnelejaid	1,08 miljonit
+Keelesugulus	
+uurali keeled
+ soomeugri keeled
+  soome-saami keeled
+   läänemeresoome keeled
+    eesti keel
+Ametlik staatus
+Ametlik keel	Eesti Eesti
+Euroopa Liit Euroopa Liit
+Keelekoodid
+ISO 639-1	et
+ISO 639-2	est
+Keele leviala
+?? Põhjaeesti murded
+?? Lõunaeesti murded
+Eesti keel (varasem nimetus: maakeel) on läänemeresoome lõunarühma kuuluv keel. Selle lähemad sugulased on läänemeresoome keeled vadja ja liivi keel.
+
+Eesti keelt räägib emakeelena umbes 1 miljon inimest, kellest enamik elab Eestis, kus see on riigikeel. 2004. aastast on eesti keel ka üks Euroopa Liidu ametlikest keeltest.
+
+2012. aasta seisuga kõneles eesti keelt emakeelena hinnanguliselt 922 000 inimest Eestis ja 160 000 mujal maailmas. Võõrkeelena kõneles 2012. aasta seisuga eesti keelt 168 000 inimest.[1]
+
+Eesti keelel on kaks suuremat murderühma (põhjaeesti ja lõunaeesti murded), aga mõnedes käsitlustes eristatakse ka kolmandat (kirderanniku murdeid). Seoses liikumisvõimaluste laienemisega ning põhjaeesti keskmurde baasil loodud normeeritud eesti kirjakeele kasutusega on aga murdeerinevused tugevasti taandunud.
+
+Neljast piirkondlikust põhivariandist koosnevat lõunaeesti murderühma käsitletakse vahel ka eraldiseisva lõunaeesti keelna. Lõunaeesti keelest suurima kõnelejate arvuga võru murret ehk võru keelt käsitletakse vahel samuti omaette keelena. Setu keelt peetakse lingvistiliselt enamasti aga võru keele variandiks.
+
+Eesti keelt eristab paljudest teistest keeltest kolm erinevat hääliku pikkusastet – lühike, pikk ja ülipikk. Vastav pikkusaste annab sõnale erineva tähenduse – näiteks /linn/, /lin?a/ (omastav kääne) ja /lin:a/ (sisseütlev kääne); või /vala/ (käskiv kõneviis sõnast valama), /va?la/ (omastav kääne sõnast vaal) ja /va?la/ (osastav kääne sõnast vaal).[viide?]
+
+Võrdlevgrammatiliste uurimuste kohaselt on eesti keel maailma keelte seas üks keerukamaid keeli.[2]
+
+Tänapäeval uuritakse eesti keelt Eesti Keele Instituudis Tallinnas, Tartu Ülikoolis, Tallinna Ülikoolis ja veel mitmes teadusasutuses mujal maailmas.
+
+Eesti keel on 2015. aasta seisuga 0,1% Interneti veebisaitide sisukeeleks, millega ta on Internetis levikult 38. keel.[3] Samal ajal on näiteks eestikeelne Vikipeedia artiklite arvult 44. keeleversioon[4].
+
+Uurali keelkonna kõigile keeltele omaselt on eesti keel soovõrdne, selles puudub grammatiliselt sugu.
+
+
+Sisukord
+1	Ortograafia
+1.1	Tähestik
+2	Murded
+2.1	Murrete liigitus
+2.2	Murdekeele näited
+3	Ajalugu
+4	Lõunaeesti keelte kadu ja taassünd
+5	Eesti kirjakeel
+6	Sõnalaenud eesti keeles
+7	Vaata ka
+8	Viited
+9	Kirjandus
+10	Välislingid
+10.1	Sõnastikud
+10.2	Artiklid
+Ortograafia
+
+Eesti tähestik
+Eesti keel kasutab ladina kirja eesti tähestikku, milles on ladina tähestikule lisatud mõned tähed. Palatalisatsiooni ega kolmandat väldet eraldi ei märgita, on ka teisi erandeid (näiteks sõna müüa [müia]).
+
+Tähestik
+Ladina alustähestikku eesti keele vajaduste järgi kohandades on saadud eesti tähestik:
+
+Aa Bb (Cc) Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp (Qq) Rr Ss Ğğ Zz Şş Tt Uu Vv (Ww) Õõ Ää Öö Üü (Xx) (Yy)
+
+Tähed f, ğ, z ja ş esinevad ainult võõrsõnades (nt ğokolaad).
+
+Sulgudes antud c, q, w, x ja y on võõrtähed, mis esinevad ainult võõrnimedes ja võõrnimetuletistes ja tsitaatsõnades, samuti kasutavad mõned luuletajad neid oma tekstides vastavalt ts, ku, v, ks ja ü asemel. Eesti tähestikuks võidakse nimetada ka võõrtähtede väljajätmisel saadavat tähestikku (nii on seda terminit kasutatud "Eesti keele käsiraamatus").
+
+Nimede kirjutamisel järgitakse originaalkeele kuju, s.t võivad esineda ka muud ladina kirja tähed – å, è, â, ?, é, ? jne. Nende tähtede puhul ignoreeritakse tähestikulisel järjestamisel diakriitilisi märke.
+
+Murded
+Eesti keeles on kaks suuremat murderühma – põhjaeesti ja lõunaeesti murded (mõnedes käsitlustes eristatakse kolmanda rühmana kirderanniku murdeid). Nendevahelised erinevused ulatuvad arvatavasti läänemeresoome keelte ühisest algkeelest eraldumise perioodi. Murrete säilimist soodustas seotus majapidamisega, sellest tulenev vähene liikuvus ning tava võtta naine kas oma või lähedasest kihelkonnast. Seoses sunnismaisuse tekkega 14. – 15. sajandil vähenesid inimeste liikumis- ja suhtlemisvõimalused ning paikkondlikud keelekujud eristusid üldiselt kihelkonna piirides vastavate murrakutena.
+
+Reeglina kattub murdeala piir kihelkonna piiriga, harvemini läbib seda. Siiski on ka ühe kihelkonna piires kasutatud erinevaid keelekujusid, murdealade piirid ei ole kõikjal kattunud kihelkonnapiiridega.
+
+Kohalikke murrakuid on nimetatud ka vastavateks keelteks, laiema paikkonna, kihelkonna või koguni küla nime järgi.
+
+Alates 20. sajandi algusest on seoses laiemate liikumisvõimaluste ning põhjaeesti keskmurde baasil loodud normeeritud kirjakeele kasutusega murdeerinevused tugevasti taandunud. Kirjakeelest kõige enam erinev on Võru murre, k.a. setu murrak.
+
+Murrete liigitus
+Traditsiooniliselt on eesti murdeid liigitatud järgmiselt:
+
+1) põhjaeesti murderühm: saarte, lääne-, kesk- ja idamurre;
+2) lõunaeesti murderühm: Mulgi, Tartu ja Võru murre;
+3) kirderannikumurre.
+
+Karl Pajusalu, Ellen Niidu ja Tiit Hennoste murdeliigendus[5] on mõnevõrra erinev (keelenäited A. Saareste järgi):
+
+1. põhjaeesti murded
+1.1. südaeesti murded
+1.1.1. keskmurre
+Eele öösse olla ööbiku laulu jealt kuuldud
+
+1.1.2. läänemurre
+Eila üüsi oleja kirigiudu laulu äält kuuldu
+
+1.1.3. saarte murre
+Eiile öössa olad ööbigu loulu äält kuultud
+
+1.1.4. idamurre
+Eelä üüsi õlema sisaski laalu iält kuuldod
+
+1.2. kirderannikumurded
+1.2.1. rannamurre
+Eiilä üösse pidä olema sisokaise lauulo äält kuuldu
+
+1.2.2. Alutaguse murre
+Eiile üööse piäb õlema üööbika lauulu ääld kuuldod
+
+2. lõunaeesti murded
+2.1. Mulgi murre
+Eilä üüse olevet kirigüüdi laulu äält kuultu
+
+2.2. Tartu murre
+Eelä üüse olevat sisaski laalu elli kuultu
+
+2.3. Võru murre
+Iiläq üüse ollõv sisaski laulu hellü kuulda olnuq
+
+Näide Setu murdest: Eeläq üüse kuuldu sisaski laulu hellü
+
+On kasutatud ka muid liigitusi ja nimetusi, näiteks Mari Must räägib keskmurde kirderühmast nimetuse all Virumaa maamurrakud. Setu murrakurühma on vahel loetud eraldi murdeks.
+
+Ka sõrulased peavad oma murret iseseisvaks: koho sa lihad sedise lidrise teega, tule mo otsa peele, ma karguda sind perikse. (Kuhu sa kiirustad nii porise teega, tule mu (ree) otsa peale, ma viin sind kohale.)
+
+Eesti murded erinevad nii sõnavara, fonoloogia, morfoloogia kui lauseehituse poolest. Lõunaeesti murretes on varasem häälikuühend *pts ja *kti muutunud ts-iks, põhjaeesti murretes vastavalt ps-iks ja ks-iks. Põhjaeesti murretes kasutatakse te/de-mitmust, lõunaeesti murretes vokaalmitmust. Sisekohakäänete lõpud on murderühmades erinevad, nt seesütleva käände lõpuks on põhjaeesti murretes -s, lõunaeesti murretes -n, -hn või -h. Lõunaeesti murretes esineb eituspartikli minevikuvorm es. Võru murdes esineb vokaalharmoonia ja kasutatakse kõrisulghäälikut. Tartu murde erijooneks on tugevaastmeline vokaalmitmus. Kirderannikumurde eripära on sise- ja lõpukao puudumine paljudes vormides ning vältevahelduse (teise ja kolmanda välte eristuse) puudumine. Keskmurdes esinevad pikkade vokaalide asemel diftongid. Saarte murdes esineb õ asemel ö, läänemurdes kohati v asemel b.
+
+Murdekeele näited
+Näited kirjameeste korrastatud põhja ja lõuna kirjakeeltest:
+
+Meie Isa palve aastast 1870.[6]
+
+Tallinn – Rewal
+Meie iza, kes sa oled taewas, pühitsetud sâgu sinu nimi, sinu rîk tulgu, sinu tahtmine sündigu kui taewas nenda kâ mâ peal; meie igapäewane leib anna meile täna-päew; ja anna andeks meile meie wõlad, kui ka meie andeks anname oma wõlglastele; ja ära sâda meid mitte kiuzatuze sisse, waid peasta meid ära kurjast; sest sinu päralt on rîk, ja wägi ja au igaweste. Amen.
+
+Tartu – Dorpat
+Meije Issa taiwan: pühhändetus sago sinno nimmi. Sinno rikkus tulgo. Sinnu tahtminne sündko, kui taiwan, nida ka ma pääl. Meije päewalikko leiba anna meile täämbä. Nink anna meile andis meija süda, nida kui ka meije andisanname ommille süüdleisille. Ning ärra saatko meid kiusatusse sisse; enge pästa meid ärra kurjast: Sest sinno perralt om rikkus, nink wäggi, nink auwustus iggawetsel ajal. Amen.
+
+Võru – Werro
+Meie ezä taiwah, pühendetüs sâgu sino nimi, sino rîk tulgu, sino tahtmine sündügu kui taiwah nîda kâ mâ päl; meie päiwälik leib anna meile tämbä; ja anna meile andis meie süüd, nîda kui kâ meie andis anname omile südlaizile; ja ärä sâda meid kiuzatuze sisse, enge pästä meid ära kurjast; sest sino perält om rîk ja wägi ja auw igawetsel ajal. Amen.
+
+Ajalugu
+Next.svg Pikemalt artiklis Eesti keele ajalugu.
+Eesti keel kujunes välja ligikaudu muinasaja lõpul kahe või kolme läänemeresoome hõimumurde lähenemise tulemusena. Teistest läänemeresoome algkeele murretest olid need arvatavasti eristuma hakanud ajaarvamise vahetuse paiku. Neile hõimumurretele vastavad eesti keele suured murderühmad – põhjaeesti ja lõunaeesti; vahel lisatakse eraldi kirderanniku murre või murderühm. Keeleajaloolaste arvates oli ühtse eesti keele kujunemise üheks ajendiks germaani ja ka balti keelte kasvav mõju.
+
+Lõunaeesti keelte kadu ja taassünd
+Kuni eesti kirjakeele loomiseni oli lõunaeesti keelel märkimisväärne edumaa põhjaeesti keele ees. Näiteks tartumurdelise kirjakeele rajaja, Vigala, Tartu ja Sangaste kirikuõpetaja Joachim Rossihniuse (Rossiniuse) lõunaeestikeelsed katekismus, evangeeliumid ja epistlid ilmusid 1632. aastal, Põhja-Eesti vaimuliku Heinrich Stahli põhjaeestikeelsed kodu- ja käsiraamat ning eesti keele grammatika aga 1637. aastal. Adrian Virginiuse lõunaeesti keelde tõlgitud "Wastne Testament" nägi ilmavalgust 1686. aastal, kirikuõpetaja Johann Hornungi põhjaeestikeelne "Uus Testament" 1715. aastal (mis küll oli tõlgitud juba 1688. aastal). Tallinna (põhja) ja Tartu (lõuna) keeled olid võrdses seisus ka ilmaliku kirjanduse osas.
+
+Põhja-Eesti keskosa murdel põhineva kirjakeele rajajaiks peetakse Stahli ja Hornungit, ent kindla võidu kindlustas sellele 1739. aastal põhjaeesti murdel (kesk- ja lääne-eestiliste sugemetega) põhinev Jüri kirikuõpetaja Anton Thor Helle piibli esimene tõlge. Seejärel suurenes ka tallinnakeelse vaimuliku ja ilmaliku kirjanduse levik.
+
+19. sajandil tegelesid nii baltisaksa kui ka eesti päritolu literaadid enamasti põhjaeesti keele Tallinna murdel põhineva ühise kirjakeele arendamisega. Tartukeelsete trükiste osatähtsus langes sajandi jooksul 40%-lt selle alguses 5%-le sajandi lõpus.
+
+Lõunaeesti keele lõpliku alistumise päevaks ja kohaks peetakse 30. maid 1908, kui toimus keelekorralduse koosolek ehk Tapa keelekonverentsi. Lõunaeesti keel tõrjuti seejärel nn kultuursest kõnepruugist ja trükist välja ning see jäi pikaks ajaks põlu alla. Võrukeelseid lapsi narriti koolides veel 1970. aastail.
+
+21. sajandi alguseks on kodukeelena ja taastärkava kultuurkeelena jäänud püsima vaid võru (võro) keel (ligi 75 000 kõnelejat) ja kodukeelena setu (seto) keel (üle 12 000 kõneleja). Tartu ja mulgi keele valdamine on muutunud haruldaseks, kuid 2011. aasta rahvaloenduse andmetel oli siiski üle 9000 mulgi keele ja 4000 tartu keele oskaja.
+
+Alates 1990. aastatest on peamiselt Võrumaalt pärit aktivistid, aga ka mitmed setud ja mulgid oma keele kaitseks välja astunud ja olnud seisukohal, et lõunaeesti murrete asemel tuleks kasutada mõistet lõunaeesti keel või vastavalt eraldi võru (võro), tartu (tarto), setu (seto) ja mulgi keel. On tehtud jõupingutusi lõunaeesti keelte säilitamiseks, arendamiseks ja tunnustamiseks piirkonnakeeltena. Võru, setu ja mulgi keele ja kultuuri kaitseks ja arendamiseks on loodud eraldi instituudid (Võru Instituut, Seto Instituut, Mulgi Kultuuri Instituut). Võru kirjakeeles[7] antakse välja ajalehte Uma Leht, ilukirjandust, sõnaraamatuid ja õpikuid ning toimib ka Vikipeedia võrukeelne versioon. Omakeelseid raamatuid ja läbinisti omakeelne ajaleht on ka setudel (ajaleht Setomaa) ja mulkidel (Üitsainus Mulgimaa).
+
+Eesti kirjakeel
+Next.svg Pikemalt artiklis Eesti kirjakeel.
+Eesti kirjakeel on eesti keele normeeritud allkeel. Seda normeerib õigekeelsussõnaraamat (ÕS), mida Eesti valitsuse ülesandel koostab Eesti Keele Instituut.
+
+Eesti Keele Kaitse Ühing on nimetanud reeglistatust kirjakeele tugevuse aluseks ja kutsutud üles rakendama meetmeid kirjakeele kaitsmiseks[8]. Samas on seda ka kritiseeritud ning näiteks Jaan Kaplinski on väitnud, et "ilusti, hästi saab rääkida keelt vaid siis, kui ei mõelda reeglitele, vaid räägitakse tõepoolest oma keelt, nii nagu tahetakse"[9].
+
+Tiit Hennoste on välja toonud, et eesti keel on neti- ja kõnekeele tasemel mõlemad väga kirjakeelsed[10].
+
+Sõnalaenud eesti keeles
+vene laenud eesti keeles
+alamsaksa laenud eesti keeles
+balti laenud eesti keeles
+soome laenud eesti keeles
+slaavi laenud eesti keeles
+saksa laenud eesti keeles
+rootsi laenud eesti keeles
+germaani laenud eesti keeles
+läti laenud eesti keeles
+indoeuroopa laenud eesti keeles
+indoiraani laenud eesti keeles
+Vaata ka
+eesti keele ajalugu
+eesti keele grammatika
+eesti keele uurimine
+Keelehooldekeskus
+eesti viipekeel
+lõunaeesti keel
+maakeel
+tallinna keel
+Eesti Keele Sihtasutus
+väliseestlaste eesti keel
+Viited
+ Kilgi, Annika. 2012. "Eesti keel maailma taustal." Estonica: Entsüklopeedia Eestist. (vaadatud 5. jaanuaril 2016)
+ McWhorter, John H. 2007. Language Interrupted. Oxford: Oxford University Press.
+ http://w3techs.com/technologies/history_overview/content_language/ms/y
+ All Wikipedias ordered by number of articles
+ Karl Pajusalu, Tiit Hennoste, Ellen Niit, Peeter Päll, Jüri Viikberg 2002. Eesti murded ja kohanimed. Tallinn, lk 57.
+ Das Gebet des Herrn in den Sprachen Russlands, Hermann Dalton, St. Petersburg, 1870.
+ Eesti Entsüklopeedia artikkel "Võru kirjakeel" [1]
+ Eesti kirjakeele olukorrast
+ "Sirp, Jaan Kaplinski: kuidas eesti keeles õige öelda on?"
+ "Hennoste: internet muudab keele funktsionaalsemaks" ERR kultuur, 22. märts 2014
+Kirjandus
+Väike Entsüklopeedia, K./Ü. "Loodus", Tartu, 1937.
+Eesti Entsüklopeedia, Eesti keel, Tallinn, 2002.
+Raimo Raag. Talurahva keelest riigikeeleks. Atlex 2008. ISBN 978-9949-441-30-3
+Raimo Raag ja Jüri Valge (koostajad). Sõida tasa üle silla. EKSA 2018. ISBN 978-9949-604-62-3
+Välislingid
+Wiktionary-logo.svg
+Vikisõnastiku artikkel: eesti keel
+Keeleseadus Riigi Teataja
+Eesti keele käsiraamat EKI
+Arvi Tavast: Inglise keel polegi veel võitnud 1. juuli 2002
+Virtuaalne ingliskeelne Eesti
+"Eesti keel ja meel" Arvutipõhine õppekursus eesti keele õppijatele. Õppekursus on üheksa keele põhjal: inglise, saksa, prantsuse, itaalia, vene, hollandi, kreeka, rumeenia ja ungari. Selle koostamist toetasid Euroopa Liit programmi Socrates (Lingua 2) raames ja EV Haridus- ja teadusministeerium. ISBN 9789985979457.
+Eesti keel maailmas: ETV 2004, ETV arhiivis
+Eesti keel maailmas: 1
+Eesti keel maailmas: 2, see osa puudub ETV arhiivis
+Eesti keel maailmas: 3
+Eesti keel maailmas: 4
+Püramiidi tipus: Kõnetuvastus, ETV 2012, ETV arhiiv
+Piret Kriivan. Keelesaade. Emakeeleõpetus Eestis. 18.09.2016. Pedagoogikateadlane Katrin Kalamees-Ruubel eesti keele õpetamise tagasikäigust oma doktoritöö põhjal.
+Kalamees-Ruubel, Katrin (2014). Eesti keele ja kirjandusõpetuse roll eesti õppekeelega üldhariduskooli õppekavas 1917 - 2014. Ajaloolis-analüütiline käsitlus. (Tallinna ülikool, sotsiaalteaduste dissertatsioonid). Tallinn: Tallinna Ülikooli Kirjastus.
+Sõnastikud
+Eesti-inglise-eesti sõnastik
+Eesti-vene-eesti sõnaraamat
+Keeleveebi sõnaraamatud
+EÜM – Eesti üldine märksõnastik
+Artiklid
+Tiit Hennoste: "Keelega on JOKK" Vikerkaar, 10–11/2012
+Jaan Kaplinski: "Keel – rahva vaimu väljendaja või tõlkimise masin?" Sirp, 28. november 2013
+Tiit Hennoste "kuule ma eemale nüüd" Sirp, 5. detsember 2013
+Valdur Mikita: "Eesti keele lummuse päev" Sirp, 13. märts 2014
+Euroopa Liidu ametlikud keeled
+var
+Uurali keeled ja murded
+var
+Eesti võtmeartiklid
+Kategooria: Eesti keel
+Navigeerimismenüü
+Sisse logimataAruteluKaastööLoo kontoLogi sisseArtikkelAruteluVaataMuudaMuuda lähtetekstiNäita ajaluguOtsing
+
+Otsi Vikipeediast
+Esileht
+Üldine arutelu
+Sündmused maailmas
+Viimased muudatused
+Juhuslik lehekülg
+Juhend
+Annetused
+Kontakt
+Tööriistad
+Lingid siia
+Seotud muudatused
+Erileheküljed
+Püsilink
+Lehekülje teave
+Andmeüksus
+Tsiteeri seda artiklit
+Trüki või ekspordi
+Koosta raamat
+Laadi alla PDF-failina
+Prinditav versioon
+Teistes projektides
+Commons
+
+Teistes keeltes
+Bahasa Melayu
+English
+Espa?ol
+??????
+??????
+??????
+?????
+????
+??
+Veel 135 keelt
+Redigeeri linke
+Selle lehekülje viimane muutmine: 15:44, 1. detsember 2018.
+Tekst on kasutatav vastavalt Creative Commonsi litsentsile "Autorile viitamine + jagamine samadel tingimustel"; sellele võivad lisanduda täiendavad tingimused. Täpsemalt vaata Wikimedia kasutamistingimustest.
+AndmekaitseTiitelandmedLahtiütlusedArendajadKüpsiste avaldusMobiilivaadeWikimedia Foundation Powered by MediaWiki
