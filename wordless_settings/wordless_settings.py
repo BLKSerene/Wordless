@@ -439,7 +439,7 @@ class Wordless_Settings(QDialog):
         (self.spin_box_auto_detection_number_lines,
          self.checkbox_auto_detection_number_lines_no_limit) = wordless_widgets.wordless_widgets_no_limit(self.main)
 
-        self.spin_box_lang_detection_number_lines.setRange(1, 1000000)
+        self.spin_box_auto_detection_number_lines.setRange(1, 1000000)
 
         group_box_detection_settings.setLayout(QGridLayout())
         group_box_detection_settings.layout().addWidget(self.label_auto_detection_number_lines, 0, 0)
