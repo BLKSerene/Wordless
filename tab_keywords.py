@@ -15,6 +15,7 @@ from PyQt5.QtWidgets import *
 
 import numpy
 
+from wordless_checking import *
 from wordless_measures import *
 from wordless_plot import *
 from wordless_text import *
@@ -187,12 +188,18 @@ def init(main):
         checkbox_lowercase.setChecked(settings['token_settings']['lowercase'])
         checkbox_uppercase.setChecked(settings['token_settings']['uppercase'])
         checkbox_title_case.setChecked(settings['token_settings']['title_case'])
+        checkbox_nums.setChecked(settings['token_settings']['nums'])
+        checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+
         checkbox_treat_as_lowercase.setChecked(settings['token_settings']['treat_as_lowercase'])
         checkbox_lemmatize.setChecked(settings['token_settings']['lemmatize'])
         checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
-        checkbox_nums.setChecked(settings['token_settings']['nums'])
-        checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+        checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        checkbox_ignore_tags_tags_only.setChecked(settings['token_settings']['ignore_tags_tags_only'])
+        combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
+        combo_box_ignore_tags_tags_only.setCurrentText(settings['token_settings']['ignore_tags_type_tags_only'])
+        checkbox_tags_only.setChecked(settings['token_settings']['tags_only'])
 
         # Generation Settings
         combo_box_ref_file.setCurrentText(settings['generation_settings']['ref_file'])
@@ -262,7 +269,6 @@ def init(main):
 
         token_settings_changed()
         generation_settings_changed()
-        measures_changed()
         table_settings_changed()
         plot_settings_changed()
         filter_settings_changed()
@@ -274,12 +280,18 @@ def init(main):
         settings['lowercase'] = checkbox_lowercase.isChecked()
         settings['uppercase'] = checkbox_uppercase.isChecked()
         settings['title_case'] = checkbox_title_case.isChecked()
+        settings['nums'] = checkbox_nums.isChecked()
+        settings['puncs'] = checkbox_puncs.isChecked()
+
         settings['treat_as_lowercase'] = checkbox_treat_as_lowercase.isChecked()
         settings['lemmatize'] = checkbox_lemmatize.isChecked()
         settings['filter_stop_words'] = checkbox_filter_stop_words.isChecked()
 
-        settings['nums'] = checkbox_nums.isChecked()
-        settings['puncs'] = checkbox_puncs.isChecked()
+        settings['ignore_tags'] = checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_tags_only'] = checkbox_ignore_tags_tags_only.isChecked()
+        settings['ignore_tags_type'] = combo_box_ignore_tags.currentText()
+        settings['ignore_tags_type_tags_only'] = combo_box_ignore_tags_tags_only.currentText()
+        settings['tags_only'] = checkbox_tags_only.isChecked()
 
     def generation_settings_changed():
         settings = main.settings_custom['keywords']['generation_settings']
@@ -292,9 +304,6 @@ def init(main):
         settings['test_significance'] = combo_box_test_significance.currentText()
         settings['measure_effect_size'] = combo_box_measure_effect_size.currentText()
         settings['measure_dispersion'] = combo_box_measure_dispersion.currentText()
-
-    def measures_changed():
-        settings = main.settings_custom['keywords']['generation_settings']
 
         # Use File
         use_file_old = combo_box_use_file.currentText()
@@ -311,19 +320,16 @@ def init(main):
         # Use Data
         use_data_old = combo_box_use_data.currentText()
 
-        text_test_significance = settings['test_significance']
-        text_measure_effect_size = settings['measure_effect_size']
-        text_measure_dispersion = settings['measure_dispersion']
-
         combo_box_use_data.clear()
 
         combo_box_use_data.addItem(main.tr('Frequency'))
-
         combo_box_use_data.addItems([col
-                                     for col in main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
+                                     for col in main.settings_global['tests_significance']['collocation'][settings['test_significance']]['cols']
                                      if col])
-        combo_box_use_data.addItem(main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col'])
-        combo_box_use_data.addItem(main.settings_global['measures_dispersion'][text_measure_dispersion]['col'])
+        combo_box_use_data.addItems([
+            main.settings_global['measures_effect_size']['keywords'][settings['measure_effect_size']]['col'],
+            main.settings_global['measures_dispersion'][settings['measure_dispersion']]['col']
+        ])
 
         if combo_box_use_data.findText(use_data_old) > -1:
             combo_box_use_data.setCurrentText(use_data_old)
@@ -468,37 +474,64 @@ def init(main):
      checkbox_lowercase,
      checkbox_uppercase,
      checkbox_title_case,
+     checkbox_nums,
+     checkbox_puncs,
+
      checkbox_treat_as_lowercase,
      checkbox_lemmatize,
      checkbox_filter_stop_words,
 
-     checkbox_nums,
-     checkbox_puncs) = wordless_widgets.wordless_widgets_token_settings(main)
+     checkbox_ignore_tags,
+     checkbox_ignore_tags_tags_only,
+     combo_box_ignore_tags,
+     combo_box_ignore_tags_tags_only,
+     label_ignore_tags,
+     checkbox_tags_only) = wordless_widgets.wordless_widgets_token_settings(main)
 
     checkbox_words.stateChanged.connect(token_settings_changed)
     checkbox_lowercase.stateChanged.connect(token_settings_changed)
     checkbox_uppercase.stateChanged.connect(token_settings_changed)
     checkbox_title_case.stateChanged.connect(token_settings_changed)
+    checkbox_nums.stateChanged.connect(token_settings_changed)
+    checkbox_puncs.stateChanged.connect(token_settings_changed)
+
     checkbox_treat_as_lowercase.stateChanged.connect(token_settings_changed)
     checkbox_lemmatize.stateChanged.connect(token_settings_changed)
     checkbox_filter_stop_words.stateChanged.connect(token_settings_changed)
 
-    checkbox_nums.stateChanged.connect(token_settings_changed)
-    checkbox_puncs.stateChanged.connect(token_settings_changed)
+    checkbox_ignore_tags.stateChanged.connect(token_settings_changed)
+    checkbox_ignore_tags_tags_only.stateChanged.connect(token_settings_changed)
+    combo_box_ignore_tags.currentTextChanged.connect(token_settings_changed)
+    combo_box_ignore_tags_tags_only.currentTextChanged.connect(token_settings_changed)
+    checkbox_tags_only.stateChanged.connect(token_settings_changed)
+
+    layout_ignore_tags = QGridLayout()
+    layout_ignore_tags.addWidget(checkbox_ignore_tags, 0, 0)
+    layout_ignore_tags.addWidget(checkbox_ignore_tags_tags_only, 0, 0)
+    layout_ignore_tags.addWidget(combo_box_ignore_tags, 0, 1)
+    layout_ignore_tags.addWidget(combo_box_ignore_tags_tags_only, 0, 1)
+    layout_ignore_tags.addWidget(label_ignore_tags, 0, 2)
+
+    layout_ignore_tags.setColumnStretch(3, 1)
 
     group_box_token_settings.setLayout(QGridLayout())
     group_box_token_settings.layout().addWidget(checkbox_words, 0, 0)
     group_box_token_settings.layout().addWidget(checkbox_lowercase, 0, 1)
     group_box_token_settings.layout().addWidget(checkbox_uppercase, 1, 0)
     group_box_token_settings.layout().addWidget(checkbox_title_case, 1, 1)
-    group_box_token_settings.layout().addWidget(checkbox_treat_as_lowercase, 2, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_lemmatize, 3, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_filter_stop_words, 4, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_nums, 2, 0)
+    group_box_token_settings.layout().addWidget(checkbox_puncs, 2, 1)
 
-    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 5, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 3, 0, 1, 2)
 
-    group_box_token_settings.layout().addWidget(checkbox_nums, 6, 0)
-    group_box_token_settings.layout().addWidget(checkbox_puncs, 6, 1)
+    group_box_token_settings.layout().addWidget(checkbox_treat_as_lowercase, 4, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_lemmatize, 5, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_filter_stop_words, 6, 0, 1, 2)
+
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0, 1, 2)
+
+    group_box_token_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_tags_only, 9, 0, 1, 2)
 
     # Generation Settings
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'))
@@ -522,17 +555,8 @@ def init(main):
 
     combo_box_ref_file.currentTextChanged.connect(generation_settings_changed)
     combo_box_test_significance.currentTextChanged.connect(generation_settings_changed)
-    combo_box_test_significance.currentTextChanged.connect(measures_changed)
     combo_box_measure_effect_size.currentTextChanged.connect(generation_settings_changed)
-    combo_box_measure_effect_size.currentTextChanged.connect(measures_changed)
     combo_box_measure_dispersion.currentTextChanged.connect(generation_settings_changed)
-    combo_box_measure_dispersion.currentTextChanged.connect(measures_changed)
-
-    layout_ref_file = QGridLayout()
-    layout_ref_file.addWidget(label_ref_file, 0, 0)
-    layout_ref_file.addWidget(combo_box_ref_file, 0, 1)
-
-    layout_ref_file.setColumnStretch(1, 1)
 
     layout_settings_measures = QGridLayout()
     layout_settings_measures.addWidget(label_settings_measures, 0, 0)
@@ -541,20 +565,21 @@ def init(main):
     layout_settings_measures.setColumnStretch(1, 1)
 
     group_box_generation_settings.setLayout(QGridLayout())
-    group_box_generation_settings.layout().addLayout(layout_ref_file, 0, 0)
+    group_box_generation_settings.layout().addWidget(label_ref_file, 0, 0)
+    group_box_generation_settings.layout().addWidget(combo_box_ref_file, 1, 0)
 
-    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 1, 0)
+    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 2, 0)
 
-    group_box_generation_settings.layout().addWidget(label_test_significance, 2, 0)
-    group_box_generation_settings.layout().addWidget(combo_box_test_significance, 3, 0)
-    group_box_generation_settings.layout().addWidget(label_measure_effect_size, 4, 0)
-    group_box_generation_settings.layout().addWidget(combo_box_measure_effect_size, 5, 0)
-    group_box_generation_settings.layout().addWidget(label_measure_dispersion, 6, 0)
-    group_box_generation_settings.layout().addWidget(combo_box_measure_dispersion, 7, 0)
+    group_box_generation_settings.layout().addWidget(label_test_significance, 3, 0)
+    group_box_generation_settings.layout().addWidget(combo_box_test_significance, 4, 0)
+    group_box_generation_settings.layout().addWidget(label_measure_effect_size, 5, 0)
+    group_box_generation_settings.layout().addWidget(combo_box_measure_effect_size, 6, 0)
+    group_box_generation_settings.layout().addWidget(label_measure_dispersion, 7, 0)
+    group_box_generation_settings.layout().addWidget(combo_box_measure_dispersion, 8, 0)
 
-    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 8, 0)
+    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 9, 0)
 
-    group_box_generation_settings.layout().addLayout(layout_settings_measures, 9, 0)
+    group_box_generation_settings.layout().addLayout(layout_settings_measures, 10, 0)
 
     # Table Settings
     group_box_table_settings = QGroupBox(main.tr('Table Settings'))
@@ -861,14 +886,10 @@ def generate_keywords(main, files, ref_file):
     for i, file in enumerate([ref_file] + files):
         text = wordless_text.Wordless_Text(main, file)
 
-        text.tokens = wordless_text_processing.wordless_preprocess_tokens(main, text.tokens,
-                                                                          lang_code = text.lang_code,
-                                                                          settings = settings['token_settings'])
-        text.tokens = wordless_text_processing.wordless_postprocess_tokens(main, text.tokens,
-                                                                           lang_code = text.lang_code,
-                                                                           settings = settings['token_settings'])
+        tokens = wordless_token_processing.wordless_preprocess_tokens_wordlist(text,
+                                                                               token_settings = settings['token_settings'])
 
-        keywords_freq_files.append(collections.Counter(text.tokens))
+        keywords_freq_files.append(collections.Counter(tokens))
 
         if i > 0:
             texts.append(text)
@@ -882,7 +903,7 @@ def generate_keywords(main, files, ref_file):
         text_total.tokens = [token for text in texts for token in text.tokens]
 
         texts.append(text_total)
-        keywords_freq_files.append(collections.Counter(text_total.tokens))
+        keywords_freq_files.append(sum(keywords_freq_files, collections.Counter()))
 
         keywords_freq_files[0] = {token: freq
                                   for token, freq in keywords_freq_files[0].items()
@@ -1000,156 +1021,166 @@ def generate_table(main, table):
     col_text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
 
     if settings['generation_settings']['ref_file']:
-        files = [file
-                 for file in main.wordless_files.get_selected_files()
-                 if file['name'] != settings['generation_settings']['ref_file']]
+        ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
+                                                         selected_only = True)
 
-        if files:
-            table.clear_table()
+        if wordless_checking_file.check_files_loading(main, [ref_file]):
+            files = [file
+                     for file in wordless_checking_file.check_files_loading(main, main.wordless_files.get_selected_files())
+                     if file != ref_file]
 
-            table.settings = copy.deepcopy(main.settings_custom)
+            if files:
+                keywords_freq_files, keywords_stats_files = generate_keywords(main, files, ref_file)
 
-            ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
-                                                             selected_only = True)
+                if keywords_freq_files:
+                    table.clear_table()
 
-            # Insert columns (Files)
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'[{ref_file["name"]}]\nFrequency'),
-                             num = True, pct = True, cumulative = True)
+                    table.settings = copy.deepcopy(main.settings_custom)
 
-            for file in files:
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'[{file["name"]}]\nFrequency'),
-                                 num = True, pct = True, cumulative = True, breakdown = True)
+                    table.blockSignals(True)
+                    table.setSortingEnabled(False)
+                    table.setUpdatesEnabled(False)
 
-                if col_text_test_stat:
+                    # Insert columns (Files)
                     table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'[{file["name"]}]\n{col_text_test_stat}'),
-                                     num = True, breakdown = True)
+                                     main.tr(f'[{ref_file["name"]}]\nFrequency'),
+                                     num = True, pct = True, cumulative = True)
 
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'[{file["name"]}]\n{col_text_p_value}'),
-                                 num = True, breakdown = True)
+                    for file in files:
+                        table.insert_col(table.columnCount() - 1,
+                                         main.tr(f'[{file["name"]}]\nFrequency'),
+                                         num = True, pct = True, cumulative = True, breakdown = True)
 
-                if col_text_bayes_factor:
+                        if col_text_test_stat:
+                            table.insert_col(table.columnCount() - 1,
+                                             main.tr(f'[{file["name"]}]\n{col_text_test_stat}'),
+                                             num = True, breakdown = True)
+
+                        table.insert_col(table.columnCount() - 1,
+                                         main.tr(f'[{file["name"]}]\n{col_text_p_value}'),
+                                         num = True, breakdown = True)
+
+                        if col_text_bayes_factor:
+                            table.insert_col(table.columnCount() - 1,
+                                             main.tr(f'[{file["name"]}]\n{col_text_bayes_factor}'),
+                                             num = True, breakdown = True)
+
+                        table.insert_col(table.columnCount() - 1,
+                                         main.tr(f'[{file["name"]}]\n{col_text_effect_size}'),
+                                         num = True, breakdown = True)
+
+                        table.insert_col(table.columnCount() - 1,
+                                         main.tr(f'[{file["name"]}]\n{col_text_dispersion}'),
+                                         num = True, breakdown = True)
+
+                    # Insert columns (Total)
                     table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'[{file["name"]}]\n{col_text_bayes_factor}'),
-                                     num = True, breakdown = True)
+                                     main.tr(f'Total\nFrequency'),
+                                     num = True, pct = True, cumulative = True)
 
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'[{file["name"]}]\n{col_text_effect_size}'),
-                                 num = True, breakdown = True)
-
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'[{file["name"]}]\n{col_text_dispersion}'),
-                                 num = True, breakdown = True)
-
-            # Insert columns (Total)
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'Total\nFrequency'),
-                             num = True, pct = True, cumulative = True)
-
-            if col_text_test_stat:
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'Total\n{col_text_test_stat}'),
-                                 num = True)
-
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'Total\n{col_text_p_value}'),
-                             num = True)
-
-            if col_text_bayes_factor:
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'Total\n{col_text_bayes_factor}'),
-                                 num = True)
-
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'Total\n{col_text_effect_size}'),
-                             num = True)
-
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'Total\n{col_text_dispersion}'),
-                             num = True)
-
-            # Sort by p-value of the first file
-            table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{col_text_p_value}')), Qt.AscendingOrder)
-
-            keywords_freq_files, keywords_stats_files = generate_keywords(main, files, ref_file)
-
-            cols_freq = table.find_cols(main.tr('\nFrequency'))
-
-            if col_text_test_stat:
-                cols_test_stat = table.find_cols(main.tr(f'\n{col_text_test_stat}'))
-
-            cols_p_value = table.find_cols(main.tr('\np-value'))
-
-            if col_text_bayes_factor:
-                cols_bayes_factor = table.find_cols(main.tr('\nBayes Factor'))
-
-            cols_effect_size = table.find_cols(f'\n{col_text_effect_size}')
-            cols_dispersion = table.find_cols(f'\n{col_text_dispersion}')
-            col_number_files_found = table.find_col(main.tr('Number of\nFiles Found'))
-
-            len_files = len(files)
-
-            table.blockSignals(True)
-            table.setSortingEnabled(False)
-            table.setUpdatesEnabled(False)
-
-            table.setRowCount(len(keywords_freq_files))
-
-            for i, (keyword, stats_files) in enumerate(wordless_sorting.sorted_keywords_stats_files(keywords_stats_files)):
-                keyword_freq_files = keywords_freq_files[keyword]
-
-                # Rank
-                table.set_item_num_int(i, 0, -1)
-
-                # Keywords
-                table.setItem(i, 1, wordless_table.Wordless_Table_Item(keyword))
-
-                # Frequency
-                for j, freq in enumerate(keyword_freq_files):
-                    table.set_item_num_cumulative(i, cols_freq[j], freq)
-
-                for j, (test_stat, p_value, bayes_factor, effect_size, dispersion) in enumerate(stats_files):
-                    # Test Statistic
                     if col_text_test_stat:
-                        table.set_item_num_float(i, cols_test_stat[j], test_stat)
+                        table.insert_col(table.columnCount() - 1,
+                                         main.tr(f'Total\n{col_text_test_stat}'),
+                                         num = True)
 
-                    # p-value
-                    table.set_item_num_float(i, cols_p_value[j], p_value)
+                    table.insert_col(table.columnCount() - 1,
+                                     main.tr(f'Total\n{col_text_p_value}'),
+                                     num = True)
 
-                    # Bayes Factor
                     if col_text_bayes_factor:
-                        table.set_item_num_float(i, cols_bayes_factor[j], bayes_factor)
+                        table.insert_col(table.columnCount() - 1,
+                                         main.tr(f'Total\n{col_text_bayes_factor}'),
+                                         num = True)
 
-                    # Effect Size
-                    table.set_item_num_float(i, cols_effect_size[j], effect_size)
+                    table.insert_col(table.columnCount() - 1,
+                                     main.tr(f'Total\n{col_text_effect_size}'),
+                                     num = True)
 
-                    # Dispersion
-                    table.set_item_num_float(i, cols_dispersion[j], dispersion)
+                    table.insert_col(table.columnCount() - 1,
+                                     main.tr(f'Total\n{col_text_dispersion}'),
+                                     num = True)
 
-                # Number of Files Found
-                table.set_item_num_pct(i, col_number_files_found,
-                                       len([freq for freq in keyword_freq_files[1:-1] if freq]),
-                                       len_files)
+                    # Sort by p-value of the first file
+                    table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{col_text_p_value}')), Qt.AscendingOrder)
 
-            table.blockSignals(False)
-            table.setSortingEnabled(True)
-            table.setUpdatesEnabled(True)
+                    cols_freq = table.find_cols(main.tr('\nFrequency'))
 
-            table.toggle_pct()
-            table.toggle_cumulative()
-            table.toggle_breakdown()
-            table.update_ranks()
+                    if col_text_test_stat:
+                        cols_test_stat = table.find_cols(main.tr(f'\n{col_text_test_stat}'))
 
-            table.update_items_width()
+                    cols_p_value = table.find_cols(main.tr('\np-value'))
 
-            table.itemChanged.emit(table.item(0, 0))
+                    if col_text_bayes_factor:
+                        cols_bayes_factor = table.find_cols(main.tr('\nBayes Factor'))
 
-            wordless_message.wordless_message_generate_table_success(main)
+                    cols_effect_size = table.find_cols(f'\n{col_text_effect_size}')
+                    cols_dispersion = table.find_cols(f'\n{col_text_dispersion}')
+                    col_number_files_found = table.find_col(main.tr('Number of\nFiles Found'))
+
+                    len_files = len(files)
+
+                    table.setRowCount(len(keywords_freq_files))
+
+                    for i, (keyword, stats_files) in enumerate(wordless_sorting.sorted_keywords_stats_files(keywords_stats_files)):
+                        keyword_freq_files = keywords_freq_files[keyword]
+
+                        # Rank
+                        table.set_item_num_int(i, 0, -1)
+
+                        # Keywords
+                        table.setItem(i, 1, wordless_table.Wordless_Table_Item(keyword))
+
+                        # Frequency
+                        for j, freq in enumerate(keyword_freq_files):
+                            table.set_item_num_cumulative(i, cols_freq[j], freq)
+
+                        for j, (test_stat, p_value, bayes_factor, effect_size, dispersion) in enumerate(stats_files):
+                            # Test Statistic
+                            if col_text_test_stat:
+                                table.set_item_num_float(i, cols_test_stat[j], test_stat)
+
+                            # p-value
+                            table.set_item_num_float(i, cols_p_value[j], p_value)
+
+                            # Bayes Factor
+                            if col_text_bayes_factor:
+                                table.set_item_num_float(i, cols_bayes_factor[j], bayes_factor)
+
+                            # Effect Size
+                            table.set_item_num_float(i, cols_effect_size[j], effect_size)
+
+                            # Dispersion
+                            table.set_item_num_float(i, cols_dispersion[j], dispersion)
+
+                        # Number of Files Found
+                        table.set_item_num_pct(i, col_number_files_found,
+                                               len([freq for freq in keyword_freq_files[1:-1] if freq]),
+                                               len_files)
+
+                    table.blockSignals(False)
+                    table.setSortingEnabled(True)
+                    table.setUpdatesEnabled(True)
+
+                    table.toggle_pct()
+                    table.toggle_cumulative()
+                    table.toggle_breakdown()
+                    table.update_ranks()
+
+                    table.update_items_width()
+
+                    table.itemChanged.emit(table.item(0, 0))
+
+                    wordless_message.wordless_message_generate_table_success(main)
+                else:
+                    wordless_message_box.wordless_message_box_no_results_table(main)
+
+                    wordless_message.wordless_message_generate_table_error(main)
+            else:
+                wordless_message_box.wordless_message_box_missing_observed_files(main)
+
+                wordless_message.wordless_message_generate_table_error(main)
         else:
-            wordless_message_box.wordless_message_box_missing_observed_files(main)
+            wordless_message_box.wordless_message_box_error_ref_file(main)
 
             wordless_message.wordless_message_generate_table_error(main)
     else:
@@ -1162,66 +1193,76 @@ def generate_plot(main):
     settings = main.settings_custom['keywords']
 
     if settings['generation_settings']['ref_file']:
-        files = [file
-                 for file in main.wordless_files.get_selected_files()
-                 if file['name'] != settings['generation_settings']['ref_file']]
+        ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
+                                                         selected_only = True)
 
-        if files:
-            ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
-                                                             selected_only = True)
+        if wordless_checking_file.check_files_loading(main, [ref_file]):
+            files = [file
+                     for file in wordless_checking_file.check_files_loading(main, main.wordless_files.get_selected_files())
+                     if file != ref_file]
 
-            text_test_significance = settings['generation_settings']['test_significance']
-            text_measure_effect_size = settings['generation_settings']['measure_effect_size']
-            text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+            if files:
+                keywords_freq_files, keywords_stats_files = generate_keywords(main, files, ref_file)
 
-            (col_text_test_stat,
-             col_text_p_value,
-             col_text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-            col_text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
-            col_text_dispersion =  main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
+                if keywords_freq_files:
+                    text_test_significance = settings['generation_settings']['test_significance']
+                    text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+                    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
 
-            keywords_freq_files, keywords_stats_files = generate_keywords(main, files, ref_file)
+                    (col_text_test_stat,
+                     col_text_p_value,
+                     col_text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
+                    col_text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+                    col_text_dispersion =  main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
 
-            if settings['plot_settings']['use_data'] == main.tr('Frequency'):
-                wordless_plot_freq.wordless_plot_freq_ref(main, keywords_freq_files,
-                                                          ref_file = ref_file,
-                                                          settings = settings['plot_settings'],
-                                                          label_x = main.tr('Keywords'))
+                    if settings['plot_settings']['use_data'] == main.tr('Frequency'):
+                        wordless_plot_freq.wordless_plot_freq_ref(main, keywords_freq_files,
+                                                                  ref_file = ref_file,
+                                                                  settings = settings['plot_settings'],
+                                                                  label_x = main.tr('Keywords'))
+                    else:
+                        if settings['plot_settings']['use_data'] == col_text_test_stat:
+                            keywords_stat_files = {keyword: numpy.array(stats_files)[:, 0]
+                                           for keyword, stats_files in keywords_stats_files.items()}
+
+                            label_y = col_text_test_stat
+                        elif settings['plot_settings']['use_data'] == col_text_p_value:
+                            keywords_stat_files = {keyword: numpy.array(stats_files)[:, 1]
+                                           for keyword, stats_files in keywords_stats_files.items()}
+
+                            label_y = col_text_p_value
+                        elif settings['plot_settings']['use_data'] == col_text_bayes_factor:
+                            keywords_stat_files = {keyword: numpy.array(stats_files)[:, 2]
+                                           for keyword, stats_files in keywords_stats_files.items()}
+
+                            label_y = col_text_bayes_factor
+                        elif settings['plot_settings']['use_data'] == col_text_effect_size:
+                            keywords_stat_files = {keyword: numpy.array(stats_files)[:, 3]
+                                           for keyword, stats_files in keywords_stats_files.items()}
+
+                            label_y = col_text_effect_size
+                        elif settings['plot_settings']['use_data'] == col_text_dispersion:
+                            keywords_stat_files = {keyword: numpy.array(stats_files)[:, 4]
+                                           for keyword, stats_files in keywords_stats_files.items()}
+
+                            label_y = col_text_dispersion
+
+                        wordless_plot_stat.wordless_plot_stat_ref(main, keywords_stat_files,
+                                                                  ref_file = ref_file,
+                                                                  settings = settings['plot_settings'],
+                                                                  label_y = label_y)
+
+                    wordless_message.wordless_message_generate_plot_success(main)
+                else:
+                    wordless_message_box.wordless_message_box_no_results_plot(main)
+
+                    wordless_message.wordless_message_generate_plot_error(main)
             else:
-                if settings['plot_settings']['use_data'] == col_text_test_stat:
-                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 0]
-                                   for keyword, stats_files in keywords_stats_files.items()}
+                wordless_message_box.wordless_message_box_missing_observed_files(main)
 
-                    label_y = col_text_test_stat
-                elif settings['plot_settings']['use_data'] == col_text_p_value:
-                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 1]
-                                   for keyword, stats_files in keywords_stats_files.items()}
-
-                    label_y = col_text_p_value
-                elif settings['plot_settings']['use_data'] == col_text_bayes_factor:
-                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 2]
-                                   for keyword, stats_files in keywords_stats_files.items()}
-
-                    label_y = col_text_bayes_factor
-                elif settings['plot_settings']['use_data'] == col_text_effect_size:
-                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 3]
-                                   for keyword, stats_files in keywords_stats_files.items()}
-
-                    label_y = col_text_effect_size
-                elif settings['plot_settings']['use_data'] == col_text_dispersion:
-                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 4]
-                                   for keyword, stats_files in keywords_stats_files.items()}
-
-                    label_y = col_text_dispersion
-
-                wordless_plot_stat.wordless_plot_stat_ref(main, keywords_stat_files,
-                                                          ref_file = ref_file,
-                                                          settings = settings['plot_settings'],
-                                                          label_y = label_y)
-
-            wordless_message.wordless_message_generate_plot_success(main)
+                wordless_message.wordless_message_generate_plot_error(main)
         else:
-            wordless_message_box.wordless_message_box_missing_observed_files(main)
+            wordless_message_box.wordless_message_box_error_ref_file(main)
 
             wordless_message.wordless_message_generate_plot_error(main)
     else:

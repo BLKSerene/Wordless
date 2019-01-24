@@ -10,18 +10,24 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_utils import wordless_checking
+from wordless_checking import wordless_checking_misc
 
 # Files
-def wordless_message_box_error_open_files(main,
-                                          files_missing = [],
-                                          files_duplicate = [],
-                                          files_empty = [],
-                                          files_unsupported = [],
-                                          files_encoding_error = []):
+def wordless_message_box_error_files(main,
+                                     files_missing = [],
+                                     files_duplicate = [],
+                                     files_empty = [],
+                                     files_unsupported = [],
+                                     files_encoding_error = [],
+                                     files_loading_error = []):
     message = ''
 
-    if files_missing or files_duplicate or files_empty or files_unsupported or files_encoding_error:
+    if (files_missing or
+        files_duplicate or
+        files_empty or
+        files_unsupported or
+        files_encoding_error or
+        files_loading_error):
         if files_missing:
             list_files = ''.join([f'<li>{file}</li>' for file in files_missing])
 
@@ -92,6 +98,20 @@ def wordless_message_box_error_open_files(main,
                                <ol>{list_files}</ol>
                            ''')
 
+        if files_loading_error:
+            list_files = ''.join([f'<li>{file}</li>' for file in files_loading_error])
+
+            if len(files_loading_error) == 1:
+                message += main.tr(f'''
+                               <p>Failed to read the following file due to an encoding error:</p>
+                               <ul>{list_files}</ul>
+                           ''')
+            else:
+                message += main.tr(f'''
+                               <p>Failed to read the following files due to encoding errors:</p>
+                               <ol>{list_files}</ol>
+                           ''')
+
         QMessageBox.information(main,
                                 main.tr('Loading Error'),
                                 main.tr(f'''
@@ -101,6 +121,18 @@ def wordless_message_box_error_open_files(main,
                                     </body>
                                 '''),
                                 QMessageBox.Ok)
+
+def wordless_message_box_error_ref_file(main):
+    QMessageBox.warning(main,
+                        main.tr('Loading Error'),
+                        main.tr(f'''
+                            {main.settings_global['styles']['style_dialog']}
+                            <body>
+                                <p>An error occurred during loading of the reference file!</p>
+                                <p>Please check and try again.</p>
+                            </body>
+                        '''),
+                        QMessageBox.Ok)
 
 def wordless_message_box_auto_detection_failed(main,
                                                files_encoding_detection_failed,
@@ -359,6 +391,6 @@ def wordless_message_box_path_not_exist_confirm(main, path):
                                  QMessageBox.No)
 
     if reply == QMessageBox.Yes:
-        wordless_checking.check_dir(path)
+        wordless_checking_misc.check_dir(path)
 
     return reply

@@ -59,7 +59,8 @@ class Wordless_Tab(QWidget):
         self.splitter_tab.addWidget(self.wrapper_left)
         self.splitter_tab.addWidget(self.wrapper_right)
 
-        self.splitter_tab.setSizes([main.width() * 0.77, main.width() * 0.23])
+        self.splitter_tab.setSizes([main.width() - 310, 310])
+        self.splitter_tab.setStretchFactor(0, 1)
 
         self.setLayout(QGridLayout())
         self.layout().addWidget(self.splitter_tab)

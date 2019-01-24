@@ -1,5 +1,5 @@
 #
-# Wordless: Utilities for Unicode Characters
+# Wordless: Checking - Unicode
 #
 # Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -166,4 +166,3 @@ def has_thai(token):
 
 def has_tibetan(token):
     return any([is_tibetan(char) for char in token])
-

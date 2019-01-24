@@ -1,5 +1,5 @@
 #
-# Wordless: List of all supported encodings in Python
+# Wordless: Utilities - Supported Encodings of Python
 #
 # Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
 #

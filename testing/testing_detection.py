@@ -29,7 +29,7 @@ def new_file(file_path):
     file['path'] = os.path.realpath(file_path)
     file['name'] = os.path.basename(file['path'])
 
-    file['encoding_code'] = 'utf_8'
+    file['encoding'] = 'utf_8'
 
     return file
 

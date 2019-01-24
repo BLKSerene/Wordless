@@ -6,12 +6,14 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
+import copy
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import nltk
 
-from wordless_widgets import wordless_box, wordless_dialog, wordless_list
+from wordless_widgets import wordless_box, wordless_dialog, wordless_label, wordless_list
 
 def wordless_widgets_no_limit(main, double = False):
     def no_limit_changed():
@@ -40,56 +42,134 @@ def wordless_widgets_token_settings(main):
             checkbox_lowercase.setEnabled(True)
             checkbox_uppercase.setEnabled(True)
             checkbox_title_case.setEnabled(True)
-
-            checkbox_treat_as_lowercase.setEnabled(True)
-            checkbox_lemmatize.setEnabled(True)
-            checkbox_filter_stop_words.setEnabled(True)
         else:
             checkbox_lowercase.setEnabled(False)
             checkbox_uppercase.setEnabled(False)
             checkbox_title_case.setEnabled(False)
 
-            checkbox_treat_as_lowercase.setEnabled(False)
+    def tags_only_changed():
+        if checkbox_tags_only.isChecked():
+            checkbox_treat_as_lowercase.setChecked(False)
             checkbox_lemmatize.setEnabled(False)
-            checkbox_filter_stop_words.setEnabled(False)
 
-        ignore_case_changed()
+            checkbox_ignore_tags.hide()
+            combo_box_ignore_tags.hide()
 
-    def ignore_case_changed():
-        if checkbox_treat_as_lowercase.isEnabled():
-            if checkbox_treat_as_lowercase.isChecked():
-                checkbox_lowercase.setEnabled(False)
-                checkbox_uppercase.setEnabled(False)
-                checkbox_title_case.setEnabled(False)
-            else:
-                checkbox_lowercase.setEnabled(True)
-                checkbox_uppercase.setEnabled(True)
-                checkbox_title_case.setEnabled(True)
+            checkbox_ignore_tags_tags_only.show()
+            combo_box_ignore_tags_tags_only.show()
+        else:
+            checkbox_treat_as_lowercase.setChecked(True)
+            checkbox_lemmatize.setEnabled(True)
+
+            checkbox_ignore_tags_tags_only.hide()
+            combo_box_ignore_tags_tags_only.hide()
+
+            checkbox_ignore_tags.show()
+            combo_box_ignore_tags.show()
 
     checkbox_words = QCheckBox(main.tr('Words'), main)
     checkbox_lowercase = QCheckBox(main.tr('Lowercase'), main)
     checkbox_uppercase = QCheckBox(main.tr('Uppercase'), main)
     checkbox_title_case = QCheckBox(main.tr('Title Case'), main)
+    checkbox_nums = QCheckBox(main.tr('Numerals'), main)
+    checkbox_puncs = QCheckBox(main.tr('Punctuations'), main)
+
     checkbox_treat_as_lowercase = QCheckBox(main.tr('Treat as All Lowercase'), main)
     checkbox_lemmatize = QCheckBox(main.tr('Lemmatize'), main)
     checkbox_filter_stop_words = QCheckBox(main.tr('Filter Stop Words'), main)
 
-    checkbox_nums = QCheckBox(main.tr('Numerals'), main)
-    checkbox_puncs = QCheckBox(main.tr('Punctuations'), main)
+    checkbox_ignore_tags = QCheckBox(main.tr('Ignore'), main)
+    checkbox_ignore_tags_tags_only = QCheckBox(main.tr('Ignore'), main)
+    combo_box_ignore_tags = wordless_box.Wordless_Combo_Box(main)
+    combo_box_ignore_tags_tags_only = wordless_box.Wordless_Combo_Box(main)
+    label_ignore_tags = QLabel(main.tr('Tags'), main)
+    checkbox_tags_only = QCheckBox(main.tr('Tags Only'), main)
+
+    combo_box_ignore_tags.addItems([
+        main.tr('All'),
+        main.tr('POS'),
+        main.tr('Non-POS')
+    ])
+
+    combo_box_ignore_tags_tags_only.addItems([
+        main.tr('POS'),
+        main.tr('Non-POS')
+    ])
 
     checkbox_words.stateChanged.connect(words_changed)
-    checkbox_treat_as_lowercase.stateChanged.connect(ignore_case_changed)
-
-    checkbox_words.setChecked(True)
+    checkbox_tags_only.stateChanged.connect(tags_only_changed)
 
     words_changed()
+    tags_only_changed()
 
-    return (checkbox_words, checkbox_lowercase, checkbox_uppercase, checkbox_title_case,
-            checkbox_treat_as_lowercase, checkbox_lemmatize, checkbox_filter_stop_words,
-            checkbox_nums, checkbox_puncs)
+    return (checkbox_words,
+            checkbox_lowercase,
+            checkbox_uppercase,
+            checkbox_title_case,
+            checkbox_nums,
+            checkbox_puncs,
+
+            checkbox_treat_as_lowercase,
+            checkbox_lemmatize,
+            checkbox_filter_stop_words,
+
+            checkbox_ignore_tags,
+            checkbox_ignore_tags_tags_only,
+            combo_box_ignore_tags,
+            combo_box_ignore_tags_tags_only,
+            label_ignore_tags,
+            checkbox_tags_only)
+
+def wordless_widgets_token_settings_concordancer(main):
+    def tags_only_changed():
+        if checkbox_tags_only.isChecked():
+            checkbox_ignore_tags.hide()
+            combo_box_ignore_tags.hide()
+
+            checkbox_ignore_tags_tags_only.show()
+            combo_box_ignore_tags_tags_only.show()
+        else:
+            checkbox_ignore_tags_tags_only.hide()
+            combo_box_ignore_tags_tags_only.hide()
+
+            checkbox_ignore_tags.show()
+            combo_box_ignore_tags.show()
+
+    checkbox_puncs = QCheckBox(main.tr('Punctuations'), main)
+
+    checkbox_ignore_tags = QCheckBox(main.tr('Ignore'), main)
+    checkbox_ignore_tags_tags_only = QCheckBox(main.tr('Ignore'), main)
+    combo_box_ignore_tags = wordless_box.Wordless_Combo_Box(main)
+    combo_box_ignore_tags_tags_only = wordless_box.Wordless_Combo_Box(main)
+    label_ignore_tags = QLabel(main.tr('Tags'), main)
+    checkbox_tags_only = QCheckBox(main.tr('Tags Only'), main)
+
+    combo_box_ignore_tags.addItems([
+        main.tr('All'),
+        main.tr('POS'),
+        main.tr('Non-POS')
+    ])
+
+    combo_box_ignore_tags_tags_only.addItems([
+        main.tr('POS'),
+        main.tr('Non-POS')
+    ])
+
+    checkbox_tags_only.stateChanged.connect(tags_only_changed)
+
+    tags_only_changed()
+
+    return (checkbox_puncs,
+
+            checkbox_ignore_tags,
+            checkbox_ignore_tags_tags_only,
+            combo_box_ignore_tags,
+            combo_box_ignore_tags_tags_only,
+            label_ignore_tags,
+            checkbox_tags_only)
 
 # Search Settings
-def wordless_widgets_search_settings(main):
+def wordless_widgets_search_settings1(main):
     def multi_search_mode_changed():
         if checkbox_multi_search_mode.isChecked():
             label_search_term.setText(main.tr('Search Terms:'))
@@ -133,6 +213,183 @@ def wordless_widgets_search_settings(main):
 
     return (label_search_term, checkbox_multi_search_mode, line_edit_search_term, list_search_terms,
             checkbox_ignore_case, checkbox_match_inflected_forms, checkbox_match_whole_word, checkbox_use_regex)
+
+def wordless_widgets_search_settings(main, tab):
+    def multi_search_mode_changed():
+        if checkbox_multi_search_mode.isChecked():
+            label_search_term.setText(main.tr('Search Terms:'))
+
+            if line_edit_search_term.text() and list_search_terms.count() == 0:
+                list_search_terms.add_item(line_edit_search_term.text())
+
+            line_edit_search_term.hide()
+
+            list_search_terms.show()
+            list_search_terms.button_add.show()
+            list_search_terms.button_remove.show()
+            list_search_terms.button_clear.show()
+            list_search_terms.button_import.show()
+            list_search_terms.button_export.show()
+        else:
+            label_search_term.setText(main.tr('Search Term:'))
+
+            line_edit_search_term.show()
+
+            list_search_terms.hide()
+            list_search_terms.button_add.hide()
+            list_search_terms.button_remove.hide()
+            list_search_terms.button_clear.hide()
+            list_search_terms.button_import.hide()
+            list_search_terms.button_export.hide()
+
+    def match_tags_changed():
+        if checkbox_match_tags.isChecked():
+            checkbox_match_inflected_forms.setEnabled(False)
+
+            checkbox_ignore_tags.hide()
+            combo_box_ignore_tags.hide()
+
+            checkbox_ignore_tags_match_tags.show()
+            combo_box_ignore_tags_match_tags.show()
+        else:
+            checkbox_match_inflected_forms.setEnabled(True)
+            
+            checkbox_ignore_tags_match_tags.hide()
+            combo_box_ignore_tags_match_tags.hide()
+
+            checkbox_ignore_tags.show()
+            combo_box_ignore_tags.show()
+
+    def token_settings_changed():
+        token_settings = main.settings_custom[tab]['token_settings']
+        
+        if line_edit_search_term.isEnabled() == True:
+            combo_box_ignore_tags.blockSignals(True)
+
+            combo_box_ignore_tags.clear()
+
+            if token_settings['tags_only']:
+                combo_box_ignore_tags.addItems([
+                    main.tr('POS'),
+                    main.tr('Non-POS')
+                ])
+
+                checkbox_match_tags.setEnabled(False)
+
+                if token_settings['ignore_tags_tags_only']:
+                    checkbox_ignore_tags.setEnabled(False)
+                    checkbox_ignore_tags_match_tags.setEnabled(False)
+                    combo_box_ignore_tags.setEnabled(False)
+                    combo_box_ignore_tags_match_tags.setEnabled(False)
+                else:
+                    checkbox_ignore_tags.setEnabled(True)
+                    checkbox_ignore_tags_match_tags.setEnabled(True)
+                    combo_box_ignore_tags.setEnabled(True)
+                    combo_box_ignore_tags_match_tags.setEnabled(True)
+            else:
+                combo_box_ignore_tags.addItems([
+                    main.tr('All'),
+                    main.tr('POS'),
+                    main.tr('Non-POS')
+                ])
+
+                if token_settings['ignore_tags']:
+                    if token_settings['ignore_tags_type'] == main.tr('All'):
+                        checkbox_ignore_tags.setEnabled(False)
+                        checkbox_ignore_tags_match_tags.setEnabled(False)
+                        combo_box_ignore_tags.setEnabled(False)
+                        combo_box_ignore_tags_match_tags.setEnabled(False)
+                        checkbox_match_tags.setEnabled(False)
+                    else:
+                        if checkbox_match_tags.isChecked():
+                            checkbox_ignore_tags.setEnabled(False)
+                            checkbox_ignore_tags_match_tags.setEnabled(False)
+                            combo_box_ignore_tags.setEnabled(False)
+                            combo_box_ignore_tags_match_tags.setEnabled(False)
+                        else:
+                            checkbox_ignore_tags.setEnabled(True)
+                            checkbox_ignore_tags_match_tags.setEnabled(True)
+                            combo_box_ignore_tags.setEnabled(True)
+                            combo_box_ignore_tags_match_tags.setEnabled(True)
+                            
+                        checkbox_match_tags.setEnabled(True)
+                else:
+                    checkbox_ignore_tags.setEnabled(True)
+                    checkbox_ignore_tags_match_tags.setEnabled(True)
+                    combo_box_ignore_tags.setEnabled(True)
+                    combo_box_ignore_tags_match_tags.setEnabled(True)
+                    checkbox_match_tags.setEnabled(True)
+
+            combo_box_ignore_tags.blockSignals(False)
+
+            if checkbox_match_tags.isEnabled():
+                match_tags_changed()
+            else:
+                checkbox_match_inflected_forms.setEnabled(False)
+
+    label_search_term = QLabel(main.tr('Search Term:'), main)
+    checkbox_multi_search_mode = QCheckBox(main.tr('Multi-search Mode'), main)
+    line_edit_search_term = QLineEdit(main)
+    list_search_terms = wordless_list.Wordless_List_Search_Terms(main)
+    label_separator = wordless_label.Wordless_Label_Hint(main.tr('''
+                                                             <p>* Use space to separate multiple tokens</p>
+                                                         '''), main)
+
+    checkbox_ignore_case = QCheckBox(main.tr('Ignore Case'), main)
+    checkbox_match_inflected_forms = QCheckBox(main.tr('Match All Inflected Forms'), main)
+    checkbox_match_whole_word = QCheckBox(main.tr('Match Whole Word Only'), main)
+    checkbox_use_regex = QCheckBox(main.tr('Use Regular Expression'), main)
+
+    checkbox_ignore_tags = QCheckBox(main.tr('Ignore'), main)
+    checkbox_ignore_tags_match_tags = QCheckBox(main.tr('Ignore'), main)
+    combo_box_ignore_tags = wordless_box.Wordless_Combo_Box(main)
+    combo_box_ignore_tags_match_tags = wordless_box.Wordless_Combo_Box(main)
+    label_ignore_tags = QLabel(main.tr('Tags'), main)
+    checkbox_match_tags = QCheckBox(main.tr('Match Tags Only'), main)
+
+    combo_box_ignore_tags.addItems([
+        main.tr('All'),
+        main.tr('POS'),
+        main.tr('Non-POS')
+    ])
+
+    combo_box_ignore_tags_match_tags.addItems([
+        main.tr('POS'),
+        main.tr('Non-POS')
+    ])
+
+    checkbox_match_tags.token_settings_changed = token_settings_changed
+
+    checkbox_multi_search_mode.stateChanged.connect(multi_search_mode_changed)
+    checkbox_match_tags.stateChanged.connect(match_tags_changed)
+
+    multi_search_mode_changed()
+    match_tags_changed()
+    #token_settings_changed()
+
+    return (label_search_term,
+            checkbox_multi_search_mode,
+            line_edit_search_term,
+            list_search_terms,
+            label_separator,
+
+            checkbox_ignore_case,
+            checkbox_match_inflected_forms,
+            checkbox_match_whole_word,
+            checkbox_use_regex,
+
+            checkbox_ignore_tags,
+            checkbox_ignore_tags_match_tags,
+            combo_box_ignore_tags,
+            combo_box_ignore_tags_match_tags,
+            label_ignore_tags,
+            checkbox_match_tags)
+
+def wordless_widgets_context_settings1(main, tab):
+    label_context_settings = QLabel(main.tr('Context Settings:'), main)
+    button_context_settings = QPushButton(main.tr('Settings...'), main)
+
+    return label_context_settings, button_context_settings
 
 def wordless_widgets_context_settings(main, tab):
     label_context_settings = QLabel(main.tr('Context Settings:'), main)
@@ -495,7 +752,7 @@ def wordless_widgets_filter_results(main, table):
 
         combo_box_filter_file.clear()
 
-        for file in table.settings['file']['files_open']:
+        for file in table.settings['files']['files_open']:
             if file['selected']:
                 combo_box_filter_file.addItem(file['name'])
 

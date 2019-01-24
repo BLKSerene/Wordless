@@ -30,10 +30,10 @@ sentence_zho_cn = '作为语言而言，为世界使用人数最多的语言，�
 print('Chinese / jieba - Chinese POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_zho_cn,
-                                                          lang_code = 'zho_cn',
+                                                          lang = 'zho_cn',
                                                           pos_tagger = 'jieba - Chinese POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_zho_cn,
-                                                                    lang_code = 'zho_cn',
+                                                                    lang = 'zho_cn',
                                                                     pos_tagger = 'jieba - Chinese POS Tagger',
                                                                     tagset = 'universal')
 
@@ -46,10 +46,10 @@ sentence_nld = 'Het Nederlands is een West-Germaanse taal en de moedertaal van d
 print('Dutch / spaCy - Dutch POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_nld,
-                                                          lang_code = 'nld',
+                                                          lang = 'nld',
                                                           pos_tagger = 'spaCy - Dutch POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_nld,
-                                                                    lang_code = 'nld',
+                                                                    lang = 'nld',
                                                                     pos_tagger = 'spaCy - Dutch POS Tagger',
                                                                     tagset = 'universal')
 
@@ -62,10 +62,10 @@ sentence_eng = 'English is a West Germanic language that was first spoken in ear
 print('English / NLTK - Perceptron POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_eng,
-                                                          lang_code = 'eng',
+                                                          lang = 'eng',
                                                           pos_tagger = 'NLTK - Perceptron POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_eng,
-                                                                    lang_code = 'eng',
+                                                                    lang = 'eng',
                                                                     pos_tagger = 'NLTK - Perceptron POS Tagger',
                                                                     tagset = 'universal')
 
@@ -75,10 +75,10 @@ print(f"\t{tokens_tagged_universal}")
 print('English / spaCy - English POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_eng,
-                                                          lang_code = 'eng',
+                                                          lang = 'eng',
                                                           pos_tagger = 'spaCy - English POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_eng,
-                                                                    lang_code = 'eng',
+                                                                    lang = 'eng',
                                                                     pos_tagger = 'spaCy - English POS Tagger',
                                                                     tagset = 'universal')
 
@@ -91,10 +91,10 @@ sentence_fra = 'Le français est une langue indo-européenne de la famille des l
 print('French / spaCy - French POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_fra,
-                                                          lang_code = 'fra',
+                                                          lang = 'fra',
                                                           pos_tagger = 'spaCy - French POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_fra,
-                                                                    lang_code = 'fra',
+                                                                    lang = 'fra',
                                                                     pos_tagger = 'spaCy - French POS Tagger',
                                                                     tagset = 'universal')
 
@@ -107,10 +107,10 @@ sentence_deu = 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ]; abgekürzt Dt
 print('German / spaCy - German POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_deu,
-                                                          lang_code = 'deu',
+                                                          lang = 'deu',
                                                           pos_tagger = 'spaCy - German POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_deu,
-                                                                    lang_code = 'deu',
+                                                                    lang = 'deu',
                                                                     pos_tagger = 'spaCy - German POS Tagger',
                                                                     tagset = 'universal')
 
@@ -123,10 +123,10 @@ sentence_ita = "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una ling
 print('Italian / spaCy - Italian POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_ita,
-                                                          lang_code = 'ita',
+                                                          lang = 'ita',
                                                           pos_tagger = 'spaCy - Italian POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_ita,
-                                                                    lang_code = 'ita',
+                                                                    lang = 'ita',
                                                                     pos_tagger = 'spaCy - Italian POS Tagger',
                                                                     tagset = 'universal')
 
@@ -139,10 +139,10 @@ sentence_jpn = '使用人口について正確な統計はないが、日本国�
 print('Japanese / nagisa - Japanese POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_jpn,
-                                                          lang_code = 'jpn',
+                                                          lang = 'jpn',
                                                           pos_tagger = 'nagisa - Japanese POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_jpn,
-                                                                    lang_code = 'jpn',
+                                                                    lang = 'jpn',
                                                                     pos_tagger = 'nagisa - Japanese POS Tagger',
                                                                     tagset = 'universal')
 
@@ -155,10 +155,10 @@ sentence_por = 'A língua portuguesa, também designada português, é uma líng
 print('Portuguese / spaCy - Portuguese POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_por,
-                                                          lang_code = 'por',
+                                                          lang = 'por',
                                                           pos_tagger = 'spaCy - Portuguese POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_por,
-                                                                    lang_code = 'por',
+                                                                    lang = 'por',
                                                                     pos_tagger = 'spaCy - Portuguese POS Tagger',
                                                                     tagset = 'universal')
 
@@ -171,10 +171,10 @@ sentence_rus = 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Инфо�
 print('Russian / NLTK - Perceptron POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
-                                                          lang_code = 'rus',
+                                                          lang = 'rus',
                                                           pos_tagger = 'NLTK - Perceptron POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
-                                                                    lang_code = 'rus',
+                                                                    lang = 'rus',
                                                                     pos_tagger = 'NLTK - Perceptron POS Tagger',
                                                                     tagset = 'universal')
 
@@ -184,10 +184,10 @@ print(f"\t{tokens_tagged_universal}")
 print('Russian / pymorphy2 - Morphological Analyzer:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
-                                                          lang_code = 'rus',
+                                                          lang = 'rus',
                                                           pos_tagger = 'pymorphy2 - Morphological Analyzer')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_rus,
-                                                                    lang_code = 'rus',
+                                                                    lang = 'rus',
                                                                     pos_tagger = 'pymorphy2 - Morphological Analyzer',
                                                                     tagset = 'universal')
 
@@ -200,10 +200,10 @@ sentence_tha = 'El idioma español o castellano es una lengua romance procedente
 print('Spanish / spaCy - Spanish POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
-                                                          lang_code = 'spa',
+                                                          lang = 'spa',
                                                           pos_tagger = 'spaCy - Spanish POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
-                                                                    lang_code = 'spa',
+                                                                    lang = 'spa',
                                                                     pos_tagger = 'spaCy - Spanish POS Tagger',
                                                                     tagset = 'universal')
 
@@ -216,10 +216,10 @@ sentence_tha = 'ภาษาไทย หรือ ภาษาไทยกล�
 print('Thai / PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
-                                                          lang_code = 'tha',
+                                                          lang = 'tha',
                                                           pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
-                                                                    lang_code = 'tha',
+                                                                    lang = 'tha',
                                                                     pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus',
                                                                     tagset = 'universal')
 
@@ -229,7 +229,7 @@ print(f"\t{tokens_tagged_universal}")
 print('Thai / PyThaiNLP - Perceptron POS Tagger - PUD Corpus:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_tha,
-                                                          lang_code = 'tha',
+                                                          lang = 'tha',
                                                           pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - PUD Corpus')
 
 print(f"\t{tokens_tagged}")
@@ -240,10 +240,10 @@ sentence_bod = '༄༅། །རྒྱ་གར་སྐད་དུ། བོ�
 print('Tibetan / pybo - Tibetan POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_bod,
-                                                          lang_code = 'bod',
+                                                          lang = 'bod',
                                                           pos_tagger = 'pybo - Tibetan POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_bod,
-                                                                    lang_code = 'bod',
+                                                                    lang = 'bod',
                                                                     pos_tagger = 'pybo - Tibetan POS Tagger',
                                                                     tagset = 'universal')
 
@@ -256,10 +256,10 @@ sentence_ukr = 'Украї́нська мо́ва (МФА: [ʊkrɐˈjɪɲsʲkɐ 
 print('Ukrainian / pymorphy2 - Morphological Analyzer:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_ukr,
-                                                          lang_code = 'ukr',
+                                                          lang = 'ukr',
                                                           pos_tagger = 'pymorphy2 - Morphological Analyzer')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_ukr,
-                                                                    lang_code = 'ukr',
+                                                                    lang = 'ukr',
                                                                     pos_tagger = 'pymorphy2 - Morphological Analyzer',
                                                                     tagset = 'universal')
 
@@ -272,10 +272,10 @@ sentence_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ng�
 print('Vietnamese / Underthesea - Vietnamese POS Tagger:')
 
 tokens_tagged = wordless_text_processing.wordless_pos_tag(main, sentence_vie,
-                                                          lang_code = 'vie',
+                                                          lang = 'vie',
                                                           pos_tagger = 'Underthesea - Vietnamese POS Tagger')
 tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, sentence_vie,
-                                                                    lang_code = 'vie',
+                                                                    lang = 'vie',
                                                                     pos_tagger = 'Underthesea - Vietnamese POS Tagger',
                                                                     tagset = 'universal')
 

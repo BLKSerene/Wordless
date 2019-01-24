@@ -1,5 +1,5 @@
 #
-# Wordless: Utility Functions
+# Wordless: Checking
 #
 # Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -7,8 +7,8 @@
 #
 
 __all__ = [
-    'wordless_conversion',
-    'wordless_detection',
-    'wordless_misc',
-    'wordless_sorting'
+	'wordless_checking_file',
+	'wordless_checking_token',
+    'wordless_checking_misc',
+    'wordless_checking_unicode'
 ]

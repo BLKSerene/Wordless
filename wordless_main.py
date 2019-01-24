@@ -7,6 +7,7 @@
 #
 
 import copy
+import ctypes
 import os
 import pickle
 import sys
@@ -16,6 +17,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_checking import *
 from wordless_settings import *
 from wordless_utils import *
 from wordless_widgets import *
@@ -36,7 +38,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
 
         acknowledgements = [
             ['<a href="https://www.python.org/">Python</a>',
-             '3.7.1',
+             '3.7.2',
              'Guido van Rossum, Python Software Foundation',
              '<a href="https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release">PSF</a>'],
 
@@ -184,10 +186,10 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
         table_acknowledgements.setRowCount(len(acknowledgements))
 
         for i, (name, ver, authors, license) in enumerate(acknowledgements):
-            table_acknowledgements.setCellWidget(i, 0, wordless_table.Wordless_Label_Html(name, self))
-            table_acknowledgements.setCellWidget(i, 1, wordless_table.Wordless_Label_Html(ver, self))
-            table_acknowledgements.setCellWidget(i, 2, wordless_table.Wordless_Label_Html(authors, self))
-            table_acknowledgements.setCellWidget(i, 3, wordless_table.Wordless_Label_Html(license, self))
+            table_acknowledgements.setCellWidget(i, 0, wordless_label.Wordless_Label_Html(name, self))
+            table_acknowledgements.setCellWidget(i, 1, wordless_label.Wordless_Label_Html(ver, self))
+            table_acknowledgements.setCellWidget(i, 2, wordless_label.Wordless_Label_Html(authors, self))
+            table_acknowledgements.setCellWidget(i, 3, wordless_label.Wordless_Label_Html(license, self))
 
         self.wrapper_info.setLayout(QGridLayout())
         self.wrapper_info.layout().addWidget(label_acknowledgements, 0, 0)
@@ -222,6 +224,8 @@ class Wordless_Main(QMainWindow):
         self.setWindowTitle(self.tr('Wordless v1.0'))
         self.setWindowIcon(QIcon('images/wordless_icon.png'))
 
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('Wordless')
+
         # Settings
         init_settings_global.init_settings_global(self)
         init_settings_default.init_settings_default(self)
@@ -230,7 +234,7 @@ class Wordless_Main(QMainWindow):
             with open(r'wordless_settings.pkl', 'rb') as f:
                 settings_custom = pickle.load(f)
 
-            if wordless_checking.check_custom_settings(settings_custom, self.settings_default):
+            if wordless_checking_misc.check_custom_settings(settings_custom, self.settings_default):
                 self.settings_custom = settings_custom
             else:
                 self.settings_custom = copy.deepcopy(self.settings_default)
@@ -240,7 +244,7 @@ class Wordless_Main(QMainWindow):
         self.wordless_settings = wordless_settings.Wordless_Settings(self)
 
         # Tabs
-        tab_cur = self.settings_custom['current_tab']
+        tab_cur = self.settings_custom['tab_cur']
 
         self.init_central_widget()
 
@@ -272,7 +276,7 @@ class Wordless_Main(QMainWindow):
 
         if reply == QMessageBox.Yes:
             # Reset some settings
-            self.settings_custom['file']['files_closed'].clear()
+            self.settings_custom['files']['files_closed'].clear()
 
             with open('wordless_settings.pkl', 'wb') as f:
                 pickle.dump(self.settings_custom, f)
@@ -498,7 +502,7 @@ class Wordless_Main(QMainWindow):
 
     def init_tabs(self):
         def tab_changed():
-            self.settings_custom['current_tab'] = self.tabs.tabText(self.tabs.currentIndex())
+            self.settings_custom['tab_cur'] = self.tabs.tabText(self.tabs.currentIndex())
 
         self.tabs = QTabWidget(self)
         self.tabs.addTab(tab_overview.init(self), self.tr('Overview'))

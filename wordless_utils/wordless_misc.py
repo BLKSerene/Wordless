@@ -1,5 +1,5 @@
 #
-# Wordless: Miscellaneous Utilities
+# Wordless: Utilities - Miscellaneous
 #
 # Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
 #
