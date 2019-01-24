@@ -30,14 +30,16 @@ sentence_zho_cn = '作为语言而言，为世界使用人数最多的语言，�
 
 print('Chinese (Simplified) / jieba - Chinese Word Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn,
+                                                         lang = 'zho_cn',
                                                          word_tokenizer = 'jieba - Chinese Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
 print('Chinese (Simplified) / Wordless - Chinese Character Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, 'zho_cn',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn,
+                                                         lang = 'zho_cn',
                                                          word_tokenizer = 'Wordless - Chinese Character Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
@@ -47,7 +49,8 @@ sentence_nld = 'Het Nederlands is een West-Germaanse taal en de moedertaal van d
 
 print('Dutch / spaCy - Dutch Word Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_nld, 'nld',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_nld,
+                                                         lang = 'nld',
                                                          word_tokenizer = 'spaCy - Dutch Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
@@ -57,42 +60,48 @@ sentence_eng = 'English is a West Germanic language that was first spoken in ear
 
 print('English / NLTK - Penn Treebank Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng,
+                                                         lang = 'eng',
                                                          word_tokenizer = 'NLTK - Penn Treebank Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
 print('English / NLTK - NIST Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng,
+                                                         lang = 'eng',
                                                          word_tokenizer = 'NLTK - NIST Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
 print('English / NLTK - Tok-tok Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng,
+                                                         lang = 'eng',
                                                          word_tokenizer = 'NLTK - Tok-tok Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
 print('English / NLTK - Twitter Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng,
+                                                         lang = 'eng',
                                                          word_tokenizer = 'NLTK - Twitter Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
 print('English / SacreMoses - Moses Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng,
+                                                         lang = 'eng',
                                                          word_tokenizer = 'SacreMoses - Moses Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
 print('English / SacreMoses - Penn Treebank Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, 'eng',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng,
+                                                         lang = 'eng',
                                                          word_tokenizer = 'SacreMoses - Penn Treebank Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
@@ -102,7 +111,8 @@ sentence_fra = 'Le français est une langue indo-européenne de la famille des l
 
 print('French / spaCy - French Word Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_fra, 'fra',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_fra,
+                                                         lang = 'fra',
                                                          word_tokenizer = 'spaCy - French Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
@@ -112,7 +122,8 @@ sentence_deu = 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ]; abgekürzt Dt
 
 print('German / spaCy - German Word Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_deu, 'deu',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_deu,
+                                                         lang = 'deu',
                                                          word_tokenizer = 'spaCy - German Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
@@ -122,7 +133,8 @@ sentence_ita = "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una ling
 
 print('Italian / spaCy - Italian Word Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_ita, 'ita',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_ita,
+                                                         lang = 'ita',
                                                          word_tokenizer = 'spaCy - Italian Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
@@ -132,14 +144,16 @@ sentence_jpn = '使用人口について正確な統計はないが、日本国�
 
 print('Japanese / nagisa - Japanese Word Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn, 'jpn',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn,
+                                                         lang = 'jpn',
                                                          word_tokenizer = 'nagisa - Japanese Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
 
 print('Japanese / Wordless - Japanese Kanji Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn, 'jpn',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn,
+                                                         lang = 'jpn',
                                                          word_tokenizer = 'Wordless - Japanese Kanji Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
@@ -149,7 +163,8 @@ sentence_por = 'A língua portuguesa, também designada português, é uma líng
 
 print('Portuguese / spaCy - Portuguese Word Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_por, 'por',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_por,
+                                                         lang = 'por',
                                                          word_tokenizer = 'spaCy - Portuguese Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
@@ -159,7 +174,8 @@ sentence_rus = 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Инфо�
 
 print('Russian / spaCy - Russian Word Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_rus, 'rus',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_rus,
+                                                         lang = 'rus',
                                                          word_tokenizer = 'spaCy - Russian Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
@@ -169,7 +185,8 @@ sentence_spa = 'El idioma español o castellano es una lengua romance procedente
 
 print('Spanish / spaCy - Spanish Word Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_spa, 'spa',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_spa,
+                                                         lang = 'spa',
                                                          word_tokenizer = 'spaCy - Spanish Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
@@ -179,21 +196,24 @@ sentence_tha = 'ภาษาไทย หรือ ภาษาไทยกล�
 
 print('Thai / PyThaiNLP - Maximum Matching Algorithm + TCC:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_tha, 'tha',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_tha,
+                                                         lang = 'tha',
                                                          word_tokenizer = 'PyThaiNLP - Maximum Matching Algorithm + TCC')
 
 print(f"\t{' '.join(tokens)}")
 
 print('Thai / PyThaiNLP - Maximum Matching Algorithm:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_tha, 'tha',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_tha,
+                                                         lang = 'tha',
                                                          word_tokenizer = 'PyThaiNLP - Maximum Matching Algorithm')
 
 print(f"\t{' '.join(tokens)}")
 
 print('Thai / PyThaiNLP - Longest Matching:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_tha, 'tha',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_tha,
+                                                         lang = 'tha',
                                                          word_tokenizer = 'PyThaiNLP - Longest Matching')
 
 print(f"\t{' '.join(tokens)}")
@@ -203,7 +223,8 @@ sentence_bod = '༄༅། །རྒྱ་གར་སྐད་དུ། བོ�
 
 print('Tibetan / pybo - Tibetan Word Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_bod, 'bod',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_bod,
+                                                         lang = 'bod',
                                                          word_tokenizer = 'pybo - Tibetan Word Tokenizer')
 
 print(f"\t{' '.join(tokens)}")
@@ -213,7 +234,8 @@ sentence_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ng�
 
 print('Vietnamese / Underthesea - Vietnamese Word Tokenizer:')
 
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_vie, 'vie',
+tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_vie,
+                                                         lang = 'vie',
                                                          word_tokenizer = 'Underthesea - Vietnamese Word Tokenizer')
 tokens = [re.sub(r'\s+', r'_', token) for token in tokens]
 

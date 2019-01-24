@@ -29,7 +29,8 @@ text_zho_cn = '作为语言而言，为世界使用人数最多的语言，目�
 
 print('Chinese (Simplified) / Wordless - Chinese Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_zho_cn, 'zho_cn',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_zho_cn,
+                                                                    lang = 'zho_cn',
                                                                     sentence_tokenizer = 'Wordless - Chinese Sentence Tokenizer'):
     print(f'\t{sentence}')
 
@@ -38,7 +39,8 @@ text_nld = 'Het Nederlands is een West-Germaanse taal en de moedertaal van de me
 
 print('Dutch / spaCy - Dutch Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_nld, 'nld',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_nld,
+                                                                    lang = 'nld',
                                                                     sentence_tokenizer = 'spaCy - Dutch Sentence Tokenizer'):
     print(f'\t{sentence}')
 
@@ -47,13 +49,15 @@ text_eng = 'English is a West Germanic language that was first spoken in early m
 
 print('English / NLTK - Punkt Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_eng, 'eng',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_eng,
+                                                                    lang = 'eng',
                                                                     sentence_tokenizer = 'NLTK - Punkt Sentence Tokenizer'):
     print(f'\t{sentence}')
 
 print('English / spaCy - English Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_eng, 'eng',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_eng,
+                                                                    lang = 'eng',
                                                                     sentence_tokenizer = 'spaCy - English Sentence Tokenizer'):
     print(f'\t{sentence}')
 
@@ -62,7 +66,8 @@ text_fra = "Le français est une langue indo-européenne de la famille des langu
 
 print('French / spaCy - French Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_fra, 'fra',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_fra,
+                                                                    lang = 'fra',
                                                                     sentence_tokenizer = 'spaCy - French Sentence Tokenizer'):
     print(f'\t{sentence}')
 
@@ -71,7 +76,8 @@ text_deu = 'Ihr Sprachraum umfasst Deutschland, Österreich, die Deutschschweiz,
 
 print('German / spaCy - German Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_deu, 'deu',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_deu,
+                                                                    lang = 'deu',
                                                                     sentence_tokenizer = 'spaCy - German Sentence Tokenizer'):
     print(f'\t{sentence}')
 
@@ -80,7 +86,8 @@ text_ita = "È classificato al 21º posto tra le lingue per numero di parlanti n
 
 print('Italian / spaCy - Italian Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_ita, 'ita',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_ita,
+                                                                    lang = 'ita',
                                                                     sentence_tokenizer = 'spaCy - Italian Sentence Tokenizer'):
     print(f'\t{sentence}')
 
@@ -89,7 +96,8 @@ text_jpn = '使用人口について正確な統計はないが、日本国内�
 
 print('Japanese / Wordless - Japanese Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_jpn, 'jpn',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_jpn,
+                                                                    lang = 'jpn',
                                                                     sentence_tokenizer = 'Wordless - Japanese Sentence Tokenizer'):
     print(f'\t{sentence}')
 
@@ -98,7 +106,8 @@ text_nob = 'Norsk er et nordisk språk som snakkes som morsmål av rundt 5 milli
 
 print('Norwegian Bokmål / NLTK - Punkt Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_nob, 'nob',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_nob,
+                                                                    lang = 'nob',
                                                                     sentence_tokenizer = 'NLTK - Punkt Sentence Tokenizer'):
     print(f'\t{sentence}')
 
@@ -107,7 +116,8 @@ text_nno = 'Norsk er eit germansk språk som høyrer til den nordiske, eller nor
 
 print('Norwegian Nynorsk / NLTK - Punkt Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_nno, 'nno',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_nno,
+                                                                    lang = 'nno',
                                                                     sentence_tokenizer = 'NLTK - Punkt Sentence Tokenizer'):
     print(f'\t{sentence}')
 
@@ -116,7 +126,8 @@ text_por = 'A língua portuguesa, também designada português, é uma língua r
 
 print('Portuguese / spaCy - Portuguese Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_por, 'por',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_por,
+                                                                    lang = 'por',
                                                                     sentence_tokenizer = 'spaCy - Portuguese Sentence Tokenizer'):
     print(f'\t{sentence}')
 
@@ -125,7 +136,8 @@ text_spa = 'El idioma español o castellano es una lengua romance procedente del
 
 print('Spanish / spaCy - Spanish Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_spa, 'spa',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_spa,
+                                                                    lang = 'spa',
                                                                     sentence_tokenizer = 'spaCy - Spanish Sentence Tokenizer'):
     print(f'\t{sentence}')
 
@@ -134,7 +146,8 @@ text_tha = 'ภาษาไทย หรือ ภาษาไทยกลาง
 
 print('Thai / PyThaiNLP - Thai Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_tha, 'tha',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_tha,
+                                                                    lang = 'tha',
                                                                     sentence_tokenizer = 'PyThaiNLP - Thai Sentence Tokenizer'):
     print(f'\t{sentence}')
 
@@ -143,6 +156,7 @@ text_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ngữ, l
 
 print('Vietnamese / Underthesea - Vietnamese Sentence Tokenizer:')
 
-for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_vie, 'vie',
+for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_vie,
+                                                                    lang = 'vie',
                                                                     sentence_tokenizer = 'Underthesea - Vietnamese Sentence Tokenizer'):
     print(f'\t{sentence}')
