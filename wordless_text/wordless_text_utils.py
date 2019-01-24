@@ -1,5 +1,5 @@
 #
-# Wordless: Utility Function for Texts
+# Wordless: Text - Utilities
 #
 # Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
 #

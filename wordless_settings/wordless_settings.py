@@ -560,6 +560,7 @@ class Wordless_Settings(QDialog):
                 self.preview_processing_sentence_tokenization = False
 
             if settings_custom['preview_samples']:
+                self.combo_box_sentence_tokenization_preview_lang.setEnabled(False)
                 self.label_sentence_tokenization_preview_processing.setText(self.tr('Processing ...'))
 
                 if not self.preview_processing_sentence_tokenization:
@@ -573,6 +574,7 @@ class Wordless_Settings(QDialog):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_sentence_tokenization_preview_results.setPlainText('\n'.join(results))
 
+                self.combo_box_sentence_tokenization_preview_lang.setEnabled(True)
                 self.label_sentence_tokenization_preview_processing.setText('')
             else:
                 preview_results_changed()
@@ -689,6 +691,7 @@ class Wordless_Settings(QDialog):
                 self.preview_processing_word_tokenization = False
 
             if settings_custom['preview_samples']:
+                self.combo_box_word_tokenization_preview_lang.setEnabled(False)
                 self.label_word_tokenization_preview_processing.setText(self.tr('Processing ...'))
 
                 if not self.preview_processing_word_tokenization:
@@ -702,6 +705,7 @@ class Wordless_Settings(QDialog):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_word_tokenization_preview_results.setPlainText('\n'.join(results))
 
+                self.combo_box_word_tokenization_preview_lang.setEnabled(True)
                 self.label_word_tokenization_preview_processing.setText('')
             else:
                 preview_results_changed()
@@ -812,6 +816,7 @@ class Wordless_Settings(QDialog):
                 self.preview_processing_word_detokenization = False
 
             if settings_custom['preview_samples']:
+                self.combo_box_word_detokenization_preview_lang.setEnabled(False)
                 self.label_word_detokenization_preview_processing.setText(self.tr('Processing ...'))
 
                 if not self.preview_processing_word_detokenization:
@@ -825,6 +830,7 @@ class Wordless_Settings(QDialog):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_word_detokenization_preview_results.setPlainText('\n'.join(results))
 
+                self.combo_box_word_detokenization_preview_lang.setEnabled(True)
                 self.label_word_detokenization_preview_processing.setText('')
             else:
                 preview_results_changed()
@@ -946,6 +952,7 @@ class Wordless_Settings(QDialog):
                 self.preview_processing_pos_tagging = False
 
             if settings_custom['preview_samples']:
+                self.combo_box_pos_tagging_preview_lang.setEnabled(False)
                 self.label_pos_tagging_preview_processing.setText(self.tr('Processing ...'))
 
                 if not self.preview_processing_pos_tagging:
@@ -959,6 +966,7 @@ class Wordless_Settings(QDialog):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_pos_tagging_preview_results.setPlainText('\n'.join(results))
 
+                self.combo_box_pos_tagging_preview_lang.setEnabled(True)
                 self.label_pos_tagging_preview_processing.setText('')
             else:
                 preview_results_changed()
@@ -1195,6 +1203,7 @@ class Wordless_Settings(QDialog):
                 self.preview_processing_lemmatization = False
 
             if settings_custom['preview_samples']:
+                self.combo_box_lemmatization_preview_lang.setEnabled(False)
                 self.label_lemmatization_preview_processing.setText(self.tr('Processing ...'))
 
                 if not self.preview_processing_lemmatization:
@@ -1208,6 +1217,7 @@ class Wordless_Settings(QDialog):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_lemmatization_preview_results.setPlainText('\n'.join(results))
 
+                self.combo_box_lemmatization_preview_lang.setEnabled(True)
                 self.label_lemmatization_preview_processing.setText('')
             else:
                 preview_results_changed()
@@ -1469,12 +1479,11 @@ class Wordless_Settings(QDialog):
          self.combo_box_students_t_test_two_sample_use_data) = wordless_widgets.wordless_widgets_use_data_freq(self)
         self.label_students_t_test_two_sample_variances = QLabel(self.tr('Variances:'), self)
         self.combo_box_students_t_test_two_sample_variances = QComboBox(self)
-        self.label_welchs_t_test = QLabel(self.tr(f'''{self.main.settings_global["styles"]["style_hints"]}
-                                                      <body>
-                                                          <p>
-                                                              * If variances are set to "Unequal", the Welch\'s t-test will be performed instead.
-                                                          </p>
-                                                  '''), self)
+        self.label_welchs_t_test = wordless_label.Wordless_Label_Hint(self.tr('''
+                                                                          <p>
+                                                                              * If variances are set to "Unequal", the Welch\'s t-test will be performed instead.
+                                                                          </p>
+                                                                      '''), self.main)
 
         self.combo_box_students_t_test_two_sample_variances.addItems([self.tr('Equal'),
                                                                       self.tr('Unequal')])

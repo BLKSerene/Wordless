@@ -1,5 +1,5 @@
 #
-# Wordless: Detection
+# Wordless: Utilities - Detection
 #
 # Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -32,35 +32,35 @@ def detect_encoding(main, file_path):
                 else:
                     break
 
-        encoding_code = cchardet.detect(text)['encoding']
+        encoding = cchardet.detect(text)['encoding']
         
-        if encoding_code == 'SHIFT_JIS':
+        if encoding == 'SHIFT_JIS':
             # CP932
-            encoding_code = chardet.detect(text)['encoding']
+            encoding = chardet.detect(text)['encoding']
 
-            if encoding_code != 'CP932':
-                encoding_code = 'SHIFT_JIS'
-        if encoding_code == 'EUC-TW':
-            encoding_code = 'BIG5'
-        elif encoding_code == 'ISO-2022-CN':
-            encoding_code = 'GB18030'
-        elif encoding_code == None:
-            encoding_code = main.settings_custom['auto_detection']['default_settings']['default_encoding']
+            if encoding != 'CP932':
+                encoding = 'SHIFT_JIS'
+        if encoding == 'EUC-TW':
+            encoding = 'BIG5'
+        elif encoding == 'ISO-2022-CN':
+            encoding = 'GB18030'
+        elif encoding == None:
+            encoding = main.settings_custom['auto_detection']['default_settings']['default_encoding']
 
             success = False
         
     try:
-        open(file_path, 'r', encoding = encoding_code)
+        open(file_path, 'r', encoding = encoding)
     except:
         success = False
 
-    return encoding_code, success
+    return encoding, success
 
 def detect_lang(main, file):
     text = ''
 
     try:
-        with open(file['path'], 'r', encoding = file['encoding_code']) as f:
+        with open(file['path'], 'r', encoding = file['encoding']) as f:
             if main.settings_custom['auto_detection']['detection_settings']['number_lines_no_limit']:
                 for line in f:
                     text += line
@@ -86,12 +86,12 @@ def detect_lang(main, file):
         elif lang_code_639_1 == 'no':
             lang_code_639_1 = 'nb'
 
-        lang_code = wordless_conversion.to_iso_639_3(main, lang_code_639_1.replace('-', '_'))
+        lang = wordless_conversion.to_iso_639_3(main, lang_code_639_1.replace('-', '_'))
         
         success = True
     except:
-        lang_code = main.settings_custom['auto_detection']['default_settings']['default_lang']
+        lang = main.settings_custom['auto_detection']['default_settings']['default_lang']
 
         success = False
 
-    return lang_code, success
+    return lang, success

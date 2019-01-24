@@ -17,6 +17,7 @@ from PyQt5.QtWidgets import *
 import nltk
 import numpy
 
+from wordless_checking import *
 from wordless_measures import *
 from wordless_plot import *
 from wordless_text import *
@@ -147,12 +148,18 @@ def init(main):
         checkbox_lowercase.setChecked(settings['token_settings']['lowercase'])
         checkbox_uppercase.setChecked(settings['token_settings']['uppercase'])
         checkbox_title_case.setChecked(settings['token_settings']['title_case'])
+        checkbox_nums.setChecked(settings['token_settings']['nums'])
+        checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+
         checkbox_treat_as_lowercase.setChecked(settings['token_settings']['treat_as_lowercase'])
         checkbox_lemmatize.setChecked(settings['token_settings']['lemmatize'])
         checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
-        checkbox_nums.setChecked(settings['token_settings']['nums'])
-        checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+        checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        checkbox_ignore_tags_tags_only.setChecked(settings['token_settings']['ignore_tags_tags_only'])
+        combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
+        combo_box_ignore_tags_tags_only.setCurrentText(settings['token_settings']['ignore_tags_type_tags_only'])
+        checkbox_tags_only.setChecked(settings['token_settings']['tags_only'])
 
         # Search Settings
         group_box_search_settings.setChecked(settings['search_settings']['search_settings'])
@@ -169,6 +176,12 @@ def init(main):
         checkbox_match_inflected_forms.setChecked(settings['search_settings']['match_inflected_forms'])
         checkbox_match_whole_word.setChecked(settings['search_settings']['match_whole_word'])
         checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
+
+        checkbox_ignore_tags_search.setChecked(settings['search_settings']['ignore_tags'])
+        checkbox_ignore_tags_search_match_tags.setChecked(settings['search_settings']['ignore_tags_match_tags'])
+        combo_box_ignore_tags_search.setCurrentText(settings['search_settings']['ignore_tags_type'])
+        combo_box_ignore_tags_search_match_tags.setCurrentText(settings['search_settings']['ignore_tags_type_match_tags'])
+        checkbox_match_tags.setChecked(settings['search_settings']['match_tags'])
 
         spin_box_keyword_position_min.setValue(settings['search_settings']['keyword_position_min'])
         checkbox_keyword_position_min_no_limit.setChecked(settings['search_settings']['keyword_position_min_no_limit'])
@@ -236,8 +249,6 @@ def init(main):
         token_settings_changed()
         search_settings_changed()
         generation_settings_changed()
-        ngram_size_max_changed()
-        measures_changed()
         table_settings_changed()
         plot_settings_changed()
         filter_settings_changed()
@@ -249,12 +260,21 @@ def init(main):
         settings['lowercase'] = checkbox_lowercase.isChecked()
         settings['uppercase'] = checkbox_uppercase.isChecked()
         settings['title_case'] = checkbox_title_case.isChecked()
+        settings['nums'] = checkbox_nums.isChecked()
+        settings['puncs'] = checkbox_puncs.isChecked()
+
         settings['treat_as_lowercase'] = checkbox_treat_as_lowercase.isChecked()
         settings['lemmatize'] = checkbox_lemmatize.isChecked()
         settings['filter_stop_words'] = checkbox_filter_stop_words.isChecked()
 
-        settings['nums'] = checkbox_nums.isChecked()
-        settings['puncs'] = checkbox_puncs.isChecked()
+        settings['ignore_tags'] = checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_tags_only'] = checkbox_ignore_tags_tags_only.isChecked()
+        settings['ignore_tags_type'] = combo_box_ignore_tags.currentText()
+        settings['ignore_tags_type_tags_only'] = combo_box_ignore_tags_tags_only.currentText()
+        settings['tags_only'] = checkbox_tags_only.isChecked()
+
+        checkbox_match_tags.token_settings_changed()
+        main.wordless_context_settings_ngrams.token_settings_changed()
 
     def search_settings_changed():
         settings = main.settings_custom['ngrams']['search_settings']
@@ -270,15 +290,19 @@ def init(main):
         settings['match_whole_word'] = checkbox_match_whole_word.isChecked()
         settings['use_regex'] = checkbox_use_regex.isChecked()
 
+        settings['ignore_tags'] = checkbox_ignore_tags_search.isChecked()
+        settings['ignore_tags_match_tags'] = checkbox_ignore_tags_search_match_tags.isChecked()
+        settings['ignore_tags_type'] = combo_box_ignore_tags_search.currentText()
+        settings['ignore_tags_type_match_tags'] = combo_box_ignore_tags_search_match_tags.currentText()
+        settings['match_tags'] = checkbox_match_tags.isChecked()
+
         settings['keyword_position_min'] = spin_box_keyword_position_min.value()
         settings['keyword_position_min_no_limit'] = checkbox_keyword_position_min_no_limit.isChecked()
         settings['keyword_position_max'] = spin_box_keyword_position_max.value()
         settings['keyword_position_max_no_limit'] = checkbox_keyword_position_max_no_limit.isChecked()
 
         if settings['search_settings']:
-            label_ngram_size.setText(main.tr('N-gram Size:'))
-        else:
-            label_ngram_size.setText(main.tr('Cluster Size:'))
+            checkbox_match_tags.token_settings_changed()
 
     def generation_settings_changed():
         settings = main.settings_custom['ngrams']['generation_settings']
@@ -291,9 +315,7 @@ def init(main):
         settings['measure_dispersion'] = combo_box_measure_dispersion.currentText()
         settings['measure_adjusted_freq'] = combo_box_measure_adjusted_freq.currentText()
 
-    def ngram_size_max_changed():
-        settings = main.settings_custom['ngrams']['generation_settings']
-
+        # Keyword Position
         if spin_box_keyword_position_max.value() == spin_box_keyword_position_max.maximum():
             spin_box_keyword_position_min.setMaximum(settings['ngram_size_max'])
             spin_box_keyword_position_max.setMaximum(settings['ngram_size_max'])
@@ -303,20 +325,16 @@ def init(main):
             spin_box_keyword_position_min.setMaximum(settings['ngram_size_max'])
             spin_box_keyword_position_max.setMaximum(settings['ngram_size_max'])
 
-    def measures_changed():
-        settings = main.settings_custom['ngrams']['generation_settings']
-
         # Use Data
         use_data_old = combo_box_use_data.currentText()
 
-        text_measure_dispersion = settings['measure_dispersion']
-        text_measure_adjusted_freq = settings['measure_adjusted_freq']
-
         combo_box_use_data.clear()
 
-        combo_box_use_data.addItem(main.tr('Frequency'))
-        combo_box_use_data.addItem(main.settings_global['measures_dispersion'][text_measure_dispersion]['col'])
-        combo_box_use_data.addItem(main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col'])
+        combo_box_use_data.addItems([
+            main.tr('Frequency'),
+            main.settings_global['measures_dispersion'][settings['measure_dispersion']]['col'],
+            main.settings_global['measures_adjusted_freq'][settings['measure_adjusted_freq']]['col']
+        ])
 
         if combo_box_use_data.findText(use_data_old) > -1:
             combo_box_use_data.setCurrentText(use_data_old)
@@ -375,10 +393,8 @@ def init(main):
         settings['filter_file'] = combo_box_filter_file.currentText()
 
     def table_item_changed():
-        settings = table_ngrams.settings['ngrams']
-
-        text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-        text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+        text_measure_dispersion = table_ngrams.settings['ngrams']['generation_settings']['measure_dispersion']
+        text_measure_adjusted_freq = table_ngrams.settings['ngrams']['generation_settings']['measure_adjusted_freq']
 
         col_text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
         col_text_adjusted_freq =  main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
@@ -406,37 +422,64 @@ def init(main):
      checkbox_lowercase,
      checkbox_uppercase,
      checkbox_title_case,
+     checkbox_nums,
+     checkbox_puncs,
+
      checkbox_treat_as_lowercase,
      checkbox_lemmatize,
      checkbox_filter_stop_words,
 
-     checkbox_nums,
-     checkbox_puncs) = wordless_widgets.wordless_widgets_token_settings(main)
+     checkbox_ignore_tags,
+     checkbox_ignore_tags_tags_only,
+     combo_box_ignore_tags,
+     combo_box_ignore_tags_tags_only,
+     label_ignore_tags,
+     checkbox_tags_only) = wordless_widgets.wordless_widgets_token_settings(main)
 
     checkbox_words.stateChanged.connect(token_settings_changed)
     checkbox_lowercase.stateChanged.connect(token_settings_changed)
     checkbox_uppercase.stateChanged.connect(token_settings_changed)
     checkbox_title_case.stateChanged.connect(token_settings_changed)
+    checkbox_nums.stateChanged.connect(token_settings_changed)
+    checkbox_puncs.stateChanged.connect(token_settings_changed)
+
     checkbox_treat_as_lowercase.stateChanged.connect(token_settings_changed)
     checkbox_lemmatize.stateChanged.connect(token_settings_changed)
     checkbox_filter_stop_words.stateChanged.connect(token_settings_changed)
 
-    checkbox_nums.stateChanged.connect(token_settings_changed)
-    checkbox_puncs.stateChanged.connect(token_settings_changed)
+    checkbox_ignore_tags.stateChanged.connect(token_settings_changed)
+    checkbox_ignore_tags_tags_only.stateChanged.connect(token_settings_changed)
+    combo_box_ignore_tags.currentTextChanged.connect(token_settings_changed)
+    combo_box_ignore_tags_tags_only.currentTextChanged.connect(token_settings_changed)
+    checkbox_tags_only.stateChanged.connect(token_settings_changed)
+
+    layout_ignore_tags = QGridLayout()
+    layout_ignore_tags.addWidget(checkbox_ignore_tags, 0, 0)
+    layout_ignore_tags.addWidget(checkbox_ignore_tags_tags_only, 0, 0)
+    layout_ignore_tags.addWidget(combo_box_ignore_tags, 0, 1)
+    layout_ignore_tags.addWidget(combo_box_ignore_tags_tags_only, 0, 1)
+    layout_ignore_tags.addWidget(label_ignore_tags, 0, 2)
+
+    layout_ignore_tags.setColumnStretch(3, 1)
 
     group_box_token_settings.setLayout(QGridLayout())
     group_box_token_settings.layout().addWidget(checkbox_words, 0, 0)
     group_box_token_settings.layout().addWidget(checkbox_lowercase, 0, 1)
     group_box_token_settings.layout().addWidget(checkbox_uppercase, 1, 0)
     group_box_token_settings.layout().addWidget(checkbox_title_case, 1, 1)
-    group_box_token_settings.layout().addWidget(checkbox_treat_as_lowercase, 2, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_lemmatize, 3, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_filter_stop_words, 4, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_nums, 2, 0)
+    group_box_token_settings.layout().addWidget(checkbox_puncs, 2, 1)
 
-    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 5, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 3, 0, 1, 2)
 
-    group_box_token_settings.layout().addWidget(checkbox_nums, 6, 0)
-    group_box_token_settings.layout().addWidget(checkbox_puncs, 6, 1)
+    group_box_token_settings.layout().addWidget(checkbox_treat_as_lowercase, 4, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_lemmatize, 5, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_filter_stop_words, 6, 0, 1, 2)
+
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0, 1, 2)
+
+    group_box_token_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_tags_only, 9, 0, 1, 2)
 
     # Search Settings
     group_box_search_settings = QGroupBox(main.tr('Search Settings'), main)
@@ -445,11 +488,19 @@ def init(main):
      checkbox_multi_search_mode,
      line_edit_search_term,
      list_search_terms,
+     label_separator,
 
      checkbox_ignore_case,
      checkbox_match_inflected_forms,
      checkbox_match_whole_word,
-     checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
+     checkbox_use_regex,
+
+     checkbox_ignore_tags_search,
+     checkbox_ignore_tags_search_match_tags,
+     combo_box_ignore_tags_search,
+     combo_box_ignore_tags_search_match_tags,
+     label_ignore_tags_search,
+     checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(main, tab = 'ngrams')
 
     label_keyword_position = QLabel(main.tr('Keyword Position:'), main)
     (label_keyword_position_min,
@@ -475,6 +526,12 @@ def init(main):
     checkbox_match_inflected_forms.stateChanged.connect(search_settings_changed)
     checkbox_match_whole_word.stateChanged.connect(search_settings_changed)
     checkbox_use_regex.stateChanged.connect(search_settings_changed)
+
+    checkbox_ignore_tags_search.stateChanged.connect(search_settings_changed)
+    checkbox_ignore_tags_search_match_tags.stateChanged.connect(search_settings_changed)
+    combo_box_ignore_tags_search.currentTextChanged.connect(search_settings_changed)
+    combo_box_ignore_tags_search_match_tags.currentTextChanged.connect(search_settings_changed)
+    checkbox_match_tags.stateChanged.connect(search_settings_changed)
 
     spin_box_keyword_position_min.valueChanged.connect(search_settings_changed)
     checkbox_keyword_position_min_no_limit.stateChanged.connect(search_settings_changed)
@@ -506,24 +563,37 @@ def init(main):
 
     layout_context_settings.setColumnStretch(1, 1)
 
+    layout_ignore_tags_search = QGridLayout()
+    layout_ignore_tags_search.addWidget(checkbox_ignore_tags_search, 0, 0)
+    layout_ignore_tags_search.addWidget(checkbox_ignore_tags_search_match_tags, 0, 0)
+    layout_ignore_tags_search.addWidget(combo_box_ignore_tags_search, 0, 1)
+    layout_ignore_tags_search.addWidget(combo_box_ignore_tags_search_match_tags, 0, 1)
+    layout_ignore_tags_search.addWidget(label_ignore_tags_search, 0, 2)
+
+    layout_ignore_tags_search.setColumnStretch(3, 1)
+
     group_box_search_settings.setLayout(QGridLayout())
     group_box_search_settings.layout().addWidget(label_search_term, 0, 0)
     group_box_search_settings.layout().addWidget(checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
     group_box_search_settings.layout().addWidget(line_edit_search_term, 1, 0, 1, 2)
     group_box_search_settings.layout().addLayout(layout_search_terms, 2, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(label_separator, 3, 0, 1, 2)
 
-    group_box_search_settings.layout().addWidget(checkbox_ignore_case, 3, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_match_inflected_forms, 4, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 5, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_use_regex, 6, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_ignore_case, 4, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_match_inflected_forms, 5, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 6, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_use_regex, 7, 0, 1, 2)
 
-    group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0, 1, 2)
+    group_box_search_settings.layout().addLayout(layout_ignore_tags_search, 8, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_match_tags, 9, 0, 1, 2)
 
-    group_box_search_settings.layout().addLayout(layout_keyword_position, 8, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 10, 0, 1, 2)
 
-    group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 9, 0, 1, 2)
+    group_box_search_settings.layout().addLayout(layout_keyword_position, 11, 0, 1, 2)
 
-    group_box_search_settings.layout().addLayout(layout_context_settings, 10, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 12, 0, 1, 2)
+
+    group_box_search_settings.layout().addLayout(layout_context_settings, 13, 0, 1, 2)
 
     # Generation Settings
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'))
@@ -551,13 +621,10 @@ def init(main):
     checkbox_ngram_size_sync.stateChanged.connect(generation_settings_changed)
     spin_box_ngram_size_min.valueChanged.connect(generation_settings_changed)
     spin_box_ngram_size_max.valueChanged.connect(generation_settings_changed)
-    spin_box_ngram_size_max.valueChanged.connect(ngram_size_max_changed)
     spin_box_allow_skipped_tokens.valueChanged.connect(generation_settings_changed)
 
     combo_box_measure_dispersion.currentTextChanged.connect(generation_settings_changed)
-    combo_box_measure_dispersion.currentTextChanged.connect(measures_changed)
     combo_box_measure_adjusted_freq.currentTextChanged.connect(generation_settings_changed)
-    combo_box_measure_adjusted_freq.currentTextChanged.connect(measures_changed)
 
     layout_allow_skipped_tokens = QGridLayout()
     layout_allow_skipped_tokens.addWidget(label_allow_skipped_tokens, 0, 0)
@@ -834,20 +901,27 @@ def generate_ngrams(main, files):
 
         text = wordless_text.Wordless_Text(main, file)
 
-        text.tokens = wordless_text_processing.wordless_preprocess_tokens(main, text.tokens,
-                                                                          lang_code = text.lang_code,
-                                                                          settings = settings['token_settings'])
+        tokens = wordless_token_processing.wordless_preprocess_tokens_ngrams(text,
+                                                                             token_settings = settings['token_settings'])
+
+        search_terms = wordless_matching.match_search_terms(main, tokens,
+                                                            lang = text.lang,
+                                                            text_type = text.text_type,
+                                                            token_settings = settings['token_settings'],
+                                                            search_settings = settings['search_settings'])
 
         (search_terms_inclusion,
-         search_terms_exclusion) = wordless_matching.match_search_terms_context(main, text.tokens,
-                                                                                lang_code = text.lang_code,
-                                                                                settings = settings['context_settings'])
+         search_terms_exclusion) = wordless_matching.match_search_terms_context(main, tokens,
+                                                                                lang = text.lang,
+                                                                                text_type = text.text_type,
+                                                                                token_settings = settings['token_settings'],
+                                                                                context_settings = settings['context_settings'])
 
         if settings['generation_settings']['allow_skipped_tokens'] == 0:
             for ngram_size in range(settings['generation_settings']['ngram_size_min'],
                                     settings['generation_settings']['ngram_size_max'] + 1):
-                for i, ngram in enumerate(nltk.ngrams(text.tokens, ngram_size)):
-                    if wordless_text_utils.check_context(i, text.tokens,
+                for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
+                    if wordless_text_utils.check_context(i, tokens,
                                                          settings = settings['context_settings'],
                                                          search_terms_inclusion = search_terms_inclusion,
                                                          search_terms_exclusion = search_terms_exclusion):
@@ -859,11 +933,11 @@ def generate_ngrams(main, files):
             if settings['search_settings']['search_settings']:
                 for ngram_size in range(settings['generation_settings']['ngram_size_min'],
                                         settings['generation_settings']['ngram_size_max'] + 1):
-                    for search_term in search_terms_file:
+                    for search_term in search_terms:
                         len_search_term = len(search_term)
 
                         if len_search_term < ngram_size:
-                            for i, ngram in enumerate(nltk.ngrams(text.tokens,
+                            for i, ngram in enumerate(nltk.ngrams(tokens,
                                                                   ngram_size + settings['generation_settings']['allow_skipped_tokens'],
                                                                   pad_right = True,
                                                                   right_pad_symbol = SENTINEL)):
@@ -890,15 +964,15 @@ def generate_ngrams(main, files):
                                                     ngram_matched.append(item)
 
                                             if skip_tail and skip_tail[-1] != SENTINEL and len(ngram_matched) == ngram_size:
-                                                if wordless_text_utils.check_context(i + j, text.tokens,
+                                                if wordless_text_utils.check_context(i + j, tokens,
                                                                                      settings = settings['context_settings'],
                                                                                      search_terms_inclusion = search_terms_inclusion,
                                                                                      search_terms_exclusion = search_terms_exclusion):
                                                     ngrams.append(tuple(ngram_matched))
                         elif len_search_term == ngram_size:
-                            for i, ngram in enumerate(nltk.ngrams(text.tokens, ngram_size)):
+                            for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
                                 if ngram == search_term:
-                                    if wordless_text_utils.check_context(i, text.tokens,
+                                    if wordless_text_utils.check_context(i, tokens,
                                                                          settings = settings['context_settings'],
                                                                          search_terms_inclusion = search_terms_inclusion,
                                                                          search_terms_exclusion = search_terms_exclusion):
@@ -906,7 +980,7 @@ def generate_ngrams(main, files):
             else:
                 for ngram_size in range(settings['generation_settings']['ngram_size_min'],
                                         settings['generation_settings']['ngram_size_max'] + 1):
-                    for i, ngram in enumerate(nltk.ngrams(text.tokens,
+                    for i, ngram in enumerate(nltk.ngrams(tokens,
                                                           ngram_size + settings['generation_settings']['allow_skipped_tokens'],
                                                           pad_right = True,
                                                           right_pad_symbol = SENTINEL)):
@@ -916,23 +990,16 @@ def generate_ngrams(main, files):
 
                             for skip_tail in tail:
                                 if skip_tail != SENTINEL:
-                                    if wordless_text_utils.check_context(i + j, text.tokens,
+                                    if wordless_text_utils.check_context(i + j, tokens,
                                                                          settings = settings['context_settings'],
                                                                          search_terms_inclusion = search_terms_inclusion,
                                                                          search_terms_exclusion = search_terms_exclusion):
                                         ngrams.append((head, skip_tail))
 
-        ngrams_freq_file = collections.Counter(ngrams)
+        # Remove n-grams with at least 1 empty token
+        ngrams_freq_file = collections.Counter([ngram for ngram in ngrams if all(ngram)])
 
-        ngrams_freq_file = wordless_text_processing.wordless_postprocess_freq_ngrams(main, ngrams_freq_file,
-                                                                                     lang_code = text.lang_code,
-                                                                                     settings = settings['token_settings'])
-
-        # Filter search terms
-        search_terms = wordless_matching.match_search_terms(main, text.tokens,
-                                                            lang_code = text.lang_code,
-                                                            settings = settings['search_settings'])
-
+        # Filter search terms & keyword positions
         if settings['search_settings']['search_settings']:
             ngrams_freq_file_filtered = {}
 
@@ -960,7 +1027,7 @@ def generate_ngrams(main, files):
 
         # N-grams Text
         for ngram in ngrams_freq_file:
-            ngrams_text[ngram] = wordless_text_processing.wordless_word_detokenize(main, ngram, text.lang_code)
+            ngrams_text[ngram] = wordless_text_processing.wordless_word_detokenize(main, ngram, text.lang)
 
         texts.append(text)
 
@@ -1039,7 +1106,7 @@ def generate_ngrams(main, files):
 def generate_table(main, table):
     settings = main.settings_custom['ngrams']
 
-    files = main.wordless_files.get_selected_files()
+    files = wordless_checking_file.check_files_loading(main, main.wordless_files.get_selected_files())
 
     if files:
         if (not settings['search_settings']['search_settings'] or
@@ -1057,6 +1124,10 @@ def generate_table(main, table):
 
                 col_text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
                 col_text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
+
+                table.blockSignals(True)
+                table.setSortingEnabled(False)
+                table.setUpdatesEnabled(False)
 
                 # Insert Columns (Files)
                 for i, file in enumerate(files):
@@ -1094,10 +1165,6 @@ def generate_table(main, table):
                 col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
 
                 len_files = len(files)
-
-                table.blockSignals(True)
-                table.setSortingEnabled(False)
-                table.setUpdatesEnabled(False)
 
                 table.setRowCount(len(ngrams_freq_files))
 
@@ -1163,7 +1230,7 @@ def generate_plot(main):
     col_text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
     col_text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
-    files = main.wordless_files.get_selected_files()
+    files = wordless_checking_file.check_files_loading(main, main.wordless_files.get_selected_files())
 
     if files:
         if (settings['search_settings']['search_settings'] or
