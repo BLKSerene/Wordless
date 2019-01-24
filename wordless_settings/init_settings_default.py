@@ -12,9 +12,9 @@ from wordless_tagsets import *
 
 def init_settings_default(main):
     main.settings_default = {
-        'current_tab': main.tr('Overview'),
+        'tab_cur': main.tr('Overview'),
 
-        'file': {
+        'files': {
             'files_open': [],
             'files_closed': [],
 

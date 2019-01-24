@@ -104,14 +104,14 @@ def check_files_encoding_error(main, file_paths):
         file_path = os.path.normpath(file_path)
 
         if os.path.splitext(file_path)[1] in ['.htm', '.html', '.tmx', '.lrc']:
-            if main.settings_custom['file']['auto_detection_settings']['detect_encodings']:
+            if main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
                 encoding_code, _ = wordless_detection.detect_encoding(main, file_path)
             else:
-                encoding_code = main.settings_custom['encoding_detection']['default_settings']['default_encoding']
+                encoding_code = main.settings_custom['auto_detection']['default_settings']['default_encoding']
 
             try:
                 open(file_path, 'r', encoding = encoding_code).read()
-            except UnicodeDecodeError:
+            except:
                 files_encoding_error.append(file_path)
             else:
                 files_ok.append(file_path)
@@ -120,16 +120,21 @@ def check_files_encoding_error(main, file_paths):
 
     return files_ok, files_encoding_error
 
-def check_files_all(main, file_paths):
-    file_paths, files_missing = check_files_missing(main, file_paths)
-    file_paths, files_empty = check_files_empty(main, file_paths)
-    file_paths, files_duplicate = check_files_duplicate(main, file_paths)
-    file_paths, files_unsupported = check_files_unsupported(main, file_paths)
-    file_paths, files_encoding_error = check_files_encoding_error(main, file_paths)
+def check_files_loading_error(main, file_paths, encoding_codes):
+    files_loading_error = []
+    files_ok = []
 
-    return (file_paths,
-            files_missing, files_empty, files_duplicate, files_unsupported, files_encoding_error)
+    for file_path, encoding_code in zip(file_paths, encoding_codes):
+        try:
+            open(file_path, 'r', encoding = encoding_code).read()
+        except:
+            files_loading_error.append(file_path)
+        else:
+            files_ok.append(file_path)
 
+    return files_ok, files_loading_error
+
+# Miscellaneous
 def check_dir(dir_name):
     if not os.path.exists(dir_name):
         pathlib.Path(dir_name).mkdir(parents = True, exist_ok = True)

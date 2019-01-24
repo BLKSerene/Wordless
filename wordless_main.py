@@ -7,6 +7,7 @@
 #
 
 import copy
+import ctypes
 import os
 import pickle
 import sys
@@ -222,6 +223,8 @@ class Wordless_Main(QMainWindow):
         self.setWindowTitle(self.tr('Wordless v1.0'))
         self.setWindowIcon(QIcon('images/wordless_icon.png'))
 
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('Wordless')
+
         # Settings
         init_settings_global.init_settings_global(self)
         init_settings_default.init_settings_default(self)
@@ -240,7 +243,7 @@ class Wordless_Main(QMainWindow):
         self.wordless_settings = wordless_settings.Wordless_Settings(self)
 
         # Tabs
-        tab_cur = self.settings_custom['current_tab']
+        tab_cur = self.settings_custom['tab_cur']
 
         self.init_central_widget()
 
@@ -272,7 +275,7 @@ class Wordless_Main(QMainWindow):
 
         if reply == QMessageBox.Yes:
             # Reset some settings
-            self.settings_custom['file']['files_closed'].clear()
+            self.settings_custom['files']['files_closed'].clear()
 
             with open('wordless_settings.pkl', 'wb') as f:
                 pickle.dump(self.settings_custom, f)
@@ -498,7 +501,7 @@ class Wordless_Main(QMainWindow):
 
     def init_tabs(self):
         def tab_changed():
-            self.settings_custom['current_tab'] = self.tabs.tabText(self.tabs.currentIndex())
+            self.settings_custom['tab_cur'] = self.tabs.tabText(self.tabs.currentIndex())
 
         self.tabs = QTabWidget(self)
         self.tabs.addTab(tab_overview.init(self), self.tr('Overview'))

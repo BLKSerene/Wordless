@@ -13,15 +13,21 @@ from PyQt5.QtWidgets import *
 from wordless_utils import wordless_checking
 
 # Files
-def wordless_message_box_error_open_files(main,
-                                          files_missing = [],
-                                          files_duplicate = [],
-                                          files_empty = [],
-                                          files_unsupported = [],
-                                          files_encoding_error = []):
+def wordless_message_box_error_files(main,
+                                     files_missing = [],
+                                     files_duplicate = [],
+                                     files_empty = [],
+                                     files_unsupported = [],
+                                     files_encoding_error = [],
+                                     files_loading_error = []):
     message = ''
 
-    if files_missing or files_duplicate or files_empty or files_unsupported or files_encoding_error:
+    if (files_missing or
+        files_duplicate or
+        files_empty or
+        files_unsupported or
+        files_encoding_error or
+        files_loading_error):
         if files_missing:
             list_files = ''.join([f'<li>{file}</li>' for file in files_missing])
 
@@ -89,6 +95,20 @@ def wordless_message_box_error_open_files(main,
             else:
                 message += main.tr(f'''
                                <p>Failed to open the following files due to encoding errors:</p>
+                               <ol>{list_files}</ol>
+                           ''')
+
+        if files_loading_error:
+            list_files = ''.join([f'<li>{file}</li>' for file in files_loading_error])
+
+            if len(files_loading_error) == 1:
+                message += main.tr(f'''
+                               <p>Failed to read the following file due to an encoding error:</p>
+                               <ul>{list_files}</ul>
+                           ''')
+            else:
+                message += main.tr(f'''
+                               <p>Failed to read the following files due to encoding errors:</p>
                                <ol>{list_files}</ol>
                            ''')
 

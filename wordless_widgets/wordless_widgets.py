@@ -495,7 +495,7 @@ def wordless_widgets_filter_results(main, table):
 
         combo_box_filter_file.clear()
 
-        for file in table.settings['file']['files_open']:
+        for file in table.settings['files']['files_open']:
             if file['selected']:
                 combo_box_filter_file.addItem(file['name'])
 
