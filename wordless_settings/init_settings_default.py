@@ -12,9 +12,9 @@ from wordless_tagsets import *
 
 def init_settings_default(main):
     main.settings_default = {
-        'current_tab': main.tr('Overview'),
+        'tab_cur': main.tr('Overview'),
 
-        'file': {
+        'files': {
             'files_open': [],
             'files_closed': [],
 
@@ -35,11 +35,18 @@ def init_settings_default(main):
                 'uppercase': True,
                 'title_case': True,
                 'treat_as_lowercase': True,
+
+                'nums': True,
+                'puncs': False,
+
                 'lemmatize': False,
                 'filter_stop_words': False,
 
-                'nums': True,
-                'puncs': False
+                'ignore_tags': True,
+                'ignore_tags_tags_only': False,
+                'ignore_tags_type': main.tr('All'),
+                'ignore_tags_type_tags_only': main.tr('Non-POS'),
+                'tags_only': False
             },
 
             'generation_settings': {
@@ -55,7 +62,14 @@ def init_settings_default(main):
     
         'concordancer': {
             'token_settings': {
-                'puncs': False
+                'treat_as_lowercase': True,
+                'puncs': False,
+
+                'ignore_tags': True,
+                'ignore_tags_tags_only': False,
+                'ignore_tags_type': main.tr('All'),
+                'ignore_tags_type_tags_only': main.tr('Non-POS'),
+                'tags_only': False
             },
             
             'search_settings': {
@@ -65,8 +79,14 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False
+                'match_whole_word': False,
+                'use_regex': False,
+
+                'ignore_tags': True,
+                'ignore_tags_match_tags': False,
+                'ignore_tags_type': main.tr('All'),
+                'ignore_tags_type_match_tags': main.tr('Non-POS'),
+                'match_tags': False
             },
 
             'context_settings': {
@@ -79,8 +99,14 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': True,
-                    'match_whole_word': True,
+                    'match_whole_word': False,
                     'use_regex': False,
+
+                    'ignore_tags': True,
+                    'ignore_tags_match_tags': False,
+                    'ignore_tags_type': main.tr('All'),
+                    'ignore_tags_type_match_tags': main.tr('Non-POS'),
+                    'match_tags': False,
                     
                     'context_window_sync': False,
                     'context_window_left': -5,
@@ -96,8 +122,14 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': True,
-                    'match_whole_word': True,
+                    'match_whole_word': False,
                     'use_regex': False,
+
+                    'ignore_tags': True,
+                    'ignore_tags_match_tags': False,
+                    'ignore_tags_type': main.tr('All'),
+                    'ignore_tags_type_match_tags': main.tr('Non-POS'),
+                    'match_tags': False,
                     
                     'context_window_sync': False,
                     'context_window_left': -5,
@@ -155,7 +187,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
+                'match_whole_word': False,
                 'use_regex': False,
             }
         },
@@ -167,11 +199,18 @@ def init_settings_default(main):
                 'uppercase': True,
                 'title_case': True,
                 'treat_as_lowercase': True,
+
+                'nums': True,
+                'puncs': False,
+
                 'lemmatize': False,
                 'filter_stop_words': False,
 
-                'nums': True,
-                'puncs': False
+                'ignore_tags': True,
+                'ignore_tags_tags_only': False,
+                'ignore_tags_type': main.tr('All'),
+                'ignore_tags_type_tags_only': main.tr('Non-POS'),
+                'tags_only': False
             },
 
             'generation_settings': {
@@ -234,7 +273,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
+                'match_whole_word': False,
                 'use_regex': False
             }
         },
@@ -246,11 +285,18 @@ def init_settings_default(main):
                 'uppercase': True,
                 'title_case': True,
                 'treat_as_lowercase': True,
+
+                'nums': True,
+                'puncs': False,
+
                 'lemmatize': False,
                 'filter_stop_words': False,
 
-                'nums': True,
-                'puncs': False
+                'ignore_tags': True,
+                'ignore_tags_tags_only': False,
+                'ignore_tags_type': main.tr('All'),
+                'ignore_tags_type_tags_only': main.tr('Non-POS'),
+                'tags_only': False
             },
 
             'search_settings': {
@@ -262,8 +308,14 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
+                'match_whole_word': False,
                 'use_regex': False,
+
+                'ignore_tags': True,
+                'ignore_tags_match_tags': False,
+                'ignore_tags_type': main.tr('All'),
+                'ignore_tags_type_match_tags': main.tr('Non-POS'),
+                'match_tags': False,
 
                 'keyword_position_min': 1,
                 'keyword_position_min_no_limit': True,
@@ -281,8 +333,14 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': True,
-                    'match_whole_word': True,
+                    'match_whole_word': False,
                     'use_regex': False,
+
+                    'ignore_tags': True,
+                    'ignore_tags_match_tags': False,
+                    'ignore_tags_type': main.tr('All'),
+                    'ignore_tags_type_match_tags': main.tr('Non-POS'),
+                    'match_tags': False,
                     
                     'context_window_sync': False,
                     'context_window_left': -5,
@@ -298,8 +356,14 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': True,
-                    'match_whole_word': True,
+                    'match_whole_word': False,
                     'use_regex': False,
+
+                    'ignore_tags': True,
+                    'ignore_tags_match_tags': False,
+                    'ignore_tags_type': main.tr('All'),
+                    'ignore_tags_type_match_tags': main.tr('Non-POS'),
+                    'match_tags': False,
                     
                     'context_window_sync': False,
                     'context_window_left': -5,
@@ -372,7 +436,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
+                'match_whole_word': False,
                 'use_regex': False
             }
         },
@@ -384,11 +448,18 @@ def init_settings_default(main):
                 'uppercase': True,
                 'title_case': True,
                 'treat_as_lowercase': True,
+
+                'nums': True,
+                'puncs': False,
+
                 'lemmatize': False,
                 'filter_stop_words': False,
 
-                'nums': True,
-                'puncs': False
+                'ignore_tags': True,
+                'ignore_tags_tags_only': False,
+                'ignore_tags_type': main.tr('All'),
+                'ignore_tags_type_tags_only': main.tr('Non-POS'),
+                'tags_only': False
             },
             
             'search_settings': {
@@ -400,8 +471,14 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
-                'use_regex': False
+                'match_whole_word': False,
+                'use_regex': False,
+
+                'ignore_tags': True,
+                'ignore_tags_match_tags': False,
+                'ignore_tags_type': main.tr('All'),
+                'ignore_tags_type_match_tags': main.tr('Non-POS'),
+                'match_tags': False
             },
 
             'context_settings': {
@@ -414,8 +491,14 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': True,
-                    'match_whole_word': True,
+                    'match_whole_word': False,
                     'use_regex': False,
+
+                    'ignore_tags': True,
+                    'ignore_tags_match_tags': False,
+                    'ignore_tags_type': main.tr('All'),
+                    'ignore_tags_type_match_tags': main.tr('Non-POS'),
+                    'match_tags': False,
                     
                     'context_window_sync': False,
                     'context_window_left': -5,
@@ -431,8 +514,14 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': True,
-                    'match_whole_word': True,
+                    'match_whole_word': False,
                     'use_regex': False,
+
+                    'ignore_tags': True,
+                    'ignore_tags_match_tags': False,
+                    'ignore_tags_type': main.tr('All'),
+                    'ignore_tags_type_match_tags': main.tr('Non-POS'),
+                    'match_tags': False,
                     
                     'context_window_sync': False,
                     'context_window_left': -5,
@@ -516,7 +605,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
+                'match_whole_word': False,
                 'use_regex': False
             }
         },
@@ -544,7 +633,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
+                'match_whole_word': False,
                 'use_regex': False
             },
 
@@ -558,7 +647,7 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': False,
-                    'match_whole_word': True,
+                    'match_whole_word': False,
                     'use_regex': False,
                     
                     'context_window_sync': False,
@@ -575,7 +664,7 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': False,
-                    'match_whole_word': True,
+                    'match_whole_word': False,
                     'use_regex': False,
                     
                     'context_window_sync': False,
@@ -661,7 +750,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
+                'match_whole_word': False,
                 'use_regex': False
             },
         },
@@ -673,11 +762,18 @@ def init_settings_default(main):
                 'uppercase': True,
                 'title_case': True,
                 'treat_as_lowercase': True,
+
+                'nums': True,
+                'puncs': False,
+
                 'lemmatize': False,
                 'filter_stop_words': False,
 
-                'nums': True,
-                'puncs': False
+                'ignore_tags': True,
+                'ignore_tags_type': main.tr('All'),
+                'ignore_tags_tags_only': False,
+                'ignore_tags_type_tags_only': main.tr('Non-POS'),
+                'tags_only': False
             },
 
             'generation_settings': {
@@ -757,7 +853,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': True,
+                'match_whole_word': False,
                 'use_regex': False
             }
         },
@@ -832,7 +928,6 @@ def init_settings_default(main):
 
             'tags_non_pos': [
                 ['<', '>'],
-                ['</', '>'],
                 ['[', ']']
             ]
         },

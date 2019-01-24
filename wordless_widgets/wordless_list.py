@@ -13,8 +13,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_checking import wordless_checking_file, wordless_checking_misc
 from wordless_widgets import wordless_message_box
-from wordless_utils import wordless_checking, wordless_conversion, wordless_detection
+from wordless_utils import wordless_conversion, wordless_detection
 
 class Wordless_List(QListWidget):
     def __init__(self, main):
@@ -137,7 +138,7 @@ class Wordless_List_Search_Terms(Wordless_List):
                 return new_item
 
     def import_list(self):
-        files_encoding_error = []
+        files = []
 
         if os.path.exists(self.main.settings_custom['import']['search_terms']['default_path']):
             default_dir = self.main.settings_custom['import']['search_terms']['default_path']
@@ -152,37 +153,44 @@ class Wordless_List_Search_Terms(Wordless_List):
         if file_paths:
             self.main.settings_custom['import']['search_terms']['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
-            file_paths, files_empty = wordless_checking.check_files_empty(self.main, file_paths)
+            file_paths, files_empty = wordless_checking_file.check_files_empty(self.main, file_paths)
 
-            for file_path in file_paths:
-                file_path = os.path.normpath(file_path)
+            if self.main.settings_custom['import']['search_terms']['detect_encodings']:
+                for file_path in file_paths:
+                    files.append({
+                                     'path': os.path.normpath(file_path),
+                                     'encoding_code': wordless_detection.detect_encoding(self.main, file_path)[0]
+                                 })
+            else:
+                for file_path in file_paths:
+                    files.append({
+                                     'path': os.path.normpath(file_path),
+                                     'encoding_code': self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
+                                 })
 
-                # Detect encoding
-                if self.main.settings_custom['import']['search_terms']['detect_encodings']:
-                    encoding_code, _ = wordless_detection.detect_encoding(self.main, file_path)
-                else:
-                    encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['default_encoding']
+            encoding_codes = [file['encoding_code'] for file in files]
 
-                try:
-                    with open(file_path, 'r', encoding = encoding_code) as f:
+            file_paths, files_encoding_error = wordless_checking_file.check_files_loading_error(self.main, file_paths, encoding_codes)
+
+            for file in files:
+                if file['path'] in file_paths:
+                    with open(file['path'], 'r', encoding = file['encoding_code']) as f:
                         for line in f:
-                            if line.strip():
+                            if line.rstrip():
                                 self.addItem(line.strip())
 
                         self.itemChanged.emit(self.item(0))
-                except:
-                    files_encoding_error.append(file_path)
 
-            wordless_message_box.wordless_message_box_error_open_files(self.main,
-                                                                       files_empty = files_empty,
-                                                                       files_encoding_error = files_encoding_error)
+            wordless_message_box.wordless_message_box_error_files(self.main,
+                                                                  files_empty = files_empty,
+                                                                  files_encoding_error = files_encoding_error)
 
     def export_list(self):
         default_dir = self.main.settings_custom['export']['search_terms']['default_path']
 
         file_path = QFileDialog.getSaveFileName(self.main,
                                                 self.tr('Export to File'),
-                                                wordless_checking.check_dir(default_dir),
+                                                wordless_checking_misc.check_dir(default_dir),
                                                 self.tr('Text File (*.txt)'))[0]
 
         if file_path:
@@ -243,7 +251,7 @@ class Wordless_List_Stop_Words(Wordless_List):
                 return new_item
 
     def import_list(self):
-        files_encoding_error = []
+        files = []
 
         if os.path.exists(self.main.settings_custom['import']['stop_words']['default_path']):
             default_dir = self.main.settings_custom['import']['stop_words']['default_path']
@@ -258,37 +266,44 @@ class Wordless_List_Stop_Words(Wordless_List):
         if file_paths:
             self.main.settings_custom['import']['stop_words']['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
-            file_paths, files_empty = wordless_checking.check_files_empty(self.main, file_paths)
+            file_paths, files_empty = wordless_checking_file.check_files_empty(self.main, file_paths)
 
-            for file_path in file_paths:
-                file_path = os.path.normpath(file_path)
+            if self.main.settings_custom['import']['stop_words']['detect_encodings']:
+                for file_path in file_paths:
+                    files.append({
+                                     'path': os.path.normpath(file_path),
+                                     'encoding_code': wordless_detection.detect_encoding(self.main, file_path)[0]
+                                 })
+            else:
+                for file_path in file_paths:
+                    files.append({
+                                     'path': os.path.normpath(file_path),
+                                     'encoding_code': self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
+                                 })
 
-                # Detect encoding
-                if self.main.settings_custom['import']['stop_words']['detect_encodings']:
-                    encoding_code, _ = wordless_detection.detect_encoding(self.main, file_path)
-                else:
-                    encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['default_encoding']
+            encoding_codes = [file['encoding_code'] for file in files]
 
-                try:
-                    with open(file_path, 'r', encoding = encoding_code) as f:
+            file_paths, files_encoding_error = wordless_checking_file.check_files_loading_error(self.main, file_paths, encoding_codes)
+
+            for file in files:
+                if file['path'] in file_paths:
+                    with open(file['path'], 'r', encoding = file['encoding_code']) as f:
                         for line in f:
                             if line.strip():
                                 self.addItem(line.strip())
 
                         self.itemChanged.emit(self.item(0))
-                except:
-                    files_encoding_error.append(file_path)
 
-            wordless_message_box.wordless_message_box_error_open_files(self.main,
-                                                                       files_empty = files_empty,
-                                                                       files_encoding_error = files_encoding_error)
+            wordless_message_box.wordless_message_box_error_files(self.main,
+                                                                  files_empty = files_empty,
+                                                                  files_encoding_error = files_encoding_error)
 
     def export_list(self):
         default_dir = self.main.settings_custom['export']['stop_words']['default_path']
 
         file_path = QFileDialog.getSaveFileName(self.main,
                                                 self.tr('Export to File'),
-                                                wordless_checking.check_dir(default_dir),
+                                                wordless_checking_misc.check_dir(default_dir),
                                                 self.tr('Text File (*.txt)'))[0]
 
         if file_path:
