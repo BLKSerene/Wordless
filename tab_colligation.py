@@ -562,7 +562,14 @@ def init(main):
      checkbox_filter_stop_words,
 
      checkbox_nums,
-     checkbox_puncs) = wordless_widgets.wordless_widgets_token_settings(main)
+     checkbox_puncs,
+
+     checkbox_ignore_tags,
+     checkbox_ignore_tags_tags_only,
+     combo_box_ignore_tags,
+     combo_box_ignore_tags_tags_only,
+     label_ignore_tags,
+     checkbox_tags_only) = wordless_widgets.wordless_widgets_token_settings(main)
 
     checkbox_words.stateChanged.connect(token_settings_changed)
     checkbox_lowercase.stateChanged.connect(token_settings_changed)
@@ -574,6 +581,15 @@ def init(main):
 
     checkbox_nums.stateChanged.connect(token_settings_changed)
     checkbox_puncs.stateChanged.connect(token_settings_changed)
+
+    layout_ignore_tags = QGridLayout()
+    layout_ignore_tags.addWidget(checkbox_ignore_tags, 0, 0)
+    layout_ignore_tags.addWidget(checkbox_ignore_tags_tags_only, 0, 0)
+    layout_ignore_tags.addWidget(combo_box_ignore_tags, 0, 1)
+    layout_ignore_tags.addWidget(combo_box_ignore_tags_tags_only, 0, 1)
+    layout_ignore_tags.addWidget(label_ignore_tags, 0, 2)
+
+    layout_ignore_tags.setColumnStretch(3, 1)
 
     group_box_token_settings.setLayout(QGridLayout())
     group_box_token_settings.layout().addWidget(checkbox_words, 0, 0)
@@ -589,6 +605,9 @@ def init(main):
     group_box_token_settings.layout().addWidget(checkbox_nums, 6, 0)
     group_box_token_settings.layout().addWidget(checkbox_puncs, 6, 1)
 
+    group_box_token_settings.layout().addLayout(layout_ignore_tags, 9, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_tags_only, 10, 0, 1, 2)
+
     # Search Settings
     group_box_search_settings = QGroupBox(main.tr('Search Settings'), main)
 
@@ -600,7 +619,7 @@ def init(main):
      checkbox_ignore_case,
      checkbox_match_inflected_forms,
      checkbox_match_whole_word,
-     checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
+     checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings1(main)
 
     group_box_search_settings.setCheckable(True)
 
@@ -617,10 +636,10 @@ def init(main):
     checkbox_use_regex.stateChanged.connect(search_settings_changed)
 
     (label_context_settings,
-     button_context_settings) = wordless_widgets.wordless_widgets_context_settings(main, tab = 'colligation')
+     button_context_settings) = wordless_widgets.wordless_widgets_context_settings1(main, tab = 'colligation')
 
-    main.wordless_context_settings_colligation.checkbox_inclusion_match_inflected_forms.setEnabled(False)
-    main.wordless_context_settings_colligation.checkbox_exclusion_match_inflected_forms.setEnabled(False)
+    # main.wordless_context_settings_colligation.checkbox_inclusion_match_inflected_forms.setEnabled(False)
+    # main.wordless_context_settings_colligation.checkbox_exclusion_match_inflected_forms.setEnabled(False)
 
     layout_search_terms = QGridLayout()
     layout_search_terms.addWidget(list_search_terms, 0, 0, 5, 1)
