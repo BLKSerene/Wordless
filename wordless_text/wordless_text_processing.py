@@ -648,18 +648,77 @@ def wordless_filter_stop_words(main, items, lang_code):
 
     return items_filtered
 
-def wordless_preprocess_tokens(main, tokens, lang_code, settings):
-    if settings['words']:
-        if settings['treat_as_lowercase']:
-            tokens = [token.lower() for token in tokens]
+# Token Processing
+def wordless_preprocess_tokens(text, settings):
+    tokens = text.tokens.copy()
 
-        if settings['lemmatize']:
-            tokens = wordless_lemmatize(main, tokens, lang_code)
+    if settings['tags_only']:
+        if settings['ignore_tags']:
+            if settings['ignore_tags_type'] == text.main.tr('POS'):
+                tokens = text.tags_non_pos
+            elif settings['ignore_tags_type'] == text.main.tr('Non-POS'):
+                tokens = text.tags_pos
+        else:
+            tokens = text.tags_all
 
-    if not settings['puncs']:
-        tokens = [token for token in tokens if [char for char in token if char.isalnum()]]
+        tokens = [tag.strip() for tags in tokens for tag in tags]
+    else:
+        if settings['ignore_tags']:
+            if settings['ignore_tags_type'] == text.main.tr('POS'):
+                tokens = [(token, ''.join(tags))
+                          for token, tags in zip(tokens, text.tags_non_pos)]
+            elif settings['ignore_tags_type'] == text.main.tr('Non-POS'):
+                tokens = [(token, ''.join(tags))
+                          for token, tags in zip(tokens, text.tags_pos)]
+            else:
+                tokens = [(token, '') for token in tokens]
+        else:
+            tokens = [(token, ''.join(tags))
+                      for token, tags in zip(tokens, text.tags_all)]
 
-    return tokens
+        if settings['words']:
+            if settings['treat_as_lowercase']:
+                tokens = [(token.lower(), tag) for token, tag in tokens]
+            else:
+                if not settings['lowercase']:
+                    tokens = [(token, tag)
+                              for token, tag in tokens
+                              if not token.islower()]
+                if not settings['uppercase']:
+                    tokens = [(token, tag)
+                              for token, tag in tokens
+                              if not token.isupper()]
+                if not settings['title_case']:
+                    tokens = [(token, tag)
+                              for token, tag in tokens
+                              if not token.istitle()]
+
+            if settings['lemmatize']:
+                tokens = wordless_lemmatize(text.main, tokens, text.lang_code)
+
+            if settings['filter_stop_words']:
+                tokens = wordless_filter_stop_words(text.main, tokens, text.lang_code)
+        else:
+            tokens = [(token, tag)
+                      for token, tag in tokens
+                      if not [char for char in token if char.isalpha()]]
+
+        if not settings['nums']:
+            tokens = [(token, tag)
+                      for token, tag in tokens
+                      if not token.isnumeric()]
+
+        if not settings['puncs']:
+            tokens = [(token, tag)
+                      for token, tag in tokens
+                      if [char for char in token if char.isalnum()] or token == '']
+
+        tokens = [token + tag for token, tag in tokens]
+
+    # Remove empty tokens
+    tokens = [token for token in tokens if token]
+
+    text.tokens = tokens
 
 def wordless_preprocess_tokens_tagged(main, tokens_tagged, lang_code, settings):
     if settings['treat_as_lowercase']:

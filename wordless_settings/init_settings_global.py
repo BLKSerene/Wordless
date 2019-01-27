@@ -237,9 +237,9 @@ def init_settings_global(main):
         },
 
         'text_types': [
-            main.tr('Untokenized / UnTagged'),
+            main.tr('Untokenized / Untagged'),
             main.tr('Untokenized / Tagged (Non-POS)'),
-            main.tr('Tokenized / UnTagged'),
+            main.tr('Tokenized / Untagged'),
             main.tr('Tokenized / Tagged (POS)'),
             main.tr('Tokenized / Tagged (Non-POS)'),
             main.tr('Tokenized / Tagged (Both)')

@@ -39,7 +39,11 @@ def init_settings_default(main):
                 'filter_stop_words': False,
 
                 'nums': True,
-                'puncs': False
+                'puncs': False,
+
+                'ignore_tags': True,
+                'ignore_tags_type': main.tr('All'),
+                'tags_only': False
             },
 
             'generation_settings': {
@@ -832,7 +836,6 @@ def init_settings_default(main):
 
             'tags_non_pos': [
                 ['<', '>'],
-                ['</', '>'],
                 ['[', ']']
             ]
         },

@@ -26,6 +26,7 @@ from docx.text.paragraph import Paragraph
 import openpyxl
 import xlrd
 
+from wordless_text import *
 from wordless_widgets import *
 from wordless_utils import *
 
@@ -36,7 +37,10 @@ class Wordless_Files():
 
     def _new_file(self, file_path):
         new_file = {}
-        success_encoding_detection = success_lang_detection = True
+        success_encoding_detection = True
+        success_lang_detection = True
+        tagged_pos = False
+        tagged_non_pos = False
 
         new_file['selected'] = True
 
@@ -52,7 +56,35 @@ class Wordless_Files():
 
         new_file['encoding_text'] = wordless_conversion.to_encoding_text(self.main, new_file['encoding_code'])
 
-        new_file['text_type'] = self.main.tr('Untokenized/Not Tagged')
+        try:
+            with open(new_file['path'], 'r', encoding = new_file['encoding_code']) as f:
+                re_tags_pos = wordless_text.get_re_tags(self.main, self.main.settings_custom['tags']['tags_pos'])
+                re_tags_non_pos = wordless_text.get_re_tags(self.main, self.main.settings_custom['tags']['tags_non_pos'])
+
+                for line in f:
+                    if re.search(re_tags_pos, line):
+                        tagged_pos = True
+
+                        break
+
+                f.seek(0)
+
+                for line in f:
+                    if re.search(re_tags_non_pos, line):
+                        tagged_non_pos = True
+
+                        break
+
+            if tagged_pos and tagged_non_pos:
+                new_file['text_type'] = self.main.tr('Tokenized / Tagged (Both)')
+            elif tagged_pos:
+                new_file['text_type'] = self.main.tr('Tokenized / Tagged (POS)')
+            elif tagged_non_pos:
+                new_file['text_type'] = self.main.tr('Untokenized / Tagged (Non-POS)')
+            else:
+                new_file['text_type'] = self.main.tr('Untokenized / Untagged')
+        except:
+            new_file['text_type'] = self.main.tr('Untokenized / Untagged')
 
         # Detect language
         if self.main.settings_custom['files']['auto_detection_settings']['detect_langs']:
@@ -326,7 +358,7 @@ class Wordless_Files():
                                                                         files_encoding_detection_failed,
                                                                         files_lang_detection_failed)
 
-        self.write_table()
+        self.update_table()
 
         len_files_new = len(self.main.settings_custom['files']['files_open'])
 
@@ -343,9 +375,9 @@ class Wordless_Files():
         for i in reversed(indexes):
             self.main.settings_custom['files']['files_closed'][-1].append(self.main.settings_custom['files']['files_open'].pop(i))
 
-        self.write_table()
+        self.update_table()
 
-    def write_table(self):
+    def update_table(self):
         self.table.blockSignals(True)
         self.table.setUpdatesEnabled(False)
 
@@ -698,6 +730,6 @@ def init(main):
         if file['path'] in file_paths:
             main.settings_custom['files']['files_open'].append(file)
 
-    main.wordless_files.write_table()
+    main.wordless_files.update_table()
 
     return tab_files

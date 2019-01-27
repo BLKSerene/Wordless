@@ -34,7 +34,7 @@ def wordless_widgets_no_limit(main, double = False):
     return spin_box_no_limit, checkbox_no_limit
 
 # Token Settings
-def wordless_widgets_token_settings(main):
+def wordless_widgets_token_settings1(main):
     def words_changed():
         if checkbox_words.isChecked():
             checkbox_lowercase.setEnabled(True)
@@ -87,6 +87,113 @@ def wordless_widgets_token_settings(main):
     return (checkbox_words, checkbox_lowercase, checkbox_uppercase, checkbox_title_case,
             checkbox_treat_as_lowercase, checkbox_lemmatize, checkbox_filter_stop_words,
             checkbox_nums, checkbox_puncs)
+
+def wordless_widgets_token_settings(main):
+    def words_changed():
+        if checkbox_words.isChecked():
+            checkbox_lowercase.setEnabled(True)
+            checkbox_uppercase.setEnabled(True)
+            checkbox_title_case.setEnabled(True)
+
+            checkbox_treat_as_lowercase.setEnabled(True)
+            checkbox_lemmatize.setEnabled(True)
+            checkbox_filter_stop_words.setEnabled(True)
+        else:
+            checkbox_lowercase.setEnabled(False)
+            checkbox_uppercase.setEnabled(False)
+            checkbox_title_case.setEnabled(False)
+
+            checkbox_treat_as_lowercase.setEnabled(False)
+            checkbox_lemmatize.setEnabled(False)
+            checkbox_filter_stop_words.setEnabled(False)
+
+        ignore_case_changed()
+
+    def ignore_case_changed():
+        if checkbox_treat_as_lowercase.isEnabled():
+            if checkbox_treat_as_lowercase.isChecked():
+                checkbox_lowercase.setEnabled(False)
+                checkbox_uppercase.setEnabled(False)
+                checkbox_title_case.setEnabled(False)
+            else:
+                checkbox_lowercase.setEnabled(True)
+                checkbox_uppercase.setEnabled(True)
+                checkbox_title_case.setEnabled(True)
+
+    def tags_only_changed():
+        ignore_tags_type_old = combo_box_ignore_tags.currentText()
+
+        if checkbox_tags_only.isChecked():
+            checkbox_words.setEnabled(False)
+            checkbox_lowercase.setEnabled(False)
+            checkbox_uppercase.setEnabled(False)
+            checkbox_title_case.setEnabled(False)
+            checkbox_treat_as_lowercase.setEnabled(False)
+            checkbox_lemmatize.setEnabled(False)
+            checkbox_filter_stop_words.setEnabled(False)
+
+            checkbox_nums.setEnabled(False)
+            checkbox_puncs.setEnabled(False)
+
+            combo_box_ignore_tags.clear()
+
+            combo_box_ignore_tags.addItems([
+                main.tr('POS'),
+                main.tr('Non-POS')
+            ])
+        else:
+            checkbox_words.setEnabled(True)
+            checkbox_lowercase.setEnabled(True)
+            checkbox_uppercase.setEnabled(True)
+            checkbox_title_case.setEnabled(True)
+            checkbox_treat_as_lowercase.setEnabled(True)
+            checkbox_lemmatize.setEnabled(True)
+            checkbox_filter_stop_words.setEnabled(True)
+
+            checkbox_nums.setEnabled(True)
+            checkbox_puncs.setEnabled(True)
+
+            combo_box_ignore_tags.clear()
+
+            combo_box_ignore_tags.addItems([
+                main.tr('All'),
+                main.tr('POS'),
+                main.tr('Non-POS')
+            ])
+
+            words_changed()
+
+        combo_box_ignore_tags.setCurrentText(ignore_tags_type_old)
+
+    checkbox_words = QCheckBox(main.tr('Words'), main)
+    checkbox_lowercase = QCheckBox(main.tr('Lowercase'), main)
+    checkbox_uppercase = QCheckBox(main.tr('Uppercase'), main)
+    checkbox_title_case = QCheckBox(main.tr('Title Case'), main)
+    checkbox_treat_as_lowercase = QCheckBox(main.tr('Treat as All Lowercase'), main)
+    checkbox_lemmatize = QCheckBox(main.tr('Lemmatize'), main)
+    checkbox_filter_stop_words = QCheckBox(main.tr('Filter Stop Words'), main)
+
+    checkbox_nums = QCheckBox(main.tr('Numerals'), main)
+    checkbox_puncs = QCheckBox(main.tr('Punctuations'), main)
+
+    checkbox_ignore_tags = QCheckBox(main.tr('Ignore'), main)
+    combo_box_ignore_tags = wordless_box.Wordless_Combo_Box(main)
+    label_ignore_tags = QLabel(main.tr('Tags'), main)
+    checkbox_tags_only = QCheckBox(main.tr('Tags Only'), main)
+
+    checkbox_words.stateChanged.connect(words_changed)
+    checkbox_treat_as_lowercase.stateChanged.connect(ignore_case_changed)
+    checkbox_tags_only.stateChanged.connect(tags_only_changed)
+
+    checkbox_words.setChecked(True)
+
+    words_changed()
+    tags_only_changed()
+
+    return (checkbox_words, checkbox_lowercase, checkbox_uppercase, checkbox_title_case,
+            checkbox_treat_as_lowercase, checkbox_lemmatize, checkbox_filter_stop_words,
+            checkbox_nums, checkbox_puncs,
+            checkbox_ignore_tags, combo_box_ignore_tags, label_ignore_tags, checkbox_tags_only)
 
 # Search Settings
 def wordless_widgets_search_settings(main):

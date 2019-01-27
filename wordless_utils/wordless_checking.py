@@ -134,6 +134,31 @@ def check_files_loading_error(main, file_paths, encoding_codes):
 
     return files_ok, files_loading_error
 
+def check_files_loading(main, files):
+    file_paths = [file['path'] for file in files]
+
+    file_paths, files_missing = check_files_missing(main, file_paths)
+    file_paths, files_empty = check_files_empty(main, file_paths)
+
+    encoding_codes = [file['encoding_code']
+                      for file in files
+                      if file['path'] in file_paths]
+
+    file_paths, files_loading_error = check_files_loading_error(main, file_paths, encoding_codes)
+
+    wordless_message_box.wordless_message_box_error_files(main,
+                                                          files_missing = files_missing,
+                                                          files_empty = files_empty,
+                                                          files_loading_error = files_loading_error)
+
+    for file in main.wordless_files.get_selected_files():
+        if file['path'] in files_missing + files_empty:
+            main.settings_custom['files']['files_open'].remove(file)
+
+    main.wordless_files.update_table()
+
+    return main.wordless_files.get_selected_files()
+
 # Miscellaneous
 def check_dir(dir_name):
     if not os.path.exists(dir_name):

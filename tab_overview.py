@@ -20,68 +20,44 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
     def __init__(self, main):
         super().__init__(main,
                          headers = [
-                             main.tr('Count of Characters'),
                              main.tr('Count of Paragraphs'),
                              main.tr('Count of Sentences'),
                              main.tr('Count of Tokens'),
                              main.tr('Count of Types'),
+                             main.tr('Count of Characters'),
                              main.tr('Type/Token Ratio'),
                              main.tr('Type/Token Ratio (Standardized)'),
                              main.tr('Average Paragraph Length (in Sentence)'),
-                             main.tr('Average Paragraph Length (in Tokens)'),
-                             main.tr('Average Sentence Length (in Tokens)'),
-                             main.tr('Average Token Length (in Characters)'),
-                             main.tr('Count of Words'),
-                             main.tr('Count of Words in Lowercase'),
-                             main.tr('Count of Words in Uppercase'),
-                             main.tr('Count of Words in Title Case'),
-                             main.tr('Count of Numbers'),
-                             main.tr('Count of Punctuations')
+                             main.tr('Average Paragraph Length (in Token)'),
+                             main.tr('Average Sentence Length (in Token)'),
+                             main.tr('Average Token Length (in Character)')
                          ],
                          header_orientation = 'vertical',
                          headers_num = [
-                             main.tr('Count of Characters'),
                              main.tr('Count of Paragraphs'),
                              main.tr('Count of Sentences'),
                              main.tr('Count of Tokens'),
                              main.tr('Count of Types'),
+                             main.tr('Count of Characters'),
                              main.tr('Type/Token Ratio'),
                              main.tr('Type/Token Ratio (Standardized)'),
                              main.tr('Average Paragraph Length (in Sentence)'),
-                             main.tr('Average Paragraph Length (in Tokens)'),
-                             main.tr('Average Sentence Length (in Tokens)'),
-                             main.tr('Average Token Length (in Characters)'),
-                             main.tr('Count of Words'),
-                             main.tr('Count of Words in Lowercase'),
-                             main.tr('Count of Words in Uppercase'),
-                             main.tr('Count of Words in Title Case'),
-                             main.tr('Count of Numbers'),
-                             main.tr('Count of Punctuations')
+                             main.tr('Average Paragraph Length (in Token)'),
+                             main.tr('Average Sentence Length (in Token)'),
+                             main.tr('Average Token Length (in Character)')
                          ],
                          headers_pct = [
-                             main.tr('Count of Characters'),
                              main.tr('Count of Paragraphs'),
                              main.tr('Count of Sentences'),
                              main.tr('Count of Tokens'),
                              main.tr('Count of Types'),
-                             main.tr('Count of Words'),
-                             main.tr('Count of Words in Lowercase'),
-                             main.tr('Count of Words in Uppercase'),
-                             main.tr('Count of Words in Title Case'),
-                             main.tr('Count of Numbers'),
-                             main.tr('Count of Punctuations')
+                             main.tr('Count of Characters')
                          ],
                          headers_cumulative = [
-                             main.tr('Count of Characters'),
                              main.tr('Count of Paragraphs'),
                              main.tr('Count of Sentences'),
                              main.tr('Count of Tokens'),
-                             main.tr('Count of Words'),
-                             main.tr('Count of Words in Lowercase'),
-                             main.tr('Count of Words in Uppercase'),
-                             main.tr('Count of Words in Title Case'),
-                             main.tr('Count of Numbers'),
-                             main.tr('Count of Punctuations')
+                             main.tr('Count of Characters')
                          ])
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self.main)
@@ -112,6 +88,10 @@ def init(main):
         checkbox_nums.setChecked(settings['token_settings']['nums'])
         checkbox_puncs.setChecked(settings['token_settings']['puncs'])
 
+        checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
+        checkbox_tags_only.setChecked(settings['token_settings']['tags_only'])
+
         # Generation Settings
         spin_box_base_sttr.setValue(settings['generation_settings']['base_sttr'])
 
@@ -137,6 +117,10 @@ def init(main):
 
         settings['nums'] = checkbox_nums.isChecked()
         settings['puncs'] = checkbox_puncs.isChecked()
+
+        settings['ignore_tags'] = checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_type'] = combo_box_ignore_tags.currentText()
+        settings['tags_only'] = checkbox_tags_only.isChecked()
 
     def generation_settings_changed():
         settings = main.settings_custom['overview']['generation_settings']
@@ -172,7 +156,12 @@ def init(main):
      checkbox_filter_stop_words,
 
      checkbox_nums,
-     checkbox_puncs) = wordless_widgets.wordless_widgets_token_settings(main)
+     checkbox_puncs,
+
+     checkbox_ignore_tags,
+     combo_box_ignore_tags,
+     label_ignore_tags,
+     checkbox_tags_only) = wordless_widgets.wordless_widgets_token_settings(main)
 
     checkbox_words.stateChanged.connect(token_settings_changed)
     checkbox_lowercase.stateChanged.connect(token_settings_changed)
@@ -184,6 +173,17 @@ def init(main):
 
     checkbox_nums.stateChanged.connect(token_settings_changed)
     checkbox_puncs.stateChanged.connect(token_settings_changed)
+
+    checkbox_ignore_tags.stateChanged.connect(token_settings_changed)
+    combo_box_ignore_tags.currentTextChanged.connect(token_settings_changed)
+    checkbox_tags_only.stateChanged.connect(token_settings_changed)
+
+    layout_ignore_tags = QGridLayout()
+    layout_ignore_tags.addWidget(checkbox_ignore_tags, 0, 0)
+    layout_ignore_tags.addWidget(combo_box_ignore_tags, 0, 1)
+    layout_ignore_tags.addWidget(label_ignore_tags, 0, 2)
+
+    layout_ignore_tags.setColumnStretch(3, 1)
 
     group_box_token_settings.setLayout(QGridLayout())
     group_box_token_settings.layout().addWidget(checkbox_words, 0, 0)
@@ -198,6 +198,11 @@ def init(main):
 
     group_box_token_settings.layout().addWidget(checkbox_nums, 6, 0)
     group_box_token_settings.layout().addWidget(checkbox_puncs, 6, 1)
+
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0, 1, 2)
+
+    group_box_token_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_tags_only, 9, 0, 1, 2)
 
     # Generation Settings
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'), main)
@@ -245,7 +250,7 @@ def generate_table(main, table):
     len_tokens_files = []
 
     settings = main.settings_custom['overview']
-    files = main.wordless_files.get_selected_files()
+    files = wordless_checking.check_files_loading(main, main.wordless_files.get_selected_files())
 
     if files:
         table.clear_table()
@@ -258,52 +263,24 @@ def generate_table(main, table):
 
             text = wordless_text.Wordless_Text(main, file)
 
-            text.tokens_filtered = text.tokens.copy()
-
-            if settings['token_settings']['words']:
-                if not settings['token_settings']['lowercase']:
-                    text.tokens_filtered = [token for token in text.tokens_filtered if not token.islower()]
-                if not settings['token_settings']['uppercase']:
-                    text.tokens_filtered = [token for token in text.tokens_filtered if not token.isupper()]
-                if not settings['token_settings']['title_case']:
-                    text.tokens_filtered = [token for token in text.tokens_filtered if not token.istitle()]
-
-                if settings['token_settings']['treat_as_lowercase']:
-                    text.tokens_filtered = [token.lower() for token in text.tokens_filtered]
-
-                if settings['token_settings']['lemmatize']:
-                    text.tokens_filtered = wordless_text_processing.wordless_lemmatize(text.main, text.tokens_filtered, text.lang_code)
-
-                if settings['token_settings']['filter_stop_words']:
-                    text.tokens_filtered = wordless_text_processing.wordless_filter_stop_words(main, text.tokens_filtered, text.lang_code)
-            else:
-                text.tokens_filtered = [token for token in text.tokens_filtered if not [char for char in token if char.isalpha()]]
-            
-            if not settings['token_settings']['nums']:
-                text.tokens_filtered = [token for token in text.tokens_filtered if not token.isnumeric()]
-            if not settings['token_settings']['puncs']:
-                text.tokens_filtered = [token for token in text.tokens_filtered if [char for char in token if char.isalnum()]]
+            wordless_text_processing.wordless_preprocess_tokens(text, settings = settings['token_settings'])
 
             texts.append(text)
 
-        text_total = wordless_text.Wordless_Text(main, files[0])
-        text_total.paras = [para for text in texts for para in text.paras]
-        text_total.sentences = [sentence for text in texts for sentence in text.sentences]
-        text_total.tokens = [token for text in texts for token in text.tokens]
-        text_total.tokens_filtered = [token for text in texts for token in text.tokens_filtered]
+        if len(files) > 1:
+            text_total = wordless_text.Wordless_Text(main, files[0])
+            text_total.paras = [para for text in texts for para in text.paras]
+            text_total.sentences = [sentence for text in texts for sentence in text.sentences]
+            text_total.tokens = [token for text in texts for token in text.tokens]
 
-        texts.append(text_total)
+            texts.append(text_total)
+        else:
+            texts.append(texts[0])
 
         base_sttr = settings['generation_settings']['base_sttr']
 
         for i, text in enumerate(texts):
             count_chars = 0
-            count_words = 0
-            count_words_lowercase = 0
-            count_words_uppercase = 0
-            count_words_title_case = 0
-            count_nums = 0
-            count_puncs = 0
             ttrs = []
 
             count_paras = len(text.paras)
@@ -315,25 +292,12 @@ def generate_table(main, table):
             for token in text.tokens:
                 count_chars += len(token)
 
-                if [char for char in token if char.isalpha()]:
-                    count_words += 1
-
-                    if token.islower():
-                        count_words_lowercase += 1
-                    elif token.isupper():
-                        count_words_uppercase += 1
-                    elif token.istitle():
-                        count_words_title_case += 1
-                elif token.isnumeric():
-                    count_nums += 1
-                else:
-                    count_puncs += 1
-
                 len_tokens[len(token)] += 1
+
             len_tokens_files.append(len_tokens)
 
-            count_tokens = len(text.tokens_filtered)
-            count_types = len(set(text.tokens_filtered))
+            count_tokens = len(text.tokens)
+            count_types = len(set(text.tokens))
 
             ttr = count_types / count_tokens
 
@@ -341,41 +305,55 @@ def generate_table(main, table):
                 sttr = ttr
             else:
                 for j in range(count_tokens // base_sttr):
-                    tokens_chunk = text.tokens_filtered[base_sttr * j : base_sttr * (j + 1)]
+                    tokens_chunk = text.tokens[base_sttr * j : base_sttr * (j + 1)]
 
                     ttrs.append(len(set(tokens_chunk)) / len(tokens_chunk))
 
                 sttr = sum(ttrs) / len(ttrs)
 
-            table.set_item_num_cumulative(0, i, count_chars)
-            table.set_item_num_cumulative(1, i, count_paras)
-            table.set_item_num_cumulative(2, i, count_sentences)
-            table.set_item_num_cumulative(3, i, count_tokens)
-            table.set_item_num_pct(4, i, count_types)
+            table.set_item_num_cumulative(0, i, count_paras)
+            table.set_item_num_cumulative(1, i, count_sentences)
+            table.set_item_num_cumulative(2, i, count_tokens)
+            table.set_item_num_pct(3, i, count_types)
+            table.set_item_num_cumulative(4, i, count_chars)
             table.set_item_num_float(5, i, ttr)
             table.set_item_num_float(6, i, sttr)
             table.set_item_num_float(7, i, count_sentences / count_paras)
             table.set_item_num_float(8, i, count_tokens/ count_paras)
             table.set_item_num_float(9, i, count_tokens/ count_sentences)
             table.set_item_num_float(10, i, count_chars / count_tokens)
-            table.set_item_num_cumulative(11, i, count_words)
-            table.set_item_num_cumulative(12, i, count_words_lowercase)
-            table.set_item_num_cumulative(13, i, count_words_uppercase)
-            table.set_item_num_cumulative(14, i, count_words_title_case)
-            table.set_item_num_cumulative(15, i, count_nums)
-            table.set_item_num_cumulative(16, i, count_puncs)
 
         # Count of n-length Tokens
         len_tokens_total = wordless_misc.merge_dicts(len_tokens_files)
 
-        for i in range(max(len_tokens_total)):
-            table.insert_row(table.rowCount() - 6,
-                             main.tr(f'Count of {i + 1}-length Tokens'),
-                             num = True, pct = True, cumulative = True)
+        if settings['token_settings']['tags_only']:
+            table.setVerticalHeaderLabels([
+                main.tr('Count of Paragraphs'),
+                main.tr('Count of Sentences'),
+                main.tr('Count of Tags'),
+                main.tr('Count of Tag Types'),
+                main.tr('Count of Characters'),
+                main.tr('Type/Tag Ratio'),
+                main.tr('Type/Tag Ratio (Standardized)'),
+                main.tr('Average Paragraph Length (in Sentence)'),
+                main.tr('Average Paragraph Length (in Tag)'),
+                main.tr('Average Sentence Length (in Tag)'),
+                main.tr('Average Tag Length (in Character)')
+            ])
+
+            for i in range(max(len_tokens_total)):
+                table.insert_row(table.rowCount(),
+                                 main.tr(f'Count of {i + 1}-length Tags'),
+                                 num = True, pct = True, cumulative = True)
+        else:
+            for i in range(max(len_tokens_total)):
+                table.insert_row(table.rowCount(),
+                                 main.tr(f'Count of {i + 1}-length Tokens'),
+                                 num = True, pct = True, cumulative = True)
 
         for i, (len_token, freqs) in enumerate(len_tokens_total.items()):
             for j, freq in enumerate(freqs):
-                table.set_item_num_cumulative(table.rowCount() - 6 - max(len_tokens_total) + i, j, freq)
+                table.set_item_num_cumulative(table.rowCount() - max(len_tokens_total) + i, j, freq)
 
         table.blockSignals(False)
         table.setUpdatesEnabled(True)
