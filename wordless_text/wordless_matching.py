@@ -20,7 +20,7 @@ def match_ngrams(main, search_terms, tokens, lang_code, settings):
             len_ngram_search = len(ngram_search)
 
             if match_whole_word:
-                ngram_search = [fr'(^|\s){token}(\s|$)' for token in ngram_search]
+                ngram_search = [fr'(^|\s+){token}(\s+|$)' for token in ngram_search]
 
             if settings['ignore_case']:
                 flags = re.IGNORECASE
@@ -45,7 +45,7 @@ def match_ngrams(main, search_terms, tokens, lang_code, settings):
             ngram_search = [re.escape(token) for token in ngram_search]
 
             if settings['match_whole_word']:
-                ngram_search = [fr'(^|\s){token}(\s|$)' for token in ngram_search]
+                ngram_search = [fr'(^|\s+){token}(\s+|$)' for token in ngram_search]
 
             if settings['ignore_case']:
                 flags = re.IGNORECASE
@@ -73,7 +73,7 @@ def match_ngrams(main, search_terms, tokens, lang_code, settings):
             len_ngram_matched_lemma = len(ngram_matched_lemma)
 
             ngram_matched_lemma = [re.escape(token) for token in ngram_matched_lemma]
-            ngram_matched_lemma = [fr'(^|\s){token}(\s|$)' for token in ngram_matched_lemma]
+            ngram_matched_lemma = [fr'(^|\s+){token}(\s+|$)' for token in ngram_matched_lemma]
 
             if settings['ignore_case']:
                 flags = re.IGNORECASE

@@ -35,11 +35,12 @@ def init_settings_default(main):
                 'uppercase': True,
                 'title_case': True,
                 'treat_as_lowercase': True,
-                'lemmatize': False,
-                'filter_stop_words': False,
 
                 'nums': True,
                 'puncs': False,
+
+                'lemmatize': False,
+                'filter_stop_words': False,
 
                 'ignore_tags': True,
                 'ignore_tags_type': main.tr('All'),
@@ -171,11 +172,12 @@ def init_settings_default(main):
                 'uppercase': True,
                 'title_case': True,
                 'treat_as_lowercase': True,
-                'lemmatize': False,
-                'filter_stop_words': False,
 
                 'nums': True,
                 'puncs': False,
+
+                'lemmatize': False,
+                'filter_stop_words': False,
 
                 'ignore_tags': True,
                 'ignore_tags_type': main.tr('All'),
@@ -254,11 +256,16 @@ def init_settings_default(main):
                 'uppercase': True,
                 'title_case': True,
                 'treat_as_lowercase': True,
+
+                'nums': True,
+                'puncs': False,
+
                 'lemmatize': False,
                 'filter_stop_words': False,
 
-                'nums': True,
-                'puncs': False
+                'ignore_tags': True,
+                'ignore_tags_type': main.tr('All'),
+                'tags_only': False
             },
 
             'search_settings': {

@@ -60,7 +60,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
          self.checkbox_ignore_case,
          self.checkbox_match_inflected_forms,
          self.checkbox_match_whole_word,
-         self.checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
+         self.checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings1(main)
 
         self.button_find_next = QPushButton(main.tr('Find Next'), main)
         self.button_find_prev = QPushButton(main.tr('Find Previous'), main)
@@ -350,7 +350,7 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
          self.checkbox_inclusion_ignore_case,
          self.checkbox_inclusion_match_inflected_forms,
          self.checkbox_inclusion_match_whole_word,
-         self.checkbox_inclusion_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
+         self.checkbox_inclusion_use_regex) = wordless_widgets.wordless_widgets_search_settings1(main)
 
         self.label_inclusion_context_window = QLabel(self.tr('Context Window:'), self)
         (self.checkbox_inclusion_context_window_sync,
@@ -423,7 +423,7 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
          self.checkbox_exclusion_ignore_case,
          self.checkbox_exclusion_match_inflected_forms,
          self.checkbox_exclusion_match_whole_word,
-         self.checkbox_exclusion_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
+         self.checkbox_exclusion_use_regex) = wordless_widgets.wordless_widgets_search_settings1(main)
 
         self.label_exclusion_context_window = QLabel(self.tr('Context Window:'), self)
         (self.checkbox_exclusion_context_window_sync,

@@ -94,46 +94,30 @@ def wordless_widgets_token_settings(main):
             checkbox_lowercase.setEnabled(True)
             checkbox_uppercase.setEnabled(True)
             checkbox_title_case.setEnabled(True)
-
             checkbox_treat_as_lowercase.setEnabled(True)
-            checkbox_lemmatize.setEnabled(True)
-            checkbox_filter_stop_words.setEnabled(True)
+
+            ignore_case_changed()
         else:
             checkbox_lowercase.setEnabled(False)
             checkbox_uppercase.setEnabled(False)
             checkbox_title_case.setEnabled(False)
-
             checkbox_treat_as_lowercase.setEnabled(False)
-            checkbox_lemmatize.setEnabled(False)
-            checkbox_filter_stop_words.setEnabled(False)
-
-        ignore_case_changed()
 
     def ignore_case_changed():
-        if checkbox_treat_as_lowercase.isEnabled():
-            if checkbox_treat_as_lowercase.isChecked():
-                checkbox_lowercase.setEnabled(False)
-                checkbox_uppercase.setEnabled(False)
-                checkbox_title_case.setEnabled(False)
-            else:
-                checkbox_lowercase.setEnabled(True)
-                checkbox_uppercase.setEnabled(True)
-                checkbox_title_case.setEnabled(True)
+        if checkbox_treat_as_lowercase.isChecked():
+            checkbox_lowercase.setEnabled(False)
+            checkbox_uppercase.setEnabled(False)
+            checkbox_title_case.setEnabled(False)
+        else:
+            checkbox_lowercase.setEnabled(True)
+            checkbox_uppercase.setEnabled(True)
+            checkbox_title_case.setEnabled(True)
 
     def tags_only_changed():
         ignore_tags_type_old = combo_box_ignore_tags.currentText()
 
         if checkbox_tags_only.isChecked():
-            checkbox_words.setEnabled(False)
-            checkbox_lowercase.setEnabled(False)
-            checkbox_uppercase.setEnabled(False)
-            checkbox_title_case.setEnabled(False)
-            checkbox_treat_as_lowercase.setEnabled(False)
             checkbox_lemmatize.setEnabled(False)
-            checkbox_filter_stop_words.setEnabled(False)
-
-            checkbox_nums.setEnabled(False)
-            checkbox_puncs.setEnabled(False)
 
             combo_box_ignore_tags.clear()
 
@@ -142,16 +126,7 @@ def wordless_widgets_token_settings(main):
                 main.tr('Non-POS')
             ])
         else:
-            checkbox_words.setEnabled(True)
-            checkbox_lowercase.setEnabled(True)
-            checkbox_uppercase.setEnabled(True)
-            checkbox_title_case.setEnabled(True)
-            checkbox_treat_as_lowercase.setEnabled(True)
             checkbox_lemmatize.setEnabled(True)
-            checkbox_filter_stop_words.setEnabled(True)
-
-            checkbox_nums.setEnabled(True)
-            checkbox_puncs.setEnabled(True)
 
             combo_box_ignore_tags.clear()
 
@@ -170,11 +145,12 @@ def wordless_widgets_token_settings(main):
     checkbox_uppercase = QCheckBox(main.tr('Uppercase'), main)
     checkbox_title_case = QCheckBox(main.tr('Title Case'), main)
     checkbox_treat_as_lowercase = QCheckBox(main.tr('Treat as All Lowercase'), main)
-    checkbox_lemmatize = QCheckBox(main.tr('Lemmatize'), main)
-    checkbox_filter_stop_words = QCheckBox(main.tr('Filter Stop Words'), main)
 
     checkbox_nums = QCheckBox(main.tr('Numerals'), main)
     checkbox_puncs = QCheckBox(main.tr('Punctuations'), main)
+
+    checkbox_lemmatize = QCheckBox(main.tr('Lemmatize'), main)
+    checkbox_filter_stop_words = QCheckBox(main.tr('Filter Stop Words'), main)
 
     checkbox_ignore_tags = QCheckBox(main.tr('Ignore'), main)
     combo_box_ignore_tags = wordless_box.Wordless_Combo_Box(main)
@@ -188,14 +164,60 @@ def wordless_widgets_token_settings(main):
     checkbox_words.setChecked(True)
 
     words_changed()
+    ignore_case_changed()
     tags_only_changed()
 
-    return (checkbox_words, checkbox_lowercase, checkbox_uppercase, checkbox_title_case,
-            checkbox_treat_as_lowercase, checkbox_lemmatize, checkbox_filter_stop_words,
+    return (checkbox_words, checkbox_lowercase, checkbox_uppercase, checkbox_title_case, checkbox_treat_as_lowercase,
             checkbox_nums, checkbox_puncs,
+            checkbox_lemmatize, checkbox_filter_stop_words,
             checkbox_ignore_tags, combo_box_ignore_tags, label_ignore_tags, checkbox_tags_only)
 
 # Search Settings
+def wordless_widgets_search_settings1(main):
+    def multi_search_mode_changed():
+        if checkbox_multi_search_mode.isChecked():
+            label_search_term.setText(main.tr('Search Terms:'))
+
+            if line_edit_search_term.text() and list_search_terms.count() == 0:
+                list_search_terms.add_item(line_edit_search_term.text())
+
+            line_edit_search_term.hide()
+
+            list_search_terms.show()
+            list_search_terms.button_add.show()
+            list_search_terms.button_remove.show()
+            list_search_terms.button_clear.show()
+            list_search_terms.button_import.show()
+            list_search_terms.button_export.show()
+        else:
+            label_search_term.setText(main.tr('Search Term:'))
+
+            line_edit_search_term.show()
+
+            list_search_terms.hide()
+            list_search_terms.button_add.hide()
+            list_search_terms.button_remove.hide()
+            list_search_terms.button_clear.hide()
+            list_search_terms.button_import.hide()
+            list_search_terms.button_export.hide()
+
+    label_search_term = QLabel(main.tr('Search Term:'), main)
+    checkbox_multi_search_mode = QCheckBox(main.tr('Multi-search Mode'), main)
+    line_edit_search_term = QLineEdit(main)
+    list_search_terms = wordless_list.Wordless_List_Search_Terms(main)
+
+    checkbox_ignore_case = QCheckBox(main.tr('Ignore Case'), main)
+    checkbox_match_inflected_forms = QCheckBox(main.tr('Match All Inflected Forms'), main)
+    checkbox_match_whole_word = QCheckBox(main.tr('Match Whole Word Only'), main)
+    checkbox_use_regex = QCheckBox(main.tr('Use Regular Expression'), main)
+
+    checkbox_multi_search_mode.stateChanged.connect(multi_search_mode_changed)
+
+    multi_search_mode_changed()
+
+    return (label_search_term, checkbox_multi_search_mode, line_edit_search_term, list_search_terms,
+            checkbox_ignore_case, checkbox_match_inflected_forms, checkbox_match_whole_word, checkbox_use_regex)
+
 def wordless_widgets_search_settings(main):
     def multi_search_mode_changed():
         if checkbox_multi_search_mode.isChecked():

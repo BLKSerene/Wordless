@@ -600,7 +600,7 @@ def init(main):
      checkbox_ignore_case,
      checkbox_match_inflected_forms,
      checkbox_match_whole_word,
-     checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings(main)
+     checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings1(main)
 
     group_box_search_settings.setCheckable(True)
 

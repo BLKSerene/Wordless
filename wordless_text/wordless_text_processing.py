@@ -6,7 +6,6 @@
 # License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 #
 
-import csv
 import importlib
 import json
 import re
@@ -15,7 +14,6 @@ import jieba
 import jieba.posseg
 import nltk
 import nltk.tokenize.nist
-import numpy
 import pybo
 import pymorphy2
 import pythainlp
@@ -412,7 +410,7 @@ def wordless_word_detokenize(main, tokens, lang_code, word_detokenizer = 'defaul
         else:
             text = ''.join([token + token.boundary for token in tokens])
 
-    return text
+    return re.sub(r'\s{2,}', ' ', text)
 
 def wordless_pos_tag(main, sentences, lang_code, pos_tagger = 'default', tagset = 'custom'):
     tokens_tagged = []
@@ -647,164 +645,3 @@ def wordless_filter_stop_words(main, items, lang_code):
                           if not [token for token in ngram if token in stop_words]]
 
     return items_filtered
-
-# Token Processing
-def wordless_preprocess_tokens(text, settings):
-    tokens = text.tokens.copy()
-
-    if settings['tags_only']:
-        if settings['ignore_tags']:
-            if settings['ignore_tags_type'] == text.main.tr('POS'):
-                tokens = text.tags_non_pos
-            elif settings['ignore_tags_type'] == text.main.tr('Non-POS'):
-                tokens = text.tags_pos
-        else:
-            tokens = text.tags_all
-
-        tokens = [tag.strip() for tags in tokens for tag in tags]
-    else:
-        if settings['ignore_tags']:
-            if settings['ignore_tags_type'] == text.main.tr('POS'):
-                tokens = [(token, ''.join(tags))
-                          for token, tags in zip(tokens, text.tags_non_pos)]
-            elif settings['ignore_tags_type'] == text.main.tr('Non-POS'):
-                tokens = [(token, ''.join(tags))
-                          for token, tags in zip(tokens, text.tags_pos)]
-            else:
-                tokens = [(token, '') for token in tokens]
-        else:
-            tokens = [(token, ''.join(tags))
-                      for token, tags in zip(tokens, text.tags_all)]
-
-        if settings['words']:
-            if settings['treat_as_lowercase']:
-                tokens = [(token.lower(), tag) for token, tag in tokens]
-            else:
-                if not settings['lowercase']:
-                    tokens = [(token, tag)
-                              for token, tag in tokens
-                              if not token.islower()]
-                if not settings['uppercase']:
-                    tokens = [(token, tag)
-                              for token, tag in tokens
-                              if not token.isupper()]
-                if not settings['title_case']:
-                    tokens = [(token, tag)
-                              for token, tag in tokens
-                              if not token.istitle()]
-
-            if settings['lemmatize']:
-                tokens = wordless_lemmatize(text.main, tokens, text.lang_code)
-
-            if settings['filter_stop_words']:
-                tokens = wordless_filter_stop_words(text.main, tokens, text.lang_code)
-        else:
-            tokens = [(token, tag)
-                      for token, tag in tokens
-                      if not [char for char in token if char.isalpha()]]
-
-        if not settings['nums']:
-            tokens = [(token, tag)
-                      for token, tag in tokens
-                      if not token.isnumeric()]
-
-        if not settings['puncs']:
-            tokens = [(token, tag)
-                      for token, tag in tokens
-                      if [char for char in token if char.isalnum()] or token == '']
-
-        tokens = [token + tag for token, tag in tokens]
-
-    # Remove empty tokens
-    tokens = [token for token in tokens if token]
-
-    text.tokens = tokens
-
-def wordless_preprocess_tokens_tagged(main, tokens_tagged, lang_code, settings):
-    if settings['treat_as_lowercase']:
-        tokens_tagged = [(token.lower(), tag) for token, tag in tokens_tagged]
-
-    if settings['lemmatize']:
-        tokens_lemmatized = wordless_lemmatize(main, numpy.array(tokens_tagged)[:, 0], lang_code)
-
-        tokens_tagged = [(token, tag)
-                         for token, tag in zip(tokens_lemmatized, numpy.array(tokens_tagged)[:, 1])]
-
-    if not settings['puncs']:
-        tokens_tagged = [(token, tag)
-                         for token, tag in tokens_tagged
-                         if [char for char in token if char.isalnum()]]
-
-    return tokens_tagged
-
-def wordless_postprocess_tokens(main, tokens, lang_code, settings):
-    if settings['words']:
-        if not settings['treat_as_lowercase']:
-            if not settings['lowercase']:
-                tokens = [token for token in tokens if not token.islower()]
-            if not settings['uppercase']:
-                tokens = [token for token in tokens if not token.isupper()]
-            if not settings['title_case']:
-                tokens = [token for token in tokens if not token.istitle()]
-
-        if settings['filter_stop_words']:
-            tokens = wordless_filter_stop_words(main, tokens, lang_code)
-    else:
-        tokens = [token for token in tokens if not [char for char in token if char.isalpha()]]
-    
-    if not settings['nums']:
-        tokens = [token for token in tokens if not token.isnumeric()]
-
-    return tokens
-
-def wordless_postprocess_freq_ngrams(main, ngrams_freq_file, lang_code, settings):
-    if settings['words']:
-        if not settings['treat_as_lowercase']:
-            if not settings['lowercase']:
-                ngrams_freq_file = {ngram: freq
-                                    for ngram, freq in ngrams_freq_file.items()
-                                    if not [token for token in ngram if token.islower()]}
-            if not settings['uppercase']:
-                ngrams_freq_file = {ngram: freq
-                                    for ngram, freq in ngrams_freq_file.items()
-                                    if not [token for token in ngram if token.isupper()]}
-            if not settings['title_case']:
-                ngrams_freq_file = {ngram: freq
-                                    for ngram, freq in ngrams_freq_file.items()
-                                    if not [token for token in ngram if token.istitle()]}
-
-        if settings['filter_stop_words']:
-            ngrams_filtered = wordless_filter_stop_words(main, list(ngrams_freq_file.keys()), lang_code)
-            
-            ngrams_freq_file = {ngram: ngrams_freq_file[ngram] for ngram in ngrams_filtered}
-    else:
-        ngrams_freq_file = {ngram: freq
-                            for ngram, freq in ngrams_freq_file.items()
-                            if not [char for char in ''.join(ngram) if char.isalpha()]}
-
-    if not settings['nums']:
-        ngrams_freq_file = {ngram: freq
-                            for ngram, freq in ngrams_freq_file.items()
-                            if [token for token in ngram if not token.isnumeric()]}
-
-    return ngrams_freq_file
-
-def wordless_postprocess_freq_collocation(main, collocates_freq_file, lang_code, settings):
-    collocates = [collocate[1] for collocate in collocates_freq_file]
-
-    collocates_filtered = wordless_postprocess_tokens(main, collocates, lang_code, settings)
-
-    collocates_freq_file = {collocate: freq_files
-                            for collocate, freq_files in collocates_freq_file.items()
-                            if collocate[1] in collocates_filtered}
-
-    return collocates_freq_file
-
-def wordless_postprocess_freq_colligation(main, collocates_freq_file, tokens, lang_code, settings):
-    tokens_filtered = wordless_postprocess_tokens(main, tokens, lang_code, settings)
-
-    collocates_freq_file = {collocate: freq_files
-                            for (collocate, freq_files), token in zip(collocates_freq_file.items(), tokens_filtered)
-                            if token in tokens_filtered}
-
-    return collocates_freq_file

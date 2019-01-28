@@ -82,11 +82,12 @@ def init(main):
         checkbox_uppercase.setChecked(settings['token_settings']['uppercase'])
         checkbox_title_case.setChecked(settings['token_settings']['title_case'])
         checkbox_treat_as_lowercase.setChecked(settings['token_settings']['treat_as_lowercase'])
-        checkbox_lemmatize.setChecked(settings['token_settings']['lemmatize'])
-        checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
         checkbox_nums.setChecked(settings['token_settings']['nums'])
         checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+
+        checkbox_lemmatize.setChecked(settings['token_settings']['lemmatize'])
+        checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
         checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
         combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
@@ -112,11 +113,12 @@ def init(main):
         settings['uppercase'] = checkbox_uppercase.isChecked()
         settings['title_case'] = checkbox_title_case.isChecked()
         settings['treat_as_lowercase'] = checkbox_treat_as_lowercase.isChecked()
-        settings['lemmatize'] = checkbox_lemmatize.isChecked()
-        settings['filter_stop_words'] = checkbox_filter_stop_words.isChecked()
 
         settings['nums'] = checkbox_nums.isChecked()
         settings['puncs'] = checkbox_puncs.isChecked()
+
+        settings['lemmatize'] = checkbox_lemmatize.isChecked()
+        settings['filter_stop_words'] = checkbox_filter_stop_words.isChecked()
 
         settings['ignore_tags'] = checkbox_ignore_tags.isChecked()
         settings['ignore_tags_type'] = combo_box_ignore_tags.currentText()
@@ -152,11 +154,12 @@ def init(main):
      checkbox_uppercase,
      checkbox_title_case,
      checkbox_treat_as_lowercase,
-     checkbox_lemmatize,
-     checkbox_filter_stop_words,
 
      checkbox_nums,
      checkbox_puncs,
+
+     checkbox_lemmatize,
+     checkbox_filter_stop_words,
 
      checkbox_ignore_tags,
      combo_box_ignore_tags,
@@ -168,11 +171,12 @@ def init(main):
     checkbox_uppercase.stateChanged.connect(token_settings_changed)
     checkbox_title_case.stateChanged.connect(token_settings_changed)
     checkbox_treat_as_lowercase.stateChanged.connect(token_settings_changed)
-    checkbox_lemmatize.stateChanged.connect(token_settings_changed)
-    checkbox_filter_stop_words.stateChanged.connect(token_settings_changed)
 
     checkbox_nums.stateChanged.connect(token_settings_changed)
     checkbox_puncs.stateChanged.connect(token_settings_changed)
+
+    checkbox_lemmatize.stateChanged.connect(token_settings_changed)
+    checkbox_filter_stop_words.stateChanged.connect(token_settings_changed)
 
     checkbox_ignore_tags.stateChanged.connect(token_settings_changed)
     combo_box_ignore_tags.currentTextChanged.connect(token_settings_changed)
@@ -191,18 +195,21 @@ def init(main):
     group_box_token_settings.layout().addWidget(checkbox_uppercase, 1, 0)
     group_box_token_settings.layout().addWidget(checkbox_title_case, 1, 1)
     group_box_token_settings.layout().addWidget(checkbox_treat_as_lowercase, 2, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_lemmatize, 3, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_filter_stop_words, 4, 0, 1, 2)
+
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 3, 0, 1, 2)
+
+    group_box_token_settings.layout().addWidget(checkbox_nums, 4, 0)
+    group_box_token_settings.layout().addWidget(checkbox_puncs, 4, 1)
 
     group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 5, 0, 1, 2)
 
-    group_box_token_settings.layout().addWidget(checkbox_nums, 6, 0)
-    group_box_token_settings.layout().addWidget(checkbox_puncs, 6, 1)
+    group_box_token_settings.layout().addWidget(checkbox_lemmatize, 6, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_filter_stop_words, 7, 0, 1, 2)
 
-    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 8, 0, 1, 2)
 
-    group_box_token_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_tags_only, 9, 0, 1, 2)
+    group_box_token_settings.layout().addLayout(layout_ignore_tags, 9, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_tags_only, 10, 0, 1, 2)
 
     # Generation Settings
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'), main)
@@ -265,9 +272,8 @@ def generate_table(main, table):
             table.insert_col(table.find_col(main.tr('Total')), file['name'], breakdown = True)
 
             text = wordless_text.Wordless_Text(main, file)
-
-            wordless_text_processing.wordless_preprocess_tokens(text, settings = settings['token_settings'])
-
+            text.tokens = wordless_token_processing.wordless_preprocess_tokens_overview(text, settings = settings['token_settings'])
+            print(text.tokens)
             texts.append(text)
 
         if len(files) > 1:
