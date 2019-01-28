@@ -250,10 +250,13 @@ def generate_table(main, table):
     len_tokens_files = []
 
     settings = main.settings_custom['overview']
+
     files = wordless_checking.check_files_loading(main, main.wordless_files.get_selected_files())
 
     if files:
         table.clear_table()
+
+        table.settings = copy.deepcopy(main.settings_custom)
 
         table.blockSignals(True)
         table.setUpdatesEnabled(False)

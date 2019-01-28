@@ -152,6 +152,10 @@ def init(main):
         checkbox_nums.setChecked(settings['token_settings']['nums'])
         checkbox_puncs.setChecked(settings['token_settings']['puncs'])
 
+        checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
+        checkbox_tags_only.setChecked(settings['token_settings']['tags_only'])
+
         # Generation Settings
         combo_box_measure_dispersion.setCurrentText(settings['generation_settings']['measure_dispersion'])
         combo_box_measure_adjusted_freq.setCurrentText(settings['generation_settings']['measure_adjusted_freq'])
@@ -221,6 +225,10 @@ def init(main):
 
         settings['nums'] = checkbox_nums.isChecked()
         settings['puncs'] = checkbox_puncs.isChecked()
+
+        settings['ignore_tags'] = checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_type'] = combo_box_ignore_tags.currentText()
+        settings['tags_only'] = checkbox_tags_only.isChecked()
 
     def generation_settings_changed():
         settings = main.settings_custom['wordlist']['generation_settings']
@@ -336,7 +344,12 @@ def init(main):
      checkbox_filter_stop_words,
 
      checkbox_nums,
-     checkbox_puncs) = wordless_widgets.wordless_widgets_token_settings1(main)
+     checkbox_puncs,
+
+     checkbox_ignore_tags,
+     combo_box_ignore_tags,
+     label_ignore_tags,
+     checkbox_tags_only) = wordless_widgets.wordless_widgets_token_settings(main)
 
     checkbox_words.stateChanged.connect(token_settings_changed)
     checkbox_lowercase.stateChanged.connect(token_settings_changed)
@@ -348,6 +361,17 @@ def init(main):
 
     checkbox_nums.stateChanged.connect(token_settings_changed)
     checkbox_puncs.stateChanged.connect(token_settings_changed)
+
+    checkbox_ignore_tags.stateChanged.connect(token_settings_changed)
+    combo_box_ignore_tags.currentTextChanged.connect(token_settings_changed)
+    checkbox_tags_only.stateChanged.connect(token_settings_changed)
+
+    layout_ignore_tags = QGridLayout()
+    layout_ignore_tags.addWidget(checkbox_ignore_tags, 0, 0)
+    layout_ignore_tags.addWidget(combo_box_ignore_tags, 0, 1)
+    layout_ignore_tags.addWidget(label_ignore_tags, 0, 2)
+
+    layout_ignore_tags.setColumnStretch(3, 1)
 
     group_box_token_settings.setLayout(QGridLayout())
     group_box_token_settings.layout().addWidget(checkbox_words, 0, 0)
@@ -362,6 +386,11 @@ def init(main):
 
     group_box_token_settings.layout().addWidget(checkbox_nums, 6, 0)
     group_box_token_settings.layout().addWidget(checkbox_puncs, 6, 1)
+
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0, 1, 2)
+
+    group_box_token_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_tags_only, 9, 0, 1, 2)
 
     # Generation Settings
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'))
@@ -632,12 +661,7 @@ def generate_wordlists(main, files):
     for file in files:
         text = wordless_text.Wordless_Text(main, file)
 
-        text.tokens = wordless_text_processing.wordless_preprocess_tokens(main, text.tokens,
-                                                                          lang_code = text.lang_code,
-                                                                          settings = settings['token_settings'])
-        text.tokens = wordless_text_processing.wordless_postprocess_tokens(main, text.tokens,
-                                                                           lang_code = text.lang_code,
-                                                                           settings = settings['token_settings'])
+        wordless_text_processing.wordless_preprocess_tokens(text, settings = settings['token_settings'])
 
         tokens_freq_files.append(collections.Counter(text.tokens))
 
@@ -700,103 +724,111 @@ def generate_wordlists(main, files):
 def generate_table(main, table):
     settings = main.settings_custom['wordlist']
 
-    files = main.wordless_files.get_selected_files()
+    files = wordless_checking.check_files_loading(main, main.wordless_files.get_selected_files())
 
     if files:
-        table.clear_table()
-
-        table.settings = copy.deepcopy(main.settings_custom)
-
-        text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-        text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
-
-        col_text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-        col_text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
-
-        # Insert Columns (Files)
-        for file in files:
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'[{file["name"]}]\nFrequency'),
-                             num = True, pct = True, cumulative = True, breakdown = True)
-
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'[{file["name"]}]\n{col_text_dispersion}'),
-                             num = True, breakdown = True)
-
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'[{file["name"]}]\n{col_text_adjusted_freq}'),
-                             num = True, breakdown = True)
-
-        # Insert Columns (Total)
-        table.insert_col(table.columnCount() - 1,
-                         main.tr('Total\nFrequency'),
-                         num = True, pct = True, cumulative = True)
-
-        table.insert_col(table.columnCount() - 1,
-                         main.tr(f'Total\n{col_text_dispersion}'),
-                         num = True)
-
-        table.insert_col(table.columnCount() - 1,
-                         main.tr(f'Total\n{col_text_adjusted_freq}'),
-                         num = True)
-
-        # Sort by frequency of the first file
-        table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')), Qt.DescendingOrder)
-
         tokens_freq_files, tokens_stats_files = generate_wordlists(main, files)
 
-        cols_freq = table.find_cols(main.tr('\nFrequency'))
-        cols_dispersion = table.find_cols(main.tr(f'\n{col_text_dispersion}'))
-        cols_adjusted_freq = table.find_cols(main.tr(f'\n{col_text_adjusted_freq}'))
-        col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
+        if tokens_freq_files:
+            table.clear_table()
 
-        len_files = len(files)
+            table.settings = copy.deepcopy(main.settings_custom)
 
-        table.blockSignals(True)
-        table.setSortingEnabled(False)
-        table.setUpdatesEnabled(False)
+            text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+            text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-        table.setRowCount(len(tokens_freq_files))
+            col_text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
+            col_text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
-        for i, (token, freq_files) in enumerate(wordless_sorting.sorted_tokens_freq_files(tokens_freq_files)):
-            stats_files = tokens_stats_files[token]
+            table.blockSignals(True)
+            table.setSortingEnabled(False)
+            table.setUpdatesEnabled(False)
 
-            # Rank
-            table.set_item_num_int(i, 0, -1)
+            if settings['token_settings']['tags_only']:
+                table.setHorizontalHeaderLabels([
+                    main.tr('Rank'),
+                    main.tr('Tags'),
+                    main.tr('Number of\nFiles Found')
+                ])
 
-            # Tokens
-            table.setItem(i, 1, wordless_table.Wordless_Table_Item(token))
+            # Insert Columns (Files)
+            for file in files:
+                table.insert_col(table.columnCount() - 1,
+                                 main.tr(f'[{file["name"]}]\nFrequency'),
+                                 num = True, pct = True, cumulative = True, breakdown = True)
 
-            # Frequency
-            for j, freq in enumerate(freq_files):
-                table.set_item_num_cumulative(i, cols_freq[j], freq)
+                table.insert_col(table.columnCount() - 1,
+                                 main.tr(f'[{file["name"]}]\n{col_text_dispersion}'),
+                                 num = True, breakdown = True)
 
-            for j, (dispersion, adjusted_freq) in enumerate(stats_files):
-                # Dispersion
-                table.set_item_num_float(i, cols_dispersion[j], dispersion)
+                table.insert_col(table.columnCount() - 1,
+                                 main.tr(f'[{file["name"]}]\n{col_text_adjusted_freq}'),
+                                 num = True, breakdown = True)
 
-                # Adjusted Frequency
-                table.set_item_num_float(i, cols_adjusted_freq[j], adjusted_freq)
+            # Insert Columns (Total)
+            table.insert_col(table.columnCount() - 1,
+                             main.tr('Total\nFrequency'),
+                             num = True, pct = True, cumulative = True)
 
-            # Number of Files Found
-            table.set_item_num_pct(i, col_files_found,
-                                   len([freq for freq in freq_files[:-1] if freq]),
-                                   len_files)
+            table.insert_col(table.columnCount() - 1,
+                             main.tr(f'Total\n{col_text_dispersion}'),
+                             num = True)
 
-        table.blockSignals(False)
-        table.setSortingEnabled(True)
-        table.setUpdatesEnabled(True)
+            table.insert_col(table.columnCount() - 1,
+                             main.tr(f'Total\n{col_text_adjusted_freq}'),
+                             num = True)
 
-        table.toggle_pct()
-        table.toggle_cumulative()
-        table.toggle_breakdown()
-        table.update_ranks()
+            # Sort by frequency of the first file
+            table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')), Qt.DescendingOrder)
 
-        table.update_items_width()
+            cols_freq = table.find_cols(main.tr('\nFrequency'))
+            cols_dispersion = table.find_cols(main.tr(f'\n{col_text_dispersion}'))
+            cols_adjusted_freq = table.find_cols(main.tr(f'\n{col_text_adjusted_freq}'))
+            col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
 
-        table.itemChanged.emit(table.item(0, 0))
+            len_files = len(files)
 
-        wordless_message.wordless_message_generate_table_success(main)
+            table.setRowCount(len(tokens_freq_files))
+
+            for i, (token, freq_files) in enumerate(wordless_sorting.sorted_tokens_freq_files(tokens_freq_files)):
+                stats_files = tokens_stats_files[token]
+
+                # Rank
+                table.set_item_num_int(i, 0, -1)
+
+                # Tokens
+                table.setItem(i, 1, wordless_table.Wordless_Table_Item(token))
+
+                # Frequency
+                for j, freq in enumerate(freq_files):
+                    table.set_item_num_cumulative(i, cols_freq[j], freq)
+
+                for j, (dispersion, adjusted_freq) in enumerate(stats_files):
+                    # Dispersion
+                    table.set_item_num_float(i, cols_dispersion[j], dispersion)
+
+                    # Adjusted Frequency
+                    table.set_item_num_float(i, cols_adjusted_freq[j], adjusted_freq)
+
+                # Number of Files Found
+                table.set_item_num_pct(i, col_files_found,
+                                       len([freq for freq in freq_files[:-1] if freq]),
+                                       len_files)
+
+            table.blockSignals(False)
+            table.setSortingEnabled(True)
+            table.setUpdatesEnabled(True)
+
+            table.toggle_pct()
+            table.toggle_cumulative()
+            table.toggle_breakdown()
+            table.update_ranks()
+
+            table.update_items_width()
+
+            table.itemChanged.emit(table.item(0, 0))
+
+            wordless_message.wordless_message_generate_table_success(main)
     else:
         wordless_message_box.wordless_message_box_no_files_selected(main)
 
@@ -806,7 +838,7 @@ def generate_table(main, table):
 def generate_plot(main):
     settings = main.settings_custom['wordlist']
 
-    files = main.wordless_files.get_selected_files()
+    files = wordless_checking.check_files_loading(main, main.wordless_files.get_selected_files())
 
     if files:
         text_measure_dispersion = settings['generation_settings']['measure_dispersion']
