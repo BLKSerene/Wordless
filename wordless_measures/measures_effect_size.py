@@ -186,8 +186,18 @@ def poisson_collocation_measure(main, c11, c12, c21, c22):
 #     Kilgarriff, "Adam. Simple Maths for Keywords." Proceedings of Corpus Linguistics Conference, Liverpool, 20-23 July 2009, edited by Mahlberg, M., et al., U of Liverpool, July 2009.
 def kilgarriffs_ratio(main, c11, c12, c21, c22):
     smoothing_parameter = main.settings_custom['measures']['effect_size']['kilgarriffs_ratio']['smoothing_parameter']
-    
-    return (c11 / (c11 + c21) * 1000000 + smoothing_parameter) / (c12 / (c12 + c22) * 1000000 + smoothing_parameter)
+
+    if c11 + c21 == 0:
+        relative_freq1 = 0
+    else:
+        relative_freq1 = c11 / (c11 + c21) * 1000000
+
+    if c12 + c22 == 0:
+        relative_freq2 = 0
+    else:
+        relative_freq2 = c12 / (c12 + c22) * 1000000
+
+    return (relative_freq1 + smoothing_parameter) / (relative_freq2 + smoothing_parameter)
 
 # Reference:
 #     Pojanapunya, Punjaporn and Richard Watson Todd. "Log-likelihood and Odds Ratio Keyness Statistics for Different Purposes of Keyword Analysis." Corpus Linguistics and Lingustic Theory, vol. 15, no. 1, Jan. 2016, pp. 133-67.

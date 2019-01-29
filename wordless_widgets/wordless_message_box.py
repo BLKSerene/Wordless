@@ -122,6 +122,18 @@ def wordless_message_box_error_files(main,
                                 '''),
                                 QMessageBox.Ok)
 
+def wordless_message_box_error_ref_file(main):
+    QMessageBox.warning(main,
+                        main.tr('Loading Error'),
+                        main.tr(f'''
+                            {main.settings_global['styles']['style_dialog']}
+                            <body>
+                                <p>An error occurred during loading of the reference file!</p>
+                                <p>Please check and try again.</p>
+                            </body>
+                        '''),
+                        QMessageBox.Ok)
+
 def wordless_message_box_auto_detection_failed(main,
                                                files_encoding_detection_failed,
                                                files_lang_detection_failed):

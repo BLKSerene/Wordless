@@ -157,7 +157,7 @@ def check_files_loading(main, files):
 
     main.wordless_files.update_table()
 
-    return main.wordless_files.get_selected_files()
+    return [file for file in files if file['path'] in file_paths]
 
 # Miscellaneous
 def check_dir(dir_name):

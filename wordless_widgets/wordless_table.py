@@ -452,8 +452,7 @@ class Wordless_Table_Data(Wordless_Table):
         if self.header_orientation == 'horizontal':
             for col in self.headers_num:
                 max_val = max([self.item(row, col).val
-                               for row in range(self.rowCount())
-                               if self.item(row, col).val != float('inf')])
+                               for row in range(self.rowCount())])
 
                 # p-value
                 if self.tr('p-value') in self.horizontalHeaderItem(col).text():
