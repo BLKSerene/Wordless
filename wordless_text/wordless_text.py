@@ -11,7 +11,7 @@ import re
 
 import bs4
 
-from wordless_text import wordless_text_processing
+from wordless_text import wordless_matching, wordless_text_processing
 
 class Wordless_Token(str):
     def __new__(cls, string, *args, **kwargs):
@@ -38,8 +38,9 @@ class Wordless_Text():
         self.tags_pos = []
         self.tags_non_pos = []
 
-        self.re_tags_pos = get_re_tags(main, main.settings_custom['tags']['tags_pos'])
-        self.re_tags_non_pos = get_re_tags(main, main.settings_custom['tags']['tags_non_pos'])
+        re_tags_all = wordless_matching.get_re_tags(main, tags = 'all')
+        re_tags_pos = wordless_matching.get_re_tags(main, tags = 'pos')
+        re_tags_non_pos = wordless_matching.get_re_tags(main, tags = 'non_pos')
 
         with open(file['path'], 'r', encoding = file['encoding_code']) as f:
             for i, line in enumerate(f):
@@ -59,13 +60,13 @@ class Wordless_Text():
                         # Untokenized / Tagged (Non-POS)
                         elif self.tagged == main.tr('Tagged (Non-POS)'):
                             # Replace all tags with a whitespace to ensure no words run together
-                            text_no_tags = re.sub(self.re_tags_non_pos, ' ', text)
+                            text_no_tags = re.sub(re_tags_non_pos, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
                             for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_no_tags, file['lang_code']):
                                 self.tokenize_sentence(sentence)
 
-                            for tag in re.findall(self.re_tags_non_pos, text):
+                            for tag in re.findall(re_tags_non_pos, text):
                                 i_tag = text.index(tag)
 
                                 if i == 0 and i_tag == 0 and not self.tags_non_pos:
@@ -90,13 +91,13 @@ class Wordless_Text():
                         # Tokenized / Tagged (POS)
                         elif self.tagged == main.tr('Tagged (POS)'):
                             # Replace all tags with a whitespace to ensure no words run together
-                            text_no_tags = re.sub(self.re_tags_pos, ' ', text)
+                            text_no_tags = re.sub(re_tags_pos, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
                             for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_no_tags, file['lang_code']):
                                 self.split_sentence(sentence)
 
-                            for tag in re.findall(self.re_tags_pos, text):
+                            for tag in re.findall(re_tags_pos, text):
                                 i_tag = text.index(tag)
 
                                 if i == 0 and i_tag == 0 and not self.tags_pos:
@@ -116,13 +117,13 @@ class Wordless_Text():
                         # Tokenized / Tagged (Non-POS)
                         elif self.tagged == main.tr('Tagged (Non-POS)'):
                             # Replace all tags with a whitespace to ensure no words run together
-                            text_no_tags = re.sub(self.re_tags_non_pos, ' ', text)
+                            text_no_tags = re.sub(re_tags_non_pos, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
                             for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_no_tags, file['lang_code']):
                                 self.split_sentence(sentence)
 
-                            for tag in re.findall(self.re_tags_non_pos, text):
+                            for tag in re.findall(re_tags_non_pos, text):
                                 i_tag = text.index(tag)
 
                                 if i == 0 and i_tag == 0 and not self.tags_non_pos:
@@ -142,16 +143,15 @@ class Wordless_Text():
                         # Tokenized / Tagged (Both)
                         elif self.tagged == main.tr('Tagged (Both)'):
                             # Replace all tags with a whitespace to ensure no words run together
-                            text_no_tags = re.sub(self.re_tags_pos, ' ', text)
-                            text_no_tags = re.sub(self.re_tags_non_pos, ' ', text_no_tags)
+                            text_no_tags = re.sub(re_tags_all, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
                             for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_no_tags, file['lang_code']):
                                 self.split_sentence(sentence)
 
                             while text:
-                                tag_pos = re.search(self.re_tags_pos, text)
-                                tag_non_pos = re.search(self.re_tags_non_pos, text)
+                                tag_pos = re.search(re_tags_pos, text)
+                                tag_non_pos = re.search(re_tags_non_pos, text)
 
                                 if tag_pos:
                                     i_tag_pos = text.index(tag_pos.group())

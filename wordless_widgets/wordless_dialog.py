@@ -346,11 +346,19 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
          self.checkbox_inclusion_multi_search_mode,
          self.line_edit_inclusion_search_term,
          self.list_inclusion_search_terms,
+         self.label_inclusion_separator,
 
          self.checkbox_inclusion_ignore_case,
          self.checkbox_inclusion_match_inflected_forms,
          self.checkbox_inclusion_match_whole_word,
-         self.checkbox_inclusion_use_regex) = wordless_widgets.wordless_widgets_search_settings1(main)
+         self.checkbox_inclusion_use_regex,
+
+         self.checkbox_inclusion_ignore_tags,
+         self.checkbox_inclusion_ignore_tags_match_tags,
+         self.combo_box_inclusion_ignore_tags_type,
+         self.combo_box_inclusion_ignore_tags_type_match_tags,
+         self.label_inclusion_ignore_tags,
+         self.checkbox_inclusion_match_tags) = wordless_widgets.wordless_widgets_search_settings(main)
 
         self.label_inclusion_context_window = QLabel(self.tr('Context Window:'), self)
         (self.checkbox_inclusion_context_window_sync,
@@ -371,6 +379,12 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         self.checkbox_inclusion_match_whole_word.stateChanged.connect(self.inclusion_changed)
         self.checkbox_inclusion_use_regex.stateChanged.connect(self.inclusion_changed)
 
+        self.checkbox_inclusion_ignore_tags.stateChanged.connect(self.inclusion_changed)
+        self.checkbox_inclusion_ignore_tags_match_tags.stateChanged.connect(self.inclusion_changed)
+        self.combo_box_inclusion_ignore_tags_type.currentTextChanged.connect(self.inclusion_changed)
+        self.combo_box_inclusion_ignore_tags_type_match_tags.currentTextChanged.connect(self.inclusion_changed)
+        self.checkbox_inclusion_match_tags.stateChanged.connect(self.inclusion_changed)
+
         self.checkbox_inclusion_context_window_sync.stateChanged.connect(self.inclusion_changed)
         self.spin_box_inclusion_context_window_left.valueChanged.connect(self.inclusion_changed)
         self.spin_box_inclusion_context_window_right.valueChanged.connect(self.inclusion_changed)
@@ -387,26 +401,38 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_import, 3, 1)
         layout_inclusion_search_terms.addWidget(self.list_inclusion_search_terms.button_export, 4, 1)
 
+        layout_inclusion_ignore_tags = QGridLayout()
+        layout_inclusion_ignore_tags.addWidget(self.checkbox_inclusion_ignore_tags, 0, 0)
+        layout_inclusion_ignore_tags.addWidget(self.checkbox_inclusion_ignore_tags_match_tags, 0, 0)
+        layout_inclusion_ignore_tags.addWidget(self.combo_box_inclusion_ignore_tags_type, 0, 1)
+        layout_inclusion_ignore_tags.addWidget(self.combo_box_inclusion_ignore_tags_type_match_tags, 0, 1)
+        layout_inclusion_ignore_tags.addWidget(self.label_inclusion_ignore_tags, 0, 2)
+
+        layout_inclusion_ignore_tags.setColumnStretch(3, 1)
+
         self.group_box_inclusion.setLayout(QGridLayout())
         self.group_box_inclusion.layout().addLayout(layout_inclusion_multi_search_mode, 0, 0, 1, 4)
         self.group_box_inclusion.layout().addWidget(self.line_edit_inclusion_search_term, 1, 0, 1, 4)
         self.group_box_inclusion.layout().addLayout(layout_inclusion_search_terms, 2, 0, 1, 4)
+        self.group_box_inclusion.layout().addWidget(self.label_inclusion_separator, 3, 0, 1, 4)
 
         self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_ignore_case, 4, 0, 1, 4)
         self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_match_inflected_forms, 5, 0, 1, 4)
         self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_match_whole_word, 6, 0, 1, 4)
         self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_use_regex, 7, 0, 1, 4)
+        self.group_box_inclusion.layout().addLayout(layout_inclusion_ignore_tags, 8, 0, 1, 4)
+        self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_match_tags, 9, 0, 1, 4)
 
-        self.group_box_inclusion.layout().addWidget(wordless_layout.Wordless_Separator(self), 8, 0, 1, 4)
+        self.group_box_inclusion.layout().addWidget(wordless_layout.Wordless_Separator(self), 10, 0, 1, 4)
 
-        self.group_box_inclusion.layout().addWidget(self.label_inclusion_context_window, 9, 0, 1, 3)
-        self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_context_window_sync, 9, 3, Qt.AlignRight)
-        self.group_box_inclusion.layout().addWidget(self.label_inclusion_context_window_left, 10, 0)
-        self.group_box_inclusion.layout().addWidget(self.spin_box_inclusion_context_window_left, 10, 1)
-        self.group_box_inclusion.layout().addWidget(self.label_inclusion_context_window_right, 10, 2)
-        self.group_box_inclusion.layout().addWidget(self.spin_box_inclusion_context_window_right, 10, 3)
+        self.group_box_inclusion.layout().addWidget(self.label_inclusion_context_window, 11, 0, 1, 3)
+        self.group_box_inclusion.layout().addWidget(self.checkbox_inclusion_context_window_sync, 11, 3, Qt.AlignRight)
+        self.group_box_inclusion.layout().addWidget(self.label_inclusion_context_window_left, 12, 0)
+        self.group_box_inclusion.layout().addWidget(self.spin_box_inclusion_context_window_left, 12, 1)
+        self.group_box_inclusion.layout().addWidget(self.label_inclusion_context_window_right, 12, 2)
+        self.group_box_inclusion.layout().addWidget(self.spin_box_inclusion_context_window_right, 12, 3)
 
-        self.group_box_inclusion.layout().setRowStretch(11, 1)
+        self.group_box_inclusion.layout().setRowStretch(13, 1)
         self.group_box_inclusion.layout().setColumnStretch(1, 1)
         self.group_box_inclusion.layout().setColumnStretch(3, 1)
 
@@ -419,11 +445,19 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
          self.checkbox_exclusion_multi_search_mode,
          self.line_edit_exclusion_search_term,
          self.list_exclusion_search_terms,
+         self.label_exclusion_separator,
 
          self.checkbox_exclusion_ignore_case,
          self.checkbox_exclusion_match_inflected_forms,
          self.checkbox_exclusion_match_whole_word,
-         self.checkbox_exclusion_use_regex) = wordless_widgets.wordless_widgets_search_settings1(main)
+         self.checkbox_exclusion_use_regex,
+
+         self.checkbox_exclusion_ignore_tags,
+         self.checkbox_exclusion_ignore_tags_match_tags,
+         self.combo_box_exclusion_ignore_tags_type,
+         self.combo_box_exclusion_ignore_tags_type_match_tags,
+         self.label_exclusion_ignore_tags,
+         self.checkbox_exclusion_match_tags) = wordless_widgets.wordless_widgets_search_settings(main)
 
         self.label_exclusion_context_window = QLabel(self.tr('Context Window:'), self)
         (self.checkbox_exclusion_context_window_sync,
@@ -444,6 +478,12 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         self.checkbox_exclusion_match_whole_word.stateChanged.connect(self.exclusion_changed)
         self.checkbox_exclusion_use_regex.stateChanged.connect(self.exclusion_changed)
 
+        self.checkbox_exclusion_ignore_tags.stateChanged.connect(self.exclusion_changed)
+        self.checkbox_exclusion_ignore_tags_match_tags.stateChanged.connect(self.exclusion_changed)
+        self.combo_box_exclusion_ignore_tags_type.currentTextChanged.connect(self.exclusion_changed)
+        self.combo_box_exclusion_ignore_tags_type_match_tags.currentTextChanged.connect(self.exclusion_changed)
+        self.checkbox_exclusion_match_tags.stateChanged.connect(self.exclusion_changed)
+
         self.checkbox_exclusion_context_window_sync.stateChanged.connect(self.exclusion_changed)
         self.spin_box_exclusion_context_window_left.valueChanged.connect(self.exclusion_changed)
         self.spin_box_exclusion_context_window_right.valueChanged.connect(self.exclusion_changed)
@@ -460,26 +500,43 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_import, 3, 1)
         layout_exclusion_search_terms.addWidget(self.list_exclusion_search_terms.button_export, 4, 1)
 
+        layout_exclusion_ignore_tags = QGridLayout()
+        layout_exclusion_ignore_tags.addWidget(self.checkbox_exclusion_ignore_tags, 0, 0)
+        layout_exclusion_ignore_tags.addWidget(self.checkbox_exclusion_ignore_tags_match_tags, 0, 0)
+        layout_exclusion_ignore_tags.addWidget(self.combo_box_exclusion_ignore_tags_type, 0, 1)
+        layout_exclusion_ignore_tags.addWidget(self.combo_box_exclusion_ignore_tags_type_match_tags, 0, 1)
+        layout_exclusion_ignore_tags.addWidget(self.label_exclusion_ignore_tags, 0, 2)
+
+        layout_exclusion_ignore_tags.setColumnStretch(3, 1)
+
         self.group_box_exclusion.setLayout(QGridLayout())
         self.group_box_exclusion.layout().addLayout(layout_exclusion_multi_search_mode, 0, 0, 1, 4)
         self.group_box_exclusion.layout().addWidget(self.line_edit_exclusion_search_term, 1, 0, 1, 4)
         self.group_box_exclusion.layout().addLayout(layout_exclusion_search_terms, 2, 0, 1, 4)
+        self.group_box_exclusion.layout().addWidget(self.label_exclusion_separator, 3, 0, 1, 4)
 
         self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_ignore_case, 4, 0, 1, 4)
         self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_match_inflected_forms, 5, 0, 1, 4)
         self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_match_whole_word, 6, 0, 1, 4)
         self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_use_regex, 7, 0, 1, 4)
 
-        self.group_box_exclusion.layout().addWidget(wordless_layout.Wordless_Separator(self), 8, 0, 1, 4)
+        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_ignore_case, 4, 0, 1, 4)
+        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_match_inflected_forms, 5, 0, 1, 4)
+        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_match_whole_word, 6, 0, 1, 4)
+        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_use_regex, 7, 0, 1, 4)
+        self.group_box_exclusion.layout().addLayout(layout_exclusion_ignore_tags, 8, 0, 1, 4)
+        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_match_tags, 9, 0, 1, 4)
 
-        self.group_box_exclusion.layout().addWidget(self.label_exclusion_context_window, 9, 0, 1, 3)
-        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_context_window_sync, 9, 3, Qt.AlignRight)
-        self.group_box_exclusion.layout().addWidget(self.label_exclusion_context_window_left, 10, 0)
-        self.group_box_exclusion.layout().addWidget(self.spin_box_exclusion_context_window_left, 10, 1)
-        self.group_box_exclusion.layout().addWidget(self.label_exclusion_context_window_right, 10, 2)
-        self.group_box_exclusion.layout().addWidget(self.spin_box_exclusion_context_window_right, 10, 3)
+        self.group_box_exclusion.layout().addWidget(wordless_layout.Wordless_Separator(self), 10, 0, 1, 4)
 
-        self.group_box_exclusion.layout().setRowStretch(11, 1)
+        self.group_box_exclusion.layout().addWidget(self.label_exclusion_context_window, 11, 0, 1, 3)
+        self.group_box_exclusion.layout().addWidget(self.checkbox_exclusion_context_window_sync, 11, 3, Qt.AlignRight)
+        self.group_box_exclusion.layout().addWidget(self.label_exclusion_context_window_left, 12, 0)
+        self.group_box_exclusion.layout().addWidget(self.spin_box_exclusion_context_window_left, 12, 1)
+        self.group_box_exclusion.layout().addWidget(self.label_exclusion_context_window_right, 12, 2)
+        self.group_box_exclusion.layout().addWidget(self.spin_box_exclusion_context_window_right, 12, 3)
+
+        self.group_box_exclusion.layout().setRowStretch(13, 1)
         self.group_box_exclusion.layout().setColumnStretch(1, 1)
         self.group_box_exclusion.layout().setColumnStretch(3, 1)
 
@@ -528,6 +585,12 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         self.checkbox_inclusion_match_whole_word.setChecked(settings['inclusion']['match_whole_word'])
         self.checkbox_inclusion_use_regex.setChecked(settings['inclusion']['use_regex'])
 
+        self.checkbox_inclusion_ignore_tags.setChecked(settings['inclusion']['ignore_tags'])
+        self.checkbox_inclusion_ignore_tags_match_tags.setChecked(settings['inclusion']['ignore_tags_match_tags'])
+        self.combo_box_inclusion_ignore_tags_type.setCurrentText(settings['inclusion']['ignore_tags_type'])
+        self.combo_box_inclusion_ignore_tags_type_match_tags.setCurrentText(settings['inclusion']['ignore_tags_type_match_tags'])
+        self.checkbox_inclusion_match_tags.setChecked(settings['inclusion']['match_tags'])
+
         self.checkbox_inclusion_context_window_sync.setChecked(settings['inclusion']['context_window_sync'])
 
         if settings['inclusion']['context_window_left'] < 0:
@@ -564,6 +627,12 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         self.checkbox_exclusion_match_whole_word.setChecked(settings['exclusion']['match_whole_word'])
         self.checkbox_exclusion_use_regex.setChecked(settings['exclusion']['use_regex'])
 
+        self.checkbox_exclusion_ignore_tags.setChecked(settings['exclusion']['ignore_tags'])
+        self.checkbox_exclusion_ignore_tags_match_tags.setChecked(settings['exclusion']['ignore_tags_match_tags'])
+        self.combo_box_exclusion_ignore_tags_type.setCurrentText(settings['exclusion']['ignore_tags_type'])
+        self.combo_box_exclusion_ignore_tags_type_match_tags.setCurrentText(settings['exclusion']['ignore_tags_type_match_tags'])
+        self.checkbox_exclusion_match_tags.setChecked(settings['exclusion']['match_tags'])
+
         self.checkbox_exclusion_context_window_sync.setChecked(settings['exclusion']['context_window_sync'])
 
         if settings['exclusion']['context_window_left'] < 0:
@@ -593,6 +662,12 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         self.settings['inclusion']['match_inflected_forms'] = self.checkbox_inclusion_match_inflected_forms.isChecked()
         self.settings['inclusion']['match_whole_word'] = self.checkbox_inclusion_match_whole_word.isChecked()
         self.settings['inclusion']['use_regex'] = self.checkbox_inclusion_use_regex.isChecked()
+
+        self.settings['inclusion']['ignore_tags'] = self.checkbox_inclusion_ignore_tags.isChecked()
+        self.settings['inclusion']['ignore_tags_match_tags'] = self.checkbox_inclusion_ignore_tags_match_tags.isChecked()
+        self.settings['inclusion']['ignore_tags_type'] = self.combo_box_inclusion_ignore_tags_type.currentText()
+        self.settings['inclusion']['ignore_tags_type_match_tags'] = self.combo_box_inclusion_ignore_tags_type_match_tags.currentText()
+        self.settings['inclusion']['match_tags'] = self.checkbox_inclusion_match_tags.isChecked()
         
         self.settings['inclusion']['context_window_sync'] = self.checkbox_inclusion_context_window_sync.isChecked()
 
@@ -617,6 +692,12 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         self.settings['exclusion']['match_inflected_forms'] = self.checkbox_exclusion_match_inflected_forms.isChecked()
         self.settings['exclusion']['match_whole_word'] = self.checkbox_exclusion_match_whole_word.isChecked()
         self.settings['exclusion']['use_regex'] = self.checkbox_exclusion_use_regex.isChecked()
+
+        self.settings['exclusion']['ignore_tags'] = self.checkbox_exclusion_ignore_tags.isChecked()
+        self.settings['exclusion']['ignore_tags_match_tags'] = self.checkbox_exclusion_ignore_tags_match_tags.isChecked()
+        self.settings['exclusion']['ignore_tags_type'] = self.combo_box_exclusion_ignore_tags_type.currentText()
+        self.settings['exclusion']['ignore_tags_type_match_tags'] = self.combo_box_exclusion_ignore_tags_type_match_tags.currentText()
+        self.settings['exclusion']['match_tags'] = self.checkbox_exclusion_match_tags.isChecked()
         
         self.settings['exclusion']['context_window_sync'] = self.checkbox_exclusion_context_window_sync.isChecked()
         
@@ -632,9 +713,9 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
 
     def multi_search_mode_changed(self):
         if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
-            self.setFixedSize(500, 440)
+            self.setFixedSize(520, 480)
         else:
-            self.setFixedSize(500, 290)
+            self.setFixedSize(520, 370)
 
     def restore_default_settings(self):
         reply = wordless_message_box.wordless_message_box_restore_default_settings(self.main)

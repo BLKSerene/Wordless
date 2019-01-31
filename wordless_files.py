@@ -58,8 +58,8 @@ class Wordless_Files():
 
         try:
             with open(new_file['path'], 'r', encoding = new_file['encoding_code']) as f:
-                re_tags_pos = wordless_text.get_re_tags(self.main, self.main.settings_custom['tags']['tags_pos'])
-                re_tags_non_pos = wordless_text.get_re_tags(self.main, self.main.settings_custom['tags']['tags_non_pos'])
+                re_tags_pos = wordless_matching.get_re_tags(self.main, tags = 'pos')
+                re_tags_non_pos = wordless_matching.get_re_tags(self.main, tags = 'non_pos')
 
                 for line in f:
                     if re.search(re_tags_pos, line):

@@ -154,7 +154,9 @@ def init(main):
         checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
         checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        checkbox_ignore_tags_tags_only.setChecked(settings['token_settings']['ignore_tags_tags_only'])
         combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
+        combo_box_ignore_tags_tags_only.setCurrentText(settings['token_settings']['ignore_tags_type_tags_only'])
         checkbox_tags_only.setChecked(settings['token_settings']['tags_only'])
 
         # Generation Settings
@@ -229,7 +231,9 @@ def init(main):
         settings['filter_stop_words'] = checkbox_filter_stop_words.isChecked()
 
         settings['ignore_tags'] = checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_tags_only'] = checkbox_ignore_tags_tags_only.isChecked()
         settings['ignore_tags_type'] = combo_box_ignore_tags.currentText()
+        settings['ignore_tags_type_tags_only'] = combo_box_ignore_tags_tags_only.currentText()
         settings['tags_only'] = checkbox_tags_only.isChecked()
 
     def generation_settings_changed():
@@ -350,7 +354,9 @@ def init(main):
      checkbox_filter_stop_words,
 
      checkbox_ignore_tags,
+     checkbox_ignore_tags_tags_only,
      combo_box_ignore_tags,
+     combo_box_ignore_tags_tags_only,
      label_ignore_tags,
      checkbox_tags_only) = wordless_widgets.wordless_widgets_token_settings(main)
 
@@ -367,12 +373,16 @@ def init(main):
     checkbox_filter_stop_words.stateChanged.connect(token_settings_changed)
 
     checkbox_ignore_tags.stateChanged.connect(token_settings_changed)
+    checkbox_ignore_tags_tags_only.stateChanged.connect(token_settings_changed)
     combo_box_ignore_tags.currentTextChanged.connect(token_settings_changed)
+    combo_box_ignore_tags_tags_only.currentTextChanged.connect(token_settings_changed)
     checkbox_tags_only.stateChanged.connect(token_settings_changed)
 
     layout_ignore_tags = QGridLayout()
     layout_ignore_tags.addWidget(checkbox_ignore_tags, 0, 0)
+    layout_ignore_tags.addWidget(checkbox_ignore_tags_tags_only, 0, 0)
     layout_ignore_tags.addWidget(combo_box_ignore_tags, 0, 1)
+    layout_ignore_tags.addWidget(combo_box_ignore_tags_tags_only, 0, 1)
     layout_ignore_tags.addWidget(label_ignore_tags, 0, 2)
 
     layout_ignore_tags.setColumnStretch(3, 1)
@@ -668,7 +678,8 @@ def generate_wordlists(main, files):
     for file in files:
         text = wordless_text.Wordless_Text(main, file)
 
-        tokens = wordless_token_processing.wordless_preprocess_tokens_wordlist(text, settings = settings['token_settings'])
+        tokens = wordless_token_processing.wordless_preprocess_tokens_wordlist(text,
+                                                                               token_settings = settings['token_settings'])
 
         texts.append(text)
         tokens_freq_files.append(collections.Counter(tokens))

@@ -185,10 +185,10 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
         table_acknowledgements.setRowCount(len(acknowledgements))
 
         for i, (name, ver, authors, license) in enumerate(acknowledgements):
-            table_acknowledgements.setCellWidget(i, 0, wordless_table.Wordless_Label_Html(name, self))
-            table_acknowledgements.setCellWidget(i, 1, wordless_table.Wordless_Label_Html(ver, self))
-            table_acknowledgements.setCellWidget(i, 2, wordless_table.Wordless_Label_Html(authors, self))
-            table_acknowledgements.setCellWidget(i, 3, wordless_table.Wordless_Label_Html(license, self))
+            table_acknowledgements.setCellWidget(i, 0, wordless_label.Wordless_Label_Html(name, self))
+            table_acknowledgements.setCellWidget(i, 1, wordless_label.Wordless_Label_Html(ver, self))
+            table_acknowledgements.setCellWidget(i, 2, wordless_label.Wordless_Label_Html(authors, self))
+            table_acknowledgements.setCellWidget(i, 3, wordless_label.Wordless_Label_Html(license, self))
 
         self.wrapper_info.setLayout(QGridLayout())
         self.wrapper_info.layout().addWidget(label_acknowledgements, 0, 0)

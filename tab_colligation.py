@@ -617,10 +617,10 @@ def init(main):
     checkbox_use_regex.stateChanged.connect(search_settings_changed)
 
     (label_context_settings,
-     button_context_settings) = wordless_widgets.wordless_widgets_context_settings(main, tab = 'colligation')
+     button_context_settings) = wordless_widgets.wordless_widgets_context_settings1(main, tab = 'colligation')
 
-    main.wordless_context_settings_colligation.checkbox_inclusion_match_inflected_forms.setEnabled(False)
-    main.wordless_context_settings_colligation.checkbox_exclusion_match_inflected_forms.setEnabled(False)
+    # main.wordless_context_settings_colligation.checkbox_inclusion_match_inflected_forms.setEnabled(False)
+    # main.wordless_context_settings_colligation.checkbox_exclusion_match_inflected_forms.setEnabled(False)
 
     layout_search_terms = QGridLayout()
     layout_search_terms.addWidget(list_search_terms, 0, 0, 5, 1)

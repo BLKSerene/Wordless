@@ -572,7 +572,7 @@ def init(main):
      checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings1(main)
 
     (label_context_settings,
-     button_context_settings) = wordless_widgets.wordless_widgets_context_settings(main, tab = 'concordancer')
+     button_context_settings) = wordless_widgets.wordless_widgets_context_settings1(main, tab = 'concordancer')
 
     checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
     line_edit_search_term.textChanged.connect(search_settings_changed)
@@ -851,7 +851,7 @@ def generate_table(main, table):
                             # Node
                             node_text = html.escape(wordless_text_processing.wordless_word_detokenize(main, ngram, text.lang_code))
 
-                            label_node = wordless_table.Wordless_Label_Html(f'''
+                            label_node = wordless_label.Wordless_Label_Html(f'''
                                                                                 <span style="color: {node_color}; font-weight: bold;">
                                                                                     {node_text}
                                                                                 </span>

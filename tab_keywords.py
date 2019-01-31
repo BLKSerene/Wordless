@@ -196,7 +196,9 @@ def init(main):
         checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
         checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        checkbox_ignore_tags_tags_only.setChecked(settings['token_settings']['ignore_tags_tags_only'])
         combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
+        combo_box_ignore_tags_tags_only.setCurrentText(settings['token_settings']['ignore_tags_type_tags_only'])
         checkbox_tags_only.setChecked(settings['token_settings']['tags_only'])
 
         # Generation Settings
@@ -267,7 +269,6 @@ def init(main):
 
         token_settings_changed()
         generation_settings_changed()
-        measures_changed()
         table_settings_changed()
         plot_settings_changed()
         filter_settings_changed()
@@ -288,7 +289,9 @@ def init(main):
         settings['filter_stop_words'] = checkbox_filter_stop_words.isChecked()
 
         settings['ignore_tags'] = checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_tags_only'] = checkbox_ignore_tags_tags_only.isChecked()
         settings['ignore_tags_type'] = combo_box_ignore_tags.currentText()
+        settings['ignore_tags_type_tags_only'] = combo_box_ignore_tags_tags_only.currentText()
         settings['tags_only'] = checkbox_tags_only.isChecked()
 
     def generation_settings_changed():
@@ -302,9 +305,6 @@ def init(main):
         settings['test_significance'] = combo_box_test_significance.currentText()
         settings['measure_effect_size'] = combo_box_measure_effect_size.currentText()
         settings['measure_dispersion'] = combo_box_measure_dispersion.currentText()
-
-    def measures_changed():
-        settings = main.settings_custom['keywords']['generation_settings']
 
         # Use File
         use_file_old = combo_box_use_file.currentText()
@@ -321,19 +321,18 @@ def init(main):
         # Use Data
         use_data_old = combo_box_use_data.currentText()
 
-        text_test_significance = settings['test_significance']
-        text_measure_effect_size = settings['measure_effect_size']
-        text_measure_dispersion = settings['measure_dispersion']
-
         combo_box_use_data.clear()
 
-        combo_box_use_data.addItem(main.tr('Frequency'))
+        cols_tests_significance = [col
+                                   for col in main.settings_global['tests_significance']['collocation'][settings['test_significance']]['cols']
+                                   if col]
 
-        combo_box_use_data.addItems([col
-                                     for col in main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
-                                     if col])
-        combo_box_use_data.addItem(main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col'])
-        combo_box_use_data.addItem(main.settings_global['measures_dispersion'][text_measure_dispersion]['col'])
+        combo_box_use_data.addItems([
+            main.tr('Frequency'),
+            *cols_tests_significance,
+            main.settings_global['measures_effect_size']['keywords'][settings['measure_effect_size']]['col'],
+            main.settings_global['measures_dispersion'][settings['measure_dispersion']]['col']
+        ])
 
         if combo_box_use_data.findText(use_data_old) > -1:
             combo_box_use_data.setCurrentText(use_data_old)
@@ -487,7 +486,9 @@ def init(main):
      checkbox_filter_stop_words,
 
      checkbox_ignore_tags,
+     checkbox_ignore_tags_tags_only,
      combo_box_ignore_tags,
+     combo_box_ignore_tags_tags_only,
      label_ignore_tags,
      checkbox_tags_only) = wordless_widgets.wordless_widgets_token_settings(main)
 
@@ -504,12 +505,16 @@ def init(main):
     checkbox_filter_stop_words.stateChanged.connect(token_settings_changed)
 
     checkbox_ignore_tags.stateChanged.connect(token_settings_changed)
+    checkbox_ignore_tags_tags_only.stateChanged.connect(token_settings_changed)
     combo_box_ignore_tags.currentTextChanged.connect(token_settings_changed)
+    combo_box_ignore_tags_tags_only.currentTextChanged.connect(token_settings_changed)
     checkbox_tags_only.stateChanged.connect(token_settings_changed)
 
     layout_ignore_tags = QGridLayout()
     layout_ignore_tags.addWidget(checkbox_ignore_tags, 0, 0)
+    layout_ignore_tags.addWidget(checkbox_ignore_tags_tags_only, 0, 0)
     layout_ignore_tags.addWidget(combo_box_ignore_tags, 0, 1)
+    layout_ignore_tags.addWidget(combo_box_ignore_tags_tags_only, 0, 1)
     layout_ignore_tags.addWidget(label_ignore_tags, 0, 2)
 
     layout_ignore_tags.setColumnStretch(3, 1)
@@ -558,11 +563,8 @@ def init(main):
 
     combo_box_ref_file.currentTextChanged.connect(generation_settings_changed)
     combo_box_test_significance.currentTextChanged.connect(generation_settings_changed)
-    combo_box_test_significance.currentTextChanged.connect(measures_changed)
     combo_box_measure_effect_size.currentTextChanged.connect(generation_settings_changed)
-    combo_box_measure_effect_size.currentTextChanged.connect(measures_changed)
     combo_box_measure_dispersion.currentTextChanged.connect(generation_settings_changed)
-    combo_box_measure_dispersion.currentTextChanged.connect(measures_changed)
 
     layout_settings_measures = QGridLayout()
     layout_settings_measures.addWidget(label_settings_measures, 0, 0)
@@ -892,10 +894,8 @@ def generate_keywords(main, files, ref_file):
     for i, file in enumerate([ref_file] + files):
         text = wordless_text.Wordless_Text(main, file)
 
-        tokens = wordless_token_processing.wordless_preprocess_tokens_wordlist(text, settings = settings['token_settings'])
-
-        print(tokens)
-        print(text.tokens)
+        tokens = wordless_token_processing.wordless_preprocess_tokens_wordlist(text,
+                                                                               token_settings = settings['token_settings'])
 
         keywords_freq_files.append(collections.Counter(tokens))
 
