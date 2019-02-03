@@ -1,5 +1,5 @@
 #
-# Wordless: Matching
+# Wordless: Text - Matching
 #
 # Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -42,7 +42,7 @@ def get_re_tags(main, tags):
     return '|'.join(re_tags)
 
 def match_ngrams(main, search_terms, tokens,
-                 tagged, lang_code, search_settings):
+                 lang, text_type, token_settings, search_settings):
     tokens_searched = []
     ngrams_matched = set()
 
@@ -54,68 +54,83 @@ def match_ngrams(main, search_terms, tokens,
 
     # Search Settings
     if settings['match_tags']:
+        settings['match_inflected_forms'] = False
+
         settings['ignore_tags'] = settings['ignore_tags_match_tags']
         settings['ignore_tags_type'] = settings['ignore_tags_type_match_tags']
 
+    # Token Settings
+    if token_settings['tags_only']:
+        settings['match_inflected_forms'] = False
+        settings['match_tags'] = False
+
+        if token_settings['ignore_tags_tags_only']:
+            settings['ignore_tags'] = False
+    else:
+        if token_settings['ignore_tags']:
+            if token_settings['ignore_tags_type'] == main.tr('All'):
+                settings['ignore_tags'] = False
+                settings['match_tags'] = False
+
     # Match Tags Only & Ignore Tags
-    if search_settings['match_tags']:
-        if search_settings['ignore_tags']:
-            if tagged == main.tr('Untagged'):
+    if settings['match_tags']:
+        if settings['ignore_tags']:
+            if text_type[1] == 'untagged':
                 tokens_searched = []
             else:
-                if search_settings['ignore_tags_type'] == main.tr('POS'):
-                    if tagged in [main.tr('Tagged (Both)'), main.tr('Tagged (Non-POS)')]:
+                if settings['ignore_tags_type'] == main.tr('POS'):
+                    if text_type[1] in ['tagged_both', 'tagged_non_pos']:
                         tokens_searched = [''.join(re.findall(re_tags_non_pos, token)) for token in tokens]
-                    elif tagged == main.tr('Tagged (POS)'):
+                    elif text_type[1] == 'tagged_pos':
                         tokens_searched = []
-                elif search_settings['ignore_tags_type'] == main.tr('Non-POS'):
-                    if tagged in [main.tr('Tagged (Both)'), main.tr('Tagged (POS)')]:
+                elif settings['ignore_tags_type'] == main.tr('Non-POS'):
+                    if text_type[1] in ['tagged_both', 'tagged_pos']:
                         tokens_searched = [''.join(re.findall(re_tags_pos, token)) for token in tokens]
-                    elif tagged == main.tr('Tagged (Non-POS)'):
+                    elif text_type[1] == 'tagged_non_pos':
                         tokens_searched = []
         else:
-            if tagged == main.tr('Untagged'):
+            if text_type[1] == 'untagged':
                 tokens_searched = []
-            elif tagged == main.tr('Tagged (POS)'):
+            elif text_type[1] == 'tagged_pos':
                 tokens_searched = [''.join(re.findall(re_tags_pos, token)) for token in tokens]
-            elif tagged == main.tr('Tagged (Non-POS)'):
+            elif text_type[1] == 'tagged_non_pos':
                 tokens_searched = [''.join(re.findall(re_tags_non_pos, token)) for token in tokens]
-            elif tagged == main.tr('Tagged (Both)'):
+            elif text_type[1] == 'tagged_both':
                 tokens_searched = [''.join(re.findall(re_tags_all, token)) for token in tokens]
     else:
-        if search_settings['ignore_tags']:
-            if tagged == main.tr('Untagged'):
+        if settings['ignore_tags']:
+            if text_type[1] == 'untagged':
                 tokens_searched = tokens
             else:
-                if search_settings['ignore_tags_type'] == main.tr('All'):
-                    if tagged == main.tr('Tagged (Both)'):
+                if settings['ignore_tags_type'] == main.tr('All'):
+                    if text_type[1] == 'tagged_both':
                         tokens_searched = [re.sub(re_tags_all, '', token) for token in tokens]
-                    elif tagged == main.tr('Tagged (POS)'):
+                    elif text_type[1] == 'tagged_pos':
                         tokens_searched = [re.sub(re_tags_pos, '', token) for token in tokens]
-                    elif tagged == main.tr('Tagged (Non-POS)'):
+                    elif text_type[1] == 'tagged_non_pos':
                         tokens_searched = [re.sub(re_tags_non_pos, '', token) for token in tokens]
-                elif search_settings['ignore_tags_type'] == main.tr('POS'):
-                    if tagged in [main.tr('Tagged (Both)'), main.tr('Tagged (POS)')]:
+                elif settings['ignore_tags_type'] == main.tr('POS'):
+                    if text_type[1] in ['tagged_both', 'tagged_pos']:
                         tokens_searched = [re.sub(re_tags_pos, '', token) for token in tokens]
-                    elif tagged == main.tr('Tagged (Non-POS)'):
+                    elif text_type[1] == 'tagged_non_pos':
                         tokens_searched = tokens
-                elif search_settings['ignore_tags_type'] == main.tr('Non-POS'):
-                    if tagged in [main.tr('Tagged (Both)'), main.tr('Tagged (Non-POS)')]:
+                elif settings['ignore_tags_type'] == main.tr('Non-POS'):
+                    if text_type[1] in ['tagged_both', 'tagged_non_pos']:
                         tokens_searched = [re.sub(re_tags_non_pos, '', token) for token in tokens]
-                    elif tagged == main.tr('Tagged (POS)'):
+                    elif text_type[1] == 'tagged_pos':
                         tokens_searched = tokens
         else:
             tokens_searched = tokens
 
     if tokens_searched:
-        if search_settings['use_regex']:
+        if settings['use_regex']:
             for ngram_search in search_terms:
                 len_ngram_search = len(ngram_search)
 
-                if search_settings['match_whole_word']:
+                if settings['match_whole_word']:
                     ngram_search = [fr'(^|\s+){token}(\s+|$)' for token in ngram_search]
 
-                if search_settings['ignore_case']:
+                if settings['ignore_case']:
                     flags = re.IGNORECASE
                 else:
                     flags = 0
@@ -138,10 +153,10 @@ def match_ngrams(main, search_terms, tokens,
 
                 ngram_search = [re.escape(token) for token in ngram_search]
 
-                if search_settings['match_whole_word']:
+                if settings['match_whole_word']:
                     ngram_search = [fr'(^|\s+){token}(\s+|$)' for token in ngram_search]
 
-                if search_settings['ignore_case']:
+                if settings['ignore_case']:
                     flags = re.IGNORECASE
                 else:
                     flags = 0
@@ -159,18 +174,9 @@ def match_ngrams(main, search_terms, tokens,
                     if matched:
                         ngrams_matched.add(ngram_text)
 
-        if (not search_settings['match_tags'] and
-            (tagged == main.tr('Untagged') or
-             tagged == main.tr('Tagged (Both)') and search_settings['ignore_tags_type'] == main.tr('All') or
-             tagged == main.tr('Tagged (POS)') and search_settings['ignore_tags_type'] == main.tr('All') or
-             tagged == main.tr('Tagged (POS)') and search_settings['ignore_tags_type'] == main.tr('POS') or
-             tagged == main.tr('Tagged (Non-POS)') and search_settings['ignore_tags_type'] == main.tr('All') or
-             tagged == main.tr('Tagged (Non-POS)') and search_settings['ignore_tags_type'] == main.tr('Non-POS') or
-             tagged == main.tr('Untagged')) and
-            search_settings['match_inflected_forms']):
-            print('test')
-            tokens_text_lemma = wordless_text_processing.wordless_lemmatize(main, tokens_searched, lang_code)
-            ngrams_matched_lemma = [wordless_text_processing.wordless_lemmatize(main, ngram, lang_code)
+        if settings['match_inflected_forms']:
+            tokens_text_lemma = wordless_text_processing.wordless_lemmatize(main, tokens_searched, lang, text_type)
+            ngrams_matched_lemma = [wordless_text_processing.wordless_lemmatize(main, ngram, lang, text_type)
                                     for ngram in ngrams_matched | set([tuple(search_term) for search_term in search_terms])]
 
             for ngram_matched_lemma in ngrams_matched_lemma:
@@ -179,7 +185,7 @@ def match_ngrams(main, search_terms, tokens,
                 ngram_matched_lemma = [re.escape(token) for token in ngram_matched_lemma]
                 ngram_matched_lemma = [fr'(^|\s+){token}(\s+|$)' for token in ngram_matched_lemma]
 
-                if search_settings['ignore_case']:
+                if settings['ignore_case']:
                     flags = re.IGNORECASE
                 else:
                     flags = 0
@@ -201,7 +207,7 @@ def match_ngrams(main, search_terms, tokens,
     return ngrams_matched
 
 def match_search_terms(main, tokens,
-                       tagged, lang_code, search_settings):
+                       lang, text_type, token_settings, search_settings):
     if ('search_settings' in search_settings and search_settings['search_settings'] or
         'search_settings' not in search_settings):
         if search_settings['multi_search_mode']:
@@ -216,12 +222,12 @@ def match_search_terms(main, tokens,
 
     if search_terms:
         search_terms = match_ngrams(main, search_terms, tokens,
-                                    tagged, lang_code, search_settings)
+                                    lang, text_type, token_settings, search_settings)
 
     return search_terms
 
 def match_search_terms_context(main, tokens,
-                               tagged, lang_code, context_settings):
+                               lang, text_type, token_settings, context_settings):
     search_terms_inclusion = set()
     search_terms_exclusion = set()
 
@@ -237,7 +243,7 @@ def match_search_terms_context(main, tokens,
 
         if search_terms:
             search_terms_inclusion = match_ngrams(main, search_terms, tokens,
-                                                  tagged, lang_code, context_settings['inclusion'])
+                                                  lang, text_type, token_settings, context_settings['inclusion'])
 
             for search_term in search_terms:
                 search_terms_inclusion.add(tuple(search_term))
@@ -254,7 +260,7 @@ def match_search_terms_context(main, tokens,
 
         if search_terms:
             search_terms_exclusion = match_ngrams(main, search_terms, tokens,
-                                                  tagged, lang_code, context_settings['exclusion'])
+                                                  lang, text_type, token_settings, context_settings['exclusion'])
 
             for search_term in search_terms:
                 search_terms_exclusion.add(tuple(search_term))

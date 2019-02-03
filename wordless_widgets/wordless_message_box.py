@@ -10,7 +10,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_utils import wordless_checking
+from wordless_checking import wordless_checking_misc
 
 # Files
 def wordless_message_box_error_files(main,
@@ -391,6 +391,6 @@ def wordless_message_box_path_not_exist_confirm(main, path):
                                  QMessageBox.No)
 
     if reply == QMessageBox.Yes:
-        wordless_checking.check_dir(path)
+        wordless_checking_misc.check_dir(path)
 
     return reply

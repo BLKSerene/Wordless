@@ -14,8 +14,8 @@ from PyQt5.QtCore import *
 sys.path.append('E:/Wordless')
 
 import wordless_files
-from wordless_widgets import wordless_message_box
-from wordless_utils import wordless_checking
+
+from wordless_checking import wordless_checking_file
 from wordless_settings import init_settings_default, init_settings_global
 
 main = QObject()
@@ -42,12 +42,12 @@ file_paths = [
     os.path.realpath('testing/Checking/Loading Error.txt')
 ]
 
-file_paths, files_missing = wordless_checking.check_files_missing(main, file_paths)
-file_paths, files_empty = wordless_checking.check_files_empty(main, file_paths)
-file_paths, files_duplicate = wordless_checking.check_files_duplicate(main, file_paths)
-file_paths, files_unsupported = wordless_checking.check_files_unsupported(main, file_paths)
-file_paths, files_encoding_error = wordless_checking.check_files_encoding_error(main, file_paths)
-file_paths, files_loading_error = wordless_checking.check_files_loading_error(main, file_paths, ['utf_8'] * len(file_paths))
+file_paths, files_missing = wordless_checking_file.check_files_missing(main, file_paths)
+file_paths, files_empty = wordless_checking_file.check_files_empty(main, file_paths)
+file_paths, files_duplicate = wordless_checking_file.check_files_duplicate(main, file_paths)
+file_paths, files_unsupported = wordless_checking_file.check_files_unsupported(main, file_paths)
+file_paths, files_encoding_error = wordless_checking_file.check_files_encoding_error(main, file_paths)
+file_paths, files_loading_error = wordless_checking_file.check_files_loading_error(main, file_paths, ['utf_8'] * len(file_paths))
 
 print(f'Missing file(s): {files_missing}')
 print(f'Empty file(s): {files_empty}')

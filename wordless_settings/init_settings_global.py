@@ -236,14 +236,15 @@ def init_settings_global(main):
             'other': 'other',
         },
 
-        'text_types': [
-            main.tr('Untokenized / Untagged'),
-            main.tr('Untokenized / Tagged (Non-POS)'),
-            main.tr('Tokenized / Untagged'),
-            main.tr('Tokenized / Tagged (POS)'),
-            main.tr('Tokenized / Tagged (Non-POS)'),
-            main.tr('Tokenized / Tagged (Both)')
-        ],
+        'text_types': {
+            main.tr('Untokenized / Untagged'): ('untokenized', 'untagged'),
+            main.tr('Untokenized / Tagged (Non-POS)'): ('untokenized', 'tagged_non_pos'),
+
+            main.tr('Tokenized / Untagged'): ('tokenized', 'untagged'),
+            main.tr('Tokenized / Tagged (POS)'): ('tokenized', 'tagged_pos'),
+            main.tr('Tokenized / Tagged (Non-POS)'): ('tokenized', 'tagged_non_pos'),
+            main.tr('Tokenized / Tagged (Both)'): ('tokenized', 'tagged_both')
+        },
 
         'file_encodings': {
             main.tr('All Languages (UTF-8 Without BOM)'): 'utf_8',

@@ -358,7 +358,7 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
          self.combo_box_inclusion_ignore_tags_type,
          self.combo_box_inclusion_ignore_tags_type_match_tags,
          self.label_inclusion_ignore_tags,
-         self.checkbox_inclusion_match_tags) = wordless_widgets.wordless_widgets_search_settings(main)
+         self.checkbox_inclusion_match_tags) = wordless_widgets.wordless_widgets_search_settings(main, tab = tab)
 
         self.label_inclusion_context_window = QLabel(self.tr('Context Window:'), self)
         (self.checkbox_inclusion_context_window_sync,
@@ -457,7 +457,7 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
          self.combo_box_exclusion_ignore_tags_type,
          self.combo_box_exclusion_ignore_tags_type_match_tags,
          self.label_exclusion_ignore_tags,
-         self.checkbox_exclusion_match_tags) = wordless_widgets.wordless_widgets_search_settings(main)
+         self.checkbox_exclusion_match_tags) = wordless_widgets.wordless_widgets_search_settings(main, tab = tab)
 
         self.label_exclusion_context_window = QLabel(self.tr('Context Window:'), self)
         (self.checkbox_exclusion_context_window_sync,
@@ -651,6 +651,11 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
 
         self.line_edit_exclusion_search_term.returnPressed.connect(self.button_ok.click)
 
+        self.inclusion_changed()
+        self.exclusion_changed()
+        self.multi_search_mode_changed()
+        self.token_settings_changed()
+
     def inclusion_changed(self):
         self.settings['inclusion']['inclusion'] = self.group_box_inclusion.isChecked()
 
@@ -680,6 +685,9 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
             self.settings['inclusion']['context_window_right'] = -self.spin_box_inclusion_context_window_right.value()
         else:
             self.settings['inclusion']['context_window_right'] = self.spin_box_inclusion_context_window_right.value()
+
+        if self.settings['inclusion']['inclusion']:
+            self.checkbox_inclusion_match_tags.token_settings_changed()
 
     def exclusion_changed(self):
         self.settings['exclusion']['exclusion'] = self.group_box_exclusion.isChecked()
@@ -711,11 +719,18 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         else:
             self.settings['exclusion']['context_window_right'] = self.spin_box_exclusion_context_window_right.value()
 
+        if self.settings['exclusion']['exclusion']:
+            self.checkbox_exclusion_match_tags.token_settings_changed()
+
     def multi_search_mode_changed(self):
         if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
             self.setFixedSize(520, 480)
         else:
             self.setFixedSize(520, 370)
+
+    def token_settings_changed(self):
+        self.checkbox_inclusion_match_tags.token_settings_changed()
+        self.checkbox_exclusion_match_tags.token_settings_changed()
 
     def restore_default_settings(self):
         reply = wordless_message_box.wordless_message_box_restore_default_settings(self.main)

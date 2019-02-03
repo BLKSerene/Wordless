@@ -17,6 +17,7 @@ import nltk
 import numpy
 import matplotlib.pyplot
 
+from wordless_checking import *
 from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
@@ -349,9 +350,9 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
 
             for i, (left, node, right,
                     token_no, sentence_no, para_no, file) in enumerate(sorted(results, key = key_concordancer)):
-                for file_open in self.table.settings['file']['files_open']:
+                for file_open in self.table.settings['files']['files_open']:
                     if file_open['selected'] and file_open['name'] == file:
-                        lang_code = file_open['lang_code']
+                        lang = file_open['lang']
 
                 # Remove empty tokens
                 left = [token for token in left if token]
@@ -387,9 +388,9 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
 
                         i_highlight_color_right += 1
 
-                self.table.cellWidget(i, 0).setText(wordless_text_processing.wordless_word_detokenize(self.main, left, lang_code))
+                self.table.cellWidget(i, 0).setText(wordless_text_processing.wordless_word_detokenize(self.main, left, lang))
                 self.table.cellWidget(i, 1).setText(node)
-                self.table.cellWidget(i, 2).setText(wordless_text_processing.wordless_word_detokenize(self.main, right, lang_code))
+                self.table.cellWidget(i, 2).setText(wordless_text_processing.wordless_word_detokenize(self.main, right, lang))
 
                 self.table.item(i, 3).val = token_no
                 self.table.item(i, 4).val = sentence_no
@@ -423,6 +424,12 @@ def init(main):
         # Token Settings
         checkbox_puncs.setChecked(settings['token_settings']['puncs'])
 
+        checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        checkbox_ignore_tags_tags_only.setChecked(settings['token_settings']['ignore_tags_tags_only'])
+        combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
+        combo_box_ignore_tags_tags_only.setCurrentText(settings['token_settings']['ignore_tags_type_tags_only'])
+        checkbox_tags_only.setChecked(settings['token_settings']['tags_only'])
+
         # Search Settings
         checkbox_multi_search_mode.setChecked(settings['search_settings']['multi_search_mode'])
 
@@ -436,6 +443,12 @@ def init(main):
         checkbox_match_inflected_forms.setChecked(settings['search_settings']['match_inflected_forms'])
         checkbox_match_whole_word.setChecked(settings['search_settings']['match_whole_word'])
         checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
+
+        checkbox_ignore_tags_search.setChecked(settings['search_settings']['ignore_tags'])
+        checkbox_ignore_tags_search_match_tags.setChecked(settings['search_settings']['ignore_tags_match_tags'])
+        combo_box_ignore_tags_search.setCurrentText(settings['search_settings']['ignore_tags_type'])
+        combo_box_ignore_tags_search_match_tags.setCurrentText(settings['search_settings']['ignore_tags_type_match_tags'])
+        checkbox_match_tags.setChecked(settings['search_settings']['match_tags'])
 
         # Context Settings
         if defaults:
@@ -481,6 +494,15 @@ def init(main):
 
         settings['puncs'] = checkbox_puncs.isChecked()
 
+        settings['ignore_tags'] = checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_tags_only'] = checkbox_ignore_tags_tags_only.isChecked()
+        settings['ignore_tags_type'] = combo_box_ignore_tags.currentText()
+        settings['ignore_tags_type_tags_only'] = combo_box_ignore_tags_tags_only.currentText()
+        settings['tags_only'] = checkbox_tags_only.isChecked()
+
+        checkbox_match_tags.token_settings_changed()
+        main.wordless_context_settings_concordancer.token_settings_changed()
+
     def search_settings_changed():
         settings = main.settings_custom['concordancer']['search_settings']
 
@@ -492,6 +514,12 @@ def init(main):
         settings['match_inflected_forms'] = checkbox_match_inflected_forms.isChecked()
         settings['match_whole_word'] = checkbox_match_whole_word.isChecked()
         settings['use_regex'] = checkbox_use_regex.isChecked()
+
+        settings['ignore_tags'] = checkbox_ignore_tags_search.isChecked()
+        settings['ignore_tags_match_tags'] = checkbox_ignore_tags_search_match_tags.isChecked()
+        settings['ignore_tags_type'] = combo_box_ignore_tags_search.currentText()
+        settings['ignore_tags_type_match_tags'] = combo_box_ignore_tags_search_match_tags.currentText()
+        settings['match_tags'] = checkbox_match_tags.isChecked()
 
     def generation_settings_changed():
         settings = main.settings_custom['concordancer']['generation_settings']
@@ -551,12 +579,39 @@ def init(main):
     # Token Settings
     group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
 
-    checkbox_puncs = QCheckBox(main.tr('Punctuations'), main)
+    (checkbox_puncs,
+
+     checkbox_ignore_tags,
+     checkbox_ignore_tags_tags_only,
+     combo_box_ignore_tags,
+     combo_box_ignore_tags_tags_only,
+     label_ignore_tags,
+     checkbox_tags_only) = wordless_widgets.wordless_widgets_token_settings_concordancer(main)
 
     checkbox_puncs.stateChanged.connect(token_settings_changed)
 
+    checkbox_ignore_tags.stateChanged.connect(token_settings_changed)
+    checkbox_ignore_tags_tags_only.stateChanged.connect(token_settings_changed)
+    combo_box_ignore_tags.currentTextChanged.connect(token_settings_changed)
+    combo_box_ignore_tags_tags_only.currentTextChanged.connect(token_settings_changed)
+    checkbox_tags_only.stateChanged.connect(token_settings_changed)
+
+    layout_ignore_tags = QGridLayout()
+    layout_ignore_tags.addWidget(checkbox_ignore_tags, 0, 0)
+    layout_ignore_tags.addWidget(checkbox_ignore_tags_tags_only, 0, 0)
+    layout_ignore_tags.addWidget(combo_box_ignore_tags, 0, 1)
+    layout_ignore_tags.addWidget(combo_box_ignore_tags_tags_only, 0, 1)
+    layout_ignore_tags.addWidget(label_ignore_tags, 0, 2)
+
+    layout_ignore_tags.setColumnStretch(3, 1)
+
     group_box_token_settings.setLayout(QGridLayout())
-    group_box_token_settings.layout().addWidget(checkbox_puncs)
+    group_box_token_settings.layout().addWidget(checkbox_puncs, 0, 0)
+
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 1, 0)
+
+    group_box_token_settings.layout().addLayout(layout_ignore_tags, 2, 0)
+    group_box_token_settings.layout().addWidget(checkbox_tags_only, 3, 0)
 
     # Search Settings
     group_box_search_settings = QGroupBox(main.tr('Search Settings'), main)
@@ -565,14 +620,22 @@ def init(main):
      checkbox_multi_search_mode,
      line_edit_search_term,
      list_search_terms,
+     label_separator,
 
      checkbox_ignore_case,
      checkbox_match_inflected_forms,
      checkbox_match_whole_word,
-     checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings1(main)
+     checkbox_use_regex,
+
+     checkbox_ignore_tags_search,
+     checkbox_ignore_tags_search_match_tags,
+     combo_box_ignore_tags_search,
+     combo_box_ignore_tags_search_match_tags,
+     label_ignore_tags_search,
+     checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(main, tab = 'concordancer')
 
     (label_context_settings,
-     button_context_settings) = wordless_widgets.wordless_widgets_context_settings1(main, tab = 'concordancer')
+     button_context_settings) = wordless_widgets.wordless_widgets_context_settings(main, tab = 'concordancer')
 
     checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
     line_edit_search_term.textChanged.connect(search_settings_changed)
@@ -584,6 +647,12 @@ def init(main):
     checkbox_match_whole_word.stateChanged.connect(search_settings_changed)
     checkbox_use_regex.stateChanged.connect(search_settings_changed)
 
+    checkbox_ignore_tags_search.stateChanged.connect(search_settings_changed)
+    checkbox_ignore_tags_search_match_tags.stateChanged.connect(search_settings_changed)
+    combo_box_ignore_tags_search.currentTextChanged.connect(search_settings_changed)
+    combo_box_ignore_tags_search_match_tags.currentTextChanged.connect(search_settings_changed)
+    checkbox_match_tags.stateChanged.connect(search_settings_changed)
+
     layout_search_terms = QGridLayout()
     layout_search_terms.addWidget(list_search_terms, 0, 0, 5, 1)
     layout_search_terms.addWidget(list_search_terms.button_add, 0, 1)
@@ -591,6 +660,15 @@ def init(main):
     layout_search_terms.addWidget(list_search_terms.button_clear, 2, 1)
     layout_search_terms.addWidget(list_search_terms.button_import, 3, 1)
     layout_search_terms.addWidget(list_search_terms.button_export, 4, 1)
+
+    layout_ignore_tags_search = QGridLayout()
+    layout_ignore_tags_search.addWidget(checkbox_ignore_tags_search, 0, 0)
+    layout_ignore_tags_search.addWidget(checkbox_ignore_tags_search_match_tags, 0, 0)
+    layout_ignore_tags_search.addWidget(combo_box_ignore_tags_search, 0, 1)
+    layout_ignore_tags_search.addWidget(combo_box_ignore_tags_search_match_tags, 0, 1)
+    layout_ignore_tags_search.addWidget(label_ignore_tags_search, 0, 2)
+
+    layout_ignore_tags_search.setColumnStretch(3, 1)
 
     layout_context_settings = QGridLayout()
     layout_context_settings.addWidget(label_context_settings, 0, 0)
@@ -603,15 +681,19 @@ def init(main):
     group_box_search_settings.layout().addWidget(checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
     group_box_search_settings.layout().addWidget(line_edit_search_term, 1, 0, 1, 2)
     group_box_search_settings.layout().addLayout(layout_search_terms, 2, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(label_separator, 3, 0, 1, 2)
 
-    group_box_search_settings.layout().addWidget(checkbox_ignore_case, 3, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_match_inflected_forms, 4, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 5, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_use_regex, 6, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_ignore_case, 4, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_match_inflected_forms, 5, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 6, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_use_regex, 7, 0, 1, 2)
 
-    group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0, 1, 2)
+    group_box_search_settings.layout().addLayout(layout_ignore_tags_search, 8, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_match_tags, 9, 0, 1, 2)
 
-    group_box_search_settings.layout().addLayout(layout_context_settings, 8, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 10, 0, 1, 2)
+
+    group_box_search_settings.layout().addLayout(layout_context_settings, 11, 0, 1, 2)
 
     # Generation Settings
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'), main)
@@ -740,7 +822,7 @@ def init(main):
 def generate_table(main, table):
     settings = main.settings_custom['concordancer']
 
-    files = main.wordless_files.get_selected_files()
+    files = wordless_checking_file.check_files_loading(main, main.wordless_files.get_selected_files())
 
     if files:
         if (settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms'] or
@@ -749,62 +831,36 @@ def generate_table(main, table):
 
             table.settings = main.settings_custom
 
+            table.hide()
+            table.blockSignals(True)
+            table.setUpdatesEnabled(False)
+
             for file in files:
                 number_lines = 0
                 number_lines_nth = 0
 
                 text = wordless_text.Wordless_Text(main, file)
 
-                if not settings['token_settings']['puncs']:
-                    text.tokens_no_puncs = [token for token in text.tokens if [char for char in token if char.isalnum()]]
-
-                    text.para_offsets = []
-                    text.sentence_offsets = []
-                    text.tokens = []
-                    text.token_offsets = []
-
-                    for para in text.paras:
-                        text.para_offsets.append(len(text.tokens))
-
-                        for sentence in wordless_text_processing.wordless_sentence_tokenize(main, para, file['lang_code']):
-                            text.sentence_offsets.append(len(text.tokens))
-
-                            for token in wordless_text_processing.wordless_word_tokenize(main, sentence, file['lang_code']):
-                                if text.tokens:
-                                    if [char for char in token if char.isalnum()]:
-                                        text.tokens.append(token)
-                                        text.token_offsets.append(text.token_offsets[-1] + 1)
-                                    else:
-                                        text.tokens[-1] += token
-                                        text.token_offsets.append(text.token_offsets[-1])
-                                else:
-                                    text.tokens.append(token)
-                                    text.token_offsets.append(0)
-
-                    if not text.tokens[0].isalnum():
-                        text.tokens_no_puncs = [''] + text.tokens_no_puncs
+                tokens = wordless_token_processing.wordless_preprocess_tokens_concordancer(text,
+                                                                                           token_settings = settings['token_settings'])
 
                 len_paras = len(text.paras)
                 len_sentences = len(text.sentences)
                 len_tokens = len(text.tokens)
 
-                table.hide()
-                table.blockSignals(True)
-                table.setUpdatesEnabled(False)
-
-                if settings['token_settings']['puncs']:
-                    tokens_text = text.tokens
-                else:
-                    tokens_text = text.tokens_no_puncs
-
-                search_terms = wordless_matching.match_search_terms(main, tokens_text,
-                                                                    lang_code = text.lang_code,
-                                                                    settings = settings['search_settings'])
+                search_terms = wordless_matching.match_search_terms(main, tokens,
+                                                                    lang = text.lang,
+                                                                    text_type = text.text_type,
+                                                                    token_settings = settings['token_settings'],
+                                                                    search_settings = settings['search_settings'])
 
                 (search_terms_inclusion,
-                 search_terms_exclusion) = wordless_matching.match_search_terms_context(main, tokens_text,
-                                                                                        lang_code = text.lang_code,
-                                                                                        settings = settings['context_settings'])
+                 search_terms_exclusion) = wordless_matching.match_search_terms_context(main, tokens,
+                                                                                        lang = text.lang,
+                                                                                        text_type = text.text_type,
+                                                                                        token_settings = settings['token_settings'],
+                                                                                        context_settings = settings['context_settings'])
+
                 if search_terms:
                     len_search_term_min = min([len(search_term) for search_term in search_terms])
                     len_search_term_max = max([len(search_term) for search_term in search_terms])
@@ -820,9 +876,9 @@ def generate_table(main, table):
                         if number_lines >= settings['generation_settings']['number_lines']:
                             break
 
-                    for i, ngram in enumerate(nltk.ngrams(tokens_text, len_search_term)):
+                    for i, ngram in enumerate(nltk.ngrams(tokens, len_search_term)):
                         if (ngram in search_terms and
-                            wordless_text_utils.check_context(i, tokens_text,
+                            wordless_text_utils.check_context(i, tokens,
                                                               settings = settings['context_settings'],
                                                               search_terms_inclusion = search_terms_inclusion,
                                                               search_terms_exclusion = search_terms_exclusion)):
@@ -849,7 +905,7 @@ def generate_table(main, table):
                             table.setRowCount(table.rowCount() + 1)
 
                             # Node
-                            node_text = html.escape(wordless_text_processing.wordless_word_detokenize(main, ngram, text.lang_code))
+                            node_text = html.escape(wordless_text_processing.wordless_word_detokenize(main, ngram, text.lang))
 
                             label_node = wordless_label.Wordless_Label_Html(f'''
                                                                                 <span style="color: {node_color}; font-weight: bold;">
@@ -873,8 +929,8 @@ def generate_table(main, table):
                                     text_search_left = copy.deepcopy(context_left)
                                     text_search_right = copy.deepcopy(context_right)
                                 else:
-                                    text_search_left = tokens_text[max(0, i - settings['generation_settings']['width_left_token']) : i]
-                                    text_search_right = tokens_text[i + len_search_term : min(i + len_search_term + settings['generation_settings']['width_right_token'], len_tokens)]
+                                    text_search_left = tokens[max(0, i - settings['generation_settings']['width_left_token']) : i]
+                                    text_search_right = tokens[i + len_search_term : min(i + len_search_term + settings['generation_settings']['width_right_token'], len_tokens)]
                             else:
                                 len_context_left = 0
                                 len_context_right = 0
@@ -886,7 +942,7 @@ def generate_table(main, table):
                                     if i - 1 - len(context_left) < 0:
                                         break
                                     else:
-                                        token_next = tokens_text[i - 1 - len(context_left)]
+                                        token_next = tokens[i - 1 - len(context_left)]
                                         len_token_next = len(token_next)
 
                                     if len_context_left + len_token_next > settings['generation_settings']['width_left_char']:
@@ -947,8 +1003,8 @@ def generate_table(main, table):
                             context_left = [html.escape(token) for token in context_left]
                             context_right = [html.escape(token) for token in context_right]
 
-                            context_left_text = wordless_text_processing.wordless_word_detokenize(main, context_left, text.lang_code)
-                            context_right_text = wordless_text_processing.wordless_word_detokenize(main, context_right, text.lang_code)
+                            context_left_text = wordless_text_processing.wordless_word_detokenize(main, context_left, text.lang)
+                            context_right_text = wordless_text_processing.wordless_word_detokenize(main, context_right, text.lang)
 
                             # Left
                             table.setCellWidget(table.rowCount() - 1, 0,
@@ -992,9 +1048,9 @@ def generate_table(main, table):
                             # File
                             table.setItem(table.rowCount() - 1, 6, QTableWidgetItem(file['name']))
 
-                table.blockSignals(False)
-                table.setUpdatesEnabled(True)
-                table.show()
+            table.blockSignals(False)
+            table.setUpdatesEnabled(True)
+            table.show()
 
             if table.rowCount() > 0:
                 table.toggle_pct()
@@ -1041,17 +1097,25 @@ def generate_plot(main):
 
             for file in files:
                 text = wordless_text.Wordless_Text(main, file)
-                texts.append(wordless_text.Wordless_Text(main, file))
+
+                text.tokens = wordless_token_processing.wordless_preprocess_tokens_concordancer(text,
+                                                                                           token_settings = settings['token_settings'])
 
                 search_terms_file = wordless_matching.match_search_terms(main, text.tokens,
-                                                                         lang_code = text.lang_code,
-                                                                         settings = settings['search_settings'])
-
-                search_terms_files.append(sorted(search_terms_file, key = lambda item: [token for token in item]))
+                                                                         lang = text.lang,
+                                                                         text_type = text.text_type,
+                                                                         token_settings = settings['token_settings'],
+                                                                         search_settings = settings['search_settings'])
+                #print(tokens)
+                print(text.tokens)
+                print(search_terms_file)
+                search_terms_files.append(sorted(search_terms_file))
 
                 for search_term in search_terms_file:
                     search_terms_total.add(search_term)
-                    search_terms_labels.add(wordless_text_processing.wordless_word_detokenize(main, search_term, text.lang_code))
+                    search_terms_labels.add(wordless_text_processing.wordless_word_detokenize(main, search_term, text.lang))
+
+                texts.append(text)
 
             len_files = len(files)
             len_tokens_total = sum([len(text.tokens) for text in texts])

@@ -13,8 +13,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_checking import wordless_checking_file, wordless_checking_misc
 from wordless_widgets import wordless_message_box
-from wordless_utils import wordless_checking, wordless_conversion, wordless_detection
+from wordless_utils import wordless_conversion, wordless_detection
 
 class Wordless_List(QListWidget):
     def __init__(self, main):
@@ -152,7 +153,7 @@ class Wordless_List_Search_Terms(Wordless_List):
         if file_paths:
             self.main.settings_custom['import']['search_terms']['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
-            file_paths, files_empty = wordless_checking.check_files_empty(self.main, file_paths)
+            file_paths, files_empty = wordless_checking_file.check_files_empty(self.main, file_paths)
 
             if self.main.settings_custom['import']['search_terms']['detect_encodings']:
                 for file_path in file_paths:
@@ -169,7 +170,7 @@ class Wordless_List_Search_Terms(Wordless_List):
 
             encoding_codes = [file['encoding_code'] for file in files]
 
-            file_paths, files_encoding_error = wordless_checking.check_files_loading_error(self.main, file_paths, encoding_codes)
+            file_paths, files_encoding_error = wordless_checking_file.check_files_loading_error(self.main, file_paths, encoding_codes)
 
             for file in files:
                 if file['path'] in file_paths:
@@ -189,7 +190,7 @@ class Wordless_List_Search_Terms(Wordless_List):
 
         file_path = QFileDialog.getSaveFileName(self.main,
                                                 self.tr('Export to File'),
-                                                wordless_checking.check_dir(default_dir),
+                                                wordless_checking_misc.check_dir(default_dir),
                                                 self.tr('Text File (*.txt)'))[0]
 
         if file_path:
@@ -265,7 +266,7 @@ class Wordless_List_Stop_Words(Wordless_List):
         if file_paths:
             self.main.settings_custom['import']['stop_words']['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
-            file_paths, files_empty = wordless_checking.check_files_empty(self.main, file_paths)
+            file_paths, files_empty = wordless_checking_file.check_files_empty(self.main, file_paths)
 
             if self.main.settings_custom['import']['stop_words']['detect_encodings']:
                 for file_path in file_paths:
@@ -282,7 +283,7 @@ class Wordless_List_Stop_Words(Wordless_List):
 
             encoding_codes = [file['encoding_code'] for file in files]
 
-            file_paths, files_encoding_error = wordless_checking.check_files_loading_error(self.main, file_paths, encoding_codes)
+            file_paths, files_encoding_error = wordless_checking_file.check_files_loading_error(self.main, file_paths, encoding_codes)
 
             for file in files:
                 if file['path'] in file_paths:
@@ -302,7 +303,7 @@ class Wordless_List_Stop_Words(Wordless_List):
 
         file_path = QFileDialog.getSaveFileName(self.main,
                                                 self.tr('Export to File'),
-                                                wordless_checking.check_dir(default_dir),
+                                                wordless_checking_misc.check_dir(default_dir),
                                                 self.tr('Text File (*.txt)'))[0]
 
         if file_path:

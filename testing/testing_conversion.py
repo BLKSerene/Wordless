@@ -35,13 +35,19 @@ def testing_to_iso_639_3(lang_code):
 def testing_to_iso_639_1(lang_code):
     print(f'{lang_code:6} -> {wordless_conversion.to_iso_639_1(main, lang_code)}')
 
+def testing_to_text_type_code(text_type_text):
+    print(f'{text_type_text:30} -> {wordless_conversion.to_text_type_code(main, text_type_text)}')
+
+def testing_to_text_type_text(text_type_code):
+    print(f'{str(text_type_code):35} -> {wordless_conversion.to_text_type_text(main, text_type_code)}')
+
 def testing_to_encoding_code(encoding_text):
     print(f'{encoding_text:35} -> {wordless_conversion.to_encoding_code(main, encoding_text)}')
 
 def testing_to_encoding_text(encoding_code):
     print(f'{encoding_code:15} -> {wordless_conversion.to_encoding_text(main, encoding_code)}')
 
-print('---------- Language Code -> Language Text ----------')
+print('---------- Language Text -> Language Code ----------')
 
 testing_to_lang_code('Arabic')
 testing_to_lang_code('Chinese (Simplified)')
@@ -58,7 +64,7 @@ testing_to_lang_code('Portuguese')
 testing_to_lang_code('Russian')
 testing_to_lang_code('Spanish')
 
-print('---------- Language Text -> Language Code ----------')
+print('---------- Language Code -> Language Text ----------')
 
 testing_to_lang_text('ara')
 testing_to_lang_text('zho_cn')
@@ -108,6 +114,22 @@ testing_to_iso_639_1('nno')
 testing_to_iso_639_1('por')
 testing_to_iso_639_1('rus')
 testing_to_iso_639_1('spa')
+
+print('---------- Text Type Text -> Text Type Code ----------')
+testing_to_text_type_code('Untokenized / Untagged')
+testing_to_text_type_code('Untokenized / Tagged (Non-POS)')
+testing_to_text_type_code('Tokenized / Untagged')
+testing_to_text_type_code('Tokenized / Tagged (POS)')
+testing_to_text_type_code('Tokenized / Tagged (Non-POS)')
+testing_to_text_type_code('Tokenized / Tagged (Both)')
+
+print('---------- Text Type Code -> Text Type Text ----------')
+testing_to_text_type_text(('untokenized', 'untagged'))
+testing_to_text_type_text(('untokenized', 'tagged_non_pos'))
+testing_to_text_type_text(('tokenized', 'untagged'))
+testing_to_text_type_text(('tokenized', 'tagged_pos'))
+testing_to_text_type_text(('tokenized', 'tagged_non_pos'))
+testing_to_text_type_text(('tokenized', 'tagged_both'))
 
 print('---------- Encoding Text -> Encoding Code ----------')
 

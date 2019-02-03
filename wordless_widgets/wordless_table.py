@@ -17,8 +17,9 @@ from PyQt5.QtWidgets import *
 import numpy
 import openpyxl
 
+from wordless_checking import wordless_checking_misc
 from wordless_widgets import wordless_box, wordless_message_box
-from wordless_utils import wordless_checking, wordless_conversion
+from wordless_utils import wordless_conversion
 
 class Wordless_Label_Html(QLabel):
     def __init__(self, label, parent):
@@ -756,7 +757,7 @@ class Wordless_Table_Data(Wordless_Table):
         (file_path,
          file_type) = QFileDialog.getSaveFileName(self,
                                                   self.tr('Export Table'),
-                                                  wordless_checking.check_dir(default_dir),
+                                                  wordless_checking_misc.check_dir(default_dir),
                                                   ';;'.join(self.main.settings_global['file_types']['export_tables']),
                                                   self.main.settings_custom['export']['tables']['default_type'])
 

@@ -1,5 +1,5 @@
 #
-# Wordless: Token Processing
+# Wordless: Text - Token Processing
 #
 # Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -8,6 +8,7 @@
 
 import copy
 
+from wordless_checking import wordless_checking_token
 from wordless_text import wordless_text, wordless_text_processing
 
 def wordless_preprocess_tokens(text, token_settings):
@@ -25,8 +26,8 @@ def wordless_preprocess_tokens(text, token_settings):
     if settings['ignore_tags']:
         # Ignore All Tags
         if settings['ignore_tags_type'] == main.tr('All'):
-            tokens = [(token, '') for token in tokens]
-            text.tokens = [(token, '') for token in text.tokens]
+            tokens = [(token, []) for token in tokens]
+            text.tokens = [(token, []) for token in text.tokens]
         # Ignore POS Tags
         elif settings['ignore_tags_type'] == main.tr('POS'):
             tokens = [(token, tags)
@@ -49,7 +50,7 @@ def wordless_preprocess_tokens(text, token_settings):
     if not settings['puncs']:
         tokens = [(token, tags)
                   for token, tags in tokens
-                  if any(map(str.isalnum, token))]
+                  if not wordless_checking_token.is_token_punc(token)]
 
         text.tokens = copy.deepcopy(tokens)
 
@@ -62,39 +63,43 @@ def wordless_preprocess_tokens(text, token_settings):
 
         text.tokens = copy.deepcopy(tokens)
 
-    # Words
-    if settings['words']:
-        # Treat as All Lowercase
-        if not settings['tags_only'] and settings['treat_as_lowercase']:
+    # Treat as All Lowercase
+    if settings['treat_as_lowercase']:
+        if settings['tags_only']:
+            tokens = [(token, [tag.lower() for tag in tags]) for token, tags in tokens]
+
+            text.tokens = copy.deepcopy(tokens)
+        else:
             tokens = [(token.lower(), tags) for token, tags in tokens]
 
             text.tokens = copy.deepcopy(tokens)
-        elif settings['tags_only'] or not settings['treat_as_lowercase']:
-            # Lowercase
-            if not settings['lowercase']:
-                for i, (token, tags) in enumerate(tokens):
-                    if token.islower():
-                        tokens[i] = ('', '')
-            # Uppercase
-            if not settings['uppercase']:
-                for i, (token, tags) in enumerate(tokens):
-                    if token.isupper():
-                        tokens[i] = ('', '')
-            # Title Case
-            if not settings['title_case']:
-                for i, (token, tags) in enumerate(tokens):
-                    if token.istitle():
-                        tokens[i] = ('', '')
+    # Words
+    if settings['words']:
+        # Lowercase
+        if not settings['lowercase']:
+            for i, (token, tags) in enumerate(tokens):
+                if wordless_checking_token.is_token_lowercase(token):
+                    tokens[i] = ('', [])
+        # Uppercase
+        if not settings['uppercase']:
+            for i, (token, tags) in enumerate(tokens):
+                if wordless_checking_token.is_token_uppercase(token):
+                    tokens[i] = ('', [])
+        # Title Case
+        if not settings['title_case']:
+            for i, (token, tags) in enumerate(tokens):
+                if wordless_checking_token.is_token_title_case(token):
+                    tokens[i] = ('', [])
     else:
         for i, (token, tags) in enumerate(tokens):
-            if any(map(str.isalpha, token)):
-                tokens[i] = ('', '')
+            if wordless_checking_token.is_token_word(token):
+                tokens[i] = ('', [])
 
     # Numerals
     if not settings['nums']:
         for i, (token, tags) in enumerate(tokens):
-            if token.isnumeric():
-                tokens[i] = ('', '')
+            if wordless_checking_token.is_token_num(token):
+                tokens[i] = ('', [])
 
     # Filter Stop Words
     if settings['filter_stop_words']:
@@ -103,15 +108,15 @@ def wordless_preprocess_tokens(text, token_settings):
 
         for i, (token, tags) in enumerate(tokens):
             if token not in tokens_filtered:
-                tokens[i] = ('', '')
+                tokens[i] = ('', [])
 
     # Tags Only
     if settings['tags_only']:
-        tokens = [tags for token, tags in tokens]
-        text.tokens = [tags for token, tags in text.tokens]
+        tokens = [tags for _, tags in tokens]
+        text.tokens = [tags for _, tags in text.tokens]
     else:
-        tokens = [f"{token}{''.join(map(str.strip, tags))}" for token, tags in tokens]
-        text.tokens = [f"{token}{''.join(map(str.strip, tags))}" for token, tags in text.tokens]
+        tokens = [f"{token}{''.join(tags)}" for token, tags in tokens]
+        text.tokens = [f"{token}{''.join(tags)}" for token, tags in text.tokens]
 
     return tokens
 
@@ -121,7 +126,7 @@ def wordless_preprocess_tokens_overview(text, token_settings):
     tokens = [token for token in tokens if token]
 
     if token_settings['tags_only']:
-        tokens = [tag.strip() for tags in tokens for tag in tags]
+        tokens = [tag for tags in tokens for tag in tags]
 
     # Remove empty tokens/tags
     tokens = [token for token in tokens if token]
@@ -135,8 +140,8 @@ def wordless_preprocess_tokens_wordlist(text, token_settings):
     text.tokens = [token for token in text.tokens if token]
 
     if token_settings['tags_only']:
-        tokens = [''.join([tag.strip() for tag in tags]) for tags in tokens]
-        text.tokens = [''.join([tag.strip() for tag in tags]) for tags in text.tokens]
+        tokens = [''.join(tags) for tags in tokens]
+        text.tokens = [''.join(tags) for tags in text.tokens]
 
     # Remove empty tokens/tags
     tokens = [token for token in tokens if token]
@@ -147,8 +152,84 @@ def wordless_preprocess_tokens_ngrams(text, token_settings):
     tokens = wordless_preprocess_tokens(text, token_settings)
 
     if token_settings['tags_only']:
-        tokens = [''.join([tag.strip() for tag in tags]) for tags in tokens]
-        text.tokens = [''.join([tag.strip() for tag in tags]) for tags in text.tokens]
+        tokens = [''.join(tags) for tags in tokens]
+        text.tokens = [''.join(tags) for tags in text.tokens]
+
+    return tokens
+
+def wordless_preprocess_tokens_concordancer(text, token_settings):
+    main = text.main
+    tokens = text.tokens.copy()
+
+    settings = copy.deepcopy(token_settings)
+
+    # Token Settings
+    if settings['tags_only']:
+        settings['ignore_tags'] = settings['ignore_tags_tags_only']
+        settings['ignore_tags_type'] = settings['ignore_tags_type_tags_only']
+
+    # Punctuations
+    if not settings['puncs']:
+        tokens = [token
+                  for token in tokens
+                  if not wordless_checking_token.is_token_punc(token)]
+
+        text.para_offsets = []
+        text.sentence_offsets = []
+        text.tokens = []
+
+        for para in text.paras:
+            text.para_offsets.append(len(text.tokens))
+
+            for sentence, sentence_tokens in zip(text.sentences, text.tokens_sentences):
+                # Check if the sentence contains punctuation marks only
+                if not all(map(wordless_checking_token.is_token_punc, sentence_tokens)):
+                    text.sentence_offsets.append(len(text.tokens))
+
+                    for token in sentence_tokens:
+                        if text.tokens:
+                            if wordless_checking_token.is_token_punc(token):
+                                text.tokens[-1] += token
+                            else:
+                                text.tokens.append(token)
+                        else:
+                            text.tokens.append(token)
+
+        # Check if the first token is a punctuation mark
+        if wordless_checking_token.is_token_punc(text.tokens[0]):
+            tokens.insert(0, [])
+
+    # Ignore Tags
+    if settings['ignore_tags']:
+        # Ignore All Tags
+        if settings['ignore_tags_type'] == main.tr('All'):
+            tokens = [(token, []) for token in tokens]
+            text.tokens = [(token, []) for token in text.tokens]
+        # Ignore POS Tags
+        elif settings['ignore_tags_type'] == main.tr('POS'):
+            tokens = [(token, tags)
+                      for token, tags in zip(tokens, text.tags_non_pos)]
+            text.tokens = [(token, tags)
+                           for token, tags in zip(text.tokens, text.tags_non_pos)]
+        # Ignore Non-POS Tags
+        elif settings['ignore_tags_type'] == main.tr('Non-POS'):
+            tokens = [(token, tags)
+                      for token, tags in zip(tokens, text.tags_pos)]
+            text.tokens = [(token, tags)
+                           for token, tags in zip(text.tokens, text.tags_pos)]
+    else:
+        tokens = [(token, tags)
+                  for token, tags in zip(tokens, text.tags_all)]
+        text.tokens = [(token, tags)
+                       for token, tags in zip(text.tokens, text.tags_all)]
+
+    # Tags Only
+    if settings['tags_only']:
+        tokens = [''.join(tags) for _, tags in tokens]
+        text.tokens = [''.join(tags) for _, tags in text.tokens]
+    else:
+        tokens = [f"{token}{''.join(tags)}" for token, tags in tokens]
+        text.tokens = [f"{token}{''.join(tags)}" for token, tags in text.tokens]
 
     return tokens
 
@@ -188,17 +269,6 @@ def wordless_postprocess_tokens(main, tokens, lang_code, settings):
         tokens = [token for token in tokens if not token.isnumeric()]
 
     return tokens
-
-def wordless_postprocess_freq_collocation(main, collocates_freq_file, lang_code, settings):
-    collocates = [collocate[1] for collocate in collocates_freq_file]
-
-    collocates_filtered = wordless_postprocess_tokens(main, collocates, lang_code, settings)
-
-    collocates_freq_file = {collocate: freq_files
-                            for collocate, freq_files in collocates_freq_file.items()
-                            if collocate[1] in collocates_filtered}
-
-    return collocates_freq_file
 
 def wordless_postprocess_freq_colligation(main, collocates_freq_file, tokens, lang_code, settings):
     tokens_filtered = wordless_postprocess_tokens(main, tokens, lang_code, settings)

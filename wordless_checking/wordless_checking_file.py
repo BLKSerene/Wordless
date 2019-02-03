@@ -1,5 +1,5 @@
 #
-# Wordless: Checking
+# Wordless: Checking - File
 #
 # Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
 #
@@ -7,35 +7,11 @@
 #
 
 import os
-import pathlib
 import re
 
 from wordless_utils import wordless_detection
 from wordless_widgets import wordless_message_box
 
-# Settings
-def check_custom_settings(settings_custom, settings_default):
-    def get_keys(settings, keys):
-        for key, value in settings.items():
-            keys.append(key)
-
-            if type(value) == dict:
-                get_keys(value, keys)
-
-        return keys
-    
-    keys_custom = []
-    keys_default = []
-
-    keys_custom = get_keys(settings_custom, keys_custom)
-    keys_default = get_keys(settings_default, keys_default)
-
-    if keys_custom == keys_default:
-        return True
-    else:
-        return False
-
-# Files
 def check_files_missing(main, file_paths):
     files_missing = []
     files_ok = []
@@ -105,12 +81,12 @@ def check_files_encoding_error(main, file_paths):
 
         if os.path.splitext(file_path)[1] in ['.htm', '.html', '.tmx', '.lrc']:
             if main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
-                encoding_code, _ = wordless_detection.detect_encoding(main, file_path)
+                encoding, _ = wordless_detection.detect_encoding(main, file_path)
             else:
-                encoding_code = main.settings_custom['auto_detection']['default_settings']['default_encoding']
+                encoding = main.settings_custom['auto_detection']['default_settings']['default_encoding']
 
             try:
-                open(file_path, 'r', encoding = encoding_code).read()
+                open(file_path, 'r', encoding = encoding).read()
             except:
                 files_encoding_error.append(file_path)
             else:
@@ -120,13 +96,13 @@ def check_files_encoding_error(main, file_paths):
 
     return files_ok, files_encoding_error
 
-def check_files_loading_error(main, file_paths, encoding_codes):
+def check_files_loading_error(main, file_paths, encodings):
     files_loading_error = []
     files_ok = []
 
-    for file_path, encoding_code in zip(file_paths, encoding_codes):
+    for file_path, encoding in zip(file_paths, encodings):
         try:
-            open(file_path, 'r', encoding = encoding_code).read()
+            open(file_path, 'r', encoding = encoding).read()
         except:
             files_loading_error.append(file_path)
         else:
@@ -140,11 +116,11 @@ def check_files_loading(main, files):
     file_paths, files_missing = check_files_missing(main, file_paths)
     file_paths, files_empty = check_files_empty(main, file_paths)
 
-    encoding_codes = [file['encoding_code']
-                      for file in files
-                      if file['path'] in file_paths]
+    encodings = [file['encoding']
+                 for file in files
+                 if file['path'] in file_paths]
 
-    file_paths, files_loading_error = check_files_loading_error(main, file_paths, encoding_codes)
+    file_paths, files_loading_error = check_files_loading_error(main, file_paths, encodings)
 
     wordless_message_box.wordless_message_box_error_files(main,
                                                           files_missing = files_missing,
@@ -158,43 +134,3 @@ def check_files_loading(main, files):
     main.wordless_files.update_table()
 
     return [file for file in files if file['path'] in file_paths]
-
-# Miscellaneous
-def check_dir(dir_name):
-    if not os.path.exists(dir_name):
-        pathlib.Path(dir_name).mkdir(parents = True, exist_ok = True)
-
-    return dir_name
-
-def check_new_name(new_name, names):
-    i = 2
-
-    if new_name in names:
-        while True:
-            new_name_valid = f'{new_name} ({i})'
-
-            if new_name_valid in names:
-                i += 1
-            else:
-                break
-    else:
-        new_name_valid = new_name
-
-    return new_name_valid
-
-def check_new_path(new_path):
-	i = 2
-
-	if os.path.exists(new_path) and os.path.isfile(new_path):
-		while True:
-			path_head, ext = os.path.splitext(new_path)
-			new_path_valid = f'{path_head} ({i}){ext}'
-
-			if os.path.exists(new_path_valid) and os.path.isfile(new_path_valid):
-				i += 1
-			else:
-				break
-	else:
-		new_path_valid = new_path
-
-	return new_path_valid

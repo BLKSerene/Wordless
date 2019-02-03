@@ -17,6 +17,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_checking import *
 from wordless_settings import *
 from wordless_utils import *
 from wordless_widgets import *
@@ -37,7 +38,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
 
         acknowledgements = [
             ['<a href="https://www.python.org/">Python</a>',
-             '3.7.1',
+             '3.7.2',
              'Guido van Rossum, Python Software Foundation',
              '<a href="https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release">PSF</a>'],
 
@@ -233,7 +234,7 @@ class Wordless_Main(QMainWindow):
             with open(r'wordless_settings.pkl', 'rb') as f:
                 settings_custom = pickle.load(f)
 
-            if wordless_checking.check_custom_settings(settings_custom, self.settings_default):
+            if wordless_checking_misc.check_custom_settings(settings_custom, self.settings_default):
                 self.settings_custom = settings_custom
             else:
                 self.settings_custom = copy.deepcopy(self.settings_default)

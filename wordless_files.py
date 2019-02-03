@@ -26,6 +26,7 @@ from docx.text.paragraph import Paragraph
 import openpyxl
 import xlrd
 
+from wordless_checking import *
 from wordless_text import *
 from wordless_widgets import *
 from wordless_utils import *
@@ -43,21 +44,20 @@ class Wordless_Files():
         tagged_non_pos = False
 
         new_file['selected'] = True
-
         new_file['path'] = os.path.normpath(file_path)
         new_file['name'], _ = os.path.splitext(os.path.basename(new_file['path']))
+        new_file['name_old'] = new_file['name']
 
         # Detect encoding
         if self.main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
-            (new_file['encoding_code'],
+            (new_file['encoding'],
              success_encoding_detection) = wordless_detection.detect_encoding(self.main, new_file['path'])
         else:
-            new_file['encoding_code'] = self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
+            new_file['encoding'] = self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
 
-        new_file['encoding_text'] = wordless_conversion.to_encoding_text(self.main, new_file['encoding_code'])
-
+        # Detect text type
         try:
-            with open(new_file['path'], 'r', encoding = new_file['encoding_code']) as f:
+            with open(new_file['path'], 'r', encoding = new_file['encoding']) as f:
                 re_tags_pos = wordless_matching.get_re_tags(self.main, tags = 'pos')
                 re_tags_non_pos = wordless_matching.get_re_tags(self.main, tags = 'non_pos')
 
@@ -76,26 +76,22 @@ class Wordless_Files():
                         break
 
             if tagged_pos and tagged_non_pos:
-                new_file['text_type'] = self.main.tr('Tokenized / Tagged (Both)')
+                new_file['text_type'] = ('tokenized', 'tagged_both')
             elif tagged_pos:
-                new_file['text_type'] = self.main.tr('Tokenized / Tagged (POS)')
+                new_file['text_type'] = ('tokenized', 'tagged_pos')
             elif tagged_non_pos:
-                new_file['text_type'] = self.main.tr('Untokenized / Tagged (Non-POS)')
+                new_file['text_type'] = ('untokenized', 'tagged_non_pos')
             else:
-                new_file['text_type'] = self.main.tr('Untokenized / Untagged')
+                new_file['text_type'] = ('untokenized', 'untagged')
         except:
-            new_file['text_type'] = self.main.tr('Untokenized / Untagged')
+            new_file['text_type'] = ('untokenized', 'untagged')
 
         # Detect language
         if self.main.settings_custom['files']['auto_detection_settings']['detect_langs']:
-            (new_file['lang_code'],
+            (new_file['lang'],
              success_lang_detection) = wordless_detection.detect_lang(self.main, new_file)
         else:
-            new_file['lang_code'] = self.main.settings_custom['auto_detection']['default_settings']['default_lang']
-
-        new_file['lang_text'] = wordless_conversion.to_lang_text(self.main, new_file['lang_code'])
-
-        new_file['name_old'] = new_file['name']
+            new_file['lang'] = self.main.settings_custom['auto_detection']['default_settings']['default_lang']
 
         return (new_file,
                 success_encoding_detection,
@@ -164,11 +160,11 @@ class Wordless_Files():
 
         self.main.settings_custom['import']['files']['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
-        file_paths, files_missing = wordless_checking.check_files_missing(self.main, file_paths)
-        file_paths, files_empty = wordless_checking.check_files_empty(self.main, file_paths)
-        file_paths, files_duplicate = wordless_checking.check_files_duplicate(self.main, file_paths)
-        file_paths, files_unsupported = wordless_checking.check_files_unsupported(self.main, file_paths)
-        file_paths, files_encoding_error = wordless_checking.check_files_encoding_error(self.main, file_paths)
+        file_paths, files_missing = wordless_checking_file.check_files_missing(self.main, file_paths)
+        file_paths, files_empty = wordless_checking_file.check_files_empty(self.main, file_paths)
+        file_paths, files_duplicate = wordless_checking_file.check_files_duplicate(self.main, file_paths)
+        file_paths, files_unsupported = wordless_checking_file.check_files_unsupported(self.main, file_paths)
+        file_paths, files_encoding_error = wordless_checking_file.check_files_encoding_error(self.main, file_paths)
 
         wordless_message_box.wordless_message_box_error_files(self.main,
                                                               files_missing = files_missing,
@@ -178,7 +174,7 @@ class Wordless_Files():
                                                               files_encoding_error = files_encoding_error)
 
         for file_path in file_paths:
-            default_dir = wordless_checking.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
+            default_dir = wordless_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
             default_encoding = self.main.settings_custom['import']['temp_files']['default_encoding']
 
             file_name, file_ext = os.path.splitext(os.path.basename(file_path))
@@ -199,7 +195,7 @@ class Wordless_Files():
                     files_lang_detection_failed.append(new_file['path'])
             else:
                 if file_ext == ['.docx', '.xlsx', '.xls']:
-                    new_path = wordless_checking.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+                    new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
 
                     # Word Documents
                     if file_ext == '.docx':
@@ -251,7 +247,7 @@ class Wordless_Files():
 
                     # CSV Files
                     if file_ext == '.csv':
-                        new_path = wordless_checking.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+                        new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
 
                         with open(new_path, 'w', encoding = default_encoding) as f:
                             with open(file_path, 'r', newline = '', encoding = encoding_code) as f_csv:
@@ -267,7 +263,7 @@ class Wordless_Files():
                         with open(file_path, 'r', encoding = encoding_code) as f:
                             soup = bs4.BeautifulSoup(f.read(), 'lxml')
 
-                        new_path = wordless_checking.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+                        new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
 
                         with open(new_path, 'w', encoding = default_encoding) as f:
                             f.write(soup.get_text())
@@ -288,8 +284,8 @@ class Wordless_Files():
                                 lines_src.append(seg_src.get_text())
                                 lines_target.append(seg_target.get_text())
 
-                        path_src = wordless_checking.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
-                        path_target = wordless_checking.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
+                        path_src = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
+                        path_target = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
 
                         with open(path_src, 'w', encoding = default_encoding) as f:
                             f.write('\n'.join(lines_src))
@@ -325,7 +321,7 @@ class Wordless_Files():
                                     if re.search(r'^\[[0-9]{2}:[0-5][0-9]\.[0-9]{2}\]$', time_tag):
                                         lyrics[time_tag] = line
 
-                        new_path = wordless_checking.check_new_path(f'{default_dir}{file_name}.txt')
+                        new_path = wordless_checking_misc.check_new_path(f'{default_dir}{file_name}.txt')
 
                         with open(new_path, 'w', encoding = default_encoding) as f:
                             for _, lyrics in sorted(lyrics.items()):
@@ -350,7 +346,7 @@ class Wordless_Files():
 
         for new_file in new_files:
             file_names = [file['name'] for file in self.main.settings_custom['files']['files_open']]
-            new_file['name'] = new_file['name_old'] = wordless_checking.check_new_name(new_file['name'], file_names)
+            new_file['name'] = new_file['name_old'] = wordless_checking_misc.check_new_name(new_file['name'], file_names)
 
             self.main.settings_custom['files']['files_open'].append(new_file)
 
@@ -397,9 +393,9 @@ class Wordless_Files():
                 else:
                     checkbox_name.setCheckState(Qt.Unchecked)
 
-                combo_box_lang.setCurrentText(file['lang_text'])
-                combo_box_text_type.setCurrentText(file['text_type'])
-                combo_box_encoding.setCurrentText(file['encoding_text'])
+                combo_box_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, file['lang']))
+                combo_box_text_type.setCurrentText(wordless_conversion.to_text_type_text(self.main, file['text_type']))
+                combo_box_encoding.setCurrentText(wordless_conversion.to_encoding_text(self.main, file['encoding']))
 
                 combo_box_lang.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 1)))
                 combo_box_text_type.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 2)))
@@ -527,19 +523,16 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
             for row in range(self.rowCount()):
                 new_file = {}
 
+                lang_text = self.cellWidget(row, 1).currentText()
+                text_type_text = self.cellWidget(row, 2).currentText()
+                encoding_text = self.cellWidget(row, 4).currentText()
+
                 new_file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
-
                 new_file['name'] = new_file['name_old'] = self.item(row, 0).text()
-
-                new_file['lang_text'] = self.cellWidget(row, 1).currentText()
-                new_file['lang_code'] = wordless_conversion.to_lang_code(self.main, new_file['lang_text'])
-
-                new_file['text_type'] = self.cellWidget(row, 2).currentText()
-
+                new_file['lang'] = wordless_conversion.to_lang_code(self.main, lang_text)
+                new_file['text_type'] = wordless_conversion.to_text_type_code(self.main, text_type_text)
                 new_file['path'] = self.item(row, 3).text()
-
-                new_file['encoding_text'] = self.cellWidget(row, 4).currentText()
-                new_file['encoding_code'] = wordless_conversion.to_encoding_code(self.main, new_file['encoding_text'])
+                new_file['encoding'] = wordless_conversion.to_encoding_code(self.main, encoding_text)
 
                 self.main.settings_custom['files']['files_open'].append(new_file)
 
@@ -583,7 +576,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
 
         file_paths = QFileDialog.getOpenFileNames(self.main,
                                                   self.tr('Open File(s)'),
-                                                  wordless_checking.check_dir(default_dir),
+                                                  wordless_checking_misc.check_dir(default_dir),
                                                   ';;'.join(self.main.settings_global['file_types']['files']),
                                                   self.main.settings_global['file_types']['files'][-1])[0]
 
@@ -717,8 +710,8 @@ def init(main):
     files = copy.deepcopy(main.settings_custom['files']['files_open'])
     file_paths = [file['path'] for file in files]
 
-    file_paths, files_missing = wordless_checking.check_files_missing(main, file_paths)
-    file_paths, files_empty = wordless_checking.check_files_empty(main, file_paths)
+    file_paths, files_missing = wordless_checking_file.check_files_missing(main, file_paths)
+    file_paths, files_empty = wordless_checking_file.check_files_empty(main, file_paths)
 
     wordless_message_box.wordless_message_box_error_files(main,
                                                           files_missing = files_missing,
