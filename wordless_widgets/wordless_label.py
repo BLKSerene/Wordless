@@ -20,6 +20,15 @@ class Wordless_Label_Html(QLabel):
         self.setTextFormat(Qt.RichText)
         self.setOpenExternalLinks(True)
 
+class Wordless_Label_Dialog(Wordless_Label_Html):
+    def __init__(self, html, main):
+        super().__init__(f'''
+                             {main.settings_global["styles"]["style_dialog"]}
+                             <body>
+                                 {html}
+                             </body>
+                         ''', main)
+
 class Wordless_Label_Hint(Wordless_Label_Html):
     def __init__(self, html, main):
         super().__init__(f'''

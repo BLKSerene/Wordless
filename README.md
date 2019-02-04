@@ -56,8 +56,10 @@ If you find any bugs while using Wordless, you might want to report it via Githu
 
 Feedback, enhancement proposals, feature requests and code contribution are also welcomed.
 
-## Acknowledgements
-Many thanks to the following open-source projects on which Wordless is built on:
+## Acknowledgments
+Wordless stands on the shoulders of giants.
+
+Thus, I would like to extend my thanks to the following open-source projects:
 
 1. [Python](https://www.python.org/) by Guido van Rossum, Python Software Foundation
 2. [PyQt](https://www.riverbankcomputing.com/software/pyqt/intro) by Riverbank Computing Limited

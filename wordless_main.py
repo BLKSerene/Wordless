@@ -35,11 +35,11 @@ import tab_collocation
 import tab_colligation
 import tab_keywords
 
-class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
+class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
-        super().__init__(main, main.tr('Acknowledgements'))
+        super().__init__(main, main.tr('Acknowledgments'))
 
-        acknowledgements = [
+        acks = [
             ['<a href="https://www.python.org/">Python</a>',
              '3.7.2',
              'Guido van Rossum, Python Software Foundation',
@@ -48,7 +48,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
             ['<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
              '5.11.3',
              'Riverbank Computing Limited',
-             '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a>'],
+             '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPLv3</a>'],
 
             ['<a href="https://github.com/fxsjy/jieba">jieba (“结巴”中文分词)</a>',
              '0.39',
@@ -63,12 +63,12 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
             ['<a href="http://www.nltk.org/">NLTK</a>',
              '3.4',
              'Steven Bird, Liling Tan',
-             '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'],
+             '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache v2</a>'],
 
             ['<a href="https://github.com/Esukhia/pybo">pybo</a>',
-             '0.2.21',
+             '0.3.0',
              'Hélios Drupchen Hildt',
-             '<a href="https://github.com/Esukhia/pybo/blob/master/LICENSE">Apache-2.0</a>'],
+             '<a href="https://github.com/Esukhia/pybo/blob/master/LICENSE">Apache v2</a>'],
 
             ['<a href="https://github.com/kmike/pymorphy2/">pymorphy2</a>',
              '0.8',
@@ -78,12 +78,12 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
             ['<a href="https://github.com/PyThaiNLP/pythainlp">PyThaiNLP</a>',
              '1.7.2',
              'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
-             '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache-2.0</a>'],
+             '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache v2</a>'],
 
             ['<a href="https://github.com/alvations/sacremoses">SacreMoses</a>',
              '0.0.7',
              'Liling Tan',
-             '<a href="https://github.com/alvations/sacremoses#license">LGPL-2.1</a>'],
+             '<a href="https://github.com/alvations/sacremoses#license">LGPLv2.1</a>'],
 
             ['<a href="https://spacy.io/">spaCy</a>',
              '2.0.18',
@@ -93,7 +93,7 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
             ['<a href="https://github.com/undertheseanlp/underthesea">Underthesea</a>',
              '1.1.11',
              'Vu Anh',
-             '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPL-3.0</a>'],
+             '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPLv3</a>'],
 
             ['<a href="https://amueller.github.io/word_cloud/">wordcloud</a>',
              '1.5.0',
@@ -108,27 +108,27 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
             ['<a href="https://github.com/PyYoshi/cChardet">cChardet</a>',
              '2.1.4',
              'Yoshihiro Misawa',
-             '<a href="https://github.com/PyYoshi/cChardet/blob/master/COPYING">MPL-1.1/GPL-2.0/LGPL-2.1</a>'],
+             '<a href="https://github.com/PyYoshi/cChardet/blob/master/COPYING">MPLv1.1/GPLv2/LGPLv2.1</a>'],
 
             ['<a href="https://github.com/chardet/chardet">chardet</a>',
              '3.0.4',
              'Daniel Blanchard',
-             '<a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPL-2.1</a>'],
+             '<a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPLv2.1</a>'],
 
             ['<a href="https://github.com/Mimino666/langdetect">langdetect</a>',
              '1.0.7',
              'Michal Mimino Danilak',
-             '<a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache-2.0</a>'],
+             '<a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache v2</a>'],
 
             ['<a href="https://github.com/saffsd/langid.py">langid.py</a>',
              '1.1.6',
              'Marco Lui',
-             '<a href="https://github.com/saffsd/langid.py/blob/master/LICENSE">BSD-2-Clause</a>'],
+             '<a href="https://github.com/saffsd/langid.py/blob/master/LICENSE">2-Clause BSD</a>'],
 
             ['<a href="https://lxml.de/">lxml</a>',
              '4.3.0',
              'Stefan Behnel',
-             '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'],
+             '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">3-Clause BSD</a>'],
 
             ['<a href="https://matplotlib.org/">Matplotlib</a>',
              '3.0.2',
@@ -136,12 +136,12 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
              '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'],
 
              ['<a href="http://www.numpy.org/">NumPy</a>',
-             '1.15.4',
+             '1.16.1',
              'NumPy Developers',
-             '<a href="http://www.numpy.org/license.html">BSD-3-Clause</a>'],
+             '<a href="http://www.numpy.org/license.html">3-Clause BSD</a>'],
 
             ['<a href="https://openpyxl.readthedocs.io/en/stable/">openpyxl</a>',
-             '2.5.12',
+             '2.5.14',
              'Eric Gazoni, Charlie Clark',
              '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>'],
 
@@ -153,12 +153,12 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
             ['<a href="https://www.scipy.org/">SciPy</a>',
              '1.2.0',
              'SciPy Developers',
-             '<a href="https://www.scipy.org/scipylib/license.html">BSD-3-Clause</a>'],
+             '<a href="https://www.scipy.org/scipylib/license.html"3-Clause BSD</a>'],
 
             ['<a href="https://github.com/python-excel/xlrd">xlrd</a>',
              '1.2.0',
              'Stephen John Machin, Lingfo Pty Ltd',
-             '<a href="https://github.com/python-excel/xlrd/blob/master/LICENSE">BSD-3-Clause/BSD-4-Clause</a>'],
+             '<a href="https://github.com/python-excel/xlrd/blob/master/LICENSE">3-Clause BSD / Original BSD</a>'],
 
             ['<a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a>',
              '/',
@@ -173,30 +173,30 @@ class Wordless_Acknowledgements(wordless_dialog.Wordless_Dialog_Info):
 
         self.setFixedSize(700, 400)
 
-        label_acknowledgements = QLabel(self.tr('Many thanks to the following open-source projects on which Wordless is built on:'), self)
+        label_acks = wordless_label.Wordless_Label_Dialog(self.tr('''
+                                                              <p>Wordless stands on the shoulders of giants.</p>
+                                                              <p>Thus, many thanks to the following open-source projects:</p>
+                                                          '''), self.main)
 
-        table_acknowledgements = wordless_table.Wordless_Table(self,
-                                                               headers = [
-                                                                   self.tr('Name'),
-                                                                   self.tr('Version'),
-                                                                   self.tr('Author(s)'),
-                                                                   self.tr('License')
-                                                               ],
-                                                               cols_stretch = [
-                                                                   self.tr('Author(s)')
-                                                               ])
+        table_acks = wordless_table.Wordless_Table(self,
+                                                   headers = [
+                                                       self.tr('Name'),
+                                                       self.tr('Version'),
+                                                       self.tr('Author(s)'),
+                                                       self.tr('License')
+                                                   ])
         
-        table_acknowledgements.setRowCount(len(acknowledgements))
+        table_acks.setRowCount(len(acks))
 
-        for i, (name, ver, authors, license) in enumerate(acknowledgements):
-            table_acknowledgements.setCellWidget(i, 0, wordless_label.Wordless_Label_Html(name, self))
-            table_acknowledgements.setCellWidget(i, 1, wordless_label.Wordless_Label_Html(ver, self))
-            table_acknowledgements.setCellWidget(i, 2, wordless_label.Wordless_Label_Html(authors, self))
-            table_acknowledgements.setCellWidget(i, 3, wordless_label.Wordless_Label_Html(license, self))
+        for i, (name, ver, authors, license) in enumerate(acks):
+            table_acks.setCellWidget(i, 0, wordless_label.Wordless_Label_Html(name, self))
+            table_acks.setCellWidget(i, 1, wordless_label.Wordless_Label_Html(ver, self))
+            table_acks.setCellWidget(i, 2, wordless_label.Wordless_Label_Html(authors, self))
+            table_acks.setCellWidget(i, 3, wordless_label.Wordless_Label_Html(license, self))
 
         self.wrapper_info.setLayout(QGridLayout())
-        self.wrapper_info.layout().addWidget(label_acknowledgements, 0, 0)
-        self.wrapper_info.layout().addWidget(table_acknowledgements, 1, 0)
+        self.wrapper_info.layout().addWidget(label_acks, 0, 0)
+        self.wrapper_info.layout().addWidget(table_acks, 1, 0)
 
 class Wordless_Loading(QSplashScreen):
     def __init__(self):
@@ -385,10 +385,10 @@ class Wordless_Main(QMainWindow):
 
             dialog_citation.exec_()
 
-        def acknowledgements():
-            dialog_acknowledgements = Wordless_Acknowledgements(self)
+        def acks():
+            dialog_acks = Wordless_Dialog_Acks(self)
 
-            dialog_acknowledgements.exec()
+            dialog_acks.exec()
 
         def about_wordless():
             QMessageBox.about(self,
@@ -473,9 +473,9 @@ class Wordless_Main(QMainWindow):
         action_citation.setStatusTip(self.tr('Show information about citation'))
         action_citation.triggered.connect(citation)
 
-        action_acknowledgements = QAction(self.tr('Acknowledgements'), self)
-        action_acknowledgements.setStatusTip(self.tr('Show acknowledgements'))
-        action_acknowledgements.triggered.connect(acknowledgements)
+        action_acks = QAction(self.tr('Acknowledgments'), self)
+        action_acks.setStatusTip(self.tr('Show acknowldgements'))
+        action_acks.triggered.connect(acks)
 
         action_about_wordless = QAction(self.tr('About Wordless'), self)
         action_about_wordless.setStatusTip(self.tr('Show information about Wordless'))
@@ -486,7 +486,7 @@ class Wordless_Main(QMainWindow):
         menu_help.addSeparator()
         menu_help.addAction(action_citation)
         menu_help.addSeparator()
-        menu_help.addAction(action_acknowledgements)
+        menu_help.addAction(action_acks)
         menu_help.addAction(action_about_wordless)
 
     def init_central_widget(self):
