@@ -15,6 +15,22 @@ from PyQt5.QtWidgets import *
 
 from wordless_checking import wordless_checking_misc
 
+class Wordless_Message_Box_Info(QMessageBox):
+    def __init__(self, main, title, text):
+        super().__init__(
+            QMessageBox.Information,
+            title,
+            f'''
+                {main.settings_global['styles']['style_dialog']}
+                <body>
+                    {text}
+                </body>
+            ''',
+            parent = main)
+
+        self.setTextFormat(Qt.RichText)
+        self.setTextInteractionFlags(Qt.TextBrowserInteraction)
+
 # Files
 def wordless_message_box_error_files(main,
                                      files_missing = [],
@@ -36,12 +52,12 @@ def wordless_message_box_error_files(main,
 
             if len(files_missing) == 1:
                 message += main.tr(f'''
-                               <p>The following file no longer exists in its original location:</p>
+                               <div>The following file no longer exists in its original location:</div>
                                <ul>{list_files}</ul>
                            ''')
             else:
                 message += main.tr(f'''
-                               <p>The following files no longer exists in their original location:</p>
+                               <div>The following files no longer exists in their original location:</div>
                                <ol>{list_files}</ol>
                            ''')
 
@@ -50,12 +66,12 @@ def wordless_message_box_error_files(main,
 
             if len(files_duplicate) == 1:
                 message += main.tr(f'''
-                               <p>The following file has already been opened:</p>
+                               <div>The following file has already been opened:</div>
                                <ul>{list_files}</ul>
                            ''')
             else:
                 message += main.tr(f'''
-                               <p>The following files have already been opened:</p>
+                               <div>The following files have already been opened:</div>
                                <ol>{list_files}</ol>
                            ''')
 
@@ -64,12 +80,12 @@ def wordless_message_box_error_files(main,
 
             if len(files_empty) == 1:
                 message += main.tr(f'''
-                               <p>The following file is empty:</p>
+                               <div>The following file is empty:</div>
                                <ul>{list_files}</ul>
                            ''')
             else:
                 message += main.tr(f'''
-                               <p>The following files are empty:</p>
+                               <div>The following files are empty:</div>
                                <ol>{list_files}</ol>
                            ''')
 
@@ -78,12 +94,12 @@ def wordless_message_box_error_files(main,
 
             if len(files_unsupported) == 1:
                 message += main.tr(f'''
-                               <p>Failed to open the following file because the file type is not currently supported:</p>
+                               <div>Failed to open the following file because the file type is not currently supported:</div>
                                <ul>{list_files}</ul>
                            ''')
             else:
                 message += main.tr(f'''
-                               <p>Failed to open the following files because the file types are not currently supported:</p>
+                               <div>Failed to open the following files because the file types are not currently supported:</div>
                                <ol>{list_files}</ol>
                            ''')
 
@@ -92,12 +108,12 @@ def wordless_message_box_error_files(main,
 
             if len(files_encoding_error) == 1:
                 message += main.tr(f'''
-                               <p>Failed to open the following file due to an encoding error:</p>
+                               <div>Failed to open the following file due to an encoding error:</div>
                                <ul>{list_files}</ul>
                            ''')
             else:
                 message += main.tr(f'''
-                               <p>Failed to open the following files due to encoding errors:</p>
+                               <div>Failed to open the following files due to encoding errors:</div>
                                <ol>{list_files}</ol>
                            ''')
 
@@ -106,12 +122,12 @@ def wordless_message_box_error_files(main,
 
             if len(files_loading_error) == 1:
                 message += main.tr(f'''
-                               <p>Failed to read the following file due to an encoding error:</p>
+                               <div>Failed to read the following file due to an encoding error:</div>
                                <ul>{list_files}</ul>
                            ''')
             else:
                 message += main.tr(f'''
-                               <p>Failed to read the following files due to encoding errors:</p>
+                               <div>Failed to read the following files due to encoding errors:</div>
                                <ol>{list_files}</ol>
                            ''')
 
@@ -131,8 +147,8 @@ def wordless_message_box_error_ref_file(main):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <p>An error occurred during loading of the reference file!</p>
-                                <p>Please check and try again.</p>
+                                <div>An error occurred during loading of the reference file!</div>
+                                <div>Please check and try again.</div>
                             </body>
                         '''),
                         QMessageBox.Ok)
@@ -148,12 +164,12 @@ def wordless_message_box_auto_detection_failed(main,
 
             if len(files_encoding_detection_failed) == 1:
                 message += main.tr(f'''
-                               <p>Failed to detect the encoding of the following file:</p>
+                               <div>Failed to detect the encoding of the following file:</div>
                                <ul>{list_files}</ul>
                            ''')
             else:
                 message += main.tr(f'''
-                               <p>Failed to detect the encodings of the following files:</p>
+                               <div>Failed to detect the encodings of the following files:</div>
                                <ol>{list_files}</ol>
                            ''')
 
@@ -162,12 +178,12 @@ def wordless_message_box_auto_detection_failed(main,
 
             if len(files_lang_detection_failed) == 1:
                 message += main.tr(f'''
-                               <p>Failed to detect the language of the following file:</p>
+                               <div>Failed to detect the language of the following file:</div>
                                <ul>{list_files}</ul>
                            ''')
             else:
                 message += main.tr(f'''
-                               <p>Failed to detect the languages of the following files:</p>
+                               <div>Failed to detect the languages of the following files:</div>
                                <ol>{list_files}</ol>
                            ''')
 
@@ -188,8 +204,8 @@ def wordless_message_box_duplicate_file_name(main):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <p>There is already a file with the same name that has been loaded into Wordless.</p>
-                                <p>Please specify a different file name.</p>
+                                <div>There is already a file with the same name that has been loaded into Wordless.</div>
+                                <div>Please specify a different file name.</div>
                             </body>
                         '''),
                         QMessageBox.Ok)
@@ -200,7 +216,7 @@ def wordless_message_box_duplicate_search_terms(main):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <p>The search term you have entered already exists in the list!</p>
+                                <div>The search term you have entered already exists in the list!</div>
                             </body>
                         '''))
 
@@ -210,7 +226,7 @@ def wordless_message_box_duplicate_tags(main):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <p>The (pair of) tag you have entered already exists in the table!</p>
+                                <div>The (pair of) tag you have entered already exists in the table!</div>
                             </body>
                         '''))
 
@@ -220,7 +236,7 @@ def wordless_message_box_duplicate_stop_words(main):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <p>The stop word you have entered already exists in the list!</p>
+                                <div>The stop word you have entered already exists in the list!</div>
                             </body>
                         '''))
 
@@ -231,7 +247,7 @@ def wordless_message_box_restore_default_settings(main):
                                  main.tr(f'''
                                      {main.settings_global['styles']['style_dialog']}
                                      <body>
-                                         <p>Do you really want to reset all settings to defaults?</p>
+                                         <div>Do you really want to reset all settings to defaults?</div>
                                      </body>
                                  '''),
                                  QMessageBox.Yes | QMessageBox.No,
@@ -245,8 +261,8 @@ def wordless_message_box_no_files_selected(main):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <p>There are no files being currently selected!</p>
-                                <p>Please check and try again.</p>
+                                <div>There are no files being currently selected!</div>
+                                <div>Please check and try again.</div>
                             </body>
                         '''),
                         QMessageBox.Ok)
@@ -257,7 +273,7 @@ def wordless_message_box_missing_ref_file(main):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <p>Please open and select your reference file first!</p>
+                                <div>Please open and select your reference file first!</div>
                             </body>
                         '''),
                         QMessageBox.Ok)
@@ -268,7 +284,7 @@ def wordless_message_box_missing_observed_files(main):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <p>Please open and select your observed file(s) first!</p>
+                                <div>Please open and select your observed file(s) first!</div>
                             </body>
                         '''),
                         QMessageBox.Ok)
@@ -280,7 +296,7 @@ def wordless_message_box_empty_search_term(main):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <p>Please enter your search term(s) first!</p>
+                                <div>Please enter your search term(s) first!</div>
                             </body>
                         '''),
                         QMessageBox.Ok)
@@ -291,7 +307,7 @@ def wordless_message_box_no_search_results(main):
                             main.tr(f'''
                                 {main.settings_global['styles']['style_dialog']}
                                 <body>
-                                    <p>There is nothing that could be found in the table.</p>
+                                    <div>There is nothing that could be found in the table.</div>
                                 </body>
                             '''),
                             QMessageBox.Ok)
@@ -303,8 +319,8 @@ def wordless_message_box_no_results_table(main):
                             main.tr(f'''
                                 {main.settings_global['styles']['style_dialog']}
                                 <body>
-                                    <p>There is nothing to be shown in the table.</p>
-                                    <p>You might want to change your search term(s) and/or your settings, and then try again.</p>
+                                    <div>There is nothing to be shown in the table.</div>
+                                    <div>You might want to change your search term(s) and/or your settings, and then try again.</div>
                                 </body>
                             '''),
                             QMessageBox.Ok)
@@ -315,8 +331,8 @@ def wordless_message_box_no_results_plot(main):
                             main.tr(f'''
                                 {main.settings_global['styles']['style_dialog']}
                                 <body>
-                                    <p>There is nothing to be shown in the figure.</p>
-                                    <p>You might want to change your search term(s) and/or your settings, and then try again.</p>
+                                    <div>There is nothing to be shown in the figure.</div>
+                                    <div>You might want to change your search term(s) and/or your settings, and then try again.</div>
                                 </body>
                             '''),
                             QMessageBox.Ok)
@@ -328,7 +344,7 @@ def wordless_message_box_export_table(main, file_path):
                             main.tr(f'''
                                 {main.settings_global['styles']['style_dialog']}
                                 <body>
-                                    <p>The table has been successfully exported to "{file_path}".</p>
+                                    <div>The table has been successfully exported to "{file_path}".</div>
                                 </body>
                             '''),
                             QMessageBox.Ok)
@@ -339,7 +355,7 @@ def wordless_message_box_export_search_terms(main, file_path):
                             main.tr(f'''
                                 {main.settings_global['styles']['style_dialog']}
                                 <body>
-                                    <p>The search terms have been successfully exported to "{file_path}".</p>
+                                    <div>The search terms have been successfully exported to "{file_path}".</div>
                                 </body>
                             '''),
                             QMessageBox.Ok)
@@ -350,7 +366,7 @@ def wordless_message_box_export_stop_words(main, file_path):
                             main.tr(f'''
                                 {main.settings_global['styles']['style_dialog']}
                                 <body>
-                                    <p>The stop words have been successfully exported to "{file_path}".</p>
+                                    <div>The stop words have been successfully exported to "{file_path}".</div>
                                 </body>
                             '''),
                             QMessageBox.Ok)
@@ -362,8 +378,8 @@ def wordless_message_box_path_not_exist(main, path):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <p>The specified path "{path}" does not exist!</p>
-                                <p>Please change your settings and try again.</p>
+                                <div>The specified path "{path}" does not exist!</div>
+                                <div>Please change your settings and try again.</div>
                             </body>
                         '''),
                         QMessageBox.Ok)
@@ -374,8 +390,8 @@ def wordless_message_box_path_not_dir(main, path):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <p>The specified path "{path}" should be a directory, not a file!</p>
-                                <p>Please change your settings and try again.</p>
+                                <div>The specified path "{path}" should be a directory, not a file!</div>
+                                <div>Please change your settings and try again.</div>
                             </body>
                         '''),
                         QMessageBox.Ok)
@@ -386,8 +402,8 @@ def wordless_message_box_path_not_exist_confirm(main, path):
                                  main.tr(f'''
                                      {main.settings_global['styles']['style_dialog']}
                                      <body>
-                                         <p>The specified path "{path}" does not exist.</p>
-                                         <p>Do you want to create the directory?</p>
+                                         <div>The specified path "{path}" does not exist.</div>
+                                         <div>Do you want to create the directory?</div>
                                      </body>
                                  '''),
                                  QMessageBox.Yes | QMessageBox.No,
