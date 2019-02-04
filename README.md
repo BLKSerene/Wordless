@@ -45,11 +45,15 @@ GB (GB/T 7714—2015):
 [中文文档在这里](#doc-zho)
 
 ## Need Help?
-If you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.
+If you encounter a problem, find a bug or require any further information, feel free to ask questions or report the bug by [creating an issue](https://github.com/BLKSerene/Wordless/issues/new) on Github if you fail to find the answer by searching [existing issues](https://github.com/BLKSerene/Wordless/issues) first.
 
-Home Page: https://github.com/BLKSerene/Wordless
+If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may [send me an email](mailto:blkserene@gmail.com).
 
-Email: blkserene@gmail.com
+**Important Note**: I CANNOT GUARANTEE that all emails will always be checked or replied in time. I WILL NOT REPLY to irrelevant emails and I reserve the right to BLOCK AND/OR REPORT people who send me spam emails.
+
+Home Page: https://github.com/BLKSerene/Wordless<br>
+Email: blkserene@gmail.com<br>
+[WeChat](https://www.wechat.com/en/) Official Account: Wordless
 
 ## Feedback
 If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker [Issues](https://github.com/BLKSerene/Wordless/issues).

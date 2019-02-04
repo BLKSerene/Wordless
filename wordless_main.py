@@ -174,8 +174,8 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         self.setFixedSize(700, 400)
 
         label_acks = wordless_label.Wordless_Label_Dialog(self.tr('''
-                                                              <p>Wordless stands on the shoulders of giants.</p>
-                                                              <p>Thus, many thanks to the following open-source projects:</p>
+                                                              <div>Wordless stands on the shoulders of giants.</div>
+                                                              <div>Thus, many thanks to the following open-source projects:</div>
                                                           '''), self.main)
 
         table_acks = wordless_table.Wordless_Table(self,
@@ -271,7 +271,7 @@ class Wordless_Main(QMainWindow):
                                      self.tr('Exit Confirmation'),
                                      self.tr(f'''{self.settings_global['styles']['style_dialog']}
                                                  <body>
-                                                     <p>Do you really want to quit?</p>
+                                                     <div>Do you really want to quit?</div>
                                                  </body>
                                              '''),
                                      QMessageBox.Yes | QMessageBox.No,
@@ -296,19 +296,28 @@ class Wordless_Main(QMainWindow):
                 self.status_bar.show()
 
         def need_help():
-            message_box = QMessageBox(QMessageBox.Information,
-                                      self.tr('Need Help?'),
-                                      self.tr(f'''{self.settings_global['styles']['style_dialog']}
-                                                  <body>
-                                                      <p>If you need any further information or encounter any problems while using Wordless, please feel free to contact me, and I will reply as soon as possible.</p>
-                                                      <p>Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</p>
-                                                      <p>Email: blkserene@gmail.com</p>
-                                                  </body>
-                                              '''),
-                                      QMessageBox.Ok,
-                                      self)
+            message_box = wordless_message_box.Wordless_Message_Box_Info(
+                main = self,
+                title = self.tr('Need Help?'),
+                text = self.tr('''
+                    <div>
+                        If you encounter a problem, find a bug or require any further information, feel free to ask questions or report the bug by <a href="https://github.com/BLKSerene/Wordless/issues/new">creating an issue</a> on Github if you fail to find the answer by searching <a href="https://github.com/BLKSerene/Wordless/issues">existing issues</a> first.
+                    </div>
 
-            message_box.setTextInteractionFlags(Qt.TextSelectableByMouse)
+                    <div>
+                        If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may <a href="mailto:blkserene@gmail.com">send me an email</a>.
+                    </div>
+
+                    <div>
+                        <span style="color: #F00;"><b>Important Note</b></span>: I <b>CANNOT GUARANTEE</b> that all emails will always be checked or replied in time. I <b>WILL NOT REPLY</b> to irrelevant emails and I reserve the right to <b>BLOCK AND/OR REPORT</b> people who send me spam emails.
+                    </div>
+
+                    <div>
+                        Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</a><br>
+                        Email: <a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a><br>
+                        <a href="https://www.wechat.com/en/">WeChat</a> Official Account: Wordless
+                    </div>
+                '''))
 
             message_box.exec_()
 
@@ -317,8 +326,8 @@ class Wordless_Main(QMainWindow):
                                     self.tr('Feedback'),
                                     self.tr(f'''{self.settings_global['styles']['style_dialog']}
                                                 <body>
-                                                    <p>If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker <a href="https://github.com/BLKSerene/Wordless/issues">Issues</a>.</p>
-                                                    <p>Feedback, enhancement proposals, feature requests and code contribution are also welcomed.</p>
+                                                    <div>If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker <a href="https://github.com/BLKSerene/Wordless/issues">Issues</a>.</div>
+                                                    <div>Feedback, enhancement proposals, feature requests and code contribution are also welcomed.</div>
                                                 </body>
                                             '''),
                                     QMessageBox.Ok)
@@ -396,12 +405,12 @@ class Wordless_Main(QMainWindow):
                               self.tr(f'''{self.settings_global['styles']['style_dialog']}
                                           <body style="text-align: center">
                                               <h1>Wordless Version 1.0</h1>
-                                              <p>An Integrated Corpus Tool for the Scientific Study of Language, Literature and Translation</p>
-                                              <p>Designed and Developed by Ye Lei (叶磊)</p>
-                                              <p>MA Student of Shanghai International Studies University</p>
+                                              <div>An Integrated Corpus Tool for the Scientific Study of Language, Literature and Translation</div>
+                                              <div>Designed and Developed by Ye Lei (叶磊)</div>
+                                              <div>MA Student of Shanghai International Studies University</div>
                                               <hr>
-                                              <p>Licensed under GPL Version 3.0</p>
-                                              <p>Copyright (C) 2018 Ye Lei (叶磊)</p>
+                                              <div>Licensed under GPL Version 3.0</div>
+                                              <div>Copyright (C) 2018 Ye Lei (叶磊)</div>
                                           </body>'''))
 
         menu = self.menuBar()
@@ -474,7 +483,7 @@ class Wordless_Main(QMainWindow):
         action_citation.triggered.connect(citation)
 
         action_acks = QAction(self.tr('Acknowledgments'), self)
-        action_acks.setStatusTip(self.tr('Show acknowldgements'))
+        action_acks.setStatusTip(self.tr('Show acknowldgments'))
         action_acks.triggered.connect(acks)
 
         action_about_wordless = QAction(self.tr('About Wordless'), self)
