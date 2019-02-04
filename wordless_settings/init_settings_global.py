@@ -1864,14 +1864,14 @@ def init_settings_global(main):
                             text-align: justify;
                         }
 
+                        div {
+                            margin-bottom: 5px;
+                        }
+
                         h1 {
                             margin-bottom: 10px;
                             font-size: 16px;
                             font-weight: bold;
-                        }
-
-                        p {
-                            margin-bottom: 3px;
                         }
 
                         ol, ul {

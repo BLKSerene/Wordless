@@ -30,6 +30,7 @@ class Wordless_Dialog(QDialog):
 
         self.setWindowTitle(title)
         self.setWindowIcon(QIcon('images/wordless_icon.png'))
+        self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
 
 class Wordless_Dialog_Info(Wordless_Dialog):
 	def __init__(self, main, title):
