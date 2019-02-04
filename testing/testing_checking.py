@@ -1,9 +1,12 @@
 #
-# Wordless: Testing for Checking
+# Wordless: Testing - Checking
 #
-# Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
+# Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
-# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# This source file is licensed under GNU GPLv3.
+# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+# All other rights reserved.
 #
 
 import os
@@ -11,7 +14,7 @@ import sys
 
 from PyQt5.QtCore import *
 
-sys.path.append('E:/Wordless')
+sys.path.append('..')
 
 import wordless_files
 
@@ -34,12 +37,12 @@ main.settings_custom['files']['files_open'] = [{'path': os.path.realpath('testin
 main.settings_custom['files']['auto_detection_settings']['detect_encodings'] = False
 
 file_paths = [
-    os.path.realpath('testing/Checking/Missing.txt'),
-    os.path.realpath('testing/Checking/Empty.txt'),
-    os.path.realpath('testing/Checking/Duplicate.txt'),
-    os.path.realpath('testing/Checking/Unsupported.unsupported'),
-    os.path.realpath('testing/Checking/Encoding Error.html'),
-    os.path.realpath('testing/Checking/Loading Error.txt')
+    os.path.realpath('Checking/Missing.txt'),
+    os.path.realpath('Checking/Empty.txt'),
+    os.path.realpath('Checking/Duplicate.txt'),
+    os.path.realpath('Checking/Unsupported.unsupported'),
+    os.path.realpath('Checking/Encoding Error.html'),
+    os.path.realpath('Checking/Loading Error.txt')
 ]
 
 file_paths, files_missing = wordless_checking_file.check_files_missing(main, file_paths)

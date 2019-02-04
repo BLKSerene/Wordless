@@ -1,9 +1,12 @@
 #
 # Wordless: Concordancer
 #
-# Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
+# Copyright (C) 2018-2019  Ye Lei (叶磊))
 #
-# License: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# This source file is licensed under GNU GPLv3.
+# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+# All other rights reserved.
 #
 
 import copy
@@ -1106,9 +1109,7 @@ def generate_plot(main):
                                                                          text_type = text.text_type,
                                                                          token_settings = settings['token_settings'],
                                                                          search_settings = settings['search_settings'])
-                #print(tokens)
-                print(text.tokens)
-                print(search_terms_file)
+
                 search_terms_files.append(sorted(search_terms_file))
 
                 for search_term in search_terms_file:

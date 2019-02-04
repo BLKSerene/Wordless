@@ -1,3 +1,13 @@
+# Wordless: .gitignore
+#
+# Copyright (C) 2018-2019  Ye Lei (叶磊)
+#
+# This source file is licensed under GNU GPLv3.
+# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+# All other rights reserved.
+#
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -106,7 +116,6 @@ venv.bak/
 # Custom
 Import/
 Export/
-Misc/
 *.pkl
 *.pickled
 *.yaml

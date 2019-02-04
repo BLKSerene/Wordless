@@ -1,3 +1,14 @@
+<!--
+# Wordless: README
+#
+# Copyright (C) 2018-2019  Ye Lei (叶磊))
+#
+# This source file is licensed under GNU GPLv3.
+# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+# All other rights reserved.
+-->
+
 # Wordless
 An Integrated Corpus Tool with Multi-language Support for the Study of Language, Literature and Translation
 
@@ -6,11 +17,12 @@ Designed and Developed by Ye Lei (叶磊)
 MA Student in Interpreting Studies at Shanghai International Studies University (上海外国语大学)
 
 ## License
-    Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
+    Copyright (C) 2018-2019  Ye Lei (叶磊)
 
-This project is licensed Under GNU GPL Version 3.0.
+    This project is licensed under GNU GPLv3.
+    For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
 
-License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+    All other rights reserved.
 
 ## Citation
 If you publish work that uses Wordless, please cite Wordless as follows.
