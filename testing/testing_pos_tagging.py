@@ -1,18 +1,19 @@
-# -*- coding: utf-8 -*-
-
 #
-# Wordless: Testing for POS Tagging
+# Wordless: Testing - POS Tagging
 #
-# Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
+# Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
-# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# This source file is licensed under GNU GPLv3.
+# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+# All other rights reserved.
 #
 
 import sys
 
 from PyQt5.QtCore import *
 
-sys.path.append('E:/Wordless')
+sys.path.append('..')
 
 from wordless_text import wordless_text_processing
 from wordless_settings import init_settings_default, init_settings_global
