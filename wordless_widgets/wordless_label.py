@@ -29,6 +29,8 @@ class Wordless_Label_Dialog(Wordless_Label_Html):
                              </body>
                          ''', main)
 
+        self.setWordWrap(True)
+
 class Wordless_Label_Hint(Wordless_Label_Html):
     def __init__(self, html, main):
         super().__init__(f'''
