@@ -153,7 +153,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ['<a href="https://www.scipy.org/">SciPy</a>',
              '1.2.0',
              'SciPy Developers',
-             '<a href="https://www.scipy.org/scipylib/license.html"3-Clause BSD</a>'],
+             '<a href="https://www.scipy.org/scipylib/license.html">3-Clause BSD</a>'],
 
             ['<a href="https://github.com/python-excel/xlrd">xlrd</a>',
              '1.2.0',
@@ -174,9 +174,10 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         self.setFixedSize(700, 400)
 
         label_acks = wordless_label.Wordless_Label_Dialog(self.tr('''
-                                                              <div>Wordless stands on the shoulders of giants.</div>
-                                                              <div>Thus, many thanks to the following open-source projects:</div>
-                                                          '''), self.main)
+                <div>
+                    Wordless stands on the shoulders of giants. Thus, I would like to extend my thanks to the following open-source projects:
+                </div>
+            '''), self.main)
 
         table_acks = wordless_table.Wordless_Table(self,
                                                    headers = [
@@ -301,7 +302,7 @@ class Wordless_Main(QMainWindow):
                 title = self.tr('Need Help?'),
                 text = self.tr('''
                     <div>
-                        If you encounter a problem, find a bug or require any further information, feel free to ask questions or report the bug by <a href="https://github.com/BLKSerene/Wordless/issues/new">creating an issue</a> on Github if you fail to find the answer by searching <a href="https://github.com/BLKSerene/Wordless/issues">existing issues</a> first.
+                        If you encounter a problem, find a bug or require any further information, feel free to ask questions, submit bug reports or provide feedback by <a href="https://github.com/BLKSerene/Wordless/issues/new">creating an issue</a> on Github if you fail to find the answer by searching <a href="https://github.com/BLKSerene/Wordless/issues">existing issues</a> first.
                     </div>
 
                     <div>
@@ -321,46 +322,56 @@ class Wordless_Main(QMainWindow):
 
             message_box.exec_()
 
-        def feedback():
-            QMessageBox.information(self,
-                                    self.tr('Feedback'),
-                                    self.tr(f'''{self.settings_global['styles']['style_dialog']}
-                                                <body>
-                                                    <div>If you find any bugs while using Wordless, you might want to report it via Github\'s bug tracker <a href="https://github.com/BLKSerene/Wordless/issues">Issues</a>.</div>
-                                                    <div>Feedback, enhancement proposals, feature requests and code contribution are also welcomed.</div>
-                                                </body>
-                                            '''),
-                                    QMessageBox.Ok)
+        def contributing():
+            message_box = wordless_message_box.Wordless_Message_Box_Info(
+                main = self,
+                title = self.tr('Contributing'),
+                text = self.tr('''
+                    <div>
+                        If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements or new features by <a href="https://github.com/BLKSerene/Wordless/pulls">creating a pull request</a> on Github.
+                    </div>
 
-        def citation():
+                    <div>
+                        Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or <a href ="https://github.com/BLKSerene/Wordless/wiki">Github Wiki</a> for Wordless, or helping me translate Wordless and its documentation to other languages.
+                    </div>
+                '''))
+
+            message_box.exec_()
+
+        def citing():
             def citation_sys_changed():
                 if combo_box_citation_sys.currentText() == self.tr('MLA (8th Edition)'):
-                    text_edit_citation.setHtml('Ye Lei. Wordless, version 1.0, 2018, https://github.com/BLKSerene/Wordless.')
+                    text_edit_citing.setHtml('Ye Lei. Wordless, version 1.0, 2018, https://github.com/BLKSerene/Wordless.')
                 elif combo_box_citation_sys.currentText() == self.tr('APA (6th Edition)'):
-                    text_edit_citation.setHtml('Ye, L. (2018) Wordless (Version 1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless')
+                    text_edit_citing.setHtml('Ye, L. (2018) Wordless (Version 1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless')
                 elif combo_box_citation_sys.currentText() == self.tr('GB (GB/T 7714—2015)'):
-                    text_edit_citation.setHtml('叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.')
+                    text_edit_citing.setHtml('叶磊. Wordless version 1.0[CP]. (2018). https://github.com/BLKSerene/Wordless.')
 
                 if combo_box_citation_sys.currentText() == self.tr('GB (GB/T 7714—2015)'):
-                    text_edit_citation.setFont(QFont('宋体', 12))
+                    text_edit_citing.setFont(QFont('宋体', 12))
                 else:
-                    text_edit_citation.setFont(QFont('Times New Roman', 12))
+                    text_edit_citing.setFont(QFont('Times New Roman', 12))
 
             def copy():
-                text_edit_citation.setFocus()
-                text_edit_citation.selectAll()
-                text_edit_citation.copy()
+                text_edit_citing.setFocus()
+                text_edit_citing.selectAll()
+                text_edit_citing.copy()
 
-            dialog_citation = QDialog(self)
+            dialog_citing = QDialog(self)
 
-            dialog_citation.setWindowTitle(self.tr('Citation'))
+            dialog_citing.setWindowTitle(self.tr('Citing'))
 
-            dialog_citation.setFixedSize(dialog_citation.sizeHint().width(), 160)
+            dialog_citing.setFixedSize(dialog_citing.sizeHint().width(), 160)
 
-            label_citation = QLabel(self.tr('If you publish work that uses Wordless, please cite Wordless as follows.'), self)
+            label_citing = wordless_label.Wordless_Label_Dialog(
+                self.tr('''
+                    <div>
+                        If you publish work that uses Wordless, please cite as follows.
+                    </div>
+                '''), self)
             label_citation_sys = QLabel(self.tr('Citation System:'), self)
             combo_box_citation_sys = QComboBox(self)
-            text_edit_citation = QTextEdit(self)
+            text_edit_citing = QTextEdit(self)
 
             button_copy = QPushButton(self.tr('Copy'), self)
             button_close = QPushButton(self.tr('Close'), self)
@@ -374,25 +385,30 @@ class Wordless_Main(QMainWindow):
             button_copy.setFixedWidth(100)
             button_close.setFixedWidth(100)
 
-            text_edit_citation.setReadOnly(True)
+            text_edit_citing.setReadOnly(True)
 
             combo_box_citation_sys.currentTextChanged.connect(citation_sys_changed)
             button_copy.clicked.connect(copy)
-            button_close.clicked.connect(dialog_citation.accept)
+            button_close.clicked.connect(dialog_citing.accept)
 
-            layout_citation = QGridLayout()
-            layout_citation.addWidget(label_citation, 0, 0, 1, 2)
-            layout_citation.addWidget(label_citation_sys, 1, 0)
-            layout_citation.addWidget(combo_box_citation_sys, 1, 1)
-            layout_citation.addWidget(text_edit_citation, 2, 0, 1, 2)
-            layout_citation.addWidget(button_copy, 3, 0, Qt.AlignHCenter)
-            layout_citation.addWidget(button_close, 3, 1, Qt.AlignHCenter)
+            layout_citation_sys = QGridLayout()
+            layout_citation_sys.addWidget(label_citation_sys, 0, 0)
+            layout_citation_sys.addWidget(combo_box_citation_sys, 0, 1)
 
-            dialog_citation.setLayout(layout_citation)
+            layout_citation_sys.setColumnStretch(2, 1)
+
+            layout_citing = QGridLayout()
+            layout_citing.addWidget(label_citing, 0, 0, 1, 2)
+            layout_citing.addLayout(layout_citation_sys, 1, 0, 1, 2)
+            layout_citing.addWidget(text_edit_citing, 2, 0, 1, 2)
+            layout_citing.addWidget(button_copy, 3, 0, Qt.AlignHCenter)
+            layout_citing.addWidget(button_close, 3, 1, Qt.AlignHCenter)
+
+            dialog_citing.setLayout(layout_citing)
 
             citation_sys_changed()
 
-            dialog_citation.exec_()
+            dialog_citing.exec_()
 
         def acks():
             dialog_acks = Wordless_Dialog_Acks(self)
@@ -404,13 +420,16 @@ class Wordless_Main(QMainWindow):
                               self.tr('About Wordless'),
                               self.tr(f'''{self.settings_global['styles']['style_dialog']}
                                           <body style="text-align: center">
-                                              <h1>Wordless Version 1.0</h1>
-                                              <div>An Integrated Corpus Tool for the Scientific Study of Language, Literature and Translation</div>
+                                              <h2>Wordless Version 1.0</h2>
+                                              <div>An Integrated Corpus Tool for the Study of Language, Literature and Translation</div>
                                               <div>Designed and Developed by Ye Lei (叶磊)</div>
                                               <div>MA Student of Shanghai International Studies University</div>
                                               <hr>
-                                              <div>Licensed under GPL Version 3.0</div>
-                                              <div>Copyright (C) 2018 Ye Lei (叶磊)</div>
+                                              <div>
+                                                  Copyright (C)&nbsp;&nbsp;2018 Ye Lei (叶磊)<br>
+                                                  Licensed Under GNU GPLv3<br>
+                                                  All Other Rights Reserved
+                                              </div>
                                           </body>'''))
 
         menu = self.menuBar()
@@ -474,13 +493,13 @@ class Wordless_Main(QMainWindow):
         action_need_help.setStatusTip(self.tr('Show help information'))
         action_need_help.triggered.connect(need_help)
 
-        action_feedback = QAction(self.tr('Feedback'), self)
-        action_feedback.setStatusTip(self.tr('Show information about feedback'))
-        action_feedback.triggered.connect(feedback)
+        action_contributing = QAction(self.tr('Contributing'), self)
+        action_contributing.setStatusTip(self.tr('Show information about contributing'))
+        action_contributing.triggered.connect(contributing)
 
-        action_citation = QAction(self.tr('Citation'), self)
-        action_citation.setStatusTip(self.tr('Show information about citation'))
-        action_citation.triggered.connect(citation)
+        action_citing = QAction(self.tr('Citing'), self)
+        action_citing.setStatusTip(self.tr('Show information about citing'))
+        action_citing.triggered.connect(citing)
 
         action_acks = QAction(self.tr('Acknowledgments'), self)
         action_acks.setStatusTip(self.tr('Show acknowldgments'))
@@ -491,9 +510,9 @@ class Wordless_Main(QMainWindow):
         action_about_wordless.triggered.connect(about_wordless)
 
         menu_help.addAction(action_need_help)
-        menu_help.addAction(action_feedback)
+        menu_help.addAction(action_contributing)
         menu_help.addSeparator()
-        menu_help.addAction(action_citation)
+        menu_help.addAction(action_citing)
         menu_help.addSeparator()
         menu_help.addAction(action_acks)
         menu_help.addAction(action_about_wordless)
