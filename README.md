@@ -16,7 +16,7 @@ Designed and Developed by Ye Lei (叶磊)
 
 MA Student in Interpreting Studies at Shanghai International Studies University (上海外国语大学)
 
-### License
+## License
     Copyright (C) 2018-2019  Ye Lei (叶磊)
 
     This project is licensed under GNU GPLv3.
@@ -24,7 +24,7 @@ MA Student in Interpreting Studies at Shanghai International Studies University 
 
     All other rights reserved.
 
-### Citing
+## Citing
 If you publish work that uses Wordless, please cite as follows.
 
 MLA (8th Edition):
@@ -39,7 +39,7 @@ GB (GB/T 7714—2015):
 
     叶磊. Wordless version 1.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
 
-### Acknowledgments
+## Acknowledgments
 Wordless stands on the shoulders of giants. Thus, I would like to extend my thanks to the following open-source projects:
 
 1. [Python](https://www.python.org/) by Guido van Rossum, Python Software Foundation
@@ -69,12 +69,12 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 25. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
 26. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
 
-### Documentation
+## Documentation
 [English Documentation Here](#doc-eng)
 
 [中文文档在这里](#doc-zho)
 
-### Need Help?
+## Need Help?
 If you encounter a problem, find a bug or require any further information, feel free to ask questions, submit bug reports or provide feedback by [creating an issue](https://github.com/BLKSerene/Wordless/issues/new) on Github if you fail to find the answer by searching [existing issues](https://github.com/BLKSerene/Wordless/issues) first.
 
 If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may [send me an email](mailto:blkserene@gmail.com).
@@ -82,25 +82,28 @@ If you need to post sample texts or other information that cannot be shared or y
 **Important Note**: I CANNOT GUARANTEE that all emails will always be checked or replied in time. I WILL NOT REPLY to irrelevant emails and I reserve the right to BLOCK AND/OR REPORT people who send me spam emails.
 
 Home Page: https://github.com/BLKSerene/Wordless<br>
+Documentation: https://github.com/BLKSerene/Wordless#documentation<br>
 Email: blkserene@gmail.com<br>
 [WeChat](https://www.wechat.com/en/) Official Account: Wordless
 
-### Contributing
+## Contributing
 If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements or new features by [creating a pull request](https://github.com/BLKSerene/Wordless/pulls) on Github.
 
 Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or [Github Wiki](https://github.com/BLKSerene/Wordless/wiki) for Wordless, or helping me translate Wordless and its documentation to other languages.
 
-### Donating
-If you would like to support the development of Wordless, you may choose to donate via Paypal, Alipay or WeChat.
+## Donating
+If you would like to support the development of Wordless, you may donate via PayPal, Alipay or WeChat.
 
-PayPal: [blkserene@gmail.com](https://www.paypal.com/myaccount/transfer/homepage/send)
+**Important Note**: I WILL NOT PROVIDE invoices, receipts, detailed weekly/monthly/yearly/etc. spending report, refund services, or gurantees on bug fixes, new features or new releases of Wordless for donation. 
 
-<img src=https://github.com/BLKSerene/Wordless/blob/master/images/Alipay.jpg width="200"> <img src=https://github.com/BLKSerene/Wordless/blob/master/images/WeChat.png alt="WeChat" width="200">
+|PayPal|Alipay|WeChat|
+|------|------|------|
+|[![Donate with PayPal button](https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJ4RNZSVD766Y)|<img src=https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_alipay.png>|<img src=https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_wechat.png alt="WeChat">|
 
 <span id="doc-eng"></span>
-### Documentation - English
+## Documentation - English
 Editing...
 
 <span id="doc-zho"></span>
-### Documentation - Chinese (Simplified)
+## Documentation - Chinese (Simplified)
 Editing...

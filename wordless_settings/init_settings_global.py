@@ -1868,18 +1868,38 @@ def init_settings_global(main):
                             margin-bottom: 5px;
                         }
 
-                        h1, h2, h3, h4, h5, h6 {
-                            margin-bottom: 10px;
-                            font-size: 14px;
-                            font-weight: bold;
-                        }
-
                         ol, ul {
                             list-style-type: none;
                         }
 
                         li {
                             margin-left: -20px;
+                        }
+                    </style>
+                </head>
+            ''',
+
+            'style_dialog_about': '''
+                <head>
+                    <style>
+                        * {
+                            outline: none;
+                            margin: 0;
+                            border: 0;
+                            padding: 0;
+
+                            line-height: 1.4;
+                            text-align: center;
+                        }
+
+                        div {
+                            margin-bottom: 8px;
+                        }
+
+                        h2 {
+                            margin-bottom: 0px;
+                            font-size: 28px;
+                            font-weight: bold;
                         }
                     </style>
                 </head>
