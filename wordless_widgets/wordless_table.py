@@ -65,7 +65,6 @@ class Wordless_Table(QTableWidget):
         for col in self.find_col(cols_stretch):
             self.horizontalHeader().setSectionResizeMode(col, QHeaderView.Stretch)
 
-
         self.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
 
