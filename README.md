@@ -44,7 +44,7 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 
 1. [Python](https://www.python.org/) by Guido van Rossum, Python Software Foundation
 2. [PyQt](https://www.riverbankcomputing.com/software/pyqt/intro) by Riverbank Computing Limited
-3. [jieba (“结巴”中文分词)](https://github.com/fxsjy/jieba) by Sun Junyi
+3. [jieba](https://github.com/fxsjy/jieba) by Sun Junyi
 4. [nagisa](https://github.com/taishi-i/nagisa) by Taishi Ikeda (池田大志)
 5. [NLTK](http://www.nltk.org/) by Steven Bird, Liling Tan
 6. [pybo](https://github.com/Esukhia/pybo) by Hélios Drupchen Hildt

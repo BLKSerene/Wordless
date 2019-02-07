@@ -58,17 +58,27 @@ def distributional_consistency(freqs):
     if sum(freqs) == 0:
         dc = 0
     else:
-        number_sections = len(freqs)
+        num_sections = len(freqs)
 
-        dc = ((sum([math.sqrt(freq) for freq in freqs]) / number_sections) ** 2 /
-              (sum(freqs) / number_sections))
+        dc = ((sum([math.sqrt(freq) for freq in freqs]) / num_sections) ** 2 /
+              (sum(freqs) / num_sections))
 
     return dc
 
 # Reference:
 #     Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, pp. 403-37.
-def griess_dp(freqs):
-    pass
+def gries_dp(freqs):
+    num_sections = len(freqs)
+    freq_total = sum(freqs)
+
+    return sum([abs(freq / freq_total - 1 / num_sections)
+                for freq in freqs]) / 2
+
+# Reference:
+#     Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, pp. 403-37.
+#     Lijffijt, Jefrey and Stefan Th. Gries. "Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”" International Journal of Corpus Linguistics, vol. 17, no. 1, 2012, pp. 147-49.
+def gries_dp_norm(freqs):
+    return gries_dp(freqs) / (1 - 1 / len(freqs))
 
 # Testing
 if __name__ == '__main__':
@@ -91,3 +101,11 @@ if __name__ == '__main__':
     # Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 408.
     print('Distributional Consistency:\n    ', end = '')
     print(distributional_consistency([1, 2, 3, 4, 5])) # 0.937
+
+    # Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 416.
+    print('Gries\' DP:\n    ', end = '')
+    print(gries_dp([3, 3, 3])) # 0
+
+    # Lijffijt, Jefrey and Stefan Th. Gries. "Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”" International Journal of Corpus Linguistics, vol. 17, no. 1, 2012, pp. 148.
+    print('Gries\' DPnorm:\n    ', end = '')
+    print(gries_dp_norm([2, 1, 0])) # 0.5
