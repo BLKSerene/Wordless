@@ -1851,6 +1851,12 @@ def init_settings_global(main):
         },
 
         'styles': {
+            'style_global': '''
+                  font-family: Arial, sans-serif;
+                  color: #292929;
+                  font-size: 12px;
+            ''',
+
             'style_dialog': '''
                 <head>
                     <style>

@@ -86,6 +86,8 @@ class Wordless_Settings(QDialog):
         self.tree_settings.topLevelItem(11).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
         self.tree_settings.topLevelItem(11).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
 
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Updates')]))
+
         self.tree_settings.itemSelectionChanged.connect(self.selection_changed)
 
         self.scroll_area_settings = wordless_layout.Wordless_Scroll_Area(self.main)
@@ -109,6 +111,8 @@ class Wordless_Settings(QDialog):
         self.init_settings_adjusted_freq()
         self.init_settings_statistical_significance()
         self.init_settings_effect_size()
+
+        self.init_settings_updates()
 
         button_restore_default_settings = QPushButton(self.tr('Restore Default Settings'), self)
         button_save = QPushButton(self.tr('Save'), self)
@@ -187,6 +191,9 @@ class Wordless_Settings(QDialog):
                 elif item_selected_text == self.tr('Effect Size'):
                     settings_cur = self.settings_effect_size
 
+                elif item_selected_text == self.tr('Updates'):
+                    settings_cur = self.settings_updates
+
                 if settings_cur:
                     self.settings_import.hide()
                     self.settings_export.hide()
@@ -207,6 +214,8 @@ class Wordless_Settings(QDialog):
                     self.settings_adjusted_freq.hide()
                     self.settings_statistical_significance.hide()
                     self.settings_effect_size.hide()
+
+                    self.settings_updates.hide()
 
                     self.scroll_area_settings.takeWidget()
                     self.scroll_area_settings.setWidget(settings_cur)
@@ -1590,6 +1599,23 @@ class Wordless_Settings(QDialog):
 
         self.settings_effect_size.layout().setRowStretch(1, 1)
 
+    # Updates
+    def init_settings_updates(self):
+        self.settings_updates = QWidget(self)
+
+        # Update Settings
+        group_box_update_settings = QGroupBox(self.tr('Update Settings'), self)
+
+        self.checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for Updates on Startup'), self)
+
+        group_box_update_settings.setLayout(QGridLayout())
+        group_box_update_settings.layout().addWidget(self.checkbox_check_updates_on_startup, 0, 0)
+
+        self.settings_updates.setLayout(QGridLayout())
+        self.settings_updates.layout().addWidget(group_box_update_settings, 0, 0)
+
+        self.settings_updates.layout().setRowStretch(1, 1)
+
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.main.settings_default)
@@ -1802,6 +1828,9 @@ class Wordless_Settings(QDialog):
         # Measures -> Effect Size
         self.spin_box_kilgarriffs_ratio_smoothing_parameter.setValue(settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_parameter'])
 
+        # Updates
+        self.checkbox_check_updates_on_startup.setChecked(settings['updates']['update_settings']['check_updates_on_startup'])
+
     def restore_default_settings(self):
         reply = wordless_message_box.wordless_message_box_restore_default_settings(self.main)
 
@@ -1976,6 +2005,9 @@ class Wordless_Settings(QDialog):
             settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_parameter'] = self.spin_box_kilgarriffs_ratio_smoothing_parameter.value()
 
             self.wordless_settings_changed.emit()
+
+            # Updates
+            settings['updates']['update_settings']['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
 
         return settings_valid
 
