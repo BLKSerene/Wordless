@@ -14,7 +14,6 @@ import ctypes
 import os
 import pickle
 import sys
-import threading
 import time
 
 from PyQt5.QtCore import *
@@ -30,7 +29,6 @@ from wordless_utils import *
 from wordless_widgets import *
 
 import wordless_files
-
 import tab_overview
 import tab_concordancer
 import tab_wordlist
@@ -123,7 +121,7 @@ class Wordless_Main(QMainWindow):
 
         self.threads_check_updates = []
 
-        self.setWindowTitle(self.tr('Wordless Version 1.0.0'))
+        self.setWindowTitle(self.tr('Wordless'))
         self.setWindowIcon(QIcon('imgs/wordless_icon.png'))
 
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('wordless')
@@ -145,6 +143,9 @@ class Wordless_Main(QMainWindow):
 
         self.wordless_settings = wordless_settings.Wordless_Settings(self)
 
+        # Menu
+        self.init_menu()
+
         # Tabs
         tab_cur = self.settings_custom['tab_cur']
 
@@ -155,9 +156,6 @@ class Wordless_Main(QMainWindow):
                 self.tabs.setCurrentIndex(i)
 
                 break
-
-        # Menu
-        self.init_menu()
 
         # Status Bar
         self.status_bar = self.statusBar()
@@ -198,39 +196,45 @@ class Wordless_Main(QMainWindow):
         menu_help = menu.addMenu(self.tr('Help'))
 
         # File
-        menu_file_open_files = QAction(self.tr('Open File(s)...'), self)
-        menu_file_open_files.setStatusTip(self.tr('Open file(s)'))
-        menu_file_open_files.triggered.connect(self.open_files)
+        self.menu_file_open_files = QAction(self.tr('Open File(s)...'), self)
+        self.menu_file_open_files.setStatusTip(self.tr('Open file(s)'))
 
-        menu_file_open_dir = QAction(self.tr('Open Folder...'), self)
-        menu_file_open_dir.setStatusTip(self.tr('Open a folder'))
-        menu_file_open_dir.triggered.connect(self.open_dir)
+        self.menu_file_open_dir = QAction(self.tr('Open Folder...'), self)
+        self.menu_file_open_dir.setStatusTip(self.tr('Open all files in folder'))
 
-        menu_file_close_selected = QAction(self.tr('Close Selected File(s)'), self)
-        menu_file_close_selected.setStatusTip(self.tr('Close selected file(s)'))
-        menu_file_close_selected.triggered.connect(self.close_selected)
+        self.menu_file_reopen = QAction(self.tr('Reopen Closed File(s)'), self)
+        self.menu_file_reopen.setStatusTip(self.tr('Reopen closed file(s)'))
 
-        menu_file_close_all = QAction(self.tr('Close All Files'), self)
-        menu_file_close_all.setStatusTip(self.tr('Close all files'))
-        menu_file_close_all.triggered.connect(self.close_all)
+        self.menu_file_select_all = QAction(self.tr('Select All'), self)
+        self.menu_file_select_all.setStatusTip(self.tr('Select all files'))
 
-        menu_file_reopen = QAction(self.tr('Reopen Closed File(s)'), self)
-        menu_file_reopen.setStatusTip(self.tr('Reopen closed file(s)'))
-        menu_file_reopen.triggered.connect(self.reopen)
+        self.menu_file_invert_selection = QAction(self.tr('Invert Selection'), self)
+        self.menu_file_invert_selection.setStatusTip(self.tr('Invert file selection'))
+
+        self.menu_file_deselect_all = QAction(self.tr('Deselect All'), self)
+        self.menu_file_deselect_all.setStatusTip(self.tr('Deselect all files'))
+
+        self.menu_file_close_selected = QAction(self.tr('Close Selected'), self)
+        self.menu_file_close_selected.setStatusTip(self.tr('Close selected file(s)'))
+
+        self.menu_file_close_all = QAction(self.tr('Close All'), self)
+        self.menu_file_close_all.setStatusTip(self.tr('Close all files'))
 
         menu_file_exit = QAction(self.tr('Exit...'), self)
         menu_file_exit.setStatusTip(self.tr('Exit the program'))
         menu_file_exit.triggered.connect(self.close)
 
-        menu_file_reopen.setEnabled(False)
-
-        menu_file.addAction(menu_file_open_files)
-        menu_file.addAction(menu_file_open_dir)
+        menu_file.addAction(self.menu_file_open_files)
+        menu_file.addAction(self.menu_file_open_dir)
         menu_file.addSeparator()
-        menu_file.addAction(menu_file_close_selected)
-        menu_file.addAction(menu_file_close_all)
+        menu_file.addAction(self.menu_file_reopen)
         menu_file.addSeparator()
-        menu_file.addAction(menu_file_reopen)
+        menu_file.addAction(self.menu_file_select_all)
+        menu_file.addAction(self.menu_file_invert_selection)
+        menu_file.addAction(self.menu_file_deselect_all)
+        menu_file.addSeparator()
+        menu_file.addAction(self.menu_file_close_selected)
+        menu_file.addAction(self.menu_file_close_all)
         menu_file.addSeparator()
         menu_file.addAction(menu_file_exit)
 
@@ -273,6 +277,10 @@ class Wordless_Main(QMainWindow):
         menu_help_check_updates.setStatusTip(self.tr('Check for the latest version of Wordless'))
         menu_help_check_updates.triggered.connect(self.help_check_updates)
 
+        menu_help_changelog = QAction(self.tr('Changelog'), self)
+        menu_help_changelog.setStatusTip(self.tr('Show Changelog'))
+        menu_help_changelog.triggered.connect(self.help_changelog)
+
         menu_help_about_wordless = QAction(self.tr('About Wordless'), self)
         menu_help_about_wordless.setStatusTip(self.tr('Show information about Wordless'))
         menu_help_about_wordless.triggered.connect(self.help_about_wordless)
@@ -285,6 +293,7 @@ class Wordless_Main(QMainWindow):
         menu_help.addAction(menu_help_donating)
         menu_help.addSeparator()
         menu_help.addAction(menu_help_check_updates)
+        menu_help.addAction(menu_help_changelog)
         menu_help.addAction(menu_help_about_wordless)
 
     # Preferences -> Show Status Bar
@@ -594,27 +603,49 @@ class Wordless_Main(QMainWindow):
         else:
             return dialog_check_updates
 
+    # Help -> Changelog
+    def help_changelog(self):
+        dialog_changelog = wordless_changelog.Wordless_Dialog_Changelog(self)
+
+        dialog_changelog.open()
+
     # Help -> About Wordless
     def help_about_wordless(self):
-        QMessageBox.about(
-            self,
-            self.tr('About Wordless'),
-            self.tr(f'''
-                {self.settings_global['styles']['style_dialog_about']}
-                <body>
+        dialog_about = wordless_dialog.Wordless_Dialog_Info(self, self.tr('About Wordless'),
+                                                            width = 420,
+                                                            height = 150)
+
+        label_about_icon = QLabel('', self)
+        label_about_icon.setPixmap(QPixmap('imgs/wordless_icon.png'))
+
+        label_about_title = wordless_label.Wordless_Label_Dialog(
+            self.tr('''
+                <div style="text-align: center;">
                     <h2>Wordless Version 1.0.0</h2>
                     <div>
                         An Integrated Corpus Tool with Multi-language Support<br>
                         for the Study of Language, Literature and Translation
                     </div>
+                </div>
+            '''), self)
+        label_about_copyright = wordless_label.Wordless_Label_Dialog(
+            self.tr('''
+                <hr>
+                <div style="text-align: center;">
+                    Copyright (C)&nbsp;&nbsp;2018 Ye Lei (<span style="font-family: simsun">叶磊</span>)<br>
+                    Licensed Under GNU GPLv3<br>
+                    All Other Rights Reserved
+                </div>
+            '''), self)
 
-                    <div>
-                        Copyright (C)&nbsp;&nbsp;2018 Ye Lei (<span style="font-family: simsun">叶磊</span>)<br>
-                        Licensed Under GNU GPLv3<br>
-                        All Other Rights Reserved
-                    </div>
-                </body>
-            '''))
+        dialog_about.wrapper_info.layout().addWidget(label_about_icon, 0, 0)
+        dialog_about.wrapper_info.layout().addWidget(label_about_title, 0, 1)
+        dialog_about.wrapper_info.layout().addWidget(label_about_copyright, 1, 0, 1, 2)
+
+        dialog_about.wrapper_info.layout().setColumnStretch(1, 1)
+        dialog_about.wrapper_info.layout().setVerticalSpacing(0)
+
+        dialog_about.open()
 
     def init_central_widget(self):
         central_widget = QWidget(self)
