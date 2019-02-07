@@ -14,13 +14,17 @@ import ctypes
 import os
 import pickle
 import sys
+import threading
 import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+import requests
+
 from wordless_checking import *
+from wordless_help import *
 from wordless_settings import *
 from wordless_utils import *
 from wordless_widgets import *
@@ -34,138 +38,6 @@ import tab_ngrams
 import tab_collocation
 import tab_colligation
 import tab_keywords
-
-acks = [
-    ['<a href="https://www.python.org/">Python</a>',
-     '3.7.2',
-     'Guido van Rossum, Python Software Foundation',
-     '<a href="https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release">PSF</a>'],
-
-    ['<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
-     '5.11.3',
-     'Riverbank Computing Limited',
-     '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPLv3</a>'],
-
-    ['<a href="https://github.com/fxsjy/jieba">jieba (“结巴”中文分词)</a>',
-     '0.39',
-     'Sun Junyi',
-     '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'],
-
-    ['<a href="https://github.com/taishi-i/nagisa">nagisa</a>',
-     '0.2.0',
-     'Taishi Ikeda (池田大志)',
-     '<a href="https://github.com/taishi-i/nagisa/blob/master/LICENSE.txt">MIT</a>'],
-
-    ['<a href="http://www.nltk.org/">NLTK</a>',
-     '3.4',
-     'Steven Bird, Liling Tan',
-     '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache v2</a>'],
-
-    ['<a href="https://github.com/Esukhia/pybo">pybo</a>',
-     '0.3.0',
-     'Hélios Drupchen Hildt',
-     '<a href="https://github.com/Esukhia/pybo/blob/master/LICENSE">Apache v2</a>'],
-
-    ['<a href="https://github.com/kmike/pymorphy2/">pymorphy2</a>',
-     '0.8',
-     'Mikhail Korobov',
-     '<a href="https://github.com/kmike/pymorphy2/#pymorphy2">MIT</a>'],
-
-    ['<a href="https://github.com/PyThaiNLP/pythainlp">PyThaiNLP</a>',
-     '1.7.2',
-     'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
-     '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache v2</a>'],
-
-    ['<a href="https://github.com/alvations/sacremoses">SacreMoses</a>',
-     '0.0.7',
-     'Liling Tan',
-     '<a href="https://github.com/alvations/sacremoses#license">LGPLv2.1</a>'],
-
-    ['<a href="https://spacy.io/">spaCy</a>',
-     '2.0.18',
-     'Matthew Honnibal, Ines Montani',
-     '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'],
-
-    ['<a href="https://github.com/undertheseanlp/underthesea">Underthesea</a>',
-     '1.1.11',
-     'Vu Anh',
-     '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPLv3</a>'],
-
-    ['<a href="https://amueller.github.io/word_cloud/">wordcloud</a>',
-     '1.5.0',
-     'Andreas Christian Mueller',
-     '<a href="https://github.com/amueller/word_cloud/blob/master/LICENSE">MIT</a>'],
-
-    ['<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
-     '4.7.1',
-     'Leonard Richardson',
-     '<a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a>'],
-
-    ['<a href="https://github.com/PyYoshi/cChardet">cChardet</a>',
-     '2.1.4',
-     'Yoshihiro Misawa',
-     '<a href="https://github.com/PyYoshi/cChardet/blob/master/COPYING">MPLv1.1/GPLv2/LGPLv2.1</a>'],
-
-    ['<a href="https://github.com/chardet/chardet">chardet</a>',
-     '3.0.4',
-     'Daniel Blanchard',
-     '<a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPLv2.1</a>'],
-
-    ['<a href="https://github.com/Mimino666/langdetect">langdetect</a>',
-     '1.0.7',
-     'Michal Mimino Danilak',
-     '<a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache v2</a>'],
-
-    ['<a href="https://github.com/saffsd/langid.py">langid.py</a>',
-     '1.1.6',
-     'Marco Lui',
-     '<a href="https://github.com/saffsd/langid.py/blob/master/LICENSE">2-Clause BSD</a>'],
-
-    ['<a href="https://lxml.de/">lxml</a>',
-     '4.3.0',
-     'Stefan Behnel',
-     '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">3-Clause BSD</a>'],
-
-    ['<a href="https://matplotlib.org/">Matplotlib</a>',
-     '3.0.2',
-     'Matplotlib Development Team',
-     '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'],
-
-     ['<a href="http://www.numpy.org/">NumPy</a>',
-     '1.16.1',
-     'NumPy Developers',
-     '<a href="http://www.numpy.org/license.html">3-Clause BSD</a>'],
-
-    ['<a href="https://openpyxl.readthedocs.io/en/stable/">openpyxl</a>',
-     '2.5.14',
-     'Eric Gazoni, Charlie Clark',
-     '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst?at=default&fileviewer=file-view-default">MIT</a>'],
-
-    ['<a href="https://github.com/python-openxml/python-docx">python-docx</a>',
-     '0.8.10',
-     'Steve Canny',
-     '<a href="https://github.com/python-openxml/python-docx/blob/master/LICENSE">MIT</a>'],
-
-    ['<a href="https://www.scipy.org/">SciPy</a>',
-     '1.2.0',
-     'SciPy Developers',
-     '<a href="https://www.scipy.org/scipylib/license.html">3-Clause BSD</a>'],
-
-    ['<a href="https://github.com/python-excel/xlrd">xlrd</a>',
-     '1.2.0',
-     'Stephen John Machin, Lingfo Pty Ltd',
-     '<a href="https://github.com/python-excel/xlrd/blob/master/LICENSE">3-Clause BSD / Original BSD</a>'],
-
-    ['<a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a>',
-     '/',
-     'Michal Boleslav Měchura',
-     '<a href="https://github.com/michmech/lemmatization-lists/blob/master/LICENCE">ODbL</a>'],
-
-    ['<a href="https://github.com/stopwords-iso/stopwords-iso">Stopwords ISO</a>',
-     '0.4.0',
-     'Gene Diaz',
-     '<a href="https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE">MIT</a>'],
-]
 
 class Wordless_Loading(QSplashScreen):
     def __init__(self):
@@ -189,9 +61,67 @@ class Wordless_Loading(QSplashScreen):
 
             time.sleep(0.05)
 
+class Worker_Check_Updates(QObject):
+    finished = pyqtSignal()
+    check_updates_finished = pyqtSignal(str, str)
+
+    def __init__(self, main):
+        super().__init__()
+
+        self.main = main
+        self.stopped = False
+
+    def check_updates(self):
+        num_retries = 0
+        version_new = ''
+
+        try:
+            r = requests.get('https://raw.githubusercontent.com/BLKSerene/Wordless/master/VERSION', timeout = 15)
+
+            if r.status_code == 200:
+                for line in r.text.splitlines():
+                    if line and not line.startswith('#'):
+                        version_new = line.rstrip()
+
+                if self.is_newer_version(version_new):
+                    updates_status = 'updates_available'
+                else:
+                    updates_status = 'no_updates'
+            else:
+                updates_status = 'network_error'
+        except:
+            updates_status = 'network_error'
+
+        if not self.stopped:
+            self.check_updates_finished.emit(updates_status, version_new)
+
+        self.finished.emit()
+
+    def is_newer_version(self, version_new):
+        with open('VERSION', 'r', encoding = 'utf_8') as f:
+            for line in f.readlines():
+                line = line.rstrip()
+
+                if line and not line.startswith('#'):
+                    major_cur, minor_cur, patch_cur = line.split('.')
+
+        major_new, minor_new, patch_new = version_new.split('.')
+
+        if (int(major_cur) < int(major_new) or
+            int(minor_cur) < int(minor_new) or
+            int(patch_cur) < int(patch_new)):
+            return True
+        else:
+            return False
+
+    def stop(self):
+        self.stopped = True
+
 class Wordless_Main(QMainWindow):
     def __init__(self):
         super().__init__()
+
+        self.threads_check_updates = []
 
         self.setWindowTitle(self.tr('Wordless Version 1.0.0'))
         self.setWindowIcon(QIcon('imgs/wordless_icon.png'))
@@ -233,7 +163,11 @@ class Wordless_Main(QMainWindow):
         self.status_bar = self.statusBar()
         self.status_bar.showMessage(self.tr('Ready!'))
 
-        self.setStyleSheet('* {font-family: Arial, sans-serif; color: #292929; font-size: 12px;}')
+        self.setStyleSheet(self.settings_global['styles']['style_global'])
+
+        # Check for updates on startup
+        if self.settings_custom['updates']['update_settings']['check_updates_on_startup']:
+            self.dialog_check_updates = self.help_check_updates(on_startup = True)
 
     def closeEvent(self, event):
         reply = QMessageBox.question(self,
@@ -258,329 +192,429 @@ class Wordless_Main(QMainWindow):
             event.ignore()
 
     def init_menu(self):
-        # Preferences
-        def prefs_show_status_bar():
-            if self.status_bar.isVisible():
-                self.status_bar.hide()
-            else:
-                self.status_bar.show()
-
-        # Help
-        def help_citing():
-            def citation_sys_changed():
-                if combo_box_citation_sys.currentText() == self.tr('MLA (8th Edition)'):
-                    text_edit_citing.setHtml('Ye Lei. Wordless, version 1.0.0, 2019, https://github.com/BLKSerene/Wordless.')
-                elif combo_box_citation_sys.currentText() == self.tr('APA (6th Edition)'):
-                    text_edit_citing.setHtml('Ye, L. (2019) Wordless (Version 1.0.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless')
-                elif combo_box_citation_sys.currentText() == self.tr('GB (GB/T 7714—2015)'):
-                    text_edit_citing.setHtml('叶磊. Wordless version 1.0.0[CP]. (2019). https://github.com/BLKSerene/Wordless.')
-
-                if combo_box_citation_sys.currentText() == self.tr('GB (GB/T 7714—2015)'):
-                    text_edit_citing.setFont(QFont('宋体', 12))
-                else:
-                    text_edit_citing.setFont(QFont('Times New Roman', 12))
-
-            def copy():
-                text_edit_citing.setFocus()
-                text_edit_citing.selectAll()
-                text_edit_citing.copy()
-
-            dialog_citing = wordless_dialog.Wordless_Dialog_Info(self, self.tr('Citing'),
-                                                                 width = 400,
-                                                                 height = 150)
-
-            label_citing = wordless_label.Wordless_Label_Dialog(
-                self.tr('''
-                    <div>
-                        If you publish work that uses Wordless, please cite as follows.
-                    </div>
-                '''), self)
-            label_citation_sys = QLabel(self.tr('Citation System:'), self)
-            combo_box_citation_sys = wordless_box.Wordless_Combo_Box(self)
-            text_edit_citing = QTextEdit(self)
-
-            dialog_citing.button_ok.hide()
-            button_copy = QPushButton(self.tr('Copy'), self)
-            button_close = QPushButton(self.tr('Close'), self)
-
-            combo_box_citation_sys.addItems([
-                                                 self.tr('MLA (8th Edition)'),
-                                                 self.tr('APA (6th Edition)'),
-                                                 self.tr('GB (GB/T 7714—2015)')
-                                            ])
-
-            button_copy.setFixedWidth(100)
-            button_close.setFixedWidth(100)
-
-            text_edit_citing.setFixedHeight(100)
-            text_edit_citing.setReadOnly(True)
-
-            combo_box_citation_sys.currentTextChanged.connect(citation_sys_changed)
-
-            button_copy.clicked.connect(copy)
-            button_close.clicked.connect(dialog_citing.accept)
-
-            layout_citation_sys = QGridLayout()
-            layout_citation_sys.addWidget(label_citation_sys, 0, 0)
-            layout_citation_sys.addWidget(combo_box_citation_sys, 0, 1)
-
-            layout_citation_sys.setColumnStretch(2, 1)
-
-            dialog_citing.wrapper_info.layout().addWidget(label_citing, 0, 0, 1, 2)
-            dialog_citing.wrapper_info.layout().addLayout(layout_citation_sys, 1, 0, 1, 2)
-            dialog_citing.wrapper_info.layout().addWidget(text_edit_citing, 2, 0, 1, 2)
-
-            dialog_citing.wrapper_buttons.layout().addWidget(button_copy, 0, 0)
-            dialog_citing.wrapper_buttons.layout().addWidget(button_close, 0, 1)
-
-            citation_sys_changed()
-
-            dialog_citing.exec_()
-
-        def help_acks():
-            dialog_acks = wordless_dialog.Wordless_Dialog_Info(self, self.tr('Acknowledgments'),
-                                                               width = 600,
-                                                               height = 350)
-
-            label_acks = wordless_label.Wordless_Label_Dialog(self.tr('''
-                <div>
-                    Wordless stands on the shoulders of giants. Thus, I would like to extend my thanks to the following open-source projects:
-                </div>
-            '''), self)
-
-            table_acks = wordless_table.Wordless_Table(self,
-                                                       headers = [
-                                                           self.tr('Name'),
-                                                           self.tr('Version'),
-                                                           self.tr('Author(s)'),
-                                                           self.tr('License')
-                                                       ])
-            
-            table_acks.setRowCount(len(acks))
-
-            for i, (name, ver, authors, license) in enumerate(acks):
-                table_acks.setCellWidget(i, 0, wordless_label.Wordless_Label_Html(name, self))
-                table_acks.setCellWidget(i, 1, wordless_label.Wordless_Label_Html(ver, self))
-                table_acks.setCellWidget(i, 2, wordless_label.Wordless_Label_Html(authors, self))
-                table_acks.setCellWidget(i, 3, wordless_label.Wordless_Label_Html(license, self))
-
-                table_acks.cellWidget(i, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-
-            table_acks.resizeColumnsToContents()
-
-            dialog_acks.wrapper_info.layout().addWidget(label_acks, 0, 0)
-            dialog_acks.wrapper_info.layout().addWidget(table_acks, 1, 0)
-
-            dialog_acks.exec()
-
-        def help_need_help():
-            message_box = wordless_message_box.Wordless_Message_Box_Info(
-                main = self,
-                title = self.tr('Need Help?'),
-                text = self.tr('''
-                    <div>
-                        If you encounter a problem, find a bug or require any further information, feel free to ask questions, submit bug reports or provide feedback by <a href="https://github.com/BLKSerene/Wordless/issues/new">creating an issue</a> on Github if you fail to find the answer by searching <a href="https://github.com/BLKSerene/Wordless/issues">existing issues</a> first.
-                    </div>
-
-                    <div>
-                        If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may <a href="mailto:blkserene@gmail.com">send me an email</a>.
-                    </div>
-
-                    <div>
-                        <span style="color: #F00;"><b>Important Note</b></span>: I <b>CANNOT GUARANTEE</b> that all emails will always be checked or replied in time. I <b>WILL NOT REPLY</b> to irrelevant emails and I reserve the right to <b>BLOCK AND/OR REPORT</b> people who send me spam emails.
-                    </div>
-
-                    <div>
-                        Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</a><br>
-                        Documentation: <a href="https://github.com/BLKSerene/Wordless#documentation">https://github.com/BLKSerene/Wordless#documentation</a><br>
-                        Email: <a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a><br>
-                        <a href="https://www.wechat.com/en/">WeChat</a> Official Account: Wordless
-                    </div>
-                '''))
-
-            message_box.exec_()
-
-        def help_contributing():
-            message_box = wordless_message_box.Wordless_Message_Box_Info(
-                main = self,
-                title = self.tr('Contributing'),
-                text = self.tr('''
-                    <div>
-                        If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements or new features by <a href="https://github.com/BLKSerene/Wordless/pulls">creating a pull request</a> on Github.
-                    </div>
-
-                    <div>
-                        Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or <a href ="https://github.com/BLKSerene/Wordless/wiki">Github Wiki</a> for Wordless, or helping me translate Wordless and its documentation to other languages.
-                    </div>
-                '''))
-
-            message_box.exec_()
-
-        def help_donating():
-            def donating_via_changed():
-                if combo_box_donating_via.currentText() == self.tr('PayPal'):
-                    label_donating_via_img.setText('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJ4RNZSVD766Y"><img src="imgs/donating_paypal.gif"></a>')
-
-                    dialog_donating.setFixedHeight(260)
-                elif combo_box_donating_via.currentText() == self.tr('Alipay'):
-                    label_donating_via_img.setText('<img src="imgs/donating_alipay.png">')
-
-                    dialog_donating.setFixedHeight(510)
-                elif combo_box_donating_via.currentText() == self.tr('WeChat'):
-                    label_donating_via_img.setText('<img src="imgs/donating_wechat.png">')
-
-                    dialog_donating.setFixedHeight(510)
-
-                label_donating_via_img.adjustSize()
-                dialog_donating.move_to_center()
-
-            dialog_donating = wordless_dialog.Wordless_Dialog_Info(self, self.tr('Donating'),
-                                                                   width = 400,
-                                                                   height = 260)
-
-            label_donating = wordless_label.Wordless_Label_Dialog(
-                self.tr('''
-                    <div>
-                        If you would like to support the development of Wordless, you may donate via PayPal, Alipay or WeChat.
-                    </div>
-
-                    <div>
-                        <span style="color: #F00;"><b>Important Note</b></span>: I <b>WILL NOT PROVIDE</b> invoices, receipts, detailed weekly/monthly/yearly/etc. spending report, refund services, or gurantees on bug fixes, new features or new releases of Wordless for donation. 
-                    </div>
-                '''), self)
-            label_donating_via = QLabel(self.tr('Donating via:'), self)
-            combo_box_donating_via = wordless_box.Wordless_Combo_Box(self)
-            label_donating_via_img = wordless_label.Wordless_Label_Html('', self)
-
-            combo_box_donating_via.addItems([
-                                                 self.tr('PayPal'),
-                                                 self.tr('Alipay'),
-                                                 self.tr('WeChat')
-                                            ])
-
-            combo_box_donating_via.currentTextChanged.connect(donating_via_changed)
-
-            layout_donating_via = QGridLayout()
-            layout_donating_via.addWidget(label_donating_via, 0, 0)
-            layout_donating_via.addWidget(combo_box_donating_via, 0, 1)
-
-            layout_donating_via.setColumnStretch(2, 1)
-
-            dialog_donating.wrapper_info.layout().addWidget(label_donating, 0, 0)
-            dialog_donating.wrapper_info.layout().addLayout(layout_donating_via, 1, 0)
-            dialog_donating.wrapper_info.layout().addWidget(label_donating_via_img, 2, 0, Qt.AlignHCenter | Qt.AlignVCenter)
-
-            donating_via_changed()
-
-            dialog_donating.exec_()
-
-        def help_about_wordless():
-            QMessageBox.about(
-                self,
-                self.tr('About Wordless'),
-                self.tr(f'''
-                    {self.settings_global['styles']['style_dialog_about']}
-                    <body>
-                        <h2>Wordless Version 1.0.0</h2>
-                        <div>
-                            An Integrated Corpus Tool with Multi-language Support<br>
-                            for the Study of Language, Literature and Translation
-                        </div>
-
-                        <div>
-                            Copyright (C)&nbsp;&nbsp;2018 Ye Lei (<span style="font-family: simsun">叶磊</span>)<br>
-                            Licensed Under GNU GPLv3<br>
-                            All Other Rights Reserved
-                        </div>
-                    </body>
-                '''))
-
         menu = self.menuBar()
         menu_file = menu.addMenu(self.tr('File'))
         menu_prefs = menu.addMenu(self.tr('Preferences'))
         menu_help = menu.addMenu(self.tr('Help'))
 
-        action_open_files = QAction(self.tr('Open File(s)...'), self)
-        action_open_files.setStatusTip(self.tr('Open file(s)'))
-        action_open_files.triggered.connect(self.open_files)
+        # File
+        menu_file_open_files = QAction(self.tr('Open File(s)...'), self)
+        menu_file_open_files.setStatusTip(self.tr('Open file(s)'))
+        menu_file_open_files.triggered.connect(self.open_files)
 
-        action_open_dir = QAction(self.tr('Open Folder...'), self)
-        action_open_dir.setStatusTip(self.tr('Open a folder'))
-        action_open_dir.triggered.connect(self.open_dir)
+        menu_file_open_dir = QAction(self.tr('Open Folder...'), self)
+        menu_file_open_dir.setStatusTip(self.tr('Open a folder'))
+        menu_file_open_dir.triggered.connect(self.open_dir)
 
-        action_close_selected = QAction(self.tr('Close Selected File(s)'), self)
-        action_close_selected.setStatusTip(self.tr('Close selected file(s)'))
-        action_close_selected.triggered.connect(self.close_selected)
+        menu_file_close_selected = QAction(self.tr('Close Selected File(s)'), self)
+        menu_file_close_selected.setStatusTip(self.tr('Close selected file(s)'))
+        menu_file_close_selected.triggered.connect(self.close_selected)
 
-        action_close_all = QAction(self.tr('Close All Files'), self)
-        action_close_all.setStatusTip(self.tr('Close all files'))
-        action_close_all.triggered.connect(self.close_all)
+        menu_file_close_all = QAction(self.tr('Close All Files'), self)
+        menu_file_close_all.setStatusTip(self.tr('Close all files'))
+        menu_file_close_all.triggered.connect(self.close_all)
 
-        self.action_reopen = QAction(self.tr('Reopen Closed File(s)'), self)
-        self.action_reopen.setStatusTip(self.tr('Reopen closed file(s)'))
-        self.action_reopen.triggered.connect(self.reopen)
+        menu_file_reopen = QAction(self.tr('Reopen Closed File(s)'), self)
+        menu_file_reopen.setStatusTip(self.tr('Reopen closed file(s)'))
+        menu_file_reopen.triggered.connect(self.reopen)
 
-        action_exit = QAction(self.tr('Exit...'), self)
-        action_exit.setStatusTip(self.tr('Exit the program'))
-        action_exit.triggered.connect(self.close)
+        menu_file_exit = QAction(self.tr('Exit...'), self)
+        menu_file_exit.setStatusTip(self.tr('Exit the program'))
+        menu_file_exit.triggered.connect(self.close)
 
-        self.action_reopen.setEnabled(False)
+        menu_file_reopen.setEnabled(False)
 
-        menu_file.addAction(action_open_files)
-        menu_file.addAction(action_open_dir)
+        menu_file.addAction(menu_file_open_files)
+        menu_file.addAction(menu_file_open_dir)
         menu_file.addSeparator()
-        menu_file.addAction(action_close_selected)
-        menu_file.addAction(action_close_all)
+        menu_file.addAction(menu_file_close_selected)
+        menu_file.addAction(menu_file_close_all)
         menu_file.addSeparator()
-        menu_file.addAction(self.action_reopen)
+        menu_file.addAction(menu_file_reopen)
         menu_file.addSeparator()
-        menu_file.addAction(action_exit)
+        menu_file.addAction(menu_file_exit)
 
-        action_settings = QAction(self.tr('Settings'), self)
-        action_settings.setStatusTip(self.tr('Change settings'))
-        action_settings.triggered.connect(self.wordless_settings.load)
+        # Preferences
+        menu_prefs_settings = QAction(self.tr('Settings'), self)
+        menu_prefs_settings.setStatusTip(self.tr('Change settings'))
+        menu_prefs_settings.triggered.connect(self.wordless_settings.load)
 
-        action_show_status_bar = QAction(self.tr('Show Status Bar'), self, checkable = True)
-        action_show_status_bar.setChecked(True)
-        action_show_status_bar.setStatusTip(self.tr('Show/Hide the status bar'))
-        action_show_status_bar.triggered.connect(prefs_show_status_bar)
+        menu_prefs_show_status_bar = QAction(self.tr('Show Status Bar'), self, checkable = True)
+        menu_prefs_show_status_bar.setChecked(True)
+        menu_prefs_show_status_bar.setStatusTip(self.tr('Show/Hide the status bar'))
+        menu_prefs_show_status_bar.triggered.connect(self.prefs_show_status_bar)
 
-        menu_prefs.addAction(action_settings)
+        menu_prefs.addAction(menu_prefs_settings)
         menu_prefs.addSeparator()
-        menu_prefs.addAction(action_show_status_bar)
+        menu_prefs.addAction(menu_prefs_show_status_bar)
 
-        action_need_help = QAction(self.tr('Need Help?'), self)
-        action_need_help.setStatusTip(self.tr('Show help information'))
-        action_need_help.triggered.connect(help_need_help)
+        # Help
+        menu_help_need_help = QAction(self.tr('Need Help?'), self)
+        menu_help_need_help.setStatusTip(self.tr('Show help information'))
+        menu_help_need_help.triggered.connect(self.help_need_help)
 
-        action_contributing = QAction(self.tr('Contributing'), self)
-        action_contributing.setStatusTip(self.tr('Show information about contributing'))
-        action_contributing.triggered.connect(help_contributing)
+        menu_help_contributing = QAction(self.tr('Contributing'), self)
+        menu_help_contributing.setStatusTip(self.tr('Show information about contributing'))
+        menu_help_contributing.triggered.connect(self.help_contributing)
 
-        action_donating = QAction(self.tr('Donating'), self)
-        action_donating.setStatusTip(self.tr('Show information about donating'))
-        action_donating.triggered.connect(help_donating)
+        menu_help_donating = QAction(self.tr('Donating'), self)
+        menu_help_donating.setStatusTip(self.tr('Show information about donating'))
+        menu_help_donating.triggered.connect(self.help_donating)
 
-        action_citing = QAction(self.tr('Citing'), self)
-        action_citing.setStatusTip(self.tr('Show information about citing'))
-        action_citing.triggered.connect(help_citing)
+        menu_help_citing = QAction(self.tr('Citing'), self)
+        menu_help_citing.setStatusTip(self.tr('Show information about citing'))
+        menu_help_citing.triggered.connect(self.help_citing)
 
-        action_acks = QAction(self.tr('Acknowledgments'), self)
-        action_acks.setStatusTip(self.tr('Show acknowldgments'))
-        action_acks.triggered.connect(help_acks)
+        menu_help_acks = QAction(self.tr('Acknowledgments'), self)
+        menu_help_acks.setStatusTip(self.tr('Show acknowldgments'))
+        menu_help_acks.triggered.connect(self.help_acks)
 
-        action_about_wordless = QAction(self.tr('About Wordless'), self)
-        action_about_wordless.setStatusTip(self.tr('Show information about Wordless'))
-        action_about_wordless.triggered.connect(help_about_wordless)
+        menu_help_check_updates = QAction(self.tr('Check for Updates'), self)
+        menu_help_check_updates.setStatusTip(self.tr('Check for the latest version of Wordless'))
+        menu_help_check_updates.triggered.connect(self.help_check_updates)
 
-        menu_help.addAction(action_citing)
-        menu_help.addAction(action_acks)
+        menu_help_about_wordless = QAction(self.tr('About Wordless'), self)
+        menu_help_about_wordless.setStatusTip(self.tr('Show information about Wordless'))
+        menu_help_about_wordless.triggered.connect(self.help_about_wordless)
+
+        menu_help.addAction(menu_help_citing)
+        menu_help.addAction(menu_help_acks)
         menu_help.addSeparator()
-        menu_help.addAction(action_need_help)
-        menu_help.addAction(action_contributing)
-        menu_help.addAction(action_donating)
+        menu_help.addAction(menu_help_need_help)
+        menu_help.addAction(menu_help_contributing)
+        menu_help.addAction(menu_help_donating)
         menu_help.addSeparator()
-        menu_help.addAction(action_about_wordless)
+        menu_help.addAction(menu_help_check_updates)
+        menu_help.addAction(menu_help_about_wordless)
+
+    # Preferences -> Show Status Bar
+    def prefs_show_status_bar(self):
+        if self.status_bar.isVisible():
+            self.status_bar.hide()
+        else:
+            self.status_bar.show()
+
+    # Help -> Citing
+    def help_citing(self):
+        def citation_sys_changed():
+            if combo_box_citation_sys.currentText() == self.tr('MLA (8th Edition)'):
+                text_edit_citing.setHtml('Ye Lei. Wordless, version 1.0.0, 2019, https://github.com/BLKSerene/Wordless.')
+            elif combo_box_citation_sys.currentText() == self.tr('APA (6th Edition)'):
+                text_edit_citing.setHtml('Ye, L. (2019) Wordless (Version 1.0.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless')
+            elif combo_box_citation_sys.currentText() == self.tr('GB (GB/T 7714—2015)'):
+                text_edit_citing.setHtml('叶磊. Wordless version 1.0.0[CP]. (2019). https://github.com/BLKSerene/Wordless.')
+
+            if combo_box_citation_sys.currentText() == self.tr('GB (GB/T 7714—2015)'):
+                text_edit_citing.setFont(QFont('宋体', 12))
+            else:
+                text_edit_citing.setFont(QFont('Times New Roman', 12))
+
+        def copy():
+            text_edit_citing.setFocus()
+            text_edit_citing.selectAll()
+            text_edit_citing.copy()
+
+        dialog_citing = wordless_dialog.Wordless_Dialog_Info(self, self.tr('Citing'),
+                                                             width = 400,
+                                                             height = 150,
+                                                             no_button = True)
+
+        label_citing = wordless_label.Wordless_Label_Dialog(
+            self.tr('''
+                <div>
+                    If you publish work that uses Wordless, please cite as follows.
+                </div>
+            '''), self)
+        label_citation_sys = QLabel(self.tr('Citation System:'), self)
+        combo_box_citation_sys = wordless_box.Wordless_Combo_Box(self)
+        text_edit_citing = QTextEdit(self)
+
+        button_copy = QPushButton(self.tr('Copy'), self)
+        button_close = QPushButton(self.tr('Close'), self)
+
+        combo_box_citation_sys.addItems([
+                                             self.tr('MLA (8th Edition)'),
+                                             self.tr('APA (6th Edition)'),
+                                             self.tr('GB (GB/T 7714—2015)')
+                                        ])
+
+        button_copy.setFixedWidth(100)
+        button_close.setFixedWidth(100)
+
+        text_edit_citing.setFixedHeight(100)
+        text_edit_citing.setReadOnly(True)
+
+        combo_box_citation_sys.currentTextChanged.connect(citation_sys_changed)
+
+        button_copy.clicked.connect(copy)
+        button_close.clicked.connect(dialog_citing.accept)
+
+        layout_citation_sys = QGridLayout()
+        layout_citation_sys.addWidget(label_citation_sys, 0, 0)
+        layout_citation_sys.addWidget(combo_box_citation_sys, 0, 1)
+
+        layout_citation_sys.setColumnStretch(2, 1)
+
+        dialog_citing.wrapper_info.layout().addWidget(label_citing, 0, 0, 1, 2)
+        dialog_citing.wrapper_info.layout().addLayout(layout_citation_sys, 1, 0, 1, 2)
+        dialog_citing.wrapper_info.layout().addWidget(text_edit_citing, 2, 0, 1, 2)
+
+        dialog_citing.wrapper_buttons.layout().addWidget(button_copy, 0, 0)
+        dialog_citing.wrapper_buttons.layout().addWidget(button_close, 0, 1)
+
+        citation_sys_changed()
+
+        dialog_citing.open()
+
+    # Help -> Acknowledgments
+    def help_acks(self):
+        dialog_acks = wordless_acks.Wordless_Dialog_Acks(self)
+
+        dialog_acks.open()
+
+    # Help -> Need Help?
+    def help_need_help(self):
+        message_box = wordless_message_box.Wordless_Message_Box_Info(
+            main = self,
+            title = self.tr('Need Help?'),
+            text = self.tr('''
+                <div>
+                    If you encounter a problem, find a bug or require any further information, feel free to ask questions, submit bug reports or provide feedback by <a href="https://github.com/BLKSerene/Wordless/issues/new">creating an issue</a> on Github if you fail to find the answer by searching <a href="https://github.com/BLKSerene/Wordless/issues">existing issues</a> first.
+                </div>
+
+                <div>
+                    If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may <a href="mailto:blkserene@gmail.com">send me an email</a>.
+                </div>
+
+                <div>
+                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>CANNOT GUARANTEE</b> that all emails will always be checked or replied in time. I <b>WILL NOT REPLY</b> to irrelevant emails and I reserve the right to <b>BLOCK AND/OR REPORT</b> people who send me spam emails.
+                </div>
+
+                <div>
+                    Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</a><br>
+                    Documentation: <a href="https://github.com/BLKSerene/Wordless#documentation">https://github.com/BLKSerene/Wordless#documentation</a><br>
+                    Email: <a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a><br>
+                    <a href="https://www.wechat.com/en/">WeChat</a> Official Account: Wordless
+                </div>
+            '''))
+
+        message_box.open()
+
+    # Help -> Contributing
+    def help_contributing(self):
+        message_box = wordless_message_box.Wordless_Message_Box_Info(
+            main = self,
+            title = self.tr('Contributing'),
+            text = self.tr('''
+                <div>
+                    If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements or new features by <a href="https://github.com/BLKSerene/Wordless/pulls">creating a pull request</a> on Github.
+                </div>
+
+                <div>
+                    Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or <a href ="https://github.com/BLKSerene/Wordless/wiki">Github Wiki</a> for Wordless, or helping me translate Wordless and its documentation to other languages.
+                </div>
+            '''))
+
+        message_box.open()
+
+    # Help -> Donating
+    def help_donating(self):
+        def donating_via_changed():
+            if combo_box_donating_via.currentText() == self.tr('PayPal'):
+                label_donating_via_img.setText('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJ4RNZSVD766Y"><img src="imgs/donating_paypal.gif"></a>')
+
+                dialog_donating.setFixedHeight(280)
+            elif combo_box_donating_via.currentText() == self.tr('Alipay (Recommended)'):
+                label_donating_via_img.setText('<img src="imgs/donating_alipay.png">')
+
+                dialog_donating.setFixedHeight(530)
+            elif combo_box_donating_via.currentText() == self.tr('WeChat'):
+                label_donating_via_img.setText('<img src="imgs/donating_wechat.png">')
+
+                dialog_donating.setFixedHeight(530)
+
+            label_donating_via_img.adjustSize()
+            dialog_donating.move_to_center()
+
+        dialog_donating = wordless_dialog.Wordless_Dialog_Info(self, self.tr('Donating'),
+                                                               width = 400,
+                                                               height = 280)
+
+        label_donating = wordless_label.Wordless_Label_Dialog(
+            self.tr('''
+                <div>
+                    If you would like to support the development of Wordless, you may donate via PayPal, Alipay (Recommended) or WeChat.
+                </div>
+
+                <div>
+                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>WILL NOT PROVIDE</b> refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation. 
+                </div>
+            '''), self)
+        label_donating_via = QLabel(self.tr('Donating via:'), self)
+        combo_box_donating_via = wordless_box.Wordless_Combo_Box(self)
+        label_donating_via_img = wordless_label.Wordless_Label_Html('', self)
+
+        combo_box_donating_via.addItems([
+                                             self.tr('PayPal'),
+                                             self.tr('Alipay (Recommended)'),
+                                             self.tr('WeChat')
+                                        ])
+
+        combo_box_donating_via.currentTextChanged.connect(donating_via_changed)
+
+        layout_donating_via = QGridLayout()
+        layout_donating_via.addWidget(label_donating_via, 0, 0)
+        layout_donating_via.addWidget(combo_box_donating_via, 0, 1)
+
+        layout_donating_via.setColumnStretch(2, 1)
+
+        dialog_donating.wrapper_info.layout().addWidget(label_donating, 0, 0)
+        dialog_donating.wrapper_info.layout().addLayout(layout_donating_via, 1, 0)
+        dialog_donating.wrapper_info.layout().addWidget(label_donating_via_img, 2, 0, Qt.AlignHCenter | Qt.AlignVCenter)
+
+        donating_via_changed()
+
+        dialog_donating.open()
+
+    # Help -> Check for Updates
+    def help_check_updates(self, on_startup = False):
+        def load_settings():
+            checkbox_check_updates_on_startup.setChecked(self.settings_custom['updates']['update_settings']['check_updates_on_startup'])
+
+        def check_updates_on_startup_changed():
+            self.settings_custom['updates']['update_settings']['check_updates_on_startup'] = checkbox_check_updates_on_startup.isChecked()
+
+        def check_updates():
+            updates_status_changed('checking')
+
+            thread_check_updates = QThread()
+
+            self.threads_check_updates.append(thread_check_updates)
+
+            self.worker_check_updates = Worker_Check_Updates(self)
+            self.worker_check_updates.moveToThread(thread_check_updates)
+
+            thread_check_updates.started.connect(self.worker_check_updates.check_updates)
+            thread_check_updates.finished.connect(thread_check_updates.deleteLater)
+            thread_check_updates.destroyed.connect(lambda: self.threads_check_updates.remove(thread_check_updates))
+
+            if on_startup:
+                self.worker_check_updates.check_updates_finished.connect(self.updates_status_on_startup_changed)
+
+            self.worker_check_updates.check_updates_finished.connect(updates_status_changed)
+            self.worker_check_updates.finished.connect(thread_check_updates.quit)
+            self.worker_check_updates.finished.connect(self.worker_check_updates.deleteLater)
+
+            thread_check_updates.start()
+
+        def check_updates_stopped():
+            self.worker_check_updates.stop()
+
+            dialog_check_updates.reject()
+
+        def updates_status_changed(status, version_new = ''):
+            if status == 'checking':
+                label_check_updates.set_text(self.tr('''
+                    <div>
+                        Checking for updates...<br>
+                        Please wait, it may take a few seconds.
+                    </div>
+                '''))
+
+                button_try_again.hide()
+                button_cancel.setText(self.tr('Cancel'))
+
+                button_cancel.disconnect()
+                button_cancel.clicked.connect(check_updates_stopped)
+            elif status == 'no_updates':
+                label_check_updates.set_text(self.tr('''
+                    <div>
+                        Hooray, you are using the latest version of Wordless!
+                    </div>
+                '''))
+
+                button_try_again.hide()
+                button_cancel.setText(self.tr('OK'))
+
+                button_cancel.disconnect()
+                button_cancel.clicked.connect(dialog_check_updates.accept)
+            elif status == 'updates_available':
+                label_check_updates.set_text(self.tr(f'''
+                    <div>
+                        Wordless v{version_new} is out, click <a href="https://github.com/BLKSerene/Wordless/releases"><b>HERE</b></a> to download the latest version of Wordless.
+                    </div>
+                '''))
+
+                button_try_again.hide()
+                button_cancel.setText(self.tr('OK'))
+
+                button_cancel.disconnect()
+                button_cancel.clicked.connect(dialog_check_updates.accept)
+            elif status == 'network_error':
+                label_check_updates.set_text(self.tr('''
+                    <div>
+                        A network error occurred, please check your network settings or try again later.
+                    </div>
+                '''))
+
+                button_try_again.show()
+                button_cancel.setText(self.tr('Close'))
+
+                button_cancel.disconnect()
+                button_cancel.clicked.connect(dialog_check_updates.accept)
+
+        dialog_check_updates = wordless_dialog.Wordless_Dialog_Info(self, self.tr('Check for Updates'),
+                                                                    width = 420,
+                                                                    height = 100,
+                                                                    no_button = True)
+
+        label_check_updates = wordless_label.Wordless_Label_Dialog('', self)
+        checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for Updates on Startup'), self)
+        
+        button_try_again = QPushButton(self.tr('Try Again'), self)
+        button_cancel = QPushButton(self.tr('Cancel'), self)
+
+        checkbox_check_updates_on_startup.stateChanged.connect(check_updates_on_startup_changed)
+
+        button_try_again.clicked.connect(check_updates)
+
+        dialog_check_updates.wrapper_info.layout().addWidget(label_check_updates, 0, 0)
+
+        dialog_check_updates.wrapper_buttons.layout().addWidget(checkbox_check_updates_on_startup, 0, 0)
+        dialog_check_updates.wrapper_buttons.layout().addWidget(button_try_again, 0, 2)
+        dialog_check_updates.wrapper_buttons.layout().addWidget(button_cancel, 0, 3)
+
+        dialog_check_updates.wrapper_buttons.layout().setColumnStretch(1, 1)
+
+        load_settings()
+        check_updates()
+
+        if not on_startup:
+            dialog_check_updates.open()
+        else:
+            return dialog_check_updates
+
+    # Help -> About Wordless
+    def help_about_wordless(self):
+        QMessageBox.about(
+            self,
+            self.tr('About Wordless'),
+            self.tr(f'''
+                {self.settings_global['styles']['style_dialog_about']}
+                <body>
+                    <h2>Wordless Version 1.0.0</h2>
+                    <div>
+                        An Integrated Corpus Tool with Multi-language Support<br>
+                        for the Study of Language, Literature and Translation
+                    </div>
+
+                    <div>
+                        Copyright (C)&nbsp;&nbsp;2018 Ye Lei (<span style="font-family: simsun">叶磊</span>)<br>
+                        Licensed Under GNU GPLv3<br>
+                        All Other Rights Reserved
+                    </div>
+                </body>
+            '''))
 
     def init_central_widget(self):
         central_widget = QWidget(self)
@@ -614,6 +648,13 @@ class Wordless_Main(QMainWindow):
         tab_changed()
 
         return self.tabs
+
+    def updates_status_on_startup_changed(self, status):
+        if status == 'updates_available':
+            self.dialog_check_updates.open()
+            self.dialog_check_updates.setFocus()
+        else:
+            self.dialog_check_updates.accept()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

@@ -64,10 +64,11 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 20. [NumPy](http://www.numpy.org/) by NumPy Developers
 21. [openpyxl](https://openpyxl.readthedocs.io/en/stable/) by Eric Gazoni, Charlie Clark
 22. [python-docx](https://github.com/python-openxml/python-docx) by Steve Canny
-23. [SciPy](https://www.scipy.org/) by SciPy Developers
-24. [xlrd](https://github.com/python-excel/xlrd) by Stephen John Machin, Lingfo Pty Ltd
-25. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
-26. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
+23. [requests](http://python-requests.org) by Kenneth Reitz
+24. [SciPy](https://www.scipy.org/) by SciPy Developers
+25. [xlrd](https://github.com/python-excel/xlrd) by Stephen John Machin, Lingfo Pty Ltd
+26. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
+27. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
 
 ## Documentation
 [English Documentation Here](#doc-eng)
@@ -92,11 +93,11 @@ If you have an interest in helping the development of Wordless, you may contribu
 Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or [Github Wiki](https://github.com/BLKSerene/Wordless/wiki) for Wordless, or helping me translate Wordless and its documentation to other languages.
 
 ## Donating
-If you would like to support the development of Wordless, you may donate via PayPal, Alipay or WeChat.
+If you would like to support the development of Wordless, you may donate via PayPal, Alipay (Recommended) or WeChat.
 
-**Important Note**: I WILL NOT PROVIDE invoices, receipts, detailed weekly/monthly/yearly/etc. spending report, refund services, or gurantees on bug fixes, new features or new releases of Wordless for donation. 
+**Important Note**: I WILL NOT PROVIDE refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation.
 
-|PayPal|Alipay|WeChat|
+|PayPal|Alipay (Recommended)|WeChat|
 |------|------|------|
 |[![Donate with PayPal button](https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJ4RNZSVD766Y)|<img src=https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_alipay.png>|<img src=https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_wechat.png alt="WeChat">|
 
