@@ -1375,5 +1375,11 @@ def init_settings_default(main):
                     'smoothing_parameter': 1.00
                 }
             }
+        },
+
+        'updates': {
+            'update_settings': {
+                'check_updates_on_startup': True
+            }
         }
     }
