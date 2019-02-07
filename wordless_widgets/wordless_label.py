@@ -17,25 +17,47 @@ class Wordless_Label_Html(QLabel):
     def __init__(self, html, parent):
         super().__init__(html, parent)
 
+        self.main = parent
+
         self.setTextFormat(Qt.RichText)
         self.setOpenExternalLinks(True)
 
 class Wordless_Label_Dialog(Wordless_Label_Html):
-    def __init__(self, html, main):
-        super().__init__(f'''
-                             {main.settings_global["styles"]["style_dialog"]}
-                             <body>
-                                 {html}
-                             </body>
-                         ''', main)
+    def __init__(self, text, main):
+        super().__init__(
+            f'''
+                {main.settings_global["styles"]["style_dialog"]}
+                <body>
+                    {text}
+                </body>
+            ''', main)
 
         self.setWordWrap(True)
 
+    def set_text(self, text):
+        super().setText(
+            f'''
+                {self.main.settings_global["styles"]["style_dialog"]}
+                <body>
+                    {text}
+                </body>
+            ''')
+
 class Wordless_Label_Hint(Wordless_Label_Html):
-    def __init__(self, html, main):
-        super().__init__(f'''
-                             {main.settings_global["styles"]["style_hints"]}
-                             <body>
-                                 {html}
-                             </body>
-                         ''', main)
+    def __init__(self, text, main):
+        super().__init__(
+            f'''
+                {main.settings_global["styles"]["style_hints"]}
+                <body>
+                    {text}
+                </body>
+            ''', main)
+
+    def set_text(self, text):
+        super().setText(
+            f'''
+                {self.main.settings_global["styles"]["style_hints"]}
+                <body>
+                    {text}
+                </body>
+            ''')
