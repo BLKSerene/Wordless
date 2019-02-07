@@ -1622,6 +1622,16 @@ def init_settings_global(main):
             main.tr('Distributional Consistency'): {
                 'col': main.tr('Distributional Consistency'),
                 'func': measures_dispersion.distributional_consistency
+            },
+
+            main.tr('Gries\' DP'): {
+                'col': main.tr('Gries\' DP'),
+                'func': measures_dispersion.gries_dp
+            },
+
+            main.tr('Gries\' DPₙₒᵣₘ'): {
+                'col': main.tr('Gries\' DPₙₒᵣₘ'),
+                'func': measures_dispersion.gries_dp_norm
             }
         },
 
