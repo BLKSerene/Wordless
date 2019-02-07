@@ -189,7 +189,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             [
                 '<a href="https://github.com/python-excel/xlrd">xlrd</a>',
                 '1.2.0',
-                'Stephen John Machin, Lingfo Pty Ltd',
+                'Stephen John Machin',
                 '<a href="https://github.com/python-excel/xlrd/blob/master/LICENSE">3-Clause BSD / Original BSD</a>'
             ],
 
@@ -235,8 +235,6 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             table_acks.setCellWidget(i, 3, wordless_label.Wordless_Label_Html(license, self))
 
             table_acks.cellWidget(i, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-
-        table_acks.resizeColumnsToContents()
 
         self.wrapper_info.layout().addWidget(label_acks, 0, 0)
         self.wrapper_info.layout().addWidget(table_acks, 1, 0)

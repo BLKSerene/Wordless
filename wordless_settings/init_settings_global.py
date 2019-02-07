@@ -1852,8 +1852,7 @@ def init_settings_global(main):
 
         'styles': {
             'style_global': '''
-                  font-family: Arial, sans-serif;
-                  color: #292929;
+                  font-family: Arial;
                   font-size: 12px;
             ''',
 
@@ -1874,18 +1873,14 @@ def init_settings_global(main):
                             margin-bottom: 5px;
                         }
 
-                        ol, ul {
-                            list-style-type: none;
-                        }
-
                         li {
-                            margin-left: -20px;
+                            margin-left: -30px;
                         }
                     </style>
                 </head>
             ''',
 
-            'style_dialog_about': '''
+            'style_changelog': '''
                 <head>
                     <style>
                         * {
@@ -1894,18 +1889,16 @@ def init_settings_global(main):
                             border: 0;
                             padding: 0;
 
-                            line-height: 1.4;
-                            text-align: center;
+                            text-align: justify;
                         }
 
-                        div {
-                            margin-bottom: 8px;
+                        ul {
+                            line-height: 1.2;
+                            margin-bottom: 10px;
                         }
 
-                        h2 {
-                            margin-bottom: 0px;
-                            font-size: 28px;
-                            font-weight: bold;
+                        li {
+                            margin-left: -30px;
                         }
                     </style>
                 </head>

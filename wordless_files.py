@@ -446,7 +446,7 @@ class Wordless_Files():
 
         return None
 
-class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
+class Wordless_Table_Files(wordless_table.Wordless_Table):
     def __init__(self, main):
         super().__init__(main,
                          headers = [
@@ -465,35 +465,37 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
 
         self.button_open_files = QPushButton(self.tr('Add File(s)...'))
         self.button_open_dir = QPushButton(self.tr('Add Folder...'))
-
-        self.button_close_selected = QPushButton(self.tr('Close Selected File(s)'))
-        self.button_close_all = QPushButton(self.tr('Close All Files'))
         self.button_reopen = QPushButton(self.tr('Reopen Closed File(s)'))
 
         self.button_select_all = QPushButton(self.tr('Select All'))
-        self.button_inverse = QPushButton(self.tr('Inverse'))
+        self.button_invert_selection = QPushButton(self.tr('Invert Selection'))
         self.button_deselect_all = QPushButton(self.tr('Deselect All'))
 
-        self.button_clear.hide()
-        self.button_export_selected.hide()
-        self.button_export_all.hide()
+        self.button_close_selected = QPushButton(self.tr('Close Selected'))
+        self.button_close_all = QPushButton(self.tr('Close All'))
 
         self.button_open_files.clicked.connect(self.open_files)
-        self.button_open_dir.clicked.connect(lambda: self.open_dir(self.main.settings_custom['files']['subfolders']))
-        self.button_close_selected.clicked.connect(self.close_selected)
-        self.button_close_all.clicked.connect(self.close_all)
+        self.button_open_dir.clicked.connect(self.open_dir)
         self.button_reopen.clicked.connect(self.reopen)
 
         self.button_select_all.clicked.connect(self.select_all)
-        self.button_inverse.clicked.connect(self.inverse)
+        self.button_invert_selection.clicked.connect(self.invert_selection)
         self.button_deselect_all.clicked.connect(self.deselect_all)
 
-        self.main.__class__.open_files = self.open_files
-        self.main.__class__.open_dir = self.open_dir
+        self.button_close_selected.clicked.connect(self.close_selected)
+        self.button_close_all.clicked.connect(self.close_all)
 
-        self.main.__class__.close_selected = self.close_selected
-        self.main.__class__.close_all = self.close_all
-        self.main.__class__.reopen = self.reopen
+        # Menu
+        self.main.menu_file_open_files.triggered.connect(self.open_files)
+        self.main.menu_file_open_dir.triggered.connect(self.open_dir)
+        self.main.menu_file_reopen.triggered.connect(self.reopen)
+
+        self.main.menu_file_select_all.triggered.connect(self.select_all)
+        self.main.menu_file_invert_selection.triggered.connect(self.invert_selection)
+        self.main.menu_file_deselect_all.triggered.connect(self.deselect_all)
+
+        self.main.menu_file_close_selected.triggered.connect(self.close_selected)
+        self.main.menu_file_close_all.triggered.connect(self.close_all)
 
         self.file_item_changed()
 
@@ -540,13 +542,13 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
                 self.main.settings_custom['files']['files_open'].append(new_file)
 
             self.button_select_all.setEnabled(True)
-            self.button_inverse.setEnabled(True)
+            self.button_invert_selection.setEnabled(True)
             self.button_deselect_all.setEnabled(True)
 
             self.button_close_all.setEnabled(True)
         else:
             self.button_select_all.setEnabled(False)
-            self.button_inverse.setEnabled(False)
+            self.button_invert_selection.setEnabled(False)
             self.button_deselect_all.setEnabled(False)
 
             self.button_close_all.setEnabled(False)
@@ -555,6 +557,25 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
             self.button_reopen.setEnabled(True)
         else:
             self.button_reopen.setEnabled(False)
+
+        # Menu
+        if any([self.item(0, i) for i in range(self.columnCount())]):
+            self.main.menu_file_select_all.setEnabled(True)
+            self.main.menu_file_invert_selection.setEnabled(True)
+            self.main.menu_file_deselect_all.setEnabled(True)
+
+            self.main.menu_file_close_all.setEnabled(True)
+        else:
+            self.main.menu_file_select_all.setEnabled(False)
+            self.main.menu_file_invert_selection.setEnabled(False)
+            self.main.menu_file_deselect_all.setEnabled(False)
+
+            self.main.menu_file_close_all.setEnabled(False)
+
+        if self.main.settings_custom['files']['files_closed']:
+            self.main.menu_file_reopen.setEnabled(True)
+        else:
+            self.main.menu_file_reopen.setEnabled(False)
 
         if self.rowCount() == 0:
             self.setRowCount(1)
@@ -566,6 +587,12 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
             self.button_close_selected.setEnabled(True)
         else:
             self.button_close_selected.setEnabled(False)
+
+        # Menu
+        if any([self.item(0, i) for i in range(self.columnCount())]) and self.selectedIndexes():
+            self.main.menu_file_close_selected.setEnabled(True)
+        else:
+            self.main.menu_file_close_selected.setEnabled(False)
 
     def cell_double_clicked(self, row, col):
         if col == self.find_col(self.tr('File Name')):
@@ -586,15 +613,15 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
         if file_paths:
             self.main.wordless_files.add_files(file_paths)
 
-    def open_dir(self, subfolders = True):
+    def open_dir(self):
         file_paths = []
 
         file_dir = QFileDialog.getExistingDirectory(self.main,
-                                                     self.tr('Open Folder'),
-                                                     self.main.settings_custom['import']['files']['default_path'])
+                                                    self.tr('Open Folder'),
+                                                    self.main.settings_custom['import']['files']['default_path'])
 
         if file_dir:
-            if subfolders:
+            if self.main.settings_custom['files']['subfolders']:
                 for dir_path, dir_names, file_names in os.walk(file_dir):
                     for file_name in file_names:
                         file_paths.append(os.path.realpath(os.path.join(dir_path, file_name)))
@@ -617,7 +644,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table_Data):
                 if self.item(i, 0).checkState() == Qt.Unchecked:
                     self.item(i, 0).setCheckState(Qt.Checked)
 
-    def inverse(self):
+    def invert_selection(self):
         if self.item(0, 0):
             for i in range(self.rowCount()):
                 if self.item(i, 0).checkState() == Qt.Checked:
@@ -672,7 +699,7 @@ def init(main):
     tab_files.layout_table.addWidget(table_files.button_open_dir, 1, 1)
     tab_files.layout_table.addWidget(table_files.button_reopen, 1, 2)
     tab_files.layout_table.addWidget(table_files.button_select_all, 2, 0)
-    tab_files.layout_table.addWidget(table_files.button_inverse, 2, 1)
+    tab_files.layout_table.addWidget(table_files.button_invert_selection, 2, 1)
     tab_files.layout_table.addWidget(table_files.button_deselect_all, 2, 2)
     tab_files.layout_table.addWidget(table_files.button_close_selected, 1, 3)
     tab_files.layout_table.addWidget(table_files.button_close_all, 2, 3)

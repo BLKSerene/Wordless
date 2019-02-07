@@ -44,7 +44,8 @@ class Wordless_Table_Item(QTableWidgetItem):
         return self.read_data() < other.read_data()
 
 class Wordless_Table(QTableWidget):
-    def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [], drag_drop_enabled = False):
+    def __init__(self, main, headers, header_orientation = 'horizontal',
+                 cols_stretch = [], drag_drop_enabled = False):
         self.main = main
         self.headers = headers
         self.header_orientation = header_orientation

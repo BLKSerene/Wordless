@@ -66,7 +66,7 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 22. [python-docx](https://github.com/python-openxml/python-docx) by Steve Canny
 23. [requests](http://python-requests.org) by Kenneth Reitz
 24. [SciPy](https://www.scipy.org/) by SciPy Developers
-25. [xlrd](https://github.com/python-excel/xlrd) by Stephen John Machin, Lingfo Pty Ltd
+25. [xlrd](https://github.com/python-excel/xlrd) by Stephen John Machin
 26. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
 27. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
 

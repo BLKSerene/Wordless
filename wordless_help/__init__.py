@@ -10,5 +10,6 @@
 #
 
 __all__ = [
-    'wordless_acks'
+    'wordless_acks',
+    'wordless_changelog'
 ]
