@@ -1922,9 +1922,6 @@ def init_settings_global(main):
                             border: 0;
                             padding: 0;
 
-                            line-height: 1.2;
-                            text-align: justify;
-
                             color: #777;
                         }
                     </style>
