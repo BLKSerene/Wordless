@@ -368,7 +368,7 @@ def wordless_widgets_search_settings(main, tab):
 
     multi_search_mode_changed()
     match_tags_changed()
-    #token_settings_changed()
+    token_settings_changed()
 
     return (label_search_term,
             checkbox_multi_search_mode,
