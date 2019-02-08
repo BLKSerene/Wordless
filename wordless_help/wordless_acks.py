@@ -29,7 +29,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
                 '5.11.3',
                 'Riverbank Computing Limited',
-                '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPLv3/Commercial</a>'
+                '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0/Commercial</a>'
             ]
         ]
 
@@ -52,14 +52,14 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '<a href="http://www.nltk.org/">NLTK</a>',
                 '3.4',
                 'Steven Bird, Liling Tan',
-                '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache v2</a>'
+                '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'
             ],
 
             [
                 '<a href="https://github.com/Esukhia/pybo">pybo</a>',
                 '0.3.0',
                 'Hélios Drupchen Hildt',
-                '<a href="https://github.com/Esukhia/pybo/blob/master/LICENSE">Apache v2</a>'
+                '<a href="https://github.com/Esukhia/pybo/blob/master/LICENSE">Apache-2.0</a>'
             ],
 
             [
@@ -73,14 +73,14 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '<a href="https://github.com/PyThaiNLP/pythainlp">PyThaiNLP</a>',
                 '1.7.2',
                 'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
-                '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache v2</a>'
+                '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache-2.0</a>'
             ],
 
             [
                 '<a href="https://github.com/alvations/sacremoses">SacreMoses</a>',
                 '0.0.7',
                 'Liling Tan',
-                '<a href="https://github.com/alvations/sacremoses#license">LGPLv2.1</a>'
+                '<a href="https://github.com/alvations/sacremoses#license">LGPL-2.1</a>'
             ],
 
             [
@@ -94,7 +94,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '<a href="https://github.com/undertheseanlp/underthesea">Underthesea</a>',
                 '1.1.11',
                 'Vu Anh',
-                '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPLv3</a>'
+                '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPL-3.0</a>'
             ]
         ]
 
@@ -126,42 +126,42 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '<a href="https://github.com/PyYoshi/cChardet">cChardet</a>',
                 '2.1.4',
                 'Yoshihiro Misawa',
-                '<a href="https://github.com/PyYoshi/cChardet/blob/master/COPYING">MPLv1.1/GPLv2/LGPLv2.1</a>'
+                '<a href="https://github.com/PyYoshi/cChardet/blob/master/COPYING">MPL-1.0/GPL-2.0/LGPL-2.1</a>'
             ],
 
             [
                 '<a href="https://github.com/chardet/chardet">chardet</a>',
                 '3.0.4',
                 'Daniel Blanchard',
-                '<a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPLv2.1</a>'
+                '<a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPL-2.1</a>'
             ],
 
             [
                 '<a href="https://github.com/Mimino666/langdetect">langdetect</a>',
                 '1.0.7',
                 'Michal Mimino Danilak',
-                '<a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache v2</a>'
+                '<a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache-2.0</a>'
             ],
 
             [
                 '<a href="https://github.com/saffsd/langid.py">langid.py</a>',
                 '1.1.6',
                 'Marco Lui',
-                '<a href="https://github.com/saffsd/langid.py/blob/master/LICENSE">2-Clause BSD</a>'
+                '<a href="https://github.com/saffsd/langid.py/blob/master/LICENSE">BSD-2-Clause</a>'
             ],
 
             [
                 '<a href="https://lxml.de/">lxml</a>',
                 '4.3.0',
                 'Stefan Behnel',
-                '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">3-Clause BSD</a>'
+                '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'
             ],
 
             [
                 '<a href="http://www.numpy.org/">NumPy</a>',
                 '1.16.1',
                 'NumPy Developers',
-                '<a href="http://www.numpy.org/license.html">3-Clause BSD</a>'
+                '<a href="http://www.numpy.org/license.html">BSD-3-Clause</a>'
             ],
 
             [
@@ -182,25 +182,32 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '<a href="http://python-requests.org">requests</a>',
                 '2.21.0',
                 'Kenneth Reitz',
-                '<a href="https://github.com/requests/requests/blob/master/LICENSE">Apache v2</a>'
+                '<a href="https://github.com/requests/requests/blob/master/LICENSE">Apache-2.0</a>'
             ],
 
             [
                 '<a href="https://www.scipy.org/">SciPy</a>',
                 '1.2.0',
                 'SciPy Developers',
-                '<a href="https://www.scipy.org/scipylib/license.html">3-Clause BSD</a>'
+                '<a href="https://www.scipy.org/scipylib/license.html">BSD-3-Clause</a>'
             ],
 
             [
                 '<a href="https://github.com/python-excel/xlrd">xlrd</a>',
                 '1.2.0',
                 'Stephen John Machin',
-                '<a href="https://github.com/python-excel/xlrd/blob/master/LICENSE">3-Clause BSD / Original BSD</a>'
+                '<a href="https://github.com/python-excel/xlrd/blob/master/LICENSE">BSD-3-Clause/BSD-4-Clause</a>'
             ]
         ]
 
         self.acks_data = [
+            [
+                '<a href="https://github.com/pharos-alexandria/grk-stoplist">grk-stoplist</a>',
+                '/',
+                'Annette von Stockhausen',
+                '<a href="https://github.com/pharos-alexandria/grk-stoplist/blob/master/LICENSE">CC0-1.0</a>'
+            ],
+
             [
                 '<a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a>',
                 '/',
