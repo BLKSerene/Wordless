@@ -549,8 +549,8 @@ class Wordless_Settings(QDialog):
 
     # Sentence Tokenization
     def init_settings_sentence_tokenization(self):
-        def sentence_tokenizers_changed(lang_code):
-            if lang_code == settings_custom['preview_lang']:
+        def sentence_tokenizers_changed(lang):
+            if lang == settings_custom['preview_lang']:
                 preview_results_changed()
 
         def preview_changed():
@@ -564,7 +564,7 @@ class Wordless_Settings(QDialog):
                 samples = settings_custom['preview_samples']
 
                 results = wordless_text_processing.wordless_sentence_tokenize(self.main, samples,
-                                                                              lang_code = settings_custom['preview_lang'],
+                                                                              lang = settings_custom['preview_lang'],
                                                                               sentence_tokenizer = sentence_tokenizer)
 
                 self.preview_results_updated_sentence_tokenization.emit(samples, results)
@@ -612,16 +612,16 @@ class Wordless_Settings(QDialog):
 
         table_sentence_tokenizers.setRowCount(len(settings_global))
 
-        for i, lang_code in enumerate(settings_global):
-            table_sentence_tokenizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
+        for i, lang in enumerate(settings_global):
+            table_sentence_tokenizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang)))
 
-            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box(self.main)
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang}'] = wordless_box.Wordless_Combo_Box(self.main)
 
-            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].addItems(settings_global[lang_code])
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].addItems(settings_global[lang])
 
-            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: sentence_tokenizers_changed(lang_code))
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].currentTextChanged.connect(lambda text, lang = lang: sentence_tokenizers_changed(lang))
 
-            table_sentence_tokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'])
+            table_sentence_tokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_sentence_tokenizer_{lang}'])
 
         group_box_sentence_tokenizer_settings.setLayout(QGridLayout())
         group_box_sentence_tokenizer_settings.layout().addWidget(table_sentence_tokenizers, 0, 0)
@@ -669,8 +669,8 @@ class Wordless_Settings(QDialog):
 
     # Word Tokenization
     def init_settings_word_tokenization(self):
-        def word_tokenizers_changed(lang_code):
-            if lang_code == settings_custom['preview_lang']:
+        def word_tokenizers_changed(lang):
+            if lang == settings_custom['preview_lang']:
                 preview_results_changed()
 
         def preview_changed():
@@ -687,9 +687,9 @@ class Wordless_Settings(QDialog):
 
                 for line in samples.splitlines():
                     sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line,
-                                                                                    lang_code = settings_custom['preview_lang'])
+                                                                                    lang = settings_custom['preview_lang'])
                     tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentences,
-                                                                             lang_code = settings_custom['preview_lang'],
+                                                                             lang = settings_custom['preview_lang'],
                                                                              word_tokenizer = word_tokenizer)
 
                     # Vietnamese
@@ -743,16 +743,16 @@ class Wordless_Settings(QDialog):
 
         table_word_tokenizers.setRowCount(len(settings_global))
 
-        for i, lang_code in enumerate(settings_global):
-            table_word_tokenizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
+        for i, lang in enumerate(settings_global):
+            table_word_tokenizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang)))
 
-            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box(self.main)
+            self.__dict__[f'combo_box_word_tokenizer_{lang}'] = wordless_box.Wordless_Combo_Box(self.main)
 
-            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].addItems(settings_global[lang_code])
+            self.__dict__[f'combo_box_word_tokenizer_{lang}'].addItems(settings_global[lang])
 
-            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: word_tokenizers_changed(lang_code))
+            self.__dict__[f'combo_box_word_tokenizer_{lang}'].currentTextChanged.connect(lambda text, lang = lang: word_tokenizers_changed(lang))
 
-            table_word_tokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_word_tokenizer_{lang_code}'])
+            table_word_tokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_word_tokenizer_{lang}'])
 
         group_box_word_tokenizer_settings.setLayout(QGridLayout())
         group_box_word_tokenizer_settings.layout().addWidget(table_word_tokenizers, 0, 0)
@@ -800,8 +800,8 @@ class Wordless_Settings(QDialog):
 
     # Word Detokenization
     def init_settings_word_detokenization(self):
-        def word_detokenizers_changed(lang_code):
-            if lang_code == settings_custom['preview_lang']:
+        def word_detokenizers_changed(lang):
+            if lang == settings_custom['preview_lang']:
                 preview_results_changed()
 
         def preview_changed():
@@ -818,7 +818,7 @@ class Wordless_Settings(QDialog):
 
                 for line in samples.splitlines():
                     text = wordless_text_processing.wordless_word_detokenize(self.main, line.split(),
-                                                                             lang_code = settings_custom['preview_lang'],
+                                                                             lang = settings_custom['preview_lang'],
                                                                              word_detokenizer = word_detokenizer)
                     
                     results.append(text)
@@ -868,16 +868,16 @@ class Wordless_Settings(QDialog):
 
         table_word_detokenizers.setRowCount(len(settings_global))
 
-        for i, lang_code in enumerate(settings_global):
-            table_word_detokenizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
+        for i, lang in enumerate(settings_global):
+            table_word_detokenizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang)))
 
-            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'] = wordless_box.Wordless_Combo_Box(self)
+            self.__dict__[f'combo_box_word_detokenizer_{lang}'] = wordless_box.Wordless_Combo_Box(self)
 
-            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].addItems(settings_global[lang_code])
+            self.__dict__[f'combo_box_word_detokenizer_{lang}'].addItems(settings_global[lang])
 
-            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: word_detokenizers_changed(lang_code))
+            self.__dict__[f'combo_box_word_detokenizer_{lang}'].currentTextChanged.connect(lambda text, lang = lang: word_detokenizers_changed(lang))
 
-            table_word_detokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_word_detokenizer_{lang_code}'])
+            table_word_detokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_word_detokenizer_{lang}'])
 
         group_box_word_detokenizer_settings.setLayout(QGridLayout())
         group_box_word_detokenizer_settings.layout().addWidget(table_word_detokenizers, 0, 0)
@@ -925,8 +925,8 @@ class Wordless_Settings(QDialog):
 
     # POS Tagging
     def init_settings_pos_tagging(self):
-        def pos_taggers_changed(lang_code):
-            if lang_code == settings_custom['preview_lang']:
+        def pos_taggers_changed(lang):
+            if lang == settings_custom['preview_lang']:
                 preview_results_changed()
 
         def preview_changed():
@@ -948,12 +948,12 @@ class Wordless_Settings(QDialog):
 
                 for line in samples.splitlines():
                     sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line,
-                                                                                    lang_code = settings_custom['preview_lang'])
+                                                                                    lang = settings_custom['preview_lang'])
                     tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentences,
-                                                                             lang_code = settings_custom['preview_lang'])
+                                                                             lang = settings_custom['preview_lang'])
 
                     tokens_tagged = wordless_text_processing.wordless_pos_tag(self.main, tokens,
-                                                                              lang_code = settings_custom['preview_lang'],
+                                                                              lang = settings_custom['preview_lang'],
                                                                               pos_tagger = pos_tagger,
                                                                               tagset = tagset)
 
@@ -1006,16 +1006,16 @@ class Wordless_Settings(QDialog):
 
         self.table_pos_taggers.setRowCount(len(settings_global))
 
-        for i, lang_code in enumerate(settings_global):
-            self.table_pos_taggers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
+        for i, lang in enumerate(settings_global):
+            self.table_pos_taggers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang)))
 
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'] = wordless_box.Wordless_Combo_Box(self.main)
+            self.__dict__[f'combo_box_pos_tagger_{lang}'] = wordless_box.Wordless_Combo_Box(self.main)
 
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].addItems(settings_global[lang_code])
+            self.__dict__[f'combo_box_pos_tagger_{lang}'].addItems(settings_global[lang])
 
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: pos_taggers_changed(lang_code))
+            self.__dict__[f'combo_box_pos_tagger_{lang}'].currentTextChanged.connect(lambda text, lang = lang: pos_taggers_changed(lang))
 
-            self.table_pos_taggers.setCellWidget(i, 1, self.__dict__[f'combo_box_pos_tagger_{lang_code}'])
+            self.table_pos_taggers.setCellWidget(i, 1, self.__dict__[f'combo_box_pos_tagger_{lang}'])
 
         self.checkbox_to_universal_pos_tags.stateChanged.connect(preview_results_changed)
 
@@ -1184,8 +1184,8 @@ class Wordless_Settings(QDialog):
 
     # Lemmatization
     def init_settings_lemmatization(self):
-        def lemmatizers_changed(lang_code):
-            if lang_code == settings_custom['preview_lang']:
+        def lemmatizers_changed(lang):
+            if lang == settings_custom['preview_lang']:
                 preview_results_changed()
 
         def preview_changed():
@@ -1202,13 +1202,13 @@ class Wordless_Settings(QDialog):
 
                 for line in samples.splitlines():
                     tokens = wordless_text_processing.wordless_word_tokenize(self.main, line,
-                                                                             lang_code = settings_custom["preview_lang"])
+                                                                             lang = settings_custom["preview_lang"])
                     lemmas = wordless_text_processing.wordless_lemmatize(self.main, tokens,
-                                                                         lang_code = settings_custom["preview_lang"],
+                                                                         lang = settings_custom["preview_lang"],
                                                                          lemmatizer = lemmatizer)
 
                     results.append(wordless_text_processing.wordless_word_detokenize(self.main, lemmas,
-                                                                                     lang_code = settings_custom["preview_lang"]))
+                                                                                     lang = settings_custom["preview_lang"]))
 
                 self.preview_results_updated_lemmatization.emit(samples, results)
 
@@ -1255,16 +1255,16 @@ class Wordless_Settings(QDialog):
 
         table_lemmatizers.setRowCount(len(settings_global))
 
-        for i, lang_code in enumerate(settings_global):
-            table_lemmatizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
+        for i, lang in enumerate(settings_global):
+            table_lemmatizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang)))
 
-            self.__dict__[f'combo_box_lemmatizer_{lang_code}'] = wordless_box.Wordless_Combo_Box(self)
+            self.__dict__[f'combo_box_lemmatizer_{lang}'] = wordless_box.Wordless_Combo_Box(self)
 
-            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].addItems(settings_global[lang_code])
+            self.__dict__[f'combo_box_lemmatizer_{lang}'].addItems(settings_global[lang])
 
-            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: lemmatizers_changed(lang_code))
+            self.__dict__[f'combo_box_lemmatizer_{lang}'].currentTextChanged.connect(lambda text, lang = lang: lemmatizers_changed(lang))
 
-            table_lemmatizers.setCellWidget(i, 1, self.__dict__[f'combo_box_lemmatizer_{lang_code}'])
+            table_lemmatizers.setCellWidget(i, 1, self.__dict__[f'combo_box_lemmatizer_{lang}'])
 
         group_box_lemmatizer_settings.setLayout(QGridLayout())
         group_box_lemmatizer_settings.layout().addWidget(table_lemmatizers, 0, 0)
@@ -1312,18 +1312,18 @@ class Wordless_Settings(QDialog):
 
     # Stop words
     def init_settings_stop_words(self):
-        def stop_words_changed(lang_code):
-            if lang_code == settings_custom['preview_lang']:
+        def stop_words_changed(lang):
+            if lang == settings_custom['preview_lang']:
                 preview_results_changed()
 
         def preview_settings_changed():
             settings_custom['preview_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_stop_words_preview_lang.currentText())
 
         def preview_results_changed():
-            lang_code = wordless_conversion.to_lang_code(self.main, self.combo_box_stop_words_preview_lang.currentText())
-            word_list = self.__dict__[f'combo_box_stop_words_{lang_code}'].currentText()
+            lang = wordless_conversion.to_lang_code(self.main, self.combo_box_stop_words_preview_lang.currentText())
+            word_list = self.__dict__[f'combo_box_stop_words_{lang}'].currentText()
             
-            stop_words = wordless_text_processing.wordless_get_stop_words(self.main, lang_code, word_list = word_list)
+            stop_words = wordless_text_processing.wordless_get_stop_words(self.main, lang, word_list = word_list)
 
             self.label_stop_words_preview_count.setText(self.tr(f'Count of Stop Words: {len(stop_words)}'))
             self.list_stop_words_preview_results.load_stop_words(stop_words)
@@ -1354,16 +1354,16 @@ class Wordless_Settings(QDialog):
 
         table_stop_words.setRowCount(len(settings_global))
 
-        for i, lang_code in enumerate(settings_global):
-            table_stop_words.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang_code)))
+        for i, lang in enumerate(settings_global):
+            table_stop_words.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang)))
 
-            self.__dict__[f'combo_box_stop_words_{lang_code}'] = wordless_box.Wordless_Combo_Box(self)
+            self.__dict__[f'combo_box_stop_words_{lang}'] = wordless_box.Wordless_Combo_Box(self)
 
-            self.__dict__[f'combo_box_stop_words_{lang_code}'].addItems(settings_global[lang_code])
+            self.__dict__[f'combo_box_stop_words_{lang}'].addItems(settings_global[lang])
 
-            self.__dict__[f'combo_box_stop_words_{lang_code}'].currentTextChanged.connect(lambda text, lang_code = lang_code: stop_words_changed(lang_code))
+            self.__dict__[f'combo_box_stop_words_{lang}'].currentTextChanged.connect(lambda text, lang = lang: stop_words_changed(lang))
 
-            table_stop_words.setCellWidget(i, 1, self.__dict__[f'combo_box_stop_words_{lang_code}'])
+            table_stop_words.setCellWidget(i, 1, self.__dict__[f'combo_box_stop_words_{lang}'])
 
         group_box_stop_words_settings.setLayout(QGridLayout())
         group_box_stop_words_settings.layout().addWidget(table_stop_words, 0, 0)
@@ -1680,12 +1680,12 @@ class Wordless_Settings(QDialog):
             self.table_tags_non_pos.add_item(texts = tags)
 
         # Tokenization -> Sentence Tokenization
-        for lang_code in settings['sentence_tokenization']['sentence_tokenizers']:
-            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].blockSignals(True)
+        for lang in settings['sentence_tokenization']['sentence_tokenizers']:
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].blockSignals(True)
 
-            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].setCurrentText(settings['sentence_tokenization']['sentence_tokenizers'][lang_code])
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].setCurrentText(settings['sentence_tokenization']['sentence_tokenizers'][lang])
 
-            self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].blockSignals(False)
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].blockSignals(False)
 
         if not defaults:
             self.combo_box_sentence_tokenization_preview_lang.blockSignals(True)
@@ -1699,12 +1699,12 @@ class Wordless_Settings(QDialog):
             self.text_edit_sentence_tokenization_preview_samples.blockSignals(False)
 
         # Tokenization -> Word Tokenization
-        for lang_code in settings['word_tokenization']['word_tokenizers']:
-            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].blockSignals(True)
+        for lang in settings['word_tokenization']['word_tokenizers']:
+            self.__dict__[f'combo_box_word_tokenizer_{lang}'].blockSignals(True)
 
-            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].setCurrentText(settings['word_tokenization']['word_tokenizers'][lang_code])
+            self.__dict__[f'combo_box_word_tokenizer_{lang}'].setCurrentText(settings['word_tokenization']['word_tokenizers'][lang])
 
-            self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].blockSignals(False)
+            self.__dict__[f'combo_box_word_tokenizer_{lang}'].blockSignals(False)
 
         if not defaults:
             self.combo_box_word_tokenization_preview_lang.blockSignals(True)
@@ -1718,12 +1718,12 @@ class Wordless_Settings(QDialog):
             self.text_edit_word_tokenization_preview_samples.blockSignals(False)
 
         # Tokenization -> Word Detokenization
-        for lang_code in settings['word_detokenization']['word_detokenizers']:
-            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].blockSignals(True)
+        for lang in settings['word_detokenization']['word_detokenizers']:
+            self.__dict__[f'combo_box_word_detokenizer_{lang}'].blockSignals(True)
 
-            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].setCurrentText(settings['word_detokenization']['word_detokenizers'][lang_code])
+            self.__dict__[f'combo_box_word_detokenizer_{lang}'].setCurrentText(settings['word_detokenization']['word_detokenizers'][lang])
 
-            self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].blockSignals(False)
+            self.__dict__[f'combo_box_word_detokenizer_{lang}'].blockSignals(False)
 
         if not defaults:
             self.combo_box_word_detokenization_preview_lang.blockSignals(True)
@@ -1737,12 +1737,12 @@ class Wordless_Settings(QDialog):
             self.text_edit_word_detokenization_preview_samples.blockSignals(False)
 
         # POS Tagging
-        for lang_code in settings['pos_tagging']['pos_taggers']:
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].blockSignals(True)
+        for lang in settings['pos_tagging']['pos_taggers']:
+            self.__dict__[f'combo_box_pos_tagger_{lang}'].blockSignals(True)
 
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].setCurrentText(settings['pos_tagging']['pos_taggers'][lang_code])
+            self.__dict__[f'combo_box_pos_tagger_{lang}'].setCurrentText(settings['pos_tagging']['pos_taggers'][lang])
 
-            self.__dict__[f'combo_box_pos_tagger_{lang_code}'].blockSignals(False)
+            self.__dict__[f'combo_box_pos_tagger_{lang}'].blockSignals(False)
 
         self.checkbox_to_universal_pos_tags.blockSignals(True)
 
@@ -1772,12 +1772,12 @@ class Wordless_Settings(QDialog):
         self.combo_box_tagsets_lang.currentTextChanged.emit(self.combo_box_tagsets_lang.currentText())
 
         # Lemmatization
-        for lang_code in settings['lemmatization']['lemmatizers']:
-            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].blockSignals(True)
+        for lang in settings['lemmatization']['lemmatizers']:
+            self.__dict__[f'combo_box_lemmatizer_{lang}'].blockSignals(True)
 
-            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].setCurrentText(settings['lemmatization']['lemmatizers'][lang_code])
+            self.__dict__[f'combo_box_lemmatizer_{lang}'].setCurrentText(settings['lemmatization']['lemmatizers'][lang])
 
-            self.__dict__[f'combo_box_lemmatizer_{lang_code}'].blockSignals(False)
+            self.__dict__[f'combo_box_lemmatizer_{lang}'].blockSignals(False)
 
         if not defaults:
             self.combo_box_lemmatization_preview_lang.blockSignals(True)
@@ -1791,8 +1791,8 @@ class Wordless_Settings(QDialog):
             self.text_edit_lemmatization_preview_samples.blockSignals(False)
 
         # Stop Words
-        for lang_code in settings['stop_words']['stop_words']:
-            self.__dict__[f'combo_box_stop_words_{lang_code}'].setCurrentText(settings['stop_words']['stop_words'][lang_code])
+        for lang in settings['stop_words']['stop_words']:
+            self.__dict__[f'combo_box_stop_words_{lang}'].setCurrentText(settings['stop_words']['stop_words'][lang])
 
         if not defaults:
             self.combo_box_stop_words_preview_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['stop_words']['preview_lang']))
@@ -1943,20 +1943,20 @@ class Wordless_Settings(QDialog):
             settings['tags']['tags_non_pos'] = self.table_tags_non_pos.get_tags()
 
             # Tokenization -> Sentence Tokenization
-            for lang_code in settings['sentence_tokenization']['sentence_tokenizers']:
-                settings['sentence_tokenization']['sentence_tokenizers'][lang_code] = self.__dict__[f'combo_box_sentence_tokenizer_{lang_code}'].currentText()
+            for lang in settings['sentence_tokenization']['sentence_tokenizers']:
+                settings['sentence_tokenization']['sentence_tokenizers'][lang] = self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].currentText()
 
             # Tokenization -> Word Tokenization
-            for lang_code in settings['word_tokenization']['word_tokenizers']:
-                settings['word_tokenization']['word_tokenizers'][lang_code] = self.__dict__[f'combo_box_word_tokenizer_{lang_code}'].currentText()
+            for lang in settings['word_tokenization']['word_tokenizers']:
+                settings['word_tokenization']['word_tokenizers'][lang] = self.__dict__[f'combo_box_word_tokenizer_{lang}'].currentText()
 
             # Tokenization -> Word Detokenization
-            for lang_code in settings['word_detokenization']['word_detokenizers']:
-                settings['word_detokenization']['word_detokenizers'][lang_code] = self.__dict__[f'combo_box_word_detokenizer_{lang_code}'].currentText()
+            for lang in settings['word_detokenization']['word_detokenizers']:
+                settings['word_detokenization']['word_detokenizers'][lang] = self.__dict__[f'combo_box_word_detokenizer_{lang}'].currentText()
 
             # POS Tagging
-            for lang_code in settings['pos_tagging']['pos_taggers']:
-                settings['pos_tagging']['pos_taggers'][lang_code] = self.__dict__[f'combo_box_pos_tagger_{lang_code}'].currentText()
+            for lang in settings['pos_tagging']['pos_taggers']:
+                settings['pos_tagging']['pos_taggers'][lang] = self.__dict__[f'combo_box_pos_tagger_{lang}'].currentText()
 
             settings['pos_tagging']['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
 
@@ -1968,12 +1968,12 @@ class Wordless_Settings(QDialog):
                 settings['tagsets']['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
 
             # Lemmatization
-            for lang_code in settings['lemmatization']['lemmatizers']:
-                settings['lemmatization']['lemmatizers'][lang_code] = self.__dict__[f'combo_box_lemmatizer_{lang_code}'].currentText()
+            for lang in settings['lemmatization']['lemmatizers']:
+                settings['lemmatization']['lemmatizers'][lang] = self.__dict__[f'combo_box_lemmatizer_{lang}'].currentText()
 
             # Stop Words
-            for lang_code in settings['stop_words']['stop_words']:
-                settings['stop_words']['stop_words'][lang_code] = self.__dict__[f'combo_box_stop_words_{lang_code}'].currentText()
+            for lang in settings['stop_words']['stop_words']:
+                settings['stop_words']['stop_words'][lang] = self.__dict__[f'combo_box_stop_words_{lang}'].currentText()
 
             if settings['stop_words']['stop_words'][settings['stop_words']['preview_lang']] == self.tr('Custom List'):
                 settings['stop_words']['custom_lists'][settings['stop_words']['preview_lang']] = self.list_stop_words_preview_results.get_items()
