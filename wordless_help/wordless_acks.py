@@ -13,11 +13,11 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_widgets import wordless_dialog, wordless_label, wordless_table
+from wordless_widgets import *
 
 class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
-        acks = [
+        self.acks_general = [
             [
                 '<a href="https://www.python.org/">Python</a>',
                 '3.7.2',
@@ -29,9 +29,11 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
                 '5.11.3',
                 'Riverbank Computing Limited',
-                '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPLv3</a>'
-            ],
+                '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPLv3/Commercial</a>'
+            ]
+        ]
 
+        self.acks_nlp = [
             [
                 main.tr('<a href="https://github.com/fxsjy/jieba">jieba</a>'),
                 '0.39',
@@ -93,6 +95,15 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '1.1.11',
                 'Vu Anh',
                 '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPLv3</a>'
+            ]
+        ]
+
+        self.acks_plotting = [
+            [
+                '<a href="https://matplotlib.org/">Matplotlib</a>',
+                '3.0.2',
+                'Matplotlib Development Team',
+                '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'
             ],
 
             [
@@ -100,8 +111,10 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '1.5.0',
                 'Andreas Christian Mueller',
                 '<a href="https://github.com/amueller/word_cloud/blob/master/LICENSE">MIT</a>'
-            ],
+            ]
+        ]
 
+        self.acks_misc = [
             [
                 '<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
                 '4.7.1',
@@ -145,13 +158,6 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ],
 
             [
-                '<a href="https://matplotlib.org/">Matplotlib</a>',
-                '3.0.2',
-                'Matplotlib Development Team',
-                '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'
-            ],
-
-            [
                 '<a href="http://www.numpy.org/">NumPy</a>',
                 '1.16.1',
                 'NumPy Developers',
@@ -191,8 +197,10 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '1.2.0',
                 'Stephen John Machin',
                 '<a href="https://github.com/python-excel/xlrd/blob/master/LICENSE">3-Clause BSD / Original BSD</a>'
-            ],
+            ]
+        ]
 
+        self.acks_data = [
             [
                 '<a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a>',
                 '/',
@@ -205,36 +213,72 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '0.4.0',
                 'Gene Diaz',
                 '<a href="https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE">MIT</a>'
-            ],
+            ]
         ]
 
         super().__init__(main, main.tr('Acknowledgments'),
-                         width = 600,
-                         height = 380)
+                         width = 560,
+                         height = 350)
 
-        label_acks = wordless_label.Wordless_Label_Dialog(self.tr('''
+        self.label_acks = wordless_label.Wordless_Label_Dialog(self.tr('''
             <div>
                 Wordless stands on the shoulders of giants. Thus, I would like to extend my thanks to the following open-source projects:
             </div>
         '''), self.main)
+        self.label_browse_category = QLabel(self.tr('Browse by Category:'), self)
+        self.combo_box_browse_category = wordless_box.Wordless_Combo_Box(self)
 
-        table_acks = wordless_table.Wordless_Table(self,
+        self.table_acks = wordless_table.Wordless_Table(self,
                                                    headers = [
                                                        self.tr('Name'),
                                                        self.tr('Version'),
                                                        self.tr('Author(s)'),
                                                        self.tr('License')
                                                    ])
-        
-        table_acks.setRowCount(len(acks))
+
+        self.combo_box_browse_category.addItems([
+            self.tr('General'),
+            self.tr('Natural Language Processing'),
+            self.tr('Plotting'),
+            self.tr('Miscellaneous'),
+            self.tr('Data')
+        ])
+
+        self.combo_box_browse_category.currentTextChanged.connect(self.browse_category_changed)
+
+        layout_browse_category = QGridLayout()
+        layout_browse_category.addWidget(self.label_browse_category, 0, 0)
+        layout_browse_category.addWidget(self.combo_box_browse_category, 0, 1)
+
+        layout_browse_category.setColumnStretch(2, 1)
+
+        self.wrapper_info.layout().addWidget(self.label_acks, 0, 0)
+        self.wrapper_info.layout().addLayout(layout_browse_category, 1, 0)
+        self.wrapper_info.layout().addWidget(self.table_acks, 2, 0)
+
+        self.browse_category_changed()
+
+    def browse_category_changed(self):
+        if self.combo_box_browse_category.currentText() == self.tr('General'):
+            acks = self.acks_general
+        elif self.combo_box_browse_category.currentText() == self.tr('Natural Language Processing'):
+            acks = self.acks_nlp
+        elif self.combo_box_browse_category.currentText() == self.tr('Plotting'):
+            acks = self.acks_plotting
+        elif self.combo_box_browse_category.currentText() == self.tr('Miscellaneous'):
+            acks = self.acks_misc
+        elif self.combo_box_browse_category.currentText() == self.tr('Data'):
+            acks = self.acks_data
+
+        self.table_acks.clear_table()
+
+        self.table_acks.setRowCount(len(acks))
 
         for i, (name, ver, authors, license) in enumerate(acks):
-            table_acks.setCellWidget(i, 0, wordless_label.Wordless_Label_Html(name, self))
-            table_acks.setCellWidget(i, 1, wordless_label.Wordless_Label_Html(ver, self))
-            table_acks.setCellWidget(i, 2, wordless_label.Wordless_Label_Html(authors, self))
-            table_acks.setCellWidget(i, 3, wordless_label.Wordless_Label_Html(license, self))
+            self.table_acks.setCellWidget(i, 0, wordless_label.Wordless_Label_Html(name, self))
+            self.table_acks.setCellWidget(i, 1, wordless_label.Wordless_Label_Html(ver, self))
+            self.table_acks.setCellWidget(i, 2, wordless_label.Wordless_Label_Html(authors, self))
+            self.table_acks.setCellWidget(i, 3, wordless_label.Wordless_Label_Html(license, self))
 
-            table_acks.cellWidget(i, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-
-        self.wrapper_info.layout().addWidget(label_acks, 0, 0)
-        self.wrapper_info.layout().addWidget(table_acks, 1, 0)
+            self.table_acks.cellWidget(i, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+            self.table_acks.cellWidget(i, 3).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
