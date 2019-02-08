@@ -209,6 +209,13 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ],
 
             [
+                '<a href="https://github.com/stenskjaer/lemmalist-greek">lemmalist-greek</a>',
+                '/',
+                'Michael Stenskjær Christensen',
+                '<a href="https://github.com/stenskjaer/lemmalist-greek/blob/master/LICENSE">GPL-3.0</a>'
+            ],
+
+            [
                 '<a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a>',
                 '/',
                 'Michal Boleslav Měchura',
