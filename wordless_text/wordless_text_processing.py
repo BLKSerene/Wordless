@@ -551,7 +551,6 @@ def wordless_lemmatize(main, tokens, lang,
 
                 if doc:
                     lemmas.append(doc[0].lemma_)
-
         # English
         elif lemmatizer == main.tr('NLTK - WordNet Lemmatizer'):
             word_net_lemmatizer = nltk.WordNetLemmatizer()
@@ -570,7 +569,6 @@ def wordless_lemmatize(main, tokens, lang,
                     lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
                 else:
                     lemmas.append(word_net_lemmatizer.lemmatize(token))
-
         # Russian & Ukrainian
         elif lemmatizer == main.tr('pymorphy2 - Morphological Analyzer'):
             if lang == 'rus':
@@ -580,7 +578,6 @@ def wordless_lemmatize(main, tokens, lang,
 
             for token in tokens:
                 lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
-
         # Tibetan
         elif lemmatizer == main.tr('pybo - Tibetan Lemmatizer'):
             if 'pybo_bo_tokenizer' not in main.__dict__:
@@ -592,9 +589,8 @@ def wordless_lemmatize(main, tokens, lang,
                         lemmas.append(token.lemma)
                     else:
                         lemmas.append(token.content)
-
         # Other Languages
-        elif lemmatizer == main.tr('Lemmatization Lists'):
+        elif 'Lemmatization Lists' in lemmatizer:
             lang = wordless_conversion.to_iso_639_1(main, lang)
 
             with open(f'lemmatization/Lemmatization Lists/lemmatization-{lang}.txt', 'r', encoding = 'utf_8_sig') as f:
@@ -651,16 +647,18 @@ def wordless_get_stop_words(main, lang,
 
         lang_text = wordless_conversion.to_lang_text(main, lang)
 
-        # Greek
+        # Greek (Modern)
         if lang_text == main.tr('Greek (Modern)'):
             lang_text = main.tr('Greek')
 
         stop_words = nltk.corpus.stopwords.words(lang_text)
-
+    # Greek (Ancient)
+    elif word_list == 'grk-stoplist':
+        with open(r'stop_words/grk-stoplist/stoplist-greek.txt', 'r', encoding = 'utf_8') as f:
+            stop_words = [line.rstrip() for line in f.readlines()]
     # Thai
     elif word_list == 'PyThaiNLP':
         stop_words = pythainlp.corpus.stopwords.words('thai')
-
     # Custom Lists
     elif word_list == main.tr('Custom List'):
         stop_words = main.settings_custom['stop_words']['custom_lists'][lang]
