@@ -42,7 +42,7 @@ class Wordless_Dialog_Info(Wordless_Dialog):
 
         self.setFixedSize(width, height)
         self.setWindowFlag(Qt.MSWindowsFixedSizeDialogHint, True)
-        self.setWindowFlag(Qt.WindowContextHelpButtonHint, False);
+        self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
 
         self.wrapper_info = QWidget(self)
 
@@ -80,6 +80,9 @@ class Wordless_Dialog_Search(Wordless_Dialog):
     def __init__(self, main, tab, table, cols_search):
         super().__init__(main, main.tr('Search in Results'))
 
+        self.setWindowFlag(Qt.MSWindowsFixedSizeDialogHint, True)
+        self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
+
         self.tab = tab
         self.table = table
         self.cols_search = self.table.find_col(cols_search)
@@ -90,11 +93,19 @@ class Wordless_Dialog_Search(Wordless_Dialog):
          self.checkbox_multi_search_mode,
          self.line_edit_search_term,
          self.list_search_terms,
+         self.label_separator,
 
          self.checkbox_ignore_case,
          self.checkbox_match_inflected_forms,
          self.checkbox_match_whole_word,
-         self.checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings1(main)
+         self.checkbox_use_regex,
+
+         self.checkbox_ignore_tags,
+         self.checkbox_ignore_tags_match_tags,
+         self.combo_box_ignore_tags,
+         self.combo_box_ignore_tags_match_tags,
+         self.label_ignore_tags,
+         self.checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(main, self.tab)
 
         self.button_find_next = QPushButton(main.tr('Find Next'), main)
         self.button_find_prev = QPushButton(main.tr('Find Previous'), main)
@@ -113,6 +124,12 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.checkbox_match_whole_word.stateChanged.connect(self.search_settings_changed)
         self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
 
+        self.checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_ignore_tags_match_tags.stateChanged.connect(self.search_settings_changed)
+        self.combo_box_ignore_tags.currentTextChanged.connect(self.search_settings_changed)
+        self.combo_box_ignore_tags_match_tags.currentTextChanged.connect(self.search_settings_changed)
+        self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
+
         self.button_find_next.clicked.connect(lambda: self.find_next())
         self.button_find_prev.clicked.connect(lambda: self.find_prev())
         self.button_find_all.clicked.connect(lambda: self.find_all())
@@ -127,6 +144,15 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         layout_search_terms.addWidget(self.list_search_terms.button_clear, 2, 1)
         layout_search_terms.addWidget(self.list_search_terms.button_import, 3, 1)
         layout_search_terms.addWidget(self.list_search_terms.button_export, 4, 1)
+
+        layout_ignore_tags = QGridLayout()
+        layout_ignore_tags.addWidget(self.checkbox_ignore_tags, 0, 0)
+        layout_ignore_tags.addWidget(self.checkbox_ignore_tags_match_tags, 0, 0)
+        layout_ignore_tags.addWidget(self.combo_box_ignore_tags, 0, 1)
+        layout_ignore_tags.addWidget(self.combo_box_ignore_tags_match_tags, 0, 1)
+        layout_ignore_tags.addWidget(self.label_ignore_tags, 0, 2)
+
+        layout_ignore_tags.setColumnStretch(3, 1)
 
         layout_buttons_right = QGridLayout()
         layout_buttons_right.addWidget(self.button_find_next, 0, 0)
@@ -144,21 +170,23 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
         self.layout().addWidget(self.line_edit_search_term, 1, 0, 1, 2)
         self.layout().addLayout(layout_search_terms, 2, 0, 1, 2)
+        self.layout().addWidget(self.label_separator, 3, 0, 1, 2)
 
-        self.layout().addWidget(self.checkbox_ignore_case, 3, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_match_inflected_forms, 4, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_match_whole_word, 5, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_use_regex, 6, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_ignore_case, 4, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_whole_word, 6, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_use_regex, 7, 0, 1, 2)
 
-        self.layout().addWidget(wordless_layout.Wordless_Separator(self, orientation = 'Vertical'), 0, 2, 7, 1)
+        self.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_tags, 9, 0, 1, 2)
 
-        self.layout().addLayout(layout_buttons_right, 0, 3, 7, 1)
+        self.layout().addWidget(wordless_layout.Wordless_Separator(self, orientation = 'Vertical'), 0, 2, 10, 1)
 
-        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 7, 0, 1, 4)
+        self.layout().addLayout(layout_buttons_right, 0, 3, 10, 1)
 
-        self.layout().addLayout(layout_buttons_bottom, 8, 0, 1, 4)
+        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 10, 0, 1, 4)
 
-        self.layout().setRowStretch(9, 1)
+        self.layout().addLayout(layout_buttons_bottom, 11, 0, 1, 4)
 
         self.main.tabs.currentChanged.connect(self.accept)
 
@@ -173,23 +201,31 @@ class Wordless_Dialog_Search(Wordless_Dialog):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings_loaded = copy.deepcopy(self.main.settings_default[self.tab]['search_results'])
+            settings = copy.deepcopy(self.main.settings_default[self.tab]['search_results'])
         else:
-            settings_loaded = copy.deepcopy(self.settings)
+            settings = copy.deepcopy(self.settings)
+
+        self.checkbox_multi_search_mode.setChecked(settings['multi_search_mode'])
 
         if not defaults:
-            self.line_edit_search_term.setText(settings_loaded['search_term'])
+            self.line_edit_search_term.setText(settings['search_term'])
 
-            for search_term in settings_loaded['search_terms']:
+            for search_term in settings['search_terms']:
                 self.list_search_terms.add_item(search_term)
 
-        self.checkbox_ignore_case.setChecked(settings_loaded['ignore_case'])
-        self.checkbox_match_inflected_forms.setChecked(settings_loaded['match_inflected_forms'])
-        self.checkbox_match_whole_word.setChecked(settings_loaded['match_whole_word'])
-        self.checkbox_use_regex.setChecked(settings_loaded['use_regex'])
-        self.checkbox_multi_search_mode.setChecked(settings_loaded['multi_search_mode'])
+        self.checkbox_ignore_case.setChecked(settings['ignore_case'])
+        self.checkbox_match_inflected_forms.setChecked(settings['match_inflected_forms'])
+        self.checkbox_match_whole_word.setChecked(settings['match_whole_word'])
+        self.checkbox_use_regex.setChecked(settings['use_regex'])
+
+        self.checkbox_ignore_tags.setChecked(settings['ignore_tags'])
+        self.checkbox_ignore_tags_match_tags.setChecked(settings['ignore_tags_match_tags'])
+        self.combo_box_ignore_tags.setCurrentText(settings['ignore_tags_type'])
+        self.combo_box_ignore_tags_match_tags.setCurrentText(settings['ignore_tags_type_match_tags'])
+        self.checkbox_match_tags.setChecked(settings['match_tags'])
 
     def search_settings_changed(self):
+        self.settings['multi_search_mode'] = self.checkbox_multi_search_mode.isChecked()
         self.settings['search_term'] = self.line_edit_search_term.text()
         self.settings['search_terms'] = self.list_search_terms.get_items()
 
@@ -197,12 +233,17 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.settings['match_inflected_forms'] = self.checkbox_match_inflected_forms.isChecked()
         self.settings['match_whole_word'] = self.checkbox_match_whole_word.isChecked()
         self.settings['use_regex'] = self.checkbox_use_regex.isChecked()
-        self.settings['multi_search_mode'] = self.checkbox_multi_search_mode.isChecked()
+
+        self.settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
+        self.settings['ignore_tags_match_tags'] = self.checkbox_ignore_tags_match_tags.isChecked()
+        self.settings['ignore_tags_type'] = self.combo_box_ignore_tags.currentText()
+        self.settings['ignore_tags_type_match_tags'] = self.combo_box_ignore_tags_match_tags.currentText()
+        self.settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
         if self.settings['multi_search_mode']:
-            self.setFixedSize(345, 320)
+            self.setFixedSize(360, 390)
         else:
-            self.setFixedSize(345, 205)
+            self.setFixedSize(360, 280)
 
     @ wordless_misc.log_timing
     def find_next(self):
@@ -297,11 +338,13 @@ class Wordless_Dialog_Search(Wordless_Dialog):
 
             items = [token for text in results.values() for token in text]
 
-            for file in self.table.settings['file']['files_open']:
+            for file in self.table.settings['files']['files_open']:
                 if file['selected']:
                     search_terms |= wordless_matching.match_search_terms(self.main, items,
-                                                                         lang_code = file['lang_code'],
-                                                                         settings = self.settings)
+                                                                         lang = file['lang'],
+                                                                         text_type = ('tokenized', 'tagged_both'),
+                                                                         token_settings = self.table.settings[self.tab]['token_settings'],
+                                                                         search_settings = self.settings)
 
             for search_term in search_terms:
                 len_search_term = len(search_term)
