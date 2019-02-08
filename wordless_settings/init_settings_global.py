@@ -1108,19 +1108,19 @@ def init_settings_global(main):
 
         'lemmatizers': {
             'ast': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Asturian Lemma List')
             ],
 
             'bul': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Bulgarian Lemma List')
             ],
 
             'cat': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Catalan Lemma List')
             ],
 
             'ces': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Czech Lemma List')
             ],
 
             'nld': [
@@ -1128,57 +1128,57 @@ def init_settings_global(main):
             ],
 
             'eng': [
+                main.tr('Lemmatization Lists - English Lemma List'),
                 main.tr('NLTK - WordNet Lemmatizer'),
-                main.tr('Lemmatization Lists'),
                 main.tr('spaCy - English Lemmatizer')
             ],
 
             'est': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Estonian Lemma List')
             ],
 
             'fra': [
-                main.tr('Lemmatization Lists'),
+                main.tr('Lemmatization Lists - French Lemma List'),
                 main.tr('spaCy - French Lemmatizer')
             ],
 
             'glg': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Galician Lemma List')
             ],
 
             'deu': [
-                main.tr('Lemmatization Lists'),
+                main.tr('Lemmatization Lists - German Lemma List'),
                 main.tr('spaCy - German Lemmatizer')
             ],
 
             'hun': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Hungarian Lemma List')
             ],
 
             'gle': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Irish Lemma List')
             ],
 
             'ita': [
-                main.tr('Lemmatization Lists'),
+                main.tr('Lemmatization Lists - Italian Lemma List'),
                 main.tr('spaCy - Italian Lemmatizer')
             ],
 
             'glv': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Manx Lemma List')
             ],
 
             'fas': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Persian Lemma List')
             ],
 
             'por': [
-                main.tr('Lemmatization Lists'),
+                main.tr('Lemmatization Lists - Portuguese Lemma List'),
                 main.tr('spaCy - Portuguese Lemmatizer')
             ],
 
             'ron': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Romanian Lemma List')
             ],
 
             'rus': [
@@ -1186,24 +1186,24 @@ def init_settings_global(main):
             ],
 
             'gla': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Scottish Gaelic Lemma List')
             ],
 
             'slk': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Slovak Lemma List')
             ],
 
             'slv': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Slovenian Lemma List')
             ],
 
             'spa': [
-                main.tr('Lemmatization Lists'),
+                main.tr('Lemmatization Lists - Spanish Lemma List'),
                 main.tr('spaCy - Spanish Lemmatizer')
             ],
 
             'swe': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Swedish Lemma List')
             ],
 
             'bod': [
@@ -1211,12 +1211,12 @@ def init_settings_global(main):
             ],
 
             'ukr': [
-                main.tr('Lemmatization Lists'),
+                main.tr('Lemmatization Lists - Ukrainian Lemma List'),
                 main.tr('pymorphy2 - Morphological Analyzer')
             ],
 
             'cym': [
-                main.tr('Lemmatization Lists')
+                main.tr('Lemmatization Lists - Welsh Lemma List')
             ]
         },
 
@@ -1347,6 +1347,11 @@ def init_settings_global(main):
                 'NLTK',
                 'spaCy',
                 'Stopwords ISO',
+                main.tr('Custom List')
+            ],
+
+            'grc': [
+                'grk-stoplist',
                 main.tr('Custom List')
             ],
 
