@@ -77,8 +77,9 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 
 ### Data
 1. [grk-stoplist](https://github.com/pharos-alexandria/grk-stoplist) by Annette von Stockhausen
-2. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
-3. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
+2. [lemmalist-greek](https://github.com/stenskjaer/lemmalist-greek) by Michael Stenskjær Christensen
+3. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
+4. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
 
 ## Documentation
 [English Documentation Here](#doc-eng)

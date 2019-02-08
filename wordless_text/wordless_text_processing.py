@@ -569,6 +569,17 @@ def wordless_lemmatize(main, tokens, lang,
                     lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
                 else:
                     lemmas.append(word_net_lemmatizer.lemmatize(token))
+        # Greek (Ancient)
+        elif lemmatizer == main.tr('lemmalist-greek - Greek (Ancient) Lemma List'):
+            with open(r'lemmatization/lemmalist-greek/lemmalist-greek.txt', 'r', encoding = 'utf_8') as f:
+                for line in f.readlines():
+                    line = line.rstrip()
+
+                    if line:
+                        lemma, *words = line.split()
+
+                        for word in words:
+                            mapping_lemmas[word] = lemma
         # Russian & Ukrainian
         elif lemmatizer == main.tr('pymorphy2 - Morphological Analyzer'):
             if lang == 'rus':
@@ -601,10 +612,11 @@ def wordless_lemmatize(main, tokens, lang,
                         mapping_lemmas[word] = lemma
                     except:
                         pass
-
-            lemmas = [mapping_lemmas.get(token, token) for token in tokens]
     else:
         lemmas = tokens
+
+    if mapping_lemmas:
+        lemmas = [mapping_lemmas.get(token, token) for token in tokens]
 
     return [lemma + tag for lemma, tag in zip(lemmas, tags)]
 
@@ -619,7 +631,7 @@ def wordless_get_stop_words(main, lang,
     if lang_639_1 == 'zh_cn':
         lang_639_1 = 'zh'
 
-    if word_list == 'Stopwords ISO':
+    if 'Stopwords ISO' in word_list:
         # Norwegian Bokmål & Norwegian Nynorsk
         if lang_639_1 in ['nb', 'nn']:
             lang_639_1 = 'no'
@@ -631,7 +643,7 @@ def wordless_get_stop_words(main, lang,
         else:
             with open(r'stop_words/Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
                 stop_words = json.load(f)[lang_639_1]
-    elif word_list == 'spaCy':
+    elif 'spaCy' in word_list:
         # Chinese (Traditional)
         if lang_639_1 == 'zh_tw':
             with open(r'stop_words/spaCy/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
@@ -640,7 +652,7 @@ def wordless_get_stop_words(main, lang,
             spacy_lang = importlib.import_module(f'spacy.lang.{lang_639_1}')
 
             stop_words = spacy_lang.STOP_WORDS
-    elif word_list == 'NLTK':
+    elif 'NLTK' in word_list:
         # Norwegian Bokmål & Norwegian Nynorsk
         if lang_639_1 in ['nb', 'nn']:
             lang_639_1 = 'no'
@@ -653,11 +665,11 @@ def wordless_get_stop_words(main, lang,
 
         stop_words = nltk.corpus.stopwords.words(lang_text)
     # Greek (Ancient)
-    elif word_list == 'grk-stoplist':
+    elif word_list == main.tr('grk-stoplist - Greek (Ancient) Stop Words'):
         with open(r'stop_words/grk-stoplist/stoplist-greek.txt', 'r', encoding = 'utf_8') as f:
             stop_words = [line.rstrip() for line in f.readlines()]
     # Thai
-    elif word_list == 'PyThaiNLP':
+    elif word_list == main.tr('PyThaiNLP - Thai Stop Words'):
         stop_words = pythainlp.corpus.stopwords.words('thai')
     # Custom Lists
     elif word_list == main.tr('Custom List'):
