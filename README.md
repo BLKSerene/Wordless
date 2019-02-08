@@ -76,8 +76,9 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 12. [xlrd](https://github.com/python-excel/xlrd) by Stephen John Machin
 
 ### Data
-1. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
-2. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
+1. [grk-stoplist](https://github.com/pharos-alexandria/grk-stoplist) by Annette von Stockhausen
+2. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
+3. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
 
 ## Documentation
 [English Documentation Here](#doc-eng)
