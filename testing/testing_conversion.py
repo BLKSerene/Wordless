@@ -14,7 +14,7 @@ import sys
 
 from PyQt5.QtCore import *
 
-sys.path.append('..')
+sys.path.append('.')
 
 from wordless_utils import wordless_conversion
 from wordless_settings import init_settings_default, init_settings_global
