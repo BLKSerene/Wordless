@@ -64,13 +64,11 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Search):
 
             text_test_significance = self.settings['keywords']['generation_settings']['test_significance']
             text_measure_effect_size = self.settings['keywords']['generation_settings']['measure_effect_size']
-            text_measure_dispersion = self.settings['keywords']['generation_settings']['measure_dispersion']
 
             (col_text_test_stat,
              col_text_p_value,
              col_text_bayes_factor) = self.main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
             col_text_effect_size = self.main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
-            col_text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
 
             if settings['filter_file'] == self.tr('Total'):
                 col_freq = self.find_col(self.tr('Total\nFrequency'))
@@ -78,14 +76,12 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Search):
                 col_p_value = self.find_col(self.tr(f'Total\n{col_text_p_value}'))
                 col_bayes_factor = self.find_col(self.tr(f'Total\n{col_text_bayes_factor}'))
                 col_effect_size = self.find_col(self.tr(f'Total\n{col_text_effect_size}'))
-                col_dispersion = self.find_col(self.tr(f'Total\n{col_text_dispersion}'))
             else:
                 col_freq = self.find_col(self.tr(f'[{settings["filter_file"]}]\nFrequency'))
                 col_test_stat = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{col_text_test_stat}'))
                 col_p_value = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{col_text_p_value}'))
                 col_bayes_factor = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{col_text_bayes_factor}'))
                 col_effect_size = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{col_text_effect_size}'))
-                col_dispersion = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{col_text_dispersion}'))
 
             col_keywords = self.find_col('Keywords')
             col_number_files_found = self.find_col('Number of\nFiles Found')
@@ -114,11 +110,6 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Search):
                                if settings['effect_size_min_no_limit'] else settings['effect_size_min'])
             effect_size_max = (float('inf')
                                if settings['effect_size_max_no_limit'] else settings['effect_size_max'])
-
-            dispersion_min = (float('-inf')
-                              if settings['dispersion_min_no_limit'] else settings['dispersion_min'])
-            dispersion_max = (float('inf')
-                              if settings['dispersion_max_no_limit'] else settings['dispersion_max'])
 
             len_keyword_min = (float('-inf')
                                if settings['len_keyword_min_no_limit'] else settings['len_keyword_min'])
@@ -156,11 +147,6 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Search):
                         self.row_filters[i].append(False)
 
                 if effect_size_min <= self.item(i, col_effect_size).val <= effect_size_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-
-                if dispersion_min <= self.item(i, col_dispersion).val <= dispersion_max:
                     self.row_filters[i].append(True)
                 else:
                     self.row_filters[i].append(False)
@@ -208,7 +194,6 @@ def init(main):
         combo_box_ref_file.setCurrentText(settings['generation_settings']['ref_file'])
         combo_box_test_significance.setCurrentText(settings['generation_settings']['test_significance'])
         combo_box_measure_effect_size.setCurrentText(settings['generation_settings']['measure_effect_size'])
-        combo_box_measure_dispersion.setCurrentText(settings['generation_settings']['measure_dispersion'])
 
         # Table Settings
         checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
@@ -252,11 +237,6 @@ def init(main):
         checkbox_effect_size_min_no_limit.setChecked(settings['filter_settings']['effect_size_min_no_limit'])
         spin_box_effect_size_max.setValue(settings['filter_settings']['effect_size_max'])
         checkbox_effect_size_max_no_limit.setChecked(settings['filter_settings']['effect_size_max_no_limit'])
-
-        spin_box_dispersion_min.setValue(settings['filter_settings']['dispersion_min'])
-        checkbox_dispersion_min_no_limit.setChecked(settings['filter_settings']['dispersion_min_no_limit'])
-        spin_box_dispersion_max.setValue(settings['filter_settings']['dispersion_max'])
-        checkbox_dispersion_max_no_limit.setChecked(settings['filter_settings']['dispersion_max_no_limit'])
 
         spin_box_len_keyword_min.setValue(settings['filter_settings']['len_keyword_min'])
         checkbox_len_keyword_min_no_limit.setChecked(settings['filter_settings']['len_keyword_min_no_limit'])
@@ -306,7 +286,6 @@ def init(main):
 
         settings['test_significance'] = combo_box_test_significance.currentText()
         settings['measure_effect_size'] = combo_box_measure_effect_size.currentText()
-        settings['measure_dispersion'] = combo_box_measure_dispersion.currentText()
 
         # Use File
         use_file_old = combo_box_use_file.currentText()
@@ -329,10 +308,7 @@ def init(main):
         combo_box_use_data.addItems([col
                                      for col in main.settings_global['tests_significance']['collocation'][settings['test_significance']]['cols']
                                      if col])
-        combo_box_use_data.addItems([
-            main.settings_global['measures_effect_size']['keywords'][settings['measure_effect_size']]['col'],
-            main.settings_global['measures_dispersion'][settings['measure_dispersion']]['col']
-        ])
+        combo_box_use_data.addItem(main.settings_global['measures_effect_size']['keywords'][settings['measure_effect_size']]['col'])
 
         if combo_box_use_data.findText(use_data_old) > -1:
             combo_box_use_data.setCurrentText(use_data_old)
@@ -388,11 +364,6 @@ def init(main):
         settings['effect_size_max'] = spin_box_effect_size_max.value()
         settings['effect_size_max_no_limit'] = checkbox_effect_size_max_no_limit.isChecked()
 
-        settings['dispersion_min'] = spin_box_dispersion_min.value()
-        settings['dispersion_min_no_limit'] = checkbox_dispersion_min_no_limit.isChecked()
-        settings['dispersion_max'] = spin_box_dispersion_max.value()
-        settings['dispersion_max_no_limit'] = checkbox_dispersion_max_no_limit.isChecked()
-
         settings['len_keyword_min'] = spin_box_len_keyword_min.value()
         settings['len_keyword_min_no_limit'] = checkbox_len_keyword_min_no_limit.isChecked()
         settings['len_keyword_max'] = spin_box_len_keyword_max.value()
@@ -412,13 +383,11 @@ def init(main):
 
         text_test_significance = settings['generation_settings']['test_significance']
         text_measure_effect_size = settings['generation_settings']['measure_effect_size']
-        text_measure_dispersion = settings['generation_settings']['measure_dispersion']
 
         (col_text_test_stat,
          col_text_p_value,
          col_text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
         col_text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
-        col_text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
 
         if col_text_test_stat:
             label_test_stat.setText(f'{col_text_test_stat}:')
@@ -453,7 +422,6 @@ def init(main):
             checkbox_bayes_factor_max_no_limit.setEnabled(False)
 
         label_effect_size.setText(f'{col_text_effect_size}:')
-        label_dispersion.setText(f'{col_text_dispersion}:')
         
         combo_box_filter_file.removeItem(combo_box_filter_file.findText(ref_file))
 
@@ -546,8 +514,6 @@ def init(main):
      combo_box_test_significance) = wordless_widgets.wordless_widgets_test_significance(main)
     (label_measure_effect_size,
      combo_box_measure_effect_size) = wordless_widgets.wordless_widgets_measure_effect_size(main)
-    (label_measure_dispersion,
-     combo_box_measure_dispersion) = wordless_widgets.wordless_widgets_measure_dispersion(main)
 
     (label_settings_measures,
      button_settings_measures) = wordless_widgets.wordless_widgets_settings_measures(main,
@@ -559,7 +525,6 @@ def init(main):
     combo_box_ref_file.currentTextChanged.connect(generation_settings_changed)
     combo_box_test_significance.currentTextChanged.connect(generation_settings_changed)
     combo_box_measure_effect_size.currentTextChanged.connect(generation_settings_changed)
-    combo_box_measure_dispersion.currentTextChanged.connect(generation_settings_changed)
 
     layout_settings_measures = QGridLayout()
     layout_settings_measures.addWidget(label_settings_measures, 0, 0)
@@ -577,12 +542,10 @@ def init(main):
     group_box_generation_settings.layout().addWidget(combo_box_test_significance, 4, 0)
     group_box_generation_settings.layout().addWidget(label_measure_effect_size, 5, 0)
     group_box_generation_settings.layout().addWidget(combo_box_measure_effect_size, 6, 0)
-    group_box_generation_settings.layout().addWidget(label_measure_dispersion, 7, 0)
-    group_box_generation_settings.layout().addWidget(combo_box_measure_dispersion, 8, 0)
 
-    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 9, 0)
+    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0)
 
-    group_box_generation_settings.layout().addLayout(layout_settings_measures, 10, 0)
+    group_box_generation_settings.layout().addLayout(layout_settings_measures, 8, 0)
 
     # Table Settings
     group_box_table_settings = QGroupBox(main.tr('Table Settings'))
@@ -702,14 +665,6 @@ def init(main):
      spin_box_effect_size_max,
      checkbox_effect_size_max_no_limit) = wordless_widgets.wordless_widgets_filter_measures(main)
 
-    label_dispersion = QLabel(main.tr('Dispersion:'), main)
-    (label_dispersion_min,
-     spin_box_dispersion_min,
-     checkbox_dispersion_min_no_limit,
-     label_dispersion_max,
-     spin_box_dispersion_max,
-     checkbox_dispersion_max_no_limit) = wordless_widgets.wordless_widgets_filter_measures(main, filter_min = 0, filter_max = 1)
-
     label_len_keyword = QLabel(main.tr('Keyword Length:'), main)
     (label_len_keyword_min,
      spin_box_len_keyword_min,
@@ -754,11 +709,6 @@ def init(main):
     checkbox_effect_size_min_no_limit.stateChanged.connect(filter_settings_changed)
     spin_box_effect_size_max.valueChanged.connect(filter_settings_changed)
     checkbox_effect_size_max_no_limit.stateChanged.connect(filter_settings_changed)
-
-    spin_box_dispersion_min.valueChanged.connect(filter_settings_changed)
-    checkbox_dispersion_min_no_limit.stateChanged.connect(filter_settings_changed)
-    spin_box_dispersion_max.valueChanged.connect(filter_settings_changed)
-    checkbox_dispersion_max_no_limit.stateChanged.connect(filter_settings_changed)
 
     spin_box_len_keyword_min.valueChanged.connect(filter_settings_changed)
     checkbox_len_keyword_min_no_limit.stateChanged.connect(filter_settings_changed)
@@ -831,38 +781,28 @@ def init(main):
 
     group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 19, 0, 1, 3)
 
-    group_box_filter_settings.layout().addWidget(label_dispersion, 20, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(label_dispersion_min, 21, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_dispersion_min, 21, 1)
-    group_box_filter_settings.layout().addWidget(checkbox_dispersion_min_no_limit, 21, 2)
-    group_box_filter_settings.layout().addWidget(label_dispersion_max, 22, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_dispersion_max, 22, 1)
-    group_box_filter_settings.layout().addWidget(checkbox_dispersion_max_no_limit, 22, 2)
+    group_box_filter_settings.layout().addWidget(label_len_keyword, 20, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(label_len_keyword_min, 21, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_len_keyword_min, 21, 1)
+    group_box_filter_settings.layout().addWidget(checkbox_len_keyword_min_no_limit, 21, 2)
+    group_box_filter_settings.layout().addWidget(label_len_keyword_max, 22, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_len_keyword_max, 22, 1)
+    group_box_filter_settings.layout().addWidget(checkbox_len_keyword_max_no_limit, 22, 2)
 
     group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 23, 0, 1, 3)
 
-    group_box_filter_settings.layout().addWidget(label_len_keyword, 24, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(label_len_keyword_min, 25, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_len_keyword_min, 25, 1)
-    group_box_filter_settings.layout().addWidget(checkbox_len_keyword_min_no_limit, 25, 2)
-    group_box_filter_settings.layout().addWidget(label_len_keyword_max, 26, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_len_keyword_max, 26, 1)
-    group_box_filter_settings.layout().addWidget(checkbox_len_keyword_max_no_limit, 26, 2)
+    group_box_filter_settings.layout().addWidget(label_number_files_found, 24, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(label_number_files_found_min, 25, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_number_files_found_min, 25, 1)
+    group_box_filter_settings.layout().addWidget(checkbox_number_files_found_min_no_limit, 25, 2)
+    group_box_filter_settings.layout().addWidget(label_number_files_found_max, 26, 0)
+    group_box_filter_settings.layout().addWidget(spin_box_number_files_found_max, 26, 1)
+    group_box_filter_settings.layout().addWidget(checkbox_number_files_found_max_no_limit, 26, 2)
 
     group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 27, 0, 1, 3)
 
-    group_box_filter_settings.layout().addWidget(label_number_files_found, 28, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(label_number_files_found_min, 29, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_number_files_found_min, 29, 1)
-    group_box_filter_settings.layout().addWidget(checkbox_number_files_found_min_no_limit, 29, 2)
-    group_box_filter_settings.layout().addWidget(label_number_files_found_max, 30, 0)
-    group_box_filter_settings.layout().addWidget(spin_box_number_files_found_max, 30, 1)
-    group_box_filter_settings.layout().addWidget(checkbox_number_files_found_max_no_limit, 30, 2)
-
-    group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 31, 0, 1, 3)
-
-    group_box_filter_settings.layout().addLayout(layout_filter_file, 32, 0, 1, 3)
-    group_box_filter_settings.layout().addWidget(button_filter_results, 33, 0, 1, 3)
+    group_box_filter_settings.layout().addLayout(layout_filter_file, 28, 0, 1, 3)
+    group_box_filter_settings.layout().addWidget(button_filter_results, 29, 0, 1, 3)
 
     group_box_filter_settings.layout().setColumnStretch(1, 1)
 
@@ -919,11 +859,9 @@ def generate_keywords(main, files, ref_file):
     # Keyness
     text_test_significance = settings['generation_settings']['test_significance']
     text_measure_effect_size = settings['generation_settings']['measure_effect_size']
-    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
 
     test_significance = main.settings_global['tests_significance']['keywords'][text_test_significance]['func']
     measure_effect_size = main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['func']
-    measure_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
 
     keywords_freq_file_observed = keywords_freq_files[-1]
     keywords_freq_file_ref = keywords_freq_files[0]
@@ -989,17 +927,6 @@ def generate_keywords(main, files, ref_file):
                 # Effect Size
                 keywords_stats_file[token].append(measure_effect_size(main, c11, c12, c21, c22))
 
-        # Dispersion
-        number_sections = main.settings_custom['measures']['dispersion']['general']['number_sections']
-
-        sections_freq = [collections.Counter(section)
-                         for section in wordless_text_utils.to_sections(tokens_observed, number_sections)]
-
-        for token in keywords_freq_file_observed:
-            counts = [section_freq[token] for section_freq in sections_freq]
-
-            keywords_stats_file[token].append(measure_dispersion(counts))
-
         keywords_stats_files.append(keywords_stats_file)
 
     if len(files) == 1:
@@ -1015,13 +942,11 @@ def generate_table(main, table):
 
     text_test_significance = settings['generation_settings']['test_significance']
     text_measure_effect_size = settings['generation_settings']['measure_effect_size']
-    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
 
     (col_text_test_stat,
      col_text_p_value,
      col_text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
     col_text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
-    col_text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
 
     if settings['generation_settings']['ref_file']:
         ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
@@ -1072,10 +997,6 @@ def generate_table(main, table):
                                          main.tr(f'[{file["name"]}]\n{col_text_effect_size}'),
                                          num = True, breakdown = True)
 
-                        table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}]\n{col_text_dispersion}'),
-                                         num = True, breakdown = True)
-
                     # Insert columns (Total)
                     table.insert_col(table.columnCount() - 1,
                                      main.tr(f'Total\nFrequency'),
@@ -1099,10 +1020,6 @@ def generate_table(main, table):
                                      main.tr(f'Total\n{col_text_effect_size}'),
                                      num = True)
 
-                    table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'Total\n{col_text_dispersion}'),
-                                     num = True)
-
                     # Sort by p-value of the first file
                     table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{col_text_p_value}')), Qt.AscendingOrder)
 
@@ -1117,7 +1034,6 @@ def generate_table(main, table):
                         cols_bayes_factor = table.find_cols(main.tr('\nBayes Factor'))
 
                     cols_effect_size = table.find_cols(f'\n{col_text_effect_size}')
-                    cols_dispersion = table.find_cols(f'\n{col_text_dispersion}')
                     col_number_files_found = table.find_col(main.tr('Number of\nFiles Found'))
 
                     len_files = len(files)
@@ -1137,7 +1053,7 @@ def generate_table(main, table):
                         for j, freq in enumerate(keyword_freq_files):
                             table.set_item_num_cumulative(i, cols_freq[j], freq)
 
-                        for j, (test_stat, p_value, bayes_factor, effect_size, dispersion) in enumerate(stats_files):
+                        for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
                             # Test Statistic
                             if col_text_test_stat:
                                 table.set_item_num_float(i, cols_test_stat[j], test_stat)
@@ -1151,9 +1067,6 @@ def generate_table(main, table):
 
                             # Effect Size
                             table.set_item_num_float(i, cols_effect_size[j], effect_size)
-
-                            # Dispersion
-                            table.set_item_num_float(i, cols_dispersion[j], dispersion)
 
                         # Number of Files Found
                         table.set_item_num_pct(i, col_number_files_found,
@@ -1210,13 +1123,11 @@ def generate_plot(main):
                 if keywords_freq_files:
                     text_test_significance = settings['generation_settings']['test_significance']
                     text_measure_effect_size = settings['generation_settings']['measure_effect_size']
-                    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
 
                     (col_text_test_stat,
                      col_text_p_value,
                      col_text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
                     col_text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
-                    col_text_dispersion =  main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
 
                     if settings['plot_settings']['use_data'] == main.tr('Frequency'):
                         wordless_plot_freq.wordless_plot_freq_ref(main, keywords_freq_files,
@@ -1244,11 +1155,6 @@ def generate_plot(main):
                                            for keyword, stats_files in keywords_stats_files.items()}
 
                             label_y = col_text_effect_size
-                        elif settings['plot_settings']['use_data'] == col_text_dispersion:
-                            keywords_stat_files = {keyword: numpy.array(stats_files)[:, 4]
-                                           for keyword, stats_files in keywords_stats_files.items()}
-
-                            label_y = col_text_dispersion
 
                         wordless_plot_stat.wordless_plot_stat_ref(main, keywords_stat_files,
                                                                   ref_file = ref_file,

@@ -224,7 +224,7 @@ class Wordless_Text():
                     self.tags_non_pos = [[tag.strip() for tag in tags] for tags in self.tags_non_pos]
 
     def tokenize_sentence(self, sentence):
-        tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentence, self.lang_code)
+        tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentence, self.lang)
 
         self.sentences.append(sentence)
         self.sentence_offsets.append(len(self.tokens))
@@ -243,7 +243,7 @@ class Wordless_Text():
 
     def tokenize_text(self, text):
         if text:
-            tokens = wordless_text_processing.wordless_word_tokenize(self.main, text, self.lang_code)
+            tokens = wordless_text_processing.wordless_word_tokenize(self.main, text, self.lang)
 
             for i in range(len(tokens)):
                 self.tags_all.append([])
