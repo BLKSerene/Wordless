@@ -128,8 +128,6 @@ def sorted_keywords_stats_files(keywords_stats_files):
                 keys.append(-stats_file[2])
             # Effect Size
             keys.append(-stats_file[3])
-            # Dispersion
-            keys.append(-stats_file[4])
 
         # Keywords
         keys.append(item[0])
