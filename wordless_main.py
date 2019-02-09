@@ -452,7 +452,7 @@ class Wordless_Main(QMainWindow):
         label_donating = wordless_label.Wordless_Label_Dialog(
             self.tr('''
                 <div>
-                    If you would like to support the development of Wordless, you may donate via PayPal, Alipay (Recommended) or WeChat.
+                    If you would like to support the development of Wordless, you may donate via PayPal, Alipay or WeChat.
                 </div>
 
                 <div>
@@ -465,7 +465,7 @@ class Wordless_Main(QMainWindow):
 
         combo_box_donating_via.addItems([
                                              self.tr('PayPal'),
-                                             self.tr('Alipay (Recommended)'),
+                                             self.tr('Alipay'),
                                              self.tr('WeChat')
                                         ])
 
