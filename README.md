@@ -104,11 +104,11 @@ If you have an interest in helping the development of Wordless, you may contribu
 Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or [Github Wiki](https://github.com/BLKSerene/Wordless/wiki) for Wordless, or helping me translate Wordless and its documentation to other languages.
 
 ## Donating
-If you would like to support the development of Wordless, you may donate via PayPal, Alipay (Recommended) or WeChat.
+If you would like to support the development of Wordless, you may donate via PayPal, Alipay or WeChat.
 
 **Important Note**: I WILL NOT PROVIDE refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation.
 
-|PayPal|Alipay (Recommended)|WeChat|
+|PayPal|Alipay|WeChat|
 |------|------|------|
 |[![Donate with PayPal button](https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJ4RNZSVD766Y)|<img src=https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_alipay.png>|<img src=https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_wechat.png alt="WeChat">|
 
