@@ -405,18 +405,18 @@ def init(main):
         label_dispersion.setText(f'{col_text_dispersion}:')
         label_adjusted_freq.setText(f'{col_text_adjusted_freq}:')
 
-    tab_ngrams = wordless_layout.Wordless_Tab(main, load_settings)
+    wrapper_ngrams = wordless_layout.Wordless_Wrapper(main, load_settings)
     
     table_ngrams = Wordless_Table_Ngrams(main)
 
-    tab_ngrams.layout_table.addWidget(table_ngrams.label_number_results, 0, 0)
-    tab_ngrams.layout_table.addWidget(table_ngrams.button_search_results, 0, 4)
-    tab_ngrams.layout_table.addWidget(table_ngrams, 1, 0, 1, 5)
-    tab_ngrams.layout_table.addWidget(table_ngrams.button_generate_table, 2, 0)
-    tab_ngrams.layout_table.addWidget(table_ngrams.button_generate_plot, 2, 1)
-    tab_ngrams.layout_table.addWidget(table_ngrams.button_export_selected, 2, 2)
-    tab_ngrams.layout_table.addWidget(table_ngrams.button_export_all, 2, 3)
-    tab_ngrams.layout_table.addWidget(table_ngrams.button_clear, 2, 4)
+    wrapper_ngrams.layout_table.addWidget(table_ngrams.label_number_results, 0, 0)
+    wrapper_ngrams.layout_table.addWidget(table_ngrams.button_search_results, 0, 4)
+    wrapper_ngrams.layout_table.addWidget(table_ngrams, 1, 0, 1, 5)
+    wrapper_ngrams.layout_table.addWidget(table_ngrams.button_generate_table, 2, 0)
+    wrapper_ngrams.layout_table.addWidget(table_ngrams.button_generate_plot, 2, 1)
+    wrapper_ngrams.layout_table.addWidget(table_ngrams.button_export_selected, 2, 2)
+    wrapper_ngrams.layout_table.addWidget(table_ngrams.button_export_all, 2, 3)
+    wrapper_ngrams.layout_table.addWidget(table_ngrams.button_clear, 2, 4)
 
     # Token Settings
     group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
@@ -877,18 +877,18 @@ def init(main):
 
     group_box_filter_settings.layout().setColumnStretch(1, 1)
 
-    tab_ngrams.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
-    tab_ngrams.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
-    tab_ngrams.layout_settings.addWidget(group_box_generation_settings, 2, 0, Qt.AlignTop)
-    tab_ngrams.layout_settings.addWidget(group_box_table_settings, 3, 0, Qt.AlignTop)
-    tab_ngrams.layout_settings.addWidget(group_box_plot_settings, 4, 0, Qt.AlignTop)
-    tab_ngrams.layout_settings.addWidget(group_box_filter_settings, 5, 0, Qt.AlignTop)
+    wrapper_ngrams.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
+    wrapper_ngrams.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
+    wrapper_ngrams.layout_settings.addWidget(group_box_generation_settings, 2, 0, Qt.AlignTop)
+    wrapper_ngrams.layout_settings.addWidget(group_box_table_settings, 3, 0, Qt.AlignTop)
+    wrapper_ngrams.layout_settings.addWidget(group_box_plot_settings, 4, 0, Qt.AlignTop)
+    wrapper_ngrams.layout_settings.addWidget(group_box_filter_settings, 5, 0, Qt.AlignTop)
 
-    tab_ngrams.layout_settings.setRowStretch(6, 1)
+    wrapper_ngrams.layout_settings.setRowStretch(6, 1)
 
     load_settings()
 
-    return tab_ngrams
+    return wrapper_ngrams
 
 def generate_ngrams(main, files):
     texts = []

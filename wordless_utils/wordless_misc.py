@@ -38,15 +38,15 @@ def log_timing(func):
         else:
             message_timing = main.tr(f'(In {time_elapsed_min} minutes {time_elapsed_sec:.2f} seconds)')
 
-        message_current = main.status_bar.currentMessage()
+        message_current = main.statusBar().currentMessage()
 
         if message_current:
             if message_current.find('(In') > - 1:
-                main.status_bar.showMessage(f'{message_current.split("(")[0].rstrip()} {message_timing}')
+                main.statusBar().showMessage(f'{message_current.split("(")[0].rstrip()} {message_timing}')
             else:
-                main.status_bar.showMessage(f'{message_current} {message_timing}')
+                main.statusBar().showMessage(f'{message_current} {message_timing}')
         else:
-            main.status_bar.showMessage(f'{message_timing}')
+            main.statusBar().showMessage(f'{message_timing}')
 
         return return_val
 
