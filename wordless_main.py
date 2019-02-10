@@ -20,22 +20,20 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-import requests
-
 from wordless_checking import *
 from wordless_help import *
 from wordless_settings import *
 from wordless_utils import *
 from wordless_widgets import *
 
-import wordless_files
-import tab_overview
-import tab_concordancer
-import tab_wordlist
-import tab_ngrams
-import tab_collocation
-import tab_colligation
-import tab_keywords
+import wordless_file_area
+import wordless_overview
+import wordless_concordancer
+import wordless_wordlist
+import wordless_ngrams
+import wordless_collocation
+import wordless_colligation
+import wordless_keywords
 
 class Wordless_Loading(QSplashScreen):
     def __init__(self):
@@ -59,62 +57,6 @@ class Wordless_Loading(QSplashScreen):
 
             time.sleep(0.05)
 
-class Worker_Check_Updates(QObject):
-    finished = pyqtSignal()
-    check_updates_finished = pyqtSignal(str, str)
-
-    def __init__(self, main):
-        super().__init__()
-
-        self.main = main
-        self.stopped = False
-
-    def check_updates(self):
-        num_retries = 0
-        version_new = ''
-
-        try:
-            r = requests.get('https://raw.githubusercontent.com/BLKSerene/Wordless/master/VERSION', timeout = 15)
-
-            if r.status_code == 200:
-                for line in r.text.splitlines():
-                    if line and not line.startswith('#'):
-                        version_new = line.rstrip()
-
-                if self.is_newer_version(version_new):
-                    updates_status = 'updates_available'
-                else:
-                    updates_status = 'no_updates'
-            else:
-                updates_status = 'network_error'
-        except:
-            updates_status = 'network_error'
-
-        if not self.stopped:
-            self.check_updates_finished.emit(updates_status, version_new)
-
-        self.finished.emit()
-
-    def is_newer_version(self, version_new):
-        with open('VERSION', 'r', encoding = 'utf_8') as f:
-            for line in f.readlines():
-                line = line.rstrip()
-
-                if line and not line.startswith('#'):
-                    major_cur, minor_cur, patch_cur = line.split('.')
-
-        major_new, minor_new, patch_new = version_new.split('.')
-
-        if (int(major_cur) < int(major_new) or
-            int(minor_cur) < int(minor_new) or
-            int(patch_cur) < int(patch_new)):
-            return True
-        else:
-            return False
-
-    def stop(self):
-        self.stopped = True
-
 class Wordless_Main(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -123,6 +65,8 @@ class Wordless_Main(QMainWindow):
 
         self.setWindowTitle(self.tr('Wordless'))
         self.setWindowIcon(QIcon('imgs/wordless_icon.png'))
+
+        self.resize(QApplication.desktop().width(), QApplication.desktop().height())
 
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('wordless')
 
@@ -146,26 +90,27 @@ class Wordless_Main(QMainWindow):
         # Menu
         self.init_menu()
 
-        # Tabs
-        tab_cur = self.settings_custom['tab_cur']
-
+        # Work Area & File Area
         self.init_central_widget()
 
-        for i in range(self.tabs.count()):
-            if self.tabs.tabText(i) == tab_cur:
-                self.tabs.setCurrentIndex(i)
-
-                break
-
         # Status Bar
-        self.status_bar = self.statusBar()
-        self.status_bar.showMessage(self.tr('Ready!'))
+        self.statusBar().showMessage(self.tr('Ready!'))
 
+        self.statusBar().setFixedHeight(22)
+        self.statusBar().setStyleSheet('''
+            QStatusBar {
+                background-color: #D0D0D0;
+            }
+        ''')
+
+        # Global Style
         self.setStyleSheet(self.settings_global['styles']['style_global'])
 
         # Check for updates on startup
         if self.settings_custom['updates']['update_settings']['check_updates_on_startup']:
             self.dialog_check_updates = self.help_check_updates(on_startup = True)
+
+        self.load_settings()
 
     def closeEvent(self, event):
         reply = QMessageBox.question(self,
@@ -179,8 +124,20 @@ class Wordless_Main(QMainWindow):
                                      QMessageBox.No)
 
         if reply == QMessageBox.Yes:
-            # Reset some settings
+            # Clear history of closed files
             self.settings_custom['files']['files_closed'].clear()
+
+            # Layouts
+            self.settings_custom['layouts']['central_widget'] = self.centralWidget().sizes()
+
+            self.settings_custom['layouts']['file_area'] = self.wordless_file_area.sizes()
+            self.settings_custom['layouts']['overview'] = self.wordless_overview.sizes()
+            self.settings_custom['layouts']['concordancer'] = self.wordless_concordancer.sizes()
+            self.settings_custom['layouts']['wordlist'] = self.wordless_wordlist.sizes()
+            self.settings_custom['layouts']['ngrams'] = self.wordless_ngrams.sizes()
+            self.settings_custom['layouts']['collocation'] = self.wordless_collocation.sizes()
+            self.settings_custom['layouts']['colligation'] = self.wordless_colligation.sizes()
+            self.settings_custom['layouts']['keywords'] = self.wordless_keywords.sizes()
 
             with open('wordless_settings.pkl', 'wb') as f:
                 pickle.dump(self.settings_custom, f)
@@ -190,51 +147,50 @@ class Wordless_Main(QMainWindow):
             event.ignore()
 
     def init_menu(self):
-        menu = self.menuBar()
-        menu_file = menu.addMenu(self.tr('File'))
-        menu_prefs = menu.addMenu(self.tr('Preferences'))
-        menu_help = menu.addMenu(self.tr('Help'))
+        menu_file = self.menuBar().addMenu(self.tr('File'))
+        menu_prefs = self.menuBar().addMenu(self.tr('Preferences'))
+        menu_help = self.menuBar().addMenu(self.tr('Help'))
 
         # File
-        self.menu_file_open_files = QAction(self.tr('Open File(s)...'), self)
-        self.menu_file_open_files.setStatusTip(self.tr('Open file(s)'))
+        menu_file_open_files = QAction(self.tr('Open File(s)...'), self)
+        menu_file_open_files.setStatusTip(self.tr('Open file(s)'))
 
-        self.menu_file_open_dir = QAction(self.tr('Open Folder...'), self)
-        self.menu_file_open_dir.setStatusTip(self.tr('Open all files in folder'))
+        menu_file_open_dir = QAction(self.tr('Open Folder...'), self)
+        menu_file_open_dir.setStatusTip(self.tr('Open all files in folder'))
 
-        self.menu_file_reopen = QAction(self.tr('Reopen Closed File(s)'), self)
-        self.menu_file_reopen.setStatusTip(self.tr('Reopen closed file(s)'))
+        menu_file_reopen = QAction(self.tr('Reopen Closed File(s)'), self)
+        menu_file_reopen.setStatusTip(self.tr('Reopen closed file(s)'))
 
-        self.menu_file_select_all = QAction(self.tr('Select All'), self)
-        self.menu_file_select_all.setStatusTip(self.tr('Select all files'))
+        menu_file_select_all = QAction(self.tr('Select All'), self)
+        menu_file_select_all.setStatusTip(self.tr('Select all files'))
 
-        self.menu_file_invert_selection = QAction(self.tr('Invert Selection'), self)
-        self.menu_file_invert_selection.setStatusTip(self.tr('Invert file selection'))
+        menu_file_invert_selection = QAction(self.tr('Invert Selection'), self)
+        menu_file_invert_selection.setStatusTip(self.tr('Invert file selection'))
 
-        self.menu_file_deselect_all = QAction(self.tr('Deselect All'), self)
-        self.menu_file_deselect_all.setStatusTip(self.tr('Deselect all files'))
+        menu_file_deselect_all = QAction(self.tr('Deselect All'), self)
+        menu_file_deselect_all.setStatusTip(self.tr('Deselect all files'))
 
-        self.menu_file_close_selected = QAction(self.tr('Close Selected'), self)
-        self.menu_file_close_selected.setStatusTip(self.tr('Close selected file(s)'))
+        menu_file_close_selected = QAction(self.tr('Close Selected'), self)
+        menu_file_close_selected.setStatusTip(self.tr('Close selected file(s)'))
 
-        self.menu_file_close_all = QAction(self.tr('Close All'), self)
-        self.menu_file_close_all.setStatusTip(self.tr('Close all files'))
+        menu_file_close_all = QAction(self.tr('Close All'), self)
+        menu_file_close_all.setStatusTip(self.tr('Close all files'))
 
         menu_file_exit = QAction(self.tr('Exit...'), self)
         menu_file_exit.setStatusTip(self.tr('Exit the program'))
         menu_file_exit.triggered.connect(self.close)
 
-        menu_file.addAction(self.menu_file_open_files)
-        menu_file.addAction(self.menu_file_open_dir)
+        menu_file.addAction(menu_file_open_files)
+        menu_file.addAction(menu_file_open_dir)
         menu_file.addSeparator()
-        menu_file.addAction(self.menu_file_reopen)
+        menu_file.addAction(menu_file_reopen)
         menu_file.addSeparator()
-        menu_file.addAction(self.menu_file_select_all)
-        menu_file.addAction(self.menu_file_invert_selection)
-        menu_file.addAction(self.menu_file_deselect_all)
+        menu_file.addAction(menu_file_select_all)
+        menu_file.addAction(menu_file_invert_selection)
+        menu_file.addAction(menu_file_deselect_all)
         menu_file.addSeparator()
-        menu_file.addAction(self.menu_file_close_selected)
-        menu_file.addAction(self.menu_file_close_all)
+        menu_file.addAction(menu_file_close_selected)
+        menu_file.addAction(menu_file_close_all)
         menu_file.addSeparator()
         menu_file.addAction(menu_file_exit)
 
@@ -243,12 +199,16 @@ class Wordless_Main(QMainWindow):
         menu_prefs_settings.setStatusTip(self.tr('Change settings'))
         menu_prefs_settings.triggered.connect(self.wordless_settings.load)
 
+        menu_pref_restor_default_layouts = QAction(self.tr('Restore Default Layouts'), self)
+        menu_pref_restor_default_layouts.setStatusTip(self.tr('Restore default layouts'))
+        menu_pref_restor_default_layouts.triggered.connect(self.prefs_restore_default_layouts)
+
         menu_prefs_show_status_bar = QAction(self.tr('Show Status Bar'), self, checkable = True)
-        menu_prefs_show_status_bar.setChecked(True)
         menu_prefs_show_status_bar.setStatusTip(self.tr('Show/Hide the status bar'))
         menu_prefs_show_status_bar.triggered.connect(self.prefs_show_status_bar)
 
         menu_prefs.addAction(menu_prefs_settings)
+        menu_prefs.addAction(menu_pref_restor_default_layouts)
         menu_prefs.addSeparator()
         menu_prefs.addAction(menu_prefs_show_status_bar)
 
@@ -281,9 +241,9 @@ class Wordless_Main(QMainWindow):
         menu_help_changelog.setStatusTip(self.tr('Show Changelog'))
         menu_help_changelog.triggered.connect(self.help_changelog)
 
-        menu_help_about_wordless = QAction(self.tr('About Wordless'), self)
-        menu_help_about_wordless.setStatusTip(self.tr('Show information about Wordless'))
-        menu_help_about_wordless.triggered.connect(self.help_about_wordless)
+        menu_help_about = QAction(self.tr('About Wordless'), self)
+        menu_help_about.setStatusTip(self.tr('Show information about Wordless'))
+        menu_help_about.triggered.connect(self.help_about)
 
         menu_help.addAction(menu_help_citing)
         menu_help.addAction(menu_help_acks)
@@ -294,84 +254,35 @@ class Wordless_Main(QMainWindow):
         menu_help.addSeparator()
         menu_help.addAction(menu_help_check_updates)
         menu_help.addAction(menu_help_changelog)
-        menu_help.addAction(menu_help_about_wordless)
+        menu_help.addAction(menu_help_about)
 
     # Preferences -> Show Status Bar
     def prefs_show_status_bar(self):
-        if self.status_bar.isVisible():
-            self.status_bar.hide()
+        self.settings_custom['menu']['prefs']['show_status_bar'] = self.find_menu_item(self.tr('Show Status Bar')).isChecked()
+
+        if self.settings_custom['menu']['prefs']['show_status_bar']:
+            self.statusBar().show()
         else:
-            self.status_bar.show()
+            self.statusBar().hide()
+
+    # Preferences -> Restore Default Layouts
+    def prefs_restore_default_layouts(self):
+        settings = self.settings_default['layouts']
+
+        self.centralWidget().setSizes(settings['central_widget'])
+
+        self.wordless_file_area.setSizes(settings['file_area'])
+        self.wordless_overview.setSizes(settings['overview'])
+        self.wordless_concordancer.setSizes(settings['concordancer'])
+        self.wordless_wordlist.setSizes(settings['wordlist'])
+        self.wordless_ngrams.setSizes(settings['ngrams'])
+        self.wordless_collocation.setSizes(settings['collocation'])
+        self.wordless_colligation.setSizes(settings['colligation'])
+        self.wordless_keywords.setSizes(settings['keywords'])
 
     # Help -> Citing
     def help_citing(self):
-        def citation_sys_changed():
-            if combo_box_citation_sys.currentText() == self.tr('MLA (8th Edition)'):
-                text_edit_citing.setHtml('Ye Lei. Wordless, version 1.0.0, 2019, https://github.com/BLKSerene/Wordless.')
-            elif combo_box_citation_sys.currentText() == self.tr('APA (6th Edition)'):
-                text_edit_citing.setHtml('Ye, L. (2019) Wordless (Version 1.0.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless')
-            elif combo_box_citation_sys.currentText() == self.tr('GB (GB/T 7714—2015)'):
-                text_edit_citing.setHtml('叶磊. Wordless version 1.0.0[CP]. (2019). https://github.com/BLKSerene/Wordless.')
-
-            if combo_box_citation_sys.currentText() == self.tr('GB (GB/T 7714—2015)'):
-                text_edit_citing.setFont(QFont('宋体', 12))
-            else:
-                text_edit_citing.setFont(QFont('Times New Roman', 12))
-
-        def copy():
-            text_edit_citing.setFocus()
-            text_edit_citing.selectAll()
-            text_edit_citing.copy()
-
-        dialog_citing = wordless_dialog.Wordless_Dialog_Info(self, self.tr('Citing'),
-                                                             width = 400,
-                                                             height = 150,
-                                                             no_button = True)
-
-        label_citing = wordless_label.Wordless_Label_Dialog(
-            self.tr('''
-                <div>
-                    If you publish work that uses Wordless, please cite as follows.
-                </div>
-            '''), self)
-        label_citation_sys = QLabel(self.tr('Citation System:'), self)
-        combo_box_citation_sys = wordless_box.Wordless_Combo_Box(self)
-        text_edit_citing = QTextEdit(self)
-
-        button_copy = QPushButton(self.tr('Copy'), self)
-        button_close = QPushButton(self.tr('Close'), self)
-
-        combo_box_citation_sys.addItems([
-                                             self.tr('MLA (8th Edition)'),
-                                             self.tr('APA (6th Edition)'),
-                                             self.tr('GB (GB/T 7714—2015)')
-                                        ])
-
-        button_copy.setFixedWidth(100)
-        button_close.setFixedWidth(100)
-
-        text_edit_citing.setFixedHeight(100)
-        text_edit_citing.setReadOnly(True)
-
-        combo_box_citation_sys.currentTextChanged.connect(citation_sys_changed)
-
-        button_copy.clicked.connect(copy)
-        button_close.clicked.connect(dialog_citing.accept)
-
-        layout_citation_sys = QGridLayout()
-        layout_citation_sys.addWidget(label_citation_sys, 0, 0)
-        layout_citation_sys.addWidget(combo_box_citation_sys, 0, 1)
-
-        layout_citation_sys.setColumnStretch(2, 1)
-
-        dialog_citing.wrapper_info.layout().addWidget(label_citing, 0, 0, 1, 2)
-        dialog_citing.wrapper_info.layout().addLayout(layout_citation_sys, 1, 0, 1, 2)
-        dialog_citing.wrapper_info.layout().addWidget(text_edit_citing, 2, 0, 1, 2)
-
-        dialog_citing.wrapper_buttons.layout().addWidget(button_copy, 0, 0)
-        dialog_citing.wrapper_buttons.layout().addWidget(button_close, 0, 1)
-
-        citation_sys_changed()
+        dialog_citing = wordless_citing.Wordless_Dialog_Citing(self)
 
         dialog_citing.open()
 
@@ -428,180 +339,16 @@ class Wordless_Main(QMainWindow):
 
     # Help -> Donating
     def help_donating(self):
-        def donating_via_changed():
-            if combo_box_donating_via.currentText() == self.tr('PayPal'):
-                label_donating_via_img.setText('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJ4RNZSVD766Y"><img src="imgs/donating_paypal.gif"></a>')
-
-                dialog_donating.setFixedHeight(280)
-            elif combo_box_donating_via.currentText() == self.tr('Alipay (Recommended)'):
-                label_donating_via_img.setText('<img src="imgs/donating_alipay.png">')
-
-                dialog_donating.setFixedHeight(530)
-            elif combo_box_donating_via.currentText() == self.tr('WeChat'):
-                label_donating_via_img.setText('<img src="imgs/donating_wechat.png">')
-
-                dialog_donating.setFixedHeight(530)
-
-            label_donating_via_img.adjustSize()
-            dialog_donating.move_to_center()
-
-        dialog_donating = wordless_dialog.Wordless_Dialog_Info(self, self.tr('Donating'),
-                                                               width = 400,
-                                                               height = 280)
-
-        label_donating = wordless_label.Wordless_Label_Dialog(
-            self.tr('''
-                <div>
-                    If you would like to support the development of Wordless, you may donate via PayPal, Alipay or WeChat.
-                </div>
-
-                <div>
-                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>WILL NOT PROVIDE</b> refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation. 
-                </div>
-            '''), self)
-        label_donating_via = QLabel(self.tr('Donating via:'), self)
-        combo_box_donating_via = wordless_box.Wordless_Combo_Box(self)
-        label_donating_via_img = wordless_label.Wordless_Label_Html('', self)
-
-        combo_box_donating_via.addItems([
-                                             self.tr('PayPal'),
-                                             self.tr('Alipay'),
-                                             self.tr('WeChat')
-                                        ])
-
-        combo_box_donating_via.currentTextChanged.connect(donating_via_changed)
-
-        layout_donating_via = QGridLayout()
-        layout_donating_via.addWidget(label_donating_via, 0, 0)
-        layout_donating_via.addWidget(combo_box_donating_via, 0, 1)
-
-        layout_donating_via.setColumnStretch(2, 1)
-
-        dialog_donating.wrapper_info.layout().addWidget(label_donating, 0, 0)
-        dialog_donating.wrapper_info.layout().addLayout(layout_donating_via, 1, 0)
-        dialog_donating.wrapper_info.layout().addWidget(label_donating_via_img, 2, 0, Qt.AlignHCenter | Qt.AlignVCenter)
-
-        donating_via_changed()
+        dialog_donating = wordless_donating.Wordless_Dialog_Donating(self)
 
         dialog_donating.open()
 
     # Help -> Check for Updates
     def help_check_updates(self, on_startup = False):
-        def load_settings():
-            checkbox_check_updates_on_startup.setChecked(self.settings_custom['updates']['update_settings']['check_updates_on_startup'])
-
-        def check_updates_on_startup_changed():
-            self.settings_custom['updates']['update_settings']['check_updates_on_startup'] = checkbox_check_updates_on_startup.isChecked()
-
-        def check_updates():
-            updates_status_changed('checking')
-
-            thread_check_updates = QThread()
-
-            self.threads_check_updates.append(thread_check_updates)
-
-            self.worker_check_updates = Worker_Check_Updates(self)
-            self.worker_check_updates.moveToThread(thread_check_updates)
-
-            thread_check_updates.started.connect(self.worker_check_updates.check_updates)
-            thread_check_updates.finished.connect(thread_check_updates.deleteLater)
-            thread_check_updates.destroyed.connect(lambda: self.threads_check_updates.remove(thread_check_updates))
-
-            if on_startup:
-                self.worker_check_updates.check_updates_finished.connect(self.updates_status_on_startup_changed)
-
-            self.worker_check_updates.check_updates_finished.connect(updates_status_changed)
-            self.worker_check_updates.finished.connect(thread_check_updates.quit)
-            self.worker_check_updates.finished.connect(self.worker_check_updates.deleteLater)
-
-            thread_check_updates.start()
-
-        def check_updates_stopped():
-            self.worker_check_updates.stop()
-
-            dialog_check_updates.reject()
-
-        def updates_status_changed(status, version_new = ''):
-            if status == 'checking':
-                label_check_updates.set_text(self.tr('''
-                    <div>
-                        Checking for updates...<br>
-                        Please wait, it may take a few seconds.
-                    </div>
-                '''))
-
-                button_try_again.hide()
-                button_cancel.setText(self.tr('Cancel'))
-
-                button_cancel.disconnect()
-                button_cancel.clicked.connect(check_updates_stopped)
-            elif status == 'no_updates':
-                label_check_updates.set_text(self.tr('''
-                    <div>
-                        Hooray, you are using the latest version of Wordless!
-                    </div>
-                '''))
-
-                button_try_again.hide()
-                button_cancel.setText(self.tr('OK'))
-
-                button_cancel.disconnect()
-                button_cancel.clicked.connect(dialog_check_updates.accept)
-            elif status == 'updates_available':
-                label_check_updates.set_text(self.tr(f'''
-                    <div>
-                        Wordless v{version_new} is out, click <a href="https://github.com/BLKSerene/Wordless/releases"><b>HERE</b></a> to download the latest version of Wordless.
-                    </div>
-                '''))
-
-                button_try_again.hide()
-                button_cancel.setText(self.tr('OK'))
-
-                button_cancel.disconnect()
-                button_cancel.clicked.connect(dialog_check_updates.accept)
-            elif status == 'network_error':
-                label_check_updates.set_text(self.tr('''
-                    <div>
-                        A network error occurred, please check your network settings or try again later.
-                    </div>
-                '''))
-
-                button_try_again.show()
-                button_cancel.setText(self.tr('Close'))
-
-                button_cancel.disconnect()
-                button_cancel.clicked.connect(dialog_check_updates.accept)
-
-        dialog_check_updates = wordless_dialog.Wordless_Dialog_Info(self, self.tr('Check for Updates'),
-                                                                    width = 420,
-                                                                    height = 100,
-                                                                    no_button = True)
-
-        label_check_updates = wordless_label.Wordless_Label_Dialog('', self)
-        checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for Updates on Startup'), self)
-        
-        button_try_again = QPushButton(self.tr('Try Again'), self)
-        button_cancel = QPushButton(self.tr('Cancel'), self)
-
-        checkbox_check_updates_on_startup.stateChanged.connect(check_updates_on_startup_changed)
-
-        button_try_again.clicked.connect(check_updates)
-
-        dialog_check_updates.wrapper_info.layout().addWidget(label_check_updates, 0, 0)
-
-        dialog_check_updates.wrapper_buttons.layout().addWidget(checkbox_check_updates_on_startup, 0, 0)
-        dialog_check_updates.wrapper_buttons.layout().addWidget(button_try_again, 0, 2)
-        dialog_check_updates.wrapper_buttons.layout().addWidget(button_cancel, 0, 3)
-
-        dialog_check_updates.wrapper_buttons.layout().setColumnStretch(1, 1)
-
-        load_settings()
-        check_updates()
+        dialog_check_updates = wordless_check_updates.Wordless_Dialog_Check_Updates(self)
 
         if not on_startup:
             dialog_check_updates.open()
-        else:
-            return dialog_check_updates
 
     # Help -> Changelog
     def help_changelog(self):
@@ -610,82 +357,141 @@ class Wordless_Main(QMainWindow):
         dialog_changelog.open()
 
     # Help -> About Wordless
-    def help_about_wordless(self):
-        dialog_about = wordless_dialog.Wordless_Dialog_Info(self, self.tr('About Wordless'),
-                                                            width = 420,
-                                                            height = 150)
-
-        label_about_icon = QLabel('', self)
-        label_about_icon.setPixmap(QPixmap('imgs/wordless_icon.png'))
-
-        label_about_title = wordless_label.Wordless_Label_Dialog(
-            self.tr('''
-                <div style="text-align: center;">
-                    <h2>Wordless Version 1.0.0</h2>
-                    <div>
-                        An Integrated Corpus Tool with Multi-language Support<br>
-                        for the Study of Language, Literature and Translation
-                    </div>
-                </div>
-            '''), self)
-        label_about_copyright = wordless_label.Wordless_Label_Dialog(
-            self.tr('''
-                <hr>
-                <div style="text-align: center;">
-                    Copyright (C)&nbsp;&nbsp;2018 Ye Lei (<span style="font-family: simsun">叶磊</span>)<br>
-                    Licensed Under GNU GPLv3<br>
-                    All Other Rights Reserved
-                </div>
-            '''), self)
-
-        dialog_about.wrapper_info.layout().addWidget(label_about_icon, 0, 0)
-        dialog_about.wrapper_info.layout().addWidget(label_about_title, 0, 1)
-        dialog_about.wrapper_info.layout().addWidget(label_about_copyright, 1, 0, 1, 2)
-
-        dialog_about.wrapper_info.layout().setColumnStretch(1, 1)
-        dialog_about.wrapper_info.layout().setVerticalSpacing(0)
+    def help_about(self):
+        dialog_about = wordless_about.Wordless_Dialog_About(self)
 
         dialog_about.open()
 
     def init_central_widget(self):
-        central_widget = QWidget(self)
+        self.wordless_file_area = wordless_file_area.init(self)
+        self.wordless_work_area = self.init_work_area()
 
-        self.widget_files = wordless_files.init(self)
+        splitter_central_widget = wordless_layout.Wordless_Splitter(Qt.Vertical, self)
+        splitter_central_widget.addWidget(self.wordless_work_area)
+        splitter_central_widget.addWidget(self.wordless_file_area)
 
-        central_widget.setLayout(QGridLayout())
-        central_widget.layout().addWidget(self.init_tabs(), 0, 0)
-        central_widget.layout().addWidget(self.widget_files, 1, 0)
+        splitter_central_widget.setObjectName('splitter-central-widget')
+        splitter_central_widget.setStyleSheet('''
+            QSplitter#splitter-central-widget {
+                padding: 4px 6px;
+            }
+        ''')
 
-        central_widget.layout().setRowStretch(0, 2)
-        central_widget.layout().setRowStretch(1, 1)
+        self.setCentralWidget(splitter_central_widget)
 
-        self.setCentralWidget(central_widget)
+    def init_work_area(self):
+        def load_settings():
+            work_area_cur = self.settings_custom['work_area_cur']
 
-    def init_tabs(self):
-        def tab_changed():
-            self.settings_custom['tab_cur'] = self.tabs.tabText(self.tabs.currentIndex())
+            for i in range(self.tabs_work_area.count()):
+                if self.tabs_work_area.tabText(i) == work_area_cur:
+                    self.tabs_work_area.setCurrentIndex(i)
 
-        self.tabs = QTabWidget(self)
-        self.tabs.addTab(tab_overview.init(self), self.tr('Overview'))
-        self.tabs.addTab(tab_concordancer.init(self), self.tr('Concordancer'))
-        self.tabs.addTab(tab_wordlist.init(self), self.tr('Wordlist'))
-        self.tabs.addTab(tab_ngrams.init(self), self.tr('N-grams'))
-        self.tabs.addTab(tab_collocation.init(self), self.tr('Collocation'))
-        self.tabs.addTab(tab_colligation.init(self), self.tr('Colligation'))
-        self.tabs.addTab(tab_keywords.init(self), self.tr('Keywords'))
+                    break
 
-        self.tabs.currentChanged.connect(tab_changed)
+            work_area_changed()
 
-        tab_changed()
+        def work_area_changed():
+            self.settings_custom['work_area_cur'] = self.tabs_work_area.tabText(self.tabs_work_area.currentIndex())
 
-        return self.tabs
+            self.wordless_overview.hide()
+            self.wordless_concordancer.hide()
+            self.wordless_wordlist.hide()
+            self.wordless_ngrams.hide()
+            self.wordless_collocation.hide()
+            self.wordless_colligation.hide()
+            self.wordless_keywords.hide()
 
-    def updates_status_on_startup_changed(self, status):
-        if status == 'updates_available':
-            self.dialog_check_updates.open()
-            self.dialog_check_updates.setFocus()
-        else:
-            self.dialog_check_updates.accept()
+            if self.settings_custom['work_area_cur'] == self.tr('Overview'):
+                self.wordless_overview.show()
+            elif self.settings_custom['work_area_cur'] == self.tr('Concordancer'):
+                self.wordless_concordancer.show()
+            elif self.settings_custom['work_area_cur'] == self.tr('Wordlist'):
+                self.wordless_wordlist.show()
+            elif self.settings_custom['work_area_cur'] == self.tr('N-grams'):
+                self.wordless_ngrams.show()
+            elif self.settings_custom['work_area_cur'] == self.tr('Collocation'):
+                self.wordless_collocation.show()
+            elif self.settings_custom['work_area_cur'] == self.tr('Colligation'):
+                self.wordless_colligation.show()
+            elif self.settings_custom['work_area_cur'] == self.tr('Keywords'):
+                self.wordless_keywords.show()
+
+        wordless_work_area = QWidget(self)
+
+        self.tabs_work_area = QTabBar(self)
+        self.tabs_work_area.addTab(self.tr('Overview'))
+        self.tabs_work_area.addTab(self.tr('Concordancer'))
+        self.tabs_work_area.addTab(self.tr('Wordlist'))
+        self.tabs_work_area.addTab(self.tr('N-grams'))
+        self.tabs_work_area.addTab(self.tr('Collocation'))
+        self.tabs_work_area.addTab(self.tr('Colligation'))
+        self.tabs_work_area.addTab(self.tr('Keywords'))
+
+        self.tabs_work_area.setDrawBase(False)
+
+        self.wordless_overview = wordless_overview.init(self)
+        self.wordless_concordancer = wordless_concordancer.init(self)
+        self.wordless_wordlist = wordless_wordlist.init(self)
+        self.wordless_ngrams = wordless_ngrams.init(self)
+        self.wordless_collocation = wordless_collocation.init(self)
+        self.wordless_colligation = wordless_colligation.init(self)
+        self.wordless_keywords = wordless_keywords.init(self)
+
+        wordless_work_area.setLayout(QGridLayout())
+        wordless_work_area.layout().addWidget(self.tabs_work_area, 0, 0)
+        wordless_work_area.layout().addWidget(self.wordless_overview, 1, 0)
+        wordless_work_area.layout().addWidget(self.wordless_concordancer, 1, 0)
+        wordless_work_area.layout().addWidget(self.wordless_wordlist, 1, 0)
+        wordless_work_area.layout().addWidget(self.wordless_ngrams, 1, 0)
+        wordless_work_area.layout().addWidget(self.wordless_collocation, 1, 0)
+        wordless_work_area.layout().addWidget(self.wordless_colligation, 1, 0)
+        wordless_work_area.layout().addWidget(self.wordless_keywords, 1, 0)
+
+        wordless_work_area.layout().setSpacing(0)
+        wordless_work_area.layout().setContentsMargins(0, 0, 0, 0)
+
+        self.tabs_work_area.currentChanged.connect(work_area_changed)
+
+        load_settings()
+
+        return wordless_work_area
+
+    def load_settings(self):
+        settings = copy.deepcopy(self.settings_custom)
+
+        # Menu
+        self.find_menu_item(self.tr('Show Status Bar')).setChecked(settings['menu']['prefs']['show_status_bar'])
+
+        # Layouts
+        self.centralWidget().setSizes(settings['layouts']['central_widget'])
+
+        self.wordless_file_area.setSizes(settings['layouts']['file_area'])
+        self.wordless_overview.setSizes(settings['layouts']['overview'])
+        self.wordless_concordancer.setSizes(settings['layouts']['concordancer'])
+        self.wordless_wordlist.setSizes(settings['layouts']['wordlist'])
+        self.wordless_ngrams.setSizes(settings['layouts']['ngrams'])
+        self.wordless_collocation.setSizes(settings['layouts']['collocation'])
+        self.wordless_colligation.setSizes(settings['layouts']['colligation'])
+        self.wordless_keywords.setSizes(settings['layouts']['keywords'])
+
+    def find_menu_item(self, text, menu = None):
+        menu_item = None
+
+        if not menu:
+            menu = self.menuBar()
+
+        for action in menu.actions():
+            if menu_item:
+                break
+
+            if action.menu():
+                menu_item = self.find_menu_item(text, menu = action.menu())
+            else:
+                if action.text() == text:
+                    menu_item = action
+
+        return menu_item
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

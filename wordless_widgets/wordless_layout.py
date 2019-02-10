@@ -16,8 +16,8 @@ from PyQt5.QtWidgets import *
 from wordless_widgets import wordless_message_box
 
 class Wordless_Splitter(QSplitter):
-    def __init__(self, parent):
-        super().__init__(parent)
+    def __init__(self, orientation, parent):
+        super().__init__(orientation, parent)
 
         self.setHandleWidth(1)
         self.setChildrenCollapsible(False)
@@ -31,14 +31,21 @@ class Wordless_Scroll_Area(QScrollArea):
 
         self.setWidgetResizable(True)
         self.setBackgroundRole(QPalette.Light)
-        self.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
 
-class Wordless_Tab(QWidget):
+class Wordless_Wrapper(Wordless_Splitter):
     def __init__(self, main, load_settings):
-        super().__init__(main)
+        super().__init__(Qt.Horizontal, main)
 
         self.main = main
         self.load_settings = load_settings
+
+        self.setObjectName('wordless-wrapper')
+        self.setStyleSheet('''
+            QWidget#wordless-wrapper {
+                border: 1px solid #D0D0D0;
+                background-color: #FFF;
+            }
+        ''')
 
         self.wrapper_left = QWidget(self)
 
@@ -58,19 +65,22 @@ class Wordless_Tab(QWidget):
         self.wrapper_right.layout().addWidget(self.scroll_area_settings, 0, 0)
         self.wrapper_right.layout().addWidget(button_restore_default_settings, 1, 0)
 
-        self.splitter_tab = Wordless_Splitter(self)
-        self.splitter_tab.addWidget(self.wrapper_left)
-        self.splitter_tab.addWidget(self.wrapper_right)
-
-        self.splitter_tab.setSizes([main.width() - 310, 310])
-        self.splitter_tab.setStretchFactor(0, 1)
-
-        self.setLayout(QGridLayout())
-        self.layout().addWidget(self.splitter_tab)
+        self.addWidget(self.wrapper_left)
+        self.addWidget(self.wrapper_right)
 
         self.layout_table = self.wrapper_left.layout()
         self.layout_settings = wrapper_settings.layout()
 
+        self.layout_settings.setContentsMargins(6, 4, 6, 4)
+
+    # If you subclass from QWidget, you need to provide a paintEvent for your custom QWidget as below.
+    # See: https://doc.qt.io/qt-5/stylesheet-reference.html#list-of-stylable-widgets - QWidget
+    def paintEvent(self, event):
+        opt = QStyleOption();
+        opt.initFrom(self);
+        p = QPainter(self);
+        self.style().drawPrimitive(QStyle.PE_Widget, opt, p, self);
+        
     def restore_default_settings(self):
         reply = wordless_message_box.wordless_message_box_restore_default_settings(self.main)
 
