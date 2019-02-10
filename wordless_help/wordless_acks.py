@@ -9,6 +9,8 @@
 # All other rights reserved.
 #
 
+import copy
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -29,7 +31,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
                 '5.11.3',
                 'Riverbank Computing Limited',
-                '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0/Commercial</a>'
+                '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a>'
             ]
         ]
 
@@ -270,18 +272,29 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         self.wrapper_info.layout().addLayout(layout_browse_category, 1, 0)
         self.wrapper_info.layout().addWidget(self.table_acks, 2, 0)
 
+        self.load_settings()
+
+    def load_settings(self):
+        settings = copy.deepcopy(self.main.settings_custom['menu']['help']['acks'])
+
+        self.combo_box_browse_category.setCurrentText(settings['browse_category'])
+
         self.browse_category_changed()
 
     def browse_category_changed(self):
-        if self.combo_box_browse_category.currentText() == self.tr('General'):
+        settings = self.main.settings_custom['menu']['help']['acks']
+
+        settings['browse_category'] = self.combo_box_browse_category.currentText()
+
+        if settings['browse_category'] == self.tr('General'):
             acks = self.acks_general
-        elif self.combo_box_browse_category.currentText() == self.tr('Natural Language Processing'):
+        elif settings['browse_category'] == self.tr('Natural Language Processing'):
             acks = self.acks_nlp
-        elif self.combo_box_browse_category.currentText() == self.tr('Plotting'):
+        elif settings['browse_category'] == self.tr('Plotting'):
             acks = self.acks_plotting
-        elif self.combo_box_browse_category.currentText() == self.tr('Miscellaneous'):
+        elif settings['browse_category'] == self.tr('Miscellaneous'):
             acks = self.acks_misc
-        elif self.combo_box_browse_category.currentText() == self.tr('Data'):
+        elif settings['browse_category'] == self.tr('Data'):
             acks = self.acks_data
 
         self.table_acks.clear_table()
