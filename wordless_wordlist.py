@@ -327,18 +327,18 @@ def init(main):
         label_dispersion.setText(f'{col_text_dispersion}:')
         label_adjusted_freq.setText(f'{col_text_adjusted_freq}:')
 
-    tab_wordlist = wordless_layout.Wordless_Tab(main, load_settings)
+    wrapper_wordlist = wordless_layout.Wordless_Wrapper(main, load_settings)
 
     table_wordlist = Wordless_Table_Wordlist(main)
 
-    tab_wordlist.layout_table.addWidget(table_wordlist.label_number_results, 0, 0)
-    tab_wordlist.layout_table.addWidget(table_wordlist.button_search_results, 0, 4)
-    tab_wordlist.layout_table.addWidget(table_wordlist, 1, 0, 1, 5)
-    tab_wordlist.layout_table.addWidget(table_wordlist.button_generate_table, 2, 0)
-    tab_wordlist.layout_table.addWidget(table_wordlist.button_generate_plot, 2, 1)
-    tab_wordlist.layout_table.addWidget(table_wordlist.button_export_selected, 2, 2)
-    tab_wordlist.layout_table.addWidget(table_wordlist.button_export_all, 2, 3)
-    tab_wordlist.layout_table.addWidget(table_wordlist.button_clear, 2, 4)
+    wrapper_wordlist.layout_table.addWidget(table_wordlist.label_number_results, 0, 0)
+    wrapper_wordlist.layout_table.addWidget(table_wordlist.button_search_results, 0, 4)
+    wrapper_wordlist.layout_table.addWidget(table_wordlist, 1, 0, 1, 5)
+    wrapper_wordlist.layout_table.addWidget(table_wordlist.button_generate_table, 2, 0)
+    wrapper_wordlist.layout_table.addWidget(table_wordlist.button_generate_plot, 2, 1)
+    wrapper_wordlist.layout_table.addWidget(table_wordlist.button_export_selected, 2, 2)
+    wrapper_wordlist.layout_table.addWidget(table_wordlist.button_export_all, 2, 3)
+    wrapper_wordlist.layout_table.addWidget(table_wordlist.button_clear, 2, 4)
 
     # Token Settings
     group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
@@ -652,17 +652,17 @@ def init(main):
 
     group_box_filter_settings.layout().setColumnStretch(1, 1)
 
-    tab_wordlist.layout_settings.addWidget(group_box_token_settings, 0, 0)
-    tab_wordlist.layout_settings.addWidget(group_box_generation_settings, 1, 0)
-    tab_wordlist.layout_settings.addWidget(group_box_table_settings, 2, 0)
-    tab_wordlist.layout_settings.addWidget(group_box_plot_settings, 3, 0)
-    tab_wordlist.layout_settings.addWidget(group_box_filter_settings, 4, 0)
+    wrapper_wordlist.layout_settings.addWidget(group_box_token_settings, 0, 0)
+    wrapper_wordlist.layout_settings.addWidget(group_box_generation_settings, 1, 0)
+    wrapper_wordlist.layout_settings.addWidget(group_box_table_settings, 2, 0)
+    wrapper_wordlist.layout_settings.addWidget(group_box_plot_settings, 3, 0)
+    wrapper_wordlist.layout_settings.addWidget(group_box_filter_settings, 4, 0)
 
-    tab_wordlist.layout_settings.setRowStretch(5, 1)
+    wrapper_wordlist.layout_settings.setRowStretch(5, 1)
 
     load_settings()
 
-    return tab_wordlist
+    return wrapper_wordlist
 
 def generate_wordlists(main, files):
     texts = []

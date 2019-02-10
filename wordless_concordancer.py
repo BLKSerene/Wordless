@@ -566,18 +566,18 @@ def init(main):
 
         settings['sorting_rules'] = table_concordancer_sorting.get_sorting_rules()
 
-    tab_concordancer = wordless_layout.Wordless_Tab(main, load_settings)
+    wrapper_concordancer = wordless_layout.Wordless_Wrapper(main, load_settings)
 
     table_concordancer = Wordless_Table_Concordancer(main)
 
-    tab_concordancer.layout_table.addWidget(table_concordancer.label_number_results, 0, 0)
-    tab_concordancer.layout_table.addWidget(table_concordancer.button_search_results, 0, 4)
-    tab_concordancer.layout_table.addWidget(table_concordancer, 1, 0, 1, 5)
-    tab_concordancer.layout_table.addWidget(table_concordancer.button_generate_table, 2, 0)
-    tab_concordancer.layout_table.addWidget(table_concordancer.button_generate_plot, 2, 1)
-    tab_concordancer.layout_table.addWidget(table_concordancer.button_export_selected, 2, 2)
-    tab_concordancer.layout_table.addWidget(table_concordancer.button_export_all, 2, 3)
-    tab_concordancer.layout_table.addWidget(table_concordancer.button_clear, 2, 4)
+    wrapper_concordancer.layout_table.addWidget(table_concordancer.label_number_results, 0, 0)
+    wrapper_concordancer.layout_table.addWidget(table_concordancer.button_search_results, 0, 4)
+    wrapper_concordancer.layout_table.addWidget(table_concordancer, 1, 0, 1, 5)
+    wrapper_concordancer.layout_table.addWidget(table_concordancer.button_generate_table, 2, 0)
+    wrapper_concordancer.layout_table.addWidget(table_concordancer.button_generate_plot, 2, 1)
+    wrapper_concordancer.layout_table.addWidget(table_concordancer.button_export_selected, 2, 2)
+    wrapper_concordancer.layout_table.addWidget(table_concordancer.button_export_all, 2, 3)
+    wrapper_concordancer.layout_table.addWidget(table_concordancer.button_clear, 2, 4)
 
     # Token Settings
     group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
@@ -808,18 +808,18 @@ def init(main):
     group_box_sorting_settings.layout().addWidget(table_concordancer_sorting.button_clear, 2, 1)
     group_box_sorting_settings.layout().addWidget(table_concordancer_sorting.button_sort_results, 3, 0, 1, 2)
 
-    tab_concordancer.layout_settings.addWidget(group_box_token_settings, 0, 0)
-    tab_concordancer.layout_settings.addWidget(group_box_search_settings, 1, 0)
-    tab_concordancer.layout_settings.addWidget(group_box_generation_settings, 2, 0)
-    tab_concordancer.layout_settings.addWidget(group_box_table_settings, 3, 0)
-    tab_concordancer.layout_settings.addWidget(group_box_plot_settings, 4, 0)
-    tab_concordancer.layout_settings.addWidget(group_box_sorting_settings, 5, 0)
+    wrapper_concordancer.layout_settings.addWidget(group_box_token_settings, 0, 0)
+    wrapper_concordancer.layout_settings.addWidget(group_box_search_settings, 1, 0)
+    wrapper_concordancer.layout_settings.addWidget(group_box_generation_settings, 2, 0)
+    wrapper_concordancer.layout_settings.addWidget(group_box_table_settings, 3, 0)
+    wrapper_concordancer.layout_settings.addWidget(group_box_plot_settings, 4, 0)
+    wrapper_concordancer.layout_settings.addWidget(group_box_sorting_settings, 5, 0)
 
-    tab_concordancer.layout_settings.setRowStretch(6, 1)
+    wrapper_concordancer.layout_settings.setRowStretch(6, 1)
 
     load_settings()
 
-    return tab_concordancer
+    return wrapper_concordancer
 
 @ wordless_misc.log_timing
 def generate_table(main, table):
