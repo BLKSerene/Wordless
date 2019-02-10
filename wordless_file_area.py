@@ -362,11 +362,11 @@ class Wordless_Files():
         len_files_new = len(self.main.settings_custom['files']['files_open'])
 
         if len_files_new - len_files_old == 0:
-            self.main.status_bar.showMessage('No files are newly opened!')
+            self.main.statusBar().showMessage('No files are newly opened!')
         elif len_files_new - len_files_old == 1:
-            self.main.status_bar.showMessage('1 file has been successfully opened.')
+            self.main.statusBar().showMessage('1 file has been successfully opened.')
         else:
-            self.main.status_bar.showMessage(f'{len_files_new - len_files_old} files have been successfully opened.')
+            self.main.statusBar().showMessage(f'{len_files_new - len_files_old} files have been successfully opened.')
 
     def remove_files(self, indexes):
         self.main.settings_custom['files']['files_closed'].append([])
@@ -486,16 +486,17 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
         self.button_close_all.clicked.connect(self.close_all)
 
         # Menu
-        self.main.menu_file_open_files.triggered.connect(self.open_files)
-        self.main.menu_file_open_dir.triggered.connect(self.open_dir)
-        self.main.menu_file_reopen.triggered.connect(self.reopen)
+        self.main.find_menu_item(self.tr('Open File(s)...')).triggered.connect(self.open_files)
+        self.main.find_menu_item(self.tr('Open Folder...')).triggered.connect(self.open_dir)
 
-        self.main.menu_file_select_all.triggered.connect(self.select_all)
-        self.main.menu_file_invert_selection.triggered.connect(self.invert_selection)
-        self.main.menu_file_deselect_all.triggered.connect(self.deselect_all)
+        self.main.find_menu_item(self.tr('Reopen Closed File(s)')).triggered.connect(self.reopen)
 
-        self.main.menu_file_close_selected.triggered.connect(self.close_selected)
-        self.main.menu_file_close_all.triggered.connect(self.close_all)
+        self.main.find_menu_item(self.tr('Select All')).triggered.connect(self.select_all)
+        self.main.find_menu_item(self.tr('Invert Selection')).triggered.connect(self.invert_selection)
+        self.main.find_menu_item(self.tr('Deselect All')).triggered.connect(self.deselect_all)
+
+        self.main.find_menu_item(self.tr('Close Selected')).triggered.connect(self.close_selected)
+        self.main.find_menu_item(self.tr('Close All')).triggered.connect(self.close_all)
 
         self.file_item_changed()
 
@@ -560,22 +561,22 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
 
         # Menu
         if any([self.item(0, i) for i in range(self.columnCount())]):
-            self.main.menu_file_select_all.setEnabled(True)
-            self.main.menu_file_invert_selection.setEnabled(True)
-            self.main.menu_file_deselect_all.setEnabled(True)
+            self.main.find_menu_item(self.tr('Select All')).setEnabled(True)
+            self.main.find_menu_item(self.tr('Invert Selection')).setEnabled(True)
+            self.main.find_menu_item(self.tr('Deselect All')).setEnabled(True)
 
-            self.main.menu_file_close_all.setEnabled(True)
+            self.main.find_menu_item(self.tr('Close All')).setEnabled(True)
         else:
-            self.main.menu_file_select_all.setEnabled(False)
-            self.main.menu_file_invert_selection.setEnabled(False)
-            self.main.menu_file_deselect_all.setEnabled(False)
+            self.main.find_menu_item(self.tr('Select All')).setEnabled(False)
+            self.main.find_menu_item(self.tr('Invert Selection')).setEnabled(False)
+            self.main.find_menu_item(self.tr('Deselect All')).setEnabled(False)
 
-            self.main.menu_file_close_all.setEnabled(False)
+            self.main.find_menu_item(self.tr('Close All')).setEnabled(False)
 
         if self.main.settings_custom['files']['files_closed']:
-            self.main.menu_file_reopen.setEnabled(True)
+            self.main.find_menu_item(self.tr('Reopen Closed File(s)')).setEnabled(True)
         else:
-            self.main.menu_file_reopen.setEnabled(False)
+            self.main.find_menu_item(self.tr('Reopen Closed File(s)')).setEnabled(False)
 
         if self.rowCount() == 0:
             self.setRowCount(1)
@@ -590,9 +591,9 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
 
         # Menu
         if any([self.item(0, i) for i in range(self.columnCount())]) and self.selectedIndexes():
-            self.main.menu_file_close_selected.setEnabled(True)
+            self.main.find_menu_item(self.tr('Close Selected')).setEnabled(True)
         else:
-            self.main.menu_file_close_selected.setEnabled(False)
+            self.main.find_menu_item(self.tr('Close Selected')).setEnabled(False)
 
     def cell_double_clicked(self, row, col):
         if col == self.find_col(self.tr('File Name')):
@@ -690,19 +691,19 @@ def init(main):
         settings['detect_langs'] = checkbox_detect_langs.isChecked()
         settings['detect_encodings'] = checkbox_detect_encodings.isChecked()
 
-    tab_files = wordless_layout.Wordless_Tab(main, load_settings)
+    wrapper_file_area = wordless_layout.Wordless_Wrapper(main, load_settings)
 
     table_files = Wordless_Table_Files(main)
 
-    tab_files.layout_table.addWidget(table_files, 0, 0, 1, 4)
-    tab_files.layout_table.addWidget(table_files.button_open_files, 1, 0)
-    tab_files.layout_table.addWidget(table_files.button_open_dir, 1, 1)
-    tab_files.layout_table.addWidget(table_files.button_reopen, 1, 2)
-    tab_files.layout_table.addWidget(table_files.button_select_all, 2, 0)
-    tab_files.layout_table.addWidget(table_files.button_invert_selection, 2, 1)
-    tab_files.layout_table.addWidget(table_files.button_deselect_all, 2, 2)
-    tab_files.layout_table.addWidget(table_files.button_close_selected, 1, 3)
-    tab_files.layout_table.addWidget(table_files.button_close_all, 2, 3)
+    wrapper_file_area.layout_table.addWidget(table_files, 0, 0, 1, 4)
+    wrapper_file_area.layout_table.addWidget(table_files.button_open_files, 1, 0)
+    wrapper_file_area.layout_table.addWidget(table_files.button_open_dir, 1, 1)
+    wrapper_file_area.layout_table.addWidget(table_files.button_reopen, 1, 2)
+    wrapper_file_area.layout_table.addWidget(table_files.button_select_all, 2, 0)
+    wrapper_file_area.layout_table.addWidget(table_files.button_invert_selection, 2, 1)
+    wrapper_file_area.layout_table.addWidget(table_files.button_deselect_all, 2, 2)
+    wrapper_file_area.layout_table.addWidget(table_files.button_close_selected, 1, 3)
+    wrapper_file_area.layout_table.addWidget(table_files.button_close_all, 2, 3)
 
     # Folder Settings
     group_box_folder_settings = QGroupBox(main.tr('Folder Settings'), main)
@@ -727,10 +728,10 @@ def init(main):
     group_box_auto_detection_settings.layout().addWidget(checkbox_detect_langs, 0, 0)
     group_box_auto_detection_settings.layout().addWidget(checkbox_detect_encodings, 1, 0)
 
-    tab_files.layout_settings.addWidget(group_box_folder_settings, 0, 0, Qt.AlignTop)
-    tab_files.layout_settings.addWidget(group_box_auto_detection_settings, 1, 0, Qt.AlignTop)
+    wrapper_file_area.layout_settings.addWidget(group_box_folder_settings, 0, 0, Qt.AlignTop)
+    wrapper_file_area.layout_settings.addWidget(group_box_auto_detection_settings, 1, 0, Qt.AlignTop)
 
-    tab_files.layout_settings.setRowStretch(2, 1)
+    wrapper_file_area.layout_settings.setRowStretch(2, 1)
 
     load_settings()
 
@@ -755,4 +756,4 @@ def init(main):
 
     main.wordless_files.update_table()
 
-    return tab_files
+    return wrapper_file_area

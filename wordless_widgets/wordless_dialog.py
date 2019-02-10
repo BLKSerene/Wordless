@@ -49,7 +49,7 @@ class Wordless_Dialog_Info(Wordless_Dialog):
         self.wrapper_info.setObjectName('wrapper-info')
         self.wrapper_info.setStyleSheet('''
             QWidget#wrapper-info {
-                border-bottom: 1px solid #BBB;
+                border-bottom: 1px solid #B0B0B0;
                 background-color: #FFF;
             }
         ''')
@@ -188,7 +188,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
 
         self.layout().addLayout(layout_buttons_bottom, 11, 0, 1, 4)
 
-        self.main.tabs.currentChanged.connect(self.accept)
+        self.main.tabs_work_area.currentChanged.connect(self.accept)
 
         self.load_settings()
 
@@ -374,11 +374,11 @@ class Wordless_Dialog_Search(Wordless_Dialog):
                 wordless_message_box.wordless_message_box_no_search_results(self.main)
 
             if len(indexes_found) == 0:
-                self.main.status_bar.showMessage(self.tr('No items found.'))
+                self.main.statusBar().showMessage(self.tr('No items found.'))
             elif len(indexes_found) == 1:
-                self.main.status_bar.showMessage(self.tr('Found 1 item.'))
+                self.main.statusBar().showMessage(self.tr('Found 1 item.'))
             else:
-                self.main.status_bar.showMessage(self.tr(f'Found {len(indexes_found):,} items.'))
+                self.main.statusBar().showMessage(self.tr(f'Found {len(indexes_found):,} items.'))
         else:
             wordless_message_box.wordless_message_box_empty_search_term(self.main)
 

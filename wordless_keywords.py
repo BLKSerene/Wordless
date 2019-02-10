@@ -425,18 +425,18 @@ def init(main):
         
         combo_box_filter_file.removeItem(combo_box_filter_file.findText(ref_file))
 
-    tab_keywords = wordless_layout.Wordless_Tab(main, load_settings)
+    wrapper_keywords = wordless_layout.Wordless_Wrapper(main, load_settings)
     
     table_keywords = Wordless_Table_Keywords(main)
 
-    tab_keywords.layout_table.addWidget(table_keywords.label_number_results, 0, 0)
-    tab_keywords.layout_table.addWidget(table_keywords.button_search_results, 0, 4)
-    tab_keywords.layout_table.addWidget(table_keywords, 1, 0, 1, 5)
-    tab_keywords.layout_table.addWidget(table_keywords.button_generate_table, 2, 0)
-    tab_keywords.layout_table.addWidget(table_keywords.button_generate_plot, 2, 1)
-    tab_keywords.layout_table.addWidget(table_keywords.button_export_selected, 2, 2)
-    tab_keywords.layout_table.addWidget(table_keywords.button_export_all, 2, 3)
-    tab_keywords.layout_table.addWidget(table_keywords.button_clear, 2, 4)
+    wrapper_keywords.layout_table.addWidget(table_keywords.label_number_results, 0, 0)
+    wrapper_keywords.layout_table.addWidget(table_keywords.button_search_results, 0, 4)
+    wrapper_keywords.layout_table.addWidget(table_keywords, 1, 0, 1, 5)
+    wrapper_keywords.layout_table.addWidget(table_keywords.button_generate_table, 2, 0)
+    wrapper_keywords.layout_table.addWidget(table_keywords.button_generate_plot, 2, 1)
+    wrapper_keywords.layout_table.addWidget(table_keywords.button_export_selected, 2, 2)
+    wrapper_keywords.layout_table.addWidget(table_keywords.button_export_all, 2, 3)
+    wrapper_keywords.layout_table.addWidget(table_keywords.button_clear, 2, 4)
 
     # Token Settings
     group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
@@ -806,17 +806,17 @@ def init(main):
 
     group_box_filter_settings.layout().setColumnStretch(1, 1)
 
-    tab_keywords.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
-    tab_keywords.layout_settings.addWidget(group_box_generation_settings, 1, 0, Qt.AlignTop)
-    tab_keywords.layout_settings.addWidget(group_box_table_settings, 2, 0, Qt.AlignTop)
-    tab_keywords.layout_settings.addWidget(group_box_plot_settings, 3, 0, Qt.AlignTop)
-    tab_keywords.layout_settings.addWidget(group_box_filter_settings, 4, 0, Qt.AlignTop)
+    wrapper_keywords.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
+    wrapper_keywords.layout_settings.addWidget(group_box_generation_settings, 1, 0, Qt.AlignTop)
+    wrapper_keywords.layout_settings.addWidget(group_box_table_settings, 2, 0, Qt.AlignTop)
+    wrapper_keywords.layout_settings.addWidget(group_box_plot_settings, 3, 0, Qt.AlignTop)
+    wrapper_keywords.layout_settings.addWidget(group_box_filter_settings, 4, 0, Qt.AlignTop)
 
-    tab_keywords.layout_settings.setRowStretch(5, 1)
+    wrapper_keywords.layout_settings.setRowStretch(5, 1)
 
     load_settings()
 
-    return tab_keywords
+    return wrapper_keywords
 
 def generate_keywords(main, files, ref_file):
     texts = []

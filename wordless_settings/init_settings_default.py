@@ -15,7 +15,20 @@ from wordless_tagsets import *
 
 def init_settings_default(main):
     main.settings_default = {
-        'tab_cur': main.tr('Overview'),
+        'work_area_cur': main.tr('Overview'),
+
+        'layouts': {
+            'central_widget': [main.height() - 250, 250],
+
+            'file_area': [main.width() - 320, 320],
+            'overview': [main.width() - 320, 320],
+            'concordancer': [main.width() - 320, 320],
+            'wordlist': [main.width() - 320, 320],
+            'ngrams': [main.width() - 320, 320],
+            'collocation': [main.width() - 320, 320],
+            'colligation': [main.width() - 320, 320],
+            'keywords': [main.width() - 320, 320]
+        },
 
         'files': {
             'files_open': [],
@@ -901,6 +914,26 @@ def init_settings_default(main):
                 'ignore_tags_type': main.tr('All'),
                 'ignore_tags_type_match_tags': main.tr('Non-POS'),
                 'match_tags': False
+            }
+        },
+
+        'menu': {
+            'prefs': {
+                'show_status_bar': True
+            },
+
+            'help': {
+                'citing': {
+                    'citation_sys': main.tr('MLA (8th Edition)')
+                },
+
+                'acks': {
+                    'browse_category': main.tr('Natural Language Processing')
+                },
+
+                'donating': {
+                    'donating_via': main.tr('PayPal')
+                }
             }
         },
 

@@ -1,5 +1,5 @@
 #
-# Wordless: Colligation
+# Wordless: Collocation
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊))
 #
@@ -20,13 +20,14 @@ from PyQt5.QtWidgets import *
 import nltk
 import numpy
 
+from wordless_checking import *
 from wordless_measures import *
 from wordless_plot import *
 from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
 
-class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
+class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
     def __init__(self, main):
         super().__init__(main,
                          headers = [
@@ -44,11 +45,8 @@ class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
                          ],
                          sorting_enabled = True)
 
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self.main)
-        self.button_generate_plot = QPushButton(self.tr('Generate Plot'), self.main)
-
         dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
-                                                               tab = 'colligation',
+                                                               tab = 'collocation',
                                                                table = self,
                                                                cols_search = [
                                                                    self.tr('Nodes'),
@@ -57,11 +55,14 @@ class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
 
         self.button_search_results.clicked.connect(dialog_search.load)
 
+        self.button_generate_table = QPushButton(main.tr('Generate Table'), main)
+        self.button_generate_plot = QPushButton(main.tr('Generate Plot'), main)
+
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_plot.clicked.connect(lambda: generate_plot(self.main))
 
     def toggle_breakdown(self):
-        settings = self.main.settings_custom['colligation']['table_settings']
+        settings = self.main.settings_custom['collocation']['table_settings']
 
         self.setUpdatesEnabled(False)
 
@@ -208,27 +209,33 @@ class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
 def init(main):
     def load_settings(defaults = False):
         if defaults:
-            settings = copy.deepcopy(main.settings_default['colligation'])
+            settings = copy.deepcopy(main.settings_default['collocation'])
         else:
-            settings = copy.deepcopy(main.settings_custom['colligation'])
+            settings = copy.deepcopy(main.settings_custom['collocation'])
 
         # Token Settings
         checkbox_words.setChecked(settings['token_settings']['words'])
         checkbox_lowercase.setChecked(settings['token_settings']['lowercase'])
         checkbox_uppercase.setChecked(settings['token_settings']['uppercase'])
         checkbox_title_case.setChecked(settings['token_settings']['title_case'])
+        checkbox_nums.setChecked(settings['token_settings']['nums'])
+        checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+
         checkbox_treat_as_lowercase.setChecked(settings['token_settings']['treat_as_lowercase'])
         checkbox_lemmatize.setChecked(settings['token_settings']['lemmatize'])
         checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
-        checkbox_nums.setChecked(settings['token_settings']['nums'])
-        checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+        checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        checkbox_ignore_tags_tags_only.setChecked(settings['token_settings']['ignore_tags_tags_only'])
+        combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
+        combo_box_ignore_tags_tags_only.setCurrentText(settings['token_settings']['ignore_tags_type_tags_only'])
+        checkbox_tags_only.setChecked(settings['token_settings']['tags_only'])
 
         # Search Settings
         group_box_search_settings.setChecked(settings['search_settings']['search_settings'])
 
         checkbox_multi_search_mode.setChecked(settings['search_settings']['multi_search_mode'])
-
+        
         if not defaults:
             line_edit_search_term.setText(settings['search_settings']['search_term'])
 
@@ -240,12 +247,17 @@ def init(main):
         checkbox_match_whole_word.setChecked(settings['search_settings']['match_whole_word'])
         checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
 
+        checkbox_ignore_tags_search.setChecked(settings['search_settings']['ignore_tags'])
+        checkbox_ignore_tags_search_match_tags.setChecked(settings['search_settings']['ignore_tags_match_tags'])
+        combo_box_ignore_tags_search.setCurrentText(settings['search_settings']['ignore_tags_type'])
+        combo_box_ignore_tags_search_match_tags.setCurrentText(settings['search_settings']['ignore_tags_type_match_tags'])
+        checkbox_match_tags.setChecked(settings['search_settings']['match_tags'])
+
         # Context Settings
         if defaults:
-            main.wordless_context_settings_colligation.load_settings(defaults = True)
+            main.wordless_context_settings_collocation.load_settings(defaults = True)
 
         # Generation Settings
-        combo_box_node_type.setCurrentText(settings['generation_settings']['node_type'])
         checkbox_window_sync.setChecked(settings['generation_settings']['window_sync'])
 
         if settings['generation_settings']['window_left'] < 0:
@@ -325,27 +337,35 @@ def init(main):
         token_settings_changed()
         search_settings_changed()
         generation_settings_changed()
-        measures_changed()
         table_settings_changed()
         plot_settings_changed()
         filter_settings_changed()
 
     def token_settings_changed():
-        settings = main.settings_custom['colligation']['token_settings']
+        settings = main.settings_custom['collocation']['token_settings']
 
         settings['words'] = checkbox_words.isChecked()
         settings['lowercase'] = checkbox_lowercase.isChecked()
         settings['uppercase'] = checkbox_uppercase.isChecked()
         settings['title_case'] = checkbox_title_case.isChecked()
+        settings['nums'] = checkbox_nums.isChecked()
+        settings['puncs'] = checkbox_puncs.isChecked()
+
         settings['treat_as_lowercase'] = checkbox_treat_as_lowercase.isChecked()
         settings['lemmatize'] = checkbox_lemmatize.isChecked()
         settings['filter_stop_words'] = checkbox_filter_stop_words.isChecked()
 
-        settings['nums'] = checkbox_nums.isChecked()
-        settings['puncs'] = checkbox_puncs.isChecked()
+        settings['ignore_tags'] = checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_tags_only'] = checkbox_ignore_tags_tags_only.isChecked()
+        settings['ignore_tags_type'] = combo_box_ignore_tags.currentText()
+        settings['ignore_tags_type_tags_only'] = combo_box_ignore_tags_tags_only.currentText()
+        settings['tags_only'] = checkbox_tags_only.isChecked()
+
+        checkbox_match_tags.token_settings_changed()
+        main.wordless_context_settings_collocation.token_settings_changed()
 
     def search_settings_changed():
-        settings = main.settings_custom['colligation']['search_settings']
+        settings = main.settings_custom['collocation']['search_settings']
 
         settings['search_settings'] = group_box_search_settings.isChecked()
 
@@ -358,17 +378,25 @@ def init(main):
         settings['match_whole_word'] = checkbox_match_whole_word.isChecked()
         settings['use_regex'] = checkbox_use_regex.isChecked()
 
-    def generation_settings_changed():
-        settings = main.settings_custom['colligation']['generation_settings']
+        settings['ignore_tags'] = checkbox_ignore_tags_search.isChecked()
+        settings['ignore_tags_match_tags'] = checkbox_ignore_tags_search_match_tags.isChecked()
+        settings['ignore_tags_type'] = combo_box_ignore_tags_search.currentText()
+        settings['ignore_tags_type_match_tags'] = combo_box_ignore_tags_search_match_tags.currentText()
+        settings['match_tags'] = checkbox_match_tags.isChecked()
 
-        settings['node_type'] = combo_box_node_type.currentText()
+        if settings['search_settings']:
+            checkbox_match_tags.token_settings_changed()
+
+    def generation_settings_changed():
+        settings = main.settings_custom['collocation']['generation_settings']
+
         settings['window_sync'] = checkbox_window_sync.isChecked()
 
         if spin_box_window_left.prefix() == 'L':
             settings['window_left'] = -spin_box_window_left.value()
         else:
             settings['window_left'] = spin_box_window_left.value()
-            
+
         if spin_box_window_right.prefix() == 'L':
             settings['window_right'] = -spin_box_window_right.value()
         else:
@@ -377,18 +405,8 @@ def init(main):
         settings['test_significance'] = combo_box_test_significance.currentText()
         settings['measure_effect_size'] = combo_box_measure_effect_size.currentText()
 
-        # Match Inflected Forms
-        if main.settings_custom['colligation']['search_settings']['search_settings']:
-            if settings['node_type'] == main.tr('Token'):
-                checkbox_match_inflected_forms.setEnabled(True)
-            else:
-                checkbox_match_inflected_forms.setEnabled(False)
-
-    def measures_changed():
-        settings = main.settings_custom['colligation']['generation_settings']
-
         # Use Data
-        use_data_old = main.settings_custom['colligation']['plot_settings']['use_data']
+        use_data_old = main.settings_custom['collocation']['plot_settings']['use_data']
 
         text_test_significance = settings['test_significance']
         text_measure_effect_size = settings['measure_effect_size']
@@ -402,7 +420,6 @@ def init(main):
                 combo_box_use_data.addItem(main.tr(f'R{i}'))
 
         combo_box_use_data.addItem(main.tr('Frequency'))
-
         combo_box_use_data.addItems([col
                                      for col in main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
                                      if col])
@@ -411,10 +428,10 @@ def init(main):
         if combo_box_use_data.findText(use_data_old) > -1:
             combo_box_use_data.setCurrentText(use_data_old)
         else:
-            combo_box_use_data.setCurrentText(main.settings_default['colligation']['plot_settings']['use_data'])
+            combo_box_use_data.setCurrentText(main.settings_default['collocation']['plot_settings']['use_data'])
 
     def table_settings_changed():
-        settings = main.settings_custom['colligation']['table_settings']
+        settings = main.settings_custom['collocation']['table_settings']
 
         settings['show_pct'] = checkbox_show_pct.isChecked()
         settings['show_cumulative'] = checkbox_show_cumulative.isChecked()
@@ -422,7 +439,7 @@ def init(main):
         settings['show_breakdown_file'] = checkbox_show_breakdown_file.isChecked()
 
     def plot_settings_changed():
-        settings = main.settings_custom['colligation']['plot_settings']
+        settings = main.settings_custom['collocation']['plot_settings']
 
         settings['plot_type'] = combo_box_plot_type.currentText()
         settings['use_file'] = combo_box_use_file.currentText()
@@ -477,7 +494,7 @@ def init(main):
         settings['filter_file'] = combo_box_filter_file.currentText()
 
     def table_item_changed():
-        settings = table_colligation.settings['colligation']
+        settings = table_collocation.settings['collocation']
 
         # Filter Data (Frequency)
         freq_filter_data_old = settings['filter_settings']['freq_filter_data']
@@ -495,7 +512,7 @@ def init(main):
         if combo_box_freq_filter_data.findText(freq_filter_data_old) > -1:
             combo_box_freq_filter_data.setCurrentText(freq_filter_data_old)
         else:
-            combo_box_freq_filter_data.setCurrentText(main.settings_default['colligation']['filter_settings']['freq_filter_data'])
+            combo_box_freq_filter_data.setCurrentText(main.settings_default['collocation']['filter_settings']['freq_filter_data'])
 
         # Filters
         text_test_significance = settings['generation_settings']['test_significance']
@@ -540,18 +557,18 @@ def init(main):
 
         label_effect_size.setText(f'{col_text_effect_size}:')
 
-    tab_colligation = wordless_layout.Wordless_Tab(main, load_settings)
+    wrapper_collocation = wordless_layout.Wordless_Wrapper(main, load_settings)
     
-    table_colligation = Wordless_Table_Colligation(main)
+    table_collocation = Wordless_Table_Collocation(main)
 
-    tab_colligation.layout_table.addWidget(table_colligation.label_number_results, 0, 0)
-    tab_colligation.layout_table.addWidget(table_colligation.button_search_results, 0, 4)
-    tab_colligation.layout_table.addWidget(table_colligation, 1, 0, 1, 5)
-    tab_colligation.layout_table.addWidget(table_colligation.button_generate_table, 2, 0)
-    tab_colligation.layout_table.addWidget(table_colligation.button_generate_plot, 2, 1)
-    tab_colligation.layout_table.addWidget(table_colligation.button_export_selected, 2, 2)
-    tab_colligation.layout_table.addWidget(table_colligation.button_export_all, 2, 3)
-    tab_colligation.layout_table.addWidget(table_colligation.button_clear, 2, 4)
+    wrapper_collocation.layout_table.addWidget(table_collocation.label_number_results, 0, 0)
+    wrapper_collocation.layout_table.addWidget(table_collocation.button_search_results, 0, 4)
+    wrapper_collocation.layout_table.addWidget(table_collocation, 1, 0, 1, 5)
+    wrapper_collocation.layout_table.addWidget(table_collocation.button_generate_table, 2, 0)
+    wrapper_collocation.layout_table.addWidget(table_collocation.button_generate_plot, 2, 1)
+    wrapper_collocation.layout_table.addWidget(table_collocation.button_export_selected, 2, 2)
+    wrapper_collocation.layout_table.addWidget(table_collocation.button_export_all, 2, 3)
+    wrapper_collocation.layout_table.addWidget(table_collocation.button_clear, 2, 4)
 
     # Token Settings
     group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
@@ -560,12 +577,12 @@ def init(main):
      checkbox_lowercase,
      checkbox_uppercase,
      checkbox_title_case,
+     checkbox_nums,
+     checkbox_puncs,
+
      checkbox_treat_as_lowercase,
      checkbox_lemmatize,
      checkbox_filter_stop_words,
-
-     checkbox_nums,
-     checkbox_puncs,
 
      checkbox_ignore_tags,
      checkbox_ignore_tags_tags_only,
@@ -578,12 +595,18 @@ def init(main):
     checkbox_lowercase.stateChanged.connect(token_settings_changed)
     checkbox_uppercase.stateChanged.connect(token_settings_changed)
     checkbox_title_case.stateChanged.connect(token_settings_changed)
+    checkbox_nums.stateChanged.connect(token_settings_changed)
+    checkbox_puncs.stateChanged.connect(token_settings_changed)
+
     checkbox_treat_as_lowercase.stateChanged.connect(token_settings_changed)
     checkbox_lemmatize.stateChanged.connect(token_settings_changed)
     checkbox_filter_stop_words.stateChanged.connect(token_settings_changed)
 
-    checkbox_nums.stateChanged.connect(token_settings_changed)
-    checkbox_puncs.stateChanged.connect(token_settings_changed)
+    checkbox_ignore_tags.stateChanged.connect(token_settings_changed)
+    checkbox_ignore_tags_tags_only.stateChanged.connect(token_settings_changed)
+    combo_box_ignore_tags.currentTextChanged.connect(token_settings_changed)
+    combo_box_ignore_tags_tags_only.currentTextChanged.connect(token_settings_changed)
+    checkbox_tags_only.stateChanged.connect(token_settings_changed)
 
     layout_ignore_tags = QGridLayout()
     layout_ignore_tags.addWidget(checkbox_ignore_tags, 0, 0)
@@ -599,17 +622,19 @@ def init(main):
     group_box_token_settings.layout().addWidget(checkbox_lowercase, 0, 1)
     group_box_token_settings.layout().addWidget(checkbox_uppercase, 1, 0)
     group_box_token_settings.layout().addWidget(checkbox_title_case, 1, 1)
-    group_box_token_settings.layout().addWidget(checkbox_treat_as_lowercase, 2, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_lemmatize, 3, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_filter_stop_words, 4, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_nums, 2, 0)
+    group_box_token_settings.layout().addWidget(checkbox_puncs, 2, 1)
 
-    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 5, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 3, 0, 1, 2)
 
-    group_box_token_settings.layout().addWidget(checkbox_nums, 6, 0)
-    group_box_token_settings.layout().addWidget(checkbox_puncs, 6, 1)
+    group_box_token_settings.layout().addWidget(checkbox_treat_as_lowercase, 4, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_lemmatize, 5, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_filter_stop_words, 6, 0, 1, 2)
 
-    group_box_token_settings.layout().addLayout(layout_ignore_tags, 9, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_tags_only, 10, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0, 1, 2)
+
+    group_box_token_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
+    group_box_token_settings.layout().addWidget(checkbox_tags_only, 9, 0, 1, 2)
 
     # Search Settings
     group_box_search_settings = QGroupBox(main.tr('Search Settings'), main)
@@ -618,11 +643,22 @@ def init(main):
      checkbox_multi_search_mode,
      line_edit_search_term,
      list_search_terms,
+     label_separator,
 
      checkbox_ignore_case,
      checkbox_match_inflected_forms,
      checkbox_match_whole_word,
-     checkbox_use_regex) = wordless_widgets.wordless_widgets_search_settings1(main)
+     checkbox_use_regex,
+
+     checkbox_ignore_tags_search,
+     checkbox_ignore_tags_search_match_tags,
+     combo_box_ignore_tags_search,
+     combo_box_ignore_tags_search_match_tags,
+     label_ignore_tags_search,
+     checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(main, tab = 'collocation')
+
+    (label_context_settings,
+     button_context_settings) = wordless_widgets.wordless_widgets_context_settings(main, tab = 'collocation')
 
     group_box_search_settings.setCheckable(True)
 
@@ -630,7 +666,7 @@ def init(main):
 
     checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
     line_edit_search_term.textChanged.connect(search_settings_changed)
-    line_edit_search_term.returnPressed.connect(table_colligation.button_generate_table.click)
+    line_edit_search_term.returnPressed.connect(table_collocation.button_generate_table.click)
     list_search_terms.itemChanged.connect(search_settings_changed)
 
     checkbox_ignore_case.stateChanged.connect(search_settings_changed)
@@ -638,11 +674,11 @@ def init(main):
     checkbox_match_whole_word.stateChanged.connect(search_settings_changed)
     checkbox_use_regex.stateChanged.connect(search_settings_changed)
 
-    (label_context_settings,
-     button_context_settings) = wordless_widgets.wordless_widgets_context_settings1(main, tab = 'colligation')
-
-    # main.wordless_context_settings_colligation.checkbox_inclusion_match_inflected_forms.setEnabled(False)
-    # main.wordless_context_settings_colligation.checkbox_exclusion_match_inflected_forms.setEnabled(False)
+    checkbox_ignore_tags_search.stateChanged.connect(search_settings_changed)
+    checkbox_ignore_tags_search_match_tags.stateChanged.connect(search_settings_changed)
+    combo_box_ignore_tags_search.currentTextChanged.connect(search_settings_changed)
+    combo_box_ignore_tags_search_match_tags.currentTextChanged.connect(search_settings_changed)
+    checkbox_match_tags.stateChanged.connect(search_settings_changed)
 
     layout_search_terms = QGridLayout()
     layout_search_terms.addWidget(list_search_terms, 0, 0, 5, 1)
@@ -651,6 +687,15 @@ def init(main):
     layout_search_terms.addWidget(list_search_terms.button_clear, 2, 1)
     layout_search_terms.addWidget(list_search_terms.button_import, 3, 1)
     layout_search_terms.addWidget(list_search_terms.button_export, 4, 1)
+
+    layout_ignore_tags_search = QGridLayout()
+    layout_ignore_tags_search.addWidget(checkbox_ignore_tags_search, 0, 0)
+    layout_ignore_tags_search.addWidget(checkbox_ignore_tags_search_match_tags, 0, 0)
+    layout_ignore_tags_search.addWidget(combo_box_ignore_tags_search, 0, 1)
+    layout_ignore_tags_search.addWidget(combo_box_ignore_tags_search_match_tags, 0, 1)
+    layout_ignore_tags_search.addWidget(label_ignore_tags_search, 0, 2)
+
+    layout_ignore_tags_search.setColumnStretch(3, 1)
 
     layout_context_settings = QGridLayout()
     layout_context_settings.addWidget(label_context_settings, 0, 0)
@@ -663,21 +708,22 @@ def init(main):
     group_box_search_settings.layout().addWidget(checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
     group_box_search_settings.layout().addWidget(line_edit_search_term, 1, 0, 1, 2)
     group_box_search_settings.layout().addLayout(layout_search_terms, 2, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(label_separator, 3, 0, 1, 2)
 
-    group_box_search_settings.layout().addWidget(checkbox_ignore_case, 3, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_match_inflected_forms, 4, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 5, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_use_regex, 6, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_ignore_case, 4, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_match_inflected_forms, 5, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 6, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_use_regex, 7, 0, 1, 2)
 
-    group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0, 1, 2)
+    group_box_search_settings.layout().addLayout(layout_ignore_tags_search, 8, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(checkbox_match_tags, 9, 0, 1, 2)
 
-    group_box_search_settings.layout().addLayout(layout_context_settings, 8, 0, 1, 2)
+    group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 10, 0, 1, 2)
+
+    group_box_search_settings.layout().addLayout(layout_context_settings, 11, 0, 1, 2)
 
     # Generation Settings
     group_box_generation_settings = QGroupBox(main.tr('Generation Settings'))
-
-    label_node_type = QLabel(main.tr('Node Type:'), main)
-    combo_box_node_type = wordless_box.Wordless_Combo_Box(main)
 
     label_window = QLabel(main.tr('Collocational Window:'), main)
     (checkbox_window_sync,
@@ -695,28 +741,15 @@ def init(main):
      button_settings_measures) = wordless_widgets.wordless_widgets_settings_measures(main,
                                                                                      tab = main.tr('Statistical Significance'))
 
-    combo_box_node_type.addItems([
-        main.tr('Token'),
-        main.tr('Part of Speech')
-    ])
     combo_box_test_significance.addItems(list(main.settings_global['tests_significance']['collocation'].keys()))
     combo_box_measure_effect_size.addItems(list(main.settings_global['measures_effect_size']['collocation'].keys()))
 
-    combo_box_node_type.currentTextChanged.connect(generation_settings_changed)
     checkbox_window_sync.stateChanged.connect(generation_settings_changed)
     spin_box_window_left.valueChanged.connect(generation_settings_changed)
     spin_box_window_right.valueChanged.connect(generation_settings_changed)
 
     combo_box_test_significance.currentTextChanged.connect(generation_settings_changed)
-    combo_box_test_significance.currentTextChanged.connect(measures_changed)
     combo_box_measure_effect_size.currentTextChanged.connect(generation_settings_changed)
-    combo_box_measure_effect_size.currentTextChanged.connect(measures_changed)
-
-    layout_node_type = QGridLayout()
-    layout_node_type.addWidget(label_node_type, 0, 0)
-    layout_node_type.addWidget(combo_box_node_type, 0, 1)
-
-    layout_node_type.setColumnStretch(1, 1)
 
     layout_settings_measures = QGridLayout()
     layout_settings_measures.addWidget(label_settings_measures, 0, 0)
@@ -725,24 +758,23 @@ def init(main):
     layout_settings_measures.setColumnStretch(1, 1)
 
     group_box_generation_settings.setLayout(QGridLayout())
-    group_box_generation_settings.layout().addLayout(layout_node_type, 0, 0, 1, 4)
-    group_box_generation_settings.layout().addWidget(label_window, 1, 0, 1, 3)
-    group_box_generation_settings.layout().addWidget(checkbox_window_sync, 1, 3, Qt.AlignRight)
-    group_box_generation_settings.layout().addWidget(label_window_left, 2, 0)
-    group_box_generation_settings.layout().addWidget(spin_box_window_left, 2, 1)
-    group_box_generation_settings.layout().addWidget(label_window_right, 2, 2)
-    group_box_generation_settings.layout().addWidget(spin_box_window_right, 2, 3)
+    group_box_generation_settings.layout().addWidget(label_window, 0, 0, 1, 3)
+    group_box_generation_settings.layout().addWidget(checkbox_window_sync, 0, 3, Qt.AlignRight)
+    group_box_generation_settings.layout().addWidget(label_window_left, 1, 0)
+    group_box_generation_settings.layout().addWidget(spin_box_window_left, 1, 1)
+    group_box_generation_settings.layout().addWidget(label_window_right, 1, 2)
+    group_box_generation_settings.layout().addWidget(spin_box_window_right, 1, 3)
 
-    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 3, 0, 1, 4)
+    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 2, 0, 1, 4)
 
-    group_box_generation_settings.layout().addWidget(label_test_significance, 4, 0, 1, 4)
-    group_box_generation_settings.layout().addWidget(combo_box_test_significance, 5, 0, 1, 4)
-    group_box_generation_settings.layout().addWidget(label_measure_effect_size, 6, 0, 1, 4)
-    group_box_generation_settings.layout().addWidget(combo_box_measure_effect_size, 7, 0, 1, 4)
+    group_box_generation_settings.layout().addWidget(label_test_significance, 3, 0, 1, 4)
+    group_box_generation_settings.layout().addWidget(combo_box_test_significance, 4, 0, 1, 4)
+    group_box_generation_settings.layout().addWidget(label_measure_effect_size, 5, 0, 1, 4)
+    group_box_generation_settings.layout().addWidget(combo_box_measure_effect_size, 6, 0, 1, 4)
 
-    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 8, 0, 1, 4)
+    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0, 1, 4)
 
-    group_box_generation_settings.layout().addLayout(layout_settings_measures, 9, 0, 1, 4)
+    group_box_generation_settings.layout().addLayout(layout_settings_measures, 8, 0, 1, 4)
 
     group_box_generation_settings.layout().setColumnStretch(1, 1)
     group_box_generation_settings.layout().setColumnStretch(3, 1)
@@ -752,7 +784,7 @@ def init(main):
 
     (checkbox_show_pct,
      checkbox_show_cumulative,
-     checkbox_show_breakdown_file) = wordless_widgets.wordless_widgets_table_settings(main, table_colligation)
+     checkbox_show_breakdown_file) = wordless_widgets.wordless_widgets_table_settings(main, table_collocation)
 
     checkbox_show_breakdown_file.setText(main.tr('Show Breakdown by File'))
     checkbox_show_breakdown_position = QCheckBox(main.tr('Show Breakdown by Span Position'), main)
@@ -760,9 +792,9 @@ def init(main):
     checkbox_show_pct.stateChanged.connect(table_settings_changed)
     checkbox_show_cumulative.stateChanged.connect(table_settings_changed)
     checkbox_show_breakdown_position.stateChanged.connect(table_settings_changed)
-    checkbox_show_breakdown_position.stateChanged.connect(table_colligation.toggle_breakdown)
+    checkbox_show_breakdown_position.stateChanged.connect(table_collocation.toggle_breakdown)
     checkbox_show_breakdown_file.stateChanged.connect(table_settings_changed)
-    checkbox_show_breakdown_file.stateChanged.connect(table_colligation.toggle_breakdown)
+    checkbox_show_breakdown_file.stateChanged.connect(table_collocation.toggle_breakdown)
 
     group_box_table_settings.setLayout(QGridLayout())
     group_box_table_settings.layout().addWidget(checkbox_show_pct, 0, 0)
@@ -892,7 +924,7 @@ def init(main):
 
     (label_filter_file,
      combo_box_filter_file,
-     button_filter_results) = wordless_widgets.wordless_widgets_filter_results(main, table_colligation)
+     button_filter_results) = wordless_widgets.wordless_widgets_filter_results(main, table_collocation)
 
     combo_box_freq_filter_data.addItem(main.tr('Total'))
 
@@ -934,7 +966,7 @@ def init(main):
 
     combo_box_filter_file.currentTextChanged.connect(filter_settings_changed)
 
-    table_colligation.itemChanged.connect(table_item_changed)
+    table_collocation.itemChanged.connect(table_item_changed)
 
     layout_freq_filter_data = QGridLayout()
     layout_freq_filter_data.addWidget(label_freq_filter_data, 0, 0)
@@ -1025,28 +1057,27 @@ def init(main):
 
     group_box_filter_settings.layout().setColumnStretch(1, 1)
 
-    tab_colligation.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
-    tab_colligation.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
-    tab_colligation.layout_settings.addWidget(group_box_generation_settings, 2, 0, Qt.AlignTop)
-    tab_colligation.layout_settings.addWidget(group_box_table_settings, 3, 0, Qt.AlignTop)
-    tab_colligation.layout_settings.addWidget(group_box_plot_settings, 4, 0, Qt.AlignTop)
-    tab_colligation.layout_settings.addWidget(group_box_filter_settings, 5, 0, Qt.AlignTop)
+    wrapper_collocation.layout_settings.addWidget(group_box_token_settings, 0, 0, Qt.AlignTop)
+    wrapper_collocation.layout_settings.addWidget(group_box_search_settings, 1, 0, Qt.AlignTop)
+    wrapper_collocation.layout_settings.addWidget(group_box_generation_settings, 2, 0, Qt.AlignTop)
+    wrapper_collocation.layout_settings.addWidget(group_box_table_settings, 3, 0, Qt.AlignTop)
+    wrapper_collocation.layout_settings.addWidget(group_box_plot_settings, 4, 0, Qt.AlignTop)
+    wrapper_collocation.layout_settings.addWidget(group_box_filter_settings, 5, 0, Qt.AlignTop)
 
-    tab_colligation.layout_settings.setRowStretch(6, 1)
+    wrapper_collocation.layout_settings.setRowStretch(6, 1)
 
     load_settings()
 
-    return tab_colligation
+    return wrapper_collocation
 
 def generate_collocates(main, files):
     texts = []
     ngrams_freq_files = []
-    tags_freq_files = []
     collocates_freqs_files = []
     collocates_stats_files = []
     nodes_text = {}
 
-    settings = main.settings_custom['colligation']
+    settings = main.settings_custom['collocation']
 
     if settings['generation_settings']['window_left'] < 0 and settings['generation_settings']['window_right'] > 0:
         window_size_left = abs(settings['generation_settings']['window_left'])
@@ -1063,32 +1094,24 @@ def generate_collocates(main, files):
     # Frequency
     for i, file in enumerate(files):
         collocates_freqs_file = {}
-        collocates_tokens = []
 
         text = wordless_text.Wordless_Text(main, file)
 
-        tokens_tagged = wordless_text_processing.wordless_pos_tag(main, '\n'.join(text.paras), text.lang_code)
+        tokens = wordless_token_processing.wordless_preprocess_tokens_ngrams(text,
+                                                                             token_settings = settings['token_settings'])
 
-        tokens_tagged = wordless_text_processing.wordless_preprocess_tokens_tagged(main, tokens_tagged,
-                                                                                   lang_code = text.lang_code,
-                                                                                   settings = settings['token_settings'])
-
-        tokens = list(numpy.array(tokens_tagged)[:, 0])
-        tags = list(numpy.array(tokens_tagged)[:, 1])
-
-        if settings['generation_settings']['node_type'] == main.tr('Token'):
-            text.tokens = copy.deepcopy(tokens)
-        else:
-            text.tokens = copy.deepcopy(tags)
-
-        search_terms = wordless_matching.match_search_terms(main, text.tokens,
-                                                            lang_code = text.lang_code,
-                                                            settings = settings['search_settings'])
+        search_terms = wordless_matching.match_search_terms(main, tokens,
+                                                            lang = text.lang,
+                                                            text_type = text.text_type,
+                                                            token_settings = settings['token_settings'],
+                                                            search_settings = settings['search_settings'])
 
         (search_terms_inclusion,
-         search_terms_exclusion) = wordless_matching.match_search_terms_context(main, tags,
-                                                                                lang_code = text.lang_code,
-                                                                                settings = settings['context_settings'])
+         search_terms_exclusion) = wordless_matching.match_search_terms_context(main, tokens,
+                                                                                lang = text.lang,
+                                                                                text_type = text.text_type,
+                                                                                token_settings = settings['token_settings'],
+                                                                                context_settings = settings['context_settings'])
 
         if search_terms:
             len_search_term_min = min([len(search_term) for search_term in search_terms])
@@ -1098,9 +1121,9 @@ def generate_collocates(main, files):
             len_search_term_max = 1
 
         for ngram_size in range(len_search_term_min, len_search_term_max + 1):
-            for i, ngram in enumerate(nltk.ngrams(text.tokens, ngram_size)):
-                for j, collocate in enumerate(reversed(tags[max(0, i - window_size_left) : i])):
-                    if wordless_text_utils.check_context(i, tags,
+            for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
+                for j, collocate in enumerate(reversed(tokens[max(0, i - window_size_left) : i])):
+                    if wordless_text_utils.check_context(i, tokens,
                                                          settings = settings['context_settings'],
                                                          search_terms_inclusion = search_terms_inclusion,
                                                          search_terms_exclusion = search_terms_exclusion):
@@ -1109,10 +1132,8 @@ def generate_collocates(main, files):
 
                         collocates_freqs_file[(ngram, collocate)][window_size_left - 1 - j] += 1
 
-                        collocates_tokens.append(tokens[max(0, i - window_size_left) : i][j])
-
-                for j, collocate in enumerate(tags[i + ngram_size: i + ngram_size + window_size_right]):
-                    if wordless_text_utils.check_context(i, tags,
+                for j, collocate in enumerate(tokens[i + ngram_size: i + ngram_size + window_size_right]):
+                    if wordless_text_utils.check_context(i, tokens,
                                                          settings = settings['context_settings'],
                                                          search_terms_inclusion = search_terms_inclusion,
                                                          search_terms_exclusion = search_terms_exclusion):
@@ -1121,12 +1142,9 @@ def generate_collocates(main, files):
 
                         collocates_freqs_file[(ngram, collocate)][window_size_left + j] += 1
 
-                        collocates_tokens.append(tokens[i + ngram_size: i + ngram_size + window_size_right][j])
-
-        collocates_freqs_file = wordless_text_processing.wordless_postprocess_freq_colligation(main, collocates_freqs_file,
-                                                                                               tokens = collocates_tokens,
-                                                                                               lang_code = text.lang_code,
-                                                                                               settings = settings['token_settings'])
+        collocates_freqs_file = {(ngram, collocate): freqs
+                                 for (ngram, collocate), freqs in collocates_freqs_file.items()
+                                 if all(ngram) and collocate}
 
         # Filter search terms
         if settings['search_settings']['search_settings']:
@@ -1145,22 +1163,16 @@ def generate_collocates(main, files):
             collocates_freqs_files.append(collocates_freqs_file)
 
         # Frequency (N-grams)
-        if settings['generation_settings']['node_type'] == main.tr('Token'):
-            for i in range(len_search_term_min, len_search_term_max + 1):
-                ngrams_freq_files.append(collections.Counter(nltk.ngrams(tokens, i)))
+        for i in {1} | set(range(len_search_term_min, len_search_term_max + 1)):
+            ngrams = [ngram
+                      for ngram in nltk.ngrams(tokens, i)
+                      if all(ngram)]
 
-            tags_freq_files.append(collections.Counter(nltk.ngrams(tags, 1)))
-        else:
-            for i in {1} | set(range(len_search_term_min, len_search_term_max + 1)):
-                tags_freq_files.append(collections.Counter(nltk.ngrams(tags, i)))
+            ngrams_freq_files.append(collections.Counter(ngrams))
 
         # Nodes Text
-        if settings['generation_settings']['node_type'] == main.tr('Token'):
-            for (node, collocate) in collocates_freqs_file:
-                nodes_text[node] = wordless_text_processing.wordless_word_detokenize(main, node, text.lang_code)
-        else:
-            for (node, collocate) in collocates_freqs_file:
-                nodes_text[node] = ' '.join(node)
+        for (node, collocate) in collocates_freqs_file:
+            nodes_text[node] = wordless_text_processing.wordless_word_detokenize(main, node, text.lang)
 
         texts.append(text)
 
@@ -1173,7 +1185,6 @@ def generate_collocates(main, files):
 
         texts.append(text_total)
         ngrams_freq_files.append(sum(ngrams_freq_files, collections.Counter()))
-        tags_freq_files.append(sum(tags_freq_files, collections.Counter()))
 
         for collocates_freqs_file in collocates_freqs_files:
             for collocate, freqs in collocates_freqs_file.items():
@@ -1184,7 +1195,7 @@ def generate_collocates(main, files):
 
         collocates_freqs_files.append(collocates_freqs_total)
 
-    # Association
+    # Statistiscal Significance & Effect Size
     text_test_significance = settings['generation_settings']['test_significance']
     text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
@@ -1193,34 +1204,27 @@ def generate_collocates(main, files):
 
     collocates_total = collocates_freqs_files[-1].keys()
 
-    for text, ngrams_freq_file, tags_freq_file, collocates_freqs_file in zip(texts,
-                                                                             ngrams_freq_files,
-                                                                             tags_freq_files,
-                                                                             collocates_freqs_files):
+    for text, ngrams_freq_file, collocates_freqs_file in zip(texts,
+                                                             ngrams_freq_files,
+                                                             collocates_freqs_files):
         collocates_stats_file = {}
 
         len_tokens = len(text.tokens)
 
-        if settings['generation_settings']['node_type'] == main.tr('Token'):
-            c1x_freq_file = ngrams_freq_file
-        else:
-            c1x_freq_file = tags_freq_file
+        for node, collocate in collocates_total:
+            len_node = len(node)
 
-        if settings['generation_settings']['node_type'] == main.tr('Token'):
-            for node, collocate in collocates_total:
-                len_node = len(node)
+            if (node, collocate) in collocates_freqs_file:
+                c11 = sum(collocates_freqs_file[(node, collocate)])
+            else:
+                c11 = 0
 
-                if (node, collocate) in collocates_freqs_file:
-                    c11 = sum(collocates_freqs_file[(node, collocate)])
-                else:
-                    c11 = 0
+            c12 = max(0, ngrams_freq_file[node] - c11)
+            c21 = max(0, ngrams_freq_file[(collocate,)] - c11)
+            c22 = len_tokens - c11 - c12 - c21
 
-                c12 = max(0, c1x_freq_file[node] - c11)
-                c21 = max(0, tags_freq_file[(collocate,)] - c11)
-                c22 = len_tokens - c11 - c12 - c21
-
-                collocates_stats_file[(node, collocate)] = test_significance(main, c11, c12, c21, c22)
-                collocates_stats_file[(node, collocate)].append(measure_effect_size(main, c11, c12, c21, c22))
+            collocates_stats_file[(node, collocate)] = test_significance(main, c11, c12, c21, c22)
+            collocates_stats_file[(node, collocate)].append(measure_effect_size(main, c11, c12, c21, c22))
 
         collocates_stats_files.append(collocates_stats_file)
 
@@ -1234,9 +1238,9 @@ def generate_collocates(main, files):
 
 @ wordless_misc.log_timing
 def generate_table(main, table):
-    settings = main.settings_custom['colligation']
+    settings = main.settings_custom['collocation']
 
-    files = main.wordless_files.get_selected_files()
+    files = wordless_checking_file.check_files_loading(main, main.wordless_files.get_selected_files())
 
     if files:
         if (not settings['search_settings']['search_settings'] or
@@ -1256,6 +1260,10 @@ def generate_table(main, table):
                  col_text_p_value,
                  col_text_bayes_factor) = main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
                 col_text_effect_size =  main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
+
+                table.blockSignals(True)
+                table.setSortingEnabled(False)
+                table.setUpdatesEnabled(False)
 
                 # Insert columns (Files)
                 for i, file in enumerate(files):
@@ -1357,10 +1365,6 @@ def generate_table(main, table):
 
                 len_files = len(files)
 
-                table.blockSignals(True)
-                table.setSortingEnabled(False)
-                table.setUpdatesEnabled(False)
-
                 table.setRowCount(len(collocates_freqs_files))
 
                 for i, ((node, collocate), stats_files) in enumerate(wordless_sorting.sorted_collocates_stats_files(collocates_stats_files)):
@@ -1430,9 +1434,9 @@ def generate_table(main, table):
 
 @ wordless_misc.log_timing
 def generate_plot(main):
-    settings = main.settings_custom['colligation']
+    settings = main.settings_custom['collocation']
 
-    files = main.wordless_files.get_selected_files()
+    files = wordless_checking_file.check_files_loading(main, main.wordless_files.get_selected_files())
 
     if files:
         if (settings['search_settings']['search_settings'] or
