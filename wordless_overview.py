@@ -142,15 +142,15 @@ def init(main):
         settings['show_cumulative'] = checkbox_show_cumulative.isChecked()
         settings['show_breakdown'] = checkbox_show_breakdown.isChecked()
 
-    tab_overview = wordless_layout.Wordless_Tab(main, load_settings)
+    wrapper_overview = wordless_layout.Wordless_Wrapper(main, load_settings)
 
     table_overview = Wordless_Table_Overview(main)
 
-    tab_overview.layout_table.addWidget(table_overview, 0, 0, 1, 4)
-    tab_overview.layout_table.addWidget(table_overview.button_generate_table, 1, 0)
-    tab_overview.layout_table.addWidget(table_overview.button_export_selected, 1, 1)
-    tab_overview.layout_table.addWidget(table_overview.button_export_all, 1, 2)
-    tab_overview.layout_table.addWidget(table_overview.button_clear, 1, 3)
+    wrapper_overview.layout_table.addWidget(table_overview, 0, 0, 1, 4)
+    wrapper_overview.layout_table.addWidget(table_overview.button_generate_table, 1, 0)
+    wrapper_overview.layout_table.addWidget(table_overview.button_export_selected, 1, 1)
+    wrapper_overview.layout_table.addWidget(table_overview.button_export_all, 1, 2)
+    wrapper_overview.layout_table.addWidget(table_overview.button_clear, 1, 3)
     
     # Token Settings
     group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
@@ -248,15 +248,15 @@ def init(main):
     group_box_table_settings.layout().addWidget(checkbox_show_cumulative, 1, 0)
     group_box_table_settings.layout().addWidget(checkbox_show_breakdown, 2, 0)
 
-    tab_overview.layout_settings.addWidget(group_box_token_settings, 0, 0)
-    tab_overview.layout_settings.addWidget(group_box_generation_settings, 1, 0)
-    tab_overview.layout_settings.addWidget(group_box_table_settings, 2, 0)
+    wrapper_overview.layout_settings.addWidget(group_box_token_settings, 0, 0)
+    wrapper_overview.layout_settings.addWidget(group_box_generation_settings, 1, 0)
+    wrapper_overview.layout_settings.addWidget(group_box_table_settings, 2, 0)
 
-    tab_overview.layout_settings.setRowStretch(3, 1)
+    wrapper_overview.layout_settings.setRowStretch(3, 1)
 
     load_settings()
 
-    return tab_overview
+    return wrapper_overview
 
 @ wordless_misc.log_timing
 def generate_table(main, table):

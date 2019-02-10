@@ -110,7 +110,7 @@ If you would like to support the development of Wordless, you may donate via Pay
 
 |PayPal|Alipay|WeChat|
 |------|------|------|
-|[![Donate with PayPal button](https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SJ4RNZSVD766Y)|<img src=https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_alipay.png>|<img src=https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_wechat.png alt="WeChat">|
+|[![Donate with PayPal button](https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|<img src=https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_alipay.png>|<img src=https://github.com/BLKSerene/Wordless/blob/master/imgs/donating_wechat.png alt="WeChat">|
 
 <span id="doc-eng"></span>
 ## Documentation - English
