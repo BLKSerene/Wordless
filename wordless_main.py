@@ -49,13 +49,13 @@ class Wordless_Loading(QSplashScreen):
         while self.windowOpacity() < 1:
             self.setWindowOpacity(self.windowOpacity() + 0.05)
 
-            time.sleep(0.05)
+            time.sleep(0.025)
 
     def fade_out(self):
         while self.windowOpacity() > 0:
             self.setWindowOpacity(self.windowOpacity() - 0.05)
 
-            time.sleep(0.05)
+            time.sleep(0.025)
 
 class Wordless_Main(QMainWindow):
     def __init__(self):
@@ -65,8 +65,6 @@ class Wordless_Main(QMainWindow):
 
         self.setWindowTitle(self.tr('Wordless'))
         self.setWindowIcon(QIcon('imgs/wordless_icon.png'))
-
-        self.resize(QApplication.desktop().width(), QApplication.desktop().height())
 
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('wordless')
 
@@ -113,31 +111,11 @@ class Wordless_Main(QMainWindow):
         self.load_settings()
 
     def closeEvent(self, event):
-        reply = QMessageBox.question(self,
-                                     self.tr('Exit Confirmation'),
-                                     self.tr(f'''{self.settings_global['styles']['style_dialog']}
-                                                 <body>
-                                                     <div>Do you really want to quit?</div>
-                                                 </body>
-                                             '''),
-                                     QMessageBox.Yes | QMessageBox.No,
-                                     QMessageBox.No)
+        reply = wordless_message_box.wordless_message_box_exit(self)
 
         if reply == QMessageBox.Yes:
             # Clear history of closed files
             self.settings_custom['files']['files_closed'].clear()
-
-            # Layouts
-            self.settings_custom['layouts']['central_widget'] = self.centralWidget().sizes()
-
-            self.settings_custom['layouts']['file_area'] = self.wordless_file_area.sizes()
-            self.settings_custom['layouts']['overview'] = self.wordless_overview.sizes()
-            self.settings_custom['layouts']['concordancer'] = self.wordless_concordancer.sizes()
-            self.settings_custom['layouts']['wordlist'] = self.wordless_wordlist.sizes()
-            self.settings_custom['layouts']['ngrams'] = self.wordless_ngrams.sizes()
-            self.settings_custom['layouts']['collocation'] = self.wordless_collocation.sizes()
-            self.settings_custom['layouts']['colligation'] = self.wordless_colligation.sizes()
-            self.settings_custom['layouts']['keywords'] = self.wordless_keywords.sizes()
 
             with open('wordless_settings.pkl', 'wb') as f:
                 pickle.dump(self.settings_custom, f)
@@ -199,16 +177,16 @@ class Wordless_Main(QMainWindow):
         menu_prefs_settings.setStatusTip(self.tr('Change settings'))
         menu_prefs_settings.triggered.connect(self.wordless_settings.load)
 
-        menu_pref_restor_default_layouts = QAction(self.tr('Restore Default Layouts'), self)
-        menu_pref_restor_default_layouts.setStatusTip(self.tr('Restore default layouts'))
-        menu_pref_restor_default_layouts.triggered.connect(self.prefs_restore_default_layouts)
+        menu_prefs_reset_layouts = QAction(self.tr('Reset Layouts'), self)
+        menu_prefs_reset_layouts.setStatusTip(self.tr('Reset Layouts'))
+        menu_prefs_reset_layouts.triggered.connect(self.prefs_reset_layouts)
 
         menu_prefs_show_status_bar = QAction(self.tr('Show Status Bar'), self, checkable = True)
         menu_prefs_show_status_bar.setStatusTip(self.tr('Show/Hide the status bar'))
         menu_prefs_show_status_bar.triggered.connect(self.prefs_show_status_bar)
 
         menu_prefs.addAction(menu_prefs_settings)
-        menu_prefs.addAction(menu_pref_restor_default_layouts)
+        menu_prefs.addAction(menu_prefs_reset_layouts)
         menu_prefs.addSeparator()
         menu_prefs.addAction(menu_prefs_show_status_bar)
 
@@ -265,20 +243,21 @@ class Wordless_Main(QMainWindow):
         else:
             self.statusBar().hide()
 
-    # Preferences -> Restore Default Layouts
-    def prefs_restore_default_layouts(self):
-        settings = self.settings_default['layouts']
+    # Preferences -> Reset Layouts
+    def prefs_reset_layouts(self):
+        reply = wordless_message_box.wordless_message_box_reset_layouts(self)
 
-        self.centralWidget().setSizes(settings['central_widget'])
+        if reply:
+            self.centralWidget().setSizes([self.height() - 210, 210])
 
-        self.wordless_file_area.setSizes(settings['file_area'])
-        self.wordless_overview.setSizes(settings['overview'])
-        self.wordless_concordancer.setSizes(settings['concordancer'])
-        self.wordless_wordlist.setSizes(settings['wordlist'])
-        self.wordless_ngrams.setSizes(settings['ngrams'])
-        self.wordless_collocation.setSizes(settings['collocation'])
-        self.wordless_colligation.setSizes(settings['colligation'])
-        self.wordless_keywords.setSizes(settings['keywords'])
+            self.wordless_file_area.setSizes([self.width() - 310, 310])
+            self.wordless_overview.setSizes([self.width() - 310, 310])
+            self.wordless_concordancer.setSizes([self.width() - 310, 310])
+            self.wordless_wordlist.setSizes([self.width() - 310, 310])
+            self.wordless_ngrams.setSizes([self.width() - 310, 310])
+            self.wordless_collocation.setSizes([self.width() - 310, 310])
+            self.wordless_colligation.setSizes([self.width() - 310, 310])
+            self.wordless_keywords.setSizes([self.width() - 310, 310])
 
     # Help -> Citing
     def help_citing(self):
@@ -370,12 +349,16 @@ class Wordless_Main(QMainWindow):
         splitter_central_widget.addWidget(self.wordless_work_area)
         splitter_central_widget.addWidget(self.wordless_file_area)
 
+        splitter_central_widget.setHandleWidth(1)
         splitter_central_widget.setObjectName('splitter-central-widget')
         splitter_central_widget.setStyleSheet('''
             QSplitter#splitter-central-widget {
                 padding: 4px 6px;
             }
         ''')
+
+        splitter_central_widget.setSizes([self.height() - 100 - 210, 210])
+        splitter_central_widget.setStretchFactor(0, 1)
 
         self.setCentralWidget(splitter_central_widget)
 
@@ -394,29 +377,6 @@ class Wordless_Main(QMainWindow):
         def work_area_changed():
             self.settings_custom['work_area_cur'] = self.tabs_work_area.tabText(self.tabs_work_area.currentIndex())
 
-            self.wordless_overview.hide()
-            self.wordless_concordancer.hide()
-            self.wordless_wordlist.hide()
-            self.wordless_ngrams.hide()
-            self.wordless_collocation.hide()
-            self.wordless_colligation.hide()
-            self.wordless_keywords.hide()
-
-            if self.settings_custom['work_area_cur'] == self.tr('Overview'):
-                self.wordless_overview.show()
-            elif self.settings_custom['work_area_cur'] == self.tr('Concordancer'):
-                self.wordless_concordancer.show()
-            elif self.settings_custom['work_area_cur'] == self.tr('Wordlist'):
-                self.wordless_wordlist.show()
-            elif self.settings_custom['work_area_cur'] == self.tr('N-grams'):
-                self.wordless_ngrams.show()
-            elif self.settings_custom['work_area_cur'] == self.tr('Collocation'):
-                self.wordless_collocation.show()
-            elif self.settings_custom['work_area_cur'] == self.tr('Colligation'):
-                self.wordless_colligation.show()
-            elif self.settings_custom['work_area_cur'] == self.tr('Keywords'):
-                self.wordless_keywords.show()
-
         wordless_work_area = QWidget(self)
 
         self.tabs_work_area = QTabBar(self)
@@ -430,6 +390,8 @@ class Wordless_Main(QMainWindow):
 
         self.tabs_work_area.setDrawBase(False)
 
+        stacked_widget_work_area = QStackedWidget(self)
+
         self.wordless_overview = wordless_overview.init(self)
         self.wordless_concordancer = wordless_concordancer.init(self)
         self.wordless_wordlist = wordless_wordlist.init(self)
@@ -438,20 +400,23 @@ class Wordless_Main(QMainWindow):
         self.wordless_colligation = wordless_colligation.init(self)
         self.wordless_keywords = wordless_keywords.init(self)
 
+        stacked_widget_work_area.addWidget(self.wordless_overview)
+        stacked_widget_work_area.addWidget(self.wordless_concordancer)
+        stacked_widget_work_area.addWidget(self.wordless_wordlist)
+        stacked_widget_work_area.addWidget(self.wordless_ngrams)
+        stacked_widget_work_area.addWidget(self.wordless_collocation)
+        stacked_widget_work_area.addWidget(self.wordless_colligation)
+        stacked_widget_work_area.addWidget(self.wordless_keywords)
+
         wordless_work_area.setLayout(QGridLayout())
         wordless_work_area.layout().addWidget(self.tabs_work_area, 0, 0)
-        wordless_work_area.layout().addWidget(self.wordless_overview, 1, 0)
-        wordless_work_area.layout().addWidget(self.wordless_concordancer, 1, 0)
-        wordless_work_area.layout().addWidget(self.wordless_wordlist, 1, 0)
-        wordless_work_area.layout().addWidget(self.wordless_ngrams, 1, 0)
-        wordless_work_area.layout().addWidget(self.wordless_collocation, 1, 0)
-        wordless_work_area.layout().addWidget(self.wordless_colligation, 1, 0)
-        wordless_work_area.layout().addWidget(self.wordless_keywords, 1, 0)
+        wordless_work_area.layout().addWidget(stacked_widget_work_area, 1, 0)
 
         wordless_work_area.layout().setSpacing(0)
         wordless_work_area.layout().setContentsMargins(0, 0, 0, 0)
 
         self.tabs_work_area.currentChanged.connect(work_area_changed)
+        self.tabs_work_area.currentChanged.connect(lambda index: stacked_widget_work_area.setCurrentIndex(index))
 
         load_settings()
 
@@ -462,18 +427,6 @@ class Wordless_Main(QMainWindow):
 
         # Menu
         self.find_menu_item(self.tr('Show Status Bar')).setChecked(settings['menu']['prefs']['show_status_bar'])
-
-        # Layouts
-        self.centralWidget().setSizes(settings['layouts']['central_widget'])
-
-        self.wordless_file_area.setSizes(settings['layouts']['file_area'])
-        self.wordless_overview.setSizes(settings['layouts']['overview'])
-        self.wordless_concordancer.setSizes(settings['layouts']['concordancer'])
-        self.wordless_wordlist.setSizes(settings['layouts']['wordlist'])
-        self.wordless_ngrams.setSizes(settings['layouts']['ngrams'])
-        self.wordless_collocation.setSizes(settings['layouts']['collocation'])
-        self.wordless_colligation.setSizes(settings['layouts']['colligation'])
-        self.wordless_keywords.setSizes(settings['layouts']['keywords'])
 
     def find_menu_item(self, text, menu = None):
         menu_item = None

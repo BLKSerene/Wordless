@@ -10,6 +10,7 @@
 #
 
 import copy
+import itertools
 import re
 
 import nltk
@@ -46,14 +47,23 @@ def get_re_tags(main, tags):
 
 def match_ngrams(main, search_terms, tokens,
                  lang, text_type, token_settings, search_settings):
-    tokens_searched = []
-    ngrams_matched = set()
+    search_terms_matched = []
 
     settings = copy.deepcopy(search_settings)
-    search_terms = [search_term.split() for search_term in search_terms]
+
     re_tags_all = get_re_tags(main, tags = 'all')
     re_tags_pos = get_re_tags(main, tags = 'pos')
     re_tags_non_pos = get_re_tags(main, tags = 'non_pos')
+
+    search_term_tokens = [search_term_token
+                          for search_term in search_terms
+                          for search_term_token in search_term.split()]
+
+    if search_settings['use_regex']:
+        regexes_matched = {search_term_token: set() for search_term_token in search_term_tokens}
+        tokens_matched = {}
+    else:
+        tokens_matched = {search_term_token: set() for search_term_token in search_term_tokens}
 
     # Search Settings
     if settings['match_tags']:
@@ -127,87 +137,76 @@ def match_ngrams(main, search_terms, tokens,
 
     if tokens_searched:
         if settings['use_regex']:
-            for ngram_search in search_terms:
-                len_ngram_search = len(ngram_search)
-
+            for search_term_token in search_term_tokens:
                 if settings['match_whole_word']:
-                    ngram_search = [fr'(^|\s+){token}(\s+|$)' for token in ngram_search]
+                    regex = fr'(^|\s+){search_term_token}(\s+|$)'
+                else:
+                    regex = search_term_token
 
                 if settings['ignore_case']:
                     flags = re.IGNORECASE
                 else:
                     flags = 0
 
-                for ngram_text, ngram_text_searched in zip(nltk.ngrams(tokens, len_ngram_search),
-                                                           nltk.ngrams(tokens_searched, len_ngram_search)):
-                    ngram_matched = True
-
-                    for token_search, token_text in zip(ngram_search, ngram_text_searched):
-                        if not re.search(token_search, token_text, flags = flags):
-                            ngram_matched = False
-
-                            break
-
-                    if ngram_matched:
-                        ngrams_matched.add(ngram_text)
+                for token, token_searched in zip(tokens, tokens_searched):
+                    if re.search(regex, token_searched, flags = flags):
+                        regexes_matched[search_term_token].add(token)
+                        tokens_matched[token] = set()
         else:
-            for ngram_search in search_terms:
-                len_ngram_search = len(ngram_search)
-
-                ngram_search = [re.escape(token) for token in ngram_search]
+            for search_term_token in search_term_tokens:
+                regex = re.escape(search_term_token)
 
                 if settings['match_whole_word']:
-                    ngram_search = [fr'(^|\s+){token}(\s+|$)' for token in ngram_search]
+                    regex = fr'(^|\s+){regex}(\s+|$)'
 
                 if settings['ignore_case']:
                     flags = re.IGNORECASE
                 else:
                     flags = 0
 
-                for ngram_text, ngram_text_searched in zip(nltk.ngrams(tokens, len_ngram_search),
-                                                           nltk.ngrams(tokens_searched, len_ngram_search)):
-                    matched = True
-
-                    for token_search, token_text in zip(ngram_search, ngram_text_searched):
-                        if not re.search(token_search, token_text, flags = flags):
-                            matched = False
-
-                            break
-
-                    if matched:
-                        ngrams_matched.add(ngram_text)
+                for token, token_searched in zip(tokens, tokens_searched):
+                    if re.search(regex, token_searched, flags = flags):
+                        tokens_matched[search_term_token].add(token)
 
         if settings['match_inflected_forms']:
-            tokens_text_lemma = wordless_text_processing.wordless_lemmatize(main, tokens_searched, lang, text_type)
-            ngrams_matched_lemma = [wordless_text_processing.wordless_lemmatize(main, ngram, lang, text_type)
-                                    for ngram in ngrams_matched | set([tuple(search_term) for search_term in search_terms])]
+            lemmas_searched = wordless_text_processing.wordless_lemmatize(main, tokens_searched, lang, text_type)
+            lemmas_matched = wordless_text_processing.wordless_lemmatize(main, list(tokens_matched), lang, text_type)
 
-            for ngram_matched_lemma in ngrams_matched_lemma:
-                len_ngram_matched_lemma = len(ngram_matched_lemma)
-
-                ngram_matched_lemma = [re.escape(token) for token in ngram_matched_lemma]
-                ngram_matched_lemma = [fr'(^|\s+){token}(\s+|$)' for token in ngram_matched_lemma]
+            for token_matched, lemma_matched in zip(list(tokens_matched), lemmas_matched):
+                lemma_matched = re.escape(lemma_matched)
+                lemma_matched = fr'(^|\s+){lemma_matched}(\s+|$)'
 
                 if settings['ignore_case']:
                     flags = re.IGNORECASE
                 else:
                     flags = 0
 
-                for (ngram_text, ngram_text_searched, ngram_text_lemma) in zip(nltk.ngrams(tokens, len_ngram_matched_lemma),
-                                                                               nltk.ngrams(tokens_searched, len_ngram_matched_lemma),
-                                                                               nltk.ngrams(tokens_text_lemma, len_ngram_matched_lemma)):
-                    matched = True
+                for token, lemma_searched in zip(tokens, lemmas_searched):
+                    if re.search(lemma_matched, lemma_searched, flags = flags):
+                        tokens_matched[token_matched].add(token)
 
-                    for token_text_lemma, token_matched_lemma in zip(ngram_text_lemma, ngram_matched_lemma):
-                        if not re.search(token_matched_lemma, token_text_lemma, flags = flags):
-                            matched = False
+    if search_settings['use_regex']:
+        for search_term in search_terms:
+            search_term_tokens_matched = []
 
-                            break
+            for search_term_token in search_term.split():
+                search_term_tokens_matched.append(set())
 
-                    if matched:
-                        ngrams_matched.add(ngram_text)
+                for regex_matched in regexes_matched[search_term_token]:
+                    search_term_tokens_matched[-1].add(regex_matched)
+                    search_term_tokens_matched[-1] |= set(tokens_matched[regex_matched])
 
-    return ngrams_matched
+            search_terms_matched.extend(itertools.product(*search_term_tokens_matched))
+    else:
+        for search_term in search_terms:
+            search_term_tokens_matched = []
+
+            for search_term_token in search_term.split():
+                search_term_tokens_matched.append(set(tokens_matched[search_term_token]))
+
+            search_terms_matched.extend(itertools.product(*search_term_tokens_matched))
+
+    return search_terms_matched
 
 def match_search_terms(main, tokens,
                        lang, text_type, token_settings, search_settings):

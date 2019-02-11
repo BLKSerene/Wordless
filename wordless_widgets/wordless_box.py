@@ -54,6 +54,9 @@ class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box):
     def __init__(self, main):
         super().__init__(main)
 
+        # Clip long file names
+        self.setSizeAdjustPolicy(QComboBox.AdjustToMinimumContentsLengthWithIcon)
+
         main.wordless_files.table.itemChanged.connect(self.wordless_files_changed)
 
         self.wordless_files_changed()

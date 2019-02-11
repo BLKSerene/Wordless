@@ -90,7 +90,9 @@ class Wordless_Settings(QDialog):
 
         self.tree_settings.itemSelectionChanged.connect(self.selection_changed)
 
-        self.scroll_area_settings = wordless_layout.Wordless_Scroll_Area(self.main)
+        self.scroll_area_settings = wordless_layout.Wordless_Scroll_Area(self)
+
+        self.stacked_widget_settings = QStackedWidget(self)
 
         self.init_settings_import()
         self.init_settings_export()
@@ -114,12 +116,36 @@ class Wordless_Settings(QDialog):
 
         self.init_settings_updates()
 
-        button_restore_default_settings = QPushButton(self.tr('Restore Default Settings'), self)
+        self.stacked_widget_settings.addWidget(self.settings_import)
+        self.stacked_widget_settings.addWidget(self.settings_export)
+        self.stacked_widget_settings.addWidget(self.settings_auto_detection)
+        self.stacked_widget_settings.addWidget(self.settings_data)
+        self.stacked_widget_settings.addWidget(self.settings_tags)
+        self.stacked_widget_settings.addWidget(self.settings_sentence_tokenization)
+        self.stacked_widget_settings.addWidget(self.settings_word_tokenization)
+        self.stacked_widget_settings.addWidget(self.settings_word_detokenization)
+
+        self.stacked_widget_settings.addWidget(self.settings_pos_tagging)
+        self.stacked_widget_settings.addWidget(self.settings_tagsets)
+
+        self.stacked_widget_settings.addWidget(self.settings_lemmatization)
+        self.stacked_widget_settings.addWidget(self.settings_stop_words)
+
+        self.stacked_widget_settings.addWidget(self.settings_dispersion)
+        self.stacked_widget_settings.addWidget(self.settings_adjusted_freq)
+        self.stacked_widget_settings.addWidget(self.settings_statistical_significance)
+        self.stacked_widget_settings.addWidget(self.settings_effect_size)
+
+        self.stacked_widget_settings.addWidget(self.settings_updates)
+
+        self.scroll_area_settings.setWidget(self.stacked_widget_settings)
+
+        button_reset_settings = QPushButton(self.tr('Reset Settings'), self)
         button_save = QPushButton(self.tr('Save'), self)
         button_apply = QPushButton(self.tr('Apply'), self)
         button_cancel = QPushButton(self.tr('Cancel'), self)
 
-        button_restore_default_settings.clicked.connect(self.restore_default_settings)
+        button_reset_settings.clicked.connect(self.reset_settings)
         button_save.clicked.connect(self.settings_save)
         button_apply.clicked.connect(self.settings_apply)
         button_cancel.clicked.connect(self.reject)
@@ -132,7 +158,7 @@ class Wordless_Settings(QDialog):
         self.setLayout(QGridLayout())
         self.layout().addWidget(self.tree_settings, 0, 0)
         self.layout().addWidget(self.scroll_area_settings, 0, 1)
-        self.layout().addWidget(button_restore_default_settings, 1, 0)
+        self.layout().addWidget(button_reset_settings, 1, 0)
         self.layout().addLayout(layout_buttons_right, 1, 1, Qt.AlignRight)
 
         self.layout().setColumnStretch(0, 1)
@@ -152,75 +178,47 @@ class Wordless_Settings(QDialog):
                 item_selected_text = item_selected.text(0)
 
                 if item_selected_text == self.tr('Import'):
-                    settings_cur = self.settings_import
+                    self.stacked_widget_settings.setCurrentIndex(0)
                 elif item_selected_text == self.tr('Export'):
-                    settings_cur = self.settings_export
+                    self.stacked_widget_settings.setCurrentIndex(1)
                 elif item_selected_text == self.tr('Auto-detection'):
-                    settings_cur = self.settings_auto_detection
+                    self.stacked_widget_settings.setCurrentIndex(2)
                 elif item_selected_text == self.tr('Data'):
-                    settings_cur = self.settings_data
+                    self.stacked_widget_settings.setCurrentIndex(3)
                 elif item_selected_text == self.tr('Tags'):
-                    settings_cur = self.settings_tags
+                    self.stacked_widget_settings.setCurrentIndex(4)
                 elif item_selected_text == self.tr('Sentence Tokenization'):
-                    settings_cur = self.settings_sentence_tokenization
+                    self.stacked_widget_settings.setCurrentIndex(5)
                 elif item_selected_text == self.tr('Word Tokenization'):
-                    settings_cur = self.settings_word_tokenization
+                    self.stacked_widget_settings.setCurrentIndex(6)
                 elif item_selected_text == self.tr('Word Detokenization'):
-                    settings_cur = self.settings_word_detokenization
+                    self.stacked_widget_settings.setCurrentIndex(7)
 
                 elif item_selected_text == self.tr('POS Tagging'):
-                    settings_cur = self.settings_pos_tagging
+                    self.stacked_widget_settings.setCurrentIndex(8)
 
                     item_selected.setExpanded(True)
                 elif item_selected_text == self.tr('Tagsets'):
-                    settings_cur = self.settings_tagsets
+                    self.stacked_widget_settings.setCurrentIndex(9)
 
                 elif item_selected_text == self.tr('Lemmatization'):
-                    settings_cur = self.settings_lemmatization
+                    self.stacked_widget_settings.setCurrentIndex(10)
                 elif item_selected_text == self.tr('Stop Words'):
-                    settings_cur = self.settings_stop_words
+                    self.stacked_widget_settings.setCurrentIndex(11)
 
                 elif item_selected_text == self.tr('Measures'):
                     item_selected.setExpanded(True)
                 elif item_selected_text == self.tr('Dispersion'):
-                    settings_cur = self.settings_dispersion
+                    self.stacked_widget_settings.setCurrentIndex(12)
                 elif item_selected_text == self.tr('Adjusted Frequency'):
-                    settings_cur = self.settings_adjusted_freq
+                    self.stacked_widget_settings.setCurrentIndex(13)
                 elif item_selected_text == self.tr('Statistical Significance'):
-                    settings_cur = self.settings_statistical_significance
+                    self.stacked_widget_settings.setCurrentIndex(14)
                 elif item_selected_text == self.tr('Effect Size'):
-                    settings_cur = self.settings_effect_size
+                    self.stacked_widget_settings.setCurrentIndex(15)
 
                 elif item_selected_text == self.tr('Updates'):
-                    settings_cur = self.settings_updates
-
-                if settings_cur:
-                    self.settings_import.hide()
-                    self.settings_export.hide()
-                    self.settings_auto_detection.hide()
-                    self.settings_data.hide()
-                    self.settings_tags.hide()
-                    self.settings_sentence_tokenization.hide()
-                    self.settings_word_tokenization.hide()
-                    self.settings_word_detokenization.hide()
-
-                    self.settings_pos_tagging.hide()
-                    self.settings_tagsets.hide()
-
-                    self.settings_lemmatization.hide()
-                    self.settings_stop_words.hide()
-
-                    self.settings_dispersion.hide()
-                    self.settings_adjusted_freq.hide()
-                    self.settings_statistical_significance.hide()
-                    self.settings_effect_size.hide()
-
-                    self.settings_updates.hide()
-
-                    self.scroll_area_settings.takeWidget()
-                    self.scroll_area_settings.setWidget(settings_cur)
-
-                    settings_cur.show()
+                    self.stacked_widget_settings.setCurrentIndex(16)
 
                 self.tree_settings.item_selected_old = item_selected
             else:
@@ -334,6 +332,7 @@ class Wordless_Settings(QDialog):
         self.settings_import.layout().addWidget(group_box_import_stop_words, 2, 0)
         self.settings_import.layout().addWidget(group_box_import_temp_files, 3, 0)
 
+        self.settings_import.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_import.layout().setRowStretch(4, 1)
 
     # Export
@@ -436,6 +435,7 @@ class Wordless_Settings(QDialog):
         self.settings_export.layout().addWidget(group_box_export_search_terms, 1, 0)
         self.settings_export.layout().addWidget(group_box_export_stop_words, 2, 0)
 
+        self.settings_export.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_export.layout().setRowStretch(3, 1)
 
         tables_default_type_changed()
@@ -480,6 +480,7 @@ class Wordless_Settings(QDialog):
         self.settings_auto_detection.layout().addWidget(group_box_detection_settings, 0, 0)
         self.settings_auto_detection.layout().addWidget(group_box_default_settings, 1, 0)
 
+        self.settings_auto_detection.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_auto_detection.layout().setRowStretch(2, 1)
 
     # Data
@@ -513,6 +514,7 @@ class Wordless_Settings(QDialog):
         self.settings_data.setLayout(QGridLayout())
         self.settings_data.layout().addWidget(group_box_precision_settings, 0, 0)
 
+        self.settings_data.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_data.layout().setRowStretch(1, 1)
 
     # Tags
@@ -545,6 +547,7 @@ class Wordless_Settings(QDialog):
         self.settings_tags.layout().addWidget(group_box_pos_tag_settings, 0, 0)
         self.settings_tags.layout().addWidget(group_box_non_pos_tag_settings, 1, 0)
 
+        self.settings_tags.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_tags.layout().setRowStretch(2, 1)
 
     # Sentence Tokenization
@@ -664,6 +667,7 @@ class Wordless_Settings(QDialog):
         self.settings_sentence_tokenization.layout().addWidget(group_box_sentence_tokenizer_settings, 0, 0)
         self.settings_sentence_tokenization.layout().addWidget(group_box_preview, 1, 0)
 
+        self.settings_sentence_tokenization.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_sentence_tokenization.layout().setRowStretch(0, 3)
         self.settings_sentence_tokenization.layout().setRowStretch(1, 2)
 
@@ -795,6 +799,7 @@ class Wordless_Settings(QDialog):
         self.settings_word_tokenization.layout().addWidget(group_box_word_tokenizer_settings, 0, 0,)
         self.settings_word_tokenization.layout().addWidget(group_box_preview, 1, 0)
 
+        self.settings_word_tokenization.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_word_tokenization.layout().setRowStretch(0, 3)
         self.settings_word_tokenization.layout().setRowStretch(1, 2)
 
@@ -920,6 +925,7 @@ class Wordless_Settings(QDialog):
         self.settings_word_detokenization.layout().addWidget(group_box_word_detokenizer_settings, 0, 0,)
         self.settings_word_detokenization.layout().addWidget(group_box_preview, 1, 0)
 
+        self.settings_word_detokenization.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_word_detokenization.layout().setRowStretch(0, 3)
         self.settings_word_detokenization.layout().setRowStretch(1, 2)
 
@@ -1061,6 +1067,7 @@ class Wordless_Settings(QDialog):
         self.settings_pos_tagging.layout().addWidget(group_box_pos_tagger_settings, 0, 0)
         self.settings_pos_tagging.layout().addWidget(group_box_preview, 1, 0)
 
+        self.settings_pos_tagging.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_pos_tagging.layout().setRowStretch(0, 3)
         self.settings_pos_tagging.layout().setRowStretch(1, 2)
 
@@ -1180,6 +1187,7 @@ class Wordless_Settings(QDialog):
         self.settings_tagsets.layout().addWidget(group_box_preview_settings, 0, 0)
         self.settings_tagsets.layout().addWidget(group_box_mapping_settings, 1, 0)
 
+        self.settings_tagsets.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_tagsets.layout().setRowStretch(1, 1)
 
     # Lemmatization
@@ -1307,6 +1315,7 @@ class Wordless_Settings(QDialog):
         self.settings_lemmatization.layout().addWidget(group_box_lemmatizer_settings, 0, 0)
         self.settings_lemmatization.layout().addWidget(group_box_preview, 1, 0)
 
+        self.settings_lemmatization.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_lemmatization.layout().setRowStretch(0, 3)
         self.settings_lemmatization.layout().setRowStretch(1, 2)
 
@@ -1401,6 +1410,7 @@ class Wordless_Settings(QDialog):
         self.settings_stop_words.layout().addWidget(group_box_stop_words_settings, 0, 0)
         self.settings_stop_words.layout().addWidget(group_box_preview, 1, 0)
 
+        self.settings_stop_words.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_stop_words.layout().setRowStretch(0, 3)
         self.settings_stop_words.layout().setRowStretch(1, 2)
 
@@ -1427,6 +1437,7 @@ class Wordless_Settings(QDialog):
         self.settings_dispersion.setLayout(QGridLayout())
         self.settings_dispersion.layout().addWidget(group_box_general, 0, 0)
 
+        self.settings_dispersion.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_dispersion.layout().setRowStretch(1, 1)
 
     # Measures -> Adjusted Frequency
@@ -1460,6 +1471,7 @@ class Wordless_Settings(QDialog):
         self.settings_adjusted_freq.setLayout(QGridLayout())
         self.settings_adjusted_freq.layout().addWidget(group_box_general, 0, 0)
 
+        self.settings_adjusted_freq.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_adjusted_freq.layout().setRowStretch(1, 1)
 
         use_same_settings_changed()
@@ -1574,6 +1586,7 @@ class Wordless_Settings(QDialog):
         self.settings_statistical_significance.layout().addWidget(group_box_fishers_exact_test, 3, 0)
         self.settings_statistical_significance.layout().addWidget(group_box_mann_whitney_u_test, 4, 0)
 
+        self.settings_statistical_significance.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_statistical_significance.layout().setRowStretch(5, 1)
 
     # Measures -> Effect Size
@@ -1597,6 +1610,7 @@ class Wordless_Settings(QDialog):
         self.settings_effect_size.setLayout(QGridLayout())
         self.settings_effect_size.layout().addWidget(group_box_kilgarriffs_ratio, 0, 0)
 
+        self.settings_effect_size.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_effect_size.layout().setRowStretch(1, 1)
 
     # Updates
@@ -1614,6 +1628,7 @@ class Wordless_Settings(QDialog):
         self.settings_updates.setLayout(QGridLayout())
         self.settings_updates.layout().addWidget(group_box_update_settings, 0, 0)
 
+        self.settings_updates.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_updates.layout().setRowStretch(1, 1)
 
     def load_settings(self, defaults = False):
@@ -1831,8 +1846,8 @@ class Wordless_Settings(QDialog):
         # Updates
         self.checkbox_check_updates_on_startup.setChecked(settings['updates']['update_settings']['check_updates_on_startup'])
 
-    def restore_default_settings(self):
-        reply = wordless_message_box.wordless_message_box_restore_default_settings(self.main)
+    def reset_settings(self):
+        reply = wordless_message_box.wordless_message_box_reset_settings(self.main)
 
         if reply == QMessageBox.Yes:
             self.load_settings(defaults = True)

@@ -327,7 +327,7 @@ def wordless_widgets_search_settings(main, tab):
 
             if checkbox_match_tags.isEnabled():
                 match_tags_changed()
-            else:
+            elif token_settings['tags_only']:
                 checkbox_match_inflected_forms.setEnabled(False)
 
     label_search_term = QLabel(main.tr('Search Term:'), main)
@@ -609,6 +609,9 @@ def wordless_widgets_plot_settings(main):
     combo_box_use_file = wordless_box.Wordless_Combo_Box(main)
     label_use_data = QLabel(main.tr('Use Data:'), main)
     combo_box_use_data = wordless_box.Wordless_Combo_Box(main)
+
+    # Clip long file names
+    combo_box_use_file.setSizeAdjustPolicy(QComboBox.AdjustToMinimumContentsLengthWithIcon)
 
     checkbox_use_pct = QCheckBox(main.tr('Use Percentage Data'), main)
     checkbox_use_cumulative = QCheckBox(main.tr('Use Cumulative Data'), main)

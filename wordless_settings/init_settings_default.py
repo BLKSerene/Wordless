@@ -17,19 +17,6 @@ def init_settings_default(main):
     main.settings_default = {
         'work_area_cur': main.tr('Overview'),
 
-        'layouts': {
-            'central_widget': [main.height() - 250, 250],
-
-            'file_area': [main.width() - 320, 320],
-            'overview': [main.width() - 320, 320],
-            'concordancer': [main.width() - 320, 320],
-            'wordlist': [main.width() - 320, 320],
-            'ngrams': [main.width() - 320, 320],
-            'collocation': [main.width() - 320, 320],
-            'colligation': [main.width() - 320, 320],
-            'keywords': [main.width() - 320, 320]
-        },
-
         'files': {
             'files_open': [],
             'files_closed': [],
@@ -345,10 +332,11 @@ def init_settings_default(main):
                 'ignore_tags_type_match_tags': main.tr('Non-POS'),
                 'match_tags': False,
 
-                'keyword_position_min': 1,
-                'keyword_position_min_no_limit': True,
-                'keyword_position_max': 2,
-                'keyword_position_max_no_limit': True
+                'search_term_position_min': 1,
+                'search_term_position_min_no_limit': True,
+                'search_term_position_max': 2,
+                'search_term_position_max_no_limit': True,
+                'allow_skipped_tokens_within_search_terms': True
             },
 
             'context_settings': {

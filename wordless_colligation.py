@@ -1420,7 +1420,7 @@ def generate_table(main, table):
 
                 wordless_message.wordless_message_generate_table_error(main)
         else:
-            wordless_message_box.wordless_message_box_empty_search_term(main)
+            wordless_message_box.wordless_message_box_empty_search_term_optional(main)
 
             wordless_message.wordless_message_generate_table_error(main)
     else:
@@ -1507,7 +1507,7 @@ def generate_plot(main):
 
                 wordless_message.wordless_message_generate_plot_error(main)
         else:
-            wordless_message_box.wordless_message_box_empty_search_term(main)
+            wordless_message_box.wordless_message_box_empty_search_term_optional(main)
 
             wordless_message.wordless_message_generate_plot_error(main)
     else:

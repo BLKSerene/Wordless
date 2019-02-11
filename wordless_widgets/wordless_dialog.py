@@ -111,7 +111,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.button_find_prev = QPushButton(main.tr('Find Previous'), main)
         self.button_find_all = QPushButton(main.tr('Find All'), main)
         
-        self.button_restore_default_settings = QPushButton(main.tr('Restore Default Settings'), main)
+        self.button_reset_settings = QPushButton(main.tr('Reset Settings'), main)
         self.button_close = QPushButton(main.tr('Close'), main)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
@@ -134,7 +134,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         self.button_find_prev.clicked.connect(lambda: self.find_prev())
         self.button_find_all.clicked.connect(lambda: self.find_all())
 
-        self.button_restore_default_settings.clicked.connect(lambda: self.load_settings(defaults = True))
+        self.button_reset_settings.clicked.connect(lambda: self.load_settings(defaults = True))
         self.button_close.clicked.connect(self.accept)
 
         layout_search_terms = QGridLayout()
@@ -162,7 +162,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
         layout_buttons_right.setRowStretch(3, 1)
 
         layout_buttons_bottom = QGridLayout()
-        layout_buttons_bottom.addWidget(self.button_restore_default_settings, 0, 0)
+        layout_buttons_bottom.addWidget(self.button_reset_settings, 0, 0)
         layout_buttons_bottom.addWidget(self.button_close, 0, 1, Qt.AlignRight)
 
         self.setLayout(QGridLayout())
@@ -617,18 +617,18 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         self.group_box_exclusion.layout().setColumnStretch(1, 1)
         self.group_box_exclusion.layout().setColumnStretch(3, 1)
 
-        self.button_restore_default_settings = QPushButton(self.tr('Restore Default Settings'), self)
+        self.button_reset_settings = QPushButton(self.tr('Reset Settings'), self)
         self.button_ok = QPushButton(self.tr('OK'), self)
 
-        self.button_restore_default_settings.clicked.connect(self.restore_default_settings)
+        self.button_reset_settings.clicked.connect(self.reset_settings)
         self.button_ok.clicked.connect(self.accept)
 
-        self.button_restore_default_settings.setFixedWidth(150)
+        self.button_reset_settings.setFixedWidth(150)
 
         self.setLayout(QGridLayout())
         self.layout().addWidget(self.group_box_inclusion, 0, 0, Qt.AlignTop)
         self.layout().addWidget(self.group_box_exclusion, 0, 1, Qt.AlignTop)
-        self.layout().addWidget(self.button_restore_default_settings, 1, 0, Qt.AlignLeft)
+        self.layout().addWidget(self.button_reset_settings, 1, 0, Qt.AlignLeft)
         self.layout().addWidget(self.button_ok, 1, 1, Qt.AlignRight)
 
         self.layout().setColumnStretch(0, 1)
@@ -809,8 +809,8 @@ class Wordless_Dialog_Context_Settings(Wordless_Dialog):
         self.checkbox_inclusion_match_tags.token_settings_changed()
         self.checkbox_exclusion_match_tags.token_settings_changed()
 
-    def restore_default_settings(self):
-        reply = wordless_message_box.wordless_message_box_restore_default_settings(self.main)
+    def reset_settings(self):
+        reply = wordless_message_box.wordless_message_box_reset_settings(self.main)
 
         if reply == QMessageBox.Yes:
             self.load_settings(defaults = True)
