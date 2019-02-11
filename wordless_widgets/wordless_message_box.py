@@ -167,16 +167,17 @@ def wordless_message_box_error_ref_file(main):
                         '''),
                         QMessageBox.Ok)
 
-def wordless_message_box_auto_detection_failed(main,
-                                               files_encoding_detection_failed,
-                                               files_lang_detection_failed):
+def wordless_message_box_detection_failed(main,
+                                          files_detection_failed_encoding,
+                                          files_detection_failed_text_type,
+                                          files_detection_failed_lang):
     message = ''
 
-    if files_encoding_detection_failed or files_lang_detection_failed:
-        if files_encoding_detection_failed:
-            list_files = ''.join([f'<li>{file}</li>' for file in files_encoding_detection_failed])
+    if files_detection_failed_encoding or files_detection_failed_text_type or files_detection_failed_lang:
+        if files_detection_failed_encoding:
+            list_files = ''.join([f'<li>{file}</li>' for file in files_detection_failed_encoding])
 
-            if len(files_encoding_detection_failed) == 1:
+            if len(files_detection_failed_encoding) == 1:
                 message += main.tr(f'''
                                <div>Failed to detect the encoding of the following file:</div>
                                <ul>{list_files}</ul>
@@ -187,10 +188,24 @@ def wordless_message_box_auto_detection_failed(main,
                                <ol>{list_files}</ol>
                            ''')
 
-        if files_lang_detection_failed:
-            list_files = ''.join([f'<li>{file}</li>' for file in files_lang_detection_failed])
+        if files_detection_failed_text_type:
+            list_files = ''.join([f'<li>{file}</li>' for file in files_detection_failed_text_type])
 
-            if len(files_lang_detection_failed) == 1:
+            if len(files_detection_failed_text_type) == 1:
+                message += main.tr(f'''
+                               <div>Failed to detect the text type of the following file:</div>
+                               <ul>{list_files}</ul>
+                           ''')
+            else:
+                message += main.tr(f'''
+                               <div>Failed to detect the text type of the following files:</div>
+                               <ol>{list_files}</ol>
+                           ''')
+
+        if files_detection_failed_lang:
+            list_files = ''.join([f'<li>{file}</li>' for file in files_detection_failed_lang])
+
+            if len(files_detection_failed_lang) == 1:
                 message += main.tr(f'''
                                <div>Failed to detect the language of the following file:</div>
                                <ul>{list_files}</ul>

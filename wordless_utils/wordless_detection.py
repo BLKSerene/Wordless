@@ -9,6 +9,8 @@
 # All other rights reserved.
 #
 
+import re
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -18,6 +20,7 @@ import cchardet
 import langdetect
 import langid
 
+from wordless_text import wordless_matching
 from wordless_utils import wordless_conversion, wordless_misc
 
 def detect_encoding(main, file_path):
@@ -58,6 +61,67 @@ def detect_encoding(main, file_path):
         success = False
 
     return encoding, success
+
+def detect_text_type(main, file):
+    tagged_pos = False
+    tagged_non_pos = False
+
+    try:
+        with open(file['path'], 'r', encoding = file['encoding']) as f:
+            re_tags_pos = wordless_matching.get_re_tags(main, tags = 'pos')
+            re_tags_non_pos = wordless_matching.get_re_tags(main, tags = 'non_pos')
+
+            if main.settings_custom['auto_detection']['detection_settings']['number_lines_no_limit']:
+                for line in f:
+                    if re.search(re_tags_pos, line):
+                        tagged_pos = True
+
+                        break
+
+                f.seek(0)
+
+                for line in f:
+                    if re.search(re_tags_non_pos, line):
+                        tagged_non_pos = True
+
+                        break
+            else:
+                for i, line in enumerate(f):
+                    if i >= main.settings_custom['auto_detection']['detection_settings']['number_lines']:
+                        break
+
+                    if re.search(re_tags_pos, line):
+                        tagged_pos = True
+
+                        break
+
+                f.seek(0)
+
+                for i, line in enumerate(f):
+                    if i >= main.settings_custom['auto_detection']['detection_settings']['number_lines']:
+                        break
+
+                    if re.search(re_tags_non_pos, line):
+                        tagged_non_pos = True
+
+                        break
+
+        if tagged_pos and tagged_non_pos:
+            text_type = ('tokenized', 'tagged_both')
+        elif tagged_pos:
+            text_type = ('tokenized', 'tagged_pos')
+        elif tagged_non_pos:
+            text_type = ('untokenized', 'tagged_non_pos')
+        else:
+            text_type = ('untokenized', 'untagged')
+
+        success = True
+    except:
+        text_type = main.settings_custom['auto_detection']['default_settings']['default_text_type']
+
+        success = False
+
+    return text_type, success
 
 def detect_lang(main, file):
     text = ''

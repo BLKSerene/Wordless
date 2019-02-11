@@ -465,16 +465,20 @@ class Wordless_Settings(QDialog):
 
         self.label_auto_detection_default_lang = QLabel(self.tr('Default Language:'), self)
         self.combo_box_auto_detection_default_lang = wordless_box.Wordless_Combo_Box_Lang(self.main)
+        self.label_auto_detection_default_text_type = QLabel(self.tr('Default Text Type:'), self)
+        self.combo_box_auto_detection_default_text_type = wordless_box.Wordless_Combo_Box_Text_Type(self.main)
         self.label_auto_detection_default_encoding = QLabel(self.tr('Default Encoding:'), self)
         self.combo_box_auto_detection_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
 
         group_box_default_settings.setLayout(QGridLayout())
         group_box_default_settings.layout().addWidget(self.label_auto_detection_default_lang, 0, 0)
         group_box_default_settings.layout().addWidget(self.combo_box_auto_detection_default_lang, 0, 1)
-        group_box_default_settings.layout().addWidget(self.label_auto_detection_default_encoding, 1, 0)
-        group_box_default_settings.layout().addWidget(self.combo_box_auto_detection_default_encoding, 1, 1)
+        group_box_default_settings.layout().addWidget(self.label_auto_detection_default_text_type, 1, 0)
+        group_box_default_settings.layout().addWidget(self.combo_box_auto_detection_default_text_type, 1, 1)
+        group_box_default_settings.layout().addWidget(self.label_auto_detection_default_encoding, 2, 0)
+        group_box_default_settings.layout().addWidget(self.combo_box_auto_detection_default_encoding, 2, 1)
 
-        group_box_default_settings.layout().setColumnStretch(2, 1)
+        group_box_default_settings.layout().setColumnStretch(3, 1)
 
         self.settings_auto_detection.setLayout(QGridLayout())
         self.settings_auto_detection.layout().addWidget(group_box_detection_settings, 0, 0)
@@ -1676,6 +1680,7 @@ class Wordless_Settings(QDialog):
         self.checkbox_auto_detection_number_lines_no_limit.setChecked(settings['auto_detection']['detection_settings']['number_lines_no_limit'])
 
         self.combo_box_auto_detection_default_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['auto_detection']['default_settings']['default_lang']))
+        self.combo_box_auto_detection_default_text_type.setCurrentText(wordless_conversion.to_text_type_text(self.main, settings['auto_detection']['default_settings']['default_text_type']))
         self.combo_box_auto_detection_default_encoding.setCurrentText(wordless_conversion.to_encoding_text(self.main, settings['auto_detection']['default_settings']['default_encoding']))
 
         # Data
@@ -1946,6 +1951,7 @@ class Wordless_Settings(QDialog):
             settings['auto_detection']['detection_settings']['number_lines_no_limit'] = self.checkbox_auto_detection_number_lines_no_limit.isChecked()
 
             settings['auto_detection']['default_settings']['default_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_auto_detection_default_lang.currentText())
+            settings['auto_detection']['default_settings']['default_text_type'] = wordless_conversion.to_text_type_code(self.main, self.combo_box_auto_detection_default_text_type.currentText())
             settings['auto_detection']['default_settings']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_auto_detection_default_encoding.currentText())
 
             # Data

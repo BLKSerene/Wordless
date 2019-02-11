@@ -250,15 +250,6 @@ class Wordless_Main(QMainWindow):
         if reply:
             self.centralWidget().setSizes([self.height() - 210, 210])
 
-            self.wordless_file_area.setSizes([self.width() - 310, 310])
-            self.wordless_overview.setSizes([self.width() - 310, 310])
-            self.wordless_concordancer.setSizes([self.width() - 310, 310])
-            self.wordless_wordlist.setSizes([self.width() - 310, 310])
-            self.wordless_ngrams.setSizes([self.width() - 310, 310])
-            self.wordless_collocation.setSizes([self.width() - 310, 310])
-            self.wordless_colligation.setSizes([self.width() - 310, 310])
-            self.wordless_keywords.setSizes([self.width() - 310, 310])
-
     # Help -> Citing
     def help_citing(self):
         dialog_citing = wordless_citing.Wordless_Dialog_Citing(self)

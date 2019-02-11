@@ -27,6 +27,7 @@ def init_settings_default(main):
 
             'auto_detection_settings': {
                 'detect_langs': True,
+                'detect_text_types': True,
                 'detect_encodings': True
             }
         },
@@ -977,6 +978,7 @@ def init_settings_default(main):
 
             'default_settings': {
                 'default_lang': 'eng',
+                'default_text_type': ('untokenized', 'untagged'),
                 'default_encoding': 'utf_8'
             }
         },

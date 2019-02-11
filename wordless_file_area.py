@@ -41,64 +41,37 @@ class Wordless_Files():
 
     def _new_file(self, file_path):
         new_file = {}
-        success_encoding_detection = True
-        success_lang_detection = True
-        tagged_pos = False
-        tagged_non_pos = False
 
         new_file['selected'] = True
         new_file['path'] = os.path.normpath(file_path)
         new_file['name'], _ = os.path.splitext(os.path.basename(new_file['path']))
         new_file['name_old'] = new_file['name']
 
-        # Detect encoding
+        # Detect encodings
         if self.main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
             (new_file['encoding'],
-             success_encoding_detection) = wordless_detection.detect_encoding(self.main, new_file['path'])
+             detection_success_encoding) = wordless_detection.detect_encoding(self.main, new_file['path'])
         else:
             new_file['encoding'] = self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
 
-        # Detect text type
-        try:
-            with open(new_file['path'], 'r', encoding = new_file['encoding']) as f:
-                re_tags_pos = wordless_matching.get_re_tags(self.main, tags = 'pos')
-                re_tags_non_pos = wordless_matching.get_re_tags(self.main, tags = 'non_pos')
+        # Detect text types
+        if self.main.settings_custom['files']['auto_detection_settings']['detect_text_types']:
+            (new_file['text_type'],
+             detection_success_text_type) = wordless_detection.detect_text_type(self.main, new_file)
+        else:
+            new_file['text_type'] = self.main.settings_custom['auto_detection']['default_settings']['default_text_type']
 
-                for line in f:
-                    if re.search(re_tags_pos, line):
-                        tagged_pos = True
-
-                        break
-
-                f.seek(0)
-
-                for line in f:
-                    if re.search(re_tags_non_pos, line):
-                        tagged_non_pos = True
-
-                        break
-
-            if tagged_pos and tagged_non_pos:
-                new_file['text_type'] = ('tokenized', 'tagged_both')
-            elif tagged_pos:
-                new_file['text_type'] = ('tokenized', 'tagged_pos')
-            elif tagged_non_pos:
-                new_file['text_type'] = ('untokenized', 'tagged_non_pos')
-            else:
-                new_file['text_type'] = ('untokenized', 'untagged')
-        except:
-            new_file['text_type'] = ('untokenized', 'untagged')
-
-        # Detect language
+        # Detect languages
         if self.main.settings_custom['files']['auto_detection_settings']['detect_langs']:
             (new_file['lang'],
-             success_lang_detection) = wordless_detection.detect_lang(self.main, new_file)
+             detection_success_lang) = wordless_detection.detect_lang(self.main, new_file)
         else:
             new_file['lang'] = self.main.settings_custom['auto_detection']['default_settings']['default_lang']
 
         return (new_file,
-                success_encoding_detection,
-                success_lang_detection)
+                detection_success_encoding,
+                detection_success_text_type,
+                detection_success_lang)
 
     @ wordless_misc.log_timing
     def add_files(self, file_paths):
@@ -158,8 +131,9 @@ class Wordless_Files():
 
         new_files = []
 
-        files_encoding_detection_failed = []
-        files_lang_detection_failed = []
+        files_detection_failed_encoding = []
+        files_detection_failed_text_type = []
+        files_detection_failed_lang = []
 
         self.main.settings_custom['import']['files']['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
@@ -186,16 +160,20 @@ class Wordless_Files():
             # Text Files
             if file_ext == '.txt':
                 (new_file,
-                 success_encoding_detection,
-                 success_lang_detection) = self._new_file(file_path)
+                 detection_success_encoding,
+                 detection_success_text_type,
+                 detection_success_lang) = self._new_file(file_path)
 
                 new_files.append(new_file)
 
-                if not success_encoding_detection:
-                    files_encoding_detection_failed.append(new_file['path'])
+                if not detection_success_encoding:
+                    files_detection_failed_encoding.append(new_file['path'])
 
-                if not success_lang_detection:
-                    files_lang_detection_failed.append(new_file['path'])
+                if not detection_success_text_type:
+                    files_detection_failed_text_type.append(new_file['path'])
+
+                if not detection_success_lang:
+                    files_detection_failed_lang.append(new_file['path'])
             else:
                 if file_ext == ['.docx', '.xlsx', '.xls']:
                     new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
@@ -334,16 +312,20 @@ class Wordless_Files():
 
                     for new_path in new_paths:
                         (new_file,
-                         success_encoding_detection,
-                         success_lang_detection) = self._new_file(new_path)
+                         detection_success_encoding,
+                         detection_success_text_type,
+                         detection_success_lang) = self._new_file(new_path)
 
                         new_files.append(new_file)
 
-                        if not success_encoding_detection:
-                            files_encoding_detection_failed.append(new_file['path'])
+                        if not detection_success_encoding:
+                            files_detection_failed_encoding.append(new_file['path'])
 
-                        if not success_lang_detection:
-                            files_lang_detection_failed.append(new_file['path'])
+                        if not detection_success_text_type:
+                            files_detection_failed_text_type.append(new_file['path'])
+
+                        if not detection_success_lang:
+                            files_detection_failed_lang.append(new_file['path'])
 
         len_files_old = len(self.main.settings_custom['files']['files_open'])
 
@@ -353,9 +335,10 @@ class Wordless_Files():
 
             self.main.settings_custom['files']['files_open'].append(new_file)
 
-        wordless_message_box.wordless_message_box_auto_detection_failed(self.main,
-                                                                        files_encoding_detection_failed,
-                                                                        files_lang_detection_failed)
+        wordless_message_box.wordless_message_box_detection_failed(self.main,
+                                                                   files_detection_failed_encoding,
+                                                                   files_detection_failed_text_type,
+                                                                   files_detection_failed_lang)
 
         self.update_table()
 
@@ -675,6 +658,7 @@ def init(main):
         checkbox_subfolders.setChecked(settings['folder_settings']['subfolders'])
 
         checkbox_detect_langs.setChecked(settings['auto_detection_settings']['detect_langs'])
+        checkbox_detect_text_types.setChecked(settings['auto_detection_settings']['detect_text_types'])
         checkbox_detect_encodings.setChecked(settings['auto_detection_settings']['detect_encodings'])
 
         folder_settings_changed()
@@ -689,6 +673,7 @@ def init(main):
         settings = main.settings_custom['files']['auto_detection_settings']
 
         settings['detect_langs'] = checkbox_detect_langs.isChecked()
+        settings['detect_text_types'] = checkbox_detect_text_types.isChecked()
         settings['detect_encodings'] = checkbox_detect_encodings.isChecked()
     
     wrapper_file_area = wordless_layout.Wordless_Wrapper(main, load_settings)
@@ -719,17 +704,20 @@ def init(main):
     group_box_auto_detection_settings = QGroupBox(main.tr('Auto-detection Settings'), main)
 
     checkbox_detect_langs = QCheckBox(main.tr('Detect Languages'), main)
+    checkbox_detect_text_types = QCheckBox(main.tr('Detect Text Types'), main)
     checkbox_detect_encodings = QCheckBox(main.tr('Detect Encodings'), main)
 
     checkbox_detect_langs.stateChanged.connect(auto_detection_settings_changed)
+    checkbox_detect_text_types.stateChanged.connect(auto_detection_settings_changed)
     checkbox_detect_encodings.stateChanged.connect(auto_detection_settings_changed)
 
     group_box_auto_detection_settings.setLayout(QGridLayout())
     group_box_auto_detection_settings.layout().addWidget(checkbox_detect_langs, 0, 0)
+    group_box_auto_detection_settings.layout().addWidget(checkbox_detect_text_types, 0, 1)
     group_box_auto_detection_settings.layout().addWidget(checkbox_detect_encodings, 1, 0)
 
-    wrapper_file_area.layout_settings.addWidget(group_box_folder_settings, 0, 0, Qt.AlignTop)
-    wrapper_file_area.layout_settings.addWidget(group_box_auto_detection_settings, 1, 0, Qt.AlignTop)
+    wrapper_file_area.layout_settings.addWidget(group_box_folder_settings, 0, 0)
+    wrapper_file_area.layout_settings.addWidget(group_box_auto_detection_settings, 1, 0)
 
     wrapper_file_area.layout_settings.setRowStretch(2, 1)
 
