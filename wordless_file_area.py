@@ -690,7 +690,7 @@ def init(main):
 
         settings['detect_langs'] = checkbox_detect_langs.isChecked()
         settings['detect_encodings'] = checkbox_detect_encodings.isChecked()
-
+    
     wrapper_file_area = wordless_layout.Wordless_Wrapper(main, load_settings)
 
     table_files = Wordless_Table_Files(main)
