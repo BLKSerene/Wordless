@@ -31,6 +31,20 @@ class Wordless_Message_Box_Info(QMessageBox):
         self.setTextFormat(Qt.RichText)
         self.setTextInteractionFlags(Qt.TextBrowserInteraction)
 
+def wordless_message_box_exit(main):
+    reply = QMessageBox.question(main,
+                                 main.tr('Exit Confirmation'),
+                                 main.tr(f'''{main.settings_global['styles']['style_dialog']}
+                                             <body>
+                                                 <div>Do you really want to quit?</div>
+                                                 <div><span style="color: #F00; font-weight: bold;">Note</span>: All unsaved data and figures will be lost.</div>
+                                             </body>
+                                         '''),
+                                 QMessageBox.Yes | QMessageBox.No,
+                                 QMessageBox.No)
+
+    return reply
+
 # Files
 def wordless_message_box_error_files(main,
                                      files_missing = [],
@@ -240,14 +254,28 @@ def wordless_message_box_duplicate_stop_words(main):
                             </body>
                         '''))
 
-# Tabs
-def wordless_message_box_restore_default_settings(main):
+# Resettings
+def wordless_message_box_reset_settings(main):
     reply = QMessageBox.question(main,
-                                 main.tr('Restore Default Settings'),
+                                 main.tr('Reset Settings'),
                                  main.tr(f'''
                                      {main.settings_global['styles']['style_dialog']}
                                      <body>
-                                         <div>Do you really want to reset all settings to defaults?</div>
+                                         <div>Do you really want to reset all settings to their defaults?</div>
+                                     </body>
+                                 '''),
+                                 QMessageBox.Yes | QMessageBox.No,
+                                 QMessageBox.No)
+
+    return reply
+
+def wordless_message_box_reset_layouts(main):
+    reply = QMessageBox.question(main,
+                                 main.tr('Reset Layouts'),
+                                 main.tr(f'''
+                                     {main.settings_global['styles']['style_dialog']}
+                                     <body>
+                                         <div>Do you really want to reset all layouts to their default settings?</div>
                                      </body>
                                  '''),
                                  QMessageBox.Yes | QMessageBox.No,
@@ -296,7 +324,24 @@ def wordless_message_box_empty_search_term(main):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <div>Please enter your search term(s) first!</div>
+                                <div>You haven't specify any search term yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
+                                </div>
+                            </body>
+                        '''),
+                        QMessageBox.Ok)
+
+def wordless_message_box_empty_search_term_optional(main):
+    QMessageBox.warning(main,
+                        main.tr('Empty Search Term'),
+                        main.tr(f'''
+                            {main.settings_global['styles']['style_dialog']}
+                            <body>
+                                <div>You haven't specify any search term yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
+                                </div>
+
+                                <div>
+                                    Or, you can disable searching altogether by unchecking "<span style="color: #F00; font-weight: bold;">Search Settings</span>", which will then generate all possible results, but it is not recommended to do so since the processing speed might be too slow.
+                                </div>
                             </body>
                         '''),
                         QMessageBox.Ok)

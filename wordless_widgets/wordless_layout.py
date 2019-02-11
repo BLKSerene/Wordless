@@ -19,22 +19,19 @@ class Wordless_Splitter(QSplitter):
     def __init__(self, orientation, parent):
         super().__init__(orientation, parent)
 
-        self.setHandleWidth(1)
+        self.setHandleWidth(0)
         self.setChildrenCollapsible(False)
 
 class Wordless_Scroll_Area(QScrollArea):
-    def __init__(self, parent, wrapped_widget = None):
+    def __init__(self, parent):
         super().__init__(parent)
-
-        if wrapped_widget:
-            self.setWidget(wrapped_widget)
 
         self.setWidgetResizable(True)
         self.setBackgroundRole(QPalette.Light)
 
-class Wordless_Wrapper(Wordless_Splitter):
+class Wordless_Wrapper(QWidget):
     def __init__(self, main, load_settings):
-        super().__init__(Qt.Horizontal, main)
+        super().__init__(main)
 
         self.main = main
         self.load_settings = load_settings
@@ -53,25 +50,33 @@ class Wordless_Wrapper(Wordless_Splitter):
 
         self.wrapper_right = QWidget(self)
 
+        self.wrapper_right.setFixedWidth(320)
+
         wrapper_settings = QWidget(self)
         wrapper_settings.setLayout(QGridLayout())
 
-        self.scroll_area_settings = Wordless_Scroll_Area(self.main, wrapper_settings)
-        button_restore_default_settings = QPushButton(self.tr('Restore Default Settings'), self.main)
+        wrapper_settings.layout().setContentsMargins(6, 4, 6, 4)
 
-        button_restore_default_settings.clicked.connect(self.restore_default_settings)
+        self.scroll_area_settings = Wordless_Scroll_Area(self.main)
+        button_reset_settings = QPushButton(self.tr('Reset Settings'), self.main)
+
+        self.scroll_area_settings.setWidget(wrapper_settings)
+
+        button_reset_settings.clicked.connect(self.reset_settings)
 
         self.wrapper_right.setLayout(QGridLayout())
         self.wrapper_right.layout().addWidget(self.scroll_area_settings, 0, 0)
-        self.wrapper_right.layout().addWidget(button_restore_default_settings, 1, 0)
+        self.wrapper_right.layout().addWidget(button_reset_settings, 1, 0)
 
-        self.addWidget(self.wrapper_left)
-        self.addWidget(self.wrapper_right)
+        self.setLayout(QGridLayout())
+        self.layout().addWidget(self.wrapper_left, 0, 0)
+        self.layout().addWidget(self.wrapper_right, 0, 1)
+
+        self.layout().setContentsMargins(2, 0, 2, 0)
+        self.layout().setSpacing(0)
 
         self.layout_table = self.wrapper_left.layout()
         self.layout_settings = wrapper_settings.layout()
-
-        self.layout_settings.setContentsMargins(6, 4, 6, 4)
 
     # If you subclass from QWidget, you need to provide a paintEvent for your custom QWidget as below.
     # See: https://doc.qt.io/qt-5/stylesheet-reference.html#list-of-stylable-widgets - QWidget
@@ -81,8 +86,8 @@ class Wordless_Wrapper(Wordless_Splitter):
         p = QPainter(self);
         self.style().drawPrimitive(QStyle.PE_Widget, opt, p, self);
         
-    def restore_default_settings(self):
-        reply = wordless_message_box.wordless_message_box_restore_default_settings(self.main)
+    def reset_settings(self):
+        reply = wordless_message_box.wordless_message_box_reset_settings(self.main)
 
         if reply == QMessageBox.Yes:
             self.load_settings(defaults = True)
