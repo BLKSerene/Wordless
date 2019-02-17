@@ -1,5 +1,5 @@
 #
-# Wordless: Help
+# Wordless: Testing
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
@@ -10,10 +10,5 @@
 #
 
 __all__ = [
-    'wordless_about',
-    'wordless_acks',
-    'wordless_changelog',
-    'wordless_check_updates',
-    'wordless_citing',
-    'wordless_donating'
+    'testing_init'
 ]

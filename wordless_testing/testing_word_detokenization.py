@@ -36,7 +36,7 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentences, lang =
 print('Chinese (Simplified) / Wordless - Chinese Word Detokenizer:')
 
 text = wordless_text_processing.wordless_word_detokenize(main, tokens,
-												         lang = 'zho_cn',
+                                                         lang = 'zho_cn',
                                                          word_detokenizer = 'Wordless - Chinese Word Detokenizer')
 
 print(f"\t{text}")
@@ -50,7 +50,7 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentences, lang =
 print('English / NLTK - Penn Treebank Detokenizer:')
 
 text = wordless_text_processing.wordless_word_detokenize(main, tokens,
-														 lang = 'eng',
+                                                         lang = 'eng',
                                                          word_detokenizer = 'NLTK - Penn Treebank Detokenizer')
 
 print(f'\t{text}')
@@ -58,7 +58,7 @@ print(f'\t{text}')
 print('English / SacreMoses - Moses Detokenizer:')
 
 text = wordless_text_processing.wordless_word_detokenize(main, tokens,
-														 lang = 'eng',
+                                                         lang = 'eng',
                                                          word_detokenizer = 'SacreMoses - Moses Detokenizer')
 
 print(f'\t{text}')
@@ -72,7 +72,7 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentences, lang =
 print('Japanese / Wordless - Japanese Word Detokenizer:')
 
 text = wordless_text_processing.wordless_word_detokenize(main, tokens,
-														 lang = 'jpn',
+                                                         lang = 'jpn',
                                                          word_detokenizer = 'Wordless - Japanese Word Detokenizer')
 
 print(f'\t{text}')
@@ -86,7 +86,7 @@ tokens = wordless_text_processing.wordless_word_tokenize(main, sentences, lang =
 print('Thai / Wordless - Thai Word Detokenizer:')
 
 text = wordless_text_processing.wordless_word_detokenize(main, tokens,
-														 lang = 'tha',
+                                                         lang = 'tha',
                                                          word_detokenizer = 'Wordless - Thai Word Detokenizer')
 
 print(f'\t{text}')

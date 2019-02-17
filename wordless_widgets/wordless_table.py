@@ -17,19 +17,11 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-import numpy
 import openpyxl
 
 from wordless_checking import wordless_checking_misc
 from wordless_widgets import wordless_box, wordless_message_box
-from wordless_utils import wordless_conversion
-
-class Wordless_Label_Html(QLabel):
-    def __init__(self, label, parent):
-        super().__init__(label, parent)
-
-        self.setTextFormat(Qt.RichText)
-        self.setOpenExternalLinks(True)
+from wordless_utils import wordless_misc
 
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
@@ -44,19 +36,19 @@ class Wordless_Table_Item(QTableWidgetItem):
         return self.read_data() < other.read_data()
 
 class Wordless_Table(QTableWidget):
-    def __init__(self, main, headers, header_orientation = 'horizontal',
+    def __init__(self, parent, headers, header_orientation = 'horizontal',
                  cols_stretch = [], drag_drop_enabled = False):
-        self.main = main
+        self.main = wordless_misc.find_wordless_main(parent)
         self.headers = headers
         self.header_orientation = header_orientation
         self.cols_stretch = cols_stretch
 
         if header_orientation == 'horizontal':
-            super().__init__(1, len(self.headers), self.main)
+            super().__init__(1, len(self.headers), parent)
 
             self.setHorizontalHeaderLabels(self.headers)
         else:
-            super().__init__(len(self.headers), 1, self.main)
+            super().__init__(len(self.headers), 1, parent)
 
             self.setVerticalHeaderLabels(self.headers)
 
@@ -203,7 +195,7 @@ class Wordless_Table(QTableWidget):
 
                     self.item(row, col).setSelected(True)
                 elif isinstance(item, QComboBox):
-                    item_combo_box = wordless_box.Wordless_Combo_Box(self.main)
+                    item_combo_box = wordless_box.Wordless_Combo_Box(self)
                     item_combo_box.addItems([item.itemText(i) for i in range(item.count())])
                     item_combo_box.setCurrentText(item.currentText())
 
