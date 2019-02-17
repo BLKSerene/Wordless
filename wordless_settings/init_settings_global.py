@@ -240,13 +240,13 @@ def init_settings_global(main):
         },
 
         'text_types': {
-            main.tr('Untokenized / Untagged'): ('untokenized', 'untagged'),
-            main.tr('Untokenized / Tagged (Non-POS)'): ('untokenized', 'tagged_non_pos'),
+            main.tr('Untokenized / Untagged'): ['untokenized', 'untagged'],
+            main.tr('Untokenized / Tagged (Non-POS)'): ['untokenized', 'tagged_non_pos'],
 
-            main.tr('Tokenized / Untagged'): ('tokenized', 'untagged'),
-            main.tr('Tokenized / Tagged (POS)'): ('tokenized', 'tagged_pos'),
-            main.tr('Tokenized / Tagged (Non-POS)'): ('tokenized', 'tagged_non_pos'),
-            main.tr('Tokenized / Tagged (Both)'): ('tokenized', 'tagged_both')
+            main.tr('Tokenized / Untagged'): ['tokenized', 'untagged'],
+            main.tr('Tokenized / Tagged (POS)'): ['tokenized', 'tagged_pos'],
+            main.tr('Tokenized / Tagged (Non-POS)'): ['tokenized', 'tagged_non_pos'],
+            main.tr('Tokenized / Tagged (Both)'): ['tokenized', 'tagged_both']
         },
 
         'file_encodings': {
@@ -1892,6 +1892,10 @@ def init_settings_global(main):
                             margin-bottom: 5px;
                         }
 
+                        ul {
+                            margin-bottom: 5px;
+                        }
+
                         li {
                             margin-left: -30px;
                         }
@@ -1924,17 +1928,7 @@ def init_settings_global(main):
             ''',
 
             'style_hints': '''
-                <head>
-                    <style>
-                        * {
-                            margin: 0;
-                            border: 0;
-                            padding: 0;
-
-                            color: #777;
-                        }
-                    </style>
-                </head>
+                color: #777;
             '''
         }
     }

@@ -107,13 +107,13 @@ def detect_text_type(main, file):
                         break
 
         if tagged_pos and tagged_non_pos:
-            text_type = ('tokenized', 'tagged_both')
+            text_type = ['tokenized', 'tagged_both']
         elif tagged_pos:
-            text_type = ('tokenized', 'tagged_pos')
+            text_type = ['tokenized', 'tagged_pos']
         elif tagged_non_pos:
-            text_type = ('untokenized', 'tagged_non_pos')
+            text_type = ['untokenized', 'tagged_non_pos']
         else:
-            text_type = ('untokenized', 'untagged')
+            text_type = ['untokenized', 'untagged']
 
         success = True
     except:

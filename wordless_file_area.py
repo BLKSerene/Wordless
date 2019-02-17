@@ -42,6 +42,10 @@ class Wordless_Files():
     def _new_file(self, file_path):
         new_file = {}
 
+        detection_success_encoding = True
+        detection_success_text_type = True
+        detection_success_lang = True
+
         new_file['selected'] = True
         new_file['path'] = os.path.normpath(file_path)
         new_file['name'], _ = os.path.splitext(os.path.basename(new_file['path']))
@@ -137,18 +141,16 @@ class Wordless_Files():
 
         self.main.settings_custom['import']['files']['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
-        file_paths, files_missing = wordless_checking_file.check_files_missing(self.main, file_paths)
         file_paths, files_empty = wordless_checking_file.check_files_empty(self.main, file_paths)
         file_paths, files_duplicate = wordless_checking_file.check_files_duplicate(self.main, file_paths)
         file_paths, files_unsupported = wordless_checking_file.check_files_unsupported(self.main, file_paths)
-        file_paths, files_encoding_error = wordless_checking_file.check_files_encoding_error(self.main, file_paths)
+        file_paths, files_parsing_error = wordless_checking_file.check_files_parsing_error(self.main, file_paths)
 
-        wordless_message_box.wordless_message_box_error_files(self.main,
-                                                              files_missing = files_missing,
-                                                              files_empty = files_empty,
-                                                              files_duplicate = files_duplicate,
-                                                              files_unsupported = files_unsupported,
-                                                              files_encoding_error = files_encoding_error)
+        wordless_message_box.wordless_message_box_file_error_on_opening(self.main,
+                                                                        files_empty = files_empty,
+                                                                        files_duplicate = files_duplicate,
+                                                                        files_unsupported = files_unsupported,
+                                                                        files_parsing_error = files_parsing_error)
 
         for file_path in file_paths:
             default_dir = wordless_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
@@ -370,9 +372,9 @@ class Wordless_Files():
 
             for i, file in enumerate(files):
                 checkbox_name = QTableWidgetItem(file['name'])
-                combo_box_lang = wordless_box.Wordless_Combo_Box_Lang(self.main)
-                combo_box_text_type = wordless_box.Wordless_Combo_Box_Text_Type(self.main)
-                combo_box_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
+                combo_box_lang = wordless_box.Wordless_Combo_Box_Lang(self.table)
+                combo_box_text_type = wordless_box.Wordless_Combo_Box_Text_Type(self.table)
+                combo_box_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.table)
 
                 if file['selected']:
                     checkbox_name.setCheckState(Qt.Checked)
@@ -430,14 +432,14 @@ class Wordless_Files():
         return None
 
 class Wordless_Table_Files(wordless_table.Wordless_Table):
-    def __init__(self, main):
-        super().__init__(main,
+    def __init__(self, parent):
+        super().__init__(parent,
                          headers = [
-                             main.tr('File Name'),
-                             main.tr('Language'),
-                             main.tr('Text Type'),
-                             main.tr('Path'),
-                             main.tr('Encoding')
+                             parent.tr('File Name'),
+                             parent.tr('Language'),
+                             parent.tr('Text Type'),
+                             parent.tr('Path'),
+                             parent.tr('Encoding')
                          ],
                          drag_drop_enabled = True)
 
@@ -648,100 +650,100 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
     def close_all(self):
         self.main.wordless_files.remove_files(list(range(len(self.main.settings_custom['files']['files_open']))))
 
-def init(main):
-    def load_settings(defaults = False):
+class Wrapper_File_Area(wordless_layout.Wordless_Wrapper):
+    def __init__(self, main):
+        super().__init__(main)
+
+        # Table
+        self.table_files = Wordless_Table_Files(self)
+
+        self.wrapper_table.layout().addWidget(self.table_files, 0, 0, 1, 4)
+        self.wrapper_table.layout().addWidget(self.table_files.button_open_files, 1, 0)
+        self.wrapper_table.layout().addWidget(self.table_files.button_open_dir, 1, 1)
+        self.wrapper_table.layout().addWidget(self.table_files.button_reopen, 1, 2)
+        self.wrapper_table.layout().addWidget(self.table_files.button_select_all, 2, 0)
+        self.wrapper_table.layout().addWidget(self.table_files.button_invert_selection, 2, 1)
+        self.wrapper_table.layout().addWidget(self.table_files.button_deselect_all, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_files.button_close_selected, 1, 3)
+        self.wrapper_table.layout().addWidget(self.table_files.button_close_all, 2, 3)
+
+        # Folder Settings
+        self.group_box_folder_settings = QGroupBox(self.tr('Folder Settings'), self)
+
+        self.checkbox_subfolders = QCheckBox(self.tr('Subfolders'), self)
+
+        self.checkbox_subfolders.stateChanged.connect(self.folder_settings_changed)
+
+        self.group_box_folder_settings.setLayout(QGridLayout())
+        self.group_box_folder_settings.layout().addWidget(self.checkbox_subfolders, 0, 0)
+
+        # Auto-detection Settings
+        self.group_box_auto_detection_settings = QGroupBox(self.tr('Auto-detection Settings'), self)
+
+        self.checkbox_detect_langs = QCheckBox(self.tr('Detect Languages'), self)
+        self.checkbox_detect_text_types = QCheckBox(self.tr('Detect Text Types'), self)
+        self.checkbox_detect_encodings = QCheckBox(self.tr('Detect Encodings'), self)
+
+        self.checkbox_detect_langs.stateChanged.connect(self.auto_detection_settings_changed)
+        self.checkbox_detect_text_types.stateChanged.connect(self.auto_detection_settings_changed)
+        self.checkbox_detect_encodings.stateChanged.connect(self.auto_detection_settings_changed)
+
+        self.group_box_auto_detection_settings.setLayout(QGridLayout())
+        self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_langs, 0, 0)
+        self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_text_types, 0, 1)
+        self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_encodings, 1, 0)
+
+        self.wrapper_settings.layout().addWidget(self.group_box_folder_settings, 0, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_auto_detection_settings, 1, 0)
+
+        self.wrapper_settings.layout().setRowStretch(2, 1)
+
+        self.load_settings()
+
+        # Load files
+        self.main.wordless_files = Wordless_Files(self.table_files)
+
+        files = copy.deepcopy(self.main.settings_custom['files']['files_open'])
+        file_paths = [file['path'] for file in files]
+
+        file_paths, files_missing = wordless_checking_file.check_files_missing(self.main, file_paths)
+        file_paths, files_empty = wordless_checking_file.check_files_empty(self.main, file_paths)
+
+        wordless_message_box.wordless_message_box_file_error_on_startup(self.main,
+                                                                        files_missing = files_missing,
+                                                                        files_empty = files_empty)
+
+        self.main.settings_custom['files']['files_open'].clear()
+
+        for file in files:
+            if file['path'] in file_paths:
+                self.main.settings_custom['files']['files_open'].append(file)
+
+        self.main.wordless_files.update_table()
+
+    def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(main.settings_default['files'])
+            settings = copy.deepcopy(self.main.settings_default['files'])
         else:
-            settings = copy.deepcopy(main.settings_custom['files'])
+            settings = copy.deepcopy(self.main.settings_custom['files'])
 
-        checkbox_subfolders.setChecked(settings['folder_settings']['subfolders'])
+        self.checkbox_subfolders.setChecked(settings['folder_settings']['subfolders'])
 
-        checkbox_detect_langs.setChecked(settings['auto_detection_settings']['detect_langs'])
-        checkbox_detect_text_types.setChecked(settings['auto_detection_settings']['detect_text_types'])
-        checkbox_detect_encodings.setChecked(settings['auto_detection_settings']['detect_encodings'])
+        self.checkbox_detect_langs.setChecked(settings['auto_detection_settings']['detect_langs'])
+        self.checkbox_detect_text_types.setChecked(settings['auto_detection_settings']['detect_text_types'])
+        self.checkbox_detect_encodings.setChecked(settings['auto_detection_settings']['detect_encodings'])
 
-        folder_settings_changed()
-        auto_detection_settings_changed()
+        self.folder_settings_changed()
+        self.auto_detection_settings_changed()
 
-    def folder_settings_changed():
-        settings = main.settings_custom['files']['folder_settings']
+    def folder_settings_changed(self):
+        settings = self.main.settings_custom['files']['folder_settings']
 
-        settings['subfolders'] = checkbox_subfolders.isChecked()
+        settings['subfolders'] = self.checkbox_subfolders.isChecked()
 
-    def auto_detection_settings_changed():
-        settings = main.settings_custom['files']['auto_detection_settings']
+    def auto_detection_settings_changed(self):
+        settings = self.main.settings_custom['files']['auto_detection_settings']
 
-        settings['detect_langs'] = checkbox_detect_langs.isChecked()
-        settings['detect_text_types'] = checkbox_detect_text_types.isChecked()
-        settings['detect_encodings'] = checkbox_detect_encodings.isChecked()
-    
-    wrapper_file_area = wordless_layout.Wordless_Wrapper(main, load_settings)
-
-    table_files = Wordless_Table_Files(main)
-
-    wrapper_file_area.layout_table.addWidget(table_files, 0, 0, 1, 4)
-    wrapper_file_area.layout_table.addWidget(table_files.button_open_files, 1, 0)
-    wrapper_file_area.layout_table.addWidget(table_files.button_open_dir, 1, 1)
-    wrapper_file_area.layout_table.addWidget(table_files.button_reopen, 1, 2)
-    wrapper_file_area.layout_table.addWidget(table_files.button_select_all, 2, 0)
-    wrapper_file_area.layout_table.addWidget(table_files.button_invert_selection, 2, 1)
-    wrapper_file_area.layout_table.addWidget(table_files.button_deselect_all, 2, 2)
-    wrapper_file_area.layout_table.addWidget(table_files.button_close_selected, 1, 3)
-    wrapper_file_area.layout_table.addWidget(table_files.button_close_all, 2, 3)
-
-    # Folder Settings
-    group_box_folder_settings = QGroupBox(main.tr('Folder Settings'), main)
-
-    checkbox_subfolders = QCheckBox(main.tr('Subfolders'), main)
-
-    checkbox_subfolders.stateChanged.connect(folder_settings_changed)
-
-    group_box_folder_settings.setLayout(QGridLayout())
-    group_box_folder_settings.layout().addWidget(checkbox_subfolders, 0, 0)
-
-    # Auto-detection Settings
-    group_box_auto_detection_settings = QGroupBox(main.tr('Auto-detection Settings'), main)
-
-    checkbox_detect_langs = QCheckBox(main.tr('Detect Languages'), main)
-    checkbox_detect_text_types = QCheckBox(main.tr('Detect Text Types'), main)
-    checkbox_detect_encodings = QCheckBox(main.tr('Detect Encodings'), main)
-
-    checkbox_detect_langs.stateChanged.connect(auto_detection_settings_changed)
-    checkbox_detect_text_types.stateChanged.connect(auto_detection_settings_changed)
-    checkbox_detect_encodings.stateChanged.connect(auto_detection_settings_changed)
-
-    group_box_auto_detection_settings.setLayout(QGridLayout())
-    group_box_auto_detection_settings.layout().addWidget(checkbox_detect_langs, 0, 0)
-    group_box_auto_detection_settings.layout().addWidget(checkbox_detect_text_types, 0, 1)
-    group_box_auto_detection_settings.layout().addWidget(checkbox_detect_encodings, 1, 0)
-
-    wrapper_file_area.layout_settings.addWidget(group_box_folder_settings, 0, 0)
-    wrapper_file_area.layout_settings.addWidget(group_box_auto_detection_settings, 1, 0)
-
-    wrapper_file_area.layout_settings.setRowStretch(2, 1)
-
-    load_settings()
-
-    # Load files
-    main.wordless_files = Wordless_Files(table_files)
-
-    files = copy.deepcopy(main.settings_custom['files']['files_open'])
-    file_paths = [file['path'] for file in files]
-
-    file_paths, files_missing = wordless_checking_file.check_files_missing(main, file_paths)
-    file_paths, files_empty = wordless_checking_file.check_files_empty(main, file_paths)
-
-    wordless_message_box.wordless_message_box_error_files(main,
-                                                          files_missing = files_missing,
-                                                          files_empty = files_empty)
-
-    main.settings_custom['files']['files_open'].clear()
-
-    for file in files:
-        if file['path'] in file_paths:
-            main.settings_custom['files']['files_open'].append(file)
-
-    main.wordless_files.update_table()
-
-    return wrapper_file_area
+        settings['detect_langs'] = self.checkbox_detect_langs.isChecked()
+        settings['detect_text_types'] = self.checkbox_detect_text_types.isChecked()
+        settings['detect_encodings'] = self.checkbox_detect_encodings.isChecked()

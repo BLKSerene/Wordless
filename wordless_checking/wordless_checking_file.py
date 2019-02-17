@@ -75,8 +75,8 @@ def check_files_unsupported(main, file_paths):
 
     return files_ok, files_unsupported
 
-def check_files_encoding_error(main, file_paths):
-    files_encoding_error = []
+def check_files_parsing_error(main, file_paths):
+    files_parsing_error = []
     files_ok = []
 
     for file_path in file_paths:
@@ -91,13 +91,13 @@ def check_files_encoding_error(main, file_paths):
             try:
                 open(file_path, 'r', encoding = encoding).read()
             except:
-                files_encoding_error.append(file_path)
+                files_parsing_error.append(file_path)
             else:
                 files_ok.append(file_path)
         else:
             files_ok.append(file_path)
 
-    return files_ok, files_encoding_error
+    return files_ok, files_parsing_error
 
 def check_files_loading_error(main, file_paths, encodings):
     files_loading_error = []
@@ -113,27 +113,55 @@ def check_files_loading_error(main, file_paths, encodings):
 
     return files_ok, files_loading_error
 
-def check_files_loading(main, files):
-    file_paths = [file['path'] for file in files]
+def check_files_on_loading(main, files):
+    loading_ok = True
 
-    file_paths, files_missing = check_files_missing(main, file_paths)
-    file_paths, files_empty = check_files_empty(main, file_paths)
+    if files:
+        file_paths = [file['path'] for file in files]
 
-    encodings = [file['encoding']
-                 for file in files
-                 if file['path'] in file_paths]
+        file_paths, files_missing = check_files_missing(main, file_paths)
+        file_paths, files_empty = check_files_empty(main, file_paths)
 
-    file_paths, files_loading_error = check_files_loading_error(main, file_paths, encodings)
+        encodings = [file['encoding']
+                     for file in files
+                     if file['path'] in file_paths]
 
-    wordless_message_box.wordless_message_box_error_files(main,
-                                                          files_missing = files_missing,
-                                                          files_empty = files_empty,
-                                                          files_loading_error = files_loading_error)
+        file_paths, files_loading_error = check_files_loading_error(main, file_paths, encodings)
 
-    for file in main.wordless_files.get_selected_files():
-        if file['path'] in files_missing + files_empty:
-            main.settings_custom['files']['files_open'].remove(file)
+        wordless_message_box.wordless_message_box_file_error_on_loading(main,
+                                                                        files_missing = files_missing,
+                                                                        files_empty = files_empty,
+                                                                        files_loading_error = files_loading_error)
 
-    main.wordless_files.update_table()
+        for file in main.wordless_files.get_selected_files():
+            if file['path'] in files_missing + files_empty:
+                main.settings_custom['files']['files_open'].remove(file)
 
-    return [file for file in files if file['path'] in file_paths]
+                loading_ok = False
+
+        main.wordless_files.update_table()
+    else:
+        wordless_message_box.wordless_message_box_no_files_selected(main)
+        
+        loading_ok = False
+
+    return loading_ok
+
+def check_files_on_loading_colligation(main, files):
+    loading_ok = True
+
+    files_unsupported_pos_tagging = []
+
+    if check_files_on_loading(main, files):
+        for file in files:
+            if file['lang'] not in main.settings_global['pos_taggers']:
+                files_unsupported_pos_tagging.append(file['path'])
+
+                loading_ok = False
+
+        wordless_message_box.wordless_message_box_file_error_on_loading_colligation(main,
+                                                                                    files_unsupported_pos_tagging = files_unsupported_pos_tagging)
+    else:
+        loading_ok = False
+
+    return loading_ok

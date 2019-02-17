@@ -26,26 +26,26 @@ from wordless_utils import *
 from wordless_widgets import *
 
 class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Search):
-    def __init__(self, main):
-        super().__init__(main,
+    def __init__(self, parent):
+        super().__init__(parent,
                          headers = [
-                             main.tr('Left'),
-                             main.tr('Node'),
-                             main.tr('Right'),
-                             main.tr('Token No.'),
-                             main.tr('Sentence No.'),
-                             main.tr('Paragraph No.'),
-                             main.tr('File')
+                             parent.tr('Left'),
+                             parent.tr('Node'),
+                             parent.tr('Right'),
+                             parent.tr('Token No.'),
+                             parent.tr('Sentence No.'),
+                             parent.tr('Paragraph No.'),
+                             parent.tr('File')
                          ],
                          headers_num = [
-                             main.tr('Token No.'),
-                             main.tr('Sentence No.'),
-                             main.tr('Paragraph No.')
+                             parent.tr('Token No.'),
+                             parent.tr('Sentence No.'),
+                             parent.tr('Paragraph No.')
                          ],
                          headers_pct = [
-                             main.tr('Token No.'),
-                             main.tr('Sentence No.'),
-                             main.tr('Paragraph No.')
+                             parent.tr('Token No.'),
+                             parent.tr('Sentence No.'),
+                             parent.tr('Paragraph No.')
                          ])
 
         dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
@@ -81,14 +81,14 @@ class Wordless_Combo_Box_Sorting_Order(wordless_box.Wordless_Combo_Box):
         ])
 
 class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
-    def __init__(self, main, table):
-        super().__init__(main,
+    def __init__(self, parent, table):
+        super().__init__(parent,
                          headers = [
-                             main.tr('Columns'),
-                             main.tr('Order')
+                             parent.tr('Columns'),
+                             parent.tr('Order')
                          ],
                          cols_stretch = [
-                             main.tr('Order')
+                             parent.tr('Order')
                          ])
 
         self.table = table
@@ -417,417 +417,418 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
         else:
             return []
 
-def init(main):
-    def load_settings(defaults = False):
-        if defaults:
-            settings = copy.deepcopy(main.settings_default['concordancer'])
-        else:
-            settings = copy.deepcopy(main.settings_custom['concordancer'])
+class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.table_concordancer = Wordless_Table_Concordancer(self)
+
+        self.wrapper_table.layout().addWidget(self.table_concordancer.label_number_results, 0, 0)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_search_results, 0, 4)
+        self.wrapper_table.layout().addWidget(self.table_concordancer, 1, 0, 1, 5)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_table, 2, 0)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_plot, 2, 1)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_export_selected, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_export_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_clear, 2, 4)
 
         # Token Settings
-        checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
 
-        checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
-        checkbox_ignore_tags_tags_only.setChecked(settings['token_settings']['ignore_tags_tags_only'])
-        combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
-        combo_box_ignore_tags_tags_only.setCurrentText(settings['token_settings']['ignore_tags_type_tags_only'])
-        checkbox_tags_only.setChecked(settings['token_settings']['tags_only'])
+        (self.checkbox_puncs,
+
+         self.token_stacked_widget_ignore_tags,
+         self.token_stacked_widget_ignore_tags_type,
+         self.label_ignore_tags,
+         self.checkbox_use_tags) = wordless_widgets.wordless_widgets_token_settings_concordancer(self)
+
+        self.checkbox_puncs.stateChanged.connect(self.token_settings_changed)
+
+        self.token_stacked_widget_ignore_tags.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
+        self.token_stacked_widget_ignore_tags.checkbox_ignore_tags_tags.stateChanged.connect(self.token_settings_changed)
+        self.token_stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentTextChanged.connect(self.token_settings_changed)
+        self.token_stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentTextChanged.connect(self.token_settings_changed)
+        self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
+
+        layout_ignore_tags = QGridLayout()
+        layout_ignore_tags.addWidget(self.token_stacked_widget_ignore_tags, 0, 0)
+        layout_ignore_tags.addWidget(self.token_stacked_widget_ignore_tags_type, 0, 1)
+        layout_ignore_tags.addWidget(self.label_ignore_tags, 0, 2)
+
+        layout_ignore_tags.setColumnStretch(3, 1)
+
+        self.group_box_token_settings.setLayout(QGridLayout())
+        self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 0, 0)
+
+        self.group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 1, 0)
+
+        self.group_box_token_settings.layout().addLayout(layout_ignore_tags, 2, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 3, 0)
 
         # Search Settings
-        checkbox_multi_search_mode.setChecked(settings['search_settings']['multi_search_mode'])
+        self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
+
+        (self.label_search_term,
+         self.checkbox_multi_search_mode,
+         self.line_edit_search_term,
+         self.list_search_terms,
+         self.label_separator,
+
+         self.checkbox_ignore_case,
+         self.checkbox_match_inflected_forms,
+         self.checkbox_match_whole_word,
+         self.checkbox_use_regex,
+
+         self.search_stacked_widget_ignore_tags,
+         self.search_stacked_widget_ignore_tags_type,
+         self.search_label_ignore_tags,
+         self.checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(self,
+                                                                                       tab = 'concordancer')
+
+        (self.label_context_settings,
+         self.button_context_settings) = wordless_widgets.wordless_widgets_context_settings(self,
+                                                                                            tab = 'concordancer')
+
+        self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
+        self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
+        self.line_edit_search_term.returnPressed.connect(self.table_concordancer.button_generate_table.click)
+        self.list_search_terms.itemChanged.connect(self.search_settings_changed)
+
+        self.checkbox_ignore_case.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_whole_word.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
+
+        self.search_stacked_widget_ignore_tags.checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
+        self.search_stacked_widget_ignore_tags.checkbox_ignore_tags_tags.stateChanged.connect(self.search_settings_changed)
+        self.search_stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentTextChanged.connect(self.search_settings_changed)
+        self.search_stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentTextChanged.connect(self.search_settings_changed)
+        self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
+
+        layout_search_terms = QGridLayout()
+        layout_search_terms.addWidget(self.list_search_terms, 0, 0, 5, 1)
+        layout_search_terms.addWidget(self.list_search_terms.button_add, 0, 1)
+        layout_search_terms.addWidget(self.list_search_terms.button_remove, 1, 1)
+        layout_search_terms.addWidget(self.list_search_terms.button_clear, 2, 1)
+        layout_search_terms.addWidget(self.list_search_terms.button_import, 3, 1)
+        layout_search_terms.addWidget(self.list_search_terms.button_export, 4, 1)
+
+        layout_ignore_tags = QGridLayout()
+        layout_ignore_tags.addWidget(self.search_stacked_widget_ignore_tags, 0, 0)
+        layout_ignore_tags.addWidget(self.search_stacked_widget_ignore_tags_type, 0, 1)
+        layout_ignore_tags.addWidget(self.search_label_ignore_tags, 0, 2)
+
+        layout_ignore_tags.setColumnStretch(3, 1)
+
+        layout_context_settings = QGridLayout()
+        layout_context_settings.addWidget(self.label_context_settings, 0, 0)
+        layout_context_settings.addWidget(self.button_context_settings, 0, 1)
+
+        layout_context_settings.setColumnStretch(1, 1)
+
+        self.group_box_search_settings.setLayout(QGridLayout())
+        self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
+        self.group_box_search_settings.layout().addWidget(self.line_edit_search_term, 1, 0, 1, 2)
+        self.group_box_search_settings.layout().addLayout(layout_search_terms, 2, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.label_separator, 3, 0, 1, 2)
+
+        self.group_box_search_settings.layout().addWidget(self.checkbox_ignore_case, 4, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_whole_word, 6, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_use_regex, 7, 0, 1, 2)
+
+        self.group_box_search_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_tags, 9, 0, 1, 2)
+
+        self.group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 10, 0, 1, 2)
+
+        self.group_box_search_settings.layout().addLayout(layout_context_settings, 11, 0, 1, 2)
+
+        # Generation Settings
+        self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
+
+        self.label_width_left = QLabel(self.tr('Width (Left):'), self)
+        self.spin_box_width_left_token = QSpinBox(self)
+        self.spin_box_width_left_char = QSpinBox(self)
+        self.label_width_right = QLabel(self.tr('Width (Right):'), self)
+        self.spin_box_width_right_token = QSpinBox(self)
+        self.spin_box_width_right_char = QSpinBox(self)
+        self.label_width_unit = QLabel(self.tr('Width Unit:'), self)
+        self.combo_box_width_unit = wordless_box.Wordless_Combo_Box(self)
+
+        self.label_number_lines = QLabel(self.tr('Limit number of lines in each file:'), self)
+        (self.spin_box_number_lines,
+         self.checkbox_number_lines) = wordless_widgets.wordless_widgets_no_limit(self)
+        self.label_every_nth_line = QLabel(self.tr('Only show every nth line in each file:'), self)
+        (self.spin_box_every_nth_line,
+         self.checkbox_every_nth_line) = wordless_widgets.wordless_widgets_no_limit(self)
+
+        self.combo_box_width_unit.addItems([
+            self.tr('Token'),
+            self.tr('Character')
+        ])
+
+        self.spin_box_width_left_token.setRange(0, 100)
+        self.spin_box_width_left_char.setRange(0, 500)
+        self.spin_box_width_right_token.setRange(0, 100)
+        self.spin_box_width_right_char.setRange(0, 500)
+
+        self.spin_box_number_lines.setRange(1, 100000)
+        self.spin_box_every_nth_line.setRange(2, 100000)
+
+        self.spin_box_width_left_token.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_left_char.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_right_token.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_right_char.valueChanged.connect(self.generation_settings_changed)
+        self.combo_box_width_unit.currentTextChanged.connect(self.generation_settings_changed)
+
+        self.spin_box_number_lines.valueChanged.connect(self.generation_settings_changed)
+        self.checkbox_number_lines.stateChanged.connect(self.generation_settings_changed)
+        self.spin_box_every_nth_line.valueChanged.connect(self.generation_settings_changed)
+        self.checkbox_every_nth_line.stateChanged.connect(self.generation_settings_changed)
+
+        layout_width = QGridLayout()
+        layout_width.addWidget(self.label_width_left, 0, 0)
+        layout_width.addWidget(self.spin_box_width_left_token, 0, 1)
+        layout_width.addWidget(self.spin_box_width_left_char, 0, 1)
+        layout_width.addWidget(self.label_width_right, 1, 0)
+        layout_width.addWidget(self.spin_box_width_right_token, 1, 1)
+        layout_width.addWidget(self.spin_box_width_right_char, 1, 1)
+        layout_width.addWidget(self.label_width_unit, 2, 0)
+        layout_width.addWidget(self.combo_box_width_unit, 2, 1)
+
+        layout_width.setColumnStretch(1, 1)
+
+        self.group_box_generation_settings.setLayout(QGridLayout())
+        self.group_box_generation_settings.layout().addLayout(layout_width, 0, 0, 1, 2)
+
+        self.group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 1, 0, 1, 2)
+
+        self.group_box_generation_settings.layout().addWidget(self.label_number_lines, 2, 0, 1, 2)
+        self.group_box_generation_settings.layout().addWidget(self.spin_box_number_lines, 3, 0)
+        self.group_box_generation_settings.layout().addWidget(self.checkbox_number_lines, 3, 1)
+        self.group_box_generation_settings.layout().addWidget(self.label_every_nth_line, 4, 0, 1, 2)
+        self.group_box_generation_settings.layout().addWidget(self.spin_box_every_nth_line, 5, 0)
+        self.group_box_generation_settings.layout().addWidget(self.checkbox_every_nth_line, 5, 1)
+
+        self.group_box_generation_settings.layout().setColumnStretch(0, 1)
+
+        # Table Settings
+        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
+
+        (self.checkbox_show_pct,
+         self.checkbox_show_cumulative,
+         self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(self,
+                                                                                          table = self.table_concordancer)
+
+        self.checkbox_show_cumulative.hide()
+        self.checkbox_show_breakdown.hide()
+
+        self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
+
+        self.group_box_table_settings.setLayout(QGridLayout())
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
+
+        # Plot Settings
+        self.group_box_plot_settings = QGroupBox(self.tr('Plot Settings'), self)
+
+        self.label_sort_results_by = QLabel(self.tr('Sort Results by:'), self)
+        self.combo_box_sort_results_by = wordless_box.Wordless_Combo_Box(self)
+
+        self.combo_box_sort_results_by.addItems([
+            self.tr('File'),
+            self.tr('Search Term')
+        ])
+
+        self.combo_box_sort_results_by.currentTextChanged.connect(self.plot_settings_changed)
+
+        self.group_box_plot_settings.setLayout(QGridLayout())
+        self.group_box_plot_settings.layout().addWidget(self.label_sort_results_by, 0, 0)
+        self.group_box_plot_settings.layout().addWidget(self.combo_box_sort_results_by, 0, 1)
+
+        self.group_box_plot_settings.layout().setColumnStretch(1, 1)
+
+        # Sorting Settings
+        self.group_box_sorting_settings = QGroupBox(self.tr('Sorting Settings'), self)
+
+        self.table_concordancer_sorting = Wordless_Table_Concordancer_Sorting(self,
+                                                                              table = self.table_concordancer)
+
+        self.table_concordancer_sorting.itemChanged.connect(self.sorting_settings_changed)
+
+        self.group_box_sorting_settings.setLayout(QGridLayout())
+        self.group_box_sorting_settings.layout().addWidget(self.table_concordancer_sorting, 0, 0, 1, 2)
+        self.group_box_sorting_settings.layout().addWidget(self.table_concordancer_sorting.button_add, 1, 0)
+        self.group_box_sorting_settings.layout().addWidget(self.table_concordancer_sorting.button_insert, 1, 1)
+        self.group_box_sorting_settings.layout().addWidget(self.table_concordancer_sorting.button_remove, 2, 0)
+        self.group_box_sorting_settings.layout().addWidget(self.table_concordancer_sorting.button_clear, 2, 1)
+        self.group_box_sorting_settings.layout().addWidget(self.table_concordancer_sorting.button_sort_results, 3, 0, 1, 2)
+
+        self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_search_settings, 1, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_generation_settings, 2, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 3, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_plot_settings, 4, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_sorting_settings, 5, 0)
+
+        self.wrapper_settings.layout().setRowStretch(6, 1)
+
+        self.load_settings()
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.main.settings_default['concordancer'])
+        else:
+            settings = copy.deepcopy(self.main.settings_custom['concordancer'])
+
+        # Token Settings
+        self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+
+        self.token_stacked_widget_ignore_tags.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        self.token_stacked_widget_ignore_tags.checkbox_ignore_tags_tags.setChecked(settings['token_settings']['ignore_tags_tags'])
+        self.token_stacked_widget_ignore_tags_type.combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
+        self.token_stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.setCurrentText(settings['token_settings']['ignore_tags_type_tags'])
+        self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
+
+        # Search Settings
+        self.checkbox_multi_search_mode.setChecked(settings['search_settings']['multi_search_mode'])
 
         if not defaults:
-            line_edit_search_term.setText(settings['search_settings']['search_term'])
+            self.line_edit_search_term.setText(settings['search_settings']['search_term'])
+            self.list_search_terms.load_items(settings['search_settings']['search_terms'])
 
-            for search_term in settings['search_settings']['search_terms']:
-                list_search_terms.add_item(search_term)
+        self.checkbox_ignore_case.setChecked(settings['search_settings']['ignore_case'])
+        self.checkbox_match_inflected_forms.setChecked(settings['search_settings']['match_inflected_forms'])
+        self.checkbox_match_whole_word.setChecked(settings['search_settings']['match_whole_word'])
+        self.checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
 
-        checkbox_ignore_case.setChecked(settings['search_settings']['ignore_case'])
-        checkbox_match_inflected_forms.setChecked(settings['search_settings']['match_inflected_forms'])
-        checkbox_match_whole_word.setChecked(settings['search_settings']['match_whole_word'])
-        checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
-
-        checkbox_ignore_tags_search.setChecked(settings['search_settings']['ignore_tags'])
-        checkbox_ignore_tags_search_match_tags.setChecked(settings['search_settings']['ignore_tags_match_tags'])
-        combo_box_ignore_tags_search.setCurrentText(settings['search_settings']['ignore_tags_type'])
-        combo_box_ignore_tags_search_match_tags.setCurrentText(settings['search_settings']['ignore_tags_type_match_tags'])
-        checkbox_match_tags.setChecked(settings['search_settings']['match_tags'])
+        self.search_stacked_widget_ignore_tags.checkbox_ignore_tags.setChecked(settings['search_settings']['ignore_tags'])
+        self.search_stacked_widget_ignore_tags.checkbox_ignore_tags_tags.setChecked(settings['search_settings']['ignore_tags_tags'])
+        self.search_stacked_widget_ignore_tags_type.combo_box_ignore_tags.setCurrentText(settings['search_settings']['ignore_tags_type'])
+        self.search_stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.setCurrentText(settings['search_settings']['ignore_tags_type_tags'])
+        self.checkbox_match_tags.setChecked(settings['search_settings']['match_tags'])
 
         # Context Settings
         if defaults:
-            main.wordless_context_settings_concordancer.load_settings(defaults = True)
+            self.main.wordless_context_settings_concordancer.load_settings(defaults = True)
 
         # Generation Settings
-        spin_box_width_left_token.setValue(settings['generation_settings']['width_left_token'])
-        spin_box_width_left_char.setValue(settings['generation_settings']['width_left_char'])
-        spin_box_width_right_token.setValue(settings['generation_settings']['width_right_token'])
-        spin_box_width_right_char.setValue(settings['generation_settings']['width_right_char'])
-        combo_box_width_unit.setCurrentText(settings['generation_settings']['width_unit'])
+        self.spin_box_width_left_token.setValue(settings['generation_settings']['width_left_token'])
+        self.spin_box_width_left_char.setValue(settings['generation_settings']['width_left_char'])
+        self.spin_box_width_right_token.setValue(settings['generation_settings']['width_right_token'])
+        self.spin_box_width_right_char.setValue(settings['generation_settings']['width_right_char'])
+        self.combo_box_width_unit.setCurrentText(settings['generation_settings']['width_unit'])
 
-        spin_box_number_lines.setValue(settings['generation_settings']['number_lines'])
-        checkbox_number_lines.setChecked(settings['generation_settings']['number_lines_no_limit'])
-        spin_box_every_nth_line.setValue(settings['generation_settings']['every_nth_line'])
-        checkbox_every_nth_line.setChecked(settings['generation_settings']['every_nth_line_no_limit'])
+        self.spin_box_number_lines.setValue(settings['generation_settings']['number_lines'])
+        self.checkbox_number_lines.setChecked(settings['generation_settings']['number_lines_no_limit'])
+        self.spin_box_every_nth_line.setValue(settings['generation_settings']['every_nth_line'])
+        self.checkbox_every_nth_line.setChecked(settings['generation_settings']['every_nth_line_no_limit'])
 
         # Table Settings
-        checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
+        self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
 
         # Plot Settings
-        combo_box_sort_results_by.setCurrentText(settings['plot_settings']['sort_results_by'])
+        self.combo_box_sort_results_by.setCurrentText(settings['plot_settings']['sort_results_by'])
 
         # Sorting Settings
-        table_concordancer_sorting.setRowCount(0)
+        self.table_concordancer_sorting.setRowCount(0)
 
         for sorting_col, sorting_order in settings['sorting_settings']['sorting_rules']:
             if sorting_col in [sorting_rule[0]
-                               for sorting_rule in main.settings_default['concordancer']['sorting_settings']['sorting_rules']]:
-                table_concordancer_sorting.add_row()
+                               for sorting_rule in self.main.settings_default['concordancer']['sorting_settings']['sorting_rules']]:
+                self.table_concordancer_sorting.add_row()
 
-                table_concordancer_sorting.cellWidget(table_concordancer_sorting.rowCount() - 1, 0).setCurrentText(sorting_col)
-                table_concordancer_sorting.cellWidget(table_concordancer_sorting.rowCount() - 1, 1).setCurrentText(sorting_order)
+                self.table_concordancer_sorting.cellWidget(self.table_concordancer_sorting.rowCount() - 1, 0).setCurrentText(sorting_col)
+                self.table_concordancer_sorting.cellWidget(self.table_concordancer_sorting.rowCount() - 1, 1).setCurrentText(sorting_order)
 
-        token_settings_changed()
-        search_settings_changed()
-        generation_settings_changed()
-        table_settings_changed()
-        sorting_settings_changed()
+        self.token_settings_changed()
+        self.search_settings_changed()
+        self.generation_settings_changed()
+        self.table_settings_changed()
+        self.sorting_settings_changed()
 
-    def token_settings_changed():
-        settings = main.settings_custom['concordancer']['token_settings']
+    def token_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['token_settings']
 
-        settings['puncs'] = checkbox_puncs.isChecked()
+        settings['puncs'] = self.checkbox_puncs.isChecked()
 
-        settings['ignore_tags'] = checkbox_ignore_tags.isChecked()
-        settings['ignore_tags_tags_only'] = checkbox_ignore_tags_tags_only.isChecked()
-        settings['ignore_tags_type'] = combo_box_ignore_tags.currentText()
-        settings['ignore_tags_type_tags_only'] = combo_box_ignore_tags_tags_only.currentText()
-        settings['tags_only'] = checkbox_tags_only.isChecked()
+        settings['ignore_tags'] = self.token_stacked_widget_ignore_tags.checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_tags'] = self.token_stacked_widget_ignore_tags.checkbox_ignore_tags_tags.isChecked()
+        settings['ignore_tags_type'] = self.token_stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentText()
+        settings['ignore_tags_type_tags'] = self.token_stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentText()
+        settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
-        checkbox_match_tags.token_settings_changed()
-        main.wordless_context_settings_concordancer.token_settings_changed()
+        self.checkbox_match_tags.token_settings_changed()
+        self.main.wordless_context_settings_concordancer.token_settings_changed()
 
-    def search_settings_changed():
-        settings = main.settings_custom['concordancer']['search_settings']
+    def search_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['search_settings']
 
-        settings['multi_search_mode'] = checkbox_multi_search_mode.isChecked()
-        settings['search_term'] = line_edit_search_term.text()
-        settings['search_terms'] = list_search_terms.get_items()
+        settings['multi_search_mode'] = self.checkbox_multi_search_mode.isChecked()
+        settings['search_term'] = self.line_edit_search_term.text()
+        settings['search_terms'] = self.list_search_terms.get_items()
 
-        settings['ignore_case'] = checkbox_ignore_case.isChecked()
-        settings['match_inflected_forms'] = checkbox_match_inflected_forms.isChecked()
-        settings['match_whole_word'] = checkbox_match_whole_word.isChecked()
-        settings['use_regex'] = checkbox_use_regex.isChecked()
+        settings['ignore_case'] = self.checkbox_ignore_case.isChecked()
+        settings['match_inflected_forms'] = self.checkbox_match_inflected_forms.isChecked()
+        settings['match_whole_word'] = self.checkbox_match_whole_word.isChecked()
+        settings['use_regex'] = self.checkbox_use_regex.isChecked()
 
-        settings['ignore_tags'] = checkbox_ignore_tags_search.isChecked()
-        settings['ignore_tags_match_tags'] = checkbox_ignore_tags_search_match_tags.isChecked()
-        settings['ignore_tags_type'] = combo_box_ignore_tags_search.currentText()
-        settings['ignore_tags_type_match_tags'] = combo_box_ignore_tags_search_match_tags.currentText()
-        settings['match_tags'] = checkbox_match_tags.isChecked()
+        settings['ignore_tags'] = self.search_stacked_widget_ignore_tags.checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_tags'] = self.search_stacked_widget_ignore_tags.checkbox_ignore_tags_tags.isChecked()
+        settings['ignore_tags_type'] = self.search_stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentText()
+        settings['ignore_tags_type_tags'] = self.search_stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentText()
+        settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
-    def generation_settings_changed():
-        settings = main.settings_custom['concordancer']['generation_settings']
+    def generation_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['generation_settings']
 
-        settings['width_left_token'] = spin_box_width_left_token.value()
-        settings['width_left_char'] = spin_box_width_left_char.value()
-        settings['width_right_token'] = spin_box_width_right_token.value()
-        settings['width_right_char'] = spin_box_width_right_char.value()
-        settings['width_unit'] = combo_box_width_unit.currentText()
+        settings['width_left_token'] = self.spin_box_width_left_token.value()
+        settings['width_left_char'] = self.spin_box_width_left_char.value()
+        settings['width_right_token'] = self.spin_box_width_right_token.value()
+        settings['width_right_char'] = self.spin_box_width_right_char.value()
+        settings['width_unit'] = self.combo_box_width_unit.currentText()
 
-        settings['number_lines'] = spin_box_number_lines.value()
-        settings['number_lines_no_limit'] = checkbox_number_lines.isChecked()
-        settings['every_nth_line'] = spin_box_every_nth_line.value()
-        settings['every_nth_line_no_limit'] = checkbox_every_nth_line.isChecked()
+        settings['number_lines'] = self.spin_box_number_lines.value()
+        settings['number_lines_no_limit'] = self.checkbox_number_lines.isChecked()
+        settings['every_nth_line'] = self.spin_box_every_nth_line.value()
+        settings['every_nth_line_no_limit'] = self.checkbox_every_nth_line.isChecked()
 
-        if settings['width_unit'] == main.tr('Token'):
-            spin_box_width_left_token.show()
-            spin_box_width_right_token.show()
+        if settings['width_unit'] == self.tr('Token'):
+            self.spin_box_width_left_token.show()
+            self.spin_box_width_right_token.show()
 
-            spin_box_width_left_char.hide()
-            spin_box_width_right_char.hide()
+            self.spin_box_width_left_char.hide()
+            self.spin_box_width_right_char.hide()
         else:
-            spin_box_width_left_token.hide()
-            spin_box_width_right_token.hide()
+            self.spin_box_width_left_token.hide()
+            self.spin_box_width_right_token.hide()
 
-            spin_box_width_left_char.show()
-            spin_box_width_right_char.show()
+            self.spin_box_width_left_char.show()
+            self.spin_box_width_right_char.show()
 
-    def table_settings_changed():
-        settings = main.settings_custom['concordancer']['table_settings']
+    def table_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['table_settings']
 
-        settings['show_pct'] = checkbox_show_pct.isChecked()
+        settings['show_pct'] = self.checkbox_show_pct.isChecked()
 
-    def plot_settings_changed():
-        settings = main.settings_custom['concordancer']['plot_settings']
+    def plot_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['plot_settings']
 
-        settings['sort_results_by'] = combo_box_sort_results_by.currentText()
+        settings['sort_results_by'] = self.combo_box_sort_results_by.currentText()
 
-    def sorting_settings_changed():
-        settings = main.settings_custom['concordancer']['sorting_settings']
+    def sorting_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['sorting_settings']
 
-        settings['sorting_rules'] = table_concordancer_sorting.get_sorting_rules()
-
-    wrapper_concordancer = wordless_layout.Wordless_Wrapper(main, load_settings)
-
-    table_concordancer = Wordless_Table_Concordancer(main)
-
-    wrapper_concordancer.layout_table.addWidget(table_concordancer.label_number_results, 0, 0)
-    wrapper_concordancer.layout_table.addWidget(table_concordancer.button_search_results, 0, 4)
-    wrapper_concordancer.layout_table.addWidget(table_concordancer, 1, 0, 1, 5)
-    wrapper_concordancer.layout_table.addWidget(table_concordancer.button_generate_table, 2, 0)
-    wrapper_concordancer.layout_table.addWidget(table_concordancer.button_generate_plot, 2, 1)
-    wrapper_concordancer.layout_table.addWidget(table_concordancer.button_export_selected, 2, 2)
-    wrapper_concordancer.layout_table.addWidget(table_concordancer.button_export_all, 2, 3)
-    wrapper_concordancer.layout_table.addWidget(table_concordancer.button_clear, 2, 4)
-
-    # Token Settings
-    group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
-
-    (checkbox_puncs,
-
-     checkbox_ignore_tags,
-     checkbox_ignore_tags_tags_only,
-     combo_box_ignore_tags,
-     combo_box_ignore_tags_tags_only,
-     label_ignore_tags,
-     checkbox_tags_only) = wordless_widgets.wordless_widgets_token_settings_concordancer(main)
-
-    checkbox_puncs.stateChanged.connect(token_settings_changed)
-
-    checkbox_ignore_tags.stateChanged.connect(token_settings_changed)
-    checkbox_ignore_tags_tags_only.stateChanged.connect(token_settings_changed)
-    combo_box_ignore_tags.currentTextChanged.connect(token_settings_changed)
-    combo_box_ignore_tags_tags_only.currentTextChanged.connect(token_settings_changed)
-    checkbox_tags_only.stateChanged.connect(token_settings_changed)
-
-    layout_ignore_tags = QGridLayout()
-    layout_ignore_tags.addWidget(checkbox_ignore_tags, 0, 0)
-    layout_ignore_tags.addWidget(checkbox_ignore_tags_tags_only, 0, 0)
-    layout_ignore_tags.addWidget(combo_box_ignore_tags, 0, 1)
-    layout_ignore_tags.addWidget(combo_box_ignore_tags_tags_only, 0, 1)
-    layout_ignore_tags.addWidget(label_ignore_tags, 0, 2)
-
-    layout_ignore_tags.setColumnStretch(3, 1)
-
-    group_box_token_settings.setLayout(QGridLayout())
-    group_box_token_settings.layout().addWidget(checkbox_puncs, 0, 0)
-
-    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 1, 0)
-
-    group_box_token_settings.layout().addLayout(layout_ignore_tags, 2, 0)
-    group_box_token_settings.layout().addWidget(checkbox_tags_only, 3, 0)
-
-    # Search Settings
-    group_box_search_settings = QGroupBox(main.tr('Search Settings'), main)
-
-    (label_search_term,
-     checkbox_multi_search_mode,
-     line_edit_search_term,
-     list_search_terms,
-     label_separator,
-
-     checkbox_ignore_case,
-     checkbox_match_inflected_forms,
-     checkbox_match_whole_word,
-     checkbox_use_regex,
-
-     checkbox_ignore_tags_search,
-     checkbox_ignore_tags_search_match_tags,
-     combo_box_ignore_tags_search,
-     combo_box_ignore_tags_search_match_tags,
-     label_ignore_tags_search,
-     checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(main, tab = 'concordancer')
-
-    (label_context_settings,
-     button_context_settings) = wordless_widgets.wordless_widgets_context_settings(main, tab = 'concordancer')
-
-    checkbox_multi_search_mode.stateChanged.connect(search_settings_changed)
-    line_edit_search_term.textChanged.connect(search_settings_changed)
-    line_edit_search_term.returnPressed.connect(table_concordancer.button_generate_table.click)
-    list_search_terms.itemChanged.connect(search_settings_changed)
-
-    checkbox_ignore_case.stateChanged.connect(search_settings_changed)
-    checkbox_match_inflected_forms.stateChanged.connect(search_settings_changed)
-    checkbox_match_whole_word.stateChanged.connect(search_settings_changed)
-    checkbox_use_regex.stateChanged.connect(search_settings_changed)
-
-    checkbox_ignore_tags_search.stateChanged.connect(search_settings_changed)
-    checkbox_ignore_tags_search_match_tags.stateChanged.connect(search_settings_changed)
-    combo_box_ignore_tags_search.currentTextChanged.connect(search_settings_changed)
-    combo_box_ignore_tags_search_match_tags.currentTextChanged.connect(search_settings_changed)
-    checkbox_match_tags.stateChanged.connect(search_settings_changed)
-
-    layout_search_terms = QGridLayout()
-    layout_search_terms.addWidget(list_search_terms, 0, 0, 5, 1)
-    layout_search_terms.addWidget(list_search_terms.button_add, 0, 1)
-    layout_search_terms.addWidget(list_search_terms.button_remove, 1, 1)
-    layout_search_terms.addWidget(list_search_terms.button_clear, 2, 1)
-    layout_search_terms.addWidget(list_search_terms.button_import, 3, 1)
-    layout_search_terms.addWidget(list_search_terms.button_export, 4, 1)
-
-    layout_ignore_tags_search = QGridLayout()
-    layout_ignore_tags_search.addWidget(checkbox_ignore_tags_search, 0, 0)
-    layout_ignore_tags_search.addWidget(checkbox_ignore_tags_search_match_tags, 0, 0)
-    layout_ignore_tags_search.addWidget(combo_box_ignore_tags_search, 0, 1)
-    layout_ignore_tags_search.addWidget(combo_box_ignore_tags_search_match_tags, 0, 1)
-    layout_ignore_tags_search.addWidget(label_ignore_tags_search, 0, 2)
-
-    layout_ignore_tags_search.setColumnStretch(3, 1)
-
-    layout_context_settings = QGridLayout()
-    layout_context_settings.addWidget(label_context_settings, 0, 0)
-    layout_context_settings.addWidget(button_context_settings, 0, 1)
-
-    layout_context_settings.setColumnStretch(1, 1)
-
-    group_box_search_settings.setLayout(QGridLayout())
-    group_box_search_settings.layout().addWidget(label_search_term, 0, 0)
-    group_box_search_settings.layout().addWidget(checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
-    group_box_search_settings.layout().addWidget(line_edit_search_term, 1, 0, 1, 2)
-    group_box_search_settings.layout().addLayout(layout_search_terms, 2, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(label_separator, 3, 0, 1, 2)
-
-    group_box_search_settings.layout().addWidget(checkbox_ignore_case, 4, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_match_inflected_forms, 5, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_match_whole_word, 6, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_use_regex, 7, 0, 1, 2)
-
-    group_box_search_settings.layout().addLayout(layout_ignore_tags_search, 8, 0, 1, 2)
-    group_box_search_settings.layout().addWidget(checkbox_match_tags, 9, 0, 1, 2)
-
-    group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 10, 0, 1, 2)
-
-    group_box_search_settings.layout().addLayout(layout_context_settings, 11, 0, 1, 2)
-
-    # Generation Settings
-    group_box_generation_settings = QGroupBox(main.tr('Generation Settings'), main)
-
-    label_width_left = QLabel(main.tr('Width (Left):'), main)
-    spin_box_width_left_token = QSpinBox(main)
-    spin_box_width_left_char = QSpinBox(main)
-    label_width_right = QLabel(main.tr('Width (Right):'), main)
-    spin_box_width_right_token = QSpinBox(main)
-    spin_box_width_right_char = QSpinBox(main)
-    label_width_unit = QLabel('Width Unit:', main)
-    combo_box_width_unit = wordless_box.Wordless_Combo_Box(main)
-
-    label_number_lines = QLabel(main.tr('Limit number of lines in each file:'), main)
-    (spin_box_number_lines,
-     checkbox_number_lines) = wordless_widgets.wordless_widgets_no_limit(main)
-    label_every_nth_line = QLabel(main.tr('Only show every nth line in each file:'), main)
-    (spin_box_every_nth_line,
-     checkbox_every_nth_line) = wordless_widgets.wordless_widgets_no_limit(main)
-
-    combo_box_width_unit.addItems([main.tr('Token'), main.tr('Character')])
-
-    spin_box_width_left_token.setRange(0, 100)
-    spin_box_width_left_char.setRange(0, 500)
-    spin_box_width_right_token.setRange(0, 100)
-    spin_box_width_right_char.setRange(0, 500)
-
-    spin_box_number_lines.setRange(1, 100000)
-    spin_box_every_nth_line.setRange(2, 100000)
-
-    spin_box_width_left_token.valueChanged.connect(generation_settings_changed)
-    spin_box_width_left_char.valueChanged.connect(generation_settings_changed)
-    spin_box_width_right_token.valueChanged.connect(generation_settings_changed)
-    spin_box_width_right_char.valueChanged.connect(generation_settings_changed)
-    combo_box_width_unit.currentTextChanged.connect(generation_settings_changed)
-
-    spin_box_number_lines.valueChanged.connect(generation_settings_changed)
-    checkbox_number_lines.stateChanged.connect(generation_settings_changed)
-    spin_box_every_nth_line.valueChanged.connect(generation_settings_changed)
-    checkbox_every_nth_line.stateChanged.connect(generation_settings_changed)
-
-    layout_width = QGridLayout()
-    layout_width.addWidget(label_width_left, 0, 0)
-    layout_width.addWidget(spin_box_width_left_token, 0, 1)
-    layout_width.addWidget(spin_box_width_left_char, 0, 1)
-    layout_width.addWidget(label_width_right, 1, 0)
-    layout_width.addWidget(spin_box_width_right_token, 1, 1)
-    layout_width.addWidget(spin_box_width_right_char, 1, 1)
-    layout_width.addWidget(label_width_unit, 2, 0)
-    layout_width.addWidget(combo_box_width_unit, 2, 1)
-
-    layout_width.setColumnStretch(1, 1)
-
-    group_box_generation_settings.setLayout(QGridLayout())
-    group_box_generation_settings.layout().addLayout(layout_width, 0, 0, 1, 2)
-
-    group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 1, 0, 1, 2)
-
-    group_box_generation_settings.layout().addWidget(label_number_lines, 2, 0, 1, 2)
-    group_box_generation_settings.layout().addWidget(spin_box_number_lines, 3, 0)
-    group_box_generation_settings.layout().addWidget(checkbox_number_lines, 3, 1)
-    group_box_generation_settings.layout().addWidget(label_every_nth_line, 4, 0, 1, 2)
-    group_box_generation_settings.layout().addWidget(spin_box_every_nth_line, 5, 0)
-    group_box_generation_settings.layout().addWidget(checkbox_every_nth_line, 5, 1)
-
-    group_box_generation_settings.layout().setColumnStretch(0, 1)
-
-    # Table Settings
-    group_box_table_settings = QGroupBox(main.tr('Table Settings'), main)
-
-    (checkbox_show_pct,
-     checkbox_show_cumulative,
-     checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(main, table_concordancer)
-
-    checkbox_show_cumulative.hide()
-    checkbox_show_breakdown.hide()
-
-    checkbox_show_pct.stateChanged.connect(table_settings_changed)
-
-    group_box_table_settings.setLayout(QGridLayout())
-    group_box_table_settings.layout().addWidget(checkbox_show_pct, 0, 0)
-
-    # Plot Settings
-    group_box_plot_settings = QGroupBox(main.tr('Plot Settings'), main)
-
-    label_sort_results_by = QLabel(main.tr('Sort Results by:'), main)
-    combo_box_sort_results_by = wordless_box.Wordless_Combo_Box(main)
-
-    combo_box_sort_results_by.addItems([main.tr('File'), main.tr('Search Term')])
-
-    combo_box_sort_results_by.currentTextChanged.connect(plot_settings_changed)
-
-    group_box_plot_settings.setLayout(QGridLayout())
-    group_box_plot_settings.layout().addWidget(label_sort_results_by, 0, 0)
-    group_box_plot_settings.layout().addWidget(combo_box_sort_results_by, 0, 1)
-
-    # Sorting Settings
-    group_box_sorting_settings = QGroupBox(main.tr('Sorting Settings'), main)
-
-    table_concordancer_sorting = Wordless_Table_Concordancer_Sorting(main, table = table_concordancer)
-
-    table_concordancer_sorting.itemChanged.connect(sorting_settings_changed)
-
-    group_box_sorting_settings.setLayout(QGridLayout())
-    group_box_sorting_settings.layout().addWidget(table_concordancer_sorting, 0, 0, 1, 2)
-    group_box_sorting_settings.layout().addWidget(table_concordancer_sorting.button_add, 1, 0)
-    group_box_sorting_settings.layout().addWidget(table_concordancer_sorting.button_insert, 1, 1)
-    group_box_sorting_settings.layout().addWidget(table_concordancer_sorting.button_remove, 2, 0)
-    group_box_sorting_settings.layout().addWidget(table_concordancer_sorting.button_clear, 2, 1)
-    group_box_sorting_settings.layout().addWidget(table_concordancer_sorting.button_sort_results, 3, 0, 1, 2)
-
-    wrapper_concordancer.layout_settings.addWidget(group_box_token_settings, 0, 0)
-    wrapper_concordancer.layout_settings.addWidget(group_box_search_settings, 1, 0)
-    wrapper_concordancer.layout_settings.addWidget(group_box_generation_settings, 2, 0)
-    wrapper_concordancer.layout_settings.addWidget(group_box_table_settings, 3, 0)
-    wrapper_concordancer.layout_settings.addWidget(group_box_plot_settings, 4, 0)
-    wrapper_concordancer.layout_settings.addWidget(group_box_sorting_settings, 5, 0)
-
-    wrapper_concordancer.layout_settings.setRowStretch(6, 1)
-
-    load_settings()
-
-    return wrapper_concordancer
+        settings['sorting_rules'] = self.table_concordancer_sorting.get_sorting_rules()
 
 @ wordless_misc.log_timing
 def generate_table(main, table):
     settings = main.settings_custom['concordancer']
 
-    files = wordless_checking_file.check_files_loading(main, main.wordless_files.get_selected_files())
+    files = main.wordless_files.get_selected_files()
 
-    if files:
+    if wordless_checking_file.check_files_on_loading(main, files):
         if (settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms'] or
             not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']):
             table.clear_table(0)
@@ -844,8 +845,8 @@ def generate_table(main, table):
 
                 text = wordless_text.Wordless_Text(main, file)
 
-                tokens = wordless_token_processing.wordless_preprocess_tokens_concordancer(text,
-                                                                                           token_settings = settings['token_settings'])
+                tokens = wordless_token_processing.wordless_process_tokens_concordancer(text,
+                                                                                        token_settings = settings['token_settings'])
 
                 len_paras = len(text.paras)
                 len_sentences = len(text.sentences)
@@ -881,10 +882,10 @@ def generate_table(main, table):
 
                     for i, ngram in enumerate(nltk.ngrams(tokens, len_search_term)):
                         if (ngram in search_terms and
-                            wordless_text_utils.check_context(i, tokens,
-                                                              settings = settings['context_settings'],
-                                                              search_terms_inclusion = search_terms_inclusion,
-                                                              search_terms_exclusion = search_terms_exclusion)):
+                            wordless_matching.check_context(i, tokens,
+                                                            context_settings = settings['context_settings'],
+                                                            search_terms_inclusion = search_terms_inclusion,
+                                                            search_terms_exclusion = search_terms_exclusion)):
                             # Check number of lines
                             if not settings['generation_settings']['number_lines_no_limit']:
                                 if number_lines < settings['generation_settings']['number_lines']:
@@ -1074,15 +1075,14 @@ def generate_table(main, table):
 
             wordless_message.wordless_message_generate_table_error(main)
     else:
-        wordless_message_box.wordless_message_box_no_files_selected(main)
-
         wordless_message.wordless_message_generate_table_error(main)
 
 def generate_plot(main):
     settings = main.settings_custom['concordancer']
+
     files = main.wordless_files.get_selected_files()
 
-    if files:
+    if wordless_checking_file.check_files_on_loading(main, files):
         if (settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms'] or
             not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']):
             texts = []
@@ -1091,18 +1091,13 @@ def generate_plot(main):
             search_terms_labels = set()
             points = []
 
-            if settings['search_settings']['multi_search_mode']:
-                search_terms = settings['search_settings']['search_terms']
-            else:
-                search_terms = [settings['search_settings']['search_term']]
-
             files = sorted(files, key = lambda item: item['name'])
 
             for file in files:
                 text = wordless_text.Wordless_Text(main, file)
 
-                text.tokens = wordless_token_processing.wordless_preprocess_tokens_concordancer(text,
-                                                                                           token_settings = settings['token_settings'])
+                text.tokens = wordless_token_processing.wordless_process_tokens_concordancer(text,
+                                                                                             token_settings = settings['token_settings'])
 
                 search_terms_file = wordless_matching.match_search_terms(main, text.tokens,
                                                                          lang = text.lang,
@@ -1239,6 +1234,4 @@ def generate_plot(main):
 
             wordless_message.wordless_message_generate_plot_error(main)
     else:
-        wordless_message_box.wordless_message_box_no_files_selected(main)
-
         wordless_message.wordless_message_generate_plot_error(main)

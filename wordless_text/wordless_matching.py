@@ -45,6 +45,7 @@ def get_re_tags(main, tags):
 
     return '|'.join(re_tags)
 
+# Search Terms
 def match_ngrams(main, search_terms, tokens,
                  lang, text_type, token_settings, search_settings):
     search_terms_matched = []
@@ -69,19 +70,19 @@ def match_ngrams(main, search_terms, tokens,
     if settings['match_tags']:
         settings['match_inflected_forms'] = False
 
-        settings['ignore_tags'] = settings['ignore_tags_match_tags']
-        settings['ignore_tags_type'] = settings['ignore_tags_type_match_tags']
+        settings['ignore_tags'] = settings['ignore_tags_tags']
+        settings['ignore_tags_type'] = settings['ignore_tags_type_tags']
 
     # Token Settings
-    if token_settings['tags_only']:
+    if token_settings['use_tags']:
         settings['match_inflected_forms'] = False
         settings['match_tags'] = False
 
-        if token_settings['ignore_tags_tags_only']:
+        if token_settings['ignore_tags_tags']:
             settings['ignore_tags'] = False
     else:
         if token_settings['ignore_tags']:
-            if token_settings['ignore_tags_type'] == main.tr('All'):
+            if token_settings['ignore_tags_type'] == main.tr('all'):
                 settings['ignore_tags'] = False
                 settings['match_tags'] = False
 
@@ -96,7 +97,7 @@ def match_ngrams(main, search_terms, tokens,
                         tokens_searched = [''.join(re.findall(re_tags_non_pos, token)) for token in tokens]
                     elif text_type[1] == 'tagged_pos':
                         tokens_searched = []
-                elif settings['ignore_tags_type'] == main.tr('Non-POS'):
+                elif settings['ignore_tags_type'] == main.tr('non-POS'):
                     if text_type[1] in ['tagged_both', 'tagged_pos']:
                         tokens_searched = [''.join(re.findall(re_tags_pos, token)) for token in tokens]
                     elif text_type[1] == 'tagged_non_pos':
@@ -115,7 +116,7 @@ def match_ngrams(main, search_terms, tokens,
             if text_type[1] == 'untagged':
                 tokens_searched = tokens
             else:
-                if settings['ignore_tags_type'] == main.tr('All'):
+                if settings['ignore_tags_type'] == main.tr('all'):
                     if text_type[1] == 'tagged_both':
                         tokens_searched = [re.sub(re_tags_all, '', token) for token in tokens]
                     elif text_type[1] == 'tagged_pos':
@@ -127,7 +128,7 @@ def match_ngrams(main, search_terms, tokens,
                         tokens_searched = [re.sub(re_tags_pos, '', token) for token in tokens]
                     elif text_type[1] == 'tagged_non_pos':
                         tokens_searched = tokens
-                elif settings['ignore_tags_type'] == main.tr('Non-POS'):
+                elif settings['ignore_tags_type'] == main.tr('non-POS'):
                     if text_type[1] in ['tagged_both', 'tagged_non_pos']:
                         tokens_searched = [re.sub(re_tags_non_pos, '', token) for token in tokens]
                     elif text_type[1] == 'tagged_pos':
@@ -268,3 +269,56 @@ def match_search_terms_context(main, tokens,
                 search_terms_exclusion.add(tuple(search_term))
 
     return search_terms_inclusion, search_terms_exclusion
+
+# Context
+def check_context(i, tokens, context_settings,
+                  search_terms_inclusion, search_terms_exclusion):
+    if context_settings['inclusion']['inclusion'] or context_settings['exclusion']['exclusion']:
+        len_tokens = len(tokens)
+
+        # Inclusion
+        if context_settings['inclusion']['inclusion'] and search_terms_inclusion:
+            inclusion_matched = False
+
+            for search_term in search_terms_inclusion:
+                if inclusion_matched:
+                    break
+
+                for j in range(context_settings['inclusion']['context_window_left'],
+                               context_settings['inclusion']['context_window_right'] + 1):
+                    if i + j < 0 or i + j > len_tokens - 1:
+                        continue
+
+                    if j != 0:
+                        if tuple(tokens[i + j : i + j + len(search_term)]) == tuple(search_term):
+                            inclusion_matched = True
+
+                            break
+        else:
+            inclusion_matched = True
+
+        # Exclusion
+        exclusion_matched = True
+
+        if context_settings['exclusion']['exclusion'] and search_terms_exclusion:
+            for search_term in search_terms_exclusion:
+                if not exclusion_matched:
+                    break
+
+                for j in range(context_settings['exclusion']['context_window_left'],
+                               context_settings['exclusion']['context_window_right'] + 1):
+                    if i + j < 0 or i + j > len_tokens - 1:
+                        continue
+
+                    if j != 0:
+                        if tuple(tokens[i + j : i + j + len(search_term)]) == tuple(search_term):
+                            exclusion_matched = False
+
+                            break
+
+        if inclusion_matched and exclusion_matched:
+            return True
+        else:
+            return False
+    else:
+        return True

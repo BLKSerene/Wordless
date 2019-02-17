@@ -18,13 +18,13 @@ from PyQt5.QtWidgets import *
 
 from wordless_checking import wordless_checking_file, wordless_checking_misc
 from wordless_widgets import wordless_message_box
-from wordless_utils import wordless_conversion, wordless_detection
+from wordless_utils import wordless_detection, wordless_misc
 
 class Wordless_List(QListWidget):
-    def __init__(self, main):
-        super().__init__(main)
+    def __init__(self, parent):
+        super().__init__(parent)
 
-        self.main = main
+        self.main = wordless_misc.find_wordless_main(parent)
 
         self.setSelectionMode(QAbstractItemView.ExtendedSelection)
         self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked)
@@ -66,30 +66,26 @@ class Wordless_List(QListWidget):
     def _new_item(self):
         pass
 
-    def add_item(self, text = None):
+    def add_item(self):
         new_item = self._new_item()
 
         self.addItem(new_item)
-
-        if text:
-            self.item(self.count() - 1).setText(text)
-        else:
-            self.editItem(new_item)
+        self.editItem(new_item)
             
         self.item(self.count() - 1).setSelected(True)
 
-        self.itemChanged.emit(self.item(0))
+        self.item_changed()
 
     def remove_item(self):
         for index in sorted(self.selectedIndexes(), reverse = True):
             self.takeItem(index.row())
 
-        self.itemChanged.emit(self.item(0))
+        self.item_changed()
 
     def clear_list(self):
         self.clear()
 
-        self.itemChanged.emit(self.item(0))
+        self.item_changed()
         self.selection_changed()
 
     def import_list(self):
@@ -97,6 +93,15 @@ class Wordless_List(QListWidget):
 
     def export_list(self):
         pass
+
+    def load_items(self, texts):
+        for text in texts:
+            new_item = self._new_item()
+            new_item.setText(text)
+
+            self.addItem(new_item)
+
+        self.itemChanged.emit(self.item(0))
 
     def get_items(self):
         return [self.item(i).text() for i in range(self.count())]
@@ -110,7 +115,7 @@ class Wordless_List_Search_Terms(Wordless_List):
                 item.setText(item.old_text)
             else:
                 for i in range(self.count()):
-                    if self.item(i) != item:
+                    if self.item(i) == item:
                         if item.text() == self.item(i).text():
                             wordless_message_box.wordless_message_box_duplicate_search_terms(self.main)
 
@@ -162,31 +167,31 @@ class Wordless_List_Search_Terms(Wordless_List):
                 for file_path in file_paths:
                     files.append({
                                      'path': os.path.normpath(file_path),
-                                     'encoding_code': wordless_detection.detect_encoding(self.main, file_path)[0]
+                                     'encoding': wordless_detection.detect_encoding(self.main, file_path)[0]
                                  })
             else:
                 for file_path in file_paths:
                     files.append({
                                      'path': os.path.normpath(file_path),
-                                     'encoding_code': self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
+                                     'encoding': self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
                                  })
 
-            encoding_codes = [file['encoding_code'] for file in files]
+            encodings = [file['encoding'] for file in files]
 
-            file_paths, files_encoding_error = wordless_checking_file.check_files_loading_error(self.main, file_paths, encoding_codes)
+            file_paths, files_loading_error = wordless_checking_file.check_files_loading_error(self.main, file_paths, encodings)
 
             for file in files:
                 if file['path'] in file_paths:
-                    with open(file['path'], 'r', encoding = file['encoding_code']) as f:
+                    with open(file['path'], 'r', encoding = file['encoding']) as f:
                         for line in f:
                             if line.rstrip():
                                 self.addItem(line.strip())
 
                         self.itemChanged.emit(self.item(0))
 
-            wordless_message_box.wordless_message_box_error_files(self.main,
-                                                                  files_empty = files_empty,
-                                                                  files_encoding_error = files_encoding_error)
+            wordless_message_box.wordless_message_box_file_error_on_importing(self.main,
+                                                                              files_empty = files_empty,
+                                                                              files_loading_error = files_loading_error)
 
     def export_list(self):
         default_dir = self.main.settings_custom['export']['search_terms']['default_path']
@@ -275,31 +280,31 @@ class Wordless_List_Stop_Words(Wordless_List):
                 for file_path in file_paths:
                     files.append({
                                      'path': os.path.normpath(file_path),
-                                     'encoding_code': wordless_detection.detect_encoding(self.main, file_path)[0]
+                                     'encoding': wordless_detection.detect_encoding(self.main, file_path)[0]
                                  })
             else:
                 for file_path in file_paths:
                     files.append({
                                      'path': os.path.normpath(file_path),
-                                     'encoding_code': self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
+                                     'encoding': self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
                                  })
 
-            encoding_codes = [file['encoding_code'] for file in files]
+            encodings = [file['encoding'] for file in files]
 
-            file_paths, files_encoding_error = wordless_checking_file.check_files_loading_error(self.main, file_paths, encoding_codes)
+            file_paths, files_loading_error = wordless_checking_file.check_files_loading_error(self.main, file_paths, encodings)
 
             for file in files:
                 if file['path'] in file_paths:
-                    with open(file['path'], 'r', encoding = file['encoding_code']) as f:
+                    with open(file['path'], 'r', encoding = file['encoding']) as f:
                         for line in f:
                             if line.strip():
                                 self.addItem(line.strip())
 
                         self.itemChanged.emit(self.item(0))
 
-            wordless_message_box.wordless_message_box_error_files(self.main,
-                                                                  files_empty = files_empty,
-                                                                  files_encoding_error = files_encoding_error)
+            wordless_message_box.wordless_message_box_file_error_on_importing(self.main,
+                                                                              files_empty = files_empty,
+                                                                              files_loading_error = files_loading_error)
 
     def export_list(self):
         default_dir = self.main.settings_custom['export']['stop_words']['default_path']
