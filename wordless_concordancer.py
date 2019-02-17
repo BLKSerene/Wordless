@@ -50,12 +50,7 @@ class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Search):
 
         dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
                                                                tab = 'concordancer',
-                                                               table = self,
-                                                               cols_search = [
-                                                                   self.tr('Left'),
-                                                                   self.tr('Node'),
-                                                                   self.tr('Right')
-                                                               ])
+                                                               table = self)
 
         self.button_search_results.clicked.connect(dialog_search.load)
 
@@ -1012,7 +1007,7 @@ def generate_table(main, table):
 
                             # Left
                             table.setCellWidget(table.rowCount() - 1, 0,
-                                                wordless_table.Wordless_Label_Html(context_left_text, main))
+                                                wordless_label.Wordless_Label_Html(context_left_text, main))
 
                             table.cellWidget(table.rowCount() - 1, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
@@ -1021,7 +1016,7 @@ def generate_table(main, table):
 
                             # Right
                             table.setCellWidget(table.rowCount() - 1, 2,
-                                                wordless_table.Wordless_Label_Html(context_right_text, main))
+                                                wordless_label.Wordless_Label_Html(context_right_text, main))
 
                             table.cellWidget(table.rowCount() - 1, 2).text_raw = context_right
                             table.cellWidget(table.rowCount() - 1, 2).text_search = text_search_right

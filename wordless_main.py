@@ -12,6 +12,7 @@
 import copy
 import os
 import pickle
+import platform
 import sys
 import time
 
@@ -113,6 +114,9 @@ class Wordless_Main(QMainWindow):
         if reply == QMessageBox.Yes:
             # Clear history of closed files
             self.settings_custom['files']['files_closed'].clear()
+
+            # Layouts
+            self.settings_custom['layouts']['central_widget'] = self.centralWidget().sizes()
 
             with open('wordless_settings.pkl', 'wb') as f:
                 pickle.dump(self.settings_custom, f)
@@ -331,11 +335,22 @@ class Wordless_Main(QMainWindow):
 
     def init_central_widget(self):
         self.wordless_file_area = wordless_file_area.Wrapper_File_Area(self)
-        self.wordless_work_area = self.init_work_area()
+        self.init_work_area()
+
+        wrapper_file_area = QWidget()
+
+        wrapper_file_area.setLayout(QGridLayout())
+        wrapper_file_area.layout().addWidget(self.wordless_file_area, 0, 0)
+
+        if platform.system() == 'Windows':
+            self.wordless_file_area.layout().setContentsMargins(2, 0, 2, 0)
+            wrapper_file_area.layout().setContentsMargins(0, 0, 2, 0)
+        else:
+            wrapper_file_area.layout().setContentsMargins(0, 0, 0, 0)
 
         splitter_central_widget = wordless_layout.Wordless_Splitter(Qt.Vertical, self)
         splitter_central_widget.addWidget(self.wordless_work_area)
-        splitter_central_widget.addWidget(self.wordless_file_area)
+        splitter_central_widget.addWidget(wrapper_file_area)
 
         splitter_central_widget.setHandleWidth(1)
         splitter_central_widget.setObjectName('splitter-central-widget')
@@ -345,7 +360,6 @@ class Wordless_Main(QMainWindow):
             }
         ''')
 
-        splitter_central_widget.setSizes([self.height() - 100 - 210, 210])
         splitter_central_widget.setStretchFactor(0, 1)
 
         self.setCentralWidget(splitter_central_widget)
@@ -354,59 +368,38 @@ class Wordless_Main(QMainWindow):
         def load_settings():
             work_area_cur = self.settings_custom['work_area_cur']
 
-            for i in range(self.tabs_work_area.count()):
-                if self.tabs_work_area.tabText(i) == work_area_cur:
-                    self.tabs_work_area.setCurrentIndex(i)
+            for i in range(self.wordless_work_area.count()):
+                if self.wordless_work_area.tabText(i) == work_area_cur:
+                    self.wordless_work_area.setCurrentIndex(i)
 
                     break
 
             work_area_changed()
 
         def work_area_changed():
-            self.settings_custom['work_area_cur'] = self.tabs_work_area.tabText(self.tabs_work_area.currentIndex())
+            self.settings_custom['work_area_cur'] = self.wordless_work_area.tabText(self.wordless_work_area.currentIndex())
 
-        wordless_work_area = QWidget(self)
+        self.wordless_work_area = QTabWidget(self)
+        self.wordless_work_area.addTab(wordless_overview.Wrapper_Overview(self), self.tr('Overview'))
+        self.wordless_work_area.addTab(wordless_concordancer.Wrapper_Concordancer(self), self.tr('Concordancer'))
+        self.wordless_work_area.addTab(wordless_wordlist.Wrapper_Wordlist(self), self.tr('Wordlist'))
+        self.wordless_work_area.addTab(wordless_ngrams.Wrapper_Ngrams(self), self.tr('N-grams'))
+        self.wordless_work_area.addTab(wordless_collocation.Wrapper_Collocation(self), self.tr('Collocation'))
+        self.wordless_work_area.addTab(wordless_colligation.Wrapper_Colligation(self), self.tr('Colligation'))
+        self.wordless_work_area.addTab(wordless_keywords.Wrapper_Keywords(self), self.tr('Keywords'))
 
-        self.tabs_work_area = QTabBar(self)
-        self.tabs_work_area.addTab(self.tr('Overview'))
-        self.tabs_work_area.addTab(self.tr('Concordancer'))
-        self.tabs_work_area.addTab(self.tr('Wordlist'))
-        self.tabs_work_area.addTab(self.tr('N-grams'))
-        self.tabs_work_area.addTab(self.tr('Collocation'))
-        self.tabs_work_area.addTab(self.tr('Colligation'))
-        self.tabs_work_area.addTab(self.tr('Keywords'))
-
-        self.tabs_work_area.setDrawBase(False)
-
-        stacked_widget_work_area = QStackedWidget()
-
-        stacked_widget_work_area.addWidget(wordless_overview.Wrapper_Overview(self))
-        stacked_widget_work_area.addWidget(wordless_concordancer.Wrapper_Concordancer(self))
-        stacked_widget_work_area.addWidget(wordless_wordlist.Wrapper_Wordlist(self))
-        stacked_widget_work_area.addWidget(wordless_ngrams.Wrapper_Ngrams(self))
-        stacked_widget_work_area.addWidget(wordless_collocation.Wrapper_Collocation(self))
-        stacked_widget_work_area.addWidget(wordless_colligation.Wrapper_Colligation(self))
-        stacked_widget_work_area.addWidget(wordless_keywords.Wrapper_Keywords(self))
-
-        wordless_work_area.setLayout(QGridLayout())
-        wordless_work_area.layout().addWidget(self.tabs_work_area, 0, 0)
-        wordless_work_area.layout().addWidget(stacked_widget_work_area, 1, 0)
-
-        wordless_work_area.layout().setSpacing(0)
-        wordless_work_area.layout().setContentsMargins(0, 0, 0, 0)
-
-        self.tabs_work_area.currentChanged.connect(work_area_changed)
-        self.tabs_work_area.currentChanged.connect(lambda index: stacked_widget_work_area.setCurrentIndex(index))
+        self.wordless_work_area.currentChanged.connect(work_area_changed)
 
         load_settings()
-
-        return wordless_work_area
 
     def load_settings(self):
         settings = copy.deepcopy(self.settings_custom)
 
         # Menu
         self.find_menu_item(self.tr('Show Status Bar')).setChecked(settings['menu']['prefs']['show_status_bar'])
+
+        # Layouts
+        self.centralWidget().setSizes(settings['layouts']['central_widget'])
 
     def find_menu_item(self, text, menu = None):
         menu_item = None
