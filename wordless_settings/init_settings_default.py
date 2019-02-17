@@ -17,6 +17,10 @@ def init_settings_default(main):
     main.settings_default = {
         'work_area_cur': main.tr('Overview'),
 
+        'layouts': {
+            'central_widget': [main.height() - 100 - 210, 210]
+        },
+
         'files': {
             'files_open': [],
             'files_closed': [],
