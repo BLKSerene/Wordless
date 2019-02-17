@@ -9,6 +9,8 @@
 # All other rights reserved.
 #
 
+import platform
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -46,7 +48,7 @@ class Wordless_Wrapper(QWidget):
         self.wrapper_table = QWidget(self)
 
         self.wrapper_table.setLayout(QGridLayout())
-        self.wrapper_table.layout().setContentsMargins(10, 10, 6, 6)
+        self.wrapper_table.layout().setContentsMargins(8, 8, 6, 6)
 
         self.wrapper_right = QWidget(self)
         self.wrapper_right.setFixedWidth(320)
@@ -67,7 +69,7 @@ class Wordless_Wrapper(QWidget):
         self.wrapper_right.layout().addWidget(self.scroll_area_settings, 0, 0)
         self.wrapper_right.layout().addWidget(self.button_reset_settings, 1, 0)
 
-        self.wrapper_right.layout().setContentsMargins(0, 10, 10, 6)
+        self.wrapper_right.layout().setContentsMargins(0, 8, 8, 6)
 
         self.setLayout(QGridLayout())
         self.layout().addWidget(self.wrapper_table, 0, 0)
@@ -102,8 +104,6 @@ class Wordless_Wrapper_File_Area(Wordless_Wrapper):
                 background-color: #FFF;
             }
         ''')
-
-        self.layout().setContentsMargins(2, 0, 2, 0)
 
 class Wordless_Separator(QFrame):
     def __init__(self, parent, orientation = 'Horizontal'):

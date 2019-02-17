@@ -12,6 +12,7 @@
 import copy
 import os
 import pickle
+import platform
 import sys
 import time
 
@@ -341,7 +342,11 @@ class Wordless_Main(QMainWindow):
         wrapper_file_area.setLayout(QGridLayout())
         wrapper_file_area.layout().addWidget(self.wordless_file_area, 0, 0)
 
-        wrapper_file_area.layout().setContentsMargins(0, 0, 2, 0)
+        if platform.system() == 'Windows':
+            self.wordless_file_area.layout().setContentsMargins(2, 0, 2, 0)
+            wrapper_file_area.layout().setContentsMargins(0, 0, 2, 0)
+        else:
+            wrapper_file_area.layout().setContentsMargins(0, 0, 0, 0)
 
         splitter_central_widget = wordless_layout.Wordless_Splitter(Qt.Vertical, self)
         splitter_central_widget.addWidget(self.wordless_work_area)

@@ -46,10 +46,7 @@ class Wordless_Table_Ngrams(wordless_table.Wordless_Table_Data_Search):
 
         dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
                                                                tab = 'ngrams',
-                                                               table = self,
-                                                               cols_search = [
-                                                                   self.tr('N-grams')
-                                                               ])
+                                                               table = self)
 
         self.button_search_results.clicked.connect(dialog_search.load)
 
