@@ -79,6 +79,7 @@ class Wordless_Text():
                                 if i == 0 and i_tag == 0 and not self.tags_non_pos:
                                     self.tokens.insert(0, '')
 
+                                    self.tags_pos.append([])
                                     self.tags_non_pos.append([tag])
                                 else:
                                     self.tokenize_text(text[:i_tag])
@@ -113,6 +114,7 @@ class Wordless_Text():
                                     self.tokens.insert(0, '')
 
                                     self.tags_pos.append([tag])
+                                    self.tags_non_pos.append([])
                                 else:
                                     self.split_text(text[:i_tag])
 
@@ -139,6 +141,7 @@ class Wordless_Text():
                                 if i == 0 and i_tag == 0 and not self.tags_non_pos:
                                     self.tokens.insert(0, '')
 
+                                    self.tags_pos.append([])
                                     self.tags_non_pos.append([tag])
                                 else:
                                     self.split_text(text[:i_tag])
