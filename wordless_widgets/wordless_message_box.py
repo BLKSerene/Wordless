@@ -46,107 +46,168 @@ def wordless_message_box_exit(main):
     return reply
 
 # Files
-def wordless_message_box_error_files(main,
-                                     files_missing = [],
-                                     files_duplicate = [],
-                                     files_empty = [],
-                                     files_unsupported = [],
-                                     files_encoding_error = [],
-                                     files_loading_error = []):
+def wordless_message_text_file_error(files, text_singular, text_plural):
+    message_text = ''
+
+    if files:
+        if len(files) == 1:
+            message_text = text_singular
+        else:
+            message_text = text_plural
+
+        message_text = f'''
+            <div>{message_text}</div>
+            <ul>{''.join([f'<li>{file}</li>' for file in files])}</ul>
+        '''
+
+    return message_text
+
+def wordless_message_box_file_error_on_opening(main,
+                                               files_duplicate,
+                                               files_empty,
+                                               files_unsupported,
+                                               files_parsing_error):
     message = ''
 
-    if (files_missing or
-        files_duplicate or
-        files_empty or
-        files_unsupported or
-        files_encoding_error or
-        files_loading_error):
-        if files_missing:
-            list_files = ''.join([f'<li>{file}</li>' for file in files_missing])
+    message += wordless_message_text_file_error(
+        files_duplicate,
+        text_singular = main.tr('The following file has already been opened:'),
+        text_plural = main.tr('The following files have already been opened:'))
 
-            if len(files_missing) == 1:
-                message += main.tr(f'''
-                               <div>The following file no longer exists in its original location:</div>
-                               <ul>{list_files}</ul>
-                           ''')
-            else:
-                message += main.tr(f'''
-                               <div>The following files no longer exists in their original location:</div>
-                               <ol>{list_files}</ol>
-                           ''')
+    message += wordless_message_text_file_error(
+        files_empty,
+        text_singular = main.tr('The following file is empty:'),
+        text_plural = main.tr('The following files are empty:'))
 
-        if files_duplicate:
-            list_files = ''.join([f'<li>{file}</li>' for file in files_duplicate])
+    message += wordless_message_text_file_error(
+        files_unsupported,
+        text_singular = main.tr('Failed to open the following file because the file type is not currently supported:'),
+        text_plural = main.tr('Failed to open the following files because the file types are not currently supported:'))
 
-            if len(files_duplicate) == 1:
-                message += main.tr(f'''
-                               <div>The following file has already been opened:</div>
-                               <ul>{list_files}</ul>
-                           ''')
-            else:
-                message += main.tr(f'''
-                               <div>The following files have already been opened:</div>
-                               <ol>{list_files}</ol>
-                           ''')
+    message += wordless_message_text_file_error(
+        files_parsing_error,
+        text_singular = main.tr('Failed to parse the following file due to an encoding error:'),
+        text_plural = main.tr('Failed to parse the following files due to encoding errors:'))
 
-        if files_empty:
-            list_files = ''.join([f'<li>{file}</li>' for file in files_empty])
-
-            if len(files_empty) == 1:
-                message += main.tr(f'''
-                               <div>The following file is empty:</div>
-                               <ul>{list_files}</ul>
-                           ''')
-            else:
-                message += main.tr(f'''
-                               <div>The following files are empty:</div>
-                               <ol>{list_files}</ol>
-                           ''')
-
-        if files_unsupported:
-            list_files = ''.join([f'<li>{file}</li>' for file in files_unsupported])
-
-            if len(files_unsupported) == 1:
-                message += main.tr(f'''
-                               <div>Failed to open the following file because the file type is not currently supported:</div>
-                               <ul>{list_files}</ul>
-                           ''')
-            else:
-                message += main.tr(f'''
-                               <div>Failed to open the following files because the file types are not currently supported:</div>
-                               <ol>{list_files}</ol>
-                           ''')
-
-        if files_encoding_error:
-            list_files = ''.join([f'<li>{file}</li>' for file in files_encoding_error])
-
-            if len(files_encoding_error) == 1:
-                message += main.tr(f'''
-                               <div>Failed to open the following file due to an encoding error:</div>
-                               <ul>{list_files}</ul>
-                           ''')
-            else:
-                message += main.tr(f'''
-                               <div>Failed to open the following files due to encoding errors:</div>
-                               <ol>{list_files}</ol>
-                           ''')
-
-        if files_loading_error:
-            list_files = ''.join([f'<li>{file}</li>' for file in files_loading_error])
-
-            if len(files_loading_error) == 1:
-                message += main.tr(f'''
-                               <div>Failed to read the following file due to an encoding error:</div>
-                               <ul>{list_files}</ul>
-                           ''')
-            else:
-                message += main.tr(f'''
-                               <div>Failed to read the following files due to encoding errors:</div>
-                               <ol>{list_files}</ol>
-                           ''')
-
+    if message:
         QMessageBox.information(main,
-                                main.tr('Loading Error'),
+                                main.tr('Error Opening File'),
+                                main.tr(f'''
+                                    {main.settings_global['styles']['style_dialog']}
+                                    <body>
+                                        <div>
+                                            An error occurred while opening the files, so some files are skipped and they will not be added to the file area.
+                                        </div>
+                                        {message}
+                                    </body>
+                                '''),
+                                QMessageBox.Ok)
+
+def wordless_message_box_file_error_on_startup(main,
+                                               files_missing,
+                                               files_empty):
+    message = ''
+
+    message += wordless_message_text_file_error(
+        files_missing,
+        text_singular = main.tr('The following file no longer exists in its original location:'),
+        text_plural = main.tr('The following files no longer exist in their original locations:'))
+
+    message += wordless_message_text_file_error(
+        files_empty,
+        text_singular = main.tr('The following file is empty:'),
+        text_plural = main.tr('The following files are empty:'))
+
+    if message:
+        QMessageBox.information(main,
+                                main.tr('Error Loading File'),
+                                main.tr(f'''
+                                    {main.settings_global['styles']['style_dialog']}
+                                    <body>
+                                        <div>
+                                            An error occurred while loading the files on startup, so some files are skipped and they will be removed from the file area.
+                                        </div>
+                                        {message}
+                                    </body>
+                                '''),
+                                QMessageBox.Ok)
+
+def wordless_message_box_file_error_on_importing(main,
+                                                 files_empty,
+                                                 files_loading_error):
+    message = ''
+
+    message += wordless_message_text_file_error(
+        files_empty,
+        text_singular = main.tr('The following file is empty:'),
+        text_plural = main.tr('The following files are empty:'))
+
+    message += wordless_message_text_file_error(
+        files_loading_error,
+        text_singular = main.tr('Failed to load the following file due to an encoding error:'),
+        text_plural = main.tr('Failed to load the following files due to encoding errors:'))
+
+    if message:
+        QMessageBox.information(main,
+                                main.tr('Error Importing File'),
+                                main.tr(f'''
+                                    {main.settings_global['styles']['style_dialog']}
+                                    <body>
+                                        <div>
+                                            An error occurred while importing the files, so some files are skipped and they will not be loaded into the list.
+                                        </div>
+                                        {message}
+                                    </body>
+                                '''),
+                                QMessageBox.Ok)
+
+def wordless_message_box_file_error_on_loading(main,
+                                               files_missing,
+                                               files_empty,
+                                               files_loading_error):
+    message = ''
+
+    message += wordless_message_text_file_error(
+        files_missing,
+        text_singular = main.tr('The following file no longer exists in its original location:'),
+        text_plural = main.tr('The following files no longer exist in their original locations:'))
+
+    message += wordless_message_text_file_error(
+        files_empty,
+        text_singular = main.tr('The following file is empty:'),
+        text_plural = main.tr('The following files are empty:'))
+
+    message += wordless_message_text_file_error(
+        files_loading_error,
+        text_singular = main.tr('Failed to load the following file due to an encoding error:'),
+        text_plural = main.tr('Failed to load the following files due to encoding errors:'))
+
+    if message:
+        QMessageBox.information(main,
+                                main.tr('Error Loading File'),
+                                main.tr(f'''
+                                    {main.settings_global['styles']['style_dialog']}
+                                    <body>
+                                        <div>
+                                            An error occurred while loading the files, so some files will be removed from the file area. Please check your settings and try again.
+                                        </div>
+                                        {message}
+                                    </body>
+                                '''),
+                                QMessageBox.Ok)
+
+def wordless_message_box_file_error_on_loading_colligation(main,
+                                                           files_unsupported_pos_tagging):
+    message = ''
+
+    message += wordless_message_text_file_error(
+        files_unsupported_pos_tagging,
+        text_singular = main.tr('The built-in POS taggers currently have no support for the language of the following file, please check your settings or provide a file that has already been POS-tagged.'),
+        text_plural = main.tr('The built-in POS taggers currently have no support for the languages of the following files, please check your settings or provide files that have already been POS-tagged.'))
+
+    if message:
+        QMessageBox.information(main,
+                                main.tr('Error Loading File'),
                                 main.tr(f'''
                                     {main.settings_global['styles']['style_dialog']}
                                     <body>
@@ -155,72 +216,36 @@ def wordless_message_box_error_files(main,
                                 '''),
                                 QMessageBox.Ok)
 
-def wordless_message_box_error_ref_file(main):
-    QMessageBox.warning(main,
-                        main.tr('Loading Error'),
-                        main.tr(f'''
-                            {main.settings_global['styles']['style_dialog']}
-                            <body>
-                                <div>An error occurred during loading of the reference file!</div>
-                                <div>Please check and try again.</div>
-                            </body>
-                        '''),
-                        QMessageBox.Ok)
-
 def wordless_message_box_detection_failed(main,
                                           files_detection_failed_encoding,
                                           files_detection_failed_text_type,
                                           files_detection_failed_lang):
     message = ''
 
-    if files_detection_failed_encoding or files_detection_failed_text_type or files_detection_failed_lang:
-        if files_detection_failed_encoding:
-            list_files = ''.join([f'<li>{file}</li>' for file in files_detection_failed_encoding])
+    message += wordless_message_text_file_error(
+        files_detection_failed_encoding,
+        text_singular = main.tr('Failed to detect the encoding of the following file:'),
+        text_plural = main.tr('Failed to detect the encodings of the following files:'))
 
-            if len(files_detection_failed_encoding) == 1:
-                message += main.tr(f'''
-                               <div>Failed to detect the encoding of the following file:</div>
-                               <ul>{list_files}</ul>
-                           ''')
-            else:
-                message += main.tr(f'''
-                               <div>Failed to detect the encodings of the following files:</div>
-                               <ol>{list_files}</ol>
-                           ''')
+    message += wordless_message_text_file_error(
+        files_detection_failed_text_type,
+        text_singular = main.tr('Failed to detect the text type of the following file:'),
+        text_plural = main.tr('Failed to detect the text types of the following files:'))
 
-        if files_detection_failed_text_type:
-            list_files = ''.join([f'<li>{file}</li>' for file in files_detection_failed_text_type])
+    message += wordless_message_text_file_error(
+        files_detection_failed_lang,
+        text_singular = main.tr('Failed to detect the language of the following file:'),
+        text_plural = main.tr('Failed to detect the languages of the following files:'))
 
-            if len(files_detection_failed_text_type) == 1:
-                message += main.tr(f'''
-                               <div>Failed to detect the text type of the following file:</div>
-                               <ul>{list_files}</ul>
-                           ''')
-            else:
-                message += main.tr(f'''
-                               <div>Failed to detect the text type of the following files:</div>
-                               <ol>{list_files}</ol>
-                           ''')
-
-        if files_detection_failed_lang:
-            list_files = ''.join([f'<li>{file}</li>' for file in files_detection_failed_lang])
-
-            if len(files_detection_failed_lang) == 1:
-                message += main.tr(f'''
-                               <div>Failed to detect the language of the following file:</div>
-                               <ul>{list_files}</ul>
-                           ''')
-            else:
-                message += main.tr(f'''
-                               <div>Failed to detect the languages of the following files:</div>
-                               <ol>{list_files}</ol>
-                           ''')
-
+    if message:
         QMessageBox.information(main,
                                 main.tr('Auto-detection Failed'),
                                 main.tr(f'''
                                     {main.settings_global['styles']['style_dialog']}
                                     <body>
+                                        <div>
+                                            An error occurred during auto-detection. Pleas change the settings of some files manually.
+                                        </div>
                                         {message}
                                     </body>
                                 '''),
@@ -233,7 +258,7 @@ def wordless_message_box_duplicate_file_name(main):
                         main.tr(f'''
                             {main.settings_global['styles']['style_dialog']}
                             <body>
-                                <div>There is already a file with the same name that has been loaded into Wordless.</div>
+                                <div>There is already a file with the same name in the file area.</div>
                                 <div>Please specify a different file name.</div>
                             </body>
                         '''),
