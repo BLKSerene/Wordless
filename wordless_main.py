@@ -114,6 +114,9 @@ class Wordless_Main(QMainWindow):
             # Clear history of closed files
             self.settings_custom['files']['files_closed'].clear()
 
+            # Layouts
+            self.settings_custom['layouts']['central_widget'] = self.centralWidget().sizes()
+
             with open('wordless_settings.pkl', 'wb') as f:
                 pickle.dump(self.settings_custom, f)
 
@@ -345,7 +348,6 @@ class Wordless_Main(QMainWindow):
             }
         ''')
 
-        splitter_central_widget.setSizes([self.height() - 100 - 210, 210])
         splitter_central_widget.setStretchFactor(0, 1)
 
         self.setCentralWidget(splitter_central_widget)
@@ -407,6 +409,9 @@ class Wordless_Main(QMainWindow):
 
         # Menu
         self.find_menu_item(self.tr('Show Status Bar')).setChecked(settings['menu']['prefs']['show_status_bar'])
+
+        # Layouts
+        self.centralWidget().setSizes(settings['layouts']['central_widget'])
 
     def find_menu_item(self, text, menu = None):
         menu_item = None
