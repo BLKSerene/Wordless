@@ -50,11 +50,7 @@ class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
 
         dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
                                                                tab = 'colligation',
-                                                               table = self,
-                                                               cols_search = [
-                                                                   self.tr('Nodes'),
-                                                                   self.tr('Collocates')
-                                                               ])
+                                                               table = self)
 
         self.button_search_results.clicked.connect(dialog_search.load)
 

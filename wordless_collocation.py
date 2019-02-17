@@ -47,11 +47,7 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Search):
 
         dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
                                                                tab = 'collocation',
-                                                               table = self,
-                                                               cols_search = [
-                                                                   self.tr('Nodes'),
-                                                                   self.tr('Collocates')
-                                                               ])
+                                                               table = self)
 
         self.button_search_results.clicked.connect(dialog_search.load)
 

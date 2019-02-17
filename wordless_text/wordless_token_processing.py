@@ -35,12 +35,12 @@ def wordless_process_tokens(text, token_settings):
                 del text.tags_non_pos[i]
                 del text.tags_all[i]
 
-    # Lemmatize
+    # Lemmatize all tokens
     if not settings['use_tags'] and settings['lemmatize_tokens']:
         tokens = wordless_text_processing.wordless_lemmatize(main, tokens,
                                                              lang_code = text.lang_code)
 
-    # Treat as All Lowercase
+    # Treat as all lowercase
     if settings['treat_as_lowercase']:
         tokens = [token.lower() for token in tokens]
 
@@ -78,7 +78,7 @@ def wordless_process_tokens(text, token_settings):
             if wordless_checking_token.is_token_num(token):
                 tokens[i] = ''
 
-    # Filter Stop Words
+    # Filter stop words
     if settings['filter_stop_words']:
         tokens_filtered = wordless_text_processing.wordless_filter_stop_words(main, [token for token, _ in tokens],
                                                                               lang_code = text.lang_code)
@@ -87,19 +87,19 @@ def wordless_process_tokens(text, token_settings):
             if token not in tokens_filtered:
                 tokens[i] = ''
 
-    # Ignore Tags
+    # Ignore tags
     if settings['ignore_tags']:
-        # Ignore All Tags
+        # Ignore all tags
         if settings['ignore_tags_type'] == main.tr('all'):
             tokens = [(token, []) for token in tokens]
             text.tokens = [(token, []) for token in text.tokens]
-        # Ignore POS Tags
+        # Ignore POS tags
         elif settings['ignore_tags_type'] == main.tr('POS'):
             tokens = [(token, tags)
                       for token, tags in zip(tokens, text.tags_non_pos)]
             text.tokens = [(token, tags)
                            for token, tags in zip(text.tokens, text.tags_non_pos)]
-        # Ignore Non-POS Tags
+        # Ignore non-POS tags
         elif settings['ignore_tags_type'] == main.tr('non-POS'):
             tokens = [(token, tags)
                       for token, tags in zip(tokens, text.tags_pos)]
@@ -116,7 +116,7 @@ def wordless_process_tokens(text, token_settings):
 def wordless_process_tokens_overview(text, token_settings):
     tokens = wordless_process_tokens(text, token_settings)
 
-    # Tags Only
+    # Use tags only
     if token_settings['use_tags']:
         tokens = [tag for _, tags in tokens for tag in tags]
         text.tokens = [tag for _, tags in text.tokens for tag in tags]
@@ -132,7 +132,7 @@ def wordless_process_tokens_overview(text, token_settings):
 def wordless_process_tokens_wordlist(text, token_settings):
     tokens = wordless_process_tokens(text, token_settings)
 
-    # Tags Only
+    # Use tags only
     if token_settings['use_tags']:
         tokens = [''.join(tags) for _, tags in tokens]
         text.tokens = [''.join(tags) for _, tags in text.tokens]
@@ -148,7 +148,7 @@ def wordless_process_tokens_wordlist(text, token_settings):
 def wordless_process_tokens_ngrams(text, token_settings):
     tokens = wordless_process_tokens(text, token_settings)
 
-    # Tags Only
+    # Use tags only
     if token_settings['use_tags']:
         tokens = [''.join(tags) for _, tags in tokens]
         text.tokens = [''.join(tags) for _, tags in text.tokens]
@@ -215,20 +215,20 @@ def wordless_process_tokens_concordancer(text, token_settings):
         if wordless_checking_token.is_token_punc(text.tokens[0]):
             tokens.insert(0, [])
 
-    # Ignore Tags
+    # Ignore tags
     if settings['ignore_tags']:
-        # Ignore All Tags
-        if settings['ignore_tags_type'] == main.tr('All'):
+        # Ignore all tags
+        if settings['ignore_tags_type'] == main.tr('all'):
             tokens = [(token, []) for token in tokens]
             text.tokens = [(token, []) for token in text.tokens]
-        # Ignore POS Tags
+        # Ignore POS tags
         elif settings['ignore_tags_type'] == main.tr('POS'):
             tokens = [(token, tags)
                       for token, tags in zip(tokens, text.tags_non_pos)]
             text.tokens = [(token, tags)
                            for token, tags in zip(text.tokens, text.tags_non_pos)]
-        # Ignore Non-POS Tags
-        elif settings['ignore_tags_type'] == main.tr('Non-POS'):
+        # Ignore non-POS tags
+        elif settings['ignore_tags_type'] == main.tr('non-POS'):
             tokens = [(token, tags)
                       for token, tags in zip(tokens, text.tags_pos)]
             text.tokens = [(token, tags)
@@ -239,7 +239,7 @@ def wordless_process_tokens_concordancer(text, token_settings):
         text.tokens = [(token, tags)
                        for token, tags in zip(text.tokens, text.tags_all)]
 
-    # Tags Only
+    # Use tags only
     if settings['use_tags']:
         tokens = [''.join(tags) for _, tags in tokens]
         text.tokens = [''.join(tags) for _, tags in text.tokens]
