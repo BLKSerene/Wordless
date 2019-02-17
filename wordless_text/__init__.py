@@ -10,7 +10,7 @@
 #
 
 __all__ = [
-	'wordless_matching',
+    'wordless_matching',
     'wordless_text',
     'wordless_text_processing',
     'wordless_text_utils',

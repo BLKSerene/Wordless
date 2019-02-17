@@ -7,6 +7,6 @@
 #
 
 __all__ = [
-	'wordless_plot_freq',
-	'wordless_plot_stat'
+    'wordless_plot_freq',
+    'wordless_plot_stat'
 ]

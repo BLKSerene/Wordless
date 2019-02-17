@@ -134,10 +134,13 @@ def check_files_on_loading(main, files):
                                                                         files_loading_error = files_loading_error)
 
         for file in main.wordless_files.get_selected_files():
+            if file['path'] in files_missing + files_empty + files_loading_error:
+                loading_ok = False
+
+        # Remove missing and empty files
+        for file in main.wordless_files.get_selected_files():
             if file['path'] in files_missing + files_empty:
                 main.settings_custom['files']['files_open'].remove(file)
-
-                loading_ok = False
 
         main.wordless_files.update_table()
     else:

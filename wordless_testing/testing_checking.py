@@ -1,4 +1,4 @@
-#
+"show_line_endings": false,#
 # Wordless: Testing - Checking
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊)

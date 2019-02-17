@@ -9,20 +9,30 @@
 # All other rights reserved.
 #
 
+def wordless_message_import_list_success(main, num_prev, num_cur):
+    num_imported = num_cur - num_prev
+
+    if num_imported == 0:
+        main.statusBar().showMessage(main.tr('No items were imported into the list.'))
+    elif num_imported == 1:
+        main.statusBar().showMessage(main.tr('1 item has been successfully imported into the list.'))
+    else:
+        main.statusBar().showMessage(main.tr(f'{num_imported} items have been successfully imported into the list.'))
+
 def wordless_message_generate_table_success(main):
-	main.statusBar().showMessage(main.tr('The table has been successfully generated.'))
-
-def wordless_message_generate_table_error(main):
-	main.statusBar().showMessage(main.tr('Error occured during table generation!'))
-
-def wordless_message_filter_table_done(main):
-	main.statusBar().showMessage(main.tr('The results in the table has been successfully filtered.'))
-
-def wordless_message_sort_results(main):
-	main.statusBar().showMessage(main.tr('The results in the table has been successfully sorted.'))
+    main.statusBar().showMessage(main.tr('The table has been successfully generated.'))
 
 def wordless_message_generate_plot_success(main):
-	main.statusBar().showMessage(main.tr('The plot has been successfully generated.'))
+    main.statusBar().showMessage(main.tr('The plot has been successfully generated.'))
+
+def wordless_message_generate_table_error(main):
+    main.statusBar().showMessage(main.tr('An error occured during table generation!'))
 
 def wordless_message_generate_plot_error(main):
-	main.statusBar().showMessage(main.tr('Error occured during plot generation!'))
+    main.statusBar().showMessage(main.tr('An error occured during plot generation!'))
+
+def wordless_message_filter_table_done(main):
+    main.statusBar().showMessage(main.tr('The results in the table has been successfully filtered.'))
+
+def wordless_message_sort_results(main):
+    main.statusBar().showMessage(main.tr('The results in the table has been successfully sorted.'))
