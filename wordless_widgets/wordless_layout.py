@@ -39,13 +39,14 @@ class Wordless_Wrapper(QWidget):
         self.setObjectName('wordless-wrapper')
         self.setStyleSheet('''
             QWidget#wordless-wrapper {
-                border: 1px solid #D0D0D0;
                 background-color: #FFF;
             }
         ''')
 
         self.wrapper_table = QWidget(self)
+
         self.wrapper_table.setLayout(QGridLayout())
+        self.wrapper_table.layout().setContentsMargins(10, 10, 6, 6)
 
         self.wrapper_right = QWidget(self)
         self.wrapper_right.setFixedWidth(320)
@@ -66,12 +67,13 @@ class Wordless_Wrapper(QWidget):
         self.wrapper_right.layout().addWidget(self.scroll_area_settings, 0, 0)
         self.wrapper_right.layout().addWidget(self.button_reset_settings, 1, 0)
 
+        self.wrapper_right.layout().setContentsMargins(0, 10, 10, 6)
+
         self.setLayout(QGridLayout())
         self.layout().addWidget(self.wrapper_table, 0, 0)
         self.layout().addWidget(self.wrapper_right, 0, 1)
 
-        self.layout().setContentsMargins(2, 0, 2, 0)
-        self.layout().setSpacing(0)
+        self.layout().setContentsMargins(0, 0, 0, 0)
 
     # If you subclass from QWidget, you need to provide a paintEvent for your custom QWidget as below.
     # See: https://doc.qt.io/qt-5/stylesheet-reference.html#list-of-stylable-widgets - QWidget
@@ -89,6 +91,19 @@ class Wordless_Wrapper(QWidget):
 
         if reply == QMessageBox.Yes:
             self.load_settings(defaults = True)
+
+class Wordless_Wrapper_File_Area(Wordless_Wrapper):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.setStyleSheet('''
+            QWidget#wordless-wrapper {
+                border: 1px solid #D0D0D0;
+                background-color: #FFF;
+            }
+        ''')
+
+        self.layout().setContentsMargins(2, 0, 2, 0)
 
 class Wordless_Separator(QFrame):
     def __init__(self, parent, orientation = 'Horizontal'):
