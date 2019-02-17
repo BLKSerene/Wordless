@@ -48,7 +48,7 @@ class Wordless_Wrapper(QWidget):
         self.wrapper_table.setLayout(QGridLayout())
 
         self.wrapper_right = QWidget(self)
-        self.wrapper_right.setFixedWidth(310)
+        self.wrapper_right.setFixedWidth(320)
 
         self.scroll_area_settings = Wordless_Scroll_Area(self)
         self.button_reset_settings = QPushButton(self.tr('Reset Settings'), self)

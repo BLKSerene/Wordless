@@ -154,7 +154,7 @@ def wordless_message_box_file_error_on_importing(main,
                                     {main.settings_global['styles']['style_dialog']}
                                     <body>
                                         <div>
-                                            An error occurred while importing the files, so some files are skipped and they will not be loaded into the list.
+                                            An error occurred while importing the files, so some files are skipped and will not be imported into the list.
                                         </div>
                                         {message}
                                     </body>

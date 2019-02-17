@@ -10,7 +10,7 @@
 #
 
 __all__ = [
-	'wordless_about',
+    'wordless_about',
     'wordless_acks',
     'wordless_changelog',
     'wordless_check_updates',
