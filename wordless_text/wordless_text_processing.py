@@ -327,7 +327,13 @@ def wordless_word_tokenize(main, sentences, lang,
             if tokens:
                 tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = sentence.boundary, sentence_ending = True)
 
-    return [token for tokens in token_groups for token in tokens]
+    # Remove empty tokens and strip whitespace
+    tokens = [token.strip()
+              for tokens in token_groups
+              for token in tokens
+              if not re.search(r'^\s*$', token)]
+
+    return tokens
 
 def wordless_word_detokenize(main, tokens, lang,
                              word_detokenizer = 'default'):
@@ -419,21 +425,17 @@ def wordless_word_detokenize(main, tokens, lang,
 
     return re.sub(r'\s{2,}', ' ', text)
 
-def wordless_pos_tag(main, sentences, lang,
+def wordless_pos_tag(main, tokens, lang,
                      pos_tagger = 'default',
                      tagset = 'custom'):
     tokens_tagged = []
-
-    if type(sentences) != list:
-        sentences = [sentences]
 
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang]
 
     # Chinese
     if pos_tagger == main.tr('jieba - Chinese POS Tagger'):
-        for sentence in sentences:
-            tokens_tagged.extend(jieba.posseg.cut(sentence))
+        tokens_tagged = jieba.posseg.cut(' '.join(tokens))
 
     # Dutch, English, French, German, Italian, Portuguese and Spanish
     elif 'spaCy' in pos_tagger:
@@ -441,24 +443,19 @@ def wordless_pos_tag(main, sentences, lang,
 
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-        for sentence in sentences:
-            tokens_tagged.extend([(token.text, token.tag_) for token in nlp(str(sentence))])
+        tokens_tagged = [(token.text, token.tag_) for token in nlp(' '.join(tokens))]
 
     # English & Russian
     elif pos_tagger == main.tr('NLTK - Perceptron POS Tagger'):
-        for sentence in sentences:
-            tokens = wordless_word_tokenize(main, sentence, lang)
-
-            tokens_tagged.extend(nltk.pos_tag(tokens, lang = lang))
+        tokens_tagged = nltk.pos_tag(tokens, lang = lang)
 
     # Japanese
     elif pos_tagger == main.tr('nagisa - Japanese POS Tagger'):
         import nagisa
 
-        for sentence in sentences:
-            tagged_tokens = nagisa.tagging(str(sentence))
+        tagged_tokens = nagisa.tagging(' '.join(tokens))
 
-            tokens_tagged.extend(zip(tagged_tokens.words, tagged_tokens.postags))
+        tokens_tagged = zip(tagged_tokens.words, tagged_tokens.postags)
 
     # Russian & Ukrainian
     elif pos_tagger == main.tr('pymorphy2 - Morphological Analyzer'):
@@ -467,36 +464,25 @@ def wordless_pos_tag(main, sentences, lang,
         elif lang == 'ukr':
             morphological_analyzer = pymorphy2.MorphAnalyzer(lang = 'uk')
 
-        for sentence in sentences:
-            tokens = wordless_word_tokenize(main, sentence, lang)
-
-            for token in tokens:
-                tokens_tagged.append((token, morphological_analyzer.parse(token)[0].tag._POS))
+        for token in tokens:
+            tokens_tagged.append((token, morphological_analyzer.parse(token)[0].tag._POS))
 
     # Thai
     elif pos_tagger == main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'):
-        for sentence in sentences:
-            tokens = wordless_word_tokenize(main, sentence, lang = 'tha')
-
-            tokens_tagged.extend(pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid'))
+        tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
     elif pos_tagger == main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus'):
-        for sentence in sentences:
-            tokens = wordless_word_tokenize(main, sentence, lang = 'tha')
-
-            tokens_tagged.extend(pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud'))
+        tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
 
     # Tibetan
     elif pos_tagger == main.tr('pybo - Tibetan POS Tagger'):
         if 'pybo_bo_tokenizer' not in main.__dict__:
             main.pybo_bo_tokenizer = pybo.BoTokenizer('POS')
 
-        for sentence in sentences:
-            tokens_tagged.extend([(token.content, token.pos) for token in main.pybo_bo_tokenizer.tokenize(sentence)])
+        tokens_tagged = [(token.content, token.pos) for token in main.pybo_bo_tokenizer.tokenize(' '.join(tokens))]
 
     # Vietnamese
     elif pos_tagger == main.tr('Underthesea - Vietnamese POS Tagger'):
-        for sentence in sentences:
-            tokens_tagged.extend(underthesea.pos_tag(str(sentence)))
+        tokens_tagged = underthesea.pos_tag(' '.join(tokens))
 
     # Convert to Universal Tagset
     if (tagset == 'custom' and main.settings_custom['pos_tagging']['to_universal_pos_tags'] or
@@ -508,17 +494,32 @@ def wordless_pos_tag(main, sentences, lang,
         tokens_tagged = [(token, mappings[tag])
                          for token, tag in tokens_tagged]
 
+    # Strip empty tokens and strip whitespace in tokens
+    tokens_tagged = [(token.strip(), tag)
+                     for token, tag in tokens_tagged
+                     if not re.search(r'^\s*$', token)]
+
+    # Check if the first token is empty
+    if tokens[0] == '':
+        tokens_tagged.insert(0, ('', ''))
+
     return tokens_tagged
 
 def wordless_lemmatize(main, tokens, lang,
                        text_type = ('untokenized', 'untagged'),
                        lemmatizer = 'default'):
+    empty_offsets = []
     mapping_lemmas = {}
     lemmas = []
 
     re_tags_all = wordless_matching.get_re_tags(main, tags = 'all')
     re_tags_pos = wordless_matching.get_re_tags(main, tags = 'pos')
     re_tags_non_pos = wordless_matching.get_re_tags(main, tags = 'non_pos')
+
+    # Record empty tokens
+    for i, token in enumerate(tokens):
+        if re.search(r'^\s*$', token):
+            empty_offsets.append(i)
 
     if text_type[1] == 'tagged_both':
         tags = [''.join(re.findall(re_tags_all, token)) for token in tokens]
@@ -531,10 +532,6 @@ def wordless_lemmatize(main, tokens, lang,
         tokens = [re.sub(re_tags_non_pos, '', token) for token in tokens]
     else:
         tags = [''] * len(tokens)
-
-    # Check if the first token is empty
-    if tokens[0] == '':
-        lemmas.append('')
 
     if tokens and lang in main.settings_global['lemmatizers']:
         if lemmatizer == 'default':
@@ -617,6 +614,10 @@ def wordless_lemmatize(main, tokens, lang,
 
     if mapping_lemmas:
         lemmas = [mapping_lemmas.get(token, token) for token in tokens]
+
+    # Insert empty lemmas
+    for empty_offset in empty_offsets:
+        lemmas.insert(empty_offset, '')
 
     return [lemma + tag for lemma, tag in zip(lemmas, tags)]
 

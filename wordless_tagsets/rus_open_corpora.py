@@ -25,8 +25,6 @@ mappings = [
     ['PRTF', 'VERB', 'Participle (full)', 'прочитавший, прочитанная'],
     ['PRTS', 'VERB', 'Participle (short)', 'прочитана'],
     ['GRND', 'VERB', 'Verbal adverb', 'прочитав, рассказывая'],
-    # Issue #18: https://github.com/kmike/pymorphy2/issues/118
-    ['NUMB', 'NUM', 'Number', '1, 2, 3'],
     ['NUMR', 'NUM', 'Numeral', 'три, пятьдесят'],
     ['ADVB', 'ADV', 'Adverb', 'круто'],
     ['NPRO', 'PRON', 'Pronoun-noun', 'он'],
@@ -36,6 +34,10 @@ mappings = [
     ['PRCL', 'PART', 'Particle', 'бы, же, лишь'],
     ['INTJ', 'INTJ', 'Interjection', 'ой'],
 
-    ['PNCT', 'PUNCT', 'Punctuation', ''],
-    ['UNKN', 'SYM/X', 'Symbol and unknown word', '']
+    ['LATN', 'X', 'Токен состоит из латинских букв', 'foo-bar, Maßstab'],
+    ['NUMB', 'NUM', 'Число', '204, 3.14'],
+    ['ROMN', 'X', 'Римское число', 'XI'],
+
+    ['PNCT', 'PUNCT', 'Пунктуация', ', ! ? …'],
+    ['UNKN', 'SYM/X', 'Токен не удалось разобрать', '']
 ]
