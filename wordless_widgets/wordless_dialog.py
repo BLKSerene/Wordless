@@ -184,7 +184,7 @@ class Wordless_Dialog_Search(Wordless_Dialog):
 
         self.layout().addLayout(layout_buttons_bottom, 11, 0, 1, 4)
 
-        self.main.tabs_work_area.currentChanged.connect(self.accept)
+        self.main.wordless_work_area.currentChanged.connect(self.accept)
 
         self.load_settings()
 

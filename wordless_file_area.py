@@ -650,7 +650,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
     def close_all(self):
         self.main.wordless_files.remove_files(list(range(len(self.main.settings_custom['files']['files_open']))))
 
-class Wrapper_File_Area(wordless_layout.Wordless_Wrapper):
+class Wrapper_File_Area(wordless_layout.Wordless_Wrapper_File_Area):
     def __init__(self, main):
         super().__init__(main)
 
