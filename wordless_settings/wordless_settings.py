@@ -49,10 +49,10 @@ class Wordless_Settings(QDialog):
     preview_results_updated_pos_tagging = pyqtSignal(str, list)
     preview_results_updated_lemmatization = pyqtSignal(str, list)
 
-    def __init__(self, parent):
-        super().__init__(parent)
+    def __init__(self, main):
+        super().__init__(main)
 
-        self.main = parent
+        self.main = main
 
         self.preview_processing_sentence_tokenization = False
         self.preview_processing_word_tokenization = False
@@ -232,7 +232,7 @@ class Wordless_Settings(QDialog):
     # Import
     def init_settings_import(self):
         def browse_files():
-            path_file = QFileDialog.getExistingDirectory(self,
+            path_file = QFileDialog.getExistingDirectory(self.main,
                                                          self.tr('Browse'),
                                                          self.main.settings_custom['import']['files']['default_path'])
 
@@ -240,7 +240,7 @@ class Wordless_Settings(QDialog):
                 self.line_edit_import_files_default_path.setText(os.path.normpath(path_file))
 
         def browse_search_terms():
-            path_file = QFileDialog.getExistingDirectory(self,
+            path_file = QFileDialog.getExistingDirectory(self.main,
                                                          self.tr('Browse'),
                                                          self.main.settings_custom['import']['search_terms']['default_path'])
 
@@ -248,12 +248,12 @@ class Wordless_Settings(QDialog):
                 self.line_edit_import_search_terms_default_path.setText(os.path.normpath(path_file))
 
         def browse_stop_words():
-            path_file = QFileDialog.getExistingDirectory(self,
+            path_file = QFileDialog.getExistingDirectory(self.main,
                                                          self.tr('Browse'),
                                                          self.main.settings_custom['import']['stop_words']['default_path'])
 
         def browse_temp_files():
-            path_file = QFileDialog.getExistingDirectory(self,
+            path_file = QFileDialog.getExistingDirectory(self.main,
                                                          self.tr('Browse'),
                                                          self.main.settings_custom['import']['temp_files']['default_path'])
 
@@ -315,7 +315,7 @@ class Wordless_Settings(QDialog):
         self.line_edit_import_temp_files_default_path = QLineEdit(self)
         self.button_import_temp_files_browse = QPushButton(self.tr('Browse...'), self)
         self.label_import_temp_files_default_encoding = QLabel(self.tr('Default Encoding:'), self)
-        self.combo_box_import_temp_files_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
+        self.combo_box_import_temp_files_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self)
 
         self.button_import_temp_files_browse.clicked.connect(browse_temp_files)
 
@@ -401,7 +401,7 @@ class Wordless_Settings(QDialog):
         self.line_edit_export_search_terms_default_path = QLineEdit(self)
         self.button_export_search_terms_default_path = QPushButton(self.tr('Browse'), self)
         self.label_export_search_terms_default_encoding = QLabel(self.tr('Default Encoding:'), self)
-        self.combo_box_export_search_terms_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
+        self.combo_box_export_search_terms_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self)
 
         self.button_export_search_terms_default_path.clicked.connect(browse_search_terms)
 
@@ -419,7 +419,7 @@ class Wordless_Settings(QDialog):
         self.line_edit_export_stop_words_default_path = QLineEdit(self)
         self.button_export_stop_words_default_path = QPushButton(self.tr('Browse'), self)
         self.label_export_stop_words_default_encoding = QLabel(self.tr('Default Encoding:'), self)
-        self.combo_box_export_stop_words_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
+        self.combo_box_export_stop_words_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self)
 
         self.button_export_stop_words_default_path.clicked.connect(browse_stop_words)
 
@@ -449,7 +449,7 @@ class Wordless_Settings(QDialog):
 
         self.label_auto_detection_number_lines = QLabel(self.tr('Number of lines to scan in each file:'), self)
         (self.spin_box_auto_detection_number_lines,
-         self.checkbox_auto_detection_number_lines_no_limit) = wordless_widgets.wordless_widgets_no_limit(self.main)
+         self.checkbox_auto_detection_number_lines_no_limit) = wordless_widgets.wordless_widgets_no_limit(self)
 
         self.spin_box_auto_detection_number_lines.setRange(1, 1000000)
 
@@ -464,11 +464,11 @@ class Wordless_Settings(QDialog):
         group_box_default_settings = QGroupBox(self.tr('Default Settings'), self)
 
         self.label_auto_detection_default_lang = QLabel(self.tr('Default Language:'), self)
-        self.combo_box_auto_detection_default_lang = wordless_box.Wordless_Combo_Box_Lang(self.main)
+        self.combo_box_auto_detection_default_lang = wordless_box.Wordless_Combo_Box_Lang(self)
         self.label_auto_detection_default_text_type = QLabel(self.tr('Default Text Type:'), self)
-        self.combo_box_auto_detection_default_text_type = wordless_box.Wordless_Combo_Box_Text_Type(self.main)
+        self.combo_box_auto_detection_default_text_type = wordless_box.Wordless_Combo_Box_Text_Type(self)
         self.label_auto_detection_default_encoding = QLabel(self.tr('Default Encoding:'), self)
-        self.combo_box_auto_detection_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self.main)
+        self.combo_box_auto_detection_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self)
 
         group_box_default_settings.setLayout(QGridLayout())
         group_box_default_settings.layout().addWidget(self.label_auto_detection_default_lang, 0, 0)
@@ -528,7 +528,7 @@ class Wordless_Settings(QDialog):
         # POS Tag Settings
         group_box_pos_tag_settings = QGroupBox(self.tr('POS Tag Settings'), self)
 
-        self.table_tags_pos = Wordless_Table_Tags_Pos(self.main)
+        self.table_tags_pos = Wordless_Table_Tags_Pos(self)
 
         group_box_pos_tag_settings.setLayout(QGridLayout())
         group_box_pos_tag_settings.layout().addWidget(self.table_tags_pos, 0, 0, 1, 3)
@@ -539,7 +539,7 @@ class Wordless_Settings(QDialog):
         # Non-POS Tag Settings
         group_box_non_pos_tag_settings = QGroupBox(self.tr('Non-POS Tag Settings'), self)
 
-        self.table_tags_non_pos = Wordless_Table_Tags_Non_Pos(self.main)
+        self.table_tags_non_pos = Wordless_Table_Tags_Non_Pos(self)
 
         group_box_non_pos_tag_settings.setLayout(QGridLayout())
         group_box_non_pos_tag_settings.layout().addWidget(self.table_tags_non_pos, 0, 0, 1, 3)
@@ -622,7 +622,7 @@ class Wordless_Settings(QDialog):
         for i, lang in enumerate(settings_global):
             table_sentence_tokenizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang)))
 
-            self.__dict__[f'combo_box_sentence_tokenizer_{lang}'] = wordless_box.Wordless_Combo_Box(self.main)
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang}'] = wordless_box.Wordless_Combo_Box(self)
 
             self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].addItems(settings_global[lang])
 
@@ -754,7 +754,7 @@ class Wordless_Settings(QDialog):
         for i, lang in enumerate(settings_global):
             table_word_tokenizers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang)))
 
-            self.__dict__[f'combo_box_word_tokenizer_{lang}'] = wordless_box.Wordless_Combo_Box(self.main)
+            self.__dict__[f'combo_box_word_tokenizer_{lang}'] = wordless_box.Wordless_Combo_Box(self)
 
             self.__dict__[f'combo_box_word_tokenizer_{lang}'].addItems(settings_global[lang])
 
@@ -957,17 +957,23 @@ class Wordless_Settings(QDialog):
                     tagset = 'default'
 
                 for line in samples.splitlines():
-                    sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line,
+                    sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line.strip(),
                                                                                     lang = settings_custom['preview_lang'])
-                    tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentences,
-                                                                             lang = settings_custom['preview_lang'])
 
-                    tokens_tagged = wordless_text_processing.wordless_pos_tag(self.main, tokens,
-                                                                              lang = settings_custom['preview_lang'],
-                                                                              pos_tagger = pos_tagger,
-                                                                              tagset = tagset)
+                    results_sentences = []
+                    for sentence in sentences:
 
-                    results.append(' '.join([f'{token}_{tag}' for token, tag in tokens_tagged]))
+                        tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentence,
+                                                                                 lang = settings_custom['preview_lang'])
+
+                        tokens_tagged = wordless_text_processing.wordless_pos_tag(self.main, tokens,
+                                                                                  lang = settings_custom['preview_lang'],
+                                                                                  pos_tagger = pos_tagger,
+                                                                                  tagset = tagset)
+
+                        results_sentences.append(' '.join([f'{token}_{tag}' for token, tag in tokens_tagged]))
+
+                    results.append(' '.join(results_sentences))
 
                 self.preview_results_updated_pos_tagging.emit(samples, results)
 
@@ -1019,7 +1025,7 @@ class Wordless_Settings(QDialog):
         for i, lang in enumerate(settings_global):
             self.table_pos_taggers.setItem(i, 0, QTableWidgetItem(wordless_conversion.to_lang_text(self.main, lang)))
 
-            self.__dict__[f'combo_box_pos_tagger_{lang}'] = wordless_box.Wordless_Combo_Box(self.main)
+            self.__dict__[f'combo_box_pos_tagger_{lang}'] = wordless_box.Wordless_Combo_Box(self)
 
             self.__dict__[f'combo_box_pos_tagger_{lang}'].addItems(settings_global[lang])
 
@@ -1389,7 +1395,7 @@ class Wordless_Settings(QDialog):
         self.combo_box_stop_words_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
         self.label_stop_words_preview_count = QLabel('', self)
 
-        self.list_stop_words_preview_results = wordless_list.Wordless_List_Stop_Words(self.main)
+        self.list_stop_words_preview_results = wordless_list.Wordless_List_Stop_Words(self)
 
         self.combo_box_stop_words_preview_lang.currentTextChanged.connect(preview_settings_changed)
         self.combo_box_stop_words_preview_lang.currentTextChanged.connect(preview_results_changed)
@@ -1507,14 +1513,17 @@ class Wordless_Settings(QDialog):
          self.combo_box_students_t_test_two_sample_use_data) = wordless_widgets.wordless_widgets_use_data_freq(self)
         self.label_students_t_test_two_sample_variances = QLabel(self.tr('Variances:'), self)
         self.combo_box_students_t_test_two_sample_variances = QComboBox(self)
-        self.label_welchs_t_test = wordless_label.Wordless_Label_Hint(self.tr('''
-                                                                          <p>
-                                                                              * If variances are set to "Unequal", the Welch\'s t-test will be performed instead.
-                                                                          </p>
-                                                                      '''), self.main)
+        self.label_welchs_t_test = wordless_label.Wordless_Label_Hint(
+            self.tr('''
+                <p>
+                    * If variances are set to "Unequal", the Welch\'s t-test will be performed instead.
+                </p>
+            '''), self)
 
-        self.combo_box_students_t_test_two_sample_variances.addItems([self.tr('Equal'),
-                                                                      self.tr('Unequal')])
+        self.combo_box_students_t_test_two_sample_variances.addItems([
+            self.tr('Equal'),
+            self.tr('Unequal')
+        ])
 
         layout_students_t_test_two_sample_number_sections = QGridLayout()
         layout_students_t_test_two_sample_number_sections.addWidget(self.label_students_t_test_two_sample_divide, 0, 0)

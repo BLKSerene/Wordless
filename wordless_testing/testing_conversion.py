@@ -12,19 +12,12 @@
 import os
 import sys
 
-from PyQt5.QtCore import *
-
 sys.path.append('.')
 
+from wordless_testing import testing_init
 from wordless_utils import wordless_conversion
-from wordless_settings import init_settings_default, init_settings_global
 
-main = QObject()
-
-init_settings_default.init_settings_default(main)
-init_settings_global.init_settings_global(main)
-
-main.settings_custom = main.settings_default
+main = testing_init.Testing_Main()
 
 def testing_to_lang_code(lang_text):
     print(f'{lang_text:22} -> {wordless_conversion.to_lang_code(main, lang_text)}')
@@ -127,12 +120,12 @@ testing_to_text_type_code('Tokenized / Tagged (Non-POS)')
 testing_to_text_type_code('Tokenized / Tagged (Both)')
 
 print('---------- Text Type Code -> Text Type Text ----------')
-testing_to_text_type_text(('untokenized', 'untagged'))
-testing_to_text_type_text(('untokenized', 'tagged_non_pos'))
-testing_to_text_type_text(('tokenized', 'untagged'))
-testing_to_text_type_text(('tokenized', 'tagged_pos'))
-testing_to_text_type_text(('tokenized', 'tagged_non_pos'))
-testing_to_text_type_text(('tokenized', 'tagged_both'))
+testing_to_text_type_text(['untokenized', 'untagged'])
+testing_to_text_type_text(['untokenized', 'tagged_non_pos'])
+testing_to_text_type_text(['tokenized', 'untagged'])
+testing_to_text_type_text(['tokenized', 'tagged_pos'])
+testing_to_text_type_text(['tokenized', 'tagged_non_pos'])
+testing_to_text_type_text(['tokenized', 'tagged_both'])
 
 print('---------- Encoding Text -> Encoding Code ----------')
 

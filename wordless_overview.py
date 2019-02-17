@@ -21,50 +21,50 @@ from wordless_utils import *
 from wordless_widgets import *
 
 class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
-    def __init__(self, main):
-        super().__init__(main,
+    def __init__(self, parent):
+        super().__init__(parent,
                          headers = [
-                             main.tr('Count of Paragraphs'),
-                             main.tr('Count of Sentences'),
-                             main.tr('Count of Tokens'),
-                             main.tr('Count of Types'),
-                             main.tr('Count of Characters'),
-                             main.tr('Type/Token Ratio'),
-                             main.tr('Type/Token Ratio (Standardized)'),
-                             main.tr('Average Paragraph Length (in Sentence)'),
-                             main.tr('Average Paragraph Length (in Token)'),
-                             main.tr('Average Sentence Length (in Token)'),
-                             main.tr('Average Token Length (in Character)')
+                             parent.tr('Count of Paragraphs'),
+                             parent.tr('Count of Sentences'),
+                             parent.tr('Count of Tokens'),
+                             parent.tr('Count of Types'),
+                             parent.tr('Count of Characters'),
+                             parent.tr('Type/Token Ratio'),
+                             parent.tr('Type/Token Ratio (Standardized)'),
+                             parent.tr('Average Paragraph Length (in Sentence)'),
+                             parent.tr('Average Paragraph Length (in Token)'),
+                             parent.tr('Average Sentence Length (in Token)'),
+                             parent.tr('Average Token Length (in Character)')
                          ],
                          header_orientation = 'vertical',
                          headers_num = [
-                             main.tr('Count of Paragraphs'),
-                             main.tr('Count of Sentences'),
-                             main.tr('Count of Tokens'),
-                             main.tr('Count of Types'),
-                             main.tr('Count of Characters'),
-                             main.tr('Type/Token Ratio'),
-                             main.tr('Type/Token Ratio (Standardized)'),
-                             main.tr('Average Paragraph Length (in Sentence)'),
-                             main.tr('Average Paragraph Length (in Token)'),
-                             main.tr('Average Sentence Length (in Token)'),
-                             main.tr('Average Token Length (in Character)')
+                             parent.tr('Count of Paragraphs'),
+                             parent.tr('Count of Sentences'),
+                             parent.tr('Count of Tokens'),
+                             parent.tr('Count of Types'),
+                             parent.tr('Count of Characters'),
+                             parent.tr('Type/Token Ratio'),
+                             parent.tr('Type/Token Ratio (Standardized)'),
+                             parent.tr('Average Paragraph Length (in Sentence)'),
+                             parent.tr('Average Paragraph Length (in Token)'),
+                             parent.tr('Average Sentence Length (in Token)'),
+                             parent.tr('Average Token Length (in Character)')
                          ],
                          headers_pct = [
-                             main.tr('Count of Paragraphs'),
-                             main.tr('Count of Sentences'),
-                             main.tr('Count of Tokens'),
-                             main.tr('Count of Types'),
-                             main.tr('Count of Characters')
+                             parent.tr('Count of Paragraphs'),
+                             parent.tr('Count of Sentences'),
+                             parent.tr('Count of Tokens'),
+                             parent.tr('Count of Types'),
+                             parent.tr('Count of Characters')
                          ],
                          headers_cumulative = [
-                             main.tr('Count of Paragraphs'),
-                             main.tr('Count of Sentences'),
-                             main.tr('Count of Tokens'),
-                             main.tr('Count of Characters')
+                             parent.tr('Count of Paragraphs'),
+                             parent.tr('Count of Sentences'),
+                             parent.tr('Count of Tokens'),
+                             parent.tr('Count of Characters')
                          ])
 
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self.main)
+        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
 
@@ -73,190 +73,187 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
 
         self.insert_col(0, self.tr('Total'))
 
-def init(main):
-    def load_settings(defaults = False):
-        if defaults:
-            settings = copy.deepcopy(main.settings_default['overview'])
-        else:
-            settings = copy.deepcopy(main.settings_custom['overview'])
+class Wrapper_Overview(wordless_layout.Wordless_Wrapper):
+    def __init__(self, main):
+        super().__init__(main)
 
+        # Table
+        self.table_overview = Wordless_Table_Overview(self)
+
+        self.wrapper_table.layout().addWidget(self.table_overview, 0, 0, 1, 4)
+        self.wrapper_table.layout().addWidget(self.table_overview.button_generate_table, 1, 0)
+        self.wrapper_table.layout().addWidget(self.table_overview.button_export_selected, 1, 1)
+        self.wrapper_table.layout().addWidget(self.table_overview.button_export_all, 1, 2)
+        self.wrapper_table.layout().addWidget(self.table_overview.button_clear, 1, 3)
+        
         # Token Settings
-        checkbox_words.setChecked(settings['token_settings']['words'])
-        checkbox_lowercase.setChecked(settings['token_settings']['lowercase'])
-        checkbox_uppercase.setChecked(settings['token_settings']['uppercase'])
-        checkbox_title_case.setChecked(settings['token_settings']['title_case'])
-        checkbox_nums.setChecked(settings['token_settings']['nums'])
-        checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
 
-        checkbox_treat_as_lowercase.setChecked(settings['token_settings']['treat_as_lowercase'])
-        checkbox_lemmatize.setChecked(settings['token_settings']['lemmatize'])
-        checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
+        (self.checkbox_words,
+         self.checkbox_lowercase,
+         self.checkbox_uppercase,
+         self.checkbox_title_case,
+         self.checkbox_nums,
+         self.checkbox_puncs,
 
-        checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
-        checkbox_ignore_tags_tags_only.setChecked(settings['token_settings']['ignore_tags_tags_only'])
-        combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
-        combo_box_ignore_tags_tags_only.setCurrentText(settings['token_settings']['ignore_tags_type_tags_only'])
-        checkbox_tags_only.setChecked(settings['token_settings']['tags_only'])
+         self.checkbox_treat_as_lowercase,
+         self.checkbox_lemmatize_tokens,
+         self.checkbox_filter_stop_words,
+
+         self.stacked_widget_ignore_tags,
+         self.stacked_widget_ignore_tags_type,
+         self.label_ignore_tags,
+         self.checkbox_use_tags) = wordless_widgets.wordless_widgets_token_settings(self)
+
+        self.checkbox_words.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_lowercase.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_uppercase.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_title_case.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_nums.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_puncs.stateChanged.connect(self.token_settings_changed)
+
+        self.checkbox_treat_as_lowercase.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_lemmatize_tokens.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_filter_stop_words.stateChanged.connect(self.token_settings_changed)
+
+        self.stacked_widget_ignore_tags.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
+        self.stacked_widget_ignore_tags.checkbox_ignore_tags_tags.stateChanged.connect(self.token_settings_changed)
+        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentTextChanged.connect(self.token_settings_changed)
+        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentTextChanged.connect(self.token_settings_changed)
+        self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
+
+        layout_ignore_tags = QGridLayout()
+        layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags, 0, 0)
+        layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags_type, 0, 1)
+        layout_ignore_tags.addWidget(self.label_ignore_tags, 0, 2)
+
+        layout_ignore_tags.setColumnStretch(3, 1)
+
+        self.group_box_token_settings.setLayout(QGridLayout())
+        self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_lowercase, 0, 1)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_uppercase, 1, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_title_case, 1, 1)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_nums, 2, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 2, 1)
+
+        self.group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 3, 0, 1, 2)
+
+        self.group_box_token_settings.layout().addWidget(self.checkbox_treat_as_lowercase, 4, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_lemmatize_tokens, 5, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_filter_stop_words, 6, 0, 1, 2)
+
+        self.group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 7, 0, 1, 2)
+
+        self.group_box_token_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 9, 0, 1, 2)
 
         # Generation Settings
-        spin_box_base_sttr.setValue(settings['generation_settings']['base_sttr'])
+        self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
+
+        self.label_base_sttr = QLabel(self.tr('Base of standardized type/token ratio:'), self)
+        self.spin_box_base_sttr = QSpinBox(self)
+
+        self.spin_box_base_sttr.setRange(100, 10000)
+
+        self.spin_box_base_sttr.valueChanged.connect(self.generation_settings_changed)
+
+        self.group_box_generation_settings.setLayout(QGridLayout())
+        self.group_box_generation_settings.layout().addWidget(self.label_base_sttr, 0, 0)
+        self.group_box_generation_settings.layout().addWidget(self.spin_box_base_sttr, 1, 0)
 
         # Table Settings
-        checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
-        checkbox_show_cumulative.setChecked(settings['table_settings']['show_cumulative'])
-        checkbox_show_breakdown.setChecked(settings['table_settings']['show_breakdown'])
+        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
 
-        token_settings_changed()
-        generation_settings_changed()
-        table_settings_changed()
+        (self.checkbox_show_pct,
+         self.checkbox_show_cumulative,
+         self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(self,
+                                                                                          table = self.table_overview)
 
-    def token_settings_changed():
-        settings = main.settings_custom['overview']['token_settings']
+        self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_breakdown.stateChanged.connect(self.table_settings_changed)
 
-        settings['words'] = checkbox_words.isChecked()
-        settings['lowercase'] = checkbox_lowercase.isChecked()
-        settings['uppercase'] = checkbox_uppercase.isChecked()
-        settings['title_case'] = checkbox_title_case.isChecked()
-        settings['nums'] = checkbox_nums.isChecked()
-        settings['puncs'] = checkbox_puncs.isChecked()
+        self.group_box_table_settings.setLayout(QGridLayout())
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
 
-        settings['treat_as_lowercase'] = checkbox_treat_as_lowercase.isChecked()
-        settings['lemmatize'] = checkbox_lemmatize.isChecked()
-        settings['filter_stop_words'] = checkbox_filter_stop_words.isChecked()
+        self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_generation_settings, 1, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 2, 0)
 
-        settings['ignore_tags'] = checkbox_ignore_tags.isChecked()
-        settings['ignore_tags_tags_only'] = checkbox_ignore_tags_tags_only.isChecked()
-        settings['ignore_tags_type'] = combo_box_ignore_tags.currentText()
-        settings['ignore_tags_type_tags_only'] = combo_box_ignore_tags_tags_only.currentText()
-        settings['tags_only'] = checkbox_tags_only.isChecked()
+        self.wrapper_settings.layout().setRowStretch(3, 1)
 
-    def generation_settings_changed():
-        settings = main.settings_custom['overview']['generation_settings']
+        self.load_settings()
 
-        settings['base_sttr'] = spin_box_base_sttr.value()
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.main.settings_default['overview'])
+        else:
+            settings = copy.deepcopy(self.main.settings_custom['overview'])
 
-    def table_settings_changed():
-        settings = main.settings_custom['overview']['table_settings']
+        # Token Settings
+        self.checkbox_words.setChecked(settings['token_settings']['words'])
+        self.checkbox_lowercase.setChecked(settings['token_settings']['lowercase'])
+        self.checkbox_uppercase.setChecked(settings['token_settings']['uppercase'])
+        self.checkbox_title_case.setChecked(settings['token_settings']['title_case'])
+        self.checkbox_nums.setChecked(settings['token_settings']['nums'])
+        self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
 
-        settings['show_pct'] = checkbox_show_pct.isChecked()
-        settings['show_cumulative'] = checkbox_show_cumulative.isChecked()
-        settings['show_breakdown'] = checkbox_show_breakdown.isChecked()
+        self.checkbox_treat_as_lowercase.setChecked(settings['token_settings']['treat_as_lowercase'])
+        self.checkbox_lemmatize_tokens.setChecked(settings['token_settings']['lemmatize_tokens'])
+        self.checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
-    wrapper_overview = wordless_layout.Wordless_Wrapper(main, load_settings)
+        self.stacked_widget_ignore_tags.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        self.stacked_widget_ignore_tags.checkbox_ignore_tags_tags.setChecked(settings['token_settings']['ignore_tags_tags'])
+        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
+        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.setCurrentText(settings['token_settings']['ignore_tags_type_tags'])
+        self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
-    table_overview = Wordless_Table_Overview(main)
+        # Generation Settings
+        self.spin_box_base_sttr.setValue(settings['generation_settings']['base_sttr'])
 
-    wrapper_overview.layout_table.addWidget(table_overview, 0, 0, 1, 4)
-    wrapper_overview.layout_table.addWidget(table_overview.button_generate_table, 1, 0)
-    wrapper_overview.layout_table.addWidget(table_overview.button_export_selected, 1, 1)
-    wrapper_overview.layout_table.addWidget(table_overview.button_export_all, 1, 2)
-    wrapper_overview.layout_table.addWidget(table_overview.button_clear, 1, 3)
-    
-    # Token Settings
-    group_box_token_settings = QGroupBox(main.tr('Token Settings'), main)
+        # Table Settings
+        self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
+        self.checkbox_show_cumulative.setChecked(settings['table_settings']['show_cumulative'])
+        self.checkbox_show_breakdown.setChecked(settings['table_settings']['show_breakdown'])
 
-    (checkbox_words,
-     checkbox_lowercase,
-     checkbox_uppercase,
-     checkbox_title_case,
-     checkbox_nums,
-     checkbox_puncs,
+        self.token_settings_changed()
+        self.generation_settings_changed()
+        self.table_settings_changed()
 
-     checkbox_treat_as_lowercase,
-     checkbox_lemmatize,
-     checkbox_filter_stop_words,
+    def token_settings_changed(self):
+        settings = self.main.settings_custom['overview']['token_settings']
 
-     checkbox_ignore_tags,
-     checkbox_ignore_tags_tags_only,
-     combo_box_ignore_tags,
-     combo_box_ignore_tags_tags_only,
-     label_ignore_tags,
-     checkbox_tags_only) = wordless_widgets.wordless_widgets_token_settings(main)
+        settings['words'] = self.checkbox_words.isChecked()
+        settings['lowercase'] = self.checkbox_lowercase.isChecked()
+        settings['uppercase'] = self.checkbox_uppercase.isChecked()
+        settings['title_case'] = self.checkbox_title_case.isChecked()
+        settings['nums'] = self.checkbox_nums.isChecked()
+        settings['puncs'] = self.checkbox_puncs.isChecked()
 
-    checkbox_words.stateChanged.connect(token_settings_changed)
-    checkbox_lowercase.stateChanged.connect(token_settings_changed)
-    checkbox_uppercase.stateChanged.connect(token_settings_changed)
-    checkbox_title_case.stateChanged.connect(token_settings_changed)
-    checkbox_nums.stateChanged.connect(token_settings_changed)
-    checkbox_puncs.stateChanged.connect(token_settings_changed)
+        settings['treat_as_lowercase'] = self.checkbox_treat_as_lowercase.isChecked()
+        settings['lemmatize_tokens'] = self.checkbox_lemmatize_tokens.isChecked()
+        settings['filter_stop_words'] = self.checkbox_filter_stop_words.isChecked()
 
-    checkbox_treat_as_lowercase.stateChanged.connect(token_settings_changed)
-    checkbox_lemmatize.stateChanged.connect(token_settings_changed)
-    checkbox_filter_stop_words.stateChanged.connect(token_settings_changed)
+        settings['ignore_tags'] = self.stacked_widget_ignore_tags.checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_tags'] = self.stacked_widget_ignore_tags.checkbox_ignore_tags_tags.isChecked()
+        settings['ignore_tags_type'] = self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentText()
+        settings['ignore_tags_type_tags'] = self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentText()
+        settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
-    checkbox_ignore_tags.stateChanged.connect(token_settings_changed)
-    checkbox_ignore_tags_tags_only.stateChanged.connect(token_settings_changed)
-    combo_box_ignore_tags.currentTextChanged.connect(token_settings_changed)
-    combo_box_ignore_tags_tags_only.currentTextChanged.connect(token_settings_changed)
-    checkbox_tags_only.stateChanged.connect(token_settings_changed)
+    def generation_settings_changed(self):
+        settings = self.main.settings_custom['overview']['generation_settings']
 
-    layout_ignore_tags = QGridLayout()
-    layout_ignore_tags.addWidget(checkbox_ignore_tags, 0, 0)
-    layout_ignore_tags.addWidget(checkbox_ignore_tags_tags_only, 0, 0)
-    layout_ignore_tags.addWidget(combo_box_ignore_tags, 0, 1)
-    layout_ignore_tags.addWidget(combo_box_ignore_tags_tags_only, 0, 1)
-    layout_ignore_tags.addWidget(label_ignore_tags, 0, 2)
+        settings['base_sttr'] = self.spin_box_base_sttr.value()
 
-    layout_ignore_tags.setColumnStretch(3, 1)
+    def table_settings_changed(self):
+        settings = self.main.settings_custom['overview']['table_settings']
 
-    group_box_token_settings.setLayout(QGridLayout())
-    group_box_token_settings.layout().addWidget(checkbox_words, 0, 0)
-    group_box_token_settings.layout().addWidget(checkbox_lowercase, 0, 1)
-    group_box_token_settings.layout().addWidget(checkbox_uppercase, 1, 0)
-    group_box_token_settings.layout().addWidget(checkbox_title_case, 1, 1)
-    group_box_token_settings.layout().addWidget(checkbox_nums, 2, 0)
-    group_box_token_settings.layout().addWidget(checkbox_puncs, 2, 1)
-
-    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 3, 0, 1, 2)
-
-    group_box_token_settings.layout().addWidget(checkbox_treat_as_lowercase, 4, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_lemmatize, 5, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_filter_stop_words, 6, 0, 1, 2)
-
-    group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(main), 7, 0, 1, 2)
-
-    group_box_token_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
-    group_box_token_settings.layout().addWidget(checkbox_tags_only, 9, 0, 1, 2)
-
-    # Generation Settings
-    group_box_generation_settings = QGroupBox(main.tr('Generation Settings'), main)
-
-    label_base_sttr = QLabel(main.tr('Base of Standardized Type/Token Ratio:'), main)
-    spin_box_base_sttr = QSpinBox(main)
-
-    spin_box_base_sttr.setRange(100, 10000)
-
-    spin_box_base_sttr.valueChanged.connect(generation_settings_changed)
-
-    group_box_generation_settings.setLayout(QGridLayout())
-    group_box_generation_settings.layout().addWidget(label_base_sttr, 0, 0)
-    group_box_generation_settings.layout().addWidget(spin_box_base_sttr, 1, 0)
-
-    # Table Settings
-    group_box_table_settings = QGroupBox(main.tr('Table Settings'), main)
-
-    (checkbox_show_pct,
-     checkbox_show_cumulative,
-     checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(main, table_overview)
-
-    checkbox_show_pct.stateChanged.connect(table_settings_changed)
-    checkbox_show_cumulative.stateChanged.connect(table_settings_changed)
-    checkbox_show_breakdown.stateChanged.connect(table_settings_changed)
-
-    group_box_table_settings.setLayout(QGridLayout())
-    group_box_table_settings.layout().addWidget(checkbox_show_pct, 0, 0)
-    group_box_table_settings.layout().addWidget(checkbox_show_cumulative, 1, 0)
-    group_box_table_settings.layout().addWidget(checkbox_show_breakdown, 2, 0)
-
-    wrapper_overview.layout_settings.addWidget(group_box_token_settings, 0, 0)
-    wrapper_overview.layout_settings.addWidget(group_box_generation_settings, 1, 0)
-    wrapper_overview.layout_settings.addWidget(group_box_table_settings, 2, 0)
-
-    wrapper_overview.layout_settings.setRowStretch(3, 1)
-
-    load_settings()
-
-    return wrapper_overview
+        settings['show_pct'] = self.checkbox_show_pct.isChecked()
+        settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
+        settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
 @ wordless_misc.log_timing
 def generate_table(main, table):
@@ -265,9 +262,9 @@ def generate_table(main, table):
 
     settings = main.settings_custom['overview']
 
-    files = wordless_checking_file.check_files_loading(main, main.wordless_files.get_selected_files())
+    files = main.wordless_files.get_selected_files()
 
-    if files:
+    if wordless_checking_file.check_files_on_loading(main, files):
         table.clear_table()
 
         table.settings = copy.deepcopy(main.settings_custom)
@@ -279,8 +276,8 @@ def generate_table(main, table):
             table.insert_col(table.find_col(main.tr('Total')), file['name'], breakdown = True)
 
             text = wordless_text.Wordless_Text(main, file)
-            text.tokens = wordless_token_processing.wordless_preprocess_tokens_overview(text,
-                                                                                        token_settings = settings['token_settings'])
+            text.tokens = wordless_token_processing.wordless_process_tokens_overview(text,
+                                                                                     token_settings = settings['token_settings'])
 
             texts.append(text)
 
@@ -343,7 +340,7 @@ def generate_table(main, table):
         # Count of n-length Tokens
         len_tokens_total = wordless_misc.merge_dicts(len_tokens_files)
 
-        if settings['token_settings']['tags_only']:
+        if settings['token_settings']['use_tags']:
             table.setVerticalHeaderLabels([
                 main.tr('Count of Paragraphs'),
                 main.tr('Count of Sentences'),
@@ -385,6 +382,4 @@ def generate_table(main, table):
 
         wordless_message.wordless_message_generate_table_success(main)
     else:
-        wordless_message_box.wordless_message_box_no_files_selected(main)
-
         wordless_message.wordless_message_generate_table_error(main)

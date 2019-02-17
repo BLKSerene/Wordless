@@ -10,7 +10,6 @@
 #
 
 import copy
-import ctypes
 import os
 import pickle
 import sys
@@ -65,8 +64,6 @@ class Wordless_Main(QMainWindow):
 
         self.setWindowTitle(self.tr('Wordless'))
         self.setWindowIcon(QIcon('imgs/wordless_icon.png'))
-
-        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('wordless')
 
         # Settings
         init_settings_global.init_settings_global(self)
@@ -333,7 +330,7 @@ class Wordless_Main(QMainWindow):
         dialog_about.open()
 
     def init_central_widget(self):
-        self.wordless_file_area = wordless_file_area.init(self)
+        self.wordless_file_area = wordless_file_area.Wrapper_File_Area(self)
         self.wordless_work_area = self.init_work_area()
 
         splitter_central_widget = wordless_layout.Wordless_Splitter(Qt.Vertical, self)
@@ -381,23 +378,15 @@ class Wordless_Main(QMainWindow):
 
         self.tabs_work_area.setDrawBase(False)
 
-        stacked_widget_work_area = QStackedWidget(self)
+        stacked_widget_work_area = QStackedWidget()
 
-        self.wordless_overview = wordless_overview.init(self)
-        self.wordless_concordancer = wordless_concordancer.init(self)
-        self.wordless_wordlist = wordless_wordlist.init(self)
-        self.wordless_ngrams = wordless_ngrams.init(self)
-        self.wordless_collocation = wordless_collocation.init(self)
-        self.wordless_colligation = wordless_colligation.init(self)
-        self.wordless_keywords = wordless_keywords.init(self)
-
-        stacked_widget_work_area.addWidget(self.wordless_overview)
-        stacked_widget_work_area.addWidget(self.wordless_concordancer)
-        stacked_widget_work_area.addWidget(self.wordless_wordlist)
-        stacked_widget_work_area.addWidget(self.wordless_ngrams)
-        stacked_widget_work_area.addWidget(self.wordless_collocation)
-        stacked_widget_work_area.addWidget(self.wordless_colligation)
-        stacked_widget_work_area.addWidget(self.wordless_keywords)
+        stacked_widget_work_area.addWidget(wordless_overview.Wrapper_Overview(self))
+        stacked_widget_work_area.addWidget(wordless_concordancer.Wrapper_Concordancer(self))
+        stacked_widget_work_area.addWidget(wordless_wordlist.Wrapper_Wordlist(self))
+        stacked_widget_work_area.addWidget(wordless_ngrams.Wrapper_Ngrams(self))
+        stacked_widget_work_area.addWidget(wordless_collocation.Wrapper_Collocation(self))
+        stacked_widget_work_area.addWidget(wordless_colligation.Wrapper_Colligation(self))
+        stacked_widget_work_area.addWidget(wordless_keywords.Wrapper_Keywords(self))
 
         wordless_work_area.setLayout(QGridLayout())
         wordless_work_area.layout().addWidget(self.tabs_work_area, 0, 0)

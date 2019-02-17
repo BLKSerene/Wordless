@@ -16,6 +16,14 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+def find_wordless_main(widget):
+    main = widget
+
+    while not isinstance(main, QMainWindow):
+        main = main.parent()
+
+    return main
+
 def log_timing(func):
     def wrapper(widget, *args, **kwargs):
         if isinstance(widget, QMainWindow):

@@ -13,16 +13,14 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-import spacy
-
-from wordless_widgets import wordless_message_box
+from wordless_utils import wordless_misc
 
 # Combo Boxes
 class Wordless_Combo_Box(QComboBox):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.main = parent
+        self.main = wordless_misc.find_wordless_main(parent)
 
         self.setMaxVisibleItems(25)
 
@@ -33,31 +31,31 @@ class Wordless_Combo_Box_Adjustable(Wordless_Combo_Box):
         self.setSizeAdjustPolicy(QComboBox.AdjustToContents)
 
 class Wordless_Combo_Box_Lang(Wordless_Combo_Box):
-    def __init__(self, main):
-        super().__init__(main)
+    def __init__(self, parent):
+        super().__init__(parent)
 
-        self.addItems(sorted(main.settings_global['langs']))
+        self.addItems(list(self.main.settings_global['langs'].keys()))
 
 class Wordless_Combo_Box_Text_Type(Wordless_Combo_Box):
-    def __init__(self, main):
-        super().__init__(main)
+    def __init__(self, parent):
+        super().__init__(parent)
 
-        self.addItems(main.settings_global['text_types'].keys())
+        self.addItems(list(self.main.settings_global['text_types'].keys()))
 
 class Wordless_Combo_Box_Encoding(Wordless_Combo_Box):
-    def __init__(self, main):
-        super().__init__(main)
+    def __init__(self, parent):
+        super().__init__(parent)
 
-        self.addItems(main.settings_global['file_encodings'])
+        self.addItems(list(self.main.settings_global['file_encodings'].keys()))
 
 class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box):
-    def __init__(self, main):
-        super().__init__(main)
+    def __init__(self, parent):
+        super().__init__(parent)
 
         # Clip long file names
         self.setSizeAdjustPolicy(QComboBox.AdjustToMinimumContentsLengthWithIcon)
 
-        main.wordless_files.table.itemChanged.connect(self.wordless_files_changed)
+        self.main.wordless_files.table.itemChanged.connect(self.wordless_files_changed)
 
         self.wordless_files_changed()
 
