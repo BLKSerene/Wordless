@@ -27,7 +27,7 @@ from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
 
-class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
+class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(parent,
                          headers = [
@@ -45,14 +45,18 @@ class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
                          ],
                          sorting_enabled = True)
 
+        dialog_filter_results = wordless_dialog.Wordless_Dialog_Filter_Results_Collocation(self.main,
+                                                                                           tab = 'colligation',
+                                                                                           table = self)
+        dialog_search_results = wordless_dialog.Wordless_Dialog_Search_Results(self.main,
+                                                                               tab = 'colligation',
+                                                                               table = self)
+
+        self.button_filter_results.clicked.connect(dialog_filter_results.load)
+        self.button_search_results.clicked.connect(dialog_search_results.load)
+
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_plot = QPushButton(self.tr('Generate Plot'), self)
-
-        dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
-                                                               tab = 'colligation',
-                                                               table = self)
-
-        self.button_search_results.clicked.connect(dialog_search.load)
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_plot.clicked.connect(lambda: generate_plot(self.main))
@@ -86,122 +90,6 @@ class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Search):
 
         self.cols_breakdown_position = set()
 
-    @ wordless_misc.log_timing
-    def update_filters(self):
-        if any([self.item(0, i) for i in range(self.columnCount())]):
-            settings = self.main.settings_custom['colligation']['filter_settings']
-
-            text_test_significance = self.settings['colligation']['generation_settings']['test_significance']
-            text_measure_effect_size = self.settings['colligation']['generation_settings']['measure_effect_size']
-
-            (text_test_stat,
-             text_p_value,
-             text_bayes_factor) = self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
-            text_effect_size = self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
-
-            if settings['filter_file'] == self.tr('Total'):
-                if settings['freq_filter_data'] == self.tr('Total'):
-                    col_freq = self.find_col(self.tr('Total\nFrequency'))
-                else:
-                    col_freq = self.find_col(self.tr(f'Total\n{settings["freq_filter_data"]}'))
-
-                col_test_stat = self.find_col(self.tr(f'Total\n{text_test_stat}'))
-                col_p_value = self.find_col(self.tr(f'Total\n{text_p_value}'))
-                col_bayes_factor = self.find_col(self.tr(f'Total\n{text_bayes_factor}'))
-                col_effect_size = self.find_col(self.tr(f'Total\n{text_effect_size}'))
-            else:
-                if settings['freq_filter_data'] == self.tr('Total'):
-                    col_freq = self.find_col(self.tr(f'[{settings["filter_file"]}]\nFrequency'))
-                else:
-                    col_freq = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{settings["freq_filter_data"]}'))
-
-                col_test_stat = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{text_test_stat}'))
-                col_p_value = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{text_p_value}'))
-                col_bayes_factor = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{text_bayes_factor}'))
-                col_effect_size = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{text_effect_size}'))
-
-            col_collocates = self.find_col('Collocates')
-            col_number_files_found = self.find_col('Number of\nFiles Found')
-
-            freq_min = (float('-inf')
-                        if settings['freq_min_no_limit'] else settings['freq_min'])
-            freq_max = (float('inf')
-                        if settings['freq_max_no_limit'] else settings['freq_max'])
-
-            test_stat_min = (float('-inf')
-                             if settings['test_stat_min_no_limit'] else settings['test_stat_min'])
-            test_stat_max = (float('inf')
-                             if settings['test_stat_max_no_limit'] else settings['test_stat_max'])
-
-            p_value_min = (float('-inf')
-                           if settings['p_value_min_no_limit'] else settings['p_value_min'])
-            p_value_max = (float('inf')
-                           if settings['p_value_max_no_limit'] else settings['p_value_max'])
-
-            bayes_factor_min = (float('-inf')
-                                if settings['bayes_factor_min_no_limit'] else settings['bayes_factor_min'])
-            bayes_factor_max = (float('inf')
-                                if settings['bayes_factor_max_no_limit'] else settings['bayes_factor_max'])
-
-            effect_size_min = (float('-inf')
-                               if settings['effect_size_min_no_limit'] else settings['effect_size_min'])
-            effect_size_max = (float('inf')
-                               if settings['effect_size_max_no_limit'] else settings['effect_size_max'])
-
-            len_collocate_min = (float('-inf')
-                                 if settings['len_collocate_min_no_limit'] else settings['len_collocate_min'])
-            len_collocate_max = (float('inf')
-                                 if settings['len_collocate_max_no_limit'] else settings['len_collocate_max'])
-
-            number_files_found_min = (float('-inf')
-                                      if settings['number_files_found_min_no_limit'] else settings['number_files_found_min'])
-            number_files_found_max = (float('inf')
-                                      if settings['number_files_found_max_no_limit'] else settings['number_files_found_max'])
-
-            self.row_filters = [[] for i in range(self.rowCount())]
-
-            for i in range(self.rowCount()):
-                if freq_min <= self.item(i, col_freq).val_raw <= freq_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-
-                if text_test_stat:
-                    if test_stat_min <= self.item(i, col_test_stat).val <= test_stat_max:
-                        self.row_filters[i].append(True)
-                    else:
-                        self.row_filters[i].append(False)
-
-                if p_value_min <= self.item(i, col_p_value).val <= p_value_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-
-                if text_bayes_factor:
-                    if bayes_factor_min <= self.item(i, col_bayes_factor).val <= bayes_factor_max:
-                        self.row_filters[i].append(True)
-                    else:
-                        self.row_filters[i].append(False)
-
-                if effect_size_min <= self.item(i, col_effect_size).val <= effect_size_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-
-                if len_collocate_min <= len(self.item(i, col_collocates).text()) <= len_collocate_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-
-                if number_files_found_min <= self.item(i, col_number_files_found).val <= number_files_found_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-
-            self.filter_table()
-
-        wordless_message.wordless_message_filter_table_done(self.main)
-
 class Wrapper_Colligation(wordless_layout.Wordless_Wrapper):
     def __init__(self, main):
         super().__init__(main)
@@ -209,8 +97,14 @@ class Wrapper_Colligation(wordless_layout.Wordless_Wrapper):
         # Table
         self.table_colligation = Wordless_Table_Colligation(self)
 
-        self.wrapper_table.layout().addWidget(self.table_colligation.label_number_results, 0, 0)
-        self.wrapper_table.layout().addWidget(self.table_colligation.button_search_results, 0, 4)
+        layout_results = QGridLayout()
+        layout_results.addWidget(self.table_colligation.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_colligation.button_filter_results, 0, 2)
+        layout_results.addWidget(self.table_colligation.button_search_results, 0, 3)
+
+        layout_results.setColumnStretch(1, 1)
+
+        self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_colligation, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_colligation.button_generate_table, 2, 0)
         self.wrapper_table.layout().addWidget(self.table_colligation.button_generate_plot, 2, 1)
@@ -506,217 +400,13 @@ class Wrapper_Colligation(wordless_layout.Wordless_Wrapper):
 
         self.group_box_plot_settings.layout().setColumnStretch(1, 1)
 
-        # Filter Settings
-        self.group_box_filter_settings = QGroupBox(self.tr('Filter Settings'), self)
-
-        self.label_freq = QLabel(self.tr('Frequency:'), self)
-        self.label_freq_filter_data = QLabel(self.tr('Filter Data:'), self)
-        self.combo_box_freq_filter_data = wordless_box.Wordless_Combo_Box(self)
-        (self.label_freq_min,
-         self.spin_box_freq_min,
-         self.checkbox_freq_min_no_limit,
-         self.label_freq_max,
-         self.spin_box_freq_max,
-         self.checkbox_freq_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                     filter_min = 0,
-                                                                                     filter_max = 1000000)
-
-        self.label_test_stat = QLabel(self.tr('Test Statistic:'), self)
-        (self.label_test_stat_min,
-         self.spin_box_test_stat_min,
-         self.checkbox_test_stat_min_no_limit,
-         self.label_test_stat_max,
-         self.spin_box_test_stat_max,
-         self.checkbox_test_stat_max_no_limit) = wordless_widgets.wordless_widgets_filter_measures(self)
-
-        self.label_p_value = QLabel(self.tr('p-value:'), self)
-        (self.label_p_value_min,
-         self.spin_box_p_value_min,
-         self.checkbox_p_value_min_no_limit,
-         self.label_p_value_max,
-         self.spin_box_p_value_max,
-         self.checkbox_p_value_max_no_limit) = wordless_widgets.wordless_widgets_filter_p_value(self)
-
-        self.label_bayes_factor = QLabel(self.tr('Bayes Factor:'), self)
-        (self.label_bayes_factor_min,
-         self.spin_box_bayes_factor_min,
-         self.checkbox_bayes_factor_min_no_limit,
-         self.label_bayes_factor_max,
-         self.spin_box_bayes_factor_max,
-         self.checkbox_bayes_factor_max_no_limit) = wordless_widgets.wordless_widgets_filter_measures(self)
-
-        self.label_effect_size = QLabel(self.tr('Effect Size:'), self)
-        (self.label_effect_size_min,
-         self.spin_box_effect_size_min,
-         self.checkbox_effect_size_min_no_limit,
-         self.label_effect_size_max,
-         self.spin_box_effect_size_max,
-         self.checkbox_effect_size_max_no_limit) = wordless_widgets.wordless_widgets_filter_measures(self)
-
-        self.label_len_collocate = QLabel(self.tr('Collocate Length:'), self)
-        (self.label_len_collocate_min,
-         self.spin_box_len_collocate_min,
-         self.checkbox_len_collocate_min_no_limit,
-         self.label_len_collocate_max,
-         self.spin_box_len_collocate_max,
-         self.checkbox_len_collocate_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                              filter_min = 1,
-                                                                                              filter_max = 100)
-
-        self.label_number_files_found = QLabel(self.tr('Number of Files Found:'), self)
-        (self.label_number_files_found_min,
-         self.spin_box_number_files_found_min,
-         self.checkbox_number_files_found_min_no_limit,
-         self.label_number_files_found_max,
-         self.spin_box_number_files_found_max,
-         self.checkbox_number_files_found_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                                   filter_min = 1,
-                                                                                                   filter_max = 100000)
-
-        (self.label_filter_file,
-         self.combo_box_filter_file,
-         self.button_filter_results) = wordless_widgets.wordless_widgets_filter_results(self,
-                                                                                        table = self.table_colligation)
-
-        self.combo_box_freq_filter_data.addItem(self.tr('Total'))
-
-        self.combo_box_freq_filter_data.currentTextChanged.connect(self.filter_settings_changed)
-        self.spin_box_freq_min.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_freq_min_no_limit.stateChanged.connect(self.filter_settings_changed)
-        self.spin_box_freq_max.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_freq_max_no_limit.stateChanged.connect(self.filter_settings_changed)
-
-        self.spin_box_test_stat_min.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_test_stat_min_no_limit.stateChanged.connect(self.filter_settings_changed)
-        self.spin_box_test_stat_max.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_test_stat_max_no_limit.stateChanged.connect(self.filter_settings_changed)
-
-        self.spin_box_p_value_min.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_p_value_min_no_limit.stateChanged.connect(self.filter_settings_changed)
-        self.spin_box_p_value_max.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_p_value_max_no_limit.stateChanged.connect(self.filter_settings_changed)
-
-        self.spin_box_bayes_factor_min.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_bayes_factor_min_no_limit.stateChanged.connect(self.filter_settings_changed)
-        self.spin_box_bayes_factor_max.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_bayes_factor_max_no_limit.stateChanged.connect(self.filter_settings_changed)
-
-        self.spin_box_effect_size_min.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_effect_size_min_no_limit.stateChanged.connect(self.filter_settings_changed)
-        self.spin_box_effect_size_max.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_effect_size_max_no_limit.stateChanged.connect(self.filter_settings_changed)
-
-        self.spin_box_len_collocate_min.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_len_collocate_min_no_limit.stateChanged.connect(self.filter_settings_changed)
-        self.spin_box_len_collocate_max.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_len_collocate_max_no_limit.stateChanged.connect(self.filter_settings_changed)
-
-        self.spin_box_number_files_found_min.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_number_files_found_min_no_limit.stateChanged.connect(self.filter_settings_changed)
-        self.spin_box_number_files_found_max.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_number_files_found_max_no_limit.stateChanged.connect(self.filter_settings_changed)
-
-        self.combo_box_filter_file.currentTextChanged.connect(self.filter_settings_changed)
-
-        self.table_colligation.itemChanged.connect(self.table_item_changed)
-
-        layout_freq_filter_data = QGridLayout()
-        layout_freq_filter_data.addWidget(self.label_freq_filter_data, 0, 0)
-        layout_freq_filter_data.addWidget(self.combo_box_freq_filter_data, 0, 1)
-
-        layout_freq_filter_data.setColumnStretch(1, 1)
-
-        layout_filter_file = QGridLayout()
-        layout_filter_file.addWidget(self.label_filter_file, 0, 0)
-        layout_filter_file.addWidget(self.combo_box_filter_file, 0, 1)
-
-        layout_filter_file.setColumnStretch(1, 1)
-
-        self.group_box_filter_settings.setLayout(QGridLayout())
-        self.group_box_filter_settings.layout().addWidget(self.label_freq, 0, 0, 1, 3)
-        self.group_box_filter_settings.layout().addLayout(layout_freq_filter_data, 1, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.label_freq_min, 2, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_freq_min, 2, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_freq_min_no_limit, 2, 2)
-        self.group_box_filter_settings.layout().addWidget(self.label_freq_max, 3, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_freq_max, 3, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_freq_max_no_limit, 3, 2)
-
-        self.group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 4, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().addWidget(self.label_test_stat, 5, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.label_test_stat_min, 6, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_test_stat_min, 6, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_test_stat_min_no_limit, 6, 2)
-        self.group_box_filter_settings.layout().addWidget(self.label_test_stat_max, 7, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_test_stat_max, 7, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_test_stat_max_no_limit, 7, 2)
-
-        self.group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 8, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().addWidget(self.label_p_value, 9, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.label_p_value_min, 10, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_p_value_min, 10, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_p_value_min_no_limit, 10, 2)
-        self.group_box_filter_settings.layout().addWidget(self.label_p_value_max, 11, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_p_value_max, 11, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_p_value_max_no_limit, 11, 2)
-
-        self.group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 12, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().addWidget(self.label_bayes_factor, 13, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.label_bayes_factor_min, 14, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_bayes_factor_min, 14, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_bayes_factor_min_no_limit, 14, 2)
-        self.group_box_filter_settings.layout().addWidget(self.label_bayes_factor_max, 15, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_bayes_factor_max, 15, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_bayes_factor_max_no_limit, 15, 2)
-
-        self.group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 16, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().addWidget(self.label_effect_size, 17, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.label_effect_size_min, 18, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_effect_size_min, 18, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_effect_size_min_no_limit, 18, 2)
-        self.group_box_filter_settings.layout().addWidget(self.label_effect_size_max, 19, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_effect_size_max, 19, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_effect_size_max_no_limit, 19, 2)
-
-        self.group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 20, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().addWidget(self.label_len_collocate, 21, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.label_len_collocate_min, 22, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_len_collocate_min, 22, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_len_collocate_min_no_limit, 22, 2)
-        self.group_box_filter_settings.layout().addWidget(self.label_len_collocate_max, 23, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_len_collocate_max, 23, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_len_collocate_max_no_limit, 23, 2)
-
-        self.group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 24, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().addWidget(self.label_number_files_found, 25, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.label_number_files_found_min, 26, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_number_files_found_min, 26, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_number_files_found_min_no_limit, 26, 2)
-        self.group_box_filter_settings.layout().addWidget(self.label_number_files_found_max, 27, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_number_files_found_max, 27, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_number_files_found_max_no_limit, 27, 2)
-
-        self.group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 28, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().addLayout(layout_filter_file, 29, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.button_filter_results, 30, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().setColumnStretch(1, 1)
-
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_search_settings, 1, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_generation_settings, 2, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 3, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_plot_settings, 4, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_filter_settings, 5, 0)
 
-        self.wrapper_settings.layout().setRowStretch(6, 1)
+        self.wrapper_settings.layout().setRowStretch(5, 1)
 
         self.load_settings()
 
@@ -806,51 +496,11 @@ class Wrapper_Colligation(wordless_layout.Wordless_Wrapper):
         self.spin_box_rank_max.setValue(settings['plot_settings']['rank_max'])
         self.checkbox_rank_max_no_limit.setChecked(settings['plot_settings']['rank_max_no_limit'])
 
-        # Filter Settings
-        self.combo_box_freq_filter_data.setCurrentText(settings['filter_settings']['freq_filter_data'])
-        self.spin_box_freq_min.setValue(settings['filter_settings']['freq_min'])
-        self.checkbox_freq_min_no_limit.setChecked(settings['filter_settings']['freq_min_no_limit'])
-        self.spin_box_freq_max.setValue(settings['filter_settings']['freq_max'])
-        self.checkbox_freq_max_no_limit.setChecked(settings['filter_settings']['freq_max_no_limit'])
-
-        self.spin_box_test_stat_min.setValue(settings['filter_settings']['test_stat_min'])
-        self.checkbox_test_stat_min_no_limit.setChecked(settings['filter_settings']['test_stat_min_no_limit'])
-        self.spin_box_test_stat_max.setValue(settings['filter_settings']['test_stat_max'])
-        self.checkbox_test_stat_max_no_limit.setChecked(settings['filter_settings']['test_stat_max_no_limit'])
-
-        self.spin_box_p_value_min.setValue(settings['filter_settings']['p_value_min'])
-        self.checkbox_p_value_min_no_limit.setChecked(settings['filter_settings']['p_value_min_no_limit'])
-        self.spin_box_p_value_max.setValue(settings['filter_settings']['p_value_max'])
-        self.checkbox_p_value_max_no_limit.setChecked(settings['filter_settings']['p_value_max_no_limit'])
-
-        self.spin_box_bayes_factor_min.setValue(settings['filter_settings']['bayes_factor_min'])
-        self.checkbox_bayes_factor_min_no_limit.setChecked(settings['filter_settings']['bayes_factor_min_no_limit'])
-        self.spin_box_bayes_factor_max.setValue(settings['filter_settings']['bayes_factor_max'])
-        self.checkbox_bayes_factor_max_no_limit.setChecked(settings['filter_settings']['bayes_factor_max_no_limit'])
-
-        self.spin_box_effect_size_min.setValue(settings['filter_settings']['effect_size_min'])
-        self.checkbox_effect_size_min_no_limit.setChecked(settings['filter_settings']['effect_size_min_no_limit'])
-        self.spin_box_effect_size_max.setValue(settings['filter_settings']['effect_size_max'])
-        self.checkbox_effect_size_max_no_limit.setChecked(settings['filter_settings']['effect_size_max_no_limit'])
-
-        self.spin_box_len_collocate_min.setValue(settings['filter_settings']['len_collocate_min'])
-        self.checkbox_len_collocate_min_no_limit.setChecked(settings['filter_settings']['len_collocate_min_no_limit'])
-        self.spin_box_len_collocate_max.setValue(settings['filter_settings']['len_collocate_max'])
-        self.checkbox_len_collocate_max_no_limit.setChecked(settings['filter_settings']['len_collocate_max_no_limit'])
-
-        self.spin_box_number_files_found_min.setValue(settings['filter_settings']['number_files_found_min'])
-        self.checkbox_number_files_found_min_no_limit.setChecked(settings['filter_settings']['number_files_found_min_no_limit'])
-        self.spin_box_number_files_found_max.setValue(settings['filter_settings']['number_files_found_max'])
-        self.checkbox_number_files_found_max_no_limit.setChecked(settings['filter_settings']['number_files_found_max_no_limit'])
-
-        self.combo_box_filter_file.setCurrentText(settings['filter_settings']['filter_file'])
-
         self.token_settings_changed()
         self.search_settings_changed()
         self.generation_settings_changed()
         self.table_settings_changed()
         self.plot_settings_changed()
-        self.filter_settings_changed()
 
     def token_settings_changed(self):
         settings = self.main.settings_custom['colligation']['token_settings']
@@ -963,111 +613,6 @@ class Wrapper_Colligation(wordless_layout.Wordless_Wrapper):
         settings['rank_min_no_limit'] = self.checkbox_rank_min_no_limit.isChecked()
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
-
-    def filter_settings_changed(self):
-        settings = self.main.settings_custom['colligation']['filter_settings']
-
-        settings['freq_filter_data'] = self.combo_box_freq_filter_data.currentText()
-        settings['freq_min'] = self.spin_box_freq_min.value()
-        settings['freq_min_no_limit'] = self.checkbox_freq_min_no_limit.isChecked()
-        settings['freq_max'] = self.spin_box_freq_max.value()
-        settings['freq_max_no_limit'] = self.checkbox_freq_max_no_limit.isChecked()
-
-        settings['test_stat_min'] = self.spin_box_test_stat_min.value()
-        settings['test_stat_min_no_limit'] = self.checkbox_test_stat_min_no_limit.isChecked()
-        settings['test_stat_max'] = self.spin_box_test_stat_max.value()
-        settings['test_stat_max_no_limit'] = self.checkbox_test_stat_max_no_limit.isChecked()
-
-        settings['p_value_min'] = self.spin_box_p_value_min.value()
-        settings['p_value_min_no_limit'] = self.checkbox_p_value_min_no_limit.isChecked()
-        settings['p_value_max'] = self.spin_box_p_value_max.value()
-        settings['p_value_max_no_limit'] = self.checkbox_p_value_max_no_limit.isChecked()
-
-        settings['bayes_factor_min'] = self.spin_box_bayes_factor_min.value()
-        settings['bayes_factor_min_no_limit'] = self.checkbox_bayes_factor_min_no_limit.isChecked()
-        settings['bayes_factor_max'] = self.spin_box_bayes_factor_max.value()
-        settings['bayes_factor_max_no_limit'] = self.checkbox_bayes_factor_max_no_limit.isChecked()
-
-        settings['effect_size_min'] = self.spin_box_effect_size_min.value()
-        settings['effect_size_min_no_limit'] = self.checkbox_effect_size_min_no_limit.isChecked()
-        settings['effect_size_max'] = self.spin_box_effect_size_max.value()
-        settings['effect_size_max_no_limit'] = self.checkbox_effect_size_max_no_limit.isChecked()
-
-        settings['len_collocate_min'] = self.spin_box_len_collocate_min.value()
-        settings['len_collocate_min_no_limit'] = self.checkbox_len_collocate_min_no_limit.isChecked()
-        settings['len_collocate_max'] = self.spin_box_len_collocate_max.value()
-        settings['len_collocate_max_no_limit'] = self.checkbox_len_collocate_max_no_limit.isChecked()
-
-        settings['number_files_found_min'] = self.spin_box_number_files_found_min.value()
-        settings['number_files_found_min_no_limit'] = self.checkbox_number_files_found_min_no_limit.isChecked()
-        settings['number_files_found_max'] = self.spin_box_number_files_found_max.value()
-        settings['number_files_found_max_no_limit'] = self.checkbox_number_files_found_max_no_limit.isChecked()
-
-        settings['filter_file'] = self.combo_box_filter_file.currentText()
-
-    def table_item_changed(self):
-        settings = self.table_colligation.settings['colligation']
-
-        # Filter Data (Frequency)
-        freq_filter_data_old = settings['filter_settings']['freq_filter_data']
-
-        self.combo_box_freq_filter_data.clear()
-
-        for i in range(settings['generation_settings']['window_left'], settings['generation_settings']['window_right'] + 1):
-            if i < 0:
-                self.combo_box_freq_filter_data.addItem(f'L{-i}')
-            elif i > 0:
-                self.combo_box_freq_filter_data.addItem(f'R{i}')
-
-        self.combo_box_freq_filter_data.addItem(self.tr('Frequency'))
-
-        if self.combo_box_freq_filter_data.findText(freq_filter_data_old) > -1:
-            self.combo_box_freq_filter_data.setCurrentText(freq_filter_data_old)
-        else:
-            self.combo_box_freq_filter_data.setCurrentText(self.main.settings_default['colligation']['filter_settings']['freq_filter_data'])
-
-        # Filters
-        text_test_significance = settings['generation_settings']['test_significance']
-        text_measure_effect_size = settings['generation_settings']['measure_effect_size']
-
-        (text_test_stat,
-         text_p_value,
-         text_bayes_factor) = self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
-        text_effect_size =  self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
-
-        if text_test_stat:
-            self.label_test_stat.setText(f'{text_test_stat}:')
-
-            if not self.checkbox_test_stat_min_no_limit.isChecked():
-                self.spin_box_test_stat_min.setEnabled(True)
-            if not self.checkbox_test_stat_max_no_limit.isChecked():
-                self.spin_box_test_stat_max.setEnabled(True)
-
-            self.checkbox_test_stat_min_no_limit.setEnabled(True)
-            self.checkbox_test_stat_max_no_limit.setEnabled(True)
-        else:
-            self.label_test_stat.setText(self.tr('Test Statistic:'))
-
-            self.spin_box_test_stat_min.setEnabled(False)
-            self.checkbox_test_stat_min_no_limit.setEnabled(False)
-            self.spin_box_test_stat_max.setEnabled(False)
-            self.checkbox_test_stat_max_no_limit.setEnabled(False)
-
-        if text_bayes_factor:
-            if not self.checkbox_bayes_factor_min_no_limit.isChecked():
-                self.spin_box_bayes_factor_min.setEnabled(True)
-            if not self.checkbox_bayes_factor_max_no_limit.isChecked():
-                self.spin_box_bayes_factor_max.setEnabled(True)
-
-            self.checkbox_bayes_factor_min_no_limit.setEnabled(True)
-            self.checkbox_bayes_factor_max_no_limit.setEnabled(True)
-        else:
-            self.spin_box_bayes_factor_min.setEnabled(False)
-            self.checkbox_bayes_factor_min_no_limit.setEnabled(False)
-            self.spin_box_bayes_factor_max.setEnabled(False)
-            self.checkbox_bayes_factor_max_no_limit.setEnabled(False)
-
-        self.label_effect_size.setText(f'{text_effect_size}:')
 
 def generate_collocates(main, files):
     texts = []
