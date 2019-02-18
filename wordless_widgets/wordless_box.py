@@ -48,6 +48,35 @@ class Wordless_Combo_Box_Encoding(Wordless_Combo_Box):
 
         self.addItems(list(self.main.settings_global['file_encodings'].keys()))
 
+class Wordless_Combo_Box_File_To_Filter(Wordless_Combo_Box):
+    def __init__(self, parent, table):
+        super().__init__(parent)
+
+        self.table = table
+
+        self.table.itemChanged.connect(self.table_item_changed)
+
+        self.table_item_changed()
+
+    def table_item_changed(self):
+        self.blockSignals(True)
+
+        file_to_filter_old = self.currentText()
+
+        self.clear()
+
+        for file in self.table.settings['files']['files_open']:
+            if file['selected']:
+                self.addItem(file['name'])
+
+        self.addItem(self.tr('Total'))
+
+        self.setCurrentText(file_to_filter_old)
+
+        self.blockSignals(False)
+
+        self.currentTextChanged.emit(self.currentText())
+
 class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box):
     def __init__(self, parent):
         super().__init__(parent)

@@ -291,8 +291,9 @@ class Wordless_Table(QTableWidget):
 class Wordless_Table_Data(Wordless_Table):
     def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
                  headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
-                 sorting_enabled = False, drag_drop_enabled = False):
-        super().__init__(main, headers, header_orientation, cols_stretch, drag_drop_enabled)
+                 sorting_enabled = False):
+        super().__init__(main, headers, header_orientation, cols_stretch,
+                         drag_drop_enabled = False)
 
         self.headers_num_old = headers_num
         self.headers_pct_old = headers_pct
@@ -569,20 +570,12 @@ class Wordless_Table_Data(Wordless_Table):
 
         sorting_section = self.horizontalHeader().sortIndicatorSection()
         col_rank = self.find_col(self.tr('Rank'))
-        rows_hidden = [(self.item(row, 0).text(), self.item(row, 1).text())
-                       for row in range(self.rowCount()) if self.isRowHidden(row)]
+        rows_hidden = [row for row in range(self.rowCount()) if self.isRowHidden(row)]
 
         self.sortByColumn(sorting_section, self.horizontalHeader().sortIndicatorOrder())
 
-        rows_hidden_sorted = []
-
-        for text0, text1 in rows_hidden:
-            if (self.findItems(text0, Qt.MatchExactly)[0].column() == 0 and
-                self.findItems(text1, Qt.MatchExactly)[0].column() == 1):
-                rows_hidden_sorted.append(self.findItems(text0, Qt.MatchExactly)[0].row())
-
         for row in range(self.rowCount()):
-            if row not in rows_hidden_sorted:
+            if row not in rows_hidden:
                 data_cur = self.item(row, sorting_section).read_data()
 
                 if data_cur == data_prev:
@@ -594,13 +587,6 @@ class Wordless_Table_Data(Wordless_Table):
 
                 rank_next += 1
                 data_prev = data_cur
-
-        self.setUpdatesEnabled(False)
-
-        for row in rows_hidden_sorted:
-            self.hideRow(row)
-
-        self.setUpdatesEnabled(True)
 
     def toggle_pct(self):
         if self.header_orientation == 'horizontal':
@@ -698,15 +684,17 @@ class Wordless_Table_Data(Wordless_Table):
         rank_next = 1
         data_prev = ''
 
+        self.hide()
         self.setUpdatesEnabled(False)
         
-        for i, filters in enumerate(self.row_filters):
-            if all(filters):
+        for i, row_filter in enumerate(self.row_filters):
+            if row_filter:
                 self.showRow(i)
             else:
                 self.hideRow(i)
 
         self.setUpdatesEnabled(True)
+        self.show()
 
         self.toggle_cumulative()
         self.update_ranks()
@@ -900,13 +888,15 @@ class Wordless_Table_Data(Wordless_Table):
 class Wordless_Table_Data_Search(Wordless_Table_Data):
     def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
                  headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
-                 sorting_enabled = False, drag_drop_enabled = False):
+                 sorting_enabled = False):
         super().__init__(main, headers, header_orientation, cols_stretch,
                          headers_num, headers_pct, headers_cumulative, cols_breakdown,
-                         sorting_enabled, drag_drop_enabled)
+                         sorting_enabled)
 
         self.label_number_results = QLabel()
         self.button_search_results = QPushButton(self.tr('Search in Results'), self)
+
+        self.button_search_results.setFixedWidth(140)
 
         self.itemChanged.connect(self.results_changed)
 
@@ -922,6 +912,39 @@ class Wordless_Table_Data_Search(Wordless_Table_Data):
         else:
             self.label_number_results.setText(self.tr('Number of Results: 0'))
 
+            self.button_search_results.setEnabled(False)
+
+class Wordless_Table_Data_Filter_Search(Wordless_Table_Data):
+    def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
+                 headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
+                 sorting_enabled = False):
+        super().__init__(main, headers, header_orientation, cols_stretch,
+                         headers_num, headers_pct, headers_cumulative, cols_breakdown,
+                         sorting_enabled)
+
+        self.label_number_results = QLabel()
+        self.button_filter_results = QPushButton(self.tr('Filter Results'), self)
+        self.button_search_results = QPushButton(self.tr('Search in Results'), self)
+
+        self.button_filter_results.setFixedWidth(150)
+        self.button_search_results.setFixedWidth(150)
+
+        self.itemChanged.connect(self.results_changed)
+
+        self.results_changed()
+
+    def results_changed(self):
+        rows_visible = len([i for i in range(self.rowCount()) if not self.isRowHidden(i)])
+
+        if [i for i in range(self.columnCount()) if self.item(0, i)] and rows_visible:
+            self.label_number_results.setText(self.tr(f'Number of Results: {rows_visible}'))
+
+            self.button_filter_results.setEnabled(True)
+            self.button_search_results.setEnabled(True)
+        else:
+            self.label_number_results.setText(self.tr('Number of Results: 0'))
+
+            self.button_filter_results.setEnabled(False)
             self.button_search_results.setEnabled(False)
 
 class Wordless_Table_Tags(Wordless_Table):

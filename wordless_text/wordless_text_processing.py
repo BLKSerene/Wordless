@@ -81,8 +81,7 @@ def wordless_sentence_tokenize(main, text, lang,
 
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-        for line in text.splitlines():
-            sentences.extend([sentence.text for sentence in nlp(line).sents])
+        sentences.extend([sentence.text for sentence in nlp(text).sents])
 
     # Chinese & Japanese
     elif (sentence_tokenizer == main.tr('Wordless - Chinese Sentence Tokenizer') or

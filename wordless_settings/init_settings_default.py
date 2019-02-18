@@ -248,7 +248,9 @@ def init_settings_default(main):
                 'rank_max_no_limit': False,
             },
 
-            'filter_settings': {
+            'filter_results': {
+                'file_to_filter': main.tr('Total'),
+
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
@@ -269,12 +271,10 @@ def init_settings_default(main):
                 'len_token_max': 20,
                 'len_token_max_no_limit': True,
 
-                'number_files_found_min': 1,
-                'number_files_found_min_no_limit': True,
-                'number_files_found_max': 100,
-                'number_files_found_max_no_limit': True,
-
-                'filter_file': main.tr('Total')
+                'num_files_found_min': 1,
+                'num_files_found_min_no_limit': True,
+                'num_files_found_max': 100,
+                'num_files_found_max_no_limit': True
             },
 
             'search_results': {
@@ -418,7 +418,14 @@ def init_settings_default(main):
                 'rank_max_no_limit': False,
             },
 
-            'filter_settings': {
+            'filter_results': {
+                'file_to_filter': main.tr('Total'),
+
+                'len_ngram_min': 1,
+                'len_ngram_min_no_limit': True,
+                'len_ngram_max': 20,
+                'len_ngram_max_no_limit': True,
+
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
@@ -434,17 +441,10 @@ def init_settings_default(main):
                 'adjusted_freq_max': 1000,
                 'adjusted_freq_max_no_limit': True,
 
-                'len_ngram_min': 1,
-                'len_ngram_min_no_limit': True,
-                'len_ngram_max': 20,
-                'len_ngram_max_no_limit': True,
-
-                'number_files_found_min': 1,
-                'number_files_found_min_no_limit': True,
-                'number_files_found_max': 100,
-                'number_files_found_max_no_limit': True,
-
-                'filter_file': main.tr('Total')
+                'num_files_found_min': 1,
+                'num_files_found_min_no_limit': True,
+                'num_files_found_max': 100,
+                'num_files_found_max_no_limit': True
             },
 
             'search_results': {
@@ -581,8 +581,15 @@ def init_settings_default(main):
                 'rank_max_no_limit': False
             },
 
-            'filter_settings': {
-                'freq_filter_data': main.tr('Frequency'),
+            'filter_results': {
+                'file_to_filter': main.tr('Total'),
+
+                'len_collocate_min': 1,
+                'len_collocate_min_no_limit': True,
+                'len_collocate_max': 20,
+                'len_collocate_max_no_limit': True,
+
+                'freq_position': main.tr('Total'),
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
@@ -608,17 +615,10 @@ def init_settings_default(main):
                 'effect_size_max': 100,
                 'effect_size_max_no_limit': True,
 
-                'len_collocate_min': 1,
-                'len_collocate_min_no_limit': True,
-                'len_collocate_max': 20,
-                'len_collocate_max_no_limit': True,
-
-                'number_files_found_min': 1,
-                'number_files_found_min_no_limit': True,
-                'number_files_found_max': 100,
-                'number_files_found_max_no_limit': True,
-
-                'filter_file': main.tr('Total')
+                'num_files_found_min': 1,
+                'num_files_found_min_no_limit': True,
+                'num_files_found_max': 100,
+                'num_files_found_max_no_limit': True
             },
 
             'search_results': {
@@ -755,8 +755,15 @@ def init_settings_default(main):
                 'rank_max_no_limit': False
             },
 
-            'filter_settings': {
-                'freq_filter_data': main.tr('Frequency'),
+            'filter_results': {
+                'file_to_filter': main.tr('Total'),
+
+                'len_collocate_min': 1,
+                'len_collocate_min_no_limit': True,
+                'len_collocate_max': 20,
+                'len_collocate_max_no_limit': True,
+
+                'freq_position': main.tr('Total'),
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
@@ -782,17 +789,10 @@ def init_settings_default(main):
                 'effect_size_max': 100,
                 'effect_size_max_no_limit': True,
 
-                'len_collocate_min': 1,
-                'len_collocate_min_no_limit': True,
-                'len_collocate_max': 20,
-                'len_collocate_max_no_limit': True,
-
-                'number_files_found_min': 1,
-                'number_files_found_min_no_limit': True,
-                'number_files_found_max': 100,
-                'number_files_found_max_no_limit': True,
-
-                'filter_file': main.tr('Total')
+                'num_files_found_min': 1,
+                'num_files_found_min_no_limit': True,
+                'num_files_found_max': 100,
+                'num_files_found_max_no_limit': True
             },
 
             'search_results': {
@@ -859,7 +859,14 @@ def init_settings_default(main):
                 'rank_max_no_limit': False
             },
 
-            'filter_settings': {
+            'filter_results': {
+                'file_to_filter': main.tr('Total'),
+
+                'len_keyword_min': 1,
+                'len_keyword_min_no_limit': True,
+                'len_keyword_max': 20,
+                'len_keyword_max_no_limit': True,
+
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
@@ -885,22 +892,10 @@ def init_settings_default(main):
                 'effect_size_max': 100,
                 'effect_size_max_no_limit': True,
 
-                'dispersion_min': -100,
-                'dispersion_min_no_limit': True,
-                'dispersion_max': 100,
-                'dispersion_max_no_limit': True,
-
-                'len_keyword_min': 1,
-                'len_keyword_min_no_limit': True,
-                'len_keyword_max': 20,
-                'len_keyword_max_no_limit': True,
-
-                'number_files_found_min': 1,
-                'number_files_found_min_no_limit': True,
-                'number_files_found_max': 100,
-                'number_files_found_max_no_limit': True,
-
-                'filter_file': main.tr('Total')
+                'num_files_found_min': 1,
+                'num_files_found_min_no_limit': True,
+                'num_files_found_max': 100,
+                'num_files_found_max_no_limit': True
             },
 
             'search_results': {
@@ -1111,7 +1106,7 @@ def init_settings_default(main):
                 'zho_tw': main.tr('Wordless - Chinese Word Detokenizer'),
                 'ces': main.tr('SacreMoses - Moses Detokenizer'),
                 'nld': main.tr('SacreMoses - Moses Detokenizer'),
-                'eng': main.tr('NLTK - Penn Treebank Detokenizer'),
+                'eng': main.tr('SacreMoses - Moses Detokenizer'),
                 'fin': main.tr('SacreMoses - Moses Detokenizer'),
                 'fra': main.tr('SacreMoses - Moses Detokenizer'),
                 'deu': main.tr('SacreMoses - Moses Detokenizer'),
@@ -1131,7 +1126,7 @@ def init_settings_default(main):
                 'tam': main.tr('SacreMoses - Moses Detokenizer'),
                 'tha': main.tr('Wordless - Thai Word Detokenizer'),
 
-                'other': main.tr('NLTK - Penn Treebank Detokenizer')
+                'other': main.tr('SacreMoses - Moses Detokenizer')
             },
 
             'preview_lang': 'eng',
