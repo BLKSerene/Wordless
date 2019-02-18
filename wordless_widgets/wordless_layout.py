@@ -9,14 +9,12 @@
 # All other rights reserved.
 #
 
-import platform
-
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_utils import wordless_misc
-from wordless_widgets import wordless_message_box
+from wordless_widgets import wordless_button, wordless_message_box
 
 class Wordless_Splitter(QSplitter):
     def __init__(self, orientation, parent):
@@ -54,7 +52,7 @@ class Wordless_Wrapper(QWidget):
         self.wrapper_right.setFixedWidth(320)
 
         self.scroll_area_settings = Wordless_Scroll_Area(self)
-        self.button_reset_settings = QPushButton(self.tr('Reset Settings'), self)
+        self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self, self.load_settings)
 
         self.wrapper_settings = QWidget(self)
         self.wrapper_settings.setLayout(QGridLayout())
@@ -62,8 +60,6 @@ class Wordless_Wrapper(QWidget):
         self.wrapper_settings.layout().setContentsMargins(6, 4, 6, 4)
 
         self.scroll_area_settings.setWidget(self.wrapper_settings)
-
-        self.button_reset_settings.clicked.connect(self.reset_settings)
 
         self.wrapper_right.setLayout(QGridLayout())
         self.wrapper_right.layout().addWidget(self.scroll_area_settings, 0, 0)
@@ -87,12 +83,6 @@ class Wordless_Wrapper(QWidget):
         
     def load_settings(self, defaults = False):
         pass
-        
-    def reset_settings(self):
-        reply = wordless_message_box.wordless_message_box_reset_settings(self.main)
-
-        if reply == QMessageBox.Yes:
-            self.load_settings(defaults = True)
 
 class Wordless_Wrapper_File_Area(Wordless_Wrapper):
     def __init__(self, parent):

@@ -11,6 +11,7 @@
 
 __all__ = [
 	'wordless_box',
+    'wordless_button',
     'wordless_dialog',
     'wordless_label',
     'wordless_layout',

@@ -140,12 +140,11 @@ class Wordless_Settings(QDialog):
 
         self.scroll_area_settings.setWidget(self.stacked_widget_settings)
 
-        button_reset_settings = QPushButton(self.tr('Reset Settings'), self)
+        button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self, self.load_settings)
         button_save = QPushButton(self.tr('Save'), self)
         button_apply = QPushButton(self.tr('Apply'), self)
         button_cancel = QPushButton(self.tr('Cancel'), self)
 
-        button_reset_settings.clicked.connect(self.reset_settings)
         button_save.clicked.connect(self.settings_save)
         button_apply.clicked.connect(self.settings_apply)
         button_cancel.clicked.connect(self.reject)
@@ -1859,12 +1858,6 @@ class Wordless_Settings(QDialog):
 
         # Updates
         self.checkbox_check_updates_on_startup.setChecked(settings['updates']['update_settings']['check_updates_on_startup'])
-
-    def reset_settings(self):
-        reply = wordless_message_box.wordless_message_box_reset_settings(self.main)
-
-        if reply == QMessageBox.Yes:
-            self.load_settings(defaults = True)
 
     def settings_validate(self):
         def validate_path(line_edit):
