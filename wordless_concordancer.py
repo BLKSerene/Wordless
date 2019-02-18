@@ -48,11 +48,11 @@ class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Search):
                              parent.tr('Paragraph No.')
                          ])
 
-        dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
-                                                               tab = 'concordancer',
-                                                               table = self)
+        dialog_search_results = wordless_dialog.Wordless_Dialog_Search_Results(self.main,
+                                                                               tab = 'concordancer',
+                                                                               table = self)
 
-        self.button_search_results.clicked.connect(dialog_search.load)
+        self.button_search_results.clicked.connect(dialog_search_results.load)
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_plot = QPushButton(self.tr('Generate Plot'), self)
@@ -419,7 +419,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         self.table_concordancer = Wordless_Table_Concordancer(self)
 
         self.wrapper_table.layout().addWidget(self.table_concordancer.label_number_results, 0, 0)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_search_results, 0, 4)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_search_results, 0, 4, Qt.AlignRight)
         self.wrapper_table.layout().addWidget(self.table_concordancer, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_table, 2, 0)
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_plot, 2, 1)
