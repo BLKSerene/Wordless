@@ -25,7 +25,7 @@ from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
 
-class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Search):
+class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(parent,
                          headers = [
@@ -42,97 +42,21 @@ class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Search):
                          ],
                          sorting_enabled = True)
 
-        dialog_search = wordless_dialog.Wordless_Dialog_Search(self.main,
-                                                               tab = 'wordlist',
-                                                               table = self)
+        dialog_filter_results = wordless_dialog.Wordless_Dialog_Filter_Results_Wordlist(self.main,
+                                                                                        tab = 'wordlist',
+                                                                                        table = self)
+        dialog_search_results = wordless_dialog.Wordless_Dialog_Search_Results(self.main,
+                                                                               tab = 'wordlist',
+                                                                               table = self)
 
-        self.button_search_results.clicked.connect(dialog_search.load)
+        self.button_filter_results.clicked.connect(dialog_filter_results.load)
+        self.button_search_results.clicked.connect(dialog_search_results.load)
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_plot = QPushButton(self.tr('Generate Plot'), self)
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_plot.clicked.connect(lambda: generate_plot(self.main))
-
-    @ wordless_misc.log_timing
-    def update_filters(self):
-        if any([self.item(0, i) for i in range(self.columnCount())]):
-            settings = self.main.settings_custom['wordlist']['filter_settings']
-
-            text_measure_dispersion = self.settings['wordlist']['generation_settings']['measure_dispersion']
-            text_measure_adjusted_freq = self.settings['wordlist']['generation_settings']['measure_adjusted_freq']
-
-            text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-            text_adjusted_freq =  self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
-
-            if settings['filter_file'] == self.tr('Total'):
-                col_freq = self.find_col(self.tr('Total\nFrequency'))
-                col_dispersion = self.find_col(self.tr(f'Total\n{text_dispersion}'))
-                col_adjusted_freq = self.find_col(self.tr(f'Total\n{text_adjusted_freq}'))
-            else:
-                col_freq = self.find_col(self.tr(f'[{settings["filter_file"]}]\nFrequency'))
-                col_dispersion = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{text_dispersion}'))
-                col_adjusted_freq = self.find_col(self.tr(f'[{settings["filter_file"]}]\n{text_adjusted_freq}'))
-
-            col_tokens = self.find_col(self.tr('Tokens'))
-            col_number_files_found = self.find_col(self.tr('Number of\nFiles Found'))
-
-            freq_min = (float('-inf')
-                        if settings['freq_min_no_limit'] else settings['freq_min'])
-            freq_max = (float('inf')
-                        if settings['freq_max_no_limit'] else settings['freq_max'])
-
-            dispersion_min = (float('-inf')
-                              if settings['dispersion_min_no_limit'] else settings['dispersion_min'])
-            dispersion_max = (float('inf')
-                              if settings['dispersion_max_no_limit'] else settings['dispersion_max'])
-
-            adjusted_freq_min = (float('-inf')
-                                 if settings['adjusted_freq_min_no_limit'] else settings['adjusted_freq_min'])
-            adjusted_freq_max = (float('inf')
-                                 if settings['adjusted_freq_max_no_limit'] else settings['adjusted_freq_max'])
-
-            len_token_min = (float('-inf')
-                             if settings['len_token_min_no_limit'] else settings['len_token_min'])
-            len_token_max = (float('inf')
-                             if settings['len_token_max_no_limit'] else settings['len_token_max'])
-
-            number_files_found_min = (float('-inf')
-                                      if settings['number_files_found_min_no_limit'] else settings['number_files_found_min'])
-            number_files_found_max = (float('inf')
-                                      if settings['number_files_found_max_no_limit'] else settings['number_files_found_max'])
-
-            self.row_filters = [[] for i in range(self.rowCount())]
-
-            for i in range(self.rowCount()):
-                if freq_min <= self.item(i, col_freq).val_raw <= freq_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-
-                if dispersion_min <= self.item(i, col_dispersion).val <= dispersion_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-
-                if adjusted_freq_min <= self.item(i, col_adjusted_freq).val <= adjusted_freq_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-
-                if len_token_min <= len(self.item(i, col_tokens).text()) <= len_token_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-
-                if number_files_found_min <= self.item(i, col_number_files_found).val <= number_files_found_max:
-                    self.row_filters[i].append(True)
-                else:
-                    self.row_filters[i].append(False)
-
-            self.filter_table()
-
-        wordless_message.wordless_message_filter_table_done(self.main)
 
 class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
     def __init__(self, main):
@@ -141,8 +65,14 @@ class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
         # Table
         self.table_wordlist = Wordless_Table_Wordlist(self)
 
-        self.wrapper_table.layout().addWidget(self.table_wordlist.label_number_results, 0, 0)
-        self.wrapper_table.layout().addWidget(self.table_wordlist.button_search_results, 0, 4)
+        layout_results = QGridLayout()
+        layout_results.addWidget(self.table_wordlist.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_wordlist.button_filter_results, 0, 2)
+        layout_results.addWidget(self.table_wordlist.button_search_results, 0, 3)
+
+        layout_results.setColumnStretch(1, 1)
+
+        self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_wordlist, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_wordlist.button_generate_table, 2, 0)
         self.wrapper_table.layout().addWidget(self.table_wordlist.button_generate_plot, 2, 1)
@@ -321,162 +251,12 @@ class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
 
         self.group_box_plot_settings.layout().setColumnStretch(1, 1)
 
-        # Filter Settings
-        self.group_box_filter_settings = QGroupBox(self.tr('Filter Settings'), self)
-
-        self.label_freq = QLabel(self.tr('Frequency:'), self)
-        (self.label_freq_min,
-         self.spin_box_freq_min,
-         self.checkbox_freq_min_no_limit,
-         self.label_freq_max,
-         self.spin_box_freq_max,
-         self.checkbox_freq_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                     filter_min = 0,
-                                                                                     filter_max = 1000000)
-
-        self.label_dispersion = QLabel(self.tr('Dispersion:'), self)
-        (self.label_dispersion_min,
-         self.spin_box_dispersion_min,
-         self.checkbox_dispersion_min_no_limit,
-         self.label_dispersion_max,
-         self.spin_box_dispersion_max,
-         self.checkbox_dispersion_max_no_limit) = wordless_widgets.wordless_widgets_filter_measures(self,
-                                                                                                    filter_min = 0,
-                                                                                                    filter_max = 1)
-
-        self.label_adjusted_freq = QLabel(self.tr('Adjusted Frequency:'), self)
-        (self.label_adjusted_freq_min,
-         self.spin_box_adjusted_freq_min,
-         self.checkbox_adjusted_freq_min_no_limit,
-         self.label_adjusted_freq_max,
-         self.spin_box_adjusted_freq_max,
-         self.checkbox_adjusted_freq_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                              filter_min = 0,
-                                                                                              filter_max = 1000000)
-
-        self.label_len_token = QLabel(self.tr('Token Length:'), self)
-        (self.label_len_token_min,
-         self.spin_box_len_token_min,
-         self.checkbox_len_token_min_no_limit,
-         self.label_len_token_max,
-         self.spin_box_len_token_max,
-         self.checkbox_len_token_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                          filter_min = 1,
-                                                                                          filter_max = 100)
-
-        self.label_number_files_found = QLabel(self.tr('Number of Files Found:'), self)
-        (self.label_number_files_found_min,
-         self.spin_box_number_files_found_min,
-         self.checkbox_number_files_found_min_no_limit,
-         self.label_number_files_found_max,
-         self.spin_box_number_files_found_max,
-         self.checkbox_number_files_found_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                                   filter_min = 1,
-                                                                                                   filter_max = 100000)
-
-        (self.label_filter_file,
-         self.combo_box_filter_file,
-         self.button_filter_results) = wordless_widgets.wordless_widgets_filter_results(self,
-                                                                                        table = self.table_wordlist)
-
-        self.spin_box_freq_min.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_freq_min_no_limit.stateChanged.connect(self.filter_settings_changed)
-        self.spin_box_freq_max.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_freq_max_no_limit.stateChanged.connect(self.filter_settings_changed)
-
-        self.spin_box_dispersion_min.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_dispersion_min_no_limit.stateChanged.connect(self.filter_settings_changed)
-        self.spin_box_dispersion_max.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_dispersion_max_no_limit.stateChanged.connect(self.filter_settings_changed)
-
-        self.spin_box_adjusted_freq_min.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_adjusted_freq_min_no_limit.stateChanged.connect(self.filter_settings_changed)
-        self.spin_box_adjusted_freq_max.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_adjusted_freq_max_no_limit.stateChanged.connect(self.filter_settings_changed)
-
-        self.spin_box_len_token_min.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_len_token_min_no_limit.stateChanged.connect(self.filter_settings_changed)
-        self.spin_box_len_token_max.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_len_token_max_no_limit.stateChanged.connect(self.filter_settings_changed)
-
-        self.spin_box_number_files_found_min.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_number_files_found_min_no_limit.stateChanged.connect(self.filter_settings_changed)
-        self.spin_box_number_files_found_max.valueChanged.connect(self.filter_settings_changed)
-        self.checkbox_number_files_found_max_no_limit.stateChanged.connect(self.filter_settings_changed)
-
-        self.combo_box_filter_file.currentTextChanged.connect(self.filter_settings_changed)
-
-        self.table_wordlist.itemChanged.connect(self.table_item_changed)
-
-        layout_filter_file = QGridLayout()
-        layout_filter_file.addWidget(self.label_filter_file, 0, 0)
-        layout_filter_file.addWidget(self.combo_box_filter_file, 0, 1)
-
-        layout_filter_file.setColumnStretch(1, 1)
-
-        self.group_box_filter_settings.setLayout(QGridLayout())
-        self.group_box_filter_settings.layout().addWidget(self.label_freq, 0, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.label_freq_min, 1, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_freq_min, 1, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_freq_min_no_limit, 1, 2)
-        self.group_box_filter_settings.layout().addWidget(self.label_freq_max, 2, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_freq_max, 2, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_freq_max_no_limit, 2, 2)
-
-        self.group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 3, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().addWidget(self.label_dispersion, 4, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.label_dispersion_min, 5, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_dispersion_min, 5, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_dispersion_min_no_limit, 5, 2)
-        self.group_box_filter_settings.layout().addWidget(self.label_dispersion_max, 6, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_dispersion_max, 6, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_dispersion_max_no_limit, 6, 2)
-
-        self.group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 7, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().addWidget(self.label_adjusted_freq, 8, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.label_adjusted_freq_min, 9, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_adjusted_freq_min, 9, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_adjusted_freq_min_no_limit, 9, 2)
-        self.group_box_filter_settings.layout().addWidget(self.label_adjusted_freq_max, 10, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_adjusted_freq_max, 10, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_adjusted_freq_max_no_limit, 10, 2)
-
-        self.group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 11, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().addWidget(self.label_len_token, 12, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.label_len_token_min, 13, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_len_token_min, 13, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_len_token_min_no_limit, 13, 2)
-        self.group_box_filter_settings.layout().addWidget(self.label_len_token_max, 14, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_len_token_max, 14, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_len_token_max_no_limit, 14, 2)
-
-        self.group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 15, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().addWidget(self.label_number_files_found, 16, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.label_number_files_found_min, 17, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_number_files_found_min, 17, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_number_files_found_min_no_limit, 17, 2)
-        self.group_box_filter_settings.layout().addWidget(self.label_number_files_found_max, 18, 0)
-        self.group_box_filter_settings.layout().addWidget(self.spin_box_number_files_found_max, 18, 1)
-        self.group_box_filter_settings.layout().addWidget(self.checkbox_number_files_found_max_no_limit, 18, 2)
-
-        self.group_box_filter_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 19, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().addLayout(layout_filter_file, 20, 0, 1, 3)
-        self.group_box_filter_settings.layout().addWidget(self.button_filter_results, 21, 0, 1, 3)
-
-        self.group_box_filter_settings.layout().setColumnStretch(1, 1)
-
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_generation_settings, 1, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 2, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_plot_settings, 3, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_filter_settings, 4, 0)
 
-        self.wrapper_settings.layout().setRowStretch(5, 1)
+        self.wrapper_settings.layout().setRowStretch(4, 1)
 
         self.load_settings()
 
@@ -525,39 +305,10 @@ class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
         self.spin_box_rank_max.setValue(settings['plot_settings']['rank_max'])
         self.checkbox_rank_max_no_limit.setChecked(settings['plot_settings']['rank_max_no_limit'])
 
-        # Filter Settings
-        self.spin_box_freq_min.setValue(settings['filter_settings']['freq_min'])
-        self.checkbox_freq_min_no_limit.setChecked(settings['filter_settings']['freq_min_no_limit'])
-        self.spin_box_freq_max.setValue(settings['filter_settings']['freq_max'])
-        self.checkbox_freq_max_no_limit.setChecked(settings['filter_settings']['freq_max_no_limit'])
-
-        self.spin_box_dispersion_min.setValue(settings['filter_settings']['dispersion_min'])
-        self.checkbox_dispersion_min_no_limit.setChecked(settings['filter_settings']['dispersion_min_no_limit'])
-        self.spin_box_dispersion_max.setValue(settings['filter_settings']['dispersion_max'])
-        self.checkbox_dispersion_max_no_limit.setChecked(settings['filter_settings']['dispersion_max_no_limit'])
-
-        self.spin_box_adjusted_freq_min.setValue(settings['filter_settings']['adjusted_freq_min'])
-        self.checkbox_adjusted_freq_min_no_limit.setChecked(settings['filter_settings']['adjusted_freq_min_no_limit'])
-        self.spin_box_adjusted_freq_max.setValue(settings['filter_settings']['adjusted_freq_max'])
-        self.checkbox_adjusted_freq_max_no_limit.setChecked(settings['filter_settings']['adjusted_freq_max_no_limit'])
-
-        self.spin_box_len_token_min.setValue(settings['filter_settings']['len_token_min'])
-        self.checkbox_len_token_min_no_limit.setChecked(settings['filter_settings']['len_token_min_no_limit'])
-        self.spin_box_len_token_max.setValue(settings['filter_settings']['len_token_max'])
-        self.checkbox_len_token_max_no_limit.setChecked(settings['filter_settings']['len_token_max_no_limit'])
-
-        self.spin_box_number_files_found_min.setValue(settings['filter_settings']['number_files_found_min'])
-        self.checkbox_number_files_found_min_no_limit.setChecked(settings['filter_settings']['number_files_found_min_no_limit'])
-        self.spin_box_number_files_found_max.setValue(settings['filter_settings']['number_files_found_max'])
-        self.checkbox_number_files_found_max_no_limit.setChecked(settings['filter_settings']['number_files_found_max_no_limit'])
-
-        self.combo_box_filter_file.setCurrentText(settings['filter_settings']['filter_file'])
-
         self.token_settings_changed()
         self.generation_settings_changed()
         self.table_settings_changed()
         self.plot_settings_changed()
-        self.filter_settings_changed()
 
     def token_settings_changed(self):
         settings = self.main.settings_custom['wordlist']['token_settings']
@@ -623,48 +374,6 @@ class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-    def filter_settings_changed(self):
-        settings = self.main.settings_custom['wordlist']['filter_settings']
-
-        settings['freq_min'] = self.spin_box_freq_min.value()
-        settings['freq_min_no_limit'] = self.checkbox_freq_min_no_limit.isChecked()
-        settings['freq_max'] = self.spin_box_freq_max.value()
-        settings['freq_max_no_limit'] = self.checkbox_freq_max_no_limit.isChecked()
-
-        settings['dispersion_min'] = self.spin_box_dispersion_min.value()
-        settings['dispersion_min_no_limit'] = self.checkbox_dispersion_min_no_limit.isChecked()
-        settings['dispersion_max'] = self.spin_box_dispersion_max.value()
-        settings['dispersion_max_no_limit'] = self.checkbox_dispersion_max_no_limit.isChecked()
-
-        settings['adjusted_freq_min'] = self.spin_box_adjusted_freq_min.value()
-        settings['adjusted_freq_min_no_limit'] = self.checkbox_adjusted_freq_min_no_limit.isChecked()
-        settings['adjusted_freq_max'] = self.spin_box_adjusted_freq_max.value()
-        settings['adjusted_freq_max_no_limit'] = self.checkbox_adjusted_freq_max_no_limit.isChecked()
-
-        settings['len_token_min'] = self.spin_box_len_token_min.value()
-        settings['len_token_min_no_limit'] = self.checkbox_len_token_min_no_limit.isChecked()
-        settings['len_token_max'] = self.spin_box_len_token_max.value()
-        settings['len_token_max_no_limit'] = self.checkbox_len_token_max_no_limit.isChecked()
-
-        settings['number_files_found_min'] = self.spin_box_number_files_found_min.value()
-        settings['number_files_found_min_no_limit'] = self.checkbox_number_files_found_min_no_limit.isChecked()
-        settings['number_files_found_max'] = self.spin_box_number_files_found_max.value()
-        settings['number_files_found_max_no_limit'] = self.checkbox_number_files_found_max_no_limit.isChecked()
-
-        settings['filter_file'] = self.combo_box_filter_file.currentText()
-
-    def table_item_changed(self):
-        settings = self.table_wordlist.settings['wordlist']
-
-        text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-        text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
-
-        text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-        text_adjusted_freq =  self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
-
-        self.label_dispersion.setText(f'{text_dispersion}:')
-        self.label_adjusted_freq.setText(f'{text_adjusted_freq}:')
-
 def generate_wordlists(main, files):
     texts = []
     tokens_freq_files = []
@@ -674,6 +383,8 @@ def generate_wordlists(main, files):
 
     # Frequency
     for file in files:
+        wordless_text_processing.check_spacy_models(main, file['lang'])
+
         text = wordless_text.Wordless_Text(main, file)
 
         tokens = wordless_token_processing.wordless_process_tokens_wordlist(text,
