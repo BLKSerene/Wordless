@@ -937,8 +937,13 @@ def init_settings_default(main):
         },
 
         'general': {
-            'font_monospace': 'Consolas',
-            'style_highlight': 'border: 1px solid Red;'
+            'update_settings': {
+                'check_updates_on_startup': True
+            },
+
+            'misc': {
+                'confirm_on_exit': True
+            }
         },
 
         'import': {
@@ -1453,12 +1458,6 @@ def init_settings_default(main):
                 'kilgarriffs_ratio': {
                     'smoothing_parameter': 1.00
                 }
-            }
-        },
-
-        'updates': {
-            'update_settings': {
-                'check_updates_on_startup': True
             }
         }
     }

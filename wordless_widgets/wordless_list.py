@@ -18,7 +18,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_checking import wordless_checking_file, wordless_checking_misc
-from wordless_widgets import wordless_message, wordless_message_box
+from wordless_dialogs import wordless_message_box
+from wordless_widgets import wordless_message
 from wordless_utils import wordless_detection, wordless_misc
 
 class Wordless_List(QListWidget):
