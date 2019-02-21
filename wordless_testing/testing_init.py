@@ -35,3 +35,6 @@ class Testing_Main(QObject):
         table.main = self
 
         self.wordless_files = wordless_file_area.Wordless_Files(table)
+
+    def height(self):
+        return 768

@@ -9,294 +9,96 @@
 # All other rights reserved.
 #
 
+import itertools
 import sys
-
-from PyQt5.QtCore import *
 
 sys.path.append('.')
 
-from wordless_text import wordless_text_processing
-from wordless_settings import init_settings_default, init_settings_global
+from wordless_testing import testing_init
+from wordless_text import wordless_text_processing, wordless_text_utils
+from wordless_utils import wordless_conversion
 
-main = QObject()
+main = testing_init.Testing_Main()
 
-init_settings_default.init_settings_default(main)
-init_settings_global.init_settings_global(main)
+def testing_pos_tag(lang, pos_tagger):
+    lang_text = wordless_conversion.to_lang_text(main, lang)
 
-main.settings_custom = main.settings_default
+    print(f'{lang_text} / {pos_tagger}:')
 
-# Chinese (Simplified)
+    wordless_text_utils.check_pos_taggers(main, lang, pos_tagger = pos_tagger)
+
+    tokens_tagged = wordless_text_processing.wordless_pos_tag(main, globals()[f'tokens_{lang}'],
+                                                              lang = lang,
+                                                              pos_tagger = pos_tagger)
+    tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, globals()[f'tokens_{lang}'],
+                                                                        lang = lang,
+                                                                        pos_tagger = pos_tagger,
+                                                                        tagset = 'universal')
+
+    print(f"\t{tokens_tagged}")
+    print(f"\t{tokens_tagged_universal}")
+
 sentence_zho_cn = '作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_zho_cn, lang = 'zho_cn')
-
-print('Chinese / jieba - Chinese POS Tagger:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'zho_cn',
-                                                          pos_tagger = 'jieba - Chinese POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'zho_cn',
-                                                                    pos_tagger = 'jieba - Chinese POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-# Dutch
 sentence_nld = 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_nld, lang = 'nld')
-
-print('Dutch / spaCy - Dutch POS Tagger:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'nld',
-                                                          pos_tagger = 'spaCy - Dutch POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'nld',
-                                                                    pos_tagger = 'spaCy - Dutch POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-# English
 sentence_eng = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_eng, lang = 'eng')
-
-print('English / NLTK - Perceptron POS Tagger:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'eng',
-                                                          pos_tagger = 'NLTK - Perceptron POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'eng',
-                                                                    pos_tagger = 'NLTK - Perceptron POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-print('English / spaCy - English POS Tagger:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'eng',
-                                                          pos_tagger = 'spaCy - English POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'eng',
-                                                                    pos_tagger = 'spaCy - English POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-# French
 sentence_fra = 'Le français est une langue indo-européenne de la famille des langues romanes.'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_fra, lang = 'fra')
-
-print('French / spaCy - French POS Tagger:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'fra',
-                                                          pos_tagger = 'spaCy - French POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'fra',
-                                                                    pos_tagger = 'spaCy - French POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-# German
 sentence_deu = 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ]; abgekürzt Dt. oder Dtsch.) ist eine westgermanische Sprache.'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_deu, lang = 'deu')
-
-print('German / spaCy - German POS Tagger:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'deu',
-                                                          pos_tagger = 'spaCy - German POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'deu',
-                                                                    pos_tagger = 'spaCy - German POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-# Italian
 sentence_ita = "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_ita, lang = 'ita')
-
-print('Italian / spaCy - Italian POS Tagger:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'ita',
-                                                          pos_tagger = 'spaCy - Italian POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'ita',
-                                                                    pos_tagger = 'spaCy - Italian POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-# Japanese
 sentence_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_jpn, lang = 'jpn')
-
-print('Japanese / nagisa - Japanese POS Tagger:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'jpn',
-                                                          pos_tagger = 'nagisa - Japanese POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'jpn',
-                                                                    pos_tagger = 'nagisa - Japanese POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-# Portuguese
 sentence_por = 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_por, lang = 'por')
-
-print('Portuguese / spaCy - Portuguese POS Tagger:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'por',
-                                                          pos_tagger = 'spaCy - Portuguese POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'por',
-                                                                    pos_tagger = 'spaCy - Portuguese POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-# Russian
 sentence_rus = 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать)[~ 3][⇨] — один из восточнославянских языков, национальный язык русского народа.'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_rus, lang = 'rus')
-
-print('Russian / NLTK - Perceptron POS Tagger:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'rus',
-                                                          pos_tagger = 'NLTK - Perceptron POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'rus',
-                                                                    pos_tagger = 'NLTK - Perceptron POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-print('Russian / pymorphy2 - Morphological Analyzer:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'rus',
-                                                          pos_tagger = 'pymorphy2 - Morphological Analyzer')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'rus',
-                                                                    pos_tagger = 'pymorphy2 - Morphological Analyzer',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-# Spanish
-sentence_tha = 'El idioma español o castellano es una lengua romance procedente del latín hablado.'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_tha, lang = 'spa')
-
-print('Spanish / spaCy - Spanish POS Tagger:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'spa',
-                                                          pos_tagger = 'spaCy - Spanish POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'spa',
-                                                                    pos_tagger = 'spaCy - Spanish POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-# Thai
+sentence_spa = 'El idioma español o castellano es una lengua romance procedente del latín hablado.'
 sentence_tha = 'ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_tha, lang = 'tha')
-
-print('Thai / PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'tha',
-                                                          pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'tha',
-                                                                    pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-print('Thai / PyThaiNLP - Perceptron POS Tagger - PUD Corpus:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'tha',
-                                                          pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - PUD Corpus')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'tha',
-                                                                    pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - PUD Corpus',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-
-# Tibetan
 sentence_bod = '༄༅། །རྒྱ་གར་སྐད་དུ། བོ་དྷི་སཏྭ་ཙརྻ་ཨ་བ་ཏ་ར། བོད་སྐད་དུ། བྱང་ཆུབ་སེམས་དཔའི་སྤྱོད་པ་ལ་འཇུག་པ། །སངས་རྒྱས་དང་བྱང་ཆུབ་སེམས་དཔའ་ཐམས་ཅད་ལ་ཕྱག་འཚལ་ལོ། །བདེ་གཤེགས་ཆོས་ཀྱི་སྐུ་མངའ་སྲས་བཅས་དང༌། །ཕྱག་འོས་ཀུན་ལའང་གུས་པར་ཕྱག་འཚལ་ཏེ། །བདེ་གཤེགས་སྲས་ཀྱི་སྡོམ་ལ་འཇུག་པ་ནི། །ལུང་བཞིན་མདོར་བསྡུས་ནས་ནི་བརྗོད་པར་བྱ། །'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_bod, lang = 'bod')
-
-print('Tibetan / pybo - Tibetan POS Tagger:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'bod',
-                                                          pos_tagger = 'pybo - Tibetan POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'bod',
-                                                                    pos_tagger = 'pybo - Tibetan POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-# Ukrainian
 sentence_ukr = 'Украї́нська мо́ва (МФА: [ʊkrɐˈjɪɲsʲkɐ ˈmɔwɐ], історичні назви — ру́ська, руси́нська[9][10][11][* 2]) — національна мова українців.'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_ukr, lang = 'ukr')
-
-print('Ukrainian / pymorphy2 - Morphological Analyzer:')
-
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'ukr',
-                                                          pos_tagger = 'pymorphy2 - Morphological Analyzer')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'ukr',
-                                                                    pos_tagger = 'pymorphy2 - Morphological Analyzer',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
-
-# Vietnamese
 sentence_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ngữ, là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại Việt Nam.'
-tokens = wordless_text_processing.wordless_word_tokenize(main, sentence_vie, lang = 'vie')
 
-print('Vietnamese / Underthesea - Vietnamese POS Tagger:')
+tokens_zho_cn = ['作为', '语言', '而言', '，', '为', '世界', '使用', '人', '数最多', '的', '语言', '，', '目前', '世界', '有', '五分之一', '人口', '做', '为', '母语', '。']
+tokens_nld = ['Het', 'Nederlands', 'is', 'een', 'West', '-', 'Germaanse', 'taal', 'en', 'de', 'moedertaal', 'van', 'de', 'meeste', 'inwoners', 'van', 'Nederland', ',', 'België', 'en', 'Suriname', '.']
+tokens_eng = ['English', 'is', 'a', 'West', 'Germanic', 'language', 'that', 'was', 'first', 'spoken', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'became', 'a', 'global', 'lingua', 'franca', '.']
+tokens_fra = ['Le', 'français', 'est', 'une', 'langue', 'indo-européenne', 'de', 'la', 'famille', 'des', 'langues', 'romanes', '.']
+tokens_deu = ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'Dt', '.', 'oder', 'Dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
+tokens_ita = ["L'italiano", '(', '[', 'itaˈljaːno][Nota', '1', ']', 'ascolta[?·info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
+tokens_jpn = ['使用', '人口', 'に', 'つい', 'て', '正確', 'な', '統計', 'は', 'ない', 'が', '、', '日本', '国', '内', 'の', '人口', '、', 'および', '日本', '国', '外', 'に', '住む', '日本', '人', 'や', '日系', '人', '、', '日本', 'が', 'かつて', '統治', 'し', 'た', '地域', 'の', '一部', '住民', 'など', '、', '約', '1', '億', '3千', '万', '人', '以上', 'と', '考え', 'られ', 'て', 'いる', '[', '7', ']', '。']
+tokens_por = ['A', 'língua', 'portuguesa', ',', 'também', 'designada', 'português', ',', 'é', 'uma', 'língua', 'românica', 'flexiva', 'ocidental', 'originada', 'no', 'galego', '-', 'português', 'falado', 'no', 'Reino', 'da', 'Galiza', 'e', 'no', 'norte', 'de', 'Portugal', '.']
+tokens_rus = ['Ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'Информация', 'о', 'файле', 'слушать', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'один', 'из', 'восточнославянских', 'языков', ',', 'национальный', 'язык', 'русского', 'народа', '.']
+tokens_spa = ['El', 'idioma', 'español', 'o', 'castellano', 'es', 'una', 'lengua', 'romance', 'procedente', 'del', 'latín', 'hablado', '.']
+tokens_tha = ['ภาษาไทย', 'หรือ', 'ภาษาไทย', 'กลาง', 'เป็น', 'ภาษาราชการ', 'และ', 'ภาษาประจำชาติ', 'ของ', 'ประเทศไทย']
+tokens_bod = ['༄༅། །', 'རྒྱ་གར་', 'སྐད་', 'དུ', '།', 'བོ་དྷི་སཏྭ་', 'ཙརྻ་', 'ཨ་བ་ཏ་ར', '།', 'བོད་སྐད་', 'དུ', '།', 'བྱང་ཆུབ་སེམས་དཔ', 'འི་', 'སྤྱོད་པ་', 'ལ་', 'འཇུག་པ', '། །', 'སངས་རྒྱས་', 'དང་', 'བྱང་ཆུབ་སེམས་དཔའ་', 'ཐམས་ཅད་', 'ལ་', 'ཕྱག་', 'འཚལ་', 'ལོ', '། །', 'བདེ་གཤེགས་', 'ཆོས་', 'ཀྱི་', 'སྐུ་', 'མངའ་', 'སྲས་', 'བཅས་', 'དང༌', '། །', 'ཕྱག་འོས་', 'ཀུན་', 'ལ', 'འང་', 'གུས་པ', 'ར་', 'ཕྱག་', 'འཚལ་', 'ཏེ', '། །', 'བདེ་གཤེགས་', 'སྲས་', 'ཀྱི་', 'སྡོམ་', 'ལ་', 'འཇུག་པ་', 'ནི', '། །', 'ལུང་', 'བཞིན་', 'མདོར་བསྡུས་ན', 'ས་', 'ནི་', 'བརྗོད་པ', 'ར་', 'བྱ', '། །']
+tokens_ukr = ['Украї́нська', 'мо́ва', '(', 'МФА', ':', '[', 'ʊkrɐˈjɪɲsʲkɐ', 'ˈmɔwɐ', ']', ',', 'історичні', 'назви', '—', 'ру́ська', ',', 'руси́нська[9][10][11', ']', '[', '*', '2', ']', ')', '—', 'національна', 'мова', 'українців.']
+tokens_vie = ['Tiếng', 'Việt', ',', 'còn', 'gọi', 'tiếng', 'Việt_Nam', '[', '5', ']', 'hay', 'Việt_ngữ', ',', 'là', 'ngôn_ngữ', 'của', 'người', 'Việt', '(', 'người', 'Kinh', ')', 'và', 'là', 'ngôn_ngữ', 'chính_thức', 'tại', 'Việt_Nam', '.']
 
-tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                          lang = 'vie',
-                                                          pos_tagger = 'Underthesea - Vietnamese POS Tagger')
-tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                    lang = 'vie',
-                                                                    pos_tagger = 'Underthesea - Vietnamese POS Tagger',
-                                                                    tagset = 'universal')
-
-print(f"\t{tokens_tagged}")
-print(f"\t{tokens_tagged_universal}")
+testing_pos_tag(lang = 'zho_cn',
+                pos_tagger = 'jieba - Chinese POS Tagger')
+testing_pos_tag(lang = 'nld',
+                pos_tagger = 'spaCy - Dutch POS Tagger')
+testing_pos_tag(lang = 'eng',
+                pos_tagger = 'NLTK - Perceptron POS Tagger')
+testing_pos_tag(lang = 'eng',
+                pos_tagger = 'spaCy - English POS Tagger')
+testing_pos_tag(lang = 'fra',
+                pos_tagger = 'spaCy - French POS Tagger')
+testing_pos_tag(lang = 'deu',
+                pos_tagger = 'spaCy - German POS Tagger')
+testing_pos_tag(lang = 'ita',
+                pos_tagger = 'spaCy - Italian POS Tagger')
+testing_pos_tag(lang = 'jpn',
+                pos_tagger = 'nagisa - Japanese POS Tagger')
+testing_pos_tag(lang = 'por',
+                pos_tagger = 'spaCy - Portuguese POS Tagger')
+testing_pos_tag(lang = 'rus',
+                pos_tagger = 'NLTK - Perceptron POS Tagger')
+testing_pos_tag(lang = 'rus',
+                pos_tagger = 'pymorphy2 - Morphological Analyzer')
+testing_pos_tag(lang = 'spa',
+                pos_tagger = 'spaCy - Spanish POS Tagger')
+testing_pos_tag(lang = 'tha',
+                pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus')
+testing_pos_tag(lang = 'tha',
+                pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - PUD Corpus')
+testing_pos_tag(lang = 'bod',
+                pos_tagger = 'pybo - Tibetan POS Tagger')
+testing_pos_tag(lang = 'ukr',
+                pos_tagger = 'pymorphy2 - Morphological Analyzer')
+testing_pos_tag(lang = 'vie',
+                pos_tagger = 'Underthesea - Vietnamese POS Tagger')
