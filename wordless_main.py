@@ -21,7 +21,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_checking import *
-from wordless_help import *
+from wordless_dialogs import *
 from wordless_settings import *
 from wordless_utils import *
 from wordless_widgets import *
@@ -40,7 +40,11 @@ class Wordless_Loading(QSplashScreen):
         super().__init__(QPixmap('imgs/wordless_loading.png'))
 
         self.setFont(QFont('Times New Roman', pointSize = 12))
-        self.showMessage(self.tr('Loading Wordless...\nPlease wait, it may take a few seconds.'), alignment = Qt.AlignHCenter | Qt.AlignBottom, color = Qt.white)
+        self.showMessage(
+            self.tr('Loading Wordless...\nPlease wait, it may take a few seconds.'),
+            color = Qt.white,
+            alignment = Qt.AlignHCenter | Qt.AlignBottom
+        )
 
     def fade_in(self):
         self.setWindowOpacity(0)
@@ -103,15 +107,13 @@ class Wordless_Main(QMainWindow):
         self.setStyleSheet(self.settings_global['styles']['style_global'])
 
         # Check for updates on startup
-        if self.settings_custom['updates']['update_settings']['check_updates_on_startup']:
+        if self.settings_custom['general']['update_settings']['check_updates_on_startup']:
             self.dialog_check_updates = self.help_check_updates(on_startup = True)
 
         self.load_settings()
 
     def closeEvent(self, event):
-        reply = wordless_message_box.wordless_message_box_exit(self)
-
-        if reply == QMessageBox.Yes:
+        def exit_wordless():
             # Clear history of closed files
             self.settings_custom['files']['files_closed'].clear()
 
@@ -122,8 +124,16 @@ class Wordless_Main(QMainWindow):
                 pickle.dump(self.settings_custom, f)
 
             event.accept()
+
+        if self.settings_custom['general']['misc']['confirm_on_exit']:
+            dialog_confirm_exit = wordless_dialog_misc.Wordless_Dialog_Confirm_Exit(self)
+
+            dialog_confirm_exit.accepted.connect(exit_wordless)
+            dialog_confirm_exit.rejected.connect(event.ignore)
+
+            dialog_confirm_exit.exec_()
         else:
-            event.ignore()
+            event.accept()
 
     def init_menu(self):
         menu_file = self.menuBar().addMenu(self.tr('File'))
@@ -253,13 +263,13 @@ class Wordless_Main(QMainWindow):
 
     # Help -> Citing
     def help_citing(self):
-        dialog_citing = wordless_citing.Wordless_Dialog_Citing(self)
+        dialog_citing = wordless_dialog_help.Wordless_Dialog_Citing(self)
 
         dialog_citing.open()
 
     # Help -> Acknowledgments
     def help_acks(self):
-        dialog_acks = wordless_acks.Wordless_Dialog_Acks(self)
+        dialog_acks = wordless_dialog_help.Wordless_Dialog_Acks(self)
 
         dialog_acks.open()
 
@@ -287,7 +297,8 @@ class Wordless_Main(QMainWindow):
                     Email: <a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a><br>
                     <a href="https://www.wechat.com/en/">WeChat</a> Official Account: Wordless
                 </div>
-            '''))
+            ''')
+        )
 
         message_box.open()
 
@@ -304,32 +315,33 @@ class Wordless_Main(QMainWindow):
                 <div>
                     Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or <a href ="https://github.com/BLKSerene/Wordless/wiki">Github Wiki</a> for Wordless, or helping me translate Wordless and its documentation to other languages.
                 </div>
-            '''))
+            ''')
+        )
 
         message_box.open()
 
     # Help -> Donating
     def help_donating(self):
-        dialog_donating = wordless_donating.Wordless_Dialog_Donating(self)
+        dialog_donating = wordless_dialog_help.Wordless_Dialog_Donating(self)
 
         dialog_donating.open()
 
     # Help -> Check for Updates
     def help_check_updates(self, on_startup = False):
-        dialog_check_updates = wordless_check_updates.Wordless_Dialog_Check_Updates(self)
+        dialog_check_updates = wordless_dialog_help.Wordless_Dialog_Check_Updates(self)
 
         if not on_startup:
             dialog_check_updates.open()
 
     # Help -> Changelog
     def help_changelog(self):
-        dialog_changelog = wordless_changelog.Wordless_Dialog_Changelog(self)
+        dialog_changelog = wordless_dialog_help.Wordless_Dialog_Changelog(self)
 
         dialog_changelog.open()
 
     # Help -> About Wordless
     def help_about(self):
-        dialog_about = wordless_about.Wordless_Dialog_About(self)
+        dialog_about = wordless_dialog_help.Wordless_Dialog_About(self)
 
         dialog_about.open()
 
@@ -380,13 +392,20 @@ class Wordless_Main(QMainWindow):
             self.settings_custom['work_area_cur'] = self.wordless_work_area.tabText(self.wordless_work_area.currentIndex())
 
         self.wordless_work_area = QTabWidget(self)
-        self.wordless_work_area.addTab(wordless_overview.Wrapper_Overview(self), self.tr('Overview'))
-        self.wordless_work_area.addTab(wordless_concordancer.Wrapper_Concordancer(self), self.tr('Concordancer'))
-        self.wordless_work_area.addTab(wordless_wordlist.Wrapper_Wordlist(self), self.tr('Wordlist'))
-        self.wordless_work_area.addTab(wordless_ngrams.Wrapper_Ngrams(self), self.tr('N-grams'))
-        self.wordless_work_area.addTab(wordless_collocation.Wrapper_Collocation(self), self.tr('Collocation'))
-        self.wordless_work_area.addTab(wordless_colligation.Wrapper_Colligation(self), self.tr('Colligation'))
-        self.wordless_work_area.addTab(wordless_keywords.Wrapper_Keywords(self), self.tr('Keywords'))
+        self.wordless_work_area.addTab(wordless_overview.Wrapper_Overview(self),
+                                       self.tr('Overview'))
+        self.wordless_work_area.addTab(wordless_concordancer.Wrapper_Concordancer(self),
+                                       self.tr('Concordancer'))
+        self.wordless_work_area.addTab(wordless_wordlist.Wrapper_Wordlist(self),
+                                       self.tr('Wordlist'))
+        self.wordless_work_area.addTab(wordless_ngrams.Wrapper_Ngrams(self),
+                                       self.tr('N-grams'))
+        self.wordless_work_area.addTab(wordless_collocation.Wrapper_Collocation(self),
+                                       self.tr('Collocation'))
+        self.wordless_work_area.addTab(wordless_colligation.Wrapper_Colligation(self),
+                                       self.tr('Colligation'))
+        self.wordless_work_area.addTab(wordless_keywords.Wrapper_Keywords(self),
+                                       self.tr('Keywords'))
 
         self.wordless_work_area.currentChanged.connect(work_area_changed)
 

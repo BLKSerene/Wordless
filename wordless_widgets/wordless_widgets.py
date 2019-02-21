@@ -13,8 +13,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_dialogs import wordless_dialog_context_settings
 from wordless_utils import wordless_misc
-from wordless_widgets import wordless_box, wordless_dialog, wordless_label, wordless_list
+from wordless_widgets import wordless_box, wordless_label, wordless_list
 
 def wordless_widgets_no_limit(parent, double = False):
     def no_limit_changed():
@@ -350,8 +351,9 @@ def wordless_widgets_context_settings(parent, tab):
     label_context_settings = QLabel(parent.tr('Context Settings:'), parent)
     button_context_settings = QPushButton(parent.tr('Settings...'), parent)
 
-    main.__dict__[f'wordless_context_settings_{tab}'] = wordless_dialog.Wordless_Dialog_Context_Settings(main,
-                                                                                                         tab = tab)
+    dialog_context_settings = wordless_dialog_context_settings.Wordless_Dialog_Context_Settings(main,
+                                                                                                tab = tab)
+    main.__dict__[f'wordless_context_settings_{tab}'] = dialog_context_settings
 
     button_context_settings.clicked.connect(main.__dict__[f'wordless_context_settings_{tab}'].load)
 

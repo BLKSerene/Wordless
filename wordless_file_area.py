@@ -30,6 +30,7 @@ import openpyxl
 import xlrd
 
 from wordless_checking import *
+from wordless_dialogs import *
 from wordless_text import *
 from wordless_widgets import *
 from wordless_utils import *

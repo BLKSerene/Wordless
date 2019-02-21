@@ -21,6 +21,7 @@ import numpy
 import matplotlib.pyplot
 
 from wordless_checking import *
+from wordless_dialogs import *
 from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
@@ -48,9 +49,11 @@ class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Search):
                              parent.tr('Paragraph No.')
                          ])
 
-        dialog_search_results = wordless_dialog.Wordless_Dialog_Search_Results(self.main,
-                                                                               tab = 'concordancer',
-                                                                               table = self)
+        dialog_search_results = wordless_dialog_search_results.Wordless_Dialog_Search_Results(
+            self.main,
+            tab = 'concordancer',
+            table = self
+        )
 
         self.button_search_results.clicked.connect(dialog_search_results.load)
 
@@ -128,12 +131,6 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
             combo_box_cur = self.cellWidget(i, 0)
 
             if combo_box_sorting_col != combo_box_cur and combo_box_sorting_col.currentText() == combo_box_cur.currentText():
-                combo_box_sorting_col.blockSignals(True)
-                combo_box_cur.blockSignals(True)
-
-                combo_box_sorting_col.setStyleSheet(self.main.settings_custom['general']['style_highlight'])
-                combo_box_cur.setStyleSheet(self.main.settings_custom['general']['style_highlight'])
-
                 QMessageBox.warning(self.main,
                                     self.tr('Column Sorted More Than Once'),
                                     self.tr(f'''{self.main.settings_global["style_dialog"]}
@@ -142,12 +139,6 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
                                         </body>
                                     '''),
                                     QMessageBox.Ok)
-
-                combo_box_sorting_col.setStyleSheet('')
-                combo_box_cur.setStyleSheet('')
-
-                combo_box_sorting_col.blockSignals(False)
-                combo_box_cur.blockSignals(False)
 
                 combo_box_sorting_col.setCurrentText(combo_box_sorting_col.text_old)
                 combo_box_sorting_col.showPopup()
@@ -907,11 +898,14 @@ def generate_table(main, table):
                             # Node
                             node_text = html.escape(wordless_text_processing.wordless_word_detokenize(main, ngram, text.lang))
 
-                            label_node = wordless_label.Wordless_Label_Html(f'''
-                                                                                <span style="color: {node_color}; font-weight: bold;">
-                                                                                    {node_text}
-                                                                                </span>
-                                                                            ''', main)
+                            label_node = wordless_label.Wordless_Label_Html(
+                                f'''
+                                <span style="color: {node_color}; font-weight: bold;">
+                                    {node_text}
+                                </span>
+                                ''',
+                                main
+                            )
 
                             table.setCellWidget(table.rowCount() - 1, 1, label_node)
 

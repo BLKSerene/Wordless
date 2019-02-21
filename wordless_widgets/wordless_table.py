@@ -20,8 +20,9 @@ from PyQt5.QtWidgets import *
 import openpyxl
 
 from wordless_checking import wordless_checking_misc
-from wordless_widgets import wordless_box, wordless_message_box
+from wordless_dialogs import wordless_message_box
 from wordless_utils import wordless_misc
+from wordless_widgets import wordless_box
 
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
@@ -393,7 +394,7 @@ class Wordless_Table_Data(Wordless_Table):
         self.cols_breakdown = set(self.find_col(cols_breakdown))
 
     def set_item_num(self, row, col, item):
-        item.setFont(QFont(self.main.settings_custom['general']['font_monospace']))
+        item.setFont(QFont('Consolas'))
         item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         super().setItem(row, col, item)
