@@ -1632,19 +1632,19 @@ def init_settings_global(main):
                 'func': measures_dispersion.rosengrens_s
             },
 
-            main.tr('Distributional Consistency'): {
-                'col': main.tr('Distributional Consistency'),
-                'func': measures_dispersion.distributional_consistency
+            main.tr('Zhang\'s Distributional Consistency'): {
+                'col': main.tr('Zhang\'s DC'),
+                'func': measures_dispersion.zhangs_distributional_consistency
             },
 
-            main.tr('Gries\' DP'): {
-                'col': main.tr('Gries\' DP'),
-                'func': measures_dispersion.gries_dp
+            main.tr('Gries\'s DP'): {
+                'col': main.tr('Gries\'s DP'),
+                'func': measures_dispersion.griess_dp
             },
 
-            main.tr('Gries\' DPₙₒᵣₘ'): {
-                'col': main.tr('Gries\' DPₙₒᵣₘ'),
-                'func': measures_dispersion.gries_dp_norm
+            main.tr('Gries\'s DPₙₒᵣₘ'): {
+                'col': main.tr('Gries\'s DPₙₒᵣₘ'),
+                'func': measures_dispersion.griess_dp_norm
             }
         },
 
@@ -1664,9 +1664,9 @@ def init_settings_global(main):
                 'func': measures_adjusted_freq.rosengrens_kf
             },
 
-            main.tr('Engvall\'s Measure'): {
-                'col': main.tr('Engvall\'s Measure'),
-                'func': measures_adjusted_freq.engvalls_measure
+            main.tr('Engvall\'s FM'): {
+                'col': main.tr('Engvall\'s FM'),
+                'func': measures_adjusted_freq.engvalls_fm
             },
 
             main.tr('Kromer\'s Uᵣ'): {
