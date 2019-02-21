@@ -26,8 +26,13 @@ def new_file(file_name, text_type):
 
     return new_file
 
-def print_text(title, text):
-    print(f'---------- {title} ----------')
+def testing_text(title, file, tokens_only = True):
+    text = wordless_text.Wordless_Text(main, file, tokens_only = tokens_only)
+
+    if tokens_only:
+        print(f'---------- {title} [Tokens Only] ----------')
+    else:
+        print(f'---------- {title} ----------')
 
     print(f'Tokens ({len(text.tokens)}):')
     print(f'\t{text.tokens}')
@@ -40,6 +45,12 @@ def print_text(title, text):
 
     print(f'All Tags ({len(text.tags_all)}):')
     print(f'\t{text.tags_all}')
+
+    print(f'Paragraph Offsets ({len(text.para_offsets)}):')
+    print(f'\t{text.para_offsets}')
+
+    print(f'Sentence Offsets ({len(text.sentence_offsets)}):')
+    print(f'\t{text.sentence_offsets}')
 
 main = testing_init.Testing_Main()
 
@@ -56,20 +67,32 @@ file_tokenized_tagged_non_pos = new_file(file_name = 'tokenized_tagged_non_pos.t
 file_tokenized_tagged_both = new_file(file_name = 'tokenized_tagged_both.txt',
                                       text_type = ['tokenized', 'tagged_both'])
 
-text = wordless_text.Wordless_Text(main, file_untokenized_untagged)
-print_text(title = 'Untokenized / Untagged', text = text)
+testing_text(title = 'Untokenized / Untagged',
+             file = file_untokenized_untagged, tokens_only = True)
+testing_text(title = 'Untokenized / Untagged',
+             file = file_untokenized_untagged, tokens_only = False)
 
-text = wordless_text.Wordless_Text(main, file_untokenized_tagged_non_pos)
-print_text(title = 'Untokenized / Tagged (Non-POS)', text = text)
+testing_text(title = 'Untokenized / Tagged (Non-POS)',
+             file = file_untokenized_tagged_non_pos, tokens_only = True)
+testing_text(title = 'Untokenized / Tagged (Non-POS)',
+             file = file_untokenized_tagged_non_pos, tokens_only = False)
 
-text = wordless_text.Wordless_Text(main, file_tokenized_untagged)
-print_text(title = 'Tokenized / Untagged', text = text)
+testing_text(title = 'Tokenized / Untagged',
+             file = file_tokenized_untagged, tokens_only = True)
+testing_text(title = 'Tokenized / Untagged',
+             file = file_tokenized_untagged, tokens_only = False)
 
-text = wordless_text.Wordless_Text(main, file_tokenized_tagged_pos)
-print_text(title = 'Tokenized / Tagged (POS)', text = text)
+testing_text(title = 'Tokenized / Tagged (POS)',
+             file = file_tokenized_tagged_pos, tokens_only = True)
+testing_text(title = 'Tokenized / Tagged (POS)',
+             file = file_tokenized_tagged_pos, tokens_only = False)
 
-text = wordless_text.Wordless_Text(main, file_tokenized_tagged_non_pos)
-print_text(title = 'Tokenized / Tagged (Non-POS)', text = text)
+testing_text(title = 'Tokenized / Tagged (Non-POS)',
+             file = file_tokenized_tagged_non_pos, tokens_only = True)
+testing_text(title = 'Tokenized / Tagged (Non-POS)',
+             file = file_tokenized_tagged_non_pos, tokens_only = False)
 
-text = wordless_text.Wordless_Text(main, file_tokenized_tagged_both)
-print_text(title = 'Tokenized / Tagged (Both)', text = text)
+testing_text(title = 'Tokenized / Tagged (Both)',
+             file = file_tokenized_tagged_both, tokens_only = True)
+testing_text(title = 'Tokenized / Tagged (Both)',
+             file = file_tokenized_tagged_both, tokens_only = False)
