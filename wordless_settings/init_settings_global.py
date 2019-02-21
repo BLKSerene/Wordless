@@ -1035,6 +1035,10 @@ def init_settings_global(main):
                 main.tr('Wordless - Thai Word Detokenizer')
             ],
 
+            'bod': [
+                main.tr('Wordless - Tibetan Word Detokenizer')
+            ],
+
             'other': [
                 main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('SacreMoses - Moses Detokenizer')
