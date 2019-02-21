@@ -1,5 +1,5 @@
 #
-# Wordless: Widgets - Message Box
+# Wordless: Dialogs - Message Box
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
@@ -30,20 +30,6 @@ class Wordless_Message_Box_Info(QMessageBox):
 
         self.setTextFormat(Qt.RichText)
         self.setTextInteractionFlags(Qt.TextBrowserInteraction)
-
-def wordless_message_box_exit(main):
-    reply = QMessageBox.question(main,
-                                 main.tr('Exit Confirmation'),
-                                 main.tr(f'''{main.settings_global['styles']['style_dialog']}
-                                             <body>
-                                                 <div>Do you really want to quit?</div>
-                                                 <div><span style="color: #F00; font-weight: bold;">Note</span>: All unsaved data and figures will be lost.</div>
-                                             </body>
-                                         '''),
-                                 QMessageBox.Yes | QMessageBox.No,
-                                 QMessageBox.No)
-
-    return reply
 
 # Files
 def wordless_message_text_file_error(files, text_singular, text_plural):

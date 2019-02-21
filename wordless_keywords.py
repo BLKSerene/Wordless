@@ -19,6 +19,7 @@ from PyQt5.QtWidgets import *
 import numpy
 
 from wordless_checking import *
+from wordless_dialogs import *
 from wordless_measures import *
 from wordless_plot import *
 from wordless_text import *
@@ -42,12 +43,16 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Filter_Search):
                          ],
                          sorting_enabled = True)
 
-        dialog_filter_results = wordless_dialog.Wordless_Dialog_Filter_Results_Keywords(self.main,
-                                                                                        tab = 'keywords',
-                                                                                        table = self)
-        dialog_search_results = wordless_dialog.Wordless_Dialog_Search_Results(self.main,
-                                                                               tab = 'keywords',
-                                                                               table = self)
+        dialog_filter_results = wordless_dialog_filter_results.Wordless_Dialog_Filter_Results_Keywords(
+            self.main,
+            tab = 'keywords',
+            table = self
+        )
+        dialog_search_results = wordless_dialog_search_results.Wordless_Dialog_Search_Results(
+            self.main,
+            tab = 'keywords',
+            table = self
+        )
 
         self.button_filter_results.clicked.connect(dialog_filter_results.load)
         self.button_search_results.clicked.connect(dialog_search_results.load)
