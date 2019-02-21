@@ -10,6 +10,7 @@
 #
 
 import copy
+import itertools
 import json
 import os
 import re
@@ -569,7 +570,12 @@ class Wordless_Settings(QDialog):
                 sentence_tokenizer = self.__dict__[f"combo_box_sentence_tokenizer_{settings_custom['preview_lang']}"].currentText()
                 samples = settings_custom['preview_samples']
 
-                results = wordless_text_processing.wordless_sentence_tokenize(self.main, samples,
+                if samples.strip():
+                    wordless_text_utils.check_sentence_tokenizers(self.main,
+                                                                  lang = settings_custom['preview_lang'],
+                                                                  sentence_tokenizer = sentence_tokenizer)
+
+                results = wordless_text_processing.wordless_sentence_tokenize(self.main, samples.strip(),
                                                                               lang = settings_custom['preview_lang'],
                                                                               sentence_tokenizer = sentence_tokenizer)
 
@@ -692,18 +698,27 @@ class Wordless_Settings(QDialog):
                 word_tokenizer = self.__dict__[f"combo_box_word_tokenizer_{settings_custom['preview_lang']}"].currentText()
                 samples = settings_custom['preview_samples']
 
-                for line in samples.splitlines():
-                    sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line,
-                                                                                    lang = settings_custom['preview_lang'])
-                    tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentences,
-                                                                             lang = settings_custom['preview_lang'],
-                                                                             word_tokenizer = word_tokenizer)
+                if samples.strip():
+                    wordless_text_utils.check_word_tokenizers(self.main,
+                                                              lang = settings_custom['preview_lang'],
+                                                              word_tokenizer = word_tokenizer)
 
-                    # Vietnamese
-                    if settings_custom['preview_lang'] == 'vie':
-                        tokens = [re.sub(r'\s+', r'_', token) for token in tokens]
-                    
-                    results.append(' '.join(tokens))
+                for line in samples.split('\n'):
+                    line = line.strip()
+
+                    if line:
+                        tokens_sentences = wordless_text_processing.wordless_word_tokenize(self.main, line,
+                                                                                           lang = settings_custom['preview_lang'],
+                                                                                           word_tokenizer = word_tokenizer)
+                        tokens = itertools.chain.from_iterable(tokens_sentences)
+
+                        # Vietnamese
+                        if settings_custom['preview_lang'] == 'vie':
+                            tokens = [re.sub(r'\s+', r'_', token) for token in tokens]
+
+                        results.append(' '.join(tokens))
+                    else:
+                        results.append('')
 
                 self.preview_results_updated_word_tokenization.emit(samples, results)
 
@@ -825,11 +840,16 @@ class Wordless_Settings(QDialog):
                 samples = settings_custom['preview_samples']
 
                 for line in samples.splitlines():
-                    text = wordless_text_processing.wordless_word_detokenize(self.main, line.split(),
-                                                                             lang = settings_custom['preview_lang'],
-                                                                             word_detokenizer = word_detokenizer)
-                    
-                    results.append(text)
+                    line = line.strip()
+
+                    if line:
+                        text = wordless_text_processing.wordless_word_detokenize(self.main, line,
+                                                                                 lang = settings_custom['preview_lang'],
+                                                                                 word_detokenizer = word_detokenizer)
+                        
+                        results.append(text)
+                    else:
+                        results.append('')
 
                 self.preview_results_updated_word_detokenization.emit(samples, results)
 
@@ -955,24 +975,27 @@ class Wordless_Settings(QDialog):
                 else:
                     tagset = 'default'
 
-                for line in samples.splitlines():
-                    sentences = wordless_text_processing.wordless_sentence_tokenize(self.main, line.strip(),
-                                                                                    lang = settings_custom['preview_lang'])
+                if samples.strip():
+                    wordless_text_utils.check_pos_taggers(self.main,
+                                                          lang = settings_custom['preview_lang'],
+                                                          pos_tagger = pos_tagger)
 
-                    results_sentences = []
-                    for sentence in sentences:
+                for line in samples.split('\n'):
+                    line = line.strip()
 
-                        tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentence,
-                                                                                 lang = settings_custom['preview_lang'])
+                    if line:
+                        tokens_sentences = wordless_text_processing.wordless_word_tokenize(self.main, line,
+                                                                                           lang = settings_custom['preview_lang'])
+                        tokens = list(itertools.chain.from_iterable(tokens_sentences))
 
                         tokens_tagged = wordless_text_processing.wordless_pos_tag(self.main, tokens,
                                                                                   lang = settings_custom['preview_lang'],
                                                                                   pos_tagger = pos_tagger,
                                                                                   tagset = tagset)
 
-                        results_sentences.append(' '.join([f'{token}_{tag}' for token, tag in tokens_tagged]))
-
-                    results.append(' '.join(results_sentences))
+                        results.append(' '.join([f'{token}_{tag}' for token, tag in tokens_tagged]))
+                    else:
+                        results.append('')
 
                 self.preview_results_updated_pos_tagging.emit(samples, results)
 
@@ -1217,15 +1240,27 @@ class Wordless_Settings(QDialog):
                 lemmatizer = self.__dict__[f"combo_box_lemmatizer_{settings_custom['preview_lang']}"].currentText()
                 samples = settings_custom['preview_samples']
 
-                for line in samples.splitlines():
-                    tokens = wordless_text_processing.wordless_word_tokenize(self.main, line,
-                                                                             lang = settings_custom["preview_lang"])
-                    lemmas = wordless_text_processing.wordless_lemmatize(self.main, tokens,
-                                                                         lang = settings_custom["preview_lang"],
-                                                                         lemmatizer = lemmatizer)
+                if samples.strip():
+                    wordless_text_utils.check_lemmatizers(self.main,
+                                                          lang = settings_custom['preview_lang'],
+                                                          lemmatizer = lemmatizer)
 
-                    results.append(wordless_text_processing.wordless_word_detokenize(self.main, lemmas,
-                                                                                     lang = settings_custom["preview_lang"]))
+                for line in samples.split('\n'):
+                    line = line.strip()
+
+                    if line:
+                        tokens_sentences = wordless_text_processing.wordless_word_tokenize(self.main, line,
+                                                                                           lang = settings_custom['preview_lang'])
+                        tokens = list(itertools.chain.from_iterable(tokens_sentences))
+
+                        lemmas = wordless_text_processing.wordless_lemmatize(self.main, tokens,
+                                                                             lang = settings_custom['preview_lang'],
+                                                                             lemmatizer = lemmatizer)
+
+                        results.append(wordless_text_processing.wordless_word_detokenize(self.main, lemmas,
+                                                                                         lang = settings_custom['preview_lang']))
+                    else:
+                        results.append('')
 
                 self.preview_results_updated_lemmatization.emit(samples, results)
 

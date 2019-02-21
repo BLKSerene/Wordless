@@ -14,7 +14,7 @@ import re
 
 import bs4
 
-from wordless_text import wordless_matching, wordless_text_processing
+from wordless_text import wordless_matching, wordless_text_processing, wordless_text_utils
 
 class Wordless_Token(str):
     def __new__(cls, string, *args, **kwargs):
@@ -24,19 +24,19 @@ class Wordless_Token(str):
         self.boundary = boundary
         self.sentence_ending = sentence_ending
 
+class Wordless_Text_Blank():
+    pass
+
 class Wordless_Text():
-    def __init__(self, main, file):
+    def __init__(self, main, file, tokens_only = True):
         self.main = main
         self.lang = file['lang']
         self.text_type = file['text_type']
 
-        self.paras = []
-        self.sentences = []
-        self.tokens_sentences = []
-        self.tokens = []
-
         self.para_offsets = []
         self.sentence_offsets = []
+        self.tokens_sentences_paras = []
+        self.tokens = []
 
         self.tags_all = []
         self.tags_pos = []
@@ -46,43 +46,51 @@ class Wordless_Text():
         re_tags_pos = wordless_matching.get_re_tags(main, tags = 'pos')
         re_tags_non_pos = wordless_matching.get_re_tags(main, tags = 'non_pos')
 
+        if tokens_only:
+            keep_sentences = False
+
+            wordless_text_utils.check_word_tokenizers(main, self.lang)
+        else:
+            keep_sentences = True
+
+            wordless_text_utils.check_tokenizers(main, self.lang)
+
         with open(file['path'], 'r', encoding = file['encoding']) as f:
             # Untokenized / Untagged
-            if self.text_type == ['untokenized', 'untagged']:
-                for i, line in enumerate(f):
+            if self.text_type == ('untokenized', 'untagged'):
+                for line in f:
                     text = line.rstrip()
 
                     if text:
-                        self.paras.append(text)
-                        self.para_offsets.append(len(self.tokens))
+                        tokens_sentences = wordless_text_processing.wordless_word_tokenize(main, text,
+                                                                                           lang = self.lang,
+                                                                                           keep_sentences = keep_sentences)
 
-                        for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text,
-                                                                                            lang = self.lang):
-                            self.tokenize_sentence(sentence)
+                        self.tokens_sentences_paras.append(tokens_sentences)
+
             # Untokenized / Tagged (Non-POS)
-            elif self.text_type == ['untokenized', 'tagged_non_pos']:
+            elif self.text_type == ('untokenized', 'tagged_non_pos'):
                 for i, line in enumerate(f):
                     text = line.rstrip()
 
                     if text:
-                        self.paras.append(text)
-                        self.para_offsets.append(len(self.tokens))
-
                         # Replace all tags with a whitespace to ensure no words run together
                         text_no_tags = re.sub(re_tags_non_pos, ' ', text)
                         text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
-                        for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_no_tags,
-                                                                                            lang = self.lang):
-                            self.tokenize_sentence(sentence)
+                        tokens_sentences = wordless_text_processing.wordless_word_tokenize(main, text_no_tags,
+                                                                                           lang = self.lang,
+                                                                                           keep_sentences = keep_sentences)
 
+                        self.tokens_sentences_paras.append(tokens_sentences)
+
+                        # Extract tags
                         for tag in re.findall(re_tags_non_pos, text):
                             i_tag = text.index(tag)
 
                             if i == 0 and i_tag == 0 and not self.tags_non_pos:
-                                self.tokens.insert(0, '')
+                                self.tokens_sentences_paras[0][0].insert(0, '')
 
-                                self.tags_pos.append([])
                                 self.tags_non_pos.append([tag])
                             else:
                                 self.tokenize_text(text[:i_tag])
@@ -95,156 +103,290 @@ class Wordless_Text():
                         if text:
                             self.tokenize_text(text)
             # Tokenized / Untagged
-            elif self.text_type == ['tokenized', 'untagged']:
-                for i, line in enumerate(f):
-                    text = line.rstrip()
+            elif self.text_type == ('tokenized', 'untagged'):
+                if tokens_only:
+                    for line in f:
+                        text = line.rstrip()
 
-                    if text:
-                        self.paras.append(text)
-                        self.para_offsets.append(len(self.tokens))
+                        if text:
+                            self.tokens_sentences_paras.append([text.split()])
+                else:
+                    for line in f:
+                        text = line.rstrip()
 
-                        for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text,
-                                                                                            lang = self.lang):
-                            self.split_sentence(sentence)
+                        if text:
+                            self.tokens_sentences_paras.append([])
+
+                            for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text,
+                                                                                                lang = self.lang):
+                                self.tokens_sentences_paras[-1].append(sentence.split())
             # Tokenized / Tagged (POS)
-            elif self.text_type == ['tokenized', 'tagged_pos']:
-                for i, line in enumerate(f):
-                    text = line.rstrip()
+            elif self.text_type == ('tokenized', 'tagged_pos'):
+                if tokens_only:
+                    for i, line in enumerate(f):
+                        text = line.rstrip()
 
-                    if text:
-                        self.paras.append(text)
-                        self.para_offsets.append(len(self.tokens))
-
-                        # Replace all tags with a whitespace to ensure no words run together
-                        text_no_tags = re.sub(re_tags_pos, ' ', text)
-                        text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
-
-                        for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_no_tags,
-                                                                                            lang = self.lang):
-                            self.split_sentence(sentence)
-
-                        for tag in re.findall(re_tags_pos, text):
-                            i_tag = text.index(tag)
-
-                            if i == 0 and i_tag == 0 and not self.tags_pos:
-                                self.tokens.insert(0, '')
-
-                                self.tags_pos.append([tag])
-                                self.tags_non_pos.append([])
-                            else:
-                                self.split_text(text[:i_tag])
-
-                                self.tags_pos[-1].append(tag)
-
-                            text = text[i_tag + len(tag):]
-
-                        # The last part of the text
                         if text:
-                            self.split_text(text)
-            # Tokenized / Tagged (Non-POS)
-            elif self.text_type == ['tokenized', 'tagged_non_pos']:
-                for i, line in enumerate(f):
-                    text = line.rstrip()
+                            # Replace all tags with a whitespace to ensure no words run together
+                            text_no_tags = re.sub(re_tags_pos, ' ', text)
+                            text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
-                    if text:
-                        self.paras.append(text)
-                        self.para_offsets.append(len(self.tokens))
+                            self.tokens_sentences_paras.append([text_no_tags.split()])
 
-                        # Replace all tags with a whitespace to ensure no words run together
-                        text_no_tags = re.sub(re_tags_non_pos, ' ', text)
-                        text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
+                            # Extract tags
+                            for tag in re.findall(re_tags_pos, text):
+                                i_tag = text.index(tag)
 
-                        for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_no_tags,
-                                                                                            lang = self.lang):
-                            self.split_sentence(sentence)
+                                if self.tokens_sentences_paras:
+                                    self.split_text(text[:i_tag])
 
-                        for tag in re.findall(re_tags_non_pos, text):
-                            i_tag = text.index(tag)
-
-                            if i == 0 and i_tag == 0 and not self.tags_non_pos:
-                                self.tokens.insert(0, '')
-
-                                self.tags_pos.append([])
-                                self.tags_non_pos.append([tag])
-                            else:
-                                self.split_text(text[:i_tag])
-
-                                self.tags_non_pos[-1].append(tag)
-
-                            text = text[i_tag + len(tag):]
-
-                        # The last part of the text
-                        if text:
-                            self.split_text(text)
-            # Tokenized / Tagged (Both)
-            elif self.text_type == ['tokenized', 'tagged_both']:
-                for i, line in enumerate(f):
-                    text = line.rstrip()
-
-                    if text:
-                        self.paras.append(text)
-                        self.para_offsets.append(len(self.tokens))
-
-                        # Replace all tags with a whitespace to ensure no words run together
-                        text_no_tags = re.sub(re_tags_all, ' ', text)
-                        text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
-
-                        for sentence in wordless_text_processing.wordless_sentence_tokenize(main, text_no_tags,
-                                                                                            lang = self.lang):
-                            self.split_sentence(sentence)
-
-                        while text:
-                            tag_pos = re.search(re_tags_pos, text)
-                            tag_non_pos = re.search(re_tags_non_pos, text)
-
-                            if tag_pos:
-                                i_tag_pos = text.index(tag_pos.group())
-
-                            if tag_non_pos:
-                                i_tag_non_pos = text.index(tag_non_pos.group())
-
-                            if (tag_pos and tag_non_pos and i_tag_pos < i_tag_non_pos or
-                                tag_pos and not tag_non_pos):
-                                if i == 0 and i_tag_pos == 0 and not self.tags_all:
-                                    self.tokens.insert(0, '')
-
-                                    self.tags_all.append([tag_pos.group()])
-                                    self.tags_pos.append([tag_pos.group()])
-                                    self.tags_non_pos.append([])
+                                    self.tags_pos[-1].append(tag)
                                 else:
-                                    self.split_text(text[:i_tag_pos])
+                                    self.tokens_sentences_paras[0][0].insert(0, '')
 
-                                    self.tags_pos[-1].append(tag_pos.group())
-                                    self.tags_all[-1].append(tag_pos.group())
+                                    self.tags_pos.append([tag])
 
-                                text = text[i_tag_pos + len(tag_pos.group()):]
-                            elif (tag_pos and tag_non_pos and i_tag_pos > i_tag_non_pos or
-                                  not tag_pos and tag_non_pos):
-                                if i == 0 and i_tag_non_pos == 0 and not self.tags_all:
-                                    self.tokens.insert(0, '')
+                                text = text[i_tag + len(tag):]
 
-                                    self.tags_all.append([tag_non_pos.group()])
-                                    self.tags_pos.append([])
-                                    self.tags_non_pos.append([tag_non_pos.group()])
-                                else:
-                                    self.split_text(text[:i_tag_non_pos])
-
-                                    self.tags_all[-1].append(tag_non_pos.group())
-                                    self.tags_non_pos[-1].append(tag_non_pos.group())
-
-                                text = text[i_tag_non_pos + len(tag_non_pos.group()):]
-                            else:
+                            # The last part of the text
+                            if text:
                                 self.split_text(text)
+                else:
+                    for i, line in enumerate(f):
+                        text = line.rstrip()
 
-                                break
+                        if text:
+                            self.tokens_sentences_paras.append([])
 
-        # Check if the first token is empty
-        if self.tokens[0] == '':
-            self.tokens_sentences[0].insert(0, '')
+                            # Replace all tags with a whitespace to ensure no words run together
+                            text_no_tags = re.sub(re_tags_pos, ' ', text)
+                            text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
+
+                            sentences = wordless_text_processing.wordless_sentence_tokenize(main, text_no_tags,
+                                                                                            lang = self.lang)
+
+                            for sentence in sentences:
+                                self.tokens_sentences_paras[-1].append(sentence.split())
+
+                            # Extract tags
+                            for tag in re.findall(re_tags_pos, text):
+                                i_tag = text.index(tag)
+
+                                if self.tokens_sentences_paras:
+                                    self.split_text(text[:i_tag])
+
+                                    self.tags_pos[-1].append(tag)
+                                else:
+                                    self.tokens_sentences_paras[0][0].insert(0, '')
+
+                                    self.tags_pos.append([tag])
+
+                                text = text[i_tag + len(tag):]
+
+                            # The last part of the text
+                            if text:
+                                self.split_text(text)
+            # Tokenized / Tagged (Non-POS)
+            elif self.text_type == ('tokenized', 'tagged_non_pos'):
+                if tokens_only:
+                    for i, line in enumerate(f):
+                        text = line.rstrip()
+
+                        if text:
+                            # Replace all tags with a whitespace to ensure no words run together
+                            text_no_tags = re.sub(re_tags_non_pos, ' ', text)
+                            text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
+
+                            self.tokens_sentences_paras.append([text_no_tags.split()])
+
+                            # Extract tags
+                            for tag in re.findall(re_tags_non_pos, text):
+                                i_tag = text.index(tag)
+
+                                if i == 0 and i_tag == 0 and not self.tags_non_pos:
+                                    self.tokens_sentences_paras[0][0].insert(0, '')
+
+                                    self.tags_non_pos.append([tag])
+                                else:
+                                    self.split_text(text[:i_tag])
+
+                                    self.tags_non_pos[-1].append(tag)
+
+                                text = text[i_tag + len(tag):]
+
+                            # The last part of the text
+                            if text:
+                                self.split_text(text)
+                else:
+                    for i, line in enumerate(f):
+                        text = line.rstrip()
+
+                        if text:
+                            self.tokens_sentences_paras.append([])
+
+                            # Replace all tags with a whitespace to ensure no words run together
+                            text_no_tags = re.sub(re_tags_non_pos, ' ', text)
+                            text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
+
+                            sentences = wordless_text_processing.wordless_sentence_tokenize(main, text_no_tags,
+                                                                                            lang = self.lang)
+
+                            for sentence in sentences:
+                                self.tokens_sentences_paras[-1].append(sentence.split())
+
+                            # Extract tags
+                            for tag in re.findall(re_tags_non_pos, text):
+                                i_tag = text.index(tag)
+
+                                if i == 0 and i_tag == 0 and not self.tags_non_pos:
+                                    self.tokens_sentences_paras[0][0].insert(0, '')
+
+                                    self.tags_non_pos.append([tag])
+                                else:
+                                    self.split_text(text[:i_tag])
+
+                                    self.tags_non_pos[-1].append(tag)
+
+                                text = text[i_tag + len(tag):]
+
+                            # The last part of the text
+                            if text:
+                                self.split_text(text)
+            # Tokenized / Tagged (Both)
+            elif self.text_type == ('tokenized', 'tagged_both'):
+                if tokens_only:
+                    for i, line in enumerate(f):
+                        text = line.rstrip()
+
+                        if text:
+                            # Replace all tags with a whitespace to ensure no words run together
+                            text_no_tags = re.sub(re_tags_all, ' ', text)
+                            text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
+
+                            self.tokens_sentences_paras.append([text_no_tags.split()])
+
+                            # Extract tags
+                            while text:
+                                tag_pos = re.search(re_tags_pos, text)
+                                tag_non_pos = re.search(re_tags_non_pos, text)
+
+                                if tag_pos:
+                                    i_tag_pos = text.index(tag_pos.group())
+
+                                if tag_non_pos:
+                                    i_tag_non_pos = text.index(tag_non_pos.group())
+
+                                if (tag_pos and tag_non_pos and i_tag_pos < i_tag_non_pos or
+                                    tag_pos and not tag_non_pos):
+                                    if i == 0 and i_tag_pos == 0 and not self.tags_all:
+                                        self.tokens_sentences_paras[0][0].insert(0, '')
+
+                                        self.tags_all.append([tag_pos.group()])
+                                        self.tags_pos.append([tag_pos.group()])
+                                        self.tags_non_pos.append([])
+                                    else:
+                                        self.split_text(text[:i_tag_pos])
+
+                                        self.tags_pos[-1].append(tag_pos.group())
+                                        self.tags_all[-1].append(tag_pos.group())
+
+                                    text = text[i_tag_pos + len(tag_pos.group()):]
+                                elif (tag_pos and tag_non_pos and i_tag_pos > i_tag_non_pos or
+                                      not tag_pos and tag_non_pos):
+                                    if i == 0 and i_tag_non_pos == 0 and not self.tags_all:
+                                        self.tokens_sentences_paras[0][0].insert(0, '')
+
+                                        self.tags_all.append([tag_non_pos.group()])
+                                        self.tags_pos.append([])
+                                        self.tags_non_pos.append([tag_non_pos.group()])
+                                    else:
+                                        self.split_text(text[:i_tag_non_pos])
+
+                                        self.tags_all[-1].append(tag_non_pos.group())
+                                        self.tags_non_pos[-1].append(tag_non_pos.group())
+
+                                    text = text[i_tag_non_pos + len(tag_non_pos.group()):]
+                                else:
+                                    self.split_text(text)
+
+                                    break
+                else:
+                    for i, line in enumerate(f):
+                        text = line.rstrip()
+
+                        if text:
+                            self.tokens_sentences_paras.append([])
+
+                            # Replace all tags with a whitespace to ensure no words run together
+                            text_no_tags = re.sub(re_tags_all, ' ', text)
+                            text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
+
+                            sentences = wordless_text_processing.wordless_sentence_tokenize(main, text_no_tags,
+                                                                                            lang = self.lang)
+
+                            for sentence in sentences:
+                                self.tokens_sentences_paras[-1].append(sentence.split())
+
+                            # Extract tags
+                            while text:
+                                tag_pos = re.search(re_tags_pos, text)
+                                tag_non_pos = re.search(re_tags_non_pos, text)
+
+                                if tag_pos:
+                                    i_tag_pos = text.index(tag_pos.group())
+
+                                if tag_non_pos:
+                                    i_tag_non_pos = text.index(tag_non_pos.group())
+
+                                if (tag_pos and tag_non_pos and i_tag_pos < i_tag_non_pos or
+                                    tag_pos and not tag_non_pos):
+                                    if i == 0 and i_tag_pos == 0 and not self.tags_all:
+                                        self.tokens_sentences_paras[0][0].insert(0, '')
+
+                                        self.tags_all.append([tag_pos.group()])
+                                        self.tags_pos.append([tag_pos.group()])
+                                        self.tags_non_pos.append([])
+                                    else:
+                                        self.split_text(text[:i_tag_pos])
+
+                                        self.tags_all[-1].append(tag_pos.group())
+                                        self.tags_pos[-1].append(tag_pos.group())
+
+                                    text = text[i_tag_pos + len(tag_pos.group()):]
+                                elif (tag_pos and tag_non_pos and i_tag_pos > i_tag_non_pos or
+                                      not tag_pos and tag_non_pos):
+                                    if i == 0 and i_tag_non_pos == 0 and not self.tags_all:
+                                        self.tokens_sentences_paras[0][0].insert(0, '')
+
+                                        self.tags_all.append([tag_non_pos.group()])
+                                        self.tags_pos.append([])
+                                        self.tags_non_pos.append([tag_non_pos.group()])
+                                    else:
+                                        self.split_text(text[:i_tag_non_pos])
+
+                                        self.tags_all[-1].append(tag_non_pos.group())
+                                        self.tags_non_pos[-1].append(tag_non_pos.group())
+
+                                    text = text[i_tag_non_pos + len(tag_non_pos.group()):]
+                                else:
+                                    self.split_text(text)
+
+                                    break
+
+        # Record paragraph and sentence offsets
+        for tokens_sentences in self.tokens_sentences_paras:
+            self.para_offsets.append(len(self.tokens))
+
+            for tokens in tokens_sentences:
+                self.sentence_offsets.append(len(self.tokens))
+
+                self.tokens.extend(tokens)
 
         if self.text_type[1] == 'tagged_pos':
+            self.tags_non_pos = [[] for i in range(len(self.tokens))]
             self.tags_all = copy.deepcopy(self.tags_pos)
         elif self.text_type[1] == 'tagged_non_pos':
+            self.tags_pos = [[] for i in range(len(self.tokens))]
             self.tags_all = copy.deepcopy(self.tags_non_pos)
         elif self.text_type[1] == 'untagged':
             self.tags_all = [[] for i in range(len(self.tokens))]
@@ -256,29 +398,13 @@ class Wordless_Text():
         self.tags_pos = [[tag.strip() for tag in tags] for tags in self.tags_pos]
         self.tags_non_pos = [[tag.strip() for tag in tags] for tags in self.tags_non_pos]
 
-    def tokenize_sentence(self, sentence):
-        tokens = wordless_text_processing.wordless_word_tokenize(self.main, sentence, self.lang)
-
-        self.sentences.append(sentence)
-        self.sentence_offsets.append(len(self.tokens))
-
-        self.tokens_sentences.append(tokens)
-        self.tokens.extend(tokens)
-
-    def split_sentence(self, sentence):
-        tokens = sentence.split()
-
-        self.sentences.append(sentence)
-        self.sentence_offsets.append(len(self.tokens))
-
-        self.tokens_sentences.append(tokens)
-        self.tokens.extend(tokens)
-
     def tokenize_text(self, text):
         if text:
-            tokens = wordless_text_processing.wordless_word_tokenize(self.main, text, self.lang)
+            tokens_sentences = wordless_text_processing.wordless_word_tokenize(self.main, text,
+                                                                               lang = self.lang,
+                                                                               keep_sentences = False)
 
-            for i in range(len(tokens)):
+            for i in range(len([token for tokens in tokens_sentences for token in tokens])):
                 self.tags_all.append([])
                 self.tags_pos.append([])
                 self.tags_non_pos.append([])

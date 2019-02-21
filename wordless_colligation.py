@@ -647,8 +647,11 @@ def generate_collocates(main, files):
         if file['text_type'][1] not in ['tagged_pos', 'tagged_both']:
             tokens_tagged = []
 
-            for tokens in text.tokens_sentences:
-                tokens_tagged.extend(wordless_text_processing.wordless_pos_tag(main, tokens, text.lang))
+            wordless_text_utils.check_pos_taggers(main, file['lang'])
+
+            for tokens_sentences in text.tokens_sentences_paras:
+                for tokens in tokens_sentences:
+                    tokens_tagged.extend(wordless_text_processing.wordless_pos_tag(main, tokens, text.lang))
 
             text.tags_pos = [[(f'_{tag}' if tag else '')] for _, tag in tokens_tagged]
 
@@ -658,9 +661,9 @@ def generate_collocates(main, files):
 
         # Modity text types
         if file['text_type'][1] == 'untagged':
-            text.text_type[1] = 'tagged_pos'
+            text.text_type = (text.text_type[0], 'tagged_pos')
         elif file['text_type'][1] == 'tagged_non_pos':
-            text.text_type[1] = 'tagged_both'
+            text.text_type = (text.text_type[0], 'tagged_both')
 
         tokens = wordless_token_processing.wordless_process_tokens_colligation(text,
                                                                                token_settings = settings['token_settings'])
@@ -752,7 +755,7 @@ def generate_collocates(main, files):
     if len(files) > 1:
         collocates_freqs_total = {}
 
-        text_total = wordless_text.Wordless_Text(main, files[0])
+        text_total = wordless_text.Wordless_Text_Blank()
         text_total.tokens = [token for text in texts for token in text.tokens]
 
         texts.append(text_total)

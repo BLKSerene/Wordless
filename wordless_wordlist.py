@@ -383,8 +383,6 @@ def generate_wordlists(main, files):
 
     # Frequency
     for file in files:
-        wordless_text_processing.check_spacy_models(main, file['lang'])
-
         text = wordless_text.Wordless_Text(main, file)
 
         tokens = wordless_token_processing.wordless_process_tokens_wordlist(text,
@@ -395,7 +393,7 @@ def generate_wordlists(main, files):
 
     # Total
     if len(files) > 1:
-        text_total = wordless_text.Wordless_Text(main, files[0])
+        text_total = wordless_text.Wordless_Text_Blank()
         text_total.tokens = [token for text in texts for token in text.tokens]
 
         texts.append(text_total)
