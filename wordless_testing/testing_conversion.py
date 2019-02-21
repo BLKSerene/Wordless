@@ -120,12 +120,12 @@ testing_to_text_type_code('Tokenized / Tagged (Non-POS)')
 testing_to_text_type_code('Tokenized / Tagged (Both)')
 
 print('---------- Text Type Code -> Text Type Text ----------')
-testing_to_text_type_text(['untokenized', 'untagged'])
-testing_to_text_type_text(['untokenized', 'tagged_non_pos'])
-testing_to_text_type_text(['tokenized', 'untagged'])
-testing_to_text_type_text(['tokenized', 'tagged_pos'])
-testing_to_text_type_text(['tokenized', 'tagged_non_pos'])
-testing_to_text_type_text(['tokenized', 'tagged_both'])
+testing_to_text_type_text(('untokenized', 'untagged'))
+testing_to_text_type_text(('untokenized', 'tagged_non_pos'))
+testing_to_text_type_text(('tokenized', 'untagged'))
+testing_to_text_type_text(('tokenized', 'tagged_pos'))
+testing_to_text_type_text(('tokenized', 'tagged_non_pos'))
+testing_to_text_type_text(('tokenized', 'tagged_both'))
 
 print('---------- Encoding Text -> Encoding Code ----------')
 
