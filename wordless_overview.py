@@ -9,7 +9,9 @@
 # All other rights reserved.
 #
 
+import collections
 import copy
+import math
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -263,11 +265,14 @@ def generate_table(main, table):
     settings = main.settings_custom['overview']
 
     files = main.wordless_files.get_selected_files()
+    len_files = len(files)
 
     if wordless_checking_file.check_files_on_loading(main, files):
         table.clear_table()
 
         table.settings = copy.deepcopy(main.settings_custom)
+
+        base_sttr = settings['generation_settings']['base_sttr']
 
         table.blockSignals(True)
         table.setUpdatesEnabled(False)
@@ -275,55 +280,38 @@ def generate_table(main, table):
         for i, file in enumerate(files):
             table.insert_col(table.find_col(main.tr('Total')), file['name'], breakdown = True)
 
-            text = wordless_text.Wordless_Text(main, file)
+            text = wordless_text.Wordless_Text(main, file, tokens_only = False)
             text.tokens = wordless_token_processing.wordless_process_tokens_overview(text,
                                                                                      token_settings = settings['token_settings'])
 
             texts.append(text)
 
         if len(files) > 1:
-            text_total = wordless_text.Wordless_Text(main, files[0])
-            text_total.paras = [para for text in texts for para in text.paras]
-            text_total.sentences = [sentence for text in texts for sentence in text.sentences]
+            text_total = wordless_text.Wordless_Text_Blank()
+            text_total.para_offsets = [offset for text in texts for offset in text.para_offsets]
+            text_total.sentence_offsets = [offset for text in texts for offset in text.sentence_offsets]
             text_total.tokens = [token for text in texts for token in text.tokens]
 
             texts.append(text_total)
         else:
             texts.append(texts[0])
 
-        base_sttr = settings['generation_settings']['base_sttr']
-
         for i, text in enumerate(texts):
-            count_chars = 0
-            ttrs = []
-
-            count_paras = len(text.paras)
-            count_sentences = len(text.sentences)
-
-            len_tokens = {len_token + 1: 0
-                          for len_token in range(max([len(token) for token in set(text.tokens)]))}
-
-            for token in text.tokens:
-                count_chars += len(token)
-
-                len_tokens[len(token)] += 1
-
-            len_tokens_files.append(len_tokens)
-
+            count_paras = len(text.para_offsets)
+            count_sentences = len(text.sentence_offsets)
             count_tokens = len(text.tokens)
             count_types = len(set(text.tokens))
 
+            len_tokens = map(len, text.tokens)
+            len_tokens_files.append(collections.Counter(len_tokens))
+
+            count_chars = sum(len_tokens)
             ttr = count_types / count_tokens
 
-            if count_tokens <= base_sttr:
-                sttr = ttr
-            else:
-                for j in range(count_tokens // base_sttr):
-                    tokens_chunk = text.tokens[base_sttr * j : base_sttr * (j + 1)]
+            token_sections = wordless_text_utils.to_sections(text.tokens, math.ceil(count_tokens / base_sttr))
 
-                    ttrs.append(len(set(tokens_chunk)) / len(tokens_chunk))
-
-                sttr = sum(ttrs) / len(ttrs)
+            ttrs = [len(set(token_section)) / len(token_section) for token_section in token_sections]
+            sttr = sum(ttrs) / len(ttrs)
 
             table.set_item_num_cumulative(0, i, count_paras)
             table.set_item_num_cumulative(1, i, count_sentences)
@@ -333,12 +321,13 @@ def generate_table(main, table):
             table.set_item_num_float(5, i, ttr)
             table.set_item_num_float(6, i, sttr)
             table.set_item_num_float(7, i, count_sentences / count_paras)
-            table.set_item_num_float(8, i, count_tokens/ count_paras)
-            table.set_item_num_float(9, i, count_tokens/ count_sentences)
+            table.set_item_num_float(8, i, count_tokens / count_paras)
+            table.set_item_num_float(9, i, count_tokens / count_sentences)
             table.set_item_num_float(10, i, count_chars / count_tokens)
 
         # Count of n-length Tokens
         len_tokens_total = wordless_misc.merge_dicts(len_tokens_files)
+        len_tokens_max = max(len_tokens_total)
 
         if settings['token_settings']['use_tags']:
             table.setVerticalHeaderLabels([
@@ -355,19 +344,22 @@ def generate_table(main, table):
                 main.tr('Average Tag Length (in Character)')
             ])
 
-            for i in range(max(len_tokens_total)):
+            for i in range(len_tokens_max):
                 table.insert_row(table.rowCount(),
                                  main.tr(f'Count of {i + 1}-length Tags'),
                                  num = True, pct = True, cumulative = True)
         else:
-            for i in range(max(len_tokens_total)):
+            for i in range(len_tokens_max):
+
                 table.insert_row(table.rowCount(),
                                  main.tr(f'Count of {i + 1}-length Tokens'),
                                  num = True, pct = True, cumulative = True)
 
-        for i, (len_token, freqs) in enumerate(len_tokens_total.items()):
+        for i in range(len_tokens_max):
+            freqs = len_tokens_total.get(i + 1, [0] * (len_files + 1))
+
             for j, freq in enumerate(freqs):
-                table.set_item_num_cumulative(table.rowCount() - max(len_tokens_total) + i, j, freq)
+                table.set_item_num_cumulative(table.rowCount() - len_tokens_max + i, j, freq)
 
         table.blockSignals(False)
         table.setUpdatesEnabled(True)

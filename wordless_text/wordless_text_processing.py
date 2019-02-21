@@ -10,6 +10,7 @@
 #
 
 import importlib
+import itertools
 import json
 import re
 
@@ -17,7 +18,6 @@ import jieba
 import jieba.posseg
 import nltk
 import nltk.tokenize.nist
-import pybo
 import pymorphy2
 import pythainlp
 import sacremoses
@@ -25,37 +25,12 @@ import spacy
 import underthesea
 
 from wordless_checking import wordless_checking_unicode
-from wordless_text import wordless_matching, wordless_text
+from wordless_text import wordless_matching, wordless_text, wordless_text_utils
 from wordless_utils import wordless_conversion
-
-def check_spacy_models(main, lang):
-    if f'spacy_nlp_{lang}' not in main.__dict__:
-        # Dutch
-        if lang == 'nld':
-            main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('nl_core_news_sm')
-        # English
-        elif lang == 'eng':
-            main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('en_core_web_sm')
-        # French
-        elif lang == 'fra':
-            main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('fr_core_news_sm')
-        # German
-        elif lang == 'deu':
-            main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('de_core_news_sm')
-        # Italian
-        elif lang == 'ita':
-            main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('it_core_news_sm')
-        # Portuguese
-        elif lang == 'por':
-            main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('pt_core_news_sm')
-        # Spanish
-        elif lang == 'spa':
-            main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('es_core_news_sm')
 
 def wordless_sentence_tokenize(main, text, lang,
                                sentence_tokenizer = 'default'):
     sentences = []
-    boundary_start = 0
 
     if lang not in main.settings_global['sentence_tokenizers']:
         lang = 'other'
@@ -74,15 +49,11 @@ def wordless_sentence_tokenize(main, text, lang,
         else:
             lang_text = wordless_conversion.to_lang_text(main, lang).lower()
 
-        for line in text.splitlines():
-            sentences.extend(nltk.sent_tokenize(line, language = lang_text))
+        sentences = nltk.sent_tokenize(text, language = lang_text)
     elif 'spaCy' in sentence_tokenizer:
-        check_spacy_models(main, lang)
-
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-        sentences.extend([sentence.text for sentence in nlp(text).sents])
-
+        sentences = [sentence.text for sentence in nlp(text).sents]
     # Chinese & Japanese
     elif (sentence_tokenizer == main.tr('Wordless - Chinese Sentence Tokenizer') or
           sentence_tokenizer == main.tr('Wordless - Japanese Sentence Tokenizer')):
@@ -101,47 +72,21 @@ def wordless_sentence_tokenize(main, text, lang,
 
             if sentence_start <= len(line):
                 sentences.append(line[sentence_start:])
-
     # Thai
     elif sentence_tokenizer == 'PyThaiNLP - Thai Sentence Tokenizer':
-        for line in text.splitlines():
-            sentences.extend(pythainlp.tokenize.sent_tokenize(line))
-
+        sentences = pythainlp.tokenize.sent_tokenize(text)
     # Vietnamese
     elif sentence_tokenizer == 'Underthesea - Vietnamese Sentence Tokenizer':
-        for line in text.splitlines():
-            sentences.extend(underthesea.sent_tokenize(line))
+        sentences = underthesea.sent_tokenize(text)
 
-    # Strip whitespace characters
-    sentences = [sentence.strip() for sentence in sentences]
-
-    # Record sentence boundaries
-    text = text.replace('\n', '')
-
-    for i, sentence in enumerate(sentences):
-        boundary = re.search(r'^\s+', text[boundary_start + len(sentence):])
-
-        if boundary == None:
-            boundary = ''
-        else:
-            boundary = boundary.group()
-
-        sentences[i] = wordless_text.Wordless_Token(sentences[i], boundary = boundary)
-
-        boundary_start += len(sentence) + len(boundary)
+    sentences = wordless_text_utils.record_boundary_sentences(sentences, text)
 
     return sentences
 
-def wordless_word_tokenize(main, sentences, lang,
-                           word_tokenizer = 'default'):
-    token_groups = []
-
-    if type(sentences) != list:
-        sentences = [sentences]
-
-    for i, sentence in enumerate(sentences):
-        if type(sentence) != wordless_text.Wordless_Token:
-            sentences[i] = wordless_text.Wordless_Token(sentence)
+def wordless_word_tokenize(main, text, lang,
+                           word_tokenizer = 'default',
+                           keep_sentences = False):
+    tokens_sentences = []
 
     if lang not in main.settings_global['word_tokenizers']:
         lang = 'other'
@@ -150,189 +95,215 @@ def wordless_word_tokenize(main, sentences, lang,
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
     # English & Other Languages
-    if word_tokenizer == main.tr('NLTK - Penn Treebank Tokenizer'):
-        treebank_tokenizer = nltk.TreebankWordTokenizer()
+    if 'NLTK' in word_tokenizer:
+        sentences = wordless_sentence_tokenize(main, text, lang,
+                                               sentence_tokenizer = main.tr('NLTK - Punkt Sentence Tokenizer'))
 
-        for sentence in sentences:
-            token_groups.append(treebank_tokenizer.tokenize(sentence))
-    elif word_tokenizer == main.tr('NLTK - Twitter Tokenizer'):
-        tweet_tokenizer = nltk.TweetTokenizer()
-
-        for sentence in sentences:
-            token_groups.append(tweet_tokenizer.tokenize(sentence))
-    elif word_tokenizer == main.tr('NLTK - NIST Tokenizer'):
-        nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
-
-        for sentence in sentences:
-            token_groups.append(nist_tokenizer.tokenize(sentence))
-    elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
-        toktok_tokenizer = nltk.ToktokTokenizer()
-
-        for sentence in sentences:
-            token_groups.append(toktok_tokenizer.tokenize(sentence))
-    elif word_tokenizer == main.tr('SacreMoses - Moses Tokenizer'):
-        moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
-
-        for sentence in sentences:
-            token_groups.append(moses_tokenizer.tokenize(sentence))
-    elif word_tokenizer == main.tr('SacreMoses - Penn Treebank Tokenizer'):
-        moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
-
-        for sentence in sentences:
-            token_groups.append(moses_tokenizer.penn_tokenize(sentence))
-    elif 'spaCy' in word_tokenizer:
-        # Languages with models
-        if lang in ['nld', 'eng', 'fra', 'deu', 'ita', 'por', 'spa', 'other']:
-            # Other Languages
-            if lang == 'other':
-                lang = 'eng'
-
-            check_spacy_models(main, lang)
-
-            nlp = main.__dict__[f'spacy_nlp_{lang}']
+        if word_tokenizer == main.tr('NLTK - Penn Treebank Tokenizer'):
+            treebank_tokenizer = nltk.TreebankWordTokenizer()
 
             for sentence in sentences:
-                token_groups.append([token.text for token in nlp(str(sentence))])
+                tokens_sentences.append(treebank_tokenizer.tokenize(sentence))
+        elif word_tokenizer == main.tr('NLTK - Twitter Tokenizer'):
+            tweet_tokenizer = nltk.TweetTokenizer()
+
+            for sentence in sentences:
+                tokens_sentences.append(tweet_tokenizer.tokenize(sentence))
+        elif word_tokenizer == main.tr('NLTK - NIST Tokenizer'):
+            nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
+
+            for sentence in sentences:
+                tokens_sentences.append(nist_tokenizer.tokenize(sentence))
+        elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
+            toktok_tokenizer = nltk.ToktokTokenizer()
+
+            for sentence in sentences:
+                tokens_sentences.append(toktok_tokenizer.tokenize(sentence))
+
+        if not keep_sentences:
+            tokens_sentences = [itertools.chain.from_iterable(tokens_sentences)]
+    elif 'SacreMoses' in word_tokenizer:
+        if keep_sentences:
+            sentences = wordless_sentence_tokenize(main, text, lang)
+        else:
+            sentences = [text]
+
+        if word_tokenizer == main.tr('SacreMoses - Moses Tokenizer'):
+            moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
+
+            for sentence in sentences:
+                tokens_sentences.append(moses_tokenizer.tokenize(sentence))
+        elif word_tokenizer == main.tr('SacreMoses - Penn Treebank Tokenizer'):
+            moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
+
+            for sentence in sentences:
+                tokens_sentences.append(moses_tokenizer.penn_tokenize(sentence))
+    elif 'spaCy' in word_tokenizer:
+        # Other Languages
+        if lang == 'other':
+            lang = 'eng'
+
+        # Languages with models
+        if lang in ['nld', 'eng', 'fra', 'deu', 'ita', 'por', 'spa']:
+            nlp = main.__dict__[f'spacy_nlp_{lang}']
         # Languages without models
         else:
             nlp = spacy.blank(wordless_conversion.to_iso_639_1(main, lang))
 
-            for sentence in sentences:
-                token_groups.append([token.text for token in nlp(str(sentence))])
+        doc = nlp(text)
 
-    # Chinese
-    elif word_tokenizer == main.tr('jieba - Chinese Word Tokenizer'):
-        for sentence in sentences:
-            token_groups.append(jieba.cut(sentence))
+        if keep_sentences:
+            for sentence in doc.sents:
+                tokens_sentences.append([token.text for token in sentence.as_doc()])
+        else:
+            tokens_sentences.append([token.text for token in doc])
 
     # Chinese & Japanese
-    elif (word_tokenizer == main.tr('Wordless - Chinese Character Tokenizer') or
-          word_tokenizer == main.tr('Wordless - Japanese Kanji Tokenizer')):
-        for sentence in sentences:
-            tokens = []
-            non_han_start = 0
+    elif ('jieba' in word_tokenizer or
+          'nagisa' in word_tokenizer or
+          'Wordless' in word_tokenizer):
+        if keep_sentences:
+            sentences = wordless_sentence_tokenize(main, text, lang = lang)
+        else:
+            sentences = [text]
 
-            for i, char in enumerate(sentence):
-                if i >= non_han_start:
-                    if wordless_checking_unicode.is_han(char):
-                        tokens.append(char)
+        # Chinese
+        if word_tokenizer == main.tr('jieba - Chinese Word Tokenizer'):
+            for sentence in sentences:
+                tokens_sentences.append(jieba.cut(sentence))
+        elif word_tokenizer == main.tr('Wordless - Chinese Character Tokenizer'):
+            for sentence in sentences:
+                tokens = []
+                non_han_start = 0
 
-                        non_han_start += 1
-                    else:
-                        # English
-                        if wordless_checking_unicode.is_eng(char):
-                            for j, char in enumerate(sentence[i:]):
-                                if i + j + 1 == len(sentence) or not wordless_checking_unicode.is_eng(sentence[i + j + 1]):
-                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
-                                                                         lang = 'eng'))
+                for i, char in enumerate(sentence):
+                    if i >= non_han_start:
+                        if wordless_checking_unicode.is_han(char):
+                            tokens.append(char)
 
-                                    non_han_start = i + j + 1
-
-                                    break
-                        # Japanese Kana
-                        elif wordless_checking_unicode.is_kana(char):
-                            for j, char in enumerate(sentence[i:]):
-                                if i + j + 1 == len(sentence) or not wordless_checking_unicode.is_kana(sentence[i + j + 1]):
-                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
-                                                                         lang = 'jpn',
-                                                                         word_tokenizer = main.tr('nagisa - Japanese Word Tokenizer')))
-
-                                    non_han_start = i + j + 1
-
-                                    break
-                        # Thai
-                        elif wordless_checking_unicode.is_thai(char):
-                            for j, char in enumerate(sentence[i:]):
-                                if i + j + 1 == len(sentence) or not wordless_checking_unicode.is_thai(sentence[i + j + 1]):
-                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
-                                                                         lang = 'tha'))
-
-                                    non_han_start = i + j + 1
-
-                                    break
-                        # Other Languages
+                            non_han_start += 1
                         else:
-                            for j, char in enumerate(sentence[i:]):
-                                if i + j + 1 == len(sentence) or wordless_checking_unicode.is_han(sentence[i + j + 1]):
-                                    tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
-                                                                         lang = 'other'))
+                            # English
+                            if wordless_checking_unicode.is_eng(char):
+                                for j, char in enumerate(sentence[i:]):
+                                    if i + j + 1 == len(sentence) or not wordless_checking_unicode.is_eng(sentence[i + j + 1]):
+                                        tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
+                                                                             lang = 'eng'))
 
-                                    non_han_start = i + j + 1
+                                        non_han_start = i + j + 1
 
-                                    break
+                                        break
+                            # Other Languages
+                            else:
+                                for j, char in enumerate(sentence[i:]):
+                                    if i + j + 1 == len(sentence) or wordless_checking_unicode.is_han(sentence[i + j + 1]):
+                                        tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
+                                                                             lang = 'other'))
 
-            token_groups.append(tokens)
+                                        non_han_start = i + j + 1
 
-    # Japanese
-    elif word_tokenizer == main.tr('nagisa - Japanese Word Tokenizer'):
-        import nagisa
+                                        break
 
-        for sentence in sentences:
-            token_groups.append(nagisa.tagging(str(sentence)).words)
+                tokens_sentences.extend(tokens)
+        # Japanese
+        elif word_tokenizer == main.tr('nagisa - Japanese Word Tokenizer'):
+            import nagisa
 
+            for sentence in sentences:
+                tokens_sentences.append(nagisa.tagging(str(sentence)).words)
+        elif word_tokenizer == main.tr('Wordless - Japanese Kanji Tokenizer'):
+            for sentence in sentences:
+                tokens = []
+                non_han_start = 0
+
+                for i, char in enumerate(sentence):
+                    if i >= non_han_start:
+                        if wordless_checking_unicode.is_han(char):
+                            tokens.append(char)
+
+                            non_han_start += 1
+                        else:
+                            # Japanese Kana
+                            if wordless_checking_unicode.is_kana(char):
+                                for j, char in enumerate(sentence[i:]):
+                                    if i + j + 1 == len(sentence) or not wordless_checking_unicode.is_kana(sentence[i + j + 1]):
+                                        tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
+                                                                             lang = 'jpn'))
+
+                                        non_han_start = i + j + 1
+
+                                        break
+                            # English
+                            elif wordless_checking_unicode.is_eng(char):
+                                for j, char in enumerate(sentence[i:]):
+                                    if i + j + 1 == len(sentence) or not wordless_checking_unicode.is_eng(sentence[i + j + 1]):
+                                        tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
+                                                                             lang = 'eng'))
+
+                                        non_han_start = i + j + 1
+
+                                        break
+                            # Other Languages
+                            else:
+                                for j, char in enumerate(sentence[i:]):
+                                    if i + j + 1 == len(sentence) or wordless_checking_unicode.is_han(sentence[i + j + 1]):
+                                        tokens.extend(wordless_word_tokenize(main, sentence[non_han_start : i + j + 1],
+                                                                             lang = 'other'))
+
+                                        non_han_start = i + j + 1
+
+                                        break
+
+                tokens_sentences.extend(tokens)
     # Thai
-    elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'):
-        for sentence in sentences:
-            token_groups.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'newmm'))
-    elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm'):
-        for sentence in sentences:
-            token_groups.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'mm'))
-    elif word_tokenizer == main.tr('PyThaiNLP - Longest Matching'):
-        for sentence in sentences:
-            token_groups.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'longest-matching'))
+    elif 'PyThaiNLP' in word_tokenizer:
+        sentences = wordless_sentence_tokenize(main, text, lang = 'tha',
+                                                   sentence_tokenizer = 'PyThaiNLP - Thai Sentence Tokenizer')
 
+        if word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'):
+            for sentence in sentences:
+                tokens_sentences.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'newmm'))
+        elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm'):
+            for sentence in sentences:
+                tokens_sentences.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'mm'))
+        elif word_tokenizer == main.tr('PyThaiNLP - Longest Matching'):
+            for sentence in sentences:
+                tokens_sentences.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'longest-matching'))
     # Tibetan
     elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer'):
-        if 'pybo_bo_tokenizer' not in main.__dict__:
-            main.pybo_bo_tokenizer = pybo.BoTokenizer('POS')
+        if keep_sentences:
+            sentences = wordless_sentence_tokenize(main, text, lang = 'bod')
+        else:
+            sentences = [text]
 
         for sentence in sentences:
-            token_groups.append([token.content for token in main.pybo_bo_tokenizer.tokenize(sentence)])
-
+            tokens_sentences.append([token.content for token in main.pybo_bo_tokenizer.tokenize(sentence)])
     # Vietnamese
     elif word_tokenizer == main.tr('Underthesea - Vietnamese Word Tokenizer'):
+        if keep_sentences:
+            sentences = wordless_sentence_tokenize(main, text, lang = 'vie',
+                                                   sentence_tokenizer = 'Underthesea - Vietnamese Sentence Tokenizer')
+        else:
+            sentences = [text]
+
         for sentence in sentences:
-            token_groups.append(underthesea.word_tokenize(str(sentence)))
-
-    token_groups = [list(tokens) for tokens in token_groups]
-
-    # Remove empty tokens
-    for i, tokens in enumerate(token_groups):
-        token_groups[i] = [token for token in tokens if re.search(r'\S', token)]
-
-    # Record token boundaries
-    if lang in ['zho_cn', 'zho_tw', 'jpn', 'tha']:
-        for sentence, tokens in zip(sentences, token_groups):
-            token_start = 0
-
-            for i, token in enumerate(tokens):
-                if type(token) != wordless_text.Wordless_Token:
-                    boundary = re.search(r'^\s+', sentence[token_start + len(token):])
-
-                    if boundary == None:
-                        boundary = ''
-                    else:
-                        boundary = boundary.group()
-
-                    tokens[i] = wordless_text.Wordless_Token(token, boundary = boundary)
-
-                    token_start += len(token) + len(boundary)
-                else:
-                    token_start += len(token) + len(token.boundary)
-
-            tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = sentence.boundary, sentence_ending = True)
-    else:
-        for sentence, tokens in zip(sentences, token_groups):
-            if tokens:
-                tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = sentence.boundary, sentence_ending = True)
+            tokens_sentences.append(underthesea.word_tokenize(str(sentence)))
 
     # Remove empty tokens and strip whitespace
-    tokens = [token.strip()
-              for tokens in token_groups
-              for token in tokens
-              if not re.search(r'^\s*$', token)]
+    for i, tokens in enumerate(tokens_sentences):
+        tokens_sentences[i] = [token.strip()
+                               for token in tokens
+                               if token.strip()]
 
-    return tokens
+    # Record token boundaries
+    if lang in ['zho_cn', 'zho_tw', 'jpn']:
+        for tokens in tokens_sentences:
+            tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = '', sentence_ending = True)
+    else:
+        for tokens in tokens_sentences:
+            tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = ' ', sentence_ending = True)
+
+    return tokens_sentences
 
 def wordless_word_detokenize(main, tokens, lang,
                              word_detokenizer = 'default'):
@@ -365,16 +336,16 @@ def wordless_word_detokenize(main, tokens, lang,
 
         for sentence in sentences:
             text += moses_detokenizer.detokenize(sentence)
-    # Chinese & Japanese
-    elif (word_detokenizer == main.tr('Wordless - Chinese Word Detokenizer') or
-          word_detokenizer == main.tr('Wordless - Japanese Word Detokenizer')):
+    # Chinese
+    elif word_detokenizer == main.tr('Wordless - Chinese Word Detokenizer'):
         # Settings - > Word Detokenization
         if type(tokens[0]) == str:
             non_cjk_start = 0
 
             for i, token in enumerate(tokens):
                 if i >= non_cjk_start:
-                    if wordless_checking_unicode.has_han(token) or wordless_checking_unicode.has_kana(token):
+                    if (wordless_checking_unicode.has_han(token) or
+                        all(map(str.isnumeric, token))):
                         text += token
 
                         non_cjk_start += 1
@@ -389,12 +360,37 @@ def wordless_word_detokenize(main, tokens, lang,
                                     non_cjk_start = i + j + 1
 
                                     break
-                        # Thai
-                        elif wordless_checking_unicode.has_thai(token):
+                        # Other Languages
+                        else:
                             for j, token in enumerate(tokens[i:]):
-                                if i + j + 1 == len(tokens) or not wordless_checking_unicode.has_thai(tokens[i + j + 1]):
+                                if (i + j + 1 == len(tokens) or
+                                    wordless_checking_unicode.has_han(tokens[i + j + 1])):
                                     text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
-                                                                     lang = 'tha')
+                                                                     lang = 'other')
+
+                                    non_cjk_start = i + j + 1
+
+                                    break
+    elif word_detokenizer == main.tr('Wordless - Japanese Word Detokenizer'):
+        # Settings - > Word Detokenization
+        if type(tokens[0]) == str:
+            non_cjk_start = 0
+
+            for i, token in enumerate(tokens):
+                if i >= non_cjk_start:
+                    if (wordless_checking_unicode.has_han(token) or
+                        wordless_checking_unicode.has_kana(token) or
+                        all(map(str.isnumeric, token))):
+                        text += token
+
+                        non_cjk_start += 1
+                    else:
+                        # English
+                        if wordless_checking_unicode.is_eng_token(token):
+                            for j, token in enumerate(tokens[i:]):
+                                if i + j + 1 == len(tokens) or not wordless_checking_unicode.is_eng_token(tokens[i + j + 1]):
+                                    text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
+                                                                     lang = 'eng')
 
                                     non_cjk_start = i + j + 1
 
@@ -411,16 +407,17 @@ def wordless_word_detokenize(main, tokens, lang,
                                     non_cjk_start = i + j + 1
 
                                     break
-        else:
-            text = ''.join([token + token.boundary for token in tokens])
-
     # Thai
     elif word_detokenizer == main.tr('Wordless - Thai Word Detokenizer'):
-        # Settings -> Detokenization
+        # Settings -> Detokenization -> Preview
         if type(tokens[0]) == str:
             text = ''.join(tokens)
         else:
-            text = ''.join([token + token.boundary for token in tokens])
+            for token in tokens:
+                if type(token) == wordless_text.Wordless_Token:
+                    text += token.boundary
+                else:
+                    text += token
 
     return re.sub(r'\s{2,}', ' ', text)
 
@@ -428,6 +425,8 @@ def wordless_pos_tag(main, tokens, lang,
                      pos_tagger = 'default',
                      tagset = 'custom'):
     tokens_tagged = []
+
+    tokens = [str(token) for token in tokens]
 
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang]
@@ -438,11 +437,12 @@ def wordless_pos_tag(main, tokens, lang,
 
     # Dutch, English, French, German, Italian, Portuguese and Spanish
     elif 'spaCy' in pos_tagger:
-        check_spacy_models(main, lang)
-
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-        tokens_tagged = [(token.text, token.tag_) for token in nlp(' '.join(tokens))]
+        doc = spacy.tokens.Doc(nlp.vocab, words = tokens)
+        nlp.tagger(doc)
+
+        tokens_tagged = [(token.text, token.tag_) for token in doc]
 
     # English & Russian
     elif pos_tagger == main.tr('NLTK - Perceptron POS Tagger'):
@@ -474,9 +474,6 @@ def wordless_pos_tag(main, tokens, lang,
 
     # Tibetan
     elif pos_tagger == main.tr('pybo - Tibetan POS Tagger'):
-        if 'pybo_bo_tokenizer' not in main.__dict__:
-            main.pybo_bo_tokenizer = pybo.BoTokenizer('POS')
-
         tokens_tagged = [(token.content, token.pos) for token in main.pybo_bo_tokenizer.tokenize(' '.join(tokens))]
 
     # Vietnamese
@@ -496,7 +493,7 @@ def wordless_pos_tag(main, tokens, lang,
     # Strip empty tokens and strip whitespace in tokens
     tokens_tagged = [(token.strip(), tag)
                      for token, tag in tokens_tagged
-                     if not re.search(r'^\s*$', token)]
+                     if token.strip()]
 
     # Check if the first token is empty
     if tokens[0] == '':
@@ -511,13 +508,17 @@ def wordless_lemmatize(main, tokens, lang,
     mapping_lemmas = {}
     lemmas = []
 
+    tokens = tokens.copy()
+
     re_tags_all = wordless_matching.get_re_tags(main, tags = 'all')
     re_tags_pos = wordless_matching.get_re_tags(main, tags = 'pos')
     re_tags_non_pos = wordless_matching.get_re_tags(main, tags = 'non_pos')
 
     # Record empty tokens
-    for i, token in enumerate(tokens):
-        if re.search(r'^\s*$', token):
+    for i, token in reversed(list(enumerate(tokens))):
+        if not token.strip():
+            tokens.remove(token)
+
             empty_offsets.append(i)
 
     if text_type[1] == 'tagged_both':
@@ -538,15 +539,11 @@ def wordless_lemmatize(main, tokens, lang,
 
         # English & Other Languages
         if 'spaCy' in lemmatizer:
-            check_spacy_models(main, lang)
-
             nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-            for token in tokens:
-                doc = nlp(str(token))
+            doc = nlp(' '.join([str(token) for token in tokens]))
 
-                if doc:
-                    lemmas.append(doc[0].lemma_)
+            lemmas = [token.lemma_ for token in doc]
         # English
         elif lemmatizer == main.tr('NLTK - WordNet Lemmatizer'):
             word_net_lemmatizer = nltk.WordNetLemmatizer()
@@ -587,15 +584,11 @@ def wordless_lemmatize(main, tokens, lang,
                 lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
         # Tibetan
         elif lemmatizer == main.tr('pybo - Tibetan Lemmatizer'):
-            if 'pybo_bo_tokenizer' not in main.__dict__:
-                main.pybo_bo_tokenizer = pybo.BoTokenizer('POS')
-
-            for token in tokens:
-                for token in main.pybo_bo_tokenizer.tokenize(token):
-                    if token.lemma:
-                        lemmas.append(token.lemma)
-                    else:
-                        lemmas.append(token.content)
+            for token in main.pybo_bo_tokenizer.tokenize(' '.join(tokens)):
+                if token.lemma:
+                    lemmas.append(token.lemma)
+                else:
+                    lemmas.append(token.content)
         # Other Languages
         elif 'Lemmatization Lists' in lemmatizer:
             lang = wordless_conversion.to_iso_639_1(main, lang)

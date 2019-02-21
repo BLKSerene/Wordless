@@ -88,15 +88,16 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
 
         self.table = table
         self.cols_sorting = [
-            self.tr('File'),
-            self.tr('Token No.')
+            self.tr('Node'),
+            self.tr('Token No.'),
+            self.tr('File')
         ]
 
         self.button_add = QPushButton(self.tr('Add'), self)
         self.button_insert = QPushButton(self.tr('Insert'), self)
         self.button_remove = QPushButton(self.tr('Remove'), self)
         self.button_clear = QPushButton(self.tr('Clear'), self)
-        self.button_sort_results = QPushButton(self.tr('Sort Results in Table'), self)
+        self.button_sort_results = QPushButton(self.tr('Sort Results'), self)
     
         self.button_add.clicked.connect(self.add_row)
         self.button_insert.clicked.connect(self.insert_row)
@@ -175,9 +176,9 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
             if sorting_col in [sorting_rule[0]
                                for sorting_rule in self.main.settings_default['concordancer']['sorting_settings']['sorting_rules']]:
                 self.cols_sorting = [
-                    self.tr('File'),
+                    self.tr('Node'),
                     self.tr('Token No.'),
-                    self.tr('Node')
+                    self.tr('File')
                 ]
 
                 if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
@@ -838,13 +839,13 @@ def generate_table(main, table):
                 number_lines = 0
                 number_lines_nth = 0
 
-                text = wordless_text.Wordless_Text(main, file)
+                text = wordless_text.Wordless_Text(main, file, tokens_only = False)
 
                 tokens = wordless_token_processing.wordless_process_tokens_concordancer(text,
                                                                                         token_settings = settings['token_settings'])
 
-                len_paras = len(text.paras)
-                len_sentences = len(text.sentences)
+                len_paras = len(text.para_offsets)
+                len_sentences = len(text.sentence_offsets)
                 len_tokens = len(text.tokens)
 
                 search_terms = wordless_matching.match_search_terms(main, tokens,

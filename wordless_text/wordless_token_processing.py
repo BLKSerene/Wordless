@@ -194,18 +194,19 @@ def wordless_process_tokens_concordancer(text, token_settings):
         text.sentence_offsets = []
         text.tokens = []
 
-        for para in text.paras:
+        for tokens_sentences in text.tokens_sentences_paras:
             text.para_offsets.append(len(text.tokens))
-
-            for sentence, sentence_tokens in zip(text.sentences, text.tokens_sentences):
+            
+            for tokens_sentence in tokens_sentences:
                 # Check if the sentence contains punctuation marks only
-                if not all(map(wordless_checking_token.is_token_punc, sentence_tokens)):
+                if not all(map(wordless_checking_token.is_token_punc, tokens_sentence)):
                     text.sentence_offsets.append(len(text.tokens))
 
-                    for token in sentence_tokens:
+                    for token in tokens_sentence:
                         if text.tokens:
                             if wordless_checking_token.is_token_punc(token):
-                                text.tokens[-1] += token
+                                text.tokens[-1] = wordless_text_processing.wordless_word_detokenize(main, [text.tokens[-1], token],
+                                                                                                    lang = text.lang)
                             else:
                                 text.tokens.append(token)
                         else:

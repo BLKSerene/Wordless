@@ -722,7 +722,7 @@ def generate_collocates(main, files):
     if len(files) > 1:
         collocates_freqs_total = {}
 
-        text_total = wordless_text.Wordless_Text(main, files[0])
+        text_total = wordless_text.Wordless_Text_Blank()
         text_total.tokens = [token for text in texts for token in text.tokens]
 
         texts.append(text_total)

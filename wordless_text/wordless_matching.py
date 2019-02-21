@@ -15,7 +15,7 @@ import re
 
 import nltk
 
-from wordless_text import wordless_text_processing
+from wordless_text import wordless_text_processing, wordless_text_utils
 
 def get_re_tags(main, tags):
     re_tags = []
@@ -170,6 +170,8 @@ def match_ngrams(main, search_terms, tokens,
                         tokens_matched[search_term_token].add(token)
 
         if settings['match_inflected_forms']:
+            wordless_text_utils.check_lemmatizers(main, lang)
+
             lemmas_searched = wordless_text_processing.wordless_lemmatize(main, tokens_searched, lang, text_type)
             lemmas_matched = wordless_text_processing.wordless_lemmatize(main, list(tokens_matched), lang, text_type)
 
