@@ -12,8 +12,8 @@
 import os
 import re
 
+from wordless_dialogs import wordless_message_box
 from wordless_utils import wordless_detection
-from wordless_widgets import wordless_message_box
 
 def check_files_missing(main, file_paths):
     files_missing = []

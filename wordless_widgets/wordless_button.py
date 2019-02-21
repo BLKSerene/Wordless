@@ -13,8 +13,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_dialogs import wordless_message_box
 from wordless_utils import wordless_misc
-from wordless_widgets import wordless_message_box
 
 class Wordless_Button(QPushButton):
     def __init__(self, text, parent):

@@ -12,12 +12,10 @@
 __all__ = [
 	'wordless_box',
     'wordless_button',
-    'wordless_dialog',
     'wordless_label',
     'wordless_layout',
     'wordless_list',
     'wordless_message',
-    'wordless_message_box',
     'wordless_table',
     'wordless_tree',
     'wordless_widgets'

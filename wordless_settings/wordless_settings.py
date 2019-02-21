@@ -66,6 +66,7 @@ class Wordless_Settings(QDialog):
 
         self.tree_settings = wordless_tree.Wordless_Tree(self)
 
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('General')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Import')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Export')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Auto-detection')]))
@@ -76,18 +77,16 @@ class Wordless_Settings(QDialog):
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Word Detokenization')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('POS Tagging')]))
-        self.tree_settings.topLevelItem(8).addChild(QTreeWidgetItem([self.tr('Tagsets')]))
+        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Tagsets')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Lemmatization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Stop Words')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Measures')]))
-        self.tree_settings.topLevelItem(11).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
-        self.tree_settings.topLevelItem(11).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
-        self.tree_settings.topLevelItem(11).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
-        self.tree_settings.topLevelItem(11).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
-
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Updates')]))
+        self.tree_settings.topLevelItem(12).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
+        self.tree_settings.topLevelItem(12).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
+        self.tree_settings.topLevelItem(12).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
+        self.tree_settings.topLevelItem(12).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
 
         self.tree_settings.itemSelectionChanged.connect(self.selection_changed)
 
@@ -95,6 +94,7 @@ class Wordless_Settings(QDialog):
 
         self.stacked_widget_settings = QStackedWidget(self)
 
+        self.init_settings_general()
         self.init_settings_import()
         self.init_settings_export()
         self.init_settings_auto_detection()
@@ -115,8 +115,7 @@ class Wordless_Settings(QDialog):
         self.init_settings_statistical_significance()
         self.init_settings_effect_size()
 
-        self.init_settings_updates()
-
+        self.stacked_widget_settings.addWidget(self.settings_general)
         self.stacked_widget_settings.addWidget(self.settings_import)
         self.stacked_widget_settings.addWidget(self.settings_export)
         self.stacked_widget_settings.addWidget(self.settings_auto_detection)
@@ -136,8 +135,6 @@ class Wordless_Settings(QDialog):
         self.stacked_widget_settings.addWidget(self.settings_adjusted_freq)
         self.stacked_widget_settings.addWidget(self.settings_statistical_significance)
         self.stacked_widget_settings.addWidget(self.settings_effect_size)
-
-        self.stacked_widget_settings.addWidget(self.settings_updates)
 
         self.scroll_area_settings.setWidget(self.stacked_widget_settings)
 
@@ -177,47 +174,46 @@ class Wordless_Settings(QDialog):
                 item_selected = self.tree_settings.selectedItems()[0]
                 item_selected_text = item_selected.text(0)
 
-                if item_selected_text == self.tr('Import'):
+                if item_selected_text == self.tr('General'):
                     self.stacked_widget_settings.setCurrentIndex(0)
-                elif item_selected_text == self.tr('Export'):
+                elif item_selected_text == self.tr('Import'):
                     self.stacked_widget_settings.setCurrentIndex(1)
-                elif item_selected_text == self.tr('Auto-detection'):
+                elif item_selected_text == self.tr('Export'):
                     self.stacked_widget_settings.setCurrentIndex(2)
-                elif item_selected_text == self.tr('Data'):
+                elif item_selected_text == self.tr('Auto-detection'):
                     self.stacked_widget_settings.setCurrentIndex(3)
-                elif item_selected_text == self.tr('Tags'):
+                elif item_selected_text == self.tr('Data'):
                     self.stacked_widget_settings.setCurrentIndex(4)
-                elif item_selected_text == self.tr('Sentence Tokenization'):
+                elif item_selected_text == self.tr('Tags'):
                     self.stacked_widget_settings.setCurrentIndex(5)
-                elif item_selected_text == self.tr('Word Tokenization'):
+                elif item_selected_text == self.tr('Sentence Tokenization'):
                     self.stacked_widget_settings.setCurrentIndex(6)
-                elif item_selected_text == self.tr('Word Detokenization'):
+                elif item_selected_text == self.tr('Word Tokenization'):
                     self.stacked_widget_settings.setCurrentIndex(7)
+                elif item_selected_text == self.tr('Word Detokenization'):
+                    self.stacked_widget_settings.setCurrentIndex(8)
 
                 elif item_selected_text == self.tr('POS Tagging'):
-                    self.stacked_widget_settings.setCurrentIndex(8)
+                    self.stacked_widget_settings.setCurrentIndex(9)
 
                     item_selected.setExpanded(True)
                 elif item_selected_text == self.tr('Tagsets'):
-                    self.stacked_widget_settings.setCurrentIndex(9)
+                    self.stacked_widget_settings.setCurrentIndex(10)
 
                 elif item_selected_text == self.tr('Lemmatization'):
-                    self.stacked_widget_settings.setCurrentIndex(10)
-                elif item_selected_text == self.tr('Stop Words'):
                     self.stacked_widget_settings.setCurrentIndex(11)
+                elif item_selected_text == self.tr('Stop Words'):
+                    self.stacked_widget_settings.setCurrentIndex(12)
 
                 elif item_selected_text == self.tr('Measures'):
                     item_selected.setExpanded(True)
                 elif item_selected_text == self.tr('Dispersion'):
-                    self.stacked_widget_settings.setCurrentIndex(12)
-                elif item_selected_text == self.tr('Adjusted Frequency'):
                     self.stacked_widget_settings.setCurrentIndex(13)
-                elif item_selected_text == self.tr('Statistical Significance'):
+                elif item_selected_text == self.tr('Adjusted Frequency'):
                     self.stacked_widget_settings.setCurrentIndex(14)
-                elif item_selected_text == self.tr('Effect Size'):
+                elif item_selected_text == self.tr('Statistical Significance'):
                     self.stacked_widget_settings.setCurrentIndex(15)
-
-                elif item_selected_text == self.tr('Updates'):
+                elif item_selected_text == self.tr('Effect Size'):
                     self.stacked_widget_settings.setCurrentIndex(16)
 
                 self.tree_settings.item_selected_old = item_selected
@@ -228,6 +224,33 @@ class Wordless_Settings(QDialog):
                 self.tree_settings.item_selected_old.setSelected(True)
 
                 self.tree_settings.blockSignals(False)
+
+    # General
+    def init_settings_general(self):
+        self.settings_general = QWidget(self)
+
+        # Update Settings
+        group_box_update_settings = QGroupBox(self.tr('Update Settings'), self)
+
+        self.checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for updates on startup'), self)
+
+        group_box_update_settings.setLayout(QGridLayout())
+        group_box_update_settings.layout().addWidget(self.checkbox_check_updates_on_startup, 0, 0)
+
+        # Miscellaneous
+        group_box_misc = QGroupBox(self.tr('Miscellaneous'), self)
+
+        self.checkbox_confirm_on_exit = QCheckBox(self.tr('Always confirm on exit'), self)
+
+        group_box_misc.setLayout(QGridLayout())
+        group_box_misc.layout().addWidget(self.checkbox_confirm_on_exit, 0, 0)
+
+        self.settings_general.setLayout(QGridLayout())
+        self.settings_general.layout().addWidget(group_box_update_settings, 0, 0)
+        self.settings_general.layout().addWidget(group_box_misc, 1, 0)
+
+        self.settings_general.layout().setContentsMargins(6, 4, 6, 4)
+        self.settings_general.layout().setRowStretch(2, 1)
 
     # Import
     def init_settings_import(self):
@@ -1660,29 +1683,16 @@ class Wordless_Settings(QDialog):
         self.settings_effect_size.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_effect_size.layout().setRowStretch(1, 1)
 
-    # Updates
-    def init_settings_updates(self):
-        self.settings_updates = QWidget(self)
-
-        # Update Settings
-        group_box_update_settings = QGroupBox(self.tr('Update Settings'), self)
-
-        self.checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for Updates on Startup'), self)
-
-        group_box_update_settings.setLayout(QGridLayout())
-        group_box_update_settings.layout().addWidget(self.checkbox_check_updates_on_startup, 0, 0)
-
-        self.settings_updates.setLayout(QGridLayout())
-        self.settings_updates.layout().addWidget(group_box_update_settings, 0, 0)
-
-        self.settings_updates.layout().setContentsMargins(6, 4, 6, 4)
-        self.settings_updates.layout().setRowStretch(1, 1)
-
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.main.settings_default)
         else:
             settings = copy.deepcopy(self.main.settings_custom)
+
+        # General
+        self.checkbox_check_updates_on_startup.setChecked(settings['general']['update_settings']['check_updates_on_startup'])
+
+        self.checkbox_confirm_on_exit.setChecked(settings['general']['misc']['confirm_on_exit'])
 
         # Import
         if os.path.exists(settings['import']['files']['default_path']):
@@ -1891,9 +1901,6 @@ class Wordless_Settings(QDialog):
         # Measures -> Effect Size
         self.spin_box_kilgarriffs_ratio_smoothing_parameter.setValue(settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_parameter'])
 
-        # Updates
-        self.checkbox_check_updates_on_startup.setChecked(settings['updates']['update_settings']['check_updates_on_startup'])
-
     def settings_validate(self):
         def validate_path(line_edit):
             if not os.path.exists(line_edit.text()):
@@ -1959,6 +1966,11 @@ class Wordless_Settings(QDialog):
 
         if settings_valid:
             settings = self.main.settings_custom
+
+            # General
+            settings['general']['update_settings']['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
+
+            settings['general']['misc']['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
 
             # Import
             settings['import']['files']['default_path'] = self.line_edit_import_files_default_path.text()
@@ -2063,9 +2075,6 @@ class Wordless_Settings(QDialog):
             settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_parameter'] = self.spin_box_kilgarriffs_ratio_smoothing_parameter.value()
 
             self.wordless_settings_changed.emit()
-
-            # Updates
-            settings['updates']['update_settings']['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
 
         return settings_valid
 
