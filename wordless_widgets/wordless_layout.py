@@ -14,7 +14,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_utils import wordless_misc
-from wordless_widgets import wordless_button, wordless_message_box
+from wordless_widgets import wordless_button
 
 class Wordless_Splitter(QSplitter):
     def __init__(self, orientation, parent):
