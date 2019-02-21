@@ -20,7 +20,7 @@ C = -scipy.special.digamma(1)
 # Reference:
 #     Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.
 def juillands_u(freqs):
-    if numpy.mean(freqs) == 0:
+    if sum(freqs) == 0:
         d = 0
     else:
         cv = numpy.std(freqs) / numpy.mean(freqs)
@@ -32,10 +32,21 @@ def juillands_u(freqs):
 # Reference:
 #     Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
 def carrolls_um(freqs):
+    h = 0
     freq_total = sum(freqs)
-    d2 = measures_dispersion.carrolls_d2(freqs)
 
-    return freq_total * d2 + (1 - d2) * freq_total / len(freqs)
+    if freq_total == 0:
+        d2 = 0
+    else:
+        for freq in freqs:
+            if freq:
+                h += freq * math.log(freq, math.e)
+
+        d2 = (math.log(freq_total, math.e) - h / freq_total) / math.log(len(freqs), math.e)
+
+    um = freq_total * d2 + (1 - d2) * freq_total / len(freqs)
+
+    return um
 
 # Reference:
 #     Rosengren, Inger. "The Quantitative Concept of Language and Its Relation to The Structure of Frequency Dictionaries." Études De Linguistique Appliquée, n.s.1, 1971, pp. 103-27.
@@ -43,9 +54,9 @@ def rosengrens_kf(freqs):
     return sum([math.sqrt(freq) for freq in freqs]) ** 2 / len(freqs)
 
 # Reference:
-#     Engwall, Gunnel. Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Broché, 1974.
-def engvalls_measure(freqs):
-    return sum(freqs) * (len([freq for freq in freqs if freq]) / len(freqs))
+#     Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Dissertation", Stockholm University, 1974.
+def engvalls_fm(freqs):
+    return sum(freqs) * len([freq for freq in freqs if freq]) / len(freqs)
 
 # Reference:
 #     Kromer, Victor. "A Usage Measure Based on Psychophysical Relations." Journal of Quatitative Linguistics, vol. 10, no. 2, 2003, pp. 177-186.
@@ -67,8 +78,8 @@ if __name__ == '__main__':
     print(rosengrens_kf([2, 2, 2, 2, 1])) # 8.86
 
     # Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
-    print('Engvall\'s Measure:\n    ', end = '')
-    print(engvalls_measure([1, 2, 3, 4, 5])) # 15
+    print('Engvall\'s FM:\n    ', end = '')
+    print(engvalls_fm([1, 2, 3, 4, 5])) # 15
 
     # Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
     print('Kromer\'s Ur:\n    ', end = '')
