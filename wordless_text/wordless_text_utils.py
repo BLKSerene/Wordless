@@ -23,7 +23,7 @@ def check_spacy_models(main, lang, pipeline):
     if pipeline == 'word_tokenization':
         nlp_pipelines = []
         nlp_disable = ['tagger', 'parser', 'ner']
-    elif pipeline in ['tokenization', 'sent_tokenization']:
+    elif pipeline in ['tokenization', 'sentence_tokenization']:
         nlp_pipelines = ['sbd']
         nlp_disable = ['tagger', 'parser', 'ner']
     elif pipeline in ['pos_tagging', 'lemmatization']:
@@ -69,7 +69,7 @@ def check_pybo_bo_tokenizer(main):
         main.pybo_bo_tokenizer = pybo.BoTokenizer('GMD')
 
 def check_sentence_tokenizers(main, lang, sentence_tokenizer = 'default'):
-    if lang not in main.settings_global['sentence_tokenizer']:
+    if lang not in main.settings_global['sentence_tokenizers']:
         lang = 'other'
 
     if sentence_tokenizer == 'default':

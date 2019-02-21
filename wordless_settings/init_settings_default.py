@@ -1125,6 +1125,7 @@ def init_settings_default(main):
                 'swe': main.tr('SacreMoses - Moses Detokenizer'),
                 'tam': main.tr('SacreMoses - Moses Detokenizer'),
                 'tha': main.tr('Wordless - Thai Word Detokenizer'),
+                'bod': main.tr('Wordless - Tibetan Word Detokenizer'),
 
                 'other': main.tr('SacreMoses - Moses Detokenizer')
             },

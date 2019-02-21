@@ -75,6 +75,9 @@ def wordless_sentence_tokenize(main, text, lang,
     # Thai
     elif sentence_tokenizer == 'PyThaiNLP - Thai Sentence Tokenizer':
         sentences = pythainlp.tokenize.sent_tokenize(text)
+    # Tibetan
+    elif sentence_tokenizer == 'Wordless - Tibetan Sentence Tokenizer':
+        sentences = text.split()
     # Vietnamese
     elif sentence_tokenizer == 'Underthesea - Vietnamese Sentence Tokenizer':
         sentences = underthesea.sent_tokenize(text)
@@ -408,7 +411,7 @@ def wordless_word_detokenize(main, tokens, lang,
 
                                     break
     # Thai
-    elif word_detokenizer == main.tr('Wordless - Thai Word Detokenizer'):
+    elif word_detokenizer in main.tr('Wordless - Thai Word Detokenizer'):
         # Settings -> Detokenization -> Preview
         if type(tokens[0]) == str:
             text = ''.join(tokens)
@@ -418,6 +421,15 @@ def wordless_word_detokenize(main, tokens, lang,
                     text += token.boundary
                 else:
                     text += token
+    # Tibetan
+    elif word_detokenizer == main.tr('Wordless - Tibetan Word Detokenizer'):
+        for i, token in enumerate(tokens):
+            # Check for Tibetan Mark Shad
+            # See: https://w3c.github.io/tlreq/#section_breaks
+            if i > 0 and token[0] == '།':
+                text += f' {token}'
+            else:
+                text += token
 
     return re.sub(r'\s{2,}', ' ', text)
 

@@ -843,7 +843,7 @@ class Wordless_Settings(QDialog):
                     line = line.strip()
 
                     if line:
-                        text = wordless_text_processing.wordless_word_detokenize(self.main, line,
+                        text = wordless_text_processing.wordless_word_detokenize(self.main, line.split(),
                                                                                  lang = settings_custom['preview_lang'],
                                                                                  word_detokenizer = word_detokenizer)
                         
