@@ -303,7 +303,7 @@ def generate_table(main, table):
             count_tokens = len(text.tokens)
             count_types = len(set(text.tokens))
 
-            len_tokens = map(len, text.tokens)
+            len_tokens = [len(token) for token in text.tokens]
             len_tokens_files.append(collections.Counter(len_tokens))
 
             count_chars = sum(len_tokens)
