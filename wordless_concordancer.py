@@ -133,9 +133,10 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
             if combo_box_sorting_col != combo_box_cur and combo_box_sorting_col.currentText() == combo_box_cur.currentText():
                 QMessageBox.warning(self.main,
                                     self.tr('Column Sorted More Than Once'),
-                                    self.tr(f'''{self.main.settings_global["style_dialog"]}
+                                    self.tr(f'''
+                                        {self.main.settings_global['styles']['style_dialog']}
                                         <body>
-                                            <p>Please refrain from sorting the same column more than once!</p>
+                                            <div>Please refrain from sorting the same column more than once!</div>
                                         </body>
                                     '''),
                                     QMessageBox.Ok)
