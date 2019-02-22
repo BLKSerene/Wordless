@@ -553,7 +553,8 @@ def wordless_lemmatize(main, tokens, lang,
         if 'spaCy' in lemmatizer:
             nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-            doc = nlp(' '.join([str(token) for token in tokens]))
+            doc = spacy.tokens.Doc(nlp.vocab, words = tokens)
+            nlp.tagger(doc)
 
             lemmas = [token.lemma_ for token in doc]
         # English
