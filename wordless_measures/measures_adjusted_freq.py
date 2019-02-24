@@ -55,7 +55,7 @@ def rosengrens_kf(freqs):
 
 # Reference:
 #     Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Dissertation", Stockholm University, 1974.
-def engvalls_fm(freqs):
+def engwalls_fm(freqs):
     return sum(freqs) * len([freq for freq in freqs if freq]) / len(freqs)
 
 # Reference:
@@ -65,22 +65,36 @@ def kromers_ur(freqs):
 
 # Testing
 if __name__ == '__main__':
-    # Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
-    print('Juilland\'s U:\n    ', end = '')
-    print(juillands_u([0, 4, 3, 2, 1])) # 6.46
+    # [1] Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
+    # [2] Rosengren, Inger. "The quantitative concept of language and its relation to the structure of frequency dictionaries." Études de linguistique appliquée, no. 1, 1971, p. 115.
+    # [3] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Dissertation", Stockholm University, 1974, p. 122.
+    print('Juilland\'s U:')
+    print(f'\t[1] {juillands_u([0, 4, 3, 2, 1])} (6.46)')
+    print(f'\t[2] {juillands_u([2, 2, 2, 2, 2])} (10)')
+    print(f'\t[3] {juillands_u([4, 2, 1, 1, 0])} (4.609)')
 
-    # Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
-    print('Carroll\'s Um:\n    ', end = '')
-    print(carrolls_um([2, 1, 1, 1, 0])) # 4.31
+    # [1] Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
+    # [2] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Dissertation", Stockholm University, 1974, p. 122.
+    # [3] Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
+    print('Carroll\'s Um:')
+    print(f'\t[1] {carrolls_um([2, 1, 1, 1, 0])} (4.31)')
+    print(f'\t[2] {carrolls_um([4, 2, 1, 1, 0])} (6.424)')
+    print(f'\t[3] {carrolls_um([1, 2, 3, 4, 5])} (14.108)')
 
-    # # Rosengren, Inger. "The quantitative concept of language and its relation to the structure of frequency dictionaries." Études de linguistique appliquée, no. 1, 1971, p. 117.
-    print('Rosengren\'s KF:\n    ', end = '')
-    print(rosengrens_kf([2, 2, 2, 2, 1])) # 8.86
+    # [1] Rosengren, Inger. "The quantitative concept of language and its relation to the structure of frequency dictionaries." Études de linguistique appliquée, no. 1, 1971, p. 117.
+    # [2] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Dissertation", Stockholm University, 1974, p. 122.
+    # [3] Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
+    print('Rosengren\'s KF:')
+    print(f'\t[1] {rosengrens_kf([2, 2, 2, 2, 1])} (8.86)')
+    print(f'\t[2] {rosengrens_kf([4, 2, 1, 1, 0])} (5.863)')
+    print(f'\t[2] {rosengrens_kf([1, 2, 3, 4, 5])} (14.053)')
+
+    # [1] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Dissertation", Stockholm University, 1974, p. 122.
+    # [2] Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
+    print('Engwall\'s FM:')
+    print(f'\t[1] {engwalls_fm([4, 2, 1, 1, 0])} (6.4)')
+    print(f'\t[2] {engwalls_fm([1, 2, 3, 4, 5])} (15)')
 
     # Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
-    print('Engvall\'s FM:\n    ', end = '')
-    print(engvalls_fm([1, 2, 3, 4, 5])) # 15
-
-    # Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
-    print('Kromer\'s Ur:\n    ', end = '')
-    print(kromers_ur([2, 1, 1, 1, 0])) # 4.50
+    print('Kromer\'s Ur:')
+    print(f'\t{kromers_ur([2, 1, 1, 1, 0])} (4.50)')

@@ -1664,9 +1664,9 @@ def init_settings_global(main):
                 'func': measures_adjusted_freq.rosengrens_kf
             },
 
-            main.tr('Engvall\'s FM'): {
-                'col': main.tr('Engvall\'s FM'),
-                'func': measures_adjusted_freq.engvalls_fm
+            main.tr('Engwall\'s FM'): {
+                'col': main.tr('Engwall\'s FM'),
+                'func': measures_adjusted_freq.engwalls_fm
             },
 
             main.tr('Kromer\'s Uᵣ'): {
