@@ -58,10 +58,10 @@ class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Search):
         self.button_search_results.clicked.connect(dialog_search_results.load)
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_plot = QPushButton(self.tr('Generate Plot'), self)
+        self.button_generate_figure = QPushButton(self.tr('Generate Figure'), self)
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
-        self.button_generate_plot.clicked.connect(lambda: generate_plot(self.main))
+        self.button_generate_figure.clicked.connect(lambda: generate_figure(self.main))
 
 class Wordless_Combo_Box_Sorting_Col(wordless_box.Wordless_Combo_Box):
     def __init__(self, parent, table):
@@ -415,7 +415,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_search_results, 0, 4, Qt.AlignRight)
         self.wrapper_table.layout().addWidget(self.table_concordancer, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_table, 2, 0)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_plot, 2, 1)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_figure, 2, 1)
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_export_selected, 2, 2)
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_export_all, 2, 3)
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_clear, 2, 4)
@@ -618,8 +618,8 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         self.group_box_table_settings.setLayout(QGridLayout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
 
-        # Plot Settings
-        self.group_box_plot_settings = QGroupBox(self.tr('Plot Settings'), self)
+        # Figure Settings
+        self.group_box_figure_settings = QGroupBox(self.tr('Figure Settings'), self)
 
         self.label_sort_results_by = QLabel(self.tr('Sort Results by:'), self)
         self.combo_box_sort_results_by = wordless_box.Wordless_Combo_Box(self)
@@ -629,13 +629,13 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
             self.tr('Search Term')
         ])
 
-        self.combo_box_sort_results_by.currentTextChanged.connect(self.plot_settings_changed)
+        self.combo_box_sort_results_by.currentTextChanged.connect(self.figure_settings_changed)
 
-        self.group_box_plot_settings.setLayout(QGridLayout())
-        self.group_box_plot_settings.layout().addWidget(self.label_sort_results_by, 0, 0)
-        self.group_box_plot_settings.layout().addWidget(self.combo_box_sort_results_by, 0, 1)
+        self.group_box_figure_settings.setLayout(QGridLayout())
+        self.group_box_figure_settings.layout().addWidget(self.label_sort_results_by, 0, 0)
+        self.group_box_figure_settings.layout().addWidget(self.combo_box_sort_results_by, 0, 1)
 
-        self.group_box_plot_settings.layout().setColumnStretch(1, 1)
+        self.group_box_figure_settings.layout().setColumnStretch(1, 1)
 
         # Sorting Settings
         self.group_box_sorting_settings = QGroupBox(self.tr('Sorting Settings'), self)
@@ -657,7 +657,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         self.wrapper_settings.layout().addWidget(self.group_box_search_settings, 1, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_generation_settings, 2, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 3, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_plot_settings, 4, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_figure_settings, 4, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_sorting_settings, 5, 0)
 
         self.wrapper_settings.layout().setRowStretch(6, 1)
@@ -716,8 +716,8 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         # Table Settings
         self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
 
-        # Plot Settings
-        self.combo_box_sort_results_by.setCurrentText(settings['plot_settings']['sort_results_by'])
+        # Figure Settings
+        self.combo_box_sort_results_by.setCurrentText(settings['figure_settings']['sort_results_by'])
 
         # Sorting Settings
         self.table_concordancer_sorting.setRowCount(0)
@@ -800,8 +800,8 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         settings['show_pct'] = self.checkbox_show_pct.isChecked()
 
-    def plot_settings_changed(self):
-        settings = self.main.settings_custom['concordancer']['plot_settings']
+    def figure_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['figure_settings']
 
         settings['sort_results_by'] = self.combo_box_sort_results_by.currentText()
 
@@ -1132,7 +1132,7 @@ def generate_table(main, table):
     else:
         wordless_message.wordless_message_generate_table_error(main)
 
-class Worker_Process_Data_Plot(wordless_threading.Worker_Process_Data):
+class Worker_Process_Data_Figure(wordless_threading.Worker_Process_Data):
     processing_finished = pyqtSignal(list, list)
 
     def process_data(self):
@@ -1172,7 +1172,7 @@ class Worker_Process_Data_Plot(wordless_threading.Worker_Process_Data):
         len_tokens_total = sum([len(text.tokens) for text in texts])
         len_search_terms_total = len(search_terms_total)
 
-        if settings['plot_settings']['sort_results_by'] == self.tr('File'):
+        if settings['figure_settings']['sort_results_by'] == self.tr('File'):
             search_terms_total = sorted(search_terms_total)
             search_terms_labels = sorted(search_terms_labels)
 
@@ -1194,7 +1194,7 @@ class Worker_Process_Data_Plot(wordless_threading.Worker_Process_Data):
                                 points.append([x_start + k / len_tokens * len_tokens_total, y_start - j])
                                 # Total
                                 points.append([x_start_total + k, 0])
-        elif settings['plot_settings']['sort_results_by'] == self.tr('Search Term'):
+        elif settings['figure_settings']['sort_results_by'] == self.tr('Search Term'):
             search_terms_total = sorted(search_terms_total, reverse = True)
             search_terms_labels = sorted(search_terms_labels, reverse = True)
 
@@ -1215,7 +1215,7 @@ class Worker_Process_Data_Plot(wordless_threading.Worker_Process_Data):
             x_ticks = [0]
             x_tick_labels = ['']
 
-            if settings['plot_settings']['sort_results_by'] == self.tr('File'):
+            if settings['figure_settings']['sort_results_by'] == self.tr('File'):
                 len_tokens_total = sum([len(text.tokens) for text in texts])
 
                 for i, search_term in enumerate(search_terms_total):
@@ -1238,7 +1238,7 @@ class Worker_Process_Data_Plot(wordless_threading.Worker_Process_Data):
                 labels.append([self.tr('Total')] + [file['name'] for file in reversed(files)])
                 labels.append(len(files) + 1)
 
-            elif settings['plot_settings']['sort_results_by'] == self.tr('Search Term'):
+            elif settings['figure_settings']['sort_results_by'] == self.tr('Search Term'):
                 len_search_terms_total = len(search_terms_total)
 
                 for i, text in enumerate(texts):
@@ -1266,7 +1266,7 @@ class Worker_Process_Data_Plot(wordless_threading.Worker_Process_Data):
         self.processing_finished.emit(points, labels)
 
 @wordless_misc.log_timing
-def generate_plot(main):
+def generate_figure(main):
     def data_received(points, labels):
         if labels:
             x_ticks = labels[0]
@@ -1276,7 +1276,7 @@ def generate_plot(main):
             y_max = labels[4]
 
         if points:
-            if settings['plot_settings']['sort_results_by'] == main.tr('File'):
+            if settings['figure_settings']['sort_results_by'] == main.tr('File'):
                 matplotlib.pyplot.plot(numpy.array(points)[:, 0],
                                        numpy.array(points)[:, 1],
                                        'b|')
@@ -1287,7 +1287,7 @@ def generate_plot(main):
                 matplotlib.pyplot.ylabel(main.tr('Files'))
                 matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
                 matplotlib.pyplot.ylim(-1, y_max)
-            elif settings['plot_settings']['sort_results_by'] == main.tr('Search Term'):
+            elif settings['figure_settings']['sort_results_by'] == main.tr('Search Term'):
                 matplotlib.pyplot.plot(numpy.array(points)[:, 0],
                                        numpy.array(points)[:, 1],
                                        'b|')
@@ -1302,11 +1302,11 @@ def generate_plot(main):
             matplotlib.pyplot.title(main.tr('Dispersion Plot'))
             matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
 
-            wordless_message.wordless_message_generate_plot_success(main)
+            wordless_message.wordless_message_generate_figure_success(main)
         else:
             wordless_message_box.wordless_message_box_no_results(main)
 
-            wordless_message.wordless_message_generate_plot_error(main)
+            wordless_message.wordless_message_generate_figure_error(main)
 
         dialog_processing.accept()
 
@@ -1321,7 +1321,7 @@ def generate_plot(main):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_processing = wordless_dialog_misc.Wordless_Dialog_Processing_Generate_Data(main)
 
-            worker_process_data = Worker_Process_Data_Plot(main, dialog_processing, data_received)
+            worker_process_data = Worker_Process_Data_Figure(main, dialog_processing, data_received)
             thread_process_data = wordless_threading.Thread_Process_Data(worker_process_data)
 
             thread_process_data.start()
@@ -1333,6 +1333,6 @@ def generate_plot(main):
         else:
             wordless_message_box.wordless_message_box_missing_search_term(main)
 
-            wordless_message.wordless_message_generate_plot_error(main)
+            wordless_message.wordless_message_generate_figure_error(main)
     else:
-        wordless_message.wordless_message_generate_plot_error(main)
+        wordless_message.wordless_message_generate_figure_error(main)
