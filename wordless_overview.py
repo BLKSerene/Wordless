@@ -258,30 +258,19 @@ class Wrapper_Overview(wordless_layout.Wordless_Wrapper):
         settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
         settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
-@ wordless_misc.log_timing
-def generate_table(main, table):
-    texts = []
-    len_tokens_files = []
+class Worker_Process_Data(wordless_threading.Worker_Process_Data):
+    processing_finished = pyqtSignal(list, list)
 
-    settings = main.settings_custom['overview']
+    def process_data(self):
+        texts = []
+        texts_stats_files = []
+        texts_len_tokens_files = []
 
-    files = main.wordless_files.get_selected_files()
-    len_files = len(files)
-
-    if wordless_checking_file.check_files_on_loading(main, files):
-        table.clear_table()
-
-        table.settings = copy.deepcopy(main.settings_custom)
-
-        base_sttr = settings['generation_settings']['base_sttr']
-
-        table.blockSignals(True)
-        table.setUpdatesEnabled(False)
+        settings = self.main.settings_custom['overview']
+        files = self.main.wordless_files.get_selected_files()
 
         for i, file in enumerate(files):
-            table.insert_col(table.find_col(main.tr('Total')), file['name'], breakdown = True)
-
-            text = wordless_text.Wordless_Text(main, file, tokens_only = False)
+            text = wordless_text.Wordless_Text(self.main, file, tokens_only = False)
             text.tokens = wordless_token_processing.wordless_process_tokens_overview(text,
                                                                                      token_settings = settings['token_settings'])
 
@@ -297,14 +286,20 @@ def generate_table(main, table):
         else:
             texts.append(texts[0])
 
-        for i, text in enumerate(texts):
+        self.progress_updated.emit(self.tr('Processing data ...'))
+
+        base_sttr = settings['generation_settings']['base_sttr']
+
+        for text in texts:
+            texts_stats_file = []
+
             count_paras = len(text.para_offsets)
             count_sentences = len(text.sentence_offsets)
             count_tokens = len(text.tokens)
             count_types = len(set(text.tokens))
 
             len_tokens = [len(token) for token in text.tokens]
-            len_tokens_files.append(collections.Counter(len_tokens))
+            texts_len_tokens_files.append(collections.Counter(len_tokens))
 
             count_chars = sum(len_tokens)
             ttr = count_types / count_tokens
@@ -312,7 +307,43 @@ def generate_table(main, table):
             token_sections = wordless_text_utils.to_sections(text.tokens, math.ceil(count_tokens / base_sttr))
 
             ttrs = [len(set(token_section)) / len(token_section) for token_section in token_sections]
-            sttr = sum(ttrs) / len(ttrs)
+            sttr = sttr = sum(ttrs) / len(ttrs)
+
+            texts_stats_file.append(count_paras)
+            texts_stats_file.append(count_sentences)
+            texts_stats_file.append(count_tokens)
+            texts_stats_file.append(count_types)
+            texts_stats_file.append(count_chars)
+            texts_stats_file.append(ttr)
+            texts_stats_file.append(sttr)
+
+            texts_stats_files.append(texts_stats_file)
+
+        self.processing_finished.emit(texts_stats_files, texts_len_tokens_files)
+
+@wordless_misc.log_timing
+def generate_table(main, table):
+    def data_received(texts_stats_files, texts_len_tokens_files):
+        table.clear_table()
+
+        table.settings = copy.deepcopy(main.settings_custom)
+
+        len_files = len(files)
+
+        table.blockSignals(True)
+        table.setUpdatesEnabled(False)
+
+        for i, file in enumerate(files):
+            table.insert_col(table.find_col(main.tr('Total')), file['name'], breakdown = True)
+
+        for i, stats in enumerate(texts_stats_files):
+            count_paras = stats[0]
+            count_sentences = stats[1]
+            count_tokens = stats[2]
+            count_types = stats[3]
+            count_chars = stats[4]
+            ttr = stats[5]
+            sttr = stats[6]
 
             table.set_item_num_cumulative(0, i, count_paras)
             table.set_item_num_cumulative(1, i, count_sentences)
@@ -327,7 +358,7 @@ def generate_table(main, table):
             table.set_item_num_float(10, i, count_chars / count_tokens)
 
         # Count of n-length Tokens
-        len_tokens_total = wordless_misc.merge_dicts(len_tokens_files)
+        len_tokens_total = wordless_misc.merge_dicts(texts_len_tokens_files)
         len_tokens_max = max(len_tokens_total)
 
         if settings['token_settings']['use_tags']:
@@ -368,11 +399,28 @@ def generate_table(main, table):
         table.toggle_pct()
         table.toggle_cumulative()
         table.toggle_breakdown()
-
         table.update_items_width()
 
-        table.item_changed()
+        table.itemChanged.emit(table.item(0, 0))
 
         wordless_message.wordless_message_generate_table_success(main)
+
+        dialog_processing.accept()
+
+    settings = main.settings_custom['overview']
+    files = main.wordless_files.get_selected_files()
+
+    if wordless_checking_file.check_files_on_loading(main, files):
+        dialog_processing = wordless_dialog_misc.Wordless_Dialog_Processing_Generate_Data(main)
+
+        worker_process_data = Worker_Process_Data(main, dialog_processing, data_received)
+        thread_process_data = wordless_threading.Thread_Process_Data(worker_process_data)
+
+        thread_process_data.start()
+
+        dialog_processing.exec_()
+
+        thread_process_data.quit()
+        thread_process_data.wait()
     else:
         wordless_message.wordless_message_generate_table_error(main)
