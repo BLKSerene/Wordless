@@ -314,7 +314,7 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
             wordless_message.wordless_message_search_results(self.main, indexes_found)
         else:
-            wordless_message_box.wordless_message_box_empty_search_term(self.main)
+            wordless_message_box.wordless_message_box_missing_search_term(self.main)
 
         return sorted(indexes_found)
 
