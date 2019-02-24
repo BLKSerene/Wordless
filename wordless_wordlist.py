@@ -16,6 +16,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+import matplotlib.pyplot
 import numpy
 
 from wordless_checking import *
@@ -379,84 +380,84 @@ class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-def generate_wordlists(main, files):
-    texts = []
-    tokens_freq_files = []
-    tokens_stats_files = []
+class Worker_Process_Data(wordless_threading.Worker_Process_Data):
+    processing_finished = pyqtSignal(dict, dict)
 
-    settings = main.settings_custom['wordlist']
+    def process_data(self):
+        texts = []
+        tokens_freq_files = []
+        tokens_stats_files = []
 
-    # Frequency
-    for file in files:
-        text = wordless_text.Wordless_Text(main, file)
+        settings = self.main.settings_custom['wordlist']
+        files = self.main.wordless_files.get_selected_files()
 
-        tokens = wordless_token_processing.wordless_process_tokens_wordlist(text,
-                                                                            token_settings = settings['token_settings'])
+        # Frequency
+        for file in files:
+            text = wordless_text.Wordless_Text(self.main, file)
 
-        texts.append(text)
-        tokens_freq_files.append(collections.Counter(tokens))
+            tokens = wordless_token_processing.wordless_process_tokens_wordlist(text,
+                                                                                token_settings = settings['token_settings'])
 
-    # Total
-    if len(files) > 1:
-        text_total = wordless_text.Wordless_Text_Blank()
-        text_total.tokens = [token for text in texts for token in text.tokens]
+            texts.append(text)
+            tokens_freq_files.append(collections.Counter(tokens))
 
-        texts.append(text_total)
-        tokens_freq_files.append(sum(tokens_freq_files, collections.Counter()))
+        # Total
+        if len(files) > 1:
+            text_total = wordless_text.Wordless_Text_Blank()
+            text_total.tokens = [token for text in texts for token in text.tokens]
 
-    # Dispersion & Adjusted Frequency
-    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-    text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+            texts.append(text_total)
+            tokens_freq_files.append(sum(tokens_freq_files, collections.Counter()))
 
-    measure_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
-    measure_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
+        self.progress_updated.emit(self.tr('Processing data ...'))
 
-    tokens_total = tokens_freq_files[-1].keys()
+        # Dispersion & Adjusted Frequency
+        text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+        text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-    for text in texts:
-        tokens_stats_file = {}
+        measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
+        measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
 
-        # Dispersion
-        number_sections = main.settings_custom['measures']['dispersion']['general']['number_sections']
+        tokens_total = tokens_freq_files[-1].keys()
 
-        sections_freq = [collections.Counter(section)
-                         for section in wordless_text_utils.to_sections(text.tokens, number_sections)]
+        for text in texts:
+            tokens_stats_file = {}
 
-        for token in tokens_total:
-            counts = [section_freq[token] for section_freq in sections_freq]
-
-            tokens_stats_file[token] = [measure_dispersion(counts)]
-
-        # Adjusted Frequency
-        if not main.settings_custom['measures']['adjusted_freq']['general']['use_same_settings_dispersion']:
-            number_sections = main.settings_custom['measures']['adjusted_freq']['general']['number_sections']
+            # Dispersion
+            number_sections = self.main.settings_custom['measures']['dispersion']['general']['number_sections']
 
             sections_freq = [collections.Counter(section)
                              for section in wordless_text_utils.to_sections(text.tokens, number_sections)]
 
-        for token in tokens_total:
-            counts = [section_freq[token] for section_freq in sections_freq]
+            for token in tokens_total:
+                counts = [section_freq[token] for section_freq in sections_freq]
 
-            tokens_stats_file[token].append(measure_adjusted_freq(counts))
+                tokens_stats_file[token] = [measure_dispersion(counts)]
 
-        tokens_stats_files.append(tokens_stats_file)
+            # Adjusted Frequency
+            if not self.main.settings_custom['measures']['adjusted_freq']['general']['use_same_settings_dispersion']:
+                number_sections = self.main.settings_custom['measures']['adjusted_freq']['general']['number_sections']
 
-    if len(files) == 1:
-        tokens_freq_files *= 2
-        tokens_stats_files *= 2
+                sections_freq = [collections.Counter(section)
+                                 for section in wordless_text_utils.to_sections(text.tokens, number_sections)]
 
-    return (wordless_misc.merge_dicts(tokens_freq_files),
-            wordless_misc.merge_dicts(tokens_stats_files))
+            for token in tokens_total:
+                counts = [section_freq[token] for section_freq in sections_freq]
 
-@ wordless_misc.log_timing
+                tokens_stats_file[token].append(measure_adjusted_freq(counts))
+
+            tokens_stats_files.append(tokens_stats_file)
+
+        if len(files) == 1:
+            tokens_freq_files *= 2
+            tokens_stats_files *= 2
+
+        self.processing_finished.emit(wordless_misc.merge_dicts(tokens_freq_files),
+                                      wordless_misc.merge_dicts(tokens_stats_files))
+
+@wordless_misc.log_timing
 def generate_table(main, table):
-    settings = main.settings_custom['wordlist']
-
-    files = main.wordless_files.get_selected_files()
-
-    if wordless_checking_file.check_files_on_loading(main, files):
-        tokens_freq_files, tokens_stats_files = generate_wordlists(main, files)
-
+    def data_received(tokens_freq_files, tokens_stats_files):
         if tokens_freq_files:
             table.clear_table()
 
@@ -551,28 +552,39 @@ def generate_table(main, table):
             table.toggle_cumulative()
             table.toggle_breakdown()
             table.update_ranks()
-
             table.update_items_width()
 
             table.itemChanged.emit(table.item(0, 0))
 
             wordless_message.wordless_message_generate_table_success(main)
         else:
-            wordless_message_box.wordless_message_box_no_results_table(main)
+            wordless_message_box.wordless_message_box_no_results(main)
 
             wordless_message.wordless_message_generate_table_error(main)
-    else:
-        wordless_message.wordless_message_generate_table_error(main)
 
-@ wordless_misc.log_timing
-def generate_plot(main):
+        dialog_processing.accept()
+
     settings = main.settings_custom['wordlist']
-
     files = main.wordless_files.get_selected_files()
 
     if wordless_checking_file.check_files_on_loading(main, files):
-        tokens_freq_files, tokens_stats_files = generate_wordlists(main, files)
+        dialog_processing = wordless_dialog_misc.Wordless_Dialog_Processing_Generate_Data(main)
 
+        worker_process_data = Worker_Process_Data(main, dialog_processing, data_received)
+        thread_process_data = wordless_threading.Thread_Process_Data(worker_process_data)
+
+        thread_process_data.start()
+
+        dialog_processing.exec_()
+
+        thread_process_data.quit()
+        thread_process_data.wait()
+    else:
+        wordless_message.wordless_message_generate_table_error(main)
+
+@wordless_misc.log_timing
+def generate_plot(main):
+    def data_received(tokens_freq_files, tokens_stats_files):
         if tokens_freq_files:
             measure_dispersion = settings['generation_settings']['measure_dispersion']
             measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
@@ -603,8 +615,29 @@ def generate_plot(main):
 
             wordless_message.wordless_message_generate_plot_success(main)
         else:
-            wordless_message_box.wordless_message_box_no_results_plot(main)
+            wordless_message_box.wordless_message_box_no_results(main)
 
             wordless_message.wordless_message_generate_plot_error(main)
+
+        dialog_processing.accept()
+
+        if tokens_freq_files:
+            matplotlib.pyplot.get_current_fig_manager().window.showMaximized()
+
+    settings = main.settings_custom['wordlist']
+    files = main.wordless_files.get_selected_files()
+
+    if wordless_checking_file.check_files_on_loading(main, files):
+        dialog_processing = wordless_dialog_misc.Wordless_Dialog_Processing_Generate_Data(main)
+
+        worker_process_data = Worker_Process_Data(main, dialog_processing, data_received)
+        thread_process_data = wordless_threading.Thread_Process_Data(worker_process_data)
+
+        thread_process_data.start()
+
+        dialog_processing.exec_()
+
+        thread_process_data.quit()
+        thread_process_data.wait()
     else:
         wordless_message.wordless_message_generate_plot_error(main)

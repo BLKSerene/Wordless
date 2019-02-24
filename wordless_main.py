@@ -20,6 +20,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+import matplotlib
+import matplotlib.pyplot
+
 from wordless_checking import *
 from wordless_dialogs import *
 from wordless_settings import *
@@ -34,6 +37,8 @@ import wordless_ngrams
 import wordless_collocation
 import wordless_colligation
 import wordless_keywords
+
+matplotlib.use('Qt5Agg')
 
 class Wordless_Loading(QSplashScreen):
     def __init__(self):
@@ -275,7 +280,7 @@ class Wordless_Main(QMainWindow):
 
     # Help -> Need Help?
     def help_need_help(self):
-        message_box = wordless_message_box.Wordless_Message_Box_Info(
+        message_box = wordless_message_box.Wordless_Message_Box_Info_Help(
             main = self,
             title = self.tr('Need Help?'),
             text = self.tr('''
@@ -304,7 +309,7 @@ class Wordless_Main(QMainWindow):
 
     # Help -> Contributing
     def help_contributing(self):
-        message_box = wordless_message_box.Wordless_Message_Box_Info(
+        message_box = wordless_message_box.Wordless_Message_Box_Info_Help(
             main = self,
             title = self.tr('Contributing'),
             text = self.tr('''
