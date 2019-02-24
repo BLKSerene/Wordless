@@ -1,9 +1,12 @@
 #
-# Wordless: Plots For Statistic
+# Wordless: Figures - Statistics
 #
-# Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
+# Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
-# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# This source file is licensed under GNU GPLv3.
+# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+# All other rights reserved.
 #
 
 from PyQt5.QtWidgets import *
@@ -14,8 +17,8 @@ import wordcloud
 
 from wordless_utils import wordless_sorting
 
-def wordless_plot_stat(main, tokens_stat_files,
-                       settings, label_x, label_y):
+def wordless_figure_stat(main, tokens_stat_files,
+                         settings, label_x, label_y):
     files = main.wordless_files.get_selected_files()
     files += [{'name': main.tr('Total')}]
 
@@ -29,7 +32,7 @@ def wordless_plot_stat(main, tokens_stat_files,
     else:
         rank_max = settings['rank_max']
 
-    if settings['plot_type'] == main.tr('Line Chart'):
+    if settings['graph_type'] == main.tr('Line Chart'):
         if label_y == main.tr('p-value'):
             tokens_stat_files = list(reversed(wordless_sorting.sorted_tokens_stat_files(tokens_stat_files)))
         else:
@@ -49,7 +52,7 @@ def wordless_plot_stat(main, tokens_stat_files,
 
         matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()
-    elif settings['plot_type'] == main.tr('Word Cloud'):
+    elif settings['graph_type'] == main.tr('Word Cloud'):
         if rank_max == None:
             max_words = len(tokens_freq_files) - rank_min + 1
         else:
@@ -83,8 +86,8 @@ def wordless_plot_stat(main, tokens_stat_files,
 
         matplotlib.pyplot.axis('off')
 
-def wordless_plot_stat_ref(main, keywords_stat_files, ref_file,
-                           settings, label_y):
+def wordless_figure_stat_ref(main, keywords_stat_files, ref_file,
+                             settings, label_y):
     files = main.wordless_files.get_selected_files()
     files += [{'name': main.tr('Total')}]
     files.remove(ref_file)
@@ -99,7 +102,7 @@ def wordless_plot_stat_ref(main, keywords_stat_files, ref_file,
     else:
         rank_max = settings['rank_max']
 
-    if settings['plot_type'] == main.tr('Line Chart'):
+    if settings['graph_type'] == main.tr('Line Chart'):
         if label_y == main.tr('p-value'):
             keywords_stat_files = list(reversed(wordless_sorting.sorted_keywords_stat_files(keywords_stat_files)))
         else:
@@ -119,7 +122,7 @@ def wordless_plot_stat_ref(main, keywords_stat_files, ref_file,
 
         matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()
-    elif settings['plot_type'] == main.tr('Word Cloud'):
+    elif settings['graph_type'] == main.tr('Word Cloud'):
         if rank_max == None:
             max_words = len(tokens_freq_files) - rank_min + 1
         else:

@@ -23,8 +23,8 @@ import numpy
 
 from wordless_checking import *
 from wordless_dialogs import *
+from wordless_figures import *
 from wordless_measures import *
-from wordless_plot import *
 from wordless_text import *
 from wordless_utils import *
 from wordless_widgets import *
@@ -61,10 +61,10 @@ class Wordless_Table_Ngrams(wordless_table.Wordless_Table_Data_Filter_Search):
         self.button_search_results.clicked.connect(dialog_search_results.load)
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_plot = QPushButton(self.tr('Generate Plot'), self)
+        self.button_generate_figure = QPushButton(self.tr('Generate Figure'), self)
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
-        self.button_generate_plot.clicked.connect(lambda: generate_plot(self.main))
+        self.button_generate_figure.clicked.connect(lambda: generate_figure(self.main))
 
 class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
     def __init__(self, main):
@@ -83,7 +83,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_ngrams, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_ngrams.button_generate_table, 2, 0)
-        self.wrapper_table.layout().addWidget(self.table_ngrams.button_generate_plot, 2, 1)
+        self.wrapper_table.layout().addWidget(self.table_ngrams.button_generate_figure, 2, 1)
         self.wrapper_table.layout().addWidget(self.table_ngrams.button_export_selected, 2, 2)
         self.wrapper_table.layout().addWidget(self.table_ngrams.button_export_all, 2, 3)
         self.wrapper_table.layout().addWidget(self.table_ngrams.button_clear, 2, 4)
@@ -351,18 +351,18 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
 
-        # Plot Settings
-        self.group_box_plot_settings = QGroupBox(self.tr('Plot Settings'), self)
+        # Figure Settings
+        self.group_box_figure_settings = QGroupBox(self.tr('Figure Settings'), self)
 
-        (self.label_plot_type,
-         self.combo_box_plot_type,
+        (self.label_graph_type,
+         self.combo_box_graph_type,
          self.label_use_file,
          self.combo_box_use_file,
          self.label_use_data,
          self.combo_box_use_data,
 
          self.checkbox_use_pct,
-         self.checkbox_use_cumulative) = wordless_widgets.wordless_widgets_plot_settings(self)
+         self.checkbox_use_cumulative) = wordless_widgets.wordless_widgets_figure_settings(self)
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (self.label_rank_min,
@@ -374,49 +374,49 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
                                                                                      filter_min = 1,
                                                                                      filter_max = 100000)
 
-        self.combo_box_plot_type.currentTextChanged.connect(self.plot_settings_changed)
-        self.combo_box_use_file.currentTextChanged.connect(self.plot_settings_changed)
-        self.combo_box_use_data.currentTextChanged.connect(self.plot_settings_changed)
-        self.checkbox_use_pct.stateChanged.connect(self.plot_settings_changed)
-        self.checkbox_use_cumulative.stateChanged.connect(self.plot_settings_changed)
+        self.combo_box_graph_type.currentTextChanged.connect(self.figure_settings_changed)
+        self.combo_box_use_file.currentTextChanged.connect(self.figure_settings_changed)
+        self.combo_box_use_data.currentTextChanged.connect(self.figure_settings_changed)
+        self.checkbox_use_pct.stateChanged.connect(self.figure_settings_changed)
+        self.checkbox_use_cumulative.stateChanged.connect(self.figure_settings_changed)
 
-        self.spin_box_rank_min.valueChanged.connect(self.plot_settings_changed)
-        self.checkbox_rank_min_no_limit.stateChanged.connect(self.plot_settings_changed)
-        self.spin_box_rank_max.valueChanged.connect(self.plot_settings_changed)
-        self.checkbox_rank_max_no_limit.stateChanged.connect(self.plot_settings_changed)
+        self.spin_box_rank_min.valueChanged.connect(self.figure_settings_changed)
+        self.checkbox_rank_min_no_limit.stateChanged.connect(self.figure_settings_changed)
+        self.spin_box_rank_max.valueChanged.connect(self.figure_settings_changed)
+        self.checkbox_rank_max_no_limit.stateChanged.connect(self.figure_settings_changed)
 
-        layout_plot_settings_combo_boxes = QGridLayout()
-        layout_plot_settings_combo_boxes.addWidget(self.label_plot_type, 0, 0)
-        layout_plot_settings_combo_boxes.addWidget(self.combo_box_plot_type, 0, 1)
-        layout_plot_settings_combo_boxes.addWidget(self.label_use_file, 1, 0)
-        layout_plot_settings_combo_boxes.addWidget(self.combo_box_use_file, 1, 1)
-        layout_plot_settings_combo_boxes.addWidget(self.label_use_data, 2, 0)
-        layout_plot_settings_combo_boxes.addWidget(self.combo_box_use_data, 2, 1)
+        layout_figure_settings_combo_boxes = QGridLayout()
+        layout_figure_settings_combo_boxes.addWidget(self.label_graph_type, 0, 0)
+        layout_figure_settings_combo_boxes.addWidget(self.combo_box_graph_type, 0, 1)
+        layout_figure_settings_combo_boxes.addWidget(self.label_use_file, 1, 0)
+        layout_figure_settings_combo_boxes.addWidget(self.combo_box_use_file, 1, 1)
+        layout_figure_settings_combo_boxes.addWidget(self.label_use_data, 2, 0)
+        layout_figure_settings_combo_boxes.addWidget(self.combo_box_use_data, 2, 1)
 
-        layout_plot_settings_combo_boxes.setColumnStretch(1, 1)
+        layout_figure_settings_combo_boxes.setColumnStretch(1, 1)
 
-        self.group_box_plot_settings.setLayout(QGridLayout())
-        self.group_box_plot_settings.layout().addLayout(layout_plot_settings_combo_boxes, 0, 0, 1, 3)
-        self.group_box_plot_settings.layout().addWidget(self.checkbox_use_pct, 1, 0, 1, 3)
-        self.group_box_plot_settings.layout().addWidget(self.checkbox_use_cumulative, 2, 0, 1, 3)
+        self.group_box_figure_settings.setLayout(QGridLayout())
+        self.group_box_figure_settings.layout().addLayout(layout_figure_settings_combo_boxes, 0, 0, 1, 3)
+        self.group_box_figure_settings.layout().addWidget(self.checkbox_use_pct, 1, 0, 1, 3)
+        self.group_box_figure_settings.layout().addWidget(self.checkbox_use_cumulative, 2, 0, 1, 3)
         
-        self.group_box_plot_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 3, 0, 1, 3)
+        self.group_box_figure_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 3, 0, 1, 3)
 
-        self.group_box_plot_settings.layout().addWidget(self.label_rank, 4, 0, 1, 3)
-        self.group_box_plot_settings.layout().addWidget(self.label_rank_min, 5, 0)
-        self.group_box_plot_settings.layout().addWidget(self.spin_box_rank_min, 5, 1)
-        self.group_box_plot_settings.layout().addWidget(self.checkbox_rank_min_no_limit, 5, 2)
-        self.group_box_plot_settings.layout().addWidget(self.label_rank_max, 6, 0)
-        self.group_box_plot_settings.layout().addWidget(self.spin_box_rank_max, 6, 1)
-        self.group_box_plot_settings.layout().addWidget(self.checkbox_rank_max_no_limit, 6, 2)
+        self.group_box_figure_settings.layout().addWidget(self.label_rank, 4, 0, 1, 3)
+        self.group_box_figure_settings.layout().addWidget(self.label_rank_min, 5, 0)
+        self.group_box_figure_settings.layout().addWidget(self.spin_box_rank_min, 5, 1)
+        self.group_box_figure_settings.layout().addWidget(self.checkbox_rank_min_no_limit, 5, 2)
+        self.group_box_figure_settings.layout().addWidget(self.label_rank_max, 6, 0)
+        self.group_box_figure_settings.layout().addWidget(self.spin_box_rank_max, 6, 1)
+        self.group_box_figure_settings.layout().addWidget(self.checkbox_rank_max_no_limit, 6, 2)
 
-        self.group_box_plot_settings.layout().setColumnStretch(1, 1)
+        self.group_box_figure_settings.layout().setColumnStretch(1, 1)
 
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_search_settings, 1, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_generation_settings, 2, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 3, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_plot_settings, 4, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_figure_settings, 4, 0)
 
         self.wrapper_settings.layout().setRowStretch(5, 1)
 
@@ -491,23 +491,23 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         self.checkbox_show_cumulative.setChecked(settings['table_settings']['show_cumulative'])
         self.checkbox_show_breakdown.setChecked(settings['table_settings']['show_breakdown'])
 
-        # Plot Settings
-        self.combo_box_plot_type.setCurrentText(settings['plot_settings']['plot_type'])
-        self.combo_box_use_file.setCurrentText(settings['plot_settings']['use_file'])
-        self.combo_box_use_data.setCurrentText(settings['plot_settings']['use_data'])
-        self.checkbox_use_pct.setChecked(settings['plot_settings']['use_pct'])
-        self.checkbox_use_cumulative.setChecked(settings['plot_settings']['use_cumulative'])
+        # Figure Settings
+        self.combo_box_graph_type.setCurrentText(settings['figure_settings']['graph_type'])
+        self.combo_box_use_file.setCurrentText(settings['figure_settings']['use_file'])
+        self.combo_box_use_data.setCurrentText(settings['figure_settings']['use_data'])
+        self.checkbox_use_pct.setChecked(settings['figure_settings']['use_pct'])
+        self.checkbox_use_cumulative.setChecked(settings['figure_settings']['use_cumulative'])
 
-        self.spin_box_rank_min.setValue(settings['plot_settings']['rank_min'])
-        self.checkbox_rank_min_no_limit.setChecked(settings['plot_settings']['rank_min_no_limit'])
-        self.spin_box_rank_max.setValue(settings['plot_settings']['rank_max'])
-        self.checkbox_rank_max_no_limit.setChecked(settings['plot_settings']['rank_max_no_limit'])
+        self.spin_box_rank_min.setValue(settings['figure_settings']['rank_min'])
+        self.checkbox_rank_min_no_limit.setChecked(settings['figure_settings']['rank_min_no_limit'])
+        self.spin_box_rank_max.setValue(settings['figure_settings']['rank_max'])
+        self.checkbox_rank_max_no_limit.setChecked(settings['figure_settings']['rank_max_no_limit'])
 
         self.token_settings_changed()
         self.search_settings_changed()
         self.generation_settings_changed()
         self.table_settings_changed()
-        self.plot_settings_changed()
+        self.figure_settings_changed()
 
     def token_settings_changed(self):
         settings = self.main.settings_custom['ngrams']['token_settings']
@@ -607,7 +607,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         if self.combo_box_use_data.findText(use_data_old) > -1:
             self.combo_box_use_data.setCurrentText(use_data_old)
         else:
-            self.combo_box_use_data.setCurrentText(self.main.settings_default['ngrams']['plot_settings']['use_data'])
+            self.combo_box_use_data.setCurrentText(self.main.settings_default['ngrams']['figure_settings']['use_data'])
 
     def table_settings_changed(self):
         settings = self.main.settings_custom['ngrams']['table_settings']
@@ -616,10 +616,10 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
         settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
-    def plot_settings_changed(self):
-        settings = self.main.settings_custom['ngrams']['plot_settings']
+    def figure_settings_changed(self):
+        settings = self.main.settings_custom['ngrams']['figure_settings']
 
-        settings['plot_type'] = self.combo_box_plot_type.currentText()
+        settings['graph_type'] = self.combo_box_graph_type.currentText()
         settings['use_file'] = self.combo_box_use_file.currentText()
         settings['use_data'] = self.combo_box_use_data.currentText()
         settings['use_pct'] = self.checkbox_use_pct.isChecked()
@@ -982,7 +982,7 @@ def generate_table(main, table):
         wordless_message.wordless_message_generate_table_error(main)
 
 @wordless_misc.log_timing
-def generate_plot(main):
+def generate_figure(main):
     def data_received(ngrams_freq_files, ngrams_stats_files, ngrams_text):
         if ngrams_freq_files:
             text_measure_dispersion = settings['generation_settings']['measure_dispersion']
@@ -991,38 +991,38 @@ def generate_plot(main):
             text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
             text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
             
-            if settings['plot_settings']['use_data'] == main.tr('Frequency'):
+            if settings['figure_settings']['use_data'] == main.tr('Frequency'):
                 ngrams_freq_files = {ngrams_text[ngram]: freqs
                                      for ngram, freqs in ngrams_freq_files.items()}
 
-                wordless_plot_freq.wordless_plot_freq(main, ngrams_freq_files,
-                                                      settings = settings['plot_settings'],
-                                                      label_x = main.tr('N-grams'))
+                wordless_figure_freq.wordless_figure_freq(main, ngrams_freq_files,
+                                                          settings = settings['figure_settings'],
+                                                          label_x = main.tr('N-grams'))
             else:
                 ngrams_stats_files = {ngrams_text[ngram]: stats
                                       for ngram, stats in ngrams_stats_files.items()}
 
-                if settings['plot_settings']['use_data'] == text_dispersion:
+                if settings['figure_settings']['use_data'] == text_dispersion:
                     ngrams_stat_files = {ngram: numpy.array(stats_files)[:, 0]
                                          for ngram, stats_files in ngrams_stats_files.items()}
 
                     label_y = text_dispersion
-                elif settings['plot_settings']['use_data'] == text_adjusted_freq:
+                elif settings['figure_settings']['use_data'] == text_adjusted_freq:
                     ngrams_stat_files = {ngram: numpy.array(stats_files)[:, 1]
                                          for ngram, stats_files in ngrams_stats_files.items()}
 
                     label_y = text_adjusted_freq
 
-                wordless_plot_stat.wordless_plot_stat(main, ngrams_stat_files,
-                                                      settings = settings['plot_settings'],
-                                                      label_x = main.tr('N-grams'),
-                                                      label_y = label_y)
+                wordless_figure_stat.wordless_figure_stat(main, ngrams_stat_files,
+                                                          settings = settings['figure_settings'],
+                                                          label_x = main.tr('N-grams'),
+                                                          label_y = label_y)
 
-            wordless_message.wordless_message_generate_plot_success(main)
+            wordless_message.wordless_message_generate_figure_success(main)
         else:
             wordless_message_box.wordless_message_box_no_results(main)
 
-            wordless_message.wordless_message_generate_plot_error(main)
+            wordless_message.wordless_message_generate_figure_error(main)
 
         dialog_processing.accept()
 
@@ -1050,6 +1050,6 @@ def generate_plot(main):
         else:
             wordless_message_box.wordless_message_box_missing_search_term_optional(main)
 
-            wordless_message.wordless_message_generate_plot_error(main)
+            wordless_message.wordless_message_generate_figure_error(main)
     else:
-        wordless_message.wordless_message_generate_plot_error(main)
+        wordless_message.wordless_message_generate_figure_error(main)

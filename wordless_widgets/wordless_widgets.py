@@ -282,7 +282,7 @@ def wordless_widgets_search_settings(parent, tab):
     checkbox_multi_search_mode = QCheckBox(parent.tr('Multi-search Mode'), parent)
     line_edit_search_term = QLineEdit(parent)
     list_search_terms = wordless_list.Wordless_List_Search_Terms(parent)
-    label_separator = wordless_label.Wordless_Label_Hint(parent.tr('* Use space to separate multiple tokens'), parent)
+    label_separator = wordless_label.Wordless_Label_Hint(parent.tr('* Use spaces to separate multiple tokens'), parent)
 
     checkbox_ignore_case = QCheckBox(parent.tr('Ignore case'), parent)
     checkbox_match_inflected_forms = QCheckBox(parent.tr('Match all inflected forms'), parent)
@@ -526,21 +526,21 @@ def wordless_widgets_table_settings(parent, table):
 
     return checkbox_show_pct, checkbox_show_cumulative, checkbox_show_breakdown
 
-# Plot Settings
-def wordless_widgets_plot_settings(parent):
-    def plot_type_changed():
-        if combo_box_plot_type.currentText() == parent.tr('Line Chart'):
+# Figure Settings
+def wordless_widgets_figure_settings(parent):
+    def graph_type_changed():
+        if combo_box_graph_type.currentText() == parent.tr('Line Chart'):
             combo_box_use_file.setEnabled(False)
 
             use_data_changed()
-        elif combo_box_plot_type.currentText() == parent.tr('Word Cloud'):
+        elif combo_box_graph_type.currentText() == parent.tr('Word Cloud'):
             combo_box_use_file.setEnabled(True)
 
             checkbox_use_pct.setEnabled(False)
             checkbox_use_cumulative.setEnabled(False)
 
     def use_data_changed():
-        if combo_box_plot_type.currentText() == parent.tr('Line Chart'):
+        if combo_box_graph_type.currentText() == parent.tr('Line Chart'):
             if combo_box_use_data.currentText() == parent.tr('Frequency'):
                 checkbox_use_pct.setEnabled(True)
                 checkbox_use_cumulative.setEnabled(True)
@@ -566,8 +566,8 @@ def wordless_widgets_plot_settings(parent):
 
     main = wordless_misc.find_wordless_main(parent)
 
-    label_plot_type = QLabel(parent.tr('Plot Type:'), parent)
-    combo_box_plot_type = wordless_box.Wordless_Combo_Box(parent)
+    label_graph_type = QLabel(parent.tr('Graph Type:'), parent)
+    combo_box_graph_type = wordless_box.Wordless_Combo_Box(parent)
     label_use_file = QLabel(parent.tr('Use File:'), parent)
     combo_box_use_file = wordless_box.Wordless_Combo_Box(parent)
     label_use_data = QLabel(parent.tr('Use Data:'), parent)
@@ -579,21 +579,21 @@ def wordless_widgets_plot_settings(parent):
     checkbox_use_pct = QCheckBox(parent.tr('Use Percentage Data'), parent)
     checkbox_use_cumulative = QCheckBox(parent.tr('Use Cumulative Data'), parent)
 
-    combo_box_plot_type.addItems([parent.tr('Line Chart'),
-                                  parent.tr('Word Cloud')])
+    combo_box_graph_type.addItems([parent.tr('Line Chart'),
+                                   parent.tr('Word Cloud')])
 
-    combo_box_plot_type.currentTextChanged.connect(plot_type_changed)
+    combo_box_graph_type.currentTextChanged.connect(graph_type_changed)
     combo_box_use_data.currentTextChanged.connect(use_data_changed)
 
     main.wordless_files.table.itemChanged.connect(wordless_files_changed)
 
     combo_box_use_file.wordless_files_changed = wordless_files_changed
 
-    plot_type_changed()
+    graph_type_changed()
     use_data_changed()
     wordless_files_changed()
 
-    return (label_plot_type, combo_box_plot_type,
+    return (label_graph_type, combo_box_graph_type,
             label_use_file, combo_box_use_file,
             label_use_data, combo_box_use_data,
             checkbox_use_pct, checkbox_use_cumulative)

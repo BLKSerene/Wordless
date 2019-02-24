@@ -12,13 +12,13 @@
 def wordless_message_generate_table_success(main):
     main.statusBar().showMessage(main.tr('The table has been successfully generated.'))
 
-def wordless_message_generate_plot_success(main):
+def wordless_message_generate_figure_success(main):
     main.statusBar().showMessage(main.tr('The plot has been successfully generated.'))
 
 def wordless_message_generate_table_error(main):
     main.statusBar().showMessage(main.tr('An error occured during table generation!'))
 
-def wordless_message_generate_plot_error(main):
+def wordless_message_generate_figure_error(main):
     main.statusBar().showMessage(main.tr('An error occured during plot generation!'))
 
 def wordless_message_filter_table_done(main):

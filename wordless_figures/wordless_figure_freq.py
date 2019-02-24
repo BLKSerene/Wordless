@@ -1,9 +1,12 @@
 #
-# Wordless: Plots for Frequency
+# Wordless: Figures - Frequency
 #
-# Copyright (C) 2018-2019 Ye Lei (叶磊) <blkserene@gmail.com>
+# Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
-# License Information: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# This source file is licensed under GNU GPLv3.
+# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+# All other rights reserved.
 #
 
 from PyQt5.QtWidgets import *
@@ -14,8 +17,8 @@ import wordcloud
 
 from wordless_utils import wordless_sorting
 
-def wordless_plot_freq(main, tokens_freq_files,
-                       settings, label_x):
+def wordless_figure_freq(main, tokens_freq_files,
+                         settings, label_x):
     files = main.wordless_files.get_selected_files()
     files += [{'name': main.tr('Total')}]
 
@@ -29,7 +32,7 @@ def wordless_plot_freq(main, tokens_freq_files,
     else:
         rank_max = settings['rank_max']
 
-    if settings['plot_type'] == main.tr('Line Chart'):
+    if settings['graph_type'] == main.tr('Line Chart'):
         tokens_freq_files = wordless_sorting.sorted_tokens_freq_files(tokens_freq_files)
 
         total_freqs = numpy.array(list(zip(*tokens_freq_files))[1]).sum(axis = 0)
@@ -69,7 +72,7 @@ def wordless_plot_freq(main, tokens_freq_files,
 
         matplotlib.pyplot.grid(True)
         matplotlib.pyplot.legend()
-    elif settings['plot_type'] == main.tr('Word Cloud'):
+    elif settings['graph_type'] == main.tr('Word Cloud'):
         if rank_max == None:
             max_words = len(tokens_freq_files) - rank_min + 1
         else:
@@ -99,8 +102,8 @@ def wordless_plot_freq(main, tokens_freq_files,
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
         matplotlib.pyplot.axis('off')
 
-def wordless_plot_freq_ref(main, tokens_freq_files, ref_file,
-                           settings, label_x):
+def wordless_figure_freq_ref(main, tokens_freq_files, ref_file,
+                             settings, label_x):
     files = main.wordless_files.get_selected_files()
     files += [{'name': main.tr('Total')}]
 
@@ -114,7 +117,7 @@ def wordless_plot_freq_ref(main, tokens_freq_files, ref_file,
     else:
         rank_max = settings['rank_max']
 
-    if settings['plot_type'] == main.tr('Line Chart'):
+    if settings['graph_type'] == main.tr('Line Chart'):
         tokens_freq_files = wordless_sorting.sorted_tokens_freq_files_ref(tokens_freq_files)
 
         total_freqs = numpy.array([item[1] for item in tokens_freq_files]).sum(axis = 0)
@@ -155,7 +158,7 @@ def wordless_plot_freq_ref(main, tokens_freq_files, ref_file,
 
         matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()
-    elif settings['plot_type'] == main.tr('Word Cloud'):
+    elif settings['graph_type'] == main.tr('Word Cloud'):
         files.remove(ref_file)
 
         if rank_max == None:
