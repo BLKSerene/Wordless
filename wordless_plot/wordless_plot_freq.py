@@ -69,7 +69,6 @@ def wordless_plot_freq(main, tokens_freq_files,
 
         matplotlib.pyplot.grid(True)
         matplotlib.pyplot.legend()
-        matplotlib.pyplot.show()
     elif settings['plot_type'] == main.tr('Word Cloud'):
         if rank_max == None:
             max_words = len(tokens_freq_files) - rank_min + 1
@@ -98,9 +97,7 @@ def wordless_plot_freq(main, tokens_freq_files,
         word_cloud.generate_from_frequencies(tokens_freq_file)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
-
         matplotlib.pyplot.axis('off')
-        matplotlib.pyplot.show()
 
 def wordless_plot_freq_ref(main, tokens_freq_files, ref_file,
                            settings, label_x):
@@ -158,7 +155,6 @@ def wordless_plot_freq_ref(main, tokens_freq_files, ref_file,
 
         matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()
-        matplotlib.pyplot.show()
     elif settings['plot_type'] == main.tr('Word Cloud'):
         files.remove(ref_file)
 
@@ -193,4 +189,3 @@ def wordless_plot_freq_ref(main, tokens_freq_files, ref_file,
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
 
         matplotlib.pyplot.axis('off')
-        matplotlib.pyplot.show()
