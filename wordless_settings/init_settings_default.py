@@ -160,7 +160,7 @@ def init_settings_default(main):
                 'show_pct': True
             },
 
-            'plot_settings': {
+            'figure_settings': {
                 'sort_results_by': main.tr('File')
             },
 
@@ -235,8 +235,8 @@ def init_settings_default(main):
                 'show_breakdown': True
             },
 
-            'plot_settings': {
-                'plot_type': main.tr('Line Chart'),
+            'figure_settings': {
+                'graph_type': main.tr('Line Chart'),
                 'use_file': main.tr('Total'),
                 'use_data': main.tr('Frequency'),
                 'use_pct': False,
@@ -405,8 +405,8 @@ def init_settings_default(main):
                 'show_breakdown': True
             },
 
-            'plot_settings': {
-                'plot_type': main.tr('Line Chart'),
+            'figure_settings': {
+                'graph_type': main.tr('Line Chart'),
                 'use_file': main.tr('Total'),
                 'use_data': main.tr('Frequency'),
                 'use_pct': False,
@@ -568,8 +568,8 @@ def init_settings_default(main):
                 'show_breakdown_file': True
             },
 
-            'plot_settings': {
-                'plot_type': main.tr('Line Chart'),
+            'figure_settings': {
+                'graph_type': main.tr('Line Chart'),
                 'use_file': main.tr('Total'),
                 'use_data': main.tr('p-value'),
                 'use_pct': False,
@@ -742,8 +742,8 @@ def init_settings_default(main):
                 'show_breakdown_file': True
             },
 
-            'plot_settings': {
-                'plot_type': main.tr('Line Chart'),
+            'figure_settings': {
+                'graph_type': main.tr('Line Chart'),
                 'use_file': main.tr('Total'),
                 'use_data': main.tr('p-value'),
                 'use_pct': False,
@@ -846,8 +846,8 @@ def init_settings_default(main):
                 'show_breakdown': True
             },
 
-            'plot_settings': {
-                'plot_type': main.tr('Line Chart'),
+            'figure_settings': {
+                'graph_type': main.tr('Line Chart'),
                 'use_file': main.tr('Total'),
                 'use_data': main.tr('p-value'),
                 'use_pct': False,
