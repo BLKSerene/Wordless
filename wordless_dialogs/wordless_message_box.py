@@ -15,10 +15,10 @@ from PyQt5.QtWidgets import *
 
 from wordless_checking import wordless_checking_misc
 
-class Wordless_Message_Box_Info(QMessageBox):
-    def __init__(self, main, title, text):
+class Wordless_Message_Box(QMessageBox):
+    def __init__(self, main, icon, title, text):
         super().__init__(
-            QMessageBox.Information,
+            icon,
             title,
             f'''
                 {main.settings_global['styles']['style_dialog']}
@@ -26,10 +26,32 @@ class Wordless_Message_Box_Info(QMessageBox):
                     {text}
                 </body>
             ''',
-            parent = main)
+            parent = main
+        )
+
+class Wordless_Message_Box_Info(Wordless_Message_Box):
+    def __init__(self, main, title, text):
+        super().__init__(main = main,
+                         icon = QMessageBox.Information,
+                         title = title,
+                         text = text)
+
+class Wordless_Message_Box_Info_Help(Wordless_Message_Box):
+    def __init__(self, main, title, text):
+        super().__init__(main = main,
+                         icon = QMessageBox.Information,
+                         title = title,
+                         text = text)
 
         self.setTextFormat(Qt.RichText)
         self.setTextInteractionFlags(Qt.TextBrowserInteraction)
+
+class Wordless_Message_Box_Warning(Wordless_Message_Box):
+    def __init__(self, main, title, text):
+        super().__init__(main = main,
+                         icon = QMessageBox.Warning,
+                         title = title,
+                         text = text)
 
 # Files
 def wordless_message_text_file_error(files, text_singular, text_plural):
@@ -309,68 +331,93 @@ def wordless_message_box_reset_layouts(main):
 
     return reply
 
-def wordless_message_box_no_files_selected(main):
-    QMessageBox.warning(main,
-                        main.tr('No Files Selected'),
-                        main.tr(f'''
-                            {main.settings_global['styles']['style_dialog']}
-                            <body>
-                                <div>There are no files being currently selected!</div>
-                                <div>Please check and try again.</div>
-                            </body>
-                        '''),
-                        QMessageBox.Ok)
+# Files
+class Wordless_Message_Box_No_Files_Selected(Wordless_Message_Box_Warning):
+    def __init__(self, main):
+        super().__init__(
+            main = main,
+            title = main.tr('No Files Selected'),
+            text = main.tr('''
+                <div>There are no files being currently selected.</div>
+                <div>Please check and try again.</div>
+            ''')
+        )
 
-def wordless_message_box_missing_ref_file(main):
-    QMessageBox.warning(main,
-                        main.tr('Missing Reference File'),
-                        main.tr(f'''
-                            {main.settings_global['styles']['style_dialog']}
-                            <body>
-                                <div>Please open and select your reference file first!</div>
-                            </body>
-                        '''),
-                        QMessageBox.Ok)
+class Wordless_Message_Box_Missing_Observed_File(Wordless_Message_Box_Warning):
+    def __init__(self, main):
+        super().__init__(
+            main = main,
+            title = main.tr('Missing Observed File'),
+            text = main.tr('''
+                <div>You have specified your reference file, but you haven't selected any observed file yet.</div>
+            ''')
+        )
+
+def wordless_message_box_no_files_selected(main):
+    message_box_no_files_selected = Wordless_Message_Box_No_Files_Selected(main)
+
+    message_box_no_files_selected.open()
 
 def wordless_message_box_missing_observed_files(main):
-    QMessageBox.warning(main,
-                        main.tr('Missing Observed File(s)'),
-                        main.tr(f'''
-                            {main.settings_global['styles']['style_dialog']}
-                            <body>
-                                <div>Please open and select your observed file(s) first!</div>
-                            </body>
-                        '''),
-                        QMessageBox.Ok)
+    message_box_missing_observed_files = Wordless_Message_Box_Missing_Observed_Files(main)
+
+    message_box_missing_observed_files.open()
 
 # Search Terms
-def wordless_message_box_empty_search_term(main):
-    QMessageBox.warning(main,
-                        main.tr('Empty Search Term'),
-                        main.tr(f'''
-                            {main.settings_global['styles']['style_dialog']}
-                            <body>
-                                <div>You haven't specify any search term yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
-                                </div>
-                            </body>
-                        '''),
-                        QMessageBox.Ok)
+class Wordless_Message_Box_Missing_Search_Term(Wordless_Message_Box_Warning):
+    def __init__(self, main):
+        super().__init__(
+            main = main,
+            title = main.tr('Missing Search Term'),
+            text = main.tr('''
+                <div>
+                    You haven't specify any search term yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
+                </div>
+            ''')
+        )
 
-def wordless_message_box_empty_search_term_optional(main):
-    QMessageBox.warning(main,
-                        main.tr('Empty Search Term'),
-                        main.tr(f'''
-                            {main.settings_global['styles']['style_dialog']}
-                            <body>
-                                <div>You haven't specify any search term yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
-                                </div>
+class Wordless_Message_Box_Missing_Search_Term_Optional(Wordless_Message_Box_Warning):
+    def __init__(self, main):
+        super().__init__(
+            main = main,
+            title = main.tr('Missing Search Term'),
+            text = main.tr('''
+                <div>
+                    You haven't specified any search term yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
+                </div>
 
-                                <div>
-                                    Or, you can disable searching altogether by unchecking "<span style="color: #F00; font-weight: bold;">Search Settings</span>", which will then generate all possible results, but it is not recommended to do so since the processing speed might be too slow.
-                                </div>
-                            </body>
-                        '''),
-                        QMessageBox.Ok)
+                <div>
+                    Or, you can disable searching altogether by unchecking "<span style="color: #F00; font-weight: bold;">Search Settings</span>", which will then generate all possible results, but it is not recommended to do so since the processing speed might be too slow.
+                </div>
+            ''')
+        )
+
+def wordless_message_box_missing_search_term(main):
+    message_box_missing_search_term = Wordless_Message_Box_Missing_Search_Term(main)
+
+    message_box_missing_search_term.open()
+
+def wordless_message_box_missing_search_term_optional(main):
+    message_box_missing_search_term_optional = Wordless_Message_Box_Missing_Search_Term_Optional(main)
+
+    message_box_missing_search_term_optional.open()
+
+# Results
+class Wordless_Message_Box_No_Results(Wordless_Message_Box_Warning):
+    def __init__(self, main):
+        super().__init__(
+            main = main,
+            title = main.tr('No Results'),
+            text = main.tr('''
+                <div>Data generation completed successfully, but there are no results to show.</div>
+                <div>You can change your settings and try again.</div>
+            ''')
+        )
+
+def wordless_message_box_no_results(main):
+    message_box_no_results = Wordless_Message_Box_No_Results(main)
+
+    message_box_no_results.open()
 
 def wordless_message_box_no_search_results(main):
     QMessageBox.information(main,
@@ -383,43 +430,7 @@ def wordless_message_box_no_search_results(main):
                             '''),
                             QMessageBox.Ok)
 
-# Results
-def wordless_message_box_no_results_table(main):
-    QMessageBox.information(main,
-                            main.tr('No Search Results'),
-                            main.tr(f'''
-                                {main.settings_global['styles']['style_dialog']}
-                                <body>
-                                    <div>There is nothing to be shown in the table.</div>
-                                    <div>You might want to change your search term(s) and/or your settings, and then try again.</div>
-                                </body>
-                            '''),
-                            QMessageBox.Ok)
-
-def wordless_message_box_no_results_plot(main):
-    QMessageBox.information(main,
-                            main.tr('No Search Results'),
-                            main.tr(f'''
-                                {main.settings_global['styles']['style_dialog']}
-                                <body>
-                                    <div>There is nothing to be shown in the figure.</div>
-                                    <div>You might want to change your search term(s) and/or your settings, and then try again.</div>
-                                </body>
-                            '''),
-                            QMessageBox.Ok)
-
 # Export
-def wordless_message_box_export_table(main, file_path):
-    QMessageBox.information(main,
-                            main.tr('Export Completed'),
-                            main.tr(f'''
-                                {main.settings_global['styles']['style_dialog']}
-                                <body>
-                                    <div>The table has been successfully exported to "{file_path}".</div>
-                                </body>
-                            '''),
-                            QMessageBox.Ok)
-
 def wordless_message_box_export_search_terms(main, file_path):
     QMessageBox.information(main,
                             main.tr('Export Completed'),
@@ -427,6 +438,17 @@ def wordless_message_box_export_search_terms(main, file_path):
                                 {main.settings_global['styles']['style_dialog']}
                                 <body>
                                     <div>The search terms have been successfully exported to "{file_path}".</div>
+                                </body>
+                            '''),
+                            QMessageBox.Ok)
+
+def wordless_message_box_export_table(main, file_path):
+    QMessageBox.information(main,
+                            main.tr('Export Completed'),
+                            main.tr(f'''
+                                {main.settings_global['styles']['style_dialog']}
+                                <body>
+                                    <div>The table has been successfully exported to "{file_path}".</div>
                                 </body>
                             '''),
                             QMessageBox.Ok)

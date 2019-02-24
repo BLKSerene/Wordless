@@ -78,7 +78,7 @@ class Wordless_Files():
                 detection_success_text_type,
                 detection_success_lang)
 
-    @ wordless_misc.log_timing
+    @wordless_misc.log_timing
     def add_files(self, file_paths):
         # python-docx/Issue #276: https://github.com/python-openxml/python-docx/issues/276
         def iter_block_items(parent):

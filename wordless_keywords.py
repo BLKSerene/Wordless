@@ -16,6 +16,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+import matplotlib.pyplot
 import numpy
 
 from wordless_checking import *
@@ -411,362 +412,388 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-def generate_keywords(main, files, ref_file):
-    texts = []
-    keywords_freq_files = []
-    keywords_stats_files = []
+class Worker_Process_Data(wordless_threading.Worker_Process_Data):
+    processing_finished = pyqtSignal(dict, dict)
 
-    settings = main.settings_custom['keywords']
+    def process_data(self):
+        texts = []
+        keywords_freq_files = []
+        keywords_stats_files = []
 
-    # Frequency
-    for i, file in enumerate([ref_file] + files):
-        text = wordless_text.Wordless_Text(main, file)
+        settings = self.main.settings_custom['keywords']
+        ref_file = self.main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'], selected_only = True)
 
-        tokens = wordless_token_processing.wordless_process_tokens_wordlist(text,
-                                                                            token_settings = settings['token_settings'])
+        files = [file
+                 for file in self.main.wordless_files.get_selected_files()
+                 if file != ref_file]
 
-        keywords_freq_files.append(collections.Counter(tokens))
+        # Frequency
+        for i, file in enumerate([ref_file] + files):
+            text = wordless_text.Wordless_Text(self.main, file)
 
-        if i > 0:
-            texts.append(text)
+            tokens = wordless_token_processing.wordless_process_tokens_wordlist(text,
+                                                                                token_settings = settings['token_settings'])
+
+            keywords_freq_files.append(collections.Counter(tokens))
+
+            if i > 0:
+                texts.append(text)
+            else:
+                tokens_ref = text.tokens
+                len_tokens_ref = len(tokens_ref)
+
+        # Total
+        if len(files) > 1:
+            text_total = wordless_text.Wordless_Text_Blank()
+            text_total.tokens = [token for text in texts for token in text.tokens]
+
+            texts.append(text_total)
+            keywords_freq_files.append(sum(keywords_freq_files, collections.Counter()))
+
+            keywords_freq_files[0] = {token: freq
+                                      for token, freq in keywords_freq_files[0].items()
+                                      if token in text_total.tokens}
         else:
-            tokens_ref = text.tokens
-            len_tokens_ref = len(tokens_ref)
+            keywords_freq_files[0] = {token: freq
+                                      for token, freq in keywords_freq_files[0].items()
+                                      if token in keywords_freq_files[1]}
 
-    # Total
-    if len(files) > 1:
-        text_total = wordless_text.Wordless_Text_Blank()
-        text_total.tokens = [token for text in texts for token in text.tokens]
+        self.progress_updated.emit(self.tr('Processing data ...'))
 
-        texts.append(text_total)
-        keywords_freq_files.append(sum(keywords_freq_files, collections.Counter()))
+        # Keyness
+        text_test_significance = settings['generation_settings']['test_significance']
+        text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-        keywords_freq_files[0] = {token: freq
-                                  for token, freq in keywords_freq_files[0].items()
-                                  if token in text_total.tokens}
-    else:
-        keywords_freq_files[0] = {token: freq
-                                  for token, freq in keywords_freq_files[0].items()
-                                  if token in keywords_freq_files[1]}
+        test_significance = self.main.settings_global['tests_significance']['keywords'][text_test_significance]['func']
+        measure_effect_size = self.main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['func']
 
-    # Keyness
-    text_test_significance = settings['generation_settings']['test_significance']
-    text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+        keywords_freq_file_observed = keywords_freq_files[-1]
+        keywords_freq_file_ref = keywords_freq_files[0]
 
-    test_significance = main.settings_global['tests_significance']['keywords'][text_test_significance]['func']
-    measure_effect_size = main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['func']
+        for text in texts:
+            keywords_stats_file = {}
 
-    keywords_freq_file_observed = keywords_freq_files[-1]
-    keywords_freq_file_ref = keywords_freq_files[0]
+            tokens_observed = text.tokens
+            len_tokens_observed = len(tokens_observed)
 
-    for text in texts:
-        keywords_stats_file = {}
-
-        tokens_observed = text.tokens
-        len_tokens_observed = len(tokens_observed)
-
-        if text_test_significance in [main.tr('Student\'s t-test (Two-sample)'),
-                                      main.tr('Mann-Whitney U Test')]:
-            # Test Statistic, p-value & Bayes Factor
-            if text_test_significance == main.tr('Student\'s t-test (Two-sample)'):
-                number_sections = main.settings_custom['measures']['statistical_significance']['students_t_test_two_sample']['number_sections']
-                use_data = main.settings_custom['measures']['statistical_significance']['students_t_test_two_sample']['use_data']
-            elif text_test_significance == main.tr('Mann-Whitney U Test'):
-                number_sections = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['number_sections']
-                use_data = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']
-
-            sections_observed = wordless_text_utils.to_sections(tokens_observed, number_sections)
-            sections_ref = wordless_text_utils.to_sections(tokens_ref, number_sections)
-
-            sections_freq_observed = [collections.Counter(section) for section in sections_observed]
-            sections_freq_ref = [collections.Counter(section) for section in sections_observed]
-
-            len_sections_observed = [len(section) for section in sections_observed]
-            len_sections_ref = [len(section) for section in sections_ref]
-
-            if use_data == main.tr('Absolute Frequency'):
-                for token in keywords_freq_file_observed:
-                    counts_observed = [section_freq.get(token, 0) for section_freq in sections_freq_observed]
-                    counts_ref = [section_freq.get(token, 0) for section_freq in sections_freq_ref]
-
-                    keywords_stats_file[token] = test_significance(main, counts_observed, counts_ref)
-            elif use_data == main.tr('Relative Frequency'):
-                for token in keywords_freq_file_observed:
-                    counts_observed = [section_freq.get(token, 0) / len_sections_observed[i]
-                                       for i, section_freq in enumerate(sections_freq_observed)]
-                    counts_ref = [section_freq.get(token, 0) / len_sections_ref[i]
-                                  for i, section_freq in enumerate(sections_freq_ref)]
-
-                    keywords_stats_file[token] = test_significance(main, counts_observed, counts_ref)
-
-            # Effect Size
-            for token in keywords_freq_file_observed:
-                c11 = keywords_freq_file_observed.get(token, 0)
-                c12 = keywords_freq_file_ref.get(token, 0)
-                c21 = len_tokens_observed - c11
-                c22 = len_tokens_ref - c12
-
-                keywords_stats_file[token].append(measure_effect_size(main, c11, c12, c21, c22))
-        else:
-            for token in keywords_freq_file_observed:
-                c11 = keywords_freq_file_observed.get(token, 0)
-                c12 = keywords_freq_file_ref.get(token, 0)
-                c21 = len_tokens_observed - c11
-                c22 = len_tokens_ref - c12
-
+            if text_test_significance in [self.tr('Student\'s t-test (Two-sample)'),
+                                          self.tr('Mann-Whitney U Test')]:
                 # Test Statistic, p-value & Bayes Factor
-                keywords_stats_file[token] = test_significance(main, c11, c12, c21, c22)
+                if text_test_significance == self.tr('Student\'s t-test (Two-sample)'):
+                    number_sections = self.main.settings_custom['measures']['statistical_significance']['students_t_test_two_sample']['number_sections']
+                    use_data = self.main.settings_custom['measures']['statistical_significance']['students_t_test_two_sample']['use_data']
+                elif text_test_significance == self.tr('Mann-Whitney U Test'):
+                    number_sections = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['number_sections']
+                    use_data = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']
+
+                sections_observed = wordless_text_utils.to_sections(tokens_observed, number_sections)
+                sections_ref = wordless_text_utils.to_sections(tokens_ref, number_sections)
+
+                sections_freq_observed = [collections.Counter(section) for section in sections_observed]
+                sections_freq_ref = [collections.Counter(section) for section in sections_observed]
+
+                len_sections_observed = [len(section) for section in sections_observed]
+                len_sections_ref = [len(section) for section in sections_ref]
+
+                if use_data == self.tr('Absolute Frequency'):
+                    for token in keywords_freq_file_observed:
+                        counts_observed = [section_freq.get(token, 0) for section_freq in sections_freq_observed]
+                        counts_ref = [section_freq.get(token, 0) for section_freq in sections_freq_ref]
+
+                        keywords_stats_file[token] = test_significance(self.main, counts_observed, counts_ref)
+                elif use_data == self.tr('Relative Frequency'):
+                    for token in keywords_freq_file_observed:
+                        counts_observed = [section_freq.get(token, 0) / len_sections_observed[i]
+                                           for i, section_freq in enumerate(sections_freq_observed)]
+                        counts_ref = [section_freq.get(token, 0) / len_sections_ref[i]
+                                      for i, section_freq in enumerate(sections_freq_ref)]
+
+                        keywords_stats_file[token] = test_significance(self.main, counts_observed, counts_ref)
 
                 # Effect Size
-                keywords_stats_file[token].append(measure_effect_size(main, c11, c12, c21, c22))
+                for token in keywords_freq_file_observed:
+                    c11 = keywords_freq_file_observed.get(token, 0)
+                    c12 = keywords_freq_file_ref.get(token, 0)
+                    c21 = len_tokens_observed - c11
+                    c22 = len_tokens_ref - c12
 
-        keywords_stats_files.append(keywords_stats_file)
+                    keywords_stats_file[token].append(measure_effect_size(self.main, c11, c12, c21, c22))
+            else:
+                for token in keywords_freq_file_observed:
+                    c11 = keywords_freq_file_observed.get(token, 0)
+                    c12 = keywords_freq_file_ref.get(token, 0)
+                    c21 = len_tokens_observed - c11
+                    c22 = len_tokens_ref - c12
 
-    if len(files) == 1:
-        keywords_freq_files.append(keywords_freq_files[1])
-        keywords_stats_files *= 2
+                    # Test Statistic, p-value & Bayes Factor
+                    keywords_stats_file[token] = test_significance(self.main, c11, c12, c21, c22)
 
-    return (wordless_misc.merge_dicts(keywords_freq_files),
-            wordless_misc.merge_dicts(keywords_stats_files))
+                    # Effect Size
+                    keywords_stats_file[token].append(measure_effect_size(self.main, c11, c12, c21, c22))
 
-@ wordless_misc.log_timing
+            keywords_stats_files.append(keywords_stats_file)
+
+        if len(files) == 1:
+            keywords_freq_files.append(keywords_freq_files[1])
+            keywords_stats_files *= 2
+
+        self.processing_finished.emit(wordless_misc.merge_dicts(keywords_freq_files),
+                                      wordless_misc.merge_dicts(keywords_stats_files))
+
+@wordless_misc.log_timing
 def generate_table(main, table):
-    settings = main.settings_custom['keywords']
+    def data_received(keywords_freq_files, keywords_stats_files):
+        if keywords_freq_files:
+            table.clear_table()
 
+            table.settings = copy.deepcopy(main.settings_custom)
+
+            text_test_significance = settings['generation_settings']['test_significance']
+            text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+
+            (text_test_stat,
+             text_p_value,
+             text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
+            text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+
+            table.blockSignals(True)
+            table.setSortingEnabled(False)
+            table.setUpdatesEnabled(False)
+
+            # Insert columns (Files)
+            table.insert_col(table.columnCount() - 1,
+                             main.tr(f'[{ref_file["name"]}]\nFrequency'),
+                             num = True, pct = True, cumulative = True)
+
+            for file in files:
+                table.insert_col(table.columnCount() - 1,
+                                 main.tr(f'[{file["name"]}]\nFrequency'),
+                                 num = True, pct = True, cumulative = True, breakdown = True)
+
+                if text_test_stat:
+                    table.insert_col(table.columnCount() - 1,
+                                     main.tr(f'[{file["name"]}]\n{text_test_stat}'),
+                                     num = True, breakdown = True)
+
+                table.insert_col(table.columnCount() - 1,
+                                 main.tr(f'[{file["name"]}]\n{text_p_value}'),
+                                 num = True, breakdown = True)
+
+                if text_bayes_factor:
+                    table.insert_col(table.columnCount() - 1,
+                                     main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
+                                     num = True, breakdown = True)
+
+                table.insert_col(table.columnCount() - 1,
+                                 main.tr(f'[{file["name"]}]\n{text_effect_size}'),
+                                 num = True, breakdown = True)
+
+            # Insert columns (Total)
+            table.insert_col(table.columnCount() - 1,
+                             main.tr(f'Total\nFrequency'),
+                             num = True, pct = True, cumulative = True)
+
+            if text_test_stat:
+                table.insert_col(table.columnCount() - 1,
+                                 main.tr(f'Total\n{text_test_stat}'),
+                                 num = True)
+
+            table.insert_col(table.columnCount() - 1,
+                             main.tr(f'Total\n{text_p_value}'),
+                             num = True)
+
+            if text_bayes_factor:
+                table.insert_col(table.columnCount() - 1,
+                                 main.tr(f'Total\n{text_bayes_factor}'),
+                                 num = True)
+
+            table.insert_col(table.columnCount() - 1,
+                             main.tr(f'Total\n{text_effect_size}'),
+                             num = True)
+
+            # Sort by p-value of the first file
+            table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{text_p_value}')), Qt.AscendingOrder)
+
+            cols_freq = table.find_cols(main.tr('\nFrequency'))
+
+            if text_test_stat:
+                cols_test_stat = table.find_cols(main.tr(f'\n{text_test_stat}'))
+
+            cols_p_value = table.find_cols(main.tr('\np-value'))
+
+            if text_bayes_factor:
+                cols_bayes_factor = table.find_cols(main.tr('\nBayes Factor'))
+
+            cols_effect_size = table.find_cols(f'\n{text_effect_size}')
+            col_number_files_found = table.find_col(main.tr('Number of\nFiles Found'))
+
+            len_files = len(files)
+
+            table.setRowCount(len(keywords_freq_files))
+
+            for i, (keyword, stats_files) in enumerate(wordless_sorting.sorted_keywords_stats_files(keywords_stats_files)):
+                keyword_freq_files = keywords_freq_files[keyword]
+
+                # Rank
+                table.set_item_num_int(i, 0, -1)
+
+                # Keywords
+                table.setItem(i, 1, wordless_table.Wordless_Table_Item(keyword))
+
+                # Frequency
+                for j, freq in enumerate(keyword_freq_files):
+                    table.set_item_num_cumulative(i, cols_freq[j], freq)
+
+                for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
+                    # Test Statistic
+                    if text_test_stat:
+                        table.set_item_num_float(i, cols_test_stat[j], test_stat)
+
+                    # p-value
+                    table.set_item_num_float(i, cols_p_value[j], p_value)
+
+                    # Bayes Factor
+                    if text_bayes_factor:
+                        table.set_item_num_float(i, cols_bayes_factor[j], bayes_factor)
+
+                    # Effect Size
+                    table.set_item_num_float(i, cols_effect_size[j], effect_size)
+
+                # Number of Files Found
+                table.set_item_num_pct(i, col_number_files_found,
+                                       len([freq for freq in keyword_freq_files[1:-1] if freq]),
+                                       len_files)
+
+            table.blockSignals(False)
+            table.setSortingEnabled(True)
+            table.setUpdatesEnabled(True)
+
+            table.toggle_pct()
+            table.toggle_cumulative()
+            table.toggle_breakdown()
+            table.update_ranks()
+            table.update_items_width()
+
+            table.itemChanged.emit(table.item(0, 0))
+
+            wordless_message.wordless_message_generate_table_success(main)
+        else:
+            wordless_message_box.wordless_message_box_no_results(main)
+
+            wordless_message.wordless_message_generate_table_error(main)
+
+        dialog_processing.accept()
+
+    settings = main.settings_custom['keywords']
     files = main.wordless_files.get_selected_files()
 
     if wordless_checking_file.check_files_on_loading(main, files):
-        if settings['generation_settings']['ref_file']:
-            ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
-                                                             selected_only = True)
+        ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
+                                                         selected_only = True)
 
-            files = [file
-                     for file in main.wordless_files.get_selected_files()
-                     if file != ref_file]
+        files = [file
+                 for file in main.wordless_files.get_selected_files()
+                 if file != ref_file]
 
-            if files:
-                keywords_freq_files, keywords_stats_files = generate_keywords(main, files, ref_file)
+        if files:
+            dialog_processing = wordless_dialog_misc.Wordless_Dialog_Processing_Generate_Data(main)
 
-                if keywords_freq_files:
-                    table.clear_table()
+            worker_process_data = Worker_Process_Data(main, dialog_processing, data_received)
+            thread_process_data = wordless_threading.Thread_Process_Data(worker_process_data)
 
-                    table.settings = copy.deepcopy(main.settings_custom)
+            thread_process_data.start()
 
-                    text_test_significance = settings['generation_settings']['test_significance']
-                    text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+            dialog_processing.exec_()
 
-                    (text_test_stat,
-                     text_p_value,
-                     text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-                    text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
-
-                    table.blockSignals(True)
-                    table.setSortingEnabled(False)
-                    table.setUpdatesEnabled(False)
-
-                    # Insert columns (Files)
-                    table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'[{ref_file["name"]}]\nFrequency'),
-                                     num = True, pct = True, cumulative = True)
-
-                    for file in files:
-                        table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}]\nFrequency'),
-                                         num = True, pct = True, cumulative = True, breakdown = True)
-
-                        if text_test_stat:
-                            table.insert_col(table.columnCount() - 1,
-                                             main.tr(f'[{file["name"]}]\n{text_test_stat}'),
-                                             num = True, breakdown = True)
-
-                        table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}]\n{text_p_value}'),
-                                         num = True, breakdown = True)
-
-                        if text_bayes_factor:
-                            table.insert_col(table.columnCount() - 1,
-                                             main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
-                                             num = True, breakdown = True)
-
-                        table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}]\n{text_effect_size}'),
-                                         num = True, breakdown = True)
-
-                    # Insert columns (Total)
-                    table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'Total\nFrequency'),
-                                     num = True, pct = True, cumulative = True)
-
-                    if text_test_stat:
-                        table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'Total\n{text_test_stat}'),
-                                         num = True)
-
-                    table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'Total\n{text_p_value}'),
-                                     num = True)
-
-                    if text_bayes_factor:
-                        table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'Total\n{text_bayes_factor}'),
-                                         num = True)
-
-                    table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'Total\n{text_effect_size}'),
-                                     num = True)
-
-                    # Sort by p-value of the first file
-                    table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{text_p_value}')), Qt.AscendingOrder)
-
-                    cols_freq = table.find_cols(main.tr('\nFrequency'))
-
-                    if text_test_stat:
-                        cols_test_stat = table.find_cols(main.tr(f'\n{text_test_stat}'))
-
-                    cols_p_value = table.find_cols(main.tr('\np-value'))
-
-                    if text_bayes_factor:
-                        cols_bayes_factor = table.find_cols(main.tr('\nBayes Factor'))
-
-                    cols_effect_size = table.find_cols(f'\n{text_effect_size}')
-                    col_number_files_found = table.find_col(main.tr('Number of\nFiles Found'))
-
-                    len_files = len(files)
-
-                    table.setRowCount(len(keywords_freq_files))
-
-                    for i, (keyword, stats_files) in enumerate(wordless_sorting.sorted_keywords_stats_files(keywords_stats_files)):
-                        keyword_freq_files = keywords_freq_files[keyword]
-
-                        # Rank
-                        table.set_item_num_int(i, 0, -1)
-
-                        # Keywords
-                        table.setItem(i, 1, wordless_table.Wordless_Table_Item(keyword))
-
-                        # Frequency
-                        for j, freq in enumerate(keyword_freq_files):
-                            table.set_item_num_cumulative(i, cols_freq[j], freq)
-
-                        for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
-                            # Test Statistic
-                            if text_test_stat:
-                                table.set_item_num_float(i, cols_test_stat[j], test_stat)
-
-                            # p-value
-                            table.set_item_num_float(i, cols_p_value[j], p_value)
-
-                            # Bayes Factor
-                            if text_bayes_factor:
-                                table.set_item_num_float(i, cols_bayes_factor[j], bayes_factor)
-
-                            # Effect Size
-                            table.set_item_num_float(i, cols_effect_size[j], effect_size)
-
-                        # Number of Files Found
-                        table.set_item_num_pct(i, col_number_files_found,
-                                               len([freq for freq in keyword_freq_files[1:-1] if freq]),
-                                               len_files)
-
-                    table.blockSignals(False)
-                    table.setSortingEnabled(True)
-                    table.setUpdatesEnabled(True)
-
-                    table.toggle_pct()
-                    table.toggle_cumulative()
-                    table.toggle_breakdown()
-                    table.update_ranks()
-
-                    table.update_items_width()
-
-                    table.itemChanged.emit(table.item(0, 0))
-
-                    wordless_message.wordless_message_generate_table_success(main)
-                else:
-                    wordless_message_box.wordless_message_box_no_results_table(main)
-
-                    wordless_message.wordless_message_generate_table_error(main)
-            else:
-                wordless_message_box.wordless_message_box_missing_observed_files(main)
-
-                wordless_message.wordless_message_generate_table_error(main)
+            thread_process_data.quit()
+            thread_process_data.wait()
         else:
-            wordless_message_box.wordless_message_box_missing_ref_file(main)
+            wordless_message_box.wordless_message_box_missing_observed_file(main)
 
             wordless_message.wordless_message_generate_table_error(main)
     else:
         wordless_message.wordless_message_generate_table_error(main)
 
-@ wordless_misc.log_timing
+@wordless_misc.log_timing
 def generate_plot(main):
-    settings = main.settings_custom['keywords']
+    def data_received(keywords_freq_files, keywords_stats_files):
+        if keywords_freq_files:
+            text_test_significance = settings['generation_settings']['test_significance']
+            text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
+            (text_test_stat,
+             text_p_value,
+             text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
+            text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+
+            if settings['plot_settings']['use_data'] == main.tr('Frequency'):
+                wordless_plot_freq.wordless_plot_freq_ref(main, keywords_freq_files,
+                                                          ref_file = ref_file,
+                                                          settings = settings['plot_settings'],
+                                                          label_x = main.tr('Keywords'))
+            else:
+                if settings['plot_settings']['use_data'] == text_test_stat:
+                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 0]
+                                           for keyword, stats_files in keywords_stats_files.items()}
+
+                    label_y = text_test_stat
+                elif settings['plot_settings']['use_data'] == text_p_value:
+                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 1]
+                                           for keyword, stats_files in keywords_stats_files.items()}
+
+                    label_y = text_p_value
+                elif settings['plot_settings']['use_data'] == text_bayes_factor:
+                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 2]
+                                           for keyword, stats_files in keywords_stats_files.items()}
+
+                    label_y = text_bayes_factor
+                elif settings['plot_settings']['use_data'] == text_effect_size:
+                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 3]
+                                           for keyword, stats_files in keywords_stats_files.items()}
+
+                    label_y = text_effect_size
+
+                wordless_plot_stat.wordless_plot_stat_ref(main, keywords_stat_files,
+                                                          ref_file = ref_file,
+                                                          settings = settings['plot_settings'],
+                                                          label_y = label_y)
+
+            wordless_message.wordless_message_generate_plot_success(main)
+        else:
+            wordless_message_box.wordless_message_box_no_results(main)
+
+            wordless_message.wordless_message_generate_plot_error(main)
+
+        dialog_processing.accept()
+
+        if keywords_freq_files:
+            matplotlib.pyplot.get_current_fig_manager().window.showMaximized()
+
+    settings = main.settings_custom['keywords']
     files = main.wordless_files.get_selected_files()
 
     if wordless_checking_file.check_files_on_loading(main, files):
-        if settings['generation_settings']['ref_file']:
-            ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
-                                                             selected_only = True)
+        ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
+                                                         selected_only = True)
 
-            files = [file
-                     for file in main.wordless_files.get_selected_files()
-                     if file != ref_file]
+        files = [file
+                 for file in main.wordless_files.get_selected_files()
+                 if file != ref_file]
 
-            if files:
-                keywords_freq_files, keywords_stats_files = generate_keywords(main, files, ref_file)
+        if files:
+            dialog_processing = wordless_dialog_misc.Wordless_Dialog_Processing_Generate_Data(main)
 
-                if keywords_freq_files:
-                    text_test_significance = settings['generation_settings']['test_significance']
-                    text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+            worker_process_data = Worker_Process_Data(main, dialog_processing, data_received)
+            thread_process_data = wordless_threading.Thread_Process_Data(worker_process_data)
 
-                    (text_test_stat,
-                     text_p_value,
-                     text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-                    text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+            thread_process_data.start()
 
-                    if settings['plot_settings']['use_data'] == main.tr('Frequency'):
-                        wordless_plot_freq.wordless_plot_freq_ref(main, keywords_freq_files,
-                                                                  ref_file = ref_file,
-                                                                  settings = settings['plot_settings'],
-                                                                  label_x = main.tr('Keywords'))
-                    else:
-                        if settings['plot_settings']['use_data'] == text_test_stat:
-                            keywords_stat_files = {keyword: numpy.array(stats_files)[:, 0]
-                                                   for keyword, stats_files in keywords_stats_files.items()}
+            dialog_processing.exec_()
 
-                            label_y = text_test_stat
-                        elif settings['plot_settings']['use_data'] == text_p_value:
-                            keywords_stat_files = {keyword: numpy.array(stats_files)[:, 1]
-                                                   for keyword, stats_files in keywords_stats_files.items()}
-
-                            label_y = text_p_value
-                        elif settings['plot_settings']['use_data'] == text_bayes_factor:
-                            keywords_stat_files = {keyword: numpy.array(stats_files)[:, 2]
-                                                   for keyword, stats_files in keywords_stats_files.items()}
-
-                            label_y = text_bayes_factor
-                        elif settings['plot_settings']['use_data'] == text_effect_size:
-                            keywords_stat_files = {keyword: numpy.array(stats_files)[:, 3]
-                                                   for keyword, stats_files in keywords_stats_files.items()}
-
-                            label_y = text_effect_size
-
-                        wordless_plot_stat.wordless_plot_stat_ref(main, keywords_stat_files,
-                                                                  ref_file = ref_file,
-                                                                  settings = settings['plot_settings'],
-                                                                  label_y = label_y)
-
-                    wordless_message.wordless_message_generate_plot_success(main)
-                else:
-                    wordless_message_box.wordless_message_box_no_results_plot(main)
-
-                    wordless_message.wordless_message_generate_plot_error(main)
-            else:
-                wordless_message_box.wordless_message_box_missing_observed_files(main)
-
-                wordless_message.wordless_message_generate_plot_error(main)
+            thread_process_data.quit()
+            thread_process_data.wait()
         else:
-            wordless_message_box.wordless_message_box_missing_ref_file(main)
+            wordless_message_box.wordless_message_box_missing_observed_file(main)
 
             wordless_message.wordless_message_generate_plot_error(main)
     else:

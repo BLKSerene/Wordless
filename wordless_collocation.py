@@ -17,6 +17,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+import matplotlib.pyplot
 import nltk
 import numpy
 
@@ -617,446 +618,479 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-def generate_collocates(main, files):
-    texts = []
-    ngrams_freq_files = []
-    collocates_freqs_files = []
-    collocates_stats_files = []
-    nodes_text = {}
+class Worker_Process_Data(wordless_threading.Worker_Process_Data):
+    processing_finished = pyqtSignal(dict, dict, dict)
 
-    settings = main.settings_custom['collocation']
+    def process_data(self):
+        texts = []
+        ngrams_freq_files = []
+        collocates_freqs_files = []
+        collocates_stats_files = []
+        nodes_text = {}
 
-    if settings['generation_settings']['window_left'] < 0 and settings['generation_settings']['window_right'] > 0:
-        window_size_left = abs(settings['generation_settings']['window_left'])
-        window_size_right = abs(settings['generation_settings']['window_right'])
-    elif settings['generation_settings']['window_left'] > 0 and settings['generation_settings']['window_right'] > 0:
-        window_size_left = 0
-        window_size_right = settings['generation_settings']['window_right'] - settings['generation_settings']['window_left'] + 1
-    elif settings['generation_settings']['window_left'] < 0 and settings['generation_settings']['window_right'] < 0:
-        window_size_left = settings['generation_settings']['window_right'] - settings['generation_settings']['window_left'] + 1
-        window_size_right = 0
+        settings = self.main.settings_custom['collocation']
 
-    window_size = window_size_left + window_size_right
+        if settings['generation_settings']['window_left'] < 0 and settings['generation_settings']['window_right'] > 0:
+            window_size_left = abs(settings['generation_settings']['window_left'])
+            window_size_right = abs(settings['generation_settings']['window_right'])
+        elif settings['generation_settings']['window_left'] > 0 and settings['generation_settings']['window_right'] > 0:
+            window_size_left = 0
+            window_size_right = settings['generation_settings']['window_right'] - settings['generation_settings']['window_left'] + 1
+        elif settings['generation_settings']['window_left'] < 0 and settings['generation_settings']['window_right'] < 0:
+            window_size_left = settings['generation_settings']['window_right'] - settings['generation_settings']['window_left'] + 1
+            window_size_right = 0
 
-    # Frequency
-    for i, file in enumerate(files):
-        collocates_freqs_file = {}
+        window_size = window_size_left + window_size_right
 
-        text = wordless_text.Wordless_Text(main, file)
+        files = self.main.wordless_files.get_selected_files()
 
-        tokens = wordless_token_processing.wordless_process_tokens_ngrams(text,
-                                                                          token_settings = settings['token_settings'])
+        # Frequency
+        for i, file in enumerate(files):
+            collocates_freqs_file = {}
 
-        search_terms = wordless_matching.match_search_terms(main, tokens,
-                                                            lang = text.lang,
-                                                            text_type = text.text_type,
-                                                            token_settings = settings['token_settings'],
-                                                            search_settings = settings['search_settings'])
+            text = wordless_text.Wordless_Text(self.main, file)
 
-        (search_terms_inclusion,
-         search_terms_exclusion) = wordless_matching.match_search_terms_context(main, tokens,
-                                                                                lang = text.lang,
-                                                                                text_type = text.text_type,
-                                                                                token_settings = settings['token_settings'],
-                                                                                context_settings = settings['context_settings'])
+            tokens = wordless_token_processing.wordless_process_tokens_ngrams(text,
+                                                                              token_settings = settings['token_settings'])
 
-        if search_terms:
-            len_search_term_min = min([len(search_term) for search_term in search_terms])
-            len_search_term_max = max([len(search_term) for search_term in search_terms])
-        else:
-            len_search_term_min = 1
-            len_search_term_max = 1
+            search_terms = wordless_matching.match_search_terms(self.main, tokens,
+                                                                lang = text.lang,
+                                                                text_type = text.text_type,
+                                                                token_settings = settings['token_settings'],
+                                                                search_settings = settings['search_settings'])
 
-        for ngram_size in range(len_search_term_min, len_search_term_max + 1):
-            for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
-                for j, collocate in enumerate(reversed(tokens[max(0, i - window_size_left) : i])):
-                    if wordless_matching.check_context(i, tokens,
-                                                       context_settings = settings['context_settings'],
-                                                       search_terms_inclusion = search_terms_inclusion,
-                                                       search_terms_exclusion = search_terms_exclusion):
-                        if (ngram, collocate) not in collocates_freqs_file:
-                            collocates_freqs_file[(ngram, collocate)] = [0] * window_size
+            (search_terms_inclusion,
+             search_terms_exclusion) = wordless_matching.match_search_terms_context(self.main, tokens,
+                                                                                    lang = text.lang,
+                                                                                    text_type = text.text_type,
+                                                                                    token_settings = settings['token_settings'],
+                                                                                    context_settings = settings['context_settings'])
 
-                        collocates_freqs_file[(ngram, collocate)][window_size_left - 1 - j] += 1
-
-                for j, collocate in enumerate(tokens[i + ngram_size: i + ngram_size + window_size_right]):
-                    if wordless_matching.check_context(i, tokens,
-                                                       context_settings = settings['context_settings'],
-                                                       search_terms_inclusion = search_terms_inclusion,
-                                                       search_terms_exclusion = search_terms_exclusion):
-                        if (ngram, collocate) not in collocates_freqs_file:
-                            collocates_freqs_file[(ngram, collocate)] = [0] * window_size
-
-                        collocates_freqs_file[(ngram, collocate)][window_size_left + j] += 1
-
-        collocates_freqs_file = {(ngram, collocate): freqs
-                                 for (ngram, collocate), freqs in collocates_freqs_file.items()
-                                 if all(ngram) and collocate}
-
-        # Filter search terms
-        if settings['search_settings']['search_settings']:
-            collocates_freqs_file_filtered = {}
-
-            for search_term in search_terms:
-                len_search_term = len(search_term)
-
-                for (node, collocate), freqs in collocates_freqs_file.items():
-                    for ngram in nltk.ngrams(node, len_search_term):
-                        if ngram == search_term:
-                            collocates_freqs_file_filtered[(node, collocate)] = freqs
-
-            collocates_freqs_files.append(collocates_freqs_file_filtered)
-        else:
-            collocates_freqs_files.append(collocates_freqs_file)
-
-        # Frequency (N-grams)
-        for i in {1} | set(range(len_search_term_min, len_search_term_max + 1)):
-            ngrams = [ngram
-                      for ngram in nltk.ngrams(tokens, i)
-                      if all(ngram)]
-
-            ngrams_freq_files.append(collections.Counter(ngrams))
-
-        # Nodes Text
-        for (node, collocate) in collocates_freqs_file:
-            nodes_text[node] = wordless_text_processing.wordless_word_detokenize(main, node, text.lang)
-
-        texts.append(text)
-
-    # Total
-    if len(files) > 1:
-        collocates_freqs_total = {}
-
-        text_total = wordless_text.Wordless_Text_Blank()
-        text_total.tokens = [token for text in texts for token in text.tokens]
-
-        texts.append(text_total)
-        ngrams_freq_files.append(sum(ngrams_freq_files, collections.Counter()))
-
-        for collocates_freqs_file in collocates_freqs_files:
-            for collocate, freqs in collocates_freqs_file.items():
-                if collocate not in collocates_freqs_total:
-                    collocates_freqs_total[collocate] = numpy.array(freqs)
-                else:
-                    collocates_freqs_total[collocate] += numpy.array(freqs)
-
-        collocates_freqs_files.append(collocates_freqs_total)
-
-    # Statistiscal Significance & Effect Size
-    text_test_significance = settings['generation_settings']['test_significance']
-    text_measure_effect_size = settings['generation_settings']['measure_effect_size']
-
-    test_significance = main.settings_global['tests_significance']['collocation'][text_test_significance]['func']
-    measure_effect_size = main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['func']
-
-    collocates_total = collocates_freqs_files[-1].keys()
-
-    for text, ngrams_freq_file, collocates_freqs_file in zip(texts,
-                                                             ngrams_freq_files,
-                                                             collocates_freqs_files):
-        collocates_stats_file = {}
-
-        len_tokens = len(text.tokens)
-
-        for node, collocate in collocates_total:
-            len_node = len(node)
-
-            if (node, collocate) in collocates_freqs_file:
-                c11 = sum(collocates_freqs_file[(node, collocate)])
+            if search_terms:
+                len_search_term_min = min([len(search_term) for search_term in search_terms])
+                len_search_term_max = max([len(search_term) for search_term in search_terms])
             else:
-                c11 = 0
+                len_search_term_min = 1
+                len_search_term_max = 1
 
-            c12 = max(0, ngrams_freq_file[node] - c11)
-            c21 = max(0, ngrams_freq_file[(collocate,)] - c11)
-            c22 = len_tokens - c11 - c12 - c21
+            for ngram_size in range(len_search_term_min, len_search_term_max + 1):
+                for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
+                    for j, collocate in enumerate(reversed(tokens[max(0, i - window_size_left) : i])):
+                        if wordless_matching.check_context(i, tokens,
+                                                           context_settings = settings['context_settings'],
+                                                           search_terms_inclusion = search_terms_inclusion,
+                                                           search_terms_exclusion = search_terms_exclusion):
+                            if (ngram, collocate) not in collocates_freqs_file:
+                                collocates_freqs_file[(ngram, collocate)] = [0] * window_size
 
-            collocates_stats_file[(node, collocate)] = test_significance(main, c11, c12, c21, c22)
-            collocates_stats_file[(node, collocate)].append(measure_effect_size(main, c11, c12, c21, c22))
+                            collocates_freqs_file[(ngram, collocate)][window_size_left - 1 - j] += 1
 
-        collocates_stats_files.append(collocates_stats_file)
+                    for j, collocate in enumerate(tokens[i + ngram_size: i + ngram_size + window_size_right]):
+                        if wordless_matching.check_context(i, tokens,
+                                                           context_settings = settings['context_settings'],
+                                                           search_terms_inclusion = search_terms_inclusion,
+                                                           search_terms_exclusion = search_terms_exclusion):
+                            if (ngram, collocate) not in collocates_freqs_file:
+                                collocates_freqs_file[(ngram, collocate)] = [0] * window_size
 
-    if len(files) == 1:
-        collocates_freqs_files *= 2
-        collocates_stats_files *= 2
+                            collocates_freqs_file[(ngram, collocate)][window_size_left + j] += 1
 
-    return (wordless_misc.merge_dicts(collocates_freqs_files),
-            wordless_misc.merge_dicts(collocates_stats_files),
-            nodes_text)
+            collocates_freqs_file = {(ngram, collocate): freqs
+                                     for (ngram, collocate), freqs in collocates_freqs_file.items()
+                                     if all(ngram) and collocate}
 
-@ wordless_misc.log_timing
+            # Filter search terms
+            if settings['search_settings']['search_settings']:
+                collocates_freqs_file_filtered = {}
+
+                for search_term in search_terms:
+                    len_search_term = len(search_term)
+
+                    for (node, collocate), freqs in collocates_freqs_file.items():
+                        for ngram in nltk.ngrams(node, len_search_term):
+                            if ngram == search_term:
+                                collocates_freqs_file_filtered[(node, collocate)] = freqs
+
+                collocates_freqs_files.append(collocates_freqs_file_filtered)
+            else:
+                collocates_freqs_files.append(collocates_freqs_file)
+
+            # Frequency (N-grams)
+            for i in {1} | set(range(len_search_term_min, len_search_term_max + 1)):
+                ngrams = [ngram
+                          for ngram in nltk.ngrams(tokens, i)
+                          if all(ngram)]
+
+                ngrams_freq_files.append(collections.Counter(ngrams))
+
+            # Nodes Text
+            for (node, collocate) in collocates_freqs_file:
+                nodes_text[node] = wordless_text_processing.wordless_word_detokenize(self.main, node, text.lang)
+
+            texts.append(text)
+
+        # Total
+        if len(files) > 1:
+            collocates_freqs_total = {}
+
+            text_total = wordless_text.Wordless_Text_Blank()
+            text_total.tokens = [token for text in texts for token in text.tokens]
+
+            texts.append(text_total)
+            ngrams_freq_files.append(sum(ngrams_freq_files, collections.Counter()))
+
+            for collocates_freqs_file in collocates_freqs_files:
+                for collocate, freqs in collocates_freqs_file.items():
+                    if collocate not in collocates_freqs_total:
+                        collocates_freqs_total[collocate] = numpy.array(freqs)
+                    else:
+                        collocates_freqs_total[collocate] += numpy.array(freqs)
+
+            collocates_freqs_files.append(collocates_freqs_total)
+
+        self.progress_updated.emit(self.tr('Processing data ...'))
+
+        # Statistiscal Significance & Effect Size
+        text_test_significance = settings['generation_settings']['test_significance']
+        text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+
+        test_significance = self.main.settings_global['tests_significance']['collocation'][text_test_significance]['func']
+        measure_effect_size = self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['func']
+
+        collocates_total = collocates_freqs_files[-1].keys()
+
+        for text, ngrams_freq_file, collocates_freqs_file in zip(texts,
+                                                                 ngrams_freq_files,
+                                                                 collocates_freqs_files):
+            collocates_stats_file = {}
+
+            len_tokens = len(text.tokens)
+
+            for node, collocate in collocates_total:
+                len_node = len(node)
+
+                if (node, collocate) in collocates_freqs_file:
+                    c11 = sum(collocates_freqs_file[(node, collocate)])
+                else:
+                    c11 = 0
+
+                c12 = max(0, ngrams_freq_file[node] - c11)
+                c21 = max(0, ngrams_freq_file[(collocate,)] - c11)
+                c22 = len_tokens - c11 - c12 - c21
+
+                collocates_stats_file[(node, collocate)] = test_significance(self.main, c11, c12, c21, c22)
+                collocates_stats_file[(node, collocate)].append(measure_effect_size(self.main, c11, c12, c21, c22))
+
+            collocates_stats_files.append(collocates_stats_file)
+
+        if len(files) == 1:
+            collocates_freqs_files *= 2
+            collocates_stats_files *= 2
+
+        self.processing_finished.emit(wordless_misc.merge_dicts(collocates_freqs_files),
+                                      wordless_misc.merge_dicts(collocates_stats_files),
+                                      nodes_text)
+
+@wordless_misc.log_timing
 def generate_table(main, table):
-    settings = main.settings_custom['collocation']
+    def data_received(collocates_freqs_files, collocates_stats_files, nodes_text):
+        if collocates_freqs_files:
+            table.clear_table()
 
-    files = main.wordless_files.get_selected_files()
+            table.settings = main.settings_custom
 
-    if wordless_checking_file.check_files_on_loading(main, files):
-        if (not settings['search_settings']['search_settings'] or
-            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms'] or
-            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']):
-            collocates_freqs_files, collocates_stats_files, nodes_text = generate_collocates(main, files)
+            text_test_significance = settings['generation_settings']['test_significance']
+            text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-            if collocates_freqs_files:
-                table.clear_table()
+            (text_test_stat,
+             text_p_value,
+             text_bayes_factor) = main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
+            text_effect_size =  main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
 
-                table.settings = main.settings_custom
+            table.blockSignals(True)
+            table.setSortingEnabled(False)
+            table.setUpdatesEnabled(False)
 
-                text_test_significance = settings['generation_settings']['test_significance']
-                text_measure_effect_size = settings['generation_settings']['measure_effect_size']
-
-                (text_test_stat,
-                 text_p_value,
-                 text_bayes_factor) = main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
-                text_effect_size =  main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
-
-                table.blockSignals(True)
-                table.setSortingEnabled(False)
-                table.setUpdatesEnabled(False)
-
-                # Insert columns (Files)
-                for i, file in enumerate(files):
-                    for i in range(settings['generation_settings']['window_left'],
-                                   settings['generation_settings']['window_right'] + 1):
-                        if i < 0:
-                            table.insert_col(table.columnCount() - 1,
-                                             main.tr(f'[{file["name"]}]\nL{-i}'),
-                                             num = True, pct = True, cumulative = True, breakdown = True)
-                        elif i > 0:
-                            table.insert_col(table.columnCount() - 1,
-                                             main.tr(f'[{file["name"]}]\nR{i}'),
-                                             num = True, pct = True, cumulative = True, breakdown = True)
-
-                        table.cols_breakdown_position.add(table.columnCount() - 2)
-
-                    table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'[{file["name"]}]\nFrequency'),
-                                     num = True, pct = True, cumulative = True, breakdown = True)
-
-                    if text_test_stat:
-                        table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}]\n{text_test_stat}'),
-                                         num = True, breakdown = True)
-
-                    table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'[{file["name"]}]\n{text_p_value}'),
-                                     num = True, breakdown = True)
-
-                    if text_bayes_factor:
-                        table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
-                                         num = True, breakdown = True)
-
-                    table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'[{file["name"]}]\n{text_effect_size}'),
-                                     num = True, breakdown = True)
-
-                # Insert columns (Total)
+            # Insert columns (Files)
+            for i, file in enumerate(files):
                 for i in range(settings['generation_settings']['window_left'],
                                settings['generation_settings']['window_right'] + 1):
                     if i < 0:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'Total\nL{-i}'),
-                                         num = True, pct = True, cumulative = True)
+                                         main.tr(f'[{file["name"]}]\nL{-i}'),
+                                         num = True, pct = True, cumulative = True, breakdown = True)
                     elif i > 0:
                         table.insert_col(table.columnCount() - 1,
-                                         main.tr(f'Total\nR{i}'),
-                                         num = True, pct = True, cumulative = True)
+                                         main.tr(f'[{file["name"]}]\nR{i}'),
+                                         num = True, pct = True, cumulative = True, breakdown = True)
 
                     table.cols_breakdown_position.add(table.columnCount() - 2)
 
                 table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'Total\nFrequency'),
-                                 num = True, pct = True, cumulative = True)
+                                 main.tr(f'[{file["name"]}]\nFrequency'),
+                                 num = True, pct = True, cumulative = True, breakdown = True)
 
                 if text_test_stat:
                     table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'Total\n{text_test_stat}'),
-                                     num = True)
+                                     main.tr(f'[{file["name"]}]\n{text_test_stat}'),
+                                     num = True, breakdown = True)
 
                 table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'Total\n{text_p_value}'),
-                                 num = True)
+                                 main.tr(f'[{file["name"]}]\n{text_p_value}'),
+                                 num = True, breakdown = True)
 
                 if text_bayes_factor:
                     table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'Total\n{text_bayes_factor}'),
-                                     num = True)
+                                     main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
+                                     num = True, breakdown = True)
 
                 table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'Total\n{text_effect_size}'),
+                                 main.tr(f'[{file["name"]}]\n{text_effect_size}'),
+                                 num = True, breakdown = True)
+
+            # Insert columns (Total)
+            for i in range(settings['generation_settings']['window_left'],
+                           settings['generation_settings']['window_right'] + 1):
+                if i < 0:
+                    table.insert_col(table.columnCount() - 1,
+                                     main.tr(f'Total\nL{-i}'),
+                                     num = True, pct = True, cumulative = True)
+                elif i > 0:
+                    table.insert_col(table.columnCount() - 1,
+                                     main.tr(f'Total\nR{i}'),
+                                     num = True, pct = True, cumulative = True)
+
+                table.cols_breakdown_position.add(table.columnCount() - 2)
+
+            table.insert_col(table.columnCount() - 1,
+                             main.tr(f'Total\nFrequency'),
+                             num = True, pct = True, cumulative = True)
+
+            if text_test_stat:
+                table.insert_col(table.columnCount() - 1,
+                                 main.tr(f'Total\n{text_test_stat}'),
                                  num = True)
 
-                # Sort by p-value of the first file
-                table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{text_p_value}')), Qt.AscendingOrder)
+            table.insert_col(table.columnCount() - 1,
+                             main.tr(f'Total\n{text_p_value}'),
+                             num = True)
 
-                if settings['generation_settings']['window_left'] < 0:  
-                    cols_freqs_start = [table.find_col(f'[{file["name"]}]\nL{-settings["generation_settings"]["window_left"]}')
-                                        for file in files]
-                    cols_freqs_start.append(table.find_col(f'Total\nL{-settings["generation_settings"]["window_left"]}'))
-                else:
-                    cols_freqs_start = [table.find_col(f'[{file["name"]}]\nR{settings["generation_settings"]["window_left"]}')
-                                        for file in files]
-                    cols_freqs_start.append(table.find_col(f'Total\nR{settings["generation_settings"]["window_left"]}'))
+            if text_bayes_factor:
+                table.insert_col(table.columnCount() - 1,
+                                 main.tr(f'Total\n{text_bayes_factor}'),
+                                 num = True)
 
-                cols_freq = table.find_cols(main.tr('\nFrequency'))
+            table.insert_col(table.columnCount() - 1,
+                             main.tr(f'Total\n{text_effect_size}'),
+                             num = True)
 
-                if text_test_stat:
-                    cols_test_stat = table.find_cols(main.tr(f'\n{text_test_stat}'))
+            # Sort by p-value of the first file
+            table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{text_p_value}')), Qt.AscendingOrder)
 
-                cols_p_value = table.find_cols(main.tr('\np-value'))
-
-                if text_bayes_factor:
-                    cols_bayes_factor = table.find_cols(main.tr('\nBayes Factor'))
-
-                cols_effect_size = table.find_cols(f'\n{text_effect_size}')
-                col_number_files_found = table.find_col(main.tr('Number of\nFiles Found'))
-
-                len_files = len(files)
-
-                table.setRowCount(len(collocates_freqs_files))
-
-                for i, ((node, collocate), stats_files) in enumerate(wordless_sorting.sorted_collocates_stats_files(collocates_stats_files)):
-                    freqs_files = collocates_freqs_files[(node, collocate)]
-
-                    # Rank
-                    table.set_item_num_int(i, 0, -1)
-
-                    # Nodes
-                    table.setItem(i, 1, wordless_table.Wordless_Table_Item(nodes_text[node]))
-                    # Collocates
-                    table.setItem(i, 2, wordless_table.Wordless_Table_Item(collocate))
-
-                    # Frequency
-                    for j, freqs_file in enumerate(freqs_files):
-                        for k, freq in enumerate(freqs_file):
-                            table.set_item_num_cumulative(i, cols_freqs_start[j] + k, freq)
-
-                        table.set_item_num_cumulative(i, cols_freq[j], sum(freqs_file))
-
-                    for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
-                        # Test Statistic
-                        if text_test_stat:
-                            table.set_item_num_float(i, cols_test_stat[j], test_stat)
-
-                        # p-value
-                        table.set_item_num_float(i, cols_p_value[j], p_value)
-
-                        # Bayes Factor
-                        if text_bayes_factor:
-                            table.set_item_num_float(i, cols_bayes_factor[j], bayes_factor)
-
-                        # Effect Size
-                        table.set_item_num_float(i, cols_effect_size[j], effect_size)
-
-                    # Files Found
-                    table.set_item_num_pct(i, col_number_files_found,
-                                           len([freqs_file for freqs_file in freqs_files[:-1] if sum(freqs_file)]),
-                                           len_files)
-
-                table.blockSignals(False)
-                table.setSortingEnabled(True)
-                table.setUpdatesEnabled(True)
-
-                table.toggle_pct()
-                table.toggle_cumulative()
-                table.toggle_breakdown()
-                table.update_ranks()
-
-                table.update_items_width()
-
-                table.itemChanged.emit(table.item(0, 0))
-
-                wordless_message.wordless_message_generate_table_success(main)
+            if settings['generation_settings']['window_left'] < 0:  
+                cols_freqs_start = [table.find_col(f'[{file["name"]}]\nL{-settings["generation_settings"]["window_left"]}')
+                                    for file in files]
+                cols_freqs_start.append(table.find_col(f'Total\nL{-settings["generation_settings"]["window_left"]}'))
             else:
-                wordless_message_box.wordless_message_box_no_results_table(main)
+                cols_freqs_start = [table.find_col(f'[{file["name"]}]\nR{settings["generation_settings"]["window_left"]}')
+                                    for file in files]
+                cols_freqs_start.append(table.find_col(f'Total\nR{settings["generation_settings"]["window_left"]}'))
 
-                wordless_message.wordless_message_generate_table_error(main)
+            cols_freq = table.find_cols(main.tr('\nFrequency'))
+
+            if text_test_stat:
+                cols_test_stat = table.find_cols(main.tr(f'\n{text_test_stat}'))
+
+            cols_p_value = table.find_cols(main.tr('\np-value'))
+
+            if text_bayes_factor:
+                cols_bayes_factor = table.find_cols(main.tr('\nBayes Factor'))
+
+            cols_effect_size = table.find_cols(f'\n{text_effect_size}')
+            col_number_files_found = table.find_col(main.tr('Number of\nFiles Found'))
+
+            len_files = len(files)
+
+            table.setRowCount(len(collocates_freqs_files))
+
+            for i, ((node, collocate), stats_files) in enumerate(wordless_sorting.sorted_collocates_stats_files(collocates_stats_files)):
+                freqs_files = collocates_freqs_files[(node, collocate)]
+
+                # Rank
+                table.set_item_num_int(i, 0, -1)
+
+                # Nodes
+                table.setItem(i, 1, wordless_table.Wordless_Table_Item(nodes_text[node]))
+                # Collocates
+                table.setItem(i, 2, wordless_table.Wordless_Table_Item(collocate))
+
+                # Frequency
+                for j, freqs_file in enumerate(freqs_files):
+                    for k, freq in enumerate(freqs_file):
+                        table.set_item_num_cumulative(i, cols_freqs_start[j] + k, freq)
+
+                    table.set_item_num_cumulative(i, cols_freq[j], sum(freqs_file))
+
+                for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
+                    # Test Statistic
+                    if text_test_stat:
+                        table.set_item_num_float(i, cols_test_stat[j], test_stat)
+
+                    # p-value
+                    table.set_item_num_float(i, cols_p_value[j], p_value)
+
+                    # Bayes Factor
+                    if text_bayes_factor:
+                        table.set_item_num_float(i, cols_bayes_factor[j], bayes_factor)
+
+                    # Effect Size
+                    table.set_item_num_float(i, cols_effect_size[j], effect_size)
+
+                # Files Found
+                table.set_item_num_pct(i, col_number_files_found,
+                                       len([freqs_file for freqs_file in freqs_files[:-1] if sum(freqs_file)]),
+                                       len_files)
+
+            table.blockSignals(False)
+            table.setSortingEnabled(True)
+            table.setUpdatesEnabled(True)
+
+            table.toggle_pct()
+            table.toggle_cumulative()
+            table.toggle_breakdown()
+            table.update_ranks()
+            table.update_items_width()
+
+            table.itemChanged.emit(table.item(0, 0))
+
+            wordless_message.wordless_message_generate_table_success(main)
         else:
-            wordless_message_box.wordless_message_box_empty_search_term_optional(main)
+            wordless_message_box.wordless_message_box_no_results(main)
+
+            wordless_message.wordless_message_generate_table_error(main)
+
+        dialog_processing.accept()
+
+    settings = main.settings_custom['collocation']
+    files = main.wordless_files.get_selected_files()
+
+    if wordless_checking_file.check_files_on_loading(main, files):
+        if (not settings['search_settings']['search_settings'] or
+            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
+            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+            dialog_processing = wordless_dialog_misc.Wordless_Dialog_Processing_Generate_Data(main)
+
+            worker_process_data = Worker_Process_Data(main, dialog_processing, data_received)
+            thread_process_data = wordless_threading.Thread_Process_Data(worker_process_data)
+
+            thread_process_data.start()
+
+            dialog_processing.exec_()
+
+            thread_process_data.quit()
+            thread_process_data.wait()
+        else:
+            wordless_message_box.wordless_message_box_missing_search_term_optional(main)
 
             wordless_message.wordless_message_generate_table_error(main)
     else:
         wordless_message.wordless_message_generate_table_error(main)
 
-@ wordless_misc.log_timing
+@wordless_misc.log_timing
 def generate_plot(main):
-    settings = main.settings_custom['collocation']
+    def data_received(collocates_freqs_files, collocates_stats_files, nodes_text):
+        if collocates_freqs_files:
+            text_test_significance = settings['generation_settings']['test_significance']
+            text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
+            (text_test_stat,
+             text_p_value,
+             text_bayes_factor) = main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
+            text_effect_size =  main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
+
+            if re.search(r'^[LR][0-9]+$', settings['plot_settings']['use_data']):
+                span_positions = (list(range(settings['generation_settings']['window_left'], 0)) +
+                                  list(range(1, settings['generation_settings']['window_right'] + 1)))
+
+                if 'L' in settings['plot_settings']['use_data']:
+                    span_position = span_positions.index(-int(settings['plot_settings']['use_data'][1:]))
+                else:
+                    span_position = span_positions.index(int(settings['plot_settings']['use_data'][1:]))
+
+                collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
+                                         for (node, collocate), freqs in collocates_freqs_files.items()}
+
+                wordless_plot_freq.wordless_plot_freq(main, collocates_freq_files,
+                                                      settings = settings['plot_settings'],
+                                                      label_x = main.tr('Collocates'))
+            elif settings['plot_settings']['use_data'] == main.tr('Frequency'):
+                collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
+                                         for (node, collocate), freqs in collocates_freqs_files.items()}
+
+                wordless_plot_freq.wordless_plot_freq(main, collocates_freq_files,
+                                                      settings = settings['plot_settings'],
+                                                      label_x = main.tr('Collocates'))
+            else:
+                collocates_stats_files = {', '.join([nodes_text[node], collocate]): freqs
+                                          for (node, collocate), freqs in collocates_stats_files.items()}
+
+                if settings['plot_settings']['use_data'] == text_test_stat:
+                    collocates_stat_files = {collocate: numpy.array(stats_files)[:, 0]
+                                             for collocate, stats_files in collocates_stats_files.items()}
+
+                    label_y = text_test_stat
+                elif settings['plot_settings']['use_data'] == text_p_value:
+                    collocates_stat_files = {collocate: numpy.array(stats_files)[:, 1]
+                                             for collocate, stats_files in collocates_stats_files.items()}
+
+                    label_y = text_p_value
+                elif settings['plot_settings']['use_data'] == text_bayes_factor:
+                    collocates_stat_files = {collocate: numpy.array(stats_files)[:, 2]
+                                             for collocate, stats_files in collocates_stats_files.items()}
+
+                    label_y = text_bayes_factor
+                elif settings['plot_settings']['use_data'] == text_effect_size:
+                    collocates_stat_files = {collocate: numpy.array(stats_files)[:, 3]
+                                             for collocate, stats_files in collocates_stats_files.items()}
+
+                    label_y = text_effect_size
+
+                wordless_plot_stat.wordless_plot_stat(main, collocates_stat_files,
+                                                      settings = settings['plot_settings'],
+                                                      label_x = main.tr('Collocates'),
+                                                      label_y = label_y)
+
+            wordless_message.wordless_message_generate_plot_success(main)
+        else:
+            wordless_message_box.wordless_message_box_no_results(main)
+
+            wordless_message.wordless_message_generate_plot_error(main)
+
+        dialog_processing.accept()
+
+        if collocates_freqs_files:
+            matplotlib.pyplot.get_current_fig_manager().window.showMaximized()
+
+    settings = main.settings_custom['collocation']
     files = main.wordless_files.get_selected_files()
 
     if wordless_checking_file.check_files_on_loading(main, files):
-        if (settings['search_settings']['search_settings'] or
-            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms'] or
-            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']):
-            collocates_freqs_files, collocates_stats_files, nodes_text = generate_collocates(main, files)
+        if (not settings['search_settings']['search_settings'] or
+            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
+            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+            dialog_processing = wordless_dialog_misc.Wordless_Dialog_Processing_Generate_Data(main)
 
-            if collocates_freqs_files:
-                text_test_significance = settings['generation_settings']['test_significance']
-                text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+            worker_process_data = Worker_Process_Data(main, dialog_processing, data_received)
+            thread_process_data = wordless_threading.Thread_Process_Data(worker_process_data)
 
-                (text_test_stat,
-                 text_p_value,
-                 text_bayes_factor) = main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
-                text_effect_size =  main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
+            thread_process_data.start()
 
-                if re.search(r'^[LR][0-9]+$', settings['plot_settings']['use_data']):
-                    span_positions = (list(range(settings['generation_settings']['window_left'], 0)) +
-                                      list(range(1, settings['generation_settings']['window_right'] + 1)))
+            dialog_processing.exec_()
 
-                    if 'L' in settings['plot_settings']['use_data']:
-                        span_position = span_positions.index(-int(settings['plot_settings']['use_data'][1:]))
-                    else:
-                        span_position = span_positions.index(int(settings['plot_settings']['use_data'][1:]))
-
-                    collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
-                                             for (node, collocate), freqs in collocates_freqs_files.items()}
-
-                    wordless_plot_freq.wordless_plot_freq(main, collocates_freq_files,
-                                                          settings = settings['plot_settings'],
-                                                          label_x = main.tr('Collocates'))
-                elif settings['plot_settings']['use_data'] == main.tr('Frequency'):
-                    collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
-                                             for (node, collocate), freqs in collocates_freqs_files.items()}
-
-                    wordless_plot_freq.wordless_plot_freq(main, collocates_freq_files,
-                                                          settings = settings['plot_settings'],
-                                                          label_x = main.tr('Collocates'))
-                else:
-                    collocates_stats_files = {', '.join([nodes_text[node], collocate]): freqs
-                                              for (node, collocate), freqs in collocates_stats_files.items()}
-
-                    if settings['plot_settings']['use_data'] == text_test_stat:
-                        collocates_stat_files = {collocate: numpy.array(stats_files)[:, 0]
-                                                 for collocate, stats_files in collocates_stats_files.items()}
-
-                        label_y = text_test_stat
-                    elif settings['plot_settings']['use_data'] == text_p_value:
-                        collocates_stat_files = {collocate: numpy.array(stats_files)[:, 1]
-                                                 for collocate, stats_files in collocates_stats_files.items()}
-
-                        label_y = text_p_value
-                    elif settings['plot_settings']['use_data'] == text_bayes_factor:
-                        collocates_stat_files = {collocate: numpy.array(stats_files)[:, 2]
-                                                 for collocate, stats_files in collocates_stats_files.items()}
-
-                        label_y = text_bayes_factor
-                    elif settings['plot_settings']['use_data'] == text_effect_size:
-                        collocates_stat_files = {collocate: numpy.array(stats_files)[:, 3]
-                                                 for collocate, stats_files in collocates_stats_files.items()}
-
-                        label_y = text_effect_size
-
-                    wordless_plot_stat.wordless_plot_stat(main, collocates_stat_files,
-                                                          settings = settings['plot_settings'],
-                                                          label_x = main.tr('Collocates'),
-                                                          label_y = label_y)
-
-                wordless_message.wordless_message_generate_plot_success(main)
-            else:
-                wordless_message_box.wordless_message_box_no_results_plot(main)
-
-                wordless_message.wordless_message_generate_plot_error(main)
+            thread_process_data.quit()
+            thread_process_data.wait()
         else:
-            wordless_message_box.wordless_message_box_empty_search_term_optional(main)
+            wordless_message_box.wordless_message_box_missing_search_term_optional(main)
 
             wordless_message.wordless_message_generate_plot_error(main)
     else:

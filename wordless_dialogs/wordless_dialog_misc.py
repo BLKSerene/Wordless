@@ -10,6 +10,8 @@
 #
 
 import copy
+import datetime
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -17,6 +19,50 @@ from PyQt5.QtWidgets import *
 
 from wordless_dialogs import wordless_dialog
 from wordless_widgets import *
+
+class Wordless_Dialog_Processing(wordless_dialog.Wordless_Dialog_Frameless):
+    def __init__(self, main, width, height):
+        super().__init__(main, width, height)
+
+        self.time_start = time.time()
+
+        self.timer_time_elapsed = QTimer(self)
+
+        self.label_progress = QLabel('', self)
+        self.label_time_elapsed = QLabel(self.tr('Elapsed Time: 0:00:00'), self)
+        self.label_processing = wordless_label.Wordless_Label_Dialog('', self)
+
+        self.timer_time_elapsed.timeout.connect(self.update_elapsed_time)
+        self.timer_time_elapsed.start(1000)
+
+        self.setLayout(QGridLayout())
+        self.layout().addWidget(self.label_progress, 0, 0)
+        self.layout().addWidget(self.label_time_elapsed, 0, 1, Qt.AlignRight)
+        self.layout().addWidget(self.label_processing, 1, 0, 1, 2)
+
+        self.layout().setContentsMargins(20, 10, 20, 10)
+
+    def update_elapsed_time(self):
+        self.label_time_elapsed.setText(self.tr(f'''
+            Elapsed Time: {datetime.timedelta(seconds = round(time.time() - self.time_start))}
+        '''))
+
+    def update_progress(self, text):
+        self.label_progress.setText(text)
+
+class Wordless_Dialog_Processing_Generate_Data(Wordless_Dialog_Processing):
+    def __init__(self, main):
+        super().__init__(main,
+                         width = 420,
+                         height = 110)
+
+        self.label_progress.setText(self.tr('Loading text ...'))
+        
+        self.label_processing.set_text(self.tr('''
+            <div>
+                Please wait while data is being processed. It may take a few seconds to several minutes.
+            </div>
+        '''))
 
 class Wordless_Dialog_Confirm_Exit(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):

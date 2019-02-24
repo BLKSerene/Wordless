@@ -464,9 +464,7 @@ def wordless_pos_tag(main, tokens, lang,
     elif pos_tagger == main.tr('nagisa - Japanese POS Tagger'):
         import nagisa
 
-        tagged_tokens = nagisa.tagging(' '.join(tokens))
-
-        tokens_tagged = zip(tagged_tokens.words, tagged_tokens.postags)
+        tokens_tagged = zip(tokens, nagisa.postagging(tokens))
 
     # Russian & Ukrainian
     elif pos_tagger == main.tr('pymorphy2 - Morphological Analyzer'):

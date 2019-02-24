@@ -28,6 +28,20 @@ class Wordless_Dialog(QDialog):
         self.move((self.main.width() - self.width()) / 2,
                   (self.main.height() - self.height()) / 2,)
 
+class Wordless_Dialog_Frameless(Wordless_Dialog):
+    def __init__(self, main, width, height):
+        super().__init__(main, '')
+
+        self.setFixedSize(width, height)
+        self.setWindowFlag(Qt.FramelessWindowHint, True)
+
+        self.setObjectName('wordless-dialog-frameless')
+        self.setStyleSheet('''
+            QDialog#wordless-dialog-frameless {
+                background-color: #D0D0D0;
+            }
+        ''')
+
 class Wordless_Dialog_Info(Wordless_Dialog):
     def __init__(self, main, title, width, height, no_button = False):
         super().__init__(main, title)
