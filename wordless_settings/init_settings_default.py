@@ -85,7 +85,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_words': False,
                 'use_regex': False,
 
                 'ignore_tags': True,
@@ -105,7 +105,7 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': True,
-                    'match_whole_word': False,
+                    'match_whole_words': False,
                     'use_regex': False,
 
                     'ignore_tags': True,
@@ -128,7 +128,7 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': True,
-                    'match_whole_word': False,
+                    'match_whole_words': False,
                     'use_regex': False,
 
                     'ignore_tags': True,
@@ -193,7 +193,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_words': False,
                 'use_regex': False,
 
                 'ignore_tags': True,
@@ -284,7 +284,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_words': False,
                 'use_regex': False,
 
                 'ignore_tags': True,
@@ -324,7 +324,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_words': False,
                 'use_regex': False,
 
                 'ignore_tags': True,
@@ -350,7 +350,7 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': True,
-                    'match_whole_word': False,
+                    'match_whole_words': False,
                     'use_regex': False,
 
                     'ignore_tags': True,
@@ -373,7 +373,7 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': True,
-                    'match_whole_word': False,
+                    'match_whole_words': False,
                     'use_regex': False,
 
                     'ignore_tags': True,
@@ -454,7 +454,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_words': False,
                 'use_regex': False,
 
                 'ignore_tags': True,
@@ -494,7 +494,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_words': False,
                 'use_regex': False,
 
                 'ignore_tags': True,
@@ -514,7 +514,7 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': True,
-                    'match_whole_word': False,
+                    'match_whole_words': False,
                     'use_regex': False,
 
                     'ignore_tags': True,
@@ -537,7 +537,7 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': True,
-                    'match_whole_word': False,
+                    'match_whole_words': False,
                     'use_regex': False,
 
                     'ignore_tags': True,
@@ -628,7 +628,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_words': False,
                 'use_regex': False,
 
                 'ignore_tags': True,
@@ -668,7 +668,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_words': False,
                 'use_regex': False,
 
                 'ignore_tags': True,
@@ -688,7 +688,7 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': False,
-                    'match_whole_word': False,
+                    'match_whole_words': False,
                     'use_regex': False,
 
                     'ignore_tags': True,
@@ -711,7 +711,7 @@ def init_settings_default(main):
 
                     'ignore_case': True,
                     'match_inflected_forms': False,
-                    'match_whole_word': False,
+                    'match_whole_words': False,
                     'use_regex': False,
 
                     'ignore_tags': True,
@@ -802,7 +802,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_words': False,
                 'use_regex': False,
 
                 'ignore_tags': True,
@@ -905,7 +905,7 @@ def init_settings_default(main):
 
                 'ignore_case': True,
                 'match_inflected_forms': True,
-                'match_whole_word': False,
+                'match_whole_words': False,
                 'use_regex': False,
 
                 'ignore_tags': True,

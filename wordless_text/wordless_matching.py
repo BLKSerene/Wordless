@@ -139,7 +139,7 @@ def match_ngrams(main, search_terms, tokens,
     if tokens_searched:
         if settings['use_regex']:
             for search_term_token in search_term_tokens:
-                if settings['match_whole_word']:
+                if settings['match_whole_words']:
                     regex = fr'(^|\s+){search_term_token}(\s+|$)'
                 else:
                     regex = search_term_token
@@ -157,7 +157,7 @@ def match_ngrams(main, search_terms, tokens,
             for search_term_token in search_term_tokens:
                 regex = re.escape(search_term_token)
 
-                if settings['match_whole_word']:
+                if settings['match_whole_words']:
                     regex = fr'(^|\s+){regex}(\s+|$)'
 
                 if settings['ignore_case']:

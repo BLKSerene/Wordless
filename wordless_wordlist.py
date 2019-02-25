@@ -380,7 +380,7 @@ class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-class Worker_Process_Data(wordless_threading.Worker_Process_Data):
+class Wordless_Worker_Process_Data_Wordlist(wordless_threading.Wordless_Worker_Process_Data):
     processing_finished = pyqtSignal(dict, dict)
 
     def process_data(self):
@@ -562,20 +562,20 @@ def generate_table(main, table):
 
             wordless_message.wordless_message_generate_table_error(main)
 
-        dialog_processing.accept()
+        dialog_progress.accept()
 
     settings = main.settings_custom['wordlist']
     files = main.wordless_files.get_selected_files()
 
     if wordless_checking_file.check_files_on_loading(main, files):
-        dialog_processing = wordless_dialog_misc.Wordless_Dialog_Processing_Generate_Data(main)
+        dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-        worker_process_data = Worker_Process_Data(main, dialog_processing, data_received)
-        thread_process_data = wordless_threading.Thread_Process_Data(worker_process_data)
+        worker_process_data = Wordless_Worker_Process_Data_Wordlist(main, dialog_progress, data_received)
+        thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
 
         thread_process_data.start()
 
-        dialog_processing.exec_()
+        dialog_progress.exec_()
 
         thread_process_data.quit()
         thread_process_data.wait()
@@ -619,7 +619,7 @@ def generate_figure(main):
 
             wordless_message.wordless_message_generate_figure_error(main)
 
-        dialog_processing.accept()
+        dialog_progress.accept()
 
         if tokens_freq_files:
             matplotlib.pyplot.get_current_fig_manager().window.showMaximized()
@@ -628,14 +628,14 @@ def generate_figure(main):
     files = main.wordless_files.get_selected_files()
 
     if wordless_checking_file.check_files_on_loading(main, files):
-        dialog_processing = wordless_dialog_misc.Wordless_Dialog_Processing_Generate_Data(main)
+        dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-        worker_process_data = Worker_Process_Data(main, dialog_processing, data_received)
-        thread_process_data = wordless_threading.Thread_Process_Data(worker_process_data)
+        worker_process_data = Wordless_Worker_Process_Data_Wordlist(main, dialog_progress, data_received)
+        thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
 
         thread_process_data.start()
 
-        dialog_processing.exec_()
+        dialog_progress.exec_()
 
         thread_process_data.quit()
         thread_process_data.wait()

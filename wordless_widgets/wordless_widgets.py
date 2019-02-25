@@ -187,7 +187,7 @@ def wordless_widgets_search_settings(parent, tab):
             label_search_term.setText(parent.tr('Search Terms:'))
 
             if line_edit_search_term.text() and list_search_terms.count() == 0:
-                list_search_terms.add_item(line_edit_search_term.text())
+                list_search_terms.load_items([line_edit_search_term.text()])
 
             line_edit_search_term.hide()
 
@@ -286,7 +286,7 @@ def wordless_widgets_search_settings(parent, tab):
 
     checkbox_ignore_case = QCheckBox(parent.tr('Ignore case'), parent)
     checkbox_match_inflected_forms = QCheckBox(parent.tr('Match all inflected forms'), parent)
-    checkbox_match_whole_word = QCheckBox(parent.tr('Match whole word only'), parent)
+    checkbox_match_whole_words = QCheckBox(parent.tr('Match whole words only'), parent)
     checkbox_use_regex = QCheckBox(parent.tr('Use regular expression'), parent)
 
     stacked_widget_ignore_tags = QStackedWidget(parent)
@@ -337,7 +337,7 @@ def wordless_widgets_search_settings(parent, tab):
 
             checkbox_ignore_case,
             checkbox_match_inflected_forms,
-            checkbox_match_whole_word,
+            checkbox_match_whole_words,
             checkbox_use_regex,
 
             stacked_widget_ignore_tags,
