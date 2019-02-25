@@ -11,6 +11,7 @@
 
 import collections
 import copy
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -383,10 +384,14 @@ class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
 class Wordless_Worker_Process_Data_Wordlist(wordless_threading.Wordless_Worker_Process_Data):
     processing_finished = pyqtSignal(dict, dict)
 
+    def __init__(self, main, dialog_progress, data_received):
+        super().__init__(main, dialog_progress, data_received)
+
+        self.tokens_freq_files = []
+        self.tokens_stats_files = []
+
     def process_data(self):
         texts = []
-        tokens_freq_files = []
-        tokens_stats_files = []
 
         settings = self.main.settings_custom['wordlist']
         files = self.main.wordless_files.get_selected_files()
@@ -399,7 +404,7 @@ class Wordless_Worker_Process_Data_Wordlist(wordless_threading.Wordless_Worker_P
                                                                                 token_settings = settings['token_settings'])
 
             texts.append(text)
-            tokens_freq_files.append(collections.Counter(tokens))
+            self.tokens_freq_files.append(collections.Counter(tokens))
 
         # Total
         if len(files) > 1:
@@ -407,7 +412,7 @@ class Wordless_Worker_Process_Data_Wordlist(wordless_threading.Wordless_Worker_P
             text_total.tokens = [token for text in texts for token in text.tokens]
 
             texts.append(text_total)
-            tokens_freq_files.append(sum(tokens_freq_files, collections.Counter()))
+            self.tokens_freq_files.append(sum(self.tokens_freq_files, collections.Counter()))
 
         self.progress_updated.emit(self.tr('Processing data ...'))
 
@@ -418,7 +423,7 @@ class Wordless_Worker_Process_Data_Wordlist(wordless_threading.Wordless_Worker_P
         measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
         measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
 
-        tokens_total = tokens_freq_files[-1].keys()
+        tokens_total = self.tokens_freq_files[-1].keys()
 
         for text in texts:
             tokens_stats_file = {}
@@ -446,14 +451,33 @@ class Wordless_Worker_Process_Data_Wordlist(wordless_threading.Wordless_Worker_P
 
                 tokens_stats_file[token].append(measure_adjusted_freq(counts))
 
-            tokens_stats_files.append(tokens_stats_file)
+            self.tokens_stats_files.append(tokens_stats_file)
 
         if len(files) == 1:
-            tokens_freq_files *= 2
-            tokens_stats_files *= 2
+            self.tokens_freq_files *= 2
+            self.tokens_stats_files *= 2
 
-        self.processing_finished.emit(wordless_misc.merge_dicts(tokens_freq_files),
-                                      wordless_misc.merge_dicts(tokens_stats_files))
+class Wordless_Worker_Process_Data_Wordlist_Table(Wordless_Worker_Process_Data_Wordlist):
+    def process_data(self):
+        super().process_data()
+
+        self.progress_updated.emit(self.tr('Rendering table ...'))
+
+        time.sleep(0.1)
+
+        self.processing_finished.emit(wordless_misc.merge_dicts(self.tokens_freq_files),
+                                      wordless_misc.merge_dicts(self.tokens_stats_files))
+
+class Wordless_Worker_Process_Data_Wordlist_Figure(Wordless_Worker_Process_Data_Wordlist):
+    def process_data(self):
+        super().process_data()
+
+        self.progress_updated.emit(self.tr('Rendering figure ...'))
+
+        time.sleep(0.1)
+
+        self.processing_finished.emit(wordless_misc.merge_dicts(self.tokens_freq_files),
+                                      wordless_misc.merge_dicts(self.tokens_stats_files))
 
 @wordless_misc.log_timing
 def generate_table(main, table):
@@ -570,7 +594,7 @@ def generate_table(main, table):
     if wordless_checking_file.check_files_on_loading(main, files):
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-        worker_process_data = Wordless_Worker_Process_Data_Wordlist(main, dialog_progress, data_received)
+        worker_process_data = Wordless_Worker_Process_Data_Wordlist_Table(main, dialog_progress, data_received)
         thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
 
         thread_process_data.start()
@@ -630,7 +654,7 @@ def generate_figure(main):
     if wordless_checking_file.check_files_on_loading(main, files):
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-        worker_process_data = Wordless_Worker_Process_Data_Wordlist(main, dialog_progress, data_received)
+        worker_process_data = Wordless_Worker_Process_Data_Wordlist_Figure(main, dialog_progress, data_received)
         thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
 
         thread_process_data.start()
