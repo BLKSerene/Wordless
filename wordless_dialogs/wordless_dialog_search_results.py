@@ -321,7 +321,7 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
             else:
                 wordless_message_box.wordless_message_box_no_search_results(self.main)
 
-            wordless_message.wordless_message_search_results(self.main, self.items_found)
+            wordless_message.wordless_message_search_results_success(self.main, self.items_found)
 
             dialog_progress.accept()
 
@@ -346,6 +346,8 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
             thread_search_results.wait()
         else:
             wordless_message_box.wordless_message_box_missing_search_term(self.main)
+
+            wordless_message.wordless_message_search_results_error(self.main)
 
     def clear_highlights(self):
         if self.items_found:
