@@ -89,7 +89,9 @@ def check_files_parsing_error(main, file_paths):
                 encoding = main.settings_custom['auto_detection']['default_settings']['default_encoding']
 
             try:
-                open(file_path, 'r', encoding = encoding).read()
+                with open(file_path, 'r', encoding = encoding) as f:
+                    for line in f:
+                        pass
             except:
                 files_parsing_error.append(file_path)
             else:
