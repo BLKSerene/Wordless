@@ -10,15 +10,16 @@
 #
 
 import copy
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_dialogs import wordless_dialog
+from wordless_dialogs import wordless_dialog, wordless_dialog_misc
+from wordless_utils import wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_button, wordless_layout,
                               wordless_message, wordless_widgets)
-from wordless_utils import wordless_misc
 
 class Wordless_Dialog_Filter_Results(wordless_dialog.Wordless_Dialog):
     def __init__(self, main, tab, table):
@@ -82,6 +83,378 @@ class Wordless_Dialog_Filter_Results(wordless_dialog.Wordless_Dialog):
 
     def load(self):
         self.show()
+
+class Wordless_Worker_Filter_Results_Wordlist(wordless_threading.Wordless_Worker_Filter_Results):
+    def filter_results(self):
+        text_measure_dispersion = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_dispersion']
+        text_measure_adjusted_freq = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_adjusted_freq']
+
+        text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
+        text_adjusted_freq =  self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
+
+        if self.dialog.tab == 'wordlist':
+            col_tokens = self.dialog.table.find_col(self.tr('Tokens'))
+        elif self.dialog.tab == 'ngrams':
+            col_ngrams = self.dialog.table.find_col(self.tr('N-grams'))
+
+        if self.dialog.settings['file_to_filter'] == self.tr('Total'):
+            col_freq = self.dialog.table.find_col(
+                self.tr('Total\nFrequency')
+            )
+            col_dispersion = self.dialog.table.find_col(
+                self.tr(f'Total\n{text_dispersion}')
+            )
+            col_adjusted_freq = self.dialog.table.find_col(
+                self.tr(f'Total\n{text_adjusted_freq}')
+            )
+        else:
+            col_freq = self.dialog.table.find_col(
+                self.tr(f"[{self.dialog.settings['file_to_filter']}]\nFrequency")
+            )
+            col_dispersion = self.dialog.table.find_col(
+                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_dispersion}")
+            )
+            col_adjusted_freq = self.dialog.table.find_col(
+                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_adjusted_freq}")
+            )
+
+        col_num_files_found = self.dialog.table.find_col(self.tr('Number of\nFiles Found'))
+
+        if self.dialog.tab == 'wordlist':
+            len_token_min = (float('-inf')
+                             if self.dialog.settings['len_token_min_no_limit']
+                             else self.dialog.settings['len_token_min'])
+            len_token_max = (float('inf')
+                             if self.dialog.settings['len_token_max_no_limit']
+                             else self.dialog.settings['len_token_max'])
+        elif self.dialog.tab == 'ngrams':
+            len_ngram_min = (float('-inf')
+                             if self.dialog.settings['len_ngram_min_no_limit']
+                             else self.dialog.settings['len_ngram_min'])
+            len_ngram_max = (float('inf')
+                             if self.dialog.settings['len_ngram_max_no_limit']
+                             else self.dialog.settings['len_ngram_max'])
+
+        freq_min = (float('-inf')
+                    if self.dialog.settings['freq_min_no_limit']
+                    else self.dialog.settings['freq_min'])
+        freq_max = (float('inf')
+                    if self.dialog.settings['freq_max_no_limit']
+                    else self.dialog.settings['freq_max'])
+
+        dispersion_min = (float('-inf')
+                          if self.dialog.settings['dispersion_min_no_limit']
+                          else self.dialog.settings['dispersion_min'])
+        dispersion_max = (float('inf')
+                          if self.dialog.settings['dispersion_max_no_limit']
+                          else self.dialog.settings['dispersion_max'])
+
+        adjusted_freq_min = (float('-inf')
+                             if self.dialog.settings['adjusted_freq_min_no_limit']
+                             else self.dialog.settings['adjusted_freq_min'])
+        adjusted_freq_max = (float('inf')
+                             if self.dialog.settings['adjusted_freq_max_no_limit']
+                             else self.dialog.settings['adjusted_freq_max'])
+
+        num_files_found_min = (float('-inf')
+                               if self.dialog.settings['num_files_found_min_no_limit']
+                               else self.dialog.settings['num_files_found_min'])
+        num_files_found_max = (float('inf')
+                               if self.dialog.settings['num_files_found_max_no_limit']
+                               else self.dialog.settings['num_files_found_max'])
+
+        self.dialog.table.row_filters = []
+
+        if self.dialog.tab == 'wordlist':
+            for i in range(self.dialog.table.rowCount()):
+                if (len_token_min       <= len(self.dialog.table.item(i, col_tokens).text())  <= len_token_max and
+                    freq_min            <= self.dialog.table.item(i, col_freq).val_raw        <= freq_max and
+                    dispersion_min      <= self.dialog.table.item(i, col_dispersion).val      <= dispersion_max and
+                    adjusted_freq_min   <= self.dialog.table.item(i, col_adjusted_freq).val   <= adjusted_freq_max and
+                    num_files_found_min <= self.dialog.table.item(i, col_num_files_found).val <= num_files_found_max):
+                    self.dialog.table.row_filters.append(True)
+                else:
+                    self.dialog.table.row_filters.append(False)
+        elif self.dialog.tab == 'ngrams':
+            for i in range(self.dialog.table.rowCount()):
+                if (len_ngram_min       <= len(self.dialog.table.item(i, col_ngrams).text())  <= len_ngram_max and
+                    freq_min            <= self.dialog.table.item(i, col_freq).val_raw        <= freq_max and
+                    dispersion_min      <= self.dialog.table.item(i, col_dispersion).val      <= dispersion_max and
+                    adjusted_freq_min   <= self.dialog.table.item(i, col_adjusted_freq).val   <= adjusted_freq_max and
+                    num_files_found_min <= self.dialog.table.item(i, col_num_files_found).val <= num_files_found_max):
+                    self.dialog.table.row_filters.append(True)
+                else:
+                    self.dialog.table.row_filters.append(False)
+
+        self.progress_updated.emit(self.tr('Updating table ...'))
+
+        time.sleep(0.1)
+
+        self.filtering_finished.emit()
+
+class Wordless_Worker_Filter_Results_Collocation(wordless_threading.Wordless_Worker_Filter_Results):
+    def filter_results(self):
+        text_test_significance = self.dialog.table.settings['collocation']['generation_settings']['test_significance']
+        text_measure_effect_size = self.dialog.table.settings['collocation']['generation_settings']['measure_effect_size']
+
+        (text_test_stat,
+         text_p_value,
+         text_bayes_factor) = self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
+        text_effect_size = self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
+
+        col_collocates = self.dialog.table.find_col(self.tr('Collocates'))
+
+        if self.dialog.settings['file_to_filter'] == self.tr('Total'):
+            if self.dialog.settings['freq_position'] == self.tr('Total'):
+                col_freq = self.dialog.table.find_col(
+                    self.tr('Total\nFrequency')
+                )
+            else:
+                col_freq = self.dialog.table.find_col(
+                    self.tr(f'Total\n{self.dialog.settings["freq_position"]}')
+                )
+
+            col_test_stat = self.dialog.table.find_col(
+                self.tr(f'Total\n{text_test_stat}')
+            )
+            col_p_value = self.dialog.table.find_col(
+                self.tr(f'Total\n{text_p_value}')
+            )
+            col_bayes_factor = self.dialog.table.find_col(
+                self.tr(f'Total\n{text_bayes_factor}')
+            )
+            col_effect_size = self.dialog.table.find_col(
+                self.tr(f'Total\n{text_effect_size}')
+            )
+        else:
+            if self.dialog.settings['freq_position'] == self.tr('Total'):
+                col_freq = self.dialog.table.find_col(
+                    self.tr(f"[{self.dialog.settings['file_to_filter']}]\nFrequency")
+                )
+            else:
+                col_freq = self.dialog.table.find_col(
+                    self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.settings['freq_position']}")
+                )
+
+            col_test_stat = self.dialog.table.find_col(
+                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_test_stat}")
+            )
+            col_p_value = self.dialog.table.find_col(
+                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_p_value}")
+            )
+            col_bayes_factor = self.dialog.table.find_col(
+                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_bayes_factor}")
+            )
+            col_effect_size = self.dialog.table.find_col(
+                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_effect_size}")
+            )
+
+        col_num_files_found = self.dialog.table.find_col(self.tr('Number of\nFiles Found'))
+
+        len_collocate_min = (float('-inf')
+                             if self.dialog.settings['len_collocate_min_no_limit']
+                             else self.dialog.settings['len_collocate_min'])
+        len_collocate_max = (float('inf')
+                             if self.dialog.settings['len_collocate_max_no_limit']
+                             else self.dialog.settings['len_collocate_max'])
+
+        freq_min = (float('-inf')
+                    if self.dialog.settings['freq_min_no_limit']
+                    else self.dialog.settings['freq_min'])
+        freq_max = (float('inf')
+                    if self.dialog.settings['freq_max_no_limit']
+                    else self.dialog.settings['freq_max'])
+
+        test_stat_min = (float('-inf')
+                         if self.dialog.settings['test_stat_min_no_limit']
+                         else self.dialog.settings['test_stat_min'])
+        test_stat_max = (float('inf')
+                         if self.dialog.settings['test_stat_max_no_limit']
+                         else self.dialog.settings['test_stat_max'])
+
+        p_value_min = (float('-inf')
+                       if self.dialog.settings['p_value_min_no_limit']
+                       else self.dialog.settings['p_value_min'])
+        p_value_max = (float('inf')
+                       if self.dialog.settings['p_value_max_no_limit']
+                       else self.dialog.settings['p_value_max'])
+
+        bayes_factor_min = (float('-inf')
+                            if self.dialog.settings['bayes_factor_min_no_limit']
+                            else self.dialog.settings['bayes_factor_min'])
+        bayes_factor_max = (float('inf')
+                            if self.dialog.settings['bayes_factor_max_no_limit']
+                            else self.dialog.settings['bayes_factor_max'])
+
+        effect_size_min = (float('-inf')
+                           if self.dialog.settings['effect_size_min_no_limit']
+                           else self.dialog.settings['effect_size_min'])
+        effect_size_max = (float('inf')
+                           if self.dialog.settings['effect_size_max_no_limit']
+                           else self.dialog.settings['effect_size_max'])
+
+        num_files_found_min = (float('-inf')
+                               if self.dialog.settings['num_files_found_min_no_limit']
+                               else self.dialog.settings['num_files_found_min'])
+        num_files_found_max = (float('inf')
+                               if self.dialog.settings['num_files_found_max_no_limit']
+                               else self.dialog.settings['num_files_found_max'])
+
+        self.dialog.table.row_filters = []
+
+        for i in range(self.dialog.table.rowCount()):
+            if text_test_stat:
+                filter_test_stat = test_stat_min <= self.dialog.table.item(i, col_test_stat).val <= test_stat_max
+            else:
+                filter_test_stat = True
+
+            if text_bayes_factor:
+                filter_bayes_factor = bayes_factor_min <= self.dialog.table.item(i, col_bayes_factor).val <= bayes_factor_max
+            else:
+                filter_bayes_factor = True
+
+            if (len_collocate_min   <= len(self.dialog.table.item(i, col_collocates).text()) <= len_collocate_max and
+                freq_min            <= self.dialog.table.item(i, col_freq).val_raw           <= freq_max and
+                filter_test_stat and
+                p_value_min         <= self.dialog.table.item(i, col_p_value).val            <= p_value_max and
+                filter_bayes_factor and
+                effect_size_min     <= self.dialog.table.item(i, col_effect_size).val        <= effect_size_max and
+                num_files_found_min <= self.dialog.table.item(i, col_num_files_found).val    <= num_files_found_max):
+                self.dialog.table.row_filters.append(True)
+            else:
+                self.dialog.table.row_filters.append(False)
+
+        self.progress_updated.emit(self.tr('Updating table ...'))
+
+        time.sleep(0.1)
+
+        self.filtering_finished.emit()
+
+class Wordless_Worker_Filter_Results_Keywords(wordless_threading.Wordless_Worker_Filter_Results):
+    def filter_results(self):
+        text_test_significance = self.dialog.table.settings['keywords']['generation_settings']['test_significance']
+        text_measure_effect_size = self.dialog.table.settings['keywords']['generation_settings']['measure_effect_size']
+
+        (text_test_stat,
+         text_p_value,
+         text_bayes_factor) = self.main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
+        text_effect_size = self.main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+
+        col_keywords = self.dialog.table.find_col(self.tr('Keywords'))
+
+        if self.dialog.settings['file_to_filter'] == self.tr('Total'):
+            col_freq = self.dialog.table.find_col(
+                self.tr('Total\nFrequency')
+            )
+            col_test_stat = self.dialog.table.find_col(
+                self.tr(f'Total\n{text_test_stat}')
+            )
+            col_p_value = self.dialog.table.find_col(
+                self.tr(f'Total\n{text_p_value}')
+            )
+            col_bayes_factor = self.dialog.table.find_col(
+                self.tr(f'Total\n{text_bayes_factor}')
+            )
+            col_effect_size = self.dialog.table.find_col(
+                self.tr(f'Total\n{text_effect_size}')
+            )
+        else:
+            col_freq = self.dialog.table.find_col(
+                self.tr(f"[{self.dialog.settings['file_to_filter']}]\nFrequency")
+            )
+            col_test_stat = self.dialog.table.find_col(
+                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_test_stat}")
+            )
+            col_p_value = self.dialog.table.find_col(
+                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_p_value}")
+            )
+            col_bayes_factor = self.dialog.table.find_col(
+                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_bayes_factor}")
+            )
+            col_effect_size = self.dialog.table.find_col(
+                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_effect_size}")
+            )
+
+        col_num_files_found = self.dialog.table.find_col(self.tr('Number of\nFiles Found'))
+
+        len_keyword_min = (float('-inf')
+                           if self.dialog.settings['len_keyword_min_no_limit']
+                           else self.dialog.settings['len_keyword_min'])
+        len_keyword_max = (float('inf')
+                           if self.dialog.settings['len_keyword_max_no_limit']
+                           else self.dialog.settings['len_keyword_max'])
+
+        freq_min = (float('-inf')
+                    if self.dialog.settings['freq_min_no_limit']
+                    else self.dialog.settings['freq_min'])
+        freq_max = (float('inf')
+                    if self.dialog.settings['freq_max_no_limit']
+                    else self.dialog.settings['freq_max'])
+
+        test_stat_min = (float('-inf')
+                         if self.dialog.settings['test_stat_min_no_limit']
+                         else self.dialog.settings['test_stat_min'])
+        test_stat_max = (float('inf')
+                         if self.dialog.settings['test_stat_max_no_limit']
+                         else self.dialog.settings['test_stat_max'])
+
+        p_value_min = (float('-inf')
+                       if self.dialog.settings['p_value_min_no_limit']
+                       else self.dialog.settings['p_value_min'])
+        p_value_max = (float('inf')
+                       if self.dialog.settings['p_value_max_no_limit']
+                       else self.dialog.settings['p_value_max'])
+
+        bayes_factor_min = (float('-inf')
+                            if self.dialog.settings['bayes_factor_min_no_limit']
+                            else self.dialog.settings['bayes_factor_min'])
+        bayes_factor_max = (float('inf')
+                            if self.dialog.settings['bayes_factor_max_no_limit']
+                            else self.dialog.settings['bayes_factor_max'])
+
+        effect_size_min = (float('-inf')
+                           if self.dialog.settings['effect_size_min_no_limit']
+                           else self.dialog.settings['effect_size_min'])
+        effect_size_max = (float('inf')
+                           if self.dialog.settings['effect_size_max_no_limit']
+                           else self.dialog.settings['effect_size_max'])
+
+        num_files_found_min = (float('-inf')
+                               if self.dialog.settings['num_files_found_min_no_limit']
+                               else self.dialog.settings['num_files_found_min'])
+        num_files_found_max = (float('inf')
+                               if self.dialog.settings['num_files_found_max_no_limit']
+                               else self.dialog.settings['nur_files_found_max'])
+
+        self.dialog.table.row_filters = []
+
+        for i in range(self.dialog.table.rowCount()):
+            if text_test_stat:
+                filter_test_stat = test_stat_min <= self.dialog.table.item(i, col_test_stat).val <= test_stat_max
+            else:
+                filter_test_stat = True
+
+            if text_bayes_factor:
+                filter_bayes_factor = bayes_factor_min <= self.dialog.table.item(i, col_bayes_factor).val <= bayes_factor_max
+            else:
+                filter_bayes_factor = True
+
+            if (len_keyword_min     <= len(self.dialog.table.item(i, col_keywords).text()) <= len_keyword_max and
+                freq_min            <= self.dialog.table.item(i, col_freq).val_raw         <= freq_max and
+                filter_test_stat and
+                p_value_min         <= self.dialog.table.item(i, col_p_value).val          <= p_value_max and
+                filter_bayes_factor and
+                effect_size_min     <= self.dialog.table.item(i, col_effect_size).val      <= effect_size_max and
+                num_files_found_min <= self.dialog.table.item(i, col_num_files_found).val  <= num_files_found_max):
+                self.dialog.table.row_filters.append(True)
+            else:
+                self.dialog.table.row_filters.append(False)
+
+        self.progress_updated.emit(self.tr('Updating table ...'))
+
+        time.sleep(0.1)
+
+        self.filtering_finished.emit()
 
 class Wordless_Dialog_Filter_Results_Wordlist(Wordless_Dialog_Filter_Results):
     def __init__(self, main, tab, table):
@@ -319,86 +692,24 @@ class Wordless_Dialog_Filter_Results_Wordlist(Wordless_Dialog_Filter_Results):
 
     @wordless_misc.log_timing
     def filter_results(self):
-        if any([self.table.item(0, i) for i in range(self.table.columnCount())]):
-            text_measure_dispersion = self.table.settings[self.tab]['generation_settings']['measure_dispersion']
-            text_measure_adjusted_freq = self.table.settings[self.tab]['generation_settings']['measure_adjusted_freq']
-
-            text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-            text_adjusted_freq =  self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
-
-            if self.tab == 'wordlist':
-                col_tokens = self.table.find_col(self.tr('Tokens'))
-            elif self.tab == 'ngrams':
-                col_ngrams = self.table.find_col(self.tr('N-grams'))
-
-            if self.settings['file_to_filter'] == self.tr('Total'):
-                col_freq = self.table.find_col(self.tr('Total\nFrequency'))
-                col_dispersion = self.table.find_col(self.tr(f'Total\n{text_dispersion}'))
-                col_adjusted_freq = self.table.find_col(self.tr(f'Total\n{text_adjusted_freq}'))
-            else:
-                col_freq = self.table.find_col(self.tr(f"[{self.settings['file_to_filter']}]\nFrequency"))
-                col_dispersion = self.table.find_col(self.tr(f"[{self.settings['file_to_filter']}]\n{text_dispersion}"))
-                col_adjusted_freq = self.table.find_col(self.tr(f"[{self.settings['file_to_filter']}]\n{text_adjusted_freq}"))
-
-            col_num_files_found = self.table.find_col(self.tr('Number of\nFiles Found'))
-
-            if self.tab == 'wordlist':
-                len_token_min = (float('-inf')
-                                 if self.settings['len_token_min_no_limit'] else self.settings['len_token_min'])
-                len_token_max = (float('inf')
-                                 if self.settings['len_token_max_no_limit'] else self.settings['len_token_max'])
-            elif self.tab == 'ngrams':
-                len_ngram_min = (float('-inf')
-                                 if self.settings['len_ngram_min_no_limit'] else self.settings['len_ngram_min'])
-                len_ngram_max = (float('inf')
-                                 if self.settings['len_ngram_max_no_limit'] else self.settings['len_ngram_max'])
-
-            freq_min = (float('-inf')
-                        if self.settings['freq_min_no_limit'] else self.settings['freq_min'])
-            freq_max = (float('inf')
-                        if self.settings['freq_max_no_limit'] else self.settings['freq_max'])
-
-            dispersion_min = (float('-inf')
-                              if self.settings['dispersion_min_no_limit'] else self.settings['dispersion_min'])
-            dispersion_max = (float('inf')
-                              if self.settings['dispersion_max_no_limit'] else self.settings['dispersion_max'])
-
-            adjusted_freq_min = (float('-inf')
-                                 if self.settings['adjusted_freq_min_no_limit'] else self.settings['adjusted_freq_min'])
-            adjusted_freq_max = (float('inf')
-                                 if self.settings['adjusted_freq_max_no_limit'] else self.settings['adjusted_freq_max'])
-
-            num_files_found_min = (float('-inf')
-                                   if self.settings['num_files_found_min_no_limit'] else self.settings['num_files_found_min'])
-            num_files_found_max = (float('inf')
-                                   if self.settings['num_files_found_max_no_limit'] else self.settings['num_files_found_max'])
-
-            self.table.row_filters = []
-
-            if self.tab == 'wordlist':
-                for i in range(self.table.rowCount()):
-                    if (len_token_min       <= len(self.table.item(i, col_tokens).text())  <= len_token_max and
-                        freq_min            <= self.table.item(i, col_freq).val_raw        <= freq_max and
-                        dispersion_min      <= self.table.item(i, col_dispersion).val      <= dispersion_max and
-                        adjusted_freq_min   <= self.table.item(i, col_adjusted_freq).val   <= adjusted_freq_max and
-                        num_files_found_min <= self.table.item(i, col_num_files_found).val <= num_files_found_max):
-                        self.table.row_filters.append(True)
-                    else:
-                        self.table.row_filters.append(False)
-            elif self.tab == 'ngrams':
-                for i in range(self.table.rowCount()):
-                    if (len_ngram_min       <= len(self.table.item(i, col_ngrams).text())  <= len_ngram_max and
-                        freq_min            <= self.table.item(i, col_freq).val_raw        <= freq_max and
-                        dispersion_min      <= self.table.item(i, col_dispersion).val      <= dispersion_max and
-                        adjusted_freq_min   <= self.table.item(i, col_adjusted_freq).val   <= adjusted_freq_max and
-                        num_files_found_min <= self.table.item(i, col_num_files_found).val <= num_files_found_max):
-                        self.table.row_filters.append(True)
-                    else:
-                        self.table.row_filters.append(False)
-
+        def data_received():
             self.table.filter_table()
 
-        wordless_message.wordless_message_filter_table_done(self.main)
+            dialog_progress.accept()
+
+            wordless_message.wordless_message_filter_results_success(self.main)
+
+        dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Filter_Results(self.main)
+
+        worker_search_results = Wordless_Worker_Filter_Results_Wordlist(self.main, self, dialog_progress, data_received)
+        thread_search_results = wordless_threading.Wordless_Thread_Filter_Results(worker_search_results)
+
+        thread_search_results.start()
+
+        dialog_progress.exec_()
+
+        thread_search_results.quit()
+        thread_search_results.wait()
 
 class Wordless_Dialog_Filter_Results_Collocation(Wordless_Dialog_Filter_Results):
     def __init__(self, main, tab, table):
@@ -716,102 +1027,24 @@ class Wordless_Dialog_Filter_Results_Collocation(Wordless_Dialog_Filter_Results)
 
     @wordless_misc.log_timing
     def filter_results(self):
-        if any([self.table.item(0, i) for i in range(self.table.columnCount())]):
-            text_test_significance = self.table.settings['collocation']['generation_settings']['test_significance']
-            text_measure_effect_size = self.table.settings['collocation']['generation_settings']['measure_effect_size']
-
-            (text_test_stat,
-             text_p_value,
-             text_bayes_factor) = self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
-            text_effect_size = self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
-
-            col_collocates = self.table.find_col('Collocates')
-
-            if self.settings['file_to_filter'] == self.tr('Total'):
-                if self.settings['freq_position'] == self.tr('Total'):
-                    col_freq = self.table.find_col(self.tr('Total\nFrequency'))
-                else:
-                    col_freq = self.table.find_col(self.tr(f'Total\n{self.settings["freq_position"]}'))
-
-                col_test_stat = self.table.find_col(self.tr(f'Total\n{text_test_stat}'))
-                col_p_value = self.table.find_col(self.tr(f'Total\n{text_p_value}'))
-                col_bayes_factor = self.table.find_col(self.tr(f'Total\n{text_bayes_factor}'))
-                col_effect_size = self.table.find_col(self.tr(f'Total\n{text_effect_size}'))
-            else:
-                if self.settings['freq_position'] == self.tr('Total'):
-                    col_freq = self.table.find_col(self.tr(f"[{self.settings['file_to_filter']}]\nFrequency"))
-                else:
-                    col_freq = self.table.find_col(self.tr(f"[{self.settings['file_to_filter']}]\n{settings['freq_position']}"))
-
-                col_test_stat = self.table.find_col(self.tr(f"[{self.settings['file_to_filter']}]\n{text_test_stat}"))
-                col_p_value = self.table.find_col(self.tr(f"[{self.settings['file_to_filter']}]\n{text_p_value}"))
-                col_bayes_factor = self.table.find_col(self.tr(f"[{self.settings['file_to_filter']}]\n{text_bayes_factor}"))
-                col_effect_size = self.table.find_col(self.tr(f"[{self.settings['file_to_filter']}]\n{text_effect_size}"))
-
-            col_num_files_found = self.table.find_col('Number of\nFiles Found')
-
-            len_collocate_min = (float('-inf')
-                                 if self.settings['len_collocate_min_no_limit'] else self.settings['len_collocate_min'])
-            len_collocate_max = (float('inf')
-                                 if self.settings['len_collocate_max_no_limit'] else self.settings['len_collocate_max'])
-
-            freq_min = (float('-inf')
-                        if self.settings['freq_min_no_limit'] else self.settings['freq_min'])
-            freq_max = (float('inf')
-                        if self.settings['freq_max_no_limit'] else self.settings['freq_max'])
-
-            test_stat_min = (float('-inf')
-                             if self.settings['test_stat_min_no_limit'] else self.settings['test_stat_min'])
-            test_stat_max = (float('inf')
-                             if self.settings['test_stat_max_no_limit'] else self.settings['test_stat_max'])
-
-            p_value_min = (float('-inf')
-                           if self.settings['p_value_min_no_limit'] else self.settings['p_value_min'])
-            p_value_max = (float('inf')
-                           if self.settings['p_value_max_no_limit'] else self.settings['p_value_max'])
-
-            bayes_factor_min = (float('-inf')
-                                if self.settings['bayes_factor_min_no_limit'] else self.settings['bayes_factor_min'])
-            bayes_factor_max = (float('inf')
-                                if self.settings['bayes_factor_max_no_limit'] else self.settings['bayes_factor_max'])
-
-            effect_size_min = (float('-inf')
-                               if self.settings['effect_size_min_no_limit'] else self.settings['effect_size_min'])
-            effect_size_max = (float('inf')
-                               if self.settings['effect_size_max_no_limit'] else self.settings['effect_size_max'])
-
-            num_files_found_min = (float('-inf')
-                                   if self.settings['num_files_found_min_no_limit'] else self.settings['num_files_found_min'])
-            num_files_found_max = (float('inf')
-                                   if self.settings['num_files_found_max_no_limit'] else self.settings['num_files_found_max'])
-
-            self.table.row_filters = []
-
-            for i in range(self.table.rowCount()):
-                if text_test_stat:
-                    filter_test_stat = test_stat_min <= self.table.item(i, col_test_stat).val <= test_stat_max
-                else:
-                    filter_test_stat = True
-
-                if text_bayes_factor:
-                    filter_bayes_factor = bayes_factor_min <= self.table.item(i, col_bayes_factor).val <= bayes_factor_max
-                else:
-                    filter_bayes_factor = True
-
-                if (len_collocate_min   <= len(self.table.item(i, col_collocates).text()) <= len_collocate_max and
-                    freq_min            <= self.table.item(i, col_freq).val_raw           <= freq_max and
-                    filter_test_stat and
-                    p_value_min         <= self.table.item(i, col_p_value).val            <= p_value_max and
-                    filter_bayes_factor and
-                    effect_size_min     <= self.table.item(i, col_effect_size).val        <= effect_size_max and
-                    num_files_found_min <= self.table.item(i, col_num_files_found).val    <= num_files_found_max):
-                    self.table.row_filters.append(True)
-                else:
-                    self.table.row_filters.append(False)
-
+        def data_received():
             self.table.filter_table()
 
-        wordless_message.wordless_message_filter_table_done(self.main)
+            dialog_progress.accept()
+
+            wordless_message.wordless_message_filter_results_success(self.main)
+
+        dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Filter_Results(self.main)
+
+        worker_search_results = Wordless_Worker_Filter_Results_Collocation(self.main, self, dialog_progress, data_received)
+        thread_search_results = wordless_threading.Wordless_Thread_Filter_Results(worker_search_results)
+
+        thread_search_results.start()
+
+        dialog_progress.exec_()
+
+        thread_search_results.quit()
+        thread_search_results.wait()
 
 class Wordless_Dialog_Filter_Results_Keywords(Wordless_Dialog_Filter_Results):
     def __init__(self, main, tab, table):
@@ -1106,91 +1339,21 @@ class Wordless_Dialog_Filter_Results_Keywords(Wordless_Dialog_Filter_Results):
 
     @wordless_misc.log_timing
     def filter_results(self):
-        if any([self.table.item(0, i) for i in range(self.table.columnCount())]):
-            text_test_significance = self.table.settings['keywords']['generation_settings']['test_significance']
-            text_measure_effect_size = self.table.settings['keywords']['generation_settings']['measure_effect_size']
-
-            (text_test_stat,
-             text_p_value,
-             text_bayes_factor) = self.main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-            text_effect_size = self.main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
-
-            col_keywords = self.table.find_col('Keywords')
-
-            if self.settings['file_to_filter'] == self.tr('Total'):
-                col_freq = self.table.find_col(self.tr('Total\nFrequency'))
-                col_test_stat = self.table.find_col(self.tr(f'Total\n{text_test_stat}'))
-                col_p_value = self.table.find_col(self.tr(f'Total\n{text_p_value}'))
-                col_bayes_factor = self.table.find_col(self.tr(f'Total\n{text_bayes_factor}'))
-                col_effect_size = self.table.find_col(self.tr(f'Total\n{text_effect_size}'))
-            else:
-                col_freq = self.table.find_col(self.tr(f'[{self.settings["file_to_filter"]}]\nFrequency'))
-                col_test_stat = self.table.find_col(self.tr(f'[{self.settings["file_to_filter"]}]\n{text_test_stat}'))
-                col_p_value = self.table.find_col(self.tr(f'[{self.settings["file_to_filter"]}]\n{text_p_value}'))
-                col_bayes_factor = self.table.find_col(self.tr(f'[{self.settings["file_to_filter"]}]\n{text_bayes_factor}'))
-                col_effect_size = self.table.find_col(self.tr(f'[{self.settings["file_to_filter"]}]\n{text_effect_size}'))
-
-            col_num_files_found = self.table.find_col('Number of\nFiles Found')
-
-            len_keyword_min = (float('-inf')
-                               if self.settings['len_keyword_min_no_limit'] else self.settings['len_keyword_min'])
-            len_keyword_max = (float('inf')
-                               if self.settings['len_keyword_max_no_limit'] else self.settings['len_keyword_max'])
-
-            freq_min = (float('-inf')
-                        if self.settings['freq_min_no_limit'] else self.settings['freq_min'])
-            freq_max = (float('inf')
-                        if self.settings['freq_max_no_limit'] else self.settings['freq_max'])
-
-            test_stat_min = (float('-inf')
-                             if self.settings['test_stat_min_no_limit'] else self.settings['test_stat_min'])
-            test_stat_max = (float('inf')
-                             if self.settings['test_stat_max_no_limit'] else self.settings['test_stat_max'])
-
-            p_value_min = (float('-inf')
-                           if self.settings['p_value_min_no_limit'] else self.settings['p_value_min'])
-            p_value_max = (float('inf')
-                           if self.settings['p_value_max_no_limit'] else self.settings['p_value_max'])
-
-            bayes_factor_min = (float('-inf')
-                                if self.settings['bayes_factor_min_no_limit'] else self.settings['bayes_factor_min'])
-            bayes_factor_max = (float('inf')
-                                if self.settings['bayes_factor_max_no_limit'] else self.settings['bayes_factor_max'])
-
-            effect_size_min = (float('-inf')
-                               if self.settings['effect_size_min_no_limit'] else self.settings['effect_size_min'])
-            effect_size_max = (float('inf')
-                               if self.settings['effect_size_max_no_limit'] else self.settings['effect_size_max'])
-
-            num_files_found_min = (float('-inf')
-                                   if self.settings['num_files_found_min_no_limit'] else self.settings['num_files_found_min'])
-            num_files_found_max = (float('inf')
-                                   if self.settings['num_files_found_max_no_limit'] else self.settings['nur_files_found_max'])
-
-            self.table.row_filters = []
-
-            for i in range(self.table.rowCount()):
-                if text_test_stat:
-                    filter_test_stat = test_stat_min <= self.table.item(i, col_test_stat).val <= test_stat_max
-                else:
-                    filter_test_stat = True
-
-                if text_bayes_factor:
-                    filter_bayes_factor = bayes_factor_min <= self.table.item(i, col_bayes_factor).val <= bayes_factor_max
-                else:
-                    filter_bayes_factor = True
-
-                if (len_keyword_min     <= len(self.table.item(i, col_keywords).text()) <= len_keyword_max and
-                    freq_min            <= self.table.item(i, col_freq).val_raw         <= freq_max and
-                    filter_test_stat and
-                    p_value_min         <= self.table.item(i, col_p_value).val          <= p_value_max and
-                    filter_bayes_factor and
-                    effect_size_min     <= self.table.item(i, col_effect_size).val      <= effect_size_max and
-                    num_files_found_min <= self.table.item(i, col_num_files_found).val  <= num_files_found_max):
-                    self.table.row_filters.append(True)
-                else:
-                    self.table.row_filters.append(False)
-
+        def data_received():
             self.table.filter_table()
 
-        wordless_message.wordless_message_filter_table_done(self.main)
+            dialog_progress.accept()
+
+            wordless_message.wordless_message_filter_results_success(self.main)
+
+        dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Filter_Results(self.main)
+
+        worker_search_results = Wordless_Worker_Filter_Results_Keywords(self.main, self, dialog_progress, data_received)
+        thread_search_results = wordless_threading.Wordless_Thread_Filter_Results(worker_search_results)
+
+        thread_search_results.start()
+
+        dialog_progress.exec_()
+
+        thread_search_results.quit()
+        thread_search_results.wait()
