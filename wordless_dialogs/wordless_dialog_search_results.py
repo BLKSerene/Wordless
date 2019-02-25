@@ -10,6 +10,7 @@
 #
 
 import copy
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -67,6 +68,10 @@ class Wordless_Worker_Search_Results(wordless_threading.Wordless_Worker):
                         self.dialog.items_found.append([row, col])
 
         self.dialog.items_found = sorted(self.dialog.items_found)
+
+        self.progress_updated.emit(self.tr('Highlighting items ...'))
+
+        time.sleep(0.1)
 
         self.searching_finished.emit()
 
@@ -334,9 +339,8 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
             worker_search_results = Wordless_Worker_Search_Results(self.main, self)
             thread_search_results = wordless_threading.Wordless_Thread_Search_Results(worker_search_results)
 
+            worker_search_results.progress_updated.connect(dialog_progress.update_progress)
             worker_search_results.searching_finished.connect(data_received)
-            thread_search_results.started.connect(worker_search_results.search_results)
-            thread_search_results.finished.connect(worker_search_results.deleteLater)
 
             thread_search_results.start()
 
@@ -355,14 +359,12 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
             self.table.blockSignals(True)
             self.table.setUpdatesEnabled(False)
 
-            for col in range(self.table.columnCount()):
-                if self.table.cellWidget(0, col):
-                    for row in range(self.table.rowCount()):
-                        self.table.cellWidget(row, col).setStyleSheet('border: 0')
+            for row, col in self.items_found:
+                if self.table.cellWidget(row, col):
+                    self.table.cellWidget(row, col).setStyleSheet('border: 0')
                 else:
-                    for row in range(self.table.rowCount()):
-                        self.table.item(row, col).setForeground(QBrush(QColor('#292929')))
-                        self.table.item(row, col).setBackground(QBrush(QColor('#FFF')))
+                    self.table.item(row, col).setForeground(QBrush(QColor('#292929')))
+                    self.table.item(row, col).setBackground(QBrush(QColor('#FFF')))
 
             self.table.blockSignals(False)
             self.table.setUpdatesEnabled(True)
