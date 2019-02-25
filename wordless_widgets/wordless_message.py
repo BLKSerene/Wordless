@@ -21,10 +21,7 @@ def wordless_message_generate_table_error(main):
 def wordless_message_generate_figure_error(main):
     main.statusBar().showMessage(main.tr('An error occured while the figure is being generated!'))
 
-def wordless_message_sort_results(main):
-    main.statusBar().showMessage(main.tr('The results in the table has been successfully sorted.'))
-
-def wordless_message_filter_table_done(main):
+def wordless_message_filter_results_success(main):
     main.statusBar().showMessage(main.tr('The results in the table has been successfully filtered.'))
 
 def wordless_message_search_results_success(main, search_results):
@@ -37,6 +34,9 @@ def wordless_message_search_results_success(main, search_results):
 
 def wordless_message_search_results_error(main):
     main.statusBar().showMessage(main.tr('An error occured during searching!'))
+
+def wordless_message_sort_results(main):
+    main.statusBar().showMessage(main.tr('The results in the table has been successfully sorted.'))
 
 def wordless_message_import_list_success(main, num_prev, num_cur):
     num_imported = num_cur - num_prev

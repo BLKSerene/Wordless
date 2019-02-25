@@ -12,6 +12,7 @@
 import collections
 import copy
 import itertools
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -633,11 +634,15 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
 class Wordless_Worker_Process_Data_Ngrams(wordless_threading.Wordless_Worker_Process_Data):
     processing_finished = pyqtSignal(dict, dict, dict)
 
+    def __init__(self, main, dialog_progress, data_received):
+        super().__init__(main, dialog_progress, data_received)
+
+        self.ngrams_freq_files = []
+        self.ngrams_stats_files = []
+        self.ngrams_text = {}
+
     def process_data(self):
         texts = []
-        ngrams_freq_files = []
-        ngrams_stats_files = []
-        ngrams_text = {}
 
         settings = self.main.settings_custom['ngrams']
 
@@ -773,13 +778,13 @@ class Wordless_Worker_Process_Data_Ngrams(wordless_threading.Wordless_Worker_Pro
                             if ngram[i : i + len_search_term] == search_term:
                                 ngrams_freq_file_filtered[ngram] = freq
 
-                ngrams_freq_files.append(ngrams_freq_file_filtered)
+                self.ngrams_freq_files.append(ngrams_freq_file_filtered)
             else:
-                ngrams_freq_files.append(ngrams_freq_file)
+                self.ngrams_freq_files.append(ngrams_freq_file)
 
             # N-grams Text
             for ngram in ngrams_freq_file:
-                ngrams_text[ngram] = wordless_text_processing.wordless_word_detokenize(self.main, ngram, text.lang)
+                self.ngrams_text[ngram] = wordless_text_processing.wordless_word_detokenize(self.main, ngram, text.lang)
 
             texts.append(text)
 
@@ -790,7 +795,7 @@ class Wordless_Worker_Process_Data_Ngrams(wordless_threading.Wordless_Worker_Pro
 
             texts.append(text_total)
 
-            ngrams_freq_files.append(sum([collections.Counter(ngrams_freq_file) for ngrams_freq_file in ngrams_freq_files],
+            self.ngrams_freq_files.append(sum([collections.Counter(ngrams_freq_file) for ngrams_freq_file in self.ngrams_freq_files],
                                          collections.Counter()))
 
         self.progress_updated.emit(self.tr('Processing data ...'))
@@ -802,7 +807,7 @@ class Wordless_Worker_Process_Data_Ngrams(wordless_threading.Wordless_Worker_Pro
         measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
         measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
 
-        ngrams_total = ngrams_freq_files[-1].keys()
+        ngrams_total = self.ngrams_freq_files[-1].keys()
 
         for text in texts:
             ngrams_lens = {}
@@ -840,19 +845,40 @@ class Wordless_Worker_Process_Data_Ngrams(wordless_threading.Wordless_Worker_Pro
                                                       for section in wordless_text_utils.to_sections(ngrams, number_sections)]
 
             for ngram in ngrams_total:
-                counts = [section_freq[ngram] for section_freq in sections_freq_lens[len(ngram)]]
+                counts = [section_freq[ngram] for
+                          section_freq in sections_freq_lens[len(ngram)]]
 
                 ngrams_stats_file[ngram].append(measure_adjusted_freq(counts))
 
-            ngrams_stats_files.append(ngrams_stats_file)
+            self.ngrams_stats_files.append(ngrams_stats_file)
 
         if len(files) == 1:
-            ngrams_freq_files *= 2
-            ngrams_stats_files *= 2
+            self.ngrams_freq_files *= 2
+            self.ngrams_stats_files *= 2
 
-        self.processing_finished.emit(wordless_misc.merge_dicts(ngrams_freq_files),
-                                      wordless_misc.merge_dicts(ngrams_stats_files),
-                                      ngrams_text)
+class Wordless_Worker_Process_Data_Ngrams_Table(Wordless_Worker_Process_Data_Ngrams):
+    def process_data(self):
+        super().process_data()
+
+        self.progress_updated.emit(self.tr('Rendering table ...'))
+
+        time.sleep(0.1)
+
+        self.processing_finished.emit(wordless_misc.merge_dicts(self.ngrams_freq_files),
+                                      wordless_misc.merge_dicts(self.ngrams_stats_files),
+                                      self.ngrams_text)
+
+class Wordless_Worker_Process_Data_Ngrams_Figure(Wordless_Worker_Process_Data_Ngrams):
+    def process_data(self):
+        super().process_data()
+
+        self.progress_updated.emit(self.tr('Rendering figure ...'))
+
+        time.sleep(0.1)
+
+        self.processing_finished.emit(wordless_misc.merge_dicts(self.ngrams_freq_files),
+                                      wordless_misc.merge_dicts(self.ngrams_stats_files),
+                                      self.ngrams_text)
 
 @wordless_misc.log_timing
 def generate_table(main, table):
@@ -965,7 +991,7 @@ def generate_table(main, table):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Wordless_Worker_Process_Data_Ngrams(main, dialog_progress, data_received)
+            worker_process_data = Wordless_Worker_Process_Data_Ngrams_Table(main, dialog_progress, data_received)
             thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
 
             thread_process_data.start()
@@ -1038,7 +1064,7 @@ def generate_figure(main):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Wordless_Worker_Process_Data_Ngrams(main, dialog_progress, data_received)
+            worker_process_data = Wordless_Worker_Process_Data_Ngrams_Figure(main, dialog_progress, data_received)
             thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
 
             thread_process_data.start()
