@@ -39,7 +39,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
          self.inclusion_checkbox_ignore_case,
          self.inclusion_checkbox_match_inflected_forms,
-         self.inclusion_checkbox_match_whole_word,
+         self.inclusion_checkbox_match_whole_words,
          self.inclusion_checkbox_use_regex,
 
          self.inclusion_stacked_widget_ignore_tags,
@@ -63,7 +63,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
         self.inclusion_checkbox_ignore_case.stateChanged.connect(self.inclusion_changed)
         self.inclusion_checkbox_match_inflected_forms.stateChanged.connect(self.inclusion_changed)
-        self.inclusion_checkbox_match_whole_word.stateChanged.connect(self.inclusion_changed)
+        self.inclusion_checkbox_match_whole_words.stateChanged.connect(self.inclusion_changed)
         self.inclusion_checkbox_use_regex.stateChanged.connect(self.inclusion_changed)
 
         self.inclusion_stacked_widget_ignore_tags.checkbox_ignore_tags.stateChanged.connect(self.inclusion_changed)
@@ -103,7 +103,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
         self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_ignore_case, 4, 0, 1, 4)
         self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_match_inflected_forms, 5, 0, 1, 4)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_match_whole_word, 6, 0, 1, 4)
+        self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_match_whole_words, 6, 0, 1, 4)
         self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_use_regex, 7, 0, 1, 4)
         self.inclusion_group_box.layout().addLayout(inclusion_layout_ignore_tags, 8, 0, 1, 4)
         self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_match_tags, 9, 0, 1, 4)
@@ -134,7 +134,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
          self.exclusion_checkbox_ignore_case,
          self.exclusion_checkbox_match_inflected_forms,
-         self.exclusion_checkbox_match_whole_word,
+         self.exclusion_checkbox_match_whole_words,
          self.exclusion_checkbox_use_regex,
 
          self.exclusion_stacked_widget_ignore_tags,
@@ -158,7 +158,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
         self.exclusion_checkbox_ignore_case.stateChanged.connect(self.exclusion_changed)
         self.exclusion_checkbox_match_inflected_forms.stateChanged.connect(self.exclusion_changed)
-        self.exclusion_checkbox_match_whole_word.stateChanged.connect(self.exclusion_changed)
+        self.exclusion_checkbox_match_whole_words.stateChanged.connect(self.exclusion_changed)
         self.exclusion_checkbox_use_regex.stateChanged.connect(self.exclusion_changed)
 
         self.exclusion_stacked_widget_ignore_tags.checkbox_ignore_tags.stateChanged.connect(self.exclusion_changed)
@@ -198,7 +198,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
         self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_ignore_case, 4, 0, 1, 4)
         self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_match_inflected_forms, 5, 0, 1, 4)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_match_whole_word, 6, 0, 1, 4)
+        self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_match_whole_words, 6, 0, 1, 4)
         self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_use_regex, 7, 0, 1, 4)
         self.exclusion_group_box.layout().addLayout(exclusion_layout_ignore_tags, 8, 0, 1, 4)
         self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_match_tags, 9, 0, 1, 4)
@@ -253,7 +253,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
         self.inclusion_checkbox_ignore_case.setChecked(settings['inclusion']['ignore_case'])
         self.inclusion_checkbox_match_inflected_forms.setChecked(settings['inclusion']['match_inflected_forms'])
-        self.inclusion_checkbox_match_whole_word.setChecked(settings['inclusion']['match_whole_word'])
+        self.inclusion_checkbox_match_whole_words.setChecked(settings['inclusion']['match_whole_words'])
         self.inclusion_checkbox_use_regex.setChecked(settings['inclusion']['use_regex'])
 
         self.inclusion_stacked_widget_ignore_tags.checkbox_ignore_tags.setChecked(settings['inclusion']['ignore_tags'])
@@ -291,7 +291,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
         self.exclusion_checkbox_ignore_case.setChecked(settings['exclusion']['ignore_case'])
         self.exclusion_checkbox_match_inflected_forms.setChecked(settings['exclusion']['match_inflected_forms'])
-        self.exclusion_checkbox_match_whole_word.setChecked(settings['exclusion']['match_whole_word'])
+        self.exclusion_checkbox_match_whole_words.setChecked(settings['exclusion']['match_whole_words'])
         self.exclusion_checkbox_use_regex.setChecked(settings['exclusion']['use_regex'])
 
         self.exclusion_stacked_widget_ignore_tags.checkbox_ignore_tags.setChecked(settings['exclusion']['ignore_tags'])
@@ -332,7 +332,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
         self.settings['inclusion']['ignore_case'] = self.inclusion_checkbox_ignore_case.isChecked()
         self.settings['inclusion']['match_inflected_forms'] = self.inclusion_checkbox_match_inflected_forms.isChecked()
-        self.settings['inclusion']['match_whole_word'] = self.inclusion_checkbox_match_whole_word.isChecked()
+        self.settings['inclusion']['match_whole_words'] = self.inclusion_checkbox_match_whole_words.isChecked()
         self.settings['inclusion']['use_regex'] = self.inclusion_checkbox_use_regex.isChecked()
 
         self.settings['inclusion']['ignore_tags'] = self.inclusion_stacked_widget_ignore_tags.checkbox_ignore_tags.isChecked()
@@ -365,7 +365,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
         self.settings['exclusion']['ignore_case'] = self.exclusion_checkbox_ignore_case.isChecked()
         self.settings['exclusion']['match_inflected_forms'] = self.exclusion_checkbox_match_inflected_forms.isChecked()
-        self.settings['exclusion']['match_whole_word'] = self.exclusion_checkbox_match_whole_word.isChecked()
+        self.settings['exclusion']['match_whole_words'] = self.exclusion_checkbox_match_whole_words.isChecked()
         self.settings['exclusion']['use_regex'] = self.exclusion_checkbox_use_regex.isChecked()
 
         self.settings['exclusion']['ignore_tags'] = self.exclusion_stacked_widget_ignore_tags.checkbox_ignore_tags.isChecked()

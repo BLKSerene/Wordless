@@ -464,7 +464,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
          self.checkbox_ignore_case,
          self.checkbox_match_inflected_forms,
-         self.checkbox_match_whole_word,
+         self.checkbox_match_whole_words,
          self.checkbox_use_regex,
 
          self.search_stacked_widget_ignore_tags,
@@ -484,7 +484,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         self.checkbox_ignore_case.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_match_whole_word.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_whole_words.stateChanged.connect(self.search_settings_changed)
         self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
 
         self.search_stacked_widget_ignore_tags.checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
@@ -523,7 +523,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         self.group_box_search_settings.layout().addWidget(self.checkbox_ignore_case, 4, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_match_whole_word, 6, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_whole_words, 6, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_use_regex, 7, 0, 1, 2)
 
         self.group_box_search_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
@@ -688,7 +688,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         self.checkbox_ignore_case.setChecked(settings['search_settings']['ignore_case'])
         self.checkbox_match_inflected_forms.setChecked(settings['search_settings']['match_inflected_forms'])
-        self.checkbox_match_whole_word.setChecked(settings['search_settings']['match_whole_word'])
+        self.checkbox_match_whole_words.setChecked(settings['search_settings']['match_whole_words'])
         self.checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
 
         self.search_stacked_widget_ignore_tags.checkbox_ignore_tags.setChecked(settings['search_settings']['ignore_tags'])
@@ -759,7 +759,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         settings['ignore_case'] = self.checkbox_ignore_case.isChecked()
         settings['match_inflected_forms'] = self.checkbox_match_inflected_forms.isChecked()
-        settings['match_whole_word'] = self.checkbox_match_whole_word.isChecked()
+        settings['match_whole_words'] = self.checkbox_match_whole_words.isChecked()
         settings['use_regex'] = self.checkbox_use_regex.isChecked()
 
         settings['ignore_tags'] = self.search_stacked_widget_ignore_tags.checkbox_ignore_tags.isChecked()
@@ -810,7 +810,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         settings['sorting_rules'] = self.table_concordancer_sorting.get_sorting_rules()
 
-class Worker_Process_Data_Table(wordless_threading.Worker_Process_Data):
+class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordless_Worker_Process_Data):
     processing_finished = pyqtSignal(list)
 
     def process_data(self):
@@ -819,7 +819,7 @@ class Worker_Process_Data_Table(wordless_threading.Worker_Process_Data):
         settings = self.main.settings_custom['concordancer']
         files = self.main.wordless_files.get_selected_files()
 
-        self.progress_updated.emit(self.tr('Searching ...'))
+        self.progress_updated.emit(self.tr('Searching  in text ...'))
 
         for file in files:
             number_lines = 0
@@ -1106,7 +1106,7 @@ def generate_table(main, table):
 
             wordless_message.wordless_message_generate_table_error(main)
 
-        dialog_processing.accept()
+        dialog_progress.accept()
 
     settings = main.settings_custom['concordancer']
     files = main.wordless_files.get_selected_files()
@@ -1114,14 +1114,14 @@ def generate_table(main, table):
     if wordless_checking_file.check_files_on_loading(main, files):
         if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
-            dialog_processing = wordless_dialog_misc.Wordless_Dialog_Processing_Generate_Data(main)
+            dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Worker_Process_Data_Table(main, dialog_processing, data_received)
-            thread_process_data = wordless_threading.Thread_Process_Data(worker_process_data)
+            worker_process_data = Wordless_Worker_Process_Data_Concordancer_Table(main, dialog_progress, data_received)
+            thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
 
             thread_process_data.start()
 
-            dialog_processing.exec_()
+            dialog_progress.exec_()
 
             thread_process_data.quit()
             thread_process_data.wait()
@@ -1132,7 +1132,7 @@ def generate_table(main, table):
     else:
         wordless_message.wordless_message_generate_table_error(main)
 
-class Worker_Process_Data_Figure(wordless_threading.Worker_Process_Data):
+class Wordless_Worker_Process_Data_Concordancer_Figure(wordless_threading.Wordless_Worker_Process_Data):
     processing_finished = pyqtSignal(list, list)
 
     def process_data(self):
@@ -1308,7 +1308,7 @@ def generate_figure(main):
 
             wordless_message.wordless_message_generate_figure_error(main)
 
-        dialog_processing.accept()
+        dialog_progress.accept()
 
         if points:
             matplotlib.pyplot.get_current_fig_manager().window.showMaximized()
@@ -1319,14 +1319,14 @@ def generate_figure(main):
     if wordless_checking_file.check_files_on_loading(main, files):
         if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
-            dialog_processing = wordless_dialog_misc.Wordless_Dialog_Processing_Generate_Data(main)
+            dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Worker_Process_Data_Figure(main, dialog_processing, data_received)
-            thread_process_data = wordless_threading.Thread_Process_Data(worker_process_data)
+            worker_process_data = Wordless_Worker_Process_Data_Concordancer_Figure(main, dialog_progress, data_received)
+            thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
 
             thread_process_data.start()
 
-            dialog_processing.exec_()
+            dialog_progress.exec_()
 
             thread_process_data.quit()
             thread_process_data.wait()
