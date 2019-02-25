@@ -409,7 +409,18 @@ class Wordless_Message_Box_No_Results(Wordless_Message_Box_Warning):
             main = main,
             title = main.tr('No Results'),
             text = main.tr('''
-                <div>Data generation completed successfully, but there are no results to show.</div>
+                <div>Data processing has completed successfully, but there are no results to display.</div>
+                <div>You can change your settings and try again.</div>
+            ''')
+        )
+
+class Wordless_Message_Box_No_Search_Results(Wordless_Message_Box_Warning):
+    def __init__(self, main):
+        super().__init__(
+            main = main,
+            title = main.tr('No Search Results'),
+            text = main.tr('''
+                <div>Searching has completed successfully, but there are no results found.</div>
                 <div>You can change your settings and try again.</div>
             ''')
         )
@@ -420,15 +431,9 @@ def wordless_message_box_no_results(main):
     message_box_no_results.open()
 
 def wordless_message_box_no_search_results(main):
-    QMessageBox.information(main,
-                            main.tr('No Search Results'),
-                            main.tr(f'''
-                                {main.settings_global['styles']['style_dialog']}
-                                <body>
-                                    <div>There is nothing that could be found in the table.</div>
-                                </body>
-                            '''),
-                            QMessageBox.Ok)
+    message_box_no_search_results = Wordless_Message_Box_No_Search_Results(main)
+
+    message_box_no_search_results.open()
 
 # Export
 def wordless_message_box_export_search_terms(main, file_path):

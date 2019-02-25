@@ -17,10 +17,58 @@ from PyQt5.QtWidgets import *
 
 import nltk
 
-from wordless_dialogs import wordless_dialog, wordless_message_box
+from wordless_dialogs import wordless_dialog, wordless_dialog_misc, wordless_message_box
 from wordless_text import wordless_matching
 from wordless_widgets import wordless_button, wordless_layout, wordless_message, wordless_widgets
-from wordless_utils import wordless_misc
+from wordless_utils import wordless_misc, wordless_threading
+
+class Wordless_Worker_Search_Results(wordless_threading.Wordless_Worker):
+    searching_finished = pyqtSignal()
+
+    def __init__(self, main, dialog_search_results):
+        super().__init__(main)
+
+        self.dialog = dialog_search_results
+
+    def search_results(self):
+        results = {}
+        search_terms = set()
+
+        for col in range(self.dialog.table.columnCount()):
+            if self.dialog.table.cellWidget(0, col):
+                for row in range(self.dialog.table.rowCount()):
+                    results[(row, col)] = self.dialog.table.cellWidget(row, col).text_search
+            else:
+                for row in range(self.dialog.table.rowCount()):
+                    try:
+                        results[(row, col)] = self.dialog.table.item(row, col).text_raw
+                    except:
+                        results[(row, col)] = [self.dialog.table.item(row, col).text()]
+
+        items = [token for text in results.values() for token in text]
+
+        for file in self.dialog.table.settings['files']['files_open']:
+            if file['selected']:
+                search_terms_file = wordless_matching.match_search_terms(
+                    self.main, items,
+                    lang = file['lang'],
+                    text_type = ('tokenized', 'tagged_both'),
+                    token_settings = self.dialog.table.settings[self.dialog.tab]['token_settings'],
+                    search_settings = self.dialog.settings)
+
+                search_terms |= set(search_terms_file)
+
+        for search_term in search_terms:
+            len_search_term = len(search_term)
+
+            for (row, col), text in results.items():
+                for ngram in nltk.ngrams(text, len_search_term):
+                    if ngram == search_term:
+                        self.dialog.items_found.append([row, col])
+
+        self.dialog.items_found = sorted(self.dialog.items_found)
+
+        self.searching_finished.emit()
 
 class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
     def __init__(self, main, tab, table):
@@ -29,6 +77,7 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.tab = tab
         self.table = table
         self.settings = self.main.settings_custom[self.tab]['search_results']
+        self.items_found = []
 
         (self.label_search_term,
          self.checkbox_multi_search_mode,
@@ -38,11 +87,11 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
          self.checkbox_ignore_case,
          self.checkbox_match_inflected_forms,
-         self.checkbox_match_whole_word,
+         self.checkbox_match_whole_words,
          self.checkbox_use_regex,
 
-         self.stacked_wdiget_ignore_tags,
-         self.stacked_wdiget_ignore_tags_type,
+         self.stacked_widget_ignore_tags,
+         self.stacked_widget_ignore_tags_type,
          self.label_ignore_tags,
          self.checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(self, self.tab)
 
@@ -60,13 +109,13 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
         self.checkbox_ignore_case.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_match_whole_word.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_whole_words.stateChanged.connect(self.search_settings_changed)
         self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
 
-        self.stacked_wdiget_ignore_tags.checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
-        self.stacked_wdiget_ignore_tags.checkbox_ignore_tags_tags.stateChanged.connect(self.search_settings_changed)
-        self.stacked_wdiget_ignore_tags_type.combo_box_ignore_tags.currentTextChanged.connect(self.search_settings_changed)
-        self.stacked_wdiget_ignore_tags_type.combo_box_ignore_tags_tags.currentTextChanged.connect(self.search_settings_changed)
+        self.stacked_widget_ignore_tags.checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
+        self.stacked_widget_ignore_tags.checkbox_ignore_tags_tags.stateChanged.connect(self.search_settings_changed)
+        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentTextChanged.connect(self.search_settings_changed)
+        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentTextChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
 
         self.button_find_next.clicked.connect(lambda: self.find_next())
@@ -84,8 +133,8 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         layout_search_terms.addWidget(self.list_search_terms.button_export, 4, 1)
 
         layout_ignore_tags = QGridLayout()
-        layout_ignore_tags.addWidget(self.stacked_wdiget_ignore_tags, 0, 0)
-        layout_ignore_tags.addWidget(self.stacked_wdiget_ignore_tags_type, 0, 1)
+        layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags, 0, 0)
+        layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags_type, 0, 1)
         layout_ignore_tags.addWidget(self.label_ignore_tags, 0, 2)
 
         layout_ignore_tags.setColumnStretch(3, 1)
@@ -110,7 +159,7 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
         self.layout().addWidget(self.checkbox_ignore_case, 4, 0, 1, 2)
         self.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_match_whole_word, 6, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_whole_words, 6, 0, 1, 2)
         self.layout().addWidget(self.checkbox_use_regex, 7, 0, 1, 2)
 
         self.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
@@ -147,13 +196,13 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
         self.checkbox_ignore_case.setChecked(settings['ignore_case'])
         self.checkbox_match_inflected_forms.setChecked(settings['match_inflected_forms'])
-        self.checkbox_match_whole_word.setChecked(settings['match_whole_word'])
+        self.checkbox_match_whole_words.setChecked(settings['match_whole_words'])
         self.checkbox_use_regex.setChecked(settings['use_regex'])
 
-        self.stacked_wdiget_ignore_tags.checkbox_ignore_tags.setChecked(settings['ignore_tags'])
-        self.stacked_wdiget_ignore_tags.checkbox_ignore_tags_tags.setChecked(settings['ignore_tags_tags'])
-        self.stacked_wdiget_ignore_tags_type.combo_box_ignore_tags.setCurrentText(settings['ignore_tags_type'])
-        self.stacked_wdiget_ignore_tags_type.combo_box_ignore_tags_tags.setCurrentText(settings['ignore_tags_type_tags'])
+        self.stacked_widget_ignore_tags.checkbox_ignore_tags.setChecked(settings['ignore_tags'])
+        self.stacked_widget_ignore_tags.checkbox_ignore_tags_tags.setChecked(settings['ignore_tags_tags'])
+        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.setCurrentText(settings['ignore_tags_type'])
+        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.setCurrentText(settings['ignore_tags_type_tags'])
         self.checkbox_match_tags.setChecked(settings['match_tags'])
 
         self.search_settings_changed()
@@ -165,13 +214,13 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
         self.settings['ignore_case'] = self.checkbox_ignore_case.isChecked()
         self.settings['match_inflected_forms'] = self.checkbox_match_inflected_forms.isChecked()
-        self.settings['match_whole_word'] = self.checkbox_match_whole_word.isChecked()
+        self.settings['match_whole_words'] = self.checkbox_match_whole_words.isChecked()
         self.settings['use_regex'] = self.checkbox_use_regex.isChecked()
 
-        self.settings['ignore_tags'] = self.stacked_wdiget_ignore_tags.checkbox_ignore_tags.isChecked()
-        self.settings['ignore_tags_tags'] = self.stacked_wdiget_ignore_tags.checkbox_ignore_tags_tags.isChecked()
-        self.settings['ignore_tags_type'] = self.stacked_wdiget_ignore_tags_type.combo_box_ignore_tags.currentText()
-        self.settings['ignore_tags_type_tags'] = self.stacked_wdiget_ignore_tags_type.combo_box_ignore_tags_tags.currentText()
+        self.settings['ignore_tags'] = self.stacked_widget_ignore_tags.checkbox_ignore_tags.isChecked()
+        self.settings['ignore_tags_tags'] = self.stacked_widget_ignore_tags.checkbox_ignore_tags_tags.isChecked()
+        self.settings['ignore_tags_type'] = self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentText()
+        self.settings['ignore_tags_type_tags'] = self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentText()
         self.settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
         if self.settings['multi_search_mode']:
@@ -179,22 +228,22 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         else:
             self.setFixedSize(360, 280)
 
-    @ wordless_misc.log_timing
+    @wordless_misc.log_timing
     def find_next(self):
-        indexes_found = self.find_all()
+        self.find_all()
 
         self.table.hide()
         self.table.blockSignals(True)
         self.table.setUpdatesEnabled(False)
 
         # Scroll to the next found item
-        if indexes_found:
+        if self.items_found:
             selected_rows = self.table.get_selected_rows()
 
             self.table.clearSelection()
 
             if selected_rows:
-                for row, _ in indexes_found:
+                for row, _ in self.items_found:
                     if row > selected_rows[-1]:
                         self.table.selectRow(row)
                         self.table.setFocus()
@@ -203,34 +252,34 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
                         break
             else:
-                self.table.scrollToItem(self.table.item(indexes_found[0][0], 0))
-                self.table.selectRow(indexes_found[0][0])
+                self.table.scrollToItem(self.table.item(self.items_found[0][0], 0))
+                self.table.selectRow(self.items_found[0][0])
 
             # Scroll to top if this is the last item
             if not self.table.selectedItems():
-                self.table.scrollToItem(self.table.item(indexes_found[0][0], 0))
-                self.table.selectRow(indexes_found[0][0])
+                self.table.scrollToItem(self.table.item(self.items_found[0][0], 0))
+                self.table.selectRow(self.items_found[0][0])
 
         self.table.blockSignals(False)
         self.table.setUpdatesEnabled(True)
         self.table.show()
 
-    @ wordless_misc.log_timing
+    @wordless_misc.log_timing
     def find_prev(self):
-        indexes_found = self.find_all()
+        self.find_all()
 
         self.table.hide()
         self.table.blockSignals(True)
         self.table.setUpdatesEnabled(False)
 
         # Scroll to the previous found item
-        if indexes_found:
+        if self.items_found:
             selected_rows = self.table.get_selected_rows()
 
             self.table.clearSelection()
 
             if selected_rows:
-                for row, _ in reversed(indexes_found):
+                for row, _ in reversed(self.items_found):
                     if row < selected_rows[0]:
                         self.table.selectRow(row)
                         self.table.setFocus()
@@ -239,8 +288,8 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
                         break
             else:
-                self.table.scrollToItem(self.table.item(indexes_found[-1][0], 0))
-                self.table.selectRow(indexes_found[-1][0])
+                self.table.scrollToItem(self.table.item(self.items_found[-1][0], 0))
+                self.table.selectRow(self.items_found[-1][0])
 
             # Scroll to top if no next items exist
             if not self.table.selectedItems():
@@ -251,55 +300,15 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.table.setUpdatesEnabled(True)
         self.table.show()
 
-    @ wordless_misc.log_timing
+    @wordless_misc.log_timing
     def find_all(self):
-        search_terms = set()
-        indexes_found = []
-
-        if (self.settings['multi_search_mode'] and self.settings['search_terms'] or
-            not self.settings['multi_search_mode'] and self.settings['search_term']):
-            results = {}
-
-            self.clear_highlights()
-
-            for col in range(self.table.columnCount()):
-                if self.table.cellWidget(0, col):
-                    for row in range(self.table.rowCount()):
-                        results[(row, col)] = self.table.cellWidget(row, col).text_search
-                else:
-                    for row in range(self.table.rowCount()):
-                        try:
-                            results[(row, col)] = self.table.item(row, col).text_raw
-                        except:
-                            results[(row, col)] = [self.table.item(row, col).text()]
-
-            items = [token for text in results.values() for token in text]
-
-            for file in self.table.settings['files']['files_open']:
-                if file['selected']:
-                    search_terms_file = wordless_matching.match_search_terms(
-                        self.main, items,
-                        lang = file['lang'],
-                        text_type = ('tokenized', 'tagged_both'),
-                        token_settings = self.table.settings[self.tab]['token_settings'],
-                        search_settings = self.settings)
-
-                    search_terms |= set(search_terms_file)
-
-            for search_term in search_terms:
-                len_search_term = len(search_term)
-
-                for (row, col), text in results.items():
-                    for ngram in nltk.ngrams(text, len_search_term):
-                        if ngram == search_term:
-                            indexes_found.append([row, col])
-
-            if indexes_found:
+        def data_received():
+            if self.items_found:
                 self.table.hide()
                 self.table.blockSignals(True)
                 self.table.setUpdatesEnabled(False)
 
-                for row, col in indexes_found:
+                for row, col in self.items_found:
                     if self.table.cellWidget(row, col):
                         self.table.cellWidget(row, col).setStyleSheet('border: 1px solid #E53E3A;')
                     else:
@@ -312,29 +321,52 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
             else:
                 wordless_message_box.wordless_message_box_no_search_results(self.main)
 
-            wordless_message.wordless_message_search_results(self.main, indexes_found)
+            wordless_message.wordless_message_search_results(self.main, self.items_found)
+
+            dialog_progress.accept()
+
+        if (not self.settings['multi_search_mode'] and self.settings['search_term'] or
+            self.settings['multi_search_mode'] and self.settings['search_terms']):
+            self.clear_highlights()
+
+            dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Search_Results(self.main)
+
+            worker_search_results = Wordless_Worker_Search_Results(self.main, self)
+            thread_search_results = wordless_threading.Wordless_Thread_Search_Results(worker_search_results)
+
+            worker_search_results.searching_finished.connect(data_received)
+            thread_search_results.started.connect(worker_search_results.search_results)
+            thread_search_results.finished.connect(worker_search_results.deleteLater)
+
+            thread_search_results.start()
+
+            dialog_progress.exec_()
+
+            thread_search_results.quit()
+            thread_search_results.wait()
         else:
             wordless_message_box.wordless_message_box_missing_search_term(self.main)
 
-        return sorted(indexes_found)
-
     def clear_highlights(self):
-        self.table.hide()
-        self.table.blockSignals(True)
-        self.table.setUpdatesEnabled(False)
+        if self.items_found:
+            self.table.hide()
+            self.table.blockSignals(True)
+            self.table.setUpdatesEnabled(False)
 
-        for col in range(self.table.columnCount()):
-            if self.table.cellWidget(0, col):
-                for row in range(self.table.rowCount()):
-                    self.table.cellWidget(row, col).setStyleSheet('border: 0')
-            else:
-                for row in range(self.table.rowCount()):
-                    self.table.item(row, col).setForeground(QBrush(QColor('#292929')))
-                    self.table.item(row, col).setBackground(QBrush(QColor('#FFF')))
+            for col in range(self.table.columnCount()):
+                if self.table.cellWidget(0, col):
+                    for row in range(self.table.rowCount()):
+                        self.table.cellWidget(row, col).setStyleSheet('border: 0')
+                else:
+                    for row in range(self.table.rowCount()):
+                        self.table.item(row, col).setForeground(QBrush(QColor('#292929')))
+                        self.table.item(row, col).setBackground(QBrush(QColor('#FFF')))
 
-        self.table.blockSignals(False)
-        self.table.setUpdatesEnabled(True)
-        self.table.show()
+            self.table.blockSignals(False)
+            self.table.setUpdatesEnabled(True)
+            self.table.show()
+
+            self.items_found.clear()
 
     def load(self):
         self.show()
