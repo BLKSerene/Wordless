@@ -20,7 +20,7 @@ from PyQt5.QtWidgets import *
 from wordless_dialogs import wordless_dialog
 from wordless_widgets import *
 
-class Wordless_Dialog_Processing(wordless_dialog.Wordless_Dialog_Frameless):
+class Wordless_Dialog_Progress(wordless_dialog.Wordless_Dialog_Frameless):
     def __init__(self, main, width, height):
         super().__init__(main, width, height)
 
@@ -50,7 +50,7 @@ class Wordless_Dialog_Processing(wordless_dialog.Wordless_Dialog_Frameless):
     def update_progress(self, text):
         self.label_progress.setText(text)
 
-class Wordless_Dialog_Processing_Generate_Data(Wordless_Dialog_Processing):
+class Wordless_Dialog_Progress_Process_Data(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main,
                          width = 420,
@@ -60,7 +60,21 @@ class Wordless_Dialog_Processing_Generate_Data(Wordless_Dialog_Processing):
         
         self.label_processing.set_text(self.tr('''
             <div>
-                Please wait while data is being processed. It may take a few seconds to several minutes.
+                Please wait while data is being processed. It may take a few seconds to several minutes depending on the total size of the selected files.
+            </div>
+        '''))
+
+class Wordless_Dialog_Progress_Search_Results(Wordless_Dialog_Progress):
+    def __init__(self, main):
+        super().__init__(main,
+                         width = 420,
+                         height = 110)
+
+        self.label_progress.setText(self.tr('Searching in results ...'))
+        
+        self.label_processing.set_text(self.tr('''
+            <div>
+                Please wait while searching is in progress. It may take a few seconds to several minutes depending on the number of items in the results.
             </div>
         '''))
 
