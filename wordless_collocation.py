@@ -12,6 +12,7 @@
 import collections
 import copy
 import re
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -621,12 +622,16 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
 class Wordless_Worker_Process_Data_Collocation(wordless_threading.Wordless_Worker_Process_Data):
     processing_finished = pyqtSignal(dict, dict, dict)
 
+    def __init__(self, main, dialog_progress, data_received):
+        super().__init__(main, dialog_progress, data_received)
+
+        self.collocates_freqs_files = []
+        self.collocates_stats_files = []
+        self.nodes_text = {}
+
     def process_data(self):
         texts = []
         ngrams_freq_files = []
-        collocates_freqs_files = []
-        collocates_stats_files = []
-        nodes_text = {}
 
         settings = self.main.settings_custom['collocation']
 
@@ -711,9 +716,9 @@ class Wordless_Worker_Process_Data_Collocation(wordless_threading.Wordless_Worke
                             if ngram == search_term:
                                 collocates_freqs_file_filtered[(node, collocate)] = freqs
 
-                collocates_freqs_files.append(collocates_freqs_file_filtered)
+                self.collocates_freqs_files.append(collocates_freqs_file_filtered)
             else:
-                collocates_freqs_files.append(collocates_freqs_file)
+                self.collocates_freqs_files.append(collocates_freqs_file)
 
             # Frequency (N-grams)
             for i in {1} | set(range(len_search_term_min, len_search_term_max + 1)):
@@ -725,7 +730,7 @@ class Wordless_Worker_Process_Data_Collocation(wordless_threading.Wordless_Worke
 
             # Nodes Text
             for (node, collocate) in collocates_freqs_file:
-                nodes_text[node] = wordless_text_processing.wordless_word_detokenize(self.main, node, text.lang)
+                self.nodes_text[node] = wordless_text_processing.wordless_word_detokenize(self.main, node, text.lang)
 
             texts.append(text)
 
@@ -739,14 +744,14 @@ class Wordless_Worker_Process_Data_Collocation(wordless_threading.Wordless_Worke
             texts.append(text_total)
             ngrams_freq_files.append(sum(ngrams_freq_files, collections.Counter()))
 
-            for collocates_freqs_file in collocates_freqs_files:
+            for collocates_freqs_file in self.collocates_freqs_files:
                 for collocate, freqs in collocates_freqs_file.items():
                     if collocate not in collocates_freqs_total:
                         collocates_freqs_total[collocate] = numpy.array(freqs)
                     else:
                         collocates_freqs_total[collocate] += numpy.array(freqs)
 
-            collocates_freqs_files.append(collocates_freqs_total)
+            self.collocates_freqs_files.append(collocates_freqs_total)
 
         self.progress_updated.emit(self.tr('Processing data ...'))
 
@@ -757,11 +762,11 @@ class Wordless_Worker_Process_Data_Collocation(wordless_threading.Wordless_Worke
         test_significance = self.main.settings_global['tests_significance']['collocation'][text_test_significance]['func']
         measure_effect_size = self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['func']
 
-        collocates_total = collocates_freqs_files[-1].keys()
+        collocates_total = self.collocates_freqs_files[-1].keys()
 
         for text, ngrams_freq_file, collocates_freqs_file in zip(texts,
                                                                  ngrams_freq_files,
-                                                                 collocates_freqs_files):
+                                                                 self.collocates_freqs_files):
             collocates_stats_file = {}
 
             len_tokens = len(text.tokens)
@@ -781,15 +786,35 @@ class Wordless_Worker_Process_Data_Collocation(wordless_threading.Wordless_Worke
                 collocates_stats_file[(node, collocate)] = test_significance(self.main, c11, c12, c21, c22)
                 collocates_stats_file[(node, collocate)].append(measure_effect_size(self.main, c11, c12, c21, c22))
 
-            collocates_stats_files.append(collocates_stats_file)
+            self.collocates_stats_files.append(collocates_stats_file)
 
         if len(files) == 1:
-            collocates_freqs_files *= 2
-            collocates_stats_files *= 2
+            self.collocates_freqs_files *= 2
+            self.collocates_stats_files *= 2
 
-        self.processing_finished.emit(wordless_misc.merge_dicts(collocates_freqs_files),
-                                      wordless_misc.merge_dicts(collocates_stats_files),
-                                      nodes_text)
+class Wordless_Worker_Process_Data_Collocation_Table(Wordless_Worker_Process_Data_Collocation):
+    def process_data(self):
+        super().process_data()
+
+        self.progress_updated.emit(self.tr('Rendering table ...'))
+
+        time.sleep(0.1)
+
+        self.processing_finished.emit(wordless_misc.merge_dicts(self.collocates_freqs_files),
+                                      wordless_misc.merge_dicts(self.collocates_stats_files),
+                                      self.nodes_text)
+
+class Wordless_Worker_Process_Data_Collocation_Figure(Wordless_Worker_Process_Data_Collocation):
+    def process_data(self):
+        super().process_data()
+
+        self.progress_updated.emit(self.tr('Rendering figure ...'))
+
+        time.sleep(0.1)
+
+        self.processing_finished.emit(wordless_misc.merge_dicts(self.collocates_freqs_files),
+                                      wordless_misc.merge_dicts(self.collocates_stats_files),
+                                      self.nodes_text)
 
 @wordless_misc.log_timing
 def generate_table(main, table):
@@ -980,7 +1005,7 @@ def generate_table(main, table):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Wordless_Worker_Process_Data_Collocation(main, dialog_progress, data_received)
+            worker_process_data = Wordless_Worker_Process_Data_Collocation_Table(main, dialog_progress, data_received)
             thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
 
             thread_process_data.start()
@@ -1080,7 +1105,7 @@ def generate_figure(main):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Wordless_Worker_Process_Data_Collocation(main, dialog_progress, data_received)
+            worker_process_data = Wordless_Worker_Process_Data_Collocation_Figure(main, dialog_progress, data_received)
             thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
 
             thread_process_data.start()
