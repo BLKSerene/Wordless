@@ -11,6 +11,7 @@
 
 import copy
 import html
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -819,7 +820,7 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
         settings = self.main.settings_custom['concordancer']
         files = self.main.wordless_files.get_selected_files()
 
-        self.progress_updated.emit(self.tr('Searching  in text ...'))
+        self.progress_updated.emit(self.tr('Searching in text ...'))
 
         for file in files:
             number_lines = 0
@@ -1018,119 +1019,11 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
 
                         concordance_lines.append(concordance_line)
 
+        self.progress_updated.emit(self.tr('Rendering table ...'))
+
+        time.sleep(0.1)
+
         self.processing_finished.emit(concordance_lines)
-
-@wordless_misc.log_timing
-def generate_table(main, table):
-    def data_received(concordance_lines):
-        node_color = settings['sorting_settings']['highlight_colors'][0]
-
-        if concordance_lines:
-            table.clear_table(0)
-
-            table.settings = main.settings_custom
-
-            table.hide()
-            table.blockSignals(True)
-            table.setUpdatesEnabled(False)
-
-            for concordance_line in concordance_lines:
-                left_text, left_text_raw, left_text_search = concordance_line[0]
-                node_text, node_text_raw, node_text_search = concordance_line[1]
-                right_text, right_text_raw, right_text_search = concordance_line[2]
-
-                token_no, len_tokens = concordance_line[3]
-                sentence_no, len_sentences = concordance_line[4]
-                para_no, len_paras = concordance_line[5]
-                file_name = concordance_line[6]
-
-                table.setRowCount(table.rowCount() + 1)
-
-                # Node
-                label_node = wordless_label.Wordless_Label_Html(
-                    f'''
-                        <span style="color: {node_color}; font-weight: bold;">
-                            {node_text}
-                        </span>
-                    ''',
-                    main
-                )
-
-                table.setCellWidget(table.rowCount() - 1, 1, label_node)
-
-                table.cellWidget(table.rowCount() - 1, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-
-                table.cellWidget(table.rowCount() - 1, 1).text_raw = node_text_raw
-                table.cellWidget(table.rowCount() - 1, 1).text_search = node_text_search
-
-                # Left
-                table.setCellWidget(table.rowCount() - 1, 0,
-                                    wordless_label.Wordless_Label_Html(left_text, main))
-
-                table.cellWidget(table.rowCount() - 1, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-
-                table.cellWidget(table.rowCount() - 1, 0).text_raw = left_text_raw
-                table.cellWidget(table.rowCount() - 1, 0).text_search = left_text_search
-
-                # Right
-                table.setCellWidget(table.rowCount() - 1, 2,
-                                    wordless_label.Wordless_Label_Html(right_text, main))
-
-                table.cellWidget(table.rowCount() - 1, 2).text_raw = right_text_raw
-                table.cellWidget(table.rowCount() - 1, 2).text_search = right_text_search
-
-                # Token
-                table.set_item_num_pct(table.rowCount() - 1, 3, token_no, len_tokens)
-
-                # Sentence
-                table.set_item_num_pct(table.rowCount() - 1, 4, sentence_no, len_sentences)
-
-                # Paragraph
-                table.set_item_num_pct(table.rowCount() - 1, 5, para_no, len_paras)
-
-                # File
-                table.setItem(table.rowCount() - 1, 6, QTableWidgetItem(file_name))
-
-            table.blockSignals(False)
-            table.setUpdatesEnabled(True)
-            table.show()
-
-            table.toggle_pct()
-            table.update_items_width()
-
-            table.itemChanged.emit(table.item(0, 0))
-
-            wordless_message.wordless_message_generate_table_success(main)
-        else:
-            wordless_message_box.wordless_message_box_no_results(main)
-
-            wordless_message.wordless_message_generate_table_error(main)
-
-        dialog_progress.accept()
-
-    settings = main.settings_custom['concordancer']
-    files = main.wordless_files.get_selected_files()
-
-    if wordless_checking_file.check_files_on_loading(main, files):
-        if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
-            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
-            dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
-
-            worker_process_data = Wordless_Worker_Process_Data_Concordancer_Table(main, dialog_progress, data_received)
-            thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
-
-            thread_process_data.start()
-
-            dialog_progress.exec_()
-
-            thread_process_data.quit()
-            thread_process_data.wait()
-        else:
-            wordless_message_box.wordless_message_box_missing_search_term(main)
-
-            wordless_message.wordless_message_generate_table_error(main)
-    else:
-        wordless_message.wordless_message_generate_table_error(main)
 
 class Wordless_Worker_Process_Data_Concordancer_Figure(wordless_threading.Wordless_Worker_Process_Data):
     processing_finished = pyqtSignal(list, list)
@@ -1263,7 +1156,123 @@ class Wordless_Worker_Process_Data_Concordancer_Figure(wordless_threading.Wordle
                 labels.append(search_terms_labels)
                 labels.append(len_search_terms_total)
 
+        self.progress_updated.emit(self.tr('Rendering figure ...'))
+
+        time.sleep(0.1)
+
         self.processing_finished.emit(points, labels)
+
+@wordless_misc.log_timing
+def generate_table(main, table):
+    def data_received(concordance_lines):
+        node_color = settings['sorting_settings']['highlight_colors'][0]
+
+        if concordance_lines:
+            table.clear_table(0)
+
+            table.settings = main.settings_custom
+
+            table.hide()
+            table.blockSignals(True)
+            table.setUpdatesEnabled(False)
+
+            for concordance_line in concordance_lines:
+                left_text, left_text_raw, left_text_search = concordance_line[0]
+                node_text, node_text_raw, node_text_search = concordance_line[1]
+                right_text, right_text_raw, right_text_search = concordance_line[2]
+
+                token_no, len_tokens = concordance_line[3]
+                sentence_no, len_sentences = concordance_line[4]
+                para_no, len_paras = concordance_line[5]
+                file_name = concordance_line[6]
+
+                table.setRowCount(table.rowCount() + 1)
+
+                # Node
+                label_node = wordless_label.Wordless_Label_Html(
+                    f'''
+                        <span style="color: {node_color}; font-weight: bold;">
+                            {node_text}
+                        </span>
+                    ''',
+                    main
+                )
+
+                table.setCellWidget(table.rowCount() - 1, 1, label_node)
+
+                table.cellWidget(table.rowCount() - 1, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+
+                table.cellWidget(table.rowCount() - 1, 1).text_raw = node_text_raw
+                table.cellWidget(table.rowCount() - 1, 1).text_search = node_text_search
+
+                # Left
+                table.setCellWidget(table.rowCount() - 1, 0,
+                                    wordless_label.Wordless_Label_Html(left_text, main))
+
+                table.cellWidget(table.rowCount() - 1, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+
+                table.cellWidget(table.rowCount() - 1, 0).text_raw = left_text_raw
+                table.cellWidget(table.rowCount() - 1, 0).text_search = left_text_search
+
+                # Right
+                table.setCellWidget(table.rowCount() - 1, 2,
+                                    wordless_label.Wordless_Label_Html(right_text, main))
+
+                table.cellWidget(table.rowCount() - 1, 2).text_raw = right_text_raw
+                table.cellWidget(table.rowCount() - 1, 2).text_search = right_text_search
+
+                # Token
+                table.set_item_num_pct(table.rowCount() - 1, 3, token_no, len_tokens)
+
+                # Sentence
+                table.set_item_num_pct(table.rowCount() - 1, 4, sentence_no, len_sentences)
+
+                # Paragraph
+                table.set_item_num_pct(table.rowCount() - 1, 5, para_no, len_paras)
+
+                # File
+                table.setItem(table.rowCount() - 1, 6, QTableWidgetItem(file_name))
+
+            table.blockSignals(False)
+            table.setUpdatesEnabled(True)
+            table.show()
+
+            table.toggle_pct()
+            table.update_items_width()
+
+            table.itemChanged.emit(table.item(0, 0))
+
+            wordless_message.wordless_message_generate_table_success(main)
+        else:
+            wordless_message_box.wordless_message_box_no_results(main)
+
+            wordless_message.wordless_message_generate_table_error(main)
+
+        dialog_progress.accept()
+
+    settings = main.settings_custom['concordancer']
+    files = main.wordless_files.get_selected_files()
+
+    if wordless_checking_file.check_files_on_loading(main, files):
+        if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
+            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+            dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
+
+            worker_process_data = Wordless_Worker_Process_Data_Concordancer_Table(main, dialog_progress, data_received)
+            thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
+
+            thread_process_data.start()
+
+            dialog_progress.exec_()
+
+            thread_process_data.quit()
+            thread_process_data.wait()
+        else:
+            wordless_message_box.wordless_message_box_missing_search_term(main)
+
+            wordless_message.wordless_message_generate_table_error(main)
+    else:
+        wordless_message.wordless_message_generate_table_error(main)
 
 @wordless_misc.log_timing
 def generate_figure(main):

@@ -12,6 +12,7 @@
 import collections
 import copy
 import math
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -261,10 +262,14 @@ class Wrapper_Overview(wordless_layout.Wordless_Wrapper):
 class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_Process_Data):
     processing_finished = pyqtSignal(list, list)
 
+    def __init__(self, main, dialog_progress, data_received):
+        super().__init__(main, dialog_progress, data_received)
+
+        self.texts_stats_files = []
+        self.texts_len_tokens_files = []
+
     def process_data(self):
         texts = []
-        texts_stats_files = []
-        texts_len_tokens_files = []
 
         settings = self.main.settings_custom['overview']
         files = self.main.wordless_files.get_selected_files()
@@ -299,7 +304,7 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
             count_types = len(set(text.tokens))
 
             len_tokens = [len(token) for token in text.tokens]
-            texts_len_tokens_files.append(collections.Counter(len_tokens))
+            self.texts_len_tokens_files.append(collections.Counter(len_tokens))
 
             count_chars = sum(len_tokens)
             ttr = count_types / count_tokens
@@ -317,21 +322,27 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
             texts_stats_file.append(ttr)
             texts_stats_file.append(sttr)
 
-            texts_stats_files.append(texts_stats_file)
+            self.texts_stats_files.append(texts_stats_file)
 
-        self.processing_finished.emit(texts_stats_files, texts_len_tokens_files)
+class Wordless_Worker_Process_Data_Overview_Table(Wordless_Worker_Process_Data_Overview):
+    def process_data(self):
+        super().process_data()
+
+        self.progress_updated.emit(self.tr('Rendering table ...'))
+
+        time.sleep(0.1)
+
+        self.processing_finished.emit(self.texts_stats_files, self.texts_len_tokens_files)
 
 @wordless_misc.log_timing
 def generate_table(main, table):
     def data_received(texts_stats_files, texts_len_tokens_files):
-        table.clear_table()
-
         table.settings = copy.deepcopy(main.settings_custom)
-
-        len_files = len(files)
 
         table.blockSignals(True)
         table.setUpdatesEnabled(False)
+
+        table.clear_table()
 
         for i, file in enumerate(files):
             table.insert_col(table.find_col(main.tr('Total')), file['name'], breakdown = True)
@@ -387,6 +398,8 @@ def generate_table(main, table):
                                  main.tr(f'Count of {i + 1}-length Tokens'),
                                  num = True, pct = True, cumulative = True)
 
+        len_files = len(files)
+
         for i in range(len_tokens_max):
             freqs = len_tokens_total.get(i + 1, [0] * (len_files + 1))
 
@@ -413,7 +426,7 @@ def generate_table(main, table):
     if wordless_checking_file.check_files_on_loading(main, files):
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-        worker_process_data = Wordless_Worker_Process_Data_Overview(main, dialog_progress, data_received)
+        worker_process_data = Wordless_Worker_Process_Data_Overview_Table(main, dialog_progress, data_received)
         thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
 
         thread_process_data.start()
