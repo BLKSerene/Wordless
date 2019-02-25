@@ -358,10 +358,10 @@ def wordless_message_box_no_files_selected(main):
 
     message_box_no_files_selected.open()
 
-def wordless_message_box_missing_observed_files(main):
-    message_box_missing_observed_files = Wordless_Message_Box_Missing_Observed_Files(main)
+def wordless_message_box_missing_observed_file(main):
+    message_box_missing_observed_file = Wordless_Message_Box_Missing_Observed_File(main)
 
-    message_box_missing_observed_files.open()
+    message_box_missing_observed_file.open()
 
 # Search Terms
 class Wordless_Message_Box_Missing_Search_Term(Wordless_Message_Box_Warning):

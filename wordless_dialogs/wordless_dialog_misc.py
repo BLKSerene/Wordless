@@ -64,6 +64,20 @@ class Wordless_Dialog_Progress_Process_Data(Wordless_Dialog_Progress):
             </div>
         '''))
 
+class Wordless_Dialog_Progress_Filter_Results(Wordless_Dialog_Progress):
+    def __init__(self, main):
+        super().__init__(main,
+                         width = 420,
+                         height = 110)
+
+        self.label_progress.setText(self.tr('Filtering results ...'))
+        
+        self.label_processing.set_text(self.tr('''
+            <div>
+                Please wait while filtering is in progress. It may take a few seconds to several minutes depending on the number of items in results.
+            </div>
+        '''))
+
 class Wordless_Dialog_Progress_Search_Results(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main,
@@ -74,7 +88,7 @@ class Wordless_Dialog_Progress_Search_Results(Wordless_Dialog_Progress):
         
         self.label_processing.set_text(self.tr('''
             <div>
-                Please wait while searching is in progress. It may take a few seconds to several minutes depending on the number of items in the results.
+                Please wait while searching is in progress. It may take a few seconds to several minutes depending on the number of items in results.
             </div>
         '''))
 

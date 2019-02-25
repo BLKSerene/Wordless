@@ -14,19 +14,30 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 class Wordless_Worker(QObject):
+    progress_updated = pyqtSignal(str)
+
     def __init__(self, main):
         super().__init__()
 
         self.main = main
 
 class Wordless_Worker_Process_Data(Wordless_Worker):
-    progress_updated = pyqtSignal(str)
-
     def __init__(self, main, dialog_progress, data_received):
         super().__init__(main)
 
         self.progress_updated.connect(dialog_progress.update_progress)
         self.processing_finished.connect(data_received)
+
+class Wordless_Worker_Filter_Results(Wordless_Worker):
+    filtering_finished = pyqtSignal()
+
+    def __init__(self, main, dialog_filter_results, dialog_progress, data_received):
+        super().__init__(main)
+
+        self.dialog = dialog_filter_results
+
+        self.progress_updated.connect(dialog_progress.update_progress)
+        self.filtering_finished.connect(data_received)
 
 class Wordless_Thread(QThread):
     def __init__(self, worker):
@@ -41,6 +52,12 @@ class Wordless_Thread_Process_Data(Wordless_Thread):
         super().__init__(worker_process_data)
 
         self.started.connect(worker_process_data.process_data)
+
+class Wordless_Thread_Filter_Results(Wordless_Thread):
+    def __init__(self, worker_filter_results):
+        super().__init__(worker_filter_results)
+
+        self.started.connect(worker_filter_results.filter_results)
 
 class Wordless_Thread_Search_Results(Wordless_Thread):
     def __init__(self, worker_search_results):
