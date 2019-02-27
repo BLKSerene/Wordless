@@ -1148,6 +1148,7 @@ def init_settings_default(main):
                 'eng': main.tr('spaCy - English POS Tagger'),
                 'fra': main.tr('spaCy - French POS Tagger'),
                 'deu': main.tr('spaCy - German POS Tagger'),
+                'ell': main.tr('spaCy - Greek (Modern) POS Tagger'),
                 'ita': main.tr('spaCy - Italian POS Tagger'),
                 'jpn': main.tr('nagisa - Japanese POS Tagger'),
                 'por': main.tr('spaCy - Portuguese POS Tagger'),
@@ -1194,6 +1195,10 @@ def init_settings_default(main):
 
                 'deu': {
                     main.tr('spaCy - German POS Tagger'): deu_tiger_treebank.mappings
+                },
+
+                'ell': {
+                    main.tr('spaCy - Greek (Modern) POS Tagger'): ell_spacy.mappings
                 },
 
                 'ita': {
