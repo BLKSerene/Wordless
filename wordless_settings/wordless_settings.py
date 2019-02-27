@@ -1264,6 +1264,8 @@ class Wordless_Settings(QDialog):
                 samples = settings_custom['preview_samples']
 
                 if samples.strip():
+                    wordless_text_utils.check_word_tokenizers(self.main,
+                                                              lang = settings_custom['preview_lang'])
                     wordless_text_utils.check_lemmatizers(self.main,
                                                           lang = settings_custom['preview_lang'],
                                                           lemmatizer = lemmatizer)
