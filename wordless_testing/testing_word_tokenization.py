@@ -35,11 +35,13 @@ def testing_word_tokenize(lang, word_tokenizer):
 
     print(f"\t{' '.join(tokens)}")
 
-sentence_zho_cn = '作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。'
+sentence_zho_cn = '汉语，又称中文、华文、唐话[2]，或被视为汉藏语系汉语族下之语言，或被视为语族。'
+sentence_zho_tw = '漢語，又稱中文、華文、唐話[2]，或被視為漢藏語系漢語族下之語言，或被視為語族。'
 sentence_nld = 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
 sentence_eng = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.[4][5]'
 sentence_fra = 'Le français est une langue indo-européenne de la famille des langues romanes.'
 sentence_deu = 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ]; abgekürzt Dt. oder Dtsch.) ist eine westgermanische Sprache.'
+sentence_ell = 'Η ελληνική γλώσσα είναι μια από τις ινδοευρωπαϊκές γλώσσες[9] και αποτελεί το μοναδικό μέλος ενός ανεξάρτητου κλάδου, αυτής της οικογένειας γλωσσών, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.'
 sentence_ita = "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
 sentence_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。'
 sentence_por = 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.'
@@ -53,8 +55,14 @@ testing_word_tokenize(lang = 'zho_cn',
                       word_tokenizer = 'jieba - Chinese Word Tokenizer')
 testing_word_tokenize(lang = 'zho_cn',
                       word_tokenizer = 'Wordless - Chinese Character Tokenizer')
+testing_word_tokenize(lang = 'zho_tw',
+                      word_tokenizer = 'jieba - Chinese Word Tokenizer')
+testing_word_tokenize(lang = 'zho_tw',
+                      word_tokenizer = 'Wordless - Chinese Character Tokenizer')
+
 testing_word_tokenize(lang = 'nld',
                       word_tokenizer = 'spaCy - Dutch Word Tokenizer')
+
 testing_word_tokenize(lang = 'eng',
                       word_tokenizer = 'NLTK - Penn Treebank Tokenizer')
 testing_word_tokenize(lang = 'eng',
@@ -67,29 +75,42 @@ testing_word_tokenize(lang = 'eng',
                       word_tokenizer = 'SacreMoses - Moses Tokenizer')
 testing_word_tokenize(lang = 'eng',
                       word_tokenizer = 'SacreMoses - Penn Treebank Tokenizer')
+
 testing_word_tokenize(lang = 'fra',
                       word_tokenizer = 'spaCy - French Word Tokenizer')
+
 testing_word_tokenize(lang = 'deu',
                       word_tokenizer = 'spaCy - German Word Tokenizer')
+
+testing_word_tokenize(lang = 'ell',
+                      word_tokenizer = 'spaCy - Greek (Modern) Word Tokenizer')
+
 testing_word_tokenize(lang = 'ita',
                       word_tokenizer = 'spaCy - Italian Word Tokenizer')
+
 testing_word_tokenize(lang = 'jpn',
                       word_tokenizer = 'nagisa - Japanese Word Tokenizer')
 testing_word_tokenize(lang = 'jpn',
                       word_tokenizer = 'Wordless - Japanese Kanji Tokenizer')
+
 testing_word_tokenize(lang = 'por',
                       word_tokenizer = 'spaCy - Portuguese Word Tokenizer')
+
 testing_word_tokenize(lang = 'rus',
                       word_tokenizer = 'spaCy - Russian Word Tokenizer')
+
 testing_word_tokenize(lang = 'spa',
                       word_tokenizer = 'spaCy - Spanish Word Tokenizer')
+
 testing_word_tokenize(lang = 'tha',
                       word_tokenizer = 'PyThaiNLP - Maximum Matching Algorithm + TCC')
 testing_word_tokenize(lang = 'tha',
                       word_tokenizer = 'PyThaiNLP - Maximum Matching Algorithm')
 testing_word_tokenize(lang = 'tha',
                       word_tokenizer = 'PyThaiNLP - Longest Matching')
+
 testing_word_tokenize(lang = 'bod',
                       word_tokenizer = 'pybo - Tibetan Word Tokenizer')
+
 testing_word_tokenize(lang = 'vie',
                       word_tokenizer = 'Underthesea - Vietnamese Word Tokenizer')
