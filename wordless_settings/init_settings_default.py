@@ -1253,6 +1253,7 @@ def init_settings_default(main):
                 'fra': main.tr('spaCy - French Lemmatizer'),
                 'glg': main.tr('Lemmatization Lists - Galician Lemma List'),
                 'grc': main.tr('lemmalist-greek - Greek (Ancient) Lemma List'),
+                'ell': main.tr('spaCy - Greek (Modern) Lemmatizer'),
                 'deu': main.tr('spaCy - German Lemmatizer'),
                 'hun': main.tr('Lemmatization Lists - Hungarian Lemma List'),
                 'gle': main.tr('Lemmatization Lists - Irish Lemma List'),

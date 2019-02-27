@@ -1164,6 +1164,10 @@ def init_settings_global(main):
                 main.tr('lemmalist-greek - Greek (Ancient) Lemma List')
             ],
 
+            'ell': [
+                main.tr('spaCy - Greek (Modern) Lemmatizer')
+            ],
+
             'hun': [
                 main.tr('Lemmatization Lists - Hungarian Lemma List')
             ],
