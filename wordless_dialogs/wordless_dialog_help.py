@@ -248,7 +248,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="http://www.numpy.org/">NumPy</a>',
-                '1.16.1',
+                '1.16.2',
                 'NumPy Developers',
                 '<a href="http://www.numpy.org/license.html">BSD-3-Clause</a>'
             ],

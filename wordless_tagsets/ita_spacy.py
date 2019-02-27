@@ -10,7 +10,7 @@
 #
 
 #
-# spaCy Italian Tagset: https://spacy.io/api/annotation#pos-tagging
+# spaCy Italian Tagset: https://github.com/explosion/spaCy/blob/master/spacy/lang/it/tag_map.py
 #
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
