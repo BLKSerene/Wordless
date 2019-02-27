@@ -1028,7 +1028,7 @@ def init_settings_default(main):
                 'fin': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'fra': main.tr('spaCy - French Sentence Tokenizer'),
                 'deu': main.tr('spaCy - German Sentence Tokenizer'),
-                'ell': main.tr('NLTK - Punkt Sentence Tokenizer'),
+                'ell': main.tr('spaCy - Greek Sentence Tokenizer'),
                 'ita': main.tr('spaCy - Italian Sentence Tokenizer'),
                 'jpn': main.tr('Wordless - Japanese Sentence Tokenizer'),
                 'nob': main.tr('NLTK - Punkt Sentence Tokenizer'),

@@ -455,7 +455,8 @@ def init_settings_global(main):
             ],
 
             'ell': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Greek (Modern) Sentence Tokenizer')
             ],
 
             'ita': [
@@ -641,7 +642,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('spaCy - Greek Word Tokenizer')
+                main.tr('spaCy - Greek (Modern) Word Tokenizer')
             ],
 
             'heb': [
