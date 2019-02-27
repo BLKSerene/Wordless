@@ -38,18 +38,33 @@ def wordless_sentence_tokenize(main, text, lang,
     if sentence_tokenizer == 'default':
         sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizers'][lang]
 
-    # English
     if sentence_tokenizer == main.tr('NLTK - Punkt Sentence Tokenizer'):
-        # Norwegian Bokmål & Norwegian Nynorsk
-        if lang in ['nob', 'nno']:
-            lang_text = 'norwegian'
-        # Other Languages
-        elif lang == 'other':
-            lang_text = 'english'
-        else:
-            lang_text = wordless_conversion.to_lang_text(main, lang).lower()
+        lang_texts = {
+            'ces': 'czech',
+            'dan': 'danish',
+            'nld': 'dutch',
+            'eng': 'english',
+            'est': 'estonian',
+            'fin': 'finnish',
+            'fra': 'french',
+            'deu': 'german',
+            # Greek (Modern)
+            'ell': 'greek',
+            'ita': 'italian',
+            # Norwegian Bokmål & Norwegian Nynorsk
+            'nob': 'norwegian',
+            'nno': 'norwegian',
+            'pol': 'polish',
+            'por': 'portuguese',
+            'slv': 'slovene',
+            'spa': 'spanish',
+            'swe': 'swedish',
+            'tur': 'turkish',
+            # Other Languages
+            'other': 'english'
+        }
 
-        sentences = nltk.sent_tokenize(text, language = lang_text)
+        sentences = nltk.sent_tokenize(text, language = lang_texts[lang])
     elif 'spaCy' in sentence_tokenizer:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
@@ -97,7 +112,6 @@ def wordless_word_tokenize(main, text, lang,
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
-    # English & Other Languages
     if 'NLTK' in word_tokenizer:
         sentences = wordless_sentence_tokenize(main, text, lang,
                                                sentence_tokenizer = main.tr('NLTK - Punkt Sentence Tokenizer'))
@@ -147,7 +161,7 @@ def wordless_word_tokenize(main, text, lang,
             lang = 'eng'
 
         # Languages with models
-        if lang in ['nld', 'eng', 'fra', 'deu', 'ita', 'por', 'spa']:
+        if lang in ['nld', 'eng', 'fra', 'deu', 'ell', 'ita', 'por', 'spa']:
             nlp = main.__dict__[f'spacy_nlp_{lang}']
         # Languages without models
         else:

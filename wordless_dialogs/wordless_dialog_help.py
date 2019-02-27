@@ -116,7 +116,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
-                '5.11.3',
+                '5.12',
                 'Riverbank Computing Limited',
                 '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a>'
             ]
@@ -160,7 +160,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/PyThaiNLP/pythainlp">PyThaiNLP</a>',
-                '1.7.2',
+                '1.7.3',
                 'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
                 '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache-2.0</a>'
             ],
@@ -174,7 +174,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://spacy.io/">spaCy</a>',
-                '2.0.18',
+                '2.1.0a9',
                 'Matthew Honnibal, Ines Montani',
                 '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'
             ],
@@ -241,7 +241,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://lxml.de/">lxml</a>',
-                '4.3.0',
+                '4.3.1',
                 'Stefan Behnel',
                 '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'
             ],
@@ -255,7 +255,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://openpyxl.readthedocs.io/en/stable/">openpyxl</a>',
-                '2.5.14',
+                '2.6.0',
                 'Eric Gazoni, Charlie Clark',
                 '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst">MIT</a>'
             ],
@@ -276,7 +276,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://www.scipy.org/">SciPy</a>',
-                '1.2.0',
+                '1.2.1',
                 'SciPy Developers',
                 '<a href="https://www.scipy.org/scipylib/license.html">BSD-3-Clause</a>'
             ],
