@@ -32,49 +32,157 @@ def testing_lemmatize(lang, lemmatizer):
 
     print(f"\t{lemmas}")
 
+sentence_ast = "L'asturianu ye una llingua romance propia d'Asturies,[1] perteneciente al subgrupu asturllionés."
+sentence_bul = 'Бъ̀лгарският езѝк е индоевропейски език от групата на южнославянските езици.'
+sentence_cat = "El català (denominació oficial a Catalunya, a les Illes Balears, a Andorra, a la ciutat de l'Alguer i tradicional a Catalunya Nord) o valencià (denominació oficial al País Valencià i tradicional al Carxe) és una llengua romànica parlada per més d'onze milions de persones, a Catalunya, al País Valencià (tret d'algunes comarques i localitats de l'interior), les Illes Balears, Andorra, la Franja de Ponent (a l'Aragó), la ciutat de l'Alguer (a l'illa de Sardenya), la Catalunya del Nord,[8] el Carxe (un petit territori de Múrcia poblat per immigrats valencians),[9][10] i en petites comunitats arreu del món (entre les quals destaca la de l'Argentina, amb 195.000 parlants).[11]"
+sentence_ces = 'Čeština neboli český jazyk je západoslovanský jazyk, nejbližší slovenštině, poté lužické srbštině a polštině.'
 sentence_nld = 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
 sentence_eng = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.'
+sentence_est = 'Eesti keel (varasem nimetus: maakeel) on läänemeresoome lõunarühma kuuluv keel.'
 sentence_fra = 'Le français est une langue indo-européenne de la famille des langues romanes.'
+sentence_glg = 'O galego ([ɡaˈleɣo̝]) é unha lingua indoeuropea que pertence á póla de linguas románicas.'
 sentence_deu = 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ]; abgekürzt Dt. oder Dtsch.) ist eine westgermanische Sprache.'
+sentence_grc = 'Με τον όρο αρχαία ελληνική γλώσσα εννοείται μια μορφή της ελληνικής γλώσσας, που ομιλούνταν κατά τους αρχαϊκούς χρόνους και την κλασική αρχαιότητα.'
+sentence_ell = 'Η ελληνική γλώσσα είναι μια από τις ινδοευρωπαϊκές γλώσσες[9] και αποτελεί το μοναδικό μέλος ενός ανεξάρτητου κλάδου, αυτής της οικογένειας γλωσσών, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.'
+sentence_hun = 'A magyar nyelv az uráli nyelvcsalád tagja, a finnugor nyelvek közé tartozó ugor nyelvek egyike.'
+sentence_gle = 'Is ceann de na teangacha Ceilteacha í an Ghaeilge (nó Gaeilge na hÉireann mar a thugtar uirthi corruair), agus ceann den dtrí cinn de theangacha Ceilteacha ar a dtugtar na teangacha Gaelacha (.i. an Ghaeilge, Gaeilge na hAlban agus Gaeilge Mhanann) go háirithe.'
 sentence_ita = "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
+sentence_glv = 'She Gaelg (graït: /gɪlg/) çhengey Ghaelagh Vannin.'
+sentence_fas = 'فارسی یا پارسی یکی از زبان‌های هندواروپایی در شاخهٔ زبان‌های ایرانی جنوب غربی است که در کشورهای ایران، افغانستان،[۳] تاجیکستان[۴] و ازبکستان[۵] به آن سخن می‌گویند.'
 sentence_por = 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.'
+sentence_ron = 'Limba română este o limbă indo-europeană, din grupul italic și din subgrupul oriental al limbilor romanice.'
 sentence_rus = 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать)[~ 3][⇨] — один из восточнославянских языков, национальный язык русского народа.'
+sentence_gla = "'S i cànan dùthchasach na h-Alba a th' anns a' Ghàidhlig."
+sentence_slk = 'Slovenčina patrí do skupiny západoslovanských jazykov (spolu s češtinou, poľštinou, hornou a dolnou lužickou srbčinou a kašubčinou).'
+sentence_slv = 'Slovenščina [slovénščina] / [sloˈʋenʃtʃina] je združeni naziv za uradni knjižni jezik Slovencev in skupno ime za narečja in govore, ki jih govorijo ali so jih nekoč govorili Slovenci.'
 sentence_spa = 'El idioma español o castellano es una lengua romance procedente del latín hablado.'
+sentence_swe = 'Svenska (svenska (info)) är ett östnordiskt språk som talas av drygt elva miljoner personer[källa behövs] främst i Sverige där språket har en dominant ställning som huvudspråk, men även som det ena nationalspråket i Finland och som enda officiella språk på Åland.'
 sentence_bod = '༄༅། །རྒྱ་གར་སྐད་དུ། བོ་དྷི་སཏྭ་ཙརྻ་ཨ་བ་ཏ་ར། བོད་སྐད་དུ། བྱང་ཆུབ་སེམས་དཔའི་སྤྱོད་པ་ལ་འཇུག་པ། །སངས་རྒྱས་དང་བྱང་ཆུབ་སེམས་དཔའ་ཐམས་ཅད་ལ་ཕྱག་འཚལ་ལོ། །བདེ་གཤེགས་ཆོས་ཀྱི་སྐུ་མངའ་སྲས་བཅས་དང༌། །ཕྱག་འོས་ཀུན་ལའང་གུས་པར་ཕྱག་འཚལ་ཏེ། །བདེ་གཤེགས་སྲས་ཀྱི་སྡོམ་ལ་འཇུག་པ་ནི། །ལུང་བཞིན་མདོར་བསྡུས་ནས་ནི་བརྗོད་པར་བྱ། །'
 sentence_ukr = 'Украї́нська мо́ва (МФА: [ʊkrɐˈjɪɲsʲkɐ ˈmɔwɐ], історичні назви — ру́ська, руси́нська[9][10][11][* 2]) — національна мова українців.'
+sentence_cym = "Aelod o'r gangen Frythonaidd o'r ieithoedd Celtaidd a siaredir yn frodorol yng Nghymru, gan Gymry a phobl eraill ar wasgar yn Lloegr, a chan gymuned fechan yn Y Wladfa, yr Ariannin[7] yw'r Gymraeg (hefyd Cymraeg /kəmˈrɑːɨɡ / heb y fannod)."
 
+tokens_ast = ["L'asturianu", 'ye', 'una', 'llingua', 'romance', 'propia', "d'Asturies,[1", ']', 'perteneciente', 'al', 'subgrupu', 'asturllionés', '.']
+tokens_bul = ['Бъ̀лгарският', 'езѝк', 'е', 'индоевропейски', 'език', 'от', 'групата', 'на', 'южнославянските', 'езици', '.']
+tokens_cat = ['El', 'català', '(', 'denominació', 'oficial', 'a', 'Catalunya', ',', 'a', 'les', 'Illes', 'Balears', ',', 'a', 'Andorra', ',', 'a', 'la', 'ciutat', 'de', 'l', '\\&apos;', 'Alguer', 'i', 'tradicional', 'a', 'Catalunya', 'Nord', ')', 'o', 'valencià', '(', 'denominació', 'oficial', 'al', 'País', 'Valencià', 'i', 'tradicional', 'al', 'Carxe', ')', 'és', 'una', 'llengua', 'romànica', 'parlada', 'per', 'més', 'd', '\\&apos;', 'onze', 'milions', 'de', 'persones', ',', 'a', 'Catalunya', ',', 'al', 'País', 'Valencià', '(', 'tret', 'd', '\\&apos;', 'algunes', 'comarques', 'i', 'localitats', 'de', 'l', '\\&apos;', 'interior', ')', ',', 'les', 'Illes', 'Balears', ',', 'Andorra', ',', 'la', 'Franja', 'de', 'Ponent', '(', 'a', 'l', '\\&apos;', 'Aragó', ')', ',', 'la', 'ciutat', 'de', 'l', '\\&apos;', 'Alguer', '(', 'a', 'l', '\\&apos;', 'illa', 'de', 'Sardenya', ')', ',', 'la', 'Catalunya', 'del', 'Nord', ',', '&#91;', '8', '&#93;', 'el', 'Carxe', '(', 'un', 'petit', 'territori', 'de', 'Múrcia', 'poblat', 'per', 'immigrats', 'valencians', ')', ',', '&#91;', '9', '&#93;', '&#91;', '10', '&#93;', 'i', 'en', 'petites', 'comunitats', 'arreu', 'del', 'món', '(', 'entre', 'les', 'quals', 'destaca', 'la', 'de', 'l', '\\&apos;', 'Argentina', ',', 'amb', '195.000', 'parlants', ')', '.', '&#91;', '11', '&#93;']
+tokens_ces = ['Čeština', 'neboli', 'český', 'jazyk', 'je', 'západoslovanský', 'jazyk', ',', 'nejbližší', 'slovenštině', ',', 'poté', 'lužické', 'srbštině', 'a', 'polštině', '.']
 tokens_nld = ['Het', 'Nederlands', 'is', 'een', 'West', '-', 'Germaanse', 'taal', 'en', 'de', 'moedertaal', 'van', 'de', 'meeste', 'inwoners', 'van', 'Nederland', ',', 'België', 'en', 'Suriname', '.']
 tokens_eng = ['English', 'is', 'a', 'West', 'Germanic', 'language', 'that', 'was', 'first', 'spoken', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'became', 'a', 'global', 'lingua', 'franca', '.']
+tokens_est = ['Eesti', 'keel', '(', 'varasem', 'nimetus', ':', 'maakeel', ')', 'on', 'läänemeresoome', 'lõunarühma', 'kuuluv', 'keel', '.']
 tokens_fra = ['Le', 'français', 'est', 'une', 'langue', 'indo-européenne', 'de', 'la', 'famille', 'des', 'langues', 'romanes', '.']
+tokens_glg = ['O', 'galego', '(', '[', 'ɡaˈleɣo̝', ']', ')', 'é', 'unha', 'lingua', 'indoeuropea', 'que', 'pertence', 'á', 'póla', 'de', 'linguas', 'románicas', '.']
 tokens_deu = ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'Dt', '.', 'oder', 'Dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
+tokens_grc = ['Με', 'τον', 'όρο', 'αρχαία', 'ελληνική', 'γλώσσα', 'εννοείται', 'μια', 'μορφή', 'της', 'ελληνικής', 'γλώσσας', ',', 'που', 'ομιλούνταν', 'κατά', 'τους', 'αρχαϊκούς', 'χρόνους', 'και', 'την', 'κλασική', 'αρχαιότητα', '.']
+tokens_ell = ['Η', 'ελληνική', 'γλώσσα', 'είναι', 'μια', 'από', 'τις', 'ινδοευρωπαϊκές', 'γλώσσες', '&#91;', '9', '&#93;', 'και', 'αποτελεί', 'το', 'μοναδικό', 'μέλος', 'ενός', 'ανεξάρτητου', 'κλάδου', ',', 'αυτής', 'της', 'οικογένειας', 'γλωσσών', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
+tokens_hun = ['A', 'magyar', 'nyelv', 'az', 'uráli', 'nyelvcsalád', 'tagja', ',', 'a', 'finnugor', 'nyelvek', 'közé', 'tartozó', 'ugor', 'nyelvek', 'egyike', '.']
+tokens_gle = ['Is', 'ceann', 'de', 'na', 'teangacha', 'Ceilteacha', 'í', 'an', 'Ghaeilge', '(', 'nó', 'Gaeilge', 'na', 'hÉireann', 'mar', 'a', 'thugtar', 'uirthi', 'corruair', ')', ',', 'agus', 'ceann', 'den', 'dtrí', 'cinn', 'de', 'theangacha', 'Ceilteacha', 'ar', 'a', 'dtugtar', 'na', 'teangacha', 'Gaelacha', '(', '.i.', 'an', 'Ghaeilge', ',', 'Gaeilge', 'na', 'hAlban', 'agus', 'Gaeilge', 'Mhanann', ')', 'go', 'háirithe', '.']
 tokens_ita = ["L'italiano", '(', '[', 'itaˈljaːno][Nota', '1', ']', 'ascolta[?·info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
+tokens_glv = ['She', 'Gaelg', '(', 'graït', ':', '/gɪlg/', ')', 'çhengey', 'Ghaelagh', 'Vannin', '.']
+tokens_fas = ['فارسی', 'یا', 'پارسی', 'یکی', 'از', 'زبان\u200cهای', 'هندواروپایی', 'در', 'شاخهٔ', 'زبان\u200cهای', 'ایرانی', 'جنوب', 'غربی', 'است', 'که', 'در', 'کشورهای', 'ایران', '،', 'افغانستان', '،', '[', '۳', ']', 'تاجیکستان[', '۴', ']', 'و', 'ازبکستان[', '۵', ']', 'به', 'آن', 'سخن', 'می\u200cگویند', '.']
 tokens_por = ['A', 'língua', 'portuguesa', ',', 'também', 'designada', 'português', ',', 'é', 'uma', 'língua', 'românica', 'flexiva', 'ocidental', 'originada', 'no', 'galego', '-', 'português', 'falado', 'no', 'Reino', 'da', 'Galiza', 'e', 'no', 'norte', 'de', 'Portugal', '.']
+tokens_ron = ['Limba', 'română', 'este', 'o', 'limbă', 'indo-europeană', ',', 'din', 'grupul', 'italic', 'și', 'din', 'subgrupul', 'oriental', 'al', 'limbilor', 'romanice', '.']
 tokens_rus = ['Ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'Информация', 'о', 'файле', 'слушать', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'один', 'из', 'восточнославянских', 'языков', ',', 'национальный', 'язык', 'русского', 'народа', '.']
+tokens_gla = ["'S", 'i', 'cànan', 'dùthchasach', 'na', 'h', '-', 'Alba', 'a', 'th', "'", 'anns', 'a', "'", 'Ghàidhlig', '.']
+tokens_slk = ['Slovenčina', 'patrí', 'do', 'skupiny', 'západoslovanských', 'jazykov', '(', 'spolu', 's', 'češtinou', ',', 'poľštinou', ',', 'hornou', 'a', 'dolnou', 'lužickou', 'srbčinou', 'a', 'kašubčinou', ')', '.']
+tokens_slv = ['Slovenščina', '&#91;', 'slovénščina', '&#93;', '/', '&#91;', 'sloˈʋenʃtʃina', '&#93;', 'je', 'združeni', 'naziv', 'za', 'uradni', 'knjižni', 'jezik', 'Slovencev', 'in', 'skupno', 'ime', 'za', 'narečja', 'in', 'govore', ',', 'ki', 'jih', 'govorijo', 'ali', 'so', 'jih', 'nekoč', 'govorili', 'Slovenci', '.']
 tokens_spa = ['El', 'idioma', 'español', 'o', 'castellano', 'es', 'una', 'lengua', 'romance', 'procedente', 'del', 'latín', 'hablado', '.']
+tokens_swe = ['Svenska', '(', 'svenska', '(', 'info', ')', ')', 'är', 'ett', 'östnordiskt', 'språk', 'som', 'talas', 'av', 'drygt', 'elva', 'miljoner', 'personer', '&#91;', 'källa', 'behövs', '&#93;', 'främst', 'i', 'Sverige', 'där', 'språket', 'har', 'en', 'dominant', 'ställning', 'som', 'huvudspråk', ',', 'men', 'även', 'som', 'det', 'ena', 'nationalspråket', 'i', 'Finland', 'och', 'som', 'enda', 'officiella', 'språk', 'på', 'Åland', '.']
 tokens_bod = ['༄༅། །', 'རྒྱ་གར་', 'སྐད་', 'དུ', '།', 'བོ་དྷི་སཏྭ་', 'ཙརྻ་', 'ཨ་བ་ཏ་ར', '།', 'བོད་སྐད་', 'དུ', '།', 'བྱང་ཆུབ་སེམས་དཔ', 'འི་', 'སྤྱོད་པ་', 'ལ་', 'འཇུག་པ', '། །', 'སངས་རྒྱས་', 'དང་', 'བྱང་ཆུབ་སེམས་དཔའ་', 'ཐམས་ཅད་', 'ལ་', 'ཕྱག་', 'འཚལ་', 'ལོ', '། །', 'བདེ་གཤེགས་', 'ཆོས་', 'ཀྱི་', 'སྐུ་', 'མངའ་', 'སྲས་', 'བཅས་', 'དང༌', '། །', 'ཕྱག་འོས་', 'ཀུན་', 'ལ', 'འང་', 'གུས་པ', 'ར་', 'ཕྱག་', 'འཚལ་', 'ཏེ', '། །', 'བདེ་གཤེགས་', 'སྲས་', 'ཀྱི་', 'སྡོམ་', 'ལ་', 'འཇུག་པ་', 'ནི', '། །', 'ལུང་', 'བཞིན་', 'མདོར་བསྡུས་ན', 'ས་', 'ནི་', 'བརྗོད་པ', 'ར་', 'བྱ', '། །']
 tokens_ukr = ['Украї́нська', 'мо́ва', '(', 'МФА', ':', '[', 'ʊkrɐˈjɪɲsʲkɐ', 'ˈmɔwɐ', ']', ',', 'історичні', 'назви', '—', 'ру́ська', ',', 'руси́нська[9][10][11', ']', '[', '*', '2', ']', ')', '—', 'національна', 'мова', 'українців.']
+tokens_cym = ['Aelod', "o'r", 'gangen', 'Frythonaidd', "o'r", 'ieithoedd', 'Celtaidd', 'a', 'siaredir', 'yn', 'frodorol', 'yng', 'Nghymru', ',', 'gan', 'Gymry', 'a', 'phobl', 'eraill', 'ar', 'wasgar', 'yn', 'Lloegr', ',', 'a', 'chan', 'gymuned', 'fechan', 'yn', 'Y', 'Wladfa', ',', 'yr', 'Ariannin[7', ']', "yw'r", 'Gymraeg', '(', 'hefyd', 'Cymraeg', '/kəmˈrɑːɨɡ', '/', 'heb', 'y', 'fannod', ')', '.']
+
+testing_lemmatize(lang = 'ast',
+                  lemmatizer = 'Lemmatization Lists - Asturian Lemma List')
+
+testing_lemmatize(lang = 'bul',
+                  lemmatizer = 'Lemmatization Lists - Bulgarian Lemma List')
+
+testing_lemmatize(lang = 'cat',
+                  lemmatizer = 'Lemmatization Lists - Catalan Lemma List')
+
+testing_lemmatize(lang = 'ces',
+                  lemmatizer = 'Lemmatization Lists - Czech Lemma List')
 
 testing_lemmatize(lang = 'nld',
                   lemmatizer = 'spaCy - Dutch Lemmatizer')
+
 testing_lemmatize(lang = 'eng',
                   lemmatizer = 'NLTK - WordNet Lemmatizer')
 testing_lemmatize(lang = 'eng',
                   lemmatizer = 'Lemmatization Lists - English Lemma List')
 testing_lemmatize(lang = 'eng',
                   lemmatizer = 'spaCy - English Lemmatizer')
+
+testing_lemmatize(lang = 'est',
+                  lemmatizer = 'Lemmatization Lists - Estonian Lemma List')
+
+testing_lemmatize(lang = 'fra',
+                  lemmatizer = 'Lemmatization Lists - French Lemma List')
 testing_lemmatize(lang = 'fra',
                   lemmatizer = 'spaCy - French Lemmatizer')
+
+
+testing_lemmatize(lang = 'glg',
+                  lemmatizer = 'Lemmatization Lists - Galician Lemma List')
+
+testing_lemmatize(lang = 'deu',
+                  lemmatizer = 'Lemmatization Lists - German Lemma List')
 testing_lemmatize(lang = 'deu',
                   lemmatizer = 'spaCy - German Lemmatizer')
+
+testing_lemmatize(lang = 'grc',
+                  lemmatizer = 'lemmalist-greek - Greek (Ancient) Lemma List')
+testing_lemmatize(lang = 'ell',
+                  lemmatizer = 'spaCy - Greek (Modern) Lemmatizer')
+
+testing_lemmatize(lang = 'hun',
+                  lemmatizer = 'Lemmatization Lists - Hungarian Lemma List')
+
+testing_lemmatize(lang = 'gle',
+                  lemmatizer = 'Lemmatization Lists - Irish Lemma List')
+
+testing_lemmatize(lang = 'ita',
+                  lemmatizer = 'Lemmatization Lists - Italian Lemma List')
 testing_lemmatize(lang = 'ita',
                   lemmatizer = 'spaCy - Italian Lemmatizer')
+
+testing_lemmatize(lang = 'fas',
+                  lemmatizer = 'Lemmatization Lists - Persian Lemma List')
+
+testing_lemmatize(lang = 'por',
+                  lemmatizer = 'Lemmatization Lists - Portuguese Lemma List')
 testing_lemmatize(lang = 'por',
                   lemmatizer = 'spaCy - Portuguese Lemmatizer')
+
+testing_lemmatize(lang = 'ron',
+                  lemmatizer = 'Lemmatization Lists - Romanian Lemma List')
+
 testing_lemmatize(lang = 'rus',
                   lemmatizer = 'pymorphy2 - Morphological Analyzer')
+
+testing_lemmatize(lang = 'gla',
+                  lemmatizer = 'Lemmatization Lists - Scottish Gaelic Lemma List')
+
+testing_lemmatize(lang = 'slk',
+                  lemmatizer = 'Lemmatization Lists - Slovak Lemma List')
+
+testing_lemmatize(lang = 'slv',
+                  lemmatizer = 'Lemmatization Lists - Slovenian Lemma List')
+
+testing_lemmatize(lang = 'spa',
+                  lemmatizer = 'Lemmatization Lists - Spanish Lemma List')
 testing_lemmatize(lang = 'spa',
                   lemmatizer = 'spaCy - Spanish Lemmatizer')
+
+testing_lemmatize(lang = 'swe',
+                  lemmatizer = 'Lemmatization Lists - Swedish Lemma List')
+
 testing_lemmatize(lang = 'bod',
                   lemmatizer = 'pybo - Tibetan Lemmatizer')
+
+testing_lemmatize(lang = 'ukr',
+                  lemmatizer = 'Lemmatization Lists - Ukrainian Lemma List')
 testing_lemmatize(lang = 'ukr',
                   lemmatizer = 'pymorphy2 - Morphological Analyzer')
+
+testing_lemmatize(lang = 'cym',
+                  lemmatizer = 'Lemmatization Lists - Welsh Lemma List')
