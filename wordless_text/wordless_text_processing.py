@@ -457,7 +457,7 @@ def wordless_pos_tag(main, tokens, lang,
     if pos_tagger == main.tr('jieba - Chinese POS Tagger'):
         tokens_tagged = jieba.posseg.cut(' '.join(tokens))
 
-    # Dutch, English, French, German, Greek (Modern), Italian, Portuguese and Spanish
+    # Dutch, English, French, German, Greek (Modern), Italian, Portuguese, Spanish
     elif 'spaCy' in pos_tagger:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
@@ -528,7 +528,7 @@ def wordless_lemmatize(main, tokens, lang,
     mapping_lemmas = {}
     lemmas = []
 
-    tokens = tokens.copy()
+    tokens = [str(token) for token in tokens]
 
     re_tags_all = wordless_matching.get_re_tags(main, tags = 'all')
     re_tags_pos = wordless_matching.get_re_tags(main, tags = 'pos')
@@ -557,7 +557,7 @@ def wordless_lemmatize(main, tokens, lang,
         if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang]
 
-        # English & Other Languages
+        # Dutch, English, French, German, Greek (Modern), Italian, Portuguese, Spanish
         if 'spaCy' in lemmatizer:
             nlp = main.__dict__[f'spacy_nlp_{lang}']
 
