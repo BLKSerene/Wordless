@@ -355,75 +355,71 @@ def wordless_word_detokenize(main, tokens, lang,
             text += moses_detokenizer.detokenize(sentence)
     # Chinese
     elif word_detokenizer == main.tr('Wordless - Chinese Word Detokenizer'):
-        # Settings - > Word Detokenization
-        if type(tokens[0]) == str:
-            non_cjk_start = 0
+        non_cjk_start = 0
 
-            for i, token in enumerate(tokens):
-                if i >= non_cjk_start:
-                    if (wordless_checking_unicode.has_han(token) or
-                        all(map(str.isnumeric, token))):
-                        text += token
+        for i, token in enumerate(tokens):
+            if i >= non_cjk_start:
+                if (wordless_checking_unicode.has_han(token) or
+                    all(map(str.isnumeric, token))):
+                    text += token
 
-                        non_cjk_start += 1
+                    non_cjk_start += 1
+                else:
+                    # English
+                    if wordless_checking_unicode.is_eng_token(token):
+                        for j, token in enumerate(tokens[i:]):
+                            if i + j + 1 == len(tokens) or not wordless_checking_unicode.is_eng_token(tokens[i + j + 1]):
+                                text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
+                                                                 lang = 'eng')
+
+                                non_cjk_start = i + j + 1
+
+                                break
+                    # Other Languages
                     else:
-                        # English
-                        if wordless_checking_unicode.is_eng_token(token):
-                            for j, token in enumerate(tokens[i:]):
-                                if i + j + 1 == len(tokens) or not wordless_checking_unicode.is_eng_token(tokens[i + j + 1]):
-                                    text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
-                                                                     lang = 'eng')
+                        for j, token in enumerate(tokens[i:]):
+                            if (i + j + 1 == len(tokens) or
+                                wordless_checking_unicode.has_han(tokens[i + j + 1])):
+                                text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
+                                                                 lang = 'other')
 
-                                    non_cjk_start = i + j + 1
+                                non_cjk_start = i + j + 1
 
-                                    break
-                        # Other Languages
-                        else:
-                            for j, token in enumerate(tokens[i:]):
-                                if (i + j + 1 == len(tokens) or
-                                    wordless_checking_unicode.has_han(tokens[i + j + 1])):
-                                    text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
-                                                                     lang = 'other')
-
-                                    non_cjk_start = i + j + 1
-
-                                    break
+                                break
     elif word_detokenizer == main.tr('Wordless - Japanese Word Detokenizer'):
-        # Settings - > Word Detokenization
-        if type(tokens[0]) == str:
-            non_cjk_start = 0
+        non_cjk_start = 0
 
-            for i, token in enumerate(tokens):
-                if i >= non_cjk_start:
-                    if (wordless_checking_unicode.has_han(token) or
-                        wordless_checking_unicode.has_kana(token) or
-                        all(map(str.isnumeric, token))):
-                        text += token
+        for i, token in enumerate(tokens):
+            if i >= non_cjk_start:
+                if (wordless_checking_unicode.has_han(token) or
+                    wordless_checking_unicode.has_kana(token) or
+                    all(map(str.isnumeric, token))):
+                    text += token
 
-                        non_cjk_start += 1
+                    non_cjk_start += 1
+                else:
+                    # English
+                    if wordless_checking_unicode.is_eng_token(token):
+                        for j, token in enumerate(tokens[i:]):
+                            if i + j + 1 == len(tokens) or not wordless_checking_unicode.is_eng_token(tokens[i + j + 1]):
+                                text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
+                                                                 lang = 'eng')
+
+                                non_cjk_start = i + j + 1
+
+                                break
+                    # Other Languages
                     else:
-                        # English
-                        if wordless_checking_unicode.is_eng_token(token):
-                            for j, token in enumerate(tokens[i:]):
-                                if i + j + 1 == len(tokens) or not wordless_checking_unicode.is_eng_token(tokens[i + j + 1]):
-                                    text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
-                                                                     lang = 'eng')
+                        for j, token in enumerate(tokens[i:]):
+                            if (i + j + 1 == len(tokens) or
+                                wordless_checking_unicode.has_han(tokens[i + j + 1]) or
+                                wordless_checking_unicode.has_kana(tokens[i + j + 1])):
+                                text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
+                                                                 lang = 'other')
 
-                                    non_cjk_start = i + j + 1
+                                non_cjk_start = i + j + 1
 
-                                    break
-                        # Other Languages
-                        else:
-                            for j, token in enumerate(tokens[i:]):
-                                if (i + j + 1 == len(tokens) or
-                                    wordless_checking_unicode.has_han(tokens[i + j + 1]) or
-                                    wordless_checking_unicode.has_kana(tokens[i + j + 1])):
-                                    text += wordless_word_detokenize(main, tokens[non_cjk_start : i + j + 1],
-                                                                     lang = 'other')
-
-                                    non_cjk_start = i + j + 1
-
-                                    break
+                                break
     # Thai
     elif word_detokenizer in main.tr('Wordless - Thai Word Detokenizer'):
         # Settings -> Detokenization -> Preview
@@ -461,7 +457,7 @@ def wordless_pos_tag(main, tokens, lang,
     if pos_tagger == main.tr('jieba - Chinese POS Tagger'):
         tokens_tagged = jieba.posseg.cut(' '.join(tokens))
 
-    # Dutch, English, French, German, Italian, Portuguese and Spanish
+    # Dutch, English, French, German, Greek (Modern), Italian, Portuguese and Spanish
     elif 'spaCy' in pos_tagger:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 

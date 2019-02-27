@@ -38,11 +38,13 @@ def testing_pos_tag(lang, pos_tagger):
     print(f"\t{tokens_tagged}")
     print(f"\t{tokens_tagged_universal}")
 
-sentence_zho_cn = '作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。'
+sentence_zho_cn = '汉语，又称中文、华文、唐话[2]，或被视为汉藏语系汉语族下之语言，或被视为语族。'
+sentence_zho_tw = '漢語，又稱中文、華文、唐話[2]，或被視為漢藏語系漢語族下之語言，或被視為語族。'
 sentence_nld = 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
 sentence_eng = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.[4][5]'
 sentence_fra = 'Le français est une langue indo-européenne de la famille des langues romanes.'
 sentence_deu = 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ]; abgekürzt Dt. oder Dtsch.) ist eine westgermanische Sprache.'
+sentence_ell = 'Η ελληνική γλώσσα είναι μια από τις ινδοευρωπαϊκές γλώσσες[9] και αποτελεί το μοναδικό μέλος ενός ανεξάρτητου κλάδου, αυτής της οικογένειας γλωσσών, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.'
 sentence_ita = "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
 sentence_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。'
 sentence_por = 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.'
@@ -53,11 +55,13 @@ sentence_bod = '༄༅། །རྒྱ་གར་སྐད་དུ། བོ�
 sentence_ukr = 'Украї́нська мо́ва (МФА: [ʊkrɐˈjɪɲsʲkɐ ˈmɔwɐ], історичні назви — ру́ська, руси́нська[9][10][11][* 2]) — національна мова українців.'
 sentence_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ngữ, là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại Việt Nam.'
 
-tokens_zho_cn = ['作为', '语言', '而言', '，', '为', '世界', '使用', '人', '数最多', '的', '语言', '，', '目前', '世界', '有', '五分之一', '人口', '做', '为', '母语', '。']
+tokens_zho_cn = ['汉语', '，', '又称', '中文', '、', '华文', '、', '唐话', '[', '2', ']', '，', '或', '被', '视为', '汉藏语系', '汉语', '族', '下', '之', '语言', '，', '或', '被', '视为', '语族', '。']
+tokens_zho_tw = ['漢語', '，', '又', '稱', '中文', '、', '華文', '、', '唐話', '[', '2', ']', '，', '或', '被', '視為', '漢藏語', '系漢', '語族', '下', '之', '語言', '，', '或', '被', '視為', '語族', '。']
 tokens_nld = ['Het', 'Nederlands', 'is', 'een', 'West', '-', 'Germaanse', 'taal', 'en', 'de', 'moedertaal', 'van', 'de', 'meeste', 'inwoners', 'van', 'Nederland', ',', 'België', 'en', 'Suriname', '.']
 tokens_eng = ['English', 'is', 'a', 'West', 'Germanic', 'language', 'that', 'was', 'first', 'spoken', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'became', 'a', 'global', 'lingua', 'franca', '.']
 tokens_fra = ['Le', 'français', 'est', 'une', 'langue', 'indo-européenne', 'de', 'la', 'famille', 'des', 'langues', 'romanes', '.']
 tokens_deu = ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'Dt', '.', 'oder', 'Dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
+tokens_ell = ['Η', 'ελληνική', 'γλώσσα', 'είναι', 'μια', 'από', 'τις', 'ινδοευρωπαϊκές', 'γλώσσες', '&#91;', '9', '&#93;', 'και', 'αποτελεί', 'το', 'μοναδικό', 'μέλος', 'ενός', 'ανεξάρτητου', 'κλάδου', ',', 'αυτής', 'της', 'οικογένειας', 'γλωσσών', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
 tokens_ita = ["L'italiano", '(', '[', 'itaˈljaːno][Nota', '1', ']', 'ascolta[?·info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
 tokens_jpn = ['使用', '人口', 'に', 'つい', 'て', '正確', 'な', '統計', 'は', 'ない', 'が', '、', '日本', '国', '内', 'の', '人口', '、', 'および', '日本', '国', '外', 'に', '住む', '日本', '人', 'や', '日系', '人', '、', '日本', 'が', 'かつて', '統治', 'し', 'た', '地域', 'の', '一部', '住民', 'など', '、', '約', '1', '億', '3千', '万', '人', '以上', 'と', '考え', 'られ', 'て', 'いる', '[', '7', ']', '。']
 tokens_por = ['A', 'língua', 'portuguesa', ',', 'também', 'designada', 'português', ',', 'é', 'uma', 'língua', 'românica', 'flexiva', 'ocidental', 'originada', 'no', 'galego', '-', 'português', 'falado', 'no', 'Reino', 'da', 'Galiza', 'e', 'no', 'norte', 'de', 'Portugal', '.']
@@ -70,35 +74,50 @@ tokens_vie = ['Tiếng', 'Việt', ',', 'còn', 'gọi', 'tiếng', 'Việt_Nam'
 
 testing_pos_tag(lang = 'zho_cn',
                 pos_tagger = 'jieba - Chinese POS Tagger')
+testing_pos_tag(lang = 'zho_tw',
+                pos_tagger = 'jieba - Chinese POS Tagger')
+
 testing_pos_tag(lang = 'nld',
                 pos_tagger = 'spaCy - Dutch POS Tagger')
+
 testing_pos_tag(lang = 'eng',
                 pos_tagger = 'NLTK - Perceptron POS Tagger')
 testing_pos_tag(lang = 'eng',
                 pos_tagger = 'spaCy - English POS Tagger')
+
 testing_pos_tag(lang = 'fra',
                 pos_tagger = 'spaCy - French POS Tagger')
+
 testing_pos_tag(lang = 'deu',
                 pos_tagger = 'spaCy - German POS Tagger')
+
 testing_pos_tag(lang = 'ita',
                 pos_tagger = 'spaCy - Italian POS Tagger')
+
 testing_pos_tag(lang = 'jpn',
                 pos_tagger = 'nagisa - Japanese POS Tagger')
+
 testing_pos_tag(lang = 'por',
                 pos_tagger = 'spaCy - Portuguese POS Tagger')
+
 testing_pos_tag(lang = 'rus',
                 pos_tagger = 'NLTK - Perceptron POS Tagger')
 testing_pos_tag(lang = 'rus',
                 pos_tagger = 'pymorphy2 - Morphological Analyzer')
+
 testing_pos_tag(lang = 'spa',
                 pos_tagger = 'spaCy - Spanish POS Tagger')
+
 testing_pos_tag(lang = 'tha',
                 pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus')
 testing_pos_tag(lang = 'tha',
                 pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - PUD Corpus')
+
 testing_pos_tag(lang = 'bod',
                 pos_tagger = 'pybo - Tibetan POS Tagger')
+
 testing_pos_tag(lang = 'ukr',
                 pos_tagger = 'pymorphy2 - Morphological Analyzer')
+
 testing_pos_tag(lang = 'vie',
                 pos_tagger = 'Underthesea - Vietnamese POS Tagger')

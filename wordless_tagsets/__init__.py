@@ -21,6 +21,8 @@ __all__ = [
 
     'deu_tiger_treebank',
 
+    'ell_spacy',
+
     'ita_spacy',
     
     'jpn_unidic',
