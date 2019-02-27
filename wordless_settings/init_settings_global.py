@@ -455,7 +455,8 @@ def init_settings_global(main):
             ],
 
             'ell': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Greek (Modern) Sentence Tokenizer')
             ],
 
             'ita': [
@@ -641,7 +642,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('spaCy - Greek Word Tokenizer')
+                main.tr('spaCy - Greek (Modern) Word Tokenizer')
             ],
 
             'heb': [
@@ -1071,6 +1072,10 @@ def init_settings_global(main):
                 main.tr('spaCy - German POS Tagger')
             ],
 
+            'ell': [
+                main.tr('spaCy - Greek (Modern) POS Tagger')
+            ],
+
             'ita': [
                 main.tr('spaCy - Italian POS Tagger')
             ],
@@ -1157,6 +1162,10 @@ def init_settings_global(main):
 
             'grc': [
                 main.tr('lemmalist-greek - Greek (Ancient) Lemma List')
+            ],
+
+            'ell': [
+                main.tr('spaCy - Greek (Modern) Lemmatizer')
             ],
 
             'hun': [

@@ -1028,7 +1028,7 @@ def init_settings_default(main):
                 'fin': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'fra': main.tr('spaCy - French Sentence Tokenizer'),
                 'deu': main.tr('spaCy - German Sentence Tokenizer'),
-                'ell': main.tr('NLTK - Punkt Sentence Tokenizer'),
+                'ell': main.tr('spaCy - Greek Sentence Tokenizer'),
                 'ita': main.tr('spaCy - Italian Sentence Tokenizer'),
                 'jpn': main.tr('Wordless - Japanese Sentence Tokenizer'),
                 'nob': main.tr('NLTK - Punkt Sentence Tokenizer'),
@@ -1148,6 +1148,7 @@ def init_settings_default(main):
                 'eng': main.tr('spaCy - English POS Tagger'),
                 'fra': main.tr('spaCy - French POS Tagger'),
                 'deu': main.tr('spaCy - German POS Tagger'),
+                'ell': main.tr('spaCy - Greek (Modern) POS Tagger'),
                 'ita': main.tr('spaCy - Italian POS Tagger'),
                 'jpn': main.tr('nagisa - Japanese POS Tagger'),
                 'por': main.tr('spaCy - Portuguese POS Tagger'),
@@ -1194,6 +1195,10 @@ def init_settings_default(main):
 
                 'deu': {
                     main.tr('spaCy - German POS Tagger'): deu_tiger_treebank.mappings
+                },
+
+                'ell': {
+                    main.tr('spaCy - Greek (Modern) POS Tagger'): ell_spacy.mappings
                 },
 
                 'ita': {
@@ -1248,6 +1253,7 @@ def init_settings_default(main):
                 'fra': main.tr('spaCy - French Lemmatizer'),
                 'glg': main.tr('Lemmatization Lists - Galician Lemma List'),
                 'grc': main.tr('lemmalist-greek - Greek (Ancient) Lemma List'),
+                'ell': main.tr('spaCy - Greek (Modern) Lemmatizer'),
                 'deu': main.tr('spaCy - German Lemmatizer'),
                 'hun': main.tr('Lemmatization Lists - Hungarian Lemma List'),
                 'gle': main.tr('Lemmatization Lists - Irish Lemma List'),
