@@ -635,9 +635,9 @@ def wordless_lemmatize(main, tokens, lang,
     return [lemma + tag for lemma, tag in zip(lemmas, tags)]
 
 def wordless_get_stop_words(main, lang,
-                            word_list = 'default'):
-    if word_list == 'default':
-        word_list = main.settings_custom['stop_words']['stop_words'][lang]
+                            list_stop_words = 'default'):
+    if list_stop_words == 'default':
+        list_stop_words = main.settings_custom['stop_words']['stop_words'][lang]
 
     lang_639_1 = wordless_conversion.to_iso_639_1(main, lang)
 
@@ -645,7 +645,7 @@ def wordless_get_stop_words(main, lang,
     if lang_639_1 == 'zh_cn':
         lang_639_1 = 'zh'
 
-    if 'Stopwords ISO' in word_list:
+    if 'Stopwords ISO' in list_stop_words:
         # Norwegian Bokmål & Norwegian Nynorsk
         if lang_639_1 in ['nb', 'nn']:
             lang_639_1 = 'no'
@@ -657,36 +657,52 @@ def wordless_get_stop_words(main, lang,
         else:
             with open(r'stop_words/Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
                 stop_words = json.load(f)[lang_639_1]
-    elif 'spaCy' in word_list:
+    elif 'spaCy' in list_stop_words:
         # Chinese (Traditional)
         if lang_639_1 == 'zh_tw':
             with open(r'stop_words/spaCy/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
                 stop_words = [line.rstrip() for line in f]
         else:
-            spacy_lang = importlib.import_module(f'spacy.lang.{lang_639_1}')
+            spacy_stop_words = importlib.import_module(f'spacy.lang.{lang_639_1}.stop_words')
 
-            stop_words = spacy_lang.STOP_WORDS
-    elif 'NLTK' in word_list:
-        # Norwegian Bokmål & Norwegian Nynorsk
-        if lang_639_1 in ['nb', 'nn']:
-            lang_639_1 = 'no'
+            stop_words = spacy_stop_words.STOP_WORDS
+    elif 'NLTK' in list_stop_words:
+        lang_texts = {
+            'ara': 'arabic',
+            'aze': 'azerbaijani',
+            'dan': 'danish',
+            'nld': 'dutch',
+            'eng': 'english',
+            'fin': 'finnish',
+            'fra': 'french',
+            'deu': 'german',
+            'ell': 'greek',
+            'hun': 'hungarian',
+            'ind': 'indonesian',
+            'ita': 'italian',
+            'kaz': 'kazakh',
+            'nep': 'nepali',
+            # Norwegian Bokmål & Norwegian Nynorsk
+            'nob': 'norwegian',
+            'nno': 'norwegian',
+            'por': 'portuguese',
+            'ron': 'romanian',
+            'rus': 'russian',
+            'spa': 'spanish',
+            'swe': 'swedish',
+            'tur': 'turkish'
+        }
 
-        lang_text = wordless_conversion.to_lang_text(main, lang)
-
-        # Greek (Modern)
-        if lang_text == main.tr('Greek (Modern)'):
-            lang_text = main.tr('Greek')
-
-        stop_words = nltk.corpus.stopwords.words(lang_text)
+        stop_words = nltk.corpus.stopwords.words(lang_texts[lang])
     # Greek (Ancient)
-    elif word_list == main.tr('grk-stoplist - Greek (Ancient) Stop Words'):
+    elif list_stop_words == main.tr('grk-stoplist - Greek (Ancient) Stop Words'):
         with open(r'stop_words/grk-stoplist/stoplist-greek.txt', 'r', encoding = 'utf_8') as f:
             stop_words = [line.rstrip() for line in f.readlines()]
     # Thai
-    elif word_list == main.tr('PyThaiNLP - Thai Stop Words'):
+    elif list_stop_words == main.tr('PyThaiNLP - Thai Stop Words'):
         stop_words = pythainlp.corpus.stopwords.words('thai')
     # Custom Lists
-    elif word_list == main.tr('Custom List'):
+    elif list_stop_words == main.tr('Custom List'):
         stop_words = main.settings_custom['stop_words']['custom_lists'][lang]
 
     return sorted(stop_words)
