@@ -1260,7 +1260,13 @@ def init_settings_global(main):
 
         'stop_words': {
             'afr': [
+                main.tr('spaCy - Afrikaans Stop Words'),
                 main.tr('Stopwords ISO - Afrikaans Stop Words'),
+                main.tr('Custom List')
+            ],
+
+            'sqi': [
+                main.tr('spaCy - Albanian Stop Words'),
                 main.tr('Custom List')
             ],
 
@@ -1298,6 +1304,7 @@ def init_settings_global(main):
             ],
 
             'bul': [
+                main.tr('spaCy - Bulgarian Stop Words'),
                 main.tr('Stopwords ISO - Bulgarian Stop Words'),
                 main.tr('Custom List')
             ],
@@ -1327,6 +1334,7 @@ def init_settings_global(main):
             ],
 
             'ces': [
+                main.tr('spaCy - Czech Stop Words'),
                 main.tr('Stopwords ISO - Czech Stop Words'),
                 main.tr('Custom List')
             ],
@@ -1358,6 +1366,7 @@ def init_settings_global(main):
             ],
 
             'est': [
+                main.tr('spaCy - Estonian Stop Words'),
                 main.tr('Stopwords ISO - Estonian Stop Words'),
                 main.tr('Custom List')
             ],
@@ -1424,6 +1433,11 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
+            'isl': [
+                main.tr('spaCy - Icelandic Stop Words'),
+                main.tr('Custom List')
+            ],
+
             'ind': [
                 main.tr('NLTK - Indonesian Stop Words'),
                 main.tr('spaCy - Indonesian Stop Words'),
@@ -1450,6 +1464,11 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
+            'kan': [
+                main.tr('spaCy - Kannada Stop Words'),
+                main.tr('Custom List')
+            ],
+
             'kaz': [
                 main.tr('NLTK - Kazakh Stop Words'),
                 main.tr('Custom List')
@@ -1471,7 +1490,13 @@ def init_settings_global(main):
             ],
 
             'lav': [
+                main.tr('spaCy - Latvian Stop Words'),
                 main.tr('Stopwords ISO - Latvian Stop Words'),
+                main.tr('Custom List')
+            ],
+
+            'lit': [
+                main.tr('spaCy - Lithuanian Stop Words'),
                 main.tr('Custom List')
             ],
 
@@ -1581,7 +1606,13 @@ def init_settings_global(main):
             ],
 
             'tgl': [
+                main.tr('spaCy - Tagalog Stop Words'),
                 main.tr('Stopwords ISO - Tagalog Stop Words'),
+                main.tr('Custom List')
+            ],
+
+            'tam': [
+                main.tr('spaCy - Tamil Stop Words'),
                 main.tr('Custom List')
             ],
 
@@ -1610,6 +1641,7 @@ def init_settings_global(main):
             ],
 
             'ukr': [
+                main.tr('spaCy - Ukrainian Stop Words'),
                 main.tr('Stopwords ISO - Ukrainian Stop Words'),
                 main.tr('Custom List')
             ],
