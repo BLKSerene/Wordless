@@ -33,13 +33,15 @@ def testing_word_detokenize(lang, word_detokenizer):
 
     print(f"\t{text}")
 
-sentence_zho_cn = '作为语言而言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。汉语有多种分支，当中标准官话最为流行，为中华人民共和国的国家通用语言（又称为普通话）、以及中华民国的国语。'
+sentence_zho_cn = '汉语，又称中文、华文、唐话[2]，或被视为汉藏语系汉语族下之语言，或被视为语族。'
+sentence_zho_tw = '漢語，又稱中文、華文、唐話[2]，或被視為漢藏語系漢語族下之語言，或被視為語族。'
 sentence_eng = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.[4][5]'
 sentence_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。'
 sentence_tha = 'ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย'
 sentence_bod = '༄༅། །རྒྱ་གར་སྐད་དུ། བོ་དྷི་སཏྭ་ཙརྻ་ཨ་བ་ཏ་ར། བོད་སྐད་དུ། བྱང་ཆུབ་སེམས་དཔའི་སྤྱོད་པ་ལ་འཇུག་པ། །སངས་རྒྱས་དང་བྱང་ཆུབ་སེམས་དཔའ་ཐམས་ཅད་ལ་ཕྱག་འཚལ་ལོ། །བདེ་གཤེགས་ཆོས་ཀྱི་སྐུ་མངའ་སྲས་བཅས་དང༌། །ཕྱག་འོས་ཀུན་ལའང་གུས་པར་ཕྱག་འཚལ་ཏེ། །བདེ་གཤེགས་སྲས་ཀྱི་སྡོམ་ལ་འཇུག་པ་ནི། །ལུང་བཞིན་མདོར་བསྡུས་ནས་ནི་བརྗོད་པར་བྱ། །'
 
-tokens_zho_cn = ['作为', '语言', '而言', '，', '为', '世界', '使用', '人', '数最多', '的', '语言', '，', '目前', '世界', '有', '五分之一', '人口', '做', '为', '母语', '。', '汉语', '有', '多种', '分支', '，', '当中', '标准', '官话', '最为', '流行', '，', '为', '中华人民共和国', '的', '国家', '通用', '语言', '（', '又', '称为', '普通话', '）', '、', '以及', '中华民国', '的', '国语', '。']
+tokens_zho_cn = ['汉语', '，', '又称', '中文', '、', '华文', '、', '唐话', '[', '2', ']', '，', '或', '被', '视为', '汉藏语系', '汉语', '族', '下', '之', '语言', '，', '或', '被', '视为', '语族', '。']
+tokens_zho_tw = ['漢語', '，', '又', '稱', '中文', '、', '華文', '、', '唐話', '[', '2', ']', '，', '或', '被', '視為', '漢藏語', '系漢', '語族', '下', '之', '語言', '，', '或', '被', '視為', '語族', '。']
 tokens_eng = ['English', 'is', 'a', 'West', 'Germanic', 'language', 'that', 'was', 'first', 'spoken', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'became', 'a', 'global', 'lingua', 'franca.[4][5', ']']
 tokens_jpn = ['使用', '人口', 'に', 'つい', 'て', '正確', 'な', '統計', 'は', 'ない', 'が', '、', '日本', '国', '内', 'の', '人口', '、', 'および', '日本', '国', '外', 'に', '住む', '日本', '人', 'や', '日系', '人', '、', '日本', 'が', 'かつて', '統治', 'し', 'た', '地域', 'の', '一部', '住民', 'など', '、', '約', '1', '億', '3千', '万', '人', '以上', 'と', '考え', 'られ', 'て', 'いる', '[', '7', ']', '。']
 tokens_tha = ['ภาษาไทย', 'หรือ', 'ภาษาไทย', 'กลาง', 'เป็น', 'ภาษาราชการ', 'และ', 'ภาษาประจำชาติ', 'ของ', 'ประเทศไทย']
@@ -47,13 +49,19 @@ tokens_bod = ['༄༅། །', 'རྒྱ་གར་', 'སྐད་', 'དུ'
 
 testing_word_detokenize(lang = 'zho_cn',
                         word_detokenizer = 'Wordless - Chinese Word Detokenizer')
+testing_word_detokenize(lang = 'zho_tw',
+                        word_detokenizer = 'Wordless - Chinese Word Detokenizer')
+
 testing_word_detokenize(lang = 'eng',
                         word_detokenizer = 'NLTK - Penn Treebank Detokenizer')
 testing_word_detokenize(lang = 'eng',
                         word_detokenizer = 'SacreMoses - Moses Detokenizer')
+
 testing_word_detokenize(lang = 'jpn',
                         word_detokenizer = 'Wordless - Japanese Word Detokenizer')
+
 testing_word_detokenize(lang = 'tha',
                         word_detokenizer = 'Wordless - Thai Word Detokenizer')
+
 testing_word_detokenize(lang = 'bod',
                         word_detokenizer = 'Wordless - Tibetan Word Detokenizer')
