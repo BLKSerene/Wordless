@@ -672,7 +672,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
-                main.tr('spaCy - Danish Word Tokenizer')
+                main.tr('spaCy - Hungarian Word Tokenizer')
             ],
 
             'isl': [
@@ -717,6 +717,16 @@ def init_settings_global(main):
             'jpn': [
                 main.tr('nagisa - Japanese Word Tokenizer'),
                 main.tr('Wordless - Japanese Kanji Tokenizer')
+            ],
+
+            'kan': [
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer'),
+                main.tr('SacreMoses - Penn Treebank Tokenizer'),
+                main.tr('spaCy - Kannada Word Tokenizer')
             ],
 
             'lav': [
@@ -851,7 +861,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('SacreMoses - Moses Tokenizer'),
-                main.tr('SacreMoses - Penn Treebank Tokenizer')
+                main.tr('SacreMoses - Penn Treebank Tokenizer'),
+                main.tr('spaCy - Tamil Word Tokenizer')
             ],
 
             'tat': [
@@ -892,6 +903,16 @@ def init_settings_global(main):
                 main.tr('SacreMoses - Moses Tokenizer'),
                 main.tr('SacreMoses - Penn Treebank Tokenizer'),
                 main.tr('spaCy - Turkish Word Tokenizer')
+            ],
+
+            'ukr': [
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('SacreMoses - Moses Tokenizer'),
+                main.tr('SacreMoses - Penn Treebank Tokenizer'),
+                main.tr('spaCy - Ukrainian Word Tokenizer')
             ],
 
             'urd': [
