@@ -1399,14 +1399,14 @@ class Wordless_Settings(QDialog):
 
         def preview_results_changed():
             lang = wordless_conversion.to_lang_code(self.main, self.combo_box_stop_words_preview_lang.currentText())
-            word_list = self.__dict__[f'combo_box_stop_words_{lang}'].currentText()
+            list_stop_words = self.__dict__[f'combo_box_stop_words_{lang}'].currentText()
             
-            stop_words = wordless_text_processing.wordless_get_stop_words(self.main, lang, word_list = word_list)
+            stop_words = wordless_text_processing.wordless_get_stop_words(self.main, lang, list_stop_words = list_stop_words)
 
             self.label_stop_words_preview_count.setText(self.tr(f'Count of Stop Words: {len(stop_words)}'))
             self.list_stop_words_preview_results.load_stop_words(stop_words)
 
-            if word_list == self.tr('Custom List'):
+            if list_stop_words == self.tr('Custom List'):
                 self.list_stop_words_preview_results.switch_to_custom()
             else:
                 self.list_stop_words_preview_results.switch_to_default()

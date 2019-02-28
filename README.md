@@ -70,10 +70,11 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 6. [lxml](https://lxml.de/) by Stefan Behnel
 7. [NumPy](http://www.numpy.org/) by NumPy Developers
 8. [openpyxl](https://openpyxl.readthedocs.io/en/stable/) by Eric Gazoni, Charlie Clark
-9. [python-docx](https://github.com/python-openxml/python-docx) by Steve Canny
-10. [requests](http://python-requests.org) by Kenneth Reitz
-11. [SciPy](https://www.scipy.org/) by SciPy Developers
-12. [xlrd](https://github.com/python-excel/xlrd) by Stephen John Machin
+9. [PyInstaller](http://www.pyinstaller.org/) by Hartmut Goebel
+10. [python-docx](https://github.com/python-openxml/python-docx) by Steve Canny
+11. [requests](http://python-requests.org) by Kenneth Reitz
+12. [SciPy](https://www.scipy.org/) by SciPy Developers
+13. [xlrd](https://github.com/python-excel/xlrd) by Stephen John Machin
 
 ### Data
 1. [grk-stoplist](https://github.com/pharos-alexandria/grk-stoplist) by Annette von Stockhausen
