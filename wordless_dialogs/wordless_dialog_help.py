@@ -261,6 +261,13 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ],
 
             [
+                '<a href="http://www.pyinstaller.org/">PyInstaller</a>',
+                '3.4',
+                'Hartmut Goebel',
+                '<a href="https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt">PyInstaller</a>'
+            ],
+
+            [
                 '<a href="https://github.com/python-openxml/python-docx">python-docx</a>',
                 '0.8.10',
                 'Steve Canny',
