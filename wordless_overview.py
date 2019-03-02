@@ -18,11 +18,11 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_checking import *
-from wordless_dialogs import *
-from wordless_text import *
-from wordless_utils import *
-from wordless_widgets import *
+from wordless_checking import wordless_checking_file
+from wordless_dialogs import wordless_dialog_misc
+from wordless_text import wordless_text, wordless_text_utils, wordless_token_processing
+from wordless_utils import wordless_misc, wordless_threading
+from wordless_widgets import wordless_layout, wordless_message, wordless_table, wordless_widgets
 
 class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
     def __init__(self, parent):

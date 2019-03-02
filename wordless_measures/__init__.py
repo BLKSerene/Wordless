@@ -10,9 +10,9 @@
 #
 
 __all__ = [
-    'measures_adjusted_freq',
-    'measures_bayes_factor',
-    'measures_dispersion',
-    'measures_effect_size',
-    'measures_statistical_significance'
+    'wordless_measures_adjusted_freq',
+    'wordless_measures_bayes_factor',
+    'wordless_measures_dispersion',
+    'wordless_measures_effect_size',
+    'wordless_measures_statistical_significance'
 ]

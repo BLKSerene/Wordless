@@ -38,28 +38,44 @@ def check_spacy_models(main, lang, pipeline):
         if f'spacy_nlp_{lang}' not in main.__dict__:
             # Dutch
             if lang == 'nld':
-                main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('nl', disable = nlp_disable)
+                import nl_core_news_sm
+
+                main.__dict__[f'spacy_nlp_{lang}'] = nl_core_news_sm.load(disable = nlp_disable)
             # English
             elif lang == 'eng':
-                main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('en', disable = nlp_disable)
+                import en_core_web_sm
+
+                main.__dict__[f'spacy_nlp_{lang}'] = en_core_web_sm.load(disable = nlp_disable)
             # French
             elif lang == 'fra':
-                main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('fr', disable = nlp_disable)
+                import fr_core_news_sm
+
+                main.__dict__[f'spacy_nlp_{lang}'] = fr_core_news_sm.load(disable = nlp_disable)
             # German
             elif lang == 'deu':
-                main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('de', disable = nlp_disable)
+                import de_core_news_sm
+
+                main.__dict__[f'spacy_nlp_{lang}'] = de_core_news_sm.load(disable = nlp_disable)
             # Greek (Modern)
             elif lang == 'ell':
-                main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('el', disable = nlp_disable)
+                import el_core_news_sm
+
+                main.__dict__[f'spacy_nlp_{lang}'] = el_core_news_sm.load(disable = nlp_disable)
             # Italian
             elif lang == 'ita':
-                main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('it', disable = nlp_disable)
+                import it_core_news_sm
+                
+                main.__dict__[f'spacy_nlp_{lang}'] = it_core_news_sm.load(disable = nlp_disable)
             # Portuguese
             elif lang == 'por':
-                main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('pt', disable = nlp_disable)
+                import pt_core_news_sm
+                
+                main.__dict__[f'spacy_nlp_{lang}'] = pt_core_news_sm.load(disable = nlp_disable)
             # Spanish
             elif lang == 'spa':
-                main.__dict__[f'spacy_nlp_{lang}'] = spacy.load('es', disable = nlp_disable)
+                import es_core_news_sm
+                
+                main.__dict__[f'spacy_nlp_{lang}'] = es_core_news_sm.load(disable = nlp_disable)
 
         if 'sbd' in nlp_pipelines:
             nlp = main.__dict__[f'spacy_nlp_{lang}']
