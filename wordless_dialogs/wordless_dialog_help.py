@@ -18,7 +18,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_dialogs import wordless_dialog
-from wordless_widgets import *
+from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
+                              wordless_table)
 
 class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
@@ -190,7 +191,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         self.acks_plotting = [
             [
                 '<a href="https://matplotlib.org/">Matplotlib</a>',
-                '3.0.2',
+                '3.0.3',
                 'Matplotlib Development Team',
                 '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'
             ],
@@ -241,7 +242,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://lxml.de/">lxml</a>',
-                '4.3.1',
+                '4.3.2',
                 'Stefan Behnel',
                 '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'
             ],
@@ -702,7 +703,11 @@ class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
                          height = 150)
 
         label_about_icon = QLabel('', self)
-        label_about_icon.setPixmap(QPixmap('imgs/wordless_icon.png'))
+
+        img_wordless_icon = QPixmap('imgs/wordless_icon_about.png')
+        img_wordless_icon = img_wordless_icon.scaled(64, 64)
+
+        label_about_icon.setPixmap(img_wordless_icon)
 
         label_about_title = wordless_label.Wordless_Label_Dialog(
             self.tr('''

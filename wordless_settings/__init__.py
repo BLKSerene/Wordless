@@ -11,6 +11,6 @@
 
 __all__ = [
     'wordless_settings',
-    'init_settings_global',
-    'init_settings_default'
+    'wordless_settings_global',
+    'wordless_settings_default'
 ]

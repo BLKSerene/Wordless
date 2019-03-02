@@ -18,7 +18,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_dialogs import wordless_dialog
-from wordless_widgets import *
+from wordless_widgets import wordless_label
 
 class Wordless_Dialog_Progress(wordless_dialog.Wordless_Dialog_Frameless):
     def __init__(self, main, width, height):

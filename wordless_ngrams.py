@@ -22,13 +22,15 @@ import matplotlib.pyplot
 import nltk
 import numpy
 
-from wordless_checking import *
-from wordless_dialogs import *
-from wordless_figures import *
-from wordless_measures import *
-from wordless_text import *
-from wordless_utils import *
-from wordless_widgets import *
+from wordless_checking import wordless_checking_file
+from wordless_dialogs import (wordless_dialog_filter_results, wordless_dialog_misc, wordless_dialog_search_results,
+                              wordless_message_box)
+from wordless_figures import wordless_figure_freq, wordless_figure_stat
+from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
+                           wordless_text_utils, wordless_token_processing)
+from wordless_utils import wordless_misc, wordless_sorting, wordless_threading
+from wordless_widgets import (wordless_layout, wordless_message, wordless_table,
+                              wordless_widgets)
 
 class Wordless_Table_Ngrams(wordless_table.Wordless_Table_Data_Filter_Search):
     def __init__(self, parent):
