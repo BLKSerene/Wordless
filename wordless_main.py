@@ -21,13 +21,11 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 import matplotlib
-import matplotlib.pyplot
 
-from wordless_checking import *
-from wordless_dialogs import *
-from wordless_settings import *
-from wordless_utils import *
-from wordless_widgets import *
+from wordless_checking import wordless_checking_misc
+from wordless_dialogs import wordless_dialog_misc, wordless_dialog_help, wordless_message_box
+from wordless_settings import wordless_settings, wordless_settings_default, wordless_settings_global
+from wordless_widgets import wordless_layout
 
 import wordless_file_area
 import wordless_overview
@@ -73,11 +71,11 @@ class Wordless_Main(QMainWindow):
         self.threads_check_updates = []
 
         self.setWindowTitle(self.tr('Wordless'))
-        self.setWindowIcon(QIcon('imgs/wordless_icon.png'))
+        self.setWindowIcon(QIcon('imgs/wordless_icon.ico'))
 
         # Settings
-        init_settings_global.init_settings_global(self)
-        init_settings_default.init_settings_default(self)
+        wordless_settings_global.init_settings_global(self)
+        wordless_settings_default.init_settings_default(self)
 
         if os.path.exists('wordless_settings.pkl'):
             with open(r'wordless_settings.pkl', 'rb') as f:
