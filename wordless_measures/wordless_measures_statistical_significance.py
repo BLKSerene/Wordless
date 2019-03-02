@@ -9,12 +9,6 @@
 # All other rights reserved.
 #
 
-# Testing
-if __name__ == '__main__':
-    import sys
-
-    sys.path.append('.')
-
 import math
 
 import numpy
@@ -234,68 +228,3 @@ def mann_whitney_u_test(main, counts_observed, counts_ref):
                                    alternative = alternative)
 
     return [u_stat, p_value, None]
-
-# Testing
-if __name__ == '__main__':
-    from PyQt5.QtCore import *
-
-    main = QObject()
-    main.settings_custom = {
-        'measures': {
-            'statistical_significance': {
-                'students_t_test_two_sample': {
-                    'variances': 'Equal'
-                },
-
-                'pearsons_chi_squared_test': {},
-
-                'fishers_exact_test': {},
-
-                'mann_whitney_u_test': {
-                    'direction': 'Two-tailed',
-                    'apply_correction': True
-                }
-            }
-        }
-    }
-
-    # Manning, Christopher D. and Hinrich Schütze. Foundations of Statistical Natural Language Processing. MIT Press, May 1999, pp. 164-165.
-    print('Student\'s t-test (One Sample):\n\t', end = '')
-    print(students_t_test_one_sample(main, 8, 15828 - 8, 4675 - 8, 14307668 - 15828 - 4675 + 8)[0]) # 0.999932
-
-    # Dunning, Ted Emerson. "Accurate Methods for the Statistics of Surprise and Coincidence." Computational Linguistics, vol. 19, no. 1, Mar. 1993, p. 73.
-    # Pedersen, Ted. "Fishing for Exactness." Proceedings of the South-Central SAS Users Group Conference, 27-29 Oct. 1996, Austin, p. 10.
-    print('Pearson\'s Chi-squared Test:')
-
-    main.settings_custom['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'] = False 
-
-    print(f'\t{pearsons_chi_squared_test(main, 3, 0, 0, 31774)[0]}') # 31777.00
-
-    main.settings_custom['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'] = True 
-
-    print(f'\t{pearsons_chi_squared_test(main, 1, 3, 3, 1)[0:2]} * with Yates\'s correction for continuity') # 0.500, 0.480
-
-    # Dunning, Ted Emerson. "Accurate Methods for the Statistics of Surprise and Coincidence." Computational Linguistics, vol. 19, no. 1, Mar. 1993, p. 72.
-    print('Log-likelihood Ratio Test:\n\t', end = '')
-    print(log_likehood_ratio_test(main, 10, 0, 3, 31764)[0]) # 167.23
-
-    # Pedersen, Ted. "Fishing for Exactness." Proceedings of the South-Central SAS Users Group Conference, 27-29 Oct. 1996, Austin, p. 10.
-    print('Fisher\'s Exact Test:')
-
-    main.settings_custom['measures']['statistical_significance']['fishers_exact_test']['direction'] = 'Two-tailed' 
-
-    print(f'\t{fishers_exact_test(main, 1, 3, 3, 1)[1]} * Two-tailed') # 0.486
-
-    main.settings_custom['measures']['statistical_significance']['fishers_exact_test']['direction'] = 'Left-tailed' 
-
-    print(f'\t{fishers_exact_test(main, 1, 3, 3, 1)[1]} * Left-tailed') # 0.243
-
-    main.settings_custom['measures']['statistical_significance']['fishers_exact_test']['direction'] = 'Right-tailed' 
-
-    print(f'\t{fishers_exact_test(main, 1, 3, 3, 1)[1]} * Right-tailed') # 0.986
-
-    # Kilgarriff, Adam. "Comparing Corpora." International Journal of Corpus Linguistics, vol.6, no.1, Nov. 2001, p. 238.
-    print('Mann-Whiteney U Test:\n\t', end = '')
-    print(5 * (5 + 1) / 2 + mann_whitney_u_test(main,
-                                                [12, 15, 18, 24, 88],
-                                                [3, 3, 13, 27, 33])[0]) # R2: 24
