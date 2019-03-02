@@ -51,7 +51,7 @@ def lynes_d3(freqs):
     else:
         d3 = 1 - scipy.stats.chisquare(freqs)[0] / (4 * sum(freqs))
 
-    return max(0, d)
+    return max(0, d3)
 
 # Reference:
 #     Rosengren, Inger. "The quantitative concept of language and its relation to the structure of frequency dictionaries." Études de linguistique appliquée, no. 1, 1971, pp. 103-27.
@@ -95,33 +95,3 @@ def griess_dp(freqs):
 #     Lijffijt, Jefrey and Stefan Th. Gries. "Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”" International Journal of Corpus Linguistics, vol. 17, no. 1, 2012, pp. 147-49.
 def griess_dp_norm(freqs):
     return griess_dp(freqs) / (1 - 1 / len(freqs))
-
-# Testing
-if __name__ == '__main__':
-    # Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
-    print('Juilland\'s D:\n    ', end = '')
-    print(juillands_d([0, 4, 3, 2, 1])) # 0.6464
-
-    # Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
-    print('Carroll\'s D2:\n    ', end = '')
-    print(carrolls_d2([2, 1, 1, 1, 0])) # 0.8277
-
-    # Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 408.
-    print('Lyne\'s D3:\n    ', end = '')
-    print(lynes_d3([1, 2, 3, 4, 5])) # 0.944
-
-    # Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 407.
-    print('Rosengren\'s S:\n    ', end = '')
-    print(rosengrens_s([1, 2, 3, 4, 5])) # 0.937
-
-    # Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 408.
-    print('Zhang\'s Distributional Consistency:\n    ', end = '')
-    print(zhangs_distributional_consistency([1, 2, 3, 4, 5])) # 0.937
-
-    # Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 416.
-    print('Gries\'s DP:\n    ', end = '')
-    print(griess_dp([3, 3, 3])) # 0
-
-    # Lijffijt, Jefrey and Stefan Th. Gries. "Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”" International Journal of Corpus Linguistics, vol. 17, no. 1, 2012, pp. 148.
-    print('Gries\'s DPnorm:\n    ', end = '')
-    print(griess_dp_norm([2, 1, 0])) # 0.5
