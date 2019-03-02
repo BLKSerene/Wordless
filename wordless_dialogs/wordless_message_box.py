@@ -302,7 +302,7 @@ def wordless_message_box_duplicate_stop_words(main):
                             </body>
                         '''))
 
-# Resettings
+# Reset settings
 def wordless_message_box_reset_settings(main):
     reply = QMessageBox.question(main,
                                  main.tr('Reset Settings'),
@@ -315,7 +315,64 @@ def wordless_message_box_reset_settings(main):
                                  QMessageBox.Yes | QMessageBox.No,
                                  QMessageBox.No)
 
-    return reply
+    if reply == QMessageBox.Yes:
+        return True
+    else:
+        return False
+
+def wordless_message_box_reset_all_settings(main):
+    reply = QMessageBox.question(main,
+                                 main.tr('Reset All Settings'),
+                                 main.tr(f'''
+                                     {main.settings_global['styles']['style_dialog']}
+                                     <body>
+                                         <div>Do you really want to reset all settings to their defaults?</div>
+                                         <div><b>Warning: This will affect settings on all pages!</b></div>
+                                     </body>
+                                 '''),
+                                 QMessageBox.Yes | QMessageBox.No,
+                                 QMessageBox.No)
+
+    if reply == QMessageBox.Yes:
+        return True
+    else:
+        return False
+
+def wordless_message_box_reset_mappings(main):
+    reply = QMessageBox.question(main,
+                                 main.tr('Reset Mappings'),
+                                 main.tr(f'''
+                                     {main.settings_global['styles']['style_dialog']}
+                                     <body>
+                                         <div>Do you really want to reset all mappings to their defaults?</div>
+                                         <div><b>Note: This will only affect the mapping settings in the currently shown table.</b></div>
+                                     </body>
+                                 '''),
+                                 QMessageBox.Yes | QMessageBox.No,
+                                 QMessageBox.No)
+
+    if reply == QMessageBox.Yes:
+        return True
+    else:
+        return False
+
+def wordless_message_box_reset_all_mappings(main):
+    reply = QMessageBox.question(main,
+                                 main.tr('Reset All Mappings'),
+                                 main.tr(f'''
+                                     {main.settings_global['styles']['style_dialog']}
+                                     <body>
+                                         <div>Do you really want to reset all mappings to their defaults?</div>
+                                         <div><b>Warning: This will affect the mapping settings in all tables!</b></div>
+                                     </body>
+                                 '''),
+                                 QMessageBox.Yes | QMessageBox.No,
+                                 QMessageBox.No)
+
+    if reply == QMessageBox.Yes:
+        return True
+    else:
+        return False
 
 def wordless_message_box_reset_layouts(main):
     reply = QMessageBox.question(main,
@@ -329,7 +386,10 @@ def wordless_message_box_reset_layouts(main):
                                  QMessageBox.Yes | QMessageBox.No,
                                  QMessageBox.No)
 
-    return reply
+    if reply == QMessageBox.Yes:
+        return True
+    else:
+        return False
 
 # Files
 class Wordless_Message_Box_No_Files_Selected(Wordless_Message_Box_Warning):
