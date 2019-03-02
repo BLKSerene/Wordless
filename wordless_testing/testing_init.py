@@ -18,7 +18,7 @@ sys.path.append('.')
 
 import wordless_file_area
 
-from wordless_settings import init_settings_default, init_settings_global
+from wordless_settings import wordless_settings_default, wordless_settings_global
 
 class Testing_Main(QObject):
     def __init__(self):

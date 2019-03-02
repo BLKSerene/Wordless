@@ -11,7 +11,23 @@
 
 import os
 
-from wordless_tagsets import *
+from wordless_tagsets import (wordless_tagset_universal,
+                              wordless_tagset_nld_spacy,
+                              wordless_tagset_eng_penn_treebank,
+                              wordless_tagset_eng_penn_treebank_onto_notes_5,
+                              wordless_tagset_fra_spacy,
+                              wordless_tagset_deu_tiger_treebank,
+                              wordless_tagset_ell_spacy,
+                              wordless_tagset_ita_spacy,
+                              wordless_tagset_jpn_unidic,
+                              wordless_tagset_por_spacy,
+                              wordless_tagset_rus_open_corpora,
+                              wordless_tagset_rus_russian_national_corpus,
+                              wordless_tagset_spa_spacy,
+                              wordless_tagset_tha_orchid,
+                              wordless_tagset_bod_pybo,
+                              wordless_tagset_vie_underthesea,
+                              wordless_tagset_zho_jieba)
 
 def init_settings_default(main):
     main.settings_default = {
@@ -1077,11 +1093,11 @@ def init_settings_default(main):
                 'kan': main.tr('spaCy - Kannada Word Tokenizer'),
                 'lav': main.tr('SacreMoses - Moses Tokenizer'),
                 'nob': main.tr('spaCy - Norwegian Bokmål Word Tokenizer'),
-                'fas': main.tr('NLTK - Tok-tok Tokenizer'),
+                'fas': main.tr('spaCy - Persian Word Tokenizer'),
                 'pol': main.tr('spaCy - Polish Word Tokenizer'),
                 'por': main.tr('spaCy - Portuguese Word Tokenizer'),
                 'ron': main.tr('spaCy - Romanian Word Tokenizer'),
-                'rus': main.tr('NLTK - Tok-tok Tokenizer'),
+                'rus': main.tr('spaCy - Russian Word Tokenizer'),
                 'sin': main.tr('spaCy - Sinhala Word Tokenizer'),
                 'slk': main.tr('SacreMoses - Moses Tokenizer'),
                 'slv': main.tr('SacreMoses - Moses Tokenizer'),
@@ -1175,70 +1191,70 @@ def init_settings_default(main):
 
             'mappings': {
                 'zho_cn': {
-                    main.tr('jieba - Chinese POS Tagger'): zho_jieba.mappings
+                    main.tr('jieba - Chinese POS Tagger'): wordless_tagset_zho_jieba.mappings
                 },
 
                 'zho_tw': {
-                    main.tr('jieba - Chinese POS Tagger'): zho_jieba.mappings
+                    main.tr('jieba - Chinese POS Tagger'): wordless_tagset_zho_jieba.mappings
                 },
 
                 'nld': {
-                    main.tr('spaCy - Dutch POS Tagger'): nld_spacy.mappings
+                    main.tr('spaCy - Dutch POS Tagger'): wordless_tagset_nld_spacy.mappings
                 },
                 
                 'eng': {
-                    main.tr('NLTK - Perceptron POS Tagger'): eng_penn_treebank.mappings,
-                    main.tr('spaCy - English POS Tagger'): eng_penn_treebank_onto_notes_5.mappings
+                    main.tr('NLTK - Perceptron POS Tagger'): wordless_tagset_eng_penn_treebank.mappings,
+                    main.tr('spaCy - English POS Tagger'): wordless_tagset_eng_penn_treebank_onto_notes_5.mappings
                 },
 
                 'fra': {
-                    main.tr('spaCy - French POS Tagger'): fra_spacy.mappings
+                    main.tr('spaCy - French POS Tagger'): wordless_tagset_fra_spacy.mappings
                 },
 
                 'deu': {
-                    main.tr('spaCy - German POS Tagger'): deu_tiger_treebank.mappings
+                    main.tr('spaCy - German POS Tagger'): wordless_tagset_deu_tiger_treebank.mappings
                 },
 
                 'ell': {
-                    main.tr('spaCy - Greek (Modern) POS Tagger'): ell_spacy.mappings
+                    main.tr('spaCy - Greek (Modern) POS Tagger'): wordless_tagset_ell_spacy.mappings
                 },
 
                 'ita': {
-                    main.tr('spaCy - Italian POS Tagger'): ita_spacy.mappings
+                    main.tr('spaCy - Italian POS Tagger'): wordless_tagset_ita_spacy.mappings
                 },
 
                 'jpn': {
-                    main.tr('nagisa - Japanese POS Tagger'): jpn_unidic.mappings
+                    main.tr('nagisa - Japanese POS Tagger'): wordless_tagset_jpn_unidic.mappings
                 },
 
                 'por': {
-                    main.tr('spaCy - Portuguese POS Tagger'): por_spacy.mappings
+                    main.tr('spaCy - Portuguese POS Tagger'): wordless_tagset_por_spacy.mappings
                 },
 
                 'rus': {
-                    main.tr('NLTK - Perceptron POS Tagger'): rus_russian_national_corpus.mappings,
-                    main.tr('pymorphy2 - Morphological Analyzer'): rus_open_corpora.mappings
+                    main.tr('NLTK - Perceptron POS Tagger'): wordless_tagset_rus_russian_national_corpus.mappings,
+                    main.tr('pymorphy2 - Morphological Analyzer'): wordless_tagset_rus_open_corpora.mappings
                 },
 
                 'spa': {
-                    main.tr('spaCy - Spanish POS Tagger'): spa_spacy.mappings
+                    main.tr('spaCy - Spanish POS Tagger'): wordless_tagset_spa_spacy.mappings
                 },
 
                 'tha': {
-                    main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'): tha_orchid.mappings,
-                    main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus'): all_universal.mappings
+                    main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'): wordless_tagset_tha_orchid.mappings,
+                    main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus'): wordless_tagset_universal.mappings
                 },
 
                 'bod': {
-                    main.tr('pybo - Tibetan POS Tagger'): bod_pybo.mappings
+                    main.tr('pybo - Tibetan POS Tagger'): wordless_tagset_bod_pybo.mappings
                 },
 
                 'ukr': {
-                    main.tr('pymorphy2 - Morphological Analyzer'): rus_open_corpora.mappings
+                    main.tr('pymorphy2 - Morphological Analyzer'): wordless_tagset_rus_open_corpora.mappings
                 },
 
                 'vie': {
-                    main.tr('Underthesea - Vietnamese POS Tagger'): vie_underthesea.mappings
+                    main.tr('Underthesea - Vietnamese POS Tagger'): wordless_tagset_vie_underthesea.mappings
                 }
             }
         },

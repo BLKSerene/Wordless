@@ -29,11 +29,10 @@ from docx.text.paragraph import Paragraph
 import openpyxl
 import xlrd
 
-from wordless_checking import *
-from wordless_dialogs import *
-from wordless_text import *
-from wordless_widgets import *
-from wordless_utils import *
+from wordless_checking import wordless_checking_file, wordless_checking_misc
+from wordless_dialogs import wordless_message_box
+from wordless_utils import wordless_conversion, wordless_detection, wordless_misc
+from wordless_widgets import wordless_box, wordless_layout, wordless_table
 
 class Wordless_Files():
     def __init__(self, table):
