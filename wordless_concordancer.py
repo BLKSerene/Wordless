@@ -21,11 +21,13 @@ import nltk
 import numpy
 import matplotlib.pyplot
 
-from wordless_checking import *
-from wordless_dialogs import *
-from wordless_text import *
-from wordless_utils import *
-from wordless_widgets import *
+from wordless_checking import wordless_checking_file
+from wordless_dialogs import wordless_dialog_misc, wordless_dialog_search_results, wordless_message_box
+from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
+                           wordless_token_processing)
+from wordless_utils import wordless_misc, wordless_threading
+from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
+                              wordless_message, wordless_table, wordless_widgets)
 
 class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Search):
     def __init__(self, parent):

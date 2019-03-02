@@ -22,10 +22,12 @@ from PyQt5.QtWidgets import *
 
 import nltk
 
-from wordless_tagsets import *
-from wordless_text import *
-from wordless_utils import *
-from wordless_widgets import *
+from wordless_tagsets import wordless_tagset_universal
+from wordless_text import wordless_text_processing, wordless_text_utils
+from wordless_utils import wordless_conversion
+from wordless_widgets import (wordless_box, wordless_button, wordless_label,
+                              wordless_layout, wordless_list, wordless_table,
+                              wordless_tree, wordless_widgets)
 
 class Wordless_Table_Tags_Pos(wordless_table.Wordless_Table_Tags):
     def reset_table(self):
@@ -1192,7 +1194,7 @@ class Wordless_Settings(QDialog):
             self.table_mappings.itemChanged.emit(self.table_mappings.item(0, 0))
 
             # Disable editing if the default tagset is Universal POS tags
-            if mappings == all_universal.mappings:
+            if mappings == wordless_tagset_universal.mappings:
                 for i in range(self.table_mappings.rowCount()):
                     self.table_mappings.cellWidget(i, 1).setEnabled(False)
 
