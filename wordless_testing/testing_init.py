@@ -18,15 +18,15 @@ sys.path.append('.')
 
 import wordless_file_area
 
-from wordless_settings import init_settings_default, init_settings_global
+from wordless_settings import wordless_settings_default, wordless_settings_global
 
 class Testing_Main(QObject):
     def __init__(self):
         super().__init__()
 
         # Settings
-        init_settings_default.init_settings_default(self)
-        init_settings_global.init_settings_global(self)
+        wordless_settings_default.init_settings_default(self)
+        wordless_settings_global.init_settings_global(self)
 
         self.settings_custom = self.settings_default
 

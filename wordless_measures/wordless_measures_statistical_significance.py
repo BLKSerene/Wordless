@@ -13,15 +13,14 @@
 if __name__ == '__main__':
     import sys
 
-    sys.path.append('E:/Wordless/')
-
+    sys.path.append('.')
 
 import math
 
 import numpy
 import scipy.stats
 
-from wordless_measures import measures_bayes_factor
+from wordless_measures import wordless_measures_bayes_factor
 
 def get_marginals(c11, c12, c21, c22):
     c1x = c11 + c12
@@ -121,7 +120,7 @@ def students_t_test_two_sample(main, counts_observed, counts_ref):
     elif variances == main.tr('Unequal'):
         t_stat, p_value = scipy.stats.ttest_ind(counts_observed, counts_ref, equal_var = False)
 
-    bayes_factor = measures_bayes_factor.bayes_factor_t_test(t_stat, len(counts_observed) + len(counts_ref))
+    bayes_factor = wordless_measures_bayes_factor.bayes_factor_t_test(t_stat, len(counts_observed) + len(counts_ref))
 
     return [t_stat, p_value, bayes_factor]
 
@@ -196,7 +195,7 @@ def log_likehood_ratio_test(main, c11, c12, c21, c22):
 
     p_value = scipy.stats.distributions.chi2.sf(log_likelihood_ratio, 1)
 
-    bayes_factor = measures_bayes_factor.bayes_factor_log_likelihood_ratio_test(log_likelihood_ratio, cxx)
+    bayes_factor = wordless_measures_bayes_factor.bayes_factor_log_likelihood_ratio_test(log_likelihood_ratio, cxx)
 
     return [log_likelihood_ratio, p_value, bayes_factor]
 
