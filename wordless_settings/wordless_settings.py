@@ -15,6 +15,7 @@ import json
 import os
 import re
 import threading
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -22,12 +23,32 @@ from PyQt5.QtWidgets import *
 
 import nltk
 
+from wordless_dialogs import wordless_dialog_misc, wordless_message_box
 from wordless_tagsets import wordless_tagset_universal
 from wordless_text import wordless_text_processing, wordless_text_utils
-from wordless_utils import wordless_conversion
+from wordless_utils import wordless_conversion, wordless_threading
 from wordless_widgets import (wordless_box, wordless_button, wordless_label,
                               wordless_layout, wordless_list, wordless_table,
                               wordless_tree, wordless_widgets)
+
+class Wordless_Worker_Fetch_Data_Tagsets(wordless_threading.Wordless_Worker_Fetch_Data):
+    fetching_finished = pyqtSignal(list)
+
+    def __init__(self, main, dialog_progress, data_received):
+        super().__init__(main, dialog_progress, data_received)
+
+    def fetch_data(self):
+        settings_custom = self.main.settings_custom['tagsets']
+
+        preview_lang = settings_custom['preview_lang']
+        preview_pos_tagger = settings_custom['preview_pos_tagger'][preview_lang]
+        mappings = settings_custom['mappings'][preview_lang][preview_pos_tagger]
+
+        self.progress_updated.emit(self.tr('Updating table ...'))
+
+        time.sleep(0.5)
+
+        self.fetching_finished.emit(mappings)
 
 class Wordless_Table_Tags_Pos(wordless_table.Wordless_Table_Tags):
     def reset_table(self):
@@ -56,6 +77,8 @@ class Wordless_Settings(QDialog):
         super().__init__(main)
 
         self.main = main
+
+        self.pos_tag_mappings_loaded = False
 
         self.preview_processing_sentence_tokenization = False
         self.preview_processing_word_tokenization = False
@@ -140,7 +163,7 @@ class Wordless_Settings(QDialog):
 
         self.scroll_area_settings.setWidget(self.stacked_widget_settings)
 
-        button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self, self.load_settings)
+        button_reset_settings = wordless_button.Wordless_Button_Reset_All_Settings(self, self.load_settings)
         button_save = QPushButton(self.tr('Save'), self)
         button_apply = QPushButton(self.tr('Apply'), self)
         button_cancel = QPushButton(self.tr('Cancel'), self)
@@ -163,8 +186,6 @@ class Wordless_Settings(QDialog):
         self.layout().setColumnStretch(0, 1)
         self.layout().setColumnStretch(1, 3)
 
-        self.load_settings()
-        
         self.tree_settings.item_selected_old = self.tree_settings.topLevelItem(0)
         self.tree_settings.topLevelItem(0).setSelected(True)
 
@@ -226,6 +247,12 @@ class Wordless_Settings(QDialog):
                 self.tree_settings.item_selected_old.setSelected(True)
 
                 self.tree_settings.blockSignals(False)
+
+            # Delay loading of POS tag mappings
+            if item_selected_text == self.tr('Tagsets') and not self.pos_tag_mappings_loaded:
+                self.combo_box_tagsets_lang.currentTextChanged.emit(self.combo_box_tagsets_lang.currentText())
+
+                self.pos_tag_mappings_loaded = True
 
     # General
     def init_settings_general(self):
@@ -609,8 +636,10 @@ class Wordless_Settings(QDialog):
                 self.preview_processing_sentence_tokenization = False
 
             if settings_custom['preview_samples']:
+                self.label_sentence_tokenization_preview_processing.setText(self.tr('Processing text ...'))
+
+                self.__dict__[f"combo_box_sentence_tokenizer_{settings_custom['preview_lang']}"].setEnabled(False)
                 self.combo_box_sentence_tokenization_preview_lang.setEnabled(False)
-                self.label_sentence_tokenization_preview_processing.setText(self.tr('Processing ...'))
 
                 if not self.preview_processing_sentence_tokenization:
                     self.preview_processing_sentence_tokenization = True
@@ -623,8 +652,10 @@ class Wordless_Settings(QDialog):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_sentence_tokenization_preview_results.setPlainText('\n'.join(results))
 
-                self.combo_box_sentence_tokenization_preview_lang.setEnabled(True)
                 self.label_sentence_tokenization_preview_processing.setText('')
+
+                self.__dict__[f"combo_box_sentence_tokenizer_{settings_custom['preview_lang']}"].setEnabled(True)
+                self.combo_box_sentence_tokenization_preview_lang.setEnabled(True)
             else:
                 preview_results_changed()
 
@@ -750,8 +781,10 @@ class Wordless_Settings(QDialog):
                 self.preview_processing_word_tokenization = False
 
             if settings_custom['preview_samples']:
+                self.label_word_tokenization_preview_processing.setText(self.tr('Processing text ...'))
+
+                self.__dict__[f"combo_box_word_tokenizer_{settings_custom['preview_lang']}"].setEnabled(False)
                 self.combo_box_word_tokenization_preview_lang.setEnabled(False)
-                self.label_word_tokenization_preview_processing.setText(self.tr('Processing ...'))
 
                 if not self.preview_processing_word_tokenization:
                     self.preview_processing_word_tokenization = True
@@ -764,8 +797,10 @@ class Wordless_Settings(QDialog):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_word_tokenization_preview_results.setPlainText('\n'.join(results))
 
-                self.combo_box_word_tokenization_preview_lang.setEnabled(True)
                 self.label_word_tokenization_preview_processing.setText('')
+
+                self.__dict__[f"combo_box_word_tokenizer_{settings_custom['preview_lang']}"].setEnabled(True)
+                self.combo_box_word_tokenization_preview_lang.setEnabled(True)
             else:
                 preview_results_changed()
 
@@ -881,8 +916,10 @@ class Wordless_Settings(QDialog):
                 self.preview_processing_word_detokenization = False
 
             if settings_custom['preview_samples']:
+                self.label_word_detokenization_preview_processing.setText(self.tr('Processing text ...'))
+
+                self.__dict__[f"combo_box_word_detokenizer_{settings_custom['preview_lang']}"].setEnabled(False)
                 self.combo_box_word_detokenization_preview_lang.setEnabled(False)
-                self.label_word_detokenization_preview_processing.setText(self.tr('Processing ...'))
 
                 if not self.preview_processing_word_detokenization:
                     self.preview_processing_word_detokenization = True
@@ -895,8 +932,10 @@ class Wordless_Settings(QDialog):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_word_detokenization_preview_results.setPlainText('\n'.join(results))
 
-                self.combo_box_word_detokenization_preview_lang.setEnabled(True)
                 self.label_word_detokenization_preview_processing.setText('')
+
+                self.__dict__[f"combo_box_word_detokenizer_{settings_custom['preview_lang']}"].setEnabled(True)
+                self.combo_box_word_detokenization_preview_lang.setEnabled(True)
             else:
                 preview_results_changed()
 
@@ -1027,8 +1066,10 @@ class Wordless_Settings(QDialog):
                 self.preview_processing_pos_tagging = False
 
             if settings_custom['preview_samples']:
+                self.label_pos_tagging_preview_processing.setText(self.tr('Processing text ...'))
+
+                self.__dict__[f"combo_box_pos_tagger_{settings_custom['preview_lang']}"].setEnabled(False)
                 self.combo_box_pos_tagging_preview_lang.setEnabled(False)
-                self.label_pos_tagging_preview_processing.setText(self.tr('Processing ...'))
 
                 if not self.preview_processing_pos_tagging:
                     self.preview_processing_pos_tagging = True
@@ -1041,8 +1082,10 @@ class Wordless_Settings(QDialog):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_pos_tagging_preview_results.setPlainText('\n'.join(results))
 
-                self.combo_box_pos_tagging_preview_lang.setEnabled(True)
                 self.label_pos_tagging_preview_processing.setText('')
+
+                self.__dict__[f"combo_box_pos_tagger_{settings_custom['preview_lang']}"].setEnabled(True)
+                self.combo_box_pos_tagging_preview_lang.setEnabled(True)
             else:
                 preview_results_changed()
 
@@ -1130,73 +1173,123 @@ class Wordless_Settings(QDialog):
 
     # POS Tagging -> Tagsets
     def init_settings_tagsets(self):
-        def preview_settings_changed():
-            settings_custom['preview_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_tagsets_lang.currentText())
-            settings_custom['preview_pos_tagger'] = self.combo_box_tagsets_pos_tagger.currentText()
+        def preview_lang_changed():
+            settings_custom['preview_lang'] = wordless_conversion.to_lang_code(
+                self.main,
+                self.combo_box_tagsets_lang.currentText()
+            )
 
-        def lang_changed():
+            preview_lang = settings_custom['preview_lang']
+
             self.combo_box_tagsets_pos_tagger.blockSignals(True)
 
             self.combo_box_tagsets_pos_tagger.clear()
-            self.combo_box_tagsets_pos_tagger.addItems(settings_global[settings_custom['preview_lang']])
+
+            self.combo_box_tagsets_pos_tagger.addItems(settings_global[preview_lang])
+            self.combo_box_tagsets_pos_tagger.setCurrentText(settings_custom['preview_pos_tagger'][preview_lang])
 
             self.combo_box_tagsets_pos_tagger.blockSignals(False)
 
             self.combo_box_tagsets_pos_tagger.currentTextChanged.emit('')
 
-        def pos_tagger_changed():
-            mappings = settings_custom['mappings'][settings_custom['preview_lang']][settings_custom['preview_pos_tagger']]
+        def preview_pos_tagger_changed():
+            def data_received(mappings):
+                self.table_mappings.hide()
+                self.table_mappings.blockSignals(True)
+                self.table_mappings.setUpdatesEnabled(False)
 
+                self.table_mappings.clear_table()
+                self.table_mappings.setRowCount(len(mappings))
+
+                for i, (tag, tag_universal, description, examples) in enumerate(mappings):
+                    combo_box_tag_univsersal = wordless_box.Wordless_Combo_Box(self.main)
+
+                    combo_box_tag_univsersal.addItems([
+                        'ADJ',
+                        'ADP',
+                        'ADV',
+                        'AUX',
+                        'CONJ', # Coordinating/Subordinating Conjunctions
+                        'CCONJ',
+                        'SCONJ',
+                        'DET',
+                        'INTJ',
+                        'NOUN',
+                        'PROPN',
+                        'NUM',
+                        'PART',
+                        'PRON',
+                        'VERB',
+
+                        'PUNCT',
+                        'SYM',
+                        'X'
+                    ])
+
+                    combo_box_tag_univsersal.setCurrentText(tag_universal)
+                    combo_box_tag_univsersal.setEditable(True)
+
+                    self.table_mappings.setItem(i, 0, QTableWidgetItem(tag))
+                    self.table_mappings.setCellWidget(i, 1, combo_box_tag_univsersal)
+                    self.table_mappings.setItem(i, 2, QTableWidgetItem(description))
+                    self.table_mappings.setItem(i, 3, QTableWidgetItem(examples))
+
+                self.table_mappings.blockSignals(False)
+                self.table_mappings.setUpdatesEnabled(True)
+                self.table_mappings.show()
+
+                self.table_mappings.itemChanged.emit(self.table_mappings.item(0, 0))
+
+                # Disable editing if the default tagset is Universal POS tags
+                if mappings == wordless_tagset_universal.mappings:
+                    for i in range(self.table_mappings.rowCount()):
+                        self.table_mappings.cellWidget(i, 1).setEnabled(False)
+
+                self.label_tagsets_num_pos_tags.setText(self.tr(f'Number of POS Tags: {self.table_mappings.rowCount()}'))
+
+                dialog_progress.accept()
+
+            dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Fetch_Data(self.main)
+
+            worker_fetch_data = Wordless_Worker_Fetch_Data_Tagsets(self.main, dialog_progress, data_received)
+            thread_fetch_data = wordless_threading.Wordless_Thread_Fetch_Data(worker_fetch_data)
+
+            thread_fetch_data.start()
+
+            dialog_progress.exec_()
+
+            thread_fetch_data.quit()
+            thread_fetch_data.wait()
+
+        def reset_currently_shown_table():
+            preview_lang = settings_custom['preview_lang']
+            preview_pos_tagger = settings_custom['preview_pos_tagger'][preview_lang]
+            mappings = copy.deepcopy(self.main.settings_default['tagsets']['mappings'][preview_lang][preview_pos_tagger])
+
+            self.table_mappings.hide()
             self.table_mappings.blockSignals(True)
             self.table_mappings.setUpdatesEnabled(False)
 
-            self.table_mappings.clear_table()
-            self.table_mappings.setRowCount(len(mappings))
-
-            for i, (tag, tag_universal, description, examples) in enumerate(mappings):
-                combo_box_tag_univsersal = wordless_box.Wordless_Combo_Box(self)
-
-                combo_box_tag_univsersal.addItems([
-                    'ADJ',
-                    'ADP',
-                    'ADV',
-                    'AUX',
-                    'CONJ', # Coordinating/Subordinating Conjunctions
-                    'CCONJ',
-                    'SCONJ',
-                    'DET',
-                    'INTJ',
-                    'NOUN',
-                    'PROPN',
-                    'NUM',
-                    'PART',
-                    'PRON',
-                    'VERB',
-
-                    'PUNCT',
-                    'SYM',
-                    'X'
-                ])
-
-                combo_box_tag_univsersal.setEditable(True)
-
-                self.table_mappings.setItem(i, 0, QTableWidgetItem(tag))
-
-                self.table_mappings.setCellWidget(i, 1, combo_box_tag_univsersal)
-                self.table_mappings.cellWidget(i, 1).setCurrentText(tag_universal)
-
-                self.table_mappings.setItem(i, 2, QTableWidgetItem(description))
-                self.table_mappings.setItem(i, 3, QTableWidgetItem(examples))
+            for i in range(self.table_mappings.rowCount()):
+                self.table_mappings.cellWidget(i, 1).setCurrentText(mappings[i][1])
 
             self.table_mappings.blockSignals(False)
             self.table_mappings.setUpdatesEnabled(True)
+            self.table_mappings.show()
 
             self.table_mappings.itemChanged.emit(self.table_mappings.item(0, 0))
 
-            # Disable editing if the default tagset is Universal POS tags
-            if mappings == wordless_tagset_universal.mappings:
-                for i in range(self.table_mappings.rowCount()):
-                    self.table_mappings.cellWidget(i, 1).setEnabled(False)
+            settings_custom['mappings'][preview_lang][preview_pos_tagger] = mappings
+
+        def reset_mappings():
+            if wordless_message_box.wordless_message_box_reset_mappings(self.main):
+                reset_currently_shown_table()
+
+        def reset_all_mappings():
+            if wordless_message_box.wordless_message_box_reset_all_mappings(self.main):
+                settings_custom['mappings'] = copy.deepcopy(self.main.settings_default['tagsets']['mappings'])
+
+                reset_currently_shown_table()
 
         settings_global = self.main.settings_global['pos_taggers']
         settings_custom = self.main.settings_custom['tagsets']
@@ -1213,10 +1306,8 @@ class Wordless_Settings(QDialog):
 
         self.combo_box_tagsets_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global)))
 
-        self.combo_box_tagsets_lang.currentTextChanged.connect(preview_settings_changed)
-        self.combo_box_tagsets_lang.currentTextChanged.connect(lang_changed)
-        self.combo_box_tagsets_pos_tagger.currentTextChanged.connect(preview_settings_changed)
-        self.combo_box_tagsets_pos_tagger.currentTextChanged.connect(pos_tagger_changed)
+        self.combo_box_tagsets_lang.currentTextChanged.connect(preview_lang_changed)
+        self.combo_box_tagsets_pos_tagger.currentTextChanged.connect(preview_pos_tagger_changed)
 
         group_box_preview_settings.setLayout(QGridLayout())
         group_box_preview_settings.layout().addWidget(self.label_tagsets_lang, 0, 0)
@@ -1229,6 +1320,9 @@ class Wordless_Settings(QDialog):
         # Mapping Settings
         group_box_mapping_settings = QGroupBox(self.tr('Mapping Settings'))
 
+        self.label_tagsets_num_pos_tags = QLabel('', self)
+        self.button_tagsets_reset_mappings = QPushButton(self.tr('Reset Mappings'), self)
+        self.button_tagsets_reset_all_mappings = QPushButton(self.tr('Reset All Mappings'), self)
         self.table_mappings = wordless_table.Wordless_Table(self,
                                                             headers = [
                                                                 self.tr('POS Tags'),
@@ -1237,8 +1331,19 @@ class Wordless_Settings(QDialog):
                                                                 self.tr('Example(s)')
                                                             ])
 
+        self.button_tagsets_reset_mappings.setFixedWidth(125)
+        self.button_tagsets_reset_all_mappings.setFixedWidth(125)
+
+        self.button_tagsets_reset_mappings.clicked.connect(reset_mappings)
+        self.button_tagsets_reset_all_mappings.clicked.connect(reset_all_mappings)
+
         group_box_mapping_settings.setLayout(QGridLayout())
-        group_box_mapping_settings.layout().addWidget(self.table_mappings, 0, 0)
+        group_box_mapping_settings.layout().addWidget(self.label_tagsets_num_pos_tags, 0, 0)
+        group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset_mappings, 0, 2)
+        group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset_all_mappings, 0, 3)
+        group_box_mapping_settings.layout().addWidget(self.table_mappings, 1, 0, 1, 4)
+
+        group_box_mapping_settings.layout().setColumnStretch(1, 1)
 
         self.settings_tagsets.setLayout(QGridLayout())
         self.settings_tagsets.layout().addWidget(group_box_preview_settings, 0, 0)
@@ -1294,8 +1399,10 @@ class Wordless_Settings(QDialog):
                 self.preview_processing_lemmatization = False
 
             if settings_custom['preview_samples']:
+                self.label_lemmatization_preview_processing.setText(self.tr('Processing text ...'))
+
+                self.__dict__[f"combo_box_lemmatizer_{settings_custom['preview_lang']}"].setEnabled(False)
                 self.combo_box_lemmatization_preview_lang.setEnabled(False)
-                self.label_lemmatization_preview_processing.setText(self.tr('Processing ...'))
 
                 if not self.preview_processing_lemmatization:
                     self.preview_processing_lemmatization = True
@@ -1308,8 +1415,10 @@ class Wordless_Settings(QDialog):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_lemmatization_preview_results.setPlainText('\n'.join(results))
 
-                self.combo_box_lemmatization_preview_lang.setEnabled(True)
                 self.label_lemmatization_preview_processing.setText('')
+
+                self.__dict__[f"combo_box_lemmatizer_{settings_custom['preview_lang']}"].setEnabled(True)
+                self.combo_box_lemmatization_preview_lang.setEnabled(True)
             else:
                 preview_results_changed()
 
@@ -1840,13 +1949,14 @@ class Wordless_Settings(QDialog):
 
         # POS Tagging -> Tagsets
         if not defaults:
+            self.combo_box_tagsets_lang.blockSignals(True)
+            self.combo_box_tagsets_pos_tagger.blockSignals(True)
+
             self.combo_box_tagsets_lang.setCurrentText(wordless_conversion.to_lang_text(self.main, settings['tagsets']['preview_lang']))
-            self.combo_box_tagsets_pos_tagger.setCurrentText(settings['tagsets']['preview_pos_tagger'])
+            self.combo_box_tagsets_pos_tagger.setCurrentText(settings['tagsets']['preview_pos_tagger'][settings['tagsets']['preview_lang']])
 
-        if defaults:
-            self.main.settings_custom['tagsets']['mappings'] = copy.deepcopy(self.main.settings_default['tagsets']['mappings'])
-
-        self.combo_box_tagsets_lang.currentTextChanged.emit(self.combo_box_tagsets_lang.currentText())
+            self.combo_box_tagsets_lang.blockSignals(False)
+            self.combo_box_tagsets_pos_tagger.blockSignals(False)
 
         # Lemmatization
         for lang in settings['lemmatization']['lemmatizers']:
@@ -2036,7 +2146,7 @@ class Wordless_Settings(QDialog):
 
             # POS Tagging -> Tagsets
             preview_lang = settings['tagsets']['preview_lang']
-            preview_pos_tagger = settings['tagsets']['preview_pos_tagger']
+            preview_pos_tagger = settings['tagsets']['preview_pos_tagger'][preview_lang]
 
             for i in range(self.table_mappings.rowCount()):
                 settings['tagsets']['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
@@ -2096,4 +2206,4 @@ class Wordless_Settings(QDialog):
             if not self.tree_settings.findItems(tab, Qt.MatchExactly):
                 item_selected.parent().setExpanded(True)
 
-        self.exec()
+        self.exec_()

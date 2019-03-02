@@ -31,7 +31,17 @@ class Wordless_Button_Reset_Settings(Wordless_Button):
         self.clicked.connect(self.reset_settings)
 
     def reset_settings(self):
-        reply = wordless_message_box.wordless_message_box_reset_settings(self.main)
+        if wordless_message_box.wordless_message_box_reset_settings(self.main):
+            self.load_settings(defaults = True)
 
-        if reply == QMessageBox.Yes:
+class Wordless_Button_Reset_All_Settings(Wordless_Button):
+    def __init__(self, parent, load_settings):
+        super().__init__(parent.tr('Reset All Settings'), parent)
+
+        self.load_settings = load_settings
+
+        self.clicked.connect(self.reset_settings)
+
+    def reset_settings(self):
+        if wordless_message_box.wordless_message_box_reset_all_settings(self.main):
             self.load_settings(defaults = True)

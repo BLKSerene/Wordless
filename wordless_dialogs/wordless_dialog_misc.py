@@ -92,6 +92,20 @@ class Wordless_Dialog_Progress_Search_Results(Wordless_Dialog_Progress):
             </div>
         '''))
 
+class Wordless_Dialog_Progress_Fetch_Data(Wordless_Dialog_Progress):
+    def __init__(self, main):
+        super().__init__(main,
+                         width = 420,
+                         height = 110)
+
+        self.label_progress.setText(self.tr('Fetching data ...'))
+        
+        self.label_processing.set_text(self.tr('''
+            <div>
+                Please wait while the table is being updated. It may take a few seconds to several minutes.
+            </div>
+        '''))
+
 class Wordless_Dialog_Confirm_Exit(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Exit'),

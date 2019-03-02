@@ -1192,7 +1192,25 @@ def init_settings_default(main):
 
         'tagsets': {
             'preview_lang': 'eng',
-            'preview_pos_tagger': main.tr('NLTK - Perceptron POS Tagger'),
+
+            'preview_pos_tagger': {
+                'zho_cn': main.tr('jieba - Chinese POS Tagger'),
+                'zho_tw': main.tr('jieba - Chinese POS Tagger'),
+                'nld': main.tr('spaCy - Dutch POS Tagger'),
+                'eng': main.tr('spaCy - English POS Tagger'),
+                'fra': main.tr('spaCy - French POS Tagger'),
+                'deu': main.tr('spaCy - German POS Tagger'),
+                'ell': main.tr('spaCy - Greek (Modern) POS Tagger'),
+                'ita': main.tr('spaCy - Italian POS Tagger'),
+                'jpn': main.tr('nagisa - Japanese POS Tagger'),
+                'por': main.tr('spaCy - Portuguese POS Tagger'),
+                'rus': main.tr('pymorphy2 - Morphological Analyzer'),
+                'spa': main.tr('spaCy - Spanish POS Tagger'),
+                'tha': main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'),
+                'bod': main.tr('pybo - Tibetan POS Tagger'),
+                'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
+                'vie': main.tr('Underthesea - Vietnamese POS Tagger')
+            },
 
             'mappings': {
                 'zho_cn': {

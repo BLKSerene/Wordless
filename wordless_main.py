@@ -259,9 +259,7 @@ class Wordless_Main(QMainWindow):
 
     # Preferences -> Reset Layouts
     def prefs_reset_layouts(self):
-        reply = wordless_message_box.wordless_message_box_reset_layouts(self)
-
-        if reply:
+        if wordless_message_box.wordless_message_box_reset_layouts(self):
             self.centralWidget().setSizes([self.height() - 210, 210])
 
     # Help -> Citing
