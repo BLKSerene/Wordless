@@ -178,6 +178,47 @@ By default, Wordless will try to detect the language, text type and encoding of 
 \* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer. You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
 
+### Work Area - Overview
+In *Overview*, you can check/compare the language features of different files.
+
+1. **Count of Paragraphs**:<br>
+	Number of paragraphs in each file. Each line in the file will be counted as one paragraph. Blank lines and lines containing only spaces, tabs and other invisible characters are ignored.
+
+2. **Count of Sentences**:<br>
+	Number of sentences in each file. *Wordless* will automatically apply the built-in sentence tokenizer according to the language of each file in order to calculate the number of sentences in each file. You can change the sentence tokenizer settings via **Menu → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
+
+3. **Count of Tokens**:<br>
+	Number of tokens in each file. *Wordless* will automatically apply the built-in word tokenizer according to the language of each file in order to calculate the number of tokens in each file. You can change the word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
+
+	You can tell *Wordless* what should be counted as a "token" by modifying **Token Settings** in the *Settings Area*
+
+4. **Count of Types**:<br>
+	Number of token types in each file.
+
+5. **Count of Caracters**:<br>
+	Number of single characters in each file. Spaces, tabs and all other invisible characters are ignored.
+
+6. **Type-Token Ratio**:<br>
+	Number of token types divided by number of tokens.
+
+7. **Type-Token Ratio (Standardized)**:<br>
+	Standardized type-token ratio. Each file will be divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratio will be calculated for each part. The standardized type-token ratio of each file is then averaged out over all sub-sections. You can change the number of tokens in each sub-section via **Generation Settings → Base of standardized type-token ratio**.
+
+8. **Average Paragraph Length (in Sentence)**:<br>
+	Number of sentences divided by number of paragraphs.
+
+9. **Average Paragraph Length (in Token)**:<br>
+	Number of Tokens divided by number of paragraphs.
+
+10. **Average Sentence Length (in Token)**:<br>
+	Number of tokens divided by number of sentences.
+
+11. **Average Token Length (in Character)**:<br>
+	Number of characters divided by number of tokens.
+
+12. **Count of n-length Tokens**:<br>
+	Number of n-length tokens, where n = 1, 2, 3, etc.
+
 <span id="doc-zho"></span>
 ## Documentation - Chinese (Simplified)
 Editing...
