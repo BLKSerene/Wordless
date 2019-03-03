@@ -172,12 +172,12 @@ def record_boundary_sentences(sentences, text):
 
     return sentences
 
-def to_sections(tokens, number_sections):
+def to_sections(tokens, num_sections):
     sections = []
 
-    section_size, remainder = divmod(len(tokens), number_sections)
+    section_size, remainder = divmod(len(tokens), num_sections)
 
-    for i in range(number_sections):
+    for i in range(num_sections):
         if i < remainder:
             section_start = i * section_size + i
         else:
@@ -189,5 +189,17 @@ def to_sections(tokens, number_sections):
             section_stop = (i + 1) * section_size + remainder
 
         sections.append(tokens[section_start:section_stop])
+
+    return sections
+
+def to_sections_unequal(tokens, section_size):
+    sections = []
+
+    for i in range(len(tokens)):
+        if (i + 1) % section_size == 0:
+            sections.append(tokens[i + 1 - section_size : i + 1])
+
+    if len(tokens) % section_size > 0:
+        sections.append(tokens[section_size * len(sections):])
 
     return sections
