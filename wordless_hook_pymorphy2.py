@@ -1,5 +1,5 @@
 #
-# Wordless: Building Hook for pymorphy2
+# Wordless: Packaging Hook - pymorphy2
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
