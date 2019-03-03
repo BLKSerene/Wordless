@@ -33,8 +33,8 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
                              parent.tr('Count of Tokens'),
                              parent.tr('Count of Types'),
                              parent.tr('Count of Characters'),
-                             parent.tr('Type/Token Ratio'),
-                             parent.tr('Type/Token Ratio (Standardized)'),
+                             parent.tr('Type-Token Ratio'),
+                             parent.tr('Type-Token Ratio (Standardized)'),
                              parent.tr('Average Paragraph Length (in Sentence)'),
                              parent.tr('Average Paragraph Length (in Token)'),
                              parent.tr('Average Sentence Length (in Token)'),
@@ -47,8 +47,8 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
                              parent.tr('Count of Tokens'),
                              parent.tr('Count of Types'),
                              parent.tr('Count of Characters'),
-                             parent.tr('Type/Token Ratio'),
-                             parent.tr('Type/Token Ratio (Standardized)'),
+                             parent.tr('Type-Token Ratio'),
+                             parent.tr('Type-Token Ratio (Standardized)'),
                              parent.tr('Average Paragraph Length (in Sentence)'),
                              parent.tr('Average Paragraph Length (in Token)'),
                              parent.tr('Average Sentence Length (in Token)'),
@@ -155,7 +155,7 @@ class Wrapper_Overview(wordless_layout.Wordless_Wrapper):
         # Generation Settings
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
 
-        self.label_base_sttr = QLabel(self.tr('Base of standardized type/token ratio:'), self)
+        self.label_base_sttr = QLabel(self.tr('Base of standardized type-token ratio:'), self)
         self.spin_box_base_sttr = QSpinBox(self)
 
         self.spin_box_base_sttr.setRange(100, 10000)
@@ -246,6 +246,11 @@ class Wrapper_Overview(wordless_layout.Wordless_Wrapper):
         settings['ignore_tags_type'] = self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentText()
         settings['ignore_tags_type_tags'] = self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentText()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
+
+        if settings['use_tags']:
+            self.label_base_sttr.setText(self.tr('Base of standardized type-tag ratio:'))
+        else:
+            self.label_base_sttr.setText(self.tr('Base of standardized type-token ratio:'))
 
     def generation_settings_changed(self):
         settings = self.main.settings_custom['overview']['generation_settings']
@@ -379,8 +384,8 @@ def generate_table(main, table):
                 main.tr('Count of Tags'),
                 main.tr('Count of Tag Types'),
                 main.tr('Count of Characters'),
-                main.tr('Type/Tag Ratio'),
-                main.tr('Type/Tag Ratio (Standardized)'),
+                main.tr('Type-Tag Ratio'),
+                main.tr('Type-Tag Ratio (Standardized)'),
                 main.tr('Average Paragraph Length (in Sentence)'),
                 main.tr('Average Paragraph Length (in Tag)'),
                 main.tr('Average Sentence Length (in Tag)'),
