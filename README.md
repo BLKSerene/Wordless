@@ -115,7 +115,68 @@ If you would like to support the development of Wordless, you may donate via Pay
 
 <span id="doc-eng"></span>
 ## Documentation - English
-Editing...
+The main window of *Wordless* is divided into several sections:
+
+1. **Menu Bar**<br>
+	
+2. **Work Area**:<br>
+	The *Work Area* is further divided into the *Resutls Area* on the left side and the *Settings Area* on the right side.<br>
+	You can click on the tabs at the top to toggle between different panels.
+
+3. **File Area**:<br>
+	The *File Area* is further divided into the *File Table* on the left side and the *Settings Area* on the right side.
+
+4. **Status Bar**:<br>
+	You can show/hide the *Status Bar* by checking/unchecking **Menu → Preferences → Show Status Bar**
+
+### File Area
+In most cases, the first thing to do in *Wordless* is open and select your files to be processed via **Menu → File** or by clicking the buttons residing under the *File Table*.
+
+Files are selected by default after being added to the *File Table*. **Only selected files will be processed by Wordless**. You can drag and drop files around the *File Table* to change their orders, which will be reflected in the results produced by Wordless.
+
+By default, Wordless will try to detect the language, text type and encoding of the file, you should check and make sure that the settings of each and every file is correct. If you do not want Wordless to detect the settings for you and prefer setting them manually, you can change the settings in **Auto-detection Settings** in the *Settings Area*.
+
+1. **Add File(s)**:<br>
+	Add one single file or multiple files to the *File Table*.
+
+	\* You can use the **Ctrl** key (**Command** key on macOS) and/or the **Shift** key to select multiple files.
+
+2. **Add Folder**:<br>
+	Add all files in the folder to the *File Table*.
+
+	By default, all files in subfolders (and subfolders of subfolders, and so on) will also be added to the *File Table*. If you do not want to add files in subfolders to the *File Table*, uncheck **Folder Settings → Subfolders** in the *Settings Area*.
+
+3. **Reopen Closed File(s)**:<br>
+	Add file(s) that are closed the last time back to the *File Table*.
+
+	\* The history of all closed files will be erased upon exit of *Wordless*.
+
+4. **Select All**:<br>
+	Select all files in the *File Table*.
+
+5. **Invert Selection**:<br>
+	Select all files that are not currently selected and deselect all currently selected files in the *File Table*.
+
+6. **Deselect All**:<br>
+	Deselect all files in the *File Table*.
+
+7. **Close Selected**:<br>
+	Remove all currently selected files in the *File Table*.
+
+8. **Close All**:<br>
+	Remove all files in the *File Table*.
+
+**The following file types are currently supported by *Wordless***:
+1. Text files (\*.txt)
+2. Microsoft Word documents (\*.docx)
+3. Microsoft Excel workbook (\*.xls, \*.xlsx)
+4. CSV files (\*.csv)
+5. HTML pages (\*.htm, \*.html)
+6. Translation memory files (\*.tmx)
+7. Lyrics files (\*.lrc)
+
+\* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
+\* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer. You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
 
 <span id="doc-zho"></span>
 ## Documentation - Chinese (Simplified)
