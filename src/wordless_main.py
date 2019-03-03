@@ -77,8 +77,8 @@ class Wordless_Main(QMainWindow):
         wordless_settings_global.init_settings_global(self)
         wordless_settings_default.init_settings_default(self)
 
-        if os.path.exists('wordless_settings.pkl'):
-            with open(r'wordless_settings.pkl', 'rb') as f:
+        if os.path.exists('wordless_settings.pickle'):
+            with open(r'wordless_settings.pickle', 'rb') as f:
                 settings_custom = pickle.load(f)
 
             if wordless_checking_misc.check_custom_settings(settings_custom, self.settings_default):
@@ -123,7 +123,7 @@ class Wordless_Main(QMainWindow):
             # Layouts
             self.settings_custom['layouts']['central_widget'] = self.centralWidget().sizes()
 
-            with open('wordless_settings.pkl', 'wb') as f:
+            with open('wordless_settings.pickle', 'wb') as f:
                 pickle.dump(self.settings_custom, f)
 
             event.accept()
