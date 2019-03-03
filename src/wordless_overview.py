@@ -11,7 +11,6 @@
 
 import collections
 import copy
-import math
 import time
 
 from PyQt5.QtCore import *
@@ -314,10 +313,18 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
             count_chars = sum(len_tokens)
             ttr = count_types / count_tokens
 
-            token_sections = wordless_text_utils.to_sections(text.tokens, math.ceil(count_tokens / base_sttr))
+            if count_tokens < base_sttr:
+                sttr = ttr
+            else:
+                token_sections = wordless_text_utils.to_sections_unequal(text.tokens, base_sttr)
 
-            ttrs = [len(set(token_section)) / len(token_section) for token_section in token_sections]
-            sttr = sttr = sum(ttrs) / len(ttrs)
+                # Discard the last section if number of tokens in it is smaller than the base of sttr
+                if len(token_sections[-1]) < base_sttr:
+                    ttrs = [len(set(token_section)) / len(token_section) for token_section in token_sections[:-1]]
+                else:
+                    ttrs = [len(set(token_section)) / len(token_section) for token_section in token_sections]
+
+                sttr = sum(ttrs) / len(ttrs)
 
             texts_stats_file.append(count_paras)
             texts_stats_file.append(count_sentences)

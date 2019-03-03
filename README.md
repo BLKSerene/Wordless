@@ -204,6 +204,8 @@ In *Overview*, you can check/compare the language features of different files.
 7. **Type-Token Ratio (Standardized)**:<br>
 	Standardized type-token ratio. Each file will be divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratio will be calculated for each part. The standardized type-token ratio of each file is then averaged out over all sub-sections. You can change the number of tokens in each sub-section via **Generation Settings → Base of standardized type-token ratio**.
 
+	The last section will be discarded if the number of tokens in it is smaller than the base of standardized type-token ratio in order to prevent the result from being affected by outliers (extreme values).
+
 8. **Average Paragraph Length (in Sentence)**:<br>
 	Number of sentences divided by number of paragraphs.
 
