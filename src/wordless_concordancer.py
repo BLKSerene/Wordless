@@ -66,21 +66,6 @@ class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Search):
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_figure.clicked.connect(lambda: generate_figure(self.main))
 
-class Wordless_Combo_Box_Sorting_Col(wordless_box.Wordless_Combo_Box):
-    def __init__(self, parent, table):
-        super().__init__(parent)
-
-        self.addItems(table.cols_sorting)
-
-class Wordless_Combo_Box_Sorting_Order(wordless_box.Wordless_Combo_Box):
-    def __init__(self, parent):
-        super().__init__(parent)
-
-        self.addItems([
-            self.tr('Ascending'),
-            self.tr('Descending')
-        ])
-
 class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
     def __init__(self, parent, table):
         super().__init__(parent,
@@ -200,8 +185,14 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
         self.itemChanged.emit(self.item(0, 0))
 
     def _new_row(self):
-        combo_box_sorting_col = Wordless_Combo_Box_Sorting_Col(self, self)
-        combo_box_sorting_order = Wordless_Combo_Box_Sorting_Order(self)
+        combo_box_sorting_col = wordless_box.Wordless_Combo_Box(self)
+        combo_box_sorting_order = wordless_box.Wordless_Combo_Box(self)
+
+        combo_box_sorting_col.addItems(self.cols_sorting)
+        combo_box_sorting_order.addItems([
+            self.tr('Ascending'),
+            self.tr('Descending')
+        ])
 
         if combo_box_sorting_col.findText('L1') > -1:
             width_left = max([int(combo_box_sorting_col.itemText(i)[1:])

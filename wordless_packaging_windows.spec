@@ -1,7 +1,7 @@
 #
 # Wordless: Packaging - spec File
 #
-# Copyright (C) 2018-2019  Ye Lei (叶磊))
+# Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
 # This source file is licensed under GNU GPLv3.
 # For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
@@ -56,8 +56,7 @@ datas.extend([
 # Miscellaneous
 datas.extend([
     ('src/VERSION', '.'),
-    ('LICENSE.txt', '.'),
-    ('README.md', '.')
+    ('LICENSE.txt', '.')
 ])
 
 a = Analysis(['src/wordless_main.py'],
