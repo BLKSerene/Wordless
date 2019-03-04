@@ -133,7 +133,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/taishi-i/nagisa">nagisa</a>',
-                '0.2.0',
+                '0.2.1',
                 'Taishi Ikeda (池田大志)',
                 '<a href="https://github.com/taishi-i/nagisa/blob/master/LICENSE.txt">MIT</a>'
             ],
@@ -263,7 +263,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="http://www.pyinstaller.org/">PyInstaller</a>',
-                '3.4',
+                '3.5.dev0+cb8d10af6',
                 'Hartmut Goebel',
                 '<a href="https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt">PyInstaller</a>'
             ],

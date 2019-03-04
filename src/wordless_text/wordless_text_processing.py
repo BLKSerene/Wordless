@@ -149,7 +149,7 @@ def wordless_word_tokenize(main, text, lang,
             moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
 
             for sentence in sentences:
-                tokens_sentences.append(moses_tokenizer.tokenize(sentence))
+                tokens_sentences.append(moses_tokenizer.tokenize(sentence, escape = False))
         elif word_tokenizer == main.tr('SacreMoses - Penn Treebank Tokenizer'):
             moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
 
