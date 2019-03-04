@@ -9,10 +9,9 @@
 # All other rights reserved.
 #
 
-# Reference: https://github.com/pyinstaller/pyinstaller/issues/3050
-
 import pkg_resources
 
+# Reference: https://github.com/pyinstaller/pyinstaller/issues/3050
 def iter_entry_points(group, name = None):
     for entry_point in entry_points:
     	if entry_point.find(group) > -1:

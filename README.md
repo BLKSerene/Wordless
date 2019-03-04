@@ -178,7 +178,7 @@ By default, Wordless will try to detect the language, text type and encoding of 
 \* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer. You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
 
-### Work Area - Overview
+### Overview
 In *Overview*, you can check/compare the language features of different files.
 
 1. **Count of Paragraphs**:<br>
