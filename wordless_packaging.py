@@ -19,9 +19,9 @@ time_start_packaging = time.time()
 print('Packaging Wordless ...')
 
 if platform.system() == 'Windows':
-	os.system('pyinstaller -y wordless_packaging_windows.spec')
+    os.system('pyinstaller -y wordless_packaging_windows.spec')
 elif platform.system() == 'Darwin':
-	os.system('pyinstaller -y wordless_packaging_macos.spec')
+    os.system('pyinstaller -y wordless_packaging_macos.spec')
 
 time_elapsed_packaging = time.time() - time_start_packaging
 print(f'Packaging done! (In {int(time_elapsed_packaging // 60)} minutes {int(time_elapsed_packaging % 60)} seconds)')
