@@ -33,12 +33,12 @@ class Wordless_Dialog_Filter_Results(wordless_dialog.Wordless_Dialog):
         self.combo_box_file_to_filter = wordless_box.Wordless_Combo_Box_File_To_Filter(self, self.table)
         self.button_filter = QPushButton(self.tr('Filter'), self)
 
-        self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self, self.load_settings)
+        self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
-        self.button_filter.setFixedWidth(90)
-        self.button_reset_settings.setFixedWidth(140)
-        self.button_close.setFixedWidth(90)
+        self.button_filter.setFixedWidth(80)
+        self.button_reset_settings.setFixedWidth(120)
+        self.button_close.setFixedWidth(80)
 
         self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
         self.button_filter.clicked.connect(lambda: self.filter_results())
