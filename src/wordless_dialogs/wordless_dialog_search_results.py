@@ -104,8 +104,11 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.button_find_prev = QPushButton(self.tr('Find Previous'), self)
         self.button_find_all = QPushButton(self.tr('Find All'), self)
         
-        self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self, self.load_settings)
+        self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self)
         self.button_close = QPushButton(self.tr('Close'), self)
+
+        self.button_reset_settings.setFixedWidth(120)
+        self.button_close.setFixedWidth(80)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)

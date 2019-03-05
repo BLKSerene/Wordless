@@ -915,6 +915,39 @@ class Wordless_Table_Data_Search(Wordless_Table_Data):
 
             self.button_search_results.setEnabled(False)
 
+class Wordless_Table_Data_Sort_Search(Wordless_Table_Data):
+    def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
+                 headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
+                 sorting_enabled = False):
+        super().__init__(main, headers, header_orientation, cols_stretch,
+                         headers_num, headers_pct, headers_cumulative, cols_breakdown,
+                         sorting_enabled)
+
+        self.label_number_results = QLabel()
+        self.button_sort_results = QPushButton(self.tr('Sort Results'), self)
+        self.button_search_results = QPushButton(self.tr('Search in Results'), self)
+
+        self.button_sort_results.setFixedWidth(150)
+        self.button_search_results.setFixedWidth(150)
+
+        self.itemChanged.connect(self.results_changed)
+
+        self.results_changed()
+
+    def results_changed(self):
+        rows_visible = len([i for i in range(self.rowCount()) if not self.isRowHidden(i)])
+
+        if [i for i in range(self.columnCount()) if self.item(0, i)] and rows_visible:
+            self.label_number_results.setText(self.tr(f'Number of Results: {rows_visible}'))
+
+            self.button_sort_results.setEnabled(True)
+            self.button_search_results.setEnabled(True)
+        else:
+            self.label_number_results.setText(self.tr('Number of Results: 0'))
+
+            self.button_sort_results.setEnabled(False)
+            self.button_search_results.setEnabled(False)
+
 class Wordless_Table_Data_Filter_Search(Wordless_Table_Data):
     def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
                  headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],

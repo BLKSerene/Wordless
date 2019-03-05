@@ -216,7 +216,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
         self.exclusion_group_box.layout().setColumnStretch(1, 1)
         self.exclusion_group_box.layout().setColumnStretch(3, 1)
 
-        self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self, self.load_settings)
+        self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self)
         self.button_ok = QPushButton(self.tr('OK'), self)
 
         self.button_ok.clicked.connect(self.accept)
