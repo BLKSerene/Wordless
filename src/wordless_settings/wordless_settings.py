@@ -163,7 +163,7 @@ class Wordless_Settings(QDialog):
 
         self.scroll_area_settings.setWidget(self.stacked_widget_settings)
 
-        button_reset_settings = wordless_button.Wordless_Button_Reset_All_Settings(self, self.load_settings)
+        button_reset_settings = wordless_button.Wordless_Button_Reset_All_Settings(self)
         button_save = QPushButton(self.tr('Save'), self)
         button_apply = QPushButton(self.tr('Apply'), self)
         button_cancel = QPushButton(self.tr('Cancel'), self)
@@ -1249,14 +1249,25 @@ class Wordless_Settings(QDialog):
 
                 dialog_progress.accept()
 
+                self.combo_box_tagsets_lang.setEnabled(True)
+                self.combo_box_tagsets_pos_tagger.setEnabled(True)
+                self.button_tagsets_reset_mappings.setEnabled(True)
+                self.button_tagsets_reset_all_mappings.setEnabled(True)
+
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Fetch_Data(self.main)
 
             worker_fetch_data = Wordless_Worker_Fetch_Data_Tagsets(self.main, dialog_progress, data_received)
             thread_fetch_data = wordless_threading.Wordless_Thread_Fetch_Data(worker_fetch_data)
 
+            self.combo_box_tagsets_lang.setEnabled(False)
+            self.combo_box_tagsets_pos_tagger.setEnabled(False)
+            self.button_tagsets_reset_mappings.setEnabled(False)
+            self.button_tagsets_reset_all_mappings.setEnabled(False)
+
             thread_fetch_data.start()
 
-            dialog_progress.exec_()
+            dialog_progress.show()
+            dialog_progress.raise_()
 
             thread_fetch_data.quit()
             thread_fetch_data.wait()

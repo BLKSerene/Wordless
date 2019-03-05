@@ -23,25 +23,30 @@ class Wordless_Button(QPushButton):
         self.main = wordless_misc.find_wordless_main(parent)
 
 class Wordless_Button_Reset_Settings(Wordless_Button):
-    def __init__(self, parent, load_settings):
+    def __init__(self, parent):
         super().__init__(parent.tr('Reset Settings'), parent)
 
-        self.load_settings = load_settings
+        self.parent = parent
 
         self.clicked.connect(self.reset_settings)
 
     def reset_settings(self):
         if wordless_message_box.wordless_message_box_reset_settings(self.main):
-            self.load_settings(defaults = True)
+            self.parent.load_settings(defaults = True)
+
+        self.parent.activateWindow()
 
 class Wordless_Button_Reset_All_Settings(Wordless_Button):
-    def __init__(self, parent, load_settings):
+    def __init__(self, parent):
         super().__init__(parent.tr('Reset All Settings'), parent)
 
-        self.load_settings = load_settings
+        self.parent = parent
 
         self.clicked.connect(self.reset_settings)
 
     def reset_settings(self):
         if wordless_message_box.wordless_message_box_reset_all_settings(self.main):
-            self.load_settings(defaults = True)
+            self.parent.load_settings(defaults = True)
+
+        self.parent.activateWindow()
+        

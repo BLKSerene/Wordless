@@ -22,14 +22,15 @@ import numpy
 import matplotlib.pyplot
 
 from wordless_checking import wordless_checking_file
-from wordless_dialogs import wordless_dialog_misc, wordless_dialog_search_results, wordless_message_box
+from wordless_dialogs import wordless_dialog, wordless_dialog_misc, wordless_dialog_search_results, wordless_message_box
 from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
                            wordless_token_processing)
 from wordless_utils import wordless_misc, wordless_threading
-from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
-                              wordless_message, wordless_table, wordless_widgets)
+from wordless_widgets import (wordless_box, wordless_button, wordless_label,
+                              wordless_layout, wordless_message, wordless_table,
+                              wordless_widgets)
 
-class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Search):
+class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Sort_Search):
     def __init__(self, parent):
         super().__init__(parent,
                          headers = [
@@ -52,13 +53,18 @@ class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Search):
                              parent.tr('Paragraph No.')
                          ])
 
+        dialog_sort_results = Wordless_Dialog_Sort_Results_Concordancer(
+            self.main,
+            table = self
+        )
         dialog_search_results = wordless_dialog_search_results.Wordless_Dialog_Search_Results(
             self.main,
             tab = 'concordancer',
             table = self
         )
 
-        self.button_search_results.clicked.connect(dialog_search_results.load)
+        self.button_sort_results.clicked.connect(dialog_sort_results.show)
+        self.button_search_results.clicked.connect(dialog_search_results.show)
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_figure = QPushButton(self.tr('Generate Figure'), self)
@@ -66,7 +72,7 @@ class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Search):
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_figure.clicked.connect(lambda: generate_figure(self.main))
 
-class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
+class Wordless_Table_Sort_Results_Conordancer(wordless_table.Wordless_Table):
     def __init__(self, parent, table):
         super().__init__(parent,
                          headers = [
@@ -78,23 +84,15 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
                          ])
 
         self.table = table
-        self.cols_sorting = [
-            self.tr('Node'),
-            self.tr('Token No.'),
-            self.tr('File')
-        ]
+        self.cols_sorting = []
 
         self.button_add = QPushButton(self.tr('Add'), self)
         self.button_insert = QPushButton(self.tr('Insert'), self)
         self.button_remove = QPushButton(self.tr('Remove'), self)
-        self.button_clear = QPushButton(self.tr('Clear'), self)
-        self.button_sort_results = QPushButton(self.tr('Sort Results'), self)
     
         self.button_add.clicked.connect(self.add_row)
         self.button_insert.clicked.connect(self.insert_row)
         self.button_remove.clicked.connect(self.remove_row)
-        self.button_clear.clicked.connect(self.clear_table)
-        self.button_sort_results.clicked.connect(lambda: self.sort_results())
 
         self.itemChanged.connect(self.item_changed)
         self.itemSelectionChanged.connect(self.selection_changed)
@@ -106,7 +104,7 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
         self.clear_table()
 
     def item_changed(self):
-        if self.rowCount() < self.cellWidget(0, 0).count():
+        if self.rowCount() < len(self.cols_sorting):
             self.button_add.setEnabled(True)
         else:
             self.button_add.setEnabled(False)
@@ -114,47 +112,27 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
         for i in range(self.rowCount()):
             self.cellWidget(i, 0).text_old = self.cellWidget(i, 0).currentText()
 
-    def sorting_col_changed(self, combo_box_sorting_col):
-        for i in range(self.rowCount()):
-            combo_box_cur = self.cellWidget(i, 0)
-
-            if combo_box_sorting_col != combo_box_cur and combo_box_sorting_col.currentText() == combo_box_cur.currentText():
-                QMessageBox.warning(self.main,
-                                    self.tr('Column Sorted More Than Once'),
-                                    self.tr(f'''
-                                        {self.main.settings_global['styles']['style_dialog']}
-                                        <body>
-                                            <div>Please refrain from sorting the same column more than once!</div>
-                                        </body>
-                                    '''),
-                                    QMessageBox.Ok)
-
-                combo_box_sorting_col.setCurrentText(combo_box_sorting_col.text_old)
-                combo_box_sorting_col.showPopup()
-
-                return
-
-        combo_box_sorting_col.text_old = combo_box_sorting_col.currentText()
+        self.selection_changed()
 
     def selection_changed(self):
-        if self.selectedIndexes() and self.rowCount() < self.cellWidget(0, 0).count():
+        if self.selectedIndexes() and self.rowCount() < len(self.cols_sorting):
             self.button_insert.setEnabled(True)
         else:
             self.button_insert.setEnabled(False)
 
-        if self.selectedIndexes() and self.rowCount() > 1:
+        if self.selectedIndexes() and len(self.get_selected_rows()) < self.rowCount():
             self.button_remove.setEnabled(True)
         else:
             self.button_remove.setEnabled(False)
 
     def table_item_changed(self):
-        sorting_rules = copy.deepcopy(self.main.settings_custom['concordancer']['sorting_settings']['sorting_rules'])
+        sorting_rules = copy.deepcopy(self.main.settings_custom['concordancer']['sort_results']['sorting_rules'])
 
         self.setRowCount(0)
 
         for sorting_col, sorting_order in sorting_rules:
             if sorting_col in [sorting_rule[0]
-                               for sorting_rule in self.main.settings_default['concordancer']['sorting_settings']['sorting_rules']]:
+                               for sorting_rule in self.main.settings_default['concordancer']['sort_results']['sorting_rules']]:
                 self.cols_sorting = [
                     self.tr('Node'),
                     self.tr('Token No.'),
@@ -183,6 +161,28 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
                 self.cellWidget(self.rowCount() - 1, 1).setCurrentText(sorting_order)
 
         self.itemChanged.emit(self.item(0, 0))
+
+    def sorting_col_changed(self, combo_box_sorting_col):
+        for i in range(self.rowCount()):
+            combo_box_cur = self.cellWidget(i, 0)
+
+            if combo_box_sorting_col != combo_box_cur and combo_box_sorting_col.currentText() == combo_box_cur.currentText():
+                QMessageBox.warning(self.main,
+                                    self.tr('Column Sorted More Than Once'),
+                                    self.tr(f'''
+                                        {self.main.settings_global['styles']['style_dialog']}
+                                        <body>
+                                            <div>Please refrain from sorting the same column more than once!</div>
+                                        </body>
+                                    '''),
+                                    QMessageBox.Ok)
+
+                combo_box_sorting_col.setCurrentText(combo_box_sorting_col.text_old)
+                combo_box_sorting_col.showPopup()
+
+                return
+
+        combo_box_sorting_col.text_old = combo_box_sorting_col.currentText()
 
     def _new_row(self):
         combo_box_sorting_col = wordless_box.Wordless_Combo_Box(self)
@@ -267,13 +267,6 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
 
         self.itemChanged.emit(self.item(0, 0))
 
-    def clear_table(self):
-        super().clear_table(0)
-
-        self.add_row()
-
-        self.itemChanged.emit(self.item(0, 0))
-
     @wordless_misc.log_timing
     def sort_results(self):
         def key_concordancer(item):
@@ -317,7 +310,7 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
 
                 results.append([left, node, right, token_no, sentence_no, para_no, file])
 
-            for sorting_col, sorting_order in settings['sorting_settings']['sorting_rules']:
+            for sorting_col, sorting_order in settings['sort_results']['sorting_rules']:
                 if sorting_col == self.tr('File'):
                     sorting_keys.append(6)
                 elif sorting_col == self.tr('Token No.'):
@@ -346,7 +339,7 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
                 self.table.cellWidget(i, 0).text_raw = left
                 self.table.cellWidget(i, 2).text_raw = right
 
-                highlight_colors = self.main.settings_custom['concordancer']['sorting_settings']['highlight_colors']
+                highlight_colors = self.main.settings_custom['concordancer']['sort_results']['highlight_colors']
 
                 i_highlight_color_left = 1
                 i_highlight_color_right = 1
@@ -392,12 +385,70 @@ class Wordless_Table_Concordancer_Sorting(wordless_table.Wordless_Table):
 
         wordless_message.wordless_message_sort_results(self.main)
 
-    def get_sorting_rules(self):
-        if self.cellWidget(0, 0):
-            return [[self.cellWidget(i, 0).currentText(),
-                     self.cellWidget(i, 1).currentText()] for i in range(self.rowCount())]
+class Wordless_Dialog_Sort_Results_Concordancer(wordless_dialog.Wordless_Dialog):
+    def __init__(self, main, table):
+        super().__init__(main, main.tr('Sort Results'))
+
+        self.table = table
+        self.settings = self.main.settings_custom['concordancer']['sort_results']
+
+        self.table_sort_results = Wordless_Table_Sort_Results_Conordancer(self, self.table)
+
+        self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self)
+        self.button_sort = QPushButton(self.tr('Sort'), self)
+        self.button_close = QPushButton(self.tr('Close'), self)
+
+        self.button_reset_settings.setFixedWidth(120)
+        self.button_sort.setFixedWidth(80)
+        self.button_close.setFixedWidth(80)
+
+        self.table_sort_results.itemChanged.connect(self.sort_table_changed)
+
+        self.button_sort.clicked.connect(lambda: self.table_sort_results.sort_results())
+        self.button_close.clicked.connect(self.reject)
+
+        layout_sort_results = QGridLayout()
+        layout_sort_results.addWidget(self.table_sort_results, 0, 0, 4, 1)
+        layout_sort_results.addWidget(self.table_sort_results.button_add, 0, 1)
+        layout_sort_results.addWidget(self.table_sort_results.button_insert, 1, 1)
+        layout_sort_results.addWidget(self.table_sort_results.button_remove, 2, 1)
+
+        layout_sort_results.setRowStretch(3, 1)
+
+        self.setLayout(QGridLayout())
+        self.layout().addLayout(layout_sort_results, 0, 0, 1, 4)
+
+        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 1, 0, 1, 4)
+
+        self.layout().addWidget(self.button_reset_settings, 2, 0)
+        self.layout().addWidget(self.button_sort, 2, 2)
+        self.layout().addWidget(self.button_close, 2, 3)
+
+        self.layout().setColumnStretch(1, 1)
+
+    def sort_table_changed(self):
+        self.settings['sorting_rules'] = []
+
+        if self.table_sort_results.cellWidget(0, 0):
+            for i in range(self.table_sort_results.rowCount()):
+                self.settings['sorting_rules'].append([self.table_sort_results.cellWidget(i, 0).currentText(),
+                                                       self.table_sort_results.cellWidget(i, 1).currentText()])
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = self.main.settings_default['concordancer']['sort_results']
         else:
-            return []
+            settings = self.settings
+
+        self.table_sort_results.clear_table(0)
+
+        for sorting_col, sorting_order in settings['sorting_rules']:
+            self.table_sort_results.add_row()
+
+            self.table_sort_results.cellWidget(self.table_sort_results.rowCount() - 1, 0).setCurrentText(sorting_col)
+            self.table_sort_results.cellWidget(self.table_sort_results.rowCount() - 1, 1).setCurrentText(sorting_order)
+
+        self.table_sort_results.clearSelection()
 
 class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
     def __init__(self, main):
@@ -405,8 +456,14 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         self.table_concordancer = Wordless_Table_Concordancer(self)
 
-        self.wrapper_table.layout().addWidget(self.table_concordancer.label_number_results, 0, 0)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_search_results, 0, 4, Qt.AlignRight)
+        layout_results = QGridLayout()
+        layout_results.addWidget(self.table_concordancer.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_concordancer.button_sort_results, 0, 2)
+        layout_results.addWidget(self.table_concordancer.button_search_results, 0, 3)
+
+        layout_results.setColumnStretch(1, 1)
+
+        self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_concordancer, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_table, 2, 0)
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_figure, 2, 1)
@@ -631,30 +688,13 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         self.group_box_figure_settings.layout().setColumnStretch(1, 1)
 
-        # Sorting Settings
-        self.group_box_sorting_settings = QGroupBox(self.tr('Sorting Settings'), self)
-
-        self.table_concordancer_sorting = Wordless_Table_Concordancer_Sorting(self,
-                                                                              table = self.table_concordancer)
-
-        self.table_concordancer_sorting.itemChanged.connect(self.sorting_settings_changed)
-
-        self.group_box_sorting_settings.setLayout(QGridLayout())
-        self.group_box_sorting_settings.layout().addWidget(self.table_concordancer_sorting, 0, 0, 1, 2)
-        self.group_box_sorting_settings.layout().addWidget(self.table_concordancer_sorting.button_add, 1, 0)
-        self.group_box_sorting_settings.layout().addWidget(self.table_concordancer_sorting.button_insert, 1, 1)
-        self.group_box_sorting_settings.layout().addWidget(self.table_concordancer_sorting.button_remove, 2, 0)
-        self.group_box_sorting_settings.layout().addWidget(self.table_concordancer_sorting.button_clear, 2, 1)
-        self.group_box_sorting_settings.layout().addWidget(self.table_concordancer_sorting.button_sort_results, 3, 0, 1, 2)
-
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_search_settings, 1, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_generation_settings, 2, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 3, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_figure_settings, 4, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_sorting_settings, 5, 0)
 
-        self.wrapper_settings.layout().setRowStretch(6, 1)
+        self.wrapper_settings.layout().setRowStretch(5, 1)
 
         self.load_settings()
 
@@ -713,22 +753,10 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         # Figure Settings
         self.combo_box_sort_results_by.setCurrentText(settings['figure_settings']['sort_results_by'])
 
-        # Sorting Settings
-        self.table_concordancer_sorting.setRowCount(0)
-
-        for sorting_col, sorting_order in settings['sorting_settings']['sorting_rules']:
-            if sorting_col in [sorting_rule[0]
-                               for sorting_rule in self.main.settings_default['concordancer']['sorting_settings']['sorting_rules']]:
-                self.table_concordancer_sorting.add_row()
-
-                self.table_concordancer_sorting.cellWidget(self.table_concordancer_sorting.rowCount() - 1, 0).setCurrentText(sorting_col)
-                self.table_concordancer_sorting.cellWidget(self.table_concordancer_sorting.rowCount() - 1, 1).setCurrentText(sorting_order)
-
         self.token_settings_changed()
         self.search_settings_changed()
         self.generation_settings_changed()
         self.table_settings_changed()
-        self.sorting_settings_changed()
 
     def token_settings_changed(self):
         settings = self.main.settings_custom['concordancer']['token_settings']
@@ -798,11 +826,6 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         settings = self.main.settings_custom['concordancer']['figure_settings']
 
         settings['sort_results_by'] = self.combo_box_sort_results_by.currentText()
-
-    def sorting_settings_changed(self):
-        settings = self.main.settings_custom['concordancer']['sorting_settings']
-
-        settings['sorting_rules'] = self.table_concordancer_sorting.get_sorting_rules()
 
 class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordless_Worker_Process_Data):
     processing_finished = pyqtSignal(list)
@@ -1158,16 +1181,16 @@ class Wordless_Worker_Process_Data_Concordancer_Figure(wordless_threading.Wordle
 @wordless_misc.log_timing
 def generate_table(main, table):
     def data_received(concordance_lines):
-        node_color = settings['sorting_settings']['highlight_colors'][0]
+        node_color = settings['sort_results']['highlight_colors'][0]
 
         if concordance_lines:
-            table.clear_table(0)
-
             table.settings = main.settings_custom
 
             table.hide()
             table.blockSignals(True)
             table.setUpdatesEnabled(False)
+
+            table.clear_table(0)
 
             for concordance_line in concordance_lines:
                 left_text, left_text_raw, left_text_search = concordance_line[0]
