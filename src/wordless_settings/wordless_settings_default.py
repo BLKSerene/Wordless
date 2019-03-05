@@ -180,7 +180,7 @@ def init_settings_default(main):
                 'sort_results_by': main.tr('File')
             },
 
-            'sorting_settings': {
+            'sort_results': {
                 'sorting_rules': [
                     [main.tr('File'), main.tr('Ascending')],
                     [main.tr('Token No.'), main.tr('Ascending')]
