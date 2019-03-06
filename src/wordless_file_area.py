@@ -30,9 +30,269 @@ import openpyxl
 import xlrd
 
 from wordless_checking import wordless_checking_file, wordless_checking_misc
-from wordless_dialogs import wordless_msg_box
-from wordless_utils import wordless_conversion, wordless_detection, wordless_misc
+from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
+from wordless_utils import (wordless_conversion, wordless_detection, wordless_misc,
+                            wordless_threading)
 from wordless_widgets import wordless_box, wordless_layout, wordless_table
+
+class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
+    files_added = pyqtSignal(list, list, list, list)
+
+    def __init__(self, main, file_paths, dialog_processed, data_received):
+        super().__init__(main, dialog_processed)
+
+        self.file_paths = file_paths
+
+        self.files_added.connect(data_received)
+
+    def add_files(self):
+        new_files = []
+
+        files_detection_failed_encoding = []
+        files_detection_failed_text_type = []
+        files_detection_failed_lang = []
+
+        if self.file_paths:
+            len_file_paths = len(self.file_paths)
+            self.main.settings_custom['import']['files']['default_path'] = os.path.normpath(os.path.dirname(self.file_paths[0]))
+
+            for i, file_path in enumerate(self.file_paths):
+                self.progress_updated.emit(self.tr(f'Loading files ... ({i + 1}/{len_file_paths})'))
+
+                default_dir = wordless_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
+                default_encoding = self.main.settings_custom['import']['temp_files']['default_encoding']
+
+                file_name, file_ext = os.path.splitext(os.path.basename(file_path))
+                file_ext = file_ext.lower()
+
+                # Text Files
+                if file_ext == '.txt':
+                    (new_file,
+                     detection_success_encoding,
+                     detection_success_text_type,
+                     detection_success_lang) = self.main.wordless_files._new_file(file_path)
+
+                    new_files.append(new_file)
+
+                    if not detection_success_encoding:
+                        files_detection_failed_encoding.append(new_file['path'])
+
+                    if not detection_success_text_type:
+                        files_detection_failed_text_type.append(new_file['path'])
+
+                    if not detection_success_lang:
+                        files_detection_failed_lang.append(new_file['path'])
+                else:
+                    if file_ext == ['.docx', '.xlsx', '.xls']:
+                        new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+
+                        # Word Documents
+                        if file_ext == '.docx':
+                            lines = []
+
+                            with open(new_path, 'w', encoding = default_encoding) as f:
+                                doc = docx.Document(file_path)
+
+                                for block in self.iter_block_items(doc):
+                                    if type(block) == docx.text.paragraph.Paragraph:
+                                        f.write(f'{block.text}\n')
+                                    elif type(block) == docx.table.Table:
+                                        for row in self.iter_visual_cells(block):
+                                            cells = []
+
+                                            for cell in row:
+                                                cells.append(' '.join([item.text for item in self.iter_cell_items(cell)]))
+
+                                            f.write('\t'.join(cells) + '\n')
+
+                        # Excel Workbooks
+                        elif file_ext == '.xlsx':
+                            with open(new_path, 'w', encoding = default_encoding) as f:
+                                workbook = openpyxl.load_workbook(file_path, data_only = True)
+
+                                for worksheet_name in workbook.sheetnames:
+                                    worksheet = workbook[worksheet_name]
+
+                                    for row in worksheet.rows:
+                                        f.write('\t'.join([(cell.value if cell.value != None else '')
+                                                           for cell in row]) + '\n')
+                        elif file_ext == '.xls':
+                            with open(new_path, 'w', encoding = default_encoding) as f:
+                                workbook = xlrd.open_workbook(file_path)
+
+                                for i_sheet in range(workbook.nsheets):
+                                    worksheet = workbook.sheet_by_index(i_sheet)
+
+                                    for row in range(worksheet.nrows):
+                                        f.write('\t'.join([worksheet.cell_value(row, col) for col in range(worksheet.ncols)]) + '\n')
+
+                        new_paths = [new_path]
+                    else:
+                        # Detect encoding
+                        if self.main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
+                            encoding_code, _ = wordless_detection.detect_encoding(self.main, file_path)
+                        else:
+                            encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['default_encoding']
+
+                        # CSV Files
+                        if file_ext == '.csv':
+                            new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+
+                            with open(new_path, 'w', encoding = default_encoding) as f:
+                                with open(file_path, 'r', newline = '', encoding = encoding_code) as f_csv:
+                                    csv_reader = csv.reader(f_csv)
+
+                                    for row in csv_reader:
+                                        f.write('\t'.join(row) + '\n')
+
+                            new_paths = [new_path]
+
+                        # HTML Files
+                        elif file_ext in ['.htm', '.html']:
+                            with open(file_path, 'r', encoding = encoding_code) as f:
+                                soup = bs4.BeautifulSoup(f.read(), 'lxml')
+
+                            new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+
+                            with open(new_path, 'w', encoding = default_encoding) as f:
+                                f.write(soup.get_text())
+
+                            new_paths = [new_path]
+
+                        # Translation Memory Files
+                        elif file_ext == '.tmx':
+                            lines_src = []
+                            lines_target = []
+
+                            with open(file_path, 'r', encoding = encoding_code) as f:
+                                soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
+
+                                for tu in soup.find_all('tu'):
+                                    seg_src, seg_target = tu.find_all('seg')
+
+                                    lines_src.append(seg_src.get_text())
+                                    lines_target.append(seg_target.get_text())
+
+                            path_src = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
+                            path_target = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
+
+                            with open(path_src, 'w', encoding = default_encoding) as f:
+                                f.write('\n'.join(lines_src))
+                                f.write('\n')
+
+                            with open(path_target, 'w', encoding = default_encoding) as f:
+                                f.write('\n'.join(lines_target))
+                                f.write('\n')
+
+                            new_paths = [path_src, path_target]
+
+                        # Lyrics Files
+                        elif file_ext == '.lrc':
+                            lyrics = {}
+
+                            with open(file_path, 'r', encoding = encoding_code) as f:
+                                for line in f:
+                                    time_tags = []
+
+                                    line = line.strip()
+
+                                    # Strip time tags
+                                    while re.search(r'^\[[^\]]+?\]', line):
+                                        time_tags.append(re.search(r'^\[[^\]]+?\]', line).group())
+
+                                        line = line[len(time_tags[-1]):].strip()
+
+                                    # Strip word time tags
+                                    line = re.sub(r'<[^>]+?>', r'', line)
+                                    line = re.sub(r'\s{2,}', r' ', line).strip()
+
+                                    for time_tag in time_tags:
+                                        if re.search(r'^\[[0-9]{2}:[0-5][0-9]\.[0-9]{2}\]$', time_tag):
+                                            lyrics[time_tag] = line
+
+                            new_path = wordless_checking_misc.check_new_path(f'{default_dir}{file_name}.txt')
+
+                            with open(new_path, 'w', encoding = default_encoding) as f:
+                                for _, lyrics in sorted(lyrics.items()):
+                                    f.write(f'{lyrics}\n')
+
+                            new_paths = [new_path]
+
+                        for new_path in new_paths:
+                            (new_file,
+                             detection_success_encoding,
+                             detection_success_text_type,
+                             detection_success_lang) = self.main.wordless_files._new_file(new_path)
+
+                            new_files.append(new_file)
+
+                            if not detection_success_encoding:
+                                files_detection_failed_encoding.append(new_file['path'])
+
+                            if not detection_success_text_type:
+                                files_detection_failed_text_type.append(new_file['path'])
+
+                            if not detection_success_lang:
+                                files_detection_failed_lang.append(new_file['path'])
+
+        self.files_added.emit(new_files,
+                              files_detection_failed_encoding,
+                              files_detection_failed_text_type,
+                              files_detection_failed_lang)
+
+    # python-docx/Issue #276: https://github.com/python-openxml/python-docx/issues/276
+    def iter_block_items(self, parent):
+        """
+        Yield each paragraph and table child within *parent*, in document order.
+        Each returned value is an instance of either Table or Paragraph. *parent*
+        would most commonly be a reference to a main Document object, but
+        also works for a _Cell object, which itself can contain paragraphs and tables.
+        """
+        if isinstance(parent, Document):
+            parent_elm = parent.element.body
+        elif isinstance(parent, _Cell):
+            parent_elm = parent._tc
+        else:
+            raise ValueError("something's not right")
+
+        for child in parent_elm.iterchildren():
+            if isinstance(child, CT_P):
+                yield Paragraph(child, parent)
+            elif isinstance(child, CT_Tbl):
+                yield Table(child, parent)
+
+    def iter_cell_items(self, parent):
+        parent_elm = parent._tc
+
+        for child in parent_elm.iterchildren():
+            if isinstance(child, CT_P):
+                yield Paragraph(child, parent)
+            elif isinstance(child, CT_Tbl):
+                table = Table(child, parent)
+
+                for row in table.rows:
+                    for cell in row.cells:
+                        yield from self.iter_cell_items(cell)
+
+    # python-docx/Issue #40: https://github.com/python-openxml/python-docx/issues/40
+    def iter_visual_cells(self, table):
+        prior_tcs = []
+        visual_cells = []
+
+        for row in table.rows:
+            visual_cells.append([])
+
+            for cell in row.cells:
+                this_tc = cell._tc
+
+                if this_tc in prior_tcs:  # skip cells pointing to same `<w:tc>` element
+                    continue
+                else:
+                    prior_tcs.append(this_tc)
+
+                    visual_cells[-1].append(cell)
+
+        return visual_cells
 
 class Wordless_Files():
     def __init__(self, table):
@@ -79,67 +339,35 @@ class Wordless_Files():
 
     @wordless_misc.log_timing
     def add_files(self, file_paths):
-        # python-docx/Issue #276: https://github.com/python-openxml/python-docx/issues/276
-        def iter_block_items(parent):
-            """
-            Yield each paragraph and table child within *parent*, in document order.
-            Each returned value is an instance of either Table or Paragraph. *parent*
-            would most commonly be a reference to a main Document object, but
-            also works for a _Cell object, which itself can contain paragraphs and tables.
-            """
-            if isinstance(parent, Document):
-                parent_elm = parent.element.body
-            elif isinstance(parent, _Cell):
-                parent_elm = parent._tc
+        def data_received(new_files,
+                          files_detection_failed_encoding,
+                          files_detection_failed_text_type,
+                          files_detection_failed_lang):
+            len_files_old = len(self.main.settings_custom['files']['files_open'])
+
+            for new_file in new_files:
+                file_names = [file['name'] for file in self.main.settings_custom['files']['files_open']]
+                new_file['name'] = new_file['name_old'] = wordless_checking_misc.check_new_name(new_file['name'], file_names)
+
+                self.main.settings_custom['files']['files_open'].append(new_file)
+
+            wordless_msg_box.wordless_msg_box_detection_failed(self.main,
+                                                               files_detection_failed_encoding,
+                                                               files_detection_failed_text_type,
+                                                               files_detection_failed_lang)
+
+            self.update_table()
+
+            len_files_new = len(self.main.settings_custom['files']['files_open'])
+
+            if len_files_new - len_files_old == 0:
+                self.main.statusBar().showMessage('No files are newly opened!')
+            elif len_files_new - len_files_old == 1:
+                self.main.statusBar().showMessage('1 file has been successfully opened.')
             else:
-                raise ValueError("something's not right")
+                self.main.statusBar().showMessage(f'{len_files_new - len_files_old} files have been successfully opened.')
 
-            for child in parent_elm.iterchildren():
-                if isinstance(child, CT_P):
-                    yield Paragraph(child, parent)
-                elif isinstance(child, CT_Tbl):
-                    yield Table(child, parent)
-
-        def iter_cell_items(parent):
-            parent_elm = parent._tc
-
-            for child in parent_elm.iterchildren():
-                if isinstance(child, CT_P):
-                    yield Paragraph(child, parent)
-                elif isinstance(child, CT_Tbl):
-                    table = Table(child, parent)
-
-                    for row in table.rows:
-                        for cell in row.cells:
-                            yield from iter_cell_items(cell)
-
-        # python-docx/Issue #40: https://github.com/python-openxml/python-docx/issues/40
-        def iter_visual_cells(table):
-            prior_tcs = []
-            visual_cells = []
-
-            for row in table.rows:
-                visual_cells.append([])
-
-                for cell in row.cells:
-                    this_tc = cell._tc
-
-                    if this_tc in prior_tcs:  # skip cells pointing to same `<w:tc>` element
-                        continue
-                    else:
-                        prior_tcs.append(this_tc)
-
-                        visual_cells[-1].append(cell)
-
-            return visual_cells
-
-        new_files = []
-
-        files_detection_failed_encoding = []
-        files_detection_failed_text_type = []
-        files_detection_failed_lang = []
-
-        self.main.settings_custom['import']['files']['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
+            dialog_progress.accept()
 
         file_paths, files_empty = wordless_checking_file.check_files_empty(self.main, file_paths)
         file_paths, files_duplicate = wordless_checking_file.check_files_duplicate(self.main, file_paths)
@@ -152,206 +380,17 @@ class Wordless_Files():
                                                                 files_unsupported = files_unsupported,
                                                                 files_parsing_error = files_parsing_error)
 
-        for file_path in file_paths:
-            default_dir = wordless_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
-            default_encoding = self.main.settings_custom['import']['temp_files']['default_encoding']
+        dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Add_Files(self.main)
 
-            file_name, file_ext = os.path.splitext(os.path.basename(file_path))
-            file_ext = file_ext.lower()
+        worker_add_files = Wordless_Worker_Add_Files(self.main, file_paths, dialog_progress, data_received)
+        thread_add_files = wordless_threading.Wordless_Thread_Add_Files(worker_add_files)
 
-            # Text Files
-            if file_ext == '.txt':
-                (new_file,
-                 detection_success_encoding,
-                 detection_success_text_type,
-                 detection_success_lang) = self._new_file(file_path)
+        thread_add_files.start()
 
-                new_files.append(new_file)
+        dialog_progress.exec_()
 
-                if not detection_success_encoding:
-                    files_detection_failed_encoding.append(new_file['path'])
-
-                if not detection_success_text_type:
-                    files_detection_failed_text_type.append(new_file['path'])
-
-                if not detection_success_lang:
-                    files_detection_failed_lang.append(new_file['path'])
-            else:
-                if file_ext == ['.docx', '.xlsx', '.xls']:
-                    new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
-
-                    # Word Documents
-                    if file_ext == '.docx':
-                        lines = []
-
-                        with open(new_path, 'w', encoding = default_encoding) as f:
-                            doc = docx.Document(file_path)
-
-                            for block in iter_block_items(doc):
-                                if type(block) == docx.text.paragraph.Paragraph:
-                                    f.write(f'{block.text}\n')
-                                elif type(block) == docx.table.Table:
-                                    for row in iter_visual_cells(block):
-                                        cells = []
-
-                                        for cell in row:
-                                            cells.append(' '.join([item.text for item in iter_cell_items(cell)]))
-
-                                        f.write('\t'.join(cells) + '\n')
-
-                    # Excel Workbooks
-                    elif file_ext == '.xlsx':
-                        with open(new_path, 'w', encoding = default_encoding) as f:
-                            workbook = openpyxl.load_workbook(file_path, data_only = True)
-
-                            for worksheet_name in workbook.sheetnames:
-                                worksheet = workbook[worksheet_name]
-
-                                for row in worksheet.rows:
-                                    f.write('\t'.join([(cell.value if cell.value != None else '')
-                                                       for cell in row]) + '\n')
-                    elif file_ext == '.xls':
-                        with open(new_path, 'w', encoding = default_encoding) as f:
-                            workbook = xlrd.open_workbook(file_path)
-
-                            for i_sheet in range(workbook.nsheets):
-                                worksheet = workbook.sheet_by_index(i_sheet)
-
-                                for row in range(worksheet.nrows):
-                                    f.write('\t'.join([worksheet.cell_value(row, col) for col in range(worksheet.ncols)]) + '\n')
-
-                    new_paths = [new_path]
-                else:
-                    # Detect encoding
-                    if self.main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
-                        encoding_code, _ = wordless_detection.detect_encoding(self.main, file_path)
-                    else:
-                        encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['default_encoding']
-
-                    # CSV Files
-                    if file_ext == '.csv':
-                        new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
-
-                        with open(new_path, 'w', encoding = default_encoding) as f:
-                            with open(file_path, 'r', newline = '', encoding = encoding_code) as f_csv:
-                                csv_reader = csv.reader(f_csv)
-
-                                for row in csv_reader:
-                                    f.write('\t'.join(row) + '\n')
-
-                        new_paths = [new_path]
-
-                    # HTML Files
-                    elif file_ext in ['.htm', '.html']:
-                        with open(file_path, 'r', encoding = encoding_code) as f:
-                            soup = bs4.BeautifulSoup(f.read(), 'lxml')
-
-                        new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
-
-                        with open(new_path, 'w', encoding = default_encoding) as f:
-                            f.write(soup.get_text())
-
-                        new_paths = [new_path]
-
-                    # Translation Memory Files
-                    elif file_ext == '.tmx':
-                        lines_src = []
-                        lines_target = []
-
-                        with open(file_path, 'r', encoding = encoding_code) as f:
-                            soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
-
-                            for tu in soup.find_all('tu'):
-                                seg_src, seg_target = tu.find_all('seg')
-
-                                lines_src.append(seg_src.get_text())
-                                lines_target.append(seg_target.get_text())
-
-                        path_src = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
-                        path_target = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
-
-                        with open(path_src, 'w', encoding = default_encoding) as f:
-                            f.write('\n'.join(lines_src))
-                            f.write('\n')
-
-                        with open(path_target, 'w', encoding = default_encoding) as f:
-                            f.write('\n'.join(lines_target))
-                            f.write('\n')
-
-                        new_paths = [path_src, path_target]
-
-                    # Lyrics Files
-                    elif file_ext == '.lrc':
-                        lyrics = {}
-
-                        with open(file_path, 'r', encoding = encoding_code) as f:
-                            for line in f:
-                                time_tags = []
-
-                                line = line.strip()
-
-                                # Strip time tags
-                                while re.search(r'^\[[^\]]+?\]', line):
-                                    time_tags.append(re.search(r'^\[[^\]]+?\]', line).group())
-
-                                    line = line[len(time_tags[-1]):].strip()
-
-                                # Strip word time tags
-                                line = re.sub(r'<[^>]+?>', r'', line)
-                                line = re.sub(r'\s{2,}', r' ', line).strip()
-
-                                for time_tag in time_tags:
-                                    if re.search(r'^\[[0-9]{2}:[0-5][0-9]\.[0-9]{2}\]$', time_tag):
-                                        lyrics[time_tag] = line
-
-                        new_path = wordless_checking_misc.check_new_path(f'{default_dir}{file_name}.txt')
-
-                        with open(new_path, 'w', encoding = default_encoding) as f:
-                            for _, lyrics in sorted(lyrics.items()):
-                                f.write(f'{lyrics}\n')
-
-                        new_paths = [new_path]
-
-                    for new_path in new_paths:
-                        (new_file,
-                         detection_success_encoding,
-                         detection_success_text_type,
-                         detection_success_lang) = self._new_file(new_path)
-
-                        new_files.append(new_file)
-
-                        if not detection_success_encoding:
-                            files_detection_failed_encoding.append(new_file['path'])
-
-                        if not detection_success_text_type:
-                            files_detection_failed_text_type.append(new_file['path'])
-
-                        if not detection_success_lang:
-                            files_detection_failed_lang.append(new_file['path'])
-
-        len_files_old = len(self.main.settings_custom['files']['files_open'])
-
-        for new_file in new_files:
-            file_names = [file['name'] for file in self.main.settings_custom['files']['files_open']]
-            new_file['name'] = new_file['name_old'] = wordless_checking_misc.check_new_name(new_file['name'], file_names)
-
-            self.main.settings_custom['files']['files_open'].append(new_file)
-
-        wordless_msg_box.wordless_msg_box_detection_failed(self.main,
-                                                           files_detection_failed_encoding,
-                                                           files_detection_failed_text_type,
-                                                           files_detection_failed_lang)
-
-        self.update_table()
-
-        len_files_new = len(self.main.settings_custom['files']['files_open'])
-
-        if len_files_new - len_files_old == 0:
-            self.main.statusBar().showMessage('No files are newly opened!')
-        elif len_files_new - len_files_old == 1:
-            self.main.statusBar().showMessage('1 file has been successfully opened.')
-        else:
-            self.main.statusBar().showMessage(f'{len_files_new - len_files_old} files have been successfully opened.')
+        thread_add_files.quit()
+        thread_add_files.wait()
 
     def remove_files(self, indexes):
         self.main.settings_custom['files']['files_closed'].append([])
