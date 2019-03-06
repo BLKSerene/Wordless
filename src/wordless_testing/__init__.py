@@ -8,7 +8,3 @@
 #
 # All other rights reserved.
 #
-
-__all__ = [
-    'testing_init'
-]
