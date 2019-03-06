@@ -8,9 +8,3 @@
 #
 # All other rights reserved.
 #
-
-__all__ = [
-    'wordless_settings',
-    'wordless_settings_global',
-    'wordless_settings_default'
-]

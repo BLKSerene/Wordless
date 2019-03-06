@@ -12,7 +12,7 @@
 import os
 import re
 
-from wordless_dialogs import wordless_message_box
+from wordless_dialogs import wordless_msg_box
 from wordless_utils import wordless_detection
 
 def check_files_missing(main, file_paths):
@@ -130,10 +130,10 @@ def check_files_on_loading(main, files):
 
         file_paths, files_loading_error = check_files_loading_error(main, file_paths, encodings)
 
-        wordless_message_box.wordless_message_box_file_error_on_loading(main,
-                                                                        files_missing = files_missing,
-                                                                        files_empty = files_empty,
-                                                                        files_loading_error = files_loading_error)
+        wordless_msg_box.wordless_msg_box_file_error_on_loading(main,
+                                                                files_missing = files_missing,
+                                                                files_empty = files_empty,
+                                                                files_loading_error = files_loading_error)
 
         for file in main.wordless_files.get_selected_files():
             if file['path'] in files_missing + files_empty + files_loading_error:
@@ -146,7 +146,7 @@ def check_files_on_loading(main, files):
 
         main.wordless_files.update_table()
     else:
-        wordless_message_box.wordless_message_box_no_files_selected(main)
+        wordless_msg_box.wordless_msg_box_no_files_selected(main)
         
         loading_ok = False
 
@@ -164,8 +164,8 @@ def check_files_on_loading_colligation(main, files):
 
                 loading_ok = False
 
-        wordless_message_box.wordless_message_box_file_error_on_loading_colligation(main,
-                                                                                    files_unsupported_pos_tagging = files_unsupported_pos_tagging)
+        wordless_msg_box.wordless_msg_box_file_error_on_loading_colligation(main,
+                                                                            files_unsupported_pos_tagging = files_unsupported_pos_tagging)
     else:
         loading_ok = False
 

@@ -85,18 +85,18 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
         self.inclusion_spin_box_context_window_left.valueChanged.connect(self.inclusion_changed)
         self.inclusion_spin_box_context_window_right.valueChanged.connect(self.inclusion_changed)
 
-        inclusion_layout_multi_search_mode = QGridLayout()
+        inclusion_layout_multi_search_mode = wordless_layout.Wordless_Layout()
         inclusion_layout_multi_search_mode.addWidget(self.inclusion_label_search_term, 0, 0)
         inclusion_layout_multi_search_mode.addWidget(self.inclusion_checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
 
-        inclusion_layout_ignore_tags = QGridLayout()
+        inclusion_layout_ignore_tags = wordless_layout.Wordless_Layout()
         inclusion_layout_ignore_tags.addWidget(self.inclusion_stacked_widget_ignore_tags, 0, 0)
         inclusion_layout_ignore_tags.addWidget(self.inclusion_stacked_widget_ignore_tags_type, 0, 1)
         inclusion_layout_ignore_tags.addWidget(self.inclusion_label_ignore_tags, 0, 2)
 
         inclusion_layout_ignore_tags.setColumnStretch(3, 1)
 
-        self.inclusion_group_box.setLayout(QGridLayout())
+        self.inclusion_group_box.setLayout(wordless_layout.Wordless_Layout())
         self.inclusion_group_box.layout().addLayout(inclusion_layout_multi_search_mode, 0, 0, 1, 4)
         self.inclusion_group_box.layout().addWidget(self.inclusion_stacked_widget_search_term, 1, 0, 1, 4)
         self.inclusion_group_box.layout().addWidget(self.inclusion_label_separator, 2, 0, 1, 4)
@@ -180,18 +180,18 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
         self.exclusion_spin_box_context_window_left.valueChanged.connect(self.exclusion_changed)
         self.exclusion_spin_box_context_window_right.valueChanged.connect(self.exclusion_changed)
 
-        exclusion_layout_multi_search_mode = QGridLayout()
+        exclusion_layout_multi_search_mode = wordless_layout.Wordless_Layout()
         exclusion_layout_multi_search_mode.addWidget(self.exclusion_label_search_term, 0, 0)
         exclusion_layout_multi_search_mode.addWidget(self.exclusion_checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
 
-        exclusion_layout_ignore_tags = QGridLayout()
+        exclusion_layout_ignore_tags = wordless_layout.Wordless_Layout()
         exclusion_layout_ignore_tags.addWidget(self.exclusion_stacked_widget_ignore_tags, 0, 0)
         exclusion_layout_ignore_tags.addWidget(self.exclusion_stacked_widget_ignore_tags_type, 0, 1)
         exclusion_layout_ignore_tags.addWidget(self.exclusion_label_ignore_tags, 0, 2)
 
         exclusion_layout_ignore_tags.setColumnStretch(3, 1)
 
-        self.exclusion_group_box.setLayout(QGridLayout())
+        self.exclusion_group_box.setLayout(wordless_layout.Wordless_Layout())
         self.exclusion_group_box.layout().addLayout(exclusion_layout_multi_search_mode, 0, 0, 1, 4)
         self.exclusion_group_box.layout().addWidget(self.exclusion_stacked_widget_search_term, 1, 0, 1, 4)
         self.exclusion_group_box.layout().addWidget(self.exclusion_label_separator, 2, 0, 1, 4)
@@ -223,7 +223,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
         self.button_reset_settings.setFixedWidth(150)
 
-        self.setLayout(QGridLayout())
+        self.setLayout(wordless_layout.Wordless_Layout())
         self.layout().addWidget(self.inclusion_group_box, 0, 0, Qt.AlignTop)
         self.layout().addWidget(self.exclusion_group_box, 0, 1, Qt.AlignTop)
         self.layout().addWidget(self.button_reset_settings, 1, 0, Qt.AlignLeft)

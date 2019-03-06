@@ -13,6 +13,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_widgets import wordless_layout
+
 class Wordless_Dialog(QDialog):
     def __init__(self, main, title):
         super().__init__(main)
@@ -60,12 +62,12 @@ class Wordless_Dialog_Info(Wordless_Dialog):
             }
         ''')
 
-        self.wrapper_info.setLayout(QGridLayout())
+        self.wrapper_info.setLayout(wordless_layout.Wordless_Layout())
         self.wrapper_info.layout().setContentsMargins(20, 10, 20, 10)
 
         self.wrapper_buttons = QWidget(self)
 
-        self.wrapper_buttons.setLayout(QGridLayout())
+        self.wrapper_buttons.setLayout(wordless_layout.Wordless_Layout())
         self.wrapper_buttons.layout().setContentsMargins(11, 0, 11, 11)
 
         if not no_button:
@@ -75,7 +77,7 @@ class Wordless_Dialog_Info(Wordless_Dialog):
 
             self.wrapper_buttons.layout().addWidget(self.button_ok, 0, 0, Qt.AlignRight)
 
-        self.setLayout(QGridLayout())
+        self.setLayout(wordless_layout.Wordless_Layout())
         self.layout().addWidget(self.wrapper_info, 0, 0)
         self.layout().addWidget(self.wrapper_buttons, 1, 0)
 
