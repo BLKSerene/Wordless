@@ -15,7 +15,8 @@ from PyQt5.QtWidgets import *
 
 from wordless_dialogs import wordless_dialog_context_settings
 from wordless_utils import wordless_misc
-from wordless_widgets import wordless_box, wordless_label, wordless_list
+from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
+                              wordless_list)
 
 def wordless_widgets_no_limit(parent, double = False):
     def no_limit_changed():
@@ -189,25 +190,11 @@ def wordless_widgets_search_settings(parent, tab):
             if line_edit_search_term.text() and list_search_terms.count() == 0:
                 list_search_terms.load_items([line_edit_search_term.text()])
 
-            line_edit_search_term.hide()
-
-            list_search_terms.show()
-            list_search_terms.button_add.show()
-            list_search_terms.button_remove.show()
-            list_search_terms.button_clear.show()
-            list_search_terms.button_import.show()
-            list_search_terms.button_export.show()
+            stacked_widget_search_term.setCurrentIndex(1)
         else:
             label_search_term.setText(parent.tr('Search Term:'))
 
-            line_edit_search_term.show()
-
-            list_search_terms.hide()
-            list_search_terms.button_add.hide()
-            list_search_terms.button_remove.hide()
-            list_search_terms.button_clear.hide()
-            list_search_terms.button_import.hide()
-            list_search_terms.button_export.hide()
+            stacked_widget_search_term.setCurrentIndex(0)
 
     def match_tags_changed():
         if checkbox_match_tags.isChecked():
@@ -289,14 +276,10 @@ def wordless_widgets_search_settings(parent, tab):
     checkbox_match_whole_words = QCheckBox(parent.tr('Match whole words only'), parent)
     checkbox_use_regex = QCheckBox(parent.tr('Use regular expression'), parent)
 
-    stacked_widget_ignore_tags = QStackedWidget(parent)
     checkbox_ignore_tags = QCheckBox(parent.tr('Ignore'), parent)
     checkbox_ignore_tags_tags = QCheckBox(parent.tr('Ignore'), parent)
-
-    stacked_widget_ignore_tags_type = QStackedWidget(parent)
     combo_box_ignore_tags = wordless_box.Wordless_Combo_Box(parent)
     combo_box_ignore_tags_tags = wordless_box.Wordless_Combo_Box(parent)
-
     label_ignore_tags = QLabel(parent.tr('tags'), parent)
     checkbox_match_tags = QCheckBox(parent.tr('Match tags only'), parent)
 
@@ -311,15 +294,29 @@ def wordless_widgets_search_settings(parent, tab):
         parent.tr('non-POS')
     ])
 
+    wrapper_search_terms = QWidget(parent)
+
+    wrapper_search_terms.setLayout(QGridLayout())
+    wrapper_search_terms.layout().addWidget(list_search_terms, 0, 0, 5, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_add, 0, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_remove, 1, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_clear, 2, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_import, 3, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_export, 4, 1)
+
+    wrapper_search_terms.layout().setContentsMargins(0, 0, 0, 0)
+
+    stacked_widget_search_term = wordless_layout.Wordless_Stacked_Widget(parent)
+    stacked_widget_search_term.addWidget(line_edit_search_term)
+    stacked_widget_search_term.addWidget(wrapper_search_terms)
+
+    stacked_widget_ignore_tags = wordless_layout.Wordless_Stacked_Widget(parent)
     stacked_widget_ignore_tags.addWidget(checkbox_ignore_tags)
     stacked_widget_ignore_tags.addWidget(checkbox_ignore_tags_tags)
+
+    stacked_widget_ignore_tags_type = wordless_layout.Wordless_Stacked_Widget(parent)
     stacked_widget_ignore_tags_type.addWidget(combo_box_ignore_tags)
     stacked_widget_ignore_tags_type.addWidget(combo_box_ignore_tags_tags)
-
-    stacked_widget_ignore_tags.checkbox_ignore_tags = checkbox_ignore_tags
-    stacked_widget_ignore_tags.checkbox_ignore_tags_tags = checkbox_ignore_tags_tags
-    stacked_widget_ignore_tags_type.combo_box_ignore_tags = combo_box_ignore_tags
-    stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags = combo_box_ignore_tags_tags
 
     checkbox_match_tags.token_settings_changed = token_settings_changed
 
@@ -331,8 +328,11 @@ def wordless_widgets_search_settings(parent, tab):
 
     return (label_search_term,
             checkbox_multi_search_mode,
+
+            stacked_widget_search_term,
             line_edit_search_term,
             list_search_terms,
+
             label_separator,
 
             checkbox_ignore_case,
@@ -341,7 +341,13 @@ def wordless_widgets_search_settings(parent, tab):
             checkbox_use_regex,
 
             stacked_widget_ignore_tags,
+            checkbox_ignore_tags,
+            checkbox_ignore_tags_tags,
+
             stacked_widget_ignore_tags_type,
+            combo_box_ignore_tags,
+            combo_box_ignore_tags_tags,
+
             label_ignore_tags,
             checkbox_match_tags)
 
