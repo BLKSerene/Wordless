@@ -72,14 +72,10 @@ def wordless_widgets_token_settings(parent):
     checkbox_lemmatize_tokens = QCheckBox(parent.tr('Lemmatize all tokens'), parent)
     checkbox_filter_stop_words = QCheckBox(parent.tr('Filter stop words'), parent)
 
-    stacked_widget_ignore_tags = QStackedWidget(parent)
     checkbox_ignore_tags = QCheckBox(parent.tr('Ignore'), parent)
     checkbox_ignore_tags_tags = QCheckBox(parent.tr('Ignore'), parent)
-
-    stacked_widget_ignore_tags_type = QStackedWidget(parent)
     combo_box_ignore_tags = wordless_box.Wordless_Combo_Box(parent)
     combo_box_ignore_tags_tags = wordless_box.Wordless_Combo_Box(parent)
-
     label_ignore_tags = QLabel(parent.tr('tags'), parent)
     checkbox_use_tags = QCheckBox(parent.tr('Use tags only'), parent)
 
@@ -94,15 +90,13 @@ def wordless_widgets_token_settings(parent):
         parent.tr('non-POS')
     ])
 
+    stacked_widget_ignore_tags = QStackedWidget(parent)
     stacked_widget_ignore_tags.addWidget(checkbox_ignore_tags)
     stacked_widget_ignore_tags.addWidget(checkbox_ignore_tags_tags)
+
+    stacked_widget_ignore_tags_type = QStackedWidget(parent)
     stacked_widget_ignore_tags_type.addWidget(combo_box_ignore_tags)
     stacked_widget_ignore_tags_type.addWidget(combo_box_ignore_tags_tags)
-
-    stacked_widget_ignore_tags.checkbox_ignore_tags = checkbox_ignore_tags
-    stacked_widget_ignore_tags.checkbox_ignore_tags_tags = checkbox_ignore_tags_tags
-    stacked_widget_ignore_tags_type.combo_box_ignore_tags = combo_box_ignore_tags
-    stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags = combo_box_ignore_tags_tags
 
     checkbox_words.stateChanged.connect(words_changed)
     checkbox_use_tags.stateChanged.connect(use_tags_changed)
@@ -122,7 +116,13 @@ def wordless_widgets_token_settings(parent):
             checkbox_filter_stop_words,
 
             stacked_widget_ignore_tags,
+            checkbox_ignore_tags,
+            checkbox_ignore_tags_tags,
+
             stacked_widget_ignore_tags_type,
+            combo_box_ignore_tags,
+            combo_box_ignore_tags_tags,
+
             label_ignore_tags,
             checkbox_use_tags)
 
@@ -136,12 +136,8 @@ def wordless_widgets_token_settings_concordancer(parent):
             stacked_widget_ignore_tags_type.setCurrentIndex(0)
 
     checkbox_puncs = QCheckBox(parent.tr('Punctuations'), parent)
-
-    stacked_widget_ignore_tags = QStackedWidget(parent)
     checkbox_ignore_tags = QCheckBox(parent.tr('Ignore'), parent)
     checkbox_ignore_tags_tags = QCheckBox(parent.tr('Ignore'), parent)
-
-    stacked_widget_ignore_tags_type = QStackedWidget(parent)
     combo_box_ignore_tags = wordless_box.Wordless_Combo_Box(parent)
     combo_box_ignore_tags_tags = wordless_box.Wordless_Combo_Box(parent)
 
@@ -159,15 +155,13 @@ def wordless_widgets_token_settings_concordancer(parent):
         parent.tr('non-POS')
     ])
 
+    stacked_widget_ignore_tags = QStackedWidget(parent)
     stacked_widget_ignore_tags.addWidget(checkbox_ignore_tags)
     stacked_widget_ignore_tags.addWidget(checkbox_ignore_tags_tags)
+
+    stacked_widget_ignore_tags_type = QStackedWidget(parent)
     stacked_widget_ignore_tags_type.addWidget(combo_box_ignore_tags)
     stacked_widget_ignore_tags_type.addWidget(combo_box_ignore_tags_tags)
-
-    stacked_widget_ignore_tags.checkbox_ignore_tags = checkbox_ignore_tags
-    stacked_widget_ignore_tags.checkbox_ignore_tags_tags = checkbox_ignore_tags_tags
-    stacked_widget_ignore_tags_type.combo_box_ignore_tags = combo_box_ignore_tags
-    stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags = combo_box_ignore_tags_tags
 
     checkbox_use_tags.stateChanged.connect(use_tags_changed)
 
@@ -176,7 +170,13 @@ def wordless_widgets_token_settings_concordancer(parent):
     return (checkbox_puncs,
 
             stacked_widget_ignore_tags,
+            checkbox_ignore_tags,
+            checkbox_ignore_tags_tags,
+
             stacked_widget_ignore_tags_type,
+            combo_box_ignore_tags,
+            combo_box_ignore_tags_tags,
+
             label_ignore_tags,
             checkbox_use_tags)
 
