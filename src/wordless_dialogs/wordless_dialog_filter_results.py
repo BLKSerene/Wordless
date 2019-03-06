@@ -47,20 +47,20 @@ class Wordless_Dialog_Filter_Results(wordless_dialog.Wordless_Dialog):
 
         self.main.wordless_work_area.currentChanged.connect(self.reject)
 
-        layout_file_to_filter = QGridLayout()
+        layout_file_to_filter = wordless_layout.Wordless_Layout()
         layout_file_to_filter.addWidget(self.label_file_to_filter, 0, 0)
         layout_file_to_filter.addWidget(self.combo_box_file_to_filter, 0, 1)
         layout_file_to_filter.addWidget(self.button_filter, 0, 2)
 
         layout_file_to_filter.setColumnStretch(1, 1)
 
-        self.layout_filters = QGridLayout()
+        self.layout_filters = wordless_layout.Wordless_Layout()
 
-        layout_buttons = QGridLayout()
+        layout_buttons = wordless_layout.Wordless_Layout()
         layout_buttons.addWidget(self.button_reset_settings, 0, 0)
         layout_buttons.addWidget(self.button_close, 0, 1, Qt.AlignRight)
 
-        self.setLayout(QGridLayout())
+        self.setLayout(wordless_layout.Wordless_Layout())
         self.layout().addLayout(layout_file_to_filter, 0, 0)
         self.layout().addWidget(wordless_layout.Wordless_Separator(self), 1, 0)
         self.layout().addLayout(self.layout_filters, 2, 0)
@@ -816,7 +816,7 @@ class Wordless_Dialog_Filter_Results_Collocation(Wordless_Dialog_Filter_Results)
 
         self.table.itemChanged.connect(self.table_item_changed)
 
-        layout_freq_position = QGridLayout()
+        layout_freq_position = wordless_layout.Wordless_Layout()
         layout_freq_position.addWidget(self.label_freq, 0, 0)
         layout_freq_position.addWidget(self.combo_box_freq_position, 0, 1, Qt.AlignRight)
 

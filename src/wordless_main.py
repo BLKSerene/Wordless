@@ -355,7 +355,7 @@ class Wordless_Main(QMainWindow):
 
         wrapper_file_area = QWidget()
 
-        wrapper_file_area.setLayout(QGridLayout())
+        wrapper_file_area.setLayout(wordless_layout.Wordless_Layout())
         wrapper_file_area.layout().addWidget(self.wordless_file_area, 0, 0)
 
         if platform.system() == 'Windows':

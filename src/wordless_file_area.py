@@ -674,7 +674,7 @@ class Wrapper_File_Area(wordless_layout.Wordless_Wrapper_File_Area):
 
         self.checkbox_subfolders.stateChanged.connect(self.folder_settings_changed)
 
-        self.group_box_folder_settings.setLayout(QGridLayout())
+        self.group_box_folder_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_folder_settings.layout().addWidget(self.checkbox_subfolders, 0, 0)
 
         # Auto-detection Settings
@@ -688,7 +688,7 @@ class Wrapper_File_Area(wordless_layout.Wordless_Wrapper_File_Area):
         self.checkbox_detect_text_types.stateChanged.connect(self.auto_detection_settings_changed)
         self.checkbox_detect_encodings.stateChanged.connect(self.auto_detection_settings_changed)
 
-        self.group_box_auto_detection_settings.setLayout(QGridLayout())
+        self.group_box_auto_detection_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_langs, 0, 0)
         self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_text_types, 0, 1)
         self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_encodings, 1, 0)

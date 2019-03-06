@@ -145,25 +145,25 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
         self.button_close.clicked.connect(self.reject)
 
-        layout_ignore_tags = QGridLayout()
+        layout_ignore_tags = wordless_layout.Wordless_Layout()
         layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags, 0, 0)
         layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags_type, 0, 1)
         layout_ignore_tags.addWidget(self.label_ignore_tags, 0, 2)
 
         layout_ignore_tags.setColumnStretch(3, 1)
 
-        layout_buttons_right = QGridLayout()
+        layout_buttons_right = wordless_layout.Wordless_Layout()
         layout_buttons_right.addWidget(self.button_find_next, 0, 0)
         layout_buttons_right.addWidget(self.button_find_prev, 1, 0)
         layout_buttons_right.addWidget(self.button_find_all, 2, 0)
 
         layout_buttons_right.setRowStretch(3, 1)
 
-        layout_buttons_bottom = QGridLayout()
+        layout_buttons_bottom = wordless_layout.Wordless_Layout()
         layout_buttons_bottom.addWidget(self.button_reset_settings, 0, 0)
         layout_buttons_bottom.addWidget(self.button_close, 0, 1, Qt.AlignRight)
 
-        self.setLayout(QGridLayout())
+        self.setLayout(wordless_layout.Wordless_Layout())
         self.layout().addWidget(self.label_search_term, 0, 0)
         self.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
         self.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)

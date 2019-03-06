@@ -73,7 +73,7 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         # Table
         self.table_keywords = Wordless_Table_Keywords(self)
 
-        layout_results = QGridLayout()
+        layout_results = wordless_layout.Wordless_Layout()
         layout_results.addWidget(self.table_keywords.label_number_results, 0, 0)
         layout_results.addWidget(self.table_keywords.button_filter_results, 0, 2)
         layout_results.addWidget(self.table_keywords.button_search_results, 0, 3)
@@ -130,14 +130,14 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         self.combo_box_ignore_tags_tags.currentTextChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
-        layout_ignore_tags = QGridLayout()
+        layout_ignore_tags = wordless_layout.Wordless_Layout()
         layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags, 0, 0)
         layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags_type, 0, 1)
         layout_ignore_tags.addWidget(self.label_ignore_tags, 0, 2)
 
         layout_ignore_tags.setColumnStretch(3, 1)
 
-        self.group_box_token_settings.setLayout(QGridLayout())
+        self.group_box_token_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lowercase, 0, 1)
         self.group_box_token_settings.layout().addWidget(self.checkbox_uppercase, 1, 0)
@@ -177,13 +177,13 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         self.combo_box_test_significance.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_effect_size.currentTextChanged.connect(self.generation_settings_changed)
 
-        layout_settings_measures = QGridLayout()
+        layout_settings_measures = wordless_layout.Wordless_Layout()
         layout_settings_measures.addWidget(self.label_settings_measures, 0, 0)
         layout_settings_measures.addWidget(self.button_settings_measures, 0, 1)
 
         layout_settings_measures.setColumnStretch(1, 1)
 
-        self.group_box_generation_settings.setLayout(QGridLayout())
+        self.group_box_generation_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_ref_file, 0, 0)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_ref_file, 1, 0)
         self.group_box_generation_settings.layout().addWidget(self.label_test_significance, 3, 0)
@@ -207,7 +207,7 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_breakdown.stateChanged.connect(self.table_settings_changed)
 
-        self.group_box_table_settings.setLayout(QGridLayout())
+        self.group_box_table_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
@@ -246,7 +246,7 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         self.spin_box_rank_max.valueChanged.connect(self.figure_settings_changed)
         self.checkbox_rank_max_no_limit.stateChanged.connect(self.figure_settings_changed)
 
-        layout_figure_settings_combo_boxes = QGridLayout()
+        layout_figure_settings_combo_boxes = wordless_layout.Wordless_Layout()
         layout_figure_settings_combo_boxes.addWidget(self.label_graph_type, 0, 0)
         layout_figure_settings_combo_boxes.addWidget(self.combo_box_graph_type, 0, 1)
         layout_figure_settings_combo_boxes.addWidget(self.label_use_file, 1, 0)
@@ -256,7 +256,7 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
 
         layout_figure_settings_combo_boxes.setColumnStretch(1, 1)
 
-        self.group_box_figure_settings.setLayout(QGridLayout())
+        self.group_box_figure_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_figure_settings.layout().addLayout(layout_figure_settings_combo_boxes, 0, 0, 1, 3)
         self.group_box_figure_settings.layout().addWidget(self.checkbox_use_pct, 1, 0, 1, 3)
         self.group_box_figure_settings.layout().addWidget(self.checkbox_use_cumulative, 2, 0, 1, 3)
