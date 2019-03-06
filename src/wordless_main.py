@@ -292,14 +292,14 @@ class Wordless_Main(QMainWindow):
                 </div>
 
                 <div>
-                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>CANNOT GUARANTEE</b> that all emails will always be checked or replied in time. I <b>WILL NOT REPLY</b> to irrelevant emails and I reserve the right to <b>BLOCK AND/OR REPORT</b> people who send me spam emails.
-                </div>
-
-                <div>
                     Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</a><br>
                     Documentation: <a href="https://github.com/BLKSerene/Wordless#documentation">https://github.com/BLKSerene/Wordless#documentation</a><br>
                     Email: <a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a><br>
                     <a href="https://www.wechat.com/en/">WeChat</a> Official Account: Wordless
+                </div>
+
+                <div>
+                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>CANNOT GUARANTEE</b> that all emails will always be checked or replied in time. I <b>WILL NOT REPLY</b> to irrelevant emails and I reserve the right to <b>BLOCK AND/OR REPORT</b> people who send me spam emails.
                 </div>
             ''')
         )
