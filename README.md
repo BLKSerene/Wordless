@@ -9,12 +9,11 @@
 # All other rights reserved.
 -->
 
-## Wordless
-An Integrated Corpus Tool with Multi-language Support for the Study of Language, Literature and Translation
+<div align="center"><img src="/doc/wordless_logo.png" alt="logo"></div>
 
-Designed and Developed by Ye Lei (叶磊)
+---
 
-MA Student in Interpreting Studies at Shanghai International Studies University (上海外国语大学)
+Wordless is an integrated corpus tool with multi-language support for the study of language, literature and translation designed and developed by Ye Lei (叶磊), MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
 
 ## License
     Copyright (C) 2018-2019  Ye Lei (叶磊)
@@ -111,7 +110,7 @@ If you would like to support the development of Wordless, you may donate via Pay
 
 |PayPal|Alipay|WeChat|
 |------|------|------|
-|[![Donate with PayPal button](https://github.com/BLKSerene/Wordless/blob/master/src/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|<img src=https://github.com/BLKSerene/Wordless/blob/master/src/imgs/donating_alipay.png>|<img src=https://github.com/BLKSerene/Wordless/blob/master/src/imgs/donating_wechat.png alt="WeChat">|
+|[![PayPal](/src/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|![Alipay](/src/imgs/donating_alipay.png)|![WeChat](/src/imgs/donating_wechat.png)|
 
 <span id="doc-eng"></span>
 ## Documentation - English
