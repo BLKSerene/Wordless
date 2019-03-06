@@ -23,7 +23,7 @@ from PyQt5.QtWidgets import *
 
 import nltk
 
-from wordless_dialogs import wordless_dialog_misc, wordless_message_box
+from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
 from wordless_tagsets import wordless_tagset_universal
 from wordless_text import wordless_text_processing, wordless_text_utils
 from wordless_utils import wordless_conversion, wordless_threading
@@ -1293,11 +1293,11 @@ class Wordless_Settings(QDialog):
             settings_custom['mappings'][preview_lang][preview_pos_tagger] = mappings
 
         def reset_mappings():
-            if wordless_message_box.wordless_message_box_reset_mappings(self.main):
+            if wordless_msg_box.wordless_msg_box_reset_mappings(self.main):
                 reset_currently_shown_table()
 
         def reset_all_mappings():
-            if wordless_message_box.wordless_message_box_reset_all_mappings(self.main):
+            if wordless_msg_box.wordless_msg_box_reset_all_mappings(self.main):
                 settings_custom['mappings'] = copy.deepcopy(self.main.settings_default['tagsets']['mappings'])
 
                 reset_currently_shown_table()
@@ -2029,14 +2029,14 @@ class Wordless_Settings(QDialog):
     def settings_validate(self):
         def validate_path(line_edit):
             if not os.path.exists(line_edit.text()):
-                wordless_message_box.wordless_message_box_path_not_exist(self.main, line_edit.text())
+                wordless_msg_box.wordless_msg_box_path_not_exist(self.main, line_edit.text())
 
                 line_edit.setFocus()
                 line_edit.selectAll()
 
                 return False
             elif not os.path.isdir(line_edit.text()):
-                wordless_message_box.wordless_message_box_path_not_dir(self.main, line_edit.text())
+                wordless_msg_box.wordless_msge_box_path_not_dir(self.main, line_edit.text())
 
                 line_edit.setFocus()
                 line_edit.selectAll()
@@ -2047,7 +2047,7 @@ class Wordless_Settings(QDialog):
 
         def confirm_path(line_edit):
             if not os.path.exists(line_edit.text()):
-                reply = wordless_message_box.wordless_message_box_path_not_exist_confirm(self.main, line_edit.text())
+                reply = wordless_msg_box.wordless_msg_box_path_not_exist_confirm(self.main, line_edit.text())
 
                 if reply == QMessageBox.Yes:
                     return True
@@ -2057,7 +2057,7 @@ class Wordless_Settings(QDialog):
 
                     return False
             elif not os.path.isdir(line_edit.text()):
-                wordless_message_box.wordless_message_box_path_not_dir(self.main, line_edit.text())
+                wordless_msg_box.wordless_msg_box_path_not_dir(self.main, line_edit.text())
 
                 line_edit.setFocus()
                 line_edit.selectAll()
@@ -2156,11 +2156,12 @@ class Wordless_Settings(QDialog):
             settings['pos_tagging']['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
 
             # POS Tagging -> Tagsets
-            preview_lang = settings['tagsets']['preview_lang']
-            preview_pos_tagger = settings['tagsets']['preview_pos_tagger'][preview_lang]
+            if self.pos_tag_mappings_loaded:
+                preview_lang = settings['tagsets']['preview_lang']
+                preview_pos_tagger = settings['tagsets']['preview_pos_tagger'][preview_lang]
 
-            for i in range(self.table_mappings.rowCount()):
-                settings['tagsets']['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
+                for i in range(self.table_mappings.rowCount()):
+                    settings['tagsets']['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
 
             # Lemmatization
             for lang in settings['lemmatization']['lemmatizers']:

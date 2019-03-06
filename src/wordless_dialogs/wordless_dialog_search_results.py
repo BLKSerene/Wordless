@@ -18,9 +18,10 @@ from PyQt5.QtWidgets import *
 
 import nltk
 
-from wordless_dialogs import wordless_dialog, wordless_dialog_misc, wordless_message_box
+from wordless_dialogs import wordless_dialog, wordless_dialog_misc, wordless_msg_box
 from wordless_text import wordless_matching
-from wordless_widgets import wordless_button, wordless_layout, wordless_message, wordless_widgets
+from wordless_widgets import (wordless_button, wordless_layout, wordless_msg,
+                              wordless_widgets)
 from wordless_utils import wordless_misc, wordless_threading
 
 class Wordless_Worker_Search_Results(wordless_threading.Wordless_Worker):
@@ -185,6 +186,8 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
         self.layout().addLayout(layout_buttons_bottom, 10, 0, 1, 4)
 
+        self.layout().setRowStretch(11, 1)
+
         self.main.wordless_work_area.currentChanged.connect(self.reject)
 
         self.load_settings()
@@ -236,7 +239,7 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
         if self.settings['multi_search_mode']:
-            self.setFixedSize(370, 390)
+            self.setFixedSize(370, 400)
         else:
             self.setFixedSize(370, 280)
 
@@ -331,9 +334,9 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
                 self.table.setUpdatesEnabled(True)
                 self.table.show()
             else:
-                wordless_message_box.wordless_message_box_no_search_results(self.main)
+                wordless_msg_box.wordless_msg_box_no_search_results(self.main)
 
-            wordless_message.wordless_message_search_results_success(self.main, self.items_found)
+            wordless_msg.wordless_msg_search_results_success(self.main, self.items_found)
 
             dialog_progress.accept()
 
@@ -356,9 +359,9 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
             thread_search_results.quit()
             thread_search_results.wait()
         else:
-            wordless_message_box.wordless_message_box_missing_search_term(self.main)
+            wordless_msg_box.wordless_msg_box_missing_search_term(self.main)
 
-            wordless_message.wordless_message_search_results_error(self.main)
+            wordless_msg.wordless_msg_search_results_error(self.main)
 
     def clear_highlights(self):
         if self.items_found:

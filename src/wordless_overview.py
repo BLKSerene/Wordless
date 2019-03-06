@@ -21,7 +21,8 @@ from wordless_checking import wordless_checking_file
 from wordless_dialogs import wordless_dialog_misc
 from wordless_text import wordless_text, wordless_text_utils, wordless_token_processing
 from wordless_utils import wordless_misc, wordless_threading
-from wordless_widgets import wordless_layout, wordless_message, wordless_table, wordless_widgets
+from wordless_widgets import (wordless_layout, wordless_msg, wordless_table,
+                              wordless_widgets)
 
 class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
     def __init__(self, parent):
@@ -434,7 +435,7 @@ def generate_table(main, table):
 
         table.itemChanged.emit(table.item(0, 0))
 
-        wordless_message.wordless_message_generate_table_success(main)
+        wordless_msg.wordless_msg_generate_table_success(main)
 
         dialog_progress.accept()
 
@@ -454,4 +455,4 @@ def generate_table(main, table):
         thread_process_data.quit()
         thread_process_data.wait()
     else:
-        wordless_message.wordless_message_generate_table_error(main)
+        wordless_msg.wordless_msg_generate_table_error(main)

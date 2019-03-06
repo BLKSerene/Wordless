@@ -20,7 +20,7 @@ from PyQt5.QtWidgets import *
 import openpyxl
 
 from wordless_checking import wordless_checking_misc
-from wordless_dialogs import wordless_message_box
+from wordless_dialogs import wordless_msg_box
 from wordless_utils import wordless_misc
 from wordless_widgets import wordless_box
 
@@ -845,7 +845,7 @@ class Wordless_Table_Data(Wordless_Table):
             self.main.settings_custom['export']['tables']['default_path'] = os.path.normpath(os.path.dirname(file_path))
             self.main.settings_custom['export']['tables']['default_type'] = file_type
 
-            wordless_message_box.wordless_message_box_export_table(self.main, file_path)
+            wordless_msg_box.wordless_msg_box_export_table(self.main, file_path)
 
     def clear_table(self, header_count = 1):
         self.clearContents()
@@ -1043,7 +1043,7 @@ class Wordless_Table_Tags(Wordless_Table):
                 if row != item.row():
                     if (self.item(row, 0).text() == self.item(item.row(), 0).text() and
                         self.item(row, 1).text() == self.item(item.row(), 1).text()):
-                        wordless_message_box.wordless_message_box_duplicate_tags(self.main)
+                        wordless_msg_box.wordless_msg_box_duplicate_tags(self.main)
 
                         item.setText(item.text_old)
 

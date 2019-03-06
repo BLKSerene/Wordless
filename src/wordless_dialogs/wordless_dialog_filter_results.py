@@ -19,7 +19,7 @@ from PyQt5.QtWidgets import *
 from wordless_dialogs import wordless_dialog, wordless_dialog_misc
 from wordless_utils import wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_button, wordless_layout,
-                              wordless_message, wordless_widgets)
+                              wordless_msg, wordless_widgets)
 
 class Wordless_Dialog_Filter_Results(wordless_dialog.Wordless_Dialog):
     def __init__(self, main, tab, table):
@@ -697,7 +697,7 @@ class Wordless_Dialog_Filter_Results_Wordlist(Wordless_Dialog_Filter_Results):
 
             dialog_progress.accept()
 
-            wordless_message.wordless_message_filter_results_success(self.main)
+            wordless_msg.wordless_msg_filter_results_success(self.main)
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Filter_Results(self.main)
 
@@ -1032,7 +1032,7 @@ class Wordless_Dialog_Filter_Results_Collocation(Wordless_Dialog_Filter_Results)
 
             dialog_progress.accept()
 
-            wordless_message.wordless_message_filter_results_success(self.main)
+            wordless_msg.wordless_msg_filter_results_success(self.main)
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Filter_Results(self.main)
 
@@ -1344,7 +1344,7 @@ class Wordless_Dialog_Filter_Results_Keywords(Wordless_Dialog_Filter_Results):
 
             dialog_progress.accept()
 
-            wordless_message.wordless_message_filter_results_success(self.main)
+            wordless_msg.wordless_msg_filter_results_success(self.main)
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Filter_Results(self.main)
 

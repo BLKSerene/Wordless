@@ -22,12 +22,13 @@ import numpy
 import matplotlib.pyplot
 
 from wordless_checking import wordless_checking_file
-from wordless_dialogs import wordless_dialog, wordless_dialog_misc, wordless_dialog_search_results, wordless_message_box
+from wordless_dialogs import (wordless_dialog, wordless_dialog_misc, wordless_dialog_search_results,
+                              wordless_msg_box)
 from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
                            wordless_token_processing)
 from wordless_utils import wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_button, wordless_label,
-                              wordless_layout, wordless_message, wordless_table,
+                              wordless_layout, wordless_msg, wordless_table,
                               wordless_widgets)
 
 class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Sort_Search):
@@ -383,7 +384,7 @@ class Wordless_Table_Sort_Results_Conordancer(wordless_table.Wordless_Table):
 
             self.table.update_items_width()
 
-        wordless_message.wordless_message_sort_results(self.main)
+        wordless_message.wordless_msg_sort_results(self.main)
 
 class Wordless_Dialog_Sort_Results_Concordancer(wordless_dialog.Wordless_Dialog):
     def __init__(self, main, table):
@@ -1263,11 +1264,11 @@ def generate_table(main, table):
 
             table.itemChanged.emit(table.item(0, 0))
 
-            wordless_message.wordless_message_generate_table_success(main)
+            wordless_msg.wordless_msg_generate_table_success(main)
         else:
-            wordless_message_box.wordless_message_box_no_results(main)
+            wordless_msg_box.wordless_msg_box_no_results(main)
 
-            wordless_message.wordless_message_generate_table_error(main)
+            wordless_msg.wordless_msg_generate_table_error(main)
 
         dialog_progress.accept()
 
@@ -1289,11 +1290,11 @@ def generate_table(main, table):
             thread_process_data.quit()
             thread_process_data.wait()
         else:
-            wordless_message_box.wordless_message_box_missing_search_term(main)
+            wordless_msg_box.wordless_msg_box_missing_search_term(main)
 
-            wordless_message.wordless_message_generate_table_error(main)
+            wordless_msg.wordless_msg_generate_table_error(main)
     else:
-        wordless_message.wordless_message_generate_table_error(main)
+        wordless_msg.wordless_msg_generate_table_error(main)
 
 @wordless_misc.log_timing
 def generate_figure(main):
@@ -1332,11 +1333,11 @@ def generate_figure(main):
             matplotlib.pyplot.title(main.tr('Dispersion Plot'))
             matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
 
-            wordless_message.wordless_message_generate_figure_success(main)
+            wordless_msg.wordless_msg_generate_figure_success(main)
         else:
-            wordless_message_box.wordless_message_box_no_results(main)
+            wordless_msg_box.wordless_msg_box_no_results(main)
 
-            wordless_message.wordless_message_generate_figure_error(main)
+            wordless_msg.wordless_msg_generate_figure_error(main)
 
         dialog_progress.accept()
 
@@ -1361,8 +1362,8 @@ def generate_figure(main):
             thread_process_data.quit()
             thread_process_data.wait()
         else:
-            wordless_message_box.wordless_message_box_missing_search_term(main)
+            wordless_msg_box.wordless_msg_box_missing_search_term(main)
 
-            wordless_message.wordless_message_generate_figure_error(main)
+            wordless_msg.wordless_msg_generate_figure_error(main)
     else:
-        wordless_message.wordless_message_generate_figure_error(main)
+        wordless_msg.wordless_msg_generate_figure_error(main)

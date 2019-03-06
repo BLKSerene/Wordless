@@ -22,11 +22,11 @@ import numpy
 
 from wordless_checking import wordless_checking_file
 from wordless_dialogs import (wordless_dialog_filter_results, wordless_dialog_misc, wordless_dialog_search_results,
-                              wordless_message_box)
+                              wordless_msg_box)
 from wordless_figures import wordless_figure_freq, wordless_figure_stat
 from wordless_text import wordless_text, wordless_text_utils, wordless_token_processing
 from wordless_utils import wordless_misc, wordless_sorting, wordless_threading
-from wordless_widgets import (wordless_box, wordless_layout, wordless_message,
+from wordless_widgets import (wordless_box, wordless_layout, wordless_msg,
                               wordless_table, wordless_widgets)
 
 class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Filter_Search):
@@ -703,11 +703,11 @@ def generate_table(main, table):
 
             table.itemChanged.emit(table.item(0, 0))
 
-            wordless_message.wordless_message_generate_table_success(main)
+            wordless_msg.wordless_msg_generate_table_success(main)
         else:
-            wordless_message_box.wordless_message_box_no_results(main)
+            wordless_msg_box.wordless_msg_box_no_results(main)
 
-            wordless_message.wordless_message_generate_table_error(main)
+            wordless_msg.wordless_msg_generate_table_error(main)
 
         dialog_progress.accept()
 
@@ -735,11 +735,11 @@ def generate_table(main, table):
             thread_process_data.quit()
             thread_process_data.wait()
         else:
-            wordless_message_box.wordless_message_box_missing_observed_file(main)
+            wordless_msg_box.wordless_msg_box_missing_observed_file(main)
 
-            wordless_message.wordless_message_generate_table_error(main)
+            wordless_msg.wordless_msg_generate_table_error(main)
     else:
-        wordless_message.wordless_message_generate_table_error(main)
+        wordless_msg.wordless_msg_generate_table_error(main)
 
 @wordless_misc.log_timing
 def generate_figure(main):
@@ -785,11 +785,11 @@ def generate_figure(main):
                                                               settings = settings['figure_settings'],
                                                               label_y = label_y)
 
-            wordless_message.wordless_message_generate_figure_success(main)
+            wordless_msg.wordless_msg_generate_figure_success(main)
         else:
-            wordless_message_box.wordless_message_box_no_results(main)
+            wordless_msg_box.wordless_msg_box_no_results(main)
 
-            wordless_message.wordless_message_generate_figure_error(main)
+            wordless_msg.wordless_msg_generate_figure_error(main)
 
         dialog_progress.accept()
 
@@ -820,8 +820,8 @@ def generate_figure(main):
             thread_process_data.quit()
             thread_process_data.wait()
         else:
-            wordless_message_box.wordless_message_box_missing_observed_file(main)
+            wordless_msg_box.wordless_msg_box_missing_observed_file(main)
 
-            wordless_message.wordless_message_generate_figure_error(main)
+            wordless_msg.wordless_msg_generate_figure_error(main)
     else:
-        wordless_message.wordless_message_generate_figure_error(main)
+        wordless_msg.wordless_msg_generate_figure_error(main)
