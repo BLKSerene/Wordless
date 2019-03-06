@@ -23,7 +23,7 @@ from PyQt5.QtWidgets import *
 import matplotlib
 
 from wordless_checking import wordless_checking_misc
-from wordless_dialogs import wordless_dialog_misc, wordless_dialog_help, wordless_message_box
+from wordless_dialogs import wordless_dialog_misc, wordless_dialog_help, wordless_msg_box
 from wordless_settings import wordless_settings, wordless_settings_default, wordless_settings_global
 from wordless_widgets import wordless_layout
 
@@ -262,7 +262,7 @@ class Wordless_Main(QMainWindow):
 
     # Preferences -> Reset Layouts
     def prefs_reset_layouts(self):
-        if wordless_message_box.wordless_message_box_reset_layouts(self):
+        if wordless_msg_box.wordless_msg_box_reset_layouts(self):
             self.centralWidget().setSizes([self.height() - 210, 210])
 
     # Help -> Citing
@@ -279,7 +279,7 @@ class Wordless_Main(QMainWindow):
 
     # Help -> Need Help?
     def help_need_help(self):
-        message_box = wordless_message_box.Wordless_Message_Box_Info_Help(
+        msg_box = wordless_msg_box.Wordless_Msg_Box_Info_Help(
             main = self,
             title = self.tr('Need Help?'),
             text = self.tr('''
@@ -304,11 +304,11 @@ class Wordless_Main(QMainWindow):
             ''')
         )
 
-        message_box.open()
+        msg_box.open()
 
     # Help -> Contributing
     def help_contributing(self):
-        message_box = wordless_message_box.Wordless_Message_Box_Info_Help(
+        msg_box = wordless_msg_box.Wordless_Msg_Box_Info_Help(
             main = self,
             title = self.tr('Contributing'),
             text = self.tr('''
@@ -322,7 +322,7 @@ class Wordless_Main(QMainWindow):
             ''')
         )
 
-        message_box.open()
+        msg_box.open()
 
     # Help -> Donating
     def help_donating(self):
@@ -355,7 +355,7 @@ class Wordless_Main(QMainWindow):
 
         wrapper_file_area = QWidget()
 
-        wrapper_file_area.setLayout(QGridLayout())
+        wrapper_file_area.setLayout(wordless_layout.Wordless_Layout())
         wrapper_file_area.layout().addWidget(self.wordless_file_area, 0, 0)
 
         if platform.system() == 'Windows':

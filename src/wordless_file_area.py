@@ -30,7 +30,7 @@ import openpyxl
 import xlrd
 
 from wordless_checking import wordless_checking_file, wordless_checking_misc
-from wordless_dialogs import wordless_message_box
+from wordless_dialogs import wordless_msg_box
 from wordless_utils import wordless_conversion, wordless_detection, wordless_misc
 from wordless_widgets import wordless_box, wordless_layout, wordless_table
 
@@ -146,11 +146,11 @@ class Wordless_Files():
         file_paths, files_unsupported = wordless_checking_file.check_files_unsupported(self.main, file_paths)
         file_paths, files_parsing_error = wordless_checking_file.check_files_parsing_error(self.main, file_paths)
 
-        wordless_message_box.wordless_message_box_file_error_on_opening(self.main,
-                                                                        files_empty = files_empty,
-                                                                        files_duplicate = files_duplicate,
-                                                                        files_unsupported = files_unsupported,
-                                                                        files_parsing_error = files_parsing_error)
+        wordless_msg_box.wordless_msg_box_file_error_on_opening(self.main,
+                                                                files_empty = files_empty,
+                                                                files_duplicate = files_duplicate,
+                                                                files_unsupported = files_unsupported,
+                                                                files_parsing_error = files_parsing_error)
 
         for file_path in file_paths:
             default_dir = wordless_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
@@ -337,10 +337,10 @@ class Wordless_Files():
 
             self.main.settings_custom['files']['files_open'].append(new_file)
 
-        wordless_message_box.wordless_message_box_detection_failed(self.main,
-                                                                   files_detection_failed_encoding,
-                                                                   files_detection_failed_text_type,
-                                                                   files_detection_failed_lang)
+        wordless_msg_box.wordless_msg_box_detection_failed(self.main,
+                                                           files_detection_failed_encoding,
+                                                           files_detection_failed_text_type,
+                                                           files_detection_failed_lang)
 
         self.update_table()
 
@@ -502,7 +502,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
                         
                         self.blockSignals(False)
 
-                        wordless_message_box.wordless_message_box_duplicate_file_name(self.main)
+                        wordless_msg_box.wordless_msg_box_duplicate_file_name(self.main)
 
                         self.closePersistentEditor(self.item(row, 0))
                         self.editItem(self.item(row, 0))
@@ -674,7 +674,7 @@ class Wrapper_File_Area(wordless_layout.Wordless_Wrapper_File_Area):
 
         self.checkbox_subfolders.stateChanged.connect(self.folder_settings_changed)
 
-        self.group_box_folder_settings.setLayout(QGridLayout())
+        self.group_box_folder_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_folder_settings.layout().addWidget(self.checkbox_subfolders, 0, 0)
 
         # Auto-detection Settings
@@ -688,7 +688,7 @@ class Wrapper_File_Area(wordless_layout.Wordless_Wrapper_File_Area):
         self.checkbox_detect_text_types.stateChanged.connect(self.auto_detection_settings_changed)
         self.checkbox_detect_encodings.stateChanged.connect(self.auto_detection_settings_changed)
 
-        self.group_box_auto_detection_settings.setLayout(QGridLayout())
+        self.group_box_auto_detection_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_langs, 0, 0)
         self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_text_types, 0, 1)
         self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_encodings, 1, 0)
@@ -709,9 +709,9 @@ class Wrapper_File_Area(wordless_layout.Wordless_Wrapper_File_Area):
         file_paths, files_missing = wordless_checking_file.check_files_missing(self.main, file_paths)
         file_paths, files_empty = wordless_checking_file.check_files_empty(self.main, file_paths)
 
-        wordless_message_box.wordless_message_box_file_error_on_startup(self.main,
-                                                                        files_missing = files_missing,
-                                                                        files_empty = files_empty)
+        wordless_msg_box.wordless_msg_box_file_error_on_startup(self.main,
+                                                                files_missing = files_missing,
+                                                                files_empty = files_empty)
 
         self.main.settings_custom['files']['files_open'].clear()
 
