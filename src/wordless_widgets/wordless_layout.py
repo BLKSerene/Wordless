@@ -16,6 +16,10 @@ from PyQt5.QtWidgets import *
 from wordless_utils import wordless_misc
 from wordless_widgets import wordless_button
 
+class Wordless_Layout(QGridLayout):
+    def __init__(self):
+        super().__init__()
+
 class Wordless_Wrapper(QWidget):
     def __init__(self, parent):
         super().__init__(parent)
@@ -31,7 +35,7 @@ class Wordless_Wrapper(QWidget):
 
         self.wrapper_table = QWidget(self)
 
-        self.wrapper_table.setLayout(QGridLayout())
+        self.wrapper_table.setLayout(Wordless_Layout())
         self.wrapper_table.layout().setContentsMargins(8, 8, 6, 6)
 
         self.wrapper_right = QWidget(self)
@@ -41,19 +45,19 @@ class Wordless_Wrapper(QWidget):
         self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self)
 
         self.wrapper_settings = QWidget(self)
-        self.wrapper_settings.setLayout(QGridLayout())
+        self.wrapper_settings.setLayout(Wordless_Layout())
 
         self.wrapper_settings.layout().setContentsMargins(6, 4, 6, 4)
 
         self.scroll_area_settings.setWidget(self.wrapper_settings)
 
-        self.wrapper_right.setLayout(QGridLayout())
+        self.wrapper_right.setLayout(Wordless_Layout())
         self.wrapper_right.layout().addWidget(self.scroll_area_settings, 0, 0)
         self.wrapper_right.layout().addWidget(self.button_reset_settings, 1, 0)
 
         self.wrapper_right.layout().setContentsMargins(0, 8, 8, 6)
 
-        self.setLayout(QGridLayout())
+        self.setLayout(Wordless_Layout())
         self.layout().addWidget(self.wrapper_table, 0, 0)
         self.layout().addWidget(self.wrapper_right, 0, 1)
 

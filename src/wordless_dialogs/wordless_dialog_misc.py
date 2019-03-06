@@ -18,7 +18,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_dialogs import wordless_dialog
-from wordless_widgets import wordless_label
+from wordless_widgets import wordless_label, wordless_layout
 
 class Wordless_Dialog_Progress(wordless_dialog.Wordless_Dialog_Frameless):
     def __init__(self, main, width, height):
@@ -35,7 +35,7 @@ class Wordless_Dialog_Progress(wordless_dialog.Wordless_Dialog_Frameless):
         self.timer_time_elapsed.timeout.connect(self.update_elapsed_time)
         self.timer_time_elapsed.start(1000)
 
-        self.setLayout(QGridLayout())
+        self.setLayout(wordless_layout.Wordless_Layout())
         self.layout().addWidget(self.label_progress, 0, 0)
         self.layout().addWidget(self.label_time_elapsed, 0, 1, Qt.AlignRight)
         self.layout().addWidget(self.label_processing, 1, 0, 1, 2)
