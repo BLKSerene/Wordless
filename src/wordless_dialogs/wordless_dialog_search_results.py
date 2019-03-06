@@ -86,8 +86,11 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
         (self.label_search_term,
          self.checkbox_multi_search_mode,
+
+         self.stacked_widget_search_term,
          self.line_edit_search_term,
          self.list_search_terms,
+
          self.label_separator,
 
          self.checkbox_ignore_case,
@@ -96,7 +99,13 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
          self.checkbox_use_regex,
 
          self.stacked_widget_ignore_tags,
+         self.checkbox_ignore_tags,
+         self.checkbox_ignore_tags_tags,
+
          self.stacked_widget_ignore_tags_type,
+         self.combo_box_ignore_tags,
+         self.combo_box_ignore_tags_tags,
+
          self.label_ignore_tags,
          self.checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(self, self.tab)
 
@@ -106,6 +115,10 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         
         self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self)
         self.button_close = QPushButton(self.tr('Close'), self)
+
+        self.button_find_next.setFixedWidth(100)
+        self.button_find_prev.setFixedWidth(100)
+        self.button_find_all.setFixedWidth(100)
 
         self.button_reset_settings.setFixedWidth(120)
         self.button_close.setFixedWidth(80)
@@ -120,10 +133,10 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.checkbox_match_whole_words.stateChanged.connect(self.search_settings_changed)
         self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
 
-        self.stacked_widget_ignore_tags.checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
-        self.stacked_widget_ignore_tags.checkbox_ignore_tags_tags.stateChanged.connect(self.search_settings_changed)
-        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentTextChanged.connect(self.search_settings_changed)
-        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentTextChanged.connect(self.search_settings_changed)
+        self.checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_ignore_tags_tags.stateChanged.connect(self.search_settings_changed)
+        self.combo_box_ignore_tags.currentTextChanged.connect(self.search_settings_changed)
+        self.combo_box_ignore_tags_tags.currentTextChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
 
         self.button_find_next.clicked.connect(lambda: self.find_next())
@@ -131,14 +144,6 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.button_find_all.clicked.connect(lambda: self.find_all())
 
         self.button_close.clicked.connect(self.reject)
-
-        layout_search_terms = QGridLayout()
-        layout_search_terms.addWidget(self.list_search_terms, 0, 0, 5, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_add, 0, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_remove, 1, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_clear, 2, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_import, 3, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_export, 4, 1)
 
         layout_ignore_tags = QGridLayout()
         layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags, 0, 0)
@@ -161,25 +166,24 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.setLayout(QGridLayout())
         self.layout().addWidget(self.label_search_term, 0, 0)
         self.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
-        self.layout().addWidget(self.line_edit_search_term, 1, 0, 1, 2)
-        self.layout().addLayout(layout_search_terms, 2, 0, 1, 2)
-        self.layout().addWidget(self.label_separator, 3, 0, 1, 2)
+        self.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
+        self.layout().addWidget(self.label_separator, 2, 0, 1, 2)
 
-        self.layout().addWidget(self.checkbox_ignore_case, 4, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_match_whole_words, 6, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_use_regex, 7, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_ignore_case, 3, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_inflected_forms, 4, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_whole_words, 5, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_use_regex, 6, 0, 1, 2)
 
-        self.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_match_tags, 9, 0, 1, 2)
+        self.layout().addLayout(layout_ignore_tags, 7, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
-        self.layout().addWidget(wordless_layout.Wordless_Separator(self, orientation = 'Vertical'), 0, 2, 10, 1)
+        self.layout().addWidget(wordless_layout.Wordless_Separator(self, orientation = 'Vertical'), 0, 2, 9, 1)
 
-        self.layout().addLayout(layout_buttons_right, 0, 3, 10, 1)
+        self.layout().addLayout(layout_buttons_right, 0, 3, 9, 1)
 
-        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 10, 0, 1, 4)
+        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 9, 0, 1, 4)
 
-        self.layout().addLayout(layout_buttons_bottom, 11, 0, 1, 4)
+        self.layout().addLayout(layout_buttons_bottom, 10, 0, 1, 4)
 
         self.main.wordless_work_area.currentChanged.connect(self.reject)
 
@@ -207,10 +211,10 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.checkbox_match_whole_words.setChecked(settings['match_whole_words'])
         self.checkbox_use_regex.setChecked(settings['use_regex'])
 
-        self.stacked_widget_ignore_tags.checkbox_ignore_tags.setChecked(settings['ignore_tags'])
-        self.stacked_widget_ignore_tags.checkbox_ignore_tags_tags.setChecked(settings['ignore_tags_tags'])
-        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.setCurrentText(settings['ignore_tags_type'])
-        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.setCurrentText(settings['ignore_tags_type_tags'])
+        self.checkbox_ignore_tags.setChecked(settings['ignore_tags'])
+        self.checkbox_ignore_tags_tags.setChecked(settings['ignore_tags_tags'])
+        self.combo_box_ignore_tags.setCurrentText(settings['ignore_tags_type'])
+        self.combo_box_ignore_tags_tags.setCurrentText(settings['ignore_tags_type_tags'])
         self.checkbox_match_tags.setChecked(settings['match_tags'])
 
         self.search_settings_changed()
@@ -225,16 +229,16 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.settings['match_whole_words'] = self.checkbox_match_whole_words.isChecked()
         self.settings['use_regex'] = self.checkbox_use_regex.isChecked()
 
-        self.settings['ignore_tags'] = self.stacked_widget_ignore_tags.checkbox_ignore_tags.isChecked()
-        self.settings['ignore_tags_tags'] = self.stacked_widget_ignore_tags.checkbox_ignore_tags_tags.isChecked()
-        self.settings['ignore_tags_type'] = self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentText()
-        self.settings['ignore_tags_type_tags'] = self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentText()
+        self.settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
+        self.settings['ignore_tags_tags'] = self.checkbox_ignore_tags_tags.isChecked()
+        self.settings['ignore_tags_type'] = self.combo_box_ignore_tags.currentText()
+        self.settings['ignore_tags_type_tags'] = self.combo_box_ignore_tags_tags.currentText()
         self.settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
         if self.settings['multi_search_mode']:
-            self.setFixedSize(360, 390)
+            self.setFixedSize(370, 390)
         else:
-            self.setFixedSize(360, 280)
+            self.setFixedSize(370, 280)
 
     @wordless_misc.log_timing
     def find_next(self):

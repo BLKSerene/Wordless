@@ -515,6 +515,8 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         (self.label_search_term,
          self.checkbox_multi_search_mode,
+
+         self.stacked_widget_search_term,
          self.line_edit_search_term,
          self.list_search_terms,
          self.label_separator,
@@ -525,7 +527,13 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
          self.checkbox_use_regex,
 
          self.search_stacked_widget_ignore_tags,
+         self.search_checkbox_ignore_tags,
+         self.search_checkbox_ignore_tags_tags,
+
          self.search_stacked_widget_ignore_tags_type,
+         self.search_combo_box_ignore_tags,
+         self.search_combo_box_ignore_tags_tags,
+
          self.search_label_ignore_tags,
          self.checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(self,
                                                                                        tab = 'concordancer')
@@ -544,19 +552,11 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         self.checkbox_match_whole_words.stateChanged.connect(self.search_settings_changed)
         self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
 
-        self.search_stacked_widget_ignore_tags.checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
-        self.search_stacked_widget_ignore_tags.checkbox_ignore_tags_tags.stateChanged.connect(self.search_settings_changed)
-        self.search_stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentTextChanged.connect(self.search_settings_changed)
-        self.search_stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentTextChanged.connect(self.search_settings_changed)
+        self.search_checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
+        self.search_checkbox_ignore_tags_tags.stateChanged.connect(self.search_settings_changed)
+        self.search_combo_box_ignore_tags.currentTextChanged.connect(self.search_settings_changed)
+        self.search_combo_box_ignore_tags_tags.currentTextChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
-
-        layout_search_terms = QGridLayout()
-        layout_search_terms.addWidget(self.list_search_terms, 0, 0, 5, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_add, 0, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_remove, 1, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_clear, 2, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_import, 3, 1)
-        layout_search_terms.addWidget(self.list_search_terms.button_export, 4, 1)
 
         layout_ignore_tags = QGridLayout()
         layout_ignore_tags.addWidget(self.search_stacked_widget_ignore_tags, 0, 0)
@@ -574,21 +574,20 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         self.group_box_search_settings.setLayout(QGridLayout())
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
         self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
-        self.group_box_search_settings.layout().addWidget(self.line_edit_search_term, 1, 0, 1, 2)
-        self.group_box_search_settings.layout().addLayout(layout_search_terms, 2, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.label_separator, 3, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.label_separator, 2, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addWidget(self.checkbox_ignore_case, 4, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_match_whole_words, 6, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_use_regex, 7, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_ignore_case, 3, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_inflected_forms, 4, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_whole_words, 5, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_use_regex, 6, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_match_tags, 9, 0, 1, 2)
+        self.group_box_search_settings.layout().addLayout(layout_ignore_tags, 7, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 10, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 9, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addLayout(layout_context_settings, 11, 0, 1, 2)
+        self.group_box_search_settings.layout().addLayout(layout_context_settings, 10, 0, 1, 2)
 
         # Generation Settings
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
@@ -731,10 +730,10 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         self.checkbox_match_whole_words.setChecked(settings['search_settings']['match_whole_words'])
         self.checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
 
-        self.search_stacked_widget_ignore_tags.checkbox_ignore_tags.setChecked(settings['search_settings']['ignore_tags'])
-        self.search_stacked_widget_ignore_tags.checkbox_ignore_tags_tags.setChecked(settings['search_settings']['ignore_tags_tags'])
-        self.search_stacked_widget_ignore_tags_type.combo_box_ignore_tags.setCurrentText(settings['search_settings']['ignore_tags_type'])
-        self.search_stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.setCurrentText(settings['search_settings']['ignore_tags_type_tags'])
+        self.search_checkbox_ignore_tags.setChecked(settings['search_settings']['ignore_tags'])
+        self.search_checkbox_ignore_tags_tags.setChecked(settings['search_settings']['ignore_tags_tags'])
+        self.search_combo_box_ignore_tags.setCurrentText(settings['search_settings']['ignore_tags_type'])
+        self.search_combo_box_ignore_tags_tags.setCurrentText(settings['search_settings']['ignore_tags_type_tags'])
         self.checkbox_match_tags.setChecked(settings['search_settings']['match_tags'])
 
         # Context Settings
@@ -790,10 +789,10 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         settings['match_whole_words'] = self.checkbox_match_whole_words.isChecked()
         settings['use_regex'] = self.checkbox_use_regex.isChecked()
 
-        settings['ignore_tags'] = self.search_stacked_widget_ignore_tags.checkbox_ignore_tags.isChecked()
-        settings['ignore_tags_tags'] = self.search_stacked_widget_ignore_tags.checkbox_ignore_tags_tags.isChecked()
-        settings['ignore_tags_type'] = self.search_stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentText()
-        settings['ignore_tags_type_tags'] = self.search_stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentText()
+        settings['ignore_tags'] = self.search_checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_tags'] = self.search_checkbox_ignore_tags_tags.isChecked()
+        settings['ignore_tags_type'] = self.search_combo_box_ignore_tags.currentText()
+        settings['ignore_tags_type_tags'] = self.search_combo_box_ignore_tags_tags.currentText()
         settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
     def generation_settings_changed(self):

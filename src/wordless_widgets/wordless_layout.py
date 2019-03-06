@@ -16,20 +16,6 @@ from PyQt5.QtWidgets import *
 from wordless_utils import wordless_misc
 from wordless_widgets import wordless_button
 
-class Wordless_Splitter(QSplitter):
-    def __init__(self, orientation, parent):
-        super().__init__(orientation, parent)
-
-        self.setHandleWidth(0)
-        self.setChildrenCollapsible(False)
-
-class Wordless_Scroll_Area(QScrollArea):
-    def __init__(self, parent):
-        super().__init__(parent)
-
-        self.setWidgetResizable(True)
-        self.setBackgroundRole(QPalette.Light)
-
 class Wordless_Wrapper(QWidget):
     def __init__(self, parent):
         super().__init__(parent)
@@ -95,9 +81,52 @@ class Wordless_Wrapper_File_Area(Wordless_Wrapper):
             }
         ''')
 
+class Wordless_Splitter(QSplitter):
+    def __init__(self, orientation, parent):
+        super().__init__(orientation, parent)
+
+        self.main = wordless_misc.find_wordless_main(parent)
+
+        self.setHandleWidth(0)
+        self.setChildrenCollapsible(False)
+
+class Wordless_Scroll_Area(QScrollArea):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.main = wordless_misc.find_wordless_main(parent)
+
+        self.setWidgetResizable(True)
+        self.setBackgroundRole(QPalette.Light)
+
+class Wordless_Stacked_Widget(QStackedWidget):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.main = wordless_misc.find_wordless_main(parent)
+
+        self.currentChanged.connect(self.current_changed)
+
+    def current_changed(self, index):
+        for i in range(self.count()):
+            self.widget(i).setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
+            self.widget(i).adjustSize()
+
+        self.widget(index).setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding);
+        self.widget(index).adjustSize()
+
+        self.adjustSize()
+
+    def addWidget(self, widget):
+        super().addWidget(widget)
+
+        self.currentChanged.emit(self.currentIndex())
+
 class Wordless_Separator(QFrame):
     def __init__(self, parent, orientation = 'Horizontal'):
         super().__init__(parent)
+
+        self.main = wordless_misc.find_wordless_main(parent)
 
         if orientation == 'Horizontal':
             self.setFrameShape(QFrame.HLine)

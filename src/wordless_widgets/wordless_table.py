@@ -43,6 +43,7 @@ class Wordless_Table(QTableWidget):
         self.headers = headers
         self.header_orientation = header_orientation
         self.cols_stretch = cols_stretch
+        self.settings = self.main.settings_custom
 
         if header_orientation == 'horizontal':
             super().__init__(1, len(self.headers), parent)
@@ -882,7 +883,6 @@ class Wordless_Table_Data(Wordless_Table):
         self.headers_pct = set(self.find_header(self.headers_pct_old))
         self.headers_cumulative = set(self.find_header(self.headers_cumulative_old))
         self.cols_breakdown = set(self.find_col(self.cols_breakdown_old))
-        self.settings = self.main.settings_default
 
         self.item_changed()
 
