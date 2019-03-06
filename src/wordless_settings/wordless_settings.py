@@ -240,6 +240,12 @@ class Wordless_Settings(QDialog):
                     self.stacked_widget_settings.setCurrentIndex(16)
 
                 self.tree_settings.item_selected_old = item_selected
+
+                # Delay loading of POS tag mappings
+                if item_selected_text == self.tr('Tagsets') and not self.pos_tag_mappings_loaded:
+                    self.combo_box_tagsets_lang.currentTextChanged.emit(self.combo_box_tagsets_lang.currentText())
+
+                    self.pos_tag_mappings_loaded = True
             else:
                 self.tree_settings.blockSignals(True)
 
@@ -247,12 +253,6 @@ class Wordless_Settings(QDialog):
                 self.tree_settings.item_selected_old.setSelected(True)
 
                 self.tree_settings.blockSignals(False)
-
-            # Delay loading of POS tag mappings
-            if item_selected_text == self.tr('Tagsets') and not self.pos_tag_mappings_loaded:
-                self.combo_box_tagsets_lang.currentTextChanged.emit(self.combo_box_tagsets_lang.currentText())
-
-                self.pos_tag_mappings_loaded = True
 
     # General
     def init_settings_general(self):
