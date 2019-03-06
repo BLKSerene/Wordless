@@ -477,16 +477,22 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         (self.checkbox_puncs,
 
          self.token_stacked_widget_ignore_tags,
+         self.token_checkbox_ignore_tags,
+         self.token_checkbox_ignore_tags_tags,
+
          self.token_stacked_widget_ignore_tags_type,
+         self.token_combo_box_ignore_tags,
+         self.token_combo_box_ignore_tags_tags,
+
          self.label_ignore_tags,
          self.checkbox_use_tags) = wordless_widgets.wordless_widgets_token_settings_concordancer(self)
 
         self.checkbox_puncs.stateChanged.connect(self.token_settings_changed)
 
-        self.token_stacked_widget_ignore_tags.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
-        self.token_stacked_widget_ignore_tags.checkbox_ignore_tags_tags.stateChanged.connect(self.token_settings_changed)
-        self.token_stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentTextChanged.connect(self.token_settings_changed)
-        self.token_stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentTextChanged.connect(self.token_settings_changed)
+        self.token_checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
+        self.token_checkbox_ignore_tags_tags.stateChanged.connect(self.token_settings_changed)
+        self.token_combo_box_ignore_tags.currentTextChanged.connect(self.token_settings_changed)
+        self.token_combo_box_ignore_tags_tags.currentTextChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
         layout_ignore_tags = QGridLayout()
@@ -707,10 +713,10 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         # Token Settings
         self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
 
-        self.token_stacked_widget_ignore_tags.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
-        self.token_stacked_widget_ignore_tags.checkbox_ignore_tags_tags.setChecked(settings['token_settings']['ignore_tags_tags'])
-        self.token_stacked_widget_ignore_tags_type.combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
-        self.token_stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.setCurrentText(settings['token_settings']['ignore_tags_type_tags'])
+        self.token_checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        self.token_checkbox_ignore_tags_tags.setChecked(settings['token_settings']['ignore_tags_tags'])
+        self.token_combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
+        self.token_combo_box_ignore_tags_tags.setCurrentText(settings['token_settings']['ignore_tags_type_tags'])
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Search Settings
@@ -763,10 +769,10 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         settings['puncs'] = self.checkbox_puncs.isChecked()
 
-        settings['ignore_tags'] = self.token_stacked_widget_ignore_tags.checkbox_ignore_tags.isChecked()
-        settings['ignore_tags_tags'] = self.token_stacked_widget_ignore_tags.checkbox_ignore_tags_tags.isChecked()
-        settings['ignore_tags_type'] = self.token_stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentText()
-        settings['ignore_tags_type_tags'] = self.token_stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentText()
+        settings['ignore_tags'] = self.token_checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_tags'] = self.token_checkbox_ignore_tags_tags.isChecked()
+        settings['ignore_tags_type'] = self.token_combo_box_ignore_tags.currentText()
+        settings['ignore_tags_type_tags'] = self.token_combo_box_ignore_tags_tags.currentText()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
         self.checkbox_match_tags.token_settings_changed()

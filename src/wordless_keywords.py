@@ -103,7 +103,13 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
          self.checkbox_filter_stop_words,
 
          self.stacked_widget_ignore_tags,
+         self.checkbox_ignore_tags,
+         self.checkbox_ignore_tags_tags,
+
          self.stacked_widget_ignore_tags_type,
+         self.combo_box_ignore_tags,
+         self.combo_box_ignore_tags_tags,
+
          self.label_ignore_tags,
          self.checkbox_use_tags) = wordless_widgets.wordless_widgets_token_settings(self)
 
@@ -118,10 +124,10 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         self.checkbox_lemmatize_tokens.stateChanged.connect(self.token_settings_changed)
         self.checkbox_filter_stop_words.stateChanged.connect(self.token_settings_changed)
 
-        self.stacked_widget_ignore_tags.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
-        self.stacked_widget_ignore_tags.checkbox_ignore_tags_tags.stateChanged.connect(self.token_settings_changed)
-        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentTextChanged.connect(self.token_settings_changed)
-        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentTextChanged.connect(self.token_settings_changed)
+        self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_ignore_tags_tags.stateChanged.connect(self.token_settings_changed)
+        self.combo_box_ignore_tags.currentTextChanged.connect(self.token_settings_changed)
+        self.combo_box_ignore_tags_tags.currentTextChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
         layout_ignore_tags = QGridLayout()
@@ -294,10 +300,10 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         self.checkbox_lemmatize_tokens.setChecked(settings['token_settings']['lemmatize_tokens'])
         self.checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
-        self.stacked_widget_ignore_tags.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
-        self.stacked_widget_ignore_tags.checkbox_ignore_tags_tags.setChecked(settings['token_settings']['ignore_tags_tags'])
-        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
-        self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.setCurrentText(settings['token_settings']['ignore_tags_type_tags'])
+        self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        self.checkbox_ignore_tags_tags.setChecked(settings['token_settings']['ignore_tags_tags'])
+        self.combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
+        self.combo_box_ignore_tags_tags.setCurrentText(settings['token_settings']['ignore_tags_type_tags'])
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Generation Settings
@@ -341,10 +347,10 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         settings['lemmatize_tokens'] = self.checkbox_lemmatize_tokens.isChecked()
         settings['filter_stop_words'] = self.checkbox_filter_stop_words.isChecked()
 
-        settings['ignore_tags'] = self.stacked_widget_ignore_tags.checkbox_ignore_tags.isChecked()
-        settings['ignore_tags_tags'] = self.stacked_widget_ignore_tags.checkbox_ignore_tags_tags.isChecked()
-        settings['ignore_tags_type'] = self.stacked_widget_ignore_tags_type.combo_box_ignore_tags.currentText()
-        settings['ignore_tags_type_tags'] = self.stacked_widget_ignore_tags_type.combo_box_ignore_tags_tags.currentText()
+        settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
+        settings['ignore_tags_tags'] = self.checkbox_ignore_tags_tags.isChecked()
+        settings['ignore_tags_type'] = self.combo_box_ignore_tags.currentText()
+        settings['ignore_tags_type_tags'] = self.combo_box_ignore_tags_tags.currentText()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
     def generation_settings_changed(self):
