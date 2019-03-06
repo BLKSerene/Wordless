@@ -18,8 +18,8 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_checking import wordless_checking_file, wordless_checking_misc
-from wordless_dialogs import wordless_message_box
-from wordless_widgets import wordless_message
+from wordless_dialogs import wordless_msg_box
+from wordless_widgets import wordless_msg
 from wordless_utils import wordless_detection, wordless_misc
 
 class Wordless_List(QListWidget):
@@ -126,9 +126,9 @@ class Wordless_List(QListWidget):
 
             file_paths, files_loading_error = wordless_checking_file.check_files_loading_error(self.main, file_paths, encodings)
 
-            wordless_message_box.wordless_message_box_file_error_on_importing(self.main,
-                                                                              files_empty = files_empty,
-                                                                              files_loading_error = files_loading_error)
+            wordless_msg_box.wordless_msg_box_file_error_on_importing(self.main,
+                                                                      files_empty = files_empty,
+                                                                      files_loading_error = files_loading_error)
 
             # Check duplicate items
             items_to_import = []
@@ -147,7 +147,7 @@ class Wordless_List(QListWidget):
 
             self.load_items(collections.OrderedDict.fromkeys(items_to_import))
 
-            wordless_message.wordless_message_import_list_success(self.main, num_prev, len(self.get_items()))
+            wordless_msg.wordless_msg_import_list_success(self.main, num_prev, len(self.get_items()))
 
     def export_list(self, settings):
         default_dir = self.main.settings_custom['export'][settings]['default_path']
@@ -164,7 +164,7 @@ class Wordless_List(QListWidget):
                 for item in self.get_items():
                     f.write(item + '\n')
 
-            wordless_message_box.wordless_message_box_export_search_terms(self.main, file_path)
+            wordless_msg_box.wordless_msg_box_export_list(self.main, file_path)
 
             self.main.settings_custom['export'][settings]['default_path'] = os.path.normpath(os.path.dirname(file_path))
 
@@ -191,7 +191,7 @@ class Wordless_List_Search_Terms(Wordless_List):
                 for i in range(self.count()):
                     if self.item(i) != item:
                         if item.text() == self.item(i).text():
-                            wordless_message_box.wordless_message_box_duplicate_search_terms(self.main)
+                            wordless_msg_box.wordless_msg_box_duplicate_search_terms(self.main)
 
                             item.setText(item.old_text)
 
@@ -236,7 +236,7 @@ class Wordless_List_Stop_Words(Wordless_List):
                 for i in range(self.count()):
                     if self.item(i) != item:
                         if item.text() == self.item(i).text():
-                            wordless_message_box.wordless_message_box_duplicate_stop_words(self.main)
+                            wordless_msg_box.wordless_msg_box_duplicate_stop_words(self.main)
 
                             item.setText(item.old_text)
 

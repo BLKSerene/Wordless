@@ -12,7 +12,6 @@
 <div align="center"><img src="/doc/wordless_logo.png" alt="logo"></div>
 
 ---
-
 Wordless is an integrated corpus tool with multi-language support for the study of language, literature and translation designed and developed by Ye Lei (叶磊), MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
 
 ## License
