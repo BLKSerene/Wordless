@@ -429,16 +429,20 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
                 <div>
                     If you would like to support the development of Wordless, you may donate via PayPal, Alipay or WeChat.
                 </div>
-
-                <div>
-                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>WILL NOT PROVIDE</b> refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation. 
-                </div>
             '''),
             self
         )
         self.label_donating_via = QLabel(self.tr('Donating via:'), self)
         self.combo_box_donating_via = wordless_box.Wordless_Combo_Box(self)
         self.label_donating_via_img = wordless_label.Wordless_Label_Html('', self)
+        self.label_donating_note = wordless_label.Wordless_Label_Dialog(
+            self.tr('''
+                <div>
+                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>WILL NOT PROVIDE</b> refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation. 
+                </div>
+            '''),
+            self
+        )
 
         self.combo_box_donating_via.addItems([
             self.tr('PayPal'),
@@ -457,6 +461,7 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
         self.wrapper_info.layout().addWidget(self.label_donating, 0, 0)
         self.wrapper_info.layout().addLayout(layout_donating_via, 1, 0)
         self.wrapper_info.layout().addWidget(self.label_donating_via_img, 2, 0, Qt.AlignHCenter | Qt.AlignVCenter)
+        self.wrapper_info.layout().addWidget(self.label_donating_note, 3, 0)
 
         self.load_settings()
 

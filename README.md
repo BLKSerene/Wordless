@@ -90,12 +90,12 @@ If you encounter a problem, find a bug or require any further information, feel 
 
 If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may [send me an email](mailto:blkserene@gmail.com).
 
-**Important Note**: I CANNOT GUARANTEE that all emails will always be checked or replied in time. I WILL NOT REPLY to irrelevant emails and I reserve the right to BLOCK AND/OR REPORT people who send me spam emails.
-
 Home Page: https://github.com/BLKSerene/Wordless<br>
 Documentation: https://github.com/BLKSerene/Wordless#documentation<br>
 Email: blkserene@gmail.com<br>
-[WeChat](https://www.wechat.com/en/) Official Account: Wordless
+[WeChat](https://www.wechat.com/en/) Official Account: Wordless<br>
+
+**Important Note**: I CANNOT GUARANTEE that all emails will always be checked or replied in time. I WILL NOT REPLY to irrelevant emails and I reserve the right to BLOCK AND/OR REPORT people who send me spam emails.
 
 ## Contributing
 If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements or new features by [creating a pull request](https://github.com/BLKSerene/Wordless/pulls) on Github.
@@ -105,11 +105,11 @@ Besides, you may contribute by submitting enhancement proposals or feature reque
 ## Donating
 If you would like to support the development of Wordless, you may donate via PayPal, Alipay or WeChat.
 
-**Important Note**: I WILL NOT PROVIDE refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation.
+PayPal|Alipay|WeChat
+------|------|------
+[![PayPal](/src/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|![Alipay](/src/imgs/donating_alipay.png)|![WeChat](/src/imgs/donating_wechat.png)
 
-|PayPal|Alipay|WeChat|
-|------|------|------|
-|[![PayPal](/src/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|![Alipay](/src/imgs/donating_alipay.png)|![WeChat](/src/imgs/donating_wechat.png)|
+**Important Note**: I WILL NOT PROVIDE refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation.
 
 <span id="doc-eng"></span>
 ## Documentation - English
