@@ -21,7 +21,8 @@ from wordless_checking import wordless_checking_file
 from wordless_dialogs import wordless_dialog_misc
 from wordless_text import wordless_text, wordless_text_utils, wordless_token_processing
 from wordless_utils import wordless_misc, wordless_threading
-from wordless_widgets import wordless_layout, wordless_message, wordless_table, wordless_widgets
+from wordless_widgets import (wordless_layout, wordless_msg, wordless_table,
+                              wordless_widgets)
 
 class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
     def __init__(self, parent):
@@ -131,14 +132,14 @@ class Wrapper_Overview(wordless_layout.Wordless_Wrapper):
         self.combo_box_ignore_tags_tags.currentTextChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
-        layout_ignore_tags = QGridLayout()
+        layout_ignore_tags = wordless_layout.Wordless_Layout()
         layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags, 0, 0)
         layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags_type, 0, 1)
         layout_ignore_tags.addWidget(self.label_ignore_tags, 0, 2)
 
         layout_ignore_tags.setColumnStretch(3, 1)
 
-        self.group_box_token_settings.setLayout(QGridLayout())
+        self.group_box_token_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lowercase, 0, 1)
         self.group_box_token_settings.layout().addWidget(self.checkbox_uppercase, 1, 0)
@@ -167,7 +168,7 @@ class Wrapper_Overview(wordless_layout.Wordless_Wrapper):
 
         self.spin_box_base_sttr.valueChanged.connect(self.generation_settings_changed)
 
-        self.group_box_generation_settings.setLayout(QGridLayout())
+        self.group_box_generation_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_base_sttr, 0, 0)
         self.group_box_generation_settings.layout().addWidget(self.spin_box_base_sttr, 1, 0)
 
@@ -183,7 +184,7 @@ class Wrapper_Overview(wordless_layout.Wordless_Wrapper):
         self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_breakdown.stateChanged.connect(self.table_settings_changed)
 
-        self.group_box_table_settings.setLayout(QGridLayout())
+        self.group_box_table_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
@@ -434,7 +435,7 @@ def generate_table(main, table):
 
         table.itemChanged.emit(table.item(0, 0))
 
-        wordless_message.wordless_message_generate_table_success(main)
+        wordless_msg.wordless_msg_generate_table_success(main)
 
         dialog_progress.accept()
 
@@ -454,4 +455,4 @@ def generate_table(main, table):
         thread_process_data.quit()
         thread_process_data.wait()
     else:
-        wordless_message.wordless_message_generate_table_error(main)
+        wordless_msg.wordless_msg_generate_table_error(main)

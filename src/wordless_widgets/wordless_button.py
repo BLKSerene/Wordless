@@ -13,7 +13,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wordless_dialogs import wordless_message_box
+from wordless_dialogs import wordless_msg_box
 from wordless_utils import wordless_misc
 
 class Wordless_Button(QPushButton):
@@ -31,7 +31,7 @@ class Wordless_Button_Reset_Settings(Wordless_Button):
         self.clicked.connect(self.reset_settings)
 
     def reset_settings(self):
-        if wordless_message_box.wordless_message_box_reset_settings(self.main):
+        if wordless_msg_box.wordless_msg_box_reset_settings(self.main):
             self.parent.load_settings(defaults = True)
 
         self.parent.activateWindow()
@@ -45,7 +45,7 @@ class Wordless_Button_Reset_All_Settings(Wordless_Button):
         self.clicked.connect(self.reset_settings)
 
     def reset_settings(self):
-        if wordless_message_box.wordless_message_box_reset_all_settings(self.main):
+        if wordless_msg_box.wordless_msg_box_reset_all_settings(self.main):
             self.parent.load_settings(defaults = True)
 
         self.parent.activateWindow()

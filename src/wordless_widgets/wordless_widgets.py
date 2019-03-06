@@ -296,7 +296,7 @@ def wordless_widgets_search_settings(parent, tab):
 
     wrapper_search_terms = QWidget(parent)
 
-    wrapper_search_terms.setLayout(QGridLayout())
+    wrapper_search_terms.setLayout(wordless_layout.Wordless_Layout())
     wrapper_search_terms.layout().addWidget(list_search_terms, 0, 0, 5, 1)
     wrapper_search_terms.layout().addWidget(list_search_terms.button_add, 0, 1)
     wrapper_search_terms.layout().addWidget(list_search_terms.button_remove, 1, 1)

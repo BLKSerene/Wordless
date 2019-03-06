@@ -8,10 +8,3 @@
 #
 # All other rights reserved.
 #
-
-__all__ = [
-    'wordless_checking_file',
-    'wordless_checking_token',
-    'wordless_checking_misc',
-    'wordless_checking_unicode'
-]

@@ -23,7 +23,7 @@ from PyQt5.QtWidgets import *
 
 import nltk
 
-from wordless_dialogs import wordless_dialog_misc, wordless_message_box
+from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
 from wordless_tagsets import wordless_tagset_universal
 from wordless_text import wordless_text_processing, wordless_text_utils
 from wordless_utils import wordless_conversion, wordless_threading
@@ -172,12 +172,12 @@ class Wordless_Settings(QDialog):
         button_apply.clicked.connect(self.settings_apply)
         button_cancel.clicked.connect(self.reject)
 
-        layout_buttons_right = QGridLayout()
+        layout_buttons_right = wordless_layout.Wordless_Layout()
         layout_buttons_right.addWidget(button_save, 0, 0)
         layout_buttons_right.addWidget(button_apply, 0, 1)
         layout_buttons_right.addWidget(button_cancel, 0, 2)
 
-        self.setLayout(QGridLayout())
+        self.setLayout(wordless_layout.Wordless_Layout())
         self.layout().addWidget(self.tree_settings, 0, 0)
         self.layout().addWidget(self.scroll_area_settings, 0, 1)
         self.layout().addWidget(button_reset_settings, 1, 0)
@@ -263,7 +263,7 @@ class Wordless_Settings(QDialog):
 
         self.checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for updates on startup'), self)
 
-        group_box_update_settings.setLayout(QGridLayout())
+        group_box_update_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_update_settings.layout().addWidget(self.checkbox_check_updates_on_startup, 0, 0)
 
         # Miscellaneous
@@ -271,10 +271,10 @@ class Wordless_Settings(QDialog):
 
         self.checkbox_confirm_on_exit = QCheckBox(self.tr('Always confirm on exit'), self)
 
-        group_box_misc.setLayout(QGridLayout())
+        group_box_misc.setLayout(wordless_layout.Wordless_Layout())
         group_box_misc.layout().addWidget(self.checkbox_confirm_on_exit, 0, 0)
 
-        self.settings_general.setLayout(QGridLayout())
+        self.settings_general.setLayout(wordless_layout.Wordless_Layout())
         self.settings_general.layout().addWidget(group_box_update_settings, 0, 0)
         self.settings_general.layout().addWidget(group_box_misc, 1, 0)
 
@@ -323,7 +323,7 @@ class Wordless_Settings(QDialog):
 
         self.button_import_files_browse.clicked.connect(browse_files)
 
-        group_box_import_files.setLayout(QGridLayout())
+        group_box_import_files.setLayout(wordless_layout.Wordless_Layout())
         group_box_import_files.layout().addWidget(self.label_import_files_default_path, 0, 0)
         group_box_import_files.layout().addWidget(self.line_edit_import_files_default_path, 0, 1)
         group_box_import_files.layout().addWidget(self.button_import_files_browse, 0, 2)
@@ -338,7 +338,7 @@ class Wordless_Settings(QDialog):
 
         self.button_import_search_terms_browse.clicked.connect(browse_search_terms)
 
-        group_box_import_search_terms.setLayout(QGridLayout())
+        group_box_import_search_terms.setLayout(wordless_layout.Wordless_Layout())
         group_box_import_search_terms.layout().addWidget(self.label_import_search_terms_default_path, 0, 0)
         group_box_import_search_terms.layout().addWidget(self.line_edit_import_search_terms_default_path, 0, 1)
         group_box_import_search_terms.layout().addWidget(self.button_import_search_terms_browse, 0, 2)
@@ -354,7 +354,7 @@ class Wordless_Settings(QDialog):
 
         self.button_import_stop_words_browse.clicked.connect(browse_stop_words)
 
-        group_box_import_stop_words.setLayout(QGridLayout())
+        group_box_import_stop_words.setLayout(wordless_layout.Wordless_Layout())
         group_box_import_stop_words.layout().addWidget(self.label_import_stop_words_default_path, 0, 0)
         group_box_import_stop_words.layout().addWidget(self.line_edit_import_stop_words_default_path, 0, 1)
         group_box_import_stop_words.layout().addWidget(self.button_import_stop_words_browse, 0, 2)
@@ -371,14 +371,14 @@ class Wordless_Settings(QDialog):
 
         self.button_import_temp_files_browse.clicked.connect(browse_temp_files)
 
-        group_box_import_temp_files.setLayout(QGridLayout())
+        group_box_import_temp_files.setLayout(wordless_layout.Wordless_Layout())
         group_box_import_temp_files.layout().addWidget(self.label_import_temp_files_default_path, 0, 0)
         group_box_import_temp_files.layout().addWidget(self.line_edit_import_temp_files_default_path, 0, 1)
         group_box_import_temp_files.layout().addWidget(self.button_import_temp_files_browse, 0, 2)
         group_box_import_temp_files.layout().addWidget(self.label_import_temp_files_default_encoding, 1, 0)
         group_box_import_temp_files.layout().addWidget(self.combo_box_import_temp_files_default_encoding, 1, 1, 1, 2)
 
-        self.settings_import.setLayout(QGridLayout())
+        self.settings_import.setLayout(wordless_layout.Wordless_Layout())
         self.settings_import.layout().addWidget(group_box_import_files, 0, 0)
         self.settings_import.layout().addWidget(group_box_import_search_terms, 1, 0)
         self.settings_import.layout().addWidget(group_box_import_stop_words, 2, 0)
@@ -437,7 +437,7 @@ class Wordless_Settings(QDialog):
         self.button_export_tables_default_path.clicked.connect(browse_tables)
         self.combo_box_export_tables_default_type.currentTextChanged.connect(tables_default_type_changed)
 
-        group_box_export_tables.setLayout(QGridLayout())
+        group_box_export_tables.setLayout(wordless_layout.Wordless_Layout())
         group_box_export_tables.layout().addWidget(self.label_export_tables_default_path, 0, 0)
         group_box_export_tables.layout().addWidget(self.line_edit_export_tables_default_path, 0, 1)
         group_box_export_tables.layout().addWidget(self.button_export_tables_default_path, 0, 2)
@@ -457,7 +457,7 @@ class Wordless_Settings(QDialog):
 
         self.button_export_search_terms_default_path.clicked.connect(browse_search_terms)
 
-        group_box_export_search_terms.setLayout(QGridLayout())
+        group_box_export_search_terms.setLayout(wordless_layout.Wordless_Layout())
         group_box_export_search_terms.layout().addWidget(self.label_export_search_terms_default_path, 0, 0)
         group_box_export_search_terms.layout().addWidget(self.line_edit_export_search_terms_default_path, 0, 1)
         group_box_export_search_terms.layout().addWidget(self.button_export_search_terms_default_path, 0, 2)
@@ -475,14 +475,14 @@ class Wordless_Settings(QDialog):
 
         self.button_export_stop_words_default_path.clicked.connect(browse_stop_words)
 
-        group_box_export_stop_words.setLayout(QGridLayout())
+        group_box_export_stop_words.setLayout(wordless_layout.Wordless_Layout())
         group_box_export_stop_words.layout().addWidget(self.label_export_stop_words_default_path, 0, 0)
         group_box_export_stop_words.layout().addWidget(self.line_edit_export_stop_words_default_path, 0, 1)
         group_box_export_stop_words.layout().addWidget(self.button_export_stop_words_default_path, 0, 2)
         group_box_export_stop_words.layout().addWidget(self.label_export_stop_words_default_encoding, 1, 0)
         group_box_export_stop_words.layout().addWidget(self.combo_box_export_stop_words_default_encoding, 1, 1, 1, 2)
 
-        self.settings_export.setLayout(QGridLayout())
+        self.settings_export.setLayout(wordless_layout.Wordless_Layout())
         self.settings_export.layout().addWidget(group_box_export_tables, 0, 0)
         self.settings_export.layout().addWidget(group_box_export_search_terms, 1, 0)
         self.settings_export.layout().addWidget(group_box_export_stop_words, 2, 0)
@@ -505,7 +505,7 @@ class Wordless_Settings(QDialog):
 
         self.spin_box_auto_detection_number_lines.setRange(1, 1000000)
 
-        group_box_detection_settings.setLayout(QGridLayout())
+        group_box_detection_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_detection_settings.layout().addWidget(self.label_auto_detection_number_lines, 0, 0)
         group_box_detection_settings.layout().addWidget(self.spin_box_auto_detection_number_lines, 0, 1)
         group_box_detection_settings.layout().addWidget(self.checkbox_auto_detection_number_lines_no_limit, 0, 2)
@@ -522,7 +522,7 @@ class Wordless_Settings(QDialog):
         self.label_auto_detection_default_encoding = QLabel(self.tr('Default Encoding:'), self)
         self.combo_box_auto_detection_default_encoding = wordless_box.Wordless_Combo_Box_Encoding(self)
 
-        group_box_default_settings.setLayout(QGridLayout())
+        group_box_default_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_default_settings.layout().addWidget(self.label_auto_detection_default_lang, 0, 0)
         group_box_default_settings.layout().addWidget(self.combo_box_auto_detection_default_lang, 0, 1)
         group_box_default_settings.layout().addWidget(self.label_auto_detection_default_text_type, 1, 0)
@@ -532,7 +532,7 @@ class Wordless_Settings(QDialog):
 
         group_box_default_settings.layout().setColumnStretch(3, 1)
 
-        self.settings_auto_detection.setLayout(QGridLayout())
+        self.settings_auto_detection.setLayout(wordless_layout.Wordless_Layout())
         self.settings_auto_detection.layout().addWidget(group_box_detection_settings, 0, 0)
         self.settings_auto_detection.layout().addWidget(group_box_default_settings, 1, 0)
 
@@ -557,7 +557,7 @@ class Wordless_Settings(QDialog):
         self.spin_box_precision_pct.setRange(0, 10)
         self.spin_box_precision_p_value.setRange(0, 15)
 
-        group_box_precision_settings.setLayout(QGridLayout())
+        group_box_precision_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_precision_settings.layout().addWidget(self.label_precision_decimal, 0, 0)
         group_box_precision_settings.layout().addWidget(self.spin_box_precision_decimal, 0, 1)
         group_box_precision_settings.layout().addWidget(self.label_precision_pct, 1, 0)
@@ -567,7 +567,7 @@ class Wordless_Settings(QDialog):
 
         group_box_precision_settings.layout().setColumnStretch(2, 1)
 
-        self.settings_data.setLayout(QGridLayout())
+        self.settings_data.setLayout(wordless_layout.Wordless_Layout())
         self.settings_data.layout().addWidget(group_box_precision_settings, 0, 0)
 
         self.settings_data.layout().setContentsMargins(6, 4, 6, 4)
@@ -582,7 +582,7 @@ class Wordless_Settings(QDialog):
 
         self.table_tags_pos = Wordless_Table_Tags_Pos(self)
 
-        group_box_pos_tag_settings.setLayout(QGridLayout())
+        group_box_pos_tag_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_pos_tag_settings.layout().addWidget(self.table_tags_pos, 0, 0, 1, 3)
         group_box_pos_tag_settings.layout().addWidget(self.table_tags_pos.button_add, 1, 0)
         group_box_pos_tag_settings.layout().addWidget(self.table_tags_pos.button_remove, 1, 1)
@@ -593,13 +593,13 @@ class Wordless_Settings(QDialog):
 
         self.table_tags_non_pos = Wordless_Table_Tags_Non_Pos(self)
 
-        group_box_non_pos_tag_settings.setLayout(QGridLayout())
+        group_box_non_pos_tag_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_non_pos_tag_settings.layout().addWidget(self.table_tags_non_pos, 0, 0, 1, 3)
         group_box_non_pos_tag_settings.layout().addWidget(self.table_tags_non_pos.button_add, 1, 0)
         group_box_non_pos_tag_settings.layout().addWidget(self.table_tags_non_pos.button_remove, 1, 1)
         group_box_non_pos_tag_settings.layout().addWidget(self.table_tags_non_pos.button_reset, 1, 2)
 
-        self.settings_tags.setLayout(QGridLayout())
+        self.settings_tags.setLayout(wordless_layout.Wordless_Layout())
         self.settings_tags.layout().addWidget(group_box_pos_tag_settings, 0, 0)
         self.settings_tags.layout().addWidget(group_box_non_pos_tag_settings, 1, 0)
 
@@ -691,7 +691,7 @@ class Wordless_Settings(QDialog):
 
             table_sentence_tokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_sentence_tokenizer_{lang}'])
 
-        group_box_sentence_tokenizer_settings.setLayout(QGridLayout())
+        group_box_sentence_tokenizer_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_sentence_tokenizer_settings.layout().addWidget(table_sentence_tokenizers, 0, 0)
 
         # Preview
@@ -716,19 +716,19 @@ class Wordless_Settings(QDialog):
 
         self.preview_results_updated_sentence_tokenization.connect(preview_results_updated)
 
-        layout_preview_settings = QGridLayout()
+        layout_preview_settings = wordless_layout.Wordless_Layout()
         layout_preview_settings.addWidget(self.label_sentence_tokenization_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_sentence_tokenization_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.label_sentence_tokenization_preview_processing, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
-        group_box_preview.setLayout(QGridLayout())
+        group_box_preview.setLayout(wordless_layout.Wordless_Layout())
         group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
         group_box_preview.layout().addWidget(self.text_edit_sentence_tokenization_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_sentence_tokenization_preview_results, 1, 1)
 
-        self.settings_sentence_tokenization.setLayout(QGridLayout())
+        self.settings_sentence_tokenization.setLayout(wordless_layout.Wordless_Layout())
         self.settings_sentence_tokenization.layout().addWidget(group_box_sentence_tokenizer_settings, 0, 0)
         self.settings_sentence_tokenization.layout().addWidget(group_box_preview, 1, 0)
 
@@ -836,7 +836,7 @@ class Wordless_Settings(QDialog):
 
             table_word_tokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_word_tokenizer_{lang}'])
 
-        group_box_word_tokenizer_settings.setLayout(QGridLayout())
+        group_box_word_tokenizer_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_word_tokenizer_settings.layout().addWidget(table_word_tokenizers, 0, 0)
 
         # Preview
@@ -861,19 +861,19 @@ class Wordless_Settings(QDialog):
 
         self.preview_results_updated_word_tokenization.connect(preview_results_updated)
 
-        layout_preview_settings = QGridLayout()
+        layout_preview_settings = wordless_layout.Wordless_Layout()
         layout_preview_settings.addWidget(self.label_word_tokenization_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_word_tokenization_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.label_word_tokenization_preview_processing, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
-        group_box_preview.setLayout(QGridLayout())
+        group_box_preview.setLayout(wordless_layout.Wordless_Layout())
         group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
         group_box_preview.layout().addWidget(self.text_edit_word_tokenization_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_word_tokenization_preview_results, 1, 1)
 
-        self.settings_word_tokenization.setLayout(QGridLayout())
+        self.settings_word_tokenization.setLayout(wordless_layout.Wordless_Layout())
         self.settings_word_tokenization.layout().addWidget(group_box_word_tokenizer_settings, 0, 0,)
         self.settings_word_tokenization.layout().addWidget(group_box_preview, 1, 0)
 
@@ -971,7 +971,7 @@ class Wordless_Settings(QDialog):
 
             table_word_detokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_word_detokenizer_{lang}'])
 
-        group_box_word_detokenizer_settings.setLayout(QGridLayout())
+        group_box_word_detokenizer_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_word_detokenizer_settings.layout().addWidget(table_word_detokenizers, 0, 0)
 
         # Preview
@@ -996,19 +996,19 @@ class Wordless_Settings(QDialog):
 
         self.preview_results_updated_word_detokenization.connect(preview_results_updated)
 
-        layout_preview_settings = QGridLayout()
+        layout_preview_settings = wordless_layout.Wordless_Layout()
         layout_preview_settings.addWidget(self.label_word_detokenization_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_word_detokenization_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.label_word_detokenization_preview_processing, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
-        group_box_preview.setLayout(QGridLayout())
+        group_box_preview.setLayout(wordless_layout.Wordless_Layout())
         group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
         group_box_preview.layout().addWidget(self.text_edit_word_detokenization_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_word_detokenization_preview_results, 1, 1)
 
-        self.settings_word_detokenization.setLayout(QGridLayout())
+        self.settings_word_detokenization.setLayout(wordless_layout.Wordless_Layout())
         self.settings_word_detokenization.layout().addWidget(group_box_word_detokenizer_settings, 0, 0,)
         self.settings_word_detokenization.layout().addWidget(group_box_preview, 1, 0)
 
@@ -1125,7 +1125,7 @@ class Wordless_Settings(QDialog):
 
         self.checkbox_to_universal_pos_tags.stateChanged.connect(preview_results_changed)
 
-        group_box_pos_tagger_settings.setLayout(QGridLayout())
+        group_box_pos_tagger_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_pos_tagger_settings.layout().addWidget(self.table_pos_taggers, 0, 0)
         group_box_pos_tagger_settings.layout().addWidget(self.checkbox_to_universal_pos_tags, 1, 0)
 
@@ -1151,19 +1151,19 @@ class Wordless_Settings(QDialog):
 
         self.preview_results_updated_pos_tagging.connect(preview_results_updated)
 
-        layout_preview_settings = QGridLayout()
+        layout_preview_settings = wordless_layout.Wordless_Layout()
         layout_preview_settings.addWidget(self.label_pos_tagging_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_pos_tagging_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.label_pos_tagging_preview_processing, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
-        group_box_preview.setLayout(QGridLayout())
+        group_box_preview.setLayout(wordless_layout.Wordless_Layout())
         group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
         group_box_preview.layout().addWidget(self.text_edit_pos_tagging_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_pos_tagging_preview_results, 1, 1)
 
-        self.settings_pos_tagging.setLayout(QGridLayout())
+        self.settings_pos_tagging.setLayout(wordless_layout.Wordless_Layout())
         self.settings_pos_tagging.layout().addWidget(group_box_pos_tagger_settings, 0, 0)
         self.settings_pos_tagging.layout().addWidget(group_box_preview, 1, 0)
 
@@ -1293,11 +1293,11 @@ class Wordless_Settings(QDialog):
             settings_custom['mappings'][preview_lang][preview_pos_tagger] = mappings
 
         def reset_mappings():
-            if wordless_message_box.wordless_message_box_reset_mappings(self.main):
+            if wordless_msg_box.wordless_msg_box_reset_mappings(self.main):
                 reset_currently_shown_table()
 
         def reset_all_mappings():
-            if wordless_message_box.wordless_message_box_reset_all_mappings(self.main):
+            if wordless_msg_box.wordless_msg_box_reset_all_mappings(self.main):
                 settings_custom['mappings'] = copy.deepcopy(self.main.settings_default['tagsets']['mappings'])
 
                 reset_currently_shown_table()
@@ -1320,7 +1320,7 @@ class Wordless_Settings(QDialog):
         self.combo_box_tagsets_lang.currentTextChanged.connect(preview_lang_changed)
         self.combo_box_tagsets_pos_tagger.currentTextChanged.connect(preview_pos_tagger_changed)
 
-        group_box_preview_settings.setLayout(QGridLayout())
+        group_box_preview_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_preview_settings.layout().addWidget(self.label_tagsets_lang, 0, 0)
         group_box_preview_settings.layout().addWidget(self.combo_box_tagsets_lang, 0, 1, Qt.AlignLeft)
         group_box_preview_settings.layout().addWidget(self.label_tagsets_pos_tagger, 1, 0)
@@ -1348,7 +1348,7 @@ class Wordless_Settings(QDialog):
         self.button_tagsets_reset_mappings.clicked.connect(reset_mappings)
         self.button_tagsets_reset_all_mappings.clicked.connect(reset_all_mappings)
 
-        group_box_mapping_settings.setLayout(QGridLayout())
+        group_box_mapping_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_mapping_settings.layout().addWidget(self.label_tagsets_num_pos_tags, 0, 0)
         group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset_mappings, 0, 2)
         group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset_all_mappings, 0, 3)
@@ -1356,7 +1356,7 @@ class Wordless_Settings(QDialog):
 
         group_box_mapping_settings.layout().setColumnStretch(1, 1)
 
-        self.settings_tagsets.setLayout(QGridLayout())
+        self.settings_tagsets.setLayout(wordless_layout.Wordless_Layout())
         self.settings_tagsets.layout().addWidget(group_box_preview_settings, 0, 0)
         self.settings_tagsets.layout().addWidget(group_box_mapping_settings, 1, 0)
 
@@ -1465,7 +1465,7 @@ class Wordless_Settings(QDialog):
 
             table_lemmatizers.setCellWidget(i, 1, self.__dict__[f'combo_box_lemmatizer_{lang}'])
 
-        group_box_lemmatizer_settings.setLayout(QGridLayout())
+        group_box_lemmatizer_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_lemmatizer_settings.layout().addWidget(table_lemmatizers, 0, 0)
 
         # Preview
@@ -1490,19 +1490,19 @@ class Wordless_Settings(QDialog):
 
         self.preview_results_updated_lemmatization.connect(preview_results_updated)
 
-        layout_preview_settings = QGridLayout()
+        layout_preview_settings = wordless_layout.Wordless_Layout()
         layout_preview_settings.addWidget(self.label_lemmatization_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_lemmatization_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.label_lemmatization_preview_processing, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
-        group_box_preview.setLayout(QGridLayout())
+        group_box_preview.setLayout(wordless_layout.Wordless_Layout())
         group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
         group_box_preview.layout().addWidget(self.text_edit_lemmatization_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_lemmatization_preview_results, 1, 1)
 
-        self.settings_lemmatization.setLayout(QGridLayout())
+        self.settings_lemmatization.setLayout(wordless_layout.Wordless_Layout())
         self.settings_lemmatization.layout().addWidget(group_box_lemmatizer_settings, 0, 0)
         self.settings_lemmatization.layout().addWidget(group_box_preview, 1, 0)
 
@@ -1565,7 +1565,7 @@ class Wordless_Settings(QDialog):
 
             table_stop_words.setCellWidget(i, 1, self.__dict__[f'combo_box_stop_words_{lang}'])
 
-        group_box_stop_words_settings.setLayout(QGridLayout())
+        group_box_stop_words_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_stop_words_settings.layout().addWidget(table_stop_words, 0, 0)
 
         # Preview
@@ -1581,14 +1581,14 @@ class Wordless_Settings(QDialog):
         self.combo_box_stop_words_preview_lang.currentTextChanged.connect(preview_settings_changed)
         self.combo_box_stop_words_preview_lang.currentTextChanged.connect(preview_results_changed)
 
-        layout_preview_settings = QGridLayout()
+        layout_preview_settings = wordless_layout.Wordless_Layout()
         layout_preview_settings.addWidget(self.label_stop_words_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_stop_words_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.label_stop_words_preview_count, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
-        group_box_preview.setLayout(QGridLayout())
+        group_box_preview.setLayout(wordless_layout.Wordless_Layout())
         group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 5)
         group_box_preview.layout().addWidget(self.list_stop_words_preview_results, 1, 0, 1, 5)
         group_box_preview.layout().addWidget(self.list_stop_words_preview_results.button_add, 2, 0)
@@ -1597,7 +1597,7 @@ class Wordless_Settings(QDialog):
         group_box_preview.layout().addWidget(self.list_stop_words_preview_results.button_import, 2, 3)
         group_box_preview.layout().addWidget(self.list_stop_words_preview_results.button_export, 2, 4)
 
-        self.settings_stop_words.setLayout(QGridLayout())
+        self.settings_stop_words.setLayout(wordless_layout.Wordless_Layout())
         self.settings_stop_words.layout().addWidget(group_box_stop_words_settings, 0, 0)
         self.settings_stop_words.layout().addWidget(group_box_preview, 1, 0)
 
@@ -1618,14 +1618,14 @@ class Wordless_Settings(QDialog):
          self.spin_box_dispersion_number_sections,
          self.label_dispersion_sections) = wordless_widgets.wordless_widgets_number_sections(self)
 
-        group_box_general.setLayout(QGridLayout())
+        group_box_general.setLayout(wordless_layout.Wordless_Layout())
         group_box_general.layout().addWidget(self.label_dispersion_divide, 0, 0)
         group_box_general.layout().addWidget(self.spin_box_dispersion_number_sections, 0, 1)
         group_box_general.layout().addWidget(self.label_dispersion_sections, 0, 2)
 
         group_box_general.layout().setColumnStretch(3, 1)
 
-        self.settings_dispersion.setLayout(QGridLayout())
+        self.settings_dispersion.setLayout(wordless_layout.Wordless_Layout())
         self.settings_dispersion.layout().addWidget(group_box_general, 0, 0)
 
         self.settings_dispersion.layout().setContentsMargins(6, 4, 6, 4)
@@ -1651,7 +1651,7 @@ class Wordless_Settings(QDialog):
 
         self.checkbox_use_same_settings_dispersion.stateChanged.connect(use_same_settings_changed)
 
-        group_box_general.setLayout(QGridLayout())
+        group_box_general.setLayout(wordless_layout.Wordless_Layout())
         group_box_general.layout().addWidget(self.label_adjusted_freq_divide, 0, 0)
         group_box_general.layout().addWidget(self.spin_box_adjusted_freq_number_sections, 0, 1)
         group_box_general.layout().addWidget(self.label_adjusted_freq_sections, 0, 2)
@@ -1659,7 +1659,7 @@ class Wordless_Settings(QDialog):
 
         group_box_general.layout().setColumnStretch(3, 1)
 
-        self.settings_adjusted_freq.setLayout(QGridLayout())
+        self.settings_adjusted_freq.setLayout(wordless_layout.Wordless_Layout())
         self.settings_adjusted_freq.layout().addWidget(group_box_general, 0, 0)
 
         self.settings_adjusted_freq.layout().setContentsMargins(6, 4, 6, 4)
@@ -1677,7 +1677,7 @@ class Wordless_Settings(QDialog):
         (self.label_z_score_direction,
          self.combo_box_z_score_direction) = wordless_widgets.wordless_widgets_direction_2(self)
 
-        group_box_z_score.setLayout(QGridLayout())
+        group_box_z_score.setLayout(wordless_layout.Wordless_Layout())
         group_box_z_score.layout().addWidget(self.label_z_score_direction, 0, 0)
         group_box_z_score.layout().addWidget(self.combo_box_z_score_direction, 0, 1)
 
@@ -1706,14 +1706,14 @@ class Wordless_Settings(QDialog):
             self.tr('Unequal')
         ])
 
-        layout_students_t_test_two_sample_number_sections = QGridLayout()
+        layout_students_t_test_two_sample_number_sections = wordless_layout.Wordless_Layout()
         layout_students_t_test_two_sample_number_sections.addWidget(self.label_students_t_test_two_sample_divide, 0, 0)
         layout_students_t_test_two_sample_number_sections.addWidget(self.spin_box_students_t_test_two_sample_number_sections, 0, 1)
         layout_students_t_test_two_sample_number_sections.addWidget(self.label_students_t_test_two_sample_sections, 0, 2)
 
         layout_students_t_test_two_sample_number_sections.setColumnStretch(3, 1)
 
-        group_box_students_t_test_two_sample.setLayout(QGridLayout())
+        group_box_students_t_test_two_sample.setLayout(wordless_layout.Wordless_Layout())
         group_box_students_t_test_two_sample.layout().addLayout(layout_students_t_test_two_sample_number_sections, 0, 0, 1, 3)
         group_box_students_t_test_two_sample.layout().addWidget(self.label_students_t_test_two_sample_use_data, 1, 0)
         group_box_students_t_test_two_sample.layout().addWidget(self.combo_box_students_t_test_two_sample_use_data, 1, 1)
@@ -1728,7 +1728,7 @@ class Wordless_Settings(QDialog):
 
         self.checkbox_pearsons_chi_squared_test_apply_correction = QCheckBox(self.tr('Apply Yates\'s correction for continuity'))
 
-        group_box_pearsons_chi_squared_test.setLayout(QGridLayout())
+        group_box_pearsons_chi_squared_test.setLayout(wordless_layout.Wordless_Layout())
         group_box_pearsons_chi_squared_test.layout().addWidget(self.checkbox_pearsons_chi_squared_test_apply_correction, 0, 0)
 
         # Fisher's Exact Test
@@ -1737,7 +1737,7 @@ class Wordless_Settings(QDialog):
         (self.label_fishers_exact_test_direction,
          self.combo_box_fishers_exact_test_direction) = wordless_widgets.wordless_widgets_direction(self)
 
-        group_box_fishers_exact_test.setLayout(QGridLayout())
+        group_box_fishers_exact_test.setLayout(wordless_layout.Wordless_Layout())
         group_box_fishers_exact_test.layout().addWidget(self.label_fishers_exact_test_direction, 0, 0)
         group_box_fishers_exact_test.layout().addWidget(self.combo_box_fishers_exact_test_direction, 0, 1)
 
@@ -1756,14 +1756,14 @@ class Wordless_Settings(QDialog):
          self.combo_box_mann_whitney_u_test_direction) = wordless_widgets.wordless_widgets_direction(self)
         self.checkbox_mann_whitney_u_test_apply_correction = QCheckBox(self.tr('Apply continuity correction'), self)
 
-        layout_mann_whitney_u_test_number_sections = QGridLayout()
+        layout_mann_whitney_u_test_number_sections = wordless_layout.Wordless_Layout()
         layout_mann_whitney_u_test_number_sections.addWidget(self.label_mann_whitney_u_test_divide, 0, 0)
         layout_mann_whitney_u_test_number_sections.addWidget(self.spin_box_mann_whitney_u_test_number_sections, 0, 1)
         layout_mann_whitney_u_test_number_sections.addWidget(self.label_mann_whitney_u_test_sections, 0, 2)
 
         layout_mann_whitney_u_test_number_sections.setColumnStretch(3, 1)
 
-        group_box_mann_whitney_u_test.setLayout(QGridLayout())
+        group_box_mann_whitney_u_test.setLayout(wordless_layout.Wordless_Layout())
         group_box_mann_whitney_u_test.layout().addLayout(layout_mann_whitney_u_test_number_sections, 0, 0, 1, 3)
         group_box_mann_whitney_u_test.layout().addWidget(self.label_mann_whitney_u_test_use_data, 1, 0)
         group_box_mann_whitney_u_test.layout().addWidget(self.combo_box_mann_whitney_u_test_use_data, 1, 1)
@@ -1773,7 +1773,7 @@ class Wordless_Settings(QDialog):
 
         group_box_mann_whitney_u_test.layout().setColumnStretch(3, 1)
 
-        self.settings_statistical_significance.setLayout(QGridLayout())
+        self.settings_statistical_significance.setLayout(wordless_layout.Wordless_Layout())
         self.settings_statistical_significance.layout().addWidget(group_box_z_score, 0, 0)
         self.settings_statistical_significance.layout().addWidget(group_box_students_t_test_two_sample, 1, 0)
         self.settings_statistical_significance.layout().addWidget(group_box_pearsons_chi_squared_test, 2, 0)
@@ -1795,13 +1795,13 @@ class Wordless_Settings(QDialog):
 
         self.spin_box_kilgarriffs_ratio_smoothing_parameter.setRange(0.01, 10000)
 
-        group_box_kilgarriffs_ratio.setLayout(QGridLayout())
+        group_box_kilgarriffs_ratio.setLayout(wordless_layout.Wordless_Layout())
         group_box_kilgarriffs_ratio.layout().addWidget(self.label_kilgarriffs_ratio_smoothing_parameter, 0, 0)
         group_box_kilgarriffs_ratio.layout().addWidget(self.spin_box_kilgarriffs_ratio_smoothing_parameter, 0, 1)
 
         group_box_kilgarriffs_ratio.layout().setColumnStretch(2, 1)
 
-        self.settings_effect_size.setLayout(QGridLayout())
+        self.settings_effect_size.setLayout(wordless_layout.Wordless_Layout())
         self.settings_effect_size.layout().addWidget(group_box_kilgarriffs_ratio, 0, 0)
 
         self.settings_effect_size.layout().setContentsMargins(6, 4, 6, 4)
@@ -2029,14 +2029,14 @@ class Wordless_Settings(QDialog):
     def settings_validate(self):
         def validate_path(line_edit):
             if not os.path.exists(line_edit.text()):
-                wordless_message_box.wordless_message_box_path_not_exist(self.main, line_edit.text())
+                wordless_msg_box.wordless_msg_box_path_not_exist(self.main, line_edit.text())
 
                 line_edit.setFocus()
                 line_edit.selectAll()
 
                 return False
             elif not os.path.isdir(line_edit.text()):
-                wordless_message_box.wordless_message_box_path_not_dir(self.main, line_edit.text())
+                wordless_msg_box.wordless_msge_box_path_not_dir(self.main, line_edit.text())
 
                 line_edit.setFocus()
                 line_edit.selectAll()
@@ -2047,7 +2047,7 @@ class Wordless_Settings(QDialog):
 
         def confirm_path(line_edit):
             if not os.path.exists(line_edit.text()):
-                reply = wordless_message_box.wordless_message_box_path_not_exist_confirm(self.main, line_edit.text())
+                reply = wordless_msg_box.wordless_msg_box_path_not_exist_confirm(self.main, line_edit.text())
 
                 if reply == QMessageBox.Yes:
                     return True
@@ -2057,7 +2057,7 @@ class Wordless_Settings(QDialog):
 
                     return False
             elif not os.path.isdir(line_edit.text()):
-                wordless_message_box.wordless_message_box_path_not_dir(self.main, line_edit.text())
+                wordless_msg_box.wordless_msg_box_path_not_dir(self.main, line_edit.text())
 
                 line_edit.setFocus()
                 line_edit.selectAll()
@@ -2156,11 +2156,12 @@ class Wordless_Settings(QDialog):
             settings['pos_tagging']['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
 
             # POS Tagging -> Tagsets
-            preview_lang = settings['tagsets']['preview_lang']
-            preview_pos_tagger = settings['tagsets']['preview_pos_tagger'][preview_lang]
+            if self.pos_tag_mappings_loaded:
+                preview_lang = settings['tagsets']['preview_lang']
+                preview_pos_tagger = settings['tagsets']['preview_pos_tagger'][preview_lang]
 
-            for i in range(self.table_mappings.rowCount()):
-                settings['tagsets']['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
+                for i in range(self.table_mappings.rowCount()):
+                    settings['tagsets']['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
 
             # Lemmatization
             for lang in settings['lemmatization']['lemmatizers']:

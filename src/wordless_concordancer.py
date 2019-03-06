@@ -22,12 +22,13 @@ import numpy
 import matplotlib.pyplot
 
 from wordless_checking import wordless_checking_file
-from wordless_dialogs import wordless_dialog, wordless_dialog_misc, wordless_dialog_search_results, wordless_message_box
+from wordless_dialogs import (wordless_dialog, wordless_dialog_misc, wordless_dialog_search_results,
+                              wordless_msg_box)
 from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
                            wordless_token_processing)
 from wordless_utils import wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_button, wordless_label,
-                              wordless_layout, wordless_message, wordless_table,
+                              wordless_layout, wordless_msg, wordless_table,
                               wordless_widgets)
 
 class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Sort_Search):
@@ -383,7 +384,7 @@ class Wordless_Table_Sort_Results_Conordancer(wordless_table.Wordless_Table):
 
             self.table.update_items_width()
 
-        wordless_message.wordless_message_sort_results(self.main)
+        wordless_message.wordless_msg_sort_results(self.main)
 
 class Wordless_Dialog_Sort_Results_Concordancer(wordless_dialog.Wordless_Dialog):
     def __init__(self, main, table):
@@ -407,7 +408,7 @@ class Wordless_Dialog_Sort_Results_Concordancer(wordless_dialog.Wordless_Dialog)
         self.button_sort.clicked.connect(lambda: self.table_sort_results.sort_results())
         self.button_close.clicked.connect(self.reject)
 
-        layout_sort_results = QGridLayout()
+        layout_sort_results = wordless_layout.Wordless_Layout()
         layout_sort_results.addWidget(self.table_sort_results, 0, 0, 4, 1)
         layout_sort_results.addWidget(self.table_sort_results.button_add, 0, 1)
         layout_sort_results.addWidget(self.table_sort_results.button_insert, 1, 1)
@@ -415,7 +416,7 @@ class Wordless_Dialog_Sort_Results_Concordancer(wordless_dialog.Wordless_Dialog)
 
         layout_sort_results.setRowStretch(3, 1)
 
-        self.setLayout(QGridLayout())
+        self.setLayout(wordless_layout.Wordless_Layout())
         self.layout().addLayout(layout_sort_results, 0, 0, 1, 4)
 
         self.layout().addWidget(wordless_layout.Wordless_Separator(self), 1, 0, 1, 4)
@@ -456,7 +457,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         self.table_concordancer = Wordless_Table_Concordancer(self)
 
-        layout_results = QGridLayout()
+        layout_results = wordless_layout.Wordless_Layout()
         layout_results.addWidget(self.table_concordancer.label_number_results, 0, 0)
         layout_results.addWidget(self.table_concordancer.button_sort_results, 0, 2)
         layout_results.addWidget(self.table_concordancer.button_search_results, 0, 3)
@@ -495,14 +496,14 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         self.token_combo_box_ignore_tags_tags.currentTextChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
-        layout_ignore_tags = QGridLayout()
+        layout_ignore_tags = wordless_layout.Wordless_Layout()
         layout_ignore_tags.addWidget(self.token_stacked_widget_ignore_tags, 0, 0)
         layout_ignore_tags.addWidget(self.token_stacked_widget_ignore_tags_type, 0, 1)
         layout_ignore_tags.addWidget(self.label_ignore_tags, 0, 2)
 
         layout_ignore_tags.setColumnStretch(3, 1)
 
-        self.group_box_token_settings.setLayout(QGridLayout())
+        self.group_box_token_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 0, 0)
 
         self.group_box_token_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 1, 0)
@@ -558,20 +559,20 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         self.search_combo_box_ignore_tags_tags.currentTextChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
 
-        layout_ignore_tags = QGridLayout()
+        layout_ignore_tags = wordless_layout.Wordless_Layout()
         layout_ignore_tags.addWidget(self.search_stacked_widget_ignore_tags, 0, 0)
         layout_ignore_tags.addWidget(self.search_stacked_widget_ignore_tags_type, 0, 1)
         layout_ignore_tags.addWidget(self.search_label_ignore_tags, 0, 2)
 
         layout_ignore_tags.setColumnStretch(3, 1)
 
-        layout_context_settings = QGridLayout()
+        layout_context_settings = wordless_layout.Wordless_Layout()
         layout_context_settings.addWidget(self.label_context_settings, 0, 0)
         layout_context_settings.addWidget(self.button_context_settings, 0, 1)
 
         layout_context_settings.setColumnStretch(1, 1)
 
-        self.group_box_search_settings.setLayout(QGridLayout())
+        self.group_box_search_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
         self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
         self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
@@ -632,7 +633,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         self.spin_box_every_nth_line.valueChanged.connect(self.generation_settings_changed)
         self.checkbox_every_nth_line.stateChanged.connect(self.generation_settings_changed)
 
-        layout_width = QGridLayout()
+        layout_width = wordless_layout.Wordless_Layout()
         layout_width.addWidget(self.label_width_left, 0, 0)
         layout_width.addWidget(self.spin_box_width_left_token, 0, 1)
         layout_width.addWidget(self.spin_box_width_left_char, 0, 1)
@@ -644,7 +645,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         layout_width.setColumnStretch(1, 1)
 
-        self.group_box_generation_settings.setLayout(QGridLayout())
+        self.group_box_generation_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_generation_settings.layout().addLayout(layout_width, 0, 0, 1, 2)
 
         self.group_box_generation_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 1, 0, 1, 2)
@@ -671,7 +672,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
 
-        self.group_box_table_settings.setLayout(QGridLayout())
+        self.group_box_table_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
 
         # Figure Settings
@@ -687,7 +688,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         self.combo_box_sort_results_by.currentTextChanged.connect(self.figure_settings_changed)
 
-        self.group_box_figure_settings.setLayout(QGridLayout())
+        self.group_box_figure_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_figure_settings.layout().addWidget(self.label_sort_results_by, 0, 0)
         self.group_box_figure_settings.layout().addWidget(self.combo_box_sort_results_by, 0, 1)
 
@@ -1263,11 +1264,11 @@ def generate_table(main, table):
 
             table.itemChanged.emit(table.item(0, 0))
 
-            wordless_message.wordless_message_generate_table_success(main)
+            wordless_msg.wordless_msg_generate_table_success(main)
         else:
-            wordless_message_box.wordless_message_box_no_results(main)
+            wordless_msg_box.wordless_msg_box_no_results(main)
 
-            wordless_message.wordless_message_generate_table_error(main)
+            wordless_msg.wordless_msg_generate_table_error(main)
 
         dialog_progress.accept()
 
@@ -1289,11 +1290,11 @@ def generate_table(main, table):
             thread_process_data.quit()
             thread_process_data.wait()
         else:
-            wordless_message_box.wordless_message_box_missing_search_term(main)
+            wordless_msg_box.wordless_msg_box_missing_search_term(main)
 
-            wordless_message.wordless_message_generate_table_error(main)
+            wordless_msg.wordless_msg_generate_table_error(main)
     else:
-        wordless_message.wordless_message_generate_table_error(main)
+        wordless_msg.wordless_msg_generate_table_error(main)
 
 @wordless_misc.log_timing
 def generate_figure(main):
@@ -1332,11 +1333,11 @@ def generate_figure(main):
             matplotlib.pyplot.title(main.tr('Dispersion Plot'))
             matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
 
-            wordless_message.wordless_message_generate_figure_success(main)
+            wordless_msg.wordless_msg_generate_figure_success(main)
         else:
-            wordless_message_box.wordless_message_box_no_results(main)
+            wordless_msg_box.wordless_msg_box_no_results(main)
 
-            wordless_message.wordless_message_generate_figure_error(main)
+            wordless_msg.wordless_msg_generate_figure_error(main)
 
         dialog_progress.accept()
 
@@ -1361,8 +1362,8 @@ def generate_figure(main):
             thread_process_data.quit()
             thread_process_data.wait()
         else:
-            wordless_message_box.wordless_message_box_missing_search_term(main)
+            wordless_msg_box.wordless_msg_box_missing_search_term(main)
 
-            wordless_message.wordless_message_generate_figure_error(main)
+            wordless_msg.wordless_msg_generate_figure_error(main)
     else:
-        wordless_message.wordless_message_generate_figure_error(main)
+        wordless_msg.wordless_msg_generate_figure_error(main)

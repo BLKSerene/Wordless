@@ -8,8 +8,3 @@
 #
 # All other rights reserved.
 #
-
-__all__ = [
-    'wordless_figure_freq',
-    'wordless_figure_stat'
-]

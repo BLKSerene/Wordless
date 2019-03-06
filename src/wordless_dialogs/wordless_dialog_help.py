@@ -61,7 +61,7 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
         self.button_copy.clicked.connect(self.copy)
         self.button_close.clicked.connect(self.accept)
     
-        layout_citation_sys = QGridLayout()
+        layout_citation_sys = wordless_layout.Wordless_Layout()
         layout_citation_sys.addWidget(self.label_citation_sys, 0, 0)
         layout_citation_sys.addWidget(self.combo_box_citation_sys, 0, 1)
     
@@ -360,7 +360,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
         self.combo_box_browse_category.currentTextChanged.connect(self.browse_category_changed)
 
-        layout_browse_category = QGridLayout()
+        layout_browse_category = wordless_layout.Wordless_Layout()
         layout_browse_category.addWidget(self.label_browse_category, 0, 0)
         layout_browse_category.addWidget(self.combo_box_browse_category, 0, 1)
 
@@ -448,7 +448,7 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
 
         self.combo_box_donating_via.currentTextChanged.connect(self.donating_via_changed)
 
-        layout_donating_via = QGridLayout()
+        layout_donating_via = wordless_layout.Wordless_Layout()
         layout_donating_via.addWidget(self.label_donating_via, 0, 0)
         layout_donating_via.addWidget(self.combo_box_donating_via, 0, 1)
 

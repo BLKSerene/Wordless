@@ -8,15 +8,3 @@
 #
 # All other rights reserved.
 #
-
-__all__ = [
-	'wordless_box',
-    'wordless_button',
-    'wordless_label',
-    'wordless_layout',
-    'wordless_list',
-    'wordless_message',
-    'wordless_table',
-    'wordless_tree',
-    'wordless_widgets'
-]

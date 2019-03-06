@@ -24,12 +24,12 @@ import numpy
 
 from wordless_checking import wordless_checking_file
 from wordless_dialogs import (wordless_dialog_filter_results, wordless_dialog_misc, wordless_dialog_search_results,
-                              wordless_message_box)
+                              wordless_msg_box)
 from wordless_figures import wordless_figure_freq, wordless_figure_stat
 from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
                            wordless_text_utils, wordless_token_processing)
 from wordless_utils import wordless_misc, wordless_sorting, wordless_threading
-from wordless_widgets import (wordless_layout, wordless_message, wordless_table,
+from wordless_widgets import (wordless_layout, wordless_msg, wordless_table,
                               wordless_widgets)
 
 class Wordless_Table_Ngrams(wordless_table.Wordless_Table_Data_Filter_Search):
@@ -76,7 +76,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         # Table
         self.table_ngrams = Wordless_Table_Ngrams(self)
 
-        layout_results = QGridLayout()
+        layout_results = wordless_layout.Wordless_Layout()
         layout_results.addWidget(self.table_ngrams.label_number_results, 0, 0)
         layout_results.addWidget(self.table_ngrams.button_filter_results, 0, 2)
         layout_results.addWidget(self.table_ngrams.button_search_results, 0, 3)
@@ -133,14 +133,14 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         self.token_combo_box_ignore_tags_tags.currentTextChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
-        layout_ignore_tags = QGridLayout()
+        layout_ignore_tags = wordless_layout.Wordless_Layout()
         layout_ignore_tags.addWidget(self.token_stacked_widget_ignore_tags, 0, 0)
         layout_ignore_tags.addWidget(self.token_stacked_widget_ignore_tags_type, 0, 1)
         layout_ignore_tags.addWidget(self.token_label_ignore_tags, 0, 2)
 
         layout_ignore_tags.setColumnStretch(3, 1)
 
-        self.group_box_token_settings.setLayout(QGridLayout())
+        self.group_box_token_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lowercase, 0, 1)
         self.group_box_token_settings.layout().addWidget(self.checkbox_uppercase, 1, 0)
@@ -229,14 +229,14 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         self.checkbox_search_term_position_max_no_limit.stateChanged.connect(self.search_settings_changed)
         self.checkbox_allow_skipped_tokens_within_search_terms.stateChanged.connect(self.search_settings_changed)
 
-        layout_search_ignore_tags = QGridLayout()
+        layout_search_ignore_tags = wordless_layout.Wordless_Layout()
         layout_search_ignore_tags.addWidget(self.search_stacked_widget_ignore_tags, 0, 0)
         layout_search_ignore_tags.addWidget(self.search_stacked_widget_ignore_tags_type, 0, 1)
         layout_search_ignore_tags.addWidget(self.search_label_ignore_tags, 0, 2)
 
         layout_search_ignore_tags.setColumnStretch(3, 1)
 
-        layout_search_term_position = QGridLayout()
+        layout_search_term_position = wordless_layout.Wordless_Layout()
         layout_search_term_position.addWidget(self.label_search_term_position, 0, 0, 1, 3)
         layout_search_term_position.addWidget(self.label_search_term_position_min, 1, 0)
         layout_search_term_position.addWidget(self.spin_box_search_term_position_min, 1, 1)
@@ -247,13 +247,13 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
 
         layout_search_term_position.setColumnStretch(1, 1)
 
-        layout_context_settings = QGridLayout()
+        layout_context_settings = wordless_layout.Wordless_Layout()
         layout_context_settings.addWidget(self.label_context_settings, 0, 0)
         layout_context_settings.addWidget(self.button_context_settings, 0, 1)
 
         layout_context_settings.setColumnStretch(1, 1)
 
-        self.group_box_search_settings.setLayout(QGridLayout())
+        self.group_box_search_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
         self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
         self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
@@ -308,19 +308,19 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         self.combo_box_measure_dispersion.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_adjusted_freq.currentTextChanged.connect(self.generation_settings_changed)
 
-        layout_allow_skipped_tokens = QGridLayout()
+        layout_allow_skipped_tokens = wordless_layout.Wordless_Layout()
         layout_allow_skipped_tokens.addWidget(self.checkbox_allow_skipped_tokens, 0, 0)
         layout_allow_skipped_tokens.addWidget(self.spin_box_allow_skipped_tokens, 0, 1)
 
         layout_allow_skipped_tokens.setColumnStretch(2, 1)
 
-        layout_settings_measures = QGridLayout()
+        layout_settings_measures = wordless_layout.Wordless_Layout()
         layout_settings_measures.addWidget(self.label_settings_measures, 0, 0)
         layout_settings_measures.addWidget(self.button_settings_measures, 0, 1)
 
         layout_settings_measures.setColumnStretch(1, 1)
 
-        self.group_box_generation_settings.setLayout(QGridLayout())
+        self.group_box_generation_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_ngram_size, 0, 0, 1, 3)
         self.group_box_generation_settings.layout().addWidget(self.checkbox_ngram_size_sync, 0, 3, Qt.AlignRight)
         self.group_box_generation_settings.layout().addWidget(self.label_ngram_size_min, 1, 0)
@@ -355,7 +355,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_breakdown.stateChanged.connect(self.table_settings_changed)
 
-        self.group_box_table_settings.setLayout(QGridLayout())
+        self.group_box_table_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
@@ -394,7 +394,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         self.spin_box_rank_max.valueChanged.connect(self.figure_settings_changed)
         self.checkbox_rank_max_no_limit.stateChanged.connect(self.figure_settings_changed)
 
-        layout_figure_settings_combo_boxes = QGridLayout()
+        layout_figure_settings_combo_boxes = wordless_layout.Wordless_Layout()
         layout_figure_settings_combo_boxes.addWidget(self.label_graph_type, 0, 0)
         layout_figure_settings_combo_boxes.addWidget(self.combo_box_graph_type, 0, 1)
         layout_figure_settings_combo_boxes.addWidget(self.label_use_file, 1, 0)
@@ -404,7 +404,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
 
         layout_figure_settings_combo_boxes.setColumnStretch(1, 1)
 
-        self.group_box_figure_settings.setLayout(QGridLayout())
+        self.group_box_figure_settings.setLayout(wordless_layout.Wordless_Layout())
         self.group_box_figure_settings.layout().addLayout(layout_figure_settings_combo_boxes, 0, 0, 1, 3)
         self.group_box_figure_settings.layout().addWidget(self.checkbox_use_pct, 1, 0, 1, 3)
         self.group_box_figure_settings.layout().addWidget(self.checkbox_use_cumulative, 2, 0, 1, 3)
@@ -982,11 +982,11 @@ def generate_table(main, table):
 
             table.itemChanged.emit(table.item(0, 0))
 
-            wordless_message.wordless_message_generate_table_success(main)
+            wordless_msg.wordless_msg_generate_table_success(main)
         else:
-            wordless_message_box.wordless_message_box_no_results(main)
+            wordless_msg_box.wordless_msg_box_no_results(main)
 
-            wordless_message.wordless_message_generate_table_error(main)
+            wordless_msg.wordless_msg_generate_table_error(main)
 
         dialog_progress.accept()
 
@@ -1009,11 +1009,11 @@ def generate_table(main, table):
             thread_process_data.quit()
             thread_process_data.wait()
         else:
-            wordless_message_box.wordless_message_box_missing_search_term_optional(main)
+            wordless_msg_box.wordless_msg_box_missing_search_term_optional(main)
 
-            wordless_message.wordless_message_generate_table_error(main)
+            wordless_msg.wordless_msg_generate_table_error(main)
     else:
-        wordless_message.wordless_message_generate_table_error(main)
+        wordless_msg.wordless_msg_generate_table_error(main)
 
 @wordless_misc.log_timing
 def generate_figure(main):
@@ -1052,11 +1052,11 @@ def generate_figure(main):
                                                           label_x = main.tr('N-grams'),
                                                           label_y = label_y)
 
-            wordless_message.wordless_message_generate_figure_success(main)
+            wordless_msg.wordless_msg_generate_figure_success(main)
         else:
-            wordless_message_box.wordless_message_box_no_results(main)
+            wordless_msg_box.wordless_msg_box_no_results(main)
 
-            wordless_message.wordless_message_generate_figure_error(main)
+            wordless_msg.wordless_msg_generate_figure_error(main)
 
         dialog_progress.accept()
 
@@ -1082,8 +1082,8 @@ def generate_figure(main):
             thread_process_data.quit()
             thread_process_data.wait()
         else:
-            wordless_message_box.wordless_message_box_missing_search_term_optional(main)
+            wordless_msg_box.wordless_msg_box_missing_search_term_optional(main)
 
-            wordless_message.wordless_message_generate_figure_error(main)
+            wordless_msg.wordless_msg_generate_figure_error(main)
     else:
-        wordless_message.wordless_message_generate_figure_error(main)
+        wordless_msg.wordless_msg_generate_figure_error(main)
