@@ -53,6 +53,12 @@ class Wordless_Thread(QThread):
 
         self.finished.connect(worker.deleteLater)
 
+class Wordless_Thread_Add_Files(Wordless_Thread):
+    def __init__(self, worker_add_files):
+        super().__init__(worker_add_files)
+
+        self.started.connect(worker_add_files.add_files)
+
 class Wordless_Thread_Process_Data(Wordless_Thread):
     def __init__(self, worker_process_data):
         super().__init__(worker_process_data)
