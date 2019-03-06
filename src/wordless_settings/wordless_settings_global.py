@@ -1761,8 +1761,8 @@ def init_settings_global(main):
                 'func': wordless_measures_dispersion.griess_dp
             },
 
-            main.tr('Gries\'s DPₙₒᵣₘ'): {
-                'col': main.tr('Gries\'s DPₙₒᵣₘ'),
+            main.tr('Gries\'s DPnorm'): {
+                'col': main.tr('Gries\'s DPnorm'),
                 'func': wordless_measures_dispersion.griess_dp_norm
             }
         },
@@ -1773,8 +1773,8 @@ def init_settings_global(main):
                 'func': wordless_measures_adjusted_freq.juillands_u
             },
 
-            main.tr('Carroll\'s Uₘ'): {
-                'col': main.tr('Carroll\'s Uₘ'),
+            main.tr('Carroll\'s Um'): {
+                'col': main.tr('Carroll\'s Um'),
                 'func': wordless_measures_adjusted_freq.carrolls_um
             },
 
@@ -1788,8 +1788,8 @@ def init_settings_global(main):
                 'func': wordless_measures_adjusted_freq.engwalls_fm
             },
 
-            main.tr('Kromer\'s Uᵣ'): {
-                'col': main.tr('Kromer\'s Uᵣ'),
+            main.tr('Kromer\'s UR'): {
+                'col': main.tr('Kromer\'s UR'),
                 'func': wordless_measures_adjusted_freq.kromers_ur
             }
         },

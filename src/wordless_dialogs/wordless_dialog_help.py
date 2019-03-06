@@ -147,7 +147,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/Esukhia/pybo">pybo</a>',
-                '0.3.0',
+                '0.4.2',
                 'Hélios Drupchen Hildt',
                 '<a href="https://github.com/Esukhia/pybo/blob/master/LICENSE">Apache-2.0</a>'
             ],
@@ -256,7 +256,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://openpyxl.readthedocs.io/en/stable/">openpyxl</a>',
-                '2.6.0',
+                '2.6.1',
                 'Eric Gazoni, Charlie Clark',
                 '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst">MIT</a>'
             ],
