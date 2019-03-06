@@ -47,7 +47,7 @@ class Wordless_Loading(QSplashScreen):
 
         self.setFont(msg_font)
         self.showMessage(
-            self.tr('Loading Wordless...\nPlease wait, it may take a few seconds.'),
+            self.tr('Loading Wordless...\nPlease wait, it should only take a few seconds.'),
             color = Qt.white,
             alignment = Qt.AlignLeft | Qt.AlignBottom
         )

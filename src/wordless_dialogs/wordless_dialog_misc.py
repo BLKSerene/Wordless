@@ -50,6 +50,20 @@ class Wordless_Dialog_Progress(wordless_dialog.Wordless_Dialog_Frameless):
     def update_progress(self, text):
         self.label_progress.setText(text)
 
+class Wordless_Dialog_Progress_Add_Files(Wordless_Dialog_Progress):
+    def __init__(self, main):
+        super().__init__(main,
+                         width = 420,
+                         height = 110)
+
+        self.label_progress.setText(self.tr('Loading files ...'))
+        
+        self.label_processing.set_text(self.tr('''
+            <div>
+                Please wait while files are being loaded. It may take a few seconds to several minutes depending on the total size of the files to be loaded.
+            </div>
+        '''))
+
 class Wordless_Dialog_Progress_Process_Data(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main,
