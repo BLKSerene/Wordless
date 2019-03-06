@@ -42,11 +42,14 @@ class Wordless_Loading(QSplashScreen):
     def __init__(self):
         super().__init__(QPixmap('imgs/wordless_loading.png'))
 
-        self.setFont(QFont('Times New Roman', pointSize = 12))
+        msg_font = QFont('Times New Roman')
+        msg_font.setPixelSize(14)
+
+        self.setFont(msg_font)
         self.showMessage(
             self.tr('Loading Wordless...\nPlease wait, it may take a few seconds.'),
             color = Qt.white,
-            alignment = Qt.AlignHCenter | Qt.AlignBottom
+            alignment = Qt.AlignLeft | Qt.AlignBottom
         )
 
     def fade_in(self):
