@@ -10,6 +10,7 @@
 #
 
 import copy
+import platform
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -390,14 +391,17 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
             self.exclusion_checkbox_match_tags.token_settings_changed()
 
     def multi_search_mode_changed(self):
-        if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
-            self.setFixedSize(530, 480)
-        else:
-            self.setFixedSize(530, 365)
+        if platform.system() == 'Windows':
+            if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
+                self.setFixedSize(530, 480)
+            else:
+                self.setFixedSize(530, 365)
+        elif platform.system() == 'Darwin':
+            if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
+                self.setFixedSize(560, 500)
+            else:
+                self.setFixedSize(560, 375)
 
     def token_settings_changed(self):
         self.inclusion_checkbox_match_tags.token_settings_changed()
         self.exclusion_checkbox_match_tags.token_settings_changed()
-
-    def load(self):
-        self.exec_()

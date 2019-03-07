@@ -361,7 +361,7 @@ def wordless_widgets_context_settings(parent, tab):
                                                                                                 tab = tab)
     main.__dict__[f'wordless_context_settings_{tab}'] = dialog_context_settings
 
-    button_context_settings.clicked.connect(main.__dict__[f'wordless_context_settings_{tab}'].load)
+    button_context_settings.clicked.connect(main.__dict__[f'wordless_context_settings_{tab}'].exec_)
 
     return label_context_settings, button_context_settings
 
