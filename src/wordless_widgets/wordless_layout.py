@@ -9,6 +9,8 @@
 # All other rights reserved.
 #
 
+import platform
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -19,6 +21,9 @@ from wordless_widgets import wordless_button
 class Wordless_Layout(QGridLayout):
     def __init__(self):
         super().__init__()
+
+        if platform.system() == 'Darwin':
+            self.setSpacing(5)
 
 class Wordless_Wrapper(QWidget):
     def __init__(self, parent):

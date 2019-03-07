@@ -10,6 +10,7 @@
 #
 
 import copy
+import platform
 
 import requests
 
@@ -23,10 +24,16 @@ from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
 
 class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
-        super().__init__(main, main.tr('Citing'),
-                         width = 400,
-                         height = 150,
-                         no_button = True)
+        if platform.system() == 'Windows':
+            super().__init__(main, main.tr('Citing'),
+                             width = 400,
+                             height = 200,
+                             no_button = True)
+        elif platform.system() == 'Darwin':
+            super().__init__(main, main.tr('Citing'),
+                             width = 400,
+                             height = 250,
+                             no_button = True)
 
         self.label_citing = wordless_label.Wordless_Label_Dialog(
             self.tr('''
@@ -168,7 +175,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/alvations/sacremoses">SacreMoses</a>',
-                '0.0.7',
+                '0.0.10',
                 'Liling Tan',
                 '<a href="https://github.com/alvations/sacremoses#license">LGPL-2.1</a>'
             ],
@@ -422,7 +429,7 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Donating'),
                          width = 400,
-                         height = 280)
+                         height = 510)
 
         self.label_donating = wordless_label.Wordless_Label_Dialog(
             self.tr('''
@@ -480,17 +487,18 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
         if settings['donating_via'] == self.tr('PayPal'):
             self.label_donating_via_img.setText('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32"><img src="imgs/donating_paypal.gif"></a>')
 
-            self.setFixedHeight(280)
+            self.setFixedHeight(270)
         elif settings['donating_via'] == self.tr('Alipay'):
             self.label_donating_via_img.setText('<img src="imgs/donating_alipay.png">')
 
-            self.setFixedHeight(530)
+            self.setFixedHeight(520)
         elif settings['donating_via'] == self.tr('WeChat'):
             self.label_donating_via_img.setText('<img src="imgs/donating_wechat.png">')
 
-            self.setFixedHeight(530)
+            self.setFixedHeight(520)
 
-        self.move_to_center()
+        if platform.system() == 'Windows':
+            self.move_to_center()
 
 class Worker_Check_Updates(QObject):
     finished = pyqtSignal()
@@ -506,7 +514,7 @@ class Worker_Check_Updates(QObject):
         version_new = ''
 
         try:
-            r = requests.get('https://raw.githubusercontent.com/BLKSerene/Wordless/master/VERSION', timeout = 10)
+            r = requests.get('https://raw.githubusercontent.com/BLKSerene/Wordless/master/src/VERSION', timeout = 10)
 
             if r.status_code == 200:
                 for line in r.text.splitlines():
@@ -705,7 +713,7 @@ class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('About Wordless'),
                          width = 420,
-                         height = 150)
+                         height = 200)
 
         label_about_icon = QLabel('', self)
 
