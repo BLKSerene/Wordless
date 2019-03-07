@@ -10,6 +10,7 @@
 #
 
 import copy
+import platform
 import time
 
 from PyQt5.QtCore import *
@@ -238,10 +239,16 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.settings['ignore_tags_type_tags'] = self.combo_box_ignore_tags_tags.currentText()
         self.settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
-        if self.settings['multi_search_mode']:
-            self.setFixedSize(370, 400)
-        else:
-            self.setFixedSize(370, 280)
+        if platform.system() == 'Windows':
+            if self.settings['multi_search_mode']:
+                self.setFixedSize(370, 400)
+            else:
+                self.setFixedSize(370, 280)
+        elif platform.system() == 'Darwin':
+            if self.settings['multi_search_mode']:
+                self.setFixedSize(390, 430)
+            else:
+                self.setFixedSize(390, 300)
 
     @wordless_misc.log_timing
     def find_next(self):
@@ -381,6 +388,3 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
             self.table.show()
 
             self.items_found.clear()
-
-    def load(self):
-        self.show()
