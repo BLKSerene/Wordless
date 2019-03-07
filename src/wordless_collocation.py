@@ -60,8 +60,8 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Filter_Searc
             table = self
         )
 
-        self.button_filter_results.clicked.connect(dialog_filter_results.load)
-        self.button_search_results.clicked.connect(dialog_search_results.load)
+        self.button_filter_results.clicked.connect(dialog_filter_results.show)
+        self.button_search_results.clicked.connect(dialog_search_results.show)
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_figure = QPushButton(self.tr('Generate Figure'), self)

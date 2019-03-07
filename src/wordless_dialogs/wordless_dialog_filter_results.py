@@ -81,9 +81,6 @@ class Wordless_Dialog_Filter_Results(wordless_dialog.Wordless_Dialog):
     def filter_results(self):
         pass
 
-    def load(self):
-        self.show()
-
 class Wordless_Worker_Filter_Results_Wordlist(wordless_threading.Wordless_Worker_Filter_Results):
     def filter_results(self):
         text_measure_dispersion = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_dispersion']

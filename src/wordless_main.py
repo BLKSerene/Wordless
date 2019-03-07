@@ -47,7 +47,7 @@ class Wordless_Loading(QSplashScreen):
 
         self.setFont(msg_font)
         self.showMessage(
-            self.tr('Loading Wordless...\nPlease wait, it should only take a few seconds.'),
+            self.tr(' Loading Wordless ...\n Please wait, it should only take a few seconds.'),
             color = Qt.white,
             alignment = Qt.AlignLeft | Qt.AlignBottom
         )
@@ -117,6 +117,19 @@ class Wordless_Main(QMainWindow):
             self.dialog_check_updates = self.help_check_updates(on_startup = True)
 
         self.load_settings()
+
+        # Fix layout on macOS
+        if platform.system() == 'Darwin':
+            self.fix_macos_layout(self)
+
+    def fix_macos_layout(self, parent):
+        for widget in parent.children():
+
+            if widget.children():
+                self.fix_macos_layout(widget)
+            else:
+                if isinstance(widget, QWidget) and not isinstance(widget, QPushButton):
+                    widget.setAttribute(Qt.WA_LayoutUsesWidgetRect)
 
     def closeEvent(self, event):
         def exit_wordless():
