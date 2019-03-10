@@ -83,7 +83,7 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
                     if not detection_success_lang:
                         files_detection_failed_lang.append(new_file['path'])
                 else:
-                    if file_ext == ['.docx', '.xlsx', '.xls']:
+                    if file_ext in ['.docx', '.xlsx', '.xls']:
                         new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
 
                         # Word Documents
@@ -218,22 +218,22 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
 
                             new_paths = [new_path]
 
-                        for new_path in new_paths:
-                            (new_file,
-                             detection_success_encoding,
-                             detection_success_text_type,
-                             detection_success_lang) = self.main.wordless_files._new_file(new_path)
+                    for new_path in new_paths:
+                        (new_file,
+                         detection_success_encoding,
+                         detection_success_text_type,
+                         detection_success_lang) = self.main.wordless_files._new_file(new_path)
 
-                            new_files.append(new_file)
+                        new_files.append(new_file)
 
-                            if not detection_success_encoding:
-                                files_detection_failed_encoding.append(new_file['path'])
+                        if not detection_success_encoding:
+                            files_detection_failed_encoding.append(new_file['path'])
 
-                            if not detection_success_text_type:
-                                files_detection_failed_text_type.append(new_file['path'])
+                        if not detection_success_text_type:
+                            files_detection_failed_text_type.append(new_file['path'])
 
-                            if not detection_success_lang:
-                                files_detection_failed_lang.append(new_file['path'])
+                        if not detection_success_lang:
+                            files_detection_failed_lang.append(new_file['path'])
 
             self.main.settings_custom['import']['files']['default_path'] = wordless_misc.get_abs_path(os.path.dirname(self.file_paths[0]))
 
