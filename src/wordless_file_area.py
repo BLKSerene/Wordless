@@ -210,7 +210,7 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
                                         if re.search(r'^\[[0-9]{2}:[0-5][0-9]\.[0-9]{2}\]$', time_tag):
                                             lyrics[time_tag] = line
 
-                            new_path = wordless_checking_misc.check_new_path(f'{default_dir}{file_name}.txt')
+                            new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
 
                             with open(new_path, 'w', encoding = default_encoding) as f:
                                 for _, lyrics in sorted(lyrics.items()):
