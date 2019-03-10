@@ -11,6 +11,7 @@
 
 from PyQt5.QtWidgets import *
 
+import matplotlib
 import matplotlib.pyplot
 import numpy
 import wordcloud

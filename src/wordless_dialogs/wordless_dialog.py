@@ -13,6 +13,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wordless_utils import wordless_misc
 from wordless_widgets import wordless_layout
 
 class Wordless_Dialog(QDialog):
@@ -22,7 +23,7 @@ class Wordless_Dialog(QDialog):
         self.main = main
 
         self.setWindowTitle(title)
-        self.setWindowIcon(QIcon('imgs/wordless_icon.ico'))
+        self.setWindowIcon(QIcon(wordless_misc.get_abs_path('imgs/wordless_icon.ico')))
         self.setWindowFlag(Qt.MSWindowsFixedSizeDialogHint, True)
         self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
 
