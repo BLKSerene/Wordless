@@ -28,8 +28,8 @@ from wordless_utils import wordless_misc, wordless_threading
 class Wordless_Worker_Search_Results(wordless_threading.Wordless_Worker):
     searching_finished = pyqtSignal()
 
-    def __init__(self, main, dialog_search_results):
-        super().__init__(main)
+    def __init__(self, main, dialog_search_results, dialog_progress):
+        super().__init__(main, dialog_progress)
 
         self.dialog = dialog_search_results
 
@@ -353,10 +353,9 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Search_Results(self.main)
 
-            worker_search_results = Wordless_Worker_Search_Results(self.main, self)
+            worker_search_results = Wordless_Worker_Search_Results(self.main, self, dialog_progress)
             thread_search_results = wordless_threading.Wordless_Thread_Search_Results(worker_search_results)
 
-            worker_search_results.progress_updated.connect(dialog_progress.update_progress)
             worker_search_results.searching_finished.connect(data_received)
 
             thread_search_results.start()
