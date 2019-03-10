@@ -17,9 +17,10 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+import matplotlib
+import matplotlib.pyplot
 import nltk
 import numpy
-import matplotlib.pyplot
 
 from wordless_checking import wordless_checking_file
 from wordless_dialogs import (wordless_dialog, wordless_dialog_misc, wordless_dialog_search_results,
