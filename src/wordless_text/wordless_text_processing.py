@@ -26,7 +26,7 @@ import underthesea
 
 from wordless_checking import wordless_checking_unicode
 from wordless_text import wordless_matching, wordless_text, wordless_text_utils
-from wordless_utils import wordless_conversion
+from wordless_utils import wordless_conversion, wordless_misc
 
 def wordless_sentence_tokenize(main, text, lang,
                                sentence_tokenizer = 'default'):
@@ -643,7 +643,7 @@ def wordless_lemmatize(main, tokens, lang,
                     lemmas.append(word_net_lemmatizer.lemmatize(token))
         # Greek (Ancient)
         elif lemmatizer == main.tr('lemmalist-greek - Greek (Ancient) Lemma List'):
-            with open(r'lemmatization/lemmalist-greek/lemmalist-greek.txt', 'r', encoding = 'utf_8') as f:
+            with open(wordless_misc.get_abs_path('lemmatization/lemmalist-greek/lemmalist-greek.txt'), 'r', encoding = 'utf_8') as f:
                 for line in f.readlines():
                     line = line.rstrip()
 
@@ -672,7 +672,7 @@ def wordless_lemmatize(main, tokens, lang,
         elif 'Lemmatization Lists' in lemmatizer:
             lang = wordless_conversion.to_iso_639_1(main, lang)
 
-            with open(f'lemmatization/Lemmatization Lists/lemmatization-{lang}.txt', 'r', encoding = 'utf_8_sig') as f:
+            with open(wordless_misc.get_abs_path(f'lemmatization/Lemmatization Lists/lemmatization-{lang}.txt'), 'r', encoding = 'utf_8_sig') as f:
                 for line in f:
                     try:
                         lemma, word = line.rstrip().split('\t')
@@ -710,15 +710,15 @@ def wordless_get_stop_words(main, lang,
 
         # Chinese (Traditional)
         if lang_639_1 == 'zh_tw':
-            with open(r'stop_words/Stopwords ISO/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
+            with open(wordless_misc.get_abs_path('stop_words/Stopwords ISO/stop_words_zh_tw.txt'), 'r', encoding = 'utf_8') as f:
                 stop_words = [line.rstrip() for line in f]
         else:
-            with open(r'stop_words/Stopwords ISO/stopwords_iso.json', 'r', encoding = 'utf_8') as f:
+            with open(wordless_misc.get_abs_path('stop_words/Stopwords ISO/stopwords_iso.json'), 'r', encoding = 'utf_8') as f:
                 stop_words = json.load(f)[lang_639_1]
     elif 'spaCy' in list_stop_words:
         # Chinese (Traditional)
         if lang_639_1 == 'zh_tw':
-            with open(r'stop_words/spaCy/stop_words_zh_tw.txt', 'r', encoding = 'utf_8') as f:
+            with open(wordless_misc.get_abs_path('stop_words/spaCy/stop_words_zh_tw.txt'), 'r', encoding = 'utf_8') as f:
                 stop_words = [line.rstrip() for line in f]
         else:
             spacy_stop_words = importlib.import_module(f'spacy.lang.{lang_639_1}.stop_words')
@@ -754,7 +754,7 @@ def wordless_get_stop_words(main, lang,
         stop_words = nltk.corpus.stopwords.words(lang_texts[lang])
     # Greek (Ancient)
     elif list_stop_words == main.tr('grk-stoplist - Greek (Ancient) Stop Words'):
-        with open(r'stop_words/grk-stoplist/stoplist-greek.txt', 'r', encoding = 'utf_8') as f:
+        with open(wordless_misc.get_abs_path('stop_words/grk-stoplist/stoplist-greek.txt'), 'r', encoding = 'utf_8') as f:
             stop_words = [line.rstrip() for line in f.readlines()]
     # Thai
     elif list_stop_words == main.tr('PyThaiNLP - Thai Stop Words'):

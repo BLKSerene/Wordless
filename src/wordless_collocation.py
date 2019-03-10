@@ -18,6 +18,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+import matplotlib
 import matplotlib.pyplot
 import nltk
 import numpy

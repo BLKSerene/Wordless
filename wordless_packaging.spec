@@ -10,6 +10,7 @@
 #
 
 import os
+import platform
 import sys
 
 import PyInstaller
@@ -59,53 +60,68 @@ datas.extend([
     ('LICENSE.txt', '.')
 ])
 
+if platform.system() == 'Darwin':
+    datas.extend(PyInstaller.utils.hooks.collect_data_files('PIL', include_py_files = True))
+
+hiddenimports = [
+    # pymorphy2
+    'pymorphy2_dicts_ru',
+    'pymorphy2_dicts_uk',
+
+    # spaCy
+    'spacy._align',
+    'spacy.lexeme',
+    'spacy.matcher._schemas',
+    'spacy.morphology',
+    'spacy.parts_of_speech',
+    'spacy.tokens._retokenize',
+    'spacy.tokens.underscore',
+    'spacy.strings',
+    'spacy.syntax._beam_utils',
+    'spacy.syntax._parser_model',
+    'spacy.syntax.arc_eager',
+    'spacy.syntax.ner',
+    'spacy.syntax.nn_parser',
+    'spacy.syntax.stateclass',
+    'spacy.syntax.transition_system',
+
+    'blis',
+    'blis.py',
+
+    'cymem',
+    'cymem.cymem',
+
+    'murmurhash',
+
+    'preshed.maps',
+
+    'srsly.msgpack.util',
+
+    'thinc.extra.search',
+    'thinc.linalg',
+    'thinc.neural._aligned_alloc'
+]
+
+runtime_hooks = [
+    'wordless_hook_pymorphy2.py'
+]
+
+if platform.system() == 'Windows':
+    excludes = []
+elif platform.system() == 'Darwin':
+    excludes = [
+        'joblib',
+        'PIL'
+    ]
+
 a = Analysis(['src/wordless_main.py'],
              pathex = [],
              binaries = [],
              datas = datas,
-             hiddenimports = [
-                # pymorphy2
-                'pymorphy2_dicts_ru',
-                'pymorphy2_dicts_uk',
-
-                # spaCy
-                'spacy._align',
-                'spacy.lexeme',
-                'spacy.matcher._schemas',
-                'spacy.morphology',
-                'spacy.parts_of_speech',
-                'spacy.tokens._retokenize',
-                'spacy.tokens.underscore',
-                'spacy.strings',
-                'spacy.syntax._beam_utils',
-                'spacy.syntax._parser_model',
-                'spacy.syntax.arc_eager',
-                'spacy.syntax.ner',
-                'spacy.syntax.nn_parser',
-                'spacy.syntax.stateclass',
-                'spacy.syntax.transition_system',
-
-                'blis',
-                'blis.py',
-
-                'cymem',
-                'cymem.cymem',
-
-                'murmurhash',
-
-                'preshed.maps',
-
-                'srsly.msgpack.util',
-
-                'thinc.extra.search',
-                'thinc.linalg',
-                'thinc.neural._aligned_alloc',
-             ],
+             hiddenimports = hiddenimports,
              hookspath = [],
-             runtime_hooks = [
-                'wordless_hook_pymorphy2.py'
-             ],
-             excludes = [],
+             runtime_hooks = runtime_hooks,
+             excludes = excludes,
              win_no_prefer_redirects = False,
              win_private_assemblies = False,
              cipher = block_cipher,
@@ -113,6 +129,11 @@ a = Analysis(['src/wordless_main.py'],
 
 pyz = PYZ(a.pure, a.zipped_data,
           cipher = block_cipher)
+
+if platform.system() == 'Windows':
+    icon = 'src/imgs/wordless_icon.ico'
+elif platform.system() == 'Darwin':
+    icon = 'src/imgs/wordless_icon.icns'
 
 exe = EXE(pyz,
           a.scripts,
@@ -124,7 +145,7 @@ exe = EXE(pyz,
           strip = False,
           upx = True,
           console = False,
-          icon = 'src/imgs/wordless_icon.ico')
+          icon = icon)
 
 coll = COLLECT(exe,
                a.binaries,
@@ -133,3 +154,12 @@ coll = COLLECT(exe,
                strip = False,
                upx = True,
                name = 'Wordless')
+
+if platform.system() == 'Darwin':
+    app = BUNDLE(exe,
+                 name = 'Wordless.app',
+                 icon = icon,
+                 bundle_identifier = None,
+                 info_plist = {
+                    'NSHighResolutionCapable': 'True'
+                 })

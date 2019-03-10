@@ -10,11 +10,18 @@
 #
 
 import copy
+import os
 import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+
+def get_abs_path(path):
+    path = os.path.realpath(path)
+    path = os.path.normpath(path)
+
+    return path
 
 def find_wordless_main(widget):
     main = widget

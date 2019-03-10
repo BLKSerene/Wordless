@@ -54,7 +54,6 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
 
         if self.file_paths:
             len_file_paths = len(self.file_paths)
-            self.main.settings_custom['import']['files']['default_path'] = os.path.normpath(os.path.dirname(self.file_paths[0]))
 
             for i, file_path in enumerate(self.file_paths):
                 self.progress_updated.emit(self.tr(f'Loading files ... ({i + 1}/{len_file_paths})'))
@@ -62,6 +61,7 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
                 default_dir = wordless_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
                 default_encoding = self.main.settings_custom['import']['temp_files']['default_encoding']
 
+                file_path = wordless_misc.get_abs_path(file_path)
                 file_name, file_ext = os.path.splitext(os.path.basename(file_path))
                 file_ext = file_ext.lower()
 
@@ -235,6 +235,8 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
                             if not detection_success_lang:
                                 files_detection_failed_lang.append(new_file['path'])
 
+            self.main.settings_custom['import']['files']['default_path'] = wordless_misc.get_abs_path(os.path.dirname(self.file_paths[0]))
+
         self.files_added.emit(new_files,
                               files_detection_failed_encoding,
                               files_detection_failed_text_type,
@@ -307,7 +309,7 @@ class Wordless_Files():
         detection_success_lang = True
 
         new_file['selected'] = True
-        new_file['path'] = os.path.normpath(file_path)
+        new_file['path'] = file_path
         new_file['name'], _ = os.path.splitext(os.path.basename(new_file['path']))
         new_file['name_old'] = new_file['name']
 
@@ -649,12 +651,12 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
             if self.main.settings_custom['files']['subfolders']:
                 for dir_path, dir_names, file_names in os.walk(file_dir):
                     for file_name in file_names:
-                        file_paths.append(os.path.realpath(os.path.join(dir_path, file_name)))
+                        file_paths.append(os.path.join(dir_path, file_name))
             else:
                 file_names = list(os.walk(file_dir))[0][2]
 
                 for file_name in file_names:
-                    file_paths.append(os.path.realpath(os.path.join(file_dir, file_name)))
+                    file_paths.append(os.path.join(file_dir, file_name))
 
             self.main.wordless_files.add_files(file_paths)
 

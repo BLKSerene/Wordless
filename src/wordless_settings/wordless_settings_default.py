@@ -9,8 +9,6 @@
 # All other rights reserved.
 #
 
-import os
-
 from wordless_tagsets import (wordless_tagset_universal,
                               wordless_tagset_nld_spacy,
                               wordless_tagset_eng_penn_treebank,
@@ -28,6 +26,7 @@ from wordless_tagsets import (wordless_tagset_universal,
                               wordless_tagset_bod_pybo,
                               wordless_tagset_vie_underthesea,
                               wordless_tagset_zho_jieba)
+from wordless_utils import wordless_misc
 
 def init_settings_default(main):
     main.settings_default = {
@@ -964,39 +963,39 @@ def init_settings_default(main):
 
         'import': {
             'files': {
-                'default_path': os.path.normpath(os.path.realpath('.'))
+                'default_path': wordless_misc.get_abs_path('.')
             },
 
             'search_terms': {
-                'default_path': os.path.normpath(os.path.realpath('.')),
+                'default_path': wordless_misc.get_abs_path('.'),
                 'detect_encodings': True
             },
 
             'stop_words': {
-                'default_path': os.path.normpath(os.path.realpath('.')),
+                'default_path': wordless_misc.get_abs_path('.'),
                 'detect_encodings': True
             },
 
             'temp_files': {
-                'default_path': os.path.normpath(os.path.realpath('Import/')),
+                'default_path': wordless_misc.get_abs_path('Import/'),
                 'default_encoding': 'utf_8'
             }
         },
 
         'export': {
             'tables': {
-                'default_path': os.path.normpath(os.path.realpath('Export/')),
+                'default_path': wordless_misc.get_abs_path('Export/'),
                 'default_type': main.tr('Excel Workbook (*.xlsx)'),
                 'default_encoding': 'utf_8'
             },
 
             'search_terms': {
-                'default_path': os.path.normpath(os.path.realpath('Export/')),
+                'default_path': wordless_misc.get_abs_path('Export/'),
                 'default_encoding': 'utf_8'
             },
 
             'stop_words': {
-                'default_path': os.path.normpath(os.path.realpath('Export/')),
+                'default_path': wordless_misc.get_abs_path('Export/'),
                 'default_encoding': 'utf_8'
             }
         },
