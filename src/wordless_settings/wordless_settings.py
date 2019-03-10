@@ -26,7 +26,7 @@ import nltk
 from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
 from wordless_tagsets import wordless_tagset_universal
 from wordless_text import wordless_text_processing, wordless_text_utils
-from wordless_utils import wordless_conversion, wordless_threading
+from wordless_utils import wordless_conversion, wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_button, wordless_label,
                               wordless_layout, wordless_list, wordless_table,
                               wordless_tree, wordless_widgets)
@@ -289,7 +289,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['import']['files']['default_path'])
 
             if path_file:
-                self.line_edit_import_files_default_path.setText(os.path.normpath(path_file))
+                self.line_edit_import_files_default_path.setText(wordless_misc.get_abs_path(path_file))
 
         def browse_search_terms():
             path_file = QFileDialog.getExistingDirectory(self.main,
@@ -297,7 +297,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['import']['search_terms']['default_path'])
 
             if path_file:
-                self.line_edit_import_search_terms_default_path.setText(os.path.normpath(path_file))
+                self.line_edit_import_search_terms_default_path.setText(wordless_misc.get_abs_path(path_file))
 
         def browse_stop_words():
             path_file = QFileDialog.getExistingDirectory(self.main,
@@ -310,7 +310,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['import']['temp_files']['default_path'])
 
             if path_file:
-                self.line_edit_import_temp_files_default_path.setText(os.path.normpath(path_file))
+                self.line_edit_import_temp_files_default_path.setText(wordless_misc.get_abs_path(path_file))
 
         self.settings_import = QWidget(self)
 
@@ -401,7 +401,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['export']['tables']['default_path'])
 
             if path_file:
-                self.line_edit_export_tables_default_path.setText(os.path.normpath(path_file))
+                self.line_edit_export_tables_default_path.setText(wordless_misc.get_abs_path(path_file))
 
         def browse_search_terms():
             path_file = QFileDialog.getExistingDirectory(self,
@@ -409,7 +409,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['export']['search_terms']['default_path'])
 
             if path_file:
-                self.line_edit_export_search_terms_default_path.setText(os.path.normpath(path_file))
+                self.line_edit_export_search_terms_default_path.setText(wordless_misc.get_abs_path(path_file))
 
         def browse_stop_words():
             path_file = QFileDialog.getExistingDirectory(self,
@@ -417,7 +417,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['export']['stop_words']['default_path'])
 
             if path_file:
-                self.line_edit_export_stop_words_default_path.setText(os.path.normpath(path_file))
+                self.line_edit_export_stop_words_default_path.setText(wordless_misc.get_abs_path(path_file))
 
         self.settings_export = QWidget(self)
 
@@ -697,7 +697,7 @@ class Wordless_Settings(QDialog):
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_sentence_tokenization_preview_lang = QLabel(self.tr('Select a Language:'), self)
+        self.label_sentence_tokenization_preview_lang = QLabel(self.tr('Select Language:'), self)
         self.combo_box_sentence_tokenization_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.label_sentence_tokenization_preview_processing = QLabel()
         self.text_edit_sentence_tokenization_preview_samples = QTextEdit(self)
@@ -842,7 +842,7 @@ class Wordless_Settings(QDialog):
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_word_tokenization_preview_lang = QLabel(self.tr('Select a Language:'), self)
+        self.label_word_tokenization_preview_lang = QLabel(self.tr('Select Language:'), self)
         self.combo_box_word_tokenization_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.label_word_tokenization_preview_processing = QLabel('', self)
         self.text_edit_word_tokenization_preview_samples = QTextEdit(self)
@@ -977,7 +977,7 @@ class Wordless_Settings(QDialog):
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_word_detokenization_preview_lang = QLabel(self.tr('Select a Language:'), self)
+        self.label_word_detokenization_preview_lang = QLabel(self.tr('Select Language:'), self)
         self.combo_box_word_detokenization_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.label_word_detokenization_preview_processing = QLabel('', self)
         self.text_edit_word_detokenization_preview_samples = QTextEdit(self)
@@ -1132,7 +1132,7 @@ class Wordless_Settings(QDialog):
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_pos_tagging_preview_lang = QLabel(self.tr('Select a Language:'), self)
+        self.label_pos_tagging_preview_lang = QLabel(self.tr('Select Language:'), self)
         self.combo_box_pos_tagging_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.label_pos_tagging_preview_processing = QLabel('', self)
         self.text_edit_pos_tagging_preview_samples = QTextEdit(self)
@@ -1471,7 +1471,7 @@ class Wordless_Settings(QDialog):
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_lemmatization_preview_lang = QLabel(self.tr('Select a Language:'), self)
+        self.label_lemmatization_preview_lang = QLabel(self.tr('Select Language:'), self)
         self.combo_box_lemmatization_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.label_lemmatization_preview_processing = QLabel('', self)
         self.text_edit_lemmatization_preview_samples = QTextEdit(self)
@@ -1571,7 +1571,7 @@ class Wordless_Settings(QDialog):
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_stop_words_preview_lang = QLabel(self.tr('Select a Language:'), self)
+        self.label_stop_words_preview_lang = QLabel(self.tr('Select Language:'), self)
         self.combo_box_stop_words_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.combo_box_stop_words_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
         self.label_stop_words_preview_count = QLabel('', self)
