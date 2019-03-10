@@ -25,6 +25,7 @@ import numpy
 from wordless_checking import wordless_checking_file
 from wordless_dialogs import (wordless_dialog, wordless_dialog_misc, wordless_dialog_search_results,
                               wordless_msg_box)
+from wordless_figures import wordless_figure
 from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
                            wordless_token_processing)
 from wordless_utils import wordless_misc, wordless_threading
@@ -1343,7 +1344,7 @@ def generate_figure(main):
         dialog_progress.accept()
 
         if points:
-            matplotlib.pyplot.get_current_fig_manager().window.showMaximized()
+            wordless_figure.show_figure()
 
     settings = main.settings_custom['concordancer']
     files = main.wordless_files.get_selected_files()
