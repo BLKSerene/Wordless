@@ -49,8 +49,9 @@ if not os.path.exists('Import') or not os.path.exists('Export'):
 if platform.system() == 'Darwin':
     time_start_copy_files = time.time()
 
-    for dir_src, dirs, files in os.walk('.'):
-        dir_app = dir_src.replace('Wordless', 'Wordless.app/Contents/MacOS')
+    for dir_src, dirs, files in os.walk('Wordless'):
+        dir_src = os.path.realpath(dir_src)
+        dir_app = dir_src.replace('dist/Wordless', 'dist/Wordless.app/Contents/MacOS')
 
         print(f'Copying folder {dir_app} ...')
 
