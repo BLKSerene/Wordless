@@ -16,15 +16,26 @@ import platform
 import sys
 import time
 
+# Fix working directory on macOS
+if getattr(sys, '_MEIPASS', False):
+    if platform.system() == 'Darwin':
+        os.chdir(sys._MEIPASS)
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 import matplotlib
+import nltk
+
+matplotlib.use('Qt5Agg')
+# Overwrite path of NLTK data
+nltk.data.path.insert(0, os.path.join(os.getcwd(), 'nltk_data'))
 
 from wordless_checking import wordless_checking_misc
 from wordless_dialogs import wordless_dialog_misc, wordless_dialog_help, wordless_msg_box
 from wordless_settings import wordless_settings, wordless_settings_default, wordless_settings_global
+from wordless_utils import wordless_misc
 from wordless_widgets import wordless_layout
 
 import wordless_file_area
@@ -36,11 +47,9 @@ import wordless_collocation
 import wordless_colligation
 import wordless_keywords
 
-matplotlib.use('Qt5Agg')
-
 class Wordless_Loading(QSplashScreen):
     def __init__(self):
-        super().__init__(QPixmap('imgs/wordless_loading.png'))
+        super().__init__(QPixmap(wordless_misc.get_abs_path('imgs/wordless_loading.png')))
 
         msg_font = QFont('Times New Roman')
         msg_font.setPixelSize(14)
@@ -74,14 +83,16 @@ class Wordless_Main(QMainWindow):
         self.threads_check_updates = []
 
         self.setWindowTitle(self.tr('Wordless'))
-        self.setWindowIcon(QIcon('imgs/wordless_icon.ico'))
+        self.setWindowIcon(QIcon(wordless_misc.get_abs_path('imgs/wordless_icon.ico')))
 
         # Settings
         wordless_settings_global.init_settings_global(self)
         wordless_settings_default.init_settings_default(self)
 
-        if os.path.exists('wordless_settings.pickle'):
-            with open(r'wordless_settings.pickle', 'rb') as f:
+        path_settings = wordless_misc.get_abs_path('wordless_settings.pickle')
+
+        if os.path.exists(path_settings):
+            with open(path_settings, 'rb') as f:
                 settings_custom = pickle.load(f)
 
             if wordless_checking_misc.check_custom_settings(settings_custom, self.settings_default):
@@ -460,8 +471,8 @@ if __name__ == '__main__':
 
     wordless_loading = Wordless_Loading()
 
-    wordless_loading.fade_in()
     wordless_loading.raise_()
+    wordless_loading.fade_in()
 
     app.processEvents()
 
