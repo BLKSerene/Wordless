@@ -111,35 +111,6 @@ def wordless_msg_box_file_error_on_opening(main,
                                 '''),
                                 QMessageBox.Ok)
 
-def wordless_msg_box_file_error_on_startup(main,
-                                           files_missing,
-                                           files_empty):
-    msg = ''
-
-    msg += wordless_msg_text_file_error(
-        files_missing,
-        text_singular = main.tr('The following file no longer exists in its original location:'),
-        text_plural = main.tr('The following files no longer exist in their original locations:'))
-
-    msg += wordless_msg_text_file_error(
-        files_empty,
-        text_singular = main.tr('The following file is empty:'),
-        text_plural = main.tr('The following files are empty:'))
-
-    if msg:
-        QMessageBox.information(main,
-                                main.tr('Error Loading File'),
-                                main.tr(f'''
-                                    {main.settings_global['styles']['style_dialog']}
-                                    <body>
-                                        <div>
-                                            An error occurred while loading the files on startup, so some files are skipped and they will be removed from the file area.
-                                        </div>
-                                        {msg}
-                                    </body>
-                                '''),
-                                QMessageBox.Ok)
-
 def wordless_msg_box_file_error_on_importing(main,
                                              files_empty,
                                              files_loading_error):

@@ -743,23 +743,6 @@ class Wrapper_File_Area(wordless_layout.Wordless_Wrapper_File_Area):
 
         # Load files
         self.main.wordless_files = Wordless_Files(self.table_files)
-
-        files = copy.deepcopy(self.main.settings_custom['files']['files_open'])
-        file_paths = [file['path'] for file in files]
-
-        file_paths, files_missing = wordless_checking_file.check_files_missing(self.main, file_paths)
-        file_paths, files_empty = wordless_checking_file.check_files_empty(self.main, file_paths)
-
-        wordless_msg_box.wordless_msg_box_file_error_on_startup(self.main,
-                                                                files_missing = files_missing,
-                                                                files_empty = files_empty)
-
-        self.main.settings_custom['files']['files_open'].clear()
-
-        for file in files:
-            if file['path'] in file_paths:
-                self.main.settings_custom['files']['files_open'].append(file)
-
         self.main.wordless_files.update_table()
 
     def load_settings(self, defaults = False):
