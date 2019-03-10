@@ -592,13 +592,6 @@ def wordless_lemmatize(main, tokens, lang,
     re_tags_pos = wordless_matching.get_re_tags(main, tags = 'pos')
     re_tags_non_pos = wordless_matching.get_re_tags(main, tags = 'non_pos')
 
-    # Record empty tokens
-    for i, token in reversed(list(enumerate(tokens))):
-        if not token.strip():
-            tokens.remove(token)
-
-            empty_offsets.append(i)
-
     if text_type[1] == 'tagged_both':
         tags = [''.join(re.findall(re_tags_all, token)) for token in tokens]
         tokens = [re.sub(re_tags_all, '', token) for token in tokens]
@@ -610,6 +603,13 @@ def wordless_lemmatize(main, tokens, lang,
         tokens = [re.sub(re_tags_non_pos, '', token) for token in tokens]
     else:
         tags = [''] * len(tokens)
+
+    # Record empty tokens
+    for i, token in reversed(list(enumerate(tokens))):
+        if not token.strip():
+            tokens.remove(token)
+
+            empty_offsets.append(i)
 
     if tokens and lang in main.settings_global['lemmatizers']:
         if lemmatizer == 'default':
