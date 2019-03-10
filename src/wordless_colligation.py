@@ -26,7 +26,7 @@ from wordless_dialogs import (wordless_dialog_filter_results, wordless_dialog_mi
                               wordless_msg_box)
 from wordless_figures import wordless_figure, wordless_figure_freq, wordless_figure_stat
 from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
-                           wordless_token_processing)
+                           wordless_text_utils, wordless_token_processing)
 from wordless_utils import wordless_misc, wordless_sorting, wordless_threading
 from wordless_widgets import (wordless_layout, wordless_msg, wordless_table,
                               wordless_widgets)
