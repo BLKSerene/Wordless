@@ -168,7 +168,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/PyThaiNLP/pythainlp">PyThaiNLP</a>',
-                '1.7.3',
+                '1.7.4',
                 'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
                 '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache-2.0</a>'
             ],
