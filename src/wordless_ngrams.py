@@ -18,15 +18,13 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-import matplotlib
-import matplotlib.pyplot
 import nltk
 import numpy
 
 from wordless_checking import wordless_checking_file
 from wordless_dialogs import (wordless_dialog_filter_results, wordless_dialog_misc, wordless_dialog_search_results,
                               wordless_msg_box)
-from wordless_figures import wordless_figure_freq, wordless_figure_stat
+from wordless_figures import wordless_figure, wordless_figure_freq, wordless_figure_stat
 from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
                            wordless_text_utils, wordless_token_processing)
 from wordless_utils import wordless_misc, wordless_sorting, wordless_threading
@@ -1062,7 +1060,7 @@ def generate_figure(main):
         dialog_progress.accept()
 
         if ngrams_freq_files:
-            matplotlib.pyplot.get_current_fig_manager().window.showMaximized()
+            wordless_figure.show_figure()
 
     settings = main.settings_custom['ngrams']
     files = main.wordless_files.get_selected_files()
