@@ -41,6 +41,7 @@ GB (GB/T 7714—2015):
 ## Documentation
 [English Documentation](#doc-eng)
 * [Supported Languages](#doc-eng-supported-langs)
+* [Supported Text Types](#doc-eng-supported-text-types)
 * [Supported File Types](#doc-eng-supported-file-types)
 * [Supported Measures](#doc-eng-supported-measures)
 * [Main Window](#doc-eng-main-window)
@@ -121,8 +122,10 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 
 <span id="doc-eng"></span>
 ## Documentation - English
+
 <span id="doc-eng-supported-langs"></span>
 ### Supported Languages [[Back to Contents]](#doc)
+
 Languages|Sentence Tokenization|Word Tokenization|Word Detokenization|POS Tagging|Lemmatization|Stop Words
 :-------:|:-------------------:|:---------------:|:-----------------:|:---------:|:-----------:|:--------:
 Afrikaans            |⭕️ |✔|⭕️ |✖️|✖️|✔️
@@ -206,8 +209,23 @@ Other Languages      |⭕️ |⭕️ |⭕️ |✖️|✖️|✖️
 ⭕️: Supported but falls back to the default English tokenizer<br>
 ✖️: Not supported
 
+<span id="doc-eng-supported-text-types"></span>
+### Supported File Types [[Back to Contents]](#doc)
+
+You can specify your custom POS/Non-POS tags via **Menu → Preferences → Settings → Tags**.
+
+Text Types|Auto-detection
+----------|--------------
+Untokenized / Untagged        |✔
+Untokenized / Tagged (Non-POS)|✔
+Tokenized / Untagged          |✖
+Tokenized / Tagged (POS)      |✔
+Tokenized / Tagged (Non-POS)  |✖
+Tokenized / Tagged (Both)     |✔
+
 <span id="doc-eng-supported-file-types"></span>
 ### Supported File Types [[Back to Contents]](#doc)
+
 File Types|File Extensions
 ----------|--------------
 Text Files              |\*.txt
