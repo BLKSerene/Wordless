@@ -318,6 +318,8 @@ In *Overview*, you can check/compare the language features of different files.
 12. **Count of n-length Tokens**:<br>
 	Number of n-length tokens, where n = 1, 2, 3, etc.
 
+![Overview Table](/doc/overview_table.png)
+
 <span id="doc-eng-concordancer"></span>
 ### Concordancer [[Back to Contents]](#doc)
 In *Concordancer*, you can search for any token in different files and generate concordance lines or plots.
