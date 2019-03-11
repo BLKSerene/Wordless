@@ -41,7 +41,7 @@ print('Rosengren\'s S:')
 print(f'\t{wordless_measures_dispersion.rosengrens_s([1, 2, 3, 4, 5])} (0.937)')
 
 # Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 408.
-print('Zhang\'s Distributional Consistency:\n    ', end = '')
+print('Zhang\'s Distributional Consistency:')
 print(f'\t{wordless_measures_dispersion.zhangs_distributional_consistency([1, 2, 3, 4, 5])} (0.937)')
 
 # Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 416.

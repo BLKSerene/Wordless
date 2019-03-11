@@ -14,36 +14,25 @@ import math
 import numpy
 import scipy.special
 
+from wordless_measures import wordless_measures_dispersion
+
 # Euler-Mascheroni Constant
 C = -scipy.special.digamma(1)
 
 # Reference:
 #     Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.
 def juillands_u(freqs):
-    if sum(freqs) == 0:
-        d = 0
-    else:
-        cv = numpy.std(freqs) / numpy.mean(freqs)
-    
-        d = 1 - cv / math.sqrt(len(freqs) - 1)
+    d = wordless_measures_dispersion.juillands_d(freqs)
+    u = max(0, d) * sum(freqs)
 
-    return max(0, d) * sum(freqs)
+    return u
 
 # Reference:
 #     Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
 def carrolls_um(freqs):
-    h = 0
     freq_total = sum(freqs)
 
-    if freq_total == 0:
-        d2 = 0
-    else:
-        for freq in freqs:
-            if freq:
-                h += freq * math.log(freq, math.e)
-
-        d2 = (math.log(freq_total, math.e) - h / freq_total) / math.log(len(freqs), math.e)
-
+    d2 = wordless_measures_dispersion.carrolls_d2(freqs)
     um = freq_total * d2 + (1 - d2) * freq_total / len(freqs)
 
     return um
