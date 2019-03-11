@@ -37,6 +37,7 @@ GB (GB/T 7714—2015):
 
     叶磊. Wordless version 1.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
 
+<span id="doc"></span>
 ## Documentation
 [English Documentation](#doc-eng)
 * [Supported Languages](#doc-eng-supported-langs)
@@ -120,7 +121,7 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 <span id="doc-eng"></span>
 ## Documentation - English
 <span id="doc-eng-supported-langs"></span>
-### Supported Languages
+### Supported Languages [[Back to Contents]](#doc)
 Languages|Sentence Tokenization|Word Tokenization|Word Detokenization|POS Tagging|Lemmatization|Stop Words
 :-------:|:-------------------:|:---------------:|:-----------------:|:---------:|:-----------:|:--------:
 Afrikaans            |⭕️ |✔|⭕️ |✖️|✖️|✔️
@@ -205,7 +206,7 @@ Other Languages      |⭕️ |⭕️ |⭕️ |✖️|✖️|✖️
 ✖️: Not supported
 
 <span id="doc-eng-supported-file-types"></span>
-### Supported File Types
+### Supported File Types [[Back to Contents]](#doc)
 File Types|File Extensions
 ----------|--------------
 Text Files              |\*.txt
@@ -220,7 +221,7 @@ Lyrics Files            |\*.lrc
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/Import/**). You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
 
 <span id="doc-eng-main-window"></span>
-### Main Window
+### Main Window [[Back to Contents]](#doc)
 The main window of *Wordless* is divided into several sections:
 
 1. **Menu Bar**<br>
@@ -236,7 +237,7 @@ The main window of *Wordless* is divided into several sections:
 	You can show/hide the *Status Bar* by checking/unchecking **Menu → Preferences → Show Status Bar**
 
 <span id="doc-eng-file-area"></span>
-### File Area
+### File Area [[Back to Contents]](#doc)
 In most cases, the first thing to do in *Wordless* is open and select your files to be processed via **Menu → File** or by clicking the buttons residing under the *File Table*.
 
 Files are selected by default after being added to the *File Table*. **Only selected files will be processed by Wordless**. You can drag and drop files around the *File Table* to change their orders, which will be reflected in the results produced by Wordless.
@@ -274,7 +275,7 @@ By default, Wordless will try to detect the language, text type and encoding of 
 	Remove all files in the *File Table*.
 
 <span id="doc-eng-overview"></span>
-### Overview
+### Overview [[Back to Contents]](#doc)
 In *Overview*, you can check/compare the language features of different files.
 
 1. **Count of Paragraphs**:<br>
@@ -318,7 +319,7 @@ In *Overview*, you can check/compare the language features of different files.
 	Number of n-length tokens, where n = 1, 2, 3, etc.
 
 <span id="doc-eng-concordancer"></span>
-### Concordancer
+### Concordancer [[Back to Contents]](#doc)
 In *Concordancer*, you can search for any token in different files and generate concordance lines or plots.
 
 After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results** at the upper right corner of the *Results Area*.
