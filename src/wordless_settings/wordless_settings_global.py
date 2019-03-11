@@ -1460,9 +1460,9 @@ def init_settings_global(main):
             ],
 
             'ell': [
-                main.tr('NLTK - Greek Stop Words'),
-                main.tr('spaCy - Greek Stop Words'),
-                main.tr('Stopwords ISO - Greek Stop Words'),
+                main.tr('NLTK - Greek (Modern) Stop Words'),
+                main.tr('spaCy - Greek (Modern) Stop Words'),
+                main.tr('Stopwords ISO - Greek (Modern) Stop Words'),
                 main.tr('Custom List')
             ],
 
@@ -1557,13 +1557,13 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
-            'mar': [
-                main.tr('Stopwords ISO - Marathi Stop Words'),
+            'msa': [
+                main.tr('Stopwords ISO - Malay Stop Words'),
                 main.tr('Custom List')
             ],
 
-            'msa': [
-                main.tr('Stopwords ISO - Malay Stop Words'),
+            'mar': [
+                main.tr('Stopwords ISO - Marathi Stop Words'),
                 main.tr('Custom List')
             ],
 
@@ -1633,13 +1633,13 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
-            'sot': [
-                main.tr('Stopwords ISO - Sotho (Southern) Stop Words'),
+            'som': [
+                main.tr('Stopwords ISO - Somali Stop Words'),
                 main.tr('Custom List')
             ],
 
-            'som': [
-                main.tr('Stopwords ISO - Somali Stop Words'),
+            'sot': [
+                main.tr('Stopwords ISO - Sotho (Southern) Stop Words'),
                 main.tr('Custom List')
             ],
 
