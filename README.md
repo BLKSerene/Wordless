@@ -43,6 +43,7 @@ GB (GB/T 7714—2015):
 * [Supported Languages](#doc-eng-supported-langs)
 * [Supported Text Types](#doc-eng-supported-text-types)
 * [Supported File Types](#doc-eng-supported-file-types)
+* [Supported File Encodings](#doc-eng-supported-file-encodings)
 * [Supported Measures](#doc-eng-supported-measures)
 * [Main Window](#doc-eng-main-window)
 * [File Area](#doc-eng-file-area)
@@ -210,12 +211,12 @@ Other Languages      |⭕️ |⭕️ |⭕️ |✖️|✖️|✖️
 ✖️: Not supported
 
 <span id="doc-eng-supported-text-types"></span>
-### Supported File Types [[Back to Contents]](#doc)
+### Supported Text Types [[Back to Contents]](#doc)
 
 You can specify your custom POS/Non-POS tags via **Menu → Preferences → Settings → Tags**.
 
 Text Types|Auto-detection
-----------|--------------
+----------|:------------:
 Untokenized / Untagged        |✔
 Untokenized / Tagged (Non-POS)|✔
 Tokenized / Untagged          |✖
@@ -239,12 +240,123 @@ Lyrics Files            |\*.lrc
 \* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/Import/**). You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
 
+<span id="doc-eng-supported-file-encodings"></span>
+### Supported File Encodings [[Back to Contents]](#doc)
+
+Languages|File Encodings|Auto-detection
+---------|--------------|:------------:
+All Languages|UTF-8 Without BOM               |✔
+All Languages|UTF-8 with BOM                  |✔
+All Languages|UTF-16 with BOM                 |✔
+All Languages|UTF-16 Big Endian Without BOM   |✖
+All Languages|UTF-16 Little Endian Without BOM|✖
+All Languages|UTF-32 with BOM                 |✖
+All Languages|UTF-32 Big Endian Without BOM   |✖
+All Languages|UTF-32 Little Endian Without BOM|✖
+All Languages|UTF-7                           |✖
+All Languages|CP65001                         |✖
+Arabic|CP720        |✖
+Arabic|CP864        |✖
+Arabic|ISO-8859-6   |✔
+Arabic|Mac OS Arabic|✖
+Arabic|Windows-1256 |✔
+Baltic Languages|CP775       |✖
+Baltic Languages|ISO-8859-13 |✖
+Baltic Languages|Windows-1257|✖
+Celtic Languages|ISO-8859-14|✖
+Central European|CP852                  |✔
+Central European|ISO-8859-2             |✔
+Central European|Mac OS Central European|✔
+Central European|Windows-1250           |✔
+Chinese|GB18030|✔
+Chinese|GBK    |✖
+Chinese (Simplified)|GB2312|✖
+Chinese (Simplified)|HZ    |✔
+Chinese (Traditional)|Big-5     |✔
+Chinese (Traditional)|Big5-HKSCS|✖
+Chinese (Traditional)|CP950     |✖
+Croatian|Mac OS Croatian|✖
+Cyrillic|CP855          |✔
+Cyrillic|CP866          |✔
+Cyrillic|ISO-8859-5     |✔
+Cyrillic|Mac OS Cyrillic|✔
+Cyrillic|Windows-1251   |✔
+English|ASCII     |✔
+English|EBCDIC 037|✖
+English|CP437     |✖
+Esperanto/Maltese|ISO-8859-3|✔
+European|HP Roman-8|✖
+French|CP863|✖
+German|EBCDIC 273|✖
+Greek|CP737       |✖
+Greek|CP869       |✖
+Greek|CP875       |✖
+Greek|ISO-8859-7  |✔
+Greek|Mac OS Greek|✖
+Greek|Windows-1253|✔
+Hebrew|CP856       |✖
+Hebrew|CP862       |✖
+Hebrew|EBCDIC 424  |✖
+Hebrew|ISO-8859-8  |✔
+Hebrew|Windows-1255|✔
+Icelandic|CP861           |✖
+Icelandic|Mac OS Icelandic|✖
+Japanese|CP932           |✔
+Japanese|EUC-JP          |✔
+Japanese|EUC-JIS-2004    |✖
+Japanese|EUC-JISx0213    |✖
+Japanese|ISO-2022-JP     |✔
+Japanese|ISO-2022-JP-1   |✖
+Japanese|ISO-2022-JP-2   |✖
+Japanese|ISO-2022-JP-2004|✖
+Japanese|ISO-2022-JP-3   |✖
+Japanese|ISO-2022-JP-EXT |✖
+Japanese|Shift_JIS       |✔
+Japanese|Shift_JIS-2004  |✖
+Japanese|Shift_JISx0213  |✖
+Kazakh|KZ-1048|✖
+Kazakh|PTCP154|✖
+Korean|EUC-KR     |✖
+Korean|ISO-2022-KR|✔
+Korean|JOHAB      |✖
+Korean|UHC        |✔
+Nordic Languages|CP865      |✖
+Nordic Languages|ISO-8859-10|✔
+North European|ISO-8859-4|✔
+Persian|Mac OS Farsi|✖
+Portuguese|CP860|✖
+Romanian|Mac OS Romanian|✖
+Russian|KOI8-R|✔
+South-Eastern European|ISO-8859-16|✔
+Tajik|KOI8-T|✖
+Thai|CP874      |✖
+Thai|ISO-8859-11|✖
+Thai|TIS-620    |✔
+Turkish|CP857         |✖
+Turkish|EBCDIC 1026   |✖
+Turkish|ISO-8859-9    |✔
+Turkish|Mac OS Turkish|✖
+Turkish|Windows-1254  |✖
+Ukrainian|CP1125|✖
+Ukrainian|KOI8-U|✖
+Urdu|CP1006      |✖
+Urdu|Mac OS Farsi|✖
+Vietnamese|CP1258|✖
+Western European|EBCDIC 500  |✖
+Western European|CP850       |✖
+Western European|CP858       |✖
+Western European|CP1140      |✖
+Western European|ISO-8859-1  |✔
+Western European|ISO-8859-15 |✔
+Western European|Mac OS Roman|✖
+Western European|Windows-1252|✔
+
 <span id="doc-eng-supported-measures"></span>
 ### Supported Measures [[Back to Contents]](#doc)
 
 #### Measures of Dispersion & Adjusted Frequency
 
-The dispersion and adjusted frequency of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by **F₁**, **F₂**, **F₃** ... **Fn**. The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies in all sub-sections is denoted by ![F-bar](/doc/measures/f_bar.gif) Then, the dispersion of the word will be calcuated as follows.
+The dispersion and adjusted frequency of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by **F₁**, **F₂**, **F₃** ... **Fn**. The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies in all sub-sections is denoted by ![F-bar](/doc/measures/f_bar.gif). Then, the dispersion and adjusted frequency of the word will be calcuated as follows.
 
 <!--
 Juilland's D:
