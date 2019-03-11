@@ -42,6 +42,7 @@ GB (GB/T 7714—2015):
 [English Documentation](#doc-eng)
 * [Supported Languages](#doc-eng-supported-langs)
 * [Supported File Types](#doc-eng-supported-file-types)
+* [Supported Measures](#doc-eng-supported-measures)
 * [Main Window](#doc-eng-main-window)
 * [File Area](#doc-eng-file-area)
 * [Overview](#doc-eng-overview)
@@ -220,21 +221,80 @@ Lyrics Files            |\*.lrc
 \* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/Import/**). You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
 
+<span id="doc-eng-supported-measures"></span>
+### Supported Measures [[Back to Contents]](#doc)
+
+#### Measures of Dispersion
+
+The dispersion of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by **F₁**, **F₂**, **F₃** ... **Fn**. The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies in all sub-sections is denoted by ![F-bar](https://latex.codecogs.com/gif.latex?%5Cbar%7BF%7D) Then, the dispersion of the word will be calcuated as follows.
+
+<!--
+Juilland's D:
+    \begin{align*}
+        CV &= \frac{\sum_{i = 1}^{n}(F_{i} - \bar{F})^{2}}{\bar{F}} \\
+        D &= \frac{1 - CV}{\sqrt{i - 1}}
+    \end{align*}
+
+Carroll's D₂:
+    \begin{align*}
+        H &= \log_{e}F - \frac{\sum_{i = 1}^{n} * \log_{e}F_{i}}{F} \\
+        D_{2} &= \frac{H}{\log_{e}n}
+    \end{align*}
+
+Lyne's D₃:
+    \begin{align*}
+        \chi^{2} &= \sum_{i = 1}^{n}\frac{(F_{i} - \frac{F}{i})^{2}}{\frac{F}{i}} \\
+        D_{3} &= \frac{1 - \chi^{2}}{4F}
+    \end{align*}
+
+Rosengren's S:
+    \begin{align*}
+        KF &= \frac{1}{n}\sum_{i = 1}^{n}(\sqrt{F_{i}})^{2} \\
+        S &= \frac{KF}{F}
+    \end{align*}
+
+Zhang's Distributional Consistency:
+    \begin{align*}
+        DC &= \frac{(\frac{\sum_{i = 1}^{n}\sqrt{F_{i}}}{n})^{2}}{\frac{\sum_{i = 1}^{n}}{n}}
+    \end{align*}
+
+Gries's DP:
+    \begin{align*}
+        DP &= \frac{1}{2}\sum_{i = 1}^{n}|\frac{F_{i}}{F} - \frac{1}{n}|
+    \end{align*}
+
+Gries's DPnorm:
+    \begin{align*}
+        DP &= \frac{1}{2}\sum_{i = 1}^{n}|\frac{F_{i}}{F} - \frac{1}{n}| \\
+        DPnorm &= \frac{DP}{1 - \frac{1}{n}}
+    \end{align*}
+-->
+
+Measures of Dispersion|Formula
+----------------------|-------
+Juilland's D|![Juilland's D](/doc/measures_dispersion/juillands_d.gif)
+Carroll's D₂|![Carroll's D₂](/doc/measures_dispersion/carrolls_d2.gif)
+Lyne's D₃|![Lyne's D₃](/doc/measures_dispersion/lynes_d3.gif)
+Rosengren's S|![Rosengren's S](/doc/measures_dispersion/rosengrens_s.gif)
+Zhang's Distributional Consistency|![Zhang's Distributional Consistency](/doc/measures_dispersion/zhangs_distributional_consistency.gif)
+Gries's DP|![Gries's DP](/doc/measures_dispersion/griess_dp.gif)
+Gries's DPnorm|![Gries's DPnorm](/doc/measures_dispersion/griess_dp_norm.gif)
+
 <span id="doc-eng-main-window"></span>
 ### Main Window [[Back to Contents]](#doc)
 The main window of *Wordless* is divided into several sections:
 
 1. **Menu Bar**<br>
-	
+    
 2. **Work Area**:<br>
-	The *Work Area* is further divided into the *Resutls Area* on the left side and the *Settings Area* on the right side.<br>
-	You can click on the tabs at the top to toggle between different panels.
+    The *Work Area* is further divided into the *Resutls Area* on the left side and the *Settings Area* on the right side.<br>
+    You can click on the tabs at the top to toggle between different panels.
 
 3. **File Area**:<br>
-	The *File Area* is further divided into the *File Table* on the left side and the *Settings Area* on the right side.
+    The *File Area* is further divided into the *File Table* on the left side and the *Settings Area* on the right side.
 
 4. **Status Bar**:<br>
-	You can show/hide the *Status Bar* by checking/unchecking **Menu → Preferences → Show Status Bar**
+    You can show/hide the *Status Bar* by checking/unchecking **Menu → Preferences → Show Status Bar**
 
 <span id="doc-eng-file-area"></span>
 ### File Area [[Back to Contents]](#doc)
@@ -245,78 +305,78 @@ Files are selected by default after being added to the *File Table*. **Only sele
 By default, Wordless will try to detect the language, text type and encoding of the file, you should check and make sure that the settings of each and every file is correct. If you do not want Wordless to detect the settings for you and prefer setting them manually, you can change the settings in **Auto-detection Settings** in the *Settings Area*.
 
 1. **Add File(s)**:<br>
-	Add one single file or multiple files to the *File Table*.
+    Add one single file or multiple files to the *File Table*.
 
-	\* You can use the **Ctrl** key (**Command** key on macOS) and/or the **Shift** key to select multiple files.
+    \* You can use the **Ctrl** key (**Command** key on macOS) and/or the **Shift** key to select multiple files.
 
 2. **Add Folder**:<br>
-	Add all files in the folder to the *File Table*.
+    Add all files in the folder to the *File Table*.
 
-	By default, all files in subfolders (and subfolders of subfolders, and so on) will also be added to the *File Table*. If you do not want to add files in subfolders to the *File Table*, uncheck **Folder Settings → Subfolders** in the *Settings Area*.
+    By default, all files in subfolders (and subfolders of subfolders, and so on) will also be added to the *File Table*. If you do not want to add files in subfolders to the *File Table*, uncheck **Folder Settings → Subfolders** in the *Settings Area*.
 
 3. **Reopen Closed File(s)**:<br>
-	Add file(s) that are closed the last time back to the *File Table*.
+    Add file(s) that are closed the last time back to the *File Table*.
 
-	\* The history of all closed files will be erased upon exit of *Wordless*.
+    \* The history of all closed files will be erased upon exit of *Wordless*.
 
 4. **Select All**:<br>
-	Select all files in the *File Table*.
+    Select all files in the *File Table*.
 
 5. **Invert Selection**:<br>
-	Select all files that are not currently selected and deselect all currently selected files in the *File Table*.
+    Select all files that are not currently selected and deselect all currently selected files in the *File Table*.
 
 6. **Deselect All**:<br>
-	Deselect all files in the *File Table*.
+    Deselect all files in the *File Table*.
 
 7. **Close Selected**:<br>
-	Remove all currently selected files in the *File Table*.
+    Remove all currently selected files in the *File Table*.
 
 8. **Close All**:<br>
-	Remove all files in the *File Table*.
+    Remove all files in the *File Table*.
 
 <span id="doc-eng-overview"></span>
 ### Overview [[Back to Contents]](#doc)
 In *Overview*, you can check/compare the language features of different files.
 
 1. **Count of Paragraphs**:<br>
-	Number of paragraphs in each file. Each line in the file will be counted as one paragraph. Blank lines and lines containing only spaces, tabs and other invisible characters are ignored.
+    Number of paragraphs in each file. Each line in the file will be counted as one paragraph. Blank lines and lines containing only spaces, tabs and other invisible characters are ignored.
 
 2. **Count of Sentences**:<br>
-	Number of sentences in each file. *Wordless* will automatically apply the built-in sentence tokenizer according to the language of each file in order to calculate the number of sentences in each file. You can change the sentence tokenizer settings via **Menu → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
+    Number of sentences in each file. *Wordless* will automatically apply the built-in sentence tokenizer according to the language of each file in order to calculate the number of sentences in each file. You can change the sentence tokenizer settings via **Menu → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
 
 3. **Count of Tokens**:<br>
-	Number of tokens in each file. *Wordless* will automatically apply the built-in word tokenizer according to the language of each file in order to calculate the number of tokens in each file. You can change the word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
+    Number of tokens in each file. *Wordless* will automatically apply the built-in word tokenizer according to the language of each file in order to calculate the number of tokens in each file. You can change the word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
 
-	You can tell *Wordless* what should be counted as a "token" by modifying **Token Settings** in the *Settings Area*
+    You can tell *Wordless* what should be counted as a "token" by modifying **Token Settings** in the *Settings Area*
 
 4. **Count of Types**:<br>
-	Number of token types in each file.
+    Number of token types in each file.
 
 5. **Count of Caracters**:<br>
-	Number of single characters in each file. Spaces, tabs and all other invisible characters are ignored.
+    Number of single characters in each file. Spaces, tabs and all other invisible characters are ignored.
 
 6. **Type-Token Ratio**:<br>
-	Number of token types divided by number of tokens.
+    Number of token types divided by number of tokens.
 
 7. **Type-Token Ratio (Standardized)**:<br>
-	Standardized type-token ratio. Each file will be divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratio will be calculated for each part. The standardized type-token ratio of each file is then averaged out over all sub-sections. You can change the number of tokens in each sub-section via **Generation Settings → Base of standardized type-token ratio**.
+    Standardized type-token ratio. Each file will be divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratio will be calculated for each part. The standardized type-token ratio of each file is then averaged out over all sub-sections. You can change the number of tokens in each sub-section via **Generation Settings → Base of standardized type-token ratio**.
 
-	The last section will be discarded if the number of tokens in it is smaller than the base of standardized type-token ratio in order to prevent the result from being affected by outliers (extreme values).
+    The last section will be discarded if the number of tokens in it is smaller than the base of standardized type-token ratio in order to prevent the result from being affected by outliers (extreme values).
 
 8. **Average Paragraph Length (in Sentence)**:<br>
-	Number of sentences divided by number of paragraphs.
+    Number of sentences divided by number of paragraphs.
 
 9. **Average Paragraph Length (in Token)**:<br>
-	Number of Tokens divided by number of paragraphs.
+    Number of Tokens divided by number of paragraphs.
 
 10. **Average Sentence Length (in Token)**:<br>
-	Number of tokens divided by number of sentences.
+    Number of tokens divided by number of sentences.
 
 11. **Average Token Length (in Character)**:<br>
-	Number of characters divided by number of tokens.
+    Number of characters divided by number of tokens.
 
 12. **Count of n-length Tokens**:<br>
-	Number of n-length tokens, where n = 1, 2, 3, etc.
+    Number of n-length tokens, where n = 1, 2, 3, etc.
 
 ![Overview Table](/doc/overview_table.png)
 
@@ -329,11 +389,11 @@ After the concordance lines are generated and displayed in the table, you can so
 By default, data in concordance plot are sorted by file. You can tell Wordless to sort the data by search term instead via **Figure Settings → Sort Results by**.
 
 1. **Left**:<br>
-	The context before each search term, which displays 10 tokens left to the **Node** by default. You can change this behavior via **Generation Settings**.
+    The context before each search term, which displays 10 tokens left to the **Node** by default. You can change this behavior via **Generation Settings**.
 2. **Node**:<br>
-	Nodes are search terms specified in **Search Settings → Search Term**.
+    Nodes are search terms specified in **Search Settings → Search Term**.
 3. **Right**:<br>
-	The context after each search term, which displays 10 tokens right to the **Node** by default. You can change this behavior via **Generation Settings**.
+    The context after each search term, which displays 10 tokens right to the **Node** by default. You can change this behavior via **Generation Settings**.
 4. **Token No.**<br>
     The position of the first token of **Node** in each file.
 5. **Sentence No.**<br>
