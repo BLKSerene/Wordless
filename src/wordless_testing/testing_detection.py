@@ -60,14 +60,14 @@ file_windows_1256 = new_file_encoding('Arabic (Windows-1256).txt')
 file_iso_8859_13 = new_file_encoding('Baltic Languages - Polish (ISO-8859-13).txt')
 file_windows_1257 = new_file_encoding('Baltic Languages - Estonian (Windows-1257).txt')
 
-file_gb18030 = new_file_encoding('Chinese (Simplified) (GB18030).txt')
-file_hz = new_file_encoding('Chinese (Simplified) (HZ).txt')
-file_big5 = new_file_encoding('Chinese (Traditional) (Big5).txt')
-
 file_cp852 = new_file_encoding('Central European - Croatian (CP852).txt')
 file_iso_8859_2 = new_file_encoding('Central European - Croatian (ISO-8859-2).txt')
 file_mac_central_europe = new_file_encoding('Central European - Croatian (Mac OS Central European).txt')
 file_windows_1250 = new_file_encoding('Central European - Croatian (Windows-1250).txt')
+
+file_gb18030 = new_file_encoding('Chinese (Simplified) (GB18030).txt')
+file_hz = new_file_encoding('Chinese (Simplified) (HZ).txt')
+file_big5 = new_file_encoding('Chinese (Traditional) (Big5).txt')
 
 file_cp855 = new_file_encoding('Cyrillic - Russian (CP855).txt')
 file_cp866 = new_file_encoding('Cyrillic - Russian (CP866).txt')
@@ -78,8 +78,8 @@ file_windows_1251 = new_file_encoding('Cyrillic - Russian (Windows-1251).txt')
 file_ascii = new_file_encoding('English (ASCII).txt')
 file_utf_8_with_bom = new_file_encoding('English (UTF-8 with BOM).txt')
 file_utf_8_without_bom = new_file_encoding('English (UTF-8 Without BOM).txt')
-file_utf_8_be_with_bom = new_file_encoding('English (UTF-16 Big Endian with BOM).txt')
-file_utf_8_le_with_bom = new_file_encoding('English (UTF-16 Little Endian with BOM).txt')
+file_utf_16_be_with_bom = new_file_encoding('English (UTF-16 Big Endian with BOM).txt')
+file_utf_16_le_with_bom = new_file_encoding('English (UTF-16 Little Endian with BOM).txt')
 
 file_iso_8859_3 = new_file_encoding('Esperanto & Maltese - Esperanto (ISO-8859-3).txt')
 
@@ -94,8 +94,8 @@ file_euc_jp = new_file_encoding('Japanese (EUC-JP).txt')
 file_iso_2022_jp = new_file_encoding('Japanese (ISO-2022-JP).txt')
 file_shift_jis = new_file_encoding('Japanese (SHIFT_JIS).txt')
 
-file_cp949 = new_file_encoding('Korean (CP949).txt')
 file_iso_2022_kr = new_file_encoding('Korean (ISO-2022-KR).txt')
+file_uhc = new_file_encoding('Korean (UHC).txt')
 
 file_iso_8859_10 = new_file_encoding('Nordic Languages - Latvian (ISO-8859-10).txt')
 
@@ -109,8 +109,8 @@ file_tis_620 = new_file_encoding('Thai (TIS-620).txt')
 
 file_iso_8859_9 = new_file_encoding('Turkish (ISO-8859-9).txt')
 
-file_iso_8859_15 = new_file_encoding('Western European - Danish (ISO-8859-15).txt')
 file_iso_8859_1 = new_file_encoding('Western European - Italian (ISO-8859-1).txt')
+file_iso_8859_15 = new_file_encoding('Western European - Danish (ISO-8859-15).txt')
 file_windows_1252 = new_file_encoding('Western European - Estonian (Windows-1252).txt')
 
 print('---------- Encoding Detection ----------')
@@ -121,14 +121,14 @@ detect_encoding(file_windows_1256)
 detect_encoding(file_iso_8859_13)
 detect_encoding(file_windows_1257)
 
-detect_encoding(file_gb18030)
-detect_encoding(file_hz)
-detect_encoding(file_big5)
-
 detect_encoding(file_cp852)
 detect_encoding(file_iso_8859_2)
 detect_encoding(file_mac_central_europe)
 detect_encoding(file_windows_1250)
+
+detect_encoding(file_gb18030)
+detect_encoding(file_hz)
+detect_encoding(file_big5)
 
 detect_encoding(file_cp855)
 detect_encoding(file_cp866)
@@ -139,8 +139,8 @@ detect_encoding(file_windows_1251)
 detect_encoding(file_ascii)
 detect_encoding(file_utf_8_with_bom)
 detect_encoding(file_utf_8_without_bom)
-detect_encoding(file_utf_8_be_with_bom)
-detect_encoding(file_utf_8_le_with_bom)
+detect_encoding(file_utf_16_be_with_bom)
+detect_encoding(file_utf_16_le_with_bom)
 
 detect_encoding(file_iso_8859_3)
 
@@ -155,8 +155,8 @@ detect_encoding(file_euc_jp)
 detect_encoding(file_iso_2022_jp)
 detect_encoding(file_shift_jis)
 
-detect_encoding(file_cp949)
 detect_encoding(file_iso_2022_kr)
+detect_encoding(file_uhc)
 
 detect_encoding(file_iso_8859_10)
 
@@ -170,8 +170,8 @@ detect_encoding(file_tis_620)
 
 detect_encoding(file_iso_8859_9)
 
-detect_encoding(file_iso_8859_15)
 detect_encoding(file_iso_8859_1)
+detect_encoding(file_iso_8859_15)
 detect_encoding(file_windows_1252)
 
 # Languages
