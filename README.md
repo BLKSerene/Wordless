@@ -42,6 +42,7 @@ GB (GB/T 7714—2015):
 [English Documentation](#doc-eng)
 * [Supported Languages](#doc-eng-supported-langs)
 * [Supported File Types](#doc-eng-supported-file-types)
+* [Supported Measures](#doc-eng-supported-measures)
 * [Main Window](#doc-eng-main-window)
 * [File Area](#doc-eng-file-area)
 * [Overview](#doc-eng-overview)
@@ -219,6 +220,23 @@ Lyrics Files            |\*.lrc
 
 \* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/Import/**). You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
+
+<span id="doc-eng-supported-measures"></span>
+### Supported Measures [[Back to Contents]](#doc)
+
+#### Measures of Dispersion
+
+The dispersion of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by **F₁**, **F₂**, **F₃** ... **Fn**. The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies in all sub-sections is denoted by ![F-bar](https://latex.codecogs.com/gif.latex?%5Cbar%7BF%7D) Then, the dispersion of the word will be calcuated as follows.
+
+Measures of Dispersion|Formula
+----------------------|-------
+Juilland's D|![Juilland's D](https://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%20CV%20%26%3D%20%5Cfrac%7B%5Csum_%7Bi%20%3D%201%7D%5E%7Bn%7D%28F_%7Bi%7D%20-%20%5Cbar%7BF%7D%29%5E%7B2%7D%7D%7B%5Cbar%7BF%7D%7D%20%5C%5C%20D%20%26%3D%20%5Cfrac%7B1%20-%20CV%7D%7B%5Csqrt%7Bi%20-%201%7D%7D%20%5Cend%7Balign*%7D)
+Carroll's D₂|![Carroll's D₂](https://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%20H%20%26%3D%20%5Clog_%7Be%7DF%20-%20%5Cfrac%7B%5Csum_%7Bi%20%3D%201%7D%5E%7Bn%7D%20*%20%5Clog_%7Be%7DF_%7Bi%7D%7D%7BF%7D%20%5C%5C%20D_%7B2%7D%20%26%3D%20%5Cfrac%7BH%7D%7B%5Clog_%7Be%7Dn%7D%20%5Cend%7Balign*%7D)
+Lyne's D₃|![Lyne's D₃](https://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%20%5Cchi%5E%7B2%7D%20%26%3D%20%5Csum_%7Bi%20%3D%201%7D%5E%7Bn%7D%5Cfrac%7B%28F_%7Bi%7D%20-%20%5Cfrac%7BF%7D%7Bi%7D%29%5E%7B2%7D%7D%7B%5Cfrac%7BF%7D%7Bi%7D%7D%20%5C%5C%20D_%7B3%7D%20%26%3D%20%5Cfrac%7B1%20-%20%5Cchi%5E%7B2%7D%7D%7B4%20*%20F%7D%20%5Cend%7Balign*%7D)
+Rosengren's S|![Rosengren's S](https://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%20KF%20%26%3D%20%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%20%3D%201%7D%5E%7Bn%7D%28%5Csqrt%7BF_%7Bi%7D%7D%29%5E%7B2%7D%20%5C%5C%20S%20%26%3D%20%5Cfrac%7BKF%7D%7BF%7D%20%5Cend%7Balign*%7D)
+Zhang's Distributional Consistency|![Zhang's Distributional Consistency](https://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%20DC%20%26%3D%20%5Cfrac%7B%28%5Cfrac%7B%5Csum_%7Bi%20%3D%201%7D%5E%7Bn%7D%5Csqrt%7BF_%7Bi%7D%7D%7D%7Bn%7D%29%5E%7B2%7D%7D%7B%5Cfrac%7B%5Csum_%7Bi%20%3D%201%7D%5E%7Bn%7D%7D%7Bn%7D%7D%20%5Cend%7Balign*%7D)
+Gries's DP|![Gries's DP](https://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%20DP%20%26%3D%20%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi%20%3D%201%7D%5E%7Bn%7D%7C%5Cfrac%7BF_%7Bi%7D%7D%7BF%7D%20-%20%5Cfrac%7B1%7D%7Bn%7D%7C%20%5Cend%7Balign*%7D)
+Gries's DPnorm|![Gries's DPnorm](https://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%20DP%20%26%3D%20%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi%20%3D%201%7D%5E%7Bn%7D%7C%5Cfrac%7BF_%7Bi%7D%7D%7BF%7D%20-%20%5Cfrac%7B1%7D%7Bn%7D%7C%20%5C%5C%20DPnorm%20%26%3D%20%5Cfrac%7BDP%7D%7B1%20-%20%5Cfrac%7B1%7D%7Bn%7D%7D%20%5Cend%7Balign*%7D)
 
 <span id="doc-eng-main-window"></span>
 ### Main Window [[Back to Contents]](#doc)
