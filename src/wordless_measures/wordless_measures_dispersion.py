@@ -39,7 +39,9 @@ def carrolls_d2(freqs):
             if freq:
                 h += freq * math.log(freq, math.e)
 
-        d2 = (math.log(freq_total, math.e) - h / freq_total) / math.log(len(freqs), math.e)
+        h = math.log(freq_total, math.e) - h / freq_total
+
+        d2 = h / math.log(len(freqs), math.e)
 
     return d2
 
@@ -59,7 +61,8 @@ def rosengrens_s(freqs):
     if sum(freqs) == 0:
         s = 0
     else:
-        s = sum([math.sqrt(freq) for freq in freqs]) ** 2 / len(freqs) / sum(freqs)
+        kf = sum([math.sqrt(freq) for freq in freqs]) ** 2 / len(freqs)
+        s = kf / sum(freqs)
 
     return s
 
