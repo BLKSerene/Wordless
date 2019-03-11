@@ -112,6 +112,92 @@ PayPal|Alipay|WeChat
 **Important Note**: I WILL NOT PROVIDE refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation.
 
 <span id="doc-eng"></span>
+## Supported Languages
+
+Languages|Sentence Tokenization|Word Tokenization|Word Detokenization|POS Tagging|Lemmatization|Stop Words
+:-------:|:-------------------:|:---------------:|:-----------------:|:---------:|:-----------:|:--------:
+Afrikaans            |⭕️ |✔|⭕️ |✖️|✖️|✔️
+Albanian             |⭕️ |✔|⭕️ |✖️|✖️|✔️
+Arabic               |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Armenian             |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Asturian             |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
+Azerbaijani          |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Basque               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Bengali              |⭕️ |✔️|⭕️ |✖️|✖️|✖️
+Breton               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Bulgarian            |⭕️ |✔️|⭕️ |✖️|✔️|✔️
+Catalan              |⭕️ |✔️|✔️|✖️|✔️|✔️
+Chinese (Simplified) |✔|✔️|✔️|✔️|✖️|✔️
+Chinese (Traditional)|✔|✔️|✔️|✔️|✖️|✔️
+Croatian             |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Czech                |✔|✔️|✔️|✖️|✔️|✔️
+Danish               |✔|✔️|⭕️ |✖️|✖️|✔️
+Dutch                |✔|✔️|✔️|✔️|✔️|✔️
+English              |✔|✔️|✔️|✔️|✔️|✔️
+Esperanto            |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Estonian             |✔|⭕️ |⭕️ |✖️|✔️|✔️
+Finnish              |✔|✔️|✔️|✖️|✖️|✔️
+French               |✔|✔️|✔️|✔️|✔️|✔️
+Galician             |⭕️ |⭕️ |⭕️ |✖️|✔️|✔️
+German               |✔|✔️|✔️|✔️|✔️|✔️
+Greek (Ancient)      |⭕️ |⭕️ |⭕️ |✖️|✔️|✔️
+Greek (Modern)       |✔|✔️|✔️|✔️|✔️|✔️
+Hausa                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Hebrew               |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Hindi                |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Hungarian            |⭕️ |✔️|✔️|✖️|✔️|✔️
+Icelandic            |⭕️ |✔️|✔️|✖️|✖️|✔️
+Indonesian           |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Irish                |⭕️ |✔️|⭕️ |✖️|✔️|✔️
+Italian              |✔|⭕️ |⭕️ |✔️|✔️|✔️
+Japanese             |✔|⭕️ |✔️|✔️|✖️|✔️
+Kannada              |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Kazakh               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Korean               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Kurdish              |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Latin                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Latvian              |⭕️ |✔️|✔️|✖️|✖️|✔️
+Lithuanian           |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Malay                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Manx                 |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
+Marathi              |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Nepali               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Norwegian Bokmål     |✔|✔️|⭕️ |✖️|✖️|✔️
+Norwegian Nynorsk    |✔|⭕️ |⭕️ |✖️|✖️|✔️
+Persian              |⭕️ |✔️|⭕️ |✖️|✔️|✔️
+Polish               |✔|✔️|✔️|✖️|✖️|✔️
+Portuguese           |✔|✔️|✔️|✔️|✔️|✔️
+Romanian             |⭕️ |✔️|✔️|✖️|✔️|✔️
+Russian              |⭕️ |✔️|✔️|✔️|✔️|✔️
+Scottish Gaelic      |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
+Sinhala              |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Slovak               |⭕️ |✔️|✔️|✖️|✔️|✔️
+Slovenian            |✔|✔️|✔️|✖️|✔️|✔️
+Sotho (Southern)     |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Spanish              |✔|✔️|✔️|✔️|✔️|✔️
+Swahili              |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Swedish              |✔|✔️|✔️|✖️|✔️|✔️
+Tagalog              |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Tajik                |⭕️ |✔️|⭕️ |✖️|✖️|✖️
+Tamil                |⭕️ |✔️|✔️|✖️|✖️|✔️
+Tatar                |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Telugu               |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Thai                 |✔|✔️|✔️|✔️|✖️|✔️
+Tibetan              |⭕️ |✔️|✔️|✔️|✔️|✖️
+Turkish              |✔|✔️|⭕️ |✖️|✖️|✔️
+Ukrainian            |⭕️ |✔️|⭕️ |✔️|✔️|✔️
+Urdu                 |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Vietnamese           |✔|✔️|⭕️ |✔️|✖️|✔️
+Welsh                |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
+Yoruba               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Zulu                 |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Other Languages      |⭕️ |⭕️ |⭕️ |✖️|✖️|✖️
+
+
+✔: Supported<br>
+⭕️: Supported but falls back to the default English tokenizer<br>
+✖️: Not supported
+
 ## Documentation - English
 The main window of *Wordless* is divided into several sections:
 
