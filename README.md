@@ -302,7 +302,7 @@ Rosengren's KF:
 
 Engwall's FM:
     \begin{align*}
-        FM = \frac{FR}{n}
+        FM = \frac{F * R}{n}
     \end{align*}
 
 Kromer's UR:
