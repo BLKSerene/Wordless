@@ -42,8 +42,9 @@ GB (GB/T 7714—2015):
 * [Supported Languages](#doc-eng-supported-langs)
 * [Supported File Types](#doc-eng-supported-file-types)
 * [Main Window](#doc-eng-main-window)
-* [File Table](#doc-eng-file-table)
+* [File Area](#doc-eng-file-area)
 * [Overview](#doc-eng-overview)
+* [Concordancer](#doc-eng-concordancer)
 
 [中文文档](#doc-zho)
 
@@ -216,7 +217,7 @@ Translation Memory Files|\*.tmx
 Lyrics Files            |\*.lrc
 
 \* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
-\* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer. You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
+\* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/Import/**). You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
 
 <span id="doc-eng-main-window"></span>
 ### Main Window
@@ -315,6 +316,32 @@ In *Overview*, you can check/compare the language features of different files.
 
 12. **Count of n-length Tokens**:<br>
 	Number of n-length tokens, where n = 1, 2, 3, etc.
+
+<span id="doc-eng-concordancer"></span>
+### Concordancer
+In *Concordancer*, you can search for any token in different files and generate concordance lines or plots.
+
+After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results** at the upper right corner of the *Results Area*.
+
+By default, data in concordance plot are sorted by file. You can tell Wordless to sort the data by search term instead via **Figure Settings → Sort Results by**.
+
+1. **Left**:<br>
+	The context before each search term, which displays 10 tokens left to the **Node** by default. You can change this behavior via **Generation Settings**.
+2. **Node**:<br>
+	Nodes are search terms specified in **Search Settings → Search Term**.
+3. **Right**:<br>
+	The context after each search term, which displays 10 tokens right to the **Node** by default. You can change this behavior via **Generation Settings**.
+4. **Token No.**<br>
+    The position of the first token of **Node** in each file.
+5. **Sentence No.**<br>
+    The position of the sentence in which the **Node** is found in each file.
+6. **Paragraph No.**<br>
+    The position of the paragraph in which the **Node** is found in each file.
+7. **File**<br>
+    The file in which the **Node** is found.
+
+![Concordance Table](/doc/concordancer_table.png)
+![Concordance Figure](/doc/concordancer_fig.png)
 
 <span id="doc-zho"></span>
 ## Documentation - Chinese (Simplified)
