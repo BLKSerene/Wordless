@@ -224,9 +224,9 @@ Lyrics Files            |\*.lrc
 <span id="doc-eng-supported-measures"></span>
 ### Supported Measures [[Back to Contents]](#doc)
 
-#### Measures of Dispersion
+#### Measures of Dispersion & Adjusted Frequency
 
-The dispersion of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by **F₁**, **F₂**, **F₃** ... **Fn**. The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies in all sub-sections is denoted by ![F-bar](https://latex.codecogs.com/gif.latex?%5Cbar%7BF%7D) Then, the dispersion of the word will be calcuated as follows.
+The dispersion and adjusted frequency of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by **F₁**, **F₂**, **F₃** ... **Fn**. The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies in all sub-sections is denoted by ![F-bar](/doc/measures/f_bar.gif) Then, the dispersion of the word will be calcuated as follows.
 
 <!--
 Juilland's D:
@@ -270,15 +270,54 @@ Gries's DPnorm:
     \end{align*}
 -->
 
-Measures of Dispersion|Formula
+Measures of Dispersion|Formulas
 ----------------------|-------
-Juilland's D|![Juilland's D](/doc/measures_dispersion/juillands_d.gif)
-Carroll's D₂|![Carroll's D₂](/doc/measures_dispersion/carrolls_d2.gif)
-Lyne's D₃|![Lyne's D₃](/doc/measures_dispersion/lynes_d3.gif)
-Rosengren's S|![Rosengren's S](/doc/measures_dispersion/rosengrens_s.gif)
-Zhang's Distributional Consistency|![Zhang's Distributional Consistency](/doc/measures_dispersion/zhangs_distributional_consistency.gif)
-Gries's DP|![Gries's DP](/doc/measures_dispersion/griess_dp.gif)
-Gries's DPnorm|![Gries's DPnorm](/doc/measures_dispersion/griess_dp_norm.gif)
+Juilland's D|![Juilland's D](/doc/measures/dispersion/juillands_d.gif)
+Carroll's D₂|![Carroll's D₂](/doc/measures/dispersion/carrolls_d2.gif)
+Lyne's D₃|![Lyne's D₃](/doc/measures/dispersion/lynes_d3.gif)
+Rosengren's S|![Rosengren's S](/doc/measures/dispersion/rosengrens_s.gif)
+Zhang's Distributional Consistency|![Zhang's Distributional Consistency](/doc/measures/dispersion/zhangs_distributional_consistency.gif)
+Gries's DP|![Gries's DP](/doc/measures/dispersion/griess_dp.gif)
+Gries's DPnorm|![Gries's DPnorm](/doc/measures/dispersion/griess_dp_norm.gif)
+
+<!--
+Juilland's U:
+    \begin{align*}
+        CV &= \frac{\sum_{i = 1}^{n}(F_{i} - \bar{F})^{2}}{\bar{F}} \\
+        D &= \frac{1 - CV}{\sqrt{i - 1}} \\
+        U &= D * F
+    \end{align*}
+
+Carroll's Um:
+    \begin{align*}
+        H &= \log_{e}F - \frac{\sum_{i = 1}^{n} * \log_{e}F_{i}}{F} \\
+        D_{2} &= \frac{H}{\log_{e}n} \\
+        Um & = F * D_{2} + (1 - D_{2}) * \frac{F}{n})
+    \end{align*}
+
+Rosengren's KF:
+    \begin{align*}
+        KF &= \frac{1}{n}\sum_{i = 1}^{n}(\sqrt{F_{i}})^{2}
+    \end{align*}
+
+Engwall's FM:
+    \begin{align*}
+        FM = \frac{FR}{n}
+    \end{align*}
+
+Kromer's UR:
+    \begin{align*}
+        UR = \sum_{i = 1}^{n}\psi(F_{i} + 1) + C
+    \end{align*}
+-->
+
+Measures of Adjusted Frequency|Formulas
+----------------------|-------
+Juilland's U|![Juilland's U](/doc/measures/adjusted_freq/juillands_u.gif)
+Carroll's Um|![Carroll's Um](/doc/measures/adjusted_freq/carrolls_um.gif)
+Rosengren's KF|![Rosengren's KF](/doc/measures/adjusted_freq/rosengrens_kf.gif)
+Engwall's FM|![Engwall's FM](/doc/measures/adjusted_freq/engwalls_fm.gif)<br>where **R** is the number of sub-sections in which the word appears at least once
+Kromer's UR|![Kromer's UR](/doc/measures/adjusted_freq/kromers_ur.gif)<br>where ψ is the digamma function, C is the Euler–Mascheroni constant
 
 <span id="doc-eng-main-window"></span>
 ### Main Window [[Back to Contents]](#doc)
