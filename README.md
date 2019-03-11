@@ -37,6 +37,42 @@ GB (GB/T 7714—2015):
 
     叶磊. Wordless version 1.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
 
+## Documentation
+[English Documentation](#doc-eng)
+* [Supported Languages](#doc-eng-supported-langs)
+* [Supported File Types](#doc-eng-supported-file-types)
+* [Main Window](#doc-eng-main-window)
+* [File Table](#doc-eng-file-table)
+* [Overview](#doc-eng-overview)
+
+[中文文档](#doc-zho)
+
+## Need Help?
+If you encounter a problem, find a bug or require any further information, feel free to ask questions, submit bug reports or provide feedback by [creating an issue](https://github.com/BLKSerene/Wordless/issues/new) on Github if you fail to find the answer by searching [existing issues](https://github.com/BLKSerene/Wordless/issues) first.
+
+If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may [send me an email](mailto:blkserene@gmail.com).
+
+Home Page: https://github.com/BLKSerene/Wordless<br>
+Documentation: https://github.com/BLKSerene/Wordless#documentation<br>
+Email: blkserene@gmail.com<br>
+[WeChat](https://www.wechat.com/en/) Official Account: Wordless<br>
+
+**Important Note**: I CANNOT GUARANTEE that all emails will always be checked or replied in time. I WILL NOT REPLY to irrelevant emails and I reserve the right to BLOCK AND/OR REPORT people who send me spam emails.
+
+## Contributing
+If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements or new features by [creating a pull request](https://github.com/BLKSerene/Wordless/pulls) on Github.
+
+Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or [Github Wiki](https://github.com/BLKSerene/Wordless/wiki) for Wordless, or helping me translate Wordless and its documentation to other languages.
+
+## Donating
+If you would like to support the development of Wordless, you may donate via PayPal, Alipay or WeChat.
+
+PayPal|Alipay|WeChat
+------|------|------
+[![PayPal](/src/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|![Alipay](/src/imgs/donating_alipay.png)|![WeChat](/src/imgs/donating_wechat.png)
+
+**Important Note**: I WILL NOT PROVIDE refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation.
+
 ## Acknowledgments
 Wordless stands on the shoulders of giants. Thus, I would like to extend my thanks to the following open-source projects:
 
@@ -80,40 +116,10 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 3. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
 4. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
 
-## Documentation
-[English Documentation Here](#doc-eng)
-
-[中文文档在这里](#doc-zho)
-
-## Need Help?
-If you encounter a problem, find a bug or require any further information, feel free to ask questions, submit bug reports or provide feedback by [creating an issue](https://github.com/BLKSerene/Wordless/issues/new) on Github if you fail to find the answer by searching [existing issues](https://github.com/BLKSerene/Wordless/issues) first.
-
-If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may [send me an email](mailto:blkserene@gmail.com).
-
-Home Page: https://github.com/BLKSerene/Wordless<br>
-Documentation: https://github.com/BLKSerene/Wordless#documentation<br>
-Email: blkserene@gmail.com<br>
-[WeChat](https://www.wechat.com/en/) Official Account: Wordless<br>
-
-**Important Note**: I CANNOT GUARANTEE that all emails will always be checked or replied in time. I WILL NOT REPLY to irrelevant emails and I reserve the right to BLOCK AND/OR REPORT people who send me spam emails.
-
-## Contributing
-If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements or new features by [creating a pull request](https://github.com/BLKSerene/Wordless/pulls) on Github.
-
-Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or [Github Wiki](https://github.com/BLKSerene/Wordless/wiki) for Wordless, or helping me translate Wordless and its documentation to other languages.
-
-## Donating
-If you would like to support the development of Wordless, you may donate via PayPal, Alipay or WeChat.
-
-PayPal|Alipay|WeChat
-------|------|------
-[![PayPal](/src/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|![Alipay](/src/imgs/donating_alipay.png)|![WeChat](/src/imgs/donating_wechat.png)
-
-**Important Note**: I WILL NOT PROVIDE refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation.
-
 <span id="doc-eng"></span>
-## Supported Languages
-
+## Documentation - English
+<span id="doc-eng-supported-langs"></span>
+### Supported Languages
 Languages|Sentence Tokenization|Word Tokenization|Word Detokenization|POS Tagging|Lemmatization|Stop Words
 :-------:|:-------------------:|:---------------:|:-----------------:|:---------:|:-----------:|:--------:
 Afrikaans            |⭕️ |✔|⭕️ |✖️|✖️|✔️
@@ -193,12 +199,27 @@ Yoruba               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Zulu                 |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Other Languages      |⭕️ |⭕️ |⭕️ |✖️|✖️|✖️
 
-
 ✔: Supported<br>
 ⭕️: Supported but falls back to the default English tokenizer<br>
 ✖️: Not supported
 
-## Documentation - English
+<span id="doc-eng-supported-file-types"></span>
+### Supported File Types
+File Types|File Extensions
+----------|--------------
+Text Files              |\*.txt
+Microsoft Word Documents|\*.docx
+Microsoft Excel Workbook|\*.xls, \*.xlsx
+CSV Files               |\*.csv
+HTML Pages              |\*.htm, \*.html
+Translation Memory Files|\*.tmx
+Lyrics Files            |\*.lrc
+
+\* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
+\* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer. You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
+
+<span id="doc-eng-main-window"></span>
+### Main Window
 The main window of *Wordless* is divided into several sections:
 
 1. **Menu Bar**<br>
@@ -213,6 +234,7 @@ The main window of *Wordless* is divided into several sections:
 4. **Status Bar**:<br>
 	You can show/hide the *Status Bar* by checking/unchecking **Menu → Preferences → Show Status Bar**
 
+<span id="doc-eng-file-area"></span>
 ### File Area
 In most cases, the first thing to do in *Wordless* is open and select your files to be processed via **Menu → File** or by clicking the buttons residing under the *File Table*.
 
@@ -250,18 +272,7 @@ By default, Wordless will try to detect the language, text type and encoding of 
 8. **Close All**:<br>
 	Remove all files in the *File Table*.
 
-**The following file types are currently supported by *Wordless***:
-1. Text files (\*.txt)
-2. Microsoft Word documents (\*.docx)
-3. Microsoft Excel workbook (\*.xls, \*.xlsx)
-4. CSV files (\*.csv)
-5. HTML pages (\*.htm, \*.html)
-6. Translation memory files (\*.tmx)
-7. Lyrics files (\*.lrc)
-
-\* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
-\* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer. You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
-
+<span id="doc-eng-overview"></span>
 ### Overview
 In *Overview*, you can check/compare the language features of different files.
 
