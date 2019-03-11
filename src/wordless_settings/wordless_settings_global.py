@@ -347,7 +347,7 @@ def init_settings_global(main):
             main.tr('Korean (EUC-KR)'): 'euc_kr',
             main.tr('Korean (ISO-2022-KR)'): 'iso2022_kr',
             main.tr('Korean (JOHAB)'): 'johab',
-            main.tr('Korean (Windows-949)'): 'cp949',
+            main.tr('Korean (UHC)'): 'cp949',
 
             main.tr('Nordic Languages (CP865)'): 'cp865',
             main.tr('Nordic Languages (ISO-8859-10)'): 'iso8859_10',
