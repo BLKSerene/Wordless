@@ -14,6 +14,8 @@ import math
 import numpy
 import scipy.stats
 
+from wordless_measures import wordless_measures_adjusted_freq
+
 # Reference:
 #     Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.
 def juillands_d(freqs):
@@ -61,7 +63,7 @@ def rosengrens_s(freqs):
     if sum(freqs) == 0:
         s = 0
     else:
-        kf = sum([math.sqrt(freq) for freq in freqs]) ** 2 / len(freqs)
+        kf = wordless_measures_adjusted_freq.rosengrens_kf(freqs)
         s = kf / sum(freqs)
 
     return s
