@@ -386,7 +386,7 @@ class Wordless_Table_Sort_Results_Conordancer(wordless_table.Wordless_Table):
 
             self.table.update_items_width()
 
-        wordless_message.wordless_msg_sort_results(self.main)
+        wordless_msg.wordless_msg_sort_results(self.main)
 
 class Wordless_Dialog_Sort_Results_Concordancer(wordless_dialog.Wordless_Dialog):
     def __init__(self, main, table):
