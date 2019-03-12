@@ -473,9 +473,9 @@ Kromer's UR|![Kromer's UR](/doc/measures/adjusted_freq/kromers_ur.gif)<br>where 
 <span id="doc-eng-supported-tests-statistical_significance"></span>
 #### Tests of Statistical Significance
 
-To calculate the statistical significance and effect size for two words in the same file (collocates) or one word in two different files (keywords), two contingency table must be constructed first, one for observed value, the other for expected values.
+To calculate the statistical significance (except **Student's t-test (Two-sample)** and **Mann-Whiteney U Test**) for two words in the same file (collocates) or one specific word in two different files (keywords), two contingency table must be constructed first, one for observed value, the other for expected values.
 
-**As for collocates (in *Collocation* and *Colligation*):**
+As for collocates (in *Collocation* and *Colligation*):
 
 Observed Values|Word 1                       |Not Word 1                   |Row Total
 --------------:|:---------------------------:|:---------------------------:|:---------------------------:
@@ -493,7 +493,7 @@ Not Word 2     |![e21](/doc/measures/e21.gif)|![e22](/doc/measures/e22.gif)
 ![c21](/doc/measures/c21.gif): Number of occurrences of any word except Word 1 followed by Word 2<br>
 ![c22](/doc/measures/c22.gif): Number of occurrences of any word except Word 1 followed by any word except Word 2<br>
 
-**As for keywords (in *Keywords*):**
+As for keywords (in *Keywords*):
 
 Observed Values|Observed File                |Reference File               |Row Total
 --------------:|:---------------------------:|:---------------------------:|:---------------------------:
@@ -511,6 +511,8 @@ Not Word *w*   |![e21](/doc/measures/e21.gif)|![e22](/doc/measures/e22.gif)
 ![c21](/doc/measures/c21.gif): Number of occurrences of all words except Word *w* in the observed file<br>
 ![c22](/doc/measures/c22.gif): Number of occurrences of all words except Word *w* in the reference file<br>
 
+To conduct **Student's t-test (Two-sample)** or **Mann-Whiteney U Test** on a specific word, the observed file and the reference file are first divided into **n** (5 by default) sub-sections respectively. Then, the frequencies of the word in each sub-sections of the observed file and the reference file are counted and denoted by **FO₁**, **FO₂**, **FO₃** ... **FOn** and **FR₁**, **FR₂**, **FR₃** ... **FRn** respectively. The total frequency of the word in the observed file and the reference file is denoted by **FO** and **FR** respectively. The mean value of the frequencies in all sub-sections of the observed file and the reference file is denoted by ![FO-bar](/doc/measures/fo_bar.gif) and ![FR-bar](/doc/measures/fr_bar.gif) respectively.
+
 <!--
 z-score:
     \frac{C_{11} - E_{11}}{\sqrt{E_{11} * (1 - \frac{E_{11}}{C_{xx}}))}}
@@ -519,7 +521,11 @@ Student's t-test (One-sample):
     \frac{C_{11} - E_{11}}{\sqrt{C_{11} * (1 - \frac{C_{11}}{C_{xx}}))}}
 
 Student's t-test (Two-sample):
-
+    \begin{align*}
+        s_{1} &= \frac{\sum_{i = 1}^{n}(FO_{i} - \bar{FO})^{2}}{n - 1} \\
+        s_{2} &= \frac{\sum_{i = 1}^{n}(FR_{i} - \bar{FR})^{2}}{n - 1} \\
+        t &= \frac{\bar{FO} - \bar{FR}}{\sqrt{\frac{s_{1} - s_{2}}{n}}}
+    \end{align*}
 
 Pearson's Chi-squared Test:
     \sum_{i = 1}^{2} \sum_{j = 1}^{2}\frac{(C_{ij} - E{ij})^{2}}{E_{ij}}
@@ -537,13 +543,13 @@ Tests of Statistical Significance|Formulas
 ---------------------------------|--------
 z-score                      |![z-score](/doc/measures/statistical_significance/z_score.gif)
 Student's t-test (One-sample)|![Student's t-test (One-sample)](/doc/measures/statistical_significance/students_t_test_1_sample.gif)
-Student's t-test (Two-sample)|![Student's t-test (Two-sample)]()
+Student's t-test (Two-sample)|![Student's t-test (Two-sample)](/doc/measures/statistical_significance/students_t_test_2_sample.gif)
 Pearson's Chi-squared Test   |![Pearson's Chi-squared Test](/doc/measures/statistical_significance/pearsons_chi_squared_test.gif)
 Log-likelihood Ratio         |![Log-likelihood Ratio](/doc/measures/statistical_significance/log_likehood_ratio_test.gif)
-Fisher's Exact Test          |See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test)
-Mann-Whiteney U Test         |![Mann-Whiteney U Test]()
+Fisher's Exact Test          |See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
+Mann-Whiteney U Test         |See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
 
-Works Cited:<br>
+**Works Cited**:<br>
 [1] Dennis, S. F. "The Construction of a Thesaurus Automatically from a Sample of Text." Proceedings of the Symposium on Statistical Association Methods For Mechanized Documentation, Washington, D.C., 17 March, 1964, edited by Stevens, M. E., et at., National Bureau of Standards, 1965, pp. 61-148.<br>
 [2] Berry-rogghe, Godelieve L. M. "The Computation of Collocations and their Relevance in Lexical Studies." The computer and literary studies, edited by Aitken, A. J., Edinburgh UP, 1973, pp. 103-112.<br>
 [3] Church, Kenneth Ward, et al. "Using Statistics in Lexical Analysis." Lexical Acquisition: Exploiting On-Line Resources to Build a Lexicon, edited by Uri Zernik, Psychology Press, 1991, pp. 115-64.<br>
