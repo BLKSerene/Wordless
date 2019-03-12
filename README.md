@@ -43,7 +43,7 @@ GB (GB/T 7714—2015):
 * [Supported Languages](#doc-eng-supported-langs)
 * [Supported Text Types](#doc-eng-supported-text-types)
 * [Supported File Types](#doc-eng-supported-file-types)
-* [Supported Encodings](#doc-eng-supported-encodings)
+* [Supported File Encodings](#doc-eng-supported-file-encodings)
 * [Supported Measures](#doc-eng-supported-measures)
 * [Main Window](#doc-eng-main-window)
 * [File Area](#doc-eng-file-area)
@@ -216,7 +216,7 @@ Other Languages      |⭕️ |⭕️ |⭕️ |✖️|✖️|✖️
 You can specify your custom POS/Non-POS tags via **Menu → Preferences → Settings → Tags**.
 
 Text Types|Auto-detection
-----------|--------------
+----------|:------------:
 Untokenized / Untagged        |✔
 Untokenized / Tagged (Non-POS)|✔
 Tokenized / Untagged          |✖
@@ -240,11 +240,11 @@ Lyrics Files            |\*.lrc
 \* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/Import/**). You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
 
-<span id="doc-eng-supported-encodings"></span>
-### Supported Encodings [[Back to Contents]](#doc)
+<span id="doc-eng-supported-file-encodings"></span>
+### Supported File Encodings [[Back to Contents]](#doc)
 
 Languages|File Encodings|Auto-detection
----------|--------------|--------------
+---------|--------------|:------------:
 All Languages|UTF-8 Without BOM               |✔
 All Languages|UTF-8 with BOM                  |✔
 All Languages|UTF-16 with BOM                 |✔
