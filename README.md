@@ -565,7 +565,7 @@ In *Overview*, you can check/compare the language features of different files.
 12. **Count of n-length Tokens**:<br>
     Number of n-length tokens, where n = 1, 2, 3, etc.
 
-![Overview Table](/doc/overview_table.png)
+![Overview Table](/doc/overview/overview_table.png)
 
 <span id="doc-eng-concordancer"></span>
 ### Concordancer [[Back to Contents]](#doc)
@@ -590,8 +590,9 @@ By default, data in concordance plot are sorted by file. You can sort the data b
 7. **File**<br>
     The file in which the **Node** is found.
 
-![Concordance Table](/doc/concordancer_table.png)
-![Concordance Figure](/doc/concordancer_fig.png)
+![Concordance Table](/doc/concordancer/concordancer_table.png)
+![Concordance Figure - File](/doc/concordancer/concordancer_fig_file.png)
+![Concordance Figure - Search Term](/doc/concordancer/concordancer_fig_search_term.png)
 
 <span id="doc-eng-wordlist"></span>
 ### Wordlist [[Back to Contents]](#doc)
@@ -617,9 +618,9 @@ You can filter the results by clicking **Filter Results** or search in results b
 6. **Number of Files Found**:<br>
     The number of files in which the token appears at least once.
 
-![Wordlist Table](/doc/wordlist_table.png)
-![Wordlist Figure - Line Chart](/doc/wordlist_fig_line_chart.png)
-![Wordlist Figure - Word Cloud](/doc/wordlist_fig_word_cloud.png)
+![Wordlist Table](/doc/wordlist/wordlist_table.png)
+![Wordlist Figure - Line Chart](/doc/wordlist/wordlist_fig_line_chart.png)
+![Wordlist Figure - Word Cloud](/doc/wordlist/wordlist_fig_word_cloud.png)
 
 <span id="doc-zho"></span>
 ## Documentation - Chinese (Simplified)
