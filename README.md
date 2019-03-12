@@ -50,6 +50,7 @@ GB (GB/T 7714—2015):
 * [Overview](#doc-eng-overview)
 * [Concordancer](#doc-eng-concordancer)
 * [Wordlist](#doc-eng-wordlist)
+* [N-grams](#doc-eng-ngrams)
 
 [中文文档](#doc-zho)
 
@@ -596,12 +597,14 @@ By default, data in concordance plot are sorted by file. You can sort the data b
 
 <span id="doc-eng-wordlist"></span>
 ### Wordlist [[Back to Contents]](#doc)
-In *Wordlist*, you can generate wordlists for different files. In addition, you can generate line charts or word clouds for the wordlists.
+In *Wordlist*, you can generate wordlists for different files.
+
+In addition, you can generate line charts or word clouds for wordlists. You can modify the settings for the generated figure via **Figure Settings**.
 
 You can filter the results by clicking **Filter Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
 1. **Rank**:<br>
-    The rank of the token sorted by frequency in descending order (by default). You can sort the results again by clicking the column headers. 
+    The rank of the token sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. 
 
 2. **Tokens**:<br>
     You can specify what should be counted as a "token" via **Token Settings**.
@@ -621,6 +624,38 @@ You can filter the results by clicking **Filter Results** or search in results b
 ![Wordlist Table](/doc/wordlist/wordlist_table.png)
 ![Wordlist Figure - Line Chart](/doc/wordlist/wordlist_fig_line_chart.png)
 ![Wordlist Figure - Word Cloud](/doc/wordlist/wordlist_fig_word_cloud.png)
+
+<span id="doc-eng-ngrams"></span>
+### N-grams [[Back to Contents]](#doc)
+In *N-grams*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can set constraints on the position of the search term in all n-grams via **Search Settings → Search Term Position**.
+
+In addition, you can generate line charts or word clouds for n-grams. You can modify the settings for the generated figure via **Figure Settings**.
+
+It is possible to disable searching altogether and generate an exhausted list of n-grams by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
+
+You can filter the results by clicking **Filter Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+
+1. **Rank**:<br>
+    The rank of the n-gram sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. 
+
+2. **N-grams**:<br>
+    You can specify what should be counted as a "n-gram" via **Token Settings**.
+
+3. **Frequency**:<br>
+    The number of occurrences of the n-gram in each file.
+
+4. **Dispersion**:<br>
+    The dispersion of the n-gram in each file. You can change the measure of dispersion via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+
+5. **Adjusted Frequency**:<br>
+    The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+
+6. **Number of Files Found**:<br>
+    The number of files in which the n-gram appears at least once.
+
+![N-grams Table](/doc/ngrams/ngrams_table.png)
+![N-grams Figure - Line Chart](/doc/ngrams/ngrams_fig_line_chart.png)
+![N-grams Figure - Word Cloud](/doc/ngrams/ngrams_fig_word_cloud.png)
 
 <span id="doc-zho"></span>
 ## Documentation - Chinese (Simplified)
