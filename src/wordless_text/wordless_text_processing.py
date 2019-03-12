@@ -721,9 +721,9 @@ def wordless_get_stop_words(main, lang,
             with open(wordless_misc.get_abs_path('stop_words/spaCy/stop_words_zh_tw.txt'), 'r', encoding = 'utf_8') as f:
                 stop_words = [line.rstrip() for line in f]
         else:
-            spacy_stop_words = importlib.import_module(f'spacy.lang.{lang_639_1}.stop_words')
+            spacy_lang = importlib.import_module(f'spacy.lang.{lang_639_1}')
 
-            stop_words = spacy_stop_words.STOP_WORDS
+            stop_words = spacy_lang.STOP_WORDS
     elif 'NLTK' in list_stop_words:
         lang_texts = {
             'ara': 'arabic',
