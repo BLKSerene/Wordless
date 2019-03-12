@@ -1684,16 +1684,16 @@ class Wordless_Settings(QDialog):
         group_box_z_score.layout().setColumnStretch(2, 1)
 
         # Student's t-test (Two-sample)
-        group_box_students_t_test_two_sample = QGroupBox(self.tr('Student\'s t-test (Two-sample)'), self)
+        group_box_students_t_test_2_sample = QGroupBox(self.tr('Student\'s t-test (Two-sample)'), self)
 
-        (self.label_students_t_test_two_sample_divide,
-         self.spin_box_students_t_test_two_sample_number_sections,
-         self.label_students_t_test_two_sample_sections) = wordless_widgets.wordless_widgets_number_sections(self)
+        (self.label_students_t_test_2_sample_divide,
+         self.spin_box_students_t_test_2_sample_number_sections,
+         self.label_students_t_test_2_sample_sections) = wordless_widgets.wordless_widgets_number_sections(self)
 
-        (self.label_students_t_test_two_sample_use_data,
-         self.combo_box_students_t_test_two_sample_use_data) = wordless_widgets.wordless_widgets_use_data_freq(self)
-        self.label_students_t_test_two_sample_variances = QLabel(self.tr('Variances:'), self)
-        self.combo_box_students_t_test_two_sample_variances = QComboBox(self)
+        (self.label_students_t_test_2_sample_use_data,
+         self.combo_box_students_t_test_2_sample_use_data) = wordless_widgets.wordless_widgets_use_data_freq(self)
+        self.label_students_t_test_2_sample_variances = QLabel(self.tr('Variances:'), self)
+        self.combo_box_students_t_test_2_sample_variances = QComboBox(self)
         self.label_welchs_t_test = wordless_label.Wordless_Label_Hint(
             self.tr('''
                 <p>
@@ -1701,27 +1701,27 @@ class Wordless_Settings(QDialog):
                 </p>
             '''), self)
 
-        self.combo_box_students_t_test_two_sample_variances.addItems([
+        self.combo_box_students_t_test_2_sample_variances.addItems([
             self.tr('Equal'),
             self.tr('Unequal')
         ])
 
-        layout_students_t_test_two_sample_number_sections = wordless_layout.Wordless_Layout()
-        layout_students_t_test_two_sample_number_sections.addWidget(self.label_students_t_test_two_sample_divide, 0, 0)
-        layout_students_t_test_two_sample_number_sections.addWidget(self.spin_box_students_t_test_two_sample_number_sections, 0, 1)
-        layout_students_t_test_two_sample_number_sections.addWidget(self.label_students_t_test_two_sample_sections, 0, 2)
+        layout_students_t_test_2_sample_number_sections = wordless_layout.Wordless_Layout()
+        layout_students_t_test_2_sample_number_sections.addWidget(self.label_students_t_test_2_sample_divide, 0, 0)
+        layout_students_t_test_2_sample_number_sections.addWidget(self.spin_box_students_t_test_2_sample_number_sections, 0, 1)
+        layout_students_t_test_2_sample_number_sections.addWidget(self.label_students_t_test_2_sample_sections, 0, 2)
 
-        layout_students_t_test_two_sample_number_sections.setColumnStretch(3, 1)
+        layout_students_t_test_2_sample_number_sections.setColumnStretch(3, 1)
 
-        group_box_students_t_test_two_sample.setLayout(wordless_layout.Wordless_Layout())
-        group_box_students_t_test_two_sample.layout().addLayout(layout_students_t_test_two_sample_number_sections, 0, 0, 1, 3)
-        group_box_students_t_test_two_sample.layout().addWidget(self.label_students_t_test_two_sample_use_data, 1, 0)
-        group_box_students_t_test_two_sample.layout().addWidget(self.combo_box_students_t_test_two_sample_use_data, 1, 1)
-        group_box_students_t_test_two_sample.layout().addWidget(self.label_students_t_test_two_sample_variances, 2, 0)
-        group_box_students_t_test_two_sample.layout().addWidget(self.combo_box_students_t_test_two_sample_variances, 2, 1)
-        group_box_students_t_test_two_sample.layout().addWidget(self.label_welchs_t_test, 3, 0, 1, 3)
+        group_box_students_t_test_2_sample.setLayout(wordless_layout.Wordless_Layout())
+        group_box_students_t_test_2_sample.layout().addLayout(layout_students_t_test_2_sample_number_sections, 0, 0, 1, 3)
+        group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_use_data, 1, 0)
+        group_box_students_t_test_2_sample.layout().addWidget(self.combo_box_students_t_test_2_sample_use_data, 1, 1)
+        group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_variances, 2, 0)
+        group_box_students_t_test_2_sample.layout().addWidget(self.combo_box_students_t_test_2_sample_variances, 2, 1)
+        group_box_students_t_test_2_sample.layout().addWidget(self.label_welchs_t_test, 3, 0, 1, 3)
 
-        group_box_students_t_test_two_sample.layout().setColumnStretch(2, 1)
+        group_box_students_t_test_2_sample.layout().setColumnStretch(2, 1)
 
         # Pearson's Chi-squared Test
         group_box_pearsons_chi_squared_test = QGroupBox(self.tr('Pearson\'s Chi-squared Test'), self)
@@ -1775,7 +1775,7 @@ class Wordless_Settings(QDialog):
 
         self.settings_statistical_significance.setLayout(wordless_layout.Wordless_Layout())
         self.settings_statistical_significance.layout().addWidget(group_box_z_score, 0, 0)
-        self.settings_statistical_significance.layout().addWidget(group_box_students_t_test_two_sample, 1, 0)
+        self.settings_statistical_significance.layout().addWidget(group_box_students_t_test_2_sample, 1, 0)
         self.settings_statistical_significance.layout().addWidget(group_box_pearsons_chi_squared_test, 2, 0)
         self.settings_statistical_significance.layout().addWidget(group_box_fishers_exact_test, 3, 0)
         self.settings_statistical_significance.layout().addWidget(group_box_mann_whitney_u_test, 4, 0)
@@ -2010,9 +2010,9 @@ class Wordless_Settings(QDialog):
         # Measures -> Statistical Significance
         self.combo_box_z_score_direction.setCurrentText(settings['measures']['statistical_significance']['z_score']['direction'])
 
-        self.spin_box_students_t_test_two_sample_number_sections.setValue(settings['measures']['statistical_significance']['students_t_test_two_sample']['number_sections'])
-        self.combo_box_students_t_test_two_sample_use_data.setCurrentText(settings['measures']['statistical_significance']['students_t_test_two_sample']['use_data'])
-        self.combo_box_students_t_test_two_sample_variances.setCurrentText(settings['measures']['statistical_significance']['students_t_test_two_sample']['variances'])
+        self.spin_box_students_t_test_2_sample_number_sections.setValue(settings['measures']['statistical_significance']['students_t_test_2_sample']['number_sections'])
+        self.combo_box_students_t_test_2_sample_use_data.setCurrentText(settings['measures']['statistical_significance']['students_t_test_2_sample']['use_data'])
+        self.combo_box_students_t_test_2_sample_variances.setCurrentText(settings['measures']['statistical_significance']['students_t_test_2_sample']['variances'])
 
         self.checkbox_pearsons_chi_squared_test_apply_correction.setChecked(settings['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'])
 
@@ -2184,9 +2184,9 @@ class Wordless_Settings(QDialog):
             # Measures -> Statistical Significance
             settings['measures']['statistical_significance']['z_score']['direction'] = self.combo_box_z_score_direction.currentText()
 
-            settings['measures']['statistical_significance']['students_t_test_two_sample']['number_sections'] = self.spin_box_students_t_test_two_sample_number_sections.value()
-            settings['measures']['statistical_significance']['students_t_test_two_sample']['use_data'] = self.combo_box_students_t_test_two_sample_use_data.currentText()
-            settings['measures']['statistical_significance']['students_t_test_two_sample']['variances'] = self.combo_box_students_t_test_two_sample_variances.currentText()
+            settings['measures']['statistical_significance']['students_t_test_2_sample']['number_sections'] = self.spin_box_students_t_test_2_sample_number_sections.value()
+            settings['measures']['statistical_significance']['students_t_test_2_sample']['use_data'] = self.combo_box_students_t_test_2_sample_use_data.currentText()
+            settings['measures']['statistical_significance']['students_t_test_2_sample']['variances'] = self.combo_box_students_t_test_2_sample_variances.currentText()
 
             settings['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'] = self.checkbox_pearsons_chi_squared_test_apply_correction.isChecked()
 
