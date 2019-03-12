@@ -49,6 +49,7 @@ GB (GB/T 7714—2015):
 * [File Area](#doc-eng-file-area)
 * [Overview](#doc-eng-overview)
 * [Concordancer](#doc-eng-concordancer)
+* [Wordlist](#doc-eng-wordlist)
 
 [中文文档](#doc-zho)
 
@@ -354,6 +355,7 @@ Western European|Windows-1252|✔
 <span id="doc-eng-supported-measures"></span>
 ### Supported Measures [[Back to Contents]](#doc)
 
+<span id="doc-eng-supported-measures-dispersion-adjusted-freq"></span>
 #### Measures of Dispersion & Adjusted Frequency
 
 The dispersion and adjusted frequency of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by **F₁**, **F₂**, **F₃** ... **Fn**. The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies in all sub-sections is denoted by ![F-bar](/doc/measures/f_bar.gif). Then, the dispersion and adjusted frequency of the word will be calcuated as follows.
@@ -532,7 +534,7 @@ In *Overview*, you can check/compare the language features of different files.
 3. **Count of Tokens**:<br>
     Number of tokens in each file. *Wordless* will automatically apply the built-in word tokenizer according to the language of each file in order to calculate the number of tokens in each file. You can change the word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
 
-    You can tell *Wordless* what should be counted as a "token" by modifying **Token Settings** in the *Settings Area*
+    You can specify what should be counted as a "token" via **Token Settings** in the *Settings Area*
 
 4. **Count of Types**:<br>
     Number of token types in each file.
@@ -569,9 +571,9 @@ In *Overview*, you can check/compare the language features of different files.
 ### Concordancer [[Back to Contents]](#doc)
 In *Concordancer*, you can search for any token in different files and generate concordance lines or plots.
 
-After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results** at the upper right corner of the *Results Area*.
+After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
-By default, data in concordance plot are sorted by file. You can tell Wordless to sort the data by search term instead via **Figure Settings → Sort Results by**.
+By default, data in concordance plot are sorted by file. You can sort the data by search term instead via **Figure Settings → Sort Results by**.
 
 1. **Left**:<br>
     The context before each search term, which displays 10 tokens left to the **Node** by default. You can change this behavior via **Generation Settings**.
@@ -590,6 +592,34 @@ By default, data in concordance plot are sorted by file. You can tell Wordless t
 
 ![Concordance Table](/doc/concordancer_table.png)
 ![Concordance Figure](/doc/concordancer_fig.png)
+
+<span id="doc-eng-wordlist"></span>
+### Wordlist [[Back to Contents]](#doc)
+In *Wordlist*, you can generate wordlists for different files. In addition, you can generate line charts or word clouds for the wordlists.
+
+You can filter the results by clicking **Filter Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+
+1. **Rank**:<br>
+    The rank of the token sorted by frequency in descending order (by default). You can sort the results again by clicking the column headers. 
+
+2. **Tokens**:<br>
+    You can specify what should be counted as a "token" via **Token Settings**.
+
+3. **Frequency**:<br>
+    The number of occurrences of the token in each file.
+
+4. **Dispersion**:<br>
+    The dispersion of the token in each file. You can change the measure of dispersion via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+
+5. **Adjusted Frequency**:<br>
+    The adjusted frequency of the token in each file. You can change the measure of adjusted frequency via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+
+6. **Number of Files Found**:<br>
+    The number of files in which the token appears at least once.
+
+![Wordlist Table](/doc/wordlist_table.png)
+![Wordlist Figure - Line Chart](/doc/wordlist_fig_line_chart.png)
+![Wordlist Figure - Word Cloud](/doc/wordlist_fig_word_cloud.png)
 
 <span id="doc-zho"></span>
 ## Documentation - Chinese (Simplified)
