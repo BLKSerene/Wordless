@@ -1813,7 +1813,7 @@ def init_settings_global(main):
                         None
                     ],
 
-                    'func': wordless_measures_statistical_significance.students_t_test_one_sample
+                    'func': wordless_measures_statistical_significance.students_t_test_1_sample
                 },
 
                 main.tr('Pearson\'s Chi-squared Test'): {
@@ -1855,7 +1855,7 @@ def init_settings_global(main):
                         main.tr('Bayes Factor')
                     ],
 
-                    'func': wordless_measures_statistical_significance.students_t_test_two_sample
+                    'func': wordless_measures_statistical_significance.students_t_test_2_sample
                 },
 
                 main.tr('Pearson\'s Chi-squared Test'): {

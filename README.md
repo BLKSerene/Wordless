@@ -359,7 +359,9 @@ Western European|Windows-1252|✔
 <span id="doc-eng-supported-measures-dispersion-adjusted-freq"></span>
 #### Measures of Dispersion & Adjusted Frequency
 
-The dispersion and adjusted frequency of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by **F₁**, **F₂**, **F₃** ... **Fn**. The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies in all sub-sections is denoted by ![F-bar](/doc/measures/f_bar.gif). Then, the dispersion and adjusted frequency of the word will be calcuated as follows.
+The dispersion and adjusted frequency of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by **F₁**, **F₂**, **F₃** ... **Fn**. The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies over all sub-sections is denoted by ![F-bar](/doc/measures/f_bar.gif).
+
+Then, the dispersion and adjusted frequency of the word will be calcuated as follows:
 
 <!--
 Juilland's D:
@@ -370,8 +372,8 @@ Juilland's D:
 
 Carroll's D₂:
     \begin{align*}
-        H &= \log_{e}F - \frac{\sum_{i = 1}^{n} * \log_{e}F_{i}}{F} \\
-        D_{2} &= \frac{H}{\log_{e}n}
+        H &= \ln F - \frac{\sum_{i = 1}^{n} \times \ln F_{i}}{F} \\
+        D_{2} &= \frac{H}{\ln n}
     \end{align*}
 
 Lyne's D₃:
@@ -427,14 +429,14 @@ Juilland's U:
     \begin{align*}
         CV &= \frac{\sum_{i = 1}^{n}(F_{i} - \bar{F})^{2}}{\bar{F}} \\
         D &= \frac{1 - CV}{\sqrt{i - 1}} \\
-        U &= D * F
+        U &= D \times F
     \end{align*}
 
 Carroll's Um:
     \begin{align*}
-        H &= \log_{e}F - \frac{\sum_{i = 1}^{n} * \log_{e}F_{i}}{F} \\
-        D_{2} &= \frac{H}{\log_{e}n} \\
-        Um & = F * D_{2} + (1 - D_{2}) * \frac{F}{n}
+        H &= \ln F - \frac{\sum_{i = 1}^{n} \times \ln F_{i}}{F} \\
+        D_{2} &= \frac{H}{\ln n} \\
+        Um & = F \times D_{2} + (1 - D_{2}) \times \frac{F}{n}
     \end{align*}
 
 Rosengren's KF:
@@ -444,7 +446,7 @@ Rosengren's KF:
 
 Engwall's FM:
     \begin{align*}
-        FM = \frac{F * R}{n}
+        FM = \frac{F \times R}{n}
     \end{align*}
 
 Kromer's UR:
@@ -465,8 +467,127 @@ Kromer's UR|![Kromer's UR](/doc/measures/adjusted_freq/kromers_ur.gif)<br>where 
 [1] Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.<br>
 [2] Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.<br>
 [3] Rosengren, Inger. "The Quantitative Concept of Language and Its Relation to The Structure of Frequency Dictionaries." Études De Linguistique Appliquée, n.s.1, 1971, pp. 103-27.<br>
-[4] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Dissertation", Stockholm University, 1974.<br>
+[4] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français." Dissertation, Stockholm University, 1974.<br>
 [5] Kromer, Victor. "A Usage Measure Based on Psychophysical Relations." Journal of Quatitative Linguistics, vol. 10, no. 2, 2003, pp. 177-186.
+
+<span id="doc-eng-supported-tests-statistical_significance"></span>
+#### Tests of Statistical Significance
+
+To calculate the statistical significance and bayes factor (except **Student's t-test (Two-sample)** and **Mann-Whiteney U Test**) for two words in the same file (collocates) or one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
+
+As for collocates (in *Collocation* and *Colligation*):
+
+Observed Values|Word 1                       |Not Word 1                   |Row Total
+--------------:|:---------------------------:|:---------------------------:|:---------------------------:
+Word 2         |![c11](/doc/measures/c11.gif)|![c12](/doc/measures/c12.gif)|![c1x](/doc/measures/c1x.gif)
+Not Word 2     |![c21](/doc/measures/c21.gif)|![c22](/doc/measures/c22.gif)|![c2x](/doc/measures/c2x.gif)
+Column Total   |![cx1](/doc/measures/cx1.gif)|![cx2](/doc/measures/cx2.gif)|![cxx](/doc/measures/cxx.gif)
+
+Expected Values|Word 1                       |Not Word 1
+--------------:|:---------------------------:|:---------------------------:
+Word 2         |![e11](/doc/measures/e11.gif)|![e12](/doc/measures/e12.gif) 
+Not Word 2     |![e21](/doc/measures/e21.gif)|![e22](/doc/measures/e22.gif)
+
+![c11](/doc/measures/c11.gif): Number of occurrences of Word 1 followed by Word 2<br>
+![c12](/doc/measures/c12.gif): Number of occurrences of Word 1 followed by any word except Word 2<br>
+![c21](/doc/measures/c21.gif): Number of occurrences of any word except Word 1 followed by Word 2<br>
+![c22](/doc/measures/c22.gif): Number of occurrences of any word except Word 1 followed by any word except Word 2<br>
+
+As for keywords (in *Keywords*):
+
+Observed Values|Observed File                |Reference File               |Row Total
+--------------:|:---------------------------:|:---------------------------:|:---------------------------:
+Word *w*       |![c11](/doc/measures/c11.gif)|![c12](/doc/measures/c12.gif)|![c1x](/doc/measures/c1x.gif)
+Not Word *w*   |![c21](/doc/measures/c21.gif)|![c22](/doc/measures/c22.gif)|![c2x](/doc/measures/c2x.gif)
+Column Total   |![cx1](/doc/measures/cx1.gif)|![cx2](/doc/measures/cx2.gif)|![cxx](/doc/measures/cxx.gif)
+
+Expected Values|Observed File                |Reference File
+--------------:|:---------------------------:|:---------------------------:
+Word *w*       |![e11](/doc/measures/e11.gif)|![e12](/doc/measures/e12.gif) 
+Not Word *w*   |![e21](/doc/measures/e21.gif)|![e22](/doc/measures/e22.gif)
+
+![c11](/doc/measures/c11.gif): Number of occurrences of Word *w* in the observed file<br>
+![c12](/doc/measures/c12.gif): Number of occurrences of Word *w* in the reference file<br>
+![c21](/doc/measures/c21.gif): Number of occurrences of all words except Word *w* in the observed file<br>
+![c22](/doc/measures/c22.gif): Number of occurrences of all words except Word *w* in the reference file<br>
+
+To conduct **Student's t-test (Two-sample)** or **Mann-Whiteney U Test** on a specific word, the observed file and the reference file are first divided into **n** (5 by default) sub-sections respectively. Then, the frequencies of the word in each sub-section of the observed file and the reference file are counted and denoted by **FO₁**, **FO₂**, **FO₃** ... **FOn** and **FR₁**, **FR₂**, **FR₃** ... **FRn** respectively. The total frequency of the word in the observed file and the reference file are denoted by **FO** and **FR** respectively. The mean value of the frequencies over all sub-sections of the observed file and the reference file are denoted by ![FO-bar](/doc/measures/fo_bar.gif) and ![FR-bar](/doc/measures/fr_bar.gif) respectively.
+
+<!--
+z-score:
+    \begin{align*}
+        z = \frac{C_{11} - E_{11}}{\sqrt{E_{11} \times (1 - \frac{E_{11}}{C_{xx}}))}}
+    \end{align*}
+
+Student's t-test (One-sample):
+    \begin{align*}
+        t = \frac{C_{11} - E_{11}}{\sqrt{C_{11} \times (1 - \frac{C_{11}}{C_{xx}}))}}
+    \end{align*}
+
+Student's t-test (Two-sample):
+    \begin{align*}
+        s_{1} &= \frac{\sum_{i = 1}^{n}(FO_{i} - \bar{FO})^{2}}{n - 1} \\
+        s_{2} &= \frac{\sum_{i = 1}^{n}(FR_{i} - \bar{FR})^{2}}{n - 1} \\
+        t &= \frac{\bar{FO} - \bar{FR}}{\sqrt{\frac{s_{1} - s_{2}}{n}}}
+    \end{align*}
+
+Pearson's Chi-squared Test:
+    \begin{align*}
+        \chi^{2} = \sum_{i = 1}^{2} \sum_{j = 1}^{2}\frac{(C_{ij} - E{ij})^{2}}{E_{ij}}
+    \end{align*}
+
+Log-likelihood Ratio:
+    \begin{align*}
+        G &= 2\sum_{i = 1}^{2} \sum_{j = 1}^{2}(C_{ij} \times \ln \frac{C_{ij}}{E_{ij}})
+    \end{align*}
+-->
+
+Then the statistical significance and bayes factor will be calculated as follows:
+
+Tests of Statistical Significance|Formulas
+---------------------------------|--------
+z-score                      |![z-score](/doc/measures/statistical_significance/z_score.gif)
+Student's t-test (One-sample)|![Student's t-test (One-sample)](/doc/measures/statistical_significance/students_t_test_1_sample.gif)
+Student's t-test (Two-sample)|![Student's t-test (Two-sample)](/doc/measures/statistical_significance/students_t_test_2_sample.gif)
+Pearson's Chi-squared Test   |![Pearson's Chi-squared Test](/doc/measures/statistical_significance/pearsons_chi_squared_test.gif)
+Log-likelihood Ratio         |![Log-likelihood Ratio](/doc/measures/statistical_significance/log_likehood_ratio_test.gif)
+Fisher's Exact Test          |See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
+Mann-Whiteney U Test         |See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
+
+**Works Cited**:<br>
+[1] Dennis, S. F. "The Construction of a Thesaurus Automatically from a Sample of Text." Proceedings of the Symposium on Statistical Association Methods For Mechanized Documentation, Washington, D.C., 17 March, 1964, edited by Stevens, M. E., et at., National Bureau of Standards, 1965, pp. 61-148.<br>
+[2] Berry-rogghe, Godelieve L. M. "The Computation of Collocations and their Relevance in Lexical Studies." The computer and literary studies, edited by Aitken, A. J., Edinburgh UP, 1973, pp. 103-112.<br>
+[3] Church, Kenneth Ward, et al. "Using Statistics in Lexical Analysis." Lexical Acquisition: Exploiting On-Line Resources to Build a Lexicon, edited by Uri Zernik, Psychology Press, 1991, pp. 115-64.<br>
+[4] Paquot, Magali and Yves Bestgen. "Distinctive Words in Academic Writing: A Comparison of Three Statistical Tests for Keyword Extraction." Language and Computers, vol.68, 2009, pp. 247-269.<br>
+[5] Hofland, Knut and Stig Johansson. Word Frequencies in British and American English. Norwegian Computing Centre for the Humanities, 1982.<br>
+[6] Oakes, Michael P. Statistics for Corpus Linguistics. Edinburgh UP, 1998.<br>
+[7] Dunning, Ted Emerson. "Accurate Methods for the Statistics of Surprise and Coincidence." Computational Linguistics, vol. 19, no. 1, Mar. 1993, pp. 61-74.<br>
+[8] Pedersen, Ted. "Fishing for Exactness." Proceedings of the South-Central SAS Users Group Conference, 27-29 Oct. 1996, Austin.<br>
+[9] Kilgarriff, Adam. "Comparing Corpora." International Journal of Corpus Linguistics, vol.6, no.1, Nov. 2001, pp. 232-263.
+
+<!--
+Student's t-test (Two-sample):
+    \begin{align*}
+        s_{1} &= \frac{\sum_{i = 1}^{n}(FO_{i} - \bar{FO})^{2}}{n - 1} \\
+        s_{2} &= \frac{\sum_{i = 1}^{n}(FR_{i} - \bar{FR})^{2}}{n - 1} \\
+        t &= \frac{\bar{FO} - \bar{FR}}{\sqrt{\frac{s_{1} - s_{2}}{n}}} \\
+        BF & = t^{2} - \ln n
+    \end{align*}
+
+Log-likelihood Ratio:
+    \begin{align*}
+        G &= 2\sum_{i = 1}^{2} \sum_{j = 1}^{2}(C_{ij} \times \ln \frac{C_{ij}}{E_{ij}}) \\
+        BF &= G - \ln C_{xx}
+    \end{align*}
+-->
+
+Bayes Factor|Formulas
+------------|--------
+Student's t-test (Two-sample)|![Student's t-test (Two-sample)](/doc/measures/bayes_factor/students_t_test_2_sample.gif)
+Log-likelihood Ratio         |![Log-likelihood Ratio](/doc/measures/bayes_factor/log_likehood_ratio_test.gif)
+
+**Work Cited**:
+[1] Wilson, Andrew. "Embracing Bayes Factors for Key Item Analysis in Corpus Linguistics." New Approaches to the Study of Linguistic Variability, edited by Markus Bieswanger and Amei Koll-Stobbe, Peter Lang, 2013, pp. 3-11.
 
 <span id="doc-eng-main-window"></span>
 ### Main Window [[Back to Contents]](#doc)

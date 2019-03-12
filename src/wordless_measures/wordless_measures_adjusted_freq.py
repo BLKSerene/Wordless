@@ -43,7 +43,7 @@ def rosengrens_kf(freqs):
     return sum([math.sqrt(freq) for freq in freqs]) ** 2 / len(freqs)
 
 # Reference:
-#     Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Dissertation", Stockholm University, 1974.
+#     Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français." Dissertation, Stockholm University, 1974.
 def engwalls_fm(freqs):
     return sum(freqs) * len([freq for freq in freqs if freq]) / len(freqs)
 
