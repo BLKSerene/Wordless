@@ -1489,7 +1489,7 @@ def init_settings_default(main):
                     'direction': 'Two-tailed'
                 },
 
-                'students_t_test_two_sample': {
+                'students_t_test_2_sample': {
                     'number_sections': 5,
                     'use_data': main.tr('Relative Frequency'),
                     'variances': main.tr('Equal'),

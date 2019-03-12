@@ -57,14 +57,14 @@ print('---------- Measures of Adjusted Frequency ----------')
 
 # [1] Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
 # [2] Rosengren, Inger. "The quantitative concept of language and its relation to the structure of frequency dictionaries." Études de linguistique appliquée, no. 1, 1971, p. 115.
-# [3] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Dissertation", Stockholm University, 1974, p. 122.
+# [3] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français." Dissertation, Stockholm University, 1974, p. 122.
 print('Juilland\'s U:')
 print(f'\t[1] {wordless_measures_adjusted_freq.juillands_u([0, 4, 3, 2, 1])} (6.46)')
 print(f'\t[2] {wordless_measures_adjusted_freq.juillands_u([2, 2, 2, 2, 2])} (10)')
 print(f'\t[3] {wordless_measures_adjusted_freq.juillands_u([4, 2, 1, 1, 0])} (4.609)')
 
 # [1] Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
-# [2] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Dissertation", Stockholm University, 1974, p. 122.
+# [2] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français." Dissertation, Stockholm University, 1974, p. 122.
 # [3] Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
 print('Carroll\'s Um:')
 print(f'\t[1] {wordless_measures_adjusted_freq.carrolls_um([2, 1, 1, 1, 0])} (4.31)')
@@ -72,14 +72,14 @@ print(f'\t[2] {wordless_measures_adjusted_freq.carrolls_um([4, 2, 1, 1, 0])} (6.
 print(f'\t[3] {wordless_measures_adjusted_freq.carrolls_um([1, 2, 3, 4, 5])} (14.108)')
 
 # [1] Rosengren, Inger. "The quantitative concept of language and its relation to the structure of frequency dictionaries." Études de linguistique appliquée, no. 1, 1971, p. 117.
-# [2] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Dissertation", Stockholm University, 1974, p. 122.
+# [2] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français." Dissertation, Stockholm University, 1974, p. 122.
 # [3] Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
 print('Rosengren\'s KF:')
 print(f'\t[1] {wordless_measures_adjusted_freq.rosengrens_kf([2, 2, 2, 2, 1])} (8.86)')
 print(f'\t[2] {wordless_measures_adjusted_freq.rosengrens_kf([4, 2, 1, 1, 0])} (5.863)')
 print(f'\t[2] {wordless_measures_adjusted_freq.rosengrens_kf([1, 2, 3, 4, 5])} (14.053)')
 
-# [1] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français, Dissertation", Stockholm University, 1974, p. 122.
+# [1] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français." Dissertation, Stockholm University, 1974, p. 122.
 # [2] Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
 print('Engwall\'s FM:')
 print(f'\t[1] {wordless_measures_adjusted_freq.engwalls_fm([4, 2, 1, 1, 0])} (6.4)')
@@ -93,7 +93,7 @@ print(f'\t{wordless_measures_adjusted_freq.kromers_ur([2, 1, 1, 1, 0])} (4.50)')
 print('---------- Measures of Statistical Significance ----------')
 
 main.settings_custom['measures']['statistical_significance'] = {
-    'students_t_test_two_sample': {
+    'students_t_test_2_sample': {
         'variances': 'Equal'
     },
 
@@ -109,7 +109,7 @@ main.settings_custom['measures']['statistical_significance'] = {
 
 # Manning, Christopher D. and Hinrich Schütze. Foundations of Statistical Natural Language Processing. MIT Press, May 1999, pp. 164-165.
 print('Student\'s t-test (One Sample):')
-print(f'\t{wordless_measures_statistical_significance.students_t_test_one_sample(main, 8, 15828 - 8, 4675 - 8, 14307668 - 15828 - 4675 + 8)[0]} (0.999932)')
+print(f'\t{wordless_measures_statistical_significance.students_t_test_1_sample(main, 8, 15828 - 8, 4675 - 8, 14307668 - 15828 - 4675 + 8)[0]} (0.999932)')
 
 # Dunning, Ted Emerson. "Accurate Methods for the Statistics of Surprise and Coincidence." Computational Linguistics, vol. 19, no. 1, Mar. 1993, p. 73.
 # Pedersen, Ted. "Fishing for Exactness." Proceedings of the South-Central SAS Users Group Conference, 27-29 Oct. 1996, Austin, p. 10.
