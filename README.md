@@ -379,7 +379,7 @@ Lyne's D₃:
 
 Rosengren's S:
     \begin{align*}
-        KF &= \frac{1}{n}\sum_{i = 1}^{n}(\sqrt{F_{i}})^{2} \\
+        KF &= \frac{1}{n}(\sum_{i = 1}^{n}\sqrt{F_{i}})^{2} \\
         S &= \frac{KF}{F}
     \end{align*}
 
@@ -431,12 +431,12 @@ Carroll's Um:
     \begin{align*}
         H &= \log_{e}F - \frac{\sum_{i = 1}^{n} * \log_{e}F_{i}}{F} \\
         D_{2} &= \frac{H}{\log_{e}n} \\
-        Um & = F * D_{2} + (1 - D_{2}) * \frac{F}{n})
+        Um & = F * D_{2} + (1 - D_{2}) * \frac{F}{n}
     \end{align*}
 
 Rosengren's KF:
     \begin{align*}
-        KF &= \frac{1}{n}\sum_{i = 1}^{n}(\sqrt{F_{i}})^{2}
+        KF &= \frac{1}{n}(\sum_{i = 1}^{n}\sqrt{F_{i}})^{2}
     \end{align*}
 
 Engwall's FM:
