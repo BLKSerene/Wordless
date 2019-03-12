@@ -50,6 +50,7 @@ GB (GB/T 7714—2015):
 * [Overview](#doc-eng-overview)
 * [Concordancer](#doc-eng-concordancer)
 * [Wordlist](#doc-eng-wordlist)
+* [N-grams](#doc-eng-ngrams)
 
 [中文文档](#doc-zho)
 
