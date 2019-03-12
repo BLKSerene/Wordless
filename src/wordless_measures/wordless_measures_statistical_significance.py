@@ -91,7 +91,7 @@ def z_score(main, c11, c12, c21, c22):
 
 # Reference:
 #     Church, Kenneth Ward, et al. "Using Statistics in Lexical Analysis." Lexical Acquisition: Exploiting On-Line Resources to Build a Lexicon, edited by Uri Zernik, Psychology Press, 1991, pp. 115-64.
-def students_t_test_one_sample(main, c11, c12, c21, c22):
+def students_t_test_1_sample(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
 
@@ -106,7 +106,7 @@ def students_t_test_one_sample(main, c11, c12, c21, c22):
 
 # Reference:
 #     Paquot, Magali and Yves Bestgen. "Distinctive Words in Academic Writing: A Comparison of Three Statistical Tests for Keyword Extraction." Language and Computers, vol.68, 2009, pp. 247-269.
-def students_t_test_two_sample(main, counts_observed, counts_ref):
+def students_t_test_2_sample(main, counts_observed, counts_ref):
     variances = main.settings_custom['measures']['statistical_significance']['students_t_test_two_sample']['variances']
 
     if variances == main.tr('Equal'):
