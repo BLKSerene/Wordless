@@ -60,7 +60,7 @@ class Wordless_Dialog_Progress_Add_Files(Wordless_Dialog_Progress):
         
         self.label_processing.set_text(self.tr('''
             <div>
-                Please wait while files are being loaded. It may take a few seconds to several minutes depending on the total size of the files to be loaded.
+                Please wait while files are being loaded. It may take a few seconds to several minutes depending on the total size of all files to be loaded.
             </div>
         '''))
 
@@ -74,7 +74,7 @@ class Wordless_Dialog_Progress_Process_Data(Wordless_Dialog_Progress):
         
         self.label_processing.set_text(self.tr('''
             <div>
-                Please wait while data is being processed. It may take a few seconds to several minutes depending on the total size of the selected files.
+                Please wait while data is being processed. It may take a few seconds to several minutes depending on the total size of all selected files.
             </div>
         '''))
 
