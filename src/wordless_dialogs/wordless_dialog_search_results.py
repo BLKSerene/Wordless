@@ -116,14 +116,16 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.button_find_all = QPushButton(self.tr('Find All'), self)
         
         self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self)
+        self.button_clear_hightlights = QPushButton(self.tr('Clear Highlights'), self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
-        self.button_find_next.setFixedWidth(100)
-        self.button_find_prev.setFixedWidth(100)
-        self.button_find_all.setFixedWidth(100)
+        self.button_find_next.setFixedWidth(105)
+        self.button_find_prev.setFixedWidth(105)
+        self.button_find_all.setFixedWidth(105)
+        self.button_clear_hightlights.setFixedWidth(105)
 
         self.button_reset_settings.setFixedWidth(120)
-        self.button_close.setFixedWidth(80)
+        self.button_close.setFixedWidth(90)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
@@ -145,6 +147,7 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.button_find_prev.clicked.connect(lambda: self.find_prev())
         self.button_find_all.clicked.connect(lambda: self.find_all())
 
+        self.button_clear_hightlights.clicked.connect(self.clear_highlights)
         self.button_close.clicked.connect(self.reject)
 
         layout_ignore_tags = wordless_layout.Wordless_Layout()
@@ -158,8 +161,9 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         layout_buttons_right.addWidget(self.button_find_next, 0, 0)
         layout_buttons_right.addWidget(self.button_find_prev, 1, 0)
         layout_buttons_right.addWidget(self.button_find_all, 2, 0)
+        layout_buttons_right.addWidget(self.button_clear_hightlights, 3, 0)
 
-        layout_buttons_right.setRowStretch(3, 1)
+        layout_buttons_right.setRowStretch(4, 1)
 
         layout_buttons_bottom = wordless_layout.Wordless_Layout()
         layout_buttons_bottom.addWidget(self.button_reset_settings, 0, 0)
@@ -192,11 +196,6 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.main.wordless_work_area.currentChanged.connect(self.reject)
 
         self.load_settings()
-
-    def closeEvent(self, event):
-        self.clear_highlights()
-
-        event.accept()
 
     def load_settings(self, defaults = False):
         if defaults:
