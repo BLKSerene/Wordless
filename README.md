@@ -40,17 +40,18 @@ GB (GB/T 7714—2015):
 <span id="doc"></span>
 ## Documentation
 [English Documentation](#doc-eng)
-* [Supported Languages](#doc-eng-supported-langs)
-* [Supported Text Types](#doc-eng-supported-text-types)
-* [Supported File Types](#doc-eng-supported-file-types)
-* [Supported File Encodings](#doc-eng-supported-file-encodings)
-* [Supported Measures](#doc-eng-supported-measures)
 * [Main Window](#doc-eng-main-window)
 * [File Area](#doc-eng-file-area)
 * [Overview](#doc-eng-overview)
 * [Concordancer](#doc-eng-concordancer)
 * [Wordlist](#doc-eng-wordlist)
 * [N-grams](#doc-eng-ngrams)
+* [Supported Languages](#doc-eng-supported-langs)
+* [Supported Text Types](#doc-eng-supported-text-types)
+* [Supported File Types](#doc-eng-supported-file-types)
+* [Supported File Encodings](#doc-eng-supported-file-encodings)
+* [Supported Measures](#doc-eng-supported-measures)
+* [Works Cited](#doc-eng-works-cited)
 
 [中文文档](#doc-zho)
 
@@ -125,6 +126,195 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 
 <span id="doc-eng"></span>
 ## Documentation - English
+
+<span id="doc-eng-main-window"></span>
+### Main Window [[Back to Contents]](#doc)
+The main window of *Wordless* is divided into several sections:
+
+1. **Menu Bar**<br>
+    
+2. **Work Area**:<br>
+    The *Work Area* is further divided into the *Resutls Area* on the left side and the *Settings Area* on the right side.<br>
+    You can click on the tabs at the top to toggle between different panels.
+
+3. **File Area**:<br>
+    The *File Area* is further divided into the *File Table* on the left side and the *Settings Area* on the right side.
+
+4. **Status Bar**:<br>
+    You can show/hide the *Status Bar* by checking/unchecking **Menu → Preferences → Show Status Bar**
+
+<span id="doc-eng-file-area"></span>
+### File Area [[Back to Contents]](#doc)
+In most cases, the first thing to do in *Wordless* is open and select your files to be processed via **Menu → File** or by clicking the buttons residing under the *File Table*.
+
+Files are selected by default after being added to the *File Table*. **Only selected files will be processed by Wordless**. You can drag and drop files around the *File Table* to change their orders, which will be reflected in the results produced by Wordless.
+
+By default, Wordless will try to detect the language, text type and encoding of the file, you should check and make sure that the settings of each and every file is correct. If you do not want Wordless to detect the settings for you and prefer setting them manually, you can change the settings in **Auto-detection Settings** in the *Settings Area*.
+
+1. **Add File(s)**:<br>
+    Add one single file or multiple files to the *File Table*.
+
+    \* You can use the **Ctrl** key (**Command** key on macOS) and/or the **Shift** key to select multiple files.
+
+2. **Add Folder**:<br>
+    Add all files in the folder to the *File Table*.
+
+    By default, all files in subfolders (and subfolders of subfolders, and so on) will also be added to the *File Table*. If you do not want to add files in subfolders to the *File Table*, uncheck **Folder Settings → Subfolders** in the *Settings Area*.
+
+3. **Reopen Closed File(s)**:<br>
+    Add file(s) that are closed the last time back to the *File Table*.
+
+    \* The history of all closed files will be erased upon exit of *Wordless*.
+
+4. **Select All**:<br>
+    Select all files in the *File Table*.
+
+5. **Invert Selection**:<br>
+    Select all files that are not currently selected and deselect all currently selected files in the *File Table*.
+
+6. **Deselect All**:<br>
+    Deselect all files in the *File Table*.
+
+7. **Close Selected**:<br>
+    Remove all currently selected files in the *File Table*.
+
+8. **Close All**:<br>
+    Remove all files in the *File Table*.
+
+<span id="doc-eng-overview"></span>
+### Overview [[Back to Contents]](#doc)
+In *Overview*, you can check/compare the language features of different files.
+
+1. **Count of Paragraphs**:<br>
+    Number of paragraphs in each file. Each line in the file will be counted as one paragraph. Blank lines and lines containing only spaces, tabs and other invisible characters are ignored.
+
+2. **Count of Sentences**:<br>
+    Number of sentences in each file. *Wordless* will automatically apply the built-in sentence tokenizer according to the language of each file in order to calculate the number of sentences in each file. You can change the sentence tokenizer settings via **Menu → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
+
+3. **Count of Tokens**:<br>
+    Number of tokens in each file. *Wordless* will automatically apply the built-in word tokenizer according to the language of each file in order to calculate the number of tokens in each file. You can change the word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
+
+    You can specify what should be counted as a "token" via **Token Settings** in the *Settings Area*
+
+4. **Count of Types**:<br>
+    Number of token types in each file.
+
+5. **Count of Caracters**:<br>
+    Number of single characters in each file. Spaces, tabs and all other invisible characters are ignored.
+
+6. **Type-Token Ratio**:<br>
+    Number of token types divided by number of tokens.
+
+7. **Type-Token Ratio (Standardized)**:<br>
+    Standardized type-token ratio. Each file will be divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratio will be calculated for each part. The standardized type-token ratio of each file is then averaged out over all sub-sections. You can change the number of tokens in each sub-section via **Generation Settings → Base of standardized type-token ratio**.
+
+    The last section will be discarded if the number of tokens in it is smaller than the base of standardized type-token ratio in order to prevent the result from being affected by outliers (extreme values).
+
+8. **Average Paragraph Length (in Sentence)**:<br>
+    Number of sentences divided by number of paragraphs.
+
+9. **Average Paragraph Length (in Token)**:<br>
+    Number of Tokens divided by number of paragraphs.
+
+10. **Average Sentence Length (in Token)**:<br>
+    Number of tokens divided by number of sentences.
+
+11. **Average Token Length (in Character)**:<br>
+    Number of characters divided by number of tokens.
+
+12. **Count of n-length Tokens**:<br>
+    Number of n-length tokens, where n = 1, 2, 3, etc.
+
+![Overview Table](/doc/overview/overview_table.png)
+
+<span id="doc-eng-concordancer"></span>
+### Concordancer [[Back to Contents]](#doc)
+In *Concordancer*, you can search for any token in different files and generate concordance lines or plots.
+
+After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+
+By default, data in concordance plot are sorted by file. You can sort the data by search term instead via **Figure Settings → Sort Results by**.
+
+1. **Left**:<br>
+    The context before each search term, which displays 10 tokens left to the **Node** by default. You can change this behavior via **Generation Settings**.
+2. **Node**:<br>
+    Nodes are search terms specified in **Search Settings → Search Term**.
+3. **Right**:<br>
+    The context after each search term, which displays 10 tokens right to the **Node** by default. You can change this behavior via **Generation Settings**.
+4. **Token No.**<br>
+    The position of the first token of **Node** in each file.
+5. **Sentence No.**<br>
+    The position of the sentence in which the **Node** is found in each file.
+6. **Paragraph No.**<br>
+    The position of the paragraph in which the **Node** is found in each file.
+7. **File**<br>
+    The file in which the **Node** is found.
+
+![Concordance Table](/doc/concordancer/concordancer_table.png)
+![Concordance Figure - File](/doc/concordancer/concordancer_fig_file.png)
+![Concordance Figure - Search Term](/doc/concordancer/concordancer_fig_search_term.png)
+
+<span id="doc-eng-wordlist"></span>
+### Wordlist [[Back to Contents]](#doc)
+In *Wordlist*, you can generate wordlists for different files.
+
+In addition, you can generate line charts or word clouds for wordlists. You can modify the settings for the generated figure via **Figure Settings**.
+
+You can filter the results by clicking **Filter Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+
+1. **Rank**:<br>
+    The rank of the token sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. 
+
+2. **Tokens**:<br>
+    You can specify what should be counted as a "token" via **Token Settings**.
+
+3. **Frequency**:<br>
+    The number of occurrences of the token in each file.
+
+4. **Dispersion**:<br>
+    The dispersion of the token in each file. You can change the measure of dispersion via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+
+5. **Adjusted Frequency**:<br>
+    The adjusted frequency of the token in each file. You can change the measure of adjusted frequency via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+
+6. **Number of Files Found**:<br>
+    The number of files in which the token appears at least once.
+
+![Wordlist Table](/doc/wordlist/wordlist_table.png)
+![Wordlist Figure - Line Chart](/doc/wordlist/wordlist_fig_line_chart.png)
+![Wordlist Figure - Word Cloud](/doc/wordlist/wordlist_fig_word_cloud.png)
+
+<span id="doc-eng-ngrams"></span>
+### N-grams [[Back to Contents]](#doc)
+In *N-grams*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can set constraints on the position of the search term in all n-grams via **Search Settings → Search Term Position**.
+
+In addition, you can generate line charts or word clouds for n-grams. You can modify the settings for the generated figure via **Figure Settings**.
+
+It is possible to disable searching altogether and generate an exhausted list of n-grams by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
+
+You can filter the results by clicking **Filter Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+
+1. **Rank**:<br>
+    The rank of the n-gram sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. 
+
+2. **N-grams**:<br>
+    You can specify what should be counted as a "n-gram" via **Token Settings**.
+
+3. **Frequency**:<br>
+    The number of occurrences of the n-gram in each file.
+
+4. **Dispersion**:<br>
+    The dispersion of the n-gram in each file. You can change the measure of dispersion via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+
+5. **Adjusted Frequency**:<br>
+    The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+
+6. **Number of Files Found**:<br>
+    The number of files in which the n-gram appears at least once.
+
+![N-grams Table](/doc/ngrams/ngrams_table.png)
+![N-grams Figure - Line Chart](/doc/ngrams/ngrams_fig_line_chart.png)
+![N-grams Figure - Word Cloud](/doc/ngrams/ngrams_fig_word_cloud.png)
 
 <span id="doc-eng-supported-langs"></span>
 ### Supported Languages [[Back to Contents]](#doc)
@@ -672,7 +862,9 @@ Log Ratio                    [[34]](#doc-eng-supported-measures-works-cited-34)|
 Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[[35]](#doc-eng-supported-measures-works-cited-35)|![Difference Coefficient](/doc/measures/effect_size/diff_coeff.gif)
 %DIFF                        [[36]](#doc-eng-supported-measures-works-cited-36)|![%DIFF](/doc/measures/effect_size/pct_diff.gif)
 
-**Works Cited**:<br>
+<span id="doc-eng-works-cited"></span>
+### Works Cited [[Back to Contents]](#doc)
+
 <span id="doc-eng-supported-measures-works-cited-1"></span>
 [1] Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.<br>
 <span id="doc-eng-supported-measures-works-cited-2"></span>
@@ -745,195 +937,6 @@ Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[
 [35] Gabrielatos, Costas. "Keyness Analysis: Nature, Metrics and Techniques." Corpus Approaches to Discourse: A Critical Review, edited by Taylor, Charlotte and Anna Marchi, Routledge, 2018.<br>
 <span id="doc-eng-supported-measures-works-cited-36"></span>
 [36] Gabrielatos, Costas and Anna Marchi. "Keyness: Appropriate Metrics and Practical Issues." Proceedings of CADS International Conference, U of Bologna, 13-14 Sept. 2012.
-
-<span id="doc-eng-main-window"></span>
-### Main Window [[Back to Contents]](#doc)
-The main window of *Wordless* is divided into several sections:
-
-1. **Menu Bar**<br>
-    
-2. **Work Area**:<br>
-    The *Work Area* is further divided into the *Resutls Area* on the left side and the *Settings Area* on the right side.<br>
-    You can click on the tabs at the top to toggle between different panels.
-
-3. **File Area**:<br>
-    The *File Area* is further divided into the *File Table* on the left side and the *Settings Area* on the right side.
-
-4. **Status Bar**:<br>
-    You can show/hide the *Status Bar* by checking/unchecking **Menu → Preferences → Show Status Bar**
-
-<span id="doc-eng-file-area"></span>
-### File Area [[Back to Contents]](#doc)
-In most cases, the first thing to do in *Wordless* is open and select your files to be processed via **Menu → File** or by clicking the buttons residing under the *File Table*.
-
-Files are selected by default after being added to the *File Table*. **Only selected files will be processed by Wordless**. You can drag and drop files around the *File Table* to change their orders, which will be reflected in the results produced by Wordless.
-
-By default, Wordless will try to detect the language, text type and encoding of the file, you should check and make sure that the settings of each and every file is correct. If you do not want Wordless to detect the settings for you and prefer setting them manually, you can change the settings in **Auto-detection Settings** in the *Settings Area*.
-
-1. **Add File(s)**:<br>
-    Add one single file or multiple files to the *File Table*.
-
-    \* You can use the **Ctrl** key (**Command** key on macOS) and/or the **Shift** key to select multiple files.
-
-2. **Add Folder**:<br>
-    Add all files in the folder to the *File Table*.
-
-    By default, all files in subfolders (and subfolders of subfolders, and so on) will also be added to the *File Table*. If you do not want to add files in subfolders to the *File Table*, uncheck **Folder Settings → Subfolders** in the *Settings Area*.
-
-3. **Reopen Closed File(s)**:<br>
-    Add file(s) that are closed the last time back to the *File Table*.
-
-    \* The history of all closed files will be erased upon exit of *Wordless*.
-
-4. **Select All**:<br>
-    Select all files in the *File Table*.
-
-5. **Invert Selection**:<br>
-    Select all files that are not currently selected and deselect all currently selected files in the *File Table*.
-
-6. **Deselect All**:<br>
-    Deselect all files in the *File Table*.
-
-7. **Close Selected**:<br>
-    Remove all currently selected files in the *File Table*.
-
-8. **Close All**:<br>
-    Remove all files in the *File Table*.
-
-<span id="doc-eng-overview"></span>
-### Overview [[Back to Contents]](#doc)
-In *Overview*, you can check/compare the language features of different files.
-
-1. **Count of Paragraphs**:<br>
-    Number of paragraphs in each file. Each line in the file will be counted as one paragraph. Blank lines and lines containing only spaces, tabs and other invisible characters are ignored.
-
-2. **Count of Sentences**:<br>
-    Number of sentences in each file. *Wordless* will automatically apply the built-in sentence tokenizer according to the language of each file in order to calculate the number of sentences in each file. You can change the sentence tokenizer settings via **Menu → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
-
-3. **Count of Tokens**:<br>
-    Number of tokens in each file. *Wordless* will automatically apply the built-in word tokenizer according to the language of each file in order to calculate the number of tokens in each file. You can change the word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
-
-    You can specify what should be counted as a "token" via **Token Settings** in the *Settings Area*
-
-4. **Count of Types**:<br>
-    Number of token types in each file.
-
-5. **Count of Caracters**:<br>
-    Number of single characters in each file. Spaces, tabs and all other invisible characters are ignored.
-
-6. **Type-Token Ratio**:<br>
-    Number of token types divided by number of tokens.
-
-7. **Type-Token Ratio (Standardized)**:<br>
-    Standardized type-token ratio. Each file will be divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratio will be calculated for each part. The standardized type-token ratio of each file is then averaged out over all sub-sections. You can change the number of tokens in each sub-section via **Generation Settings → Base of standardized type-token ratio**.
-
-    The last section will be discarded if the number of tokens in it is smaller than the base of standardized type-token ratio in order to prevent the result from being affected by outliers (extreme values).
-
-8. **Average Paragraph Length (in Sentence)**:<br>
-    Number of sentences divided by number of paragraphs.
-
-9. **Average Paragraph Length (in Token)**:<br>
-    Number of Tokens divided by number of paragraphs.
-
-10. **Average Sentence Length (in Token)**:<br>
-    Number of tokens divided by number of sentences.
-
-11. **Average Token Length (in Character)**:<br>
-    Number of characters divided by number of tokens.
-
-12. **Count of n-length Tokens**:<br>
-    Number of n-length tokens, where n = 1, 2, 3, etc.
-
-![Overview Table](/doc/overview/overview_table.png)
-
-<span id="doc-eng-concordancer"></span>
-### Concordancer [[Back to Contents]](#doc)
-In *Concordancer*, you can search for any token in different files and generate concordance lines or plots.
-
-After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
-
-By default, data in concordance plot are sorted by file. You can sort the data by search term instead via **Figure Settings → Sort Results by**.
-
-1. **Left**:<br>
-    The context before each search term, which displays 10 tokens left to the **Node** by default. You can change this behavior via **Generation Settings**.
-2. **Node**:<br>
-    Nodes are search terms specified in **Search Settings → Search Term**.
-3. **Right**:<br>
-    The context after each search term, which displays 10 tokens right to the **Node** by default. You can change this behavior via **Generation Settings**.
-4. **Token No.**<br>
-    The position of the first token of **Node** in each file.
-5. **Sentence No.**<br>
-    The position of the sentence in which the **Node** is found in each file.
-6. **Paragraph No.**<br>
-    The position of the paragraph in which the **Node** is found in each file.
-7. **File**<br>
-    The file in which the **Node** is found.
-
-![Concordance Table](/doc/concordancer/concordancer_table.png)
-![Concordance Figure - File](/doc/concordancer/concordancer_fig_file.png)
-![Concordance Figure - Search Term](/doc/concordancer/concordancer_fig_search_term.png)
-
-<span id="doc-eng-wordlist"></span>
-### Wordlist [[Back to Contents]](#doc)
-In *Wordlist*, you can generate wordlists for different files.
-
-In addition, you can generate line charts or word clouds for wordlists. You can modify the settings for the generated figure via **Figure Settings**.
-
-You can filter the results by clicking **Filter Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
-
-1. **Rank**:<br>
-    The rank of the token sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. 
-
-2. **Tokens**:<br>
-    You can specify what should be counted as a "token" via **Token Settings**.
-
-3. **Frequency**:<br>
-    The number of occurrences of the token in each file.
-
-4. **Dispersion**:<br>
-    The dispersion of the token in each file. You can change the measure of dispersion via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
-
-5. **Adjusted Frequency**:<br>
-    The adjusted frequency of the token in each file. You can change the measure of adjusted frequency via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
-
-6. **Number of Files Found**:<br>
-    The number of files in which the token appears at least once.
-
-![Wordlist Table](/doc/wordlist/wordlist_table.png)
-![Wordlist Figure - Line Chart](/doc/wordlist/wordlist_fig_line_chart.png)
-![Wordlist Figure - Word Cloud](/doc/wordlist/wordlist_fig_word_cloud.png)
-
-<span id="doc-eng-ngrams"></span>
-### N-grams [[Back to Contents]](#doc)
-In *N-grams*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can set constraints on the position of the search term in all n-grams via **Search Settings → Search Term Position**.
-
-In addition, you can generate line charts or word clouds for n-grams. You can modify the settings for the generated figure via **Figure Settings**.
-
-It is possible to disable searching altogether and generate an exhausted list of n-grams by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
-
-You can filter the results by clicking **Filter Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
-
-1. **Rank**:<br>
-    The rank of the n-gram sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. 
-
-2. **N-grams**:<br>
-    You can specify what should be counted as a "n-gram" via **Token Settings**.
-
-3. **Frequency**:<br>
-    The number of occurrences of the n-gram in each file.
-
-4. **Dispersion**:<br>
-    The dispersion of the n-gram in each file. You can change the measure of dispersion via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
-
-5. **Adjusted Frequency**:<br>
-    The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
-
-6. **Number of Files Found**:<br>
-    The number of files in which the n-gram appears at least once.
-
-![N-grams Table](/doc/ngrams/ngrams_table.png)
-![N-grams Figure - Line Chart](/doc/ngrams/ngrams_fig_line_chart.png)
-![N-grams Figure - Word Cloud](/doc/ngrams/ngrams_fig_word_cloud.png)
 
 <span id="doc-zho"></span>
 ## Documentation - Chinese (Simplified)
