@@ -1790,14 +1790,14 @@ class Wordless_Settings(QDialog):
         # Kilgarriff's Ratio
         group_box_kilgarriffs_ratio = QGroupBox(self.tr('Kilgarriff\'s Ratio'), self)
 
-        self.label_kilgarriffs_ratio_smoothing_parameter = QLabel(self.tr('Smoothing Parameter'), self)
-        self.spin_box_kilgarriffs_ratio_smoothing_parameter = QDoubleSpinBox(self)
+        self.label_kilgarriffs_ratio_smoothing_param = QLabel(self.tr('Smoothing Parameter:'), self)
+        self.spin_box_kilgarriffs_ratio_smoothing_param = QDoubleSpinBox(self)
 
-        self.spin_box_kilgarriffs_ratio_smoothing_parameter.setRange(0.01, 10000)
+        self.spin_box_kilgarriffs_ratio_smoothing_param.setRange(0.01, 10000)
 
         group_box_kilgarriffs_ratio.setLayout(wordless_layout.Wordless_Layout())
-        group_box_kilgarriffs_ratio.layout().addWidget(self.label_kilgarriffs_ratio_smoothing_parameter, 0, 0)
-        group_box_kilgarriffs_ratio.layout().addWidget(self.spin_box_kilgarriffs_ratio_smoothing_parameter, 0, 1)
+        group_box_kilgarriffs_ratio.layout().addWidget(self.label_kilgarriffs_ratio_smoothing_param, 0, 0)
+        group_box_kilgarriffs_ratio.layout().addWidget(self.spin_box_kilgarriffs_ratio_smoothing_param, 0, 1)
 
         group_box_kilgarriffs_ratio.layout().setColumnStretch(2, 1)
 
@@ -2024,7 +2024,7 @@ class Wordless_Settings(QDialog):
         self.checkbox_mann_whitney_u_test_apply_correction.setChecked(settings['measures']['statistical_significance']['mann_whitney_u_test']['apply_correction'])
 
         # Measures -> Effect Size
-        self.spin_box_kilgarriffs_ratio_smoothing_parameter.setValue(settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_parameter'])
+        self.spin_box_kilgarriffs_ratio_smoothing_param.setValue(settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param'])
 
     def settings_validate(self):
         def validate_path(line_edit):
@@ -2198,7 +2198,7 @@ class Wordless_Settings(QDialog):
             settings['measures']['statistical_significance']['mann_whitney_u_test']['apply_correction'] = self.checkbox_mann_whitney_u_test_apply_correction.isChecked()
 
             # Measures -> Effect Size
-            settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_parameter'] = self.spin_box_kilgarriffs_ratio_smoothing_parameter.value()
+            settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param'] = self.spin_box_kilgarriffs_ratio_smoothing_param.value()
 
             self.wordless_settings_changed.emit()
 
