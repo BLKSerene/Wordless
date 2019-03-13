@@ -367,41 +367,41 @@ Then, the dispersion and adjusted frequency of the word will be calcuated as fol
 Juilland's D:
     \begin{align*}
         CV &= \frac{\sum_{i = 1}^{n}(F_{i} - \bar{F})^{2}}{\bar{F}} \\
-        D &= \frac{1 - CV}{\sqrt{i - 1}}
+        \text{D} &= \frac{1 - CV}{\sqrt{i - 1}}
     \end{align*}
 
 Carroll's D₂:
     \begin{align*}
         H &= \ln F - \frac{\sum_{i = 1}^{n} \times \ln F_{i}}{F} \\
-        D_{2} &= \frac{H}{\ln n}
+        \text{D}_{2} &= \frac{H}{\ln n}
     \end{align*}
 
 Lyne's D₃:
     \begin{align*}
         \chi^{2} &= \sum_{i = 1}^{n}\frac{(F_{i} - \frac{F}{i})^{2}}{\frac{F}{i}} \\
-        D_{3} &= \frac{1 - \chi^{2}}{4F}
+        \text{D}_{3} &= \frac{1 - \chi^{2}}{4F}
     \end{align*}
 
 Rosengren's S:
     \begin{align*}
         KF &= \frac{1}{n}(\sum_{i = 1}^{n}\sqrt{F_{i}})^{2} \\
-        S &= \frac{KF}{F}
+        \text{S} &= \frac{KF}{F}
     \end{align*}
 
 Zhang's Distributional Consistency:
     \begin{align*}
-        DC &= \frac{(\frac{\sum_{i = 1}^{n}\sqrt{F_{i}}}{n})^{2}}{\frac{\sum_{i = 1}^{n}}{n}}
+        \text{DC} &= \frac{(\frac{\sum_{i = 1}^{n}\sqrt{F_{i}}}{n})^{2}}{\frac{\sum_{i = 1}^{n}}{n}}
     \end{align*}
 
 Gries's DP:
     \begin{align*}
-        DP &= \frac{1}{2}\sum_{i = 1}^{n}|\frac{F_{i}}{F} - \frac{1}{n}|
+        \text{DP} &= \frac{1}{2}\sum_{i = 1}^{n}|\frac{F_{i}}{F} - \frac{1}{n}|
     \end{align*}
 
 Gries's DPnorm:
     \begin{align*}
         DP &= \frac{1}{2}\sum_{i = 1}^{n}|\frac{F_{i}}{F} - \frac{1}{n}| \\
-        DPnorm &= \frac{DP}{1 - \frac{1}{n}}
+        \text{DP}_\text{norm} &= \frac{DP}{1 - \frac{1}{n}}
     \end{align*}
 -->
 
@@ -420,29 +420,29 @@ Juilland's U:
     \begin{align*}
         CV &= \frac{\sum_{i = 1}^{n}(F_{i} - \bar{F})^{2}}{\bar{F}} \\
         D &= \frac{1 - CV}{\sqrt{i - 1}} \\
-        U &= D \times F
+        \text{U} &= D \times F
     \end{align*}
 
 Carroll's Um:
     \begin{align*}
         H &= \ln F - \frac{\sum_{i = 1}^{n} \times \ln F_{i}}{F} \\
         D_{2} &= \frac{H}{\ln n} \\
-        Um & = F \times D_{2} + (1 - D_{2}) \times \frac{F}{n}
+        \text{U}_{m} & = F \times D_{2} + (1 - D_{2}) \times \frac{F}{n}
     \end{align*}
 
 Rosengren's KF:
     \begin{align*}
-        KF &= \frac{1}{n}(\sum_{i = 1}^{n}\sqrt{F_{i}})^{2}
+        \text{KF} &= \frac{1}{n}(\sum_{i = 1}^{n}\sqrt{F_{i}})^{2}
     \end{align*}
 
 Engwall's FM:
     \begin{align*}
-        FM = \frac{F \times R}{n}
+        \text{FM} = \frac{F \times R}{n}
     \end{align*}
 
 Kromer's UR:
     \begin{align*}
-        UR = \sum_{i = 1}^{n}\psi(F_{i} + 1) + C
+        \text{U}_\text{R} = \sum_{i = 1}^{n}\psi(F_{i} + 1) + C
     \end{align*}
 -->
 
@@ -500,19 +500,19 @@ To conduct **Student's t-test (Two-sample)** or **Mann-Whiteney U Test** on a sp
 <!--
 z-score:
     \begin{align*}
-        z = \frac{C_{11} - E_{11}}{\sqrt{E_{11} \times (1 - \frac{E_{11}}{C_{xx}}))}}
+        \text{z} = \frac{C_{11} - E_{11}}{\sqrt{E_{11} \times (1 - \frac{E_{11}}{C_{xx}}))}}
     \end{align*}
 
 Student's t-test (One-sample):
     \begin{align*}
-        t = \frac{C_{11} - E_{11}}{\sqrt{C_{11} \times (1 - \frac{C_{11}}{C_{xx}}))}}
+        \text{t} = \frac{C_{11} - E_{11}}{\sqrt{C_{11} \times (1 - \frac{C_{11}}{C_{xx}}))}}
     \end{align*}
 
 Student's t-test (Two-sample):
     \begin{align*}
         s_{1} &= \frac{\sum_{i = 1}^{n}(FO_{i} - \bar{FO})^{2}}{n - 1} \\
         s_{2} &= \frac{\sum_{i = 1}^{n}(FR_{i} - \bar{FR})^{2}}{n - 1} \\
-        t &= \frac{\bar{FO} - \bar{FR}}{\sqrt{\frac{s_{1} - s_{2}}{n}}}
+        \text{t} &= \frac{\bar{FO} - \bar{FR}}{\sqrt{\frac{s_{1} - s_{2}}{n}}}
     \end{align*}
 
 Pearson's Chi-squared Test:
@@ -522,7 +522,7 @@ Pearson's Chi-squared Test:
 
 Log-likelihood Ratio:
     \begin{align*}
-        G &= 2\sum_{i = 1}^{2} \sum_{j = 1}^{2}(C_{ij} \times \ln \frac{C_{ij}}{E_{ij}})
+        \text{G} &= 2\sum_{i = 1}^{2} \sum_{j = 1}^{2}(C_{ij} \times \ln \frac{C_{ij}}{E_{ij}})
     \end{align*}
 -->
 
@@ -544,13 +544,13 @@ Student's t-test (Two-sample):
         s_{1} &= \frac{\sum_{i = 1}^{n}(FO_{i} - \bar{FO})^{2}}{n - 1} \\
         s_{2} &= \frac{\sum_{i = 1}^{n}(FR_{i} - \bar{FR})^{2}}{n - 1} \\
         t &= \frac{\bar{FO} - \bar{FR}}{\sqrt{\frac{s_{1} - s_{2}}{n}}} \\
-        BF & = t^{2} - \ln n
+        \text{BF} & = t^{2} - \ln n
     \end{align*}
 
 Log-likelihood Ratio:
     \begin{align*}
         G &= 2\sum_{i = 1}^{2} \sum_{j = 1}^{2}(C_{ij} \times \ln \frac{C_{ij}}{E_{ij}}) \\
-        BF &= G - \ln C_{xx}
+        \text{BF} &= G - \ln C_{xx}
     \end{align*}
 -->
 
@@ -562,22 +562,22 @@ Log-likelihood Ratio          [[19]](#doc-eng-supported-measures-works-cited-19)
 <!--
 Pointwise Mutual Information:
     \begin{align*}
-        PMI &= \log_{2} \frac{C_{11}}{E_{11}}
+        \text{PMI} &= \log_{2} \frac{C_{11}}{E_{11}}
     \end{align*}
 
 Mutual Dependency:
     \begin{align*}
-        MD &= \log_{2} \frac{C_{11}^{2}}{E_{11}}
+        \text{MD} &= \log_{2} \frac{C_{11}^{2}}{E_{11}}
     \end{align*}
 
 Log-Frequency Biased MD:
     \begin{align*}
-        LFMD &= \log_{2} \frac{C_{11}}{E_{11}} + \log_{2} C_{11}
+        \text{LFMD} &= \log_{2} \frac{C_{11}}{E_{11}} + \log_{2} C_{11}
     \end{align*}
 
 Cubic Association Ratio:
     \begin{align*}
-        IM^{3} &= \log_{2} \frac{C_{11}^{3}}{E_{11}}
+        \text{IM}^{3} &= \log_{2} \frac{C_{11}^{3}}{E_{11}}
     \end{align*}
 
 MI.log-f:
@@ -587,7 +587,7 @@ MI.log-f:
 
 Mutual Information:
     \begin{align*}
-        MI &= \sum_{i = 1}^{n}\sum_{j = 1}^{n} (\frac{C_{ij}}{C_{xx}} \times \log_{2} \frac{C_{ij}}{E_{ij}})
+        \text{MI} &= \sum_{i = 1}^{n}\sum_{j = 1}^{n} (\frac{C_{ij}}{C_{xx}} \times \log_{2} \frac{C_{ij}}{E_{ij}})
     \end{align*}
 
 Squared Phi Coefficient:
@@ -597,7 +597,7 @@ Squared Phi Coefficient:
 
 Dice's Coefficient:
     \begin{align*}
-        DSC &= \frac{2 \times C_{11}}{C_{1x} + C_{x1}}
+        \text{DSC} &= \frac{2 \times C_{11}}{C_{1x} + C_{x1}}
     \end{align*}
 
 logDice:
@@ -607,22 +607,22 @@ logDice:
 
 Mutual Expectation:
     \begin{align*}
-        ME &= C_{11} \times \frac{2 \times C_{11}}{C_{1x} + C_{x1}}
+        \text{ME} &= C_{11} \times \frac{2 \times C_{11}}{C_{1x} + C_{x1}}
     \end{align*}
 
 Jaccard Index:
     \begin{align*}
-        J &= \frac{C_{11}}{C_{11} + C_{12} + C_{21}}
+        \text{J} &= \frac{C_{11}}{C_{11} + C_{12} + C_{21}}
     \end{align*}
 
 Minimum Sensitivity:
     \begin{align*}
-        S &= \min \{\frac{C_{11}}{C_{1x}} \text{, } \frac{C_{11}}{C_{x1}}\}
+        \text{S} &= \min \{\frac{C_{11}}{C_{1x}} \text{, } \frac{C_{11}}{C_{x1}}\}
     \end{align*}
 
 Poisson Collocation Measure:
     \begin{align*}
-        sig &= \frac{C_{11}(\ln C_{11} - \ln E_{11} - 1)}{\ln C_{xx}}
+        \text{sig} &= \frac{C_{11}(\ln C_{11} - \ln E_{11} - 1)}{\ln C_{xx}}
     \end{align*}
 
 Kilgarriff's Ratio:
