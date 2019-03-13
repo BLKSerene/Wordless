@@ -1910,22 +1910,22 @@ def init_settings_global(main):
 
                 main.tr('Mutual Dependency'): {
                     'col': main.tr('MD'),
-                    'func': wordless_measures_effect_size.mutual_dependency
+                    'func': wordless_measures_effect_size.md
                 },
 
                 main.tr('Log-Frequency Biased MD'): {
                     'col': main.tr('LFMD'),
-                    'func': wordless_measures_effect_size.log_freq_biased_md
+                    'func': wordless_measures_effect_size.lfmd
                 },
 
                 main.tr('Cubic Association Ratio'): {
-                    'col': main.tr('Cubic Association Ratio'),
-                    'func': wordless_measures_effect_size.cubic_association_ratio
+                    'col': main.tr('IM³'),
+                    'func': wordless_measures_effect_size.im3
                 },
 
                 main.tr('MI.log-f'): {
                     'col': main.tr('MI.log-f'),
-                    'func': wordless_measures_effect_size.mi_lof_f
+                    'func': wordless_measures_effect_size.mi_log_f
                 },
 
                 main.tr('Mutual Information'): {
@@ -1949,8 +1949,8 @@ def init_settings_global(main):
                 },
 
                 main.tr('Mutual Expectation'): {
-                    'col': main.tr('Mutual Expectation'),
-                    'func': wordless_measures_effect_size.mutual_expectation
+                    'col': main.tr('ME'),
+                    'func': wordless_measures_effect_size.me
                 },
 
                 main.tr('Jaccard Index'): {
@@ -1961,6 +1961,11 @@ def init_settings_global(main):
                 main.tr('Minimum Sensitivity'): {
                     'col': main.tr('Minimum Sensitivity'),
                     'func': wordless_measures_effect_size.min_sensitivity
+                },
+
+                main.tr('Poisson Collocation Measure'): {
+                    'col': main.tr('Poisson Collocation Measure'),
+                    'func': wordless_measures_effect_size.poisson_collocation_measure
                 }
             },
 
