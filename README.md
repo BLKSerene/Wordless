@@ -407,22 +407,13 @@ Gries's DPnorm:
 
 Measures of Dispersion|Formulas
 ----------------------|-------
-Juilland's D|![Juilland's D](/doc/measures/dispersion/juillands_d.gif)
-Carroll's D₂|![Carroll's D₂](/doc/measures/dispersion/carrolls_d2.gif)
-Lyne's D₃|![Lyne's D₃](/doc/measures/dispersion/lynes_d3.gif)
-Rosengren's S|![Rosengren's S](/doc/measures/dispersion/rosengrens_s.gif)
-Zhang's Distributional Consistency|![Zhang's Distributional Consistency](/doc/measures/dispersion/zhangs_distributional_consistency.gif)
-Gries's DP|![Gries's DP](/doc/measures/dispersion/griess_dp.gif)
-Gries's DPnorm|![Gries's DPnorm](/doc/measures/dispersion/griess_dp_norm.gif)
-
-**Works Cited**:<br>
-[1] Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.<br>
-[2] Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.<br>
-[3] Lyne, A. A. "Dispersion." The Vocabulary of French Business Correspondence. Slatkine-Champion, 1985, pp. 101-24.<br>
-[4] Rosengren, Inger. "The quantitative concept of language and its relation to the structure of frequency dictionaries." Études de linguistique appliquée, no. 1, 1971, pp. 103-27.<br>
-[5] Zhang Huarui, et al. "Distributional Consistency: As a General Method for Defining a Core Lexicon." Proceedings of Fourth International Conference on Language Resources and Evaluation, Lisbon, 26-28 May 2004.<br>
-[6] Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, pp. 403-37.<br>
-[7] Lijffijt, Jefrey and Stefan Th. Gries. "Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”" International Journal of Corpus Linguistics, vol. 17, no. 1, 2012, pp. 147-49.
+Juilland's D   [[1]](#doc-eng-supported-measures-works-cited-1)|![Juilland's D](/doc/measures/dispersion/juillands_d.gif)
+Carroll's D₂   [[2]](#doc-eng-supported-measures-works-cited-2)|![Carroll's D₂](/doc/measures/dispersion/carrolls_d2.gif)
+Lyne's D₃      [[3]](#doc-eng-supported-measures-works-cited-3)|![Lyne's D₃](/doc/measures/dispersion/lynes_d3.gif)
+Rosengren's S  [[4]](#doc-eng-supported-measures-works-cited-4)|![Rosengren's S](/doc/measures/dispersion/rosengrens_s.gif)
+Zhang's Distributional Consistency [[5]](#doc-eng-supported-measures-works-cited-5)|![Zhang's Distributional Consistency](/doc/measures/dispersion/zhangs_distributional_consistency.gif)
+Gries's DP     [[6]](#doc-eng-supported-measures-works-cited-6)|![Gries's DP](/doc/measures/dispersion/griess_dp.gif)
+Gries's DPnorm [[6]](#doc-eng-supported-measures-works-cited-6) [[7]](#doc-eng-supported-measures-works-cited-7)|![Gries's DPnorm](/doc/measures/dispersion/griess_dp_norm.gif)
 
 <!--
 Juilland's U:
@@ -457,23 +448,16 @@ Kromer's UR:
 
 Measures of Adjusted Frequency|Formulas
 ----------------------|-------
-Juilland's U|![Juilland's U](/doc/measures/adjusted_freq/juillands_u.gif)
-Carroll's Um|![Carroll's Um](/doc/measures/adjusted_freq/carrolls_um.gif)
-Rosengren's KF|![Rosengren's KF](/doc/measures/adjusted_freq/rosengrens_kf.gif)
-Engwall's FM|![Engwall's FM](/doc/measures/adjusted_freq/engwalls_fm.gif)<br>where **R** is the number of sub-sections in which the word appears at least once
-Kromer's UR|![Kromer's UR](/doc/measures/adjusted_freq/kromers_ur.gif)<br>where ψ is the digamma function, C is the Euler–Mascheroni constant
+Juilland's U   [[1]](#doc-eng-supported-measures-works-cited-1)|![Juilland's U](/doc/measures/adjusted_freq/juillands_u.gif)
+Carroll's Um   [[2]](#doc-eng-supported-measures-works-cited-2)|![Carroll's Um](/doc/measures/adjusted_freq/carrolls_um.gif)
+Rosengren's KF [[4]](#doc-eng-supported-measures-works-cited-4)|![Rosengren's KF](/doc/measures/adjusted_freq/rosengrens_kf.gif)
+Engwall's FM   [[8]](#doc-eng-supported-measures-works-cited-8)|![Engwall's FM](/doc/measures/adjusted_freq/engwalls_fm.gif)<br>where **R** is the number of sub-sections in which the word appears at least once
+Kromer's UR    [[9]](#doc-eng-supported-measures-works-cited-9)|![Kromer's UR](/doc/measures/adjusted_freq/kromers_ur.gif)<br>where **ψ** is the digamma function, **C** is the Euler–Mascheroni constant
 
-**Works Cited**:<br>
-[1] Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.<br>
-[2] Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.<br>
-[3] Rosengren, Inger. "The Quantitative Concept of Language and Its Relation to The Structure of Frequency Dictionaries." Études De Linguistique Appliquée, n.s.1, 1971, pp. 103-27.<br>
-[4] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français." Dissertation, Stockholm University, 1974.<br>
-[5] Kromer, Victor. "A Usage Measure Based on Psychophysical Relations." Journal of Quatitative Linguistics, vol. 10, no. 2, 2003, pp. 177-186.
-
-<span id="doc-eng-supported-tests-statistical_significance"></span>
+<span id="doc-eng-supported-measures-statistical_significance"></span>
 #### Tests of Statistical Significance
 
-To calculate the statistical significance and bayes factor (except **Student's t-test (Two-sample)** and **Mann-Whiteney U Test**) for two words in the same file (collocates) or one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
+To calculate the statistical significance, bayes factor and effect size (except **Student's t-test (Two-sample)** and **Mann-Whiteney U Test**) for two words in the same file (collocates) or one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
 
 As for collocates (in *Collocation* and *Colligation*):
 
@@ -542,28 +526,17 @@ Log-likelihood Ratio:
     \end{align*}
 -->
 
-Then the statistical significance and bayes factor will be calculated as follows:
+Then the statistical significance, bayes factor and effect size will be calculated as follows:
 
 Tests of Statistical Significance|Formulas
 ---------------------------------|--------
-z-score                      |![z-score](/doc/measures/statistical_significance/z_score.gif)
-Student's t-test (One-sample)|![Student's t-test (One-sample)](/doc/measures/statistical_significance/students_t_test_1_sample.gif)
-Student's t-test (Two-sample)|![Student's t-test (Two-sample)](/doc/measures/statistical_significance/students_t_test_2_sample.gif)
-Pearson's Chi-squared Test   |![Pearson's Chi-squared Test](/doc/measures/statistical_significance/pearsons_chi_squared_test.gif)
-Log-likelihood Ratio         |![Log-likelihood Ratio](/doc/measures/statistical_significance/log_likehood_ratio_test.gif)
-Fisher's Exact Test          |See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
-Mann-Whiteney U Test         |See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
-
-**Works Cited**:<br>
-[1] Dennis, S. F. "The Construction of a Thesaurus Automatically from a Sample of Text." Proceedings of the Symposium on Statistical Association Methods For Mechanized Documentation, Washington, D.C., 17 March, 1964, edited by Stevens, M. E., et at., National Bureau of Standards, 1965, pp. 61-148.<br>
-[2] Berry-rogghe, Godelieve L. M. "The Computation of Collocations and their Relevance in Lexical Studies." The computer and literary studies, edited by Aitken, A. J., Edinburgh UP, 1973, pp. 103-112.<br>
-[3] Church, Kenneth Ward, et al. "Using Statistics in Lexical Analysis." Lexical Acquisition: Exploiting On-Line Resources to Build a Lexicon, edited by Uri Zernik, Psychology Press, 1991, pp. 115-64.<br>
-[4] Paquot, Magali and Yves Bestgen. "Distinctive Words in Academic Writing: A Comparison of Three Statistical Tests for Keyword Extraction." Language and Computers, vol.68, 2009, pp. 247-269.<br>
-[5] Hofland, Knut and Stig Johansson. Word Frequencies in British and American English. Norwegian Computing Centre for the Humanities, 1982.<br>
-[6] Oakes, Michael P. Statistics for Corpus Linguistics. Edinburgh UP, 1998.<br>
-[7] Dunning, Ted Emerson. "Accurate Methods for the Statistics of Surprise and Coincidence." Computational Linguistics, vol. 19, no. 1, Mar. 1993, pp. 61-74.<br>
-[8] Pedersen, Ted. "Fishing for Exactness." Proceedings of the South-Central SAS Users Group Conference, 27-29 Oct. 1996, Austin.<br>
-[9] Kilgarriff, Adam. "Comparing Corpora." International Journal of Corpus Linguistics, vol.6, no.1, Nov. 2001, pp. 232-263.
+z-score                       [[10]](#doc-eng-supported-measures-works-cited-10)[[11]](#doc-eng-supported-measures-works-cited-11)|![z-score](/doc/measures/statistical_significance/z_score.gif)
+Student's t-test (One-sample) [[12]](#doc-eng-supported-measures-works-cited-12)|![Student's t-test (One-sample)](/doc/measures/statistical_significance/students_t_test_1_sample.gif)
+Student's t-test (Two-sample) [[13]](#doc-eng-supported-measures-works-cited-13)|![Student's t-test (Two-sample)](/doc/measures/statistical_significance/students_t_test_2_sample.gif)
+Pearson's Chi-squared Test    [[14]](#doc-eng-supported-measures-works-cited-14)[[15]](#doc-eng-supported-measures-works-cited-15)|![Pearson's Chi-squared Test](/doc/measures/statistical_significance/pearsons_chi_squared_test.gif)
+Log-likelihood Ratio          [[16]](#doc-eng-supported-measures-works-cited-16)|![Log-likelihood Ratio](/doc/measures/statistical_significance/log_likehood_ratio_test.gif)
+Fisher's Exact Test           [[17]](#doc-eng-supported-measures-works-cited-17)|See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
+Mann-Whiteney U Test          [[18]](#doc-eng-supported-measures-works-cited-18)|See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
 
 <!--
 Student's t-test (Two-sample):
@@ -581,13 +554,197 @@ Log-likelihood Ratio:
     \end{align*}
 -->
 
-Bayes Factor|Formulas
-------------|--------
-Student's t-test (Two-sample)|![Student's t-test (Two-sample)](/doc/measures/bayes_factor/students_t_test_2_sample.gif)
-Log-likelihood Ratio         |![Log-likelihood Ratio](/doc/measures/bayes_factor/log_likehood_ratio_test.gif)
+Measures of Bayes Factor|Formulas
+------------------------|--------
+Student's t-test (Two-sample) [[19]](#doc-eng-supported-measures-works-cited-19)|![Student's t-test (Two-sample)](/doc/measures/bayes_factor/students_t_test_2_sample.gif)
+Log-likelihood Ratio          [[19]](#doc-eng-supported-measures-works-cited-19)|![Log-likelihood Ratio](/doc/measures/bayes_factor/log_likehood_ratio_test.gif)
 
-**Work Cited**:
-[1] Wilson, Andrew. "Embracing Bayes Factors for Key Item Analysis in Corpus Linguistics." New Approaches to the Study of Linguistic Variability, edited by Markus Bieswanger and Amei Koll-Stobbe, Peter Lang, 2013, pp. 3-11.
+<!--
+Pointwise Mutual Information:
+    \begin{align*}
+        PMI &= \log_{2} \frac{C_{11}}{E_{11}}
+    \end{align*}
+
+Mutual Dependency:
+    \begin{align*}
+        MD &= \log_{2} \frac{C_{11}^{2}}{E_{11}}
+    \end{align*}
+
+Log-Frequency Biased MD:
+    \begin{align*}
+        LFMD &= \log_{2} \frac{C_{11}}{E_{11}} + \log_{2} C_{11}
+    \end{align*}
+
+Cubic Association Ratio:
+    \begin{align*}
+        IM^{3} &= \log_{2} \frac{C_{11}^{3}}{E_{11}}
+    \end{align*}
+
+MI.log-f:
+    \begin{align*}
+        \text{MI.log-f} &= \log_{2} \frac{C_{11}^{2}}{E_{11}} \times \ln (C_{11} + 1)
+    \end{align*}
+
+Mutual Information:
+    \begin{align*}
+        MI &= \sum_{i = 1}^{n}\sum_{j = 1}^{n} (\frac{C_{ij}}{C_{xx}} \times \log_{2} \frac{C_{ij}}{E_{ij}})
+    \end{align*}
+
+Squared Phi Coefficient:
+    \begin{align*}
+        \phi^{2} &= \frac{(C_{11}C_{22} - C_{12}C_{21})^{2}}{C_{1x}C_{2x}C_{x1}C_{x2}}
+    \end{align*}
+
+Dice's Coefficient:
+    \begin{align*}
+        DSC &= \frac{2 \times C_{11}}{C_{1x} + C_{x1}}
+    \end{align*}
+
+logDice:
+    \begin{align*}
+        \text{logDice} &= 14 + \log_{2} \frac{2 \times C_{11}}{C_{1x} + C_{x1}}
+    \end{align*}
+
+Mutual Expectation:
+    \begin{align*}
+        ME &= C_{11} \times \frac{2 \times C_{11}}{C_{1x} + C_{x1}}
+    \end{align*}
+
+Jaccard Index:
+    \begin{align*}
+        J &= \frac{C_{11}}{C_{11} + C_{12} + C_{21}}
+    \end{align*}
+
+Minimum Sensitivity:
+    \begin{align*}
+        S &= \min \{\frac{C_{11}}{C_{1x}} \text{, } \frac{C_{11}}{C_{x1}}\}
+    \end{align*}
+
+Poisson Collocation Measure:
+    \begin{align*}
+        sig &= \frac{C_{11}(\ln C_{11} - \ln E_{11} - 1)}{\ln C_{xx}}
+    \end{align*}
+
+Kilgarriff's Ratio:
+    \begin{align*}
+        \text{Kilgarriff's Ratio} &= \frac{\frac{C_{11}}{C_{11} + C_{21}} \times 1000000 + \alpha}{\frac{C_{12}}{C_{12} + C_{22}} \times 1000000 + \alpha}
+    \end{align*}
+
+Odds Ratio:
+    \begin{align*}
+        \text{Odd's Ratio} &= \frac{C_{11} \times C_{22}}{C_{12} \times C_{21}}
+    \end{align*}
+
+Log Ratio:
+    \begin{align*}
+        \text{Log Ratio} &= \log_{2} \frac{\frac{C_{11}}{C_{x1}}}{\frac{C_{12}}{C_{x2}}}
+    \end{align*}
+
+Difference Coefficient:
+    \begin{align*}
+        \text{Difference Coefficient} &= \frac{\frac{C_{11}}{C_{x1}} - \frac{C_{12}}{C_{x2}}}{\frac{C_{11}}{C_{x1}} + \frac{C_{12}}{C_{x2}}}
+    \end{align*}
+
+%DIFF:
+    \begin{align*}
+        \text{\%DIFF} &= \frac{(\frac{C_{11}}{C_{x1}} - \frac{C_{12}}{C_{x2}}) \times 100}{\frac{C_{12}}{C_{x2}}}
+    \end{align*}
+-->
+
+Measures of Effect Size|Formulas
+-----------------------|--------
+Pointwise Mutual Information [[20]](#doc-eng-supported-measures-works-cited-20)|![Pointwise Mutual Information](/doc/measures/effect_size/pmi.gif)
+Mutual Dependency            [[21]](#doc-eng-supported-measures-works-cited-21)|![Mutual Dependency](/doc/measures/effect_size/md.gif)
+Log-Frequency Biased MD      [[21]](#doc-eng-supported-measures-works-cited-21)|![Log-Frequency Biased MD](/doc/measures/effect_size/lfmd.gif)
+Cubic Association Ratio      [[22]](#doc-eng-supported-measures-works-cited-22)|![Cubic Association Ratio](/doc/measures/effect_size/im3.gif)
+MI.log-f                     [[23]](#doc-eng-supported-measures-works-cited-23)[[24]](#doc-eng-supported-measures-works-cited-24)|![MI.log-f](/doc/measures/effect_size/mi_log_f.gif)
+Mutual Information           [[25]](#doc-eng-supported-measures-works-cited-25)|![Mutual Information](/doc/measures/effect_size/mi.gif)
+Squared Phi Coefficient      [[26]](#doc-eng-supported-measures-works-cited-26)|![Squared Phi Coefficient](/doc/measures/effect_size/squared_phi_coeff.gif)
+Dice's Coefficient           [[27]](#doc-eng-supported-measures-works-cited-27)|![Dice's Coefficient](/doc/measures/effect_size/dices_coeff.gif)
+logDice                      [[28]](#doc-eng-supported-measures-works-cited-28)|![logDice](/doc/measures/effect_size/log_dice.gif)
+Mutual Expectation           [[29]](#doc-eng-supported-measures-works-cited-29)|![Mutual Expectation](/doc/measures/effect_size/me.gif)
+Jaccard Index                [[25]](#doc-eng-supported-measures-works-cited-25)|![Jaccard Index](/doc/measures/effect_size/jaccard_index.gif)
+Minimum Sensitivity          [[30]](#doc-eng-supported-measures-works-cited-30)|![Minimum Sensitivity](/doc/measures/effect_size/min_sensitivity.gif)
+Poisson Collocation Measure  [[31]](#doc-eng-supported-measures-works-cited-31)|![Poisson Collocation Measure](/doc/measures/effect_size/poisson_collocation_measure.gif)
+Kilgarriff's Ratio           [[32]](#doc-eng-supported-measures-works-cited-32)|![Kilgarriff's Ratio](/doc/measures/effect_size/kilgarriffs_ratio.gif)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings<br>→ Measures → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**
+Odds Ratio                   [[33]](#doc-eng-supported-measures-works-cited-33)|![Odds Ratio](/doc/measures/effect_size/odds_ratio.gif)
+Log Ratio                    [[34]](#doc-eng-supported-measures-works-cited-34)|![Log Ratio](/doc/measures/effect_size/log_ratio.gif)
+Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[[35]](#doc-eng-supported-measures-works-cited-35)|![Difference Coefficient](/doc/measures/effect_size/diff_coeff.gif)
+%DIFF                        [[36]](#doc-eng-supported-measures-works-cited-36)|![%DIFF](/doc/measures/effect_size/pct_diff.gif)
+
+**Works Cited**:<br>
+<span id="doc-eng-supported-measures-works-cited-1"></span>
+[1] Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.<br>
+<span id="doc-eng-supported-measures-works-cited-2"></span>
+[2] Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.<br>
+<span id="doc-eng-supported-measures-works-cited-3"></span>
+[3] Lyne, A. A. "Dispersion." The Vocabulary of French Business Correspondence. Slatkine-Champion, 1985, pp. 101-24.<br>
+<span id="doc-eng-supported-measures-works-cited-4"></span>
+[4] Rosengren, Inger. "The quantitative concept of language and its relation to the structure of frequency dictionaries." Études de linguistique appliquée, no. 1, 1971, pp. 103-27.<br>
+<span id="doc-eng-supported-measures-works-cited-5"></span>
+[5] Zhang Huarui, et al. "Distributional Consistency: As a General Method for Defining a Core Lexicon." Proceedings of Fourth International Conference on Language Resources and Evaluation, Lisbon, 26-28 May 2004.<br>
+<span id="doc-eng-supported-measures-works-cited-6"></span>
+[6] Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, pp. 403-37.<br>
+<span id="doc-eng-supported-measures-works-cited-7"></span>
+[7] Lijffijt, Jefrey and Stefan Th. Gries. "Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”" International Journal of Corpus Linguistics, vol. 17, no. 1, 2012, pp. 147-49.<br>
+<span id="doc-eng-supported-measures-works-cited-8"></span>
+[8] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français." Dissertation, Stockholm University, 1974.<br>
+<span id="doc-eng-supported-measures-works-cited-9"></span>
+[9] Kromer, Victor. "A Usage Measure Based on Psychophysical Relations." Journal of Quatitative Linguistics, vol. 10, no. 2, 2003, pp. 177-186.<br>
+<span id="doc-eng-supported-measures-works-cited-10"></span>
+[10] Dennis, S. F. "The Construction of a Thesaurus Automatically from a Sample of Text." Proceedings of the Symposium on Statistical Association Methods For Mechanized Documentation, Washington, D.C., 17 March, 1964, edited by Stevens, M. E., et at., National Bureau of Standards, 1965, pp. 61-148.<br>
+<span id="doc-eng-supported-measures-works-cited-11"></span>
+[11] Berry-rogghe, Godelieve L. M. "The Computation of Collocations and their Relevance in Lexical Studies." The computer and literary studies, edited by Aitken, A. J., Edinburgh UP, 1973, pp. 103-112.<br>
+<span id="doc-eng-supported-measures-works-cited-12"></span>
+[12] Church, Kenneth Ward, et al. "Using Statistics in Lexical Analysis." Lexical Acquisition: Exploiting On-Line Resources to Build a Lexicon, edited by Uri Zernik, Psychology Press, 1991, pp. 115-64.<br>
+<span id="doc-eng-supported-measures-works-cited-13"></span>
+[13] Paquot, Magali and Yves Bestgen. "Distinctive Words in Academic Writing: A Comparison of Three Statistical Tests for Keyword Extraction." Language and Computers, vol.68, 2009, pp. 247-269.<br>
+<span id="doc-eng-supported-measures-works-cited-14"></span>
+[14] Hofland, Knut and Stig Johansson. Word Frequencies in British and American English. Norwegian Computing Centre for the Humanities, 1982.<br>
+<span id="doc-eng-supported-measures-works-cited-15"></span>
+[15] Oakes, Michael P. Statistics for Corpus Linguistics. Edinburgh UP, 1998.<br>
+<span id="doc-eng-supported-measures-works-cited-16"></span>
+[16] Dunning, Ted Emerson. "Accurate Methods for the Statistics of Surprise and Coincidence." Computational Linguistics, vol. 19, no. 1, Mar. 1993, pp. 61-74.<br>
+<span id="doc-eng-supported-measures-works-cited-17"></span>
+[17] Pedersen, Ted. "Fishing for Exactness." Proceedings of the South-Central SAS Users Group Conference, 27-29 Oct. 1996, Austin.<br>
+<span id="doc-eng-supported-measures-works-cited-18"></span>
+[18] Kilgarriff, Adam. "Comparing Corpora." International Journal of Corpus Linguistics, vol.6, no.1, Nov. 2001, pp. 232-263.<br>
+<span id="doc-eng-supported-measures-works-cited-19"></span>
+[19] Wilson, Andrew. "Embracing Bayes Factors for Key Item Analysis in Corpus Linguistics." New Approaches to the Study of Linguistic Variability, edited by Markus Bieswanger and Amei Koll-Stobbe, Peter Lang, 2013, pp. 3-11.<br>
+<span id="doc-eng-supported-measures-works-cited-20"></span>
+[20] Church, Kenneth Ward and Patrick Hanks. Word Association Norms, Mutual Information, and Lexicography. Computational Linguistics, vol. 16, no. 1, Mar. 1990, pp. 22-29.<br>
+<span id="doc-eng-supported-measures-works-cited-21"></span>
+[21] Thanopoulos, Aristomenis, et al. "Comparative Evaluation of Collocation Extraction Metrics." Proceedings of the Third International Conference on Language Resources and Evaluation, Las Palmas, 29-31 May 2002, edited by Rodríguez, Manuel González Rodríguez and Carmen Paz Suarez Araujo, European Language Resources Association, May 2002, pp. 620-25.<br>
+<span id="doc-eng-supported-measures-works-cited-22"></span>
+[22] Daille, Béatrice. "Combined Approach for Terminology Extraction: Lexical Statistics and Linguistic Filtering." UCREL Technical Papers, vol. 5, University of Lancaster, 1995.<br>
+<span id="doc-eng-supported-measures-works-cited-23"></span>
+[23] Kilgarriff, Adam and David Tugwell. "Word Sketch: Extraction and Display of Significant Collocations for Lexicography." Proceedings of the ACL 2001 Collocations Workshop, Toulouse, 2001, pp. 32–38.<br>
+<span id="doc-eng-supported-measures-works-cited-24"></span>
+[24] "Statistics used in Sketch Engine." Sketch Engine, https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/. Accessed 26 Nov 2018.<br>
+<span id="doc-eng-supported-measures-works-cited-25"></span>
+[25] Dunning, Ted Emerson. "Finding Structure in Text, Genome and Other Symbolic Sequences." Dissertation, U of Sheffield, 1998. arXiv, arxiv.org/pdf/1207.1847.pdf.<br>
+<span id="doc-eng-supported-measures-works-cited-26"></span>
+[26] Church, Kenneth Ward and William A. Gale. "Concordances for Parallel Text." Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, 29 Sept - 1 Oct 1991, UW Centre for the New OED and Text Research, 1991.<br>
+<span id="doc-eng-supported-measures-works-cited-27"></span>
+[27] Smadja, Frank, et al. "Translating Collocations for Bilingual Lexicons: A Statistical Approach." Computational Linguistics, vol. 22, no. 1, 1996, pp. 1-38.<br>
+<span id="doc-eng-supported-measures-works-cited-28"></span>
+[28] Rychlý, Pavel. "A Lexicographyer-Friendly Association Score." Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing, Karlova Studanka, 5-7 Dec. 2008, edited by Sojka, P. and A. Horák, Masaryk U, 2008, pp. 6-9.<br>
+<span id="doc-eng-supported-measures-works-cited-29"></span>
+[29] Dias, Gaël. "Language Independent Automatic Acquisition of Rigid Multiword Units from Unrestricted Text Corpora." Proceedings of Conférence Traitement Au-tomatique des Langues Naturelles, 12-17 July 1999, Cargèse, edited by Mitkov, Ruslan and Jong C. Park, 1999, pp. 333-39.<br>
+<span id="doc-eng-supported-measures-works-cited-30"></span>
+[30] Pedersen, Ted. "Dependent Bigram Identification." Proceedings of the Fifteenth National Conference on Artificial Intelligence, Madison, 26-30 July 1998, American Association for Artificial Intelligence, 1998, p. 1197.<br>
+<span id="doc-eng-supported-measures-works-cited-31"></span>
+[31] Quasthoff, Uwe and Christian Wolff. "The Poisson Collocation Measure and Its Applications." Proceedings of 2nd International Workshop on Computational Approaches to Collocations, Wien, Austria, 2002.<br>
+<span id="doc-eng-supported-measures-works-cited-32"></span>
+[32] Kilgarriff, Adam. "Simple Maths for Keywords." Proceedings of Corpus Linguistics Conference, Liverpool, 20-23 July 2009, edited by Mahlberg, M., et al., U of Liverpool, July 2009.<br>
+<span id="doc-eng-supported-measures-works-cited-33"></span>
+[33] Pojanapunya, Punjaporn and Richard Watson Todd. "Log-likelihood and Odds Ratio Keyness Statistics for Different Purposes of Keyword Analysis." Corpus Linguistics and Lingustic Theory, vol. 15, no. 1, Jan. 2016, pp. 133-67.<br>
+<span id="doc-eng-supported-measures-works-cited-34"></span>
+[34] Hardie, Andrew. "Log Ratio: An Informal Introduction." The Centre for Corpus Approaches to Social Science, http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/<br>
+<span id="doc-eng-supported-measures-works-cited-35"></span>
+[35] Gabrielatos, Costas. "Keyness Analysis: Nature, Metrics and Techniques." Corpus Approaches to Discourse: A Critical Review, edited by Taylor, Charlotte and Anna Marchi, Routledge, 2018.<br>
+<span id="doc-eng-supported-measures-works-cited-36"></span>
+[36] Gabrielatos, Costas and Anna Marchi. "Keyness: Appropriate Metrics and Practical Issues." Proceedings of CADS International Conference, U of Bologna, 13-14 Sept. 2012.
 
 <span id="doc-eng-main-window"></span>
 ### Main Window [[Back to Contents]](#doc)
