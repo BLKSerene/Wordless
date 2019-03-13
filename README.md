@@ -666,7 +666,7 @@ Mutual Expectation           [[29]](#doc-eng-supported-measures-works-cited-29)|
 Jaccard Index                [[25]](#doc-eng-supported-measures-works-cited-25)|![Jaccard Index](/doc/measures/effect_size/jaccard_index.gif)
 Minimum Sensitivity          [[30]](#doc-eng-supported-measures-works-cited-30)|![Minimum Sensitivity](/doc/measures/effect_size/min_sensitivity.gif)
 Poisson Collocation Measure  [[31]](#doc-eng-supported-measures-works-cited-31)|![Poisson Collocation Measure](/doc/measures/effect_size/poisson_collocation_measure.gif)
-Kilgarriff's Ratio           [[32]](#doc-eng-supported-measures-works-cited-32)|![Kilgarriff's Ratio](/doc/measures/effect_size/kilgarriffs_ratio.gif)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings<br>→ Measures → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**
+Kilgarriff's Ratio           [[32]](#doc-eng-supported-measures-works-cited-32)|![Kilgarriff's Ratio](/doc/measures/effect_size/kilgarriffs_ratio.gif)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings → Measures<br> → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**
 Odds Ratio                   [[33]](#doc-eng-supported-measures-works-cited-33)|![Odds Ratio](/doc/measures/effect_size/odds_ratio.gif)
 Log Ratio                    [[34]](#doc-eng-supported-measures-works-cited-34)|![Log Ratio](/doc/measures/effect_size/log_ratio.gif)
 Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[[35]](#doc-eng-supported-measures-works-cited-35)|![Difference Coefficient](/doc/measures/effect_size/diff_coeff.gif)

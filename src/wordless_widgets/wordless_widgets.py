@@ -269,7 +269,7 @@ def wordless_widgets_search_settings(parent, tab):
     checkbox_multi_search_mode = QCheckBox(parent.tr('Multi-search Mode'), parent)
     line_edit_search_term = QLineEdit(parent)
     list_search_terms = wordless_list.Wordless_List_Search_Terms(parent)
-    label_separator = wordless_label.Wordless_Label_Hint(parent.tr('* Use spaces to separate multiple tokens'), parent)
+    label_separator = wordless_label.Wordless_Label_Hint(parent.tr('* Use space to separate multiple tokens'), parent)
 
     checkbox_ignore_case = QCheckBox(parent.tr('Ignore case'), parent)
     checkbox_match_inflected_forms = QCheckBox(parent.tr('Match all inflected forms'), parent)

@@ -182,14 +182,14 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://spacy.io/">spaCy</a>',
-                '2.1.0a12',
+                '2.1.0a13',
                 'Matthew Honnibal, Ines Montani',
                 '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'
             ],
 
             [
                 '<a href="https://github.com/undertheseanlp/underthesea">Underthesea</a>',
-                '1.1.11',
+                '1.1.14',
                 'Vu Anh',
                 '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPL-3.0</a>'
             ]
