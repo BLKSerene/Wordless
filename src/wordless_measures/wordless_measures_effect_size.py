@@ -165,12 +165,12 @@ def jaccard_index(main, c11, c12, c21, c22):
 def min_sensitivity(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
 
-    if cx1 == 0:
+    if c1x == 0:
         s1 = 0
     else:
         s1 = c11 / c1x
 
-    if c1x == 0:
+    if cx1 == 0:
         s2 = 0
     else:
         s2 = c11 / cx1
@@ -183,24 +183,34 @@ def poisson_collocation_measure(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
 
-    return (c11 * (math.log(c11) - math.log(e11) - 1)) / math.log(cxx)
+    if c11 == 0:
+        log_c11 = 0
+    else:
+        log_c11 = math.log(c11)
+
+    if e11 == 0:
+        log_e11 = 0
+    else:
+        log_e11 = math.log(e11)
+
+    return (c11 * (log_c11 - log_e11 - 1)) / math.log(cxx)
 
 # Reference:
 #     Kilgarriff, Adam. "Simple Maths for Keywords." Proceedings of Corpus Linguistics Conference, Liverpool, 20-23 July 2009, edited by Mahlberg, M., et al., U of Liverpool, July 2009.
 def kilgarriffs_ratio(main, c11, c12, c21, c22):
-    smoothing_parameter = main.settings_custom['measures']['effect_size']['kilgarriffs_ratio']['smoothing_parameter']
+    smoothing_param = main.settings_custom['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param']
 
     if c11 + c21 == 0:
-        relative_freq1 = 0
+        relative_freq_observed = 0
     else:
-        relative_freq1 = c11 / (c11 + c21) * 1000000
+        relative_freq_observed = c11 / (c11 + c21) * 1000000
 
     if c12 + c22 == 0:
-        relative_freq2 = 0
+        relative_freq_ref = 0
     else:
-        relative_freq2 = c12 / (c12 + c22) * 1000000
+        relative_freq_ref = c12 / (c12 + c22) * 1000000
 
-    return (relative_freq1 + smoothing_parameter) / (relative_freq2 + smoothing_parameter)
+    return (relative_freq_observed + smoothing_param) / (relative_freq_ref + smoothing_param)
 
 # Reference:
 #     Pojanapunya, Punjaporn and Richard Watson Todd. "Log-likelihood and Odds Ratio Keyness Statistics for Different Purposes of Keyword Analysis." Corpus Linguistics and Lingustic Theory, vol. 15, no. 1, Jan. 2016, pp. 133-67.
