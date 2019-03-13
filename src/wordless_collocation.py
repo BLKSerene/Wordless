@@ -790,8 +790,6 @@ class Wordless_Worker_Process_Data_Collocation(wordless_threading.Wordless_Worke
                 c21 = max(0, ngrams_freq_file[node] - c11)
                 c22 = len_tokens - c11 - c12 - c21
 
-                print(c11, c12, c21, c22)
-
                 collocates_stats_file[(node, collocate)] = test_significance(self.main, c11, c12, c21, c22)
                 collocates_stats_file[(node, collocate)].append(measure_effect_size(self.main, c11, c12, c21, c22))
 

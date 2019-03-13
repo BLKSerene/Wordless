@@ -385,7 +385,7 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
 
         self.combo_box_use_data.addItem(self.tr('Frequency'))
         self.combo_box_use_data.addItems([col
-                                          for col in self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
+                                          for col in self.main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
                                           if col])
         self.combo_box_use_data.addItem(self.main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col'])
 
@@ -487,8 +487,8 @@ class Wordless_Worker_Process_Data_Keywords(wordless_threading.Wordless_Worker_P
                                           self.tr('Mann-Whitney U Test')]:
                 # Test Statistic, p-value & Bayes Factor
                 if text_test_significance == self.tr('Student\'s t-test (Two-sample)'):
-                    number_sections = self.main.settings_custom['measures']['statistical_significance']['students_t_test_two_sample']['number_sections']
-                    use_data = self.main.settings_custom['measures']['statistical_significance']['students_t_test_two_sample']['use_data']
+                    number_sections = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['number_sections']
+                    use_data = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['use_data']
                 elif text_test_significance == self.tr('Mann-Whitney U Test'):
                     number_sections = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['number_sections']
                     use_data = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']

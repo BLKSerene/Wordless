@@ -1309,7 +1309,7 @@ class Wordless_Dialog_Filter_Results_Keywords(Wordless_Dialog_Filter_Results):
             self.checkbox_test_stat_min_no_limit.setEnabled(True)
             self.checkbox_test_stat_max_no_limit.setEnabled(True)
         else:
-            self.label_test_stat.setText(main.tr('Test Statistic:'))
+            self.label_test_stat.setText(self.tr('Test Statistic:'))
 
             self.spin_box_test_stat_min.setEnabled(False)
             self.checkbox_test_stat_min_no_limit.setEnabled(False)

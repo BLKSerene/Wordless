@@ -1513,7 +1513,7 @@ def init_settings_default(main):
 
             'effect_size': {
                 'kilgarriffs_ratio': {
-                    'smoothing_parameter': 1.00
+                    'smoothing_param': 1.00
                 }
             }
         }

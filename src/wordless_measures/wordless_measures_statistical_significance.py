@@ -35,6 +35,11 @@ def get_expected(c1x, c2x, cx1, cx2, cxx):
 
 # Overload scipy.stats.mannwhitneyu to fix wrong implementation
 def mannwhitneyu(x, y, use_continuity, alternative):
+    # Check if all frequencies are equal
+    if all([freq == x[0] for freq in x + y]):
+        x[0] += 1e-15
+        y[0] += 1e-15
+
     x = numpy.asarray(x)
     y = numpy.asarray(y)
     n1 = len(x)
@@ -107,7 +112,7 @@ def students_t_test_1_sample(main, c11, c12, c21, c22):
 # Reference:
 #     Paquot, Magali and Yves Bestgen. "Distinctive Words in Academic Writing: A Comparison of Three Statistical Tests for Keyword Extraction." Language and Computers, vol.68, 2009, pp. 247-269.
 def students_t_test_2_sample(main, counts_observed, counts_ref):
-    variances = main.settings_custom['measures']['statistical_significance']['students_t_test_two_sample']['variances']
+    variances = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['variances']
 
     if variances == main.tr('Equal'):
         t_stat, p_value = scipy.stats.ttest_ind(counts_observed, counts_ref, equal_var = True)
