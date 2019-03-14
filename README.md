@@ -229,11 +229,11 @@ In *Overview*, you can check/compare the language features of different files.
 
 <span id="doc-eng-concordancer"></span>
 ### Concordancer [[Back to Contents]](#doc)
-In *Concordancer*, you can search for any token in different files and generate concordance lines or plots.
+In *Concordancer*, you can search for any token in different files and generate concordance lines. You can adjust the settings for the generated data via **Generation Settings**.
 
 After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
-By default, data in concordance plot are sorted by file. You can sort the data by search term instead via **Figure Settings → Sort Results by**.
+In addition, you can generate concordance plots for any search term. You can modify the settings for the generated figure via **Figure Settings**. By default, data in concordance plot are sorted by file. You can sort the data by search term instead via **Figure Settings → Sort Results by**.
 
 1. **Left**:<br>
     The context before each search term, which displays 10 tokens left to the **Node** by default. You can change this behavior via **Generation Settings**.
@@ -256,11 +256,11 @@ By default, data in concordance plot are sorted by file. You can sort the data b
 
 <span id="doc-eng-wordlist"></span>
 ### Wordlist [[Back to Contents]](#doc)
-In *Wordlist*, you can generate wordlists for different files.
+In *Wordlist*, you can generate wordlists for different files and calculate the raw frequency, relative frequency, dispersion and adjusted frequency for each token.
 
-In addition, you can generate line charts or word clouds for wordlists. You can modify the settings for the generated figure via **Figure Settings**.
+In addition, you can generate line charts or word clouds for wordlists using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
-You can filter the results by clicking **Filter Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+Lastly, you can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
 1. **Rank**:<br>
     The rank of the token sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. 
@@ -272,10 +272,10 @@ You can filter the results by clicking **Filter Results** or search in results b
     The number of occurrences of the token in each file.
 
 4. **Dispersion**:<br>
-    The dispersion of the token in each file. You can change the measure of dispersion via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+    The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
 
 5. **Adjusted Frequency**:<br>
-    The adjusted frequency of the token in each file. You can change the measure of adjusted frequency via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+    The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
 
 6. **Number of Files Found**:<br>
     The number of files in which the token appears at least once.
@@ -286,13 +286,13 @@ You can filter the results by clicking **Filter Results** or search in results b
 
 <span id="doc-eng-ngrams"></span>
 ### N-grams [[Back to Contents]](#doc)
-In *N-grams*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can set constraints on the position of the search term in all n-grams via **Search Settings → Search Term Position**.
+In *N-grams*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files, count and compute the raw frequency and relative frequency of each n-gram/skip-gram, and calculate the dispersion and adjusted frequency for each n-gram/skip-gram using different measures.  You can adjust the settings for the generated data via **Generation Settings**. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can also set constraints on the position of search terms in all n-grams via **Search Settings → Search Term Position**.
 
-In addition, you can generate line charts or word clouds for n-grams. You can modify the settings for the generated figure via **Figure Settings**.
+It is possible to disable searching altogether and generate an exhausted list of n-grams/skip-grams by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
 
-It is possible to disable searching altogether and generate an exhausted list of n-grams by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
+In addition, you can generate line charts or word clouds for n-grams using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
-You can filter the results by clicking **Filter Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+Lastly, you can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
 1. **Rank**:<br>
     The rank of the n-gram sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. 
@@ -304,10 +304,10 @@ You can filter the results by clicking **Filter Results** or search in results b
     The number of occurrences of the n-gram in each file.
 
 4. **Dispersion**:<br>
-    The dispersion of the n-gram in each file. You can change the measure of dispersion via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+    The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
 
 5. **Adjusted Frequency**:<br>
-    The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+    The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
 
 6. **Number of Files Found**:<br>
     The number of files in which the n-gram appears at least once.
@@ -315,6 +315,47 @@ You can filter the results by clicking **Filter Results** or search in results b
 ![N-grams Table](/doc/ngrams/ngrams_table.png)
 ![N-grams Figure - Line Chart](/doc/ngrams/ngrams_fig_line_chart.png)
 ![N-grams Figure - Word Cloud](/doc/ngrams/ngrams_fig_word_cloud.png)
+
+<span id="doc-eng-collocation"></span>
+### Collocation [[Back to Contents]](#doc)
+In *Collocation*, you can search for collocates (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of collocates and calculate the effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
+
+It is possible to disable searching altogether and generate an exhausted list of collocates by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
+
+In addition, you can generate line charts or word clouds for collocates using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+
+Lastly, you can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+
+1. **Rank**:<br>
+    The rank of the collocate sorted by the p-value of the test statistic in the first file in ascending order (by default). You can sort the results again by clicking the column headers. 
+
+2. **Node**:<br>
+    The search term. You can specify what should be counted as a "token" via **Token Settings**.
+
+3. **Collocate**:<br>
+    The collocating token. You can specify what should be counted as a "token" via **Token Settings**.
+
+4. **Ln, ... , L3, L2, L1, R1, R2, R3, ... , Rn**:<br>
+    The number of co-occurrences of the **Node** and **Collocate** with the **Collocate** at the given position in each file.
+
+5. **Frequency**:<br>
+    The total number of co-occurrences of the **Node** and **Collocate** with the **Collocate** at all possible positions in each file.
+
+6. **Test Statistic**:<br>
+    The test statistic of the significance test of the **Node** and **Collocate** in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+
+7. **p-value**:<br>
+    The p-value of the **Test Statistic** of the **Node** and **Collocate** in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+
+8. **Effect Size**:<br>
+    The effect size of the **Node** and **Collocate** in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+
+9. **Number of Files Found**:<br>
+    The number of files in which the the **Node** and **Collocate** co-occur at least once.
+
+![Collocation Table](/doc/collocation/collocation_table.png)
+![Collocation Figure - Line Chart](/doc/collocation/collocation_fig_line_chart.png)
+![Collocation Figure - Word Cloud](/doc/collocation/collocation_fig_word_cloud.png)
 
 <span id="doc-eng-supported-langs"></span>
 ### Supported Languages [[Back to Contents]](#doc)
@@ -642,10 +683,10 @@ Juilland's U   [[1]](#doc-eng-supported-measures-works-cited-1)|![Juilland's U](
 Carroll's Um   [[2]](#doc-eng-supported-measures-works-cited-2)|![Carroll's Um](/doc/measures/adjusted_freq/carrolls_um.gif)
 Rosengren's KF [[4]](#doc-eng-supported-measures-works-cited-4)|![Rosengren's KF](/doc/measures/adjusted_freq/rosengrens_kf.gif)
 Engwall's FM   [[8]](#doc-eng-supported-measures-works-cited-8)|![Engwall's FM](/doc/measures/adjusted_freq/engwalls_fm.gif)<br>where **R** is the number of sub-sections in which the word appears at least once
-Kromer's UR    [[9]](#doc-eng-supported-measures-works-cited-9)|![Kromer's UR](/doc/measures/adjusted_freq/kromers_ur.gif)<br>where **ψ** is the digamma function, **C** is the Euler–Mascheroni constant
+Kromer's UR    [[9]](#doc-eng-supported-measures-works-cited-9)|![Kromer's UR](/doc/measures/adjusted_freq/kromers_ur.gif)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function), **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant)
 
-<span id="doc-eng-supported-measures-statistical_significance"></span>
-#### Tests of Statistical Significance
+<span id="doc-eng-supported-measures-statistical-significance-effect-size"></span>
+#### Tests of Statistical Significance & Measures of Effect Size
 
 To calculate the statistical significance, bayes factor and effect size (except **Student's t-test (Two-sample)** and **Mann-Whiteney U Test**) for two words in the same file (collocates) or one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
 
@@ -856,7 +897,7 @@ Mutual Expectation           [[29]](#doc-eng-supported-measures-works-cited-29)|
 Jaccard Index                [[25]](#doc-eng-supported-measures-works-cited-25)|![Jaccard Index](/doc/measures/effect_size/jaccard_index.gif)
 Minimum Sensitivity          [[30]](#doc-eng-supported-measures-works-cited-30)|![Minimum Sensitivity](/doc/measures/effect_size/min_sensitivity.gif)
 Poisson Collocation Measure  [[31]](#doc-eng-supported-measures-works-cited-31)|![Poisson Collocation Measure](/doc/measures/effect_size/poisson_collocation_measure.gif)
-Kilgarriff's Ratio           [[32]](#doc-eng-supported-measures-works-cited-32)|![Kilgarriff's Ratio](/doc/measures/effect_size/kilgarriffs_ratio.gif)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings → Measures<br> → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**
+Kilgarriff's Ratio           [[32]](#doc-eng-supported-measures-works-cited-32)|![Kilgarriff's Ratio](/doc/measures/effect_size/kilgarriffs_ratio.gif)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings → Measures →<br>Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
 Odds Ratio                   [[33]](#doc-eng-supported-measures-works-cited-33)|![Odds Ratio](/doc/measures/effect_size/odds_ratio.gif)
 Log Ratio                    [[34]](#doc-eng-supported-measures-works-cited-34)|![Log Ratio](/doc/measures/effect_size/log_ratio.gif)
 Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[[35]](#doc-eng-supported-measures-works-cited-35)|![Difference Coefficient](/doc/measures/effect_size/diff_coeff.gif)
