@@ -688,10 +688,10 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
             {main.settings_global['styles']['style_changelog']}
             <body>
                 <div>
-                    <h3>v1.0.0 - 02/25/2019</h3>
+                    <h3>v1.0.0 - 03/17/2019</h3>
                     <hr>
                     <ul>
-                        <li>&nbsp;First stable release of Wordless.</li>
+                        <li>&nbsp;First release</li>
                     </ul>
                 </div>
             </body>
