@@ -533,7 +533,7 @@ def wordless_widgets_table_settings(parent, table):
     return checkbox_show_pct, checkbox_show_cumulative, checkbox_show_breakdown
 
 # Figure Settings
-def wordless_widgets_figure_settings(parent):
+def wordless_widgets_fig_settings(parent):
     def graph_type_changed():
         if combo_box_graph_type.currentText() == parent.tr('Line Chart'):
             combo_box_use_file.setEnabled(False)
