@@ -18,8 +18,8 @@ import wordcloud
 
 from wordless_utils import wordless_sorting
 
-def wordless_figure_stat(main, tokens_stat_files,
-                         settings, label_x, label_y):
+def wordless_fig_stat(main, tokens_stat_files,
+                      settings, label_x, label_y):
     files = main.wordless_files.get_selected_files()
     files += [{'name': main.tr('Total')}]
 
@@ -84,11 +84,10 @@ def wordless_figure_stat(main, tokens_stat_files,
         word_cloud.generate_from_frequencies(tokens_stat_file)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
-
         matplotlib.pyplot.axis('off')
 
-def wordless_figure_stat_ref(main, keywords_stat_files, ref_file,
-                             settings, label_y):
+def wordless_fig_stat_ref(main, keywords_stat_files, ref_file,
+                          settings, label_y):
     files = main.wordless_files.get_selected_files()
     files += [{'name': main.tr('Total')}]
     files.remove(ref_file)
@@ -160,6 +159,5 @@ def wordless_figure_stat_ref(main, keywords_stat_files, ref_file,
         word_cloud.generate_from_frequencies(keywords_stat_file)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
-
         matplotlib.pyplot.axis('off')
         
