@@ -46,6 +46,8 @@ GB (GB/T 7714—2015):
 * [Concordancer](#doc-eng-concordancer)
 * [Wordlist](#doc-eng-wordlist)
 * [N-grams](#doc-eng-ngrams)
+* [Collocation](#doc-eng-collocation)
+* [Colligation](#doc-eng-colligation)
 * [Supported Languages](#doc-eng-supported-langs)
 * [Supported Text Types](#doc-eng-supported-text-types)
 * [Supported File Types](#doc-eng-supported-file-types)
@@ -318,44 +320,87 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 
 <span id="doc-eng-collocation"></span>
 ### Collocation [[Back to Contents]](#doc)
-In *Collocation*, you can search for collocates (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of collocates and calculate the effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
+In *Collocation*, you can search for patterns of collocation (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of tokens and calculate the effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
 
-It is possible to disable searching altogether and generate an exhausted list of collocates by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
+It is possible to disable searching altogether and generate an exhausted list of patterns of collocation by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
 
-In addition, you can generate line charts or word clouds for collocates using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+In addition, you can generate line charts or word clouds for patterns of collocation using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
 Lastly, you can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
 1. **Rank**:<br>
-    The rank of the collocate sorted by the p-value of the test statistic in the first file in ascending order (by default). You can sort the results again by clicking the column headers. 
+    The rank of the collocating token sorted by the p-value of the significance test conducted on the node and the collocating token in the first file in ascending order (by default). You can sort the results again by clicking the column headers. 
 
-2. **Node**:<br>
+2. **Nodes**:<br>
     The search term. You can specify what should be counted as a "token" via **Token Settings**.
 
-3. **Collocate**:<br>
+3. **Collocates**:<br>
     The collocating token. You can specify what should be counted as a "token" via **Token Settings**.
 
 4. **Ln, ... , L3, L2, L1, R1, R2, R3, ... , Rn**:<br>
-    The number of co-occurrences of the **Node** and **Collocate** with the **Collocate** at the given position in each file.
+    The number of co-occurrences of the node and the collocating token with the collocating token at the given position in each file.
 
 5. **Frequency**:<br>
-    The total number of co-occurrences of the **Node** and **Collocate** with the **Collocate** at all possible positions in each file.
+    The total number of co-occurrences of the node and the collocating token with the collocating token at all possible positions in each file.
 
 6. **Test Statistic**:<br>
-    The test statistic of the significance test of the **Node** and **Collocate** in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
 
 7. **p-value**:<br>
-    The p-value of the **Test Statistic** of the **Node** and **Collocate** in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
 
 8. **Effect Size**:<br>
-    The effect size of the **Node** and **Collocate** in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
 
 9. **Number of Files Found**:<br>
-    The number of files in which the the **Node** and **Collocate** co-occur at least once.
+    The number of files in which the the node and the collocating token co-occur at least once.
 
 ![Collocation Table](/doc/collocation/collocation_table.png)
 ![Collocation Figure - Line Chart](/doc/collocation/collocation_fig_line_chart.png)
 ![Collocation Figure - Word Cloud](/doc/collocation/collocation_fig_word_cloud.png)
+
+<span id="doc-eng-colligation"></span>
+### Colligation [[Back to Contents]](#doc)
+In *Colligation*, you can search for patterns of colligation (parts of speech that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of parts of speech and calculate the effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
+
+*Wordless* will automatically apply its built-in POS tagger on every file that are not POS-tagged already according to the language of each file. If POS-tagging is not supported for the given languages, the user should provide a file that has already been POS-tagged and make sure that the correct **Text Type** has been set on each file.
+
+It is possible to disable searching altogether and generate an exhausted list of patterns of colligation by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
+
+In addition, you can generate line charts or word clouds for patterns of colligation using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+
+Lastly, you can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+
+1. **Rank**:<br>
+    The rank of the collocating part of speech sorted by the p-value of the significance test conducted on the node and the collocating part of speech in the first file in ascending order (by default). You can sort the results again by clicking the column headers. 
+
+2. **Nodes**:<br>
+    The search term. You can specify what should be counted as a "token" via **Token Settings**.
+
+3. **Collocates**:<br>
+    The collocating part of speech. You can specify what should be counted as a "token" via **Token Settings**.
+
+4. **Ln, ... , L3, L2, L1, R1, R2, R3, ... , Rn**:<br>
+    The number of co-occurrences of the node and the collocating part of speech with the collocating part of speech at the given position in each file.
+
+5. **Frequency**:<br>
+    The total number of co-occurrences of the node and the collocating part of speech with the collocating part of speech at all possible positions in each file.
+
+6. **Test Statistic**:<br>
+    The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+
+7. **p-value**:<br>
+    The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+
+8. **Effect Size**:<br>
+    The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+
+9. **Number of Files Found**:<br>
+    The number of files in which the the node and the collocating part of speech co-occur at least once.
+
+![Colligation Table](/doc/colligation/colligation_table.png)
+![Colligation Figure - Line Chart](/doc/colligation/colligation_fig_line_chart.png)
+![Colligation Figure - Word Cloud](/doc/colligation/colligation_fig_word_cloud.png)
 
 <span id="doc-eng-supported-langs"></span>
 ### Supported Languages [[Back to Contents]](#doc)
