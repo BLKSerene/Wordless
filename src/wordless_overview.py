@@ -18,7 +18,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_checking import wordless_checking_file
-from wordless_dialogs import wordless_dialog_misc
+from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
 from wordless_text import wordless_text, wordless_text_utils, wordless_token_processing
 from wordless_utils import wordless_misc, wordless_threading
 from wordless_widgets import (wordless_layout, wordless_msg, wordless_table,
@@ -318,7 +318,11 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
             self.texts_len_tokens_files.append(collections.Counter(len_tokens))
 
             count_chars = sum(len_tokens)
-            ttr = count_types / count_tokens
+
+            if count_tokens == 0:
+                ttr = 0
+            else:
+                ttr = count_types / count_tokens
 
             if count_tokens < base_sttr:
                 sttr = ttr
@@ -356,86 +360,104 @@ class Wordless_Worker_Process_Data_Overview_Table(Wordless_Worker_Process_Data_O
 @wordless_misc.log_timing
 def generate_table(main, table):
     def data_received(texts_stats_files, texts_len_tokens_files):
-        table.settings = copy.deepcopy(main.settings_custom)
+        if any(texts_len_tokens_files):
+            table.settings = copy.deepcopy(main.settings_custom)
 
-        table.blockSignals(True)
-        table.setUpdatesEnabled(False)
+            table.blockSignals(True)
+            table.setUpdatesEnabled(False)
 
-        table.clear_table()
+            table.clear_table()
 
-        for i, file in enumerate(files):
-            table.insert_col(table.find_col(main.tr('Total')), file['name'], breakdown = True)
+            for i, file in enumerate(files):
+                table.insert_col(table.find_col(main.tr('Total')), file['name'], breakdown = True)
 
-        for i, stats in enumerate(texts_stats_files):
-            count_paras = stats[0]
-            count_sentences = stats[1]
-            count_tokens = stats[2]
-            count_types = stats[3]
-            count_chars = stats[4]
-            ttr = stats[5]
-            sttr = stats[6]
+            for i, stats in enumerate(texts_stats_files):
+                count_paras = stats[0]
+                count_sentences = stats[1]
+                count_tokens = stats[2]
+                count_types = stats[3]
+                count_chars = stats[4]
+                ttr = stats[5]
+                sttr = stats[6]
 
-            table.set_item_num_cumulative(0, i, count_paras)
-            table.set_item_num_cumulative(1, i, count_sentences)
-            table.set_item_num_cumulative(2, i, count_tokens)
-            table.set_item_num_pct(3, i, count_types)
-            table.set_item_num_cumulative(4, i, count_chars)
-            table.set_item_num_float(5, i, ttr)
-            table.set_item_num_float(6, i, sttr)
-            table.set_item_num_float(7, i, count_sentences / count_paras)
-            table.set_item_num_float(8, i, count_tokens / count_paras)
-            table.set_item_num_float(9, i, count_tokens / count_sentences)
-            table.set_item_num_float(10, i, count_chars / count_tokens)
+                table.set_item_num_cumulative(0, i, count_paras)
+                table.set_item_num_cumulative(1, i, count_sentences)
+                table.set_item_num_cumulative(2, i, count_tokens)
+                table.set_item_num_pct(3, i, count_types)
+                table.set_item_num_cumulative(4, i, count_chars)
+                table.set_item_num_float(5, i, ttr)
+                table.set_item_num_float(6, i, sttr)
 
-        # Count of n-length Tokens
-        len_tokens_total = wordless_misc.merge_dicts(texts_len_tokens_files)
-        len_tokens_max = max(len_tokens_total)
+                if count_paras == 0:
+                    table.set_item_num_float(7, i, 0)
+                    table.set_item_num_float(8, i, 0)
+                else:
+                    table.set_item_num_float(7, i, count_sentences / count_paras)
+                    table.set_item_num_float(8, i, count_tokens / count_paras)
 
-        if settings['token_settings']['use_tags']:
-            table.setVerticalHeaderLabels([
-                main.tr('Count of Paragraphs'),
-                main.tr('Count of Sentences'),
-                main.tr('Count of Tags'),
-                main.tr('Count of Tag Types'),
-                main.tr('Count of Characters'),
-                main.tr('Type-Tag Ratio'),
-                main.tr('Type-Tag Ratio (Standardized)'),
-                main.tr('Average Paragraph Length (in Sentence)'),
-                main.tr('Average Paragraph Length (in Tag)'),
-                main.tr('Average Sentence Length (in Tag)'),
-                main.tr('Average Tag Length (in Character)')
-            ])
+                if count_sentences == 0:
+                    table.set_item_num_float(9, i, 0)
+                else:
+                    table.set_item_num_float(9, i, count_tokens / count_sentences)
+
+                if count_tokens == 0:
+                    table.set_item_num_float(10, i, 0)
+                else:
+                    table.set_item_num_float(10, i, count_chars / count_tokens)
+
+            # Count of n-length Tokens
+            len_tokens_total = wordless_misc.merge_dicts(texts_len_tokens_files)
+            len_tokens_max = max(len_tokens_total)
+
+            if settings['token_settings']['use_tags']:
+                table.setVerticalHeaderLabels([
+                    main.tr('Count of Paragraphs'),
+                    main.tr('Count of Sentences'),
+                    main.tr('Count of Tags'),
+                    main.tr('Count of Tag Types'),
+                    main.tr('Count of Characters'),
+                    main.tr('Type-Tag Ratio'),
+                    main.tr('Type-Tag Ratio (Standardized)'),
+                    main.tr('Average Paragraph Length (in Sentence)'),
+                    main.tr('Average Paragraph Length (in Tag)'),
+                    main.tr('Average Sentence Length (in Tag)'),
+                    main.tr('Average Tag Length (in Character)')
+                ])
+
+                for i in range(len_tokens_max):
+                    table.insert_row(table.rowCount(),
+                                     main.tr(f'Count of {i + 1}-length Tags'),
+                                     num = True, pct = True, cumulative = True)
+            else:
+                for i in range(len_tokens_max):
+
+                    table.insert_row(table.rowCount(),
+                                     main.tr(f'Count of {i + 1}-length Tokens'),
+                                     num = True, pct = True, cumulative = True)
+
+            len_files = len(files)
 
             for i in range(len_tokens_max):
-                table.insert_row(table.rowCount(),
-                                 main.tr(f'Count of {i + 1}-length Tags'),
-                                 num = True, pct = True, cumulative = True)
+                freqs = len_tokens_total.get(i + 1, [0] * (len_files + 1))
+
+                for j, freq in enumerate(freqs):
+                    table.set_item_num_cumulative(table.rowCount() - len_tokens_max + i, j, freq)
+
+            table.blockSignals(False)
+            table.setUpdatesEnabled(True)
+
+            table.toggle_pct()
+            table.toggle_cumulative()
+            table.toggle_breakdown()
+            table.update_items_width()
+
+            table.itemChanged.emit(table.item(0, 0))
+
+            wordless_msg.wordless_msg_generate_table_success(main)
         else:
-            for i in range(len_tokens_max):
+            wordless_msg_box.wordless_msg_box_no_results(main)
 
-                table.insert_row(table.rowCount(),
-                                 main.tr(f'Count of {i + 1}-length Tokens'),
-                                 num = True, pct = True, cumulative = True)
-
-        len_files = len(files)
-
-        for i in range(len_tokens_max):
-            freqs = len_tokens_total.get(i + 1, [0] * (len_files + 1))
-
-            for j, freq in enumerate(freqs):
-                table.set_item_num_cumulative(table.rowCount() - len_tokens_max + i, j, freq)
-
-        table.blockSignals(False)
-        table.setUpdatesEnabled(True)
-
-        table.toggle_pct()
-        table.toggle_cumulative()
-        table.toggle_breakdown()
-        table.update_items_width()
-
-        table.itemChanged.emit(table.item(0, 0))
-
-        wordless_msg.wordless_msg_generate_table_success(main)
+            wordless_msg.wordless_msg_generate_table_error(main)
 
         dialog_progress.accept()
 
