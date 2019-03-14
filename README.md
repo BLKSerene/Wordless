@@ -653,49 +653,49 @@ As for collocates (in *Collocation* and *Colligation*):
 
 Observed Values|Word 1                       |Not Word 1                   |Row Total
 --------------:|:---------------------------:|:---------------------------:|:---------------------------:
-Word 2         |![c11](/doc/measures/c11.gif)|![c12](/doc/measures/c12.gif)|![c1x](/doc/measures/c1x.gif)
-Not Word 2     |![c21](/doc/measures/c21.gif)|![c22](/doc/measures/c22.gif)|![c2x](/doc/measures/c2x.gif)
-Column Total   |![cx1](/doc/measures/cx1.gif)|![cx2](/doc/measures/cx2.gif)|![cxx](/doc/measures/cxx.gif)
+Word 2         |![o11](/doc/measures/o11.gif)|![o12](/doc/measures/o12.gif)|![o1x](/doc/measures/o1x.gif)
+Not Word 2     |![o21](/doc/measures/o21.gif)|![o22](/doc/measures/o22.gif)|![o2x](/doc/measures/o2x.gif)
+Column Total   |![ox1](/doc/measures/ox1.gif)|![ox2](/doc/measures/ox2.gif)|![oxx](/doc/measures/oxx.gif)
 
 Expected Values|Word 1                       |Not Word 1
 --------------:|:---------------------------:|:---------------------------:
 Word 2         |![e11](/doc/measures/e11.gif)|![e12](/doc/measures/e12.gif) 
 Not Word 2     |![e21](/doc/measures/e21.gif)|![e22](/doc/measures/e22.gif)
 
-![c11](/doc/measures/c11.gif): Number of occurrences of Word 1 followed by Word 2<br>
-![c12](/doc/measures/c12.gif): Number of occurrences of Word 1 followed by any word except Word 2<br>
-![c21](/doc/measures/c21.gif): Number of occurrences of any word except Word 1 followed by Word 2<br>
-![c22](/doc/measures/c22.gif): Number of occurrences of any word except Word 1 followed by any word except Word 2<br>
+![o11](/doc/measures/o11.gif): Number of occurrences of Word 1 followed by Word 2<br>
+![o12](/doc/measures/o12.gif): Number of occurrences of Word 1 followed by any word except Word 2<br>
+![o21](/doc/measures/o21.gif): Number of occurrences of any word except Word 1 followed by Word 2<br>
+![o22](/doc/measures/o22.gif): Number of occurrences of any word except Word 1 followed by any word except Word 2
 
 As for keywords (in *Keywords*):
 
 Observed Values|Observed File                |Reference File               |Row Total
 --------------:|:---------------------------:|:---------------------------:|:---------------------------:
-Word *w*       |![c11](/doc/measures/c11.gif)|![c12](/doc/measures/c12.gif)|![c1x](/doc/measures/c1x.gif)
-Not Word *w*   |![c21](/doc/measures/c21.gif)|![c22](/doc/measures/c22.gif)|![c2x](/doc/measures/c2x.gif)
-Column Total   |![cx1](/doc/measures/cx1.gif)|![cx2](/doc/measures/cx2.gif)|![cxx](/doc/measures/cxx.gif)
+Word *w*       |![o11](/doc/measures/o11.gif)|![o12](/doc/measures/o12.gif)|![o1x](/doc/measures/o1x.gif)
+Not Word *w*   |![o21](/doc/measures/o21.gif)|![o22](/doc/measures/o22.gif)|![o2x](/doc/measures/o2x.gif)
+Column Total   |![ox1](/doc/measures/ox1.gif)|![ox2](/doc/measures/ox2.gif)|![oxx](/doc/measures/oxx.gif)
 
 Expected Values|Observed File                |Reference File
 --------------:|:---------------------------:|:---------------------------:
 Word *w*       |![e11](/doc/measures/e11.gif)|![e12](/doc/measures/e12.gif) 
 Not Word *w*   |![e21](/doc/measures/e21.gif)|![e22](/doc/measures/e22.gif)
 
-![c11](/doc/measures/c11.gif): Number of occurrences of Word *w* in the observed file<br>
-![c12](/doc/measures/c12.gif): Number of occurrences of Word *w* in the reference file<br>
-![c21](/doc/measures/c21.gif): Number of occurrences of all words except Word *w* in the observed file<br>
-![c22](/doc/measures/c22.gif): Number of occurrences of all words except Word *w* in the reference file<br>
+![o11](/doc/measures/o11.gif): Number of occurrences of Word *w* in the observed file<br>
+![o12](/doc/measures/o12.gif): Number of occurrences of Word *w* in the reference file<br>
+![o21](/doc/measures/o21.gif): Number of occurrences of all words except Word *w* in the observed file<br>
+![o22](/doc/measures/o22.gif): Number of occurrences of all words except Word *w* in the reference file
 
 To conduct **Student's t-test (Two-sample)** or **Mann-Whiteney U Test** on a specific word, the observed file and the reference file are first divided into **n** (5 by default) sub-sections respectively. Then, the frequencies of the word in each sub-section of the observed file and the reference file are counted and denoted by **FO₁**, **FO₂**, **FO₃** ... **FOn** and **FR₁**, **FR₂**, **FR₃** ... **FRn** respectively. The total frequency of the word in the observed file and the reference file are denoted by **FO** and **FR** respectively. The mean value of the frequencies over all sub-sections of the observed file and the reference file are denoted by ![FO-bar](/doc/measures/fo_bar.gif) and ![FR-bar](/doc/measures/fr_bar.gif) respectively.
 
 <!--
 z-score:
     \begin{align*}
-        \text{z} = \frac{C_{11} - E_{11}}{\sqrt{E_{11} \times (1 - \frac{E_{11}}{C_{xx}}))}}
+        \text{z} = \frac{O_{11} - E_{11}}{\sqrt{E_{11} \times (1 - \frac{E_{11}}{O_{xx}}))}}
     \end{align*}
 
 Student's t-test (One-sample):
     \begin{align*}
-        \text{t} = \frac{C_{11} - E_{11}}{\sqrt{C_{11} \times (1 - \frac{C_{11}}{C_{xx}}))}}
+        \text{t} = \frac{O_{11} - E_{11}}{\sqrt{O_{11} \times (1 - \frac{O_{11}}{O_{xx}}))}}
     \end{align*}
 
 Student's t-test (Two-sample):
@@ -707,12 +707,12 @@ Student's t-test (Two-sample):
 
 Pearson's Chi-squared Test:
     \begin{align*}
-        \chi^{2} = \sum_{i = 1}^{2} \sum_{j = 1}^{2}\frac{(C_{ij} - E{ij})^{2}}{E_{ij}}
+        \chi^{2} = \sum_{i = 1}^{2} \sum_{j = 1}^{2}\frac{(O_{ij} - E{ij})^{2}}{E_{ij}}
     \end{align*}
 
 Log-likelihood Ratio:
     \begin{align*}
-        \text{G} &= 2\sum_{i = 1}^{2} \sum_{j = 1}^{2}(C_{ij} \times \ln \frac{C_{ij}}{E_{ij}})
+        \text{G} &= 2\sum_{i = 1}^{2} \sum_{j = 1}^{2}(O_{ij} \times \ln \frac{O_{ij}}{E_{ij}})
     \end{align*}
 -->
 
@@ -739,8 +739,8 @@ Student's t-test (Two-sample):
 
 Log-likelihood Ratio:
     \begin{align*}
-        G &= 2\sum_{i = 1}^{2} \sum_{j = 1}^{2}(C_{ij} \times \ln \frac{C_{ij}}{E_{ij}}) \\
-        \text{BF} &= G - \ln C_{xx}
+        G &= 2\sum_{i = 1}^{2} \sum_{j = 1}^{2}(O_{ij} \times \ln \frac{O_{ij}}{E_{ij}}) \\
+        \text{BF} &= G - \ln O_{xx}
     \end{align*}
 -->
 
@@ -752,92 +752,92 @@ Log-likelihood Ratio          [[19]](#doc-eng-supported-measures-works-cited-19)
 <!--
 Pointwise Mutual Information:
     \begin{align*}
-        \text{PMI} &= \log_{2} \frac{C_{11}}{E_{11}}
+        \text{PMI} &= \log_{2} \frac{O_{11}}{E_{11}}
     \end{align*}
 
 Mutual Dependency:
     \begin{align*}
-        \text{MD} &= \log_{2} \frac{C_{11}^{2}}{E_{11}}
+        \text{MD} &= \log_{2} \frac{O_{11}^{2}}{E_{11}}
     \end{align*}
 
 Log-Frequency Biased MD:
     \begin{align*}
-        \text{LFMD} &= \log_{2} \frac{C_{11}}{E_{11}} + \log_{2} C_{11}
+        \text{LFMD} &= \log_{2} \frac{O_{11}}{E_{11}} + \log_{2} O_{11}
     \end{align*}
 
 Cubic Association Ratio:
     \begin{align*}
-        \text{IM}^{3} &= \log_{2} \frac{C_{11}^{3}}{E_{11}}
+        \text{IM}^{3} &= \log_{2} \frac{O_{11}^{3}}{E_{11}}
     \end{align*}
 
 MI.log-f:
     \begin{align*}
-        \text{MI.log-f} &= \log_{2} \frac{C_{11}^{2}}{E_{11}} \times \ln (C_{11} + 1)
+        \text{MI.log-f} &= \log_{2} \frac{O_{11}^{2}}{E_{11}} \times \ln (O_{11} + 1)
     \end{align*}
 
 Mutual Information:
     \begin{align*}
-        \text{MI} &= \sum_{i = 1}^{n}\sum_{j = 1}^{n} (\frac{C_{ij}}{C_{xx}} \times \log_{2} \frac{C_{ij}}{E_{ij}})
+        \text{MI} &= \sum_{i = 1}^{n}\sum_{j = 1}^{n} (\frac{O_{ij}}{O_{xx}} \times \log_{2} \frac{O_{ij}}{E_{ij}})
     \end{align*}
 
 Squared Phi Coefficient:
     \begin{align*}
-        \phi^{2} &= \frac{(C_{11}C_{22} - C_{12}C_{21})^{2}}{C_{1x}C_{2x}C_{x1}C_{x2}}
+        \phi^{2} &= \frac{(O_{11}O_{22} - O_{12}O_{21})^{2}}{O_{1x}O_{2x}O_{x1}O_{x2}}
     \end{align*}
 
 Dice's Coefficient:
     \begin{align*}
-        \text{DSC} &= \frac{2 \times C_{11}}{C_{1x} + C_{x1}}
+        \text{DSC} &= \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
     \end{align*}
 
 logDice:
     \begin{align*}
-        \text{logDice} &= 14 + \log_{2} \frac{2 \times C_{11}}{C_{1x} + C_{x1}}
+        \text{logDice} &= 14 + \log_{2} \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
     \end{align*}
 
 Mutual Expectation:
     \begin{align*}
-        \text{ME} &= C_{11} \times \frac{2 \times C_{11}}{C_{1x} + C_{x1}}
+        \text{ME} &= O_{11} \times \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
     \end{align*}
 
 Jaccard Index:
     \begin{align*}
-        \text{J} &= \frac{C_{11}}{C_{11} + C_{12} + C_{21}}
+        \text{J} &= \frac{O_{11}}{O_{11} + O_{12} + O_{21}}
     \end{align*}
 
 Minimum Sensitivity:
     \begin{align*}
-        \text{S} &= \min \{\frac{C_{11}}{C_{1x}} \text{, } \frac{C_{11}}{C_{x1}}\}
+        \text{S} &= \min \{\frac{O_{11}}{O_{1x}} \text{, } \frac{O_{11}}{O_{x1}}\}
     \end{align*}
 
 Poisson Collocation Measure:
     \begin{align*}
-        \text{sig} &= \frac{C_{11}(\ln C_{11} - \ln E_{11} - 1)}{\ln C_{xx}}
+        \text{sig} &= \frac{O_{11}(\ln O_{11} - \ln E_{11} - 1)}{\ln O_{xx}}
     \end{align*}
 
 Kilgarriff's Ratio:
     \begin{align*}
-        \text{Kilgarriff's Ratio} &= \frac{\frac{C_{11}}{C_{11} + C_{21}} \times 1000000 + \alpha}{\frac{C_{12}}{C_{12} + C_{22}} \times 1000000 + \alpha}
+        \text{Kilgarriff's Ratio} &= \frac{\frac{O_{11}}{O_{11} + O_{21}} \times 1000000 + \alpha}{\frac{O_{12}}{O_{12} + O_{22}} \times 1000000 + \alpha}
     \end{align*}
 
 Odds Ratio:
     \begin{align*}
-        \text{Odd's Ratio} &= \frac{C_{11} \times C_{22}}{C_{12} \times C_{21}}
+        \text{Odd's Ratio} &= \frac{O_{11} \times O_{22}}{O_{12} \times O_{21}}
     \end{align*}
 
 Log Ratio:
     \begin{align*}
-        \text{Log Ratio} &= \log_{2} \frac{\frac{C_{11}}{C_{x1}}}{\frac{C_{12}}{C_{x2}}}
+        \text{Log Ratio} &= \log_{2} \frac{\frac{O_{11}}{O_{x1}}}{\frac{O_{12}}{O_{x2}}}
     \end{align*}
 
 Difference Coefficient:
     \begin{align*}
-        \text{Difference Coefficient} &= \frac{\frac{C_{11}}{C_{x1}} - \frac{C_{12}}{C_{x2}}}{\frac{C_{11}}{C_{x1}} + \frac{C_{12}}{C_{x2}}}
+        \text{Difference Coefficient} &= \frac{\frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}}{\frac{O_{11}}{O_{x1}} + \frac{O_{12}}{O_{x2}}}
     \end{align*}
 
 %DIFF:
     \begin{align*}
-        \text{\%DIFF} &= \frac{(\frac{C_{11}}{C_{x1}} - \frac{C_{12}}{C_{x2}}) \times 100}{\frac{C_{12}}{C_{x2}}}
+        \text{\%DIFF} &= \frac{(\frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}) \times 100}{\frac{O_{12}}{O_{x2}}}
     \end{align*}
 -->
 
