@@ -48,6 +48,7 @@ GB (GB/T 7714—2015):
 * [N-grams](#doc-eng-ngrams)
 * [Collocation](#doc-eng-collocation)
 * [Colligation](#doc-eng-colligation)
+* [Keywords](#doc-eng-keywords)
 * [Supported Languages](#doc-eng-supported-langs)
 * [Supported Text Types](#doc-eng-supported-text-types)
 * [Supported File Types](#doc-eng-supported-file-types)
@@ -346,13 +347,20 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 6. **Test Statistic**:<br>
     The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
 
+    Please note that test statistic is not avilable for some tests of statistical significance.
+
 7. **p-value**:<br>
     The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
 
-8. **Effect Size**:<br>
+8. **Bayes Factor**:<br>
+    The bayes factor of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+
+    Please note that bayes factor is not avilable for some tests of statistical significance.
+
+9. **Effect Size**:<br>
     The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
 
-9. **Number of Files Found**:<br>
+10. **Number of Files Found**:<br>
     The number of files in which the the node and the collocating token co-occur at least once.
 
 ![Collocation Table](/doc/collocation/collocation_table.png)
@@ -389,18 +397,66 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 6. **Test Statistic**:<br>
     The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
 
+    Please note that test statistic is not avilable for some tests of statistical significance.
+
 7. **p-value**:<br>
     The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
 
-8. **Effect Size**:<br>
+8. **Bayes Factor**:<br>
+    The bayes factor of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+
+    Please note that bayes factor is not avilable for some tests of statistical significance.
+
+9. **Effect Size**:<br>
     The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
 
-9. **Number of Files Found**:<br>
+10. **Number of Files Found**:<br>
     The number of files in which the the node and the collocating part of speech co-occur at least once.
 
 ![Colligation Table](/doc/colligation/colligation_table.png)
 ![Colligation Figure - Line Chart](/doc/colligation/colligation_fig_line_chart.png)
 ![Colligation Figure - Word Cloud](/doc/colligation/colligation_fig_word_cloud.png)
+
+<span id="doc-eng-keywords"></span>
+### Keywords [[Back to Contents]](#doc)
+In *Keywords*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed file than in the reference file) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**.
+
+In addition, you can generate line charts or word clouds for keywords using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+
+Lastly, you can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+
+1. **Rank**:<br>
+    The rank of the keyword sorted by the p-value of the significance test conducted on the keyword in the first file in ascending order (by default). You can sort the results again by clicking the column headers. 
+
+2. **Keywords**:<br>
+    The candidates of potantial keywords. You can specify what should be counted as a "token" via **Token Settings**.
+
+3. **Frequency** (in Reference File):<br>
+    The number of co-occurrences of the keywords in the reference file.
+
+4. **Frequency** (in Observed Files):<br>
+    The number of co-occurrences of the keywords in each observed file.
+
+5. **Test Statistic**:<br>
+    The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+
+6. **p-value**:<br>
+    The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+
+8. **Bayes Factor**:<br>
+    The bayes factor of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+
+    Please note that bayes factor is not avilable for some tests of statistical significance.
+
+8. **Effect Size**:<br>
+    The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+
+9. **Number of Files Found**:<br>
+    The number of files in which the keyword appears at least once.
+
+![Keywords Table](/doc/keywords/keywords_table.png)
+![Keywords Figure - Line Chart](/doc/keywords/keywords_fig_line_chart.png)
+![Keywords Figure - Word Cloud](/doc/keywords/keywords_fig_word_cloud.png)
 
 <span id="doc-eng-supported-langs"></span>
 ### Supported Languages [[Back to Contents]](#doc)
