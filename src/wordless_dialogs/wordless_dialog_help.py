@@ -189,7 +189,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/undertheseanlp/underthesea">Underthesea</a>',
-                '1.1.14',
+                '1.1.15',
                 'Vu Anh',
                 '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPL-3.0</a>'
             ]
