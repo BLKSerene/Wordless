@@ -12,7 +12,7 @@
 import copy
 
 from wordless_checking import wordless_checking_token
-from wordless_text import wordless_text, wordless_text_processing
+from wordless_text import wordless_text, wordless_text_processing, wordless_text_utils
 
 def wordless_process_tokens(text, token_settings):
     main = text.main
@@ -37,8 +37,11 @@ def wordless_process_tokens(text, token_settings):
 
     # Lemmatize all tokens
     if not settings['use_tags'] and settings['lemmatize_tokens']:
+        wordless_text_utils.check_lemmatizers(main,
+                                              lang = text.lang)
+
         tokens = wordless_text_processing.wordless_lemmatize(main, tokens,
-                                                             lang_code = text.lang_code)
+                                                             lang = text.lang)
 
     # Treat as all lowercase
     if settings['treat_as_lowercase']:
@@ -54,36 +57,36 @@ def wordless_process_tokens(text, token_settings):
     if settings['words']:
         # Lowercase
         if not settings['lowercase']:
-            for i, token in tokens:
-                if wordless_checking_token.is_token_lowercase(token):
+            for i, token in enumerate(tokens):
+                if wordless_checking_token.is_token_word_lowercase(token):
                     tokens[i] = ''
         # Uppercase
         if not settings['uppercase']:
-            for i, token in tokens:
-                if wordless_checking_token.is_token_uppercase(token):
+            for i, token in enumerate(tokens):
+                if wordless_checking_token.is_token_word_uppercase(token):
                     tokens[i] = ''
         # Title Case
         if not settings['title_case']:
-            for i, token in tokens:
-                if wordless_checking_token.is_token_title_case(token):
+            for i, token in enumerate(tokens):
+                if wordless_checking_token.is_token_word_title_case(token):
                     tokens[i] = ''
     else:
-        for i, token in tokens:
+        for i, token in enumerate(tokens):
             if wordless_checking_token.is_token_word(token):
                 tokens[i] = ''
 
     # Numerals
     if not settings['nums']:
-        for i, token in tokens:
+        for i, token in enumerate(tokens):
             if wordless_checking_token.is_token_num(token):
                 tokens[i] = ''
 
     # Filter stop words
     if settings['filter_stop_words']:
-        tokens_filtered = wordless_text_processing.wordless_filter_stop_words(main, [token for token, _ in tokens],
-                                                                              lang_code = text.lang_code)
+        tokens_filtered = wordless_text_processing.wordless_filter_stop_words(main, [token for token in tokens],
+                                                                              lang = text.lang)
 
-        for i, token in tokens:
+        for i, token in enumerate(tokens):
             if token not in tokens_filtered:
                 tokens[i] = ''
 
