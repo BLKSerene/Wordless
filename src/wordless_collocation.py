@@ -1089,7 +1089,7 @@ def generate_figure(main):
 
                 wordless_figure_stat.wordless_figure_stat(main, collocates_stat_files,
                                                           settings = settings['figure_settings'],
-                                                          label_x = main.tr('Collocates'),
+                                                          label_x = main.tr('Collocations'),
                                                           label_y = label_y)
 
             wordless_msg.wordless_msg_generate_figure_success(main)
