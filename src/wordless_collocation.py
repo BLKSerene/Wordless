@@ -24,7 +24,7 @@ import numpy
 from wordless_checking import wordless_checking_file
 from wordless_dialogs import (wordless_dialog_filter_results, wordless_dialog_misc, wordless_dialog_search_results,
                               wordless_msg_box)
-from wordless_figures import wordless_figure, wordless_figure_freq, wordless_figure_stat
+from wordless_figs import wordless_fig, wordless_fig_freq, wordless_fig_stat
 from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
                            wordless_token_processing)
 from wordless_utils import wordless_misc, wordless_sorting, wordless_threading
@@ -63,10 +63,10 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Filter_Searc
         self.button_search_results.clicked.connect(dialog_search_results.show)
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_figure = QPushButton(self.tr('Generate Figure'), self)
+        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
-        self.button_generate_figure.clicked.connect(lambda: generate_figure(self.main))
+        self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
 
     def toggle_breakdown(self):
         settings = self.main.settings_custom['collocation']['table_settings']
@@ -114,7 +114,7 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
         self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_collocation, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_collocation.button_generate_table, 2, 0)
-        self.wrapper_table.layout().addWidget(self.table_collocation.button_generate_figure, 2, 1)
+        self.wrapper_table.layout().addWidget(self.table_collocation.button_generate_fig, 2, 1)
         self.wrapper_table.layout().addWidget(self.table_collocation.button_export_selected, 2, 2)
         self.wrapper_table.layout().addWidget(self.table_collocation.button_export_all, 2, 3)
         self.wrapper_table.layout().addWidget(self.table_collocation.button_clear, 2, 4)
@@ -353,7 +353,7 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_file, 3, 0)
 
         # Figure Settings
-        self.group_box_figure_settings = QGroupBox(self.tr('Figure Settings'), self)
+        self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
 
         (self.label_graph_type,
          self.combo_box_graph_type,
@@ -363,7 +363,7 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
          self.combo_box_use_data,
 
          self.checkbox_use_pct,
-         self.checkbox_use_cumulative) = wordless_widgets.wordless_widgets_figure_settings(self)
+         self.checkbox_use_cumulative) = wordless_widgets.wordless_widgets_fig_settings(self)
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (self.label_rank_min,
@@ -375,49 +375,49 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
                                                                                      filter_min = 1,
                                                                                      filter_max = 100000)
 
-        self.combo_box_graph_type.currentTextChanged.connect(self.figure_settings_changed)
-        self.combo_box_use_file.currentTextChanged.connect(self.figure_settings_changed)
-        self.combo_box_use_data.currentTextChanged.connect(self.figure_settings_changed)
-        self.checkbox_use_pct.stateChanged.connect(self.figure_settings_changed)
-        self.checkbox_use_cumulative.stateChanged.connect(self.figure_settings_changed)
+        self.combo_box_graph_type.currentTextChanged.connect(self.fig_settings_changed)
+        self.combo_box_use_file.currentTextChanged.connect(self.fig_settings_changed)
+        self.combo_box_use_data.currentTextChanged.connect(self.fig_settings_changed)
+        self.checkbox_use_pct.stateChanged.connect(self.fig_settings_changed)
+        self.checkbox_use_cumulative.stateChanged.connect(self.fig_settings_changed)
 
-        self.spin_box_rank_min.valueChanged.connect(self.figure_settings_changed)
-        self.checkbox_rank_min_no_limit.stateChanged.connect(self.figure_settings_changed)
-        self.spin_box_rank_max.valueChanged.connect(self.figure_settings_changed)
-        self.checkbox_rank_max_no_limit.stateChanged.connect(self.figure_settings_changed)
+        self.spin_box_rank_min.valueChanged.connect(self.fig_settings_changed)
+        self.checkbox_rank_min_no_limit.stateChanged.connect(self.fig_settings_changed)
+        self.spin_box_rank_max.valueChanged.connect(self.fig_settings_changed)
+        self.checkbox_rank_max_no_limit.stateChanged.connect(self.fig_settings_changed)
 
-        layout_figure_settings_combo_boxes = wordless_layout.Wordless_Layout()
-        layout_figure_settings_combo_boxes.addWidget(self.label_graph_type, 0, 0)
-        layout_figure_settings_combo_boxes.addWidget(self.combo_box_graph_type, 0, 1)
-        layout_figure_settings_combo_boxes.addWidget(self.label_use_file, 1, 0)
-        layout_figure_settings_combo_boxes.addWidget(self.combo_box_use_file, 1, 1)
-        layout_figure_settings_combo_boxes.addWidget(self.label_use_data, 2, 0)
-        layout_figure_settings_combo_boxes.addWidget(self.combo_box_use_data, 2, 1)
+        layout_fig_settings_combo_boxes = wordless_layout.Wordless_Layout()
+        layout_fig_settings_combo_boxes.addWidget(self.label_graph_type, 0, 0)
+        layout_fig_settings_combo_boxes.addWidget(self.combo_box_graph_type, 0, 1)
+        layout_fig_settings_combo_boxes.addWidget(self.label_use_file, 1, 0)
+        layout_fig_settings_combo_boxes.addWidget(self.combo_box_use_file, 1, 1)
+        layout_fig_settings_combo_boxes.addWidget(self.label_use_data, 2, 0)
+        layout_fig_settings_combo_boxes.addWidget(self.combo_box_use_data, 2, 1)
 
-        layout_figure_settings_combo_boxes.setColumnStretch(1, 1)
+        layout_fig_settings_combo_boxes.setColumnStretch(1, 1)
 
-        self.group_box_figure_settings.setLayout(wordless_layout.Wordless_Layout())
-        self.group_box_figure_settings.layout().addLayout(layout_figure_settings_combo_boxes, 0, 0, 1, 3)
-        self.group_box_figure_settings.layout().addWidget(self.checkbox_use_pct, 1, 0, 1, 3)
-        self.group_box_figure_settings.layout().addWidget(self.checkbox_use_cumulative, 2, 0, 1, 3)
+        self.group_box_fig_settings.setLayout(wordless_layout.Wordless_Layout())
+        self.group_box_fig_settings.layout().addLayout(layout_fig_settings_combo_boxes, 0, 0, 1, 3)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_use_pct, 1, 0, 1, 3)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_use_cumulative, 2, 0, 1, 3)
         
-        self.group_box_figure_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 3, 0, 1, 3)
+        self.group_box_fig_settings.layout().addWidget(wordless_layout.Wordless_Separator(self), 3, 0, 1, 3)
 
-        self.group_box_figure_settings.layout().addWidget(self.label_rank, 4, 0, 1, 3)
-        self.group_box_figure_settings.layout().addWidget(self.label_rank_min, 5, 0)
-        self.group_box_figure_settings.layout().addWidget(self.spin_box_rank_min, 5, 1)
-        self.group_box_figure_settings.layout().addWidget(self.checkbox_rank_min_no_limit, 5, 2)
-        self.group_box_figure_settings.layout().addWidget(self.label_rank_max, 6, 0)
-        self.group_box_figure_settings.layout().addWidget(self.spin_box_rank_max, 6, 1)
-        self.group_box_figure_settings.layout().addWidget(self.checkbox_rank_max_no_limit, 6, 2)
+        self.group_box_fig_settings.layout().addWidget(self.label_rank, 4, 0, 1, 3)
+        self.group_box_fig_settings.layout().addWidget(self.label_rank_min, 5, 0)
+        self.group_box_fig_settings.layout().addWidget(self.spin_box_rank_min, 5, 1)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_rank_min_no_limit, 5, 2)
+        self.group_box_fig_settings.layout().addWidget(self.label_rank_max, 6, 0)
+        self.group_box_fig_settings.layout().addWidget(self.spin_box_rank_max, 6, 1)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_rank_max_no_limit, 6, 2)
 
-        self.group_box_figure_settings.layout().setColumnStretch(1, 1)
+        self.group_box_fig_settings.layout().setColumnStretch(1, 1)
 
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_search_settings, 1, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_generation_settings, 2, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 3, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_figure_settings, 4, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_fig_settings, 4, 0)
 
         self.wrapper_settings.layout().setRowStretch(5, 1)
 
@@ -498,22 +498,22 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
         self.checkbox_show_breakdown_file.setChecked(settings['table_settings']['show_breakdown_file'])
 
         # Figure Settings
-        self.combo_box_graph_type.setCurrentText(settings['figure_settings']['graph_type'])
-        self.combo_box_use_file.setCurrentText(settings['figure_settings']['use_file'])
-        self.combo_box_use_data.setCurrentText(settings['figure_settings']['use_data'])
-        self.checkbox_use_pct.setChecked(settings['figure_settings']['use_pct'])
-        self.checkbox_use_cumulative.setChecked(settings['figure_settings']['use_cumulative'])
+        self.combo_box_graph_type.setCurrentText(settings['fig_settings']['graph_type'])
+        self.combo_box_use_file.setCurrentText(settings['fig_settings']['use_file'])
+        self.combo_box_use_data.setCurrentText(settings['fig_settings']['use_data'])
+        self.checkbox_use_pct.setChecked(settings['fig_settings']['use_pct'])
+        self.checkbox_use_cumulative.setChecked(settings['fig_settings']['use_cumulative'])
 
-        self.spin_box_rank_min.setValue(settings['figure_settings']['rank_min'])
-        self.checkbox_rank_min_no_limit.setChecked(settings['figure_settings']['rank_min_no_limit'])
-        self.spin_box_rank_max.setValue(settings['figure_settings']['rank_max'])
-        self.checkbox_rank_max_no_limit.setChecked(settings['figure_settings']['rank_max_no_limit'])
+        self.spin_box_rank_min.setValue(settings['fig_settings']['rank_min'])
+        self.checkbox_rank_min_no_limit.setChecked(settings['fig_settings']['rank_min_no_limit'])
+        self.spin_box_rank_max.setValue(settings['fig_settings']['rank_max'])
+        self.checkbox_rank_max_no_limit.setChecked(settings['fig_settings']['rank_max_no_limit'])
 
         self.token_settings_changed()
         self.search_settings_changed()
         self.generation_settings_changed()
         self.table_settings_changed()
-        self.figure_settings_changed()
+        self.fig_settings_changed()
 
     def token_settings_changed(self):
         settings = self.main.settings_custom['collocation']['token_settings']
@@ -580,7 +580,7 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
         settings['measure_effect_size'] = self.combo_box_measure_effect_size.currentText()
 
         # Use Data
-        use_data_old = self.main.settings_custom['collocation']['figure_settings']['use_data']
+        use_data_old = self.main.settings_custom['collocation']['fig_settings']['use_data']
 
         text_test_significance = settings['test_significance']
         text_measure_effect_size = settings['measure_effect_size']
@@ -602,7 +602,7 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
         if self.combo_box_use_data.findText(use_data_old) > -1:
             self.combo_box_use_data.setCurrentText(use_data_old)
         else:
-            self.combo_box_use_data.setCurrentText(self.main.settings_default['collocation']['figure_settings']['use_data'])
+            self.combo_box_use_data.setCurrentText(self.main.settings_default['collocation']['fig_settings']['use_data'])
 
     def table_settings_changed(self):
         settings = self.main.settings_custom['collocation']['table_settings']
@@ -612,8 +612,8 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
         settings['show_breakdown_position'] = self.checkbox_show_breakdown_position.isChecked()
         settings['show_breakdown_file'] = self.checkbox_show_breakdown_file.isChecked()
 
-    def figure_settings_changed(self):
-        settings = self.main.settings_custom['collocation']['figure_settings']
+    def fig_settings_changed(self):
+        settings = self.main.settings_custom['collocation']['fig_settings']
 
         settings['graph_type'] = self.combo_box_graph_type.currentText()
         settings['use_file'] = self.combo_box_use_file.currentText()
@@ -811,7 +811,7 @@ class Wordless_Worker_Process_Data_Collocation_Table(Wordless_Worker_Process_Dat
                                       wordless_misc.merge_dicts(self.collocates_stats_files),
                                       self.nodes_text)
 
-class Wordless_Worker_Process_Data_Collocation_Figure(Wordless_Worker_Process_Data_Collocation):
+class Wordless_Worker_Process_Data_Collocation_Fig(Wordless_Worker_Process_Data_Collocation):
     def process_data(self):
         super().process_data()
 
@@ -1029,7 +1029,7 @@ def generate_table(main, table):
         wordless_msg.wordless_msg_generate_table_error(main)
 
 @wordless_misc.log_timing
-def generate_figure(main):
+def generate_fig(main):
     def data_received(collocates_freqs_files, collocates_stats_files, nodes_text):
         if collocates_freqs_files:
             text_test_significance = settings['generation_settings']['test_significance']
@@ -1040,68 +1040,68 @@ def generate_figure(main):
              text_bayes_factor) = main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
             text_effect_size =  main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
 
-            if re.search(r'^[LR][0-9]+$', settings['figure_settings']['use_data']):
+            if re.search(r'^[LR][0-9]+$', settings['fig_settings']['use_data']):
                 span_positions = (list(range(settings['generation_settings']['window_left'], 0)) +
                                   list(range(1, settings['generation_settings']['window_right'] + 1)))
 
-                if 'L' in settings['figure_settings']['use_data']:
-                    span_position = span_positions.index(-int(settings['figure_settings']['use_data'][1:]))
+                if 'L' in settings['fig_settings']['use_data']:
+                    span_position = span_positions.index(-int(settings['fig_settings']['use_data'][1:]))
                 else:
-                    span_position = span_positions.index(int(settings['figure_settings']['use_data'][1:]))
+                    span_position = span_positions.index(int(settings['fig_settings']['use_data'][1:]))
 
                 collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
                                          for (node, collocate), freqs in collocates_freqs_files.items()}
 
-                wordless_figure_freq.wordless_figure_freq(main, collocates_freq_files,
-                                                          settings = settings['figure_settings'],
-                                                          label_x = main.tr('Collocates'))
-            elif settings['figure_settings']['use_data'] == main.tr('Frequency'):
+                wordless_fig_freq.wordless_fig_freq(main, collocates_freq_files,
+                                                    settings = settings['fig_settings'],
+                                                    label_x = main.tr('Collocates'))
+            elif settings['fig_settings']['use_data'] == main.tr('Frequency'):
                 collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
                                          for (node, collocate), freqs in collocates_freqs_files.items()}
 
-                wordless_figure_freq.wordless_figure_freq(main, collocates_freq_files,
-                                                          settings = settings['figure_settings'],
-                                                          label_x = main.tr('Collocates'))
+                wordless_fig_freq.wordless_fig_freq(main, collocates_freq_files,
+                                                    settings = settings['fig_settings'],
+                                                    label_x = main.tr('Collocates'))
             else:
                 collocates_stats_files = {', '.join([nodes_text[node], collocate]): freqs
                                           for (node, collocate), freqs in collocates_stats_files.items()}
 
-                if settings['figure_settings']['use_data'] == text_test_stat:
+                if settings['fig_settings']['use_data'] == text_test_stat:
                     collocates_stat_files = {collocate: numpy.array(stats_files)[:, 0]
                                              for collocate, stats_files in collocates_stats_files.items()}
 
                     label_y = text_test_stat
-                elif settings['figure_settings']['use_data'] == text_p_value:
+                elif settings['fig_settings']['use_data'] == text_p_value:
                     collocates_stat_files = {collocate: numpy.array(stats_files)[:, 1]
                                              for collocate, stats_files in collocates_stats_files.items()}
 
                     label_y = text_p_value
-                elif settings['figure_settings']['use_data'] == text_bayes_factor:
+                elif settings['fig_settings']['use_data'] == text_bayes_factor:
                     collocates_stat_files = {collocate: numpy.array(stats_files)[:, 2]
                                              for collocate, stats_files in collocates_stats_files.items()}
 
                     label_y = text_bayes_factor
-                elif settings['figure_settings']['use_data'] == text_effect_size:
+                elif settings['fig_settings']['use_data'] == text_effect_size:
                     collocates_stat_files = {collocate: numpy.array(stats_files)[:, 3]
                                              for collocate, stats_files in collocates_stats_files.items()}
 
                     label_y = text_effect_size
 
-                wordless_figure_stat.wordless_figure_stat(main, collocates_stat_files,
-                                                          settings = settings['figure_settings'],
-                                                          label_x = main.tr('Collocations'),
-                                                          label_y = label_y)
+                wordless_fig_stat.wordless_fig_stat(main, collocates_stat_files,
+                                                    settings = settings['fig_settings'],
+                                                    label_x = main.tr('Collocations'),
+                                                    label_y = label_y)
 
-            wordless_msg.wordless_msg_generate_figure_success(main)
+            wordless_msg.wordless_msg_generate_fig_success(main)
         else:
             wordless_msg_box.wordless_msg_box_no_results(main)
 
-            wordless_msg.wordless_msg_generate_figure_error(main)
+            wordless_msg.wordless_msg_generate_fig_error(main)
 
         dialog_progress.accept()
 
         if collocates_freqs_files:
-            wordless_figure.show_figure()
+            wordless_fig.show_fig()
 
     settings = main.settings_custom['collocation']
     files = main.wordless_files.get_selected_files()
@@ -1112,7 +1112,7 @@ def generate_figure(main):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Wordless_Worker_Process_Data_Collocation_Figure(main, dialog_progress, data_received)
+            worker_process_data = Wordless_Worker_Process_Data_Collocation_Fig(main, dialog_progress, data_received)
             thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
 
             thread_process_data.start()
@@ -1124,6 +1124,6 @@ def generate_figure(main):
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term_optional(main)
 
-            wordless_msg.wordless_msg_generate_figure_error(main)
+            wordless_msg.wordless_msg_generate_fig_error(main)
     else:
-        wordless_msg.wordless_msg_generate_figure_error(main)
+        wordless_msg.wordless_msg_generate_fig_error(main)

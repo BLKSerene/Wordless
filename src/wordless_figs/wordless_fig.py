@@ -14,7 +14,7 @@ import platform
 import matplotlib
 import matplotlib.pyplot
 
-def show_figure():
+def show_fig():
     if platform.system() == 'Windows':
         matplotlib.pyplot.get_current_fig_manager().window.showMaximized()
     # Do not maximize the window to avoid segfault on macOS
