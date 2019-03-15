@@ -156,7 +156,7 @@ print('---------- Measures of Effect Size ----------')
 
 main.settings_custom['measures']['effect_size'] = {
     'kilgarriffs_ratio': {
-        'smoothing_parameter': 1.00,
+        'smoothing_param': 1.00,
     }
 }
 
