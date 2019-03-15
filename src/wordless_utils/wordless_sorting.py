@@ -89,7 +89,7 @@ def sorted_tokens_stat_file(tokens_stat_files, i_file):
     return sorted(tokens_stat_files.items(), key = key)
 
 # Association
-def sorted_collocates_stats_files(collocates_stats_files):
+def sorted_collocations_stats_files(collocations_stats_files):
     def key(item):
         keys = []
 
@@ -110,7 +110,7 @@ def sorted_collocates_stats_files(collocates_stats_files):
 
         return keys
 
-    return sorted(collocates_stats_files.items(), key = key)
+    return sorted(collocations_stats_files.items(), key = key)
 
 # Keyness
 def sorted_keywords_stats_files(keywords_stats_files):
