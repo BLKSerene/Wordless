@@ -59,6 +59,8 @@ class Wordless_List(QListWidget):
             self.button_clear.setEnabled(False)
             self.button_export.setEnabled(False)
 
+        self.selection_changed()
+
     def selection_changed(self):
         if self.selectedIndexes():
             self.button_remove.setEnabled(True)
@@ -76,19 +78,18 @@ class Wordless_List(QListWidget):
             
         self.item(self.count() - 1).setSelected(True)
 
-        self.item_changed()
+        self.itemChanged.emit(self.item(0))
 
     def remove_item(self):
         for index in sorted(self.selectedIndexes(), reverse = True):
             self.takeItem(index.row())
 
-        self.item_changed()
+        self.itemChanged.emit(self.item(0))
 
     def clear_list(self):
         self.clear()
 
-        self.item_changed()
-        self.selection_changed()
+        self.itemChanged.emit(self.item(0))
 
     def import_list(self, settings):
         files = []
@@ -146,6 +147,7 @@ class Wordless_List(QListWidget):
                                 items_to_import.append(line)
 
             self.load_items(collections.OrderedDict.fromkeys(items_to_import))
+            self.itemChanged.emit(self.item(0))
 
             wordless_msg.wordless_msg_import_list_success(self.main, num_prev, len(self.get_items()))
 
