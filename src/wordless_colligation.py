@@ -11,6 +11,7 @@
 
 import collections
 import copy
+import operator
 import re
 import time
 
@@ -634,14 +635,13 @@ class Wordless_Worker_Process_Data_Colligation(wordless_threading.Wordless_Worke
     def __init__(self, main, dialog_progress, data_received):
         super().__init__(main, dialog_progress, data_received)
 
-        self.collocates_freqs_files = []
-        self.collocates_stats_files = []
+        self.colligations_freqs_files = []
+        self.colligations_stats_files = []
         self.nodes_text = {}
 
     def process_data(self):
         texts = []
-        ngrams_freq_files = []
-        pos_tags_freq_files = []
+        colligations_freqs_files_all = []
 
         settings = self.main.settings_custom['colligation']
 
@@ -661,8 +661,8 @@ class Wordless_Worker_Process_Data_Colligation(wordless_threading.Wordless_Worke
 
         # Frequency
         for i, file in enumerate(files):
-            collocates_freqs_file = {}
-            collocates_tokens = []
+            colligations_freqs_file = {}
+            colligations_freqs_file_all = {}
 
             text = wordless_text.Wordless_Text(self.main, file)
 
@@ -712,87 +712,91 @@ class Wordless_Worker_Process_Data_Colligation(wordless_threading.Wordless_Worke
                 len_search_term_max = 1
 
             for ngram_size in range(len_search_term_min, len_search_term_max + 1):
+                if ngram_size not in colligations_freqs_files_all:
+                    colligations_freqs_file_all[ngram_size] = collections.Counter()
+
                 for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
                     for j, collocate in enumerate(reversed(text.tags_pos[max(0, i - window_size_left) : i])):
                         if wordless_matching.check_context(i, tokens,
                                                            context_settings = settings['context_settings'],
                                                            search_terms_inclusion = search_terms_inclusion,
                                                            search_terms_exclusion = search_terms_exclusion):
-                            if (ngram, collocate) not in collocates_freqs_file:
-                                collocates_freqs_file[(ngram, collocate)] = [0] * window_size
+                            if (ngram, collocate) not in colligations_freqs_file:
+                                colligations_freqs_file[(ngram, collocate)] = [0] * window_size
 
-                            collocates_freqs_file[(ngram, collocate)][window_size_left - 1 - j] += 1
+                            colligations_freqs_file[(ngram, collocate)][window_size_left - 1 - j] += 1
 
-                            collocates_tokens.append(tokens[max(0, i - window_size_left) : i][j])
+                        colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
 
                     for j, collocate in enumerate(text.tags_pos[i + ngram_size: i + ngram_size + window_size_right]):
                         if wordless_matching.check_context(i, tokens,
                                                            context_settings = settings['context_settings'],
                                                            search_terms_inclusion = search_terms_inclusion,
                                                            search_terms_exclusion = search_terms_exclusion):
-                            if (ngram, collocate) not in collocates_freqs_file:
-                                collocates_freqs_file[(ngram, collocate)] = [0] * window_size
+                            if (ngram, collocate) not in colligations_freqs_file:
+                                colligations_freqs_file[(ngram, collocate)] = [0] * window_size
 
-                            collocates_freqs_file[(ngram, collocate)][window_size_left + j] += 1
+                            colligations_freqs_file[(ngram, collocate)][window_size_left + j] += 1
 
-                            collocates_tokens.append(tokens[i + ngram_size: i + ngram_size + window_size_right][j])
+                        colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
 
-            collocates_freqs_file = {(ngram, collocate): freqs
-                                     for (ngram, collocate), freqs in collocates_freqs_file.items()
+            colligations_freqs_file = {(ngram, collocate): freqs
+                                     for (ngram, collocate), freqs in colligations_freqs_file.items()
                                      if all(ngram) and collocate}
 
             # Filter search terms
             if settings['search_settings']['search_settings']:
-                collocates_freqs_file_filtered = {}
+                colligations_freqs_file_filtered = {}
 
                 for search_term in search_terms:
                     len_search_term = len(search_term)
 
-                    for (node, collocate), freqs in collocates_freqs_file.items():
+                    for (node, collocate), freqs in colligations_freqs_file.items():
                         for ngram in nltk.ngrams(node, len_search_term):
                             if ngram == search_term:
-                                collocates_freqs_file_filtered[(node, collocate)] = freqs
+                                colligations_freqs_file_filtered[(node, collocate)] = freqs
 
-                self.collocates_freqs_files.append(collocates_freqs_file_filtered)
+                self.colligations_freqs_files.append(colligations_freqs_file_filtered)
             else:
-                self.collocates_freqs_files.append(collocates_freqs_file)
+                self.colligations_freqs_files.append(colligations_freqs_file)
 
-            # Frequency (Tokens)
-            for i in range(len_search_term_min, len_search_term_max + 1):
-                    ngrams_freq_files.append(collections.Counter(nltk.ngrams(tokens, i)))
-
-            # Frequency (POS tags)
-            pos_tags_freq_files.append(collections.Counter(text.tags_pos))
+            # Frequency (All)
+            colligations_freqs_files_all.append(colligations_freqs_file_all)
 
             # Nodes Text
             if settings['token_settings']['use_tags']:
-                for (node, collocate) in collocates_freqs_file:
+                for (node, collocate) in colligations_freqs_file:
                     self.nodes_text[node] = wordless_text_processing.wordless_word_detokenize(self.main, node, text.lang_code)
             else:
-                for (node, collocate) in collocates_freqs_file:
+                for (node, collocate) in colligations_freqs_file:
                     self.nodes_text[node] = ' '.join(node)
 
             texts.append(text)
 
         # Total
         if len(files) > 1:
-            collocates_freqs_total = {}
+            colligations_freqs_total = {}
+            colligations_freqs_total_all = {}
 
-            text_total = wordless_text.Wordless_Text_Blank()
-            text_total.tokens = [token for text in texts for token in text.tokens]
+            texts.append(wordless_text.Wordless_Text_Blank())
 
-            texts.append(text_total)
-            ngrams_freq_files.append(sum(ngrams_freq_files, collections.Counter()))
-            pos_tags_freq_files.append(sum(pos_tags_freq_files, collections.Counter()))
-
-            for collocates_freqs_file in self.collocates_freqs_files:
-                for collocate, freqs in collocates_freqs_file.items():
-                    if collocate not in collocates_freqs_total:
-                        collocates_freqs_total[collocate] = numpy.array(freqs)
+            # Frequency
+            for colligations_freqs_file in self.colligations_freqs_files:
+                for colligation, freqs in colligations_freqs_file.items():
+                    if colligation not in colligations_freqs_total:
+                        colligations_freqs_total[colligation] = freqs
                     else:
-                        collocates_freqs_total[collocate] += numpy.array(freqs)
+                        colligations_freqs_total[colligation] = list(map(operator.add, colligations_freqs_total[colligation], freqs))
+            # Frequency (All)
+            for colligations_freqs_file_all in colligations_freqs_files_all:
+                for ngram_size, colligations_freqs in colligations_freqs_file_all.items():
+                    if ngram_size not in colligations_freqs_total_all:
+                        colligations_freqs_total_all[ngram_size] = collections.Counter()
 
-            self.collocates_freqs_files.append(collocates_freqs_total)
+                    colligations_freqs_total_all[ngram_size] += colligations_freqs
+
+            self.colligations_freqs_files.append(colligations_freqs_total)
+            colligations_freqs_files_all.append(colligations_freqs_total_all)
 
         self.progress_updated.emit(self.tr('Processing data ...'))
 
@@ -803,36 +807,44 @@ class Wordless_Worker_Process_Data_Colligation(wordless_threading.Wordless_Worke
         test_significance = self.main.settings_global['tests_significance']['collocation'][text_test_significance]['func']
         measure_effect_size = self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['func']
 
-        collocates_total = self.collocates_freqs_files[-1].keys()
+        colligations_total = self.colligations_freqs_files[-1].keys()
 
-        for text, ngrams_freq_file, pos_tags_freq_file, collocates_freqs_file in zip(texts,
-                                                                                     ngrams_freq_files,
-                                                                                     pos_tags_freq_files,
-                                                                                     self.collocates_freqs_files):
-            collocates_stats_file = {}
+        for text, colligations_freqs_file, colligations_freqs_file_all in zip(texts,
+                                                                              self.colligations_freqs_files,
+                                                                              colligations_freqs_files_all):
+            colligations_stats_file = {}
+            c1xs = collections.Counter()
+            cx1s = collections.Counter()
+            cxxs = {}
 
-            len_tokens = len(text.tokens)
+            # C1x & Cx1
+            for ngram_size, colligations_freqs in colligations_freqs_file_all.items():
+                for (node, collocate), freq in colligations_freqs.items():
+                    c1xs[collocate] += freq
+                    cx1s[node] += freq
 
-            for node, collocate in collocates_total:
-                len_node = len(node)
+            # Cxx
+            for ngram_size, colligations_freqs in colligations_freqs_file_all.items():
+                cxxs[ngram_size] = sum(colligations_freqs.values())
 
-                if (node, collocate) in collocates_freqs_file:
-                    c11 = sum(collocates_freqs_file[(node, collocate)])
+            for node, collocate in colligations_total:
+                if (node, collocate) in colligations_freqs_file:
+                    c11 = sum(colligations_freqs_file[(node, collocate)])
                 else:
                     c11 = 0
 
-                c12 = max(0, pos_tags_freq_file[(collocate,)] - c11)
-                c21 = max(0, ngrams_freq_file[node] - c11)
-                c22 = len_tokens - c11 - c12 - c21
+                c12 = c1xs[collocate] - c11
+                c21 = cx1s[node] - c11
+                c22 = cxxs[len(node)] - c11 - c12 - c21
 
-                collocates_stats_file[(node, collocate)] = test_significance(self.main, c11, c12, c21, c22)
-                collocates_stats_file[(node, collocate)].append(measure_effect_size(self.main, c11, c12, c21, c22))
+                colligations_stats_file[(node, collocate)] = test_significance(self.main, c11, c12, c21, c22)
+                colligations_stats_file[(node, collocate)].append(measure_effect_size(self.main, c11, c12, c21, c22))
 
-            self.collocates_stats_files.append(collocates_stats_file)
+            self.colligations_stats_files.append(colligations_stats_file)
 
         if len(files) == 1:
-            self.collocates_freqs_files *= 2
-            self.collocates_stats_files *= 2
+            self.colligations_freqs_files *= 2
+            self.colligations_stats_files *= 2
 
 class Wordless_Worker_Process_Data_Colligation_Table(Wordless_Worker_Process_Data_Colligation):
     def process_data(self):
@@ -842,8 +854,8 @@ class Wordless_Worker_Process_Data_Colligation_Table(Wordless_Worker_Process_Dat
 
         time.sleep(0.1)
 
-        self.processing_finished.emit(wordless_misc.merge_dicts(self.collocates_freqs_files),
-                                      wordless_misc.merge_dicts(self.collocates_stats_files),
+        self.processing_finished.emit(wordless_misc.merge_dicts(self.colligations_freqs_files),
+                                      wordless_misc.merge_dicts(self.colligations_stats_files),
                                       self.nodes_text)
 
 class Wordless_Worker_Process_Data_Colligation_Fig(Wordless_Worker_Process_Data_Colligation):
@@ -854,14 +866,14 @@ class Wordless_Worker_Process_Data_Colligation_Fig(Wordless_Worker_Process_Data_
 
         time.sleep(0.1)
 
-        self.processing_finished.emit(wordless_misc.merge_dicts(self.collocates_freqs_files),
-                                      wordless_misc.merge_dicts(self.collocates_stats_files),
+        self.processing_finished.emit(wordless_misc.merge_dicts(self.colligations_freqs_files),
+                                      wordless_misc.merge_dicts(self.colligations_stats_files),
                                       self.nodes_text)
 
 @wordless_misc.log_timing
 def generate_table(main, table):
-    def data_received(collocates_freqs_files, collocates_stats_files, nodes_text):
-        if collocates_freqs_files:
+    def data_received(colligations_freqs_files, colligations_stats_files, nodes_text):
+        if colligations_freqs_files:
             table.clear_table()
 
             table.settings = main.settings_custom
@@ -978,10 +990,10 @@ def generate_table(main, table):
             table.setSortingEnabled(False)
             table.setUpdatesEnabled(False)
 
-            table.setRowCount(len(collocates_freqs_files))
+            table.setRowCount(len(colligations_freqs_files))
 
-            for i, ((node, collocate), stats_files) in enumerate(wordless_sorting.sorted_collocates_stats_files(collocates_stats_files)):
-                freqs_files = collocates_freqs_files[(node, collocate)]
+            for i, ((node, collocate), stats_files) in enumerate(wordless_sorting.sorted_collocations_stats_files(colligations_stats_files)):
+                freqs_files = colligations_freqs_files[(node, collocate)]
 
                 # Rank
                 table.set_item_num_int(i, 0, -1)
@@ -1065,8 +1077,8 @@ def generate_table(main, table):
 
 @wordless_misc.log_timing
 def generate_fig(main):
-    def data_received(collocates_freqs_files, collocates_stats_files, nodes_text):
-        if collocates_freqs_files:
+    def data_received(colligations_freqs_file, colligations_stats_files, nodes_text):
+        if colligations_freqs_file:
             text_test_significance = settings['generation_settings']['test_significance']
             text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
@@ -1085,40 +1097,40 @@ def generate_fig(main):
                     span_position = span_positions.index(int(settings['fig_settings']['use_data'][1:]))
 
                 collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
-                                         for (node, collocate), freqs in collocates_freqs_files.items()}
+                                         for (node, collocate), freqs in colligations_freqs_file.items()}
 
                 wordless_fig_freq.wordless_fig_freq(main, collocates_freq_files,
                                                     settings = settings['fig_settings'],
                                                     label_x = main.tr('Collocates'))
             elif settings['fig_settings']['use_data'] == main.tr('Frequency'):
                 collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
-                                         for (node, collocate), freqs in collocates_freqs_files.items()}
+                                         for (node, collocate), freqs in colligations_freqs_file.items()}
 
                 wordless_fig_freq.wordless_fig_freq(main, collocates_freq_files,
                                                     settings = settings['fig_settings'],
                                                     label_x = main.tr('Collocates'))
             else:
-                collocates_stats_files = {', '.join([nodes_text[node], collocate]): freqs
-                                          for (node, collocate), freqs in collocates_stats_files.items()}
+                colligations_stats_files = {', '.join([nodes_text[node], collocate]): freqs
+                                          for (node, collocate), freqs in colligations_stats_files.items()}
 
                 if settings['fig_settings']['use_data'] == text_test_stat:
                     collocates_stat_files = {collocate: numpy.array(stats_files)[:, 0]
-                                             for collocate, stats_files in collocates_stats_files.items()}
+                                             for collocate, stats_files in colligations_stats_files.items()}
 
                     label_y = text_test_stat
                 elif settings['fig_settings']['use_data'] == text_p_value:
                     collocates_stat_files = {collocate: numpy.array(stats_files)[:, 1]
-                                             for collocate, stats_files in collocates_stats_files.items()}
+                                             for collocate, stats_files in colligations_stats_files.items()}
 
                     label_y = text_p_value
                 elif settings['fig_settings']['use_data'] == text_bayes_factor:
                     collocates_stat_files = {collocate: numpy.array(stats_files)[:, 2]
-                                             for collocate, stats_files in collocates_stats_files.items()}
+                                             for collocate, stats_files in colligations_stats_files.items()}
 
                     label_y = text_bayes_factor
                 elif settings['fig_settings']['use_data'] == text_effect_size:
                     collocates_stat_files = {collocate: numpy.array(stats_files)[:, 3]
-                                             for collocate, stats_files in collocates_stats_files.items()}
+                                             for collocate, stats_files in colligations_stats_files.items()}
 
                     label_y = text_effect_size
 
@@ -1135,7 +1147,7 @@ def generate_fig(main):
 
         dialog_progress.accept()
 
-        if collocates_freqs_files:
+        if colligations_freqs_file:
             wordless_fig.show_fig()
 
     settings = main.settings_custom['colligation']
