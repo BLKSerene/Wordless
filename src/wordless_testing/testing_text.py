@@ -21,7 +21,7 @@ def new_file(file_name, text_type):
 
     new_file['lang'] = 'eng'
     new_file['text_type'] = text_type
-    new_file['path'] = f'wordless_testing/files/tags/{file_name}'
+    new_file['path'] = f'wordless_testing/files/tags/{file_name}.txt'
     new_file['encoding'] = 'utf_8'
 
     return new_file
@@ -54,18 +54,18 @@ def testing_text(title, file, tokens_only = True):
 
 main = testing_init.Testing_Main()
 
-file_untokenized_untagged = new_file(file_name = 'untokenized_untagged.txt',
-                                     text_type = ['untokenized', 'untagged'])
-file_untokenized_tagged_non_pos = new_file(file_name = 'untokenized_untagged_non_pos.txt',
-                                           text_type = ['untokenized', 'tagged_non_pos'])
-file_tokenized_untagged = new_file(file_name = 'tokenized_untagged.txt',
-                                   text_type = ['tokenized', 'untagged'])
-file_tokenized_tagged_pos = new_file(file_name = 'tokenized_tagged_pos.txt',
-                                     text_type = ['tokenized', 'tagged_pos'])
-file_tokenized_tagged_non_pos = new_file(file_name = 'tokenized_tagged_non_pos.txt',
-                                         text_type = ['tokenized', 'tagged_non_pos'])
-file_tokenized_tagged_both = new_file(file_name = 'tokenized_tagged_both.txt',
-                                      text_type = ['tokenized', 'tagged_both'])
+file_untokenized_untagged = new_file(file_name = 'untokenized_untagged',
+                                     text_type = ('untokenized', 'untagged'))
+file_untokenized_tagged_non_pos = new_file(file_name = 'untokenized_untagged_non_pos',
+                                           text_type = ('untokenized', 'tagged_non_pos'))
+file_tokenized_untagged = new_file(file_name = 'tokenized_untagged',
+                                   text_type = ('tokenized', 'untagged'))
+file_tokenized_tagged_pos = new_file(file_name = 'tokenized_tagged_pos',
+                                     text_type = ('tokenized', 'tagged_pos'))
+file_tokenized_tagged_non_pos = new_file(file_name = 'tokenized_tagged_non_pos',
+                                         text_type = ('tokenized', 'tagged_non_pos'))
+file_tokenized_tagged_both = new_file(file_name = 'tokenized_tagged_both',
+                                      text_type = ('tokenized', 'tagged_both'))
 
 testing_text(title = 'Untokenized / Untagged',
              file = file_untokenized_untagged, tokens_only = True)
