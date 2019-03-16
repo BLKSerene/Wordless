@@ -119,10 +119,10 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.button_clear_hightlights = QPushButton(self.tr('Clear Highlights'), self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
-        self.button_find_next.setFixedWidth(105)
-        self.button_find_prev.setFixedWidth(105)
-        self.button_find_all.setFixedWidth(105)
-        self.button_clear_hightlights.setFixedWidth(105)
+        self.button_find_next.setFixedWidth(110)
+        self.button_find_prev.setFixedWidth(110)
+        self.button_find_all.setFixedWidth(110)
+        self.button_clear_hightlights.setFixedWidth(110)
 
         self.button_reset_settings.setFixedWidth(120)
         self.button_close.setFixedWidth(90)
@@ -245,9 +245,9 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
                 self.setFixedSize(370, 280)
         elif platform.system() == 'Darwin':
             if self.settings['multi_search_mode']:
-                self.setFixedSize(390, 430)
+                self.setFixedSize(380, 430)
             else:
-                self.setFixedSize(390, 300)
+                self.setFixedSize(380, 300)
 
     @wordless_misc.log_timing
     def find_next(self):
