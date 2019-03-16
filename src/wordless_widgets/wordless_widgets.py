@@ -212,17 +212,9 @@ def wordless_widgets_search_settings(parent, tab):
         token_settings = main.settings_custom[tab]['token_settings']
         
         if line_edit_search_term.isEnabled() == True:
-            combo_box_ignore_tags.blockSignals(True)
-
-            combo_box_ignore_tags.clear()
-
             if token_settings['use_tags']:
-                combo_box_ignore_tags.addItems([
-                    parent.tr('POS'),
-                    parent.tr('non-POS')
-                ])
-
                 checkbox_match_tags.setEnabled(False)
+                checkbox_match_tags.setChecked(True)
 
                 if token_settings['ignore_tags_tags']:
                     stacked_widget_ignore_tags.setEnabled(False)
@@ -231,11 +223,7 @@ def wordless_widgets_search_settings(parent, tab):
                     stacked_widget_ignore_tags.setEnabled(True)
                     stacked_widget_ignore_tags_type.setEnabled(True)
             else:
-                combo_box_ignore_tags.addItems([
-                    parent.tr('all'),
-                    parent.tr('POS'),
-                    parent.tr('non-POS')
-                ])
+                checkbox_match_tags.setChecked(False)
 
                 if token_settings['ignore_tags']:
                     if token_settings['ignore_tags_type'] == parent.tr('All'):
@@ -256,12 +244,8 @@ def wordless_widgets_search_settings(parent, tab):
                     stacked_widget_ignore_tags_type.setEnabled(True)
                     checkbox_match_tags.setEnabled(True)
 
-            combo_box_ignore_tags.blockSignals(False)
-
             if checkbox_match_tags.isEnabled():
                 match_tags_changed()
-            elif token_settings['use_tags']:
-                checkbox_match_inflected_forms.setEnabled(False)
 
     main = wordless_misc.find_wordless_main(parent)
 
