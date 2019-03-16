@@ -657,7 +657,7 @@ Korean|UHC        |✔
 Nordic Languages|CP865      |✖
 Nordic Languages|ISO-8859-10|✔
 North European|ISO-8859-4|✔
-Persian|Mac OS Farsi|✖
+Persian/Urdu|Mac OS Farsi|✖
 Portuguese|CP860|✖
 Romanian|Mac OS Romanian|✖
 Russian|KOI8-R|✔
@@ -674,7 +674,6 @@ Turkish|Windows-1254  |✖
 Ukrainian|CP1125|✖
 Ukrainian|KOI8-U|✖
 Urdu|CP1006      |✖
-Urdu|Mac OS Farsi|✖
 Vietnamese|CP1258|✖
 Western European|EBCDIC 500  |✖
 Western European|CP850       |✖
