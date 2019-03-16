@@ -24,8 +24,8 @@ def to_lang_text(main, lang_code):
         return langs[lang_code]
 
 def to_iso_639_3(main, lang_code):
-    for lang_code_639_3, lang_code_639_2 in main.settings_global['lang_codes'].items():
-        if lang_code == lang_code_639_2:
+    for lang_code_639_3, lang_code_639_1 in main.settings_global['lang_codes'].items():
+        if lang_code == lang_code_639_1:
             return lang_code_639_3
 
 def to_iso_639_1(main, lang_code):

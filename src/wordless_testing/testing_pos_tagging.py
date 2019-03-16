@@ -72,52 +72,7 @@ tokens_bod = ['༄༅། །', 'རྒྱ་གར་', 'སྐད་', 'དུ'
 tokens_ukr = ['Украї́нська', 'мо́ва', '(', 'МФА', ':', '[', 'ʊkrɐˈjɪɲsʲkɐ', 'ˈmɔwɐ', ']', ',', 'історичні', 'назви', '—', 'ру́ська', ',', 'руси́нська[9][10][11', ']', '[', '*', '2', ']', ')', '—', 'національна', 'мова', 'українців.']
 tokens_vie = ['Tiếng', 'Việt', ',', 'còn', 'gọi', 'tiếng', 'Việt_Nam', '[', '5', ']', 'hay', 'Việt_ngữ', ',', 'là', 'ngôn_ngữ', 'của', 'người', 'Việt', '(', 'người', 'Kinh', ')', 'và', 'là', 'ngôn_ngữ', 'chính_thức', 'tại', 'Việt_Nam', '.']
 
-testing_pos_tag(lang = 'zho_cn',
-                pos_tagger = 'jieba - Chinese POS Tagger')
-testing_pos_tag(lang = 'zho_tw',
-                pos_tagger = 'jieba - Chinese POS Tagger')
-
-testing_pos_tag(lang = 'nld',
-                pos_tagger = 'spaCy - Dutch POS Tagger')
-
-testing_pos_tag(lang = 'eng',
-                pos_tagger = 'NLTK - Perceptron POS Tagger')
-testing_pos_tag(lang = 'eng',
-                pos_tagger = 'spaCy - English POS Tagger')
-
-testing_pos_tag(lang = 'fra',
-                pos_tagger = 'spaCy - French POS Tagger')
-
-testing_pos_tag(lang = 'deu',
-                pos_tagger = 'spaCy - German POS Tagger')
-
-testing_pos_tag(lang = 'ita',
-                pos_tagger = 'spaCy - Italian POS Tagger')
-
-testing_pos_tag(lang = 'jpn',
-                pos_tagger = 'nagisa - Japanese POS Tagger')
-
-testing_pos_tag(lang = 'por',
-                pos_tagger = 'spaCy - Portuguese POS Tagger')
-
-testing_pos_tag(lang = 'rus',
-                pos_tagger = 'NLTK - Perceptron POS Tagger')
-testing_pos_tag(lang = 'rus',
-                pos_tagger = 'pymorphy2 - Morphological Analyzer')
-
-testing_pos_tag(lang = 'spa',
-                pos_tagger = 'spaCy - Spanish POS Tagger')
-
-testing_pos_tag(lang = 'tha',
-                pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus')
-testing_pos_tag(lang = 'tha',
-                pos_tagger = 'PyThaiNLP - Perceptron POS Tagger - PUD Corpus')
-
-testing_pos_tag(lang = 'bod',
-                pos_tagger = 'pybo - Tibetan POS Tagger')
-
-testing_pos_tag(lang = 'ukr',
-                pos_tagger = 'pymorphy2 - Morphological Analyzer')
-
-testing_pos_tag(lang = 'vie',
-                pos_tagger = 'Underthesea - Vietnamese POS Tagger')
+for lang, pos_taggers in main.settings_global['pos_taggers'].items():
+    for pos_tagger in pos_taggers:
+        testing_pos_tag(lang = lang,
+                        pos_tagger = pos_tagger)
