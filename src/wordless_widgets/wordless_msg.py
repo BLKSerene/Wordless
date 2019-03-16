@@ -47,3 +47,6 @@ def wordless_msg_import_list_success(main, num_prev, num_cur):
         main.statusBar().showMessage(main.tr('1 item has been successfully imported into the list.'))
     else:
         main.statusBar().showMessage(main.tr(f'{num_imported:,} items have been successfully imported into the list.'))
+
+def wordless_msg_import_list_error(main):
+    main.statusBar().showMessage(main.tr('An error occured during import!'))

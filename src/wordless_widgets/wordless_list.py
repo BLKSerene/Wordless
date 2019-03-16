@@ -127,29 +127,32 @@ class Wordless_List(QListWidget):
 
             file_paths, files_loading_error = wordless_checking_file.check_files_loading_error(self.main, file_paths, encodings)
 
-            wordless_msg_box.wordless_msg_box_file_error_on_importing(self.main,
-                                                                      files_empty = files_empty,
-                                                                      files_loading_error = files_loading_error)
+            if files_empty or files_loading_error:
+                wordless_msg_box.wordless_msg_box_file_error_on_importing(self.main,
+                                                                          files_empty = files_empty,
+                                                                          files_loading_error = files_loading_error)
 
-            # Check duplicate items
-            items_to_import = []
-            items_cur = self.get_items()
+                wordless_msg.wordless_msg_import_list_error(self.main)
+            else:
+                # Check duplicate items
+                items_to_import = []
+                items_cur = self.get_items()
 
-            num_prev = len(items_cur)
+                num_prev = len(items_cur)
 
-            for file in files:
-                if file['path'] in file_paths:
-                    with open(file['path'], 'r', encoding = file['encoding']) as f:
-                        for line in f:
-                            line = line.strip()
+                for file in files:
+                    if file['path'] in file_paths:
+                        with open(file['path'], 'r', encoding = file['encoding']) as f:
+                            for line in f:
+                                line = line.strip()
 
-                            if line not in items_cur:
-                                items_to_import.append(line)
+                                if line not in items_cur:
+                                    items_to_import.append(line)
 
-            self.load_items(collections.OrderedDict.fromkeys(items_to_import))
-            self.itemChanged.emit(self.item(0))
+                self.load_items(collections.OrderedDict.fromkeys(items_to_import))
+                self.itemChanged.emit(self.item(0))
 
-            wordless_msg.wordless_msg_import_list_success(self.main, num_prev, len(self.get_items()))
+                wordless_msg.wordless_msg_import_list_success(self.main, num_prev, len(self.get_items()))
 
     def export_list(self, settings):
         default_dir = self.main.settings_custom['export'][settings]['default_path']

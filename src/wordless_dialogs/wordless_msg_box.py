@@ -111,6 +111,12 @@ def wordless_msg_box_file_error_on_opening(main,
                                 '''),
                                 QMessageBox.Ok)
 
+class Wordless_Msg_Box_File_Error_On_Importing(Wordless_Msg_Box_Info):
+    def __init__(self, main, text):
+        super().__init__(main = main,
+                         title = main.tr('Error Importing File'),
+                         text = text)
+
 def wordless_msg_box_file_error_on_importing(main,
                                              files_empty,
                                              files_loading_error):
@@ -126,19 +132,23 @@ def wordless_msg_box_file_error_on_importing(main,
         text_singular = main.tr('Failed to load the following file due to an encoding error:'),
         text_plural = main.tr('Failed to load the following files due to encoding errors:'))
 
+    msg = f'''
+        <div>
+            An error occurred during import, please check the files and try again.
+        </div>
+        {msg}
+    '''
+
     if msg:
-        QMessageBox.information(main,
-                                main.tr('Error Importing File'),
-                                main.tr(f'''
-                                    {main.settings_global['styles']['style_dialog']}
-                                    <body>
-                                        <div>
-                                            An error occurred while importing the files, so some files are skipped and will not be imported into the list.
-                                        </div>
-                                        {msg}
-                                    </body>
-                                '''),
-                                QMessageBox.Ok)
+        msg_box_file_error_on_importing = Wordless_Msg_Box_File_Error_On_Importing(main, msg)
+
+        msg_box_file_error_on_importing.open()
+
+class Wordless_Msg_Box_File_Error_On_Loading(Wordless_Msg_Box_Info):
+    def __init__(self, main, text):
+        super().__init__(main = main,
+                         title = main.tr('Error Loading File'),
+                         text = text)
 
 def wordless_msg_box_file_error_on_loading(main,
                                            files_missing,
@@ -162,18 +172,15 @@ def wordless_msg_box_file_error_on_loading(main,
         text_plural = main.tr('Failed to load the following files due to encoding errors:'))
 
     if msg:
-        QMessageBox.information(main,
-                                main.tr('Error Loading File'),
-                                main.tr(f'''
-                                    {main.settings_global['styles']['style_dialog']}
-                                    <body>
-                                        <div>
-                                            An error occurred while loading the files, so some files will be removed from the file area. Please check your settings and try again.
-                                        </div>
-                                        {msg}
-                                    </body>
-                                '''),
-                                QMessageBox.Ok)
+        msg = f'''
+            <div>
+                An error occurred while loading the files, so some files will be removed from the file area. Please check your settings and try again.
+            </div>
+        '''
+
+        msg_box_file_error_on_loading = Wordless_Msg_Box_File_Error_On_Loading(main, msg)
+
+        msg_box_file_error_on_loading.open()
 
 def wordless_msg_box_file_error_on_loading_colligation(main,
                                                        files_unsupported_pos_tagging):
@@ -185,15 +192,9 @@ def wordless_msg_box_file_error_on_loading_colligation(main,
         text_plural = main.tr('The built-in POS taggers currently have no support for the languages of the following files, please check your settings or provide files that have already been POS-tagged.'))
 
     if msg:
-        QMessageBox.information(main,
-                                main.tr('Error Loading File'),
-                                main.tr(f'''
-                                    {main.settings_global['styles']['style_dialog']}
-                                    <body>
-                                        {msg}
-                                    </body>
-                                '''),
-                                QMessageBox.Ok)
+        msg_box_file_error_on_loading = Wordless_Msg_Box_File_Error_On_Loading(main, msg)
+
+        msg_box_file_error_on_loading.open()
 
 def wordless_msg_box_detection_failed(main,
                                       files_detection_failed_encoding,
@@ -374,6 +375,11 @@ class Wordless_Msg_Box_No_Files_Selected(Wordless_Msg_Box_Warning):
             ''')
         )
 
+def wordless_msg_box_no_files_selected(main):
+    msg_box_no_files_selected = Wordless_Msg_Box_No_Files_Selected(main)
+
+    msg_box_no_files_selected.open()
+
 class Wordless_Msg_Box_Missing_Observed_File(Wordless_Msg_Box_Warning):
     def __init__(self, main):
         super().__init__(
@@ -383,11 +389,6 @@ class Wordless_Msg_Box_Missing_Observed_File(Wordless_Msg_Box_Warning):
                 <div>You have specified your reference file, but you haven't selected any observed file yet.</div>
             ''')
         )
-
-def wordless_msg_box_no_files_selected(main):
-    msg_box_no_files_selected = Wordless_Msg_Box_No_Files_Selected(main)
-
-    msg_box_no_files_selected.open()
 
 def wordless_msg_box_missing_observed_file(main):
     msg_box_missing_observed_file = Wordless_Msg_Box_Missing_Observed_File(main)
@@ -407,6 +408,11 @@ class Wordless_Msg_Box_Missing_Search_Term(Wordless_Msg_Box_Warning):
             ''')
         )
 
+def wordless_msg_box_missing_search_term(main):
+    msg_box_missing_search_term = Wordless_Msg_Box_Missing_Search_Term(main)
+
+    msg_box_missing_search_term.open()
+
 class Wordless_Msg_Box_Missing_Search_Term_Optional(Wordless_Msg_Box_Warning):
     def __init__(self, main):
         super().__init__(
@@ -422,11 +428,6 @@ class Wordless_Msg_Box_Missing_Search_Term_Optional(Wordless_Msg_Box_Warning):
                 </div>
             ''')
         )
-
-def wordless_msg_box_missing_search_term(main):
-    msg_box_missing_search_term = Wordless_Msg_Box_Missing_Search_Term(main)
-
-    msg_box_missing_search_term.open()
 
 def wordless_msg_box_missing_search_term_optional(main):
     msg_box_missing_search_term_optional = Wordless_Msg_Box_Missing_Search_Term_Optional(main)
@@ -445,6 +446,11 @@ class Wordless_Msg_Box_No_Results(Wordless_Msg_Box_Warning):
             ''')
         )
 
+def wordless_msg_box_no_results(main):
+    msg_box_no_results = Wordless_Msg_Box_No_Results(main)
+
+    msg_box_no_results.open()
+
 class Wordless_Msg_Box_No_Search_Results(Wordless_Msg_Box_Warning):
     def __init__(self, main):
         super().__init__(
@@ -455,11 +461,6 @@ class Wordless_Msg_Box_No_Search_Results(Wordless_Msg_Box_Warning):
                 <div>You can change your settings and try again.</div>
             ''')
         )
-
-def wordless_msg_box_no_results(main):
-    msg_box_no_results = Wordless_Msg_Box_No_Results(main)
-
-    msg_box_no_results.open()
 
 def wordless_msg_box_no_search_results(main):
     msg_box_no_search_results = Wordless_Msg_Box_No_Search_Results(main)
