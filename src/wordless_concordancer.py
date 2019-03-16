@@ -1015,7 +1015,7 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                         concordance_line.append([i + 1, len_tokens])
 
                         # Sentence
-                        if text.sentence_offsets[-1] < i:
+                        if text.sentence_offsets[-1] <= i:
                             sentence_no = len_sentences
                         else:
                             for j, i_sentence in enumerate(text.sentence_offsets):
@@ -1027,7 +1027,7 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                         concordance_line.append([sentence_no, len_sentences])
 
                         # Paragraph
-                        if text.para_offsets[-1] < i:
+                        if text.para_offsets[-1] <= i:
                             para_no = len_paras
                         else:
                             for j, i_para in enumerate(text.para_offsets):
