@@ -766,7 +766,7 @@ class Wordless_Worker_Process_Data_Colligation(wordless_threading.Wordless_Worke
             # Nodes Text
             if settings['token_settings']['use_tags']:
                 for (node, collocate) in colligations_freqs_file:
-                    self.nodes_text[node] = wordless_text_processing.wordless_word_detokenize(self.main, node, text.lang_code)
+                    self.nodes_text[node] = wordless_text_processing.wordless_word_detokenize(self.main, node, text.lang)
             else:
                 for (node, collocate) in colligations_freqs_file:
                     self.nodes_text[node] = ' '.join(node)
