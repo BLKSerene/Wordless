@@ -354,7 +354,7 @@ def init_settings_global(main):
 
             main.tr('North European (ISO-8859-4)'): 'iso8859_4',
 
-            main.tr('Persian (Mac OS Farsi)'): 'mac_farsi',
+            main.tr('Persian/Urdu (Mac OS Farsi)'): 'mac_farsi',
 
             main.tr('Portuguese (CP860)'): 'cp860',
 
@@ -380,7 +380,6 @@ def init_settings_global(main):
             main.tr('Ukrainian (KOI8-U)'): 'koi8_u',
 
             main.tr('Urdu (CP1006)'): 'cp1006',
-            main.tr('Urdu (Mac OS Farsi)'): 'mac_farsi',
 
             main.tr('Vietnamese (CP1258)'): 'cp1258',
 
