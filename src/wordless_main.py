@@ -387,12 +387,15 @@ class Wordless_Main(QMainWindow):
             wrapper_file_area.layout().setContentsMargins(0, 0, 2, 0)
         elif platform.system() == 'Darwin':
             wrapper_file_area.layout().setContentsMargins(3, 0, 3, 0)
+        elif platform.system() == 'Linux':
+            self.wordless_file_area.layout().setContentsMargins(0, 0, 2, 0)
+            wrapper_file_area.layout().setContentsMargins(0, 0, 0, 0)
 
         splitter_central_widget = wordless_layout.Wordless_Splitter(Qt.Vertical, self)
         splitter_central_widget.addWidget(self.wordless_work_area)
         splitter_central_widget.addWidget(wrapper_file_area)
 
-        if platform.system() == 'Windows':
+        if platform.system() in ['Windows', 'Linux']:
             splitter_central_widget.setHandleWidth(1)
         elif platform.system() == 'Darwin':
             splitter_central_widget.setHandleWidth(2)
