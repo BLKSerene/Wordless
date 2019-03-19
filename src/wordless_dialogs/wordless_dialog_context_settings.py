@@ -401,6 +401,11 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
                 self.setFixedSize(560, 500)
             else:
                 self.setFixedSize(560, 375)
+        elif platform.system() == 'Linux':
+            if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
+                self.setFixedSize(530, 490)
+            else:
+                self.setFixedSize(530, 380)
 
     def token_settings_changed(self):
         self.inclusion_checkbox_match_tags.token_settings_changed()
