@@ -34,6 +34,11 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
                              width = 400,
                              height = 250,
                              no_button = True)
+        elif platform.system() == 'Linux':
+            super().__init__(main, main.tr('Citing'),
+                             width = 400,
+                             height = 210,
+                             no_button = True)
 
         self.label_citing = wordless_label.Wordless_Label_Dialog(
             self.tr('''
