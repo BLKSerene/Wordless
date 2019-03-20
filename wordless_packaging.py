@@ -30,6 +30,8 @@ elif platform.system() == 'Darwin':
         '--noconfirm',
         'wordless_packaging.spec'
     ])
+elif platform.system() == 'Linux':
+    os.system('python3.7 -m PyInstaller -y wordless_packaging.spec')
 
 time_elapsed_packaging = time.time() - time_start_packaging
 print(f'Packaging done! (In {int(time_elapsed_packaging // 60)} minutes {int(time_elapsed_packaging % 60)} seconds)')
@@ -77,3 +79,5 @@ elif platform.system() == 'Darwin':
     os.chdir('..')
 
     subprocess.call(['open', './Wordless.app'])
+elif platform.system() == 'Linux':
+    os.system('./Wordless')

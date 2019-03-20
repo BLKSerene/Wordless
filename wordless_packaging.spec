@@ -113,6 +113,15 @@ elif platform.system() == 'Darwin':
         'joblib',
         'PIL'
     ]
+elif platform.system() == 'Linux':
+    excludes = [
+        'joblib'
+    ]
+
+if platform.system() in ['Windows', 'Linux']:
+    icon = 'src/imgs/wordless_icon.ico'
+elif platform.system() == 'Darwin':
+    icon = 'src/imgs/wordless_icon.icns'
 
 a = Analysis(['src/wordless_main.py'],
              pathex = [],
@@ -129,11 +138,6 @@ a = Analysis(['src/wordless_main.py'],
 
 pyz = PYZ(a.pure, a.zipped_data,
           cipher = block_cipher)
-
-if platform.system() == 'Windows':
-    icon = 'src/imgs/wordless_icon.ico'
-elif platform.system() == 'Darwin':
-    icon = 'src/imgs/wordless_icon.icns'
 
 exe = EXE(pyz,
           a.scripts,
