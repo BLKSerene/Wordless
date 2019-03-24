@@ -693,7 +693,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
             {main.settings_global['styles']['style_changelog']}
             <body>
                 <div>
-                    <h3>v1.0.0 - 03/17/2019</h3>
+                    <h3><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.0.0">v1.0.0</a> - 03/17/2019</h3>
                     <hr>
                     <ul>
                         <li>&nbsp;First release</li>
@@ -706,11 +706,9 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                          width = 450,
                          height = 420)
 
-        text_edit_changelog = QTextEdit()
+        text_edit_changelog = wordless_box.Wordless_Text_Browser(self)
 
         text_edit_changelog.setHtml(changelog)
-        text_edit_changelog.setReadOnly(True)
-        text_edit_changelog.setContentsMargins(3, 3, 3, 3)
 
         self.wrapper_info.layout().addWidget(text_edit_changelog, 0, 0)
 
