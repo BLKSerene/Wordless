@@ -129,7 +129,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
-                '5.12',
+                '5.12.1',
                 'Riverbank Computing Limited',
                 '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a>'
             ]
@@ -692,12 +692,34 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
         changelog = main.tr(f'''
             {main.settings_global['styles']['style_changelog']}
             <body>
-                <div>
-                    <h3><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.0.0">v1.0.0</a> - 03/17/2019</h3>
+                <div class="changelog">
+                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.0.0">v1.0.0</a> - 03/17/2019</div>
                     <hr>
-                    <ul>
-                        <li>&nbsp;First release</li>
-                    </ul>
+
+                    <div class="changelog-section">
+                        <ul>
+                            <li>First release</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="changelog">
+                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.1.0">v1.1.0</a> - 03/25/2019</div>
+                    <hr>
+
+                    <div class="changelog-section">
+                        <div class="changelog-section-header">Bug Fixes</div>
+                        <ul>
+                            <li>Fix "Open Folder"</li>
+                        </ul>
+                    </div>
+
+                    <div class="changelog-section">
+                        <div class="changelog-section-header">Dependency Updates</div>
+                        <ul>
+                            <li>Update PyQt to 5.12.1</li>
+                        </ul>
+                    </div>
                 </div>
             </body>
         ''')
