@@ -22,7 +22,14 @@ class Wordless_Combo_Box(QComboBox):
 
         self.main = wordless_misc.find_wordless_main(parent)
 
-        self.setMaxVisibleItems(25)
+        self.setMaxVisibleItems(20)
+        self.setFocusPolicy(Qt.StrongFocus)
+
+    def wheelEvent(self, event):
+        if self.hasFocus():
+            QComboBox.wheelEvent(self, event)
+        else:
+            event.ignore()
 
 class Wordless_Combo_Box_Adjustable(Wordless_Combo_Box):
     def __init__(self, parent):
@@ -106,7 +113,35 @@ class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box):
             self.addItem(self.tr('*** None ***'))
 
 # Spin Box
-class Wordless_Spin_Box_Window(QSpinBox):
+class Wordless_Spin_Box(QSpinBox):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.main = wordless_misc.find_wordless_main(parent)
+
+        self.setFocusPolicy(Qt.StrongFocus)
+
+    def wheelEvent(self, event):
+        if self.hasFocus():
+            QSpinBox.wheelEvent(self, event)
+        else:
+            event.ignore()
+
+class Wordless_Double_Spin_Box(QDoubleSpinBox):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.main = wordless_misc.find_wordless_main(parent)
+
+        self.setFocusPolicy(Qt.StrongFocus)
+
+    def wheelEvent(self, event):
+        if self.hasFocus():
+            QSpinBox.wheelEvent(self, event)
+        else:
+            event.ignore()
+
+class Wordless_Spin_Box_Window(Wordless_Spin_Box):
     def __init__(self, parent):
         super().__init__(parent)
 
