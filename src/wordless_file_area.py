@@ -648,7 +648,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
                                                     self.main.settings_custom['import']['files']['default_path'])
 
         if file_dir:
-            if self.main.settings_custom['files']['subfolders']:
+            if self.main.settings_custom['files']['folder_settings']['subfolders']:
                 for dir_path, dir_names, file_names in os.walk(file_dir):
                     for file_name in file_names:
                         file_paths.append(os.path.join(dir_path, file_name))
