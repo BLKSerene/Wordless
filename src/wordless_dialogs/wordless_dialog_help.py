@@ -187,7 +187,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://spacy.io/">spaCy</a>',
-                '2.1.0a13',
+                '2.1.3',
                 'Matthew Honnibal, Ines Montani',
                 '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'
             ],
@@ -719,6 +719,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <ul>
                             <li>Update PyQt to 5.12.1</li>
                             <li>Update SacreMoses to 0.0.13</li>
+                            <li>Update spaCy to 2.1.3</li>
                         </ul>
                     </div>
                 </div>
