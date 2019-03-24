@@ -28,8 +28,8 @@ from wordless_figs import wordless_fig, wordless_fig_freq, wordless_fig_stat
 from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
                            wordless_text_utils, wordless_token_processing)
 from wordless_utils import wordless_misc, wordless_sorting, wordless_threading
-from wordless_widgets import (wordless_layout, wordless_msg, wordless_table,
-                              wordless_widgets)
+from wordless_widgets import (wordless_box, wordless_layout, wordless_msg,
+                              wordless_table, wordless_widgets)
 
 class Wordless_Table_Ngrams(wordless_table.Wordless_Table_Data_Filter_Search):
     def __init__(self, parent):
@@ -285,7 +285,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
          self.label_ngram_size_max,
          self.spin_box_ngram_size_max) = wordless_widgets.wordless_widgets_size(self)
         self.checkbox_allow_skipped_tokens = QCheckBox(self.tr('Allow skipped tokens:'), self)
-        self.spin_box_allow_skipped_tokens = QSpinBox(self)
+        self.spin_box_allow_skipped_tokens = wordless_box.Wordless_Spin_Box(self)
 
         (self.label_measure_dispersion,
          self.combo_box_measure_dispersion) = wordless_widgets.wordless_widgets_measure_dispersion(self)

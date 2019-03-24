@@ -21,8 +21,8 @@ from wordless_checking import wordless_checking_file
 from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
 from wordless_text import wordless_text, wordless_text_utils, wordless_token_processing
 from wordless_utils import wordless_misc, wordless_threading
-from wordless_widgets import (wordless_layout, wordless_msg, wordless_table,
-                              wordless_widgets)
+from wordless_widgets import (wordless_box, wordless_layout, wordless_msg,
+                              wordless_table, wordless_widgets)
 
 class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
     def __init__(self, parent):
@@ -162,7 +162,7 @@ class Wrapper_Overview(wordless_layout.Wordless_Wrapper):
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
 
         self.label_base_sttr = QLabel(self.tr('Base of standardized type-token ratio:'), self)
-        self.spin_box_base_sttr = QSpinBox(self)
+        self.spin_box_base_sttr = wordless_box.Wordless_Spin_Box(self)
 
         self.spin_box_base_sttr.setRange(100, 10000)
 

@@ -596,11 +596,11 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
 
         self.label_width_left = QLabel(self.tr('Width (Left):'), self)
-        self.spin_box_width_left_token = QSpinBox(self)
-        self.spin_box_width_left_char = QSpinBox(self)
+        self.spin_box_width_left_token = wordless_box.Wordless_Spin_Box(self)
+        self.spin_box_width_left_char = wordless_box.Wordless_Spin_Box(self)
         self.label_width_right = QLabel(self.tr('Width (Right):'), self)
-        self.spin_box_width_right_token = QSpinBox(self)
-        self.spin_box_width_right_char = QSpinBox(self)
+        self.spin_box_width_right_token = wordless_box.Wordless_Spin_Box(self)
+        self.spin_box_width_right_char = wordless_box.Wordless_Spin_Box(self)
         self.label_width_unit = QLabel(self.tr('Width Unit:'), self)
         self.combo_box_width_unit = wordless_box.Wordless_Combo_Box(self)
 

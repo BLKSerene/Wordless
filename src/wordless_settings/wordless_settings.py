@@ -547,11 +547,11 @@ class Wordless_Settings(QDialog):
         group_box_precision_settings = QGroupBox(self.tr('Precision Settings'), self)
 
         self.label_precision_decimal = QLabel(self.tr('Decimal:'), self)
-        self.spin_box_precision_decimal = QSpinBox(self)
+        self.spin_box_precision_decimal = wordless_box.Wordless_Spin_Box(self)
         self.label_precision_pct = QLabel(self.tr('Percentage:'), self)
-        self.spin_box_precision_pct = QSpinBox(self)
+        self.spin_box_precision_pct = wordless_box.Wordless_Spin_Box(self)
         self.label_precision_p_value = QLabel(self.tr('p-value:'), self)
-        self.spin_box_precision_p_value = QSpinBox(self)
+        self.spin_box_precision_p_value = wordless_box.Wordless_Spin_Box(self)
 
         self.spin_box_precision_decimal.setRange(0, 10)
         self.spin_box_precision_pct.setRange(0, 10)
@@ -1791,7 +1791,7 @@ class Wordless_Settings(QDialog):
         group_box_kilgarriffs_ratio = QGroupBox(self.tr('Kilgarriff\'s Ratio'), self)
 
         self.label_kilgarriffs_ratio_smoothing_param = QLabel(self.tr('Smoothing Parameter:'), self)
-        self.spin_box_kilgarriffs_ratio_smoothing_param = QDoubleSpinBox(self)
+        self.spin_box_kilgarriffs_ratio_smoothing_param = wordless_box.Wordless_Double_Spin_Box(self)
 
         self.spin_box_kilgarriffs_ratio_smoothing_param.setRange(0.01, 10000)
 
