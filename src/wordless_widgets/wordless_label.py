@@ -34,7 +34,7 @@ class Wordless_Label_Dialog(Wordless_Label_Html):
 
         super().__init__(
             f'''
-                {main.settings_global["styles"]["style_dialog"]}
+                {main.settings_global['styles']['style_dialog']}
                 <body>
                     {text}
                 </body>
@@ -45,7 +45,7 @@ class Wordless_Label_Dialog(Wordless_Label_Html):
     def set_text(self, text):
         super().setText(
             f'''
-                {self.main.settings_global["styles"]["style_dialog"]}
+                {self.main.settings_global['styles']['style_dialog']}
                 <body>
                     {text}
                 </body>
