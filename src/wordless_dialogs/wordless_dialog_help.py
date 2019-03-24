@@ -180,7 +180,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/alvations/sacremoses">SacreMoses</a>',
-                '0.0.10',
+                '0.0.13',
                 'Liling Tan',
                 '<a href="https://github.com/alvations/sacremoses#license">LGPL-2.1</a>'
             ],
@@ -718,6 +718,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <div class="changelog-section-header">Dependency Updates</div>
                         <ul>
                             <li>Update PyQt to 5.12.1</li>
+                            <li>Update SacreMoses to 0.0.13</li>
                         </ul>
                     </div>
                 </div>
