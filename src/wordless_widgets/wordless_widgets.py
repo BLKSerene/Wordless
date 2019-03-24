@@ -26,9 +26,9 @@ def wordless_widgets_no_limit(parent, double = False):
             spin_box_no_limit.setEnabled(True)
 
     if double:
-        spin_box_no_limit = QDoubleSpinBox(parent)
+        spin_box_no_limit = wordless_box.Wordless_Double_Spin_Box(parent)
     else:
-        spin_box_no_limit = QSpinBox(parent)
+        spin_box_no_limit = wordless_box.Wordless_Spin_Box(parent)
 
     checkbox_no_limit = QCheckBox(parent.tr('No Limit'), parent)
 
@@ -365,9 +365,9 @@ def wordless_widgets_size(parent, size_min = 1, size_max = 100):
 
     checkbox_size_sync = QCheckBox(parent.tr('Sync'), parent)
     label_size_min = QLabel(parent.tr('From'), parent)
-    spin_box_size_min = QSpinBox(parent)
+    spin_box_size_min = wordless_box.Wordless_Spin_Box(parent)
     label_size_max = QLabel(parent.tr('To'), parent)
-    spin_box_size_max = QSpinBox(parent)
+    spin_box_size_max = wordless_box.Wordless_Spin_Box(parent)
 
     spin_box_size_min.setRange(size_min, size_max)
     spin_box_size_max.setRange(size_min, size_max)
@@ -740,7 +740,7 @@ def wordless_widgets_filter_results(parent, table):
 # Settings -> Measures
 def wordless_widgets_number_sections(parent):
     label_divide = QLabel(parent.tr('Divide each text into'), parent)
-    spin_box_number_sections = QSpinBox(parent)
+    spin_box_number_sections = wordless_box.Wordless_Spin_Box(parent)
     label_sections = QLabel(parent.tr('sections'), parent)
 
     spin_box_number_sections.setRange(2, 1000)
