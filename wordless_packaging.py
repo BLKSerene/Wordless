@@ -24,10 +24,10 @@ if platform.system() == 'Windows':
     os.system('python -m PyInstaller -y wordless_packaging.spec')
 elif platform.system() == 'Darwin':
     subprocess.call([
-        '/Library/Frameworks/Python.framework/Versions/3.7/bin/python3',
+        'python3',
         '-m',
         'PyInstaller',
-        '--noconfirm',
+        '-y',
         'wordless_packaging.spec'
     ])
 elif platform.system() == 'Linux':
