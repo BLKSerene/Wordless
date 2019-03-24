@@ -15,7 +15,7 @@ from PyQt5.QtWidgets import *
 
 from wordless_utils import wordless_misc
 
-# Combo Boxes
+# Combo Box
 class Wordless_Combo_Box(QComboBox):
     def __init__(self, parent):
         super().__init__(parent)
@@ -105,7 +105,7 @@ class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box):
         else:
             self.addItem(self.tr('*** None ***'))
 
-# Spin Boxes
+# Spin Box
 class Wordless_Spin_Box_Window(QSpinBox):
     def __init__(self, parent):
         super().__init__(parent)
@@ -128,3 +128,13 @@ class Wordless_Spin_Box_Window(QSpinBox):
                 self.setPrefix('L')
 
             self.setValue(-self.value() + 1)
+
+# Text Browser
+class Wordless_Text_Browser(QTextBrowser):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.main = wordless_misc.find_wordless_main(parent)
+
+        self.setOpenExternalLinks(True)
+        self.setContentsMargins(3, 3, 3, 3)
