@@ -67,8 +67,11 @@ def wordless_sentence_tokenize(main, text, lang,
         sentences = nltk.sent_tokenize(text, language = lang_texts[lang])
     elif 'spaCy' in sentence_tokenizer:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
+        doc = nlp(text)
+        # See Issue #3479: https://github.com/explosion/spaCy/issues/3479
+        doc.is_parsed = True
 
-        sentences = [sentence.text for sentence in nlp(text).sents]
+        sentences = [sentence.text for sentence in doc.sents]
     # Chinese & Japanese
     elif (sentence_tokenizer == main.tr('Wordless - Chinese Sentence Tokenizer') or
           sentence_tokenizer == main.tr('Wordless - Japanese Sentence Tokenizer')):
@@ -156,18 +159,10 @@ def wordless_word_tokenize(main, text, lang,
             for sentence in sentences:
                 tokens_sentences.append(moses_tokenizer.penn_tokenize(sentence))
     elif 'spaCy' in word_tokenizer:
-        # Other Languages
-        if lang == 'other':
-            lang = 'eng'
-
-        # Languages with models
-        if lang in ['nld', 'eng', 'fra', 'deu', 'ell', 'ita', 'por', 'spa']:
-            nlp = main.__dict__[f'spacy_nlp_{lang}']
-        # Languages without models
-        else:
-            nlp = spacy.blank(wordless_conversion.to_iso_639_1(main, lang))
-
+        nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
+        # See Issue #3479: https://github.com/explosion/spaCy/issues/3479
+        doc.is_parsed = True
 
         if keep_sentences:
             for sentence in doc.sents:
