@@ -651,13 +651,13 @@ class Wordless_Settings(QDialog):
         def preview_results_updated(samples, results):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_sentence_tokenization_preview_results.setPlainText('\n'.join(results))
-
-                self.label_sentence_tokenization_preview_processing.setText('')
-
-                self.__dict__[f"combo_box_sentence_tokenizer_{settings_custom['preview_lang']}"].setEnabled(True)
-                self.combo_box_sentence_tokenization_preview_lang.setEnabled(True)
             else:
                 preview_results_changed()
+
+            self.label_sentence_tokenization_preview_processing.setText('')
+
+            self.__dict__[f"combo_box_sentence_tokenizer_{settings_custom['preview_lang']}"].setEnabled(True)
+            self.combo_box_sentence_tokenization_preview_lang.setEnabled(True)
 
         settings_global = self.main.settings_global['sentence_tokenizers']
         settings_custom = self.main.settings_custom['sentence_tokenization']
@@ -796,13 +796,13 @@ class Wordless_Settings(QDialog):
         def preview_results_updated(samples, results):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_word_tokenization_preview_results.setPlainText('\n'.join(results))
-
-                self.label_word_tokenization_preview_processing.setText('')
-
-                self.__dict__[f"combo_box_word_tokenizer_{settings_custom['preview_lang']}"].setEnabled(True)
-                self.combo_box_word_tokenization_preview_lang.setEnabled(True)
             else:
                 preview_results_changed()
+
+            self.label_word_tokenization_preview_processing.setText('')
+
+            self.__dict__[f"combo_box_word_tokenizer_{settings_custom['preview_lang']}"].setEnabled(True)
+            self.combo_box_word_tokenization_preview_lang.setEnabled(True)
 
         settings_global = self.main.settings_global['word_tokenizers']
         settings_custom = self.main.settings_custom['word_tokenization']
@@ -931,13 +931,13 @@ class Wordless_Settings(QDialog):
         def preview_results_updated(samples, results):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_word_detokenization_preview_results.setPlainText('\n'.join(results))
-
-                self.label_word_detokenization_preview_processing.setText('')
-
-                self.__dict__[f"combo_box_word_detokenizer_{settings_custom['preview_lang']}"].setEnabled(True)
-                self.combo_box_word_detokenization_preview_lang.setEnabled(True)
             else:
                 preview_results_changed()
+
+            self.label_word_detokenization_preview_processing.setText('')
+
+            self.__dict__[f"combo_box_word_detokenizer_{settings_custom['preview_lang']}"].setEnabled(True)
+            self.combo_box_word_detokenization_preview_lang.setEnabled(True)
 
         settings_global = self.main.settings_global['word_detokenizers']
         settings_custom = self.main.settings_custom['word_detokenization']
@@ -1081,13 +1081,13 @@ class Wordless_Settings(QDialog):
         def preview_results_updated(samples, results):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_pos_tagging_preview_results.setPlainText('\n'.join(results))
-
-                self.label_pos_tagging_preview_processing.setText('')
-
-                self.__dict__[f"combo_box_pos_tagger_{settings_custom['preview_lang']}"].setEnabled(True)
-                self.combo_box_pos_tagging_preview_lang.setEnabled(True)
             else:
                 preview_results_changed()
+
+            self.label_pos_tagging_preview_processing.setText('')
+
+            self.__dict__[f"combo_box_pos_tagger_{settings_custom['preview_lang']}"].setEnabled(True)
+            self.combo_box_pos_tagging_preview_lang.setEnabled(True)
 
         settings_global = self.main.settings_global['pos_taggers']
         settings_custom = self.main.settings_custom['pos_tagging']
@@ -1425,13 +1425,13 @@ class Wordless_Settings(QDialog):
         def preview_results_updated(samples, results):
             if samples == settings_custom['preview_samples']:
                 self.text_edit_lemmatization_preview_results.setPlainText('\n'.join(results))
-
-                self.label_lemmatization_preview_processing.setText('')
-
-                self.__dict__[f"combo_box_lemmatizer_{settings_custom['preview_lang']}"].setEnabled(True)
-                self.combo_box_lemmatization_preview_lang.setEnabled(True)
             else:
                 preview_results_changed()
+
+            self.label_lemmatization_preview_processing.setText('')
+
+            self.__dict__[f"combo_box_lemmatizer_{settings_custom['preview_lang']}"].setEnabled(True)
+            self.combo_box_lemmatization_preview_lang.setEnabled(True)
 
         settings_global = self.main.settings_global['lemmatizers']
         settings_custom = self.main.settings_custom['lemmatization']
