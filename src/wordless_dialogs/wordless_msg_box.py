@@ -176,6 +176,7 @@ def wordless_msg_box_file_error_on_loading(main,
             <div>
                 An error occurred while loading the files, so some files will be removed from the file area. Please check your settings and try again.
             </div>
+            {msg}
         '''
 
         msg_box_file_error_on_loading = Wordless_Msg_Box_File_Error_On_Loading(main, msg)
