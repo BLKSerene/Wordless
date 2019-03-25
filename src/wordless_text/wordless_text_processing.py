@@ -315,10 +315,12 @@ def wordless_word_tokenize(main, text, lang,
     # Record token boundaries
     if lang in ['zho_cn', 'zho_tw', 'jpn']:
         for tokens in tokens_sentences:
-            tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = '', sentence_ending = True)
+            if tokens:
+                tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = '', sentence_ending = True)
     else:
         for tokens in tokens_sentences:
-            tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = ' ', sentence_ending = True)
+            if tokens:
+                tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = ' ', sentence_ending = True)
 
     return tokens_sentences
 
