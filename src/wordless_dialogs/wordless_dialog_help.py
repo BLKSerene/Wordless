@@ -708,9 +708,17 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <hr>
 
                     <div class="changelog-section">
+                        <div class="changelog-section-header">Improvements</div>
+                        <ul>
+                            <li>Disable mouse wheel event when combo boxes and spin boxes are not focused (<a href="https://github.com/BLKSerene/Wordless/issues/2">#2</a>)</li>
+                        </ul>
+                    </div>
+
+                    <div class="changelog-section">
                         <div class="changelog-section-header">Bug Fixes</div>
                         <ul>
                             <li>Fix "Open Folder"</li>
+                            <li>Fix error message when loading files</li>
                         </ul>
                     </div>
 
