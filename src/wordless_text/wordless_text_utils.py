@@ -112,7 +112,6 @@ def check_word_tokenizers(main, lang, word_tokenizer = 'default'):
     # Chinese & Japanese
     elif 'Wordless' in word_tokenizer:
         check_spacy_models(main, 'eng', pipeline = 'word_tokenization')
-        check_spacy_models(main, 'other', pipeline = 'word_tokenization')
 
 def check_tokenizers(main, lang, word_tokenizer = 'default'):
     if lang not in main.settings_global['word_tokenizers']:
@@ -129,7 +128,6 @@ def check_tokenizers(main, lang, word_tokenizer = 'default'):
     # Chinese & Japanese
     elif 'Wordless' in word_tokenizer:
         check_spacy_models(main, 'eng', pipeline = 'tokenization')
-        check_spacy_models(main, 'other', pipeline = 'tokenization')
 
 def check_pos_taggers(main, lang, pos_tagger = 'default'):
     if pos_tagger == 'default':
@@ -140,6 +138,10 @@ def check_pos_taggers(main, lang, pos_tagger = 'default'):
     # Tibetan
     elif 'pybo' in pos_tagger:
         check_pybo_bo_tokenizer(main)
+
+    # Chinese & Japanese
+    if lang in ['zho_cn', 'zho_tw', 'jpn']:
+        check_spacy_models(main, 'eng', pipeline = 'tokenization')
 
 def check_lemmatizers(main, lang, lemmatizer = 'default'):
     if lang in main.settings_global['lemmatizers']:
