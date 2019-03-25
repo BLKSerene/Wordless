@@ -720,6 +720,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Fix "Open Folder"</li>
                             <li>Fix error message when loading files</li>
                             <li>Fix Wordless's Chinese/Japanese character tokenizer</li>
+                            <li>Fix "Settings -> Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization -> Preview"</li>
                         </ul>
                     </div>
 
