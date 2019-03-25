@@ -12,25 +12,24 @@
 import re
 
 from wordless_text import wordless_text
+from wordless_utils import wordless_conversion
 
 import pybo
 import spacy
 
 def check_spacy_models(main, lang, pipeline):
-    if lang == 'other':
-        lang = 'eng'
-
     if pipeline == 'word_tokenization':
         nlp_pipelines = []
         nlp_disable = ['tagger', 'parser', 'ner']
     elif pipeline in ['tokenization', 'sentence_tokenization']:
-        nlp_pipelines = ['sbd']
+        nlp_pipelines = ['sentencizer']
         nlp_disable = ['tagger', 'parser', 'ner']
     elif pipeline in ['pos_tagging', 'lemmatization']:
         nlp_pipelines = ['tagger']
         nlp_disable = ['parser', 'ner']
 
-    if lang in ['nld', 'eng', 'fra', 'deu', 'ell', 'ita', 'por', 'spa']:
+    # Languages with models
+    if lang in ['nld', 'eng', 'fra', 'deu', 'ell', 'ita', 'por', 'spa', 'other']:
         if f'spacy_nlp_{lang}' in main.__dict__:
             if main.__dict__[f'spacy_nlp_{lang}'].pipe_names != nlp_pipelines:
                 del main.__dict__[f'spacy_nlp_{lang}']
@@ -76,12 +75,20 @@ def check_spacy_models(main, lang, pipeline):
                 import es_core_news_sm
                 
                 main.__dict__[f'spacy_nlp_{lang}'] = es_core_news_sm.load(disable = nlp_disable)
+            # Other Languages
+            elif lang == 'other':
+                import en_core_web_sm
+                
+                main.__dict__[f'spacy_nlp_{lang}'] = en_core_web_sm.load(disable = nlp_disable)
+    # Languages without models
+    else:
+        main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wordless_conversion.to_iso_639_1(main, lang))
 
-        if 'sbd' in nlp_pipelines:
-            nlp = main.__dict__[f'spacy_nlp_{lang}']
+    if 'sentencizer' in nlp_pipelines:
+        nlp = main.__dict__[f'spacy_nlp_{lang}']
 
-            if 'sbd' not in nlp.pipe_names:
-                nlp.add_pipe(nlp.create_pipe('sentencizer'))
+        if 'sentencizer' not in nlp.pipe_names:
+            nlp.add_pipe(nlp.create_pipe('sentencizer'))
 
 def check_pybo_bo_tokenizer(main):
     if 'pybo_bo_tokenizer' not in main.__dict__:
