@@ -213,7 +213,7 @@ In *Overview*, you can check/compare the language features of different files.
 4. **Count of Types**:<br>
     Number of token types in each file.
 
-5. **Count of Caracters**:<br>
+5. **Count of Characters**:<br>
     Number of single characters in each file. Spaces, tabs and all other invisible characters are ignored.
 
 6. **Type-Token Ratio**:<br>
@@ -799,7 +799,7 @@ Kromer's UR    [[9]](#doc-eng-supported-measures-works-cited-9)|![Kromer's UR](/
 <span id="doc-eng-supported-measures-statistical-significance-effect-size"></span>
 #### Tests of Statistical Significance & Measures of Effect Size
 
-To calculate the statistical significance, bayes factor and effect size (except **Student's t-test (Two-sample)** and **Mann-Whiteney U Test**) for two words in the same file (collocates) or one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
+To calculate the statistical significance, bayes factor and effect size (except **Student's t-test (Two-sample)** and **Mann-Whitney U Test**) for two words in the same file (collocates) or one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
 
 As for collocates (in *Collocation* and *Colligation*):
 
@@ -837,7 +837,7 @@ Not Word *w*   |![e21](/doc/measures/e21.gif)|![e22](/doc/measures/e22.gif)
 ![o21](/doc/measures/o21.gif): Number of occurrences of all words except Word *w* in the observed file<br>
 ![o22](/doc/measures/o22.gif): Number of occurrences of all words except Word *w* in the reference file
 
-To conduct **Student's t-test (Two-sample)** or **Mann-Whiteney U Test** on a specific word, the observed file and the reference file are first divided into **n** (5 by default) sub-sections respectively. Then, the frequencies of the word in each sub-section of the observed file and the reference file are counted and denoted by **FO₁**, **FO₂**, **FO₃** ... **FOn** and **FR₁**, **FR₂**, **FR₃** ... **FRn** respectively. The total frequency of the word in the observed file and the reference file are denoted by **FO** and **FR** respectively. The mean value of the frequencies over all sub-sections of the observed file and the reference file are denoted by ![FO-bar](/doc/measures/fo_bar.gif) and ![FR-bar](/doc/measures/fr_bar.gif) respectively.
+To conduct **Student's t-test (Two-sample)** or **Mann-Whitney U Test** on a specific word, the observed file and the reference file are first divided into **n** (5 by default) sub-sections respectively. Then, the frequencies of the word in each sub-section of the observed file and the reference file are counted and denoted by **FO₁**, **FO₂**, **FO₃** ... **FOn** and **FR₁**, **FR₂**, **FR₃** ... **FRn** respectively. The total frequency of the word in the observed file and the reference file are denoted by **FO** and **FR** respectively. The mean value of the frequencies over all sub-sections of the observed file and the reference file are denoted by ![FO-bar](/doc/measures/fo_bar.gif) and ![FR-bar](/doc/measures/fr_bar.gif) respectively.
 
 <!--
 z-score:
@@ -878,7 +878,7 @@ Student's t-test (Two-sample) [[13]](#doc-eng-supported-measures-works-cited-13)
 Pearson's Chi-squared Test    [[14]](#doc-eng-supported-measures-works-cited-14)[[15]](#doc-eng-supported-measures-works-cited-15)|![Pearson's Chi-squared Test](/doc/measures/statistical_significance/pearsons_chi_squared_test.gif)
 Log-likelihood Ratio          [[16]](#doc-eng-supported-measures-works-cited-16)|![Log-likelihood Ratio](/doc/measures/statistical_significance/log_likehood_ratio_test.gif)
 Fisher's Exact Test           [[17]](#doc-eng-supported-measures-works-cited-17)|See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
-Mann-Whiteney U Test          [[18]](#doc-eng-supported-measures-works-cited-18)|See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
+Mann-Whitney U Test          [[18]](#doc-eng-supported-measures-works-cited-18)|See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
 
 <!--
 Student's t-test (Two-sample):
