@@ -711,17 +711,18 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <div class="changelog-section-header">Improvements</div>
                         <ul>
                             <li>Disable mouse wheel event when combo boxes and spin boxes are not focused (<a href="https://github.com/BLKSerene/Wordless/issues/2">#2</a>)</li>
+                            <li>Update spaCy's sentencizer</li>
                         </ul>
                     </div>
 
                     <div class="changelog-section">
                         <div class="changelog-section-header">Bug Fixes</div>
                         <ul>
-                            <li>Fix "Open Folder"</li>
                             <li>Fix error message when loading files</li>
-                            <li>Fix Wordless's Chinese/Japanese character tokenizer</li>
+                            <li>Fix "Open Folder"</li>
                             <li>Fix "Settings -> Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization -> Preview"</li>
                             <li>Fix spaCy's sentence/word tokenizers</li>
+                            <li>Fix Wordless's Chinese/Japanese character tokenizer</li>
                         </ul>
                     </div>
 
