@@ -65,7 +65,7 @@ def wordless_sentence_tokenize(main, text, lang,
         }
 
         sentences = nltk.sent_tokenize(text, language = lang_texts[lang])
-    elif 'spaCy' in sentence_tokenizer:
+    elif sentence_tokenizer == main.tr('spaCy - Sentencizer'):
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
         # See Issue #3479: https://github.com/explosion/spaCy/issues/3479
@@ -73,8 +73,8 @@ def wordless_sentence_tokenize(main, text, lang,
 
         sentences = [sentence.text for sentence in doc.sents]
     # Chinese & Japanese
-    elif (sentence_tokenizer == main.tr('Wordless - Chinese Sentence Tokenizer') or
-          sentence_tokenizer == main.tr('Wordless - Japanese Sentence Tokenizer')):
+    elif sentence_tokenizer in [main.tr('Wordless - Chinese Sentence Tokenizer'),
+                                main.tr('Wordless - Japanese Sentence Tokenizer')]:
         for line in text.splitlines():
             sentence_start = 0
 
@@ -270,7 +270,7 @@ def wordless_word_tokenize(main, text, lang,
     # Thai
     elif 'PyThaiNLP' in word_tokenizer:
         sentences = wordless_sentence_tokenize(main, text, lang = 'tha',
-                                                   sentence_tokenizer = 'PyThaiNLP - Thai Sentence Tokenizer')
+                                               sentence_tokenizer = 'PyThaiNLP - Thai Sentence Tokenizer')
 
         if word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'):
             for sentence in sentences:
