@@ -412,6 +412,30 @@ def init_settings_global(main):
         },
 
         'sentence_tokenizers': {
+            'afr': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'sqi': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'ara': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'ben': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'bul': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'cat': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'zho_cn': [
                 main.tr('Wordless - Chinese Sentence Tokenizer')
             ],
@@ -420,84 +444,168 @@ def init_settings_global(main):
                 main.tr('Wordless - Chinese Sentence Tokenizer')
             ],
 
+            'hrv': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'ces': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentencizer')
             ],
 
             'dan': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentencizer')
             ],
 
             'nld': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Dutch Sentence Tokenizer')
+                main.tr('spaCy - Sentencizer')
             ],
 
             'eng': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - English Sentence Tokenizer')
+                main.tr('spaCy - Sentencizer')
             ],
 
             'est': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentencizer')
             ],
 
             'fin': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentencizer')
             ],
 
             'fra': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - French Sentence Tokenizer')
+                main.tr('spaCy - Sentencizer')
             ],
 
             'deu': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - German Sentence Tokenizer')
+                main.tr('spaCy - Sentencizer')
             ],
 
             'ell': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Greek (Modern) Sentence Tokenizer')
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'heb': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'hin': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'hun': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'isl': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'ind': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'gle': [
+                main.tr('spaCy - Sentencizer')
             ],
 
             'ita': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Italian Sentence Tokenizer')
+                main.tr('spaCy - Sentencizer')
             ],
 
             'jpn': [
                 main.tr('Wordless - Japanese Sentence Tokenizer')
             ],
 
+            'kan': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'lav': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'lit': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'nob': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentencizer')
             ],
 
             'nno': [
                 main.tr('NLTK - Punkt Sentence Tokenizer')
             ],
 
+            'fas': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'pol': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentencizer')
             ],
 
             'por': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Portuguese Sentence Tokenizer')
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'ron': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'rus': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'sin': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'slk': [
+                main.tr('spaCy - Sentencizer')
             ],
 
             'slv': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentencizer')
             ],
 
             'spa': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Spanish Sentence Tokenizer')
+                main.tr('spaCy - Sentencizer')
             ],
 
             'swe': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'tgl': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'tam': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'tat': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'tel': [
+                main.tr('spaCy - Sentencizer')
             ],
 
             'tha': [
@@ -505,7 +613,16 @@ def init_settings_global(main):
             ],
 
             'tur': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'ukr': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'urd': [
+                main.tr('spaCy - Sentencizer')
             ],
 
             'vie': [
@@ -513,7 +630,8 @@ def init_settings_global(main):
             ],
 
             'other': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentencizer')
             ]
         },
 
