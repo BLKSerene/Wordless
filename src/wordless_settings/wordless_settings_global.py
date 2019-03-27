@@ -2169,18 +2169,13 @@ def init_settings_global(main):
                         }
 
                         .changelog-header {
-                            border: 5px solid black;
                             margin-bottom: 3px;
                             font-size: 14px;
                             font-weight: bold;
                         }
 
-                        .changelog-section {
-                            margin-bottom: 3px;
-                        }
-
                         .changelog-section-header {
-                            margin-bottom: 3px;
+                            margin-bottom: 5px;
                             font-size: 13px;
                             font-weight: bold;
                         }
