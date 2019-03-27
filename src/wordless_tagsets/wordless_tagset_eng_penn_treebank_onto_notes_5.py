@@ -16,13 +16,13 @@
 #
 
 mappings = [
-    ['ADD', 'SYM', 'Email', ''],
-    ['AFX', 'PART', 'Affix', ''],
+    ['ADD', 'X', 'Email', ''],
+    ['AFX', 'X', 'Affix', ''],
     ['BES', 'AUX', 'Auxiliary "be"', 'be'],
     ['CC', 'CCONJ', 'Conjunction, coordinating', ''],
     ['CD', 'NUM', 'Cardinal number', ''],
     ['DT', 'DET', 'Determiner', ''],
-    ['EX', 'ADV', 'Existential "there"', 'there'],
+    ['EX', 'PRON', 'Existential "there"', 'there'],
     ['FW', 'X', 'Foreign word', ''],
     ['GW', 'X', 'Additional word in multi-word expression', ''],
     ['HVS', 'VERB', 'Forms of "have"', 'have'],
@@ -53,7 +53,7 @@ mappings = [
     ['RBR', 'ADV', 'Adverb, comparative', ''],
     ['RBS', 'ADV', 'Adverb, superlative', ''],
 
-    ['RP', 'PART', 'Adverb, particle', ''],
+    ['RP', 'ADP', 'Adverb, particle', ''],
     ['SYM', 'SYM', 'Symbol', ''],
     ['TO', 'PART', 'Infinitival "to"', 'to'],
     ['UH', 'INTJ', 'Interjection', ''],
