@@ -276,10 +276,14 @@ class Wordless_Table_Sort_Results_Conordancer(wordless_table.Wordless_Table):
             keys = []
 
             for key in sorting_keys:
-                if type(key) == int:
-                    keys.append(item[key])
+                # Node
+                if key == 1:
+                    keys.append(item[key].text_raw)
+                # Left & Right
+                elif type(key) == list:
+                    keys.append(item[key[0]].text_raw[key[1]])
                 else:
-                    keys.append(item[key[0]][key[1]])
+                    keys.append(item[key])
 
             return keys
 
@@ -297,21 +301,36 @@ class Wordless_Table_Sort_Results_Conordancer(wordless_table.Wordless_Table):
                              if 'R' in self.cellWidget(0, 0).itemText(i)])
 
             for i in range(self.table.rowCount()):
-                left = self.table.cellWidget(i, 0).text_raw
-                node = self.table.cellWidget(i, 1).text()
-                right = self.table.cellWidget(i, 2).text_raw
+                left_new = wordless_label.Wordless_Label_Html('', self.table)
+                node_new = wordless_label.Wordless_Label_Html('', self.table)
+                right_new = wordless_label.Wordless_Label_Html('', self.table)
 
-                if len(left) < len_left:
-                    left = [''] * (len_left - len(left)) + left
-                if len(right) < len_right:
-                    right.extend([''] * (len_right - len(right)))
+                left_old = self.table.cellWidget(i, 0)
+                node_old = self.table.cellWidget(i, 1)
+                right_old = self.table.cellWidget(i, 2)
+
+                if len(left_old.text_raw) < len_left:
+                    left_old.text_raw = [''] * (len_left - len(left_old.text_raw)) + left_old.text_raw
+                if len(right_old.text_raw) < len_right:
+                    right_old.text_raw.extend([''] * (len_right - len(right_old.text_raw)))
+
+                node_new.setText(node_old.text())
+
+                left_new.text_raw = left_old.text_raw.copy()
+                node_new.text_raw = node_old.text_raw.copy()
+                right_new.text_raw = right_old.text_raw.copy()
+
+                left_new.text_search = left_old.text_search.copy()
+                node_new.text_search = node_old.text_search.copy()
+                right_new.text_search = right_old.text_search.copy()
 
                 token_no = self.table.item(i, 3).val
                 sentence_no = self.table.item(i, 4).val
                 para_no = self.table.item(i, 5).val
                 file = self.table.item(i, 6).text()
 
-                results.append([left, node, right, token_no, sentence_no, para_no, file])
+                results.append([left_new, node_new, right_new,
+                                token_no, sentence_no, para_no, file])
 
             for sorting_col, sorting_order in settings['sort_results']['sorting_rules']:
                 if sorting_col == self.tr('File'):
@@ -336,11 +355,8 @@ class Wordless_Table_Sort_Results_Conordancer(wordless_table.Wordless_Table):
                         lang = file_open['lang']
 
                 # Remove empty tokens
-                left = [token for token in left if token]
-                right = [token for token in right if token]
-
-                self.table.cellWidget(i, 0).text_raw = left
-                self.table.cellWidget(i, 2).text_raw = right
+                text_left = [token for token in left.text_raw if token]
+                text_right = [token for token in right.text_raw if token]
 
                 highlight_colors = self.main.settings_custom['concordancer']['sort_results']['highlight_colors']
 
@@ -348,30 +364,41 @@ class Wordless_Table_Sort_Results_Conordancer(wordless_table.Wordless_Table):
                 i_highlight_color_right = 1
 
                 for j, key in enumerate([key for key in sorting_keys if type(key) != int]):
-                    if key[0] == 0 and -key[1] <= len(left):
+                    if key[0] == 0 and -key[1] <= len(text_left):
                         hightlight_color = highlight_colors[i_highlight_color_left % len(highlight_colors)]
 
-                        left[key[1]] = f'''
-                                           <span style="color: {hightlight_color}; font-weight: bold;">
-                                               {left[key[1]]}
-                                           </span>
-                                       '''
+                        text_left[key[1]] = f'''
+                            <span style="color: {hightlight_color}; font-weight: bold;">
+                                {text_left[key[1]]}
+                            </span>
+                        '''
 
                         i_highlight_color_left += 1
-                    elif key[0] == 2 and key[1] < len(right):
+                    elif key[0] == 2 and key[1] < len(text_right):
                         hightlight_color = highlight_colors[i_highlight_color_right % len(highlight_colors)]
 
-                        right[key[1]] = f'''
-                                            <span style="color: {hightlight_color}; font-weight: bold;">
-                                                {right[key[1]]}
-                                            </span>
-                                        '''
+                        text_right[key[1]] = f'''
+                            <span style="color: {hightlight_color}; font-weight: bold;">
+                                {text_right[key[1]]}
+                            </span>
+                        '''
 
                         i_highlight_color_right += 1
 
-                self.table.cellWidget(i, 0).setText(wordless_text_processing.wordless_word_detokenize(self.main, left, lang))
-                self.table.cellWidget(i, 1).setText(node)
-                self.table.cellWidget(i, 2).setText(wordless_text_processing.wordless_word_detokenize(self.main, right, lang))
+                text_left = wordless_text_processing.wordless_word_detokenize(self.main, text_left, lang)
+                text_right = wordless_text_processing.wordless_word_detokenize(self.main, text_right, lang)
+
+                self.table.cellWidget(i, 0).setText(text_left)
+                self.table.cellWidget(i, 1).setText(node.text())
+                self.table.cellWidget(i, 2).setText(text_right)
+
+                self.table.cellWidget(i, 0).text_raw = [token for token in left.text_raw if token]
+                self.table.cellWidget(i, 1).text_raw = node.text_raw
+                self.table.cellWidget(i, 2).text_raw = [token for token in right.text_raw if token]
+
+                self.table.cellWidget(i, 0).text_search = left.text_search
+                self.table.cellWidget(i, 1).text_search = node.text_search
+                self.table.cellWidget(i, 2).text_search = right.text_search
 
                 self.table.item(i, 3).val = token_no
                 self.table.item(i, 4).val = sentence_no
@@ -907,8 +934,8 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                             if (number_lines_nth - 1) % settings['generation_settings']['every_nth_line'] > 0:
                                 continue
 
-                        # Search Results
-                        text_search = ngram
+                        # Search in Results
+                        text_search = list(ngram)
 
                         if not settings['token_settings']['puncs']:
                             ngram = text.tokens[i : i + len_search_term]
@@ -920,7 +947,7 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                             context_left = text.tokens[max(0, i - settings['generation_settings']['width_left_token']) : i]
                             context_right = text.tokens[i + len_search_term : min(i + len_search_term + settings['generation_settings']['width_right_token'], len_tokens)]
 
-                            # Search Results
+                            # Search in Results
                             if settings['token_settings']['puncs']:
                                 text_search_left = copy.deepcopy(context_left)
                                 text_search_right = copy.deepcopy(context_right)
@@ -962,7 +989,7 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
 
                                 len_context_right += len(token_next)
 
-                            # Search Results
+                            # Search in Results
                             text_search_left = copy.deepcopy(context_left)
                             text_search_right = copy.deepcopy(context_right)
 

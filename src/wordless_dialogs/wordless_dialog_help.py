@@ -720,6 +720,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <ul>
                             <li>Fix error message when loading files</li>
                             <li>Fix "Open Folder"</li>
+                            <li>Fix searching in results after results are sorted in "Concordancer"</li>
                             <li>Fix "Settings -> Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization -> Preview"</li>
                             <li>Fix spaCy's sentence/word tokenizers</li>
                             <li>Fix Wordless's Chinese/Japanese character tokenizer</li>
