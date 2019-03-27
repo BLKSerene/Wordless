@@ -13,6 +13,7 @@ import copy
 import os
 import pickle
 import platform
+import subprocess
 import sys
 import time
 
@@ -120,9 +121,6 @@ class Wordless_Main(QMainWindow):
             }
         ''')
 
-        # Global Style
-        self.setStyleSheet(self.settings_global['styles']['style_global'])
-
         # Check for updates on startup
         if self.settings_custom['general']['update_settings']['check_updates_on_startup']:
             self.dialog_check_updates = self.help_check_updates(on_startup = True)
@@ -135,7 +133,6 @@ class Wordless_Main(QMainWindow):
 
     def fix_macos_layout(self, parent):
         for widget in parent.children():
-
             if widget.children():
                 self.fix_macos_layout(widget)
             else:
@@ -143,25 +140,16 @@ class Wordless_Main(QMainWindow):
                     widget.setAttribute(Qt.WA_LayoutUsesWidgetRect)
 
     def closeEvent(self, event):
-        def exit_wordless():
-            # Clear history of closed files
-            self.settings_custom['files']['files_closed'].clear()
-
-            # Layouts
-            self.settings_custom['layouts']['central_widget'] = self.centralWidget().sizes()
-
-            with open('wordless_settings.pickle', 'wb') as f:
-                pickle.dump(self.settings_custom, f)
-
-            event.accept()
-
         if self.settings_custom['general']['misc']['confirm_on_exit']:
             dialog_confirm_exit = wordless_dialog_misc.Wordless_Dialog_Confirm_Exit(self)
+            result = dialog_confirm_exit.exec_()
 
-            dialog_confirm_exit.accepted.connect(exit_wordless)
-            dialog_confirm_exit.rejected.connect(event.ignore)
+            if result == QDialog.Accepted:
+                self.save_settings()
 
-            dialog_confirm_exit.exec_()
+                event.accept()
+            elif result == QDialog.Rejected:
+                event.ignore()
         else:
             event.accept()
 
@@ -449,11 +437,29 @@ class Wordless_Main(QMainWindow):
     def load_settings(self):
         settings = copy.deepcopy(self.settings_custom)
 
+        # Fonts
+        global_font = QFont(settings['general']['font_settings']['font_family'])
+        global_font.setPixelSize(settings['general']['font_settings']['font_size'])
+        global_font.setWeight(settings['general']['font_settings']['font_weight'])
+        global_font.setStyle(settings['general']['font_settings']['font_style'])
+
+        QApplication.setFont(global_font)
+
         # Menu
         self.find_menu_item(self.tr('Show Status Bar')).setChecked(settings['menu']['prefs']['show_status_bar'])
 
         # Layouts
         self.centralWidget().setSizes(settings['layouts']['central_widget'])
+
+    def save_settings(self):
+        # Clear history of closed files
+        self.settings_custom['files']['files_closed'].clear()
+
+        # Layouts
+        self.settings_custom['layouts']['central_widget'] = self.centralWidget().sizes()
+
+        with open('wordless_settings.pickle', 'wb') as f:
+            pickle.dump(self.settings_custom, f)
 
     def find_menu_item(self, text, menu = None):
         menu_item = None
@@ -473,15 +479,24 @@ class Wordless_Main(QMainWindow):
 
         return menu_item
 
+    def restart(self):
+        if getattr(sys, '_MEIPASS', False):
+            subprocess.Popen([wordless_misc.get_abs_path(__file__)])
+        else:
+            subprocess.Popen(['python', wordless_misc.get_abs_path(__file__)])
+
+        self.save_settings()
+        sys.exit(0)
+
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
+    wordless_app = QApplication(sys.argv)
 
     wordless_loading = Wordless_Loading()
 
     wordless_loading.raise_()
     wordless_loading.fade_in()
 
-    app.processEvents()
+    wordless_app.processEvents()
 
     wordless_main = Wordless_Main()
 
@@ -490,5 +505,5 @@ if __name__ == '__main__':
 
     wordless_main.showMaximized()
 
-    sys.exit(app.exec_())
+    sys.exit(wordless_app.exec_())
     

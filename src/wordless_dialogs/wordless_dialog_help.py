@@ -107,11 +107,6 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
         elif settings['citation_sys'] == self.tr('GB (GB/T 7714—2015)'):
             self.text_edit_citing.setHtml('叶磊. Wordless version 1.0.0[CP]. (2019). https://github.com/BLKSerene/Wordless.')
 
-        if settings['citation_sys'] == self.tr('GB (GB/T 7714—2015)'):
-            self.text_edit_citing.setFont(QFont('宋体', 12))
-        else:
-            self.text_edit_citing.setFont(QFont('Times New Roman', 12))
-
     def copy(self):
         self.text_edit_citing.setFocus()
         self.text_edit_citing.selectAll()
@@ -119,6 +114,10 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
 
 class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
+        super().__init__(main, main.tr('Acknowledgments'),
+                         width = 570,
+                         height = 370)
+
         self.acks_general = [
             [
                 '<a href="https://www.python.org/">Python</a>',
@@ -338,10 +337,6 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '<a href="https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE">MIT</a>'
             ]
         ]
-
-        super().__init__(main, main.tr('Acknowledgments'),
-                         width = 570,
-                         height = 370)
 
         self.label_acks = wordless_label.Wordless_Label_Dialog(
             self.tr('''
@@ -708,6 +703,13 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <hr>
 
                     <div class="changelog-section">
+                        <div class="changelog-section-header">New Features</div>
+                        <ul>
+                            <li>Add "Settings → General → Font Settings"</li>
+                        </ul>
+                    </div>
+
+                    <div class="changelog-section">
                         <div class="changelog-section-header">Improvements</div>
                         <ul>
                             <li>Disable mouse wheel event when combo boxes and spin boxes are not focused (<a href="https://github.com/BLKSerene/Wordless/issues/2">#2</a>)</li>
@@ -721,7 +723,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Fix error message when loading files</li>
                             <li>Fix "Open Folder"</li>
                             <li>Fix searching in results after results are sorted in "Concordancer"</li>
-                            <li>Fix "Settings -> Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization -> Preview"</li>
+                            <li>Fix "Settings → Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization → Preview"</li>
                             <li>Fix spaCy's sentence/word tokenizers</li>
                             <li>Fix Wordless's Chinese/Japanese character tokenizer</li>
                         </ul>
