@@ -254,7 +254,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://lxml.de/">lxml</a>',
-                '4.3.2',
+                '4.3.3',
                 'Stefan Behnel',
                 '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'
             ],
@@ -730,6 +730,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Dependency Updates</div>
                         <ul>
+                            <li>Update lxml to 4.3.3</li>
                             <li>Update PyQt to 5.12.1</li>
                             <li>Update SacreMoses to 0.0.13</li>
                             <li>Update spaCy to 2.1.3</li>
