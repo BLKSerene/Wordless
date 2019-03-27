@@ -24,20 +24,15 @@ from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
 
 class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
-        if platform.system() == 'Windows':
+        if platform.system() in ['Windows', 'Linux']:
             super().__init__(main, main.tr('Citing'),
-                             width = 400,
-                             height = 200,
+                             width = 420,
+                             height = 210,
                              no_button = True)
         elif platform.system() == 'Darwin':
             super().__init__(main, main.tr('Citing'),
-                             width = 400,
+                             width = 420,
                              height = 250,
-                             no_button = True)
-        elif platform.system() == 'Linux':
-            super().__init__(main, main.tr('Citing'),
-                             width = 400,
-                             height = 210,
                              no_button = True)
 
         self.label_citing = wordless_label.Wordless_Label_Dialog(
@@ -115,10 +110,10 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
 class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Acknowledgments'),
-                         width = 570,
-                         height = 370)
+                         width = 580,
+                         height = 360)
 
-        self.acks_general = [
+        self.ACKS_GENERAL = [
             [
                 '<a href="https://www.python.org/">Python</a>',
                 '3.7.2',
@@ -134,7 +129,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ]
         ]
 
-        self.acks_nlp = [
+        self.ACKS_NLP = [
             [
                 main.tr('<a href="https://github.com/fxsjy/jieba">jieba</a>'),
                 '0.39',
@@ -199,7 +194,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ]
         ]
 
-        self.acks_plotting = [
+        self.ACKS_PLOTTING = [
             [
                 '<a href="https://matplotlib.org/">Matplotlib</a>',
                 '3.0.3',
@@ -215,7 +210,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ]
         ]
 
-        self.acks_misc = [
+        self.ACKS_MISC = [
             [
                 '<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
                 '4.7.1',
@@ -308,7 +303,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ]
         ]
 
-        self.acks_data = [
+        self.ACKS_DATA = [
             [
                 '<a href="https://github.com/pharos-alexandria/grk-stoplist">grk-stoplist</a>',
                 '/',
@@ -392,15 +387,15 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         settings['browse_category'] = self.combo_box_browse_category.currentText()
 
         if settings['browse_category'] == self.tr('General'):
-            acks = self.acks_general
+            acks = self.ACKS_GENERAL
         elif settings['browse_category'] == self.tr('Natural Language Processing'):
-            acks = self.acks_nlp
+            acks = self.ACKS_NLP
         elif settings['browse_category'] == self.tr('Plotting'):
-            acks = self.acks_plotting
+            acks = self.ACKS_PLOTTING
         elif settings['browse_category'] == self.tr('Miscellaneous'):
-            acks = self.acks_misc
+            acks = self.ACKS_MISC
         elif settings['browse_category'] == self.tr('Data'):
-            acks = self.acks_data
+            acks = self.ACKS_DATA
 
         self.table_acks.clear_table()
 
@@ -428,8 +423,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Donating'),
-                         width = 400,
-                         height = 510)
+                         width = 450)
 
         self.label_donating = wordless_label.Wordless_Label_Dialog(
             self.tr('''
@@ -487,15 +481,15 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
         if settings['donating_via'] == self.tr('PayPal'):
             self.label_donating_via_img.setText('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32"><img src="imgs/donating_paypal.gif"></a>')
 
-            self.setFixedHeight(270)
+            self.setFixedHeight(250)
         elif settings['donating_via'] == self.tr('Alipay'):
             self.label_donating_via_img.setText('<img src="imgs/donating_alipay.png">')
 
-            self.setFixedHeight(520)
+            self.setFixedHeight(500)
         elif settings['donating_via'] == self.tr('WeChat'):
             self.label_donating_via_img.setText('<img src="imgs/donating_wechat.png">')
 
-            self.setFixedHeight(520)
+            self.setFixedHeight(500)
 
         if platform.system() == 'Windows':
             self.move_to_center()
@@ -712,6 +706,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Improvements</div>
                         <ul>
+                            <li>Update layout</li>
                             <li>Disable mouse wheel event when combo boxes and spin boxes are not focused (<a href="https://github.com/BLKSerene/Wordless/issues/2">#2</a>)</li>
                             <li>Update spaCy's sentencizer</li>
                         </ul>
@@ -743,7 +738,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
         ''')
 
         super().__init__(main, main.tr('Changelog'),
-                         width = 450,
+                         width = 480,
                          height = 420)
 
         text_edit_changelog = wordless_box.Wordless_Text_Browser(self)

@@ -240,9 +240,9 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
         if platform.system() == 'Windows':
             if self.settings['multi_search_mode']:
-                self.setFixedSize(370, 400)
+                self.setFixedSize(380, 400)
             else:
-                self.setFixedSize(370, 280)
+                self.setFixedSize(380, 280)
         elif platform.system() == 'Darwin':
             if self.settings['multi_search_mode']:
                 self.setFixedSize(380, 430)
@@ -250,9 +250,9 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
                 self.setFixedSize(380, 300)
         elif platform.system() == 'Linux':
             if self.settings['multi_search_mode']:
-                self.setFixedSize(370, 400)
+                self.setFixedSize(380, 400)
             else:
-                self.setFixedSize(370, 290)
+                self.setFixedSize(380, 290)
 
     @wordless_misc.log_timing
     def find_next(self):

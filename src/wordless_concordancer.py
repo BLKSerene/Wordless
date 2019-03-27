@@ -417,7 +417,9 @@ class Wordless_Table_Sort_Results_Conordancer(wordless_table.Wordless_Table):
 
 class Wordless_Dialog_Sort_Results_Concordancer(wordless_dialog.Wordless_Dialog):
     def __init__(self, main, table):
-        super().__init__(main, main.tr('Sort Results'))
+        super().__init__(main, main.tr('Sort Results'),
+                         width = 380,
+                         height = 220)
 
         self.table = table
         self.settings = self.main.settings_custom['concordancer']['sort_results']
