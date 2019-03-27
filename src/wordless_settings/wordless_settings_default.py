@@ -952,6 +952,13 @@ def init_settings_default(main):
         },
 
         'general': {
+            'font_settings': {
+                'font_family': 'Arial',
+                'font_size': 12,
+                'font_weight': 50, # Normal
+                'font_style': 0, # Normal
+            },
+
             'update_settings': {
                 'check_updates_on_startup': True
             },

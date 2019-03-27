@@ -2115,11 +2115,6 @@ def init_settings_global(main):
         },
 
         'styles': {
-            'style_global': '''
-                  font-family: Arial;
-                  font-size: 12px;
-            ''',
-
             'style_dialog': '''
                 <head>
                     <style>
