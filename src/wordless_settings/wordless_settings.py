@@ -258,6 +258,30 @@ class Wordless_Settings(QDialog):
     def init_settings_general(self):
         self.settings_general = QWidget(self)
 
+        # Font Settings
+        group_box_font_settings = QGroupBox(self.tr('Font Settings'), self)
+
+        self.label_font_family = QLabel(self.tr('Font Family:'), self)
+        self.combo_box_font_family = wordless_box.Wordless_Combo_Box_Font_Family(self)
+        self.label_font_size = QLabel(self.tr('Font Size:'), self)
+        self.spin_box_font_size = wordless_box.Wordless_Spin_Box_Font_Size(self)
+        self.label_font_weight = QLabel(self.tr('Font Weight:'), self)
+        self.combo_box_font_weight = wordless_box.Wordless_Combo_Box_Font_Weight(self)
+        self.label_font_style = QLabel(self.tr('Font Style:'), self)
+        self.combo_box_font_style = wordless_box.Wordless_Combo_Box_Font_Style(self)
+
+        group_box_font_settings.setLayout(QGridLayout())
+        group_box_font_settings.layout().addWidget(self.label_font_family, 0, 0)
+        group_box_font_settings.layout().addWidget(self.combo_box_font_family, 0, 1)
+        group_box_font_settings.layout().addWidget(self.label_font_size, 1, 0)
+        group_box_font_settings.layout().addWidget(self.spin_box_font_size, 1, 1)
+        group_box_font_settings.layout().addWidget(self.label_font_weight, 2, 0)
+        group_box_font_settings.layout().addWidget(self.combo_box_font_weight, 2, 1)
+        group_box_font_settings.layout().addWidget(self.label_font_style, 3, 0)
+        group_box_font_settings.layout().addWidget(self.combo_box_font_style, 3, 1)
+
+        group_box_font_settings.layout().setColumnStretch(2, 1)
+
         # Update Settings
         group_box_update_settings = QGroupBox(self.tr('Update Settings'), self)
 
@@ -275,11 +299,12 @@ class Wordless_Settings(QDialog):
         group_box_misc.layout().addWidget(self.checkbox_confirm_on_exit, 0, 0)
 
         self.settings_general.setLayout(wordless_layout.Wordless_Layout())
-        self.settings_general.layout().addWidget(group_box_update_settings, 0, 0)
-        self.settings_general.layout().addWidget(group_box_misc, 1, 0)
+        self.settings_general.layout().addWidget(group_box_font_settings, 0, 0)
+        self.settings_general.layout().addWidget(group_box_update_settings, 1, 0)
+        self.settings_general.layout().addWidget(group_box_misc, 2, 0)
 
         self.settings_general.layout().setContentsMargins(6, 4, 6, 4)
-        self.settings_general.layout().setRowStretch(2, 1)
+        self.settings_general.layout().setRowStretch(3, 1)
 
     # Import
     def init_settings_import(self):
@@ -1814,6 +1839,11 @@ class Wordless_Settings(QDialog):
             settings = copy.deepcopy(self.main.settings_custom)
 
         # General
+        self.combo_box_font_family.setCurrentFont(QFont(settings['general']['font_settings']['font_family']))
+        self.spin_box_font_size.setValue(settings['general']['font_settings']['font_size'])
+        self.combo_box_font_weight.set_text(settings['general']['font_settings']['font_weight'])
+        self.combo_box_font_style.set_text(settings['general']['font_settings']['font_style'])
+
         self.checkbox_check_updates_on_startup.setChecked(settings['general']['update_settings']['check_updates_on_startup'])
 
         self.checkbox_confirm_on_exit.setChecked(settings['general']['misc']['confirm_on_exit'])
@@ -2081,9 +2111,7 @@ class Wordless_Settings(QDialog):
             return True
 
     def settings_save(self):
-        settings_valid = self.settings_apply()
-
-        if settings_valid:
+        if self.settings_apply():
             self.accept()
 
     def settings_apply(self):
@@ -2092,117 +2120,154 @@ class Wordless_Settings(QDialog):
         if settings_valid:
             settings = self.main.settings_custom
 
-            # General
-            settings['general']['update_settings']['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
+            # Check font settings
+            font_old = [
+                settings['general']['font_settings']['font_family'],
+                settings['general']['font_settings']['font_size'],
+                settings['general']['font_settings']['font_weight'],
+                settings['general']['font_settings']['font_style'] 
+            ]
 
-            settings['general']['misc']['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
+            font_new = [
+                self.combo_box_font_family.currentFont().family(),
+                self.spin_box_font_size.value(),
+                self.combo_box_font_weight.get_val(),
+                self.combo_box_font_style.get_val()
+            ]
 
-            # Import
-            settings['import']['files']['default_path'] = self.line_edit_import_files_default_path.text()
+            if font_new == font_old:
+                result = 'skip'
+            else:
+                dialog_restart_required = wordless_dialog_misc.Wordless_Dialog_Restart_Required(self.main)
+                result = dialog_restart_required.exec_()
 
-            settings['import']['search_terms']['default_path'] = self.line_edit_import_search_terms_default_path.text()
-            settings['import']['search_terms']['detect_encodings'] = self.checkbox_import_search_terms_detect_encodings.isChecked()
+                if result == QDialog.Accepted:
+                    result = 'restart'
+                elif result == QDialog.Rejected:
+                    result = 'cancel'
 
-            settings['import']['stop_words']['default_path'] = self.line_edit_import_stop_words_default_path.text()
-            settings['import']['stop_words']['detect_encodings'] = self.checkbox_import_stop_words_detect_encodings.isChecked()
+            if result in ['skip', 'restart']:
+                # General
+                settings['general']['font_settings']['font_family'] = self.combo_box_font_family.currentFont().family()
+                settings['general']['font_settings']['font_size'] = self.spin_box_font_size.value()
+                settings['general']['font_settings']['font_weight'] = self.combo_box_font_weight.get_val()
+                settings['general']['font_settings']['font_style'] = self.combo_box_font_style.get_val()
 
-            settings['import']['temp_files']['default_path'] = self.line_edit_import_temp_files_default_path.text()
-            settings['import']['temp_files']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_import_temp_files_default_encoding.currentText())
+                settings['general']['update_settings']['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
 
-            # Export
-            settings['export']['tables']['default_path'] = self.line_edit_export_tables_default_path.text()
-            settings['export']['tables']['default_type'] = self.combo_box_export_tables_default_type.currentText()
-            settings['export']['tables']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_export_tables_default_encoding.currentText())
+                settings['general']['misc']['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
 
-            settings['export']['search_terms']['default_path'] = self.line_edit_export_search_terms_default_path.text()
-            settings['export']['search_terms']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_export_search_terms_default_encoding.currentText())
+                # Import
+                settings['import']['files']['default_path'] = self.line_edit_import_files_default_path.text()
 
-            settings['export']['stop_words']['default_path'] = self.line_edit_export_stop_words_default_path.text()
-            settings['export']['stop_words']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_export_stop_words_default_encoding.currentText())
+                settings['import']['search_terms']['default_path'] = self.line_edit_import_search_terms_default_path.text()
+                settings['import']['search_terms']['detect_encodings'] = self.checkbox_import_search_terms_detect_encodings.isChecked()
 
-            # Auto-detection
-            settings['auto_detection']['detection_settings']['number_lines'] = self.spin_box_auto_detection_number_lines.value()
-            settings['auto_detection']['detection_settings']['number_lines_no_limit'] = self.checkbox_auto_detection_number_lines_no_limit.isChecked()
+                settings['import']['stop_words']['default_path'] = self.line_edit_import_stop_words_default_path.text()
+                settings['import']['stop_words']['detect_encodings'] = self.checkbox_import_stop_words_detect_encodings.isChecked()
 
-            settings['auto_detection']['default_settings']['default_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_auto_detection_default_lang.currentText())
-            settings['auto_detection']['default_settings']['default_text_type'] = wordless_conversion.to_text_type_code(self.main, self.combo_box_auto_detection_default_text_type.currentText())
-            settings['auto_detection']['default_settings']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_auto_detection_default_encoding.currentText())
+                settings['import']['temp_files']['default_path'] = self.line_edit_import_temp_files_default_path.text()
+                settings['import']['temp_files']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_import_temp_files_default_encoding.currentText())
 
-            # Data
-            settings['data']['precision_decimal'] = self.spin_box_precision_decimal.value()
-            settings['data']['precision_pct'] = self.spin_box_precision_pct.value()
-            settings['data']['precision_p_value'] = self.spin_box_precision_p_value.value()
+                # Export
+                settings['export']['tables']['default_path'] = self.line_edit_export_tables_default_path.text()
+                settings['export']['tables']['default_type'] = self.combo_box_export_tables_default_type.currentText()
+                settings['export']['tables']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_export_tables_default_encoding.currentText())
 
-            # Tags
-            settings['tags']['tags_pos'] = self.table_tags_pos.get_tags()
-            settings['tags']['tags_non_pos'] = self.table_tags_non_pos.get_tags()
+                settings['export']['search_terms']['default_path'] = self.line_edit_export_search_terms_default_path.text()
+                settings['export']['search_terms']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_export_search_terms_default_encoding.currentText())
 
-            # Tokenization -> Sentence Tokenization
-            for lang in settings['sentence_tokenization']['sentence_tokenizers']:
-                settings['sentence_tokenization']['sentence_tokenizers'][lang] = self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].currentText()
+                settings['export']['stop_words']['default_path'] = self.line_edit_export_stop_words_default_path.text()
+                settings['export']['stop_words']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_export_stop_words_default_encoding.currentText())
 
-            # Tokenization -> Word Tokenization
-            for lang in settings['word_tokenization']['word_tokenizers']:
-                settings['word_tokenization']['word_tokenizers'][lang] = self.__dict__[f'combo_box_word_tokenizer_{lang}'].currentText()
+                # Auto-detection
+                settings['auto_detection']['detection_settings']['number_lines'] = self.spin_box_auto_detection_number_lines.value()
+                settings['auto_detection']['detection_settings']['number_lines_no_limit'] = self.checkbox_auto_detection_number_lines_no_limit.isChecked()
 
-            # Tokenization -> Word Detokenization
-            for lang in settings['word_detokenization']['word_detokenizers']:
-                settings['word_detokenization']['word_detokenizers'][lang] = self.__dict__[f'combo_box_word_detokenizer_{lang}'].currentText()
+                settings['auto_detection']['default_settings']['default_lang'] = wordless_conversion.to_lang_code(self.main, self.combo_box_auto_detection_default_lang.currentText())
+                settings['auto_detection']['default_settings']['default_text_type'] = wordless_conversion.to_text_type_code(self.main, self.combo_box_auto_detection_default_text_type.currentText())
+                settings['auto_detection']['default_settings']['default_encoding'] = wordless_conversion.to_encoding_code(self.main, self.combo_box_auto_detection_default_encoding.currentText())
 
-            # POS Tagging
-            for lang in settings['pos_tagging']['pos_taggers']:
-                settings['pos_tagging']['pos_taggers'][lang] = self.__dict__[f'combo_box_pos_tagger_{lang}'].currentText()
+                # Data
+                settings['data']['precision_decimal'] = self.spin_box_precision_decimal.value()
+                settings['data']['precision_pct'] = self.spin_box_precision_pct.value()
+                settings['data']['precision_p_value'] = self.spin_box_precision_p_value.value()
 
-            settings['pos_tagging']['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
+                # Tags
+                settings['tags']['tags_pos'] = self.table_tags_pos.get_tags()
+                settings['tags']['tags_non_pos'] = self.table_tags_non_pos.get_tags()
 
-            # POS Tagging -> Tagsets
-            if self.pos_tag_mappings_loaded:
-                preview_lang = settings['tagsets']['preview_lang']
-                preview_pos_tagger = settings['tagsets']['preview_pos_tagger'][preview_lang]
+                # Tokenization -> Sentence Tokenization
+                for lang in settings['sentence_tokenization']['sentence_tokenizers']:
+                    settings['sentence_tokenization']['sentence_tokenizers'][lang] = self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].currentText()
 
-                for i in range(self.table_mappings.rowCount()):
-                    settings['tagsets']['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
+                # Tokenization -> Word Tokenization
+                for lang in settings['word_tokenization']['word_tokenizers']:
+                    settings['word_tokenization']['word_tokenizers'][lang] = self.__dict__[f'combo_box_word_tokenizer_{lang}'].currentText()
 
-            # Lemmatization
-            for lang in settings['lemmatization']['lemmatizers']:
-                settings['lemmatization']['lemmatizers'][lang] = self.__dict__[f'combo_box_lemmatizer_{lang}'].currentText()
+                # Tokenization -> Word Detokenization
+                for lang in settings['word_detokenization']['word_detokenizers']:
+                    settings['word_detokenization']['word_detokenizers'][lang] = self.__dict__[f'combo_box_word_detokenizer_{lang}'].currentText()
 
-            # Stop Words
-            for lang in settings['stop_words']['stop_words']:
-                settings['stop_words']['stop_words'][lang] = self.__dict__[f'combo_box_stop_words_{lang}'].currentText()
+                # POS Tagging
+                for lang in settings['pos_tagging']['pos_taggers']:
+                    settings['pos_tagging']['pos_taggers'][lang] = self.__dict__[f'combo_box_pos_tagger_{lang}'].currentText()
 
-            if settings['stop_words']['stop_words'][settings['stop_words']['preview_lang']] == self.tr('Custom List'):
-                settings['stop_words']['custom_lists'][settings['stop_words']['preview_lang']] = self.list_stop_words_preview_results.get_items()
+                settings['pos_tagging']['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
 
-            # Measures -> Dispersion
-            settings['measures']['dispersion']['general']['number_sections'] = self.spin_box_dispersion_number_sections.value()
+                # POS Tagging -> Tagsets
+                if self.pos_tag_mappings_loaded:
+                    preview_lang = settings['tagsets']['preview_lang']
+                    preview_pos_tagger = settings['tagsets']['preview_pos_tagger'][preview_lang]
 
-            # Measures -> Adjusted Frequency
-            settings['measures']['adjusted_freq']['general']['number_sections'] = self.spin_box_adjusted_freq_number_sections.value()
-            settings['measures']['adjusted_freq']['general']['use_same_settings_dispersion'] = self.checkbox_use_same_settings_dispersion.isChecked()
+                    for i in range(self.table_mappings.rowCount()):
+                        settings['tagsets']['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
 
-            # Measures -> Statistical Significance
-            settings['measures']['statistical_significance']['z_score']['direction'] = self.combo_box_z_score_direction.currentText()
+                # Lemmatization
+                for lang in settings['lemmatization']['lemmatizers']:
+                    settings['lemmatization']['lemmatizers'][lang] = self.__dict__[f'combo_box_lemmatizer_{lang}'].currentText()
 
-            settings['measures']['statistical_significance']['students_t_test_2_sample']['number_sections'] = self.spin_box_students_t_test_2_sample_number_sections.value()
-            settings['measures']['statistical_significance']['students_t_test_2_sample']['use_data'] = self.combo_box_students_t_test_2_sample_use_data.currentText()
-            settings['measures']['statistical_significance']['students_t_test_2_sample']['variances'] = self.combo_box_students_t_test_2_sample_variances.currentText()
+                # Stop Words
+                for lang in settings['stop_words']['stop_words']:
+                    settings['stop_words']['stop_words'][lang] = self.__dict__[f'combo_box_stop_words_{lang}'].currentText()
 
-            settings['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'] = self.checkbox_pearsons_chi_squared_test_apply_correction.isChecked()
+                if settings['stop_words']['stop_words'][settings['stop_words']['preview_lang']] == self.tr('Custom List'):
+                    settings['stop_words']['custom_lists'][settings['stop_words']['preview_lang']] = self.list_stop_words_preview_results.get_items()
 
-            settings['measures']['statistical_significance']['fishers_exact_test']['direction'] = self.combo_box_fishers_exact_test_direction.currentText()
+                # Measures -> Dispersion
+                settings['measures']['dispersion']['general']['number_sections'] = self.spin_box_dispersion_number_sections.value()
 
-            settings['measures']['statistical_significance']['mann_whitney_u_test']['number_sections'] = self.spin_box_mann_whitney_u_test_number_sections.value()
-            settings['measures']['statistical_significance']['mann_whitney_u_test']['use_data'] = self.combo_box_mann_whitney_u_test_use_data.currentText()
-            settings['measures']['statistical_significance']['mann_whitney_u_test']['direction'] = self.combo_box_mann_whitney_u_test_direction.currentText()
-            settings['measures']['statistical_significance']['mann_whitney_u_test']['apply_correction'] = self.checkbox_mann_whitney_u_test_apply_correction.isChecked()
+                # Measures -> Adjusted Frequency
+                settings['measures']['adjusted_freq']['general']['number_sections'] = self.spin_box_adjusted_freq_number_sections.value()
+                settings['measures']['adjusted_freq']['general']['use_same_settings_dispersion'] = self.checkbox_use_same_settings_dispersion.isChecked()
 
-            # Measures -> Effect Size
-            settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param'] = self.spin_box_kilgarriffs_ratio_smoothing_param.value()
+                # Measures -> Statistical Significance
+                settings['measures']['statistical_significance']['z_score']['direction'] = self.combo_box_z_score_direction.currentText()
 
-            self.wordless_settings_changed.emit()
+                settings['measures']['statistical_significance']['students_t_test_2_sample']['number_sections'] = self.spin_box_students_t_test_2_sample_number_sections.value()
+                settings['measures']['statistical_significance']['students_t_test_2_sample']['use_data'] = self.combo_box_students_t_test_2_sample_use_data.currentText()
+                settings['measures']['statistical_significance']['students_t_test_2_sample']['variances'] = self.combo_box_students_t_test_2_sample_variances.currentText()
 
-        return settings_valid
+                settings['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'] = self.checkbox_pearsons_chi_squared_test_apply_correction.isChecked()
+
+                settings['measures']['statistical_significance']['fishers_exact_test']['direction'] = self.combo_box_fishers_exact_test_direction.currentText()
+
+                settings['measures']['statistical_significance']['mann_whitney_u_test']['number_sections'] = self.spin_box_mann_whitney_u_test_number_sections.value()
+                settings['measures']['statistical_significance']['mann_whitney_u_test']['use_data'] = self.combo_box_mann_whitney_u_test_use_data.currentText()
+                settings['measures']['statistical_significance']['mann_whitney_u_test']['direction'] = self.combo_box_mann_whitney_u_test_direction.currentText()
+                settings['measures']['statistical_significance']['mann_whitney_u_test']['apply_correction'] = self.checkbox_mann_whitney_u_test_apply_correction.isChecked()
+
+                # Measures -> Effect Size
+                settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param'] = self.spin_box_kilgarriffs_ratio_smoothing_param.value()
+
+                self.wordless_settings_changed.emit()
+
+                if result == 'restart':
+                    self.main.restart()
+
+                return True
+            elif result == 'cancel':
+                return False
 
     def load(self, tab = None):
         self.load_settings()

@@ -112,6 +112,71 @@ class Wordless_Combo_Box_Ref_File(Wordless_Combo_Box):
         else:
             self.addItem(self.tr('*** None ***'))
 
+class Wordless_Combo_Box_Font_Family(QFontComboBox):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.main = wordless_misc.find_wordless_main(parent)
+
+        self.setMaxVisibleItems(20)
+        self.setFocusPolicy(Qt.StrongFocus)
+
+    def wheelEvent(self, event):
+        if self.hasFocus():
+            QComboBox.wheelEvent(self, event)
+        else:
+            event.ignore()
+
+class Wordless_Combo_Box_Font_Weight(Wordless_Combo_Box):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.WEIGHTS = {
+            self.tr('Thin'): 0,
+            self.tr('Extra Light'): 12,
+            self.tr('Light'): 25,
+            self.tr('Normal'): 50,
+            self.tr('Medium'): 57,
+            self.tr('Demi Bold'): 63,
+            self.tr('Bold'): 75,
+            self.tr('Extra Bold'): 81,
+            self.tr('Black'): 87
+        }
+
+        self.addItems(list(self.WEIGHTS))
+
+    def set_text(self, font_weight):
+        for text, val in self.WEIGHTS.items():
+            if val == font_weight:
+                self.setCurrentText(text)
+
+                break
+
+    def get_val(self):
+        return self.WEIGHTS[self.currentText()]
+
+class Wordless_Combo_Box_Font_Style(Wordless_Combo_Box):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.STYLES = {
+            self.tr('Normal'): 0,
+            self.tr('Italic'): 1,
+            self.tr('Oblique'): 2
+        }
+
+        self.addItems(list(self.STYLES))
+
+    def set_text(self, font_style):
+        for text, val in self.STYLES.items():
+            if val == font_style:
+                self.setCurrentText(text)
+
+                break
+
+    def get_val(self):
+        return self.STYLES[self.currentText()]
+
 # Spin Box
 class Wordless_Spin_Box(QSpinBox):
     def __init__(self, parent):
@@ -163,6 +228,12 @@ class Wordless_Spin_Box_Window(Wordless_Spin_Box):
                 self.setPrefix('L')
 
             self.setValue(-self.value() + 1)
+
+class Wordless_Spin_Box_Font_Size(Wordless_Spin_Box):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.setRange(10, 18)
 
 # Text Browser
 class Wordless_Text_Browser(QTextBrowser):

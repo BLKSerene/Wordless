@@ -132,6 +132,7 @@ class Wordless_Dialog_Confirm_Exit(wordless_dialog.Wordless_Dialog_Info):
                 <div>
                     Are you sure you want to exit Wordless?
                 </div>
+
                 <div style="font-weight: bold;">
                     Note: All unsaved data and figures will be lost.
                 </div>
@@ -166,3 +167,37 @@ class Wordless_Dialog_Confirm_Exit(wordless_dialog.Wordless_Dialog_Info):
         settings = self.main.settings_custom['general']['misc']
 
         settings['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
+
+class Wordless_Dialog_Restart_Required(wordless_dialog.Wordless_Dialog_Info):
+    def __init__(self, main):
+        super().__init__(main, main.tr('Exit'),
+                         width = 400,
+                         height = 100,
+                         no_button = True)
+
+        self.label_confirm_exit = wordless_label.Wordless_Label_Dialog(
+            self.tr('''
+                <div>
+                    Restart is required for font settings to take effect.<br>
+                    Do you want to restart Wordless now?
+                </div>
+
+                <div style="font-weight: bold;">
+                    Note: All unsaved data and figures will be lost.
+                </div>
+            '''),
+            self
+        )
+
+        self.button_restart = QPushButton(self.tr('Restart'), self)
+        self.button_cancel = QPushButton(self.tr('Cancel'), self)
+
+        self.button_restart.clicked.connect(self.accept)
+        self.button_cancel.clicked.connect(self.reject)
+
+        self.wrapper_info.layout().addWidget(self.label_confirm_exit, 0, 0)
+
+        self.wrapper_buttons.layout().addWidget(self.button_restart, 0, 1)
+        self.wrapper_buttons.layout().addWidget(self.button_cancel, 0, 2)
+
+        self.wrapper_buttons.layout().setColumnStretch(0, 1)
