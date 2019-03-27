@@ -21,8 +21,8 @@ from wordless_dialogs import wordless_dialog
 from wordless_widgets import wordless_label, wordless_layout
 
 class Wordless_Dialog_Progress(wordless_dialog.Wordless_Dialog_Frameless):
-    def __init__(self, main, width, height):
-        super().__init__(main, width, height)
+    def __init__(self, main):
+        super().__init__(main)
 
         self.time_start = time.time()
 
@@ -52,9 +52,7 @@ class Wordless_Dialog_Progress(wordless_dialog.Wordless_Dialog_Frameless):
 
 class Wordless_Dialog_Progress_Add_Files(Wordless_Dialog_Progress):
     def __init__(self, main):
-        super().__init__(main,
-                         width = 420,
-                         height = 110)
+        super().__init__(main)
 
         self.label_progress.setText(self.tr('Loading files ...'))
         
@@ -66,11 +64,9 @@ class Wordless_Dialog_Progress_Add_Files(Wordless_Dialog_Progress):
 
 class Wordless_Dialog_Progress_Process_Data(Wordless_Dialog_Progress):
     def __init__(self, main):
-        super().__init__(main,
-                         width = 420,
-                         height = 110)
+        super().__init__(main)
 
-        self.label_progress.setText(self.tr('Loading text ...'))
+        self.label_progress.setText(self.tr('Loading texts ...'))
         
         self.label_processing.set_text(self.tr('''
             <div>
@@ -80,9 +76,7 @@ class Wordless_Dialog_Progress_Process_Data(Wordless_Dialog_Progress):
 
 class Wordless_Dialog_Progress_Filter_Results(Wordless_Dialog_Progress):
     def __init__(self, main):
-        super().__init__(main,
-                         width = 420,
-                         height = 110)
+        super().__init__(main)
 
         self.label_progress.setText(self.tr('Filtering results ...'))
         
@@ -94,9 +88,7 @@ class Wordless_Dialog_Progress_Filter_Results(Wordless_Dialog_Progress):
 
 class Wordless_Dialog_Progress_Search_Results(Wordless_Dialog_Progress):
     def __init__(self, main):
-        super().__init__(main,
-                         width = 420,
-                         height = 110)
+        super().__init__(main)
 
         self.label_progress.setText(self.tr('Searching in results ...'))
         
@@ -108,9 +100,7 @@ class Wordless_Dialog_Progress_Search_Results(Wordless_Dialog_Progress):
 
 class Wordless_Dialog_Progress_Fetch_Data(Wordless_Dialog_Progress):
     def __init__(self, main):
-        super().__init__(main,
-                         width = 420,
-                         height = 110)
+        super().__init__(main)
 
         self.label_progress.setText(self.tr('Fetching data ...'))
         
@@ -123,7 +113,7 @@ class Wordless_Dialog_Progress_Fetch_Data(Wordless_Dialog_Progress):
 class Wordless_Dialog_Confirm_Exit(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Exit'),
-                         width = 400,
+                         width = 420,
                          height = 100,
                          no_button = True)
 
@@ -171,7 +161,7 @@ class Wordless_Dialog_Confirm_Exit(wordless_dialog.Wordless_Dialog_Info):
 class Wordless_Dialog_Restart_Required(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Exit'),
-                         width = 400,
+                         width = 420,
                          height = 100,
                          no_button = True)
 
