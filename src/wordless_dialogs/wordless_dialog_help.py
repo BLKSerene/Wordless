@@ -710,6 +710,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Bug Fixes</div>
                         <ul>
+                            <li>Fix "Context Settings"</li>
                             <li>Fix error message when loading files</li>
                             <li>Fix "Open Folder"</li>
                             <li>Fix searching in results after results are sorted in "Concordancer"</li>

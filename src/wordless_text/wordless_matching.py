@@ -48,7 +48,7 @@ def get_re_tags(main, tags):
 # Search Terms
 def match_ngrams(main, search_terms, tokens,
                  lang, text_type, token_settings, search_settings):
-    search_terms_matched = []
+    search_terms_matched = set()
 
     settings = copy.deepcopy(search_settings)
 
@@ -199,7 +199,8 @@ def match_ngrams(main, search_terms, tokens,
                     search_term_tokens_matched[-1].add(regex_matched)
                     search_term_tokens_matched[-1] |= set(tokens_matched[regex_matched])
 
-            search_terms_matched.extend(itertools.product(*search_term_tokens_matched))
+            for item in itertools.product(*search_term_tokens_matched):
+                search_terms_matched.add(item)
     else:
         for search_term in search_terms:
             search_term_tokens_matched = []
@@ -207,7 +208,8 @@ def match_ngrams(main, search_terms, tokens,
             for search_term_token in search_term.split():
                 search_term_tokens_matched.append(set(tokens_matched[search_term_token]))
 
-            search_terms_matched.extend(itertools.product(*search_term_tokens_matched))
+            for item in itertools.product(*search_term_tokens_matched):
+                search_terms_matched.add(item)
 
     return search_terms_matched
 
