@@ -118,7 +118,6 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
         self.inclusion_group_box.layout().addWidget(self.inclusion_label_context_window_right, 11, 2)
         self.inclusion_group_box.layout().addWidget(self.inclusion_spin_box_context_window_right, 11, 3)
 
-        self.inclusion_group_box.layout().setRowStretch(12, 1)
         self.inclusion_group_box.layout().setColumnStretch(1, 1)
         self.inclusion_group_box.layout().setColumnStretch(3, 1)
 
@@ -213,7 +212,6 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
         self.exclusion_group_box.layout().addWidget(self.exclusion_label_context_window_right, 11, 2)
         self.exclusion_group_box.layout().addWidget(self.exclusion_spin_box_context_window_right, 11, 3)
 
-        self.exclusion_group_box.layout().setRowStretch(12, 1)
         self.exclusion_group_box.layout().setColumnStretch(1, 1)
         self.exclusion_group_box.layout().setColumnStretch(3, 1)
 
@@ -232,8 +230,6 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
         self.layout().setColumnStretch(0, 1)
         self.layout().setColumnStretch(1, 1)
-
-        self.multi_search_mode_changed()
 
         self.load_settings()
 
@@ -321,7 +317,6 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
         self.inclusion_changed()
         self.exclusion_changed()
-        self.multi_search_mode_changed()
         self.token_settings_changed()
 
     def inclusion_changed(self):
@@ -391,22 +386,41 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
             self.exclusion_checkbox_match_tags.token_settings_changed()
 
     def multi_search_mode_changed(self):
-        if platform.system() == 'Windows':
+        if 'size_multi' in self.__dict__:
             if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
-                self.setFixedSize(530, 480)
+                self.setFixedSize(self.size_multi)
             else:
-                self.setFixedSize(530, 365)
-        elif platform.system() == 'Darwin':
-            if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
-                self.setFixedSize(560, 500)
-            else:
-                self.setFixedSize(560, 375)
-        elif platform.system() == 'Linux':
-            if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
-                self.setFixedSize(530, 490)
-            else:
-                self.setFixedSize(530, 380)
+                self.setFixedSize(self.size_normal)
 
     def token_settings_changed(self):
         self.inclusion_checkbox_match_tags.token_settings_changed()
         self.exclusion_checkbox_match_tags.token_settings_changed()
+
+    def load(self):
+        # Calculate size
+        if 'size_multi' not in self.__dict__:
+            inclusion_multi_search_mode = self.settings['inclusion']['multi_search_mode']
+            exclusion_multi_search_mode = self.settings['exclusion']['multi_search_mode']
+
+            self.inclusion_checkbox_multi_search_mode.setChecked(False)
+            self.exclusion_checkbox_multi_search_mode.setChecked(False)
+
+            self.inclusion_group_box.adjustSize()
+            self.exclusion_group_box.adjustSize()
+            self.adjustSize()
+            
+            self.size_normal = self.size()
+
+            self.inclusion_checkbox_multi_search_mode.setChecked(True)
+            self.exclusion_checkbox_multi_search_mode.setChecked(True)
+
+            self.inclusion_group_box.adjustSize()
+            self.exclusion_group_box.adjustSize()
+            self.adjustSize()
+
+            self.size_multi = QSize(self.size_normal.width(), self.size().height())
+
+            self.inclusion_checkbox_multi_search_mode.setChecked(inclusion_multi_search_mode)
+            self.exclusion_checkbox_multi_search_mode.setChecked(exclusion_multi_search_mode)
+
+        self.exec_()

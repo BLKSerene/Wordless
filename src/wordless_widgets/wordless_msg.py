@@ -21,10 +21,10 @@ def wordless_msg_generate_table_error(main):
 def wordless_msg_generate_fig_error(main):
     main.statusBar().showMessage(main.tr('An error occured while the figure is being generated!'))
 
-def wordless_msg_filter_results_success(main):
+def wordless_msg_results_filter_success(main):
     main.statusBar().showMessage(main.tr('The results in the table has been successfully filtered.'))
 
-def wordless_msg_search_results_success(main, search_results):
+def wordless_msg_results_search_success(main, search_results):
     if len(search_results) == 0:
         main.statusBar().showMessage(main.tr('No items found.'))
     elif len(search_results) == 1:
@@ -32,10 +32,10 @@ def wordless_msg_search_results_success(main, search_results):
     else:
         main.statusBar().showMessage(main.tr(f'Found {len(search_results):,} items.'))
 
-def wordless_msg_search_results_error(main):
+def wordless_msg_results_search_error(main):
     main.statusBar().showMessage(main.tr('An error occured during searching!'))
 
-def wordless_msg_sort_results(main):
+def wordless_msg_results_sort(main):
     main.statusBar().showMessage(main.tr('The results in the table has been successfully sorted.'))
 
 def wordless_msg_import_list_success(main, num_prev, num_cur):

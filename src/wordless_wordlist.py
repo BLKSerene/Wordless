@@ -20,8 +20,7 @@ from PyQt5.QtWidgets import *
 import numpy
 
 from wordless_checking import wordless_checking_file
-from wordless_dialogs import (wordless_dialog_filter_results, wordless_dialog_misc, wordless_dialog_search_results,
-                              wordless_msg_box)
+from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
 from wordless_figs import wordless_fig, wordless_fig_freq, wordless_fig_stat
 from wordless_text import wordless_text, wordless_text_utils, wordless_token_processing
 from wordless_utils import wordless_misc, wordless_sorting, wordless_threading
@@ -31,6 +30,7 @@ from wordless_widgets import (wordless_layout, wordless_msg, wordless_table,
 class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(parent,
+                         tab = 'wordlist',
                          headers = [
                              parent.tr('Rank'),
                              parent.tr('Tokens'),
@@ -44,20 +44,6 @@ class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Filter_Search):
                              parent.tr('Number of\nFiles Found')
                          ],
                          sorting_enabled = True)
-
-        dialog_filter_results = wordless_dialog_filter_results.Wordless_Dialog_Filter_Results_Wordlist(
-            self.main,
-            tab = 'wordlist',
-            table = self
-        )
-        dialog_search_results = wordless_dialog_search_results.Wordless_Dialog_Search_Results(
-            self.main,
-            tab = 'wordlist',
-            table = self
-        )
-
-        self.button_filter_results.clicked.connect(dialog_filter_results.show)
-        self.button_search_results.clicked.connect(dialog_search_results.show)
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
@@ -74,8 +60,8 @@ class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
 
         layout_results = wordless_layout.Wordless_Layout()
         layout_results.addWidget(self.table_wordlist.label_number_results, 0, 0)
-        layout_results.addWidget(self.table_wordlist.button_filter_results, 0, 2)
-        layout_results.addWidget(self.table_wordlist.button_search_results, 0, 3)
+        layout_results.addWidget(self.table_wordlist.button_results_filter, 0, 2)
+        layout_results.addWidget(self.table_wordlist.button_results_search, 0, 3)
 
         layout_results.setColumnStretch(1, 1)
 

@@ -25,13 +25,13 @@ from wordless_widgets import (wordless_button, wordless_layout, wordless_msg,
                               wordless_widgets)
 from wordless_utils import wordless_misc, wordless_threading
 
-class Wordless_Worker_Search_Results(wordless_threading.Wordless_Worker):
+class Wordless_Worker_Results_Search(wordless_threading.Wordless_Worker):
     searching_finished = pyqtSignal()
 
-    def __init__(self, main, dialog_search_results, dialog_progress):
+    def __init__(self, main, dialog_results_search, dialog_progress):
         super().__init__(main, dialog_progress)
 
-        self.dialog = dialog_search_results
+        self.dialog = dialog_results_search
 
     def search_results(self):
         results = {}
@@ -77,7 +77,7 @@ class Wordless_Worker_Search_Results(wordless_threading.Wordless_Worker):
 
         self.searching_finished.emit()
 
-class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
+class Wordless_Dialog_Results_Search(wordless_dialog.Wordless_Dialog):
     def __init__(self, main, tab, table):
         super().__init__(main, main.tr('Search in Results'))
 
@@ -119,13 +119,8 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.button_clear_hightlights = QPushButton(self.tr('Clear Highlights'), self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
-        self.button_find_next.setFixedWidth(110)
-        self.button_find_prev.setFixedWidth(110)
-        self.button_find_all.setFixedWidth(110)
-        self.button_clear_hightlights.setFixedWidth(110)
-
         self.button_reset_settings.setFixedWidth(120)
-        self.button_close.setFixedWidth(90)
+        self.button_close.setFixedWidth(100)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
@@ -191,8 +186,6 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
 
         self.layout().addLayout(layout_buttons_bottom, 10, 0, 1, 4)
 
-        self.layout().setRowStretch(11, 1)
-
         self.main.wordless_work_area.currentChanged.connect(self.reject)
 
         self.load_settings()
@@ -238,21 +231,11 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
         self.settings['ignore_tags_type_tags'] = self.combo_box_ignore_tags_tags.currentText()
         self.settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
-        if platform.system() == 'Windows':
+        if 'size_multi' in self.__dict__:
             if self.settings['multi_search_mode']:
-                self.setFixedSize(380, 400)
+                self.setFixedSize(self.size_multi)
             else:
-                self.setFixedSize(380, 280)
-        elif platform.system() == 'Darwin':
-            if self.settings['multi_search_mode']:
-                self.setFixedSize(380, 430)
-            else:
-                self.setFixedSize(380, 300)
-        elif platform.system() == 'Linux':
-            if self.settings['multi_search_mode']:
-                self.setFixedSize(380, 400)
-            else:
-                self.setFixedSize(380, 290)
+                self.setFixedSize(self.size_normal)
 
     @wordless_misc.log_timing
     def find_next(self):
@@ -347,7 +330,7 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
             else:
                 wordless_msg_box.wordless_msg_box_no_search_results(self.main)
 
-            wordless_msg.wordless_msg_search_results_success(self.main, self.items_found)
+            wordless_msg.wordless_msg_results_search_success(self.main, self.items_found)
 
             dialog_progress.accept()
 
@@ -355,23 +338,23 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
             self.settings['multi_search_mode'] and self.settings['search_terms']):
             self.clear_highlights()
 
-            dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Search_Results(self.main)
+            dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Results_Search(self.main)
 
-            worker_search_results = Wordless_Worker_Search_Results(self.main, self, dialog_progress)
-            thread_search_results = wordless_threading.Wordless_Thread_Search_Results(worker_search_results)
+            worker_results_search = Wordless_Worker_Results_Search(self.main, self, dialog_progress)
+            thread_results_search = wordless_threading.Wordless_Thread_Results_Search(worker_results_search)
 
-            worker_search_results.searching_finished.connect(data_received)
+            worker_results_search.searching_finished.connect(data_received)
 
-            thread_search_results.start()
+            thread_results_search.start()
 
             dialog_progress.exec_()
 
-            thread_search_results.quit()
-            thread_search_results.wait()
+            thread_results_search.quit()
+            thread_results_search.wait()
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term(self.main)
 
-            wordless_msg.wordless_msg_search_results_error(self.main)
+            wordless_msg.wordless_msg_results_search_error(self.main)
 
     def clear_highlights(self):
         if self.items_found:
@@ -391,3 +374,22 @@ class Wordless_Dialog_Search_Results(wordless_dialog.Wordless_Dialog):
             self.table.show()
 
             self.items_found.clear()
+
+    def load(self):
+        # Calculate size
+        if 'size_multi' not in self.__dict__:
+            multi_search_mode = self.settings['multi_search_mode']
+
+            self.checkbox_multi_search_mode.setChecked(False)
+
+            self.adjustSize()
+            self.size_normal = self.size()
+
+            self.checkbox_multi_search_mode.setChecked(True)
+
+            self.adjustSize()
+            self.size_multi = QSize(self.size_normal.width(), self.size().height())
+
+            self.checkbox_multi_search_mode.setChecked(multi_search_mode)
+
+        self.show()

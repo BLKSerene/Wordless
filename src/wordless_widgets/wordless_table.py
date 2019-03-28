@@ -9,6 +9,7 @@
 # All other rights reserved.
 #
 
+import copy
 import csv
 import os
 import re
@@ -21,8 +22,10 @@ import openpyxl
 
 from wordless_checking import wordless_checking_misc
 from wordless_dialogs import wordless_msg_box
+from wordless_text import wordless_text_processing
 from wordless_utils import wordless_misc
-from wordless_widgets import wordless_box
+from wordless_widgets import (wordless_box, wordless_button, wordless_label,
+                              wordless_msg)
 
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
@@ -887,7 +890,8 @@ class Wordless_Table_Data(Wordless_Table):
         self.item_changed()
 
 class Wordless_Table_Data_Search(Wordless_Table_Data):
-    def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
+    def __init__(self, main, tab,
+                 headers, header_orientation = 'horizontal', cols_stretch = [],
                  headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
                  sorting_enabled = False):
         super().__init__(main, headers, header_orientation, cols_stretch,
@@ -895,9 +899,9 @@ class Wordless_Table_Data_Search(Wordless_Table_Data):
                          sorting_enabled)
 
         self.label_number_results = QLabel()
-        self.button_search_results = QPushButton(self.tr('Search in Results'), self)
-
-        self.button_search_results.setFixedWidth(140)
+        self.button_results_search = wordless_button.Wordless_Button_Results_Search(self,
+                                                                                    tab = tab,
+                                                                                    table = self)
 
         self.itemChanged.connect(self.results_changed)
 
@@ -909,14 +913,15 @@ class Wordless_Table_Data_Search(Wordless_Table_Data):
         if [i for i in range(self.columnCount()) if self.item(0, i)] and rows_visible:
             self.label_number_results.setText(self.tr(f'Number of Results: {rows_visible}'))
 
-            self.button_search_results.setEnabled(True)
+            self.button_results_search.setEnabled(True)
         else:
             self.label_number_results.setText(self.tr('Number of Results: 0'))
 
-            self.button_search_results.setEnabled(False)
+            self.button_results_search.setEnabled(False)
 
 class Wordless_Table_Data_Sort_Search(Wordless_Table_Data):
-    def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
+    def __init__(self, main, tab,
+                 headers, header_orientation = 'horizontal', cols_stretch = [],
                  headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
                  sorting_enabled = False):
         super().__init__(main, headers, header_orientation, cols_stretch,
@@ -924,11 +929,11 @@ class Wordless_Table_Data_Sort_Search(Wordless_Table_Data):
                          sorting_enabled)
 
         self.label_number_results = QLabel()
-        self.button_sort_results = QPushButton(self.tr('Sort Results'), self)
-        self.button_search_results = QPushButton(self.tr('Search in Results'), self)
-
-        self.button_sort_results.setFixedWidth(150)
-        self.button_search_results.setFixedWidth(150)
+        self.button_results_sort = wordless_button.Wordless_Button_Results_Sort(self,
+                                                                                table = self)
+        self.button_results_search = wordless_button.Wordless_Button_Results_Search(self,
+                                                                                    tab = tab,
+                                                                                    table = self)
 
         self.itemChanged.connect(self.results_changed)
 
@@ -940,16 +945,17 @@ class Wordless_Table_Data_Sort_Search(Wordless_Table_Data):
         if [i for i in range(self.columnCount()) if self.item(0, i)] and rows_visible:
             self.label_number_results.setText(self.tr(f'Number of Results: {rows_visible}'))
 
-            self.button_sort_results.setEnabled(True)
-            self.button_search_results.setEnabled(True)
+            self.button_results_sort.setEnabled(True)
+            self.button_results_search.setEnabled(True)
         else:
             self.label_number_results.setText(self.tr('Number of Results: 0'))
 
-            self.button_sort_results.setEnabled(False)
-            self.button_search_results.setEnabled(False)
+            self.button_results_sort.setEnabled(False)
+            self.button_results_search.setEnabled(False)
 
 class Wordless_Table_Data_Filter_Search(Wordless_Table_Data):
-    def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
+    def __init__(self, main, tab,
+                 headers, header_orientation = 'horizontal', cols_stretch = [],
                  headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
                  sorting_enabled = False):
         super().__init__(main, headers, header_orientation, cols_stretch,
@@ -957,11 +963,12 @@ class Wordless_Table_Data_Filter_Search(Wordless_Table_Data):
                          sorting_enabled)
 
         self.label_number_results = QLabel()
-        self.button_filter_results = QPushButton(self.tr('Filter Results'), self)
-        self.button_search_results = QPushButton(self.tr('Search in Results'), self)
-
-        self.button_filter_results.setFixedWidth(150)
-        self.button_search_results.setFixedWidth(150)
+        self.button_results_filter = wordless_button.Wordless_Button_Results_Filter(self,
+                                                                                    tab = tab,
+                                                                                    table = self)
+        self.button_results_search = wordless_button.Wordless_Button_Results_Search(self,
+                                                                                    tab = tab,
+                                                                                    table = self)
 
         self.itemChanged.connect(self.results_changed)
 
@@ -973,13 +980,353 @@ class Wordless_Table_Data_Filter_Search(Wordless_Table_Data):
         if [i for i in range(self.columnCount()) if self.item(0, i)] and rows_visible:
             self.label_number_results.setText(self.tr(f'Number of Results: {rows_visible}'))
 
-            self.button_filter_results.setEnabled(True)
-            self.button_search_results.setEnabled(True)
+            self.button_results_filter.setEnabled(True)
+            self.button_results_search.setEnabled(True)
         else:
             self.label_number_results.setText(self.tr('Number of Results: 0'))
 
-            self.button_filter_results.setEnabled(False)
-            self.button_search_results.setEnabled(False)
+            self.button_results_filter.setEnabled(False)
+            self.button_results_search.setEnabled(False)
+
+class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
+    def __init__(self, parent, table):
+        super().__init__(parent,
+                         headers = [
+                             parent.tr('Columns'),
+                             parent.tr('Order')
+                         ],
+                         cols_stretch = [
+                             parent.tr('Order')
+                         ])
+
+        self.table = table
+        self.cols_sorting = []
+
+        self.button_add = QPushButton(self.tr('Add'), self)
+        self.button_insert = QPushButton(self.tr('Insert'), self)
+        self.button_remove = QPushButton(self.tr('Remove'), self)
+    
+        self.button_add.clicked.connect(self.add_row)
+        self.button_insert.clicked.connect(self.insert_row)
+        self.button_remove.clicked.connect(self.remove_row)
+
+        self.itemChanged.connect(self.item_changed)
+        self.itemSelectionChanged.connect(self.selection_changed)
+
+        self.table.itemChanged.connect(self.table_item_changed)
+
+        self.setFixedHeight(160)
+
+        self.clear_table()
+
+    def item_changed(self):
+        if self.rowCount() < len(self.cols_sorting):
+            self.button_add.setEnabled(True)
+        else:
+            self.button_add.setEnabled(False)
+
+        for i in range(self.rowCount()):
+            self.cellWidget(i, 0).text_old = self.cellWidget(i, 0).currentText()
+
+        self.selection_changed()
+
+    def selection_changed(self):
+        if self.selectedIndexes() and self.rowCount() < len(self.cols_sorting):
+            self.button_insert.setEnabled(True)
+        else:
+            self.button_insert.setEnabled(False)
+
+        if self.selectedIndexes() and len(self.get_selected_rows()) < self.rowCount():
+            self.button_remove.setEnabled(True)
+        else:
+            self.button_remove.setEnabled(False)
+
+    def table_item_changed(self):
+        sorting_rules = copy.deepcopy(self.main.settings_custom['concordancer']['sort_results']['sorting_rules'])
+
+        self.setRowCount(0)
+
+        for sorting_col, sorting_order in sorting_rules:
+            if sorting_col in [sorting_rule[0]
+                               for sorting_rule in self.main.settings_default['concordancer']['sort_results']['sorting_rules']]:
+                self.cols_sorting = [
+                    self.tr('Node'),
+                    self.tr('Token No.'),
+                    self.tr('File')
+                ]
+
+                if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
+                    if self.table.settings['concordancer']['generation_settings']['width_unit'] == self.tr('Token'):
+                        width_left = self.table.settings['concordancer']['generation_settings']['width_left_token']
+                        width_right = self.table.settings['concordancer']['generation_settings']['width_right_token']
+                    else:
+                        col_left = self.table.find_col(self.tr('Left'))
+                        col_right = self.table.find_col(self.tr('Right'))
+
+                        width_left = max([len(self.table.cellWidget(row, col_left).text_raw)
+                                          for row in range(self.table.rowCount())])
+                        width_right = max([len(self.table.cellWidget(row, col_right).text_raw)
+                                           for row in range(self.table.rowCount())])
+
+                    self.cols_sorting.extend([f'R{i + 1}' for i in range(width_right)])
+                    self.cols_sorting.extend([f'L{i + 1}' for i in range(width_left)])
+
+                self.add_row()
+
+                self.cellWidget(self.rowCount() - 1, 0).setCurrentText(sorting_col)
+                self.cellWidget(self.rowCount() - 1, 1).setCurrentText(sorting_order)
+
+        self.itemChanged.emit(self.item(0, 0))
+
+    def sorting_col_changed(self, combo_box_sorting_col):
+        for i in range(self.rowCount()):
+            combo_box_cur = self.cellWidget(i, 0)
+
+            if combo_box_sorting_col != combo_box_cur and combo_box_sorting_col.currentText() == combo_box_cur.currentText():
+                QMessageBox.warning(self.main,
+                                    self.tr('Column Sorted More Than Once'),
+                                    self.tr(f'''
+                                        {self.main.settings_global['styles']['style_dialog']}
+                                        <body>
+                                            <div>Please refrain from sorting the same column more than once!</div>
+                                        </body>
+                                    '''),
+                                    QMessageBox.Ok)
+
+                combo_box_sorting_col.setCurrentText(combo_box_sorting_col.text_old)
+                combo_box_sorting_col.showPopup()
+
+                return
+
+        combo_box_sorting_col.text_old = combo_box_sorting_col.currentText()
+
+    def _new_row(self):
+        combo_box_sorting_col = wordless_box.Wordless_Combo_Box(self)
+        combo_box_sorting_order = wordless_box.Wordless_Combo_Box(self)
+
+        combo_box_sorting_col.addItems(self.cols_sorting)
+        combo_box_sorting_order.addItems([
+            self.tr('Ascending'),
+            self.tr('Descending')
+        ])
+
+        if combo_box_sorting_col.findText('L1') > -1:
+            width_left = max([int(combo_box_sorting_col.itemText(i)[1:])
+                              for i in range(combo_box_sorting_col.count())
+                              if 'L' in combo_box_sorting_col.itemText(i)])
+        else:
+            width_left = 0
+
+        if combo_box_sorting_col.findText('R1') > -1:
+            width_right = max([int(combo_box_sorting_col.itemText(i)[1:])
+                               for i in range(combo_box_sorting_col.count())
+                               if 'R' in combo_box_sorting_col.itemText(i)])
+        else:
+            width_right = 0
+
+        cols_left = [int(self.cellWidget(i, 0).currentText()[1:])
+                     for i in range(self.rowCount())
+                     if 'L' in self.cellWidget(i, 0).currentText()]
+        cols_right = [int(self.cellWidget(i, 0).currentText()[1:])
+                      for i in range(self.rowCount())
+                      if 'R' in self.cellWidget(i, 0).currentText()]
+
+        if cols_left and max(cols_left) < width_left:
+            combo_box_sorting_col.setCurrentText(f'L{cols_left[-1] + 1}')
+        elif cols_right and max(cols_right) < width_right:
+            combo_box_sorting_col.setCurrentText(f'R{cols_right[-1] + 1}')
+        elif cols_right and max(cols_right) and not cols_left:
+            combo_box_sorting_col.setCurrentText(f'L1')
+        else:
+            for i in range(combo_box_sorting_col.count()):
+                text = combo_box_sorting_col.itemText(i)
+
+                if text not in [self.cellWidget(j, 0).currentText() for j in range(self.rowCount())]:
+                    combo_box_sorting_col.setCurrentText(text)
+
+                    break
+
+        combo_box_sorting_col.currentTextChanged.connect(lambda: self.sorting_col_changed(combo_box_sorting_col))
+        combo_box_sorting_col.currentTextChanged.connect(lambda: self.itemChanged.emit(self.item(0, 0)))
+        combo_box_sorting_order.currentTextChanged.connect(lambda: self.itemChanged.emit(self.item(0, 0)))
+
+        return (combo_box_sorting_col, combo_box_sorting_order)
+
+    def add_row(self):
+        combo_box_sorting_col, combo_box_sorting_order = self._new_row()
+        
+        self.setRowCount(self.rowCount() + 1)
+        self.setCellWidget(self.rowCount() - 1, 0, combo_box_sorting_col)
+        self.setCellWidget(self.rowCount() - 1, 1, combo_box_sorting_order)
+
+        self.selectRow(self.rowCount() - 1)
+
+        self.itemChanged.emit(self.item(0, 0))
+
+    def insert_row(self):
+        row = self.get_selected_rows()[0]
+
+        combo_box_sorting_col, combo_box_sorting_order = self._new_row()
+
+        self.insertRow(row)
+
+        self.setCellWidget(row, 0, combo_box_sorting_col)
+        self.setCellWidget(row, 1, combo_box_sorting_order)
+
+        self.selectRow(row)
+
+        self.itemChanged.emit(self.item(0, 0))
+
+    def remove_row(self):
+        for i in reversed(self.get_selected_rows()):
+            self.removeRow(i)
+
+        self.itemChanged.emit(self.item(0, 0))
+
+    @wordless_misc.log_timing
+    def sort_results(self):
+        def key_concordancer(item):
+            keys = []
+
+            for key in sorting_keys:
+                # Node
+                if key == 1:
+                    keys.append(item[key].text_raw)
+                # Left & Right
+                elif type(key) == list:
+                    keys.append(item[key[0]].text_raw[key[1]])
+                else:
+                    keys.append(item[key])
+
+            return keys
+
+        results = []
+        sorting_keys = []
+
+        settings = self.table.settings['concordancer']
+
+        if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
+            len_left = max([int(self.cellWidget(0, 0).itemText(i)[1:])
+                            for i in range(self.cellWidget(0, 0).count())
+                            if 'L' in self.cellWidget(0, 0).itemText(i)])
+            len_right = max([int(self.cellWidget(0, 0).itemText(i)[1:])
+                             for i in range(self.cellWidget(0, 0).count())
+                             if 'R' in self.cellWidget(0, 0).itemText(i)])
+
+            for i in range(self.table.rowCount()):
+                left_new = wordless_label.Wordless_Label_Html('', self.table)
+                node_new = wordless_label.Wordless_Label_Html('', self.table)
+                right_new = wordless_label.Wordless_Label_Html('', self.table)
+
+                left_old = self.table.cellWidget(i, 0)
+                node_old = self.table.cellWidget(i, 1)
+                right_old = self.table.cellWidget(i, 2)
+
+                if len(left_old.text_raw) < len_left:
+                    left_old.text_raw = [''] * (len_left - len(left_old.text_raw)) + left_old.text_raw
+                if len(right_old.text_raw) < len_right:
+                    right_old.text_raw.extend([''] * (len_right - len(right_old.text_raw)))
+
+                node_new.setText(node_old.text())
+
+                left_new.text_raw = left_old.text_raw.copy()
+                node_new.text_raw = node_old.text_raw.copy()
+                right_new.text_raw = right_old.text_raw.copy()
+
+                left_new.text_search = left_old.text_search.copy()
+                node_new.text_search = node_old.text_search.copy()
+                right_new.text_search = right_old.text_search.copy()
+
+                token_no = self.table.item(i, 3).val
+                sentence_no = self.table.item(i, 4).val
+                para_no = self.table.item(i, 5).val
+                file = self.table.item(i, 6).text()
+
+                results.append([left_new, node_new, right_new,
+                                token_no, sentence_no, para_no, file])
+
+            for sorting_col, sorting_order in settings['sort_results']['sorting_rules']:
+                if sorting_col == self.tr('File'):
+                    sorting_keys.append(6)
+                elif sorting_col == self.tr('Token No.'):
+                    sorting_keys.append(3)
+                elif sorting_col == self.tr('Node'):
+                    sorting_keys.append(1)
+                elif 'R' in sorting_col:
+                    sorting_keys.append([2, int(sorting_col[1:]) - 1])
+                elif 'L' in sorting_col:
+                    sorting_keys.append([0, -int(sorting_col[1:])])
+
+            self.table.hide()
+            self.table.blockSignals(True)
+            self.table.setUpdatesEnabled(False)
+
+            for i, (left, node, right,
+                    token_no, sentence_no, para_no, file) in enumerate(sorted(results, key = key_concordancer)):
+                for file_open in self.table.settings['files']['files_open']:
+                    if file_open['selected'] and file_open['name'] == file:
+                        lang = file_open['lang']
+
+                # Remove empty tokens
+                text_left = [token for token in left.text_raw if token]
+                text_right = [token for token in right.text_raw if token]
+
+                highlight_colors = self.main.settings_custom['concordancer']['sort_results']['highlight_colors']
+
+                i_highlight_color_left = 1
+                i_highlight_color_right = 1
+
+                for j, key in enumerate([key for key in sorting_keys if type(key) != int]):
+                    if key[0] == 0 and -key[1] <= len(text_left):
+                        hightlight_color = highlight_colors[i_highlight_color_left % len(highlight_colors)]
+
+                        text_left[key[1]] = f'''
+                            <span style="color: {hightlight_color}; font-weight: bold;">
+                                {text_left[key[1]]}
+                            </span>
+                        '''
+
+                        i_highlight_color_left += 1
+                    elif key[0] == 2 and key[1] < len(text_right):
+                        hightlight_color = highlight_colors[i_highlight_color_right % len(highlight_colors)]
+
+                        text_right[key[1]] = f'''
+                            <span style="color: {hightlight_color}; font-weight: bold;">
+                                {text_right[key[1]]}
+                            </span>
+                        '''
+
+                        i_highlight_color_right += 1
+
+                text_left = wordless_text_processing.wordless_word_detokenize(self.main, text_left, lang)
+                text_right = wordless_text_processing.wordless_word_detokenize(self.main, text_right, lang)
+
+                self.table.cellWidget(i, 0).setText(text_left)
+                self.table.cellWidget(i, 1).setText(node.text())
+                self.table.cellWidget(i, 2).setText(text_right)
+
+                self.table.cellWidget(i, 0).text_raw = [token for token in left.text_raw if token]
+                self.table.cellWidget(i, 1).text_raw = node.text_raw
+                self.table.cellWidget(i, 2).text_raw = [token for token in right.text_raw if token]
+
+                self.table.cellWidget(i, 0).text_search = left.text_search
+                self.table.cellWidget(i, 1).text_search = node.text_search
+                self.table.cellWidget(i, 2).text_search = right.text_search
+
+                self.table.item(i, 3).val = token_no
+                self.table.item(i, 4).val = sentence_no
+                self.table.item(i, 5).val = para_no
+                self.table.item(i, 6).setText(file)
+
+            self.table.show()
+            self.table.blockSignals(False)
+            self.table.setUpdatesEnabled(True)
+
+            self.table.toggle_pct()
+
+            self.table.update_items_width()
+
+        wordless_msg.wordless_msg_results_sort(self.main)
 
 class Wordless_Table_Tags(Wordless_Table):
     def __init__(self, main):

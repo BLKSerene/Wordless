@@ -62,13 +62,13 @@ class Wordless_Dialog_Progress_Process_Data(Wordless_Dialog_Progress):
 
         self.label_progress.setText(self.tr('Loading texts ...'))
 
-class Wordless_Dialog_Progress_Filter_Results(Wordless_Dialog_Progress):
+class Wordless_Dialog_Progress_Results_Filter(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
         self.label_progress.setText(self.tr('Filtering results ...'))
 
-class Wordless_Dialog_Progress_Search_Results(Wordless_Dialog_Progress):
+class Wordless_Dialog_Progress_Results_Search(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
@@ -132,14 +132,13 @@ class Wordless_Dialog_Restart_Required(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Exit'),
                          width = 420,
-                         height = 100,
+                         height = 120,
                          no_button = True)
 
         self.label_confirm_exit = wordless_label.Wordless_Label_Dialog(
             self.tr('''
                 <div>
-                    Restart is required for font settings to take effect.<br>
-                    Do you want to restart Wordless now?
+                    Restart is required for font settings to take effect. Do you want to restart Wordless now?
                 </div>
 
                 <div style="font-weight: bold;">
