@@ -265,20 +265,12 @@ class Wordless_Settings(QDialog):
         self.combo_box_font_family = wordless_box.Wordless_Combo_Box_Font_Family(self)
         self.label_font_size = QLabel(self.tr('Font Size:'), self)
         self.spin_box_font_size = wordless_box.Wordless_Spin_Box_Font_Size(self)
-        self.label_font_weight = QLabel(self.tr('Font Weight:'), self)
-        self.combo_box_font_weight = wordless_box.Wordless_Combo_Box_Font_Weight(self)
-        self.label_font_style = QLabel(self.tr('Font Style:'), self)
-        self.combo_box_font_style = wordless_box.Wordless_Combo_Box_Font_Style(self)
 
         group_box_font_settings.setLayout(QGridLayout())
         group_box_font_settings.layout().addWidget(self.label_font_family, 0, 0)
         group_box_font_settings.layout().addWidget(self.combo_box_font_family, 0, 1)
         group_box_font_settings.layout().addWidget(self.label_font_size, 1, 0)
         group_box_font_settings.layout().addWidget(self.spin_box_font_size, 1, 1)
-        group_box_font_settings.layout().addWidget(self.label_font_weight, 2, 0)
-        group_box_font_settings.layout().addWidget(self.combo_box_font_weight, 2, 1)
-        group_box_font_settings.layout().addWidget(self.label_font_style, 3, 0)
-        group_box_font_settings.layout().addWidget(self.combo_box_font_style, 3, 1)
 
         group_box_font_settings.layout().setColumnStretch(2, 1)
 
@@ -1841,8 +1833,6 @@ class Wordless_Settings(QDialog):
         # General
         self.combo_box_font_family.setCurrentFont(QFont(settings['general']['font_settings']['font_family']))
         self.spin_box_font_size.setValue(settings['general']['font_settings']['font_size'])
-        self.combo_box_font_weight.set_text(settings['general']['font_settings']['font_weight'])
-        self.combo_box_font_style.set_text(settings['general']['font_settings']['font_style'])
 
         self.checkbox_check_updates_on_startup.setChecked(settings['general']['update_settings']['check_updates_on_startup'])
 
@@ -2123,16 +2113,12 @@ class Wordless_Settings(QDialog):
             # Check font settings
             font_old = [
                 settings['general']['font_settings']['font_family'],
-                settings['general']['font_settings']['font_size'],
-                settings['general']['font_settings']['font_weight'],
-                settings['general']['font_settings']['font_style'] 
+                settings['general']['font_settings']['font_size']
             ]
 
             font_new = [
                 self.combo_box_font_family.currentFont().family(),
-                self.spin_box_font_size.value(),
-                self.combo_box_font_weight.get_val(),
-                self.combo_box_font_style.get_val()
+                self.spin_box_font_size.value()
             ]
 
             if font_new == font_old:
@@ -2150,8 +2136,6 @@ class Wordless_Settings(QDialog):
                 # General
                 settings['general']['font_settings']['font_family'] = self.combo_box_font_family.currentFont().family()
                 settings['general']['font_settings']['font_size'] = self.spin_box_font_size.value()
-                settings['general']['font_settings']['font_weight'] = self.combo_box_font_weight.get_val()
-                settings['general']['font_settings']['font_style'] = self.combo_box_font_style.get_val()
 
                 settings['general']['update_settings']['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
 
