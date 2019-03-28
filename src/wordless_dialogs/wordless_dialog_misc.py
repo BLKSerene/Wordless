@@ -84,7 +84,6 @@ class Wordless_Dialog_Confirm_Exit(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Exit'),
                          width = 420,
-                         height = 100,
                          no_button = True)
 
         self.label_confirm_exit = wordless_label.Wordless_Label_Dialog(
@@ -118,6 +117,8 @@ class Wordless_Dialog_Confirm_Exit(wordless_dialog.Wordless_Dialog_Info):
 
         self.load_settings()
 
+        self.set_fixed_height()
+
     def load_settings(self):
         settings = copy.deepcopy(self.main.settings_custom['general']['misc'])
 
@@ -132,7 +133,6 @@ class Wordless_Dialog_Restart_Required(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Exit'),
                          width = 420,
-                         height = 120,
                          no_button = True)
 
         self.label_confirm_exit = wordless_label.Wordless_Label_Dialog(
@@ -160,3 +160,5 @@ class Wordless_Dialog_Restart_Required(wordless_dialog.Wordless_Dialog_Info):
         self.wrapper_buttons.layout().addWidget(self.button_cancel, 0, 2)
 
         self.wrapper_buttons.layout().setColumnStretch(0, 1)
+
+        self.set_fixed_height()
