@@ -30,7 +30,7 @@ class Wordless_Dialog_Progress(wordless_dialog.Wordless_Dialog_Frameless):
 
         self.label_progress = QLabel('', self)
         self.label_time_elapsed = QLabel(self.tr('Elapsed Time: 0:00:00'), self)
-        self.label_processing = wordless_label.Wordless_Label_Dialog('', self)
+        self.label_processing = wordless_label.Wordless_Label_Dialog(self.tr('Please wait. It may take a few seconds to several minutes for the operation to be completed.'), self)
 
         self.timer_time_elapsed.timeout.connect(self.update_elapsed_time)
         self.timer_time_elapsed.start(1000)
@@ -55,60 +55,30 @@ class Wordless_Dialog_Progress_Add_Files(Wordless_Dialog_Progress):
         super().__init__(main)
 
         self.label_progress.setText(self.tr('Loading files ...'))
-        
-        self.label_processing.set_text(self.tr('''
-            <div>
-                Please wait while files are being loaded. It may take a few seconds to several minutes depending on the total size of all files to be loaded.
-            </div>
-        '''))
 
 class Wordless_Dialog_Progress_Process_Data(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
         self.label_progress.setText(self.tr('Loading texts ...'))
-        
-        self.label_processing.set_text(self.tr('''
-            <div>
-                Please wait while data is being processed. It may take a few seconds to several minutes depending on the total size of all selected files.
-            </div>
-        '''))
 
 class Wordless_Dialog_Progress_Filter_Results(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
         self.label_progress.setText(self.tr('Filtering results ...'))
-        
-        self.label_processing.set_text(self.tr('''
-            <div>
-                Please wait while filtering is in progress. It may take a few seconds to several minutes depending on the number of items in results.
-            </div>
-        '''))
 
 class Wordless_Dialog_Progress_Search_Results(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
         self.label_progress.setText(self.tr('Searching in results ...'))
-        
-        self.label_processing.set_text(self.tr('''
-            <div>
-                Please wait while searching is in progress. It may take a few seconds to several minutes depending on the number of items in results.
-            </div>
-        '''))
 
 class Wordless_Dialog_Progress_Fetch_Data(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
         self.label_progress.setText(self.tr('Fetching data ...'))
-        
-        self.label_processing.set_text(self.tr('''
-            <div>
-                Please wait while the table is being updated. It may take a few seconds to several minutes.
-            </div>
-        '''))
 
 class Wordless_Dialog_Confirm_Exit(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
