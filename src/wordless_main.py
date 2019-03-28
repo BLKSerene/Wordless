@@ -438,12 +438,10 @@ class Wordless_Main(QMainWindow):
         settings = copy.deepcopy(self.settings_custom)
 
         # Fonts
-        global_font = QFont(settings['general']['font_settings']['font_family'])
-        global_font.setPixelSize(settings['general']['font_settings']['font_size'])
-        global_font.setWeight(settings['general']['font_settings']['font_weight'])
-        global_font.setStyle(settings['general']['font_settings']['font_style'])
-
-        wordless_app.setFont(global_font)
+        self.setStyleSheet(f'''
+            font-family: {settings['general']['font_settings']['font_family']};
+            font-size: {settings['general']['font_settings']['font_size']}px;
+        ''')
 
         # Menu
         self.find_menu_item(self.tr('Show Status Bar')).setChecked(settings['menu']['prefs']['show_status_bar'])
