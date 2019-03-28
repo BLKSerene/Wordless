@@ -443,7 +443,7 @@ class Wordless_Main(QMainWindow):
         global_font.setWeight(settings['general']['font_settings']['font_weight'])
         global_font.setStyle(settings['general']['font_settings']['font_style'])
 
-        QApplication.setFont(global_font)
+        wordless_app.setFont(global_font)
 
         # Menu
         self.find_menu_item(self.tr('Show Status Bar')).setChecked(settings['menu']['prefs']['show_status_bar'])
@@ -481,9 +481,19 @@ class Wordless_Main(QMainWindow):
 
     def restart(self):
         if getattr(sys, '_MEIPASS', False):
-            subprocess.Popen([wordless_misc.get_abs_path(__file__)])
+            if platform.system() == 'Windows':
+                subprocess.Popen([wordless_misc.get_abs_path('Wordless.exe')])
+            elif platform.system() == 'Darwin':
+                subprocess.Popen([wordless_misc.get_abs_path('Wordless')])
+            elif platform.system() == 'Linux':
+                subprocess.Popen([wordless_misc.get_abs_path('Wordless')])
         else:
-            subprocess.Popen(['python', wordless_misc.get_abs_path(__file__)])
+            if platform.system() == 'Windows':
+                subprocess.Popen(['python', wordless_misc.get_abs_path(__file__)])
+            elif platform.system() == 'Darwin':
+                subprocess.Popen(['python3', wordless_misc.get_abs_path(__file__)])
+            elif platform.system() == 'Linux':
+                subprocess.Popen(['python3.7', wordless_misc.get_abs_path(__file__)])
 
         self.save_settings()
         sys.exit(0)
