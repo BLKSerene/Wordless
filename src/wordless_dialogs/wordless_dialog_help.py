@@ -26,7 +26,6 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Citing'),
                          width = 420,
-                         height = 220,
                          no_button = True)
 
         self.label_citing = wordless_label.Wordless_Label_Dialog(
@@ -77,6 +76,8 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
 
         self.load_settings()
 
+        self.set_fixed_height()
+
     def load_settings(self):
         settings = copy.deepcopy(self.main.settings_custom['menu']['help']['citing'])
 
@@ -104,8 +105,7 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
 class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Acknowledgments'),
-                         width = 580,
-                         height = 360)
+                         width = 580)
 
         self.ACKS_GENERAL = [
             [
@@ -354,6 +354,8 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             self.tr('Data')
         ])
 
+        self.table_acks.setFixedHeight(250)
+
         self.combo_box_browse_category.currentTextChanged.connect(self.browse_category_changed)
 
         layout_browse_category = wordless_layout.Wordless_Layout()
@@ -367,6 +369,8 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         self.wrapper_info.layout().addWidget(self.table_acks, 2, 0)
 
         self.load_settings()
+
+        self.set_fixed_height()
 
     def load_settings(self):
         settings = copy.deepcopy(self.main.settings_custom['menu']['help']['acks'])
@@ -458,6 +462,23 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
         self.wrapper_info.layout().addWidget(self.label_donating_via_img, 2, 0, Qt.AlignHCenter | Qt.AlignVCenter)
         self.wrapper_info.layout().addWidget(self.label_donating_note, 3, 0)
 
+        # Calculate height
+        donating_via_old = self.main.settings_custom['menu']['help']['donating']['donating_via']
+
+        self.combo_box_donating_via.setCurrentText('PayPal')
+        self.donating_via_changed()
+
+        height_donating_via_paypal = self.label_donating_via_img.sizeHint().height()
+        self.height_paypal = self.heightForWidth(self.width())
+
+        self.combo_box_donating_via.setCurrentText('Alipay')
+        self.donating_via_changed()
+
+        height_donating_via_alipay = self.label_donating_via_img.sizeHint().height()
+        self.height_alipay = self.heightForWidth(self.width()) + (height_donating_via_alipay - height_donating_via_paypal)
+
+        self.main.settings_custom['menu']['help']['donating']['donating_via'] = donating_via_old
+
         self.load_settings()
 
     def load_settings(self):
@@ -474,18 +495,18 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
 
         if settings['donating_via'] == self.tr('PayPal'):
             self.label_donating_via_img.setText('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32"><img src="imgs/donating_paypal.gif"></a>')
-
-            self.setFixedHeight(250)
         elif settings['donating_via'] == self.tr('Alipay'):
             self.label_donating_via_img.setText('<img src="imgs/donating_alipay.png">')
-
-            self.setFixedHeight(500)
         elif settings['donating_via'] == self.tr('WeChat'):
             self.label_donating_via_img.setText('<img src="imgs/donating_wechat.png">')
 
-            self.setFixedHeight(500)
+        if 'height_alipay' in self.__dict__:
+            if settings['donating_via'] == self.tr('PayPal'):
+                self.setFixedHeight(self.height_paypal)
+            elif settings['donating_via'] in [self.tr('Alipay'), self.tr('WeChat')]:
+                self.setFixedHeight(self.height_alipay)
 
-        if platform.system() == 'Windows':
+        if platform.system() in ['Windows', 'Linux']:
             self.move_to_center()
 
 class Worker_Check_Updates(QObject):
@@ -547,7 +568,6 @@ class Wordless_Dialog_Check_Updates(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main, on_startup = False):
         super().__init__(main, main.tr('Check for Updates'),
                          width = 420,
-                         height = 100,
                          no_button = True)
 
         self.on_startup = on_startup
@@ -571,6 +591,8 @@ class Wordless_Dialog_Check_Updates(wordless_dialog.Wordless_Dialog_Info):
         self.wrapper_buttons.layout().setColumnStretch(1, 1)
 
         self.load_settings()
+
+        self.set_fixed_height()
 
     def check_updates(self):
         self.updates_status_changed('checking')
@@ -745,9 +767,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
 
 class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
-        super().__init__(main, main.tr('About Wordless'),
-                         width = 420,
-                         height = 200)
+        super().__init__(main, main.tr('About Wordless'))
 
         label_about_icon = QLabel('', self)
 
@@ -756,7 +776,7 @@ class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
 
         label_about_icon.setPixmap(img_wordless_icon)
 
-        label_about_title = wordless_label.Wordless_Label_Dialog(
+        label_about_title = wordless_label.Wordless_Label_Dialog_No_Wrap(
             self.tr('''
                 <div style="text-align: center;">
                     <h2>Wordless Version 1.1.0</h2>
@@ -768,7 +788,7 @@ class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
             '''),
             self
         )
-        label_about_copyright = wordless_label.Wordless_Label_Dialog(
+        label_about_copyright = wordless_label.Wordless_Label_Dialog_No_Wrap(
             self.tr('''
                 <hr>
                 <div style="text-align: center;">
@@ -786,3 +806,6 @@ class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
 
         self.wrapper_info.layout().setColumnStretch(1, 1)
         self.wrapper_info.layout().setVerticalSpacing(0)
+
+        self.set_fixed_size()
+        self.setFixedWidth(self.width() + 10)
