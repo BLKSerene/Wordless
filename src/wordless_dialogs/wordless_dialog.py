@@ -32,6 +32,9 @@ class Wordless_Dialog(QDialog):
         self.setWindowFlag(Qt.MSWindowsFixedSizeDialogHint, True)
         self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
 
+    def set_fixed_height(self):
+        self.setFixedHeight(self.heightForWidth(self.width()))
+
     def set_fixed_size(self):
         self.adjustSize()
         self.setFixedSize(self.sizeHint())
@@ -43,7 +46,7 @@ class Wordless_Dialog(QDialog):
 class Wordless_Dialog_Frameless(Wordless_Dialog):
     def __init__(self, main):
         super().__init__(main, '',
-                         width = 460, height = 120)
+                         width = 450)
 
         self.setWindowFlag(Qt.FramelessWindowHint, True)
         self.setObjectName('wordless-dialog-frameless')
