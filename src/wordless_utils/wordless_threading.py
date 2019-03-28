@@ -29,7 +29,7 @@ class Wordless_Worker_Process_Data(Wordless_Worker):
 
         self.processing_finished.connect(data_received)
 
-class Wordless_Worker_Filter_Results(Wordless_Worker):
+class Wordless_Worker_Results_Filter(Wordless_Worker):
     filtering_finished = pyqtSignal()
 
     def __init__(self, main, dialog_filter_results, dialog_progress, data_received):
@@ -65,13 +65,13 @@ class Wordless_Thread_Process_Data(Wordless_Thread):
 
         self.started.connect(worker_process_data.process_data)
 
-class Wordless_Thread_Filter_Results(Wordless_Thread):
+class Wordless_Thread_Results_Filter(Wordless_Thread):
     def __init__(self, worker_filter_results):
         super().__init__(worker_filter_results)
 
         self.started.connect(worker_filter_results.filter_results)
 
-class Wordless_Thread_Search_Results(Wordless_Thread):
+class Wordless_Thread_Results_Search(Wordless_Thread):
     def __init__(self, worker_search_results):
         super().__init__(worker_search_results)
 

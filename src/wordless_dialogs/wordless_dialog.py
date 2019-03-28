@@ -32,6 +32,10 @@ class Wordless_Dialog(QDialog):
         self.setWindowFlag(Qt.MSWindowsFixedSizeDialogHint, True)
         self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
 
+    def set_fixed_size(self):
+        self.adjustSize()
+        self.setFixedSize(self.sizeHint())
+
     def move_to_center(self):
         self.move((self.main.width() - self.width()) / 2,
                   (self.main.height() - self.height()) / 2,)
