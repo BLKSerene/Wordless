@@ -759,7 +759,7 @@ class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
         label_about_title = wordless_label.Wordless_Label_Dialog(
             self.tr('''
                 <div style="text-align: center;">
-                    <h2>Wordless Version 1.0.0</h2>
+                    <h2>Wordless Version 1.1.0</h2>
                     <div>
                         An Integrated Corpus Tool with Multi-language Support<br>
                         for the Study of Language, Literature and Translation
@@ -772,7 +772,7 @@ class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
             self.tr('''
                 <hr>
                 <div style="text-align: center;">
-                    Copyright (C)&nbsp;&nbsp;2018 Ye Lei (<span style="font-family: simsun">叶磊</span>)<br>
+                    Copyright (C) 2018-2019 Ye Lei (<span style="font-family: simsun">叶磊</span>)<br>
                     Licensed Under GNU GPLv3<br>
                     All Other Rights Reserved
                 </div>
