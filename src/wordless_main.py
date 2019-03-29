@@ -348,7 +348,7 @@ class Wordless_Main(QMainWindow):
 
     # Help -> Check for Updates
     def help_check_updates(self, on_startup = False):
-        dialog_check_updates = wordless_dialog_help.Wordless_Dialog_Check_Updates(self)
+        dialog_check_updates = wordless_dialog_help.Wordless_Dialog_Check_Updates(self, on_startup = on_startup)
 
         if not on_startup:
             dialog_check_updates.open()
