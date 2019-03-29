@@ -462,6 +462,23 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
         self.wrapper_info.layout().addWidget(self.label_donating_via_img, 2, 0, Qt.AlignHCenter | Qt.AlignVCenter)
         self.wrapper_info.layout().addWidget(self.label_donating_note, 3, 0)
 
+        # Calculate height
+        donating_via_old = self.main.settings_custom['menu']['help']['donating']['donating_via']
+
+        self.combo_box_donating_via.setCurrentText('PayPal')
+        self.donating_via_changed()
+
+        height_donating_via_paypal = self.label_donating_via_img.sizeHint().height()
+        self.height_paypal = self.heightForWidth(self.width())
+
+        self.combo_box_donating_via.setCurrentText('Alipay')
+        self.donating_via_changed()
+
+        height_donating_via_alipay = self.label_donating_via_img.sizeHint().height()
+        self.height_alipay = self.heightForWidth(self.width()) + (height_donating_via_alipay - height_donating_via_paypal)
+
+        self.main.settings_custom['menu']['help']['donating']['donating_via'] = donating_via_old
+
         self.load_settings()
 
     def load_settings(self):
@@ -478,18 +495,18 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
 
         if settings['donating_via'] == self.tr('PayPal'):
             self.label_donating_via_img.setText('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32"><img src="imgs/donating_paypal.gif"></a>')
-
-            self.setFixedHeight(250)
         elif settings['donating_via'] == self.tr('Alipay'):
             self.label_donating_via_img.setText('<img src="imgs/donating_alipay.png">')
-
-            self.setFixedHeight(500)
         elif settings['donating_via'] == self.tr('WeChat'):
             self.label_donating_via_img.setText('<img src="imgs/donating_wechat.png">')
 
-            self.setFixedHeight(500)
+        if 'height_alipay' in self.__dict__:
+            if settings['donating_via'] == self.tr('PayPal'):
+                self.setFixedHeight(self.height_paypal)
+            elif settings['donating_via'] in [self.tr('Alipay'), self.tr('WeChat')]:
+                self.setFixedHeight(self.height_alipay)
 
-        if platform.system() == 'Windows':
+        if platform.system() in ['Windows', 'Linux']:
             self.move_to_center()
 
 class Worker_Check_Updates(QObject):
