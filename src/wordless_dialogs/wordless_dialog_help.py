@@ -19,6 +19,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_dialogs import wordless_dialog
+from wordless_utils import wordless_threading
 from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
                               wordless_table)
 
@@ -510,7 +511,6 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
             self.move_to_center()
 
 class Worker_Check_Updates(QObject):
-    finished = pyqtSignal()
     check_updates_finished = pyqtSignal(str, str)
 
     def __init__(self, main):
@@ -539,10 +539,10 @@ class Worker_Check_Updates(QObject):
         except:
             updates_status = 'network_error'
 
-        if not self.stopped:
-            self.check_updates_finished.emit(updates_status, version_new)
+        if self.stopped:
+            updates_status == 'canceled'
 
-        self.finished.emit()
+        self.check_updates_finished.emit(updates_status, version_new)
 
     def is_newer_version(self, version_new):
         with open('VERSION', 'r', encoding = 'utf_8') as f:
@@ -597,23 +597,20 @@ class Wordless_Dialog_Check_Updates(wordless_dialog.Wordless_Dialog_Info):
     def check_updates(self):
         self.updates_status_changed('checking')
 
-        thread_check_updates = QThread()
+        self.main.worker_check_updates = Worker_Check_Updates(self.main)
+        thread_check_updates = wordless_threading.Wordless_Thread(self.main.worker_check_updates)
 
         self.main.threads_check_updates.append(thread_check_updates)
 
-        self.main.worker_check_updates = Worker_Check_Updates(self.main)
-        self.main.worker_check_updates.moveToThread(thread_check_updates)
-
         thread_check_updates.started.connect(self.main.worker_check_updates.check_updates)
-        thread_check_updates.finished.connect(thread_check_updates.deleteLater)
         thread_check_updates.destroyed.connect(lambda: self.main.threads_check_updates.remove(thread_check_updates))
 
         if self.on_startup:
-            self.worker_check_updates.check_updates_finished.connect(self.updates_status_on_startup_changed)
+            self.main.worker_check_updates.check_updates_finished.connect(self.updates_status_changed_on_startup)
 
         self.main.worker_check_updates.check_updates_finished.connect(self.updates_status_changed)
-        self.main.worker_check_updates.finished.connect(thread_check_updates.quit)
-        self.main.worker_check_updates.finished.connect(self.main.worker_check_updates.deleteLater)
+        self.main.worker_check_updates.check_updates_finished.connect(thread_check_updates.quit)
+        self.main.worker_check_updates.check_updates_finished.connect(self.main.worker_check_updates.deleteLater)
 
         thread_check_updates.start()
 
@@ -673,7 +670,7 @@ class Wordless_Dialog_Check_Updates(wordless_dialog.Wordless_Dialog_Info):
             self.button_cancel.disconnect()
             self.button_cancel.clicked.connect(self.accept)
 
-    def updates_status_on_startup_changed(self, status):
+    def updates_status_changed_on_startup(self, status):
         if status == 'updates_available':
             self.open()
             self.setFocus()
@@ -709,7 +706,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                 </div>
 
                 <div class="changelog">
-                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.1.0">v1.1.0</a> - 03/30/2019</div>
+                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.1.0">v1.1.0</a> - 03/31/2019</div>
                     <hr>
 
                     <div class="changelog-section">
@@ -732,6 +729,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Bug Fixes</div>
                         <ul>
+                            <li>Fix "Check for Updates" on startup</li>
                             <li>Fix "Context Settings"</li>
                             <li>Fix error message when loading files</li>
                             <li>Fix "Open Folder"</li>
@@ -745,10 +743,10 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Dependency Updates</div>
                         <ul>
-                            <li>Update lxml to 4.3.3</li>
-                            <li>Update PyQt to 5.12.1</li>
-                            <li>Update SacreMoses to 0.0.13</li>
-                            <li>Update spaCy to 2.1.3</li>
+                            <li>Upgrade lxml to 4.3.3</li>
+                            <li>Upgrade PyQt to 5.12.1</li>
+                            <li>Upgrade SacreMoses to 0.0.13</li>
+                            <li>Upgrade spaCy to 2.1.3</li>
                         </ul>
                     </div>
                 </div>
