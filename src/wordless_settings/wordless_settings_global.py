@@ -15,6 +15,8 @@ from wordless_measures import (wordless_measures_adjusted_freq,
                                wordless_measures_statistical_significance)
 
 def init_settings_global(main):
+    font_size_custom = main.settings_custom['general']['font_settings']['font_size']
+
     main.settings_global = {
         'langs': {
             main.tr('Afrikaans'): 'afr',
@@ -2143,42 +2145,42 @@ def init_settings_global(main):
                 </head>
             ''',
 
-            'style_changelog': '''
+            'style_changelog': f'''
                 <head>
                     <style>
-                        * {
+                        * {{
                             outline: none;
                             margin: 0;
                             border: 0;
                             padding: 0;
 
                             text-align: justify;
-                        }
+                        }}
 
-                        ul {
+                        ul {{
                             line-height: 1.2;
                             margin-bottom: 10px;
-                        }
+                        }}
 
-                        li {
+                        li {{
                             margin-left: -30px;
-                        }
+                        }}
 
-                        .changelog {
+                        .changelog {{
                             margin-bottom: 5px;
-                        }
+                        }}
 
-                        .changelog-header {
+                        .changelog-header {{
                             margin-bottom: 3px;
-                            font-size: 14px;
+                            font-size: {font_size_custom + 2}px;
                             font-weight: bold;
-                        }
+                        }}
 
-                        .changelog-section-header {
+                        .changelog-section-header {{
                             margin-bottom: 5px;
-                            font-size: 13px;
+                            font-size: {font_size_custom + 1}px;
                             font-weight: bold;
-                        }
+                        }}
                     </style>
                 </head>
             ''',
