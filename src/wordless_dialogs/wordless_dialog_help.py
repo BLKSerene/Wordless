@@ -709,7 +709,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                 </div>
 
                 <div class="changelog">
-                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.1.0">v1.1.0</a> - 03/25/2019</div>
+                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.1.0">v1.1.0</a> - 03/30/2019</div>
                     <hr>
 
                     <div class="changelog-section">
