@@ -264,13 +264,13 @@ class Wordless_Settings(QDialog):
         self.label_font_family = QLabel(self.tr('Font Family:'), self)
         self.combo_box_font_family = wordless_box.Wordless_Combo_Box_Font_Family(self)
         self.label_font_size = QLabel(self.tr('Font Size:'), self)
-        self.spin_box_font_size = wordless_box.Wordless_Spin_Box_Font_Size(self)
+        self.combo_box_font_size = wordless_box.Wordless_Combo_Box_Font_Size(self)
 
         group_box_font_settings.setLayout(QGridLayout())
         group_box_font_settings.layout().addWidget(self.label_font_family, 0, 0)
         group_box_font_settings.layout().addWidget(self.combo_box_font_family, 0, 1)
         group_box_font_settings.layout().addWidget(self.label_font_size, 1, 0)
-        group_box_font_settings.layout().addWidget(self.spin_box_font_size, 1, 1)
+        group_box_font_settings.layout().addWidget(self.combo_box_font_size, 1, 1)
 
         group_box_font_settings.layout().setColumnStretch(2, 1)
 
@@ -1832,7 +1832,7 @@ class Wordless_Settings(QDialog):
 
         # General
         self.combo_box_font_family.setCurrentFont(QFont(settings['general']['font_settings']['font_family']))
-        self.spin_box_font_size.setValue(settings['general']['font_settings']['font_size'])
+        self.combo_box_font_size.set_text(settings['general']['font_settings']['font_size'])
 
         self.checkbox_check_updates_on_startup.setChecked(settings['general']['update_settings']['check_updates_on_startup'])
 
@@ -2118,7 +2118,7 @@ class Wordless_Settings(QDialog):
 
             font_new = [
                 self.combo_box_font_family.currentFont().family(),
-                self.spin_box_font_size.value()
+                self.combo_box_font_size.get_val()
             ]
 
             if font_new == font_old:
@@ -2135,7 +2135,7 @@ class Wordless_Settings(QDialog):
             if result in ['skip', 'restart']:
                 # General
                 settings['general']['font_settings']['font_family'] = self.combo_box_font_family.currentFont().family()
-                settings['general']['font_settings']['font_size'] = self.spin_box_font_size.value()
+                settings['general']['font_settings']['font_size'] = self.combo_box_font_size.get_val()
 
                 settings['general']['update_settings']['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
 
