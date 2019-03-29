@@ -29,7 +29,9 @@ class Wordless_Dialog_Results_Sort_Concordancer(wordless_dialog.Wordless_Dialog)
         self.button_sort = QPushButton(self.tr('Sort'), self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
-        self.button_reset_settings.setFixedWidth(120)
+        self.table_sort.setFixedWidth(280)
+
+        self.button_reset_settings.setFixedWidth(130)
         self.button_sort.setFixedWidth(80)
         self.button_close.setFixedWidth(80)
 

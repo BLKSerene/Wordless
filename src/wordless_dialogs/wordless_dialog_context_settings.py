@@ -220,7 +220,7 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
 
         self.button_ok.clicked.connect(self.accept)
 
-        self.button_reset_settings.setFixedWidth(150)
+        self.button_reset_settings.setFixedWidth(130)
 
         self.setLayout(wordless_layout.Wordless_Layout())
         self.layout().addWidget(self.inclusion_group_box, 0, 0, Qt.AlignTop)
