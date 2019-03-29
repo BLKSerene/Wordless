@@ -172,19 +172,23 @@ class Wordless_Settings(QDialog):
         button_apply.clicked.connect(self.settings_apply)
         button_cancel.clicked.connect(self.reject)
 
-        layout_buttons_right = wordless_layout.Wordless_Layout()
-        layout_buttons_right.addWidget(button_save, 0, 0)
-        layout_buttons_right.addWidget(button_apply, 0, 1)
-        layout_buttons_right.addWidget(button_cancel, 0, 2)
+        button_reset_settings.setFixedWidth(150)
+        button_save.setFixedWidth(80)
+        button_apply.setFixedWidth(80)
+        button_cancel.setFixedWidth(80)
+
+        layout_buttons = wordless_layout.Wordless_Layout()
+        layout_buttons.addWidget(button_reset_settings, 0, 0)
+        layout_buttons.addWidget(button_save, 0, 2)
+        layout_buttons.addWidget(button_apply, 0, 3)
+        layout_buttons.addWidget(button_cancel, 0, 4)
+
+        layout_buttons.setColumnStretch(1, 1)
 
         self.setLayout(wordless_layout.Wordless_Layout())
         self.layout().addWidget(self.tree_settings, 0, 0)
         self.layout().addWidget(self.scroll_area_settings, 0, 1)
-        self.layout().addWidget(button_reset_settings, 1, 0)
-        self.layout().addLayout(layout_buttons_right, 1, 1, Qt.AlignRight)
-
-        self.layout().setColumnStretch(0, 1)
-        self.layout().setColumnStretch(1, 3)
+        self.layout().addLayout(layout_buttons, 1, 0, 1, 2)
 
         self.tree_settings.item_selected_old = self.tree_settings.topLevelItem(0)
         self.tree_settings.topLevelItem(0).setSelected(True)
@@ -2266,5 +2270,14 @@ class Wordless_Settings(QDialog):
 
             if not self.tree_settings.findItems(tab, Qt.MatchExactly):
                 item_selected.parent().setExpanded(True)
+
+        # Calculate width
+        for node in self.tree_settings.get_nodes():
+            node.setExpanded(True)
+
+        self.tree_settings.setFixedWidth(self.tree_settings.columnWidth(0) + 10)
+
+        for node in self.tree_settings.get_nodes():
+            node.setExpanded(False)
 
         self.exec_()
