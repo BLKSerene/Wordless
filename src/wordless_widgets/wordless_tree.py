@@ -18,3 +18,18 @@ class Wordless_Tree(QTreeWidget):
         super().__init__(parent)
 
         self.setHeaderHidden(True)
+        
+        self.header().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.header().setStretchLastSection(False)
+
+    def get_nodes(self):
+        nodes = []
+
+        iterator = QTreeWidgetItemIterator(self)
+
+        while iterator.value():
+            nodes.append(iterator.value())
+
+            iterator += 1
+
+        return nodes
