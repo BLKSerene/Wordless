@@ -27,24 +27,24 @@ If you publish work that uses Wordless, please cite as follows.
 
 MLA (8th Edition):
 
-    Ye Lei. Wordless, version 1.0, 2019, https://github.com/BLKSerene/Wordless.
+    Ye Lei. Wordless, version 1.1.0, 2019, https://github.com/BLKSerene/Wordless.
 
 APA (6th Edition):
 
-    Ye, L. (2019) Wordless (Version 1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless
+    Ye, L. (2019) Wordless (Version 1.1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless
 
 GB (GB/T 7714—2015):
 
-    叶磊. Wordless version 1.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
+    叶磊. Wordless version 1.1.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
 
 ## Download
 The latest version of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 and later**, and **Ubuntu 16.04 and later**, all **64-bit only**.
 
-[Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/v1.0.0/wordless_v1.0.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
-[Download the latest version for macOS](https://github.com/BLKSerene/Wordless/releases/download/v1.0.0/wordless_v1.0.0_macos.zip) (unzip the file and double-click **Wordless.app** to run)<br>
-[Download the latest version for Linux](https://github.com/BLKSerene/Wordless/releases/download/v1.0.0/wordless_v1.0.0_linux.zip) (unzip the file and double-click **Wordless/Wordless** to run)
+[Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/v1.1.0/wordless_v1.1.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
+[Download the latest version for macOS](https://github.com/BLKSerene/Wordless/releases/download/v1.1.0/wordless_v1.1.0_macos.zip) (unzip the file and double-click **Wordless.app** to run)<br>
+[Download the latest version for Linux](https://github.com/BLKSerene/Wordless/releases/download/v1.1.0/wordless_v1.1.0_linux.tar.gz) (unzip the file and double-click **Wordless/Wordless** to run)
 
-Chinese users with slow connections to Github can [download from Baidu Netdisk](https://pan.baidu.com/s/1utWAFOkkwQVxqedtGr-2QQ) (**password**: 03el).
+Chinese users with slow connections to Github can [download from Baidu Netdisk](https://pan.baidu.com/s/1h48UA2roCHD9Bp3EzSoexQ) (**password**: k3ny).
 
 [Download older versions](https://github.com/BLKSerene/Wordless/releases)
 
