@@ -86,10 +86,10 @@ class Wordless_Main(QMainWindow):
         self.setWindowTitle(self.tr('Wordless'))
         self.setWindowIcon(QIcon(wordless_misc.get_abs_path('imgs/wordless_icon.ico')))
 
-        # Settings
-        wordless_settings_global.init_settings_global(self)
+        # Default settings
         wordless_settings_default.init_settings_default(self)
 
+        # Custom settings
         path_settings = wordless_misc.get_abs_path('wordless_settings.pickle')
 
         if os.path.exists(path_settings):
@@ -103,6 +103,10 @@ class Wordless_Main(QMainWindow):
         else:
             self.settings_custom = copy.deepcopy(self.settings_default)
 
+        # Global settings
+        wordless_settings_global.init_settings_global(self)
+
+        # Settings
         self.wordless_settings = wordless_settings.Wordless_Settings(self)
 
         # Menu
