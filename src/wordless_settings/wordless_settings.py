@@ -1272,8 +1272,8 @@ class Wordless_Settings(QDialog):
 
                 self.combo_box_tagsets_lang.setEnabled(True)
                 self.combo_box_tagsets_pos_tagger.setEnabled(True)
-                self.button_tagsets_reset_mappings.setEnabled(True)
-                self.button_tagsets_reset_all_mappings.setEnabled(True)
+                self.button_tagsets_reset.setEnabled(True)
+                self.button_tagsets_reset_all.setEnabled(True)
 
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Fetch_Data(self.main)
 
@@ -1282,8 +1282,8 @@ class Wordless_Settings(QDialog):
 
             self.combo_box_tagsets_lang.setEnabled(False)
             self.combo_box_tagsets_pos_tagger.setEnabled(False)
-            self.button_tagsets_reset_mappings.setEnabled(False)
-            self.button_tagsets_reset_all_mappings.setEnabled(False)
+            self.button_tagsets_reset.setEnabled(False)
+            self.button_tagsets_reset_all.setEnabled(False)
 
             thread_fetch_data.start()
 
@@ -1353,8 +1353,8 @@ class Wordless_Settings(QDialog):
         group_box_mapping_settings = QGroupBox(self.tr('Mapping Settings'))
 
         self.label_tagsets_num_pos_tags = QLabel('', self)
-        self.button_tagsets_reset_mappings = QPushButton(self.tr('Reset Mappings'), self)
-        self.button_tagsets_reset_all_mappings = QPushButton(self.tr('Reset All Mappings'), self)
+        self.button_tagsets_reset = QPushButton(self.tr('Reset'), self)
+        self.button_tagsets_reset_all = QPushButton(self.tr('Reset All'), self)
         self.table_mappings = wordless_table.Wordless_Table(self,
                                                             headers = [
                                                                 self.tr('POS Tags'),
@@ -1363,16 +1363,16 @@ class Wordless_Settings(QDialog):
                                                                 self.tr('Example(s)')
                                                             ])
 
-        self.button_tagsets_reset_mappings.setFixedWidth(125)
-        self.button_tagsets_reset_all_mappings.setFixedWidth(125)
+        self.button_tagsets_reset.setFixedWidth(100)
+        self.button_tagsets_reset_all.setFixedWidth(100)
 
-        self.button_tagsets_reset_mappings.clicked.connect(reset_mappings)
-        self.button_tagsets_reset_all_mappings.clicked.connect(reset_all_mappings)
+        self.button_tagsets_reset.clicked.connect(reset_mappings)
+        self.button_tagsets_reset_all.clicked.connect(reset_all_mappings)
 
         group_box_mapping_settings.setLayout(wordless_layout.Wordless_Layout())
         group_box_mapping_settings.layout().addWidget(self.label_tagsets_num_pos_tags, 0, 0)
-        group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset_mappings, 0, 2)
-        group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset_all_mappings, 0, 3)
+        group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset, 0, 2)
+        group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset_all, 0, 3)
         group_box_mapping_settings.layout().addWidget(self.table_mappings, 1, 0, 1, 4)
 
         group_box_mapping_settings.layout().setColumnStretch(1, 1)
