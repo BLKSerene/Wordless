@@ -127,6 +127,32 @@ class Wordless_Combo_Box_Font_Family(QFontComboBox):
         else:
             event.ignore()
 
+class Wordless_Combo_Box_Font_Size(Wordless_Combo_Box):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.FONT_SIZES = {
+            'Extra Small': 8,
+            'Small': 10,
+            'Medium (Recommended)': 12,
+            'Large': 14,
+            'Extra Large': 16
+        }
+
+        self.main = wordless_misc.find_wordless_main(parent)
+
+        self.addItems(list(self.FONT_SIZES))
+
+    def set_text(self, font_size):
+        for text, val in self.FONT_SIZES.items():
+            if val == font_size:
+                self.setCurrentText(text)
+
+                break
+
+    def get_val(self):
+        return self.FONT_SIZES[self.currentText()]
+
 # Spin Box
 class Wordless_Spin_Box(QSpinBox):
     def __init__(self, parent):
@@ -178,12 +204,6 @@ class Wordless_Spin_Box_Window(Wordless_Spin_Box):
                 self.setPrefix('L')
 
             self.setValue(-self.value() + 1)
-
-class Wordless_Spin_Box_Font_Size(Wordless_Spin_Box):
-    def __init__(self, parent):
-        super().__init__(parent)
-
-        self.setRange(8, 16)
 
 # Text Browser
 class Wordless_Text_Browser(QTextBrowser):
