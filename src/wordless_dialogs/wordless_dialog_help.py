@@ -118,7 +118,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
-                '5.12.1',
+                '5.13.0',
                 'Riverbank Computing Limited',
                 '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a>'
             ]
@@ -758,6 +758,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Dependency Upgrades</div>
                         <ul>
+                            <li>Upgrade PyQt to 5.13.0</li>
                             <li>Upgrade Python to 3.7.4</li>
                         </ul>
                     </div>
