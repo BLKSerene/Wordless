@@ -134,14 +134,14 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/taishi-i/nagisa">nagisa</a>',
-                '0.2.1',
+                '0.2.4',
                 'Taishi Ikeda (池田大志)',
                 '<a href="https://github.com/taishi-i/nagisa/blob/master/LICENSE.txt">MIT</a>'
             ],
 
             [
                 '<a href="http://www.nltk.org/">NLTK</a>',
-                '3.4',
+                '3.4.4',
                 'Steven Bird, Liling Tan',
                 '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'
             ],
@@ -758,6 +758,8 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Dependency Upgrades</div>
                         <ul>
+                            <li>Upgrade nagisa to 0.2.4</li>
+                            <li>Upgrade NLTK to 3.4.4</li>
                             <li>Upgrade PyQt to 5.13.0</li>
                             <li>Upgrade Python to 3.7.4</li>
                         </ul>
