@@ -763,6 +763,13 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     </div>
 
                     <div class="changelog-section">
+                        <div class="changelog-section-header">Bug Fixes</div>
+                        <ul>
+                            <li>Fix "Settings → Stop Words → Preview → Count of Stop Words"</li>
+                        </ul>
+                    </div>
+
+                    <div class="changelog-section">
                         <div class="changelog-section-header">Dependency Upgrades</div>
                         <ul>
                             <li>Upgrade nagisa to 0.2.4</li>
