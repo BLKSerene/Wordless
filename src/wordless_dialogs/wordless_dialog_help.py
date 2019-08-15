@@ -162,7 +162,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/PyThaiNLP/pythainlp">PyThaiNLP</a>',
-                '1.7.4',
+                '2.0.6',
                 'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
                 '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache-2.0</a>'
             ],
@@ -761,6 +761,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade nagisa to 0.2.4</li>
                             <li>Upgrade NLTK to 3.4.4</li>
                             <li>Upgrade PyQt to 5.13.0</li>
+                            <li>Upgrade PyThaiNLP to 2.0.6</li>
                             <li>Upgrade Python to 3.7.4</li>
                         </ul>
                     </div>
