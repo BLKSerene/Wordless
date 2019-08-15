@@ -756,6 +756,13 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <hr>
 
                     <div class="changelog-section">
+                        <div class="changelog-section-header">Improvements</div>
+                        <ul>
+                            <li>Update PyThaiNLP's Thai stop words</li>
+                        </ul>
+                    </div>
+
+                    <div class="changelog-section">
                         <div class="changelog-section-header">Dependency Upgrades</div>
                         <ul>
                             <li>Upgrade nagisa to 0.2.4</li>

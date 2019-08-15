@@ -755,7 +755,7 @@ def wordless_get_stop_words(main, lang,
             stop_words = [line.rstrip() for line in f.readlines()]
     # Thai
     elif list_stop_words == main.tr('PyThaiNLP - Thai Stop Words'):
-        stop_words = pythainlp.corpus.stopwords.words('thai')
+        stop_words = pythainlp.corpus.common.thai_stopwords()
     # Custom Lists
     elif list_stop_words == main.tr('Custom List'):
         stop_words = main.settings_custom['stop_words']['custom_lists'][lang]
