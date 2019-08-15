@@ -111,7 +111,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         self.ACKS_GENERAL = [
             [
                 '<a href="https://www.python.org/">Python</a>',
-                '3.7.2',
+                '3.7.4',
                 'Guido van Rossum, Python Software Foundation',
                 '<a href="https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release">PSF</a>'
             ],
@@ -741,12 +741,24 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     </div>
 
                     <div class="changelog-section">
-                        <div class="changelog-section-header">Dependency Updates</div>
+                        <div class="changelog-section-header">Dependency Upgrades</div>
                         <ul>
                             <li>Upgrade lxml to 4.3.3</li>
                             <li>Upgrade PyQt to 5.12.1</li>
                             <li>Upgrade SacreMoses to 0.0.13</li>
                             <li>Upgrade spaCy to 2.1.3</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="changelog">
+                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.2.0">v1.2.0</a> - ??/??/2019</div>
+                    <hr>
+
+                    <div class="changelog-section">
+                        <div class="changelog-section-header">Dependency Upgrades</div>
+                        <ul>
+                            <li>Upgrade Python to 3.7.4</li>
                         </ul>
                     </div>
                 </div>
