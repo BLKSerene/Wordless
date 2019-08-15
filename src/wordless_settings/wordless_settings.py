@@ -1546,11 +1546,13 @@ class Wordless_Settings(QDialog):
             
             stop_words = wordless_text_processing.wordless_get_stop_words(self.main, lang, list_stop_words = list_stop_words)
 
-            self.label_stop_words_preview_count.setText(self.tr(f'Count of Stop Words: {len(stop_words)}'))
             self.list_stop_words_preview_results.load_stop_words(stop_words)
+            self.label_stop_words_preview_count.setText(self.tr(f'Count of Stop Words: {len(stop_words)}'))
 
             if list_stop_words == self.tr('Custom List'):
                 self.list_stop_words_preview_results.switch_to_custom()
+
+                self.list_stop_words_preview_results.itemChanged.connect(lambda: self.label_stop_words_preview_count.setText(self.tr(f'Count of Stop Words: {self.list_stop_words_preview_results.count()}')))
             else:
                 self.list_stop_words_preview_results.switch_to_default()
 
