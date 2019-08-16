@@ -567,7 +567,23 @@ def wordless_pos_tag(main, tokens, lang,
 
     # Tibetan
     elif pos_tagger == main.tr('pybo - Tibetan POS Tagger'):
-        tokens_tagged = [(token.content, token.pos) for token in main.pybo_bo_tokenizer.tokenize(' '.join(tokens))]
+        word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
+
+        wordless_text_utils.check_pybo_tokenizers(main,
+                                                  word_tokenizer = word_tokenizer)
+
+        if word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (GMD)'):
+            tokens = main.pybo_tokenizer_gmd.tokenize(' '.join(tokens))
+        elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (POS)'):
+            tokens = main.pybo_tokenizer_pos.tokenize(' '.join(tokens))
+        elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (tsikchen)'):
+            tokens = main.pybo_tokenizer_tsikchen.tokenize(' '.join(tokens))
+
+        for token in tokens:
+            if token.pos:
+                tokens_tagged.append((token.text, token.pos))
+            else:
+                tokens_tagged.append((token.text, token.chunk_type))
 
     # Vietnamese
     elif pos_tagger == main.tr('Underthesea - Vietnamese POS Tagger'):
@@ -680,11 +696,23 @@ def wordless_lemmatize(main, tokens, lang,
                 lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
         # Tibetan
         elif lemmatizer == main.tr('pybo - Tibetan Lemmatizer'):
-            for token in main.pybo_bo_tokenizer.tokenize(' '.join(tokens)):
+            word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
+
+            wordless_text_utils.check_pybo_tokenizers(main,
+                                                      word_tokenizer = word_tokenizer)
+
+            if word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (GMD)'):
+                tokens = main.pybo_tokenizer_gmd.tokenize(' '.join(tokens))
+            elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (POS)'):
+                tokens = main.pybo_tokenizer_pos.tokenize(' '.join(tokens))
+            elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (tsikchen)'):
+                tokens = main.pybo_tokenizer_tsikchen.tokenize(' '.join(tokens))
+
+            for token in tokens:
                 if token.lemma:
                     lemmas.append(token.lemma)
                 else:
-                    lemmas.append(token.content)
+                    lemmas.append(token.text)
         # Other Languages
         elif 'Lemmatization Lists' in lemmatizer:
             lang = wordless_conversion.to_iso_639_1(main, lang)
