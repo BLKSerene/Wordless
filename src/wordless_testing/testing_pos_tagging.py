@@ -15,7 +15,7 @@ import sys
 sys.path.append('.')
 
 from wordless_testing import testing_init
-from wordless_text import wordless_text_processing, wordless_text_utils
+from wordless_text import wordless_text_processing
 from wordless_utils import wordless_conversion
 
 main = testing_init.Testing_Main()
@@ -24,8 +24,6 @@ def testing_pos_tag(lang, pos_tagger):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
     print(f'{lang_text} / {pos_tagger}:')
-
-    wordless_text_utils.check_pos_taggers(main, lang, pos_tagger = pos_tagger)
 
     tokens_tagged = wordless_text_processing.wordless_pos_tag(main, globals()[f'tokens_{lang}'],
                                                               lang = lang,

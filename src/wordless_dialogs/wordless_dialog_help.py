@@ -758,6 +758,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Improvements</div>
                         <ul>
+                            <li>Update pybo's Tibetan tokenizers</li>
                             <li>Update PyThaiNLP's Thai stop words</li>
                         </ul>
                     </div>
@@ -765,6 +766,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Bug Fixes</div>
                         <ul>
+                            <li>Fix NLTK's word tokenizers</li>
                             <li>Fix "Settings → Stop Words → Preview → Count of Stop Words"</li>
                         </ul>
                     </div>

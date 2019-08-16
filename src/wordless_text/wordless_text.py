@@ -48,12 +48,8 @@ class Wordless_Text():
 
         if tokens_only:
             keep_sentences = False
-
-            wordless_text_utils.check_word_tokenizers(main, self.lang)
         else:
             keep_sentences = True
-
-            wordless_text_utils.check_tokenizers(main, self.lang)
 
         with open(file['path'], 'r', encoding = file['encoding']) as f:
             # Untokenized / Untagged

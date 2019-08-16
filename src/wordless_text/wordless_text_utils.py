@@ -21,7 +21,7 @@ def check_spacy_models(main, lang, pipeline):
     if pipeline == 'word_tokenization':
         nlp_pipelines = []
         nlp_disable = ['tagger', 'parser', 'ner']
-    elif pipeline in ['tokenization', 'sentence_tokenization']:
+    elif pipeline == 'sentence_tokenization':
         nlp_pipelines = ['sentencizer']
         nlp_disable = ['tagger', 'parser', 'ner']
     elif pipeline in ['pos_tagging', 'lemmatization']:
@@ -125,32 +125,12 @@ def check_word_tokenizers(main, lang, word_tokenizer = 'default'):
         check_spacy_models(main, 'eng', pipeline = 'word_tokenization')
         check_spacy_models(main, 'other', pipeline = 'word_tokenization')
 
-def check_tokenizers(main, lang, word_tokenizer = 'default'):
-    if lang not in main.settings_global['word_tokenizers']:
-        lang = 'other'
-
-    if word_tokenizer == 'default':
-        word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
-
-    if 'spaCy' in word_tokenizer:
-        check_spacy_models(main, lang, pipeline = 'tokenization')
-    # Tibetan
-    elif 'pybo' in word_tokenizer:
-        check_pybo_tokenizers(main, word_tokenizer = word_tokenizer)
-    # Chinese & Japanese
-    elif 'Wordless' in word_tokenizer:
-        check_spacy_models(main, 'eng', pipeline = 'tokenization')
-        check_spacy_models(main, 'other', pipeline = 'tokenization')
-
 def check_pos_taggers(main, lang, pos_tagger = 'default'):
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang]
 
     if 'spaCy' in pos_tagger:
         check_spacy_models(main, lang, pipeline = 'pos_tagging')
-    # Tibetan
-    elif 'pybo' in pos_tagger:
-        check_pybo_bo_tokenizer(main)
 
     # Chinese & Japanese
     if lang in ['zho_cn', 'zho_tw', 'jpn']:
@@ -164,9 +144,6 @@ def check_lemmatizers(main, lang, lemmatizer = 'default'):
 
         if 'spaCy' in lemmatizer:
             check_spacy_models(main, lang, pipeline = 'lemmatization')
-        # Tibetan
-        elif 'pybo' in lemmatizer:
-            check_pybo_bo_tokenizer(main)
 
 def record_boundary_sentences(sentences, text):
     sentence_start = 0

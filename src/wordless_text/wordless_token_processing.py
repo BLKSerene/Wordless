@@ -37,9 +37,6 @@ def wordless_process_tokens(text, token_settings):
 
     # Lemmatize all tokens
     if not settings['use_tags'] and settings['lemmatize_tokens']:
-        wordless_text_utils.check_lemmatizers(main,
-                                              lang = text.lang)
-
         tokens = wordless_text_processing.wordless_lemmatize(main, tokens,
                                                              lang = text.lang)
 
