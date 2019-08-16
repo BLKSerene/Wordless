@@ -1068,7 +1068,9 @@ def init_settings_global(main):
             ],
 
             'bod': [
-                main.tr('pybo - Tibetan Word Tokenizer')
+                main.tr('pybo - Tibetan Word Tokenizer (GMD)'),
+                main.tr('pybo - Tibetan Word Tokenizer (POS)'),
+                main.tr('pybo - Tibetan Word Tokenizer (tsikchen)')
             ],
 
             'tur': [
