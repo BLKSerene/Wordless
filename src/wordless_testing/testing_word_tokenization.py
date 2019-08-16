@@ -16,7 +16,7 @@ import sys
 sys.path.append('.')
 
 from wordless_testing import testing_init
-from wordless_text import wordless_text_processing, wordless_text_utils
+from wordless_text import wordless_text_processing
 from wordless_utils import wordless_conversion
 
 main = testing_init.Testing_Main()
@@ -25,8 +25,6 @@ def testing_word_tokenize(lang, word_tokenizer):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
     print(f'{lang_text} / {word_tokenizer}:')
-
-    wordless_text_utils.check_word_tokenizers(main, lang, word_tokenizer = word_tokenizer)
 
     tokens_sentences = wordless_text_processing.wordless_word_tokenize(main, globals()[f'sentence_{lang}'],
                                                                        lang = lang,
@@ -61,6 +59,7 @@ sentence_gle = 'Is ceann de na teangacha Ceilteacha í an Ghaeilge (nó Gaeilge 
 sentence_ita = "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
 sentence_jpn = '使用人口について正確な統計はないが、日本国内の人口、および日本国外に住む日本人や日系人、日本がかつて統治した地域の一部住民など、約1億3千万人以上と考えられている[7]。'
 sentence_kan = 'ದ್ರಾವಿಡ ಭಾಷೆಗಳಲ್ಲಿ ಪ್ರಾಮುಖ್ಯವುಳ್ಳ ಭಾಷೆಯೂ ಭಾರತದ ಪುರಾತನವಾದ ಭಾಷೆಗಳಲ್ಲಿ ಒಂದೂ ಆಗಿರುವ ಕನ್ನಡ ಭಾಷೆಯನ್ನು ಅದರ ವಿವಿಧ ರೂಪಗಳಲ್ಲಿ ಸುಮಾರು ೪೫ ದಶಲಕ್ಷ ಜನರು ಆಡು ನುಡಿಯಾಗಿ ಬಳಸುತ್ತಲಿದ್ದಾರೆ.'
+sentence_lav = 'Latviešu valoda ir dzimtā valoda apmēram 1,7 miljoniem cilvēku, galvenokārt Latvijā, kur tā ir vienīgā valsts valoda.[3]'
 sentence_lit = 'Lietuvių kalba – daugiausia vartotojų turinti rytų baltų kalba.'
 sentence_nob = 'Norsk er et nordisk språk som snakkes som morsmål av rundt 5 millioner mennesker,[1][trenger bedre kilde] først og fremst i Norge, hvor det er offisielt språk.'
 sentence_fas = 'فارسی یا پارسی یکی از زبان‌های هندواروپایی در شاخهٔ زبان‌های ایرانی جنوب غربی است که در کشورهای ایران، افغانستان،[۳] تاجیکستان[۴] و ازبکستان[۵] به آن سخن می‌گویند.'
@@ -74,6 +73,7 @@ sentence_slv = 'Slovenščina [slovénščina] / [sloˈʋenʃtʃina] je združen
 sentence_spa = 'El idioma español o castellano es una lengua romance procedente del latín hablado.'
 sentence_swe = 'Svenska (svenska (info)) är ett östnordiskt språk som talas av drygt elva miljoner personer[källa behövs] främst i Sverige där språket har en dominant ställning som huvudspråk, men även som det ena nationalspråket i Finland och som enda officiella språk på Åland.'
 sentence_tgl = 'Ang Wikang Tagalog[2] (Baybayin: ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔), na kilala rin sa payak na pangalang Tagalog, ay isa sa mga pangunahing wika ng Pilipinas at sinasabing ito ang de facto ("sa katunayan") ngunit hindî de jure ("sa batas") na batayan na siyang pambansang Wikang Filipino (mula 1961 hanggang 1987: Pilipino).[2]'
+sentence_tgk = 'Забони тоҷикӣ — забоне, ки дар Эрон: форсӣ, ва дар Афғонистон дарӣ номида мешавад, забони давлатии кишварҳои Тоҷикистон, Эрон ва Афғонистон мебошад.'
 sentence_tam = 'தமிழ் மொழி (Tamil language) தமிழர்களினதும், தமிழ் பேசும் பலரதும் தாய்மொழி ஆகும்.'
 sentence_tat = 'Татар теле — татарларның милли теле, Татарстанның дәүләт теле, таралышы буенча Русиядә икенче тел.'
 sentence_tel = 'ఆంధ్ర ప్రదేశ్, తెలంగాణ రాష్ట్రాల అధికార భాష తెలుగు.'
@@ -84,165 +84,8 @@ sentence_ukr = 'Украї́нська мо́ва (МФА: [ʊkrɐˈjɪɲsʲkɐ 
 sentence_urd = 'اُردُو (یا جدید معیاری اردو) ہندوستانی زبان کی معیاری قسم ہے۔'
 sentence_vie = 'Tiếng Việt, còn gọi tiếng Việt Nam[5] hay Việt ngữ, là ngôn ngữ của người Việt (người Kinh) và là ngôn ngữ chính thức tại Việt Nam.'
 
-testing_word_tokenize(lang = 'afr',
-                      word_tokenizer = 'spaCy - Afrikaans Word Tokenizer')
-
-testing_word_tokenize(lang = 'sqi',
-                      word_tokenizer = 'spaCy - Albanian Word Tokenizer')
-
-testing_word_tokenize(lang = 'ara',
-                      word_tokenizer = 'spaCy - Arabic Word Tokenizer')
-
-testing_word_tokenize(lang = 'ben',
-                      word_tokenizer = 'spaCy - Bengali Word Tokenizer')
-
-testing_word_tokenize(lang = 'bul',
-                      word_tokenizer = 'spaCy - Bulgarian Word Tokenizer')
-
-testing_word_tokenize(lang = 'cat',
-                      word_tokenizer = 'spaCy - Catalan Word Tokenizer')
-
-testing_word_tokenize(lang = 'zho_cn',
-                      word_tokenizer = 'jieba - Chinese Word Tokenizer')
-testing_word_tokenize(lang = 'zho_cn',
-                      word_tokenizer = 'Wordless - Chinese Character Tokenizer')
-testing_word_tokenize(lang = 'zho_tw',
-                      word_tokenizer = 'jieba - Chinese Word Tokenizer')
-testing_word_tokenize(lang = 'zho_tw',
-                      word_tokenizer = 'Wordless - Chinese Character Tokenizer')
-
-testing_word_tokenize(lang = 'hrv',
-                      word_tokenizer = 'spaCy - Croatian Word Tokenizer')
-
-testing_word_tokenize(lang = 'ces',
-                      word_tokenizer = 'spaCy - Czech Word Tokenizer')
-
-testing_word_tokenize(lang = 'dan',
-                      word_tokenizer = 'spaCy - Danish Word Tokenizer')
-
-testing_word_tokenize(lang = 'nld',
-                      word_tokenizer = 'spaCy - Dutch Word Tokenizer')
-
-testing_word_tokenize(lang = 'eng',
-                      word_tokenizer = 'NLTK - Penn Treebank Tokenizer')
-testing_word_tokenize(lang = 'eng',
-                      word_tokenizer = 'NLTK - NIST Tokenizer')
-testing_word_tokenize(lang = 'eng',
-                      word_tokenizer = 'NLTK - Tok-tok Tokenizer')
-testing_word_tokenize(lang = 'eng',
-                      word_tokenizer = 'NLTK - Twitter Tokenizer')
-testing_word_tokenize(lang = 'eng',
-                      word_tokenizer = 'SacreMoses - Moses Tokenizer')
-testing_word_tokenize(lang = 'eng',
-                      word_tokenizer = 'SacreMoses - Penn Treebank Tokenizer')
-
-testing_word_tokenize(lang = 'fin',
-                      word_tokenizer = 'spaCy - Finnish Word Tokenizer')
-
-testing_word_tokenize(lang = 'fra',
-                      word_tokenizer = 'spaCy - French Word Tokenizer')
-
-testing_word_tokenize(lang = 'deu',
-                      word_tokenizer = 'spaCy - German Word Tokenizer')
-
-testing_word_tokenize(lang = 'ell',
-                      word_tokenizer = 'spaCy - Greek (Modern) Word Tokenizer')
-
-testing_word_tokenize(lang = 'heb',
-                      word_tokenizer = 'spaCy - Hebrew Word Tokenizer')
-
-testing_word_tokenize(lang = 'hin',
-                      word_tokenizer = 'spaCy - Hindi Word Tokenizer')
-
-testing_word_tokenize(lang = 'hun',
-                      word_tokenizer = 'spaCy - Hungarian Word Tokenizer')
-
-testing_word_tokenize(lang = 'isl',
-                      word_tokenizer = 'spaCy - Icelandic Word Tokenizer')
-
-testing_word_tokenize(lang = 'ind',
-                      word_tokenizer = 'spaCy - Indonesian Word Tokenizer')
-
-testing_word_tokenize(lang = 'gle',
-                      word_tokenizer = 'spaCy - Irish Word Tokenizer')
-
-testing_word_tokenize(lang = 'ita',
-                      word_tokenizer = 'spaCy - Italian Word Tokenizer')
-
-testing_word_tokenize(lang = 'jpn',
-                      word_tokenizer = 'nagisa - Japanese Word Tokenizer')
-testing_word_tokenize(lang = 'jpn',
-                      word_tokenizer = 'Wordless - Japanese Kanji Tokenizer')
-
-testing_word_tokenize(lang = 'kan',
-                      word_tokenizer = 'spaCy - Kannada Word Tokenizer')
-
-testing_word_tokenize(lang = 'lit',
-                      word_tokenizer = 'spaCy - Lithuanian Word Tokenizer')
-
-testing_word_tokenize(lang = 'nob',
-                      word_tokenizer = 'spaCy - Norwegian Bokmål Word Tokenizer')
-
-testing_word_tokenize(lang = 'fas',
-                      word_tokenizer = 'spaCy - Persian Word Tokenizer')
-
-testing_word_tokenize(lang = 'pol',
-                      word_tokenizer = 'spaCy - Polish Word Tokenizer')
-
-testing_word_tokenize(lang = 'por',
-                      word_tokenizer = 'spaCy - Portuguese Word Tokenizer')
-
-testing_word_tokenize(lang = 'ron',
-                      word_tokenizer = 'spaCy - Romanian Word Tokenizer')
-
-testing_word_tokenize(lang = 'rus',
-                      word_tokenizer = 'spaCy - Russian Word Tokenizer')
-
-testing_word_tokenize(lang = 'sin',
-                      word_tokenizer = 'spaCy - Sinhala Word Tokenizer')
-
-testing_word_tokenize(lang = 'slk',
-                      word_tokenizer = 'spaCy - Slovak Word Tokenizer')
-
-testing_word_tokenize(lang = 'slv',
-                      word_tokenizer = 'spaCy - Slovenian Word Tokenizer')
-
-testing_word_tokenize(lang = 'spa',
-                      word_tokenizer = 'spaCy - Spanish Word Tokenizer')
-
-testing_word_tokenize(lang = 'swe',
-                      word_tokenizer = 'spaCy - Swedish Word Tokenizer')
-
-testing_word_tokenize(lang = 'tgl',
-                      word_tokenizer = 'spaCy - Tagalog Word Tokenizer')
-
-testing_word_tokenize(lang = 'tam',
-                      word_tokenizer = 'spaCy - Tamil Word Tokenizer')
-
-testing_word_tokenize(lang = 'tat',
-                      word_tokenizer = 'spaCy - Tatar Word Tokenizer')
-
-testing_word_tokenize(lang = 'tel',
-                      word_tokenizer = 'spaCy - Telugu Word Tokenizer')
-
-testing_word_tokenize(lang = 'tha',
-                      word_tokenizer = 'PyThaiNLP - Maximum Matching Algorithm + TCC')
-testing_word_tokenize(lang = 'tha',
-                      word_tokenizer = 'PyThaiNLP - Maximum Matching Algorithm')
-testing_word_tokenize(lang = 'tha',
-                      word_tokenizer = 'PyThaiNLP - Longest Matching')
-
-testing_word_tokenize(lang = 'bod',
-                      word_tokenizer = 'pybo - Tibetan Word Tokenizer')
-
-testing_word_tokenize(lang = 'tur',
-                      word_tokenizer = 'spaCy - Turkish Word Tokenizer')
-
-testing_word_tokenize(lang = 'ukr',
-                      word_tokenizer = 'spaCy - Ukrainian Word Tokenizer')
-
-testing_word_tokenize(lang = 'urd',
-                      word_tokenizer = 'spaCy - Urdu Word Tokenizer')
-
-testing_word_tokenize(lang = 'vie',
-                      word_tokenizer = 'Underthesea - Vietnamese Word Tokenizer')
+for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
+    for word_tokenizer in word_tokenizers:
+        if lang != 'other':
+            testing_word_tokenize(lang = lang,
+                                  word_tokenizer = word_tokenizer)
