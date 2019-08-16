@@ -90,9 +90,13 @@ def check_spacy_models(main, lang, pipeline):
         if 'sentencizer' not in nlp.pipe_names:
             nlp.add_pipe(nlp.create_pipe('sentencizer'))
 
-def check_pybo_bo_tokenizer(main):
-    if 'pybo_bo_tokenizer' not in main.__dict__:
-        main.pybo_bo_tokenizer = pybo.BoTokenizer('GMD')
+def check_pybo_tokenizers(main, word_tokenizer):
+    if 'GMD' in word_tokenizer and 'pybo_tokenizer_gmd' not in main.__dict__:
+        main.pybo_tokenizer_gmd = pybo.WordTokenizer('GMD')
+    elif 'POS' in word_tokenizer and 'pybo_tokenizer_pos' not in main.__dict__:
+        main.pybo_tokenizer_pos = pybo.WordTokenizer('POS')
+    elif 'tsikchen' in word_tokenizer and 'pybo_tokenizer_tsikchen' not in main.__dict__:
+        main.pybo_tokenizer_tsikchen = pybo.WordTokenizer('tsikchen')
 
 def check_sentence_tokenizers(main, lang, sentence_tokenizer = 'default'):
     if lang not in main.settings_global['sentence_tokenizers']:
@@ -115,7 +119,7 @@ def check_word_tokenizers(main, lang, word_tokenizer = 'default'):
         check_spacy_models(main, lang, pipeline = 'word_tokenization')
     # Tibetan
     elif 'pybo' in word_tokenizer:
-        check_pybo_bo_tokenizer(main)
+        check_pybo_tokenizers(main, word_tokenizer = word_tokenizer)
     # Chinese & Japanese
     elif 'Wordless' in word_tokenizer:
         check_spacy_models(main, 'eng', pipeline = 'word_tokenization')
@@ -132,7 +136,7 @@ def check_tokenizers(main, lang, word_tokenizer = 'default'):
         check_spacy_models(main, lang, pipeline = 'tokenization')
     # Tibetan
     elif 'pybo' in word_tokenizer:
-        check_pybo_bo_tokenizer(main)
+        check_pybo_tokenizers(main, word_tokenizer = word_tokenizer)
     # Chinese & Japanese
     elif 'Wordless' in word_tokenizer:
         check_spacy_models(main, 'eng', pipeline = 'tokenization')
