@@ -30,7 +30,7 @@ mappings = [
     ['PRON', 'PRON', 'Pronoun', ''],
     ['VERB', 'VERB', 'Verb', ''],
 
-    ['punct', 'PUNCT', 'Punctuation', ''],
+    ['PUNCT', 'PUNCT', 'Punctuation', ''],
     ['SYM', 'SYM', 'Symbol', ''],
     ['X', 'X', 'Other', ''],
 
