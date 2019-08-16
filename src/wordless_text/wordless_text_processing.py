@@ -38,6 +38,10 @@ def wordless_sentence_tokenize(main, text, lang,
     if sentence_tokenizer == 'default':
         sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizers'][lang]
 
+    wordless_text_utils.check_sentence_tokenizers(main,
+                                                  lang = lang,
+                                                  sentence_tokenizer = sentence_tokenizer)
+
     if sentence_tokenizer == main.tr('NLTK - Punkt Sentence Tokenizer'):
         lang_texts = {
             'ces': 'czech',
@@ -115,9 +119,12 @@ def wordless_word_tokenize(main, text, lang,
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
+    wordless_text_utils.check_word_tokenizers(main,
+                                              lang = lang,
+                                              word_tokenizer = word_tokenizer)
+
     if 'NLTK' in word_tokenizer:
-        sentences = wordless_sentence_tokenize(main, text, lang,
-                                               sentence_tokenizer = main.tr('NLTK - Punkt Sentence Tokenizer'))
+        sentences = wordless_sentence_tokenize(main, text, lang)
 
         if word_tokenizer == main.tr('NLTK - Penn Treebank Tokenizer'):
             treebank_tokenizer = nltk.TreebankWordTokenizer()
@@ -515,6 +522,10 @@ def wordless_pos_tag(main, tokens, lang,
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang]
 
+    wordless_text_utils.check_pos_taggers(main,
+                                          lang = lang,
+                                          pos_tagger = pos_tagger)
+
     # Chinese
     if pos_tagger == main.tr('jieba - Chinese POS Tagger'):
         tokens_tagged = jieba.posseg.cut(' '.join(tokens))
@@ -614,6 +625,8 @@ def wordless_lemmatize(main, tokens, lang,
             tokens.remove(token)
 
             empty_offsets.append(i)
+
+    wordless_text_utils.check_lemmatizers(main, lang)
 
     if tokens and lang in main.settings_global['lemmatizers']:
         if lemmatizer == 'default':

@@ -16,7 +16,7 @@ import sys
 sys.path.append('.')
 
 from wordless_testing import testing_init
-from wordless_text import wordless_text_processing, wordless_text_utils
+from wordless_text import wordless_text_processing
 from wordless_utils import wordless_conversion
 
 main = testing_init.Testing_Main()
@@ -25,8 +25,6 @@ def testing_sentence_tokenize(lang, sentence_tokenizer):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
     print(f'{lang_text} / {sentence_tokenizer}:')
-
-    wordless_text_utils.check_sentence_tokenizers(main, lang, sentence_tokenizer = sentence_tokenizer)
 
     for sentence in wordless_text_processing.wordless_sentence_tokenize(main, globals()[f'text_{lang}'],
                                                                         lang = lang,
