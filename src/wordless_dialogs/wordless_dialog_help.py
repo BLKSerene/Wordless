@@ -758,7 +758,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Improvements</div>
                         <ul>
-                            <li>Update pybo's Tibetan tokenizers</li>
+                            <li>Update pybo's Tibetan tokenizers/POS tagger/lemmatizer</li>
                             <li>Update PyThaiNLP's Thai stop words</li>
                         </ul>
                     </div>
