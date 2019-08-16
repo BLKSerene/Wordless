@@ -24,8 +24,6 @@ def testing_lemmatize(lang, lemmatizer):
 
     print(f'{lang_text} / {lemmatizer}:')
 
-    wordless_text_utils.check_lemmatizers(main, lang, lemmatizer = lemmatizer)
-
     lemmas = wordless_text_processing.wordless_lemmatize(main, globals()[f'tokens_{lang}'],
                                                          lang = lang,
                                                          lemmatizer = lemmatizer)

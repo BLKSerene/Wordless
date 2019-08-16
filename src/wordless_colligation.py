@@ -26,7 +26,7 @@ from wordless_checking import wordless_checking_file
 from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
 from wordless_figs import wordless_fig, wordless_fig_freq, wordless_fig_stat
 from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
-                           wordless_text_utils, wordless_token_processing)
+                           wordless_token_processing)
 from wordless_utils import wordless_misc, wordless_sorting, wordless_threading
 from wordless_widgets import (wordless_layout, wordless_msg, wordless_table,
                               wordless_widgets)
@@ -655,8 +655,6 @@ class Wordless_Worker_Process_Data_Colligation(wordless_threading.Wordless_Worke
             # Generate POS tags for files that are not POS tagged already
             if file['text_type'][1] not in ['tagged_pos', 'tagged_both']:
                 tokens_tagged = []
-
-                wordless_text_utils.check_pos_taggers(self.main, file['lang'])
 
                 for tokens_sentences in text.tokens_sentences_paras:
                     for tokens in tokens_sentences:

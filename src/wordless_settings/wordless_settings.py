@@ -643,11 +643,6 @@ class Wordless_Settings(QDialog):
                 sentence_tokenizer = self.__dict__[f"combo_box_sentence_tokenizer_{settings_custom['preview_lang']}"].currentText()
                 samples = settings_custom['preview_samples']
 
-                if samples.strip():
-                    wordless_text_utils.check_sentence_tokenizers(self.main,
-                                                                  lang = settings_custom['preview_lang'],
-                                                                  sentence_tokenizer = sentence_tokenizer)
-
                 results = wordless_text_processing.wordless_sentence_tokenize(self.main, samples.strip(),
                                                                               lang = settings_custom['preview_lang'],
                                                                               sentence_tokenizer = sentence_tokenizer)
@@ -774,11 +769,6 @@ class Wordless_Settings(QDialog):
 
                 word_tokenizer = self.__dict__[f"combo_box_word_tokenizer_{settings_custom['preview_lang']}"].currentText()
                 samples = settings_custom['preview_samples']
-
-                if samples.strip():
-                    wordless_text_utils.check_word_tokenizers(self.main,
-                                                              lang = settings_custom['preview_lang'],
-                                                              word_tokenizer = word_tokenizer)
 
                 for line in samples.split('\n'):
                     line = line.strip()
@@ -1059,11 +1049,6 @@ class Wordless_Settings(QDialog):
                     tagset = 'universal'
                 else:
                     tagset = 'default'
-
-                if samples.strip():
-                    wordless_text_utils.check_pos_taggers(self.main,
-                                                          lang = settings_custom['preview_lang'],
-                                                          pos_tagger = pos_tagger)
 
                 for line in samples.split('\n'):
                     line = line.strip()
@@ -1401,13 +1386,6 @@ class Wordless_Settings(QDialog):
 
                 lemmatizer = self.__dict__[f"combo_box_lemmatizer_{settings_custom['preview_lang']}"].currentText()
                 samples = settings_custom['preview_samples']
-
-                if samples.strip():
-                    wordless_text_utils.check_word_tokenizers(self.main,
-                                                              lang = settings_custom['preview_lang'])
-                    wordless_text_utils.check_lemmatizers(self.main,
-                                                          lang = settings_custom['preview_lang'],
-                                                          lemmatizer = lemmatizer)
 
                 for line in samples.split('\n'):
                     line = line.strip()
