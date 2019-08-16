@@ -282,14 +282,21 @@ def wordless_word_tokenize(main, text, lang,
             for sentence in sentences:
                 tokens_sentences.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'longest-matching'))
     # Tibetan
-    elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer'):
+    elif 'pybo' in word_tokenizer:
         if keep_sentences:
             sentences = wordless_sentence_tokenize(main, text, lang = 'bod')
         else:
             sentences = [text]
 
-        for sentence in sentences:
-            tokens_sentences.append([token.content for token in main.pybo_bo_tokenizer.tokenize(sentence)])
+        if word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (GMD)'):
+            for sentence in sentences:
+                tokens_sentences.append([token.text for token in main.pybo_tokenizer_gmd.tokenize(sentence)])
+        elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (POS)'):
+            for sentence in sentences:
+                tokens_sentences.append([token.text for token in main.pybo_tokenizer_pos.tokenize(sentence)])
+        elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (tsikchen)'):
+            for sentence in sentences:
+                tokens_sentences.append([token.text for token in main.pybo_tokenizer_tsikchen.tokenize(sentence)])
     # Vietnamese
     elif word_tokenizer == main.tr('Underthesea - Vietnamese Word Tokenizer'):
         if keep_sentences:
