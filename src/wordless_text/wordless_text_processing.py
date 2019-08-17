@@ -14,6 +14,10 @@ import itertools
 import json
 import re
 
+# See Sacremoses/Issue #61: https://github.com/alvations/sacremoses/issues/61#issuecomment-516618565
+import sre_parse
+sre_parse._uniq = lambda x: list(dict.fromkeys(x))
+
 import jieba
 import jieba.posseg
 import nltk
@@ -149,18 +153,18 @@ def wordless_word_tokenize(main, text, lang,
 
         if not keep_sentences:
             tokens_sentences = [itertools.chain.from_iterable(tokens_sentences)]
-    elif 'SacreMoses' in word_tokenizer:
+    elif 'Sacremoses' in word_tokenizer:
         if keep_sentences:
             sentences = wordless_sentence_tokenize(main, text, lang)
         else:
             sentences = [text]
 
-        if word_tokenizer == main.tr('SacreMoses - Moses Tokenizer'):
+        if word_tokenizer == main.tr('Sacremoses - Moses Tokenizer'):
             moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
 
             for sentence in sentences:
                 tokens_sentences.append(moses_tokenizer.tokenize(sentence, escape = False))
-        elif word_tokenizer == main.tr('SacreMoses - Penn Treebank Tokenizer'):
+        elif word_tokenizer == main.tr('Sacremoses - Penn Treebank Tokenizer'):
             moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
 
             for sentence in sentences:
@@ -359,7 +363,7 @@ def wordless_word_detokenize(main, tokens, lang,
 
         for sentence in sentences:
             text += treebank_detokenizer.tokenize(tokens)
-    elif word_detokenizer == main.tr('SacreMoses - Moses Detokenizer'):
+    elif word_detokenizer == main.tr('Sacremoses - Moses Detokenizer'):
         moses_detokenizer = sacremoses.MosesDetokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
 
         for sentence in sentences:
