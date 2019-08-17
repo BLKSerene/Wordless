@@ -760,6 +760,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <ul>
                             <li>Update pybo's Tibetan tokenizers / POS tagger / lemmatizer</li>
                             <li>Update PyThaiNLP's Thai stop words</li>
+                            <li>Update Sacremoses's tokenizers/detokenizers</li>
                         </ul>
                     </div>
 
