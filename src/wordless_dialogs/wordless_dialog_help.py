@@ -148,7 +148,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/Esukhia/pybo">pybo</a>',
-                '0.6.4',
+                '0.6.5',
                 'Hélios Drupchen Hildt',
                 '<a href="https://github.com/Esukhia/pybo/blob/master/LICENSE">Apache-2.0</a>'
             ],
@@ -758,7 +758,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Improvements</div>
                         <ul>
-                            <li>Update pybo's Tibetan tokenizers/POS tagger/lemmatizer</li>
+                            <li>Update pybo's Tibetan tokenizers / POS tagger / lemmatizer</li>
                             <li>Update PyThaiNLP's Thai stop words</li>
                         </ul>
                     </div>
@@ -776,7 +776,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <ul>
                             <li>Upgrade nagisa to 0.2.4</li>
                             <li>Upgrade NLTK to 3.4.4</li>
-                            <li>Upgrade pybo to 0.6.4</li>
+                            <li>Upgrade pybo to 0.6.5</li>
                             <li>Upgrade PyQt to 5.13.0</li>
                             <li>Upgrade PyThaiNLP to 2.0.6</li>
                             <li>Upgrade Python to 3.7.4</li>
