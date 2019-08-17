@@ -168,8 +168,8 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ],
 
             [
-                '<a href="https://github.com/alvations/sacremoses">SacreMoses</a>',
-                '0.0.13',
+                '<a href="https://github.com/alvations/sacremoses">Sacremoses</a>',
+                '0.0.33',
                 'Liling Tan',
                 '<a href="https://github.com/alvations/sacremoses#license">LGPL-2.1</a>'
             ],
@@ -745,7 +745,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <ul>
                             <li>Upgrade lxml to 4.3.3</li>
                             <li>Upgrade PyQt to 5.12.1</li>
-                            <li>Upgrade SacreMoses to 0.0.13</li>
+                            <li>Upgrade Sacremoses to 0.0.13</li>
                             <li>Upgrade spaCy to 2.1.3</li>
                         </ul>
                     </div>
@@ -780,6 +780,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade PyQt to 5.13.0</li>
                             <li>Upgrade PyThaiNLP to 2.0.7</li>
                             <li>Upgrade Python to 3.7.4</li>
+                            <li>Upgrade Sacremoses to 0.0.33</li>
                         </ul>
                     </div>
                 </div>
