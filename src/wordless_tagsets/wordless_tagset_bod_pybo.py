@@ -10,10 +10,13 @@
 #
 
 #
+# pybo Tagset: https://github.com/Esukhia/pybo/blob/master/pybo/vars.py
+#
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
 mappings = [
+    # pos
     ['ADJ', 'ADJ', 'Adjectives', ''],
     ['ADP', 'ADP', 'Adposition', ''],
     ['ADV', 'ADV', 'Adverb', ''],
@@ -29,15 +32,21 @@ mappings = [
     ['PART', 'PART', 'Particle', ''],
     ['PRON', 'PRON', 'Pronoun', ''],
     ['VERB', 'VERB', 'Verb', ''],
+    ['OOV', 'X', '', 'Unknown'],
+    ['NON-WORD', 'X', '', 'Non-word'],
 
-    ['PUNCT', 'PUNCT', 'Punctuation', ''],
-    ['SYM', 'SYM', 'Symbol', ''],
-    ['X', 'X', 'Other', ''],
+    # chunk_type
+    ['BO', 'X', '', 'Tibetan language'],
+    ['LATIN', 'X', '', 'Latin languages'],
+    ['CJK', 'X', '', 'CJK languages'],
+    ['OTHER', 'X', '', 'Other languages'],
 
-    ['OTHER', 'X', '', ''],
-    ['OOV', 'X', '', ''],
-    ['oov', 'X', '', ''],
-    ['non-word', 'X', '', ''],
-    ['non-bo', 'X', '', ''],
-    ['syl', 'X', '', '']
+    ['NUM', 'NUM', '', 'Numeral'],
+    ['NON_NUM', 'X', '', 'Non-numeral'],
+    ['PUNCT', 'PUNCT', '', 'Punctuation'],
+    ['NON_PUNCT', 'X', '', 'Non-punctuation'],
+    ['SYM', 'SYM', '', 'Symbol'],
+    ['NON_SYM', 'X', '', 'Non-symbol'],
+    ['SPACE', 'X', '', 'Space'],
+    ['NON_SPACE', 'X', '', 'Non-space']
 ]
