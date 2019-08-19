@@ -183,7 +183,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/undertheseanlp/underthesea">Underthesea</a>',
-                '1.1.15',
+                '1.1.16',
                 'Vu Anh',
                 '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPL-3.0</a>'
             ]
@@ -782,6 +782,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade PyThaiNLP to 2.0.7</li>
                             <li>Upgrade Python to 3.7.4</li>
                             <li>Upgrade Sacremoses to 0.0.33</li>
+                            <li>Upgrade Underthesea to 1.1.16</li>
                         </ul>
                     </div>
                 </div>
