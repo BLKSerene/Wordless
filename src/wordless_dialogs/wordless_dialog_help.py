@@ -812,7 +812,7 @@ class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
         label_about_title = wordless_label.Wordless_Label_Dialog_No_Wrap(
             self.tr('''
                 <div style="text-align: center;">
-                    <h2>Wordless Version 1.1.0</h2>
+                    <h2>Wordless Version 1.2.0</h2>
                     <div>
                         An Integrated Corpus Tool with Multi-language Support<br>
                         for the Study of Language, Literature and Translation
