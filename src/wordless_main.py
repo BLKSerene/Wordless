@@ -304,13 +304,13 @@ class Wordless_Main(QMainWindow):
                 </div>
 
                 <div>
-                    If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may <a href="mailto:blkserene@gmail.com">send me an email</a>.
+                    If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may send me an email.
                 </div>
 
                 <div>
                     Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</a><br>
                     Documentation: <a href="https://github.com/BLKSerene/Wordless#documentation">https://github.com/BLKSerene/Wordless#documentation</a><br>
-                    Email: <a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a><br>
+                    Email: <a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a> or <a href="mailto:blkserene@163.com">blkserene@163.com</a><br>
                     <a href="https://www.wechat.com/en/">WeChat</a> Official Account: Wordless
                 </div>
 
