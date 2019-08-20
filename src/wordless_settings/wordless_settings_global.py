@@ -878,6 +878,14 @@ def init_settings_global(main):
                 main.tr('spaCy - Lithuanian Word Tokenizer')
             ],
 
+            'mar': [
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('spaCy - Marathi Word Tokenizer')
+            ],
+
             'nob': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
@@ -1647,6 +1655,7 @@ def init_settings_global(main):
             ],
 
             'mar': [
+                main.tr('spaCy - Marathi Stop Words'),
                 main.tr('Stopwords ISO - Marathi Stop Words'),
                 main.tr('Custom List')
             ],
