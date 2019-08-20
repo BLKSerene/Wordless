@@ -942,6 +942,14 @@ def init_settings_global(main):
                 main.tr('spaCy - Russian Word Tokenizer')
             ],
 
+            'srp': [
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('spaCy - Serbian Word Tokenizer')
+            ],
+
             'sin': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
@@ -1708,6 +1716,11 @@ def init_settings_global(main):
                 main.tr('NLTK - Russian Stop Words'),
                 main.tr('spaCy - Russian Stop Words'),
                 main.tr('Stopwords ISO - Russian Stop Words'),
+                main.tr('Custom List')
+            ],
+
+            'srp': [
+                main.tr('spaCy - Serbian Stop Words'),
                 main.tr('Custom List')
             ],
 
