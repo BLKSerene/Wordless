@@ -752,29 +752,78 @@ def wordless_get_stop_words(main, lang,
     if lang_639_1 == 'zh_cn':
         lang_639_1 = 'zh'
 
-    if 'Stopwords ISO' in list_stop_words:
-        # Norwegian Bokmål & Norwegian Nynorsk
-        if lang_639_1 in ['nb', 'nn']:
-            lang_639_1 = 'no'
+    # extra-stopwords
+    if 'extra-stopwords' in list_stop_words:
+        LANG_TEXTS = {
+            'sqi': 'albanian',
+            'ara': 'arabic',
+            'hye': 'armenian',
+            'eus': 'basque',
+            'bel': 'belarusian',
+            'ben': 'bengali',
+            'bul': 'bulgarian',
+            'cat': 'catalan',
+            'zho_cn': 'chinese',
+            # Chinese (Traditional)
+            'zho_tw': 'chinese-traditional',
+            'hrv': 'croatian',
+            'ces': 'czech',
+            'dan': 'danish',
+            'nld': 'dutch',
+            'eng': 'english',
+            'est': 'estonian',
+            'fin': 'finnish',
+            'fra': 'french',
+            'glg': 'galician',
+            'deu': 'german',
+            'ell': 'greek',
+            'hau': 'hausa',
+            'heb': 'hebrew',
+            'hin': 'hindi',
+            'hun': 'hungarian',
+            'isl': 'icelandic',
+            'ind': 'indonesian',
+            'gle': 'irish',
+            'ita': 'italian',
+            'jpn': 'japanese',
+            'kor': 'korean',
+            'kur': 'kurdish',
+            'lav': 'latvian',
+            'lit': 'lithuanian',
+            'msa': 'malay',
+            'mar': 'marathi',
+            'mon': 'mongolian',
+            'nep': 'nepali',
+            # Norwegian Bokmål & Norwegian Nynorsk
+            'nob': 'norwegian',
+            'nno': 'norwegian',
+            'fas': 'persian',
+            'pol': 'polish',
+            'por': 'portuguese',
+            'ron': 'romanian',
+            'rus': 'russian',
+            'srp_cyrl': 'serbian-cyrillic',
+            'srp_latn': 'serbian',
+            'slk': 'slovak',
+            'slv': 'slovenian',
+            'spa': 'spanish',
+            'swa': 'swahili',
+            'swe': 'swedish',
+            'tgl': 'tagalog',
+            'tel': 'telugu',
+            'tha': 'thai',
+            'tur': 'turkish',
+            'ukr': 'ukranian',
+            'urd': 'urdu',
+            'vie': 'vietnamese',
+            'yor': 'yoruba'
+        }
 
-        # Chinese (Traditional)
-        if lang_639_1 == 'zh_tw':
-            with open(wordless_misc.get_abs_path('stop_words/Stopwords ISO/stop_words_zh_tw.txt'), 'r', encoding = 'utf_8') as f:
-                stop_words = [line.rstrip() for line in f]
-        else:
-            with open(wordless_misc.get_abs_path('stop_words/Stopwords ISO/stopwords_iso.json'), 'r', encoding = 'utf_8') as f:
-                stop_words = json.load(f)[lang_639_1]
-    elif 'spaCy' in list_stop_words:
-        # Chinese (Traditional)
-        if lang_639_1 == 'zh_tw':
-            with open(wordless_misc.get_abs_path('stop_words/spaCy/stop_words_zh_tw.txt'), 'r', encoding = 'utf_8') as f:
-                stop_words = [line.rstrip() for line in f]
-        else:
-            spacy_lang = importlib.import_module(f'spacy.lang.{lang_639_1}')
-
-            stop_words = spacy_lang.STOP_WORDS
+        with open(wordless_misc.get_abs_path(f'stop_words/extra-stopwords/{LANG_TEXTS[lang]}'), 'r', encoding = 'utf_8') as f:
+            stop_words = [line.rstrip() for line in f if not line.startswith('#')]
+    # NLTK
     elif 'NLTK' in list_stop_words:
-        lang_texts = {
+        LANG_TEXTS = {
             'ara': 'arabic',
             'aze': 'azerbaijani',
             'dan': 'danish',
@@ -800,7 +849,41 @@ def wordless_get_stop_words(main, lang,
             'tur': 'turkish'
         }
 
-        stop_words = nltk.corpus.stopwords.words(lang_texts[lang])
+        stop_words = nltk.corpus.stopwords.words(LANG_TEXTS[lang])
+    # spaCy
+    elif 'spaCy' in list_stop_words:
+        # Chinese (Traditional)
+        if lang_639_1 == 'zh_tw':
+            with open(wordless_misc.get_abs_path('stop_words/spaCy/stop_words_zh_tw.txt'), 'r', encoding = 'utf_8') as f:
+                stop_words = [line.rstrip() for line in f]
+        else:
+            # Serbian (Cyrillic) & Serbian (Latin)
+            if lang_639_1 == 'sr_cyrl':
+                spacy_lang = importlib.import_module('spacy.lang.rs')
+
+                stop_words = spacy_lang.STOP_WORDS
+            elif lang_639_1 == 'sr_latn':
+                spacy_lang = importlib.import_module('spacy.lang.rs')
+
+                stop_words = spacy_lang.STOP_WORDS
+                stop_words = wordless_text_utils.to_srp_latn(stop_words)
+            else:
+                spacy_lang = importlib.import_module(f'spacy.lang.{lang_639_1}')
+
+                stop_words = spacy_lang.STOP_WORDS
+    # Stopwords ISO
+    elif 'Stopwords ISO' in list_stop_words:
+        # Norwegian Bokmål & Norwegian Nynorsk
+        if lang_639_1 in ['nb', 'nn']:
+            lang_639_1 = 'no'
+
+        # Chinese (Traditional)
+        if lang_639_1 == 'zh_tw':
+            with open(wordless_misc.get_abs_path('stop_words/Stopwords ISO/stop_words_zh_tw.txt'), 'r', encoding = 'utf_8') as f:
+                stop_words = [line.rstrip() for line in f]
+        else:
+            with open(wordless_misc.get_abs_path('stop_words/Stopwords ISO/stopwords_iso.json'), 'r', encoding = 'utf_8') as f:
+                stop_words = json.load(f)[lang_639_1]
     # Greek (Ancient)
     elif list_stop_words == main.tr('grk-stoplist - Greek (Ancient) Stop Words'):
         with open(wordless_misc.get_abs_path('stop_words/grk-stoplist/stoplist-greek.txt'), 'r', encoding = 'utf_8') as f:
@@ -812,7 +895,7 @@ def wordless_get_stop_words(main, lang,
     elif list_stop_words == main.tr('Custom List'):
         stop_words = main.settings_custom['stop_words']['custom_lists'][lang]
 
-    return sorted(stop_words)
+    return sorted(set(stop_words))
 
 def wordless_filter_stop_words(main, items, lang):
     if lang not in main.settings_global['stop_words']:
