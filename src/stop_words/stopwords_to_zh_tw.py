@@ -14,10 +14,18 @@ import json
 import opencc
 import spacy.lang.zh
 
+cc = opencc.OpenCC('s2t')
+
+# extra-stopwords
+with open(r'extra-stopwords/chinese', 'r', encoding = 'utf_8') as f:
+    stop_words = [line.rstrip() for line in f]
+
+with open(r'extra-stopwords/chinese-traditional', 'w', encoding = 'utf_8') as f:
+    for stop_word in stop_words:
+        f.write(f'{cc.convert(stop_word)}\n')
+
 # spaCy
 stop_words = sorted(spacy.lang.zh.STOP_WORDS)
-
-cc = opencc.OpenCC('s2t')
 
 with open(r'spaCy/stop_words_zh_tw.txt', 'w', encoding = 'utf_8') as f:
     for stop_word in stop_words:
@@ -31,4 +39,4 @@ with open(r'Stopwords ISO/stop_words_zh_tw.txt', 'w', encoding = 'utf_8') as f:
     for stop_word in stop_words:
         f.write(f'{cc.convert(stop_word)}\n')
 
-print('Done!')
+print('All done!')

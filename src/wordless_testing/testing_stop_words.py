@@ -21,11 +21,14 @@ main = testing_init.Testing_Main()
 
 def testing_stop_words(lang, list_stop_words):
     lang_text = wordless_conversion.to_lang_text(main, lang)
-
-    print(f'{lang_text} / {list_stop_words}:')
-
     stop_words = wordless_text_processing.wordless_get_stop_words(main, lang, list_stop_words = list_stop_words)
-    print(f"\tFirst 10 Stop Words ({len(stop_words)} in Total): {' '.join(stop_words[:10])}")
+
+    if stop_words:
+        print(f'{lang_text} / {list_stop_words}:')
+        print(f"\tFirst 10 Stop Words ({len(stop_words)} in Total): {' '.join(stop_words[:10])}")
+    else:
+        print(f'{lang_text} / {list_stop_words}: None')
+        print('------------------------------')
 
 for lang, lists_stop_words in main.settings_global['stop_words'].items():
     for list_stop_words in lists_stop_words:

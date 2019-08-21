@@ -300,6 +300,13 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
         self.ACKS_DATA = [
             [
+                '<a href="https://github.com/Xangis/extra-stopwords">extra-stopwords</a>',
+                '/',
+                'Jason Champion',
+                '<a href="https://github.com/Xangis/extra-stopwords/blob/master/LICENSE">MIT</a>'
+            ],
+
+            [
                 '<a href="https://github.com/pharos-alexandria/grk-stoplist">grk-stoplist</a>',
                 '/',
                 'Annette von Stockhausen',
@@ -754,6 +761,13 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                 <div class="changelog">
                     <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.2.0">v1.2.0</a> - ??/??/2019</div>
                     <hr>
+
+                    <div class="changelog-section">
+                        <div class="changelog-section-header">New Features</div>
+                        <ul>
+                            <li>Add extra-stopwords's stop words</li>
+                        </ul>
+                    </div>
 
                     <div class="changelog-section">
                         <div class="changelog-section-header">Improvements</div>
