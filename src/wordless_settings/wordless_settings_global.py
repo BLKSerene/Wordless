@@ -51,11 +51,11 @@ def init_settings_global(main):
             main.tr('Galician'): 'glg',
             main.tr('Georgian'): 'kat',
             main.tr('German'): 'deu',
-            main.tr('Greek (Ancient)'): 'grc', # Stop Words & Lemmatization
+            main.tr('Greek (Ancient)'): 'grc', # Stop words, lemmatization
             main.tr('Greek (Modern)'): 'ell',
             main.tr('Gujarati'): 'guj',
             main.tr('Haitian'): 'hat',
-            main.tr('Hausa'): 'hau', # Stop Words
+            main.tr('Hausa'): 'hau', # Stop words
             main.tr('Hebrew'): 'heb',
             main.tr('Hindi'): 'hin',
             main.tr('Hungarian'): 'hun',
@@ -100,22 +100,23 @@ def init_settings_global(main):
             main.tr('Russian'): 'rus',
             main.tr('Sami (Northern)'): 'sme',
             main.tr('Scottish Gaelic'): 'gla', # Lemmatization
-            main.tr('Serbian'): 'srp',
+            main.tr('Serbian (Cyrillic)'): 'srp_cyrl',
+            main.tr('Serbian (Latin)'): 'srp_latn', # Stop words
             main.tr('Sinhala'): 'sin',
             main.tr('Slovak'): 'slk',
             main.tr('Slovenian'): 'slv',
-            main.tr('Somali'): 'som', # Stop Words
-            main.tr('Sotho (Southern)'): 'sot', # Stop Words
+            main.tr('Somali'): 'som', # Stop words
+            main.tr('Sotho (Southern)'): 'sot', # Stop words
             main.tr('Spanish'): 'spa',
             main.tr('Swahili'): 'swa',
             main.tr('Swedish'): 'swe',
             main.tr('Tagalog'): 'tgl',
-            main.tr('Tajik'): 'tgk', # Word Tokenization
+            main.tr('Tajik'): 'tgk', # Word tokenization
             main.tr('Tamil'): 'tam',
-            main.tr('Tatar'): 'tat', # Stop Words
+            main.tr('Tatar'): 'tat', # Stop words
             main.tr('Telugu'): 'tel',
             main.tr('Thai'): 'tha',
-            main.tr('Tibetan'): 'bod', # Word Tokenization, POS Tagging, Lemmatization
+            main.tr('Tibetan'): 'bod', # Word tokenization, POS tagging, lemmatization
             main.tr('Turkish'): 'tur',
             main.tr('Ukrainian'): 'ukr',
             main.tr('Urdu'): 'urd',
@@ -125,7 +126,7 @@ def init_settings_global(main):
             main.tr('Walloon'): 'wln',
             main.tr('Welsh'): 'cym',
             main.tr('Xhosa'): 'xho',
-            main.tr('Yoruba'): 'yor', # Stop Words
+            main.tr('Yoruba'): 'yor', # Stop words
             main.tr('Zulu'): 'zul',
 
             main.tr('Other Languages'): 'other'
@@ -141,7 +142,7 @@ def init_settings_global(main):
             'aze': 'az',
             'bel': 'be',
             'ben': 'bn',
-            'bod': 'bo', # Word Tokenization, POS Tagging, Lemmatization
+            'bod': 'bo', # Word tokenization, POS tagging, lemmatization
             'bos': 'bs',
             'bre': 'br',
             'bul': 'bg',
@@ -164,7 +165,7 @@ def init_settings_global(main):
             'gle': 'ga',
             'glg': 'gl',
             'glv': 'gv', # Lemmatization
-            'grc': 'grc', # Stop Words & Lemmatization
+            'grc': 'grc', # Stop words & lemmatization
             'guj': 'gu',
             'hat': 'ht',
             'hau': 'ha',
@@ -215,15 +216,16 @@ def init_settings_global(main):
             'slk': 'sk',
             'slv': 'sl',
             'sme': 'se',
-            'som': 'so', # Stop Words
-            'sot': 'st', # Stop Words
+            'som': 'so', # Stop words
+            'sot': 'st', # Stop words
             'spa': 'es',
             'sqi': 'sq',
-            'srp': 'sr',
+            'srp_cyrl': 'sr_cyrl',
+            'srp_latn': 'sr_latn', # Stop words
             'swa': 'sw',
             'swe': 'sv',
             'tam': 'ta',
-            'tat': 'tt', # Stop Words
+            'tat': 'tt', # Stop words
             'tel': 'te',
             'tgk': 'tg',
             'tgl': 'tl',
@@ -942,7 +944,15 @@ def init_settings_global(main):
                 main.tr('spaCy - Russian Word Tokenizer')
             ],
 
-            'srp': [
+            'srp_cyrl': [
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('spaCy - Serbian Word Tokenizer')
+            ],
+
+            'srp_latn': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
@@ -1423,11 +1433,13 @@ def init_settings_global(main):
             ],
 
             'sqi': [
+                main.tr('extra-stopwords - Albanian Stop Words'),
                 main.tr('spaCy - Albanian Stop Words'),
                 main.tr('Custom List')
             ],
 
             'ara': [
+                main.tr('extra-stopwords - Arabic Stop Words'),
                 main.tr('NLTK - Arabic Stop Words'),
                 main.tr('spaCy - Arabic Stop Words'),
                 main.tr('Stopwords ISO - Arabic Stop Words'),
@@ -1435,6 +1447,7 @@ def init_settings_global(main):
             ],
 
             'hye': [
+                main.tr('extra-stopwords - Armenian Stop Words'),
                 main.tr('Stopwords ISO - Armenian Stop Words'),
                 main.tr('Custom List')
             ],
@@ -1445,11 +1458,18 @@ def init_settings_global(main):
             ],
 
             'eus': [
+                main.tr('extra-stopwords - Basque Stop Words'),
                 main.tr('Stopwords ISO - Basque Stop Words'),
                 main.tr('Custom List')
             ],
 
+            'bel': [
+                main.tr('extra-stopwords - Belarusian Stop Words'),
+                main.tr('Custom List')
+            ],
+
             'ben': [
+                main.tr('extra-stopwords - Bengali Stop Words'),
                 main.tr('spaCy - Bengali Stop Words'),
                 main.tr('Stopwords ISO - Bengali Stop Words'),
                 main.tr('Custom List')
@@ -1461,42 +1481,49 @@ def init_settings_global(main):
             ],
 
             'bul': [
+                main.tr('extra-stopwords - Bulgarian Stop Words'),
                 main.tr('spaCy - Bulgarian Stop Words'),
                 main.tr('Stopwords ISO - Bulgarian Stop Words'),
                 main.tr('Custom List')
             ],
 
             'cat': [
+                main.tr('extra-stopwords - Catalan Stop Words'),
                 main.tr('spaCy - Catalan Stop Words'),
                 main.tr('Stopwords ISO - Catalan Stop Words'),
                 main.tr('Custom List')
             ],
 
             'zho_cn': [
+                main.tr('extra-stopwords - Chinese (Simplified) Stop Words'),
                 main.tr('spaCy - Chinese (Simplified) Stop Words'),
                 main.tr('Stopwords ISO - Chinese (Simplified) Stop Words'),
                 main.tr('Custom List')
             ],
 
             'zho_tw': [
+                main.tr('extra-stopwords - Chinese (Traditional) Stop Words'),
                 main.tr('spaCy - Chinese (Traditional) Stop Words'),
                 main.tr('Stopwords ISO - Chinese (Traditional) Stop Words'),
                 main.tr('Custom List')
             ],
 
             'hrv': [
+                main.tr('extra-stopwords - Croatian Stop Words'),
                 main.tr('spaCy - Croatian Stop Words'),
                 main.tr('Stopwords ISO - Croatian Stop Words'),
                 main.tr('Custom List')
             ],
 
             'ces': [
+                main.tr('extra-stopwords - Czech Stop Words'),
                 main.tr('spaCy - Czech Stop Words'),
                 main.tr('Stopwords ISO - Czech Stop Words'),
                 main.tr('Custom List')
             ],
 
             'dan': [
+                main.tr('extra-stopwords - Danish Stop Words'),
                 main.tr('NLTK - Danish Stop Words'),
                 main.tr('spaCy - Danish Stop Words'),
                 main.tr('Stopwords ISO - Danish Stop Words'),
@@ -1504,6 +1531,7 @@ def init_settings_global(main):
             ],
 
             'nld': [
+                main.tr('extra-stopwords - Dutch Stop Words'),
                 main.tr('NLTK - Dutch Stop Words'),
                 main.tr('spaCy - Dutch Stop Words'),
                 main.tr('Stopwords ISO - Dutch Stop Words'),
@@ -1511,6 +1539,7 @@ def init_settings_global(main):
             ],
 
             'eng': [
+                main.tr('extra-stopwords - English Stop Words'),
                 main.tr('NLTK - English Stop Words'),
                 main.tr('spaCy - English Stop Words'),
                 main.tr('Stopwords ISO - English Stop Words'),
@@ -1523,12 +1552,14 @@ def init_settings_global(main):
             ],
 
             'est': [
+                main.tr('extra-stopwords - Estonian Stop Words'),
                 main.tr('spaCy - Estonian Stop Words'),
                 main.tr('Stopwords ISO - Estonian Stop Words'),
                 main.tr('Custom List')
             ],
 
             'fin': [
+                main.tr('extra-stopwords - Finnish Stop Words'),
                 main.tr('NLTK - Finnish Stop Words'),
                 main.tr('spaCy - Finnish Stop Words'),
                 main.tr('Stopwords ISO - Finnish Stop Words'),
@@ -1536,6 +1567,7 @@ def init_settings_global(main):
             ],
 
             'fra': [
+                main.tr('extra-stopwords - French Stop Words'),
                 main.tr('NLTK - French Stop Words'),
                 main.tr('spaCy - French Stop Words'),
                 main.tr('Stopwords ISO - French Stop Words'),
@@ -1543,11 +1575,13 @@ def init_settings_global(main):
             ],
 
             'glg': [
+                main.tr('extra-stopwords - Galician Stop Words'),
                 main.tr('Stopwords ISO - Galician Stop Words'),
                 main.tr('Custom List')
             ],
 
             'deu': [
+                main.tr('extra-stopwords - German Stop Words'),
                 main.tr('NLTK - German Stop Words'),
                 main.tr('spaCy - German Stop Words'),
                 main.tr('Stopwords ISO - German Stop Words'),
@@ -1560,6 +1594,7 @@ def init_settings_global(main):
             ],
 
             'ell': [
+                main.tr('extra-stopwords - Greek (Modern) Stop Words'),
                 main.tr('NLTK - Greek (Modern) Stop Words'),
                 main.tr('spaCy - Greek (Modern) Stop Words'),
                 main.tr('Stopwords ISO - Greek (Modern) Stop Words'),
@@ -1567,23 +1602,27 @@ def init_settings_global(main):
             ],
 
             'hau': [
+                main.tr('extra-stopwords - Hausa Stop Words'),
                 main.tr('Stopwords ISO - Hausa Stop Words'),
                 main.tr('Custom List')
             ],
 
             'heb': [
+                main.tr('extra-stopwords - Hebrew Stop Words'),
                 main.tr('spaCy - Hebrew Stop Words'),
                 main.tr('Stopwords ISO - Hebrew Stop Words'),
                 main.tr('Custom List')
             ],
 
             'hin': [
+                main.tr('extra-stopwords - Hindi Stop Words'),
                 main.tr('spaCy - Hindi Stop Words'),
                 main.tr('Stopwords ISO - Hindi Stop Words'),
                 main.tr('Custom List')
             ],
 
             'hun': [
+                main.tr('extra-stopwords - Hungarian Stop Words'),
                 main.tr('NLTK - Hungarian Stop Words'),
                 main.tr('spaCy - Hungarian Stop Words'),
                 main.tr('Stopwords ISO - Hungarian Stop Words'),
@@ -1591,11 +1630,13 @@ def init_settings_global(main):
             ],
 
             'isl': [
+                main.tr('extra-stopwords - Icelandic Stop Words'),
                 main.tr('spaCy - Icelandic Stop Words'),
                 main.tr('Custom List')
             ],
 
             'ind': [
+                main.tr('extra-stopwords - Indonesian Stop Words'),
                 main.tr('NLTK - Indonesian Stop Words'),
                 main.tr('spaCy - Indonesian Stop Words'),
                 main.tr('Stopwords ISO - Indonesian Stop Words'),
@@ -1603,12 +1644,14 @@ def init_settings_global(main):
             ],
 
             'gle': [
+                main.tr('extra-stopwords - Irish Stop Words'),
                 main.tr('spaCy - Irish Stop Words'),
                 main.tr('Stopwords ISO - Irish Stop Words'),
                 main.tr('Custom List')
             ],
 
             'ita': [
+                main.tr('extra-stopwords - Italian Stop Words'),
                 main.tr('NLTK - Italian Stop Words'),
                 main.tr('spaCy - Italian Stop Words'),
                 main.tr('Stopwords ISO - Italian Stop Words'),
@@ -1616,6 +1659,7 @@ def init_settings_global(main):
             ],
 
             'jpn': [
+                main.tr('extra-stopwords - Japanese Stop Words'),
                 main.tr('spaCy - Japanese Stop Words'),
                 main.tr('Stopwords ISO - Japanese Stop Words'),
                 main.tr('Custom List')
@@ -1632,11 +1676,13 @@ def init_settings_global(main):
             ],
 
             'kor': [
+                main.tr('extra-stopwords - Korean Stop Words'),
                 main.tr('Stopwords ISO - Korean Stop Words'),
                 main.tr('Custom List')
             ],
 
             'kur': [
+                main.tr('extra-stopwords - Kurdish Stop Words'),
                 main.tr('Stopwords ISO - Kurdish Stop Words'),
                 main.tr('Custom List')
             ],
@@ -1647,33 +1693,44 @@ def init_settings_global(main):
             ],
 
             'lav': [
+                main.tr('extra-stopwords - Latvian Stop Words'),
                 main.tr('spaCy - Latvian Stop Words'),
                 main.tr('Stopwords ISO - Latvian Stop Words'),
                 main.tr('Custom List')
             ],
 
             'lit': [
+                main.tr('extra-stopwords - Lithuanian Stop Words'),
                 main.tr('spaCy - Lithuanian Stop Words'),
                 main.tr('Custom List')
             ],
 
             'msa': [
+                main.tr('extra-stopwords - Malay Stop Words'),
                 main.tr('Stopwords ISO - Malay Stop Words'),
                 main.tr('Custom List')
             ],
 
             'mar': [
+                main.tr('extra-stopwords - Marathi Stop Words'),
                 main.tr('spaCy - Marathi Stop Words'),
                 main.tr('Stopwords ISO - Marathi Stop Words'),
                 main.tr('Custom List')
             ],
 
+            'mon': [
+                main.tr('extra-stopwords - Mongolian Stop Words'),
+                main.tr('Custom List')
+            ],
+
             'nep': [
+                main.tr('extra-stopwords - Nepali Stop Words'),
                 main.tr('NLTK - Nepali Stop Words'),
                 main.tr('Custom List')
             ],
 
             'nob': [
+                main.tr('extra-stopwords - Norwegian Bokmål Stop Words'),
                 main.tr('NLTK - Norwegian Bokmål Stop Words'),
                 main.tr('spaCy - Norwegian Bokmål Stop Words'),
                 main.tr('Stopwords ISO - Norwegian Bokmål Stop Words'),
@@ -1681,24 +1738,28 @@ def init_settings_global(main):
             ],
 
             'nno': [
+                main.tr('extra-stopwords - Norwegian Bokmål Stop Words'),
                 main.tr('NLTK - Norwegian Nynorsk Stop Words'),
                 main.tr('Stopwords ISO - Norwegian Nynorsk Stop Words'),
                 main.tr('Custom List')
             ],
 
             'fas': [
+                main.tr('extra-stopwords - Persian Stop Words'),
                 main.tr('spaCy - Persian Stop Words'),
                 main.tr('Stopwords ISO - Persian Stop Words'),
                 main.tr('Custom List')
             ],
 
             'pol': [
+                main.tr('extra-stopwords - Polish Stop Words'),
                 main.tr('spaCy - Polish Stop Words'),
                 main.tr('Stopwords ISO - Polish Stop Words'),
                 main.tr('Custom List')
             ],
 
             'por': [
+                main.tr('extra-stopwords - Portuguese Stop Words'),
                 main.tr('NLTK - Portuguese Stop Words'),
                 main.tr('spaCy - Portuguese Stop Words'),
                 main.tr('Stopwords ISO - Portuguese Stop Words'),
@@ -1706,6 +1767,7 @@ def init_settings_global(main):
             ],
 
             'ron': [
+                main.tr('extra-stopwords - Romanian Stop Words'),
                 main.tr('NLTK - Romanian Stop Words'),
                 main.tr('spaCy - Romanian Stop Words'),
                 main.tr('Stopwords ISO - Romanian Stop Words'),
@@ -1713,14 +1775,22 @@ def init_settings_global(main):
             ],
 
             'rus': [
+                main.tr('extra-stopwords - Russian Stop Words'),
                 main.tr('NLTK - Russian Stop Words'),
                 main.tr('spaCy - Russian Stop Words'),
                 main.tr('Stopwords ISO - Russian Stop Words'),
                 main.tr('Custom List')
             ],
 
-            'srp': [
-                main.tr('spaCy - Serbian Stop Words'),
+            'srp_cyrl': [
+                main.tr('extra-stopwords - Serbian (Cyrillic) Stop Words'),
+                main.tr('spaCy - Serbian (Cyrillic) Stop Words'),
+                main.tr('Custom List')
+            ],
+
+            'srp_latn': [
+                main.tr('extra-stopwords - Serbian (Latin) Stop Words'),
+                main.tr('spaCy - Serbian (Latin) Stop Words'),
                 main.tr('Custom List')
             ],
 
@@ -1730,11 +1800,13 @@ def init_settings_global(main):
             ],
 
             'slk': [
+                main.tr('extra-stopwords - Slovak Stop Words'),
                 main.tr('Stopwords ISO - Slovak Stop Words'),
                 main.tr('Custom List')
             ],
 
             'slv': [
+                main.tr('extra-stopwords - Slovenian Stop Words'),
                 main.tr('Stopwords ISO - Slovenian Stop Words'),
                 main.tr('Custom List')
             ],
@@ -1750,6 +1822,7 @@ def init_settings_global(main):
             ],
 
             'spa': [
+                main.tr('extra-stopwords - Spanish Stop Words'),
                 main.tr('NLTK - Spanish Stop Words'),
                 main.tr('spaCy - Spanish Stop Words'),
                 main.tr('Stopwords ISO - Spanish Stop Words'),
@@ -1757,11 +1830,13 @@ def init_settings_global(main):
             ],
 
             'swa': [
+                main.tr('extra-stopwords - Swahili Stop Words'),
                 main.tr('Stopwords ISO - Swahili Stop Words'),
                 main.tr('Custom List')
             ],
 
             'swe': [
+                main.tr('extra-stopwords - Swedish Stop Words'),
                 main.tr('NLTK - Swedish Stop Words'),
                 main.tr('spaCy - Swedish Stop Words'),
                 main.tr('Stopwords ISO - Swedish Stop Words'),
@@ -1769,6 +1844,7 @@ def init_settings_global(main):
             ],
 
             'tgl': [
+                main.tr('extra-stopwords - Tagalog Stop Words'),
                 main.tr('spaCy - Tagalog Stop Words'),
                 main.tr('Stopwords ISO - Tagalog Stop Words'),
                 main.tr('Custom List')
@@ -1785,11 +1861,13 @@ def init_settings_global(main):
             ],
 
             'tel': [
+                main.tr('extra-stopwords - Telugu Stop Words'),
                 main.tr('spaCy - Telugu Stop Words'),
                 main.tr('Custom List')
             ],
 
             'tha': [
+                main.tr('extra-stopwords - Thai Stop Words'),
                 main.tr('PyThaiNLP - Thai Stop Words'),
                 main.tr('spaCy - Thai Stop Words'),
                 main.tr('Stopwords ISO - Thai Stop Words'),
@@ -1797,6 +1875,7 @@ def init_settings_global(main):
             ],
 
             'tur': [
+                main.tr('extra-stopwords - Turkish Stop Words'),
                 main.tr('NLTK - Turkish Stop Words'),
                 main.tr('spaCy - Turkish Stop Words'),
                 main.tr('Stopwords ISO - Turkish Stop Words'),
@@ -1804,24 +1883,28 @@ def init_settings_global(main):
             ],
 
             'ukr': [
+                main.tr('extra-stopwords - Ukrainian Stop Words'),
                 main.tr('spaCy - Ukrainian Stop Words'),
                 main.tr('Stopwords ISO - Ukrainian Stop Words'),
                 main.tr('Custom List')
             ],
 
             'urd': [
+                main.tr('extra-stopwords - Urdu Stop Words'),
                 main.tr('spaCy - Urdu Stop Words'),
                 main.tr('Stopwords ISO - Urdu Stop Words'),
                 main.tr('Custom List')
             ],
 
             'vie': [
+                main.tr('extra-stopwords - Vietnamese Stop Words'),
                 main.tr('spaCy - Vietnamese Stop Words'),
                 main.tr('Stopwords ISO - Vietnamese Stop Words'),
                 main.tr('Custom List')
             ],
 
             'yor': [
+                main.tr('extra-stopwords - Yoruba Stop Words'),
                 main.tr('Stopwords ISO - Yoruba Stop Words'),
                 main.tr('Custom List')
             ],

@@ -17,6 +17,145 @@ from wordless_utils import wordless_conversion
 import pybo
 import spacy
 
+SRP_CYRL_TO_LATN = {
+    # Uppercase
+    'А': 'A',
+    'Б': 'B',
+    'Ц': 'C',
+    'Ч': 'Č',
+    'Ћ': 'Ć',
+    'Д': 'D',
+    'Џ': 'Dž',
+    'Ђ': 'Đ',
+    'Е': 'E',
+    'Ф': 'F',
+    'Г': 'G',
+    'Х': 'H',
+    'И': 'I',
+    'Ј': 'J',
+    'К': 'K',
+    'Л': 'L',
+    'Љ': 'Lj',
+    'М': 'M',
+    'Н': 'N',
+    'Њ': 'Nj',
+    'О': 'O',
+    'П': 'P',
+    'Р': 'R',
+    'С': 'S',
+    'Ш': 'Š',
+    'Т': 'T',
+    'У': 'U',
+    'В': 'V',
+    'З': 'Z',
+    'Ж': 'Ž',
+    # Lowercase
+    'а': 'a',
+    'б': 'b',
+    'ц': 'c',
+    'ч': 'č',
+    'ћ': 'ć',
+    'д': 'd',
+    'џ': 'dž',
+    'ђ': 'đ',
+    'е': 'e',
+    'ф': 'f',
+    'г': 'g',
+    'х': 'h',
+    'и': 'i',
+    'ј': 'j',
+    'к': 'k',
+    'л': 'l',
+    'љ': 'lj',
+    'м': 'm',
+    'н': 'n',
+    'њ': 'nj',
+    'о': 'o',
+    'п': 'p',
+    'р': 'r',
+    'с': 's',
+    'ш': 'š',
+    'т': 't',
+    'у': 'u',
+    'в': 'v',
+    'з': 'z',
+    'ж': 'ž',
+}
+
+SRP_LATN_TO_CYRL = {
+    # Uppercase
+    'A': 'А',
+    'B': 'Б',
+    'C': 'Ц',
+    'Č': 'Ч',
+    'Ć': 'Ћ',
+    'D': 'Д',
+    'Dž': 'Џ',
+    'Đ': 'Ђ',
+    'E': 'Е',
+    'F': 'Ф',
+    'G': 'Г',
+    'H': 'Х',
+    'I': 'И',
+    'J': 'Ј',
+    'K': 'К',
+    'L': 'Л',
+    'Lj': 'Љ',
+    'M': 'М',
+    'N': 'Н',
+    'Nj': 'Њ',
+    'O': 'О',
+    'P': 'П',
+    'R': 'Р',
+    'S': 'С',
+    'Š': 'Ш',
+    'T': 'Т',
+    'U': 'У',
+    'V': 'В',
+    'Z': 'З',
+    'Ž': 'Ж',
+    # Lowercase
+    'a': 'а',
+    'b': 'б',
+    'c': 'ц',
+    'č': 'ч',
+    'ć': 'ћ',
+    'd': 'д',
+    'dž': 'џ',
+    'đ': 'ђ',
+    'e': 'е',
+    'f': 'ф',
+    'g': 'г',
+    'h': 'х',
+    'i': 'и',
+    'j': 'ј',
+    'k': 'к',
+    'l': 'л',
+    'lj': 'љ',
+    'm': 'м',
+    'n': 'н',
+    'nj': 'њ',
+    'o': 'о',
+    'p': 'п',
+    'r': 'р',
+    's': 'с',
+    'š': 'ш',
+    't': 'т',
+    'u': 'у',
+    'v': 'в',
+    'z': 'з',
+    'ž': 'ж'
+}
+
+SRP_LATN_TO_CYRL_DIGRAPHS = {
+    'Dž': 'Џ',
+    'Lj': 'Љ',
+    'Nj': 'Њ',
+    'dž': 'џ',
+    'lj': 'љ',
+    'nj': 'њ'
+}
+
 def check_spacy_models(main, lang, pipeline):
     if pipeline == 'word_tokenization':
         nlp_pipelines = []
@@ -82,7 +221,12 @@ def check_spacy_models(main, lang, pipeline):
                 main.__dict__[f'spacy_nlp_{lang}'] = en_core_web_sm.load(disable = nlp_disable)
     # Languages without models
     else:
-        main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wordless_conversion.to_iso_639_1(main, lang))
+        # Serbian (Cyrillic) & Serbian (Latin)
+        if lang in ['srp_cyrl', 'srp_latn']:
+            main.__dict__['spacy_nlp_srp_cyrl'] = spacy.blank('rs')
+            main.__dict__['spacy_nlp_srp_latn'] = spacy.blank('rs')
+        else:
+            main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wordless_conversion.to_iso_639_1(main, lang))
 
     if 'sentencizer' in nlp_pipelines:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
@@ -196,3 +340,38 @@ def to_sections_unequal(tokens, section_size):
         sections.append(tokens[section_size * len(sections):])
 
     return sections
+
+def to_srp_latn(tokens):
+    tokens_latn = []
+
+    for token in tokens:
+        token_latn = ''
+
+        for char in token:
+            if char not in SRP_CYRL_TO_LATN:
+                token_latn += char
+            else:
+                token_latn += SRP_CYRL_TO_LATN[char]
+                
+        tokens_latn.append(token_latn)
+
+    return tokens_latn
+
+def to_srp_cyrl(tokens):
+    tokens_cyrl = []
+
+    for token in tokens:
+        token_cyrl = ''
+
+        for char_latn, char_cyrl in SRP_LATN_TO_CYRL_DIGRAPHS.items():
+            token = token.replace(char_latn, char_cyrl)
+
+        for char in token:
+            if char not in SRP_LATN_TO_CYRL:
+                token_cyrl += char
+            else:
+                token_cyrl += SRP_LATN_TO_CYRL[char]
+
+        tokens_cyrl.append(token_cyrl)
+
+    return tokens_cyrl

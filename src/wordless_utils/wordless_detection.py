@@ -146,15 +146,17 @@ def detect_lang(main, file):
 
             for lang in sorted(langdetect.detect_langs(text), key = lambda item: -item.prob):
                 if lang.lang in ['zh-cn', 'zh-tw']:
-                    lang_code_639_1 = lang.lang
+                    lang_code_639_1 = lang.lang.replace('-', '_')
 
                     break
-        # Norwegian
+        # Norwegian Bokmål
         elif lang_code_639_1 == 'no':
             lang_code_639_1 = 'nb'
 
-        lang = wordless_conversion.to_iso_639_3(main, lang_code_639_1.replace('-', '_'))
-        
+        # Serbian (Cyrillic)
+        elif lang_code_639_1 == 'sr':
+            lang_code_639_1 = 'sr_cyrl'
+
         success = True
     except:
         lang = main.settings_custom['auto_detection']['default_settings']['default_lang']

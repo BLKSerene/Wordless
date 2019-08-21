@@ -133,10 +133,11 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 13. [xlrd](https://github.com/python-excel/xlrd) by Stephen John Machin
 
 ### Data
-1. [grk-stoplist](https://github.com/pharos-alexandria/grk-stoplist) by Annette von Stockhausen
-2. [lemmalist-greek](https://github.com/stenskjaer/lemmalist-greek) by Michael Stenskjær Christensen
-3. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
-4. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
+1. [extra-stopwords](https://github.com/Xangis/extra-stopwords) by Jason Champion
+2. [grk-stoplist](https://github.com/pharos-alexandria/grk-stoplist) by Annette von Stockhausen
+3. [lemmalist-greek](https://github.com/stenskjaer/lemmalist-greek) by Michael Stenskjær Christensen
+4. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
+5. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
 
 <span id="doc-eng"></span>
 ## Documentation - English
@@ -481,6 +482,7 @@ Armenian             |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Asturian             |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
 Azerbaijani          |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Basque               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Belarusian           |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Bengali              |⭕️ |✔️|⭕️ |✖️|✖️|✖️
 Breton               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Bulgarian            |⭕️ |✔️|⭕️ |✖️|✔️|✔️
@@ -519,6 +521,7 @@ Lithuanian           |⭕️ |✔️|⭕️ |✖️|✖️|✔️
 Malay                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Manx                 |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
 Marathi              |✔️|⭕️ |⭕️ |✖️|✖️|✔️
+Mongolian            |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Nepali               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Norwegian Bokmål     |✔|✔️|⭕️ |✖️|✖️|✔️
 Norwegian Nynorsk    |✔|⭕️ |⭕️ |✖️|✖️|✔️
@@ -528,7 +531,8 @@ Portuguese           |✔|✔️|✔️|✔️|✔️|✔️
 Romanian             |⭕️ |✔️|✔️|✖️|✔️|✔️
 Russian              |⭕️ |✔️|✔️|✔️|✔️|✔️
 Scottish Gaelic      |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
-Serbian              |✔️|⭕️ |⭕️ |✖️|✖️|✔️
+Serbian (Cyrillic)   |✔️|⭕️ |⭕️ |✖️|✖️|✔️
+Serbian (Latin)      |✔️|⭕️ |⭕️ |✖️|✖️|✔️
 Sinhala              |⭕️ |✔️|⭕️ |✖️|✖️|✔️
 Slovak               |⭕️ |✔️|✔️|✖️|✔️|✔️
 Slovenian            |✔|✔️|✔️|✖️|✔️|✔️
