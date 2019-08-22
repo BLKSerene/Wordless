@@ -257,7 +257,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://openpyxl.readthedocs.io/en/stable/">openpyxl</a>',
-                '2.6.1',
+                '2.6.3',
                 'Eric Gazoni, Charlie Clark',
                 '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst">MIT</a>'
             ],
@@ -849,6 +849,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade nagisa to 0.2.4</li>
                             <li>Upgrade NLTK to 3.4.4</li>
                             <li>Upgrade NumPy to 1.17.0</li>
+                            <li>Upgrade openpyxl to 2.6.3</li>
                             <li>Upgrade pybo to 0.6.5</li>
                             <li>Upgrade PyQt to 5.13.0</li>
                             <li>Upgrade PyThaiNLP to 2.0.7</li>
