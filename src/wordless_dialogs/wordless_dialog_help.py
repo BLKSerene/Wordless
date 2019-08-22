@@ -243,7 +243,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://lxml.de/">lxml</a>',
-                '4.3.3',
+                '4.4.1',
                 'Stefan Behnel',
                 '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'
             ],
@@ -844,6 +844,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <div class="changelog-section-header">Dependency Upgrades</div>
                         <ul>
                             <li>Upgrade Beautiful Soup to 4.8.0</li>
+                            <li>Upgrade lxml to 4.4.1</li>
                             <li>Upgrade Matplotlib to 3.1.1</li>
                             <li>Upgrade nagisa to 0.2.4</li>
                             <li>Upgrade NLTK to 3.4.4</li>
