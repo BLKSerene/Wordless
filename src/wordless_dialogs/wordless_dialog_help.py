@@ -250,7 +250,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="http://www.numpy.org/">NumPy</a>',
-                '1.16.2',
+                '1.17.0',
                 'NumPy Developers',
                 '<a href="http://www.numpy.org/license.html">BSD-3-Clause</a>'
             ],
@@ -848,6 +848,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade Matplotlib to 3.1.1</li>
                             <li>Upgrade nagisa to 0.2.4</li>
                             <li>Upgrade NLTK to 3.4.4</li>
+                            <li>Upgrade NumPy to 1.17.0</li>
                             <li>Upgrade pybo to 0.6.5</li>
                             <li>Upgrade PyQt to 5.13.0</li>
                             <li>Upgrade PyThaiNLP to 2.0.7</li>
