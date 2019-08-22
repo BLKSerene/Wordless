@@ -523,7 +523,16 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
         settings['ignore_tags_type_tags'] = self.token_combo_box_ignore_tags_tags.currentText()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
-        self.checkbox_match_tags.token_settings_changed()
+        # Check if searching is enabled
+        if self.group_box_search_settings.isChecked():
+            self.checkbox_match_tags.token_settings_changed()
+        else:
+            self.group_box_search_settings.setChecked(True)
+
+            self.checkbox_match_tags.token_settings_changed()
+
+            self.group_box_search_settings.setChecked(False)
+        
         self.main.wordless_context_settings_collocation.token_settings_changed()
 
     def search_settings_changed(self):
@@ -545,9 +554,6 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
         settings['ignore_tags_type'] = self.search_combo_box_ignore_tags.currentText()
         settings['ignore_tags_type_tags'] = self.search_combo_box_ignore_tags_tags.currentText()
         settings['match_tags'] = self.checkbox_match_tags.isChecked()
-
-        if settings['search_settings']:
-            self.checkbox_match_tags.token_settings_changed()
 
     def generation_settings_changed(self):
         settings = self.main.settings_custom['collocation']['generation_settings']

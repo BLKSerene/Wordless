@@ -836,6 +836,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <div class="changelog-section-header">Bug Fixes</div>
                         <ul>
                             <li>Fix NLTK's word tokenizers</li>
+                            <li>Fix toggling of checkboxes in "Search Settings" and "Context Settings"</li>
                             <li>Fix "Settings → Stop Words → Preview → Count of Stop Words"</li>
                         </ul>
                     </div>

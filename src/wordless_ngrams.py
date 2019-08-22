@@ -523,7 +523,16 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         settings['ignore_tags_type_tags'] = self.token_combo_box_ignore_tags_tags.currentText()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
-        self.checkbox_match_tags.token_settings_changed()
+        # Check if searching is enabled
+        if self.group_box_search_settings.isChecked():
+            self.checkbox_match_tags.token_settings_changed()
+        else:
+            self.group_box_search_settings.setChecked(True)
+
+            self.checkbox_match_tags.token_settings_changed()
+
+            self.group_box_search_settings.setChecked(False)
+
         self.main.wordless_context_settings_ngrams.token_settings_changed()
 
     def search_settings_changed(self):
@@ -551,9 +560,6 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         settings['search_term_position_max'] = self.spin_box_search_term_position_max.value()
         settings['search_term_position_max_no_limit'] = self.checkbox_search_term_position_max_no_limit.isChecked()
         settings['allow_skipped_tokens_within_search_terms'] = self.checkbox_allow_skipped_tokens_within_search_terms.isChecked()
-
-        if settings['search_settings']:
-            self.checkbox_match_tags.token_settings_changed()
 
     def generation_settings_changed(self):
         settings = self.main.settings_custom['ngrams']['generation_settings']
