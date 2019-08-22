@@ -579,13 +579,14 @@ Tokenized / Tagged (Both)     |✔
 
 File Types|File Extensions
 ----------|--------------
-Text Files              |\*.txt
-Microsoft Word Documents|\*.docx
+Text File               |\*.txt
+Microsoft Word Document |\*.docx
 Microsoft Excel Workbook|\*.xls, \*.xlsx
-CSV Files               |\*.csv
-HTML Pages              |\*.htm, \*.html
-Translation Memory Files|\*.tmx
-Lyrics Files            |\*.lrc
+CSV File                |\*.csv
+HTML Page               |\*.htm, \*.html
+XML File                |\*.xml
+Translation Memory File |\*.tmx
+Lyrics File             |\*.lrc
 
 \* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/Import/**). You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
