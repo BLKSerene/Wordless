@@ -80,18 +80,17 @@ class Wordless_Text():
 
                         self.tokens_sentences_paras.append(tokens_sentences)
 
+                        # Check if the first token in the text is a tag
+                        if i == 0 and re.match(re_tags_non_pos, text):
+                            self.tokens_sentences_paras[0][0].insert(0, '')
+                            self.tags_non_pos.append([])
+
                         # Extract tags
                         for tag in re.findall(re_tags_non_pos, text):
                             i_tag = text.index(tag)
 
-                            if i == 0 and i_tag == 0 and not self.tags_non_pos:
-                                self.tokens_sentences_paras[0][0].insert(0, '')
-
-                                self.tags_non_pos.append([tag])
-                            else:
-                                self.tokenize_text(text[:i_tag])
-
-                                self.tags_non_pos[-1].append(tag)
+                            self.tokenize_text(text[:i_tag])
+                            self.tags_non_pos[-1].append(tag)
 
                             text = text[i_tag + len(tag):]
 
@@ -129,18 +128,17 @@ class Wordless_Text():
 
                             self.tokens_sentences_paras.append([text_no_tags.split()])
 
+                            # Check if the first token in the text is a tag
+                            if i == 0 and re.match(re_tags_pos, text):
+                                self.tokens_sentences_paras[0][0].insert(0, '')
+                                self.tags_pos.append([])
+
                             # Extract tags
                             for tag in re.findall(re_tags_pos, text):
                                 i_tag = text.index(tag)
 
-                                if self.tokens_sentences_paras:
-                                    self.split_text(text[:i_tag])
-
-                                    self.tags_pos[-1].append(tag)
-                                else:
-                                    self.tokens_sentences_paras[0][0].insert(0, '')
-
-                                    self.tags_pos.append([tag])
+                                self.split_text(text[:i_tag])
+                                self.tags_pos[-1].append(tag)
 
                                 text = text[i_tag + len(tag):]
 
@@ -164,18 +162,17 @@ class Wordless_Text():
                             for sentence in sentences:
                                 self.tokens_sentences_paras[-1].append(sentence.split())
 
+                            # Check if the first token in the text is a tag
+                            if i == 0 and re.match(re_tags_pos, text):
+                                self.tokens_sentences_paras[0][0].insert(0, '')
+                                self.tags_pos.append([])
+
                             # Extract tags
                             for tag in re.findall(re_tags_pos, text):
                                 i_tag = text.index(tag)
 
-                                if self.tokens_sentences_paras:
-                                    self.split_text(text[:i_tag])
-
-                                    self.tags_pos[-1].append(tag)
-                                else:
-                                    self.tokens_sentences_paras[0][0].insert(0, '')
-
-                                    self.tags_pos.append([tag])
+                                self.split_text(text[:i_tag])
+                                self.tags_pos[-1].append(tag)
 
                                 text = text[i_tag + len(tag):]
 
@@ -195,18 +192,17 @@ class Wordless_Text():
 
                             self.tokens_sentences_paras.append([text_no_tags.split()])
 
+                            # Check if the first token in the text is a tag
+                            if i == 0 and re.match(re_tags_non_pos, text):
+                                self.tokens_sentences_paras[0][0].insert(0, '')
+                                self.tags_non_pos.append([])
+
                             # Extract tags
                             for tag in re.findall(re_tags_non_pos, text):
                                 i_tag = text.index(tag)
 
-                                if i == 0 and i_tag == 0 and not self.tags_non_pos:
-                                    self.tokens_sentences_paras[0][0].insert(0, '')
-
-                                    self.tags_non_pos.append([tag])
-                                else:
-                                    self.split_text(text[:i_tag])
-
-                                    self.tags_non_pos[-1].append(tag)
+                                self.split_text(text[:i_tag])
+                                self.tags_non_pos[-1].append(tag)
 
                                 text = text[i_tag + len(tag):]
 
@@ -230,18 +226,17 @@ class Wordless_Text():
                             for sentence in sentences:
                                 self.tokens_sentences_paras[-1].append(sentence.split())
 
+                            # Check if the first token in the text is a tag
+                            if i == 0 and re.match(re_tags_non_pos, text):
+                                self.tokens_sentences_paras[0][0].insert(0, '')
+                                self.tags_non_pos.append([])
+
                             # Extract tags
                             for tag in re.findall(re_tags_non_pos, text):
                                 i_tag = text.index(tag)
 
-                                if i == 0 and i_tag == 0 and not self.tags_non_pos:
-                                    self.tokens_sentences_paras[0][0].insert(0, '')
-
-                                    self.tags_non_pos.append([tag])
-                                else:
-                                    self.split_text(text[:i_tag])
-
-                                    self.tags_non_pos[-1].append(tag)
+                                self.split_text(text[:i_tag])
+                                self.tags_non_pos[-1].append(tag)
 
                                 text = text[i_tag + len(tag):]
 
@@ -261,6 +256,14 @@ class Wordless_Text():
 
                             self.tokens_sentences_paras.append([text_no_tags.split()])
 
+                            # Check if the first token in the text is a tag
+                            if i == 0 and (re.match(re_tags_pos, text) or re.match(re_tags_non_pos, text)):
+                                self.tokens_sentences_paras[0][0].insert(0, '')
+
+                                self.tags_all.append([])
+                                self.tags_pos.append([])
+                                self.tags_non_pos.append([])
+
                             # Extract tags
                             while text:
                                 tag_pos = re.search(re_tags_pos, text)
@@ -274,32 +277,18 @@ class Wordless_Text():
 
                                 if (tag_pos and tag_non_pos and i_tag_pos < i_tag_non_pos or
                                     tag_pos and not tag_non_pos):
-                                    if i == 0 and i_tag_pos == 0 and not self.tags_all:
-                                        self.tokens_sentences_paras[0][0].insert(0, '')
+                                    self.split_text(text[:i_tag_pos])
 
-                                        self.tags_all.append([tag_pos.group()])
-                                        self.tags_pos.append([tag_pos.group()])
-                                        self.tags_non_pos.append([])
-                                    else:
-                                        self.split_text(text[:i_tag_pos])
-
-                                        self.tags_pos[-1].append(tag_pos.group())
-                                        self.tags_all[-1].append(tag_pos.group())
+                                    self.tags_pos[-1].append(tag_pos.group())
+                                    self.tags_all[-1].append(tag_pos.group())
 
                                     text = text[i_tag_pos + len(tag_pos.group()):]
                                 elif (tag_pos and tag_non_pos and i_tag_pos > i_tag_non_pos or
                                       not tag_pos and tag_non_pos):
-                                    if i == 0 and i_tag_non_pos == 0 and not self.tags_all:
-                                        self.tokens_sentences_paras[0][0].insert(0, '')
+                                    self.split_text(text[:i_tag_non_pos])
 
-                                        self.tags_all.append([tag_non_pos.group()])
-                                        self.tags_pos.append([])
-                                        self.tags_non_pos.append([tag_non_pos.group()])
-                                    else:
-                                        self.split_text(text[:i_tag_non_pos])
-
-                                        self.tags_all[-1].append(tag_non_pos.group())
-                                        self.tags_non_pos[-1].append(tag_non_pos.group())
+                                    self.tags_all[-1].append(tag_non_pos.group())
+                                    self.tags_non_pos[-1].append(tag_non_pos.group())
 
                                     text = text[i_tag_non_pos + len(tag_non_pos.group()):]
                                 else:
@@ -323,6 +312,14 @@ class Wordless_Text():
                             for sentence in sentences:
                                 self.tokens_sentences_paras[-1].append(sentence.split())
 
+                            # Check if the first token in the text is a tag
+                            if i == 0 and (re.match(re_tags_pos, text) or re.match(re_tags_non_pos, text)):
+                                self.tokens_sentences_paras[0][0].insert(0, '')
+
+                                self.tags_all.append([])
+                                self.tags_pos.append([])
+                                self.tags_non_pos.append([])
+
                             # Extract tags
                             while text:
                                 tag_pos = re.search(re_tags_pos, text)
@@ -336,32 +333,18 @@ class Wordless_Text():
 
                                 if (tag_pos and tag_non_pos and i_tag_pos < i_tag_non_pos or
                                     tag_pos and not tag_non_pos):
-                                    if i == 0 and i_tag_pos == 0 and not self.tags_all:
-                                        self.tokens_sentences_paras[0][0].insert(0, '')
+                                    self.split_text(text[:i_tag_pos])
 
-                                        self.tags_all.append([tag_pos.group()])
-                                        self.tags_pos.append([tag_pos.group()])
-                                        self.tags_non_pos.append([])
-                                    else:
-                                        self.split_text(text[:i_tag_pos])
-
-                                        self.tags_all[-1].append(tag_pos.group())
-                                        self.tags_pos[-1].append(tag_pos.group())
+                                    self.tags_all[-1].append(tag_pos.group())
+                                    self.tags_pos[-1].append(tag_pos.group())
 
                                     text = text[i_tag_pos + len(tag_pos.group()):]
                                 elif (tag_pos and tag_non_pos and i_tag_pos > i_tag_non_pos or
                                       not tag_pos and tag_non_pos):
-                                    if i == 0 and i_tag_non_pos == 0 and not self.tags_all:
-                                        self.tokens_sentences_paras[0][0].insert(0, '')
+                                    self.split_text(text[:i_tag_non_pos])
 
-                                        self.tags_all.append([tag_non_pos.group()])
-                                        self.tags_pos.append([])
-                                        self.tags_non_pos.append([tag_non_pos.group()])
-                                    else:
-                                        self.split_text(text[:i_tag_non_pos])
-
-                                        self.tags_all[-1].append(tag_non_pos.group())
-                                        self.tags_non_pos[-1].append(tag_non_pos.group())
+                                    self.tags_all[-1].append(tag_non_pos.group())
+                                    self.tags_non_pos[-1].append(tag_non_pos.group())
 
                                     text = text[i_tag_non_pos + len(tag_non_pos.group()):]
                                 else:

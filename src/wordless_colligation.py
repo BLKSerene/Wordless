@@ -666,7 +666,7 @@ class Wordless_Worker_Process_Data_Colligation(wordless_threading.Wordless_Worke
                     for tag_pos in reversed(tags_pos):
                         tags_all.insert(0, tag_pos)
 
-            # Modity text types
+            # Modify text types
             if file['text_type'][1] == 'untagged':
                 text.text_type = (text.text_type[0], 'tagged_pos')
             elif file['text_type'][1] == 'tagged_non_pos':

@@ -424,7 +424,7 @@ class Wordless_Worker_Process_Data_Keywords(wordless_threading.Wordless_Worker_P
         for i, file in enumerate([ref_file] + files):
             text = wordless_text.Wordless_Text(self.main, file)
 
-            tokens = wordless_token_processing.wordless_process_tokens_wordlist(text,
+            tokens = wordless_token_processing.wordless_process_tokens_overview(text,
                                                                                 token_settings = settings['token_settings'])
 
             self.keywords_freq_files.append(collections.Counter(tokens))

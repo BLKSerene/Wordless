@@ -129,29 +129,13 @@ def wordless_process_tokens_overview(text, token_settings):
 
     return tokens
 
-def wordless_process_tokens_wordlist(text, token_settings):
-    tokens = wordless_process_tokens(text, token_settings)
-
-    # Use tags only
-    if token_settings['use_tags']:
-        tokens = [''.join(tags) for _, tags in tokens]
-        text.tokens = [''.join(tags) for _, tags in text.tokens]
-    else:
-        tokens = [f"{token}{''.join(tags)}" for token, tags in tokens]
-        text.tokens = [f"{token}{''.join(tags)}" for token, tags in text.tokens]
-
-    # Remove empty tokens/tags
-    tokens = [token for token in tokens if token]
-
-    return tokens
-
 def wordless_process_tokens_ngrams(text, token_settings):
     tokens = wordless_process_tokens(text, token_settings)
 
     # Use tags only
     if token_settings['use_tags']:
-        tokens = [''.join(tags) for _, tags in tokens]
-        text.tokens = [''.join(tags) for _, tags in text.tokens]
+        tokens = [tag for _, tags in tokens for tag in tags]
+        text.tokens = [tag for _, tags in text.tokens for tag in tags]
     else:
         tokens = [f"{token}{''.join(tags)}" for token, tags in tokens]
         text.tokens = [f"{token}{''.join(tags)}" for token, tags in text.tokens]
@@ -161,15 +145,17 @@ def wordless_process_tokens_ngrams(text, token_settings):
 def wordless_process_tokens_colligation(text, token_settings):
     tokens = wordless_process_tokens(text, token_settings)
 
-    # Tags Only
+    # Use tags Only
     if token_settings['use_tags']:
-        tokens = [''.join(tags) for _, tags in tokens]
-        text.tokens = [''.join(tags) for _, tags in text.tokens]
+        tokens = [tag for _, tags in tokens for tag in tags]
+        text.tokens = [tag for _, tags in text.tokens for tag in tags]
+
+        text.tags_pos = [tag for tags in text.tags_pos for tag in tags]
     else:
         tokens = [f"{token}{''.join(tags)}" for token, tags in tokens]
         text.tokens = [f"{token}{''.join(tags)}" for token, tags in text.tokens]
 
-    text.tags_pos = [''.join(tags) for tags in text.tags_pos]
+        text.tags_pos = [''.join(tags) for tags in text.tags_pos]
 
     return tokens
 
