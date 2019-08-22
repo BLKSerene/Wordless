@@ -349,9 +349,6 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
         else:
             self.settings['inclusion']['context_window_right'] = self.inclusion_spin_box_context_window_right.value()
 
-        if self.settings['inclusion']['inclusion']:
-            self.inclusion_checkbox_match_tags.token_settings_changed()
-
     def exclusion_changed(self):
         self.settings['exclusion']['exclusion'] = self.exclusion_group_box.isChecked()
 
@@ -382,9 +379,6 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
         else:
             self.settings['exclusion']['context_window_right'] = self.exclusion_spin_box_context_window_right.value()
 
-        if self.settings['exclusion']['exclusion']:
-            self.exclusion_checkbox_match_tags.token_settings_changed()
-
     def multi_search_mode_changed(self):
         if 'size_multi' in self.__dict__:
             if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
@@ -393,8 +387,24 @@ class Wordless_Dialog_Context_Settings(wordless_dialog.Wordless_Dialog):
                 self.setFixedSize(self.size_normal)
 
     def token_settings_changed(self):
-        self.inclusion_checkbox_match_tags.token_settings_changed()
-        self.exclusion_checkbox_match_tags.token_settings_changed()
+        # Check if searching is enabled
+        if self.inclusion_group_box.isChecked():
+            self.inclusion_checkbox_match_tags.token_settings_changed()
+        else:
+            self.inclusion_group_box.setChecked(True)
+
+            self.inclusion_checkbox_match_tags.token_settings_changed()
+
+            self.inclusion_group_box.setChecked(False)
+
+        if self.exclusion_group_box.isChecked():
+            self.exclusion_checkbox_match_tags.token_settings_changed()
+        else:
+            self.exclusion_group_box.setChecked(True)
+
+            self.exclusion_checkbox_match_tags.token_settings_changed()
+
+            self.exclusion_group_box.setChecked(False)
 
     def load(self):
         # Calculate size

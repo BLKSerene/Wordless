@@ -211,41 +211,39 @@ def wordless_widgets_search_settings(parent, tab):
     def token_settings_changed():
         token_settings = main.settings_custom[tab]['token_settings']
         
-        if line_edit_search_term.isEnabled() == True:
-            if token_settings['use_tags']:
-                checkbox_match_tags.setEnabled(False)
-                checkbox_match_tags.setChecked(True)
+        if token_settings['use_tags']:
+            checkbox_match_tags.setEnabled(False)
+            checkbox_match_tags.setChecked(True)
 
-                if token_settings['ignore_tags_tags']:
+            if token_settings['ignore_tags_tags']:
+                stacked_widget_ignore_tags.setEnabled(False)
+                stacked_widget_ignore_tags_type.setEnabled(False)
+            else:
+                stacked_widget_ignore_tags.setEnabled(True)
+                stacked_widget_ignore_tags_type.setEnabled(True)
+        else:
+            checkbox_match_tags.setChecked(False)
+
+            if token_settings['ignore_tags']:
+                if token_settings['ignore_tags_type'] == parent.tr('All'):
                     stacked_widget_ignore_tags.setEnabled(False)
                     stacked_widget_ignore_tags_type.setEnabled(False)
+                    checkbox_match_tags.setEnabled(False)
                 else:
-                    stacked_widget_ignore_tags.setEnabled(True)
-                    stacked_widget_ignore_tags_type.setEnabled(True)
-            else:
-                checkbox_match_tags.setChecked(False)
-
-                if token_settings['ignore_tags']:
-                    if token_settings['ignore_tags_type'] == parent.tr('All'):
+                    if checkbox_match_tags.isChecked():
                         stacked_widget_ignore_tags.setEnabled(False)
                         stacked_widget_ignore_tags_type.setEnabled(False)
-                        checkbox_match_tags.setEnabled(False)
                     else:
-                        if checkbox_match_tags.isChecked():
-                            stacked_widget_ignore_tags.setEnabled(False)
-                            stacked_widget_ignore_tags_type.setEnabled(False)
-                        else:
-                            stacked_widget_ignore_tags.setEnabled(True)
-                            stacked_widget_ignore_tags_type.setEnabled(True)
-                            
-                        checkbox_match_tags.setEnabled(True)
-                else:
-                    stacked_widget_ignore_tags.setEnabled(True)
-                    stacked_widget_ignore_tags_type.setEnabled(True)
+                        stacked_widget_ignore_tags.setEnabled(True)
+                        stacked_widget_ignore_tags_type.setEnabled(True)
+                        
                     checkbox_match_tags.setEnabled(True)
+            else:
+                stacked_widget_ignore_tags.setEnabled(True)
+                stacked_widget_ignore_tags_type.setEnabled(True)
+                checkbox_match_tags.setEnabled(True)
 
-            if checkbox_match_tags.isEnabled():
-                match_tags_changed()
+        match_tags_changed()
 
     main = wordless_misc.find_wordless_main(parent)
 
