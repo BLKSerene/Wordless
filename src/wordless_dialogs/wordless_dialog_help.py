@@ -278,7 +278,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="http://python-requests.org">requests</a>',
-                '2.21.0',
+                '2.22.0',
                 'Kenneth Reitz',
                 '<a href="https://github.com/requests/requests/blob/master/LICENSE">Apache-2.0</a>'
             ],
@@ -854,6 +854,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade PyQt to 5.13.0</li>
                             <li>Upgrade PyThaiNLP to 2.0.7</li>
                             <li>Upgrade Python to 3.7.4</li>
+                            <li>Upgrade requests to 2.22.0</li>
                             <li>Upgrade Sacremoses to 0.0.33</li>
                             <li>Upgrade spaCy to 2.1.8</li>
                             <li>Upgrade Underthesea to 1.1.16</li>
