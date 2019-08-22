@@ -192,7 +192,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         self.ACKS_PLOTTING = [
             [
                 '<a href="https://matplotlib.org/">Matplotlib</a>',
-                '3.0.3',
+                '3.1.1',
                 'Matplotlib Development Team',
                 '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'
             ],
@@ -843,6 +843,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Dependency Upgrades</div>
                         <ul>
+                            <li>Upgrade Matplotlib to 3.1.1</li>
                             <li>Upgrade nagisa to 0.2.4</li>
                             <li>Upgrade NLTK to 3.4.4</li>
                             <li>Upgrade pybo to 0.6.5</li>
