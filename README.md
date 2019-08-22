@@ -621,10 +621,10 @@ Central European|CP852                  |✔
 Central European|ISO-8859-2             |✔
 Central European|Mac OS Central European|✔
 Central European|Windows-1250           |✔
-Chinese|GB18030|✔
-Chinese|GBK    |✖
-Chinese (Simplified)|GB2312|✖
-Chinese (Simplified)|HZ    |✔
+Chinese              |GB18030   |✔
+Chinese              |GBK       |✖
+Chinese (Simplified) |GB2312    |✖
+Chinese (Simplified) |HZ        |✔
 Chinese (Traditional)|Big-5     |✔
 Chinese (Traditional)|Big5-HKSCS|✖
 Chinese (Traditional)|CP950     |✖
@@ -692,7 +692,7 @@ Turkish|Mac OS Turkish|✖
 Turkish|Windows-1254  |✖
 Ukrainian|CP1125|✖
 Ukrainian|KOI8-U|✖
-Urdu|CP1006      |✖
+Urdu|CP1006|✖
 Vietnamese|CP1258|✖
 Western European|EBCDIC 500  |✖
 Western European|CP850       |✖
