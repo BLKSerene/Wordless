@@ -208,7 +208,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         self.ACKS_MISC = [
             [
                 '<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
-                '4.7.1',
+                '4.8.0',
                 'Leonard Richardson',
                 '<a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a>'
             ],
@@ -843,6 +843,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Dependency Upgrades</div>
                         <ul>
+                            <li>Upgrade Beautiful Soup to 4.8.0</li>
                             <li>Upgrade Matplotlib to 3.1.1</li>
                             <li>Upgrade nagisa to 0.2.4</li>
                             <li>Upgrade NLTK to 3.4.4</li>
