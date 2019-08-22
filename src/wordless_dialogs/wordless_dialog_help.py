@@ -426,6 +426,59 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
         self.table_acks.itemChanged.emit(self.table_acks.item(0, 0))
 
+class Wordless_Dialog_Need_Help(wordless_dialog.Wordless_Dialog_Info):
+    def __init__(self, main):
+        super().__init__(main, main.tr('Need Help?'),
+                         width = 500,
+                         height = 460)
+
+        self.label_need_help = wordless_label.Wordless_Label_Dialog(
+            self.tr('''
+                <div>
+                    If you encounter a problem, find a bug or require any further information, feel free to ask questions, submit bug reports or provide feedback by <a href="https://github.com/BLKSerene/Wordless/issues/new">creating an issue</a> on Github if you fail to find the answer by searching <a href="https://github.com/BLKSerene/Wordless/issues">existing issues</a> first.
+                </div>
+
+                <div>
+                    If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may send me an email.
+                </div>
+            '''),
+            self
+        )
+
+        self.table_need_help = wordless_table.Wordless_Table(self,
+                                                             headers = [
+                                                                 self.tr('Platforms'),
+                                                                 self.tr('Contact Information')
+                                                             ],
+                                                             cols_stretch = [
+                                                                 self.tr('Contact Information')
+                                                             ])
+
+        self.table_need_help.setRowCount(4)
+        self.table_need_help.verticalHeader().setHidden(True)
+
+        self.table_need_help.setCellWidget(0, 0, wordless_label.Wordless_Label_Html(self.tr('Home Page'), self))
+        self.table_need_help.setCellWidget(0, 1, wordless_label.Wordless_Label_Html('<a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</a>', self))
+        self.table_need_help.setCellWidget(1, 0, wordless_label.Wordless_Label_Html(self.tr('Documentation'), self))
+        self.table_need_help.setCellWidget(1, 1, wordless_label.Wordless_Label_Html('<a href="https://github.com/BLKSerene/Wordless#documentation">https://github.com/BLKSerene/Wordless#documentation</a>', self))
+        self.table_need_help.setCellWidget(2, 0, wordless_label.Wordless_Label_Html(self.tr('Email'), self))
+        self.table_need_help.setCellWidget(2, 1, wordless_label.Wordless_Label_Html('<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a><br><a href="mailto:blkserene@163.com">blkserene@163.com</a>', self))
+        self.table_need_help.setCellWidget(3, 0, wordless_label.Wordless_Label_Html(self.tr('<a href="https://www.wechat.com/en/">WeChat</a> Official Account'), self))
+        self.table_need_help.setCellWidget(3, 1, wordless_label.Wordless_Label_Html('<img src="imgs/wechat_official_account.dib">', self))
+
+        self.label_need_help_note = wordless_label.Wordless_Label_Dialog(
+            self.tr('''
+                <div>
+                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>CANNOT GUARANTEE</b> that all emails will always be checked or replied in time. I <b>WILL NOT REPLY</b> to irrelevant emails and I reserve the right to <b>BLOCK AND/OR REPORT</b> people who send me spam emails.
+                </div>
+            '''),
+            self
+        )
+
+        self.wrapper_info.layout().addWidget(self.label_need_help, 0, 0)
+        self.wrapper_info.layout().addWidget(self.table_need_help, 1, 0)
+        self.wrapper_info.layout().addWidget(self.label_need_help_note, 2, 0)
+
 class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Donating'),

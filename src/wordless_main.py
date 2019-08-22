@@ -295,32 +295,9 @@ class Wordless_Main(QMainWindow):
 
     # Help -> Need Help?
     def help_need_help(self):
-        msg_box = wordless_msg_box.Wordless_Msg_Box_Info_Help(
-            main = self,
-            title = self.tr('Need Help?'),
-            text = self.tr('''
-                <div>
-                    If you encounter a problem, find a bug or require any further information, feel free to ask questions, submit bug reports or provide feedback by <a href="https://github.com/BLKSerene/Wordless/issues/new">creating an issue</a> on Github if you fail to find the answer by searching <a href="https://github.com/BLKSerene/Wordless/issues">existing issues</a> first.
-                </div>
+        dialog_need_help = wordless_dialog_help.Wordless_Dialog_Need_Help(self)
 
-                <div>
-                    If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may send me an email.
-                </div>
-
-                <div>
-                    Home Page: <a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</a><br>
-                    Documentation: <a href="https://github.com/BLKSerene/Wordless#documentation">https://github.com/BLKSerene/Wordless#documentation</a><br>
-                    Email: <a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a> or <a href="mailto:blkserene@163.com">blkserene@163.com</a><br>
-                    <a href="https://www.wechat.com/en/">WeChat</a> Official Account: Wordless
-                </div>
-
-                <div>
-                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>CANNOT GUARANTEE</b> that all emails will always be checked or replied in time. I <b>WILL NOT REPLY</b> to irrelevant emails and I reserve the right to <b>BLOCK AND/OR REPORT</b> people who send me spam emails.
-                </div>
-            ''')
-        )
-
-        msg_box.open()
+        dialog_need_help.open()
 
     # Help -> Contributing
     def help_contributing(self):
