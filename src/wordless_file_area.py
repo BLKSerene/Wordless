@@ -65,7 +65,7 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
                 file_name, file_ext = os.path.splitext(os.path.basename(file_path))
                 file_ext = file_ext.lower()
 
-                # Text Files
+                # Text files
                 if file_ext == '.txt':
                     (new_file,
                      detection_success_encoding,
@@ -86,7 +86,7 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
                     if file_ext in ['.docx', '.xlsx', '.xls']:
                         new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
 
-                        # Word Documents
+                        # Word documents
                         if file_ext == '.docx':
                             lines = []
 
@@ -105,7 +105,7 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
 
                                             f.write('\t'.join(cells) + '\n')
 
-                        # Excel Workbooks
+                        # Excel workbooks
                         elif file_ext == '.xlsx':
                             with open(new_path, 'w', encoding = default_encoding) as f:
                                 workbook = openpyxl.load_workbook(file_path, data_only = True)
@@ -134,7 +134,7 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
                         else:
                             encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['default_encoding']
 
-                        # CSV Files
+                        # CSV files
                         if file_ext == '.csv':
                             new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
 
@@ -147,7 +147,7 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
 
                             new_paths = [new_path]
 
-                        # HTML Files
+                        # HTML files
                         elif file_ext in ['.htm', '.html']:
                             with open(file_path, 'r', encoding = encoding_code) as f:
                                 soup = bs4.BeautifulSoup(f.read(), 'lxml')
@@ -159,7 +159,19 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
 
                             new_paths = [new_path]
 
-                        # Translation Memory Files
+                        # XML files
+                        elif file_ext == '.xml':
+                            with open(file_path, 'r', encoding = encoding_code) as f:
+                                xml_text = f.read()
+
+                            new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+
+                            with open(new_path, 'w', encoding = default_encoding) as f:
+                                f.write(xml_text)
+
+                            new_paths = [new_path]
+
+                        # Translation memory files
                         elif file_ext == '.tmx':
                             lines_src = []
                             lines_target = []
@@ -186,7 +198,7 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
 
                             new_paths = [path_src, path_target]
 
-                        # Lyrics Files
+                        # Lyrics files
                         elif file_ext == '.lrc':
                             lyrics = {}
 

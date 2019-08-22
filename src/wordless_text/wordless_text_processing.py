@@ -521,7 +521,13 @@ def wordless_pos_tag(main, tokens, lang,
                      tagset = 'custom'):
     tokens_tagged = []
 
-    tokens = [str(token) for token in tokens]
+    # Check if the first token is empty
+    if tokens and tokens[0] == '':
+        first_token_empty = True
+    else:
+        first_token_empty = False
+
+    tokens = [str(token) for token in tokens if token]
 
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang]
@@ -608,8 +614,8 @@ def wordless_pos_tag(main, tokens, lang,
                      for token, tag in tokens_tagged
                      if token.strip()]
 
-    # Check if the first token is empty
-    if tokens[0] == '':
+    # Add the first empty token (if any)
+    if first_token_empty:
         tokens_tagged.insert(0, ('', ''))
 
     return tokens_tagged

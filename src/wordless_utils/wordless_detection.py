@@ -157,6 +157,8 @@ def detect_lang(main, file):
         elif lang_code_639_1 == 'sr':
             lang_code_639_1 = 'sr_cyrl'
 
+        lang = wordless_conversion.to_iso_639_3(main, lang_code_639_1)
+
         success = True
     except:
         lang = main.settings_custom['auto_detection']['default_settings']['default_lang']

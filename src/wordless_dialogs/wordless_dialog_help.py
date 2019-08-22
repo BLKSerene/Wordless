@@ -766,6 +766,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <div class="changelog-section-header">New Features</div>
                         <ul>
                             <li>Add extra-stopwords's stop words</li>
+                            <li>Add support for XML files</li>
                         </ul>
                     </div>
 

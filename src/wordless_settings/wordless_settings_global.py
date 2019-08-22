@@ -404,6 +404,7 @@ def init_settings_global(main):
                 main.tr('Excel Workbook (*.xls; *.xlsx)'),
                 main.tr('CSV File(*.csv)'),
                 main.tr('HTML Page (*.htm; *.html)'),
+                main.tr('XML File (*.xml)'),
                 main.tr('Translation Memory File (*.tmx)'),
                 main.tr('Lyrics File (*.lrc)'),
                 main.tr('All Files (*.*)')
