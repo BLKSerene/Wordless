@@ -285,7 +285,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://www.scipy.org/">SciPy</a>',
-                '1.2.1',
+                '1.3.1',
                 'SciPy Developers',
                 '<a href="https://www.scipy.org/scipylib/license.html">BSD-3-Clause</a>'
             ],
@@ -856,6 +856,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade Python to 3.7.4</li>
                             <li>Upgrade requests to 2.22.0</li>
                             <li>Upgrade Sacremoses to 0.0.33</li>
+                            <li>Upgrade SciPy to 1.3.1</li>
                             <li>Upgrade spaCy to 2.1.8</li>
                             <li>Upgrade Underthesea to 1.1.16</li>
                         </ul>
