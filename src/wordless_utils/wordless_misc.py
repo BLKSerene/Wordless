@@ -17,6 +17,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+import numpy
+
 def get_abs_path(path):
     path = os.path.realpath(path)
     path = os.path.normpath(path)
@@ -95,3 +97,19 @@ def merge_dicts(dicts_to_merge):
                 dict_merged[key][i] = values
 
     return dict_merged
+
+def normalize_nums(nums, normalized_min, normalized_max, normalized_reversed = False):
+    nums_min = min(nums)
+    nums_max = max(nums)
+
+    if nums_max - nums_min == 0:
+        nums_normalized = [normalized_min] * len(nums)
+    else:
+        if normalized_reversed:
+            nums_normalized = [numpy.interp(num, [nums_min, nums_max], [normalized_max, normalized_min])
+                               for num in nums]
+        else:
+            nums_normalized = [numpy.interp(num, [nums_min, nums_max], [normalized_min, normalized_max])
+                               for num in nums]
+
+    return nums_normalized

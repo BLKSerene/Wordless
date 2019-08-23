@@ -13,10 +13,11 @@ from PyQt5.QtWidgets import *
 
 import matplotlib
 import matplotlib.pyplot
+import networkx
 import numpy
 import wordcloud
 
-from wordless_utils import wordless_sorting
+from wordless_utils import wordless_misc, wordless_sorting
 
 def wordless_fig_stat(main, tokens_stat_files,
                       settings, label_x, label_y):
@@ -33,6 +34,7 @@ def wordless_fig_stat(main, tokens_stat_files,
     else:
         rank_max = settings['rank_max']
 
+    # Line Chart
     if settings['graph_type'] == main.tr('Line Chart'):
         if label_y == main.tr('p-value'):
             tokens_stat_files = list(reversed(wordless_sorting.sorted_tokens_stat_files(tokens_stat_files)))
@@ -53,6 +55,7 @@ def wordless_fig_stat(main, tokens_stat_files,
 
         matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()
+    # Word Cloud
     elif settings['graph_type'] == main.tr('Word Cloud'):
         if rank_max == None:
             max_words = len(tokens_freq_files) - rank_min + 1
@@ -85,6 +88,56 @@ def wordless_fig_stat(main, tokens_stat_files,
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
         matplotlib.pyplot.axis('off')
+    # Network Graph
+    elif settings['graph_type'] == main.tr('Network Graph'):
+        for i, file in enumerate(files):
+            if file['name'] == settings['use_file']:
+                if label_y == main.tr('p-value'):
+                    tokens_stat_files = list(reversed(wordless_sorting.sorted_tokens_stat_file(tokens_stat_files, i)))
+                else:
+                    tokens_stat_files = wordless_sorting.sorted_tokens_stat_file(tokens_stat_files, i)
+
+                tokens_stat_file = {token: stat_files[i]
+                                     for token, stat_files in tokens_stat_files[rank_min - 1 : rank_max]}
+
+                break
+
+        graph = networkx.MultiDiGraph()
+        graph.add_edges_from(tokens_stat_file)
+
+        layout = networkx.spring_layout(graph)
+
+        networkx.draw_networkx_nodes(graph,
+                                     pos = layout,
+                                     node_size = 800,
+                                     node_color = '#FFFFFF',
+                                     alpha = 0.4)
+        if label_y == main.tr('p-value'):
+            networkx.draw_networkx_edges(graph,
+                                     pos = layout,
+                                     edgelist = tokens_stat_file,
+                                     edge_color = '#5C88C5',
+                                     width = wordless_misc.normalize_nums(tokens_stat_file.values(),
+                                                                          normalized_min = 1,
+                                                                          normalized_max = 5,
+                                                                          normalized_reversed = True))
+        else:
+            networkx.draw_networkx_edges(graph,
+                                         pos = layout,
+                                         edgelist = tokens_stat_file,
+                                         edge_color = '#5C88C5',
+                                         width = wordless_misc.normalize_nums(tokens_stat_file.values(),
+                                                                              normalized_min = 1,
+                                                                              normalized_max = 5))
+        networkx.draw_networkx_labels(graph,
+                                      pos = layout,
+                                      font_size = 10)
+        networkx.draw_networkx_edge_labels(graph,
+                                           pos = layout,
+                                           edge_labels = {token: round(stat, 2)
+                                                          for token, stat in tokens_stat_file.items()},
+                                           font_size = 8,
+                                           label_pos = 0.2)
 
 def wordless_fig_stat_ref(main, keywords_stat_files, ref_file,
                           settings, label_y):
