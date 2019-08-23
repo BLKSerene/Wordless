@@ -117,7 +117,8 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 
 ### Plotting
 1. [Matplotlib](https://matplotlib.org/) by Matplotlib Development Team
-2. [wordcloud](https://amueller.github.io/word_cloud/) by Andreas Christian Mueller
+2. [NetworkX](http://networkx.github.io/) by Aric Hagberg, Dan Schult, Pieter Swart
+3. [wordcloud](https://amueller.github.io/word_cloud/) by Andreas Christian Mueller
 
 ### Miscellaneous
 1. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) by Leonard Richardson

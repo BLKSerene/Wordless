@@ -515,13 +515,13 @@ def wordless_widgets_table_settings(parent, table):
     return checkbox_show_pct, checkbox_show_cumulative, checkbox_show_breakdown
 
 # Figure Settings
-def wordless_widgets_fig_settings(parent):
+def wordless_widgets_fig_settings(parent, collocation = False):
     def graph_type_changed():
         if combo_box_graph_type.currentText() == parent.tr('Line Chart'):
             combo_box_use_file.setEnabled(False)
 
             use_data_changed()
-        elif combo_box_graph_type.currentText() == parent.tr('Word Cloud'):
+        else:
             combo_box_use_file.setEnabled(True)
 
             checkbox_use_pct.setEnabled(False)
@@ -569,6 +569,10 @@ def wordless_widgets_fig_settings(parent):
 
     combo_box_graph_type.addItems([parent.tr('Line Chart'),
                                    parent.tr('Word Cloud')])
+
+    # Collocation & Colligation
+    if collocation:
+        combo_box_graph_type.addItem(parent.tr('Network Graph'))
 
     combo_box_graph_type.currentTextChanged.connect(graph_type_changed)
     combo_box_use_data.currentTextChanged.connect(use_data_changed)

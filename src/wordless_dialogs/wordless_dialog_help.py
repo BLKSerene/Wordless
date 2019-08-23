@@ -198,6 +198,13 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ],
 
             [
+                '<a href="https://matplotlib.org/">NetworkX</a>',
+                '2.3',
+                'Aric Hagberg, Dan Schult, Pieter Swart',
+                '<a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a>'
+            ],
+
+            [
                 '<a href="https://amueller.github.io/word_cloud/">wordcloud</a>',
                 '1.5.0',
                 'Andreas Christian Mueller',
@@ -819,6 +826,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <div class="changelog-section-header">New Features</div>
                         <ul>
                             <li>Add extra-stopwords's stop words</li>
+                            <li>Add support for network graphs</li>
                             <li>Add support for XML files</li>
                         </ul>
                     </div>
