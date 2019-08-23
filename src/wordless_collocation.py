@@ -635,20 +635,16 @@ class Wordless_Worker_Process_Data_Collocation(wordless_threading.Wordless_Worke
         collocations_freqs_files_all = []
 
         settings = self.main.settings_custom['collocation']
-
-        if settings['generation_settings']['window_left'] < 0 and settings['generation_settings']['window_right'] > 0:
-            window_size_left = abs(settings['generation_settings']['window_left'])
-            window_size_right = abs(settings['generation_settings']['window_right'])
-        elif settings['generation_settings']['window_left'] > 0 and settings['generation_settings']['window_right'] > 0:
-            window_size_left = 0
-            window_size_right = settings['generation_settings']['window_right'] - settings['generation_settings']['window_left'] + 1
-        elif settings['generation_settings']['window_left'] < 0 and settings['generation_settings']['window_right'] < 0:
-            window_size_left = settings['generation_settings']['window_right'] - settings['generation_settings']['window_left'] + 1
-            window_size_right = 0
-
-        window_size = window_size_left + window_size_right
-
         files = self.main.wordless_files.get_selected_files()
+
+        window_left = settings['generation_settings']['window_left']
+        window_right = settings['generation_settings']['window_right']
+
+        # Calculate window size
+        if window_left < 0 and window_right > 0:
+            window_size = window_right - window_left
+        else:
+            window_size = window_right - window_left + 1
 
         # Frequency
         for i, file in enumerate(files):
@@ -685,29 +681,55 @@ class Wordless_Worker_Process_Data_Collocation(wordless_threading.Wordless_Worke
                     collocations_freqs_file_all[ngram_size] = collections.Counter()
 
                 for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
-                    for j, collocate in enumerate(reversed(tokens[max(0, i - window_size_left) : i])):
-                        if wordless_matching.check_context(i, tokens,
-                                                           context_settings = settings['context_settings'],
-                                                           search_terms_inclusion = search_terms_inclusion,
-                                                           search_terms_exclusion = search_terms_exclusion):
-                            if (ngram, collocate) not in collocations_freqs_file:
-                                collocations_freqs_file[(ngram, collocate)] = [0] * window_size
+                    # Extract collocates
+                    if window_left < 0 and window_right > 0:
+                        for j, collocate in enumerate(reversed(tokens[max(0, i + window_left) : i])):
+                            if wordless_matching.check_context(i, tokens,
+                                                               context_settings = settings['context_settings'],
+                                                               search_terms_inclusion = search_terms_inclusion,
+                                                               search_terms_exclusion = search_terms_exclusion):
+                                if (ngram, collocate) not in collocations_freqs_file:
+                                    collocations_freqs_file[(ngram, collocate)] = [0] * window_size
 
-                            collocations_freqs_file[(ngram, collocate)][window_size_left - 1 - j] += 1
+                                collocations_freqs_file[(ngram, collocate)][abs(window_left) - 1 - j] += 1
 
-                        collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
+                            collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
 
-                    for j, collocate in enumerate(tokens[i + ngram_size: i + ngram_size + window_size_right]):
-                        if wordless_matching.check_context(i, tokens,
-                                                           context_settings = settings['context_settings'],
-                                                           search_terms_inclusion = search_terms_inclusion,
-                                                           search_terms_exclusion = search_terms_exclusion):
-                            if (ngram, collocate) not in collocations_freqs_file:
-                                collocations_freqs_file[(ngram, collocate)] = [0] * window_size
+                        for j, collocate in enumerate(tokens[i + ngram_size: i + ngram_size + window_right]):
+                            if wordless_matching.check_context(i, tokens,
+                                                               context_settings = settings['context_settings'],
+                                                               search_terms_inclusion = search_terms_inclusion,
+                                                               search_terms_exclusion = search_terms_exclusion):
+                                if (ngram, collocate) not in collocations_freqs_file:
+                                    collocations_freqs_file[(ngram, collocate)] = [0] * window_size
 
-                            collocations_freqs_file[(ngram, collocate)][window_size_left + j] += 1
+                                collocations_freqs_file[(ngram, collocate)][abs(window_left) + j] += 1
 
-                        collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
+                            collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
+                    elif window_left < 0 and window_right < 0:
+                        for j, collocate in enumerate(reversed(tokens[max(0, i + window_left) : max(0, i + window_right + 1)])):
+                            if wordless_matching.check_context(i, tokens,
+                                                               context_settings = settings['context_settings'],
+                                                               search_terms_inclusion = search_terms_inclusion,
+                                                               search_terms_exclusion = search_terms_exclusion):
+                                if (ngram, collocate) not in collocations_freqs_file:
+                                    collocations_freqs_file[(ngram, collocate)] = [0] * window_size
+
+                                collocations_freqs_file[(ngram, collocate)][window_size - 1 - j] += 1
+
+                            collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
+                    elif window_left > 0 and window_right > 0:
+                        for j, collocate in enumerate(tokens[i + ngram_size + window_left - 1 : i + ngram_size + window_right]):
+                            if wordless_matching.check_context(i, tokens,
+                                                               context_settings = settings['context_settings'],
+                                                               search_terms_inclusion = search_terms_inclusion,
+                                                               search_terms_exclusion = search_terms_exclusion):
+                                if (ngram, collocate) not in collocations_freqs_file:
+                                    collocations_freqs_file[(ngram, collocate)] = [0] * window_size
+
+                                collocations_freqs_file[(ngram, collocate)][j] += 1
+
+                            collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
 
             collocations_freqs_file = {(ngram, collocate): freqs
                                        for (ngram, collocate), freqs in collocations_freqs_file.items()
