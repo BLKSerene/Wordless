@@ -381,6 +381,7 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 ![Collocation Table](/doc/collocation/collocation_table.png)
 ![Collocation Figure - Line Chart](/doc/collocation/collocation_fig_line_chart.png)
 ![Collocation Figure - Word Cloud](/doc/collocation/collocation_fig_word_cloud.png)
+![Collocation Figure - Network Graph](/doc/collocation/collocation_fig_network_graph.png)
 
 <span id="doc-eng-colligation"></span>
 ### Colligation [[Back to Contents]](#doc)
@@ -431,6 +432,7 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 ![Colligation Table](/doc/colligation/colligation_table.png)
 ![Colligation Figure - Line Chart](/doc/colligation/colligation_fig_line_chart.png)
 ![Colligation Figure - Word Cloud](/doc/colligation/colligation_fig_word_cloud.png)
+![Colligation Figure - Network Graph](/doc/colligation/colligation_fig_network_graph.png)
 
 <span id="doc-eng-keywords"></span>
 ### Keywords [[Back to Contents]](#doc)
