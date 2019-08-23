@@ -13,10 +13,11 @@ from PyQt5.QtWidgets import *
 
 import matplotlib
 import matplotlib.pyplot
+import networkx
 import numpy
 import wordcloud
 
-from wordless_utils import wordless_sorting
+from wordless_utils import wordless_misc, wordless_sorting
 
 def wordless_fig_freq(main, tokens_freq_files,
                       settings, label_x):
@@ -33,6 +34,7 @@ def wordless_fig_freq(main, tokens_freq_files,
     else:
         rank_max = settings['rank_max']
 
+    # Line Chart
     if settings['graph_type'] == main.tr('Line Chart'):
         tokens_freq_files = wordless_sorting.sorted_tokens_freq_files(tokens_freq_files)
 
@@ -73,6 +75,7 @@ def wordless_fig_freq(main, tokens_freq_files,
 
         matplotlib.pyplot.grid(True)
         matplotlib.pyplot.legend()
+    # Word Cloud
     elif settings['graph_type'] == main.tr('Word Cloud'):
         if rank_max == None:
             max_words = len(tokens_freq_files) - rank_min + 1
@@ -102,6 +105,40 @@ def wordless_fig_freq(main, tokens_freq_files,
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
         matplotlib.pyplot.axis('off')
+    # Network Graph
+    elif settings['graph_type'] == main.tr('Network Graph'):
+        for i, file in enumerate(files):
+            if file['name'] == settings['use_file']:
+                tokens_freq_files = wordless_sorting.sorted_tokens_freq_file(tokens_freq_files, i)
+
+                tokens_freq_file = {token: freqs[i]
+                                    for token, freqs in tokens_freq_files[rank_min - 1 : rank_max]}
+
+                break
+
+        graph = networkx.MultiDiGraph()
+        graph.add_edges_from(tokens_freq_file)
+
+        layout = networkx.spring_layout(graph)
+
+        networkx.draw_networkx_nodes(graph,
+                                     pos = layout,
+                                     node_size = 800,
+                                     node_color = '#FFFFFF',
+                                     alpha = 0.4)
+        networkx.draw_networkx_edges(graph,
+                                     pos = layout,
+                                     edgelist = tokens_freq_file,
+                                     edge_color = '#5C88C5',
+                                     width = wordless_misc.normalize_nums(tokens_freq_file.values(), 1, 5))
+        networkx.draw_networkx_labels(graph,
+                                      pos = layout,
+                                      font_size = 10)
+        networkx.draw_networkx_edge_labels(graph,
+                                           pos = layout,
+                                           edge_labels = tokens_freq_file,
+                                           font_size = 8,
+                                           label_pos = 0.2)
 
 def wordless_fig_freq_ref(main, tokens_freq_files, ref_file,
                           settings, label_x):
@@ -118,6 +155,7 @@ def wordless_fig_freq_ref(main, tokens_freq_files, ref_file,
     else:
         rank_max = settings['rank_max']
 
+    # Line Chart
     if settings['graph_type'] == main.tr('Line Chart'):
         tokens_freq_files = wordless_sorting.sorted_tokens_freq_files_ref(tokens_freq_files)
 
@@ -159,6 +197,7 @@ def wordless_fig_freq_ref(main, tokens_freq_files, ref_file,
 
         matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()
+    # Word Cloud
     elif settings['graph_type'] == main.tr('Word Cloud'):
         files.remove(ref_file)
 
