@@ -351,7 +351,7 @@ class Wrapper_Colligation(wordless_layout.Wordless_Wrapper):
          self.combo_box_use_data,
 
          self.checkbox_use_pct,
-         self.checkbox_use_cumulative) = wordless_widgets.wordless_widgets_fig_settings(self)
+         self.checkbox_use_cumulative) = wordless_widgets.wordless_widgets_fig_settings(self, collocation = True)
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (self.label_rank_min,
@@ -1108,22 +1108,40 @@ def generate_fig(main):
                 else:
                     span_position = span_positions.index(int(settings['fig_settings']['use_data'][1:]))
 
-                collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
-                                         for (node, collocate), freqs in colligations_freqs_file.items()}
+                # Network Graph
+                if settings['fig_settings']['graph_type'] == main.tr('Network Graph'):
+                    collocates_freq_files = {(nodes_text[node], collocate): numpy.array(freqs)[:, span_position]
+                                             for (node, collocate), freqs in colligations_freqs_file.items()}
+                # Line Chart & Word Cloud
+                else:
+                    collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
+                                             for (node, collocate), freqs in colligations_freqs_file.items()}
 
                 wordless_fig_freq.wordless_fig_freq(main, collocates_freq_files,
                                                     settings = settings['fig_settings'],
                                                     label_x = main.tr('Collocates'))
             elif settings['fig_settings']['use_data'] == main.tr('Frequency'):
-                collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
-                                         for (node, collocate), freqs in colligations_freqs_file.items()}
+                # Network Graph
+                if settings['fig_settings']['graph_type'] == main.tr('Network Graph'):
+                    collocates_freq_files = {(nodes_text[node], collocate): numpy.array(freqs).sum(axis = 1)
+                                             for (node, collocate), freqs in colligations_freqs_file.items()}
+                # Line Chart & Word Cloud
+                else:
+                    collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
+                                             for (node, collocate), freqs in colligations_freqs_file.items()}
 
                 wordless_fig_freq.wordless_fig_freq(main, collocates_freq_files,
                                                     settings = settings['fig_settings'],
                                                     label_x = main.tr('Collocates'))
             else:
-                colligations_stats_files = {', '.join([nodes_text[node], collocate]): freqs
-                                          for (node, collocate), freqs in colligations_stats_files.items()}
+                # Network Graph
+                if settings['fig_settings']['graph_type'] == main.tr('Network Graph'):
+                    colligations_stats_files = {(nodes_text[node], collocate): freqs
+                                                for (node, collocate), freqs in colligations_stats_files.items()}
+                # Line Chart & Word Cloud
+                else:
+                    colligations_stats_files = {', '.join([nodes_text[node], collocate]): freqs
+                                                for (node, collocate), freqs in colligations_stats_files.items()}
 
                 if settings['fig_settings']['use_data'] == text_test_stat:
                     collocates_stat_files = {collocate: numpy.array(stats_files)[:, 0]
