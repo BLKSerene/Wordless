@@ -71,7 +71,10 @@ def wordless_fig_freq(main, tokens_freq_files,
                                        label = file['name'])
 
         matplotlib.pyplot.xlabel(label_x)
-        matplotlib.pyplot.xticks(range(len(tokens)), tokens, rotation = 90)
+        matplotlib.pyplot.xticks(range(len(tokens)),
+                                 labels = tokens,
+                                 fontproperties = main.settings_custom['figs']['line_chart']['font'],
+                                 rotation = 90)
 
         matplotlib.pyplot.grid(True)
         matplotlib.pyplot.legend()
@@ -197,7 +200,10 @@ def wordless_fig_freq_ref(main, tokens_freq_files, ref_file,
                                        label = file['name'])
 
         matplotlib.pyplot.xlabel(label_x)
-        matplotlib.pyplot.xticks(range(len(tokens)), tokens, rotation = 90)
+        matplotlib.pyplot.xticks(range(len(tokens)),
+                                 labels = tokens,
+                                 fontproperties = main.settings_custom['figs']['line_chart']['font'],
+                                 rotation = 90)
 
         matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()
