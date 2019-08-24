@@ -1861,6 +1861,8 @@ class Wordless_Settings(QDialog):
         # Network Graph
         group_box_figs_network_graph = QGroupBox(self.tr('Network Graph'), self)
 
+        self.label_figs_network_graph_layout = QLabel(self.tr('Layout:'), self)
+        self.combo_box_figs_network_graph_layout = wordless_box.Wordless_Combo_Box(self)
         self.label_figs_network_graph_node_font = QLabel(self.tr('Node Font:'), self)
         self.combo_box_figs_network_graph_node_font = wordless_box.Wordless_Combo_Box_Font_Family(self)
         self.label_figs_network_graph_node_font_size = QLabel(self.tr('Node Font Size:'), self)
@@ -1873,18 +1875,30 @@ class Wordless_Settings(QDialog):
         (self.label_figs_network_graph_edge_color_pick,
          self.combo_box_figs_network_graph_color_pick) = wordless_widgets.wordless_widgets_pick_color(self)
 
+        self.combo_box_figs_network_graph_layout.addItems([
+            self.tr('Circular'),
+            self.tr('Kamada-Kawai'),
+            self.tr('Planar'),
+            self.tr('Random'),
+            self.tr('Shell'),
+            self.tr('Spring'),
+            self.tr('Spectral')
+        ])
+
         group_box_figs_network_graph.setLayout(wordless_layout.Wordless_Layout())
-        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_node_font, 0, 0)
-        group_box_figs_network_graph.layout().addWidget(self.combo_box_figs_network_graph_node_font, 0, 1, 1, 2)
-        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_node_font_size, 1, 0)
-        group_box_figs_network_graph.layout().addWidget(self.spin_box_figs_network_graph_node_font_size, 1, 1, 1, 2)
-        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_edge_font, 2, 0)
-        group_box_figs_network_graph.layout().addWidget(self.combo_box_figs_network_graph_edge_font, 2, 1, 1, 2)
-        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_edge_font_size, 3, 0)
-        group_box_figs_network_graph.layout().addWidget(self.spin_box_figs_network_graph_edge_font_size, 3, 1, 1, 2)
-        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_edge_color, 4, 0)
-        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_edge_color_pick, 4, 1)
-        group_box_figs_network_graph.layout().addWidget(self.combo_box_figs_network_graph_color_pick, 4, 2)
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_layout, 0, 0)
+        group_box_figs_network_graph.layout().addWidget(self.combo_box_figs_network_graph_layout, 0, 1, 1, 2)
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_node_font, 1, 0)
+        group_box_figs_network_graph.layout().addWidget(self.combo_box_figs_network_graph_node_font, 1, 1, 1, 2)
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_node_font_size, 2, 0)
+        group_box_figs_network_graph.layout().addWidget(self.spin_box_figs_network_graph_node_font_size, 2, 1, 1, 2)
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_edge_font, 3, 0)
+        group_box_figs_network_graph.layout().addWidget(self.combo_box_figs_network_graph_edge_font, 3, 1, 1, 2)
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_edge_font_size, 4, 0)
+        group_box_figs_network_graph.layout().addWidget(self.spin_box_figs_network_graph_edge_font_size, 4, 1, 1, 2)
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_edge_color, 5, 0)
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_edge_color_pick, 5, 1)
+        group_box_figs_network_graph.layout().addWidget(self.combo_box_figs_network_graph_color_pick, 5, 2)
 
         group_box_figs_network_graph.layout().setColumnStretch(3, 1)
 
@@ -2134,6 +2148,7 @@ class Wordless_Settings(QDialog):
         self.combo_box_figs_word_cloud_font.setCurrentText(settings['figs']['word_cloud']['font'])
         self.label_figs_word_cloud_bg_color_pick.set_color(settings['figs']['word_cloud']['bg_color'])
 
+        self.combo_box_figs_network_graph_layout.setCurrentText(settings['figs']['network_graph']['layout'])
         self.combo_box_figs_network_graph_node_font.setCurrentText(settings['figs']['network_graph']['node_font'])
         self.spin_box_figs_network_graph_node_font_size.setValue(settings['figs']['network_graph']['node_font_size'])
         self.combo_box_figs_network_graph_edge_font.setCurrentText(settings['figs']['network_graph']['edge_font'])
@@ -2347,6 +2362,7 @@ class Wordless_Settings(QDialog):
                 settings['figs']['word_cloud']['font'] = self.combo_box_figs_word_cloud_font.currentText()
                 settings['figs']['word_cloud']['bg_color'] = self.label_figs_word_cloud_bg_color_pick.get_color()
 
+                settings['figs']['network_graph']['layout'] = self.combo_box_figs_network_graph_layout.currentText()
                 settings['figs']['network_graph']['node_font'] = self.combo_box_figs_network_graph_node_font.currentText()
                 settings['figs']['network_graph']['node_font_size'] = self.spin_box_figs_network_graph_node_font_size.value()
                 settings['figs']['network_graph']['edge_font'] = self.combo_box_figs_network_graph_edge_font.currentText()
