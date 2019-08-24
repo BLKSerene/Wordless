@@ -129,15 +129,19 @@ def wordless_fig_freq(main, tokens_freq_files,
         networkx.draw_networkx_edges(graph,
                                      pos = layout,
                                      edgelist = tokens_freq_file,
-                                     edge_color = '#5C88C5',
-                                     width = wordless_misc.normalize_nums(tokens_freq_file.values(), 1, 5))
+                                     edge_color = main.settings_custom['figs']['network_graph']['edge_color'],
+                                     width = wordless_misc.normalize_nums(tokens_freq_file.values(),
+                                                                          normalized_min = 1,
+                                                                          normalized_max = 5))
         networkx.draw_networkx_labels(graph,
                                       pos = layout,
-                                      font_size = 10)
+                                      font_family = main.settings_custom['figs']['network_graph']['node_font'],
+                                      font_size = main.settings_custom['figs']['network_graph']['node_font_size'])
         networkx.draw_networkx_edge_labels(graph,
                                            pos = layout,
                                            edge_labels = tokens_freq_file,
-                                           font_size = 8,
+                                           font_family = main.settings_custom['figs']['network_graph']['edge_font'],
+                                           font_size = main.settings_custom['figs']['network_graph']['edge_font_size'],
                                            label_pos = 0.2)
 
 def wordless_fig_freq_ref(main, tokens_freq_files, ref_file,
