@@ -1574,6 +1574,7 @@ def init_settings_default(main):
             },
 
             'network_graph': {
+                'layout': 'Spring',
                 'node_font': 'Arial',
                 'node_font_size': 10,
                 'edge_font': 'Arial',

@@ -108,7 +108,20 @@ def wordless_fig_stat(main, tokens_stat_files,
         graph = networkx.MultiDiGraph()
         graph.add_edges_from(tokens_stat_file)
 
-        layout = networkx.spring_layout(graph)
+        if main.settings_custom['figs']['network_graph']['layout'] == main.tr('Circular'):
+            layout = networkx.circular_layout(graph)
+        elif main.settings_custom['figs']['network_graph']['layout'] == main.tr('Kamada-Kawai'):
+            layout = networkx.kamada_kawai_layout(graph)
+        elif main.settings_custom['figs']['network_graph']['layout'] == main.tr('Planar'):
+            layout = networkx.planar_layout(graph)
+        elif main.settings_custom['figs']['network_graph']['layout'] == main.tr('Random'):
+            layout = networkx.random_layout(graph)
+        elif main.settings_custom['figs']['network_graph']['layout'] == main.tr('Shell'):
+            layout = networkx.shell_layout(graph)
+        elif main.settings_custom['figs']['network_graph']['layout'] == main.tr('Spring'):
+            layout = networkx.spring_layout(graph)
+        elif main.settings_custom['figs']['network_graph']['layout'] == main.tr('Spectral'):
+            layout = networkx.spectral_layout(graph)
 
         networkx.draw_networkx_nodes(graph,
                                      pos = layout,
