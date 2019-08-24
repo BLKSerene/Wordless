@@ -205,6 +205,12 @@ class Wordless_Spin_Box_Window(Wordless_Spin_Box):
 
             self.setValue(-self.value() + 1)
 
+class Wordless_Spin_Box_Font_Size(Wordless_Spin_Box):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.setRange(8, 72)
+
 # Text Browser
 class Wordless_Text_Browser(QTextBrowser):
     def __init__(self, parent):

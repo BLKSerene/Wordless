@@ -825,7 +825,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">New Features</div>
                         <ul>
-                            <li>Add "Settings → Figures → Word Cloud"</li>
+                            <li>Add "Settings → Figures → Word Cloud / Network Graph"</li>
                             <li>Add extra-stopwords's stop words</li>
                             <li>Add support for network graphs</li>
                             <li>Add support for XML files</li>

@@ -1567,6 +1567,14 @@ def init_settings_default(main):
             'word_cloud': {
                 'font': 'Code2000',
                 'bg_color': '#FFFFFF'
+            },
+
+            'network_graph': {
+                'node_font': 'Arial',
+                'node_font_size': 10,
+                'edge_font': 'Arial',
+                'edge_font_size': 8,
+                'edge_color': '#5C88C5'
             }
         }
     }

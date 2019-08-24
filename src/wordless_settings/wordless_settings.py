@@ -1828,9 +1828,8 @@ class Wordless_Settings(QDialog):
         self.label_figs_word_cloud_font = QLabel(self.tr('Font:'), self)
         self.combo_box_figs_word_cloud_font = wordless_box.Wordless_Combo_Box(self)
         self.label_figs_word_cloud_bg_color = QLabel(self.tr('Background Color:'), self)
-        (self.label_figs_word_cloud_bg_color_pick_color,
-         self.button_figs_word_cloud_bg_color_pick_color) = wordless_widgets.wordless_widgets_pick_color(self,
-                                                                                                         initial_color = self.main.settings_custom['figs']['word_cloud']['bg_color'])
+        (self.label_figs_word_cloud_bg_color_pick,
+         self.button_figs_word_cloud_bg_color_pick) = wordless_widgets.wordless_widgets_pick_color(self)
 
         self.combo_box_figs_word_cloud_font.addItems([
             'DroidSansMono',
@@ -1842,16 +1841,47 @@ class Wordless_Settings(QDialog):
         group_box_figs_word_cloud.layout().addWidget(self.label_figs_word_cloud_font, 0, 0)
         group_box_figs_word_cloud.layout().addWidget(self.combo_box_figs_word_cloud_font, 0, 1, 1, 2)
         group_box_figs_word_cloud.layout().addWidget(self.label_figs_word_cloud_bg_color, 1, 0)
-        group_box_figs_word_cloud.layout().addWidget(self.label_figs_word_cloud_bg_color_pick_color, 1, 1)
-        group_box_figs_word_cloud.layout().addWidget(self.button_figs_word_cloud_bg_color_pick_color, 1, 2)
+        group_box_figs_word_cloud.layout().addWidget(self.label_figs_word_cloud_bg_color_pick, 1, 1)
+        group_box_figs_word_cloud.layout().addWidget(self.button_figs_word_cloud_bg_color_pick, 1, 2)
 
         group_box_figs_word_cloud.layout().setColumnStretch(3, 1)
 
+        # Network Graph
+        group_box_figs_network_graph = QGroupBox(self.tr('Network Graph'), self)
+
+        self.label_figs_network_graph_node_font = QLabel(self.tr('Node Font:'), self)
+        self.combo_box_figs_network_graph_node_font = wordless_box.Wordless_Combo_Box_Font_Family(self)
+        self.label_figs_network_graph_node_font_size = QLabel(self.tr('Node Font Size:'), self)
+        self.spin_box_figs_network_graph_node_font_size = wordless_box.Wordless_Spin_Box_Font_Size(self)
+        self.label_figs_network_graph_edge_font = QLabel(self.tr('Edge Font:'), self)
+        self.combo_box_figs_network_graph_edge_font = wordless_box.Wordless_Combo_Box_Font_Family(self)
+        self.label_figs_network_graph_edge_font_size = QLabel(self.tr('Edge Font Size:'), self)
+        self.spin_box_figs_network_graph_edge_font_size = wordless_box.Wordless_Spin_Box_Font_Size(self)
+        self.label_figs_network_graph_edge_color = QLabel(self.tr('Edge Color:'), self)
+        (self.label_figs_network_graph_edge_color_pick,
+         self.combo_box_figs_network_graph_color_pick) = wordless_widgets.wordless_widgets_pick_color(self)
+
+        group_box_figs_network_graph.setLayout(wordless_layout.Wordless_Layout())
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_node_font, 0, 0)
+        group_box_figs_network_graph.layout().addWidget(self.combo_box_figs_network_graph_node_font, 0, 1, 1, 2)
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_node_font_size, 1, 0)
+        group_box_figs_network_graph.layout().addWidget(self.spin_box_figs_network_graph_node_font_size, 1, 1, 1, 2)
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_edge_font, 2, 0)
+        group_box_figs_network_graph.layout().addWidget(self.combo_box_figs_network_graph_edge_font, 2, 1, 1, 2)
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_edge_font_size, 3, 0)
+        group_box_figs_network_graph.layout().addWidget(self.spin_box_figs_network_graph_edge_font_size, 3, 1, 1, 2)
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_edge_color, 4, 0)
+        group_box_figs_network_graph.layout().addWidget(self.label_figs_network_graph_edge_color_pick, 4, 1)
+        group_box_figs_network_graph.layout().addWidget(self.combo_box_figs_network_graph_color_pick, 4, 2)
+
+        group_box_figs_network_graph.layout().setColumnStretch(3, 1)
+
         self.settings_figs.setLayout(wordless_layout.Wordless_Layout())
         self.settings_figs.layout().addWidget(group_box_figs_word_cloud, 0, 0)
+        self.settings_figs.layout().addWidget(group_box_figs_network_graph, 1, 0)
 
         self.settings_figs.layout().setContentsMargins(6, 4, 6, 4)
-        self.settings_figs.layout().setRowStretch(1, 1)
+        self.settings_figs.layout().setRowStretch(2, 1)
 
     def change_wordcloud_font(self):
         font_dir = os.path.split(wordcloud.wordcloud.FONT_PATH)[0]
@@ -2087,7 +2117,13 @@ class Wordless_Settings(QDialog):
 
         # Figures
         self.combo_box_figs_word_cloud_font.setCurrentText(settings['figs']['word_cloud']['font'])
-        self.label_figs_word_cloud_bg_color_pick_color.set_color(settings['figs']['word_cloud']['bg_color'])
+        self.label_figs_word_cloud_bg_color_pick.set_color(settings['figs']['word_cloud']['bg_color'])
+
+        self.combo_box_figs_network_graph_node_font.setCurrentText(settings['figs']['network_graph']['node_font'])
+        self.spin_box_figs_network_graph_node_font_size.setValue(settings['figs']['network_graph']['node_font_size'])
+        self.combo_box_figs_network_graph_edge_font.setCurrentText(settings['figs']['network_graph']['edge_font'])
+        self.spin_box_figs_network_graph_edge_font_size.setValue(settings['figs']['network_graph']['edge_font_size'])
+        self.label_figs_network_graph_edge_color_pick.set_color(settings['figs']['network_graph']['edge_color'])
 
         # Change wordcloud's default font
         self.change_wordcloud_font()
@@ -2292,7 +2328,13 @@ class Wordless_Settings(QDialog):
 
                 # Figures
                 settings['figs']['word_cloud']['font'] = self.combo_box_figs_word_cloud_font.currentText()
-                settings['figs']['word_cloud']['bg_color'] = self.label_figs_word_cloud_bg_color_pick_color.get_color()
+                settings['figs']['word_cloud']['bg_color'] = self.label_figs_word_cloud_bg_color_pick.get_color()
+
+                settings['figs']['network_graph']['node_font'] = self.combo_box_figs_network_graph_node_font.currentText()
+                settings['figs']['network_graph']['node_font_size'] = self.spin_box_figs_network_graph_node_font_size.value()
+                settings['figs']['network_graph']['edge_font'] = self.combo_box_figs_network_graph_edge_font.currentText()
+                settings['figs']['network_graph']['edge_font_size'] = self.spin_box_figs_network_graph_edge_font_size.value()
+                settings['figs']['network_graph']['edge_color'] = self.label_figs_network_graph_edge_color_pick.get_color()
 
                 # Change wordcloud's default font
                 self.change_wordcloud_font()
