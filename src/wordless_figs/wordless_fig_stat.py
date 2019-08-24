@@ -125,18 +125,20 @@ def wordless_fig_stat(main, tokens_stat_files,
             networkx.draw_networkx_edges(graph,
                                          pos = layout,
                                          edgelist = tokens_stat_file,
-                                         edge_color = '#5C88C5',
+                                         edge_color = main.settings_custom['figs']['network_graph']['edge_color'],
                                          width = wordless_misc.normalize_nums(tokens_stat_file.values(),
                                                                               normalized_min = 1,
                                                                               normalized_max = 5))
         networkx.draw_networkx_labels(graph,
                                       pos = layout,
-                                      font_size = 10)
+                                      font_family = main.settings_custom['figs']['network_graph']['node_font'],
+                                      font_size = main.settings_custom['figs']['network_graph']['node_font_size'])
         networkx.draw_networkx_edge_labels(graph,
                                            pos = layout,
                                            edge_labels = {token: round(stat, 2)
                                                           for token, stat in tokens_stat_file.items()},
-                                           font_size = 8,
+                                           font_family = main.settings_custom['figs']['network_graph']['edge_font'],
+                                           font_size = main.settings_custom['figs']['network_graph']['edge_font_size'],
                                            label_pos = 0.2)
 
 def wordless_fig_stat_ref(main, keywords_stat_files, ref_file,
