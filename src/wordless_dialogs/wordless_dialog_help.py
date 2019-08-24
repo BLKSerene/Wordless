@@ -828,6 +828,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Add "Settings → Figures → Line Chart / Word Cloud / Network Graph"</li>
                             <li>Add extra-stopwords's stop words</li>
                             <li>Add NLTK's Punkt Sentence Tokenizer for Russian</li>
+                            <li>Add NLTK's Slovenian and Tajik stop words</li>
                             <li>Add support for network graphs</li>
                             <li>Add support for XML files</li>
                         </ul>
