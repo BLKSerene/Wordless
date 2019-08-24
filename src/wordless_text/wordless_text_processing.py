@@ -64,11 +64,12 @@ def wordless_sentence_tokenize(main, text, lang,
             'nno': 'norwegian',
             'pol': 'polish',
             'por': 'portuguese',
+            'rus': 'russian',
             'slv': 'slovene',
             'spa': 'spanish',
             'swe': 'swedish',
             'tur': 'turkish',
-            # Other Languages
+            # Other languages
             'other': 'english'
         }
 

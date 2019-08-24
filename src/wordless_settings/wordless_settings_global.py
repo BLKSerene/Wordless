@@ -571,6 +571,7 @@ def init_settings_global(main):
             ],
 
             'rus': [
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
                 main.tr('spaCy - Sentencizer')
             ],
 
