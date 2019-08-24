@@ -92,11 +92,11 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
         settings['citation_sys'] = self.combo_box_citation_sys.currentText()
 
         if settings['citation_sys'] == self.tr('MLA (8th Edition)'):
-            self.text_edit_citing.setHtml('Ye Lei. Wordless, version 1.1.0, 2019, https://github.com/BLKSerene/Wordless.')
+            self.text_edit_citing.setHtml('Ye Lei. <i>Wordless</i>, version 1.2.0, 2019. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
         elif settings['citation_sys'] == self.tr('APA (6th Edition)'):
-            self.text_edit_citing.setHtml('Ye, L. (2019) Wordless (Version 1.1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless')
+            self.text_edit_citing.setHtml('Ye, L. (2019). Wordless (Version 1.2.0) [Computer software]. Retrieved from https://github.com/BLKSerene/Wordless')
         elif settings['citation_sys'] == self.tr('GB (GB/T 7714—2015)'):
-            self.text_edit_citing.setHtml('叶磊. Wordless version 1.1.0[CP]. (2019). https://github.com/BLKSerene/Wordless.')
+            self.text_edit_citing.setHtml('叶磊. Wordless version 1.2.0[CP]. (2019). https://github.com/BLKSerene/Wordless.')
 
     def copy(self):
         self.text_edit_citing.setFocus()

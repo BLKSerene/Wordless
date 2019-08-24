@@ -27,15 +27,15 @@ If you publish work that uses Wordless, please cite as follows.
 
 MLA (8th Edition):
 
-    Ye Lei. Wordless, version 1.1.0, 2019, https://github.com/BLKSerene/Wordless.
+<pre><code>Ye Lei. <i>Wordless</i>, version 1.2.0, 2019. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
 
 APA (6th Edition):
 
-    Ye, L. (2019) Wordless (Version 1.1.0) [Computer Software]. Retrieved from https://github.com/BLKSerene/Wordless
+    Ye, L. (2019). Wordless (Version 1.2.0) [Computer software]. Retrieved from https://github.com/BLKSerene/Wordless
 
 GB (GB/T 7714—2015):
 
-    叶磊. Wordless version 1.1.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
+    叶磊. Wordless version 1.2.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
 
 ## Download
 The latest version of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 and later**, and **Ubuntu 16.04 and later**, all **64-bit only**.
