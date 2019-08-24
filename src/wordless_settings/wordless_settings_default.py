@@ -1561,5 +1561,12 @@ def init_settings_default(main):
                     'smoothing_param': 1.00
                 }
             }
+        },
+
+        'figs': {
+            'word_cloud': {
+                'font': 'Code2000',
+                'bg_color': '#FFFFFF'
+            }
         }
     }

@@ -22,6 +22,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 import nltk
+import wordcloud
 
 from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
 from wordless_tagsets import wordless_tagset_universal
@@ -113,6 +114,8 @@ class Wordless_Settings(QDialog):
         self.tree_settings.topLevelItem(12).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
         self.tree_settings.topLevelItem(12).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
 
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Figures')]))
+
         self.tree_settings.itemSelectionChanged.connect(self.selection_changed)
 
         self.scroll_area_settings = wordless_layout.Wordless_Scroll_Area(self)
@@ -140,6 +143,8 @@ class Wordless_Settings(QDialog):
         self.init_settings_statistical_significance()
         self.init_settings_effect_size()
 
+        self.init_settings_figs()
+
         self.stacked_widget_settings.addWidget(self.settings_general)
         self.stacked_widget_settings.addWidget(self.settings_import)
         self.stacked_widget_settings.addWidget(self.settings_export)
@@ -160,6 +165,8 @@ class Wordless_Settings(QDialog):
         self.stacked_widget_settings.addWidget(self.settings_adjusted_freq)
         self.stacked_widget_settings.addWidget(self.settings_statistical_significance)
         self.stacked_widget_settings.addWidget(self.settings_effect_size)
+
+        self.stacked_widget_settings.addWidget(self.settings_figs)
 
         self.scroll_area_settings.setWidget(self.stacked_widget_settings)
 
@@ -242,6 +249,9 @@ class Wordless_Settings(QDialog):
                     self.stacked_widget_settings.setCurrentIndex(15)
                 elif item_selected_text == self.tr('Effect Size'):
                     self.stacked_widget_settings.setCurrentIndex(16)
+
+                elif item_selected_text == self.tr('Figures'):
+                    self.stacked_widget_settings.setCurrentIndex(17)
 
                 self.tree_settings.item_selected_old = item_selected
 
@@ -1808,6 +1818,51 @@ class Wordless_Settings(QDialog):
         self.settings_effect_size.layout().setContentsMargins(6, 4, 6, 4)
         self.settings_effect_size.layout().setRowStretch(1, 1)
 
+    # Figures
+    def init_settings_figs(self):
+        self.settings_figs = QWidget(self)
+
+        # Word Cloud
+        group_box_figs_word_cloud = QGroupBox(self.tr('Word Cloud'), self)
+
+        self.label_figs_word_cloud_font = QLabel(self.tr('Font:'), self)
+        self.combo_box_figs_word_cloud_font = wordless_box.Wordless_Combo_Box(self)
+        self.label_figs_word_cloud_bg_color = QLabel(self.tr('Background Color:'), self)
+        (self.label_figs_word_cloud_bg_color_pick_color,
+         self.button_figs_word_cloud_bg_color_pick_color) = wordless_widgets.wordless_widgets_pick_color(self,
+                                                                                                         initial_color = self.main.settings_custom['figs']['word_cloud']['bg_color'])
+
+        self.combo_box_figs_word_cloud_font.addItems([
+            'DroidSansMono',
+            'Code2000',
+            'Unifont'
+        ])
+
+        group_box_figs_word_cloud.setLayout(wordless_layout.Wordless_Layout())
+        group_box_figs_word_cloud.layout().addWidget(self.label_figs_word_cloud_font, 0, 0)
+        group_box_figs_word_cloud.layout().addWidget(self.combo_box_figs_word_cloud_font, 0, 1, 1, 2)
+        group_box_figs_word_cloud.layout().addWidget(self.label_figs_word_cloud_bg_color, 1, 0)
+        group_box_figs_word_cloud.layout().addWidget(self.label_figs_word_cloud_bg_color_pick_color, 1, 1)
+        group_box_figs_word_cloud.layout().addWidget(self.button_figs_word_cloud_bg_color_pick_color, 1, 2)
+
+        group_box_figs_word_cloud.layout().setColumnStretch(3, 1)
+
+        self.settings_figs.setLayout(wordless_layout.Wordless_Layout())
+        self.settings_figs.layout().addWidget(group_box_figs_word_cloud, 0, 0)
+
+        self.settings_figs.layout().setContentsMargins(6, 4, 6, 4)
+        self.settings_figs.layout().setRowStretch(1, 1)
+
+    def change_wordcloud_font(self):
+        font_dir = os.path.split(wordcloud.wordcloud.FONT_PATH)[0]
+
+        if self.main.settings_custom['figs']['word_cloud']['font'] == 'DroidSansMono':
+            wordcloud.wordcloud.FONT_PATH = os.path.join(font_dir, 'DroidSansMono.ttf')
+        elif self.main.settings_custom['figs']['word_cloud']['font'] == 'Code2000':
+            wordcloud.wordcloud.FONT_PATH = os.path.join(font_dir, 'Code2000.ttf')
+        elif self.main.settings_custom['figs']['word_cloud']['font'] == 'Unifont':
+            wordcloud.wordcloud.FONT_PATH = os.path.join(font_dir, 'unifont-12.1.03.ttf')
+
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.main.settings_default)
@@ -2030,6 +2085,13 @@ class Wordless_Settings(QDialog):
         # Measures -> Effect Size
         self.spin_box_kilgarriffs_ratio_smoothing_param.setValue(settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param'])
 
+        # Figures
+        self.combo_box_figs_word_cloud_font.setCurrentText(settings['figs']['word_cloud']['font'])
+        self.label_figs_word_cloud_bg_color_pick_color.set_color(settings['figs']['word_cloud']['bg_color'])
+
+        # Change wordcloud's default font
+        self.change_wordcloud_font()
+
     def settings_validate(self):
         def validate_path(line_edit):
             if not os.path.exists(line_edit.text()):
@@ -2227,6 +2289,13 @@ class Wordless_Settings(QDialog):
 
                 # Measures -> Effect Size
                 settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param'] = self.spin_box_kilgarriffs_ratio_smoothing_param.value()
+
+                # Figures
+                settings['figs']['word_cloud']['font'] = self.combo_box_figs_word_cloud_font.currentText()
+                settings['figs']['word_cloud']['bg_color'] = self.label_figs_word_cloud_bg_color_pick_color.get_color()
+
+                # Change wordcloud's default font
+                self.change_wordcloud_font()
 
                 self.wordless_settings_changed.emit()
 
