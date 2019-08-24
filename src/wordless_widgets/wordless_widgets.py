@@ -780,7 +780,7 @@ def wordless_widgets_direction_2(parent):
     return label_direction, combo_box_direction
 
 # Settings -> Figures
-def wordless_widgets_pick_color(parent, initial_color):
+def wordless_widgets_pick_color(parent):
     def get_color():
         return re.search(r'#[0-9a-zA-Z]{6}', label_pick_color.text()).group()
 
@@ -800,7 +800,5 @@ def wordless_widgets_pick_color(parent, initial_color):
     label_pick_color.set_color = set_color
 
     button_pick_color.clicked.connect(pick_color)
-
-    label_pick_color.set_color(initial_color)
 
     return label_pick_color, button_pick_color
