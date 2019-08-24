@@ -9,6 +9,8 @@
 # All other rights reserved.
 #
 
+import re
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -776,3 +778,29 @@ def wordless_widgets_direction_2(parent):
                                   parent.tr('One-tailed')])
 
     return label_direction, combo_box_direction
+
+# Settings -> Figures
+def wordless_widgets_pick_color(parent, initial_color):
+    def get_color():
+        return re.search(r'#[0-9a-zA-Z]{6}', label_pick_color.text()).group()
+
+    def set_color(color):
+        label_pick_color.setText(f'<span style="margin-right: 3px; background-color: {color}; color: {color}">00</span> <span>{color.upper()}</span>')
+
+    def pick_color():
+        color_picked = QColorDialog.getColor(QColor(get_color()), parent, parent.tr('Pick Color'))
+
+        if color_picked.isValid():
+            label_pick_color.set_color(color_picked.name())
+
+    label_pick_color = wordless_label.Wordless_Label_Html('', parent)
+    button_pick_color = QPushButton(parent.tr('Pick Color...'), parent)
+
+    label_pick_color.get_color = get_color
+    label_pick_color.set_color = set_color
+
+    button_pick_color.clicked.connect(pick_color)
+
+    label_pick_color.set_color(initial_color)
+
+    return label_pick_color, button_pick_color
