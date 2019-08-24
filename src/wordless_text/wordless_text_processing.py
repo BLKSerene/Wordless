@@ -851,8 +851,10 @@ def wordless_get_stop_words(main, lang,
             'por': 'portuguese',
             'ron': 'romanian',
             'rus': 'russian',
+            'slv': 'slovene',
             'spa': 'spanish',
             'swe': 'swedish',
+            'tgk': 'tajik',
             'tur': 'turkish'
         }
 
