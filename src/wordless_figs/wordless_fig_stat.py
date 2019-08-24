@@ -49,7 +49,10 @@ def wordless_fig_stat(main, tokens_stat_files,
                                    label = file['name'])
 
         matplotlib.pyplot.xlabel(label_x)
-        matplotlib.pyplot.xticks(range(len(tokens)), tokens, rotation = 90)
+        matplotlib.pyplot.xticks(range(len(tokens)),
+                                 labels = tokens,
+                                 fontproperties = main.settings_custom['figs']['line_chart']['font'],
+                                 rotation = 90)
 
         matplotlib.pyplot.ylabel(label_y)
 
@@ -173,7 +176,10 @@ def wordless_fig_stat_ref(main, keywords_stat_files, ref_file,
         matplotlib.pyplot.xlabel(main.tr('Keywords'))
 
         matplotlib.pyplot.ylabel(label_y)
-        matplotlib.pyplot.xticks(range(len(keywords)), keywords, rotation = 90)
+        matplotlib.pyplot.xticks(range(len(keywords)),
+                                 labels = keywords,
+                                 fontproperties = main.settings_custom['figs']['line_chart']['font'],
+                                 rotation = 90)
 
         matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()

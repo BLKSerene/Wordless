@@ -1564,6 +1564,10 @@ def init_settings_default(main):
         },
 
         'figs': {
+            'line_chart': {
+                'font': 'Arial'
+            },
+
             'word_cloud': {
                 'font': 'Code2000',
                 'bg_color': '#FFFFFF'
