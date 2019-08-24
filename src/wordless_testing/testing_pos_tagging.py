@@ -18,8 +18,8 @@ from wordless_testing import testing_init
 from wordless_text import wordless_text_processing
 from wordless_utils import wordless_conversion
 
-SENTENCE_ZHO_CN = '汉语，又称中文、华文、唐话[2]，或被视为汉藏语系汉语族下之语言，或被视为语族。'
-SENTENCE_ZHO_TW = '漢語，又稱中文、華文、唐話[2]，或被視為漢藏語系漢語族下之語言，或被視為語族。'
+SENTENCE_ZHO_CN = '汉语，又称汉文、中文、中国话、中国语、华语、华文、唐话[2]，或被视为一个语族，或被视为隶属于汉藏语系汉语族之一种语言。'
+SENTENCE_ZHO_TW = '漢語，又稱漢文、中文、中國話、中國語、華語、華文、唐話[2]，或被視為一個語族，或被視為隸屬於漢藏語系漢語族之一種語言。'
 SENTENCE_NLD = 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
 SENTENCE_ENG = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.[4][5]'
 SENTENCE_FRA = 'Le français est une langue indo-européenne de la famille des langues romanes.'
