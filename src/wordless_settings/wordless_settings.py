@@ -1822,6 +1822,18 @@ class Wordless_Settings(QDialog):
     def init_settings_figs(self):
         self.settings_figs = QWidget(self)
 
+        # Line Chart
+        group_box_figs_line_chart = QGroupBox(self.tr('Line Chart'), self)
+
+        self.label_figs_line_chart_font = QLabel(self.tr('Font:'), self)
+        self.combo_box_figs_line_chart_font = wordless_box.Wordless_Combo_Box_Font_Family(self)
+
+        group_box_figs_line_chart.setLayout(wordless_layout.Wordless_Layout())
+        group_box_figs_line_chart.layout().addWidget(self.label_figs_line_chart_font, 0, 0)
+        group_box_figs_line_chart.layout().addWidget(self.combo_box_figs_line_chart_font, 0, 1)
+
+        group_box_figs_line_chart.layout().setColumnStretch(2, 1)
+
         # Word Cloud
         group_box_figs_word_cloud = QGroupBox(self.tr('Word Cloud'), self)
 
@@ -1877,11 +1889,12 @@ class Wordless_Settings(QDialog):
         group_box_figs_network_graph.layout().setColumnStretch(3, 1)
 
         self.settings_figs.setLayout(wordless_layout.Wordless_Layout())
-        self.settings_figs.layout().addWidget(group_box_figs_word_cloud, 0, 0)
-        self.settings_figs.layout().addWidget(group_box_figs_network_graph, 1, 0)
+        self.settings_figs.layout().addWidget(group_box_figs_line_chart, 0, 0)
+        self.settings_figs.layout().addWidget(group_box_figs_word_cloud, 1, 0)
+        self.settings_figs.layout().addWidget(group_box_figs_network_graph, 2, 0)
 
         self.settings_figs.layout().setContentsMargins(6, 4, 6, 4)
-        self.settings_figs.layout().setRowStretch(2, 1)
+        self.settings_figs.layout().setRowStretch(3, 1)
 
     def change_wordcloud_font(self):
         font_dir = os.path.split(wordcloud.wordcloud.FONT_PATH)[0]
@@ -2116,6 +2129,8 @@ class Wordless_Settings(QDialog):
         self.spin_box_kilgarriffs_ratio_smoothing_param.setValue(settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param'])
 
         # Figures
+        self.combo_box_figs_line_chart_font.setCurrentText(settings['figs']['line_chart']['font'])
+
         self.combo_box_figs_word_cloud_font.setCurrentText(settings['figs']['word_cloud']['font'])
         self.label_figs_word_cloud_bg_color_pick.set_color(settings['figs']['word_cloud']['bg_color'])
 
@@ -2327,6 +2342,8 @@ class Wordless_Settings(QDialog):
                 settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param'] = self.spin_box_kilgarriffs_ratio_smoothing_param.value()
 
                 # Figures
+                settings['figs']['line_chart']['font'] = self.combo_box_figs_line_chart_font.currentText()
+
                 settings['figs']['word_cloud']['font'] = self.combo_box_figs_word_cloud_font.currentText()
                 settings['figs']['word_cloud']['bg_color'] = self.label_figs_word_cloud_bg_color_pick.get_color()
 
