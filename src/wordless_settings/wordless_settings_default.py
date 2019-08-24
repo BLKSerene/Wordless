@@ -1073,7 +1073,7 @@ def init_settings_default(main):
                 'pol': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'por': main.tr('spaCy - Sentencizer'),
                 'ron': main.tr('spaCy - Sentencizer'),
-                'rus': main.tr('spaCy - Sentencizer'),
+                'rus': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'sin': main.tr('spaCy - Sentencizer'),
                 'slk': main.tr('spaCy - Sentencizer'),
                 'slv': main.tr('NLTK - Punkt Sentence Tokenizer'),

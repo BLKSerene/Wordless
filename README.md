@@ -534,7 +534,7 @@ Persian              |⭕️ |✔️|⭕️ |✖️|✔️|✔️
 Polish               |✔|✔️|✔️|✖️|✖️|✔️
 Portuguese           |✔|✔️|✔️|✔️|✔️|✔️
 Romanian             |⭕️ |✔️|✔️|✖️|✔️|✔️
-Russian              |⭕️ |✔️|✔️|✔️|✔️|✔️
+Russian              |✔️|✔️|✔️|✔️|✔️|✔️
 Scottish Gaelic      |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
 Serbian (Cyrillic)   |✔️|⭕️ |⭕️ |✖️|✖️|✔️
 Serbian (Latin)      |✔️|⭕️ |⭕️ |✖️|✖️|✔️
