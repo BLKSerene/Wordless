@@ -1809,6 +1809,7 @@ def init_settings_global(main):
 
             'slv': [
                 main.tr('extra-stopwords - Slovenian Stop Words'),
+                main.tr('NLTK - Slovenian Stop Words'),
                 main.tr('Stopwords ISO - Slovenian Stop Words'),
                 main.tr('Custom List')
             ],
@@ -1849,6 +1850,11 @@ def init_settings_global(main):
                 main.tr('extra-stopwords - Tagalog Stop Words'),
                 main.tr('spaCy - Tagalog Stop Words'),
                 main.tr('Stopwords ISO - Tagalog Stop Words'),
+                main.tr('Custom List')
+            ],
+
+            'tgk': [
+                main.tr('NLTK - Tajik Stop Words'),
                 main.tr('Custom List')
             ],
 
