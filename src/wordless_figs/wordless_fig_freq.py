@@ -84,7 +84,7 @@ def wordless_fig_freq(main, tokens_freq_files,
 
         word_cloud = wordcloud.WordCloud(width = QDesktopWidget().width(),
                                          height = QDesktopWidget().height(),
-                                         background_color = 'white',
+                                         background_color = main.settings_custom['figs']['word_cloud']['bg_color'],
                                          max_words = max_words)
 
         for i, file in enumerate(files):
@@ -208,7 +208,7 @@ def wordless_fig_freq_ref(main, tokens_freq_files, ref_file,
 
         word_cloud = wordcloud.WordCloud(width = QDesktopWidget().width(),
                                          height = QDesktopWidget().height(),
-                                         background_color = 'white',
+                                         background_color = main.settings_custom['figs']['word_cloud']['bg_color'],
                                          max_words = max_words)
 
         for i, file in enumerate(files):

@@ -64,7 +64,7 @@ def wordless_fig_stat(main, tokens_stat_files,
 
         word_cloud = wordcloud.WordCloud(width = QDesktopWidget().width(),
                                          height = QDesktopWidget().height(),
-                                         background_color = 'white',
+                                         background_color = main.settings_custom['figs']['word_cloud']['bg_color'],
                                          max_words = max_words)
 
         for i, file in enumerate(files):
@@ -183,7 +183,7 @@ def wordless_fig_stat_ref(main, keywords_stat_files, ref_file,
 
         word_cloud = wordcloud.WordCloud(width = QDesktopWidget().width(),
                                          height = QDesktopWidget().height(),
-                                         background_color = 'white',
+                                         background_color = main.settings_custom['figs']['word_cloud']['bg_color'],
                                          max_words = max_words)
 
         for i, file in enumerate(files):
