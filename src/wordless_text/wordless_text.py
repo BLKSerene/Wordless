@@ -33,8 +33,9 @@ class Wordless_Text():
         self.lang = file['lang']
         self.text_type = file['text_type']
 
-        self.para_offsets = []
-        self.sentence_offsets = []
+        self.offsets_paras = []
+        self.offsets_sentences = []
+        self.offsets_clauses = []
         self.tokens_sentences_paras = []
         self.tokens = []
 
@@ -352,15 +353,26 @@ class Wordless_Text():
 
                                     break
 
-        # Record paragraph and sentence offsets
-        for tokens_sentences in self.tokens_sentences_paras:
-            self.para_offsets.append(len(self.tokens))
+        # Paragraph and sentence offsets
+        for para in self.tokens_sentences_paras:
+            self.offsets_paras.append(len(self.tokens))
 
-            for tokens in tokens_sentences:
-                self.sentence_offsets.append(len(self.tokens))
+            for sentence in para:
+                self.offsets_sentences.append(len(self.tokens))
 
-                self.tokens.extend(tokens)
+                self.tokens.extend(sentence)
 
+        # Clause offsets
+        self.offsets_clauses.append(0)
+
+        for para in self.tokens_sentences_paras:
+            for sentence in para:
+                for clause in wordless_text_processing.wordless_clause_tokenize(main, sentence, self.lang):
+                    self.offsets_clauses.append(self.offsets_clauses[-1] + len(clause))
+
+        self.offsets_clauses.pop()
+
+        # Tags
         if self.text_type[1] == 'tagged_pos':
             self.tags_non_pos = [[] for i in range(len(self.tokens))]
             self.tags_all = copy.deepcopy(self.tags_pos)
