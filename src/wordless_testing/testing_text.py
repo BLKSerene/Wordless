@@ -46,11 +46,14 @@ def testing_text(title, file, tokens_only = True):
     print(f'All Tags ({len(text.tags_all)}):')
     print(f'\t{text.tags_all}')
 
-    print(f'Paragraph Offsets ({len(text.para_offsets)}):')
-    print(f'\t{text.para_offsets}')
+    print(f'Paragraph Offsets ({len(text.offsets_paras)}):')
+    print(f'\t{text.offsets_paras}')
 
-    print(f'Sentence Offsets ({len(text.sentence_offsets)}):')
-    print(f'\t{text.sentence_offsets}')
+    print(f'Sentence Offsets ({len(text.offsets_sentences)}):')
+    print(f'\t{text.offsets_sentences}')
+
+    print(f'Clause Offsets ({len(text.offsets_clauses)}):')
+    print(f'\t{text.offsets_clauses}')
 
 main = testing_init.Testing_Main()
 

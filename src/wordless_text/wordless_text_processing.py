@@ -28,7 +28,7 @@ import sacremoses
 import spacy
 import underthesea
 
-from wordless_checking import wordless_checking_unicode
+from wordless_checking import wordless_checking_token, wordless_checking_unicode
 from wordless_text import wordless_matching, wordless_text, wordless_text_utils
 from wordless_utils import wordless_conversion, wordless_misc
 
@@ -113,6 +113,62 @@ def wordless_sentence_tokenize(main, text, lang,
 
     return sentences
 
+def wordless_clause_tokenize(main, text, lang):
+    clauses = []
+
+    PUNCS_CLAUSE = [
+        # Question and exclamation marks
+        '?', '!', '？', '！',
+        # Commas, colons, semi-colons
+        ',', ':', ';',
+        # Quotes
+        '"', '”',
+        # Em dashes
+        '—', '—'
+    ]
+
+    # Running text
+    if type(text) == str:
+        for sentence in wordless_sentence_tokenize(main, text, lang):
+            clause_start = 0
+            len_sentence = len(sentence)
+
+            for i, char in enumerate(sentence):
+                if i >= clause_start:
+                    if i == len_sentence - 1:
+                        clauses.append(sentence[clause_start:])
+                    else:
+                        if char in PUNCS_CLAUSE:
+                            for j, char in enumerate(sentence[i + 1:]):
+                                if char not in PUNCS_CLAUSE:
+                                    clauses.append(sentence[clause_start : i + j + 1])
+
+                                    clause_start = i + j + 1
+
+                                    break
+    # Tokens
+    elif type(text) in [list, tuple, dict]:
+        clause_start = 0
+        len_text = len(text)
+
+        for i, token in enumerate(text):
+            if i >= clause_start:
+                if i == len_text - 1:
+                    clauses.append(text[clause_start:])
+                else:
+                    if token[-1] in PUNCS_CLAUSE:
+                        for j, token in enumerate(text[i + 1:]):
+                            if token[-1] not in PUNCS_CLAUSE:
+                                clauses.append(text[clause_start : i + j + 1])
+
+                                clause_start = i + j + 1
+
+                                break
+    else:
+        raise Exception('Input for clause tokenization must be a string of text or a list of tokens!')
+
+    return clauses
+
 def wordless_word_tokenize(main, text, lang,
                            word_tokenizer = 'default',
                            keep_sentences = False):
@@ -124,9 +180,14 @@ def wordless_word_tokenize(main, text, lang,
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
-    wordless_text_utils.check_word_tokenizers(main,
-                                              lang = lang,
-                                              word_tokenizer = word_tokenizer)
+    if keep_sentences:
+        wordless_text_utils.check_tokenizers(main,
+                                             lang = lang,
+                                             word_tokenizer = word_tokenizer)
+    else:
+        wordless_text_utils.check_word_tokenizers(main,
+                                                  lang = lang,
+                                                  word_tokenizer = word_tokenizer)
 
     if 'NLTK' in word_tokenizer:
         sentences = wordless_sentence_tokenize(main, text, lang)

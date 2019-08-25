@@ -825,10 +825,11 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">New Features</div>
                         <ul>
-                            <li>Add "Settings → Figures → Line Chart / Word Cloud / Network Graph"</li>
+                            <li>Add "Count of Clauses / Clause Length / Paragraph/Sentence/Token Length (Standard Deviation)" to "Overview"</li>
                             <li>Add extra-stopwords's stop words</li>
                             <li>Add NLTK's Punkt Sentence Tokenizer for Russian</li>
                             <li>Add NLTK's Slovenian and Tajik stop words</li>
+                            <li>Add "Settings → Figures → Line Chart / Word Cloud / Network Graph"</li>
                             <li>Add support for network graphs</li>
                             <li>Add support for XML files</li>
                         </ul>
