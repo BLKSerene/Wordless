@@ -41,17 +41,20 @@ class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Sort_Search
                              parent.tr('Node'),
                              parent.tr('Right'),
                              parent.tr('Token No.'),
+                             parent.tr('Clause No.'),
                              parent.tr('Sentence No.'),
                              parent.tr('Paragraph No.'),
                              parent.tr('File')
                          ],
                          headers_num = [
                              parent.tr('Token No.'),
+                             parent.tr('Clause No.'),
                              parent.tr('Sentence No.'),
                              parent.tr('Paragraph No.')
                          ],
                          headers_pct = [
                              parent.tr('Token No.'),
+                             parent.tr('Clause No.'),
                              parent.tr('Sentence No.'),
                              parent.tr('Paragraph No.')
                          ])
@@ -475,6 +478,7 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
 
             len_paras = len(text.offsets_paras)
             len_sentences = len(text.offsets_sentences)
+            len_clauses = len(text.offsets_clauses)
             len_tokens = len(text.tokens)
 
             search_terms = wordless_matching.match_search_terms(self.main, tokens,
@@ -632,29 +636,41 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                         # Token
                         concordance_line.append([i + 1, len_tokens])
 
+                        # Clause
+                        if text.offsets_clauses[-1] <= i:
+                            no_clause = len_clauses
+                        else:
+                            for j, i_clause in enumerate(text.offsets_clauses):
+                                if i_clause > i:
+                                    no_clause = j
+
+                                    break
+
+                        concordance_line.append([no_clause, len_clauses])
+
                         # Sentence
                         if text.offsets_sentences[-1] <= i:
-                            sentence_no = len_sentences
+                            no_sentence = len_sentences
                         else:
                             for j, i_sentence in enumerate(text.offsets_sentences):
                                 if i_sentence > i:
-                                    sentence_no = j
+                                    no_sentence = j
 
                                     break
 
-                        concordance_line.append([sentence_no, len_sentences])
+                        concordance_line.append([no_sentence, len_sentences])
 
                         # Paragraph
                         if text.offsets_paras[-1] <= i:
-                            para_no = len_paras
+                            no_para = len_paras
                         else:
                             for j, i_para in enumerate(text.offsets_paras):
                                 if i_para > i:
-                                    para_no = j
+                                    no_para = j
 
                                     break
 
-                        concordance_line.append([para_no, len_paras])
+                        concordance_line.append([no_para, len_paras])
 
                         # File
                         concordance_line.append(file['name'])
@@ -823,10 +839,11 @@ def generate_table(main, table):
                 node_text, node_text_raw, node_text_search = concordance_line[1]
                 right_text, right_text_raw, right_text_search = concordance_line[2]
 
-                token_no, len_tokens = concordance_line[3]
-                sentence_no, len_sentences = concordance_line[4]
-                para_no, len_paras = concordance_line[5]
-                file_name = concordance_line[6]
+                no_token, len_tokens = concordance_line[3]
+                no_clause, len_clauses = concordance_line[4]
+                no_sentence, len_sentences = concordance_line[5]
+                no_para, len_paras = concordance_line[6]
+                file_name = concordance_line[7]
 
                 table.setRowCount(table.rowCount() + 1)
 
@@ -863,17 +880,17 @@ def generate_table(main, table):
                 table.cellWidget(table.rowCount() - 1, 2).text_raw = right_text_raw
                 table.cellWidget(table.rowCount() - 1, 2).text_search = right_text_search
 
-                # Token
-                table.set_item_num_pct(table.rowCount() - 1, 3, token_no, len_tokens)
-
-                # Sentence
-                table.set_item_num_pct(table.rowCount() - 1, 4, sentence_no, len_sentences)
-
-                # Paragraph
-                table.set_item_num_pct(table.rowCount() - 1, 5, para_no, len_paras)
+                # Token No.
+                table.set_item_num_pct(table.rowCount() - 1, 3, no_token, len_tokens)
+                # Clause No.
+                table.set_item_num_pct(table.rowCount() - 1, 4, no_clause, len_clauses)
+                # Sentence No.
+                table.set_item_num_pct(table.rowCount() - 1, 5, no_sentence, len_sentences)
+                # Paragraph No.
+                table.set_item_num_pct(table.rowCount() - 1, 6, no_para, len_paras)
 
                 # File
-                table.setItem(table.rowCount() - 1, 6, QTableWidgetItem(file_name))
+                table.setItem(table.rowCount() - 1, 7, QTableWidgetItem(file_name))
 
             table.blockSignals(False)
             table.setUpdatesEnabled(True)
