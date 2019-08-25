@@ -1237,13 +1237,15 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
                 node_new.text_search = node_old.text_search.copy()
                 right_new.text_search = right_old.text_search.copy()
 
-                token_no = self.table.item(i, 3).val
-                sentence_no = self.table.item(i, 4).val
-                para_no = self.table.item(i, 5).val
-                file = self.table.item(i, 6).text()
+                no_token = self.table.item(i, 3).val
+                no_clause = self.table.item(i, 4).val
+                no_sentence = self.table.item(i, 5).val
+                no_para = self.table.item(i, 6).val
+                file = self.table.item(i, 7).text()
 
                 results.append([left_new, node_new, right_new,
-                                token_no, sentence_no, para_no, file])
+                                no_token, no_clause, no_sentence, no_para,
+                                file])
 
             for sorting_col, sorting_order in settings['sort_results']['sorting_rules']:
                 if sorting_col == self.tr('File'):
@@ -1262,7 +1264,8 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
             self.table.setUpdatesEnabled(False)
 
             for i, (left, node, right,
-                    token_no, sentence_no, para_no, file) in enumerate(sorted(results, key = key_concordancer)):
+                    no_token, no_clause, no_sentence, no_para,
+                    file) in enumerate(sorted(results, key = key_concordancer)):
                 for file_open in self.table.settings['files']['files_open']:
                     if file_open['selected'] and file_open['name'] == file:
                         lang = file_open['lang']
@@ -1313,10 +1316,11 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
                 self.table.cellWidget(i, 1).text_search = node.text_search
                 self.table.cellWidget(i, 2).text_search = right.text_search
 
-                self.table.item(i, 3).val = token_no
-                self.table.item(i, 4).val = sentence_no
-                self.table.item(i, 5).val = para_no
-                self.table.item(i, 6).setText(file)
+                self.table.item(i, 3).val = no_token
+                self.table.item(i, 4).val = no_clause
+                self.table.item(i, 5).val = no_sentence
+                self.table.item(i, 6).val = no_para
+                self.table.item(i, 7).setText(file)
 
             self.table.show()
             self.table.blockSignals(False)
