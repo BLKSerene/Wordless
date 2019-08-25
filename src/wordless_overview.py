@@ -11,11 +11,14 @@
 
 import collections
 import copy
+import itertools
 import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+
+import numpy
 
 from wordless_checking import wordless_checking_file
 from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
@@ -30,33 +33,52 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
                          headers = [
                              parent.tr('Count of Paragraphs'),
                              parent.tr('Count of Sentences'),
+                             parent.tr('Count of Clauses'),
                              parent.tr('Count of Tokens'),
                              parent.tr('Count of Types'),
                              parent.tr('Count of Characters'),
-                             parent.tr('Type-Token Ratio'),
-                             parent.tr('Type-Token Ratio (Standardized)'),
-                             parent.tr('Average Paragraph Length (in Sentence)'),
-                             parent.tr('Average Paragraph Length (in Token)'),
-                             parent.tr('Average Sentence Length (in Token)'),
-                             parent.tr('Average Token Length (in Character)')
+                             parent.tr('Type-token Ratio'),
+                             parent.tr('Type-token Ratio (Standardized)'),
+                             parent.tr('Paragraph Length in Sentence (Mean)'),
+                             parent.tr('Paragraph Length in Sentence (Standard Deviation)'),
+                             parent.tr('Paragraph Length in Token (Mean)'),
+                             parent.tr('Paragraph Length in Token (Standard Deviation)'),
+                             parent.tr('Sentence Length in Token (Mean)'),
+                             parent.tr('Sentence Length in Token (Standard Deviation)'),
+                             parent.tr('Clause Length in Token (Mean)'),
+                             parent.tr('Clause Length in Token (Standard Deviation)'),
+                             parent.tr('Token Length in Character (Mean)'),
+                             parent.tr('Token Length in Character (Standard Deviation)'),
+                             parent.tr('Type Length in Character (Mean)'),
+                             parent.tr('Type Length in Character (Standard Deviation)')
                          ],
                          header_orientation = 'vertical',
                          headers_num = [
                              parent.tr('Count of Paragraphs'),
                              parent.tr('Count of Sentences'),
+                             parent.tr('Count of Clauses'),
                              parent.tr('Count of Tokens'),
                              parent.tr('Count of Types'),
                              parent.tr('Count of Characters'),
-                             parent.tr('Type-Token Ratio'),
-                             parent.tr('Type-Token Ratio (Standardized)'),
-                             parent.tr('Average Paragraph Length (in Sentence)'),
-                             parent.tr('Average Paragraph Length (in Token)'),
-                             parent.tr('Average Sentence Length (in Token)'),
-                             parent.tr('Average Token Length (in Character)')
+                             parent.tr('Type-token Ratio'),
+                             parent.tr('Type-token Ratio (Standardized)'),
+                             parent.tr('Paragraph Length in Sentence (Mean)'),
+                             parent.tr('Paragraph Length in Sentence (Standard Deviation)'),
+                             parent.tr('Paragraph Length in Token (Mean)'),
+                             parent.tr('Paragraph Length in Token (Standard Deviation)'),
+                             parent.tr('Sentence Length in Token (Mean)'),
+                             parent.tr('Sentence Length in Token (Standard Deviation)'),
+                             parent.tr('Clause Length in Token (Mean)'),
+                             parent.tr('Clause Length in Token (Standard Deviation)'),
+                             parent.tr('Token Length in Character (Mean)'),
+                             parent.tr('Token Length in Character (Standard Deviation)'),
+                             parent.tr('Type Length in Character (Mean)'),
+                             parent.tr('Type Length in Character (Standard Deviation)')
                          ],
                          headers_pct = [
                              parent.tr('Count of Paragraphs'),
                              parent.tr('Count of Sentences'),
+                             parent.tr('Count of Clauses'),
                              parent.tr('Count of Tokens'),
                              parent.tr('Count of Types'),
                              parent.tr('Count of Characters')
@@ -64,6 +86,7 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
                          headers_cumulative = [
                              parent.tr('Count of Paragraphs'),
                              parent.tr('Count of Sentences'),
+                             parent.tr('Count of Clauses'),
                              parent.tr('Count of Tokens'),
                              parent.tr('Count of Characters')
                          ])
@@ -271,13 +294,12 @@ class Wrapper_Overview(wordless_layout.Wordless_Wrapper):
         settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
 class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_Process_Data):
-    processing_finished = pyqtSignal(list, list)
+    processing_finished = pyqtSignal(list)
 
     def __init__(self, main, dialog_progress, data_received):
         super().__init__(main, dialog_progress, data_received)
 
         self.texts_stats_files = []
-        self.texts_len_tokens_files = []
 
     def process_data(self):
         texts = []
@@ -294,9 +316,21 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
 
         if len(files) > 1:
             text_total = wordless_text.Wordless_Text_Blank()
-            text_total.para_offsets = [offset for text in texts for offset in text.para_offsets]
-            text_total.sentence_offsets = [offset for text in texts for offset in text.sentence_offsets]
-            text_total.tokens = [token for text in texts for token in text.tokens]
+            text_total.offsets_paras = [offset
+                                        for text in texts
+                                        for offset in text.offsets_paras]
+            text_total.offsets_sentences = [offset
+                                            for text in texts
+                                            for offset in text.offsets_sentences]
+            text_total.offsets_clauses = [offset
+                                          for text in texts
+                                          for offset in text.offsets_clauses]
+            text_total.tokens_sentences_paras = [para
+                                                 for text in texts
+                                                 for para in text.tokens_sentences_paras]
+            text_total.tokens = [token
+                                 for text in texts
+                                 for token in text.tokens]
 
             texts.append(text_total)
         else:
@@ -309,21 +343,35 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
         for text in texts:
             texts_stats_file = []
 
-            count_paras = len(text.para_offsets)
-            count_sentences = len(text.sentence_offsets)
-            count_tokens = len(text.tokens)
-            count_types = len(set(text.tokens))
+            # Paragraph length
+            len_paras_in_sentence = [len(para) for para in text.tokens_sentences_paras]
+            len_paras_in_token = [sum([len(sentence) for sentence in para])
+                                  for para in text.tokens_sentences_paras]
 
+            # Sentence length
+            len_sentences = [len(sentence)
+                             for para in text.tokens_sentences_paras
+                             for sentence in para]
+
+            # Clause length
+            len_clauses = [text.offsets_clauses[i + 1] - offset
+                           for i, offset in enumerate(text.offsets_clauses[:-1])]
+
+            # Token length
             len_tokens = [len(token) for token in text.tokens]
-            self.texts_len_tokens_files.append(collections.Counter(len_tokens))
+            # Type length
+            len_types = [len(type) for type in set(text.tokens)]
 
-            count_chars = sum(len_tokens)
+            count_tokens = len(len_tokens)
+            count_types = len(len_types)
 
+            # TTR
             if count_tokens == 0:
                 ttr = 0
             else:
                 ttr = count_types / count_tokens
 
+            # STTR
             if count_tokens < base_sttr:
                 sttr = ttr
             else:
@@ -337,11 +385,12 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
 
                 sttr = sum(ttrs) / len(ttrs)
 
-            texts_stats_file.append(count_paras)
-            texts_stats_file.append(count_sentences)
-            texts_stats_file.append(count_tokens)
-            texts_stats_file.append(count_types)
-            texts_stats_file.append(count_chars)
+            texts_stats_file.append(len_paras_in_sentence)
+            texts_stats_file.append(len_paras_in_token)
+            texts_stats_file.append(len_sentences)
+            texts_stats_file.append(len_clauses)
+            texts_stats_file.append(len_tokens)
+            texts_stats_file.append(len_types)
             texts_stats_file.append(ttr)
             texts_stats_file.append(sttr)
 
@@ -355,12 +404,12 @@ class Wordless_Worker_Process_Data_Overview_Table(Wordless_Worker_Process_Data_O
 
         time.sleep(0.1)
 
-        self.processing_finished.emit(self.texts_stats_files, self.texts_len_tokens_files)
+        self.processing_finished.emit(self.texts_stats_files)
 
 @wordless_misc.log_timing
 def generate_table(main, table):
-    def data_received(texts_stats_files, texts_len_tokens_files):
-        if any(texts_len_tokens_files):
+    def data_received(texts_stats_files):
+        if any(itertools.chain.from_iterable(texts_stats_files)):
             table.settings = copy.deepcopy(main.settings_custom)
 
             table.blockSignals(True)
@@ -368,60 +417,119 @@ def generate_table(main, table):
 
             table.clear_table()
 
+            len_tokens_files = []
+
             for i, file in enumerate(files):
                 table.insert_col(table.find_col(main.tr('Total')), file['name'], breakdown = True)
 
             for i, stats in enumerate(texts_stats_files):
-                count_paras = stats[0]
-                count_sentences = stats[1]
-                count_tokens = stats[2]
-                count_types = stats[3]
-                count_chars = stats[4]
-                ttr = stats[5]
-                sttr = stats[6]
+                len_paras_in_sentence = stats[0]
+                len_paras_in_token = stats[1]
+                len_sentences = stats[2]
+                len_clauses = stats[3]
+                len_tokens = stats[4]
+                len_types = stats[5]
+                ttr = stats[6]
+                sttr = stats[7]
 
+                count_paras = len(len_paras_in_token)
+                count_sentences = len(len_sentences)
+                count_clauses = len(len_clauses)
+                count_tokens = len(len_tokens)
+                count_types = len(len_types)
+                count_chars = sum(len_tokens)
+
+                # Count of Paragraphs
                 table.set_item_num_cumulative(0, i, count_paras)
+                # Count of Sentences
                 table.set_item_num_cumulative(1, i, count_sentences)
-                table.set_item_num_cumulative(2, i, count_tokens)
-                table.set_item_num_pct(3, i, count_types)
-                table.set_item_num_cumulative(4, i, count_chars)
-                table.set_item_num_float(5, i, ttr)
-                table.set_item_num_float(6, i, sttr)
+                # Count of Clauses
+                table.set_item_num_cumulative(2, i, count_clauses)
+                # Count of Tokens
+                table.set_item_num_cumulative(3, i, count_tokens)
+                # Count of Types
+                table.set_item_num_pct(4, i, count_types)
+                # Count of Characters
+                table.set_item_num_cumulative(5, i, count_chars)
+                # Type-token Ratio
+                table.set_item_num_float(6, i, ttr)
+                # Type-token Ratio (Standardized)
+                table.set_item_num_float(7, i, sttr)
 
+                # Paragraph Length
                 if count_paras == 0:
-                    table.set_item_num_float(7, i, 0)
                     table.set_item_num_float(8, i, 0)
-                else:
-                    table.set_item_num_float(7, i, count_sentences / count_paras)
-                    table.set_item_num_float(8, i, count_tokens / count_paras)
-
-                if count_sentences == 0:
                     table.set_item_num_float(9, i, 0)
-                else:
-                    table.set_item_num_float(9, i, count_tokens / count_sentences)
-
-                if count_tokens == 0:
                     table.set_item_num_float(10, i, 0)
+                    table.set_item_num_float(11, i, 0)
                 else:
-                    table.set_item_num_float(10, i, count_chars / count_tokens)
+                    table.set_item_num_float(8, i, numpy.mean(len_paras_in_sentence))
+                    table.set_item_num_float(9, i, numpy.std(len_paras_in_sentence))
+                    table.set_item_num_float(10, i, numpy.mean(len_paras_in_token))
+                    table.set_item_num_float(11, i, numpy.std(len_paras_in_token))
+
+                # Sentence Length
+                if count_sentences == 0:
+                    table.set_item_num_float(12, i, 0)
+                    table.set_item_num_float(13, i, 0)
+                else:
+                    table.set_item_num_float(12, i, numpy.mean(len_sentences))
+                    table.set_item_num_float(13, i, numpy.std(len_sentences))
+
+                # Clause Length
+                if count_clauses == 0:
+                    table.set_item_num_float(14, i, 0)
+                    table.set_item_num_float(15, i, 0)
+                else:
+                    table.set_item_num_float(14, i, numpy.mean(len_clauses))
+                    table.set_item_num_float(15, i, numpy.std(len_clauses))
+
+                # Token Length
+                if count_tokens == 0:
+                    table.set_item_num_float(16, i, 0)
+                    table.set_item_num_float(17, i, 0)
+                else:
+                    table.set_item_num_float(16, i, numpy.mean(len_tokens))
+                    table.set_item_num_float(17, i, numpy.std(len_tokens))
+
+                # Type Length
+                if count_types == 0:
+                    table.set_item_num_float(18, i, 0)
+                    table.set_item_num_float(19, i, 0)
+                else:
+                    table.set_item_num_float(18, i, numpy.mean(len_types))
+                    table.set_item_num_float(19, i, numpy.std(len_types))
+
+                len_tokens_files.append(collections.Counter(len_tokens))
 
             # Count of n-length Tokens
-            len_tokens_total = wordless_misc.merge_dicts(texts_len_tokens_files)
+            len_files = len(files)
+            len_tokens_total = wordless_misc.merge_dicts(len_tokens_files)
             len_tokens_max = max(len_tokens_total)
 
+            # Use tags only
             if settings['token_settings']['use_tags']:
                 table.setVerticalHeaderLabels([
                     main.tr('Count of Paragraphs'),
                     main.tr('Count of Sentences'),
+                    main.tr('Count of Clauses'),
                     main.tr('Count of Tags'),
                     main.tr('Count of Tag Types'),
                     main.tr('Count of Characters'),
-                    main.tr('Type-Tag Ratio'),
-                    main.tr('Type-Tag Ratio (Standardized)'),
-                    main.tr('Average Paragraph Length (in Sentence)'),
-                    main.tr('Average Paragraph Length (in Tag)'),
-                    main.tr('Average Sentence Length (in Tag)'),
-                    main.tr('Average Tag Length (in Character)')
+                    main.tr('Type-tag Ratio'),
+                    main.tr('Type-tag Ratio (Standardized)'),
+                    main.tr('Paragraph Length in Sentence (Mean)'),
+                    main.tr('Paragraph Length in Sentence (Standard Deviation)'),
+                    main.tr('Paragraph Length in Tag (Mean)'),
+                    main.tr('Paragraph Length in Tag (Standard Deviation)'),
+                    main.tr('Sentence Length in Tag (Mean)'),
+                    main.tr('Sentence Length in Tag (Standard Deviation)'),
+                    main.tr('Clause Length in Tag (Mean)'),
+                    main.tr('Clause Length in Tag (Standard Deviation)'),
+                    main.tr('Tag Length in Character (Mean)'),
+                    main.tr('Tag Length in Character (Standard Deviation)'),
+                    main.tr('Tag Type Length in Character (Mean)'),
+                    main.tr('Tag Type Length in Character (Standard Deviation)')
                 ])
 
                 for i in range(len_tokens_max):
@@ -434,8 +542,6 @@ def generate_table(main, table):
                     table.insert_row(table.rowCount(),
                                      main.tr(f'Count of {i + 1}-length Tokens'),
                                      num = True, pct = True, cumulative = True)
-
-            len_files = len(files)
 
             for i in range(len_tokens_max):
                 freqs = len_tokens_total.get(i + 1, [0] * (len_files + 1))
