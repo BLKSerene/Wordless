@@ -288,11 +288,13 @@ In addition, you can generate concordance plots for any search term. You can mod
     The context after each search term, which displays 10 tokens right to the **Node** by default. You can change this behavior via **Generation Settings**.
 4. **Token No.**<br>
     The position of the first token of **Node** in each file.
-5. **Sentence No.**<br>
+5. **Clause No.**<br>
+    The position of the clause in which the **Node** is found in each file.
+6. **Sentence No.**<br>
     The position of the sentence in which the **Node** is found in each file.
-6. **Paragraph No.**<br>
+7. **Paragraph No.**<br>
     The position of the paragraph in which the **Node** is found in each file.
-7. **File**<br>
+8. **File**<br>
     The file in which the **Node** is found.
 
 ![Concordance Table](/doc/concordancer/concordancer_table.png)
