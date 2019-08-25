@@ -121,8 +121,6 @@ def wordless_clause_tokenize(main, text, lang):
         '?', '!', '？', '！',
         # Commas, colons, semi-colons
         ',', ':', ';',
-        # Quotes
-        '"', '”',
         # Em dashes
         '—', '—'
     ]
@@ -158,7 +156,7 @@ def wordless_clause_tokenize(main, text, lang):
                 else:
                     if token[-1] in PUNCS_CLAUSE:
                         for j, token in enumerate(text[i + 1:]):
-                            if token[-1] not in PUNCS_CLAUSE:
+                            if token[0] not in PUNCS_CLAUSE:
                                 clauses.append(text[clause_start : i + j + 1])
 
                                 clause_start = i + j + 1

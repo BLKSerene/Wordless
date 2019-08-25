@@ -176,27 +176,39 @@ def wordless_process_tokens_concordancer(text, token_settings):
                   for token in tokens
                   if not wordless_checking_token.is_token_punc(token)]
 
-        text.para_offsets = []
-        text.sentence_offsets = []
+        text.offsets_paras = []
+        text.offsets_sentences = []
+        text.offsets_clauses = []
         text.tokens = []
 
-        for tokens_sentences in text.tokens_sentences_paras:
-            text.para_offsets.append(len(text.tokens))
-            
-            for tokens_sentence in tokens_sentences:
-                # Check if the sentence contains punctuation marks only
-                if not all(map(wordless_checking_token.is_token_punc, tokens_sentence)):
-                    text.sentence_offsets.append(len(text.tokens))
+        clause_start = 0
 
-                    for token in tokens_sentence:
+        for para in text.tokens_sentences_paras:
+            text.offsets_paras.append(len(text.tokens))
+            
+            for sentence in para:
+                # Check if the sentence contains only punctuation marks
+                if not all(map(wordless_checking_token.is_token_punc, sentence)):
+                    text.offsets_sentences.append(len(text.tokens))
+
+                    for token in sentence:
                         if text.tokens:
                             if wordless_checking_token.is_token_punc(token):
-                                text.tokens[-1] = wordless_text_processing.wordless_word_detokenize(main, [text.tokens[-1], token],
-                                                                                                    lang = text.lang)
+                                text.tokens[-1] = wordless_text_processing.wordless_word_detokenize(main, [text.tokens[-1], token], lang = text.lang)
                             else:
                                 text.tokens.append(token)
                         else:
                             text.tokens.append(token)
+
+                    # Clause offset
+                    for clause in wordless_text_processing.wordless_clause_tokenize(main, sentence, lang = text.lang):
+                        # Check if the clause contains only punctuation marks
+                        if not all(map(wordless_checking_token.is_token_punc, clause)):
+                            text.offsets_clauses.append(clause_start)
+
+                            clause_start += len([token
+                                                 for token in clause
+                                                 if not wordless_checking_token.is_token_punc(token)])
 
         # Check if the first token is a punctuation mark
         if wordless_checking_token.is_token_punc(text.tokens[0]):
