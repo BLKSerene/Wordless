@@ -209,38 +209,65 @@ In *Overview*, you can check/compare the language features of different files.
 2. **Count of Sentences**:<br>
     Number of sentences in each file. *Wordless* will automatically apply the built-in sentence tokenizer according to the language of each file in order to calculate the number of sentences in each file. You can change the sentence tokenizer settings via **Menu → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
 
-3. **Count of Tokens**:<br>
+3. **Count of Clauses**:<br>
+    Number of clauses (delimited by commas, colons, semi-colons, question marks, exclamations marks, quotes, em-dashes, etc.) in each file. *Wordless* will automatically apply the built-in clause tokenizer according to the language of each file in order to calculate the number of clauses in each file.
+
+4. **Count of Tokens**:<br>
     Number of tokens in each file. *Wordless* will automatically apply the built-in word tokenizer according to the language of each file in order to calculate the number of tokens in each file. You can change the word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
 
     You can specify what should be counted as a "token" via **Token Settings** in the *Settings Area*
 
-4. **Count of Types**:<br>
+5. **Count of Types**:<br>
     Number of token types in each file.
 
-5. **Count of Characters**:<br>
+6. **Count of Characters**:<br>
     Number of single characters in each file. Spaces, tabs and all other invisible characters are ignored.
 
-6. **Type-Token Ratio**:<br>
+7. **Type-Token Ratio**:<br>
     Number of token types divided by number of tokens.
 
-7. **Type-Token Ratio (Standardized)**:<br>
+8. **Type-Token Ratio (Standardized)**:<br>
     Standardized type-token ratio. Each file will be divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratio will be calculated for each part. The standardized type-token ratio of each file is then averaged out over all sub-sections. You can change the number of tokens in each sub-section via **Generation Settings → Base of standardized type-token ratio**.
 
     The last section will be discarded if the number of tokens in it is smaller than the base of standardized type-token ratio in order to prevent the result from being affected by outliers (extreme values).
 
-8. **Average Paragraph Length (in Sentence)**:<br>
-    Number of sentences divided by number of paragraphs.
+9. **Paragraph Length in Sentence (Mean)**:<br>
+    The average value of paragraph length expressed as the number of sentences.
 
-9. **Average Paragraph Length (in Token)**:<br>
-    Number of Tokens divided by number of paragraphs.
+10. **Paragraph Length in Sentence (Standard Deviation)**:<br>
+    The standard deviation of paragraph length expressed as the number of sentences.
 
-10. **Average Sentence Length (in Token)**:<br>
-    Number of tokens divided by number of sentences.
+11. **Paragraph Length in Token (Mean)**:<br>
+    The average value of paragraph length expressed as number of tokens.
 
-11. **Average Token Length (in Character)**:<br>
-    Number of characters divided by number of tokens.
+12. **Paragraph Length in Token (Standard Deviation)**:<br>
+    The standard deviation of paragraph length expressed as number of tokens.
 
-12. **Count of n-length Tokens**:<br>
+13. **Sentence Length in Token (Mean)**:<br>
+    The average value of sentence length expressed as number of tokens.
+
+14. **Sentence Length in Token (Standard Deviation)**:<br>
+    The standard deviation of sentence length expressed as number of tokens.
+
+15. **Clause Length in Token (Mean)**:<br>
+    The average value of clause length expressed as number of tokens.
+
+16. **Clause Length in Token (Standard Deviation)**:<br>
+    The standard deviation of clause length expressed as number of tokens.
+
+17. **Token Length in Character (Mean)**:<br>
+    The average value of token length expressed as number of characters.
+
+18. **Token Length in Character (Standard Deviation)**:<br>
+    The standard deviation of token length expressed as number of characters.
+
+19. **Type Length in Character (Mean)**:<br>
+    The average value of type length expressed as number of characters.
+
+20. **Type Length in Character (Standard Deviation)**:<br>
+    The standard deviation of type length expressed as number of characters.
+
+21. **Count of n-length Tokens**:<br>
     Number of n-length tokens, where n = 1, 2, 3, etc.
 
 ![Overview Table](/doc/overview/overview_table.png)
