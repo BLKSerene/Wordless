@@ -825,6 +825,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">New Features</div>
                         <ul>
+                            <li>Add "Clause No." to "Concordancer"</li>
                             <li>Add "Count of Clauses / Clause Length / Paragraph/Sentence/Token Length (Standard Deviation)" to "Overview"</li>
                             <li>Add extra-stopwords's stop words</li>
                             <li>Add NLTK's Punkt Sentence Tokenizer for Russian</li>
