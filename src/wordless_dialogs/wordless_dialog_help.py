@@ -271,7 +271,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="http://www.pyinstaller.org/">PyInstaller</a>',
-                '3.5',
+                '4.0.dev0+46286a1f4',
                 'Hartmut Goebel',
                 '<a href="https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt">PyInstaller</a>'
             ],
@@ -867,7 +867,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade NumPy to 1.17.0</li>
                             <li>Upgrade openpyxl to 2.6.3</li>
                             <li>Upgrade pybo to 0.6.7</li>
-                            <li>Upgrade PyInstaller to 3.5</li>
+                            <li>Upgrade PyInstaller to 4.0.dev0+46286a1f4</li>
                             <li>Upgrade PyQt to 5.13.0</li>
                             <li>Upgrade PyThaiNLP to 2.0.7</li>
                             <li>Upgrade Python to 3.7.4</li>
