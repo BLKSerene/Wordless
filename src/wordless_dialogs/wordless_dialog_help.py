@@ -148,7 +148,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/Esukhia/pybo">pybo</a>',
-                '0.6.5',
+                '0.6.7',
                 'Hélios Drupchen Hildt',
                 '<a href="https://github.com/Esukhia/pybo/blob/master/LICENSE">Apache-2.0</a>'
             ],
@@ -866,7 +866,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade NLTK to 3.4.5</li>
                             <li>Upgrade NumPy to 1.17.0</li>
                             <li>Upgrade openpyxl to 2.6.3</li>
-                            <li>Upgrade pybo to 0.6.5</li>
+                            <li>Upgrade pybo to 0.6.7</li>
                             <li>Upgrade PyInstaller to 3.5</li>
                             <li>Upgrade PyQt to 5.13.0</li>
                             <li>Upgrade PyThaiNLP to 2.0.7</li>
