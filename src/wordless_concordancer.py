@@ -727,7 +727,7 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                                         len_context_right_last += 1
 
                                 context_left = ([context_left_first] +
-                                                 text.tokens[i - len(context_left) + 1: i])
+                                                text.tokens[i - len(context_left) + 1: i])
                                 context_right = (text.tokens[i + len_search_term : i + len_search_term + len(context_right) - 1] +
                                                  [context_right_last])
 
@@ -740,7 +740,7 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                         # Left
                         concordance_line.append([context_left_text, context_left, text_search_left])
                         # Node
-                        concordance_line.append([node_text, ngram, text_search])
+                        concordance_line.append([node_text, list(ngram), text_search])
                         # Right
                         concordance_line.append([context_right_text, context_right, text_search_right])
                         # Token No.
