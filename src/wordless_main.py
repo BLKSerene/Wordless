@@ -30,7 +30,7 @@ import matplotlib
 import nltk
 
 matplotlib.use('Qt5Agg')
-# Overwrite path of NLTK data
+# Force NLTK to prefer NLTK data under the Wordless folder
 nltk.data.path.insert(0, os.path.join(os.getcwd(), 'nltk_data'))
 
 from wordless_checking import wordless_checking_misc
