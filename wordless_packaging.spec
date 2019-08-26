@@ -64,12 +64,18 @@ if platform.system() == 'Darwin':
     datas.extend(PyInstaller.utils.hooks.collect_data_files('PIL', include_py_files = True))
 
 hiddenimports = [
+    # numpy
+    'numpy.random.bounded_integers',
+    'numpy.random.common',
+    'numpy.random.entropy',
+
     # pymorphy2
     'pymorphy2_dicts_ru',
     'pymorphy2_dicts_uk',
 
     # spaCy
     'spacy._align',
+    'spacy.kb',
     'spacy.language',
     'spacy.lemmatizer',
     'spacy.lexeme',
