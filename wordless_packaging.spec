@@ -48,21 +48,21 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('underthesea'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('languageflow'))
 # wordcloud
 datas.extend(PyInstaller.utils.hooks.collect_data_files('wordcloud'))
-# Custom Data
+# Custom data files
 datas.extend([
     ('src/imgs', 'imgs'),
     ('src/lemmatization', 'lemmatization'),
-    ('src/stop_words', 'stop_words')
-])
-# Miscellaneous
-datas.extend([
+    ('src/stop_words', 'stop_words'),
+
     ('src/VERSION', '.'),
     ('LICENSE.txt', '.')
 ])
 
+# Data files for macOS
 if platform.system() == 'Darwin':
     datas.extend(PyInstaller.utils.hooks.collect_data_files('PIL', include_py_files = True))
 
+# Hidden imports
 hiddenimports = [
     # numpy
     'numpy.random.bounded_integers',
@@ -112,22 +112,21 @@ hiddenimports = [
     'thinc.neural._aligned_alloc'
 ]
 
+# Runtime hooks
 runtime_hooks = [
     'wordless_hook_pymorphy2.py'
 ]
 
-if platform.system() == 'Windows':
+# Exclusions
+if platform.system() in ['Windows', 'Linux']:
     excludes = []
 elif platform.system() == 'Darwin':
     excludes = [
-        'joblib',
+        'jsonschema',
         'PIL'
     ]
-elif platform.system() == 'Linux':
-    excludes = [
-        'joblib'
-    ]
 
+# Icons
 if platform.system() in ['Windows', 'Linux']:
     icon = 'src/imgs/wordless_icon.ico'
 elif platform.system() == 'Darwin':
@@ -161,6 +160,7 @@ exe = EXE(pyz,
           console = False,
           icon = icon)
 
+# Collect data files
 coll = COLLECT(exe,
                a.binaries,
                a.zipfiles,
@@ -169,6 +169,7 @@ coll = COLLECT(exe,
                upx = True,
                name = 'Wordless')
 
+# Bundle application on macOS
 if platform.system() == 'Darwin':
     app = BUNDLE(exe,
                  name = 'Wordless.app',
