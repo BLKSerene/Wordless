@@ -10,8 +10,6 @@
 #
 
 import copy
-import html
-import platform
 import time
 
 from PyQt5.QtCore import *
@@ -27,7 +25,7 @@ from wordless_checking import wordless_checking_file
 from wordless_dialogs import (wordless_dialog, wordless_dialog_misc, wordless_msg_box)
 from wordless_figs import wordless_fig
 from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
-                           wordless_token_processing)
+                           wordless_text_utils, wordless_token_processing)
 from wordless_utils import wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
                               wordless_msg, wordless_table, wordless_widgets)
@@ -596,7 +594,8 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                         if not settings['token_settings']['puncs']:
                             ngram = text.tokens[i : i + len_search_term]
 
-                        node_text = html.escape(wordless_text_processing.wordless_word_detokenize(self.main, ngram, text.lang))
+                        node_text = wordless_text_processing.wordless_word_detokenize(self.main, ngram, text.lang)
+                        node_text = wordless_text_utils.text_escape(node_text)
 
                         # Width Unit (Sentence)
                         if settings['generation_settings']['width_unit'] == self.tr('Sentence'):
@@ -731,8 +730,8 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                                 context_right = (text.tokens[i + len_search_term : i + len_search_term + len(context_right) - 1] +
                                                  [context_right_last])
 
-                        context_left = [html.escape(token) for token in context_left]
-                        context_right = [html.escape(token) for token in context_right]
+                        context_left = wordless_text_utils.text_escape(context_left)
+                        context_right = wordless_text_utils.text_escape(context_right)
 
                         context_left_text = wordless_text_processing.wordless_word_detokenize(self.main, context_left, text.lang)
                         context_right_text = wordless_text_processing.wordless_word_detokenize(self.main, context_right, text.lang)
