@@ -38,13 +38,13 @@ GB (GB/T 7714—2015):
     叶磊. Wordless version 1.2.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
 
 ## Download
-The latest version of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 and later**, and **Ubuntu 16.04 and later**, all **64-bit only**.
+The latest version (v1.2.0) of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 and later**, and **Ubuntu 16.04 and later**, all **64-bit only**.
 
-[Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/v1.1.0/wordless_v1.1.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
-[Download the latest version for macOS](https://github.com/BLKSerene/Wordless/releases/download/v1.1.0/wordless_v1.1.0_macos.zip) (unzip the file and double-click **Wordless.app** to run)<br>
-[Download the latest version for Linux](https://github.com/BLKSerene/Wordless/releases/download/v1.1.0/wordless_v1.1.0_linux.tar.gz) (unzip the file and double-click **Wordless/Wordless** to run)
+[Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/v1.2.0/wordless_v1.2.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
+[Download the latest version for macOS](https://github.com/BLKSerene/Wordless/releases/download/v1.2.0/wordless_v1.2.0_macos.zip) (unzip the file and double-click **Wordless.app** to run)<br>
+[Download the latest version for Linux](https://github.com/BLKSerene/Wordless/releases/download/v1.2.0/wordless_v1.2.0_linux.tar.gz) (unzip the file and double-click **Wordless/Wordless** to run)
 
-Chinese users with slow connections to Github can [download from Baidu Netdisk](https://pan.baidu.com/s/1h48UA2roCHD9Bp3EzSoexQ) (**password**: k3ny).
+Chinese users with slow connections to Github can [download from Baidu Netdisk](https://pan.baidu.com/s/1Q7S1rTZn3i1gchNQtYtxbA) (**password**: srin).
 
 [Download older versions](https://github.com/BLKSerene/Wordless/releases)
 
