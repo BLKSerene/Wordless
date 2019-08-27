@@ -38,7 +38,7 @@ GB (GB/T 7714—2015):
     叶磊. Wordless version 1.2.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
 
 ## Download
-The latest version (v1.2.0) of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 and later**, and **Ubuntu 16.04 and later**, all **64-bit only**.
+The latest version (**v1.2.0**) of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 and later**, and **Ubuntu 16.04 and later**, all **64-bit only**.
 
 [Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/v1.2.0/wordless_v1.2.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
 [Download the latest version for macOS](https://github.com/BLKSerene/Wordless/releases/download/v1.2.0/wordless_v1.2.0_macos.zip) (unzip the file and double-click **Wordless.app** to run)<br>
