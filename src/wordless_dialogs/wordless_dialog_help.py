@@ -840,6 +840,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Improvements</div>
                         <ul>
+                            <li>Check permission before exporting tables</li>
                             <li>Update pybo's Tibetan tokenizers / POS tagger / lemmatizer</li>
                             <li>Update PyThaiNLP's Thai stop words</li>
                             <li>Update Sacremoses's tokenizers/detokenizers</li>
@@ -850,6 +851,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <div class="changelog-section-header">Bug Fixes</div>
                         <ul>
                             <li>Fix "Collocation" and "Colligation"</li>
+                            <li>Fix export in "Concordancer"</li>
                             <li>Fix NLTK's word tokenizers</li>
                             <li>Fix toggling of checkboxes in "Search Settings" and "Context Settings"</li>
                             <li>Fix "Settings → Stop Words → Preview → Count of Stop Words"</li>
