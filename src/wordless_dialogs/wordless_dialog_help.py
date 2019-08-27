@@ -762,64 +762,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
             {main.settings_global['styles']['style_changelog']}
             <body>
                 <div class="changelog">
-                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.0.0">v1.0.0</a> - 03/17/2019</div>
-                    <hr>
-
-                    <div class="changelog-section">
-                        <ul>
-                            <li>First release</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="changelog">
-                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.1.0">v1.1.0</a> - 03/31/2019</div>
-                    <hr>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">New Features</div>
-                        <ul>
-                            <li>Add "Settings → General → Font Settings"</li>
-                        </ul>
-                    </div>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Improvements</div>
-                        <ul>
-                            <li>Disable mouse wheel event when combo boxes and spin boxes are not focused (<a href="https://github.com/BLKSerene/Wordless/issues/2">#2</a>)</li>
-                            <li>Update hint messages</li>
-                            <li>Update layout</li>
-                            <li>Update spaCy's sentencizer</li>
-                        </ul>
-                    </div>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Bug Fixes</div>
-                        <ul>
-                            <li>Fix "Check for Updates" on startup</li>
-                            <li>Fix "Context Settings"</li>
-                            <li>Fix error message when loading files</li>
-                            <li>Fix "Open Folder"</li>
-                            <li>Fix "Search in Results" in "Concordancer"</li>
-                            <li>Fix "Settings → Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization → Preview"</li>
-                            <li>Fix spaCy's sentence/word tokenizers</li>
-                            <li>Fix Wordless's Chinese/Japanese character tokenizer</li>
-                        </ul>
-                    </div>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Dependency Upgrades</div>
-                        <ul>
-                            <li>Upgrade lxml to 4.3.3</li>
-                            <li>Upgrade PyQt to 5.12.1</li>
-                            <li>Upgrade Sacremoses to 0.0.13</li>
-                            <li>Upgrade spaCy to 2.1.3</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="changelog">
-                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.2.0">v1.2.0</a> - ??/??/2019</div>
+                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.2.0">v1.2.0</a> - 08/27/2019</div>
                     <hr>
 
                     <div class="changelog-section">
@@ -879,6 +822,63 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade SciPy to 1.3.1</li>
                             <li>Upgrade spaCy to 2.1.8</li>
                             <li>Upgrade Underthesea to 1.1.16</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="changelog">
+                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.1.0">v1.1.0</a> - 03/31/2019</div>
+                    <hr>
+
+                    <div class="changelog-section">
+                        <div class="changelog-section-header">New Features</div>
+                        <ul>
+                            <li>Add "Settings → General → Font Settings"</li>
+                        </ul>
+                    </div>
+
+                    <div class="changelog-section">
+                        <div class="changelog-section-header">Improvements</div>
+                        <ul>
+                            <li>Disable mouse wheel event when combo boxes and spin boxes are not focused (<a href="https://github.com/BLKSerene/Wordless/issues/2">#2</a>)</li>
+                            <li>Update hint messages</li>
+                            <li>Update layout</li>
+                            <li>Update spaCy's sentencizer</li>
+                        </ul>
+                    </div>
+
+                    <div class="changelog-section">
+                        <div class="changelog-section-header">Bug Fixes</div>
+                        <ul>
+                            <li>Fix "Check for Updates" on startup</li>
+                            <li>Fix "Context Settings"</li>
+                            <li>Fix error message when loading files</li>
+                            <li>Fix "Open Folder"</li>
+                            <li>Fix "Search in Results" in "Concordancer"</li>
+                            <li>Fix "Settings → Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization → Preview"</li>
+                            <li>Fix spaCy's sentence/word tokenizers</li>
+                            <li>Fix Wordless's Chinese/Japanese character tokenizer</li>
+                        </ul>
+                    </div>
+
+                    <div class="changelog-section">
+                        <div class="changelog-section-header">Dependency Upgrades</div>
+                        <ul>
+                            <li>Upgrade lxml to 4.3.3</li>
+                            <li>Upgrade PyQt to 5.12.1</li>
+                            <li>Upgrade Sacremoses to 0.0.13</li>
+                            <li>Upgrade spaCy to 2.1.3</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="changelog">
+                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.0.0">v1.0.0</a> - 03/17/2019</div>
+                    <hr>
+
+                    <div class="changelog-section">
+                        <ul>
+                            <li>First release</li>
                         </ul>
                     </div>
                 </div>
