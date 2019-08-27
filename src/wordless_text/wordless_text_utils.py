@@ -9,11 +9,13 @@
 # All other rights reserved.
 #
 
+import html
 import re
 
 from wordless_text import wordless_text
 from wordless_utils import wordless_conversion
 
+import bs4
 import pybo
 import spacy
 
@@ -358,6 +360,7 @@ def to_sections_unequal(tokens, section_size):
 
     return sections
 
+# Serbian
 def to_srp_latn(tokens):
     tokens_latn = []
 
@@ -392,3 +395,16 @@ def to_srp_cyrl(tokens):
         tokens_cyrl.append(token_cyrl)
 
     return tokens_cyrl
+
+# HTML
+def text_escape(text):
+    if type(text) == str:
+        return html.escape(text).strip()
+    elif type(text) in [list, tuple, dict]:
+        return [html.escape(token).strip() for token in text]
+    else:
+        raise Exception('The input must be a string or a list of tokens!')
+
+def html_to_text(text):
+    # Remove tags and unescape character entities
+    return bs4.BeautifulSoup(text, features = 'lxml').get_text().strip()
