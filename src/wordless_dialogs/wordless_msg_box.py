@@ -197,24 +197,24 @@ def wordless_msg_box_file_error_on_loading_colligation(main,
 
         msg_box_file_error_on_loading.open()
 
-def wordless_msg_box_detection_failed(main,
-                                      files_detection_failed_encoding,
-                                      files_detection_failed_text_type,
-                                      files_detection_failed_lang):
+def wordless_msg_box_detection_error(main,
+                                     files_detection_error_encoding,
+                                     files_detection_error_text_type,
+                                     files_detection_error_lang):
     msg = ''
 
     msg += wordless_msg_text_file_error(
-        files_detection_failed_encoding,
+        files_detection_error_encoding,
         text_singular = main.tr('Failed to detect the encoding of the following file:'),
         text_plural = main.tr('Failed to detect the encodings of the following files:'))
 
     msg += wordless_msg_text_file_error(
-        files_detection_failed_text_type,
+        files_detection_error_text_type,
         text_singular = main.tr('Failed to detect the text type of the following file:'),
         text_plural = main.tr('Failed to detect the text types of the following files:'))
 
     msg += wordless_msg_text_file_error(
-        files_detection_failed_lang,
+        files_detection_error_lang,
         text_singular = main.tr('Failed to detect the language of the following file:'),
         text_plural = main.tr('Failed to detect the languages of the following files:'))
 
@@ -480,13 +480,24 @@ def wordless_msg_box_export_list(main, file_path):
                             '''),
                             QMessageBox.Ok)
 
-def wordless_msg_box_export_table(main, file_path):
+def wordless_msg_box_export_table_success(main, file_path):
     QMessageBox.information(main,
                             main.tr('Export Completed'),
                             main.tr(f'''
                                 {main.settings_global['styles']['style_dialog']}
                                 <body>
                                     <div>The table has been successfully exported to "{file_path}".</div>
+                                </body>
+                            '''),
+                            QMessageBox.Ok)
+
+def wordless_msg_box_export_table_error(main, file_path):
+    QMessageBox.warning(main,
+                            main.tr('Export Error'),
+                            main.tr(f'''
+                                {main.settings_global['styles']['style_dialog']}
+                                <body>
+                                    <div>Access to "{file_path}" is denied, please specify another location or close the file and try again.</div>
                                 </body>
                             '''),
                             QMessageBox.Ok)

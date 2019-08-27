@@ -48,9 +48,9 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
     def add_files(self):
         new_files = []
 
-        files_detection_failed_encoding = []
-        files_detection_failed_text_type = []
-        files_detection_failed_lang = []
+        files_detection_error_encoding = []
+        files_detection_error_text_type = []
+        files_detection_error_lang = []
 
         if self.file_paths:
             len_file_paths = len(self.file_paths)
@@ -75,13 +75,13 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
                     new_files.append(new_file)
 
                     if not detection_success_encoding:
-                        files_detection_failed_encoding.append(new_file['path'])
+                        files_detection_error_encoding.append(new_file['path'])
 
                     if not detection_success_text_type:
-                        files_detection_failed_text_type.append(new_file['path'])
+                        files_detection_error_text_type.append(new_file['path'])
 
                     if not detection_success_lang:
-                        files_detection_failed_lang.append(new_file['path'])
+                        files_detection_error_lang.append(new_file['path'])
                 else:
                     if file_ext in ['.docx', '.xlsx', '.xls']:
                         new_path = wordless_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
@@ -239,20 +239,20 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
                         new_files.append(new_file)
 
                         if not detection_success_encoding:
-                            files_detection_failed_encoding.append(new_file['path'])
+                            files_detection_error_encoding.append(new_file['path'])
 
                         if not detection_success_text_type:
-                            files_detection_failed_text_type.append(new_file['path'])
+                            files_detection_error_text_type.append(new_file['path'])
 
                         if not detection_success_lang:
-                            files_detection_failed_lang.append(new_file['path'])
+                            files_detection_error_lang.append(new_file['path'])
 
             self.main.settings_custom['import']['files']['default_path'] = wordless_misc.get_abs_path(os.path.dirname(self.file_paths[0]))
 
         self.files_added.emit(new_files,
-                              files_detection_failed_encoding,
-                              files_detection_failed_text_type,
-                              files_detection_failed_lang)
+                              files_detection_error_encoding,
+                              files_detection_error_text_type,
+                              files_detection_error_lang)
 
     # python-docx/Issue #276: https://github.com/python-openxml/python-docx/issues/276
     def iter_block_items(self, parent):
@@ -354,9 +354,9 @@ class Wordless_Files():
     @wordless_misc.log_timing
     def add_files(self, file_paths):
         def data_received(new_files,
-                          files_detection_failed_encoding,
-                          files_detection_failed_text_type,
-                          files_detection_failed_lang):
+                          files_detection_error_encoding,
+                          files_detection_error_text_type,
+                          files_detection_error_lang):
             len_files_old = len(self.main.settings_custom['files']['files_open'])
 
             for new_file in new_files:
@@ -365,10 +365,10 @@ class Wordless_Files():
 
                 self.main.settings_custom['files']['files_open'].append(new_file)
 
-            wordless_msg_box.wordless_msg_box_detection_failed(self.main,
-                                                               files_detection_failed_encoding,
-                                                               files_detection_failed_text_type,
-                                                               files_detection_failed_lang)
+            wordless_msg_box.wordless_msg_box_detection_error(self.main,
+                                                              files_detection_error_encoding,
+                                                              files_detection_error_text_type,
+                                                              files_detection_error_lang)
 
             self.update_table()
 

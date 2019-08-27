@@ -840,6 +840,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Improvements</div>
                         <ul>
+                            <li>Check permission before exporting tables</li>
                             <li>Update pybo's Tibetan tokenizers / POS tagger / lemmatizer</li>
                             <li>Update PyThaiNLP's Thai stop words</li>
                             <li>Update Sacremoses's tokenizers/detokenizers</li>
