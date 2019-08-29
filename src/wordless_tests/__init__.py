@@ -1,5 +1,5 @@
 #
-# Wordless: Testing
+# Wordless: Tests
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
