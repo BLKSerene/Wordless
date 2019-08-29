@@ -18,7 +18,7 @@ nagisa
 nltk
 pybo
 # pymorphy2 and its dictionaries
-https://github.com/kmike/pymorphy2.git
+https://github.com/kmike/pymorphy2/archive/master.zip
 pymorphy2-dicts-ru
 pymorphy2-dicts-uk
 pythainlp
