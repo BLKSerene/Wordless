@@ -20,7 +20,7 @@ import wordless_file_area
 
 from wordless_settings import wordless_settings_default, wordless_settings_global
 
-class Testing_Main(QObject):
+class Test_Main(QObject):
     def __init__(self):
         super().__init__()
 
