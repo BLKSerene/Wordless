@@ -10,21 +10,26 @@
 #
 
 language: python
+cache:
+  pip
 matrix:
   include:
     # Windows
-    - os: windows
+    - name: "Windows"
+      os: windows
       language: shell
       before_install:
         - choco install python
         - python -m pip install --upgrade pip
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
     # macOS
-    - os: osx
+    - name: "macOS"
+      os: osx
       osx_image: xcode11
       language: shell
     # Linux
-    - python: 3.7
+    - name: "Linux"
+      python: 3.7
 install:
   - pip3 install --upgrade pip
   - pip3 install -r requirements.txt
@@ -37,5 +42,7 @@ install:
   - python3 -m spacy download it_core_news_sm || python -m spacy download it_core_news_sm
   - python3 -m spacy download nl_core_news_sm || python -m spacy download nl_core_news_sm
   - python3 -m spacy download el_core_news_sm || python -m spacy download el_core_news_sm
+before_script:
+  python3 download_nltk_data.py || python download_nltk_data.py
 script:
   python3 -m pytest || python -m pytest
