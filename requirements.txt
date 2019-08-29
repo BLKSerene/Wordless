@@ -26,7 +26,6 @@ pymorphy2-dicts-uk
 pythainlp
 sacremoses
 spacy
-
 underthesea
 
 # Plotting
