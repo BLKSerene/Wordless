@@ -1,0 +1,50 @@
+#
+# Wordless: Requirements
+#
+# Copyright (C) 2018-2019  Ye Lei (叶磊)
+#
+# This source file is licensed under GNU GPLv3.
+# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+# All other rights reserved.
+#
+
+# General
+pyqt5
+
+# NLP
+jieba
+nagisa
+nltk
+pybo
+# pymorphy2 and its dictionaries
+https://github.com/kmike/pymorphy2.git
+pymorphy2-dicts-ru
+pymorphy2-dicts-uk
+pythainlp
+sacremoses
+spacy
+
+underthesea
+
+# Plotting
+matplotlib
+networkx
+wordcloud
+
+# Misc
+bs4
+cchardet
+langdetect
+langid
+lxml
+numpy
+openpyxl
+pyinstaller
+python-docx
+requests
+scipy
+xlrd
+
+# Tests
+pytest
