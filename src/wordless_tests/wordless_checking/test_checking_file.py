@@ -10,14 +10,12 @@
 #
 
 import os
-import pytest
 import sys
 
 sys.path.append('.')
 
 from wordless_checking import wordless_checking_file
 from wordless_tests import test_init
-from wordless_utils import wordless_misc
 
 def get_path(file_name):
     return os.path.normpath(f'wordless_tests/files/checking/{file_name}')

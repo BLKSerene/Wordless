@@ -1,5 +1,5 @@
 #
-# Wordless: Testing - Initialization
+# Wordless: Tests - Initialization
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
@@ -17,7 +17,6 @@ from PyQt5.QtCore import *
 sys.path.append('.')
 
 import wordless_file_area
-
 from wordless_settings import wordless_settings_default, wordless_settings_global
 
 class Test_Main(QObject):

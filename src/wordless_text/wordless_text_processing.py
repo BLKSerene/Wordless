@@ -575,7 +575,9 @@ def wordless_word_detokenize(main, tokens, lang,
 
                             break
 
-    return re.sub(r'\s{2,}', ' ', text)
+    text = re.sub(r'\s{2,}', ' ', text)
+
+    return text.strip()
 
 def wordless_pos_tag(main, tokens, lang,
                      pos_tagger = 'default',
@@ -963,6 +965,9 @@ def wordless_get_stop_words(main, lang,
     # Custom Lists
     elif list_stop_words == main.tr('Custom List'):
         stop_words = main.settings_custom['stop_words']['custom_lists'][lang]
+
+    # Remove empty tokens
+    stop_words = [stop_word for stop_word in stop_words if stop_word]
 
     return sorted(set(stop_words))
 
