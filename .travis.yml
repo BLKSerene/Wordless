@@ -1,5 +1,5 @@
 #
-# Wordless: Travis CI
+# Wordless: CI - Travis CI
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
@@ -10,8 +10,11 @@
 #
 
 language: python
+
 sudo: false
+
 cache: pip
+
 matrix:
   include:
     # Windows
@@ -30,6 +33,7 @@ matrix:
     # Linux
     - name: "Linux"
       python: 3.7
+
 install:
   - pip3 install --upgrade pip
   - pip3 install -r requirements.txt
@@ -43,7 +47,9 @@ install:
   - python3 -m spacy download nl_core_news_sm || python -m spacy download nl_core_news_sm
   - python3 -m spacy download el_core_news_sm || python -m spacy download el_core_news_sm
   - python3 download_nltk_data.py || python download_nltk_data.py
+
 before_script:
   - cd src
+
 script:
   - python3 -m pytest || python -m pytest

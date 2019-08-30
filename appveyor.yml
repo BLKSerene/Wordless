@@ -1,5 +1,5 @@
 #
-# Wordless: AppVeyor CI
+# Wordless: CI - AppVeyor
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
@@ -54,5 +54,4 @@ before_test:
   - cd src
 
 test_script:
-  - cmd: python -m pytest
-  - sh: python -m pytest
+  - python -m pytest
