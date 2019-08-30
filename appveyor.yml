@@ -1,0 +1,58 @@
+#
+# Wordless: AppVeyor CI
+#
+# Copyright (C) 2018-2019  Ye Lei (叶磊)
+#
+# This source file is licensed under GNU GPLv3.
+# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+# All other rights reserved.
+#
+
+version: 1.3.0.{build}
+
+environment:
+  matrix:
+    # Windows
+    - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2017"
+      PYTHON: "C:/Python37-x64"
+    # Linux
+    - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu1604"
+      PYTHON: "C:/Python37-x64"
+
+cache:
+  # Windows
+  - "%LOCALAPPDATA%/pip/Cache"
+  # Linux
+  - "/home/appveyor/.cache/pip"
+
+stack: python 3.7.3
+
+install:
+  - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
+  # Check Python version
+  - python --version
+  - python -c "import sys, platform, struct; print(sys.platform, platform.machine(), struct.calcsize('P')*8)"
+  # Install dependencies
+  - python -m pip install --upgrade pip
+  - pip install -r requirements.txt
+  # Download spaCy models
+  - python -m spacy download en_core_web_sm
+  - python -m spacy download de_core_news_sm
+  - python -m spacy download fr_core_news_sm
+  - python -m spacy download es_core_news_sm
+  - python -m spacy download pt_core_news_sm
+  - python -m spacy download it_core_news_sm
+  - python -m spacy download nl_core_news_sm
+  - python -m spacy download el_core_news_sm
+  # Download NLTK data
+  - python download_nltk_data.py
+
+build: off
+
+before_test:
+  - cd src
+
+test_script:
+  - cmd: python -m pytest
+  - sh: python -m pytest
