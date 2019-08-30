@@ -42,8 +42,8 @@ install:
   - python3 -m spacy download it_core_news_sm || python -m spacy download it_core_news_sm
   - python3 -m spacy download nl_core_news_sm || python -m spacy download nl_core_news_sm
   - python3 -m spacy download el_core_news_sm || python -m spacy download el_core_news_sm
-before_script:
   - python3 download_nltk_data.py || python download_nltk_data.py
-script:
+before_script:
   - cd src
+script:
   - python3 -m pytest || python -m pytest
