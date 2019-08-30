@@ -13,8 +13,6 @@ import sys
 
 sys.path.append('.')
 
-import pytest
-
 from wordless_tests import test_init
 from wordless_text import wordless_text
 
