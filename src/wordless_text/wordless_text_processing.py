@@ -154,7 +154,8 @@ def wordless_clause_tokenize(main, text, lang):
                 if i == len_text - 1:
                     clauses.append(text[clause_start:])
                 else:
-                    if token[-1] in PUNCS_CLAUSE:
+                    # Check if the token is empty
+                    if token and token[-1] in PUNCS_CLAUSE:
                         for j, token in enumerate(text[i + 1:]):
                             if token[0] not in PUNCS_CLAUSE:
                                 clauses.append(text[clause_start : i + j + 1])
