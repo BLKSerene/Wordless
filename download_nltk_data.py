@@ -1,5 +1,5 @@
 #
-# Wordless: Travis CI - NLTK Data
+# Wordless: CI - NLTK Data Downloader
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
