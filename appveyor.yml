@@ -46,7 +46,12 @@ install:
   - python -m spacy download nl_core_news_sm
   - python -m spacy download el_core_news_sm
   # Download NLTK data
-  - python download_nltk_data.py
+  - python -m nltk.downloader averaged_perceptron_tagger
+  - python -m nltk.downloader averaged_perceptron_tagger_ru
+  - python -m nltk.downloader perluniprops
+  - python -m nltk.downloader punkt
+  - python -m nltk.downloader stopwords
+  - python -m nltk.downloader wordnet
 
 build: off
 
