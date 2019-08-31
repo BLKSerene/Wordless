@@ -11,8 +11,6 @@
 
 language: python
 
-sudo: false
-
 cache: pip
 
 matrix:
@@ -35,9 +33,13 @@ matrix:
       python: 3.7
 
 install:
+  # Check Python version
+  - python3 --version || python --version
+  - python3 -c "import sys, platform, struct; print(sys.platform, platform.machine(), struct.calcsize('P')*8)" || python -c "import sys, platform, struct; print(sys.platform, platform.machine(), struct.calcsize('P')*8)"
+  # Install dependencies
   - pip3 install --upgrade pip
   - pip3 install -r requirements.txt
-  # spaCy models
+  # Download spaCy models
   - python3 -m spacy download en_core_web_sm || python -m spacy download en_core_web_sm
   - python3 -m spacy download de_core_news_sm || python -m spacy download de_core_news_sm
   - python3 -m spacy download fr_core_news_sm || python -m spacy download fr_core_news_sm
@@ -46,7 +48,13 @@ install:
   - python3 -m spacy download it_core_news_sm || python -m spacy download it_core_news_sm
   - python3 -m spacy download nl_core_news_sm || python -m spacy download nl_core_news_sm
   - python3 -m spacy download el_core_news_sm || python -m spacy download el_core_news_sm
-  - python3 download_nltk_data.py || python download_nltk_data.py
+  # Download NLTK data
+  - python3 -m nltk.downloader averaged_perceptron_tagger || python -m nltk.downloader averaged_perceptron_tagger
+  - python3 -m nltk.downloader averaged_perceptron_tagger_ru || python -m nltk.downloader averaged_perceptron_tagger_ru
+  - python3 -m nltk.downloader perluniprops || python -m nltk.downloader perluniprops
+  - python3 -m nltk.downloader punkt || python -m nltk.downloader punkt
+  - python3 -m nltk.downloader stopwords || python -m nltk.downloader stopwords
+  - python3 -m nltk.downloader wordnet || python -m nltk.downloader wordnet
 
 before_script:
   - cd src
