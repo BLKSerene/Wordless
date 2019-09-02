@@ -19,9 +19,9 @@ from wordless_tests import test_init
 from wordless_text import wordless_text_processing
 from wordless_utils import wordless_conversion
 
-main = test_init.Test_Main()
-
 LISTS_STOP_WORDS = []
+
+main = test_init.Test_Main()
 
 for lang, lists_stop_words in main.settings_global['stop_words'].items():
     for list_stop_words in lists_stop_words:
