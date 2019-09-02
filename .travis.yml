@@ -60,4 +60,4 @@ before_script:
   - cd src
 
 script:
-  - python3 -m pytest || python -m pytest
+  - travis_wait python3 -m pytest || travis_wait python -m pytest
