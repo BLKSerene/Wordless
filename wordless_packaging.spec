@@ -114,7 +114,7 @@ hiddenimports = [
 
 # Runtime hooks
 runtime_hooks = [
-    'wordless_hook_pymorphy2.py'
+    'wordless_runtime_hook_pymorphy2.py'
 ]
 
 # Exclusions
