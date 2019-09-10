@@ -257,7 +257,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://numpy.org">NumPy</a>',
-                '1.17.0',
+                '1.17.2',
                 'NumPy Developers',
                 '<a href="http://www.numpy.org/license.html">BSD-3-Clause</a>'
             ],
@@ -761,6 +761,18 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
         changelog = main.tr(f'''
             {main.settings_global['styles']['style_changelog']}
             <body>
+                <div class="changelog">
+                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0">v1.3.0</a> - ??/??/2019</div>
+                    <hr>
+
+                    <div class="changelog-section">
+                        <div class="changelog-section-header">Dependency Upgrades</div>
+                        <ul>
+                            <li>Upgrade NumPy to 1.17.2</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="changelog">
                     <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.2.0">v1.2.0</a> - 08/27/2019</div>
                     <hr>
