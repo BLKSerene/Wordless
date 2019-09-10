@@ -183,7 +183,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
             [
                 '<a href="https://github.com/undertheseanlp/underthesea">Underthesea</a>',
-                '1.1.16',
+                '1.1.17',
                 'Vu Anh',
                 '<a href="https://github.com/undertheseanlp/underthesea/blob/master/LICENSE">GPL-3.0</a>'
             ]
@@ -769,6 +769,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <div class="changelog-section-header">Dependency Upgrades</div>
                         <ul>
                             <li>Upgrade NumPy to 1.17.2</li>
+                            <li>Upgrade underthesea to 1.1.17</li>
                         </ul>
                     </div>
                 </div>
