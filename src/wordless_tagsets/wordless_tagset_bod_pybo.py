@@ -33,7 +33,7 @@ mappings = [
     ['PRON', 'PRON', 'Pronoun', ''],
     ['VERB', 'VERB', 'Verb', ''],
     ['OOV', 'X', '', 'Unknown'],
-    ['NON-WORD', 'X', '', 'Non-word'],
+    ['NON_WORD', 'X', '', 'Non-word'],
 
     # chunk_type
     ['BO', 'X', '', 'Tibetan language'],
