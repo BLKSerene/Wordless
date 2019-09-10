@@ -107,46 +107,61 @@ PayPal|Alipay|WeChat
 Wordless stands on the shoulders of giants. Thus, I would like to extend my thanks to the following open-source projects:
 
 ### General
-1. [Python](https://www.python.org/) by Guido van Rossum, Python Software Foundation
-2. [PyQt](https://www.riverbankcomputing.com/software/pyqt/intro) by Riverbank Computing Limited
+
+&nbsp;|Projects/Libraries|Author(s)
+------|------------------|---------
+1     |[Python](https://www.python.org)                              |Guido van Rossum, Python Software Foundation
+2     |[PyQt](https://www.riverbankcomputing.com/software/pyqt/intro)|Riverbank Computing Limited
 
 ### Natural Language Processing
-1. [jieba](https://github.com/fxsjy/jieba) by Sun Junyi
-2. [nagisa](https://github.com/taishi-i/nagisa) by Taishi Ikeda (池田大志)
-3. [NLTK](http://www.nltk.org/) by Steven Bird, Liling Tan
-4. [pybo](https://github.com/Esukhia/pybo) by Hélios Drupchen Hildt
-5. [pymorphy2](https://github.com/kmike/pymorphy2/) by Mikhail Korobov
-6. [PyThaiNLP](https://github.com/PyThaiNLP/pythainlp) by Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)
-7. [Sacremoses](https://github.com/alvations/sacremoses) by Liling Tan
-8. [spaCy](https://spacy.io/) by Matthew Honnibal, Ines Montani
-9. [Underthesea](https://github.com/undertheseanlp/underthesea) by Vu Anh
+
+&nbsp;|Projects/Libraries|Author(s)
+------|------------------|---------
+1     |[jieba](https://github.com/fxsjy/jieba)                     |Sun Junyi
+2     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
+3     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Liling Tan
+4     |[pybo](https://github.com/Esukhia/pybo)                     |Hélios Drupchen Hildt
+5     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
+6     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)
+7     |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
+8     |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
+9     |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
 
 ### Plotting
-1. [Matplotlib](https://matplotlib.org/) by Matplotlib Development Team
-2. [NetworkX](http://networkx.github.io/) by Aric Hagberg, Dan Schult, Pieter Swart
-3. [wordcloud](https://amueller.github.io/word_cloud/) by Andreas Christian Mueller
+
+&nbsp;|Projects/Libraries|Author(s)
+------|------------------|---------
+1     |[Matplotlib](https://matplotlib.org)               |Matplotlib Development Team
+2     |[NetworkX](http://networkx.github.io)              |Aric Hagberg, Dan Schult, Pieter Swart
+3     |[wordcloud](https://amueller.github.io/word_cloud/)|Andreas Christian Mueller
 
 ### Miscellaneous
-1. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) by Leonard Richardson
-2. [cChardet](https://github.com/PyYoshi/cChardet) by Yoshihiro Misawa
-3. [chardet](https://github.com/chardet/chardet) by Daniel Blanchard
-4. [langdetect](https://github.com/Mimino666/langdetect) by Michal Mimino Danilak
-5. [langid.py](https://github.com/saffsd/langid.py) by Marco Lui
-6. [lxml](https://lxml.de/) by Stefan Behnel
-7. [NumPy](http://www.numpy.org/) by NumPy Developers
-8. [openpyxl](https://openpyxl.readthedocs.io/en/stable/) by Eric Gazoni, Charlie Clark
-9. [PyInstaller](http://www.pyinstaller.org/) by Hartmut Goebel
-10. [python-docx](https://github.com/python-openxml/python-docx) by Steve Canny
-11. [requests](http://python-requests.org) by Kenneth Reitz
-12. [SciPy](https://www.scipy.org/) by SciPy Developers
-13. [xlrd](https://github.com/python-excel/xlrd) by Stephen John Machin
+
+&nbsp;|Projects/Libraries|Author(s)
+------|------------------|---------
+1     |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)|Leonard Richardson
+2     |[cChardet](https://github.com/PyYoshi/cChardet)                 |Yoshihiro Misawa
+3     |[chardet](https://github.com/chardet/chardet)                   |Daniel Blanchard
+4     |[langdetect](https://github.com/Mimino666/langdetect)           |Michal Mimino Danilak
+5     |[langid.py](https://github.com/saffsd/langid.py)                |Marco Lui
+6     |[lxml](https://lxml.de)                                         |Stefan Behnel
+7     |[NumPy](https://numpy.org)                                      |NumPy Developers
+8     |[openpyxl](https://openpyxl.readthedocs.io/en/stable/)          |Eric Gazoni, Charlie Clark
+9     |[PyInstaller](http://www.pyinstaller.org)                       |Hartmut Goebel
+10    |[python-docx](https://github.com/python-openxml/python-docx)    |Steve Canny
+11    |[requests](https://python-requests.org)                         |Kenneth Reitz
+12    |[SciPy](https://www.scipy.org)                                  |SciPy Developers
+13    |[xlrd](https://github.com/python-excel/xlrd)                    |Stephen John Machin
 
 ### Data
-1. [extra-stopwords](https://github.com/Xangis/extra-stopwords) by Jason Champion
-2. [grk-stoplist](https://github.com/pharos-alexandria/grk-stoplist) by Annette von Stockhausen
-3. [lemmalist-greek](https://github.com/stenskjaer/lemmalist-greek) by Michael Stenskjær Christensen
-4. [Lemmatization Lists](https://github.com/michmech/lemmatization-lists) by Michal Boleslav Měchura
-5. [Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso) by Gene Diaz
+
+&nbsp;|Projects/Libraries|Author(s)
+------|------------------|---------
+1     |[extra-stopwords](https://github.com/Xangis/extra-stopwords)          |Jason Champion
+2     |[grk-stoplist](https://github.com/pharos-alexandria/grk-stoplist)     |Annette von Stockhausen
+3     |[lemmalist-greek](https://github.com/stenskjaer/lemmalist-greek)      |Michael Stenskjær Christensen
+4     |[Lemmatization Lists](https://github.com/michmech/lemmatization-lists)|Michal Boleslav Měchura
+5     |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
 
 <span id="doc-eng"></span>
 ## Documentation - English

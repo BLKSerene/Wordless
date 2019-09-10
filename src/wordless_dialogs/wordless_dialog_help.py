@@ -110,7 +110,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
         self.ACKS_GENERAL = [
             [
-                '<a href="https://www.python.org/">Python</a>',
+                '<a href="https://www.python.org">Python</a>',
                 '3.7.4',
                 'Guido van Rossum, Python Software Foundation',
                 '<a href="https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release">PSF</a>'
@@ -140,7 +140,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ],
 
             [
-                '<a href="http://www.nltk.org/">NLTK</a>',
+                '<a href="http://www.nltk.org">NLTK</a>',
                 '3.4.5',
                 'Steven Bird, Liling Tan',
                 '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'
@@ -154,7 +154,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ],
 
             [
-                '<a href="https://github.com/kmike/pymorphy2/">pymorphy2</a>',
+                '<a href="https://github.com/kmike/pymorphy2">pymorphy2</a>',
                 '0.8',
                 'Mikhail Korobov',
                 '<a href="https://github.com/kmike/pymorphy2/#pymorphy2">MIT</a>'
@@ -175,7 +175,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ],
 
             [
-                '<a href="https://spacy.io/">spaCy</a>',
+                '<a href="https://spacy.io">spaCy</a>',
                 '2.1.8',
                 'Matthew Honnibal, Ines Montani',
                 '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'
@@ -191,14 +191,14 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
         self.ACKS_PLOTTING = [
             [
-                '<a href="https://matplotlib.org/">Matplotlib</a>',
+                '<a href="https://matplotlib.org">Matplotlib</a>',
                 '3.1.1',
                 'Matplotlib Development Team',
                 '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'
             ],
 
             [
-                '<a href="https://matplotlib.org/">NetworkX</a>',
+                '<a href="http://networkx.github.io">NetworkX</a>',
                 '2.3',
                 'Aric Hagberg, Dan Schult, Pieter Swart',
                 '<a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a>'
@@ -249,14 +249,14 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ],
 
             [
-                '<a href="https://lxml.de/">lxml</a>',
+                '<a href="https://lxml.de">lxml</a>',
                 '4.4.1',
                 'Stefan Behnel',
                 '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'
             ],
 
             [
-                '<a href="http://www.numpy.org/">NumPy</a>',
+                '<a href="https://numpy.org">NumPy</a>',
                 '1.17.0',
                 'NumPy Developers',
                 '<a href="http://www.numpy.org/license.html">BSD-3-Clause</a>'
@@ -270,7 +270,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ],
 
             [
-                '<a href="http://www.pyinstaller.org/">PyInstaller</a>',
+                '<a href="http://www.pyinstaller.org">PyInstaller</a>',
                 '4.0.dev0+46286a1f4',
                 'Hartmut Goebel',
                 '<a href="https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt">PyInstaller</a>'
@@ -284,14 +284,14 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ],
 
             [
-                '<a href="http://python-requests.org">requests</a>',
+                '<a href="https://python-requests.org">requests</a>',
                 '2.22.0',
                 'Kenneth Reitz',
                 '<a href="https://github.com/requests/requests/blob/master/LICENSE">Apache-2.0</a>'
             ],
 
             [
-                '<a href="https://www.scipy.org/">SciPy</a>',
+                '<a href="https://www.scipy.org">SciPy</a>',
                 '1.3.1',
                 'SciPy Developers',
                 '<a href="https://www.scipy.org/scipylib/license.html">BSD-3-Clause</a>'
