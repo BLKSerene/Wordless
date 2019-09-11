@@ -10,7 +10,6 @@
 #
 
 import importlib
-import itertools
 import json
 import re
 
@@ -126,24 +125,23 @@ def wordless_clause_tokenize(main, text, lang):
     ]
 
     # Running text
-    if type(text) == str:
-        for sentence in wordless_sentence_tokenize(main, text, lang):
-            clause_start = 0
-            len_sentence = len(sentence)
+    if type(text) in [str, wordless_text.Wordless_Token]:
+        clause_start = 0
+        len_text = len(text)
 
-            for i, char in enumerate(sentence):
-                if i >= clause_start:
-                    if i == len_sentence - 1:
-                        clauses.append(sentence[clause_start:])
-                    else:
-                        if char in PUNCS_CLAUSE:
-                            for j, char in enumerate(sentence[i + 1:]):
-                                if char not in PUNCS_CLAUSE:
-                                    clauses.append(sentence[clause_start : i + j + 1])
+        for i, char in enumerate(text):
+            if i >= clause_start:
+                if i == len_text - 1:
+                    clauses.append(text[clause_start:])
+                else:
+                    if char in PUNCS_CLAUSE:
+                        for j, char in enumerate(text[i + 1:]):
+                            if char not in PUNCS_CLAUSE:
+                                clauses.append(text[clause_start : i + j + 1])
 
-                                    clause_start = i + j + 1
+                                clause_start = i + j + 1
 
-                                    break
+                                break
     # Tokens
     elif type(text) in [list, tuple, dict]:
         clause_start = 0
@@ -170,8 +168,8 @@ def wordless_clause_tokenize(main, text, lang):
 
 def wordless_word_tokenize(main, text, lang,
                            word_tokenizer = 'default',
-                           keep_sentences = False):
-    tokens_sentences = []
+                           flat_tokens = True):
+    tokens_hierarchical = []
 
     if lang not in main.settings_global['word_tokenizers']:
         lang = 'other'
@@ -179,14 +177,15 @@ def wordless_word_tokenize(main, text, lang,
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
-    if keep_sentences:
-        wordless_text_utils.check_tokenizers(main,
-                                             lang = lang,
-                                             word_tokenizer = word_tokenizer)
-    else:
+    # Check initialization status of word (and sentence) tokenizers
+    if flat_tokens:
         wordless_text_utils.check_word_tokenizers(main,
                                                   lang = lang,
                                                   word_tokenizer = word_tokenizer)
+    else:
+        wordless_text_utils.check_tokenizers(main,
+                                             lang = lang,
+                                             word_tokenizer = word_tokenizer)
 
     if 'NLTK' in word_tokenizer:
         sentences = wordless_sentence_tokenize(main, text, lang)
@@ -195,66 +194,63 @@ def wordless_word_tokenize(main, text, lang,
             treebank_tokenizer = nltk.TreebankWordTokenizer()
 
             for sentence in sentences:
-                tokens_sentences.append(treebank_tokenizer.tokenize(sentence))
+                tokens_hierarchical.append(treebank_tokenizer.tokenize(sentence))
         elif word_tokenizer == main.tr('NLTK - Twitter Tokenizer'):
             tweet_tokenizer = nltk.TweetTokenizer()
 
             for sentence in sentences:
-                tokens_sentences.append(tweet_tokenizer.tokenize(sentence))
+                tokens_hierarchical.append(tweet_tokenizer.tokenize(sentence))
         elif word_tokenizer == main.tr('NLTK - NIST Tokenizer'):
             nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
 
             for sentence in sentences:
-                tokens_sentences.append(nist_tokenizer.tokenize(sentence))
+                tokens_hierarchical.append(nist_tokenizer.tokenize(sentence))
         elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
             toktok_tokenizer = nltk.ToktokTokenizer()
 
             for sentence in sentences:
-                tokens_sentences.append(toktok_tokenizer.tokenize(sentence))
-
-        if not keep_sentences:
-            tokens_sentences = [itertools.chain.from_iterable(tokens_sentences)]
+                tokens_hierarchical.append(toktok_tokenizer.tokenize(sentence))
     elif 'Sacremoses' in word_tokenizer:
-        if keep_sentences:
-            sentences = wordless_sentence_tokenize(main, text, lang)
-        else:
+        if flat_tokens:
             sentences = [text]
+        else:
+            sentences = wordless_sentence_tokenize(main, text, lang)
 
         if word_tokenizer == main.tr('Sacremoses - Moses Tokenizer'):
             moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
 
             for sentence in sentences:
-                tokens_sentences.append(moses_tokenizer.tokenize(sentence, escape = False))
+                tokens_hierarchical.append(moses_tokenizer.tokenize(sentence, escape = False))
         elif word_tokenizer == main.tr('Sacremoses - Penn Treebank Tokenizer'):
             moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
 
             for sentence in sentences:
-                tokens_sentences.append(moses_tokenizer.penn_tokenize(sentence))
+                tokens_hierarchical.append(moses_tokenizer.penn_tokenize(sentence))
     elif 'spaCy' in word_tokenizer:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
         # See Issue #3479: https://github.com/explosion/spaCy/issues/3479
         doc.is_parsed = True
 
-        if keep_sentences:
-            for sentence in doc.sents:
-                tokens_sentences.append([token.text for token in sentence.as_doc()])
+        if flat_tokens:
+            tokens_hierarchical.append([token.text for token in doc])
         else:
-            tokens_sentences.append([token.text for token in doc])
+            for sentence in doc.sents:
+                tokens_hierarchical.append([token.text for token in sentence.as_doc()])
 
     # Chinese & Japanese
     elif ('jieba' in word_tokenizer or
           'nagisa' in word_tokenizer or
           'Wordless' in word_tokenizer):
-        if keep_sentences:
-            sentences = wordless_sentence_tokenize(main, text, lang = lang)
-        else:
+        if flat_tokens:
             sentences = [text]
+        else:
+            sentences = wordless_sentence_tokenize(main, text, lang = lang)
 
         # Chinese
         if word_tokenizer == main.tr('jieba - Chinese Word Tokenizer'):
             for sentence in sentences:
-                tokens_sentences.append(jieba.cut(sentence))
+                tokens_hierarchical.append(jieba.cut(sentence))
         elif word_tokenizer == main.tr('Wordless - Chinese Character Tokenizer'):
             for sentence in sentences:
                 tokens = []
@@ -288,13 +284,13 @@ def wordless_word_tokenize(main, text, lang,
 
                                         break
 
-                tokens_sentences.extend(tokens)
+                tokens_hierarchical.append(tokens)
         # Japanese
         elif word_tokenizer == main.tr('nagisa - Japanese Word Tokenizer'):
             import nagisa
 
             for sentence in sentences:
-                tokens_sentences.append(nagisa.tagging(str(sentence)).words)
+                tokens_hierarchical.append(nagisa.tagging(str(sentence)).words)
         elif word_tokenizer == main.tr('Wordless - Japanese Kanji Tokenizer'):
             for sentence in sentences:
                 tokens = []
@@ -338,65 +334,77 @@ def wordless_word_tokenize(main, text, lang,
 
                                         break
 
-                tokens_sentences.extend(tokens)
+                tokens_hierarchical.append(tokens)
     # Thai
     elif 'PyThaiNLP' in word_tokenizer:
+        # Preserve sentence boundaries
         sentences = wordless_sentence_tokenize(main, text, lang = 'tha',
                                                sentence_tokenizer = 'PyThaiNLP - Thai Sentence Tokenizer')
 
         if word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'):
             for sentence in sentences:
-                tokens_sentences.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'newmm'))
+                tokens_hierarchical.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'newmm'))
         elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm'):
             for sentence in sentences:
-                tokens_sentences.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'mm'))
+                tokens_hierarchical.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'mm'))
         elif word_tokenizer == main.tr('PyThaiNLP - Longest Matching'):
             for sentence in sentences:
-                tokens_sentences.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'longest-matching'))
+                tokens_hierarchical.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'longest-matching'))
     # Tibetan
     elif 'pybo' in word_tokenizer:
-        if keep_sentences:
-            sentences = wordless_sentence_tokenize(main, text, lang = 'bod')
-        else:
+        if flat_tokens:
             sentences = [text]
+        else:
+            sentences = wordless_sentence_tokenize(main, text, lang = 'bod')
 
         if word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (GMD)'):
             for sentence in sentences:
-                tokens_sentences.append([token.text for token in main.pybo_tokenizer_gmd.tokenize(sentence)])
+                tokens_hierarchical.append([token.text for token in main.pybo_tokenizer_gmd.tokenize(sentence)])
         elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (POS)'):
             for sentence in sentences:
-                tokens_sentences.append([token.text for token in main.pybo_tokenizer_pos.tokenize(sentence)])
+                tokens_hierarchical.append([token.text for token in main.pybo_tokenizer_pos.tokenize(sentence)])
         elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (tsikchen)'):
             for sentence in sentences:
-                tokens_sentences.append([token.text for token in main.pybo_tokenizer_tsikchen.tokenize(sentence)])
+                tokens_hierarchical.append([token.text for token in main.pybo_tokenizer_tsikchen.tokenize(sentence)])
     # Vietnamese
     elif word_tokenizer == main.tr('Underthesea - Vietnamese Word Tokenizer'):
-        if keep_sentences:
+        if flat_tokens:
+            sentences = [text]
+        else:
             sentences = wordless_sentence_tokenize(main, text, lang = 'vie',
                                                    sentence_tokenizer = 'Underthesea - Vietnamese Sentence Tokenizer')
-        else:
-            sentences = [text]
 
         for sentence in sentences:
-            tokens_sentences.append(underthesea.word_tokenize(str(sentence)))
+            tokens_hierarchical.append(underthesea.word_tokenize(str(sentence)))
 
     # Remove empty tokens and strip whitespace
-    for i, tokens in enumerate(tokens_sentences):
-        tokens_sentences[i] = [token.strip()
-                               for token in tokens
-                               if token.strip()]
+    for i, sentence in enumerate(tokens_hierarchical):
+        tokens_hierarchical[i] = [token.strip()
+                                  for token in sentence
+                                  if token.strip()]
 
     # Record token boundaries
     if lang in ['zho_cn', 'zho_tw', 'jpn']:
-        for tokens in tokens_sentences:
-            if tokens:
-                tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = '', sentence_ending = True)
+        for sentence in tokens_hierarchical:
+            if sentence:
+                sentence[-1] = wordless_text.Wordless_Token(sentence[-1], boundary = '', sentence_ending = True)
     else:
-        for tokens in tokens_sentences:
-            if tokens:
-                tokens[-1] = wordless_text.Wordless_Token(tokens[-1], boundary = ' ', sentence_ending = True)
+        for sentence in tokens_hierarchical:
+            if sentence:
+                sentence[-1] = wordless_text.Wordless_Token(sentence[-1], boundary = ' ', sentence_ending = True)
 
-    return tokens_sentences
+    # Clause tokenization
+    if not flat_tokens:
+        for i, sentence in enumerate(tokens_hierarchical):
+            tokens_hierarchical[i] = wordless_clause_tokenize(main, sentence, lang)
+
+    # Flatten tokens
+    tokens_flat = list(wordless_misc.flatten_list(tokens_hierarchical))
+
+    if flat_tokens:
+        return tokens_flat
+    else:
+        return tokens_hierarchical
 
 def wordless_word_detokenize(main, tokens, lang,
                              word_detokenizer = 'default'):

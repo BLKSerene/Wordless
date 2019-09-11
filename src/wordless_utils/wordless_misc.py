@@ -9,6 +9,7 @@
 # All other rights reserved.
 #
 
+import collections
 import copy
 import os
 import time
@@ -32,6 +33,58 @@ def find_wordless_main(widget):
         main = main.parent()
 
     return main
+
+def flatten_list(list_to_flatten):
+    for item in list_to_flatten:
+        if isinstance(item, collections.abc.Iterable) and not isinstance(item, (str, bytes)):
+            yield from flatten_list(item)
+        else:
+            yield item
+
+def normalize_nums(nums, normalized_min, normalized_max, normalized_reversed = False):
+    nums_min = min(nums)
+    nums_max = max(nums)
+
+    if nums_max - nums_min == 0:
+        nums_normalized = [normalized_min] * len(nums)
+    else:
+        if normalized_reversed:
+            nums_normalized = [numpy.interp(num, [nums_min, nums_max], [normalized_max, normalized_min])
+                               for num in nums]
+        else:
+            nums_normalized = [numpy.interp(num, [nums_min, nums_max], [normalized_min, normalized_max])
+                               for num in nums]
+
+    return nums_normalized
+
+def merge_dicts(dicts_to_merge):
+    dict_merged = {}
+
+    if any(dicts_to_merge):
+        for i, dict_to_merge in enumerate(dicts_to_merge):
+            if dict_to_merge:
+                i_dict = i
+
+                values_2d = type(list(dict_to_merge.values())[0]) == list
+
+                break
+
+        if values_2d:
+            value_2d = [[0] * len(list(dicts_to_merge[i_dict].values())[0]) for i in range(len(dicts_to_merge))]
+        else:
+            value_1d = [0] * len(dicts_to_merge)
+
+        for i, dict_to_merge in enumerate(dicts_to_merge):
+            for key, values in dict_to_merge.items():
+                if key not in dict_merged:
+                    if values_2d:
+                        dict_merged[key] = copy.deepcopy(value_2d)
+                    else:
+                        dict_merged[key] = copy.copy(value_1d)
+
+                dict_merged[key][i] = values
+
+    return dict_merged
 
 def log_timing(func):
     def wrapper(widget, *args, **kwargs):
@@ -68,48 +121,3 @@ def log_timing(func):
         return return_val
 
     return wrapper
-
-def merge_dicts(dicts_to_merge):
-    dict_merged = {}
-
-    if any(dicts_to_merge):
-        for i, dict_to_merge in enumerate(dicts_to_merge):
-            if dict_to_merge:
-                i_dict = i
-
-                values_2d = type(list(dict_to_merge.values())[0]) == list
-
-                break
-
-        if values_2d:
-            value_2d = [[0] * len(list(dicts_to_merge[i_dict].values())[0]) for i in range(len(dicts_to_merge))]
-        else:
-            value_1d = [0] * len(dicts_to_merge)
-
-        for i, dict_to_merge in enumerate(dicts_to_merge):
-            for key, values in dict_to_merge.items():
-                if key not in dict_merged:
-                    if values_2d:
-                        dict_merged[key] = copy.deepcopy(value_2d)
-                    else:
-                        dict_merged[key] = copy.copy(value_1d)
-
-                dict_merged[key][i] = values
-
-    return dict_merged
-
-def normalize_nums(nums, normalized_min, normalized_max, normalized_reversed = False):
-    nums_min = min(nums)
-    nums_max = max(nums)
-
-    if nums_max - nums_min == 0:
-        nums_normalized = [normalized_min] * len(nums)
-    else:
-        if normalized_reversed:
-            nums_normalized = [numpy.interp(num, [nums_min, nums_max], [normalized_max, normalized_min])
-                               for num in nums]
-        else:
-            nums_normalized = [numpy.interp(num, [nums_min, nums_max], [normalized_min, normalized_max])
-                               for num in nums]
-
-    return nums_normalized
