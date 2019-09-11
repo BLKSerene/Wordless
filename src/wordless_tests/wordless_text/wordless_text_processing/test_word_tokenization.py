@@ -11,7 +11,6 @@
 # All other rights reserved.
 #
 
-import itertools
 import re
 import sys
 
@@ -21,7 +20,7 @@ import pytest
 
 from wordless_tests import test_init
 from wordless_text import wordless_text_processing
-from wordless_utils import wordless_conversion
+from wordless_utils import wordless_conversion, wordless_misc
 
 WORD_TOKENIZERS = []
 
@@ -91,10 +90,9 @@ for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
 def test_word_tokenize(lang, word_tokenizer):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
-    tokens_sentences = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
-                                                                       lang = lang,
-                                                                       word_tokenizer = word_tokenizer)
-    tokens = list(itertools.chain.from_iterable(tokens_sentences))
+    tokens = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
+                                                             lang = lang,
+                                                             word_tokenizer = word_tokenizer)
 
     if lang == 'afr':
         if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
