@@ -48,9 +48,8 @@ for lang, pos_taggers in main.settings_global['pos_taggers'].items():
 def test_pos_tag(lang, pos_tagger):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
-    tokens_sentences = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
-                                                                       lang = lang)
-    tokens = [token for tokens in tokens_sentences for token in tokens]
+    tokens = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
+                                                             lang = lang)
 
     tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
                                                               lang = lang,

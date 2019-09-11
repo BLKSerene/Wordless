@@ -500,7 +500,7 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
             number_lines = 0
             number_lines_nth = 0
 
-            text = wordless_text.Wordless_Text(self.main, file, tokens_only = False)
+            text = wordless_text.Wordless_Text(self.main, file, flat_tokens = False)
 
             tokens = wordless_token_processing.wordless_process_tokens_concordancer(text,
                                                                                     token_settings = settings['token_settings'])
@@ -508,7 +508,7 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
             len_paras = len(text.offsets_paras)
             len_sentences = len(text.offsets_sentences)
             len_clauses = len(text.offsets_clauses)
-            len_tokens = len(text.tokens)
+            len_tokens = len(text.tokens_flat)
 
             search_terms = wordless_matching.match_search_terms(self.main, tokens,
                                                                 lang = text.lang,
@@ -592,7 +592,7 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                         text_search = list(ngram)
 
                         if not settings['token_settings']['puncs']:
-                            ngram = text.tokens[i : i + len_search_term]
+                            ngram = text.tokens_flat[i : i + len_search_term]
 
                         node_text = wordless_text_processing.wordless_word_detokenize(self.main, ngram, text.lang)
                         node_text = wordless_text_utils.text_escape(node_text)
@@ -609,8 +609,8 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                             else:
                                 sentence_offset_end = text.offsets_sentences[min(no_sentence + width_right_sentence, len_sentences - 1)]
 
-                            context_left = text.tokens[sentence_offset_start : i]
-                            context_right = text.tokens[i + len_search_term : sentence_offset_end]
+                            context_left = text.tokens_flat[sentence_offset_start : i]
+                            context_right = text.tokens_flat[i + len_search_term : sentence_offset_end]
 
                             # Search in Results
                             if settings['token_settings']['puncs']:
@@ -631,8 +631,8 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                             else:
                                 clause_offset_end = text.offsets_clauses[min(no_clause + width_right_clause, len_clauses - 1)]
 
-                            context_left = text.tokens[clause_offset_start : i]
-                            context_right = text.tokens[i + len_search_term : clause_offset_end]
+                            context_left = text.tokens_flat[clause_offset_start : i]
+                            context_right = text.tokens_flat[i + len_search_term : clause_offset_end]
 
                             # Search in Results
                             if settings['token_settings']['puncs']:
@@ -647,8 +647,8 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                             width_left_token = settings['generation_settings']['width_left_token']
                             width_right_token = settings['generation_settings']['width_right_token']
 
-                            context_left = text.tokens[max(0, i - width_left_token) : i]
-                            context_right = text.tokens[i + len_search_term : i + len_search_term + width_right_token]
+                            context_left = text.tokens_flat[max(0, i - width_left_token) : i]
+                            context_right = text.tokens_flat[i + len_search_term : i + len_search_term + width_right_token]
 
                             # Search in Results
                             if settings['token_settings']['puncs']:
@@ -683,7 +683,7 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                                 len_context_left += len_token_next
 
                             while len_context_right < width_right_char:
-                                if i + 1 + len(context_right) > len(text.tokens) - 1:
+                                if i + 1 + len(context_right) > len(text.tokens_flat) - 1:
                                     break
                                 else:
                                     token_next = tokens[i + len_search_term + len(context_right)]
@@ -701,8 +701,8 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                             text_search_right = copy.deepcopy(context_right)
 
                             if not settings['token_settings']['puncs']:
-                                context_left_first_puncs = text.tokens[i - len(context_left)]
-                                context_right_last_puncs = text.tokens[i + len_search_term + len(context_right) - 1]
+                                context_left_first_puncs = text.tokens_flat[i - len(context_left)]
+                                context_right_last_puncs = text.tokens_flat[i + len_search_term + len(context_right) - 1]
                                 context_left_first = ''
                                 context_right_last = ''
 
@@ -726,8 +726,8 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
                                         len_context_right_last += 1
 
                                 context_left = ([context_left_first] +
-                                                text.tokens[i - len(context_left) + 1: i])
-                                context_right = (text.tokens[i + len_search_term : i + len_search_term + len(context_right) - 1] +
+                                                text.tokens_flat[i - len(context_left) + 1: i])
+                                context_right = (text.tokens_flat[i + len_search_term : i + len_search_term + len(context_right) - 1] +
                                                  [context_right_last])
 
                         context_left = wordless_text_utils.text_escape(context_left)

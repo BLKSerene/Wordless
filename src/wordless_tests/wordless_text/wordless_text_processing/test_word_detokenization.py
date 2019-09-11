@@ -62,9 +62,8 @@ for lang, word_detokenizers in main.settings_global['word_detokenizers'].items()
 def test_word_detokenize(lang, word_detokenizer):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
-    tokens_sentences = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
-                                                                       lang = lang)
-    tokens = [token for tokens in tokens_sentences for token in tokens]
+    tokens = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
+                                                             lang = lang)
 
     text = wordless_text_processing.wordless_word_detokenize(main, tokens,
                                                              lang = lang,

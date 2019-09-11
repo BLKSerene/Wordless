@@ -308,9 +308,9 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
         files = self.main.wordless_files.get_selected_files()
 
         for i, file in enumerate(files):
-            text = wordless_text.Wordless_Text(self.main, file, tokens_only = False)
-            text.tokens = wordless_token_processing.wordless_process_tokens_overview(text,
-                                                                                     token_settings = settings['token_settings'])
+            text = wordless_text.Wordless_Text(self.main, file, flat_tokens = False)
+            wordless_token_processing.wordless_process_tokens_overview(text,
+                                                                       token_settings = settings['token_settings'])
 
             texts.append(text)
 
@@ -344,23 +344,25 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
             texts_stats_file = []
 
             # Paragraph length
-            len_paras_in_sentence = [len(para) for para in text.tokens_sentences_paras]
-            len_paras_in_token = [sum([len(sentence) for sentence in para])
-                                  for para in text.tokens_sentences_paras]
+            len_paras_in_sentence = [len(para) for para in text.tokens_hierarchical]
+            len_paras_in_token = [sum([len(clause) for sentence in para for clause in sentence])
+                                  for para in text.tokens_hierarchical]
 
             # Sentence length
-            len_sentences = [len(sentence)
-                             for para in text.tokens_sentences_paras
+            len_sentences = [sum([len(clause) for clause in sentence])
+                             for para in text.tokens_hierarchical
                              for sentence in para]
 
             # Clause length
-            len_clauses = [text.offsets_clauses[i + 1] - offset
-                           for i, offset in enumerate(text.offsets_clauses[:-1])]
+            len_clauses = [len(clause)
+                           for para in text.tokens_hierarchical
+                           for sentence in para
+                           for clause in sentence]
 
             # Token length
-            len_tokens = [len(token) for token in text.tokens]
+            len_tokens = [len(token) for token in text.tokens_flat]
             # Type length
-            len_types = [len(type) for type in set(text.tokens)]
+            len_types = [len(token_type) for token_type in set(text.tokens_flat)]
 
             count_tokens = len(len_tokens)
             count_types = len(len_types)
@@ -375,7 +377,7 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
             if count_tokens < base_sttr:
                 sttr = ttr
             else:
-                token_sections = wordless_text_utils.to_sections_unequal(text.tokens, base_sttr)
+                token_sections = wordless_text_utils.to_sections_unequal(text.tokens_flat, base_sttr)
 
                 # Discard the last section if number of tokens in it is smaller than the base of sttr
                 if len(token_sections[-1]) < base_sttr:
