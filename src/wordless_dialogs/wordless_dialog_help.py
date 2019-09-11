@@ -766,6 +766,13 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <hr>
 
                     <div class="changelog-section">
+                        <div class="changelog-section-header">Bug Fixes</div>
+                        <ul>
+                            <li>Fix "Paragraph Length" and "Sentence Length" in "Overview"</li>
+                        </ul>
+                    </div>
+
+                    <div class="changelog-section">
                         <div class="changelog-section-header">Dependency Upgrades</div>
                         <ul>
                             <li>Upgrade NumPy to 1.17.2</li>
