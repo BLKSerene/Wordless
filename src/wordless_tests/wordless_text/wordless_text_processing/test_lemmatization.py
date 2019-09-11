@@ -60,9 +60,8 @@ for lang, lemmatizers in main.settings_global['lemmatizers'].items():
 def test_lemmatize(lang, lemmatizer):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
-    tokens_sentences = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
-                                                                       lang = lang)
-    tokens = [token for tokens in tokens_sentences for token in tokens]
+    tokens = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
+                                                             lang = lang)
 
     lemmas = wordless_text_processing.wordless_lemmatize(main, tokens,
                                                          lang = lang,

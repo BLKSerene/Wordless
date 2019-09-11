@@ -392,7 +392,7 @@ class Wordless_Worker_Process_Data_Wordlist(wordless_threading.Wordless_Worker_P
         for file in files:
             text = wordless_text.Wordless_Text(self.main, file)
 
-            tokens = wordless_token_processing.wordless_process_tokens_overview(text,
+            tokens = wordless_token_processing.wordless_process_tokens_wordlist(text,
                                                                                 token_settings = settings['token_settings'])
 
             texts.append(text)
