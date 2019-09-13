@@ -351,21 +351,16 @@ def wordless_word_tokenize(main, text, lang,
             for sentence in sentences:
                 tokens_hierarchical.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'longest-matching'))
     # Tibetan
-    elif 'pybo' in word_tokenizer:
+    elif 'botok' in word_tokenizer:
         if flat_tokens:
             sentences = [text]
         else:
             sentences = wordless_sentence_tokenize(main, text, lang = 'bod')
 
-        if word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (GMD)'):
-            for sentence in sentences:
-                tokens_hierarchical.append([token.text for token in main.pybo_tokenizer_gmd.tokenize(sentence)])
-        elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (POS)'):
-            for sentence in sentences:
-                tokens_hierarchical.append([token.text for token in main.pybo_tokenizer_pos.tokenize(sentence)])
-        elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (tsikchen)'):
-            for sentence in sentences:
-                tokens_hierarchical.append([token.text for token in main.pybo_tokenizer_tsikchen.tokenize(sentence)])
+        botok_tokenizer = wordless_text_utils.check_botok_tokenizers(main, word_tokenizer)
+
+        for sentence in sentences:
+            tokens_hierarchical.append([token.text for token in botok_tokenizer.tokenize(sentence)])
     # Vietnamese
     elif word_tokenizer == main.tr('Underthesea - Vietnamese Word Tokenizer'):
         if flat_tokens:
@@ -647,18 +642,12 @@ def wordless_pos_tag(main, tokens, lang,
         tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
 
     # Tibetan
-    elif pos_tagger == main.tr('pybo - Tibetan POS Tagger'):
+    elif pos_tagger == main.tr('botok - Tibetan POS Tagger'):
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
-        wordless_text_utils.check_pybo_tokenizers(main,
-                                                  word_tokenizer = word_tokenizer)
-
-        if word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (GMD)'):
-            tokens = main.pybo_tokenizer_gmd.tokenize(' '.join(tokens))
-        elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (POS)'):
-            tokens = main.pybo_tokenizer_pos.tokenize(' '.join(tokens))
-        elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (tsikchen)'):
-            tokens = main.pybo_tokenizer_tsikchen.tokenize(' '.join(tokens))
+        botok_tokenizer = wordless_text_utils.check_botok_tokenizers(main,
+                                                                     word_tokenizer = word_tokenizer)
+        tokens = botok_tokenizer.tokenize(' '.join(tokens))
 
         for token in tokens:
             if token.pos:
@@ -776,18 +765,12 @@ def wordless_lemmatize(main, tokens, lang,
             for token in tokens:
                 lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
         # Tibetan
-        elif lemmatizer == main.tr('pybo - Tibetan Lemmatizer'):
+        elif lemmatizer == main.tr('botok - Tibetan Lemmatizer'):
             word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
-            wordless_text_utils.check_pybo_tokenizers(main,
-                                                      word_tokenizer = word_tokenizer)
-
-            if word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (GMD)'):
-                tokens = main.pybo_tokenizer_gmd.tokenize(' '.join(tokens))
-            elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (POS)'):
-                tokens = main.pybo_tokenizer_pos.tokenize(' '.join(tokens))
-            elif word_tokenizer == main.tr('pybo - Tibetan Word Tokenizer (tsikchen)'):
-                tokens = main.pybo_tokenizer_tsikchen.tokenize(' '.join(tokens))
+            botok_tokenizer = wordless_text_utils.check_botok_tokenizers(main,
+                                                                         word_tokenizer = word_tokenizer)
+            tokens = botok_tokenizer.tokenize(' '.join(tokens))
 
             for token in tokens:
                 if token.lemma:
