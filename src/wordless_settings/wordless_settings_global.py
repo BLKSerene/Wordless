@@ -1058,9 +1058,9 @@ def init_settings_global(main):
             ],
 
             'bod': [
-                main.tr('pybo - Tibetan Word Tokenizer (GMD)'),
-                main.tr('pybo - Tibetan Word Tokenizer (POS)'),
-                main.tr('pybo - Tibetan Word Tokenizer (tsikchen)')
+                main.tr('botok - Tibetan Word Tokenizer (GMD)'),
+                main.tr('botok - Tibetan Word Tokenizer (POS)'),
+                main.tr('botok - Tibetan Word Tokenizer (tsikchen)')
             ],
 
             'tur': [
@@ -1293,7 +1293,7 @@ def init_settings_global(main):
             ],
 
             'bod': [
-                main.tr('pybo - Tibetan POS Tagger')
+                main.tr('botok - Tibetan POS Tagger')
             ],
 
             'ukr': [
@@ -1414,7 +1414,7 @@ def init_settings_global(main):
             ],
 
             'bod': [
-                main.tr('pybo - Tibetan Lemmatizer')
+                main.tr('botok - Tibetan Lemmatizer')
             ],
 
             'ukr': [
