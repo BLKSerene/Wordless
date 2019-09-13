@@ -1,5 +1,5 @@
 #
-# Wordless: Tagsets - pybo Tagset
+# Wordless: Tagsets - botok Tagset
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
@@ -10,7 +10,7 @@
 #
 
 #
-# pybo Tagset: https://github.com/Esukhia/pybo/blob/master/pybo/vars.py
+# botok Tagset: https://github.com/Esukhia/botok/blob/master/botok/vars.py
 #
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #

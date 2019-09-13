@@ -126,6 +126,13 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         ]
 
         self.ACKS_NLP = [
+            # botok
+            [
+                '<a href="https://github.com/Esukhia/botok">botok</a>',
+                '0.6.10',
+                'Hélios Drupchen Hildt',
+                '<a href="https://github.com/Esukhia/botok/blob/master/LICENSE">Apache-2.0</a>'
+            ],
             # jieba
             [
                 main.tr('<a href="https://github.com/fxsjy/jieba">jieba</a>'),
@@ -146,13 +153,6 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '3.4.5',
                 'Steven Bird, Liling Tan',
                 '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'
-            ],
-            # pybo
-            [
-                '<a href="https://github.com/Esukhia/pybo">pybo</a>',
-                '0.6.7',
-                'Hélios Drupchen Hildt',
-                '<a href="https://github.com/Esukhia/pybo/blob/master/LICENSE">Apache-2.0</a>'
             ],
             # pymorphy2
             [
@@ -787,6 +787,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Dependency Upgrades</div>
                         <ul>
+                            <li>Upgrade botok (pybo) to 0.6.10</li>
                             <li>Upgrade NumPy to 1.17.2</li>
                             <li>Upgrade underthesea to 1.1.17</li>
                         </ul>

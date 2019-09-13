@@ -15,10 +15,10 @@
 pyqt5
 
 # NLP
+botok
 jieba
 nagisa
 nltk
-pybo
 # pymorphy2 and its dictionaries
 https://github.com/kmike/pymorphy2/archive/master.zip
 pymorphy2-dicts-ru
@@ -42,10 +42,8 @@ lxml
 numpy
 openpyxl
 pyinstaller
+pytest
 python-docx
 requests
 scipy
 xlrd
-
-# Tests
-pytest

@@ -23,7 +23,7 @@ from wordless_tagsets import (wordless_tagset_universal,
                               wordless_tagset_rus_russian_national_corpus,
                               wordless_tagset_spa_spacy,
                               wordless_tagset_tha_orchid,
-                              wordless_tagset_bod_pybo,
+                              wordless_tagset_bod_botok,
                               wordless_tagset_vie_underthesea,
                               wordless_tagset_zho_jieba)
 from wordless_utils import wordless_misc
@@ -1151,7 +1151,7 @@ def init_settings_default(main):
                 'tat': main.tr('spaCy - Tatar Word Tokenizer'),
                 'tel': main.tr('spaCy - Telugu Word Tokenizer'),
                 'tha': main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'),
-                'bod': main.tr('pybo - Tibetan Word Tokenizer (POS)'),
+                'bod': main.tr('botok - Tibetan Word Tokenizer (POS)'),
                 'tur': main.tr('spaCy - Turkish Word Tokenizer'),
                 'ukr': main.tr('spaCy - Ukrainian Word Tokenizer'),
                 'urd': main.tr('spaCy - Urdu Word Tokenizer'),
@@ -1218,7 +1218,7 @@ def init_settings_default(main):
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
                 'spa': main.tr('spaCy - Spanish POS Tagger'),
                 'tha': main.tr('PyThaiNLP - Perceptron Tagger - ORCHID Corpus'),
-                'bod': main.tr('pybo - Tibetan POS Tagger'),
+                'bod': main.tr('botok - Tibetan POS Tagger'),
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'vie': main.tr('Underthesea - Vietnamese POS Tagger')
             },
@@ -1247,7 +1247,7 @@ def init_settings_default(main):
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
                 'spa': main.tr('spaCy - Spanish POS Tagger'),
                 'tha': main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'),
-                'bod': main.tr('pybo - Tibetan POS Tagger'),
+                'bod': main.tr('botok - Tibetan POS Tagger'),
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'vie': main.tr('Underthesea - Vietnamese POS Tagger')
             },
@@ -1309,7 +1309,7 @@ def init_settings_default(main):
                 },
 
                 'bod': {
-                    main.tr('pybo - Tibetan POS Tagger'): wordless_tagset_bod_pybo.mappings
+                    main.tr('botok - Tibetan POS Tagger'): wordless_tagset_bod_botok.mappings
                 },
 
                 'ukr': {
@@ -1349,7 +1349,7 @@ def init_settings_default(main):
                 'slv': main.tr('Lemmatization Lists - Slovenian Lemma List'),
                 'spa': main.tr('spaCy - Spanish Lemmatizer'),
                 'swe': main.tr('Lemmatization Lists - Swedish Lemma List'),
-                'bod': main.tr('pybo - Tibetan Lemmatizer'),
+                'bod': main.tr('botok - Tibetan Lemmatizer'),
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'cym': main.tr('Lemmatization Lists - Welsh Lemma List')
             },

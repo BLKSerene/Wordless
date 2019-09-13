@@ -117,10 +117,10 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 
 &nbsp;|Projects/Libraries|Author(s)
 ------|------------------|---------
-1     |[jieba](https://github.com/fxsjy/jieba)                     |Sun Junyi
-2     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
-3     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Liling Tan
-4     |[pybo](https://github.com/Esukhia/pybo)                     |Hélios Drupchen Hildt
+1     |[botok](https://github.com/Esukhia/botok)                   |Hélios Drupchen Hildt
+2     |[jieba](https://github.com/fxsjy/jieba)                     |Sun Junyi
+3     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
+4     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Liling Tan
 5     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
 6     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
 7     |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
