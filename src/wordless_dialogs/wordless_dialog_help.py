@@ -106,15 +106,22 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
 class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Acknowledgments'),
-                         width = 580)
+                         width = 550)
 
         self.ACKS_GENERAL = [
             # Python
             [
                 '<a href="https://www.python.org">Python</a>',
                 '3.7.4',
-                'Guido van Rossum, Python Software Foundation',
+                'Guido van Rossum',
                 '<a href="https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release">PSF</a>'
+            ],
+            # PyInstaller
+            [
+                '<a href="http://www.pyinstaller.org">PyInstaller</a>',
+                '4.0.dev0+46286a1f4',
+                'Hartmut Goebel',
+                '<a href="https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt">PyInstaller</a>'
             ],
             # PyQt
             [
@@ -122,6 +129,13 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '5.13.0',
                 'Riverbank Computing Limited',
                 '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a>'
+            ],
+            # pytest
+            [
+                '<a href="https://pytest.org">pytest</a>',
+                '5.1.2',
+                'Holger Krekel',
+                '<a href="https://github.com/pytest-dev/pytest/blob/master/LICENSE">MIT</a>'
             ]
         ]
 
@@ -135,7 +149,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ],
             # jieba
             [
-                main.tr('<a href="https://github.com/fxsjy/jieba">jieba</a>'),
+                '<a href="https://github.com/fxsjy/jieba">jieba<br>(“结巴”中文分词)</a>',
                 '0.39',
                 'Sun Junyi',
                 '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'
@@ -206,9 +220,9 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 'Aric Hagberg, Dan Schult, Pieter Swart',
                 '<a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a>'
             ],
-            # wordcloud
+            # WordCloud
             [
-                '<a href="https://amueller.github.io/word_cloud/">wordcloud</a>',
+                '<a href="https://amueller.github.io/word_cloud/">WordCloud</a>',
                 '1.5.0',
                 'Andreas Christian Mueller',
                 '<a href="https://github.com/amueller/word_cloud/blob/master/LICENSE">MIT</a>'
@@ -271,20 +285,6 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 '2.6.3',
                 'Eric Gazoni, Charlie Clark',
                 '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst">MIT</a>'
-            ],
-            # PyInstaller
-            [
-                '<a href="http://www.pyinstaller.org">PyInstaller</a>',
-                '4.0.dev0+46286a1f4',
-                'Hartmut Goebel',
-                '<a href="https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt">PyInstaller</a>'
-            ],
-            # pytest
-            [
-                '<a href="https://pytest.org">pytest</a>',
-                '5.1.2',
-                'Holger Krekel',
-                '<a href="https://github.com/pytest-dev/pytest/blob/master/LICENSE">MIT</a>'
             ],
             # python-docx
             [
@@ -367,7 +367,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
         self.table_acks = wordless_table.Wordless_Table(self,
                                                         headers = [
-                                                            self.tr('Name'),
+                                                            self.tr('Projects'),
                                                             self.tr('Version'),
                                                             self.tr('Author(s)'),
                                                             self.tr('License')
@@ -430,14 +430,22 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
 
         self.table_acks.setRowCount(len(acks))
 
-        for i, (name, ver, authors, license) in enumerate(acks):
-            self.table_acks.setCellWidget(i, 0, wordless_label.Wordless_Label_Html(name, self))
+        for i, (project, ver, authors, license) in enumerate(acks):
+            # Add whitespace to each side of the cell
+            project = project.replace('<br>', '&nbsp;<br>&nbsp;')
+            ver = ver.replace('<br>', '&nbsp;<br>&nbsp;')
+            authors = authors.replace('<br>', '&nbsp;<br>&nbsp;')
+            license = license.replace('<br>', '&nbsp;<br>&nbsp;')
+
+            project = f'&nbsp;{project}&nbsp;'
+            ver = f'&nbsp;{ver}&nbsp;'
+            authors = f'&nbsp;{authors}&nbsp;'
+            license = f'&nbsp;{license}&nbsp;'
+
+            self.table_acks.setCellWidget(i, 0, wordless_label.Wordless_Label_Html(project, self))
             self.table_acks.setCellWidget(i, 1, wordless_label.Wordless_Label_Html(ver, self))
             self.table_acks.setCellWidget(i, 2, wordless_label.Wordless_Label_Html(authors, self))
             self.table_acks.setCellWidget(i, 3, wordless_label.Wordless_Label_Html(license, self))
-
-            self.table_acks.cellWidget(i, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-            self.table_acks.cellWidget(i, 3).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         self.table_acks.blockSignals(False)
         self.table_acks.setSortingEnabled(True)

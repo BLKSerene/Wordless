@@ -108,17 +108,19 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 
 ### General
 
-&nbsp;|Projects/Libraries|Author(s)
-------|------------------|---------
-1     |[Python](https://www.python.org)                              |Guido van Rossum, Python Software Foundation
-2     |[PyQt](https://www.riverbankcomputing.com/software/pyqt/intro)|Riverbank Computing Limited
+&nbsp;|Projects|Author(s)
+------|--------|---------
+1     |[Python](https://www.python.org)                              |Guido van Rossum
+2     |[PyInstaller](http://www.pyinstaller.org)                     |Hartmut Goebel
+3     |[PyQt](https://www.riverbankcomputing.com/software/pyqt/intro)|Riverbank Computing Limited
+4     |[pytest](https://pytest.org)                                  |Holger Krekel
 
 ### Natural Language Processing
 
-&nbsp;|Projects/Libraries|Author(s)
-------|------------------|---------
+&nbsp;|Projects|Author(s)
+------|--------|---------
 1     |[botok](https://github.com/Esukhia/botok)                   |Hélios Drupchen Hildt
-2     |[jieba](https://github.com/fxsjy/jieba)                     |Sun Junyi
+2     |[jieba<br>(“结巴”中文分词)](https://github.com/fxsjy/jieba)  |Sun Junyi
 3     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
 4     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Liling Tan
 5     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
@@ -129,16 +131,16 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 
 ### Plotting
 
-&nbsp;|Projects/Libraries|Author(s)
-------|------------------|---------
+&nbsp;|Projects|Author(s)
+------|--------|---------
 1     |[Matplotlib](https://matplotlib.org)               |Matplotlib Development Team
 2     |[NetworkX](http://networkx.github.io)              |Aric Hagberg, Dan Schult, Pieter Swart
-3     |[wordcloud](https://amueller.github.io/word_cloud/)|Andreas Christian Mueller
+3     |[WordCloud](https://amueller.github.io/word_cloud/)|Andreas Christian Mueller
 
 ### Miscellaneous
 
-&nbsp;|Projects/Libraries|Author(s)
-------|------------------|---------
+&nbsp;|Projects|Author(s)
+------|--------|---------
 1     |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)|Leonard Richardson
 2     |[cChardet](https://github.com/PyYoshi/cChardet)                 |Yoshihiro Misawa
 3     |[chardet](https://github.com/chardet/chardet)                   |Daniel Blanchard
@@ -147,17 +149,15 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 6     |[lxml](https://lxml.de)                                         |Stefan Behnel
 7     |[NumPy](https://numpy.org)                                      |NumPy Developers
 8     |[openpyxl](https://openpyxl.readthedocs.io/en/stable/)          |Eric Gazoni, Charlie Clark
-9     |[PyInstaller](http://www.pyinstaller.org)                       |Hartmut Goebel
-10    |[pytest](https://pytest.org)                                    |Holger Krekel
-11    |[python-docx](https://github.com/python-openxml/python-docx)    |Steve Canny
-12    |[requests](https://python-requests.org)                         |Kenneth Reitz
-13    |[SciPy](https://www.scipy.org)                                  |SciPy Developers
-14    |[xlrd](https://github.com/python-excel/xlrd)                    |Stephen John Machin
+9     |[python-docx](https://github.com/python-openxml/python-docx)    |Steve Canny
+10    |[requests](https://python-requests.org)                         |Kenneth Reitz
+11    |[SciPy](https://www.scipy.org)                                  |SciPy Developers
+12    |[xlrd](https://github.com/python-excel/xlrd)                    |Stephen John Machin
 
 ### Data
 
-&nbsp;|Projects/Libraries|Author(s)
-------|------------------|---------
+&nbsp;|Projects|Author(s)
+------|--------|---------
 1     |[extra-stopwords](https://github.com/Xangis/extra-stopwords)          |Jason Champion
 2     |[grk-stoplist](https://github.com/pharos-alexandria/grk-stoplist)     |Annette von Stockhausen
 3     |[lemmalist-greek](https://github.com/stenskjaer/lemmalist-greek)      |Michael Stenskjær Christensen

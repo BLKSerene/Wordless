@@ -946,7 +946,7 @@ def init_settings_default(main):
                 },
 
                 'acks': {
-                    'browse_category': main.tr('Natural Language Processing')
+                    'browse_category': main.tr('General')
                 },
 
                 'donating': {
