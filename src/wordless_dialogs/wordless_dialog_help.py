@@ -109,13 +109,14 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                          width = 580)
 
         self.ACKS_GENERAL = [
+            # Python
             [
                 '<a href="https://www.python.org">Python</a>',
                 '3.7.4',
                 'Guido van Rossum, Python Software Foundation',
                 '<a href="https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release">PSF</a>'
             ],
-
+            # PyQt
             [
                 '<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
                 '5.13.0',
@@ -125,62 +126,63 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         ]
 
         self.ACKS_NLP = [
+            # jieba
             [
                 main.tr('<a href="https://github.com/fxsjy/jieba">jieba</a>'),
                 '0.39',
                 'Sun Junyi',
                 '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'
             ],
-
+            # nagisa
             [
                 '<a href="https://github.com/taishi-i/nagisa">nagisa</a>',
                 '0.2.4',
                 'Taishi Ikeda (池田大志)',
                 '<a href="https://github.com/taishi-i/nagisa/blob/master/LICENSE.txt">MIT</a>'
             ],
-
+            # NLTK
             [
                 '<a href="http://www.nltk.org">NLTK</a>',
                 '3.4.5',
                 'Steven Bird, Liling Tan',
                 '<a href="https://github.com/nltk/nltk/blob/develop/LICENSE.txt">Apache-2.0</a>'
             ],
-
+            # pybo
             [
                 '<a href="https://github.com/Esukhia/pybo">pybo</a>',
                 '0.6.7',
                 'Hélios Drupchen Hildt',
                 '<a href="https://github.com/Esukhia/pybo/blob/master/LICENSE">Apache-2.0</a>'
             ],
-
+            # pymorphy2
             [
                 '<a href="https://github.com/kmike/pymorphy2">pymorphy2</a>',
                 '0.8',
                 'Mikhail Korobov',
                 '<a href="https://github.com/kmike/pymorphy2/#pymorphy2">MIT</a>'
             ],
-
+            # PyThaiNLP
             [
                 '<a href="https://github.com/PyThaiNLP/pythainlp">PyThaiNLP</a>',
                 '2.0.7',
-                'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)',
+                'Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)',
                 '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache-2.0</a>'
             ],
-
+            # Sacremoses
             [
                 '<a href="https://github.com/alvations/sacremoses">Sacremoses</a>',
                 '0.0.33',
                 'Liling Tan',
                 '<a href="https://github.com/alvations/sacremoses#license">LGPL-2.1</a>'
             ],
-
+            # spaCy
             [
                 '<a href="https://spacy.io">spaCy</a>',
                 '2.1.8',
                 'Matthew Honnibal, Ines Montani',
                 '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'
             ],
-
+            # Underthesea
             [
                 '<a href="https://github.com/undertheseanlp/underthesea">Underthesea</a>',
                 '1.1.17',
@@ -190,20 +192,21 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         ]
 
         self.ACKS_PLOTTING = [
+            # Matplotlib
             [
                 '<a href="https://matplotlib.org">Matplotlib</a>',
                 '3.1.1',
                 'Matplotlib Development Team',
                 '<a href="https://matplotlib.org/users/license.html">Matplotlib</a>'
             ],
-
+            # NetworkX
             [
                 '<a href="http://networkx.github.io">NetworkX</a>',
                 '2.3',
                 'Aric Hagberg, Dan Schult, Pieter Swart',
                 '<a href="https://github.com/networkx/networkx/blob/master/LICENSE.txt">BSD-3-Clause</a>'
             ],
-
+            # wordcloud
             [
                 '<a href="https://amueller.github.io/word_cloud/">wordcloud</a>',
                 '1.5.0',
@@ -213,90 +216,98 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         ]
 
         self.ACKS_MISC = [
+            # Beautiful Soup
             [
                 '<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
                 '4.8.0',
                 'Leonard Richardson',
                 '<a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a>'
             ],
-
+            # cChardet
             [
                 '<a href="https://github.com/PyYoshi/cChardet">cChardet</a>',
                 '2.1.4',
                 'Yoshihiro Misawa',
                 '<a href="https://github.com/PyYoshi/cChardet/blob/master/COPYING">MPL-1.0/GPL-2.0/LGPL-2.1</a>'
             ],
-
+            # chardet
             [
                 '<a href="https://github.com/chardet/chardet">chardet</a>',
                 '3.0.4',
                 'Daniel Blanchard',
                 '<a href="https://github.com/chardet/chardet/blob/master/LICENSE">LGPL-2.1</a>'
             ],
-
+            # langdetect
             [
                 '<a href="https://github.com/Mimino666/langdetect">langdetect</a>',
                 '1.0.7',
                 'Michal Mimino Danilak',
                 '<a href="https://github.com/Mimino666/langdetect/blob/master/LICENSE">Apache-2.0</a>'
             ],
-
+            # langid.py
             [
                 '<a href="https://github.com/saffsd/langid.py">langid.py</a>',
                 '1.1.6',
                 'Marco Lui',
                 '<a href="https://github.com/saffsd/langid.py/blob/master/LICENSE">BSD-2-Clause</a>'
             ],
-
+            # lxml
             [
                 '<a href="https://lxml.de">lxml</a>',
                 '4.4.1',
                 'Stefan Behnel',
                 '<a href="https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt">BSD-3-Clause</a>'
             ],
-
+            # NumPy
             [
                 '<a href="https://numpy.org">NumPy</a>',
                 '1.17.2',
                 'NumPy Developers',
                 '<a href="http://www.numpy.org/license.html">BSD-3-Clause</a>'
             ],
-
+            # openpyxl
             [
                 '<a href="https://openpyxl.readthedocs.io/en/stable/">openpyxl</a>',
                 '2.6.3',
                 'Eric Gazoni, Charlie Clark',
                 '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst">MIT</a>'
             ],
-
+            # PyInstaller
             [
                 '<a href="http://www.pyinstaller.org">PyInstaller</a>',
                 '4.0.dev0+46286a1f4',
                 'Hartmut Goebel',
                 '<a href="https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt">PyInstaller</a>'
             ],
-
+            # pytest
+            [
+                '<a href="https://pytest.org">pytest</a>',
+                '5.1.2',
+                'Holger Krekel',
+                '<a href="https://github.com/pytest-dev/pytest/blob/master/LICENSE">MIT</a>'
+            ],
+            # python-docx
             [
                 '<a href="https://github.com/python-openxml/python-docx">python-docx</a>',
                 '0.8.10',
                 'Steve Canny',
                 '<a href="https://github.com/python-openxml/python-docx/blob/master/LICENSE">MIT</a>'
             ],
-
+            # requests
             [
                 '<a href="https://python-requests.org">requests</a>',
                 '2.22.0',
                 'Kenneth Reitz',
                 '<a href="https://github.com/requests/requests/blob/master/LICENSE">Apache-2.0</a>'
             ],
-
+            # SciPy
             [
                 '<a href="https://www.scipy.org">SciPy</a>',
                 '1.3.1',
                 'SciPy Developers',
                 '<a href="https://www.scipy.org/scipylib/license.html">BSD-3-Clause</a>'
             ],
-
+            # xlrd
             [
                 '<a href="https://github.com/python-excel/xlrd">xlrd</a>',
                 '1.2.0',
@@ -306,34 +317,35 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         ]
 
         self.ACKS_DATA = [
+            # extra-stopwords
             [
                 '<a href="https://github.com/Xangis/extra-stopwords">extra-stopwords</a>',
                 '/',
                 'Jason Champion',
                 '<a href="https://github.com/Xangis/extra-stopwords/blob/master/LICENSE">MIT</a>'
             ],
-
+            # grk-stoplist
             [
                 '<a href="https://github.com/pharos-alexandria/grk-stoplist">grk-stoplist</a>',
                 '/',
                 'Annette von Stockhausen',
                 '<a href="https://github.com/pharos-alexandria/grk-stoplist/blob/master/LICENSE">CC0-1.0</a>'
             ],
-
+            # lemmalist-greek
             [
                 '<a href="https://github.com/stenskjaer/lemmalist-greek">lemmalist-greek</a>',
                 '/',
                 'Michael Stenskjær Christensen',
                 '<a href="https://github.com/stenskjaer/lemmalist-greek/blob/master/LICENSE">GPL-3.0</a>'
             ],
-
+            # Lemmatization Lists
             [
                 '<a href="https://github.com/michmech/lemmatization-lists">Lemmatization Lists</a>',
                 '/',
                 'Michal Boleslav Měchura',
                 '<a href="https://github.com/michmech/lemmatization-lists/blob/master/LICENCE">ODbL</a>'
             ],
-
+            # Stopwords ISO
             [
                 '<a href="https://github.com/stopwords-iso/stopwords-iso">Stopwords ISO</a>',
                 '0.4.0',

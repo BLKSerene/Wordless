@@ -122,7 +122,7 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 3     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Liling Tan
 4     |[pybo](https://github.com/Esukhia/pybo)                     |Hélios Drupchen Hildt
 5     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
-6     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)
+6     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
 7     |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
 8     |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
 9     |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
@@ -148,10 +148,11 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 7     |[NumPy](https://numpy.org)                                      |NumPy Developers
 8     |[openpyxl](https://openpyxl.readthedocs.io/en/stable/)          |Eric Gazoni, Charlie Clark
 9     |[PyInstaller](http://www.pyinstaller.org)                       |Hartmut Goebel
-10    |[python-docx](https://github.com/python-openxml/python-docx)    |Steve Canny
-11    |[requests](https://python-requests.org)                         |Kenneth Reitz
-12    |[SciPy](https://www.scipy.org)                                  |SciPy Developers
-13    |[xlrd](https://github.com/python-excel/xlrd)                    |Stephen John Machin
+10    |[pytest](https://pytest.org)                                    |Holger Krekel
+11    |[python-docx](https://github.com/python-openxml/python-docx)    |Steve Canny
+12    |[requests](https://python-requests.org)                         |Kenneth Reitz
+13    |[SciPy](https://www.scipy.org)                                  |SciPy Developers
+14    |[xlrd](https://github.com/python-excel/xlrd)                    |Stephen John Machin
 
 ### Data
 
