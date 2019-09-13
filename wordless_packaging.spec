@@ -18,14 +18,14 @@ import PyInstaller
 block_cipher = None
 datas = []
 
+# botok
+datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
 # jieba
 datas.extend(PyInstaller.utils.hooks.collect_data_files('jieba'))
 # langdetect
 datas.extend(PyInstaller.utils.hooks.collect_data_files('langdetect'))
 # nagisa
 datas.extend(PyInstaller.utils.hooks.collect_data_files('nagisa', include_py_files = True))
-# pybo
-datas.extend(PyInstaller.utils.hooks.collect_data_files('pybo'))
 # pymorphy2
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_ru'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_uk'))
