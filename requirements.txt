@@ -12,7 +12,9 @@
 #
 
 # General
+pyinstaller
 pyqt5
+pytest
 
 # NLP
 botok
@@ -41,8 +43,6 @@ langid
 lxml
 numpy
 openpyxl
-pyinstaller
-pytest
 python-docx
 requests
 scipy
