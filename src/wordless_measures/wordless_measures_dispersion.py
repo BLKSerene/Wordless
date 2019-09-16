@@ -17,7 +17,7 @@ import scipy.stats
 from wordless_measures import wordless_measures_adjusted_freq
 
 # Reference:
-#     Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.
+#     Juilland, Alphonse, and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.
 def juillands_d(freqs):
     if sum(freqs) == 0:
         d = 0
@@ -48,7 +48,7 @@ def carrolls_d2(freqs):
     return d2
 
 # Reference:
-#     Lyne, A. A. "Dispersion." The Vocabulary of French Business Correspondence. Slatkine-Champion, 1985, pp. 101-24.
+#     Lyne, Anthony A. “Dispersion.” The Vocabulary of French Business Correspondence: Word Frequencies, Collocations, and Problems of Lexicometric Method. Slatkine/Champion, 1985, pp. 101-24.
 def lynes_d3(freqs):
     if sum(freqs) == 0:
         d3 = 0
@@ -69,7 +69,7 @@ def rosengrens_s(freqs):
     return s
 
 # Reference:
-#     Zhang Huarui, et al. "Distributional Consistency: As a General Method for Defining a Core Lexicon." Proceedings of Fourth International Conference on Language Resources and Evaluation, Lisbon, 26-28 May 2004.
+#     Zhang Huarui, et al. “Distributional Consistency: As a General Method for Defining a Core Lexicon.” Proceedings of Fourth International Conference on Language Resources and Evaluation, 26-28 May 2004, edited by Maria Teresa Lino et al., European Language Resources Association, 2004, pp. 1119-22.
 def zhangs_distributional_consistency(freqs):
     if sum(freqs) == 0:
         dc = 0
@@ -96,7 +96,6 @@ def griess_dp(freqs):
     return dp
 
 # Reference:
-#     Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, pp. 403-37.
-#     Lijffijt, Jefrey and Stefan Th. Gries. "Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”" International Journal of Corpus Linguistics, vol. 17, no. 1, 2012, pp. 147-49.
+#     Lijffijt, Jefrey, and Stefan Th. Gries. "Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”" International Journal of Corpus Linguistics, vol. 17, no. 1, 2012, pp. 147-49.
 def griess_dp_norm(freqs):
     return griess_dp(freqs) / (1 - 1 / len(freqs))
