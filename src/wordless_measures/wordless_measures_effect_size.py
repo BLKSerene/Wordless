@@ -29,7 +29,7 @@ def get_expected(c1x, c2x, cx1, cx2, cxx):
     return (e11, e12, e21, e22)
 
 # Reference:
-#     Church, Kenneth Ward and Patrick Hanks. Word Association Norms, Mutual Information, and Lexicography. Computational Linguistics, vol. 16, no. 1, Mar. 1990, pp. 22-29.
+#     Church, Kenneth Ward, and Patrick Hanks. Word Association Norms, Mutual Information, and Lexicography. Computational Linguistics, vol. 16, no. 1, Mar. 1990, pp. 22-29.
 def pmi(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
@@ -62,7 +62,7 @@ def lfmd(main, c11, c12, c21, c22):
         return math.log(c11 ** 2 / e11, 2) + math.log(c11, 2)
 
 # Reference:
-#     Daille, Béatrice. "Combined Approach for Terminology Extraction: Lexical Statistics and Linguistic Filtering." UCREL Technical Papers, vol. 5, University of Lancaster, 1995.
+#     Daille, Béatrice. "Combined Approach for Terminology Extraction: Lexical Statistics and Linguistic Filtering." UCREL Technical Papers, vol. 5, Lancaster U, 1995.
 def im3(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
@@ -73,7 +73,6 @@ def im3(main, c11, c12, c21, c22):
         return math.log(c11 ** 3 / e11, 2)
 
 # Reference:
-#     Kilgarriff, Adam and David Tugwell. "Word Sketch: Extraction and Display of Significant Collocations for Lexicography." Proceedings of the ACL 2001 Collocations Workshop, Toulouse, 2001, pp. 32–38.
 #     "Statistics used in Sketch Engine." Sketch Engine, https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/. Accessed 26 Nov 2018.
 def mi_log_f(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
@@ -113,7 +112,7 @@ def mi(main, c11, c12, c21, c22):
     return mi11 + mi12 + mi21 + mi22
 
 # Reference:
-#     Church, Kenneth Ward and William A. Gale. "Concordances for Parallel Text." Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, 29 Sept - 1 Oct 1991, UW Centre for the New OED and Text Research, 1991.
+#     Church, Kenneth Ward, and William A. Gale. "Concordances for Parallel Text." Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, 29 Sept - 1 Oct 1991, UW Centre for the New OED and Text Research, 1991.
 def squared_phi_coeff(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
 
@@ -143,7 +142,7 @@ def log_dice(main, c11, c12, c21, c22):
         return 14 + math.log(2 * c11 / (c1x + cx1), 2)
 
 # Reference:
-#     Dias, Gaël. "Language Independent Automatic Acquisition of Rigid Multiword Units from Unrestricted Text Corpora." Proceedings of Conférence Traitement Au-tomatique des Langues Naturelles, 12-17 July 1999, Cargèse, edited by Mitkov, Ruslan and Jong C. Park, 1999, pp. 333-39.
+#     Dias, Gaël, et al. "Language Independent Automatic Acquisition of Rigid Multiword Units from Unrestricted Text Corpora." Proceedings of Conférence Traitement Au-tomatique des Langues Naturelles, 12-17 July 1999, edited by Mitkov, Ruslan and Jong C. Park, 1999, pp. 333-39.
 def me(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
 
@@ -178,7 +177,7 @@ def min_sensitivity(main, c11, c12, c21, c22):
     return min(s1, s2)
 
 # Reference:
-#     Quasthoff, Uwe and Christian Wolff. "The Poisson Collocation Measure and Its Applications." Proceedings of 2nd International Workshop on Computational Approaches to Collocations, Wien, Austria, 2002.
+#     Quasthoff, Uwe, and Christian Wolff. “The Poisson Collocation Measure and Its Applications.” Proceedings of 2nd International Workshop on Computational Approaches to Collocations, 2002, IEEE, 2002.
 def poisson_collocation_measure(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
@@ -196,7 +195,7 @@ def poisson_collocation_measure(main, c11, c12, c21, c22):
     return (c11 * (log_c11 - log_e11 - 1)) / math.log(cxx)
 
 # Reference:
-#     Kilgarriff, Adam. "Simple Maths for Keywords." Proceedings of Corpus Linguistics Conference, Liverpool, 20-23 July 2009, edited by Mahlberg, M., et al., U of Liverpool, July 2009.
+#     Kilgarriff, Adam. “Simple Maths for Keywords.” Proceedings of the Corpus Linguistics Conference 2009, 20-23 July 2009, edited by Michaela Mahlberg et al., U of Liverpool, July 2009.
 def kilgarriffs_ratio(main, c11, c12, c21, c22):
     smoothing_param = main.settings_custom['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param']
 
@@ -213,7 +212,7 @@ def kilgarriffs_ratio(main, c11, c12, c21, c22):
     return (relative_freq_observed + smoothing_param) / (relative_freq_ref + smoothing_param)
 
 # Reference:
-#     Pojanapunya, Punjaporn and Richard Watson Todd. "Log-likelihood and Odds Ratio Keyness Statistics for Different Purposes of Keyword Analysis." Corpus Linguistics and Lingustic Theory, vol. 15, no. 1, Jan. 2016, pp. 133-67.
+#     Pojanapunya, Punjaporn, and Richard Watson Todd. "Log-likelihood and Odds Ratio Keyness Statistics for Different Purposes of Keyword Analysis." Corpus Linguistics and Lingustic Theory, vol. 15, no. 1, Jan. 2016, pp. 133-67.
 def odds_ratio(main, c11, c12, c21, c22):
     if c11 == 0 and c12 > 0:
         return float('-inf')
@@ -225,7 +224,7 @@ def odds_ratio(main, c11, c12, c21, c22):
         return (c11 * c22) / (c12 * c21)
 
 # Reference:
-#     Hardie, Andrew. "Log Ratio: An Informal Introduction." The Centre for Corpus Approaches to Social Science, http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/
+#     Hardie, Andrew. “Log Ratio: An Informal Introduction.” The Centre for Corpus Approaches to Social Science, 28 Apr. 2014, http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.
 def log_ratio(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
 
@@ -239,7 +238,7 @@ def log_ratio(main, c11, c12, c21, c22):
         return math.log((c11 / cx1) / (c12 / cx2), 2)
 
 # Reference:
-#     Hofland, Knut and Stig Johansson. Word Frequencies in British and American English. Norwegian Computing Centre for the Humanities, 1982.
+#     Hofland, Knut, and Stig Johansson. Word Frequencies in British and American English. Norwegian Computing Centre for the Humanities, 1982.
 #     Gabrielatos, Costas. "Keyness Analysis: Nature, Metrics and Techniques." Corpus Approaches to Discourse: A Critical Review, edited by Taylor, Charlotte and Anna Marchi, Routledge, 2018.
 def diff_coeff(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
@@ -247,7 +246,7 @@ def diff_coeff(main, c11, c12, c21, c22):
     return (c11 / cx1 - c12 / cx2) / (c11 / cx1 + c12 / cx2)
 
 # Reference:
-#     Gabrielatos, Costas and Anna Marchi. "Keyness: Appropriate Metrics and Practical Issues." Proceedings of CADS International Conference, U of Bologna, 13-14 Sept. 2012.
+#     Gabrielatos, Costas, and Anna Marchi. “Keyness: Appropriate Metrics and Practical Issues.” *Proceedings of CADS International Conference 2012*, 13-14 Sept. 2012, U of Bologna, 2012.
 def pct_diff(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
 

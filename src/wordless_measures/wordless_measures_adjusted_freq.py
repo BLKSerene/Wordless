@@ -20,7 +20,7 @@ from wordless_measures import wordless_measures_dispersion
 C = -scipy.special.digamma(1)
 
 # Reference:
-#     Juilland, Alphonse and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.
+#     Juilland, Alphonse, and Eugenio Chang-Rodriguez. Frequency Dictionary of Spanish Words, Mouton, 1964.
 def juillands_u(freqs):
     d = wordless_measures_dispersion.juillands_d(freqs)
     u = max(0, d) * sum(freqs)
