@@ -42,6 +42,6 @@ def test_zhangs_distributional_consistency():
 def test_griess_dp():
     assert round(wordless_measures_dispersion.griess_dp([3, 3, 3]), 0) == 0
 
-# Lijffijt, Jefrey and Stefan Th. Gries. "Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”" International Journal of Corpus Linguistics, vol. 17, no. 1, 2012, pp. 148.
+# Lijffijt, Jefrey, and Stefan Th. Gries. "Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”" International Journal of Corpus Linguistics, vol. 17, no. 1, 2012, pp. 148.
 def test_griess_dp_norm():
     assert round(wordless_measures_dispersion.griess_dp_norm([2, 1, 0]), 1) == 0.5
