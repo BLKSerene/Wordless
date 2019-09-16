@@ -830,7 +830,7 @@ Lyne's D₃      [[3]](#doc-eng-supported-measures-works-cited-3)|![Lyne's D₃]
 Rosengren's S  [[4]](#doc-eng-supported-measures-works-cited-4)|![Rosengren's S](/doc/measures/dispersion/rosengrens_s.gif)
 Zhang's Distributional Consistency [[5]](#doc-eng-supported-measures-works-cited-5)|![Zhang's Distributional Consistency](/doc/measures/dispersion/zhangs_distributional_consistency.gif)
 Gries's DP     [[6]](#doc-eng-supported-measures-works-cited-6)|![Gries's DP](/doc/measures/dispersion/griess_dp.gif)
-Gries's DPnorm [[6]](#doc-eng-supported-measures-works-cited-6) [[7]](#doc-eng-supported-measures-works-cited-7)|![Gries's DPnorm](/doc/measures/dispersion/griess_dp_norm.gif)
+Gries's DPnorm [[7]](#doc-eng-supported-measures-works-cited-7)|![Gries's DPnorm](/doc/measures/dispersion/griess_dp_norm.gif)
 
 <!--
 Juilland's U:
@@ -1074,20 +1074,20 @@ Pointwise Mutual Information [[20]](#doc-eng-supported-measures-works-cited-20)|
 Mutual Dependency            [[21]](#doc-eng-supported-measures-works-cited-21)|![Mutual Dependency](/doc/measures/effect_size/md.gif)
 Log-Frequency Biased MD      [[21]](#doc-eng-supported-measures-works-cited-21)|![Log-Frequency Biased MD](/doc/measures/effect_size/lfmd.gif)
 Cubic Association Ratio      [[22]](#doc-eng-supported-measures-works-cited-22)|![Cubic Association Ratio](/doc/measures/effect_size/im3.gif)
-MI.log-f                     [[23]](#doc-eng-supported-measures-works-cited-23)[[24]](#doc-eng-supported-measures-works-cited-24)|![MI.log-f](/doc/measures/effect_size/mi_log_f.gif)
-Mutual Information           [[25]](#doc-eng-supported-measures-works-cited-25)|![Mutual Information](/doc/measures/effect_size/mi.gif)
-Squared Phi Coefficient      [[26]](#doc-eng-supported-measures-works-cited-26)|![Squared Phi Coefficient](/doc/measures/effect_size/squared_phi_coeff.gif)
-Dice's Coefficient           [[27]](#doc-eng-supported-measures-works-cited-27)|![Dice's Coefficient](/doc/measures/effect_size/dices_coeff.gif)
-logDice                      [[28]](#doc-eng-supported-measures-works-cited-28)|![logDice](/doc/measures/effect_size/log_dice.gif)
-Mutual Expectation           [[29]](#doc-eng-supported-measures-works-cited-29)|![Mutual Expectation](/doc/measures/effect_size/me.gif)
-Jaccard Index                [[25]](#doc-eng-supported-measures-works-cited-25)|![Jaccard Index](/doc/measures/effect_size/jaccard_index.gif)
-Minimum Sensitivity          [[30]](#doc-eng-supported-measures-works-cited-30)|![Minimum Sensitivity](/doc/measures/effect_size/min_sensitivity.gif)
-Poisson Collocation Measure  [[31]](#doc-eng-supported-measures-works-cited-31)|![Poisson Collocation Measure](/doc/measures/effect_size/poisson_collocation_measure.gif)
-Kilgarriff's Ratio           [[32]](#doc-eng-supported-measures-works-cited-32)|![Kilgarriff's Ratio](/doc/measures/effect_size/kilgarriffs_ratio.gif)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings → Measures →<br>Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
-Odds Ratio                   [[33]](#doc-eng-supported-measures-works-cited-33)|![Odds Ratio](/doc/measures/effect_size/odds_ratio.gif)
-Log Ratio                    [[34]](#doc-eng-supported-measures-works-cited-34)|![Log Ratio](/doc/measures/effect_size/log_ratio.gif)
-Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[[35]](#doc-eng-supported-measures-works-cited-35)|![Difference Coefficient](/doc/measures/effect_size/diff_coeff.gif)
-%DIFF                        [[36]](#doc-eng-supported-measures-works-cited-36)|![%DIFF](/doc/measures/effect_size/pct_diff.gif)
+MI.log-f                     [[23]](#doc-eng-supported-measures-works-cited-23)|![MI.log-f](/doc/measures/effect_size/mi_log_f.gif)
+Mutual Information           [[24]](#doc-eng-supported-measures-works-cited-24)|![Mutual Information](/doc/measures/effect_size/mi.gif)
+Squared Phi Coefficient      [[25]](#doc-eng-supported-measures-works-cited-25)|![Squared Phi Coefficient](/doc/measures/effect_size/squared_phi_coeff.gif)
+Dice's Coefficient           [[26]](#doc-eng-supported-measures-works-cited-26)|![Dice's Coefficient](/doc/measures/effect_size/dices_coeff.gif)
+logDice                      [[27]](#doc-eng-supported-measures-works-cited-27)|![logDice](/doc/measures/effect_size/log_dice.gif)
+Mutual Expectation           [[28]](#doc-eng-supported-measures-works-cited-28)|![Mutual Expectation](/doc/measures/effect_size/me.gif)
+Jaccard Index                [[24]](#doc-eng-supported-measures-works-cited-24)|![Jaccard Index](/doc/measures/effect_size/jaccard_index.gif)
+Minimum Sensitivity          [[29]](#doc-eng-supported-measures-works-cited-29)|![Minimum Sensitivity](/doc/measures/effect_size/min_sensitivity.gif)
+Poisson Collocation Measure  [[30]](#doc-eng-supported-measures-works-cited-30)|![Poisson Collocation Measure](/doc/measures/effect_size/poisson_collocation_measure.gif)
+Kilgarriff's Ratio           [[31]](#doc-eng-supported-measures-works-cited-31)|![Kilgarriff's Ratio](/doc/measures/effect_size/kilgarriffs_ratio.gif)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings → Measures →<br>Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
+Odds Ratio                   [[32]](#doc-eng-supported-measures-works-cited-32)|![Odds Ratio](/doc/measures/effect_size/odds_ratio.gif)
+Log Ratio                    [[33]](#doc-eng-supported-measures-works-cited-33)|![Log Ratio](/doc/measures/effect_size/log_ratio.gif)
+Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[[34]](#doc-eng-supported-measures-works-cited-34)|![Difference Coefficient](/doc/measures/effect_size/diff_coeff.gif)
+%DIFF                        [[35]](#doc-eng-supported-measures-works-cited-35)|![%DIFF](/doc/measures/effect_size/pct_diff.gif)
 
 <span id="doc-eng-5"></span>
 ### 5 Works Cited [[Back to Contents]](#doc)
@@ -1097,11 +1097,11 @@ Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[
 <span id="doc-eng-supported-measures-works-cited-2"></span>
 [2] Carroll, John B. “An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index.” *Computer Studies in the Humanities and Verbal Behaviour*, vol.3, no. 2, 1970, pp. 61-65.<br>
 <span id="doc-eng-supported-measures-works-cited-3"></span>
-[3] Lyne, A. A. “Dispersion.” *The Vocabulary of French Business Correspondence*. Slatkine-Champion, 1985, pp. 101-24.<br>
+[3] Lyne, Anthony A. “Dispersion.” *The Vocabulary of French Business Correspondence: Word Frequencies, Collocations, and Problems of Lexicometric Method*. Slatkine/Champion, 1985, pp. 101-24.<br>
 <span id="doc-eng-supported-measures-works-cited-4"></span>
 [4] Rosengren, Inger. “The quantitative concept of language and its relation to the structure of frequency dictionaries.” *Études de linguistique appliquée*, no. 1, 1971, pp. 103-27.<br>
 <span id="doc-eng-supported-measures-works-cited-5"></span>
-[5] Zhang Huarui, et al. “Distributional Consistency: As a General Method for Defining a Core Lexicon.” *Proceedings of Fourth International Conference on Language Resources and Evaluation*, 26-28 May 2004.<br>
+[5] Zhang Huarui, et al. “Distributional Consistency: As a General Method for Defining a Core Lexicon.” *Proceedings of Fourth International Conference on Language Resources and Evaluation*, 26-28 May 2004, edited by Maria Teresa Lino et al., European Language Resources Association, 2004, pp. 1119-22.<br>
 <span id="doc-eng-supported-measures-works-cited-6"></span>
 [6] Gries, Stefan Th. “Dispersions and Adjusted Frequencies in Corpora.” *International Journal of Corpus Linguistics*, vol. 13, no. 4, 2008, pp. 403-37.<br>
 <span id="doc-eng-supported-measures-works-cited-7"></span>
@@ -1125,7 +1125,7 @@ Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[
 <span id="doc-eng-supported-measures-works-cited-16"></span>
 [16] Dunning, Ted Emerson. “Accurate Methods for the Statistics of Surprise and Coincidence.” *Computational Linguistics*, vol. 19, no. 1, Mar. 1993, pp. 61-74.<br>
 <span id="doc-eng-supported-measures-works-cited-17"></span>
-[17] Pedersen, Ted. “Fishing for Exactness.” *Proceedings of the South-Central SAS Users Group Conference*, 27-29 Oct. 1996.<br>
+[17] Pedersen, Ted. “Fishing for Exactness.” *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference*, 27-29 Oct. 1996, edited by Tom Winn, The South-Central Regional SAS Users' Group, 1996, pp. 188-200.<br>
 <span id="doc-eng-supported-measures-works-cited-18"></span>
 [18] Kilgarriff, Adam. “Comparing Corpora.” *International Journal of Corpus Linguistics*, vol.6, no.1, Nov. 2001, pp. 232-263.<br>
 <span id="doc-eng-supported-measures-works-cited-19"></span>
@@ -1135,35 +1135,33 @@ Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[
 <span id="doc-eng-supported-measures-works-cited-21"></span>
 [21] Thanopoulos, Aristomenis, et al. “Comparative Evaluation of Collocation Extraction Metrics.” *Proceedings of the Third International Conference on Language Resources and Evaluation*, 29-31 May 2002, edited by Manuel González Rodríguez and Carmen Paz Suarez Araujo, European Language Resources Association, May 2002, pp. 620-25.<br>
 <span id="doc-eng-supported-measures-works-cited-22"></span>
-[22] Daille, Béatrice. “Combined Approach for Terminology Extraction: Lexical Statistics and Linguistic Filtering.” *UCREL Technical Papers*, vol. 5, U of Lancaster, 1995.<br>
+[22] Daille, Béatrice. “Combined Approach for Terminology Extraction: Lexical Statistics and Linguistic Filtering.” *UCREL Technical Papers*, vol. 5, Lancaster U, 1995.<br>
 <span id="doc-eng-supported-measures-works-cited-23"></span>
-[23] Kilgarriff, Adam, and David Tugwell. “Word Sketch: Extraction and Display of Significant Collocations for Lexicography.” *Proceedings of the ACL 2001 Collocations Workshop*, Toulouse, 2001, pp. 32–38.<br>
+[23] “Statistics used in Sketch Engine.” Sketch Engine, https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/. Accessed 26 Nov 2018.<br>
 <span id="doc-eng-supported-measures-works-cited-24"></span>
-[24] “Statistics used in Sketch Engine.” Sketch Engine, https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/. Accessed 26 Nov 2018.<br>
+[24] Dunning, Ted Emerson. *Finding Structure in Text, Genome and Other Symbolic Sequences.* 1998. U of Sheffield, PhD dissertation. *arXiv*, arxiv.org/pdf/1207.1847.pdf.<br>
 <span id="doc-eng-supported-measures-works-cited-25"></span>
-[25] Dunning, Ted Emerson. *Finding Structure in Text, Genome and Other Symbolic Sequences.* 1998. U of Sheffield, PhD dissertation. *arXiv*, arxiv.org/pdf/1207.1847.pdf.<br>
+[25] Church, Kenneth Ward, and William A. Gale. “Concordances for Parallel Text.” *Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research*, St. Catherine's College, 29 Sept - 1 Oct 1991, UW Centre for the New OED and Text Research, 1991.<br>
 <span id="doc-eng-supported-measures-works-cited-26"></span>
-[26] Church, Kenneth Ward, and William A. Gale. “Concordances for Parallel Text.” *Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research*, St. Catherine's College, 29 Sept - 1 Oct 1991, UW Centre for the New OED and Text Research, 1991.<br>
+[26] Smadja, Frank, et al. “Translating Collocations for Bilingual Lexicons: A Statistical Approach.” *Computational Linguistics*, vol. 22, no. 1, 1996, pp. 1-38.<br>
 <span id="doc-eng-supported-measures-works-cited-27"></span>
-[27] Smadja, Frank, et al. “Translating Collocations for Bilingual Lexicons: A Statistical Approach.” *Computational Linguistics*, vol. 22, no. 1, 1996, pp. 1-38.<br>
+[27] Rychlý, Pavel. “A Lexicographyer-Friendly Association Score.” *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*, 5-7 Dec. 2008, edited by P. Sojka and A. Horák, Masaryk U, 2008, pp. 6-9.<br>
 <span id="doc-eng-supported-measures-works-cited-28"></span>
-[28] Rychlý, Pavel. “A Lexicographyer-Friendly Association Score.” *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*, 5-7 Dec. 2008, edited by P. Sojka and A. Horák, Masaryk U, 2008, pp. 6-9.<br>
+[28] Dias, Gaël, et al. “Language Independent Automatic Acquisition of Rigid Multiword Units from Unrestricted Text Corpora.” *Proceedings of Conférence Traitement Au-tomatique des Langues Naturelles*, 12-17 July 1999, edited by Ruslan Mitkov and Jong C. Park, 1999, pp. 333-39.<br>
 <span id="doc-eng-supported-measures-works-cited-29"></span>
-[29] Dias, Gaël. “Language Independent Automatic Acquisition of Rigid Multiword Units from Unrestricted Text Corpora.” *Proceedings of Conférence Traitement Au-tomatique des Langues Naturelles*, 12-17 July 1999, Cargèse, edited by Ruslan Mitkov and Jong C. Park, 1999, pp. 333-39.<br>
+[29] Pedersen, Ted. “Dependent Bigram Identification.” *Proceedings of the Fifteenth National Conference on Artificial Intelligence*, 26-30 July 1998, AAAI P, 1998, p. 1197.<br>
 <span id="doc-eng-supported-measures-works-cited-30"></span>
-[30] Pedersen, Ted. “Dependent Bigram Identification.” *Proceedings of the Fifteenth National Conference on Artificial Intelligence*, 26-30 July 1998, American Association for Artificial Intelligence, 1998, p. 1197.<br>
+[30] Quasthoff, Uwe, and Christian Wolff. “The Poisson Collocation Measure and Its Applications.” *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*, 2002, IEEE, 2002.<br>
 <span id="doc-eng-supported-measures-works-cited-31"></span>
-[31] Quasthoff, Uwe, and Christian Wolff. “The Poisson Collocation Measure and Its Applications.” *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*, 2002.<br>
+[31] Kilgarriff, Adam. “Simple Maths for Keywords.” *Proceedings of the Corpus Linguistics Conference 2009*, 20-23 July 2009, edited by Michaela Mahlberg et al., U of Liverpool, July 2009, p. 171.<br>
 <span id="doc-eng-supported-measures-works-cited-32"></span>
-[32] Kilgarriff, Adam. “Simple Maths for Keywords.” *Proceedings of Corpus Linguistics Conference*, Liverpool, 20-23 July 2009, edited by M. Mahlberg et al., U of Liverpool, July 2009.<br>
+[32] Pojanapunya, Punjaporn, and Richard Watson Todd. “Log-likelihood and Odds Ratio Keyness Statistics for Different Purposes of Keyword Analysis.” *Corpus Linguistics and Lingustic Theory*, vol. 15, no. 1, Jan. 2016, pp. 133-67.<br>
 <span id="doc-eng-supported-measures-works-cited-33"></span>
-[33] Pojanapunya, Punjaporn, and Richard Watson Todd. “Log-likelihood and Odds Ratio Keyness Statistics for Different Purposes of Keyword Analysis.” *Corpus Linguistics and Lingustic Theory*, vol. 15, no. 1, Jan. 2016, pp. 133-67.<br>
+[33] Hardie, Andrew. “Log Ratio: An Informal Introduction.” The Centre for Corpus Approaches to Social Science, 28 Apr. 2014, http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.<br>
 <span id="doc-eng-supported-measures-works-cited-34"></span>
-[34] Hardie, Andrew. “Log Ratio: An Informal Introduction.” The Centre for Corpus Approaches to Social Science, http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/<br>
+[34] Gabrielatos, Costas. “Keyness Analysis: Nature, Metrics and Techniques.” *Corpus Approaches to Discourse: A Critical Review*, edited by Charlotte Taylor and Anna Marchi, Routledge, 2018.<br>
 <span id="doc-eng-supported-measures-works-cited-35"></span>
-[35] Gabrielatos, Costas. “Keyness Analysis: Nature, Metrics and Techniques.” *Corpus Approaches to Discourse: A Critical Review*, edited by Charlotte Taylor and Anna Marchi, Routledge, 2018.<br>
-<span id="doc-eng-supported-measures-works-cited-36"></span>
-[36] Gabrielatos, Costas, and Anna Marchi. “Keyness: Appropriate Metrics and Practical Issues.” *Proceedings of CADS International Conference*, 13-14 Sept. 2012.
+[35] Gabrielatos, Costas, and Anna Marchi. “Keyness: Appropriate Metrics and Practical Issues.” *Proceedings of CADS International Conference 2012*, 13-14 Sept. 2012, U of Bologna, 2012.
 
 <span id="doc-zho"></span>
 ## Documentation - Chinese (Simplified)

@@ -110,7 +110,7 @@ def students_t_test_1_sample(main, c11, c12, c21, c22):
     return [t_stat, p_value, None]
 
 # Reference:
-#     Paquot, Magali and Yves Bestgen. "Distinctive Words in Academic Writing: A Comparison of Three Statistical Tests for Keyword Extraction." Language and Computers, vol.68, 2009, pp. 247-269.
+#     Paquot, Magali, and Yves Bestgen. "Distinctive Words in Academic Writing: A Comparison of Three Statistical Tests for Keyword Extraction." Language and Computers, vol.68, 2009, pp. 247-269.
 def students_t_test_2_sample(main, counts_observed, counts_ref):
     variances = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['variances']
 
@@ -124,7 +124,7 @@ def students_t_test_2_sample(main, counts_observed, counts_ref):
     return [t_stat, p_value, bayes_factor]
 
 # Reference:
-#     Hofland, Knut and Stig Johansson. Word Frequencies in British and American English. Norwegian Computing Centre for the Humanities, 1982.
+#     Hofland, Knut, and Stig Johansson. Word Frequencies in British and American English. Norwegian Computing Centre for the Humanities, 1982.
 #     Oakes, Michael P. Statistics for Corpus Linguistics. Edinburgh UP, 1998.
 def pearsons_chi_squared_test(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
@@ -199,7 +199,7 @@ def log_likehood_ratio_test(main, c11, c12, c21, c22):
     return [log_likelihood_ratio, p_value, bayes_factor]
 
 # Reference:
-#     Pedersen, Ted. "Fishing for Exactness." Proceedings of the South-Central SAS Users Group Conference, 27-29 Oct. 1996, Austin.
+#     Pedersen, Ted. “Fishing for Exactness.” Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference, 27-29 Oct. 1996, edited by Tom Winn, The South-Central Regional SAS Users' Group, 1996, pp. 188-200.
 def fishers_exact_test(main, c11, c12, c21, c22):
     direction = main.settings_custom['measures']['statistical_significance']['fishers_exact_test']['direction']
 

@@ -23,11 +23,11 @@ main.settings_custom['measures']['effect_size'] = {
     }
 }
 
-# Church, Kenneth Ward and Patrick Hanks. Word Association Norms, Mutual Information, and Lexicography. Computational Linguistics, vol. 16, no. 1, Mar. 1990, p. 24.
+# Church, Kenneth Ward, and Patrick Hanks. Word Association Norms, Mutual Information, and Lexicography. Computational Linguistics, vol. 16, no. 1, Mar. 1990, p. 24.
 def test_pmi():
     assert round(wordless_measures_effect_size.pmi(main, 8, 1105 - 8, 44 - 8, 15000000 - 1105 - 44 + 8), 1) == 11.3
 
-# Church, Kenneth Ward and William A. Gale. "Concordances for Parallel Text." Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, 29 Sept - 1 Oct 1991, UW Centre for the New OED and Text Research, 1991.
+# Church, Kenneth Ward, and William A. Gale. "Concordances for Parallel Text." Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, 29 Sept - 1 Oct 1991, UW Centre for the New OED and Text Research, 1991.
 def test_squared_phi_coeff():
     assert round(wordless_measures_effect_size.squared_phi_coeff(main, 31950, 12004, 4793, 848330), 2) == 0.62
 
@@ -43,15 +43,15 @@ def test_min_sensitivity():
 def test_kilgarriffs_ratio():
     assert round(wordless_measures_effect_size.kilgarriffs_ratio(main, 35, 263, 112289776, 1559716979), 4) == 1.1224
 
-# Pojanapunya, Punjaporn and Richard Watson Todd. "Log-likelihood and Odds Ratio Keyness Statistics for Different Purposes of Keyword Analysis." Corpus Linguistics and Lingustic Theory, vol. 15, no. 1, Jan. 2016, p 154.
+# Pojanapunya, Punjaporn, and Richard Watson Todd. "Log-likelihood and Odds Ratio Keyness Statistics for Different Purposes of Keyword Analysis." Corpus Linguistics and Lingustic Theory, vol. 15, no. 1, Jan. 2016, p 154.
 def test_odds_ratio():
     assert round(wordless_measures_effect_size.odds_ratio(main, 16217, 735, 2796938 - 16217, 2087946 - 735), 1) == 16.6
 
-# Hardie, Andrew. "Log Ratio: An Informal Introduction." The Centre for Corpus Approaches to Social Science, cass.lancs.ac.uk/log-ratio-an-informal-introduction/
+# Hardie, Andrew. “Log Ratio: An Informal Introduction.” The Centre for Corpus Approaches to Social Science, 28 Apr. 2014, http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.
 def test_log_ratio():
     assert wordless_measures_effect_size.log_ratio(main, 1, 1, 1000000 - 1, 1000000 - 1) == 0
 
-# Hofland, Knut and Stig Johansson. Word Frequencies in British and American English. Norwegian Computing Centre for the Humanities, 1982, p. 471.
+# Hofland, Knut, and Stig Johansson. Word Frequencies in British and American English. Norwegian Computing Centre for the Humanities, 1982, p. 471.
 def test_diff_coeff():
     assert round(wordless_measures_effect_size.diff_coeff(main, 18, 35, 1000000 - 18, 1000000 - 35), 2) == -0.32
 
