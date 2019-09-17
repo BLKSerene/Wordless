@@ -126,7 +126,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # PyQt
             [
                 '<a href="https://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>',
-                '5.13.0',
+                '5.13.1',
                 'Riverbank Computing Limited',
                 '<a href="http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license">GPL-3.0</a>'
             ],
@@ -797,6 +797,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <ul>
                             <li>Upgrade botok (pybo) to 0.6.10</li>
                             <li>Upgrade NumPy to 1.17.2</li>
+                            <li>Upgrade PyQt to 5.13.1</li>
                             <li>Upgrade underthesea to 1.1.17</li>
                         </ul>
                     </div>
