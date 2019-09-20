@@ -33,7 +33,14 @@ TEST_CHECKING_FILE_MISSING = [get_path('missing.txt')]
 TEST_CHECKING_FILE_EMPTY = [get_path('empty.txt')]
 TEST_CHECKING_FILE_DUPLICATE = [get_path('duplicate.txt')]
 TEST_CHECKING_FILE_UNSUPPORTED = [get_path('unsupported.unsupported')]
-TEST_CHECKING_FILE_PARSING_ERROR = [get_path('parsing_error.html')]
+TEST_CHECKING_FILE_PARSING_ERROR = [
+    get_path('parsing_error_csv.csv'),
+    get_path('parsing_error_htm.htm'),
+    get_path('parsing_error_html.html'),
+    get_path('parsing_error_lrc.lrc'),
+    get_path('parsing_error_tmx.tmx'),
+    get_path('parsing_error_xml.xml')
+]
 TEST_CHECKING_FILE_LOADING_ERROR = [get_path('loading_error.txt')]
 
 def test_checking_file_missing():
