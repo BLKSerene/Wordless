@@ -788,6 +788,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Bug Fixes</div>
                         <ul>
+                            <li>Fix file checking</li>
                             <li>Fix "Paragraph Length" and "Sentence Length" in "Overview"</li>
                         </ul>
                     </div>
