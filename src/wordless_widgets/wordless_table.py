@@ -294,6 +294,126 @@ class Wordless_Table(QTableWidget):
         else:
             return self.find_rows(text)
 
+class Wordless_Table_Error(Wordless_Table):
+    def __init__(self, main, headers):
+        super().__init__(main, headers)
+
+    def export_table(self):
+        def set_cell_styles(cell, item, item_type = 'item'):
+            if item_type == 'header_horizontal':
+                cell.font = openpyxl.styles.Font(name = item.font().family(),
+                                                 size = 8,
+                                                 bold = True,
+                                                 color = 'FFFFFF')
+
+                if self.header_orientation == 'horizontal':
+                    cell.fill = openpyxl.styles.PatternFill(fill_type = 'solid', fgColor = '5C88C5')
+                else:
+                    cell.fill = openpyxl.styles.PatternFill(fill_type = 'solid', fgColor = '888888')
+            elif item_type == 'header_vertical':
+                cell.font = openpyxl.styles.Font(name = item.font().family(),
+                                                 size = 8,
+                                                 bold = True,
+                                                 color = 'FFFFFF')
+
+                cell.fill = openpyxl.styles.PatternFill(fill_type = 'solid', fgColor = '5C88C5')
+            else:
+                cell.font = openpyxl.styles.Font(name = item.font().family(),
+                                                 size = 8,
+                                                 color = '292929')
+
+            cell.alignment = openpyxl.styles.Alignment(horizontal = 'center',
+                                                       vertical = 'center',
+                                                       wrap_text = True)
+
+        default_dir = self.main.settings_custom['export']['tables']['default_path']
+
+        (file_path,
+         file_type) = QFileDialog.getSaveFileName(self,
+                                                  self.tr('Export Table'),
+                                                  wordless_checking_misc.check_dir(default_dir),
+                                                  ';;'.join(self.main.settings_global['file_types']['export_tables']),
+                                                  self.main.settings_custom['export']['tables']['default_type'])
+
+        if file_path:
+            # Check permission
+            try:
+                if file_type == self.tr('Excel Workbook (*.xlsx)'):
+                    workbook = openpyxl.Workbook()
+                    worksheet = workbook.active
+
+                    # Freeze panes
+                    if all(self.item(0, col) for col in range(self.columnCount())):
+                        worksheet.freeze_panes = 'A2'
+
+                    dpi_horizontal = QApplication.primaryScreen().logicalDotsPerInchX()
+                    dpi_vertical = QApplication.primaryScreen().logicalDotsPerInchY()
+
+                    rows_export = list(range(self.rowCount()))
+
+                    # Horizontal Headers
+                    for col in range(self.columnCount()):
+                        cell = worksheet.cell(1, 1 + col)
+                        cell.value = self.horizontalHeaderItem(col).text()
+
+                        set_cell_styles(cell, self.horizontalHeaderItem(col),
+                                        item_type = 'header_horizontal')
+
+                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
+
+                    # Cells
+                    for row_cell, row_item in enumerate(rows_export):
+                        for col in range(self.columnCount()):
+                            cell = worksheet.cell(2 + row_cell, 1 + col)
+                            cell.value = self.item(row_item, col).text()
+
+                            set_cell_styles(cell, self.item(row_item, col))
+
+                    # Row Height
+                    worksheet.row_dimensions[1].height = self.horizontalHeader().height() / dpi_vertical * 72
+
+                    for i, _ in enumerate(worksheet.rows):
+                        worksheet.row_dimensions[2 + i].height = self.verticalHeader().sectionSize(0) / dpi_vertical * 72
+
+                    # Borders
+                    border = openpyxl.styles.Side(border_style = 'thin', color = '292929')
+
+                    for row, _ in enumerate(worksheet.rows):
+                        for col, _ in enumerate(worksheet.columns):
+                            worksheet.cell(row + 1, col + 1).border = openpyxl.styles.Border(left = border,
+                                                                                             right = border,
+                                                                                             top = border,
+                                                                                             bottom = border)
+
+                    workbook.save(file_path)
+                elif file_type == self.tr('CSV File (*.csv)'):
+                    encoding = self.main.settings_custom['export']['tables']['default_encoding']
+
+                    with open(file_path, 'w', encoding = encoding, newline = '') as f:
+                        csv_writer = csv.writer(f)
+
+                        rows_export = list(range(self.rowCount()))
+
+                        # Horizontal Headers
+                        csv_writer.writerow([self.horizontalHeaderItem(col).text().strip()
+                                             for col in range(self.columnCount())])
+
+                        # Cells
+                        for row in rows_export:
+                            row_to_export = []
+
+                            for col in range(self.columnCount()):
+                                row_to_export.append(self.item(row, col).text().strip())
+
+                            csv_writer.writerow(row_to_export)
+
+                self.main.settings_custom['export']['tables']['default_path'] = os.path.normpath(os.path.dirname(file_path))
+                self.main.settings_custom['export']['tables']['default_type'] = file_type
+
+                wordless_msg_box.wordless_msg_box_export_table_success(self.main, file_path)
+            except PermissionError:
+                wordless_msg_box.wordless_msg_box_export_table_error(self.main, file_path)
+
 class Wordless_Table_Data(Wordless_Table):
     def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
                  headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
