@@ -82,7 +82,12 @@ def check_files_parsing_error(main, file_paths):
     for file_path in file_paths:
         file_path = os.path.normpath(file_path)
 
-        if os.path.splitext(file_path)[1] in ['.htm', '.html', '.tmx', '.lrc']:
+        if os.path.splitext(file_path)[1] in ['.csv',
+                                              '.htm',
+                                              '.html',
+                                              '.xml',
+                                              '.tmx',
+                                              '.lrc']:
             if main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
                 encoding, _ = wordless_detection.detect_encoding(main, file_path)
             else:
