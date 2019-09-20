@@ -94,3 +94,17 @@ class Wordless_Dialog_Info(Wordless_Dialog):
 
         self.layout().setRowStretch(0, 1)
         self.layout().setContentsMargins(0, 0, 0, 0)
+
+class Wordless_Dialog_Error(Wordless_Dialog_Info):
+    def __init__(self, main, title, width = 0, height = 0, no_button = False):
+        super().__init__(main, title, width, height, no_button)
+
+    def exec_(self):
+        super().exec_()
+
+        QApplication.beep()
+
+    def open(self):
+        super().open()
+
+        QApplication.beep()
