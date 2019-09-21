@@ -786,6 +786,13 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <hr>
 
                     <div class="changelog-section">
+                        <div class="changelog-section-header">Improvements</div>
+                        <ul>
+                            <li>Update error messages for file checking</li>
+                        </ul>
+                    </div>
+
+                    <div class="changelog-section">
                         <div class="changelog-section-header">Bug Fixes</div>
                         <ul>
                             <li>Fix file checking</li>
