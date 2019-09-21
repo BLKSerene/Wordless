@@ -257,14 +257,14 @@ def init_settings_global(main):
         },
 
         'file_encodings': {
-            main.tr('All Languages (UTF-8 Without BOM)'): 'utf_8',
+            main.tr('All Languages (UTF-8 without BOM)'): 'utf_8',
             main.tr('All Languages (UTF-8 with BOM)'): 'utf_8_sig',
             main.tr('All Languages (UTF-16 with BOM)'): 'utf_16',
-            main.tr('All Languages (UTF-16BE Without BOM)'): 'utf_16_be',
-            main.tr('All Languages (UTF-16LE Without BOM)'): 'utf_16_le',
+            main.tr('All Languages (UTF-16BE without BOM)'): 'utf_16_be',
+            main.tr('All Languages (UTF-16LE without BOM)'): 'utf_16_le',
             main.tr('All Languages (UTF-32 with BOM)'): 'utf_32',
-            main.tr('All Languages (UTF-32BE Without BOM)'): 'utf_32_be',
-            main.tr('All Languages (UTF-32LE Without BOM)'): 'utf_32_le',
+            main.tr('All Languages (UTF-32BE without BOM)'): 'utf_32_be',
+            main.tr('All Languages (UTF-32LE without BOM)'): 'utf_32_le',
             main.tr('All Languages (UTF-7)'): 'utf_7',
             main.tr('All Languages (CP65001)'): 'cp65001',
 
