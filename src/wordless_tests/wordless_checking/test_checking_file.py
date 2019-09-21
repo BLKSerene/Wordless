@@ -16,60 +16,76 @@ sys.path.append('.')
 
 from wordless_checking import wordless_checking_file
 from wordless_tests import test_init
+from wordless_utils import wordless_misc
 
 def get_path(file_name):
-    return os.path.normpath(f'wordless_tests/files/checking/{file_name}')
+    return wordless_misc.get_abs_path(f'wordless_tests/files/checking/{file_name}')
+
+def get_file(file_name):
+    file = {
+        'path': get_path(file_name),
+        'encoding': 'utf_8'
+    }
+
+    return file
 
 main = test_init.Test_Main()
 main.settings_custom['files']['files_open'] = [
-    {
-        'path': get_path('duplicate.txt')
-    }
+    get_file('duplicate.txt')
 ]
-# Disable encoding detection
-main.settings_custom['files']['auto_detection_settings']['detect_encodings'] = False
 
-TEST_CHECKING_FILE_MISSING = [get_path('missing.txt')]
-TEST_CHECKING_FILE_EMPTY = [get_path('empty.txt')]
-TEST_CHECKING_FILE_DUPLICATE = [get_path('duplicate.txt')]
-TEST_CHECKING_FILE_UNSUPPORTED = [get_path('unsupported.unsupported')]
-TEST_CHECKING_FILE_PARSING_ERROR = [
-    get_path('parsing_error_csv.csv'),
-    get_path('parsing_error_htm.htm'),
-    get_path('parsing_error_html.html'),
-    get_path('parsing_error_lrc.lrc'),
-    get_path('parsing_error_tmx.tmx'),
-    get_path('parsing_error_xml.xml')
+FILES_MISSING = [
+    get_path('missing.txt')
 ]
-TEST_CHECKING_FILE_LOADING_ERROR = [get_path('loading_error.txt')]
+FILES_EMPTY = [
+    get_path('empty_txt.txt'),
+    get_path('empty_txt_bom.txt'),
+    get_path('empty_docx.docx')
+]
+FILES_DUPLICATE = [
+    get_path('duplicate.txt')
+]
+FILES_UNSUPPORTED = [
+    get_path('unsupported.unsupported')
+]
+FILES_PARSING_ERROR = [
+    get_file('parsing_error_csv.csv'),
+    get_file('parsing_error_htm.htm'),
+    get_file('parsing_error_html.html'),
+    get_file('parsing_error_lrc.lrc'),
+    get_file('parsing_error_tmx.tmx'),
+    get_file('parsing_error_xml.xml')
+]
+FILES_DECODING_ERROR = [
+    get_file('decoding_error.txt')
+]
 
 def test_checking_file_missing():
-    _, files_missing = wordless_checking_file.check_files_missing(main, TEST_CHECKING_FILE_MISSING)
-    
-    assert files_missing == TEST_CHECKING_FILE_MISSING
+    _, files_missing = wordless_checking_file.check_files_missing(main, FILES_MISSING)
+
+    assert files_missing == FILES_MISSING
 
 def test_checking_file_empty():
-    _, files_empty = wordless_checking_file.check_files_empty(main, TEST_CHECKING_FILE_EMPTY)
-    
-    assert files_empty == TEST_CHECKING_FILE_EMPTY
+    _, files_empty = wordless_checking_file.check_files_empty(main, FILES_EMPTY)
+
+    assert files_empty == FILES_EMPTY
 
 def test_checking_file_duplicate():
-    _, files_duplicate = wordless_checking_file.check_files_duplicate(main, TEST_CHECKING_FILE_DUPLICATE)
+    _, files_duplicate = wordless_checking_file.check_files_duplicate(main, FILES_DUPLICATE)
     
-    assert files_duplicate == TEST_CHECKING_FILE_DUPLICATE
+    assert files_duplicate == FILES_DUPLICATE
 
 def test_checking_file_unsupported():
-    _, files_unsupported = wordless_checking_file.check_files_unsupported(main, TEST_CHECKING_FILE_UNSUPPORTED)
+    _, files_unsupported = wordless_checking_file.check_files_unsupported(main, FILES_UNSUPPORTED)
     
-    assert files_unsupported == TEST_CHECKING_FILE_UNSUPPORTED
+    assert files_unsupported == FILES_UNSUPPORTED
 
 def test_checking_file_parsing_error():
-    _, files_parsing_error = wordless_checking_file.check_files_parsing_error(main, TEST_CHECKING_FILE_PARSING_ERROR)
+    _, files_parsing_error = wordless_checking_file.check_files_parsing_error(main, FILES_PARSING_ERROR)
     
-    assert files_parsing_error == TEST_CHECKING_FILE_PARSING_ERROR
+    assert files_parsing_error == FILES_PARSING_ERROR
 
-def test_checking_file_loading_error():
-    _, files_loading_error = wordless_checking_file.check_files_loading_error(main, TEST_CHECKING_FILE_LOADING_ERROR,
-                                                                                       encodings = ['utf_8'])
-    
-    assert files_loading_error == TEST_CHECKING_FILE_LOADING_ERROR
+def test_checking_file_decoding_error():
+    _, files_decoding_error = wordless_checking_file.check_files_decoding_error(main, FILES_DECODING_ERROR)
+
+    assert files_decoding_error == FILES_DECODING_ERROR

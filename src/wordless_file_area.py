@@ -30,7 +30,7 @@ import openpyxl
 import xlrd
 
 from wordless_checking import wordless_checking_file, wordless_checking_misc
-from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
+from wordless_dialogs import wordless_dialog_error, wordless_dialog_misc, wordless_msg_box
 from wordless_utils import (wordless_conversion, wordless_detection, wordless_misc,
                             wordless_threading)
 from wordless_widgets import wordless_box, wordless_layout, wordless_table
@@ -365,10 +365,10 @@ class Wordless_Files():
 
                 self.main.settings_custom['files']['files_open'].append(new_file)
 
-            wordless_msg_box.wordless_msg_box_detection_error(self.main,
-                                                              files_detection_error_encoding,
-                                                              files_detection_error_text_type,
-                                                              files_detection_error_lang)
+            wordless_dialog_error.wordless_dialog_error_detection(self.main,
+                                                                  files_detection_error_encoding,
+                                                                  files_detection_error_text_type,
+                                                                  files_detection_error_lang)
 
             self.update_table()
 
@@ -388,12 +388,6 @@ class Wordless_Files():
         file_paths, files_unsupported = wordless_checking_file.check_files_unsupported(self.main, file_paths)
         file_paths, files_parsing_error = wordless_checking_file.check_files_parsing_error(self.main, file_paths)
 
-        wordless_msg_box.wordless_msg_box_file_error_on_opening(self.main,
-                                                                files_empty = files_empty,
-                                                                files_duplicate = files_duplicate,
-                                                                files_unsupported = files_unsupported,
-                                                                files_parsing_error = files_parsing_error)
-
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Add_Files(self.main)
 
         worker_add_files = Wordless_Worker_Add_Files(self.main, file_paths, dialog_progress, data_received)
@@ -405,6 +399,12 @@ class Wordless_Files():
 
         thread_add_files.quit()
         thread_add_files.wait()
+
+        wordless_dialog_error.wordless_dialog_error_file_open(self.main,
+                                                              files_empty = files_empty,
+                                                              files_duplicate = files_duplicate,
+                                                              files_unsupported = files_unsupported,
+                                                              files_parsing_error = files_parsing_error)
 
     def remove_files(self, indexes):
         self.main.settings_custom['files']['files_closed'].append([])

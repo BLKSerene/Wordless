@@ -18,7 +18,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_checking import wordless_checking_file, wordless_checking_misc
-from wordless_dialogs import wordless_msg_box
+from wordless_dialogs import wordless_dialog_error, wordless_msg_box
 from wordless_widgets import wordless_msg
 from wordless_utils import wordless_detection, wordless_misc
 
@@ -107,30 +107,31 @@ class Wordless_List(QListWidget):
         if file_paths:
             self.main.settings_custom['import'][settings]['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
-            # Check files
-            file_paths, files_empty = wordless_checking_file.check_files_empty(self.main, file_paths)
-
+            # Detect encodings
             if self.main.settings_custom['import'][settings]['detect_encodings']:
                 for file_path in file_paths:
                     files.append({
-                                     'path': os.path.normpath(file_path),
-                                     'encoding': wordless_detection.detect_encoding(self.main, file_path)[0]
-                                 })
+                        'path': wordless_misc.get_abs_path(file_path),
+                        'encoding': wordless_detection.detect_encoding(self.main, file_path)[0]
+                    })
             else:
                 for file_path in file_paths:
                     files.append({
-                                     'path': os.path.normpath(file_path),
-                                     'encoding': self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
-                                 })
+                        'path': wordless_misc.get_abs_path(file_path),
+                        'encoding': self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
+                    })
 
-            encodings = [file['encoding'] for file in files]
+            files_ok, files_empty = wordless_checking_file.check_files_empty(self.main, files)
+            files_ok, files_decoding_error = wordless_checking_file.check_files_decoding_error(self.main, files_ok)
 
-            file_paths, files_loading_error = wordless_checking_file.check_files_loading_error(self.main, file_paths, encodings)
+            # Extract file paths
+            files_empty = [file['path'] for file in files_empty]
+            files_decoding_error = [file['path'] for file in files_decoding_error]
 
-            if files_empty or files_loading_error:
-                wordless_msg_box.wordless_msg_box_file_error_on_importing(self.main,
-                                                                          files_empty = files_empty,
-                                                                          files_loading_error = files_loading_error)
+            if files_empty or files_decoding_error:
+                wordless_dialog_error.wordless_dialog_error_import(self.main,
+                                                                   files_empty = files_empty,
+                                                                   files_decoding_error = files_decoding_error)
 
                 wordless_msg.wordless_msg_import_list_error(self.main)
             else:
@@ -140,14 +141,13 @@ class Wordless_List(QListWidget):
 
                 num_prev = len(items_cur)
 
-                for file in files:
-                    if file['path'] in file_paths:
-                        with open(file['path'], 'r', encoding = file['encoding']) as f:
-                            for line in f:
-                                line = line.strip()
+                for file in files_ok:
+                    with open(file['path'], 'r', encoding = file['encoding']) as f:
+                        for line in f:
+                            line = line.strip()
 
-                                if line not in items_cur:
-                                    items_to_import.append(line)
+                            if line not in items_cur:
+                                items_to_import.append(line)
 
                 self.load_items(collections.OrderedDict.fromkeys(items_to_import))
                 self.itemChanged.emit(self.item(0))
