@@ -806,6 +806,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade botok (pybo) to 0.6.10</li>
                             <li>Upgrade NumPy to 1.17.2</li>
                             <li>Upgrade PyQt to 5.13.1</li>
+                            <li>Upgrade Sacremoses to 0.0.34</li>
                             <li>Upgrade underthesea to 1.1.17</li>
                         </ul>
                     </div>
