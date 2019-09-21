@@ -879,6 +879,8 @@ def init_settings_global(main):
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer'),
+                main.tr('Sacremoses - Penn Treebank Tokenizer'),
                 main.tr('spaCy - Lithuanian Word Tokenizer')
             ],
 
