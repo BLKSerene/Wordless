@@ -132,7 +132,7 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
                         if self.main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
                             encoding_code, _ = wordless_detection.detect_encoding(self.main, file_path)
                         else:
-                            encoding_code = self.main.settings_custom['encoding_detection']['default_settings']['default_encoding']
+                            encoding_code = self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
 
                         # CSV files
                         if file_ext == '.csv':
