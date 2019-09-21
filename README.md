@@ -665,14 +665,14 @@ Lyrics File             |\*.lrc
 
 Languages|File Encodings|Auto-detection
 ---------|--------------|:------------:
-All Languages|UTF-8 Without BOM   |✔
+All Languages|UTF-8 without BOM   |✔
 All Languages|UTF-8 with BOM      |✔
 All Languages|UTF-16 with BOM     |✔
-All Languages|UTF-16BE Without BOM|✖
-All Languages|UTF-16LE Without BOM|✖
+All Languages|UTF-16BE without BOM|✖
+All Languages|UTF-16LE without BOM|✖
 All Languages|UTF-32 with BOM     |✖
-All Languages|UTF-32BE Without BOM|✖
-All Languages|UTF-32LE Without BOM|✖
+All Languages|UTF-32BE without BOM|✖
+All Languages|UTF-32LE without BOM|✖
 All Languages|UTF-7               |✖
 All Languages|CP65001             |✖
 Arabic|CP720        |✖
