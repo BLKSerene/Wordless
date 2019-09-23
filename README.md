@@ -125,9 +125,10 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 4     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Liling Tan
 5     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
 6     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
-7     |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
-8     |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
-9     |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
+7     |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
+8     |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
+9     |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
+10    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
 
 ### Plotting
 

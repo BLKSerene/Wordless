@@ -395,7 +395,8 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'rus':
         if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
                               'NLTK - NIST Tokenizer',
-                              'NLTK - Tok-tok Tokenizer']:
+                              'NLTK - Tok-tok Tokenizer',
+                              'razdel - Russian Word Tokenizer']:
             assert tokens == ['Ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'Информация', 'о', 'файле', 'слушать', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'один', 'из', 'восточнославянских', 'языков', ',', 'национальный', 'язык', 'русского', 'народа', '.']
         elif word_tokenizer in ['NLTK - Twitter Tokenizer',
                                 'Sacremoses - Moses Tokenizer']:

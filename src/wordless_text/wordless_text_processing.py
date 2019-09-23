@@ -23,6 +23,7 @@ import nltk
 import nltk.tokenize.nist
 import pymorphy2
 import pythainlp
+import razdel
 import sacremoses
 import spacy
 import underthesea
@@ -98,14 +99,17 @@ def wordless_sentence_tokenize(main, text, lang,
 
             if sentence_start <= len(line):
                 sentences.append(line[sentence_start:])
+    # Russian
+    elif sentence_tokenizer == main.tr('razdel - Russian Sentenizer'):
+        sentences = [sentence.text for sentence in razdel.sentenize(text)]
     # Thai
-    elif sentence_tokenizer == 'PyThaiNLP - Thai Sentence Tokenizer':
+    elif sentence_tokenizer == main.tr('PyThaiNLP - Thai Sentence Tokenizer'):
         sentences = pythainlp.tokenize.sent_tokenize(text)
     # Tibetan
-    elif sentence_tokenizer == 'Wordless - Tibetan Sentence Tokenizer':
+    elif sentence_tokenizer == main.tr('Wordless - Tibetan Sentence Tokenizer'):
         sentences = text.split()
     # Vietnamese
-    elif sentence_tokenizer == 'Underthesea - Vietnamese Sentence Tokenizer':
+    elif sentence_tokenizer == main.tr('Underthesea - Vietnamese Sentence Tokenizer'):
         sentences = underthesea.sent_tokenize(text)
 
     sentences = wordless_text_utils.record_boundary_sentences(sentences, text)
@@ -335,6 +339,15 @@ def wordless_word_tokenize(main, text, lang,
                                         break
 
                 tokens_hierarchical.append(tokens)
+    # Russian
+    elif word_tokenizer == 'razdel - Russian Word Tokenizer':
+        if flat_tokens:
+            sentences = [text]
+        else:
+            sentences = wordless_sentence_tokenize(main, text, lang = 'rus')
+
+        for sentence in sentences:
+            tokens_hierarchical.append([token.text for token in razdel.tokenize(sentence)])
     # Thai
     elif 'PyThaiNLP' in word_tokenizer:
         # Preserve sentence boundaries
