@@ -182,6 +182,13 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 'Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)',
                 '<a href="https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE">Apache-2.0</a>'
             ],
+            # razdel
+            [
+                '<a href="https://github.com/natasha/razdel">razdel</a>',
+                '0.4.0',
+                'Alexander Kukushkin',
+                '<a href="https://github.com/natasha/razdel#%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F">MIT</a>'
+            ],
             # Sacremoses
             [
                 '<a href="https://github.com/alvations/sacremoses">Sacremoses</a>',
@@ -784,6 +791,13 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                 <div class="changelog">
                     <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0">v1.3.0</a> - ??/??/2019</div>
                     <hr>
+
+                    <div class="changelog-section">
+                        <div class="changelog-section-header">New Features</div>
+                        <ul>
+                            <li>Add razdel's Russian sentenizer and word tokenizer</li>
+                        </ul>
+                    </div>
 
                     <div class="changelog-section">
                         <div class="changelog-section-header">Improvements</div>

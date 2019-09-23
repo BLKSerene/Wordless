@@ -127,9 +127,9 @@ def test_word_detokenize(lang, word_detokenizer):
         assert text == 'Limba română este o limbă indo - europeană, din grupul italic și din subgrupul oriental al limbilor romanice.'
     elif lang == 'rus':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Ру́сский язы́к ([ ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать)[~ 3] [⇨] — один из восточнославянских языков, национальный язык русского народа.'
+            assert text == 'Ру́сский язы́к ([ ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать) [~ 3] [⇨] — один из восточнославянских языков, национальный язык русского народа.'
         elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
-            assert text == 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать)[~ 3] [⇨] — один из восточнославянских языков, национальный язык русского народа.'
+            assert text == 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать) [~ 3] [⇨] — один из восточнославянских языков, национальный язык русского народа.'
     elif lang == 'slk':
         assert text == 'Slovenčina patrí do skupiny západoslovanských jazykov (spolu s češtinou, poľštinou, hornou a dolnou lužickou srbčinou a kašubčinou).'
     elif lang == 'slv':
