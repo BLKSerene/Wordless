@@ -572,6 +572,7 @@ def init_settings_global(main):
 
             'rus': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('razdel - Russian Sentenizer'),
                 main.tr('spaCy - Sentencizer')
             ],
 
@@ -943,6 +944,7 @@ def init_settings_global(main):
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('razdel - Russian Word Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('Sacremoses - Penn Treebank Tokenizer'),
                 main.tr('spaCy - Russian Word Tokenizer')
