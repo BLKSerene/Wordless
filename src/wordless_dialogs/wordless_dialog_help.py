@@ -836,8 +836,8 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <div class="changelog-section-header">New Features</div>
                         <ul>
                             <li>Add "Clause No." to "Concordancer"</li>
-                            <li>Add "Sentence/Clause" to "Generation Settings -> Width Unit" in "Concordancer"</li>
-                            <li>Add "Count of Clauses / Clause Length / Paragraph/Sentence/Token Length (Standard Deviation)" to "Overview"</li>
+                            <li>Add "Sentence" and "Clause" to "Generation Settings -> Width Unit" in "Concordancer"</li>
+                            <li>Add "Count of Clauses", "Clause Length", and "Paragraph/Sentence/Token Length (Standard Deviation)" to "Overview"</li>
                             <li>Add extra-stopwords's stop words</li>
                             <li>Add NLTK's Punkt Sentence Tokenizer for Russian</li>
                             <li>Add NLTK's Slovenian and Tajik stop words</li>
@@ -851,9 +851,9 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <div class="changelog-section-header">Improvements</div>
                         <ul>
                             <li>Check permission before exporting tables</li>
-                            <li>Update pybo's Tibetan tokenizers / POS tagger / lemmatizer</li>
+                            <li>Update pybo's Tibetan tokenizers, POS tagger, and lemmatizer</li>
                             <li>Update PyThaiNLP's Thai stop words</li>
-                            <li>Update Sacremoses's tokenizers/detokenizers</li>
+                            <li>Update Sacremoses's tokenizers and detokenizers</li>
                         </ul>
                     </div>
 
@@ -923,8 +923,8 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Fix "Open Folder"</li>
                             <li>Fix "Search in Results" in "Concordancer"</li>
                             <li>Fix "Settings → Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization → Preview"</li>
-                            <li>Fix spaCy's sentence/word tokenizers</li>
-                            <li>Fix Wordless's Chinese/Japanese character tokenizer</li>
+                            <li>Fix spaCy's sentence tokenizers and word tokenizers</li>
+                            <li>Fix Wordless's Chinese and Japanese character tokenizers</li>
                         </ul>
                     </div>
 
