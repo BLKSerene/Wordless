@@ -67,6 +67,8 @@ def test_lemmatize(lang, lemmatizer):
                                                          lang = lang,
                                                          lemmatizer = lemmatizer)
 
+    # print(lemmas)
+
     if lang == 'ast':
         assert lemmas == ["L'asturianu", 'ser', 'unu', 'llingua', 'romance', 'propiu', "d'Asturies,[1", ']', 'perteneciente', 'al', 'subgrupu', 'asturllionés', '.']
     elif lang == 'bul':
@@ -137,3 +139,8 @@ def test_lemmatize(lang, lemmatizer):
             assert lemmas == ['украї́нський', 'мо́вий', '(', 'мфа', ':', '[', 'ukrɑ̽ˈjɪnʲsʲkɑ̽', 'ˈmɔwɑ̽', ']', ',', 'історичний', 'назва', '—', 'ру́ський', ',', 'руси́нська[9][10][11', ']', '[', '*', '2', ']', ')', '—', 'національний', 'мова', 'українець', '.']
     elif lang == 'cym':
         assert lemmas == ['Aelod', "o'r", 'cangen', 'Frythonaidd', "o'r", 'iaith', 'Celtaidd', 'a', 'siarad', 'bod', 'brodorol', 'yn', 'Nghymru', ',', 'can', 'Gymry', 'a', 'pobl', 'arall', 'aredig', 'gwasgar', 'bod', 'Lloegr', ',', 'a', 'can', 'cymuno', 'bechan', 'bod', 'Y', 'Wladfa', ',', 'gwybod', 'Ariannin[7', ']', "yw'r", 'Gymraeg', '(', 'hefyd', 'Cymraeg', 'heb', 'yr', 'bannod', ')', '.']
+
+# for lang, lemmatizers in main.settings_global['lemmatizers'].items():
+#     for lemmatizer in lemmatizers:
+#         if lang in ['eng']:
+#             test_lemmatize(lang, lemmatizer)
