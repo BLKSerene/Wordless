@@ -658,9 +658,11 @@ class Wordless_Worker_Process_Data_Colligation(wordless_threading.Wordless_Worke
             if file['text_type'][1] not in ['tagged_pos', 'tagged_both']:
                 tokens_tagged = []
 
-                for tokens_sentences in text.tokens_sentences_paras:
-                    for tokens in tokens_sentences:
-                        tokens_tagged.extend(wordless_text_processing.wordless_pos_tag(self.main, tokens, text.lang))
+                for para in text.tokens_hierarchical:
+                    for sentence in para:
+                        sentence = [token for clause in sentence for token in clause]
+
+                        tokens_tagged.extend(wordless_text_processing.wordless_pos_tag(self.main, sentence, text.lang))
 
                 text.tags_pos = [[(f'_{tag}' if tag else '')] for _, tag in tokens_tagged]
 
