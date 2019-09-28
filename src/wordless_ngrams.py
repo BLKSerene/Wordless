@@ -790,7 +790,7 @@ class Wordless_Worker_Process_Data_Ngrams(wordless_threading.Wordless_Worker_Pro
         # Total
         if len(files) > 1:
             text_total = wordless_text.Wordless_Text_Blank()
-            text_total.tokens = [token for text in texts for token in text.tokens]
+            text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
             texts.append(text_total)
 
@@ -814,10 +814,10 @@ class Wordless_Worker_Process_Data_Ngrams(wordless_threading.Wordless_Worker_Pro
 
             if allow_skipped_tokens == 0:
                 for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                    ngrams_lens[ngram_size] = list(nltk.ngrams(text.tokens, ngram_size))
+                    ngrams_lens[ngram_size] = list(nltk.ngrams(text.tokens_flat, ngram_size))
             else:
                 for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                    ngrams_lens[ngram_size] = list(nltk.skipgrams(text.tokens, ngram_size, allow_skipped_tokens))
+                    ngrams_lens[ngram_size] = list(nltk.skipgrams(text.tokens_flat, ngram_size, allow_skipped_tokens))
 
             # Dispersion
             number_sections = self.main.settings_custom['measures']['dispersion']['general']['number_sections']
