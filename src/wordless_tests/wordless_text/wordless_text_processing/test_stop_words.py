@@ -32,6 +32,8 @@ def test_stop_words(lang, list_stop_words):
     lang_text = wordless_conversion.to_lang_text(main, lang)
     stop_words = wordless_text_processing.wordless_get_stop_words(main, lang, list_stop_words = list_stop_words)
 
+    # print(stop_words)
+
     if list_stop_words == 'Custom List':
         # Check if custom list is empty
         assert stop_words == []
@@ -40,3 +42,8 @@ def test_stop_words(lang, list_stop_words):
         assert len(stop_words)
         # Check if there are empty tokens in the list
         assert all([stop_word for stop_word in stop_words])
+
+# for lang, lists_stop_words in main.settings_global['stop_words'].items():
+#     for list_stop_words in lists_stop_words:
+#         if lang in ['eng']:
+#             test_stop_words(lang, list_stop_words)
