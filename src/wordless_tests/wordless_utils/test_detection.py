@@ -40,7 +40,7 @@ def test_detection_encoding(file_name):
 
 # Language detection
 @pytest.mark.parametrize('file_name', os.listdir(f'wordless_tests/files/langs/'))
-def testing_detection_lang(file_name):
+def test_detection_lang(file_name):
     file = {}
 
     file['path'] = f'wordless_tests/files/langs/{file_name}'
