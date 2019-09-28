@@ -811,6 +811,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Improvements</div>
                         <ul>
+                            <li>Force consistent results for language detection</li>
                             <li>Update error messages for file checking</li>
                         </ul>
                     </div>
