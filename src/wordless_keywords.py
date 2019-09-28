@@ -432,20 +432,20 @@ class Wordless_Worker_Process_Data_Keywords(wordless_threading.Wordless_Worker_P
             if i > 0:
                 texts.append(text)
             else:
-                tokens_ref = text.tokens
+                tokens_ref = text.tokens_flat
                 len_tokens_ref = len(tokens_ref)
 
         # Total
         if len(files) > 1:
             text_total = wordless_text.Wordless_Text_Blank()
-            text_total.tokens = [token for text in texts for token in text.tokens]
+            text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
             texts.append(text_total)
             self.keywords_freq_files.append(sum(self.keywords_freq_files, collections.Counter()))
 
             self.keywords_freq_files[0] = {token: freq
                                       for token, freq in self.keywords_freq_files[0].items()
-                                      if token in text_total.tokens}
+                                      if token in text_total.tokens_flat}
         else:
             self.keywords_freq_files[0] = {token: freq
                                       for token, freq in self.keywords_freq_files[0].items()
@@ -466,7 +466,7 @@ class Wordless_Worker_Process_Data_Keywords(wordless_threading.Wordless_Worker_P
         for text in texts:
             keywords_stats_file = {}
 
-            tokens_observed = text.tokens
+            tokens_observed = text.tokens_flat
             len_tokens_observed = len(tokens_observed)
 
             if text_test_significance in [self.tr('Student\'s t-test (Two-sample)'),
