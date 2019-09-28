@@ -779,10 +779,10 @@ class Wordless_Worker_Process_Data_Concordancer_Fig(wordless_threading.Wordless_
         for file in files:
             text = wordless_text.Wordless_Text(self.main, file)
 
-            text.tokens = wordless_token_processing.wordless_process_tokens_concordancer(text,
-                                                                                         token_settings = settings['token_settings'])
+            wordless_token_processing.wordless_process_tokens_concordancer(text,
+                                                                           token_settings = settings['token_settings'])
 
-            search_terms_file = wordless_matching.match_search_terms(self.main, text.tokens,
+            search_terms_file = wordless_matching.match_search_terms(self.main, text.tokens_flat,
                                                                      lang = text.lang,
                                                                      text_type = text.text_type,
                                                                      token_settings = settings['token_settings'],
@@ -798,7 +798,7 @@ class Wordless_Worker_Process_Data_Concordancer_Fig(wordless_threading.Wordless_
             texts.append(text)
 
         len_files = len(files)
-        len_tokens_total = sum([len(text.tokens) for text in texts])
+        len_tokens_total = sum([len(text.tokens_flat) for text in texts])
         len_search_terms_total = len(search_terms_total)
 
         if settings['fig_settings']['sort_results_by'] == self.tr('File'):
@@ -813,12 +813,12 @@ class Wordless_Worker_Process_Data_Concordancer_Fig(wordless_threading.Wordless_
 
                 for j, text in enumerate(texts):
                     if search_term in search_terms_files[j]:
-                        x_start_total = x_start + sum([len(text.tokens)
+                        x_start_total = x_start + sum([len(text.tokens_flat)
                                                        for k, text in enumerate(texts)
                                                        if k < j])
-                        len_tokens = len(text.tokens)
+                        len_tokens = len(text.tokens_flat)
 
-                        for k, ngram in enumerate(nltk.ngrams(text.tokens, len_search_term)):
+                        for k, ngram in enumerate(nltk.ngrams(text.tokens_flat, len_search_term)):
                             if ngram == search_term:
                                 points.append([x_start + k / len_tokens * len_tokens_total, y_start - j])
                                 # Total
@@ -832,11 +832,11 @@ class Wordless_Worker_Process_Data_Concordancer_Fig(wordless_threading.Wordless_
 
                 for j, text in enumerate(texts):
                     if search_term in search_terms_files[j]:
-                        x_start = sum([len(text.tokens)
+                        x_start = sum([len(text.tokens_flat)
                                        for k, text in enumerate(texts)
                                        if k < j]) + j + 2
 
-                        for k, ngram in enumerate(nltk.ngrams(text.tokens, len_search_term)):
+                        for k, ngram in enumerate(nltk.ngrams(text.tokens_flat, len_search_term)):
                             if ngram == search_term:
                                 points.append([x_start + k, i])
 
@@ -845,7 +845,7 @@ class Wordless_Worker_Process_Data_Concordancer_Fig(wordless_threading.Wordless_
             x_tick_labels = ['']
 
             if settings['fig_settings']['sort_results_by'] == self.tr('File'):
-                len_tokens_total = sum([len(text.tokens) for text in texts])
+                len_tokens_total = sum([len(text.tokens_flat) for text in texts])
 
                 for i, search_term in enumerate(search_terms_total):
                     x_tick_start = len_tokens_total * i + i + 1
@@ -871,14 +871,14 @@ class Wordless_Worker_Process_Data_Concordancer_Fig(wordless_threading.Wordless_
                 len_search_terms_total = len(search_terms_total)
 
                 for i, text in enumerate(texts):
-                    x_tick_start = sum([len(text.tokens)
+                    x_tick_start = sum([len(text.tokens_flat)
                                         for j, text in enumerate(texts)
                                         if j < i]) + j + 1
 
                     # 1/2
-                    x_ticks.append(x_tick_start + len(text.tokens) / 2)
+                    x_ticks.append(x_tick_start + len(text.tokens_flat) / 2)
                     # Divider
-                    x_ticks.append(x_tick_start + len(text.tokens) + 1)
+                    x_ticks.append(x_tick_start + len(text.tokens_flat) + 1)
 
                 for file in files:
                     # 1/2
