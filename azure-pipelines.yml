@@ -1,0 +1,165 @@
+#
+# Wordless: CI - Azure Pipelines
+#
+# Copyright (C) 2018-2019  Ye Lei (叶磊)
+#
+# This source file is licensed under GNU GPLv3.
+# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+# All other rights reserved.
+#
+
+jobs:
+# Windows
+- job: "Windows"
+
+  pool:
+    vmImage: vs2017-win2016
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.7.x' 
+      architecture: 'x64'
+
+  # Check Python version
+  - script: |
+      python --version
+      python -c "import sys, platform, struct; print(sys.platform, platform.machine(), struct.calcsize('P')*8)"
+    displayName: 'Check Python version'
+
+  # Install dependencies
+  - script: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    displayName: 'Install dependencies'
+
+  # Download spaCy models
+  - script: |
+      python -m spacy download en_core_web_sm
+      python -m spacy download de_core_news_sm
+      python -m spacy download fr_core_news_sm
+      python -m spacy download es_core_news_sm
+      python -m spacy download pt_core_news_sm
+      python -m spacy download it_core_news_sm
+      python -m spacy download nl_core_news_sm
+      python -m spacy download el_core_news_sm
+    displayName: 'Download spaCy models'
+
+  # Download NLTK data
+  - script: |
+      python -m nltk.downloader averaged_perceptron_tagger
+      python -m nltk.downloader averaged_perceptron_tagger_ru
+      python -m nltk.downloader perluniprops
+      python -m nltk.downloader punkt
+      python -m nltk.downloader stopwords
+      python -m nltk.downloader wordnet
+    displayName: 'Download NLTK data'
+
+  # Run tests
+  - script: |
+      cd src
+      python -m pytest
+    displayName: 'Run tests'
+
+# macOS
+- job: "macOS"
+
+  pool:
+    vmImage: macOS-10.14
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.7.x' 
+
+  # Check Python version
+  - script: |
+      python3 --version
+      python3 -c "import sys, platform, struct; print(sys.platform, platform.machine(), struct.calcsize('P')*8)"
+    displayName: 'Check Python version'
+
+  # Install dependencies
+  - script: |
+      pip3 install --upgrade pip
+      pip3 install -r requirements.txt
+    displayName: 'Install dependencies'
+
+  # Download spaCy models
+  - script: |
+      python3 -m spacy download en_core_web_sm
+      python3 -m spacy download de_core_news_sm
+      python3 -m spacy download fr_core_news_sm
+      python3 -m spacy download es_core_news_sm
+      python3 -m spacy download pt_core_news_sm
+      python3 -m spacy download it_core_news_sm
+      python3 -m spacy download nl_core_news_sm
+      python3 -m spacy download el_core_news_sm
+    displayName: 'Download spaCy models'
+
+  # Download NLTK data
+  - script: |
+      python3 -m nltk.downloader averaged_perceptron_tagger
+      python3 -m nltk.downloader averaged_perceptron_tagger_ru
+      python3 -m nltk.downloader perluniprops
+      python3 -m nltk.downloader punkt
+      python3 -m nltk.downloader stopwords
+      python3 -m nltk.downloader wordnet
+    displayName: 'Download NLTK data'
+
+  # Run tests
+  - script: |
+      cd src
+      python3 -m pytest
+    displayName: 'Run tests'
+
+# Linux
+- job: "Linux"
+
+  pool:
+    vmImage: ubuntu-16.04
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.7.x' 
+
+  # Check Python version
+  - script: |
+      python3.7 --version
+      python3.7 -c "import sys, platform, struct; print(sys.platform, platform.machine(), struct.calcsize('P')*8)"
+    displayName: 'Check Python version'
+
+  # Install dependencies
+  - script: |
+      pip3.7 install --upgrade pip
+      pip3.7 install -r requirements.txt
+    displayName: 'Install dependencies'
+
+  # Download spaCy models
+  - script: |
+      python3.7 -m spacy download en_core_web_sm
+      python3.7 -m spacy download de_core_news_sm
+      python3.7 -m spacy download fr_core_news_sm
+      python3.7 -m spacy download es_core_news_sm
+      python3.7 -m spacy download pt_core_news_sm
+      python3.7 -m spacy download it_core_news_sm
+      python3.7 -m spacy download nl_core_news_sm
+      python3.7 -m spacy download el_core_news_sm
+    displayName: 'Download spaCy models'
+
+  # Download NLTK data
+  - script: |
+      python3.7 -m nltk.downloader averaged_perceptron_tagger
+      python3.7 -m nltk.downloader averaged_perceptron_tagger_ru
+      python3.7 -m nltk.downloader perluniprops
+      python3.7 -m nltk.downloader punkt
+      python3.7 -m nltk.downloader stopwords
+      python3.7 -m nltk.downloader wordnet
+    displayName: 'Download NLTK data'
+
+  # Run tests
+  - script: |
+      cd src
+      python3.7 -m pytest
+    displayName: 'Run tests'
