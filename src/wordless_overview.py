@@ -41,6 +41,8 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
                              parent.tr('Type-token Ratio (Standardized)'),
                              parent.tr('Paragraph Length in Sentence (Mean)'),
                              parent.tr('Paragraph Length in Sentence (Standard Deviation)'),
+                             parent.tr('Paragraph Length in Clause (Mean)'),
+                             parent.tr('Paragraph Length in Clause (Standard Deviation)'),
                              parent.tr('Paragraph Length in Token (Mean)'),
                              parent.tr('Paragraph Length in Token (Standard Deviation)'),
                              parent.tr('Sentence Length in Token (Mean)'),
@@ -64,6 +66,8 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
                              parent.tr('Type-token Ratio (Standardized)'),
                              parent.tr('Paragraph Length in Sentence (Mean)'),
                              parent.tr('Paragraph Length in Sentence (Standard Deviation)'),
+                             parent.tr('Paragraph Length in Clause (Mean)'),
+                             parent.tr('Paragraph Length in Clause (Standard Deviation)'),
                              parent.tr('Paragraph Length in Token (Mean)'),
                              parent.tr('Paragraph Length in Token (Standard Deviation)'),
                              parent.tr('Sentence Length in Token (Mean)'),
@@ -325,12 +329,12 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
             text_total.offsets_clauses = [offset
                                           for text in texts
                                           for offset in text.offsets_clauses]
-            text_total.tokens_sentences_paras = [para
-                                                 for text in texts
-                                                 for para in text.tokens_sentences_paras]
-            text_total.tokens = [token
-                                 for text in texts
-                                 for token in text.tokens]
+            text_total.tokens_hierarchical = [para
+                                              for text in texts
+                                              for para in text.tokens_hierarchical]
+            text_total.tokens_flat = [token
+                                      for text in texts
+                                      for token in text.tokens_flat]
 
             texts.append(text_total)
         else:
@@ -345,6 +349,8 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
 
             # Paragraph length
             len_paras_in_sentence = [len(para) for para in text.tokens_hierarchical]
+            len_paras_in_clause = [sum([len(sentence) for sentence in para])
+                                   for para in text.tokens_hierarchical]
             len_paras_in_token = [sum([len(clause) for sentence in para for clause in sentence])
                                   for para in text.tokens_hierarchical]
 
@@ -388,6 +394,7 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
                 sttr = sum(ttrs) / len(ttrs)
 
             texts_stats_file.append(len_paras_in_sentence)
+            texts_stats_file.append(len_paras_in_clause)
             texts_stats_file.append(len_paras_in_token)
             texts_stats_file.append(len_sentences)
             texts_stats_file.append(len_clauses)
@@ -426,13 +433,14 @@ def generate_table(main, table):
 
             for i, stats in enumerate(texts_stats_files):
                 len_paras_in_sentence = stats[0]
-                len_paras_in_token = stats[1]
-                len_sentences = stats[2]
-                len_clauses = stats[3]
-                len_tokens = stats[4]
-                len_types = stats[5]
-                ttr = stats[6]
-                sttr = stats[7]
+                len_paras_in_clause = stats[1]
+                len_paras_in_token = stats[2]
+                len_sentences = stats[3]
+                len_clauses = stats[4]
+                len_tokens = stats[5]
+                len_types = stats[6]
+                ttr = stats[7]
+                sttr = stats[8]
 
                 count_paras = len(len_paras_in_token)
                 count_sentences = len(len_sentences)
@@ -464,43 +472,47 @@ def generate_table(main, table):
                     table.set_item_num_float(9, i, 0)
                     table.set_item_num_float(10, i, 0)
                     table.set_item_num_float(11, i, 0)
-                else:
-                    table.set_item_num_float(8, i, numpy.mean(len_paras_in_sentence))
-                    table.set_item_num_float(9, i, numpy.std(len_paras_in_sentence))
-                    table.set_item_num_float(10, i, numpy.mean(len_paras_in_token))
-                    table.set_item_num_float(11, i, numpy.std(len_paras_in_token))
-
-                # Sentence Length
-                if count_sentences == 0:
                     table.set_item_num_float(12, i, 0)
                     table.set_item_num_float(13, i, 0)
                 else:
-                    table.set_item_num_float(12, i, numpy.mean(len_sentences))
-                    table.set_item_num_float(13, i, numpy.std(len_sentences))
+                    table.set_item_num_float(8, i, numpy.mean(len_paras_in_sentence))
+                    table.set_item_num_float(9, i, numpy.std(len_paras_in_sentence))
+                    table.set_item_num_float(10, i, numpy.mean(len_paras_in_clause))
+                    table.set_item_num_float(11, i, numpy.std(len_paras_in_clause))
+                    table.set_item_num_float(12, i, numpy.mean(len_paras_in_token))
+                    table.set_item_num_float(13, i, numpy.std(len_paras_in_token))
 
-                # Clause Length
-                if count_clauses == 0:
+                # Sentence Length
+                if count_sentences == 0:
                     table.set_item_num_float(14, i, 0)
                     table.set_item_num_float(15, i, 0)
                 else:
-                    table.set_item_num_float(14, i, numpy.mean(len_clauses))
-                    table.set_item_num_float(15, i, numpy.std(len_clauses))
+                    table.set_item_num_float(14, i, numpy.mean(len_sentences))
+                    table.set_item_num_float(15, i, numpy.std(len_sentences))
 
-                # Token Length
-                if count_tokens == 0:
+                # Clause Length
+                if count_clauses == 0:
                     table.set_item_num_float(16, i, 0)
                     table.set_item_num_float(17, i, 0)
                 else:
-                    table.set_item_num_float(16, i, numpy.mean(len_tokens))
-                    table.set_item_num_float(17, i, numpy.std(len_tokens))
+                    table.set_item_num_float(16, i, numpy.mean(len_clauses))
+                    table.set_item_num_float(17, i, numpy.std(len_clauses))
 
-                # Type Length
-                if count_types == 0:
+                # Token Length
+                if count_tokens == 0:
                     table.set_item_num_float(18, i, 0)
                     table.set_item_num_float(19, i, 0)
                 else:
-                    table.set_item_num_float(18, i, numpy.mean(len_types))
-                    table.set_item_num_float(19, i, numpy.std(len_types))
+                    table.set_item_num_float(18, i, numpy.mean(len_tokens))
+                    table.set_item_num_float(19, i, numpy.std(len_tokens))
+
+                # Type Length
+                if count_types == 0:
+                    table.set_item_num_float(20, i, 0)
+                    table.set_item_num_float(21, i, 0)
+                else:
+                    table.set_item_num_float(20, i, numpy.mean(len_types))
+                    table.set_item_num_float(21, i, numpy.std(len_types))
 
                 len_tokens_files.append(collections.Counter(len_tokens))
 
@@ -520,6 +532,8 @@ def generate_table(main, table):
                     main.tr('Count of Characters'),
                     main.tr('Type-tag Ratio'),
                     main.tr('Type-tag Ratio (Standardized)'),
+                    main.tr('Paragraph Length in Sentence (Mean)'),
+                    main.tr('Paragraph Length in Sentence (Standard Deviation)'),
                     main.tr('Paragraph Length in Sentence (Mean)'),
                     main.tr('Paragraph Length in Sentence (Standard Deviation)'),
                     main.tr('Paragraph Length in Tag (Mean)'),
