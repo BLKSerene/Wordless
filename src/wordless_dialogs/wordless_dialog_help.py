@@ -289,7 +289,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # openpyxl
             [
                 '<a href="https://openpyxl.readthedocs.io/en/stable/">openpyxl</a>',
-                '2.6.3',
+                '3.0.0',
                 'Eric Gazoni, Charlie Clark',
                 '<a href="https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst">MIT</a>'
             ],
@@ -820,6 +820,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <ul>
                             <li>Upgrade botok (pybo) to 0.6.10</li>
                             <li>Upgrade NumPy to 1.17.2</li>
+                            <li>Upgrade openpyxl to 3.0.0</li>
                             <li>Upgrade PyQt to 5.13.1</li>
                             <li>Upgrade pytest to 5.1.3</li>
                             <li>Upgrade Sacremoses to 0.0.34</li>
