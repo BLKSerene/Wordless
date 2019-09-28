@@ -69,6 +69,8 @@ def test_word_detokenize(lang, word_detokenizer):
                                                              lang = lang,
                                                              word_detokenizer = word_detokenizer)
 
+    # print(text)
+
     if lang == 'cat':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
             assert text == "El català (denominació oficial a Catalunya, a les Illes Balears, a Andorra, a la ciutat de l' Alguer i tradicional a Catalunya Nord) o valencià (denominació oficial al País Valencià i tradicional al Carxe) és una llengua romànica parlada a Catalunya, el País Valencià (tret d' algunes comarques i localitats de l' interior), les Illes Balears, Andorra, la Franja de Ponent (a l' Aragó), la ciutat de l' Alguer (a l' illa de Sardenya), la Catalunya del Nord,[8] el Carxe (un petit territori de Múrcia poblat per immigrats valencians),[9][10] i en petites comunitats arreu del món (entre les quals destaca la de l' Argentina, amb 195.000 parlants).[11 ]"
@@ -147,3 +149,8 @@ def test_word_detokenize(lang, word_detokenizer):
         assert text == 'ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย'
     elif lang == 'bod':
         assert text == '༄༅། །རྒྱ་གར་སྐད་དུ།བོ་དྷི་སཏྭ་ཙརྻ་ཨ་བ་ཏ་ར།བོད་སྐད་དུ།བྱང་ཆུབ་སེམས་དཔའི་སྤྱོད་པ་ལ་འཇུག་པ། །སངས་རྒྱས་དང་བྱང་ཆུབ་སེམས་དཔའ་ཐམས་ཅད་ལ་ཕྱག་འཚལ་ལོ། །བདེ་གཤེགས་ཆོས་ཀྱི་སྐུ་མངའ་སྲས་བཅས་དང༌། །ཕྱག་འོས་ཀུན་ལའང་གུས་པར་ཕྱག་འཚལ་ཏེ། །བདེ་གཤེགས་སྲས་ཀྱི་སྡོམ་ལ་འཇུག་པ་ནི། །ལུང་བཞིན་མདོར་བསྡུས་ནས་ནི་བརྗོད་པར་བྱ། །'
+
+# for lang, word_detokenizers in main.settings_global['word_detokenizers'].items():
+#     for word_detokenizer in word_detokenizers:
+#         if lang in ['eng']:
+#             test_word_detokenize(lang, word_detokenizer)
