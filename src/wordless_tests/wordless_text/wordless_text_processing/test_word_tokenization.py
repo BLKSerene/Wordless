@@ -53,7 +53,7 @@ SENTENCE_KAN = 'ದ್ರಾವಿಡ ಭಾಷೆಗಳಲ್ಲಿ ಪ್ರ�
 SENTENCE_LAV = 'Latviešu valoda ir dzimtā valoda apmēram 1,7 miljoniem cilvēku, galvenokārt Latvijā, kur tā ir vienīgā valsts valoda.[3]'
 SENTENCE_LIT = 'Lietuvių kalba – iš baltų prokalbės kilusi lietuvių tautos kalba, kuri Lietuvoje yra valstybinė, o Europos Sąjungoje – viena iš oficialiųjų kalbų.'
 SENTENCE_MAR = 'मराठीभाषा ही इंडो-युरोपीय भाषाकुलातील एक भाषा आहे.'
-SENTENCE_NOB = 'Norsk er et nordisk språk som er offisielt språk i Norge og morsmål til rundt 90% av befolkningen[2] (i 2012 morsmål til omtrent 4 320 000 personer[3])[1].'
+SENTENCE_NOB = 'Bokmål er en varietet av norsk språk.'
 SENTENCE_FAS = 'فارسی یا پارسی یکی از زبان‌های هندواروپایی در شاخهٔ زبان‌های ایرانی جنوب غربی است که در کشورهای ایران، افغانستان،[۳] تاجیکستان[۴] و ازبکستان[۵] به آن سخن می‌گویند.'
 SENTENCE_POL = 'Język polski, polszczyzna, skrót: pol. – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
 SENTENCE_POR = 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.'
@@ -93,6 +93,8 @@ def test_word_tokenize(lang, word_tokenizer):
     tokens = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
                                                              lang = lang,
                                                              word_tokenizer = word_tokenizer)
+
+    # print(tokens)
 
     if lang == 'afr':
         if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
@@ -353,14 +355,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'spaCy - Marathi Word Tokenizer':
             assert tokens == ['मराठीभाषा', 'ही', 'इंडो', '-', 'युरोपीय', 'भाषाकुलातील', 'एक', 'भाषा', 'आहे', '.']
     elif lang == 'nob':
-        if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
-                              'NLTK - NIST Tokenizer',
-                              'NLTK - Twitter Tokenizer']:
-            assert tokens == ['Norsk', 'er', 'et', 'nordisk', 'språk', 'som', 'er', 'offisielt', 'språk', 'i', 'Norge', 'og', 'morsmål', 'til', 'rundt', '90', '%', 'av', 'befolkningen', '[', '2', ']', '(', 'i', '2012', 'morsmål', 'til', 'omtrent', '4', '320', '000', 'personer', '[', '3', ']', ')', '[', '1', ']', '.']
-        elif word_tokenizer == 'NLTK - Tok-tok Tokenizer':
-            assert tokens == ['Norsk', 'er', 'et', 'nordisk', 'språk', 'som', 'er', 'offisielt', 'språk', 'i', 'Norge', 'og', 'morsmål', 'til', 'rundt', '90', '%', 'av', 'befolkningen[', '2', ']', '(', 'i', '2012', 'morsmål', 'til', 'omtrent', '4', '320', '000', 'personer[', '3', ']', ')', '[', '1', ']', '.']
-        elif word_tokenizer == 'spaCy - Norwegian Bokmål Word Tokenizer':
-            assert tokens == ['Norsk', 'er', 'et', 'nordisk', 'språk', 'som', 'er', 'offisielt', 'språk', 'i', 'Norge', 'og', 'morsmål', 'til', 'rundt', '90', '%', 'av', 'befolkningen[2', ']', '(', 'i', '2012', 'morsmål', 'til', 'omtrent', '4', '320', '000', 'personer[3])[1].']
+        assert tokens == ['Bokmål', 'er', 'en', 'varietet', 'av', 'norsk', 'språk', '.']
     elif lang == 'fas':
         if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
                               'NLTK - NIST Tokenizer']:
@@ -545,3 +540,8 @@ def test_word_tokenize(lang, word_tokenizer):
             assert tokens == ['اُردُو', 'لشکری', 'زبان[8', ']', '(', 'یا', 'جدید', 'معیاری', 'اردو', ')', 'برصغیر', 'کی', 'معیاری', 'زبانوں', 'میں', 'سے', 'ایک', 'ہے', '۔']
     elif lang == 'vie':
         assert tokens == ['Tiếng', 'Việt', ',', 'còn', 'gọi', 'tiếng', 'Việt Nam', '[', '5', ']', ',', 'tiếng Kinh', 'hay', 'Việt ngữ', ',', 'là', 'ngôn ngữ', 'của', 'người', 'Việt', '(', 'dân tộc', 'Kinh', ')', 'và', 'là', 'ngôn ngữ', 'chính thức', 'tại', 'Việt Nam', '.']
+
+# for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
+#     for word_tokenizer in word_tokenizers:
+#         if lang in ['eng']:
+#             test_word_tokenize(lang, word_tokenizer)
