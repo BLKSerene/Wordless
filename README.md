@@ -128,7 +128,8 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 7     |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
 8     |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
 9     |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
-10    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
+10    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
+11    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
 
 ### Plotting
 

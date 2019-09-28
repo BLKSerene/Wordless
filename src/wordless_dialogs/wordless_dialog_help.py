@@ -203,6 +203,13 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
                 'Matthew Honnibal, Ines Montani',
                 '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'
             ],
+            # syntok
+            [
+                '<a href="https://github.com/fnl/syntok">syntok</a>',
+                '1.2.1',
+                'Florian Leitner',
+                '<a href="https://github.com/fnl/syntok/blob/master/LICENSE">MIT</a>'
+            ],
             # Underthesea
             [
                 '<a href="https://github.com/undertheseanlp/underthesea">Underthesea</a>',
@@ -796,6 +803,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <div class="changelog-section-header">New Features</div>
                         <ul>
                             <li>Add razdel's Russian sentenizer and word tokenizer</li>
+                            <li>Add syntok's sentence segmenter and word tokenizer</li>
                         </ul>
                     </div>
 

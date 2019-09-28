@@ -193,7 +193,8 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer in ['spaCy - Dutch Word Tokenizer']:
             assert tokens == ['Het', 'Nederlands', 'is', 'een', 'West', '-', 'Germaanse', 'taal', 'en', 'de', 'moedertaal', 'van', 'de', 'meeste', 'inwoners', 'van', 'Nederland', ',', 'België', 'en', 'Suriname', '.']
     elif lang == 'eng':
-        if word_tokenizer == 'NLTK - Penn Treebank Tokenizer':
+        if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
+                              'syntok - Word Tokenizer']:
             assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'that', 'was', 'first', 'spoken', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'became', 'a', 'global', 'lingua', 'franca.', '[', '4', ']', '[', '5', ']']
         elif word_tokenizer in ['NLTK - NIST Tokenizer',
                                 'NLTK - Twitter Tokenizer',
@@ -220,7 +221,8 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'deu':
         if word_tokenizer == 'NLTK - Penn Treebank Tokenizer':
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
-        elif word_tokenizer == 'NLTK - NIST Tokenizer':
+        elif word_tokenizer in ['NLTK - NIST Tokenizer',
+                                'syntok - Word Tokenizer']:
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
         elif word_tokenizer == 'NLTK - Tok-tok Tokenizer':
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'dt', '.', 'oder', 'dtsch.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']

@@ -29,6 +29,7 @@ pythainlp
 razdel
 sacremoses
 spacy
+syntok
 underthesea
 
 # Plotting

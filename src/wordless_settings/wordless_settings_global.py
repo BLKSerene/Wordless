@@ -470,7 +470,8 @@ def init_settings_global(main):
 
             'eng': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentencizer'),
+                main.tr('syntok - Sentence Segmenter')
             ],
 
             'est': [
@@ -490,7 +491,8 @@ def init_settings_global(main):
 
             'deu': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentencizer'),
+                main.tr('syntok - Sentence Segmenter')
             ],
 
             'ell': [
@@ -591,7 +593,8 @@ def init_settings_global(main):
 
             'spa': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentencizer'),
+                main.tr('syntok - Sentence Segmenter')
             ],
 
             'swe': [
@@ -638,7 +641,8 @@ def init_settings_global(main):
 
             'other': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentencizer'),
+                main.tr('syntok - Sentence Segmenter')
             ]
         },
 
@@ -746,7 +750,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('Sacremoses - Penn Treebank Tokenizer'),
-                main.tr('spaCy - English Word Tokenizer')
+                main.tr('spaCy - English Word Tokenizer'),
+                main.tr('syntok - Word Tokenizer')
             ],
 
             'fin': [
@@ -776,7 +781,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('Sacremoses - Penn Treebank Tokenizer'),
-                main.tr('spaCy - German Word Tokenizer')
+                main.tr('spaCy - German Word Tokenizer'),
+                main.tr('syntok - Word Tokenizer')
             ],
 
             'ell': [
@@ -1001,7 +1007,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('Sacremoses - Penn Treebank Tokenizer'),
-                main.tr('spaCy - Spanish Word Tokenizer')
+                main.tr('spaCy - Spanish Word Tokenizer'),
+                main.tr('syntok - Word Tokenizer')
             ],
 
             'swe': [
@@ -1100,7 +1107,8 @@ def init_settings_global(main):
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - English Word Tokenizer')
+                main.tr('spaCy - English Word Tokenizer'),
+                main.tr('syntok - Word Tokenizer')
             ]
         },
 
