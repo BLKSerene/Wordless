@@ -23,6 +23,9 @@ import langid
 from wordless_text import wordless_matching
 from wordless_utils import wordless_conversion, wordless_misc
 
+# Force consistent results for language detection
+langdetect.DetectorFactory.seed = 0
+
 def detect_encoding(main, file_path):
     text = b''
     success = True
