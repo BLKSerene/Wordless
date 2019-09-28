@@ -918,7 +918,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     <div class="changelog-section">
                         <div class="changelog-section-header">Improvements</div>
                         <ul>
-                            <li>Disable mouse wheel event when combo boxes and spin boxes are not focused (<a href="https://github.com/BLKSerene/Wordless/issues/2">#2</a>)</li>
+                            <li>Disable mouse wheel event when combo boxes and spin boxes are not focused</li>
                             <li>Update hint messages</li>
                             <li>Update layout</li>
                             <li>Update spaCy's sentencizer</li>
