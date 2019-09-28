@@ -14,7 +14,7 @@
 ---
 Wordless is an integrated corpus tool with multi-language support for the study of language, literature and translation designed and developed by Ye Lei (叶磊), MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
 
-[![Build Status](https://travis-ci.org/BLKSerene/Wordless.svg?branch=master)](https://travis-ci.org/BLKSerene/Wordless) [![Build status](https://ci.appveyor.com/api/projects/status/623ua0075q9peu5l?svg=true)](https://ci.appveyor.com/project/BLKSerene/wordless)[![Release](https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases)](https://github.com/BLKSerene/Wordless/releases)
+[![Build Status](https://travis-ci.org/BLKSerene/Wordless.svg?branch=master)](https://travis-ci.org/BLKSerene/Wordless) [![Build status](https://ci.appveyor.com/api/projects/status/623ua0075q9peu5l?svg=true)](https://ci.appveyor.com/project/BLKSerene/wordless) [![Release](https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases)](https://github.com/BLKSerene/Wordless/releases) [![License](https://img.shields.io/github/license/BLKSerene/Wordless)](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt)
 
 ## License
     Copyright (C) 2018-2019  Ye Lei (叶磊)
