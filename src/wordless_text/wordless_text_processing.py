@@ -26,6 +26,7 @@ import pythainlp
 import razdel
 import sacremoses
 import spacy
+import syntok.segmenter
 import underthesea
 
 from wordless_checking import wordless_checking_token, wordless_checking_unicode
@@ -46,6 +47,7 @@ def wordless_sentence_tokenize(main, text, lang,
                                                   lang = lang,
                                                   sentence_tokenizer = sentence_tokenizer)
 
+    # NLTK
     if sentence_tokenizer == main.tr('NLTK - Punkt Sentence Tokenizer'):
         lang_texts = {
             'ces': 'czech',
@@ -74,6 +76,7 @@ def wordless_sentence_tokenize(main, text, lang,
         }
 
         sentences = nltk.sent_tokenize(text, language = lang_texts[lang])
+    # spaCy
     elif sentence_tokenizer == main.tr('spaCy - Sentencizer'):
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
@@ -81,6 +84,11 @@ def wordless_sentence_tokenize(main, text, lang,
         doc.is_parsed = True
 
         sentences = [sentence.text for sentence in doc.sents]
+    # syntok
+    elif sentence_tokenizer == main.tr('syntok - Sentence Segmenter'):
+        for para in syntok.segmenter.analyze(text):
+            for sentence in para:
+                sentences.append(''.join([token.spacing + token.value for token in sentence]))
     # Chinese & Japanese
     elif sentence_tokenizer in [main.tr('Wordless - Chinese Sentence Tokenizer'),
                                 main.tr('Wordless - Japanese Sentence Tokenizer')]:
@@ -111,6 +119,9 @@ def wordless_sentence_tokenize(main, text, lang,
     # Vietnamese
     elif sentence_tokenizer == main.tr('Underthesea - Vietnamese Sentence Tokenizer'):
         sentences = underthesea.sent_tokenize(text)
+
+    # Strip spaces
+    sentences = [sentence.strip() for sentence in sentences]
 
     sentences = wordless_text_utils.record_boundary_sentences(sentences, text)
 
@@ -191,6 +202,7 @@ def wordless_word_tokenize(main, text, lang,
                                              lang = lang,
                                              word_tokenizer = word_tokenizer)
 
+    # NLTK
     if 'NLTK' in word_tokenizer:
         sentences = wordless_sentence_tokenize(main, text, lang)
 
@@ -214,6 +226,7 @@ def wordless_word_tokenize(main, text, lang,
 
             for sentence in sentences:
                 tokens_hierarchical.append(toktok_tokenizer.tokenize(sentence))
+    # Sacremoses
     elif 'Sacremoses' in word_tokenizer:
         if flat_tokens:
             sentences = [text]
@@ -230,6 +243,7 @@ def wordless_word_tokenize(main, text, lang,
 
             for sentence in sentences:
                 tokens_hierarchical.append(moses_tokenizer.penn_tokenize(sentence))
+    # spaCy
     elif 'spaCy' in word_tokenizer:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
@@ -241,7 +255,16 @@ def wordless_word_tokenize(main, text, lang,
         else:
             for sentence in doc.sents:
                 tokens_hierarchical.append([token.text for token in sentence.as_doc()])
+    # syntok
+    elif word_tokenizer == 'syntok - Word Tokenizer':
+        syntok_tokenizer = syntok.tokenizer.Tokenizer()
 
+        if flat_tokens:
+            tokens_hierarchical.append([token.value for token in syntok_tokenizer.tokenize(text)])
+        else:
+            for para in syntok.segmenter.analyze(text):
+                for sentence in para:
+                    tokens_hierarchical.append([token.value for token in sentence])
     # Chinese & Japanese
     elif ('jieba' in word_tokenizer or
           'nagisa' in word_tokenizer or
