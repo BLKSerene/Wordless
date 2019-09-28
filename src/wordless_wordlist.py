@@ -401,7 +401,7 @@ class Wordless_Worker_Process_Data_Wordlist(wordless_threading.Wordless_Worker_P
         # Total
         if len(files) > 1:
             text_total = wordless_text.Wordless_Text_Blank()
-            text_total.tokens = [token for text in texts for token in text.tokens]
+            text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
             texts.append(text_total)
             self.tokens_freq_files.append(sum(self.tokens_freq_files, collections.Counter()))
@@ -424,7 +424,7 @@ class Wordless_Worker_Process_Data_Wordlist(wordless_threading.Wordless_Worker_P
             number_sections = self.main.settings_custom['measures']['dispersion']['general']['number_sections']
 
             sections_freq = [collections.Counter(section)
-                             for section in wordless_text_utils.to_sections(text.tokens, number_sections)]
+                             for section in wordless_text_utils.to_sections(text.tokens_flat, number_sections)]
 
             for token in tokens_total:
                 counts = [section_freq[token] for section_freq in sections_freq]
@@ -436,7 +436,7 @@ class Wordless_Worker_Process_Data_Wordlist(wordless_threading.Wordless_Worker_P
                 number_sections = self.main.settings_custom['measures']['adjusted_freq']['general']['number_sections']
 
                 sections_freq = [collections.Counter(section)
-                                 for section in wordless_text_utils.to_sections(text.tokens, number_sections)]
+                                 for section in wordless_text_utils.to_sections(text.tokens_flat, number_sections)]
 
             for token in tokens_total:
                 counts = [section_freq[token] for section_freq in sections_freq]
