@@ -539,7 +539,7 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
         self.label_donating_note = wordless_label.Wordless_Label_Dialog(
             self.tr('''
                 <div>
-                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>WILL NOT PROVIDE</b> refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation. 
+                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>WILL NOT PROVIDE</b> invoices, receipts, refund services, detailed spending reports, my contact information other than email addresses, my personal social media accounts, private email/phone support, or guarantees on bug fixes, enhancements, new features, or new releases of Wordless for donation.
                 </div>
             '''),
             self
