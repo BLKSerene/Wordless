@@ -106,7 +106,7 @@ Email        |blkserene@gmail.com<br>blkserene@163.com
 **Important Note**: I CANNOT GUARANTEE that all emails will always be checked or replied in time. I WILL NOT REPLY to irrelevant emails and I reserve the right to BLOCK AND/OR REPORT people who send me spam emails.
 
 ## :gift: Contributing
-If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements or new features by [creating a pull request](https://github.com/BLKSerene/Wordless/pulls) on Github.
+If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements, or new features by [creating a pull request](https://github.com/BLKSerene/Wordless/pulls) on Github.
 
 Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or [Github Wiki](https://github.com/BLKSerene/Wordless/wiki) for Wordless, or helping me translate Wordless and its documentation to other languages.
 

@@ -306,7 +306,7 @@ class Wordless_Main(QMainWindow):
             title = self.tr('Contributing'),
             text = self.tr('''
                 <div>
-                    If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements or new features by <a href="https://github.com/BLKSerene/Wordless/pulls">creating a pull request</a> on Github.
+                    If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements, or new features by <a href="https://github.com/BLKSerene/Wordless/pulls">creating a pull request</a> on Github.
                 </div>
 
                 <div>
