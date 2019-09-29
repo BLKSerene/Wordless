@@ -12,7 +12,7 @@
 <div align="center"><img src="/doc/wordless_logo.png" alt="logo"></div>
 
 ---
-Wordless is an integrated corpus tool with multi-language support for the study of language, literature and translation designed and developed by Ye Lei (叶磊), MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
+Wordless is an integrated corpus tool with multi-language support for the study of language, literature, and translation designed and developed by Ye Lei (叶磊), MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
 
 <div align="center">
     <a href="https://ci.appveyor.com/project/BLKSerene/wordless">
@@ -56,7 +56,7 @@ GB (GB/T 7714—2015):
     叶磊. Wordless version 1.2.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
 
 ## :arrow_down: Download
-The latest version (**v1.2.0**) of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 and later**, and **Ubuntu 16.04 and later**, all **64-bit only**.
+The latest version (**v1.2.0**) of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 or later**, and **Ubuntu 16.04 or later**, all **64-bit only**.
 
 [Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/v1.2.0/wordless_v1.2.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
 [Download the latest version for macOS](https://github.com/BLKSerene/Wordless/releases/download/v1.2.0/wordless_v1.2.0_macos.zip) (unzip the file and double-click **Wordless.app** to run)<br>
