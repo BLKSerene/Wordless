@@ -14,7 +14,23 @@
 ---
 Wordless is an integrated corpus tool with multi-language support for the study of language, literature and translation designed and developed by Ye Lei (叶磊), MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
 
-[![AppVeyor](https://img.shields.io/appveyor/ci/BLKSerene/Wordless?label=AppVeyor&logo=appveyor)](https://ci.appveyor.com/project/BLKSerene/wordless) [![Azure Pipelines](https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_apis/build/status/BLKSerene.Wordless?branchName=master)](https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_build/latest?definitionId=1&branchName=master) [![Travis CI](https://img.shields.io/travis/BLKSerene/Wordless?label=Travis%20CI&logo=travis)](https://travis-ci.org/BLKSerene/Wordless) [![Release](https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases)](https://github.com/BLKSerene/Wordless/releases) [![License](https://img.shields.io/github/license/BLKSerene/Wordless)](https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt)
+<div align="center">
+    <a href="https://ci.appveyor.com/project/BLKSerene/wordless">
+        <img src="https://img.shields.io/appveyor/ci/BLKSerene/Wordless?label=AppVeyor&logo=appveyor" alt="AppVeyor"></a>
+    <a href="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_build/latest?definitionId=1&branchName=master">
+        <img src="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_apis/build/status/BLKSerene.Wordless?branchName=master" alt="Azure Pipelines"></a>
+    <a href="https://travis-ci.org/BLKSerene/Wordless">
+        <img src="https://img.shields.io/travis/BLKSerene/Wordless?label=Travis%20CI&logo=travis" alt="Travis CI"></a>
+</div>
+
+<div align="center">
+    <a href="https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt">
+        <img src="https://img.shields.io/github/license/BLKSerene/Wordless" alt="License"></a>
+    <a href="https://github.com/BLKSerene/Wordless/releases">
+        <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases" alt="Release"></a>
+    <a href="https://github.com/BLKSerene/Wordless#download">
+        <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total" alt="Downloads"></a>
+</div>
 
 ## License
     Copyright (C) 2018-2019  Ye Lei (叶磊)
