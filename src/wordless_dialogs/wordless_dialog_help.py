@@ -476,7 +476,7 @@ class Wordless_Dialog_Need_Help(wordless_dialog.Wordless_Dialog_Info):
         self.label_need_help = wordless_label.Wordless_Label_Dialog(
             self.tr('''
                 <div>
-                    If you encounter a problem, find a bug or require any further information, feel free to ask questions, submit bug reports or provide feedback by <a href="https://github.com/BLKSerene/Wordless/issues/new">creating an issue</a> on Github if you fail to find the answer by searching <a href="https://github.com/BLKSerene/Wordless/issues">existing issues</a> first.
+                    If you encounter a problem, find a bug, or require any further information, feel free to ask questions, submit bug reports, or provide feedback by <a href="https://github.com/BLKSerene/Wordless/issues/new">creating an issue</a> on Github if you fail to find the answer by searching <a href="https://github.com/BLKSerene/Wordless/issues">existing issues</a> first.
                 </div>
 
                 <div>

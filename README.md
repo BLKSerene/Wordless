@@ -92,7 +92,7 @@ Chinese users with slow connections to Github can [download from Baidu Netdisk](
 [中文文档](#doc-zho)
 
 ## :question: Need Help?
-If you encounter a problem, find a bug or require any further information, feel free to ask questions, submit bug reports or provide feedback by [creating an issue](https://github.com/BLKSerene/Wordless/issues/new) on Github if you fail to find the answer by searching [existing issues](https://github.com/BLKSerene/Wordless/issues) first.
+If you encounter a problem, find a bug, or require any further information, feel free to ask questions, submit bug reports, or provide feedback by [creating an issue](https://github.com/BLKSerene/Wordless/issues/new) on Github if you fail to find the answer by searching [existing issues](https://github.com/BLKSerene/Wordless/issues) first.
 
 If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may send me an email.
 
