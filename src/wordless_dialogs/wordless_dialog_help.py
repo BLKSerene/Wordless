@@ -989,8 +989,8 @@ class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
                 <div style="text-align: center;">
                     <h2>Wordless Version 1.3.0</h2>
                     <div>
-                        An Integrated Corpus Tool with Multi-language Support<br>
-                        for the Study of Language, Literature and Translation
+                        An Integrated Corpus Tool with Multi-Language Support<br>
+                        for the Study of Language, Literature, and Translation
                     </div>
                 </div>
             '''),
