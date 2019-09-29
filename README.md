@@ -32,7 +32,7 @@ Wordless is an integrated corpus tool with multi-language support for the study 
         <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total" alt="Downloads"></a>
 </div>
 
-## License
+## :copyright: License
     Copyright (C) 2018-2019  Ye Lei (叶磊)
 
     This project is licensed under GNU GPLv3.
@@ -40,7 +40,7 @@ Wordless is an integrated corpus tool with multi-language support for the study 
 
     All other rights reserved.
 
-## Citing
+## :pencil: Citing
 If you publish work that uses Wordless, please cite as follows.
 
 MLA (8th Edition):
@@ -55,7 +55,7 @@ GB (GB/T 7714—2015):
 
     叶磊. Wordless version 1.2.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
 
-## Download
+## :arrow_down: Download
 The latest version (**v1.2.0**) of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 and later**, and **Ubuntu 16.04 and later**, all **64-bit only**.
 
 [Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/v1.2.0/wordless_v1.2.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
@@ -67,7 +67,7 @@ Chinese users with slow connections to Github can [download from Baidu Netdisk](
 [Download older versions](https://github.com/BLKSerene/Wordless/releases)
 
 <span id="doc"></span>
-## Documentation
+## :book: Documentation
 [English Documentation](#doc-eng)
 - 1 [Main Window](#doc-eng-1)
 - 2 [File Area](#doc-eng-2)
@@ -91,7 +91,7 @@ Chinese users with slow connections to Github can [download from Baidu Netdisk](
 
 [中文文档](#doc-zho)
 
-## Need Help?
+## :question: Need Help?
 If you encounter a problem, find a bug or require any further information, feel free to ask questions, submit bug reports or provide feedback by [creating an issue](https://github.com/BLKSerene/Wordless/issues/new) on Github if you fail to find the answer by searching [existing issues](https://github.com/BLKSerene/Wordless/issues) first.
 
 If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may send me an email.
@@ -105,12 +105,12 @@ Email        |blkserene@gmail.com<br>blkserene@163.com
 
 **Important Note**: I CANNOT GUARANTEE that all emails will always be checked or replied in time. I WILL NOT REPLY to irrelevant emails and I reserve the right to BLOCK AND/OR REPORT people who send me spam emails.
 
-## Contributing
+## :gift: Contributing
 If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements or new features by [creating a pull request](https://github.com/BLKSerene/Wordless/pulls) on Github.
 
 Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or [Github Wiki](https://github.com/BLKSerene/Wordless/wiki) for Wordless, or helping me translate Wordless and its documentation to other languages.
 
-## Donating
+## :moneybag: Donating
 If you would like to support the development of Wordless, you may donate via PayPal, Alipay or WeChat.
 
 PayPal|Alipay|WeChat
@@ -119,7 +119,7 @@ PayPal|Alipay|WeChat
 
 **Important Note**: I WILL NOT PROVIDE refund services, private email/phone support, information concerning my social media, gurantees on bug fixes, enhancements, new features or new releases of Wordless, invoices, receipts or detailed weekly/monthly/yearly/etc. spending report for donation.
 
-## Acknowledgments
+## :heart: Acknowledgments
 Wordless stands on the shoulders of giants. Thus, I would like to extend my thanks to the following open-source projects:
 
 ### General
@@ -183,7 +183,7 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 5     |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
 
 <span id="doc-eng"></span>
-## Documentation - English
+## :book: Documentation - English
 
 <span id="doc-eng-1"></span>
 ### 1 Main Window [[Back to Contents]](#doc)
@@ -1182,5 +1182,5 @@ Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[
 [35] Gabrielatos, Costas, and Anna Marchi. “Keyness: Appropriate Metrics and Practical Issues.” *Proceedings of CADS International Conference 2012*, 13-14 Sept. 2012, U of Bologna, 2012.
 
 <span id="doc-zho"></span>
-## Documentation - Chinese (Simplified)
+## :book: Documentation - Chinese (Simplified)
 Editing...
