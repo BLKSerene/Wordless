@@ -151,7 +151,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             [
                 '<a href="https://github.com/fxsjy/jieba">jieba<br>(“结巴”中文分词)</a>',
                 '0.39',
-                'Sun Junyi',
+                'Sun Junyi (孙君意)',
                 '<a href="https://github.com/fxsjy/jieba/blob/master/LICENSE">MIT</a>'
             ],
             # nagisa
