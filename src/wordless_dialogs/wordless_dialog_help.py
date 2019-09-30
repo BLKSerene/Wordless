@@ -931,7 +931,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <ul>
                             <li>Fix "Check for Updates" on startup</li>
                             <li>Fix "Context Settings"</li>
-                            <li>Fix error message when loading files</li>
+                            <li>Fix error messages when loading files</li>
                             <li>Fix "Open Folder"</li>
                             <li>Fix "Search in Results" in "Concordancer"</li>
                             <li>Fix "Settings → Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization → Preview"</li>
