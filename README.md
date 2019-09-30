@@ -136,7 +136,7 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 &nbsp;|Projects|Author(s)
 ------|--------|---------
 1     |[botok](https://github.com/Esukhia/botok)                   |Hélios Drupchen Hildt
-2     |[jieba<br>(“结巴”中文分词)](https://github.com/fxsjy/jieba)  |Sun Junyi
+2     |[jieba<br>(“结巴”中文分词)](https://github.com/fxsjy/jieba)  |Sun Junyi (孙君意)
 3     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
 4     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Liling Tan
 5     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
