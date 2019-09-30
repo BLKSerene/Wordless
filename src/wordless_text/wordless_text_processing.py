@@ -744,9 +744,9 @@ def wordless_lemmatize(main, tokens, lang,
     # Record empty tokens
     for i, token in reversed(list(enumerate(tokens))):
         if not token.strip():
-            tokens.remove(token)
-
             empty_offsets.append(i)
+
+            tokens.remove(token)
 
     wordless_text_utils.check_lemmatizers(main, lang)
 
@@ -832,7 +832,7 @@ def wordless_lemmatize(main, tokens, lang,
         lemmas = [mapping_lemmas.get(token, token) for token in tokens]
 
     # Insert empty lemmas
-    for empty_offset in empty_offsets:
+    for empty_offset in sorted(empty_offsets):
         lemmas.insert(empty_offset, '')
 
     return [lemma + tag for lemma, tag in zip(lemmas, tags)]

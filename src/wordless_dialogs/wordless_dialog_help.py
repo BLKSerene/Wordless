@@ -821,6 +821,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <ul>
                             <li>Fix encoding detection</li>
                             <li>Fix file checking</li>
+                            <li>Fix lemmatization of empty tokens</li>
                             <li>Fix "Paragraph Length" and "Sentence Length" in "Overview"</li>
                         </ul>
                     </div>
