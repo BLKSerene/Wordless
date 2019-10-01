@@ -803,6 +803,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <div class="changelog-section-header">New Features</div>
                         <ul>
                             <li>Add "Paragraph Length in Clause" to "Overview"</li>
+                            <li>Add "Paragraph" to "Generation Settings -> Width Unit" in "Concordancer"</li>
                             <li>Add razdel's Russian sentenizer and word tokenizer</li>
                             <li>Add syntok's sentence segmenter and word tokenizer</li>
                         </ul>
