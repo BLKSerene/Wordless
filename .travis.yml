@@ -60,4 +60,4 @@ before_script:
   - cd src
 
 script:
-  - python3 -m pytest || python -m pytest
+  - python3 -m pytest --ignore wordless_tests/test_init.py || python -m pytest --ignore wordless_tests/test_init.py
