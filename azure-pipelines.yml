@@ -59,7 +59,7 @@ jobs:
   # Run tests
   - script: |
       cd src
-      python -m pytest
+      python -m pytest --ignore wordless_tests/test_init.py
     displayName: 'Run tests'
 
 # macOS
@@ -110,7 +110,7 @@ jobs:
   # Run tests
   - script: |
       cd src
-      python3 -m pytest
+      python3 -m pytest --ignore wordless_tests/test_init.py
     displayName: 'Run tests'
 
 # Linux
@@ -161,5 +161,5 @@ jobs:
   # Run tests
   - script: |
       cd src
-      python3.7 -m pytest
+      python3.7 -m pytest --ignore wordless_tests/test_init.py
     displayName: 'Run tests'

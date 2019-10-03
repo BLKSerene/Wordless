@@ -59,4 +59,4 @@ before_test:
   - cd src
 
 test_script:
-  - python -m pytest
+  - python -m pytest --ignore wordless_tests/test_init.py
