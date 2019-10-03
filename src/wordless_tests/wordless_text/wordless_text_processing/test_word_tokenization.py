@@ -82,8 +82,8 @@ main = test_init.Test_Main()
 
 for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
     for word_tokenizer in word_tokenizers:
-        # Temporarily disable pybo's word tokenizers due to memory issues on CI
-        if lang != 'other' and lang != 'bod':
+        # Temporarily disable testing of pybo's word tokenizers due to memory issues
+        if lang not in ['bod', 'other']:
             WORD_TOKENIZERS.append((lang, word_tokenizer))
 
 @pytest.mark.parametrize('lang, word_tokenizer', WORD_TOKENIZERS)
@@ -185,15 +185,7 @@ def test_word_tokenize(lang, word_tokenizer):
                                 'NLTK - Twitter Tokenizer']:
             assert tokens == ['Dansk', 'er', 'et', 'nordgermansk', 'sprog', 'af', 'den', 'østnordiske', '(', 'kontinentale', ')', 'gruppe', ',', 'der', 'tales', 'af', 'ca', '.', 'seks', 'millioner', 'mennesker', '.']
     elif lang == 'nld':
-        if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
-                              'NLTK - NIST Tokenizer',
-                              'NLTK - Tok-tok Tokenizer',
-                              'NLTK - Twitter Tokenizer',
-                              'Sacremoses - Moses Tokenizer',
-                              'Sacremoses - Penn Treebank Tokenizer']:
-            assert tokens == ['Het', 'Nederlands', 'is', 'een', 'West-Germaanse', 'taal', 'en', 'de', 'moedertaal', 'van', 'de', 'meeste', 'inwoners', 'van', 'Nederland', ',', 'België', 'en', 'Suriname', '.']
-        elif word_tokenizer in ['spaCy - Dutch Word Tokenizer']:
-            assert tokens == ['Het', 'Nederlands', 'is', 'een', 'West', '-', 'Germaanse', 'taal', 'en', 'de', 'moedertaal', 'van', 'de', 'meeste', 'inwoners', 'van', 'Nederland', ',', 'België', 'en', 'Suriname', '.']
+        assert tokens == ['Het', 'Nederlands', 'is', 'een', 'West-Germaanse', 'taal', 'en', 'de', 'moedertaal', 'van', 'de', 'meeste', 'inwoners', 'van', 'Nederland', ',', 'België', 'en', 'Suriname', '.']
     elif lang == 'eng':
         if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
                               'syntok - Word Tokenizer']:
@@ -331,7 +323,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'NLTK - Twitter Tokenizer':
             assert tokens == ['ದ', '್', 'ರ', 'ಾ', 'ವ', 'ಿ', 'ಡ', 'ಭ', 'ಾ', 'ಷ', 'ೆ', 'ಗಳಲ', '್', 'ಲ', 'ಿ', 'ಪ', '್', 'ರ', 'ಾ', 'ಮ', 'ು', 'ಖ', '್', 'ಯವ', 'ು', 'ಳ', '್', 'ಳ', 'ಭ', 'ಾ', 'ಷ', 'ೆ', 'ಯ', 'ೂ', 'ಭ', 'ಾ', 'ರತದ', 'ಪ', 'ು', 'ರ', 'ಾ', 'ತನವ', 'ಾ', 'ದ', 'ಭ', 'ಾ', 'ಷ', 'ೆ', 'ಗಳಲ', '್', 'ಲ', 'ಿ', 'ಒ', 'ಂ', 'ದ', 'ೂ', 'ಆಗ', 'ಿ', 'ರ', 'ು', 'ವ', 'ಕನ', '್', 'ನಡ', 'ಭ', 'ಾ', 'ಷ', 'ೆ', 'ಯನ', '್', 'ನ', 'ು', 'ಅದರ', 'ವ', 'ಿ', 'ವ', 'ಿ', 'ಧ', 'ರ', 'ೂ', 'ಪಗಳಲ', '್', 'ಲ', 'ಿ', 'ಸ', 'ು', 'ಮ', 'ಾ', 'ರ', 'ು', '೪೫', 'ದಶಲಕ', '್', 'ಷ', 'ಜನರ', 'ು', 'ಆಡ', 'ು', 'ನ', 'ು', 'ಡ', 'ಿ', 'ಯ', 'ಾ', 'ಗ', 'ಿ', 'ಬಳಸ', 'ು', 'ತ', '್', 'ತಲ', 'ಿ', 'ದ', '್', 'ದ', 'ಾ', 'ರ', 'ೆ', '.']
         elif word_tokenizer == 'spaCy - Kannada Word Tokenizer':
-            assert tokens == ['ದ್ರಾವಿಡ', 'ಭಾಷೆಗಳಲ್ಲಿ', 'ಪ್ರಾಮುಖ್ಯವುಳ್ಳ', 'ಭಾಷೆಯೂ', 'ಭಾರತದ', 'ಪುರಾತನವಾದ', 'ಭಾಷೆಗಳಲ್ಲಿ', 'ಒಂದೂ', 'ಆಗಿರುವ', 'ಕನ್ನಡ', 'ಭಾಷೆಯನ್ನು', 'ಅದರ', 'ವಿವಿಧ', 'ರೂಪಗಳಲ್ಲಿ', 'ಸುಮಾರು', '೪೫', 'ದಶಲಕ್ಷ', 'ಜನರು', 'ಆಡು', 'ನುಡಿಯಾಗಿ', 'ಬಳಸುತ್ತಲಿದ್ದಾರೆ.']
+            assert tokens == ['ದ್ರಾವಿಡ', 'ಭಾಷೆಗಳಲ್ಲಿ', 'ಪ್ರಾಮುಖ್ಯವುಳ್ಳ', 'ಭಾಷೆಯೂ', 'ಭಾರತದ', 'ಪುರಾತನವಾದ', 'ಭಾಷೆಗಳಲ್ಲಿ', 'ಒಂದೂ', 'ಆಗಿರುವ', 'ಕನ್ನಡ', 'ಭಾಷೆಯನ್ನು', 'ಅದರ', 'ವಿವಿಧ', 'ರೂಪಗಳಲ್ಲಿ', 'ಸುಮಾರು', '೪೫', 'ದಶಲಕ್ಷ', 'ಜನರು', 'ಆಡು', 'ನುಡಿಯಾಗಿ', 'ಬಳಸುತ್ತಲಿದ್ದಾರೆ', '.']
     elif lang == 'lav':
         if word_tokenizer == 'NLTK - Penn Treebank Tokenizer':
             assert tokens == ['Latviešu', 'valoda', 'ir', 'dzimtā', 'valoda', 'apmēram', '1,7', 'miljoniem', 'cilvēku', ',', 'galvenokārt', 'Latvijā', ',', 'kur', 'tā', 'ir', 'vienīgā', 'valsts', 'valoda.', '[', '3', ']']
@@ -475,7 +467,8 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'tam':
         if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
                               'NLTK - NIST Tokenizer',
-                              'NLTK - Tok-tok Tokenizer']:
+                              'NLTK - Tok-tok Tokenizer',
+                              'spaCy - Tamil Word Tokenizer']:
             assert tokens == ['தமிழ்', 'மொழி', '(', 'Tamil', 'language', ')', 'தமிழர்களினதும்', ',', 'தமிழ்', 'பேசும்', 'பலரதும்', 'தாய்மொழி', 'ஆகும்', '.']
         elif word_tokenizer == 'NLTK - Twitter Tokenizer':
             assert tokens == ['தம', 'ி', 'ழ', '்', 'ம', 'ொ', 'ழ', 'ி', '(', 'Tamil', 'language', ')', 'தம', 'ி', 'ழர', '்', 'கள', 'ி', 'னத', 'ு', 'ம', '்', ',', 'தம', 'ி', 'ழ', '்', 'ப', 'ே', 'ச', 'ு', 'ம', '்', 'பலரத', 'ு', 'ம', '்', 'த', 'ா', 'ய', '்', 'ம', 'ொ', 'ழ', 'ி', 'ஆக', 'ு', 'ம', '்', '.']
@@ -483,19 +476,16 @@ def test_word_tokenize(lang, word_tokenizer):
             assert tokens == ['தமிழ', '்', 'மொழி', '(', 'Tamil', 'language', ')', 'தமிழர', '்', 'களினதும', '்', ',', 'தமிழ', '்', 'பேசும', '்', 'பலரதும', '்', 'தாய', '்', 'மொழி', 'ஆகும', '்', '.']
         elif word_tokenizer == 'Sacremoses - Penn Treebank Tokenizer':
             assert tokens == ['தமிழ்', 'மொழி', '-LRB-', 'Tamil', 'language', '-RRB-', 'தமிழர்களினதும்', ',', 'தமிழ்', 'பேசும்', 'பலரதும்', 'தாய்மொழி', 'ஆகும்', '.']
-        elif word_tokenizer == 'spaCy - Tamil Word Tokenizer':
-            assert tokens == ['தமிழ்', 'மொழி', '(', 'Tamil', 'language', ')', 'தமிழர்களினதும்', ',', 'தமிழ்', 'பேசும்', 'பலரதும்', 'தாய்மொழி', 'ஆகும்.']
     elif lang == 'tat':
         assert tokens == ['Татар', 'теле', '—', 'татарларның', 'милли', 'теле', ',', 'Татарстанның', 'дәүләт', 'теле', ',', 'таралышы', 'буенча', 'Русиядә', 'икенче', 'тел', '.']
     elif lang == 'tel':
         if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
                               'NLTK - NIST Tokenizer',
-                              'NLTK - Tok-tok Tokenizer']:
+                              'NLTK - Tok-tok Tokenizer',
+                              'spaCy - Telugu Word Tokenizer']:
             assert tokens == ['ఆంధ్ర', 'ప్రదేశ్', ',', 'తెలంగాణ', 'రాష్ట్రాల', 'అధికార', 'భాష', 'తెలుగు', '.']
         elif word_tokenizer == 'NLTK - Twitter Tokenizer':
             assert tokens == ['ఆ', 'ం', 'ధ', '్', 'ర', 'ప', '్', 'రద', 'ే', 'శ', '్', ',', 'త', 'ె', 'ల', 'ం', 'గ', 'ా', 'ణ', 'ర', 'ా', 'ష', '్', 'ట', '్', 'ర', 'ా', 'ల', 'అధ', 'ి', 'క', 'ా', 'ర', 'భ', 'ా', 'ష', 'త', 'ె', 'ల', 'ు', 'గ', 'ు', '.']
-        elif word_tokenizer == 'spaCy - Telugu Word Tokenizer':
-            assert tokens == ['ఆంధ్ర', 'ప్రదేశ్', ',', 'తెలంగాణ', 'రాష్ట్రాల', 'అధికార', 'భాష', 'తెలుగు.']
     elif lang == 'bod':
         if word_tokenizer == 'pybo - Tibetan Word Tokenizer (GMD)':
             assert tokens == ['༄༅། །', 'རྒྱ་གར་', 'སྐད་', 'དུ', '།', 'བོ་དྷི་སཏྭ་', 'ཙརྻ་', 'ཨ་བ་ཏ་ར', '།', 'བོད་སྐད་', 'དུ', '།', 'བྱང་ཆུབ་སེམས་དཔ', 'འི་', 'སྤྱོད་པ་', 'ལ་', 'འཇུག་པ', '། །', 'སངས་རྒྱས་', 'དང་', 'བྱང་ཆུབ་སེམས་དཔའ་', 'ཐམས་ཅད་', 'ལ་', 'ཕྱག་', 'འཚལ་', 'ལོ', '། །', 'བདེ་གཤེགས་', 'ཆོས་', 'ཀྱི་', 'སྐུ་', 'མངའ་', 'སྲས་', 'བཅས་', 'དང༌', '། །', 'ཕྱག་འོས་', 'ཀུན་', 'ལ', 'འང་', 'གུས་པ', 'ར་', 'ཕྱག་', 'འཚལ་', 'ཏེ', '། །', 'བདེ་གཤེགས་', 'སྲས་', 'ཀྱི་', 'སྡོམ་', 'ལ་', 'འཇུག་པ་', 'ནི', '། །', 'ལུང་', 'བཞིན་', 'མདོར་བསྡུས་ན', 'ས་', 'ནི་', 'བརྗོད་པ', 'ར་', 'བྱ', '། །']
@@ -541,7 +531,9 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'vie':
         assert tokens == ['Tiếng', 'Việt', ',', 'còn', 'gọi', 'tiếng', 'Việt Nam', '[', '5', ']', ',', 'tiếng Kinh', 'hay', 'Việt ngữ', ',', 'là', 'ngôn ngữ', 'của', 'người', 'Việt', '(', 'dân tộc', 'Kinh', ')', 'và', 'là', 'ngôn ngữ', 'chính thức', 'tại', 'Việt Nam', '.']
 
-# for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
-#     for word_tokenizer in word_tokenizers:
-#         if lang in ['eng']:
-#             test_word_tokenize(lang, word_tokenizer)
+'''
+for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
+    for word_tokenizer in word_tokenizers:
+        if lang not in ['bod', 'other']:
+            test_word_tokenize(lang, word_tokenizer)
+'''

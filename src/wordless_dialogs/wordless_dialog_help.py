@@ -199,7 +199,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # spaCy
             [
                 '<a href="https://spacy.io">spaCy</a>',
-                '2.1.8',
+                '2.2.1',
                 'Matthew Honnibal, Ines Montani',
                 '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'
             ],
@@ -836,6 +836,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade PyQt to 5.13.1</li>
                             <li>Upgrade pytest to 5.2.0</li>
                             <li>Upgrade Sacremoses to 0.0.34</li>
+                            <li>Upgrade spaCy to 2.2.1</li>
                             <li>Upgrade underthesea to 1.1.17</li>
                         </ul>
                     </div>

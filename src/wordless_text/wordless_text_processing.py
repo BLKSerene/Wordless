@@ -701,8 +701,14 @@ def wordless_pos_tag(main, tokens, lang,
 
         mappings = {tag: tag_universal
                     for tag, tag_universal, _, _ in main.settings_custom['tagsets']['mappings'][lang][pos_tagger]}
+        tokens_tagged = list(tokens_tagged)
 
-        tokens_tagged = [(token, mappings[tag])
+        # Issue warnings if any tag is missing from the mapping table
+        for _, tag in tokens_tagged:
+            if tag not in mappings:
+                print(f'Warning: tag "{tag}" is missing from the {wordless_conversion.to_lang_text(main, lang)} mapping table!')
+
+        tokens_tagged = [(token, mappings.get(tag, 'X'))
                          for token, tag in tokens_tagged]
 
     # Strip empty tokens and strip whitespace in tokens
@@ -957,11 +963,11 @@ def wordless_get_stop_words(main, lang,
         else:
             # Serbian (Cyrillic) & Serbian (Latin)
             if lang_639_1 == 'sr_cyrl':
-                spacy_lang = importlib.import_module('spacy.lang.rs')
+                spacy_lang = importlib.import_module('spacy.lang.sr')
 
                 stop_words = spacy_lang.STOP_WORDS
             elif lang_639_1 == 'sr_latn':
-                spacy_lang = importlib.import_module('spacy.lang.rs')
+                spacy_lang = importlib.import_module('spacy.lang.sr')
 
                 stop_words = spacy_lang.STOP_WORDS
                 stop_words = wordless_text_utils.to_srp_latn(stop_words)

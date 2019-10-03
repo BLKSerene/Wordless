@@ -55,7 +55,8 @@ main = test_init.Test_Main()
 
 for lang, word_detokenizers in main.settings_global['word_detokenizers'].items():
     for word_detokenizer in word_detokenizers:
-        if lang != 'other':
+        # Temporarily disable testing of pybo's word tokenizers due to memory issues
+        if lang not in ['bod', 'other']:
             WORD_DETOKENIZERS.append((lang, word_detokenizer))
 
 @pytest.mark.parametrize('lang, word_detokenizer', WORD_DETOKENIZERS)
@@ -83,7 +84,7 @@ def test_word_detokenize(lang, word_detokenizer):
     elif lang == 'ces':
         assert text == 'Čeština neboli český jazyk je západoslovanský jazyk, nejbližší slovenštině, poté lužické srbštině a polštině.'
     elif lang == 'nld':
-        assert text == 'Het Nederlands is een West - Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
+        assert text == 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
     elif lang == 'eng':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
             assert text == 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.[5][6 ]'
@@ -150,7 +151,9 @@ def test_word_detokenize(lang, word_detokenizer):
     elif lang == 'bod':
         assert text == '༄༅། །རྒྱ་གར་སྐད་དུ།བོ་དྷི་སཏྭ་ཙརྻ་ཨ་བ་ཏ་ར།བོད་སྐད་དུ།བྱང་ཆུབ་སེམས་དཔའི་སྤྱོད་པ་ལ་འཇུག་པ། །སངས་རྒྱས་དང་བྱང་ཆུབ་སེམས་དཔའ་ཐམས་ཅད་ལ་ཕྱག་འཚལ་ལོ། །བདེ་གཤེགས་ཆོས་ཀྱི་སྐུ་མངའ་སྲས་བཅས་དང༌། །ཕྱག་འོས་ཀུན་ལའང་གུས་པར་ཕྱག་འཚལ་ཏེ། །བདེ་གཤེགས་སྲས་ཀྱི་སྡོམ་ལ་འཇུག་པ་ནི། །ལུང་བཞིན་མདོར་བསྡུས་ནས་ནི་བརྗོད་པར་བྱ། །'
 
-# for lang, word_detokenizers in main.settings_global['word_detokenizers'].items():
-#     for word_detokenizer in word_detokenizers:
-#         if lang in ['eng']:
-#             test_word_detokenize(lang, word_detokenizer)
+'''
+for lang, word_detokenizers in main.settings_global['word_detokenizers'].items():
+    for word_detokenizer in word_detokenizers:
+        if lang not in ['bod', 'other']:
+            test_word_detokenize(lang, word_detokenizer)
+'''
