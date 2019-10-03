@@ -225,8 +225,8 @@ def check_spacy_models(main, lang, pipeline):
     else:
         # Serbian (Cyrillic) & Serbian (Latin)
         if lang in ['srp_cyrl', 'srp_latn']:
-            main.__dict__['spacy_nlp_srp_cyrl'] = spacy.blank('rs')
-            main.__dict__['spacy_nlp_srp_latn'] = spacy.blank('rs')
+            main.__dict__['spacy_nlp_srp_cyrl'] = spacy.blank('sr')
+            main.__dict__['spacy_nlp_srp_latn'] = spacy.blank('sr')
         else:
             main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wordless_conversion.to_iso_639_1(main, lang))
 
