@@ -1286,6 +1286,10 @@ def init_settings_global(main):
                 main.tr('nagisa - Japanese POS Tagger')
             ],
 
+            'lit': [
+                main.tr('spaCy - Lithuanian POS Tagger')
+            ],
+
             'nob': [
                 main.tr('spaCy - Norwegian Bokmål POS Tagger')
             ],
@@ -1385,6 +1389,10 @@ def init_settings_global(main):
             'ita': [
                 main.tr('Lemmatization Lists - Italian Lemma List'),
                 main.tr('spaCy - Italian Lemmatizer')
+            ],
+
+            'lit': [
+                main.tr('spaCy - Lithuanian Lemmatizer')
             ],
 
             'glv': [

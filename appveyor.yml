@@ -43,6 +43,7 @@ install:
   - python -m spacy download de_core_news_sm
   - python -m spacy download el_core_news_sm
   - python -m spacy download it_core_news_sm
+  - python -m spacy download lt_core_news_sm
   - python -m spacy download nb_core_news_sm
   - python -m spacy download pt_core_news_sm
   - python -m spacy download es_core_news_sm

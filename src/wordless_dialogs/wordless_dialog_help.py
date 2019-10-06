@@ -805,7 +805,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Add "Paragraph Length in Clause" to "Overview"</li>
                             <li>Add "Paragraph" to "Generation Settings -> Width Unit" in "Concordancer"</li>
                             <li>Add razdel's Russian sentenizer and word tokenizer</li>
-                            <li>Add spaCy's Norwegian Bokmål word tokenizer, POS tagger, and lemmatizer</li>
+                            <li>Add spaCy's Lithuanian and Norwegian Bokmål word tokenizer, POS tagger, and lemmatizer</li>
                             <li>Add syntok's sentence segmenter and word tokenizer</li>
                         </ul>
                     </div>
