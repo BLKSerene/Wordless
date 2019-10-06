@@ -170,7 +170,7 @@ def check_spacy_models(main, lang, pipeline):
         nlp_disable = ['parser', 'ner']
 
     # Languages with models
-    if lang in ['nld', 'eng', 'fra', 'deu', 'ell', 'ita', 'nob', 'por', 'spa', 'other']:
+    if lang in ['nld', 'eng', 'fra', 'deu', 'ell', 'ita', 'lit', 'nob', 'por', 'spa', 'other']:
         if f'spacy_nlp_{lang}' in main.__dict__:
             if main.__dict__[f'spacy_nlp_{lang}'].pipe_names != nlp_pipelines:
                 del main.__dict__[f'spacy_nlp_{lang}']
@@ -206,6 +206,11 @@ def check_spacy_models(main, lang, pipeline):
                 import it_core_news_sm
                 
                 main.__dict__[f'spacy_nlp_{lang}'] = it_core_news_sm.load(disable = nlp_disable)
+            # Lithuanian
+            elif lang == 'lit':
+                import lt_core_news_sm
+                
+                main.__dict__[f'spacy_nlp_{lang}'] = lt_core_news_sm.load(disable = nlp_disable)
             # Norwegian Bokmål
             elif lang == 'nob':
                 import nb_core_news_sm
