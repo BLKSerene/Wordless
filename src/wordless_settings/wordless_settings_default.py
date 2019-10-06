@@ -18,6 +18,7 @@ from wordless_tagsets import (wordless_tagset_universal,
                               wordless_tagset_ell_spacy,
                               wordless_tagset_ita_spacy,
                               wordless_tagset_jpn_unidic,
+                              wordless_tagset_nob_spacy,
                               wordless_tagset_por_spacy,
                               wordless_tagset_rus_open_corpora,
                               wordless_tagset_rus_russian_national_corpus,
@@ -1216,6 +1217,7 @@ def init_settings_default(main):
                 'ell': main.tr('spaCy - Greek (Modern) POS Tagger'),
                 'ita': main.tr('spaCy - Italian POS Tagger'),
                 'jpn': main.tr('nagisa - Japanese POS Tagger'),
+                'nob': main.tr('spaCy - Norwegian Bokmål POS Tagger'),
                 'por': main.tr('spaCy - Portuguese POS Tagger'),
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
                 'spa': main.tr('spaCy - Spanish POS Tagger'),
@@ -1245,6 +1247,7 @@ def init_settings_default(main):
                 'ell': main.tr('spaCy - Greek (Modern) POS Tagger'),
                 'ita': main.tr('spaCy - Italian POS Tagger'),
                 'jpn': main.tr('nagisa - Japanese POS Tagger'),
+                'nob': main.tr('spaCy - Norwegian Bokmål POS Tagger'),
                 'por': main.tr('spaCy - Portuguese POS Tagger'),
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
                 'spa': main.tr('spaCy - Spanish POS Tagger'),
@@ -1290,6 +1293,10 @@ def init_settings_default(main):
 
                 'jpn': {
                     main.tr('nagisa - Japanese POS Tagger'): wordless_tagset_jpn_unidic.mappings
+                },
+
+                'nob': {
+                    main.tr('spaCy - Norwegian Bokmål POS Tagger'): wordless_tagset_nob_spacy.mappings
                 },
 
                 'por': {
@@ -1342,6 +1349,7 @@ def init_settings_default(main):
                 'gle': main.tr('Lemmatization Lists - Irish Lemma List'),
                 'ita': main.tr('spaCy - Italian Lemmatizer'),
                 'glv': main.tr('Lemmatization Lists - Manx Lemma List'),
+                'nob': main.tr('spaCy - Norwegian Bokmål Lemmatizer'),
                 'fas': main.tr('Lemmatization Lists - Persian Lemma List'),
                 'por': main.tr('spaCy - Portuguese Lemmatizer'),
                 'ron': main.tr('Lemmatization Lists - Romanian Lemma List'),
