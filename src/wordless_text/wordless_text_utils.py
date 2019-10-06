@@ -170,7 +170,7 @@ def check_spacy_models(main, lang, pipeline):
         nlp_disable = ['parser', 'ner']
 
     # Languages with models
-    if lang in ['nld', 'eng', 'fra', 'deu', 'ell', 'ita', 'por', 'spa', 'other']:
+    if lang in ['nld', 'eng', 'fra', 'deu', 'ell', 'ita', 'nob', 'por', 'spa', 'other']:
         if f'spacy_nlp_{lang}' in main.__dict__:
             if main.__dict__[f'spacy_nlp_{lang}'].pipe_names != nlp_pipelines:
                 del main.__dict__[f'spacy_nlp_{lang}']
@@ -181,8 +181,8 @@ def check_spacy_models(main, lang, pipeline):
                 import nl_core_news_sm
 
                 main.__dict__[f'spacy_nlp_{lang}'] = nl_core_news_sm.load(disable = nlp_disable)
-            # English
-            elif lang == 'eng':
+            # English and other languages
+            elif lang in ['eng', 'other']:
                 import en_core_web_sm
 
                 main.__dict__[f'spacy_nlp_{lang}'] = en_core_web_sm.load(disable = nlp_disable)
@@ -206,6 +206,11 @@ def check_spacy_models(main, lang, pipeline):
                 import it_core_news_sm
                 
                 main.__dict__[f'spacy_nlp_{lang}'] = it_core_news_sm.load(disable = nlp_disable)
+            # Norwegian Bokmål
+            elif lang == 'nob':
+                import nb_core_news_sm
+
+                main.__dict__[f'spacy_nlp_{lang}'] = nb_core_news_sm.load(disable = nlp_disable)
             # Portuguese
             elif lang == 'por':
                 import pt_core_news_sm
@@ -216,11 +221,6 @@ def check_spacy_models(main, lang, pipeline):
                 import es_core_news_sm
                 
                 main.__dict__[f'spacy_nlp_{lang}'] = es_core_news_sm.load(disable = nlp_disable)
-            # Other Languages
-            elif lang == 'other':
-                import en_core_web_sm
-                
-                main.__dict__[f'spacy_nlp_{lang}'] = en_core_web_sm.load(disable = nlp_disable)
     # Languages without models
     else:
         # Serbian (Cyrillic) & Serbian (Latin)

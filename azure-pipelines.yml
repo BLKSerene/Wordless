@@ -36,14 +36,15 @@ jobs:
 
   # Download spaCy models
   - script: |
-      python -m spacy download en_core_web_sm
-      python -m spacy download de_core_news_sm
-      python -m spacy download fr_core_news_sm
-      python -m spacy download es_core_news_sm
-      python -m spacy download pt_core_news_sm
-      python -m spacy download it_core_news_sm
       python -m spacy download nl_core_news_sm
+      python -m spacy download en_core_web_sm
+      python -m spacy download fr_core_news_sm
+      python -m spacy download de_core_news_sm
       python -m spacy download el_core_news_sm
+      python -m spacy download it_core_news_sm
+      python -m spacy download nb_core_news_sm
+      python -m spacy download pt_core_news_sm
+      python -m spacy download es_core_news_sm
     displayName: 'Download spaCy models'
 
   # Download NLTK data
@@ -87,14 +88,15 @@ jobs:
 
   # Download spaCy models
   - script: |
-      python3 -m spacy download en_core_web_sm
-      python3 -m spacy download de_core_news_sm
-      python3 -m spacy download fr_core_news_sm
-      python3 -m spacy download es_core_news_sm
-      python3 -m spacy download pt_core_news_sm
-      python3 -m spacy download it_core_news_sm
       python3 -m spacy download nl_core_news_sm
+      python3 -m spacy download en_core_web_sm
+      python3 -m spacy download fr_core_news_sm
+      python3 -m spacy download de_core_news_sm
       python3 -m spacy download el_core_news_sm
+      python3 -m spacy download it_core_news_sm
+      python3 -m spacy download nb_core_news_sm
+      python3 -m spacy download pt_core_news_sm
+      python3 -m spacy download es_core_news_sm
     displayName: 'Download spaCy models'
 
   # Download NLTK data
@@ -138,14 +140,15 @@ jobs:
 
   # Download spaCy models
   - script: |
-      python3.7 -m spacy download en_core_web_sm
-      python3.7 -m spacy download de_core_news_sm
-      python3.7 -m spacy download fr_core_news_sm
-      python3.7 -m spacy download es_core_news_sm
-      python3.7 -m spacy download pt_core_news_sm
-      python3.7 -m spacy download it_core_news_sm
       python3.7 -m spacy download nl_core_news_sm
+      python3.7 -m spacy download en_core_web_sm
+      python3.7 -m spacy download fr_core_news_sm
+      python3.7 -m spacy download de_core_news_sm
       python3.7 -m spacy download el_core_news_sm
+      python3.7 -m spacy download it_core_news_sm
+      python3.7 -m spacy download nb_core_news_sm
+      python3.7 -m spacy download pt_core_news_sm
+      python3.7 -m spacy download es_core_news_sm
     displayName: 'Download spaCy models'
 
   # Download NLTK data
