@@ -14,7 +14,7 @@ version: 1.3.0.{build}
 environment:
   matrix:
     # Windows
-    - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2017"
+    - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2019"
       PYTHON: "C:/Python37-x64"
     # Linux
     - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu1604"
@@ -32,7 +32,6 @@ install:
   - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
   # Check Python version
   - python --version
-  - python -c "import sys, platform, struct; print(sys.platform, platform.machine(), struct.calcsize('P')*8)"
   # Install dependencies
   - python -m pip install --upgrade pip
   - pip install -r requirements.txt
@@ -60,5 +59,14 @@ build: off
 before_test:
   - cd src
 
+# Run tests
 test_script:
-  - python -m pytest --ignore wordless_tests/test_init.py
+  # Text processing
+  - pytest wordless_tests/wordless_text/wordless_text_processing/test_sentence_tokenization.py
+  - pytest wordless_tests/wordless_text/wordless_text_processing/test_word_tokenization.py
+  - pytest wordless_tests/wordless_text/wordless_text_processing/test_word_detokenization.py
+  - pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
+  - pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
+  - pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
+  # Others
+  - pytest --ignore=wordless_tests/test_init.py --ignore=wordless_tests/wordless_text/wordless_text_processing/
