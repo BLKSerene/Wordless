@@ -20,7 +20,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_dialogs import wordless_dialog
-from wordless_utils import wordless_threading, wordless_misc
+from wordless_utils import wordless_threading
 from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
                               wordless_table)
 
@@ -93,11 +93,20 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
         settings['citation_sys'] = self.combo_box_citation_sys.currentText()
 
         if settings['citation_sys'] == self.tr('MLA (8th Edition)'):
-            self.text_edit_citing.setHtml('Ye Lei. <i>Wordless</i>, version 1.2.0, 2019. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
+            if self.main.ver:
+                self.text_edit_citing.setHtml(f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, 2019. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
+            else:
+                self.text_edit_citing.setHtml('Ye Lei. <i>Wordless</i>, 2019. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
         elif settings['citation_sys'] == self.tr('APA (6th Edition)'):
-            self.text_edit_citing.setHtml('Ye, L. (2019). Wordless (Version 1.2.0) [Computer software]. Retrieved from https://github.com/BLKSerene/Wordless')
+            if self.main.ver:
+                self.text_edit_citing.setHtml(f'Ye, L. (2019). Wordless (Version {self.main.ver}) [Computer software]. Retrieved from https://github.com/BLKSerene/Wordless')
+            else:
+                self.text_edit_citing.setHtml('Ye, L. (2019). Wordless [Computer software]. Retrieved from https://github.com/BLKSerene/Wordless')
         elif settings['citation_sys'] == self.tr('GB (GB/T 7714—2015)'):
-            self.text_edit_citing.setHtml('叶磊. Wordless version 1.2.0[CP]. (2019). https://github.com/BLKSerene/Wordless.')
+            if self.main.ver:
+                self.text_edit_citing.setHtml(f'叶磊. Wordless version {self.main.ver}[CP]. (2019). https://github.com/BLKSerene/Wordless.')
+            else:
+                self.text_edit_citing.setHtml('叶磊. Wordless[CP]. (2019). https://github.com/BLKSerene/Wordless.')
 
     def copy(self):
         self.text_edit_citing.setFocus()
@@ -880,10 +889,8 @@ class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
         label_about_icon = QLabel('', self)
         label_about_icon.setPixmap(img_wordless_icon)
 
-        wordless_ver = wordless_misc.get_wordless_ver()
-
-        if wordless_ver:
-            about_header = self.tr(f'Wordless Version {wordless_misc.get_wordless_ver()}')
+        if main.ver:
+            about_header = self.tr(f'Wordless Version {main.ver}')
         else:
             about_header = self.tr('Wordless')
 
