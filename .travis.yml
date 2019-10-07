@@ -30,36 +30,78 @@ matrix:
       language: shell
     # Linux
     - name: "Linux"
+      os: linux
+      dist: xenial
       python: 3.7
 
 install:
   # Check Python version
   - python3 --version || python --version
-  - python3 -c "import sys, platform, struct; print(sys.platform, platform.machine(), struct.calcsize('P')*8)" || python -c "import sys, platform, struct; print(sys.platform, platform.machine(), struct.calcsize('P')*8)"
   # Install dependencies
   - pip3 install --upgrade pip
   - pip3 install -r requirements.txt
   # Download spaCy models
-  - python3 -m spacy download nl_core_news_sm || python -m spacy download nl_core_news_sm
-  - python3 -m spacy download en_core_web_sm || python -m spacy download en_core_web_sm
-  - python3 -m spacy download fr_core_news_sm || python -m spacy download fr_core_news_sm
-  - python3 -m spacy download de_core_news_sm || python -m spacy download de_core_news_sm
-  - python3 -m spacy download el_core_news_sm || python -m spacy download el_core_news_sm
-  - python3 -m spacy download it_core_news_sm || python -m spacy download it_core_news_sm
-  - python3 -m spacy download lt_core_news_sm || python -m spacy download lt_core_news_sm
-  - python3 -m spacy download nb_core_news_sm || python -m spacy download nb_core_news_sm
-  - python3 -m spacy download pt_core_news_sm || python -m spacy download pt_core_news_sm
-  - python3 -m spacy download es_core_news_sm || python -m spacy download es_core_news_sm
+  - >-
+    python3 -m spacy download nl_core_news_sm ||
+    python -m spacy download nl_core_news_sm
+  - >-
+    python3 -m spacy download en_core_web_sm ||
+    python -m spacy download en_core_web_sm
+  - >-
+    python3 -m spacy download fr_core_news_sm ||
+    python -m spacy download fr_core_news_sm
+  - >-
+    python3 -m spacy download de_core_news_sm ||
+    python -m spacy download de_core_news_sm
+  - >-
+    python3 -m spacy download el_core_news_sm ||
+    python -m spacy download el_core_news_sm
+  - >-
+    python3 -m spacy download it_core_news_sm ||
+    python -m spacy download it_core_news_sm
+  - >-
+    python3 -m spacy download lt_core_news_sm ||
+    python -m spacy download lt_core_news_sm
+  - >-
+    python3 -m spacy download nb_core_news_sm ||
+    python -m spacy download nb_core_news_sm
+  - >-
+    python3 -m spacy download pt_core_news_sm ||
+    python -m spacy download pt_core_news_sm
+  - >-
+    python3 -m spacy download es_core_news_sm ||
+    python -m spacy download es_core_news_sm
   # Download NLTK data
-  - python3 -m nltk.downloader averaged_perceptron_tagger || python -m nltk.downloader averaged_perceptron_tagger
-  - python3 -m nltk.downloader averaged_perceptron_tagger_ru || python -m nltk.downloader averaged_perceptron_tagger_ru
-  - python3 -m nltk.downloader perluniprops || python -m nltk.downloader perluniprops
-  - python3 -m nltk.downloader punkt || python -m nltk.downloader punkt
-  - python3 -m nltk.downloader stopwords || python -m nltk.downloader stopwords
-  - python3 -m nltk.downloader wordnet || python -m nltk.downloader wordnet
+  - >-
+    python3 -m nltk.downloader averaged_perceptron_tagger ||
+    python -m nltk.downloader averaged_perceptron_tagger
+  - >-
+    python3 -m nltk.downloader averaged_perceptron_tagger_ru ||
+    python -m nltk.downloader averaged_perceptron_tagger_ru
+  - >-
+    python3 -m nltk.downloader perluniprops ||
+    python -m nltk.downloader perluniprops
+  - >-
+    python3 -m nltk.downloader punkt ||
+    python -m nltk.downloader punkt
+  - >-
+    python3 -m nltk.downloader stopwords ||
+    python -m nltk.downloader stopwords
+  - >-
+    python3 -m nltk.downloader wordnet ||
+    python -m nltk.downloader wordnet
 
 before_script:
   - cd src
 
+# Run tests
 script:
-  - python3 -m pytest --ignore wordless_tests/test_init.py || python -m pytest --ignore wordless_tests/test_init.py
+  # Text processing
+  - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_sentence_tokenization.py
+  - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_word_tokenization.py
+  - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_word_detokenization.py
+  - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
+  - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
+  - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
+  # Others
+  - travis_wait pytest --ignore=wordless_tests/test_init.py --ignore=wordless_tests/wordless_text/wordless_text_processing/
