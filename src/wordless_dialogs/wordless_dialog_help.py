@@ -876,7 +876,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Check permission before exporting tables</li>
                             <li>Update pybo's Tibetan tokenizers, POS tagger, and lemmatizer</li>
                             <li>Update PyThaiNLP's Thai stop words</li>
-                            <li>Update Sacremoses's tokenizers and detokenizers</li>
+                            <li>Update Sacremoses's tokenizers and detokenizer</li>
                         </ul>
                     </div>
 
