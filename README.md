@@ -28,11 +28,11 @@ Wordless is an integrated corpus tool with multi-language support for the study 
         <img src="https://img.shields.io/github/license/BLKSerene/Wordless" alt="License"></a>
     <a href="https://github.com/BLKSerene/Wordless/releases">
         <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases" alt="Release"></a>
-    <a href="https://github.com/BLKSerene/Wordless#download">
+    <a href="https://github.com/BLKSerene/Wordless#-download">
         <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total" alt="Downloads"></a>
 </div>
 
-## ©️ License
+## 🆓 License
     Copyright (C) 2018-2019  Ye Lei (叶磊)
 
     This project is licensed under GNU GPLv3.
@@ -55,7 +55,7 @@ GB (GB/T 7714—2015):
 
     叶磊. Wordless version 1.2.0[CP]. (2019). https://github.com/BLKSerene/Wordless.
 
-## ⬇️ Download
+## ⏬ Download
 The latest version (**v1.2.0**) of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 or later**, and **Ubuntu 16.04 or later**, all **64-bit only**.
 
 [Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/v1.2.0/wordless_v1.2.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
@@ -99,7 +99,7 @@ PayPal|Alipay|WeChat
 
 **Important Note**: I WILL NOT PROVIDE invoices, receipts, refund services, detailed spending reports, my contact information other than email addresses, my personal social media accounts, private email/phone support, or guarantees on bug fixes, enhancements, new features, or new releases of Wordless for donation.
 
-## ❤️ Acknowledgments
+## 💝 Acknowledgments
 Wordless stands on the shoulders of giants. Thus, I would like to extend my thanks to the following open-source projects:
 
 ### General
