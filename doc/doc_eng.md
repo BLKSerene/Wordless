@@ -410,21 +410,21 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 
 Languages|Sentence Tokenization|Word Tokenization|Word Detokenization|POS Tagging|Lemmatization|Stop Words
 :-------:|:-------------------:|:---------------:|:-----------------:|:---------:|:-----------:|:--------:
-Afrikaans            |⭕️ |✔|⭕️ |✖️|✖️|✔️
-Albanian             |⭕️ |✔|⭕️ |✖️|✖️|✔️
-Arabic               |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Afrikaans            |✔|✔|⭕️ |✖️|✖️|✔️
+Albanian             |✔|✔|⭕️ |✖️|✖️|✔️
+Arabic               |✔|✔️|⭕️ |✖️|✖️|✔️
 Armenian             |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Asturian             |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
 Azerbaijani          |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Basque               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Belarusian           |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
-Bengali              |⭕️ |✔️|⭕️ |✖️|✖️|✖️
+Bengali              |✔|✔️|⭕️ |✖️|✖️|✔️
 Breton               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
-Bulgarian            |⭕️ |✔️|⭕️ |✖️|✔️|✔️
-Catalan              |⭕️ |✔️|✔️|✖️|✔️|✔️
+Bulgarian            |✔|✔️|⭕️ |✖️|✔️|✔️
+Catalan              |✔|✔️|✔️|✖️|✔️|✔️
 Chinese (Simplified) |✔|✔️|✔️|✔️|✖️|✔️
 Chinese (Traditional)|✔|✔️|✔️|✔️|✖️|✔️
-Croatian             |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Croatian             |✔|✔️|⭕️ |✖️|✖️|✔️
 Czech                |✔|✔️|✔️|✖️|✔️|✔️
 Danish               |✔|✔️|⭕️ |✖️|✖️|✔️
 Dutch                |✔|✔️|✔️|✔️|✔️|✔️
@@ -438,53 +438,53 @@ German               |✔|✔️|✔️|✔️|✔️|✔️
 Greek (Ancient)      |⭕️ |⭕️ |⭕️ |✖️|✔️|✔️
 Greek (Modern)       |✔|✔️|✔️|✔️|✔️|✔️
 Hausa                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
-Hebrew               |⭕️ |✔️|⭕️ |✖️|✖️|✔️
-Hindi                |⭕️ |✔️|⭕️ |✖️|✖️|✔️
-Hungarian            |⭕️ |✔️|✔️|✖️|✔️|✔️
-Icelandic            |⭕️ |✔️|✔️|✖️|✖️|✔️
-Indonesian           |⭕️ |✔️|⭕️ |✖️|✖️|✔️
-Irish                |⭕️ |✔️|⭕️ |✖️|✔️|✔️
-Italian              |✔|⭕️ |⭕️ |✔️|✔️|✔️
-Japanese             |✔|⭕️ |✔️|✔️|✖️|✔️
-Kannada              |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Hebrew               |✔|✔️|⭕️ |✖️|✖️|✔️
+Hindi                |✔|✔️|⭕️ |✖️|✖️|✔️
+Hungarian            |✔|✔️|✔️|✖️|✔️|✔️
+Icelandic            |✔|✔️|✔️|✖️|✖️|✔️
+Indonesian           |✔|✔️|⭕️ |✖️|✖️|✔️
+Irish                |✔|✔️|✔️|✖️|✔️|✔️
+Italian              |✔|✔️|✔️|✔️|✔️|✔️
+Japanese             |✔|✔|✔️|✔️|✖️|✔️
+Kannada              |✔|✔️|⭕️ |✖️|✖️|✔️
 Kazakh               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Korean               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Kurdish              |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Latin                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
-Latvian              |⭕️ |✔️|✔️|✖️|✖️|✔️
-Lithuanian           |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Latvian              |✔|✔️|✔️|✖️|✖️|✔️
+Lithuanian           |✔️|✔️|✔️|✔️|✔️|✔️
 Malay                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Manx                 |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
-Marathi              |✔️|⭕️ |⭕️ |✖️|✖️|✔️
+Marathi              |⭕️ |✔️|⭕️ |✖️|✖️|✔️
 Mongolian            |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Nepali               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
-Norwegian Bokmål     |✔|✔️|⭕️ |✖️|✖️|✔️
+Norwegian Bokmål     |✔|✔️|⭕️ |✔️|✔️|✔️
 Norwegian Nynorsk    |✔|⭕️ |⭕️ |✖️|✖️|✔️
-Persian              |⭕️ |✔️|⭕️ |✖️|✔️|✔️
+Persian              |✔|✔️|⭕️ |✖️|✔️|✔️
 Polish               |✔|✔️|✔️|✖️|✖️|✔️
 Portuguese           |✔|✔️|✔️|✔️|✔️|✔️
-Romanian             |⭕️ |✔️|✔️|✖️|✔️|✔️
+Romanian             |✔|✔️|✔️|✖️|✔️|✔️
 Russian              |✔️|✔️|✔️|✔️|✔️|✔️
 Scottish Gaelic      |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
-Serbian (Cyrillic)   |✔️|⭕️ |⭕️ |✖️|✖️|✔️
-Serbian (Latin)      |✔️|⭕️ |⭕️ |✖️|✖️|✔️
-Sinhala              |⭕️ |✔️|⭕️ |✖️|✖️|✔️
-Slovak               |⭕️ |✔️|✔️|✖️|✔️|✔️
+Serbian (Cyrillic)   |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Serbian (Latin)      |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Sinhala              |✔|✔️|⭕️ |✖️|✖️|✔️
+Slovak               |✔|✔️|✔️|✖️|✔️|✔️
 Slovenian            |✔|✔️|✔️|✖️|✔️|✔️
 Sotho (Southern)     |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Spanish              |✔|✔️|✔️|✔️|✔️|✔️
 Swahili              |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Swedish              |✔|✔️|✔️|✖️|✔️|✔️
-Tagalog              |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Tagalog              |✔|✔️|⭕️ |✖️|✖️|✔️
 Tajik                |⭕️ |✔️|⭕️ |✖️|✖️|✔️
-Tamil                |⭕️ |✔️|✔️|✖️|✖️|✔️
-Tatar                |⭕️ |✔️|⭕️ |✖️|✖️|✔️
-Telugu               |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Tamil                |✔|✔️|✔️|✖️|✖️|✔️
+Tatar                |✔|✔️|⭕️ |✖️|✖️|✔️
+Telugu               |✔|✔️|⭕️ |✖️|✖️|✔️
 Thai                 |✔|✔️|✔️|✔️|✖️|✔️
 Tibetan              |⭕️ |✔️|✔️|✔️|✔️|✖️
 Turkish              |✔|✔️|⭕️ |✖️|✖️|✔️
-Ukrainian            |⭕️ |✔️|⭕️ |✔️|✔️|✔️
-Urdu                 |⭕️ |✔️|⭕️ |✖️|✖️|✔️
+Ukrainian            |✔|✔️|⭕️ |✔️|✔️|✔️
+Urdu                 |✔|✔️|⭕️ |✖️|✖️|✔️
 Vietnamese           |✔|✔️|⭕️ |✔️|✖️|✔️
 Welsh                |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
 Yoruba               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
