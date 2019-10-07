@@ -11,6 +11,7 @@
 
 import copy
 import platform
+import re
 
 import requests
 
@@ -792,188 +793,72 @@ class Wordless_Dialog_Check_Updates(wordless_dialog.Wordless_Dialog_Info):
 
 class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
-        changelog = main.tr(f'''
+        changelog = []
+
+        try:
+            with open('CHANGELOG.md', 'r', encoding = 'utf_8') as f:
+                for line in f:
+                    # Changelog headers
+                    if line.startswith('## '):
+                        release_ver = re.search(r'(?<=\[)[^\]]+?(?=\])', line).group()
+                        release_link = re.search(r'(?<=\()[^\)]+?(?=\))', line).group()
+                        release_date = re.search(r'(?<=\- )[0-9?]{2}/[0-9?]{2}/[0-9?]{4}', line).group()
+
+                        changelog.append({
+                            'release_ver': release_ver,
+                            'release_link': release_link,
+                            'release_date': release_date,
+                            'changelog_sections': []
+                        })
+
+                    # Changelog section headers
+                    elif line.startswith('### '):
+                        changelog[-1]['changelog_sections'].append({
+                            'section_header': line.replace('###', '').strip(),
+                            'section_list': []
+                        })
+                    # Changelog section lists
+                    elif line.startswith('- '):
+                        changelog[-1]['changelog_sections'][-1]['section_list'].append(line.replace('-', '').strip())
+        except:
+            pass
+
+        changelog_text = f'''
             {main.settings_global['styles']['style_changelog']}
             <body>
+        '''
+
+        for release in changelog:
+            changelog_text += f'''
                 <div class="changelog">
-                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0">v1.3.0</a> - ??/??/2019</div>
+                    <div class="changelog-header"><a href="{release['release_link']}">{release['release_ver']}</a> - {release['release_date']}</div>
                     <hr>
+            '''
 
+            for changelog_section in release['changelog_sections']:
+                changelog_text += f'''
                     <div class="changelog-section">
-                        <div class="changelog-section-header">New Features</div>
+                        <div class="changelog-section-header">{changelog_section['section_header']}</div>
                         <ul>
-                            <li>Add "Paragraph Length in Clause" to "Overview"</li>
-                            <li>Add "Paragraph" to "Generation Settings -> Width Unit" in "Concordancer"</li>
-                            <li>Add razdel's Russian sentenizer and word tokenizer</li>
-                            <li>Add spaCy's Lithuanian and Norwegian Bokmål word tokenizer, POS tagger, and lemmatizer</li>
-                            <li>Add syntok's sentence segmenter and word tokenizer</li>
+                '''
+
+                for item in changelog_section['section_list']:
+                    changelog_text += f'''
+                        <li>{item}</li>
+                    '''
+
+                changelog_text += f'''
                         </ul>
                     </div>
+                '''
 
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Improvements</div>
-                        <ul>
-                            <li>Force consistent results for language detection</li>
-                            <li>Update error messages for file checking</li>
-                            <li>Update Sacremoses's Moses tokenizer and detokenizer</li>
-                        </ul>
-                    </div>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Changes</div>
-                        <ul>
-                            <li>Remove Sacremoses's Penn Treebank tokenizer</li>
-                        </ul>
-                    </div>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Bug Fixes</div>
-                        <ul>
-                            <li>Fix encoding detection</li>
-                            <li>Fix file checking</li>
-                            <li>Fix lemmatization of empty tokens</li>
-                            <li>Fix "Paragraph Length" and "Sentence Length" in "Overview"</li>
-                        </ul>
-                    </div>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Dependency Upgrades</div>
-                        <ul>
-                            <li>Upgrade botok (pybo) to 0.6.10</li>
-                            <li>Upgrade NumPy to 1.17.2</li>
-                            <li>Upgrade openpyxl to 3.0.0</li>
-                            <li>Upgrade PyQt to 5.13.1</li>
-                            <li>Upgrade pytest to 5.2.0</li>
-                            <li>Upgrade Sacremoses to 0.0.35</li>
-                            <li>Upgrade spaCy to 2.2.1</li>
-                            <li>Upgrade underthesea to 1.1.17</li>
-                        </ul>
-                    </div>
+            changelog_text += f'''
                 </div>
+            '''
 
-                <div class="changelog">
-                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.2.0">v1.2.0</a> - 08/27/2019</div>
-                    <hr>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">New Features</div>
-                        <ul>
-                            <li>Add "Clause No." to "Concordancer"</li>
-                            <li>Add "Sentence" and "Clause" to "Generation Settings -> Width Unit" in "Concordancer"</li>
-                            <li>Add "Count of Clauses", "Clause Length", and "Paragraph/Sentence/Token Length (Standard Deviation)" to "Overview"</li>
-                            <li>Add extra-stopwords's stop words</li>
-                            <li>Add NLTK's Punkt Sentence Tokenizer for Russian</li>
-                            <li>Add NLTK's Slovenian and Tajik stop words</li>
-                            <li>Add "Settings → Figures → Line Chart / Word Cloud / Network Graph"</li>
-                            <li>Add support for network graphs</li>
-                            <li>Add support for XML files</li>
-                        </ul>
-                    </div>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Improvements</div>
-                        <ul>
-                            <li>Check permission before exporting tables</li>
-                            <li>Update pybo's Tibetan tokenizers, POS tagger, and lemmatizer</li>
-                            <li>Update PyThaiNLP's Thai stop words</li>
-                            <li>Update Sacremoses's tokenizers and detokenizer</li>
-                        </ul>
-                    </div>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Bug Fixes</div>
-                        <ul>
-                            <li>Fix "Collocation" and "Colligation"</li>
-                            <li>Fix export in "Concordancer"</li>
-                            <li>Fix NLTK's word tokenizers</li>
-                            <li>Fix toggling of checkboxes in "Search Settings" and "Context Settings"</li>
-                            <li>Fix "Settings → Stop Words → Preview → Count of Stop Words"</li>
-                            <li>Fix "Sort Results" in "Concordancer"</li>
-                        </ul>
-                    </div>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Dependency Upgrades</div>
-                        <ul>
-                            <li>Upgrade Beautiful Soup to 4.8.0</li>
-                            <li>Upgrade lxml to 4.4.1</li>
-                            <li>Upgrade Matplotlib to 3.1.1</li>
-                            <li>Upgrade nagisa to 0.2.4</li>
-                            <li>Upgrade NLTK to 3.4.5</li>
-                            <li>Upgrade NumPy to 1.17.0</li>
-                            <li>Upgrade openpyxl to 2.6.3</li>
-                            <li>Upgrade pybo to 0.6.7</li>
-                            <li>Upgrade PyInstaller to 4.0.dev0+46286a1f4</li>
-                            <li>Upgrade PyQt to 5.13.0</li>
-                            <li>Upgrade PyThaiNLP to 2.0.7</li>
-                            <li>Upgrade Python to 3.7.4</li>
-                            <li>Upgrade requests to 2.22.0</li>
-                            <li>Upgrade Sacremoses to 0.0.33</li>
-                            <li>Upgrade SciPy to 1.3.1</li>
-                            <li>Upgrade spaCy to 2.1.8</li>
-                            <li>Upgrade Underthesea to 1.1.16</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="changelog">
-                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.1.0">v1.1.0</a> - 03/31/2019</div>
-                    <hr>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">New Features</div>
-                        <ul>
-                            <li>Add "Settings → General → Font Settings"</li>
-                        </ul>
-                    </div>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Improvements</div>
-                        <ul>
-                            <li>Disable mouse wheel event when combo boxes and spin boxes are not focused</li>
-                            <li>Update hint messages</li>
-                            <li>Update layout</li>
-                            <li>Update spaCy's sentencizer</li>
-                        </ul>
-                    </div>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Bug Fixes</div>
-                        <ul>
-                            <li>Fix "Check for Updates" on startup</li>
-                            <li>Fix "Context Settings"</li>
-                            <li>Fix error messages when loading files</li>
-                            <li>Fix "Open Folder"</li>
-                            <li>Fix "Search in Results" in "Concordancer"</li>
-                            <li>Fix "Settings → Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization → Preview"</li>
-                            <li>Fix spaCy's sentence tokenizers and word tokenizers</li>
-                            <li>Fix Wordless's Chinese and Japanese character tokenizers</li>
-                        </ul>
-                    </div>
-
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">Dependency Upgrades</div>
-                        <ul>
-                            <li>Upgrade lxml to 4.3.3</li>
-                            <li>Upgrade PyQt to 5.12.1</li>
-                            <li>Upgrade Sacremoses to 0.0.13</li>
-                            <li>Upgrade spaCy to 2.1.3</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="changelog">
-                    <div class="changelog-header"><a href="https://github.com/BLKSerene/Wordless/releases/tag/v1.0.0">v1.0.0</a> - 03/17/2019</div>
-                    <hr>
-
-                    <div class="changelog-section">
-                        <ul>
-                            <li>First release</li>
-                        </ul>
-                    </div>
-                </div>
+        changelog_text += f'''
             </body>
-        ''')
+        '''
 
         super().__init__(main, main.tr('Changelog'),
                          width = 480,
@@ -981,7 +866,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
 
         text_edit_changelog = wordless_box.Wordless_Text_Browser(self)
 
-        text_edit_changelog.setHtml(changelog)
+        text_edit_changelog.setHtml(changelog_text)
 
         self.wrapper_info.layout().addWidget(text_edit_changelog, 0, 0)
 
