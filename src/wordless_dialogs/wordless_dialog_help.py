@@ -20,7 +20,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_dialogs import wordless_dialog
-from wordless_utils import wordless_threading
+from wordless_utils import wordless_threading, wordless_misc
 from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
                               wordless_table)
 
@@ -874,17 +874,23 @@ class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('About Wordless'))
 
-        label_about_icon = QLabel('', self)
-
         img_wordless_icon = QPixmap('imgs/wordless_icon_about.png')
         img_wordless_icon = img_wordless_icon.scaled(64, 64)
 
+        label_about_icon = QLabel('', self)
         label_about_icon.setPixmap(img_wordless_icon)
 
+        wordless_ver = wordless_misc.get_wordless_ver()
+
+        if wordless_ver:
+            about_header = self.tr(f'Wordless Version {wordless_misc.get_wordless_ver()}')
+        else:
+            about_header = self.tr('Wordless')
+
         label_about_title = wordless_label.Wordless_Label_Dialog_No_Wrap(
-            self.tr('''
+            self.tr(f'''
                 <div style="text-align: center;">
-                    <h2>Wordless Version 1.3.0</h2>
+                    <h2>{about_header}</h2>
                     <div>
                         An Integrated Corpus Tool with Multi-Language Support<br>
                         for the Study of Language, Literature, and Translation

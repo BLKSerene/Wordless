@@ -26,6 +26,15 @@ def get_abs_path(path):
 
     return path
 
+def get_wordless_ver():
+    try:
+        with open('VERSION', 'r', encoding = 'utf_8') as f:
+            for line in f:
+                if line.strip() and not line.startswith('#'):
+                    return line.strip()
+    except:
+        return ''
+
 def find_wordless_main(widget):
     main = widget
 
