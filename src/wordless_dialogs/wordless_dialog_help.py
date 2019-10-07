@@ -192,7 +192,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # Sacremoses
             [
                 '<a href="https://github.com/alvations/sacremoses">Sacremoses</a>',
-                '0.0.33',
+                '0.0.35',
                 'Liling Tan',
                 '<a href="https://github.com/alvations/sacremoses#license">LGPL-2.1</a>'
             ],
@@ -836,7 +836,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                             <li>Upgrade openpyxl to 3.0.0</li>
                             <li>Upgrade PyQt to 5.13.1</li>
                             <li>Upgrade pytest to 5.2.0</li>
-                            <li>Upgrade Sacremoses to 0.0.34</li>
+                            <li>Upgrade Sacremoses to 0.0.35</li>
                             <li>Upgrade spaCy to 2.2.1</li>
                             <li>Upgrade underthesea to 1.1.17</li>
                         </ul>
