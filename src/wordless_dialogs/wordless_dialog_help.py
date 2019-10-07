@@ -819,6 +819,13 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                     </div>
 
                     <div class="changelog-section">
+                        <div class="changelog-section-header">Changes</div>
+                        <ul>
+                            <li>Remove Sacremoses's Penn Treebank tokenizer</li>
+                        </ul>
+                    </div>
+
+                    <div class="changelog-section">
                         <div class="changelog-section-header">Bug Fixes</div>
                         <ul>
                             <li>Fix encoding detection</li>
