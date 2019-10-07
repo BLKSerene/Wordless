@@ -1187,6 +1187,7 @@ def init_settings_default(main):
                 'ita': main.tr('Sacremoses - Moses Detokenizer'),
                 'jpn': main.tr('Wordless - Japanese Word Detokenizer'),
                 'lav': main.tr('Sacremoses - Moses Detokenizer'),
+                'lit': main.tr('Sacremoses - Moses Detokenizer'),
                 'pol': main.tr('Sacremoses - Moses Detokenizer'),
                 'por': main.tr('Sacremoses - Moses Detokenizer'),
                 'ron': main.tr('Sacremoses - Moses Detokenizer'),
@@ -1199,7 +1200,7 @@ def init_settings_default(main):
                 'tha': main.tr('Wordless - Thai Word Detokenizer'),
                 'bod': main.tr('Wordless - Tibetan Word Detokenizer'),
 
-                'other': main.tr('NLTK - Penn Treebank Detokenizer')
+                'other': main.tr('Sacremoses - Moses Detokenizer')
             },
 
             'preview_lang': 'eng',

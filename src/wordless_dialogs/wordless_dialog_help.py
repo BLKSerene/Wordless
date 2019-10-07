@@ -815,6 +815,7 @@ class Wordless_Dialog_Changelog(wordless_dialog.Wordless_Dialog_Info):
                         <ul>
                             <li>Force consistent results for language detection</li>
                             <li>Update error messages for file checking</li>
+                            <li>Update Sacremoses's Moses tokenizer and detokenizer</li>
                         </ul>
                     </div>
 
