@@ -1084,6 +1084,7 @@ def init_settings_global(main):
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - English Word Tokenizer'),
                 main.tr('syntok - Word Tokenizer')
             ]
@@ -1167,6 +1168,11 @@ def init_settings_global(main):
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
 
+            'lit': [
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
             'pol': [
                 main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('Sacremoses - Moses Detokenizer')
@@ -1221,7 +1227,8 @@ def init_settings_global(main):
             ],
 
             'other': [
-                main.tr('NLTK - Penn Treebank Detokenizer')
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
             ]
         },
 
