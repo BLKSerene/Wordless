@@ -14,7 +14,7 @@ jobs:
 - job: "Windows"
 
   pool:
-    vmImage: vs2017-win2016
+    vmImage: windows-2019
 
   steps:
   - task: UsePythonVersion@0
@@ -25,7 +25,6 @@ jobs:
   # Check Python version
   - script: |
       python --version
-      python -c "import sys, platform, struct; print(sys.platform, platform.machine(), struct.calcsize('P')*8)"
     displayName: 'Check Python version'
 
   # Install dependencies
@@ -58,11 +57,21 @@ jobs:
       python -m nltk.downloader wordnet
     displayName: 'Download NLTK data'
 
-  # Run tests
+  # Run tests - text processing
   - script: |
       cd src
-      python -m pytest --ignore wordless_tests/test_init.py
-    displayName: 'Run tests'
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_sentence_tokenization.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_word_tokenization.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_word_detokenization.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
+    displayName: 'Run tests - text processing'
+  # Run tests - others
+  - script: |
+      cd src
+      pytest --ignore=wordless_tests/test_init.py --ignore=wordless_tests/wordless_text/wordless_text_processing/
+    displayName: 'Run tests - others'
 
 # macOS
 - job: "macOS"
@@ -78,7 +87,6 @@ jobs:
   # Check Python version
   - script: |
       python3 --version
-      python3 -c "import sys, platform, struct; print(sys.platform, platform.machine(), struct.calcsize('P')*8)"
     displayName: 'Check Python version'
 
   # Install dependencies
@@ -111,11 +119,21 @@ jobs:
       python3 -m nltk.downloader wordnet
     displayName: 'Download NLTK data'
 
-  # Run tests
+  # Run tests - text processing
   - script: |
       cd src
-      python3 -m pytest --ignore wordless_tests/test_init.py
-    displayName: 'Run tests'
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_sentence_tokenization.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_word_tokenization.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_word_detokenization.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
+    displayName: 'Run tests - text processing'
+  # Run tests - others
+  - script: |
+      cd src
+      pytest --ignore=wordless_tests/test_init.py --ignore=wordless_tests/wordless_text/wordless_text_processing/
+    displayName: 'Run tests - others'
 
 # Linux
 - job: "Linux"
@@ -131,7 +149,6 @@ jobs:
   # Check Python version
   - script: |
       python3.7 --version
-      python3.7 -c "import sys, platform, struct; print(sys.platform, platform.machine(), struct.calcsize('P')*8)"
     displayName: 'Check Python version'
 
   # Install dependencies
@@ -164,8 +181,18 @@ jobs:
       python3.7 -m nltk.downloader wordnet
     displayName: 'Download NLTK data'
 
-  # Run tests
+  # Run tests - text processing
   - script: |
       cd src
-      python3.7 -m pytest --ignore wordless_tests/test_init.py
-    displayName: 'Run tests'
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_sentence_tokenization.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_word_tokenization.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_word_detokenization.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
+      pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
+    displayName: 'Run tests - text processing'
+  # Run tests - others
+  - script: |
+      cd src
+      pytest --ignore=wordless_tests/test_init.py --ignore=wordless_tests/wordless_text/wordless_text_processing/
+    displayName: 'Run tests - others'
