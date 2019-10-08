@@ -83,6 +83,7 @@ class Wordless_Main(QMainWindow):
 
         self.threads_check_updates = []
 
+        # Version number
         self.ver = wordless_misc.get_wordless_ver()
 
         # Title

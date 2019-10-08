@@ -631,7 +631,7 @@ class Worker_Check_Updates(QObject):
         self.stopped = False
 
     def check_updates(self):
-        version_new = ''
+        ver_new = ''
 
         try:
             r = requests.get('https://raw.githubusercontent.com/BLKSerene/Wordless/master/src/VERSION', timeout = 10)
@@ -639,9 +639,9 @@ class Worker_Check_Updates(QObject):
             if r.status_code == 200:
                 for line in r.text.splitlines():
                     if line and not line.startswith('#'):
-                        version_new = line.rstrip()
+                        ver_new = line.rstrip()
 
-                if self.is_newer_version(version_new):
+                if self.is_newer_version(ver_new):
                     updates_status = 'updates_available'
                 else:
                     updates_status = 'no_updates'
@@ -653,17 +653,13 @@ class Worker_Check_Updates(QObject):
         if self.stopped:
             updates_status == 'canceled'
 
-        self.check_updates_finished.emit(updates_status, version_new)
+        self.check_updates_finished.emit(updates_status, ver_new)
 
-    def is_newer_version(self, version_new):
-        with open('VERSION', 'r', encoding = 'utf_8') as f:
-            for line in f.readlines():
-                line = line.rstrip()
-
-                if line and not line.startswith('#'):
-                    major_cur, minor_cur, patch_cur = line.split('.')
-
-        major_new, minor_new, patch_new = version_new.split('.')
+    def is_newer_version(self, ver_new):
+        if self.main.ver:
+            major_cur, minor_cur, patch_cur = line.split('.')
+        else:
+            return False
 
         if (int(major_cur) < int(major_new) or
             int(minor_cur) < int(minor_new) or
@@ -730,7 +726,7 @@ class Wordless_Dialog_Check_Updates(wordless_dialog.Wordless_Dialog_Info):
 
         self.reject()
 
-    def updates_status_changed(self, status, version_new = ''):
+    def updates_status_changed(self, status, ver_new = ''):
         if status == 'checking':
             self.label_check_updates.set_text(self.tr('''
                 <div>
@@ -759,7 +755,7 @@ class Wordless_Dialog_Check_Updates(wordless_dialog.Wordless_Dialog_Info):
         elif status == 'updates_available':
             self.label_check_updates.set_text(self.tr(f'''
                 <div>
-                    Wordless v{version_new} is out, click <a href="https://github.com/BLKSerene/Wordless/releases"><b>HERE</b></a> to download the latest version of Wordless.
+                    Wordless v{ver_new} is out, click <a href="https://github.com/BLKSerene/Wordless/releases/tag/v{ver_new}"><b>HERE</b></a> to download the latest version of Wordless.
                 </div>
             '''))
 
@@ -771,7 +767,7 @@ class Wordless_Dialog_Check_Updates(wordless_dialog.Wordless_Dialog_Info):
         elif status == 'network_error':
             self.label_check_updates.set_text(self.tr('''
                 <div>
-                    A network error occurred, please check your network settings or try again later.
+                    A network error occurred, please check your network settings and try again or <a href="https://github.com/BLKSerene/Wordless/releases">manually check for updates</a>.
                 </div>
             '''))
 
