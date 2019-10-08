@@ -118,7 +118,7 @@
 - Upgrade Sacremoses to 0.0.13
 - Upgrade spaCy to 2.1.3
 
-## [v1.0.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.0.0) - 03/17/2019
+## [v1.0.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.0.0) - 03/20/2019
 
 ### 🎉 New Features
 - First release
