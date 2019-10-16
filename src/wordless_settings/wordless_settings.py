@@ -784,10 +784,9 @@ class Wordless_Settings(QDialog):
                     line = line.strip()
 
                     if line:
-                        tokens_sentences = wordless_text_processing.wordless_word_tokenize(self.main, line,
-                                                                                           lang = settings_custom['preview_lang'],
-                                                                                           word_tokenizer = word_tokenizer)
-                        tokens = itertools.chain.from_iterable(tokens_sentences)
+                        tokens = wordless_text_processing.wordless_word_tokenize(self.main, line,
+                                                                                 lang = settings_custom['preview_lang'],
+                                                                                 word_tokenizer = word_tokenizer)
 
                         # Vietnamese
                         if settings_custom['preview_lang'] == 'vie':
@@ -1064,9 +1063,8 @@ class Wordless_Settings(QDialog):
                     line = line.strip()
 
                     if line:
-                        tokens_sentences = wordless_text_processing.wordless_word_tokenize(self.main, line,
-                                                                                           lang = settings_custom['preview_lang'])
-                        tokens = list(itertools.chain.from_iterable(tokens_sentences))
+                        tokens = wordless_text_processing.wordless_word_tokenize(self.main, line,
+                                                                                 lang = settings_custom['preview_lang'])
 
                         tokens_tagged = wordless_text_processing.wordless_pos_tag(self.main, tokens,
                                                                                   lang = settings_custom['preview_lang'],
@@ -1114,13 +1112,13 @@ class Wordless_Settings(QDialog):
         group_box_pos_tagger_settings = QGroupBox(self.tr('POS Tagger Settings'), self)
 
         self.table_pos_taggers = wordless_table.Wordless_Table(self,
-                                                          headers = [
-                                                              self.tr('Languages'),
-                                                              self.tr('POS Taggers')
-                                                          ],
-                                                          cols_stretch = [
-                                                              self.tr('POS Taggers')
-                                                          ])
+                                                               headers = [
+                                                                   self.tr('Languages'),
+                                                                   self.tr('POS Taggers')
+                                                               ],
+                                                               cols_stretch = [
+                                                                   self.tr('POS Taggers')
+                                                               ])
 
         self.checkbox_to_universal_pos_tags = QCheckBox(self.tr('Convert all POS tags to Universal POS Tags'))
 
@@ -1401,9 +1399,8 @@ class Wordless_Settings(QDialog):
                     line = line.strip()
 
                     if line:
-                        tokens_sentences = wordless_text_processing.wordless_word_tokenize(self.main, line,
-                                                                                           lang = settings_custom['preview_lang'])
-                        tokens = list(itertools.chain.from_iterable(tokens_sentences))
+                        tokens = wordless_text_processing.wordless_word_tokenize(self.main, line,
+                                                                                 lang = settings_custom['preview_lang'])
 
                         lemmas = wordless_text_processing.wordless_lemmatize(self.main, tokens,
                                                                              lang = settings_custom['preview_lang'],
