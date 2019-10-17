@@ -959,7 +959,7 @@ Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[
 ## 5 Works Cited [[Back to Contents]](#doc-eng)
 
 <span id="doc-eng-supported-measures-works-cited-1"></span>
-[1] Juilland, Alphonse, and Eugenio Chang-Rodriguez. *Frequency Dictionary of Spanish Words*, Mouton, 1964.<br>
+[1] Juilland, Alphonse, and Eugenio Chang-Rodriguez. *Frequency Dictionary of Spanish Words*. Mouton, 1964.<br>
 <span id="doc-eng-supported-measures-works-cited-2"></span>
 [2] Carroll, John B. “An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index.” *Computer Studies in the Humanities and Verbal Behaviour*, vol.3, no. 2, 1970, pp. 61-65.<br>
 <span id="doc-eng-supported-measures-works-cited-3"></span>
@@ -973,7 +973,7 @@ Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[
 <span id="doc-eng-supported-measures-works-cited-7"></span>
 [7] Lijffijt, Jefrey, and Stefan Th. Gries. “Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”” *International Journal of Corpus Linguistics*, vol. 17, no. 1, 2012, pp. 147-49.<br>
 <span id="doc-eng-supported-measures-works-cited-8"></span>
-[8] Engwall, Gunnel. *Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français.* 1974. Stockholm U, PhD dissertation.<br>
+[8] Engwall, Gunnel. *Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français*. 1974. Stockholm U, PhD dissertation.<br>
 <span id="doc-eng-supported-measures-works-cited-9"></span>
 [9] Kromer, Victor. “A Usage Measure Based on Psychophysical Relations.” *Journal of Quatitative Linguistics*, vol. 10, no. 2, 2003, pp. 177-186.<br>
 <span id="doc-eng-supported-measures-works-cited-10"></span>
