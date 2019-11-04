@@ -21,14 +21,16 @@ botok
 jieba
 nagisa
 nltk
-# pymorphy2 and its dictionaries
+## pymorphy2 and its dictionaries
 https://github.com/kmike/pymorphy2/archive/master.zip
 pymorphy2-dicts-ru
 pymorphy2-dicts-uk
 pythainlp
 razdel
 sacremoses
+## spaCy
 spacy
+spacy-lookups-data
 syntok
 underthesea
 
