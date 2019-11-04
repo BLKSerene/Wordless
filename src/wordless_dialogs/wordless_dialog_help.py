@@ -209,7 +209,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # spaCy
             [
                 '<a href="https://spacy.io">spaCy</a>',
-                '2.2.1',
+                '2.2.2',
                 'Matthew Honnibal, Ines Montani',
                 '<a href="https://github.com/explosion/spaCy/blob/master/LICENSE">MIT</a>'
             ],
