@@ -18,6 +18,7 @@
 - Add "Paragraph" to "Generation Settings -> Width Unit" in "Concordancer"
 - Add razdel's Russian sentenizer and word tokenizer
 - Add spaCy's Lithuanian and Norwegian Bokmål word tokenizer, POS tagger, and lemmatizer
+- Add spaCy's Luxembourgish word tokenizer
 - Add syntok's sentence segmenter and word tokenizer
 
 ### ✨ Improvements
