@@ -40,56 +40,10 @@ install:
   # Install dependencies
   - pip3 install --upgrade pip
   - pip3 install -r requirements.txt
-  # Download spaCy models
+  # Download data
   - >-
-    python3 -m spacy download nl_core_news_sm ||
-    python -m spacy download nl_core_news_sm
-  - >-
-    python3 -m spacy download en_core_web_sm ||
-    python -m spacy download en_core_web_sm
-  - >-
-    python3 -m spacy download fr_core_news_sm ||
-    python -m spacy download fr_core_news_sm
-  - >-
-    python3 -m spacy download de_core_news_sm ||
-    python -m spacy download de_core_news_sm
-  - >-
-    python3 -m spacy download el_core_news_sm ||
-    python -m spacy download el_core_news_sm
-  - >-
-    python3 -m spacy download it_core_news_sm ||
-    python -m spacy download it_core_news_sm
-  - >-
-    python3 -m spacy download lt_core_news_sm ||
-    python -m spacy download lt_core_news_sm
-  - >-
-    python3 -m spacy download nb_core_news_sm ||
-    python -m spacy download nb_core_news_sm
-  - >-
-    python3 -m spacy download pt_core_news_sm ||
-    python -m spacy download pt_core_news_sm
-  - >-
-    python3 -m spacy download es_core_news_sm ||
-    python -m spacy download es_core_news_sm
-  # Download NLTK data
-  - >-
-    python3 -m nltk.downloader averaged_perceptron_tagger ||
-    python -m nltk.downloader averaged_perceptron_tagger
-  - >-
-    python3 -m nltk.downloader averaged_perceptron_tagger_ru ||
-    python -m nltk.downloader averaged_perceptron_tagger_ru
-  - >-
-    python3 -m nltk.downloader perluniprops ||
-    python -m nltk.downloader perluniprops
-  - >-
-    python3 -m nltk.downloader punkt ||
-    python -m nltk.downloader punkt
-  - >-
-    python3 -m nltk.downloader stopwords ||
-    python -m nltk.downloader stopwords
-  - >-
-    python3 -m nltk.downloader wordnet ||
-    python -m nltk.downloader wordnet
+    python3 wordless_ci_data_downloader.py ||
+    python wordless_ci_data_downloader.py
 
 before_script:
   - cd src
