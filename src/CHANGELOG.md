@@ -35,6 +35,7 @@
 - Remove Sacremoses's Penn Treebank tokenizer
 
 ### ⏫ Dependency Upgrades
+- Upgrade Beautiful Soup to 4.8.1
 - Upgrade botok (pybo) to 0.6.10
 - Upgrade NumPy to 1.17.2
 - Upgrade openpyxl to 3.0.0
