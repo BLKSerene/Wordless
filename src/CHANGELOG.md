@@ -41,7 +41,7 @@
 - Upgrade PyQt to 5.13.1
 - Upgrade pytest to 5.2.0
 - Upgrade Sacremoses to 0.0.35
-- Upgrade spaCy to 2.2.1
+- Upgrade spaCy to 2.2.2
 - Upgrade underthesea to 1.1.17
 
 ## [v1.2.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.2.0) - 08/27/2019
