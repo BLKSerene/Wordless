@@ -56,7 +56,7 @@ If you need to post sample texts or other information that cannot be shared or y
 Platforms    |Contact Information
 -------------|-------------------
 Home Page    |https://github.com/BLKSerene/Wordless
-Documentation|https://github.com/BLKSerene/Wordless#-documentation
+Documentation|https://github.com/BLKSerene/Wordless#documentation
 Email        |blkserene@gmail.com<br>blkserene@163.com
 [WeChat](https://www.wechat.com/en/) Official Account|![WeChat Official Account](/src/imgs/wechat_official_account.dib)
 
