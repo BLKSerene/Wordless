@@ -538,7 +538,7 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
         self.label_donating = wordless_label.Wordless_Label_Dialog(
             self.tr('''
                 <div>
-                    If you would like to support the development of Wordless, you may donate via PayPal, Alipay or WeChat.
+                    If you would like to support the development of Wordless, you may donate via <a href="https://www.paypal.com/">PayPal</a>, <a href="https://global.alipay.com/">Alipay</a>, or <a href="https://pay.weixin.qq.com/index.php/public/wechatpay_en">WeChat Pay</a>.
                 </div>
             '''),
             self
@@ -558,7 +558,7 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
         self.combo_box_donating_via.addItems([
             self.tr('PayPal'),
             self.tr('Alipay'),
-            self.tr('WeChat')
+            self.tr('WeChat Pay')
         ])
 
         self.combo_box_donating_via.currentTextChanged.connect(self.donating_via_changed)
@@ -609,13 +609,13 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
             self.label_donating_via_img.setText('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32"><img src="imgs/donating_paypal.gif"></a>')
         elif settings['donating_via'] == self.tr('Alipay'):
             self.label_donating_via_img.setText('<img src="imgs/donating_alipay.png">')
-        elif settings['donating_via'] == self.tr('WeChat'):
-            self.label_donating_via_img.setText('<img src="imgs/donating_wechat.png">')
+        elif settings['donating_via'] == self.tr('WeChat Pay'):
+            self.label_donating_via_img.setText('<img src="imgs/donating_wechat_pay.png">')
 
         if 'height_alipay' in self.__dict__:
             if settings['donating_via'] == self.tr('PayPal'):
                 self.setFixedHeight(self.height_paypal)
-            elif settings['donating_via'] in [self.tr('Alipay'), self.tr('WeChat')]:
+            elif settings['donating_via'] in [self.tr('Alipay'), self.tr('WeChat Pay')]:
                 self.setFixedHeight(self.height_alipay)
 
         if platform.system() in ['Windows', 'Linux']:
