@@ -49,7 +49,7 @@ for lang, pos_taggers in main.settings_global['pos_taggers'].items():
             POS_TAGGERS.append((lang, pos_tagger))
 
 @pytest.mark.parametrize('lang, pos_tagger', POS_TAGGERS)
-def test_pos_tag(lang, pos_tagger):
+def test_pos_tag(lang, pos_tagger, show_results = False):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
     tokens = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
@@ -62,8 +62,10 @@ def test_pos_tag(lang, pos_tagger):
                                                                         lang = lang,
                                                                         pos_tagger = pos_tagger,
                                                                         tagset = 'universal')
-    # print(tokens_tagged)
-    # print(tokens_tagged_universal)
+
+    if show_results:
+        print(tokens_tagged)
+        print(tokens_tagged_universal)
 
     if lang == 'zho_cn':
         assert tokens_tagged == [('汉语', 'nz'), ('，', 'x'), ('又称', 'n'), ('汉文', 'nz'), ('、', 'x'), ('中文', 'nz'), ('、', 'x'), ('中国', 'ns'), ('话', 'n'), ('、', 'x'), ('中国', 'ns'), ('语', 'ng'), ('、', 'x'), ('华语', 'nz'), ('、', 'x'), ('华文', 'nz'), ('、', 'x'), ('唐', 'nr'), ('话', 'n'), ('[', 'x'), ('2', 'x'), (']', 'x'), ('，', 'x'), ('或', 'c'), ('被', 'p'), ('视为', 'v'), ('一个', 'm'), ('语族', 'n'), ('，', 'x'), ('或', 'c'), ('被', 'p'), ('视为', 'v'), ('隶属于', 'n'), ('汉藏语系', 'nz'), ('汉语', 'nz'), ('族', 'ng'), ('之', 'u'), ('一种', 'm'), ('语言', 'n'), ('。', 'x')]
@@ -88,8 +90,8 @@ def test_pos_tag(lang, pos_tagger):
         assert tokens_tagged == [('Die', 'ART'), ('deutsche', 'ADJA'), ('Sprache', 'NN'), ('bzw.', 'ADJA'), ('Deutsch', 'NN'), ('(', '$('), ('[', 'NN'), ('dɔʏ̯t͡ʃ', 'NE'), (']', 'NE'), (';', '$.'), ('abgekürzt', 'VVPP'), ('dt', 'NE'), ('.', 'NN'), ('oder', 'KON'), ('dtsch', 'ADJD'), ('.', '$.'), (')', '$('), ('ist', 'VAFIN'), ('eine', 'ART'), ('westgermanische', 'ADJA'), ('Sprache', 'NN'), ('.', '$.')]
         assert tokens_tagged_universal == [('Die', 'DET'), ('deutsche', 'ADJ'), ('Sprache', 'NOUN'), ('bzw.', 'ADJ'), ('Deutsch', 'NOUN'), ('(', 'PUNCT'), ('[', 'NOUN'), ('dɔʏ̯t͡ʃ', 'PROPN'), (']', 'PROPN'), (';', 'PUNCT'), ('abgekürzt', 'VERB'), ('dt', 'PROPN'), ('.', 'NOUN'), ('oder', 'CCONJ'), ('dtsch', 'ADJ'), ('.', 'PUNCT'), (')', 'PUNCT'), ('ist', 'AUX'), ('eine', 'DET'), ('westgermanische', 'ADJ'), ('Sprache', 'NOUN'), ('.', 'PUNCT')]
     elif lang == 'ell':
-        assert tokens_tagged == [('Η', 'DET'), ('ελληνική', 'ADJ'), ('γλώσσα', 'NOUN'), ('ανήκει', 'VERB'), ('στην', 'ADJ'), ('ινδοευρωπαϊκή', 'ADJ'), ('οικογένεια[9', 'NOUN'), (']', 'PROPN'), ('και', 'CCONJ'), ('συγκεκριμένα', 'ADV'), ('στον', 'ADV'), ('ελληνικό', 'ADJ'), ('κλάδο', 'NOUN'), (',', 'PUNCT'), ('μαζί', 'ADV'), ('με', 'ADP'), ('την', 'DET'), ('τσακωνική', 'ADJ'), (',', 'PUNCT'), ('ενώ', 'SCONJ'), ('είναι', 'AUX'), ('η', 'DET'), ('επίσημη', 'ADJ'), ('γλώσσα', 'NOUN'), ('της', 'DET'), ('Ελλάδος', 'PROPN'), ('και', 'CCONJ'), ('της', 'DET'), ('Κύπρου', 'PROPN'), ('.', 'PUNCT')]
-        assert tokens_tagged_universal == [('Η', 'DET'), ('ελληνική', 'ADJ'), ('γλώσσα', 'NOUN'), ('ανήκει', 'VERB'), ('στην', 'ADJ'), ('ινδοευρωπαϊκή', 'ADJ'), ('οικογένεια[9', 'NOUN'), (']', 'PROPN'), ('και', 'CCONJ'), ('συγκεκριμένα', 'ADV'), ('στον', 'ADV'), ('ελληνικό', 'ADJ'), ('κλάδο', 'NOUN'), (',', 'PUNCT'), ('μαζί', 'ADV'), ('με', 'ADP'), ('την', 'DET'), ('τσακωνική', 'ADJ'), (',', 'PUNCT'), ('ενώ', 'SCONJ'), ('είναι', 'AUX'), ('η', 'DET'), ('επίσημη', 'ADJ'), ('γλώσσα', 'NOUN'), ('της', 'DET'), ('Ελλάδος', 'PROPN'), ('και', 'CCONJ'), ('της', 'DET'), ('Κύπρου', 'PROPN'), ('.', 'PUNCT')]
+        assert tokens_tagged == [('Η', 'DET'), ('ελληνική', 'ADJ'), ('γλώσσα', 'NOUN'), ('ανήκει', 'VERB'), ('στην', 'ADJ'), ('ινδοευρωπαϊκή', 'ADJ'), ('οικογένεια[9', 'NOUN'), (']', 'X'), ('και', 'CCONJ'), ('συγκεκριμένα', 'ADJ'), ('στον', 'NOUN'), ('ελληνικό', 'ADJ'), ('κλάδο', 'NOUN'), (',', 'PUNCT'), ('μαζί', 'ADV'), ('με', 'ADP'), ('την', 'DET'), ('τσακωνική', 'ADJ'), (',', 'PUNCT'), ('ενώ', 'SCONJ'), ('είναι', 'AUX'), ('η', 'DET'), ('επίσημη', 'ADJ'), ('γλώσσα', 'NOUN'), ('της', 'DET'), ('Ελλάδος', 'PROPN'), ('και', 'CCONJ'), ('της', 'DET'), ('Κύπρου', 'PROPN'), ('.', 'PUNCT')]
+        assert tokens_tagged_universal == [('Η', 'DET'), ('ελληνική', 'ADJ'), ('γλώσσα', 'NOUN'), ('ανήκει', 'VERB'), ('στην', 'ADJ'), ('ινδοευρωπαϊκή', 'ADJ'), ('οικογένεια[9', 'NOUN'), (']', 'X'), ('και', 'CCONJ'), ('συγκεκριμένα', 'ADJ'), ('στον', 'NOUN'), ('ελληνικό', 'ADJ'), ('κλάδο', 'NOUN'), (',', 'PUNCT'), ('μαζί', 'ADV'), ('με', 'ADP'), ('την', 'DET'), ('τσακωνική', 'ADJ'), (',', 'PUNCT'), ('ενώ', 'SCONJ'), ('είναι', 'AUX'), ('η', 'DET'), ('επίσημη', 'ADJ'), ('γλώσσα', 'NOUN'), ('της', 'DET'), ('Ελλάδος', 'PROPN'), ('και', 'CCONJ'), ('της', 'DET'), ('Κύπρου', 'PROPN'), ('.', 'PUNCT')]
     elif lang == 'ita':
         assert tokens_tagged == [("L'", 'RD__Definite=Def|Number=Sing|PronType=Art'), ('italiano', 'S__Gender=Masc|Number=Sing'), ('(', 'FB___'), ('[', 'FB___'), ('itaˈljaːno][Nota', 'V__Mood=Imp|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin'), ('1', 'N__NumType=Card'), (']', 'FB___'), ('ascolta[?·info', 'S___'), (']', 'FB___'), (')', 'FB___'), ('è', 'V__Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin'), ('una', 'RI__Definite=Ind|Gender=Fem|Number=Sing|PronType=Art'), ('lingua', 'S__Gender=Fem|Number=Sing'), ('romanza', 'S__Gender=Fem|Number=Sing'), ('parlata', 'V__Gender=Fem|Number=Sing|Tense=Past|VerbForm=Part'), ('principalmente', 'B___'), ('in', 'E___'), ('Italia', 'SP___'), ('.', 'FS___')]
         assert tokens_tagged_universal == [("L'", 'DET'), ('italiano', 'NOUN'), ('(', 'PUNCT'), ('[', 'PUNCT'), ('itaˈljaːno][Nota', 'VERB'), ('1', 'NUM'), (']', 'PUNCT'), ('ascolta[?·info', 'NOUN'), (']', 'PUNCT'), (')', 'PUNCT'), ('è', 'VERB'), ('una', 'DET'), ('lingua', 'NOUN'), ('romanza', 'NOUN'), ('parlata', 'VERB'), ('principalmente', 'ADV'), ('in', 'ADP'), ('Italia', 'PROPN'), ('.', 'PUNCT')]
@@ -97,8 +99,8 @@ def test_pos_tag(lang, pos_tagger):
         assert tokens_tagged == [('日本', '名詞'), ('語', '名詞'), ('(', '補助記号'), ('にほんご', '名詞'), ('、', '補助記号'), ('にっぽん', '名詞'), ('ご', '接尾辞'), ('[', '補助記号'), ('注', '名詞'), ('1', '名詞'), (']', '補助記号'), (')', '補助記号'), ('は', '助詞'), ('、', '補助記号'), ('主に', '副詞'), ('日本', '名詞'), ('国', '接尾辞'), ('内', '接尾辞'), ('や', '助詞'), ('日本', '名詞'), ('人', '接尾辞'), ('同士', '接尾辞'), ('の', '助詞'), ('間', '名詞'), ('で', '助詞'), ('使用', '名詞'), ('さ', '動詞'), ('れ', '助動詞'), ('て', '助詞'), ('いる', '動詞'), ('言語', '名詞'), ('で', '助動詞'), ('ある', '動詞'), ('。', '補助記号')]
         assert tokens_tagged_universal == [('日本', 'NOUN'), ('語', 'NOUN'), ('(', 'PUNCT/SYM'), ('にほんご', 'NOUN'), ('、', 'PUNCT/SYM'), ('にっぽん', 'NOUN'), ('ご', 'PART'), ('[', 'PUNCT/SYM'), ('注', 'NOUN'), ('1', 'NOUN'), (']', 'PUNCT/SYM'), (')', 'PUNCT/SYM'), ('は', 'PART'), ('、', 'PUNCT/SYM'), ('主に', 'ADV'), ('日本', 'NOUN'), ('国', 'PART'), ('内', 'PART'), ('や', 'PART'), ('日本', 'NOUN'), ('人', 'PART'), ('同士', 'PART'), ('の', 'PART'), ('間', 'NOUN'), ('で', 'PART'), ('使用', 'NOUN'), ('さ', 'VERB'), ('れ', 'AUX'), ('て', 'PART'), ('いる', 'VERB'), ('言語', 'NOUN'), ('で', 'AUX'), ('ある', 'VERB'), ('。', 'PUNCT/SYM')]
     elif lang == 'lit':
-        assert tokens_tagged == [('Lietuvių', 'Ncmpgn-'), ('kalba', 'Ncfsnn-'), ('–', 'Z'), ('iš', 'Sgg'), ('baltų', 'Vgpp-pfpnnnn-p'), ('prokalbės', 'Ncfsgn-'), ('kilusi', 'Vgmq1s--n--yi-'), ('lietuvių', 'Ncmpgn-'), ('tautos', 'Ncfsgn-'), ('kalba', 'Ncfsin-'), (',', 'Z'), ('kuri', 'Pgfsnn'), ('Lietuvoje', 'Npfslng'), ('yra', 'Vgmp3s--n--ni-'), ('valstybinė', 'Agpfsnn'), (',', 'Z'), ('o', 'Cg'), ('Europos', 'Npfsgng'), ('Sąjungoje', 'Ncfsln-'), ('–', 'Z'), ('viena', 'Qg'), ('iš', 'Sgg'), ('oficialiųjų', 'Agpmpgy'), ('kalbų', 'Ncfpan-'), ('.', 'Z')]
-        assert tokens_tagged_universal == [('Lietuvių', 'NOUN'), ('kalba', 'NOUN'), ('–', 'PUNCT'), ('iš', 'ADP'), ('baltų', 'VERB'), ('prokalbės', 'NOUN'), ('kilusi', 'VERB'), ('lietuvių', 'NOUN'), ('tautos', 'NOUN'), ('kalba', 'NOUN'), (',', 'PUNCT'), ('kuri', 'PRON'), ('Lietuvoje', 'PROPN'), ('yra', 'VERB'), ('valstybinė', 'ADJ'), (',', 'PUNCT'), ('o', 'CONJ'), ('Europos', 'PROPN'), ('Sąjungoje', 'NOUN'), ('–', 'PUNCT'), ('viena', 'PART'), ('iš', 'ADP'), ('oficialiųjų', 'ADJ'), ('kalbų', 'NOUN'), ('.', 'PUNCT')]
+        assert tokens_tagged == [('Lietuvių', 'Ncmpgn-'), ('kalba', 'Ncfsnn-'), ('–', 'Z'), ('iš', 'Sgg'), ('baltų', 'Vgpa-smannny-p'), ('prokalbės', 'Ncfsan-'), ('kilusi', 'Vgpa-sfannnn-p'), ('lietuvių', 'Ncmpgn-'), ('tautos', 'Ncfsgn-'), ('kalba', 'Ncfsin-'), (',', 'Z'), ('kuri', 'Pgfsnn'), ('Lietuvoje', 'Npfslng'), ('yra', 'Vgmp3s--n--ni-'), ('valstybinė', 'Agpfsnn'), (',', 'Z'), ('o', 'Cg'), ('Europos', 'Npfsgng'), ('Sąjungoje', 'Ncfsln-'), ('–', 'Z'), ('viena', 'Vgmp3s--n--ni-'), ('iš', 'Sgg'), ('oficialiųjų', 'Agpmpgy'), ('kalbų', 'Ncmsan-'), ('.', 'Z')]
+        assert tokens_tagged_universal == [('Lietuvių', 'NOUN'), ('kalba', 'NOUN'), ('–', 'PUNCT'), ('iš', 'ADP'), ('baltų', 'VERB'), ('prokalbės', 'NOUN'), ('kilusi', 'VERB'), ('lietuvių', 'NOUN'), ('tautos', 'NOUN'), ('kalba', 'NOUN'), (',', 'PUNCT'), ('kuri', 'PRON'), ('Lietuvoje', 'PROPN'), ('yra', 'VERB'), ('valstybinė', 'ADJ'), (',', 'PUNCT'), ('o', 'CONJ'), ('Europos', 'PROPN'), ('Sąjungoje', 'NOUN'), ('–', 'PUNCT'), ('viena', 'VERB'), ('iš', 'ADP'), ('oficialiųjų', 'ADJ'), ('kalbų', 'NOUN'), ('.', 'PUNCT')]
     elif lang == 'nob':
         assert tokens_tagged == [('Bokmål', 'NOUN__Definite=Ind|Gender=Neut|Number=Sing'), ('er', 'VERB__Mood=Ind|Tense=Pres|VerbForm=Fin'), ('en', 'DET__Gender=Masc|Number=Sing'), ('varietet', 'NOUN__Definite=Ind|Gender=Masc|Number=Sing'), ('av', 'ADP___'), ('norsk', 'ADJ__Definite=Ind|Degree=Pos|Gender=Neut|Number=Sing'), ('språk', 'NOUN__Definite=Ind|Gender=Neut|Number=Sing'), ('.', 'PUNCT___')]
         assert tokens_tagged_universal == [('Bokmål', 'NOUN'), ('er', 'VERB'), ('en', 'DET'), ('varietet', 'NOUN'), ('av', 'ADP'), ('norsk', 'ADJ'), ('språk', 'NOUN'), ('.', 'PUNCT')]
@@ -132,9 +134,8 @@ def test_pos_tag(lang, pos_tagger):
         assert tokens_tagged == [('Tiếng', 'N'), ('Việt', 'Np'), (',', 'CH'), ('còn', 'C'), ('gọi', 'V'), ('tiếng', 'N'), ('Việt Nam', 'Np'), ('[', 'V'), ('5', 'M'), (']', 'CH'), (',', 'CH'), ('tiếng Kinh', 'N'), ('hay', 'C'), ('Việt ngữ', 'V'), (',', 'CH'), ('là', 'V'), ('ngôn ngữ', 'N'), ('của', 'E'), ('người', 'Nc'), ('Việt', 'Np'), ('(', 'CH'), ('dân tộc', 'N'), ('Kinh', 'Np'), (')', 'CH'), ('và', 'C'), ('là', 'V'), ('ngôn ngữ', 'N'), ('chính thức', 'A'), ('tại', 'E'), ('Việt Nam', 'Np'), ('.', 'CH')]
         assert tokens_tagged_universal == [('Tiếng', 'NOUN'), ('Việt', 'PROPN'), (',', 'PUNCT'), ('còn', 'CCONJ'), ('gọi', 'VERB'), ('tiếng', 'NOUN'), ('Việt Nam', 'PROPN'), ('[', 'VERB'), ('5', 'NUM'), (']', 'PUNCT'), (',', 'PUNCT'), ('tiếng Kinh', 'NOUN'), ('hay', 'CCONJ'), ('Việt ngữ', 'VERB'), (',', 'PUNCT'), ('là', 'VERB'), ('ngôn ngữ', 'NOUN'), ('của', 'ADP'), ('người', 'NOUN'), ('Việt', 'PROPN'), ('(', 'PUNCT'), ('dân tộc', 'NOUN'), ('Kinh', 'PROPN'), (')', 'PUNCT'), ('và', 'CCONJ'), ('là', 'VERB'), ('ngôn ngữ', 'NOUN'), ('chính thức', 'ADJ'), ('tại', 'ADP'), ('Việt Nam', 'PROPN'), ('.', 'PUNCT')]
 
-'''
-for lang, pos_taggers in main.settings_global['pos_taggers'].items():
-    for pos_tagger in pos_taggers:
-        if lang not in ['bod']:
-            test_pos_tag(lang, pos_tagger)
-'''
+if __name__ == '__main__':
+    for lang, pos_taggers in main.settings_global['pos_taggers'].items():
+        for pos_tagger in pos_taggers:
+            if lang not in ['bod']:
+                test_pos_tag(lang, pos_tagger)
