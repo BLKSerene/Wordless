@@ -76,7 +76,7 @@ def init_settings_global(main):
             main.tr('Latin'): 'lat',
             main.tr('Latvian'): 'lav',
             main.tr('Lithuanian'): 'lit',
-            main.tr('Luxembourg'): 'ltz',
+            main.tr('Luxembourgish'): 'ltz',
             main.tr('Macedonian'): 'mkd',
             main.tr('Malagasy'): 'mlg',
             main.tr('Malay'): 'msa',
@@ -875,6 +875,15 @@ def init_settings_global(main):
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Lithuanian Word Tokenizer')
+            ],
+
+            'ltz': [
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer'),
+                main.tr('spaCy - Luxembourgish Word Tokenizer')
             ],
 
             'mar': [
