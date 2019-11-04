@@ -52,6 +52,7 @@ SENTENCE_JPN = '日本語（にほんご、にっぽんご[注 1]）は、主に
 SENTENCE_KAN = 'ದ್ರಾವಿಡ ಭಾಷೆಗಳಲ್ಲಿ ಪ್ರಾಮುಖ್ಯವುಳ್ಳ ಭಾಷೆಯೂ ಭಾರತದ ಪುರಾತನವಾದ ಭಾಷೆಗಳಲ್ಲಿ ಒಂದೂ ಆಗಿರುವ ಕನ್ನಡ ಭಾಷೆಯನ್ನು ಅದರ ವಿವಿಧ ರೂಪಗಳಲ್ಲಿ ಸುಮಾರು ೪೫ ದಶಲಕ್ಷ ಜನರು ಆಡು ನುಡಿಯಾಗಿ ಬಳಸುತ್ತಲಿದ್ದಾರೆ.'
 SENTENCE_LAV = 'Latviešu valoda ir dzimtā valoda apmēram 1,7 miljoniem cilvēku, galvenokārt Latvijā, kur tā ir vienīgā valsts valoda.[3]'
 SENTENCE_LIT = 'Lietuvių kalba – iš baltų prokalbės kilusi lietuvių tautos kalba, kuri Lietuvoje yra valstybinė, o Europos Sąjungoje – viena iš oficialiųjų kalbų.'
+SENTENCE_LTZ = "D'Lëtzebuergesch gëtt an der däitscher Dialektologie als ee westgermaneschen, mëtteldäitschen Dialekt aklasséiert, deen zum Muselfränkesche gehéiert."
 SENTENCE_MAR = 'मराठीभाषा ही इंडो-युरोपीय भाषाकुलातील एक भाषा आहे.'
 SENTENCE_NOB = 'Bokmål er en varietet av norsk språk.'
 SENTENCE_FAS = 'فارسی یا پارسی یکی از زبان‌های هندواروپایی در شاخهٔ زبان‌های ایرانی جنوب غربی است که در کشورهای ایران، افغانستان،[۳] تاجیکستان[۴] و ازبکستان[۵] به آن سخن می‌گویند.'
@@ -314,6 +315,15 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
             assert tokens == ['Latviešu', 'valoda', 'ir', 'dzimtā', 'valoda', 'apmēram', '1,7', 'miljoniem', 'cilvēku', ',', 'galvenokārt', 'Latvijā', ',', 'kur', 'tā', 'ir', 'vienīgā', 'valsts', 'valoda.[', '3', ']']
     elif lang == 'lit':
         assert tokens == ['Lietuvių', 'kalba', '–', 'iš', 'baltų', 'prokalbės', 'kilusi', 'lietuvių', 'tautos', 'kalba', ',', 'kuri', 'Lietuvoje', 'yra', 'valstybinė', ',', 'o', 'Europos', 'Sąjungoje', '–', 'viena', 'iš', 'oficialiųjų', 'kalbų', '.']
+    elif lang == 'ltz':
+        if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
+                              'NLTK - NIST Tokenizer',
+                              'NLTK - Twitter Tokenizer',
+                              'spaCy - Luxembourgish Word Tokenizer']:
+            assert tokens == ["D'Lëtzebuergesch", 'gëtt', 'an', 'der', 'däitscher', 'Dialektologie', 'als', 'ee', 'westgermaneschen', ',', 'mëtteldäitschen', 'Dialekt', 'aklasséiert', ',', 'deen', 'zum', 'Muselfränkesche', 'gehéiert', '.']
+        elif word_tokenizer in ['NLTK - Tok-tok Tokenizer',
+                                'Sacremoses - Moses Tokenizer']:
+            assert tokens == ['D', "'", 'Lëtzebuergesch', 'gëtt', 'an', 'der', 'däitscher', 'Dialektologie', 'als', 'ee', 'westgermaneschen', ',', 'mëtteldäitschen', 'Dialekt', 'aklasséiert', ',', 'deen', 'zum', 'Muselfränkesche', 'gehéiert', '.']
     elif lang == 'mar':
         if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
                               'NLTK - NIST Tokenizer',

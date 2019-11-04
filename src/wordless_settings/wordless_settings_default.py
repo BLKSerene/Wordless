@@ -1135,6 +1135,7 @@ def init_settings_default(main):
                 'kan': main.tr('spaCy - Kannada Word Tokenizer'),
                 'lav': main.tr('Sacremoses - Moses Tokenizer'),
                 'lit': main.tr('spaCy - Lithuanian Word Tokenizer'),
+                'ltz': main.tr('spaCy - Luxembourgish Word Tokenizer'),
                 'mar': main.tr('spaCy - Marathi Word Tokenizer'),
                 'nob': main.tr('spaCy - Norwegian Bokmål Word Tokenizer'),
                 'fas': main.tr('spaCy - Persian Word Tokenizer'),
