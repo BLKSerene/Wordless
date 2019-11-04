@@ -257,7 +257,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # Beautiful Soup
             [
                 '<a href="https://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a>',
-                '4.8.0',
+                '4.8.1',
                 'Leonard Richardson',
                 '<a href="https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE">MIT</a>'
             ],
