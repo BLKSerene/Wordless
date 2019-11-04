@@ -511,7 +511,7 @@ class Wordless_Dialog_Need_Help(wordless_dialog.Wordless_Dialog_Info):
         self.table_need_help.setCellWidget(0, 0, wordless_label.Wordless_Label_Html(self.tr('Home Page'), self))
         self.table_need_help.setCellWidget(0, 1, wordless_label.Wordless_Label_Html('<a href="https://github.com/BLKSerene/Wordless">https://github.com/BLKSerene/Wordless</a>', self))
         self.table_need_help.setCellWidget(1, 0, wordless_label.Wordless_Label_Html(self.tr('Documentation'), self))
-        self.table_need_help.setCellWidget(1, 1, wordless_label.Wordless_Label_Html('<a href="https://github.com/BLKSerene/Wordless#-documentation">https://github.com/BLKSerene/Wordless#-documentation</a>', self))
+        self.table_need_help.setCellWidget(1, 1, wordless_label.Wordless_Label_Html('<a href="https://github.com/BLKSerene/Wordless#-documentation">https://github.com/BLKSerene/Wordless#documentation</a>', self))
         self.table_need_help.setCellWidget(2, 0, wordless_label.Wordless_Label_Html(self.tr('Email'), self))
         self.table_need_help.setCellWidget(2, 1, wordless_label.Wordless_Label_Html('<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a><br><a href="mailto:blkserene@163.com">blkserene@163.com</a>', self))
         self.table_need_help.setCellWidget(3, 0, wordless_label.Wordless_Label_Html(self.tr('<a href="https://www.wechat.com/en/">WeChat</a> Official Account'), self))
