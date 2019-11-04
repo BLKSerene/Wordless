@@ -87,14 +87,15 @@ for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
             WORD_TOKENIZERS.append((lang, word_tokenizer))
 
 @pytest.mark.parametrize('lang, word_tokenizer', WORD_TOKENIZERS)
-def test_word_tokenize(lang, word_tokenizer):
+def test_word_tokenize(lang, word_tokenizer, show_results = False):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
     tokens = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
                                                              lang = lang,
                                                              word_tokenizer = word_tokenizer)
 
-    # print(tokens)
+    if show_results:
+        print(tokens)
 
     if lang == 'afr':
         if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
@@ -384,12 +385,11 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'sin':
         if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
                               'NLTK - NIST Tokenizer',
-                              'NLTK - Tok-tok Tokenizer']:
+                              'NLTK - Tok-tok Tokenizer',
+                              'spaCy - Sinhala Word Tokenizer']:
             assert tokens == ['ශ්\u200dරී', 'ලංකාවේ', 'ප්\u200dරධාන', 'ජාතිය', 'වන', 'සිංහල', 'ජනයාගේ', 'මව්', 'බස', 'සිංහල', 'වෙයි', '.']
         elif word_tokenizer == 'NLTK - Twitter Tokenizer':
             assert tokens == ['ශ', '්', '\u200d', 'ර', 'ී', 'ල', 'ං', 'ක', 'ා', 'ව', 'ේ', 'ප', '්', '\u200d', 'රධ', 'ා', 'න', 'ජ', 'ා', 'ත', 'ි', 'ය', 'වන', 'ස', 'ි', 'ං', 'හල', 'ජනය', 'ා', 'ග', 'ේ', 'මව', '්', 'බස', 'ස', 'ි', 'ං', 'හල', 'ව', 'ෙ', 'ය', 'ි', '.']
-        elif word_tokenizer == 'spaCy - Sinhala Word Tokenizer':
-            assert tokens == ['ශ්\u200dරී', 'ලංකාවේ', 'ප්\u200dරධාන', 'ජාතිය', 'වන', 'සිංහල', 'ජනයාගේ', 'මව්', 'බස', 'සිංහල', 'වෙයි.']
     elif lang == 'slk':
         assert tokens == ['Slovenčina', 'patrí', 'do', 'skupiny', 'západoslovanských', 'jazykov', '(', 'spolu', 's', 'češtinou', ',', 'poľštinou', ',', 'hornou', 'a', 'dolnou', 'lužickou', 'srbčinou', 'a', 'kašubčinou', ')', '.']
     elif lang == 'slv':
@@ -476,9 +476,8 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'vie':
         assert tokens == ['Tiếng', 'Việt', ',', 'còn', 'gọi', 'tiếng', 'Việt Nam', '[', '5', ']', ',', 'tiếng Kinh', 'hay', 'Việt ngữ', ',', 'là', 'ngôn ngữ', 'của', 'người', 'Việt', '(', 'dân tộc', 'Kinh', ')', 'và', 'là', 'ngôn ngữ', 'chính thức', 'tại', 'Việt Nam', '.']
 
-'''
-for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
-    for word_tokenizer in word_tokenizers:
-        if lang not in ['bod', 'other']:
-            test_word_tokenize(lang, word_tokenizer)
-'''
+if __name__ == '__main__':
+    for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
+        for word_tokenizer in word_tokenizers:
+            if lang not in ['bod', 'other']:
+                test_word_tokenize(lang, word_tokenizer, show_results = True)

@@ -82,14 +82,15 @@ for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].ite
             SENTENCE_TOKENIZERS.append((lang, sentence_tokenizer))
 
 @pytest.mark.parametrize('lang, sentence_tokenizer', SENTENCE_TOKENIZERS)
-def test_sentence_tokenize(lang, sentence_tokenizer):
+def test_sentence_tokenize(lang, sentence_tokenizer, show_results = False):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
     sentences = wordless_text_processing.wordless_sentence_tokenize(main, globals()[f'TEXT_{lang.upper()}'],
                                                                     lang = lang,
                                                                     sentence_tokenizer = sentence_tokenizer)
 
-    # print(sentences)
+    if show_results:
+        print(sentences)
 
     if lang == 'afr':
         assert sentences == ["Afrikaans is tipologies gesien 'n Indo-Europese, Wes-Germaanse, Nederfrankiese taal,[2] wat sy ontstaan aan die suidpunt van Afrika gehad het onder invloed van verskeie ander tale en taalgroepe.", "Afrikaans is op 8 Mei 1925 as 'n amptelike taal van Suid-Afrika erken en is tans die derde jongste Germaanse taal wat amptelike status geniet, naas Faroëes wat in 1948 grondwetlik erken is en Luxemburgs wat hierdie status in 1984 gekry het."]
@@ -185,7 +186,7 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     elif lang == 'rus':
         assert sentences == ['Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать)[~ 3][⇨] — один из восточнославянских языков, национальный язык русского народа.', 'Является одним из наиболее распространённых языков мира — шестым среди всех языков мира по общей численности говорящих и восьмым по численности владеющих им как родным[9].', 'Русский является также самым распространённым славянским языком[10] и самым распространённым языком в Европе — географически и по числу носителей языка как родного[7].']
     elif lang == 'sin':
-        assert sentences == ['ශ්\u200dරී ලංකාවේ ප්\u200dරධාන ජාතිය වන සිංහල ජනයාගේ මව් බස සිංහල වෙයි. අද වන විට මිලියන 20 කට අධික සිංහල සහ මිලියන 3කට අධික සිංහල නොවන ජනගහනයක් සිංහල භාෂාව භාවිත කරති. සිංහල\u200d ඉන්දු-යුරෝපීය භාෂාවල උප ගණයක් වන ඉන්දු-ආර්ය භාෂා ගණයට අයිති වන අතර මාල දිවයින භාවිත කරන දිවෙහි භාෂාව සිංහලයෙන් පැවත එන්නකි. සිංහල ශ්\u200dරී ලංකාවේ නිල භාෂාවයි .']
+        assert sentences == ['ශ්\u200dරී ලංකාවේ ප්\u200dරධාන ජාතිය වන සිංහල ජනයාගේ මව් බස සිංහල වෙයි.', 'අද වන විට මිලියන 20 කට අධික සිංහල සහ මිලියන 3කට අධික සිංහල නොවන ජනගහනයක් සිංහල භාෂාව භාවිත කරති.', 'සිංහල\u200d ඉන්දු-යුරෝපීය භාෂාවල උප ගණයක් වන ඉන්දු-ආර්ය භාෂා ගණයට අයිති වන අතර මාල දිවයින භාවිත කරන දිවෙහි භාෂාව සිංහලයෙන් පැවත එන්නකි.', 'සිංහල ශ්\u200dරී ලංකාවේ නිල භාෂාවයි .']
     elif lang == 'slk':
         assert sentences == ['ešte Bulharsko, Francúzsko, Nemecko, Belgicko, Škandinávia, Taliansko, Švajčiarsko, Holandsko, Cyprus, Rusko, Izrael, JAR, Argentína, Brazília, Uruguaj, Austrália, Nový Zéland, Spojené kráľovstvo a v ďalších krajinách.', 'Celkový odhadovaný počet osôb slovenského pôvodu v zahraničí roku 2001 je 2 016 000.']
     elif lang == 'slv':
@@ -219,9 +220,8 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     elif lang == 'vie':
         assert sentences ==['Tiếng Việt, còn gọi tiếng Việt Nam[5], tiếng Kinh hay Việt ngữ, là ngôn ngữ của người Việt (dân tộc Kinh) và là ngôn ngữ chính thức tại Việt Nam.', 'Đây là tiếng mẹ đẻ của khoảng 85% dân cư Việt Nam, cùng với hơn 4 triệu Việt kiều.', 'Tiếng Việt còn là ngôn ngữ thứ hai của các dân tộc thiểu số tại Việt Nam.', 'Mặc dù tiếng Việt có một số từ vựng vay mượn từ tiếng Hán và trước đây dùng chữ Nôm – một hệ chữ viết dựa trên chữ Hán – để viết nhưng tiếng Việt được coi là một trong số các ngôn ngữ thuộc ngữ hệ Nam Á có số người nói nhiều nhất (nhiều hơn một số lần so với các ngôn ngữ khác cùng hệ cộng lại).', 'Ngày nay, tiếng Việt dùng bảng chữ cái Latinh, gọi là chữ Quốc ngữ, cùng các dấu thanh để viết.']
 
-'''
-for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].items():
-    for sentence_tokenizer in sentence_tokenizers:
-        if lang not in ['other']:
-        	test_sentence_tokenize(lang, sentence_tokenizer)
-'''
+if __name__ == '__main__':
+    for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].items():
+        for sentence_tokenizer in sentence_tokenizers:
+            if lang not in ['other']:
+                test_sentence_tokenize(lang, sentence_tokenizer, show_results = True)

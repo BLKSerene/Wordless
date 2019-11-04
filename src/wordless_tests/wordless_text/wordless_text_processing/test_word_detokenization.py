@@ -61,7 +61,7 @@ for lang, word_detokenizers in main.settings_global['word_detokenizers'].items()
             WORD_DETOKENIZERS.append((lang, word_detokenizer))
 
 @pytest.mark.parametrize('lang, word_detokenizer', WORD_DETOKENIZERS)
-def test_word_detokenize(lang, word_detokenizer):
+def test_word_detokenize(lang, word_detokenizer, show_results = False):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
     tokens = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
@@ -71,7 +71,8 @@ def test_word_detokenize(lang, word_detokenizer):
                                                              lang = lang,
                                                              word_detokenizer = word_detokenizer)
 
-    # print(text)
+    if show_results:
+        print(text)
 
     if lang == 'cat':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
@@ -154,9 +155,8 @@ def test_word_detokenize(lang, word_detokenizer):
     elif lang == 'bod':
         assert text == '༄༅། །རྒྱ་གར་སྐད་དུ།བོ་དྷི་སཏྭ་ཙརྻ་ཨ་བ་ཏ་ར།བོད་སྐད་དུ།བྱང་ཆུབ་སེམས་དཔའི་སྤྱོད་པ་ལ་འཇུག་པ། །སངས་རྒྱས་དང་བྱང་ཆུབ་སེམས་དཔའ་ཐམས་ཅད་ལ་ཕྱག་འཚལ་ལོ། །བདེ་གཤེགས་ཆོས་ཀྱི་སྐུ་མངའ་སྲས་བཅས་དང༌། །ཕྱག་འོས་ཀུན་ལའང་གུས་པར་ཕྱག་འཚལ་ཏེ། །བདེ་གཤེགས་སྲས་ཀྱི་སྡོམ་ལ་འཇུག་པ་ནི། །ལུང་བཞིན་མདོར་བསྡུས་ནས་ནི་བརྗོད་པར་བྱ། །'
 
-'''
-for lang, word_detokenizers in main.settings_global['word_detokenizers'].items():
-    for word_detokenizer in word_detokenizers:
-        if lang not in ['bod', 'other']:
-            test_word_detokenize(lang, word_detokenizer)
-'''
+if __name__ == '__main__':
+    for lang, word_detokenizers in main.settings_global['word_detokenizers'].items():
+        for word_detokenizer in word_detokenizers:
+            if lang not in ['bod', 'other']:
+                test_word_detokenize(lang, word_detokenizer, show_results = True)

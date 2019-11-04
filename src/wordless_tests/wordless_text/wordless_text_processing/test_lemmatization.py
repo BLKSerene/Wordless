@@ -61,7 +61,7 @@ for lang, lemmatizers in main.settings_global['lemmatizers'].items():
             LEMMATIZERS.append((lang, lemmatizer))
 
 @pytest.mark.parametrize('lang, lemmatizer', LEMMATIZERS)
-def test_lemmatize(lang, lemmatizer):
+def test_lemmatize(lang, lemmatizer, show_results = False):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
     tokens = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
@@ -71,7 +71,8 @@ def test_lemmatize(lang, lemmatizer):
                                                          lang = lang,
                                                          lemmatizer = lemmatizer)
 
-    # print(lemmas)
+    if show_results:
+        print(lemmas)
 
     if lang == 'ast':
         assert lemmas == ["L'asturianu", 'ser', 'unu', 'llingua', 'romance', 'propiu', "d'Asturies,[1", ']', 'perteneciente', 'al', 'subgrupu', 'asturllionés', '.']
@@ -82,7 +83,7 @@ def test_lemmatize(lang, lemmatizer):
     elif lang == 'ces':
         assert lemmas == ['Čeština', 'neboli', 'český', 'jazyk', 'on', 'západoslovanský', 'jazyk', ',', 'blízký', 'slovenštině', ',', 'poté', 'lužické', 'srbštině', 'a', 'polštině', '.']
     elif lang == 'nld':
-        assert lemmas == ['het', 'nederlands', 'is', 'een', 'west-germaanse', 'taal', 'en', 'de', 'moedertaal', 'van', 'de', 'meeste', 'inwoners', 'van', 'nederland', ',', 'belgië', 'en', 'suriname', '.']
+        assert lemmas == ['het', 'nederlands', 'zijn', 'een', 'west-germaans', 'taal', 'en', 'de', 'moedertaal', 'van', 'de', 'veel', 'inwoner', 'van', 'nederland', ',', 'belgië', 'en', 'suriname', '.']
     elif lang == 'eng':
         if lemmatizer == 'Lemmatization Lists - English Lemma List':
             assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'that', 'be', '1', 'speak', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'become', 'a', 'global', 'lingua', 'franca.[5][6', ']']
@@ -106,7 +107,7 @@ def test_lemmatize(lang, lemmatizer):
     elif lang == 'grc':
         assert lemmas == ['Με', 'τον', 'όρο', 'αρχαία', 'ελληνική', 'γλώσσα', 'εννοείται', 'μια', 'μορφή', 'της', 'ελληνικής', 'γλώσσας', ',', 'πού', 'ομιλούνταν', 'κατά', 'τους', 'αρχαϊκούς', 'χρόνους', 'και', 'την', 'κλασική', 'αρχαιότητα', '.']
     elif lang == 'ell':
-        assert lemmas == ['η', 'ελληνικός', 'γλώσσα', 'ανήκω', 'στην', 'ινδοευρωπαϊκός', 'οικογένεια[9', ']', 'και', 'συγκεκριμένα', 'στον', 'ελληνικό', 'κλάδο', ',', 'μαζί', 'με', 'την', 'τσακωνικός', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
+        assert lemmas == ['η', 'ελληνικός', 'γλώσσα', 'ανήκω', 'στην', 'ινδοευρωπαϊκός', 'οικογένεια[9', ']', 'και', 'συγκεκριμένος', 'στον', 'ελληνικό', 'κλάδο', ',', 'μαζί', 'με', 'την', 'τσακωνικός', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
     elif lang == 'hun':
         assert lemmas == ['A', 'magyar', 'nyelv', 'az', 'uráli', 'nyelvcsalád', 'tag', ',', 'a', 'finnugor', 'nyelv', 'köz', 'tartozó', 'ugor', 'nyelv', 'egyik', '.']
     elif lang == 'gle':
@@ -147,9 +148,8 @@ def test_lemmatize(lang, lemmatizer):
     elif lang == 'cym':
         assert lemmas == ['Aelod', "o'r", 'cangen', 'Frythonaidd', "o'r", 'iaith', 'Celtaidd', 'a', 'siarad', 'bod', 'brodorol', 'yn', 'Nghymru', ',', 'can', 'Gymry', 'a', 'pobl', 'arall', 'aredig', 'gwasgar', 'bod', 'Lloegr', ',', 'a', 'can', 'cymuno', 'bechan', 'bod', 'Y', 'Wladfa', ',', 'gwybod', 'Ariannin[7', ']', "yw'r", 'Gymraeg', '(', 'hefyd', 'Cymraeg', 'heb', 'yr', 'bannod', ')', '.']
 
-'''
-for lang, lemmatizers in main.settings_global['lemmatizers'].items():
-    for lemmatizer in lemmatizers:
-        if lang not in ['bod']:
-            test_lemmatize(lang, lemmatizer)
-'''
+if __name__ == '__main__':
+    for lang, lemmatizers in main.settings_global['lemmatizers'].items():
+        for lemmatizer in lemmatizers:
+            if lang not in ['bod']:
+                test_lemmatize(lang, lemmatizer, show_results = True)
