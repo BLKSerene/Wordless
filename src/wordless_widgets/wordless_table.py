@@ -22,11 +22,292 @@ import bs4
 import openpyxl
 
 from wordless_checking import wordless_checking_misc
-from wordless_dialogs import wordless_msg_box
+from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
 from wordless_text import wordless_text_processing, wordless_text_utils
-from wordless_utils import wordless_misc
+from wordless_utils import wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_button, wordless_label,
                               wordless_msg)
+
+class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
+    worker_done = pyqtSignal(bool, str)
+
+    def __init__(self, main, table, file_path, file_type, rows_export, dialog_progress, update_gui):
+        super().__init__(main, dialog_progress, update_gui)
+
+        self.table = table
+        self.file_path = file_path
+        self.file_type = file_type
+        self.rows_export = rows_export
+
+    def run(self):
+        # Check permission
+        try:
+            if not self.rows_export:
+                self.rows_export = list(range(self.table.rowCount()))
+
+            len_rows = len(self.rows_export)
+
+            if self.file_type == self.tr('Excel Workbook (*.xlsx)'):
+                workbook = openpyxl.Workbook()
+                worksheet = workbook.active
+
+                # Freeze panes
+                if self.table.name in ['error', 'concordancer']:
+                    worksheet.freeze_panes = 'A2'
+                else:
+                    worksheet.freeze_panes = 'B2'
+
+                dpi_horizontal = QApplication.primaryScreen().logicalDotsPerInchX()
+                dpi_vertical = QApplication.primaryScreen().logicalDotsPerInchY()
+
+                # Concordancer
+                if self.table.name == 'concordancer':
+                    # Horizontal Headers
+                    for col in range(self.table.columnCount()):
+                        cell = worksheet.cell(1, 1 + col)
+                        cell.value = self.table.horizontalHeaderItem(col).text()
+
+                        self.set_cell_styles(cell, self.table.horizontalHeaderItem(col),
+                                             item_type = 'header_horizontal')
+
+                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.table.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
+
+                    # Cells
+                    for row_cell, row_item in enumerate(self.rows_export):
+                        for col in range(self.table.columnCount()):
+                            # Left
+                            if col == 0:
+                                cell = worksheet.cell(2 + row_cell, 1 + col)
+                                cell.value = wordless_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+
+                                self.set_cell_styles(cell, self.table.cellWidget(row_item, col))
+
+                                cell.alignment = openpyxl.styles.Alignment(
+                                    horizontal = 'right',
+                                    vertical = 'center'
+                                )
+                            # Node
+                            elif col == 1:
+                                cell = worksheet.cell(2 + row_cell, 1 + col)
+                                cell.value = wordless_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+
+                                self.set_cell_styles(cell, self.table.cellWidget(row_item, col))
+
+                                cell.font = openpyxl.styles.Font(
+                                    name = self.table.cellWidget(row_item, col).font().family(),
+                                    size = 8,
+                                    bold = True,
+                                    color = 'FF0000'
+                                )
+                            # Right
+                            elif col == 2:
+                                cell = worksheet.cell(2 + row_cell, 1 + col)
+                                cell.value = wordless_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+
+                                self.set_cell_styles(cell, self.table.cellWidget(row_item, col))
+
+                                cell.alignment = openpyxl.styles.Alignment(
+                                    horizontal = 'left',
+                                    vertical = 'center'
+                                )
+                            else:
+                                cell = worksheet.cell(2 + row_cell, 1 + col)
+                                cell.value = cell_text = self.table.item(row_item, col).text()
+
+                                self.set_cell_styles(cell, self.table.item(row_item, col))
+
+                            self.progress_updated.emit(self.tr(f'Exporting table ... ({row_cell + 1} / {len_rows})'))
+                else:
+                    if self.table.header_orientation == 'horizontal':
+                        # Horizontal Headers
+                        for col in range(self.table.columnCount()):
+                            cell = worksheet.cell(1, 1 + col)
+                            cell.value = self.table.horizontalHeaderItem(col).text()
+
+                            self.set_cell_styles(cell, self.table.horizontalHeaderItem(col),
+                                                 item_type = 'header_horizontal')
+
+                            worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.table.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
+
+                        # Cells
+                        for row_cell, row_item in enumerate(self.rows_export):
+                            for col in range(self.table.columnCount()):
+                                cell = worksheet.cell(2 + row_cell, 1 + col)
+                                cell.value = self.table.item(row_item, col).text()
+
+                                self.set_cell_styles(cell, self.table.item(row_item, col))
+
+                            self.progress_updated.emit(self.tr(f'Exporting table ... ({row_cell + 1} / {len_rows})'))
+                    else:
+                        # Horizontal Headers
+                        for col in range(self.table.columnCount()):
+                            cell = worksheet.cell(1, 2 + col) 
+                            cell.value = self.table.horizontalHeaderItem(col).text()
+
+                            self.set_cell_styles(cell, self.table.horizontalHeaderItem(col),
+                                                 item_type = 'header_horizontal')
+
+                            worksheet.column_dimensions[openpyxl.utils.get_column_letter(2 + col)].width = self.table.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
+
+                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1)].width = self.table.verticalHeader().width() / dpi_horizontal * 13 + 3
+
+                        # Vertical Headers
+                        for row_cell, row_item in enumerate(self.rows_export):
+                            cell = worksheet.cell(2 + row_cell, 1)
+                            cell.value = self.table.verticalHeaderItem(row_item).text()
+
+                            self.set_cell_styles(cell, self.table.verticalHeaderItem(row_item),
+                                                 item_type = 'header_vertical')
+
+                        # Cells
+                        for row_cell, row_item in enumerate(self.rows_export):
+                            for col in range(self.table.columnCount()):
+                                cell = worksheet.cell(2 + row_cell, 2 + col)
+                                cell.value = self.table.item(row_item, col).text()
+
+                                self.set_cell_styles(cell, self.table.item(row_item, col))
+
+                            self.progress_updated.emit(self.tr(f'Exporting table ... ({row_cell + 1} / {len_rows})'))
+
+                # Row Height
+                worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
+
+                for i, _ in enumerate(worksheet.rows):
+                    worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
+
+                # Borders
+                border = openpyxl.styles.Side(
+                   border_style = 'thin',
+                   color = '292929'
+                )
+
+                for row, _ in enumerate(worksheet.rows):
+                    for col, _ in enumerate(worksheet.columns):
+                        worksheet.cell(row + 1, col + 1).border = openpyxl.styles.Border(
+                            left = border,
+                            right = border,
+                            top = border,
+                            bottom = border
+                        )
+                    
+                    self.progress_updated.emit(self.tr(f'Applying borders ... ({row + 1} / {len_rows})'))
+
+                self.progress_updated.emit(self.tr(f'Saving file ...'))
+
+                workbook.save(self.file_path)
+            elif self.file_type == self.tr('CSV File (*.csv)'):
+                encoding = self.main.settings_custom['export']['tables']['default_encoding']
+
+                with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
+                    csv_writer = csv.writer(f)
+
+                    # Concordancer
+                    if self.table.name == 'concordancer':
+                        # Horizontal Headers
+                        csv_writer.writerow([self.table.horizontalHeaderItem(col).text().strip()
+                                             for col in range(self.table.columnCount())])
+
+                        # Cells
+                        for i, row in enumerate(self.rows_export):
+                            row_to_export = []
+
+                            for col in range(self.table.columnCount()):
+                                if self.table.item(row, col):
+                                    cell_text = self.table.item(row, col).text()
+                                else:
+                                    cell_text = self.table.cellWidget(row, col).text()
+                                    cell_text = wordless_text_utils.html_to_text(cell_text)
+
+                                row_to_export.append(cell_text)
+
+                            csv_writer.writerow(row_to_export)
+
+                            self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
+                    else:
+                        if self.table.header_orientation == 'horizontal':
+                            # Horizontal Headers
+                            csv_writer.writerow([self.table.horizontalHeaderItem(col).text().strip()
+                                                 for col in range(self.table.columnCount())])
+
+                            # Cells
+                            for i, row in enumerate(self.rows_export):
+                                row_to_export = []
+
+                                for col in range(self.table.columnCount()):
+                                    row_to_export.append(self.table.item(row, col).text().strip())
+
+                                csv_writer.writerow(row_to_export)
+
+                                self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
+                        else:
+                            # Horizontal Headers
+                            csv_writer.writerow([''] +
+                                                [self.table.horizontalHeaderItem(col).text().strip()
+                                                 for col in range(self.table.columnCount())])
+
+                            # Vertical Headers & Cells
+                            for i, row in enumerate(self.rows_export):
+                                row_to_export = [self.table.verticalHeaderItem(row).text().strip()]
+
+                                for col in range(self.table.columnCount()):
+                                    row_to_export.append(self.table.item(row, col).text().strip())
+
+                                csv_writer.writerow(row_to_export)
+
+                                self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
+
+            self.main.settings_custom['export']['tables']['default_path'] = wordless_misc.get_normalized_dir(self.file_path)
+            self.main.settings_custom['export']['tables']['default_type'] = self.file_type
+
+            export_success = True
+        except PermissionError:
+            export_success = False
+
+        self.worker_done.emit(export_success, self.file_path)
+
+    def set_cell_styles(self, cell, item, item_type = 'item'):
+        if item_type == 'header_horizontal':
+            cell.font = openpyxl.styles.Font(
+                name = item.font().family(),
+                size = 8,
+                bold = True,
+                color = 'FFFFFF'
+            )
+
+            if self.table.header_orientation == 'horizontal':
+                cell.fill = openpyxl.styles.PatternFill(
+                    fill_type = 'solid',
+                    fgColor = '5C88C5'
+                )
+            else:
+                cell.fill = openpyxl.styles.PatternFill(
+                    fill_type = 'solid',
+                    fgColor = '888888'
+                )
+        elif item_type == 'header_vertical':
+            cell.font = openpyxl.styles.Font(
+                name = item.font().family(),
+                size = 8,
+                bold = True,
+                color = 'FFFFFF'
+            )
+
+            cell.fill = openpyxl.styles.PatternFill(
+                fill_type = 'solid',
+                fgColor = '5C88C5'
+            )
+        else:
+            cell.font = openpyxl.styles.Font(
+                name = item.font().family(),
+                size = 8,
+                color = '292929'
+            )
+
+        cell.alignment = openpyxl.styles.Alignment(
+            horizontal = 'center',
+            vertical = 'center',
+            wrap_text = True
+        )
 
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
@@ -233,6 +514,44 @@ class Wordless_Table(QTableWidget):
 
         self.setHorizontalHeaderItem(i, QTableWidgetItem(label))
 
+    def export_selected(self):
+        rows_export = sorted({index.row() for index in self.selectedIndexes()})
+
+        self.export_all(rows_export = rows_export)
+
+    def export_all(self, rows_export = []):
+        def update_gui(export_success, file_path):
+            dialog_progress.accept()
+
+            if export_success:
+                wordless_msg_box.wordless_msg_box_export_table_success(self.main, file_path)
+            else:
+                wordless_msg_box.wordless_msg_box_export_table_error(self.main, file_path)
+
+        default_dir = self.main.settings_custom['export']['tables']['default_path']
+
+        (file_path,
+         file_type) = QFileDialog.getSaveFileName(self,
+                                                  self.tr('Export Table'),
+                                                  wordless_checking_misc.check_dir(default_dir),
+                                                  ';;'.join(self.main.settings_global['file_types']['export_tables']),
+                                                  self.main.settings_custom['export']['tables']['default_type'])
+
+        if file_path:
+            dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Export_Table(self.main)
+
+            worker_export_table = Wordless_Worker_Export_Table(self.main, self,
+                                                               file_path, file_type, rows_export,
+                                                               dialog_progress, update_gui)
+            thread_export_table = wordless_threading.Wordless_Thread(worker_export_table)
+
+            thread_export_table.start()
+
+            dialog_progress.exec_()
+
+            thread_export_table.quit()
+            thread_export_table.wait()
+
     def clear_table(self, header_count = 1):
         self.clearContents()
 
@@ -298,121 +617,7 @@ class Wordless_Table_Error(Wordless_Table):
     def __init__(self, main, headers):
         super().__init__(main, headers)
 
-    def export_table(self):
-        def set_cell_styles(cell, item, item_type = 'item'):
-            if item_type == 'header_horizontal':
-                cell.font = openpyxl.styles.Font(name = item.font().family(),
-                                                 size = 8,
-                                                 bold = True,
-                                                 color = 'FFFFFF')
-
-                if self.header_orientation == 'horizontal':
-                    cell.fill = openpyxl.styles.PatternFill(fill_type = 'solid', fgColor = '5C88C5')
-                else:
-                    cell.fill = openpyxl.styles.PatternFill(fill_type = 'solid', fgColor = '888888')
-            elif item_type == 'header_vertical':
-                cell.font = openpyxl.styles.Font(name = item.font().family(),
-                                                 size = 8,
-                                                 bold = True,
-                                                 color = 'FFFFFF')
-
-                cell.fill = openpyxl.styles.PatternFill(fill_type = 'solid', fgColor = '5C88C5')
-            else:
-                cell.font = openpyxl.styles.Font(name = item.font().family(),
-                                                 size = 8,
-                                                 color = '292929')
-
-            cell.alignment = openpyxl.styles.Alignment(horizontal = 'center',
-                                                       vertical = 'center',
-                                                       wrap_text = True)
-
-        default_dir = self.main.settings_custom['export']['tables']['default_path']
-
-        (file_path,
-         file_type) = QFileDialog.getSaveFileName(self,
-                                                  self.tr('Export Table'),
-                                                  wordless_checking_misc.check_dir(default_dir),
-                                                  ';;'.join(self.main.settings_global['file_types']['export_tables']),
-                                                  self.main.settings_custom['export']['tables']['default_type'])
-
-        if file_path:
-            # Check permission
-            try:
-                if file_type == self.tr('Excel Workbook (*.xlsx)'):
-                    workbook = openpyxl.Workbook()
-                    worksheet = workbook.active
-
-                    # Freeze panes
-                    if all(self.item(0, col) for col in range(self.columnCount())):
-                        worksheet.freeze_panes = 'A2'
-
-                    dpi_horizontal = QApplication.primaryScreen().logicalDotsPerInchX()
-                    dpi_vertical = QApplication.primaryScreen().logicalDotsPerInchY()
-
-                    rows_export = list(range(self.rowCount()))
-
-                    # Horizontal Headers
-                    for col in range(self.columnCount()):
-                        cell = worksheet.cell(1, 1 + col)
-                        cell.value = self.horizontalHeaderItem(col).text()
-
-                        set_cell_styles(cell, self.horizontalHeaderItem(col),
-                                        item_type = 'header_horizontal')
-
-                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
-
-                    # Cells
-                    for row_cell, row_item in enumerate(rows_export):
-                        for col in range(self.columnCount()):
-                            cell = worksheet.cell(2 + row_cell, 1 + col)
-                            cell.value = self.item(row_item, col).text()
-
-                            set_cell_styles(cell, self.item(row_item, col))
-
-                    # Row Height
-                    worksheet.row_dimensions[1].height = self.horizontalHeader().height() / dpi_vertical * 72
-
-                    for i, _ in enumerate(worksheet.rows):
-                        worksheet.row_dimensions[2 + i].height = self.verticalHeader().sectionSize(0) / dpi_vertical * 72
-
-                    # Borders
-                    border = openpyxl.styles.Side(border_style = 'thin', color = '292929')
-
-                    for row, _ in enumerate(worksheet.rows):
-                        for col, _ in enumerate(worksheet.columns):
-                            worksheet.cell(row + 1, col + 1).border = openpyxl.styles.Border(left = border,
-                                                                                             right = border,
-                                                                                             top = border,
-                                                                                             bottom = border)
-
-                    workbook.save(file_path)
-                elif file_type == self.tr('CSV File (*.csv)'):
-                    encoding = self.main.settings_custom['export']['tables']['default_encoding']
-
-                    with open(file_path, 'w', encoding = encoding, newline = '') as f:
-                        csv_writer = csv.writer(f)
-
-                        rows_export = list(range(self.rowCount()))
-
-                        # Horizontal Headers
-                        csv_writer.writerow([self.horizontalHeaderItem(col).text().strip()
-                                             for col in range(self.columnCount())])
-
-                        # Cells
-                        for row in rows_export:
-                            row_to_export = []
-
-                            for col in range(self.columnCount()):
-                                row_to_export.append(self.item(row, col).text().strip())
-
-                            csv_writer.writerow(row_to_export)
-
-                self.main.settings_custom['export']['tables']['default_path'] = os.path.normpath(os.path.dirname(file_path))
-                self.main.settings_custom['export']['tables']['default_type'] = file_type
-
-                wordless_msg_box.wordless_msg_box_export_table_success(self.main, file_path)
-            except PermissionError:
-                wordless_msg_box.wordless_msg_box_export_table_error(self.main, file_path)
+        self.name = 'error'
 
 class Wordless_Table_Data(Wordless_Table):
     def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
@@ -828,263 +1033,6 @@ class Wordless_Table_Data(Wordless_Table):
 
         self.itemChanged.emit(self.item(0, 0))
 
-    def export_selected(self):
-        rows_export = sorted({index.row() for index in self.selectedIndexes()})
-
-        self.export_all(rows_export = rows_export)
-
-    def export_all(self, rows_export = []):
-        def set_cell_styles(cell, item, item_type = 'item'):
-            if item_type == 'header_horizontal':
-                cell.font = openpyxl.styles.Font(name = item.font().family(),
-                                                 size = 8,
-                                                 bold = True,
-                                                 color = 'FFFFFF')
-
-                if self.header_orientation == 'horizontal':
-                    cell.fill = openpyxl.styles.PatternFill(fill_type = 'solid', fgColor = '5C88C5')
-                else:
-                    cell.fill = openpyxl.styles.PatternFill(fill_type = 'solid', fgColor = '888888')
-            elif item_type == 'header_vertical':
-                cell.font = openpyxl.styles.Font(name = item.font().family(),
-                                                 size = 8,
-                                                 bold = True,
-                                                 color = 'FFFFFF')
-
-                cell.fill = openpyxl.styles.PatternFill(fill_type = 'solid', fgColor = '5C88C5')
-            else:
-                cell.font = openpyxl.styles.Font(name = item.font().family(),
-                                                 size = 8,
-                                                 color = '292929')
-
-            cell.alignment = openpyxl.styles.Alignment(horizontal = 'center',
-                                                       vertical = 'center',
-                                                       wrap_text = True)
-
-        default_dir = self.main.settings_custom['export']['tables']['default_path']
-
-        (file_path,
-         file_type) = QFileDialog.getSaveFileName(self,
-                                                  self.tr('Export Table'),
-                                                  wordless_checking_misc.check_dir(default_dir),
-                                                  ';;'.join(self.main.settings_global['file_types']['export_tables']),
-                                                  self.main.settings_custom['export']['tables']['default_type'])
-
-        if file_path:
-            # Check permission
-            try:
-                if file_type == self.tr('Excel Workbook (*.xlsx)'):
-                    workbook = openpyxl.Workbook()
-                    worksheet = workbook.active
-
-                    # Freeze panes
-                    if all(self.item(0, col) for col in range(self.columnCount())):
-                        worksheet.freeze_panes = 'B2'
-                    # Concordancer
-                    elif self.cellWidget(0, 0) and self.cellWidget(0, 1) and self.cellWidget(0, 2):
-                        worksheet.freeze_panes = 'A2'
-
-                    dpi_horizontal = QApplication.primaryScreen().logicalDotsPerInchX()
-                    dpi_vertical = QApplication.primaryScreen().logicalDotsPerInchY()
-
-                    if not rows_export:
-                        rows_export = list(range(self.rowCount()))
-
-                    if all(self.item(0, col) for col in range(self.columnCount())):
-                        if self.header_orientation == 'horizontal':
-                            # Horizontal Headers
-                            for col in range(self.columnCount()):
-                                cell = worksheet.cell(1, 1 + col)
-                                cell.value = self.horizontalHeaderItem(col).text()
-
-                                set_cell_styles(cell, self.horizontalHeaderItem(col),
-                                                item_type = 'header_horizontal')
-
-                                worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
-
-                            # Cells
-                            for row_cell, row_item in enumerate(rows_export):
-                                for col in range(self.columnCount()):
-                                    cell = worksheet.cell(2 + row_cell, 1 + col)
-                                    cell.value = self.item(row_item, col).text()
-
-                                    set_cell_styles(cell, self.item(row_item, col))
-                        else:
-                            # Horizontal Headers
-                            for col in range(self.columnCount()):
-                                cell = worksheet.cell(1, 2 + col) 
-                                cell.value = self.horizontalHeaderItem(col).text()
-
-                                set_cell_styles(cell, self.horizontalHeaderItem(col),
-                                                item_type = 'header_horizontal')
-
-                                worksheet.column_dimensions[openpyxl.utils.get_column_letter(2 + col)].width = self.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
-
-                            worksheet.column_dimensions[openpyxl.utils.get_column_letter(1)].width = self.verticalHeader().width() / dpi_horizontal * 13 + 3
-
-                            # Vertical Headers
-                            for row_cell, row_item in enumerate(rows_export):
-                                cell = worksheet.cell(2 + row_cell, 1)
-                                cell.value = self.verticalHeaderItem(row_item).text()
-
-                                set_cell_styles(cell, self.verticalHeaderItem(row_item),
-                                                item_type = 'header_vertical')
-
-                            # Cells
-                            for row_cell, row_item in enumerate(rows_export):
-                                for col in range(self.columnCount()):
-                                    cell = worksheet.cell(2 + row_cell, 2 + col)
-                                    cell.value = self.item(row_item, col).text()
-
-                                    set_cell_styles(cell, self.item(row_item, col))
-                    # Concordancer
-                    elif self.cellWidget(0, 0) and self.cellWidget(0, 1) and self.cellWidget(0, 2):
-                        # Horizontal Headers
-                        for col in range(self.columnCount()):
-                            cell = worksheet.cell(1, 1 + col)
-                            cell.value = self.horizontalHeaderItem(col).text()
-
-                            set_cell_styles(cell, self.horizontalHeaderItem(col),
-                                            item_type = 'header_horizontal')
-
-                            worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
-
-                        # Cells
-                        for col in range(self.columnCount()):
-                            if self.item(0, col):
-                                for row_cell, row_item in enumerate(rows_export):
-                                    cell = worksheet.cell(2 + row_cell, 1 + col)
-                                    cell.value = cell_text = self.item(row_item, col).text()
-
-                                    set_cell_styles(cell, self.item(row_item, col))
-                            else:
-                                # Left
-                                if col == 0:
-                                    for row_cell, row_item in enumerate(rows_export):
-                                        cell = worksheet.cell(2 + row_cell, 1 + col)
-                                        cell.value = wordless_text_utils.html_to_text(self.cellWidget(row_item, col).text())
-
-                                        set_cell_styles(cell, self.cellWidget(row_item, col))
-
-                                        cell.alignment = openpyxl.styles.Alignment(horizontal = 'right',
-                                                                                   vertical = 'center')
-                                # Node
-                                elif col == 1:
-                                    for row_cell, row_item in enumerate(rows_export):
-                                        cell = worksheet.cell(2 + row_cell, 1 + col)
-                                        cell.value = wordless_text_utils.html_to_text(self.cellWidget(row_item, col).text())
-
-                                        set_cell_styles(cell, self.cellWidget(row_item, col))
-
-                                        cell.font = openpyxl.styles.Font(name = self.cellWidget(row_item, col).font().family(),
-                                                                         size = 8,
-                                                                         bold = True,
-                                                                         color = 'FF0000')
-                                # Right
-                                elif col == 2:
-                                    for row_cell, row_item in enumerate(rows_export):
-                                        cell = worksheet.cell(2 + row_cell, 1 + col)
-                                        cell.value = wordless_text_utils.html_to_text(self.cellWidget(row_item, col).text())
-
-                                        set_cell_styles(cell, self.cellWidget(row_item, col))
-
-                                        cell.alignment = openpyxl.styles.Alignment(horizontal = 'left',
-                                                                                   vertical = 'center')
-
-                    # Row Height
-                    worksheet.row_dimensions[1].height = self.horizontalHeader().height() / dpi_vertical * 72
-
-                    for i, _ in enumerate(worksheet.rows):
-                        worksheet.row_dimensions[2 + i].height = self.verticalHeader().sectionSize(0) / dpi_vertical * 72
-
-                    # Borders
-                    border = openpyxl.styles.Side(border_style = 'thin', color = '292929')
-
-                    for row, _ in enumerate(worksheet.rows):
-                        for col, _ in enumerate(worksheet.columns):
-                            worksheet.cell(row + 1, col + 1).border = openpyxl.styles.Border(left = border,
-                                                                                             right = border,
-                                                                                             top = border,
-                                                                                             bottom = border)
-
-                    workbook.save(file_path)
-                elif file_type == self.tr('CSV File (*.csv)'):
-                    encoding = self.main.settings_custom['export']['tables']['default_encoding']
-
-                    with open(file_path, 'w', encoding = encoding, newline = '') as f:
-                        csv_writer = csv.writer(f)
-
-                        if not rows_export:
-                            rows_export = list(range(self.rowCount()))
-
-                        if all(self.item(0, col) for col in range(self.columnCount())):
-                            if self.header_orientation == 'horizontal':
-                                # Horizontal Headers
-                                csv_writer.writerow([self.horizontalHeaderItem(col).text().strip()
-                                                     for col in range(self.columnCount())])
-
-                                # Cells
-                                for row in rows_export:
-                                    row_to_export = []
-
-                                    for col in range(self.columnCount()):
-                                        if self.item(row, col):
-                                            row_to_export.append(self.item(row, col).text().strip())
-                                        # Concordancer
-                                        elif self.cellWidget(row, col):
-                                            cell_text = self.cellWidget(row, col).text()
-
-                                            row_to_export.append(wordless_text_utils.html_to_text(cell_text))
-
-                                    csv_writer.writerow(row_to_export)
-                            else:
-                                # Horizontal Headers
-                                csv_writer.writerow([''] +
-                                                    [self.horizontalHeaderItem(col).text().strip()
-                                                     for col in range(self.columnCount())])
-
-                                # Vertical Headers & Cells
-                                for row in rows_export:
-                                    row_to_export = [self.verticalHeaderItem(row).text().strip()]
-
-                                    for col in range(self.columnCount()):
-                                        if self.item(row, col):
-                                            row_to_export.append(self.item(row, col).text().strip())
-                                        # Concordancer
-                                        elif self.cellWidget(row, col):
-                                            cell_text = self.cellWidget(row, col).text()
-
-                                            row_to_export.append(wordless_text_utils.html_to_text(cell_text))
-
-                                    csv_writer.writerow(row_to_export)
-                        # Concordancer
-                        elif self.cellWidget(0, 0) and self.cellWidget(0, 1) and self.cellWidget(0, 2):
-                            # Horizontal Headers
-                            csv_writer.writerow([self.horizontalHeaderItem(col).text().strip()
-                                                 for col in range(self.columnCount())])
-
-                            # Cells
-                            for row in rows_export:
-                                row_to_export = []
-
-                                for col in range(self.columnCount()):
-                                    if self.item(row, col):
-                                        cell_text = self.item(row, col).text()
-                                    else:
-                                        cell_text = self.cellWidget(row, col).text()
-                                        cell_text = wordless_text_utils.html_to_text(cell_text)
-
-                                    row_to_export.append(cell_text)
-
-                                csv_writer.writerow(row_to_export)
-
-                self.main.settings_custom['export']['tables']['default_path'] = os.path.normpath(os.path.dirname(file_path))
-                self.main.settings_custom['export']['tables']['default_type'] = file_type
-
-                wordless_msg_box.wordless_msg_box_export_table_success(self.main, file_path)
-            except PermissionError:
-                wordless_msg_box.wordless_msg_box_export_table_error(self.main, file_path)
-
     def clear_table(self, header_count = 1):
         self.clearContents()
 
@@ -1303,8 +1251,8 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
                         width_right = max([len(self.table.cellWidget(row, col_right).text_raw)
                                            for row in range(self.table.rowCount())])
 
-                    self.cols_sorting.extend([f'R{i + 1}' for i in range(width_right)])
-                    self.cols_sorting.extend([f'L{i + 1}' for i in range(width_left)])
+                    self.cols_sorting.extend([f'R({i + 1}' for i in range(width_right)])
+                    self.cols_sorting.extend([f'L({i + 1}' for i in range(width_left)])
 
                 self.add_row()
 

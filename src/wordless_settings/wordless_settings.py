@@ -32,13 +32,10 @@ from wordless_widgets import (wordless_box, wordless_button, wordless_label,
                               wordless_layout, wordless_list, wordless_table,
                               wordless_tree, wordless_widgets)
 
-class Wordless_Worker_Fetch_Data_Tagsets(wordless_threading.Wordless_Worker_Fetch_Data):
-    fetching_finished = pyqtSignal(list)
+class Wordless_Worker_Fetch_Data_Tagsets(wordless_threading.Wordless_Worker):
+    worker_done = pyqtSignal(list)
 
-    def __init__(self, main, dialog_progress, data_received):
-        super().__init__(main, dialog_progress, data_received)
-
-    def fetch_data(self):
+    def run(self):
         settings_custom = self.main.settings_custom['tagsets']
 
         preview_lang = settings_custom['preview_lang']
@@ -49,7 +46,7 @@ class Wordless_Worker_Fetch_Data_Tagsets(wordless_threading.Wordless_Worker_Fetc
 
         time.sleep(0.5)
 
-        self.fetching_finished.emit(mappings)
+        self.worker_done.emit(mappings)
 
 class Wordless_Table_Tags_Pos(wordless_table.Wordless_Table_Tags):
     def reset_table(self):
@@ -320,7 +317,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['import']['files']['default_path'])
 
             if path_file:
-                self.line_edit_import_files_default_path.setText(wordless_misc.get_abs_path(path_file))
+                self.line_edit_import_files_default_path.setText(wordless_misc.get_normalized_path(path_file))
 
         def browse_search_terms():
             path_file = QFileDialog.getExistingDirectory(self.main,
@@ -328,7 +325,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['import']['search_terms']['default_path'])
 
             if path_file:
-                self.line_edit_import_search_terms_default_path.setText(wordless_misc.get_abs_path(path_file))
+                self.line_edit_import_search_terms_default_path.setText(wordless_misc.get_normalized_path(path_file))
 
         def browse_stop_words():
             path_file = QFileDialog.getExistingDirectory(self.main,
@@ -341,7 +338,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['import']['temp_files']['default_path'])
 
             if path_file:
-                self.line_edit_import_temp_files_default_path.setText(wordless_misc.get_abs_path(path_file))
+                self.line_edit_import_temp_files_default_path.setText(wordless_misc.get_normalized_path(path_file))
 
         self.settings_import = QWidget(self)
 
@@ -432,7 +429,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['export']['tables']['default_path'])
 
             if path_file:
-                self.line_edit_export_tables_default_path.setText(wordless_misc.get_abs_path(path_file))
+                self.line_edit_export_tables_default_path.setText(wordless_misc.get_normalized_path(path_file))
 
         def browse_search_terms():
             path_file = QFileDialog.getExistingDirectory(self,
@@ -440,7 +437,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['export']['search_terms']['default_path'])
 
             if path_file:
-                self.line_edit_export_search_terms_default_path.setText(wordless_misc.get_abs_path(path_file))
+                self.line_edit_export_search_terms_default_path.setText(wordless_misc.get_normalized_path(path_file))
 
         def browse_stop_words():
             path_file = QFileDialog.getExistingDirectory(self,
@@ -448,7 +445,7 @@ class Wordless_Settings(QDialog):
                                                          self.main.settings_custom['export']['stop_words']['default_path'])
 
             if path_file:
-                self.line_edit_export_stop_words_default_path.setText(wordless_misc.get_abs_path(path_file))
+                self.line_edit_export_stop_words_default_path.setText(wordless_misc.get_normalized_path(path_file))
 
         self.settings_export = QWidget(self)
 
@@ -1207,7 +1204,7 @@ class Wordless_Settings(QDialog):
             self.combo_box_tagsets_pos_tagger.currentTextChanged.emit('')
 
         def preview_pos_tagger_changed():
-            def data_received(mappings):
+            def update_gui(mappings):
                 self.table_mappings.hide()
                 self.table_mappings.blockSignals(True)
                 self.table_mappings.setUpdatesEnabled(False)
@@ -1270,8 +1267,8 @@ class Wordless_Settings(QDialog):
 
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Fetch_Data(self.main)
 
-            worker_fetch_data = Wordless_Worker_Fetch_Data_Tagsets(self.main, dialog_progress, data_received)
-            thread_fetch_data = wordless_threading.Wordless_Thread_Fetch_Data(worker_fetch_data)
+            worker_fetch_data = Wordless_Worker_Fetch_Data_Tagsets(self.main, dialog_progress, update_gui)
+            thread_fetch_data = wordless_threading.Wordless_Thread(worker_fetch_data)
 
             self.combo_box_tagsets_lang.setEnabled(False)
             self.combo_box_tagsets_pos_tagger.setEnabled(False)

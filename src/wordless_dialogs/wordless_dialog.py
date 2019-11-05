@@ -28,7 +28,7 @@ class Wordless_Dialog(QDialog):
             self.setFixedHeight(height)
 
         self.setWindowTitle(title)
-        self.setWindowIcon(QIcon(wordless_misc.get_abs_path('imgs/wordless_icon.ico')))
+        self.setWindowIcon(QIcon(wordless_misc.get_normalized_path('imgs/wordless_icon.ico')))
         self.setWindowFlag(Qt.MSWindowsFixedSizeDialogHint, True)
         self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
 

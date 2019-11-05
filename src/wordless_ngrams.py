@@ -48,6 +48,8 @@ class Wordless_Table_Ngrams(wordless_table.Wordless_Table_Data_Filter_Search):
                          ],
                          sorting_enabled = True)
 
+        self.name = 'ngrams'
+
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
 
@@ -630,17 +632,17 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-class Wordless_Worker_Process_Data_Ngrams(wordless_threading.Wordless_Worker_Process_Data):
-    processing_finished = pyqtSignal(dict, dict, dict)
+class Wordless_Worker_Ngrams(wordless_threading.Wordless_Worker):
+    worker_done = pyqtSignal(dict, dict, dict)
 
-    def __init__(self, main, dialog_progress, data_received):
-        super().__init__(main, dialog_progress, data_received)
+    def __init__(self, main, dialog_progress, update_gui):
+        super().__init__(main, dialog_progress, update_gui)
 
         self.ngrams_freq_files = []
         self.ngrams_stats_files = []
         self.ngrams_text = {}
 
-    def process_data(self):
+    def run(self):
         texts = []
 
         settings = self.main.settings_custom['ngrams']
@@ -855,33 +857,33 @@ class Wordless_Worker_Process_Data_Ngrams(wordless_threading.Wordless_Worker_Pro
             self.ngrams_freq_files *= 2
             self.ngrams_stats_files *= 2
 
-class Wordless_Worker_Process_Data_Ngrams_Table(Wordless_Worker_Process_Data_Ngrams):
-    def process_data(self):
-        super().process_data()
+class Wordless_Worker_Ngrams_Table(Wordless_Worker_Ngrams):
+    def run(self):
+        super().run()
 
         self.progress_updated.emit(self.tr('Rendering table ...'))
 
         time.sleep(0.1)
 
-        self.processing_finished.emit(wordless_misc.merge_dicts(self.ngrams_freq_files),
-                                      wordless_misc.merge_dicts(self.ngrams_stats_files),
-                                      self.ngrams_text)
+        self.worker_done.emit(wordless_misc.merge_dicts(self.ngrams_freq_files),
+                              wordless_misc.merge_dicts(self.ngrams_stats_files),
+                              self.ngrams_text)
 
-class Wordless_Worker_Process_Data_Ngrams_Fig(Wordless_Worker_Process_Data_Ngrams):
-    def process_data(self):
-        super().process_data()
+class Wordless_Worker_Ngrams_Fig(Wordless_Worker_Ngrams):
+    def run(self):
+        super().run()
 
         self.progress_updated.emit(self.tr('Rendering figure ...'))
 
         time.sleep(0.1)
 
-        self.processing_finished.emit(wordless_misc.merge_dicts(self.ngrams_freq_files),
-                                      wordless_misc.merge_dicts(self.ngrams_stats_files),
-                                      self.ngrams_text)
+        self.worker_done.emit(wordless_misc.merge_dicts(self.ngrams_freq_files),
+                              wordless_misc.merge_dicts(self.ngrams_stats_files),
+                              self.ngrams_text)
 
 @wordless_misc.log_timing
 def generate_table(main, table):
-    def data_received(ngrams_freq_files, ngrams_stats_files, ngrams_text):
+    def update_gui(ngrams_freq_files, ngrams_stats_files, ngrams_text):
         if ngrams_freq_files:
             table.clear_table()
             
@@ -990,15 +992,15 @@ def generate_table(main, table):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Wordless_Worker_Process_Data_Ngrams_Table(main, dialog_progress, data_received)
-            thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
+            worker_ngrams_table = Wordless_Worker_Ngrams_Table(main, dialog_progress, update_gui)
+            thread_ngrams_table = wordless_threading.Wordless_Thread(worker_ngrams_table)
 
-            thread_process_data.start()
+            thread_ngrams_table.start()
 
             dialog_progress.exec_()
 
-            thread_process_data.quit()
-            thread_process_data.wait()
+            thread_ngrams_table.quit()
+            thread_ngrams_table.wait()
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term_optional(main)
 
@@ -1008,7 +1010,7 @@ def generate_table(main, table):
 
 @wordless_misc.log_timing
 def generate_fig(main):
-    def data_received(ngrams_freq_files, ngrams_stats_files, ngrams_text):
+    def update_gui(ngrams_freq_files, ngrams_stats_files, ngrams_text):
         if ngrams_freq_files:
             text_measure_dispersion = settings['generation_settings']['measure_dispersion']
             text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
@@ -1063,15 +1065,15 @@ def generate_fig(main):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Wordless_Worker_Process_Data_Ngrams_Fig(main, dialog_progress, data_received)
-            thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
+            worker_ngrams_fig = Wordless_Worker_Ngrams_Fig(main, dialog_progress, update_gui)
+            thread_ngrams_fig = wordless_threading.Wordless_Thread(worker_ngrams_fig)
 
-            thread_process_data.start()
+            thread_ngrams_fig.start()
 
             dialog_progress.exec_()
 
-            thread_process_data.quit()
-            thread_process_data.wait()
+            thread_ngrams_fig.quit()
+            thread_ngrams_fig.wait()
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term_optional(main)
 

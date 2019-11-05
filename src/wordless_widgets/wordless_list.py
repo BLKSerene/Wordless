@@ -111,13 +111,13 @@ class Wordless_List(QListWidget):
             if self.main.settings_custom['import'][settings]['detect_encodings']:
                 for file_path in file_paths:
                     files.append({
-                        'path': wordless_misc.get_abs_path(file_path),
+                        'path': wordless_misc.get_normalized_path(file_path),
                         'encoding': wordless_detection.detect_encoding(self.main, file_path)[0]
                     })
             else:
                 for file_path in file_paths:
                     files.append({
-                        'path': wordless_misc.get_abs_path(file_path),
+                        'path': wordless_misc.get_normalized_path(file_path),
                         'encoding': self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
                     })
 

@@ -60,7 +60,7 @@ class Wordless_Dialog_Error_File_Open(Wordless_Dialog_Error):
         self.table_error_files.setFixedHeight(TABLE_ERROR_FILES_HEIGHT)
         self.table_error_files.setRowCount(0)
 
-        self.button_export.clicked.connect(self.table_error_files.export_table)
+        self.button_export.clicked.connect(self.table_error_files.export_all)
 
         for file in files_duplicate:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
@@ -130,7 +130,7 @@ class Wordless_Dialog_Error_File_Load(Wordless_Dialog_Error):
         self.table_error_files.setFixedHeight(TABLE_ERROR_FILES_HEIGHT)
         self.table_error_files.setRowCount(0)
 
-        self.button_export.clicked.connect(self.table_error_files.export_table)
+        self.button_export.clicked.connect(self.table_error_files.export_all)
 
         for file in files_missing:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
@@ -211,7 +211,7 @@ class Wordless_Dialog_Error_File_Load_Colligation(Wordless_Dialog_Error):
         self.table_error_files.setFixedHeight(TABLE_ERROR_FILES_HEIGHT)
         self.table_error_files.setRowCount(0)
 
-        self.button_export.clicked.connect(self.table_error_files.export_table)
+        self.button_export.clicked.connect(self.table_error_files.export_all)
 
         for file in files_missing:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
@@ -281,7 +281,7 @@ class Wordless_Dialog_Error_Detection(Wordless_Dialog_Error):
         self.table_error_files.setFixedHeight(TABLE_ERROR_FILES_HEIGHT)
         self.table_error_files.setRowCount(0)
 
-        self.button_export.clicked.connect(self.table_error_files.export_table)
+        self.button_export.clicked.connect(self.table_error_files.export_all)
 
         for file in files_detection_error_encoding:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
@@ -342,7 +342,7 @@ class Wordless_Dialog_Error_Import(Wordless_Dialog_Error):
         self.table_error_files.setFixedHeight(TABLE_ERROR_FILES_HEIGHT)
         self.table_error_files.setRowCount(0)
 
-        self.button_export.clicked.connect(self.table_error_files.export_table)
+        self.button_export.clicked.connect(self.table_error_files.export_all)
 
         for file in files_empty:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
