@@ -21,70 +21,14 @@ from wordless_utils import wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_button, wordless_layout,
                               wordless_msg, wordless_widgets)
 
-class Wordless_Dialog_Results_Filter(wordless_dialog.Wordless_Dialog):
-    def __init__(self, main, tab, table):
-        super().__init__(main, main.tr('Filter Results'))
+class Wordless_Worker_Results_Filter(wordless_threading.Wordless_Worker):
+    def __init__(self, main, dialog_filter_results, dialog_progress, update_gui):
+        super().__init__(main, dialog_progress, update_gui)
 
-        self.tab = tab
-        self.table = table
-        self.settings = self.main.settings_custom[self.tab]['filter_results']
+        self.dialog = dialog_filter_results
 
-        self.label_file_to_filter = QLabel(self.tr('File to Filter:'), self)
-        self.combo_box_file_to_filter = wordless_box.Wordless_Combo_Box_File_To_Filter(self, self.table)
-        self.button_filter = QPushButton(self.tr('Filter'), self)
-
-        self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self)
-        self.button_close = QPushButton(self.tr('Close'), self)
-
-        self.button_filter.setFixedWidth(80)
-        self.button_reset_settings.setFixedWidth(120)
-        self.button_close.setFixedWidth(80)
-
-        self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
-        self.button_filter.clicked.connect(lambda: self.filter_results())
-
-        self.button_close.clicked.connect(self.reject)
-
-        self.main.wordless_work_area.currentChanged.connect(self.reject)
-
-        layout_file_to_filter = wordless_layout.Wordless_Layout()
-        layout_file_to_filter.addWidget(self.label_file_to_filter, 0, 0)
-        layout_file_to_filter.addWidget(self.combo_box_file_to_filter, 0, 1)
-        layout_file_to_filter.addWidget(self.button_filter, 0, 2)
-
-        layout_file_to_filter.setColumnStretch(1, 1)
-
-        self.layout_filters = wordless_layout.Wordless_Layout()
-
-        layout_buttons = wordless_layout.Wordless_Layout()
-        layout_buttons.addWidget(self.button_reset_settings, 0, 0)
-        layout_buttons.addWidget(self.button_close, 0, 1, Qt.AlignRight)
-
-        self.setLayout(wordless_layout.Wordless_Layout())
-        self.layout().addLayout(layout_file_to_filter, 0, 0)
-        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 1, 0)
-        self.layout().addLayout(self.layout_filters, 2, 0)
-        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 3, 0)
-        self.layout().addLayout(layout_buttons, 4, 0)
-
-        self.set_fixed_size()
-
-    def load_settings(self, defaults = False):
-        if defaults:
-            settings = self.main.settings_default[self.tab]['filter_results']
-        else:
-            settings = self.settings
-
-        self.combo_box_file_to_filter.setCurrentText(settings['file_to_filter'])
-
-    def file_to_filter_changed(self):
-        self.settings['file_to_filter'] = self.combo_box_file_to_filter.currentText()
-
-    def filter_results(self):
-        pass
-
-class Wordless_Worker_Results_Filter_Wordlist(wordless_threading.Wordless_Worker_Results_Filter):
-    def filter_results(self):
+class Wordless_Worker_Results_Filter_Wordlist(Wordless_Worker_Results_Filter):
+    def run(self):
         text_measure_dispersion = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_dispersion']
         text_measure_adjusted_freq = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_adjusted_freq']
 
@@ -189,10 +133,10 @@ class Wordless_Worker_Results_Filter_Wordlist(wordless_threading.Wordless_Worker
 
         time.sleep(0.1)
 
-        self.filtering_finished.emit()
+        self.worker_done.emit()
 
-class Wordless_Worker_Results_Filter_Collocation(wordless_threading.Wordless_Worker_Results_Filter):
-    def filter_results(self):
+class Wordless_Worker_Results_Filter_Collocation(Wordless_Worker_Results_Filter):
+    def run(self):
         text_test_significance = self.dialog.table.settings['collocation']['generation_settings']['test_significance']
         text_measure_effect_size = self.dialog.table.settings['collocation']['generation_settings']['measure_effect_size']
 
@@ -327,10 +271,10 @@ class Wordless_Worker_Results_Filter_Collocation(wordless_threading.Wordless_Wor
 
         time.sleep(0.1)
 
-        self.filtering_finished.emit()
+        self.worker_done.emit()
 
-class Wordless_Worker_Results_Filter_Keywords(wordless_threading.Wordless_Worker_Results_Filter):
-    def filter_results(self):
+class Wordless_Worker_Results_Filter_Keywords(Wordless_Worker_Results_Filter):
+    def run(self):
         text_test_significance = self.dialog.table.settings['keywords']['generation_settings']['test_significance']
         text_measure_effect_size = self.dialog.table.settings['keywords']['generation_settings']['measure_effect_size']
 
@@ -453,7 +397,69 @@ class Wordless_Worker_Results_Filter_Keywords(wordless_threading.Wordless_Worker
 
         time.sleep(0.1)
 
-        self.filtering_finished.emit()
+        self.worker_done.emit()
+
+class Wordless_Dialog_Results_Filter(wordless_dialog.Wordless_Dialog):
+    def __init__(self, main, tab, table):
+        super().__init__(main, main.tr('Filter Results'))
+
+        self.tab = tab
+        self.table = table
+        self.settings = self.main.settings_custom[self.tab]['filter_results']
+
+        self.label_file_to_filter = QLabel(self.tr('File to Filter:'), self)
+        self.combo_box_file_to_filter = wordless_box.Wordless_Combo_Box_File_To_Filter(self, self.table)
+        self.button_filter = QPushButton(self.tr('Filter'), self)
+
+        self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self)
+        self.button_close = QPushButton(self.tr('Close'), self)
+
+        self.button_filter.setFixedWidth(80)
+        self.button_reset_settings.setFixedWidth(120)
+        self.button_close.setFixedWidth(80)
+
+        self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
+        self.button_filter.clicked.connect(lambda: self.filter_results())
+
+        self.button_close.clicked.connect(self.reject)
+
+        self.main.wordless_work_area.currentChanged.connect(self.reject)
+
+        layout_file_to_filter = wordless_layout.Wordless_Layout()
+        layout_file_to_filter.addWidget(self.label_file_to_filter, 0, 0)
+        layout_file_to_filter.addWidget(self.combo_box_file_to_filter, 0, 1)
+        layout_file_to_filter.addWidget(self.button_filter, 0, 2)
+
+        layout_file_to_filter.setColumnStretch(1, 1)
+
+        self.layout_filters = wordless_layout.Wordless_Layout()
+
+        layout_buttons = wordless_layout.Wordless_Layout()
+        layout_buttons.addWidget(self.button_reset_settings, 0, 0)
+        layout_buttons.addWidget(self.button_close, 0, 1, Qt.AlignRight)
+
+        self.setLayout(wordless_layout.Wordless_Layout())
+        self.layout().addLayout(layout_file_to_filter, 0, 0)
+        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 1, 0)
+        self.layout().addLayout(self.layout_filters, 2, 0)
+        self.layout().addWidget(wordless_layout.Wordless_Separator(self), 3, 0)
+        self.layout().addLayout(layout_buttons, 4, 0)
+
+        self.set_fixed_size()
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = self.main.settings_default[self.tab]['filter_results']
+        else:
+            settings = self.settings
+
+        self.combo_box_file_to_filter.setCurrentText(settings['file_to_filter'])
+
+    def file_to_filter_changed(self):
+        self.settings['file_to_filter'] = self.combo_box_file_to_filter.currentText()
+
+    def filter_results(self):
+        pass
 
 class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
     def __init__(self, main, tab, table):
@@ -691,7 +697,7 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
 
     @wordless_misc.log_timing
     def filter_results(self):
-        def data_received():
+        def update_gui():
             self.table.filter_table()
 
             dialog_progress.accept()
@@ -700,8 +706,8 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Results_Filter(self.main)
 
-        worker_search_results = Wordless_Worker_Results_Filter_Wordlist(self.main, self, dialog_progress, data_received)
-        thread_search_results = wordless_threading.Wordless_Thread_Results_Filter(worker_search_results)
+        worker_search_results = Wordless_Worker_Results_Filter_Wordlist(self.main, self, dialog_progress, update_gui)
+        thread_search_results = wordless_threading.Wordless_Thread(worker_search_results)
 
         thread_search_results.start()
 
@@ -1026,7 +1032,7 @@ class Wordless_Dialog_Results_Filter_Collocation(Wordless_Dialog_Results_Filter)
 
     @wordless_misc.log_timing
     def filter_results(self):
-        def data_received():
+        def update_gui():
             self.table.filter_table()
 
             dialog_progress.accept()
@@ -1035,8 +1041,8 @@ class Wordless_Dialog_Results_Filter_Collocation(Wordless_Dialog_Results_Filter)
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Results_Filter(self.main)
 
-        worker_search_results = Wordless_Worker_Results_Filter_Collocation(self.main, self, dialog_progress, data_received)
-        thread_search_results = wordless_threading.Wordless_Thread_Results_Filter(worker_search_results)
+        worker_search_results = Wordless_Worker_Results_Filter_Collocation(self.main, self, dialog_progress, update_gui)
+        thread_search_results = wordless_threading.Wordless_Thread(worker_search_results)
 
         thread_search_results.start()
 
@@ -1338,7 +1344,7 @@ class Wordless_Dialog_Results_Filter_Keywords(Wordless_Dialog_Results_Filter):
 
     @wordless_misc.log_timing
     def filter_results(self):
-        def data_received():
+        def update_gui():
             self.table.filter_table()
 
             dialog_progress.accept()
@@ -1347,8 +1353,8 @@ class Wordless_Dialog_Results_Filter_Keywords(Wordless_Dialog_Results_Filter):
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Results_Filter(self.main)
 
-        worker_search_results = Wordless_Worker_Results_Filter_Keywords(self.main, self, dialog_progress, data_received)
-        thread_search_results = wordless_threading.Wordless_Thread_Results_Filter(worker_search_results)
+        worker_search_results = Wordless_Worker_Results_Filter_Keywords(self.main, self, dialog_progress, update_gui)
+        thread_search_results = wordless_threading.Wordless_Thread(worker_search_results)
 
         thread_search_results.start()
 

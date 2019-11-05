@@ -26,14 +26,12 @@ from wordless_widgets import (wordless_button, wordless_layout, wordless_msg,
 from wordless_utils import wordless_misc, wordless_threading
 
 class Wordless_Worker_Results_Search(wordless_threading.Wordless_Worker):
-    searching_finished = pyqtSignal()
-
-    def __init__(self, main, dialog_results_search, dialog_progress):
-        super().__init__(main, dialog_progress)
+    def __init__(self, main, dialog_results_search, dialog_progress, update_gui):
+        super().__init__(main, dialog_progress, update_gui)
 
         self.dialog = dialog_results_search
 
-    def search_results(self):
+    def run(self):
         results = {}
         search_terms = set()
 
@@ -75,7 +73,7 @@ class Wordless_Worker_Results_Search(wordless_threading.Wordless_Worker):
 
         time.sleep(0.1)
 
-        self.searching_finished.emit()
+        self.worker_done.emit()
 
 class Wordless_Dialog_Results_Search(wordless_dialog.Wordless_Dialog):
     def __init__(self, main, tab, table):
@@ -311,7 +309,7 @@ class Wordless_Dialog_Results_Search(wordless_dialog.Wordless_Dialog):
 
     @wordless_misc.log_timing
     def find_all(self):
-        def data_received():
+        def update_gui():
             if self.items_found:
                 self.table.hide()
                 self.table.blockSignals(True)
@@ -340,10 +338,8 @@ class Wordless_Dialog_Results_Search(wordless_dialog.Wordless_Dialog):
 
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Results_Search(self.main)
 
-            worker_results_search = Wordless_Worker_Results_Search(self.main, self, dialog_progress)
-            thread_results_search = wordless_threading.Wordless_Thread_Results_Search(worker_results_search)
-
-            worker_results_search.searching_finished.connect(data_received)
+            worker_results_search = Wordless_Worker_Results_Search(self.main, self, dialog_progress, update_gui)
+            thread_results_search = wordless_threading.Wordless_Thread(worker_results_search)
 
             thread_results_search.start()
 

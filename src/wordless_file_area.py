@@ -36,16 +36,14 @@ from wordless_utils import (wordless_conversion, wordless_detection, wordless_mi
 from wordless_widgets import wordless_box, wordless_layout, wordless_table
 
 class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
-    files_added = pyqtSignal(list, list, list, list)
+    worker_done = pyqtSignal(list, list, list, list)
 
-    def __init__(self, main, file_paths, dialog_processed, data_received):
-        super().__init__(main, dialog_processed)
+    def __init__(self, main, file_paths, dialog_progress, update_gui):
+        super().__init__(main, dialog_progress, update_gui)
 
         self.file_paths = file_paths
 
-        self.files_added.connect(data_received)
-
-    def add_files(self):
+    def run(self):
         new_files = []
 
         files_detection_error_encoding = []
@@ -61,7 +59,7 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
                 default_dir = wordless_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
                 default_encoding = self.main.settings_custom['import']['temp_files']['default_encoding']
 
-                file_path = wordless_misc.get_abs_path(file_path)
+                file_path = wordless_misc.get_normalized_path(file_path)
                 file_name, file_ext = os.path.splitext(os.path.basename(file_path))
                 file_ext = file_ext.lower()
 
@@ -247,9 +245,9 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
                         if not detection_success_lang:
                             files_detection_error_lang.append(new_file['path'])
 
-            self.main.settings_custom['import']['files']['default_path'] = wordless_misc.get_abs_path(os.path.dirname(self.file_paths[0]))
+            self.main.settings_custom['import']['files']['default_path'] = wordless_misc.get_normalized_dir(self.file_paths[0])
 
-        self.files_added.emit(new_files,
+        self.worker_done.emit(new_files,
                               files_detection_error_encoding,
                               files_detection_error_text_type,
                               files_detection_error_lang)
@@ -353,10 +351,10 @@ class Wordless_Files():
 
     @wordless_misc.log_timing
     def add_files(self, file_paths):
-        def data_received(new_files,
-                          files_detection_error_encoding,
-                          files_detection_error_text_type,
-                          files_detection_error_lang):
+        def update_gui(new_files,
+                       files_detection_error_encoding,
+                       files_detection_error_text_type,
+                       files_detection_error_lang):
             len_files_old = len(self.main.settings_custom['files']['files_open'])
 
             for new_file in new_files:
@@ -390,8 +388,8 @@ class Wordless_Files():
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Add_Files(self.main)
 
-        worker_add_files = Wordless_Worker_Add_Files(self.main, file_paths, dialog_progress, data_received)
-        thread_add_files = wordless_threading.Wordless_Thread_Add_Files(worker_add_files)
+        worker_add_files = Wordless_Worker_Add_Files(self.main, file_paths, dialog_progress, update_gui)
+        thread_add_files = wordless_threading.Wordless_Thread(worker_add_files)
 
         thread_add_files.start()
 
@@ -495,6 +493,8 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
                              parent.tr('Encoding')
                          ],
                          drag_drop_enabled = True)
+
+        self.name = 'file_area'
 
         self.itemChanged.connect(self.file_item_changed)
         self.itemClicked.connect(self.file_item_changed)
