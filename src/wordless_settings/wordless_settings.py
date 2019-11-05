@@ -1265,6 +1265,8 @@ class Wordless_Settings(QDialog):
                 self.button_tagsets_reset.setEnabled(True)
                 self.button_tagsets_reset_all.setEnabled(True)
 
+            settings_custom['preview_pos_tagger'][settings_custom['preview_lang']] = self.combo_box_tagsets_pos_tagger.currentText()
+
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Fetch_Data(self.main)
 
             worker_fetch_data = Wordless_Worker_Fetch_Data_Tagsets(self.main, dialog_progress, update_gui)

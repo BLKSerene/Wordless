@@ -32,6 +32,7 @@
 - Fix file checking
 - Fix lemmatization of empty tokens
 - Fix "Paragraph Length" and "Sentence Length" in "Overview"
+- Fix "Settings → POS Tagging → Tagsets → Preview Settings → POS Tagger"
 
 ### ❌ Removals
 - Remove Sacremoses's Penn Treebank tokenizer
