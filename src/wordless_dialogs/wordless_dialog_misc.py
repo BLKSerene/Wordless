@@ -74,6 +74,12 @@ class Wordless_Dialog_Progress_Results_Search(Wordless_Dialog_Progress):
 
         self.label_progress.setText(self.tr('Searching in results ...'))
 
+class Wordless_Dialog_Progress_Export_Table(Wordless_Dialog_Progress):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.label_progress.setText(self.tr('Exporting table ...'))
+
 class Wordless_Dialog_Progress_Fetch_Data(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)

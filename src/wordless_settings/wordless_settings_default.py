@@ -976,39 +976,39 @@ def init_settings_default(main):
 
         'import': {
             'files': {
-                'default_path': wordless_misc.get_abs_path('.')
+                'default_path': wordless_misc.get_normalized_path('.')
             },
 
             'search_terms': {
-                'default_path': wordless_misc.get_abs_path('.'),
+                'default_path': wordless_misc.get_normalized_path('.'),
                 'detect_encodings': True
             },
 
             'stop_words': {
-                'default_path': wordless_misc.get_abs_path('.'),
+                'default_path': wordless_misc.get_normalized_path('.'),
                 'detect_encodings': True
             },
 
             'temp_files': {
-                'default_path': wordless_misc.get_abs_path('Import/'),
+                'default_path': wordless_misc.get_normalized_path('Import/'),
                 'default_encoding': 'utf_8'
             }
         },
 
         'export': {
             'tables': {
-                'default_path': wordless_misc.get_abs_path('Export/'),
+                'default_path': wordless_misc.get_normalized_path('Export/'),
                 'default_type': main.tr('Excel Workbook (*.xlsx)'),
                 'default_encoding': 'utf_8'
             },
 
             'search_terms': {
-                'default_path': wordless_misc.get_abs_path('Export/'),
+                'default_path': wordless_misc.get_normalized_path('Export/'),
                 'default_encoding': 'utf_8'
             },
 
             'stop_words': {
-                'default_path': wordless_misc.get_abs_path('Export/'),
+                'default_path': wordless_misc.get_normalized_path('Export/'),
                 'default_encoding': 'utf_8'
             }
         },
