@@ -24,12 +24,12 @@ Wordless is an integrated corpus tool with multi-language support for the study 
 </div>
 
 <div align="center">
-    <a href="https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt">
-        <img src="https://img.shields.io/github/license/BLKSerene/Wordless" alt="License"></a>
     <a href="https://github.com/BLKSerene/Wordless/releases">
-        <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases" alt="Release"></a>
-    <a href="https://github.com/BLKSerene/Wordless#-download">
-        <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total" alt="Downloads"></a>
+        <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases&label=Release&sort=semver" alt="Release"></a>
+    <a href="https://github.com/BLKSerene/Wordless#download">
+        <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total?label=Downloads" alt="Downloads"></a>
+    <a href="https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt">
+        <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License"></a>
 </div>
 
 ## Download
