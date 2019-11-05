@@ -30,7 +30,7 @@ def check_files_missing(main, files):
         # File paths
         elif type(files[0]) == str:
             for file_path in files:
-                file_path = wordless_misc.get_abs_path(file_path)
+                file_path = wordless_misc.get_normalized_path(file_path)
 
                 if os.path.exists(file_path):
                     files_ok.append(file_path)
@@ -82,7 +82,7 @@ def check_files_empty(main, files):
         # File paths
         elif type(files[0]) == str:
             for file_path in files:
-                file_path = wordless_misc.get_abs_path(file_path)
+                file_path = wordless_misc.get_normalized_path(file_path)
 
                 # Text files
                 if os.path.splitext(file_path)[1] in ['.txt',
@@ -137,7 +137,7 @@ def check_files_duplicate(main, files):
         # File paths
         elif type(files[0]) == str:
             for file_path in files:
-                    file_path = wordless_misc.get_abs_path(file_path)
+                    file_path = wordless_misc.get_normalized_path(file_path)
 
                     if main.wordless_files.find_file_by_path(file_path):
                         files_duplicate.append(file_path)
@@ -165,7 +165,7 @@ def check_files_unsupported(main, files):
         # File paths
         elif type(files[0]) == str:
             for file_path in files:
-                file_path = wordless_misc.get_abs_path(file_path)
+                file_path = wordless_misc.get_normalized_path(file_path)
 
                 if os.path.splitext(file_path)[1].lower() not in file_exts:
                     files_unsupported.append(file_path)
@@ -203,7 +203,7 @@ def check_files_parsing_error(main, files):
         # File paths
         elif type(files[0]) == str:
             for file_path in files:
-                file_path = wordless_misc.get_abs_path(file_path)
+                file_path = wordless_misc.get_normalized_path(file_path)
 
                 if os.path.splitext(file_path)[1] in ['.csv',
                                                       '.htm',
@@ -248,7 +248,7 @@ def check_files_decoding_error(main, files):
         # File paths
         elif type(files[0]) == str:
             for file_path in files:
-                file_path = wordless_misc.get_abs_path(file_path)
+                file_path = wordless_misc.get_normalized_path(file_path)
 
                 if main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
                     encoding, _ = wordless_detection.detect_encoding(main, file_path)

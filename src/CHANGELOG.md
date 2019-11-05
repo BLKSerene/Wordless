@@ -14,6 +14,7 @@
 ## [v1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0) - ??/??/2019
 
 ### 🎉 New Features
+- Add hint messages when exporting tables
 - Add "Paragraph Length in Clause" to "Overview"
 - Add "Paragraph" to "Generation Settings -> Width Unit" in "Concordancer"
 - Add razdel's Russian sentenizer and word tokenizer

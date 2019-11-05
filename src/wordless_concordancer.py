@@ -57,6 +57,8 @@ class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Sort_Search
                              parent.tr('Paragraph No.')
                          ])
 
+        self.name = 'concordancer'
+
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
 
@@ -502,10 +504,10 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         settings['sort_results_by'] = self.combo_box_sort_results_by.currentText()
 
-class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordless_Worker_Process_Data):
-    processing_finished = pyqtSignal(list)
+class Wordless_Worker_Concordancer_Table(wordless_threading.Wordless_Worker):
+    worker_done = pyqtSignal(list)
 
-    def process_data(self):
+    def run(self):
         concordance_lines = []
 
         settings = self.main.settings_custom['concordancer']
@@ -797,12 +799,12 @@ class Wordless_Worker_Process_Data_Concordancer_Table(wordless_threading.Wordles
 
         time.sleep(0.1)
 
-        self.processing_finished.emit(concordance_lines)
+        self.worker_done.emit(concordance_lines)
 
-class Wordless_Worker_Process_Data_Concordancer_Fig(wordless_threading.Wordless_Worker_Process_Data):
-    processing_finished = pyqtSignal(list, list)
+class Wordless_Worker_Concordancer_Fig(wordless_threading.Wordless_Worker):
+    worker_done = pyqtSignal(list, list)
 
-    def process_data(self):
+    def run(self):
         texts = []
         search_terms_files = []
         search_terms_total = set()
@@ -934,11 +936,11 @@ class Wordless_Worker_Process_Data_Concordancer_Fig(wordless_threading.Wordless_
 
         time.sleep(0.1)
 
-        self.processing_finished.emit(points, labels)
+        self.worker_done.emit(points, labels)
 
 @wordless_misc.log_timing
 def generate_table(main, table):
-    def data_received(concordance_lines):
+    def update_gui(concordance_lines):
         node_color = settings['sort_results']['highlight_colors'][0]
 
         if concordance_lines:
@@ -1033,15 +1035,15 @@ def generate_table(main, table):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Wordless_Worker_Process_Data_Concordancer_Table(main, dialog_progress, data_received)
-            thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
+            worker_concordancer_table = Wordless_Worker_Concordancer_Table(main, dialog_progress, update_gui)
+            thread_concordancer_table = wordless_threading.Wordless_Thread(worker_concordancer_table)
 
-            thread_process_data.start()
+            thread_concordancer_table.start()
 
             dialog_progress.exec_()
 
-            thread_process_data.quit()
-            thread_process_data.wait()
+            thread_concordancer_table.quit()
+            thread_concordancer_table.wait()
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term(main)
 
@@ -1051,7 +1053,7 @@ def generate_table(main, table):
 
 @wordless_misc.log_timing
 def generate_fig(main):
-    def data_received(points, labels):
+    def update_gui(points, labels):
         if labels:
             x_ticks = labels[0]
             x_tick_labels = labels[1]
@@ -1105,15 +1107,15 @@ def generate_fig(main):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Wordless_Worker_Process_Data_Concordancer_Fig(main, dialog_progress, data_received)
-            thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
+            worker_concordancer_fig = Wordless_Worker_Concordancer_Fig(main, dialog_progress, update_gui)
+            thread_concordancer_fig = wordless_threading.Wordless_Thread(worker_concordancer_fig)
 
-            thread_process_data.start()
+            thread_concordancer_fig.start()
 
             dialog_progress.exec_()
 
-            thread_process_data.quit()
-            thread_process_data.wait()
+            thread_concordancer_fig.quit()
+            thread_concordancer_fig.wait()
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term(main)
 

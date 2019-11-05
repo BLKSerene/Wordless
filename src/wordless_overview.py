@@ -94,6 +94,8 @@ class Wordless_Table_Overview(wordless_table.Wordless_Table_Data):
                              parent.tr('Count of Tokens'),
                              parent.tr('Count of Characters')
                          ])
+        
+        self.name = 'overview'
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
 
@@ -297,15 +299,15 @@ class Wrapper_Overview(wordless_layout.Wordless_Wrapper):
         settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
         settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
-class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_Process_Data):
-    processing_finished = pyqtSignal(list)
+class Wordless_Worker_Overview(wordless_threading.Wordless_Worker):
+    worker_done = pyqtSignal(list)
 
-    def __init__(self, main, dialog_progress, data_received):
-        super().__init__(main, dialog_progress, data_received)
+    def __init__(self, main, dialog_progress, update_gui):
+        super().__init__(main, dialog_progress, update_gui)
 
         self.texts_stats_files = []
 
-    def process_data(self):
+    def run(self):
         texts = []
 
         settings = self.main.settings_custom['overview']
@@ -405,19 +407,19 @@ class Wordless_Worker_Process_Data_Overview(wordless_threading.Wordless_Worker_P
 
             self.texts_stats_files.append(texts_stats_file)
 
-class Wordless_Worker_Process_Data_Overview_Table(Wordless_Worker_Process_Data_Overview):
-    def process_data(self):
-        super().process_data()
+class Wordless_Worker_Overview_Table(Wordless_Worker_Overview):
+    def run(self):
+        super().run()
 
         self.progress_updated.emit(self.tr('Rendering table ...'))
 
         time.sleep(0.1)
 
-        self.processing_finished.emit(self.texts_stats_files)
+        self.worker_done.emit(self.texts_stats_files)
 
 @wordless_misc.log_timing
 def generate_table(main, table):
-    def data_received(texts_stats_files):
+    def update_gui(texts_stats_files):
         if any(itertools.chain.from_iterable(texts_stats_files)):
             table.settings = copy.deepcopy(main.settings_custom)
 
@@ -589,14 +591,14 @@ def generate_table(main, table):
     if wordless_checking_file.check_files_on_loading(main, files):
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-        worker_process_data = Wordless_Worker_Process_Data_Overview_Table(main, dialog_progress, data_received)
-        thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
+        worker_overview_table = Wordless_Worker_Overview_Table(main, dialog_progress, update_gui)
+        thread_overview_table = wordless_threading.Wordless_Thread(worker_overview_table)
 
-        thread_process_data.start()
+        thread_overview_table.start()
 
         dialog_progress.exec_()
 
-        thread_process_data.quit()
-        thread_process_data.wait()
+        thread_overview_table.quit()
+        thread_overview_table.wait()
     else:
         wordless_msg.wordless_msg_generate_table_error(main)
