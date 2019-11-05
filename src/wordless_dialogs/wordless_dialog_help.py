@@ -625,7 +625,7 @@ class Wordless_Dialog_Donating(wordless_dialog.Wordless_Dialog_Info):
             self.move_to_center()
 
 class Worker_Check_Updates(QObject):
-    check_updates_finished = pyqtSignal(str, str)
+    worker_done = pyqtSignal(str, str)
 
     def __init__(self, main):
         super().__init__()
@@ -633,7 +633,7 @@ class Worker_Check_Updates(QObject):
         self.main = main
         self.stopped = False
 
-    def check_updates(self):
+    def run(self):
         ver_new = ''
 
         try:
@@ -656,7 +656,7 @@ class Worker_Check_Updates(QObject):
         if self.stopped:
             updates_status == 'canceled'
 
-        self.check_updates_finished.emit(updates_status, ver_new)
+        self.worker_done.emit(updates_status, ver_new)
 
     def is_newer_version(self, ver_new):
         if self.main.ver:
@@ -712,15 +712,14 @@ class Wordless_Dialog_Check_Updates(wordless_dialog.Wordless_Dialog_Info):
 
         self.main.threads_check_updates.append(thread_check_updates)
 
-        thread_check_updates.started.connect(self.main.worker_check_updates.check_updates)
         thread_check_updates.destroyed.connect(lambda: self.main.threads_check_updates.remove(thread_check_updates))
 
         if self.on_startup:
-            self.main.worker_check_updates.check_updates_finished.connect(self.updates_status_changed_on_startup)
+            self.main.worker_check_updates.worker_done.connect(self.updates_status_changed_on_startup)
 
-        self.main.worker_check_updates.check_updates_finished.connect(self.updates_status_changed)
-        self.main.worker_check_updates.check_updates_finished.connect(thread_check_updates.quit)
-        self.main.worker_check_updates.check_updates_finished.connect(self.main.worker_check_updates.deleteLater)
+        self.main.worker_check_updates.worker_done.connect(self.updates_status_changed)
+        self.main.worker_check_updates.worker_done.connect(thread_check_updates.quit)
+        self.main.worker_check_updates.worker_done.connect(self.main.worker_check_updates.deleteLater)
 
         thread_check_updates.start()
 
