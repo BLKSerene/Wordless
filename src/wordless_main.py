@@ -50,7 +50,7 @@ import wordless_keywords
 
 class Wordless_Loading(QSplashScreen):
     def __init__(self):
-        super().__init__(QPixmap(wordless_misc.get_abs_path('imgs/wordless_loading.png')))
+        super().__init__(QPixmap(wordless_misc.get_normalized_path('imgs/wordless_loading.png')))
 
         msg_font = QFont('Times New Roman')
         msg_font.setPixelSize(14)
@@ -93,13 +93,13 @@ class Wordless_Main(QMainWindow):
             self.setWindowTitle(self.tr('Wordless'))
 
         # Icon
-        self.setWindowIcon(QIcon(wordless_misc.get_abs_path('imgs/wordless_icon.ico')))
+        self.setWindowIcon(QIcon(wordless_misc.get_normalized_path('imgs/wordless_icon.ico')))
 
         # Default settings
         wordless_settings_default.init_settings_default(self)
 
         # Custom settings
-        path_settings = wordless_misc.get_abs_path('wordless_settings.pickle')
+        path_settings = wordless_misc.get_normalized_path('wordless_settings.pickle')
 
         if os.path.exists(path_settings):
             with open(path_settings, 'rb') as f:
@@ -470,18 +470,18 @@ class Wordless_Main(QMainWindow):
     def restart(self):
         if getattr(sys, '_MEIPASS', False):
             if platform.system() == 'Windows':
-                subprocess.Popen([wordless_misc.get_abs_path('Wordless.exe')])
+                subprocess.Popen([wordless_misc.get_normalized_path('Wordless.exe')])
             elif platform.system() == 'Darwin':
-                subprocess.Popen([wordless_misc.get_abs_path('Wordless')])
+                subprocess.Popen([wordless_misc.get_normalized_path('Wordless')])
             elif platform.system() == 'Linux':
-                subprocess.Popen([wordless_misc.get_abs_path('Wordless')])
+                subprocess.Popen([wordless_misc.get_normalized_path('Wordless')])
         else:
             if platform.system() == 'Windows':
-                subprocess.Popen(['python', wordless_misc.get_abs_path(__file__)])
+                subprocess.Popen(['python', wordless_misc.get_normalized_path(__file__)])
             elif platform.system() == 'Darwin':
-                subprocess.Popen(['python3', wordless_misc.get_abs_path(__file__)])
+                subprocess.Popen(['python3', wordless_misc.get_normalized_path(__file__)])
             elif platform.system() == 'Linux':
-                subprocess.Popen(['python3.7', wordless_misc.get_abs_path(__file__)])
+                subprocess.Popen(['python3.7', wordless_misc.get_normalized_path(__file__)])
 
         self.save_settings()
         sys.exit(0)

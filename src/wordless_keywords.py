@@ -45,6 +45,8 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Filter_Search):
                          ],
                          sorting_enabled = True)
 
+        self.name = 'keywords'
+
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
 
@@ -401,16 +403,16 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-class Wordless_Worker_Process_Data_Keywords(wordless_threading.Wordless_Worker_Process_Data):
-    processing_finished = pyqtSignal(dict, dict)
+class Wordless_Worker_Keywords(wordless_threading.Wordless_Worker):
+    worker_done = pyqtSignal(dict, dict)
 
-    def __init__(self, main, dialog_progress, data_received):
-        super().__init__(main, dialog_progress, data_received)
+    def __init__(self, main, dialog_progress, update_gui):
+        super().__init__(main, dialog_progress, update_gui)
 
         self.keywords_freq_files = []
         self.keywords_stats_files = []
 
-    def process_data(self):
+    def run(self):
         texts = []
 
         settings = self.main.settings_custom['keywords']
@@ -530,31 +532,31 @@ class Wordless_Worker_Process_Data_Keywords(wordless_threading.Wordless_Worker_P
             self.keywords_freq_files.append(self.keywords_freq_files[1])
             self.keywords_stats_files *= 2
 
-class Wordless_Worker_Process_Data_Keywords_Table(Wordless_Worker_Process_Data_Keywords):
-    def process_data(self):
-        super().process_data()
+class Wordless_Worker_Keywords_Table(Wordless_Worker_Keywords):
+    def run(self):
+        super().run()
 
         self.progress_updated.emit(self.tr('Rendering table ...'))
 
         time.sleep(0.1)
 
-        self.processing_finished.emit(wordless_misc.merge_dicts(self.keywords_freq_files),
-                                      wordless_misc.merge_dicts(self.keywords_stats_files))
+        self.worker_done.emit(wordless_misc.merge_dicts(self.keywords_freq_files),
+                              wordless_misc.merge_dicts(self.keywords_stats_files))
 
-class Wordless_Worker_Process_Data_Keywords_Fig(Wordless_Worker_Process_Data_Keywords):
-    def process_data(self):
-        super().process_data()
+class Wordless_Worker_Keywords_Fig(Wordless_Worker_Keywords):
+    def run(self):
+        super().run()
 
         self.progress_updated.emit(self.tr('Rendering figure ...'))
 
         time.sleep(0.1)
 
-        self.processing_finished.emit(wordless_misc.merge_dicts(self.keywords_freq_files),
-                                      wordless_misc.merge_dicts(self.keywords_stats_files))
+        self.worker_done.emit(wordless_misc.merge_dicts(self.keywords_freq_files),
+                              wordless_misc.merge_dicts(self.keywords_stats_files))
 
 @wordless_misc.log_timing
 def generate_table(main, table):
-    def data_received(keywords_freq_files, keywords_stats_files):
+    def update_gui(keywords_freq_files, keywords_stats_files):
         if keywords_freq_files:
             table.clear_table()
 
@@ -710,15 +712,15 @@ def generate_table(main, table):
         if files:
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Wordless_Worker_Process_Data_Keywords_Table(main, dialog_progress, data_received)
-            thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
+            worker_keywords_table = Wordless_Worker_Keywords_Table(main, dialog_progress, update_gui)
+            thread_keywords_table = wordless_threading.Wordless_Thread(worker_keywords_table)
 
-            thread_process_data.start()
+            thread_keywords_table.start()
 
             dialog_progress.exec_()
 
-            thread_process_data.quit()
-            thread_process_data.wait()
+            thread_keywords_table.quit()
+            thread_keywords_table.wait()
         else:
             wordless_msg_box.wordless_msg_box_missing_observed_file(main)
 
@@ -728,7 +730,7 @@ def generate_table(main, table):
 
 @wordless_misc.log_timing
 def generate_fig(main):
-    def data_received(keywords_freq_files, keywords_stats_files):
+    def update_gui(keywords_freq_files, keywords_stats_files):
         if keywords_freq_files:
             text_test_significance = settings['generation_settings']['test_significance']
             text_measure_effect_size = settings['generation_settings']['measure_effect_size']
@@ -795,15 +797,15 @@ def generate_fig(main):
         if files:
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_process_data = Wordless_Worker_Process_Data_Keywords_Fig(main, dialog_progress, data_received)
-            thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
+            worker_keywords_fig = Wordless_Worker_Keywords_Fig(main, dialog_progress, update_gui)
+            thread_keywords_fig = wordless_threading.Wordless_Thread(worker_keywords_fig)
 
-            thread_process_data.start()
+            thread_keywords_fig.start()
 
             dialog_progress.exec_()
 
-            thread_process_data.quit()
-            thread_process_data.wait()
+            thread_keywords_fig.quit()
+            thread_keywords_fig.wait()
         else:
             wordless_msg_box.wordless_msg_box_missing_observed_file(main)
 

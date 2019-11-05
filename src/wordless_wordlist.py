@@ -45,6 +45,8 @@ class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Filter_Search):
                          ],
                          sorting_enabled = True)
 
+        self.name = 'wordlist'
+
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
 
@@ -373,16 +375,16 @@ class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-class Wordless_Worker_Process_Data_Wordlist(wordless_threading.Wordless_Worker_Process_Data):
-    processing_finished = pyqtSignal(dict, dict)
+class Wordless_Worker_Wordlist(wordless_threading.Wordless_Worker):
+    worker_done = pyqtSignal(dict, dict)
 
-    def __init__(self, main, dialog_progress, data_received):
-        super().__init__(main, dialog_progress, data_received)
+    def __init__(self, main, dialog_progress, update_gui):
+        super().__init__(main, dialog_progress, update_gui)
 
         self.tokens_freq_files = []
         self.tokens_stats_files = []
 
-    def process_data(self):
+    def run(self):
         texts = []
 
         settings = self.main.settings_custom['wordlist']
@@ -449,31 +451,31 @@ class Wordless_Worker_Process_Data_Wordlist(wordless_threading.Wordless_Worker_P
             self.tokens_freq_files *= 2
             self.tokens_stats_files *= 2
 
-class Wordless_Worker_Process_Data_Wordlist_Table(Wordless_Worker_Process_Data_Wordlist):
-    def process_data(self):
-        super().process_data()
+class Wordless_Worker_Wordlist_Table(Wordless_Worker_Wordlist):
+    def run(self):
+        super().run()
 
         self.progress_updated.emit(self.tr('Rendering table ...'))
 
         time.sleep(0.1)
 
-        self.processing_finished.emit(wordless_misc.merge_dicts(self.tokens_freq_files),
-                                      wordless_misc.merge_dicts(self.tokens_stats_files))
+        self.worker_done.emit(wordless_misc.merge_dicts(self.tokens_freq_files),
+                              wordless_misc.merge_dicts(self.tokens_stats_files))
 
-class Wordless_Worker_Process_Data_Wordlist_Fig(Wordless_Worker_Process_Data_Wordlist):
-    def process_data(self):
-        super().process_data()
+class Wordless_Worker_Wordlist_Fig(Wordless_Worker_Wordlist):
+    def run(self):
+        super().run()
 
         self.progress_updated.emit(self.tr('Rendering figure ...'))
 
         time.sleep(0.1)
 
-        self.processing_finished.emit(wordless_misc.merge_dicts(self.tokens_freq_files),
-                                      wordless_misc.merge_dicts(self.tokens_stats_files))
+        self.worker_done.emit(wordless_misc.merge_dicts(self.tokens_freq_files),
+                              wordless_misc.merge_dicts(self.tokens_stats_files))
 
 @wordless_misc.log_timing
 def generate_table(main, table):
-    def data_received(tokens_freq_files, tokens_stats_files):
+    def update_gui(tokens_freq_files, tokens_stats_files):
         if tokens_freq_files:
             table.clear_table()
 
@@ -586,15 +588,15 @@ def generate_table(main, table):
     if wordless_checking_file.check_files_on_loading(main, files):
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-        worker_process_data = Wordless_Worker_Process_Data_Wordlist_Table(main, dialog_progress, data_received)
-        thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
+        worker_wordlist_table = Wordless_Worker_Wordlist_Table(main, dialog_progress, update_gui)
+        thread_wordlist_table = wordless_threading.Wordless_Thread(worker_wordlist_table)
 
-        thread_process_data.start()
+        thread_wordlist_table.start()
 
         dialog_progress.exec_()
 
-        thread_process_data.quit()
-        thread_process_data.wait()
+        thread_wordlist_table.quit()
+        thread_wordlist_table.wait()
     else:
         wordless_msg.wordless_msg_generate_table_error(main)
 
@@ -646,14 +648,14 @@ def generate_fig(main):
     if wordless_checking_file.check_files_on_loading(main, files):
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-        worker_process_data = Wordless_Worker_Process_Data_Wordlist_Fig(main, dialog_progress, data_received)
-        thread_process_data = wordless_threading.Wordless_Thread_Process_Data(worker_process_data)
+        worker_wordlist_fig = Wordless_Worker_Wordlist_Fig(main, dialog_progress, data_received)
+        thread_wordlist_fig = wordless_threading.Wordless_Thread(worker_wordlist_fig)
 
-        thread_process_data.start()
+        thread_wordlist_fig.start()
 
         dialog_progress.exec_()
 
-        thread_process_data.quit()
-        thread_process_data.wait()
+        thread_wordlist_fig.quit()
+        thread_wordlist_fig.wait()
     else:
         wordless_msg.wordless_msg_generate_fig_error(main)

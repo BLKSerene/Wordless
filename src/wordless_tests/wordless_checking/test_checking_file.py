@@ -19,7 +19,7 @@ from wordless_tests import test_init
 from wordless_utils import wordless_misc
 
 def get_path(file_name):
-    return wordless_misc.get_abs_path(f'wordless_tests/files/checking/{file_name}')
+    return wordless_misc.get_normalized_path(f'wordless_tests/files/checking/{file_name}')
 
 def get_file(file_name):
     file = {

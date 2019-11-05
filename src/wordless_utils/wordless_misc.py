@@ -20,11 +20,16 @@ from PyQt5.QtWidgets import *
 
 import numpy
 
-def get_abs_path(path):
+def get_normalized_path(path):
     path = os.path.realpath(path)
     path = os.path.normpath(path)
 
     return path
+
+def get_normalized_dir(path):
+    path = get_normalized_path(path)
+
+    return os.path.dirname(path)
 
 def get_wordless_ver():
     try:
