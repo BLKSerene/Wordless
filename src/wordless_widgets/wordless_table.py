@@ -175,23 +175,6 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                 for i, _ in enumerate(worksheet.rows):
                     worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
 
-                # Borders
-                border = openpyxl.styles.Side(
-                   border_style = 'thin',
-                   color = '292929'
-                )
-
-                for row, _ in enumerate(worksheet.rows):
-                    for col, _ in enumerate(worksheet.columns):
-                        worksheet.cell(row + 1, col + 1).border = openpyxl.styles.Border(
-                            left = border,
-                            right = border,
-                            top = border,
-                            bottom = border
-                        )
-                    
-                    self.progress_updated.emit(self.tr(f'Applying borders ... ({row + 1} / {len_rows})'))
-
                 self.progress_updated.emit(self.tr(f'Saving file ...'))
 
                 workbook.save(self.file_path)
