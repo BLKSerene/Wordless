@@ -40,7 +40,7 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
         self.rows_export = rows_export
 
     def run(self):
-        # Check permission
+        # Check file permissions
         try:
             if not self.rows_export:
                 self.rows_export = list(range(self.table.rowCount()))
@@ -78,7 +78,11 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                             # Left
                             if col == 0:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
-                                cell.value = wordless_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+
+                                cell_val = wordless_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+                                # Remove illegal characters
+                                cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
+                                cell.value = cell_val
 
                                 self.set_cell_styles(cell, self.table.cellWidget(row_item, col))
 
@@ -89,7 +93,11 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                             # Node
                             elif col == 1:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
-                                cell.value = wordless_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+
+                                cell_val = wordless_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+                                # Remove illegal characters
+                                cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
+                                cell.value = cell_val
 
                                 self.set_cell_styles(cell, self.table.cellWidget(row_item, col))
 
@@ -102,7 +110,11 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                             # Right
                             elif col == 2:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
-                                cell.value = wordless_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+
+                                cell_val = wordless_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+                                # Remove illegal characters
+                                cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
+                                cell.value = cell_val
 
                                 self.set_cell_styles(cell, self.table.cellWidget(row_item, col))
 
@@ -112,7 +124,11 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                                 )
                             else:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
-                                cell.value = cell_text = self.table.item(row_item, col).text()
+
+                                cell_val = cell_text = self.table.item(row_item, col).text()
+                                # Remove illegal characters
+                                cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
+                                cell.value = cell_val
 
                                 self.set_cell_styles(cell, self.table.item(row_item, col))
 
@@ -133,7 +149,11 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                         for row_cell, row_item in enumerate(self.rows_export):
                             for col in range(self.table.columnCount()):
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
-                                cell.value = self.table.item(row_item, col).text()
+
+                                cell_val = self.table.item(row_item, col).text()
+                                # Remove illegal characters
+                                cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
+                                cell.value = cell_val
 
                                 self.set_cell_styles(cell, self.table.item(row_item, col))
 
@@ -163,7 +183,11 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                         for row_cell, row_item in enumerate(self.rows_export):
                             for col in range(self.table.columnCount()):
                                 cell = worksheet.cell(2 + row_cell, 2 + col)
-                                cell.value = self.table.item(row_item, col).text()
+
+                                cell_val = self.table.item(row_item, col).text()
+                                # Remove illegal characters
+                                cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
+                                cell.value = cell_val
 
                                 self.set_cell_styles(cell, self.table.item(row_item, col))
 
@@ -247,6 +271,9 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
             export_success = False
 
         self.worker_done.emit(export_success, self.file_path)
+
+    def remove_illegal_chars(self, text):
+        return re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', text)
 
     def set_cell_styles(self, cell, item, item_type = 'item'):
         if item_type == 'header_horizontal':
