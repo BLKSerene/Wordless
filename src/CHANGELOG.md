@@ -63,14 +63,14 @@
 - Add support for XML files
 
 ### ✨ Improvements
-- Check permission before exporting tables
+- Check file permissions when exporting tables
 - Update pybo's Tibetan tokenizers, POS tagger, and lemmatizer
 - Update PyThaiNLP's Thai stop words
 - Update Sacremoses's tokenizers and detokenizer
 
 ### 📌 Bug Fixes
 - Fix "Collocation" and "Colligation"
-- Fix export in "Concordancer"
+- Fix "Export Selected" and "Export All" in "Concordancer"
 - Fix NLTK's word tokenizers
 - Fix toggling of checkboxes in "Search Settings" and "Context Settings"
 - Fix "Settings → Stop Words → Preview → Count of Stop Words"
