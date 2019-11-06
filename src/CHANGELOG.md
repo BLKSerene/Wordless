@@ -25,6 +25,7 @@
 ### ✨ Improvements
 - Do not add borders to exported Excel workbooks due to performance issues
 - Force consistent results for language detection
+- Remove illegal characters when exporting tables to Excel workbooks
 - Update error messages for file checking
 - Update Sacremoses's Moses tokenizer and detokenizer
 
