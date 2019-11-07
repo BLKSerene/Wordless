@@ -240,7 +240,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # NetworkX
             [
                 'NetworkX', 'http://networkx.github.io',
-                '2.3',
+                '2.4',
                 'Aric Hagberg, Dan Schult, Pieter Swart',
                 'BSD-3-Clause', 'https://github.com/networkx/networkx/blob/master/LICENSE.txt'
             ],
