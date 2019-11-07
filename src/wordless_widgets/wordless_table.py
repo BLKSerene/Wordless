@@ -47,6 +47,7 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
 
             len_rows = len(self.rows_export)
 
+            # Excel workbooks
             if self.file_type == self.tr('Excel Workbook (*.xlsx)'):
                 workbook = openpyxl.Workbook()
                 worksheet = workbook.active
@@ -67,8 +68,7 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                         cell = worksheet.cell(1, 1 + col)
                         cell.value = self.table.horizontalHeaderItem(col).text()
 
-                        self.set_cell_styles(cell, self.table.horizontalHeaderItem(col),
-                                             item_type = 'header_horizontal')
+                        self.style_header_horizontal(cell, self.table.horizontalHeaderItem(col))
 
                         worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.table.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
 
@@ -84,8 +84,11 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
 
-                                self.set_cell_styles(cell, self.table.cellWidget(row_item, col))
-
+                                cell.font = openpyxl.styles.Font(
+                                    name = self.table.cellWidget(row_item, col).font().family(),
+                                    size = 8,
+                                    color = '292929'
+                                )
                                 cell.alignment = openpyxl.styles.Alignment(
                                     horizontal = 'right',
                                     vertical = 'center'
@@ -99,13 +102,17 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
 
-                                self.set_cell_styles(cell, self.table.cellWidget(row_item, col))
+                                self.style_cell_text(cell, self.table.cellWidget(row_item, col))
 
                                 cell.font = openpyxl.styles.Font(
                                     name = self.table.cellWidget(row_item, col).font().family(),
                                     size = 8,
                                     bold = True,
                                     color = 'FF0000'
+                                )
+                                cell.alignment = openpyxl.styles.Alignment(
+                                    horizontal = 'center',
+                                    vertical = 'center'
                                 )
                             # Right
                             elif col == 2:
@@ -116,8 +123,11 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
 
-                                self.set_cell_styles(cell, self.table.cellWidget(row_item, col))
-
+                                cell.font = openpyxl.styles.Font(
+                                    name = self.table.cellWidget(row_item, col).font().family(),
+                                    size = 8,
+                                    color = '292929'
+                                )
                                 cell.alignment = openpyxl.styles.Alignment(
                                     horizontal = 'left',
                                     vertical = 'center'
@@ -130,7 +140,12 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
 
-                                self.set_cell_styles(cell, self.table.item(row_item, col))
+                                if (col in self.table.headers_int or
+                                    col in self.table.headers_float or
+                                    col in self.table.headers_pct):
+                                    self.style_cell_num(cell, self.table.item(row_item, col))
+                                else:
+                                    self.style_cell_text(cell, self.table.item(row_item, col))
 
                             self.progress_updated.emit(self.tr(f'Exporting table ... ({row_cell + 1} / {len_rows})'))
                 else:
@@ -140,8 +155,7 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                             cell = worksheet.cell(1, 1 + col)
                             cell.value = self.table.horizontalHeaderItem(col).text()
 
-                            self.set_cell_styles(cell, self.table.horizontalHeaderItem(col),
-                                                 item_type = 'header_horizontal')
+                            self.style_header_horizontal(cell, self.table.horizontalHeaderItem(col))
 
                             worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.table.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
 
@@ -155,7 +169,12 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
 
-                                self.set_cell_styles(cell, self.table.item(row_item, col))
+                                if (col in self.table.headers_int or
+                                    col in self.table.headers_float or
+                                    col in self.table.headers_pct):
+                                    self.style_cell_num(cell, self.table.item(row_item, col))
+                                else:
+                                    self.style_cell_text(cell, self.table.item(row_item, col))
 
                             self.progress_updated.emit(self.tr(f'Exporting table ... ({row_cell + 1} / {len_rows})'))
                     else:
@@ -164,8 +183,7 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                             cell = worksheet.cell(1, 2 + col) 
                             cell.value = self.table.horizontalHeaderItem(col).text()
 
-                            self.set_cell_styles(cell, self.table.horizontalHeaderItem(col),
-                                                 item_type = 'header_horizontal')
+                            self.style_header_horizontal(cell, self.table.horizontalHeaderItem(col))
 
                             worksheet.column_dimensions[openpyxl.utils.get_column_letter(2 + col)].width = self.table.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
 
@@ -176,8 +194,7 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                             cell = worksheet.cell(2 + row_cell, 1)
                             cell.value = self.table.verticalHeaderItem(row_item).text()
 
-                            self.set_cell_styles(cell, self.table.verticalHeaderItem(row_item),
-                                                 item_type = 'header_vertical')
+                            self.style_header_vertical(cell, self.table.verticalHeaderItem(row_item))
 
                         # Cells
                         for row_cell, row_item in enumerate(self.rows_export):
@@ -189,7 +206,12 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
 
-                                self.set_cell_styles(cell, self.table.item(row_item, col))
+                                if (col in self.table.headers_int or
+                                    col in self.table.headers_float or
+                                    col in self.table.headers_pct):
+                                    self.style_cell_num(cell, self.table.item(row_item, col))
+                                else:
+                                    self.style_cell_text(cell, self.table.item(row_item, col))
 
                             self.progress_updated.emit(self.tr(f'Exporting table ... ({row_cell + 1} / {len_rows})'))
 
@@ -202,6 +224,7 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
                 self.progress_updated.emit(self.tr(f'Saving file ...'))
 
                 workbook.save(self.file_path)
+            # CSV files
             elif self.file_type == self.tr('CSV File (*.csv)'):
                 encoding = self.main.settings_custom['export']['tables']['default_encoding']
 
@@ -275,42 +298,23 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
     def remove_illegal_chars(self, text):
         return re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', text)
 
-    def set_cell_styles(self, cell, item, item_type = 'item'):
-        if item_type == 'header_horizontal':
-            cell.font = openpyxl.styles.Font(
-                name = item.font().family(),
-                size = 8,
-                bold = True,
-                color = 'FFFFFF'
-            )
+    def style_header_horizontal(self, cell, item):
+        cell.font = openpyxl.styles.Font(
+            name = item.font().family(),
+            size = 8,
+            bold = True,
+            color = 'FFFFFF'
+        )
 
-            if self.table.header_orientation == 'horizontal':
-                cell.fill = openpyxl.styles.PatternFill(
-                    fill_type = 'solid',
-                    fgColor = '5C88C5'
-                )
-            else:
-                cell.fill = openpyxl.styles.PatternFill(
-                    fill_type = 'solid',
-                    fgColor = '888888'
-                )
-        elif item_type == 'header_vertical':
-            cell.font = openpyxl.styles.Font(
-                name = item.font().family(),
-                size = 8,
-                bold = True,
-                color = 'FFFFFF'
-            )
-
+        if self.table.header_orientation == 'horizontal':
             cell.fill = openpyxl.styles.PatternFill(
                 fill_type = 'solid',
                 fgColor = '5C88C5'
             )
         else:
-            cell.font = openpyxl.styles.Font(
-                name = item.font().family(),
-                size = 8,
-                color = '292929'
+            cell.fill = openpyxl.styles.PatternFill(
+                fill_type = 'solid',
+                fgColor = '888888'
             )
 
         cell.alignment = openpyxl.styles.Alignment(
@@ -319,11 +323,68 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
             wrap_text = True
         )
 
+    def style_header_vertical(self, cell, item):
+        cell.font = openpyxl.styles.Font(
+            name = item.font().family(),
+            size = 8,
+            bold = True,
+            color = 'FFFFFF'
+        )
+
+        if self.table.header_orientation == 'horizontal':
+            cell.fill = openpyxl.styles.PatternFill(
+                fill_type = 'solid',
+                fgColor = '888888'
+            )
+
+            cell.alignment = openpyxl.styles.Alignment(
+                horizontal = 'right',
+                vertical = 'center',
+                wrap_text = True
+          )
+        else:
+            cell.fill = openpyxl.styles.PatternFill(
+                fill_type = 'solid',
+                fgColor = '5C88C5'
+            )
+
+            cell.alignment = openpyxl.styles.Alignment(
+                horizontal = 'left',
+                vertical = 'center',
+                wrap_text = True
+            )
+
+    def style_cell_text(self, cell, item):
+        cell.font = openpyxl.styles.Font(
+            name = item.font().family(),
+            size = 8,
+            color = '292929'
+        )
+
+        cell.alignment = openpyxl.styles.Alignment(
+            horizontal = 'left',
+            vertical = 'center',
+            wrap_text = True
+        )
+
+    def style_cell_num(self, cell, item):
+        cell.font = openpyxl.styles.Font(
+            name = item.font().family(),
+            size = 8,
+            color = '292929'
+        )
+
+        cell.alignment = openpyxl.styles.Alignment(
+            horizontal = 'right',
+            vertical = 'center',
+            wrap_text = True
+        )
+
 class Wordless_Table_Item(QTableWidgetItem):
     def read_data(self):
-        if self.column() in self.tableWidget().headers_cumulative:
-            return self.val_raw
-        elif self.column() in self.tableWidget().headers_num:
+        if (self.column() in self.tableWidget().headers_int or
+            self.column() in self.tableWidget().headers_float or
+            self.column() in self.tableWidget().headers_pct):
             return self.val
         else:
             return self.text()
@@ -504,7 +565,6 @@ class Wordless_Table(QTableWidget):
 
         event.accept()
 
-
     def item_changed(self):
         cols_stretch = self.find_col(self.cols_stretch)
 
@@ -630,13 +690,16 @@ class Wordless_Table_Error(Wordless_Table):
         self.name = 'error'
 
 class Wordless_Table_Data(Wordless_Table):
-    def __init__(self, main, headers, header_orientation = 'horizontal', cols_stretch = [],
-                 headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
-                 sorting_enabled = False):
+    def __init__(self, main,
+                 headers, header_orientation = 'horizontal',
+                 headers_int = [], headers_float = [],
+                 headers_pct = [], headers_cumulative = [], cols_breakdown = [],
+                 cols_stretch = [], sorting_enabled = False):
         super().__init__(main, headers, header_orientation, cols_stretch,
                          drag_drop_enabled = False)
 
-        self.headers_num_old = headers_num
+        self.headers_int_old = headers_int
+        self.headers_float_old = headers_float
         self.headers_pct_old = headers_pct
         self.headers_cumulative_old = headers_cumulative
         self.cols_breakdown_old = cols_breakdown
@@ -689,333 +752,282 @@ class Wordless_Table_Data(Wordless_Table):
             if self.show_cumulative:
                 self.toggle_cumulative()
 
-            self.update_items_width()
-
-    def insert_row(self, i, label, num = False, pct = False, cumulative = False):
-        headers_num = [self.verticalHeaderItem(row).text() for row in self.headers_num]
+    def insert_row(self, i, label,
+                   is_int = False, is_float = False,
+                   is_pct = False, is_cumulative = False, is_breakdown = False):
+        headers_int = [self.verticalHeaderItem(row).text() for row in self.headers_int]
+        headers_float = [self.verticalHeaderItem(row).text() for row in self.headers_float]
         headers_pct = [self.verticalHeaderItem(row).text() for row in self.headers_pct]
         headers_cumulative = [self.verticalHeaderItem(row).text() for row in self.headers_cumulative]
+        cols_breakdown = [self.verticalHeaderItem(row).text() for row in self.cols_breakdown]
 
         super().insert_row(i, label)
 
-        if num:
-            headers_num += [label]
-        if pct:
+        if is_int:
+            headers_int += [label]
+        if is_float:
+            headers_float += [label]
+        if is_pct:
             headers_pct += [label]
-        if cumulative:
+        if is_cumulative:
+            headers_cumulative += [label]
+        if is_breakdown:
             headers_cumulative += [label]
 
-        self.headers_num = set(self.find_row(headers_num))
+        self.headers_int = set(self.find_row(headers_int))
+        self.headers_float = set(self.find_row(headers_float))
         self.headers_pct = set(self.find_row(headers_pct))
         self.headers_cumulative = set(self.find_row(headers_cumulative))
+        self.cols_breakdown = set(self.find_row(cols_breakdown))
 
-    def insert_col(self, i, label, num = False, pct = False, cumulative = False, breakdown = False):
+    def insert_col(self, i, label,
+                   is_int = False, is_float = False,
+                   is_pct = False, is_cumulative = False, is_breakdown = False):
         if self.header_orientation == 'horizontal':
-            headers_num = [self.horizontalHeaderItem(col).text() for col in self.headers_num]
+            headers_int = [self.horizontalHeaderItem(col).text() for col in self.headers_int]
+            headers_float = [self.horizontalHeaderItem(col).text() for col in self.headers_float]
             headers_pct = [self.horizontalHeaderItem(col).text() for col in self.headers_pct]
             headers_cumulative = [self.horizontalHeaderItem(col).text() for col in self.headers_cumulative]
+
         cols_breakdown = [self.horizontalHeaderItem(col).text() for col in self.cols_breakdown]
 
         super().insert_col(i, label)
 
-        if num:
-            headers_num += [label]
-        if pct:
+        if is_int:
+            headers_int += [label]
+        if is_float:
+            headers_float += [label]
+        if is_pct:
             headers_pct += [label]
-        if cumulative:
+        if is_cumulative:
             headers_cumulative += [label]
-        if breakdown:
+        if is_breakdown:
             cols_breakdown += [label]
 
         if self.header_orientation == 'horizontal':
-            self.headers_num = set(self.find_col(headers_num))
+            self.headers_int = set(self.find_col(headers_int))
+            self.headers_float = set(self.find_col(headers_float))
             self.headers_pct = set(self.find_col(headers_pct))
             self.headers_cumulative = set(self.find_col(headers_cumulative))
+        
         self.cols_breakdown = set(self.find_col(cols_breakdown))
 
-    def set_item_num(self, row, col, item):
+    def set_item_num(self, row, col, val):
+        if self.header_orientation == 'horizontal':
+            header = col
+        else:
+            header = row
+
+        # Integers
+        if header in self.headers_int:
+            val = int(val)
+
+            item = Wordless_Table_Item(str(val))
+        # Floats
+        elif header in self.headers_float:
+            val = float(val)
+            precision = self.main.settings_custom['data']['precision_decimal']
+
+            item = Wordless_Table_Item(f'{val:.{precision}f}')
+        # Percentages
+        elif header in self.headers_pct:
+            val = float(val)
+            precision = self.main.settings_custom['data']['precision_pct']
+
+            item = Wordless_Table_Item(f'{val:.{precision}%}')
+
+        item.val = val
+
         item.setFont(QFont('Consolas'))
-        item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+        item.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
         super().setItem(row, col, item)
-
-    def set_item_num_int(self, row, col, val):
-        item = Wordless_Table_Item()
-
-        item.val = int(val)
-
-        self.set_item_num(row, col, item)
-
-    def set_item_num_float(self, row, col, val):
-        item = Wordless_Table_Item()
-
-        item.val = float(val)
-
-        self.set_item_num(row, col, item)
-
-    def set_item_num_pct(self, row, col, val, total = -1):
-        item = Wordless_Table_Item()
-
-        item.val = int(val)
-
-        if total > -1:
-            item.total = int(total)
-
-        self.set_item_num(row, col, item)
-
-    def set_item_num_cumulative(self, row, col, val):
-        item = Wordless_Table_Item()
-
-        item.val = int(val)
-        item.val_raw = item.val
-        item.val_cumulative = 0
-
-        self.set_item_num(row, col, item)
-
-    def update_items_width(self):
-        precision_val = self.main.settings_custom['data']['precision_decimal']
-        precision_pct = self.main.settings_custom['data']['precision_pct']
-        len_pct = precision_pct + 5
-
-        rows_hidden = [row for row in range(self.rowCount()) if self.isRowHidden(row)]
-
-        self.hide()
-        self.blockSignals(True)
-
-        if self.sorting_enabled:
-            self.setSortingEnabled(False)
-
-        self.setUpdatesEnabled(False)
-
-        if self.header_orientation == 'horizontal':
-            for col in self.headers_num:
-                max_val = max([self.item(row, col).val
-                               for row in range(self.rowCount())])
-
-                # p-value
-                if self.tr('p-value') in self.horizontalHeaderItem(col).text():
-                    precision_val = self.main.settings_custom['data']['precision_p_value']
-                else:
-                    precision_val = self.main.settings_custom['data']['precision_decimal']
-
-                if type(max_val) == int:
-                    len_val = len(f'{max_val:,}')
-                else:
-                    len_val = len(f'{max_val:,.{precision_val}f}')
-
-                if col in self.headers_pct and self.show_pct:
-                    pct_max = max([self.item(row, col).pct for row in range(self.rowCount())])
-                    len_pct = len(f'{pct_max:.{precision_pct}%}')
-
-                    if type(max_val) == int:
-                        for row in range(self.rowCount()):
-                            if not self.isRowHidden(row):
-                                item = self.item(row, col)
-                                
-                                item.setText(f'{item.val:>{len_val},}/{item.pct:<{len_pct}.{precision_pct}%}')
-                    else:
-                        for row in range(self.rowCount()):
-                            if not self.isRowHidden(row):
-                                item = self.item(row, col)
-
-                                if item.val == float('inf'):
-                                    item.setText('+∞')
-                                elif item.val == float('-inf'):
-                                    item.setText('-∞')
-                                else:
-                                    item.setText(f'{item.val:>{len_val},.{precision_val}}/{item.pct:<{len_pct}.{precision_pct}%}')
-                else:
-                    if type(max_val) == int:
-                        for row in range(self.rowCount()):
-                            if not self.isRowHidden(row):
-                                item = self.item(row, col)
-
-                                item.setText(f'{item.val:>{len_val},}')
-                    else:
-                        for row in range(self.rowCount()):
-                            if not self.isRowHidden(row):
-                                item = self.item(row, col)
-
-                                if item.val == float('inf'):
-                                    item.setText('+ ∞')
-                                elif item.val == float('-inf'):
-                                    item.setText('- ∞')
-                                else:
-                                    item.setText(f'{item.val:>{len_val},.{precision_val}f}')
-        else:
-            len_vals = []
-
-            max_vals = [max([self.item(row, col).val
-                             for row in range(self.rowCount())])
-                        for col in range(self.columnCount())]
-            max_pcts = [max([self.item(row, col).pct
-                             for row in range(self.rowCount())
-                             if row in self.headers_pct])
-                        for col in range(self.columnCount())]
-
-            for max_val in max_vals:
-                if type(max_val) == int:
-                    len_vals.append(len(f'{max_val:,}'))
-                else:
-                    len_vals.append(len(f'{max_val:,.{precision_val}f}'))
-
-            len_pcts = [len(f'{max_pct:.{precision_pct}%}') for max_pct in max_pcts]
-
-            for row in self.headers_num:
-                if row in self.headers_pct and self.show_pct:
-                    if type(self.item(row, 0).val) == int:
-                        for col in range(self.columnCount()):
-                            if not self.isColumnHidden(col):
-                                item = self.item(row, col)
-                                
-                                item.setText(f'{item.val:>{len_vals[col]},}/{item.pct:<{len_pcts[col]}.{precision_pct}%}')
-                    else:
-                        for col in range(self.columnCount()):
-                            if not self.isColumnHidden(col):
-                                item = self.item(row, col)
-
-                                item.setText(f'{item.val:>{len_vals[col]},.{precision_val}}/{item.pct:<{len_pcts[col]}.{precision_pct}%}')
-                else:
-                    if type(self.item(row, 0).val) == int:
-                        for col in range(self.columnCount()):
-                            if not self.isColumnHidden(col):
-                                item = self.item(row, col)
-
-                                item.setText(f'{item.val:{len_vals[col]},}')
-                    else:
-                        for col in range(self.columnCount()):
-                            if not self.isColumnHidden(col):
-                                item = self.item(row, col)
-
-                                item.setText(f'{item.val:{len_vals[col]},.{precision_val}f}')
-
-        self.blockSignals(False)
-
-        if self.sorting_enabled:
-            self.setSortingEnabled(True)
-
-        self.setUpdatesEnabled(True)
-        self.show()
-
-        self.setUpdatesEnabled(False)
-
-        for row_hidden in rows_hidden:
-            self.hideRow(row_hidden)
-
-        self.setUpdatesEnabled(True)
 
     def update_ranks(self):
         data_prev = ''
         rank_prev = 1
         rank_next = 1
 
-        sorting_section = self.horizontalHeader().sortIndicatorSection()
+        sort_section = self.horizontalHeader().sortIndicatorSection()
+        sort_order = self.horizontalHeader().sortIndicatorOrder()
+
         col_rank = self.find_col(self.tr('Rank'))
-        rows_hidden = [row for row in range(self.rowCount()) if self.isRowHidden(row)]
 
-        self.sortByColumn(sorting_section, self.horizontalHeader().sortIndicatorOrder())
+        self.sortItems(sort_section, sort_order)
 
-        for row in range(self.rowCount()):
-            if row not in rows_hidden:
-                data_cur = self.item(row, sorting_section).read_data()
+        if sort_section != col_rank:
+            self.blockSignals(True)
+            self.setSortingEnabled(False)
+            self.setUpdatesEnabled(False)
 
-                if data_cur == data_prev:
-                    self.item(row, col_rank).val = rank_prev
-                else:
-                    self.item(row, col_rank).val = rank_next
+            for row in range(self.rowCount()):
+                if not self.isRowHidden(row):
+                    data_cur = self.item(row, sort_section).read_data()
 
-                    rank_prev = rank_next
+                    if data_cur == data_prev:
+                        self.item(row, col_rank).val = rank_prev
+                        self.item(row, col_rank).setText(str(rank_prev))
+                    else:
+                        self.item(row, col_rank).val = rank_next
+                        self.item(row, col_rank).setText(str(rank_next))
 
-                rank_next += 1
-                data_prev = data_cur
+                        rank_prev = rank_next
+
+                    rank_next += 1
+                    data_prev = data_cur
+
+            self.blockSignals(False)
+            self.setSortingEnabled(True)
+            self.setUpdatesEnabled(True)
 
     def toggle_pct(self):
+        self.setUpdatesEnabled(False)
+
         if self.header_orientation == 'horizontal':
-            for col in self.headers_pct:
-                if self.item(0, col) and not hasattr(self.item(0, col), 'total'):
-                    total = sum([self.item(row, col).val_raw for row in range(self.rowCount())])
-
-                    for row in range(self.rowCount()):
-                        self.item(row, col).total = total
-
-                for row in range(self.rowCount()):
-                    item = self.item(row, col)
-
-                    item.pct = item.val / item.total if item.total else 0
+            if self.show_pct:
+                for col in self.headers_pct:
+                    self.showColumn(col)
+            else:
+                for col in self.headers_pct:
+                    self.hideColumn(col)
         else:
-            for row in self.headers_pct:
-                if self.item(row, 0) and not hasattr(self.item(row, 0), 'total'):
-                    total = self.item(row, self.columnCount() - 1).val
+            if self.show_pct:
+                for row in self.headers_pct:
+                    self.showRow(row)
+            else:
+                for row in self.headers_pct:
+                    self.hideRow(row)
 
-                    for col in range(self.columnCount()):
-                        self.item(row, col).total = total
-
-                for col in range(self.columnCount()):
-                    item = self.item(row, col)
-
-                    item.pct = item.val / item.total if item.total else 0
+        self.setUpdatesEnabled(True)
 
     def toggle_cumulative(self):
+        precision_decimal = self.main.settings_custom['data']['precision_decimal']
+        precision_pct = self.main.settings_custom['data']['precision_pct']
+
+        # Boost performance
+        self.sortItems(self.horizontalHeader().sortIndicatorSection(), self.horizontalHeader().sortIndicatorOrder())
+
+        self.blockSignals(True)
+        self.setSortingEnabled(False)
+        self.setUpdatesEnabled(False)
+
         if self.header_orientation == 'horizontal':
-            for col in self.headers_cumulative:
-                val_cumulative = 0
-
-                for row in range(self.rowCount()):
-                    if not self.isRowHidden(row):
-                        item = self.item(row, col)
-
-                        val_cumulative += item.val
-                        item.val_cumulative = val_cumulative
-           
             if self.show_cumulative:
                 for col in self.headers_cumulative:
-                    for row in range(self.rowCount()):
-                        item = self.item(row, col)
+                    val_cumulative = 0
 
-                        item.val = item.val_cumulative
-                        item.pct = item.val / item.total if item.total else 0
+                    # Integers
+                    if col in self.headers_int:
+                        for row in range(self.rowCount()):
+                            if not self.isRowHidden(row):
+                                item = self.item(row, col)
+
+                                val_cumulative += item.val
+                                item.setText(str(val_cumulative))
+                    # Floats
+                    elif col in self.headers_float:
+                        for row in range(self.rowCount()):
+                            if not self.isRowHidden(row):
+                                item = self.item(row, col)
+
+                                val_cumulative += item.val
+                                item.setText(f'{val_cumulative:.{precision_decimal}}')
+                    # Percentages
+                    elif col in self.headers_pct:
+                        for row in range(self.rowCount()):
+                            if not self.isRowHidden(row):
+                                item = self.item(row, col)
+
+                                val_cumulative += item.val
+                                item.setText(f'{val_cumulative:.{precision_pct}%}')
             else:
                 for col in self.headers_cumulative:
-                    for row in range(self.rowCount()):
-                        item = self.item(row, col)
+                    # Integers
+                    if col in self.headers_int:
+                        for row in range(self.rowCount()):
+                            if not self.isRowHidden(row):
+                                item = self.item(row, col)
 
-                        item.val = item.val_raw
-                        item.pct = item.val / item.total if item.total else 0
+                                item.setText(str(item.val))
+                    # Floats
+                    elif col in self.headers_float:
+                        for row in range(self.rowCount()):
+                            if not self.isRowHidden(row):
+                                item = self.item(row, col)
+
+                                item.setText(f'{item.val:.{precision_decimal}}')
+                    # Percentages
+                    elif col in self.headers_pct:
+                        for row in range(self.rowCount()):
+                            if not self.isRowHidden(row):
+                                item = self.item(row, col)
+
+                                item.setText(f'{item.val:.{precision_pct}%}')
         else:
-            for row in self.headers_cumulative:
-                val_cumulative = 0
-
-                for col in range(self.columnCount() - 1):
-                    if not self.isColumnHidden(col):
-                        item = self.item(row, col)
-
-                        val_cumulative += item.val
-                        item.val_cumulative = val_cumulative
-
-                self.item(row, self.columnCount() - 1).val_cumulative = val_cumulative
-           
             if self.show_cumulative:
                 for row in self.headers_cumulative:
-                    for col in range(self.columnCount()):
-                        item = self.item(row, col)
+                    val_cumulative = 0
 
-                        item.val = item.val_cumulative
-                        item.pct = item.val / item.total if item.total else 0
+                    # Integers
+                    if row in self.headers_int:
+                        for col in range(self.columnCount() - 1):
+                            if not self.isColumnHidden(col):
+                                item = self.item(row, col)
+
+                                val_cumulative += item.val
+                                item.setText(str(val_cumulative))
+                    # Floats
+                    elif row in self.headers_float:
+                        for col in range(self.columnCount() - 1):
+                            if not self.isColumnHidden(col):
+                                item = self.item(row, col)
+
+                                val_cumulative += item.val
+                                item.setText(f'{val_cumulative:.{precision_decimal}}')
+                    # Percentages
+                    elif row in self.headers_pct:
+                        for col in range(self.columnCount() - 1):
+                            if not self.isColumnHidden(col):
+                                item = self.item(row, col)
+
+                                val_cumulative += item.val
+                                item.setText(f'{val_cumulative:.{precision_pct}%}')
             else:
                 for row in self.headers_cumulative:
-                    for col in range(self.columnCount()):
-                        item = self.item(row, col)
+                    # Integers
+                    if row in self.headers_int:
+                        for col in range(self.columnCount() - 1):
+                            if not self.isColumnHidden(col):
+                                item = self.item(row, col)
 
-                        item.val = item.val_raw
-                        item.pct = item.val / item.total if item.total else 0
+                                item.setText(str(item.val))
+                    # Floats
+                    elif row in self.headers_float:
+                        for col in range(self.columnCount() - 1):
+                            if not self.isColumnHidden(col):
+                                item = self.item(row, col)
+
+                                item.setText(f'{item.val:.{precision_decimal}}')
+                    # Percentages
+                    elif row in self.headers_pct:
+                        for col in range(self.columnCount() - 1):
+                            if not self.isColumnHidden(col):
+                                item = self.item(row, col)
+
+                                item.setText(f'{item.val:.{precision_pct}%}')
+
+        self.blockSignals(False)
+        self.setSortingEnabled(True)
+        self.setUpdatesEnabled(True)
 
     def toggle_breakdown(self):
         self.setUpdatesEnabled(False)
 
-        for col in self.cols_breakdown:
-            if self.show_breakdown:
+        if self.show_breakdown:
+            for col in self.cols_breakdown:
                 self.showColumn(col)
-            else:
+        else:
+            for col in self.cols_breakdown:
                 self.hideColumn(col)
 
         self.setUpdatesEnabled(True)
@@ -1039,7 +1051,6 @@ class Wordless_Table_Data(Wordless_Table):
 
         self.toggle_cumulative()
         self.update_ranks()
-        self.update_items_width()
 
         self.itemChanged.emit(self.item(0, 0))
 
@@ -1075,7 +1086,8 @@ class Wordless_Table_Data(Wordless_Table):
         for i in range(self.columnCount()):
             self.showColumn(i)
 
-        self.headers_num = set(self.find_header(self.headers_num_old))
+        self.headers_int = set(self.find_header(self.headers_int_old))
+        self.headers_float = set(self.find_header(self.headers_float_old))
         self.headers_pct = set(self.find_header(self.headers_pct_old))
         self.headers_cumulative = set(self.find_header(self.headers_cumulative_old))
         self.cols_breakdown = set(self.find_col(self.cols_breakdown_old))
@@ -1084,12 +1096,15 @@ class Wordless_Table_Data(Wordless_Table):
 
 class Wordless_Table_Data_Search(Wordless_Table_Data):
     def __init__(self, main, tab,
-                 headers, header_orientation = 'horizontal', cols_stretch = [],
-                 headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
-                 sorting_enabled = False):
-        super().__init__(main, headers, header_orientation, cols_stretch,
-                         headers_num, headers_pct, headers_cumulative, cols_breakdown,
-                         sorting_enabled)
+                 headers, header_orientation = 'horizontal',
+                 headers_int = [], headers_float = [],
+                 headers_pct = [], headers_cumulative = [], cols_breakdown = [],
+                 cols_stretch = [], sorting_enabled = False):
+        super().__init__(main,
+                         headers, header_orientation,
+                         headers_int, headers_float,
+                         headers_pct, headers_cumulative, cols_breakdown,
+                         cols_stretch, sorting_enabled)
 
         self.label_number_results = QLabel()
         self.button_results_search = wordless_button.Wordless_Button_Results_Search(self,
@@ -1114,12 +1129,15 @@ class Wordless_Table_Data_Search(Wordless_Table_Data):
 
 class Wordless_Table_Data_Sort_Search(Wordless_Table_Data):
     def __init__(self, main, tab,
-                 headers, header_orientation = 'horizontal', cols_stretch = [],
-                 headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
-                 sorting_enabled = False):
-        super().__init__(main, headers, header_orientation, cols_stretch,
-                         headers_num, headers_pct, headers_cumulative, cols_breakdown,
-                         sorting_enabled)
+                 headers, header_orientation = 'horizontal',
+                 headers_int = [], headers_float = [],
+                 headers_pct = [], headers_cumulative = [], cols_breakdown = [],
+                 cols_stretch = [], sorting_enabled = False):
+        super().__init__(main,
+                         headers, header_orientation,
+                         headers_int, headers_float,
+                         headers_pct, headers_cumulative, cols_breakdown,
+                         cols_stretch, sorting_enabled)
 
         self.label_number_results = QLabel()
         self.button_results_sort = wordless_button.Wordless_Button_Results_Sort(self,
@@ -1148,12 +1166,15 @@ class Wordless_Table_Data_Sort_Search(Wordless_Table_Data):
 
 class Wordless_Table_Data_Filter_Search(Wordless_Table_Data):
     def __init__(self, main, tab,
-                 headers, header_orientation = 'horizontal', cols_stretch = [],
-                 headers_num = [], headers_pct = [], headers_cumulative = [], cols_breakdown = [],
-                 sorting_enabled = False):
-        super().__init__(main, headers, header_orientation, cols_stretch,
-                         headers_num, headers_pct, headers_cumulative, cols_breakdown,
-                         sorting_enabled)
+                 headers, header_orientation = 'horizontal',
+                 headers_int = [], headers_float = [],
+                 headers_pct = [], headers_cumulative = [], cols_breakdown = [],
+                 cols_stretch = [], sorting_enabled = False):
+        super().__init__(main,
+                         headers, header_orientation,
+                         headers_int, headers_float,
+                         headers_pct, headers_cumulative, cols_breakdown,
+                         cols_stretch, sorting_enabled)
 
         self.label_number_results = QLabel()
         self.button_results_filter = wordless_button.Wordless_Button_Results_Filter(self,
@@ -1261,8 +1282,8 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
                         width_right = max([len(self.table.cellWidget(row, col_right).text_raw)
                                            for row in range(self.table.rowCount())])
 
-                    self.cols_sorting.extend([f'R({i + 1}' for i in range(width_right)])
-                    self.cols_sorting.extend([f'L({i + 1}' for i in range(width_left)])
+                    self.cols_sorting.extend([f'R{i + 1}' for i in range(width_right)])
+                    self.cols_sorting.extend([f'L{i + 1}' for i in range(width_left)])
 
                 self.add_row()
 
@@ -1431,18 +1452,27 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
                 right_new.text_search = right_old.text_search.copy()
 
                 no_token = self.table.item(i, 3).val
-                no_clause = self.table.item(i, 4).val
-                no_sentence = self.table.item(i, 5).val
-                no_para = self.table.item(i, 6).val
-                file = self.table.item(i, 7).text()
+                no_token_pct = self.table.item(i, 4).val
+                no_clause = self.table.item(i, 5).val
+                no_clause_pct = self.table.item(i, 6).val
+                no_sentence = self.table.item(i, 7).val
+                no_sentence_pct = self.table.item(i, 8).val
+                no_para = self.table.item(i, 9).val
+                no_para_pct = self.table.item(i, 10).val
+                file = self.table.item(i, 11).text()
 
-                results.append([left_new, node_new, right_new,
-                                no_token, no_clause, no_sentence, no_para,
-                                file])
+                results.append([
+                    left_new, node_new, right_new,
+                    no_token, no_token_pct,
+                    no_clause, no_clause_pct,
+                    no_sentence, no_sentence_pct,
+                    no_para, no_para_pct,
+                    file
+                ])
 
             for sorting_col, sorting_order in settings['sort_results']['sorting_rules']:
                 if sorting_col == self.tr('File'):
-                    sorting_keys.append(6)
+                    sorting_keys.append(11)
                 elif sorting_col == self.tr('Token No.'):
                     sorting_keys.append(3)
                 elif sorting_col == self.tr('Node'):
@@ -1452,12 +1482,14 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
                 elif 'L' in sorting_col:
                     sorting_keys.append([0, -int(sorting_col[1:])])
 
-            self.table.hide()
             self.table.blockSignals(True)
             self.table.setUpdatesEnabled(False)
 
             for i, (left, node, right,
-                    no_token, no_clause, no_sentence, no_para,
+                    no_token, no_token_pct,
+                    no_clause, no_clause_pct,
+                    no_sentence, no_sentence_pct,
+                    no_para, no_para_pct,
                     file) in enumerate(sorted(results, key = key_concordancer)):
                 for file_open in self.table.settings['files']['files_open']:
                     if file_open['selected'] and file_open['name'] == file:
@@ -1509,19 +1541,18 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
                 self.table.cellWidget(i, 1).text_search = node.text_search
                 self.table.cellWidget(i, 2).text_search = right.text_search
 
-                self.table.item(i, 3).val = no_token
-                self.table.item(i, 4).val = no_clause
-                self.table.item(i, 5).val = no_sentence
-                self.table.item(i, 6).val = no_para
-                self.table.item(i, 7).setText(file)
+                self.table.set_item_num(i, 3, no_token)
+                self.table.set_item_num(i, 4, no_token_pct)
+                self.table.set_item_num(i, 5, no_clause)
+                self.table.set_item_num(i, 6, no_clause_pct)
+                self.table.set_item_num(i, 7, no_sentence)
+                self.table.set_item_num(i, 8, no_sentence_pct)
+                self.table.set_item_num(i, 9, no_para)
+                self.table.set_item_num(i, 10, no_para_pct)
+                self.table.item(i, 11).setText(file)
 
-            self.table.show()
-            self.table.blockSignals(False)
             self.table.setUpdatesEnabled(True)
-
-            self.table.toggle_pct()
-
-            self.table.update_items_width()
+            self.table.blockSignals(False)
 
         wordless_msg.wordless_msg_results_sort(self.main)
 
