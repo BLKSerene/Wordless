@@ -23,6 +23,7 @@
 - Add syntok's sentence segmenter and word tokenizer
 
 ### ✨ Improvements
+- Display numbers and percentages in different columns
 - Do not add borders to exported Excel workbooks due to performance issues
 - Force consistent results for language detection
 - Remove illegal characters when exporting tables to Excel workbooks
