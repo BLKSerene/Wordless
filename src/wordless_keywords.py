@@ -35,13 +35,14 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Filter_Search):
                              parent.tr('Rank'),
                              parent.tr('Keywords'),
                              parent.tr('Number of\nFiles Found'),
+                             parent.tr('Number of\nFiles Found %')
                          ],
-                         headers_num = [
+                         headers_int = [
                              parent.tr('Rank'),
-                             parent.tr('Number of\nFiles Found'),
+                             parent.tr('Number of\nFiles Found')
                          ],
                          headers_pct = [
-                             parent.tr('Number of\nFiles Found')
+                             parent.tr('Number of\nFiles Found %')
                          ],
                          sorting_enabled = True)
 
@@ -570,65 +571,81 @@ def generate_table(main, table):
              text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
             text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
 
+            # Insert columns (files)
+            table.insert_col(table.columnCount() - 2,
+                             main.tr(f'[{ref_file["name"]}]\nFrequency'),
+                             is_int = True, is_cumulative = True)
+            table.insert_col(table.columnCount() - 2,
+                             main.tr(f'[{ref_file["name"]}]\nFrequency %'),
+                             is_pct = True, is_cumulative = True)
+
+            for file in files:
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr(f'[{file["name"]}]\nFrequency'),
+                                 is_int = True, is_cumulative = True, is_breakdown = True)
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr(f'[{file["name"]}]\nFrequency %'),
+                                 is_pct = True, is_cumulative = True, is_breakdown = True)
+
+                if text_test_stat:
+                    table.insert_col(table.columnCount() - 2,
+                                     main.tr(f'[{file["name"]}]\n{text_test_stat}'),
+                                     is_float = True, is_breakdown = True)
+
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr(f'[{file["name"]}]\n{text_p_value}'),
+                                 is_float = True, is_breakdown = True)
+
+                if text_bayes_factor:
+                    table.insert_col(table.columnCount() - 2,
+                                     main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
+                                     is_float = True, is_breakdown = True)
+
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr(f'[{file["name"]}]\n{text_effect_size}'),
+                                 is_float = True, is_breakdown = True)
+
+            # Insert columns (total)
+            table.insert_col(table.columnCount() - 2,
+                             main.tr('Total\nFrequency'),
+                             is_int = True, is_cumulative = True)
+            table.insert_col(table.columnCount() - 2,
+                             main.tr('Total\nFrequency %'),
+                             is_pct = True, is_cumulative = True)
+
+            if text_test_stat:
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr(f'Total\n{text_test_stat}'),
+                                 is_float = True)
+
+            table.insert_col(table.columnCount() - 2,
+                             main.tr(f'Total\n{text_p_value}'),
+                             is_float = True)
+
+            if text_bayes_factor:
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr(f'Total\n{text_bayes_factor}'),
+                                 is_float = True)
+
+            table.insert_col(table.columnCount() - 2,
+                             main.tr(f'Total\n{text_effect_size}'),
+                             is_float = True)
+
+            # Sort by p-value of the first file
+            table.horizontalHeader().setSortIndicator(
+                table.find_col(main.tr(f'[{files[0]["name"]}]\n{text_p_value}')),
+                Qt.AscendingOrder
+            )
+
             table.blockSignals(True)
             table.setSortingEnabled(False)
             table.setUpdatesEnabled(False)
 
-            # Insert columns (Files)
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'[{ref_file["name"]}]\nFrequency'),
-                             num = True, pct = True, cumulative = True)
-
-            for file in files:
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'[{file["name"]}]\nFrequency'),
-                                 num = True, pct = True, cumulative = True, breakdown = True)
-
-                if text_test_stat:
-                    table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'[{file["name"]}]\n{text_test_stat}'),
-                                     num = True, breakdown = True)
-
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'[{file["name"]}]\n{text_p_value}'),
-                                 num = True, breakdown = True)
-
-                if text_bayes_factor:
-                    table.insert_col(table.columnCount() - 1,
-                                     main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
-                                     num = True, breakdown = True)
-
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'[{file["name"]}]\n{text_effect_size}'),
-                                 num = True, breakdown = True)
-
-            # Insert columns (Total)
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'Total\nFrequency'),
-                             num = True, pct = True, cumulative = True)
-
-            if text_test_stat:
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'Total\n{text_test_stat}'),
-                                 num = True)
-
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'Total\n{text_p_value}'),
-                             num = True)
-
-            if text_bayes_factor:
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'Total\n{text_bayes_factor}'),
-                                 num = True)
-
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'Total\n{text_effect_size}'),
-                             num = True)
-
-            # Sort by p-value of the first file
-            table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\n{text_p_value}')), Qt.AscendingOrder)
-
             cols_freq = table.find_cols(main.tr('\nFrequency'))
+            cols_freq_pct = table.find_cols(main.tr('\nFrequency %'))
+
+            for col in cols_freq_pct:
+                cols_freq.remove(col)
 
             if text_test_stat:
                 cols_test_stat = table.find_cols(main.tr(f'\n{text_test_stat}'))
@@ -639,54 +656,61 @@ def generate_table(main, table):
                 cols_bayes_factor = table.find_cols(main.tr('\nBayes Factor'))
 
             cols_effect_size = table.find_cols(f'\n{text_effect_size}')
-            col_number_files_found = table.find_col(main.tr('Number of\nFiles Found'))
+            col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
+            col_files_found_pct = table.find_col(main.tr('Number of\nFiles Found %'))
 
+            freq_totals = numpy.array(list(keywords_freq_files.values())).sum(axis = 0)
             len_files = len(files)
 
             table.setRowCount(len(keywords_freq_files))
 
             for i, (keyword, stats_files) in enumerate(wordless_sorting.sorted_keywords_stats_files(keywords_stats_files)):
-                keyword_freq_files = keywords_freq_files[keyword]
+                freq_files = keywords_freq_files[keyword]
 
                 # Rank
-                table.set_item_num_int(i, 0, -1)
+                table.set_item_num(i, 0, -1)
 
                 # Keywords
                 table.setItem(i, 1, wordless_table.Wordless_Table_Item(keyword))
 
                 # Frequency
-                for j, freq in enumerate(keyword_freq_files):
-                    table.set_item_num_cumulative(i, cols_freq[j], freq)
+                for j, freq in enumerate(freq_files):
+                    table.set_item_num(i, cols_freq[j], freq)
+
+                    if freq_totals[j]:
+                        table.set_item_num(i, cols_freq_pct[j], freq / freq_totals[j])
+                    else:
+                        table.set_item_num(i, cols_freq_pct[j], 0)
 
                 for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
                     # Test Statistic
                     if text_test_stat:
-                        table.set_item_num_float(i, cols_test_stat[j], test_stat)
+                        table.set_item_num(i, cols_test_stat[j], test_stat)
 
                     # p-value
-                    table.set_item_num_float(i, cols_p_value[j], p_value)
+                    table.set_item_num(i, cols_p_value[j], p_value)
 
                     # Bayes Factor
                     if text_bayes_factor:
-                        table.set_item_num_float(i, cols_bayes_factor[j], bayes_factor)
+                        table.set_item_num(i, cols_bayes_factor[j], bayes_factor)
 
                     # Effect Size
-                    table.set_item_num_float(i, cols_effect_size[j], effect_size)
+                    table.set_item_num(i, cols_effect_size[j], effect_size)
 
                 # Number of Files Found
-                table.set_item_num_pct(i, col_number_files_found,
-                                       len([freq for freq in keyword_freq_files[1:-1] if freq]),
-                                       len_files)
+                num_files_found = len([freq for freq in freq_files[1:-1] if freq])
 
-            table.blockSignals(False)
+                table.set_item_num(i, col_files_found, num_files_found)
+                table.set_item_num(i, col_files_found_pct, num_files_found / len_files)
+
             table.setSortingEnabled(True)
             table.setUpdatesEnabled(True)
+            table.blockSignals(False)
 
             table.toggle_pct()
             table.toggle_cumulative()
             table.toggle_breakdown()
             table.update_ranks()
-            table.update_items_width()
 
             table.itemChanged.emit(table.item(0, 0))
 
