@@ -38,13 +38,14 @@ class Wordless_Table_Ngrams(wordless_table.Wordless_Table_Data_Filter_Search):
                              parent.tr('Rank'),
                              parent.tr('N-grams'),
                              parent.tr('Number of\nFiles Found'),
+                             parent.tr('Number of\nFiles Found %'),
                          ],
-                         headers_num = [
+                         headers_int = [
                              parent.tr('Rank'),
                              parent.tr('Number of\nFiles Found')
                          ],
                          headers_pct = [
-                             parent.tr('Number of\nFiles Found')
+                             parent.tr('Number of\nFiles Found %')
                          ],
                          sorting_enabled = True)
 
@@ -895,54 +896,70 @@ def generate_table(main, table):
             text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
             text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
+            # Insert columns (files)
+            for i, file in enumerate(files):
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr(f'[{file["name"]}]\nFrequency'),
+                                 is_int = True, is_cumulative = True, is_breakdown = True)
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr(f'[{file["name"]}]\nFrequency %'),
+                                 is_pct = True, is_cumulative = True, is_breakdown = True)
+
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr(f'[{file["name"]}]\n{text_dispersion}'),
+                                 is_float = True, is_breakdown = True)
+
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr(f'[{file["name"]}]\n{text_adjusted_freq}'),
+                                 is_float = True, is_breakdown = True)
+
+            # Insert columns (total)
+            table.insert_col(table.columnCount() - 2,
+                             main.tr('Total\nFrequency'),
+                             is_int = True, is_cumulative = True)
+            table.insert_col(table.columnCount() - 2,
+                             main.tr('Total\nFrequency %'),
+                             is_pct = True, is_cumulative = True)
+
+            table.insert_col(table.columnCount() - 2,
+                             main.tr(f'Total\n{text_dispersion}'),
+                             is_float = True)
+
+            table.insert_col(table.columnCount() - 2,
+                             main.tr(f'Total\n{text_adjusted_freq}'),
+                             is_float = True)
+
+            # Sort by frequency of the first file
+            table.horizontalHeader().setSortIndicator(
+                table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')),
+                Qt.DescendingOrder
+            )
+
             table.blockSignals(True)
             table.setSortingEnabled(False)
             table.setUpdatesEnabled(False)
 
-            # Insert Columns (Files)
-            for i, file in enumerate(files):
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'[{file["name"]}]\nFrequency'),
-                                 num = True, pct = True, cumulative = True, breakdown = True)
-
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'[{file["name"]}]\n{text_dispersion}'),
-                                 num = True, breakdown = True)
-
-                table.insert_col(table.columnCount() - 1,
-                                 main.tr(f'[{file["name"]}]\n{text_adjusted_freq}'),
-                                 num = True, breakdown = True)
-
-            # Insert Columns (Total)
-            table.insert_col(table.columnCount() - 1,
-                             main.tr('Total\nFrequency'),
-                             num = True, pct = True, cumulative = True)
-
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'Total\n{text_dispersion}'),
-                             num = True)
-
-            table.insert_col(table.columnCount() - 1,
-                             main.tr(f'Total\n{text_adjusted_freq}'),
-                             num = True)
-
-            # Sort by frequency of the first file
-            table.sortByColumn(table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')), Qt.DescendingOrder)
-
             cols_freq = table.find_cols(main.tr('\nFrequency'))
+            cols_freq_pct = table.find_cols(main.tr('\nFrequency %'))
+
+            for col in cols_freq_pct:
+                cols_freq.remove(col)
+
             cols_dispersion = table.find_cols(main.tr(f'\n{text_dispersion}'))
             cols_adjusted_freq = table.find_cols(main.tr(f'\n{text_adjusted_freq}'))
             col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
+            col_files_found_pct = table.find_col(main.tr('Number of\nFiles Found %'))
 
+            freq_totals = numpy.array(list(ngrams_freq_files.values())).sum(axis = 0)
             len_files = len(files)
 
             table.setRowCount(len(ngrams_freq_files))
 
-            for i, (ngram, freqs) in enumerate(wordless_sorting.sorted_tokens_freq_files(ngrams_freq_files)):
+            for i, (ngram, freq_files) in enumerate(wordless_sorting.sorted_tokens_freq_files(ngrams_freq_files)):
                 stats_files = ngrams_stats_files[ngram]
 
                 # Rank
-                table.set_item_num_int(i, 0, -1)
+                table.set_item_num(i, 0, -1)
 
                 # N-grams
                 table.setItem(i, 1, wordless_table.Wordless_Table_Item(ngrams_text[ngram]))
@@ -950,28 +967,31 @@ def generate_table(main, table):
                 table.item(i, 1).text_raw = ngram
 
                 # Frequency
-                for j, freq in enumerate(freqs):
-                    table.set_item_num_cumulative(i, cols_freq[j], freq)
+                for j, freq in enumerate(freq_files):
+                    table.set_item_num(i, cols_freq[j], freq)
+                    table.set_item_num(i, cols_freq_pct[j], freq / freq_totals[j])
 
                 for j, (dispersion, adjusted_freq) in enumerate(stats_files):
                     # Dispersion
-                    table.set_item_num_float(i, cols_dispersion[j], dispersion)
+                    table.set_item_num(i, cols_dispersion[j], dispersion)
 
                     # Adjusted Frequency
-                    table.set_item_num_float(i, cols_adjusted_freq[j], adjusted_freq)
+                    table.set_item_num(i, cols_adjusted_freq[j], adjusted_freq)
 
                 # Number of Files Found
-                table.set_item_num_pct(i, col_files_found, len([freq for freq in freqs[:-1] if freq]), len_files)
+                num_files_found = len([freq for freq in freq_files[:-1] if freq])
 
-            table.blockSignals(False)
+                table.set_item_num(i, col_files_found, num_files_found)
+                table.set_item_num(i, col_files_found_pct, num_files_found / len_files)
+
             table.setSortingEnabled(True)
             table.setUpdatesEnabled(True)
+            table.blockSignals(False)
 
             table.toggle_pct()
             table.toggle_cumulative()
             table.toggle_breakdown()
             table.update_ranks()
-            table.update_items_width()
 
             table.itemChanged.emit(table.item(0, 0))
 

@@ -111,7 +111,7 @@ class Wordless_Worker_Results_Filter_Wordlist(Wordless_Worker_Results_Filter):
         if self.dialog.tab == 'wordlist':
             for i in range(self.dialog.table.rowCount()):
                 if (len_token_min       <= len(self.dialog.table.item(i, col_tokens).text())  <= len_token_max and
-                    freq_min            <= self.dialog.table.item(i, col_freq).val_raw        <= freq_max and
+                    freq_min            <= self.dialog.table.item(i, col_freq).val            <= freq_max and
                     dispersion_min      <= self.dialog.table.item(i, col_dispersion).val      <= dispersion_max and
                     adjusted_freq_min   <= self.dialog.table.item(i, col_adjusted_freq).val   <= adjusted_freq_max and
                     num_files_found_min <= self.dialog.table.item(i, col_num_files_found).val <= num_files_found_max):
@@ -121,7 +121,7 @@ class Wordless_Worker_Results_Filter_Wordlist(Wordless_Worker_Results_Filter):
         elif self.dialog.tab == 'ngrams':
             for i in range(self.dialog.table.rowCount()):
                 if (len_ngram_min       <= len(self.dialog.table.item(i, col_ngrams).text())  <= len_ngram_max and
-                    freq_min            <= self.dialog.table.item(i, col_freq).val_raw        <= freq_max and
+                    freq_min            <= self.dialog.table.item(i, col_freq).val            <= freq_max and
                     dispersion_min      <= self.dialog.table.item(i, col_dispersion).val      <= dispersion_max and
                     adjusted_freq_min   <= self.dialog.table.item(i, col_adjusted_freq).val   <= adjusted_freq_max and
                     num_files_found_min <= self.dialog.table.item(i, col_num_files_found).val <= num_files_found_max):
@@ -257,7 +257,7 @@ class Wordless_Worker_Results_Filter_Collocation(Wordless_Worker_Results_Filter)
                 filter_bayes_factor = True
 
             if (len_collocate_min   <= len(self.dialog.table.item(i, col_collocates).text()) <= len_collocate_max and
-                freq_min            <= self.dialog.table.item(i, col_freq).val_raw           <= freq_max and
+                freq_min            <= self.dialog.table.item(i, col_freq).val               <= freq_max and
                 filter_test_stat and
                 p_value_min         <= self.dialog.table.item(i, col_p_value).val            <= p_value_max and
                 filter_bayes_factor and
@@ -383,7 +383,7 @@ class Wordless_Worker_Results_Filter_Keywords(Wordless_Worker_Results_Filter):
                 filter_bayes_factor = True
 
             if (len_keyword_min     <= len(self.dialog.table.item(i, col_keywords).text()) <= len_keyword_max and
-                freq_min            <= self.dialog.table.item(i, col_freq).val_raw         <= freq_max and
+                freq_min            <= self.dialog.table.item(i, col_freq).val             <= freq_max and
                 filter_test_stat and
                 p_value_min         <= self.dialog.table.item(i, col_p_value).val          <= p_value_max and
                 filter_bayes_factor and
