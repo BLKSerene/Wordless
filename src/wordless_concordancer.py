@@ -39,22 +39,26 @@ class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Sort_Search
                              parent.tr('Node'),
                              parent.tr('Right'),
                              parent.tr('Token No.'),
+                             parent.tr('Token No. %'),
                              parent.tr('Clause No.'),
+                             parent.tr('Clause No. %'),
                              parent.tr('Sentence No.'),
+                             parent.tr('Sentence No. %'),
                              parent.tr('Paragraph No.'),
+                             parent.tr('Paragraph No. %'),
                              parent.tr('File')
                          ],
-                         headers_num = [
+                         headers_int = [
                              parent.tr('Token No.'),
                              parent.tr('Clause No.'),
                              parent.tr('Sentence No.'),
                              parent.tr('Paragraph No.')
                          ],
                          headers_pct = [
-                             parent.tr('Token No.'),
-                             parent.tr('Clause No.'),
-                             parent.tr('Sentence No.'),
-                             parent.tr('Paragraph No.')
+                             parent.tr('Token No. %'),
+                             parent.tr('Clause No. %'),
+                             parent.tr('Sentence No. %'),
+                             parent.tr('Paragraph No. %')
                          ])
 
         self.name = 'concordancer'
@@ -946,7 +950,6 @@ def generate_table(main, table):
         if concordance_lines:
             table.settings = main.settings_custom
 
-            table.hide()
             table.blockSignals(True)
             table.setUpdatesEnabled(False)
 
@@ -999,23 +1002,25 @@ def generate_table(main, table):
                 table.cellWidget(table.rowCount() - 1, 2).text_search = right_text_search
 
                 # Token No.
-                table.set_item_num_pct(table.rowCount() - 1, 3, no_token, len_tokens)
+                table.set_item_num(table.rowCount() - 1, 3, no_token)
+                table.set_item_num(table.rowCount() - 1, 4, no_token / len_tokens)
                 # Clause No.
-                table.set_item_num_pct(table.rowCount() - 1, 4, no_clause, len_clauses)
+                table.set_item_num(table.rowCount() - 1, 5, no_clause)
+                table.set_item_num(table.rowCount() - 1, 6, no_clause / len_clauses)
                 # Sentence No.
-                table.set_item_num_pct(table.rowCount() - 1, 5, no_sentence, len_sentences)
+                table.set_item_num(table.rowCount() - 1, 7, no_sentence)
+                table.set_item_num(table.rowCount() - 1, 8, no_sentence / len_sentences)
                 # Paragraph No.
-                table.set_item_num_pct(table.rowCount() - 1, 6, no_para, len_paras)
+                table.set_item_num(table.rowCount() - 1, 9, no_para)
+                table.set_item_num(table.rowCount() - 1, 10, no_para / len_paras)
 
                 # File
-                table.setItem(table.rowCount() - 1, 7, QTableWidgetItem(file_name))
+                table.setItem(table.rowCount() - 1, 11, QTableWidgetItem(file_name))
 
-            table.blockSignals(False)
             table.setUpdatesEnabled(True)
-            table.show()
+            table.blockSignals(False)
 
             table.toggle_pct()
-            table.update_items_width()
 
             table.itemChanged.emit(table.item(0, 0))
 
