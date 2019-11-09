@@ -46,7 +46,7 @@
 - Upgrade NetworkX to 2.4
 - Upgrade NumPy to 1.17.2
 - Upgrade openpyxl to 3.0.0
-- Upgrade PyQt to 5.13.1
+- Upgrade PyQt to 5.13.2
 - Upgrade pytest to 5.2.0
 - Upgrade Sacremoses to 0.0.35
 - Upgrade spaCy to 2.2.2
