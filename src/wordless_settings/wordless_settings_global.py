@@ -545,6 +545,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentencizer')
             ],
 
+            'ltz': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'nob': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
                 main.tr('spaCy - Sentencizer')

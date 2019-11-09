@@ -1075,6 +1075,7 @@ def init_settings_default(main):
                 'kan': main.tr('spaCy - Sentencizer'),
                 'lav': main.tr('spaCy - Sentencizer'),
                 'lit': main.tr('spaCy - Sentencizer'),
+                'ltz': main.tr('spaCy - Sentencizer'),
                 'nob': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'nno': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'fas': main.tr('spaCy - Sentencizer'),
