@@ -136,7 +136,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # PyQt
             [
                 'PyQt', 'https://www.riverbankcomputing.com/software/pyqt/intro',
-                '5.13.1',
+                '5.13.2',
                 'Riverbank Computing Limited',
                 'GPL-3.0', 'http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license'
             ],
