@@ -15,53 +15,43 @@ sys.path.append('.')
 
 import pytest
 
-from wordless_tests import test_init
+from wordless_tests import test_init, test_lang_examples
 from wordless_text import wordless_text_processing
 from wordless_utils import wordless_conversion
 
-POS_TAGGERS = []
-
-SENTENCE_ZHO_CN = '汉语，又称汉文、中文、中国话、中国语、华语、华文、唐话[2]，或被视为一个语族，或被视为隶属于汉藏语系汉语族之一种语言。'
-SENTENCE_ZHO_TW = '漢語，又稱漢文、中文、中國話、中國語、華語、華文、唐話[2]，或被視為一個語族，或被視為隸屬於漢藏語系漢語族之一種語言。'
-SENTENCE_NLD = 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
-SENTENCE_ENG = 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.[5][6]'
-SENTENCE_FRA = 'Le français est une langue indo-européenne de la famille des langues romanes.'
-SENTENCE_DEU = 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ]; abgekürzt dt. oder dtsch.) ist eine westgermanische Sprache.'
-SENTENCE_ELL = 'Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[9] και συγκεκριμένα στον ελληνικό κλάδο, μαζί με την τσακωνική, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.'
-SENTENCE_ITA = "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
-SENTENCE_JPN = '日本語（にほんご、にっぽんご[注 1]）は、主に日本国内や日本人同士の間で使用されている言語である。'
-SENTENCE_LIT = 'Lietuvių kalba – iš baltų prokalbės kilusi lietuvių tautos kalba, kuri Lietuvoje yra valstybinė, o Europos Sąjungoje – viena iš oficialiųjų kalbų.'
-SENTENCE_NOB = 'Bokmål er en varietet av norsk språk.'
-SENTENCE_POR = 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.'
-SENTENCE_RUS = 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать)[~ 3][⇨] — один из восточнославянских языков, национальный язык русского народа.'
-SENTENCE_SPA = 'El español o castellano es una lengua romance procedente del latín hablado.'
-SENTENCE_THA = 'ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย'
-SENTENCE_BOD = '༄༅། །རྒྱ་གར་སྐད་དུ། བོ་དྷི་སཏྭ་ཙརྻ་ཨ་བ་ཏ་ར། བོད་སྐད་དུ། བྱང་ཆུབ་སེམས་དཔའི་སྤྱོད་པ་ལ་འཇུག་པ། །སངས་རྒྱས་དང་བྱང་ཆུབ་སེམས་དཔའ་ཐམས་ཅད་ལ་ཕྱག་འཚལ་ལོ། །བདེ་གཤེགས་ཆོས་ཀྱི་སྐུ་མངའ་སྲས་བཅས་དང༌། །ཕྱག་འོས་ཀུན་ལའང་གུས་པར་ཕྱག་འཚལ་ཏེ། །བདེ་གཤེགས་སྲས་ཀྱི་སྡོམ་ལ་འཇུག་པ་ནི། །ལུང་བཞིན་མདོར་བསྡུས་ནས་ནི་བརྗོད་པར་བྱ། །'
-SENTENCE_UKR = 'Украї́нська мо́ва (МФА: [ukrɑ̽ˈjɪnʲsʲkɑ̽ ˈmɔwɑ̽], історичні назви — ру́ська, руси́нська[9][10][11][* 2]) — національна мова українців.'
-SENTENCE_VIE = 'Tiếng Việt, còn gọi tiếng Việt Nam[5], tiếng Kinh hay Việt ngữ, là ngôn ngữ của người Việt (dân tộc Kinh) và là ngôn ngữ chính thức tại Việt Nam.'
+test_pos_taggers = []
 
 main = test_init.Test_Main()
 
 for lang, pos_taggers in main.settings_global['pos_taggers'].items():
     for pos_tagger in pos_taggers:
-        # Temporarily disable testing of pybo's POS tagger due to memory issues
+        # Temporarily disable testing of Tibetan POS tagger due to memory issues relating to botok
         if lang != 'bod':
-            POS_TAGGERS.append((lang, pos_tagger))
+            test_pos_taggers.append((lang, pos_tagger))
 
-@pytest.mark.parametrize('lang, pos_tagger', POS_TAGGERS)
+@pytest.mark.parametrize('lang, pos_tagger', test_pos_taggers)
 def test_pos_tag(lang, pos_tagger, show_results = False):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
-    tokens = wordless_text_processing.wordless_word_tokenize(main, globals()[f'SENTENCE_{lang.upper()}'],
-                                                             lang = lang)
+    tokens = wordless_text_processing.wordless_word_tokenize(
+        main,
+        text = getattr(test_lang_examples, f'SENTENCE_{lang.upper()}'),
+        lang = lang
+    )
 
-    tokens_tagged = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                              lang = lang,
-                                                              pos_tagger = pos_tagger)
-    tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(main, tokens,
-                                                                        lang = lang,
-                                                                        pos_tagger = pos_tagger,
-                                                                        tagset = 'universal')
+    tokens_tagged = wordless_text_processing.wordless_pos_tag(
+        main,
+        tokens = tokens,
+        lang = lang,
+        pos_tagger = pos_tagger
+    )
+    tokens_tagged_universal = wordless_text_processing.wordless_pos_tag(
+        main,
+        tokens = tokens,
+        lang = lang,
+        pos_tagger = pos_tagger,
+        tagset = 'universal'
+    )
 
     if show_results:
         print(tokens_tagged)
@@ -78,11 +68,11 @@ def test_pos_tag(lang, pos_tagger, show_results = False):
         assert tokens_tagged_universal == [('Het', 'DET'), ('Nederlands', 'ADJ'), ('is', 'VERB'), ('een', 'DET'), ('West-Germaanse', 'ADJ'), ('taal', 'NOUN'), ('en', 'CONJ'), ('de', 'DET'), ('moedertaal', 'NOUN'), ('van', 'ADP'), ('de', 'DET'), ('meeste', 'NUM'), ('inwoners', 'NOUN'), ('van', 'ADP'), ('Nederland', 'NOUN'), (',', 'PUNCT'), ('België', 'NOUN'), ('en', 'CONJ'), ('Suriname', 'NOUN'), ('.', 'PUNCT')]
     elif lang == 'eng':
         if pos_tagger == 'NLTK - Perceptron POS Tagger':
-            assert tokens_tagged == [('English', 'NNP'), ('is', 'VBZ'), ('a', 'DT'), ('West', 'NNP'), ('Germanic', 'NNP'), ('language', 'NN'), ('that', 'WDT'), ('was', 'VBD'), ('first', 'RB'), ('spoken', 'VBN'), ('in', 'IN'), ('early', 'JJ'), ('medieval', 'NN'), ('England', 'NNP'), ('and', 'CC'), ('eventually', 'RB'), ('became', 'VBD'), ('a', 'DT'), ('global', 'JJ'), ('lingua', 'NN'), ('franca.[5][6', 'NN'), (']', 'NN')]
-            assert tokens_tagged_universal == [('English', 'PROPN'), ('is', 'VERB'), ('a', 'DET'), ('West', 'PROPN'), ('Germanic', 'PROPN'), ('language', 'NOUN'), ('that', 'DET'), ('was', 'VERB'), ('first', 'ADV'), ('spoken', 'VERB'), ('in', 'ADP/SCONJ'), ('early', 'ADJ'), ('medieval', 'NOUN'), ('England', 'PROPN'), ('and', 'CCONJ'), ('eventually', 'ADV'), ('became', 'VERB'), ('a', 'DET'), ('global', 'ADJ'), ('lingua', 'NOUN'), ('franca.[5][6', 'NOUN'), (']', 'NOUN')]
+            assert tokens_tagged == [('English', 'NNP'), ('is', 'VBZ'), ('a', 'DT'), ('West', 'NNP'), ('Germanic', 'NNP'), ('language', 'NN'), ('that', 'WDT'), ('was', 'VBD'), ('first', 'RB'), ('spoken', 'VBN'), ('in', 'IN'), ('early', 'JJ'), ('medieval', 'NN'), ('England', 'NNP'), ('and', 'CC'), ('eventually', 'RB'), ('became', 'VBD'), ('a', 'DT'), ('global', 'JJ'), ('lingua', 'NN'), ('franca.[4][5', 'NN'), (']', 'NN')]
+            assert tokens_tagged_universal == [('English', 'PROPN'), ('is', 'VERB'), ('a', 'DET'), ('West', 'PROPN'), ('Germanic', 'PROPN'), ('language', 'NOUN'), ('that', 'DET'), ('was', 'VERB'), ('first', 'ADV'), ('spoken', 'VERB'), ('in', 'ADP/SCONJ'), ('early', 'ADJ'), ('medieval', 'NOUN'), ('England', 'PROPN'), ('and', 'CCONJ'), ('eventually', 'ADV'), ('became', 'VERB'), ('a', 'DET'), ('global', 'ADJ'), ('lingua', 'NOUN'), ('franca.[4][5', 'NOUN'), (']', 'NOUN')]
         elif pos_tagger == 'spaCy - English POS Tagger':
-            assert tokens_tagged == [('English', 'NNP'), ('is', 'VBZ'), ('a', 'DT'), ('West', 'NNP'), ('Germanic', 'NNP'), ('language', 'NN'), ('that', 'WDT'), ('was', 'VBD'), ('first', 'RB'), ('spoken', 'VBN'), ('in', 'IN'), ('early', 'JJ'), ('medieval', 'JJ'), ('England', 'NNP'), ('and', 'CC'), ('eventually', 'RB'), ('became', 'VBD'), ('a', 'DT'), ('global', 'JJ'), ('lingua', 'FW'), ('franca.[5][6', 'NNP'), (']', '-RRB-')]
-            assert tokens_tagged_universal == [('English', 'PROPN'), ('is', 'VERB'), ('a', 'DET'), ('West', 'PROPN'), ('Germanic', 'PROPN'), ('language', 'NOUN'), ('that', 'DET'), ('was', 'VERB'), ('first', 'ADV'), ('spoken', 'VERB'), ('in', 'ADP/SCONJ'), ('early', 'ADJ'), ('medieval', 'ADJ'), ('England', 'PROPN'), ('and', 'CCONJ'), ('eventually', 'ADV'), ('became', 'VERB'), ('a', 'DET'), ('global', 'ADJ'), ('lingua', 'X'), ('franca.[5][6', 'PROPN'), (']', 'PUNCT')]
+            assert tokens_tagged == [('English', 'NNP'), ('is', 'VBZ'), ('a', 'DT'), ('West', 'NNP'), ('Germanic', 'NNP'), ('language', 'NN'), ('that', 'WDT'), ('was', 'VBD'), ('first', 'RB'), ('spoken', 'VBN'), ('in', 'IN'), ('early', 'JJ'), ('medieval', 'JJ'), ('England', 'NNP'), ('and', 'CC'), ('eventually', 'RB'), ('became', 'VBD'), ('a', 'DT'), ('global', 'JJ'), ('lingua', 'FW'), ('franca.[4][5', 'NNP'), (']', '-RRB-')]
+            assert tokens_tagged_universal == [('English', 'PROPN'), ('is', 'VERB'), ('a', 'DET'), ('West', 'PROPN'), ('Germanic', 'PROPN'), ('language', 'NOUN'), ('that', 'DET'), ('was', 'VERB'), ('first', 'ADV'), ('spoken', 'VERB'), ('in', 'ADP/SCONJ'), ('early', 'ADJ'), ('medieval', 'ADJ'), ('England', 'PROPN'), ('and', 'CCONJ'), ('eventually', 'ADV'), ('became', 'VERB'), ('a', 'DET'), ('global', 'ADJ'), ('lingua', 'X'), ('franca.[4][5', 'PROPN'), (']', 'PUNCT')]
     elif lang == 'fra':
         assert tokens_tagged == [('Le', 'DET__Definite=Def|Gender=Masc|Number=Sing|PronType=Art'), ('français', 'NOUN__Gender=Masc|Number=Sing'), ('est', 'AUX__Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin'), ('une', 'DET__Definite=Ind|Gender=Fem|Number=Sing|PronType=Art'), ('langue', 'NOUN__Gender=Fem|Number=Sing'), ('indo-européenne', 'NOUN__Gender=Fem|Number=Sing'), ('de', 'ADP___'), ('la', 'DET__Definite=Def|Gender=Fem|Number=Sing|PronType=Art'), ('famille', 'NOUN__Gender=Fem|Number=Sing'), ('des', 'DET__Definite=Ind|Number=Plur|PronType=Art'), ('langues', 'NOUN__Gender=Fem|Number=Plur'), ('romanes', 'ADJ__Gender=Fem|Number=Plur'), ('.', 'PUNCT___')]
         assert tokens_tagged_universal == [('Le', 'DET'), ('français', 'NOUN'), ('est', 'AUX'), ('une', 'DET'), ('langue', 'NOUN'), ('indo-européenne', 'NOUN'), ('de', 'ADP'), ('la', 'DET'), ('famille', 'NOUN'), ('des', 'DET'), ('langues', 'NOUN'), ('romanes', 'ADJ'), ('.', 'PUNCT')]
@@ -138,4 +128,4 @@ if __name__ == '__main__':
     for lang, pos_taggers in main.settings_global['pos_taggers'].items():
         for pos_tagger in pos_taggers:
             if lang not in ['bod']:
-                test_pos_tag(lang, pos_tagger)
+                test_pos_tag(lang, pos_tagger, show_results = True)
