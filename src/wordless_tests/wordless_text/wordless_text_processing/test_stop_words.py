@@ -19,15 +19,15 @@ from wordless_tests import test_init
 from wordless_text import wordless_text_processing
 from wordless_utils import wordless_conversion
 
-LISTS_STOP_WORDS = []
+test_lists_stop_words = []
 
 main = test_init.Test_Main()
 
 for lang, lists_stop_words in main.settings_global['stop_words'].items():
     for list_stop_words in lists_stop_words:
-        LISTS_STOP_WORDS.append((lang, list_stop_words))
+        test_lists_stop_words.append((lang, list_stop_words))
 
-@pytest.mark.parametrize('lang, list_stop_words', LISTS_STOP_WORDS)
+@pytest.mark.parametrize('lang, list_stop_words', test_lists_stop_words)
 def test_stop_words(lang, list_stop_words, show_results = False):
     lang_text = wordless_conversion.to_lang_text(main, lang)
     stop_words = wordless_text_processing.wordless_get_stop_words(main, lang, list_stop_words = list_stop_words)
