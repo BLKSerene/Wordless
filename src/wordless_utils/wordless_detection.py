@@ -63,6 +63,9 @@ def detect_encoding(main, file_path):
     except:
         success = False
 
+    encoding = encoding.lower()
+    encoding = encoding.replace('-', '_')
+
     return encoding, success
 
 def detect_text_type(main, file):
