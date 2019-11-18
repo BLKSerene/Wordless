@@ -51,6 +51,7 @@
 - Upgrade Sacremoses to 0.0.35
 - Upgrade SciPy to 1.3.2
 - Upgrade spaCy to 2.2.2
+- Upgrade syntok to 1.2.2
 - Upgrade underthesea to 1.1.17
 
 ## [v1.2.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.2.0) - 08/27/2019
