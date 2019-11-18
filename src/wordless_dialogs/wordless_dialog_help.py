@@ -306,7 +306,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # openpyxl
             [
                 'openpyxl', 'https://openpyxl.readthedocs.io/en/stable/',
-                '3.0.0',
+                '3.0.1',
                 'Eric Gazoni, Charlie Clark',
                 'MIT', 'https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst'
             ],
