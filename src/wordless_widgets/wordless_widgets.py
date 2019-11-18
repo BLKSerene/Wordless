@@ -144,7 +144,7 @@ def wordless_widgets_token_settings_concordancer(parent):
     combo_box_ignore_tags = wordless_box.Wordless_Combo_Box(parent)
     combo_box_ignore_tags_tags = wordless_box.Wordless_Combo_Box(parent)
 
-    label_ignore_tags = QLabel(parent.tr('Tags'), parent)
+    label_ignore_tags = QLabel(parent.tr('tags'), parent)
     checkbox_use_tags = QCheckBox(parent.tr('Use tags only'), parent)
 
     combo_box_ignore_tags.addItems([
