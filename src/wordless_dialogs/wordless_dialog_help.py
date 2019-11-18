@@ -143,7 +143,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # pytest
             [
                 'pytest', 'https://pytest.org',
-                '5.2.0',
+                '5.2.4',
                 'Holger Krekel',
                 'MIT', 'https://github.com/pytest-dev/pytest/blob/master/LICENSE'
             ]
