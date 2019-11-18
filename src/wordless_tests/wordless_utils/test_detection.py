@@ -35,7 +35,11 @@ def test_detection_encoding(file_name):
 
     encoding_code, success = wordless_detection.detect_encoding(main, file["path"])
 
-    assert encoding_code.lower() == re.search(r'(?<=\()[^\(\)]+?(?=\)\.txt)', file_name).group().lower()
+    encoding_code_file = re.search(r'(?<=\()[^\(\)]+?(?=\)\.txt)', file_name).group()
+    encoding_code_file = encoding_code_file.lower()
+    encoding_code_file = encoding_code_file.replace('-', '_')
+
+    assert encoding_code == encoding_code_file
     assert success
 
 # Language detection
