@@ -216,7 +216,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # syntok
             [
                 'syntok', 'https://github.com/fnl/syntok',
-                '1.2.1',
+                '1.2.2',
                 'Florian Leitner',
                 'MIT', 'https://github.com/fnl/syntok/blob/master/LICENSE'
             ],
