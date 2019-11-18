@@ -299,7 +299,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # NumPy
             [
                 'NumPy', 'https://numpy.org',
-                '1.17.3',
+                '1.17.4',
                 'NumPy Developers',
                 'BSD-3-Clause', 'http://www.numpy.org/license.html'
             ],
