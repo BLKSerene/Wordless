@@ -328,7 +328,7 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
         # Figure Settings
         self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
 
-        self.label_sort_results_by = QLabel(self.tr('Sort Results by:'), self)
+        self.label_sort_results_by = QLabel(self.tr('Sort results by:'), self)
         self.combo_box_sort_results_by = wordless_box.Wordless_Combo_Box(self)
 
         self.combo_box_sort_results_by.addItems([
