@@ -35,7 +35,7 @@ jobs:
 
   # Download data
   - script: |
-      python wordless_ci_data_downloader.py
+      python downloaders/wordless_downloader_ci.py
     displayName: 'Download data'
 
   # Run tests
@@ -74,7 +74,7 @@ jobs:
 
   # Download data
   - script: |
-      python3 wordless_ci_data_downloader.py
+      python3 downloaders/wordless_downloader_ci.py
     displayName: 'Download data'
 
   # Run tests
@@ -113,7 +113,7 @@ jobs:
 
   # Download data
   - script: |
-      python3.7 wordless_ci_data_downloader.py
+      python3.7 downloaders/wordless_downloader_ci.py
     displayName: 'Download data'
 
   # Run tests
