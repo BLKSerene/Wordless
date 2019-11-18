@@ -62,16 +62,17 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
     elif lang == 'eng':
         if lemmatizer == 'Lemmatization Lists - English Lemma List':
             assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'that', 'be', '1', 'speak', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'become', 'a', 'global', 'lingua', 'franca.[4][5', ']']
-        elif lemmatizer in ['NLTK - WordNet Lemmatizer',
-                            'spaCy - English Lemmatizer']:
+        elif lemmatizer == 'NLTK - WordNet Lemmatizer':
             assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'that', 'be', 'first', 'speak', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'become', 'a', 'global', 'lingua', 'franca.[4][5', ']']
+        elif lemmatizer == 'spaCy - English Lemmatizer':
+            assert lemmas == ['English', 'be', 'a', 'West', 'germanic', 'language', 'that', 'be', 'first', 'speak', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'become', 'a', 'global', 'lingua', 'franca.[4][5', ']']
     elif lang == 'est':
         assert lemmas == ['Eesti', 'kee', '(', 'varasem', 'nimetu', ':', 'maakeel', ')', 'olema', 'läänemeresoome', 'lõunarühma', 'kuuluma', 'kee', '.']
     elif lang == 'fra':
         if lemmatizer == 'Lemmatization Lists - French Lemma List':
             assert lemmas == ['Le', 'français', 'être', 'un', 'langue', 'indo-européen', 'de', 'le', 'famille', 'un', 'langue', 'roman', '.']
         elif lemmatizer == 'spaCy - French Lemmatizer':
-            assert lemmas == ['le', 'français', 'être', 'un', 'langue', 'indo-européenne', 'de', 'le', 'famille', 'un', 'langue', 'roman', '.']
+            assert lemmas == ['le', 'français', 'être', 'un', 'langue', 'indo-européen', 'de', 'le', 'famille', 'un', 'langue', 'roman', '.']
     elif lang == 'glg':
         assert lemmas == ['O', 'galego', '(', '[', 'ɡaˈleɣo̝', ']', ')', 'ser', 'un', 'lingua', 'indoeuropeo', 'que', 'pertencer', 'á', 'póla', 'de', 'lingua', 'románico', '.']
     elif lang == 'deu':
@@ -82,7 +83,7 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
     elif lang == 'grc':
         assert lemmas == ['Με', 'τον', 'όρο', 'αρχαία', 'ελληνική', 'γλώσσα', 'εννοείται', 'μια', 'μορφή', 'της', 'ελληνικής', 'γλώσσας', ',', 'πού', 'ομιλούνταν', 'κατά', 'τους', 'αρχαϊκούς', 'χρόνους', 'και', 'την', 'κλασική', 'αρχαιότητα', '.']
     elif lang == 'ell':
-        assert lemmas == ['η', 'ελληνικός', 'γλώσσα', 'ανήκω', 'στην', 'ινδοευρωπαϊκός', 'οικογένεια[9', ']', 'και', 'συγκεκριμένος', 'στον', 'ελληνικό', 'κλάδο', ',', 'μαζί', 'με', 'την', 'τσακωνικός', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
+        assert lemmas == ['η', 'ελληνικός', 'γλώσσα', 'ανήκω', 'στην', 'ινδοευρωπαϊκός', 'οικογένεια[9', ']', 'και', 'συγκεκριμένα', 'στον', 'ελληνικό', 'κλάδο', ',', 'μαζί', 'με', 'την', 'τσακωνικός', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
     elif lang == 'hun':
         assert lemmas == ['A', 'magyar', 'nyelv', 'az', 'uráli', 'nyelvcsalád', 'tag', ',', 'a', 'finnugor', 'nyelv', 'köz', 'tartozó', 'ugor', 'nyelv', 'egyik', '.']
     elif lang == 'gle':
