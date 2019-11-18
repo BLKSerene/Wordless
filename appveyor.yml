@@ -36,7 +36,7 @@ install:
   - python -m pip install --upgrade pip
   - pip install -r requirements.txt
   # Download data
-  - python wordless_ci_data_downloader.py
+  - python downloaders/wordless_downloader_ci.py
 
 build: off
 

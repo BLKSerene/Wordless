@@ -42,8 +42,8 @@ install:
   - pip3 install -r requirements.txt
   # Download data
   - >-
-    python3 wordless_ci_data_downloader.py ||
-    python wordless_ci_data_downloader.py
+    python3 downloaders/wordless_downloader_ci.py ||
+    python downloaders/wordless_downloader_ci.py
 
 before_script:
   - cd src
