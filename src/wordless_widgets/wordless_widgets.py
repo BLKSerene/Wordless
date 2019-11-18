@@ -562,8 +562,8 @@ def wordless_widgets_fig_settings(parent, collocation = False):
     # Clip long file names
     combo_box_use_file.setSizeAdjustPolicy(QComboBox.AdjustToMinimumContentsLengthWithIcon)
 
-    checkbox_use_pct = QCheckBox(parent.tr('Use Percentage Data'), parent)
-    checkbox_use_cumulative = QCheckBox(parent.tr('Use Cumulative Data'), parent)
+    checkbox_use_pct = QCheckBox(parent.tr('Use percentage data'), parent)
+    checkbox_use_cumulative = QCheckBox(parent.tr('Use cumulative data'), parent)
 
     combo_box_graph_type.addItems([parent.tr('Line Chart'),
                                    parent.tr('Word Cloud')])
