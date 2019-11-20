@@ -204,12 +204,16 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
          self.search_combo_box_ignore_tags_tags,
 
          self.search_label_ignore_tags,
-         self.checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(self,
-                                                                                       tab = 'collocation')
+         self.checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(
+            self,
+            tab = 'collocation'
+        )
 
         (self.label_context_settings,
-         self.button_context_settings) = wordless_widgets.wordless_widgets_context_settings(self,
-                                                                                            tab = 'collocation')
+         self.button_context_settings) = wordless_widgets.wordless_widgets_context_settings(
+            self,
+            tab = 'collocation'
+        )
 
         self.group_box_search_settings.setCheckable(True)
 
@@ -278,8 +282,10 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
          self.combo_box_measure_effect_size) = wordless_widgets.wordless_widgets_measure_effect_size(self)
 
         (self.label_settings_measures,
-         self.button_settings_measures) = wordless_widgets.wordless_widgets_settings_measures(self,
-                                                                                              tab = self.tr('Statistical Significance'))
+         self.button_settings_measures) = wordless_widgets.wordless_widgets_settings_measures(
+            self,
+            tab = self.tr('Statistical Significance')
+        )
 
         self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['collocation'].keys()))
         self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['collocation'].keys()))
@@ -324,8 +330,10 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
 
         (self.checkbox_show_pct,
          self.checkbox_show_cumulative,
-         self.checkbox_show_breakdown_file) = wordless_widgets.wordless_widgets_table_settings(self,
-                                                                                               table = self.table_collocation)
+         self.checkbox_show_breakdown_file) = wordless_widgets.wordless_widgets_table_settings(
+            self,
+            table = self.table_collocation
+        )
 
         self.checkbox_show_breakdown_file.setText(self.tr('Show breakdown by file'))
         self.checkbox_show_breakdown_position = QCheckBox(self.tr('Show breakdown by span position'), self)
@@ -354,7 +362,10 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
          self.combo_box_use_data,
 
          self.checkbox_use_pct,
-         self.checkbox_use_cumulative) = wordless_widgets.wordless_widgets_fig_settings(self, collocation = True)
+         self.checkbox_use_cumulative) = wordless_widgets.wordless_widgets_fig_settings(
+            self,
+            collocation = True
+        )
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (self.label_rank_min,
@@ -362,9 +373,11 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
          self.checkbox_rank_min_no_limit,
          self.label_rank_max,
          self.spin_box_rank_max,
-         self.checkbox_rank_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                     filter_min = 1,
-                                                                                     filter_max = 100000)
+         self.checkbox_rank_max_no_limit) = wordless_widgets.wordless_widgets_filter(
+            self,
+            filter_min = 1,
+            filter_max = 100000
+        )
 
         self.combo_box_graph_type.currentTextChanged.connect(self.fig_settings_changed)
         self.combo_box_use_file.currentTextChanged.connect(self.fig_settings_changed)
@@ -591,9 +604,11 @@ class Wrapper_Collocation(wordless_layout.Wordless_Wrapper):
                 self.combo_box_use_data.addItem(f'R{i}')
 
         self.combo_box_use_data.addItem(self.tr('Frequency'))
-        self.combo_box_use_data.addItems([col
-                                          for col in self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
-                                          if col])
+        self.combo_box_use_data.addItems(
+            [col
+             for col in self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
+             if col]
+        )
         self.combo_box_use_data.addItem(self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col'])
 
         if self.combo_box_use_data.findText(use_data_old) > -1:
@@ -656,21 +671,27 @@ class Wordless_Worker_Collocation(wordless_threading.Wordless_Worker):
 
             text = wordless_text.Wordless_Text(self.main, file)
 
-            tokens = wordless_token_processing.wordless_process_tokens_ngrams(text,
-                                                                              token_settings = settings['token_settings'])
+            tokens = wordless_token_processing.wordless_process_tokens_ngrams(
+                text,
+                token_settings = settings['token_settings']
+            )
 
-            search_terms = wordless_matching.match_search_terms(self.main, tokens,
-                                                                lang = text.lang,
-                                                                text_type = text.text_type,
-                                                                token_settings = settings['token_settings'],
-                                                                search_settings = settings['search_settings'])
+            search_terms = wordless_matching.match_search_terms(
+                self.main, tokens,
+                lang = text.lang,
+                text_type = text.text_type,
+                token_settings = settings['token_settings'],
+                search_settings = settings['search_settings']
+            )
 
             (search_terms_inclusion,
-             search_terms_exclusion) = wordless_matching.match_search_terms_context(self.main, tokens,
-                                                                                    lang = text.lang,
-                                                                                    text_type = text.text_type,
-                                                                                    token_settings = settings['token_settings'],
-                                                                                    context_settings = settings['context_settings'])
+             search_terms_exclusion) = wordless_matching.match_search_terms_context(
+                self.main, tokens,
+                lang = text.lang,
+                text_type = text.text_type,
+                token_settings = settings['token_settings'],
+                context_settings = settings['context_settings']
+            )
 
             if search_terms:
                 len_search_term_min = min([len(search_term) for search_term in search_terms])
@@ -687,10 +708,12 @@ class Wordless_Worker_Collocation(wordless_threading.Wordless_Worker):
                     # Extract collocates
                     if window_left < 0 and window_right > 0:
                         for j, collocate in enumerate(reversed(tokens[max(0, i + window_left) : i])):
-                            if wordless_matching.check_context(i, tokens,
-                                                               context_settings = settings['context_settings'],
-                                                               search_terms_inclusion = search_terms_inclusion,
-                                                               search_terms_exclusion = search_terms_exclusion):
+                            if wordless_matching.check_context(
+                                i, tokens,
+                                context_settings = settings['context_settings'],
+                                search_terms_inclusion = search_terms_inclusion,
+                                search_terms_exclusion = search_terms_exclusion
+                            ):
                                 if (ngram, collocate) not in collocations_freqs_file:
                                     collocations_freqs_file[(ngram, collocate)] = [0] * window_size
 
@@ -699,10 +722,12 @@ class Wordless_Worker_Collocation(wordless_threading.Wordless_Worker):
                             collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
 
                         for j, collocate in enumerate(tokens[i + ngram_size: i + ngram_size + window_right]):
-                            if wordless_matching.check_context(i, tokens,
-                                                               context_settings = settings['context_settings'],
-                                                               search_terms_inclusion = search_terms_inclusion,
-                                                               search_terms_exclusion = search_terms_exclusion):
+                            if wordless_matching.check_context(
+                                i, tokens,
+                                context_settings = settings['context_settings'],
+                                search_terms_inclusion = search_terms_inclusion,
+                                search_terms_exclusion = search_terms_exclusion
+                            ):
                                 if (ngram, collocate) not in collocations_freqs_file:
                                     collocations_freqs_file[(ngram, collocate)] = [0] * window_size
 
@@ -711,10 +736,12 @@ class Wordless_Worker_Collocation(wordless_threading.Wordless_Worker):
                             collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
                     elif window_left < 0 and window_right < 0:
                         for j, collocate in enumerate(reversed(tokens[max(0, i + window_left) : max(0, i + window_right + 1)])):
-                            if wordless_matching.check_context(i, tokens,
-                                                               context_settings = settings['context_settings'],
-                                                               search_terms_inclusion = search_terms_inclusion,
-                                                               search_terms_exclusion = search_terms_exclusion):
+                            if wordless_matching.check_context(
+                                i, tokens,
+                                context_settings = settings['context_settings'],
+                                search_terms_inclusion = search_terms_inclusion,
+                                search_terms_exclusion = search_terms_exclusion
+                            ):
                                 if (ngram, collocate) not in collocations_freqs_file:
                                     collocations_freqs_file[(ngram, collocate)] = [0] * window_size
 
@@ -723,10 +750,12 @@ class Wordless_Worker_Collocation(wordless_threading.Wordless_Worker):
                             collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
                     elif window_left > 0 and window_right > 0:
                         for j, collocate in enumerate(tokens[i + ngram_size + window_left - 1 : i + ngram_size + window_right]):
-                            if wordless_matching.check_context(i, tokens,
-                                                               context_settings = settings['context_settings'],
-                                                               search_terms_inclusion = search_terms_inclusion,
-                                                               search_terms_exclusion = search_terms_exclusion):
+                            if wordless_matching.check_context(
+                                i, tokens,
+                                context_settings = settings['context_settings'],
+                                search_terms_inclusion = search_terms_inclusion,
+                                search_terms_exclusion = search_terms_exclusion
+                            ):
                                 if (ngram, collocate) not in collocations_freqs_file:
                                     collocations_freqs_file[(ngram, collocate)] = [0] * window_size
 
@@ -1138,9 +1167,11 @@ def generate_fig(main):
                     collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
                                              for (node, collocate), freqs in collocations_freqs_files.items()}
 
-                wordless_fig_freq.wordless_fig_freq(main, collocates_freq_files,
-                                                    settings = settings['fig_settings'],
-                                                    label_x = main.tr('Collocates'))
+                wordless_fig_freq.wordless_fig_freq(
+                    main, collocates_freq_files,
+                    settings = settings['fig_settings'],
+                    label_x = main.tr('Collocates')
+                )
             elif settings['fig_settings']['use_data'] == main.tr('Frequency'):
                 # Network Graph
                 if settings['fig_settings']['graph_type'] == main.tr('Network Graph'):
@@ -1151,9 +1182,11 @@ def generate_fig(main):
                     collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
                                              for (node, collocate), freqs in collocations_freqs_files.items()}
 
-                wordless_fig_freq.wordless_fig_freq(main, collocates_freq_files,
-                                                    settings = settings['fig_settings'],
-                                                    label_x = main.tr('Collocates'))
+                wordless_fig_freq.wordless_fig_freq(
+                    main, collocates_freq_files,
+                    settings = settings['fig_settings'],
+                    label_x = main.tr('Collocates')
+                )
             else:
                 # Network Graph
                 if settings['fig_settings']['graph_type'] == main.tr('Network Graph'):
@@ -1185,10 +1218,12 @@ def generate_fig(main):
 
                     label_y = text_effect_size
 
-                wordless_fig_stat.wordless_fig_stat(main, collocates_stat_files,
-                                                    settings = settings['fig_settings'],
-                                                    label_x = main.tr('Collocations'),
-                                                    label_y = label_y)
+                wordless_fig_stat.wordless_fig_stat(
+                    main, collocates_stat_files,
+                    settings = settings['fig_settings'],
+                    label_x = main.tr('Collocations'),
+                    label_y = label_y
+                )
 
             wordless_msg.wordless_msg_generate_fig_success(main)
         else:

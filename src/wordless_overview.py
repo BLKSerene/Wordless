@@ -221,8 +221,10 @@ class Wrapper_Overview(wordless_layout.Wordless_Wrapper):
 
         (self.checkbox_show_pct,
          self.checkbox_show_cumulative,
-         self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(self,
-                                                                                          table = self.table_overview)
+         self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(
+            self,
+            table = self.table_overview
+        )
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
@@ -330,8 +332,10 @@ class Wordless_Worker_Overview(wordless_threading.Wordless_Worker):
 
         for i, file in enumerate(files):
             text = wordless_text.Wordless_Text(self.main, file, flat_tokens = False)
-            wordless_token_processing.wordless_process_tokens_overview(text,
-                                                                       token_settings = settings['token_settings'])
+            wordless_token_processing.wordless_process_tokens_overview(
+                text,
+                token_settings = settings['token_settings']
+            )
 
             texts.append(text)
 

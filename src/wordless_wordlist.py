@@ -153,8 +153,10 @@ class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
          self.combo_box_measure_adjusted_freq) = wordless_widgets.wordless_widgets_measure_adjusted_freq(self)
 
         (self.label_settings_measures,
-         self.button_settings_measures) = wordless_widgets.wordless_widgets_settings_measures(self,
-                                                                                              tab = self.tr('Dispersion'))
+         self.button_settings_measures) = wordless_widgets.wordless_widgets_settings_measures(
+            self,
+            tab = self.tr('Dispersion')
+        )
 
         self.combo_box_measure_dispersion.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_adjusted_freq.currentTextChanged.connect(self.generation_settings_changed)
@@ -180,8 +182,10 @@ class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
 
         (self.checkbox_show_pct,
          self.checkbox_show_cumulative,
-         self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(self,
-                                                                                          table = self.table_wordlist)
+         self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(
+            self,
+            table = self.table_wordlist
+        )
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
@@ -211,9 +215,11 @@ class Wrapper_Wordlist(wordless_layout.Wordless_Wrapper):
          self.checkbox_rank_min_no_limit,
          self.label_rank_max,
          self.spin_box_rank_max,
-         self.checkbox_rank_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                     filter_min = 1,
-                                                                                     filter_max = 100000)
+         self.checkbox_rank_max_no_limit) = wordless_widgets.wordless_widgets_filter(
+            self,
+            filter_min = 1,
+            filter_max = 100000
+        )
 
         self.combo_box_graph_type.currentTextChanged.connect(self.fig_settings_changed)
         self.combo_box_use_file.currentTextChanged.connect(self.fig_settings_changed)
@@ -395,8 +401,10 @@ class Wordless_Worker_Wordlist(wordless_threading.Wordless_Worker):
         for file in files:
             text = wordless_text.Wordless_Text(self.main, file)
 
-            tokens = wordless_token_processing.wordless_process_tokens_wordlist(text,
-                                                                                token_settings = settings['token_settings'])
+            tokens = wordless_token_processing.wordless_process_tokens_wordlist(
+                text,
+                token_settings = settings['token_settings']
+            )
 
             texts.append(text)
             self.tokens_freq_files.append(collections.Counter(tokens))
@@ -625,9 +633,11 @@ def generate_fig(main):
             col_adjusted_freq = main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col']
             
             if settings['fig_settings']['use_data'] == main.tr('Frequency'):
-                wordless_fig_freq.wordless_fig_freq(main, tokens_freq_files,
-                                                    settings = settings['fig_settings'],
-                                                    label_x = main.tr('Tokens'))
+                wordless_fig_freq.wordless_fig_freq(
+                    main, tokens_freq_files,
+                    settings = settings['fig_settings'],
+                    label_x = main.tr('Tokens')
+                )
             else:
                 if settings['fig_settings']['use_data'] == col_dispersion:
                     tokens_stat_files = {token: numpy.array(stats_files)[:, 0]
@@ -640,10 +650,12 @@ def generate_fig(main):
 
                     label_y = col_adjusted_freq
 
-                wordless_fig_stat.wordless_fig_stat(main, tokens_stat_files,
-                                                    settings = settings['fig_settings'],
-                                                    label_x = main.tr('Tokens'),
-                                                    label_y = label_y)
+                wordless_fig_stat.wordless_fig_stat(
+                    main, tokens_stat_files,
+                    settings = settings['fig_settings'],
+                    label_x = main.tr('Tokens'),
+                    label_y = label_y
+                )
 
             wordless_msg.wordless_msg_generate_fig_success(main)
         else:

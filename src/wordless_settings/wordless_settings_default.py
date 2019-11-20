@@ -189,6 +189,7 @@ def init_settings_default(main):
 
             'sort_results': {
                 'sorting_rules': [
+                    [main.tr('Node'), main.tr('Ascending')],
                     [main.tr('File'), main.tr('Ascending')],
                     [main.tr('Token No.'), main.tr('Ascending')]
                 ],

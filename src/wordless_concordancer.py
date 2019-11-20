@@ -154,12 +154,16 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
          self.search_combo_box_ignore_tags_tags,
 
          self.search_label_ignore_tags,
-         self.checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(self,
-                                                                                       tab = 'concordancer')
+         self.checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(
+            self,
+            tab = 'concordancer'
+        )
 
         (self.label_context_settings,
-         self.button_context_settings) = wordless_widgets.wordless_widgets_context_settings(self,
-                                                                                            tab = 'concordancer')
+         self.button_context_settings) = wordless_widgets.wordless_widgets_context_settings(
+            self,
+            tab = 'concordancer'
+        )
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
@@ -314,8 +318,10 @@ class Wrapper_Concordancer(wordless_layout.Wordless_Wrapper):
 
         (self.checkbox_show_pct,
          self.checkbox_show_cumulative,
-         self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(self,
-                                                                                          table = self.table_concordancer)
+         self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(
+            self,
+            table = self.table_concordancer
+        )
 
         self.checkbox_show_cumulative.hide()
         self.checkbox_show_breakdown.hide()
@@ -525,26 +531,32 @@ class Wordless_Worker_Concordancer_Table(wordless_threading.Wordless_Worker):
 
             text = wordless_text.Wordless_Text(self.main, file, flat_tokens = False)
 
-            tokens = wordless_token_processing.wordless_process_tokens_concordancer(text,
-                                                                                    token_settings = settings['token_settings'])
+            tokens = wordless_token_processing.wordless_process_tokens_concordancer(
+                text,
+                token_settings = settings['token_settings']
+            )
 
             len_paras = len(text.offsets_paras)
             len_sentences = len(text.offsets_sentences)
             len_clauses = len(text.offsets_clauses)
             len_tokens = len(text.tokens_flat)
 
-            search_terms = wordless_matching.match_search_terms(self.main, tokens,
-                                                                lang = text.lang,
-                                                                text_type = text.text_type,
-                                                                token_settings = settings['token_settings'],
-                                                                search_settings = settings['search_settings'])
+            search_terms = wordless_matching.match_search_terms(
+                self.main, tokens,
+                lang = text.lang,
+                text_type = text.text_type,
+                token_settings = settings['token_settings'],
+                search_settings = settings['search_settings']
+            )
 
             (search_terms_inclusion,
-             search_terms_exclusion) = wordless_matching.match_search_terms_context(self.main, tokens,
-                                                                                    lang = text.lang,
-                                                                                    text_type = text.text_type,
-                                                                                    token_settings = settings['token_settings'],
-                                                                                    context_settings = settings['context_settings'])
+             search_terms_exclusion) = wordless_matching.match_search_terms_context(
+                self.main, tokens,
+                lang = text.lang,
+                text_type = text.text_type,
+                token_settings = settings['token_settings'],
+                context_settings = settings['context_settings']
+            )
 
             if search_terms:
                 len_search_term_min = min([len(search_term) for search_term in search_terms])
@@ -561,10 +573,12 @@ class Wordless_Worker_Concordancer_Table(wordless_threading.Wordless_Worker):
 
                 for i, ngram in enumerate(nltk.ngrams(tokens, len_search_term)):
                     if (ngram in search_terms and
-                        wordless_matching.check_context(i, tokens,
-                                                        context_settings = settings['context_settings'],
-                                                        search_terms_inclusion = search_terms_inclusion,
-                                                        search_terms_exclusion = search_terms_exclusion)):
+                        wordless_matching.check_context(
+                            i, tokens,
+                            context_settings = settings['context_settings'],
+                            search_terms_inclusion = search_terms_inclusion,
+                            search_terms_exclusion = search_terms_exclusion)
+                        ):
                         concordance_line = []
 
                         # Check number of lines
@@ -823,21 +837,27 @@ class Wordless_Worker_Concordancer_Fig(wordless_threading.Wordless_Worker):
         for file in files:
             text = wordless_text.Wordless_Text(self.main, file)
 
-            wordless_token_processing.wordless_process_tokens_concordancer(text,
-                                                                           token_settings = settings['token_settings'])
+            wordless_token_processing.wordless_process_tokens_concordancer(
+                text,
+                token_settings = settings['token_settings']
+            )
 
-            search_terms_file = wordless_matching.match_search_terms(self.main, text.tokens_flat,
-                                                                     lang = text.lang,
-                                                                     text_type = text.text_type,
-                                                                     token_settings = settings['token_settings'],
-                                                                     search_settings = settings['search_settings'])
+            search_terms_file = wordless_matching.match_search_terms(
+                self.main, text.tokens_flat,
+                lang = text.lang,
+                text_type = text.text_type,
+                token_settings = settings['token_settings'],
+                search_settings = settings['search_settings']
+            )
 
             search_terms_files.append(sorted(search_terms_file))
 
             for search_term in search_terms_file:
                 search_terms_total.add(search_term)
-                search_terms_labels.add(wordless_text_processing.wordless_word_detokenize(self.main, search_term,
-                                                                                          lang = text.lang))
+                search_terms_labels.add(wordless_text_processing.wordless_word_detokenize(
+                                            self.main, search_term,
+                                            lang = text.lang
+                                        ))
 
             texts.append(text)
 
