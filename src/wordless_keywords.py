@@ -155,8 +155,10 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
          self.combo_box_measure_effect_size) = wordless_widgets.wordless_widgets_measure_effect_size(self)
 
         (self.label_settings_measures,
-         self.button_settings_measures) = wordless_widgets.wordless_widgets_settings_measures(self,
-                                                                                              tab = self.tr('Statistical Significance'))
+         self.button_settings_measures) = wordless_widgets.wordless_widgets_settings_measures(
+            self,
+            tab = self.tr('Statistical Significance')
+        )
 
         self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['keywords'].keys()))
         self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['keywords'].keys()))
@@ -188,8 +190,10 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
 
         (self.checkbox_show_pct,
          self.checkbox_show_cumulative,
-         self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(self,
-                                                                                          table = self.table_keywords)
+         self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(
+            self,
+            table = self.table_keywords
+        )
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
@@ -219,9 +223,11 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
          self.checkbox_rank_min_no_limit,
          self.label_rank_max,
          self.spin_box_rank_max,
-         self.checkbox_rank_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                     filter_min = 1,
-                                                                                     filter_max = 100000)
+         self.checkbox_rank_max_no_limit) = wordless_widgets.wordless_widgets_filter(
+            self,
+            filter_min = 1,
+            filter_max = 100000
+        )
 
         self.combo_box_graph_type.currentTextChanged.connect(self.fig_settings_changed)
         self.combo_box_use_file.currentTextChanged.connect(self.fig_settings_changed)
@@ -373,9 +379,11 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         self.combo_box_use_data.clear()
 
         self.combo_box_use_data.addItem(self.tr('Frequency'))
-        self.combo_box_use_data.addItems([col
-                                          for col in self.main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-                                          if col])
+        self.combo_box_use_data.addItems(
+            [col
+             for col in self.main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
+             if col]
+        )
         self.combo_box_use_data.addItem(self.main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col'])
 
         if self.combo_box_use_data.findText(use_data_old) > -1:
@@ -417,7 +425,10 @@ class Wordless_Worker_Keywords(wordless_threading.Wordless_Worker):
         texts = []
 
         settings = self.main.settings_custom['keywords']
-        ref_file = self.main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'], selected_only = True)
+        ref_file = self.main.wordless_files.find_file_by_name(
+            settings['generation_settings']['ref_file'],
+            selected_only = True
+        )
 
         files = [file
                  for file in self.main.wordless_files.get_selected_files()
@@ -427,8 +438,10 @@ class Wordless_Worker_Keywords(wordless_threading.Wordless_Worker):
         for i, file in enumerate([ref_file] + files):
             text = wordless_text.Wordless_Text(self.main, file)
 
-            tokens = wordless_token_processing.wordless_process_tokens_wordlist(text,
-                                                                                token_settings = settings['token_settings'])
+            tokens = wordless_token_processing.wordless_process_tokens_wordlist(
+                text,
+                token_settings = settings['token_settings']
+            )
 
             self.keywords_freq_files.append(collections.Counter(tokens))
 
@@ -447,12 +460,12 @@ class Wordless_Worker_Keywords(wordless_threading.Wordless_Worker):
             self.keywords_freq_files.append(sum(self.keywords_freq_files, collections.Counter()))
 
             self.keywords_freq_files[0] = {token: freq
-                                      for token, freq in self.keywords_freq_files[0].items()
-                                      if token in text_total.tokens_flat}
+                                           for token, freq in self.keywords_freq_files[0].items()
+                                           if token in text_total.tokens_flat}
         else:
             self.keywords_freq_files[0] = {token: freq
-                                      for token, freq in self.keywords_freq_files[0].items()
-                                      if token in self.keywords_freq_files[1]}
+                                           for token, freq in self.keywords_freq_files[0].items()
+                                           if token in self.keywords_freq_files[1]}
 
         self.progress_updated.emit(self.tr('Processing data ...'))
 
@@ -726,8 +739,10 @@ def generate_table(main, table):
     files = main.wordless_files.get_selected_files()
 
     if wordless_checking_file.check_files_on_loading(main, files):
-        ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
-                                                         selected_only = True)
+        ref_file = main.wordless_files.find_file_by_name(
+            settings['generation_settings']['ref_file'],
+            selected_only = True
+        )
 
         files = [file
                  for file in main.wordless_files.get_selected_files()
@@ -765,10 +780,12 @@ def generate_fig(main):
             text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
 
             if settings['fig_settings']['use_data'] == main.tr('Frequency'):
-                wordless_fig_freq.wordless_fig_freq_ref(main, keywords_freq_files,
-                                                        ref_file = ref_file,
-                                                        settings = settings['fig_settings'],
-                                                        label_x = main.tr('Keywords'))
+                wordless_fig_freq.wordless_fig_freq_ref(
+                    main, keywords_freq_files,
+                    ref_file = ref_file,
+                    settings = settings['fig_settings'],
+                    label_x = main.tr('Keywords')
+                )
             else:
                 if settings['fig_settings']['use_data'] == text_test_stat:
                     keywords_stat_files = {keyword: numpy.array(stats_files)[:, 0]
@@ -791,10 +808,12 @@ def generate_fig(main):
 
                     label_y = text_effect_size
 
-                wordless_fig_stat.wordless_fig_stat_ref(main, keywords_stat_files,
-                                                        ref_file = ref_file,
-                                                        settings = settings['fig_settings'],
-                                                        label_y = label_y)
+                wordless_fig_stat.wordless_fig_stat_ref(
+                    main, keywords_stat_files,
+                    ref_file = ref_file,
+                    settings = settings['fig_settings'],
+                    label_y = label_y
+                )
 
             wordless_msg.wordless_msg_generate_fig_success(main)
         else:
@@ -811,8 +830,10 @@ def generate_fig(main):
     files = main.wordless_files.get_selected_files()
 
     if wordless_checking_file.check_files_on_loading(main, files):
-        ref_file = main.wordless_files.find_file_by_name(settings['generation_settings']['ref_file'],
-                                                         selected_only = True)
+        ref_file = main.wordless_files.find_file_by_name(
+            settings['generation_settings']['ref_file'],
+            selected_only = True
+        )
 
         files = [file
                  for file in main.wordless_files.get_selected_files()
