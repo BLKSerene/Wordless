@@ -119,6 +119,6 @@ src/Export/
 misc/
 # Wordless - Custom Settings
 *.pickle
-# Wordless - pybo
+# Wordless - botok
 *.pickled
 *.yaml
