@@ -43,6 +43,7 @@
 ### ⏫ Dependency Upgrades
 - Upgrade Beautiful Soup to 4.8.1
 - Upgrade botok (pybo) to 0.6.10
+- Upgrade cChardet to 2.1.5
 - Upgrade NetworkX to 2.4
 - Upgrade NumPy to 1.17.4
 - Upgrade openpyxl to 3.0.1

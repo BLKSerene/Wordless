@@ -264,7 +264,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # cChardet
             [
                 'cChardet', 'https://github.com/PyYoshi/cChardet',
-                '2.1.4',
+                '2.1.5',
                 'Yoshihiro Misawa',
                 'MPL-1.0/GPL-2.0/LGPL-2.1', 'https://github.com/PyYoshi/cChardet/blob/master/COPYING'
             ],
