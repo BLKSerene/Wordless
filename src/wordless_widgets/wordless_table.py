@@ -1260,31 +1260,32 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
 
         self.setRowCount(0)
 
+        # Columns to sort
+        self.cols_sorting = [
+            self.tr('Node'),
+            self.tr('Token No.'),
+            self.tr('File')
+        ]
+
+        if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
+            if self.table.settings['concordancer']['generation_settings']['width_unit'] == self.tr('Token'):
+                width_left = self.table.settings['concordancer']['generation_settings']['width_left_token']
+                width_right = self.table.settings['concordancer']['generation_settings']['width_right_token']
+            else:
+                col_left = self.table.find_col(self.tr('Left'))
+                col_right = self.table.find_col(self.tr('Right'))
+
+                width_left = max([len(self.table.cellWidget(row, col_left).text_raw)
+                                  for row in range(self.table.rowCount())])
+                width_right = max([len(self.table.cellWidget(row, col_right).text_raw)
+                                   for row in range(self.table.rowCount())])
+
+            self.cols_sorting.extend([f'R{i + 1}' for i in range(width_right)])
+            self.cols_sorting.extend([f'L{i + 1}' for i in range(width_left)])
+
+        # Check sorting settings
         for sorting_col, sorting_order in sorting_rules:
-            if sorting_col in [sorting_rule[0]
-                               for sorting_rule in self.main.settings_default['concordancer']['sort_results']['sorting_rules']]:
-                self.cols_sorting = [
-                    self.tr('Node'),
-                    self.tr('Token No.'),
-                    self.tr('File')
-                ]
-
-                if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
-                    if self.table.settings['concordancer']['generation_settings']['width_unit'] == self.tr('Token'):
-                        width_left = self.table.settings['concordancer']['generation_settings']['width_left_token']
-                        width_right = self.table.settings['concordancer']['generation_settings']['width_right_token']
-                    else:
-                        col_left = self.table.find_col(self.tr('Left'))
-                        col_right = self.table.find_col(self.tr('Right'))
-
-                        width_left = max([len(self.table.cellWidget(row, col_left).text_raw)
-                                          for row in range(self.table.rowCount())])
-                        width_right = max([len(self.table.cellWidget(row, col_right).text_raw)
-                                           for row in range(self.table.rowCount())])
-
-                    self.cols_sorting.extend([f'R{i + 1}' for i in range(width_right)])
-                    self.cols_sorting.extend([f'L{i + 1}' for i in range(width_left)])
-
+            if sorting_col in self.cols_sorting:
                 self.add_row()
 
                 self.cellWidget(self.rowCount() - 1, 0).setCurrentText(sorting_col)
