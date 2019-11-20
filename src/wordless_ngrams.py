@@ -173,8 +173,10 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
          self.search_combo_box_ignore_tags_tags,
 
          self.search_label_ignore_tags,
-         self.checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(main,
-                                                                                       tab = 'ngrams')
+         self.checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(
+            main,
+            tab = 'ngrams'
+        )
 
         self.label_search_term_position = QLabel(self.tr('Search Term Position:'), self)
         (self.label_search_term_position_min,
@@ -182,14 +184,18 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
          self.checkbox_search_term_position_min_no_limit,
          self.label_search_term_position_max,
          self.spin_box_search_term_position_max,
-         self.checkbox_search_term_position_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                                     filter_min = 1,
-                                                                                                     filter_max = 100)
+         self.checkbox_search_term_position_max_no_limit) = wordless_widgets.wordless_widgets_filter(
+            self,
+            filter_min = 1,
+            filter_max = 100
+        )
         self.checkbox_allow_skipped_tokens_within_search_terms = QCheckBox(self.tr('Allow skipped tokens within search terms'), self)
 
         (self.label_context_settings,
-         self.button_context_settings) = wordless_widgets.wordless_widgets_context_settings(self,
-                                                                                            tab = 'ngrams')
+         self.button_context_settings) = wordless_widgets.wordless_widgets_context_settings(
+            self,
+            tab = 'ngrams'
+        )
 
         self.group_box_search_settings.setCheckable(True)
 
@@ -282,8 +288,10 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
          self.combo_box_measure_adjusted_freq) = wordless_widgets.wordless_widgets_measure_adjusted_freq(self)
 
         (self.label_settings_measures,
-         self.button_settings_measures) = wordless_widgets.wordless_widgets_settings_measures(self,
-                                                                                              tab = self.tr('Dispersion'))
+         self.button_settings_measures) = wordless_widgets.wordless_widgets_settings_measures(
+            self,
+            tab = self.tr('Dispersion')
+        )
 
         self.spin_box_allow_skipped_tokens.setRange(1, 20)
 
@@ -336,8 +344,10 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
 
         (self.checkbox_show_pct,
          self.checkbox_show_cumulative,
-         self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(self,
-                                                                                          table = self.table_ngrams)
+         self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(
+            self,
+            table = self.table_ngrams
+        )
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
@@ -367,9 +377,11 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
          self.checkbox_rank_min_no_limit,
          self.label_rank_max,
          self.spin_box_rank_max,
-         self.checkbox_rank_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
-                                                                                     filter_min = 1,
-                                                                                     filter_max = 100000)
+         self.checkbox_rank_max_no_limit) = wordless_widgets.wordless_widgets_filter(
+            self,
+            filter_min = 1,
+            filter_max = 100000
+        )
 
         self.combo_box_graph_type.currentTextChanged.connect(self.fig_settings_changed)
         self.combo_box_use_file.currentTextChanged.connect(self.fig_settings_changed)
@@ -661,21 +673,28 @@ class Wordless_Worker_Ngrams(wordless_threading.Wordless_Worker):
 
             text = wordless_text.Wordless_Text(self.main, file)
 
-            tokens = wordless_token_processing.wordless_process_tokens_ngrams(text,
-                                                                              token_settings = settings['token_settings'])
+            tokens = wordless_token_processing.wordless_process_tokens_ngrams(
+                text,
+                token_settings = settings['token_settings']
+            )
 
-            search_terms = wordless_matching.match_search_terms(self.main, tokens,
-                                                                lang = text.lang,
-                                                                text_type = text.text_type,
-                                                                token_settings = settings['token_settings'],
-                                                                search_settings = settings['search_settings'])
+            search_terms = wordless_matching.match_search_terms(
+                self.main, tokens,
+                lang = text.lang,
+                text_type = text.text_type,
+                token_settings = settings['token_settings'],
+                search_settings = settings['search_settings']
+            )
 
             (search_terms_inclusion,
-             search_terms_exclusion) = wordless_matching.match_search_terms_context(self.main, tokens,
-                                                                                    lang = text.lang,
-                                                                                    text_type = text.text_type,
-                                                                                    token_settings = settings['token_settings'],
-                                                                                    context_settings = settings['context_settings'])
+             search_terms_exclusion) = wordless_matching.match_search_terms_context(
+                self.main, tokens,
+                lang = text.lang,
+                text_type = text.text_type,
+                token_settings = settings['token_settings'],
+                context_settings = settings['context_settings']
+            )
+
             if allow_skipped_tokens:
                 SENTINEL = object()
 
@@ -689,10 +708,12 @@ class Wordless_Worker_Ngrams(wordless_threading.Wordless_Worker):
                                 len_search_term = len(search_term)
 
                                 if len_search_term < ngram_size:
-                                    for i, ngram in enumerate(nltk.ngrams(tokens,
-                                                                          ngram_size + allow_skipped_tokens,
-                                                                          pad_right = True,
-                                                                          right_pad_symbol = SENTINEL)):
+                                    for i, ngram in enumerate(nltk.ngrams(
+                                                                  tokens,
+                                                                  ngram_size + allow_skipped_tokens,
+                                                                  pad_right = True,
+                                                                  right_pad_symbol = SENTINEL
+                                                              )):
                                         for j in range(ngram_size + allow_skipped_tokens - len_search_term + 1):
                                             if ngram[j : j + len_search_term] == search_term:
                                                 ngram_cur = list(ngram)
@@ -716,43 +737,53 @@ class Wordless_Worker_Ngrams(wordless_threading.Wordless_Worker):
                                                             ngram_matched.append(item)
 
                                                     if skip_tail and skip_tail[-1] != SENTINEL and len(ngram_matched) == ngram_size:
-                                                        if wordless_matching.check_context(i + j, tokens,
-                                                                                           context_settings = settings['context_settings'],
-                                                                                           search_terms_inclusion = search_terms_inclusion,
-                                                                                           search_terms_exclusion = search_terms_exclusion):
+                                                        if wordless_matching.check_context(
+                                                            i + j, tokens,
+                                                            context_settings = settings['context_settings'],
+                                                            search_terms_inclusion = search_terms_inclusion,
+                                                            search_terms_exclusion = search_terms_exclusion
+                                                        ):
                                                             ngrams.append(tuple(ngram_matched))
                                 elif len_search_term == ngram_size:
                                     for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
                                         if ngram == search_term:
-                                            if wordless_matching.check_context(i, tokens,
-                                                                               context_settings = settings['context_settings'],
-                                                                               search_terms_inclusion = search_terms_inclusion,
-                                                                               search_terms_exclusion = search_terms_exclusion):
+                                            if wordless_matching.check_context(
+                                                i, tokens,
+                                                context_settings = settings['context_settings'],
+                                                search_terms_inclusion = search_terms_inclusion,
+                                                search_terms_exclusion = search_terms_exclusion
+                                            ):
                                                 ngrams.append(ngram)
                 else:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                        for i, ngram in enumerate(nltk.ngrams(tokens,
-                                                              ngram_size + allow_skipped_tokens,
-                                                              pad_right = True,
-                                                              right_pad_symbol = SENTINEL)):
+                        for i, ngram in enumerate(nltk.ngrams(
+                                                      tokens,
+                                                      ngram_size + allow_skipped_tokens,
+                                                      pad_right = True,
+                                                      right_pad_symbol = SENTINEL
+                                                  )):
                             for j in range(ngram_size + allow_skipped_tokens):
                                 head = ngram[0]
                                 tail = ngram[1:]
 
                                 for skip_tail in tail:
                                     if skip_tail != SENTINEL:
-                                        if wordless_matching.check_context(i + j, tokens,
-                                                                           context_settings = settings['context_settings'],
-                                                                           search_terms_inclusion = search_terms_inclusion,
-                                                                           search_terms_exclusion = search_terms_exclusion):
+                                        if wordless_matching.check_context(
+                                            i + j, tokens,
+                                            context_settings = settings['context_settings'],
+                                            search_terms_inclusion = search_terms_inclusion,
+                                            search_terms_exclusion = search_terms_exclusion
+                                        ):
                                             ngrams.append((head, skip_tail))
             else:
                 for ngram_size in range(ngram_size_min, ngram_size_max + 1):
                     for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
-                        if wordless_matching.check_context(i, tokens,
-                                                           context_settings = settings['context_settings'],
-                                                           search_terms_inclusion = search_terms_inclusion,
-                                                           search_terms_exclusion = search_terms_exclusion):
+                        if wordless_matching.check_context(
+                            i, tokens,
+                            context_settings = settings['context_settings'],
+                            search_terms_inclusion = search_terms_inclusion,
+                            search_terms_exclusion = search_terms_exclusion
+                        ):
                             ngrams.append(ngram)
 
             # Remove n-grams with at least 1 empty token
@@ -1042,9 +1073,11 @@ def generate_fig(main):
                 ngrams_freq_files = {ngrams_text[ngram]: freqs
                                      for ngram, freqs in ngrams_freq_files.items()}
 
-                wordless_fig_freq.wordless_fig_freq(main, ngrams_freq_files,
-                                                          settings = settings['fig_settings'],
-                                                          label_x = main.tr('N-grams'))
+                wordless_fig_freq.wordless_fig_freq(
+                    main, ngrams_freq_files,
+                    settings = settings['fig_settings'],
+                    label_x = main.tr('N-grams')
+                )
             else:
                 ngrams_stats_files = {ngrams_text[ngram]: stats
                                       for ngram, stats in ngrams_stats_files.items()}
@@ -1060,10 +1093,12 @@ def generate_fig(main):
 
                     label_y = text_adjusted_freq
 
-                wordless_fig_stat.wordless_fig_stat(main, ngrams_stat_files,
-                                                          settings = settings['fig_settings'],
-                                                          label_x = main.tr('N-grams'),
-                                                          label_y = label_y)
+                wordless_fig_stat.wordless_fig_stat(
+                    main, ngrams_stat_files,
+                    settings = settings['fig_settings'],
+                    label_x = main.tr('N-grams'),
+                    label_y = label_y
+                )
 
             wordless_msg.wordless_msg_generate_fig_success(main)
         else:
