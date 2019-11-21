@@ -44,7 +44,7 @@ class Wordless_Wrapper(QWidget):
         self.wrapper_table.layout().setContentsMargins(8, 8, 6, 6)
 
         self.wrapper_right = QWidget(self)
-        self.wrapper_right.setFixedWidth(320)
+        self.wrapper_right.setFixedWidth(340)
 
         self.scroll_area_settings = Wordless_Scroll_Area(self)
         self.button_reset_settings = wordless_button.Wordless_Button_Reset_Settings(self)
