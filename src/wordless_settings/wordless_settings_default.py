@@ -173,10 +173,11 @@ def init_settings_default(main):
                 'width_right_char': 50,
                 'width_unit': main.tr('Token'),
 
-                'number_lines': 100,
-                'number_lines_no_limit': True,
-                'every_nth_line': 2,
-                'every_nth_line_no_limit': True
+                'sampling_method': main.tr('None'),
+                'sample_size_first_n_lines': 100,
+                'sample_size_systematic_fixed_interval': 2,
+                'sample_size_systematic_fixed_size': 100,
+                'sample_size_random': 100
             },
 
             'table_settings': {
