@@ -52,7 +52,7 @@
 - Upgrade pytest to 5.2.4
 - Upgrade Sacremoses to 0.0.35
 - Upgrade SciPy to 1.3.2
-- Upgrade spaCy to 2.2.2
+- Upgrade spaCy to 2.2.3
 - Upgrade syntok to 1.2.2
 - Upgrade underthesea to 1.1.17
 
