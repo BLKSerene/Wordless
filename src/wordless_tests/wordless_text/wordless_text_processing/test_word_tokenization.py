@@ -266,12 +266,13 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
     elif lang == 'ltz':
         if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
                               'NLTK - NIST Tokenizer',
-                              'NLTK - Twitter Tokenizer',
-                              'spaCy - Luxembourgish Word Tokenizer']:
+                              'NLTK - Twitter Tokenizer']:
             assert tokens == ["D'Lëtzebuergesch", 'gëtt', 'an', 'der', 'däitscher', 'Dialektologie', 'als', 'ee', 'westgermaneschen', ',', 'mëtteldäitschen', 'Dialekt', 'aklasséiert', ',', 'deen', 'zum', 'Muselfränkesche', 'gehéiert', '.']
         elif word_tokenizer in ['NLTK - Tok-tok Tokenizer',
                                 'Sacremoses - Moses Tokenizer']:
             assert tokens == ['D', "'", 'Lëtzebuergesch', 'gëtt', 'an', 'der', 'däitscher', 'Dialektologie', 'als', 'ee', 'westgermaneschen', ',', 'mëtteldäitschen', 'Dialekt', 'aklasséiert', ',', 'deen', 'zum', 'Muselfränkesche', 'gehéiert', '.']
+        elif word_tokenizer == 'spaCy - Luxembourgish Word Tokenizer':
+            assert tokens == ["D'", 'Lëtzebuergesch', 'gëtt', 'an', 'der', 'däitscher', 'Dialektologie', 'als', 'ee', 'westgermaneschen', ',', 'mëtteldäitschen', 'Dialekt', 'aklasséiert', ',', 'deen', 'zum', 'Muselfränkesche', 'gehéiert', '.']
     elif lang == 'mar':
         if word_tokenizer in ['NLTK - Penn Treebank Tokenizer',
                               'NLTK - NIST Tokenizer',
