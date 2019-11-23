@@ -87,10 +87,7 @@ class Wordless_Main(QMainWindow):
         self.ver = wordless_misc.get_wordless_ver()
 
         # Title
-        if self.ver:
-            self.setWindowTitle(self.tr(f'Wordless v{self.ver}'))
-        else:
-            self.setWindowTitle(self.tr('Wordless'))
+        self.setWindowTitle(self.tr(f'Wordless v{self.ver}'))
 
         # Icon
         self.setWindowIcon(QIcon(wordless_misc.get_normalized_path('imgs/wordless_icon.ico')))
