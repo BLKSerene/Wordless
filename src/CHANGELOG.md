@@ -50,7 +50,7 @@
 - Upgrade NumPy to 1.17.4
 - Upgrade openpyxl to 3.0.1
 - Upgrade PyQt to 5.13.2
-- Upgrade pytest to 5.2.4
+- Upgrade pytest to 5.3.0
 - Upgrade Sacremoses to 0.0.35
 - Upgrade SciPy to 1.3.2
 - Upgrade spaCy to 2.2.3
