@@ -153,7 +153,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # botok
             [
                 'botok', 'https://github.com/Esukhia/botok',
-                '0.6.10',
+                '0.6.18',
                 'Hélios Drupchen Hildt',
                 'Apache-2.0', 'https://github.com/Esukhia/botok/blob/master/LICENSE'
             ],
