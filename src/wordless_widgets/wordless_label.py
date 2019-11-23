@@ -18,7 +18,7 @@ from wordless_utils import wordless_misc
 class Wordless_Label(QLabel):
     def __init__(self, text, parent):
         super().__init__(text, parent)
-
+        
         self.main = wordless_misc.find_wordless_main(parent)
 
 class Wordless_Label_Html(Wordless_Label):
