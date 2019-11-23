@@ -247,7 +247,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # WordCloud
             [
                 'WordCloud', 'https://amueller.github.io/word_cloud/',
-                '1.5.0',
+                '1.6.0',
                 'Andreas Christian Mueller',
                 'MIT', 'https://github.com/amueller/word_cloud/blob/master/LICENSE'
             ]
