@@ -14,14 +14,14 @@
 ## [v1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0) - ??/??/2019
 
 ### 🎉 New Features
-- Add hint messages when exporting tables
-- Add "Paragraph Length in Clause" to "Overview"
-- Add "Paragraph" to "Generation Settings -> Width Unit" in "Concordancer"
 - Add razdel's Russian sentenizer and word tokenizer
-- Add "Sampling Method" to "Generation Settings" in "Concordancer"
 - Add spaCy's Lithuanian and Norwegian Bokmål word tokenizer, POS tagger, and lemmatizer
 - Add spaCy's Luxembourgish word tokenizer
 - Add syntok's sentence segmenter and word tokenizer
+- Work Area: Add Concordancer - Generation Settings - Width Unit - Paragraph
+- Work Area: Add Concordancer - Generation Settings - Sampling Method
+- Work Area: Add Overview - Paragraph Length in Clause
+- Work Area: Show hint messages when exporting tables
 
 ### ✨ Improvements
 - Display numbers and percentages in different columns
@@ -35,8 +35,8 @@
 - Fix encoding detection
 - Fix file checking
 - Fix lemmatization of empty tokens
-- Fix "Paragraph Length" and "Sentence Length" in "Overview"
-- Fix "Settings → POS Tagging → Tagsets → Preview Settings → POS Tagger"
+- Menu: Fix Preferences - Settings - POS Tagging - Tagsets - Preview Settings - POS Tagger
+- Work Area: Fix Overview - Paragraph/Sentence Length
 
 ### ❌ Removals
 - Remove Sacremoses's Penn Treebank tokenizer
@@ -59,16 +59,15 @@
 ## [v1.2.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.2.0) - 08/27/2019
 
 ### 🎉 New Features
-- Add "Clause No." to "Concordancer"
-- Add "Sentence" and "Clause" to "Generation Settings -> Width Unit" in "Concordancer"
-- Add "Count of Clauses", "Clause Length", and "Paragraph/Sentence/Token Length (Standard Deviation)" to "Overview"
 - Add extra-stopwords's stop words
-- Add "Network Graph" to "Figure Settings → Graph Type" in "Collocation" and "Colligation"
 - Add NLTK's Punkt Sentence Tokenizer for Russian
 - Add NLTK's Slovenian and Tajik stop words
-- Add "Settings → Figures → Line Chart / Word Cloud / Network Graph"
-- Add support for network graphs
 - Add support for XML files
+- Menu: Add Preferences - Settings - Figures - Line Chart / Word Cloud / Network Graph
+- Work Area: Add Collocation/Colligation - Figure Settings - Graph Type - Network Graph
+- Work Area: Add Concordancer - Clause No.
+- Work Area: Add Concordancer - Generation Settings - Width Unit - Sentence/Clause
+- Work Area: Add Overview - Count of Clauses / Clause Length / Paragraph/Sentence/Token Length (Standard Deviation)
 
 ### ✨ Improvements
 - Check file permissions when exporting tables
@@ -77,12 +76,12 @@
 - Update Sacremoses's tokenizers and detokenizer
 
 ### 📌 Bug Fixes
-- Fix "Collocation" and "Colligation"
-- Fix "Export Selected" and "Export All" in "Concordancer"
 - Fix NLTK's word tokenizers
-- Fix toggling of checkboxes in "Search Settings" and "Context Settings"
-- Fix "Settings → Stop Words → Preview → Count of Stop Words"
-- Fix "Sort Results" in "Concordancer"
+- Menu: Fix Preferences - Settings - Stop Words - Preview - Count of Stop Words
+- Work Area: Fix Collocation and Colligation
+- Work Area: Fix Concordancer - Export Selected/All
+- Work Area: Fix Concordancer - Sort Results
+- Work Area: Fix Work Area - Search Settings / Search in Results
 
 ### ⏫ Dependency Upgrades
 - Upgrade Beautiful Soup to 4.8.0
@@ -106,23 +105,22 @@
 ## [v1.1.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.1.0) - 03/31/2019
 
 ### 🎉 New Features
-- Add "Settings → General → Font Settings"
+- Menu: Add Preferences - Settings - General - Font Settings
 
 ### ✨ Improvements
-- Disable mouse wheel event when combo boxes and spin boxes are not focused
+- Disable mouse wheel for combo boxes and spin boxes when they are not focused
 - Update hint messages
-- Update layout
 - Update spaCy's sentencizer
 
 ### 📌 Bug Fixes
-- Fix "Check for Updates" on startup
-- Fix "Context Settings"
-- Fix error messages when loading files
-- Fix "Open Folder"
-- Fix "Search in Results" in "Concordancer"
-- Fix "Settings → Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization → Preview"
+- File Area: Fix Open Folder
+- Fix checking for updates on startup
 - Fix spaCy's sentence tokenizers and word tokenizers
 - Fix Wordless's Chinese and Japanese character tokenizers
+- Menu: Fix Preferences - Settings - Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization - Preview
+- Work Area: Fix Concordancer - Search in Results
+- Work Area: Fix error messages when loading files
+- Work Area: Fix Work Area - Search Settings - Context Settings
 
 ### ⏫ Dependency Upgrades
 - Upgrade lxml to 4.3.3
