@@ -93,20 +93,11 @@ class Wordless_Dialog_Citing(wordless_dialog.Wordless_Dialog_Info):
         settings['citation_sys'] = self.combo_box_citation_sys.currentText()
 
         if settings['citation_sys'] == self.tr('MLA (8th Edition)'):
-            if self.main.ver:
-                self.text_edit_citing.setHtml(f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, 2019. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
-            else:
-                self.text_edit_citing.setHtml('Ye Lei. <i>Wordless</i>, 2019. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
+            self.text_edit_citing.setHtml(f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, 2019. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
         elif settings['citation_sys'] == self.tr('APA (6th Edition)'):
-            if self.main.ver:
-                self.text_edit_citing.setHtml(f'Ye, L. (2019). Wordless (Version {self.main.ver}) [Computer software]. Retrieved from https://github.com/BLKSerene/Wordless')
-            else:
-                self.text_edit_citing.setHtml('Ye, L. (2019). Wordless [Computer software]. Retrieved from https://github.com/BLKSerene/Wordless')
+            self.text_edit_citing.setHtml(f'Ye, L. (2019). Wordless (Version {self.main.ver}) [Computer software]. Retrieved from https://github.com/BLKSerene/Wordless')
         elif settings['citation_sys'] == self.tr('GB (GB/T 7714—2015)'):
-            if self.main.ver:
-                self.text_edit_citing.setHtml(f'叶磊. Wordless version {self.main.ver}[CP]. (2019). https://github.com/BLKSerene/Wordless.')
-            else:
-                self.text_edit_citing.setHtml('叶磊. Wordless[CP]. (2019). https://github.com/BLKSerene/Wordless.')
+            self.text_edit_citing.setHtml(f'叶磊. Wordless version {self.main.ver}[CP]. (2019). https://github.com/BLKSerene/Wordless.')
 
     def copy(self):
         self.text_edit_citing.setFocus()
