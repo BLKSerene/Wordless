@@ -233,7 +233,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # Matplotlib
             [
                 'Matplotlib', 'https://matplotlib.org',
-                '3.1.1',
+                '3.1.2',
                 'Matplotlib Development Team',
                 'Matplotlib', 'https://matplotlib.org/users/license.html'
             ],
