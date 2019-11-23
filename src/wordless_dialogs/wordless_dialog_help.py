@@ -20,7 +20,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wordless_dialogs import wordless_dialog
-from wordless_utils import wordless_threading
+from wordless_utils import wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
                               wordless_table)
 
@@ -641,7 +641,10 @@ class Worker_Check_Updates(QObject):
                     updates_status = 'no_updates'
             else:
                 updates_status = 'network_error'
-        except:
+        except Exception as e:
+            print('Warning: An error occurred when checking for updates!')
+            print(f'Error: {e}')
+
             updates_status = 'network_error'
 
         if self.stopped:
@@ -650,14 +653,11 @@ class Worker_Check_Updates(QObject):
         self.worker_done.emit(updates_status, ver_new)
 
     def is_newer_version(self, ver_new):
-        if self.main.ver:
-            major_cur, minor_cur, patch_cur = line.split('.')
-        else:
-            return False
+        ver_major_new, ver_minor_new, ver_patch_new = wordless_misc.split_wordless_ver(ver_new)
 
-        if (int(major_cur) < int(major_new) or
-            int(minor_cur) < int(minor_new) or
-            int(patch_cur) < int(patch_new)):
+        if (self.main.ver_major < ver_major_new or
+            self.main.ver_minor < ver_minor_new or
+            self.main.ver_patch < ver_patch_new):
             return True
         else:
             return False

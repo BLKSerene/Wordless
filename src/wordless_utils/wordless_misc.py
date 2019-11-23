@@ -37,6 +37,11 @@ def get_wordless_ver():
             if line.strip() and not line.startswith('#'):
                 return line.strip()
 
+def split_wordless_ver(ver):
+    ver_major, ver_minor, ver_patch = ver.split('.')
+
+    return int(ver_major), int(ver_minor), int(ver_patch)
+
 def find_wordless_main(widget):
     main = widget
 
