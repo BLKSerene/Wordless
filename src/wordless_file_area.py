@@ -733,9 +733,9 @@ class Wrapper_File_Area(wordless_layout.Wordless_Wrapper_File_Area):
         # Auto-detection Settings
         self.group_box_auto_detection_settings = QGroupBox(self.tr('Auto-detection Settings'), self)
 
-        self.checkbox_detect_langs = QCheckBox(self.tr('Detect Languages'), self)
-        self.checkbox_detect_text_types = QCheckBox(self.tr('Detect Text Types'), self)
-        self.checkbox_detect_encodings = QCheckBox(self.tr('Detect Encodings'), self)
+        self.checkbox_detect_langs = QCheckBox(self.tr('Detect languages'), self)
+        self.checkbox_detect_text_types = QCheckBox(self.tr('Detect text types'), self)
+        self.checkbox_detect_encodings = QCheckBox(self.tr('Detect encodings'), self)
 
         self.checkbox_detect_langs.stateChanged.connect(self.auto_detection_settings_changed)
         self.checkbox_detect_text_types.stateChanged.connect(self.auto_detection_settings_changed)
