@@ -1043,7 +1043,11 @@ def generate_table(main, table):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_ngrams_table = Wordless_Worker_Ngrams_Table(main, dialog_progress, update_gui)
+            worker_ngrams_table = Wordless_Worker_Ngrams_Table(
+                main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui
+            )
             thread_ngrams_table = wordless_threading.Wordless_Thread(worker_ngrams_table)
 
             thread_ngrams_table.start()
@@ -1120,7 +1124,11 @@ def generate_fig(main):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_ngrams_fig = Wordless_Worker_Ngrams_Fig(main, dialog_progress, update_gui)
+            worker_ngrams_fig = Wordless_Worker_Ngrams_Fig(
+                main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui
+            )
             thread_ngrams_fig = wordless_threading.Wordless_Thread(worker_ngrams_fig)
 
             thread_ngrams_fig.start()

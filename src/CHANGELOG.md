@@ -30,6 +30,7 @@
 - Remove illegal characters when exporting tables to Excel workbooks
 - Update error messages for file checking
 - Update Sacremoses's Moses tokenizer and detokenizer
+- Work Area: Show hint messages when sorting results
 
 ### 📌 Bug Fixes
 - Fix encoding detection

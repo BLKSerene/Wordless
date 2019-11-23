@@ -44,7 +44,7 @@ class Wordless_Worker_Fetch_Data_Tagsets(wordless_threading.Wordless_Worker):
 
         self.progress_updated.emit(self.tr('Updating table ...'))
 
-        time.sleep(0.5)
+        time.sleep(0.1)
 
         self.worker_done.emit(mappings)
 
@@ -1269,7 +1269,11 @@ class Wordless_Settings(QDialog):
 
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Fetch_Data(self.main)
 
-            worker_fetch_data = Wordless_Worker_Fetch_Data_Tagsets(self.main, dialog_progress, update_gui)
+            worker_fetch_data = Wordless_Worker_Fetch_Data_Tagsets(
+                self.main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui
+            )
             thread_fetch_data = wordless_threading.Wordless_Thread(worker_fetch_data)
 
             self.combo_box_tagsets_lang.setEnabled(False)

@@ -21,13 +21,7 @@ from wordless_utils import wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_button, wordless_layout,
                               wordless_msg, wordless_widgets)
 
-class Wordless_Worker_Results_Filter(wordless_threading.Wordless_Worker):
-    def __init__(self, main, dialog_filter_results, dialog_progress, update_gui):
-        super().__init__(main, dialog_progress, update_gui)
-
-        self.dialog = dialog_filter_results
-
-class Wordless_Worker_Results_Filter_Wordlist(Wordless_Worker_Results_Filter):
+class Wordless_Worker_Results_Filter_Wordlist(wordless_threading.Wordless_Worker):
     def run(self):
         text_measure_dispersion = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_dispersion']
         text_measure_adjusted_freq = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_adjusted_freq']
@@ -135,7 +129,7 @@ class Wordless_Worker_Results_Filter_Wordlist(Wordless_Worker_Results_Filter):
 
         self.worker_done.emit()
 
-class Wordless_Worker_Results_Filter_Collocation(Wordless_Worker_Results_Filter):
+class Wordless_Worker_Results_Filter_Collocation(wordless_threading.Wordless_Worker):
     def run(self):
         text_test_significance = self.dialog.table.settings['collocation']['generation_settings']['test_significance']
         text_measure_effect_size = self.dialog.table.settings['collocation']['generation_settings']['measure_effect_size']
@@ -273,7 +267,7 @@ class Wordless_Worker_Results_Filter_Collocation(Wordless_Worker_Results_Filter)
 
         self.worker_done.emit()
 
-class Wordless_Worker_Results_Filter_Keywords(Wordless_Worker_Results_Filter):
+class Wordless_Worker_Results_Filter_Keywords(wordless_threading.Wordless_Worker):
     def run(self):
         text_test_significance = self.dialog.table.settings['keywords']['generation_settings']['test_significance']
         text_measure_effect_size = self.dialog.table.settings['keywords']['generation_settings']['measure_effect_size']
@@ -706,7 +700,11 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Results_Filter(self.main)
 
-        worker_search_results = Wordless_Worker_Results_Filter_Wordlist(self.main, self, dialog_progress, update_gui)
+        worker_search_results = Wordless_Worker_Results_Filter_Wordlist(
+            self.main,
+            dialog_progress = dialog_progress,
+            update_gui = update_gui,
+            dialog = self)
         thread_search_results = wordless_threading.Wordless_Thread(worker_search_results)
 
         thread_search_results.start()
@@ -1041,7 +1039,11 @@ class Wordless_Dialog_Results_Filter_Collocation(Wordless_Dialog_Results_Filter)
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Results_Filter(self.main)
 
-        worker_search_results = Wordless_Worker_Results_Filter_Collocation(self.main, self, dialog_progress, update_gui)
+        worker_search_results = Wordless_Worker_Results_Filter_Collocation(
+            self.main,
+            dialog_progress = dialog_progress,
+            update_gui = update_gui,
+            dialog = self)
         thread_search_results = wordless_threading.Wordless_Thread(worker_search_results)
 
         thread_search_results.start()
@@ -1353,7 +1355,11 @@ class Wordless_Dialog_Results_Filter_Keywords(Wordless_Dialog_Results_Filter):
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Results_Filter(self.main)
 
-        worker_search_results = Wordless_Worker_Results_Filter_Keywords(self.main, self, dialog_progress, update_gui)
+        worker_search_results = Wordless_Worker_Results_Filter_Keywords(
+            self.main,
+            dialog_progress = dialog_progress,
+            update_gui = update_gui,
+            dialog = self)
         thread_search_results = wordless_threading.Wordless_Thread(worker_search_results)
 
         thread_search_results.start()

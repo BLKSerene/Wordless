@@ -601,7 +601,11 @@ def generate_table(main, table):
     if wordless_checking_file.check_files_on_loading(main, files):
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-        worker_overview_table = Wordless_Worker_Overview_Table(main, dialog_progress, update_gui)
+        worker_overview_table = Wordless_Worker_Overview_Table(
+            main,
+            dialog_progress = dialog_progress,
+            update_gui = update_gui
+        )
         thread_overview_table = wordless_threading.Wordless_Thread(worker_overview_table)
 
         thread_overview_table.start()

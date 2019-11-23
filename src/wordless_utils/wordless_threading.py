@@ -17,10 +17,14 @@ class Wordless_Worker(QObject):
     progress_updated = pyqtSignal(str)
     worker_done = pyqtSignal()
 
-    def __init__(self, main, dialog_progress, update_gui):
+    def __init__(self, main, dialog_progress, update_gui, **kwargs):
         super().__init__()
 
         self.main = main
+
+        # Additional arguments
+        for key, val in kwargs.items():
+            self.__dict__[key] = val
 
         self.progress_updated.connect(dialog_progress.update_progress)
         self.worker_done.connect(update_gui)
@@ -31,8 +35,5 @@ class Wordless_Thread(QThread):
 
         worker.moveToThread(self)
 
-        try:
-            self.started.connect(worker.run)
-        except:
-            pass
+        self.started.connect(worker.run)
         self.finished.connect(worker.deleteLater)
