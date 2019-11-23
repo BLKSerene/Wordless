@@ -878,15 +878,10 @@ class Wordless_Dialog_About(wordless_dialog.Wordless_Dialog_Info):
         label_about_icon = QLabel('', self)
         label_about_icon.setPixmap(img_wordless_icon)
 
-        if main.ver:
-            about_header = self.tr(f'Wordless Version {main.ver}')
-        else:
-            about_header = self.tr('Wordless')
-
         label_about_title = wordless_label.Wordless_Label_Dialog_No_Wrap(
             self.tr(f'''
                 <div style="text-align: center;">
-                    <h2>{about_header}</h2>
+                    <h2>Wordless Version {main.ver}</h2>
                     <div>
                         An Integrated Corpus Tool with Multi-Language Support<br>
                         for the Study of Language, Literature, and Translation
