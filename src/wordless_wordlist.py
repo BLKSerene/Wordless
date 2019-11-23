@@ -610,7 +610,11 @@ def generate_table(main, table):
     if wordless_checking_file.check_files_on_loading(main, files):
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-        worker_wordlist_table = Wordless_Worker_Wordlist_Table(main, dialog_progress, update_gui)
+        worker_wordlist_table = Wordless_Worker_Wordlist_Table(
+            main,
+            dialog_progress = dialog_progress,
+            update_gui = update_gui
+        )
         thread_wordlist_table = wordless_threading.Wordless_Thread(worker_wordlist_table)
 
         thread_wordlist_table.start()
@@ -624,7 +628,7 @@ def generate_table(main, table):
 
 @wordless_misc.log_timing
 def generate_fig(main):
-    def data_received(tokens_freq_files, tokens_stats_files):
+    def update_gui(tokens_freq_files, tokens_stats_files):
         if tokens_freq_files:
             measure_dispersion = settings['generation_settings']['measure_dispersion']
             measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
@@ -674,7 +678,11 @@ def generate_fig(main):
     if wordless_checking_file.check_files_on_loading(main, files):
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-        worker_wordlist_fig = Wordless_Worker_Wordlist_Fig(main, dialog_progress, data_received)
+        worker_wordlist_fig = Wordless_Worker_Wordlist_Fig(
+            main,
+            dialog_progress = dialog_progress,
+            update_gui = update_gui
+        )
         thread_wordlist_fig = wordless_threading.Wordless_Thread(worker_wordlist_fig)
 
         thread_wordlist_fig.start()

@@ -751,7 +751,11 @@ def generate_table(main, table):
         if files:
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_keywords_table = Wordless_Worker_Keywords_Table(main, dialog_progress, update_gui)
+            worker_keywords_table = Wordless_Worker_Keywords_Table(
+                main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui
+            )
             thread_keywords_table = wordless_threading.Wordless_Thread(worker_keywords_table)
 
             thread_keywords_table.start()
@@ -842,7 +846,11 @@ def generate_fig(main):
         if files:
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_keywords_fig = Wordless_Worker_Keywords_Fig(main, dialog_progress, update_gui)
+            worker_keywords_fig = Wordless_Worker_Keywords_Fig(
+                main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui
+            )
             thread_keywords_fig = wordless_threading.Wordless_Thread(worker_keywords_fig)
 
             thread_keywords_fig.start()

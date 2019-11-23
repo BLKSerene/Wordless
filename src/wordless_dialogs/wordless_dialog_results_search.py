@@ -26,11 +26,6 @@ from wordless_widgets import (wordless_button, wordless_layout, wordless_msg,
 from wordless_utils import wordless_misc, wordless_threading
 
 class Wordless_Worker_Results_Search(wordless_threading.Wordless_Worker):
-    def __init__(self, main, dialog_results_search, dialog_progress, update_gui):
-        super().__init__(main, dialog_progress, update_gui)
-
-        self.dialog = dialog_results_search
-
     def run(self):
         results = {}
         search_terms = set()
@@ -338,7 +333,12 @@ class Wordless_Dialog_Results_Search(wordless_dialog.Wordless_Dialog):
 
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Results_Search(self.main)
 
-            worker_results_search = Wordless_Worker_Results_Search(self.main, self, dialog_progress, update_gui)
+            worker_results_search = Wordless_Worker_Results_Search(
+                self.main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui,
+                dialog = self
+            )
             thread_results_search = wordless_threading.Wordless_Thread(worker_results_search)
 
             thread_results_search.start()
