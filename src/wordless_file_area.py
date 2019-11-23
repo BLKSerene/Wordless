@@ -14,6 +14,7 @@ import copy
 import csv
 import os
 import re
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -35,7 +36,7 @@ from wordless_utils import (wordless_conversion, wordless_detection, wordless_mi
                             wordless_threading)
 from wordless_widgets import wordless_box, wordless_layout, wordless_table
 
-class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
+class Wordless_Worker_Open_Files(wordless_threading.Wordless_Worker):
     worker_done = pyqtSignal(list, list, list, list)
 
     def run(self):
@@ -49,7 +50,7 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
             len_file_paths = len(self.file_paths)
 
             for i, file_path in enumerate(self.file_paths):
-                self.progress_updated.emit(self.tr(f'Loading files ... ({i + 1}/{len_file_paths})'))
+                self.progress_updated.emit(self.tr(f'Opening files ... ({i + 1}/{len_file_paths})'))
 
                 default_dir = wordless_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
                 default_encoding = self.main.settings_custom['import']['temp_files']['default_encoding']
@@ -242,6 +243,10 @@ class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
 
             self.main.settings_custom['import']['files']['default_path'] = wordless_misc.get_normalized_dir(self.file_paths[0])
 
+        self.progress_updated.emit(self.tr('Updating table ...'))
+
+        time.sleep(0.1)
+
         self.worker_done.emit(new_files,
                               files_detection_error_encoding,
                               files_detection_error_text_type,
@@ -345,7 +350,7 @@ class Wordless_Files():
                 detection_success_lang)
 
     @wordless_misc.log_timing
-    def add_files(self, file_paths):
+    def open_files(self, file_paths):
         def update_gui(new_files,
                        files_detection_error_encoding,
                        files_detection_error_text_type,
@@ -381,22 +386,22 @@ class Wordless_Files():
         file_paths, files_unsupported = wordless_checking_file.check_files_unsupported(self.main, file_paths)
         file_paths, files_parsing_error = wordless_checking_file.check_files_parsing_error(self.main, file_paths)
 
-        dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Add_Files(self.main)
+        dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Open_Files(self.main)
 
-        worker_add_files = Wordless_Worker_Add_Files(
+        worker_open_files = Wordless_Worker_Open_Files(
             self.main,
             dialog_progress = dialog_progress,
             update_gui = update_gui,
             file_paths = file_paths
         )
-        thread_add_files = wordless_threading.Wordless_Thread(worker_add_files)
+        thread_open_files = wordless_threading.Wordless_Thread(worker_open_files)
 
-        thread_add_files.start()
+        thread_open_files.start()
 
         dialog_progress.exec_()
 
-        thread_add_files.quit()
-        thread_add_files.wait()
+        thread_open_files.quit()
+        thread_open_files.wait()
 
         wordless_dialog_error.wordless_dialog_error_file_open(self.main,
                                                               files_empty = files_empty,
@@ -404,7 +409,7 @@ class Wordless_Files():
                                                               files_unsupported = files_unsupported,
                                                               files_parsing_error = files_parsing_error)
 
-    def remove_files(self, indexes):
+    def close_files(self, indexes):
         self.main.settings_custom['files']['files_closed'].append([])
 
         for i in reversed(indexes):
@@ -650,7 +655,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
                                                   self.main.settings_global['file_types']['files'][-1])[0]
 
         if file_paths:
-            self.main.wordless_files.add_files(file_paths)
+            self.main.wordless_files.open_files(file_paths)
 
     def open_dir(self):
         file_paths = []
@@ -670,12 +675,12 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
                 for file_name in file_names:
                     file_paths.append(os.path.join(file_dir, file_name))
 
-            self.main.wordless_files.add_files(file_paths)
+            self.main.wordless_files.open_files(file_paths)
 
     def reopen(self):
         files = self.main.settings_custom['files']['files_closed'].pop()
 
-        self.main.wordless_files.add_files([file['path'] for file in files])
+        self.main.wordless_files.open_files([file['path'] for file in files])
 
     def select_all(self):
         if self.item(0, 0):
@@ -698,10 +703,10 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
                     self.item(i, 0).setCheckState(Qt.Unchecked)
 
     def close_selected(self):
-        self.main.wordless_files.remove_files(self.get_selected_rows())
+        self.main.wordless_files.close_files(self.get_selected_rows())
 
     def close_all(self):
-        self.main.wordless_files.remove_files(list(range(len(self.main.settings_custom['files']['files_open']))))
+        self.main.wordless_files.close_files(list(range(len(self.main.settings_custom['files']['files_open']))))
 
 class Wrapper_File_Area(wordless_layout.Wordless_Wrapper_File_Area):
     def __init__(self, main):

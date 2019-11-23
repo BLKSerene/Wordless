@@ -50,17 +50,17 @@ class Wordless_Dialog_Progress(wordless_dialog.Wordless_Dialog_Frameless):
     def update_progress(self, text):
         self.label_progress.setText(text)
 
-class Wordless_Dialog_Progress_Add_Files(Wordless_Dialog_Progress):
+class Wordless_Dialog_Progress_Open_Files(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
-        self.label_progress.setText(self.tr('Loading files ...'))
+        self.label_progress.setText(self.tr('Opening files ...'))
 
 class Wordless_Dialog_Progress_Process_Data(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
-        self.label_progress.setText(self.tr('Loading texts ...'))
+        self.label_progress.setText(self.tr('Loading files ...'))
 
 class Wordless_Dialog_Progress_Results_Sort(Wordless_Dialog_Progress):
     def __init__(self, main):

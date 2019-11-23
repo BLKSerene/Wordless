@@ -21,15 +21,14 @@
 - Work Area: Add Concordancer - Generation Settings - Width Unit - Paragraph
 - Work Area: Add Concordancer - Generation Settings - Sampling Method
 - Work Area: Add Overview - Paragraph Length in Clause
-- Work Area: Show hint messages when exporting tables
 
 ### ✨ Improvements
 - Display numbers and percentages in different columns
 - Do not add borders to exported Excel workbooks due to performance issues
 - Force consistent results for language detection
 - Remove illegal characters when exporting tables to Excel workbooks
-- Update error messages for file checking
 - Update Sacremoses's Moses tokenizer and detokenizer
+- Work Area: Show hint messages when exporting tables
 - Work Area: Show hint messages when sorting results
 
 ### 📌 Bug Fixes
@@ -112,7 +111,6 @@
 
 ### ✨ Improvements
 - Disable mouse wheel for combo boxes and spin boxes when they are not focused
-- Update hint messages
 - Update spaCy's sentencizer
 
 ### 📌 Bug Fixes
