@@ -32,13 +32,10 @@ def get_normalized_dir(path):
     return os.path.dirname(path)
 
 def get_wordless_ver():
-    try:
-        with open('VERSION', 'r', encoding = 'utf_8') as f:
-            for line in f:
-                if line.strip() and not line.startswith('#'):
-                    return line.strip()
-    except:
-        return ''
+    with open('VERSION', 'r', encoding = 'utf_8') as f:
+        for line in f:
+            if line.strip() and not line.startswith('#'):
+                return line.strip()
 
 def find_wordless_main(widget):
     main = widget
