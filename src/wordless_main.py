@@ -83,8 +83,9 @@ class Wordless_Main(QMainWindow):
 
         self.threads_check_updates = []
 
-        # Version number
+        # Version numbers
         self.ver = wordless_misc.get_wordless_ver()
+        self.ver_major, self.ver_minor, self.ver_patch = wordless_misc.split_wordless_ver(self.ver)
 
         # Title
         self.setWindowTitle(self.tr(f'Wordless v{self.ver}'))
