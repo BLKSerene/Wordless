@@ -13,6 +13,7 @@ import copy
 import csv
 import os
 import re
+import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -30,14 +31,6 @@ from wordless_widgets import (wordless_box, wordless_button, wordless_label,
 
 class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
     worker_done = pyqtSignal(bool, str)
-
-    def __init__(self, main, table, file_path, file_type, rows_export, dialog_progress, update_gui):
-        super().__init__(main, dialog_progress, update_gui)
-
-        self.table = table
-        self.file_path = file_path
-        self.file_type = file_type
-        self.rows_export = rows_export
 
     def run(self):
         # Check file permissions
@@ -610,9 +603,14 @@ class Wordless_Table(QTableWidget):
         if file_path:
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Export_Table(self.main)
 
-            worker_export_table = Wordless_Worker_Export_Table(self.main, self,
-                                                               file_path, file_type, rows_export,
-                                                               dialog_progress, update_gui)
+            worker_export_table = Wordless_Worker_Export_Table(
+                self.main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui,
+                table = self,
+                file_path = file_path,
+                file_type = file_type,
+                rows_export = rows_export)
             thread_export_table = wordless_threading.Wordless_Thread(worker_export_table)
 
             thread_export_table.start()
@@ -1202,6 +1200,58 @@ class Wordless_Table_Data_Filter_Search(Wordless_Table_Data):
             self.button_results_filter.setEnabled(False)
             self.button_results_search.setEnabled(False)
 
+class Wordless_Worker_Results_Sort_Concordancer(wordless_threading.Wordless_Worker):
+    worker_done = pyqtSignal(list)
+
+    def run(self):
+        results = []
+
+        len_left = max([
+            int(self.dialog.cellWidget(0, 0).itemText(i)[1:])
+            for i in range(self.dialog.cellWidget(0, 0).count())
+            if 'L' in self.dialog.cellWidget(0, 0).itemText(i)]
+        )
+        len_right = max([
+            int(self.dialog.cellWidget(0, 0).itemText(i)[1:])
+            for i in range(self.dialog.cellWidget(0, 0).count())
+            if 'R' in self.dialog.cellWidget(0, 0).itemText(i)
+        ])
+
+        for i in range(self.dialog.table.rowCount()):
+            left_old = self.dialog.table.cellWidget(i, 0)
+            node_old = self.dialog.table.cellWidget(i, 1)
+            right_old = self.dialog.table.cellWidget(i, 2)
+
+            if len(left_old.text_raw) < len_left:
+                left_old.text_raw = [''] * (len_left - len(left_old.text_raw)) + left_old.text_raw
+            if len(right_old.text_raw) < len_right:
+                right_old.text_raw.extend([''] * (len_right - len(right_old.text_raw)))
+
+            no_token = self.dialog.table.item(i, 3).val
+            no_token_pct = self.dialog.table.item(i, 4).val
+            no_clause = self.dialog.table.item(i, 5).val
+            no_clause_pct = self.dialog.table.item(i, 6).val
+            no_sentence = self.dialog.table.item(i, 7).val
+            no_sentence_pct = self.dialog.table.item(i, 8).val
+            no_para = self.dialog.table.item(i, 9).val
+            no_para_pct = self.dialog.table.item(i, 10).val
+            file = self.dialog.table.item(i, 11).text()
+
+            results.append([
+                left_old, node_old, right_old,
+                no_token, no_token_pct,
+                no_clause, no_clause_pct,
+                no_sentence, no_sentence_pct,
+                no_para, no_para_pct,
+                file
+            ])
+
+        self.progress_updated.emit(self.tr('Updating table ...'))
+
+        time.sleep(0.1)
+
+        self.worker_done.emit(results)
+
 class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
     def __init__(self, parent, table):
         super().__init__(parent,
@@ -1400,49 +1450,13 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
 
     @wordless_misc.log_timing
     def sort_results(self):
-        def key_concordancer(item):
-            keys = []
-
-            for key in sorting_keys:
-                # Node
-                if key == 1:
-                    keys.append(item[key].text_raw)
-                # Left & Right
-                elif type(key) == list:
-                    keys.append(item[key[0]].text_raw[key[1]])
-                else:
-                    keys.append(item[key])
-
-            return keys
-
-        results = []
-        sorting_keys = []
-
-        settings = self.table.settings['concordancer']
-
-        if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
-            len_left = max([int(self.cellWidget(0, 0).itemText(i)[1:])
-                            for i in range(self.cellWidget(0, 0).count())
-                            if 'L' in self.cellWidget(0, 0).itemText(i)])
-            len_right = max([int(self.cellWidget(0, 0).itemText(i)[1:])
-                             for i in range(self.cellWidget(0, 0).count())
-                             if 'R' in self.cellWidget(0, 0).itemText(i)])
-
-            for i in range(self.table.rowCount()):
+        def update_gui(results):
+            # Create new labels
+            for i, (left_old, node_old, right_old,
+                    _, _, _, _, _, _, _, _, _) in enumerate(results):
                 left_new = wordless_label.Wordless_Label_Html('', self.table)
-                node_new = wordless_label.Wordless_Label_Html('', self.table)
+                node_new = wordless_label.Wordless_Label_Html(node_old.text(), self.table)
                 right_new = wordless_label.Wordless_Label_Html('', self.table)
-
-                left_old = self.table.cellWidget(i, 0)
-                node_old = self.table.cellWidget(i, 1)
-                right_old = self.table.cellWidget(i, 2)
-
-                if len(left_old.text_raw) < len_left:
-                    left_old.text_raw = [''] * (len_left - len(left_old.text_raw)) + left_old.text_raw
-                if len(right_old.text_raw) < len_right:
-                    right_old.text_raw.extend([''] * (len_right - len(right_old.text_raw)))
-
-                node_new.setText(node_old.text())
 
                 left_new.text_raw = left_old.text_raw.copy()
                 node_new.text_raw = node_old.text_raw.copy()
@@ -1452,36 +1466,9 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
                 node_new.text_search = node_old.text_search.copy()
                 right_new.text_search = right_old.text_search.copy()
 
-                no_token = self.table.item(i, 3).val
-                no_token_pct = self.table.item(i, 4).val
-                no_clause = self.table.item(i, 5).val
-                no_clause_pct = self.table.item(i, 6).val
-                no_sentence = self.table.item(i, 7).val
-                no_sentence_pct = self.table.item(i, 8).val
-                no_para = self.table.item(i, 9).val
-                no_para_pct = self.table.item(i, 10).val
-                file = self.table.item(i, 11).text()
-
-                results.append([
-                    left_new, node_new, right_new,
-                    no_token, no_token_pct,
-                    no_clause, no_clause_pct,
-                    no_sentence, no_sentence_pct,
-                    no_para, no_para_pct,
-                    file
-                ])
-
-            for sorting_col, sorting_order in settings['sort_results']['sorting_rules']:
-                if sorting_col == self.tr('File'):
-                    sorting_keys.append(11)
-                elif sorting_col == self.tr('Token No.'):
-                    sorting_keys.append(3)
-                elif sorting_col == self.tr('Node'):
-                    sorting_keys.append(1)
-                elif 'R' in sorting_col:
-                    sorting_keys.append([2, int(sorting_col[1:]) - 1])
-                elif 'L' in sorting_col:
-                    sorting_keys.append([0, -int(sorting_col[1:])])
+                results[i][0] = left_new
+                results[i][1] = node_new
+                results[i][2] = right_new
 
             self.table.blockSignals(True)
             self.table.setUpdatesEnabled(False)
@@ -1554,6 +1541,56 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
 
             self.table.setUpdatesEnabled(True)
             self.table.blockSignals(False)
+
+            dialog_progress.accept()
+
+        def key_concordancer(item):
+            keys = []
+
+            for key in sorting_keys:
+                # Node
+                if key == 1:
+                    keys.append(item[key].text_raw)
+                # Left & Right
+                elif type(key) == list:
+                    keys.append(item[key[0]].text_raw[key[1]])
+                else:
+                    keys.append(item[key])
+
+            return keys
+
+        sorting_keys = []
+
+        settings = self.table.settings['concordancer']
+
+        if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
+            for sorting_col, sorting_order in settings['sort_results']['sorting_rules']:
+                if sorting_col == self.tr('File'):
+                    sorting_keys.append(11)
+                elif sorting_col == self.tr('Token No.'):
+                    sorting_keys.append(3)
+                elif sorting_col == self.tr('Node'):
+                    sorting_keys.append(1)
+                elif 'R' in sorting_col:
+                    sorting_keys.append([2, int(sorting_col[1:]) - 1])
+                elif 'L' in sorting_col:
+                    sorting_keys.append([0, -int(sorting_col[1:])])
+
+            dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Results_Sort(self.main)
+
+            worker_results_sort_concordancer = Wordless_Worker_Results_Sort_Concordancer(
+                self.main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui,
+                dialog = self)
+            thread_results_sort_concordancer = wordless_threading.Wordless_Thread(worker_results_sort_concordancer)
+
+            thread_results_sort_concordancer.start()
+
+            dialog_progress.exec_()
+
+            thread_results_sort_concordancer.quit()
+            thread_results_sort_concordancer.wait()
 
         wordless_msg.wordless_msg_results_sort(self.main)
 

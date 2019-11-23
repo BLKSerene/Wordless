@@ -1125,7 +1125,11 @@ def generate_table(main, table):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_concordancer_table = Wordless_Worker_Concordancer_Table(main, dialog_progress, update_gui)
+            worker_concordancer_table = Wordless_Worker_Concordancer_Table(
+                main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui
+            )
             thread_concordancer_table = wordless_threading.Wordless_Thread(worker_concordancer_table)
 
             thread_concordancer_table.start()
@@ -1197,7 +1201,11 @@ def generate_fig(main):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_concordancer_fig = Wordless_Worker_Concordancer_Fig(main, dialog_progress, update_gui)
+            worker_concordancer_fig = Wordless_Worker_Concordancer_Fig(
+                main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui
+            )
             thread_concordancer_fig = wordless_threading.Wordless_Thread(worker_concordancer_fig)
 
             thread_concordancer_fig.start()

@@ -38,11 +38,6 @@ from wordless_widgets import wordless_box, wordless_layout, wordless_table
 class Wordless_Worker_Add_Files(wordless_threading.Wordless_Worker):
     worker_done = pyqtSignal(list, list, list, list)
 
-    def __init__(self, main, file_paths, dialog_progress, update_gui):
-        super().__init__(main, dialog_progress, update_gui)
-
-        self.file_paths = file_paths
-
     def run(self):
         new_files = []
 
@@ -388,7 +383,12 @@ class Wordless_Files():
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Add_Files(self.main)
 
-        worker_add_files = Wordless_Worker_Add_Files(self.main, file_paths, dialog_progress, update_gui)
+        worker_add_files = Wordless_Worker_Add_Files(
+            self.main,
+            dialog_progress = dialog_progress,
+            update_gui = update_gui,
+            file_paths = file_paths
+        )
         thread_add_files = wordless_threading.Wordless_Thread(worker_add_files)
 
         thread_add_files.start()

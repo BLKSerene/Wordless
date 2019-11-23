@@ -62,6 +62,12 @@ class Wordless_Dialog_Progress_Process_Data(Wordless_Dialog_Progress):
 
         self.label_progress.setText(self.tr('Loading texts ...'))
 
+class Wordless_Dialog_Progress_Results_Sort(Wordless_Dialog_Progress):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.label_progress.setText(self.tr('Sorting results ...'))
+
 class Wordless_Dialog_Progress_Results_Filter(Wordless_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
