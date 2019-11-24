@@ -29,22 +29,24 @@ from wordless_widgets import (wordless_box, wordless_layout, wordless_msg,
 
 class Wordless_Table_Keyword(wordless_table.Wordless_Table_Data_Filter_Search):
     def __init__(self, parent):
-        super().__init__(parent,
-                         tab = 'keyword',
-                         headers = [
-                             parent.tr('Rank'),
-                             parent.tr('Keyword'),
-                             parent.tr('Number of\nFiles Found'),
-                             parent.tr('Number of\nFiles Found %')
-                         ],
-                         headers_int = [
-                             parent.tr('Rank'),
-                             parent.tr('Number of\nFiles Found')
-                         ],
-                         headers_pct = [
-                             parent.tr('Number of\nFiles Found %')
-                         ],
-                         sorting_enabled = True)
+        super().__init__(
+            parent,
+            tab = 'keyword',
+            headers = [
+                parent.tr('Rank'),
+                parent.tr('Keyword'),
+                parent.tr('Number of\nFiles Found'),
+                parent.tr('Number of\nFiles Found %')
+            ],
+            headers_int = [
+                parent.tr('Rank'),
+                parent.tr('Number of\nFiles Found')
+            ],
+            headers_pct = [
+                parent.tr('Number of\nFiles Found %')
+            ],
+            sorting_enabled = True
+        )
 
         self.name = 'keyword'
 
