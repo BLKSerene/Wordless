@@ -220,6 +220,44 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ]
         ]
 
+        self.ACKS_LANG_DATA = [
+            # extra-stopwords
+            [
+                'extra-stopwords', 'https://github.com/Xangis/extra-stopwords',
+                'N/A',
+                'Jason Champion',
+                'MIT', 'https://github.com/Xangis/extra-stopwords/blob/master/LICENSE'
+            ],
+            # grk-stoplist
+            [
+                'grk-stoplist', 'https://github.com/pharos-alexandria/grk-stoplist',
+                'N/A',
+                'Annette von Stockhausen',
+                'CC0-1.0', 'https://github.com/pharos-alexandria/grk-stoplist/blob/master/LICENSE'
+            ],
+            # lemmalist-greek
+            [
+                'lemmalist-greek', 'https://github.com/stenskjaer/lemmalist-greek',
+                'N/A',
+                'Michael Stenskjær Christensen',
+                'GPL-3.0', 'https://github.com/stenskjaer/lemmalist-greek/blob/master/LICENSE'
+            ],
+            # Lemmatization Lists
+            [
+                'Lemmatization Lists', 'https://github.com/michmech/lemmatization-lists',
+                'N/A',
+                'Michal Boleslav Měchura',
+                'ODbL', 'https://github.com/michmech/lemmatization-lists/blob/master/LICENCE'
+            ],
+            # Stopwords ISO
+            [
+                'Stopwords ISO', 'https://github.com/stopwords-iso/stopwords-iso',
+                '0.4.0',
+                'Gene Diaz',
+                'MIT', 'https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE'
+            ]
+        ]
+
         self.ACKS_PLOTTING = [
             # Matplotlib
             [
@@ -331,44 +369,6 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             ]
         ]
 
-        self.ACKS_DATA = [
-            # extra-stopwords
-            [
-                'extra-stopwords', 'https://github.com/Xangis/extra-stopwords',
-                'N/A',
-                'Jason Champion',
-                'MIT', 'https://github.com/Xangis/extra-stopwords/blob/master/LICENSE'
-            ],
-            # grk-stoplist
-            [
-                'grk-stoplist', 'https://github.com/pharos-alexandria/grk-stoplist',
-                'N/A',
-                'Annette von Stockhausen',
-                'CC0-1.0', 'https://github.com/pharos-alexandria/grk-stoplist/blob/master/LICENSE'
-            ],
-            # lemmalist-greek
-            [
-                'lemmalist-greek', 'https://github.com/stenskjaer/lemmalist-greek',
-                'N/A',
-                'Michael Stenskjær Christensen',
-                'GPL-3.0', 'https://github.com/stenskjaer/lemmalist-greek/blob/master/LICENSE'
-            ],
-            # Lemmatization Lists
-            [
-                'Lemmatization Lists', 'https://github.com/michmech/lemmatization-lists',
-                'N/A',
-                'Michal Boleslav Měchura',
-                'ODbL', 'https://github.com/michmech/lemmatization-lists/blob/master/LICENCE'
-            ],
-            # Stopwords ISO
-            [
-                'Stopwords ISO', 'https://github.com/stopwords-iso/stopwords-iso',
-                '0.4.0',
-                'Gene Diaz',
-                'MIT', 'https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE'
-            ]
-        ]
-
         self.label_acks = wordless_label.Wordless_Label_Dialog(
             self.tr('''
                 <div>
@@ -380,20 +380,22 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         self.label_browse_category = QLabel(self.tr('Browse by category:'), self)
         self.combo_box_browse_category = wordless_box.Wordless_Combo_Box(self)
 
-        self.table_acks = wordless_table.Wordless_Table(self,
-                                                        headers = [
-                                                            self.tr('Project Name'),
-                                                            self.tr('Version'),
-                                                            self.tr('Author(s)'),
-                                                            self.tr('License')
-                                                        ])
+        self.table_acks = wordless_table.Wordless_Table(
+            self,
+            headers = [
+                self.tr('Name'),
+                self.tr('Version'),
+                self.tr('Author(s)'),
+                self.tr('License')
+            ]
+        )
 
         self.combo_box_browse_category.addItems([
             self.tr('General'),
             self.tr('Natural Language Processing'),
+            self.tr('Language Data'),
             self.tr('Plotting'),
-            self.tr('Miscellaneous'),
-            self.tr('Data')
+            self.tr('Miscellaneous')
         ])
 
         self.table_acks.setFixedHeight(250)
@@ -430,12 +432,12 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             acks = self.ACKS_GENERAL
         elif settings['browse_category'] == self.tr('Natural Language Processing'):
             acks = self.ACKS_NLP
+        elif settings['browse_category'] == self.tr('Language Data'):
+            acks = self.ACKS_LANG_DATA
         elif settings['browse_category'] == self.tr('Plotting'):
             acks = self.ACKS_PLOTTING
         elif settings['browse_category'] == self.tr('Miscellaneous'):
             acks = self.ACKS_MISC
-        elif settings['browse_category'] == self.tr('Data'):
-            acks = self.ACKS_DATA
 
         self.table_acks.clear_table()
 
