@@ -19,10 +19,10 @@
     - 3.1 [Overview](#doc-eng-3-1)
     - 3.2 [Concordancer](#doc-eng-3-2)
     - 3.3 [Wordlist](#doc-eng-3-3)
-    - 3.4 [N-grams](#doc-eng-3-4)
+    - 3.4 [N-gram](#doc-eng-3-4)
     - 3.5 [Collocation](#doc-eng-3-5)
     - 3.6 [Colligation](#doc-eng-3-6)
-    - 3.7 [Keywords](#doc-eng-3-7)
+    - 3.7 [Keyword](#doc-eng-3-7)
 - 4 [Appendixes](#doc-eng-4)
     - 4.1 [Supported Languages](#doc-eng-4-1)
     - 4.2 [Supported Text Types](#doc-eng-4-2)
@@ -210,7 +210,7 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 - **3.3.1 Rank**<br>
     The rank of the token sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. 
 
-- **3.3.2 Tokens**<br>
+- **3.3.2 Token**<br>
     You can specify what should be counted as a "token" via **Token Settings**.
 
 - **3.3.3 Frequency**<br>
@@ -230,8 +230,8 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 ![Wordlist Figure - Word Cloud](/doc/wordlist/wordlist_fig_word_cloud.png)
 
 <span id="doc-eng-3-4"></span>
-### 3.4 N-grams [[Back to Contents]](#doc-eng)
-In *N-grams*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files, count and compute the raw frequency and relative frequency of each n-gram/skip-gram, and calculate the dispersion and adjusted frequency for each n-gram/skip-gram using different measures.  You can adjust the settings for the generated data via **Generation Settings**. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can also set constraints on the position of search terms in all n-grams via **Search Settings → Search Term Position**.
+### 3.4 N-gram [[Back to Contents]](#doc-eng)
+In *N-gram*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files, count and compute the raw frequency and relative frequency of each n-gram/skip-gram, and calculate the dispersion and adjusted frequency for each n-gram/skip-gram using different measures.  You can adjust the settings for the generated data via **Generation Settings**. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can also set constraints on the position of search terms in all n-grams via **Search Settings → Search Term Position**.
 
 It is possible to disable searching altogether and generate an exhausted list of n-grams/skip-grams by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
 
@@ -242,7 +242,7 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 - **3.4.1 Rank**<br>
     The rank of the n-gram sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. 
 
-- **3.4.2 N-grams**<br>
+- **3.4.2 N-gram**<br>
     You can specify what should be counted as a "n-gram" via **Token Settings**.
 
 - **3.4.3 Frequency**<br>
@@ -257,9 +257,9 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 - **3.4.6 Number of Files Found**<br>
     The number of files in which the n-gram appears at least once.
 
-![N-grams Table](/doc/ngrams/ngrams_table.png)
-![N-grams Figure - Line Chart](/doc/ngrams/ngrams_fig_line_chart.png)
-![N-grams Figure - Word Cloud](/doc/ngrams/ngrams_fig_word_cloud.png)
+![N-gram Table](/doc/ngram/ngram_table.png)
+![N-gram Figure - Line Chart](/doc/ngram/ngram_fig_line_chart.png)
+![N-gram Figure - Word Cloud](/doc/ngram/ngram_fig_word_cloud.png)
 
 <span id="doc-eng-3-5"></span>
 ### 3.5 Collocation [[Back to Contents]](#doc-eng)
@@ -274,10 +274,10 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 - **3.5.1 Rank**<br>
     The rank of the collocating token sorted by the p-value of the significance test conducted on the node and the collocating token in the first file in ascending order (by default). You can sort the results again by clicking the column headers. 
 
-- **3.5.2 Nodes**<br>
+- **3.5.2 Node**<br>
     The search term. You can specify what should be counted as a "token" via **Token Settings**.
 
-- **3.5.3 Collocates**<br>
+- **3.5.3 Collocate**<br>
     The collocating token. You can specify what should be counted as a "token" via **Token Settings**.
 
 - **3.5.4 Ln, ... , L3, L2, L1, R1, R2, R3, ... , Rn**<br>
@@ -325,10 +325,10 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 - **3.6.1 Rank**<br>
     The rank of the collocating part of speech sorted by the p-value of the significance test conducted on the node and the collocating part of speech in the first file in ascending order (by default). You can sort the results again by clicking the column headers. 
 
-- **3.6.2 Nodes**<br>
+- **3.6.2 Node**<br>
     The search term. You can specify what should be counted as a "token" via **Token Settings**.
 
-- **3.6.3 Collocates**<br>
+- **3.6.3 Collocate**<br>
     The collocating part of speech. You can specify what should be counted as a "token" via **Token Settings**.
 
 - **3.6.4 Ln, ... , L3, L2, L1, R1, R2, R3, ... , Rn**<br>
@@ -362,8 +362,8 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 ![Colligation Figure - Network Graph](/doc/colligation/colligation_fig_network_graph.png)
 
 <span id="doc-eng-3-7"></span>
-### 3.7 Keywords [[Back to Contents]](#doc-eng)
-In *Keywords*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed file than in the reference file) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**.
+### 3.7 Keyword [[Back to Contents]](#doc-eng)
+In *Keyword*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed file than in the reference file) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**.
 
 In addition, you can generate line charts or word clouds for keywords using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
@@ -372,7 +372,7 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 - **3.7.1 Rank**<br>
     The rank of the keyword sorted by the p-value of the significance test conducted on the keyword in the first file in ascending order (by default). You can sort the results again by clicking the column headers. 
 
-- **3.7.2 Keywords**<br>
+- **3.7.2 Keyword**<br>
     The candidates of potantial keywords. You can specify what should be counted as a "token" via **Token Settings**.
 
 - **3.7.3 Frequency (in Reference File)**<br>
@@ -398,9 +398,9 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 - **3.7.9 Number of Files Found**<br>
     The number of files in which the keyword appears at least once.
 
-![Keywords Table](/doc/keywords/keywords_table.png)
-![Keywords Figure - Line Chart](/doc/keywords/keywords_fig_line_chart.png)
-![Keywords Figure - Word Cloud](/doc/keywords/keywords_fig_word_cloud.png)
+![Keyword Table](/doc/keyword/keyword_table.png)
+![Keyword Figure - Line Chart](/doc/keyword/keyword_fig_line_chart.png)
+![Keyword Figure - Word Cloud](/doc/keyword/keyword_fig_word_cloud.png)
 
 <span id="doc-eng-4"></span>
 ## 4 Appendixes [[Back to Contents]](#doc-eng)
@@ -761,7 +761,7 @@ Not Word 2     |![e21](/doc/measures/e21.gif)|![e22](/doc/measures/e22.gif)
 ![o21](/doc/measures/o21.gif): Number of occurrences of any word except Word 1 followed by Word 2<br>
 ![o22](/doc/measures/o22.gif): Number of occurrences of any word except Word 1 followed by any word except Word 2
 
-As for keywords (in *Keywords*):
+As for keywords (in *Keyword*):
 
 Observed Values|Observed File                |Reference File               |Row Total
 --------------:|:---------------------------:|:---------------------------:|:---------------------------:

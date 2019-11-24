@@ -186,7 +186,7 @@ def wordless_fig_stat_ref(main, keywords_stat_files, ref_file,
             matplotlib.pyplot.plot([stats_files[i] for stats_files in stats],
                                    label = file['name'])
 
-        matplotlib.pyplot.xlabel(main.tr('Keywords'))
+        matplotlib.pyplot.xlabel(main.tr('Keyword'))
 
         matplotlib.pyplot.ylabel(label_y)
         matplotlib.pyplot.xticks(range(len(keywords)),

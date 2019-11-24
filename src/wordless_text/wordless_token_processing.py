@@ -191,7 +191,7 @@ def wordless_process_tokens_wordlist(text, token_settings):
 
     return tokens
 
-def wordless_process_tokens_ngrams(text, token_settings):
+def wordless_process_tokens_ngram(text, token_settings):
     tokens = wordless_process_tokens(text, token_settings)
 
     # Use tags only
