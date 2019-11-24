@@ -43,7 +43,7 @@ import wordless_file_area
 import wordless_overview
 import wordless_concordancer
 import wordless_wordlist
-import wordless_ngrams
+import wordless_ngram
 import wordless_collocation
 import wordless_colligation
 import wordless_keywords
@@ -409,8 +409,8 @@ class Wordless_Main(QMainWindow):
                                        self.tr('Concordancer'))
         self.wordless_work_area.addTab(wordless_wordlist.Wrapper_Wordlist(self),
                                        self.tr('Wordlist'))
-        self.wordless_work_area.addTab(wordless_ngrams.Wrapper_Ngrams(self),
-                                       self.tr('N-grams'))
+        self.wordless_work_area.addTab(wordless_ngram.Wrapper_Ngram(self),
+                                       self.tr('N-gram'))
         self.wordless_work_area.addTab(wordless_collocation.Wrapper_Collocation(self),
                                        self.tr('Collocation'))
         self.wordless_work_area.addTab(wordless_colligation.Wrapper_Colligation(self),

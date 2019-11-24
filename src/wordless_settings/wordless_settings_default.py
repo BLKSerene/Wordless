@@ -320,7 +320,7 @@ def init_settings_default(main):
             }
         },
     
-        'ngrams': {
+        'ngram': {
             'token_settings': {
                 'words': True,
                 'lowercase': True,
