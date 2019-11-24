@@ -491,7 +491,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
     def __init__(self, parent):
         super().__init__(parent,
                          headers = [
-                             parent.tr('File Name'),
+                             parent.tr('Name'),
                              parent.tr('Language'),
                              parent.tr('Text Type'),
                              parent.tr('Path'),
@@ -506,25 +506,15 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
         self.itemSelectionChanged.connect(self.file_selection_changed)
         self.cellDoubleClicked.connect(self.cell_double_clicked)
 
-        self.button_open_files = QPushButton(self.tr('Add File(s)...'))
-        self.button_open_dir = QPushButton(self.tr('Add Folder...'))
-        self.button_reopen = QPushButton(self.tr('Reopen Closed File(s)'))
-
-        self.button_select_all = QPushButton(self.tr('Select All'))
-        self.button_invert_selection = QPushButton(self.tr('Invert Selection'))
-        self.button_deselect_all = QPushButton(self.tr('Deselect All'))
-
+        self.button_open_files = QPushButton(self.tr('Open File(s)...'))
+        self.button_open_dir = QPushButton(self.tr('Open Folder...'))
+        self.button_reopen = QPushButton(self.tr('Reopen Closed Files'))
         self.button_close_selected = QPushButton(self.tr('Close Selected'))
         self.button_close_all = QPushButton(self.tr('Close All'))
 
         self.button_open_files.clicked.connect(self.open_files)
         self.button_open_dir.clicked.connect(self.open_dir)
         self.button_reopen.clicked.connect(self.reopen)
-
-        self.button_select_all.clicked.connect(self.select_all)
-        self.button_invert_selection.clicked.connect(self.invert_selection)
-        self.button_deselect_all.clicked.connect(self.deselect_all)
-
         self.button_close_selected.clicked.connect(self.close_selected)
         self.button_close_all.clicked.connect(self.close_all)
 
@@ -532,7 +522,7 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
         self.main.find_menu_item(self.tr('Open File(s)...')).triggered.connect(self.open_files)
         self.main.find_menu_item(self.tr('Open Folder...')).triggered.connect(self.open_dir)
 
-        self.main.find_menu_item(self.tr('Reopen Closed File(s)')).triggered.connect(self.reopen)
+        self.main.find_menu_item(self.tr('Reopen Closed Files')).triggered.connect(self.reopen)
 
         self.main.find_menu_item(self.tr('Select All')).triggered.connect(self.select_all)
         self.main.find_menu_item(self.tr('Invert Selection')).triggered.connect(self.invert_selection)
@@ -585,16 +575,8 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
 
                 self.main.settings_custom['files']['files_open'].append(new_file)
 
-            self.button_select_all.setEnabled(True)
-            self.button_invert_selection.setEnabled(True)
-            self.button_deselect_all.setEnabled(True)
-
             self.button_close_all.setEnabled(True)
         else:
-            self.button_select_all.setEnabled(False)
-            self.button_invert_selection.setEnabled(False)
-            self.button_deselect_all.setEnabled(False)
-
             self.button_close_all.setEnabled(False)
 
         if self.main.settings_custom['files']['files_closed']:
@@ -617,9 +599,9 @@ class Wordless_Table_Files(wordless_table.Wordless_Table):
             self.main.find_menu_item(self.tr('Close All')).setEnabled(False)
 
         if self.main.settings_custom['files']['files_closed']:
-            self.main.find_menu_item(self.tr('Reopen Closed File(s)')).setEnabled(True)
+            self.main.find_menu_item(self.tr('Reopen Closed Files')).setEnabled(True)
         else:
-            self.main.find_menu_item(self.tr('Reopen Closed File(s)')).setEnabled(False)
+            self.main.find_menu_item(self.tr('Reopen Closed Files')).setEnabled(False)
 
         if self.rowCount() == 0:
             self.setRowCount(1)
@@ -715,15 +697,12 @@ class Wrapper_File_Area(wordless_layout.Wordless_Wrapper_File_Area):
         # Table
         self.table_files = Wordless_Table_Files(self)
 
-        self.wrapper_table.layout().addWidget(self.table_files, 0, 0, 1, 4)
+        self.wrapper_table.layout().addWidget(self.table_files, 0, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_files.button_open_files, 1, 0)
         self.wrapper_table.layout().addWidget(self.table_files.button_open_dir, 1, 1)
         self.wrapper_table.layout().addWidget(self.table_files.button_reopen, 1, 2)
-        self.wrapper_table.layout().addWidget(self.table_files.button_select_all, 2, 0)
-        self.wrapper_table.layout().addWidget(self.table_files.button_invert_selection, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_files.button_deselect_all, 2, 2)
         self.wrapper_table.layout().addWidget(self.table_files.button_close_selected, 1, 3)
-        self.wrapper_table.layout().addWidget(self.table_files.button_close_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_files.button_close_all, 1, 4)
 
         # Folder Settings
         self.group_box_folder_settings = QGroupBox(self.tr('Folder Settings'), self)
