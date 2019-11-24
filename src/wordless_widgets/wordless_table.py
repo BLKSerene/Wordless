@@ -1015,8 +1015,11 @@ class Wordless_Table_Data(Wordless_Table):
                                 item.setText(f'{item.val:.{precision_pct}%}')
 
         self.blockSignals(False)
-        self.setSortingEnabled(True)
         self.setUpdatesEnabled(True)
+
+        if self.sorting_enabled:
+            self.setSortingEnabled(True)
+
 
     def toggle_breakdown(self):
         self.setUpdatesEnabled(False)
