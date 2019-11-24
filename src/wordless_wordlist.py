@@ -564,7 +564,7 @@ def generate_table(main, table):
                 # Rank
                 table.set_item_num(i, 0, -1)
 
-                # Tokens
+                # Token
                 table.setItem(i, 1, wordless_table.Wordless_Table_Item(token))
 
                 # Frequency
