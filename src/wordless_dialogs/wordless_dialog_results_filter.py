@@ -30,9 +30,9 @@ class Wordless_Worker_Results_Filter_Wordlist(wordless_threading.Wordless_Worker
         text_adjusted_freq =  self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
         if self.dialog.tab == 'wordlist':
-            col_tokens = self.dialog.table.find_col(self.tr('Tokens'))
-        elif self.dialog.tab == 'ngrams':
-            col_ngrams = self.dialog.table.find_col(self.tr('N-grams'))
+            col_token = self.dialog.table.find_col(self.tr('Token'))
+        elif self.dialog.tab == 'ngram':
+            col_ngram = self.dialog.table.find_col(self.tr('N-gram'))
 
         if self.dialog.settings['file_to_filter'] == self.tr('Total'):
             col_freq = self.dialog.table.find_col(
@@ -64,7 +64,7 @@ class Wordless_Worker_Results_Filter_Wordlist(wordless_threading.Wordless_Worker
             len_token_max = (float('inf')
                              if self.dialog.settings['len_token_max_no_limit']
                              else self.dialog.settings['len_token_max'])
-        elif self.dialog.tab == 'ngrams':
+        elif self.dialog.tab == 'ngram':
             len_ngram_min = (float('-inf')
                              if self.dialog.settings['len_ngram_min_no_limit']
                              else self.dialog.settings['len_ngram_min'])
@@ -104,7 +104,7 @@ class Wordless_Worker_Results_Filter_Wordlist(wordless_threading.Wordless_Worker
 
         if self.dialog.tab == 'wordlist':
             for i in range(self.dialog.table.rowCount()):
-                if (len_token_min       <= len(self.dialog.table.item(i, col_tokens).text())  <= len_token_max and
+                if (len_token_min       <= len(self.dialog.table.item(i, col_token).text())   <= len_token_max and
                     freq_min            <= self.dialog.table.item(i, col_freq).val            <= freq_max and
                     dispersion_min      <= self.dialog.table.item(i, col_dispersion).val      <= dispersion_max and
                     adjusted_freq_min   <= self.dialog.table.item(i, col_adjusted_freq).val   <= adjusted_freq_max and
@@ -112,9 +112,9 @@ class Wordless_Worker_Results_Filter_Wordlist(wordless_threading.Wordless_Worker
                     self.dialog.table.row_filters.append(True)
                 else:
                     self.dialog.table.row_filters.append(False)
-        elif self.dialog.tab == 'ngrams':
+        elif self.dialog.tab == 'ngram':
             for i in range(self.dialog.table.rowCount()):
-                if (len_ngram_min       <= len(self.dialog.table.item(i, col_ngrams).text())  <= len_ngram_max and
+                if (len_ngram_min       <= len(self.dialog.table.item(i, col_ngram).text())   <= len_ngram_max and
                     freq_min            <= self.dialog.table.item(i, col_freq).val            <= freq_max and
                     dispersion_min      <= self.dialog.table.item(i, col_dispersion).val      <= dispersion_max and
                     adjusted_freq_min   <= self.dialog.table.item(i, col_adjusted_freq).val   <= adjusted_freq_max and
@@ -469,7 +469,7 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
              self.checkbox_len_token_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
                                                                                               filter_min = 1,
                                                                                               filter_max = 100)
-        elif self.tab == 'ngrams':
+        elif self.tab == 'ngram':
             self.label_len_ngram = QLabel(self.tr('N-gram Length:'), self)
             (self.label_len_ngram_min,
              self.spin_box_len_ngram_min,
@@ -525,7 +525,7 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
             self.checkbox_len_token_min_no_limit.stateChanged.connect(self.filters_changed)
             self.spin_box_len_token_max.valueChanged.connect(self.filters_changed)
             self.checkbox_len_token_max_no_limit.stateChanged.connect(self.filters_changed)
-        elif self.tab == 'ngrams':
+        elif self.tab == 'ngram':
             self.spin_box_len_ngram_min.valueChanged.connect(self.filters_changed)
             self.checkbox_len_ngram_min_no_limit.stateChanged.connect(self.filters_changed)
             self.spin_box_len_ngram_max.valueChanged.connect(self.filters_changed)
@@ -561,7 +561,7 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
             self.layout_filters.addWidget(self.label_len_token_max, 2, 0)
             self.layout_filters.addWidget(self.spin_box_len_token_max, 2, 1)
             self.layout_filters.addWidget(self.checkbox_len_token_max_no_limit, 2, 2)
-        elif self.tab == 'ngrams':
+        elif self.tab == 'ngram':
             self.layout_filters.addWidget(self.label_len_ngram, 0, 0, 1, 3)
             self.layout_filters.addWidget(self.label_len_ngram_min, 1, 0)
             self.layout_filters.addWidget(self.spin_box_len_ngram_min, 1, 1)
@@ -619,7 +619,7 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
             self.checkbox_len_token_min_no_limit.setChecked(settings['len_token_min_no_limit'])
             self.spin_box_len_token_max.setValue(settings['len_token_max'])
             self.checkbox_len_token_max_no_limit.setChecked(settings['len_token_max_no_limit'])
-        elif self.tab == 'ngrams':
+        elif self.tab == 'ngram':
             self.spin_box_len_ngram_min.setValue(settings['len_ngram_min'])
             self.checkbox_len_ngram_min_no_limit.setChecked(settings['len_ngram_min_no_limit'])
             self.spin_box_len_ngram_max.setValue(settings['len_ngram_max'])
@@ -651,7 +651,7 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
             self.settings['len_token_min_no_limit'] = self.checkbox_len_token_min_no_limit.isChecked()
             self.settings['len_token_max'] = self.spin_box_len_token_max.value()
             self.settings['len_token_max_no_limit'] = self.checkbox_len_token_max_no_limit.isChecked()
-        elif self.tab == 'ngrams':
+        elif self.tab == 'ngram':
             self.settings['len_ngram_min'] = self.spin_box_len_ngram_min.value()
             self.settings['len_ngram_min_no_limit'] = self.checkbox_len_ngram_min_no_limit.isChecked()
             self.settings['len_ngram_max'] = self.spin_box_len_ngram_max.value()

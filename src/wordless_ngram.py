@@ -1,5 +1,5 @@
 #
-# Wordless: N-grams
+# Wordless: N-gram
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊))
 #
@@ -30,13 +30,13 @@ from wordless_utils import wordless_misc, wordless_sorting, wordless_threading
 from wordless_widgets import (wordless_box, wordless_layout, wordless_msg,
                               wordless_table, wordless_widgets)
 
-class Wordless_Table_Ngrams(wordless_table.Wordless_Table_Data_Filter_Search):
+class Wordless_Table_Ngram(wordless_table.Wordless_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(parent,
-                         tab = 'ngrams',
+                         tab = 'ngram',
                          headers = [
                              parent.tr('Rank'),
-                             parent.tr('N-grams'),
+                             parent.tr('N-gram'),
                              parent.tr('Number of\nFiles Found'),
                              parent.tr('Number of\nFiles Found %'),
                          ],
@@ -49,7 +49,7 @@ class Wordless_Table_Ngrams(wordless_table.Wordless_Table_Data_Filter_Search):
                          ],
                          sorting_enabled = True)
 
-        self.name = 'ngrams'
+        self.name = 'ngram'
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
@@ -57,27 +57,27 @@ class Wordless_Table_Ngrams(wordless_table.Wordless_Table_Data_Filter_Search):
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
 
-class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
+class Wrapper_Ngram(wordless_layout.Wordless_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
         # Table
-        self.table_ngrams = Wordless_Table_Ngrams(self)
+        self.table_ngram = Wordless_Table_Ngram(self)
 
         layout_results = wordless_layout.Wordless_Layout()
-        layout_results.addWidget(self.table_ngrams.label_number_results, 0, 0)
-        layout_results.addWidget(self.table_ngrams.button_results_filter, 0, 2)
-        layout_results.addWidget(self.table_ngrams.button_results_search, 0, 3)
+        layout_results.addWidget(self.table_ngram.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_ngram.button_results_filter, 0, 2)
+        layout_results.addWidget(self.table_ngram.button_results_search, 0, 3)
 
         layout_results.setColumnStretch(1, 1)
 
         self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.table_ngrams, 1, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.table_ngrams.button_generate_table, 2, 0)
-        self.wrapper_table.layout().addWidget(self.table_ngrams.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_ngrams.button_export_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_ngrams.button_export_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_ngrams.button_clear, 2, 4)
+        self.wrapper_table.layout().addWidget(self.table_ngram, 1, 0, 1, 5)
+        self.wrapper_table.layout().addWidget(self.table_ngram.button_generate_table, 2, 0)
+        self.wrapper_table.layout().addWidget(self.table_ngram.button_generate_fig, 2, 1)
+        self.wrapper_table.layout().addWidget(self.table_ngram.button_export_selected, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_ngram.button_export_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_ngram.button_clear, 2, 4)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -175,7 +175,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
          self.search_label_ignore_tags,
          self.checkbox_match_tags) = wordless_widgets.wordless_widgets_search_settings(
             main,
-            tab = 'ngrams'
+            tab = 'ngram'
         )
 
         self.label_search_term_position = QLabel(self.tr('Search Term Position:'), self)
@@ -194,7 +194,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         (self.label_context_settings,
          self.button_context_settings) = wordless_widgets.wordless_widgets_context_settings(
             self,
-            tab = 'ngrams'
+            tab = 'ngram'
         )
 
         self.group_box_search_settings.setCheckable(True)
@@ -203,7 +203,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
-        self.line_edit_search_term.returnPressed.connect(self.table_ngrams.button_generate_table.click)
+        self.line_edit_search_term.returnPressed.connect(self.table_ngram.button_generate_table.click)
         self.list_search_terms.itemChanged.connect(self.search_settings_changed)
 
         self.checkbox_ignore_case.stateChanged.connect(self.search_settings_changed)
@@ -346,7 +346,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
          self.checkbox_show_cumulative,
          self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(
             self,
-            table = self.table_ngrams
+            table = self.table_ngram
         )
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
@@ -433,9 +433,9 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default['ngrams'])
+            settings = copy.deepcopy(self.main.settings_default['ngram'])
         else:
-            settings = copy.deepcopy(self.main.settings_custom['ngrams'])
+            settings = copy.deepcopy(self.main.settings_custom['ngram'])
 
         # Token Settings
         self.checkbox_words.setChecked(settings['token_settings']['words'])
@@ -483,7 +483,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
 
         # Context Settings
         if defaults:
-            self.main.wordless_context_settings_ngrams.load_settings(defaults = True)
+            self.main.wordless_context_settings_ngram.load_settings(defaults = True)
 
         # Generation Settings
         self.checkbox_ngram_size_sync.setChecked(settings['generation_settings']['ngram_size_sync'])
@@ -519,7 +519,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         self.fig_settings_changed()
 
     def token_settings_changed(self):
-        settings = self.main.settings_custom['ngrams']['token_settings']
+        settings = self.main.settings_custom['ngram']['token_settings']
 
         settings['words'] = self.checkbox_words.isChecked()
         settings['lowercase'] = self.checkbox_lowercase.isChecked()
@@ -548,10 +548,10 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
 
             self.group_box_search_settings.setChecked(False)
 
-        self.main.wordless_context_settings_ngrams.token_settings_changed()
+        self.main.wordless_context_settings_ngram.token_settings_changed()
 
     def search_settings_changed(self):
-        settings = self.main.settings_custom['ngrams']['search_settings']
+        settings = self.main.settings_custom['ngram']['search_settings']
 
         settings['search_settings'] = self.group_box_search_settings.isChecked()
 
@@ -577,7 +577,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         settings['allow_skipped_tokens_within_search_terms'] = self.checkbox_allow_skipped_tokens_within_search_terms.isChecked()
 
     def generation_settings_changed(self):
-        settings = self.main.settings_custom['ngrams']['generation_settings']
+        settings = self.main.settings_custom['ngram']['generation_settings']
 
         settings['ngram_size_sync'] = self.checkbox_ngram_size_sync.isChecked()
         settings['ngram_size_min'] = self.spin_box_ngram_size_min.value()
@@ -602,7 +602,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         if settings['allow_skipped_tokens']:
             self.spin_box_allow_skipped_tokens.setEnabled(True)
 
-            if self.main.settings_custom['ngrams']['search_settings']['search_settings']:
+            if self.main.settings_custom['ngram']['search_settings']['search_settings']:
                 self.checkbox_allow_skipped_tokens_within_search_terms.setEnabled(True)
         else:
             self.spin_box_allow_skipped_tokens.setEnabled(False)
@@ -622,17 +622,17 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         if self.combo_box_use_data.findText(use_data_old) > -1:
             self.combo_box_use_data.setCurrentText(use_data_old)
         else:
-            self.combo_box_use_data.setCurrentText(self.main.settings_default['ngrams']['fig_settings']['use_data'])
+            self.combo_box_use_data.setCurrentText(self.main.settings_default['ngram']['fig_settings']['use_data'])
 
     def table_settings_changed(self):
-        settings = self.main.settings_custom['ngrams']['table_settings']
+        settings = self.main.settings_custom['ngram']['table_settings']
 
         settings['show_pct'] = self.checkbox_show_pct.isChecked()
         settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
         settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
     def fig_settings_changed(self):
-        settings = self.main.settings_custom['ngrams']['fig_settings']
+        settings = self.main.settings_custom['ngram']['fig_settings']
 
         settings['graph_type'] = self.combo_box_graph_type.currentText()
         settings['use_file'] = self.combo_box_use_file.currentText()
@@ -645,7 +645,7 @@ class Wrapper_Ngrams(wordless_layout.Wordless_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-class Wordless_Worker_Ngrams(wordless_threading.Wordless_Worker):
+class Wordless_Worker_Ngram(wordless_threading.Wordless_Worker):
     worker_done = pyqtSignal(dict, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
@@ -658,7 +658,7 @@ class Wordless_Worker_Ngrams(wordless_threading.Wordless_Worker):
     def run(self):
         texts = []
 
-        settings = self.main.settings_custom['ngrams']
+        settings = self.main.settings_custom['ngram']
 
         ngram_size_min = settings['generation_settings']['ngram_size_min']
         ngram_size_max = settings['generation_settings']['ngram_size_max']
@@ -673,7 +673,7 @@ class Wordless_Worker_Ngrams(wordless_threading.Wordless_Worker):
 
             text = wordless_text.Wordless_Text(self.main, file)
 
-            tokens = wordless_token_processing.wordless_process_tokens_ngrams(
+            tokens = wordless_token_processing.wordless_process_tokens_ngram(
                 text,
                 token_settings = settings['token_settings']
             )
@@ -889,7 +889,7 @@ class Wordless_Worker_Ngrams(wordless_threading.Wordless_Worker):
             self.ngrams_freq_files *= 2
             self.ngrams_stats_files *= 2
 
-class Wordless_Worker_Ngrams_Table(Wordless_Worker_Ngrams):
+class Wordless_Worker_Ngram_Table(Wordless_Worker_Ngram):
     def run(self):
         super().run()
 
@@ -901,7 +901,7 @@ class Wordless_Worker_Ngrams_Table(Wordless_Worker_Ngrams):
                               wordless_misc.merge_dicts(self.ngrams_stats_files),
                               self.ngrams_text)
 
-class Wordless_Worker_Ngrams_Fig(Wordless_Worker_Ngrams):
+class Wordless_Worker_Ngram_Fig(Wordless_Worker_Ngram):
     def run(self):
         super().run()
 
@@ -1034,7 +1034,7 @@ def generate_table(main, table):
 
         dialog_progress.accept()
 
-    settings = main.settings_custom['ngrams']
+    settings = main.settings_custom['ngram']
     files = main.wordless_files.get_selected_files()
 
     if wordless_checking_file.check_files_on_loading(main, files):
@@ -1043,19 +1043,19 @@ def generate_table(main, table):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_ngrams_table = Wordless_Worker_Ngrams_Table(
+            worker_ngram_table = Wordless_Worker_Ngram_Table(
                 main,
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
-            thread_ngrams_table = wordless_threading.Wordless_Thread(worker_ngrams_table)
+            thread_ngram_table = wordless_threading.Wordless_Thread(worker_ngram_table)
 
-            thread_ngrams_table.start()
+            thread_ngram_table.start()
 
             dialog_progress.exec_()
 
-            thread_ngrams_table.quit()
-            thread_ngrams_table.wait()
+            thread_ngram_table.quit()
+            thread_ngram_table.wait()
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term_optional(main)
 
@@ -1080,7 +1080,7 @@ def generate_fig(main):
                 wordless_fig_freq.wordless_fig_freq(
                     main, ngrams_freq_files,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('N-grams')
+                    label_x = main.tr('N-gram')
                 )
             else:
                 ngrams_stats_files = {ngrams_text[ngram]: stats
@@ -1100,7 +1100,7 @@ def generate_fig(main):
                 wordless_fig_stat.wordless_fig_stat(
                     main, ngrams_stat_files,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('N-grams'),
+                    label_x = main.tr('N-gram'),
                     label_y = label_y
                 )
 
@@ -1115,7 +1115,7 @@ def generate_fig(main):
         if ngrams_freq_files:
             wordless_fig.show_fig()
 
-    settings = main.settings_custom['ngrams']
+    settings = main.settings_custom['ngram']
     files = main.wordless_files.get_selected_files()
 
     if wordless_checking_file.check_files_on_loading(main, files):
@@ -1124,19 +1124,19 @@ def generate_fig(main):
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_ngrams_fig = Wordless_Worker_Ngrams_Fig(
+            worker_ngram_fig = Wordless_Worker_Ngram_Fig(
                 main,
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
-            thread_ngrams_fig = wordless_threading.Wordless_Thread(worker_ngrams_fig)
+            thread_ngram_fig = wordless_threading.Wordless_Thread(worker_ngram_fig)
 
-            thread_ngrams_fig.start()
+            thread_ngram_fig.start()
 
             dialog_progress.exec_()
 
-            thread_ngrams_fig.quit()
-            thread_ngrams_fig.wait()
+            thread_ngram_fig.quit()
+            thread_ngram_fig.wait()
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term_optional(main)
 
