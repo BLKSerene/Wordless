@@ -267,17 +267,17 @@ class Wordless_Worker_Results_Filter_Collocation(wordless_threading.Wordless_Wor
 
         self.worker_done.emit()
 
-class Wordless_Worker_Results_Filter_Keywords(wordless_threading.Wordless_Worker):
+class Wordless_Worker_Results_Filter_Keyword(wordless_threading.Wordless_Worker):
     def run(self):
-        text_test_significance = self.dialog.table.settings['keywords']['generation_settings']['test_significance']
-        text_measure_effect_size = self.dialog.table.settings['keywords']['generation_settings']['measure_effect_size']
+        text_test_significance = self.dialog.table.settings['keyword']['generation_settings']['test_significance']
+        text_measure_effect_size = self.dialog.table.settings['keyword']['generation_settings']['measure_effect_size']
 
         (text_test_stat,
          text_p_value,
-         text_bayes_factor) = self.main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-        text_effect_size = self.main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+         text_bayes_factor) = self.main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
+        text_effect_size = self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
 
-        col_keywords = self.dialog.table.find_col(self.tr('Keywords'))
+        col_keyword = self.dialog.table.find_col(self.tr('Keyword'))
 
         if self.dialog.settings['file_to_filter'] == self.tr('Total'):
             col_freq = self.dialog.table.find_col(
@@ -376,7 +376,7 @@ class Wordless_Worker_Results_Filter_Keywords(wordless_threading.Wordless_Worker
             else:
                 filter_bayes_factor = True
 
-            if (len_keyword_min     <= len(self.dialog.table.item(i, col_keywords).text()) <= len_keyword_max and
+            if (len_keyword_min     <= len(self.dialog.table.item(i, col_keyword).text())  <= len_keyword_max and
                 freq_min            <= self.dialog.table.item(i, col_freq).val             <= freq_max and
                 filter_test_stat and
                 p_value_min         <= self.dialog.table.item(i, col_p_value).val          <= p_value_max and
@@ -1053,7 +1053,7 @@ class Wordless_Dialog_Results_Filter_Collocation(Wordless_Dialog_Results_Filter)
         thread_search_results.quit()
         thread_search_results.wait()
 
-class Wordless_Dialog_Results_Filter_Keywords(Wordless_Dialog_Results_Filter):
+class Wordless_Dialog_Results_Filter_Keyword(Wordless_Dialog_Results_Filter):
     def __init__(self, main, tab, table):
         super().__init__(main, tab, table)
 
@@ -1305,8 +1305,8 @@ class Wordless_Dialog_Results_Filter_Keywords(Wordless_Dialog_Results_Filter):
 
         (text_test_stat,
          text_p_value,
-         text_bayes_factor) = self.main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-        text_effect_size = self.main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+         text_bayes_factor) = self.main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
+        text_effect_size = self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
 
         if text_test_stat:
             self.label_test_stat.setText(f'{text_test_stat}:')
@@ -1355,7 +1355,7 @@ class Wordless_Dialog_Results_Filter_Keywords(Wordless_Dialog_Results_Filter):
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Results_Filter(self.main)
 
-        worker_search_results = Wordless_Worker_Results_Filter_Keywords(
+        worker_search_results = Wordless_Worker_Results_Filter_Keyword(
             self.main,
             dialog_progress = dialog_progress,
             update_gui = update_gui,
