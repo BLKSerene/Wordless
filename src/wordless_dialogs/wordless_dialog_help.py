@@ -477,7 +477,7 @@ class Wordless_Dialog_Need_Help(wordless_dialog.Wordless_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Need Help?'),
                          width = 500,
-                         height = 460)
+                         height = 450)
 
         self.label_need_help = wordless_label.Wordless_Label_Dialog(
             self.tr('''
@@ -492,14 +492,16 @@ class Wordless_Dialog_Need_Help(wordless_dialog.Wordless_Dialog_Info):
             self
         )
 
-        self.table_need_help = wordless_table.Wordless_Table(self,
-                                                             headers = [
-                                                                 self.tr('Platforms'),
-                                                                 self.tr('Contact Information')
-                                                             ],
-                                                             cols_stretch = [
-                                                                 self.tr('Contact Information')
-                                                             ])
+        self.table_need_help = wordless_table.Wordless_Table(
+            self,
+            headers = [
+                self.tr('Channel'),
+                self.tr('Contact Information')
+            ],
+            cols_stretch = [
+                self.tr('Contact Information')
+            ]
+        )
 
         self.table_need_help.setRowCount(4)
         self.table_need_help.verticalHeader().setHidden(True)
@@ -509,7 +511,7 @@ class Wordless_Dialog_Need_Help(wordless_dialog.Wordless_Dialog_Info):
         self.table_need_help.setCellWidget(1, 0, wordless_label.Wordless_Label_Html(self.tr('Documentation'), self))
         self.table_need_help.setCellWidget(1, 1, wordless_label.Wordless_Label_Html('<a href="https://github.com/BLKSerene/Wordless#-documentation">https://github.com/BLKSerene/Wordless#documentation</a>', self))
         self.table_need_help.setCellWidget(2, 0, wordless_label.Wordless_Label_Html(self.tr('Email'), self))
-        self.table_need_help.setCellWidget(2, 1, wordless_label.Wordless_Label_Html('<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a><br><a href="mailto:blkserene@163.com">blkserene@163.com</a>', self))
+        self.table_need_help.setCellWidget(2, 1, wordless_label.Wordless_Label_Html('<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a> or <a href="mailto:blkserene@163.com">blkserene@163.com</a>', self))
         self.table_need_help.setCellWidget(3, 0, wordless_label.Wordless_Label_Html(self.tr('<a href="https://www.wechat.com/en/">WeChat</a> Official Account'), self))
         self.table_need_help.setCellWidget(3, 1, wordless_label.Wordless_Label_Html('<img src="imgs/wechat_official_account.dib">', self))
 
