@@ -33,34 +33,36 @@ from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
 
 class Wordless_Table_Concordancer(wordless_table.Wordless_Table_Data_Sort_Search):
     def __init__(self, parent):
-        super().__init__(parent,
-                         tab = 'concordancer',
-                         headers = [
-                             parent.tr('Left'),
-                             parent.tr('Node'),
-                             parent.tr('Right'),
-                             parent.tr('Token No.'),
-                             parent.tr('Token No. %'),
-                             parent.tr('Clause No.'),
-                             parent.tr('Clause No. %'),
-                             parent.tr('Sentence No.'),
-                             parent.tr('Sentence No. %'),
-                             parent.tr('Paragraph No.'),
-                             parent.tr('Paragraph No. %'),
-                             parent.tr('File')
-                         ],
-                         headers_int = [
-                             parent.tr('Token No.'),
-                             parent.tr('Clause No.'),
-                             parent.tr('Sentence No.'),
-                             parent.tr('Paragraph No.')
-                         ],
-                         headers_pct = [
-                             parent.tr('Token No. %'),
-                             parent.tr('Clause No. %'),
-                             parent.tr('Sentence No. %'),
-                             parent.tr('Paragraph No. %')
-                         ])
+        super().__init__(
+            parent,
+            tab = 'concordancer',
+            headers = [
+                parent.tr('Left'),
+                parent.tr('Node'),
+                parent.tr('Right'),
+                parent.tr('Token No.'),
+                parent.tr('Token No. %'),
+                parent.tr('Clause No.'),
+                parent.tr('Clause No. %'),
+                parent.tr('Sentence No.'),
+                parent.tr('Sentence No. %'),
+                parent.tr('Paragraph No.'),
+                parent.tr('Paragraph No. %'),
+                parent.tr('File')
+            ],
+            headers_int = [
+                parent.tr('Token No.'),
+                parent.tr('Clause No.'),
+                parent.tr('Sentence No.'),
+                parent.tr('Paragraph No.')
+            ],
+            headers_pct = [
+                parent.tr('Token No. %'),
+                parent.tr('Clause No. %'),
+                parent.tr('Sentence No. %'),
+                parent.tr('Paragraph No. %')
+            ]
+        )
 
         self.name = 'concordancer'
 
