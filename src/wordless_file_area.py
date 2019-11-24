@@ -489,15 +489,17 @@ class Wordless_Files():
 
 class Wordless_Table_Files(wordless_table.Wordless_Table):
     def __init__(self, parent):
-        super().__init__(parent,
-                         headers = [
-                             parent.tr('Name'),
-                             parent.tr('Language'),
-                             parent.tr('Text Type'),
-                             parent.tr('Path'),
-                             parent.tr('Encoding')
-                         ],
-                         drag_drop_enabled = True)
+        super().__init__(
+            parent,
+            headers = [
+                parent.tr('Name'),
+                parent.tr('Language'),
+                parent.tr('Text Type'),
+                parent.tr('Path'),
+                parent.tr('Encoding')
+            ],
+            drag_drop_enabled = True
+        )
 
         self.name = 'file_area'
 

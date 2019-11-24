@@ -690,14 +690,16 @@ class Wordless_Settings(QDialog):
         # Sentence Tokenizer Settings
         group_box_sentence_tokenizer_settings = QGroupBox(self.tr('Sentence Tokenizer Settings'), self)
 
-        table_sentence_tokenizers = wordless_table.Wordless_Table(self,
-                                                                  headers = [
-                                                                      self.tr('Languages'),
-                                                                      self.tr('Sentence Tokenizers')
-                                                                  ],
-                                                                  cols_stretch = [
-                                                                      self.tr('Sentence Tokenizers')
-                                                                  ])
+        table_sentence_tokenizers = wordless_table.Wordless_Table(
+            self,
+            headers = [
+                self.tr('Language'),
+                self.tr('Sentence Tokenizers')
+            ],
+            cols_stretch = [
+                self.tr('Sentence Tokenizers')
+            ]
+        )
 
         table_sentence_tokenizers.verticalHeader().setHidden(True)
 
@@ -720,7 +722,7 @@ class Wordless_Settings(QDialog):
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_sentence_tokenization_preview_lang = QLabel(self.tr('Select Language:'), self)
+        self.label_sentence_tokenization_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_sentence_tokenization_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.label_sentence_tokenization_preview_processing = QLabel()
         self.text_edit_sentence_tokenization_preview_samples = QTextEdit(self)
@@ -829,14 +831,16 @@ class Wordless_Settings(QDialog):
         # Word Tokenizer Settings
         group_box_word_tokenizer_settings = QGroupBox(self.tr('Word Tokenizer Settings'), self)
 
-        table_word_tokenizers = wordless_table.Wordless_Table(self,
-                                                              headers = [
-                                                                  self.tr('Languages'),
-                                                                  self.tr('Word Tokenizers')
-                                                              ],
-                                                              cols_stretch = [
-                                                                  self.tr('Word Tokenizers')
-                                                              ])
+        table_word_tokenizers = wordless_table.Wordless_Table(
+            self,
+            headers = [
+                self.tr('Language'),
+                self.tr('Word Tokenizers')
+            ],
+            cols_stretch = [
+                self.tr('Word Tokenizers')
+            ]
+        )
 
         table_word_tokenizers.verticalHeader().setHidden(True)
 
@@ -859,7 +863,7 @@ class Wordless_Settings(QDialog):
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_word_tokenization_preview_lang = QLabel(self.tr('Select Language:'), self)
+        self.label_word_tokenization_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_word_tokenization_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.label_word_tokenization_preview_processing = QLabel('', self)
         self.text_edit_word_tokenization_preview_samples = QTextEdit(self)
@@ -964,14 +968,16 @@ class Wordless_Settings(QDialog):
         # Word Detokenizer Settings
         group_box_word_detokenizer_settings = QGroupBox(self.tr('Word Detokenizer Settings'), self)
 
-        table_word_detokenizers = wordless_table.Wordless_Table(self,
-                                                                headers = [
-                                                                    self.tr('Languages'),
-                                                                    self.tr('Word Detokenizers')
-                                                                ],
-                                                                cols_stretch = [
-                                                                    self.tr('Word Detokenizers')
-                                                                ])
+        table_word_detokenizers = wordless_table.Wordless_Table(
+            self,
+            headers = [
+                self.tr('Language'),
+                self.tr('Word Detokenizers')
+            ],
+            cols_stretch = [
+                self.tr('Word Detokenizers')
+            ]
+        )
 
         table_word_detokenizers.verticalHeader().setHidden(True)
 
@@ -994,7 +1000,7 @@ class Wordless_Settings(QDialog):
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_word_detokenization_preview_lang = QLabel(self.tr('Select Language:'), self)
+        self.label_word_detokenization_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_word_detokenization_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.label_word_detokenization_preview_processing = QLabel('', self)
         self.text_edit_word_detokenization_preview_samples = QTextEdit(self)
@@ -1108,16 +1114,18 @@ class Wordless_Settings(QDialog):
         # POS Tagger Settings
         group_box_pos_tagger_settings = QGroupBox(self.tr('POS Tagger Settings'), self)
 
-        self.table_pos_taggers = wordless_table.Wordless_Table(self,
-                                                               headers = [
-                                                                   self.tr('Languages'),
-                                                                   self.tr('POS Taggers')
-                                                               ],
-                                                               cols_stretch = [
-                                                                   self.tr('POS Taggers')
-                                                               ])
+        self.table_pos_taggers = wordless_table.Wordless_Table(
+            self,
+            headers = [
+                self.tr('Language'),
+                self.tr('POS Taggers')
+            ],
+            cols_stretch = [
+                self.tr('POS Taggers')
+            ]
+        )
 
-        self.checkbox_to_universal_pos_tags = QCheckBox(self.tr('Convert all POS tags to Universal POS Tags'))
+        self.checkbox_to_universal_pos_tags = QCheckBox(self.tr('Convert all POS tags to universal POS tags'))
 
         self.table_pos_taggers.verticalHeader().setHidden(True)
 
@@ -1143,7 +1151,7 @@ class Wordless_Settings(QDialog):
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_pos_tagging_preview_lang = QLabel(self.tr('Select Language:'), self)
+        self.label_pos_tagging_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_pos_tagging_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.label_pos_tagging_preview_processing = QLabel('', self)
         self.text_edit_pos_tagging_preview_samples = QTextEdit(self)
@@ -1351,13 +1359,15 @@ class Wordless_Settings(QDialog):
         self.label_tagsets_num_pos_tags = QLabel('', self)
         self.button_tagsets_reset = QPushButton(self.tr('Reset'), self)
         self.button_tagsets_reset_all = QPushButton(self.tr('Reset All'), self)
-        self.table_mappings = wordless_table.Wordless_Table(self,
-                                                            headers = [
-                                                                self.tr('POS Tags'),
-                                                                self.tr('Universal Tags'),
-                                                                self.tr('Description'),
-                                                                self.tr('Example(s)')
-                                                            ])
+        self.table_mappings = wordless_table.Wordless_Table(
+            self,
+            headers = [
+                self.tr('POS Tag'),
+                self.tr('Universal POS Tag'),
+                self.tr('Description'),
+                self.tr('Examples')
+            ]
+        )
 
         self.button_tagsets_reset.setFixedWidth(100)
         self.button_tagsets_reset_all.setFixedWidth(100)
@@ -1450,14 +1460,16 @@ class Wordless_Settings(QDialog):
         # Lemmatizer Settings
         group_box_lemmatizer_settings = QGroupBox(self.tr('Lemmatizer Settings'), self)
 
-        table_lemmatizers = wordless_table.Wordless_Table(self,
-                                                          headers = [
-                                                              self.tr('Languages'),
-                                                              self.tr('Lemmatizers')
-                                                          ],
-                                                          cols_stretch = [
-                                                              self.tr('Lemmatizers')
-                                                          ])
+        table_lemmatizers = wordless_table.Wordless_Table(
+            self,
+            headers = [
+                self.tr('Language'),
+                self.tr('Lemmatizers')
+            ],
+            cols_stretch = [
+                self.tr('Lemmatizers')
+            ]
+        )
 
         table_lemmatizers.verticalHeader().setHidden(True)
 
@@ -1480,7 +1492,7 @@ class Wordless_Settings(QDialog):
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_lemmatization_preview_lang = QLabel(self.tr('Select Language:'), self)
+        self.label_lemmatization_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_lemmatization_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.label_lemmatization_preview_processing = QLabel('', self)
         self.text_edit_lemmatization_preview_samples = QTextEdit(self)
@@ -1552,14 +1564,16 @@ class Wordless_Settings(QDialog):
         # Stop Words Settings
         group_box_stop_words_settings = QGroupBox(self.tr('Stop Words Settings'), self)
 
-        table_stop_words = wordless_table.Wordless_Table(self,
-                                                         headers = [
-                                                             self.tr('Languages'),
-                                                             self.tr('Stop Words')
-                                                         ],
-                                                         cols_stretch = [
-                                                             self.tr('Stop Words')
-                                                         ])
+        table_stop_words = wordless_table.Wordless_Table(
+            self,
+            headers = [
+                self.tr('Language'),
+                self.tr('Lists of Stop Words')
+            ],
+            cols_stretch = [
+                self.tr('Lists of Stop Words')
+            ]
+        )
 
         table_stop_words.verticalHeader().setHidden(True)
 
@@ -1582,7 +1596,7 @@ class Wordless_Settings(QDialog):
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_stop_words_preview_lang = QLabel(self.tr('Select Language:'), self)
+        self.label_stop_words_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_stop_words_preview_lang = wordless_box.Wordless_Combo_Box(self)
         self.combo_box_stop_words_preview_lang.addItems(wordless_conversion.to_lang_text(self.main, list(settings_global.keys())))
         self.label_stop_words_preview_count = QLabel('', self)
