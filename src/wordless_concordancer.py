@@ -1157,9 +1157,11 @@ def generate_fig(main):
 
         if points:
             if settings['fig_settings']['sort_results_by'] == main.tr('File'):
-                matplotlib.pyplot.plot(numpy.array(points)[:, 0],
-                                       numpy.array(points)[:, 1],
-                                       'b|')
+                matplotlib.pyplot.plot(
+                    numpy.array(points)[:, 0],
+                    numpy.array(points)[:, 1],
+                    'b|'
+                )
 
                 matplotlib.pyplot.xlabel(main.tr('Search Terms'))
                 matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r')
@@ -1168,9 +1170,11 @@ def generate_fig(main):
                 matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
                 matplotlib.pyplot.ylim(-1, y_max)
             elif settings['fig_settings']['sort_results_by'] == main.tr('Search Term'):
-                matplotlib.pyplot.plot(numpy.array(points)[:, 0],
-                                       numpy.array(points)[:, 1],
-                                       'b|')
+                matplotlib.pyplot.plot(
+                    numpy.array(points)[:, 0],
+                    numpy.array(points)[:, 1],
+                    'b|'
+                )
 
                 matplotlib.pyplot.xlabel(main.tr('Files'))
                 matplotlib.pyplot.xticks(x_ticks, x_tick_labels)

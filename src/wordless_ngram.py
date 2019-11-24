@@ -1074,8 +1074,10 @@ def generate_fig(main):
             text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
             
             if settings['fig_settings']['use_data'] == main.tr('Frequency'):
-                ngrams_freq_files = {ngrams_text[ngram]: freqs
-                                     for ngram, freqs in ngrams_freq_files.items()}
+                ngrams_freq_files = {
+                    ngrams_text[ngram]: freqs
+                    for ngram, freqs in ngrams_freq_files.items()
+                }
 
                 wordless_fig_freq.wordless_fig_freq(
                     main, ngrams_freq_files,
@@ -1083,17 +1085,23 @@ def generate_fig(main):
                     label_x = main.tr('N-gram')
                 )
             else:
-                ngrams_stats_files = {ngrams_text[ngram]: stats
-                                      for ngram, stats in ngrams_stats_files.items()}
+                ngrams_stats_files = {
+                    ngrams_text[ngram]: stats
+                    for ngram, stats in ngrams_stats_files.items()
+                }
 
                 if settings['fig_settings']['use_data'] == text_dispersion:
-                    ngrams_stat_files = {ngram: numpy.array(stats_files)[:, 0]
-                                         for ngram, stats_files in ngrams_stats_files.items()}
+                    ngrams_stat_files = {
+                        ngram: numpy.array(stats_files)[:, 0]
+                        for ngram, stats_files in ngrams_stats_files.items()
+                    }
 
                     label_y = text_dispersion
                 elif settings['fig_settings']['use_data'] == text_adjusted_freq:
-                    ngrams_stat_files = {ngram: numpy.array(stats_files)[:, 1]
-                                         for ngram, stats_files in ngrams_stats_files.items()}
+                    ngrams_stat_files = {
+                        ngram: numpy.array(stats_files)[:, 1]
+                        for ngram, stats_files in ngrams_stats_files.items()
+                    }
 
                     label_y = text_adjusted_freq
 

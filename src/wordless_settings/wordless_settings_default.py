@@ -838,7 +838,7 @@ def init_settings_default(main):
             },
         },
 
-        'keywords': {
+        'keyword': {
             'token_settings': {
                 'words': True,
                 'lowercase': True,

@@ -55,8 +55,8 @@ class Wordless_Button_Results_Filter(Wordless_Button):
                 tab = tab,
                 table = table
             )
-        elif tab == 'keywords':
-            dialog_results_filter = wordless_dialog_results_filter.Wordless_Dialog_Results_Filter_Keywords(
+        elif tab == 'keyword':
+            dialog_results_filter = wordless_dialog_results_filter.Wordless_Dialog_Results_Filter_Keyword(
                 self.main,
                 tab = tab,
                 table = table

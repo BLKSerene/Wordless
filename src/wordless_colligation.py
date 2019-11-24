@@ -1190,12 +1190,16 @@ def generate_fig(main):
 
                 # Network Graph
                 if settings['fig_settings']['graph_type'] == main.tr('Network Graph'):
-                    collocates_freq_files = {(nodes_text[node], collocate): numpy.array(freqs)[:, span_position]
-                                             for (node, collocate), freqs in colligations_freqs_file.items()}
+                    collocates_freq_files = {
+                        (nodes_text[node], collocate): numpy.array(freqs)[:, span_position]
+                        for (node, collocate), freqs in colligations_freqs_file.items()
+                    }
                 # Line Chart & Word Cloud
                 else:
-                    collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
-                                             for (node, collocate), freqs in colligations_freqs_file.items()}
+                    collocates_freq_files = {
+                        ', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
+                        for (node, collocate), freqs in colligations_freqs_file.items()
+                    }
 
                 wordless_fig_freq.wordless_fig_freq(
                     main, collocates_freq_files,
@@ -1205,12 +1209,16 @@ def generate_fig(main):
             elif settings['fig_settings']['use_data'] == main.tr('Frequency'):
                 # Network Graph
                 if settings['fig_settings']['graph_type'] == main.tr('Network Graph'):
-                    collocates_freq_files = {(nodes_text[node], collocate): numpy.array(freqs).sum(axis = 1)
-                                             for (node, collocate), freqs in colligations_freqs_file.items()}
+                    collocates_freq_files = {
+                        (nodes_text[node], collocate): numpy.array(freqs).sum(axis = 1)
+                        for (node, collocate), freqs in colligations_freqs_file.items()
+                    }
                 # Line Chart & Word Cloud
                 else:
-                    collocates_freq_files = {', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
-                                             for (node, collocate), freqs in colligations_freqs_file.items()}
+                    collocates_freq_files = {
+                        ', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
+                        for (node, collocate), freqs in colligations_freqs_file.items()
+                    }
 
                 wordless_fig_freq.wordless_fig_freq(
                     main, collocates_freq_files,
@@ -1220,31 +1228,43 @@ def generate_fig(main):
             else:
                 # Network Graph
                 if settings['fig_settings']['graph_type'] == main.tr('Network Graph'):
-                    colligations_stats_files = {(nodes_text[node], collocate): freqs
-                                                for (node, collocate), freqs in colligations_stats_files.items()}
+                    colligations_stats_files = {
+                        (nodes_text[node], collocate): freqs
+                        for (node, collocate), freqs in colligations_stats_files.items()
+                    }
                 # Line Chart & Word Cloud
                 else:
-                    colligations_stats_files = {', '.join([nodes_text[node], collocate]): freqs
-                                                for (node, collocate), freqs in colligations_stats_files.items()}
+                    colligations_stats_files = {
+                        ', '.join([nodes_text[node], collocate]): freqs
+                        for (node, collocate), freqs in colligations_stats_files.items()
+                    }
 
                 if settings['fig_settings']['use_data'] == text_test_stat:
-                    collocates_stat_files = {collocate: numpy.array(stats_files)[:, 0]
-                                             for collocate, stats_files in colligations_stats_files.items()}
+                    collocates_stat_files = {
+                        collocate: numpy.array(stats_files)[:, 0]
+                        for collocate, stats_files in colligations_stats_files.items()
+                    }
 
                     label_y = text_test_stat
                 elif settings['fig_settings']['use_data'] == text_p_value:
-                    collocates_stat_files = {collocate: numpy.array(stats_files)[:, 1]
-                                             for collocate, stats_files in colligations_stats_files.items()}
+                    collocates_stat_files = {
+                        collocate: numpy.array(stats_files)[:, 1]
+                        for collocate, stats_files in colligations_stats_files.items()
+                    }
 
                     label_y = text_p_value
                 elif settings['fig_settings']['use_data'] == text_bayes_factor:
-                    collocates_stat_files = {collocate: numpy.array(stats_files)[:, 2]
-                                             for collocate, stats_files in colligations_stats_files.items()}
+                    collocates_stat_files = {
+                        collocate: numpy.array(stats_files)[:, 2]
+                        for collocate, stats_files in colligations_stats_files.items()
+                    }
 
                     label_y = text_bayes_factor
                 elif settings['fig_settings']['use_data'] == text_effect_size:
-                    collocates_stat_files = {collocate: numpy.array(stats_files)[:, 3]
-                                             for collocate, stats_files in colligations_stats_files.items()}
+                    collocates_stat_files = {
+                        collocate: numpy.array(stats_files)[:, 3]
+                        for collocate, stats_files in colligations_stats_files.items()
+                    }
 
                     label_y = text_effect_size
 

@@ -46,7 +46,7 @@ import wordless_wordlist
 import wordless_ngram
 import wordless_collocation
 import wordless_colligation
-import wordless_keywords
+import wordless_keyword
 
 class Wordless_Loading(QSplashScreen):
     def __init__(self):
@@ -403,20 +403,35 @@ class Wordless_Main(QMainWindow):
             self.settings_custom['work_area_cur'] = self.wordless_work_area.tabText(self.wordless_work_area.currentIndex())
 
         self.wordless_work_area = QTabWidget(self)
-        self.wordless_work_area.addTab(wordless_overview.Wrapper_Overview(self),
-                                       self.tr('Overview'))
-        self.wordless_work_area.addTab(wordless_concordancer.Wrapper_Concordancer(self),
-                                       self.tr('Concordancer'))
-        self.wordless_work_area.addTab(wordless_wordlist.Wrapper_Wordlist(self),
-                                       self.tr('Wordlist'))
-        self.wordless_work_area.addTab(wordless_ngram.Wrapper_Ngram(self),
-                                       self.tr('N-gram'))
-        self.wordless_work_area.addTab(wordless_collocation.Wrapper_Collocation(self),
-                                       self.tr('Collocation'))
-        self.wordless_work_area.addTab(wordless_colligation.Wrapper_Colligation(self),
-                                       self.tr('Colligation'))
-        self.wordless_work_area.addTab(wordless_keywords.Wrapper_Keywords(self),
-                                       self.tr('Keywords'))
+        
+        self.wordless_work_area.addTab(
+            wordless_overview.Wrapper_Overview(self),
+            self.tr('Overview')
+        )
+        self.wordless_work_area.addTab(
+            wordless_concordancer.Wrapper_Concordancer(self),
+            self.tr('Concordancer')
+        )
+        self.wordless_work_area.addTab(
+            wordless_wordlist.Wrapper_Wordlist(self),
+            self.tr('Wordlist')
+        )
+        self.wordless_work_area.addTab(
+            wordless_ngram.Wrapper_Ngram(self),
+            self.tr('N-gram')
+        )
+        self.wordless_work_area.addTab(
+            wordless_collocation.Wrapper_Collocation(self),
+            self.tr('Collocation')
+        )
+        self.wordless_work_area.addTab(
+            wordless_colligation.Wrapper_Colligation(self),
+            self.tr('Colligation')
+        )
+        self.wordless_work_area.addTab(
+            wordless_keyword.Wrapper_Keyword(self),
+            self.tr('Keyword')
+        )
 
         self.wordless_work_area.currentChanged.connect(work_area_changed)
 

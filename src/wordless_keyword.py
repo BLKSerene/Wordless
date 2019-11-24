@@ -1,5 +1,5 @@
 #
-# Wordless: Keywords
+# Wordless: Keyword
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊))
 #
@@ -27,13 +27,13 @@ from wordless_utils import wordless_misc, wordless_sorting, wordless_threading
 from wordless_widgets import (wordless_box, wordless_layout, wordless_msg,
                               wordless_table, wordless_widgets)
 
-class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Filter_Search):
+class Wordless_Table_Keyword(wordless_table.Wordless_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(parent,
-                         tab = 'keywords',
+                         tab = 'keyword',
                          headers = [
                              parent.tr('Rank'),
-                             parent.tr('Keywords'),
+                             parent.tr('Keyword'),
                              parent.tr('Number of\nFiles Found'),
                              parent.tr('Number of\nFiles Found %')
                          ],
@@ -46,7 +46,7 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Filter_Search):
                          ],
                          sorting_enabled = True)
 
-        self.name = 'keywords'
+        self.name = 'keyword'
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
@@ -54,27 +54,27 @@ class Wordless_Table_Keywords(wordless_table.Wordless_Table_Data_Filter_Search):
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
 
-class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
+class Wrapper_Keyword(wordless_layout.Wordless_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
         # Table
-        self.table_keywords = Wordless_Table_Keywords(self)
+        self.table_keyword = Wordless_Table_Keyword(self)
 
         layout_results = wordless_layout.Wordless_Layout()
-        layout_results.addWidget(self.table_keywords.label_number_results, 0, 0)
-        layout_results.addWidget(self.table_keywords.button_results_filter, 0, 2)
-        layout_results.addWidget(self.table_keywords.button_results_search, 0, 3)
+        layout_results.addWidget(self.table_keyword.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_keyword.button_results_filter, 0, 2)
+        layout_results.addWidget(self.table_keyword.button_results_search, 0, 3)
 
         layout_results.setColumnStretch(1, 1)
 
         self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.table_keywords, 1, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.table_keywords.button_generate_table, 2, 0)
-        self.wrapper_table.layout().addWidget(self.table_keywords.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_keywords.button_export_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_keywords.button_export_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_keywords.button_clear, 2, 4)
+        self.wrapper_table.layout().addWidget(self.table_keyword, 1, 0, 1, 5)
+        self.wrapper_table.layout().addWidget(self.table_keyword.button_generate_table, 2, 0)
+        self.wrapper_table.layout().addWidget(self.table_keyword.button_generate_fig, 2, 1)
+        self.wrapper_table.layout().addWidget(self.table_keyword.button_export_selected, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_keyword.button_export_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_keyword.button_clear, 2, 4)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -160,8 +160,8 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
             tab = self.tr('Statistical Significance')
         )
 
-        self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['keywords'].keys()))
-        self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['keywords'].keys()))
+        self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['keyword'].keys()))
+        self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['keyword'].keys()))
 
         self.combo_box_ref_file.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_test_significance.currentTextChanged.connect(self.generation_settings_changed)
@@ -192,7 +192,7 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
          self.checkbox_show_cumulative,
          self.checkbox_show_breakdown) = wordless_widgets.wordless_widgets_table_settings(
             self,
-            table = self.table_keywords
+            table = self.table_keyword
         )
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
@@ -278,9 +278,9 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default['keywords'])
+            settings = copy.deepcopy(self.main.settings_default['keyword'])
         else:
-            settings = copy.deepcopy(self.main.settings_custom['keywords'])
+            settings = copy.deepcopy(self.main.settings_custom['keyword'])
 
         # Token Settings
         self.checkbox_words.setChecked(settings['token_settings']['words'])
@@ -328,7 +328,7 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         self.fig_settings_changed()
 
     def token_settings_changed(self):
-        settings = self.main.settings_custom['keywords']['token_settings']
+        settings = self.main.settings_custom['keyword']['token_settings']
 
         settings['words'] = self.checkbox_words.isChecked()
         settings['lowercase'] = self.checkbox_lowercase.isChecked()
@@ -348,7 +348,7 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
     def generation_settings_changed(self):
-        settings = self.main.settings_custom['keywords']['generation_settings']
+        settings = self.main.settings_custom['keyword']['generation_settings']
 
         if self.combo_box_ref_file.currentText() == self.tr('*** None ***'):
             settings['ref_file'] = ''
@@ -381,25 +381,25 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         self.combo_box_use_data.addItem(self.tr('Frequency'))
         self.combo_box_use_data.addItems(
             [col
-             for col in self.main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
+             for col in self.main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
              if col]
         )
-        self.combo_box_use_data.addItem(self.main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col'])
+        self.combo_box_use_data.addItem(self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col'])
 
         if self.combo_box_use_data.findText(use_data_old) > -1:
             self.combo_box_use_data.setCurrentText(use_data_old)
         else:
-            self.combo_box_use_data.setCurrentText(self.main.settings_default['keywords']['fig_settings']['use_data'])
+            self.combo_box_use_data.setCurrentText(self.main.settings_default['keyword']['fig_settings']['use_data'])
 
     def table_settings_changed(self):
-        settings = self.main.settings_custom['keywords']['table_settings']
+        settings = self.main.settings_custom['keyword']['table_settings']
 
         settings['show_pct'] = self.checkbox_show_pct.isChecked()
         settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
         settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
     def fig_settings_changed(self):
-        settings = self.main.settings_custom['keywords']['fig_settings']
+        settings = self.main.settings_custom['keyword']['fig_settings']
 
         settings['graph_type'] = self.combo_box_graph_type.currentText()
         settings['use_file'] = self.combo_box_use_file.currentText()
@@ -412,7 +412,7 @@ class Wrapper_Keywords(wordless_layout.Wordless_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-class Wordless_Worker_Keywords(wordless_threading.Wordless_Worker):
+class Wordless_Worker_Keyword(wordless_threading.Wordless_Worker):
     worker_done = pyqtSignal(dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
@@ -424,7 +424,7 @@ class Wordless_Worker_Keywords(wordless_threading.Wordless_Worker):
     def run(self):
         texts = []
 
-        settings = self.main.settings_custom['keywords']
+        settings = self.main.settings_custom['keyword']
         ref_file = self.main.wordless_files.find_file_by_name(
             settings['generation_settings']['ref_file'],
             selected_only = True
@@ -473,8 +473,8 @@ class Wordless_Worker_Keywords(wordless_threading.Wordless_Worker):
         text_test_significance = settings['generation_settings']['test_significance']
         text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-        test_significance = self.main.settings_global['tests_significance']['keywords'][text_test_significance]['func']
-        measure_effect_size = self.main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['func']
+        test_significance = self.main.settings_global['tests_significance']['keyword'][text_test_significance]['func']
+        measure_effect_size = self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['func']
 
         keywords_freq_file_observed = self.keywords_freq_files[-1]
         keywords_freq_file_ref = self.keywords_freq_files[0]
@@ -546,7 +546,7 @@ class Wordless_Worker_Keywords(wordless_threading.Wordless_Worker):
             self.keywords_freq_files.append(self.keywords_freq_files[1])
             self.keywords_stats_files *= 2
 
-class Wordless_Worker_Keywords_Table(Wordless_Worker_Keywords):
+class Wordless_Worker_Keyword_Table(Wordless_Worker_Keyword):
     def run(self):
         super().run()
 
@@ -557,7 +557,7 @@ class Wordless_Worker_Keywords_Table(Wordless_Worker_Keywords):
         self.worker_done.emit(wordless_misc.merge_dicts(self.keywords_freq_files),
                               wordless_misc.merge_dicts(self.keywords_stats_files))
 
-class Wordless_Worker_Keywords_Fig(Wordless_Worker_Keywords):
+class Wordless_Worker_Keyword_Fig(Wordless_Worker_Keyword):
     def run(self):
         super().run()
 
@@ -581,8 +581,8 @@ def generate_table(main, table):
 
             (text_test_stat,
              text_p_value,
-             text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-            text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+             text_bayes_factor) = main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
+            text_effect_size =  main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
 
             # Insert columns (files)
             table.insert_col(table.columnCount() - 2,
@@ -683,7 +683,7 @@ def generate_table(main, table):
                 # Rank
                 table.set_item_num(i, 0, -1)
 
-                # Keywords
+                # Keyword
                 table.setItem(i, 1, wordless_table.Wordless_Table_Item(keyword))
 
                 # Frequency
@@ -735,7 +735,7 @@ def generate_table(main, table):
 
         dialog_progress.accept()
 
-    settings = main.settings_custom['keywords']
+    settings = main.settings_custom['keyword']
     files = main.wordless_files.get_selected_files()
 
     if wordless_checking_file.check_files_on_loading(main, files):
@@ -751,19 +751,19 @@ def generate_table(main, table):
         if files:
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_keywords_table = Wordless_Worker_Keywords_Table(
+            worker_keyword_table = Wordless_Worker_Keyword_Table(
                 main,
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
-            thread_keywords_table = wordless_threading.Wordless_Thread(worker_keywords_table)
+            thread_keyword_table = wordless_threading.Wordless_Thread(worker_keyword_table)
 
-            thread_keywords_table.start()
+            thread_keyword_table.start()
 
             dialog_progress.exec_()
 
-            thread_keywords_table.quit()
-            thread_keywords_table.wait()
+            thread_keyword_table.quit()
+            thread_keyword_table.wait()
         else:
             wordless_msg_box.wordless_msg_box_missing_observed_file(main)
 
@@ -780,35 +780,43 @@ def generate_fig(main):
 
             (text_test_stat,
              text_p_value,
-             text_bayes_factor) = main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-            text_effect_size =  main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+             text_bayes_factor) = main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
+            text_effect_size =  main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
 
             if settings['fig_settings']['use_data'] == main.tr('Frequency'):
                 wordless_fig_freq.wordless_fig_freq_ref(
                     main, keywords_freq_files,
                     ref_file = ref_file,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('Keywords')
+                    label_x = main.tr('Keyword')
                 )
             else:
                 if settings['fig_settings']['use_data'] == text_test_stat:
-                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 0]
-                                           for keyword, stats_files in keywords_stats_files.items()}
+                    keywords_stat_files = {
+                        keyword: numpy.array(stats_files)[:, 0]
+                        for keyword, stats_files in keywords_stats_files.items()
+                    }
 
                     label_y = text_test_stat
                 elif settings['fig_settings']['use_data'] == text_p_value:
-                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 1]
-                                           for keyword, stats_files in keywords_stats_files.items()}
+                    keywords_stat_files = {
+                        keyword: numpy.array(stats_files)[:, 1]
+                        for keyword, stats_files in keywords_stats_files.items()
+                    }
 
                     label_y = text_p_value
                 elif settings['fig_settings']['use_data'] == text_bayes_factor:
-                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 2]
-                                           for keyword, stats_files in keywords_stats_files.items()}
+                    keywords_stat_files = {
+                        keyword: numpy.array(stats_files)[:, 2]
+                        for keyword, stats_files in keywords_stats_files.items()
+                    }
 
                     label_y = text_bayes_factor
                 elif settings['fig_settings']['use_data'] == text_effect_size:
-                    keywords_stat_files = {keyword: numpy.array(stats_files)[:, 3]
-                                           for keyword, stats_files in keywords_stats_files.items()}
+                    keywords_stat_files = {
+                        keyword: numpy.array(stats_files)[:, 3]
+                        for keyword, stats_files in keywords_stats_files.items()
+                    }
 
                     label_y = text_effect_size
 
@@ -830,7 +838,7 @@ def generate_fig(main):
         if keywords_freq_files:
             wordless_fig.show_fig()
 
-    settings = main.settings_custom['keywords']
+    settings = main.settings_custom['keyword']
     files = main.wordless_files.get_selected_files()
 
     if wordless_checking_file.check_files_on_loading(main, files):
@@ -846,19 +854,19 @@ def generate_fig(main):
         if files:
             dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Process_Data(main)
 
-            worker_keywords_fig = Wordless_Worker_Keywords_Fig(
+            worker_keyword_fig = Wordless_Worker_Keyword_Fig(
                 main,
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
-            thread_keywords_fig = wordless_threading.Wordless_Thread(worker_keywords_fig)
+            thread_keyword_fig = wordless_threading.Wordless_Thread(worker_keyword_fig)
 
-            thread_keywords_fig.start()
+            thread_keyword_fig.start()
 
             dialog_progress.exec_()
 
-            thread_keywords_fig.quit()
-            thread_keywords_fig.wait()
+            thread_keyword_fig.quit()
+            thread_keyword_fig.wait()
         else:
             wordless_msg_box.wordless_msg_box_missing_observed_file(main)
 

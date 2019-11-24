@@ -2069,7 +2069,7 @@ def init_settings_global(main):
                 }
             },
 
-            'keywords': {
+            'keyword': {
                 main.tr('Student\'s t-test (Two-sample)'): {
                     'cols': [
                         main.tr('t-statistic'),
@@ -2191,7 +2191,7 @@ def init_settings_global(main):
                 }
             },
 
-            'keywords': {
+            'keyword': {
                 main.tr('Kilgarriff\'s Ratio'): {
                     'col': main.tr('Kilgarriff\'s Ratio'),
                     'func': wordless_measures_effect_size.kilgarriffs_ratio
