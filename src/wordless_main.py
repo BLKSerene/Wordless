@@ -176,8 +176,8 @@ class Wordless_Main(QMainWindow):
         menu_file_open_dir = QAction(self.tr('Open Folder...'), self)
         menu_file_open_dir.setStatusTip(self.tr('Open all files in folder'))
 
-        menu_file_reopen = QAction(self.tr('Reopen Closed File(s)'), self)
-        menu_file_reopen.setStatusTip(self.tr('Reopen closed file(s)'))
+        menu_file_reopen = QAction(self.tr('Reopen Closed Files'), self)
+        menu_file_reopen.setStatusTip(self.tr('Reopen closed files'))
 
         menu_file_select_all = QAction(self.tr('Select All'), self)
         menu_file_select_all.setStatusTip(self.tr('Select all files'))
