@@ -35,25 +35,31 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('pythainlp'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sacremoses'))
 # spaCy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_lookups_data'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('de_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('el_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('en_core_web_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('es_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('fr_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('it_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('lt_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('nb_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('nl_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pt_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('thinc'))
 # Underthesea
 datas.extend(PyInstaller.utils.hooks.collect_data_files('underthesea'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('languageflow'))
 # wordcloud
 datas.extend(PyInstaller.utils.hooks.collect_data_files('wordcloud'))
+
 # Custom data files
 datas.extend([
     ('src/imgs', 'imgs'),
     ('src/lemmatization', 'lemmatization'),
     ('src/stop_words', 'stop_words'),
 
+    ('src/CHANGELOG.md', '.'),
     ('src/VERSION', '.'),
     ('LICENSE.txt', '.')
 ])
@@ -64,36 +70,26 @@ if platform.system() == 'Darwin':
 
 # Hidden imports
 hiddenimports = [
-    # numpy
-    'numpy.random.bounded_integers',
-    'numpy.random.common',
-    'numpy.random.entropy',
-
     # pymorphy2
     'pymorphy2_dicts_ru',
     'pymorphy2_dicts_uk',
 
     # spaCy
-    'spacy._align',
     'spacy.kb',
-    'spacy.language',
-    'spacy.lemmatizer',
     'spacy.lexeme',
     'spacy.matcher._schemas',
     'spacy.morphology',
     'spacy.parts_of_speech',
-    'spacy.strings',
     'spacy.syntax._beam_utils',
     'spacy.syntax._parser_model',
     'spacy.syntax.arc_eager',
     'spacy.syntax.ner',
     'spacy.syntax.nn_parser',
-    'spacy.syntax.nonproj',
     'spacy.syntax.stateclass',
     'spacy.syntax.transition_system',
     'spacy.tokens._retokenize',
+    'spacy.tokens.morphanalysis',
     'spacy.tokens.underscore',
-    'spacy.vocab',
 
     'blis',
     'blis.py',
@@ -109,7 +105,8 @@ hiddenimports = [
 
     'thinc.extra.search',
     'thinc.linalg',
-    'thinc.neural._aligned_alloc'
+    'thinc.neural._aligned_alloc',
+    'thinc.neural._custom_kernels'
 ]
 
 # Runtime hooks
