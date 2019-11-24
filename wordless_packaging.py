@@ -1,5 +1,5 @@
 #
-# Wordless: Packaging
+# Wordless: Packaging - Packaging Script
 #
 # Copyright (C) 2018-2019  Ye Lei (叶磊)
 #
@@ -16,13 +16,16 @@ import shutil
 import subprocess
 import time
 
+def print_with_elapsed_time(message):
+    print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] {message}')
+
 time_start = time.time()
 
 # Package
-print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] Packaging Wordless ...')
+print_with_elapsed_time('Start packaging ...')
 
 if platform.system() == 'Windows':
-    os.system('python -m PyInstaller -y wordless_packaging.spec')
+    return_val_packaging = subprocess.call('pyinstaller --noconfirm wordless_packaging.spec', shell = True)
 elif platform.system() == 'Darwin':
     subprocess.call([
         'python3',
@@ -34,47 +37,55 @@ elif platform.system() == 'Darwin':
 elif platform.system() == 'Linux':
     os.system('python3.7 -m PyInstaller -y wordless_packaging.spec')
 
-print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] Packaging completed successfully!')
+if return_val_packaging == 0:
+    print_with_elapsed_time('Packaging done!')
 
-os.chdir('dist/Wordless')
+    os.chdir('dist/Wordless')
 
-# Create folders
-if not os.path.exists('Import') or not os.path.exists('Export'):
-    print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] Creating folders ...')
+    # Create folders
+    if not os.path.exists('Import') or not os.path.exists('Export'):
+        print_with_elapsed_time('Creating folders ...')
 
-    if not os.path.exists('Import'):
-        os.mkdir('Import')
-    if not os.path.exists('Export'):
-        os.mkdir('Export')
+        if not os.path.exists('Import'):
+            os.mkdir('Import')
+        if not os.path.exists('Export'):
+            os.mkdir('Export')
 
-# Copy files
-if platform.system() == 'Darwin':
-    for dir_src, dirs, files in os.walk('.'):
-        dir_src = os.path.realpath(dir_src)
-        dir_app = dir_src.replace('dist/Wordless', 'dist/Wordless.app/Contents/MacOS')
+    # Copy files
+    if platform.system() == 'Darwin':
+        for dir_src, dirs, files in os.walk('.'):
+            dir_src = os.path.realpath(dir_src)
+            dir_app = dir_src.replace('dist/Wordless', 'dist/Wordless.app/Contents/MacOS')
 
-        print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] Copying folder {dir_app} ...')
+            print_with_elapsed_time(f'Copying folder {dir_app} ...')
 
-        if not os.path.exists(dir_app):
-            os.mkdir(dir_app)
+            if not os.path.exists(dir_app):
+                os.mkdir(dir_app)
 
-        for file in files:
-            path_src = os.path.join(dir_src, file)
-            path_app = os.path.join(dir_app, file)
+            for file in files:
+                path_src = os.path.join(dir_src, file)
+                path_app = os.path.join(dir_app, file)
 
-            if not os.path.exists(path_app):
-                shutil.copy(path_src, path_app)
+                if not os.path.exists(path_app):
+                    shutil.copy(path_src, path_app)
 
-    print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] Finished copying all files!')
+        print_with_elapsed_time(f'Finished copying all files!')
 
-# Testing
-print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] Running Wordless ...')
+    # Test
+    print_with_elapsed_time(f'Testing ...')
 
-if platform.system() == 'Windows':
-    os.system('start Wordless.exe')
-elif platform.system() == 'Darwin':
-    os.chdir('..')
+    if platform.system() == 'Windows':
+        return_val_test = subprocess.call(os.path.join(os.getcwd(), 'Wordless.exe'), shell = True)
+    elif platform.system() == 'Darwin':
+        os.chdir('..')
 
-    subprocess.call(['open', './Wordless.app'])
-elif platform.system() == 'Linux':
-    os.system('./Wordless')
+        subprocess.call(['open', './Wordless.app'])
+    elif platform.system() == 'Linux':
+        os.system('./Wordless')
+
+    if return_val_test == 0:
+        print_with_elapsed_time(f'Pass!')
+    else:
+        print_with_elapsed_time(f'Fail!')
+else:
+    print_with_elapsed_time(f'Packaging failed!')
