@@ -33,7 +33,7 @@ class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Filter_Search):
                          tab = 'wordlist',
                          headers = [
                              parent.tr('Rank'),
-                             parent.tr('Tokens'),
+                             parent.tr('Token'),
                              parent.tr('Number of\nFiles Found'),
                              parent.tr('Number of\nFiles Found %')
                          ],
@@ -497,7 +497,7 @@ def generate_table(main, table):
             text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
             if settings['token_settings']['use_tags']:
-                table.horizontalHeaderItem(1).setText(main.tr('Tags'))
+                table.horizontalHeaderItem(1).setText(main.tr('Tag'))
 
             # Insert columns (files)
             for file in files:
@@ -640,7 +640,7 @@ def generate_fig(main):
                 wordless_fig_freq.wordless_fig_freq(
                     main, tokens_freq_files,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('Tokens')
+                    label_x = main.tr('Token')
                 )
             else:
                 if settings['fig_settings']['use_data'] == col_dispersion:
@@ -657,7 +657,7 @@ def generate_fig(main):
                 wordless_fig_stat.wordless_fig_stat(
                     main, tokens_stat_files,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('Tokens'),
+                    label_x = main.tr('Token'),
                     label_y = label_y
                 )
 
