@@ -372,17 +372,17 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         self.label_acks = wordless_label.Wordless_Label_Dialog(
             self.tr('''
                 <div>
-                    Wordless stands on the shoulders of giants. Thus, I would like to extend my thanks to the following open-source projects:
+                    I would like to extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
                 </div>
             '''),
             self
         )
-        self.label_browse_category = QLabel(self.tr('Browse by Category:'), self)
+        self.label_browse_category = QLabel(self.tr('Browse by category:'), self)
         self.combo_box_browse_category = wordless_box.Wordless_Combo_Box(self)
 
         self.table_acks = wordless_table.Wordless_Table(self,
                                                         headers = [
-                                                            self.tr('Projects'),
+                                                            self.tr('Project Name'),
                                                             self.tr('Version'),
                                                             self.tr('Author(s)'),
                                                             self.tr('License')

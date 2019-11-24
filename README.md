@@ -100,12 +100,12 @@ PayPal|Alipay|WeChat Pay
 **Important Note**: I WILL NOT PROVIDE invoices, receipts, refund services, detailed spending reports, my contact information other than email addresses, my personal social media accounts, private email/phone support, or guarantees on bug fixes, enhancements, new features, or new releases of Wordless for donation.
 
 ## Acknowledgments
-Wordless stands on the shoulders of giants. Thus, I would like to extend my thanks to the following open-source projects:
+I would like to extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
 
 ### General
 
-&nbsp;|Projects|Author(s)
-------|--------|---------
+&nbsp;|Project Name|Author(s)
+------|------------|---------
 1     |[Python](https://www.python.org)                              |Guido van Rossum
 2     |[PyInstaller](http://www.pyinstaller.org)                     |Hartmut Goebel
 3     |[PyQt](https://www.riverbankcomputing.com/software/pyqt/intro)|Riverbank Computing Limited
@@ -113,8 +113,8 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 
 ### Natural Language Processing
 
-&nbsp;|Projects|Author(s)
-------|--------|---------
+&nbsp;|Project Name|Author(s)
+------|------------|---------
 1     |[botok](https://github.com/Esukhia/botok)                   |Hélios Drupchen Hildt
 2     |[jieba<br>(“结巴”中文分词)](https://github.com/fxsjy/jieba)  |Sun Junyi (孙君意)
 3     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
@@ -129,16 +129,16 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 
 ### Plotting
 
-&nbsp;|Projects|Author(s)
-------|--------|---------
+&nbsp;|Project Name|Author(s)
+------|------------|---------
 1     |[Matplotlib](https://matplotlib.org)               |Matplotlib Development Team
 2     |[NetworkX](http://networkx.github.io)              |Aric Hagberg, Dan Schult, Pieter Swart
 3     |[WordCloud](https://amueller.github.io/word_cloud/)|Andreas Christian Mueller
 
 ### Miscellaneous
 
-&nbsp;|Projects|Author(s)
-------|--------|---------
+&nbsp;|Project Name|Author(s)
+------|------------|---------
 1     |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)|Leonard Richardson
 2     |[cChardet](https://github.com/PyYoshi/cChardet)                 |Yoshihiro Misawa
 3     |[chardet](https://github.com/chardet/chardet)                   |Daniel Blanchard
@@ -154,8 +154,8 @@ Wordless stands on the shoulders of giants. Thus, I would like to extend my than
 
 ### Data
 
-&nbsp;|Projects|Author(s)
-------|--------|---------
+&nbsp;|Project Name|Author(s)
+------|------------|---------
 1     |[extra-stopwords](https://github.com/Xangis/extra-stopwords)          |Jason Champion
 2     |[grk-stoplist](https://github.com/pharos-alexandria/grk-stoplist)     |Annette von Stockhausen
 3     |[lemmalist-greek](https://github.com/stenskjaer/lemmalist-greek)      |Michael Stenskjær Christensen
