@@ -992,7 +992,7 @@ def generate_table(main, table):
                 # Rank
                 table.set_item_num(i, 0, -1)
 
-                # N-grams
+                # N-gram
                 table.setItem(i, 1, wordless_table.Wordless_Table_Item(ngrams_text[ngram]))
 
                 table.item(i, 1).text_raw = ngram

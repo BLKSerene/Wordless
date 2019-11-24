@@ -37,8 +37,8 @@ class Wordless_Table_Colligation(wordless_table.Wordless_Table_Data_Filter_Searc
                          tab = 'colligation',
                          headers = [
                              parent.tr('Rank'),
-                             parent.tr('Nodes'),
-                             parent.tr('Collocates'),
+                             parent.tr('Node'),
+                             parent.tr('Collocate'),
                              parent.tr('Number of\nFiles Found'),
                              parent.tr('Number of\nFiles Found %')
                          ],
@@ -1076,9 +1076,9 @@ def generate_table(main, table):
                 # Rank
                 table.set_item_num(i, 0, -1)
 
-                # Nodes
+                # Node
                 table.setItem(i, 1, wordless_table.Wordless_Table_Item(nodes_text[node]))
-                # Collocates
+                # Collocate
                 table.setItem(i, 2, wordless_table.Wordless_Table_Item(collocate))
 
                 # Frequency
@@ -1200,7 +1200,7 @@ def generate_fig(main):
                 wordless_fig_freq.wordless_fig_freq(
                     main, collocates_freq_files,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('Collocates')
+                    label_x = main.tr('Colligation')
                 )
             elif settings['fig_settings']['use_data'] == main.tr('Frequency'):
                 # Network Graph
@@ -1215,7 +1215,7 @@ def generate_fig(main):
                 wordless_fig_freq.wordless_fig_freq(
                     main, collocates_freq_files,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('Collocates')
+                    label_x = main.tr('Colligation')
                 )
             else:
                 # Network Graph
@@ -1251,7 +1251,7 @@ def generate_fig(main):
                 wordless_fig_stat.wordless_fig_stat(
                     main, collocates_stat_files,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('Colligations'),
+                    label_x = main.tr('Colligation'),
                     label_y = label_y
                 )
 

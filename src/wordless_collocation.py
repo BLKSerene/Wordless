@@ -37,8 +37,8 @@ class Wordless_Table_Collocation(wordless_table.Wordless_Table_Data_Filter_Searc
                          tab = 'collocation',
                          headers = [
                              parent.tr('Rank'),
-                             parent.tr('Nodes'),
-                             parent.tr('Collocates'),
+                             parent.tr('Node'),
+                             parent.tr('Collocate'),
                              parent.tr('Number of\nFiles Found'),
                              parent.tr('Number of\nFiles Found %')
                          ],
@@ -671,7 +671,7 @@ class Wordless_Worker_Collocation(wordless_threading.Wordless_Worker):
 
             text = wordless_text.Wordless_Text(self.main, file)
 
-            tokens = wordless_token_processing.wordless_process_tokens_ngrams(
+            tokens = wordless_token_processing.wordless_process_tokens_ngram(
                 text,
                 token_settings = settings['token_settings']
             )
@@ -1050,9 +1050,9 @@ def generate_table(main, table):
                 # Rank
                 table.set_item_num(i, 0, -1)
 
-                # Nodes
+                # Node
                 table.setItem(i, 1, wordless_table.Wordless_Table_Item(nodes_text[node]))
-                # Collocates
+                # Collocate
                 table.setItem(i, 2, wordless_table.Wordless_Table_Item(collocate))
 
                 # Frequency
@@ -1174,7 +1174,7 @@ def generate_fig(main):
                 wordless_fig_freq.wordless_fig_freq(
                     main, collocates_freq_files,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('Collocates')
+                    label_x = main.tr('Collocation')
                 )
             elif settings['fig_settings']['use_data'] == main.tr('Frequency'):
                 # Network Graph
@@ -1189,7 +1189,7 @@ def generate_fig(main):
                 wordless_fig_freq.wordless_fig_freq(
                     main, collocates_freq_files,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('Collocates')
+                    label_x = main.tr('Collocation')
                 )
             else:
                 # Network Graph
@@ -1225,7 +1225,7 @@ def generate_fig(main):
                 wordless_fig_stat.wordless_fig_stat(
                     main, collocates_stat_files,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('Collocations'),
+                    label_x = main.tr('Collocation'),
                     label_y = label_y
                 )
 

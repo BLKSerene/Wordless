@@ -139,7 +139,7 @@ class Wordless_Worker_Results_Filter_Collocation(wordless_threading.Wordless_Wor
          text_bayes_factor) = self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
         text_effect_size = self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
 
-        col_collocates = self.dialog.table.find_col(self.tr('Collocates'))
+        col_collocate = self.dialog.table.find_col(self.tr('Collocate'))
 
         if self.dialog.settings['file_to_filter'] == self.tr('Total'):
             if self.dialog.settings['freq_position'] == self.tr('Total'):
@@ -250,7 +250,7 @@ class Wordless_Worker_Results_Filter_Collocation(wordless_threading.Wordless_Wor
             else:
                 filter_bayes_factor = True
 
-            if (len_collocate_min   <= len(self.dialog.table.item(i, col_collocates).text()) <= len_collocate_max and
+            if (len_collocate_min   <= len(self.dialog.table.item(i, col_collocate).text())  <= len_collocate_max and
                 freq_min            <= self.dialog.table.item(i, col_freq).val               <= freq_max and
                 filter_test_stat and
                 p_value_min         <= self.dialog.table.item(i, col_p_value).val            <= p_value_max and
