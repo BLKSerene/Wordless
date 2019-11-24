@@ -442,7 +442,6 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         self.table_acks.clear_table()
 
         self.table_acks.blockSignals(True)
-        self.table_acks.setSortingEnabled(False)
         self.table_acks.setUpdatesEnabled(False)
 
         self.table_acks.setRowCount(len(acks))
@@ -451,7 +450,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             project = f'<a href="{project_url}">{project_name}</a>'
             license = f'<a href="{licence_url}">{license_name}</a>'
 
-            # Add whitespace to each side of the cell
+            # Pad cells with whitespace
             project = project.replace('<br>', '&nbsp;<br>&nbsp;')
             ver = ver.replace('<br>', '&nbsp;<br>&nbsp;')
             authors = authors.replace('<br>', '&nbsp;<br>&nbsp;')
@@ -468,7 +467,6 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             self.table_acks.setCellWidget(i, 3, wordless_label.Wordless_Label_Html(license, self))
 
         self.table_acks.blockSignals(False)
-        self.table_acks.setSortingEnabled(True)
         self.table_acks.setUpdatesEnabled(True)
 
         self.table_acks.itemChanged.emit(self.table_acks.item(0, 0))
