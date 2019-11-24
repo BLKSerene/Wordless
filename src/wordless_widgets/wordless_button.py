@@ -43,7 +43,7 @@ class Wordless_Button_Results_Filter(Wordless_Button):
 
         super().__init__(parent.tr('Filter Results'), parent)
 
-        if tab in ['wordlist', 'ngrams']:
+        if tab in ['wordlist', 'ngram']:
             dialog_results_filter = wordless_dialog_results_filter.Wordless_Dialog_Results_Filter_Wordlist(
                 self.main,
                 tab = tab,
@@ -55,8 +55,8 @@ class Wordless_Button_Results_Filter(Wordless_Button):
                 tab = tab,
                 table = table
             )
-        elif tab == 'keywords':
-            dialog_results_filter = wordless_dialog_results_filter.Wordless_Dialog_Results_Filter_Keywords(
+        elif tab == 'keyword':
+            dialog_results_filter = wordless_dialog_results_filter.Wordless_Dialog_Results_Filter_Keyword(
                 self.main,
                 tab = tab,
                 table = table

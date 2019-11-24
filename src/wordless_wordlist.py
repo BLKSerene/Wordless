@@ -33,7 +33,7 @@ class Wordless_Table_Wordlist(wordless_table.Wordless_Table_Data_Filter_Search):
                          tab = 'wordlist',
                          headers = [
                              parent.tr('Rank'),
-                             parent.tr('Tokens'),
+                             parent.tr('Token'),
                              parent.tr('Number of\nFiles Found'),
                              parent.tr('Number of\nFiles Found %')
                          ],
@@ -497,7 +497,7 @@ def generate_table(main, table):
             text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
             if settings['token_settings']['use_tags']:
-                table.horizontalHeaderItem(1).setText(main.tr('Tags'))
+                table.horizontalHeaderItem(1).setText(main.tr('Tag'))
 
             # Insert columns (files)
             for file in files:
@@ -564,7 +564,7 @@ def generate_table(main, table):
                 # Rank
                 table.set_item_num(i, 0, -1)
 
-                # Tokens
+                # Token
                 table.setItem(i, 1, wordless_table.Wordless_Table_Item(token))
 
                 # Frequency
@@ -640,24 +640,28 @@ def generate_fig(main):
                 wordless_fig_freq.wordless_fig_freq(
                     main, tokens_freq_files,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('Tokens')
+                    label_x = main.tr('Token')
                 )
             else:
                 if settings['fig_settings']['use_data'] == col_dispersion:
-                    tokens_stat_files = {token: numpy.array(stats_files)[:, 0]
-                                         for token, stats_files in tokens_stats_files.items()}
+                    tokens_stat_files = {
+                        token: numpy.array(stats_files)[:, 0]
+                        for token, stats_files in tokens_stats_files.items()
+                    }
 
                     label_y = col_dispersion
                 elif settings['fig_settings']['use_data'] == col_adjusted_freq:
-                    tokens_stat_files = {token: numpy.array(stats_files)[:, 1]
-                                         for token, stats_files in tokens_stats_files.items()}
+                    tokens_stat_files = {
+                        token: numpy.array(stats_files)[:, 1]
+                        for token, stats_files in tokens_stats_files.items()
+                    }
 
                     label_y = col_adjusted_freq
 
                 wordless_fig_stat.wordless_fig_stat(
                     main, tokens_stat_files,
                     settings = settings['fig_settings'],
-                    label_x = main.tr('Tokens'),
+                    label_x = main.tr('Token'),
                     label_y = label_y
                 )
 

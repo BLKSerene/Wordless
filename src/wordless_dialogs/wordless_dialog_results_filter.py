@@ -30,9 +30,9 @@ class Wordless_Worker_Results_Filter_Wordlist(wordless_threading.Wordless_Worker
         text_adjusted_freq =  self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
         if self.dialog.tab == 'wordlist':
-            col_tokens = self.dialog.table.find_col(self.tr('Tokens'))
-        elif self.dialog.tab == 'ngrams':
-            col_ngrams = self.dialog.table.find_col(self.tr('N-grams'))
+            col_token = self.dialog.table.find_col(self.tr('Token'))
+        elif self.dialog.tab == 'ngram':
+            col_ngram = self.dialog.table.find_col(self.tr('N-gram'))
 
         if self.dialog.settings['file_to_filter'] == self.tr('Total'):
             col_freq = self.dialog.table.find_col(
@@ -64,7 +64,7 @@ class Wordless_Worker_Results_Filter_Wordlist(wordless_threading.Wordless_Worker
             len_token_max = (float('inf')
                              if self.dialog.settings['len_token_max_no_limit']
                              else self.dialog.settings['len_token_max'])
-        elif self.dialog.tab == 'ngrams':
+        elif self.dialog.tab == 'ngram':
             len_ngram_min = (float('-inf')
                              if self.dialog.settings['len_ngram_min_no_limit']
                              else self.dialog.settings['len_ngram_min'])
@@ -104,7 +104,7 @@ class Wordless_Worker_Results_Filter_Wordlist(wordless_threading.Wordless_Worker
 
         if self.dialog.tab == 'wordlist':
             for i in range(self.dialog.table.rowCount()):
-                if (len_token_min       <= len(self.dialog.table.item(i, col_tokens).text())  <= len_token_max and
+                if (len_token_min       <= len(self.dialog.table.item(i, col_token).text())   <= len_token_max and
                     freq_min            <= self.dialog.table.item(i, col_freq).val            <= freq_max and
                     dispersion_min      <= self.dialog.table.item(i, col_dispersion).val      <= dispersion_max and
                     adjusted_freq_min   <= self.dialog.table.item(i, col_adjusted_freq).val   <= adjusted_freq_max and
@@ -112,9 +112,9 @@ class Wordless_Worker_Results_Filter_Wordlist(wordless_threading.Wordless_Worker
                     self.dialog.table.row_filters.append(True)
                 else:
                     self.dialog.table.row_filters.append(False)
-        elif self.dialog.tab == 'ngrams':
+        elif self.dialog.tab == 'ngram':
             for i in range(self.dialog.table.rowCount()):
-                if (len_ngram_min       <= len(self.dialog.table.item(i, col_ngrams).text())  <= len_ngram_max and
+                if (len_ngram_min       <= len(self.dialog.table.item(i, col_ngram).text())   <= len_ngram_max and
                     freq_min            <= self.dialog.table.item(i, col_freq).val            <= freq_max and
                     dispersion_min      <= self.dialog.table.item(i, col_dispersion).val      <= dispersion_max and
                     adjusted_freq_min   <= self.dialog.table.item(i, col_adjusted_freq).val   <= adjusted_freq_max and
@@ -139,7 +139,7 @@ class Wordless_Worker_Results_Filter_Collocation(wordless_threading.Wordless_Wor
          text_bayes_factor) = self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
         text_effect_size = self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
 
-        col_collocates = self.dialog.table.find_col(self.tr('Collocates'))
+        col_collocate = self.dialog.table.find_col(self.tr('Collocate'))
 
         if self.dialog.settings['file_to_filter'] == self.tr('Total'):
             if self.dialog.settings['freq_position'] == self.tr('Total'):
@@ -250,7 +250,7 @@ class Wordless_Worker_Results_Filter_Collocation(wordless_threading.Wordless_Wor
             else:
                 filter_bayes_factor = True
 
-            if (len_collocate_min   <= len(self.dialog.table.item(i, col_collocates).text()) <= len_collocate_max and
+            if (len_collocate_min   <= len(self.dialog.table.item(i, col_collocate).text())  <= len_collocate_max and
                 freq_min            <= self.dialog.table.item(i, col_freq).val               <= freq_max and
                 filter_test_stat and
                 p_value_min         <= self.dialog.table.item(i, col_p_value).val            <= p_value_max and
@@ -267,17 +267,17 @@ class Wordless_Worker_Results_Filter_Collocation(wordless_threading.Wordless_Wor
 
         self.worker_done.emit()
 
-class Wordless_Worker_Results_Filter_Keywords(wordless_threading.Wordless_Worker):
+class Wordless_Worker_Results_Filter_Keyword(wordless_threading.Wordless_Worker):
     def run(self):
-        text_test_significance = self.dialog.table.settings['keywords']['generation_settings']['test_significance']
-        text_measure_effect_size = self.dialog.table.settings['keywords']['generation_settings']['measure_effect_size']
+        text_test_significance = self.dialog.table.settings['keyword']['generation_settings']['test_significance']
+        text_measure_effect_size = self.dialog.table.settings['keyword']['generation_settings']['measure_effect_size']
 
         (text_test_stat,
          text_p_value,
-         text_bayes_factor) = self.main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-        text_effect_size = self.main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+         text_bayes_factor) = self.main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
+        text_effect_size = self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
 
-        col_keywords = self.dialog.table.find_col(self.tr('Keywords'))
+        col_keyword = self.dialog.table.find_col(self.tr('Keyword'))
 
         if self.dialog.settings['file_to_filter'] == self.tr('Total'):
             col_freq = self.dialog.table.find_col(
@@ -376,7 +376,7 @@ class Wordless_Worker_Results_Filter_Keywords(wordless_threading.Wordless_Worker
             else:
                 filter_bayes_factor = True
 
-            if (len_keyword_min     <= len(self.dialog.table.item(i, col_keywords).text()) <= len_keyword_max and
+            if (len_keyword_min     <= len(self.dialog.table.item(i, col_keyword).text())  <= len_keyword_max and
                 freq_min            <= self.dialog.table.item(i, col_freq).val             <= freq_max and
                 filter_test_stat and
                 p_value_min         <= self.dialog.table.item(i, col_p_value).val          <= p_value_max and
@@ -469,7 +469,7 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
              self.checkbox_len_token_max_no_limit) = wordless_widgets.wordless_widgets_filter(self,
                                                                                               filter_min = 1,
                                                                                               filter_max = 100)
-        elif self.tab == 'ngrams':
+        elif self.tab == 'ngram':
             self.label_len_ngram = QLabel(self.tr('N-gram Length:'), self)
             (self.label_len_ngram_min,
              self.spin_box_len_ngram_min,
@@ -525,7 +525,7 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
             self.checkbox_len_token_min_no_limit.stateChanged.connect(self.filters_changed)
             self.spin_box_len_token_max.valueChanged.connect(self.filters_changed)
             self.checkbox_len_token_max_no_limit.stateChanged.connect(self.filters_changed)
-        elif self.tab == 'ngrams':
+        elif self.tab == 'ngram':
             self.spin_box_len_ngram_min.valueChanged.connect(self.filters_changed)
             self.checkbox_len_ngram_min_no_limit.stateChanged.connect(self.filters_changed)
             self.spin_box_len_ngram_max.valueChanged.connect(self.filters_changed)
@@ -561,7 +561,7 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
             self.layout_filters.addWidget(self.label_len_token_max, 2, 0)
             self.layout_filters.addWidget(self.spin_box_len_token_max, 2, 1)
             self.layout_filters.addWidget(self.checkbox_len_token_max_no_limit, 2, 2)
-        elif self.tab == 'ngrams':
+        elif self.tab == 'ngram':
             self.layout_filters.addWidget(self.label_len_ngram, 0, 0, 1, 3)
             self.layout_filters.addWidget(self.label_len_ngram_min, 1, 0)
             self.layout_filters.addWidget(self.spin_box_len_ngram_min, 1, 1)
@@ -619,7 +619,7 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
             self.checkbox_len_token_min_no_limit.setChecked(settings['len_token_min_no_limit'])
             self.spin_box_len_token_max.setValue(settings['len_token_max'])
             self.checkbox_len_token_max_no_limit.setChecked(settings['len_token_max_no_limit'])
-        elif self.tab == 'ngrams':
+        elif self.tab == 'ngram':
             self.spin_box_len_ngram_min.setValue(settings['len_ngram_min'])
             self.checkbox_len_ngram_min_no_limit.setChecked(settings['len_ngram_min_no_limit'])
             self.spin_box_len_ngram_max.setValue(settings['len_ngram_max'])
@@ -651,7 +651,7 @@ class Wordless_Dialog_Results_Filter_Wordlist(Wordless_Dialog_Results_Filter):
             self.settings['len_token_min_no_limit'] = self.checkbox_len_token_min_no_limit.isChecked()
             self.settings['len_token_max'] = self.spin_box_len_token_max.value()
             self.settings['len_token_max_no_limit'] = self.checkbox_len_token_max_no_limit.isChecked()
-        elif self.tab == 'ngrams':
+        elif self.tab == 'ngram':
             self.settings['len_ngram_min'] = self.spin_box_len_ngram_min.value()
             self.settings['len_ngram_min_no_limit'] = self.checkbox_len_ngram_min_no_limit.isChecked()
             self.settings['len_ngram_max'] = self.spin_box_len_ngram_max.value()
@@ -1053,7 +1053,7 @@ class Wordless_Dialog_Results_Filter_Collocation(Wordless_Dialog_Results_Filter)
         thread_search_results.quit()
         thread_search_results.wait()
 
-class Wordless_Dialog_Results_Filter_Keywords(Wordless_Dialog_Results_Filter):
+class Wordless_Dialog_Results_Filter_Keyword(Wordless_Dialog_Results_Filter):
     def __init__(self, main, tab, table):
         super().__init__(main, tab, table)
 
@@ -1305,8 +1305,8 @@ class Wordless_Dialog_Results_Filter_Keywords(Wordless_Dialog_Results_Filter):
 
         (text_test_stat,
          text_p_value,
-         text_bayes_factor) = self.main.settings_global['tests_significance']['keywords'][text_test_significance]['cols']
-        text_effect_size = self.main.settings_global['measures_effect_size']['keywords'][text_measure_effect_size]['col']
+         text_bayes_factor) = self.main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
+        text_effect_size = self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
 
         if text_test_stat:
             self.label_test_stat.setText(f'{text_test_stat}:')
@@ -1355,7 +1355,7 @@ class Wordless_Dialog_Results_Filter_Keywords(Wordless_Dialog_Results_Filter):
 
         dialog_progress = wordless_dialog_misc.Wordless_Dialog_Progress_Results_Filter(self.main)
 
-        worker_search_results = Wordless_Worker_Results_Filter_Keywords(
+        worker_search_results = Wordless_Worker_Results_Filter_Keyword(
             self.main,
             dialog_progress = dialog_progress,
             update_gui = update_gui,
