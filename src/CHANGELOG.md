@@ -52,7 +52,7 @@
 - Upgrade PyQt to 5.13.2
 - Upgrade pytest to 5.3.0
 - Upgrade Sacremoses to 0.0.35
-- Upgrade SciPy to 1.3.2
+- Upgrade SciPy to 1.3.3
 - Upgrade spaCy to 2.2.3
 - Upgrade syntok to 1.2.2
 - Upgrade underthesea to 1.1.17
