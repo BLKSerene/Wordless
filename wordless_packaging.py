@@ -27,13 +27,7 @@ print_with_elapsed_time('Start packaging ...')
 if platform.system() == 'Windows':
     return_val_packaging = subprocess.call('pyinstaller --noconfirm wordless_packaging.spec', shell = True)
 elif platform.system() == 'Darwin':
-    subprocess.call([
-        'python3',
-        '-m',
-        'PyInstaller',
-        '-y',
-        'wordless_packaging.spec'
-    ])
+    return_val_packaging = subprocess.call('python3 -m PyInstaller --noconfirm wordless_packaging.spec', shell = True)
 elif platform.system() == 'Linux':
     os.system('python3.7 -m PyInstaller -y wordless_packaging.spec')
 
@@ -79,7 +73,7 @@ if return_val_packaging == 0:
     elif platform.system() == 'Darwin':
         os.chdir('..')
 
-        subprocess.call(['open', './Wordless.app'])
+        return_val_test = subprocess.call(os.path.join(os.getcwd(), 'Wordless.app/Contents/Macos/Wordless'), shell = True)
     elif platform.system() == 'Linux':
         os.system('./Wordless')
 
