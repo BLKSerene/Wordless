@@ -356,7 +356,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # SciPy
             [
                 'SciPy', 'https://www.scipy.org',
-                '1.3.2',
+                '1.3.3',
                 'SciPy Developers',
                 'BSD-3-Clause', 'https://www.scipy.org/scipylib/license.html'
             ],
