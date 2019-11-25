@@ -40,7 +40,7 @@ networkx
 wordcloud
 
 # Misc
-bs4
+beautifulsoup4
 cchardet
 langdetect
 langid
