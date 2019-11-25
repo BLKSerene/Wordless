@@ -10,6 +10,7 @@
 #
 
 import importlib
+import platform
 import subprocess
 
 langs = [
@@ -52,27 +53,29 @@ for _, lang_code_639_3, _ in langs:
 
 # Check updates
 for lang_text, lang_code_639_3, lang_code_639_1 in langs:
-    if lang_code_639_3 != 'eng':
-        try:
-            model_name = globals()[f'model_name_{lang_code_639_3}']
-            model = importlib.import_module(f'{lang_code_639_1}_{model_name}')
+    try:
+        model_name = globals()[f'model_name_{lang_code_639_3}']
+        model = importlib.import_module(f'{lang_code_639_1}_{model_name}')
 
-            if model.__version__ != globals()[f'model_ver_{lang_code_639_3}']:
-                globals()[f'updates_available_{lang_code_639_3}'] = True
-
-        except:
+        if model.__version__ != globals()[f'model_ver_{lang_code_639_3}']:
             globals()[f'updates_available_{lang_code_639_3}'] = True
+
+    except:
+        globals()[f'updates_available_{lang_code_639_3}'] = True
 
 # Download models
 for lang_text, lang_code_639_3, lang_code_639_1 in langs:
-    if lang_code_639_3 != 'eng':
-        model_name = globals()[f'model_name_{lang_code_639_3}']
-        model_ver = globals()[f'model_ver_{lang_code_639_3}']
+    model_name = globals()[f'model_name_{lang_code_639_3}']
+    model_ver = globals()[f'model_ver_{lang_code_639_3}']
 
-        if globals()[f'updates_available_{lang_code_639_3}']:
+    if globals()[f'updates_available_{lang_code_639_3}']:
+        if platform.system() == 'Windows':
             subprocess.call(f'pip install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}.tar.gz', shell = True)
-        else:
-            print(f"The latest version of spaCy's {lang_text} model has already been installed!")
+        elif platform.system() == 'Darwin':
+            subprocess.call(f'pip3 install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}.tar.gz', shell = True)
+        elif platform.system() == 'Linux':
+            subprocess.call(f'pip3.7 install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}.tar.gz', shell = True)
+    else:
+        print(f"The latest version of spaCy's {lang_text} model has already been installed!")
 
 print('All done!')
-subprocess.call('pause', shell = True)
