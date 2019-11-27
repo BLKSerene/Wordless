@@ -29,25 +29,22 @@ if platform.system() == 'Windows':
 elif platform.system() == 'Darwin':
     return_val_packaging = subprocess.call('python3 -m PyInstaller --noconfirm wordless_packaging.spec', shell = True)
 elif platform.system() == 'Linux':
-    os.system('python3.7 -m PyInstaller -y wordless_packaging.spec')
+    subprocess.call('python3.7 -m PyInstaller --noconfirm wordless_packaging.spec', shell = True)
 
 if return_val_packaging == 0:
     print_with_elapsed_time('Packaging done!')
 
-    os.chdir('dist/Wordless')
-
     # Create folders
-    if not os.path.exists('Import') or not os.path.exists('Export'):
-        print_with_elapsed_time('Creating folders ...')
+    print_with_elapsed_time('Creating folders ...')
 
-        if not os.path.exists('Import'):
-            os.mkdir('Import')
-        if not os.path.exists('Export'):
-            os.mkdir('Export')
+    if not os.path.exists('dist/Wordless/Import'):
+        os.mkdir('dist/Wordless/Import')
+    if not os.path.exists('dist/Wordless/Export'):
+        os.mkdir('dist/Wordless/Export')
 
     # Copy files
     if platform.system() == 'Darwin':
-        for dir_src, dirs, files in os.walk('.'):
+        for dir_src, dirs, files in os.walk('dist/Wordless/'):
             dir_src = os.path.realpath(dir_src)
             dir_app = dir_src.replace('dist/Wordless', 'dist/Wordless.app/Contents/MacOS')
 
@@ -69,13 +66,15 @@ if return_val_packaging == 0:
     print_with_elapsed_time(f'Testing ...')
 
     if platform.system() == 'Windows':
+        os.chdir('dist/Wordless')
+
         return_val_test = subprocess.call(os.path.join(os.getcwd(), 'Wordless.exe'), shell = True)
     elif platform.system() == 'Darwin':
-        os.chdir('..')
-
         return_val_test = subprocess.call(os.path.join(os.getcwd(), 'Wordless.app/Contents/Macos/Wordless'), shell = True)
     elif platform.system() == 'Linux':
-        os.system('./Wordless')
+        os.chdir('dist/Wordless')
+
+        return_val_test = subprocess.call('./Wordless', shell = True)
 
     if return_val_test == 0:
         print_with_elapsed_time(f'Pass!')

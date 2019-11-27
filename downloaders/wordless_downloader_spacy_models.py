@@ -12,6 +12,7 @@
 import importlib
 import platform
 import subprocess
+import sys
 
 langs = [
     ['Dutch'           , 'nld', 'nl'],
@@ -72,9 +73,9 @@ for lang_text, lang_code_639_3, lang_code_639_1 in langs:
         if platform.system() == 'Windows':
             subprocess.call(f'pip install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}.tar.gz', shell = True)
         elif platform.system() == 'Darwin':
-            subprocess.call(f'pip3 install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}.tar.gz', shell = True)
+            subprocess.call(f'sudo pip3 install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}.tar.gz', shell = True)
         elif platform.system() == 'Linux':
-            subprocess.call(f'pip3.7 install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}.tar.gz', shell = True)
+            subprocess.call(f'sudo pip3.7 install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}.tar.gz', shell = True)
     else:
         print(f"The latest version of spaCy's {lang_text} model has already been installed!")
 
