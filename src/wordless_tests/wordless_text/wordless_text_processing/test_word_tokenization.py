@@ -151,13 +151,12 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
     elif lang == 'fra':
         assert tokens == ['Le', 'français', 'est', 'une', 'langue', 'indo-européenne', 'de', 'la', 'famille', 'des', 'langues', 'romanes', '.']
     elif lang == 'deu':
-        if word_tokenizer == 'NLTK - Penn Treebank Tokenizer':
-            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
+        if word_tokenizer == ['NLTK - Penn Treebank Tokenizer',
+                              'NLTK - Tok-tok Tokenizer']:
+            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'dt.', 'oder', 'dtsch.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
         elif word_tokenizer in ['NLTK - NIST Tokenizer',
                                 'syntok - Word Tokenizer']:
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
-        elif word_tokenizer == 'NLTK - Tok-tok Tokenizer':
-            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'dt', '.', 'oder', 'dtsch.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
         elif word_tokenizer == 'German / NLTK - Twitter Tokenizer':
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'Deutsch', '(', '[', 'dɔʏ', '̯', 't', '͡', 'ʃ', '];', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
         elif word_tokenizer == 'Sacremoses - Moses Tokenizer':
