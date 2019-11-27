@@ -13,10 +13,10 @@ import sys
 
 sys.path.append('.')
 
-from wordless_tests import test_init
+from wordless_tests import wordless_test_init
 from wordless_measures import wordless_measures_dispersion
 
-main = test_init.Test_Main()
+main = wordless_test_init.Wordless_Test_Main()
 
 # Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
 def test_juillands_d():

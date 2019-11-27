@@ -13,10 +13,10 @@ import sys
 
 sys.path.append('.')
 
-from wordless_tests import test_init
+from wordless_tests import wordless_test_init
 from wordless_measures import wordless_measures_effect_size
 
-main = test_init.Test_Main()
+main = wordless_test_init.Wordless_Test_Main()
 main.settings_custom['measures']['effect_size'] = {
     'kilgarriffs_ratio': {
         'smoothing_param': 1.00,

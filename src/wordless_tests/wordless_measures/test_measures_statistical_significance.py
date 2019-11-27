@@ -13,10 +13,10 @@ import sys
 
 sys.path.append('.')
 
-from wordless_tests import test_init
+from wordless_tests import wordless_test_init
 from wordless_measures import wordless_measures_statistical_significance
 
-main = test_init.Test_Main()
+main = wordless_test_init.Wordless_Test_Main()
 main.settings_custom['measures']['statistical_significance'] = {
     'students_t_test_2_sample': {
         'variances': 'Equal'

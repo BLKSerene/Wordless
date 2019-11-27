@@ -58,4 +58,4 @@ script:
   - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
   - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
   # Others
-  - travis_wait pytest --ignore=wordless_tests/test_init.py --ignore=wordless_tests/wordless_text/wordless_text_processing/
+  - travis_wait pytest --ignore=wordless_tests/wordless_text/wordless_text_processing/
