@@ -13,10 +13,10 @@ import sys
 
 sys.path.append('.')
 
-from wordless_tests import test_init
+from wordless_tests import wordless_test_init
 from wordless_measures import wordless_measures_bayes_factor
 
-main = test_init.Test_Main()
+main = wordless_test_init.Wordless_Test_Main()
 
 # Wilson, Andrew. "Embracing Bayes Factors for Key Item Analysis in Corpus Linguistics." New Approaches to the Study of Linguistic Variability, edited by Markus Bieswanger and Amei Koll-Stobbe, Peter Lang, 2013, p. 7.
 def test_bayes_factor_log_likelihood_ratio_test():
