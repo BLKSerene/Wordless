@@ -13,10 +13,10 @@ import sys
 
 sys.path.append('.')
 
-from wordless_tests import test_init
+from wordless_tests import wordless_test_init
 from wordless_text import wordless_text
 
-main = test_init.Test_Main()
+main = wordless_test_init.Wordless_Test_Main()
 
 def new_file(text_type):
     new_file = {}

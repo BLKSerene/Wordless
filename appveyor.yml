@@ -53,4 +53,4 @@ test_script:
   - pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
   - pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
   # Others
-  - pytest --ignore=wordless_tests/test_init.py --ignore=wordless_tests/wordless_text/wordless_text_processing/
+  - pytest --ignore=wordless_tests/wordless_text/wordless_text_processing/
