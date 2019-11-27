@@ -10,6 +10,7 @@
 #
 
 import html
+import importlib
 import re
 
 from wordless_text import wordless_text
@@ -159,6 +160,21 @@ SRP_LATN_TO_CYRL_DIGRAPHS = {
 }
 
 def check_spacy_models(main, lang, pipeline):
+    spacy_langs = {
+        'nld': 'nl_core_news_sm',
+        'eng': 'en_core_web_sm',
+        'fra': 'fr_core_news_sm',
+        'deu': 'de_core_news_sm',
+        'ell': 'el_core_news_sm',
+        'ita': 'it_core_news_sm',
+        'lit': 'lt_core_news_sm',
+        'nob': 'nb_core_news_sm',
+        'por': 'pt_core_news_sm',
+        'spa': 'es_core_news_sm',
+        'other:': 'en_core_web_sm'
+    }
+
+    # Remove unused pipelines to boost speed
     if pipeline == 'word_tokenization':
         nlp_pipelines = []
         nlp_disable = ['tagger', 'parser', 'ner']
@@ -170,62 +186,15 @@ def check_spacy_models(main, lang, pipeline):
         nlp_disable = ['parser', 'ner']
 
     # Languages with models
-    if lang in ['nld', 'eng', 'fra', 'deu', 'ell', 'ita', 'lit', 'nob', 'por', 'spa', 'other']:
+    if lang in spacy_langs:
         if f'spacy_nlp_{lang}' in main.__dict__:
             if main.__dict__[f'spacy_nlp_{lang}'].pipe_names != nlp_pipelines:
                 del main.__dict__[f'spacy_nlp_{lang}']
 
         if f'spacy_nlp_{lang}' not in main.__dict__:
-            # Dutch
-            if lang == 'nld':
-                import nl_core_news_sm
+            model = importlib.import_module(spacy_langs[lang])
 
-                main.__dict__[f'spacy_nlp_{lang}'] = nl_core_news_sm.load(disable = nlp_disable)
-            # English and other languages
-            elif lang in ['eng', 'other']:
-                import en_core_web_sm
-
-                main.__dict__[f'spacy_nlp_{lang}'] = en_core_web_sm.load(disable = nlp_disable)
-            # French
-            elif lang == 'fra':
-                import fr_core_news_sm
-
-                main.__dict__[f'spacy_nlp_{lang}'] = fr_core_news_sm.load(disable = nlp_disable)
-            # German
-            elif lang == 'deu':
-                import de_core_news_sm
-
-                main.__dict__[f'spacy_nlp_{lang}'] = de_core_news_sm.load(disable = nlp_disable)
-            # Greek (Modern)
-            elif lang == 'ell':
-                import el_core_news_sm
-
-                main.__dict__[f'spacy_nlp_{lang}'] = el_core_news_sm.load(disable = nlp_disable)
-            # Italian
-            elif lang == 'ita':
-                import it_core_news_sm
-                
-                main.__dict__[f'spacy_nlp_{lang}'] = it_core_news_sm.load(disable = nlp_disable)
-            # Lithuanian
-            elif lang == 'lit':
-                import lt_core_news_sm
-                
-                main.__dict__[f'spacy_nlp_{lang}'] = lt_core_news_sm.load(disable = nlp_disable)
-            # Norwegian Bokmål
-            elif lang == 'nob':
-                import nb_core_news_sm
-
-                main.__dict__[f'spacy_nlp_{lang}'] = nb_core_news_sm.load(disable = nlp_disable)
-            # Portuguese
-            elif lang == 'por':
-                import pt_core_news_sm
-                
-                main.__dict__[f'spacy_nlp_{lang}'] = pt_core_news_sm.load(disable = nlp_disable)
-            # Spanish
-            elif lang == 'spa':
-                import es_core_news_sm
-                
-                main.__dict__[f'spacy_nlp_{lang}'] = es_core_news_sm.load(disable = nlp_disable)
+            main.__dict__[f'spacy_nlp_{lang}'] = model.load(disable = nlp_disable)
     # Languages without models
     else:
         # Serbian (Cyrillic) & Serbian (Latin)
