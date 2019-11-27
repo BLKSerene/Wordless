@@ -15,13 +15,13 @@ sys.path.append('.')
 
 import pytest
 
-from wordless_tests import test_init, test_lang_examples
+from wordless_tests import wordless_test_init, wordless_test_lang_examples
 from wordless_text import wordless_text_processing
 from wordless_utils import wordless_conversion
 
 test_pos_taggers = []
 
-main = test_init.Test_Main()
+main = wordless_test_init.Wordless_Test_Main()
 
 for lang, pos_taggers in main.settings_global['pos_taggers'].items():
     for pos_tagger in pos_taggers:
@@ -35,7 +35,7 @@ def test_pos_tag(lang, pos_tagger, show_results = False):
 
     tokens = wordless_text_processing.wordless_word_tokenize(
         main,
-        text = getattr(test_lang_examples, f'SENTENCE_{lang.upper()}'),
+        text = getattr(wordless_test_lang_examples, f'SENTENCE_{lang.upper()}'),
         lang = lang
     )
 

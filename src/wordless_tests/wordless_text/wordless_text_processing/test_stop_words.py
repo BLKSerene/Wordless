@@ -15,13 +15,13 @@ sys.path.append('.')
 
 import pytest
 
-from wordless_tests import test_init
+from wordless_tests import wordless_test_init
 from wordless_text import wordless_text_processing
 from wordless_utils import wordless_conversion
 
 test_lists_stop_words = []
 
-main = test_init.Test_Main()
+main = wordless_test_init.Wordless_Test_Main()
 
 for lang, lists_stop_words in main.settings_global['stop_words'].items():
     for list_stop_words in lists_stop_words:

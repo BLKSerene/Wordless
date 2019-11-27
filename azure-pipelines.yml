@@ -47,7 +47,7 @@ jobs:
       pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
       pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
       pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
-      pytest --ignore=wordless_tests/test_init.py --ignore=wordless_tests/wordless_text/wordless_text_processing/
+      pytest --ignore=wordless_tests/wordless_text/wordless_text_processing/
     displayName: 'Run tests'
 
 # macOS
@@ -86,7 +86,7 @@ jobs:
       pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
       pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
       pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
-      pytest --ignore=wordless_tests/test_init.py --ignore=wordless_tests/wordless_text/wordless_text_processing/
+      pytest --ignore=wordless_tests/wordless_text/wordless_text_processing/
     displayName: 'Run tests'
 
 # Linux
@@ -125,5 +125,5 @@ jobs:
       pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
       pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
       pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
-      pytest --ignore=wordless_tests/test_init.py --ignore=wordless_tests/wordless_text/wordless_text_processing/
+      pytest --ignore=wordless_tests/wordless_text/wordless_text_processing/
     displayName: 'Run tests'

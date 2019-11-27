@@ -17,13 +17,13 @@ sys.path.append('.')
 
 import pytest
 
-from wordless_tests import test_init, test_lang_examples
+from wordless_tests import wordless_test_init, wordless_test_lang_examples
 from wordless_text import wordless_text_processing
 from wordless_utils import wordless_conversion
 
 test_word_detokenizers = []
 
-main = test_init.Test_Main()
+main = wordless_test_init.Wordless_Test_Main()
 
 for lang, word_detokenizers in main.settings_global['word_detokenizers'].items():
     for word_detokenizer in word_detokenizers:
@@ -37,7 +37,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
 
     tokens = wordless_text_processing.wordless_word_tokenize(
         main,
-        text = getattr(test_lang_examples, f'SENTENCE_{lang.upper()}'),
+        text = getattr(wordless_test_lang_examples, f'SENTENCE_{lang.upper()}'),
         lang = lang
     )
     

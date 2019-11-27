@@ -13,10 +13,10 @@ import sys
 
 sys.path.append('.')
 
-from wordless_tests import test_init
+from wordless_tests import wordless_test_init
 from wordless_measures import wordless_measures_adjusted_freq
 
-main = test_init.Test_Main()
+main = wordless_test_init.Wordless_Test_Main()
 
 # [1] Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
 # [2] Rosengren, Inger. "The quantitative concept of language and its relation to the structure of frequency dictionaries." Études de linguistique appliquée, no. 1, 1971, p. 115.

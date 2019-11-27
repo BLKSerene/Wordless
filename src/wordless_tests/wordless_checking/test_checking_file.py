@@ -15,7 +15,7 @@ import sys
 sys.path.append('.')
 
 from wordless_checking import wordless_checking_file
-from wordless_tests import test_init
+from wordless_tests import wordless_test_init
 from wordless_utils import wordless_misc
 
 def get_path(file_name):
@@ -29,7 +29,7 @@ def get_file(file_name):
 
     return file
 
-main = test_init.Test_Main()
+main = wordless_test_init.Wordless_Test_Main()
 main.settings_custom['files']['files_open'] = [
     get_file('duplicate.txt')
 ]

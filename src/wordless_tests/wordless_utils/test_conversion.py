@@ -16,10 +16,10 @@ sys.path.append('.')
 
 import pytest
 
-from wordless_tests import test_init
+from wordless_tests import wordless_test_init
 from wordless_utils import wordless_conversion
 
-main = test_init.Test_Main()
+main = wordless_test_init.Wordless_Test_Main()
 
 @pytest.mark.parametrize('lang_text', main.settings_global['langs'])
 def test_to_lang_code(lang_text):
