@@ -33,6 +33,27 @@ from wordless_checking import wordless_checking_token, wordless_checking_unicode
 from wordless_text import wordless_matching, wordless_text, wordless_text_utils
 from wordless_utils import wordless_conversion, wordless_misc
 
+# Reference: https://stackoverflow.com/questions/9506869/are-there-character-collections-for-all-international-full-stop-punctuations/9508766#9508766
+TERMINATORS_SENTENCE = [
+    '!', '.', '?', '։', '؟', '۔', '܀', '܁', '܂', '߹',
+    '।', '॥', '၊', '။', '።', '፧', '፨', '᙮', '᜵', '᜶', '᠃', '᠉', '᥄',
+    '᥅', '᪨', '᪩', '᪪', '᪫', '᭚', '᭛', '᭞', '᭟', '᰻', '᰼', '᱾', '᱿',
+    '‼', '‽', '⁇', '⁈', '⁉', '⸮', '⸼', '꓿', '꘎', '꘏', '꛳', '꛷', '꡶',
+    '꡷', '꣎', '꣏', '꤯', '꧈', '꧉', '꩝', '꩞', '꩟', '꫰', '꫱', '꯫', '﹒',
+    '﹖', '﹗', '！', '．', '？', '𐩖', '𐩗', '𑁇', '𑁈', '𑂾', '𑂿', '𑃀',
+    '𑃁', '𑅁', '𑅂', '𑅃', '𑇅', '𑇆', '𑇍', '𑇞', '𑇟', '𑈸', '𑈹', '𑈻', '𑈼',
+    '𑊩', '𑑋', '𑑌', '𑗂', '𑗃', '𑗉', '𑗊', '𑗋', '𑗌', '𑗍', '𑗎', '𑗏', '𑗐',
+    '𑗑', '𑗒', '𑗓', '𑗔', '𑗕', '𑗖', '𑗗', '𑙁', '𑙂', '𑜼', '𑜽', '𑜾', '𑩂',
+    '𑩃', '𑪛', '𑪜', '𑱁', '𑱂', '𖩮', '𖩯', '𖫵', '𖬷', '𖬸', '𖭄', '𛲟', '𝪈']
+TERMINATORS_CLAUSE = [
+    # Question and exclamation marks
+    '?', '!', '？', '！',
+    # Commas, colons, semi-colons
+    ',', ':', ';',
+    # Em dashes
+    '—', '—'
+]
+
 def wordless_sentence_tokenize(main, text, lang,
                                sentence_tokenizer = 'default'):
     sentences = []
@@ -88,6 +109,7 @@ def wordless_sentence_tokenize(main, text, lang,
     elif sentence_tokenizer == main.tr('syntok - Sentence Segmenter'):
         for para in syntok.segmenter.analyze(text):
             for sentence in para:
+
                 sentences.append(''.join([token.spacing + token.value for token in sentence]))
     # Chinese & Japanese
     elif sentence_tokenizer in [main.tr('Wordless - Chinese Sentence Tokenizer'),
@@ -127,17 +149,23 @@ def wordless_sentence_tokenize(main, text, lang,
 
     return sentences
 
+def wordless_sentence_split(main, text):
+    sentences = []
+    sentence_start = 0
+
+    tokens = text.split()
+    len_tokens = len(tokens)
+
+    for i, token in enumerate(tokens):
+        if token[-1] in TERMINATORS_SENTENCE or i == len_tokens - 1:
+            sentences.append(' '.join(tokens[sentence_start : i + 1]))
+
+            sentence_start = i + 1
+
+    return sentences
+
 def wordless_clause_tokenize(main, text, lang):
     clauses = []
-
-    PUNCS_CLAUSE = [
-        # Question and exclamation marks
-        '?', '!', '？', '！',
-        # Commas, colons, semi-colons
-        ',', ':', ';',
-        # Em dashes
-        '—', '—'
-    ]
 
     # Running text
     if type(text) in [str, wordless_text.Wordless_Token]:
@@ -149,9 +177,9 @@ def wordless_clause_tokenize(main, text, lang):
                 if i == len_text - 1:
                     clauses.append(text[clause_start:])
                 else:
-                    if char in PUNCS_CLAUSE:
+                    if char in TERMINATORS_CLAUSE:
                         for j, char in enumerate(text[i + 1:]):
-                            if char not in PUNCS_CLAUSE:
+                            if char not in TERMINATORS_CLAUSE:
                                 clauses.append(text[clause_start : i + j + 1])
 
                                 clause_start = i + j + 1
@@ -168,9 +196,9 @@ def wordless_clause_tokenize(main, text, lang):
                     clauses.append(text[clause_start:])
                 else:
                     # Check if the token is empty
-                    if token and token[-1] in PUNCS_CLAUSE:
+                    if token and token[-1] in TERMINATORS_CLAUSE:
                         for j, token in enumerate(text[i + 1:]):
-                            if token[0] not in PUNCS_CLAUSE:
+                            if token[0] not in TERMINATORS_CLAUSE:
                                 clauses.append(text[clause_start : i + j + 1])
 
                                 clause_start = i + j + 1
@@ -178,6 +206,21 @@ def wordless_clause_tokenize(main, text, lang):
                                 break
     else:
         raise Exception('Input for clause tokenization must be a string of text or a list of tokens!')
+
+    return clauses
+
+def wordless_clause_split(main, text):
+    clauses = []
+    clause_start = 0
+
+    tokens = text.split()
+    len_tokens = len(tokens)
+
+    for i, token in enumerate(tokens):
+        if token[-1] in TERMINATORS_CLAUSE or i == len_tokens - 1:
+            clauses.append(' '.join(tokens[clause_start : i + 1]))
+
+            clause_start = i + 1
 
     return clauses
 

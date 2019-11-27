@@ -25,11 +25,11 @@ main.settings_custom['auto_detection']['detection_settings']['number_lines_no_li
 
 
 # Encoding detection
-@pytest.mark.parametrize('file_name', os.listdir(f'wordless_tests/files/encodings/'))
+@pytest.mark.parametrize('file_name', os.listdir(f'wordless_tests/files/wordless_utils/wordless_detection/encoding/'))
 def test_detection_encoding(file_name):
     file = {}
 
-    file['path'] = f'wordless_tests/files/encodings/{file_name}'
+    file['path'] = f'wordless_tests/files/wordless_utils/wordless_detection/encoding/{file_name}'
     file['name'] = os.path.basename(file['path'])
     file['encoding'] = 'utf_8'
 
@@ -43,11 +43,11 @@ def test_detection_encoding(file_name):
     assert success
 
 # Language detection
-@pytest.mark.parametrize('file_name', os.listdir(f'wordless_tests/files/langs/'))
+@pytest.mark.parametrize('file_name', os.listdir(f'wordless_tests/files/wordless_utils/wordless_detection/lang/'))
 def test_detection_lang(file_name):
     file = {}
 
-    file['path'] = f'wordless_tests/files/langs/{file_name}'
+    file['path'] = f'wordless_tests/files/wordless_utils/wordless_detection/lang/{file_name}'
     file['name'] = os.path.basename(file['path'])
     file['encoding'] = 'utf_8'
 
