@@ -595,8 +595,6 @@ def generate_table(main, table):
 
             wordless_msg.wordless_msg_generate_table_error(main)
 
-        dialog_progress.accept()
-
     settings = main.settings_custom['overview']
     files = main.wordless_files.get_selected_files()
 
@@ -608,13 +606,8 @@ def generate_table(main, table):
             dialog_progress = dialog_progress,
             update_gui = update_gui
         )
+
         thread_overview_table = wordless_threading.Wordless_Thread(worker_overview_table)
-
-        thread_overview_table.start()
-
-        dialog_progress.exec_()
-
-        thread_overview_table.quit()
-        thread_overview_table.wait()
+        thread_overview_table.start_worker()
     else:
         wordless_msg.wordless_msg_generate_table_error(main)
