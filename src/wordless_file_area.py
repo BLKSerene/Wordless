@@ -379,8 +379,6 @@ class Wordless_Files():
             else:
                 self.main.statusBar().showMessage(f'{len_files_new - len_files_old} files have been successfully opened.')
 
-            dialog_progress.accept()
-
         file_paths, files_empty = wordless_checking_file.check_files_empty(self.main, file_paths)
         file_paths, files_duplicate = wordless_checking_file.check_files_duplicate(self.main, file_paths)
         file_paths, files_unsupported = wordless_checking_file.check_files_unsupported(self.main, file_paths)
@@ -394,14 +392,9 @@ class Wordless_Files():
             update_gui = update_gui,
             file_paths = file_paths
         )
+
         thread_open_files = wordless_threading.Wordless_Thread(worker_open_files)
-
-        thread_open_files.start()
-
-        dialog_progress.exec_()
-
-        thread_open_files.quit()
-        thread_open_files.wait()
+        thread_open_files.start_worker()
 
         wordless_dialog_error.wordless_dialog_error_file_open(self.main,
                                                               files_empty = files_empty,
