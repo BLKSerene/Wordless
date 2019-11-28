@@ -735,8 +735,6 @@ def generate_table(main, table):
 
             wordless_msg.wordless_msg_generate_table_error(main)
 
-        dialog_progress.accept()
-
     settings = main.settings_custom['keyword']
     files = main.wordless_files.get_selected_files()
 
@@ -758,14 +756,9 @@ def generate_table(main, table):
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
+
             thread_keyword_table = wordless_threading.Wordless_Thread(worker_keyword_table)
-
-            thread_keyword_table.start()
-
-            dialog_progress.exec_()
-
-            thread_keyword_table.quit()
-            thread_keyword_table.wait()
+            thread_keyword_table.start_worker()
         else:
             wordless_msg_box.wordless_msg_box_missing_observed_file(main)
 
@@ -861,14 +854,9 @@ def generate_fig(main):
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
+
             thread_keyword_fig = wordless_threading.Wordless_Thread(worker_keyword_fig)
-
-            thread_keyword_fig.start()
-
-            dialog_progress.exec_()
-
-            thread_keyword_fig.quit()
-            thread_keyword_fig.wait()
+            thread_keyword_fig.start_worker()
         else:
             wordless_msg_box.wordless_msg_box_missing_observed_file(main)
 
