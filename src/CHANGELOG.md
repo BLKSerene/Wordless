@@ -49,7 +49,7 @@
 - Upgrade Matplotlib to 3.1.2
 - Upgrade NetworkX to 2.4
 - Upgrade NumPy to 1.17.4
-- Upgrade openpyxl to 3.0.1
+- Upgrade openpyxl to 3.0.2
 - Upgrade PyQt to 5.13.2
 - Upgrade pytest to 5.3.0
 - Upgrade Sacremoses to 0.0.35
