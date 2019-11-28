@@ -33,6 +33,13 @@ class Wordless_Worker_Export_Table(wordless_threading.Wordless_Worker):
     worker_done = pyqtSignal(bool, str)
 
     def run(self):
+        if 'headers_int' not in self.table.__dict__:
+            self.table.headers_int = []
+        if 'headers_float' not in self.table.__dict__:
+            self.table.headers_float = []
+        if 'headers_pct' not in self.table.__dict__:
+            self.table.headers_pct = []
+
         # Check file permissions
         try:
             if not self.rows_export:
