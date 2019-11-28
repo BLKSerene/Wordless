@@ -584,8 +584,6 @@ class Wordless_Table(QTableWidget):
 
     def export_all(self, rows_export = []):
         def update_gui(export_success, file_path):
-            dialog_progress.accept()
-
             if export_success:
                 wordless_msg_box.wordless_msg_box_export_table_success(self.main, file_path)
             else:
@@ -610,15 +608,11 @@ class Wordless_Table(QTableWidget):
                 table = self,
                 file_path = file_path,
                 file_type = file_type,
-                rows_export = rows_export)
+                rows_export = rows_export
+            )
+
             thread_export_table = wordless_threading.Wordless_Thread(worker_export_table)
-
-            thread_export_table.start()
-
-            dialog_progress.exec_()
-
-            thread_export_table.quit()
-            thread_export_table.wait()
+            thread_export_table.start_worker()
 
     def clear_table(self, header_count = 1):
         self.clearContents()
@@ -1545,8 +1539,6 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
             self.table.setUpdatesEnabled(True)
             self.table.blockSignals(False)
 
-            dialog_progress.accept()
-
         def key_concordancer(item):
             keys = []
 
@@ -1585,15 +1577,11 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
                 self.main,
                 dialog_progress = dialog_progress,
                 update_gui = update_gui,
-                dialog = self)
+                dialog = self
+            )
+
             thread_results_sort_concordancer = wordless_threading.Wordless_Thread(worker_results_sort_concordancer)
-
-            thread_results_sort_concordancer.start()
-
-            dialog_progress.exec_()
-
-            thread_results_sort_concordancer.quit()
-            thread_results_sort_concordancer.wait()
+            thread_results_sort_concordancer.start_worker()
 
         wordless_msg.wordless_msg_results_sort(self.main)
 

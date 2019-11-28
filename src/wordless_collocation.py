@@ -1112,8 +1112,6 @@ def generate_table(main, table):
 
             wordless_msg.wordless_msg_generate_table_error(main)
 
-        dialog_progress.accept()
-
     settings = main.settings_custom['collocation']
     files = main.wordless_files.get_selected_files()
 
@@ -1128,14 +1126,9 @@ def generate_table(main, table):
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
+
             thread_collocation_table = wordless_threading.Wordless_Thread(worker_collocation_table)
-
-            thread_collocation_table.start()
-
-            dialog_progress.exec_()
-
-            thread_collocation_table.quit()
-            thread_collocation_table.wait()
+            thread_collocation_table.start_worker()
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term_optional(main)
 
@@ -1276,14 +1269,9 @@ def generate_fig(main):
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
+
             thread_collocation_fig = wordless_threading.Wordless_Thread(worker_collocation_fig)
-
-            thread_collocation_fig.start()
-
-            dialog_progress.exec_()
-
-            thread_collocation_fig.quit()
-            thread_collocation_fig.wait()
+            thread_collocation_fig.start_worker()
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term_optional(main)
 

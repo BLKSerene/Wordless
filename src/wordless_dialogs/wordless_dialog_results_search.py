@@ -325,8 +325,6 @@ class Wordless_Dialog_Results_Search(wordless_dialog.Wordless_Dialog):
 
             wordless_msg.wordless_msg_results_search_success(self.main, self.items_found)
 
-            dialog_progress.accept()
-
         if (not self.settings['multi_search_mode'] and self.settings['search_term'] or
             self.settings['multi_search_mode'] and self.settings['search_terms']):
             self.clear_highlights()
@@ -339,14 +337,9 @@ class Wordless_Dialog_Results_Search(wordless_dialog.Wordless_Dialog):
                 update_gui = update_gui,
                 dialog = self
             )
+
             thread_results_search = wordless_threading.Wordless_Thread(worker_results_search)
-
-            thread_results_search.start()
-
-            dialog_progress.exec_()
-
-            thread_results_search.quit()
-            thread_results_search.wait()
+            thread_results_search.start_worker()
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term(self.main)
 
