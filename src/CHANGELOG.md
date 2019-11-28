@@ -45,6 +45,7 @@
 - Upgrade Beautiful Soup to 4.8.1
 - Upgrade botok (pybo) to 0.6.18
 - Upgrade cChardet to 2.1.5
+- Upgrade lxml to 4.4.2
 - Upgrade Matplotlib to 3.1.2
 - Upgrade NetworkX to 2.4
 - Upgrade NumPy to 1.17.4
