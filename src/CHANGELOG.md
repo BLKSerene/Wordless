@@ -121,7 +121,7 @@
 - Fix Wordless's Chinese and Japanese character tokenizers
 - Menu: Fix Preferences - Settings - Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization - Preview
 - Work Area: Fix Concordancer - Search in Results
-- Work Area: Fix error messages when loading files
+- Work Area: Fix Work Area - error messages
 - Work Area: Fix Work Area - Search Settings - Context Settings
 
 ### ⏫ Dependency Upgrades
