@@ -106,7 +106,19 @@ hiddenimports = [
     'thinc.extra.search',
     'thinc.linalg',
     'thinc.neural._aligned_alloc',
-    'thinc.neural._custom_kernels'
+    'thinc.neural._custom_kernels',
+
+    # spaCy models
+    'de_core_news_sm',
+    'el_core_news_sm',
+    'en_core_web_sm',
+    'es_core_news_sm',
+    'fr_core_news_sm',
+    'it_core_news_sm',
+    'lt_core_news_sm',
+    'nb_core_news_sm',
+    'nl_core_news_sm',
+    'pt_core_news_sm'
 ]
 
 # Runtime hooks
