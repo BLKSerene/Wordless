@@ -321,7 +321,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # lxml
             [
                 'lxml', 'https://lxml.de',
-                '4.4.1',
+                '4.4.2',
                 'Stefan Behnel',
                 'BSD-3-Clause', 'https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt'
             ],
