@@ -1117,8 +1117,6 @@ def generate_table(main, table):
 
             wordless_msg.wordless_msg_generate_table_error(main)
 
-        dialog_progress.accept()
-
     settings = main.settings_custom['concordancer']
     files = main.wordless_files.get_selected_files()
 
@@ -1132,14 +1130,9 @@ def generate_table(main, table):
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
+
             thread_concordancer_table = wordless_threading.Wordless_Thread(worker_concordancer_table)
-
-            thread_concordancer_table.start()
-
-            dialog_progress.exec_()
-
-            thread_concordancer_table.quit()
-            thread_concordancer_table.wait()
+            thread_concordancer_table.start_worker()
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term(main)
 
@@ -1212,14 +1205,9 @@ def generate_fig(main):
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
+
             thread_concordancer_fig = wordless_threading.Wordless_Thread(worker_concordancer_fig)
-
-            thread_concordancer_fig.start()
-
-            dialog_progress.exec_()
-
-            thread_concordancer_fig.quit()
-            thread_concordancer_fig.wait()
+            thread_concordancer_fig.start_worker()
         else:
             wordless_msg_box.wordless_msg_box_missing_search_term(main)
 
