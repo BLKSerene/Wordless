@@ -238,30 +238,18 @@ def wordless_process_tokens_collocation(text, token_settings):
     return text
 
 def wordless_process_tokens_colligation(text, token_settings):
-    tokens = wordless_process_tokens(text, token_settings)
+    text = wordless_process_tokens(text, token_settings)
 
     # Use tags Only
     if token_settings['use_tags']:
-        tokens = [tag
-                  for _, tags in tokens
-                  for tag in tags]
-        text.tokens_flat = [tag
-                            for _, tags in text.tokens_flat
-                            for tag in tags]
-
         text.tags_pos = [tag
                          for tags in text.tags_pos
                          for tag in tags]
     else:
-        tokens = [f"{token}{''.join(tags)}"
-                  for token, tags in tokens]
-        text.tokens_flat = [f"{token}{''.join(tags)}"
-                            for token, tags in text.tokens_flat]
-
         text.tags_pos = [''.join(tags)
                          for tags in text.tags_pos]
 
-    return tokens
+    return text
 
 def wordless_process_tokens_concordancer(text, token_settings):
     main = text.main
