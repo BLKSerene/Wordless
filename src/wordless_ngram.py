@@ -674,11 +674,12 @@ class Wordless_Worker_Ngram(wordless_threading.Wordless_Worker):
             ngrams = []
 
             text = wordless_text.Wordless_Text(self.main, file)
-
-            tokens = wordless_token_processing.wordless_process_tokens_ngram(
+            text = wordless_token_processing.wordless_process_tokens_ngram(
                 text,
                 token_settings = settings['token_settings']
             )
+
+            tokens = text.tokens_flat
 
             search_terms = wordless_matching.match_search_terms(
                 self.main, tokens,
@@ -828,10 +829,12 @@ class Wordless_Worker_Ngram(wordless_threading.Wordless_Worker):
             text_total = wordless_text.Wordless_Text_Blank()
             text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
+            self.ngrams_freq_files.append(
+                sum([collections.Counter(ngrams_freq_file)
+                     for ngrams_freq_file in self.ngrams_freq_files],
+                    collections.Counter())
+            )
             texts.append(text_total)
-
-            self.ngrams_freq_files.append(sum([collections.Counter(ngrams_freq_file) for ngrams_freq_file in self.ngrams_freq_files],
-                                         collections.Counter()))
 
         self.progress_updated.emit(self.tr('Processing data ...'))
 
@@ -1002,7 +1005,7 @@ def generate_table(main, table):
                 # Frequency
                 for j, freq in enumerate(freq_files):
                     table.set_item_num(i, cols_freq[j], freq)
-                    table.set_item_num(i, cols_freq_pct[j], freq / freq_totals[j])
+                    table.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
 
                 for j, (dispersion, adjusted_freq) in enumerate(stats_files):
                     # Dispersion
@@ -1015,7 +1018,7 @@ def generate_table(main, table):
                 num_files_found = len([freq for freq in freq_files[:-1] if freq])
 
                 table.set_item_num(i, col_files_found, num_files_found)
-                table.set_item_num(i, col_files_found_pct, num_files_found / len_files)
+                table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
 
             table.setSortingEnabled(True)
             table.setUpdatesEnabled(True)
