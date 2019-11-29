@@ -334,7 +334,7 @@ class Wordless_Worker_Overview(wordless_threading.Wordless_Worker):
 
         for i, file in enumerate(files):
             text = wordless_text.Wordless_Text(self.main, file, flat_tokens = False)
-            wordless_token_processing.wordless_process_tokens_overview(
+            text = wordless_token_processing.wordless_process_tokens_overview(
                 text,
                 token_settings = settings['token_settings']
             )
@@ -397,10 +397,10 @@ class Wordless_Worker_Overview(wordless_threading.Wordless_Worker):
             count_types = len(len_types)
 
             # TTR
-            if count_tokens == 0:
-                ttr = 0
-            else:
+            if count_tokens:
                 ttr = count_types / count_tokens
+            else:
+                ttr = 0
 
             # STTR
             if count_tokens < base_sttr:
@@ -483,22 +483,22 @@ def generate_table(main, table):
 
                 # Count of Paragraphs
                 table.set_item_num(0, i, count_paras)
-                table.set_item_num(1, i, count_paras / count_paras_total)
+                table.set_item_num(1, i, count_paras, count_paras_total)
                 # Count of Sentences
                 table.set_item_num(2, i, count_sentences)
-                table.set_item_num(3, i, count_sentences / count_sentences_total)
+                table.set_item_num(3, i, count_sentences, count_sentences_total)
                 # Count of Clauses
                 table.set_item_num(4, i, count_clauses)
-                table.set_item_num(5, i, count_clauses / count_clauses_total)
+                table.set_item_num(5, i, count_clauses, count_clauses_total)
                 # Count of Tokens
                 table.set_item_num(6, i, count_tokens)
-                table.set_item_num(7, i, count_tokens / count_tokens_total)
+                table.set_item_num(7, i, count_tokens, count_tokens_total)
                 # Count of Types
                 table.set_item_num(8, i, count_types)
-                table.set_item_num(9, i, count_types / count_types_total)
+                table.set_item_num(9, i, count_types, count_types_total)
                 # Count of Characters
                 table.set_item_num(10, i, count_chars)
-                table.set_item_num(11, i, count_chars / count_chars_total)
+                table.set_item_num(11, i, count_chars, count_chars_total)
                 # Type-Token Ratio
                 table.set_item_num(12, i, ttr)
                 # Type-Token Ratio (Standardized)
@@ -555,30 +555,36 @@ def generate_table(main, table):
                 count_tokens_lens.append(collections.Counter(len_tokens))
 
             # Count of n-length Tokens
-            len_files = len(files)
-            count_tokens_lens_files = wordless_misc.merge_dicts(count_tokens_lens)
-            count_tokens_lens_total = {len_token: count_tokens_files[-1]
-                                       for len_token, count_tokens_files in count_tokens_lens_files.items()}
-            len_tokens_max = max(count_tokens_lens_files)
-            
-            for i in range(len_tokens_max):
-                table.insert_row(table.rowCount(),
-                                 main.tr(f'Count of {i + 1}-Length Tokens'),
-                                 is_int = True, is_cumulative = True)
-                table.insert_row(table.rowCount(),
-                                 main.tr(f'Count of {i + 1}-Length Tokens %'),
-                                 is_pct = True, is_cumulative = True)
+            if any(count_tokens_lens):
+                len_files = len(files)
+                count_tokens_lens_files = wordless_misc.merge_dicts(count_tokens_lens)
+                count_tokens_lens_total = {len_token: count_tokens_files[-1]
+                                           for len_token, count_tokens_files in count_tokens_lens_files.items()}
+                len_tokens_max = max(count_tokens_lens_files)
+                
+                for i in range(len_tokens_max):
+                    table.insert_row(table.rowCount(),
+                                     main.tr(f'Count of {i + 1}-Length Tokens'),
+                                     is_int = True, is_cumulative = True)
+                    table.insert_row(table.rowCount(),
+                                     main.tr(f'Count of {i + 1}-Length Tokens %'),
+                                     is_pct = True, is_cumulative = True)
 
-            for i in range(len_tokens_max):
-                counts = count_tokens_lens_files.get(i + 1, [0] * (len_files + 1))
+                for i in range(len_tokens_max):
+                    counts = count_tokens_lens_files.get(i + 1, [0] * (len_files + 1))
 
-                for j, count in enumerate(counts):
-                    table.set_item_num(table.rowCount() - (len_tokens_max - i) * 2, j, count)
-
-                    if count_tokens_lens_total.get(i + 1, 0):
-                        table.set_item_num(table.rowCount() - (len_tokens_max - i) * 2 + 1, j, count / count_tokens_lens_total[i + 1])
-                    else:
-                        table.set_item_num(table.rowCount() - (len_tokens_max - i) * 2 + 1, j, 0)
+                    for j, count in enumerate(counts):
+                        table.set_item_num(
+                            row = table.rowCount() - (len_tokens_max - i) * 2,
+                            col = j,
+                            val = count
+                        )
+                        table.set_item_num(
+                            row = table.rowCount() - (len_tokens_max - i) * 2 + 1,
+                            col = j,
+                            val = count,
+                            total = count_tokens_lens_total.get(i + 1, 0)
+                        )
 
             table.setUpdatesEnabled(True)
             table.blockSignals(False)

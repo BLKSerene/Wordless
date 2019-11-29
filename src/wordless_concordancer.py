@@ -1090,16 +1090,16 @@ def generate_table(main, table):
 
                 # Token No.
                 table.set_item_num(table.rowCount() - 1, 3, no_token)
-                table.set_item_num(table.rowCount() - 1, 4, no_token / len_tokens)
+                table.set_item_num(table.rowCount() - 1, 4, no_token, len_tokens)
                 # Clause No.
                 table.set_item_num(table.rowCount() - 1, 5, no_clause)
-                table.set_item_num(table.rowCount() - 1, 6, no_clause / len_clauses)
+                table.set_item_num(table.rowCount() - 1, 6, no_clause, len_clauses)
                 # Sentence No.
                 table.set_item_num(table.rowCount() - 1, 7, no_sentence)
-                table.set_item_num(table.rowCount() - 1, 8, no_sentence / len_sentences)
+                table.set_item_num(table.rowCount() - 1, 8, no_sentence, len_sentences)
                 # Paragraph No.
                 table.set_item_num(table.rowCount() - 1, 9, no_para)
-                table.set_item_num(table.rowCount() - 1, 10, no_para / len_paras)
+                table.set_item_num(table.rowCount() - 1, 10, no_para, len_paras)
 
                 # File
                 table.setItem(table.rowCount() - 1, 11, QTableWidgetItem(file_name))
