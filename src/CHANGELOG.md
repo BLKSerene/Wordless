@@ -11,7 +11,7 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [v1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0) - ??/??/2019
+## [v1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0) - 11/30/2019
 
 ### 🎉 New Features
 - Add razdel's Russian sentenizer and word tokenizer
