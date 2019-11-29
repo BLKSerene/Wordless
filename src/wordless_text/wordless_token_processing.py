@@ -179,10 +179,12 @@ def wordless_process_tokens(text, token_settings):
                     for i, token in enumerate(clause):
                         clause[i] = f"{clause[i][0]}{''.join(clause[i][1])}"
 
-    text.tokens_flat = wordless_misc.flatten_list(text.tokens_hierarchical)
+    text.tokens_flat = list(wordless_misc.flatten_list(text.tokens_hierarchical))
+
+    return text
 
 def wordless_process_tokens_overview(text, token_settings):
-    wordless_process_tokens(text, token_settings)
+    text = wordless_process_tokens(text, token_settings)
 
     # Remove empty tokens
     text.tokens_hierarchical = [[[[token
@@ -218,27 +220,12 @@ def wordless_process_tokens_overview(text, token_settings):
     text.offsets_sentences = sorted(set(text.offsets_sentences))
     text.offsets_clauses = sorted(set(text.offsets_clauses))
 
+    return text
+
 def wordless_process_tokens_wordlist(text, token_settings):
-    tokens = wordless_process_tokens(text, token_settings)
+    text = wordless_process_tokens(text, token_settings)
 
-    # Use tags only
-    if token_settings['use_tags']:
-        tokens = [tag
-                  for _, tags in tokens
-                  for tag in tags]
-        text.tokens_flat = [tag
-                            for _, tags in text.tokens_flat
-                            for tag in tags]
-    else:
-        tokens = [f"{token}{''.join(tags)}"
-                  for token, tags in tokens]
-        text.tokens_flat = [f"{token}{''.join(tags)}"
-                            for token, tags in text.tokens_flat]
-
-    # Remove empty tokens/tags
-    tokens = [token for token in tokens if token]
-
-    return tokens
+    return text
 
 def wordless_process_tokens_ngram(text, token_settings):
     tokens = wordless_process_tokens(text, token_settings)
