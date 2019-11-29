@@ -676,18 +676,12 @@ class Wordless_Worker_Colligation(wordless_threading.Wordless_Worker):
 
             # Generate POS tags for files that are not POS tagged already
             if file['text_type'][1] not in ['tagged_pos', 'tagged_both']:
-                tokens_tagged = []
-
-                for para in text.tokens_hierarchical:
-                    for sentence in para:
-                        sentence = [token for clause in sentence for token in clause]
-
-                        tokens_tagged.extend(wordless_text_processing.wordless_pos_tag(self.main, sentence, text.lang))
+                tokens_tagged = wordless_text_processing.wordless_pos_tag(self.main, text.tokens_flat, text.lang)
 
                 text.tags_pos = [[(f'_{tag}' if tag else '')] for _, tag in tokens_tagged]
 
                 for tags_pos, tags_all in zip(text.tags_pos, text.tags_all):
-                    for tag_pos in reversed(tags_pos):
+                    for tag_pos in tags_pos:
                         tags_all.insert(0, tag_pos)
 
             # Modify text types
@@ -696,10 +690,12 @@ class Wordless_Worker_Colligation(wordless_threading.Wordless_Worker):
             elif file['text_type'][1] == 'tagged_non_pos':
                 text.text_type = (text.text_type[0], 'tagged_both')
 
-            tokens = wordless_token_processing.wordless_process_tokens_colligation(
+            text = wordless_token_processing.wordless_process_tokens_colligation(
                 text,
                 token_settings = settings['token_settings']
             )
+
+            tokens = text.tokens_flat
 
             search_terms = wordless_matching.match_search_terms(
                 self.main, tokens,
