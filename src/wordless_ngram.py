@@ -829,10 +829,12 @@ class Wordless_Worker_Ngram(wordless_threading.Wordless_Worker):
             text_total = wordless_text.Wordless_Text_Blank()
             text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
+            self.ngrams_freq_files.append(
+                sum([collections.Counter(ngrams_freq_file)
+                     for ngrams_freq_file in self.ngrams_freq_files],
+                    collections.Counter())
+            )
             texts.append(text_total)
-
-            self.ngrams_freq_files.append(sum([collections.Counter(ngrams_freq_file) for ngrams_freq_file in self.ngrams_freq_files],
-                                         collections.Counter()))
 
         self.progress_updated.emit(self.tr('Processing data ...'))
 
