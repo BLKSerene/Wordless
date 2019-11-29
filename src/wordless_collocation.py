@@ -800,8 +800,6 @@ class Wordless_Worker_Collocation(wordless_threading.Wordless_Worker):
             collocations_freqs_total = {}
             collocations_freqs_total_all = {}
 
-            texts.append(wordless_text.Wordless_Text_Blank())
-
             # Frequency
             for collocations_freqs_file in self.collocations_freqs_files:
                 for collocation, freqs in collocations_freqs_file.items():
@@ -820,6 +818,8 @@ class Wordless_Worker_Collocation(wordless_threading.Wordless_Worker):
 
             self.collocations_freqs_files.append(collocations_freqs_total)
             collocations_freqs_files_all.append(collocations_freqs_total_all)
+
+            texts.append(wordless_text.Wordless_Text_Blank())
 
         self.progress_updated.emit(self.tr('Processing data ...'))
 

@@ -439,18 +439,20 @@ class Wordless_Worker_Keyword(wordless_threading.Wordless_Worker):
         # Frequency
         for i, file in enumerate([ref_file] + files):
             text = wordless_text.Wordless_Text(self.main, file)
-
-            tokens = wordless_token_processing.wordless_process_tokens_wordlist(
+            text = wordless_token_processing.wordless_process_tokens_keyword(
                 text,
                 token_settings = settings['token_settings']
             )
+
+            # Remove empty tokens
+            tokens = [token for token in text.tokens_flat if token]
 
             self.keywords_freq_files.append(collections.Counter(tokens))
 
             if i > 0:
                 texts.append(text)
             else:
-                tokens_ref = text.tokens_flat
+                tokens_ref = text.tokens_flat.copy()
                 len_tokens_ref = len(tokens_ref)
 
         # Total
@@ -458,12 +460,13 @@ class Wordless_Worker_Keyword(wordless_threading.Wordless_Worker):
             text_total = wordless_text.Wordless_Text_Blank()
             text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
-            texts.append(text_total)
             self.keywords_freq_files.append(sum(self.keywords_freq_files, collections.Counter()))
 
             self.keywords_freq_files[0] = {token: freq
                                            for token, freq in self.keywords_freq_files[0].items()
                                            if token in text_total.tokens_flat}
+
+            texts.append(text_total)
         else:
             self.keywords_freq_files[0] = {token: freq
                                            for token, freq in self.keywords_freq_files[0].items()
@@ -691,11 +694,7 @@ def generate_table(main, table):
                 # Frequency
                 for j, freq in enumerate(freq_files):
                     table.set_item_num(i, cols_freq[j], freq)
-
-                    if freq_totals[j]:
-                        table.set_item_num(i, cols_freq_pct[j], freq / freq_totals[j])
-                    else:
-                        table.set_item_num(i, cols_freq_pct[j], 0)
+                    table.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
 
                 for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
                     # Test Statistic
@@ -716,7 +715,7 @@ def generate_table(main, table):
                 num_files_found = len([freq for freq in freq_files[1:-1] if freq])
 
                 table.set_item_num(i, col_files_found, num_files_found)
-                table.set_item_num(i, col_files_found_pct, num_files_found / len_files)
+                table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
 
             table.setSortingEnabled(True)
             table.setUpdatesEnabled(True)

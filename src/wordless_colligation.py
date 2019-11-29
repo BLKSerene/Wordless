@@ -822,8 +822,6 @@ class Wordless_Worker_Colligation(wordless_threading.Wordless_Worker):
             colligations_freqs_total = {}
             colligations_freqs_total_all = {}
 
-            texts.append(wordless_text.Wordless_Text_Blank())
-
             # Frequency
             for colligations_freqs_file in self.colligations_freqs_files:
                 for colligation, freqs in colligations_freqs_file.items():
@@ -841,6 +839,8 @@ class Wordless_Worker_Colligation(wordless_threading.Wordless_Worker):
 
             self.colligations_freqs_files.append(colligations_freqs_total)
             colligations_freqs_files_all.append(colligations_freqs_total_all)
+
+            texts.append(wordless_text.Wordless_Text_Blank())
 
         self.progress_updated.emit(self.tr('Processing data ...'))
 

@@ -251,6 +251,11 @@ def wordless_process_tokens_colligation(text, token_settings):
 
     return text
 
+def wordless_process_tokens_keyword(text, token_settings):
+    text = wordless_process_tokens(text, token_settings)
+
+    return text
+
 def wordless_process_tokens_concordancer(text, token_settings):
     main = text.main
     tokens = text.tokens_flat.copy()

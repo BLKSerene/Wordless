@@ -410,16 +410,16 @@ class Wordless_Worker_Wordlist(wordless_threading.Wordless_Worker):
             # Remove empty tokens
             tokens = [token for token in text.tokens_flat if token]
 
-            texts.append(text)
             self.tokens_freq_files.append(collections.Counter(tokens))
+            texts.append(text)
 
         # Total
         if len(files) > 1:
             text_total = wordless_text.Wordless_Text_Blank()
             text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
-            texts.append(text_total)
             self.tokens_freq_files.append(sum(self.tokens_freq_files, collections.Counter()))
+            texts.append(text_total)
 
         self.progress_updated.emit(self.tr('Processing data ...'))
 
