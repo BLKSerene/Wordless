@@ -222,40 +222,6 @@ def wordless_process_tokens_overview(text, token_settings):
 
     return text
 
-def wordless_process_tokens_wordlist(text, token_settings):
-    text = wordless_process_tokens(text, token_settings)
-
-    return text
-
-def wordless_process_tokens_ngram(text, token_settings):
-    text = wordless_process_tokens(text, token_settings)
-
-    return text
-
-def wordless_process_tokens_collocation(text, token_settings):
-    text = wordless_process_tokens(text, token_settings)
-
-    return text
-
-def wordless_process_tokens_colligation(text, token_settings):
-    text = wordless_process_tokens(text, token_settings)
-
-    # Use tags Only
-    if token_settings['use_tags']:
-        text.tags_pos = [tag
-                         for tags in text.tags_pos
-                         for tag in tags]
-    else:
-        text.tags_pos = [''.join(tags)
-                         for tags in text.tags_pos]
-
-    return text
-
-def wordless_process_tokens_keyword(text, token_settings):
-    text = wordless_process_tokens(text, token_settings)
-
-    return text
-
 def wordless_process_tokens_concordancer(text, token_settings):
     main = text.main
     tokens = text.tokens_flat.copy()
@@ -344,3 +310,37 @@ def wordless_process_tokens_concordancer(text, token_settings):
                             for token, tags in text.tokens_flat]
 
     return tokens
+
+def wordless_process_tokens_wordlist(text, token_settings):
+    text = wordless_process_tokens(text, token_settings)
+
+    return text
+
+def wordless_process_tokens_ngram(text, token_settings):
+    text = wordless_process_tokens(text, token_settings)
+
+    return text
+
+def wordless_process_tokens_collocation(text, token_settings):
+    text = wordless_process_tokens(text, token_settings)
+
+    return text
+
+def wordless_process_tokens_colligation(text, token_settings):
+    text = wordless_process_tokens(text, token_settings)
+
+    # Use tags Only
+    if token_settings['use_tags']:
+        text.tags_pos = [tag
+                         for tags in text.tags_pos
+                         for tag in tags]
+    else:
+        text.tags_pos = [''.join(tags)
+                         for tags in text.tags_pos]
+
+    return text
+
+def wordless_process_tokens_keyword(text, token_settings):
+    text = wordless_process_tokens(text, token_settings)
+
+    return text

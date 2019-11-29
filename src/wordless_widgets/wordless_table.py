@@ -811,7 +811,7 @@ class Wordless_Table_Data(Wordless_Table):
         
         self.cols_breakdown = set(self.find_col(cols_breakdown))
 
-    def set_item_num(self, row, col, val, total = 0):
+    def set_item_num(self, row, col, val, total = -1):
         if self.header_orientation == 'horizontal':
             header = col
         else:
@@ -830,11 +830,14 @@ class Wordless_Table_Data(Wordless_Table):
             item = Wordless_Table_Item(f'{val:.{precision}f}')
         # Percentages
         elif header in self.headers_pct:
-            # Handle zero division error
-            if total:
+            if total > 0:
                 val = val / total
-            else:
+            # Handle zero division error
+            elif total == 0:
                 val = 0
+            # Set values directly
+            elif total == -1:
+                val = float(val)
 
             precision = self.main.settings_custom['data']['precision_pct']
 
