@@ -672,11 +672,12 @@ class Wordless_Worker_Collocation(wordless_threading.Wordless_Worker):
             collocations_freqs_file_all = {}
 
             text = wordless_text.Wordless_Text(self.main, file)
-
-            tokens = wordless_token_processing.wordless_process_tokens_ngram(
+            text = wordless_token_processing.wordless_process_tokens_collocation(
                 text,
                 token_settings = settings['token_settings']
             )
+
+            tokens = text.tokens_flat
 
             search_terms = wordless_matching.match_search_terms(
                 self.main, tokens,
@@ -1061,18 +1062,10 @@ def generate_table(main, table):
                 for j, freqs_file in enumerate(freqs_files):
                     for k, freq in enumerate(freqs_file):
                         table.set_item_num(i, cols_freqs_start[j] + k * 2, freq)
-
-                        if freqs_totals[j][k]:
-                            table.set_item_num(i, cols_freqs_start[j] + k * 2 + 1, freq / freqs_totals[j][k])
-                        else:
-                            table.set_item_num(i, cols_freqs_start[j] + k * 2 + 1, 0)
+                        table.set_item_num(i, cols_freqs_start[j] + k * 2 + 1, freq, freqs_totals[j][k])
 
                     table.set_item_num(i, cols_freq[j], sum(freqs_file))
-
-                    if freq_totals[j]:
-                        table.set_item_num(i, cols_freq_pct[j], sum(freqs_file) / freq_totals[j])
-                    else:
-                        table.set_item_num(i, cols_freq_pct[j], 0)
+                    table.set_item_num(i, cols_freq_pct[j], sum(freqs_file), freq_totals[j])
 
                 for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
                     # Test Statistic
@@ -1093,7 +1086,7 @@ def generate_table(main, table):
                 num_files_found = len([freqs_file for freqs_file in freqs_files[:-1] if sum(freqs_file)])
 
                 table.set_item_num(i, col_files_found, num_files_found)
-                table.set_item_num(i, col_files_found_pct, num_files_found / len_files)
+                table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
 
             table.setSortingEnabled(True)
             table.setUpdatesEnabled(True)

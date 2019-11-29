@@ -232,6 +232,11 @@ def wordless_process_tokens_ngram(text, token_settings):
 
     return text
 
+def wordless_process_tokens_collocation(text, token_settings):
+    text = wordless_process_tokens(text, token_settings)
+
+    return text
+
 def wordless_process_tokens_colligation(text, token_settings):
     tokens = wordless_process_tokens(text, token_settings)
 
