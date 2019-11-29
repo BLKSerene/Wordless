@@ -402,11 +402,13 @@ class Wordless_Worker_Wordlist(wordless_threading.Wordless_Worker):
         # Frequency
         for file in files:
             text = wordless_text.Wordless_Text(self.main, file)
-
-            tokens = wordless_token_processing.wordless_process_tokens_wordlist(
+            text = wordless_token_processing.wordless_process_tokens_wordlist(
                 text,
                 token_settings = settings['token_settings']
             )
+
+            # Remove empty tokens
+            tokens = [token for token in text.tokens_flat if token]
 
             texts.append(text)
             self.tokens_freq_files.append(collections.Counter(tokens))
@@ -572,7 +574,7 @@ def generate_table(main, table):
                 # Frequency
                 for j, freq in enumerate(freq_files):
                     table.set_item_num(i, cols_freq[j], freq)
-                    table.set_item_num(i, cols_freq_pct[j], freq / freq_totals[j])
+                    table.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
 
                 for j, (dispersion, adjusted_freq) in enumerate(stats_files):
                     # Dispersion
@@ -585,7 +587,7 @@ def generate_table(main, table):
                 num_files_found = len([freq for freq in freq_files[:-1] if freq])
 
                 table.set_item_num(i, col_files_found, num_files_found)
-                table.set_item_num(i, col_files_found_pct, num_files_found / len_files)
+                table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
 
             table.setSortingEnabled(True)
             table.setUpdatesEnabled(True)
