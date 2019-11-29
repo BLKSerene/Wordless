@@ -29,7 +29,7 @@ if platform.system() == 'Windows':
 elif platform.system() == 'Darwin':
     return_val_packaging = subprocess.call('python3 -m PyInstaller --noconfirm wordless_packaging.spec', shell = True)
 elif platform.system() == 'Linux':
-    subprocess.call('python3.7 -m PyInstaller --noconfirm wordless_packaging.spec', shell = True)
+    return_val_packaging = subprocess.call('python3.7 -m PyInstaller --noconfirm wordless_packaging.spec', shell = True)
 
 if return_val_packaging == 0:
     print_with_elapsed_time('Packaging done!')
@@ -70,7 +70,7 @@ if return_val_packaging == 0:
 
         return_val_test = subprocess.call(os.path.join(os.getcwd(), 'Wordless.exe'), shell = True)
     elif platform.system() == 'Darwin':
-        return_val_test = subprocess.call(os.path.join(os.getcwd(), 'Wordless.app/Contents/Macos/Wordless'), shell = True)
+        return_val_test = subprocess.call(os.path.join(os.getcwd(), 'dist/Wordless.app/Contents/Macos/Wordless'), shell = True)
     elif platform.system() == 'Linux':
         os.chdir('dist/Wordless')
 

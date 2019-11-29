@@ -131,7 +131,6 @@ if platform.system() in ['Windows', 'Linux']:
     excludes = []
 elif platform.system() == 'Darwin':
     excludes = [
-        'jsonschema',
         'PIL'
     ]
 
