@@ -1053,11 +1053,15 @@ def wordless_filter_stop_words(main, items, lang):
 
     stop_words = wordless_get_stop_words(main, lang)
 
-    if type(items[0]) == str:
-        items_filtered = [token for token in items if token not in stop_words]
-    elif type(items[0]) in [list, tuple, set]:
-        items_filtered = [ngram
-                          for ngram in items
-                          if not [token for token in ngram if token in stop_words]]
+    # Check if the list is empty
+    if items:
+        if type(items[0]) == str:
+            items_filtered = [token for token in items if token not in stop_words]
+        elif type(items[0]) in [list, tuple, set]:
+            items_filtered = [ngram
+                              for ngram in items
+                              if not [token for token in ngram if token in stop_words]]
+    else:
+        items_filtered = []
 
     return items_filtered
