@@ -33,13 +33,13 @@ Wordless is an integrated corpus tool with multi-language support for the study 
 </div>
 
 ## Download
-The latest version (**v1.2.0**) of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 or later**, and **Ubuntu 16.04 or later**, all **64-bit only**.
+The latest version (**v1.3.0**) of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 or later**, and **Ubuntu 16.04 or later**, all **64-bit only**.
 
-[Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/v1.2.0/wordless_v1.2.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
-[Download the latest version for macOS](https://github.com/BLKSerene/Wordless/releases/download/v1.2.0/wordless_v1.2.0_macos.zip) (unzip the file and double-click **Wordless.app** to run)<br>
-[Download the latest version for Linux](https://github.com/BLKSerene/Wordless/releases/download/v1.2.0/wordless_v1.2.0_linux.tar.gz) (unzip the file and double-click **Wordless/Wordless** to run)
+[Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/v1.3.0/wordless_v1.3.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
+[Download the latest version for macOS](https://github.com/BLKSerene/Wordless/releases/download/v1.3.0/wordless_v1.3.0_macos.zip) (unzip the file and double-click **Wordless.app** to run)<br>
+[Download the latest version for Linux](https://github.com/BLKSerene/Wordless/releases/download/v1.3.0/wordless_v1.3.0_linux.tar.gz) (unzip the file and double-click **Wordless/Wordless** to run)
 
-Chinese users with slow connections to Github can [download from Baidu Netdisk](https://pan.baidu.com/s/1Q7S1rTZn3i1gchNQtYtxbA) (**password**: srin).
+Chinese users with slow connections to Github can [download from Baidu Netdisk](https://pan.baidu.com/s/1_a48gC_2WFMo0GzkyUZCHw) (**password**: 4jpu).
 
 [Download older versions](https://github.com/BLKSerene/Wordless/releases)
 
