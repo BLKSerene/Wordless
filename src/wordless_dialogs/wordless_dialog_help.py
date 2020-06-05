@@ -113,7 +113,7 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             # Python
             [   
                 'Python', 'https://www.python.org',
-                '3.7.5',
+                '3.7.7',
                 'Guido van Rossum',
                 'PSF', 'https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release'
             ],
