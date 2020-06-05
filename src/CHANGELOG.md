@@ -11,6 +11,11 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
+## [v1.4.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.4.0) - ??/??/2020
+
+### ⏫ Dependency Upgrades
+- Dependencies: Upgrade Python to 3.7.7
+
 ## [v1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0) - 11/30/2019
 
 ### 🎉 New Features
