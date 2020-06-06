@@ -13,6 +13,9 @@
 
 ## [v1.4.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.4.0) - ??/??/2020
 
+### ✨ Improvements
+- Utils: Update botok's Tibetan work tokenizer
+
 ### ⏫ Dependency Upgrades
 - Dependencies: Upgrade botok to 0.7.5
 - Dependencies: Upgrade Python to 3.7.7

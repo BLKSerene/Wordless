@@ -436,10 +436,9 @@ def wordless_word_tokenize(main, text, lang,
         else:
             sentences = wordless_sentence_tokenize(main, text, lang = 'bod')
 
-        botok_tokenizer = wordless_text_utils.check_botok_tokenizers(main, word_tokenizer)
-
         for sentence in sentences:
-            tokens_hierarchical.append([token.text for token in botok_tokenizer.tokenize(sentence)])
+            tokens_hierarchical.append([token.text
+                                        for token in main.botok_word_tokenizer.tokenize(sentence)])
     # Vietnamese
     elif word_tokenizer == main.tr('Underthesea - Vietnamese Word Tokenizer'):
         if flat_tokens:
