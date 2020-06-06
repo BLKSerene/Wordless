@@ -14,6 +14,7 @@
 ## [v1.4.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.4.0) - ??/??/2020
 
 ### ⏫ Dependency Upgrades
+- Dependencies: Upgrade botok to 0.7.5
 - Dependencies: Upgrade Python to 3.7.7
 - Dependencies: Upgrade requests to 2.23.0
 
