@@ -10,6 +10,7 @@
 #
 
 import copy
+import csv
 import platform
 import re
 
@@ -109,265 +110,30 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
         super().__init__(main, main.tr('Acknowledgments'),
                          width = 550)
 
-        self.ACKS_GENERAL = [
-            # Python
-            [   
-                'Python', 'https://www.python.org',
-                '3.7.7',
-                'Guido van Rossum',
-                'PSF', 'https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release'
-            ],
-            # PyInstaller
-            [
-                'PyInstaller', 'http://www.pyinstaller.org',
-                '4.0.dev0+46286a1f4',
-                'Hartmut Goebel',
-                'PyInstaller', 'https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt'
-            ],
-            # PyQt
-            [
-                'PyQt', 'https://www.riverbankcomputing.com/software/pyqt/intro',
-                '5.13.2',
-                'Riverbank Computing Limited',
-                'GPL-3.0', 'http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license'
-            ],
-            # pytest
-            [
-                'pytest', 'https://pytest.org',
-                '5.3.1',
-                'Holger Krekel',
-                'MIT', 'https://github.com/pytest-dev/pytest/blob/master/LICENSE'
-            ]
-        ]
+        with open('wordless_acks/wordless_acks_general.csv', 'r', encoding = 'utf_8', newline = '') as f:
+            csv_reader = csv.reader(f, delimiter = '|')
 
-        self.ACKS_NLP = [
-            # botok
-            [
-                'botok', 'https://github.com/Esukhia/botok',
-                '0.6.18',
-                'Hélios Drupchen Hildt',
-                'Apache-2.0', 'https://github.com/Esukhia/botok/blob/master/LICENSE'
-            ],
-            # jieba
-            [
-                'jieba<br>(“结巴”中文分词)', 'https://github.com/fxsjy/jieba',
-                '0.39',
-                'Sun Junyi (孙君意)',
-                'MIT', 'https://github.com/fxsjy/jieba/blob/master/LICENSE'
-            ],
-            # nagisa
-            [
-                'nagisa', 'https://github.com/taishi-i/nagisa',
-                '0.2.4',
-                'Taishi Ikeda (池田大志)',
-                'MIT', 'https://github.com/taishi-i/nagisa/blob/master/LICENSE.txt'
-            ],
-            # NLTK
-            [
-                'NLTK', 'http://www.nltk.org',
-                '3.4.5',
-                'Steven Bird, Liling Tan',
-                'Apache-2.0', 'https://github.com/nltk/nltk/blob/develop/LICENSE.txt'
-            ],
-            # pymorphy2
-            [
-                'pymorphy2', 'https://github.com/kmike/pymorphy2',
-                '0.8',
-                'Mikhail Korobov',
-                'MIT', 'https://github.com/kmike/pymorphy2/#pymorphy2'
-            ],
-            # PyThaiNLP
-            [
-                'PyThaiNLP', 'https://github.com/PyThaiNLP/pythainlp',
-                '2.0.7',
-                'Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)',
-                'Apache-2.0', 'https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE'
-            ],
-            # razdel
-            [
-                'razdel', 'https://github.com/natasha/razdel',
-                '0.4.0',
-                'Alexander Kukushkin',
-                'MIT', 'https://github.com/natasha/razdel#%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F'
-            ],
-            # Sacremoses
-            [
-                'Sacremoses', 'https://github.com/alvations/sacremoses',
-                '0.0.35',
-                'Liling Tan',
-                'LGPL-2.1', 'https://github.com/alvations/sacremoses#license'
-            ],
-            # spaCy
-            [
-                'spaCy', 'https://spacy.io',
-                '2.2.3',
-                'Matthew Honnibal, Ines Montani',
-                'MIT', 'https://github.com/explosion/spaCy/blob/master/LICENSE'
-            ],
-            # syntok
-            [
-                'syntok', 'https://github.com/fnl/syntok',
-                '1.2.2',
-                'Florian Leitner',
-                'MIT', 'https://github.com/fnl/syntok/blob/master/LICENSE'
-            ],
-            # Underthesea
-            [
-                'Underthesea', 'https://github.com/undertheseanlp/underthesea',
-                '1.1.17',
-                'Vu Anh',
-                'GPL-3.0', 'https://github.com/undertheseanlp/underthesea/blob/master/LICENSE'
-            ]
-        ]
+            self.ACKS_GENERAL = [row for row in csv_reader]
 
-        self.ACKS_LANG_DATA = [
-            # extra-stopwords
-            [
-                'extra-stopwords', 'https://github.com/Xangis/extra-stopwords',
-                'N/A',
-                'Jason Champion',
-                'MIT', 'https://github.com/Xangis/extra-stopwords/blob/master/LICENSE'
-            ],
-            # grk-stoplist
-            [
-                'grk-stoplist', 'https://github.com/pharos-alexandria/grk-stoplist',
-                'N/A',
-                'Annette von Stockhausen',
-                'CC0-1.0', 'https://github.com/pharos-alexandria/grk-stoplist/blob/master/LICENSE'
-            ],
-            # lemmalist-greek
-            [
-                'lemmalist-greek', 'https://github.com/stenskjaer/lemmalist-greek',
-                'N/A',
-                'Michael Stenskjær Christensen',
-                'GPL-3.0', 'https://github.com/stenskjaer/lemmalist-greek/blob/master/LICENSE'
-            ],
-            # Lemmatization Lists
-            [
-                'Lemmatization Lists', 'https://github.com/michmech/lemmatization-lists',
-                'N/A',
-                'Michal Boleslav Měchura',
-                'ODbL', 'https://github.com/michmech/lemmatization-lists/blob/master/LICENCE'
-            ],
-            # Stopwords ISO
-            [
-                'Stopwords ISO', 'https://github.com/stopwords-iso/stopwords-iso',
-                '0.4.0',
-                'Gene Diaz',
-                'MIT', 'https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE'
-            ]
-        ]
+        with open('wordless_acks/wordless_acks_nlp.csv', 'r', encoding = 'utf_8', newline = '') as f:
+            csv_reader = csv.reader(f, delimiter = '|')
 
-        self.ACKS_PLOTTING = [
-            # Matplotlib
-            [
-                'Matplotlib', 'https://matplotlib.org',
-                '3.1.2',
-                'Matplotlib Development Team',
-                'Matplotlib', 'https://matplotlib.org/users/license.html'
-            ],
-            # NetworkX
-            [
-                'NetworkX', 'http://networkx.github.io',
-                '2.4',
-                'Aric Hagberg, Dan Schult, Pieter Swart',
-                'BSD-3-Clause', 'https://github.com/networkx/networkx/blob/master/LICENSE.txt'
-            ],
-            # WordCloud
-            [
-                'WordCloud', 'https://amueller.github.io/word_cloud/',
-                '1.6.0',
-                'Andreas Christian Mueller',
-                'MIT', 'https://github.com/amueller/word_cloud/blob/master/LICENSE'
-            ]
-        ]
+            self.ACKS_NLP = [row for row in csv_reader]
 
-        self.ACKS_MISC = [
-            # Beautiful Soup
-            [
-                'Beautiful Soup', 'https://www.crummy.com/software/BeautifulSoup/',
-                '4.8.1',
-                'Leonard Richardson',
-                'MIT', 'https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE'
-            ],
-            # cChardet
-            [
-                'cChardet', 'https://github.com/PyYoshi/cChardet',
-                '2.1.5',
-                'Yoshihiro Misawa',
-                'MPL-1.0/GPL-2.0/LGPL-2.1', 'https://github.com/PyYoshi/cChardet/blob/master/COPYING'
-            ],
-            # chardet
-            [
-                'chardet', 'https://github.com/chardet/chardet',
-                '3.0.4',
-                'Daniel Blanchard',
-                'LGPL-2.1', 'https://github.com/chardet/chardet/blob/master/LICENSE'
-            ],
-            # langdetect
-            [
-                'langdetect', 'https://github.com/Mimino666/langdetect',
-                '1.0.7',
-                'Michal Mimino Danilak',
-                'Apache-2.0', 'https://github.com/Mimino666/langdetect/blob/master/LICENSE'
-            ],
-            # langid.py
-            [
-                'langid.py', 'https://github.com/saffsd/langid.py',
-                '1.1.6',
-                'Marco Lui',
-                'BSD-2-Clause', 'https://github.com/saffsd/langid.py/blob/master/LICENSE'
-            ],
-            # lxml
-            [
-                'lxml', 'https://lxml.de',
-                '4.4.2',
-                'Stefan Behnel',
-                'BSD-3-Clause', 'https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt'
-            ],
-            # NumPy
-            [
-                'NumPy', 'https://numpy.org',
-                '1.17.4',
-                'NumPy Developers',
-                'BSD-3-Clause', 'http://www.numpy.org/license.html'
-            ],
-            # openpyxl
-            [
-                'openpyxl', 'https://openpyxl.readthedocs.io/en/stable/',
-                '3.0.2',
-                'Eric Gazoni, Charlie Clark',
-                'MIT', 'https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst'
-            ],
-            # python-docx
-            [
-                'python-docx', 'https://github.com/python-openxml/python-docx',
-                '0.8.10',
-                'Steve Canny',
-                'MIT', 'https://github.com/python-openxml/python-docx/blob/master/LICENSE'
-            ],
-            # requests
-            [
-                'requests', 'https://python-requests.org',
-                '2.22.0',
-                'Kenneth Reitz',
-                'Apache-2.0', 'https://github.com/requests/requests/blob/master/LICENSE'
-            ],
-            # SciPy
-            [
-                'SciPy', 'https://www.scipy.org',
-                '1.3.3',
-                'SciPy Developers',
-                'BSD-3-Clause', 'https://www.scipy.org/scipylib/license.html'
-            ],
-            # xlrd
-            [
-                'xlrd', 'https://github.com/python-excel/xlrd',
-                '1.2.0',
-                'Stephen John Machin',
-                'BSD-3-Clause/BSD-4-Clause', 'https://github.com/python-excel/xlrd/blob/master/LICENSE'
-            ]
-        ]
+        with open('wordless_acks/wordless_acks_lang_data.csv', 'r', encoding = 'utf_8', newline = '') as f:
+            csv_reader = csv.reader(f, delimiter = '|')
+
+            self.ACKS_LANG_DATA = [row for row in csv_reader]
+
+        with open('wordless_acks/wordless_acks_plotting.csv', 'r', encoding = 'utf_8', newline = '') as f:
+            csv_reader = csv.reader(f, delimiter = '|')
+
+            self.ACKS_PLOTTING = [row for row in csv_reader]
+
+        with open('wordless_acks/wordless_acks_misc.csv', 'r', encoding = 'utf_8', newline = '') as f:
+            csv_reader = csv.reader(f, delimiter = '|')
+
+            self.ACKS_MISC = [row for row in csv_reader]
 
         self.label_acks = wordless_label.Wordless_Label_Dialog(
             self.tr('''
