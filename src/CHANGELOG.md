@@ -16,7 +16,7 @@
 ### ✨ Improvements
 - Utils: Update botok's Tibetan work tokenizer
 
-### ⏫ Dependency Upgrades
+### ⏫ Dependency Changes
 - Dependencies: Upgrade botok to 0.7.5
 - Dependencies: Upgrade Python to 3.7.7
 - Dependencies: Upgrade requests to 2.23.0
@@ -24,11 +24,11 @@
 ## [v1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0) - 11/30/2019
 
 ### 🎉 New Features
-- Dependencies/Utils: Add razdel; Add razdel's Russian sentenizer and word tokenizer
-- Dependencies/Utils: Add syntok; Add syntok's sentence segmenter and word tokenizer
+- Utils: Add razdel's Russian sentenizer and word tokenizer
 - Utils: Add spaCy's Lithuanian word tokenizer, POS tagger, and lemmatizer
 - Utils: Add spaCy's Luxembourgish word tokenizer
 - Utils: Add spaCy's Norwegian Bokmål word tokenizer, POS tagger, and lemmatizer
+- Utils: Add syntok's sentence segmenter and word tokenizer
 - Work Area: Add Concordancer - Generation Settings - Sampling Method
 - Work Area: Add Concordancer - Generation Settings - Width Unit - Paragraph
 - Work Area: Add Overview - Paragraph Length in Clause
@@ -46,7 +46,7 @@
 - Work Area: Show hint messages when exporting tables
 - Work Area: Show hint messages when sorting results
 
-### 📌 Bug Fixes
+### 📌 Bugfixes
 - File Area / Utils: Fix encoding detection
 - Menu: Fix Preferences - Settings - POS Tagging - Tagsets - Preview Settings - POS Tagger
 - Utils: Fix lemmatization of empty tokens
@@ -56,9 +56,11 @@
 ### ❌ Removals
 - Utils: Remove Sacremoses's Penn Treebank tokenizer
 
-### ⏫ Dependency Upgrades
+### ⏫ Dependency Changes
+- Dependencies: Add razdel
+- Dependencies: Add syntok
 - Dependencies: Upgrade Beautiful Soup to 4.8.1
-- Dependencies: Upgrade botok (pybo) to 0.6.18
+- Dependencies: Upgrade botok (originally named pybo) to 0.6.18
 - Dependencies: Upgrade cChardet to 2.1.5
 - Dependencies: Upgrade lxml to 4.4.2
 - Dependencies: Upgrade Matplotlib to 3.1.2
@@ -77,14 +79,14 @@
 ## [v1.2.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.2.0) - 08/27/2019
 
 ### 🎉 New Features
-- Dependencies/Utils: Add extra-stopwords; Add extra-stopwords's lists of stop words
-- Dependencies / Work Area: Add NetworkX; Add Collocation/Colligation - Figure Settings - Graph Type - Network Graph
 - File Area: Add support for .xml files
 - Menu: Add Preferences - Settings - Figures - Line Chart / Word Cloud / Network Graph
+- Utils: Add extra-stopwords's lists of stop words
 - Utils: Add NLTK's Punkt Sentence Tokenizer for Russian
 - Utils: Add NLTK's Slovenian and Tajik stop words
 - Utils: Add spaCy's Marathi word tokenizer and stop words
 - Utils: Add spaCy's Serbian word tokenizer and stop words
+- Work Area: Add Collocation/Colligation - Figure Settings - Graph Type - Network Graph
 - Work Area: Add Concordancer - Clause No.
 - Work Area: Add Concordancer - Generation Settings - Width Unit - Sentence/Clause
 - Work Area: Add Overview - Count of Clauses / Clause Length / Paragraph/Sentence/Token Length (Standard Deviation)
@@ -96,7 +98,7 @@
 - Utils: Update PyThaiNLP's Thai stop words
 - Utils: Update Sacremoses's tokenizers and detokenizer
 
-### 📌 Bug Fixes
+### 📌 Bugfixes
 - Menu: Fix Preferences - Settings - Stop Words - Preview - Count of Stop Words
 - Utils: Fix NLTK's word tokenizers
 - Work Area: Fix Collocation and Colligation
@@ -104,7 +106,9 @@
 - Work Area: Fix Concordancer - Sort Results
 - Work Area: Fix Work Area - Search Settings / Search in Results
 
-### ⏫ Dependency Upgrades
+### ⏫ Dependency Changes
+- Dependencies: Add extra-stopwords
+- Dependencies: Add NetworkX
 - Dependencies: Upgrade Beautiful Soup to 4.8.0
 - Dependencies: Upgrade lxml to 4.4.1
 - Dependencies: Upgrade Matplotlib to 3.1.1
@@ -134,7 +138,7 @@
 - Utils: Update spaCy's sentencizer
 - Utils: Update POS tag mappings for spaCy's English POS tagger
 
-### 📌 Bug Fixes
+### 📌 Bugfixes
 - File Area: Fix Open Folder
 - Menu: Fix Preferences - Settings - Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization - Preview
 - Startup: Fix checking for updates at startup
@@ -144,7 +148,7 @@
 - Work Area: Fix Work Area - error messages
 - Work Area: Fix Work Area - Search Settings - Context Settings
 
-### ⏫ Dependency Upgrades
+### ⏫ Dependency Changes
 - Dependencies: Upgrade lxml to 4.3.3
 - Dependencies: Upgrade PyQt to 5.12.1
 - Dependencies: Upgrade Sacremoses to 0.0.13
