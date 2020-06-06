@@ -1159,7 +1159,7 @@ def init_settings_default(main):
                 'tat': main.tr('spaCy - Tatar Word Tokenizer'),
                 'tel': main.tr('spaCy - Telugu Word Tokenizer'),
                 'tha': main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'),
-                'bod': main.tr('botok - Tibetan Word Tokenizer (POS)'),
+                'bod': main.tr('botok - Tibetan Word Tokenizer'),
                 'tur': main.tr('spaCy - Turkish Word Tokenizer'),
                 'ukr': main.tr('spaCy - Ukrainian Word Tokenizer'),
                 'urd': main.tr('spaCy - Urdu Word Tokenizer'),
