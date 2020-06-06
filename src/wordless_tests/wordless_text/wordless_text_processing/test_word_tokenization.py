@@ -28,8 +28,7 @@ main = wordless_test_init.Wordless_Test_Main()
 
 for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
     for word_tokenizer in word_tokenizers:
-        # Temporarily disable testing of Tibetan word tokenizers due to memory issues relating to botok
-        if lang not in ['bod', 'other']:
+        if lang not in ['other']:
             test_word_tokenizers.append((lang, word_tokenizer))
 
 @pytest.mark.parametrize('lang, word_tokenizer', test_word_tokenizers)
@@ -390,12 +389,7 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
         elif word_tokenizer == 'NLTK - Twitter Tokenizer':
             assert tokens == ['ఆ', 'ం', 'ధ', '్', 'ర', 'ప', '్', 'రద', 'ే', 'శ', '్', ',', 'త', 'ె', 'ల', 'ం', 'గ', 'ా', 'ణ', 'ర', 'ా', 'ష', '్', 'ట', '్', 'ర', 'ా', 'ల', 'అధ', 'ి', 'క', 'ా', 'ర', 'భ', 'ా', 'ష', 'త', 'ె', 'ల', 'ు', 'గ', 'ు', '.']
     elif lang == 'bod':
-        if word_tokenizer == 'pybo - Tibetan Word Tokenizer (GMD)':
-            assert tokens == ['༄༅། །', 'རྒྱ་གར་', 'སྐད་', 'དུ', '།', 'བོ་དྷི་སཏྭ་', 'ཙརྻ་', 'ཨ་བ་ཏ་ར', '།', 'བོད་སྐད་', 'དུ', '།', 'བྱང་ཆུབ་སེམས་དཔ', 'འི་', 'སྤྱོད་པ་', 'ལ་', 'འཇུག་པ', '། །', 'སངས་རྒྱས་', 'དང་', 'བྱང་ཆུབ་སེམས་དཔའ་', 'ཐམས་ཅད་', 'ལ་', 'ཕྱག་', 'འཚལ་', 'ལོ', '། །', 'བདེ་གཤེགས་', 'ཆོས་', 'ཀྱི་', 'སྐུ་', 'མངའ་', 'སྲས་', 'བཅས་', 'དང༌', '། །', 'ཕྱག་འོས་', 'ཀུན་', 'ལ', 'འང་', 'གུས་པ', 'ར་', 'ཕྱག་', 'འཚལ་', 'ཏེ', '། །', 'བདེ་གཤེགས་', 'སྲས་', 'ཀྱི་', 'སྡོམ་', 'ལ་', 'འཇུག་པ་', 'ནི', '། །', 'ལུང་', 'བཞིན་', 'མདོར་བསྡུས་ན', 'ས་', 'ནི་', 'བརྗོད་པ', 'ར་', 'བྱ', '། །']
-        elif word_tokenizer == 'pybo - Tibetan Word Tokenizer (POS)':
-            assert tokens == ['༄༅། །', 'རྒྱ་གར་', 'སྐད་', 'དུ', '།', 'བོ་', 'དྷི་', 'སཏྭ་', 'ཙརྻ་', 'ཨ་བ་', 'ཏ་', 'ར', '།', 'བོད་སྐད་', 'དུ', '།', 'བྱང་ཆུབ་', 'སེམས་དཔ', 'འི་', 'སྤྱོད་པ་', 'ལ་', 'འཇུག་པ', '། །', 'སངས་རྒྱས་', 'དང་', 'བྱང་ཆུབ་', 'སེམས་དཔའ་', 'ཐམས་ཅད་', 'ལ་', 'ཕྱག་', 'འཚལ་', 'ལོ', '། །', 'བདེ་གཤེགས་', 'ཆོས་', 'ཀྱི་', 'སྐུ་', 'མངའ་', 'སྲས་', 'བཅས་', 'དང༌', '། །', 'ཕྱག་འོས་', 'ཀུན་', 'ལ', 'འང་', 'གུས་པ', 'ར་', 'ཕྱག་', 'འཚལ་', 'ཏེ', '། །', 'བདེ་གཤེགས་', 'སྲས་', 'ཀྱི་', 'སྡོམ་', 'ལ་', 'འཇུག་པ་', 'ནི', '། །', 'ལུང་', 'བཞིན་', 'མདོར་བསྡུས་', 'ནས་', 'ནི་', 'བརྗོད་པ', 'ར་', 'བྱ', '། །']
-        elif word_tokenizer == 'pybo - Tibetan Word Tokenizer (tsikchen)':
-            assert tokens == ['༄༅། །', 'རྒྱ་གར་', 'སྐད་', 'དུ', '།', 'བོ་', 'དྷི་', 'སཏྭ་', 'ཙརྻ་', 'ཨ་བ་', 'ཏ་', 'ར', '།', 'བོད་སྐད་', 'དུ', '།', 'བྱང་ཆུབ་', 'སེམས་དཔ', 'འི་', 'སྤྱོད་པ་', 'ལ་', 'འཇུག་པ', '། །', 'སངས་རྒྱས་', 'དང་', 'བྱང་ཆུབ་', 'སེམས་དཔའ་', 'ཐམས་ཅད་', 'ལ་', 'ཕྱག་', 'འཚལ་', 'ལོ', '། །', 'བདེ་གཤེགས་', 'ཆོ', 'ས་', 'ཀྱི་', 'སྐུ་', 'མངའ་', 'སྲ', 'ས་', 'བཅ', 'ས་', 'དང༌', '། །', 'ཕྱག་འོས་', 'ཀུན་', 'ལ', 'འང་', 'གུས་པ', 'ར་', 'ཕྱག་', 'འཚལ་', 'ཏེ', '། །', 'བདེ་གཤེགས་', 'སྲ', 'ས་', 'ཀྱི་', 'སྡོམ་', 'ལ་', 'འཇུག་པ་', 'ནི', '། །', 'ལུང་', 'བཞིན་', 'མདོར་བསྡུས་', 'ན', 'ས་', 'ནི་', 'བརྗོད་པ', 'ར་', 'བྱ', '། །']
+        assert tokens == ['༄༅། །', 'རྒྱ་གར་', 'སྐད་', 'དུ', '།', 'བོ་', 'དྷི་', 'སཏྭ་', 'ཙརྻ་', 'ཨ་བ་', 'ཏ་', 'ར', '།', 'བོད་སྐད་', 'དུ', '།', 'བྱང་ཆུབ་', 'སེམས་དཔ', 'འི་', 'སྤྱོད་པ་', 'ལ་', 'འཇུག་པ', '། །', 'སངས་རྒྱས་', 'དང་', 'བྱང་ཆུབ་', 'སེམས་དཔའ་', 'ཐམས་ཅད་', 'ལ་', 'ཕྱག་', 'འཚལ་', 'ལོ', '། །', 'བདེ་གཤེགས་', 'ཆོས་', 'ཀྱི་', 'སྐུ་', 'མངའ་', 'སྲས་', 'བཅས་', 'དང༌', '། །', 'ཕྱག་འོས་', 'ཀུན་', 'ལ', 'འང་', 'གུས་པ', 'ར་', 'ཕྱག་', 'འཚལ་', 'ཏེ', '། །', 'བདེ་གཤེགས་', 'སྲས་', 'ཀྱི་', 'སྡོམ་', 'ལ་', 'འཇུག་པ་', 'ནི', '། །', 'ལུང་', 'བཞིན་', 'མདོར་བསྡུས་', 'ནས་', 'ནི་', 'བརྗོད་པ', 'ར་', 'བྱ', '། །']
     elif lang == 'tha':
         if word_tokenizer in ['PyThaiNLP - Maximum Matching Algorithm + TCC',
                               'PyThaiNLP - Longest Matching']:
@@ -435,7 +429,5 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
         assert tokens == ['Tiếng', 'Việt', ',', 'còn', 'gọi', 'tiếng', 'Việt Nam', '[', '5', ']', ',', 'tiếng Kinh', 'hay', 'Việt ngữ', ',', 'là', 'ngôn ngữ', 'của', 'người', 'Việt', '(', 'dân tộc', 'Kinh', ')', 'và', 'là', 'ngôn ngữ', 'chính thức', 'tại', 'Việt Nam', '.']
 
 if __name__ == '__main__':
-    for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
-        for word_tokenizer in word_tokenizers:
-            if lang not in ['bod', 'other']:
-                test_word_tokenize(lang, word_tokenizer, show_results = True)
+    for lang, word_tokenizer in test_word_tokenizers:
+        test_word_tokenize(lang, word_tokenizer, show_results = True)

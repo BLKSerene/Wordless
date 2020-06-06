@@ -1059,9 +1059,7 @@ def init_settings_global(main):
             ],
 
             'bod': [
-                main.tr('botok - Tibetan Word Tokenizer (GMD)'),
-                main.tr('botok - Tibetan Word Tokenizer (POS)'),
-                main.tr('botok - Tibetan Word Tokenizer (tsikchen)')
+                main.tr('botok - Tibetan Word Tokenizer')
             ],
 
             'tur': [
