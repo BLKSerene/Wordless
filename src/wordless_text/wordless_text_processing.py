@@ -13,10 +13,6 @@ import importlib
 import json
 import re
 
-# See Sacremoses/Issue #61: https://github.com/alvations/sacremoses/issues/61#issuecomment-516618565
-import sre_parse
-sre_parse._uniq = lambda x: list(dict.fromkeys(x))
-
 import botok
 import jieba
 import jieba.posseg
@@ -282,16 +278,11 @@ def wordless_word_tokenize(main, text, lang,
         else:
             sentences = wordless_sentence_tokenize(main, text, lang)
 
-        if word_tokenizer == main.tr('Sacremoses - Moses Tokenizer'):
-            moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
+        moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
 
-            for sentence in sentences:
-                tokens_hierarchical.append(moses_tokenizer.tokenize(sentence, escape = False))
-        elif word_tokenizer == main.tr('Sacremoses - Penn Treebank Tokenizer'):
-            moses_tokenizer = sacremoses.MosesTokenizer(lang = wordless_conversion.to_iso_639_1(main, lang))
+        for sentence in sentences:
+            tokens_hierarchical.append(moses_tokenizer.tokenize(sentence, escape = False))
 
-            for sentence in sentences:
-                tokens_hierarchical.append(moses_tokenizer.penn_tokenize(sentence))
     # spaCy
     elif 'spaCy' in word_tokenizer:
         nlp = main.__dict__[f'spacy_nlp_{lang}']

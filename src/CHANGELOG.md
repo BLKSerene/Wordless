@@ -18,6 +18,7 @@
 
 ### ✨ Improvements
 - Utils: Update botok's Tibetan word tokenizer
+- Utils: Update Sacremoses's Moses tokenizer
 
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade botok to 0.7.5
