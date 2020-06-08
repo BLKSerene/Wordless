@@ -34,6 +34,7 @@
 - Utils: Add spaCy's Luxembourgish word tokenizer
 - Utils: Add spaCy's Norwegian Bokmål word tokenizer, POS tagger, and lemmatizer
 - Utils: Add syntok's sentence segmenter and word tokenizer
+- Utils: Add Wordless's sentence and sentence segment splitters
 - Work Area: Add Concordancer - Generation Settings - Sampling Method
 - Work Area: Add Concordancer - Generation Settings - Width Unit - Paragraph
 - Work Area: Add Overview - Paragraph Length in Clause
@@ -43,7 +44,7 @@
 - Main Window: Update error messages
 - Utils: Force consistent results for language detection
 - Utils: Update Sacremoses's Moses tokenizer and detokenizer
-- Utils: Update sentence tokenizers and sentence segment tokenizers
+- Utils: Update Wordless's sentence segment tokenizer
 - Utils: Update spaCy's sentencizer, word tokenizers, POS taggers, and lemmatizers
 - Work Area: Display numbers and percentages in different columns
 - Work Area: Do not add borders to exported Excel workbooks due to performance issues
