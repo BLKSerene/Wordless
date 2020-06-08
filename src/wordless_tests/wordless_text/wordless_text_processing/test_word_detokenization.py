@@ -27,8 +27,7 @@ main = wordless_test_init.Wordless_Test_Main()
 
 for lang, word_detokenizers in main.settings_global['word_detokenizers'].items():
     for word_detokenizer in word_detokenizers:
-        # Temporarily disable testing of Tibetan word detokenizers due to memory issues relating to botok
-        if lang not in ['bod', 'other']:
+        if lang not in ['other']:
             test_word_detokenizers.append((lang, word_detokenizer))
 
 @pytest.mark.parametrize('lang, word_detokenizer', test_word_detokenizers)
@@ -130,10 +129,8 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
     elif lang == 'tha':
         assert text == 'ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย'
     elif lang == 'bod':
-        assert text == '༄༅། །རྒྱ་གར་སྐད་དུ།བོ་དྷི་སཏྭ་ཙརྻ་ཨ་བ་ཏ་ར།བོད་སྐད་དུ།བྱང་ཆུབ་སེམས་དཔའི་སྤྱོད་པ་ལ་འཇུག་པ། །སངས་རྒྱས་དང་བྱང་ཆུབ་སེམས་དཔའ་ཐམས་ཅད་ལ་ཕྱག་འཚལ་ལོ། །བདེ་གཤེགས་ཆོས་ཀྱི་སྐུ་མངའ་སྲས་བཅས་དང༌། །ཕྱག་འོས་ཀུན་ལའང་གུས་པར་ཕྱག་འཚལ་ཏེ། །བདེ་གཤེགས་སྲས་ཀྱི་སྡོམ་ལ་འཇུག་པ་ནི། །ལུང་བཞིན་མདོར་བསྡུས་ནས་ནི་བརྗོད་པར་བྱ། །'
+        assert text == 'བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་དེའི་ཉེ་འཁོར་གྱི་ས་ཁུལ་ཏེ།'
 
 if __name__ == '__main__':
-    for lang, word_detokenizers in main.settings_global['word_detokenizers'].items():
-        for word_detokenizer in word_detokenizers:
-            if lang not in ['bod', 'other']:
-                test_word_detokenize(lang, word_detokenizer, show_results = True)
+    for lang, word_detokenizer in test_word_detokenizers:
+        test_word_detokenize(lang, word_detokenizer, show_results = True)
