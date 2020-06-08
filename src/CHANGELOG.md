@@ -13,8 +13,11 @@
 
 ## [v1.4.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.4.0) - ??/??/2020
 
+### 🎉 New Features
+- Utils: Add botok's Tibetan sentence tokenizer
+
 ### ✨ Improvements
-- Utils: Update botok's Tibetan work tokenizer
+- Utils: Update botok's Tibetan word tokenizer
 
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade botok to 0.7.5
