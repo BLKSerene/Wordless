@@ -27,7 +27,7 @@ main = wordless_test_init.Wordless_Test_Main()
 
 for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].items():
     for sentence_tokenizer in sentence_tokenizers:
-        if lang != 'other':
+        if lang not in ['other']:
             test_sentence_tokenizers.append((lang, sentence_tokenizer))
 
 @pytest.mark.parametrize('lang, sentence_tokenizer', test_sentence_tokenizers)
@@ -161,6 +161,8 @@ def test_sentence_tokenize(lang, sentence_tokenizer, show_results = False):
         assert sentences == ['ఆంధ్ర ప్రదేశ్, తెలంగాణ రాష్ట్రాల అధికార భాష తెలుగు.', 'భారత దేశంలో తెలుగు మాతృభాషగా మాట్లాడే 8.7 కోట్ల (2001) జనాభాతో [1] ప్రాంతీయ భాషలలో మొదటి స్థానంలో ఉంది.', 'ప్రపంచంలోని ప్రజలు అత్యధికముగా మాట్లాడే భాషలలో 15 స్థానములోనూ, భారత దేశములో హిందీ, తర్వాత స్థానములోనూ నిలుస్తుంది.', 'పాతవైన ప్రపంచ భాష గణాంకాల (ఎథ్నోలాగ్) ప్రకారం ప్రపంచవ్యాప్తంగా 7.4 కోట్లు మందికి మాతృభాషగా ఉంది.[2] మొదటి భాషగా మాట్లాడతారు.', 'అతి ప్రాచీన దేశ భాషలలో సంస్కృతము తమిళముతో బాటు తెలుగు భాషను 2008 అక్టోబరు 31న భారత ప్రభుత్వము గుర్తించింది.']
     elif lang == 'tha':
         assert sentences == ['ภาษาไทย', 'หรือ', 'ภาษาไทยกลาง', 'เป็นภาษาราชการและภาษาประจำชาติของประเทศไทย', 'ภาษาไทยเป็นภาษาในกลุ่มภาษาไทซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า-ไท', 'สันนิษฐานว่า', 'ภาษาในตระกูลนี้มีถิ่นกำเนิดจากทางตอนใต้ของประเทศจีน', 'และนักภาษาศาสตร์บางส่วนเสนอว่า', 'ภาษาไทยน่าจะมีความเชื่อมโยงกับตระกูลภาษาออสโตร-เอเชียติก', 'ตระกูลภาษาออสโตรนีเซียน', 'และตระกูลภาษาจีน-ทิเบต']
+    elif lang == 'bod':
+        assert sentences == ['བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་དེའི་ཉེ་འཁོར་གྱི་ས་ཁུལ་ཏེ།', 'བལ་ཡུལ་དང་། འབྲུག འབྲས་ལྗོངས། ལ་དྭགས་ནས་ལྷོ་མོན་རོང་སོགས་སུ་བེད་སྤྱོད་བྱེད་པའི་སྐད་ཡིག་སྟེ།', 'ད་ཆར་ཡོངས་གྲགས་སུ་བོད་ཀྱི་ཡུལ་གྲུ་སྟོད་སྨད་བར་གསུམ་ལ་བལྟས་ཏེ་ནང་གསེས་རིགས་གསུམ་དུ་ཕྱེ་བ་སྟེ།', 'སྟོད་དབུས་གཙང་གི་སྐད་དང་། བར་ཁམས་པའི་སྐད་དང་། སྨད་ཨ་མདོའི་སྐད་རྣམས་སོ།', 'བོད་སྐད་ནི་ཧོར་སོག་ལ་སོགས་པ་གྲངས་ཉུང་མི་རིགས་གཞན་པ་ཁག་ཅིག་གིས་ཀྱང་བེད་སྤྱོད་གཏོང་བཞིན་ཡོད་པར་མ་ཟད། བལ་ཡུལ་དང་། འབྲས་ལྗོངས། འབྲུག་ཡུལ། རྒྱ་གར་ཤར་དང་བྱང་རྒྱུད་མངའ་སྡེ་ཁག་གཅིག་བཅས་ཀྱི་རྒྱལ་ཁབ་རྣམས་སུའང་བེད་སྤྱོད་གཏོང་བཞིན་ཡོད།']
     elif lang == 'tur':
         if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
             assert sentences == ['Türkçe ya da Türk dili, batıda Balkanlar’dan başlayıp doğuda Hazar Denizi sahasına kadar konuşulan Türkî diller dil ailesine ait sondan eklemeli bir dil.', '[12] Türki diller ailesinin Oğuz dil grubundan Osmanlı Türkçesinin devamını oluşturur.', 'Başta Türkiye olmak üzere eski Osmanlı İmparatorluğu coğrafyasında konuşulan Türkçe, dünyada en fazla konuşulan 22.', 'dildir.', "[13] Türkçe'nin sondan eklemeli olması kullanılan herhangi bir eylem üzerinden istenildiği kadar sözcük türetilebilmesine olanak sağlamaktadır.", '[14] Türkiye Türkçesi bu yönünden dolayı diğer Türk dilleriyle ortak ya da ayrık bulunan onlarca eke sahiptir.', '[15] Türkçe geniş kullanımıyla birlikte zengin bir dil olmasının yanı sıra, genel itibarıyla “özne-nesne-yüklem” biçimindeki cümle kuruluşuna sahiptir.']
@@ -174,7 +176,5 @@ def test_sentence_tokenize(lang, sentence_tokenizer, show_results = False):
         assert sentences ==['Tiếng Việt, còn gọi tiếng Việt Nam[5], tiếng Kinh hay Việt ngữ, là ngôn ngữ của người Việt (dân tộc Kinh) và là ngôn ngữ chính thức tại Việt Nam.', 'Đây là tiếng mẹ đẻ của khoảng 85% dân cư Việt Nam, cùng với hơn 4 triệu Việt kiều.', 'Tiếng Việt còn là ngôn ngữ thứ hai của các dân tộc thiểu số tại Việt Nam.', 'Mặc dù tiếng Việt có một số từ vựng vay mượn từ tiếng Hán và trước đây dùng chữ Nôm – một hệ chữ viết dựa trên chữ Hán – để viết nhưng tiếng Việt được coi là một trong số các ngôn ngữ thuộc ngữ hệ Nam Á có số người nói nhiều nhất (nhiều hơn một số lần so với các ngôn ngữ khác cùng hệ cộng lại).', 'Ngày nay, tiếng Việt dùng bảng chữ cái Latinh, gọi là chữ Quốc ngữ, cùng các dấu thanh để viết.']
 
 if __name__ == '__main__':
-    for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].items():
-        for sentence_tokenizer in sentence_tokenizers:
-            if lang not in ['other']:
-                test_sentence_tokenize(lang, sentence_tokenizer, show_results = True)
+    for lang, sentence_tokenizer in test_sentence_tokenizers:
+        test_sentence_tokenize(lang, sentence_tokenizer, show_results = True)

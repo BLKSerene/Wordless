@@ -626,6 +626,10 @@ def init_settings_global(main):
                 main.tr('PyThaiNLP - Thai Sentence Tokenizer')
             ],
 
+            'bod': [
+                main.tr('botok - Tibetan Sentence Tokenizer')
+            ],
+
             'tur': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
                 main.tr('spaCy - Sentencizer')

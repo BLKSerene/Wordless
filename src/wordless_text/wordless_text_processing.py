@@ -17,6 +17,7 @@ import re
 import sre_parse
 sre_parse._uniq = lambda x: list(dict.fromkeys(x))
 
+import botok
 import jieba
 import jieba.posseg
 import nltk
@@ -136,8 +137,13 @@ def wordless_sentence_tokenize(main, text, lang,
     elif sentence_tokenizer == main.tr('PyThaiNLP - Thai Sentence Tokenizer'):
         sentences = pythainlp.tokenize.sent_tokenize(text)
     # Tibetan
-    elif sentence_tokenizer == main.tr('Wordless - Tibetan Sentence Tokenizer'):
-        sentences = text.split()
+    elif sentence_tokenizer == main.tr('botok - Tibetan Sentence Tokenizer'):
+        wordless_text_utils.check_word_tokenizers(main, lang = 'bod')
+        tokens = main.botok_word_tokenizer.tokenize(text)
+
+        for sentence_tokens in botok.sentence_tokenizer(tokens):
+            sentences.append(''.join([sentence_token.text
+                                      for sentence_token in sentence_tokens[1]]))
     # Vietnamese
     elif sentence_tokenizer == main.tr('Underthesea - Vietnamese Sentence Tokenizer'):
         sentences = underthesea.sent_tokenize(text)

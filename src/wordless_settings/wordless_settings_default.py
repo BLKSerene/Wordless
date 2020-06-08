@@ -1095,6 +1095,7 @@ def init_settings_default(main):
                 'tat': main.tr('spaCy - Sentencizer'),
                 'tel': main.tr('spaCy - Sentencizer'),
                 'tha': main.tr('PyThaiNLP - Thai Sentence Tokenizer'),
+                'bod': main.tr('botok - Tibetan Sentence Tokenizer'),
                 'tur': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'ukr': main.tr('spaCy - Sentencizer'),
                 'urd': main.tr('spaCy - Sentencizer'),
