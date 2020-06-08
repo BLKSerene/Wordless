@@ -5,7 +5,7 @@ NLTK|http://www.nltk.org/|3.4.5|Steven Bird, Liling Tan|Apache-2.0|https://githu
 pymorphy2|https://github.com/kmike/pymorphy2|0.8|Mikhail Korobov|MIT|https://github.com/kmike/pymorphy2/#pymorphy2
 PyThaiNLP|https://github.com/PyThaiNLP/pythainlp|2.0.7|Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)|Apache-2.0|https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE
 razdel|https://github.com/natasha/razdel|0.4.0|Alexander Kukushkin|MIT|https://github.com/natasha/razdel#%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F
-Sacremoses|https://github.com/alvations/sacremoses|0.0.35|Liling Tan|LGPL-2.1|https://github.com/alvations/sacremoses#license
+Sacremoses|https://github.com/alvations/sacremoses|0.0.43|Liling Tan|MIT|https://github.com/alvations/sacremoses/blob/master/LICENSE
 spaCy|https://spacy.io|2.2.3|Matthew Honnibal, Ines Montani|MIT|https://github.com/explosion/spaCy/blob/master/LICENSE
 syntok|https://github.com/fnl/syntok|1.2.2|Florian Leitner|MIT|https://github.com/fnl/syntok/blob/master/LICENSE
 Underthesea|https://github.com/undertheseanlp/underthesea|1.1.17|Vu Anh|GPL-3.0|https://github.com/undertheseanlp/underthesea/blob/master/LICENSE
