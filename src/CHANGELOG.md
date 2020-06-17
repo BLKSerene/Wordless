@@ -26,6 +26,7 @@
 - Dependencies: Upgrade Python to 3.7.7
 - Dependencies: Upgrade requests to 2.23.0
 - Dependencies: Upgrade Sacremoses to 0.0.43
+- Dependencies: Upgrade syntok to 1.3.1
 
 ## [v1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0) - 11/30/2019
 
