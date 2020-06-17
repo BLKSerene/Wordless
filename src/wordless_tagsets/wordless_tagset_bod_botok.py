@@ -16,7 +16,6 @@
 #
 
 mappings = [
-    # pos
     ['ADJ', 'ADJ', 'Adjectives', ''],
     ['ADP', 'ADP', 'Adposition', ''],
     ['ADV', 'ADV', 'Adverb', ''],
@@ -32,15 +31,19 @@ mappings = [
     ['PART', 'PART', 'Particle', ''],
     ['PRON', 'PRON', 'Pronoun', ''],
     ['VERB', 'VERB', 'Verb', ''],
-    ['OOV', 'X', '', 'Unknown'],
+    ['NO_POS', 'X', '', 'No POS'],
     ['NON_WORD', 'X', '', 'Non-word'],
 
-    # chunk_type
+    # Languages
     ['BO', 'X', '', 'Tibetan language'],
     ['LATIN', 'X', '', 'Latin languages'],
     ['CJK', 'X', '', 'CJK languages'],
     ['OTHER', 'X', '', 'Other languages'],
 
+    # Tibetan Textual Content
+    ['TEXT', 'X', '', 'Tibetan Textual Content'],
+
+    # Tibetan Non-textual Content
     ['NUM', 'NUM', '', 'Numeral'],
     ['NON_NUM', 'X', '', 'Non-numeral'],
     ['PUNCT', 'PUNCT', '', 'Punctuation'],
