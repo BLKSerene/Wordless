@@ -17,7 +17,7 @@
 - Utils: Add botok's Tibetan sentence tokenizer
 
 ### ✨ Improvements
-- Utils: Update botok's Tibetan word tokenizer and POS tagger
+- Utils: Update botok's Tibetan word tokenizer, POS tagger, and lemmatizers
 - Utils: Update Sacremoses's Moses tokenizer
 
 ### ⏫ Dependency Changes
