@@ -25,8 +25,7 @@ main = wordless_test_init.Wordless_Test_Main()
 
 for lang, lemmatizers in main.settings_global['lemmatizers'].items():
     for lemmatizer in lemmatizers:
-        # Temporarily disable testing of Tibetan lemmatizer due to memory issues relating to botok
-        if lang != 'bod':
+        if lang not in ['other']:
             test_lemmatizers.append((lang, lemmatizer))
 
 @pytest.mark.parametrize('lang, lemmatizer', test_lemmatizers)
@@ -115,7 +114,7 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
     elif lang == 'swe':
         assert lemmas == ['Svenska', '(', 'svensk', '(', 'info', ')', ')', 'vara', 'en', 'östnordiskt', 'språka', 'som', 'tala', 'av', 'ungefär', 'tio', 'miljon', 'person', 'främst', 'i', 'Sverige', 'där', 'språk', 'hare', 'man', 'dominant', 'ställning', 'som', 'huvudspråk', ',', 'mena', 'även', 'som', 'en', 'en', 'nationalspråk', 'i', 'Finland', 'och', 'som', 'enda', 'officiell', 'språka', 'på', 'Åland', '.']
     elif lang == 'bod':
-        assert lemmas == ['༄༅། ། ', 'རྒྱ་གར་', 'སྐད་', 'དུ་', ' ། ', 'བོ་', ' དྷི་', ' སཏྭ་', ' ཙརྻ་', 'ཨ་བ་', 'ཏ་', 'ར་', ' ། ', 'བོད་སྐད་', 'དུ་', ' ། ', 'བྱང་ཆུབ་', 'སེམས་དཔའ་', 'གི་', 'སྤྱོད་པ་', 'ལ་', 'འཇུག་པ་', ' ། ། ', 'སངས་རྒྱས་', 'དང་', 'བྱང་ཆུབ་', 'སེམས་དཔའ་', 'ཐམས་ཅད་', 'ལ་', 'ཕྱག་', 'འཚལ་', 'ལོ་', ' ། ། ', 'བདེ་གཤེགས་', 'ཆོ་', 'ཀྱི་', 'སྐུ་', 'མངའ་', 'སྲ་', 'བཅའ་', 'དང་', ' ། ། ', 'ཕྱག་འོས་', 'ཀུན་', 'ལ་', 'ཀྱང་', 'གུས་པ་', 'ལ་', 'ཕྱག་', 'འཚལ་', 'ཏེ་', ' ། ། ', 'བདེ་གཤེགས་', 'སྲ་', 'ཀྱི་', 'སྡོམ་', 'ལ་', 'འཇུག་པ་', 'ནི་', ' ། ། ', 'ལུང་', 'བཞིན་', 'མདོར་བསྡུས་', 'ན་', 'ནི་', 'བརྗོད་པ་', 'ལ་', 'བྱ་', ' ། །']
+        assert lemmas == ['བོད་', 'ཀྱི་', 'སྐད་ཡིག་', 'ནི་', 'བོད་ཡུལ་', 'དང་', 'དེ་', 'གི་', 'ཉེ་འཁོར་', 'གྱི་', 'ས་ཁུལ་', 'ཏེ་', ' །']
     elif lang == 'ukr':
         if lemmatizer == 'Lemmatization Lists - Ukrainian Lemma List':
             assert lemmas == ['Украї́нська', 'мо́ва', '(', 'МФА', ':', '[', 'ukrɑ̽ˈjɪnʲsʲkɑ̽', 'ˈmɔwɑ̽', ']', ',', 'історичний', 'назвати', '—', 'ру́ська', ',', 'руси́нська[9][10][11', ']', '[', '*', '2', ']', ')', '—', 'національний', 'мова', 'українець', '.']
@@ -125,7 +124,5 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
         assert lemmas == ['Aelod', "o'r", 'cangen', 'Frythonaidd', "o'r", 'iaith', 'Celtaidd', 'a', 'siarad', 'bod', 'brodorol', 'yn', 'Nghymru', ',', 'can', 'Gymry', 'a', 'pobl', 'arall', 'aredig', 'gwasgar', 'bod', 'Lloegr', ',', 'a', 'can', 'cymuno', 'bechan', 'bod', 'Y', 'Wladfa', ',', 'gwybod', 'Ariannin[7', ']', "yw'r", 'Gymraeg', '(', 'hefyd', 'Cymraeg', 'heb', 'yr', 'bannod', ')', '.']
 
 if __name__ == '__main__':
-    for lang, lemmatizers in main.settings_global['lemmatizers'].items():
-        for lemmatizer in lemmatizers:
-            if lang not in ['bod']:
-                test_lemmatize(lang, lemmatizer, show_results = True)
+    for lang, lemmatizer in test_lemmatizers:
+        test_lemmatize(lang, lemmatizer, show_results = True)
