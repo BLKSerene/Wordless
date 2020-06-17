@@ -718,11 +718,9 @@ def wordless_pos_tag(main, tokens, lang,
 
     # Tibetan
     elif pos_tagger == main.tr('botok - Tibetan POS Tagger'):
-        word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
-
-        botok_tokenizer = wordless_text_utils.check_botok_tokenizers(main,
-                                                                     word_tokenizer = word_tokenizer)
-        tokens = botok_tokenizer.tokenize(' '.join(tokens))
+        wordless_text_utils.check_word_tokenizers(main,
+                                                  lang = 'bod')
+        tokens = main.botok_word_tokenizer.tokenize(' '.join(tokens))
 
         for token in tokens:
             if token.pos:
