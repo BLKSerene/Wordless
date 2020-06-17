@@ -22,6 +22,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade botok to 0.7.5
+- Dependencies: Upgrade nagisa to 0.2.6
 - Dependencies: Upgrade Python to 3.7.7
 - Dependencies: Upgrade requests to 2.23.0
 - Dependencies: Upgrade Sacremoses to 0.0.43
