@@ -251,26 +251,33 @@ def wordless_word_tokenize(main, text, lang,
     if 'NLTK' in word_tokenizer:
         sentences = wordless_sentence_tokenize(main, text, lang)
 
-        if word_tokenizer == main.tr('NLTK - Penn Treebank Tokenizer'):
-            treebank_tokenizer = nltk.TreebankWordTokenizer()
-
-            for sentence in sentences:
-                tokens_hierarchical.append(treebank_tokenizer.tokenize(sentence))
-        elif word_tokenizer == main.tr('NLTK - Twitter Tokenizer'):
-            tweet_tokenizer = nltk.TweetTokenizer()
-
-            for sentence in sentences:
-                tokens_hierarchical.append(tweet_tokenizer.tokenize(sentence))
-        elif word_tokenizer == main.tr('NLTK - NIST Tokenizer'):
+        
+        
+        if word_tokenizer == main.tr('NLTK - NIST Tokenizer'):
             nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
 
             for sentence in sentences:
                 tokens_hierarchical.append(nist_tokenizer.tokenize(sentence))
+        elif word_tokenizer == main.tr('NLTK - NLTK Tokenizer'):
+            nltk_tokenizer = nltk.NLTKWordTokenizer()
+
+            for sentence in sentences:
+                tokens_hierarchical.append(nltk_tokenizer.tokenize(sentence))
+        elif word_tokenizer == main.tr('NLTK - Penn Treebank Tokenizer'):
+            treebank_tokenizer = nltk.TreebankWordTokenizer()
+
+            for sentence in sentences:
+                tokens_hierarchical.append(treebank_tokenizer.tokenize(sentence))
         elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
             toktok_tokenizer = nltk.ToktokTokenizer()
 
             for sentence in sentences:
                 tokens_hierarchical.append(toktok_tokenizer.tokenize(sentence))
+        elif word_tokenizer == main.tr('NLTK - Twitter Tokenizer'):
+            tweet_tokenizer = nltk.TweetTokenizer()
+
+            for sentence in sentences:
+                tokens_hierarchical.append(tweet_tokenizer.tokenize(sentence))
     # Sacremoses
     elif 'Sacremoses' in word_tokenizer:
         if flat_tokens:
