@@ -23,6 +23,7 @@
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade botok to 0.7.5
 - Dependencies: Upgrade nagisa to 0.2.6
+- Dependencies: Upgrade NLTK to 3.5
 - Dependencies: Upgrade Python to 3.7.7
 - Dependencies: Upgrade razdel to 0.5.0
 - Dependencies: Upgrade requests to 2.23.0
