@@ -15,6 +15,7 @@
 
 ### 🎉 New Features
 - Utils: Add botok's Tibetan sentence tokenizer
+- Utils: Add NLTK's NLTK tokenizer
 
 ### ✨ Improvements
 - Utils: Update botok's Tibetan word tokenizer, POS tagger, and lemmatizer
