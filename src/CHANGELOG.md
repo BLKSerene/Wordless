@@ -18,6 +18,7 @@
 
 ### ✨ Improvements
 - Utils: Update botok's Tibetan word tokenizer, POS tagger, and lemmatizer
+- Utils: Update NLTK's word tokenizers
 - Utils: Update Sacremoses's Moses tokenizer
 
 ### ⏫ Dependency Changes
