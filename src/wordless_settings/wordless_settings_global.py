@@ -658,7 +658,6 @@ def init_settings_global(main):
             'afr': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Afrikaans Word Tokenizer')
             ],
@@ -666,23 +665,17 @@ def init_settings_global(main):
             'sqi': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Albanian Word Tokenizer')
             ],
 
             'ara': [
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Arabic Word Tokenizer')
             ],
 
             'ben': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Bengali Word Tokenizer')
             ],
@@ -690,7 +683,6 @@ def init_settings_global(main):
             'bul': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Bulgarian Word Tokenizer')
             ],
@@ -698,7 +690,6 @@ def init_settings_global(main):
             'cat': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Catalan Word Tokenizer')
@@ -717,7 +708,6 @@ def init_settings_global(main):
             'hrv': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Croatian Word Tokenizer')
             ],
@@ -734,7 +724,6 @@ def init_settings_global(main):
             'dan': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Danish Word Tokenizer')
             ],
@@ -742,7 +731,6 @@ def init_settings_global(main):
             'nld': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Dutch Word Tokenizer')
@@ -759,10 +747,6 @@ def init_settings_global(main):
             ],
 
             'fin': [
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Finnish Word Tokenizer')
             ],
@@ -789,33 +773,23 @@ def init_settings_global(main):
             'ell': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Greek (Modern) Word Tokenizer')
             ],
 
             'heb': [
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Hebrew Word Tokenizer')
             ],
 
             'hin': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Hindi Word Tokenizer')
             ],
 
             'hun': [
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Hungarian Word Tokenizer')
             ],
@@ -823,24 +797,18 @@ def init_settings_global(main):
             'isl': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Icelandic Word Tokenizer')
             ],
 
             'ind': [
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Indonesian Word Tokenizer')
             ],
 
             'gle': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Irish Word Tokenizer')
@@ -849,7 +817,6 @@ def init_settings_global(main):
             'ita': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Italian Word Tokenizer')
@@ -861,17 +828,12 @@ def init_settings_global(main):
             ],
 
             'kan': [
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Kannada Word Tokenizer')
             ],
 
             'lav': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer')
             ],
@@ -879,7 +841,6 @@ def init_settings_global(main):
             'lit': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Lithuanian Word Tokenizer')
@@ -888,7 +849,6 @@ def init_settings_global(main):
             'ltz': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Luxembourgish Word Tokenizer')
@@ -897,7 +857,6 @@ def init_settings_global(main):
             'mar': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Marathi Word Tokenizer')
             ],
@@ -905,7 +864,6 @@ def init_settings_global(main):
             'nob': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Norwegian Bokmål Word Tokenizer')
             ],
@@ -921,7 +879,6 @@ def init_settings_global(main):
             'pol': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Polish Word Tokenizer')
@@ -930,7 +887,6 @@ def init_settings_global(main):
             'por': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Portuguese Word Tokenizer')
@@ -939,7 +895,6 @@ def init_settings_global(main):
             'ron': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Romanian Word Tokenizer')
@@ -958,7 +913,6 @@ def init_settings_global(main):
             'srp_cyrl': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Serbian Word Tokenizer')
             ],
@@ -966,7 +920,6 @@ def init_settings_global(main):
             'srp_latn': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Serbian Word Tokenizer')
             ],
@@ -974,7 +927,6 @@ def init_settings_global(main):
             'sin': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Sinhala Word Tokenizer')
             ],
@@ -982,7 +934,6 @@ def init_settings_global(main):
             'slk': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Slovak Word Tokenizer')
@@ -991,7 +942,6 @@ def init_settings_global(main):
             'slv': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Slovenian Word Tokenizer')
@@ -1000,7 +950,6 @@ def init_settings_global(main):
             'spa': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Spanish Word Tokenizer'),
@@ -1010,17 +959,12 @@ def init_settings_global(main):
             'swe': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Swedish Word Tokenizer')
             ],
 
             'tgl': [
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Tagalog Word Tokenizer')
             ],
 
@@ -1032,27 +976,15 @@ def init_settings_global(main):
             ],
 
             'tam': [
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Tamil Word Tokenizer')
             ],
 
             'tat': [
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Tatar Word Tokenizer')
             ],
 
             'tel': [
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Telugu Word Tokenizer')
             ],
 
@@ -1067,17 +999,12 @@ def init_settings_global(main):
             ],
 
             'tur': [
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Turkish Word Tokenizer')
             ],
 
             'ukr': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Ukrainian Word Tokenizer')
             ],
@@ -1085,12 +1012,12 @@ def init_settings_global(main):
             'urd': [
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Urdu Word Tokenizer')
             ],
 
             'vie': [
+                main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('Underthesea - Vietnamese Word Tokenizer')
             ],
 
@@ -1135,7 +1062,6 @@ def init_settings_global(main):
             ],
 
             'fin': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
 
@@ -1155,7 +1081,6 @@ def init_settings_global(main):
             ],
 
             'hun': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
 
@@ -1229,7 +1154,6 @@ def init_settings_global(main):
             ],
 
             'tam': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
 
