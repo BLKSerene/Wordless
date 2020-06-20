@@ -1579,7 +1579,6 @@ def init_settings_global(main):
             ],
 
             'grc': [
-                main.tr('grk-stoplist - Greek (Ancient) Stop Words'),
                 main.tr('Custom List')
             ],
 
