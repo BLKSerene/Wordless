@@ -1019,15 +1019,19 @@ def wordless_get_stop_words(main, lang,
                 stop_words = spacy_lang.STOP_WORDS
     # Stopwords ISO
     elif 'Stopwords ISO' in list_stop_words:
-        # Norwegian Bokmål & Norwegian Nynorsk
-        if lang_639_1 in ['nb', 'nn']:
-            lang_639_1 = 'no'
-
         # Chinese (Traditional)
         if lang_639_1 == 'zh_tw':
             with open(wordless_misc.get_normalized_path('stop_words/Stopwords ISO/stop_words_zh_tw.txt'), 'r', encoding = 'utf_8') as f:
                 stop_words = [line.rstrip() for line in f]
         else:
+            # Greek (Ancient)
+            if lang_639_1 == 'grc':
+                lang_639_1 = 'el'
+
+            # Norwegian Bokmål & Norwegian Nynorsk
+            if lang_639_1 in ['nb', 'nn']:
+                lang_639_1 = 'no'
+
             with open(wordless_misc.get_normalized_path('stop_words/Stopwords ISO/stopwords_iso.json'), 'r', encoding = 'utf_8') as f:
                 stop_words = json.load(f)[lang_639_1]
     # Thai
