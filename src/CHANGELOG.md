@@ -16,6 +16,7 @@
 ### 🎉 New Features
 - Utils: Add botok's Tibetan sentence tokenizer
 - Utils: Add NLTK's NLTK tokenizer
+- Utils: Add Stopwords ISO's Gujarati and Lithuanian stop words
 
 ### ✨ Improvements
 - Utils: Update botok's Tibetan word tokenizer, POS tagger, and lemmatizer
