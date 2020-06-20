@@ -1579,6 +1579,7 @@ def init_settings_global(main):
             ],
 
             'grc': [
+                main.tr('Stopwords ISO - Greek Stop Words'),
                 main.tr('Custom List')
             ],
 
@@ -1586,7 +1587,7 @@ def init_settings_global(main):
                 main.tr('extra-stopwords - Greek (Modern) Stop Words'),
                 main.tr('NLTK - Greek (Modern) Stop Words'),
                 main.tr('spaCy - Greek (Modern) Stop Words'),
-                main.tr('Stopwords ISO - Greek (Modern) Stop Words'),
+                main.tr('Stopwords ISO - Greek Stop Words'),
                 main.tr('Custom List')
             ],
 
@@ -1722,14 +1723,14 @@ def init_settings_global(main):
                 main.tr('extra-stopwords - Norwegian Bokmål Stop Words'),
                 main.tr('NLTK - Norwegian Bokmål Stop Words'),
                 main.tr('spaCy - Norwegian Bokmål Stop Words'),
-                main.tr('Stopwords ISO - Norwegian Bokmål Stop Words'),
+                main.tr('Stopwords ISO - Norwegian Stop Words'),
                 main.tr('Custom List')
             ],
 
             'nno': [
                 main.tr('extra-stopwords - Norwegian Bokmål Stop Words'),
                 main.tr('NLTK - Norwegian Nynorsk Stop Words'),
-                main.tr('Stopwords ISO - Norwegian Nynorsk Stop Words'),
+                main.tr('Stopwords ISO - Norwegian Stop Words'),
                 main.tr('Custom List')
             ],
 
