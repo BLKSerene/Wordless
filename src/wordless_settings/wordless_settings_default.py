@@ -1410,7 +1410,7 @@ def init_settings_default(main):
                 'fra': main.tr('Stopwords ISO - French Stop Words'),
                 'glg': main.tr('Stopwords ISO - Galician Stop Words'),
                 'deu': main.tr('Stopwords ISO - German Stop Words'),
-                'grc': main.tr('grk-stoplist - Greek (Ancient) Stop Words'),
+                'grc': main.tr('Custom List'),
                 'ell': main.tr('Stopwords ISO - Greek (Modern) Stop Words'),
                 'hau': main.tr('Stopwords ISO - Hausa Stop Words'),
                 'heb': main.tr('Stopwords ISO - Hebrew Stop Words'),
