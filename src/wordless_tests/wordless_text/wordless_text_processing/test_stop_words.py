@@ -33,6 +33,7 @@ def test_stop_words(lang, list_stop_words, show_results = False):
     stop_words = wordless_text_processing.wordless_get_stop_words(main, lang, list_stop_words = list_stop_words)
 
     if show_results:
+        print(f'{lang} / {list_stop_words}:')
         print(stop_words)
 
     if list_stop_words == 'Custom List':
@@ -45,6 +46,5 @@ def test_stop_words(lang, list_stop_words, show_results = False):
         assert all([stop_word for stop_word in stop_words])
 
 if __name__ == '__main__':
-    for lang, lists_stop_words in main.settings_global['stop_words'].items():
-        for list_stop_words in lists_stop_words:
-            test_stop_words(lang, list_stop_words, show_results = True)
+    for lang, list_stop_words in test_lists_stop_words:
+        test_stop_words(lang, list_stop_words, show_results = True)

@@ -1030,10 +1030,6 @@ def wordless_get_stop_words(main, lang,
         else:
             with open(wordless_misc.get_normalized_path('stop_words/Stopwords ISO/stopwords_iso.json'), 'r', encoding = 'utf_8') as f:
                 stop_words = json.load(f)[lang_639_1]
-    # Greek (Ancient)
-    elif list_stop_words == main.tr('grk-stoplist - Greek (Ancient) Stop Words'):
-        with open(wordless_misc.get_normalized_path('stop_words/grk-stoplist/stoplist-greek.txt'), 'r', encoding = 'utf_8') as f:
-            stop_words = [line.rstrip() for line in f.readlines()]
     # Thai
     elif list_stop_words == main.tr('PyThaiNLP - Thai Stop Words'):
         stop_words = pythainlp.corpus.common.thai_stopwords()
