@@ -22,7 +22,11 @@
 - Utils: Update NLTK's word tokenizers
 - Utils: Update Sacremoses's Moses tokenizer
 
+### ❌ Removals
+- Utils: Remove grk-stoplist's Greek (Ancient) stop words
+
 ### ⏫ Dependency Changes
+- Dependencies: Remove grk-stoplist
 - Dependencies: Upgrade botok to 0.7.5
 - Dependencies: Upgrade nagisa to 0.2.6
 - Dependencies: Upgrade NLTK to 3.5
