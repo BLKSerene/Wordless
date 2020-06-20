@@ -34,6 +34,7 @@
 - Dependencies: Upgrade razdel to 0.5.0
 - Dependencies: Upgrade requests to 2.23.0
 - Dependencies: Upgrade Sacremoses to 0.0.43
+- Dependencies: Upgrade Stopwords ISO to 1.0.0
 - Dependencies: Upgrade syntok to 1.3.1
 
 ## [v1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0) - 11/30/2019
