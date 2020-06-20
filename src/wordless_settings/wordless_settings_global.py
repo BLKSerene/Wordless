@@ -1591,6 +1591,11 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
+            'guj': [
+                main.tr('Stopwords ISO - Gujarati Stop Words'),
+                main.tr('Custom List')
+            ],
+
             'hau': [
                 main.tr('extra-stopwords - Hausa Stop Words'),
                 main.tr('Stopwords ISO - Hausa Stop Words'),
@@ -1692,6 +1697,7 @@ def init_settings_global(main):
             'lit': [
                 main.tr('extra-stopwords - Lithuanian Stop Words'),
                 main.tr('spaCy - Lithuanian Stop Words'),
+                main.tr('Stopwords ISO - Lithuanian Stop Words'),
                 main.tr('Custom List')
             ],
 
