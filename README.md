@@ -74,7 +74,7 @@ MLA (8th Edition):
 <pre><code>Ye Lei. <i>Wordless</i>, version 1.4.0, 2020. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## License
-    Copyright (C) 2018-2019  Ye Lei (叶磊)
+    Copyright (C) 2018-2020  Ye Lei (叶磊)
 
     This project is licensed under GNU GPLv3.
     For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
