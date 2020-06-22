@@ -54,11 +54,11 @@ If you encounter a problem, find a bug, or require any further information, feel
 If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may send me an email.
 
 Channel      |Contact Information
--------------|-------------------
+:-----------:|-------------------
 Home Page    |https://github.com/BLKSerene/Wordless
 Documentation|https://github.com/BLKSerene/Wordless#documentation
-Email        |blkserene@gmail.com or blkserene@163.com
-[WeChat](https://www.wechat.com/en/) Official Account|![WeChat Official Account](/src/imgs/wechat_official_account.dib)
+Email        |blkserene@gmail.com
+[WeChat](https://www.wechat.com/en/) Official Account|![WeChat Official Account](/src/imgs/wechat_official_account.jpg)
 
 **Important Note**: I CANNOT GUARANTEE that all emails will always be checked or replied in time. I WILL NOT REPLY to irrelevant emails and I reserve the right to BLOCK AND/OR REPORT people who send me spam emails.
 

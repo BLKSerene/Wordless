@@ -28,6 +28,12 @@ class Wordless_Label_Html(Wordless_Label):
         self.setTextFormat(Qt.RichText)
         self.setOpenExternalLinks(True)
 
+class Wordless_Label_Html_Centered(Wordless_Label_Html):
+    def __init__(self, html, parent):
+        super().__init__(html, parent)
+
+        self.setAlignment(Qt.AlignCenter)
+
 class Wordless_Label_Dialog(Wordless_Label_Html):
     def __init__(self, text, parent):
         main = wordless_misc.find_wordless_main(parent)
