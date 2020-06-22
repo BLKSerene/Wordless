@@ -948,7 +948,7 @@ def init_settings_default(main):
 
             'help': {
                 'citing': {
-                    'citation_sys': main.tr('MLA (8th Edition)')
+                    'citation_sys': main.tr('APA (7th Edition)')
                 },
 
                 'acks': {
