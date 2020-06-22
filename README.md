@@ -101,7 +101,7 @@ I would like to extend my sincere gratitude to the following open-source project
 ### General
 
 &nbsp;|Name|Author(s)
-------|----|---------
+-----:|----|---------
 1     |[Python](https://www.python.org)                              |Guido van Rossum
 2     |[PyInstaller](http://www.pyinstaller.org)                     |Hartmut Goebel
 3     |[PyQt](https://www.riverbankcomputing.com/software/pyqt/intro)|Riverbank Computing Limited
@@ -110,11 +110,11 @@ I would like to extend my sincere gratitude to the following open-source project
 ### Natural Language Processing
 
 &nbsp;|Name|Author(s)
-------|----|---------
+-----:|----|---------
 1     |[botok](https://github.com/Esukhia/botok)                   |Hélios Drupchen Hildt
 2     |[jieba<br>(“结巴”中文分词)](https://github.com/fxsjy/jieba)  |Sun Junyi (孙君意)
 3     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
-4     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Liling Tan
+4     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Edward Loper, Ewan Klein
 5     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
 6     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
 7     |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
@@ -126,17 +126,16 @@ I would like to extend my sincere gratitude to the following open-source project
 ### Language Data
 
 &nbsp;|Name|Author(s)
-------|----|---------
+-----:|----|---------
 1     |[extra-stopwords](https://github.com/Xangis/extra-stopwords)          |Jason Champion
-2     |[grk-stoplist](https://github.com/pharos-alexandria/grk-stoplist)     |Annette von Stockhausen
-3     |[lemmalist-greek](https://github.com/stenskjaer/lemmalist-greek)      |Michael Stenskjær Christensen
-4     |[Lemmatization Lists](https://github.com/michmech/lemmatization-lists)|Michal Boleslav Měchura
-5     |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
+2     |[lemmalist-greek](https://github.com/stenskjaer/lemmalist-greek)      |Michael Stenskjær Christensen
+3     |[Lemmatization Lists](https://github.com/michmech/lemmatization-lists)|Michal Boleslav Měchura
+4     |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
 
 ### Plotting
 
 &nbsp;|Name|Author(s)
-------|----|---------
+-----:|----|---------
 1     |[Matplotlib](https://matplotlib.org)               |Matplotlib Development Team
 2     |[NetworkX](http://networkx.github.io)              |Aric Hagberg, Dan Schult, Pieter Swart
 3     |[WordCloud](https://amueller.github.io/word_cloud/)|Andreas Christian Mueller
@@ -144,7 +143,7 @@ I would like to extend my sincere gratitude to the following open-source project
 ### Miscellaneous
 
 &nbsp;|Name|Author(s)
-------|----|---------
+-----:|----|---------
 1     |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)|Leonard Richardson
 2     |[cChardet](https://github.com/PyYoshi/cChardet)                 |Yoshihiro Misawa
 3     |[chardet](https://github.com/chardet/chardet)                   |Daniel Blanchard
