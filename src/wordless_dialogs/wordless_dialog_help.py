@@ -225,9 +225,9 @@ class Wordless_Dialog_Acks(wordless_dialog.Wordless_Dialog_Info):
             license = f'&nbsp;{license}&nbsp;'
 
             self.table_acks.setCellWidget(i, 0, wordless_label.Wordless_Label_Html(project, self))
-            self.table_acks.setCellWidget(i, 1, wordless_label.Wordless_Label_Html(ver, self))
+            self.table_acks.setCellWidget(i, 1, wordless_label.Wordless_Label_Html_Centered(ver, self))
             self.table_acks.setCellWidget(i, 2, wordless_label.Wordless_Label_Html(authors, self))
-            self.table_acks.setCellWidget(i, 3, wordless_label.Wordless_Label_Html(license, self))
+            self.table_acks.setCellWidget(i, 3, wordless_label.Wordless_Label_Html_Centered(license, self))
 
         self.table_acks.blockSignals(False)
         self.table_acks.setUpdatesEnabled(True)
