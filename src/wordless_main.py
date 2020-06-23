@@ -56,8 +56,11 @@ class Wordless_Loading(QSplashScreen):
         msg_font.setPixelSize(14)
 
         self.setFont(msg_font)
+        self.show_message(self.tr('Initializing Wordless ...'))
+
+    def show_message(self, message):
         self.showMessage(
-            self.tr(' Loading Wordless ...\n Please wait, it should only take a few seconds.'),
+            f' {message}',
             color = Qt.white,
             alignment = Qt.AlignLeft | Qt.AlignBottom
         )
@@ -78,9 +81,10 @@ class Wordless_Loading(QSplashScreen):
             time.sleep(0.025)
 
 class Wordless_Main(QMainWindow):
-    def __init__(self):
+    def __init__(self, loading_window):
         super().__init__()
 
+        self.loading_window = loading_window
         self.threads_check_updates = []
 
         # Version numbers
@@ -92,6 +96,8 @@ class Wordless_Main(QMainWindow):
 
         # Icon
         self.setWindowIcon(QIcon(wordless_misc.get_normalized_path('imgs/wordless_icon.ico')))
+
+        self.loading_window.show_message(self.tr('Loading Wordless settings ...'))
 
         # Default settings
         wordless_settings_default.init_settings_default(self)
@@ -116,6 +122,8 @@ class Wordless_Main(QMainWindow):
         # Settings
         self.wordless_settings = wordless_settings.Wordless_Settings(self)
 
+        self.loading_window.show_message(self.tr('Initializing main window ...'))
+
         # Menu
         self.init_menu()
 
@@ -133,8 +141,12 @@ class Wordless_Main(QMainWindow):
         ''')
 
         # Check for updates on startup
+        self.loading_window.show_message(self.tr('Check for updates ...'))
+
         if self.settings_custom['general']['update_settings']['check_updates_on_startup']:
             self.dialog_check_updates = self.help_check_updates(on_startup = True)
+
+        self.loading_window.show_message(self.tr('Starting Wordless ...'))
 
         self.load_settings()
 
@@ -509,7 +521,7 @@ if __name__ == '__main__':
 
     wordless_app.processEvents()
 
-    wordless_main = Wordless_Main()
+    wordless_main = Wordless_Main(wordless_loading)
 
     wordless_loading.fade_out()
     wordless_loading.finish(wordless_main)
