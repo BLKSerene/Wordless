@@ -30,7 +30,7 @@ def wordless_process_tokens(text, token_settings):
         i_tokens = 0
 
         # Mark tokens to be removed
-        for para in text.tokens_hierarchical:
+        for para in text.tokens_multilevel:
             for sentence in para:
                 for clause in sentence:
                     for i, token in enumerate(clause):
@@ -44,7 +44,7 @@ def wordless_process_tokens(text, token_settings):
                     i_tokens += len(clause)
 
         # Remove punctuations
-        for para in text.tokens_hierarchical:
+        for para in text.tokens_multilevel:
             for sentence in para:
                 for i, clause in enumerate(sentence):
                     sentence[i] = [token for token in clause if token]
@@ -55,7 +55,7 @@ def wordless_process_tokens(text, token_settings):
 
     # Lemmatize all tokens
     if not settings['use_tags'] and settings['lemmatize_tokens']:
-        for para in text.tokens_hierarchical:
+        for para in text.tokens_multilevel:
             for sentence in para:
                 for i, clause in enumerate(sentence):
                     sentence[i] = wordless_text_processing.wordless_lemmatize(
@@ -65,7 +65,7 @@ def wordless_process_tokens(text, token_settings):
 
     # Treat as all lowercase
     if settings['treat_as_lowercase']:
-        for para in text.tokens_hierarchical:
+        for para in text.tokens_multilevel:
             for sentence in para:
                 for i, clause in enumerate(sentence):
                     sentence[i] = [token.lower() for token in clause]
@@ -78,7 +78,7 @@ def wordless_process_tokens(text, token_settings):
     if settings['words']:
         # Lowercase
         if not settings['lowercase']:
-            for para in text.tokens_hierarchical:
+            for para in text.tokens_multilevel:
                 for sentence in para:
                     for clause in sentence:
                         for i, token in enumerate(clause):
@@ -86,7 +86,7 @@ def wordless_process_tokens(text, token_settings):
                                 clause[i] = ''
         # Uppercase
         if not settings['uppercase']:
-            for para in text.tokens_hierarchical:
+            for para in text.tokens_multilevel:
                 for sentence in para:
                     for clause in sentence:
                         for i, token in enumerate(clause):
@@ -94,14 +94,14 @@ def wordless_process_tokens(text, token_settings):
                                 clause[i] = ''
         # Title Case
         if not settings['title_case']:
-            for para in text.tokens_hierarchical:
+            for para in text.tokens_multilevel:
                 for sentence in para:
                     for clause in sentence:
                         for i, token in enumerate(clause):
                             if wordless_checking_token.is_token_word_title_case(token):
                                 clause[i] = ''
     else:
-        for para in text.tokens_hierarchical:
+        for para in text.tokens_multilevel:
             for sentence in para:
                 for clause in sentence:
                     for i, token in enumerate(clause):
@@ -110,7 +110,7 @@ def wordless_process_tokens(text, token_settings):
 
     # Numerals
     if not settings['nums']:
-        for para in text.tokens_hierarchical:
+        for para in text.tokens_multilevel:
             for sentence in para:
                 for clause in sentence:
                     for i, token in enumerate(clause):
@@ -119,7 +119,7 @@ def wordless_process_tokens(text, token_settings):
 
     # Filter stop words
     if settings['filter_stop_words']:
-        for para in text.tokens_hierarchical:
+        for para in text.tokens_multilevel:
             for sentence in para:
                 for i, clause in enumerate(sentence):
                     sentence[i] = wordless_stop_words.wordless_filter_stop_words(
@@ -133,14 +133,14 @@ def wordless_process_tokens(text, token_settings):
     if settings['ignore_tags']:
         # Ignore all tags
         if settings['ignore_tags_type'] == main.tr('all'):
-            for para in text.tokens_hierarchical:
+            for para in text.tokens_multilevel:
                 for sentence in para:
                     for clause in sentence:
                         for i, token in enumerate(clause):
                             clause[i] = (token, [])
         # Ignore POS tags
         elif settings['ignore_tags_type'] == main.tr('POS'):
-            for para in text.tokens_hierarchical:
+            for para in text.tokens_multilevel:
                 for sentence in para:
                     for clause in sentence:
                         for i, token in enumerate(clause):
@@ -150,7 +150,7 @@ def wordless_process_tokens(text, token_settings):
 
         # Ignore non-POS tags
         elif settings['ignore_tags_type'] == main.tr('non-POS'):
-            for para in text.tokens_hierarchical:
+            for para in text.tokens_multilevel:
                 for sentence in para:
                     for clause in sentence:
                         for i, token in enumerate(clause):
@@ -158,7 +158,7 @@ def wordless_process_tokens(text, token_settings):
 
                         i_token += len(clause)
     else:
-        for para in text.tokens_hierarchical:
+        for para in text.tokens_multilevel:
             for sentence in para:
                 for clause in sentence:
                     for i, token in enumerate(clause):
@@ -168,19 +168,19 @@ def wordless_process_tokens(text, token_settings):
 
     # Use tags only
     if settings['use_tags']:
-        for para in text.tokens_hierarchical:
+        for para in text.tokens_multilevel:
             for sentence in para:
                 for clause in sentence:
                     for i, token in enumerate(clause):
                         clause[i] = clause[i][1]
     else:
-        for para in text.tokens_hierarchical:
+        for para in text.tokens_multilevel:
             for sentence in para:
                 for clause in sentence:
                     for i, token in enumerate(clause):
                         clause[i] = f"{clause[i][0]}{''.join(clause[i][1])}"
 
-    text.tokens_flat = list(wordless_misc.flatten_list(text.tokens_hierarchical))
+    text.tokens_flat = list(wordless_misc.flatten_list(text.tokens_multilevel))
 
     return text
 
@@ -188,12 +188,12 @@ def wordless_process_tokens_overview(text, token_settings):
     text = wordless_process_tokens(text, token_settings)
 
     # Remove empty tokens
-    text.tokens_hierarchical = [[[[token
-                                   for token in clause
-                                   if token]
-                                  for clause in sentence]
-                                 for sentence in para]
-                                for para in text.tokens_hierarchical]
+    text.tokens_multilevel = [[[[token
+                                 for token in clause
+                                 if token]
+                                for clause in sentence]
+                               for sentence in para]
+                              for para in text.tokens_multilevel]
     text.tokens_flat = [token for token in text.tokens_flat if token]
 
     # Update offsets
@@ -201,7 +201,7 @@ def wordless_process_tokens_overview(text, token_settings):
     i_clauses = 0
     i_tokens = 0
 
-    for i, para in enumerate(text.tokens_hierarchical):
+    for i, para in enumerate(text.tokens_multilevel):
         text.offsets_paras[i] = i_tokens
 
         for j, sentence in enumerate(para):
@@ -245,7 +245,7 @@ def wordless_process_tokens_concordancer(text, token_settings):
         text.offsets_clauses = []
         text.tokens_flat = []
 
-        for para in text.tokens_hierarchical:
+        for para in text.tokens_multilevel:
             text.offsets_paras.append(len(text.tokens_flat))
             
             for sentence in para:

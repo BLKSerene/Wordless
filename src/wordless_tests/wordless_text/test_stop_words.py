@@ -1,5 +1,5 @@
 #
-# Wordless: Tests - Text - Text Processing - Stop Words
+# Wordless: Tests - Text - Stop Words
 #
 # Copyright (C) 2018-2020  Ye Lei (叶磊)
 #

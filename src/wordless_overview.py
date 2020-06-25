@@ -352,9 +352,9 @@ class Wordless_Worker_Overview(wordless_threading.Wordless_Worker):
             text_total.offsets_clauses = [offset
                                           for text in texts
                                           for offset in text.offsets_clauses]
-            text_total.tokens_hierarchical = [para
-                                              for text in texts
-                                              for para in text.tokens_hierarchical]
+            text_total.tokens_multilevel = [para
+                                            for text in texts
+                                            for para in text.tokens_multilevel]
             text_total.tokens_flat = [token
                                       for text in texts
                                       for token in text.tokens_flat]
@@ -371,20 +371,20 @@ class Wordless_Worker_Overview(wordless_threading.Wordless_Worker):
             texts_stats_file = []
 
             # Paragraph length
-            len_paras_in_sentence = [len(para) for para in text.tokens_hierarchical]
+            len_paras_in_sentence = [len(para) for para in text.tokens_multilevel]
             len_paras_in_clause = [sum([len(sentence) for sentence in para])
-                                   for para in text.tokens_hierarchical]
+                                   for para in text.tokens_multilevel]
             len_paras_in_token = [sum([len(clause) for sentence in para for clause in sentence])
-                                  for para in text.tokens_hierarchical]
+                                  for para in text.tokens_multilevel]
 
             # Sentence length
             len_sentences = [sum([len(clause) for clause in sentence])
-                             for para in text.tokens_hierarchical
+                             for para in text.tokens_multilevel
                              for sentence in para]
 
             # Clause length
             len_clauses = [len(clause)
-                           for para in text.tokens_hierarchical
+                           for para in text.tokens_multilevel
                            for sentence in para
                            for clause in sentence]
 
