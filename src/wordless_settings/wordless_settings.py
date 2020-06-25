@@ -26,7 +26,8 @@ import wordcloud
 
 from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
 from wordless_tagsets import wordless_tagset_universal
-from wordless_text import wordless_sentence_tokenization, wordless_text_processing, wordless_text_utils
+from wordless_text import (wordless_sentence_tokenization, wordless_stop_words, wordless_text_processing,
+                           wordless_text_utils)
 from wordless_utils import wordless_conversion, wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_button, wordless_label,
                               wordless_layout, wordless_list, wordless_table,
@@ -1589,7 +1590,7 @@ class Wordless_Settings(QDialog):
             lang = wordless_conversion.to_lang_code(self.main, self.combo_box_stop_words_preview_lang.currentText())
             list_stop_words = self.__dict__[f'combo_box_stop_words_{lang}'].currentText()
             
-            stop_words = wordless_text_processing.wordless_get_stop_words(self.main, lang, list_stop_words = list_stop_words)
+            stop_words = wordless_stop_words.wordless_get_stop_words(self.main, lang, list_stop_words = list_stop_words)
 
             self.list_stop_words_preview_results.load_stop_words(stop_words)
             self.label_stop_words_preview_count.setText(self.tr(f'Count of Stop Words: {len(stop_words)}'))
