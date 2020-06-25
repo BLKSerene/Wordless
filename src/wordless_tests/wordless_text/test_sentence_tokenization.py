@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 #
-# Wordless: Tests - Text - Text Processing - Sentence Tokenization
+# Wordless: Tests - Text - Sentence Tokenization
 #
 # Copyright (C) 2018-2020  Ye Lei (叶磊)
 #
