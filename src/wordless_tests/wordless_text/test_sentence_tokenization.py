@@ -18,7 +18,7 @@ sys.path.append('.')
 import pytest
 
 from wordless_tests import wordless_test_init, wordless_test_lang_examples
-from wordless_text import wordless_text_processing
+from wordless_text import wordless_sentence_tokenization
 from wordless_utils import wordless_conversion
 
 test_sentence_tokenizers = []
@@ -34,7 +34,7 @@ for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].ite
 def test_sentence_tokenize(lang, sentence_tokenizer, show_results = False):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
-    sentences = wordless_text_processing.wordless_sentence_tokenize(
+    sentences = wordless_sentence_tokenization.wordless_sentence_tokenize(
         main,
         text = getattr(wordless_test_lang_examples, f'TEXT_{lang.upper()}'),
         lang = lang,
