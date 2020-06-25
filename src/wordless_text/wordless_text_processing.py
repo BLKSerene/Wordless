@@ -130,7 +130,7 @@ def wordless_sentence_tokenize(main, text, lang,
     elif sentence_tokenizer == main.tr('razdel - Russian Sentenizer'):
         sentences = [sentence.text for sentence in razdel.sentenize(text)]
     # Thai
-    elif sentence_tokenizer == main.tr('PyThaiNLP - Thai Sentence Tokenizer'):
+    elif sentence_tokenizer == main.tr('PyThaiNLP - CRFCut'):
         sentences = pythainlp.tokenize.sent_tokenize(text)
     # Tibetan
     elif sentence_tokenizer == main.tr('botok - Tibetan Sentence Tokenizer'):

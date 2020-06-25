@@ -623,7 +623,7 @@ def init_settings_global(main):
             ],
 
             'tha': [
-                main.tr('PyThaiNLP - Thai Sentence Tokenizer')
+                main.tr('PyThaiNLP - CRFCut')
             ],
 
             'bod': [
