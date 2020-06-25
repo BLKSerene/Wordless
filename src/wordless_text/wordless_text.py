@@ -15,7 +15,7 @@ import re
 import bs4
 
 from wordless_text import (wordless_matching, wordless_sentence_tokenization, wordless_text_processing,
-                           wordless_text_utils)
+                           wordless_text_utils, wordless_word_tokenization)
 
 class Wordless_Token(str):
     def __new__(cls, string, *args, **kwargs):
@@ -39,9 +39,9 @@ class Wordless_Text():
         self.offsets_clauses = []
 
         if flat_tokens:
-            self.tokens_hierarchical = [[[[]]]]
+            self.tokens_multilevel = [[[[]]]]
         else:
-            self.tokens_hierarchical = []
+            self.tokens_multilevel = []
 
         self.tokens_flat = []
 
@@ -61,25 +61,25 @@ class Wordless_Text():
                         text = line.rstrip()
 
                         if text:
-                            tokens = wordless_text_processing.wordless_word_tokenize(
+                            tokens = wordless_word_tokenization.wordless_word_tokenize(
                                 main, text,
                                 lang = self.lang,
                                 flat_tokens = True
                             )
 
-                            self.tokens_hierarchical[0][0][0].extend(tokens)
+                            self.tokens_multilevel[0][0][0].extend(tokens)
                 else:
                     for line in f:
                         text = line.rstrip()
 
                         if text:
-                            tokens = wordless_text_processing.wordless_word_tokenize(
+                            tokens = wordless_word_tokenization.wordless_word_tokenize(
                                 main, text,
                                 lang = self.lang,
                                 flat_tokens = False
                             )
 
-                            self.tokens_hierarchical.append(tokens)
+                            self.tokens_multilevel.append(tokens)
 
             # Untokenized / Tagged (Non-POS)
             elif self.text_type == ('untokenized', 'tagged_non_pos'):
@@ -92,17 +92,17 @@ class Wordless_Text():
                             text_no_tags = re.sub(re_tags_non_pos, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
-                            tokens = wordless_text_processing.wordless_word_tokenize(
+                            tokens = wordless_word_tokenization.wordless_word_tokenize(
                                 main, text_no_tags,
                                 lang = self.lang,
                                 flat_tokens = True
                             )
 
-                            self.tokens_hierarchical[0][0][0].extend(tokens)
+                            self.tokens_multilevel[0][0][0].extend(tokens)
 
                             # Check if the first token in the text is a tag
                             if i == 0 and re.match(re_tags_non_pos, text):
-                                self.tokens_hierarchical[0][0][0].insert(0, '')
+                                self.tokens_multilevel[0][0][0].insert(0, '')
                                 self.tags_non_pos.append([])
 
                             # Extract tags
@@ -126,17 +126,17 @@ class Wordless_Text():
                             text_no_tags = re.sub(re_tags_non_pos, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
-                            tokens = wordless_text_processing.wordless_word_tokenize(
+                            tokens = wordless_word_tokenization.wordless_word_tokenize(
                                 main, text_no_tags,
                                 lang = self.lang,
                                 flat_tokens = False
                             )
 
-                            self.tokens_hierarchical.append(tokens)
+                            self.tokens_multilevel.append(tokens)
 
                             # Check if the first token in the text is a tag
                             if i == 0 and re.match(re_tags_non_pos, text):
-                                self.tokens_hierarchical[0][0][0].insert(0, '')
+                                self.tokens_multilevel[0][0][0].insert(0, '')
                                 self.tags_non_pos.append([])
 
                             # Extract tags
@@ -158,19 +158,19 @@ class Wordless_Text():
                         text = line.rstrip()
 
                         if text:
-                            self.tokens_hierarchical[0][0][0].extend(text.split())
+                            self.tokens_multilevel[0][0][0].extend(text.split())
                 else:
                     for line in f:
                         text = line.rstrip()
 
                         if text:
-                            self.tokens_hierarchical.append([])
+                            self.tokens_multilevel.append([])
 
                             for sentence in wordless_sentence_tokenization.wordless_sentence_split(main, text):
-                                self.tokens_hierarchical[-1].append([])
+                                self.tokens_multilevel[-1].append([])
 
                                 for clause in wordless_sentence_tokenization.wordless_clause_split(main, sentence):
-                                    self.tokens_hierarchical[-1][-1].append(clause.split())
+                                    self.tokens_multilevel[-1][-1].append(clause.split())
             # Tokenized / Tagged (POS)
             elif self.text_type == ('tokenized', 'tagged_pos'):
                 if flat_tokens:
@@ -182,11 +182,11 @@ class Wordless_Text():
                             text_no_tags = re.sub(re_tags_pos, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
-                            self.tokens_hierarchical[0][0][0].extend(text_no_tags.split())
+                            self.tokens_multilevel[0][0][0].extend(text_no_tags.split())
 
                             # Check if the first token in the text is a tag
                             if i == 0 and re.match(re_tags_pos, text):
-                                self.tokens_hierarchical[0][0][0].insert(0, '')
+                                self.tokens_multilevel[0][0][0].insert(0, '')
                                 self.tags_pos.append([])
 
                             # Extract tags
@@ -206,21 +206,21 @@ class Wordless_Text():
                         text = line.rstrip()
 
                         if text:
-                            self.tokens_hierarchical.append([])
+                            self.tokens_multilevel.append([])
 
                             # Replace all tags with a whitespace to ensure no words run together
                             text_no_tags = re.sub(re_tags_pos, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
                             for sentence in wordless_sentence_tokenization.wordless_sentence_split(main, text_no_tags):
-                                self.tokens_hierarchical[-1].append([])
+                                self.tokens_multilevel[-1].append([])
 
                                 for clause in wordless_sentence_tokenization.wordless_clause_split(main, sentence):
-                                    self.tokens_hierarchical[-1][-1].append(clause.split())
+                                    self.tokens_multilevel[-1][-1].append(clause.split())
 
                             # Check if the first token in the text is a tag
                             if i == 0 and re.match(re_tags_pos, text):
-                                self.tokens_hierarchical[0][0][0].insert(0, '')
+                                self.tokens_multilevel[0][0][0].insert(0, '')
                                 self.tags_pos.append([])
 
                             # Extract tags
@@ -246,11 +246,11 @@ class Wordless_Text():
                             text_no_tags = re.sub(re_tags_non_pos, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
-                            self.tokens_hierarchical[0][0][0].extend(text_no_tags.split())
+                            self.tokens_multilevel[0][0][0].extend(text_no_tags.split())
 
                             # Check if the first token in the text is a tag
                             if i == 0 and re.match(re_tags_non_pos, text):
-                                self.tokens_hierarchical[0][0][0].insert(0, '')
+                                self.tokens_multilevel[0][0][0].insert(0, '')
                                 self.tags_non_pos.append([])
 
                             # Extract tags
@@ -270,21 +270,21 @@ class Wordless_Text():
                         text = line.rstrip()
 
                         if text:
-                            self.tokens_hierarchical.append([])
+                            self.tokens_multilevel.append([])
 
                             # Replace all tags with a whitespace to ensure no words run together
                             text_no_tags = re.sub(re_tags_non_pos, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
                             for sentence in wordless_sentence_tokenization.wordless_sentence_split(main, text_no_tags):
-                                self.tokens_hierarchical[-1].append([])
+                                self.tokens_multilevel[-1].append([])
 
                                 for clause in wordless_sentence_tokenization.wordless_clause_split(main, sentence):
-                                    self.tokens_hierarchical[-1][-1].append(clause.split())
+                                    self.tokens_multilevel[-1][-1].append(clause.split())
 
                             # Check if the first token in the text is a tag
                             if i == 0 and re.match(re_tags_non_pos, text):
-                                self.tokens_hierarchical[0][0][0].insert(0, '')
+                                self.tokens_multilevel[0][0][0].insert(0, '')
                                 self.tags_non_pos.append([])
 
                             # Extract tags
@@ -310,11 +310,11 @@ class Wordless_Text():
                             text_no_tags = re.sub(re_tags_all, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
-                            self.tokens_hierarchical[0][0][0].extend(text_no_tags.split())
+                            self.tokens_multilevel[0][0][0].extend(text_no_tags.split())
 
                             # Check if the first token in the text is a tag
                             if i == 0 and (re.match(re_tags_pos, text) or re.match(re_tags_non_pos, text)):
-                                self.tokens_hierarchical[0][0][0].insert(0, '')
+                                self.tokens_multilevel[0][0][0].insert(0, '')
 
                                 self.tags_all.append([])
                                 self.tags_pos.append([])
@@ -356,21 +356,21 @@ class Wordless_Text():
                         text = line.rstrip()
 
                         if text:
-                            self.tokens_hierarchical.append([])
+                            self.tokens_multilevel.append([])
 
                             # Replace all tags with a whitespace to ensure no words run together
                             text_no_tags = re.sub(re_tags_all, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
                             for sentence in wordless_sentence_tokenization.wordless_sentence_split(main, text_no_tags):
-                                self.tokens_hierarchical[-1].append([])
+                                self.tokens_multilevel[-1].append([])
 
                                 for clause in wordless_sentence_tokenization.wordless_clause_split(main, sentence):
-                                    self.tokens_hierarchical[-1][-1].append(clause.split())
+                                    self.tokens_multilevel[-1][-1].append(clause.split())
 
                             # Check if the first token in the text is a tag
                             if i == 0 and (re.match(re_tags_pos, text) or re.match(re_tags_non_pos, text)):
-                                self.tokens_hierarchical[0][0][0].insert(0, '')
+                                self.tokens_multilevel[0][0][0].insert(0, '')
 
                                 self.tags_all.append([])
                                 self.tags_pos.append([])
@@ -409,7 +409,7 @@ class Wordless_Text():
                                     break
 
         # Paragraph, sentence and clause offsets
-        for para in self.tokens_hierarchical:
+        for para in self.tokens_multilevel:
             self.offsets_paras.append(len(self.tokens_flat))
 
             for sentence in para:
@@ -439,8 +439,8 @@ class Wordless_Text():
 
     def tokenize_text(self, text):
         if text:
-            tokens = wordless_text_processing.wordless_word_tokenize(self.main, text,
-                                                                     lang = self.lang)
+            tokens = wordless_word_tokenization.wordless_word_tokenize(self.main, text,
+                                                                       lang = self.lang)
 
             for i in range(len(tokens)):
                 self.tags_all.append([])

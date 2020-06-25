@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 #
-# Wordless: Tests - Text - Text Processing - Word Tokenization
+# Wordless: Tests - Text - Word Tokenization
 #
 # Copyright (C) 2018-2020  Ye Lei (叶磊)
 #
@@ -19,7 +19,7 @@ sys.path.append('.')
 import pytest
 
 from wordless_tests import wordless_test_init, wordless_test_lang_examples
-from wordless_text import wordless_text_processing
+from wordless_text import wordless_word_tokenization
 from wordless_utils import wordless_conversion, wordless_misc
 
 test_word_tokenizers = []
@@ -28,14 +28,14 @@ main = wordless_test_init.Wordless_Test_Main()
 
 for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
     for word_tokenizer in word_tokenizers:
-        if lang not in ['other']:
+        if lang not in ['other', 'bod']:
             test_word_tokenizers.append((lang, word_tokenizer))
 
 @pytest.mark.parametrize('lang, word_tokenizer', test_word_tokenizers)
 def test_word_tokenize(lang, word_tokenizer, show_results = False):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
-    tokens = wordless_text_processing.wordless_word_tokenize(
+    tokens = wordless_word_tokenization.wordless_word_tokenize(
         main,
         text = getattr(wordless_test_lang_examples, f'SENTENCE_{lang.upper()}'),
         lang = lang,
@@ -43,6 +43,7 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
     )
 
     if show_results:
+        print(f'{lang} / {word_tokenizer}:')
         print(tokens)
 
     if lang == 'afr':
@@ -354,6 +355,4 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
 
 if __name__ == '__main__':
     for lang, word_tokenizer in test_word_tokenizers:
-        print(f'{lang} / {word_tokenizer}')
-
         test_word_tokenize(lang, word_tokenizer, show_results = True)
