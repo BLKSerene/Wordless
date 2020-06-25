@@ -14,7 +14,8 @@ import re
 
 import bs4
 
-from wordless_text import wordless_matching, wordless_text_processing, wordless_text_utils
+from wordless_text import (wordless_matching, wordless_sentence_tokenization, wordless_text_processing,
+                           wordless_text_utils)
 
 class Wordless_Token(str):
     def __new__(cls, string, *args, **kwargs):
@@ -165,10 +166,10 @@ class Wordless_Text():
                         if text:
                             self.tokens_hierarchical.append([])
 
-                            for sentence in wordless_text_processing.wordless_sentence_split(main, text):
+                            for sentence in wordless_sentence_tokenization.wordless_sentence_split(main, text):
                                 self.tokens_hierarchical[-1].append([])
 
-                                for clause in wordless_text_processing.wordless_clause_split(main, sentence):
+                                for clause in wordless_sentence_tokenization.wordless_clause_split(main, sentence):
                                     self.tokens_hierarchical[-1][-1].append(clause.split())
             # Tokenized / Tagged (POS)
             elif self.text_type == ('tokenized', 'tagged_pos'):
@@ -211,10 +212,10 @@ class Wordless_Text():
                             text_no_tags = re.sub(re_tags_pos, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
-                            for sentence in wordless_text_processing.wordless_sentence_split(main, text_no_tags):
+                            for sentence in wordless_sentence_tokenization.wordless_sentence_split(main, text_no_tags):
                                 self.tokens_hierarchical[-1].append([])
 
-                                for clause in wordless_text_processing.wordless_clause_split(main, sentence):
+                                for clause in wordless_sentence_tokenization.wordless_clause_split(main, sentence):
                                     self.tokens_hierarchical[-1][-1].append(clause.split())
 
                             # Check if the first token in the text is a tag
@@ -275,10 +276,10 @@ class Wordless_Text():
                             text_no_tags = re.sub(re_tags_non_pos, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
-                            for sentence in wordless_text_processing.wordless_sentence_split(main, text_no_tags):
+                            for sentence in wordless_sentence_tokenization.wordless_sentence_split(main, text_no_tags):
                                 self.tokens_hierarchical[-1].append([])
 
-                                for clause in wordless_text_processing.wordless_clause_split(main, sentence):
+                                for clause in wordless_sentence_tokenization.wordless_clause_split(main, sentence):
                                     self.tokens_hierarchical[-1][-1].append(clause.split())
 
                             # Check if the first token in the text is a tag
@@ -361,10 +362,10 @@ class Wordless_Text():
                             text_no_tags = re.sub(re_tags_all, ' ', text)
                             text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
 
-                            for sentence in wordless_text_processing.wordless_sentence_split(main, text_no_tags):
+                            for sentence in wordless_sentence_tokenization.wordless_sentence_split(main, text_no_tags):
                                 self.tokens_hierarchical[-1].append([])
 
-                                for clause in wordless_text_processing.wordless_clause_split(main, sentence):
+                                for clause in wordless_sentence_tokenization.wordless_clause_split(main, sentence):
                                     self.tokens_hierarchical[-1][-1].append(clause.split())
 
                             # Check if the first token in the text is a tag
