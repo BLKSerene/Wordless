@@ -16,7 +16,7 @@ sys.path.append('.')
 import pytest
 
 from wordless_tests import wordless_test_init
-from wordless_text import wordless_text_processing
+from wordless_text import wordless_stop_words
 from wordless_utils import wordless_conversion
 
 test_lists_stop_words = []
@@ -30,7 +30,7 @@ for lang, lists_stop_words in main.settings_global['stop_words'].items():
 @pytest.mark.parametrize('lang, list_stop_words', test_lists_stop_words)
 def test_stop_words(lang, list_stop_words, show_results = False):
     lang_text = wordless_conversion.to_lang_text(main, lang)
-    stop_words = wordless_text_processing.wordless_get_stop_words(main, lang, list_stop_words = list_stop_words)
+    stop_words = wordless_stop_words.wordless_get_stop_words(main, lang, list_stop_words = list_stop_words)
 
     if show_results:
         print(f'{lang} / {list_stop_words}:')
