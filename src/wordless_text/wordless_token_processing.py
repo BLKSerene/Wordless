@@ -12,7 +12,8 @@
 import copy
 
 from wordless_checking import wordless_checking_token
-from wordless_text import wordless_text, wordless_text_processing, wordless_text_utils
+from wordless_text import (wordless_stop_words, wordless_text, wordless_text_processing,
+                           wordless_text_utils)
 from wordless_utils import wordless_misc
 
 def wordless_process_tokens(text, token_settings):
@@ -121,7 +122,7 @@ def wordless_process_tokens(text, token_settings):
         for para in text.tokens_hierarchical:
             for sentence in para:
                 for i, clause in enumerate(sentence):
-                    sentence[i] = wordless_text_processing.wordless_filter_stop_words(
+                    sentence[i] = wordless_stop_words.wordless_filter_stop_words(
                         main, clause,
                         lang = text.lang
                     )
