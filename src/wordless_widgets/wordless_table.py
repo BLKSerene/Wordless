@@ -24,7 +24,7 @@ import openpyxl
 
 from wordless_checking import wordless_checking_misc
 from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
-from wordless_text import wordless_text_processing, wordless_text_utils
+from wordless_text import wordless_text_utils, wordless_word_detokenization
 from wordless_utils import wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_button, wordless_label,
                               wordless_msg)
@@ -1526,8 +1526,8 @@ class Wordless_Table_Results_Sort_Conordancer(Wordless_Table):
 
                         i_highlight_color_right += 1
 
-                text_left = wordless_text_processing.wordless_word_detokenize(self.main, text_left, lang)
-                text_right = wordless_text_processing.wordless_word_detokenize(self.main, text_right, lang)
+                text_left = wordless_word_detokenization.wordless_word_detokenize(self.main, text_left, lang)
+                text_right = wordless_word_detokenization.wordless_word_detokenize(self.main, text_right, lang)
 
                 self.table.cellWidget(i, 0).setText(text_left)
                 self.table.cellWidget(i, 1).setText(node.text())
