@@ -97,7 +97,7 @@ class Wordless_Main(QMainWindow):
         # Icon
         self.setWindowIcon(QIcon(wordless_misc.get_normalized_path('imgs/wordless_icon.ico')))
 
-        self.loading_window.show_message(self.tr('Loading Wordless settings ...'))
+        self.loading_window.show_message(self.tr('Loading settings ...'))
 
         # Default settings
         wordless_settings_default.init_settings_default(self)
