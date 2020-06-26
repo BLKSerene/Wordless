@@ -14,8 +14,8 @@ import re
 
 import bs4
 
-from wordless_text import (wordless_matching, wordless_sentence_tokenization, wordless_text_processing,
-                           wordless_text_utils, wordless_word_tokenization)
+from wordless_text import (wordless_matching, wordless_sentence_tokenization, wordless_text_utils,
+                           wordless_word_tokenization)
 
 class Wordless_Token(str):
     def __new__(cls, string, *args, **kwargs):
