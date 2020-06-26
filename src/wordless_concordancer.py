@@ -23,10 +23,10 @@ import nltk
 import numpy
 
 from wordless_checking import wordless_checking_file
-from wordless_dialogs import (wordless_dialog, wordless_dialog_misc, wordless_msg_box)
+from wordless_dialogs import wordless_dialog, wordless_dialog_misc, wordless_msg_box
 from wordless_figs import wordless_fig
-from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
-                           wordless_text_utils, wordless_token_processing)
+from wordless_text import (wordless_matching, wordless_text, wordless_text_utils,
+                           wordless_token_processing, wordless_word_detokenization)
 from wordless_utils import wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_label, wordless_layout,
                               wordless_msg, wordless_table, wordless_widgets)
@@ -659,7 +659,7 @@ class Wordless_Worker_Concordancer_Table(wordless_threading.Wordless_Worker):
                         if not settings['token_settings']['puncs']:
                             ngram = text.tokens_flat[i : i + len_search_term]
 
-                        node_text = wordless_text_processing.wordless_word_detokenize(self.main, ngram, text.lang)
+                        node_text = wordless_word_detokenization.wordless_word_detokenize(self.main, ngram, text.lang)
                         node_text = wordless_text_utils.text_escape(node_text)
 
                         # Width Unit (Paragraph)
@@ -819,8 +819,14 @@ class Wordless_Worker_Concordancer_Table(wordless_threading.Wordless_Worker):
                         context_left = wordless_text_utils.text_escape(context_left)
                         context_right = wordless_text_utils.text_escape(context_right)
 
-                        context_left_text = wordless_text_processing.wordless_word_detokenize(self.main, context_left, text.lang)
-                        context_right_text = wordless_text_processing.wordless_word_detokenize(self.main, context_right, text.lang)
+                        context_left_text = wordless_word_detokenization.wordless_word_detokenize(
+                            self.main, context_left,
+                            lang = text.lang
+                        )
+                        context_right_text = wordless_word_detokenization.wordless_word_detokenize(
+                            self.main, context_right,
+                            lang = text.lang
+                        )
 
                         # Left
                         concordance_line.append([context_left_text, context_left, text_search_left])
@@ -921,7 +927,7 @@ class Wordless_Worker_Concordancer_Fig(wordless_threading.Wordless_Worker):
 
             for search_term in search_terms_file:
                 search_terms_total.add(search_term)
-                search_terms_labels.add(wordless_text_processing.wordless_word_detokenize(
+                search_terms_labels.add(wordless_word_detokenization.wordless_word_detokenize(
                                             self.main, search_term,
                                             lang = text.lang
                                         ))
