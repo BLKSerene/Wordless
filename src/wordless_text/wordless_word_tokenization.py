@@ -219,18 +219,17 @@ def wordless_word_tokenize(main, text, lang,
         # Preserve sentence boundaries
         sentences = wordless_sentence_tokenization.wordless_sentence_tokenize(
             main, text,
-            lang = 'tha',
-            sentence_tokenizer = 'PyThaiNLP - Thai Sentence Tokenizer')
+            lang = 'tha')
 
-        if word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'):
+        if word_tokenizer == main.tr('PyThaiNLP - Longest Matching'):
             for sentence in sentences:
-                tokens_multilevel.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'newmm'))
-        elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching Algorithm'):
+                tokens_multilevel.append(pythainlp.word_tokenize(sentence, engine = 'longest'))
+        elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching + TCC'):
             for sentence in sentences:
-                tokens_multilevel.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'mm'))
-        elif word_tokenizer == main.tr('PyThaiNLP - Longest Matching'):
+                tokens_multilevel.append(pythainlp.word_tokenize(sentence, engine = 'newmm'))
+        elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching'):
             for sentence in sentences:
-                tokens_multilevel.append(pythainlp.tokenize.word_tokenize(sentence, engine = 'longest-matching'))
+                tokens_multilevel.append(pythainlp.word_tokenize(sentence, engine = 'mm'))
     # Tibetan
     elif 'botok' in word_tokenizer:
         if flat_tokens:

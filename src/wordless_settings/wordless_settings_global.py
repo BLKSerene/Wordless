@@ -1023,9 +1023,9 @@ def init_settings_global(main):
             ],
 
             'tha': [
-                main.tr('PyThaiNLP - Maximum Matching Algorithm + TCC'),
-                main.tr('PyThaiNLP - Maximum Matching Algorithm'),
                 main.tr('PyThaiNLP - Longest Matching'),
+                main.tr('PyThaiNLP - Maximum Matching'),
+                main.tr('PyThaiNLP - Maximum Matching + TCC')
             ],
 
             'bod': [
