@@ -12,7 +12,7 @@
 import copy
 
 from wordless_checking import wordless_checking_token
-from wordless_text import (wordless_stop_words, wordless_text, wordless_text_processing,
+from wordless_text import (wordless_lemmatization, wordless_stop_words, wordless_text,
                            wordless_text_utils, wordless_word_detokenization)
 from wordless_utils import wordless_misc
 
@@ -58,7 +58,7 @@ def wordless_process_tokens(text, token_settings):
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, clause in enumerate(sentence):
-                    sentence[i] = wordless_text_processing.wordless_lemmatize(
+                    sentence[i] = wordless_lemmatization.wordless_lemmatize(
                         main, clause,
                         lang = text.lang
                     )
