@@ -13,7 +13,7 @@ import copy
 
 from wordless_checking import wordless_checking_token
 from wordless_text import (wordless_stop_words, wordless_text, wordless_text_processing,
-                           wordless_text_utils)
+                           wordless_text_utils, wordless_word_detokenization)
 from wordless_utils import wordless_misc
 
 def wordless_process_tokens(text, token_settings):
@@ -257,7 +257,10 @@ def wordless_process_tokens_concordancer(text, token_settings):
                     for token in clause:
                         if text.tokens_flat:
                             if wordless_checking_token.is_token_punc(token):
-                                text.tokens_flat[-1] = wordless_text_processing.wordless_word_detokenize(main, [text.tokens_flat[-1], token], lang = text.lang)
+                                text.tokens_flat[-1] = wordless_word_detokenization.wordless_word_detokenize(
+                                    main, [text.tokens_flat[-1], token],
+                                    lang = text.lang
+                                )
                             else:
                                 text.tokens_flat.append(token)
                         else:

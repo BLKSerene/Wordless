@@ -27,7 +27,7 @@ import wordcloud
 from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
 from wordless_tagsets import wordless_tagset_universal
 from wordless_text import (wordless_sentence_tokenization, wordless_stop_words, wordless_text_processing,
-                           wordless_text_utils, wordless_word_tokenization)
+                           wordless_text_utils, wordless_word_detokenization, wordless_word_tokenization)
 from wordless_utils import wordless_conversion, wordless_misc, wordless_threading
 from wordless_widgets import (wordless_box, wordless_button, wordless_label,
                               wordless_layout, wordless_list, wordless_table,
@@ -105,7 +105,7 @@ class Wordless_Worker_Preview_Word_Detokenizer(wordless_threading.Wordless_Worke
             line = line.strip()
 
             if line:
-                text = wordless_text_processing.wordless_word_detokenize(
+                text = wordless_word_detokenization.wordless_word_detokenize(
                     self.main,
                     tokens = line.split(),
                     lang = preview_lang,
@@ -189,7 +189,7 @@ class Wordless_Worker_Preview_Lemmatizer(wordless_threading.Wordless_Worker_No_P
                     lemmatizer = self.lemmatizer
                 )
 
-                text = wordless_text_processing.wordless_word_detokenize(
+                text = wordless_word_detokenization.wordless_word_detokenize(
                     self.main, lemmas,
                     lang = preview_lang
                 )

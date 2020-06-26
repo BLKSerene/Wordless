@@ -25,8 +25,8 @@ import numpy
 from wordless_checking import wordless_checking_file
 from wordless_dialogs import wordless_dialog_misc, wordless_msg_box
 from wordless_figs import wordless_fig, wordless_fig_freq, wordless_fig_stat
-from wordless_text import (wordless_matching, wordless_text, wordless_text_processing,
-                           wordless_token_processing)
+from wordless_text import (wordless_matching, wordless_text, wordless_token_processing,
+                           wordless_word_detokenization)
 from wordless_utils import wordless_misc, wordless_sorting, wordless_threading
 from wordless_widgets import (wordless_layout, wordless_msg, wordless_table,
                               wordless_widgets)
@@ -791,7 +791,7 @@ class Wordless_Worker_Collocation(wordless_threading.Wordless_Worker):
 
             # Nodes Text
             for (node, collocate) in collocations_freqs_file:
-                self.nodes_text[node] = wordless_text_processing.wordless_word_detokenize(self.main, node, text.lang)
+                self.nodes_text[node] = wordless_word_detokenization.wordless_word_detokenize(self.main, node, text.lang)
 
             texts.append(text)
 
