@@ -1229,7 +1229,7 @@ def init_settings_default(main):
                 'por': main.tr('spaCy - Portuguese POS Tagger'),
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
                 'spa': main.tr('spaCy - Spanish POS Tagger'),
-                'tha': main.tr('PyThaiNLP - Perceptron Tagger - ORCHID Corpus'),
+                'tha': main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'),
                 'bod': main.tr('botok - Tibetan POS Tagger'),
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'vie': main.tr('Underthesea - Vietnamese POS Tagger')
@@ -1260,7 +1260,7 @@ def init_settings_default(main):
                 'por': main.tr('spaCy - Portuguese POS Tagger'),
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
                 'spa': main.tr('spaCy - Spanish POS Tagger'),
-                'tha': main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'),
+                'tha': main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'),
                 'bod': main.tr('botok - Tibetan POS Tagger'),
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'vie': main.tr('Underthesea - Vietnamese POS Tagger')
@@ -1326,8 +1326,8 @@ def init_settings_default(main):
                 },
 
                 'tha': {
-                    main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'): wordless_tagset_tha_orchid.mappings,
-                    main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus'): wordless_tagset_universal.mappings
+                    main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'): wordless_tagset_tha_orchid.mappings,
+                    main.tr('PyThaiNLP - Perceptron Tagger (PUD)'): wordless_tagset_universal.mappings
                 },
 
                 'bod': {

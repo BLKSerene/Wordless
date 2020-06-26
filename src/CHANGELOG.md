@@ -23,6 +23,7 @@
 - Utils: Update botok's Tibetan word tokenizer, POS tagger, and lemmatizer
 - Utils: Update NLTK's word tokenizers
 - Utils: Update PyThaiNLP's CRFCut
+- Utils: Update PyThaiNLP's POS taggers
 - Utils: Update PyThaiNLP's Thai word tokenizers
 - Utils: Update Sacremoses's Moses tokenizer
 - Utils: Update Stopwords ISO's Greek and Norwegian stop words

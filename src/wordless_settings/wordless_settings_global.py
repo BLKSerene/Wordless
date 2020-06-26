@@ -1269,8 +1269,8 @@ def init_settings_global(main):
             ],
 
             'tha': [
-                main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'),
-                main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus')
+                main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'),
+                main.tr('PyThaiNLP - Perceptron Tagger (PUD)')
             ],
 
             'bod': [
