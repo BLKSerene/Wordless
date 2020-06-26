@@ -1,5 +1,5 @@
 #
-# Wordless: Tests - Text - Text Processing - Lemmatization
+# Wordless: Tests - Text - Lemmatization
 #
 # Copyright (C) 2018-2020  Ye Lei (叶磊)
 #
@@ -16,7 +16,7 @@ sys.path.append('.')
 import pytest
 
 from wordless_tests import wordless_test_init, wordless_test_lang_examples
-from wordless_text import wordless_text_processing
+from wordless_text import wordless_lemmatization, wordless_word_tokenization
 from wordless_utils import wordless_conversion
 
 test_lemmatizers = []
@@ -32,13 +32,13 @@ for lang, lemmatizers in main.settings_global['lemmatizers'].items():
 def test_lemmatize(lang, lemmatizer, show_results = False):
     lang_text = wordless_conversion.to_lang_text(main, lang)
 
-    tokens = wordless_text_processing.wordless_word_tokenize(
+    tokens = wordless_word_tokenization.wordless_word_tokenize(
         main,
         text = getattr(wordless_test_lang_examples, f'SENTENCE_{lang.upper()}'),
         lang = lang
     )
     
-    lemmas = wordless_text_processing.wordless_lemmatize(
+    lemmas = wordless_lemmatization.wordless_lemmatize(
         main,
         tokens = tokens,
         lang = lang,
@@ -46,6 +46,7 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
     )
 
     if show_results:
+        print(f'{lang} / {lemmatizer}:')
         print(lemmas)
 
     if lang == 'ast':
