@@ -28,7 +28,7 @@ main = wordless_test_init.Wordless_Test_Main()
 
 for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
     for word_tokenizer in word_tokenizers:
-        if lang  in ['tha']:
+        if lang not in ['other']:
             test_word_tokenizers.append((lang, word_tokenizer))
 
 @pytest.mark.parametrize('lang, word_tokenizer', test_word_tokenizers)
@@ -322,7 +322,8 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
         tokens == ['ఆంధ్ర', 'ప్రదేశ్', ',', 'తెలంగాణ', 'రాష్ట్రాల', 'అధికార', 'భాష', 'తెలుగు', '.']
     elif lang == 'tha':
         if word_tokenizer in ['PyThaiNLP - Longest Matching',
-                              'PyThaiNLP - Maximum Matching + TCC']:
+                              'PyThaiNLP - Maximum Matching + TCC',
+                              'PyThaiNLP - Maximum Matching + TCC (Safe Mode)']:
             assert tokens == ['ภาษาไทย', 'หรือ', 'ภาษาไทย', 'กลาง', 'เป็น', 'ภาษาราชการ', 'และ', 'ภาษาประจำชาติ', 'ของ', 'ประเทศ', 'ไทย']
         elif word_tokenizer == 'PyThaiNLP - Maximum Matching':
             assert tokens == ['ภาษาไทย', 'หรือ', 'ภาษาไทยกลาง', 'เป็น', 'ภาษาราชการ', 'และ', 'ภาษาประจำชาติ', 'ของ', 'ประเทศ', 'ไทย']

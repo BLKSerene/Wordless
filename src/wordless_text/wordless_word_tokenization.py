@@ -224,12 +224,15 @@ def wordless_word_tokenize(main, text, lang,
         if word_tokenizer == main.tr('PyThaiNLP - Longest Matching'):
             for sentence in sentences:
                 tokens_multilevel.append(pythainlp.word_tokenize(sentence, engine = 'longest'))
-        elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching + TCC'):
-            for sentence in sentences:
-                tokens_multilevel.append(pythainlp.word_tokenize(sentence, engine = 'newmm'))
         elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching'):
             for sentence in sentences:
                 tokens_multilevel.append(pythainlp.word_tokenize(sentence, engine = 'mm'))
+        elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching + TCC'):
+            for sentence in sentences:
+                tokens_multilevel.append(pythainlp.word_tokenize(sentence, engine = 'newmm'))
+        elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching + TCC (Safe Mode)'):
+            for sentence in sentences:
+                tokens_multilevel.append(pythainlp.word_tokenize(sentence, engine = 'newmm-safe'))
     # Tibetan
     elif 'botok' in word_tokenizer:
         if flat_tokens:
