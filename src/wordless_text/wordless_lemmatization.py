@@ -1,5 +1,5 @@
 #
-# Wordless: Text - Text Processing
+# Wordless: Text - Lemmatization
 #
 # Copyright (C) 2018-2020  Ye Lei (叶磊)
 #
@@ -9,25 +9,13 @@
 # All other rights reserved.
 #
 
-import importlib
-import json
 import re
 
-import botok
-import jieba
-import jieba.posseg
 import nltk
-import nltk.tokenize.nist
 import pymorphy2
-import pythainlp
-import razdel
-import sacremoses
 import spacy
-import syntok.segmenter
-import underthesea
 
-from wordless_checking import wordless_checking_token, wordless_checking_unicode
-from wordless_text import wordless_matching, wordless_text, wordless_text_utils
+from wordless_text import wordless_matching, wordless_pos_tagging, wordless_text_utils
 from wordless_utils import wordless_conversion, wordless_misc
 
 def wordless_lemmatize(main, tokens, lang,
@@ -80,10 +68,10 @@ def wordless_lemmatize(main, tokens, lang,
         elif lemmatizer == main.tr('NLTK - WordNet Lemmatizer'):
             word_net_lemmatizer = nltk.WordNetLemmatizer()
 
-            for token, pos in wordless_pos_tag(main, tokens,
-                                               lang = 'eng',
-                                               pos_tagger = 'NLTK - Perceptron POS Tagger',
-                                               tagset = 'universal'):
+            for token, pos in wordless_pos_tagging.wordless_pos_tag(main, tokens,
+                                                                    lang = 'eng',
+                                                                    pos_tagger = 'NLTK - Perceptron POS Tagger',
+                                                                    tagset = 'universal'):
                 if pos == 'ADJ':
                     lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADJ))
                 elif pos in ['NOUN', 'PROPN']:
