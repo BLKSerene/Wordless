@@ -73,9 +73,9 @@ def wordless_pos_tag(main, tokens, lang,
             tokens_tagged.append((token, morphological_analyzer.parse(token)[0].tag._POS))
 
     # Thai
-    elif pos_tagger == main.tr('PyThaiNLP - Perceptron POS Tagger - ORCHID Corpus'):
+    elif pos_tagger == main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'):
         tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
-    elif pos_tagger == main.tr('PyThaiNLP - Perceptron POS Tagger - PUD Corpus'):
+    elif pos_tagger == main.tr('PyThaiNLP - Perceptron Tagger (PUD)'):
         tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
 
     # Tibetan
