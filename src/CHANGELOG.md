@@ -21,6 +21,7 @@
 
 ### ✨ Improvements
 - Utils: Update botok's Tibetan word tokenizer, POS tagger, and lemmatizer
+- Utils: Update lists of Chinese (Traditional) stop words
 - Utils: Update NLTK's word tokenizers
 - Utils: Update PyThaiNLP's CRFCut
 - Utils: Update PyThaiNLP's POS taggers
@@ -32,6 +33,7 @@
 - Utils: Remove grk-stoplist's Greek (Ancient) stop words
 
 ### ⏫ Dependency Changes
+- Dependencies: Add OpenCC
 - Dependencies: Remove grk-stoplist
 - Dependencies: Upgrade botok to 0.7.5
 - Dependencies: Upgrade nagisa to 0.2.6
