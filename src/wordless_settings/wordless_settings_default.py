@@ -961,6 +961,10 @@ def init_settings_default(main):
             }
         },
 
+        'settings': {
+            'tab': 'General'
+        },
+
         'general': {
             'font_settings': {
                 'font_family': 'Arial',
