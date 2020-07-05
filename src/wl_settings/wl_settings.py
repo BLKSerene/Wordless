@@ -15,8 +15,6 @@ from PyQt5.QtWidgets import *
 
 from wl_settings import (
     wl_settings_general,
-    wl_settings_import,
-    wl_settings_export,
     wl_settings_auto_detection,
     wl_settings_data,
     wl_settings_tags,
@@ -45,8 +43,9 @@ class Wl_Settings(QDialog):
         self.tree_settings = wl_tree.Wl_Tree(self)
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('General')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Import')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Export')]))
+        self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem([self.tr('Import')]))
+        self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem([self.tr('Export')]))
+
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Auto-detection')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Data')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Tags')]))
@@ -55,16 +54,16 @@ class Wl_Settings(QDialog):
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Word Detokenization')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('POS Tagging')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Tagsets')]))
+        self.tree_settings.topLevelItem(7).addChild(QTreeWidgetItem([self.tr('Tagsets')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Lemmatization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Stop Words')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Measures')]))
-        self.tree_settings.topLevelItem(12).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
-        self.tree_settings.topLevelItem(12).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
-        self.tree_settings.topLevelItem(12).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
-        self.tree_settings.topLevelItem(12).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
+        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
+        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
+        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
+        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Figures')]))
 
@@ -75,8 +74,8 @@ class Wl_Settings(QDialog):
         self.stacked_widget_settings = QStackedWidget(self)
 
         self.settings_general = wl_settings_general.Wl_Settings_General(self.main)
-        self.settings_import = wl_settings_import.Wl_Settings_Import(self.main)
-        self.settings_export = wl_settings_export.Wl_Settings_Export(self.main)
+        self.settings_import = wl_settings_general.Wl_Settings_Import(self.main)
+        self.settings_export = wl_settings_general.Wl_Settings_Export(self.main)
         self.settings_auto_detection = wl_settings_auto_detection.Wl_Settings_Auto_Detection(self.main)
         self.settings_data = wl_settings_data.Wl_Settings_Data(self.main)
         self.settings_tags = wl_settings_tags.Wl_Settings_Tags(self.main)
@@ -162,6 +161,8 @@ class Wl_Settings(QDialog):
 
                 if item_selected_text == self.tr('General'):
                     self.stacked_widget_settings.setCurrentIndex(0)
+
+                    item_selected.setExpanded(True)
                 elif item_selected_text == self.tr('Import'):
                     self.stacked_widget_settings.setCurrentIndex(1)
                 elif item_selected_text == self.tr('Export'):
