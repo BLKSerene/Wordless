@@ -43,10 +43,13 @@ def split_wordless_ver(ver):
     return int(ver_major), int(ver_minor), int(ver_patch)
 
 def find_wordless_main(widget):
-    main = widget
+    if 'main' in widget.__dict__:
+        main = widget.main
+    else:
+        main = widget
 
-    while not isinstance(main, QMainWindow):
-        main = main.parent()
+        while not isinstance(main, QMainWindow):
+            main = main.parent()
 
     return main
 
