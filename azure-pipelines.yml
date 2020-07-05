@@ -41,13 +41,13 @@ jobs:
   # Run tests
   - script: |
       cd src
-      pytest wl_tests/wl_text/wl_text_processing/test_sentence_tokenization.py
-      pytest wl_tests/wl_text/wl_text_processing/test_word_tokenization.py
-      pytest wl_tests/wl_text/wl_text_processing/test_word_detokenization.py
-      pytest wl_tests/wl_text/wl_text_processing/test_pos_tagging.py
-      pytest wl_tests/wl_text/wl_text_processing/test_lemmatization.py
-      pytest wl_tests/wl_text/wl_text_processing/test_stop_words.py
-      pytest --ignore=wl_tests/wl_text/wl_text_processing/
+      pytest wl_tests/wl_text/test_sentence_tokenization.py
+      pytest wl_tests/wl_text/test_word_tokenization.py
+      pytest wl_tests/wl_text/test_word_detokenization.py
+      pytest wl_tests/wl_text/test_pos_tagging.py
+      pytest wl_tests/wl_text/test_lemmatization.py
+      pytest wl_tests/wl_text/test_stop_words.py
+      pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
     displayName: 'Run tests'
 
 # macOS
@@ -80,13 +80,13 @@ jobs:
   # Run tests
   - script: |
       cd src
-      pytest wl_tests/wl_text/wl_text_processing/test_sentence_tokenization.py
-      pytest wl_tests/wl_text/wl_text_processing/test_word_tokenization.py
-      pytest wl_tests/wl_text/wl_text_processing/test_word_detokenization.py
-      pytest wl_tests/wl_text/wl_text_processing/test_pos_tagging.py
-      pytest wl_tests/wl_text/wl_text_processing/test_lemmatization.py
-      pytest wl_tests/wl_text/wl_text_processing/test_stop_words.py
-      pytest --ignore=wl_tests/wl_text/wl_text_processing/
+      pytest wl_tests/wl_text/test_sentence_tokenization.py
+      pytest wl_tests/wl_text/test_word_tokenization.py
+      pytest wl_tests/wl_text/test_word_detokenization.py
+      pytest wl_tests/wl_text/test_pos_tagging.py
+      pytest wl_tests/wl_text/test_lemmatization.py
+      pytest wl_tests/wl_text/test_stop_words.py
+      pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
     displayName: 'Run tests'
 
 # Linux
@@ -119,11 +119,11 @@ jobs:
   # Run tests
   - script: |
       cd src
-      pytest wl_tests/wl_text/wl_text_processing/test_sentence_tokenization.py
-      pytest wl_tests/wl_text/wl_text_processing/test_word_tokenization.py
-      pytest wl_tests/wl_text/wl_text_processing/test_word_detokenization.py
-      pytest wl_tests/wl_text/wl_text_processing/test_pos_tagging.py
-      pytest wl_tests/wl_text/wl_text_processing/test_lemmatization.py
-      pytest wl_tests/wl_text/wl_text_processing/test_stop_words.py
-      pytest --ignore=wl_tests/wl_text/wl_text_processing/
+      pytest wl_tests/wl_text/test_sentence_tokenization.py
+      pytest wl_tests/wl_text/test_word_tokenization.py
+      pytest wl_tests/wl_text/test_word_detokenization.py
+      pytest wl_tests/wl_text/test_pos_tagging.py
+      pytest wl_tests/wl_text/test_lemmatization.py
+      pytest wl_tests/wl_text/test_stop_words.py
+      pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
     displayName: 'Run tests'
