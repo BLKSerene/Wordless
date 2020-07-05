@@ -9,24 +9,29 @@
 # All other rights reserved.
 #
 
-version: 1.3.0.{build}
+version: 1.4.0.{build}
 
 environment:
   matrix:
     # Windows
     - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2019"
       PYTHON: "C:/Python37-x64"
+    # MacOS
+    - APPVEYOR_BUILD_WORKER_IMAGE: "macos-mojave"
+      PYTHON: "~/venv3.7"
     # Linux
     - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu1604"
-      PYTHON: "C:/Python37-x64"
+      PYTHON: "$HOME/venv3.7"
 
 cache:
   # Windows
   - "%LOCALAPPDATA%/pip/Cache"
+  # macOS
+  - "/Users/appveyor/Library/Caches/pip"
   # Linux
   - "/home/appveyor/.cache/pip"
 
-stack: python 3.7.3
+stack: python 3.7.7
 
 install:
   - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
@@ -45,12 +50,10 @@ before_test:
 
 # Run tests
 test_script:
-  # Text processing
-  - pytest wl_tests/wl_text/wl_text_processing/test_sentence_tokenization.py
-  - pytest wl_tests/wl_text/wl_text_processing/test_word_tokenization.py
-  - pytest wl_tests/wl_text/wl_text_processing/test_word_detokenization.py
-  - pytest wl_tests/wl_text/wl_text_processing/test_pos_tagging.py
-  - pytest wl_tests/wl_text/wl_text_processing/test_lemmatization.py
-  - pytest wl_tests/wl_text/wl_text_processing/test_stop_words.py
-  # Others
-  - pytest --ignore=wl_tests/wl_text/wl_text_processing/
+  - pytest wl_tests/wl_text/test_sentence_tokenization.py
+  - pytest wl_tests/wl_text/test_word_tokenization.py
+  - pytest wl_tests/wl_text/test_word_detokenization.py
+  - pytest wl_tests/wl_text/test_pos_tagging.py
+  - pytest wl_tests/wl_text/test_lemmatization.py
+
+  - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
