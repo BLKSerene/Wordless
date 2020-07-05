@@ -35,19 +35,19 @@ jobs:
 
   # Download data
   - script: |
-      python downloaders/wordless_downloader_ci.py
+      python downloaders/wl_downloader_ci.py
     displayName: 'Download data'
 
   # Run tests
   - script: |
       cd src
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_sentence_tokenization.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_word_tokenization.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_word_detokenization.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
-      pytest --ignore=wordless_tests/wordless_text/wordless_text_processing/
+      pytest wl_tests/wl_text/wl_text_processing/test_sentence_tokenization.py
+      pytest wl_tests/wl_text/wl_text_processing/test_word_tokenization.py
+      pytest wl_tests/wl_text/wl_text_processing/test_word_detokenization.py
+      pytest wl_tests/wl_text/wl_text_processing/test_pos_tagging.py
+      pytest wl_tests/wl_text/wl_text_processing/test_lemmatization.py
+      pytest wl_tests/wl_text/wl_text_processing/test_stop_words.py
+      pytest --ignore=wl_tests/wl_text/wl_text_processing/
     displayName: 'Run tests'
 
 # macOS
@@ -74,19 +74,19 @@ jobs:
 
   # Download data
   - script: |
-      python3 downloaders/wordless_downloader_ci.py
+      python3 downloaders/wl_downloader_ci.py
     displayName: 'Download data'
 
   # Run tests
   - script: |
       cd src
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_sentence_tokenization.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_word_tokenization.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_word_detokenization.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
-      pytest --ignore=wordless_tests/wordless_text/wordless_text_processing/
+      pytest wl_tests/wl_text/wl_text_processing/test_sentence_tokenization.py
+      pytest wl_tests/wl_text/wl_text_processing/test_word_tokenization.py
+      pytest wl_tests/wl_text/wl_text_processing/test_word_detokenization.py
+      pytest wl_tests/wl_text/wl_text_processing/test_pos_tagging.py
+      pytest wl_tests/wl_text/wl_text_processing/test_lemmatization.py
+      pytest wl_tests/wl_text/wl_text_processing/test_stop_words.py
+      pytest --ignore=wl_tests/wl_text/wl_text_processing/
     displayName: 'Run tests'
 
 # Linux
@@ -113,17 +113,17 @@ jobs:
 
   # Download data
   - script: |
-      python3.7 downloaders/wordless_downloader_ci.py
+      python3.7 downloaders/wl_downloader_ci.py
     displayName: 'Download data'
 
   # Run tests
   - script: |
       cd src
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_sentence_tokenization.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_word_tokenization.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_word_detokenization.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
-      pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
-      pytest --ignore=wordless_tests/wordless_text/wordless_text_processing/
+      pytest wl_tests/wl_text/wl_text_processing/test_sentence_tokenization.py
+      pytest wl_tests/wl_text/wl_text_processing/test_word_tokenization.py
+      pytest wl_tests/wl_text/wl_text_processing/test_word_detokenization.py
+      pytest wl_tests/wl_text/wl_text_processing/test_pos_tagging.py
+      pytest wl_tests/wl_text/wl_text_processing/test_lemmatization.py
+      pytest wl_tests/wl_text/wl_text_processing/test_stop_words.py
+      pytest --ignore=wl_tests/wl_text/wl_text_processing/
     displayName: 'Run tests'

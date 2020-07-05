@@ -36,7 +36,7 @@ install:
   - python -m pip install --upgrade pip
   - pip install -r requirements.txt
   # Download data
-  - python downloaders/wordless_downloader_ci.py
+  - python downloaders/wl_downloader_ci.py
 
 build: off
 
@@ -46,11 +46,11 @@ before_test:
 # Run tests
 test_script:
   # Text processing
-  - pytest wordless_tests/wordless_text/wordless_text_processing/test_sentence_tokenization.py
-  - pytest wordless_tests/wordless_text/wordless_text_processing/test_word_tokenization.py
-  - pytest wordless_tests/wordless_text/wordless_text_processing/test_word_detokenization.py
-  - pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
-  - pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
-  - pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
+  - pytest wl_tests/wl_text/wl_text_processing/test_sentence_tokenization.py
+  - pytest wl_tests/wl_text/wl_text_processing/test_word_tokenization.py
+  - pytest wl_tests/wl_text/wl_text_processing/test_word_detokenization.py
+  - pytest wl_tests/wl_text/wl_text_processing/test_pos_tagging.py
+  - pytest wl_tests/wl_text/wl_text_processing/test_lemmatization.py
+  - pytest wl_tests/wl_text/wl_text_processing/test_stop_words.py
   # Others
-  - pytest --ignore=wordless_tests/wordless_text/wordless_text_processing/
+  - pytest --ignore=wl_tests/wl_text/wl_text_processing/

@@ -42,8 +42,8 @@ install:
   - pip3 install -r requirements.txt
   # Download data
   - >-
-    python3 downloaders/wordless_downloader_ci.py ||
-    python downloaders/wordless_downloader_ci.py
+    python3 downloaders/wl_downloader_ci.py ||
+    python downloaders/wl_downloader_ci.py
 
 before_script:
   - cd src
@@ -51,11 +51,11 @@ before_script:
 # Run tests
 script:
   # Text processing
-  - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_sentence_tokenization.py
-  - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_word_tokenization.py
-  - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_word_detokenization.py
-  - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_pos_tagging.py
-  - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_lemmatization.py
-  - travis_wait pytest wordless_tests/wordless_text/wordless_text_processing/test_stop_words.py
+  - travis_wait pytest wl_tests/wl_text/wl_text_processing/test_sentence_tokenization.py
+  - travis_wait pytest wl_tests/wl_text/wl_text_processing/test_word_tokenization.py
+  - travis_wait pytest wl_tests/wl_text/wl_text_processing/test_word_detokenization.py
+  - travis_wait pytest wl_tests/wl_text/wl_text_processing/test_pos_tagging.py
+  - travis_wait pytest wl_tests/wl_text/wl_text_processing/test_lemmatization.py
+  - travis_wait pytest wl_tests/wl_text/wl_text_processing/test_stop_words.py
   # Others
-  - travis_wait pytest --ignore=wordless_tests/wordless_text/wordless_text_processing/
+  - travis_wait pytest --ignore=wl_tests/wl_text/wl_text_processing/
