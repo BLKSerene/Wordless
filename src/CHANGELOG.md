@@ -49,6 +49,7 @@
 - Dependencies: Upgrade Sacremoses to 0.0.43
 - Dependencies: Upgrade Stopwords ISO to 1.0.0
 - Dependencies: Upgrade syntok to 1.3.1
+- Dependencies: Upgrade WordCloud to 1.7.0
 
 ## [v1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0) - 11/30/2019
 
