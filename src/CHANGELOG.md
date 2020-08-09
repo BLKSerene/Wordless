@@ -29,6 +29,9 @@
 - Utils: Update Sacremoses's Moses tokenizer
 - Utils: Update Stopwords ISO's Greek and Norwegian stop words
 
+### 📌 Bugfixes
+- Overview: Fix batch processing of a large number of files
+
 ### ❌ Removals
 - Utils: Remove grk-stoplist's Greek (Ancient) stop words
 
