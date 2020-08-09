@@ -42,12 +42,14 @@
 - Dependencies: Upgrade jieba to 0.42.1
 - Dependencies: Upgrade nagisa to 0.2.6
 - Dependencies: Upgrade NLTK to 3.5
+- Dependencies: Upgrade NumPy to 1.19.1
 - Dependencies: Upgrade openpyxl to 3.0.4
 - Dependencies: Upgrade PyThaiNLP to 2.2.0
 - Dependencies: Upgrade Python to 3.7.7
 - Dependencies: Upgrade razdel to 0.5.0
 - Dependencies: Upgrade requests to 2.23.0
 - Dependencies: Upgrade Sacremoses to 0.0.43
+- Dependencies: Upgrade SciPy to 1.5.2
 - Dependencies: Upgrade Stopwords ISO to 1.0.0
 - Dependencies: Upgrade syntok to 1.3.1
 - Dependencies: Upgrade WordCloud to 1.7.0
