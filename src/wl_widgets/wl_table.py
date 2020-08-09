@@ -755,12 +755,11 @@ class Wl_Table_Data(Wl_Table):
 
     def insert_row(self, i, label,
                    is_int = False, is_float = False,
-                   is_pct = False, is_cumulative = False, is_breakdown = False):
+                   is_pct = False, is_cumulative = False):
         headers_int = [self.verticalHeaderItem(row).text() for row in self.headers_int]
         headers_float = [self.verticalHeaderItem(row).text() for row in self.headers_float]
         headers_pct = [self.verticalHeaderItem(row).text() for row in self.headers_pct]
         headers_cumulative = [self.verticalHeaderItem(row).text() for row in self.headers_cumulative]
-        cols_breakdown = [self.verticalHeaderItem(row).text() for row in self.cols_breakdown]
 
         super().insert_row(i, label)
 
@@ -772,14 +771,11 @@ class Wl_Table_Data(Wl_Table):
             headers_pct += [label]
         if is_cumulative:
             headers_cumulative += [label]
-        if is_breakdown:
-            headers_cumulative += [label]
 
         self.headers_int = set(self.find_row(headers_int))
         self.headers_float = set(self.find_row(headers_float))
         self.headers_pct = set(self.find_row(headers_pct))
         self.headers_cumulative = set(self.find_row(headers_cumulative))
-        self.cols_breakdown = set(self.find_row(cols_breakdown))
 
     def insert_col(self, i, label,
                    is_int = False, is_float = False,
