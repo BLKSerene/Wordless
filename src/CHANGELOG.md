@@ -40,6 +40,7 @@
 - Dependencies: Remove grk-stoplist
 - Dependencies: Upgrade botok to 0.7.5
 - Dependencies: Upgrade jieba to 0.42.1
+- Dependencies: Upgrade Matplotlib to 3.3.0
 - Dependencies: Upgrade nagisa to 0.2.6
 - Dependencies: Upgrade NLTK to 3.5
 - Dependencies: Upgrade NumPy to 1.19.1
