@@ -5,7 +5,7 @@ langdetect|https://github.com/Mimino666/langdetect|1.0.7|Michal Mimino Danilak|A
 langid.py|https://github.com/saffsd/langid.py|1.1.6|Marco Lui|BSD-2-Clause|https://github.com/saffsd/langid.py/blob/master/LICENSE
 lxml|https://lxml.de/|4.4.2|Stefan Behnel|BSD-3-Clause|https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt
 NumPy|https://www.numpy.org/|1.17.4|NumPy Developers|BSD-3-Clause|https://github.com/numpy/numpy/blob/master/LICENSE.txt
-openpyxl|https://openpyxl.readthedocs.io/en/stable/|3.0.2|Eric Gazoni, Charlie Clark|MIT|https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst
+openpyxl|https://openpyxl.readthedocs.io/en/stable/|3.0.4|Eric Gazoni, Charlie Clark|MIT|https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst
 python-docx|https://github.com/python-openxml/python-docx|0.8.10|Steve Canny|MIT|https://github.com/python-openxml/python-docx/blob/master/LICENSE
 requests|https://requests.readthedocs.io/|2.23.0|Kenneth Reitz|Apache-2.0|https://github.com/requests/requests/blob/master/LICENSE
 SciPy|https://scipy.org/scipylib/|1.3.3|SciPy Developers|BSD-3-Clause|https://github.com/scipy/scipy/blob/master/LICENSE.txt
