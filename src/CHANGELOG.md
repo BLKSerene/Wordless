@@ -42,6 +42,7 @@
 - Dependencies: Upgrade jieba to 0.42.1
 - Dependencies: Upgrade nagisa to 0.2.6
 - Dependencies: Upgrade NLTK to 3.5
+- Dependencies: Upgrade openpyxl to 3.0.4
 - Dependencies: Upgrade PyThaiNLP to 2.2.0
 - Dependencies: Upgrade Python to 3.7.7
 - Dependencies: Upgrade razdel to 0.5.0
