@@ -18,7 +18,7 @@ pytest
 # ---------- NLP ----------
 botok == 0.7.5
 jieba == 0.42.1
-nagisa == 0.2.6
+nagisa == 0.2.7
 nltk == 3.5
 opencc == 1.1.1
 
