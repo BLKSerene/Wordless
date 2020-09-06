@@ -46,6 +46,7 @@
 - Dependencies: Upgrade NumPy to 1.19.1
 - Dependencies: Upgrade openpyxl to 3.0.4
 - Dependencies: Upgrade PyQt to 5.15.0
+- Dependencies: Upgrade pytest to 6.0.1
 - Dependencies: Upgrade PyThaiNLP to 2.2.0
 - Dependencies: Upgrade Python to 3.7.7
 - Dependencies: Upgrade razdel to 0.5.0
