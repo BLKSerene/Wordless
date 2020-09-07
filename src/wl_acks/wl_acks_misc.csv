@@ -7,6 +7,6 @@ lxml|https://lxml.de/|4.5.2|Stefan Behnel|BSD-3-Clause|https://github.com/lxml/l
 NumPy|https://www.numpy.org/|1.19.1|NumPy Developers|BSD-3-Clause|https://github.com/numpy/numpy/blob/master/LICENSE.txt
 openpyxl|https://openpyxl.readthedocs.io/en/stable/|3.0.4|Eric Gazoni, Charlie Clark|MIT|https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst
 python-docx|https://github.com/python-openxml/python-docx|0.8.10|Steve Canny|MIT|https://github.com/python-openxml/python-docx/blob/master/LICENSE
-requests|https://requests.readthedocs.io/|2.23.0|Kenneth Reitz|Apache-2.0|https://github.com/requests/requests/blob/master/LICENSE
+requests|https://requests.readthedocs.io/|2.24.0|Kenneth Reitz|Apache-2.0|https://github.com/requests/requests/blob/master/LICENSE
 SciPy|https://scipy.org/scipylib/|1.5.2|SciPy Developers|BSD-3-Clause|https://github.com/scipy/scipy/blob/master/LICENSE.txt
 xlrd|https://github.com/python-excel/xlrd|1.2.0|Stephen John Machin|BSD-3-Clause/BSD-4-Clause|https://github.com/python-excel/xlrd/blob/master/LICENSE
