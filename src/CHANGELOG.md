@@ -47,7 +47,7 @@
 - Dependencies: Upgrade NetworkX to 2.5
 - Dependencies: Upgrade NLTK to 3.5
 - Dependencies: Upgrade NumPy to 1.19.1
-- Dependencies: Upgrade openpyxl to 3.0.4
+- Dependencies: Upgrade openpyxl to 3.0.5
 - Dependencies: Upgrade PyQt to 5.15.0
 - Dependencies: Upgrade pytest to 6.0.1
 - Dependencies: Upgrade PyThaiNLP to 2.2.0
