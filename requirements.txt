@@ -16,7 +16,7 @@ pyqt5
 pytest
 
 # ---------- NLP ----------
-botok == 0.7.5
+botok == 0.8.1
 jieba == 0.42.1
 nagisa == 0.2.7
 nltk == 3.5
