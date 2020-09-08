@@ -103,11 +103,14 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
     elif lang == 'lit':
         assert text == 'Lietuvių kalba – iš baltų prokalbės kilusi lietuvių tautos kalba, kuri Lietuvoje yra valstybinė, o Europos Sąjungoje – viena iš oficialiųjų kalbų.'
     elif lang == 'pol':
-        assert text == 'Język polski, polszczyzna, skrót: pol. – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
+        if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
+            assert text == 'Język polski, polszczyzna, skrót: pol . – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
+        elif word_detokenizer == 'pol / Sacremoses - Moses Detokenizer':
+            assert text == 'Język polski, polszczyzna, skrót: pol. – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
     elif lang == 'por':
         assert text == 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.'
     elif lang == 'ron':
-        assert text == 'Limba română este o limbă indo - europeană, din grupul italic și din subgrupul oriental al limbilor romanice.'
+        assert text == 'Limba română este o limbă indo-europeană, din grupul italic și din subgrupul oriental al limbilor romanice.'
     elif lang == 'rus':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
             assert text == 'Ру́сский язы́к ([ ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать) [~ 3] [⇨] — один из восточнославянских языков, национальный язык русского народа.'

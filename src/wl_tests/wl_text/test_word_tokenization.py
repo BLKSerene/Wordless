@@ -253,22 +253,15 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
         if word_tokenizer in ['NLTK - NIST Tokenizer',
                               'NLTK - NLTK Tokenizer',
                               'NLTK - Penn Treebank Tokenizer',
-                              'NLTK - Twitter Tokenizer']:
+                              'NLTK - Twitter Tokenizer',
+                              'spaCy - Polish Word Tokenizer']:
             assert tokens == ['Język', 'polski', ',', 'polszczyzna', ',', 'skrót', ':', 'pol', '.', '–', 'język', 'naturalny', 'należący', 'do', 'grupy', 'języków', 'zachodniosłowiańskich', '(', 'do', 'której', 'należą', 'również', 'czeski', ',', 'słowacki', ',', 'kaszubski', ',', 'dolnołużycki', ',', 'górnołużycki', 'i', 'wymarły', 'połabski', ')', ',', 'stanowiącej', 'część', 'rodziny', 'języków', 'indoeuropejskich', '.']
-        elif word_tokenizer in ['Sacremoses - Moses Tokenizer',
-                                'spaCy - Polish Word Tokenizer']:
+        elif word_tokenizer == 'Sacremoses - Moses Tokenizer':
             assert tokens == ['Język', 'polski', ',', 'polszczyzna', ',', 'skrót', ':', 'pol.', '–', 'język', 'naturalny', 'należący', 'do', 'grupy', 'języków', 'zachodniosłowiańskich', '(', 'do', 'której', 'należą', 'również', 'czeski', ',', 'słowacki', ',', 'kaszubski', ',', 'dolnołużycki', ',', 'górnołużycki', 'i', 'wymarły', 'połabski', ')', ',', 'stanowiącej', 'część', 'rodziny', 'języków', 'indoeuropejskich', '.']
     elif lang == 'por':
         assert tokens == ['A', 'língua', 'portuguesa', ',', 'também', 'designada', 'português', ',', 'é', 'uma', 'língua', 'românica', 'flexiva', 'ocidental', 'originada', 'no', 'galego-português', 'falado', 'no', 'Reino', 'da', 'Galiza', 'e', 'no', 'norte', 'de', 'Portugal', '.']
     elif lang == 'ron':
-        if word_tokenizer in ['NLTK - NIST Tokenizer',
-                              'NLTK - NLTK Tokenizer',
-                              'NLTK - Penn Treebank Tokenizer',
-                              'NLTK - Twitter Tokenizer',
-                              'Sacremoses - Moses Tokenizer']:
-            assert tokens == ['Limba', 'română', 'este', 'o', 'limbă', 'indo-europeană', ',', 'din', 'grupul', 'italic', 'și', 'din', 'subgrupul', 'oriental', 'al', 'limbilor', 'romanice', '.']
-        elif word_tokenizer == 'spaCy - Romanian Word Tokenizer':
-            assert tokens == ['Limba', 'română', 'este', 'o', 'limbă', 'indo', '-', 'europeană', ',', 'din', 'grupul', 'italic', 'și', 'din', 'subgrupul', 'oriental', 'al', 'limbilor', 'romanice', '.']
+        assert tokens == ['Limba', 'română', 'este', 'o', 'limbă', 'indo-europeană', ',', 'din', 'grupul', 'italic', 'și', 'din', 'subgrupul', 'oriental', 'al', 'limbilor', 'romanice', '.']
     elif lang == 'rus':
         if word_tokenizer in ['NLTK - NIST Tokenizer',
                               'NLTK - NLTK Tokenizer',
