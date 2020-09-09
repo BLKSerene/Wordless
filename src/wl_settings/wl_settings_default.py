@@ -11,20 +11,10 @@
 
 from wl_tagsets import (
     wl_tagset_universal,
-    wl_tagset_nld_spacy,
     wl_tagset_eng_penn_treebank,
-    wl_tagset_eng_penn_treebank_onto_notes_5,
-    wl_tagset_fra_spacy,
-    wl_tagset_deu_tiger_treebank,
-    wl_tagset_ell_spacy,
-    wl_tagset_ita_spacy,
     wl_tagset_jpn_unidic,
-    wl_tagset_lit_spacy,
-    wl_tagset_nob_spacy,
-    wl_tagset_por_spacy,
     wl_tagset_rus_open_corpora,
     wl_tagset_rus_russian_national_corpus,
-    wl_tagset_spa_spacy,
     wl_tagset_tha_orchid,
     wl_tagset_bod_botok,
     wl_tagset_vie_underthesea,
@@ -1274,78 +1264,41 @@ def init_settings_default(main):
 
             'mappings': {
                 'zho_cn': {
-                    main.tr('jieba - Chinese POS Tagger'): wl_tagset_zho_jieba.mappings
+                    main.tr('jieba - Chinese POS Tagger'): wl_tagset_zho_jieba.MAPPINGS
                 },
 
                 'zho_tw': {
-                    main.tr('jieba - Chinese POS Tagger'): wl_tagset_zho_jieba.mappings
+                    main.tr('jieba - Chinese POS Tagger'): wl_tagset_zho_jieba.MAPPINGS
                 },
 
-                'nld': {
-                    main.tr('spaCy - Dutch POS Tagger'): wl_tagset_nld_spacy.mappings
-                },
-                
                 'eng': {
-                    main.tr('NLTK - Perceptron POS Tagger'): wl_tagset_eng_penn_treebank.mappings,
-                    main.tr('spaCy - English POS Tagger'): wl_tagset_eng_penn_treebank_onto_notes_5.mappings
-                },
-
-                'fra': {
-                    main.tr('spaCy - French POS Tagger'): wl_tagset_fra_spacy.mappings
-                },
-
-                'deu': {
-                    main.tr('spaCy - German POS Tagger'): wl_tagset_deu_tiger_treebank.mappings
-                },
-
-                'ell': {
-                    main.tr('spaCy - Greek (Modern) POS Tagger'): wl_tagset_ell_spacy.mappings
-                },
-
-                'ita': {
-                    main.tr('spaCy - Italian POS Tagger'): wl_tagset_ita_spacy.mappings
+                    main.tr('NLTK - Perceptron POS Tagger'): wl_tagset_eng_penn_treebank.MAPPINGS,
                 },
 
                 'jpn': {
-                    main.tr('nagisa - Japanese POS Tagger'): wl_tagset_jpn_unidic.mappings
-                },
-
-                'lit': {
-                    main.tr('spaCy - Lithuanian POS Tagger'): wl_tagset_lit_spacy.mappings
-                },
-
-                'nob': {
-                    main.tr('spaCy - Norwegian Bokmål POS Tagger'): wl_tagset_nob_spacy.mappings
-                },
-
-                'por': {
-                    main.tr('spaCy - Portuguese POS Tagger'): wl_tagset_por_spacy.mappings
+                    main.tr('nagisa - Japanese POS Tagger'): wl_tagset_jpn_unidic.MAPPINGS
                 },
 
                 'rus': {
-                    main.tr('NLTK - Perceptron POS Tagger'): wl_tagset_rus_russian_national_corpus.mappings,
-                    main.tr('pymorphy2 - Morphological Analyzer'): wl_tagset_rus_open_corpora.mappings
-                },
-
-                'spa': {
-                    main.tr('spaCy - Spanish POS Tagger'): wl_tagset_spa_spacy.mappings
+                    main.tr('NLTK - Perceptron POS Tagger'): wl_tagset_rus_russian_national_corpus.MAPPINGS,
+                    main.tr('pymorphy2 - Morphological Analyzer'): wl_tagset_rus_open_corpora.MAPPINGS
                 },
 
                 'tha': {
-                    main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'): wl_tagset_tha_orchid.mappings,
-                    main.tr('PyThaiNLP - Perceptron Tagger (PUD)'): wl_tagset_universal.mappings
+                    main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'): wl_tagset_tha_orchid.MAPPINGS,
+                    main.tr('PyThaiNLP - Perceptron Tagger (PUD)'): wl_tagset_universal.MAPPINGS
                 },
 
                 'bod': {
-                    main.tr('botok - Tibetan POS Tagger'): wl_tagset_bod_botok.mappings
+                    main.tr('botok - Tibetan POS Tagger'): wl_tagset_bod_botok.MAPPINGS
                 },
 
                 'ukr': {
-                    main.tr('pymorphy2 - Morphological Analyzer'): wl_tagset_rus_open_corpora.mappings
+                    main.tr('pymorphy2 - Morphological Analyzer'): wl_tagset_rus_open_corpora.MAPPINGS
                 },
 
                 'vie': {
-                    main.tr('Underthesea - Vietnamese POS Tagger'): wl_tagset_vie_underthesea.mappings
+                    main.tr('Underthesea - Vietnamese POS Tagger'): wl_tagset_vie_underthesea.MAPPINGS
                 }
             }
         },

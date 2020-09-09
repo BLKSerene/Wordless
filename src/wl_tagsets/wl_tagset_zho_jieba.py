@@ -15,7 +15,7 @@
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
-mappings = [
+MAPPINGS = [
     ['a', 'ADJ', '形容词', ''],
     ['ad', 'ADJ', '副形词', ''],
     ['ag', 'ADJ', '形容词性语素', ''],
