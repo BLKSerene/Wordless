@@ -13,6 +13,7 @@ import nltk
 import spacy
 
 # Download spaCy models
+spacy.cli.download('da_core_news_sm')
 spacy.cli.download('nl_core_news_sm')
 spacy.cli.download('en_core_web_sm')
 spacy.cli.download('fr_core_news_sm')
