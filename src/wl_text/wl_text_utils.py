@@ -161,6 +161,7 @@ SRP_LATN_TO_CYRL_DIGRAPHS = {
 
 def check_spacy_models(main, lang, pipeline):
     spacy_langs = {
+        'dan': 'da_core_news_sm',
         'nld': 'nl_core_news_sm',
         'eng': 'en_core_web_sm',
         'fra': 'fr_core_news_sm',

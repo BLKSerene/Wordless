@@ -426,7 +426,7 @@ Chinese (Simplified) |✔|✔️|✔️|✔️|✖️|✔️
 Chinese (Traditional)|✔|✔️|✔️|✔️|✖️|✔️
 Croatian             |✔|✔️|⭕️ |✖️|✖️|✔️
 Czech                |✔|✔️|✔️|✖️|✔️|✔️
-Danish               |✔|✔️|⭕️ |✖️|✖️|✔️
+Danish               |✔|✔️|⭕️ |✔️|✔️|✔️
 Dutch                |✔|✔️|✔️|✔️|✔️|✔️
 English              |✔|✔️|✔️|✔️|✔️|✔️
 Esperanto            |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
