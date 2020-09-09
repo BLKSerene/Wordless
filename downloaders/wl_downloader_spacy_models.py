@@ -15,6 +15,7 @@ import subprocess
 import sys
 
 langs = [
+    ['Danish'          , 'dan', 'da'],
     ['Dutch'           , 'nld', 'nl'],
     ['English'         , 'eng', 'en'],
     ['French'          , 'fra', 'fr'],
@@ -27,6 +28,7 @@ langs = [
     ['Spanish'         , 'spa', 'es']
 ]
 
+model_name_dan = 'core_news_sm'
 model_name_nld = 'core_news_sm'
 model_name_eng = 'core_web_sm'
 model_name_fra = 'core_news_sm'
@@ -38,31 +40,17 @@ model_name_nob = 'core_news_sm'
 model_name_por = 'core_news_sm'
 model_name_spa = 'core_news_sm'
 
-model_ver_nld = '2.2.5'
-model_ver_eng = '2.2.5'
-model_ver_fra = '2.2.5'
-model_ver_deu = '2.2.5'
-model_ver_ell = '2.2.5'
-model_ver_ita = '2.2.5'
-model_ver_lit = '2.2.5'
-model_ver_nob = '2.2.5'
-model_ver_por = '2.2.5'
-model_ver_spa = '2.2.5'
-
-for _, lang_code_639_3, _ in langs:
-    globals()[f'updates_available_{lang_code_639_3}'] = False
-
-# Check updates
-for lang_text, lang_code_639_3, lang_code_639_1 in langs:
-    try:
-        model_name = globals()[f'model_name_{lang_code_639_3}']
-        model = importlib.import_module(f'{lang_code_639_1}_{model_name}')
-
-        if model.__version__ != globals()[f'model_ver_{lang_code_639_3}']:
-            globals()[f'updates_available_{lang_code_639_3}'] = True
-
-    except:
-        globals()[f'updates_available_{lang_code_639_3}'] = True
+model_ver_dan = '2.3.0'
+model_ver_nld = '2.3.0'
+model_ver_eng = '2.3.1'
+model_ver_fra = '2.3.0'
+model_ver_deu = '2.3.0'
+model_ver_ell = '2.3.0'
+model_ver_ita = '2.3.0'
+model_ver_lit = '2.3.0'
+model_ver_nob = '2.3.0'
+model_ver_por = '2.3.0'
+model_ver_spa = '2.3.1'
 
 # Download models
 for lang_text, lang_code_639_3, lang_code_639_1 in langs:
