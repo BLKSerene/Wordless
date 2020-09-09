@@ -20,9 +20,11 @@
 - Utils: Add Stopwords ISO's Gujarati and Lithuanian stop words
 
 ### ✨ Improvements
+- Menu: Disable editing of POS tag mappings for spaCy's POS taggers
 - Utils: Update botok's Tibetan word tokenizer, POS tagger, and lemmatizer
 - Utils: Update lists of Chinese (Traditional) stop words
 - Utils: Update NLTK's word tokenizers
+- Utils: Update POS tag mappings for spaCy's POS taggers
 - Utils: Update PyThaiNLP's CRFCut
 - Utils: Update PyThaiNLP's POS taggers
 - Utils: Update PyThaiNLP's Thai word tokenizers

@@ -15,7 +15,7 @@
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
-mappings = [
+MAPPINGS = [
     ['S', 'NOUN', 'Noun', ''],
 
     ['S=m', 'NOUN', 'Noun (masculine)', ''],

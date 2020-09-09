@@ -15,7 +15,7 @@
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
-mappings = [
+MAPPINGS = [
     ['A', 'ADJ', 'Tính từ', 'nhiều, hơn, khác, gần, lớn'],
     ['Ab', 'ADJ', 'Tính từ mượn', 'sexy, Peace, đờmi'],
     ['B', 'X', 'Từ mượn', 'karaoke, nilông, fax, oxy'],
