@@ -1220,6 +1220,10 @@ def init_settings_global(main):
                 main.tr('jieba - Chinese POS Tagger')
             ],
 
+            'dan': [
+                main.tr('spaCy - Danish POS Tagger'),
+            ],
+
             'nld': [
                 main.tr('spaCy - Dutch POS Tagger')
             ],
@@ -1303,6 +1307,10 @@ def init_settings_global(main):
 
             'ces': [
                 main.tr('Lemmatization Lists - Czech Lemma List')
+            ],
+
+            'dan': [
+                main.tr('spaCy - Danish Lemmatizer')
             ],
 
             'nld': [
