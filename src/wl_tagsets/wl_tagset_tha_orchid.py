@@ -15,7 +15,7 @@
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
-mappings = [
+MAPPINGS = [
     ['NPRP', 'PROPN', 'Proper noun', ''],
     
     ['NCNM', 'NUM', 'Cardinal number', ''],
