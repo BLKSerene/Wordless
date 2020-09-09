@@ -1213,6 +1213,7 @@ def init_settings_default(main):
             'pos_taggers': {
                 'zho_cn': main.tr('jieba - Chinese POS Tagger'),
                 'zho_tw':  main.tr('jieba - Chinese POS Tagger'),
+                'dan': main.tr('spaCy - Danish POS Tagger'),
                 'nld': main.tr('spaCy - Dutch POS Tagger'),
                 'eng': main.tr('spaCy - English POS Tagger'),
                 'fra': main.tr('spaCy - French POS Tagger'),
@@ -1244,6 +1245,7 @@ def init_settings_default(main):
             'preview_pos_tagger': {
                 'zho_cn': main.tr('jieba - Chinese POS Tagger'),
                 'zho_tw': main.tr('jieba - Chinese POS Tagger'),
+                'dan': main.tr('spaCy - Danish POS Tagger'),
                 'nld': main.tr('spaCy - Dutch POS Tagger'),
                 'eng': main.tr('spaCy - English POS Tagger'),
                 'fra': main.tr('spaCy - French POS Tagger'),
@@ -1309,6 +1311,7 @@ def init_settings_default(main):
                 'bul': main.tr('Lemmatization Lists - Bulgarian Lemma List'),
                 'cat': main.tr('Lemmatization Lists - Catalan Lemma List'),
                 'ces': main.tr('Lemmatization Lists - Czech Lemma List'),
+                'dan': main.tr('spaCy - Danish Lemmatizer'),
                 'nld': main.tr('spaCy - Dutch Lemmatizer'),
                 'eng': main.tr('spaCy - English Lemmatizer'),
                 'est': main.tr('Lemmatization Lists - Estonian Lemma List'),
