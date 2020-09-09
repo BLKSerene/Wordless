@@ -17,6 +17,7 @@
 - Utils: Add botok's Tibetan sentence tokenizer
 - Utils: Add NLTK's NLTK tokenizer
 - Utils: Add PyThaiNLP's maximum matching + TCC (safe mode)
+- Utils: Add spaCy's Danish POS tagger and lemmatizer
 - Utils: Add Stopwords ISO's Gujarati and Lithuanian stop words
 
 ### ✨ Improvements
