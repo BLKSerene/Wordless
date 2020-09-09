@@ -15,7 +15,7 @@
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
-mappings = [
+MAPPINGS = [
     ['NOUN', 'NOUN', 'Noun', 'хомяк'],
     ['ADJF', 'ADJ', 'Adjective (full)', 'хороший'],
     ['ADJS', 'ADJ', 'Adjective (short)', 'хорош'],

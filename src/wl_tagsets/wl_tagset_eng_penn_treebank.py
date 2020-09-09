@@ -15,7 +15,7 @@
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
-mappings = [
+MAPPINGS = [
     ['CC', 'CCONJ', 'Coordinating conjunction', ''],
     ['CD', 'NUM', 'Cardinal number', ''],
     ['DT', 'DET', 'Determiner', ''],

@@ -341,27 +341,37 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
 
         settings_custom['preview_pos_tagger'][settings_custom['preview_lang']] = self.combo_box_tagsets_pos_tagger.currentText()
 
-        self.combo_box_tagsets_lang.setEnabled(False)
-        self.combo_box_tagsets_pos_tagger.setEnabled(False)
-        self.button_tagsets_reset.setEnabled(False)
-        self.button_tagsets_reset_all.setEnabled(False)
+        if settings_custom['preview_pos_tagger'][settings_custom['preview_lang']].find('spaCy') == -1:
+            self.combo_box_tagsets_lang.setEnabled(False)
+            self.combo_box_tagsets_pos_tagger.setEnabled(False)
+            self.button_tagsets_reset.setEnabled(False)
+            self.button_tagsets_reset_all.setEnabled(False)
+            self.table_mappings.setEnabled(True)
 
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Fetch_Data(self.main)
+            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Fetch_Data(self.main)
 
-        worker_fetch_data = Wl_Worker_Fetch_Data_Tagsets(
-            self.main,
-            dialog_progress = dialog_progress,
-            update_gui = self.update_gui
-        )
+            worker_fetch_data = Wl_Worker_Fetch_Data_Tagsets(
+                self.main,
+                dialog_progress = dialog_progress,
+                update_gui = self.update_gui
+            )
 
-        thread_fetch_data = wl_threading.Wl_Thread(worker_fetch_data)
-        thread_fetch_data.start()
+            thread_fetch_data = wl_threading.Wl_Thread(worker_fetch_data)
+            thread_fetch_data.start()
 
-        dialog_progress.show()
-        dialog_progress.raise_()
+            dialog_progress.show()
+            dialog_progress.raise_()
 
-        thread_fetch_data.quit()
-        thread_fetch_data.wait()
+            thread_fetch_data.quit()
+            thread_fetch_data.wait()
+        else:
+            self.label_tagsets_num_pos_tags.setText(self.tr('* This POS tagger does not support custom mappings.'))
+
+            self.button_tagsets_reset.setEnabled(False)
+            self.button_tagsets_reset_all.setEnabled(False)
+
+            self.table_mappings.clear_table()
+            self.table_mappings.setEnabled(False)
 
     def update_gui(self, mappings):
         self.table_mappings.hide()
@@ -411,7 +421,7 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
         self.table_mappings.itemChanged.emit(self.table_mappings.item(0, 0))
 
         # Disable editing if the default tagset is Universal POS tags
-        if mappings == wl_tagset_universal.mappings:
+        if mappings == wl_tagset_universal.MAPPINGS:
             for i in range(self.table_mappings.rowCount()):
                 self.table_mappings.cellWidget(i, 1).setEnabled(False)
 
