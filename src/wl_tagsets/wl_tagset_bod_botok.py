@@ -15,7 +15,7 @@
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
-mappings = [
+MAPPINGS = [
     ['ADJ', 'ADJ', 'Adjectives', ''],
     ['ADP', 'ADP', 'Adposition', ''],
     ['ADV', 'ADV', 'Adverb', ''],

@@ -13,7 +13,7 @@
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
-mappings = [
+MAPPINGS = [
     ['ADJ', 'ADJ', 'Adjectives', 'big, old, green, African, incomprehensible\nfirst, second, third'],
     ['ADP', 'ADP', 'Adposition', 'in, to, during'],
     ['ADV', 'ADV', 'Adverb', 'very, well, exactly, tomorrow, up, down\nwhere, when, how, why\nhere, there, now, then\nsomewhere, sometime, anywhere, anytime\neverywhere, always\nnowhere, never'],

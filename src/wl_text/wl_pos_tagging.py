@@ -50,7 +50,10 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'custom'):
         doc = spacy.tokens.Doc(nlp.vocab, words = tokens)
         nlp.tagger(doc)
 
-        tokens_tagged = [(token.text, token.tag_) for token in doc]
+        if tagset == 'custom':
+            tokens_tagged = [(token.text, token.tag_) for token in doc]
+        elif tagset == 'universal':
+            tokens_tagged = [(token.text, token.pos_) for token in doc]
 
     # English & Russian
     elif pos_tagger == main.tr('NLTK - Perceptron POS Tagger'):
@@ -95,20 +98,21 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'custom'):
         tokens_tagged = underthesea.pos_tag(' '.join(tokens))
 
     # Convert to Universal Tagset
-    if (tagset == 'custom' and main.settings_custom['pos_tagging']['to_universal_pos_tags'] or
-        tagset == 'universal'):
+    if pos_tagger.find('spaCy') == -1:
+        if (tagset == 'custom' and main.settings_custom['pos_tagging']['to_universal_pos_tags'] or
+            tagset == 'universal'):
 
-        mappings = {tag: tag_universal
-                    for tag, tag_universal, _, _ in main.settings_custom['tagsets']['mappings'][lang][pos_tagger]}
-        tokens_tagged = list(tokens_tagged)
+            mappings = {tag: tag_universal
+                        for tag, tag_universal, _, _ in main.settings_custom['tagsets']['mappings'][lang][pos_tagger]}
+            tokens_tagged = list(tokens_tagged)
 
-        # Issue warnings if any tag is missing from the mapping table
-        for _, tag in tokens_tagged:
-            if tag not in mappings:
-                print(f'Warning: tag "{tag}" is missing from the {wl_conversion.to_lang_text(main, lang)} mapping table!')
+            # Issue warnings if any tag is missing from the mapping table
+            for _, tag in tokens_tagged:
+                if tag not in mappings:
+                    print(f'Warning: tag "{tag}" is missing from the {wl_conversion.to_lang_text(main, lang)} mapping table!')
 
-        tokens_tagged = [(token, mappings.get(tag, 'X'))
-                         for token, tag in tokens_tagged]
+            tokens_tagged = [(token, mappings.get(tag, 'X'))
+                             for token, tag in tokens_tagged]
 
     # Strip empty tokens and strip whitespace in tokens
     tokens_tagged = [(token.strip(), tag)
