@@ -15,7 +15,7 @@
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
-mappings = [
+MAPPINGS = [
     ['代名詞', 'PRON', 'Pronoun', ''],
     ['副詞', 'ADV', 'Adverb', ''],
     ['助動詞', 'AUX', 'Auxiliary verb', ''],
