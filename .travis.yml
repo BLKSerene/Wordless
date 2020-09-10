@@ -38,7 +38,7 @@ install:
   - python3 --version || python --version
   # Install dependencies
   - python3 -m pip install --upgrade pip || python -m pip install --upgrade pip
-  - pip3 install -r requirements.txt
+  - pip3 install --requirement requirements.txt --quiet
   # Download data
   - >-
     python3 downloaders/wl_downloader_ci.py ||
