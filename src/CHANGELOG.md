@@ -19,6 +19,7 @@
 - Utils: Add PyThaiNLP's maximum matching + TCC (safe mode)
 - Utils: Add spaCy's Danish POS tagger and lemmatizer
 - Utils: Add spaCy's Polish POS tagger and lemmatizer
+- Utils: Add spaCy's Romanian POS tagger and lemmatizer
 - Utils: Add Stopwords ISO's Gujarati and Lithuanian stop words
 
 ### ✨ Improvements

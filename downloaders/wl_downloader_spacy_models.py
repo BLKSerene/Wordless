@@ -24,8 +24,9 @@ langs = [
     ['Italian'         , 'ita', 'it'],
     ['Lithuanian'      , 'lit', 'lt'],
     ['Norwegian Bokmål', 'nob', 'nb'],
-    ['Polish',           'pol', 'pl'],
+    ['Polish'          , 'pol', 'pl'],
     ['Portuguese'      , 'por', 'pt'],
+    ['Romanian'        , 'ron', 'ro'],
     ['Spanish'         , 'spa', 'es']
 ]
 
@@ -40,6 +41,7 @@ model_name_lit = 'core_news_sm'
 model_name_nob = 'core_news_sm'
 model_name_pol = 'core_news_sm'
 model_name_por = 'core_news_sm'
+model_name_ron = 'core_news_sm'
 model_name_spa = 'core_news_sm'
 
 model_ver_dan = '2.3.0'
@@ -53,6 +55,7 @@ model_ver_lit = '2.3.0'
 model_ver_nob = '2.3.0'
 model_ver_pol = '2.3.0'
 model_ver_por = '2.3.0'
+model_ver_ron = '2.3.1'
 model_ver_spa = '2.3.1'
 
 # Download models
