@@ -1261,6 +1261,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Norwegian Bokmål POS Tagger')
             ],
 
+            'pol': [
+                main.tr('spaCy - Polish POS Tagger'),
+            ],
+
             'por': [
                 main.tr('spaCy - Portuguese POS Tagger')
             ],
@@ -1376,6 +1380,10 @@ def init_settings_global(main):
 
             'fas': [
                 main.tr('Lemmatization Lists - Persian Lemma List')
+            ],
+
+            'pol': [
+                main.tr('spaCy - Polish Lemmatizer')
             ],
 
             'por': [
