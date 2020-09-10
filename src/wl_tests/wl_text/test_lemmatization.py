@@ -99,6 +99,8 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
         assert lemmas == ['Bokmål', 'er', 'en', 'varietet', 'av', 'norsk', 'språk', '.']
     elif lang == 'fas':
         assert lemmas == ['فارسی', 'یا', 'پارسی', 'یکی', 'از', 'زبان\u200cهای', 'هندواروپایی', 'در', 'شاخهٔ', 'زبان\u200cهای', 'ایرانی', 'جنوب', 'غربی', 'است', 'که', 'در', 'کشورهای', 'ایران', '،', 'افغانستان،[۳', ']', 'تاجیکستان[۴', ']', 'را', 'ازبکستان[۵', ']', 'به', 'آن', 'سخن', 'می\u200cگویند', '.']
+    elif lang == 'pol':
+        assert lemmas == ['język', 'polski', ',', 'polszczyzna', ',', 'skrót', ':', 'pol', '.', '–', 'język', 'naturalny', 'należeć', 'do', 'grupa', 'język', 'zachodniosłowiańskich', '(', 'do', 'który', 'należeć', 'również', 'czeski', ',', 'słowacki', ',', 'kaszubski', ',', 'dolnołużycki', ',', 'górnołużycki', 'i', 'wymarły', 'połabski', ')', ',', 'stanowić', 'część', 'rodzina', 'język', 'indoeuropejski', '.']
     elif lang == 'por':
         assert lemmas == ['A', 'língua', 'portuguesar', ',', 'também', 'designar', 'português', ',', 'ser', 'umar', 'língua', 'românico', 'flexivo', 'ocidental', 'originar', 'o', 'galego-português', 'falar', 'o', 'Reino', 'da', 'Galiza', 'e', 'o', 'norte', 'de', 'Portugal', '.']
     elif lang == 'ron':
