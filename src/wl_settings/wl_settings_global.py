@@ -1269,6 +1269,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Portuguese POS Tagger')
             ],
 
+            'ron': [
+                main.tr('spaCy - Romanian POS Tagger')
+            ],
+
             'rus': [
                 main.tr('NLTK - Perceptron POS Tagger'),
                 main.tr('pymorphy2 - Morphological Analyzer')
@@ -1392,7 +1396,8 @@ def init_settings_global(main):
             ],
 
             'ron': [
-                main.tr('Lemmatization Lists - Romanian Lemma List')
+                main.tr('Lemmatization Lists - Romanian Lemma List'),
+                main.tr('spaCy - Romanian Lemmatizer')
             ],
 
             'rus': [
