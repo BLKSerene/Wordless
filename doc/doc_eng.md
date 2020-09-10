@@ -465,7 +465,7 @@ Norwegian Nynorsk    |✔|⭕️ |⭕️ |✖️|✖️|✔️
 Persian              |✔|✔️|⭕️ |✖️|✔️|✔️
 Polish               |✔|✔️|✔️|✔️|✔️|✔️
 Portuguese           |✔|✔️|✔️|✔️|✔️|✔️
-Romanian             |✔|✔️|✔️|✖️|✔️|✔️
+Romanian             |✔|✔️|✔️|✔️|✔️|✔️
 Russian              |✔️|✔️|✔️|✔️|✔️|✔️
 Scottish Gaelic      |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
 Serbian (Cyrillic)   |⭕️ |✔️|⭕️ |✖️|✖️|✔️
