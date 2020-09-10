@@ -463,7 +463,7 @@ Nepali               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Norwegian Bokmål     |✔|✔️|⭕️ |✔️|✔️|✔️
 Norwegian Nynorsk    |✔|⭕️ |⭕️ |✖️|✖️|✔️
 Persian              |✔|✔️|⭕️ |✖️|✔️|✔️
-Polish               |✔|✔️|✔️|✖️|✖️|✔️
+Polish               |✔|✔️|✔️|✔️|✔️|✔️
 Portuguese           |✔|✔️|✔️|✔️|✔️|✔️
 Romanian             |✔|✔️|✔️|✖️|✔️|✔️
 Russian              |✔️|✔️|✔️|✔️|✔️|✔️
