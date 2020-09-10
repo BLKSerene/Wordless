@@ -170,6 +170,7 @@ def check_spacy_models(main, lang, pipeline):
         'ita': 'it_core_news_sm',
         'lit': 'lt_core_news_sm',
         'nob': 'nb_core_news_sm',
+        'pol': 'pl_core_news_sm',
         'por': 'pt_core_news_sm',
         'spa': 'es_core_news_sm',
         'other': 'en_core_web_sm'
