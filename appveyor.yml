@@ -39,7 +39,7 @@ install:
   - python --version
   # Install dependencies
   - python -m pip install --upgrade pip
-  - pip install -r requirements.txt
+  - pip install --requirement requirements.txt
   # Download data
   - python downloaders/wl_downloader_ci.py
 
