@@ -24,6 +24,7 @@ spacy.cli.download('lt_core_news_sm')
 spacy.cli.download('nb_core_news_sm')
 spacy.cli.download('pl_core_news_sm')
 spacy.cli.download('pt_core_news_sm')
+spacy.cli.download('ro_core_news_sm')
 spacy.cli.download('es_core_news_sm')
 
 # Download NLTK data
