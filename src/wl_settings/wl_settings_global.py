@@ -431,6 +431,14 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentencizer')
             ],
 
+            'hye': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'eus': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'ben': [
                 main.tr('spaCy - Sentencizer')
             ],
@@ -499,6 +507,10 @@ def init_settings_global(main):
 
             'ell': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentencizer')
+            ],
+
+            'guj': [
                 main.tr('spaCy - Sentencizer')
             ],
 
@@ -677,6 +689,18 @@ def init_settings_global(main):
                 main.tr('spaCy - Arabic Word Tokenizer')
             ],
 
+            'hye': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('spaCy - Armenian Word Tokenizer')
+            ],
+
+            'eus': [
+                main.tr('spaCy - Basque Word Tokenizer')
+            ],
+
             'ben': [
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NLTK Tokenizer'),
@@ -758,6 +782,10 @@ def init_settings_global(main):
                 main.tr('syntok - Word Tokenizer')
             ],
 
+            'est': [
+                main.tr('spaCy - Estonian Word Tokenizer')
+            ],
+
             'fin': [
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Finnish Word Tokenizer')
@@ -791,6 +819,10 @@ def init_settings_global(main):
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Greek (Modern) Word Tokenizer')
+            ],
+
+            'guj': [
+                main.tr('spaCy - Gujarati Word Tokenizer')
             ],
 
             'heb': [
@@ -855,7 +887,8 @@ def init_settings_global(main):
                 main.tr('NLTK - NLTK Tokenizer'),
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer')
+                main.tr('Sacremoses - Moses Tokenizer'),
+                main.tr('spaCy - Latvian Word Tokenizer')
             ],
 
             'lit': [
