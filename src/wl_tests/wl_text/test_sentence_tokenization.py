@@ -96,6 +96,8 @@ def test_sentence_tokenize(lang, sentence_tokenizer, show_results = False):
             assert sentences == ['Ihr Sprachraum umfasst Deutschland, Österreich, die Deutschschweiz, Liechtenstein, Luxemburg, Ostbelgien, Südtirol, das Elsass und Lothringen sowie Nordschleswig.', 'Außerdem ist sie eine Minderheitensprache in einigen europäischen und außereuropäischen Ländern, z. B. in Rumänien und Südafrika, sowie Nationalsprache im afrikanischen Namibia.']
     elif lang == 'ell':
         assert sentences == ['Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[9] και συγκεκριμένα στον ελληνικό κλάδο, μαζί με την τσακωνική, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.', 'Ανήκει επίσης στον βαλκανικό γλωσσικό δεσμό.', 'Στην ελληνική γλώσσα, έχουμε γραπτά κείμενα ήδη από τον 15ο αιώνα π.Χ.']
+    elif lang == 'guj':
+        assert sentences == ['ગુજરાતી \u200d(/ɡʊdʒəˈrɑːti/[૭], રોમન લિપિમાં: Gujarātī, ઉચ્ચાર: [ɡudʒəˈɾɑːtiː]) ભારત દેશના ગુજરાત રાજ્યની ઇન્ડો-આર્યન ભાષા છે, અને મુખ્યત્વે ગુજરાતી લોકો દ્વારા બોલાય છે. તે બૃહદ ઇન્ડો-યુરોપિયન ભાષા કુટુંબનો ભાગ છે. ગુજરાતીનો ઉદ્ભવ જૂની ગુજરાતી ભાષા (આશરે ઇ.સ. ૧૧૦૦-૧૫૦૦)માંથી થયો છે. તે ગુજરાત રાજ્ય અને દીવ, દમણ અને દાદરા-નગર હવેલી કેન્દ્રશાસિત પ્રદેશોની અધિકૃત ભાષા છે.']
     elif lang == 'heb':
         assert sentences == ['שם השפה עברית פירושה "לשונו של עֵבֶר",[3] ונגזר מהשם של הדמות המקראית עֵבֶר, אביהם הקדמון של עמים רבים, בהם עם ישראל.', 'לפי המסורת היהודית,[4] עבר סירב לקחת חלק בבניית מגדל בבל, ועל כן הוא וצאצאיו לא נענשו על בניית המגדל, ושפתם לא נתבלבלה.', 'עבר שימר את השפה האוניברסלית המקורית - העברית.']
     elif lang == 'hin':
