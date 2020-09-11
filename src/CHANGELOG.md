@@ -17,8 +17,8 @@
 - Utils: Add botok's Tibetan sentence tokenizer
 - Utils: Add NLTK's NLTK tokenizer
 - Utils: Add PyThaiNLP's maximum matching + TCC (safe mode)
-- Utils: Add spaCy's Armenian, Basque, Estonian, Gujarati, Latvian, Ligurian, and Malayalam word tokenizers
-- Utils: Add spaCy's Armenian, Basque, Gujarati, Ligurian, Luxembourgish, Malayalam, Slovak, and Slovenian stop word lists
+- Utils: Add spaCy's Armenian, Basque, Estonian, Gujarati, Latvian, Ligurian, Malayalam, and Nepali word tokenizers
+- Utils: Add spaCy's Armenian, Basque, Gujarati, Ligurian, Luxembourgish, Malayalam, Nepali, Slovak, and Slovenian stop word lists
 - Utils: Add spaCy's Danish POS tagger and lemmatizer
 - Utils: Add spaCy's Polish POS tagger and lemmatizer
 - Utils: Add spaCy's Romanian POS tagger and lemmatizer
