@@ -461,7 +461,7 @@ Malayalam            |✔️|✔️|⭕️ |✖️|✖️|✔️
 Manx                 |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
 Marathi              |⭕️ |✔️|⭕️ |✖️|✖️|✔️
 Mongolian            |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
-Nepali               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Nepali               |✔|✔|⭕️ |✖️|✖️|✔️
 Norwegian Bokmål     |✔|✔️|⭕️ |✔️|✔️|✔️
 Norwegian Nynorsk    |✔|⭕️ |⭕️ |✖️|✖️|✔️
 Persian              |✔|✔️|⭕️ |✖️|✔️|✔️
