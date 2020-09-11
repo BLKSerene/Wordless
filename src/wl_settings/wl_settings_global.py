@@ -1665,6 +1665,7 @@ def init_settings_global(main):
             ],
 
             'guj': [
+                main.tr('spaCy - Gujarati Stop Word List'),
                 main.tr('Stopwords ISO - Gujarati Stop Word List'),
                 main.tr('Custom List')
             ],
