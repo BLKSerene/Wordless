@@ -573,6 +573,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentencizer')
             ],
 
+            'nep': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'nob': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
                 main.tr('spaCy - Sentencizer')
@@ -936,6 +940,14 @@ def init_settings_global(main):
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Marathi Word Tokenizer')
+            ],
+
+            'nep': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('spaCy - Nepali Word Tokenizer')
             ],
 
             'nob': [
@@ -1819,6 +1831,7 @@ def init_settings_global(main):
             'nep': [
                 main.tr('extra-stopwords - Nepali Stop Word List'),
                 main.tr('NLTK - Nepali Stop Word List'),
+                main.tr('spaCy - Nepali Stop Word List'),
                 main.tr('Custom List')
             ],
 
