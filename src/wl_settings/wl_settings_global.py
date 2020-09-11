@@ -77,6 +77,7 @@ def init_settings_global(main):
             main.tr('Lao'): 'lao',
             main.tr('Latin'): 'lat',
             main.tr('Latvian'): 'lav',
+            main.tr('Ligurian'): 'lij',
             main.tr('Lithuanian'): 'lit',
             main.tr('Luxembourgish'): 'ltz',
             main.tr('Macedonian'): 'mkd',
@@ -192,6 +193,7 @@ def init_settings_global(main):
             'lao': 'lo',
             'lat': 'la',
             'lav': 'lv',
+            'lij': 'lij',
             'lit': 'lt',
             'ltz': 'lb',
             'mal': 'ml',
@@ -555,6 +557,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentencizer')
             ],
 
+            'lij': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'lit': [
                 main.tr('spaCy - Sentencizer')
             ],
@@ -889,6 +895,14 @@ def init_settings_global(main):
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Latvian Word Tokenizer')
+            ],
+
+            'lij': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('spaCy - Ligurian Word Tokenizer')
             ],
 
             'lit': [
@@ -1749,6 +1763,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Latvian Stop Words'),
                 main.tr('Stopwords ISO - Latvian Stop Words'),
                 main.tr('Custom List')
+            ],
+
+            'lij': [
+                main.tr('spaCy - Ligurian Stop Words')
             ],
 
             'lit': [
