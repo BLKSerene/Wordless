@@ -1124,6 +1124,7 @@ def init_settings_default(main):
                 'dan': main.tr('spaCy - Danish Word Tokenizer'),
                 'nld': main.tr('spaCy - Dutch Word Tokenizer'),
                 'eng': main.tr('spaCy - English Word Tokenizer'),
+                'est': main.tr('spaCy - Estonian Word Tokenizer'),
                 'fin': main.tr('spaCy - Finnish Word Tokenizer'),
                 'fra': main.tr('spaCy - French Word Tokenizer'),
                 'deu': main.tr('spaCy - German Word Tokenizer'),

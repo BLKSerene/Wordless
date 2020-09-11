@@ -136,6 +136,8 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
             assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'that', 'was', 'first', 'spoken', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'became', 'a', 'global', 'lingua', 'franca.[', '4', ']', '[', '5', ']']
         elif word_tokenizer == 'spaCy - English Word Tokenizer':
             assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'that', 'was', 'first', 'spoken', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'became', 'a', 'global', 'lingua', 'franca.[4][5', ']']
+    elif lang == 'est':
+        assert tokens == ['Eesti', 'keel', '(', 'varasem', 'nimetus', 'maakeel', ')', 'on', 'läänemeresoome', 'lõunarühma', 'kuuluv', 'keel', '.']
     elif lang == 'fin':
         assert tokens == ['Suomen', 'kieli', '(', 'suomi', ')', 'on', 'uralilaisten', 'kielten', 'itämerensuomalaiseen', 'ryhmään', 'kuuluva', 'kieli', '.']
     elif lang == 'fra':

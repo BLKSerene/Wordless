@@ -774,6 +774,10 @@ def init_settings_global(main):
                 main.tr('syntok - Word Tokenizer')
             ],
 
+            'est': [
+                main.tr('spaCy - Estonian Word Tokenizer')
+            ],
+
             'fin': [
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Finnish Word Tokenizer')
