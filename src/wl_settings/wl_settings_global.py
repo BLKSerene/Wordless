@@ -1788,6 +1788,11 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
+            'ltz': [
+                main.tr('spaCy - Luxembourgish Stop Word List'),
+                main.tr('Custom List')
+            ],
+
             'msa': [
                 main.tr('extra-stopwords - Malay Stop Word List'),
                 main.tr('Stopwords ISO - Malay Stop Word List'),
