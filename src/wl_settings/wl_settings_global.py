@@ -431,6 +431,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentencizer')
             ],
 
+            'hye': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'ben': [
                 main.tr('spaCy - Sentencizer')
             ],
@@ -675,6 +679,10 @@ def init_settings_global(main):
 
             'ara': [
                 main.tr('spaCy - Arabic Word Tokenizer')
+            ],
+
+            'hye': [
+                main.tr('spaCy - Armenian Word Tokenizer')
             ],
 
             'ben': [
