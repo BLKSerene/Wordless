@@ -413,10 +413,10 @@ Languages|Sentence Tokenization|Word Tokenization|Word Detokenization|POS Taggin
 Afrikaans            |✔|✔|⭕️ |✖️|✖️|✔️
 Albanian             |✔|✔|⭕️ |✖️|✖️|✔️
 Arabic               |✔|✔️|⭕️ |✖️|✖️|✔️
-Armenian             |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Armenian             |✔|✔|⭕️ |✖️|✖️|✔️
 Asturian             |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
 Azerbaijani          |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
-Basque               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Basque               |✔|✔|⭕️ |✖️|✖️|✔️
 Belarusian           |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Bengali              |✔|✔️|⭕️ |✖️|✖️|✔️
 Breton               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
@@ -430,14 +430,14 @@ Danish               |✔|✔️|⭕️ |✔️|✔️|✔️
 Dutch                |✔|✔️|✔️|✔️|✔️|✔️
 English              |✔|✔️|✔️|✔️|✔️|✔️
 Esperanto            |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
-Estonian             |✔|⭕️ |⭕️ |✖️|✔️|✔️
+Estonian             |✔|✔️|⭕️ |✖️|✔️|✔️
 Finnish              |✔|✔️|✔️|✖️|✖️|✔️
 French               |✔|✔️|✔️|✔️|✔️|✔️
 Galician             |⭕️ |⭕️ |⭕️ |✖️|✔️|✔️
 German               |✔|✔️|✔️|✔️|✔️|✔️
 Greek (Ancient)      |⭕️ |⭕️ |⭕️ |✖️|✔️|✔️
 Greek (Modern)       |✔|✔️|✔️|✔️|✔️|✔️
-Gujarati             |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Gujarati             |✔|✔|⭕️ |✖️|✖️|✔️
 Hausa                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Hebrew               |✔|✔️|⭕️ |✖️|✖️|✔️
 Hindi                |✔|✔️|⭕️ |✖️|✖️|✔️

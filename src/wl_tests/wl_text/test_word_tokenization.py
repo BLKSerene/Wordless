@@ -65,6 +65,16 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
             assert tokens == ['Gjuha', 'shqipe', '(', 'ose', 'thjeshtë', 'shqipja', ')', 'është', 'gjuhë', 'dhe', 'degë', 'e', 'veçantë', 'e', 'familjes', 'indo', '-', 'evropiane', 'të', 'folur', 'nga', 'më', 'shumë', 'se', '6', 'milionë', 'njerëz[4', ']', ',', 'kryesisht', 'në', 'Shqipëri', ',', 'Kosovë', 'dhe', 'Republikën', 'e', 'Maqedonisë', ',', 'por', 'edhe', 'në', 'zona', 'të', 'tjera', 'të', 'Evropës', 'Jugore', 'ku', 'ka', 'një', 'popullsi', 'shqiptare', ',', 'duke', 'përfshirë', 'Malin', 'e', 'Zi', 'dhe', 'Luginën', 'e', 'Preshevës', '.']
     elif lang == 'ara':
         assert tokens == ['اللُّغَة', 'العَرَبِيّة', 'هي', 'أكثر', 'اللغات', 'تحدثاً', 'ونطقاً', 'ضمن', 'مجموعة', 'اللغات', 'السامية', '،', 'وإحدى', 'أكثر', 'اللغات', 'انتشاراً', 'في', 'العالم', '،', 'يتحدثها', 'أكثر', 'من', '467', 'مليون', 'نسمة،(1', ')', 'ويتوزع', 'متحدثوها', 'في', 'الوطن', 'العربي', '،', 'بالإضافة', 'إلى', 'العديد', 'من', 'المناطق', 'الأخرى', 'المجاورة', 'كالأحواز', 'وتركيا', 'وتشاد', 'ومالي', 'والسنغال', 'وإرتيريا', 'وإثيوبيا', 'وجنوب', 'السودان', 'وإيران', '.']
+    elif lang == 'hye':
+        if word_tokenizer in ['NLTK - NIST Tokenizer',
+                              'NLTK - NLTK Tokenizer',
+                              'NLTK - Penn Treebank Tokenizer',
+                              'spaCy - Armenian Word Tokenizer']:
+            assert tokens == ['Հայոց', 'լեզվով', 'ստեղծվել', 'է', 'մեծ', 'գրականություն', ':', 'Գրաբարով', 'է', 'ավանդված', 'հայ', 'հին', 'պատմագրությունը', ',', 'գիտափիլիսոփայական', ',', 'մաթեմատիկական', ',', 'բժշկագիտական', ',', 'աստվածաբանական-դավանաբանական', 'գրականությունը։']
+        elif word_tokenizer == 'NLTK - Twitter Tokenizer':
+            assert tokens == ['Հայոց', 'լեզվով', 'ստեղծվել', 'է', 'մեծ', 'գրականություն', ':', 'Գրաբարով', 'է', 'ավանդված', 'հայ', 'հին', 'պատմագրությունը', ',', 'գիտափիլիսոփայական', ',', 'մաթեմատիկական', ',', 'բժշկագիտական', ',', 'աստվածաբանական-դավանաբանական', 'գրականությունը', '։']
+    elif lang == 'eus':
+        assert tokens == ['Euskara', 'Euskal', 'Herriko', 'hizkuntza', 'da.[5', ']']
     elif lang == 'ben':
         if word_tokenizer in ['NLTK - NIST Tokenizer',
                               'NLTK - NLTK Tokenizer',
@@ -132,6 +142,8 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
             assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'that', 'was', 'first', 'spoken', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'became', 'a', 'global', 'lingua', 'franca.[', '4', ']', '[', '5', ']']
         elif word_tokenizer == 'spaCy - English Word Tokenizer':
             assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'that', 'was', 'first', 'spoken', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'became', 'a', 'global', 'lingua', 'franca.[4][5', ']']
+    elif lang == 'est':
+        assert tokens == ['Eesti', 'keel', '(', 'varasem', 'nimetus', 'maakeel', ')', 'on', 'läänemeresoome', 'lõunarühma', 'kuuluv', 'keel', '.']
     elif lang == 'fin':
         assert tokens == ['Suomen', 'kieli', '(', 'suomi', ')', 'on', 'uralilaisten', 'kielten', 'itämerensuomalaiseen', 'ryhmään', 'kuuluva', 'kieli', '.']
     elif lang == 'fra':
@@ -159,6 +171,8 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
             assert tokens == ['Η', 'ελληνική', 'γλώσσα', 'ανήκει', 'στην', 'ινδοευρωπαϊκή', 'οικογένεια', '[', '9', ']', 'και', 'συγκεκριμένα', 'στον', 'ελληνικό', 'κλάδο', ',', 'μαζί', 'με', 'την', 'τσακωνική', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
         elif word_tokenizer == 'spaCy - Greek (Modern) Word Tokenizer':
             assert tokens == ['Η', 'ελληνική', 'γλώσσα', 'ανήκει', 'στην', 'ινδοευρωπαϊκή', 'οικογένεια[9', ']', 'και', 'συγκεκριμένα', 'στον', 'ελληνικό', 'κλάδο', ',', 'μαζί', 'με', 'την', 'τσακωνική', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
+    elif lang == 'guj':
+        assert tokens == ['ગુજરાતી', '\u200d(/ɡʊdʒəˈrɑːti/[૭', ']', ',', 'રોમન', 'લિપિમાં', ':', 'Gujarātī', ',', 'ઉચ્ચાર', ':', '[', 'ɡudʒəˈɾɑːtiː', ']', ')', 'ભારત', 'દેશના', 'ગુજરાત', 'રાજ્યની', 'ઇન્ડો-આર્યન', 'ભાષા', 'છે', ',', 'અને', 'મુખ્યત્વે', 'ગુજરાતી', 'લોકો', 'દ્વારા', 'બોલાય', 'છે.']
     elif lang == 'heb':
         assert tokens == ['עִבְרִית', 'היא', 'שפה', 'שמית', ',', 'ממשפחת', 'השפות', 'האפרו', '-', 'אסיאתיות', ',', 'הידועה', 'כשפתם', 'של', 'היהודים', 'ושל', 'השומרונים', ',', 'אשר', 'ניב', 'מודרני', 'שלה', '(', 'עברית', 'ישראלית', ')', 'הוא', 'שפתה', 'הרשמית', 'של', 'מדינת', 'ישראל', ',', 'מעמד', 'שעוגן', 'בשנת', '2018', 'בחוק', 'יסוד', ':', 'ישראל', '–', 'מדינת', 'הלאום', 'של', 'העם', 'היהודי', '.']
     elif lang == 'hin':
@@ -218,6 +232,8 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
         elif word_tokenizer == ['NLTK - NLTK Tokenizer',
                                 'NLTK - Penn Treebank Tokenizer']:
             assert tokens == ['Latviešu', 'valoda', 'ir', 'dzimtā', 'valoda', 'apmēram', '1,7', 'miljoniem', 'cilvēku', ',', 'galvenokārt', 'Latvijā', ',', 'kur', 'tā', 'ir', 'vienīgā', 'valsts', 'valoda.', '[', '3', ']']
+        elif word_tokenizer == 'spaCy - Latvian Word Tokenizer':
+            assert tokens == ['Latviešu', 'valoda', 'ir', 'dzimtā', 'valoda', 'apmēram', '1,7', 'miljoniem', 'cilvēku', ',', 'galvenokārt', 'Latvijā', ',', 'kur', 'tā', 'ir', 'vienīgā', 'valsts', 'valoda.[3', ']']
     elif lang == 'lit':
         assert tokens == ['Lietuvių', 'kalba', '–', 'iš', 'baltų', 'prokalbės', 'kilusi', 'lietuvių', 'tautos', 'kalba', ',', 'kuri', 'Lietuvoje', 'yra', 'valstybinė', ',', 'o', 'Europos', 'Sąjungoje', '–', 'viena', 'iš', 'oficialiųjų', 'kalbų', '.']
     elif lang == 'ltz':
