@@ -81,7 +81,10 @@ def test_sentence_tokenize(lang, sentence_tokenizer, show_results = False):
         elif sentence_tokenizer == 'spaCy - Sentencizer':
             assert sentences == ['English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.[5][6] It is named after the Angles, one of the Germanic tribes that migrated to the area of Great Britain that later took their name, as England.', 'Both names derive from Anglia, a peninsula in the Baltic Sea.', 'The language is closely related to Frisian and Low Saxon, and its vocabulary has been significantly influenced by other Germanic languages, particularly Norse (a North Germanic language), and to a greater extent by Latin and French.[7]']
     elif lang == 'est':
-        assert sentences == ['Eesti keel (varasem nimetus: maakeel) on läänemeresoome lõunarühma kuuluv keel.', 'Selle lähemad sugulased on läänemeresoome keeled vadja ja liivi keel.']
+        if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
+            assert sentences == ['2012. aasta seisuga kõneles eesti keelt emakeelena hinnanguliselt 922 000 inimest Eestis ja 160 000 mujal maailmas.', 'Võõrkeelena kõneles 2012. aasta seisuga eesti keelt 168 000 inimest.', '[1]']
+        elif sentence_tokenizer == 'spaCy - Sentencizer':
+            assert sentences == ['2012.', 'aasta seisuga kõneles eesti keelt emakeelena hinnanguliselt 922 000 inimest Eestis ja 160 000 mujal maailmas.', 'Võõrkeelena kõneles 2012.', 'aasta seisuga eesti keelt 168 000 inimest.[1]']
     elif lang == 'fin':
         assert sentences == ['Suomen kieli (suomi) on uralilaisten kielten itämerensuomalaiseen ryhmään kuuluva kieli.', 'Sitä puhuu äidinkielenään Suomessa 4,9 miljoonaa ja toisena kielenä 0,5 miljoonaa henkilöä.', 'Suurimmat suomea puhuvat vähemmistöt ovat Ruotsissa, Norjassa ja Venäjällä.']
     elif lang == 'fra':
