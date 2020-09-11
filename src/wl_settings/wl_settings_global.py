@@ -510,6 +510,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentencizer')
             ],
 
+            'guj': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'heb': [
                 main.tr('spaCy - Sentencizer')
             ],
@@ -811,6 +815,10 @@ def init_settings_global(main):
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Greek (Modern) Word Tokenizer')
+            ],
+
+            'guj': [
+                main.tr('spaCy - Gujarati Word Tokenizer')
             ],
 
             'heb': [
