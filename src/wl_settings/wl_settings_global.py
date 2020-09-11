@@ -1777,7 +1777,8 @@ def init_settings_global(main):
             ],
 
             'lij': [
-                main.tr('spaCy - Ligurian Stop Word List')
+                main.tr('spaCy - Ligurian Stop Word List'),
+                main.tr('Custom List')
             ],
 
             'lit': [
@@ -1888,6 +1889,7 @@ def init_settings_global(main):
 
             'slk': [
                 main.tr('extra-stopwords - Slovak Stop Word List'),
+                main.tr('spaCy - Slovak Stop Word List'),
                 main.tr('Stopwords ISO - Slovak Stop Word List'),
                 main.tr('Custom List')
             ],
@@ -1895,6 +1897,7 @@ def init_settings_global(main):
             'slv': [
                 main.tr('extra-stopwords - Slovenian Stop Word List'),
                 main.tr('NLTK - Slovenian Stop Word List'),
+                main.tr('spaCy - Slovenian Stop Word List'),
                 main.tr('Stopwords ISO - Slovenian Stop Word List'),
                 main.tr('Custom List')
             ],

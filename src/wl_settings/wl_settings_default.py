@@ -1485,6 +1485,7 @@ def init_settings_default(main):
                 'kur': [],
                 'lat': [],
                 'lav': [],
+                'lij': [],
                 'lit': [],
                 'msa': [],
                 'mal': [],
