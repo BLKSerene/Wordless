@@ -17,30 +17,30 @@
 - Utils: Add botok's Tibetan sentence tokenizer
 - Utils: Add NLTK's NLTK tokenizer
 - Utils: Add PyThaiNLP's maximum matching + TCC (safe mode)
-- Utils: Add spaCy's Armenian, Basque, Estonian, Gujarati, and Latvian word tokenizer
+- Utils: Add spaCy's Armenian, Basque, Estonian, Gujarati, Latvian, Ligurian word tokenizers
+- Utils: Add spaCy's Armenian and Ligurian stop word lists
 - Utils: Add spaCy's Danish POS tagger and lemmatizer
-- Utils: Add spaCy's Ligurian word tokenizer and stop words
 - Utils: Add spaCy's Polish POS tagger and lemmatizer
 - Utils: Add spaCy's Romanian POS tagger and lemmatizer
-- Utils: Add Stopwords ISO's Gujarati and Lithuanian stop words
+- Utils: Add Stopwords ISO's Gujarati and Lithuanian stop word lists
 
 ### ✨ Improvements
 - Menu: Disable editing of POS tag mappings for spaCy's POS taggers
 - Utils: Update botok's Tibetan word tokenizer, POS tagger, and lemmatizer
-- Utils: Update lists of Chinese (Traditional) stop words
+- Utils: Update Chinese (Traditional) stop word lists
 - Utils: Update NLTK's word tokenizers
 - Utils: Update POS tag mappings for spaCy's POS taggers
 - Utils: Update PyThaiNLP's CRFCut
 - Utils: Update PyThaiNLP's POS taggers
 - Utils: Update PyThaiNLP's Thai word tokenizers
 - Utils: Update Sacremoses's Moses tokenizer
-- Utils: Update Stopwords ISO's Greek and Norwegian stop words
+- Utils: Update Stopwords ISO's Greek and Norwegian stop word lists
 
 ### 📌 Bugfixes
 - Overview: Fix batch processing of a large number of files
 
 ### ❌ Removals
-- Utils: Remove grk-stoplist's Greek (Ancient) stop words
+- Utils: Remove grk-stoplist's Greek (Ancient) stop word list
 
 ### ⏫ Dependency Changes
 - Dependencies: Add OpenCC
@@ -129,11 +129,11 @@
 ### 🎉 New Features
 - File Area: Add support for .xml files
 - Menu: Add Preferences - Settings - Figures - Line Chart / Word Cloud / Network Graph
-- Utils: Add extra-stopwords's lists of stop words
+- Utils: Add extra-stopwords's stop word lists
 - Utils: Add NLTK's Punkt Sentence Tokenizer for Russian
-- Utils: Add NLTK's Slovenian and Tajik stop words
-- Utils: Add spaCy's Marathi word tokenizer and stop words
-- Utils: Add spaCy's Serbian word tokenizer and stop words
+- Utils: Add NLTK's Slovenian and Tajik stop word lists
+- Utils: Add spaCy's Marathi word tokenizer and stop word list
+- Utils: Add spaCy's Serbian word tokenizer and stop word list
 - Work Area: Add Collocation/Colligation - Figure Settings - Graph Type - Network Graph
 - Work Area: Add Concordancer - Clause No.
 - Work Area: Add Concordancer - Generation Settings - Width Unit - Sentence/Clause
@@ -143,7 +143,7 @@
 - Main Window: Check file permissions when exporting tables
 - Utils: Update POS tag mappings for pybo's Tibetan POS tagger
 - Utils: Update pybo's Tibetan tokenizers, POS tagger, and lemmatizer
-- Utils: Update PyThaiNLP's Thai stop words
+- Utils: Update PyThaiNLP's Thai stop word list
 - Utils: Update Sacremoses's tokenizers and detokenizer
 
 ### 📌 Bugfixes
