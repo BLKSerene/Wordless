@@ -690,6 +690,10 @@ def init_settings_global(main):
             ],
 
             'hye': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Armenian Word Tokenizer')
             ],
 
@@ -883,7 +887,8 @@ def init_settings_global(main):
                 main.tr('NLTK - NLTK Tokenizer'),
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer')
+                main.tr('Sacremoses - Moses Tokenizer'),
+                main.tr('spaCy - Latvian Word Tokenizer')
             ],
 
             'lit': [
