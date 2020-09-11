@@ -23,7 +23,7 @@ from wl_settings import (
     wl_settings_word_detokenization,
     wl_settings_pos_tagging,
     wl_settings_lemmatization,
-    wl_settings_stop_words,
+    wl_settings_stop_word_lists,
     wl_settings_measures,
     wl_settings_figs
 )
@@ -57,7 +57,7 @@ class Wl_Settings(QDialog):
         self.tree_settings.topLevelItem(7).addChild(QTreeWidgetItem([self.tr('Tagsets')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Lemmatization')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Stop Words')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Stop Word Lists')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Measures')]))
         self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
@@ -87,7 +87,7 @@ class Wl_Settings(QDialog):
         self.settings_tagsets = wl_settings_pos_tagging.Wl_Settings_Tagsets(self.main)
 
         self.settings_lemmatization = wl_settings_lemmatization.Wl_Settings_Lemmatization(self.main)
-        self.settings_stop_words = wl_settings_stop_words.Wl_Settings_Stop_Words(self.main)
+        self.settings_stop_words = wl_settings_stop_word_lists.Wl_Settings_Stop_Word_Lists(self.main)
 
         self.settings_dispersion = wl_settings_measures.Wl_Settings_Dispersion(self.main)
         self.settings_adjusted_freq = wl_settings_measures.Wl_Settings_Adjusted_Freq(self.main)
@@ -189,7 +189,7 @@ class Wl_Settings(QDialog):
 
                 elif item_selected_text == self.tr('Lemmatization'):
                     self.stacked_widget_settings.setCurrentIndex(11)
-                elif item_selected_text == self.tr('Stop Words'):
+                elif item_selected_text == self.tr('Stop Word Lists'):
                     self.stacked_widget_settings.setCurrentIndex(12)
 
                 elif item_selected_text == self.tr('Measures'):
