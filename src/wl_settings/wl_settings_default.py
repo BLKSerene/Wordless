@@ -1140,7 +1140,7 @@ def init_settings_default(main):
                 'ita': main.tr('spaCy - Italian Word Tokenizer'),
                 'jpn': main.tr('nagisa - Japanese Word Tokenizer'),
                 'kan': main.tr('spaCy - Kannada Word Tokenizer'),
-                'lav': main.tr('Sacremoses - Moses Tokenizer'),
+                'lav': main.tr('spaCy - Latvian Word Tokenizer'),
                 'lit': main.tr('spaCy - Lithuanian Word Tokenizer'),
                 'ltz': main.tr('spaCy - Luxembourgish Word Tokenizer'),
                 'mar': main.tr('spaCy - Marathi Word Tokenizer'),
