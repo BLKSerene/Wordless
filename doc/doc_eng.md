@@ -413,7 +413,7 @@ Languages|Sentence Tokenization|Word Tokenization|Word Detokenization|POS Taggin
 Afrikaans            |✔|✔|⭕️ |✖️|✖️|✔️
 Albanian             |✔|✔|⭕️ |✖️|✖️|✔️
 Arabic               |✔|✔️|⭕️ |✖️|✖️|✔️
-Armenian             |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Armenian             |✔|✔|⭕️ |✖️|✖️|✔️
 Asturian             |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
 Azerbaijani          |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Basque               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
