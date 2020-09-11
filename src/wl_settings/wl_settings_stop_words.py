@@ -15,7 +15,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_text import wl_stop_words
+from wl_text import wl_stop_word_lists
 from wl_utils import wl_conversion
 from wl_widgets import wl_box, wl_layout, wl_list, wl_table, wl_tree
 
@@ -23,7 +23,7 @@ class Wl_Settings_Stop_Words(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
-        settings_global = self.main.settings_global['stop_words']
+        settings_global = self.main.settings_global['stop_word_lists']
 
         # Stop Words Settings
         group_box_stop_words_settings = QGroupBox(self.tr('Stop Words Settings'), self)
@@ -110,7 +110,7 @@ class Wl_Settings_Stop_Words(wl_tree.Wl_Settings):
         lang = wl_conversion.to_lang_code(self.main, self.combo_box_stop_words_preview_lang.currentText())
         list_stop_words = self.__dict__[f'combo_box_stop_words_{lang}'].currentText()
         
-        stop_words = wl_stop_words.wl_get_stop_words(self.main, lang, list_stop_words = list_stop_words)
+        stop_words = wl_stop_word_lists.wl_get_stop_word_list(self.main, lang, stop_word_list = list_stop_words)
 
         self.list_stop_words_preview_results.load_stop_words(stop_words)
         self.label_stop_words_preview_count.setText(self.tr(f'Count of Stop Words: {len(stop_words)}'))

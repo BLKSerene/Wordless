@@ -12,7 +12,7 @@
 import copy
 
 from wl_checking import wl_checking_token
-from wl_text import wl_lemmatization, wl_stop_words, wl_text, wl_text_utils, wl_word_detokenization
+from wl_text import wl_lemmatization, wl_stop_word_lists, wl_text, wl_text_utils, wl_word_detokenization
 from wl_utils import wl_misc
 
 def wl_process_tokens(text, token_settings):
@@ -121,7 +121,7 @@ def wl_process_tokens(text, token_settings):
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, clause in enumerate(sentence):
-                    sentence[i] = wl_stop_words.wl_filter_stop_words(
+                    sentence[i] = wl_stop_word_lists.wl_filter_stop_words(
                         main, clause,
                         lang = text.lang
                     )

@@ -1,5 +1,5 @@
 #
-# Wordless: Tests - Text - Stop Words
+# Wordless: Tests - Text - Stop Word Lists
 #
 # Copyright (C) 2018-2020  Ye Lei (叶磊)
 #
@@ -16,27 +16,27 @@ sys.path.append('.')
 import pytest
 
 from wl_tests import wl_test_init
-from wl_text import wl_stop_words
+from wl_text import wl_stop_word_lists
 from wl_utils import wl_conversion
 
-test_lists_stop_words = []
+test_stop_word_lists = []
 
 main = wl_test_init.Wl_Test_Main()
 
-for lang, lists_stop_words in main.settings_global['stop_words'].items():
-    for list_stop_words in lists_stop_words:
-        test_lists_stop_words.append((lang, list_stop_words))
+for lang, stop_word_lists in main.settings_global['stop_word_lists'].items():
+    for stop_word_list in stop_word_lists:
+        test_stop_word_lists.append((lang, stop_word_list))
 
-@pytest.mark.parametrize('lang, list_stop_words', test_lists_stop_words)
-def test_stop_words(lang, list_stop_words, show_results = False):
+@pytest.mark.parametrize('lang, stop_word_list', test_stop_word_lists)
+def test_get_stop_word_list(lang, stop_word_list, show_results = False):
     lang_text = wl_conversion.to_lang_text(main, lang)
-    stop_words = wl_stop_words.wl_get_stop_words(main, lang, list_stop_words = list_stop_words)
+    stop_words = wl_stop_word_lists.wl_get_stop_word_list(main, lang, stop_word_list = stop_word_list)
 
     if show_results:
-        print(f'{lang} / {list_stop_words}:')
+        print(f'{lang} / {stop_word_list}:')
         print(stop_words)
 
-    if list_stop_words == 'Custom List':
+    if stop_word_list == 'Custom List':
         # Check if custom list is empty
         assert stop_words == []
     else:
@@ -46,5 +46,5 @@ def test_stop_words(lang, list_stop_words, show_results = False):
         assert all([stop_word for stop_word in stop_words])
 
 if __name__ == '__main__':
-    for lang, list_stop_words in test_lists_stop_words:
-        test_stop_words(lang, list_stop_words, show_results = True)
+    for lang, stop_word_list in test_stop_word_lists:
+        test_get_stop_word_list(lang, stop_word_list, show_results = True)
