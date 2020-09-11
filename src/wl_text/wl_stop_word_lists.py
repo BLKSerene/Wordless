@@ -1,5 +1,5 @@
 #
-# Wordless: Text - Stop Words
+# Wordless: Text - Stop Word Lists
 #
 # Copyright (C) 2018-2020  Ye Lei (叶磊)
 #
@@ -19,12 +19,12 @@ import pythainlp
 from wl_text import wl_text_utils
 from wl_utils import wl_conversion, wl_misc
 
-def wl_get_stop_words(main, lang, list_stop_words = 'default'):
-    if list_stop_words == 'default':
-        list_stop_words = main.settings_custom['stop_words']['stop_words'][lang]
+def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
+    if stop_word_list == 'default':
+        stop_word_list = main.settings_custom['stop_word_lists']['stop_word_lists'][lang]
 
-    if list_stop_words == main.tr('Custom List'):
-        stop_words = main.settings_custom['stop_words']['custom_lists'][lang]
+    if stop_word_list == main.tr('Custom List'):
+        stop_word_list = main.settings_custom['stop_word_lists']['custom_lists'][lang]
     else:
         lang_639_1 = wl_conversion.to_iso_639_1(main, lang)
 
@@ -36,13 +36,13 @@ def wl_get_stop_words(main, lang, list_stop_words = 'default'):
         if lang_639_1 == 'zh_tw':
             cc = opencc.OpenCC('s2tw.json')
 
-            stop_words_zho_cn = wl_get_stop_words(
+            stop_word_list_zho_cn = wl_get_stop_word_list(
                 main,
                 lang = 'zho_cn',
-                list_stop_words = list_stop_words.replace('Chinese (Traditional)', 'Chinese (Simplified)'))
-            stop_words = [cc.convert(stop_word) for stop_word in stop_words_zho_cn]
+                stop_word_list = stop_word_list.replace('Chinese (Traditional)', 'Chinese (Simplified)'))
+            stop_word_list = [cc.convert(stop_word) for stop_word in stop_word_list_zho_cn]
         # extra-stopwords
-        elif 'extra-stopwords' in list_stop_words:
+        elif 'extra-stopwords' in stop_word_list:
             LANG_TEXTS = {
                 'sqi': 'albanian',
                 'ara': 'arabic',
@@ -106,10 +106,10 @@ def wl_get_stop_words(main, lang, list_stop_words = 'default'):
                 'yor': 'yoruba'
             }
 
-            with open(wl_misc.get_normalized_path(f'stop_words/extra-stopwords/{LANG_TEXTS[lang]}'), 'r', encoding = 'utf_8') as f:
-                stop_words = [line.rstrip() for line in f if not line.startswith('#')]
+            with open(wl_misc.get_normalized_path(f'stop_word_lists/extra-stopwords/{LANG_TEXTS[lang]}'), 'r', encoding = 'utf_8') as f:
+                stop_word_list = [line.rstrip() for line in f if not line.startswith('#')]
         # NLTK
-        elif 'NLTK' in list_stop_words:
+        elif 'NLTK' in stop_word_list:
             LANG_TEXTS = {
                 'ara': 'arabic',
                 'aze': 'azerbaijani',
@@ -138,68 +138,58 @@ def wl_get_stop_words(main, lang, list_stop_words = 'default'):
                 'tur': 'turkish'
             }
 
-            stop_words = nltk.corpus.stopwords.words(LANG_TEXTS[lang])
+            stop_word_list = nltk.corpus.stopwords.words(LANG_TEXTS[lang])
         # spaCy
-        elif 'spaCy' in list_stop_words:
-            # Chinese (Traditional)
-            if lang_639_1 == 'zh_tw':
-                with open(wl_misc.get_normalized_path('stop_words/spaCy/stop_words_zh_tw.txt'), 'r', encoding = 'utf_8') as f:
-                    stop_words = [line.rstrip() for line in f]
+        elif 'spaCy' in stop_word_list:
+            # Serbian (Cyrillic) & Serbian (Latin)
+            if lang_639_1 == 'sr_cyrl':
+                spacy_lang = importlib.import_module('spacy.lang.sr')
+
+                stop_word_list = spacy_lang.STOP_WORDS
+            elif lang_639_1 == 'sr_latn':
+                spacy_lang = importlib.import_module('spacy.lang.sr')
+
+                stop_word_list = spacy_lang.STOP_WORDS
+                stop_word_list = wl_text_utils.to_srp_latn(stop_word_list)
             else:
-                # Serbian (Cyrillic) & Serbian (Latin)
-                if lang_639_1 == 'sr_cyrl':
-                    spacy_lang = importlib.import_module('spacy.lang.sr')
+                spacy_lang = importlib.import_module(f'spacy.lang.{lang_639_1}')
 
-                    stop_words = spacy_lang.STOP_WORDS
-                elif lang_639_1 == 'sr_latn':
-                    spacy_lang = importlib.import_module('spacy.lang.sr')
-
-                    stop_words = spacy_lang.STOP_WORDS
-                    stop_words = wl_text_utils.to_srp_latn(stop_words)
-                else:
-                    spacy_lang = importlib.import_module(f'spacy.lang.{lang_639_1}')
-
-                    stop_words = spacy_lang.STOP_WORDS
+                stop_word_list = spacy_lang.STOP_WORDS
         # Stopwords ISO
-        elif 'Stopwords ISO' in list_stop_words:
-            # Chinese (Traditional)
-            if lang_639_1 == 'zh_tw':
-                with open(wl_misc.get_normalized_path('stop_words/Stopwords ISO/stop_words_zh_tw.txt'), 'r', encoding = 'utf_8') as f:
-                    stop_words = [line.rstrip() for line in f]
-            else:
-                # Greek (Ancient)
-                if lang_639_1 == 'grc':
-                    lang_639_1 = 'el'
+        elif 'Stopwords ISO' in stop_word_list:
+            # Greek (Ancient)
+            if lang_639_1 == 'grc':
+                lang_639_1 = 'el'
 
-                # Norwegian Bokmål & Norwegian Nynorsk
-                if lang_639_1 in ['nb', 'nn']:
-                    lang_639_1 = 'no'
+            # Norwegian Bokmål & Norwegian Nynorsk
+            if lang_639_1 in ['nb', 'nn']:
+                lang_639_1 = 'no'
 
-                with open(wl_misc.get_normalized_path('stop_words/Stopwords ISO/stopwords_iso.json'), 'r', encoding = 'utf_8') as f:
-                    stop_words = json.load(f)[lang_639_1]
+            with open(wl_misc.get_normalized_path('stop_word_lists/Stopwords ISO/stopwords_iso.json'), 'r', encoding = 'utf_8') as f:
+                stop_word_list = json.load(f)[lang_639_1]
         # Thai
-        elif list_stop_words == main.tr('PyThaiNLP - Thai Stop Words'):
-            stop_words = pythainlp.corpus.common.thai_stopwords()
+        elif stop_word_list == main.tr('PyThaiNLP - Thai Stop Word List'):
+            stop_word_list = pythainlp.corpus.common.thai_stopwords()
 
     # Remove empty tokens
-    stop_words = [stop_word for stop_word in stop_words if stop_word]
+    stop_word_list = [stop_word for stop_word in stop_word_list if stop_word]
 
-    return sorted(set(stop_words))
+    return sorted(set(stop_word_list))
 
 def wl_filter_stop_words(main, items, lang):
-    if lang not in main.settings_global['stop_words']:
+    if lang not in main.settings_global['stop_word_lists']:
         lang == 'other'
 
-    stop_words = wl_get_stop_words(main, lang)
+    stop_word_list = wl_get_stop_word_list(main, lang)
 
     # Check if the list is empty
     if items:
         if type(items[0]) == str:
-            items_filtered = [token for token in items if token not in stop_words]
+            items_filtered = [token for token in items if token not in stop_word_list]
         elif type(items[0]) in [list, tuple, set]:
             items_filtered = [ngram
                               for ngram in items
-                              if not [token for token in ngram if token in stop_words]]
+                              if not [token for token in ngram if token in stop_word_list]]
     else:
         items_filtered = []
 
