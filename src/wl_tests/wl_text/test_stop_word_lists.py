@@ -24,6 +24,10 @@ test_stop_word_lists = []
 main = wl_test_init.Wl_Test_Main()
 
 for lang, stop_word_lists in main.settings_global['stop_word_lists'].items():
+    # Check for missing custom lists
+    if 'Custom List' not in stop_word_lists:
+        stop_word_lists.append([''])
+
     for stop_word_list in stop_word_lists:
         test_stop_word_lists.append((lang, stop_word_list))
 
