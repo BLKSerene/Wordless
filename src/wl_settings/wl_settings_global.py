@@ -1509,7 +1509,7 @@ def init_settings_global(main):
 
             'hye': [
                 main.tr('extra-stopwords - Armenian Stop Word List'),
-                main.tr('spaCy - Arabic Stop Word List'),
+                main.tr('spaCy - Armenian Stop Word List'),
                 main.tr('Stopwords ISO - Armenian Stop Word List'),
                 main.tr('Custom List')
             ],
@@ -1521,6 +1521,7 @@ def init_settings_global(main):
 
             'eus': [
                 main.tr('extra-stopwords - Basque Stop Word List'),
+                main.tr('spaCy - Basque Stop Word List'),
                 main.tr('Stopwords ISO - Basque Stop Word List'),
                 main.tr('Custom List')
             ],
