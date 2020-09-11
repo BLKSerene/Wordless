@@ -263,6 +263,14 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
             assert tokens == ['मराठीभाषा', 'ही', 'इंडो-युरोपीय', 'भाषाकुलातील', 'एक', 'भाषा', 'आहे', '.']
         elif word_tokenizer == 'spaCy - Marathi Word Tokenizer':
             assert tokens == ['मराठीभाषा', 'ही', 'इंडो', '-', 'युरोपीय', 'भाषाकुलातील', 'एक', 'भाषा', 'आहे', '.']
+    elif lang == 'nep':
+        if word_tokenizer in ['NLTK - NIST Tokenizer',
+                              'NLTK - NLTK Tokenizer',
+                              'NLTK - Penn Treebank Tokenizer']:
+            assert tokens == ['नेपाली', 'भाषा', '(', 'अन्तर्राष्ट्रिय', 'ध्वन्यात्मक', 'वर्णमाला', '[', 'neˈpali', 'bʱaʂa', ']', ')', 'नेपालको', 'सम्पर्क', 'भाषा', 'तथा', 'भारत', ',', 'भुटान', 'र', 'म्यानमारको', 'केही', 'भागमा', 'मातृभाषाको', 'रूपमा', 'बोलिने', 'भाषा', 'हो।']
+        elif word_tokenizer in ['NLTK - Twitter Tokenizer',
+                                'spaCy - Nepali Word Tokenizer']:
+            assert tokens == ['नेपाली', 'भाषा', '(', 'अन्तर्राष्ट्रिय', 'ध्वन्यात्मक', 'वर्णमाला', '[', 'neˈpali', 'bʱaʂa', ']', ')', 'नेपालको', 'सम्पर्क', 'भाषा', 'तथा', 'भारत', ',', 'भुटान', 'र', 'म्यानमारको', 'केही', 'भागमा', 'मातृभाषाको', 'रूपमा', 'बोलिने', 'भाषा', 'हो', '।']
     elif lang == 'nob':
         assert tokens == ['Bokmål', 'er', 'en', 'varietet', 'av', 'norsk', 'språk', '.']
     elif lang == 'fas':
