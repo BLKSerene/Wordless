@@ -569,6 +569,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentencizer')
             ],
 
+            'mal': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'nob': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
                 main.tr('spaCy - Sentencizer')
@@ -920,6 +924,10 @@ def init_settings_global(main):
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Luxembourgish Word Tokenizer')
+            ],
+
+            'mal': [
+                main.tr('spaCy - Malayalam Word Tokenizer')
             ],
 
             'mar': [
@@ -1782,6 +1790,11 @@ def init_settings_global(main):
             'msa': [
                 main.tr('extra-stopwords - Malay Stop Word List'),
                 main.tr('Stopwords ISO - Malay Stop Word List'),
+                main.tr('Custom List')
+            ],
+
+            'mal': [
+                main.tr('spaCy - Malayalam Stop Word List'),
                 main.tr('Custom List')
             ],
 
