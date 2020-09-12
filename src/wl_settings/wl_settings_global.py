@@ -675,6 +675,10 @@ def init_settings_global(main):
                 main.tr('Underthesea - Vietnamese Sentence Tokenizer')
             ],
 
+            'yor': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'other': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
                 main.tr('spaCy - Sentencizer'),
@@ -1125,6 +1129,10 @@ def init_settings_global(main):
             'vie': [
                 main.tr('NLTK - Tok-tok Tokenizer'),
                 main.tr('Underthesea - Vietnamese Word Tokenizer')
+            ],
+
+            'yor': [
+                main.tr('spaCy - Yoruba Word Tokenizer')
             ],
 
             'other': [
@@ -2019,6 +2027,7 @@ def init_settings_global(main):
 
             'yor': [
                 main.tr('extra-stopwords - Yoruba Stop Word List'),
+                main.tr('spaCy - Yoruba Stop Word List'),
                 main.tr('Stopwords ISO - Yoruba Stop Word List'),
                 main.tr('Custom List')
             ],
