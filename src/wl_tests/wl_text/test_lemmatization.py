@@ -25,7 +25,7 @@ main = wl_test_init.Wl_Test_Main()
 
 for lang, lemmatizers in main.settings_global['lemmatizers'].items():
     for lemmatizer in lemmatizers:
-        if lang  in ['est']:
+        if lang not in ['other']:
             test_lemmatizers.append((lang, lemmatizer))
 
 @pytest.mark.parametrize('lang, lemmatizer', test_lemmatizers)
