@@ -1102,6 +1102,7 @@ def init_settings_default(main):
                 'ukr': main.tr('spaCy - Sentencizer'),
                 'urd': main.tr('spaCy - Sentencizer'),
                 'vie': main.tr('Underthesea - Vietnamese Sentence Tokenizer'),
+                'yor': main.tr('spaCy - Sentencizer'),
 
                 'other': main.tr('NLTK - Punkt Sentence Tokenizer')
             },
@@ -1174,6 +1175,7 @@ def init_settings_default(main):
                 'ukr': main.tr('spaCy - Ukrainian Word Tokenizer'),
                 'urd': main.tr('spaCy - Urdu Word Tokenizer'),
                 'vie': main.tr('Underthesea - Vietnamese Word Tokenizer'),
+                'yor': main.tr('spaCy - Yoruba Word Tokenizer'),
 
                 'other': main.tr('spaCy - English Word Tokenizer')
             },
