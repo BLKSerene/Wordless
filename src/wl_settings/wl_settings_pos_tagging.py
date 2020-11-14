@@ -20,7 +20,7 @@ from wl_dialogs import wl_dialog_misc, wl_msg_box
 from wl_tagsets import wl_tagset_universal
 from wl_text import wl_word_tokenization, wl_pos_tagging
 from wl_utils import wl_conversion, wl_threading
-from wl_widgets import wl_box, wl_layout, wl_table, wl_tree
+from wl_widgets import wl_box, wl_label, wl_layout, wl_table, wl_tree
 
 class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
     worker_done = pyqtSignal(str, list)
@@ -366,6 +366,7 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
             thread_fetch_data.wait()
         else:
             self.label_tagsets_num_pos_tags.setText(self.tr('* This POS tagger does not support custom mappings.'))
+            self.label_tagsets_num_pos_tags.setStyleSheet(self.main.settings_global['styles']['style_hint'])
 
             self.button_tagsets_reset.setEnabled(False)
             self.button_tagsets_reset_all.setEnabled(False)
@@ -426,6 +427,8 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
                 self.table_mappings.cellWidget(i, 1).setEnabled(False)
 
         self.label_tagsets_num_pos_tags.setText(self.tr(f'Number of POS Tags: {self.table_mappings.rowCount()}'))
+        self.label_tagsets_num_pos_tags.setStyleSheet(self.main.settings_global['styles']['style_normal'])
+
 
         self.combo_box_tagsets_lang.setEnabled(True)
         self.combo_box_tagsets_pos_tagger.setEnabled(True)
