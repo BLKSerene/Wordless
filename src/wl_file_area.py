@@ -227,7 +227,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                         (new_file,
                          detection_success_encoding,
                          detection_success_text_type,
-                         detection_success_lang) = self.main.wl_files._new_file(new_path)
+                         detection_success_lang) = self.main.wl_files._new_file(new_path, txt = False)
 
                         new_files.append(new_file)
 
@@ -310,7 +310,7 @@ class Wl_Files():
         self.main = table.main
         self.table = table
 
-    def _new_file(self, file_path):
+    def _new_file(self, file_path, txt = True):
         new_file = {}
 
         detection_success_encoding = True
@@ -342,6 +342,38 @@ class Wl_Files():
              detection_success_lang) = wl_detection.detect_lang(self.main, new_file)
         else:
             new_file['lang'] = self.main.settings_custom['auto_detection']['default_settings']['default_lang']
+
+        # Remove header tags
+        tags_header_opening = []
+        tags_header_closing = []
+
+        if txt:
+            default_dir = wl_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
+            new_file['path'] = re.sub(r'^.+?\\([^\\]+?$)', fr'{re.escape(default_dir)}\\\1', file_path)
+            new_file['path'] = wl_checking_misc.check_new_path(new_file['path'])
+
+        for tag_opening, tag_closing in self.main.settings_custom['tags']['tags_header']:
+            tags_header_opening.append(fr"{tag_opening}.+?")
+            tags_header_closing.append(fr".+?{tag_closing}")
+
+        tag_header_opening = '|'.join(tags_header_opening)
+        tag_header_closing = '|'.join(tags_header_closing)
+
+        with open(file_path, 'r', encoding = new_file['encoding']) as f, open(new_file['path'], 'w', encoding = 'utf_8') as f_temp:
+            tags_header = False
+
+            for line in f:
+                if tags_header:
+                    if re.search(tag_header_closing, line):
+                        f_temp.write(re.sub(tag_header_closing, '', line))
+
+                        tags_header = False
+                elif re.search(tag_header_opening, line):
+                    f_temp.write(re.sub(tag_header_opening, '', line))
+
+                    tags_header = True
+                else:
+                    f_temp.write(line)
 
         return (new_file,
                 detection_success_encoding,

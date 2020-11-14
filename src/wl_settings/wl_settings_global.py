@@ -2378,7 +2378,15 @@ def init_settings_global(main):
                 </head>
             ''',
 
-            'style_hints': '''
+            'style_normal': '''
+                color: #000
+            ''',
+
+            'style_important': '''
+                color: #F00;
+            ''',
+
+            'style_hint': '''
                 color: #777;
             '''
         }
