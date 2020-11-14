@@ -63,8 +63,20 @@ class Wl_Label_Dialog_No_Wrap(Wl_Label_Dialog):
 
         self.setWordWrap(False)
 
+class Wl_Label_Normal(Wl_Label):
+    def __init__(self, text, parent):
+        super().__init__(text, parent)
+
+        self.setStyleSheet(self.main.settings_global['styles']['style_normal'])
+
+class Wl_Label_Important(Wl_Label):
+    def __init__(self, text, parent):
+        super().__init__(text, parent)
+
+        self.setStyleSheet(self.main.settings_global['styles']['style_important'])
+
 class Wl_Label_Hint(Wl_Label):
     def __init__(self, text, parent):
         super().__init__(text, parent)
 
-        self.setStyleSheet(self.main.settings_global['styles']['style_hints'])
+        self.setStyleSheet(self.main.settings_global['styles']['style_hint'])
