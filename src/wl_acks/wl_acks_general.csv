@@ -1,4 +1,4 @@
 Python|https://www.python.org/|3.7.7|Guido van Rossum|PSF|https://docs.python.org/3.7/license.html#psf-license-agreement-for-python-release
 PyInstaller|http://www.pyinstaller.org/|4.0.dev0+46286a1f4|Hartmut Goebel|PyInstaller|https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt
 PyQt|https://riverbankcomputing.com/software/pyqt/|5.15.0|Riverbank Computing Limited|GPL-3.0|http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license
-pytest|https://pytest.org/|6.0.1|Holger Krekel|MIT|https://github.com/pytest-dev/pytest/blob/master/LICENSE
+pytest|https://pytest.org/|6.1.2|Holger Krekel|MIT|https://github.com/pytest-dev/pytest/blob/master/LICENSE
