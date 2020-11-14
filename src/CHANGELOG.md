@@ -61,7 +61,7 @@
 - Dependencies: Upgrade PyThaiNLP to 2.2.3
 - Dependencies: Upgrade Python to 3.7.7
 - Dependencies: Upgrade razdel to 0.5.0
-- Dependencies: Upgrade requests to 2.24.0
+- Dependencies: Upgrade requests to 2.25.0
 - Dependencies: Upgrade Sacremoses to 0.0.43
 - Dependencies: Upgrade SciPy to 1.5.2
 - Dependencies: Upgrade spaCy to 2.3.2
