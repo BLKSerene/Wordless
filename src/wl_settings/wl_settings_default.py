@@ -1039,6 +1039,10 @@ def init_settings_default(main):
             'tags_non_pos': [
                 ['<', '>'],
                 ['[', ']']
+            ],
+
+            'tags_header': [
+                ['<teiHeader>', '</teiHeader>']
             ]
         },
 
