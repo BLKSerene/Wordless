@@ -1644,6 +1644,62 @@ class Wl_Table_Tags(Wl_Table):
         self.reset_table()
 
     def item_changed(self, item = None):
+        pass
+
+    def _new_item(self, text = None):
+        i = 1
+
+        if text == None:
+            while True:
+                if self.findItems(self.tr(f'New Tag ({i})'), Qt.MatchExactly):
+                    i += 1
+                else:
+                    new_item = QTableWidgetItem(self.tr('New Tag ({})').format(i))
+
+                    break
+        else:
+            new_item = QTableWidgetItem(text)
+
+        new_item.text_old = new_item.text()
+        
+        return new_item
+
+    def add_item(self, texts = []):
+        pass
+
+    def remove_item(self):
+        if len(self.get_selected_rows()) == self.rowCount():
+            QMessageBox.warning(
+                self.main,
+                self.tr('Empty Tag'),
+                self.tr(f'You should specify at least 1 (pair of) tag in the table!')
+            )
+        else:
+            self.blockSignals(True)
+
+            for i in reversed(self.get_selected_rows()):
+                self.removeRow(i)
+
+            self.blockSignals(False)
+
+    def reset_table(self):
+        self.blockSignals(True)
+
+        self.setRowCount(0)
+
+        self.blockSignals(False)
+
+    def get_tags(self):
+        tags = []
+
+        for row in range(self.rowCount()):
+            tags.append([self.item(row, 0).text(),
+                         self.item(row, 1).text()])
+
+        return tags
+
+class Wl_Table_Tags_Embedded(Wl_Table_Tags):
+    def item_changed(self, item = None):
         self.blockSignals(True)
 
         if item:
@@ -1694,24 +1750,6 @@ class Wl_Table_Tags(Wl_Table):
 
         self.blockSignals(False)
 
-    def _new_item(self, text = None):
-        i = 1
-
-        if text == None:
-            while True:
-                if self.findItems(self.tr(f'New Tag ({i})'), Qt.MatchExactly):
-                    i += 1
-                else:
-                    new_item = QTableWidgetItem(self.tr('New Tag ({})').format(i))
-
-                    break
-        else:
-            new_item = QTableWidgetItem(text)
-
-        new_item.text_old = new_item.text()
-        
-        return new_item
-
     def add_item(self, texts = []):
         self.blockSignals(True)
 
@@ -1742,33 +1780,91 @@ class Wl_Table_Tags(Wl_Table):
 
         self.item_changed()
 
-    def remove_item(self):
-        if len(self.get_selected_rows()) == self.rowCount():
-            QMessageBox.warning(
-                self.main,
-                self.tr('Empty Tag'),
-                self.tr(f'You should specify at least 1 (pair of) tag in the table!')
-            )
-        else:
-            self.blockSignals(True)
-
-            for i in reversed(self.get_selected_rows()):
-                self.removeRow(i)
-
-            self.blockSignals(False)
-
-    def reset_table(self):
+class Wl_Table_Tags_Html(Wl_Table_Tags):
+    def item_changed(self, item = None):
         self.blockSignals(True)
 
-        self.setRowCount(0)
+        if item:
+            # Opening and closing tags
+            if item.column() == 0:
+                msg = 'The opening tag should not be left empty!'
+            elif item.column() == 1:
+                msg = 'The closing tag should not be left empty!'
+
+            if re.search(r'^\s*$', item.text()):
+                QMessageBox.warning(
+                    self.main,
+                    self.tr('Empty Opening Tag'),
+                    self.tr(f'''
+                        {self.main.settings_global['styles']['style_dialog']}
+                        <body>
+                            <p>{msg}</p>
+                        </body>
+                    ''')
+                )
+
+                item.setText(item.text_old)
+
+                self.closePersistentEditor(item)
+                self.editItem(item)
+
+                return
+
+            for row in range(self.rowCount()):
+                if row != item.row():
+                    if (self.item(row, 0).text() == self.item(item.row(), 0).text() and
+                        self.item(row, 1).text() == self.item(item.row(), 1).text()):
+                        wl_msg_box.wl_msg_box_duplicate_tags(self.main)
+
+                        item.setText(item.text_old)
+
+                        self.closePersistentEditor(item)
+                        self.editItem(item)
+
+                        return
+        
+        for row in range(self.rowCount()):
+            for col in range(self.columnCount()):
+                if col < 2:
+                    self.item(row, col).text_old = self.item(row, col).text()
+
+            self.item(row, 2).setText(self.tr(f'{self.item(row, 0).text()}token{self.item(row, 1).text()}'))
 
         self.blockSignals(False)
 
-    def get_tags(self):
-        tags = []
+    def add_item(self, texts = []):
+        self.blockSignals(True)
 
-        for row in range(self.rowCount()):
-            tags.append([self.item(row, 0).text(),
-                         self.item(row, 1).text()])
+        self.setRowCount(self.rowCount() + 1)
 
-        return tags
+        if texts:
+            for i in range(self.columnCount()):
+                if i < 2:
+                    self.setItem(self.rowCount() - 1, i, self._new_item(text = texts[i]))
+                elif i == 2:
+                    self.setItem(self.rowCount() - 1, i, QTableWidgetItem(''))
+        else:
+            for i in range(self.columnCount()):
+                if i == 0:
+                    self.setItem(self.rowCount() - 1, i, self._new_item())
+                elif i == 1:
+                    text_closing_tag = self.item(self.rowCount() - 1, 0).text().replace('<', '</')
+
+                    self.setItem(self.rowCount() - 1, i, self._new_item(text = text_closing_tag))
+                elif i == 2:
+                    self.setItem(self.rowCount() - 1, i, QTableWidgetItem(''))
+
+                self.item(self.rowCount() - 1, i).setSelected(True)
+
+            self.editItem(self.item(self.rowCount() - 1, 0))
+
+        self.item(self.rowCount() - 1, self.columnCount() - 1).setFlags(
+            Qt.ItemIsSelectable |
+            Qt.ItemIsDragEnabled |
+            Qt.ItemIsEnabled
+        )
+
+        self.blockSignals(False)
+
+        self.item_changed()
+
