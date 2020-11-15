@@ -46,7 +46,7 @@
 ### ⏫ Dependency Changes
 - Dependencies: Add OpenCC
 - Dependencies: Remove grk-stoplist
-- Dependencies: Upgrade Beautiful Soup to 4.9.1
+- Dependencies: Upgrade Beautiful Soup to 4.9.3
 - Dependencies: Upgrade botok to 0.8.1
 - Dependencies: Upgrade jieba to 0.42.1
 - Dependencies: Upgrade lxml to 4.5.2
