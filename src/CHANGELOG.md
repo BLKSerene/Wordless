@@ -68,6 +68,7 @@
 - Dependencies: Upgrade spaCy to 2.3.2
 - Dependencies: Upgrade Stopwords ISO to 1.0.0
 - Dependencies: Upgrade syntok to 1.3.1
+- Dependencies: Upgrade Underthesea to 1.2.2
 - Dependencies: Upgrade WordCloud to 1.8.0
 
 ## [v1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.3.0) - 11/30/2019
