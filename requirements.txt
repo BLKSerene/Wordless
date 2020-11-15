@@ -22,9 +22,9 @@ nagisa == 0.2.7
 nltk == 3.5
 opencc == 1.1.1
 
-## pymorphy2 and its dictionaries
-https://github.com/kmike/pymorphy2/archive/master.zip
-pymorphy2-dicts-ru == 2.4.404381.4453942
+## pymorphy2
+pymorphy2 == 0.9.1
+pymorphy2-dicts-ru == 2.4.417127.4579844
 pymorphy2-dicts-uk == 2.4.1.1.1460299261
 
 pythainlp == 2.2.3
