@@ -49,7 +49,7 @@
 - Dependencies: Upgrade Beautiful Soup to 4.9.3
 - Dependencies: Upgrade botok to 0.8.1
 - Dependencies: Upgrade jieba to 0.42.1
-- Dependencies: Upgrade lxml to 4.5.2
+- Dependencies: Upgrade lxml to 4.6.1
 - Dependencies: Upgrade Matplotlib to 3.3.1
 - Dependencies: Upgrade nagisa to 0.2.7
 - Dependencies: Upgrade NetworkX to 2.5
