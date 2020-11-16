@@ -20,7 +20,7 @@ matrix:
       os: windows
       language: shell
       before_install:
-        - choco install python --version 3.7.8
+        - choco install python --version 3.8.6
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
     # macOS
     - name: "macOS"
@@ -31,7 +31,7 @@ matrix:
     - name: "Linux"
       os: linux
       dist: xenial
-      python: 3.7
+      python: 3.8
 
 install:
   # Check Python version
