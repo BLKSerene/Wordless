@@ -19,7 +19,7 @@ jobs:
   steps:
   - task: UsePythonVersion@0
     inputs:
-      versionSpec: '3.7.x' 
+      versionSpec: '3.8.x' 
       architecture: 'x64'
 
   # Check Python version
@@ -59,7 +59,7 @@ jobs:
   steps:
   - task: UsePythonVersion@0
     inputs:
-      versionSpec: '3.7.x' 
+      versionSpec: '3.8.x' 
 
   # Check Python version
   - script: |
@@ -98,22 +98,22 @@ jobs:
   steps:
   - task: UsePythonVersion@0
     inputs:
-      versionSpec: '3.7.x' 
+      versionSpec: '3.8.x' 
 
   # Check Python version
   - script: |
-      python3.7 --version
+      python3.8 --version
     displayName: 'Check Python version'
 
   # Install dependencies
   - script: |
-      pip3.7 install --upgrade pip
-      pip3.7 install --requirement requirements.txt
+      pip3.8 install --upgrade pip
+      pip3.8 install --requirement requirements.txt
     displayName: 'Install dependencies'
 
   # Download data
   - script: |
-      python3.7 downloaders/wl_downloader_ci.py
+      python3.8 downloaders/wl_downloader_ci.py
     displayName: 'Download data'
 
   # Run tests
