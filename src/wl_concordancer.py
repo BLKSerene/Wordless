@@ -376,13 +376,44 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
 
         self.group_box_fig_settings.layout().setColumnStretch(1, 1)
 
+        # Zapping Settings
+        self.group_box_zapping_settings = QGroupBox(self.tr('Zapping Settings'), self)
+
+        self.label_replace_keywords_with = QLabel(self.tr('Replace keywords with'), self)
+        self.spin_box_replace_keywords_with = wl_box.Wl_Spin_Box(self)
+        self.line_edit_replace_keywords_with = QLineEdit('_', self)
+        self.checkbox_add_line_nums = QCheckBox(self.tr('Add line numbers'), self)
+        self.checkbox_discard_position_info = QCheckBox(self.tr('Discard position information'), self)
+        self.checkbox_randomize_outputs = QCheckBox(self.tr('Randomize outputs'), self)
+
+        self.group_box_zapping_settings.setCheckable(True)
+        self.spin_box_replace_keywords_with.setRange(1, 100)
+
+        self.group_box_zapping_settings.clicked.connect(self.zapping_settings_changed)
+        self.spin_box_replace_keywords_with.valueChanged.connect(self.zapping_settings_changed)
+        self.line_edit_replace_keywords_with.textChanged.connect(self.zapping_settings_changed)
+        self.checkbox_add_line_nums.clicked.connect(self.zapping_settings_changed)
+        self.checkbox_discard_position_info.clicked.connect(self.zapping_settings_changed)
+        self.checkbox_randomize_outputs.clicked.connect(self.zapping_settings_changed)
+
+        self.group_box_zapping_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_zapping_settings.layout().addWidget(self.label_replace_keywords_with, 0, 0)
+        self.group_box_zapping_settings.layout().addWidget(self.spin_box_replace_keywords_with, 0, 1)
+        self.group_box_zapping_settings.layout().addWidget(self.line_edit_replace_keywords_with, 0, 2)
+        self.group_box_zapping_settings.layout().addWidget(self.checkbox_add_line_nums, 1, 0, 1, 3)
+        self.group_box_zapping_settings.layout().addWidget(self.checkbox_discard_position_info, 2, 0, 1, 3)
+        self.group_box_zapping_settings.layout().addWidget(self.checkbox_randomize_outputs, 3, 0, 1, 3)
+
+        self.group_box_fig_settings.layout().setColumnStretch(4, 1)
+
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_search_settings, 1, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_generation_settings, 2, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 3, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_fig_settings, 4, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_zapping_settings, 5, 0)
 
-        self.wrapper_settings.layout().setRowStretch(5, 1)
+        self.wrapper_settings.layout().setRowStretch(6, 1)
 
         self.load_settings()
 
@@ -448,10 +479,20 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         # Figure Settings
         self.combo_box_sort_results_by.setCurrentText(settings['fig_settings']['sort_results_by'])
 
+        # Zapping Settings
+        self.group_box_zapping_settings.setChecked(settings['zapping_settings']['zapping'])
+        self.spin_box_replace_keywords_with.setValue(settings['zapping_settings']['replace_keywords_with'])
+        self.line_edit_replace_keywords_with.setText(settings['zapping_settings']['placeholder'])
+        self.checkbox_add_line_nums.setChecked(settings['zapping_settings']['add_line_nums'])
+        self.checkbox_discard_position_info.setChecked(settings['zapping_settings']['discard_position_info'])
+        self.checkbox_randomize_outputs.setChecked(settings['zapping_settings']['randomize_outputs'])
+
         self.token_settings_changed()
         self.search_settings_changed()
         self.generation_settings_changed()
         self.table_settings_changed()
+        self.fig_settings_changed()
+        self.zapping_settings_changed()
 
     def token_settings_changed(self):
         settings = self.main.settings_custom['concordancer']['token_settings']
@@ -562,6 +603,16 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         settings = self.main.settings_custom['concordancer']['fig_settings']
 
         settings['sort_results_by'] = self.combo_box_sort_results_by.currentText()
+
+    def zapping_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['zapping_settings']
+
+        settings['zapping'] = self.group_box_zapping_settings.isChecked()
+        settings['replace_keywords_with'] = self.spin_box_replace_keywords_with.value()
+        settings['placeholder'] = self.line_edit_replace_keywords_with.text()
+        settings['add_line_nums'] = self.checkbox_add_line_nums.isChecked()
+        settings['discard_position_info'] = self.checkbox_discard_position_info.isChecked()
+        settings['randomize_outputs'] = self.checkbox_randomize_outputs.isChecked()
 
 class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(list)
