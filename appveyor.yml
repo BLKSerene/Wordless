@@ -15,13 +15,13 @@ environment:
   matrix:
     # Windows
     - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2019"
-      PYTHON: "C:/Python37-x64"
+      PYTHON: "C:/Python38-x64"
     # MacOS
     - APPVEYOR_BUILD_WORKER_IMAGE: "macos-mojave"
-      PYTHON: "~/venv3.7"
+      PYTHON: "~/venv3.8"
     # Linux
     - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu1604"
-      PYTHON: "$HOME/venv3.7"
+      PYTHON: "$HOME/venv3.8"
 
 cache:
   # Windows
