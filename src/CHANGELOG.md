@@ -24,6 +24,7 @@
 - Utils: Add spaCy's Polish POS tagger and lemmatizer
 - Utils: Add spaCy's Romanian POS tagger and lemmatizer
 - Utils: Add Stopwords ISO's Gujarati and Lithuanian stop word lists
+- Work Area: Add Concordancer - Zapping Settings
 
 ### ✨ Improvements
 - Menu: Disable editing of POS tag mappings for spaCy's POS taggers

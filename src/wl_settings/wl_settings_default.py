@@ -180,6 +180,15 @@ def init_settings_default(main):
                 'sort_results_by': main.tr('File')
             },
 
+            'zapping_settings': {
+                'zapping': False,
+                'replace_keywords_with': 15,
+                'placeholder': '_',
+                'add_line_nums': True,
+                'discard_position_info': True,
+                'randomize_outputs': True
+            },
+
             'sort_results': {
                 'sorting_rules': [
                     [main.tr('Node'), main.tr('Ascending')],

@@ -12,6 +12,7 @@
 import copy
 import csv
 import os
+import random
 import re
 import time
 
@@ -20,6 +21,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 import bs4
+import docx
 import openpyxl
 
 from wl_checking import wl_checking_misc
@@ -39,6 +41,8 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
         if 'headers_pct' not in self.table.__dict__:
             self.table.headers_pct = []
 
+        settings_concordancer = self.main.settings_custom['concordancer']['zapping_settings']
+
         # Check file permissions
         try:
             if not self.rows_export:
@@ -46,8 +50,69 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
 
             len_rows = len(self.rows_export)
 
+            # CSV files
+            if self.file_type == self.tr('CSV File (*.csv)'):
+                encoding = self.main.settings_custom['export']['tables']['default_encoding']
+
+                with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
+                    csv_writer = csv.writer(f)
+
+                    # Concordancer
+                    if self.table.name == 'concordancer':
+                        # Horizontal Headers
+                        csv_writer.writerow([self.table.horizontalHeaderItem(col).text().strip()
+                                             for col in range(self.table.columnCount())])
+
+                        # Cells
+                        for i, row in enumerate(self.rows_export):
+                            row_to_export = []
+
+                            for col in range(self.table.columnCount()):
+                                if self.table.item(row, col):
+                                    cell_text = self.table.item(row, col).text()
+                                else:
+                                    cell_text = self.table.cellWidget(row, col).text()
+                                    cell_text = wl_text_utils.html_to_text(cell_text)
+
+                                row_to_export.append(cell_text)
+
+                            csv_writer.writerow(row_to_export)
+
+                            self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
+                    else:
+                        if self.table.header_orientation == 'horizontal':
+                            # Horizontal Headers
+                            csv_writer.writerow([self.table.horizontalHeaderItem(col).text().strip()
+                                                 for col in range(self.table.columnCount())])
+
+                            # Cells
+                            for i, row in enumerate(self.rows_export):
+                                row_to_export = []
+
+                                for col in range(self.table.columnCount()):
+                                    row_to_export.append(self.table.item(row, col).text().strip())
+
+                                csv_writer.writerow(row_to_export)
+
+                                self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
+                        else:
+                            # Horizontal Headers
+                            csv_writer.writerow([''] +
+                                                [self.table.horizontalHeaderItem(col).text().strip()
+                                                 for col in range(self.table.columnCount())])
+
+                            # Vertical Headers & Cells
+                            for i, row in enumerate(self.rows_export):
+                                row_to_export = [self.table.verticalHeaderItem(row).text().strip()]
+
+                                for col in range(self.table.columnCount()):
+                                    row_to_export.append(self.table.item(row, col).text().strip())
+
+                                csv_writer.writerow(row_to_export)
+
+                                self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
             # Excel workbooks
-            if self.file_type == self.tr('Excel Workbook (*.xlsx)'):
+            elif self.file_type == self.tr('Excel Workbook (*.xlsx)'):
                 workbook = openpyxl.Workbook()
                 worksheet = workbook.active
 
@@ -223,68 +288,75 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                 self.progress_updated.emit(self.tr(f'Saving file ...'))
 
                 workbook.save(self.file_path)
-            # CSV files
-            elif self.file_type == self.tr('CSV File (*.csv)'):
-                encoding = self.main.settings_custom['export']['tables']['default_encoding']
+            elif self.file_type == self.tr('Word Document (*.docx)'):
+                outputs = []
+                doc = docx.Document()
 
-                with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
-                    csv_writer = csv.writer(f)
+                for i, row in enumerate(self.rows_export):
+                    output = []
 
-                    # Concordancer
-                    if self.table.name == 'concordancer':
-                        # Horizontal Headers
-                        csv_writer.writerow([self.table.horizontalHeaderItem(col).text().strip()
-                                             for col in range(self.table.columnCount())])
-
-                        # Cells
-                        for i, row in enumerate(self.rows_export):
-                            row_to_export = []
-
-                            for col in range(self.table.columnCount()):
+                    # Zapping
+                    if settings_concordancer['zapping']:
+                        # Discard position information
+                        if settings_concordancer['discard_position_info']:
+                            for j, col in enumerate(range(3)):
                                 if self.table.item(row, col):
                                     cell_text = self.table.item(row, col).text()
                                 else:
                                     cell_text = self.table.cellWidget(row, col).text()
                                     cell_text = wl_text_utils.html_to_text(cell_text)
 
-                                row_to_export.append(cell_text)
-
-                            csv_writer.writerow(row_to_export)
-
-                            self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
-                    else:
-                        if self.table.header_orientation == 'horizontal':
-                            # Horizontal Headers
-                            csv_writer.writerow([self.table.horizontalHeaderItem(col).text().strip()
-                                                 for col in range(self.table.columnCount())])
-
-                            # Cells
-                            for i, row in enumerate(self.rows_export):
-                                row_to_export = []
-
-                                for col in range(self.table.columnCount()):
-                                    row_to_export.append(self.table.item(row, col).text().strip())
-
-                                csv_writer.writerow(row_to_export)
-
-                                self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
+                                output.append(cell_text)
                         else:
-                            # Horizontal Headers
-                            csv_writer.writerow([''] +
-                                                [self.table.horizontalHeaderItem(col).text().strip()
-                                                 for col in range(self.table.columnCount())])
+                            if self.table.item(row, col):
+                                cell_text = self.table.item(row, col).text()
+                            else:
+                                cell_text = self.table.cellWidget(row, col).text()
+                                cell_text = wl_text_utils.html_to_text(cell_text)
 
-                            # Vertical Headers & Cells
-                            for i, row in enumerate(self.rows_export):
-                                row_to_export = [self.table.verticalHeaderItem(row).text().strip()]
+                            output.append(cell_text)
 
-                                for col in range(self.table.columnCount()):
-                                    row_to_export.append(self.table.item(row, col).text().strip())
+                        if settings_concordancer['auto_adjust_placeholder_width']:
+                            pass
+                        else:
+                            output[1] = settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with']
 
-                                csv_writer.writerow(row_to_export)
+                        if settings_concordancer['add_line_nums']:
+                            output.insert(0, f'{i + 1}. ')
 
-                                self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
+                        outputs.append(output)
+                    else:
+                        if self.table.item(row, col):
+                            cell_text = self.table.item(row, col).text()
+                        else:
+                            cell_text = self.table.cellWidget(row, col).text()
+                            cell_text = wl_text_utils.html_to_text(cell_text)
 
+                        output.append(cell_text)
+
+                    if not settings_concordancer['zapping']:
+                        para = doc.add_paragraph(' '.join(output))
+                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
+
+                        self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
+
+                # Randomize outputs
+                if settings_concordancer['zapping'] and settings_concordancer['randomize_outputs']:
+                    random.shuffle(outputs)
+
+                    # Re-order line numbers
+                    if settings_concordancer['add_line_nums']:
+                        for i, _ in enumerate(outputs):
+                            outputs[i][0] = f'{i + 1}. '
+
+                    for i, para in enumerate(outputs):
+                        para = doc.add_paragraph(' '.join(para))
+                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
+
+                    self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
+
+                doc.save(self.file_path)
+                
             self.main.settings_custom['export']['tables']['default_path'] = wl_misc.get_normalized_dir(self.file_path)
             self.main.settings_custom['export']['tables']['default_type'] = self.file_type
 
@@ -600,7 +672,7 @@ class Wl_Table(QTableWidget):
          file_type) = QFileDialog.getSaveFileName(
             self,
             self.tr('Export Table'),
-            wl_checking_misc.check_dir(default_dir),
+            os.path.join(wl_checking_misc.check_dir(default_dir), 'outputs'),
             ';;'.join(self.main.settings_global['file_types']['export_tables']),
             self.main.settings_custom['export']['tables']['default_type']
         )
