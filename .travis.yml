@@ -21,7 +21,7 @@ matrix:
       language: shell
       before_install:
         - choco install python --version 3.8.6
-      env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
+      env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
     # macOS
     - name: "macOS"
       os: osx
