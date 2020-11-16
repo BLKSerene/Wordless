@@ -415,8 +415,9 @@ def init_settings_global(main):
             ],
 
             'export_tables': [
+                main.tr('CSV File (*.csv)'),
                 main.tr('Excel Workbook (*.xlsx)'),
-                main.tr('CSV File (*.csv)')
+                main.tr('Word Document (*.docx)')
             ]
         },
 
