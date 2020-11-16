@@ -31,17 +31,61 @@ cache:
   # Linux
   - "/home/appveyor/.cache/pip"
 
-stack: python 3.7.7
+stack: python 3.8
 
-install:
-  - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
-  # Check Python version
-  - python --version
-  # Install dependencies
-  - python -m pip install --upgrade pip
-  - pip install --requirement requirements.txt
-  # Download data
-  - python downloaders/wl_downloader_ci.py
+for:
+  # Windows
+  -
+    matrix:
+      only: 
+        - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2019"
+    install:
+      - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
+      # Check Python version
+      - python --version
+      # Install dependencies
+      - python -m pip install --upgrade pip
+      - pip install --requirement requirements.txt
+      # Download data
+      - python downloaders/wl_downloader_ci.py
+
+  # macOS
+  -
+    matrix:
+      only: 
+        - APPVEYOR_BUILD_WORKER_IMAGE: "macos-mojave"
+    install:
+      - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
+      # Check Python version
+      - python --version
+      # Scikit-learn
+      - brew install libomp
+      - export CC=/usr/bin/clang
+      - export CXX=/usr/bin/clang++
+      - export CPPFLAGS="$CPPFLAGS -Xpreprocessor -fopenmp"
+      - export CFLAGS="$CFLAGS -I/usr/local/opt/libomp/include"
+      - export CXXFLAGS="$CXXFLAGS -I/usr/local/opt/libomp/include"
+      - export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/local/opt/libomp/lib -L/usr/local/opt/libomp/lib -lomp"
+      # Install dependencies
+      - python -m pip install --upgrade pip
+      - pip install --requirement requirements.txt
+      # Download data
+      - python downloaders/wl_downloader_ci.py
+
+  # Ubuntu
+  - 
+    matrix:
+      only: 
+        - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu1604"
+    install:
+      - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
+      # Check Python version
+      - python --version
+      # Install dependencies
+      - python -m pip install --upgrade pip
+      - pip install --requirement requirements.txt
+      # Download data
+      - python downloaders/wl_downloader_ci.py
 
 build: off
 
