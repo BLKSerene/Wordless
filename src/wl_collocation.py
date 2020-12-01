@@ -124,15 +124,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
          self.checkbox_lemmatize_tokens,
          self.checkbox_filter_stop_words,
 
-         self.token_stacked_ignore_tags,
          self.token_checkbox_ignore_tags,
-         self.token_checkbox_ignore_tags_tags,
-
-         self.token_stacked_ignore_tags_type,
-         self.token_combo_box_ignore_tags,
-         self.token_combo_box_ignore_tags_tags,
-
-         self.token_label_ignore_tags,
          self.checkbox_use_tags) = wl_widgets.wl_widgets_token_settings(self)
 
         self.checkbox_words.stateChanged.connect(self.token_settings_changed)
@@ -147,17 +139,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.checkbox_filter_stop_words.stateChanged.connect(self.token_settings_changed)
 
         self.token_checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
-        self.token_checkbox_ignore_tags_tags.stateChanged.connect(self.token_settings_changed)
-        self.token_combo_box_ignore_tags.currentTextChanged.connect(self.token_settings_changed)
-        self.token_combo_box_ignore_tags_tags.currentTextChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
-
-        layout_ignore_tags = wl_layout.Wl_Layout()
-        layout_ignore_tags.addWidget(self.token_stacked_ignore_tags, 0, 0)
-        layout_ignore_tags.addWidget(self.token_stacked_ignore_tags_type, 0, 1)
-        layout_ignore_tags.addWidget(self.token_label_ignore_tags, 0, 2)
-
-        layout_ignore_tags.setColumnStretch(3, 1)
 
         self.group_box_token_settings.setLayout(wl_layout.Wl_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
@@ -175,7 +157,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
 
         self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 7, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.token_checkbox_ignore_tags, 8, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 9, 0, 1, 2)
 
         # Search Settings
@@ -195,15 +177,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
          self.checkbox_match_whole_words,
          self.checkbox_use_regex,
 
-         self.search_stacked_widget_ignore_tags,
          self.search_checkbox_ignore_tags,
-         self.search_checkbox_ignore_tags_tags,
-
-         self.search_stacked_widget_ignore_tags_type,
-         self.search_combo_box_ignore_tags,
-         self.search_combo_box_ignore_tags_tags,
-
-         self.search_label_ignore_tags,
          self.checkbox_match_tags) = wl_widgets.wl_widgets_search_settings(
             self,
             tab = 'collocation'
@@ -230,17 +204,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
 
         self.search_checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
-        self.search_checkbox_ignore_tags_tags.stateChanged.connect(self.search_settings_changed)
-        self.search_combo_box_ignore_tags.currentTextChanged.connect(self.search_settings_changed)
-        self.search_combo_box_ignore_tags_tags.currentTextChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
-
-        layout_ignore_tags = wl_layout.Wl_Layout()
-        layout_ignore_tags.addWidget(self.search_stacked_widget_ignore_tags, 0, 0)
-        layout_ignore_tags.addWidget(self.search_stacked_widget_ignore_tags_type, 0, 1)
-        layout_ignore_tags.addWidget(self.search_label_ignore_tags, 0, 2)
-
-        layout_ignore_tags.setColumnStretch(3, 1)
 
         layout_context_settings = wl_layout.Wl_Layout()
         layout_context_settings.addWidget(self.label_context_settings, 0, 0)
@@ -259,7 +223,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.group_box_search_settings.layout().addWidget(self.checkbox_match_whole_words, 5, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_use_regex, 6, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addLayout(layout_ignore_tags, 7, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.search_checkbox_ignore_tags, 7, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
         self.group_box_search_settings.layout().addWidget(wl_layout.Wl_Separator(self), 9, 0, 1, 2)
@@ -446,9 +410,6 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
         self.token_checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
-        self.token_checkbox_ignore_tags_tags.setChecked(settings['token_settings']['ignore_tags_tags'])
-        self.token_combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
-        self.token_combo_box_ignore_tags_tags.setCurrentText(settings['token_settings']['ignore_tags_type_tags'])
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Search Settings
@@ -466,9 +427,6 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
 
         self.search_checkbox_ignore_tags.setChecked(settings['search_settings']['ignore_tags'])
-        self.search_checkbox_ignore_tags_tags.setChecked(settings['search_settings']['ignore_tags_tags'])
-        self.search_combo_box_ignore_tags.setCurrentText(settings['search_settings']['ignore_tags_type'])
-        self.search_combo_box_ignore_tags_tags.setCurrentText(settings['search_settings']['ignore_tags_type_tags'])
         self.checkbox_match_tags.setChecked(settings['search_settings']['match_tags'])
 
         # Context Settings
@@ -534,9 +492,6 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         settings['filter_stop_words'] = self.checkbox_filter_stop_words.isChecked()
 
         settings['ignore_tags'] = self.token_checkbox_ignore_tags.isChecked()
-        settings['ignore_tags_tags'] = self.token_checkbox_ignore_tags_tags.isChecked()
-        settings['ignore_tags_type'] = self.token_combo_box_ignore_tags.currentText()
-        settings['ignore_tags_type_tags'] = self.token_combo_box_ignore_tags_tags.currentText()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
         # Check if searching is enabled
@@ -566,9 +521,6 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         settings['use_regex'] = self.checkbox_use_regex.isChecked()
 
         settings['ignore_tags'] = self.search_checkbox_ignore_tags.isChecked()
-        settings['ignore_tags_tags'] = self.search_checkbox_ignore_tags_tags.isChecked()
-        settings['ignore_tags_type'] = self.search_combo_box_ignore_tags.currentText()
-        settings['ignore_tags_type_tags'] = self.search_combo_box_ignore_tags_tags.currentText()
         settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
     def generation_settings_changed(self):
@@ -680,7 +632,8 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
             search_terms = wl_matching.match_search_terms(
                 self.main, tokens,
                 lang = text.lang,
-                text_type = text.text_type,
+                tokenized = text.tokenized,
+                tagged = text.tagged,
                 token_settings = settings['token_settings'],
                 search_settings = settings['search_settings']
             )
@@ -689,7 +642,8 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
              search_terms_exclusion) = wl_matching.match_search_terms_context(
                 self.main, tokens,
                 lang = text.lang,
-                text_type = text.text_type,
+                tokenized = text.tokenized,
+                tagged = text.tagged,
                 token_settings = settings['token_settings'],
                 context_settings = settings['context_settings']
             )

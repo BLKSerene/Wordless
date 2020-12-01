@@ -33,13 +33,17 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default', flat_tokens =
 
     # Check initialization status of word (and sentence) tokenizers
     if flat_tokens:
-        wl_text_utils.check_word_tokenizers(main,
-                                                  lang = lang,
-                                                  word_tokenizer = word_tokenizer)
+        wl_text_utils.check_word_tokenizers(
+            main,
+            lang = lang,
+            word_tokenizer = word_tokenizer
+        )
     else:
-        wl_text_utils.check_tokenizers(main,
-                                             lang = lang,
-                                             word_tokenizer = word_tokenizer)
+        wl_text_utils.check_tokenizers(
+            main,
+            lang = lang,
+            word_tokenizer = word_tokenizer
+        )
 
     # NLTK
     if 'NLTK' in word_tokenizer:
