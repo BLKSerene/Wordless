@@ -47,7 +47,8 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
                 search_terms_file = wl_matching.match_search_terms(
                     self.main, items,
                     lang = file['lang'],
-                    text_type = ('tokenized', 'tagged_both'),
+                    tokenized = file['tokenized'],
+                    tagged = file['tagged'],
                     token_settings = self.dialog.table.settings[self.dialog.tab]['token_settings'],
                     search_settings = self.dialog.settings)
 
@@ -92,15 +93,7 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
          self.checkbox_match_whole_words,
          self.checkbox_use_regex,
 
-         self.stacked_widget_ignore_tags,
          self.checkbox_ignore_tags,
-         self.checkbox_ignore_tags_tags,
-
-         self.stacked_widget_ignore_tags_type,
-         self.combo_box_ignore_tags,
-         self.combo_box_ignore_tags_tags,
-
-         self.label_ignore_tags,
          self.checkbox_match_tags) = wl_widgets.wl_widgets_search_settings(self, self.tab)
 
         self.button_find_next = QPushButton(self.tr('Find Next'), self)
@@ -125,9 +118,6 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
         self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
 
         self.checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_ignore_tags_tags.stateChanged.connect(self.search_settings_changed)
-        self.combo_box_ignore_tags.currentTextChanged.connect(self.search_settings_changed)
-        self.combo_box_ignore_tags_tags.currentTextChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
 
         self.button_find_next.clicked.connect(lambda: self.find_next())
@@ -136,13 +126,6 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
 
         self.button_clear_hightlights.clicked.connect(self.clear_highlights)
         self.button_close.clicked.connect(self.reject)
-
-        layout_ignore_tags = wl_layout.Wl_Layout()
-        layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags, 0, 0)
-        layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags_type, 0, 1)
-        layout_ignore_tags.addWidget(self.label_ignore_tags, 0, 2)
-
-        layout_ignore_tags.setColumnStretch(3, 1)
 
         layout_buttons_right = wl_layout.Wl_Layout()
         layout_buttons_right.addWidget(self.button_find_next, 0, 0)
@@ -167,7 +150,7 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
         self.layout().addWidget(self.checkbox_match_whole_words, 5, 0, 1, 2)
         self.layout().addWidget(self.checkbox_use_regex, 6, 0, 1, 2)
 
-        self.layout().addLayout(layout_ignore_tags, 7, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_ignore_tags, 7, 0, 1, 2)
         self.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
         self.layout().addWidget(wl_layout.Wl_Separator(self, orientation = 'Vertical'), 0, 2, 9, 1)
@@ -200,9 +183,6 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
         self.checkbox_use_regex.setChecked(settings['use_regex'])
 
         self.checkbox_ignore_tags.setChecked(settings['ignore_tags'])
-        self.checkbox_ignore_tags_tags.setChecked(settings['ignore_tags_tags'])
-        self.combo_box_ignore_tags.setCurrentText(settings['ignore_tags_type'])
-        self.combo_box_ignore_tags_tags.setCurrentText(settings['ignore_tags_type_tags'])
         self.checkbox_match_tags.setChecked(settings['match_tags'])
 
         self.search_settings_changed()
@@ -218,9 +198,6 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
         self.settings['use_regex'] = self.checkbox_use_regex.isChecked()
 
         self.settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
-        self.settings['ignore_tags_tags'] = self.checkbox_ignore_tags_tags.isChecked()
-        self.settings['ignore_tags_type'] = self.combo_box_ignore_tags.currentText()
-        self.settings['ignore_tags_type_tags'] = self.combo_box_ignore_tags_tags.currentText()
         self.settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
         if 'size_multi' in self.__dict__:

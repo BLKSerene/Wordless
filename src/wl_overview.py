@@ -149,15 +149,7 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
          self.checkbox_lemmatize_tokens,
          self.checkbox_filter_stop_words,
 
-         self.stacked_widget_ignore_tags,
          self.checkbox_ignore_tags,
-         self.checkbox_ignore_tags_tags,
-
-         self.stacked_widget_ignore_tags_type,
-         self.combo_box_ignore_tags,
-         self.combo_box_ignore_tags_tags,
-
-         self.label_ignore_tags,
          self.checkbox_use_tags) = wl_widgets.wl_widgets_token_settings(self)
 
         self.checkbox_words.stateChanged.connect(self.token_settings_changed)
@@ -172,17 +164,7 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
         self.checkbox_filter_stop_words.stateChanged.connect(self.token_settings_changed)
 
         self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_ignore_tags_tags.stateChanged.connect(self.token_settings_changed)
-        self.combo_box_ignore_tags.currentTextChanged.connect(self.token_settings_changed)
-        self.combo_box_ignore_tags_tags.currentTextChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
-
-        layout_ignore_tags = wl_layout.Wl_Layout()
-        layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags, 0, 0)
-        layout_ignore_tags.addWidget(self.stacked_widget_ignore_tags_type, 0, 1)
-        layout_ignore_tags.addWidget(self.label_ignore_tags, 0, 2)
-
-        layout_ignore_tags.setColumnStretch(3, 1)
 
         self.group_box_token_settings.setLayout(wl_layout.Wl_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
@@ -200,7 +182,7 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
 
         self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 7, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addLayout(layout_ignore_tags, 8, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 8, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 9, 0, 1, 2)
 
         # Generation Settings
@@ -263,9 +245,6 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
         self.checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
         self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
-        self.checkbox_ignore_tags_tags.setChecked(settings['token_settings']['ignore_tags_tags'])
-        self.combo_box_ignore_tags.setCurrentText(settings['token_settings']['ignore_tags_type'])
-        self.combo_box_ignore_tags_tags.setCurrentText(settings['token_settings']['ignore_tags_type_tags'])
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Generation Settings
@@ -295,9 +274,6 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
         settings['filter_stop_words'] = self.checkbox_filter_stop_words.isChecked()
 
         settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
-        settings['ignore_tags_tags'] = self.checkbox_ignore_tags_tags.isChecked()
-        settings['ignore_tags_type'] = self.combo_box_ignore_tags.currentText()
-        settings['ignore_tags_type_tags'] = self.combo_box_ignore_tags_tags.currentText()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
         if settings['use_tags']:

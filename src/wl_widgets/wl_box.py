@@ -37,17 +37,20 @@ class Wl_Combo_Box_Adjustable(Wl_Combo_Box):
 
         self.setSizeAdjustPolicy(QComboBox.AdjustToContents)
 
+class Wl_Combo_Box_Yes_No(Wl_Combo_Box):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.addItems([
+            self.tr('Yes'),
+            self.tr('No')
+        ])
+
 class Wl_Combo_Box_Lang(Wl_Combo_Box):
     def __init__(self, parent):
         super().__init__(parent)
 
         self.addItems(list(self.main.settings_global['langs'].keys()))
-
-class Wl_Combo_Box_Text_Type(Wl_Combo_Box):
-    def __init__(self, parent):
-        super().__init__(parent)
-
-        self.addItems(list(self.main.settings_global['text_types'].keys()))
 
 class Wl_Combo_Box_Encoding(Wl_Combo_Box):
     def __init__(self, parent):

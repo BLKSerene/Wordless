@@ -269,7 +269,6 @@ def wl_dialog_error_file_load_colligation(main,
 class Wl_Dialog_Error_Detection(Wl_Dialog_Error):
     def __init__(self, main,
                  files_detection_error_encoding,
-                 files_detection_error_text_type,
                  files_detection_error_lang):
         super().__init__(main, main.tr('Detection Error'),
                          width = DIALOG_ERROR_WIDTH,
@@ -303,12 +302,6 @@ class Wl_Dialog_Error_Detection(Wl_Dialog_Error):
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Encoding Detection')))
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
 
-        for file in files_detection_error_text_type:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
-
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Text Type Detection')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
-
         for file in files_detection_error_lang:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
 
@@ -319,14 +312,12 @@ class Wl_Dialog_Error_Detection(Wl_Dialog_Error):
         self.wrapper_info.layout().addWidget(self.table_error_files, 1, 0)
 
 def wl_dialog_error_detection(main,
-                                    files_detection_error_encoding,
-                                    files_detection_error_text_type,
-                                    files_detection_error_lang):
-    if files_detection_error_encoding or files_detection_error_text_type or files_detection_error_lang:
+                              files_detection_error_encoding,
+                              files_detection_error_lang):
+    if files_detection_error_encoding or files_detection_error_lang:
         dialog_error_detection = Wl_Dialog_Error_Detection(
             main,
             files_detection_error_encoding,
-            files_detection_error_text_type,
             files_detection_error_lang
         )
 

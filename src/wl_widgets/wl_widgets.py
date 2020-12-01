@@ -51,17 +51,19 @@ def wl_widgets_token_settings(parent):
             checkbox_uppercase.setEnabled(False)
             checkbox_title_case.setEnabled(False)
 
+    def ignore_tags_changed():
+        if checkbox_ignore_tags.isChecked():
+            checkbox_use_tags.setEnabled(False)
+        else:
+            checkbox_use_tags.setEnabled(True)
+
     def use_tags_changed():
         if checkbox_use_tags.isChecked():
             checkbox_lemmatize_tokens.setEnabled(False)
-
-            stacked_widget_ignore_tags.setCurrentIndex(1)
-            stacked_widget_ignore_tags_type.setCurrentIndex(1)
+            checkbox_ignore_tags.setEnabled(False)
         else:
             checkbox_lemmatize_tokens.setEnabled(True)
-
-            stacked_widget_ignore_tags.setCurrentIndex(0)
-            stacked_widget_ignore_tags_type.setCurrentIndex(0)
+            checkbox_ignore_tags.setEnabled(True)
 
     checkbox_words = QCheckBox(parent.tr('Words'), parent)
     checkbox_lowercase = QCheckBox(parent.tr('Lowercase'), parent)
@@ -74,36 +76,15 @@ def wl_widgets_token_settings(parent):
     checkbox_lemmatize_tokens = QCheckBox(parent.tr('Lemmatize all tokens'), parent)
     checkbox_filter_stop_words = QCheckBox(parent.tr('Filter stop words'), parent)
 
-    checkbox_ignore_tags = QCheckBox(parent.tr('Ignore'), parent)
-    checkbox_ignore_tags_tags = QCheckBox(parent.tr('Ignore'), parent)
-    combo_box_ignore_tags = wl_box.Wl_Combo_Box(parent)
-    combo_box_ignore_tags_tags = wl_box.Wl_Combo_Box(parent)
-    label_ignore_tags = QLabel(parent.tr('tags'), parent)
+    checkbox_ignore_tags = QCheckBox(parent.tr('Ignore tags'), parent)
     checkbox_use_tags = QCheckBox(parent.tr('Use tags only'), parent)
 
-    combo_box_ignore_tags.addItems([
-        parent.tr('all'),
-        parent.tr('POS'),
-        parent.tr('non-POS')
-    ])
-
-    combo_box_ignore_tags_tags.addItems([
-        parent.tr('POS'),
-        parent.tr('non-POS')
-    ])
-
-    stacked_widget_ignore_tags = QStackedWidget(parent)
-    stacked_widget_ignore_tags.addWidget(checkbox_ignore_tags)
-    stacked_widget_ignore_tags.addWidget(checkbox_ignore_tags_tags)
-
-    stacked_widget_ignore_tags_type = QStackedWidget(parent)
-    stacked_widget_ignore_tags_type.addWidget(combo_box_ignore_tags)
-    stacked_widget_ignore_tags_type.addWidget(combo_box_ignore_tags_tags)
-
     checkbox_words.stateChanged.connect(words_changed)
+    checkbox_ignore_tags.stateChanged.connect(ignore_tags_changed)
     checkbox_use_tags.stateChanged.connect(use_tags_changed)
 
     words_changed()
+    ignore_tags_changed()
     use_tags_changed()
 
     return (
@@ -118,71 +99,20 @@ def wl_widgets_token_settings(parent):
         checkbox_lemmatize_tokens,
         checkbox_filter_stop_words,
 
-        stacked_widget_ignore_tags,
         checkbox_ignore_tags,
-        checkbox_ignore_tags_tags,
-
-        stacked_widget_ignore_tags_type,
-        combo_box_ignore_tags,
-        combo_box_ignore_tags_tags,
-
-        label_ignore_tags,
         checkbox_use_tags
     )
 
 def wl_widgets_token_settings_concordancer(parent):
-    def use_tags_changed():
-        if checkbox_use_tags.isChecked():
-            stacked_widget_ignore_tags.setCurrentIndex(1)
-            stacked_widget_ignore_tags_type.setCurrentIndex(1)
-        else:
-            stacked_widget_ignore_tags.setCurrentIndex(0)
-            stacked_widget_ignore_tags_type.setCurrentIndex(0)
-
     checkbox_puncs = QCheckBox(parent.tr('Punctuations'), parent)
-    checkbox_ignore_tags = QCheckBox(parent.tr('Ignore'), parent)
-    checkbox_ignore_tags_tags = QCheckBox(parent.tr('Ignore'), parent)
-    combo_box_ignore_tags = wl_box.Wl_Combo_Box(parent)
-    combo_box_ignore_tags_tags = wl_box.Wl_Combo_Box(parent)
 
-    label_ignore_tags = QLabel(parent.tr('tags'), parent)
+    checkbox_ignore_tags = QCheckBox(parent.tr('Ignore tags'), parent)
     checkbox_use_tags = QCheckBox(parent.tr('Use tags only'), parent)
-
-    combo_box_ignore_tags.addItems([
-        parent.tr('all'),
-        parent.tr('POS'),
-        parent.tr('non-POS')
-    ])
-
-    combo_box_ignore_tags_tags.addItems([
-        parent.tr('POS'),
-        parent.tr('non-POS')
-    ])
-
-    stacked_widget_ignore_tags = QStackedWidget(parent)
-    stacked_widget_ignore_tags.addWidget(checkbox_ignore_tags)
-    stacked_widget_ignore_tags.addWidget(checkbox_ignore_tags_tags)
-
-    stacked_widget_ignore_tags_type = QStackedWidget(parent)
-    stacked_widget_ignore_tags_type.addWidget(combo_box_ignore_tags)
-    stacked_widget_ignore_tags_type.addWidget(combo_box_ignore_tags_tags)
-
-    checkbox_use_tags.stateChanged.connect(use_tags_changed)
-
-    use_tags_changed()
 
     return (
         checkbox_puncs,
 
-        stacked_widget_ignore_tags,
         checkbox_ignore_tags,
-        checkbox_ignore_tags_tags,
-
-        stacked_widget_ignore_tags_type,
-        combo_box_ignore_tags,
-        combo_box_ignore_tags_tags,
-
-        label_ignore_tags,
         checkbox_use_tags
     )
 
@@ -201,54 +131,44 @@ def wl_widgets_search_settings(parent, tab):
 
             stacked_widget_search_term.setCurrentIndex(0)
 
+    def token_settings_changed():
+        token_settings = main.settings_custom[tab]['token_settings']
+
+        checkbox_ignore_tags.blockSignals(True)
+        checkbox_match_tags.blockSignals(True)
+
+        if token_settings['ignore_tags']:
+            checkbox_ignore_tags.setEnabled(False)
+            checkbox_match_tags.setEnabled(False)
+        else:
+            checkbox_ignore_tags.setEnabled(True)
+            checkbox_match_tags.setEnabled(True)
+
+        if token_settings['use_tags']:
+            checkbox_ignore_tags.setEnabled(False)
+            checkbox_match_tags.setEnabled(False)
+        else:
+            checkbox_ignore_tags.setEnabled(True)
+            checkbox_match_tags.setEnabled(True)
+
+        checkbox_ignore_tags.blockSignals(False)
+        checkbox_match_tags.blockSignals(False)
+
+    def ignore_tags_changed():
+        if checkbox_ignore_tags.isChecked():
+            checkbox_match_tags.setEnabled(False)
+            checkbox_match_tags.setChecked(False)
+        else:
+            checkbox_match_tags.setEnabled(True)
+
     def match_tags_changed():
         if checkbox_match_tags.isChecked():
             checkbox_match_inflected_forms.setEnabled(False)
-
-            stacked_widget_ignore_tags.setCurrentIndex(1)
-            stacked_widget_ignore_tags_type.setCurrentIndex(1)
+            checkbox_ignore_tags.setEnabled(False)
+            checkbox_ignore_tags.setChecked(False)
         else:
             checkbox_match_inflected_forms.setEnabled(True)
-            
-            stacked_widget_ignore_tags.setCurrentIndex(0)
-            stacked_widget_ignore_tags_type.setCurrentIndex(0)
-
-    def token_settings_changed():
-        token_settings = main.settings_custom[tab]['token_settings']
-        
-        if token_settings['use_tags']:
-            checkbox_match_tags.setEnabled(False)
-            checkbox_match_tags.setChecked(True)
-
-            if token_settings['ignore_tags_tags']:
-                stacked_widget_ignore_tags.setEnabled(False)
-                stacked_widget_ignore_tags_type.setEnabled(False)
-            else:
-                stacked_widget_ignore_tags.setEnabled(True)
-                stacked_widget_ignore_tags_type.setEnabled(True)
-        else:
-            checkbox_match_tags.setChecked(False)
-
-            if token_settings['ignore_tags']:
-                if token_settings['ignore_tags_type'] == parent.tr('All'):
-                    stacked_widget_ignore_tags.setEnabled(False)
-                    stacked_widget_ignore_tags_type.setEnabled(False)
-                    checkbox_match_tags.setEnabled(False)
-                else:
-                    if checkbox_match_tags.isChecked():
-                        stacked_widget_ignore_tags.setEnabled(False)
-                        stacked_widget_ignore_tags_type.setEnabled(False)
-                    else:
-                        stacked_widget_ignore_tags.setEnabled(True)
-                        stacked_widget_ignore_tags_type.setEnabled(True)
-                        
-                    checkbox_match_tags.setEnabled(True)
-            else:
-                stacked_widget_ignore_tags.setEnabled(True)
-                stacked_widget_ignore_tags_type.setEnabled(True)
-                checkbox_match_tags.setEnabled(True)
-
-        match_tags_changed()
+            checkbox_ignore_tags.setEnabled(True)
 
     main = wl_misc.find_wl_main(parent)
 
@@ -263,23 +183,8 @@ def wl_widgets_search_settings(parent, tab):
     checkbox_match_whole_words = QCheckBox(parent.tr('Match whole words only'), parent)
     checkbox_use_regex = QCheckBox(parent.tr('Use regular expression'), parent)
 
-    checkbox_ignore_tags = QCheckBox(parent.tr('Ignore'), parent)
-    checkbox_ignore_tags_tags = QCheckBox(parent.tr('Ignore'), parent)
-    combo_box_ignore_tags = wl_box.Wl_Combo_Box(parent)
-    combo_box_ignore_tags_tags = wl_box.Wl_Combo_Box(parent)
-    label_ignore_tags = QLabel(parent.tr('tags'), parent)
+    checkbox_ignore_tags = QCheckBox(parent.tr('Ignore tags'), parent)
     checkbox_match_tags = QCheckBox(parent.tr('Match tags only'), parent)
-
-    combo_box_ignore_tags.addItems([
-        parent.tr('all'),
-        parent.tr('POS'),
-        parent.tr('non-POS')
-    ])
-
-    combo_box_ignore_tags_tags.addItems([
-        parent.tr('POS'),
-        parent.tr('non-POS')
-    ])
 
     wrapper_search_terms = QWidget(parent)
 
@@ -297,20 +202,15 @@ def wl_widgets_search_settings(parent, tab):
     stacked_widget_search_term.addWidget(line_edit_search_term)
     stacked_widget_search_term.addWidget(wrapper_search_terms)
 
-    stacked_widget_ignore_tags = wl_layout.Wl_Stacked_Widget(parent)
-    stacked_widget_ignore_tags.addWidget(checkbox_ignore_tags)
-    stacked_widget_ignore_tags.addWidget(checkbox_ignore_tags_tags)
-
-    stacked_widget_ignore_tags_type = wl_layout.Wl_Stacked_Widget(parent)
-    stacked_widget_ignore_tags_type.addWidget(combo_box_ignore_tags)
-    stacked_widget_ignore_tags_type.addWidget(combo_box_ignore_tags_tags)
-
     checkbox_match_tags.token_settings_changed = token_settings_changed
 
     checkbox_multi_search_mode.stateChanged.connect(multi_search_mode_changed)
+    checkbox_ignore_tags.stateChanged.connect(ignore_tags_changed)
     checkbox_match_tags.stateChanged.connect(match_tags_changed)
 
     multi_search_mode_changed()
+    token_settings_changed()
+    ignore_tags_changed()
     match_tags_changed()
 
     return (
@@ -328,15 +228,7 @@ def wl_widgets_search_settings(parent, tab):
         checkbox_match_whole_words,
         checkbox_use_regex,
 
-        stacked_widget_ignore_tags,
         checkbox_ignore_tags,
-        checkbox_ignore_tags_tags,
-
-        stacked_widget_ignore_tags_type,
-        combo_box_ignore_tags,
-        combo_box_ignore_tags_tags,
-
-        label_ignore_tags,
         checkbox_match_tags
     )
 
