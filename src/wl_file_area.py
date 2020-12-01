@@ -62,16 +62,12 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                 if file_ext == '.txt':
                     (new_file,
                      detection_success_encoding,
-                     detection_success_text_type,
                      detection_success_lang) = self.main.wl_files._new_file(file_path)
 
                     new_files.append(new_file)
 
                     if not detection_success_encoding:
                         files_detection_error_encoding.append(new_file['path'])
-
-                    if not detection_success_text_type:
-                        files_detection_error_text_type.append(new_file['path'])
 
                     if not detection_success_lang:
                         files_detection_error_lang.append(new_file['path'])
@@ -318,6 +314,8 @@ class Wl_Files():
         detection_success_lang = True
 
         new_file['selected'] = True
+        new_file['tokenized'] = 'No'
+        new_file['tagged'] = 'No'
         new_file['path'] = file_path
         new_file['name'], _ = os.path.splitext(os.path.basename(new_file['path']))
         new_file['name_old'] = new_file['name']
@@ -329,13 +327,6 @@ class Wl_Files():
         else:
             new_file['encoding'] = self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
 
-        # Detect text types
-        if self.main.settings_custom['files']['auto_detection_settings']['detect_text_types']:
-            (new_file['text_type'],
-             detection_success_text_type) = wl_detection.detect_text_type(self.main, new_file)
-        else:
-            new_file['text_type'] = self.main.settings_custom['auto_detection']['default_settings']['default_text_type']
-
         # Detect languages
         if self.main.settings_custom['files']['auto_detection_settings']['detect_langs']:
             (new_file['lang'],
@@ -344,47 +335,41 @@ class Wl_Files():
             new_file['lang'] = self.main.settings_custom['auto_detection']['default_settings']['default_lang']
 
         # Remove header tags
-        tags_header_opening = []
-        tags_header_closing = []
+        tags_header = []
 
         if txt:
             default_dir = wl_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
             new_file['path'] = re.sub(r'^.+?\\([^\\]+?$)', fr'{re.escape(default_dir)}\\\1', file_path)
             new_file['path'] = wl_checking_misc.check_new_path(new_file['path'])
 
-        for tag_opening, tag_closing in self.main.settings_custom['tags']['tags_header']:
-            tags_header_opening.append(fr"{tag_opening}.+?")
-            tags_header_closing.append(fr".+?{tag_closing}")
+        for _, _, tag_opening, _ in self.main.settings_custom['tags']['tags_header']:
+            tags_header.append(tag_opening[1:-1])
 
-        tag_header_opening = '|'.join(tags_header_opening)
-        tag_header_closing = '|'.join(tags_header_closing)
+        text = ''
 
-        with open(file_path, 'r', encoding = new_file['encoding']) as f, open(new_file['path'], 'w', encoding = 'utf_8') as f_temp:
-            tags_header = False
-
+        with open(file_path, 'r', encoding = new_file['encoding']) as f:
             for line in f:
-                if tags_header:
-                    if re.search(tag_header_closing, line):
-                        f_temp.write(re.sub(tag_header_closing, '', line))
+                text += line
 
-                        tags_header = False
-                elif re.search(tag_header_opening, line):
-                    f_temp.write(re.sub(tag_header_opening, '', line))
+        # The "lxml" parser will add <html><body> to the text, which is undesirable
+        with open(new_file['path'], 'w', encoding = 'utf_8') as f:
+            soup = bs4.BeautifulSoup(text, features = 'html.parser')
 
-                    tags_header = True
-                else:
-                    f_temp.write(line)
+            for tag_header in tags_header:
+                print(tag_header)
+                for header_element in soup.select(tag_header):
+                    header_element.decompose()
 
+            f.write(str(soup))
+        
         return (new_file,
                 detection_success_encoding,
-                detection_success_text_type,
                 detection_success_lang)
 
     @wl_misc.log_timing
     def open_files(self, file_paths):
         def update_gui(new_files,
                        files_detection_error_encoding,
-                       files_detection_error_text_type,
                        files_detection_error_lang):
             len_files_old = len(self.main.settings_custom['files']['files_open'])
 
@@ -397,7 +382,6 @@ class Wl_Files():
             wl_dialog_error.wl_dialog_error_detection(
                 self.main,
                 files_detection_error_encoding,
-                files_detection_error_text_type,
                 files_detection_error_lang
             )
 
@@ -457,7 +441,8 @@ class Wl_Files():
             for i, file in enumerate(files):
                 checkbox_name = QTableWidgetItem(file['name'])
                 combo_box_lang = wl_box.Wl_Combo_Box_Lang(self.table)
-                combo_box_text_type = wl_box.Wl_Combo_Box_Text_Type(self.table)
+                combo_box_tokenized = wl_box.Wl_Combo_Box_Yes_No(self.table)
+                combo_box_tagged = wl_box.Wl_Combo_Box_Yes_No(self.table)
                 combo_box_encoding = wl_box.Wl_Combo_Box_Encoding(self.table)
 
                 if file['selected']:
@@ -466,18 +451,21 @@ class Wl_Files():
                     checkbox_name.setCheckState(Qt.Unchecked)
 
                 combo_box_lang.setCurrentText(wl_conversion.to_lang_text(self.main, file['lang']))
-                combo_box_text_type.setCurrentText(wl_conversion.to_text_type_text(self.main, file['text_type']))
+                combo_box_tokenized.setCurrentText(file['tokenized'])
+                combo_box_tagged.setCurrentText(file['tagged'])
                 combo_box_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, file['encoding']))
 
                 combo_box_lang.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 1)))
-                combo_box_text_type.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 2)))
-                combo_box_encoding.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 4)))
+                combo_box_tokenized.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 2)))
+                combo_box_tagged.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 3)))
+                combo_box_encoding.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 5)))
 
                 self.table.setItem(i, 0, checkbox_name)
                 self.table.setCellWidget(i, 1, combo_box_lang)
-                self.table.setCellWidget(i, 2, combo_box_text_type)
-                self.table.setItem(i, 3, QTableWidgetItem(file['path']))
-                self.table.setCellWidget(i, 4, combo_box_encoding)
+                self.table.setCellWidget(i, 2, combo_box_tokenized)
+                self.table.setCellWidget(i, 3, combo_box_tagged)
+                self.table.setItem(i, 4, QTableWidgetItem(file['path']))
+                self.table.setCellWidget(i, 5, combo_box_encoding)
         else:
             self.table.clear_table(1)
 
@@ -522,7 +510,8 @@ class Wl_Table_Files(wl_table.Wl_Table):
             headers = [
                 parent.tr('Name'),
                 parent.tr('Language'),
-                parent.tr('Text Type'),
+                parent.tr('Tokenized'),
+                parent.tr('Tagged'),
                 parent.tr('Path'),
                 parent.tr('Encoding')
             ],
@@ -565,10 +554,10 @@ class Wl_Table_Files(wl_table.Wl_Table):
 
     def file_item_changed(self):
         if any([self.item(0, i) for i in range(self.columnCount())]):
-            # Check duplicate file name
+            # Check for duplicate file names
             for row in range(self.rowCount()):
                 file_name = self.item(row, 0).text()
-                file_path = self.item(row, 3).text()
+                file_path = self.item(row, 4).text()
 
                 file = self.main.wl_files.find_file_by_path(file_path)
 
@@ -593,14 +582,14 @@ class Wl_Table_Files(wl_table.Wl_Table):
                 new_file = {}
 
                 lang_text = self.cellWidget(row, 1).currentText()
-                text_type_text = self.cellWidget(row, 2).currentText()
-                encoding_text = self.cellWidget(row, 4).currentText()
+                encoding_text = self.cellWidget(row, 5).currentText()
 
                 new_file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
                 new_file['name'] = new_file['name_old'] = self.item(row, 0).text()
                 new_file['lang'] = wl_conversion.to_lang_code(self.main, lang_text)
-                new_file['text_type'] = wl_conversion.to_text_type_code(self.main, text_type_text)
-                new_file['path'] = self.item(row, 3).text()
+                new_file['tokenized'] = self.cellWidget(row, 2).currentText()
+                new_file['tagged'] = self.cellWidget(row, 3).currentText()
+                new_file['path'] = self.item(row, 4).text()
                 new_file['encoding'] = wl_conversion.to_encoding_code(self.main, encoding_text)
 
                 self.main.settings_custom['files']['files_open'].append(new_file)
@@ -752,17 +741,14 @@ class Wrapper_File_Area(wl_layout.Wl_Wrapper_File_Area):
         self.group_box_auto_detection_settings = QGroupBox(self.tr('Auto-detection Settings'), self)
 
         self.checkbox_detect_langs = QCheckBox(self.tr('Detect languages'), self)
-        self.checkbox_detect_text_types = QCheckBox(self.tr('Detect text types'), self)
         self.checkbox_detect_encodings = QCheckBox(self.tr('Detect encodings'), self)
 
         self.checkbox_detect_langs.stateChanged.connect(self.auto_detection_settings_changed)
-        self.checkbox_detect_text_types.stateChanged.connect(self.auto_detection_settings_changed)
         self.checkbox_detect_encodings.stateChanged.connect(self.auto_detection_settings_changed)
 
         self.group_box_auto_detection_settings.setLayout(wl_layout.Wl_Layout())
         self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_langs, 0, 0)
-        self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_text_types, 0, 1)
-        self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_encodings, 1, 0)
+        self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_encodings, 0, 1)
 
         self.wrapper_settings.layout().addWidget(self.group_box_folder_settings, 0, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_auto_detection_settings, 1, 0)
@@ -784,7 +770,6 @@ class Wrapper_File_Area(wl_layout.Wl_Wrapper_File_Area):
         self.checkbox_subfolders.setChecked(settings['folder_settings']['subfolders'])
 
         self.checkbox_detect_langs.setChecked(settings['auto_detection_settings']['detect_langs'])
-        self.checkbox_detect_text_types.setChecked(settings['auto_detection_settings']['detect_text_types'])
         self.checkbox_detect_encodings.setChecked(settings['auto_detection_settings']['detect_encodings'])
 
         self.folder_settings_changed()
@@ -799,5 +784,4 @@ class Wrapper_File_Area(wl_layout.Wl_Wrapper_File_Area):
         settings = self.main.settings_custom['files']['auto_detection_settings']
 
         settings['detect_langs'] = self.checkbox_detect_langs.isChecked()
-        settings['detect_text_types'] = self.checkbox_detect_text_types.isChecked()
         settings['detect_encodings'] = self.checkbox_detect_encodings.isChecked()
