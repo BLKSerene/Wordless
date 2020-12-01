@@ -15,9 +15,8 @@ from PyQt5.QtWidgets import *
 
 from wl_settings import (
     wl_settings_general,
-    wl_settings_auto_detection,
+    wl_settings_files,
     wl_settings_data,
-    wl_settings_tags,
     wl_settings_sentence_tokenization,
     wl_settings_word_tokenization,
     wl_settings_word_detokenization,
@@ -46,24 +45,26 @@ class Wl_Settings(QDialog):
         self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem([self.tr('Import')]))
         self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem([self.tr('Export')]))
 
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Auto-detection')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Files')]))
+        self.tree_settings.topLevelItem(1).addChild(QTreeWidgetItem([self.tr('Auto-detection')]))
+        self.tree_settings.topLevelItem(1).addChild(QTreeWidgetItem([self.tr('Tags')]))
+
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Data')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Tags')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Sentence Tokenization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Word Tokenization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Word Detokenization')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('POS Tagging')]))
-        self.tree_settings.topLevelItem(7).addChild(QTreeWidgetItem([self.tr('Tagsets')]))
+        self.tree_settings.topLevelItem(6).addChild(QTreeWidgetItem([self.tr('Tagsets')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Lemmatization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Stop Word Lists')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Measures')]))
-        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
-        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
-        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
-        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
+        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
+        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
+        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
+        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Figures')]))
 
@@ -73,22 +74,28 @@ class Wl_Settings(QDialog):
 
         self.stacked_widget_settings = QStackedWidget(self)
 
+        # General
         self.settings_general = wl_settings_general.Wl_Settings_General(self.main)
         self.settings_import = wl_settings_general.Wl_Settings_Import(self.main)
         self.settings_export = wl_settings_general.Wl_Settings_Export(self.main)
-        self.settings_auto_detection = wl_settings_auto_detection.Wl_Settings_Auto_Detection(self.main)
+
+        # Files
+        self.settings_auto_detection = wl_settings_files.Wl_Settings_Auto_Detection(self.main)
+        self.settings_tags = wl_settings_files.Wl_Settings_Tags(self.main)
+
         self.settings_data = wl_settings_data.Wl_Settings_Data(self.main)
-        self.settings_tags = wl_settings_tags.Wl_Settings_Tags(self.main)
         self.settings_sentence_tokenization = wl_settings_sentence_tokenization.Wl_Settings_Sentence_Tokenization(self.main)
         self.settings_word_tokenization = wl_settings_word_tokenization.Wl_Settings_Word_Tokenization(self.main)
         self.settings_word_detokenization = wl_settings_word_detokenization.Wl_Settings_Word_Detokenization(self.main)
 
+        # POS Tagging
         self.settings_pos_tagging = wl_settings_pos_tagging.Wl_Settings_Pos_Tagging(self.main)
         self.settings_tagsets = wl_settings_pos_tagging.Wl_Settings_Tagsets(self.main)
 
         self.settings_lemmatization = wl_settings_lemmatization.Wl_Settings_Lemmatization(self.main)
         self.settings_stop_words = wl_settings_stop_word_lists.Wl_Settings_Stop_Word_Lists(self.main)
 
+        # Measures
         self.settings_dispersion = wl_settings_measures.Wl_Settings_Dispersion(self.main)
         self.settings_adjusted_freq = wl_settings_measures.Wl_Settings_Adjusted_Freq(self.main)
         self.settings_statistical_significance = wl_settings_measures.Wl_Settings_Statistical_Significance(self.main)
@@ -101,8 +108,8 @@ class Wl_Settings(QDialog):
             self.settings_import,
             self.settings_export,
             self.settings_auto_detection,
-            self.settings_data,
             self.settings_tags,
+            self.settings_data,
             self.settings_sentence_tokenization,
             self.settings_word_tokenization,
             self.settings_word_detokenization,
@@ -159,6 +166,7 @@ class Wl_Settings(QDialog):
                 item_selected = self.tree_settings.selectedItems()[0]
                 item_selected_text = item_selected.text(0)
 
+                # General
                 if item_selected_text == self.tr('General'):
                     self.stacked_widget_settings.setCurrentIndex(0)
 
@@ -167,11 +175,16 @@ class Wl_Settings(QDialog):
                     self.stacked_widget_settings.setCurrentIndex(1)
                 elif item_selected_text == self.tr('Export'):
                     self.stacked_widget_settings.setCurrentIndex(2)
+
+                # Files
+                elif item_selected_text == self.tr('Files'):
+                    item_selected.setExpanded(True)
                 elif item_selected_text == self.tr('Auto-detection'):
                     self.stacked_widget_settings.setCurrentIndex(3)
-                elif item_selected_text == self.tr('Data'):
-                    self.stacked_widget_settings.setCurrentIndex(4)
                 elif item_selected_text == self.tr('Tags'):
+                    self.stacked_widget_settings.setCurrentIndex(4)
+
+                elif item_selected_text == self.tr('Data'):
                     self.stacked_widget_settings.setCurrentIndex(5)
                 elif item_selected_text == self.tr('Sentence Tokenization'):
                     self.stacked_widget_settings.setCurrentIndex(6)
@@ -180,6 +193,7 @@ class Wl_Settings(QDialog):
                 elif item_selected_text == self.tr('Word Detokenization'):
                     self.stacked_widget_settings.setCurrentIndex(8)
 
+                # POS Tagging
                 elif item_selected_text == self.tr('POS Tagging'):
                     self.stacked_widget_settings.setCurrentIndex(9)
 
@@ -192,6 +206,7 @@ class Wl_Settings(QDialog):
                 elif item_selected_text == self.tr('Stop Word Lists'):
                     self.stacked_widget_settings.setCurrentIndex(12)
 
+                # Measures
                 elif item_selected_text == self.tr('Measures'):
                     item_selected.setExpanded(True)
                 elif item_selected_text == self.tr('Dispersion'):

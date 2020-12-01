@@ -27,7 +27,9 @@
 - Work Area: Add Concordancer - Zapping Settings
 
 ### ✨ Improvements
+- File Area: Update File Table - Tokenized/Tagged
 - Menu: Disable editing of POS tag mappings for spaCy's POS taggers
+- Menu: Update Preferences - Settings - Files - Tags
 - Utils: Update botok's Tibetan word tokenizer, POS tagger, and lemmatizer
 - Utils: Update Chinese (Traditional) stop word lists
 - Utils: Update NLTK's word tokenizers

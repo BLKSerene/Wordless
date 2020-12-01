@@ -1688,14 +1688,13 @@ class Wl_Table_Tags(Wl_Table):
     def __init__(self, main):
         super().__init__(main,
                          headers = [
+                             main.tr('Type'),
+                             main.tr('Meaning'),
                              main.tr('Opening Tag'),
                              main.tr('Closing Tag'),
                              main.tr('Preview')
                          ],
                          header_orientation = 'horizontal',
-                         cols_stretch = [
-                             main.tr('Preview')
-                         ],
                          drag_drop_enabled = True)
 
         self.verticalHeader().setHidden(True)
@@ -1715,36 +1714,134 @@ class Wl_Table_Tags(Wl_Table):
 
         self.reset_table()
 
-    def item_changed(self, item = None):
+    def item_changed(self):
+        self.blockSignals(True)
+
+        for row in range(self.rowCount()):
+            # Opening Tag
+            if re.search(r'^\s*$', self.cellWidget(row, 2).text()):
+                QMessageBox.warning(
+                    self.main,
+                    self.tr('Empty Opening Tag'),
+                    self.tr(f'''
+                        {self.main.settings_global['styles']['style_dialog']}
+                        <body>
+                            <p>The opening tag should not be left empty!</p>
+                        </body>
+                    ''')
+                )
+
+                self.cellWidget(row, 2).setText(self.cellWidget(row, 2).text_old)
+                self.cellWidget(row, 2).setFocus()
+
+                return
+
+            # Closing Tag
+            if self.cellWidget(row, 0).currentText() == self.tr('Embedded'):
+                self.cellWidget(row, 3).setEnabled(False)
+            elif self.cellWidget(row, 0).currentText() == self.tr('Non-embedded'):
+                self.cellWidget(row, 3).setEnabled(True)
+
+                self.cellWidget(row, 3).setText(
+                    f'{self.cellWidget(row, 2).text()[0]}/{self.cellWidget(row, 2).text()[1:]}'
+                )
+
+            # Check for duplicate tags
+            for item_row in range(row + 1, self.rowCount()):
+                if self.cellWidget(item_row, 2).text() == self.cellWidget(row, 2).text():
+                    wl_msg_box.wl_msg_box_duplicate_tags(self.main)
+
+                    if self.cellWidget(row, 2).text() != self.cellWidget(row, 2).text_old:
+                        self.cellWidget(row, 2).setText(self.cellWidget(row, 2).text_old)
+                        self.cellWidget(row, 2).setFocus()
+                    elif self.cellWidget(item_row, 2).text() != self.cellWidget(item_row, 2).text_old:
+                        self.cellWidget(item_row, 2).setText(self.cellWidget(item_row, 2).text_old)
+                        self.cellWidget(item_row, 2).setFocus()
+
+                    return
+            # Preview
+            if self.cellWidget(row, 0).currentText() == self.tr('Embedded'):
+                self.cellWidget(row, 4).setText(self.tr(f'token{self.cellWidget(row, 2).text()}TAG'))
+            elif self.cellWidget(row, 0).currentText() == self.tr('Non-embedded'):
+                self.cellWidget(row, 4).setText(self.tr(f'{self.cellWidget(row, 2).text()}token{self.cellWidget(row, 3).text()}'))
+
+        self.blockSignals(False)
+
+    def _new_item_type(self, text = None):
+        new_item_type = wl_box.Wl_Combo_Box(self)
+
+        new_item_type.addItems([
+            self.tr('Embedded'),
+            self.tr('Non-embedded')
+        ])
+
+        if text:
+            new_item_type.setCurrentText(text)
+
+        return new_item_type
+
+    def _new_item_meaning(self, text = None):
         pass
 
-    def _new_item(self, text = None):
+    def _new_item_line_edit(self, text = None):
         i = 1
 
         if text == None:
-            while True:
-                if self.findItems(self.tr(f'New Tag ({i})'), Qt.MatchExactly):
-                    i += 1
-                else:
-                    new_item = QTableWidgetItem(self.tr('New Tag ({})').format(i))
+            duplicate = True
 
-                    break
+            while duplicate:
+                for j in range(self.rowCount() - 1):
+                    if self.cellWidget(j, 2).text() == f'Tag_{i}':
+                        i += 1
+                        duplicate = True
+
+                        break
+
+                    elif j == self.rowCount() - 2:
+                        duplicate = False
+
+            new_item = QLineEdit(f'Tag_{i}')
         else:
-            new_item = QTableWidgetItem(text)
+            new_item = QLineEdit(text)
 
         new_item.text_old = new_item.text()
         
         return new_item
 
     def add_item(self, texts = []):
-        pass
+        self.blockSignals(True)
+
+        self.setRowCount(self.rowCount() + 1)
+
+        if texts:
+            self.setCellWidget(self.rowCount() - 1, 0, self._new_item_type(texts[0]))
+            self.setCellWidget(self.rowCount() - 1, 1, self._new_item_meaning(texts[1]))
+            self.setCellWidget(self.rowCount() - 1, 2, self._new_item_line_edit(texts[2]))
+            self.setCellWidget(self.rowCount() - 1, 3, self._new_item_line_edit(texts[3]))
+        else:
+            self.setCellWidget(self.rowCount() - 1, 0, self._new_item_type())
+            self.setCellWidget(self.rowCount() - 1, 1, self._new_item_meaning())
+            self.setCellWidget(self.rowCount() - 1, 2, self._new_item_line_edit())
+            self.setCellWidget(self.rowCount() - 1, 3, self._new_item_line_edit())
+
+        self.setCellWidget(self.rowCount() - 1, 4, self._new_item_line_edit(''))
+
+        self.cellWidget(self.rowCount() - 1, 3).setReadOnly(True)
+        self.cellWidget(self.rowCount() - 1, 4).setReadOnly(True)
+
+        self.cellWidget(self.rowCount() - 1, 0).currentTextChanged.connect(self.item_changed)
+        self.cellWidget(self.rowCount() - 1, 2).editingFinished.connect(self.item_changed)
+
+        self.blockSignals(False)
+
+        self.item_changed()
 
     def remove_item(self):
         if len(self.get_selected_rows()) == self.rowCount():
             QMessageBox.warning(
                 self.main,
                 self.tr('Empty Tag'),
-                self.tr(f'You should specify at least 1 (pair of) tag in the table!')
+                self.tr(f'You should specify at least 1 (pair of) tag!')
             )
         else:
             self.blockSignals(True)
@@ -1765,178 +1862,11 @@ class Wl_Table_Tags(Wl_Table):
         tags = []
 
         for row in range(self.rowCount()):
-            tags.append([self.item(row, 0).text(),
-                         self.item(row, 1).text()])
+            tags.append([
+                self.cellWidget(row, 0).currentText(),
+                self.cellWidget(row, 1).currentText(),
+                self.cellWidget(row, 2).text(),
+                self.cellWidget(row, 3).text()
+            ])
 
         return tags
-
-class Wl_Table_Tags_Embedded(Wl_Table_Tags):
-    def item_changed(self, item = None):
-        self.blockSignals(True)
-
-        if item:
-            # Opening Tag
-            if item.column() == 0:
-                if re.search(r'^\s*$', item.text()):
-                    QMessageBox.warning(
-                        self.main,
-                        self.tr('Empty Opening Tag'),
-                        self.tr(f'''
-                            {self.main.settings_global['styles']['style_dialog']}
-                            <body>
-                                <p>The opening tag should not be left empty!</p>
-                            </body>
-                        ''')
-                    )
-
-                    item.setText(item.text_old)
-
-                    self.closePersistentEditor(item)
-                    self.editItem(item)
-
-                    return
-            # Closing Tag
-            elif item.column() == 1:
-                if re.search(r'^\s*$', item.text()):
-                    item.setText('')
-
-            for row in range(self.rowCount()):
-                if row != item.row():
-                    if (self.item(row, 0).text() == self.item(item.row(), 0).text() and
-                        self.item(row, 1).text() == self.item(item.row(), 1).text()):
-                        wl_msg_box.wl_msg_box_duplicate_tags(self.main)
-
-                        item.setText(item.text_old)
-
-                        self.closePersistentEditor(item)
-                        self.editItem(item)
-
-                        return
-        
-        for row in range(self.rowCount()):
-            for col in range(self.columnCount()):
-                if col < 2:
-                    self.item(row, col).text_old = self.item(row, col).text()
-
-            self.item(row, 2).setText(self.tr(f'token{self.item(row, 0).text()}TAG{self.item(row, 1).text()}'))
-
-        self.blockSignals(False)
-
-    def add_item(self, texts = []):
-        self.blockSignals(True)
-
-        self.setRowCount(self.rowCount() + 1)
-
-        if texts:
-            for i in range(self.columnCount()):
-                if i < 2:
-                    self.setItem(self.rowCount() - 1, i, self._new_item(text = texts[i]))
-                else:
-                    self.setItem(self.rowCount() - 1, i, QTableWidgetItem(''))
-        else:
-            for i in range(self.columnCount()):
-                if i < 1:
-                    self.setItem(self.rowCount() - 1, i, self._new_item())
-                else:
-                    self.setItem(self.rowCount() - 1, i, QTableWidgetItem(''))
-
-                self.item(self.rowCount() - 1, i).setSelected(True)
-
-            self.editItem(self.item(self.rowCount() - 1, 0))
-
-        self.item(self.rowCount() - 1, self.columnCount() - 1).setFlags(Qt.ItemIsSelectable |
-                                                                        Qt.ItemIsDragEnabled |
-                                                                        Qt.ItemIsEnabled)
-
-        self.blockSignals(False)
-
-        self.item_changed()
-
-class Wl_Table_Tags_Html(Wl_Table_Tags):
-    def item_changed(self, item = None):
-        self.blockSignals(True)
-
-        if item:
-            # Opening and closing tags
-            if item.column() == 0:
-                msg = 'The opening tag should not be left empty!'
-            elif item.column() == 1:
-                msg = 'The closing tag should not be left empty!'
-
-            if re.search(r'^\s*$', item.text()):
-                QMessageBox.warning(
-                    self.main,
-                    self.tr('Empty Opening Tag'),
-                    self.tr(f'''
-                        {self.main.settings_global['styles']['style_dialog']}
-                        <body>
-                            <p>{msg}</p>
-                        </body>
-                    ''')
-                )
-
-                item.setText(item.text_old)
-
-                self.closePersistentEditor(item)
-                self.editItem(item)
-
-                return
-
-            for row in range(self.rowCount()):
-                if row != item.row():
-                    if (self.item(row, 0).text() == self.item(item.row(), 0).text() and
-                        self.item(row, 1).text() == self.item(item.row(), 1).text()):
-                        wl_msg_box.wl_msg_box_duplicate_tags(self.main)
-
-                        item.setText(item.text_old)
-
-                        self.closePersistentEditor(item)
-                        self.editItem(item)
-
-                        return
-        
-        for row in range(self.rowCount()):
-            for col in range(self.columnCount()):
-                if col < 2:
-                    self.item(row, col).text_old = self.item(row, col).text()
-
-            self.item(row, 2).setText(self.tr(f'{self.item(row, 0).text()}token{self.item(row, 1).text()}'))
-
-        self.blockSignals(False)
-
-    def add_item(self, texts = []):
-        self.blockSignals(True)
-
-        self.setRowCount(self.rowCount() + 1)
-
-        if texts:
-            for i in range(self.columnCount()):
-                if i < 2:
-                    self.setItem(self.rowCount() - 1, i, self._new_item(text = texts[i]))
-                elif i == 2:
-                    self.setItem(self.rowCount() - 1, i, QTableWidgetItem(''))
-        else:
-            for i in range(self.columnCount()):
-                if i == 0:
-                    self.setItem(self.rowCount() - 1, i, self._new_item())
-                elif i == 1:
-                    text_closing_tag = self.item(self.rowCount() - 1, 0).text().replace('<', '</')
-
-                    self.setItem(self.rowCount() - 1, i, self._new_item(text = text_closing_tag))
-                elif i == 2:
-                    self.setItem(self.rowCount() - 1, i, QTableWidgetItem(''))
-
-                self.item(self.rowCount() - 1, i).setSelected(True)
-
-            self.editItem(self.item(self.rowCount() - 1, 0))
-
-        self.item(self.rowCount() - 1, self.columnCount() - 1).setFlags(
-            Qt.ItemIsSelectable |
-            Qt.ItemIsDragEnabled |
-            Qt.ItemIsEnabled
-        )
-
-        self.blockSignals(False)
-
-        self.item_changed()
-
