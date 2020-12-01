@@ -17,44 +17,31 @@ import nltk
 
 from wl_text import wl_lemmatization, wl_text_utils
 
-def get_re_tags(main, tags):
-    re_tags = []
+def get_re_tags(main):
+    tags_embedded = []
+    tags_non_embedded = []
 
-    if tags == 'all':
-        tags = main.settings_custom['tags']['tags_pos'] + main.settings_custom['tags']['tags_non_pos']
-    elif tags == 'pos':
-        tags = main.settings_custom['tags']['tags_pos']
-    elif tags == 'non_pos':
-        tags = main.settings_custom['tags']['tags_non_pos']
+    for tag_type, _, tag_opening, tag_closing in main.settings_custom['tags']['tags_body']:
+        if tag_type == main.tr('Embedded'):
+            tags_embedded.append(fr'{re.escape(tag_opening)}[^{tag_opening[0]}]+?')
+        elif tag_type == main.tr('Non-embedded'):
+            tag_opening = tag_opening.replace('*', '.+?')
+            tag_closing = tag_closing.replace('*', '.+?')
 
-    tags_opening = [re.escape(tag_opening[0])
-                    for tag_opening, _ in (main.settings_custom['tags']['tags_pos'] +
-                                           main.settings_custom['tags']['tags_non_pos'])]
+            tags_non_embedded.append(fr'{tag_opening}[^{tag_closing[0]}]+?{tag_closing}')
 
-    for tag_opening, tag_closing in tags:
-        tag_opening = re.escape(tag_opening)
-        tag_closing = re.escape(tag_closing)
-
-        tag_opening_first = re.escape(tag_opening[0])
-        tag_closing_last = re.escape(tag_opening[-1])
-
-        if tag_closing:
-            re_tags.append(fr'\s*{tag_opening}[^{tag_opening_first}{tag_closing_last}]+?{tag_closing}')
-        else:
-            re_tags.append(fr"\s*{tag_opening}[^{tag_opening_first}]+?(?=\s+|$|{'|'.join(tags_opening)})")
-
-    return '|'.join(re_tags)
+    return '|'.join(tags_embedded + tags_non_embedded)
 
 # Search Terms
-def match_ngrams(main, search_terms, tokens,
-                 lang, text_type, token_settings, search_settings):
+def match_ngrams(
+    main, search_terms, tokens,
+    lang, tokenized, tagged,
+    token_settings, search_settings
+):
     search_terms_matched = set()
 
     settings = copy.deepcopy(search_settings)
-
-    re_tags_all = get_re_tags(main, tags = 'all')
-    re_tags_pos = get_re_tags(main, tags = 'pos')
-    re_tags_non_pos = get_re_tags(main, tags = 'non_pos')
+    re_tags = get_re_tags(main)
 
     search_term_tokens = [search_term_token
                           for search_term in search_terms
@@ -70,69 +57,28 @@ def match_ngrams(main, search_terms, tokens,
     if settings['match_tags']:
         settings['match_inflected_forms'] = False
 
-        settings['ignore_tags'] = settings['ignore_tags_tags']
-        settings['ignore_tags_type'] = settings['ignore_tags_type_tags']
-
     # Token Settings
     if token_settings['use_tags']:
         settings['match_inflected_forms'] = False
         settings['match_tags'] = False
-
-        if token_settings['ignore_tags_tags']:
-            settings['ignore_tags'] = False
     else:
         if token_settings['ignore_tags']:
-            if token_settings['ignore_tags_type'] == main.tr('all'):
-                settings['ignore_tags'] = False
-                settings['match_tags'] = False
+            settings['ignore_tags'] = False
+            settings['match_tags'] = False
 
-    # Match Tags Only & Ignore Tags
+    # Match tags only & Ignore tags
     if settings['match_tags']:
-        if settings['ignore_tags']:
-            if text_type[1] == 'untagged':
-                tokens_searched = []
-            else:
-                if settings['ignore_tags_type'] == main.tr('POS'):
-                    if text_type[1] in ['tagged_both', 'tagged_non_pos']:
-                        tokens_searched = [''.join(re.findall(re_tags_non_pos, token)) for token in tokens]
-                    elif text_type[1] == 'tagged_pos':
-                        tokens_searched = []
-                elif settings['ignore_tags_type'] == main.tr('non-POS'):
-                    if text_type[1] in ['tagged_both', 'tagged_pos']:
-                        tokens_searched = [''.join(re.findall(re_tags_pos, token)) for token in tokens]
-                    elif text_type[1] == 'tagged_non_pos':
-                        tokens_searched = []
+        if tagged == 'No':
+            tokens_searched = []
         else:
-            if text_type[1] == 'untagged':
-                tokens_searched = []
-            elif text_type[1] == 'tagged_pos':
-                tokens_searched = [''.join(re.findall(re_tags_pos, token)) for token in tokens]
-            elif text_type[1] == 'tagged_non_pos':
-                tokens_searched = [''.join(re.findall(re_tags_non_pos, token)) for token in tokens]
-            elif text_type[1] == 'tagged_both':
-                tokens_searched = [''.join(re.findall(re_tags_all, token)) for token in tokens]
+            tokens_searched = [''.join(re.findall(re_tags, token)) for token in tokens]
     else:
         if settings['ignore_tags']:
-            if text_type[1] == 'untagged':
+            if tagged == 'No':
                 tokens_searched = tokens
             else:
-                if settings['ignore_tags_type'] == main.tr('all'):
-                    if text_type[1] == 'tagged_both':
-                        tokens_searched = [re.sub(re_tags_all, '', token) for token in tokens]
-                    elif text_type[1] == 'tagged_pos':
-                        tokens_searched = [re.sub(re_tags_pos, '', token) for token in tokens]
-                    elif text_type[1] == 'tagged_non_pos':
-                        tokens_searched = [re.sub(re_tags_non_pos, '', token) for token in tokens]
-                elif settings['ignore_tags_type'] == main.tr('POS'):
-                    if text_type[1] in ['tagged_both', 'tagged_pos']:
-                        tokens_searched = [re.sub(re_tags_pos, '', token) for token in tokens]
-                    elif text_type[1] == 'tagged_non_pos':
-                        tokens_searched = tokens
-                elif settings['ignore_tags_type'] == main.tr('non-POS'):
-                    if text_type[1] in ['tagged_both', 'tagged_non_pos']:
-                        tokens_searched = [re.sub(re_tags_non_pos, '', token) for token in tokens]
-                    elif text_type[1] == 'tagged_pos':
-                        tokens_searched = tokens
+                if tagged == 'Yes':
+                    tokens_searched = [re.sub(re_tags, '', token) for token in tokens]
         else:
             tokens_searched = tokens
 
@@ -170,8 +116,8 @@ def match_ngrams(main, search_terms, tokens,
                         tokens_matched[search_term_token].add(token)
 
         if settings['match_inflected_forms']:
-            lemmas_searched = wl_lemmatization.wl_lemmatize(main, tokens_searched, lang, text_type)
-            lemmas_matched = wl_lemmatization.wl_lemmatize(main, list(tokens_matched), lang, text_type)
+            lemmas_searched = wl_lemmatization.wl_lemmatize(main, tokens_searched, lang, tokenized, tagged)
+            lemmas_matched = wl_lemmatization.wl_lemmatize(main, list(tokens_matched), lang, tokenized, tagged)
 
             for token_matched, lemma_matched in zip(list(tokens_matched), lemmas_matched):
                 lemma_matched = re.escape(lemma_matched)
@@ -211,8 +157,11 @@ def match_ngrams(main, search_terms, tokens,
 
     return search_terms_matched
 
-def match_search_terms(main, tokens,
-                       lang, text_type, token_settings, search_settings):
+def match_search_terms(
+    main, tokens,
+    lang, tokenized, tagged,
+    token_settings, search_settings
+):
     if ('search_settings' in search_settings and search_settings['search_settings'] or
         'search_settings' not in search_settings):
         if search_settings['multi_search_mode']:
@@ -226,13 +175,19 @@ def match_search_terms(main, tokens,
         search_terms = []
 
     if search_terms:
-        search_terms = match_ngrams(main, search_terms, tokens,
-                                    lang, text_type, token_settings, search_settings)
+        search_terms = match_ngrams(
+            main, search_terms, tokens,
+            lang, tokenized, tagged,
+            token_settings, search_settings
+        )
 
     return search_terms
 
-def match_search_terms_context(main, tokens,
-                               lang, text_type, token_settings, context_settings):
+def match_search_terms_context(
+    main, tokens,
+    lang, tokenized, tagged,
+    token_settings, context_settings
+):
     search_terms_inclusion = set()
     search_terms_exclusion = set()
 
@@ -247,8 +202,11 @@ def match_search_terms_context(main, tokens,
                 search_terms = []
 
         if search_terms:
-            search_terms_inclusion = match_ngrams(main, search_terms, tokens,
-                                                  lang, text_type, token_settings, context_settings['inclusion'])
+            search_terms_inclusion = match_ngrams(
+                main, search_terms, tokens,
+                lang, tokenized, tagged,
+                token_settings, context_settings['inclusion']
+            )
 
             for search_term in search_terms:
                 search_terms_inclusion.add(tuple(search_term))
@@ -264,8 +222,11 @@ def match_search_terms_context(main, tokens,
                 search_terms = []
 
         if search_terms:
-            search_terms_exclusion = match_ngrams(main, search_terms, tokens,
-                                                  lang, text_type, token_settings, context_settings['exclusion'])
+            search_terms_exclusion = match_ngrams(
+                main, search_terms, tokens,
+                lang, tokenized, tagged,
+                token_settings, context_settings['exclusion']
+            )
 
             for search_term in search_terms:
                 search_terms_exclusion.add(tuple(search_term))

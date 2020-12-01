@@ -46,15 +46,7 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
          self.inclusion_checkbox_match_whole_words,
          self.inclusion_checkbox_use_regex,
 
-         self.inclusion_stacked_widget_ignore_tags,
          self.inclusion_checkbox_ignore_tags,
-         self.inclusion_checkbox_ignore_tags_tags,
-
-         self.inclusion_stacked_widget_ignore_tags_type,
-         self.inclusion_combo_box_ignore_tags,
-         self.inclusion_combo_box_ignore_tags_tags,
-
-         self.inclusion_label_ignore_tags,
          self.inclusion_checkbox_match_tags) = wl_widgets.wl_widgets_search_settings(self, tab = tab)
 
         self.inclusion_label_context_window = QLabel(self.tr('Context Window:'), self)
@@ -77,9 +69,6 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
         self.inclusion_checkbox_use_regex.stateChanged.connect(self.inclusion_changed)
 
         self.inclusion_checkbox_ignore_tags.stateChanged.connect(self.inclusion_changed)
-        self.inclusion_checkbox_ignore_tags_tags.stateChanged.connect(self.inclusion_changed)
-        self.inclusion_combo_box_ignore_tags.currentTextChanged.connect(self.inclusion_changed)
-        self.inclusion_combo_box_ignore_tags_tags.currentTextChanged.connect(self.inclusion_changed)
         self.inclusion_checkbox_match_tags.stateChanged.connect(self.inclusion_changed)
 
         self.inclusion_checkbox_context_window_sync.stateChanged.connect(self.inclusion_changed)
@@ -90,13 +79,6 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
         inclusion_layout_multi_search_mode.addWidget(self.inclusion_label_search_term, 0, 0)
         inclusion_layout_multi_search_mode.addWidget(self.inclusion_checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
 
-        inclusion_layout_ignore_tags = wl_layout.Wl_Layout()
-        inclusion_layout_ignore_tags.addWidget(self.inclusion_stacked_widget_ignore_tags, 0, 0)
-        inclusion_layout_ignore_tags.addWidget(self.inclusion_stacked_widget_ignore_tags_type, 0, 1)
-        inclusion_layout_ignore_tags.addWidget(self.inclusion_label_ignore_tags, 0, 2)
-
-        inclusion_layout_ignore_tags.setColumnStretch(3, 1)
-
         self.inclusion_group_box.setLayout(wl_layout.Wl_Layout())
         self.inclusion_group_box.layout().addLayout(inclusion_layout_multi_search_mode, 0, 0, 1, 4)
         self.inclusion_group_box.layout().addWidget(self.inclusion_stacked_widget_search_term, 1, 0, 1, 4)
@@ -106,7 +88,7 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
         self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_match_inflected_forms, 4, 0, 1, 4)
         self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_match_whole_words, 5, 0, 1, 4)
         self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_use_regex, 6, 0, 1, 4)
-        self.inclusion_group_box.layout().addLayout(inclusion_layout_ignore_tags, 7, 0, 1, 4)
+        self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_ignore_tags, 7, 0, 1, 4)
         self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_match_tags, 8, 0, 1, 4)
 
         self.inclusion_group_box.layout().addWidget(wl_layout.Wl_Separator(self), 9, 0, 1, 4)
@@ -140,15 +122,7 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
          self.exclusion_checkbox_match_whole_words,
          self.exclusion_checkbox_use_regex,
 
-         self.exclusion_stacked_widget_ignore_tags,
          self.exclusion_checkbox_ignore_tags,
-         self.exclusion_checkbox_ignore_tags_tags,
-
-         self.exclusion_stacked_widget_ignore_tags_type,
-         self.exclusion_combo_box_ignore_tags,
-         self.exclusion_combo_box_ignore_tags_tags,
-
-         self.exclusion_label_ignore_tags,
          self.exclusion_checkbox_match_tags) = wl_widgets.wl_widgets_search_settings(self, tab = tab)
 
         self.exclusion_label_context_window = QLabel(self.tr('Context Window:'), self)
@@ -171,9 +145,6 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
         self.exclusion_checkbox_use_regex.stateChanged.connect(self.exclusion_changed)
 
         self.exclusion_checkbox_ignore_tags.stateChanged.connect(self.exclusion_changed)
-        self.exclusion_checkbox_ignore_tags_tags.stateChanged.connect(self.exclusion_changed)
-        self.exclusion_combo_box_ignore_tags.currentTextChanged.connect(self.exclusion_changed)
-        self.exclusion_combo_box_ignore_tags_tags.currentTextChanged.connect(self.exclusion_changed)
         self.exclusion_checkbox_match_tags.stateChanged.connect(self.exclusion_changed)
 
         self.exclusion_checkbox_context_window_sync.stateChanged.connect(self.exclusion_changed)
@@ -184,13 +155,6 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
         exclusion_layout_multi_search_mode.addWidget(self.exclusion_label_search_term, 0, 0)
         exclusion_layout_multi_search_mode.addWidget(self.exclusion_checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
 
-        exclusion_layout_ignore_tags = wl_layout.Wl_Layout()
-        exclusion_layout_ignore_tags.addWidget(self.exclusion_stacked_widget_ignore_tags, 0, 0)
-        exclusion_layout_ignore_tags.addWidget(self.exclusion_stacked_widget_ignore_tags_type, 0, 1)
-        exclusion_layout_ignore_tags.addWidget(self.exclusion_label_ignore_tags, 0, 2)
-
-        exclusion_layout_ignore_tags.setColumnStretch(3, 1)
-
         self.exclusion_group_box.setLayout(wl_layout.Wl_Layout())
         self.exclusion_group_box.layout().addLayout(exclusion_layout_multi_search_mode, 0, 0, 1, 4)
         self.exclusion_group_box.layout().addWidget(self.exclusion_stacked_widget_search_term, 1, 0, 1, 4)
@@ -200,7 +164,7 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
         self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_match_inflected_forms, 4, 0, 1, 4)
         self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_match_whole_words, 5, 0, 1, 4)
         self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_use_regex, 6, 0, 1, 4)
-        self.exclusion_group_box.layout().addLayout(exclusion_layout_ignore_tags, 7, 0, 1, 4)
+        self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_ignore_tags, 7, 0, 1, 4)
         self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_match_tags, 8, 0, 1, 4)
 
         self.exclusion_group_box.layout().addWidget(wl_layout.Wl_Separator(self), 9, 0, 1, 4)
@@ -254,9 +218,6 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
         self.inclusion_checkbox_use_regex.setChecked(settings['inclusion']['use_regex'])
 
         self.inclusion_checkbox_ignore_tags.setChecked(settings['inclusion']['ignore_tags'])
-        self.inclusion_checkbox_ignore_tags_tags.setChecked(settings['inclusion']['ignore_tags_tags'])
-        self.inclusion_combo_box_ignore_tags.setCurrentText(settings['inclusion']['ignore_tags_type'])
-        self.inclusion_combo_box_ignore_tags_tags.setCurrentText(settings['inclusion']['ignore_tags_type_tags'])
         self.inclusion_checkbox_match_tags.setChecked(settings['inclusion']['match_tags'])
 
         self.inclusion_checkbox_context_window_sync.setChecked(settings['inclusion']['context_window_sync'])
@@ -292,9 +253,6 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
         self.exclusion_checkbox_use_regex.setChecked(settings['exclusion']['use_regex'])
 
         self.exclusion_checkbox_ignore_tags.setChecked(settings['exclusion']['ignore_tags'])
-        self.exclusion_checkbox_ignore_tags_tags.setChecked(settings['exclusion']['ignore_tags_tags'])
-        self.exclusion_combo_box_ignore_tags.setCurrentText(settings['exclusion']['ignore_tags_type'])
-        self.exclusion_combo_box_ignore_tags_tags.setCurrentText(settings['exclusion']['ignore_tags_type_tags'])
         self.exclusion_checkbox_match_tags.setChecked(settings['exclusion']['match_tags'])
 
         self.exclusion_checkbox_context_window_sync.setChecked(settings['exclusion']['context_window_sync'])
@@ -332,9 +290,6 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
         self.settings['inclusion']['use_regex'] = self.inclusion_checkbox_use_regex.isChecked()
 
         self.settings['inclusion']['ignore_tags'] = self.inclusion_checkbox_ignore_tags.isChecked()
-        self.settings['inclusion']['ignore_tags_tags'] = self.inclusion_checkbox_ignore_tags_tags.isChecked()
-        self.settings['inclusion']['ignore_tags_type'] = self.inclusion_combo_box_ignore_tags.currentText()
-        self.settings['inclusion']['ignore_tags_type_tags'] = self.inclusion_combo_box_ignore_tags_tags.currentText()
         self.settings['inclusion']['match_tags'] = self.inclusion_checkbox_match_tags.isChecked()
         
         self.settings['inclusion']['context_window_sync'] = self.inclusion_checkbox_context_window_sync.isChecked()
@@ -362,9 +317,6 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
         self.settings['exclusion']['use_regex'] = self.exclusion_checkbox_use_regex.isChecked()
 
         self.settings['exclusion']['ignore_tags'] = self.exclusion_checkbox_ignore_tags.isChecked()
-        self.settings['exclusion']['ignore_tags_tags'] = self.exclusion_checkbox_ignore_tags_tags.isChecked()
-        self.settings['exclusion']['ignore_tags_type'] = self.exclusion_combo_box_ignore_tags.currentText()
-        self.settings['exclusion']['ignore_tags_type_tags'] = self.exclusion_combo_box_ignore_tags_tags.currentText()
         self.settings['exclusion']['match_tags'] = self.exclusion_checkbox_match_tags.isChecked()
         
         self.settings['exclusion']['context_window_sync'] = self.exclusion_checkbox_context_window_sync.isChecked()

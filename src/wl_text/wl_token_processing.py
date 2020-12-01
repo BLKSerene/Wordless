@@ -19,11 +19,6 @@ def wl_process_tokens(text, token_settings):
     main = text.main
     settings = copy.deepcopy(token_settings)
 
-    # Token Settings
-    if settings['use_tags']:
-        settings['ignore_tags'] = settings['ignore_tags_tags']
-        settings['ignore_tags_type'] = settings['ignore_tags_type_tags']
-
     # Punctuations
     if not settings['puncs']:
         i_tokens = 0
@@ -48,9 +43,7 @@ def wl_process_tokens(text, token_settings):
                 for i, clause in enumerate(sentence):
                     sentence[i] = [token for token in clause if token]
 
-        text.tags_pos = [tags for tags in text.tags_pos if tags != '']
-        text.tags_non_pos = [tags for tags in text.tags_pos if tags != '']
-        text.tags_all = [tags for tags in text.tags_pos if tags != '']
+        text.tags = [tags for tags in text.tags if tags != '']
 
     # Lemmatize all tokens
     if not settings['use_tags'] and settings['lemmatize_tokens']:
@@ -69,9 +62,7 @@ def wl_process_tokens(text, token_settings):
                 for i, clause in enumerate(sentence):
                     sentence[i] = [token.lower() for token in clause]
 
-        text.tags_pos = [[tag.lower() for tag in tags] for tags in text.tags_pos]
-        text.tags_non_pos = [[tag.lower() for tag in tags] for tags in text.tags_non_pos]
-        text.tags_all = [[tag.lower() for tag in tags] for tags in text.tags_all]
+        text.tags = [[tag.lower() for tag in tags] for tags in text.tags]
 
     # Words
     if settings['words']:
@@ -130,38 +121,17 @@ def wl_process_tokens(text, token_settings):
     i_token = 0
 
     if settings['ignore_tags']:
-        # Ignore all tags
-        if settings['ignore_tags_type'] == main.tr('all'):
-            for para in text.tokens_multilevel:
-                for sentence in para:
-                    for clause in sentence:
-                        for i, token in enumerate(clause):
-                            clause[i] = (token, [])
-        # Ignore POS tags
-        elif settings['ignore_tags_type'] == main.tr('POS'):
-            for para in text.tokens_multilevel:
-                for sentence in para:
-                    for clause in sentence:
-                        for i, token in enumerate(clause):
-                            clause[i] = (token, text.tags_non_pos[i_token + i])
-
-                        i_token += len(clause)
-
-        # Ignore non-POS tags
-        elif settings['ignore_tags_type'] == main.tr('non-POS'):
-            for para in text.tokens_multilevel:
-                for sentence in para:
-                    for clause in sentence:
-                        for i, token in enumerate(clause):
-                            clause[i] = (token, text.tags_pos[i_token + i])
-
-                        i_token += len(clause)
+        for para in text.tokens_multilevel:
+            for sentence in para:
+                for clause in sentence:
+                    for i, token in enumerate(clause):
+                        clause[i] = (token, [])
     else:
         for para in text.tokens_multilevel:
             for sentence in para:
                 for clause in sentence:
                     for i, token in enumerate(clause):
-                        clause[i] = (token, text.tags_all[i_token + i])
+                        clause[i] = (token, text.tags[i_token + i])
 
                     i_token += len(clause)
 
@@ -228,11 +198,6 @@ def wl_process_tokens_concordancer(text, token_settings):
 
     settings = copy.deepcopy(token_settings)
 
-    # Token Settings
-    if settings['use_tags']:
-        settings['ignore_tags'] = settings['ignore_tags_tags']
-        settings['ignore_tags_type'] = settings['ignore_tags_type_tags']
-
     # Punctuations
     if not settings['puncs']:
         tokens = [token
@@ -276,29 +241,15 @@ def wl_process_tokens_concordancer(text, token_settings):
 
     # Ignore tags
     if settings['ignore_tags']:
-        # Ignore all tags
-        if settings['ignore_tags_type'] == main.tr('all'):
-            tokens = [(token, [])
-                      for token in tokens]
-            text.tokens_flat = [(token, [])
-                                for token in text.tokens_flat]
-        # Ignore POS tags
-        elif settings['ignore_tags_type'] == main.tr('POS'):
-            tokens = [(token, tags)
-                      for token, tags in zip(tokens, text.tags_non_pos)]
-            text.tokens_flat = [(token, tags)
-                                for token, tags in zip(text.tokens_flat, text.tags_non_pos)]
-        # Ignore non-POS tags
-        elif settings['ignore_tags_type'] == main.tr('non-POS'):
-            tokens = [(token, tags)
-                      for token, tags in zip(tokens, text.tags_pos)]
-            text.tokens_flat = [(token, tags)
-                                for token, tags in zip(text.tokens_flat, text.tags_pos)]
+        tokens = [(token, [])
+                  for token in tokens]
+        text.tokens_flat = [(token, [])
+                            for token in text.tokens_flat]
     else:
         tokens = [(token, tags)
-                  for token, tags in zip(tokens, text.tags_all)]
+                  for token, tags in zip(tokens, text.tags)]
         text.tokens_flat = [(token, tags)
-                            for token, tags in zip(text.tokens_flat, text.tags_all)]
+                            for token, tags in zip(text.tokens_flat, text.tags)]
 
     # Use tags only
     if settings['use_tags']:
@@ -334,12 +285,12 @@ def wl_process_tokens_colligation(text, token_settings):
 
     # Use tags Only
     if token_settings['use_tags']:
-        text.tags_pos = [tag
-                         for tags in text.tags_pos
-                         for tag in tags]
+        text.tags = [tag
+                     for tags in text.tags
+                     for tag in tags]
     else:
-        text.tags_pos = [''.join(tags)
-                         for tags in text.tags_pos]
+        text.tags = [''.join(tags)
+                     for tags in text.tags]
 
     return text
 
