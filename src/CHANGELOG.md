@@ -70,7 +70,7 @@
 - Dependencies: Upgrade requests to 2.25.0
 - Dependencies: Upgrade Sacremoses to 0.0.43
 - Dependencies: Upgrade SciPy to 1.5.2
-- Dependencies: Upgrade spaCy to 2.3.2
+- Dependencies: Upgrade spaCy to 2.3.4
 - Dependencies: Upgrade Stopwords ISO to 1.0.0
 - Dependencies: Upgrade syntok to 1.3.1
 - Dependencies: Upgrade Underthesea to 1.2.2
