@@ -18,26 +18,18 @@ import spacy
 from wl_text import wl_matching, wl_pos_tagging, wl_text_utils
 from wl_utils import wl_conversion, wl_misc
 
-def wl_lemmatize(main, tokens, lang, text_type = ('untokenized', 'untagged'), lemmatizer = 'default'):
+def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer = 'default'):
     empty_offsets = []
     mapping_lemmas = {}
     lemmas = []
 
     tokens = [str(token) for token in tokens]
 
-    re_tags_all = wl_matching.get_re_tags(main, tags = 'all')
-    re_tags_pos = wl_matching.get_re_tags(main, tags = 'pos')
-    re_tags_non_pos = wl_matching.get_re_tags(main, tags = 'non_pos')
+    wl_matching.get_re_tags(main)
 
-    if text_type[1] == 'tagged_both':
-        tags = [''.join(re.findall(re_tags_all, token)) for token in tokens]
+    if tagged == 'Yes':
+        tags = [''.join(re.findall(re_tags, token)) for token in tokens]
         tokens = [re.sub(re_tags_all, '', token) for token in tokens]
-    elif text_type[1] == 'tagged_pos':
-        tags = [''.join(re.findall(re_tags_pos, token)) for token in tokens]
-        tokens = [re.sub(re_tags_pos, '', token) for token in tokens]
-    elif text_type[1] == 'tagged_non_pos':
-        tags = [''.join(re.findall(re_tags_non_pos, token)) for token in tokens]
-        tokens = [re.sub(re_tags_non_pos, '', token) for token in tokens]
     else:
         tags = [''] * len(tokens)
 
