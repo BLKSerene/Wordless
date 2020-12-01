@@ -40,7 +40,6 @@ def init_settings_default(main):
 
             'auto_detection_settings': {
                 'detect_langs': True,
-                'detect_text_types': True,
                 'detect_encodings': True
             }
         },
@@ -59,9 +58,6 @@ def init_settings_default(main):
                 'filter_stop_words': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'use_tags': False
             },
 
@@ -81,9 +77,6 @@ def init_settings_default(main):
                 'puncs': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'use_tags': False
             },
             
@@ -98,9 +91,6 @@ def init_settings_default(main):
                 'use_regex': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'match_tags': False
             },
 
@@ -118,9 +108,6 @@ def init_settings_default(main):
                     'use_regex': False,
 
                     'ignore_tags': True,
-                    'ignore_tags_tags': False,
-                    'ignore_tags_type': main.tr('all'),
-                    'ignore_tags_type_tags': main.tr('non-POS'),
                     'match_tags': False,
                     
                     'context_window_sync': False,
@@ -141,9 +128,6 @@ def init_settings_default(main):
                     'use_regex': False,
 
                     'ignore_tags': True,
-                    'ignore_tags_tags': False,
-                    'ignore_tags_type': main.tr('all'),
-                    'ignore_tags_type_tags': main.tr('non-POS'),
                     'match_tags': False,
                     
                     'context_window_sync': False,
@@ -223,9 +207,6 @@ def init_settings_default(main):
                 'use_regex': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'match_tags': False
             }
         },
@@ -244,9 +225,6 @@ def init_settings_default(main):
                 'filter_stop_words': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'use_tags': False
             },
 
@@ -314,9 +292,6 @@ def init_settings_default(main):
                 'use_regex': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'match_tags': False
             }
         },
@@ -335,9 +310,6 @@ def init_settings_default(main):
                 'filter_stop_words': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'use_tags': False
             },
 
@@ -354,9 +326,6 @@ def init_settings_default(main):
                 'use_regex': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'match_tags': False,
 
                 'search_term_position_min': 1,
@@ -380,9 +349,6 @@ def init_settings_default(main):
                     'use_regex': False,
 
                     'ignore_tags': True,
-                    'ignore_tags_tags': False,
-                    'ignore_tags_type': main.tr('all'),
-                    'ignore_tags_type_tags': main.tr('non-POS'),
                     'match_tags': False,
                     
                     'context_window_sync': False,
@@ -403,9 +369,6 @@ def init_settings_default(main):
                     'use_regex': False,
 
                     'ignore_tags': True,
-                    'ignore_tags_tags': False,
-                    'ignore_tags_type': main.tr('all'),
-                    'ignore_tags_type_tags': main.tr('non-POS'),
                     'match_tags': False,
                     
                     'context_window_sync': False,
@@ -484,9 +447,6 @@ def init_settings_default(main):
                 'use_regex': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'match_tags': False
             }
         },
@@ -505,9 +465,6 @@ def init_settings_default(main):
                 'filter_stop_words': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'use_tags': False
             },
             
@@ -524,9 +481,6 @@ def init_settings_default(main):
                 'use_regex': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'match_tags': False
             },
 
@@ -544,9 +498,6 @@ def init_settings_default(main):
                     'use_regex': False,
 
                     'ignore_tags': True,
-                    'ignore_tags_tags': False,
-                    'ignore_tags_type': main.tr('all'),
-                    'ignore_tags_type_tags': main.tr('non-POS'),
                     'match_tags': False,
                     
                     'context_window_sync': False,
@@ -567,9 +518,6 @@ def init_settings_default(main):
                     'use_regex': False,
 
                     'ignore_tags': True,
-                    'ignore_tags_tags': False,
-                    'ignore_tags_type': main.tr('all'),
-                    'ignore_tags_type_tags': main.tr('non-POS'),
                     'match_tags': False,
                     
                     'context_window_sync': False,
@@ -658,9 +606,6 @@ def init_settings_default(main):
                 'use_regex': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'match_tags': False
             }
         },
@@ -679,9 +624,6 @@ def init_settings_default(main):
                 'filter_stop_words': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'use_tags': False
             },
 
@@ -698,9 +640,6 @@ def init_settings_default(main):
                 'use_regex': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'match_tags': False
             },
 
@@ -718,9 +657,6 @@ def init_settings_default(main):
                     'use_regex': False,
 
                     'ignore_tags': True,
-                    'ignore_tags_tags': False,
-                    'ignore_tags_type': main.tr('all'),
-                    'ignore_tags_type_tags': main.tr('non-POS'),
                     'match_tags': False,
                     
                     'context_window_sync': False,
@@ -741,9 +677,6 @@ def init_settings_default(main):
                     'use_regex': False,
 
                     'ignore_tags': True,
-                    'ignore_tags_tags': False,
-                    'ignore_tags_type': main.tr('all'),
-                    'ignore_tags_type_tags': main.tr('non-POS'),
                     'match_tags': False,
                     
                     'context_window_sync': False,
@@ -832,9 +765,6 @@ def init_settings_default(main):
                 'use_regex': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'match_tags': False
             },
         },
@@ -853,9 +783,6 @@ def init_settings_default(main):
                 'filter_stop_words': False,
 
                 'ignore_tags': True,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_tags': False,
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'use_tags': False
             },
 
@@ -935,9 +862,6 @@ def init_settings_default(main):
                 'use_regex': False,
 
                 'ignore_tags': True,
-                'ignore_tags_tags': False,
-                'ignore_tags_type': main.tr('all'),
-                'ignore_tags_type_tags': main.tr('non-POS'),
                 'match_tags': False
             }
         },
@@ -1028,31 +952,32 @@ def init_settings_default(main):
 
             'default_settings': {
                 'default_lang': 'eng',
-                'default_text_type': ('untokenized', 'untagged'),
                 'default_encoding': 'utf_8'
             }
+        },
+
+        'tags': {
+            'tags_header': [
+                ['Non-embedded', 'Header', '<teiHeader>', '</teiHeader>'],
+                ['Non-embedded', 'Header', '<header>', '</header>']
+            ],
+
+            'tags_body': [
+                ['Embedded', 'Part of Speech', '_', ''],
+                ['Non-embedded', 'Others', '<*>', '</*>']
+            ],
+
+            'tags_xml': [
+                ['Non-embedded', 'Paragraph', '<p>', '</p>'],
+                ['Non-embedded', 'Sentence', '<s>', '</s>'],
+                ['Non-embedded', 'Word', '<w>', '</w>']
+            ]
         },
 
         'data': {
             'precision_decimal': 2,
             'precision_pct': 2,
             'precision_p_value': 5
-        },
-
-        'tags': {
-            'tags_pos': [
-                ['_', ''],
-                ['/', '']
-            ],
-
-            'tags_non_pos': [
-                ['<', '>'],
-                ['[', ']']
-            ],
-
-            'tags_header': [
-                ['<teiHeader>', '</teiHeader>']
-            ]
         },
 
         'sentence_tokenization': {

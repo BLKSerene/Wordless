@@ -25,12 +25,11 @@
     - 3.7 [Keyword](#doc-eng-3-7)
 - 4 [Appendixes](#doc-eng-4)
     - 4.1 [Supported Languages](#doc-eng-4-1)
-    - 4.2 [Supported Text Types](#doc-eng-4-2)
-    - 4.3 [Supported File Types](#doc-eng-4-3)
-    - 4.4 [Supported File Encodings](#doc-eng-4-4)
-    - 4.5 [Supported Measures](#doc-eng-4-5)
-        - 4.5.1 [Measures of Dispersion & Adjusted Frequency](#doc-eng-4-5-1)
-        - 4.5.2 [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-5-2)
+    - 4.2 [Supported File Types](#doc-eng-4-2)
+    - 4.3 [Supported File Encodings](#doc-eng-4-3)
+    - 4.4 [Supported Measures](#doc-eng-4-4)
+        - 4.4.1 [Measures of Dispersion & Adjusted Frequency](#doc-eng-4-4-1)
+        - 4.4.2 [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-2)
 - 5 [Works Cited](#doc-eng-5)
 
 <span id="doc-eng-1"></span>
@@ -500,21 +499,7 @@ Other Languages      |⭕️ |⭕️ |⭕️ |✖️|✖️|✖️
 ✖️: Not supported
 
 <span id="doc-eng-4-2"></span>
-### 4.2 Supported Text Types [[Back to Contents]](#doc-eng)
-
-You can specify your custom POS/Non-POS tags via **Menu → Preferences → Settings → Tags**.
-
-Text Types|Auto-detection
-----------|:------------:
-Untokenized / Untagged        |✔
-Untokenized / Tagged (Non-POS)|✔
-Tokenized / Untagged          |✖
-Tokenized / Tagged (POS)      |✔
-Tokenized / Tagged (Non-POS)  |✖
-Tokenized / Tagged (Both)     |✔
-
-<span id="doc-eng-4-3"></span>
-### 4.3 Supported File Types [[Back to Contents]](#doc-eng)
+### 4.2 Supported File Types [[Back to Contents]](#doc-eng)
 
 File Types|File Extensions
 ----------|--------------
@@ -530,8 +515,8 @@ Lyrics File             |\*.lrc
 \* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/Import/**). You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
 
-<span id="doc-eng-4-4"></span>
-### 4.4 Supported File Encodings [[Back to Contents]](#doc-eng)
+<span id="doc-eng-4-3"></span>
+### 4.3 Supported File Encodings [[Back to Contents]](#doc-eng)
 
 Languages|File Encodings|Auto-detection
 ---------|--------------|:------------:
@@ -640,11 +625,11 @@ Western European|ISO-8859-15 |✔
 Western European|Mac OS Roman|✖
 Western European|Windows-1252|✔
 
-<span id="doc-eng-4-5"></span>
-### 4.5 Supported Measures [[Back to Contents]](#doc-eng)
+<span id="doc-eng-4-4"></span>
+### 4.4 Supported Measures [[Back to Contents]](#doc-eng)
 
-<span id="doc-eng-4-5-1"></span>
-#### 4.5.1 Measures of Dispersion & Adjusted Frequency [[Back to Contents]](#doc-eng)
+<span id="doc-eng-4-4-1"></span>
+#### 4.4.1 Measures of Dispersion & Adjusted Frequency [[Back to Contents]](#doc-eng)
 
 The dispersion and adjusted frequency of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by **F₁**, **F₂**, **F₃** ... **Fn**. The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies over all sub-sections is denoted by ![F-bar](/doc/measures/f_bar.gif).
 
@@ -741,8 +726,8 @@ Rosengren's KF [[4]](#doc-eng-supported-measures-works-cited-4)|![Rosengren's KF
 Engwall's FM   [[8]](#doc-eng-supported-measures-works-cited-8)|![Engwall's FM](/doc/measures/adjusted_freq/engwalls_fm.gif)<br>where **R** is the number of sub-sections in which the word appears at least once
 Kromer's UR    [[9]](#doc-eng-supported-measures-works-cited-9)|![Kromer's UR](/doc/measures/adjusted_freq/kromers_ur.gif)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function), **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant)
 
-<span id="doc-eng-4-5-2"></span>
-#### 4.5.2 Tests of Statistical Significance & Measures of Effect Size [[Back to Contents]](#doc-eng)
+<span id="doc-eng-4-4-2"></span>
+#### 4.4.2 Tests of Statistical Significance & Measures of Effect Size [[Back to Contents]](#doc-eng)
 
 To calculate the statistical significance, bayes factor and effect size (except **Student's t-test (Two-sample)** and **Mann-Whitney U Test**) for two words in the same file (collocates) or one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
 
