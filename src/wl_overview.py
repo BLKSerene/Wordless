@@ -12,6 +12,7 @@
 import collections
 import copy
 import itertools
+import re
 import time
 
 from PyQt5.QtCore import *
@@ -308,7 +309,7 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
         files = self.main.wl_files.get_selected_files()
 
         for i, file in enumerate(files):
-            text = wl_text.Wl_Text(self.main, file, flat_tokens = False)
+            text = wl_text.Wl_Text(self.main, file)
             text = wl_token_processing.wl_process_tokens_overview(
                 text,
                 token_settings = settings['token_settings']
@@ -318,21 +319,31 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
 
         if len(files) > 1:
             text_total = wl_text.Wl_Text_Blank()
-            text_total.offsets_paras = [offset
-                                        for text in texts
-                                        for offset in text.offsets_paras]
-            text_total.offsets_sentences = [offset
-                                            for text in texts
-                                            for offset in text.offsets_sentences]
-            text_total.offsets_clauses = [offset
-                                          for text in texts
-                                          for offset in text.offsets_clauses]
-            text_total.tokens_multilevel = [para
-                                            for text in texts
-                                            for para in text.tokens_multilevel]
-            text_total.tokens_flat = [token
-                                      for text in texts
-                                      for token in text.tokens_flat]
+            text_total.offsets_paras = [
+                offset
+                for text in texts
+                for offset in text.offsets_paras
+            ]
+            text_total.offsets_sentences = [
+                offset
+                for text in texts
+                for offset in text.offsets_sentences
+            ]
+            text_total.offsets_clauses = [
+                offset
+                for text in texts
+                for offset in text.offsets_clauses
+            ]
+            text_total.tokens_multilevel = [
+                para
+                for text in texts
+                for para in text.tokens_multilevel
+            ]
+            text_total.tokens_flat = [
+                token
+                for text in texts
+                for token in text.tokens_flat
+            ]
 
             texts.append(text_total)
         else:
@@ -347,21 +358,29 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
 
             # Paragraph length
             len_paras_in_sentence = [len(para) for para in text.tokens_multilevel]
-            len_paras_in_clause = [sum([len(sentence) for sentence in para])
-                                   for para in text.tokens_multilevel]
-            len_paras_in_token = [sum([len(clause) for sentence in para for clause in sentence])
-                                  for para in text.tokens_multilevel]
+            len_paras_in_clause = [
+                sum([len(sentence) for sentence in para])
+                for para in text.tokens_multilevel
+            ]
+            len_paras_in_token = [
+                sum([len(clause) for sentence in para for clause in sentence])
+                for para in text.tokens_multilevel
+            ]
 
             # Sentence length
-            len_sentences = [sum([len(clause) for clause in sentence])
-                             for para in text.tokens_multilevel
-                             for sentence in para]
+            len_sentences = [
+                sum([len(clause) for clause in sentence])
+                for para in text.tokens_multilevel
+                for sentence in para
+            ]
 
             # Clause length
-            len_clauses = [len(clause)
-                           for para in text.tokens_multilevel
-                           for sentence in para
-                           for clause in sentence]
+            len_clauses = [
+                len(clause)
+                for para in text.tokens_multilevel
+                for sentence in para
+                for clause in sentence
+            ]
 
             # Token length
             len_tokens = [len(token) for token in text.tokens_flat]
@@ -385,9 +404,15 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
 
                 # Discard the last section if number of tokens in it is smaller than the base of sttr
                 if len(token_sections[-1]) < base_sttr:
-                    ttrs = [len(set(token_section)) / len(token_section) for token_section in token_sections[:-1]]
+                    ttrs = [
+                        len(set(token_section)) / len(token_section)
+                        for token_section in token_sections[:-1]
+                    ]
                 else:
-                    ttrs = [len(set(token_section)) / len(token_section) for token_section in token_sections]
+                    ttrs = [
+                        len(set(token_section)) / len(token_section)
+                        for token_section in token_sections
+                    ]
 
                 sttr = sum(ttrs) / len(ttrs)
 
@@ -533,17 +558,23 @@ def generate_table(main, table):
             if any(count_tokens_lens):
                 len_files = len(files)
                 count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
-                count_tokens_lens_total = {len_token: count_tokens_files[-1]
-                                           for len_token, count_tokens_files in count_tokens_lens_files.items()}
+                count_tokens_lens_total = {
+                    len_token: count_tokens_files[-1]
+                    for len_token, count_tokens_files in count_tokens_lens_files.items()
+                }
                 len_tokens_max = max(count_tokens_lens_files)
                 
                 for i in range(len_tokens_max):
-                    table.insert_row(table.rowCount(),
-                                     main.tr(f'Count of {i + 1}-Length Tokens'),
-                                     is_int = True, is_cumulative = True)
-                    table.insert_row(table.rowCount(),
-                                     main.tr(f'Count of {i + 1}-Length Tokens %'),
-                                     is_pct = True, is_cumulative = True)
+                    table.insert_row(
+                        table.rowCount(),
+                        main.tr(f'Count of {i + 1}-Length Tokens'),
+                        is_int = True, is_cumulative = True
+                    )
+                    table.insert_row(
+                        table.rowCount(),
+                        main.tr(f'Count of {i + 1}-Length Tokens %'),
+                        is_pct = True, is_cumulative = True
+                    )
 
                 for i in range(len_tokens_max):
                     counts = count_tokens_lens_files.get(i + 1, [0] * (len_files + 1))
@@ -580,6 +611,13 @@ def generate_table(main, table):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading(main, files):
+        for file in files:
+            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
+                if file['tokenized'] == 'No' or file['tagged'] == 'No':
+                    wl_msg_box.wl_msg_box_invalid_xml_file(main)
+
+                    return
+
         dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
         worker_overview_table = Wl_Worker_Overview_Table(

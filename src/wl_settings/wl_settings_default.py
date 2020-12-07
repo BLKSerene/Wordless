@@ -968,6 +968,7 @@ def init_settings_default(main):
             ],
 
             'tags_xml': [
+                ['Non-embedded', 'Division', '<div>', '</div>'],
                 ['Non-embedded', 'Paragraph', '<p>', '</p>'],
                 ['Non-embedded', 'Sentence', '<s>', '</s>'],
                 ['Non-embedded', 'Word', '<w>', '</w>']

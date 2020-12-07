@@ -235,6 +235,21 @@ def wl_msg_box_missing_observed_file(main):
 
     msg_box_missing_observed_file.open()
 
+class Wl_Msg_Box_Invalid_Xml_File(Wl_Msg_Box_Warning):
+    def __init__(self, main):
+        super().__init__(
+            main = main,
+            title = main.tr('Invalid XML File'),
+            text = main.tr('''
+                <div>If the input is an XML file, it must be both tokenized and tagged!</div>
+            ''')
+        )
+
+def wl_msg_box_invalid_xml_file(main):
+    msg_box_invalid_xml_file = Wl_Msg_Box_Invalid_Xml_File(main)
+
+    msg_box_invalid_xml_file.open()
+
 # Search Terms
 class Wl_Msg_Box_Missing_Search_Term(Wl_Msg_Box_Warning):
     def __init__(self, main):
@@ -356,7 +371,7 @@ def wl_msg_box_path_not_exist(main, path):
             {main.settings_global['styles']['style_dialog']}
             <body>
                 <div>The specified path "{path}" does not exist!</div>
-                <div>Please change your settings and try again.</div>
+                <div>Please check your settings and try again.</div>
             </body>
         '''),
         QMessageBox.Ok
@@ -370,28 +385,21 @@ def wl_msg_box_path_not_dir(main, path):
             {main.settings_global['styles']['style_dialog']}
             <body>
                 <div>The specified path "{path}" should be a directory, not a file!</div>
-                <div>Please change your settings and try again.</div>
+                <div>Please check your settings and try again.</div>
             </body>
         '''),
         QMessageBox.Ok
     )
 
-def wl_msg_box_path_not_exist_confirm(main, path):
-    reply = QMessageBox.question(
+def wl_msg_box_invalid_xml_tags(main):
+    QMessageBox.warning(
         main,
-        main.tr('Path Not Exist'),
+        main.tr('Invalid XML Tags'),
         main.tr(f'''
             {main.settings_global['styles']['style_dialog']}
             <body>
-                <div>The specified path "{path}" does not exist.</div>
-                <div>Do you want to create the directory?</div>
+                <div>You must specify at least one (pair of) tag for each level of XML files!</div>
             </body>
         '''),
-        QMessageBox.Yes | QMessageBox.No,
-        QMessageBox.No
+        QMessageBox.Ok
     )
-
-    if reply == QMessageBox.Yes:
-        wl_checking_misc.check_dir(path)
-
-    return reply

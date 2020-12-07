@@ -28,6 +28,7 @@
 
 ### ✨ Improvements
 - File Area: Update File Table - Tokenized/Tagged
+- File Area: Update support for XML files
 - Menu: Disable editing of POS tag mappings for spaCy's POS taggers
 - Menu: Update Preferences - Settings - Files - Tags
 - Utils: Update botok's Tibetan word tokenizer, POS tagger, and lemmatizer
