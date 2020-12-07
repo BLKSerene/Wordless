@@ -1084,6 +1084,13 @@ def generate_table(main, table):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading_colligation(main, files):
+        for file in files:
+            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
+                if file['tokenized'] == 'No' or file['tagged'] == 'No':
+                    wl_msg_box.wl_msg_box_invalid_xml_file(main)
+
+                    return
+        
         if (not settings['search_settings']['search_settings'] or
             not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
@@ -1227,6 +1234,13 @@ def generate_fig(main):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading_colligation(main, files):
+        for file in files:
+            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
+                if file['tokenized'] == 'No' or file['tagged'] == 'No':
+                    wl_msg_box.wl_msg_box_invalid_xml_file(main)
+
+                    return
+        
         if (not settings['search_settings']['search_settings'] or
             not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):

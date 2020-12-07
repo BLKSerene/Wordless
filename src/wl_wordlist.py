@@ -11,6 +11,7 @@
 
 import collections
 import copy
+import re
 import time
 
 from PyQt5.QtCore import *
@@ -413,8 +414,10 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
             # Dispersion
             number_sections = self.main.settings_custom['measures']['dispersion']['general']['number_sections']
 
-            sections_freq = [collections.Counter(section)
-                             for section in wl_text_utils.to_sections(text.tokens_flat, number_sections)]
+            sections_freq = [
+                collections.Counter(section)
+                for section in wl_text_utils.to_sections(text.tokens_flat, number_sections)
+            ]
 
             for token in tokens_total:
                 counts = [section_freq[token] for section_freq in sections_freq]
@@ -425,8 +428,10 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
             if not self.main.settings_custom['measures']['adjusted_freq']['general']['use_same_settings_dispersion']:
                 number_sections = self.main.settings_custom['measures']['adjusted_freq']['general']['number_sections']
 
-                sections_freq = [collections.Counter(section)
-                                 for section in wl_text_utils.to_sections(text.tokens_flat, number_sections)]
+                sections_freq = [
+                    collections.Counter(section)
+                    for section in wl_text_utils.to_sections(text.tokens_flat, number_sections)
+                ]
 
             for token in tokens_total:
                 counts = [section_freq[token] for section_freq in sections_freq]
@@ -447,8 +452,10 @@ class Wl_Worker_Wordlist_Table(Wl_Worker_Wordlist):
 
         time.sleep(0.1)
 
-        self.worker_done.emit(wl_misc.merge_dicts(self.tokens_freq_files),
-                              wl_misc.merge_dicts(self.tokens_stats_files))
+        self.worker_done.emit(
+            wl_misc.merge_dicts(self.tokens_freq_files),
+            wl_misc.merge_dicts(self.tokens_stats_files)
+        )
 
 class Wl_Worker_Wordlist_Fig(Wl_Worker_Wordlist):
     def run(self):
@@ -458,8 +465,10 @@ class Wl_Worker_Wordlist_Fig(Wl_Worker_Wordlist):
 
         time.sleep(0.1)
 
-        self.worker_done.emit(wl_misc.merge_dicts(self.tokens_freq_files),
-                              wl_misc.merge_dicts(self.tokens_stats_files))
+        self.worker_done.emit(
+            wl_misc.merge_dicts(self.tokens_freq_files),
+            wl_misc.merge_dicts(self.tokens_stats_files)
+        )
 
 @wl_misc.log_timing
 def generate_table(main, table):
@@ -480,36 +489,52 @@ def generate_table(main, table):
 
             # Insert columns (files)
             for file in files:
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{file["name"]}]\nFrequency'),
-                                 is_int = True, is_cumulative = True, is_breakdown = True)
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{file["name"]}]\nFrequency %'),
-                                 is_pct = True, is_cumulative = True, is_breakdown = True)
+                table.insert_col(
+                    table.columnCount() - 2,
+                    main.tr(f'[{file["name"]}]\nFrequency'),
+                    is_int = True, is_cumulative = True, is_breakdown = True
+                )
+                table.insert_col(
+                    table.columnCount() - 2,
+                    main.tr(f'[{file["name"]}]\nFrequency %'),
+                    is_pct = True, is_cumulative = True, is_breakdown = True
+                )
 
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{file["name"]}]\n{text_dispersion}'),
-                                 is_float = True, is_breakdown = True)
+                table.insert_col(
+                    table.columnCount() - 2,
+                    main.tr(f'[{file["name"]}]\n{text_dispersion}'),
+                    is_float = True, is_breakdown = True
+                )
 
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{file["name"]}]\n{text_adjusted_freq}'),
-                                 is_float = True, is_breakdown = True)
+                table.insert_col(
+                    table.columnCount() - 2,
+                    main.tr(f'[{file["name"]}]\n{text_adjusted_freq}'),
+                    is_float = True, is_breakdown = True
+                )
 
             # Insert columns (total)
-            table.insert_col(table.columnCount() - 2,
-                             main.tr('Total\nFrequency'),
-                             is_int = True, is_cumulative = True)
-            table.insert_col(table.columnCount() - 2,
-                             main.tr('Total\nFrequency %'),
-                             is_pct = True, is_cumulative = True)
+            table.insert_col(
+                table.columnCount() - 2,
+                main.tr('Total\nFrequency'),
+                is_int = True, is_cumulative = True
+            )
+            table.insert_col(
+                table.columnCount() - 2,
+                main.tr('Total\nFrequency %'),
+                is_pct = True, is_cumulative = True
+            )
 
-            table.insert_col(table.columnCount() - 2,
-                             main.tr(f'Total\n{text_dispersion}'),
-                             is_float = True)
+            table.insert_col(
+                table.columnCount() - 2,
+                main.tr(f'Total\n{text_dispersion}'),
+                is_float = True
+            )
 
-            table.insert_col(table.columnCount() - 2,
-                             main.tr(f'Total\n{text_adjusted_freq}'),
-                             is_float = True)
+            table.insert_col(
+                table.columnCount() - 2,
+                main.tr(f'Total\n{text_adjusted_freq}'),
+                is_float = True
+            )
 
             # Sort by frequency of the first file
             table.horizontalHeader().setSortIndicator(
@@ -585,6 +610,13 @@ def generate_table(main, table):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading(main, files):
+        for file in files:
+            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
+                if file['tokenized'] == 'No' or file['tagged'] == 'No':
+                    wl_msg_box.wl_msg_box_invalid_xml_file(main)
+
+                    return
+        
         dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
         worker_wordlist_table = Wl_Worker_Wordlist_Table(
@@ -652,6 +684,13 @@ def generate_fig(main):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading(main, files):
+        for file in files:
+            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
+                if file['tokenized'] == 'No' or file['tagged'] == 'No':
+                    wl_msg_box.wl_msg_box_invalid_xml_file(main)
+
+                    return
+        
         dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
         worker_wordlist_fig = Wl_Worker_Wordlist_Fig(

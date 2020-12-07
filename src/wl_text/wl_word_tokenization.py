@@ -22,7 +22,7 @@ from wl_checking import wl_checking_unicode
 from wl_text import wl_sentence_tokenization, wl_text, wl_text_utils
 from wl_utils import wl_conversion, wl_misc
 
-def wl_word_tokenize(main, text, lang, word_tokenizer = 'default', flat_tokens = True):
+def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     tokens_multilevel = []
 
     if lang not in main.settings_global['word_tokenizers']:
@@ -31,19 +31,11 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default', flat_tokens =
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
-    # Check initialization status of word (and sentence) tokenizers
-    if flat_tokens:
-        wl_text_utils.check_word_tokenizers(
-            main,
-            lang = lang,
-            word_tokenizer = word_tokenizer
-        )
-    else:
-        wl_text_utils.check_tokenizers(
-            main,
-            lang = lang,
-            word_tokenizer = word_tokenizer
-        )
+    wl_text_utils.check_tokenizers(
+        main,
+        lang = lang,
+        word_tokenizer = word_tokenizer
+    )
 
     # NLTK
     if 'NLTK' in word_tokenizer:
@@ -76,10 +68,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default', flat_tokens =
                 tokens_multilevel.append(tweet_tokenizer.tokenize(sentence))
     # Sacremoses
     elif 'Sacremoses' in word_tokenizer:
-        if flat_tokens:
-            sentences = [text]
-        else:
-            sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang)
+        sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang)
 
         moses_tokenizer = sacremoses.MosesTokenizer(lang = wl_conversion.to_iso_639_1(main, lang))
 
@@ -93,29 +82,20 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default', flat_tokens =
         # See Issue #3479: https://github.com/explosion/spaCy/issues/3479
         doc.is_parsed = True
 
-        if flat_tokens:
-            tokens_multilevel.append([token.text for token in doc])
-        else:
-            for sentence in doc.sents:
-                tokens_multilevel.append([token.text for token in sentence.as_doc()])
+        for sentence in doc.sents:
+            tokens_multilevel.append([token.text for token in sentence.as_doc()])
     # syntok
     elif word_tokenizer == 'syntok - Word Tokenizer':
         syntok_tokenizer = syntok.tokenizer.Tokenizer()
 
-        if flat_tokens:
-            tokens_multilevel.append([token.value for token in syntok_tokenizer.tokenize(text)])
-        else:
-            for para in syntok.segmenter.analyze(text):
-                for sentence in para:
-                    tokens_multilevel.append([token.value for token in sentence])
+        for para in syntok.segmenter.analyze(text):
+            for sentence in para:
+                tokens_multilevel.append([token.value for token in sentence])
     # Chinese & Japanese
     elif ('jieba' in word_tokenizer or
           'nagisa' in word_tokenizer or
           'Wordless' in word_tokenizer):
-        if flat_tokens:
-            sentences = [text]
-        else:
-            sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang = lang)
+        sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang = lang)
 
         # Chinese
         if word_tokenizer == main.tr('jieba - Chinese Word Tokenizer'):
@@ -207,10 +187,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default', flat_tokens =
                 tokens_multilevel.append(tokens)
     # Russian
     elif word_tokenizer == 'razdel - Russian Word Tokenizer':
-        if flat_tokens:
-            sentences = [text]
-        else:
-            sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang = 'rus')
+        sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang = 'rus')
 
         for sentence in sentences:
             tokens_multilevel.append([token.text for token in razdel.tokenize(sentence)])
@@ -235,23 +212,18 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default', flat_tokens =
                 tokens_multilevel.append(pythainlp.word_tokenize(sentence, engine = 'newmm-safe'))
     # Tibetan
     elif 'botok' in word_tokenizer:
-        if flat_tokens:
-            sentences = [text]
-        else:
-            sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang = 'bod')
+        sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang = 'bod')
 
         for sentence in sentences:
             tokens_multilevel.append([token.text
                                       for token in main.botok_word_tokenizer.tokenize(sentence)])
     # Vietnamese
     elif word_tokenizer == main.tr('Underthesea - Vietnamese Word Tokenizer'):
-        if flat_tokens:
-            sentences = [text]
-        else:
-            sentences = wl_sentence_tokenization.wl_sentence_tokenize(
-                main, text,
-                lang = 'vie',
-                sentence_tokenizer = 'Underthesea - Vietnamese Sentence Tokenizer')
+        sentences = wl_sentence_tokenization.wl_sentence_tokenize(
+            main, text,
+            lang = 'vie',
+            sentence_tokenizer = 'Underthesea - Vietnamese Sentence Tokenizer'
+        )
 
         for sentence in sentences:
             tokens_multilevel.append(underthesea.word_tokenize(str(sentence)))
@@ -273,14 +245,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default', flat_tokens =
                 sentence[-1] = wl_text.Wl_Token(sentence[-1], boundary = ' ', sentence_ending = True)
 
     # Clause tokenization
-    if not flat_tokens:
-        for i, sentence in enumerate(tokens_multilevel):
-            tokens_multilevel[i] = wl_sentence_tokenization.wl_clause_tokenize(main, sentence, lang)
+    for i, sentence in enumerate(tokens_multilevel):
+        tokens_multilevel[i] = wl_sentence_tokenization.wl_clause_tokenize(main, sentence, lang)
 
-    # Flatten tokens
-    tokens_flat = list(wl_misc.flatten_list(tokens_multilevel))
-
-    if flat_tokens:
-        return tokens_flat
-    else:
-        return tokens_multilevel
+    return tokens_multilevel

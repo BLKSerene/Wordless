@@ -36,13 +36,12 @@ from wl_utils import wl_conversion, wl_detection, wl_misc, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_table
 
 class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(list, list, list, list)
+    worker_done = pyqtSignal(list, list, list)
 
     def run(self):
         new_files = []
 
         files_detection_error_encoding = []
-        files_detection_error_text_type = []
         files_detection_error_lang = []
 
         if self.file_paths:
@@ -153,7 +152,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                             with open(file_path, 'r', encoding = encoding_code) as f:
                                 xml_text = f.read()
 
-                            new_path = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+                            new_path = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.xml'))
 
                             with open(new_path, 'w', encoding = default_encoding) as f:
                                 f.write(xml_text)
@@ -222,16 +221,12 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                     for new_path in new_paths:
                         (new_file,
                          detection_success_encoding,
-                         detection_success_text_type,
                          detection_success_lang) = self.main.wl_files._new_file(new_path, txt = False)
 
                         new_files.append(new_file)
 
                         if not detection_success_encoding:
                             files_detection_error_encoding.append(new_file['path'])
-
-                        if not detection_success_text_type:
-                            files_detection_error_text_type.append(new_file['path'])
 
                         if not detection_success_lang:
                             files_detection_error_lang.append(new_file['path'])
@@ -244,7 +239,6 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
         self.worker_done.emit(new_files,
                               files_detection_error_encoding,
-                              files_detection_error_text_type,
                               files_detection_error_lang)
 
     # python-docx/Issue #276: https://github.com/python-openxml/python-docx/issues/276
@@ -310,13 +304,18 @@ class Wl_Files():
         new_file = {}
 
         detection_success_encoding = True
-        detection_success_text_type = True
         detection_success_lang = True
 
         new_file['selected'] = True
-        new_file['tokenized'] = 'No'
-        new_file['tagged'] = 'No'
+
         new_file['path'] = file_path
+        if new_file['path'].endswith('.txt'):
+            new_file['tokenized'] = 'No'
+            new_file['tagged'] = 'No'
+        elif new_file['path'].endswith('.xml'):
+            new_file['tokenized'] = 'Yes'
+            new_file['tagged'] = 'Yes'
+
         new_file['name'], _ = os.path.splitext(os.path.basename(new_file['path']))
         new_file['name_old'] = new_file['name']
 
@@ -356,7 +355,6 @@ class Wl_Files():
             soup = bs4.BeautifulSoup(text, features = 'html.parser')
 
             for tag_header in tags_header:
-                print(tag_header)
                 for header_element in soup.select(tag_header):
                     header_element.decompose()
 
@@ -368,9 +366,11 @@ class Wl_Files():
 
     @wl_misc.log_timing
     def open_files(self, file_paths):
-        def update_gui(new_files,
-                       files_detection_error_encoding,
-                       files_detection_error_lang):
+        def update_gui(
+            new_files,
+            files_detection_error_encoding,
+            files_detection_error_lang
+        ):
             len_files_old = len(self.main.settings_custom['files']['files_open'])
 
             for new_file in new_files:
