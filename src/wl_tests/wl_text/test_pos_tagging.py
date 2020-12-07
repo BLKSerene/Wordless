@@ -17,7 +17,7 @@ import pytest
 
 from wl_tests import wl_test_init, wl_test_lang_examples
 from wl_text import wl_pos_tagging, wl_word_tokenization
-from wl_utils import wl_conversion
+from wl_utils import wl_conversion, wl_misc
 
 test_pos_taggers = []
 
@@ -37,6 +37,7 @@ def test_pos_tag(lang, pos_tagger, show_results = False):
         text = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}'),
         lang = lang
     )
+    tokens = list(wl_misc.flatten_list(tokens))
 
     tokens_tagged = wl_pos_tagging.wl_pos_tag(
         main,
