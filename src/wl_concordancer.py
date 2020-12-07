@@ -11,6 +11,7 @@
 
 import copy
 import random
+import re
 import time
 
 from PyQt5.QtCore import *
@@ -578,7 +579,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
         self.progress_updated.emit(self.tr('Searching in text ...'))
 
         for file in files:
-            text = wl_text.Wl_Text(self.main, file, flat_tokens = False)
+            text = wl_text.Wl_Text(self.main, file)
 
             tokens = wl_token_processing.wl_process_tokens_concordancer(
                 text,
@@ -1131,6 +1132,13 @@ def generate_table(main, table):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading(main, files):
+        for file in files:
+            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
+                if file['tokenized'] == 'No' or file['tagged'] == 'No':
+                    wl_msg_box.wl_msg_box_invalid_xml_file(main)
+
+                    return
+        
         if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
@@ -1206,6 +1214,13 @@ def generate_fig(main):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading(main, files):
+        for file in files:
+            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
+                if file['tokenized'] == 'No' or file['tagged'] == 'No':
+                    wl_msg_box.wl_msg_box_invalid_xml_file(main)
+
+                    return
+        
         if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)

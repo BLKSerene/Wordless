@@ -31,9 +31,7 @@ def wl_process_tokens(text, token_settings):
                         if wl_checking_token.is_token_punc(token):
                             clause[i] = ''
 
-                            text.tags_pos[i_tokens + i] = ''
-                            text.tags_non_pos[i_tokens + i] = ''
-                            text.tags_all[i_tokens + i] = ''
+                            text.tags[i_tokens + i] = ''
 
                     i_tokens += len(clause)
 
