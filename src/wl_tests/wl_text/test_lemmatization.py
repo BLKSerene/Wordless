@@ -17,7 +17,7 @@ import pytest
 
 from wl_tests import wl_test_init, wl_test_lang_examples
 from wl_text import wl_lemmatization, wl_word_tokenization
-from wl_utils import wl_conversion
+from wl_utils import wl_conversion, wl_misc
 
 test_lemmatizers = []
 
@@ -40,7 +40,7 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
     
     lemmas = wl_lemmatization.wl_lemmatize(
         main,
-        tokens = tokens,
+        tokens = wl_misc.flatten_list(tokens),
         lang = lang,
         lemmatizer = lemmatizer
     )
@@ -64,7 +64,7 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
     elif lang == 'eng':
         if lemmatizer == 'Lemmatization Lists - English Lemma List':
             assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'that', 'be', '1', 'speak', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'become', 'a', 'global', 'lingua', 'franca.[4][5', ']']
-        elif lemmatizer in ['NLTK - WordNet Lemmatizer',
+        elif lemmatizer in ['NLTK - WordNet Lematizer',
                             'spaCy - English Lemmatizer']:
             assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'that', 'be', 'first', 'speak', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'become', 'a', 'global', 'lingua', 'franca.[4][5', ']']
     elif lang == 'est':
