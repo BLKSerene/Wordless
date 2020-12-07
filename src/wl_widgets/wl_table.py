@@ -1689,7 +1689,7 @@ class Wl_Table_Tags(Wl_Table):
         super().__init__(main,
                          headers = [
                              main.tr('Type'),
-                             main.tr('Meaning'),
+                             main.tr('Level'),
                              main.tr('Opening Tag'),
                              main.tr('Closing Tag'),
                              main.tr('Preview')
@@ -1780,7 +1780,7 @@ class Wl_Table_Tags(Wl_Table):
 
         return new_item_type
 
-    def _new_item_meaning(self, text = None):
+    def _new_item_level(self, text = None):
         pass
 
     def _new_item_line_edit(self, text = None):
@@ -1815,12 +1815,12 @@ class Wl_Table_Tags(Wl_Table):
 
         if texts:
             self.setCellWidget(self.rowCount() - 1, 0, self._new_item_type(texts[0]))
-            self.setCellWidget(self.rowCount() - 1, 1, self._new_item_meaning(texts[1]))
+            self.setCellWidget(self.rowCount() - 1, 1, self._new_item_level(texts[1]))
             self.setCellWidget(self.rowCount() - 1, 2, self._new_item_line_edit(texts[2]))
             self.setCellWidget(self.rowCount() - 1, 3, self._new_item_line_edit(texts[3]))
         else:
             self.setCellWidget(self.rowCount() - 1, 0, self._new_item_type())
-            self.setCellWidget(self.rowCount() - 1, 1, self._new_item_meaning())
+            self.setCellWidget(self.rowCount() - 1, 1, self._new_item_level())
             self.setCellWidget(self.rowCount() - 1, 2, self._new_item_line_edit())
             self.setCellWidget(self.rowCount() - 1, 3, self._new_item_line_edit())
 
@@ -1830,6 +1830,7 @@ class Wl_Table_Tags(Wl_Table):
         self.cellWidget(self.rowCount() - 1, 4).setReadOnly(True)
 
         self.cellWidget(self.rowCount() - 1, 0).currentTextChanged.connect(self.item_changed)
+        self.cellWidget(self.rowCount() - 1, 1).currentTextChanged.connect(self.item_changed)
         self.cellWidget(self.rowCount() - 1, 2).editingFinished.connect(self.item_changed)
 
         self.blockSignals(False)
@@ -1850,6 +1851,8 @@ class Wl_Table_Tags(Wl_Table):
                 self.removeRow(i)
 
             self.blockSignals(False)
+
+        self.item_changed()
 
     def reset_table(self):
         self.blockSignals(True)
