@@ -15,22 +15,23 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wl_dialogs import wl_msg_box
 from wl_utils import wl_conversion
 from wl_widgets import (wl_box, wl_label, wl_layout, wl_table, wl_tree,
                         wl_widgets)
 
 class Wl_Table_Tags_Header(wl_table.Wl_Table_Tags):
-    def _new_item_meaning(self, text = None):
-        new_item_meaning = wl_box.Wl_Combo_Box(self)
+    def _new_item_level(self, text = None):
+        new_item_level = wl_box.Wl_Combo_Box(self)
 
-        new_item_meaning.addItems([
+        new_item_level.addItems([
             self.tr('Header')
         ])
 
         if text:
-            new_item_meaning.setCurrentText(text)
+            new_item_level.setCurrentText(text)
 
-        return new_item_meaning
+        return new_item_level
 
     def reset_table(self):
         super().reset_table()
@@ -39,18 +40,18 @@ class Wl_Table_Tags_Header(wl_table.Wl_Table_Tags):
             self.add_item(texts = tags)
 
 class Wl_Table_Tags_Body(wl_table.Wl_Table_Tags):
-    def _new_item_meaning(self, text = None):
-        new_item_meaning = wl_box.Wl_Combo_Box(self)
+    def _new_item_level(self, text = None):
+        new_item_level = wl_box.Wl_Combo_Box(self)
 
-        new_item_meaning.addItems([
+        new_item_level.addItems([
             self.tr('Part of Speech'),
             self.tr('Others')
         ])
 
         if text:
-            new_item_meaning.setCurrentText(text)
+            new_item_level.setCurrentText(text)
 
-        return new_item_meaning
+        return new_item_level
 
     def reset_table(self):
         super().reset_table()
@@ -59,19 +60,20 @@ class Wl_Table_Tags_Body(wl_table.Wl_Table_Tags):
             self.add_item(texts = tags)
 
 class Wl_Table_Tags_Xml(wl_table.Wl_Table_Tags):
-    def _new_item_meaning(self, text = None):
-        new_item_meaning = wl_box.Wl_Combo_Box(self)
+    def _new_item_level(self, text = None):
+        new_item_level = wl_box.Wl_Combo_Box(self)
 
-        new_item_meaning.addItems([
+        new_item_level.addItems([
+            self.tr('Division'),
             self.tr('Paragraph'),
             self.tr('Sentence'),
             self.tr('Word')
         ])
 
         if text:
-            new_item_meaning.setCurrentText(text)
+            new_item_level.setCurrentText(text)
 
-        return new_item_meaning
+        return new_item_level
 
     def reset_table(self):
         super().reset_table()
@@ -226,4 +228,23 @@ class Wl_Settings_Tags(wl_tree.Wl_Settings):
         settings['tags']['tags_body'] = self.table_tags_body.get_tags()
         settings['tags']['tags_xml'] = self.table_tags_xml.get_tags()
 
-        return True
+        tag_paragraph = False
+        tag_sentence = False
+        tag_word = False
+
+        for _, level, _, _ in self.main.settings_custom['tags']['tags_xml']:
+            if level == 'Paragraph':
+                tag_paragraph = True
+            if level == 'Sentence':
+                tag_sentence = True
+            if level == 'Word':
+                tag_word = True
+
+        if not tag_paragraph or not tag_sentence or not tag_word:
+            self.table_tags_xml.reset_table()
+
+            wl_msg_box.wl_msg_box_invalid_xml_tags(self.main)
+
+            return False
+        else:
+            return True

@@ -23,7 +23,7 @@ def get_re_tags(main):
 
     for tag_type, _, tag_opening, tag_closing in main.settings_custom['tags']['tags_body']:
         if tag_type == main.tr('Embedded'):
-            tags_embedded.append(fr'{re.escape(tag_opening)}[^{tag_opening[0]}]+?')
+            tags_embedded.append(fr'{re.escape(tag_opening)}[^{tag_opening[0]}]+?(\s|$)')
         elif tag_type == main.tr('Non-embedded'):
             tag_opening = tag_opening.replace('*', '.+?')
             tag_closing = tag_closing.replace('*', '.+?')
