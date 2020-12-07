@@ -25,11 +25,11 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
 
     tokens = [str(token) for token in tokens]
 
-    wl_matching.get_re_tags(main)
+    re_tags = wl_matching.get_re_tags(main)
 
     if tagged == 'Yes':
         tags = [''.join(re.findall(re_tags, token)) for token in tokens]
-        tokens = [re.sub(re_tags_all, '', token) for token in tokens]
+        tokens = [re.sub(re_tags, '', token) for token in tokens]
     else:
         tags = [''] * len(tokens)
 
