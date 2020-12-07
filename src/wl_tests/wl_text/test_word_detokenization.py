@@ -19,7 +19,7 @@ import pytest
 
 from wl_tests import wl_test_init, wl_test_lang_examples
 from wl_text import wl_word_detokenization, wl_word_tokenization
-from wl_utils import wl_conversion
+from wl_utils import wl_conversion, wl_misc
 
 test_word_detokenizers = []
 
@@ -39,6 +39,8 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         text = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}'),
         lang = lang
     )
+    tokens = list(wl_misc.flatten_list(tokens))
+    
     text = wl_word_detokenization.wl_word_detokenize(
         main,
         tokens = tokens,
@@ -74,9 +76,9 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         assert text == 'Le français est une langue indo-européenne de la famille des langues romanes.'
     elif lang == 'deu':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Die deutsche Sprache bzw. Deutsch ([ dɔʏ̯t͡ʃ]; abgekürzt dt . oder dtsch .) ist eine westgermanische Sprache.'
+            assert text == 'Die deutsche Sprache bzw. Deutsch ([ dɔʏ̯t͡ʃ]; abgekürzt dt . oder dtsch .) ist eine westgermanische Sprache.Die deutsche Sprache bzw. Deutsch ([ dɔʏ̯t͡ʃ]; abgekürzt dt . oder dtsch .) ist eine westgermanische Sprache.Die deutsche Sprache bzw. Deutsch ([ dɔʏ̯t͡ʃ]; abgekürzt dt . oder dtsch .) ist eine westgermanische Sprache.Die deutsche Sprache bzw. Deutsch ([ dɔʏ̯t͡ʃ]; abgekürzt dt . oder dtsch .) ist eine westgermanische Sprache.'
         elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
-            assert text == 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ]; abgekürzt dt. oder dtsch.) ist eine westgermanische Sprache.'
+            assert text == 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ];abgekürzt dt.oder dtsch.)ist eine westgermanische Sprache.'
     elif lang == 'ell':
         assert text == 'Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[9] και συγκεκριμένα στον ελληνικό κλάδο, μαζί με την τσακωνική, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.'
     elif lang == 'hun':
@@ -104,7 +106,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         assert text == 'Lietuvių kalba – iš baltų prokalbės kilusi lietuvių tautos kalba, kuri Lietuvoje yra valstybinė, o Europos Sąjungoje – viena iš oficialiųjų kalbų.'
     elif lang == 'pol':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Język polski, polszczyzna, skrót: pol . – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
+            assert text == 'Język polski, polszczyzna, skrót: pol . – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.Język polski, polszczyzna, skrót: pol . – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.Język polski, polszczyzna, skrót: pol . – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
         elif word_detokenizer == 'pol / Sacremoses - Moses Detokenizer':
             assert text == 'Język polski, polszczyzna, skrót: pol. – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
     elif lang == 'por':

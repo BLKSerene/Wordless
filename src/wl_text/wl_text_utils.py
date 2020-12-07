@@ -252,7 +252,7 @@ def check_tokenizers(main, lang, word_tokenizer = 'default'):
         check_spacy_models(main, lang, pipeline = 'tokenization')
     # Tibetan
     elif 'botok' in word_tokenizer:
-        check_botok_tokenizers(main, word_tokenizer = word_tokenizer)
+        check_word_tokenizers(main, lang, word_tokenizer = word_tokenizer)
     # Chinese & Japanese
     elif 'Wordless' in word_tokenizer:
         check_spacy_models(main, 'eng', pipeline = 'tokenization')
