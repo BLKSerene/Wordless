@@ -41,6 +41,7 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
         lang = lang,
         word_tokenizer = word_tokenizer
     )
+    tokens = list(wl_misc.flatten_list(tokens))
 
     if show_results:
         print(f'{lang} / {word_tokenizer}:')
