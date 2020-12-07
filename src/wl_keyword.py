@@ -11,6 +11,7 @@
 
 import collections
 import copy
+import re
 import time
 
 from PyQt5.QtCore import *
@@ -713,6 +714,13 @@ def generate_table(main, table):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading(main, files):
+        for file in files:
+            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
+                if file['tokenized'] == 'No' or file['tagged'] == 'No':
+                    wl_msg_box.wl_msg_box_invalid_xml_file(main)
+
+                    return
+
         ref_file = main.wl_files.find_file_by_name(
             settings['generation_settings']['ref_file'],
             selected_only = True
@@ -811,6 +819,13 @@ def generate_fig(main):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading(main, files):
+        for file in files:
+            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
+                if file['tokenized'] == 'No' or file['tagged'] == 'No':
+                    wl_msg_box.wl_msg_box_invalid_xml_file(main)
+
+                    return
+        
         ref_file = main.wl_files.find_file_by_name(
             settings['generation_settings']['ref_file'],
             selected_only = True
