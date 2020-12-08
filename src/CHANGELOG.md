@@ -61,7 +61,7 @@
 - Dependencies: Upgrade nagisa to 0.2.7
 - Dependencies: Upgrade NetworkX to 2.5
 - Dependencies: Upgrade NLTK to 3.5
-- Dependencies: Upgrade NumPy to 1.19.4
+- Dependencies: Upgrade NumPy to 1.19.3
 - Dependencies: Upgrade openpyxl to 3.0.5
 - Dependencies: Upgrade PyInstaller to 4.1
 - Dependencies: Upgrade pymorphy2 to 0.9.1
