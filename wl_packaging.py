@@ -29,7 +29,7 @@ if platform.system() == 'Windows':
 elif platform.system() == 'Darwin':
     return_val_packaging = subprocess.call('python3 -m PyInstaller --noconfirm wl_packaging.spec', shell = True)
 elif platform.system() == 'Linux':
-    return_val_packaging = subprocess.call('python3.7 -m PyInstaller --noconfirm wl_packaging.spec', shell = True)
+    return_val_packaging = subprocess.call('python3.8 -m PyInstaller --noconfirm wl_packaging.spec', shell = True)
 
 if return_val_packaging == 0:
     print_with_elapsed_time('Packaging done!')
