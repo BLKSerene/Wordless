@@ -976,6 +976,8 @@ def init_settings_default(main):
         },
 
         'data': {
+            'continue_numbering_after_ties': False,
+            
             'precision_decimal': 2,
             'precision_pct': 2,
             'precision_p_value': 5
