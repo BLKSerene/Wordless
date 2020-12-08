@@ -66,7 +66,7 @@
 - Dependencies: Upgrade pymorphy2 to 0.9.1
 - Dependencies: Upgrade PyQt to 5.15.2
 - Dependencies: Upgrade pytest to 6.1.2
-- Dependencies: Upgrade PyThaiNLP to 2.2.4
+- Dependencies: Upgrade PyThaiNLP to 2.2.5
 - Dependencies: Upgrade Python to 3.8.6
 - Dependencies: Upgrade razdel to 0.5.0
 - Dependencies: Upgrade requests to 2.25.0
