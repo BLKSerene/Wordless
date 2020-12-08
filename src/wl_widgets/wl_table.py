@@ -941,17 +941,30 @@ class Wl_Table_Data(Wl_Table):
                 if not self.isRowHidden(row):
                     data_cur = self.item(row, sort_section).read_data()
 
-                    if data_cur == data_prev:
-                        self.item(row, col_rank).val = rank_prev
-                        self.item(row, col_rank).setText(str(rank_prev))
+                    if self.main.settings_custom['data']['continue_numbering_after_ties']:
+                        if data_cur == data_prev:
+                            self.item(row, col_rank).val = rank_prev
+                            self.item(row, col_rank).setText(str(rank_prev))
+                        else:
+                            self.item(row, col_rank).val = rank_next
+                            self.item(row, col_rank).setText(str(rank_next))
+
+                            rank_prev = rank_next
+                            rank_next += 1
+                            
+                        data_prev = data_cur
                     else:
-                        self.item(row, col_rank).val = rank_next
-                        self.item(row, col_rank).setText(str(rank_next))
+                        if data_cur == data_prev:
+                            self.item(row, col_rank).val = rank_prev
+                            self.item(row, col_rank).setText(str(rank_prev))
+                        else:
+                            self.item(row, col_rank).val = rank_next
+                            self.item(row, col_rank).setText(str(rank_next))
 
-                        rank_prev = rank_next
+                            rank_prev = rank_next
 
-                    rank_next += 1
-                    data_prev = data_cur
+                        rank_next += 1
+                        data_prev = data_cur
 
             self.blockSignals(False)
             self.setSortingEnabled(True)
