@@ -21,6 +21,16 @@ class Wl_Settings_Data(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
+        # Rank Settings
+        group_box_rank_settings = QGroupBox(self.tr('Rank Settings'), self)
+
+        self.checkbox_continue_numbering_after_ties = QCheckBox(self.tr('Continue numbering after ties'), self)
+
+        group_box_rank_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_rank_settings.layout().addWidget(self.checkbox_continue_numbering_after_ties, 0, 0)
+
+        group_box_rank_settings.layout().setRowStretch(1, 0)
+
         # Precision Settings
         group_box_precision_settings = QGroupBox(self.tr('Precision Settings'), self)
 
@@ -46,10 +56,11 @@ class Wl_Settings_Data(wl_tree.Wl_Settings):
         group_box_precision_settings.layout().setColumnStretch(2, 1)
 
         self.setLayout(wl_layout.Wl_Layout())
-        self.layout().addWidget(group_box_precision_settings, 0, 0)
+        self.layout().addWidget(group_box_rank_settings, 0, 0)
+        self.layout().addWidget(group_box_precision_settings, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(1, 1)
+        self.layout().setRowStretch(2, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -57,12 +68,16 @@ class Wl_Settings_Data(wl_tree.Wl_Settings):
         else:
             settings = copy.deepcopy(self.main.settings_custom)
 
+        self.checkbox_continue_numbering_after_ties.setChecked(settings['data']['continue_numbering_after_ties'])
+
         self.spin_box_precision_decimal.setValue(settings['data']['precision_decimal'])
         self.spin_box_precision_pct.setValue(settings['data']['precision_pct'])
         self.spin_box_precision_p_value.setValue(settings['data']['precision_p_value'])
 
     def apply_settings(self):
         settings = self.main.settings_custom
+
+        settings['data']['continue_numbering_after_ties'] = self.checkbox_continue_numbering_after_ties.isChecked()
 
         settings['data']['precision_decimal'] = self.spin_box_precision_decimal.value()
         settings['data']['precision_pct'] = self.spin_box_precision_pct.value()

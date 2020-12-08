@@ -14,7 +14,8 @@
 ## [v1.4.0](https://github.com/BLKSerene/Wordless/releases/tag/v1.4.0) - ??/??/2020
 
 ### 🎉 New Features
-- Menu: Add Preferences - Settings - Tags - Header Tag Settings
+- Menu: Add Preferences - Settings - File - Tags - Header Tag Settings
+- Menu: Add Preferences - Settings - Data - Continue numbering after ties
 - Utils: Add botok's Tibetan sentence tokenizer
 - Utils: Add NLTK's NLTK tokenizer
 - Utils: Add PyThaiNLP's maximum matching + TCC (safe mode)
