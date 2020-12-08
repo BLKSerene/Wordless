@@ -16,7 +16,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_text import wl_word_detokenization, wl_lemmatization, wl_word_tokenization
-from wl_utils import wl_conversion, wl_threading
+from wl_utils import wl_conversion, wl_misc, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_table, wl_tree
 
 class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
@@ -36,6 +36,7 @@ class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
                     self.main, line,
                     lang = preview_lang
                 )
+                tokens = wl_misc.flatten_list(tokens)
 
                 lemmas = wl_lemmatization.wl_lemmatize(
                     self.main, tokens,
