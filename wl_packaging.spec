@@ -26,6 +26,8 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('jieba'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('langdetect'))
 # nagisa
 datas.extend(PyInstaller.utils.hooks.collect_data_files('nagisa', include_py_files = True))
+# Python-scfsuite
+datas.extend(PyInstaller.utils.hooks.collect_data_files('pycrfsuite', include_py_files = True))
 # pymorphy2
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_ru'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_uk'))
@@ -36,6 +38,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('sacremoses'))
 # spaCy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_lookups_data'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('da_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('de_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('el_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('en_core_web_sm'))
@@ -45,11 +48,12 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('it_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('lt_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('nb_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('nl_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('pl_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pt_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('ro_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('thinc'))
 # Underthesea
 datas.extend(PyInstaller.utils.hooks.collect_data_files('underthesea'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('languageflow'))
 # wordcloud
 datas.extend(PyInstaller.utils.hooks.collect_data_files('wordcloud'))
 
@@ -57,7 +61,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('wordcloud'))
 datas.extend([
     ('src/imgs', 'imgs'),
     ('src/lemmatization', 'lemmatization'),
-    ('src/stop_words', 'stop_words'),
+    ('src/stop_word_lists', 'stop_word_lists'),
 
     ('src/CHANGELOG.md', '.'),
     ('src/VERSION', '.'),
@@ -109,6 +113,7 @@ hiddenimports = [
     'thinc.neural._custom_kernels',
 
     # spaCy models
+    'da_core_news_sm',
     'de_core_news_sm',
     'el_core_news_sm',
     'en_core_web_sm',
@@ -118,7 +123,9 @@ hiddenimports = [
     'lt_core_news_sm',
     'nb_core_news_sm',
     'nl_core_news_sm',
-    'pt_core_news_sm'
+    'pl_core_news_sm',
+    'pt_core_news_sm',
+    'ro_core_news_sm'
 ]
 
 # Runtime hooks
