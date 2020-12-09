@@ -316,23 +316,21 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
 
                             output.append(cell_text)
 
-                        if settings_concordancer['auto_adjust_placeholder_width']:
-                            pass
-                        else:
-                            output[1] = settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with']
+                        output[1] = settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with']
 
                         if settings_concordancer['add_line_nums']:
                             output.insert(0, f'{i + 1}. ')
 
                         outputs.append(output)
                     else:
-                        if self.table.item(row, col):
-                            cell_text = self.table.item(row, col).text()
-                        else:
-                            cell_text = self.table.cellWidget(row, col).text()
-                            cell_text = wl_text_utils.html_to_text(cell_text)
+                        for j, col in enumerate(range(3)):
+                            if self.table.item(row, col):
+                                cell_text = self.table.item(row, col).text()
+                            else:
+                                cell_text = self.table.cellWidget(row, col).text()
+                                cell_text = wl_text_utils.html_to_text(cell_text)
 
-                        output.append(cell_text)
+                            output.append(cell_text)
 
                     if not settings_concordancer['zapping']:
                         para = doc.add_paragraph(' '.join(output))
@@ -668,14 +666,34 @@ class Wl_Table(QTableWidget):
 
         default_dir = self.main.settings_custom['export']['tables']['default_path']
 
-        (file_path,
-         file_type) = QFileDialog.getSaveFileName(
-            self,
-            self.tr('Export Table'),
-            os.path.join(wl_checking_misc.check_dir(default_dir), 'outputs'),
-            ';;'.join(self.main.settings_global['file_types']['export_tables']),
-            self.main.settings_custom['export']['tables']['default_type']
-        )
+        if self.main.settings_custom['work_area_cur'] == 'Concordancer':
+            if self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
+                (file_path,
+                 file_type) = QFileDialog.getSaveFileName(
+                    self,
+                    self.tr('Export Table'),
+                    os.path.join(wl_checking_misc.check_dir(default_dir), 'outputs'),
+                    self.tr('Word Document (*.docx)'),
+                    self.main.settings_custom['export']['tables']['default_type']
+                )
+            else:
+                (file_path,
+                 file_type) = QFileDialog.getSaveFileName(
+                    self,
+                    self.tr('Export Table'),
+                    os.path.join(wl_checking_misc.check_dir(default_dir), 'outputs'),
+                    ';;'.join(self.main.settings_global['file_types']['export_tables_concordancer']),
+                    self.main.settings_custom['export']['tables']['default_type']
+                )
+        else:
+            (file_path,
+             file_type) = QFileDialog.getSaveFileName(
+                self,
+                self.tr('Export Table'),
+                os.path.join(wl_checking_misc.check_dir(default_dir), 'outputs'),
+                ';;'.join(self.main.settings_global['file_types']['export_tables']),
+                self.main.settings_custom['export']['tables']['default_type']
+            )
 
         if file_path:
             dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Export_Table(self.main)
