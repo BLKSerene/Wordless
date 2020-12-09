@@ -83,8 +83,10 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'custom'):
 
     # Tibetan
     elif pos_tagger == main.tr('botok - Tibetan POS Tagger'):
-        wl_text_utils.check_word_tokenizers(main,
-                                                  lang = 'bod')
+        wl_text_utils.check_word_tokenizers(
+            main,
+            lang = 'bod'
+        )
         tokens = main.botok_word_tokenizer.tokenize(' '.join(tokens))
 
         for token in tokens:
@@ -111,13 +113,17 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'custom'):
                 if tag not in mappings:
                     print(f'Warning: tag "{tag}" is missing from the {wl_conversion.to_lang_text(main, lang)} mapping table!')
 
-            tokens_tagged = [(token, mappings.get(tag, 'X'))
-                             for token, tag in tokens_tagged]
+            tokens_tagged = [
+                (token, mappings.get(tag, 'X'))
+                for token, tag in tokens_tagged
+            ]
 
     # Strip empty tokens and strip whitespace in tokens
-    tokens_tagged = [(token.strip(), tag)
-                     for token, tag in tokens_tagged
-                     if token.strip()]
+    tokens_tagged = [
+        (token.strip(), tag)
+        for token, tag in tokens_tagged
+        if token.strip()
+    ]
 
     # Add the first empty token (if any)
     if first_token_empty:
