@@ -406,6 +406,11 @@ def init_settings_global(main):
 
             'export_tables': [
                 main.tr('CSV File (*.csv)'),
+                main.tr('Excel Workbook (*.xlsx)')
+            ],
+
+            'export_tables_concordancer': [
+                main.tr('CSV File (*.csv)'),
                 main.tr('Excel Workbook (*.xlsx)'),
                 main.tr('Word Document (*.docx)')
             ]
