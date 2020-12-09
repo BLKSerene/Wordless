@@ -43,6 +43,7 @@
 - Utils: Update Stopwords ISO's Greek and Norwegian stop word lists
 
 ### 📌 Bugfixes
+- Menu: Fix Preferences - Settings - POS Tagging
 - Overview: Fix batch processing of a large number of files
 
 ### ❌ Removals
