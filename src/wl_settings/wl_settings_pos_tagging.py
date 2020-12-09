@@ -19,7 +19,7 @@ from PyQt5.QtWidgets import *
 from wl_dialogs import wl_dialog_misc, wl_msg_box
 from wl_tagsets import wl_tagset_universal
 from wl_text import wl_word_tokenization, wl_pos_tagging
-from wl_utils import wl_conversion, wl_threading
+from wl_utils import wl_conversion, wl_misc, wl_threading
 from wl_widgets import wl_box, wl_label, wl_layout, wl_table, wl_tree
 
 class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
@@ -39,6 +39,7 @@ class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
                     self.main, line,
                     lang = preview_lang
                 )
+                tokens = list(wl_misc.flatten_list(tokens))
 
                 tokens_tagged = wl_pos_tagging.wl_pos_tag(
                     self.main, tokens,
@@ -180,7 +181,7 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
                 if self.checkbox_to_universal_pos_tags.isChecked():
                     tagset = 'universal'
                 else:
-                    tagset = 'default'
+                    tagset = 'custom'
 
                 worker_preview_pos_tagger = Wl_Worker_Preview_Pos_Tagger(
                     self.main,
@@ -195,6 +196,8 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
             self.text_edit_pos_tagging_preview_results.clear()
 
     def update_gui(self, preview_samples, preview_results):
+        settings_custom = self.main.settings_custom['pos_tagging']
+
         self.label_pos_tagging_preview_processing.setText('')
 
         self.__dict__[f"combo_box_pos_tagger_{settings_custom['preview_lang']}"].setEnabled(True)
