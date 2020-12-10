@@ -115,13 +115,14 @@ I would like to extend my sincere gratitude to the following open-source project
 2     |[jieba<br>(“结巴”中文分词)](https://github.com/fxsjy/jieba)  |Sun Junyi (孙君意)
 3     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
 4     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Edward Loper, Ewan Klein
-5     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
-6     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
-7     |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
-8     |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
-9     |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
-10    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
-11    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
+5     |[opencc-python](https://github.com/yichen0831/opencc-python)|Huang Yichen, Carbo Kuo (郭家宝)
+6     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
+7     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
+8     |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
+9     |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
+10    |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
+11    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
+12    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
 
 ### Language Data
 
