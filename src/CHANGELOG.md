@@ -50,7 +50,7 @@
 - Utils: Remove grk-stoplist's Greek (Ancient) stop word list
 
 ### ⏫ Dependency Changes
-- Dependencies: Add OpenCC
+- Dependencies: Add opencc-python
 - Dependencies: Remove grk-stoplist
 - Dependencies: Upgrade Beautiful Soup to 4.9.3
 - Dependencies: Upgrade botok to 0.8.1
