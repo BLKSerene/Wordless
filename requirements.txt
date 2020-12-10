@@ -20,7 +20,7 @@ botok == 0.8.1
 jieba == 0.42.1
 nagisa == 0.2.7
 nltk == 3.5
-opencc == 1.1.1
+opencc-python-reimplemented == 0.1.6
 
 ## pymorphy2
 pymorphy2 == 0.9.1
