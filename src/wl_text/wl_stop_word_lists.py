@@ -34,7 +34,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
 
         # Chinese (Traditional)
         if lang_639_1 == 'zh_tw':
-            cc = opencc.OpenCC('s2tw.json')
+            cc = opencc.OpenCC('s2tw')
 
             stop_word_list_zho_cn = wl_get_stop_word_list(
                 main,
