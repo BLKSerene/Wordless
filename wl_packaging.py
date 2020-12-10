@@ -70,6 +70,8 @@ if return_val_packaging == 0:
 
         return_val_test = subprocess.call(os.path.join(os.getcwd(), 'Wordless.exe'), shell = True)
     elif platform.system() == 'Darwin':
+        # See: https://github.com/pyinstaller/pyinstaller/issues/5062#issuecomment-683743556
+        subprocess.call(f"codesign --remove-signature {os.path.join(os.getcwd(), 'dist/Wordless.app/Contents/Macos/Python')}", shell = True)
         return_val_test = subprocess.call(os.path.join(os.getcwd(), 'dist/Wordless.app/Contents/Macos/Wordless'), shell = True)
     elif platform.system() == 'Linux':
         os.chdir('dist/Wordless')
