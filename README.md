@@ -33,13 +33,13 @@ Wordless is an integrated corpus tool with multilingual support for the study of
 </div>
 
 ## Download
-The latest version (**v1.3.0**) of Wordless supports **Windows 7/8.1/10**, **macOS 10.12 or later**, and **Ubuntu 16.04 or later**, all **64-bit only**.
+The latest version (**V1.4.0**) of Wordless supports **Windows 7/8.1/10**, **macOS 10.11 or later**, and **Ubuntu 16.04 or later**, all **64-bit only**.
 
-[Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/v1.3.0/wordless_v1.3.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
-[Download the latest version for macOS](https://github.com/BLKSerene/Wordless/releases/download/v1.3.0/wordless_v1.3.0_macos.zip) (unzip the file and double-click **Wordless.app** to run)<br>
-[Download the latest version for Linux](https://github.com/BLKSerene/Wordless/releases/download/v1.3.0/wordless_v1.3.0_linux.tar.gz) (unzip the file and double-click **Wordless/Wordless** to run)
+[Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/V1.4.0/wordless_v1.4.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
+[Download the latest version for macOS](https://github.com/BLKSerene/Wordless/releases/download/V1.4.0/wordless_v1.4.0_macos.zip) (unzip the file and double-click **Wordless.app** to run)<br>
+[Download the latest version for Linux](https://github.com/BLKSerene/Wordless/releases/download/V1.4.0/wordless_v1.4.0_linux.tar.gz) (unzip the file, open terminal, change directory ("cd .../Wordless") to the Wordless folder, and then run "./Wordless" **Wordless/Wordless** to run)
 
-Chinese users with slow connections to Github can [download from Baidu Netdisk](https://pan.baidu.com/s/1_a48gC_2WFMo0GzkyUZCHw) (**password**: 4jpu).
+Chinese users with slow connections to Github can [download from Baidu Netdisk](https://pan.baidu.com/s/19iaHb6xPRy5XD6DAl5rclg) (**password**: myjx).
 
 [Download older versions](https://github.com/BLKSerene/Wordless/releases)
 
