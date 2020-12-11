@@ -37,7 +37,7 @@ The latest version (**V1.4.0**) of Wordless supports **Windows 7/8.1/10**, **mac
 
 [Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/V1.4.0/wordless_v1.4.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
 [Download the latest version for macOS](https://github.com/BLKSerene/Wordless/releases/download/V1.4.0/wordless_v1.4.0_macos.zip) (unzip the file and double-click **Wordless.app** to run)<br>
-[Download the latest version for Linux](https://github.com/BLKSerene/Wordless/releases/download/V1.4.0/wordless_v1.4.0_linux.tar.gz) (unzip the file, open terminal, change directory ("cd .../Wordless") to the Wordless folder, and then run "./Wordless" **Wordless/Wordless** to run)
+[Download the latest version for Linux](https://github.com/BLKSerene/Wordless/releases/download/V1.4.0/wordless_v1.4.0_linux.tar.gz) (unzip the file, open terminal, change directory (**cd .../Wordless**) to the Wordless folder, and then run **./Wordless**)
 
 Chinese users with slow connections to Github can [download from Baidu Netdisk](https://pan.baidu.com/s/19iaHb6xPRy5XD6DAl5rclg) (**password**: myjx).
 
