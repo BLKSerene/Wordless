@@ -92,7 +92,7 @@ class Wl_Main(QMainWindow):
         self.ver_major, self.ver_minor, self.ver_patch = wl_misc.split_wl_ver(self.ver)
 
         # Title
-        self.setWindowTitle(self.tr(f'Wordless v{self.ver}'))
+        self.setWindowTitle(self.tr(f'Wordless V{self.ver}'))
 
         # Icon
         self.setWindowIcon(QIcon(wl_misc.get_normalized_path('imgs/wl_icon.ico')))
