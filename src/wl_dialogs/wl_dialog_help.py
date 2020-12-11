@@ -658,7 +658,7 @@ class Wl_Dialog_About(wl_dialog.Wl_Dialog_Info):
             self.tr('''
                 <hr>
                 <div style="text-align: center;">
-                    Copyright (C) 2018-2019 Ye Lei (<span style="font-family: simsun">叶磊</span>)<br>
+                    Copyright (C) 2018-2020 Ye Lei (<span style="font-family: simsun">叶磊</span>)<br>
                     Licensed Under GNU GPLv3<br>
                     All Other Rights Reserved
                 </div>
