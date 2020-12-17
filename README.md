@@ -156,4 +156,3 @@ I would like to extend my sincere gratitude to the following open-source project
 9     |[python-docx](https://github.com/python-openxml/python-docx)    |Steve Canny
 10    |[requests](https://python-requests.org)                         |Kenneth Reitz
 11    |[SciPy](https://www.scipy.org)                                  |SciPy Developers
-12    |[xlrd](https://github.com/python-excel/xlrd)                    |Stephen John Machin
