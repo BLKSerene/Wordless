@@ -505,7 +505,7 @@ File Types|File Extensions
 ----------|--------------
 Text File               |\*.txt
 Microsoft Word Document |\*.docx
-Microsoft Excel Workbook|\*.xls, \*.xlsx
+Microsoft Excel Workbook|\*.xlsx
 CSV File                |\*.csv
 HTML Page               |\*.htm, \*.html
 XML File                |\*.xml
