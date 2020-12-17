@@ -11,6 +11,15 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
+## [V1.5.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.5.0) - ??/??/2021
+
+### ❌ Removals
+- File Area: Remove support for .xls files
+
+### ⏫ Dependency Changes
+- Remove xlrd
+
+
 ## [V1.4.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.4.0) - 12/11/2020
 
 ### 🎉 New Features
@@ -80,6 +89,7 @@
 - Dependencies: Upgrade Underthesea to 1.2.2
 - Dependencies: Upgrade WordCloud to 1.8.1
 
+
 ## [V1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.3.0) - 11/30/2019
 
 ### 🎉 New Features
@@ -136,6 +146,7 @@
 - Dependencies: Upgrade underthesea to 1.1.17
 - Dependencies: Upgrade WordCloud to 1.6.0
 
+
 ## [V1.2.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.2.0) - 08/27/2019
 
 ### 🎉 New Features
@@ -187,6 +198,7 @@
 - Dependencies: Upgrade spaCy to 2.1.8
 - Dependencies: Upgrade Underthesea to 1.1.16
 
+
 ## [V1.1.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.1.0) - 03/31/2019
 
 ### 🎉 New Features
@@ -213,6 +225,7 @@
 - Dependencies: Upgrade PyQt to 5.12.1
 - Dependencies: Upgrade Sacremoses to 0.0.13
 - Dependencies: Upgrade spaCy to 2.1.3
+
 
 ## [V1.0.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.0.0) - 03/20/2019
 
