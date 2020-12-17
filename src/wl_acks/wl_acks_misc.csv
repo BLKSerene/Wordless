@@ -9,4 +9,3 @@ openpyxl|https://openpyxl.readthedocs.io/en/stable/|3.0.5|Eric Gazoni, Charlie C
 python-docx|https://github.com/python-openxml/python-docx|0.8.10|Steve Canny|MIT|https://github.com/python-openxml/python-docx/blob/master/LICENSE
 requests|https://requests.readthedocs.io/|2.25.0|Kenneth Reitz|Apache-2.0|https://github.com/requests/requests/blob/master/LICENSE
 SciPy|https://scipy.org/scipylib/|1.5.4|SciPy Developers|BSD-3-Clause|https://github.com/scipy/scipy/blob/master/LICENSE.txt
-xlrd|https://github.com/python-excel/xlrd|1.2.0|Stephen John Machin|BSD-3-Clause/BSD-4-Clause|https://github.com/python-excel/xlrd/blob/master/LICENSE
