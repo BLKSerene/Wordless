@@ -395,7 +395,7 @@ def init_settings_global(main):
             'files': [
                 main.tr('Text File (*.txt)'),
                 main.tr('Word Document (*.docx)'),
-                main.tr('Excel Workbook (*.xls; *.xlsx)'),
+                main.tr('Excel Workbook (*.xlsx)'),
                 main.tr('CSV File(*.csv)'),
                 main.tr('HTML Page (*.htm; *.html)'),
                 main.tr('XML File (*.xml)'),
