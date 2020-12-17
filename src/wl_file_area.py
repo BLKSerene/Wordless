@@ -28,7 +28,6 @@ from docx.oxml.text.paragraph import CT_P
 from docx.table import _Cell, Table
 from docx.text.paragraph import Paragraph
 import openpyxl
-import xlrd
 
 from wl_checking import wl_checking_file, wl_checking_misc
 from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
@@ -104,15 +103,6 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                                     for row in worksheet.rows:
                                         f.write('\t'.join([(cell.value if cell.value != None else '')
                                                            for cell in row]) + '\n')
-                        elif file_ext == '.xls':
-                            with open(new_path, 'w', encoding = default_encoding) as f:
-                                workbook = xlrd.open_workbook(file_path)
-
-                                for i_sheet in range(workbook.nsheets):
-                                    worksheet = workbook.sheet_by_index(i_sheet)
-
-                                    for row in range(worksheet.nrows):
-                                        f.write('\t'.join([worksheet.cell_value(row, col) for col in range(worksheet.ncols)]) + '\n')
 
                         new_paths = [new_path]
                     else:
