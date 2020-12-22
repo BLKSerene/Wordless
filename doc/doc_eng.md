@@ -30,7 +30,7 @@
     - 4.4 [Supported Measures](#doc-eng-4-4)
         - 4.4.1 [Measures of Dispersion & Adjusted Frequency](#doc-eng-4-4-1)
         - 4.4.2 [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-2)
-- 5 [Works Cited](#doc-eng-5)
+- 5 [References](#doc-eng-5)
 
 <span id="doc-eng-1"></span>
 ## 1 Main Window [[Back to Contents]](#doc-eng)
@@ -928,92 +928,96 @@ Measures of Effect Size|Formulas
 Pointwise Mutual Information [[20]](#doc-eng-supported-measures-works-cited-20)|![Pointwise Mutual Information](/doc/measures/effect_size/pmi.gif)
 Mutual Dependency            [[21]](#doc-eng-supported-measures-works-cited-21)|![Mutual Dependency](/doc/measures/effect_size/md.gif)
 Log-Frequency Biased MD      [[21]](#doc-eng-supported-measures-works-cited-21)|![Log-Frequency Biased MD](/doc/measures/effect_size/lfmd.gif)
-Cubic Association Ratio      [[22]](#doc-eng-supported-measures-works-cited-22)|![Cubic Association Ratio](/doc/measures/effect_size/im3.gif)
-MI.log-f                     [[23]](#doc-eng-supported-measures-works-cited-23)|![MI.log-f](/doc/measures/effect_size/mi_log_f.gif)
-Mutual Information           [[24]](#doc-eng-supported-measures-works-cited-24)|![Mutual Information](/doc/measures/effect_size/mi.gif)
-Squared Phi Coefficient      [[25]](#doc-eng-supported-measures-works-cited-25)|![Squared Phi Coefficient](/doc/measures/effect_size/squared_phi_coeff.gif)
-Dice's Coefficient           [[26]](#doc-eng-supported-measures-works-cited-26)|![Dice's Coefficient](/doc/measures/effect_size/dices_coeff.gif)
-logDice                      [[27]](#doc-eng-supported-measures-works-cited-27)|![logDice](/doc/measures/effect_size/log_dice.gif)
-Mutual Expectation           [[28]](#doc-eng-supported-measures-works-cited-28)|![Mutual Expectation](/doc/measures/effect_size/me.gif)
+Cubic Association Ratio      [[22]](#doc-eng-supported-measures-works-cited-22)[[23]](#doc-eng-supported-measures-works-cited-23)|![Cubic Association Ratio](/doc/measures/effect_size/im3.gif)
+MI.log-f                     [[24]](#doc-eng-supported-measures-works-cited-24)[[25]](#doc-eng-supported-measures-works-cited-25)|![MI.log-f](/doc/measures/effect_size/mi_log_f.gif)
+Mutual Information           [[26]](#doc-eng-supported-measures-works-cited-26)|![Mutual Information](/doc/measures/effect_size/mi.gif)
+Squared Phi Coefficient      [[27]](#doc-eng-supported-measures-works-cited-27)|![Squared Phi Coefficient](/doc/measures/effect_size/squared_phi_coeff.gif)
+Dice's Coefficient           [[28]](#doc-eng-supported-measures-works-cited-28)|![Dice's Coefficient](/doc/measures/effect_size/dices_coeff.gif)
+logDice                      [[29]](#doc-eng-supported-measures-works-cited-29)|![logDice](/doc/measures/effect_size/log_dice.gif)
+Mutual Expectation           [[30]](#doc-eng-supported-measures-works-cited-30)|![Mutual Expectation](/doc/measures/effect_size/me.gif)
 Jaccard Index                [[24]](#doc-eng-supported-measures-works-cited-24)|![Jaccard Index](/doc/measures/effect_size/jaccard_index.gif)
-Minimum Sensitivity          [[29]](#doc-eng-supported-measures-works-cited-29)|![Minimum Sensitivity](/doc/measures/effect_size/min_sensitivity.gif)
-Poisson Collocation Measure  [[30]](#doc-eng-supported-measures-works-cited-30)|![Poisson Collocation Measure](/doc/measures/effect_size/poisson_collocation_measure.gif)
-Kilgarriff's Ratio           [[31]](#doc-eng-supported-measures-works-cited-31)|![Kilgarriff's Ratio](/doc/measures/effect_size/kilgarriffs_ratio.gif)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings → Measures →<br>Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
-Odds Ratio                   [[32]](#doc-eng-supported-measures-works-cited-32)|![Odds Ratio](/doc/measures/effect_size/odds_ratio.gif)
-Log Ratio                    [[33]](#doc-eng-supported-measures-works-cited-33)|![Log Ratio](/doc/measures/effect_size/log_ratio.gif)
-Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[[34]](#doc-eng-supported-measures-works-cited-34)|![Difference Coefficient](/doc/measures/effect_size/diff_coeff.gif)
-%DIFF                        [[35]](#doc-eng-supported-measures-works-cited-35)|![%DIFF](/doc/measures/effect_size/pct_diff.gif)
+Minimum Sensitivity          [[31]](#doc-eng-supported-measures-works-cited-34)|![Minimum Sensitivity](/doc/measures/effect_size/min_sensitivity.gif)
+Poisson Collocation Measure  [[32]](#doc-eng-supported-measures-works-cited-32)|![Poisson Collocation Measure](/doc/measures/effect_size/poisson_collocation_measure.gif)
+Kilgarriff's Ratio           [[33]](#doc-eng-supported-measures-works-cited-33)|![Kilgarriff's Ratio](/doc/measures/effect_size/kilgarriffs_ratio.gif)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings → Measures →<br>Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
+Odds Ratio                   [[34]](#doc-eng-supported-measures-works-cited-34)|![Odds Ratio](/doc/measures/effect_size/odds_ratio.gif)
+Log Ratio                    [[35]](#doc-eng-supported-measures-works-cited-35)|![Log Ratio](/doc/measures/effect_size/log_ratio.gif)
+Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[[36]](#doc-eng-supported-measures-works-cited-36)|![Difference Coefficient](/doc/measures/effect_size/diff_coeff.gif)
+%DIFF                        [[37]](#doc-eng-supported-measures-works-cited-37)|![%DIFF](/doc/measures/effect_size/pct_diff.gif)
 
 <span id="doc-eng-5"></span>
-## 5 Works Cited [[Back to Contents]](#doc-eng)
+## 5 References [[Back to Contents]](#doc-eng)
 
 <span id="doc-eng-supported-measures-works-cited-1"></span>
-[1] Juilland, Alphonse, and Eugenio Chang-Rodriguez. *Frequency Dictionary of Spanish Words*. Mouton, 1964.<br>
+[1] Juilland, A., & Chang-Rodriguez, E. (1964). Frequency dictionary of spanish words. Mouton.<br>
 <span id="doc-eng-supported-measures-works-cited-2"></span>
-[2] Carroll, John B. “An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index.” *Computer Studies in the Humanities and Verbal Behaviour*, vol.3, no. 2, 1970, pp. 61-65.<br>
+[2] Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. *Computer Studies in the Humanities and Verbal Behaviour*, *3*(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x<br>
 <span id="doc-eng-supported-measures-works-cited-3"></span>
-[3] Lyne, Anthony A. “Dispersion.” *The Vocabulary of French Business Correspondence: Word Frequencies, Collocations, and Problems of Lexicometric Method*. Slatkine/Champion, 1985, pp. 101-24.<br>
+[3] Lyne, A. A. (1985). Dispersion. In *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine/Champion.<br>
 <span id="doc-eng-supported-measures-works-cited-4"></span>
-[4] Rosengren, Inger. “The quantitative concept of language and its relation to the structure of frequency dictionaries.” *Études de linguistique appliquée*, no. 1, 1971, pp. 103-27.<br>
+[4] Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.<br>
 <span id="doc-eng-supported-measures-works-cited-5"></span>
-[5] Zhang Huarui, et al. “Distributional Consistency: As a General Method for Defining a Core Lexicon.” *Proceedings of Fourth International Conference on Language Resources and Evaluation*, 26-28 May 2004, edited by Maria Teresa Lino et al., European Language Resources Association, 2004, pp. 1119-22.<br>
+[5] Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>
 <span id="doc-eng-supported-measures-works-cited-6"></span>
-[6] Gries, Stefan Th. “Dispersions and Adjusted Frequencies in Corpora.” *International Journal of Corpus Linguistics*, vol. 13, no. 4, 2008, pp. 403-37.<br>
+[6] Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri<br>
 <span id="doc-eng-supported-measures-works-cited-7"></span>
-[7] Lijffijt, Jefrey, and Stefan Th. Gries. “Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”” *International Journal of Corpus Linguistics*, vol. 17, no. 1, 2012, pp. 147-49.<br>
+[7] Lijffijt, J., & Gries, S. T. (2012). Correction to Stefan Th. Gries’ “dispersions and adjusted frequencies in corpora” *International Journal of Corpus Linguistics*, *17*(1), 147–149. https://doi.org/10.1075/ijcl.17.1.08lij<br>
 <span id="doc-eng-supported-measures-works-cited-8"></span>
-[8] Engwall, Gunnel. *Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français*. 1974. Stockholm U, PhD dissertation.<br>
+[8] Engwall, G. (1974). Fréquence et distribution du vocabulaire dans un choix de romans français [Unpublished doctoral dissertation]. Stockholm University.<br>
 <span id="doc-eng-supported-measures-works-cited-9"></span>
-[9] Kromer, Victor. “A Usage Measure Based on Psychophysical Relations.” *Journal of Quatitative Linguistics*, vol. 10, no. 2, 2003, pp. 177-186.<br>
+[9] Kromer, V. (2003). A usage measure based on psychophysical relations. *Journal of Quatitative Linguistics*, *10*(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718<br>
 <span id="doc-eng-supported-measures-works-cited-10"></span>
-[10] Dennis, S. F. “The Construction of a Thesaurus Automatically from a Sample of Text.” *Proceedings of the Symposium on Statistical Association Methods For Mechanized Documentation*, 17 Mar. 1964, edited by M. E. Stevens et al., National Bureau of Standards, 1965, pp. 61-148.<br>
+[10] Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), *Proceedings of the symposium on statistical association methods for mechanized documentation* (pp. 61–148). National Bureau of Standards.<br>
 <span id="doc-eng-supported-measures-works-cited-11"></span>
-[11] Berry-rogghe, Godelieve L. M. “The Computation of Collocations and their Relevance in Lexical Studies.” *The computer and literary studies*, edited by A. J. Aitken, Edinburgh UP, 1973, pp. 103-112.<br>
+[11] Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), *The computer and literary studies* (pp. 103–112). Edinburgh University Press.<br>
 <span id="doc-eng-supported-measures-works-cited-12"></span>
-[12] Church, Kenneth Ward, et al. “Using Statistics in Lexical Analysis.” *Lexical Acquisition: Exploiting On-Line Resources to Build a Lexicon*, edited by Uri Zernik, Psychology Press, 1991, pp. 115-64.<br>
+[12] Church, K., Gale, W, Hanks P, & Hindle D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), *Lexical acquisition: Exploiting on-line resources to build a lexicon* (pp. 115–164). Psychology Press.<br>
 <span id="doc-eng-supported-measures-works-cited-13"></span>
-[13] Paquot, Magali, and Yves Bestgen. “Distinctive Words in Academic Writing: A Comparison of Three Statistical Tests for Keyword Extraction.” *Language and Computers*, vol.68, 2009, pp. 247-269.<br>
+[13] Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction *Language and Computers*, *68*, 247–269.<br>
 <span id="doc-eng-supported-measures-works-cited-14"></span>
-[14] Hofland, Knut, and Stig Johansson. *Word Frequencies in British and American English*. Norwegian Computing Centre for the Humanities, 1982.<br>
+[14] Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.<br>
 <span id="doc-eng-supported-measures-works-cited-15"></span>
-[15] Oakes, Michael P. *Statistics for Corpus Linguistics*. Edinburgh UP, 1998.<br>
+[15] Oakes, M. P. (1998). *Statistics for Corpus Linguistics*. Edinburgh University Press.<br>
 <span id="doc-eng-supported-measures-works-cited-16"></span>
-[16] Dunning, Ted Emerson. “Accurate Methods for the Statistics of Surprise and Coincidence.” *Computational Linguistics*, vol. 19, no. 1, Mar. 1993, pp. 61-74.<br>
+[16] Dunning, T. E. (1993). Finding structure in text, genome and other symbolic sequences. *Computational Linguistics*, *19*(1), 61–74.<br>
 <span id="doc-eng-supported-measures-works-cited-17"></span>
-[17] Pedersen, Ted. “Fishing for Exactness.” *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference*, 27-29 Oct. 1996, edited by Tom Winn, The South-Central Regional SAS Users' Group, 1996, pp. 188-200.<br>
+[17] Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference* (pp. 188-200). The South–Central Regional SAS Users' Group.<br>
 <span id="doc-eng-supported-measures-works-cited-18"></span>
-[18] Kilgarriff, Adam. “Comparing Corpora.” *International Journal of Corpus Linguistics*, vol.6, no.1, Nov. 2001, pp. 232-263.<br>
+[18] Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil<br>
 <span id="doc-eng-supported-measures-works-cited-19"></span>
-[19] Wilson, Andrew. “Embracing Bayes Factors for Key Item Analysis in Corpus Linguistics.” *New Approaches to the Study of Linguistic Variability*, edited by Markus Bieswanger and Amei Koll-Stobbe, Peter Lang, 2013, pp. 3-11.<br>
+[19] Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger, & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
 <span id="doc-eng-supported-measures-works-cited-20"></span>
-[20] Church, Kenneth Ward, and Patrick Hanks. “Word Association Norms, Mutual Information, and Lexicography.” *Computational Linguistics*, vol. 16, no. 1, Mar. 1990, pp. 22-29.<br>
+[20] Church, K. W., & Hanks, P. (1990). Word association norms, mutual information, and lexicography. *Computational Linguistics*, *16*(1), 22–29.<br>
 <span id="doc-eng-supported-measures-works-cited-21"></span>
-[21] Thanopoulos, Aristomenis, et al. “Comparative Evaluation of Collocation Extraction Metrics.” *Proceedings of the Third International Conference on Language Resources and Evaluation*, 29-31 May 2002, edited by Manuel González Rodríguez and Carmen Paz Suarez Araujo, European Language Resources Association, May 2002, pp. 620-25.<br>
+[21] Thanopoulos, A, Fakotakis, N., Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
 <span id="doc-eng-supported-measures-works-cited-22"></span>
-[22] Daille, Béatrice. “Combined Approach for Terminology Extraction: Lexical Statistics and Linguistic Filtering.” *UCREL Technical Papers*, vol. 5, Lancaster U, 1995.<br>
+[22] Daille, B. (1994). Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques [Doctoral thesis, Université Paris 7]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid=<br>
 <span id="doc-eng-supported-measures-works-cited-23"></span>
-[23] “Statistics used in Sketch Engine.” Sketch Engine, https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/. Accessed 26 Nov 2018.<br>
+[23] Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. UCREL technical papers (Vol. 5). Lancaster University.<br>
 <span id="doc-eng-supported-measures-works-cited-24"></span>
-[24] Dunning, Ted Emerson. *Finding Structure in Text, Genome and Other Symbolic Sequences.* 1998. U of Sheffield, PhD dissertation. *arXiv*, arxiv.org/pdf/1207.1847.pdf.<br>
+[24] Lexical Computing Ltd. (2015, July 8). Statistics used in Sketch Engine. Retrieved November 26, 2018 from https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/<br>
 <span id="doc-eng-supported-measures-works-cited-25"></span>
-[25] Church, Kenneth Ward, and William A. Gale. “Concordances for Parallel Text.” *Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research*, St. Catherine's College, 29 Sept - 1 Oct 1991, UW Centre for the New OED and Text Research, 1991.<br>
+[25] Kilgarriff, A., & Tugwell, D. (2002). WASP-bench – an MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In *Proceedings of the 8th Machine Translation Summit* (pp. 187–190). European Association for Machine Translation.<br>
 <span id="doc-eng-supported-measures-works-cited-26"></span>
-[26] Smadja, Frank, et al. “Translating Collocations for Bilingual Lexicons: A Statistical Approach.” *Computational Linguistics*, vol. 22, no. 1, 1996, pp. 1-38.<br>
+[26] Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf<br>
 <span id="doc-eng-supported-measures-works-cited-27"></span>
-[27] Rychlý, Pavel. “A Lexicographyer-Friendly Association Score.” *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*, 5-7 Dec. 2008, edited by P. Sojka and A. Horák, Masaryk U, 2008, pp. 6-9.<br>
+[27] Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.<br>
 <span id="doc-eng-supported-measures-works-cited-28"></span>
-[28] Dias, Gaël, et al. “Language Independent Automatic Acquisition of Rigid Multiword Units from Unrestricted Text Corpora.” *Proceedings of Conférence Traitement Au-tomatique des Langues Naturelles*, 12-17 July 1999, edited by Ruslan Mitkov and Jong C. Park, 1999, pp. 333-39.<br>
+[28] Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. *Computational Linguistics*, *22*(1), pp. 1–38.<br>
 <span id="doc-eng-supported-measures-works-cited-29"></span>
-[29] Pedersen, Ted. “Dependent Bigram Identification.” *Proceedings of the Fifteenth National Conference on Artificial Intelligence*, 26-30 July 1998, AAAI P, 1998, p. 1197.<br>
+[29] Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka, & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University<br>
 <span id="doc-eng-supported-measures-works-cited-30"></span>
-[30] Quasthoff, Uwe, and Christian Wolff. “The Poisson Collocation Measure and Its Applications.” *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*, 2002, IEEE, 2002.<br>
+[30] Dias, G., Guilloré, S., & Pereira Lopes, J. G. (1999). Language independent automatic acquisition of rigid multiword units from unrestricted text corpora. In A. Condamines, C. Fabre, & M. Péry-Woodley (Eds.), *TALN'99: 6ème Conférence Annuelle Sur le Traitement Automatique des Langues Naturelles* (pp. 333–339). TALN.<br>
 <span id="doc-eng-supported-measures-works-cited-31"></span>
-[31] Kilgarriff, Adam. “Simple Maths for Keywords.” *Proceedings of the Corpus Linguistics Conference 2009*, 20-23 July 2009, edited by Michaela Mahlberg et al., U of Liverpool, July 2009, p. 171.<br>
+[31] Pedersen, T. (1998). Dependent bigram identification. In *Proceedings of the Fifteenth National Conference on Artificial Intelligence* (p. 1197). AAAI Press.<br>
 <span id="doc-eng-supported-measures-works-cited-32"></span>
-[32] Pojanapunya, Punjaporn, and Richard Watson Todd. “Log-likelihood and Odds Ratio Keyness Statistics for Different Purposes of Keyword Analysis.” *Corpus Linguistics and Lingustic Theory*, vol. 15, no. 1, Jan. 2016, pp. 133-67.<br>
+[32] Quasthoff, U, & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.<br>
 <span id="doc-eng-supported-measures-works-cited-33"></span>
-[33] Hardie, Andrew. “Log Ratio: An Informal Introduction.” The Centre for Corpus Approaches to Social Science, 28 Apr. 2014, http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.<br>
+[33] Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009* (p. 171). University of Liverpool.<br>
 <span id="doc-eng-supported-measures-works-cited-34"></span>
-[34] Gabrielatos, Costas. “Keyness Analysis: Nature, Metrics and Techniques.” *Corpus Approaches to Discourse: A Critical Review*, edited by Charlotte Taylor and Anna Marchi, Routledge, 2018.<br>
+[34] Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Lingustic Theory*, *15*(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030<br>
 <span id="doc-eng-supported-measures-works-cited-35"></span>
-[35] Gabrielatos, Costas, and Anna Marchi. “Keyness: Appropriate Metrics and Practical Issues.” *Proceedings of CADS International Conference 2012*, 13-14 Sept. 2012, U of Bologna, 2012.
+[35] Hardie, A. (2014, April 28). Log ratio: An informal introduction. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.<br>
+<span id="doc-eng-supported-measures-works-cited-36"></span>
+[36] Gabrielatos, C. (2018). Keyness analysis: Nature, metrics and techniques. In C. Taylor & A. Marchi (Eds.), *Corpus approaches to discourse: A critical review* (pp. 225–258). Routledge.<br>
+<span id="doc-eng-supported-measures-works-cited-37"></span>
+[37] Gabrielatos, C., & Marchi, A. (2012, September 13–14). Keyness: Appropriate metrics and practical issues [Conference session]. CADS International Conference 2012, University of Bologna, Italy.
