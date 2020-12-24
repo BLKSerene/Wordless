@@ -135,11 +135,11 @@ class Wl_Combo_Box_Font_Size(Wl_Combo_Box):
         super().__init__(parent)
 
         self.FONT_SIZES = {
-            'Extra Small': 8,
-            'Small': 10,
-            'Medium (Recommended)': 12,
-            'Large': 14,
-            'Extra Large': 16
+            'Extra Small': 10,
+            'Small': 12,
+            'Medium (Recommended)': 14,
+            'Large': 16,
+            'Extra Large': 18
         }
 
         self.main = wl_misc.find_wl_main(parent)
