@@ -742,11 +742,13 @@ def init_settings_global(main):
 
             'zho_cn': [
                 main.tr('jieba - Chinese Word Tokenizer'),
+                main.tr('pkuseg - Chinese Word Tokenizer'),
                 main.tr('Wordless - Chinese Character Tokenizer')
             ],
 
             'zho_tw': [
                 main.tr('jieba - Chinese Word Tokenizer'),
+                main.tr('pkuseg - Chinese Word Tokenizer'),
                 main.tr('Wordless - Chinese Character Tokenizer')
             ],
 
