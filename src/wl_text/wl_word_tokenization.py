@@ -10,6 +10,7 @@
 #
 
 import jieba
+import pkuseg
 import nltk
 import nltk.tokenize.nist
 import pythainlp
@@ -93,6 +94,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                 tokens_multilevel.append([token.value for token in sentence])
     # Chinese & Japanese
     elif ('jieba' in word_tokenizer or
+          'pkuseg' in word_tokenizer or
           'nagisa' in word_tokenizer or
           'Wordless' in word_tokenizer):
         sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang = lang)
@@ -101,6 +103,11 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         if word_tokenizer == main.tr('jieba - Chinese Word Tokenizer'):
             for sentence in sentences:
                 tokens_multilevel.append(jieba.lcut(sentence))
+        elif word_tokenizer == main.tr('pkuseg - Chinese Word Tokenizer'):
+            seg = pkuseg.pkuseg()
+
+            for sentence in sentences:
+                tokens_multilevel.append(seg.cut(sentence))
         elif word_tokenizer == main.tr('Wordless - Chinese Character Tokenizer'):
             for sentence in sentences:
                 tokens = []
