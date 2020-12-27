@@ -12,7 +12,7 @@
 <div align="center"><img src="/doc/wl_logo.png" alt="logo"></div>
 
 ---
-Wordless is an integrated corpus tool with multilingual support for the study of language, literature, and translation designed and developed by Ye Lei (叶磊), MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
+Wordless is an integrated corpus tool with multilingual support for the study of language, literature, and translation designed and developed by Ye Lei (叶磊), then MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
 
 <div align="center">
     <a href="https://ci.appveyor.com/project/BLKSerene/wordless">
@@ -116,13 +116,14 @@ I would like to extend my sincere gratitude to the following open-source project
 3     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
 4     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Edward Loper, Ewan Klein
 5     |[opencc-python](https://github.com/yichen0831/opencc-python)|Huang Yichen, Carbo Kuo (郭家宝)
-6     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
-7     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
-8     |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
-9     |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
-10    |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
-11    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
-12    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
+6     |[pkuseg](https://github.com/lancopku/pkuseg-python)         |Ruixuan Luo, Jingjing Xu, Yi Zhang,<br>Xuancheng Ren, Xu Sun
+7     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
+8     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
+9     |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
+10    |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
+11    |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
+12    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
+13    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
 
 ### Language Data
 

@@ -13,10 +13,14 @@
 
 ## [V1.5.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.5.0) - ??/??/2021
 
+### 🎉 New Features
+- Utils: Add pkuseg's Chinese word tokenizer
+
 ### ❌ Removals
 - File Area: Remove support for .xls files
 
 ### ⏫ Dependency Changes
+- Add pkuseg
 - Remove xlrd
 
 
