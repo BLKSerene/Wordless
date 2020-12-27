@@ -893,7 +893,7 @@ def init_settings_default(main):
         'general': {
             'font_settings': {
                 'font_family': 'Arial',
-                'font_size': 12
+                'font_size': 14
             },
 
             'update_settings': {
@@ -1063,8 +1063,8 @@ def init_settings_default(main):
                 'ben': main.tr('spaCy - Bengali Word Tokenizer'),
                 'bul': main.tr('spaCy - Bulgarian Word Tokenizer'),
                 'cat': main.tr('spaCy - Catalan Word Tokenizer'),
-                'zho_cn': main.tr('jieba - Chinese Word Tokenizer'),
-                'zho_tw': main.tr('jieba - Chinese Word Tokenizer'),
+                'zho_cn': main.tr('pkuseg - Chinese Word Tokenizer'),
+                'zho_tw': main.tr('pkuseg - Chinese Word Tokenizer'),
                 'hrv': main.tr('spaCy - Croatian Word Tokenizer'),
                 'ces': main.tr('spaCy - Czech Word Tokenizer'),
                 'dan': main.tr('spaCy - Danish Word Tokenizer'),
