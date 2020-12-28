@@ -3,7 +3,7 @@
 #
 # Wordless: Requirements
 #
-# Copyright (C) 2018-2020  Ye Lei (叶磊)
+# Copyright (C) 2018-2021  Ye Lei (叶磊)
 #
 # This source file is licensed under GNU GPLv3.
 # For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
@@ -18,7 +18,7 @@ pytest
 # ---------- NLP ----------
 botok == 0.8.1
 jieba == 0.42.1
-pkuseg == 0.0.25
+pkuseg
 nagisa == 0.2.7
 nltk == 3.5
 opencc-python-reimplemented == 0.1.6
