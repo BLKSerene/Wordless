@@ -59,7 +59,11 @@ def detect_encoding(main, file_path):
             success = False
         
     try:
-        open(file_path, 'r', encoding = encoding)
+        text = ''
+
+        with open(file_path, 'r', encoding = encoding) as f:
+            for line in f:
+                text += line
     except:
         success = False
 

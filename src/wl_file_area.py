@@ -40,8 +40,8 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
     def run(self):
         new_files = []
 
-        files_detection_error_encoding = []
-        files_detection_error_lang = []
+        files_detect_error_encoding = []
+        files_detect_error_lang = []
 
         if self.file_paths:
             len_file_paths = len(self.file_paths)
@@ -59,16 +59,18 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                 # Text files
                 if file_ext == '.txt':
                     (new_file,
-                     detection_success_encoding,
-                     detection_success_lang) = self.main.wl_files._new_file(file_path)
+                     detect_pass_encoding,
+                     detect_pass_lang) = self.main.wl_files._new_file(file_path)
 
-                    new_files.append(new_file)
+                    # Only load files that can be successfully decoded
+                    if detect_pass_encoding:
+                        new_files.append(new_file)
 
-                    if not detection_success_encoding:
-                        files_detection_error_encoding.append(new_file['path'])
+                    if not detect_pass_encoding:
+                        files_detect_error_encoding.append(new_file['path'])
 
-                    if not detection_success_lang:
-                        files_detection_error_lang.append(new_file['path'])
+                    if not detect_pass_lang:
+                        files_detect_error_lang.append(new_file['path'])
                 else:
                     if file_ext in ['.docx', '.xlsx', '.xls']:
                         new_path = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
@@ -178,16 +180,18 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
                     for new_path in new_paths:
                         (new_file,
-                         detection_success_encoding,
-                         detection_success_lang) = self.main.wl_files._new_file(new_path, txt = False)
+                         detect_pass_encoding,
+                         detect_pass_lang) = self.main.wl_files._new_file(new_path, txt = False)
 
-                        new_files.append(new_file)
+                        # Only load files that can be successfully decoded
+                        if detect_pass_encoding:
+                            new_files.append(new_file)
 
-                        if not detection_success_encoding:
-                            files_detection_error_encoding.append(new_file['path'])
+                        if not detect_pass_encoding:
+                            files_detect_error_encoding.append(new_file['path'])
 
-                        if not detection_success_lang:
-                            files_detection_error_lang.append(new_file['path'])
+                        if not detect_pass_lang:
+                            files_detect_error_lang.append(new_file['path'])
 
             self.main.settings_custom['import']['files']['default_path'] = wl_misc.get_normalized_dir(self.file_paths[0])
 
@@ -196,8 +200,8 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
         time.sleep(0.1)
 
         self.worker_done.emit(new_files,
-                              files_detection_error_encoding,
-                              files_detection_error_lang)
+                              files_detect_error_encoding,
+                              files_detect_error_lang)
 
     # python-docx/Issue #276: https://github.com/python-openxml/python-docx/issues/276
     def iter_block_items(self, parent):
@@ -261,12 +265,13 @@ class Wl_Files():
     def _new_file(self, file_path, txt = True):
         new_file = {}
 
-        detection_success_encoding = True
-        detection_success_lang = True
+        detect_pass_encoding = True
+        detect_pass_lang = True
 
         new_file['selected'] = True
 
         new_file['path'] = file_path
+
         if new_file['path'].endswith('.txt'):
             new_file['tokenized'] = 'No'
             new_file['tagged'] = 'No'
@@ -280,54 +285,69 @@ class Wl_Files():
         # Detect encodings
         if self.main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
             (new_file['encoding'],
-             detection_success_encoding) = wl_detection.detect_encoding(self.main, new_file['path'])
+             detect_pass_encoding) = wl_detection.detect_encoding(self.main, new_file['path'])
         else:
             new_file['encoding'] = self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
 
         # Detect languages
         if self.main.settings_custom['files']['auto_detection_settings']['detect_langs']:
             (new_file['lang'],
-             detection_success_lang) = wl_detection.detect_lang(self.main, new_file)
+             detect_pass_lang) = wl_detection.detect_lang(self.main, new_file)
         else:
             new_file['lang'] = self.main.settings_custom['auto_detection']['default_settings']['default_lang']
-
-        # Remove header tags
-        tags_header = []
 
         if txt:
             default_dir = wl_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
             new_file['path'] = re.sub(r'^.+?\\([^\\]+?$)', fr'{re.escape(default_dir)}\\\1', file_path)
             new_file['path'] = wl_checking_misc.check_new_path(new_file['path'])
 
-        for _, _, tag_opening, _ in self.main.settings_custom['tags']['tags_header']:
-            tags_header.append(tag_opening[1:-1])
+        # Strip header tags only if encoding detection is successful
+        if detect_pass_encoding:
+            tags_header = []
 
-        text = ''
+            for _, _, tag_opening, _ in self.main.settings_custom['tags']['tags_header']:
+                tags_header.append(tag_opening[1:-1])
 
-        with open(file_path, 'r', encoding = new_file['encoding']) as f:
-            for line in f:
-                text += line
+            # For user-defined encodings
+            try:
+                text = ''
 
-        # The "lxml" parser will add <html><body> to the text, which is undesirable
-        with open(new_file['path'], 'w', encoding = 'utf_8') as f:
-            soup = bs4.BeautifulSoup(text, features = 'html.parser')
+                with open(file_path, 'r', encoding = new_file['encoding']) as f:
+                    for line in f:
+                        text += line
 
-            for tag_header in tags_header:
-                for header_element in soup.select(tag_header):
-                    header_element.decompose()
+                # The "lxml" parser will add <html><body> to the text, which is undesirable
+                with open(new_file['path'], 'w', encoding = 'utf_8') as f:
+                    soup = bs4.BeautifulSoup(text, features = 'html.parser')
 
-            f.write(str(soup))
+                    for tag_header in tags_header:
+                        for header_element in soup.select(tag_header):
+                            header_element.decompose()
+
+                    f.write(str(soup))
+            except:
+                detect_pass_encoding = False
+
+            # The "lxml" parser will add <html><body> to the text, which is undesirable
+            with open(new_file['path'], 'w', encoding = 'utf_8') as f:
+                soup = bs4.BeautifulSoup(text, features = 'html.parser')
+
+                for tag_header in tags_header:
+                    for header_element in soup.select(tag_header):
+                        header_element.decompose()
+
+                f.write(str(soup))
         
         return (new_file,
-                detection_success_encoding,
-                detection_success_lang)
+                detect_pass_encoding,
+                detect_pass_lang)
 
     @wl_misc.log_timing
     def open_files(self, file_paths):
         def update_gui(
             new_files,
-            files_detection_error_encoding,
-            files_detection_error_lang
+            files_detect_error_encoding,
+            files_detect_error_lang
         ):
             len_files_old = len(self.main.settings_custom['files']['files_open'])
 
@@ -337,10 +357,10 @@ class Wl_Files():
 
                 self.main.settings_custom['files']['files_open'].append(new_file)
 
-            wl_dialog_error.wl_dialog_error_detection(
+            wl_dialog_error.wl_dialog_error_detect(
                 self.main,
-                files_detection_error_encoding,
-                files_detection_error_lang
+                files_detect_error_encoding,
+                files_detect_error_lang
             )
 
             self.update_table()
