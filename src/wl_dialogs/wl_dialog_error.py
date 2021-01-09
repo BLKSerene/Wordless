@@ -266,10 +266,10 @@ def wl_dialog_error_file_load_colligation(main,
 
         dialog_error_file_load_colligation.open()
 
-class Wl_Dialog_Error_Detection(Wl_Dialog_Error):
+class Wl_Dialog_Error_Detect(Wl_Dialog_Error):
     def __init__(self, main,
-                 files_detection_error_encoding,
-                 files_detection_error_lang):
+                 files_detect_error_encoding,
+                 files_detect_error_lang):
         super().__init__(main, main.tr('Detection Error'),
                          width = DIALOG_ERROR_WIDTH,
                          height = DIALOG_ERROR_HEIGHT)
@@ -277,7 +277,7 @@ class Wl_Dialog_Error_Detection(Wl_Dialog_Error):
         self.label_error = wl_label.Wl_Label_Dialog(
             self.tr('''
                 <div>
-                    An error occurred during auto-detection. Please set the settings of the following files manually.
+                    An error occurred during auto-detection. Please check the following file(s) and try again or select the settings manually.
                 </div>
             '''),
             self
@@ -296,13 +296,13 @@ class Wl_Dialog_Error_Detection(Wl_Dialog_Error):
 
         self.button_export.clicked.connect(self.table_error_files.export_all)
 
-        for file in files_detection_error_encoding:
+        for file in files_detect_error_encoding:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
 
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Encoding Detection')))
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
 
-        for file in files_detection_error_lang:
+        for file in files_detect_error_lang:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
 
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Language Detection')))
@@ -311,17 +311,17 @@ class Wl_Dialog_Error_Detection(Wl_Dialog_Error):
         self.wrapper_info.layout().addWidget(self.label_error, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_error_files, 1, 0)
 
-def wl_dialog_error_detection(main,
-                              files_detection_error_encoding,
-                              files_detection_error_lang):
-    if files_detection_error_encoding or files_detection_error_lang:
-        dialog_error_detection = Wl_Dialog_Error_Detection(
+def wl_dialog_error_detect(main,
+                           files_detect_error_encoding,
+                           files_detect_error_lang):
+    if files_detect_error_encoding or files_detect_error_lang:
+        dialog_error_detect = Wl_Dialog_Error_Detect(
             main,
-            files_detection_error_encoding,
-            files_detection_error_lang
+            files_detect_error_encoding,
+            files_detect_error_lang
         )
 
-        dialog_error_detection.open()
+        dialog_error_detect.open()
 
 class Wl_Dialog_Error_Import(Wl_Dialog_Error):
     def __init__(self, main,
