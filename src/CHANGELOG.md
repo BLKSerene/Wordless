@@ -17,6 +17,7 @@
 - Utils: Add pkuseg's Chinese word tokenizer
 
 ### ❌ Removals
+- File Area: Remove support for .lrc files
 - File Area: Remove support for .xls files
 
 ### ⏫ Dependency Changes
