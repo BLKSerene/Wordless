@@ -501,8 +501,8 @@ Other Languages      |⭕️ |⭕️ |⭕️ |✖️|✖️|✖️
 <span id="doc-eng-4-2"></span>
 ### 4.2 Supported File Types [[Back to Contents]](#doc-eng)
 
-File Types|File Extensions
-----------|--------------
+File Type               |File Extension(s)
+------------------------|-----------------
 Text File               |\*.txt
 Microsoft Word Document |\*.docx
 Microsoft Excel Workbook|\*.xlsx
@@ -510,9 +510,8 @@ CSV File                |\*.csv
 HTML Page               |\*.htm, \*.html
 XML File                |\*.xml
 Translation Memory File |\*.tmx
-Lyrics File             |\*.lrc
 
-\* Microsoft 97-03 Word documents (\*.doc) are not supported.<br>
+\* Microsoft 97-03 Word documents (\*.doc) and Microsoft 97-03 Excel Workbooks (\*.xls) are not supported.<br>
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/Import/**). You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
 
 <span id="doc-eng-4-3"></span>
