@@ -176,38 +176,6 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
                             new_paths = [path_src, path_target]
 
-                        # Lyrics files
-                        elif file_ext == '.lrc':
-                            lyrics = {}
-
-                            with open(file_path, 'r', encoding = encoding_code) as f:
-                                for line in f:
-                                    time_tags = []
-
-                                    line = line.strip()
-
-                                    # Strip time tags
-                                    while re.search(r'^\[[^\]]+?\]', line):
-                                        time_tags.append(re.search(r'^\[[^\]]+?\]', line).group())
-
-                                        line = line[len(time_tags[-1]):].strip()
-
-                                    # Strip word time tags
-                                    line = re.sub(r'<[^>]+?>', r'', line)
-                                    line = re.sub(r'\s{2,}', r' ', line).strip()
-
-                                    for time_tag in time_tags:
-                                        if re.search(r'^\[[0-9]{2}:[0-5][0-9]\.[0-9]{2}\]$', time_tag):
-                                            lyrics[time_tag] = line
-
-                            new_path = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
-
-                            with open(new_path, 'w', encoding = default_encoding) as f:
-                                for _, lyrics in sorted(lyrics.items()):
-                                    f.write(f'{lyrics}\n')
-
-                            new_paths = [new_path]
-
                     for new_path in new_paths:
                         (new_file,
                          detection_success_encoding,
