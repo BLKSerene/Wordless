@@ -774,6 +774,13 @@ z-score:
         \text{z} = \frac{O_{11} - E_{11}}{\sqrt{E_{11} \times (1 - \frac{E_{11}}{O_{xx}}))}}
     \end{align*}
 
+Berry-Rogghe's z-score:
+    \begin{align*}
+        \text{p} &= \frac{C_{x1}}{C_{xx} - C_{1x}} \\
+        \text{E} &= p \times C_{1x} \times S \\
+        \text{z} &= \frac{C_{11} - E}{\sqrt{E \times (1 - p)}}
+    \end{align*}
+
 Student's t-test (One-sample):
     \begin{align*}
         \text{t} = \frac{O_{11} - E_{11}}{\sqrt{O_{11} \times (1 - \frac{O_{11}}{O_{xx}}))}}
@@ -801,13 +808,14 @@ Then the statistical significance, bayes factor and effect size will be calculat
 
 Tests of Statistical Significance|Formulas
 ---------------------------------|--------
-z-score                       [[10]](#doc-eng-supported-measures-works-cited-10)[[11]](#doc-eng-supported-measures-works-cited-11)|![z-score](/doc/measures/statistical_significance/z_score.gif)
-Student's t-test (One-sample) [[12]](#doc-eng-supported-measures-works-cited-12)|![Student's t-test (One-sample)](/doc/measures/statistical_significance/students_t_test_1_sample.gif)
-Student's t-test (Two-sample) [[13]](#doc-eng-supported-measures-works-cited-13)|![Student's t-test (Two-sample)](/doc/measures/statistical_significance/students_t_test_2_sample.gif)
-Pearson's Chi-squared Test    [[14]](#doc-eng-supported-measures-works-cited-14)[[15]](#doc-eng-supported-measures-works-cited-15)|![Pearson's Chi-squared Test](/doc/measures/statistical_significance/pearsons_chi_squared_test.gif)
+z-score                       [[10]](#doc-eng-supported-measures-works-cited-10)|![z-score](/doc/measures/statistical_significance/z_score.gif)
+Berry-Rogghe’s z-score        [[11]](#doc-eng-supported-measures-works-cited-11)|![Berry-Rogghe’s z-score](/doc/measures/statistical_significance/berry_rogghes_z_score.gif)<br>where **S** is the span size on either side of the node word.
+Student’s t-test (One-sample) [[12]](#doc-eng-supported-measures-works-cited-12)|![Student's t-test (One-sample)](/doc/measures/statistical_significance/students_t_test_1_sample.gif)
+Student’s t-test (Two-sample) [[13]](#doc-eng-supported-measures-works-cited-13)|![Student's t-test (Two-sample)](/doc/measures/statistical_significance/students_t_test_2_sample.gif)
+Pearson’s Chi-squared Test    [[14]](#doc-eng-supported-measures-works-cited-14)[[15]](#doc-eng-supported-measures-works-cited-15)|![Pearson's Chi-squared Test](/doc/measures/statistical_significance/pearsons_chi_squared_test.gif)
 Log-likelihood Ratio          [[16]](#doc-eng-supported-measures-works-cited-16)|![Log-likelihood Ratio](/doc/measures/statistical_significance/log_likehood_ratio_test.gif)
-Fisher's Exact Test           [[17]](#doc-eng-supported-measures-works-cited-17)|See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
-Mann-Whitney U Test          [[18]](#doc-eng-supported-measures-works-cited-18)|See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
+Fisher’s Exact Test           [[17]](#doc-eng-supported-measures-works-cited-17)|See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
+Mann-Whitney U Test           [[18]](#doc-eng-supported-measures-works-cited-18)|See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
 
 <!--
 Student's t-test (Two-sample):
@@ -827,7 +835,7 @@ Log-likelihood Ratio:
 
 Measures of Bayes Factor|Formulas
 ------------------------|--------
-Student's t-test (Two-sample) [[19]](#doc-eng-supported-measures-works-cited-19)|![Student's t-test (Two-sample)](/doc/measures/bayes_factor/students_t_test_2_sample.gif)
+Student’s t-test (Two-sample) [[19]](#doc-eng-supported-measures-works-cited-19)|![Student's t-test (Two-sample)](/doc/measures/bayes_factor/students_t_test_2_sample.gif)
 Log-likelihood Ratio          [[19]](#doc-eng-supported-measures-works-cited-19)|![Log-likelihood Ratio](/doc/measures/bayes_factor/log_likehood_ratio_test.gif)
 
 <!--
@@ -931,13 +939,13 @@ Cubic Association Ratio      [[22]](#doc-eng-supported-measures-works-cited-22)[
 MI.log-f                     [[24]](#doc-eng-supported-measures-works-cited-24)[[25]](#doc-eng-supported-measures-works-cited-25)|![MI.log-f](/doc/measures/effect_size/mi_log_f.gif)
 Mutual Information           [[26]](#doc-eng-supported-measures-works-cited-26)|![Mutual Information](/doc/measures/effect_size/mi.gif)
 Squared Phi Coefficient      [[27]](#doc-eng-supported-measures-works-cited-27)|![Squared Phi Coefficient](/doc/measures/effect_size/squared_phi_coeff.gif)
-Dice's Coefficient           [[28]](#doc-eng-supported-measures-works-cited-28)|![Dice's Coefficient](/doc/measures/effect_size/dices_coeff.gif)
+Dice’s Coefficient           [[28]](#doc-eng-supported-measures-works-cited-28)|![Dice's Coefficient](/doc/measures/effect_size/dices_coeff.gif)
 logDice                      [[29]](#doc-eng-supported-measures-works-cited-29)|![logDice](/doc/measures/effect_size/log_dice.gif)
 Mutual Expectation           [[30]](#doc-eng-supported-measures-works-cited-30)|![Mutual Expectation](/doc/measures/effect_size/me.gif)
 Jaccard Index                [[24]](#doc-eng-supported-measures-works-cited-24)|![Jaccard Index](/doc/measures/effect_size/jaccard_index.gif)
 Minimum Sensitivity          [[31]](#doc-eng-supported-measures-works-cited-34)|![Minimum Sensitivity](/doc/measures/effect_size/min_sensitivity.gif)
 Poisson Collocation Measure  [[32]](#doc-eng-supported-measures-works-cited-32)|![Poisson Collocation Measure](/doc/measures/effect_size/poisson_collocation_measure.gif)
-Kilgarriff's Ratio           [[33]](#doc-eng-supported-measures-works-cited-33)|![Kilgarriff's Ratio](/doc/measures/effect_size/kilgarriffs_ratio.gif)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings → Measures →<br>Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
+Kilgarriff’s Ratio           [[33]](#doc-eng-supported-measures-works-cited-33)|![Kilgarriff's Ratio](/doc/measures/effect_size/kilgarriffs_ratio.gif)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings → Measures →<br>Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
 Odds Ratio                   [[34]](#doc-eng-supported-measures-works-cited-34)|![Odds Ratio](/doc/measures/effect_size/odds_ratio.gif)
 Log Ratio                    [[35]](#doc-eng-supported-measures-works-cited-35)|![Log Ratio](/doc/measures/effect_size/log_ratio.gif)
 Difference Coefficient       [[14]](#doc-eng-supported-measures-works-cited-14)[[36]](#doc-eng-supported-measures-works-cited-36)|![Difference Coefficient](/doc/measures/effect_size/diff_coeff.gif)
