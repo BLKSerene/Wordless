@@ -17,6 +17,9 @@
 - Utils: Add pkuseg's Chinese word tokenizer
 - Work Area: Add Collocation/Colligation - Generation Settings - Test of Statistical Significance - Berry-Rogghe’s z-score
 
+### 📌 Bugfixes
+- Work Area: Fix Concordancer - Generate Figure
+
 ### ❌ Removals
 - File Area: Remove support for .lrc files
 - File Area: Remove support for .xls files
