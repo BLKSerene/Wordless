@@ -11,8 +11,6 @@
 
 import math
 
-# Reference:
-#     Wilson, Andrew. "Embracing Bayes Factors for Key Item Analysis in Corpus Linguistics." New Approaches to the Study of Linguistic Variability, edited by Markus Bieswanger and Amei Koll-Stobbe, Peter Lang, 2013, pp. 3-11.
 def bayes_factor_t_test(t_statistic, number_sections):
     return t_statistic ** 2 - math.log(number_sections, math.e)
 
