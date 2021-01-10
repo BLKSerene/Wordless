@@ -1,0 +1,50 @@
+#
+# Wordless: CI - Github Actions
+#
+# Copyright (C) 2018-2021  Ye Lei (叶磊)
+#
+# This source file is licensed under GNU GPLv3.
+# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+#
+# All other rights reserved.
+#
+
+name: Tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+        python-version: [3.8]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+        architecture: 'x64'
+
+    - name: Check Python version
+      run: python -c "import sys; print(sys.version)"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install numpy
+        pip install -r requirements.txt
+
+    - name: Run Tests
+      run: |
+        cd src
+        pytest wl_tests/wl_text/test_sentence_tokenization.py
+        pytest wl_tests/wl_text/test_word_tokenization.py
+        pytest wl_tests/wl_text/test_word_detokenization.py
+        pytest wl_tests/wl_text/test_pos_tagging.py
+        pytest wl_tests/wl_text/test_lemmatization.py
+        pytest wl_tests/wl_text/test_stop_words.py
+        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
