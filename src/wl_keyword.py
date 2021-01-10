@@ -125,8 +125,8 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
 
         self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 7, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 8, 0, 1, 2)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 9, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 8, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
 
         # Generation Settings
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
