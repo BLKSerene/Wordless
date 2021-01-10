@@ -104,10 +104,28 @@ def wl_widgets_token_settings(parent):
     )
 
 def wl_widgets_token_settings_concordancer(parent):
+    def ignore_tags_changed():
+        if checkbox_ignore_tags.isChecked():
+            checkbox_use_tags.setEnabled(False)
+        else:
+            checkbox_use_tags.setEnabled(True)
+
+    def use_tags_changed():
+        if checkbox_use_tags.isChecked():
+            checkbox_ignore_tags.setEnabled(False)
+        else:
+            checkbox_ignore_tags.setEnabled(True)
+
     checkbox_puncs = QCheckBox(parent.tr('Punctuations'), parent)
 
     checkbox_ignore_tags = QCheckBox(parent.tr('Ignore tags'), parent)
     checkbox_use_tags = QCheckBox(parent.tr('Use tags only'), parent)
+
+    checkbox_ignore_tags.stateChanged.connect(ignore_tags_changed)
+    checkbox_use_tags.stateChanged.connect(use_tags_changed)
+
+    ignore_tags_changed()
+    use_tags_changed()
 
     return (
         checkbox_puncs,
