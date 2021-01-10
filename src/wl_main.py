@@ -506,7 +506,7 @@ class Wl_Main(QMainWindow):
             elif platform.system() == 'Darwin':
                 subprocess.Popen(['python3', wl_misc.get_normalized_path(__file__)])
             elif platform.system() == 'Linux':
-                subprocess.Popen(['python3.7', wl_misc.get_normalized_path(__file__)])
+                subprocess.Popen(['python3.8', wl_misc.get_normalized_path(__file__)])
 
         self.save_settings()
         sys.exit(0)
