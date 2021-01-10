@@ -1070,32 +1070,29 @@ def generate_table(main, table):
     settings = main.settings_custom['collocation']
     files = main.wl_files.get_selected_files()
 
-    if wl_checking_file.check_files_on_loading(main, files):
-        for file in files:
-            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
-                if file['tokenized'] == 'No' or file['tagged'] == 'No':
-                    wl_msg_box.wl_msg_box_invalid_xml_file(main)
+    for file in files:
+        if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
+            if file['tokenized'] == 'No' or file['tagged'] == 'No':
+                wl_msg_box.wl_msg_box_invalid_xml_file(main)
 
-                    return
-        
-        if (not settings['search_settings']['search_settings'] or
-            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
-            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+                return
+    
+    if (not settings['search_settings']['search_settings'] or
+        not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
+        settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
-            worker_collocation_table = Wl_Worker_Collocation_Table(
-                main,
-                dialog_progress = dialog_progress,
-                update_gui = update_gui
-            )
+        worker_collocation_table = Wl_Worker_Collocation_Table(
+            main,
+            dialog_progress = dialog_progress,
+            update_gui = update_gui
+        )
 
-            thread_collocation_table = wl_threading.Wl_Thread(worker_collocation_table)
-            thread_collocation_table.start_worker()
-        else:
-            wl_msg_box.wl_msg_box_missing_search_term_optional(main)
-
-            wl_msg.wl_msg_generate_table_error(main)
+        thread_collocation_table = wl_threading.Wl_Thread(worker_collocation_table)
+        thread_collocation_table.start_worker()
     else:
+        wl_msg_box.wl_msg_box_missing_search_term_optional(main)
+
         wl_msg.wl_msg_generate_table_error(main)
 
 @wl_misc.log_timing
@@ -1220,30 +1217,27 @@ def generate_fig(main):
     settings = main.settings_custom['collocation']
     files = main.wl_files.get_selected_files()
 
-    if wl_checking_file.check_files_on_loading(main, files):
-        for file in files:
-            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
-                if file['tokenized'] == 'No' or file['tagged'] == 'No':
-                    wl_msg_box.wl_msg_box_invalid_xml_file(main)
+    for file in files:
+        if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
+            if file['tokenized'] == 'No' or file['tagged'] == 'No':
+                wl_msg_box.wl_msg_box_invalid_xml_file(main)
 
-                    return
-        
-        if (not settings['search_settings']['search_settings'] or
-            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
-            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+                return
+    
+    if (not settings['search_settings']['search_settings'] or
+        not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
+        settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
-            worker_collocation_fig = Wl_Worker_Collocation_Fig(
-                main,
-                dialog_progress = dialog_progress,
-                update_gui = update_gui
-            )
+        worker_collocation_fig = Wl_Worker_Collocation_Fig(
+            main,
+            dialog_progress = dialog_progress,
+            update_gui = update_gui
+        )
 
-            thread_collocation_fig = wl_threading.Wl_Thread(worker_collocation_fig)
-            thread_collocation_fig.start_worker()
-        else:
-            wl_msg_box.wl_msg_box_missing_search_term_optional(main)
-
-            wl_msg.wl_msg_generate_fig_error(main)
+        thread_collocation_fig = wl_threading.Wl_Thread(worker_collocation_fig)
+        thread_collocation_fig.start_worker()
     else:
+        wl_msg_box.wl_msg_box_missing_search_term_optional(main)
+
         wl_msg.wl_msg_generate_fig_error(main)
