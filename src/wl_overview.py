@@ -36,8 +36,8 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Count of Paragraphs %'),
                 parent.tr('Count of Sentences'),
                 parent.tr('Count of Sentences %'),
-                parent.tr('Count of Clauses'),
-                parent.tr('Count of Clauses %'),
+                parent.tr('Count of Sentence Segments'),
+                parent.tr('Count of Sentence Segments %'),
                 parent.tr('Count of Tokens'),
                 parent.tr('Count of Tokens %'),
                 parent.tr('Count of Types'),
@@ -48,14 +48,14 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Type-Token Ratio (Standardized)'),
                 parent.tr('Paragraph Length in Sentence (Mean)'),
                 parent.tr('Paragraph Length in Sentence (Standard Deviation)'),
-                parent.tr('Paragraph Length in Clause (Mean)'),
-                parent.tr('Paragraph Length in Clause (Standard Deviation)'),
+                parent.tr('Paragraph Length in Sentence Segment (Mean)'),
+                parent.tr('Paragraph Length in Sentence Segment (Standard Deviation)'),
                 parent.tr('Paragraph Length in Token (Mean)'),
                 parent.tr('Paragraph Length in Token (Standard Deviation)'),
                 parent.tr('Sentence Length in Token (Mean)'),
                 parent.tr('Sentence Length in Token (Standard Deviation)'),
-                parent.tr('Clause Length in Token (Mean)'),
-                parent.tr('Clause Length in Token (Standard Deviation)'),
+                parent.tr('Sentence Segment Length in Token (Mean)'),
+                parent.tr('Sentence Segment Length in Token (Standard Deviation)'),
                 parent.tr('Token Length in Character (Mean)'),
                 parent.tr('Token Length in Character (Standard Deviation)'),
                 parent.tr('Type Length in Character (Mean)'),
@@ -65,7 +65,7 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
             headers_int = [
                 parent.tr('Count of Paragraphs'),
                 parent.tr('Count of Sentences'),
-                parent.tr('Count of Clauses'),
+                parent.tr('Count of Sentence Segments'),
                 parent.tr('Count of Tokens'),
                 parent.tr('Count of Types'),
                 parent.tr('Count of Characters')
@@ -75,14 +75,14 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Type-Token Ratio (Standardized)'),
                 parent.tr('Paragraph Length in Sentence (Mean)'),
                 parent.tr('Paragraph Length in Sentence (Standard Deviation)'),
-                parent.tr('Paragraph Length in Clause (Mean)'),
-                parent.tr('Paragraph Length in Clause (Standard Deviation)'),
+                parent.tr('Paragraph Length in Sentence Segment (Mean)'),
+                parent.tr('Paragraph Length in Sentence Segment (Standard Deviation)'),
                 parent.tr('Paragraph Length in Token (Mean)'),
                 parent.tr('Paragraph Length in Token (Standard Deviation)'),
                 parent.tr('Sentence Length in Token (Mean)'),
                 parent.tr('Sentence Length in Token (Standard Deviation)'),
-                parent.tr('Clause Length in Token (Mean)'),
-                parent.tr('Clause Length in Token (Standard Deviation)'),
+                parent.tr('Sentence Segment Length in Token (Mean)'),
+                parent.tr('Sentence Segment Length in Token (Standard Deviation)'),
                 parent.tr('Token Length in Character (Mean)'),
                 parent.tr('Token Length in Character (Standard Deviation)'),
                 parent.tr('Type Length in Character (Mean)'),
@@ -91,7 +91,7 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
             headers_pct = [
                 parent.tr('Count of Paragraphs %'),
                 parent.tr('Count of Sentences %'),
-                parent.tr('Count of Clauses %'),
+                parent.tr('Count of Sentence Segments %'),
                 parent.tr('Count of Tokens %'),
                 parent.tr('Count of Types %'),
                 parent.tr('Count of Characters %')
@@ -101,8 +101,8 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Count of Paragraphs %'),
                 parent.tr('Count of Sentences'),
                 parent.tr('Count of Sentences %'),
-                parent.tr('Count of Clauses'),
-                parent.tr('Count of Clauses %'),
+                parent.tr('Count of Sentence Segments'),
+                parent.tr('Count of Sentence Segments %'),
                 parent.tr('Count of Tokens'),
                 parent.tr('Count of Tokens %'),
                 parent.tr('Count of Types'),
@@ -329,10 +329,10 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                 for text in texts
                 for offset in text.offsets_sentences
             ]
-            text_total.offsets_clauses = [
+            text_total.offsets_sentence_segs = [
                 offset
                 for text in texts
-                for offset in text.offsets_clauses
+                for offset in text.offsets_sentence_segs
             ]
             text_total.tokens_multilevel = [
                 para
@@ -358,28 +358,28 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
 
             # Paragraph length
             len_paras_in_sentence = [len(para) for para in text.tokens_multilevel]
-            len_paras_in_clause = [
+            len_paras_in_sentence_seg = [
                 sum([len(sentence) for sentence in para])
                 for para in text.tokens_multilevel
             ]
             len_paras_in_token = [
-                sum([len(clause) for sentence in para for clause in sentence])
+                sum([len(sentence_seg) for sentence in para for sentence_seg in sentence])
                 for para in text.tokens_multilevel
             ]
 
             # Sentence length
             len_sentences = [
-                sum([len(clause) for clause in sentence])
+                sum([len(sentence_seg) for sentence_seg in sentence])
                 for para in text.tokens_multilevel
                 for sentence in para
             ]
 
-            # Clause length
-            len_clauses = [
-                len(clause)
+            # Sentence segment length
+            len_sentence_segs = [
+                len(sentence_seg)
                 for para in text.tokens_multilevel
                 for sentence in para
-                for clause in sentence
+                for sentence_seg in sentence
             ]
 
             # Token length
@@ -417,10 +417,10 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                 sttr = sum(ttrs) / len(ttrs)
 
             texts_stats_file.append(len_paras_in_sentence)
-            texts_stats_file.append(len_paras_in_clause)
+            texts_stats_file.append(len_paras_in_sentence_seg)
             texts_stats_file.append(len_paras_in_token)
             texts_stats_file.append(len_sentences)
-            texts_stats_file.append(len_clauses)
+            texts_stats_file.append(len_sentence_segs)
             texts_stats_file.append(len_tokens)
             texts_stats_file.append(len_types)
             texts_stats_file.append(ttr)
@@ -458,17 +458,17 @@ def generate_table(main, table):
 
             count_paras_total = len(texts_stats_files[-1][0])
             count_sentences_total = len(texts_stats_files[-1][3])
-            count_clauses_total = len(texts_stats_files[-1][4])
+            count_sentence_segs_total = len(texts_stats_files[-1][4])
             count_tokens_total = len(texts_stats_files[-1][5])
             count_types_total = len(texts_stats_files[-1][6])
             count_chars_total = sum(texts_stats_files[-1][5])
 
             for i, stats in enumerate(texts_stats_files):
                 len_paras_in_sentence = stats[0]
-                len_paras_in_clause = stats[1]
+                len_paras_in_sentence_seg = stats[1]
                 len_paras_in_token = stats[2]
                 len_sentences = stats[3]
-                len_clauses = stats[4]
+                len_sentence_segs = stats[4]
                 len_tokens = stats[5]
                 len_types = stats[6]
                 ttr = stats[7]
@@ -476,7 +476,7 @@ def generate_table(main, table):
 
                 count_paras = len(len_paras_in_sentence)
                 count_sentences = len(len_sentences)
-                count_clauses = len(len_clauses)
+                count_sentence_segs = len(len_sentence_segs)
                 count_tokens = len(len_tokens)
                 count_types = len(len_types)
                 count_chars = sum(len_tokens)
@@ -487,9 +487,9 @@ def generate_table(main, table):
                 # Count of Sentences
                 table.set_item_num(2, i, count_sentences)
                 table.set_item_num(3, i, count_sentences, count_sentences_total)
-                # Count of Clauses
-                table.set_item_num(4, i, count_clauses)
-                table.set_item_num(5, i, count_clauses, count_clauses_total)
+                # Count of Sentence Segments
+                table.set_item_num(4, i, count_sentence_segs)
+                table.set_item_num(5, i, count_sentence_segs, count_sentence_segs_total)
                 # Count of Tokens
                 table.set_item_num(6, i, count_tokens)
                 table.set_item_num(7, i, count_tokens, count_tokens_total)
@@ -515,8 +515,8 @@ def generate_table(main, table):
                 else:
                     table.set_item_num(14, i, numpy.mean(len_paras_in_sentence))
                     table.set_item_num(15, i, numpy.std(len_paras_in_sentence))
-                    table.set_item_num(16, i, numpy.mean(len_paras_in_clause))
-                    table.set_item_num(17, i, numpy.std(len_paras_in_clause))
+                    table.set_item_num(16, i, numpy.mean(len_paras_in_sentence_seg))
+                    table.set_item_num(17, i, numpy.std(len_paras_in_sentence_seg))
                     table.set_item_num(18, i, numpy.mean(len_paras_in_token))
                     table.set_item_num(19, i, numpy.std(len_paras_in_token))
 
@@ -528,13 +528,13 @@ def generate_table(main, table):
                     table.set_item_num(20, i, numpy.mean(len_sentences))
                     table.set_item_num(21, i, numpy.std(len_sentences))
 
-                # Clause Length
-                if count_clauses == 0:
+                # Sentence Segment Length
+                if count_sentence_segs == 0:
                     table.set_item_num(22, i, 0)
                     table.set_item_num(23, i, 0)
                 else:
-                    table.set_item_num(22, i, numpy.mean(len_clauses))
-                    table.set_item_num(23, i, numpy.std(len_clauses))
+                    table.set_item_num(22, i, numpy.mean(len_sentence_segs))
+                    table.set_item_num(23, i, numpy.std(len_sentence_segs))
 
                 # Token Length
                 if count_tokens == 0:
