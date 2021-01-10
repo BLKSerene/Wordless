@@ -28,7 +28,6 @@ langdetect.DetectorFactory.seed = 0
 
 def detect_encoding(main, file_path):
     text = b''
-    success = True
 
     with open(file_path, 'rb') as f:
         if main.settings_custom['auto_detection']['detection_settings']['number_lines_no_limit']:
@@ -56,21 +55,10 @@ def detect_encoding(main, file_path):
         elif encoding == None:
             encoding = main.settings_custom['auto_detection']['default_settings']['default_encoding']
 
-            success = False
-        
-    try:
-        text = ''
-
-        with open(file_path, 'r', encoding = encoding) as f:
-            for line in f:
-                text += line
-    except:
-        success = False
-
     encoding = encoding.lower()
     encoding = encoding.replace('-', '_')
 
-    return encoding, success
+    return encoding
 
 def detect_lang(main, file):
     text = ''
@@ -107,11 +95,7 @@ def detect_lang(main, file):
             lang_code_639_1 = 'sr_cyrl'
 
         lang = wl_conversion.to_iso_639_3(main, lang_code_639_1)
-
-        success = True
     except:
         lang = main.settings_custom['auto_detection']['default_settings']['default_lang']
 
-        success = False
-
-    return lang, success
+    return lang
