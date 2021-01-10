@@ -16,14 +16,11 @@ from PyQt5.QtWidgets import *
 from wl_dialogs import wl_dialog
 from wl_widgets import wl_label, wl_table
 
-DIALOG_ERROR_WIDTH = 560
-DIALOG_ERROR_HEIGHT = 320
-DIALOG_ERROR_HEIGHT_COLLIGATION = 360
 TABLE_ERROR_FILES_HEIGHT = 220
 
 class Wl_Dialog_Error(wl_dialog.Wl_Dialog_Error):
     def __init__(self, main, title, width = 0, height = 0):
-        super().__init__(main, title, width, height, no_button = True)
+        super().__init__(main, title, width = 560, height = 320, no_button = True)
 
         self.button_export = QPushButton(self.tr('Export'), self)
         self.button_ok = QPushButton(self.tr('OK'), self)
@@ -35,17 +32,16 @@ class Wl_Dialog_Error(wl_dialog.Wl_Dialog_Error):
 
 class Wl_Dialog_Error_File_Open(Wl_Dialog_Error):
     def __init__(self, main,
-                 files_duplicate,
-                 files_empty,
-                 files_unsupported,
-                 files_parsing_error):
-        super().__init__(main, main.tr('Error Opening File'),
-                         width = DIALOG_ERROR_WIDTH)
+                 file_paths_missing,
+                 file_paths_empty,
+                 file_paths_unsupported,
+                 file_paths_parsing_error):
+        super().__init__(main, main.tr('Error Opening Files'))
 
         self.label_error = wl_label.Wl_Label_Dialog(
             self.tr('''
                 <div>
-                    An error occurred while opening the files, so the following files are skipped and will not be added to the file area.
+                    An error occurred while opening files, so the following file(s) are skipped and will not be added to the file table.
                 </div>
             '''),
             self
@@ -54,8 +50,8 @@ class Wl_Dialog_Error_File_Open(Wl_Dialog_Error):
         self.table_error_files = wl_table.Wl_Table_Error(
             self,
             headers = [
-                self.tr('Error Types'),
-                self.tr('Files')
+                self.tr('Error Type'),
+                self.tr('File')
             ]
         )
 
@@ -64,25 +60,25 @@ class Wl_Dialog_Error_File_Open(Wl_Dialog_Error):
 
         self.button_export.clicked.connect(self.table_error_files.export_all)
 
-        for file in files_duplicate:
+        for file in file_paths_missing:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
 
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Duplicate File')))
+            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Missing File')))
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
 
-        for file in files_empty:
+        for file in file_paths_empty:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
 
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Empty File')))
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
 
-        for file in files_unsupported:
+        for file in file_paths_unsupported:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
 
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Unsupported File Type')))
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
 
-        for file in files_parsing_error:
+        for file in file_paths_parsing_error:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
 
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Parsing Error')))
@@ -91,120 +87,33 @@ class Wl_Dialog_Error_File_Open(Wl_Dialog_Error):
         self.wrapper_info.layout().addWidget(self.label_error, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_error_files, 1, 0)
 
-def wl_dialog_error_file_open(main,
-                              files_duplicate,
-                              files_empty,
-                              files_unsupported,
-                              files_parsing_error):
-    if files_duplicate or files_empty or files_unsupported or files_parsing_error:
+def wl_dialog_error_file_open(
+    main,
+    file_paths_missing,
+    file_paths_empty,
+    file_paths_unsupported,
+    file_paths_parsing_error
+):
+    if file_paths_missing or file_paths_empty or file_paths_unsupported or file_paths_parsing_error:
         dialog_error_file_open = Wl_Dialog_Error_File_Open(
             main,
-            files_duplicate,
-            files_empty,
-            files_unsupported,
-            files_parsing_error
+            file_paths_missing,
+            file_paths_empty,
+            file_paths_unsupported,
+            file_paths_parsing_error
         )
 
         dialog_error_file_open.open()
 
-class Wl_Dialog_Error_File_Load(Wl_Dialog_Error):
-    def __init__(self, main,
-                 files_missing,
-                 files_empty,
-                 files_decoding_error):
-        super().__init__(main, main.tr('Error Loading File'),
-                         width = DIALOG_ERROR_WIDTH,
-                         height = DIALOG_ERROR_HEIGHT)
-
-        self.label_error = wl_label.Wl_Label_Dialog(
-            self.tr('''
-                <div>
-                    An error occurred while loading the following files. Please check the files and/or your settings and try again.
-                </div>
-            '''),
-            self
-        )
-
-        self.table_error_files = wl_table.Wl_Table_Error(
-            self,
-            headers = [
-                self.tr('Error Types'),
-                self.tr('Files')
-            ]
-        )
-
-        self.table_error_files.setFixedHeight(TABLE_ERROR_FILES_HEIGHT)
-        self.table_error_files.setRowCount(0)
-
-        self.button_export.clicked.connect(self.table_error_files.export_all)
-
-        for file in files_missing:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
-
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Missing File')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
-
-        for file in files_empty:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
-
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Empty File')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
-
-        for file in files_decoding_error:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
-
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Decoding Error')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
-
-        self.wrapper_info.layout().addWidget(self.label_error, 0, 0)
-        self.wrapper_info.layout().addWidget(self.table_error_files, 1, 0)
-
-def wl_dialog_error_file_load(main,
-                                    files_missing,
-                                    files_empty,
-                                    files_decoding_error):
-    if files_missing or files_empty or files_decoding_error:
-        dialog_error_file_load = Wl_Dialog_Error_File_Load(
-            main,
-            files_missing,
-            files_empty,
-            files_decoding_error
-        )
-
-        dialog_error_file_load.open()
-
 class Wl_Dialog_Error_File_Load_Colligation(Wl_Dialog_Error):
-    def __init__(self, main,
-                 files_missing,
-                 files_empty,
-                 files_decoding_error,
-                 files_pos_tagging_not_supported):
-        if files_pos_tagging_not_supported:
-            super().__init__(main, main.tr('Error Loading Files'),
-                         width = DIALOG_ERROR_WIDTH,
-                         height = DIALOG_ERROR_HEIGHT_COLLIGATION)
-        else:
-            super().__init__(main, main.tr('Error Loading Files'),
-                         width = DIALOG_ERROR_WIDTH,
-                         height = DIALOG_ERROR_HEIGHT)
+    def __init__(self, main, files_pos_tagging_unsupported):
+        super().__init__(main, main.tr('Error Loading Files'))
 
-        if files_pos_tagging_not_supported:
+        if files_pos_tagging_unsupported:
             self.label_error = wl_label.Wl_Label_Dialog(
                 self.tr('''
                     <div>
-                        An error occurred while loading the following files. Please check the files and/or your settings and try again.
-                    </div>
-                    <div>
-                        The built-in POS taggers currently have no support for some of the following files, please check your language settings or provide files that have already been POS-tagged.
-                    </div>
-                '''),
-                self
-            )
-        else:
-            self.label_error = wl_label.Wl_Label_Dialog(
-                self.tr('''
-                    <div>
-                        An error occurred while loading the following files. Please check the files and/or your settings and try again.
+                        The built-in POS taggers currently have no support for the following file(s), please check your language settings or provide copora that have already been POS-tagged.
                     </div>
                 '''),
                 self
@@ -213,8 +122,8 @@ class Wl_Dialog_Error_File_Load_Colligation(Wl_Dialog_Error):
         self.table_error_files = wl_table.Wl_Table_Error(
             self,
             headers = [
-                self.tr('Error Types'),
-                self.tr('Files')
+                self.tr('Error Type'),
+                self.tr('File')
             ]
         )
 
@@ -223,105 +132,23 @@ class Wl_Dialog_Error_File_Load_Colligation(Wl_Dialog_Error):
 
         self.button_export.clicked.connect(self.table_error_files.export_all)
 
-        for file in files_missing:
+        for file in files_pos_tagging_unsupported:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
 
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Missing File')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
-
-        for file in files_empty:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
-
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Empty File')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
-
-        for file in files_decoding_error:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
-
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Decoding Error')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
-
-        for file in files_pos_tagging_not_supported:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
-
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('POS Tagging Not Supported')))
+            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('POS Tagging Unsupported')))
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
 
         self.wrapper_info.layout().addWidget(self.label_error, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_error_files, 1, 0)
 
-def wl_dialog_error_file_load_colligation(main,
-                                          files_missing,
-                                          files_empty,
-                                          files_decoding_error,
-                                          files_pos_tagging_not_supported):
-    if files_missing or files_empty or files_decoding_error or files_pos_tagging_not_supported:
+def wl_dialog_error_file_load_colligation(main, files_pos_tagging_unsupported):
+    if files_pos_tagging_unsupported:
         dialog_error_file_load_colligation = Wl_Dialog_Error_File_Load_Colligation(
             main,
-            files_missing,
-            files_empty,
-            files_decoding_error,
-            files_pos_tagging_not_supported
+            files_pos_tagging_unsupported
         )
 
         dialog_error_file_load_colligation.open()
-
-class Wl_Dialog_Error_Detect(Wl_Dialog_Error):
-    def __init__(self, main,
-                 files_detect_error_encoding,
-                 files_detect_error_lang):
-        super().__init__(main, main.tr('Detection Error'),
-                         width = DIALOG_ERROR_WIDTH,
-                         height = DIALOG_ERROR_HEIGHT)
-
-        self.label_error = wl_label.Wl_Label_Dialog(
-            self.tr('''
-                <div>
-                    An error occurred during auto-detection. Please check the following file(s) and try again or select the settings manually.
-                </div>
-            '''),
-            self
-        )
-
-        self.table_error_files = wl_table.Wl_Table_Error(
-            self,
-            headers = [
-                self.tr('Error Types'),
-                self.tr('Files')
-            ]
-        )
-
-        self.table_error_files.setFixedHeight(TABLE_ERROR_FILES_HEIGHT)
-        self.table_error_files.setRowCount(0)
-
-        self.button_export.clicked.connect(self.table_error_files.export_all)
-
-        for file in files_detect_error_encoding:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
-
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Encoding Detection')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
-
-        for file in files_detect_error_lang:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
-
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Language Detection')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
-
-        self.wrapper_info.layout().addWidget(self.label_error, 0, 0)
-        self.wrapper_info.layout().addWidget(self.table_error_files, 1, 0)
-
-def wl_dialog_error_detect(main,
-                           files_detect_error_encoding,
-                           files_detect_error_lang):
-    if files_detect_error_encoding or files_detect_error_lang:
-        dialog_error_detect = Wl_Dialog_Error_Detect(
-            main,
-            files_detect_error_encoding,
-            files_detect_error_lang
-        )
-
-        dialog_error_detect.open()
 
 class Wl_Dialog_Error_Import(Wl_Dialog_Error):
     def __init__(self, main,
