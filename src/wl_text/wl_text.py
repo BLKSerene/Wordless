@@ -38,7 +38,7 @@ class Wl_Text():
 
         self.offsets_paras = []
         self.offsets_sentences = []
-        self.offsets_clauses = []
+        self.offsets_sentence_segs = []
 
         self.tokens_multilevel = []
         self.tokens_flat = []
@@ -100,8 +100,8 @@ class Wl_Text():
                             for sentence in wl_sentence_tokenization.wl_sentence_split(main, text):
                                 self.tokens_multilevel[-1].append([])
 
-                                for clause in wl_sentence_tokenization.wl_clause_split(main, sentence):
-                                    self.tokens_multilevel[-1][-1].append(clause.split())
+                                for sentence_seg in wl_sentence_tokenization.wl_sentence_seg_split(main, sentence):
+                                    self.tokens_multilevel[-1][-1].append(sentence_seg.split())
                 # Tokenized & Tagged
                 elif self.tokenized == 'Yes' and self.tagged == 'Yes':
                     for i, line in enumerate(f):
@@ -117,8 +117,8 @@ class Wl_Text():
                             for sentence in wl_sentence_tokenization.wl_sentence_split(main, text_no_tags):
                                 self.tokens_multilevel[-1].append([])
 
-                                for clause in wl_sentence_tokenization.wl_clause_split(main, sentence):
-                                    self.tokens_multilevel[-1][-1].append(clause.split())
+                                for sentence_seg in wl_sentence_tokenization.wl_sentence_seg_split(main, sentence):
+                                    self.tokens_multilevel[-1][-1].append(sentence_seg.split())
 
                             # Check if the first token in the text is a tag
                             if i == 0 and re.match(re_tags, text):
@@ -176,17 +176,17 @@ class Wl_Text():
 
                             self.tags.append([])
 
-        # Paragraph, sentence and clause offsets
+        # Paragraph, sentence and sentence segment offsets
         for para in self.tokens_multilevel:
             self.offsets_paras.append(len(self.tokens_flat))
 
             for sentence in para:
                 self.offsets_sentences.append(len(self.tokens_flat))
 
-                for clause in sentence:
-                    self.offsets_clauses.append(len(self.tokens_flat))
+                for sentence_seg in sentence:
+                    self.offsets_sentence_segs.append(len(self.tokens_flat))
 
-                    self.tokens_flat.extend(clause)
+                    self.tokens_flat.extend(sentence_seg)
 
         # Remove whitespace around all tags
         self.tags = [[tag.strip() for tag in tags] for tags in self.tags]
