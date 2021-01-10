@@ -73,9 +73,6 @@ def mannwhitneyu(x, y, use_continuity, alternative):
     u = min(u1, u2)
     return (u, p)
 
-# Reference"
-#     Dennis, S. F. "The Construction of a Thesaurus Automatically from a Sample of Text." Proceedings of the Symposium on Statistical Association Methods For Mechanized Documentation, Washington, D.C., 17 March, 1964, edited by Stevens, M. E., et at., National Bureau of Standards, 1965, pp. 61-148.
-#     Berry-rogghe, Godelieve L. M. "The Computation of Collocations and their Relevance in Lexical Studies." The computer and literary studies, edited by Aitken, A. J., Edinburgh UP, 1973, pp. 103-112.
 def z_score(main, c11, c12, c21, c22):
     direction = main.settings_custom['measures']['statistical_significance']['z_score']['direction']
 
@@ -94,8 +91,27 @@ def z_score(main, c11, c12, c21, c22):
 
     return [z_score, p_value, None]
 
-# Reference:
-#     Church, Kenneth Ward, et al. "Using Statistics in Lexical Analysis." Lexical Acquisition: Exploiting On-Line Resources to Build a Lexicon, edited by Uri Zernik, Psychology Press, 1991, pp. 115-64.
+def berry_rogghes_z_score(main, c11, c12, c21, c22, span):
+    c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
+
+    z = cxx
+    fn = c1x
+    fc = cx1
+    k = c11
+    s = span
+
+    p = fc / (z - fn)
+    e = p * fn * s
+
+    if math.sqrt(e * (1 - p)) == 0:
+        z_score = 0
+    else:
+        z_score = (k - e) / math.sqrt(e * (1 - p))
+
+    p_value = scipy.stats.distributions.norm.sf(z_score) 
+
+    return [z_score, p_value, None]
+
 def students_t_test_1_sample(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
@@ -109,8 +125,6 @@ def students_t_test_1_sample(main, c11, c12, c21, c22):
 
     return [t_stat, p_value, None]
 
-# Reference:
-#     Paquot, Magali, and Yves Bestgen. "Distinctive Words in Academic Writing: A Comparison of Three Statistical Tests for Keyword Extraction." Language and Computers, vol.68, 2009, pp. 247-269.
 def students_t_test_2_sample(main, counts_observed, counts_ref):
     variances = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['variances']
 
@@ -123,9 +137,6 @@ def students_t_test_2_sample(main, counts_observed, counts_ref):
 
     return [t_stat, p_value, bayes_factor]
 
-# Reference:
-#     Hofland, Knut, and Stig Johansson. Word Frequencies in British and American English. Norwegian Computing Centre for the Humanities, 1982.
-#     Oakes, Michael P. Statistics for Corpus Linguistics. Edinburgh UP, 1998.
 def pearsons_chi_squared_test(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
@@ -161,8 +172,6 @@ def pearsons_chi_squared_test(main, c11, c12, c21, c22):
 
     return [chi_square, p_value, None]
 
-# Reference:
-#     Dunning, Ted Emerson. "Accurate Methods for the Statistics of Surprise and Coincidence." Computational Linguistics, vol. 19, no. 1, Mar. 1993, pp. 61-74.
 def log_likehood_ratio_test(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
@@ -198,8 +207,6 @@ def log_likehood_ratio_test(main, c11, c12, c21, c22):
 
     return [log_likelihood_ratio, p_value, bayes_factor]
 
-# Reference:
-#     Pedersen, Ted. “Fishing for Exactness.” Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference, 27-29 Oct. 1996, edited by Tom Winn, The South-Central Regional SAS Users' Group, 1996, pp. 188-200.
 def fishers_exact_test(main, c11, c12, c21, c22):
     direction = main.settings_custom['measures']['statistical_significance']['fishers_exact_test']['direction']
 
@@ -215,8 +222,6 @@ def fishers_exact_test(main, c11, c12, c21, c22):
 
     return [None, p_value, None]
 
-# Reference:
-#     Kilgarriff, Adam. "Comparing Corpora." International Journal of Corpus Linguistics, vol.6, no.1, Nov. 2001, pp. 232-263.
 def mann_whitney_u_test(main, counts_observed, counts_ref):
     direction = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['direction']
     apply_correction = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['apply_correction']

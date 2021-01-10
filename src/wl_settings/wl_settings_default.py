@@ -147,7 +147,7 @@ def init_settings_default(main):
                 'width_right_clause': 0,
                 'width_right_token': 10,
                 'width_right_char': 50,
-                'width_unit': main.tr('Sentence'),
+                'width_unit': main.tr('Word'),
 
                 'sampling_method': main.tr('None'),
                 'sample_size_first_n_lines': 100,
