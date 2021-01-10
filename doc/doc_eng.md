@@ -99,8 +99,8 @@ In *Overview*, you can check/compare the language features of different files.
 - **3.1.2 Count of Sentences**<br>
     Number of sentences in each file. *Wordless* will automatically apply the built-in sentence tokenizer according to the language of each file in order to calculate the number of sentences in each file. You can change the sentence tokenizer settings via **Menu → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
 
-- **3.1.3 Count of Clauses**<br>
-    Number of clauses (delimited by commas, colons, semi-colons, question marks, exclamations marks, quotes, em-dashes, etc.) in each file. *Wordless* will automatically apply the built-in clause tokenizer according to the language of each file in order to calculate the number of clauses in each file.
+- **3.1.3 Count of Sentence Segments**<br>
+    Number of sentence segments (delimited by commas, colons, semi-colons, question marks, exclamations marks, quotes, em-dashes, etc.) in each file. *Wordless* will automatically apply the built-in sentence segment tokenizer according to the language of each file in order to calculate the number of sentence segments in each file.
 
 - **3.1.4 Count of Tokens**<br>
     Number of tokens in each file. *Wordless* will automatically apply the built-in word tokenizer according to the language of each file in order to calculate the number of tokens in each file. You can change the word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
@@ -139,11 +139,11 @@ In *Overview*, you can check/compare the language features of different files.
 - **3.1.14 Sentence Length in Token (Standard Deviation)**<br>
     The standard deviation of sentence length expressed as number of tokens.
 
-- **3.1.15 Clause Length in Token (Mean)**<br>
-    The average value of clause length expressed as number of tokens.
+- **3.1.15 Sentence Segment Length in Token (Mean)**<br>
+    The average value of sentence segment length expressed as number of tokens.
 
-- **3.1.16 Clause Length in Token (Standard Deviation)**<br>
-    The standard deviation of clause length expressed as number of tokens.
+- **3.1.16 Sentence Segment Length in Token (Standard Deviation)**<br>
+    The standard deviation of sentence segment length expressed as number of tokens.
 
 - **3.1.17 Token Length in Character (Mean)**<br>
     The average value of token length expressed as number of characters.
@@ -182,8 +182,8 @@ In addition, you can generate concordance plots for any search term. You can mod
 - **3.2.4 Token No.**<br>
     The position of the first token of **Node** in each file.
 
-- **3.2.5 Clause No.**<br>
-    The position of the clause in which the **Node** is found in each file.
+- **3.2.5 Sentence Segment No.**<br>
+    The position of the sentence segment in which the **Node** is found in each file.
 
 - **3.2.6 Sentence No.**<br>
     The position of the sentence in which the **Node** is found in each file.
