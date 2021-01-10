@@ -9,7 +9,7 @@
 # All other rights reserved.
 #
 
-version: 1.4.0.{build}
+version: 1.5.0.{build}
 
 environment:
   matrix:
@@ -44,7 +44,7 @@ for:
       # Check Python version
       - python --version
       # Install dependencies
-      - python -m pip install --upgrade pip
+      - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements.txt
       # Download data
       - python downloaders/wl_downloader_ci.py
@@ -67,7 +67,7 @@ for:
       - export CXXFLAGS="$CXXFLAGS -I/usr/local/opt/libomp/include"
       - export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/local/opt/libomp/lib -L/usr/local/opt/libomp/lib -lomp"
       # Install dependencies
-      - python -m pip install --upgrade pip
+      - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements.txt
       # Download data
       - python downloaders/wl_downloader_ci.py
@@ -82,7 +82,8 @@ for:
       # Check Python version
       - python --version
       # Install dependencies
-      - python -m pip install --upgrade pip
+      - python -m pip install --upgrade pip setuptools
+      - pip install numpy
       - pip install --requirement requirements.txt
       # Download data
       - python downloaders/wl_downloader_ci.py
@@ -94,10 +95,10 @@ before_test:
 
 # Run tests
 test_script:
-  - pytest wl_tests/wl_text/test_sentence_tokenization.py
-  - pytest wl_tests/wl_text/test_word_tokenization.py
-  - pytest wl_tests/wl_text/test_word_detokenization.py
-  - pytest wl_tests/wl_text/test_pos_tagging.py
-  - pytest wl_tests/wl_text/test_lemmatization.py
+  - pytest --cache-clear wl_tests/wl_text/test_sentence_tokenization.py
+  - pytest --cache-clear wl_tests/wl_text/test_word_tokenization.py
+  - pytest --cache-clear wl_tests/wl_text/test_word_detokenization.py
+  - pytest --cache-clear wl_tests/wl_text/test_pos_tagging.py
+  - pytest --cache-clear wl_tests/wl_text/test_lemmatization.py
 
-  - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
+  - pytest --cache-clear --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
