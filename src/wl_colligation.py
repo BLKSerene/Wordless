@@ -25,6 +25,7 @@ import numpy
 from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialog_misc, wl_msg_box
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
+from wl_measures import wl_measures_statistical_significance
 from wl_text import wl_matching, wl_pos_tagging, wl_text, wl_token_processing, wl_word_detokenization
 from wl_utils import wl_misc, wl_sorting, wl_threading
 from wl_widgets import wl_layout, wl_msg, wl_table, wl_widgets
@@ -827,7 +828,14 @@ class Wl_Worker_Colligation(wl_threading.Wl_Worker):
                 c21 = cx1s[node] - c11
                 c22 = cxxs[len(node)] - c11 - c12 - c21
 
-                colligations_stats_file[(node, collocate)] = test_significance(self.main, c11, c12, c21, c22)
+                # Berry-Rogghe's z-score
+                if test_significance == wl_measures_statistical_significance.berry_rogghes_z_score:
+                    span = (abs(window_left) + abs(window_right)) / 2
+
+                    colligations_stats_file[(node, collocate)] = test_significance(self.main, c11, c12, c21, c22, span)
+                else:
+                    colligations_stats_file[(node, collocate)] = test_significance(self.main, c11, c12, c21, c22)
+
                 colligations_stats_file[(node, collocate)].append(measure_effect_size(self.main, c11, c12, c21, c22))
 
             self.colligations_stats_files.append(colligations_stats_file)
