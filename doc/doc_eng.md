@@ -407,8 +407,8 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
 <span id="doc-eng-4-1"></span>
 ### 4.1 Supported Languages [[Back to Contents]](#doc-eng)
 
-Languages|Sentence Tokenization|Word Tokenization|Word Detokenization|POS Tagging|Lemmatization|Stop Words
-:-------:|:-------------------:|:---------------:|:-----------------:|:---------:|:-----------:|:--------:
+Language|Sentence Tokenization|Word Tokenization|Word Detokenization|POS Tagging|Lemmatization|Stop Words
+:------:|:-------------------:|:---------------:|:-----------------:|:---------:|:-----------:|:--------:
 Afrikaans            |✔|✔|⭕️ |✖️|✖️|✔️
 Albanian             |✔|✔|⭕️ |✖️|✖️|✔️
 Arabic               |✔|✔️|⭕️ |✖️|✖️|✔️
@@ -517,8 +517,8 @@ Translation Memory File |\*.tmx
 <span id="doc-eng-4-3"></span>
 ### 4.3 Supported File Encodings [[Back to Contents]](#doc-eng)
 
-Languages|File Encodings|Auto-detection
----------|--------------|:------------:
+Language|File Encoding|Auto-detection
+--------|-------------|:------------:
 All Languages|UTF-8 without BOM   |✔
 All Languages|UTF-8 with BOM      |✔
 All Languages|UTF-16 with BOM     |✔
@@ -676,8 +676,8 @@ Gries's DPnorm:
     \end{align*}
 -->
 
-Measures of Dispersion|Formulas
-----------------------|-------
+Measure of Dispersion|Formula
+---------------------|-------
 Juilland's D   [[1]](#doc-eng-supported-measures-works-cited-1)|![Juilland's D](/doc/measures/dispersion/juillands_d.gif)
 Carroll's D₂   [[2]](#doc-eng-supported-measures-works-cited-2)|![Carroll's D₂](/doc/measures/dispersion/carrolls_d2.gif)
 Lyne's D₃      [[3]](#doc-eng-supported-measures-works-cited-3)|![Lyne's D₃](/doc/measures/dispersion/lynes_d3.gif)
@@ -717,8 +717,8 @@ Kromer's UR:
     \end{align*}
 -->
 
-Measures of Adjusted Frequency|Formulas
-----------------------|-------
+Measure of Adjusted Frequency|Formula
+-----------------------------|-------
 Juilland's U   [[1]](#doc-eng-supported-measures-works-cited-1)|![Juilland's U](/doc/measures/adjusted_freq/juillands_u.gif)
 Carroll's Um   [[2]](#doc-eng-supported-measures-works-cited-2)|![Carroll's Um](/doc/measures/adjusted_freq/carrolls_um.gif)
 Rosengren's KF [[4]](#doc-eng-supported-measures-works-cited-4)|![Rosengren's KF](/doc/measures/adjusted_freq/rosengrens_kf.gif)
@@ -806,10 +806,10 @@ Log-likelihood Ratio:
 
 Then the statistical significance, bayes factor and effect size will be calculated as follows:
 
-Tests of Statistical Significance|Formulas
----------------------------------|--------
+Test of Statistical Significance|Formula
+--------------------------------|-------
 z-score                       [[10]](#doc-eng-supported-measures-works-cited-10)|![z-score](/doc/measures/statistical_significance/z_score.gif)
-Berry-Rogghe’s z-score        [[11]](#doc-eng-supported-measures-works-cited-11)|![Berry-Rogghe’s z-score](/doc/measures/statistical_significance/berry_rogghes_z_score.gif)<br>where **S** is the span size on either side of the node word.
+Berry-Rogghe’s z-score        [[11]](#doc-eng-supported-measures-works-cited-11)|![Berry-Rogghe’s z-score](/doc/measures/statistical_significance/berry_rogghes_z_score.gif)<br>where **S** is the average span size on both sides of the node word.
 Student’s t-test (One-sample) [[12]](#doc-eng-supported-measures-works-cited-12)|![Student's t-test (One-sample)](/doc/measures/statistical_significance/students_t_test_1_sample.gif)
 Student’s t-test (Two-sample) [[13]](#doc-eng-supported-measures-works-cited-13)|![Student's t-test (Two-sample)](/doc/measures/statistical_significance/students_t_test_2_sample.gif)
 Pearson’s Chi-squared Test    [[14]](#doc-eng-supported-measures-works-cited-14)[[15]](#doc-eng-supported-measures-works-cited-15)|![Pearson's Chi-squared Test](/doc/measures/statistical_significance/pearsons_chi_squared_test.gif)
@@ -833,8 +833,8 @@ Log-likelihood Ratio:
     \end{align*}
 -->
 
-Measures of Bayes Factor|Formulas
-------------------------|--------
+Measure of Bayes Factor|Formula
+-----------------------|-------
 Student’s t-test (Two-sample) [[19]](#doc-eng-supported-measures-works-cited-19)|![Student's t-test (Two-sample)](/doc/measures/bayes_factor/students_t_test_2_sample.gif)
 Log-likelihood Ratio          [[19]](#doc-eng-supported-measures-works-cited-19)|![Log-likelihood Ratio](/doc/measures/bayes_factor/log_likehood_ratio_test.gif)
 
@@ -930,8 +930,8 @@ Difference Coefficient:
     \end{align*}
 -->
 
-Measures of Effect Size|Formulas
------------------------|--------
+Measure of Effect Size|Formula
+----------------------|-------
 Pointwise Mutual Information [[20]](#doc-eng-supported-measures-works-cited-20)|![Pointwise Mutual Information](/doc/measures/effect_size/pmi.gif)
 Mutual Dependency            [[21]](#doc-eng-supported-measures-works-cited-21)|![Mutual Dependency](/doc/measures/effect_size/md.gif)
 Log-Frequency Biased MD      [[21]](#doc-eng-supported-measures-works-cited-21)|![Log-Frequency Biased MD](/doc/measures/effect_size/lfmd.gif)
