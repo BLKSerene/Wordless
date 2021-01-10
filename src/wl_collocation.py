@@ -25,6 +25,7 @@ import numpy
 from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialog_misc, wl_msg_box
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
+from wl_measures import wl_measures_statistical_significance
 from wl_text import wl_matching, wl_text, wl_token_processing, wl_word_detokenization
 from wl_utils import wl_misc, wl_sorting, wl_threading
 from wl_widgets import wl_layout, wl_msg, wl_table, wl_widgets
@@ -784,9 +785,11 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
 
         collocations_total = self.collocations_freqs_files[-1].keys()
 
-        for text, collocations_freqs_file, collocations_freqs_file_all in zip(texts,
-                                                                              self.collocations_freqs_files,
-                                                                              collocations_freqs_files_all):
+        for text, collocations_freqs_file, collocations_freqs_file_all in zip(
+            texts,
+            self.collocations_freqs_files,
+            collocations_freqs_files_all
+        ):
             collocates_stats_file = {}
             c1xs = collections.Counter()
             cx1s = collections.Counter()
@@ -812,7 +815,14 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
                 c21 = cx1s[node] - c11
                 c22 = cxxs[len(node)] - c11 - c12 - c21
 
-                collocates_stats_file[(node, collocate)] = test_significance(self.main, c11, c12, c21, c22)
+                # Berry-Rogghe's z-score
+                if test_significance == wl_measures_statistical_significance.berry_rogghes_z_score:
+                    span = (abs(window_left) + abs(window_right)) / 2
+
+                    collocates_stats_file[(node, collocate)] = test_significance(self.main, c11, c12, c21, c22, span)
+                else:
+                    collocates_stats_file[(node, collocate)] = test_significance(self.main, c11, c12, c21, c22)
+
                 collocates_stats_file[(node, collocate)].append(measure_effect_size(self.main, c11, c12, c21, c22))
 
             self.collocations_stats_files.append(collocates_stats_file)

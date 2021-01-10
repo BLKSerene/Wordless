@@ -15,6 +15,7 @@
 
 ### 🎉 New Features
 - Utils: Add pkuseg's Chinese word tokenizer
+- Work Area: Add Collocation/Colligation - Generation Settings - Test of Statistical Significance - Berry-Rogghe’s z-score
 
 ### ❌ Removals
 - File Area: Remove support for .lrc files
