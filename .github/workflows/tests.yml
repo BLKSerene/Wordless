@@ -11,15 +11,11 @@
 
 name: Tests
 
-on: [push]
+on: push
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
-        python-version: [3.8]
+  build-windows:
+    runs-on: windows-2019
 
     steps:
     - uses: actions/checkout@v2
@@ -30,21 +26,93 @@ jobs:
         architecture: 'x64'
 
     - name: Check Python version
-      run: python -c "import sys; print(sys.version)"
+      run: python --version
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
+        python -m pip install --upgrade pip setuptools
+        pip install -r requirements.txt
+
+    - name: Run Tests
+      run: |
+        cd src
+        pytest --cache-clear wl_tests/wl_text/test_sentence_tokenization.py
+        pytest --cache-clear wl_tests/wl_text/test_word_tokenization.py
+        pytest --cache-clear wl_tests/wl_text/test_word_detokenization.py
+        pytest --cache-clear wl_tests/wl_text/test_pos_tagging.py
+        pytest --cache-clear wl_tests/wl_text/test_lemmatization.py
+        pytest --cache-clear wl_tests/wl_text/test_stop_words.py
+        
+        pytest --cache-clear --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
+
+  build-macos:
+    runs-on: macos-10.15
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+        architecture: 'x64'
+
+    - name: Check Python version
+      run: python --version
+
+    - name: Install dependencies
+      run: |
+        brew install libomp
+        export CC=/usr/bin/clang
+        export CXX=/usr/bin/clang++
+        export CPPFLAGS="$CPPFLAGS -Xpreprocessor -fopenmp"
+        export CFLAGS="$CFLAGS -I/usr/local/opt/libomp/include"
+        export CXXFLAGS="$CXXFLAGS -I/usr/local/opt/libomp/include"
+        export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/local/opt/libomp/lib -L/usr/local/opt/libomp/lib -lomp"
+
+        python -m pip install --upgrade pip setuptools
         pip install numpy
         pip install -r requirements.txt
 
     - name: Run Tests
       run: |
         cd src
-        pytest wl_tests/wl_text/test_sentence_tokenization.py
-        pytest wl_tests/wl_text/test_word_tokenization.py
-        pytest wl_tests/wl_text/test_word_detokenization.py
-        pytest wl_tests/wl_text/test_pos_tagging.py
-        pytest wl_tests/wl_text/test_lemmatization.py
-        pytest wl_tests/wl_text/test_stop_words.py
-        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
+        pytest --cache-clear wl_tests/wl_text/test_sentence_tokenization.py
+        pytest --cache-clear wl_tests/wl_text/test_word_tokenization.py
+        pytest --cache-clear wl_tests/wl_text/test_word_detokenization.py
+        pytest --cache-clear wl_tests/wl_text/test_pos_tagging.py
+        pytest --cache-clear wl_tests/wl_text/test_lemmatization.py
+        pytest --cache-clear wl_tests/wl_text/test_stop_words.py
+
+        pytest --cache-clear --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
+
+  build-linux:
+    runs-on: ubuntu-16.04
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+        architecture: 'x64'
+
+    - name: Check Python version
+      run: python --version
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip setuptools
+        pip install numpy
+        pip install -r requirements.txt
+
+    - name: Run Tests
+      run: |
+        cd src
+        pytest --cache-clear wl_tests/wl_text/test_sentence_tokenization.py
+        pytest --cache-clear wl_tests/wl_text/test_word_tokenization.py
+        pytest --cache-clear wl_tests/wl_text/test_word_detokenization.py
+        pytest --cache-clear wl_tests/wl_text/test_pos_tagging.py
+        pytest --cache-clear wl_tests/wl_text/test_lemmatization.py
+        pytest --cache-clear wl_tests/wl_text/test_stop_words.py
+
+        pytest --cache-clear --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
