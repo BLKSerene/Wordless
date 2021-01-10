@@ -107,12 +107,12 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
         self.group_box_token_settings.setLayout(wl_layout.Wl_Layout())
-        self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 0, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 0, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0)
+        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.token_checkbox_ignore_tags, 2, 0)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 3, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 2, 1)
 
         # Search Settings
         self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)

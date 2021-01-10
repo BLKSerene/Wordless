@@ -158,8 +158,8 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
 
         self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 7, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(self.token_checkbox_ignore_tags, 8, 0, 1, 2)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 9, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.token_checkbox_ignore_tags, 8, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
 
         # Search Settings
         self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
