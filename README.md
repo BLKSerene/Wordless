@@ -116,7 +116,7 @@ I would like to extend my sincere gratitude to the following open-source project
 3     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
 4     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Edward Loper, Ewan Klein
 5     |[opencc-python](https://github.com/yichen0831/opencc-python)|Huang Yichen, Carbo Kuo (郭家宝)
-6     |[pkuseg](https://github.com/lancopku/pkuseg-python)         |Ruixuan Luo, Jingjing Xu, Yi Zhang,<br>Xuancheng Ren, Xu Sun
+6     |[pkuseg](https://github.com/lancopku/pkuseg-python)         |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶),<br>Xuancheng Ren (任宣丞), Yi Zhang (张艺),<br>Bingzhen Wei (位冰镇), Xu Sun (孙栩)
 7     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
 8     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
 9     |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin

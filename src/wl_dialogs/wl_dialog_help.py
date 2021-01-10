@@ -104,7 +104,7 @@ class Wl_Dialog_Citing(wl_dialog.Wl_Dialog_Info):
 class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Acknowledgments'),
-                         width = 550)
+                         width = 650)
 
         with open('wl_acks/wl_acks_general.csv', 'r', encoding = 'utf_8', newline = '') as f:
             csv_reader = csv.reader(f, delimiter = '|')
@@ -149,6 +149,9 @@ class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
                 self.tr('Version'),
                 self.tr('Author(s)'),
                 self.tr('License')
+            ],
+            cols_stretch = [
+                self.tr('Author(s)')
             ]
         )
 
