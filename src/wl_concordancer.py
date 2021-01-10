@@ -923,7 +923,8 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
             search_terms_file = wl_matching.match_search_terms(
                 self.main, text.tokens_flat,
                 lang = text.lang,
-                text_type = text.text_type,
+                tokenized = text.tokenized,
+                tagged = text.tagged,
                 token_settings = settings['token_settings'],
                 search_settings = settings['search_settings']
             )
