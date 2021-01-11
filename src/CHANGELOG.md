@@ -16,6 +16,7 @@
 ### 🎉 New Features
 - Utils: Add pkuseg's Chinese word tokenizer
 - Work Area: Add Collocation/Colligation - Generation Settings - Test of Statistical Significance - Berry-Rogghe’s z-score
+- Work Area: Add Overview - Count of n-length Sentences
 
 ### 📌 Bugfixes
 - Work Area: Fix Concordancer - Generate Figure
