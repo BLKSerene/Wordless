@@ -450,6 +450,7 @@ def generate_table(main, table):
             table.clear_table()
 
             count_tokens_lens = []
+            count_sentences_lens = []
 
             # Insert column (total)
             for i, file in enumerate(files):
@@ -553,10 +554,12 @@ def generate_table(main, table):
                     table.set_item_num(27, i, numpy.std(len_types))
 
                 count_tokens_lens.append(collections.Counter(len_tokens))
+                count_sentences_lens.append(collections.Counter(len_sentences))
+
+            len_files = len(files)
 
             # Count of n-length Tokens
             if any(count_tokens_lens):
-                len_files = len(files)
                 count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
                 count_tokens_lens_total = {
                     len_token: count_tokens_files[-1]
@@ -590,6 +593,43 @@ def generate_table(main, table):
                             col = j,
                             val = count,
                             total = count_tokens_lens_total.get(i + 1, 0)
+                        )
+
+            # Count of n-length Sentences
+            if any(count_sentences_lens):
+                count_sentences_lens_files = wl_misc.merge_dicts(count_sentences_lens)
+                count_sentences_lens_total = {
+                    len_sentence: count_sentences_files[-1]
+                    for len_sentence, count_sentences_files in count_sentences_lens_files.items()
+                }
+                len_sentences_max = max(count_sentences_lens_files)
+                
+                for i in range(len_sentences_max):
+                    table.insert_row(
+                        table.rowCount(),
+                        main.tr(f'Count of {i + 1}-Length Sentences'),
+                        is_int = True, is_cumulative = True
+                    )
+                    table.insert_row(
+                        table.rowCount(),
+                        main.tr(f'Count of {i + 1}-Length Sentences %'),
+                        is_pct = True, is_cumulative = True
+                    )
+
+                for i in range(len_sentences_max):
+                    counts = count_sentences_lens_files.get(i + 1, [0] * (len_files + 1))
+
+                    for j, count in enumerate(counts):
+                        table.set_item_num(
+                            row = table.rowCount() - (len_sentences_max - i) * 2,
+                            col = j,
+                            val = count
+                        )
+                        table.set_item_num(
+                            row = table.rowCount() - (len_sentences_max - i) * 2 + 1,
+                            col = j,
+                            val = count,
+                            total = count_sentences_lens_total.get(i + 1, 0)
                         )
 
             table.setUpdatesEnabled(True)
