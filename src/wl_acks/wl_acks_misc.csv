@@ -1,6 +1,6 @@
 Beautiful Soup|https://www.crummy.com/software/BeautifulSoup/|4.9.3|Leonard Richardson|MIT|https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE
 cChardet|https://github.com/PyYoshi/cChardet|2.1.7|Yoshihiro Misawa|MPL-1.0/GPL-2.0/LGPL-2.1|https://github.com/PyYoshi/cChardet/blob/master/COPYING
-chardet|https://github.com/chardet/chardet|3.0.4|Daniel Blanchard|LGPL-2.1|https://github.com/chardet/chardet/blob/master/LICENSE
+chardet|https://github.com/chardet/chardet|4.0.0|Daniel Blanchard|LGPL-2.1|https://github.com/chardet/chardet/blob/master/LICENSE
 langdetect|https://github.com/Mimino666/langdetect|1.0.8|中谷秀洋, Michal Danilák|Apache-2.0|https://github.com/Mimino666/langdetect/blob/master/LICENSE
 langid.py|https://github.com/saffsd/langid.py|1.1.6|Marco Lui|BSD-2-Clause|https://github.com/saffsd/langid.py/blob/master/LICENSE
 lxml|https://lxml.de/|4.6.2|Stefan Behnel|BSD-3-Clause|https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt

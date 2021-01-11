@@ -25,8 +25,9 @@
 - File Area: Remove support for .xls files
 
 ### ⏫ Dependency Changes
-- Add pkuseg
-- Remove xlrd
+- Dependencies: Add pkuseg
+- Dependencies: Remove xlrd
+- Dependencies: Upgrade chardet to 4.0.0
 
 
 ## [V1.4.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.4.0) - 12/11/2020
