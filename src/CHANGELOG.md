@@ -28,6 +28,7 @@
 - Dependencies: Add pkuseg
 - Dependencies: Remove xlrd
 - Dependencies: Upgrade chardet to 4.0.0
+- Dependencies: Upgrade requests to 2.25.1
 
 
 ## [V1.4.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.4.0) - 12/11/2020
