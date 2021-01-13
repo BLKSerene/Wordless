@@ -28,7 +28,7 @@ main = wl_test_init.Wl_Test_Main()
 
 for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
     for word_tokenizer in word_tokenizers:
-        if lang not in ['others']:
+        if lang not in ['other']:
             test_word_tokenizers.append((lang, word_tokenizer))
 
 @pytest.mark.parametrize('lang, word_tokenizer', test_word_tokenizers)
