@@ -42,8 +42,6 @@ class Wl_Table_Concordancer(wl_table.Wl_Table_Data_Sort_Search):
                 parent.tr('Right'),
                 parent.tr('Token No.'),
                 parent.tr('Token No. %'),
-                parent.tr('Sentence Segment No.'),
-                parent.tr('Sentence Segment No. %'),
                 parent.tr('Sentence No.'),
                 parent.tr('Sentence No. %'),
                 parent.tr('Paragraph No.'),
@@ -52,13 +50,11 @@ class Wl_Table_Concordancer(wl_table.Wl_Table_Data_Sort_Search):
             ],
             headers_int = [
                 parent.tr('Token No.'),
-                parent.tr('Sentence Segment No.'),
                 parent.tr('Sentence No.'),
                 parent.tr('Paragraph No.')
             ],
             headers_pct = [
                 parent.tr('Token No. %'),
-                parent.tr('Sentence Segment No. %'),
                 parent.tr('Sentence No. %'),
                 parent.tr('Paragraph No. %')
             ]
@@ -186,14 +182,12 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         self.stacked_widget_width_left = wl_layout.Wl_Stacked_Widget(self)
         self.spin_box_width_left_para = wl_box.Wl_Spin_Box(self)
         self.spin_box_width_left_sentence = wl_box.Wl_Spin_Box(self)
-        self.spin_box_width_left_sentence_seg = wl_box.Wl_Spin_Box(self)
         self.spin_box_width_left_token = wl_box.Wl_Spin_Box(self)
         self.spin_box_width_left_char = wl_box.Wl_Spin_Box(self)
         self.label_width_right = QLabel(self.tr('Width (Right):'), self)
         self.stacked_widget_width_right = wl_layout.Wl_Stacked_Widget(self)
         self.spin_box_width_right_para = wl_box.Wl_Spin_Box(self)
         self.spin_box_width_right_sentence = wl_box.Wl_Spin_Box(self)
-        self.spin_box_width_right_sentence_seg = wl_box.Wl_Spin_Box(self)
         self.spin_box_width_right_token = wl_box.Wl_Spin_Box(self)
         self.spin_box_width_right_char = wl_box.Wl_Spin_Box(self)
         self.label_width_unit = QLabel(self.tr('Width Unit:'), self)
@@ -214,12 +208,10 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
 
         self.stacked_widget_width_left.addWidget(self.spin_box_width_left_para)
         self.stacked_widget_width_left.addWidget(self.spin_box_width_left_sentence)
-        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_sentence_seg)
         self.stacked_widget_width_left.addWidget(self.spin_box_width_left_token)
         self.stacked_widget_width_left.addWidget(self.spin_box_width_left_char)
         self.stacked_widget_width_right.addWidget(self.spin_box_width_right_para)
         self.stacked_widget_width_right.addWidget(self.spin_box_width_right_sentence)
-        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_sentence_seg)
         self.stacked_widget_width_right.addWidget(self.spin_box_width_right_token)
         self.stacked_widget_width_right.addWidget(self.spin_box_width_right_char)
 
@@ -235,7 +227,6 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         self.combo_box_width_unit.addItems([
             self.tr('Paragraph'),
             self.tr('Sentence'),
-            self.tr('Sentence Segment'),
             self.tr('Token'),
             self.tr('Character')
         ])
@@ -250,12 +241,10 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
 
         self.spin_box_width_left_para.setRange(0, 10)
         self.spin_box_width_left_sentence.setRange(0, 20)
-        self.spin_box_width_left_sentence_seg.setRange(0, 50)
         self.spin_box_width_left_token.setRange(0, 100)
         self.spin_box_width_left_char.setRange(0, 1000)
         self.spin_box_width_right_para.setRange(0, 10)
         self.spin_box_width_right_sentence.setRange(0, 20)
-        self.spin_box_width_right_sentence_seg.setRange(0, 50)
         self.spin_box_width_right_token.setRange(0, 100)
         self.spin_box_width_right_char.setRange(0, 1000)
 
@@ -266,12 +255,10 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
 
         self.spin_box_width_left_para.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_width_left_sentence.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_left_sentence_seg.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_width_left_token.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_width_left_char.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_width_right_para.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_width_right_sentence.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_right_sentence_seg.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_width_right_token.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_width_right_char.valueChanged.connect(self.generation_settings_changed)
         self.combo_box_width_unit.currentTextChanged.connect(self.generation_settings_changed)
@@ -416,12 +403,10 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         # Generation Settings
         self.spin_box_width_left_para.setValue(settings['generation_settings']['width_left_para'])
         self.spin_box_width_left_sentence.setValue(settings['generation_settings']['width_left_sentence'])
-        self.spin_box_width_left_sentence_seg.setValue(settings['generation_settings']['width_left_sentence_seg'])
         self.spin_box_width_left_token.setValue(settings['generation_settings']['width_left_token'])
         self.spin_box_width_left_char.setValue(settings['generation_settings']['width_left_char'])
         self.spin_box_width_right_para.setValue(settings['generation_settings']['width_right_para'])
         self.spin_box_width_right_sentence.setValue(settings['generation_settings']['width_right_sentence'])
-        self.spin_box_width_right_sentence_seg.setValue(settings['generation_settings']['width_right_sentence_seg'])
         self.spin_box_width_right_token.setValue(settings['generation_settings']['width_right_token'])
         self.spin_box_width_right_char.setValue(settings['generation_settings']['width_right_char'])
         self.combo_box_width_unit.setCurrentText(settings['generation_settings']['width_unit'])
@@ -493,12 +478,10 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
 
         settings['width_left_para'] = self.spin_box_width_left_para.value()
         settings['width_left_sentence'] = self.spin_box_width_left_sentence.value()
-        settings['width_left_sentence_seg'] = self.spin_box_width_left_sentence_seg.value()
         settings['width_left_token'] = self.spin_box_width_left_token.value()
         settings['width_left_char'] = self.spin_box_width_left_char.value()
         settings['width_right_para'] = self.spin_box_width_right_para.value()
         settings['width_right_sentence'] = self.spin_box_width_right_sentence.value()
-        settings['width_right_sentence_seg'] = self.spin_box_width_right_sentence_seg.value()
         settings['width_right_token'] = self.spin_box_width_right_token.value()
         settings['width_right_char'] = self.spin_box_width_right_char.value()
         settings['width_unit'] = self.combo_box_width_unit.currentText()
@@ -516,15 +499,12 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         elif settings['width_unit'] == self.tr('Sentence'):
             self.stacked_widget_width_left.setCurrentIndex(1)
             self.stacked_widget_width_right.setCurrentIndex(1)
-        elif settings['width_unit'] == self.tr('Sentence Segment'):
+        elif settings['width_unit'] == self.tr('Token'):
             self.stacked_widget_width_left.setCurrentIndex(2)
             self.stacked_widget_width_right.setCurrentIndex(2)
-        elif settings['width_unit'] == self.tr('Token'):
+        elif settings['width_unit'] == self.tr('Character'):
             self.stacked_widget_width_left.setCurrentIndex(3)
             self.stacked_widget_width_right.setCurrentIndex(3)
-        elif settings['width_unit'] == self.tr('Character'):
-            self.stacked_widget_width_left.setCurrentIndex(4)
-            self.stacked_widget_width_right.setCurrentIndex(4)
 
         # Sampling Method
         if settings['sampling_method'] == self.tr('None'):
@@ -588,7 +568,6 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
             len_paras = len(text.offsets_paras)
             len_sentences = len(text.offsets_sentences)
-            len_sentence_segs = len(text.offsets_sentence_segs)
             len_tokens = len(text.tokens_flat)
 
             search_terms = wl_matching.match_search_terms(
@@ -627,16 +606,6 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             search_terms_exclusion = search_terms_exclusion)
                         ):
                         concordance_line = []
-
-                        # Sentence Segment No.
-                        if text.offsets_sentence_segs[-1] <= i:
-                            no_sentence_seg = len_setence_segs
-                        else:
-                            for j, i_sentence_seg in enumerate(text.offsets_sentence_segs):
-                                if i_sentence_seg > i:
-                                    no_sentence_seg = j
-
-                                    break
 
                         # Sentence No.
                         if text.offsets_sentences[-1] <= i:
@@ -711,28 +680,6 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             else:
                                 text_search_left = tokens[offset_sentence_start:i]
                                 text_search_right = tokens[i + len_search_term : offset_sentence_end]
-                        # Width Unit (Sentence Segment)
-                        elif settings['generation_settings']['width_unit'] == self.tr('Sentence Segment'):
-                            width_left_sentence_seg = settings['generation_settings']['width_left_sentence_seg']
-                            width_right_sentence_seg = settings['generation_settings']['width_right_sentence_seg']
-
-                            offset_sentence_seg_start = text.offsets_sentence_segs[max(0, no_sentence_seg - 1 - width_left_sentence_seg)]
-
-                            if no_sentence_seg + width_right_sentence_seg >= len_sentence_segs:
-                                offset_sentence_seg_end = None
-                            else:
-                                offset_sentence_seg_end = text.offsets_sentence_segs[min(no_sentence_seg + width_right_sentence_seg, len_sentence_segs - 1)]
-
-                            context_left = text.tokens_flat[offset_sentence_seg_start:i]
-                            context_right = text.tokens_flat[i + len_search_term : offset_sentence_seg_end]
-
-                            # Search in Results
-                            if settings['token_settings']['puncs']:
-                                text_search_left = copy.deepcopy(context_left)
-                                text_search_right = copy.deepcopy(context_right)
-                            else:
-                                text_search_left = tokens[offset_sentence_seg_start:i]
-                                text_search_right = tokens[i + len_search_term : offset_sentence_seg_end]
                         # Width Unit (Token)
                         elif settings['generation_settings']['width_unit'] == self.tr('Token'):
                             width_left_token = settings['generation_settings']['width_left_token']
@@ -841,8 +788,6 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                         concordance_line.append([context_right_text, context_right, text_search_right])
                         # Token No.
                         concordance_line.append([i + 1, len_tokens])
-                        # Sentence Segment No.
-                        concordance_line.append([no_sentence_seg, len_sentence_segs])
                         # Sentence No.
                         concordance_line.append([no_sentence, len_sentences])
                         # Paragraph No.
@@ -1060,10 +1005,9 @@ def generate_table(main, table):
                 right_text, right_text_raw, right_text_search = concordance_line[2]
 
                 no_token, len_tokens = concordance_line[3]
-                no_sentence_seg, len_sentence_segs = concordance_line[4]
-                no_sentence, len_sentences = concordance_line[5]
-                no_para, len_paras = concordance_line[6]
-                file_name = concordance_line[7]
+                no_sentence, len_sentences = concordance_line[4]
+                no_para, len_paras = concordance_line[5]
+                file_name = concordance_line[6]
 
                 table.setRowCount(table.rowCount() + 1)
 
@@ -1103,18 +1047,15 @@ def generate_table(main, table):
                 # Token No.
                 table.set_item_num(table.rowCount() - 1, 3, no_token)
                 table.set_item_num(table.rowCount() - 1, 4, no_token, len_tokens)
-                # Sentence Segment No.
-                table.set_item_num(table.rowCount() - 1, 5, no_sentence_seg)
-                table.set_item_num(table.rowCount() - 1, 6, no_sentence_seg, len_sentence_segs)
                 # Sentence No.
-                table.set_item_num(table.rowCount() - 1, 7, no_sentence)
-                table.set_item_num(table.rowCount() - 1, 8, no_sentence, len_sentences)
+                table.set_item_num(table.rowCount() - 1, 5, no_sentence)
+                table.set_item_num(table.rowCount() - 1, 6, no_sentence, len_sentences)
                 # Paragraph No.
-                table.set_item_num(table.rowCount() - 1, 9, no_para)
-                table.set_item_num(table.rowCount() - 1, 10, no_para, len_paras)
+                table.set_item_num(table.rowCount() - 1, 7, no_para)
+                table.set_item_num(table.rowCount() - 1, 8, no_para, len_paras)
 
                 # File
-                table.setItem(table.rowCount() - 1, 11, QTableWidgetItem(file_name))
+                table.setItem(table.rowCount() - 1, 9, QTableWidgetItem(file_name))
 
             table.setUpdatesEnabled(True)
             table.blockSignals(False)
