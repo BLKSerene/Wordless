@@ -38,7 +38,6 @@ class Wl_Text():
 
         self.offsets_paras = []
         self.offsets_sentences = []
-        self.offsets_sentence_segs = []
 
         self.tokens_multilevel = []
         self.tokens_flat = []

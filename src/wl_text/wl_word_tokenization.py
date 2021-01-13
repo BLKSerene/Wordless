@@ -274,8 +274,4 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
             if sentence:
                 sentence[-1] = wl_text.Wl_Token(sentence[-1], boundary = ' ', sentence_ending = True)
 
-    # Clause tokenization
-    for i, sentence in enumerate(tokens_multilevel):
-        tokens_multilevel[i] = wl_sentence_tokenization.wl_clause_tokenize(main, sentence, lang)
-
     return tokens_multilevel
