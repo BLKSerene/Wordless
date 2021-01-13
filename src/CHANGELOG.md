@@ -25,6 +25,7 @@
 ### ❌ Removals
 - File Area: Remove support for .lrc files
 - File Area: Remove support for .xls files
+- Work Area: Remove Overview - Count of Sentence Segments / Paragraph Length in Sentence Segment / Sentence Segment Length in Token
 
 ### ⏫ Dependency Changes
 - Dependencies: Add AttaCut
