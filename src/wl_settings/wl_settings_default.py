@@ -1110,7 +1110,7 @@ def init_settings_default(main):
                 'tam': main.tr('spaCy - Tamil Word Tokenizer'),
                 'tat': main.tr('spaCy - Tatar Word Tokenizer'),
                 'tel': main.tr('spaCy - Telugu Word Tokenizer'),
-                'tha': main.tr('PyThaiNLP - Maximum Matching + TCC'),
+                'tha': main.tr('AttaCut - Thai Word Tokenizer'),
                 'bod': main.tr('botok - Tibetan Word Tokenizer'),
                 'tur': main.tr('spaCy - Turkish Word Tokenizer'),
                 'ukr': main.tr('spaCy - Ukrainian Word Tokenizer'),
