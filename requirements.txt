@@ -16,6 +16,7 @@ pyqt5
 pytest
 
 # ---------- NLP ----------
+attacut == 1.0.6
 botok == 0.8.1
 jieba == 0.42.1
 pkuseg == 0.0.25
