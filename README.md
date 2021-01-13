@@ -110,19 +110,20 @@ I would like to extend my sincere gratitude to the following open-source project
 
 &nbsp;|Name|Author(s)
 -----:|----|---------
-1     |[botok](https://github.com/Esukhia/botok)                   |Hélios Drupchen Hildt
-2     |[jieba<br>(“结巴”中文分词)](https://github.com/fxsjy/jieba)  |Sun Junyi (孙君意)
-3     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
-4     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Edward Loper, Ewan Klein
-5     |[opencc-python](https://github.com/yichen0831/opencc-python)|Huang Yichen, Carbo Kuo (郭家宝)
-6     |[pkuseg](https://github.com/lancopku/pkuseg-python)         |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶),<br>Xuancheng Ren (任宣丞), Yi Zhang (张艺),<br>Bingzhen Wei (位冰镇), Xu Sun (孙栩)
-7     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
-8     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
-9     |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
-10    |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
-11    |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
-12    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
-13    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
+1     |[AttaCut](https://github.com/PyThaiNLP/attacut)             |Pattarawat Chormai
+2     |[botok](https://github.com/Esukhia/botok)                   |Hélios Drupchen Hildt
+3     |[jieba<br>(“结巴”中文分词)](https://github.com/fxsjy/jieba)  |Sun Junyi (孙君意)
+4     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
+5     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Edward Loper, Ewan Klein
+6     |[opencc-python](https://github.com/yichen0831/opencc-python)|Huang Yichen, Carbo Kuo (郭家宝)
+7     |[pkuseg](https://github.com/lancopku/pkuseg-python)         |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶),<br>Xuancheng Ren (任宣丞), Yi Zhang (张艺),<br>Bingzhen Wei (位冰镇), Xu Sun (孙栩)
+8     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
+9     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
+10    |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
+11    |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
+12    |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
+13    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
+14    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
 
 ### Language Data
 
