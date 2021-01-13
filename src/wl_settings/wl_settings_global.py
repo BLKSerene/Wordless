@@ -1093,6 +1093,7 @@ def init_settings_global(main):
             ],
 
             'tha': [
+                main.tr('AttaCut - Thai Word Tokenizer'),
                 main.tr('PyThaiNLP - Longest Matching'),
                 main.tr('PyThaiNLP - Maximum Matching'),
                 main.tr('PyThaiNLP - Maximum Matching + TCC'),
