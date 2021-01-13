@@ -9,6 +9,7 @@
 # All other rights reserved.
 #
 
+import attacut
 import jieba
 import pkuseg
 import nltk
@@ -214,6 +215,13 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         for sentence in sentences:
             tokens_multilevel.append([token.text for token in razdel.tokenize(sentence)])
     # Thai
+    elif word_tokenizer == 'AttaCut - Thai Word Tokenizer':
+        sentences = wl_sentence_tokenization.wl_sentence_tokenize(
+            main, text,
+            lang = 'tha')
+
+        for sentence in sentences:
+            tokens_multilevel.append(attacut.tokenize(sentence))
     elif 'PyThaiNLP' in word_tokenizer:
         # Preserve sentence boundaries
         sentences = wl_sentence_tokenization.wl_sentence_tokenize(
