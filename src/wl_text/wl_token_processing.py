@@ -195,7 +195,6 @@ def wl_process_tokens_concordancer(text, token_settings):
 
         text.offsets_paras = []
         text.offsets_sentences = []
-        text.offsets_sentence_segs = []
         text.tokens_flat = []
 
         for para in text.tokens_multilevel:
@@ -204,25 +203,21 @@ def wl_process_tokens_concordancer(text, token_settings):
             for sentence in para:
                 text.offsets_sentences.append(len(text.tokens_flat))
 
-                for sentence_seg in sentence:
-                    text.offsets_sentence_segs.append(len(text.tokens_flat))
-
-                    for token in sentence_seg:
-                        if text.tokens_flat:
-                            if wl_checking_token.is_token_punc(token):
-                                text.tokens_flat[-1] = wl_word_detokenization.wl_word_detokenize(
-                                    main, [text.tokens_flat[-1], token],
-                                    lang = text.lang
-                                )
-                            else:
-                                text.tokens_flat.append(token)
+                for token in sentence:
+                    if text.tokens_flat:
+                        if wl_checking_token.is_token_punc(token):
+                            text.tokens_flat[-1] = wl_word_detokenization.wl_word_detokenize(
+                                main, [text.tokens_flat[-1], token],
+                                lang = text.lang
+                            )
                         else:
                             text.tokens_flat.append(token)
+                    else:
+                        text.tokens_flat.append(token)
 
         # Remove duplicate offsets
         text.offsets_paras = sorted(set(text.offsets_paras))
         text.offsets_sentences = sorted(set(text.offsets_sentences))
-        text.offsets_sentence_segs = sorted(set(text.offsets_sentence_segs))
 
         # Check if the first token is a punctuation mark
         if wl_checking_token.is_token_punc(text.tokens_flat[0]):
