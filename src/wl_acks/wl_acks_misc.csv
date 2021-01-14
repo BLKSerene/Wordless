@@ -10,7 +10,7 @@ langid.py     |https://github.com/saffsd/langid.py           |1.1.6 |Marco Lui  
 
 lxml          |https://lxml.de/                              |4.6.2 |Stefan Behnel             |BSD-3-Clause|https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt
 
-NumPy         |https://www.numpy.org/                        |1.19.3|NumPy Developers          |BSD-3-Clause|https://github.com/numpy/numpy/blob/master/LICENSE.txt
+NumPy         |https://www.numpy.org/                        |1.19.5|NumPy Developers          |BSD-3-Clause|https://github.com/numpy/numpy/blob/master/LICENSE.txt
 
 openpyxl      |https://openpyxl.readthedocs.io/en/stable/    |3.0.5 |Eric Gazoni, Charlie Clark|MIT         |https://bitbucket.org/openpyxl/openpyxl/src/5983d4ba5c18b85171185e8b1ca136876ec52864/LICENCE.rst
 
