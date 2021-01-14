@@ -76,7 +76,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         assert text == 'Le français est une langue indo-européenne de la famille des langues romanes.'
     elif lang == 'deu':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Die deutsche Sprache bzw. Deutsch ([ dɔʏ̯t͡ʃ]; abgekürzt dt . oder dtsch .) ist eine westgermanische Sprache.Die deutsche Sprache bzw. Deutsch ([ dɔʏ̯t͡ʃ]; abgekürzt dt . oder dtsch .) ist eine westgermanische Sprache.Die deutsche Sprache bzw. Deutsch ([ dɔʏ̯t͡ʃ]; abgekürzt dt . oder dtsch .) ist eine westgermanische Sprache.Die deutsche Sprache bzw. Deutsch ([ dɔʏ̯t͡ʃ]; abgekürzt dt . oder dtsch .) ist eine westgermanische Sprache.'
+            assert text == 'Die deutsche Sprache bzw. Deutsch ([ dɔʏ̯t͡ʃ];abgekürzt dt.oder dtsch . )ist eine westgermanische Sprache.'
         elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
             assert text == 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ];abgekürzt dt.oder dtsch.)ist eine westgermanische Sprache.'
     elif lang == 'ell':
@@ -85,7 +85,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         assert text == 'A magyar nyelv az uráli nyelvcsalád tagja, a finnugor nyelvek közé tartozó ugor nyelvek egyike.'
     elif lang == 'isl':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.[4 ]'
+            assert text == 'Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.[ 4 ]'
         elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
             assert text == 'Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.[4]'
     elif lang == 'gle':
@@ -106,7 +106,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         assert text == 'Lietuvių kalba – iš baltų prokalbės kilusi lietuvių tautos kalba, kuri Lietuvoje yra valstybinė, o Europos Sąjungoje – viena iš oficialiųjų kalbų.'
     elif lang == 'pol':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Język polski, polszczyzna, skrót: pol . – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.Język polski, polszczyzna, skrót: pol . – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.Język polski, polszczyzna, skrót: pol . – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
+            assert text == 'Język polski, polszczyzna, skrót :pol . –język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
         elif word_detokenizer == 'pol / Sacremoses - Moses Detokenizer':
             assert text == 'Język polski, polszczyzna, skrót: pol. – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
     elif lang == 'por':

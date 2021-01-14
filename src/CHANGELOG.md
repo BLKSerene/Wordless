@@ -23,6 +23,7 @@
 - Work Area: Add Overview - Count of n-length Sentences
 
 ### 📌 Bugfixes
+- Utils: Fix NLTK’s Penn Treebank Detokenizer
 - Work Area: Fix Concordancer - Generate Figure
 
 ### ❌ Removals
