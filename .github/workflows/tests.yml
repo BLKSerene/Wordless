@@ -32,18 +32,19 @@ jobs:
       run: |
         python -m pip install --upgrade pip setuptools
         pip install -r requirements.txt
+        python downloaders/wl_downloader_ci.py
 
     - name: Run Tests
       run: |
         cd src
-        pytest --cache-clear wl_tests/wl_text/test_sentence_tokenization.py
-        pytest --cache-clear wl_tests/wl_text/test_word_tokenization.py
-        pytest --cache-clear wl_tests/wl_text/test_word_detokenization.py
-        pytest --cache-clear wl_tests/wl_text/test_pos_tagging.py
-        pytest --cache-clear wl_tests/wl_text/test_lemmatization.py
-        pytest --cache-clear wl_tests/wl_text/test_stop_words.py
+        pytest wl_tests/wl_text/test_sentence_tokenization.py
+        pytest wl_tests/wl_text/test_word_tokenization.py
+        pytest wl_tests/wl_text/test_word_detokenization.py
+        pytest wl_tests/wl_text/test_pos_tagging.py
+        pytest wl_tests/wl_text/test_lemmatization.py
+        pytest wl_tests/wl_text/test_stop_word_lists.py
         
-        pytest --cache-clear --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
+        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/wl_text/test_stop_word_lists.py
 
   build-macos:
     runs-on: macos-10.15
@@ -72,18 +73,19 @@ jobs:
         python -m pip install --upgrade pip setuptools
         pip install numpy
         pip install -r requirements.txt
+        python downloaders/wl_downloader_ci.py
 
     - name: Run Tests
       run: |
         cd src
-        pytest --cache-clear wl_tests/wl_text/test_sentence_tokenization.py
-        pytest --cache-clear wl_tests/wl_text/test_word_tokenization.py
-        pytest --cache-clear wl_tests/wl_text/test_word_detokenization.py
-        pytest --cache-clear wl_tests/wl_text/test_pos_tagging.py
-        pytest --cache-clear wl_tests/wl_text/test_lemmatization.py
-        pytest --cache-clear wl_tests/wl_text/test_stop_words.py
-
-        pytest --cache-clear --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
+        pytest wl_tests/wl_text/test_sentence_tokenization.py
+        pytest wl_tests/wl_text/test_word_tokenization.py
+        pytest wl_tests/wl_text/test_word_detokenization.py
+        pytest wl_tests/wl_text/test_pos_tagging.py
+        pytest wl_tests/wl_text/test_lemmatization.py
+        pytest wl_tests/wl_text/test_stop_word_lists.py
+        
+        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/wl_text/test_stop_word_lists.py
 
   build-linux:
     runs-on: ubuntu-16.04
@@ -104,15 +106,16 @@ jobs:
         python -m pip install --upgrade pip setuptools
         pip install numpy
         pip install -r requirements.txt
+        python downloaders/wl_downloader_ci.py
 
     - name: Run Tests
       run: |
         cd src
-        pytest --cache-clear wl_tests/wl_text/test_sentence_tokenization.py
-        pytest --cache-clear wl_tests/wl_text/test_word_tokenization.py
-        pytest --cache-clear wl_tests/wl_text/test_word_detokenization.py
-        pytest --cache-clear wl_tests/wl_text/test_pos_tagging.py
-        pytest --cache-clear wl_tests/wl_text/test_lemmatization.py
-        pytest --cache-clear wl_tests/wl_text/test_stop_words.py
-
-        pytest --cache-clear --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=pytest wl_tests/wl_text/test_lemmatization.py
+        pytest wl_tests/wl_text/test_sentence_tokenization.py
+        pytest wl_tests/wl_text/test_word_tokenization.py
+        pytest wl_tests/wl_text/test_word_detokenization.py
+        pytest wl_tests/wl_text/test_pos_tagging.py
+        pytest wl_tests/wl_text/test_lemmatization.py
+        pytest wl_tests/wl_text/test_stop_word_lists.py
+        
+        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/wl_text/test_stop_word_lists.py
