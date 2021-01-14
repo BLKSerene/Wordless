@@ -17,6 +17,7 @@
 - Utils: Add AttaCut’s Thai word tokenizer
 - Utils: Add pkuseg’s Chinese word tokenizer
 - Utils: Add TextBlob’s English sentiment analyzer
+- Utils: Add Tokenizer’s Icelandic sentence tokenizer and word tokenizer
 - Work Area: Add Collocation/Colligation - Generation Settings - Test of Statistical Significance - Berry-Rogghe’s z-score
 - Work Area: Add Concordancer - Sentiment
 - Work Area: Add Overview - Count of n-length Sentences
@@ -34,6 +35,7 @@
 - Dependencies: Add AttaCut
 - Dependencies: Add pkuseg
 - Dependencies: Add TextBlob
+- Dependencies: Add Tokenizer
 - Dependencies: Remove xlrd
 - Dependencies: Upgrade chardet to 4.0.0
 - Dependencies: Upgrade requests to 2.25.1
