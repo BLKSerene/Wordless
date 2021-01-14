@@ -55,23 +55,6 @@ def test_to_iso_639_3(lang_code):
     assert iso_639_3 == {iso_639_1: iso_639_3
                          for iso_639_3, iso_639_1 in main.settings_global['lang_codes'].items()}[lang_code]
 
-@pytest.mark.parametrize('text_type_text', main.settings_global['text_types'])
-def test_to_text_type_code(text_type_text):
-    len_text_type_text = max([len(text_type_text)
-                              for text_type_text in main.settings_global['text_types']])
-    text_type_code = wl_conversion.to_text_type_code(main, text_type_text)
-
-    assert text_type_code == main.settings_global['text_types'][text_type_text]
-
-@pytest.mark.parametrize('text_type_code', main.settings_global['text_types'].values())
-def test_to_text_type_text(text_type_code):
-    len_text_type_code = max([len(str(text_type_code))
-                              for text_type_code in main.settings_global['text_types'].values()])
-    text_type_text = wl_conversion.to_text_type_text(main, text_type_code)
-
-    assert text_type_text == {text_type_code: text_type_text
-                              for text_type_text, text_type_code in main.settings_global['text_types'].items()}[text_type_code]
-
 @pytest.mark.parametrize('encoding_text', main.settings_global['file_encodings'])
 def test_to_encoding_code(encoding_text):
     len_encoding_text = max([len(encoding_text)
