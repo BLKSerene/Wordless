@@ -18,6 +18,7 @@ import pythainlp
 import razdel
 import sacremoses
 import syntok.segmenter
+import tokenizer
 import underthesea
 
 from wl_checking import wl_checking_unicode
@@ -208,25 +209,32 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                         break
 
                 tokens_multilevel.append(tokens)
+    # Icelandic
+    elif word_tokenizer == main.tr('Tokenizer - Icelandic Word Tokenizer'):
+        sentences = wl_sentence_tokenization.wl_sentence_tokenize(
+            main, text,
+            lang = 'isl',
+            sentence_tokenizer = 'Tokenizer - Icelandic Sentence Tokenizer')
+
+        for sentence in sentences:
+            tokens_multilevel.append([token
+                                      for kind, token, val in tokenizer.tokenize(sentence)
+                                      if token])
     # Russian
-    elif word_tokenizer == 'razdel - Russian Word Tokenizer':
+    elif word_tokenizer == main.tr('razdel - Russian Word Tokenizer'):
         sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang = 'rus')
 
         for sentence in sentences:
             tokens_multilevel.append([token.text for token in razdel.tokenize(sentence)])
     # Thai
-    elif word_tokenizer == 'AttaCut - Thai Word Tokenizer':
-        sentences = wl_sentence_tokenization.wl_sentence_tokenize(
-            main, text,
-            lang = 'tha')
+    elif word_tokenizer == main.tr('AttaCut - Thai Word Tokenizer'):
+        sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang = 'tha')
 
         for sentence in sentences:
             tokens_multilevel.append(attacut.tokenize(sentence))
     elif 'PyThaiNLP' in word_tokenizer:
         # Preserve sentence boundaries
-        sentences = wl_sentence_tokenization.wl_sentence_tokenize(
-            main, text,
-            lang = 'tha')
+        sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang = 'tha')
 
         if word_tokenizer == main.tr('PyThaiNLP - Longest Matching'):
             for sentence in sentences:
