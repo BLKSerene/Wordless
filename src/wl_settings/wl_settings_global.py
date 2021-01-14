@@ -61,9 +61,9 @@ def init_settings_global(main):
             main.tr('Hebrew'): 'heb',
             main.tr('Hindi'): 'hin',
             main.tr('Hungarian'): 'hun',
+            main.tr('Icelandic'): 'isl',
             main.tr('Indonesian'): 'ind',
             main.tr('Irish'): 'gle',
-            main.tr('Islandic'): 'isl',
             main.tr('Italian'): 'ita',
             main.tr('Japanese'): 'jpn',
             main.tr('Javanese'): 'jav',
@@ -177,8 +177,8 @@ def init_settings_global(main):
             'hrv': 'hr',
             'hun': 'hu',
             'hye': 'hy',
-            'ind': 'id',
             'isl': 'is',
+            'ind': 'id',
             'ita': 'it',
             'jav': 'jv',
             'jpn': 'ja',
@@ -524,7 +524,8 @@ def init_settings_global(main):
             ],
 
             'isl': [
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentencizer'),
+                main.tr('Tokenizer - Icelandic Sentence Tokenizer')
             ],
 
             'ind': [
@@ -863,7 +864,8 @@ def init_settings_global(main):
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Icelandic Word Tokenizer')
+                main.tr('spaCy - Icelandic Word Tokenizer'),
+                main.tr('Tokenizer - Icelandic Word Tokenizer')
             ],
 
             'ind': [
