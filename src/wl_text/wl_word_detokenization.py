@@ -42,7 +42,7 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
         treebank_detokenizer = nltk.tokenize.treebank.TreebankWordDetokenizer()
 
         for sentence in sentences:
-            text += treebank_detokenizer.tokenize(tokens)
+            text += treebank_detokenizer.tokenize(sentence)
     elif word_detokenizer == main.tr('Sacremoses - Moses Detokenizer'):
         moses_detokenizer = sacremoses.MosesDetokenizer(lang = wl_conversion.to_iso_639_1(main, lang))
 
