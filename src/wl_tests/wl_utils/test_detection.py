@@ -32,14 +32,13 @@ def test_detection_encoding(file_name):
     file['name'] = os.path.basename(file['path'])
     file['encoding'] = 'utf_8'
 
-    encoding_code, success = wl_detection.detect_encoding(main, file["path"])
+    encoding_code = wl_detection.detect_encoding(main, file["path"])
 
     encoding_code_file = re.search(r'(?<=\()[^\(\)]+?(?=\)\.txt)', file_name).group()
     encoding_code_file = encoding_code_file.lower()
     encoding_code_file = encoding_code_file.replace('-', '_')
 
     assert encoding_code == encoding_code_file
-    assert success
 
 # Language detection
 @pytest.mark.parametrize('file_name', os.listdir(f'wl_tests/files/wl_utils/wl_detection/lang/'))
@@ -50,7 +49,6 @@ def test_detection_lang(file_name):
     file['name'] = os.path.basename(file['path'])
     file['encoding'] = 'utf_8'
 
-    lang_code, success = wl_detection.detect_lang(main, file)
+    lang_code = wl_detection.detect_lang(main, file)
 
     assert lang_code == file_name.replace('.txt', '')
-    assert success
