@@ -42,6 +42,7 @@
 - Dependencies: Upgrade pytest to 6.2.1
 - Dependencies: Upgrade PyThaiNLP to 2.2.6
 - Dependencies: Upgrade requests to 2.25.1
+- Dependencies: Upgrade SciPy to 1.6.0
 
 
 ## [V1.4.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.4.0) - 12/11/2020
