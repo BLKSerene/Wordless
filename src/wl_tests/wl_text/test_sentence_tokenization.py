@@ -108,7 +108,10 @@ def test_sentence_tokenize(lang, sentence_tokenizer, show_results = False):
     elif lang == 'hun':
         assert sentences == ['A magyar nyelv az uráli nyelvcsalád tagja, a finnugor nyelvek közé tartozó ugor nyelvek egyike.', 'Legközelebbi rokonai a manysi és a hanti nyelv, majd utánuk az udmurt, a komi, a mari és a mordvin nyelvek.', 'Vannak olyan vélemények, melyek szerint a moldvai csángó önálló nyelv - különösen annak északi, középkori változata -, így ez volna a magyar legközelebbi rokonnyelve.[1]']
     elif lang == 'isl':
-        assert sentences == ['Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.[4] Það hefur tekið minni breytingum frá fornnorrænu en önnur norræn mál[4] og er skyldara norsku og færeysku en sænsku og dönsku.[1][2]']
+        if sentence_tokenizer == 'spaCy - Sentencizer':
+            assert sentences == ['Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.[4] Það hefur tekið minni breytingum frá fornnorrænu en önnur norræn mál[4] og er skyldara norsku og færeysku en sænsku og dönsku.[1][2]']
+        elif sentence_tokenizer == 'Tokenizer - Icelandic Sentence Tokenizer':
+            assert sentences == ['Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.', '[4] Það hefur tekið minni breytingum frá fornnorrænu en önnur norræn mál [4] og er skyldara norsku og færeysku en sænsku og dönsku.', '[1] [2]']
     elif lang == 'ind':
         assert sentences == ['Bahasa Indonesia adalah bahasa Melayu baku yang dijadikan sebagai bahasa resmi Republik Indonesia[1] dan bahasa persatuan bangsa Indonesia.[2] Bahasa Indonesia diresmikan penggunaannya setelah Proklamasi Kemerdekaan Indonesia, tepatnya sehari sesudahnya, bersamaan dengan mulai berlakunya konstitusi.', 'Di Timor Leste, bahasa Indonesia berstatus sebagai bahasa kerja.']
     elif lang == 'gle':

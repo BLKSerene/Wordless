@@ -193,7 +193,8 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
     elif lang == 'isl':
         if word_tokenizer in ['NLTK - NIST Tokenizer',
                               'NLTK - Twitter Tokenizer',
-                              'Sacremoses - Moses Tokenizer']:
+                              'Sacremoses - Moses Tokenizer',
+                              'Tokenizer - Icelandic Word Tokenizer']:
             assert tokens == ['Íslenska', 'er', 'vesturnorrænt', ',', 'germanskt', 'og', 'indóevrópskt', 'tungumál', 'sem', 'er', 'einkum', 'talað', 'og', 'ritað', 'á', 'Íslandi', 'og', 'er', 'móðurmál', 'langflestra', 'Íslendinga', '.', '[', '4', ']']
         elif word_tokenizer == ['NLTK - NLTK Tokenizer',
                                 'NLTK - Penn Treebank Tokenizer']:
