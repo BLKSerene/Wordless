@@ -22,6 +22,7 @@ import matplotlib
 import matplotlib.pyplot
 import nltk
 import numpy
+import textblob
 
 from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialog, wl_dialog_misc, wl_msg_box
@@ -46,7 +47,8 @@ class Wl_Table_Concordancer(wl_table.Wl_Table_Data_Sort_Search):
                 parent.tr('Sentence No. %'),
                 parent.tr('Paragraph No.'),
                 parent.tr('Paragraph No. %'),
-                parent.tr('File')
+                parent.tr('File'),
+                parent.tr('Sentiment')
             ],
             headers_int = [
                 parent.tr('Token No.'),
@@ -794,6 +796,12 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                         concordance_line.append([no_para, len_paras])
                         # File
                         concordance_line.append(file['name'])
+                        # Sentiment
+                        if text.lang == 'eng':
+                            sentiment = textblob.TextBlob(context_left_text + node_text + context_right_text).sentiment.polarity
+                            concordance_line.append(f"{sentiment:.{self.main.settings_custom['data']['precision_decimal']}}")
+                        else:
+                            concordance_line.append('N/A')
 
                         concordance_lines.append(concordance_line)
 
@@ -1008,6 +1016,7 @@ def generate_table(main, table):
                 no_sentence, len_sentences = concordance_line[4]
                 no_para, len_paras = concordance_line[5]
                 file_name = concordance_line[6]
+                sentiment = concordance_line[7]
 
                 table.setRowCount(table.rowCount() + 1)
 
@@ -1015,7 +1024,7 @@ def generate_table(main, table):
                 label_node = wl_label.Wl_Label_Html(
                     f'''
                         <span style="color: {node_color}; font-weight: bold;">
-                            {node_text}
+                            &nbsp;{node_text}&nbsp;
                         </span>
                     ''',
                     main
@@ -1029,8 +1038,10 @@ def generate_table(main, table):
                 table.cellWidget(table.rowCount() - 1, 1).text_search = node_text_search
 
                 # Left
-                table.setCellWidget(table.rowCount() - 1, 0,
-                                    wl_label.Wl_Label_Html(left_text, main))
+                table.setCellWidget(
+                    table.rowCount() - 1, 0,
+                    wl_label.Wl_Label_Html(left_text, main)
+                )
 
                 table.cellWidget(table.rowCount() - 1, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
@@ -1038,8 +1049,10 @@ def generate_table(main, table):
                 table.cellWidget(table.rowCount() - 1, 0).text_search = left_text_search
 
                 # Right
-                table.setCellWidget(table.rowCount() - 1, 2,
-                                    wl_label.Wl_Label_Html(right_text, main))
+                table.setCellWidget(
+                    table.rowCount() - 1, 2,
+                    wl_label.Wl_Label_Html(right_text, main)
+                )
 
                 table.cellWidget(table.rowCount() - 1, 2).text_raw = right_text_raw
                 table.cellWidget(table.rowCount() - 1, 2).text_search = right_text_search
@@ -1056,6 +1069,11 @@ def generate_table(main, table):
 
                 # File
                 table.setItem(table.rowCount() - 1, 9, QTableWidgetItem(file_name))
+
+                # Sentiment
+                table.setItem(table.rowCount() - 1, 10, QTableWidgetItem(sentiment))
+
+                table.item(table.rowCount() - 1, 10).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
             table.setUpdatesEnabled(True)
             table.blockSignals(False)
