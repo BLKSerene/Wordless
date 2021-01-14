@@ -4,4 +4,4 @@ PyInstaller|http://www.pyinstaller.org/                  |4.1   |Hartmut Goebel 
 
 PyQt       |https://riverbankcomputing.com/software/pyqt/|5.15.2|Riverbank Computing Limited|GPL-3.0    |http://pyqt.sourceforge.net/Docs/PyQt5/introduction.html#license
 
-pytest     |https://pytest.org/                          |6.1.2 |Holger Krekel              |MIT        |https://github.com/pytest-dev/pytest/blob/master/LICENSE
+pytest     |https://pytest.org/                          |6.2.1 |Holger Krekel              |MIT        |https://github.com/pytest-dev/pytest/blob/master/LICENSE

@@ -39,6 +39,7 @@
 - Dependencies: Remove xlrd
 - Dependencies: Upgrade chardet to 4.0.0
 - Dependencies: Upgrade NumPy to 1.19.5
+- Dependencies: Upgrade pytest to 6.2.1
 - Dependencies: Upgrade requests to 2.25.1
 
 
