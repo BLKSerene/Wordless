@@ -18,4 +18,4 @@ python-docx   |https://github.com/python-openxml/python-docx |0.8.10|Steve Canny
 
 requests      |https://requests.readthedocs.io/              |2.25.1|Kenneth Reitz             |Apache-2.0  |https://github.com/requests/requests/blob/master/LICENSE
 
-SciPy         |https://scipy.org/scipylib/                   |1.5.4 |SciPy Developers          |BSD-3-Clause|https://github.com/scipy/scipy/blob/master/LICENSE.txt
+SciPy         |https://scipy.org/scipylib/                   |1.6.0 |SciPy Developers          |BSD-3-Clause|https://github.com/scipy/scipy/blob/master/LICENSE.txt
