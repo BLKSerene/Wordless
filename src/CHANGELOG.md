@@ -38,6 +38,7 @@
 - Dependencies: Add Tokenizer
 - Dependencies: Remove xlrd
 - Dependencies: Upgrade chardet to 4.0.0
+- Dependencies: Upgrade NumPy to 1.19.5
 - Dependencies: Upgrade requests to 2.25.1
 
 
