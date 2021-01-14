@@ -123,7 +123,8 @@ I would like to extend my sincere gratitude to the following open-source project
 11    |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
 12    |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
 13    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
-14    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
+14    |[TextBlob](https://textblob.readthedocs.io/)                |Steven Loria
+15    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
 
 ### Language Data
 
