@@ -1354,21 +1354,20 @@ class Wl_Worker_Results_Sort_Concordancer(wl_threading.Wl_Worker):
 
             no_token = self.dialog.table.item(i, 3).val
             no_token_pct = self.dialog.table.item(i, 4).val
-            no_clause = self.dialog.table.item(i, 5).val
-            no_clause_pct = self.dialog.table.item(i, 6).val
-            no_sentence = self.dialog.table.item(i, 7).val
-            no_sentence_pct = self.dialog.table.item(i, 8).val
-            no_para = self.dialog.table.item(i, 9).val
-            no_para_pct = self.dialog.table.item(i, 10).val
-            file = self.dialog.table.item(i, 11).text()
+            no_sentence = self.dialog.table.item(i, 5).val
+            no_sentence_pct = self.dialog.table.item(i, 6).val
+            no_para = self.dialog.table.item(i, 7).val
+            no_para_pct = self.dialog.table.item(i, 8).val
+            file = self.dialog.table.item(i, 9).text()
+            sentiment = self.dialog.table.item(i, 10).text()
 
             results.append([
                 left_old, node_old, right_old,
                 no_token, no_token_pct,
-                no_clause, no_clause_pct,
                 no_sentence, no_sentence_pct,
                 no_para, no_para_pct,
-                file
+                file,
+                sentiment
             ])
 
         self.progress_updated.emit(self.tr('Updating table ...'))
@@ -1580,7 +1579,7 @@ class Wl_Table_Results_Sort_Conordancer(Wl_Table):
         def update_gui(results):
             # Create new labels
             for i, (left_old, node_old, right_old,
-                    _, _, _, _, _, _, _, _, _) in enumerate(results):
+                    _, _, _, _, _, _, _, _) in enumerate(results):
                 left_new = wl_label.Wl_Label_Html('', self.table)
                 node_new = wl_label.Wl_Label_Html(node_old.text(), self.table)
                 right_new = wl_label.Wl_Label_Html('', self.table)
@@ -1602,10 +1601,10 @@ class Wl_Table_Results_Sort_Conordancer(Wl_Table):
 
             for i, (left, node, right,
                     no_token, no_token_pct,
-                    no_clause, no_clause_pct,
                     no_sentence, no_sentence_pct,
                     no_para, no_para_pct,
-                    file) in enumerate(sorted(results, key = key_concordancer)):
+                    file,
+                    sentiment) in enumerate(sorted(results, key = key_concordancer)):
                 for file_open in self.table.settings['files']['files_open']:
                     if file_open['selected'] and file_open['name'] == file:
                         lang = file_open['lang']
@@ -1658,13 +1657,12 @@ class Wl_Table_Results_Sort_Conordancer(Wl_Table):
 
                 self.table.set_item_num(i, 3, no_token)
                 self.table.set_item_num(i, 4, no_token_pct)
-                self.table.set_item_num(i, 5, no_clause)
-                self.table.set_item_num(i, 6, no_clause_pct)
-                self.table.set_item_num(i, 7, no_sentence)
-                self.table.set_item_num(i, 8, no_sentence_pct)
-                self.table.set_item_num(i, 9, no_para)
-                self.table.set_item_num(i, 10, no_para_pct)
-                self.table.item(i, 11).setText(file)
+                self.table.set_item_num(i, 5, no_sentence)
+                self.table.set_item_num(i, 6, no_sentence_pct)
+                self.table.set_item_num(i, 7, no_para)
+                self.table.set_item_num(i, 8, no_para_pct)
+                self.table.item(i, 9).setText(file)
+                self.table.item(i, 10).setText(sentiment)
 
             self.table.setUpdatesEnabled(True)
             self.table.blockSignals(False)
@@ -1691,7 +1689,7 @@ class Wl_Table_Results_Sort_Conordancer(Wl_Table):
         if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
             for sorting_col, sorting_order in settings['sort_results']['sorting_rules']:
                 if sorting_col == self.tr('File'):
-                    sorting_keys.append(11)
+                    sorting_keys.append(9)
                 elif sorting_col == self.tr('Token No.'):
                     sorting_keys.append(3)
                 elif sorting_col == self.tr('Node'):
