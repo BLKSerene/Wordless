@@ -14,9 +14,10 @@ import nltk
 import pythainlp
 import razdel
 import syntok.segmenter
+import tokenizer
 import underthesea
 
-from wl_text import wl_text, wl_text_utils
+from wl_text import wl_text, wl_text_utils, wl_word_detokenization
 
 # Reference: https://stackoverflow.com/questions/9506869/are-there-character-collections-for-all-international-full-stop-punctuations/9508766#9508766
 TERMINATORS_SENTENCE = [
@@ -30,14 +31,6 @@ TERMINATORS_SENTENCE = [
     '𑊩', '𑑋', '𑑌', '𑗂', '𑗃', '𑗉', '𑗊', '𑗋', '𑗌', '𑗍', '𑗎', '𑗏', '𑗐',
     '𑗑', '𑗒', '𑗓', '𑗔', '𑗕', '𑗖', '𑗗', '𑙁', '𑙂', '𑜼', '𑜽', '𑜾', '𑩂',
     '𑩃', '𑪛', '𑪜', '𑱁', '𑱂', '𖩮', '𖩯', '𖫵', '𖬷', '𖬸', '𖭄', '𛲟', '𝪈']
-TERMINATORS_CLAUSE = [
-    # Question and exclamation marks
-    '?', '!', '？', '！',
-    # Commas, colons, semi-colons
-    ',', ':', ';',
-    # Em dashes
-    '—', '—'
-]
 
 def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     sentences = []
@@ -115,6 +108,15 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
             if sentence_start <= len(line):
                 sentences.append(line[sentence_start:])
+    # Icelandic
+    elif sentence_tokenizer == main.tr('Tokenizer - Icelandic Sentence Tokenizer'):
+        for sentence in tokenizer.split_into_sentences(text):
+            sentences.append(wl_word_detokenization.wl_word_detokenize(
+                             main,
+                             tokens = sentence.split(),
+                             lang = 'isl')
+                            )
+
     # Russian
     elif sentence_tokenizer == main.tr('razdel - Russian Sentenizer'):
         sentences = [sentence.text for sentence in razdel.sentenize(text)]
