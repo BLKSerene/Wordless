@@ -109,27 +109,27 @@ class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
         with open('wl_acks/wl_acks_general.csv', 'r', encoding = 'utf_8', newline = '') as f:
             csv_reader = csv.reader(f, delimiter = '|')
 
-            self.ACKS_GENERAL = [row for row in csv_reader]
+            self.ACKS_GENERAL = [row for row in csv_reader if row]
 
         with open('wl_acks/wl_acks_nlp.csv', 'r', encoding = 'utf_8', newline = '') as f:
             csv_reader = csv.reader(f, delimiter = '|')
 
-            self.ACKS_NLP = [row for row in csv_reader]
+            self.ACKS_NLP = [row for row in csv_reader if row]
 
         with open('wl_acks/wl_acks_lang_data.csv', 'r', encoding = 'utf_8', newline = '') as f:
             csv_reader = csv.reader(f, delimiter = '|')
 
-            self.ACKS_LANG_DATA = [row for row in csv_reader]
+            self.ACKS_LANG_DATA = [row for row in csv_reader if row]
 
         with open('wl_acks/wl_acks_plotting.csv', 'r', encoding = 'utf_8', newline = '') as f:
             csv_reader = csv.reader(f, delimiter = '|')
 
-            self.ACKS_PLOTTING = [row for row in csv_reader]
+            self.ACKS_PLOTTING = [row for row in csv_reader if row]
 
         with open('wl_acks/wl_acks_misc.csv', 'r', encoding = 'utf_8', newline = '') as f:
             csv_reader = csv.reader(f, delimiter = '|')
 
-            self.ACKS_MISC = [row for row in csv_reader]
+            self.ACKS_MISC = [row for row in csv_reader if row]
 
         self.label_acks = wl_label.Wl_Label_Dialog(
             self.tr('''
