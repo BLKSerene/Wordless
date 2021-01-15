@@ -10,6 +10,7 @@
 #
 
 import copy
+import re
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
