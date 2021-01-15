@@ -11,8 +11,10 @@
 
 import pkg_resources
 
+import pymorphy2
+
 # Reference: https://github.com/pyinstaller/pyinstaller/issues/3050
-def iter_entry_points(group, name = None):
+def _iter_entry_points(group, name = None):
     for entry_point in entry_points:
         if entry_point.find(group) > -1:
             entry_point_parsed = pkg_resources.EntryPoint.parse(entry_point)
@@ -25,4 +27,4 @@ entry_points = [
     'uk = pymorphy2_dicts_uk'
 ]
 
-pkg_resources.iter_entry_points = iter_entry_points
+pymorphy2.analyzer._iter_entry_points = _iter_entry_points
