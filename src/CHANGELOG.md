@@ -43,6 +43,7 @@
 - Dependencies: Upgrade NumPy to 1.19.5
 - Dependencies: Upgrade pytest to 6.2.1
 - Dependencies: Upgrade PyThaiNLP to 2.2.6
+- Dependencies: Upgrade Python to 3.8.7
 - Dependencies: Upgrade requests to 2.25.1
 - Dependencies: Upgrade SciPy to 1.6.0
 - Dependencies: Upgrade spaCy to 2.3.5
