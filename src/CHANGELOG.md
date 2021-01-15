@@ -23,6 +23,7 @@
 - Work Area: Add Overview - Count of n-length Sentences
 
 ### 📌 Bugfixes
+- Menu: Fix Preferences - Settings - Word Tokenization - Underthesea’s Vietnamese Word Tokenizer
 - Utils: Fix NLTK’s Penn Treebank Detokenizer
 - Work Area: Fix Concordancer - Generate Figure
 
