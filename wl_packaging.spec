@@ -18,6 +18,9 @@ import PyInstaller
 block_cipher = None
 datas = []
 
+# AttaCut
+datas.extend(PyInstaller.utils.hooks.collect_data_files('attacut'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('ssg'))
 # botok
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
 # jieba
@@ -26,6 +29,8 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('jieba'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('langdetect'))
 # nagisa
 datas.extend(PyInstaller.utils.hooks.collect_data_files('nagisa', include_py_files = True))
+# pkuseg
+datas.extend(PyInstaller.utils.hooks.collect_data_files('pkuseg'))
 # Python-scfsuite
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pycrfsuite', include_py_files = True))
 # pymorphy2
@@ -52,6 +57,8 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('pl_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pt_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ro_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('thinc'))
+# Tokenizer
+datas.extend(PyInstaller.utils.hooks.collect_data_files('tokenizer'))
 # Underthesea
 datas.extend(PyInstaller.utils.hooks.collect_data_files('underthesea'))
 # wordcloud
@@ -62,6 +69,7 @@ datas.extend([
     ('src/imgs', 'imgs'),
     ('src/lemmatization', 'lemmatization'),
     ('src/stop_word_lists', 'stop_word_lists'),
+    ('src/wl_acks', 'wl_acks'),
 
     ('src/CHANGELOG.md', '.'),
     ('src/VERSION', '.'),
@@ -74,6 +82,9 @@ if platform.system() == 'Darwin':
 
 # Hidden imports
 hiddenimports = [
+    # AttaCut
+    'attacut.models.seq_sy_ch_conv_concat',
+
     # pymorphy2
     'pymorphy2_dicts_ru',
     'pymorphy2_dicts_uk',
@@ -147,49 +158,60 @@ if platform.system() in ['Windows', 'Linux']:
 elif platform.system() == 'Darwin':
     icon = 'src/imgs/wl_icon.icns'
 
-a = Analysis(['src/wl_main.py'],
-             pathex = [],
-             binaries = [],
-             datas = datas,
-             hiddenimports = hiddenimports,
-             hookspath = [],
-             runtime_hooks = runtime_hooks,
-             excludes = excludes,
-             win_no_prefer_redirects = False,
-             win_private_assemblies = False,
-             cipher = block_cipher,
-             noarchive = False)
+a = Analysis(
+    ['src/wl_main.py'],
+    pathex = [],
+    binaries = [],
+    datas = datas,
+    hiddenimports = hiddenimports,
+    hookspath = [],
+    runtime_hooks = runtime_hooks,
+    excludes = excludes,
+    win_no_prefer_redirects = False,
+    win_private_assemblies = False,
+    cipher = block_cipher,
+    noarchive = False
+)
 
-pyz = PYZ(a.pure, a.zipped_data,
-          cipher = block_cipher)
+pyz = PYZ(
+    a.pure,
+    a.zipped_data,
+    cipher = block_cipher
+)
 
-exe = EXE(pyz,
-          a.scripts,
-          [],
-          exclude_binaries = True,
-          name = 'Wordless',
-          debug = False,
-          bootloader_ignore_signals = False,
-          strip = False,
-          upx = True,
-          console = False,
-          icon = icon)
+exe = EXE(
+    pyz,
+    a.scripts,
+    [],
+    exclude_binaries = True,
+    name = 'Wordless',
+    debug = False,
+    bootloader_ignore_signals = False,
+    strip = False,
+    upx = True,
+    console = False,
+    icon = icon
+)
 
 # Collect data files
-coll = COLLECT(exe,
-               a.binaries,
-               a.zipfiles,
-               a.datas,
-               strip = False,
-               upx = True,
-               name = 'Wordless')
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip = False,
+    upx = True,
+    name = 'Wordless'
+)
 
 # Bundle application on macOS
 if platform.system() == 'Darwin':
-    app = BUNDLE(exe,
-                 name = 'Wordless.app',
-                 icon = icon,
-                 bundle_identifier = None,
-                 info_plist = {
-                    'NSHighResolutionCapable': 'True'
-                 })
+    app = BUNDLE(
+        exe,
+        name = 'Wordless.app',
+        icon = icon,
+        bundle_identifier = None,
+        info_plist = {
+           'NSHighResolutionCapable': 'True'
+        }
+    )
