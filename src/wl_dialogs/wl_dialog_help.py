@@ -239,7 +239,7 @@ class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
 class Wl_Dialog_Need_Help(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Need Help?'),
-                         width = 500,
+                         width = 550,
                          height = 500)
 
         self.label_need_help = wl_label.Wl_Label_Dialog(
@@ -266,17 +266,16 @@ class Wl_Dialog_Need_Help(wl_dialog.Wl_Dialog_Info):
             ]
         )
 
+        self.table_need_help.setFixedHeight(300)
         self.table_need_help.setRowCount(4)
         self.table_need_help.verticalHeader().setHidden(True)
 
-        self.table_need_help.setCellWidget(0, 0, wl_label.Wl_Label_Html_Centered(self.tr('Home Page'), self))
-        self.table_need_help.setCellWidget(0, 1, wl_label.Wl_Label_Html('<a href="https://github.com/BLKSerene/Wl">https://github.com/BLKSerene/Wordless</a>', self))
-        self.table_need_help.setCellWidget(1, 0, wl_label.Wl_Label_Html_Centered(self.tr('Documentation'), self))
-        self.table_need_help.setCellWidget(1, 1, wl_label.Wl_Label_Html('<a href="https://github.com/BLKSerene/Wordless#-documentation">https://github.com/BLKSerene/Wordless#documentation</a>', self))
-        self.table_need_help.setCellWidget(2, 0, wl_label.Wl_Label_Html_Centered(self.tr('Email'), self))
-        self.table_need_help.setCellWidget(2, 1, wl_label.Wl_Label_Html('<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>', self))
-        self.table_need_help.setCellWidget(3, 0, wl_label.Wl_Label_Html_Centered(self.tr('<a href="https://www.wechat.com/en/">WeChat</a><br>Official Account'), self))
-        self.table_need_help.setCellWidget(3, 1, wl_label.Wl_Label_Html_Centered('<img src="imgs/wechat_official_account.jpg">', self))
+        self.table_need_help.setCellWidget(0, 0, wl_label.Wl_Label_Html_Centered(self.tr('Documentation'), self))
+        self.table_need_help.setCellWidget(0, 1, wl_label.Wl_Label_Html('<a href="https://github.com/BLKSerene/Wordless#documentation">https://github.com/BLKSerene/Wordless#documentation</a>', self))
+        self.table_need_help.setCellWidget(1, 0, wl_label.Wl_Label_Html_Centered(self.tr('Email'), self))
+        self.table_need_help.setCellWidget(1, 1, wl_label.Wl_Label_Html('<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>', self))
+        self.table_need_help.setCellWidget(2, 0, wl_label.Wl_Label_Html_Centered(self.tr('<a href="https://www.wechat.com/en/">WeChat</a><br>Official Account'), self))
+        self.table_need_help.setCellWidget(2, 1, wl_label.Wl_Label_Html_Centered('<img src="imgs/wechat_official_account.jpg">', self))
 
         self.label_need_help_note = wl_label.Wl_Label_Dialog(
             self.tr('''
