@@ -648,9 +648,9 @@ class Wl_Dialog_About(wl_dialog.Wl_Dialog_Info):
         label_about_title = wl_label.Wl_Label_Dialog_No_Wrap(
             self.tr(f'''
                 <div style="text-align: center;">
-                    <h2>Wordless Version {main.ver}</h2>
+                    <h2>Wordless {main.ver}</h2>
                     <div>
-                        An Integrated Corpus Tool with Multi-Language Support<br>
+                        An Integrated Corpus Tool with Multilingual Support<br>
                         for the Study of Language, Literature, and Translation
                     </div>
                 </div>
@@ -661,7 +661,7 @@ class Wl_Dialog_About(wl_dialog.Wl_Dialog_Info):
             self.tr('''
                 <hr>
                 <div style="text-align: center;">
-                    Copyright (C) 2018-2020 Ye Lei (<span style="font-family: simsun">叶磊</span>)<br>
+                    Copyright (C) 2018-2021 Ye Lei (<span style="font-family: simsun">叶磊</span>)<br>
                     Licensed Under GNU GPLv3<br>
                     All Other Rights Reserved
                 </div>
