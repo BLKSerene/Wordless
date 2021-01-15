@@ -339,18 +339,14 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
 
             # Paragraph length
             len_paras_in_sentence = [len(para) for para in text.tokens_multilevel]
-            len_paras_in_sentence_seg = [
-                sum([len(sentence) for sentence in para])
-                for para in text.tokens_multilevel
-            ]
             len_paras_in_token = [
-                sum([len(sentence_seg) for sentence in para for sentence_seg in sentence])
+                sum([len(sentence) for sentence in para])
                 for para in text.tokens_multilevel
             ]
 
             # Sentence length
             len_sentences = [
-                sum([len(sentence_seg) for sentence_seg in sentence])
+                len(sentence)
                 for para in text.tokens_multilevel
                 for sentence in para
             ]

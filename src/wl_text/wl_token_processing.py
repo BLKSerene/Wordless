@@ -26,39 +26,35 @@ def wl_process_tokens(text, token_settings):
         # Mark tokens to be removed
         for para in text.tokens_multilevel:
             for sentence in para:
-                for sentence_seg in sentence:
-                    for i, token in enumerate(sentence_seg):
-                        if wl_checking_token.is_token_punc(token):
-                            sentence_seg[i] = ''
+                for i, token in enumerate(sentence):
+                    if wl_checking_token.is_token_punc(token):
+                        sentence[i] = ''
 
-                            text.tags[i_tokens + i] = ''
+                        text.tags[i_tokens + i] = ''
 
-                    i_tokens += len(sentence_seg)
+                i_tokens += len(sentence)
 
         # Remove punctuations
         for para in text.tokens_multilevel:
-            for sentence in para:
-                for i, sentence_seg in enumerate(sentence):
-                    sentence[i] = [token for token in sentence_seg if token]
+            for i, sentence in enumerate(para):
+                para[i] = [token for token in sentence if token]
 
         text.tags = [tags for tags in text.tags if tags != '']
 
     # Lemmatize all tokens
     if not settings['use_tags'] and settings['lemmatize_tokens']:
         for para in text.tokens_multilevel:
-            for sentence in para:
-                for i, sentence_seg in enumerate(sentence):
-                    sentence[i] = wl_lemmatization.wl_lemmatize(
-                        main, sentence_seg,
-                        lang = text.lang
-                    )
+            for i, sentence in enumerate(para):
+                para[i] = wl_lemmatization.wl_lemmatize(
+                    main, sentence,
+                    lang = text.lang
+                )
 
     # Treat as all lowercase
     if settings['treat_as_lowercase']:
         for para in text.tokens_multilevel:
-            for sentence in para:
-                for i, sentence_seg in enumerate(sentence):
-                    sentence[i] = [token.lower() for token in sentence_seg]
+            for i, sentence in enumerate(para):
+                para[i] = [token.lower() for token in sentence]
 
         text.tags = [[tag.lower() for tag in tags] for tags in text.tags]
 
@@ -68,52 +64,46 @@ def wl_process_tokens(text, token_settings):
         if not settings['lowercase']:
             for para in text.tokens_multilevel:
                 for sentence in para:
-                    for sentence_seg in sentence:
-                        for i, token in enumerate(sentence_seg):
-                            if wl_checking_token.is_token_word_lowercase(token):
-                                sentence_seg[i] = ''
+                    for i, token in enumerate(sentence):
+                        if wl_checking_token.is_token_word_lowercase(token):
+                            sentence[i] = ''
         # Uppercase
         if not settings['uppercase']:
             for para in text.tokens_multilevel:
                 for sentence in para:
-                    for sentence_seg in sentence:
-                        for i, token in enumerate(sentence_seg):
-                            if wl_checking_token.is_token_word_uppercase(token):
-                                sentence_seg[i] = ''
+                    for i, token in enumerate(sentence):
+                        if wl_checking_token.is_token_word_uppercase(token):
+                            sentence[i] = ''
         # Title Case
         if not settings['title_case']:
             for para in text.tokens_multilevel:
                 for sentence in para:
-                    for sentence_seg in sentence:
-                        for i, token in enumerate(sentence_seg):
-                            if wl_checking_token.is_token_word_title_case(token):
-                                sentence_seg[i] = ''
+                    for i, token in enumerate(sentence):
+                        if wl_checking_token.is_token_word_title_case(token):
+                            sentence[i] = ''
     else:
         for para in text.tokens_multilevel:
             for sentence in para:
-                for sentence_seg in sentence:
-                    for i, token in enumerate(sentence_seg):
-                        if wl_checking_token.is_token_word(token):
-                            sentence_seg[i] = ''
+                for i, token in enumerate(sentence):
+                    if wl_checking_token.is_token_word(token):
+                        sentence[i] = ''
 
     # Numerals
     if not settings['nums']:
         for para in text.tokens_multilevel:
             for sentence in para:
-                for sentence_seg in sentence:
-                    for i, token in enumerate(sentence_seg):
-                        if wl_checking_token.is_token_num(token):
-                            sentence_seg[i] = ''
+                for i, token in enumerate(sentence):
+                    if wl_checking_token.is_token_num(token):
+                        sentence[i] = ''
 
     # Filter stop words
     if settings['filter_stop_words']:
         for para in text.tokens_multilevel:
-            for sentence in para:
-                for i, sentence_seg in enumerate(sentence):
-                    sentence[i] = wl_stop_word_lists.wl_filter_stop_words(
-                        main, sentence_seg,
-                        lang = text.lang
-                    )
+            for i, sentence in enumerate(para):
+                para[i] = wl_stop_word_lists.wl_filter_stop_words(
+                    main, sentence,
+                    lang = text.lang
+                )
 
     # Ignore tags
     i_token = 0
@@ -121,31 +111,27 @@ def wl_process_tokens(text, token_settings):
     if settings['ignore_tags']:
         for para in text.tokens_multilevel:
             for sentence in para:
-                for sentence_seg in sentence:
-                    for i, token in enumerate(sentence_seg):
-                        sentence_seg[i] = (token, [])
+                for i, token in enumerate(sentence):
+                    sentence[i] = (token, [])
     else:
         for para in text.tokens_multilevel:
             for sentence in para:
-                for sentence_seg in sentence:
-                    for i, token in enumerate(sentence_seg):
-                        sentence_seg[i] = (token, text.tags[i_token + i])
+                for i, token in enumerate(sentence):
+                    sentence[i] = (token, text.tags[i_token + i])
 
-                    i_token += len(sentence_seg)
+                i_token += len(sentence)
 
     # Use tags only
     if settings['use_tags']:
         for para in text.tokens_multilevel:
             for sentence in para:
-                for sentence_seg in sentence:
-                    for i, token in enumerate(sentence_seg):
-                        sentence_seg[i] = sentence_seg[i][1]
+                for i, token in enumerate(sentence):
+                    sentence[i] = sentence[i][1]
     else:
         for para in text.tokens_multilevel:
             for sentence in para:
-                for sentence_seg in sentence:
-                    for i, token in enumerate(sentence_seg):
-                        sentence_seg[i] = f"{sentence_seg[i][0]}{''.join(sentence_seg[i][1])}"
+                for i, token in enumerate(sentence):
+                    sentence[i] = f"{sentence[i][0]}{''.join(sentence[i][1])}"
 
     text.tokens_flat = list(wl_misc.flatten_list(text.tokens_multilevel))
 
