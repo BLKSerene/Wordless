@@ -11,7 +11,7 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [V1.5.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.5.0) - ??/??/2021
+## [1.5.0](https://github.com/BLKSerene/Wordless/releases/tag/1.5.0) - ??/??/2021
 
 ### 🎉 New Features
 - Utils: Add AttaCut’s Thai word tokenizer
@@ -48,7 +48,7 @@
 - Dependencies: Upgrade spaCy to 2.3.5
 
 
-## [V1.4.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.4.0) - 12/11/2020
+## [1.4.0](https://github.com/BLKSerene/Wordless/releases/tag/1.4.0) - 12/11/2020
 
 ### 🎉 New Features
 - Menu: Add Preferences - Settings - File - Tags - Header Tag Settings
@@ -118,7 +118,7 @@
 - Dependencies: Upgrade WordCloud to 1.8.1
 
 
-## [V1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.3.0) - 11/30/2019
+## [1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/1.3.0) - 11/30/2019
 
 ### 🎉 New Features
 - Utils: Add razdel’s Russian sentenizer and word tokenizer
@@ -175,7 +175,7 @@
 - Dependencies: Upgrade WordCloud to 1.6.0
 
 
-## [V1.2.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.2.0) - 08/27/2019
+## [1.2.0](https://github.com/BLKSerene/Wordless/releases/tag/1.2.0) - 08/27/2019
 
 ### 🎉 New Features
 - File Area: Add support for .xml files
@@ -227,7 +227,7 @@
 - Dependencies: Upgrade Underthesea to 1.1.16
 
 
-## [V1.1.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.1.0) - 03/31/2019
+## [1.1.0](https://github.com/BLKSerene/Wordless/releases/tag/1.1.0) - 03/31/2019
 
 ### 🎉 New Features
 - Menu: Add Preferences - Settings - General - Font Settings
@@ -254,7 +254,7 @@
 - Dependencies: Upgrade spaCy to 2.1.3
 
 
-## [V1.0.0](https://github.com/BLKSerene/Wordless/releases/tag/V1.0.0) - 03/20/2019
+## [1.0.0](https://github.com/BLKSerene/Wordless/releases/tag/1.0.0) - 03/20/2019
 
 ### 🎉 New Features
-- First release
+- Release Wordless 1.0.0
