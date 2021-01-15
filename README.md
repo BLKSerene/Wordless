@@ -64,13 +64,13 @@ Email        |blkserene@gmail.com
 ## Citing
 If you publish work that uses Wordless, please cite as follows.
 
-APA (6th Edition):
+APA (7th Edition):
 
-<pre><code>Ye, L. (2020). <i>Wordless</i> (Version 1.4.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
+<pre><code>Ye, L. (2021). <i>Wordless</i> (Version 1.5.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
 
 MLA (8th Edition):
 
-<pre><code>Ye Lei. <i>Wordless</i>, version 1.4.0, 2020. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye Lei. <i>Wordless</i>, version 1.5.0, 2021. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## License
     Copyright (C) 2018-2021  Ye Lei (叶磊)
