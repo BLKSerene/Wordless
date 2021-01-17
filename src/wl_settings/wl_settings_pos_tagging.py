@@ -100,14 +100,9 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
             self.table_pos_taggers.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
 
             self.__dict__[f'combo_box_pos_tagger_{lang}'] = wl_box.Wl_Combo_Box(self)
-
             self.__dict__[f'combo_box_pos_tagger_{lang}'].addItems(settings_global[lang])
 
-            self.__dict__[f'combo_box_pos_tagger_{lang}'].currentTextChanged.connect(lambda text, lang = lang: self.pos_taggers_changed(lang))
-
             self.table_pos_taggers.setCellWidget(i, 1, self.__dict__[f'combo_box_pos_tagger_{lang}'])
-
-        self.checkbox_to_universal_pos_tags.stateChanged.connect(self.preview_results_changed)
 
         group_box_pos_tagger_settings.setLayout(wl_layout.Wl_Layout())
         group_box_pos_tagger_settings.layout().addWidget(self.table_pos_taggers, 0, 0)
@@ -118,25 +113,25 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
 
         self.label_pos_tagging_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_pos_tagging_preview_lang = wl_box.Wl_Combo_Box(self)
-        self.label_pos_tagging_preview_processing = QLabel('', self)
+        self.button_pos_tagging_start_processing = QPushButton(self.tr('Start processing'), self)
         self.text_edit_pos_tagging_preview_samples = QTextEdit(self)
         self.text_edit_pos_tagging_preview_results = QTextEdit(self)
 
         self.combo_box_pos_tagging_preview_lang.addItems(wl_conversion.to_lang_text(self.main, list(settings_global)))
 
+        self.button_pos_tagging_start_processing.setFixedWidth(150)
         self.text_edit_pos_tagging_preview_samples.setAcceptRichText(False)
         self.text_edit_pos_tagging_preview_results.setReadOnly(True)
 
         self.combo_box_pos_tagging_preview_lang.currentTextChanged.connect(self.preview_changed)
-        self.combo_box_pos_tagging_preview_lang.currentTextChanged.connect(self.preview_results_changed)
+        self.button_pos_tagging_start_processing.clicked.connect(self.preview_results_changed)
         self.text_edit_pos_tagging_preview_samples.textChanged.connect(self.preview_changed)
-        self.text_edit_pos_tagging_preview_samples.textChanged.connect(self.preview_results_changed)
         self.text_edit_pos_tagging_preview_results.textChanged.connect(self.preview_changed)
 
         layout_preview_settings = wl_layout.Wl_Layout()
         layout_preview_settings.addWidget(self.label_pos_tagging_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_pos_tagging_preview_lang, 0, 1)
-        layout_preview_settings.addWidget(self.label_pos_tagging_preview_processing, 0, 3)
+        layout_preview_settings.addWidget(self.button_pos_tagging_start_processing, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
@@ -153,12 +148,6 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
         self.layout().setRowStretch(0, 3)
         self.layout().setRowStretch(1, 2)
 
-    def pos_taggers_changed(self, lang):
-        settings_custom = self.main.settings_custom['pos_tagging']
-
-        if lang == settings_custom['preview_lang']:
-            self.preview_results_changed()
-
     def preview_changed(self):
         settings_custom = self.main.settings_custom['pos_tagging']
 
@@ -173,8 +162,11 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
             if self.combo_box_pos_tagging_preview_lang.isEnabled():
                 self.__dict__[f"combo_box_pos_tagger_{settings_custom['preview_lang']}"].setEnabled(False)
                 self.combo_box_pos_tagging_preview_lang.setEnabled(False)
+                self.button_pos_tagging_start_processing.setEnabled(False)
+                self.text_edit_pos_tagging_preview_samples.setEnabled(False)
+                self.checkbox_to_universal_pos_tags.setEnabled(False)
 
-                self.label_pos_tagging_preview_processing.setText(self.tr('Processing text ...'))
+                self.button_pos_tagging_start_processing.setText(self.tr('Processing ...'))
 
                 pos_tagger = self.__dict__[f"combo_box_pos_tagger_{settings_custom['preview_lang']}"].currentText()
 
@@ -198,15 +190,14 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
     def update_gui(self, preview_samples, preview_results):
         settings_custom = self.main.settings_custom['pos_tagging']
 
-        self.label_pos_tagging_preview_processing.setText('')
-
         self.__dict__[f"combo_box_pos_tagger_{settings_custom['preview_lang']}"].setEnabled(True)
         self.combo_box_pos_tagging_preview_lang.setEnabled(True)
+        self.button_pos_tagging_start_processing.setEnabled(True)
+        self.text_edit_pos_tagging_preview_samples.setEnabled(True)
+        self.checkbox_to_universal_pos_tags.setEnabled(True)
 
-        if preview_samples == settings_custom['preview_samples']:
-            self.text_edit_pos_tagging_preview_results.setPlainText('\n'.join(preview_results))
-        else:
-            self.preview_results_changed()
+        self.button_pos_tagging_start_processing.setText(self.tr('Start processing'))
+        self.text_edit_pos_tagging_preview_results.setPlainText('\n'.join(preview_results))
 
     def load_settings(self, defaults = False):
         if defaults:

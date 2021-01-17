@@ -82,10 +82,7 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
             table_lemmatizers.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
 
             self.__dict__[f'combo_box_lemmatizer_{lang}'] = wl_box.Wl_Combo_Box(self)
-
             self.__dict__[f'combo_box_lemmatizer_{lang}'].addItems(settings_global[lang])
-
-            self.__dict__[f'combo_box_lemmatizer_{lang}'].currentTextChanged.connect(lambda text, lang = lang: lemmatizers_changed(lang))
 
             table_lemmatizers.setCellWidget(i, 1, self.__dict__[f'combo_box_lemmatizer_{lang}'])
 
@@ -97,25 +94,25 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
 
         self.label_lemmatization_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_lemmatization_preview_lang = wl_box.Wl_Combo_Box(self)
-        self.label_lemmatization_preview_processing = QLabel('', self)
+        self.button_lemmatization_start_processing = QPushButton(self.tr('Start processing'), self)
         self.text_edit_lemmatization_preview_samples = QTextEdit(self)
         self.text_edit_lemmatization_preview_results = QTextEdit(self)
 
         self.combo_box_lemmatization_preview_lang.addItems(wl_conversion.to_lang_text(self.main, list(settings_global.keys())))
 
+        self.button_lemmatization_start_processing.setFixedWidth(150)
         self.text_edit_lemmatization_preview_samples.setAcceptRichText(False)
         self.text_edit_lemmatization_preview_results.setReadOnly(True)
 
         self.combo_box_lemmatization_preview_lang.currentTextChanged.connect(self.preview_changed)
-        self.combo_box_lemmatization_preview_lang.currentTextChanged.connect(self.preview_results_changed)
+        self.button_lemmatization_start_processing.clicked.connect(self.preview_results_changed)
         self.text_edit_lemmatization_preview_samples.textChanged.connect(self.preview_changed)
-        self.text_edit_lemmatization_preview_samples.textChanged.connect(self.preview_results_changed)
         self.text_edit_lemmatization_preview_results.textChanged.connect(self.preview_changed)
 
         layout_preview_settings = wl_layout.Wl_Layout()
         layout_preview_settings.addWidget(self.label_lemmatization_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_lemmatization_preview_lang, 0, 1)
-        layout_preview_settings.addWidget(self.label_lemmatization_preview_processing, 0, 3)
+        layout_preview_settings.addWidget(self.button_lemmatization_start_processing, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
@@ -152,8 +149,10 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
             if self.combo_box_lemmatization_preview_lang.isEnabled():
                 self.__dict__[f"combo_box_lemmatizer_{settings_custom['preview_lang']}"].setEnabled(False)
                 self.combo_box_lemmatization_preview_lang.setEnabled(False)
+                self.button_lemmatization_start_processing.setEnabled(False)
+                self.text_edit_lemmatization_preview_samples.setEnabled(False)
 
-                self.label_lemmatization_preview_processing.setText(self.tr('Processing text ...'))
+                self.button_lemmatization_start_processing.setText(self.tr('Processing ...'))
 
                 lemmatizer = self.__dict__[f"combo_box_lemmatizer_{settings_custom['preview_lang']}"].currentText()
 
@@ -171,15 +170,13 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
     def update_gui(self, preview_samples, preview_results):
         settings_custom = self.main.settings_custom['lemmatization']
 
-        self.label_lemmatization_preview_processing.setText('')
-
         self.__dict__[f"combo_box_lemmatizer_{settings_custom['preview_lang']}"].setEnabled(True)
         self.combo_box_lemmatization_preview_lang.setEnabled(True)
+        self.button_lemmatization_start_processing.setEnabled(True)
+        self.text_edit_lemmatization_preview_samples.setEnabled(True)
 
-        if preview_samples == settings_custom['preview_samples']:
-            self.text_edit_lemmatization_preview_results.setPlainText('\n'.join(preview_results))
-        else:
-            self.preview_results_changed()
+        self.button_lemmatization_start_processing.setText(self.tr('Start processing'))
+        self.text_edit_lemmatization_preview_results.setPlainText('\n'.join(preview_results))
 
     def load_settings(self, defaults = False):
         if defaults:
