@@ -391,6 +391,27 @@ def wl_msg_box_path_not_dir(main, path):
         QMessageBox.Ok
     )
 
+def wl_msg_box_path_not_exist_confirm(main, path):
+    reply = QMessageBox.question(
+        main,
+        main.tr('Path Not Exist'),
+        main.tr(f'''
+            {main.settings_global['styles']['style_dialog']}
+            <body>
+                <div>The specified path "{path}" does not exist.</div>
+
+                <div>Do you want to create the directory?</div>
+            </body>
+        '''),
+        QMessageBox.Yes | QMessageBox.No,
+        QMessageBox.No
+    )
+
+    if reply == QMessageBox.Yes:
+        wl_checking_misc.check_dir(path)
+
+    return reply
+
 def wl_msg_box_invalid_xml_tags(main):
     QMessageBox.warning(
         main,
