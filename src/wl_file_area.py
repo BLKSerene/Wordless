@@ -267,7 +267,8 @@ class Wl_Files():
 
         if txt:
             default_dir = wl_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
-            new_file['path'] = re.sub(r'^.+?\\([^\\]+?$)', fr'{re.escape(default_dir)}\\\1', file_path)
+
+            new_file['path'] = os.path.join(default_dir, re.split(r'[/\\]', file_path)[-1])
             new_file['path'] = wl_checking_misc.check_new_path(new_file['path'])
 
         # Remove header tags
