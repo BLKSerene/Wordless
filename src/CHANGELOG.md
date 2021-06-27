@@ -25,6 +25,7 @@
 - Dependencies: Upgrade langdetect to 1.0.9
 - Dependencies: Upgrade lxml to 4.6.3
 - Dependencies: Upgrade Matplotlib to 3.4.2
+- Dependencies: Upgrade NetworkX to 2.5.1
 - Dependencies: Upgrade Tokenizer to 3.1.2
 
 
