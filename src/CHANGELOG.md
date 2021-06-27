@@ -22,6 +22,7 @@
 ### ⏫ Dependency Changes
 - Dependencies: Remove AttaCut
 - Dependencies: Upgrade botok to 0.8.7
+- Dependencies: Upgrade langdetect to 1.0.9
 - Dependencies: Upgrade Tokenizer to 3.1.2
 
 
