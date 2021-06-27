@@ -28,14 +28,17 @@ class Wl_Button_Results_Sort(Wl_Button):
 
         super().__init__(parent.tr('Sort Results'), parent)
 
-        dialog_results_sort = wl_dialog_results_sort.Wl_Dialog_Results_Sort_Concordancer(
+        self.dialog_results_sort = wl_dialog_results_sort.Wl_Dialog_Results_Sort_Concordancer(
             self.main,
             table = table
         )
 
         self.setFixedWidth(150)
 
-        self.clicked.connect(dialog_results_sort.show)
+        self.clicked.connect(self.dialog_results_sort.show)
+
+    def add_tables(self, tables):
+        self.dialog_results_sort.add_tables(tables)
 
 class Wl_Button_Results_Filter(Wl_Button):
     def __init__(self, parent, tab, table):
@@ -72,7 +75,7 @@ class Wl_Button_Results_Search(Wl_Button):
 
         super().__init__(parent.tr('Search in Results'), parent)
 
-        dialog_results_search = wl_dialog_results_search.Wl_Dialog_Results_Search(
+        self.dialog_results_search = wl_dialog_results_search.Wl_Dialog_Results_Search(
             self.main,
             tab = tab,
             table = table
@@ -80,7 +83,10 @@ class Wl_Button_Results_Search(Wl_Button):
 
         self.setFixedWidth(150)
 
-        self.clicked.connect(dialog_results_search.load)
+        self.clicked.connect(self.dialog_results_search.load)
+
+    def add_tables(self, tables):
+        self.dialog_results_search.add_tables(tables)
 
 class Wl_Button_Reset_Settings(Wl_Button):
     def __init__(self, parent):
