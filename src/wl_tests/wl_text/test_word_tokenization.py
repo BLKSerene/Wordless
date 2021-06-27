@@ -164,7 +164,7 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
         elif word_tokenizer == 'German / NLTK - Twitter Tokenizer':
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'Deutsch', '(', '[', 'dɔʏ', '̯', 't', '͡', 'ʃ', '];', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
         elif word_tokenizer == 'Sacremoses - Moses Tokenizer':
-            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔʏ', '̯', 't', '͡', 'ʃ', ']', ';', 'abgekürzt', 'dt.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
+            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'Deutsch', '(', '[', 'dɔʏ', '̯', 't', '͡', 'ʃ', ']', ';', 'abgekürzt', 'dt.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
         elif word_tokenizer == 'spaCy - German Word Tokenizer':
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
     elif lang == 'ell':
@@ -220,7 +220,7 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
         elif word_tokenizer == 'NLTK - Twitter Tokenizer':
             assert tokens == ["L'italiano", '(', '[', 'itaˈljaːno', ']', '[', 'Nota', '1', ']', 'ascolta', '[', '?', '·', 'info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
         elif word_tokenizer == 'Sacremoses - Moses Tokenizer':
-            assert tokens == ["L'", 'italiano', '(', '[', 'itaˈljaːno', ']', '[', 'Nota', '1', ']', 'ascolta', '[', '?', '·', 'info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
+            assert tokens == ['L', "'", 'italiano', '(', '[', 'itaˈljaːno', ']', '[', 'Nota', '1', ']', 'ascolta', '[', '?', '·', 'info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
         elif word_tokenizer == 'spaCy - Italian Word Tokenizer':
             assert tokens == ["L'", 'italiano', '(', '[', 'itaˈljaːno][Nota', '1', ']', 'ascolta[?·info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
     elif lang == 'jpn':
@@ -298,7 +298,7 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
                               'spaCy - Polish Word Tokenizer']:
             assert tokens == ['Język', 'polski', ',', 'polszczyzna', ',', 'skrót', ':', 'pol', '.', '–', 'język', 'naturalny', 'należący', 'do', 'grupy', 'języków', 'zachodniosłowiańskich', '(', 'do', 'której', 'należą', 'również', 'czeski', ',', 'słowacki', ',', 'kaszubski', ',', 'dolnołużycki', ',', 'górnołużycki', 'i', 'wymarły', 'połabski', ')', ',', 'stanowiącej', 'część', 'rodziny', 'języków', 'indoeuropejskich', '.']
         elif word_tokenizer == 'Sacremoses - Moses Tokenizer':
-            assert tokens == ['Język', 'polski', ',', 'polszczyzna', ',', 'skrót', ':', 'pol.', '–', 'język', 'naturalny', 'należący', 'do', 'grupy', 'języków', 'zachodniosłowiańskich', '(', 'do', 'której', 'należą', 'również', 'czeski', ',', 'słowacki', ',', 'kaszubski', ',', 'dolnołużycki', ',', 'górnołużycki', 'i', 'wymarły', 'połabski', ')', ',', 'stanowiącej', 'część', 'rodziny', 'języków', 'indoeuropejskich', '.']
+            assert tokens == ['Język', 'polski', ',', 'polszczyzna', ',', 'skrót', ':', 'pol', '.', '–', 'język', 'naturalny', 'należący', 'do', 'grupy', 'języków', 'zachodniosłowiańskich', '(', 'do', 'której', 'należą', 'również', 'czeski', ',', 'słowacki', ',', 'kaszubski', ',', 'dolnołużycki', ',', 'górnołużycki', 'i', 'wymarły', 'połabski', ')', ',', 'stanowiącej', 'część', 'rodziny', 'języków', 'indoeuropejskich', '.']
     elif lang == 'por':
         assert tokens == ['A', 'língua', 'portuguesa', ',', 'também', 'designada', 'português', ',', 'é', 'uma', 'língua', 'românica', 'flexiva', 'ocidental', 'originada', 'no', 'galego-português', 'falado', 'no', 'Reino', 'da', 'Galiza', 'e', 'no', 'norte', 'de', 'Portugal', '.']
     elif lang == 'ron':

@@ -41,7 +41,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     if sentence_tokenizer == 'default':
         sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizers'][lang]
 
-    wl_text_utils.check_sentence_tokenizers(
+    wl_text_utils.init_sentence_tokenizers(
         main,
         lang = lang,
         sentence_tokenizer = sentence_tokenizer
@@ -88,7 +88,6 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     elif sentence_tokenizer == main.tr('syntok - Sentence Segmenter'):
         for para in syntok.segmenter.analyze(text):
             for sentence in para:
-
                 sentences.append(''.join([token.spacing + token.value for token in sentence]))
     # Chinese & Japanese
     elif sentence_tokenizer in [main.tr('Wordless - Chinese Sentence Tokenizer'),
@@ -112,10 +111,10 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     elif sentence_tokenizer == main.tr('Tokenizer - Icelandic Sentence Tokenizer'):
         for sentence in tokenizer.split_into_sentences(text):
             sentences.append(wl_word_detokenization.wl_word_detokenize(
-                             main,
-                             tokens = sentence.split(),
-                             lang = 'isl')
-                            )
+                main,
+                tokens = sentence.split(),
+                lang = 'isl')
+            )
 
     # Russian
     elif sentence_tokenizer == main.tr('razdel - Russian Sentenizer'):
@@ -125,7 +124,8 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         sentences = pythainlp.sent_tokenize(text)
     # Tibetan
     elif sentence_tokenizer == main.tr('botok - Tibetan Sentence Tokenizer'):
-        wl_text_utils.check_word_tokenizers(main, lang = 'bod')
+        wl_text_utils.init_word_tokenizers(main, lang = 'bod')
+        
         tokens = main.botok_word_tokenizer.tokenize(text)
 
         for sentence_tokens in botok.sentence_tokenizer(tokens):
