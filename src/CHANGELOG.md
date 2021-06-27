@@ -16,6 +16,12 @@
 ### 🎉 New Features
 - Work Area: Add Concordancer (Parallel Mode)
 
+### ❌ Removals
+- Utils: Remove AttaCut’s Thai word tokenizer
+
+### ⏫ Dependency Changes
+- Dependencies: Remove AttaCut
+
 
 ## [1.5.0](https://github.com/BLKSerene/Wordless/releases/tag/1.5.0) - 01/15/2021
 
