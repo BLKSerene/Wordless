@@ -44,7 +44,7 @@ class Wl_Text():
         self.tags = []
 
         re_tags = wl_matching.get_re_tags(main)
-
+        
         if re.search(r'\.txt', file['path'], flags = re.IGNORECASE):
             with open(file['path'], 'r', encoding = file['encoding']) as f:
                 # Untokenized & Untagged
@@ -57,6 +57,7 @@ class Wl_Text():
 
                             self.tokens_multilevel.append(tokens)
                             self.tags.extend([[]] * len(list(wl_misc.flatten_list(tokens))))
+                            
                 # Untokenized & Tagged
                 elif self.tokenized == 'No' and self.tagged == 'Yes':
                     for i, line in enumerate(f):
@@ -163,7 +164,7 @@ class Wl_Text():
                         self.tokens_multilevel[-1][-1].append(word.get_text())
 
                         self.tags.append([])
-
+        
         # Paragraph and sentence offsets
         for para in self.tokens_multilevel:
             self.offsets_paras.append(len(self.tokens_flat))
@@ -172,7 +173,7 @@ class Wl_Text():
                 self.offsets_sentences.append(len(self.tokens_flat))
 
                 self.tokens_flat.extend(sentence)
-
+        
         # Remove whitespace around all tags
         self.tags = [[tag.strip() for tag in tags] for tags in self.tags]
 

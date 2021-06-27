@@ -26,43 +26,47 @@ from wl_utils import wl_misc, wl_threading
 
 class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
     def run(self):
-        results = {}
-        search_terms = set()
+        for table in self.dialog.tables:
+            results = {}
+            search_terms = set()
 
-        for col in range(self.dialog.table.columnCount()):
-            if self.dialog.table.cellWidget(0, col):
-                for row in range(self.dialog.table.rowCount()):
-                    results[(row, col)] = self.dialog.table.cellWidget(row, col).text_search
-            else:
-                for row in range(self.dialog.table.rowCount()):
-                    try:
-                        results[(row, col)] = self.dialog.table.item(row, col).text_raw
-                    except:
-                        results[(row, col)] = [self.dialog.table.item(row, col).text()]
+            for col in range(table.columnCount()):
+                if table.cellWidget(0, col):
+                    for row in range(table.rowCount()):
+                        results[(row, col)] = table.cellWidget(row, col).text_search
+                else:
+                    for row in range(table.rowCount()):
+                        try:
+                            results[(row, col)] = table.item(row, col).text_raw
+                        except:
+                            results[(row, col)] = [table.item(row, col).text()]
 
-        items = [token for text in results.values() for token in text]
+            items = [token for text in results.values() for token in text]
 
-        for file in self.dialog.table.settings['files']['files_open']:
-            if file['selected']:
-                search_terms_file = wl_matching.match_search_terms(
-                    self.main, items,
-                    lang = file['lang'],
-                    tokenized = file['tokenized'],
-                    tagged = file['tagged'],
-                    token_settings = self.dialog.table.settings[self.dialog.tab]['token_settings'],
-                    search_settings = self.dialog.settings)
+            for file in table.settings['files']['files_open']:
+                if file['selected']:
+                    search_terms_file = wl_matching.match_search_terms(
+                        self.main, items,
+                        lang = file['lang'],
+                        tokenized = file['tokenized'],
+                        tagged = file['tagged'],
+                        token_settings = table.settings[self.dialog.tab]['token_settings'],
+                        search_settings = self.dialog.settings)
 
-                search_terms |= set(search_terms_file)
+                    search_terms |= set(search_terms_file)
 
-        for search_term in search_terms:
-            len_search_term = len(search_term)
+            for search_term in search_terms:
+                len_search_term = len(search_term)
 
-            for (row, col), text in results.items():
-                for ngram in nltk.ngrams(text, len_search_term):
-                    if ngram == search_term:
-                        self.dialog.items_found.append([row, col])
+                for (row, col), text in results.items():
+                    for ngram in nltk.ngrams(text, len_search_term):
+                        if ngram == search_term:
+                            self.dialog.items_found.append([table, row, col])
 
-        self.dialog.items_found = sorted(self.dialog.items_found)
+        self.dialog.items_found = sorted(
+            self.dialog.items_found,
+            key = lambda item: (id(item[0]), item[1], item[2])
+        )
 
         self.progress_updated.emit(self.tr('Highlighting items ...'))
 
@@ -75,7 +79,7 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
         super().__init__(main, main.tr('Search in Results'))
 
         self.tab = tab
-        self.table = table
+        self.tables = [table]
         self.settings = self.main.settings_custom[self.tab]['search_results']
         self.items_found = []
 
@@ -210,92 +214,116 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
     def find_next(self):
         self.find_all()
 
-        self.table.hide()
-        self.table.blockSignals(True)
-        self.table.setUpdatesEnabled(False)
-
-        # Scroll to the next found item
         if self.items_found:
-            selected_rows = self.table.get_selected_rows()
+            selected_rows = []
 
-            self.table.clearSelection()
+            for table in self.tables:
+                table.hide()
+                table.blockSignals(True)
+                table.setUpdatesEnabled(False)
 
+            for table in self.tables:
+                if table.get_selected_rows():
+                    selected_rows = [id(table), table.get_selected_rows()]
+
+                    break
+
+            # Scroll to the next found item
             if selected_rows:
-                for row, _ in self.items_found:
-                    if row > selected_rows[-1]:
-                        self.table.selectRow(row)
-                        self.table.setFocus()
+                for table in self.tables:
+                    table.clearSelection()
 
-                        self.table.scrollToItem(self.table.item(row, 0))
+                for table, row, _ in self.items_found:
+                    # Tables are sorted by their string representations
+                    if (id(table) > selected_rows[0] or
+                        id(table) == selected_rows[0] and row > selected_rows[1][-1]):
+                        table.selectRow(row)
+                        table.setFocus()
+
+                        table.scrollToItem(table.item(row, 0))
 
                         break
+
+                # Scroll to top if this is the last item
+                if not any([table.selectedItems() for table in self.tables]):
+                    self.tables[0].scrollToItem(table.item(self.items_found[0][1], 0))
+                    self.tables[0].selectRow(self.items_found[0][1])
             else:
-                self.table.scrollToItem(self.table.item(self.items_found[0][0], 0))
-                self.table.selectRow(self.items_found[0][0])
+                self.tables[0].scrollToItem(table.item(self.items_found[0][1], 0))
+                self.tables[0].selectRow(self.items_found[0][1])
 
-            # Scroll to top if this is the last item
-            if not self.table.selectedItems():
-                self.table.scrollToItem(self.table.item(self.items_found[0][0], 0))
-                self.table.selectRow(self.items_found[0][0])
-
-        self.table.blockSignals(False)
-        self.table.setUpdatesEnabled(True)
-        self.table.show()
+            for table in self.tables:
+                table.blockSignals(False)
+                table.setUpdatesEnabled(True)
+                table.show()
 
     @wl_misc.log_timing
     def find_prev(self):
         self.find_all()
 
-        self.table.hide()
-        self.table.blockSignals(True)
-        self.table.setUpdatesEnabled(False)
-
-        # Scroll to the previous found item
         if self.items_found:
-            selected_rows = self.table.get_selected_rows()
+            selected_rows = []
 
-            self.table.clearSelection()
+            for table in self.tables:
+                table.hide()
+                table.blockSignals(True)
+                table.setUpdatesEnabled(False)
 
+            for table in self.tables:
+                if table.get_selected_rows():
+                    selected_rows = [id(table), table.get_selected_rows()]
+
+                    break
+
+            # Scroll to the previous found item
             if selected_rows:
-                for row, _ in reversed(self.items_found):
-                    if row < selected_rows[0]:
-                        self.table.selectRow(row)
-                        self.table.setFocus()
+                for table in self.tables:
+                    table.clearSelection()
 
-                        self.table.scrollToItem(self.table.item(row, 0))
+                for table, row, _ in reversed(self.items_found):
+                    # Tables are sorted by their string representations
+                    if (id(table) < selected_rows[0] or
+                        id(table) == selected_rows[0] and row < selected_rows[1][-1]):
+                        table.selectRow(row)
+                        table.setFocus()
+
+                        table.scrollToItem(table.item(row, 0))
 
                         break
+
+                # Scroll to bottom if this is the first item
+                if not any([table.selectedItems() for table in self.tables]):
+                    self.tables[-1].scrollToItem(table.item(self.items_found[-1][1], 0))
+                    self.tables[-1].selectRow(self.items_found[-1][1])
             else:
-                self.table.scrollToItem(self.table.item(self.items_found[-1][0], 0))
-                self.table.selectRow(self.items_found[-1][0])
+                self.tables[-1].scrollToItem(table.item(self.items_found[-1][1], 0))
+                self.tables[-1].selectRow(self.items_found[-1][1])
 
-            # Scroll to top if no next items exist
-            if not self.table.selectedItems():
-                self.table.scrollToItem(self.table.item(indexes_found[-1][0], 0))
-                self.table.selectRow(indexes_found[-1][0])
-
-        self.table.blockSignals(False)
-        self.table.setUpdatesEnabled(True)
-        self.table.show()
+            for table in self.tables:
+                table.blockSignals(False)
+                table.setUpdatesEnabled(True)
+                table.show()
 
     @wl_misc.log_timing
     def find_all(self):
         def update_gui():
             if self.items_found:
-                self.table.hide()
-                self.table.blockSignals(True)
-                self.table.setUpdatesEnabled(False)
+                for table in self.tables:
+                    table.hide()
+                    table.blockSignals(True)
+                    table.setUpdatesEnabled(False)
 
-                for row, col in self.items_found:
-                    if self.table.cellWidget(row, col):
-                        self.table.cellWidget(row, col).setStyleSheet('border: 1px solid #E53E3A;')
+                for table, row, col in self.items_found:
+                    if table.cellWidget(row, col):
+                        table.cellWidget(row, col).setStyleSheet('border: 1px solid #E53E3A;')
                     else:
-                        self.table.item(row, col).setForeground(QBrush(QColor('#FFF')))
-                        self.table.item(row, col).setBackground(QBrush(QColor('#E53E3A')))
+                        table.item(row, col).setForeground(QBrush(QColor('#FFF')))
+                        table.item(row, col).setBackground(QBrush(QColor('#E53E3A')))
 
-                self.table.blockSignals(False)
-                self.table.setUpdatesEnabled(True)
-                self.table.show()
+                for table in self.tables:
+                    table.blockSignals(False)
+                    table.setUpdatesEnabled(True)
+                    table.show()
             else:
                 wl_msg_box.wl_msg_box_no_search_results(self.main)
 
@@ -323,20 +351,22 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
 
     def clear_highlights(self):
         if self.items_found:
-            self.table.hide()
-            self.table.blockSignals(True)
-            self.table.setUpdatesEnabled(False)
+            for table in self.tables:
+                table.hide()
+                table.blockSignals(True)
+                table.setUpdatesEnabled(False)
 
-            for row, col in self.items_found:
-                if self.table.cellWidget(row, col):
-                    self.table.cellWidget(row, col).setStyleSheet('border: 0')
+            for table, row, col, in self.items_found:
+                if table.cellWidget(row, col):
+                    table.cellWidget(row, col).setStyleSheet('border: 0')
                 else:
-                    self.table.item(row, col).setForeground(QBrush(QColor('#292929')))
-                    self.table.item(row, col).setBackground(QBrush(QColor('#FFF')))
+                    table.item(row, col).setForeground(QBrush(QColor('#292929')))
+                    table.item(row, col).setBackground(QBrush(QColor('#FFF')))
 
-            self.table.blockSignals(False)
-            self.table.setUpdatesEnabled(True)
-            self.table.show()
+            for table in self.tables:
+                table.blockSignals(False)
+                table.setUpdatesEnabled(True)
+                table.show()
 
             self.items_found.clear()
 
@@ -358,3 +388,6 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
             self.checkbox_multi_search_mode.setChecked(multi_search_mode)
 
         self.show()
+
+    def add_tables(self, tables):
+        self.tables.extend(tables)
