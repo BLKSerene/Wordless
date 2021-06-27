@@ -53,10 +53,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         print(text)
 
     if lang == 'cat':
-        if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == "El català (denominació oficial a Catalunya, a les Illes Balears, a Andorra, a la ciutat de l' Alguer i tradicional a Catalunya Nord) o valencià (denominació oficial al País Valencià i tradicional al Carxe) és una llengua romànica parlada a Catalunya, el País Valencià (tret d' algunes comarques i localitats de l' interior), les Illes Balears, Andorra, la Franja de Ponent (a l' Aragó), la ciutat de l' Alguer (a l' illa de Sardenya), la Catalunya del Nord,[8] el Carxe (un petit territori de Múrcia poblat per immigrats valencians),[9][10] i en petites comunitats arreu del món (entre les quals destaca la de l' Argentina, amb 195.000 parlants).[11 ]"
-        elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
-            assert text == "El català (denominació oficial a Catalunya, a les Illes Balears, a Andorra, a la ciutat de l' Alguer i tradicional a Catalunya Nord) o valencià (denominació oficial al País Valencià i tradicional al Carxe) és una llengua romànica parlada a Catalunya, el País Valencià (tret d' algunes comarques i localitats de l' interior), les Illes Balears, Andorra, la Franja de Ponent (a l' Aragó), la ciutat de l' Alguer (a l' illa de Sardenya), la Catalunya del Nord,[8] el Carxe (un petit territori de Múrcia poblat per immigrats valencians),[9][10] i en petites comunitats arreu del món (entre les quals destaca la de l' Argentina, amb 195.000 parlants).[11]"
+        assert text == "El català (denominació oficial a Catalunya, a les Illes Balears, a Andorra, a la ciutat de l' Alguer i tradicional a Catalunya Nord) o valencià (denominació oficial al País Valencià i tradicional al Carxe) és una llengua romànica parlada a Catalunya, el País Valencià (tret d' algunes comarques i localitats de l' interior), les Illes Balears, Andorra, la Franja de Ponent (a l' Aragó), la ciutat de l' Alguer (a l' illa de Sardenya), la Catalunya del Nord,[8] el Carxe (un petit territori de Múrcia poblat per immigrats valencians),[9][10] i en petites comunitats arreu del món (entre les quals destaca la de l' Argentina, amb 195.000 parlants).[11]"
     elif lang == 'zho_cn':
         assert text == '汉语，又称汉文、中文、中国话、中国语、华语、华文、唐话[2]，或被视为一个语族，或被视为隶属于汉藏语系汉语族之一种语言。'
     elif lang == 'zho_tw':
@@ -66,47 +63,35 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
     elif lang == 'nld':
         assert text == 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
     elif lang == 'eng':
-        if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.[4][5 ]'
-        elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
-            assert text == 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.[4][5]'
+        assert text == 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.[4][5]'
     elif lang == 'fin':
         assert text == 'Suomen kieli (suomi) on uralilaisten kielten itämerensuomalaiseen ryhmään kuuluva kieli.'
     elif lang == 'fra':
         assert text == 'Le français est une langue indo-européenne de la famille des langues romanes.'
     elif lang == 'deu':
-        if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Die deutsche Sprache bzw. Deutsch ([ dɔʏ̯t͡ʃ];abgekürzt dt.oder dtsch . )ist eine westgermanische Sprache.'
-        elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
-            assert text == 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ];abgekürzt dt.oder dtsch.)ist eine westgermanische Sprache.'
+        assert text == 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ];abgekürzt dt.oder dtsch.)ist eine westgermanische Sprache.'
     elif lang == 'ell':
         assert text == 'Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[9] και συγκεκριμένα στον ελληνικό κλάδο, μαζί με την τσακωνική, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.'
     elif lang == 'hun':
         assert text == 'A magyar nyelv az uráli nyelvcsalád tagja, a finnugor nyelvek közé tartozó ugor nyelvek egyike.'
     elif lang == 'isl':
-        if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.[ 4 ]'
-        elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
-            assert text == 'Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.[4]'
+        assert text == 'Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.[4]'
     elif lang == 'gle':
         assert text == 'Is ceann de na teangacha Ceilteacha í an Ghaeilge (nó Gaeilge na hÉireann mar a thugtar uirthi corruair), agus ceann den dtrí cinn de theangacha Ceilteacha ar a dtugtar na teangacha Gaelacha (.i. an Ghaeilge, Gaeilge na hAlban agus Gaeilge Mhanann) go háirithe.'
     elif lang == 'ita':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == "L' italiano ([ itaˈljaːno][Nota 1] ascolta[?·info] ) è una lingua romanza parlata principalmente in Italia."
+            assert text == "L' italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
         elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
             assert text == "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
     elif lang == 'jpn':
         assert text == '日本語(にほんご、にっぽんご[注1])は、主に日本国内や日本人同士の間で使用されている言語である。'
     elif lang == 'lav':
-        if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Latviešu valoda ir dzimtā valoda apmēram 1,7 miljoniem cilvēku, galvenokārt Latvijā, kur tā ir vienīgā valsts valoda.[3 ]'
-        elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
-            assert text == 'Latviešu valoda ir dzimtā valoda apmēram 1,7 miljoniem cilvēku, galvenokārt Latvijā, kur tā ir vienīgā valsts valoda.[3]'
+        assert text == 'Latviešu valoda ir dzimtā valoda apmēram 1,7 miljoniem cilvēku, galvenokārt Latvijā, kur tā ir vienīgā valsts valoda.[3]'
     elif lang == 'lit':
         assert text == 'Lietuvių kalba – iš baltų prokalbės kilusi lietuvių tautos kalba, kuri Lietuvoje yra valstybinė, o Europos Sąjungoje – viena iš oficialiųjų kalbų.'
     elif lang == 'pol':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Język polski, polszczyzna, skrót :pol . –język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
+            assert text == 'Język polski, polszczyzna, skrót:pol . –język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
         elif word_detokenizer == 'pol / Sacremoses - Moses Detokenizer':
             assert text == 'Język polski, polszczyzna, skrót: pol. – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
     elif lang == 'por':
@@ -114,10 +99,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
     elif lang == 'ron':
         assert text == 'Limba română este o limbă indo-europeană, din grupul italic și din subgrupul oriental al limbilor romanice.'
     elif lang == 'rus':
-        if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Ру́сский язы́к ([ ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать) [~ 3] [⇨] — один из восточнославянских языков, национальный язык русского народа.'
-        elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
-            assert text == 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать) [~ 3] [⇨] — один из восточнославянских языков, национальный язык русского народа.'
+        assert text == 'Ру́сский язы́к ([ˈruskʲɪi̯ jɪˈzɨk] Информация о файле слушать) [~ 3] [⇨] — один из восточнославянских языков, национальный язык русского народа.'
     elif lang == 'slk':
         assert text == 'Slovenčina patrí do skupiny západoslovanských jazykov (spolu s češtinou, poľštinou, hornou a dolnou lužickou srbčinou a kašubčinou).'
     elif lang == 'slv':
@@ -125,10 +107,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
     elif lang == 'spa':
         assert text == 'El español o castellano es una lengua romance procedente del latín hablado.'
     elif lang == 'swe':
-        if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Svenska (svenska (info) ) är ett östnordiskt språk som talas av ungefär tio miljoner personer främst i Sverige där språket har en dominant ställning som huvudspråk, men även som det ena nationalspråket i Finland och som enda officiella språk på Åland.'
-        elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
-            assert text == 'Svenska (svenska (info)) är ett östnordiskt språk som talas av ungefär tio miljoner personer främst i Sverige där språket har en dominant ställning som huvudspråk, men även som det ena nationalspråket i Finland och som enda officiella språk på Åland.'
+        assert text == 'Svenska (svenska (info)) är ett östnordiskt språk som talas av ungefär tio miljoner personer främst i Sverige där språket har en dominant ställning som huvudspråk, men även som det ena nationalspråket i Finland och som enda officiella språk på Åland.'
     elif lang == 'tam':
         assert text == 'தமிழ் மொழி (Tamil language) தமிழர்களினதும், தமிழ் பேசும் பலரதும் தாய்மொழி ஆகும்.'
     elif lang == 'tha':
