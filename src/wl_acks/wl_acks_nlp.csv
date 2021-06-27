@@ -24,4 +24,6 @@ syntok       |https://github.com/fnl/syntok                |1.3.1 |Florian Leitn
 
 TextBlob     |https://textblob.readthedocs.io/             |0.15.3|Steven Loria                          |MIT      |https://github.com/sloria/TextBlob/blob/dev/LICENSE
 
+Tokenizer    |https://github.com/mideind/Tokenizer         |3.1.2 |Vilhjálmur Þorsteinsson               |MIT     |https://github.com/mideind/Tokenizer/blob/master/LICENSE
+
 Underthesea  |https://github.com/undertheseanlp/underthesea|1.2.2 |Vu Anh                                |GPL-3.0  |https://github.com/undertheseanlp/underthesea/blob/master/LICENSE
