@@ -12,7 +12,6 @@
 import re
 
 import nltk
-import pymorphy2
 import spacy
 
 from wl_text import wl_matching, wl_pos_tagging, wl_text_utils
@@ -40,7 +39,7 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
 
             tokens.remove(token)
 
-    wl_text_utils.check_lemmatizers(main, lang)
+    wl_text_utils.init_lemmatizers(main, lang)
 
     if tokens and lang in main.settings_global['lemmatizers']:
         if lemmatizer == 'default':
@@ -88,16 +87,16 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
         # Russian & Ukrainian
         elif lemmatizer == main.tr('pymorphy2 - Morphological Analyzer'):
             if lang == 'rus':
-                morphological_analyzer = pymorphy2.MorphAnalyzer(lang = 'ru')
-            else:
-                morphological_analyzer = pymorphy2.MorphAnalyzer(lang = 'uk')
+                morphological_analyzer = main.pymorphy2_morphological_analyzer_rus
+            elif lang == 'ukr':
+                morphological_analyzer = main.pymorphy2_morphological_analyzer_ukr
 
             for token in tokens:
                 lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
         # Tibetan
         elif lemmatizer == main.tr('botok - Tibetan Lemmatizer'):
-            wl_text_utils.check_word_tokenizers(main,
-                                                      lang = 'bod')
+            wl_text_utils.init_word_tokenizers(main, lang = 'bod')
+
             tokens = main.botok_word_tokenizer.tokenize(' '.join(tokens))
 
             for token in tokens:

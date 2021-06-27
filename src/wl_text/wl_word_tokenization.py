@@ -10,12 +10,8 @@
 #
 
 import jieba
-import pkuseg
-import nltk
-import nltk.tokenize.nist
 import pythainlp
 import razdel
-import sacremoses
 import syntok.segmenter
 import tokenizer
 import underthesea
@@ -33,7 +29,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
-    wl_text_utils.check_tokenizers(
+    wl_text_utils.init_tokenizers(
         main,
         lang = lang,
         word_tokenizer = word_tokenizer
@@ -44,39 +40,26 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang)
 
         if word_tokenizer == main.tr('NLTK - NIST Tokenizer'):
-            nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
-
             for sentence in sentences:
-                tokens_multilevel.append(nist_tokenizer.tokenize(sentence))
+                tokens_multilevel.append(main.nltk_nist_tokenizer.tokenize(sentence))
         elif word_tokenizer == main.tr('NLTK - NLTK Tokenizer'):
-            nltk_tokenizer = nltk.NLTKWordTokenizer()
-
             for sentence in sentences:
-                tokens_multilevel.append(nltk_tokenizer.tokenize(sentence))
+                tokens_multilevel.append(main.nltk_nltk_tokenizer.tokenize(sentence))
         elif word_tokenizer == main.tr('NLTK - Penn Treebank Tokenizer'):
-            treebank_tokenizer = nltk.TreebankWordTokenizer()
-
             for sentence in sentences:
-                tokens_multilevel.append(treebank_tokenizer.tokenize(sentence))
+                tokens_multilevel.append(main.nltk_treebank_tokenizer.tokenize(sentence))
         elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
-            toktok_tokenizer = nltk.ToktokTokenizer()
-
             for sentence in sentences:
-                tokens_multilevel.append(toktok_tokenizer.tokenize(sentence))
+                tokens_multilevel.append(main.nltk_toktok_tokenizer.tokenize(sentence))
         elif word_tokenizer == main.tr('NLTK - Twitter Tokenizer'):
-            tweet_tokenizer = nltk.TweetTokenizer()
-
             for sentence in sentences:
-                tokens_multilevel.append(tweet_tokenizer.tokenize(sentence))
+                tokens_multilevel.append(main.nltk_tweet_tokenizer.tokenize(sentence))
     # Sacremoses
     elif 'Sacremoses' in word_tokenizer:
         sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang)
 
-        moses_tokenizer = sacremoses.MosesTokenizer(lang = wl_conversion.to_iso_639_1(main, lang))
-
         for sentence in sentences:
-            tokens_multilevel.append(moses_tokenizer.tokenize(sentence, escape = False))
-
+            tokens_multilevel.append(main.sacremoses_moses_tokenizer.tokenize(sentence, escape = False))
     # spaCy
     elif 'spaCy' in word_tokenizer:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
@@ -88,8 +71,6 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
             tokens_multilevel.append([token.text for token in sentence.as_doc()])
     # syntok
     elif word_tokenizer == 'syntok - Word Tokenizer':
-        syntok_tokenizer = syntok.tokenizer.Tokenizer()
-
         for para in syntok.segmenter.analyze(text):
             for sentence in para:
                 tokens_multilevel.append([token.value for token in sentence])
@@ -105,10 +86,8 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
             for sentence in sentences:
                 tokens_multilevel.append(jieba.lcut(sentence))
         elif word_tokenizer == main.tr('pkuseg - Chinese Word Tokenizer'):
-            seg = pkuseg.pkuseg()
-
             for sentence in sentences:
-                tokens_multilevel.append(seg.cut(sentence))
+                tokens_multilevel.append(main.pkuseg_word_tokenizer.cut(sentence))
         elif word_tokenizer == main.tr('Wordless - Chinese Character Tokenizer'):
             for sentence in sentences:
                 tokens = []

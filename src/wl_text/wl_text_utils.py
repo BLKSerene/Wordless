@@ -15,6 +15,11 @@ import re
 
 import botok
 import bs4
+import nltk
+import nltk.tokenize.nist
+import pkuseg
+import pymorphy2
+import sacremoses
 import spacy
 
 from wl_text import wl_text
@@ -159,7 +164,7 @@ SRP_LATN_TO_CYRL_DIGRAPHS = {
     'nj': 'њ'
 }
 
-def check_spacy_models(main, lang, pipeline):
+def init_spacy_models(main, lang, pipeline):
     spacy_langs = {
         'dan': 'da_core_news_sm',
         'nld': 'nl_core_news_sm',
@@ -213,70 +218,113 @@ def check_spacy_models(main, lang, pipeline):
         if 'sentencizer' not in nlp.pipe_names:
             nlp.add_pipe(nlp.create_pipe('sentencizer'))
 
-def check_sentence_tokenizers(main, lang, sentence_tokenizer = 'default'):
+def init_sentence_tokenizers(main, lang, sentence_tokenizer = 'default'):
     if lang not in main.settings_global['sentence_tokenizers']:
         lang = 'other'
 
     if sentence_tokenizer == 'default':
         word_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizers'][lang]
 
+    # spaCy
     if 'spaCy' in sentence_tokenizer:
-        check_spacy_models(main, lang, pipeline = 'sentence_tokenization')
+        init_spacy_models(main, lang, pipeline = 'sentence_tokenization')
 
-def check_word_tokenizers(main, lang, word_tokenizer = 'default'):
+def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
     if lang not in main.settings_global['word_tokenizers']:
         lang = 'other'
 
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
-    if 'spaCy' in word_tokenizer:
-        check_spacy_models(main, lang, pipeline = 'word_tokenization')
+    # NLTK
+    if 'NLTK' in word_tokenizer:
+        if word_tokenizer == main.tr('NLTK - NIST Tokenizer'):
+            if 'nltk_nist_tokenizer' not in main.__dict__:
+                main.nltk_nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
+        elif word_tokenizer == main.tr('NLTK - NLTK Tokenizer'):
+            if 'nltk_nltk_tokenizer' not in main.__dict__:
+                main.nltk_nltk_tokenizer = nltk.NLTKWordTokenizer()
+        elif word_tokenizer == main.tr('NLTK - Penn Treebank Tokenizer'):
+            if 'nltk_treebank_tokenizer' not in main.__dict__:
+                main.nltk_treebank_tokenizer = nltk.TreebankWordTokenizer()
+        elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
+            if 'nltk_toktok_tokenizer' not in main.__dict__:
+                main.nltk_toktok_tokenizer = nltk.ToktokTokenizer()
+        elif word_tokenizer == main.tr('NLTK - Twitter Tokenizer'):
+            if 'nltk_tweet_tokenizer' not in main.__dict__:
+                main.nltk_tweet_tokenizer = nltk.TweetTokenizer()
+    # Sacremoses
+    elif 'Sacremoses' in word_tokenizer:
+        if 'sacremoses_moses_tokenizer' not in main.__dict__:
+            main.sacremoses_moses_tokenizer = sacremoses.MosesTokenizer(lang = wl_conversion.to_iso_639_1(main, lang))
+    # spaCy
+    elif 'spaCy' in word_tokenizer:
+        init_spacy_models(main, lang, pipeline = 'word_tokenization')
+    # Chinese & Japanese
+    elif 'pkuseg' in word_tokenizer:
+        if 'pkuseg_word_tokenizer' not in main.__dict__:
+            main.pkuseg_word_tokenizer = pkuseg.pkuseg()
+    elif 'Wordless' in word_tokenizer:
+        init_spacy_models(main, 'eng', pipeline = 'word_tokenization')
+        init_spacy_models(main, 'other', pipeline = 'word_tokenization')
     # Tibetan
     elif 'botok' in word_tokenizer:
         if 'botok_word_tokenizer' not in main.__dict__:
             main.botok_word_tokenizer = botok.WordTokenizer()
-    # Chinese & Japanese
-    elif 'Wordless' in word_tokenizer:
-        check_spacy_models(main, 'eng', pipeline = 'word_tokenization')
-        check_spacy_models(main, 'other', pipeline = 'word_tokenization')
 
-def check_tokenizers(main, lang, word_tokenizer = 'default'):
+def init_tokenizers(main, lang, word_tokenizer = 'default'):
     if lang not in main.settings_global['word_tokenizers']:
         lang = 'other'
 
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
+    # spaCy
     if 'spaCy' in word_tokenizer:
-        check_spacy_models(main, lang, pipeline = 'tokenization')
-    # Tibetan
-    elif 'botok' in word_tokenizer:
-        check_word_tokenizers(main, lang, word_tokenizer = word_tokenizer)
+        init_spacy_models(main, lang, pipeline = 'tokenization')
     # Chinese & Japanese
     elif 'Wordless' in word_tokenizer:
-        check_spacy_models(main, 'eng', pipeline = 'tokenization')
-        check_spacy_models(main, 'other', pipeline = 'tokenization')
+        init_spacy_models(main, 'eng', pipeline = 'tokenization')
+        init_spacy_models(main, 'other', pipeline = 'tokenization')
+    else:
+        init_word_tokenizers(main, lang, word_tokenizer = word_tokenizer)
 
-def check_pos_taggers(main, lang, pos_tagger = 'default'):
+def init_pos_taggers(main, lang, pos_tagger = 'default'):
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang]
 
+    # spaCy
     if 'spaCy' in pos_tagger:
-        check_spacy_models(main, lang, pipeline = 'pos_tagging')
-
+        init_spacy_models(main, lang, pipeline = 'pos_tagging')
+    # Russian & Ukrainian
+    elif pos_tagger == main.tr('pymorphy2 - Morphological Analyzer'):
+        if lang == 'rus':
+            if 'pymorphy2_morphological_analyzer_rus' not in main.__dict__:
+                main.pymorphy2_morphological_analyzer_rus = pymorphy2.MorphAnalyzer(lang = 'ru')
+        elif lang == 'ukr':
+            if 'pymorphy2_morphological_analyzer_urk' not in main.__dict__:
+                main.pymorphy2_morphological_analyzer_ukr = pymorphy2.MorphAnalyzer(lang = 'uk')
     # Chinese & Japanese
-    if lang in ['zho_cn', 'zho_tw', 'jpn']:
-        check_spacy_models(main, 'eng', pipeline = 'pos_tagging')
-        check_spacy_models(main, 'other', pipeline = 'pos_tagging')
+    elif lang in ['zho_cn', 'zho_tw', 'jpn']:
+        init_spacy_models(main, 'eng', pipeline = 'pos_tagging')
+        init_spacy_models(main, 'other', pipeline = 'pos_tagging')
 
-def check_lemmatizers(main, lang, lemmatizer = 'default'):
+def init_lemmatizers(main, lang, lemmatizer = 'default'):
     if lang in main.settings_global['lemmatizers']:
         if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang]
 
-        if 'spaCy' in lemmatizer:
-            check_spacy_models(main, lang, pipeline = 'lemmatization')
+    # spaCy
+    if 'spaCy' in lemmatizer:
+        init_spacy_models(main, lang, pipeline = 'lemmatization')
+    # Russian & Ukrainian
+    elif lemmatizer == main.tr('pymorphy2 - Morphological Analyzer'):
+        if lang == 'rus':
+            if 'pymorphy2_morphological_analyzer_rus' not in main.__dict__:
+                main.pymorphy2_morphological_analyzer_rus = pymorphy2.MorphAnalyzer(lang = 'ru')
+        elif lang == 'ukr':
+            if 'pymorphy2_morphological_analyzer_urk' not in main.__dict__:
+                main.pymorphy2_morphological_analyzer_ukr = pymorphy2.MorphAnalyzer(lang = 'uk')
 
 def record_boundary_sentences(sentences, text):
     sentence_start = 0
