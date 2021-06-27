@@ -168,7 +168,7 @@ class Wrapper_Wordlist(wl_layout.Wl_Wrapper):
          self.checkbox_show_cumulative,
          self.checkbox_show_breakdown) = wl_widgets.wl_widgets_table_settings(
             self,
-            table = self.table_wordlist
+            tables = [self.table_wordlist]
         )
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
