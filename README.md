@@ -117,12 +117,13 @@ I would like to extend my sincere gratitude to the following open-source project
 6     |[pkuseg](https://github.com/lancopku/pkuseg-python)         |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Bingzhen Wei (位冰镇), Xu Sun (孙栩)
 7     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
 8     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
-9    |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
+9     |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
 10    |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
 11    |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani
 12    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
 13    |[TextBlob](https://textblob.readthedocs.io/)                |Steven Loria
-14    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
+14    |[Tokenizer](https://github.com/mideind/Tokenizer)           |Vilhjálmur Þorsteinsson
+15    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
 
 ### Language Data
 

@@ -21,6 +21,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Remove AttaCut
+- Dependencies: Upgrade Tokenizer to 3.1.2
 
 
 ## [1.5.0](https://github.com/BLKSerene/Wordless/releases/tag/1.5.0) - 01/15/2021
