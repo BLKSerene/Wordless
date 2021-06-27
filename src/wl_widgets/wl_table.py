@@ -14,7 +14,6 @@ import csv
 import os
 import random
 import re
-import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -26,9 +25,9 @@ import openpyxl
 
 from wl_checking import wl_checking_misc
 from wl_dialogs import wl_dialog_misc, wl_msg_box
-from wl_text import wl_text_utils, wl_word_detokenization
+from wl_text import wl_text_utils
 from wl_utils import wl_misc, wl_threading
-from wl_widgets import wl_box, wl_button, wl_label, wl_msg
+from wl_widgets import wl_box, wl_button, wl_msg
 
 class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(bool, str)
@@ -779,7 +778,7 @@ class Wl_Table_Error(Wl_Table):
         self.name = 'error'
 
 class Wl_Table_Data(Wl_Table):
-    def __init__(self, main,
+    def __init__(self, main, tab,
                  headers, header_orientation = 'horizontal',
                  headers_int = [], headers_float = [],
                  headers_pct = [], headers_cumulative = [], cols_breakdown = [],
@@ -788,6 +787,8 @@ class Wl_Table_Data(Wl_Table):
             main, headers, header_orientation, cols_stretch,
             drag_drop_enabled = False
         )
+
+        self.tab = tab
 
         self.headers_int_old = headers_int
         self.headers_float_old = headers_float
@@ -1130,7 +1131,6 @@ class Wl_Table_Data(Wl_Table):
         if self.sorting_enabled:
             self.setSortingEnabled(True)
 
-
     def toggle_breakdown(self):
         self.setUpdatesEnabled(False)
 
@@ -1212,7 +1212,7 @@ class Wl_Table_Data_Search(Wl_Table_Data):
                  headers_pct = [], headers_cumulative = [], cols_breakdown = [],
                  cols_stretch = [], sorting_enabled = False):
         super().__init__(
-            main,
+            main, tab,
             headers, header_orientation,
             headers_int, headers_float,
             headers_pct, headers_cumulative, cols_breakdown,
@@ -1222,7 +1222,7 @@ class Wl_Table_Data_Search(Wl_Table_Data):
         self.label_number_results = QLabel()
         self.button_results_search = wl_button.Wl_Button_Results_Search(
             self,
-            tab = tab,
+            tab = self.tab,
             table = self
         )
 
@@ -1248,7 +1248,7 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
                  headers_int = [], headers_float = [],
                  headers_pct = [], headers_cumulative = [], cols_breakdown = [],
                  cols_stretch = [], sorting_enabled = False):
-        super().__init__(main,
+        super().__init__(main, tab,
                          headers, header_orientation,
                          headers_int, headers_float,
                          headers_pct, headers_cumulative, cols_breakdown,
@@ -1261,7 +1261,7 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
         )
         self.button_results_search = wl_button.Wl_Button_Results_Search(
             self,
-            tab = tab,
+            tab = self.tab,
             table = self
         )
 
@@ -1283,13 +1283,17 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
             self.button_results_sort.setEnabled(False)
             self.button_results_search.setEnabled(False)
 
+    def add_tables(self, tables):
+        self.button_results_sort.add_tables(tables)
+        self.button_results_search.add_tables(tables)
+
 class Wl_Table_Data_Filter_Search(Wl_Table_Data):
     def __init__(self, main, tab,
                  headers, header_orientation = 'horizontal',
                  headers_int = [], headers_float = [],
                  headers_pct = [], headers_cumulative = [], cols_breakdown = [],
                  cols_stretch = [], sorting_enabled = False):
-        super().__init__(main,
+        super().__init__(main, tab,
                          headers, header_orientation,
                          headers_int, headers_float,
                          headers_pct, headers_cumulative, cols_breakdown,
@@ -1298,12 +1302,12 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
         self.label_number_results = QLabel()
         self.button_results_filter = wl_button.Wl_Button_Results_Filter(
             self,
-            tab = tab,
+            tab = self.tab,
             table = self
         )
         self.button_results_search = wl_button.Wl_Button_Results_Search(
             self,
-            tab = tab,
+            tab = self.tab,
             table = self
         )
 
@@ -1324,57 +1328,6 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
 
             self.button_results_filter.setEnabled(False)
             self.button_results_search.setEnabled(False)
-
-class Wl_Worker_Results_Sort_Concordancer(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(list)
-
-    def run(self):
-        results = []
-
-        len_left = max([
-            int(self.dialog.cellWidget(0, 0).itemText(i)[1:])
-            for i in range(self.dialog.cellWidget(0, 0).count())
-            if 'L' in self.dialog.cellWidget(0, 0).itemText(i)]
-        )
-        len_right = max([
-            int(self.dialog.cellWidget(0, 0).itemText(i)[1:])
-            for i in range(self.dialog.cellWidget(0, 0).count())
-            if 'R' in self.dialog.cellWidget(0, 0).itemText(i)
-        ])
-
-        for i in range(self.dialog.table.rowCount()):
-            left_old = self.dialog.table.cellWidget(i, 0)
-            node_old = self.dialog.table.cellWidget(i, 1)
-            right_old = self.dialog.table.cellWidget(i, 2)
-
-            if len(left_old.text_raw) < len_left:
-                left_old.text_raw = [''] * (len_left - len(left_old.text_raw)) + left_old.text_raw
-            if len(right_old.text_raw) < len_right:
-                right_old.text_raw.extend([''] * (len_right - len(right_old.text_raw)))
-
-            no_token = self.dialog.table.item(i, 3).val
-            no_token_pct = self.dialog.table.item(i, 4).val
-            no_sentence = self.dialog.table.item(i, 5).val
-            no_sentence_pct = self.dialog.table.item(i, 6).val
-            no_para = self.dialog.table.item(i, 7).val
-            no_para_pct = self.dialog.table.item(i, 8).val
-            file = self.dialog.table.item(i, 9).text()
-            sentiment = self.dialog.table.item(i, 10).text()
-
-            results.append([
-                left_old, node_old, right_old,
-                no_token, no_token_pct,
-                no_sentence, no_sentence_pct,
-                no_para, no_para_pct,
-                file,
-                sentiment
-            ])
-
-        self.progress_updated.emit(self.tr('Updating table ...'))
-
-        time.sleep(0.1)
-
-        self.worker_done.emit(results)
 
 class Wl_Table_Results_Sort_Conordancer(Wl_Table):
     def __init__(self, parent, table):
@@ -1430,22 +1383,40 @@ class Wl_Table_Results_Sort_Conordancer(Wl_Table):
             self.button_remove.setEnabled(False)
 
     def table_item_changed(self):
-        sorting_rules = copy.deepcopy(self.main.settings_custom['concordancer']['sort_results']['sorting_rules'])
+        sorting_rules = copy.deepcopy(self.main.settings_custom[self.table.tab]['sort_results']['sorting_rules'])
 
         self.setRowCount(0)
 
         # Columns to sort
-        self.cols_sorting = [
-            self.tr('Node'),
-            self.tr('Token No.'),
-            self.tr('File')
-        ]
+        if self.table.name == 'concordancer':
+            self.cols_sorting = [
+                self.tr('Node'),
+                self.tr('Token No.'),
+                self.tr('File')
+            ]
 
-        if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
-            if self.table.settings['concordancer']['generation_settings']['width_unit'] == self.tr('Token'):
-                width_left = self.table.settings['concordancer']['generation_settings']['width_left_token']
-                width_right = self.table.settings['concordancer']['generation_settings']['width_right_token']
-            else:
+            if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
+                if self.table.settings['concordancer']['generation_settings']['width_unit'] == self.tr('Token'):
+                    width_left = self.table.settings['concordancer']['generation_settings']['width_left_token']
+                    width_right = self.table.settings['concordancer']['generation_settings']['width_right_token']
+                else:
+                    col_left = self.table.find_col(self.tr('Left'))
+                    col_right = self.table.find_col(self.tr('Right'))
+
+                    width_left = max([len(self.table.cellWidget(row, col_left).text_raw)
+                                      for row in range(self.table.rowCount())])
+                    width_right = max([len(self.table.cellWidget(row, col_right).text_raw)
+                                       for row in range(self.table.rowCount())])
+
+                self.cols_sorting.extend([f'R{i + 1}' for i in range(width_right)])
+                self.cols_sorting.extend([f'L{i + 1}' for i in range(width_left)])
+        elif self.table.name == 'concordancer_parallel_upper':
+            self.cols_sorting = [
+                self.tr('Node'),
+                self.tr('Segment No.')
+            ]
+
+            if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
                 col_left = self.table.find_col(self.tr('Left'))
                 col_right = self.table.find_col(self.tr('Right'))
 
@@ -1454,8 +1425,8 @@ class Wl_Table_Results_Sort_Conordancer(Wl_Table):
                 width_right = max([len(self.table.cellWidget(row, col_right).text_raw)
                                    for row in range(self.table.rowCount())])
 
-            self.cols_sorting.extend([f'R{i + 1}' for i in range(width_right)])
-            self.cols_sorting.extend([f'L{i + 1}' for i in range(width_left)])
+                self.cols_sorting.extend([f'R{i + 1}' for i in range(width_right)])
+                self.cols_sorting.extend([f'L{i + 1}' for i in range(width_left)])
 
         # Check sorting settings
         for sorting_col, sorting_order in sorting_rules:
@@ -1573,145 +1544,6 @@ class Wl_Table_Results_Sort_Conordancer(Wl_Table):
             self.removeRow(i)
 
         self.itemChanged.emit(self.item(0, 0))
-
-    @wl_misc.log_timing
-    def sort_results(self):
-        def update_gui(results):
-            # Create new labels
-            for i, (left_old, node_old, right_old,
-                    _, _, _, _, _, _, _, _) in enumerate(results):
-                left_new = wl_label.Wl_Label_Html('', self.table)
-                node_new = wl_label.Wl_Label_Html(node_old.text(), self.table)
-                right_new = wl_label.Wl_Label_Html('', self.table)
-
-                left_new.text_raw = left_old.text_raw.copy()
-                node_new.text_raw = node_old.text_raw.copy()
-                right_new.text_raw = right_old.text_raw.copy()
-
-                left_new.text_search = left_old.text_search.copy()
-                node_new.text_search = node_old.text_search.copy()
-                right_new.text_search = right_old.text_search.copy()
-
-                results[i][0] = left_new
-                results[i][1] = node_new
-                results[i][2] = right_new
-
-            self.table.blockSignals(True)
-            self.table.setUpdatesEnabled(False)
-
-            for i, (left, node, right,
-                    no_token, no_token_pct,
-                    no_sentence, no_sentence_pct,
-                    no_para, no_para_pct,
-                    file,
-                    sentiment) in enumerate(sorted(results, key = key_concordancer)):
-                for file_open in self.table.settings['files']['files_open']:
-                    if file_open['selected'] and file_open['name'] == file:
-                        lang = file_open['lang']
-
-                # Remove empty tokens
-                text_left = [token for token in left.text_raw if token]
-                text_right = [token for token in right.text_raw if token]
-
-                highlight_colors = self.main.settings_custom['concordancer']['sort_results']['highlight_colors']
-
-                i_highlight_color_left = 1
-                i_highlight_color_right = 1
-
-                for j, key in enumerate([key for key in sorting_keys if type(key) != int]):
-                    if key[0] == 0 and -key[1] <= len(text_left):
-                        hightlight_color = highlight_colors[i_highlight_color_left % len(highlight_colors)]
-
-                        text_left[key[1]] = f'''
-                            <span style="color: {hightlight_color}; font-weight: bold;">
-                                {text_left[key[1]]}
-                            </span>
-                        '''
-
-                        i_highlight_color_left += 1
-                    elif key[0] == 2 and key[1] < len(text_right):
-                        hightlight_color = highlight_colors[i_highlight_color_right % len(highlight_colors)]
-
-                        text_right[key[1]] = f'''
-                            <span style="color: {hightlight_color}; font-weight: bold;">
-                                {text_right[key[1]]}
-                            </span>
-                        '''
-
-                        i_highlight_color_right += 1
-
-                text_left = wl_word_detokenization.wl_word_detokenize(self.main, text_left, lang)
-                text_right = wl_word_detokenization.wl_word_detokenize(self.main, text_right, lang)
-
-                self.table.cellWidget(i, 0).setText(text_left)
-                self.table.cellWidget(i, 1).setText(node.text())
-                self.table.cellWidget(i, 2).setText(text_right)
-
-                self.table.cellWidget(i, 0).text_raw = [token for token in left.text_raw if token]
-                self.table.cellWidget(i, 1).text_raw = node.text_raw
-                self.table.cellWidget(i, 2).text_raw = [token for token in right.text_raw if token]
-
-                self.table.cellWidget(i, 0).text_search = left.text_search
-                self.table.cellWidget(i, 1).text_search = node.text_search
-                self.table.cellWidget(i, 2).text_search = right.text_search
-
-                self.table.set_item_num(i, 3, no_token)
-                self.table.set_item_num(i, 4, no_token_pct)
-                self.table.set_item_num(i, 5, no_sentence)
-                self.table.set_item_num(i, 6, no_sentence_pct)
-                self.table.set_item_num(i, 7, no_para)
-                self.table.set_item_num(i, 8, no_para_pct)
-                self.table.item(i, 9).setText(file)
-                self.table.item(i, 10).setText(sentiment)
-
-            self.table.setUpdatesEnabled(True)
-            self.table.blockSignals(False)
-
-        def key_concordancer(item):
-            keys = []
-
-            for key in sorting_keys:
-                # Node
-                if key == 1:
-                    keys.append(item[key].text_raw)
-                # Left & Right
-                elif type(key) == list:
-                    keys.append(item[key[0]].text_raw[key[1]])
-                else:
-                    keys.append(item[key])
-
-            return keys
-
-        sorting_keys = []
-
-        settings = self.table.settings['concordancer']
-
-        if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
-            for sorting_col, sorting_order in settings['sort_results']['sorting_rules']:
-                if sorting_col == self.tr('File'):
-                    sorting_keys.append(9)
-                elif sorting_col == self.tr('Token No.'):
-                    sorting_keys.append(3)
-                elif sorting_col == self.tr('Node'):
-                    sorting_keys.append(1)
-                elif 'R' in sorting_col:
-                    sorting_keys.append([2, int(sorting_col[1:]) - 1])
-                elif 'L' in sorting_col:
-                    sorting_keys.append([0, -int(sorting_col[1:])])
-
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Results_Sort(self.main)
-
-            worker_results_sort_concordancer = Wl_Worker_Results_Sort_Concordancer(
-                self.main,
-                dialog_progress = dialog_progress,
-                update_gui = update_gui,
-                dialog = self
-            )
-
-            thread_results_sort_concordancer = wl_threading.Wl_Thread(worker_results_sort_concordancer)
-            thread_results_sort_concordancer.start_worker()
-
-        wl_msg.wl_msg_results_sort(self.main)
 
 class Wl_Table_Tags(Wl_Table):
     def __init__(self, main):

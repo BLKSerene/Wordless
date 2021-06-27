@@ -42,6 +42,7 @@ from wl_widgets import wl_layout
 import wl_file_area
 import wl_overview
 import wl_concordancer
+import wl_concordancer_parallel
 import wl_wordlist
 import wl_ngram
 import wl_collocation
@@ -400,28 +401,18 @@ class Wl_Main(QMainWindow):
         self.setCentralWidget(splitter_central_widget)
 
     def init_work_area(self):
-        def load_settings():
-            work_area_cur = self.settings_custom['work_area_cur']
-
-            for i in range(self.wl_work_area.count()):
-                if self.wl_work_area.tabText(i) == work_area_cur:
-                    self.wl_work_area.setCurrentIndex(i)
-
-                    break
-
-            work_area_changed()
-
-        def work_area_changed():
-            self.settings_custom['work_area_cur'] = self.wl_work_area.tabText(self.wl_work_area.currentIndex())
-
         self.wl_work_area = QTabWidget(self)
-        
+
         self.wl_work_area.addTab(
             wl_overview.Wrapper_Overview(self),
             self.tr('Overview')
         )
         self.wl_work_area.addTab(
             wl_concordancer.Wrapper_Concordancer(self),
+            self.tr('Concordancer')
+        )
+        self.wl_work_area.addTab(
+            wl_concordancer_parallel.Wrapper_Concordancer_Parallel(self),
             self.tr('Concordancer')
         )
         self.wl_work_area.addTab(
@@ -445,9 +436,47 @@ class Wl_Main(QMainWindow):
             self.tr('Keyword')
         )
 
-        self.wl_work_area.currentChanged.connect(work_area_changed)
+        self.wl_work_area.currentChanged.connect(self.work_area_changed)
 
-        load_settings()
+        self.load_settings_work_area()
+
+    def load_settings_work_area(self):
+        # Current tab
+        work_area_cur = self.settings_custom['work_area_cur']
+
+        for i in range(self.wl_work_area.count()):
+            if self.wl_work_area.tabText(i) == work_area_cur:
+                self.wl_work_area.setCurrentIndex(i)
+
+                break
+
+        # Parallel mode
+        if self.settings_custom['concordancer']['parallel_mode']:
+            self.wl_work_area.setTabVisible(1, False)
+        else:
+            self.wl_work_area.setTabVisible(2, False)
+
+        self.work_area_changed()
+
+    def work_area_changed(self):
+        # Current tab
+        self.settings_custom['work_area_cur'] = self.wl_work_area.tabText(self.wl_work_area.currentIndex())
+        
+        # Parallel mode
+        if self.wl_work_area.currentIndex() == 1 and self.settings_custom['concordancer']['parallel_mode']:
+            self.wl_work_area.widget(2).checkbox_parallel_mode.setChecked(True)
+
+            self.wl_work_area.setTabVisible(1, False)
+            self.wl_work_area.setTabVisible(2, True)
+
+            self.wl_work_area.setCurrentIndex(2)
+        elif self.wl_work_area.currentIndex() == 2 and not self.settings_custom['concordancer_parallel']['parallel_mode']:
+            self.wl_work_area.widget(1).checkbox_parallel_mode.setChecked(False)
+
+            self.wl_work_area.setTabVisible(1, True)
+            self.wl_work_area.setTabVisible(2, False)
+
+            self.wl_work_area.setCurrentIndex(1)
 
     def load_settings(self):
         settings = copy.deepcopy(self.settings_custom)

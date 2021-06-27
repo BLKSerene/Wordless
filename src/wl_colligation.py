@@ -297,7 +297,7 @@ class Wrapper_Colligation(wl_layout.Wl_Wrapper):
          self.checkbox_show_cumulative,
          self.checkbox_show_breakdown_file) = wl_widgets.wl_widgets_table_settings(
             self,
-            table = self.table_colligation
+            tables = [self.table_colligation]
         )
 
         self.checkbox_show_breakdown_file.setText(self.tr('Show breakdown by file'))
