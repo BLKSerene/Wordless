@@ -4,11 +4,11 @@ cChardet      |https://github.com/PyYoshi/cChardet           |2.1.7 |Yoshihiro M
 
 chardet       |https://github.com/chardet/chardet            |4.0.0 |Daniel Blanchard          |LGPL-2.1    |https://github.com/chardet/chardet/blob/master/LICENSE
 
-langdetect    |https://github.com/Mimino666/langdetect       |1.0.8 |中谷秀洋, Michal Danilák   |Apache-2.0  |https://github.com/Mimino666/langdetect/blob/master/LICENSE
+langdetect    |https://github.com/Mimino666/langdetect       |1.0.9 |中谷秀洋, Michal Danilák   |Apache-2.0  |https://github.com/Mimino666/langdetect/blob/master/LICENSE
 
 langid.py     |https://github.com/saffsd/langid.py           |1.1.6 |Marco Lui                 |BSD-2-Clause|https://github.com/saffsd/langid.py/blob/master/LICENSE
 
-lxml          |https://lxml.de/                              |4.6.2 |Stefan Behnel             |BSD-3-Clause|https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt
+lxml          |https://lxml.de/                              |4.6.3 |Stefan Behnel             |BSD-3-Clause|https://github.com/lxml/lxml/blob/master/doc/licenses/BSD.txt
 
 NumPy         |https://www.numpy.org/                        |1.19.5|NumPy Developers          |BSD-3-Clause|https://github.com/numpy/numpy/blob/master/LICENSE.txt
 
