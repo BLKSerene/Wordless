@@ -355,9 +355,7 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
     elif lang == 'tel':
         tokens == ['ఆంధ్ర', 'ప్రదేశ్', ',', 'తెలంగాణ', 'రాష్ట్రాల', 'అధికార', 'భాష', 'తెలుగు', '.']
     elif lang == 'tha':
-        if word_tokenizer == ('AttaCut - Thai Word Tokenizer'):
-            assert tokens == ['ภาษา', 'ไทย', 'หรือ', 'ภาษา', 'ไทย', 'กลาง', 'เป็น', 'ภาษา', 'ราชการ', 'และ', 'ภาษา', 'ประจำ', 'ชาติ', 'ของ', 'ประเทศไทย']
-        elif word_tokenizer in ['PyThaiNLP - Longest Matching',
+        if word_tokenizer in ['PyThaiNLP - Longest Matching',
                                 'PyThaiNLP - Maximum Matching + TCC',
                                 'PyThaiNLP - Maximum Matching + TCC (Safe Mode)']:
             assert tokens == ['ภาษาไทย', 'หรือ', 'ภาษาไทย', 'กลาง', 'เป็น', 'ภาษาราชการ', 'และ', 'ภาษาประจำชาติ', 'ของ', 'ประเทศ', 'ไทย']
