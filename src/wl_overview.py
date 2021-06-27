@@ -31,6 +31,7 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
     def __init__(self, parent):
         super().__init__(
             parent,
+            tab = 'overview',
             headers = [
                 parent.tr('Count of Paragraphs'),
                 parent.tr('Count of Paragraphs %'),
@@ -193,7 +194,7 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
          self.checkbox_show_cumulative,
          self.checkbox_show_breakdown) = wl_widgets.wl_widgets_table_settings(
             self,
-            table = self.table_overview
+            tables = [self.table_overview]
         )
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)

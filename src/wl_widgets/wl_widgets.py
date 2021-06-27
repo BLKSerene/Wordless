@@ -257,7 +257,7 @@ def wl_widgets_context_settings(parent, tab):
     button_context_settings = QPushButton(parent.tr('Settings...'), parent)
 
     dialog_context_settings = wl_dialog_context_settings.Wl_Dialog_Context_Settings(main,
-                                                                                                tab = tab)
+                                                                                    tab = tab)
     main.__dict__[f'wl_context_settings_{tab}'] = dialog_context_settings
 
     button_context_settings.clicked.connect(lambda: main.__dict__[f'wl_context_settings_{tab}'].load())
@@ -395,23 +395,26 @@ def wl_widgets_settings_measures(parent, tab):
     return label_settings_measures, button_settings_measures
 
 # Table Settings
-def wl_widgets_table_settings(parent, table):
+def wl_widgets_table_settings(parent, tables):
     def show_pct_changed():
-        table.show_pct = checkbox_show_pct.isChecked()
+        for table in tables:
+            table.show_pct = checkbox_show_pct.isChecked()
 
-        if any([table.item(0, i) for i in range(table.columnCount())]):
-            table.toggle_pct()
+            if any([table.item(0, i) for i in range(table.columnCount())]):
+                table.toggle_pct()
 
     def show_cumulative_changed():
-        table.show_cumulative = checkbox_show_cumulative.isChecked()
+        for table in tables:
+            table.show_cumulative = checkbox_show_cumulative.isChecked()
 
-        if any([table.item(0, i) for i in range(table.columnCount())]):
-            table.toggle_cumulative()
+            if any([table.item(0, i) for i in range(table.columnCount())]):
+                table.toggle_cumulative()
 
     def show_breakdown_changed():
-        table.show_breakdown = checkbox_show_breakdown.isChecked()
+        for table in tables:
+            table.show_breakdown = checkbox_show_breakdown.isChecked()
 
-        table.toggle_breakdown()
+            table.toggle_breakdown()
 
     checkbox_show_pct = QCheckBox(parent.tr('Show percentage data'), parent)
     checkbox_show_cumulative = QCheckBox(parent.tr('Show cumulative data'), parent)

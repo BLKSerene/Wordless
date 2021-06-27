@@ -73,6 +73,7 @@ def init_settings_default(main):
         },
     
         'concordancer': {
+            'parallel_mode': False,
             'token_settings': {
                 'puncs': False,
 
@@ -176,6 +177,123 @@ def init_settings_default(main):
                     [main.tr('Node'), main.tr('Ascending')],
                     [main.tr('File'), main.tr('Ascending')],
                     [main.tr('Token No.'), main.tr('Ascending')]
+                ],
+
+                'highlight_colors': [
+                    # Red
+                    '#F00',
+                    # Orange
+                    '#C2691D',
+                    # Yellow
+                    '#CBBE00',
+                    # Green
+                    '#3F864C',
+                    # Blue
+                    '#264E8C',
+                    # Purple
+                    '#491D76'
+                ]
+            },
+
+            'search_results': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_words': True,
+                'use_regex': False,
+
+                'ignore_tags': True,
+                'match_tags': False
+            }
+        },
+
+        'concordancer_parallel': {
+            'parallel_mode': False,
+            'token_settings': {
+                'puncs': False,
+
+                'ignore_tags': True,
+                'use_tags': False
+            },
+            
+            'search_settings': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_words': True,
+                'use_regex': False,
+
+                'ignore_tags': True,
+                'match_tags': False
+            },
+
+            'context_settings': {
+                'inclusion': {
+                    'inclusion': False,
+
+                    'multi_search_mode': False,
+                    'search_term': '',
+                    'search_terms': [],
+
+                    'ignore_case': True,
+                    'match_inflected_forms': True,
+                    'match_whole_words': True,
+                    'use_regex': False,
+
+                    'ignore_tags': True,
+                    'match_tags': False,
+                    
+                    'context_window_sync': False,
+                    'context_window_left': -5,
+                    'context_window_right': 5
+                },
+                
+                'exclusion': {
+                    'exclusion': False,
+
+                    'multi_search_mode': False,
+                    'search_term': '',
+                    'search_terms': [],
+
+                    'ignore_case': True,
+                    'match_inflected_forms': True,
+                    'match_whole_words': True,
+                    'use_regex': False,
+
+                    'ignore_tags': True,
+                    'match_tags': False,
+                    
+                    'context_window_sync': False,
+                    'context_window_left': -5,
+                    'context_window_right': 5
+                }
+            },
+            
+            'generation_settings': {
+                'src_file': '',
+                'tgt_file': '',
+
+                'sampling_method': main.tr('None'),
+                'sample_size_first_n_lines': 100,
+                'sample_size_systematic_fixed_interval': 2,
+                'sample_size_systematic_fixed_size': 100,
+                'sample_size_random': 100
+            },
+
+            'table_settings': {
+                'show_pct': True
+            },
+
+            'sort_results': {
+                'sorting_rules': [
+                    [main.tr('Node'), main.tr('Ascending')],
+                    [main.tr('Segment No.'), main.tr('Ascending')]
                 ],
 
                 'highlight_colors': [
