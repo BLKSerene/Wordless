@@ -11,6 +11,12 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
+## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - ??/??/2021
+
+### 🎉 New Features
+- Work Area: Add Concordancer (Parallel Mode)
+
+
 ## [1.5.0](https://github.com/BLKSerene/Wordless/releases/tag/1.5.0) - 01/15/2021
 
 ### 🎉 New Features

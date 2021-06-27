@@ -25,7 +25,7 @@ import numpy
 import textblob
 
 from wl_checking import wl_checking_file
-from wl_dialogs import wl_dialog, wl_dialog_misc, wl_msg_box
+from wl_dialogs import wl_dialog_misc, wl_msg_box
 from wl_figs import wl_fig
 from wl_text import wl_matching, wl_text, wl_text_utils, wl_token_processing, wl_word_detokenization
 from wl_utils import wl_misc, wl_threading
@@ -76,10 +76,16 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
 
         self.table_concordancer = Wl_Table_Concordancer(self)
 
+        # Parallel Mode
+        self.checkbox_parallel_mode = QCheckBox(self.tr('Parallel Mode'))
+
+        self.checkbox_parallel_mode.stateChanged.connect(self.parallel_mode_changed)
+
         layout_results = wl_layout.Wl_Layout()
         layout_results.addWidget(self.table_concordancer.label_number_results, 0, 0)
         layout_results.addWidget(self.table_concordancer.button_results_sort, 0, 2)
         layout_results.addWidget(self.table_concordancer.button_results_search, 0, 3)
+        layout_results.addWidget(self.checkbox_parallel_mode, 0, 4)
 
         layout_results.setColumnStretch(1, 1)
 
@@ -300,7 +306,7 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
          self.checkbox_show_cumulative,
          self.checkbox_show_breakdown) = wl_widgets.wl_widgets_table_settings(
             self,
-            table = self.table_concordancer
+            tables = [self.table_concordancer]
         )
 
         self.checkbox_show_cumulative.hide()
@@ -371,11 +377,17 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
 
         self.load_settings()
 
+        # Parallel Mode
+        self.checkbox_parallel_mode.stateChanged.connect(self.main.work_area_changed)
+
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.main.settings_default['concordancer'])
         else:
             settings = copy.deepcopy(self.main.settings_custom['concordancer'])
+            
+        # Parallel Mode
+        self.checkbox_parallel_mode.setChecked(settings['parallel_mode'])
 
         # Token Settings
         self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
@@ -433,12 +445,18 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         self.checkbox_discard_position_info.setChecked(settings['zapping_settings']['discard_position_info'])
         self.checkbox_randomize_outputs.setChecked(settings['zapping_settings']['randomize_outputs'])
 
+        self.parallel_mode_changed()
         self.token_settings_changed()
         self.search_settings_changed()
         self.generation_settings_changed()
         self.table_settings_changed()
         self.fig_settings_changed()
         self.zapping_settings_changed()
+
+    def parallel_mode_changed(self):
+        settings = self.main.settings_custom['concordancer']
+
+        settings['parallel_mode'] = self.checkbox_parallel_mode.isChecked()
 
     def token_settings_changed(self):
         settings = self.main.settings_custom['concordancer']['token_settings']
@@ -568,10 +586,6 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                 token_settings = settings['token_settings']
             )
 
-            len_paras = len(text.offsets_paras)
-            len_sentences = len(text.offsets_sentences)
-            len_tokens = len(text.tokens_flat)
-
             search_terms = wl_matching.match_search_terms(
                 self.main, tokens,
                 lang = text.lang,
@@ -597,6 +611,10 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
             else:
                 len_search_term_min = 0
                 len_search_term_max = 0
+
+            len_paras = len(text.offsets_paras)
+            len_sentences = len(text.offsets_sentences)
+            len_tokens = len(text.tokens_flat)
 
             for len_search_term in range(len_search_term_min, len_search_term_max + 1):
                 for i, ngram in enumerate(nltk.ngrams(tokens, len_search_term)):
@@ -629,7 +647,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
                                     break
 
-                        # Search in Results
+                        # Search in Results (Node)
                         text_search = list(ngram)
 
                         if not settings['token_settings']['puncs']:
@@ -653,7 +671,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             context_left = text.tokens_flat[offset_para_start:i]
                             context_right = text.tokens_flat[i + len_search_term : offset_para_end]
 
-                            # Search in Results
+                            # Search in Results (Left & Right)
                             if settings['token_settings']['puncs']:
                                 text_search_left = copy.deepcopy(context_left)
                                 text_search_right = copy.deepcopy(context_right)
@@ -675,7 +693,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             context_left = text.tokens_flat[offset_sentence_start:i]
                             context_right = text.tokens_flat[i + len_search_term : offset_sentence_end]
 
-                            # Search in Results
+                            # Search in Results (Left & Right)
                             if settings['token_settings']['puncs']:
                                 text_search_left = copy.deepcopy(context_left)
                                 text_search_right = copy.deepcopy(context_right)
@@ -690,7 +708,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             context_left = text.tokens_flat[max(0, i - width_left_token) : i]
                             context_right = text.tokens_flat[i + len_search_term : i + len_search_term + width_right_token]
 
-                            # Search in Results
+                            # Search in Results (Left & Right)
                             if settings['token_settings']['puncs']:
                                 text_search_left = copy.deepcopy(context_left)
                                 text_search_right = copy.deepcopy(context_right)
@@ -736,7 +754,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
                                 len_context_right += len(token_next)
 
-                            # Search in Results
+                            # Search in Results (Left & Right)
                             text_search_left = copy.deepcopy(context_left)
                             text_search_right = copy.deepcopy(context_right)
 

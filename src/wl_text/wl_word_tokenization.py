@@ -8,7 +8,6 @@
 #
 # All other rights reserved.
 #
-
 import attacut
 import jieba
 import pkuseg
@@ -39,7 +38,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         lang = lang,
         word_tokenizer = word_tokenizer
     )
-
+    
     # NLTK
     if 'NLTK' in word_tokenizer:
         sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang)
@@ -265,13 +264,13 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
         for sentence in sentences:
             tokens_multilevel.append(underthesea.word_tokenize(str(sentence)))
-
+    
     # Remove empty tokens and strip whitespace
     for i, sentence in enumerate(tokens_multilevel):
         tokens_multilevel[i] = [token.strip()
                                 for token in sentence
                                 if token.strip()]
-
+    
     # Record token boundaries
     if lang in ['zho_cn', 'zho_tw', 'jpn']:
         for sentence in tokens_multilevel:
@@ -281,5 +280,5 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         for sentence in tokens_multilevel:
             if sentence:
                 sentence[-1] = wl_text.Wl_Token(sentence[-1], boundary = ' ', sentence_ending = True)
-
+    
     return tokens_multilevel
