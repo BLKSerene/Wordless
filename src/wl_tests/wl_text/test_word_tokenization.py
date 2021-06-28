@@ -390,8 +390,9 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
         tokens == ['Tetun', '(', 'iha', 'portugés', ':', 'tétum', ';', 'iha', 'inglés', ':', 'Tetum', ')', 'ne', "'", 'e', 'lian', 'nasionál', 'no', 'ko-ofisiál', 'Timór', 'Lorosa', "'", 'e', 'nian', '.']
     elif lang == 'tha':
         if word_tokenizer in ['PyThaiNLP - Longest Matching',
-                                'PyThaiNLP - Maximum Matching + TCC',
-                                'PyThaiNLP - Maximum Matching + TCC (Safe Mode)']:
+                              'PyThaiNLP - Maximum Matching + TCC',
+                              'PyThaiNLP - Maximum Matching + TCC (Safe Mode)',
+                              'PyThaiNLP - NERCut']:
             assert tokens == ['ภาษาไทย', 'หรือ', 'ภาษาไทย', 'กลาง', 'เป็น', 'ภาษาราชการ', 'และ', 'ภาษาประจำชาติ', 'ของ', 'ประเทศ', 'ไทย']
         elif word_tokenizer == 'PyThaiNLP - Maximum Matching':
             assert tokens == ['ภาษาไทย', 'หรือ', 'ภาษาไทยกลาง', 'เป็น', 'ภาษาราชการ', 'และ', 'ภาษาประจำชาติ', 'ของ', 'ประเทศ', 'ไทย']
