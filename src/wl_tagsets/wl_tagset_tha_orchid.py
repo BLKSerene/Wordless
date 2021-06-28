@@ -10,72 +10,72 @@
 #
 
 #
-# ORCHID Tagset: https://www.researchgate.net/publication/243783378_Thai_Part-of-speech_Tagged_Corpus_ORCHID
+# ORCHID Tagset: https://github.com/PyThaiNLP/pythainlp/blob/dev/docs/api/tag.rst#pythainlptag
 #
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 #
 
 MAPPINGS = [
-    ['NPRP', 'PROPN', 'Proper noun', ''],
+    ['NPRP', 'PROPN', 'Proper noun', 'วินโดวส์ 95, โคโรน่า, โค้ก'],
     
-    ['NCNM', 'NUM', 'Cardinal number', ''],
-    ['NONM', 'ADJ', 'Ordinal number', ''],
+    ['NCNM', 'NUM', 'Cardinal number', 'หนึ่ง, สอง, สาม, 1, 2, 10'],
+    ['NONM', 'ADJ', 'Ordinal number', 'ที่หนึ่ง, ที่สอง, ที่สาม, ที่1, ที่2'],
 
-    ['NLBL', 'NOUN', 'Label noun', ''],
-    ['NCMN', 'NOUN', 'Common noun', ''],
-    ['NTTL', 'NOUN', 'Title noun', ''],
+    ['NLBL', 'NUM', 'Label noun', '1, 2, 3, 4, ก, ข, a, b'],
+    ['NCMN', 'NOUN', 'Common noun', 'หนังสือ, อาหาร, อาคาร, คน'],
+    ['NTTL', 'NOUN', 'Title noun', 'ครู, พลเอก'],
 
-    ['PPRS', 'PRON', 'Personal pronoun', ''],
-    ['PDMN', 'PRON', 'Demonstrative pronoun', ''],
-    ['PNTR', 'PRON', 'Interrogative pronoun', ''],
-    ['PREL', 'PRON', 'Relative pronoun', ''],
+    ['PPRS', 'PRON', 'Personal pronoun', 'คุณ, เขา, ฉัน'],
+    ['PDMN', 'PRON', 'Demonstrative pronoun', 'นี่, นั้น, ที่นั่น, ที่นี่'],
+    ['PNTR', 'PRON', 'Interrogative pronoun', 'ใคร, อะไร, อย่างไร'],
+    ['PREL', 'SCONJ', 'Relative pronoun', 'ที่, ซึ่ง, อัน, ผู้'],
 
-    ['VACT', 'VERB', 'Active verb', ''],
-    ['VSTA', 'VERB', 'Static verb', ''],
-    ['VATT', 'VERB', 'Attributive verb', ''],
+    ['VACT', 'VERB', 'Active verb', 'ทำงาน, ร้องเพลง, กิน'],
+    ['VSTA', 'VERB', 'Static verb', 'เห็น, รู้, คือ'],
+    ['VATT', 'ADJ', 'Attributive verb', 'อ้วน, ดี, สวย'],
 
-    ['XVBM', 'AUX', 'Pre-verb auxiliary, before negator “ไม่”', ''],
-    ['XVAM', 'AUX', 'Pre-verb auxiliary, after negator "ไม่"', ''],
-    ['XVMM', 'AUX', 'Pre-verb auxiliary, before or after negator "ไม่"', ''],
-    ['XVBB', 'AUX', 'Pre-verb auxiliary, in imperative mood', ''],
-    ['XVAE', 'AUX', 'Post-verb auxiliary', ''],
+    ['XVBM', 'AUX', 'Pre-verb auxiliary, before negator “ไม่”', 'เกิด, เกือบ, กำลัง'],
+    ['XVAM', 'AUX', 'Pre-verb auxiliary, after negator "ไม่"', 'ค่อย, น่า, ได้'],
+    ['XVMM', 'AUX', 'Pre-verb auxiliary, before or after negator "ไม่"', 'ควร, เคย, ต้อง'],
+    ['XVBB', 'AUX', 'Pre-verb auxiliary, in imperative mood', 'กรุณา, จง, เชิญ, อย่า, ห้าม'],
+    ['XVAE', 'AUX', 'Post-verb auxiliary', 'ไป, มา, ขึ้น'],
 
-    ['DDAN', 'DET', 'Definite determiner,\nafter noun without classifier in between', ''],
-    ['DDAC', 'DET', 'Definite determiner,\nallowing classifier in between', ''],
-    ['DDBQ', 'DET', 'Definite determiner,\nbetween noun and classifier or preceding quantitative expression', ''],
-    ['DDAQ', 'DET', 'Definite determiner,\nfollowing quantitative expression', ''],
-    ['DIAC', 'DET', 'Indefinite determiner,\nfollowing noun; allowing classfifier in between', ''],
-    ['DIBQ', 'DET', 'Indefinite determiner,\nbetween noun and classifier or preceding quantitative expression', ''],
-    ['DIAQ', 'DET', 'Indefinite determiner,\nfollowing quantitative expression', ''],
-    ['DCNM', 'DET', 'Determiner,\ncardinal number expression', ''],
-    ['DONM', 'DET', 'Determiner,\nordinal number expression', ''],
+    ['DDAN', 'DET', 'Definite determiner,\nafter noun without classifier in between', 'ยี่, นั่น, โน่น, ทั้งหมด'],
+    ['DDAC', 'DET', 'Definite determiner,\nallowing classifier in between', 'นี้, นั้น, โน้น, นู้น'],
+    ['DDBQ', 'DET', 'Definite determiner,\nbetween noun and classifier or preceding quantitative expression', 'ทั้ง, อีก, เพียง'],
+    ['DDAQ', 'DET', 'Definite determiner,\nfollowing quantitative expression', 'พอดี, ถ้วน'],
+    ['DIAC', 'DET', 'Indefinite determiner,\nfollowing noun; allowing classfifier in between', 'ไหน, อื่น, ต่างๆ'],
+    ['DIBQ', 'DET', 'Indefinite determiner,\nbetween noun and classifier or preceding quantitative expression', 'บาง, ประมาณ, เกือบ'],
+    ['DIAQ', 'DET', 'Indefinite determiner,\nfollowing quantitative expression', 'กว่า, เศษ'],
+    ['DCNM', 'NUM', 'Determiner,\ncardinal number expression', 'หนึ่งคน, เสือ, 2 ตัว'],
+    ['DONM', 'ADJ', 'Determiner,\nordinal number expression', 'ที่หนึ่ง, ที่สอง, ที่สุดท้สย'],
 
-    ['ADVN', 'ADV', 'Adverb with normal form', ''],
-    ['ADVI', 'ADV', 'Adverb with iterative form', ''],
-    ['ADVP', 'ADV', 'Adverb with prefixed form', ''],
-    ['ADVS', 'ADV', 'Sentential adverb', ''],
+    ['ADVN', 'ADV', 'Adverb with normal form', 'เก่ง, เร็ว, ช้า, สม่ำเสมอ'],
+    ['ADVI', 'ADV', 'Adverb with iterative form', 'เร็วๆ, เสทอๆ, ช้าๆ'],
+    ['ADVP', 'ADV', 'Adverb with prefixed form', 'โดยเร็ว'],
+    ['ADVS', 'ADV', 'Sentential adverb', 'โดยปกติ, ธรรมดา'],
 
-    ['CNIT', 'PART', 'Unit classifier', ''],
-    ['CLTV', 'PART', 'Collective classifier', ''],
-    ['CMTR', 'PART', 'Measurement classifier', ''],
-    ['CFQC', 'PART', 'Frequency classifier', ''],
-    ['CVBL', 'PART', 'Verbal classifier', ''],
+    ['CNIT', 'NOUN', 'Unit classifier', 'ตัว, คน, เล่ม'],
+    ['CLTV', 'NOUN', 'Collective classifier', 'คู่, กลุ่ม, ฝูง, เชิง, ทาง, ด้าน, แบบ, รุ่น'],
+    ['CMTR', 'NOUN', 'Measurement classifier', 'กิโลกรัม, แก้ว, ชั่วโมง'],
+    ['CFQC', 'NOUN', 'Frequency classifier', 'ครั้ง, เที่ยว'],
+    ['CVBL', 'NOUN', 'Verbal classifier', 'ม้วน, มัด'],
 
-    ['JCRG', 'CCONJ', 'Coordinating conjunction', ''],
-    ['JCMP', 'CONJ', 'Comparative conjunction', ''],
-    ['JSBR', 'SCONJ', 'Subordinating conjunctino', ''],
+    ['JCRG', 'CCONJ', 'Coordinating conjunction', 'และ, หรือ, แต่'],
+    ['JCMP', 'SCONJ', 'Comparative conjunction', 'กว่า, เหมือนกับ, เท่ากับ'],
+    ['JSBR', 'SCONJ', 'Subordinating conjunctino', 'เพราะว่า, เนื่องจาก ที่, แม้ว่า, ถ้า'],
 
-    ['RPRE', 'ADP', 'Preposition', ''],
+    ['RPRE', 'ADP', 'Preposition', 'จาก, ละ, ของ, ใต้, บน'],
 
-    ['INT', 'INTJ', 'Interjection', ''],
+    ['INT', 'INTJ', 'Interjection', 'โอ้บ, โอ้, เออ, เอ๋, อ๋อ'],
 
-    ['FIXN', 'PART', 'Nominal prefix', ''],
-    ['FIXV', 'PART', 'Adverbial prefix', ''],
+    ['FIXN', 'PART', 'Nominal prefix', 'การทำงาน, ความสนุนสนาน'],
+    ['FIXV', 'PART', 'Adverbial prefix', 'อย่างเร็ว'],
 
-    ['EAFF', 'PART', 'Ending for affirmative sentence', ''],
-    ['EITT', 'PART', 'Ending for interrogative sentence', ''],
+    ['EAFF', 'PART', 'Ending for affirmative sentence', 'จ๊ะ, จ้ะ, ค่ะ, ครับ, นะ, น่า, เถอะ'],
+    ['EITT', 'PART', 'Ending for interrogative sentence', 'หรือ, เหรอ, ไหม, มั้ย'],
 
-    ['NEG', 'PART', 'Negator', ''],
+    ['NEG', 'PART', 'Negator', 'ไม่, มิได้, ไม่ได้, มิ'],
 
-    ['PUNC', 'PUNCT', 'Punctuation', '( ) “ , ;']
+    ['PUNC', 'PUNCT', 'Punctuation', '  (, ), “, ,, ;']
 ]
