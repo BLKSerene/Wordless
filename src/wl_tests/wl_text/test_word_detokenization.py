@@ -52,7 +52,11 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         print(f'{lang} / {word_detokenizer}:')
         print(text)
 
-    if lang == 'cat':
+    if lang == 'asm':
+        assert text == 'অসমীয়া ভাষা হৈছে সকলোতকৈ পূৰ্বীয় ভাৰতীয়-আৰ্য ভাষা ।'
+    elif lang == 'ben':
+        assert text == 'বাংলা ভাষা (বাঙলা, বাঙ্গলা, তথা বাঙ্গালা নামগুলোতেও পরিচিত) একটি ইন্দো - আর্য ভাষা, যা দক্ষিণ এশিয়ার বাঙালি জাতির প্রধান কথ্য ও লেখ্য ভাষা ।'
+    elif lang == 'cat':
         assert text == "El català (denominació oficial a Catalunya, a les Illes Balears, a Andorra, a la ciutat de l' Alguer i tradicional a Catalunya Nord) o valencià (denominació oficial al País Valencià i tradicional al Carxe) és una llengua romànica parlada a Catalunya, el País Valencià (tret d' algunes comarques i localitats de l' interior), les Illes Balears, Andorra, la Franja de Ponent (a l' Aragó), la ciutat de l' Alguer (a l' illa de Sardenya), la Catalunya del Nord,[8] el Carxe (un petit territori de Múrcia poblat per immigrats valencians),[9][10] i en petites comunitats arreu del món (entre les quals destaca la de l' Argentina, amb 195.000 parlants).[11]"
     elif lang == 'zho_cn':
         assert text == '汉语，又称汉文、中文、中国话、中国语、华语、华文、唐话[2]，或被视为一个语族，或被视为隶属于汉藏语系汉语族之一种语言。'
@@ -63,7 +67,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
     elif lang == 'nld':
         assert text == 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
     elif lang == 'eng':
-        assert text == 'English is a West Germanic language that was first spoken in early medieval England and eventually became a global lingua franca.[4][5]'
+        assert text == 'English is a West Germanic language originally spoken by the early medieval England.[3][4][5]'
     elif lang == 'fin':
         assert text == 'Suomen kieli (suomi) on uralilaisten kielten itämerensuomalaiseen ryhmään kuuluva kieli.'
     elif lang == 'fra':
@@ -72,6 +76,10 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         assert text == 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ];abgekürzt dt.oder dtsch.)ist eine westgermanische Sprache.'
     elif lang == 'ell':
         assert text == 'Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[9] και συγκεκριμένα στον ελληνικό κλάδο, μαζί με την τσακωνική, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.'
+    elif lang == 'guj':
+        assert text == 'ગુજરાતી ‍(/ɡʊdʒəˈrɑːti/[૭], રોમન લિપિમાં:Gujarātī, ઉચ્ચાર: [ɡudʒəˈɾɑːtiː]) ભારત દેશના ગુજરાત રાજ્યની ઇન્ડો-આર્યન ભાષા છે, અને મુખ્યત્વે ગુજરાતી લોકો દ્વારા બોલાય છે.'
+    elif lang == 'hin':
+        assert text == 'हिन्दी विश्व की एक प्रमुख भाषा है एवं भारत की राजभाषा है ।'
     elif lang == 'hun':
         assert text == 'A magyar nyelv az uráli nyelvcsalád tagja, a finnugor nyelvek közé tartozó ugor nyelvek egyike.'
     elif lang == 'isl':
@@ -85,17 +93,26 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
             assert text == "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
     elif lang == 'jpn':
         assert text == '日本語(にほんご、にっぽんご[注1])は、主に日本国内や日本人同士の間で使用されている言語である。'
+    elif lang == 'kan':
+        assert text == 'ದ್ರಾವಿಡ ಭಾಷೆಗಳಲ್ಲಿ ಪ್ರಾಮುಖ್ಯವುಳ್ಳ ಭಾಷೆಯೂ ಭಾರತದ ಪುರಾತನವಾದ ಭಾಷೆಗಳಲ್ಲಿ ಒಂದೂ ಆಗಿರುವ ಕನ್ನಡ ಭಾಷೆಯನ್ನು ಅದರ ವಿವಿಧ ರೂಪಗಳಲ್ಲಿ ಸುಮಾರು ೪೫ ದಶಲಕ್ಷ ಜನರು ಆಡು ನುಡಿಯಾಗಿ ಬಳಸುತ್ತಲಿದ್ದಾರೆ.'
     elif lang == 'lav':
         assert text == 'Latviešu valoda ir dzimtā valoda apmēram 1,7 miljoniem cilvēku, galvenokārt Latvijā, kur tā ir vienīgā valsts valoda.[3]'
     elif lang == 'lit':
         assert text == 'Lietuvių kalba – iš baltų prokalbės kilusi lietuvių tautos kalba, kuri Lietuvoje yra valstybinė, o Europos Sąjungoje – viena iš oficialiųjų kalbų.'
+    elif lang == 'mal':
+        assert text == 'ഇന്ത്യയിൽ പ്രധാനമായും കേരള സംസ്ഥാനത്തിലും ലക്ഷദ്വീപിലും പുതുച്ചേരിയുടെ ഭാഗമായ മയ്യഴിയിലും സംസാരിക്കപ്പെടുന്ന ഭാഷയാണ് മലയാളം.'
+    elif lang == 'mar':
+        assert text == 'मराठीभाषा ही इंडो - युरोपीय भाषाकुलातील एक भाषा आहे.'
+    elif lang == 'mni':
+        assert text == 'ꯃꯤꯇꯩꯂꯣꯟ ꯍꯥꯏꯕꯁꯤ ꯏꯟꯗꯤꯌꯥ ꯑꯋꯥꯡ-ꯅꯣꯡꯄꯣꯛꯇ ꯂꯩꯕ ꯃꯅꯤꯄꯨꯔꯗ ꯃꯔꯨꯑꯣꯏꯅ ꯉꯥꯡꯅꯕ ꯇꯤꯕꯦꯇꯣ-ꯕꯔꯃꯟ ꯀꯥꯡꯂꯨꯞꯇ ꯆꯤꯡꯕ ꯂꯣꯟ ꯑꯃꯅꯤ ꯫ ꯚꯥꯔꯠ ꯂꯩꯉꯥꯛꯅꯥ ꯁꯛꯈꯪꯂꯕ ꯂꯣꯟ ꯲꯲ ꯁꯤꯡꯒꯤ ꯃꯅꯨꯡꯗ ꯃꯤꯇꯩꯂꯣꯟꯁꯤꯁꯨ ꯑꯃꯅꯤ ꯫ ꯃꯤꯇꯩꯂꯣꯟ ꯑꯁꯤ ꯏꯟꯗꯤꯌꯥꯒꯤ ꯁ ꯭ ꯇꯦꯠ ꯑꯣꯏꯔꯤꯕ ꯑꯁꯥꯝ ꯑꯃꯁꯨꯡ ꯇ ꯭ ꯔꯤꯄꯨꯔꯥ ꯑꯃꯗꯤ ꯑꯇꯩ ꯂꯩꯕꯥꯛꯁꯤꯡꯗ ꯍꯥꯏꯕꯗꯤ ꯕꯥꯡꯂꯥꯗꯦꯁ ꯑꯃꯁꯨꯡ ꯑꯋꯥꯗꯁꯨ ꯉꯥꯡꯅꯩ ꯫ ꯏꯪ ꯀꯨꯝꯖ ꯲꯰꯱꯱ ꯒꯤ ꯃꯤꯀꯣꯛ ꯊꯤꯕꯗ ꯃꯤꯇꯩꯂꯣꯟꯕꯨ ꯏꯃꯥꯂꯣꯟ ꯑꯣꯢꯅ ꯉꯥꯡꯕꯒꯤ ꯃꯤꯁꯤꯡ ꯂꯤꯆꯥ ꯱꯸ ꯃꯨꯛ ꯁꯨꯢ ꯫'
+    elif lang == 'ori':
+        assert text == 'ଓଡ଼ିଆ (ଇଂରାଜୀ ଭାଷାରେ Odia / əˈdiːə / or Oriya / ɒˈriːə /,) ଏକ ଭାରତୀୟ ଭାଷା ଯାହା ଏକ ଇଣ୍ଡୋ-ଇଉରୋପୀୟ ଭାଷାଗୋଷ୍ଠୀ ଅନ୍ତର୍ଗତ ଇଣ୍ଡୋ-ଆର୍ଯ୍ୟ ଭାଷା ।'
     elif lang == 'pol':
-        if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Język polski, polszczyzna, skrót:pol . –język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
-        elif word_detokenizer == 'pol / Sacremoses - Moses Detokenizer':
-            assert text == 'Język polski, polszczyzna, skrót: pol. – język naturalny należący do grupy języków zachodniosłowiańskich (do której należą również czeski, słowacki, kaszubski, dolnołużycki, górnołużycki i wymarły połabski), stanowiącej część rodziny języków indoeuropejskich.'
+        assert text == 'Język polski, polszczyzna – język lechicki z grupy zachodniosłowiańskiej (do której należą również czeski, kaszubski, słowacki i języki łużyckie), stanowiącej część rodziny indoeuropejskiej.'
     elif lang == 'por':
         assert text == 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.'
+    elif lang == 'pan':
+        assert text == 'ਪੰਜਾਬੀ ਭਾਸ਼ਾ / pʌnˈdʒɑːbi / (ਸ਼ਾਹਮੁਖੀ: ‎ پنجابی ‎) (ਗੁਰਮੁਖੀ: ਪੰਜਾਬੀ) ਪੰਜਾਬ ਦੀ ਭਾਸ਼ਾ, ਜਿਸ ਨੂੰ ਪੰਜਾਬ ਖੇਤਰ ਦੇ ਵਸਨੀਕ ਜਾਂ ਸੰਬੰਧਿਤ ਲੋਕ ਬੋਲਦੇ ਹਨ । [1]'
     elif lang == 'ron':
         assert text == 'Limba română este o limbă indo-europeană, din grupul italic și din subgrupul oriental al limbilor romanice.'
     elif lang == 'rus':
@@ -110,10 +127,16 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         assert text == 'Svenska (svenska (info)) är ett östnordiskt språk som talas av ungefär tio miljoner personer främst i Sverige där språket har en dominant ställning som huvudspråk, men även som det ena nationalspråket i Finland och som enda officiella språk på Åland.'
     elif lang == 'tam':
         assert text == 'தமிழ் மொழி (Tamil language) தமிழர்களினதும், தமிழ் பேசும் பலரதும் தாய்மொழி ஆகும்.'
+    elif lang == 'tel':
+        assert text == 'ఆంధ్ర ప్రదేశ్, తెలంగాణ రాష్ట్రాల అధికార భాష తెలుగు.'
+    elif lang == 'tdt':
+        assert text == "Tetun (iha portugés: tétum; iha inglés: Tetum) ne 'e lian nasionál no ko-ofisiál Timór Lorosa' e nian."
     elif lang == 'tha':
         assert text == 'ภาษาไทยหรือภาษาไทยกลางเป็นภาษาราชการและภาษาประจำชาติของประเทศไทย'
     elif lang == 'bod':
         assert text == 'བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་དེའི་ཉེ་འཁོར་གྱི་ས་ཁུལ་ཏེ།'
+    else:
+        raise Exception(f'Warning: language code "{lang}" is absent from the list!')
 
 if __name__ == '__main__':
     for lang, word_detokenizer in test_word_detokenizers:
