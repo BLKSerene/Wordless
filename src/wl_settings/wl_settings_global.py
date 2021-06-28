@@ -87,6 +87,7 @@ def init_settings_global(main):
             main.tr('Maltese'): 'mlt',
             main.tr('Manx'): 'glv',
             main.tr('Marathi'): 'mar',
+            main.tr('Meitei'): 'mni',
             main.tr('Mongolian'): 'mon',
             main.tr('Nepali'): 'nep',
             main.tr('Norwegian Bokmål'): 'nob',
@@ -118,6 +119,7 @@ def init_settings_global(main):
             main.tr('Tamil'): 'tam',
             main.tr('Tatar'): 'tat',
             main.tr('Telugu'): 'tel',
+            main.tr('Tetun Dili'): 'tdt',
             main.tr('Thai'): 'tha',
             main.tr('Tibetan'): 'bod',
             main.tr('Turkish'): 'tur',
@@ -201,6 +203,7 @@ def init_settings_global(main):
             'mkd': 'mk',
             'mlg': 'mg',
             'mlt': 'mt',
+            'mni': 'mni',
             'mon': 'mn',
             'msa': 'ms',
             'nep': 'ne',
@@ -230,6 +233,7 @@ def init_settings_global(main):
             'swe': 'sv',
             'tam': 'ta',
             'tat': 'tt',
+            'tdt': 'tdt',
             'tel': 'te',
             'tgk': 'tg',
             'tgl': 'tl',
@@ -711,6 +715,14 @@ def init_settings_global(main):
                 main.tr('spaCy - Armenian Word Tokenizer')
             ],
 
+            'asm': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer')
+            ],
+
             'eus': [
                 main.tr('spaCy - Basque Word Tokenizer')
             ],
@@ -720,6 +732,7 @@ def init_settings_global(main):
                 main.tr('NLTK - NLTK Tokenizer'),
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Bengali Word Tokenizer')
             ],
 
@@ -799,6 +812,7 @@ def init_settings_global(main):
             ],
 
             'est': [
+                main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Estonian Word Tokenizer')
             ],
 
@@ -838,6 +852,11 @@ def init_settings_global(main):
             ],
 
             'guj': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Gujarati Word Tokenizer')
             ],
 
@@ -850,6 +869,7 @@ def init_settings_global(main):
                 main.tr('NLTK - NLTK Tokenizer'),
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Hindi Word Tokenizer')
             ],
 
@@ -896,6 +916,7 @@ def init_settings_global(main):
             ],
 
             'kan': [
+                main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Kannada Word Tokenizer')
             ],
 
@@ -934,6 +955,7 @@ def init_settings_global(main):
             ],
 
             'mal': [
+                main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Malayalam Word Tokenizer')
             ],
 
@@ -942,7 +964,12 @@ def init_settings_global(main):
                 main.tr('NLTK - NLTK Tokenizer'),
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Marathi Word Tokenizer')
+            ],
+
+            'mni': [
+                main.tr('Sacremoses - Moses Tokenizer')
             ],
 
             'nep': [
@@ -959,6 +986,14 @@ def init_settings_global(main):
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Norwegian Bokmål Word Tokenizer')
+            ],
+
+            'ori': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer')
             ],
 
             'fas': [
@@ -986,6 +1021,14 @@ def init_settings_global(main):
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Portuguese Word Tokenizer')
+            ],
+
+            'pan': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer')
             ],
 
             'ron': [
@@ -1091,7 +1134,12 @@ def init_settings_global(main):
             ],
 
             'tel': [
+                main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Telugu Word Tokenizer')
+            ],
+
+            'tdt': [
+                main.tr('Sacremoses - Moses Tokenizer')
             ],
 
             'tha': [
@@ -1147,6 +1195,16 @@ def init_settings_global(main):
         },
 
         'word_detokenizers': {
+            'asm': [
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
+            'ben': [
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
             'cat': [
                 main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('Sacremoses - Moses Detokenizer')
@@ -1194,6 +1252,16 @@ def init_settings_global(main):
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
 
+            'guj': [
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
+            'hin': [
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
             'hun': [
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
@@ -1217,6 +1285,10 @@ def init_settings_global(main):
                 main.tr('Wordless - Japanese Word Detokenizer')
             ],
 
+            'kan': [
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
             'lav': [
                 main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('Sacremoses - Moses Detokenizer')
@@ -1227,12 +1299,35 @@ def init_settings_global(main):
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
 
+            'mal': [
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
+            'mar': [
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
+            'mni': [
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
+            'ori': [
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
             'pol': [
                 main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
 
             'por': [
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
+            'pan': [
                 main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
@@ -1268,6 +1363,14 @@ def init_settings_global(main):
             ],
 
             'tam': [
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
+            'tel': [
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
+            'tdt': [
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
 
