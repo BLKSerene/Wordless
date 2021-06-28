@@ -221,6 +221,9 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         elif word_tokenizer == main.tr('PyThaiNLP - Maximum Matching + TCC (Safe Mode)'):
             for sentence in sentences:
                 tokens_multilevel.append(pythainlp.word_tokenize(sentence, engine = 'newmm-safe'))
+        elif word_tokenizer == main.tr('PyThaiNLP - NERCut'):
+            for sentence in sentences:
+                tokens_multilevel.append(pythainlp.word_tokenize(sentence, engine = 'nercut'))
     # Tibetan
     elif 'botok' in word_tokenizer:
         sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang = 'bod')
