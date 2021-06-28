@@ -15,6 +15,7 @@ from wl_tagsets import (
     wl_tagset_jpn_unidic,
     wl_tagset_rus_open_corpora,
     wl_tagset_rus_russian_national_corpus,
+    wl_tagset_tha_lst20,
     wl_tagset_tha_orchid,
     wl_tagset_bod_botok,
     wl_tagset_vie_underthesea,
@@ -1314,7 +1315,7 @@ def init_settings_default(main):
                 'por': main.tr('spaCy - Portuguese POS Tagger'),
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
                 'spa': main.tr('spaCy - Spanish POS Tagger'),
-                'tha': main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'),
+                'tha': main.tr('PyThaiNLP - Perceptron Tagger (PUD)'),
                 'bod': main.tr('botok - Tibetan POS Tagger'),
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'vie': main.tr('Underthesea - Vietnamese POS Tagger')
@@ -1348,7 +1349,7 @@ def init_settings_default(main):
                 'ron': main.tr('spaCy - Romanian POS Tagger'),
                 'rus': main.tr('pymorphy2 - Morphological Analyzer'),
                 'spa': main.tr('spaCy - Spanish POS Tagger'),
-                'tha': main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'),
+                'tha': main.tr('PyThaiNLP - Perceptron Tagger (PUD)'),
                 'bod': main.tr('botok - Tibetan POS Tagger'),
                 'ukr': main.tr('pymorphy2 - Morphological Analyzer'),
                 'vie': main.tr('Underthesea - Vietnamese POS Tagger')
@@ -1377,6 +1378,7 @@ def init_settings_default(main):
                 },
 
                 'tha': {
+                    main.tr('PyThaiNLP - Perceptron Tagger (LST20)'): wl_tagset_tha_lst20.MAPPINGS,
                     main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'): wl_tagset_tha_orchid.MAPPINGS,
                     main.tr('PyThaiNLP - Perceptron Tagger (PUD)'): wl_tagset_universal.MAPPINGS
                 },

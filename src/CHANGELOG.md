@@ -14,6 +14,7 @@
 ## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - ??/??/2021
 
 ### 🎉 New Features
+- Utils: Add PyThaiNLP’s Perceptron Tagger (LST20)
 - Work Area: Add Concordancer (Parallel Mode)
 
 ### ❌ Removals

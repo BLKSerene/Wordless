@@ -1460,6 +1460,7 @@ def init_settings_global(main):
             ],
 
             'tha': [
+                main.tr('PyThaiNLP - Perceptron Tagger (LST20)'),
                 main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'),
                 main.tr('PyThaiNLP - Perceptron Tagger (PUD)')
             ],
