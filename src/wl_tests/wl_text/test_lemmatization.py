@@ -62,11 +62,11 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
     elif lang == 'nld':
         assert lemmas == ['het', 'nederlands', 'zijn', 'een', 'west-germaans', 'taal', 'en', 'de', 'moedertaal', 'van', 'de', 'veel', 'inwoner', 'van', 'nederland', ',', 'belgië', 'en', 'suriname', '.']
     elif lang == 'eng':
-        if lemmatizer == 'Lemmatization Lists - English Lemma List':
-            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'that', 'be', '1', 'speak', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'become', 'a', 'global', 'lingua', 'franca.[4][5', ']']
-        elif lemmatizer in ['NLTK - WordNet Lematizer',
-                            'spaCy - English Lemmatizer']:
-            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'that', 'be', 'first', 'speak', 'in', 'early', 'medieval', 'England', 'and', 'eventually', 'become', 'a', 'global', 'lingua', 'franca.[4][5', ']']
+        if lemmatizer in ['Lemmatization Lists - English Lemma List',
+                          'NLTK - WordNet Lemmatizer']:
+            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'originally', 'speak', 'by', 'the', 'early', 'medieval', 'England.[3][4][5', ']']
+        elif lemmatizer == 'spaCy - English Lemmatizer':
+            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'originally', 'speak', 'by', 'the', 'early', 'medieval', 'england.[3][4][5', ']']
     elif lang == 'est':
         assert lemmas == ['Eesti', 'kee', '(', 'varasem', 'nimetu', 'maakeel', ')', 'olema', 'läänemeresoome', 'lõunarühma', 'kuuluma', 'kee', '.']
     elif lang == 'fra':
@@ -100,7 +100,7 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
     elif lang == 'fas':
         assert lemmas == ['فارسی', 'یا', 'پارسی', 'یکی', 'از', 'زبان\u200cهای', 'هندواروپایی', 'در', 'شاخهٔ', 'زبان\u200cهای', 'ایرانی', 'جنوب', 'غربی', 'است', 'که', 'در', 'کشورهای', 'ایران', '،', 'افغانستان،[۳', ']', 'تاجیکستان[۴', ']', 'را', 'ازبکستان[۵', ']', 'به', 'آن', 'سخن', 'می\u200cگویند', '.']
     elif lang == 'pol':
-        assert lemmas == ['język', 'polski', ',', 'polszczyzna', ',', 'skrót', ':', 'pol', '.', '–', 'język', 'naturalny', 'należeć', 'do', 'grupa', 'język', 'zachodniosłowiańskich', '(', 'do', 'który', 'należeć', 'również', 'czeski', ',', 'słowacki', ',', 'kaszubski', ',', 'dolnołużycki', ',', 'górnołużycki', 'i', 'wymarły', 'połabski', ')', ',', 'stanowić', 'część', 'rodzina', 'język', 'indoeuropejski', '.']
+        assert lemmas == ['język', 'polski', ',', 'polszczyzna', '–', 'język', 'lechicki', 'z', 'grupa', 'zachodniosłowiańskiej', '(', 'do', 'który', 'należeć', 'również', 'czeski', ',', 'kaszubski', ',', 'słowacki', 'i', 'język', 'łużycki', ')', ',', 'stanowić', 'część', 'rodzina', 'indoeuropejski', '.']
     elif lang == 'por':
         assert lemmas == ['A', 'língua', 'portuguesar', ',', 'também', 'designar', 'português', ',', 'ser', 'umar', 'língua', 'românico', 'flexivo', 'ocidental', 'originar', 'o', 'galego-português', 'falar', 'o', 'Reino', 'da', 'Galiza', 'e', 'o', 'norte', 'de', 'Portugal', '.']
     elif lang == 'ron':
@@ -126,6 +126,8 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
             assert lemmas == ['украї́нський', 'мо́вий', '(', 'мфа', ':', '[', 'ukrɑ̽ˈjɪnʲsʲkɑ̽', 'ˈmɔwɑ̽', ']', ',', 'історичний', 'назва', '—', 'ру́ський', ',', 'руси́нська[9][10][11', ']', '[', '*', '2', ']', ')', '—', 'національний', 'мова', 'українець', '.']
     elif lang == 'cym':
         assert lemmas == ['Aelod', "o'r", 'cangen', 'Frythonaidd', "o'r", 'iaith', 'Celtaidd', 'a', 'siarad', 'bod', 'brodorol', 'yn', 'Nghymru', ',', 'can', 'Gymry', 'a', 'pobl', 'arall', 'aredig', 'gwasgar', 'bod', 'Lloegr', ',', 'a', 'can', 'cymuno', 'bechan', 'bod', 'Y', 'Wladfa', ',', 'gwybod', 'Ariannin[7', ']', "yw'r", 'Gymraeg', '(', 'hefyd', 'Cymraeg', 'heb', 'yr', 'bannod', ')', '.']
+    else:
+        raise Exception(f'Warning: language code "{lang}" is absent from the list!')
 
 if __name__ == '__main__':
     for lang, lemmatizer in test_lemmatizers:
