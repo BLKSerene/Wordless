@@ -70,6 +70,8 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'custom'):
         for token in tokens:
             tokens_tagged.append((token, morphological_analyzer.parse(token)[0].tag._POS))
     # Thai
+    elif pos_tagger == main.tr('PyThaiNLP - Perceptron Tagger (LST20)'):
+        tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'lst20')
     elif pos_tagger == main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'):
         tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
     elif pos_tagger == main.tr('PyThaiNLP - Perceptron Tagger (PUD)'):
