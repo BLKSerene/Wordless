@@ -11,11 +11,8 @@
 
 import re
 
-import nltk
-import sacremoses
-
 from wl_checking import wl_checking_unicode
-from wl_text import wl_text
+from wl_text import wl_text, wl_text_utils
 from wl_utils import wl_conversion
 
 def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
@@ -37,17 +34,19 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
         elif i == len(tokens) - 1:
             sentences.append(tokens[sentence_start:])
 
+    wl_text_utils.init_word_detokenizers(
+        main,
+        lang = lang,
+        word_detokenizer = word_detokenizer
+    )
+
     # English & Other Languages
     if word_detokenizer == main.tr('NLTK - Penn Treebank Detokenizer'):
-        treebank_detokenizer = nltk.tokenize.treebank.TreebankWordDetokenizer()
-
         for sentence in sentences:
-            text += treebank_detokenizer.tokenize(sentence)
+            text += main.nltk_treebank_detokenizer.tokenize(sentence)
     elif word_detokenizer == main.tr('Sacremoses - Moses Detokenizer'):
-        moses_detokenizer = sacremoses.MosesDetokenizer(lang = wl_conversion.to_iso_639_1(main, lang))
-
         for sentence in sentences:
-            text += moses_detokenizer.detokenize(sentence)
+            text += main.__dict__[f'sacremoses_moses_detokenizer_{lang}'].detokenize(sentence)
     # Chinese
     elif word_detokenizer == main.tr('Wordless - Chinese Word Detokenizer'):
         non_cjk_start = 0

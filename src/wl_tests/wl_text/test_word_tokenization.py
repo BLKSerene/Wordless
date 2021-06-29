@@ -143,7 +143,7 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
             assert tokens == ['Dansk', 'er', 'et', 'nordgermansk', 'sprog', 'af', 'den', 'østnordiske', '(', 'kontinentale', ')', 'gruppe', ',', 'der', 'tales', 'af', 'ca.', 'seks', 'millioner', 'mennesker', '.']
         
     elif lang == 'nld':
-        assert tokens == ['Het', 'Nederlands', 'is', 'een', 'West-Germaanse', 'taal', 'en', 'de', 'moedertaal', 'van', 'de', 'meeste', 'inwoners', 'van', 'Nederland', ',', 'België', 'en', 'Suriname', '.']
+        assert tokens == ['Het', 'Nederlands', 'is', 'een', 'West-Germaanse', 'taal', 'en', 'de', 'officiële', 'taal', 'van', 'Nederland', ',', 'Suriname', 'en', 'een', 'van', 'de', 'drie', 'officiële', 'talen', 'van', 'België', '.']
     elif lang == 'eng':
         if word_tokenizer in ['NLTK - NIST Tokenizer',
                               'NLTK - Twitter Tokenizer',
@@ -162,30 +162,31 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
     elif lang == 'fin':
         assert tokens == ['Suomen', 'kieli', '(', 'suomi', ')', 'on', 'uralilaisten', 'kielten', 'itämerensuomalaiseen', 'ryhmään', 'kuuluva', 'kieli', '.']
     elif lang == 'fra':
-        assert tokens == ['Le', 'français', 'est', 'une', 'langue', 'indo-européenne', 'de', 'la', 'famille', 'des', 'langues', 'romanes', '.']
+        assert tokens == ['Le', 'français', 'est', 'une', 'langue', 'indo-européenne', 'de', 'la', 'famille', 'des', 'langues', 'romanes', 'dont', 'les', 'locuteurs', 'sont', 'appelés', 'francophones', '.']
     elif lang == 'deu':
-        if word_tokenizer in ['NLTK - NIST Tokenizer',
-                              'syntok - Word Tokenizer']:
-            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
+        if word_tokenizer == 'NLTK - NIST Tokenizer':
+            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'das', 'Deutsche', '(', '[', 'dɔɪ̯tʃ', ']', ';', '[', '26', ']', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', ',', 'die', 'weltweit', 'etwa', '90', 'bis', '105', 'Millionen', 'Menschen', 'als', 'Muttersprache', 'und', 'weiteren', 'rund', '80', 'Millionen', 'als', 'Zweit-', 'oder', 'Fremdsprache', 'dient', '.']
         elif word_tokenizer == ['NLTK - NLTK Tokenizer',
                                 'NLTK - Penn Treebank Tokenizer',
                                 'NLTK - Tok-tok Tokenizer']:
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'dt.', 'oder', 'dtsch.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
-        elif word_tokenizer == 'German / NLTK - Twitter Tokenizer':
-            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'Deutsch', '(', '[', 'dɔʏ', '̯', 't', '͡', 'ʃ', '];', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
+        elif word_tokenizer == 'NLTK - Twitter Tokenizer':
+            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'das', 'Deutsche', '(', '[', 'dɔɪ̯tʃ', '];', '[', '26', ']', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', ',', 'die', 'weltweit', 'etwa', '90', 'bis', '105', 'Millionen', 'Menschen', 'als', 'Muttersprache', 'und', 'weiteren', 'rund', '80', 'Millionen', 'als', 'Zweit', '-', 'oder', 'Fremdsprache', 'dient', '.']
         elif word_tokenizer == 'Sacremoses - Moses Tokenizer':
-            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'Deutsch', '(', '[', 'dɔʏ', '̯', 't', '͡', 'ʃ', ']', ';', 'abgekürzt', 'dt.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
+            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'das', 'Deutsche', '(', '[', 'dɔɪ', '̯', 'tʃ', ']', ';', '[', '26', ']', 'abgekürzt', 'dt.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', ',', 'die', 'weltweit', 'etwa', '90', 'bis', '105', 'Millionen', 'Menschen', 'als', 'Muttersprache', 'und', 'weiteren', 'rund', '80', 'Millionen', 'als', 'Zweit-', 'oder', 'Fremdsprache', 'dient', '.']
         elif word_tokenizer == 'spaCy - German Word Tokenizer':
-            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔʏ̯t͡ʃ', ']', ';', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', '.']
+            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'das', 'Deutsche', '(', '[', 'dɔɪ̯tʃ];[26', ']', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', ',', 'die', 'weltweit', 'etwa', '90', 'bis', '105', 'Millionen', 'Menschen', 'als', 'Muttersprache', 'und', 'weiteren', 'rund', '80', 'Millionen', 'als', 'Zweit-', 'oder', 'Fremdsprache', 'dient', '.']
+        elif word_tokenizer == 'syntok - Word Tokenizer':
+            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'das', 'Deutsche', '(', '[', 'dɔɪ̯tʃ', ']', ';', '[', '26', ']', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', ',', 'die', 'weltweit', 'etwa', '90', 'bis', '105', 'Millionen', 'Menschen', 'als', 'Muttersprache', 'und', 'weiteren', 'rund', '80', 'Millionen', 'als', 'Zweit', '-', 'oder', 'Fremdsprache', 'dient', '.']
     elif lang == 'ell':
         if word_tokenizer in ['NLTK - NIST Tokenizer',
                               'NLTK - NLTK Tokenizer',
                               'NLTK - Penn Treebank Tokenizer',
                               'NLTK - Twitter Tokenizer',
                               'Sacremoses - Moses Tokenizer']:
-            assert tokens == ['Η', 'ελληνική', 'γλώσσα', 'ανήκει', 'στην', 'ινδοευρωπαϊκή', 'οικογένεια', '[', '9', ']', 'και', 'συγκεκριμένα', 'στον', 'ελληνικό', 'κλάδο', ',', 'μαζί', 'με', 'την', 'τσακωνική', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
+            assert tokens == ['Η', 'ελληνική', 'γλώσσα', 'ανήκει', 'στην', 'ινδοευρωπαϊκή', 'οικογένεια', '[', '10', ']', 'και', 'αποτελεί', 'το', 'μοναδικό', 'μέλος', 'του', 'ελληνικού', 'κλάδου', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
         elif word_tokenizer == 'spaCy - Greek (Modern) Word Tokenizer':
-            assert tokens == ['Η', 'ελληνική', 'γλώσσα', 'ανήκει', 'στην', 'ινδοευρωπαϊκή', 'οικογένεια[9', ']', 'και', 'συγκεκριμένα', 'στον', 'ελληνικό', 'κλάδο', ',', 'μαζί', 'με', 'την', 'τσακωνική', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
+            assert tokens == ['Η', 'ελληνική', 'γλώσσα', 'ανήκει', 'στην', 'ινδοευρωπαϊκή', 'οικογένεια[10', ']', 'και', 'αποτελεί', 'το', 'μοναδικό', 'μέλος', 'του', 'ελληνικού', 'κλάδου', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
     elif lang == 'guj':
         if word_tokenizer in ['NLTK - NIST Tokenizer',
                               'NLTK - Twitter Tokenizer',
@@ -239,14 +240,14 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
         elif word_tokenizer == 'NLTK - Twitter Tokenizer':
             assert tokens == ["L'italiano", '(', '[', 'itaˈljaːno', ']', '[', 'Nota', '1', ']', 'ascolta', '[', '?', '·', 'info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
         elif word_tokenizer == 'Sacremoses - Moses Tokenizer':
-            assert tokens == ['L', "'", 'italiano', '(', '[', 'itaˈljaːno', ']', '[', 'Nota', '1', ']', 'ascolta', '[', '?', '·', 'info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
+            assert tokens == ["L'", 'italiano', '(', '[', 'itaˈljaːno', ']', '[', 'Nota', '1', ']', 'ascolta', '[', '?', '·', 'info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
         elif word_tokenizer == 'spaCy - Italian Word Tokenizer':
             assert tokens == ["L'", 'italiano', '(', '[', 'itaˈljaːno][Nota', '1', ']', 'ascolta[?·info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
     elif lang == 'jpn':
         if word_tokenizer == 'nagisa - Japanese Word Tokenizer':
-            assert tokens == ['日本', '語', '(', 'にほんご', '、', 'にっぽん', 'ご', '[', '注', '1', ']', ')', 'は', '、', '主に', '日本', '国', '内', 'や', '日本', '人', '同士', 'の', '間', 'で', '使用', 'さ', 'れ', 'て', 'いる', '言語', 'で', 'ある', '。']
+            assert tokens == ['日本', '語', '(', 'にほんご', '、', 'にっぽん', 'ご', '[', '注', '2', ']', '、', '英', ':', 'Japanese', ')', 'は', '、', '主に', '日本', '国', '内', 'や', '日本', '人', '同士', 'の', '間', 'で', '使用', 'さ', 'れ', 'て', 'いる', '言語', '。']
         elif word_tokenizer == 'Wordless - Japanese Kanji Tokenizer':
-            assert tokens == ['日', '本', '語', '（', 'にほんご', '、', 'にっぽん', 'ご', '[', '注', '1', ']', '）', 'は', '、', '主', 'に', '日', '本', '国', '内', 'や', '日', '本', '人', '同', '士', 'の', '間', 'で', '使', '用', 'さ', 'れ', 'て', 'いる', '言', '語', 'で', 'ある', '。']
+            assert tokens == ['日', '本', '語', '（', 'にほんご', '、', 'にっぽん', 'ご', '[', '注', '2', ']', '、', '英', ':', 'Japanese', '）', 'は', '、', '主', 'に', '日', '本', '国', '内', 'や', '日', '本', '人', '同', '士', 'の', '間', 'で', '使', '用', 'さ', 'れ', 'て', 'いる', '言', '語', '。']
     elif lang == 'kan':
         assert tokens == ['ದ್ರಾವಿಡ', 'ಭಾಷೆಗಳಲ್ಲಿ', 'ಪ್ರಾಮುಖ್ಯವುಳ್ಳ', 'ಭಾಷೆಯೂ', 'ಭಾರತದ', 'ಪುರಾತನವಾದ', 'ಭಾಷೆಗಳಲ್ಲಿ', 'ಒಂದೂ', 'ಆಗಿರುವ', 'ಕನ್ನಡ', 'ಭಾಷೆಯನ್ನು', 'ಅದರ', 'ವಿವಿಧ', 'ರೂಪಗಳಲ್ಲಿ', 'ಸುಮಾರು', '೪೫', 'ದಶಲಕ್ಷ', 'ಜನರು', 'ಆಡು', 'ನುಡಿಯಾಗಿ', 'ಬಳಸುತ್ತಲಿದ್ದಾರೆ', '.']
     elif lang == 'lav':

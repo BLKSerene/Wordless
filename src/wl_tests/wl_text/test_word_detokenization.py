@@ -73,11 +73,14 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
     elif lang == 'fra':
         assert text == 'Le français est une langue indo-européenne de la famille des langues romanes.'
     elif lang == 'deu':
-        assert text == 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ];abgekürzt dt.oder dtsch.)ist eine westgermanische Sprache.'
+        if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
+            assert text == 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ];abgekürzt dt . oder dtsch .) ist eine westgermanische Sprache.'
+        elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
+            assert text == 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ];abgekürzt dt. oder dtsch.) ist eine westgermanische Sprache.'
     elif lang == 'ell':
-        assert text == 'Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[9] και συγκεκριμένα στον ελληνικό κλάδο, μαζί με την τσακωνική, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.'
+        assert text == 'Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[9]και συγκεκριμένα στον ελληνικό κλάδο, μαζί με την τσακωνική, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.'
     elif lang == 'guj':
-        assert text == 'ગુજરાતી ‍(/ɡʊdʒəˈrɑːti/[૭], રોમન લિપિમાં:Gujarātī, ઉચ્ચાર: [ɡudʒəˈɾɑːtiː]) ભારત દેશના ગુજરાત રાજ્યની ઇન્ડો-આર્યન ભાષા છે, અને મુખ્યત્વે ગુજરાતી લોકો દ્વારા બોલાય છે.'
+        assert text == 'ગુજરાતી ‍(/ɡʊdʒəˈrɑːti/[૭], રોમન લિપિમાં: Gujarātī, ઉચ્ચાર: [ɡudʒəˈɾɑːtiː]) ભારત દેશના ગુજરાત રાજ્યની ઇન્ડો-આર્યન ભાષા છે, અને મુખ્યત્વે ગુજરાતી લોકો દ્વારા બોલાય છે.'
     elif lang == 'hin':
         assert text == 'हिन्दी विश्व की एक प्रमुख भाषा है एवं भारत की राजभाषा है ।'
     elif lang == 'hun':

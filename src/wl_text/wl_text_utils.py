@@ -185,7 +185,8 @@ def init_spacy_models(main, lang, pipeline):
     # Remove unused pipelines to boost speed
     if pipeline == 'word_tokenization':
         nlp_pipelines = []
-        nlp_disable = ['tagger', 'parser', 'ner']
+        nlp_disable = []
+        # nlp_disable = ['tagger', 'parser', 'ner']
     elif pipeline in ['sentence_tokenization', 'tokenization']:
         nlp_pipelines = ['sentencizer']
         nlp_disable = []
@@ -256,8 +257,8 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
                 main.nltk_tweet_tokenizer = nltk.TweetTokenizer()
     # Sacremoses
     elif 'Sacremoses' in word_tokenizer:
-        if 'sacremoses_moses_tokenizer' not in main.__dict__:
-            main.sacremoses_moses_tokenizer = sacremoses.MosesTokenizer(lang = wl_conversion.to_iso_639_1(main, lang))
+        if f'sacremoses_moses_tokenizer_{lang}' not in main.__dict__:
+            main.__dict__[f'sacremoses_moses_tokenizer_{lang}'] = sacremoses.MosesTokenizer(lang = wl_conversion.to_iso_639_1(main, lang))
     # spaCy
     elif 'spaCy' in word_tokenizer:
         init_spacy_models(main, lang, pipeline = 'word_tokenization')
@@ -289,6 +290,21 @@ def init_tokenizers(main, lang, word_tokenizer = 'default'):
         init_spacy_models(main, 'other', pipeline = 'tokenization')
     else:
         init_word_tokenizers(main, lang, word_tokenizer = word_tokenizer)
+
+def init_word_detokenizers(main, lang, word_detokenizer = 'default'):
+    if lang not in main.settings_global['word_detokenizers']:
+        lang = 'other'
+
+    if word_detokenizer == 'default':
+        word_detokenizer = main.settings_custom['word_detokenization']['word_detokenizers'][lang]
+
+    # English & Other Languages
+    if word_detokenizer == main.tr('NLTK - Penn Treebank Detokenizer'):
+        if 'nltk_treebank_detokenizer' not in main.__dict__:
+            main.nltk_treebank_detokenizer = nltk.tokenize.treebank.TreebankWordDetokenizer()
+    elif word_detokenizer == main.tr('Sacremoses - Moses Detokenizer'):
+        if f'sacremoses_moses_detokenizer_{lang}' not in main.__dict__:
+            main.__dict__[f'sacremoses_moses_detokenizer_{lang}'] = sacremoses.MosesDetokenizer(lang = wl_conversion.to_iso_639_1(main, lang))
 
 def init_pos_taggers(main, lang, pos_tagger = 'default'):
     if pos_tagger == 'default':
