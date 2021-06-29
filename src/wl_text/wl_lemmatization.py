@@ -45,12 +45,10 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
         if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang]
 
-        # Dutch, English, French, German, Greek (Modern), Italian, Portuguese, Spanish
+        # spaCy
         if 'spaCy' in lemmatizer:
             nlp = main.__dict__[f'spacy_nlp_{lang}']
-
-            doc = spacy.tokens.Doc(nlp.vocab, words = tokens)
-            nlp.tagger(doc)
+            doc = nlp(' '.join(tokens))
 
             lemmas = [token.lemma_ for token in doc]
         # English
