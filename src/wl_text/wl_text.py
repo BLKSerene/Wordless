@@ -99,6 +99,8 @@ class Wl_Text():
 
                             for sentence in wl_sentence_tokenization.wl_sentence_split(main, text):
                                 self.tokens_multilevel[-1].append(sentence.split())
+
+                    self.tags = [[]] * len(list(wl_misc.flatten_list(self.tokens_multilevel)))
                 # Tokenized & Tagged
                 elif self.tokenized == 'Yes' and self.tagged == 'Yes':
                     for i, line in enumerate(f):

@@ -41,9 +41,12 @@ def detect_encoding(main, file_path):
                     break
 
         encoding = cchardet.detect(text)['encoding']
-        
-        if encoding == 'SHIFT_JIS':
-            # CP932
+
+        # Force ASCII be converted to UTF-8
+        if encoding == 'ASCII':
+            encoding = 'UTF-8'
+        # CP932
+        elif encoding == 'SHIFT_JIS':
             encoding = chardet.detect(text)['encoding']
 
             if encoding != 'CP932':
