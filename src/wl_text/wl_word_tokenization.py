@@ -59,7 +59,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang)
 
         for sentence in sentences:
-            tokens_multilevel.append(main.sacremoses_moses_tokenizer.tokenize(sentence, escape = False))
+            tokens_multilevel.append(main.__dict__[f'sacremoses_moses_tokenizer_{lang}'].tokenize(sentence, escape = False))
     # spaCy
     elif 'spaCy' in word_tokenizer:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
