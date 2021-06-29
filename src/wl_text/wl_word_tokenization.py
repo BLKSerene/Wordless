@@ -64,8 +64,6 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     elif 'spaCy' in word_tokenizer:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
-        # See Issue #3479: https://github.com/explosion/spaCy/issues/3479
-        doc.is_parsed = True
 
         for sentence in doc.sents:
             tokens_multilevel.append([token.text for token in sentence.as_doc()])
