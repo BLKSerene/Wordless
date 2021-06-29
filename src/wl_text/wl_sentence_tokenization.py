@@ -80,8 +80,6 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     elif sentence_tokenizer == main.tr('spaCy - Sentencizer'):
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
-        # See Issue #3479: https://github.com/explosion/spaCy/issues/3479
-        doc.is_parsed = True
 
         sentences = [sentence.text for sentence in doc.sents]
     # syntok

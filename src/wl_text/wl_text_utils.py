@@ -188,7 +188,8 @@ def init_spacy_models(main, lang, pipeline):
         nlp_disable = ['tagger', 'parser', 'ner']
     elif pipeline in ['sentence_tokenization', 'tokenization']:
         nlp_pipelines = ['sentencizer']
-        nlp_disable = ['tagger', 'parser', 'ner']
+        nlp_disable = []
+        # nlp_disable = ['tagger', 'parser', 'ner']
     elif pipeline in ['pos_tagging', 'lemmatization']:
         nlp_pipelines = ['tagger']
         nlp_disable = ['parser', 'ner']
@@ -211,13 +212,13 @@ def init_spacy_models(main, lang, pipeline):
             main.__dict__['spacy_nlp_srp_latn'] = spacy.blank('sr')
         else:
             main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
-
+    
     if 'sentencizer' in nlp_pipelines:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
         if 'sentencizer' not in nlp.pipe_names:
-            nlp.add_pipe(nlp.create_pipe('sentencizer'))
-
+            nlp.add_pipe('sentencizer')
+    
 def init_sentence_tokenizers(main, lang, sentence_tokenizer = 'default'):
     if lang not in main.settings_global['sentence_tokenizers']:
         lang = 'other'

@@ -36,6 +36,7 @@
 - Dependencies: Upgrade PyThaiNLP to 2.3.1
 - Dependencies: Upgrade python-docx to 0.8.11
 - Dependencies: Upgrade Sacremoses to 0.0.45
+- Dependencies: Upgrade spaCy to 3.0.6
 - Dependencies: Upgrade Tokenizer to 3.1.2
 
 
