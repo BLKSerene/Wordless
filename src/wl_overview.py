@@ -290,111 +290,114 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
         self.texts_stats_files = []
 
     def run(self):
-        texts = []
+        try:
+            texts = []
 
-        settings = self.main.settings_custom['overview']
-        files = self.main.wl_files.get_selected_files()
+            settings = self.main.settings_custom['overview']
+            files = self.main.wl_files.get_selected_files()
 
-        for i, file in enumerate(files):
-            text = wl_text.Wl_Text(self.main, file)
-            text = wl_token_processing.wl_process_tokens_overview(
-                text,
-                token_settings = settings['token_settings']
-            )
+            for i, file in enumerate(files):
+                text = wl_text.Wl_Text(self.main, file)
+                text = wl_token_processing.wl_process_tokens_overview(
+                    text,
+                    token_settings = settings['token_settings']
+                )
 
-            texts.append(text)
+                texts.append(text)
 
-        if len(files) > 1:
-            text_total = wl_text.Wl_Text_Blank()
-            text_total.offsets_paras = [
-                offset
-                for text in texts
-                for offset in text.offsets_paras
-            ]
-            text_total.offsets_sentences = [
-                offset
-                for text in texts
-                for offset in text.offsets_sentences
-            ]
-            text_total.tokens_multilevel = [
-                para
-                for text in texts
-                for para in text.tokens_multilevel
-            ]
-            text_total.tokens_flat = [
-                token
-                for text in texts
-                for token in text.tokens_flat
-            ]
+            if len(files) > 1:
+                text_total = wl_text.Wl_Text_Blank()
+                text_total.offsets_paras = [
+                    offset
+                    for text in texts
+                    for offset in text.offsets_paras
+                ]
+                text_total.offsets_sentences = [
+                    offset
+                    for text in texts
+                    for offset in text.offsets_sentences
+                ]
+                text_total.tokens_multilevel = [
+                    para
+                    for text in texts
+                    for para in text.tokens_multilevel
+                ]
+                text_total.tokens_flat = [
+                    token
+                    for text in texts
+                    for token in text.tokens_flat
+                ]
 
-            texts.append(text_total)
-        else:
-            texts.append(texts[0])
-
-        self.progress_updated.emit(self.tr('Processing data ...'))
-
-        base_sttr = settings['generation_settings']['base_sttr']
-
-        for text in texts:
-            texts_stats_file = []
-
-            # Paragraph length
-            len_paras_in_sentence = [len(para) for para in text.tokens_multilevel]
-            len_paras_in_token = [
-                sum([len(sentence) for sentence in para])
-                for para in text.tokens_multilevel
-            ]
-
-            # Sentence length
-            len_sentences = [
-                len(sentence)
-                for para in text.tokens_multilevel
-                for sentence in para
-            ]
-
-            # Token length
-            len_tokens = [len(token) for token in text.tokens_flat]
-            # Type length
-            len_types = [len(token_type) for token_type in set(text.tokens_flat)]
-
-            count_tokens = len(len_tokens)
-            count_types = len(len_types)
-
-            # TTR
-            if count_tokens:
-                ttr = count_types / count_tokens
+                texts.append(text_total)
             else:
-                ttr = 0
+                texts.append(texts[0])
 
-            # STTR
-            if count_tokens < base_sttr:
-                sttr = ttr
-            else:
-                token_sections = wl_text_utils.to_sections_unequal(text.tokens_flat, base_sttr)
+            self.progress_updated.emit(self.tr('Processing data ...'))
 
-                # Discard the last section if number of tokens in it is smaller than the base of sttr
-                if len(token_sections[-1]) < base_sttr:
-                    ttrs = [
-                        len(set(token_section)) / len(token_section)
-                        for token_section in token_sections[:-1]
-                    ]
+            base_sttr = settings['generation_settings']['base_sttr']
+
+            for text in texts:
+                texts_stats_file = []
+
+                # Paragraph length
+                len_paras_in_sentence = [len(para) for para in text.tokens_multilevel]
+                len_paras_in_token = [
+                    sum([len(sentence) for sentence in para])
+                    for para in text.tokens_multilevel
+                ]
+
+                # Sentence length
+                len_sentences = [
+                    len(sentence)
+                    for para in text.tokens_multilevel
+                    for sentence in para
+                ]
+
+                # Token length
+                len_tokens = [len(token) for token in text.tokens_flat]
+                # Type length
+                len_types = [len(token_type) for token_type in set(text.tokens_flat)]
+
+                count_tokens = len(len_tokens)
+                count_types = len(len_types)
+
+                # TTR
+                if count_tokens:
+                    ttr = count_types / count_tokens
                 else:
-                    ttrs = [
-                        len(set(token_section)) / len(token_section)
-                        for token_section in token_sections
-                    ]
+                    ttr = 0
 
-                sttr = sum(ttrs) / len(ttrs)
+                # STTR
+                if count_tokens < base_sttr:
+                    sttr = ttr
+                else:
+                    token_sections = wl_text_utils.to_sections_unequal(text.tokens_flat, base_sttr)
 
-            texts_stats_file.append(len_paras_in_sentence)
-            texts_stats_file.append(len_paras_in_token)
-            texts_stats_file.append(len_sentences)
-            texts_stats_file.append(len_tokens)
-            texts_stats_file.append(len_types)
-            texts_stats_file.append(ttr)
-            texts_stats_file.append(sttr)
+                    # Discard the last section if number of tokens in it is smaller than the base of sttr
+                    if len(token_sections[-1]) < base_sttr:
+                        ttrs = [
+                            len(set(token_section)) / len(token_section)
+                            for token_section in token_sections[:-1]
+                        ]
+                    else:
+                        ttrs = [
+                            len(set(token_section)) / len(token_section)
+                            for token_section in token_sections
+                        ]
 
-            self.texts_stats_files.append(texts_stats_file)
+                    sttr = sum(ttrs) / len(ttrs)
+
+                texts_stats_file.append(len_paras_in_sentence)
+                texts_stats_file.append(len_paras_in_token)
+                texts_stats_file.append(len_sentences)
+                texts_stats_file.append(len_tokens)
+                texts_stats_file.append(len_types)
+                texts_stats_file.append(ttr)
+                texts_stats_file.append(sttr)
+
+                self.texts_stats_files.append(texts_stats_file)
+        except Exception as e:
+            print(f'Error occurred while processing texts: {e}')
 
 class Wl_Worker_Overview_Table(Wl_Worker_Overview):
     def run(self):
@@ -505,8 +508,6 @@ def generate_table(main, table):
                 count_tokens_lens.append(collections.Counter(len_tokens))
                 count_sentences_lens.append(collections.Counter(len_sentences))
 
-            len_files = len(files)
-
             # Count of n-length Tokens
             if any(count_tokens_lens):
                 count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
@@ -514,34 +515,32 @@ def generate_table(main, table):
                     len_token: count_tokens_files[-1]
                     for len_token, count_tokens_files in count_tokens_lens_files.items()
                 }
-                len_tokens_max = max(count_tokens_lens_files)
-                
-                for i in range(len_tokens_max):
-                    table.insert_row(
-                        table.rowCount(),
-                        main.tr(f'Count of {i + 1}-Length Tokens'),
-                        is_int = True, is_cumulative = True
-                    )
-                    table.insert_row(
-                        table.rowCount(),
-                        main.tr(f'Count of {i + 1}-Length Tokens %'),
-                        is_pct = True, is_cumulative = True
-                    )
+                count_tokens_lens = sorted(count_tokens_lens_files.keys())
 
-                for i in range(len_tokens_max):
-                    counts = count_tokens_lens_files.get(i + 1, [0] * (len_files + 1))
+                header_labels = []
+                
+                for count_tokens_len in count_tokens_lens:
+                    header_labels.append([main.tr(f'Count of {count_tokens_len}-Length Tokens'),
+                                          True, False, False, True])
+                    header_labels.append([main.tr(f'Count of {count_tokens_len}-Length Tokens %'),
+                                          False, False, True, True])
+
+                table.append_rows(header_labels)
+
+                for i, count_tokens_len in enumerate(reversed(count_tokens_lens)):
+                    counts = count_tokens_lens_files[count_tokens_len]
 
                     for j, count in enumerate(counts):
                         table.set_item_num(
-                            row = table.rowCount() - (len_tokens_max - i) * 2,
+                            row = table.rowCount() - 2 - i * 2,
                             col = j,
                             val = count
                         )
                         table.set_item_num(
-                            row = table.rowCount() - (len_tokens_max - i) * 2 + 1,
+                            row = table.rowCount() - 1 - i * 2,
                             col = j,
                             val = count,
-                            total = count_tokens_lens_total.get(i + 1, 0)
+                            total = count_tokens_lens_total[count_tokens_len]
                         )
 
             # Count of n-length Sentences
@@ -551,43 +550,41 @@ def generate_table(main, table):
                     len_sentence: count_sentences_files[-1]
                     for len_sentence, count_sentences_files in count_sentences_lens_files.items()
                 }
-                len_sentences_max = max(count_sentences_lens_files)
-                
-                for i in range(len_sentences_max):
-                    table.insert_row(
-                        table.rowCount(),
-                        main.tr(f'Count of {i + 1}-Length Sentences'),
-                        is_int = True, is_cumulative = True
-                    )
-                    table.insert_row(
-                        table.rowCount(),
-                        main.tr(f'Count of {i + 1}-Length Sentences %'),
-                        is_pct = True, is_cumulative = True
-                    )
+                count_sentences_lens = sorted(count_sentences_lens_files.keys())
 
-                for i in range(len_sentences_max):
-                    counts = count_sentences_lens_files.get(i + 1, [0] * (len_files + 1))
+                header_labels = []
+
+                for count_sentences_len in count_sentences_lens:
+                    header_labels.append([main.tr(f'Count of {count_sentences_len}-Length Sentences'),
+                                          True, False, False, True])
+                    header_labels.append([main.tr(f'Count of {count_sentences_len}-Length Sentences %'),
+                                          False, False, True, True])
+
+                table.append_rows(header_labels)
+                
+                for i, count_sentences_len in enumerate(reversed(count_sentences_lens)):
+                    counts = count_sentences_lens_files[count_sentences_len]
 
                     for j, count in enumerate(counts):
                         table.set_item_num(
-                            row = table.rowCount() - (len_sentences_max - i) * 2,
+                            row = table.rowCount() - 2 - i * 2,
                             col = j,
                             val = count
                         )
                         table.set_item_num(
-                            row = table.rowCount() - (len_sentences_max - i) * 2 + 1,
+                            row = table.rowCount() - 1 - i * 2,
                             col = j,
                             val = count,
-                            total = count_sentences_lens_total.get(i + 1, 0)
+                            total = count_sentences_lens_total[count_sentences_len]
                         )
-
+                
             table.setUpdatesEnabled(True)
             table.blockSignals(False)
-
+            
             table.toggle_pct()
             table.toggle_cumulative()
             table.toggle_breakdown()
-
+            
             table.itemChanged.emit(table.item(0, 0))
 
             wl_msg.wl_msg_generate_table_success(main)

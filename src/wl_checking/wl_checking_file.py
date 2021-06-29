@@ -124,7 +124,9 @@ def check_file_paths_parsing_error(main, file_paths):
                     with open(file_path, 'r', encoding = encoding) as f:
                         for line in f:
                             text += line
-                except:
+                except Exception as e:
+                    print(f'Parsing Error: {e}')
+
                     file_paths_parsing_error.append(file_path)
                 else:
                     file_paths_pass.append(file_path)
