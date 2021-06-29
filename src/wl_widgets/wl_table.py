@@ -641,10 +641,13 @@ class Wl_Table(QTableWidget):
             if i not in cols_stretch:
                 self.resizeColumnToContents(i)
 
-    def insert_row(self, i, label):
-        super().insertRow(i)
+    def append_rows(self, labels):
+        len_labels = len(labels)
 
-        self.setVerticalHeaderItem(i, QTableWidgetItem(label))
+        self.setRowCount(self.rowCount() + len_labels)
+
+        for i, label in zip(range(self.rowCount() - len_labels, self.rowCount()), labels):
+            self.setVerticalHeaderItem(i, QTableWidgetItem(label))
 
     def insert_col(self, i, label):
         super().insertColumn(i)
@@ -844,24 +847,23 @@ class Wl_Table_Data(Wl_Table):
             if self.show_cumulative:
                 self.toggle_cumulative()
 
-    def insert_row(self, i, label,
-                   is_int = False, is_float = False,
-                   is_pct = False, is_cumulative = False):
+    def append_rows(self, labels):
         headers_int = [self.verticalHeaderItem(row).text() for row in self.headers_int]
         headers_float = [self.verticalHeaderItem(row).text() for row in self.headers_float]
         headers_pct = [self.verticalHeaderItem(row).text() for row in self.headers_pct]
         headers_cumulative = [self.verticalHeaderItem(row).text() for row in self.headers_cumulative]
 
-        super().insert_row(i, label)
-
-        if is_int:
-            headers_int += [label]
-        if is_float:
-            headers_float += [label]
-        if is_pct:
-            headers_pct += [label]
-        if is_cumulative:
-            headers_cumulative += [label]
+        super().append_rows([label for label, _, _, _, _ in labels])
+        
+        for label, is_int, is_float, is_pct, is_cumulative in labels:
+            if is_int:
+                headers_int.append(label)
+            if is_float:
+                headers_float.append(label)
+            if is_pct:
+                headers_pct.append(label)
+            if is_cumulative:
+                headers_cumulative.append(label)
 
         self.headers_int = set(self.find_row(headers_int))
         self.headers_float = set(self.find_row(headers_float))
