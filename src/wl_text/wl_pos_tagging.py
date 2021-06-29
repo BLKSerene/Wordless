@@ -15,7 +15,7 @@ import pythainlp
 import spacy
 import underthesea
 
-from wl_text import wl_text_utils
+from wl_text import wl_text_utils, wl_word_detokenization
 from wl_utils import wl_conversion
 
 def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'custom'):
@@ -38,20 +38,18 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'custom'):
         pos_tagger = pos_tagger
     )
 
-    # Chinese
-    if pos_tagger == main.tr('jieba - Chinese POS Tagger'):
-        tokens_tagged = jieba.posseg.cut(' '.join(tokens))
-    # Dutch, English, French, German, Greek (Modern), Italian, Portuguese, Spanish
-    elif 'spaCy' in pos_tagger:
+    # spaCy
+    if 'spaCy' in pos_tagger:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
-
-        doc = spacy.tokens.Doc(nlp.vocab, words = tokens)
-        nlp.tagger(doc)
+        doc = nlp(' '.join(tokens))
 
         if tagset == 'custom':
             tokens_tagged = [(token.text, token.tag_) for token in doc]
         elif tagset == 'universal':
             tokens_tagged = [(token.text, token.pos_) for token in doc]
+    # Chinese
+    elif pos_tagger == main.tr('jieba - Chinese POS Tagger'):
+        tokens_tagged = jieba.posseg.cut(' '.join(tokens))
     # English & Russian
     elif pos_tagger == main.tr('NLTK - Perceptron POS Tagger'):
         tokens_tagged = nltk.pos_tag(tokens, lang = lang)
