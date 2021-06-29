@@ -44,19 +44,32 @@ model_name_por = 'core_news_sm'
 model_name_ron = 'core_news_sm'
 model_name_spa = 'core_news_sm'
 
-model_ver_dan = '2.3.0'
-model_ver_nld = '2.3.0'
-model_ver_eng = '2.3.1'
-model_ver_fra = '2.3.0'
-model_ver_deu = '2.3.0'
-model_ver_ell = '2.3.0'
-model_ver_ita = '2.3.0'
-model_ver_lit = '2.3.0'
-model_ver_nob = '2.3.0'
-model_ver_pol = '2.3.0'
-model_ver_por = '2.3.0'
-model_ver_ron = '2.3.1'
-model_ver_spa = '2.3.1'
+model_ver_dan = '3.0.0'
+model_ver_nld = '3.0.0'
+model_ver_eng = '3.0.0'
+model_ver_fra = '3.0.0'
+model_ver_deu = '3.0.0'
+model_ver_ell = '3.0.0'
+model_ver_ita = '3.0.0'
+model_ver_lit = '3.0.0'
+model_ver_nob = '3.0.0'
+model_ver_pol = '3.0.0'
+model_ver_por = '3.0.0'
+model_ver_ron = '3.0.0'
+model_ver_spa = '3.0.0'
+
+# Check updates
+for lang_text, lang_code_639_3, lang_code_639_1 in langs:
+    globals()[f'updates_available_{lang_code_639_3}'] = False
+
+    try:
+        model_name = globals()[f'model_name_{lang_code_639_3}']
+        model = importlib.import_module(f'{lang_code_639_1}_{model_name}')
+
+        if model.__version__ != globals()[f'model_ver_{lang_code_639_3}']:
+            globals()[f'updates_available_{lang_code_639_3}'] = True
+    except:
+        globals()[f'updates_available_{lang_code_639_3}'] = True
 
 # Download models
 for lang_text, lang_code_639_3, lang_code_639_1 in langs:
@@ -65,12 +78,10 @@ for lang_text, lang_code_639_3, lang_code_639_1 in langs:
 
     if globals()[f'updates_available_{lang_code_639_3}']:
         if platform.system() == 'Windows':
-            subprocess.call(f'pip install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}.tar.gz', shell = True)
+            subprocess.call(f'pip install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}-py3-none-any.whl', shell = True)
         elif platform.system() == 'Darwin':
-            subprocess.call(f'sudo pip3 install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}.tar.gz', shell = True)
+            subprocess.call(f'sudo pip3 install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}-py3-none-any.whl', shell = True)
         elif platform.system() == 'Linux':
-            subprocess.call(f'sudo pip3.7 install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}.tar.gz', shell = True)
+            subprocess.call(f'sudo pip3.8 install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}-py3-none-any.whl', shell = True)
     else:
-        print(f"The latest version of spaCy's {lang_text} model has already been installed!")
-
-print('All done!')
+        print(f"The latest version of spaCy's {lang_text} model ({model_ver}) has already been installed!")
