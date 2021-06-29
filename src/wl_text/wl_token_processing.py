@@ -140,12 +140,18 @@ def wl_process_tokens(text, token_settings):
 def wl_process_tokens_overview(text, token_settings):
     text = wl_process_tokens(text, token_settings)
 
-    # Remove empty tokens
-    text.tokens_multilevel = [[[token for token in sentence
-                                if token]
+    # Remove empty tokens, sentences, and paragraphs
+    text.tokens_multilevel = [[[token
+                                for token in sentence if token]
                                for sentence in para]
                               for para in text.tokens_multilevel]
-    text.tokens_flat = [token for token in text.tokens_flat if token]
+    text.tokens_multilevel = [[sentence
+                               for sentence in para if sentence]
+                              for para in text.tokens_multilevel]
+    text.tokens_multilevel = [para
+                              for para in text.tokens_multilevel if para]
+    text.tokens_flat = [token
+                        for token in text.tokens_flat if token]
 
     # Update offsets
     i_sentences = 0
@@ -160,10 +166,6 @@ def wl_process_tokens_overview(text, token_settings):
             i_tokens += len(sentence)
 
         i_sentences += len(para)
-
-    # Remove duplicate offsets
-    text.offsets_paras = sorted(set(text.offsets_paras))
-    text.offsets_sentences = sorted(set(text.offsets_sentences))
 
     return text
 
