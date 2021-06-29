@@ -18,6 +18,9 @@
 - Utils: Add PyThaiNLP’s perceptron tagger (LST20)
 - Work Area: Add Concordancer (Parallel Mode)
 
+### 📌 Bugfixes
+- Work Area: Fix Concordancer - Sort Results - Order
+
 ### ❌ Removals
 - Utils: Remove AttaCut’s Thai word tokenizer
 
@@ -31,6 +34,7 @@
 - Dependencies: Upgrade NLTK to 3.6.2
 - Dependencies: Upgrade PyQt to 5.15.4
 - Dependencies: Upgrade PyThaiNLP to 2.3.1
+- Dependencies: Upgrade python-docx to 0.8.11
 - Dependencies: Upgrade Sacremoses to 0.0.45
 - Dependencies: Upgrade Tokenizer to 3.1.2
 
