@@ -185,15 +185,12 @@ def init_spacy_models(main, lang, pipeline):
     # Remove unused pipelines to boost speed
     if pipeline == 'word_tokenization':
         nlp_pipelines = []
-        nlp_disable = []
-        # nlp_disable = ['tagger', 'parser', 'ner']
     elif pipeline in ['sentence_tokenization', 'tokenization']:
         nlp_pipelines = ['sentencizer']
-        nlp_disable = []
-        # nlp_disable = ['tagger', 'parser', 'ner']
-    elif pipeline in ['pos_tagging', 'lemmatization']:
-        nlp_pipelines = ['tagger']
-        nlp_disable = ['parser', 'ner']
+    elif pipeline == 'pos_tagging':
+        nlp_pipelines = []
+    elif pipeline == 'lemmatization':
+        nlp_pipelines = []
 
     # Languages with models
     if lang in spacy_langs:
@@ -204,7 +201,7 @@ def init_spacy_models(main, lang, pipeline):
         if f'spacy_nlp_{lang}' not in main.__dict__:
             model = importlib.import_module(spacy_langs[lang])
 
-            main.__dict__[f'spacy_nlp_{lang}'] = model.load(disable = nlp_disable)
+            main.__dict__[f'spacy_nlp_{lang}'] = model.load()
     # Languages without models
     else:
         # Serbian (Cyrillic) & Serbian (Latin)
@@ -214,6 +211,7 @@ def init_spacy_models(main, lang, pipeline):
         else:
             main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
     
+    # Sentencizer
     if 'sentencizer' in nlp_pipelines:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
