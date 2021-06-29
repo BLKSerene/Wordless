@@ -9,27 +9,31 @@
 # All other rights reserved.
 #
 
+import copy
 import os
 import sys
 
-from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
 
 sys.path.append('.')
 
-import wl_file_area
 from wl_settings import wl_settings_default, wl_settings_global
 
-class Wl_Test_Main(QObject):
+import wl_file_area
+
+wl_app = QApplication(sys.argv)
+
+class Wl_Test_Main(QWidget):
     def __init__(self):
         super().__init__()
 
         # Settings
         wl_settings_default.init_settings_default(self)
-        self.settings_custom = self.settings_default
+        self.settings_custom = copy.deepcopy(self.settings_default)
         wl_settings_global.init_settings_global(self)
 
         # Files
-        table = QObject()
+        table = QWidget()
         table.main = self
 
         self.wl_files = wl_file_area.Wl_Files(table)
