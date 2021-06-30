@@ -16,6 +16,7 @@
 ### 🎉 New Features
 - Utils: Add PyThaiNLP’s NERCut
 - Utils: Add PyThaiNLP’s perceptron tagger (LST20)
+- Utils: Add spaCy’s Amharic, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana word tokenizers
 - Work Area: Add Concordancer (Parallel Mode)
 
 ### 📌 Bugfixes
