@@ -21,39 +21,42 @@ from wl_utils import wl_conversion
 
 main = wl_test_init.Wl_Test_Main()
 
-@pytest.mark.parametrize('lang_text', main.settings_global['langs'])
+to_lang_text = {
+    lang_code_639_3: lang_text
+    for lang_text, (lang_code_639_3, _, _) in main.settings_global['langs'].items()
+}
+to_iso_639_1 = {
+    lang_code_639_3: lang_code_639_1
+    for _, (lang_code_639_3, lang_code_639_1, _) in main.settings_global['langs'].items()
+}
+to_iso_639_3 = {
+    lang_code_639_1: lang_code_639_3
+    for _, (lang_code_639_3, lang_code_639_1, _) in main.settings_global['langs'].items()
+}
+
+@pytest.mark.parametrize('lang_text', main.settings_global['langs'].keys())
 def test_to_lang_code(lang_text):
-    len_lang_text = max([len(lang_text)
-                         for lang_text in main.settings_global['langs']])
     lang_code = wl_conversion.to_lang_code(main, lang_text)
 
-    assert lang_code == main.settings_global['langs'][lang_text]
+    assert lang_code == main.settings_global['langs'][lang_text][0]
 
-@pytest.mark.parametrize('lang_code', main.settings_global['langs'].values())
+@pytest.mark.parametrize('lang_code', to_lang_text.keys())
 def test_to_lang_text(lang_code):
-    len_lang_code = max([len(lang_code)
-                         for lang_code in main.settings_global['langs'].values()])
     lang_text = wl_conversion.to_lang_text(main, lang_code)
 
-    assert lang_text == {lang_code: lang_text
-                         for lang_text, lang_code in main.settings_global['langs'].items()}[lang_code]
+    assert lang_text == to_lang_text[lang_code]
 
-@pytest.mark.parametrize('lang_code', main.settings_global['lang_codes'])
+@pytest.mark.parametrize('lang_code', to_iso_639_1.keys())
 def test_to_iso_639_1(lang_code):
-    len_iso_639_3 = max([len(lang_code)
-                         for lang_code in main.settings_global['lang_codes']])
-    iso_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
+    lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
 
-    assert iso_639_1 == main.settings_global['lang_codes'][lang_code]
+    assert lang_code_639_1 == to_iso_639_1[lang_code]
 
-@pytest.mark.parametrize('lang_code', main.settings_global['lang_codes'].values())
+@pytest.mark.parametrize('lang_code', to_iso_639_3.keys())
 def test_to_iso_639_3(lang_code):
-    len_iso_639_1 = max([len(lang_code)
-                         for lang_code in main.settings_global['lang_codes'].values()])
-    iso_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
+    lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
 
-    assert iso_639_3 == {iso_639_1: iso_639_3
-                         for iso_639_3, iso_639_1 in main.settings_global['lang_codes'].items()}[lang_code]
+    assert lang_code_639_3 == to_iso_639_3[lang_code]
 
 @pytest.mark.parametrize('encoding_text', main.settings_global['file_encodings'])
 def test_to_encoding_code(encoding_text):
