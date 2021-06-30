@@ -32,6 +32,8 @@ def test_settings_global():
     settings_sentence_tokenizers_default = settings_default['sentence_tokenization']['sentence_tokenizers']
     settings_word_tokenizers = settings_global['word_tokenizers']
     settings_word_tokenizers_default = settings_default['word_tokenization']['word_tokenizers']
+    settings_word_detokenizers = settings_global['word_detokenizers']
+    settings_word_detokenizers_default = settings_default['word_detokenization']['word_detokenizers']
 
     langs_supported_sacremoses = []
     langs_supported_spacy = []
@@ -44,6 +46,11 @@ def test_settings_global():
     langs_word_tokenizers_nltk = []
     langs_word_tokenizers_sacremoses = []
     langs_word_tokenizers_spacy = []
+
+    langs_word_detokenizers = list(settings_word_detokenizers.keys())
+    langs_word_detokenizers_default = list(settings_word_detokenizers_default.keys())
+    langs_word_detokenizers_nltk = []
+    langs_word_detokenizers_sacremoses = []
 
     lang_missing = False
     lang_extra = False
@@ -172,6 +179,47 @@ def test_settings_global():
             print(f'Extra language code "{lang_code_default}" found for the default settings of word tokenizers!')
 
             lang_default_extra = True
+
+    # Check for missing and extra languages for NLTK's Penn Treebank detokenizer
+    for lang_code, word_detokenizers in settings_word_detokenizers.items():
+        if lang_code != 'other' and any(['NLTK' in word_detokenizer for word_detokenizer in word_detokenizers]):
+            langs_word_detokenizers_nltk.append(lang_code)
+
+    for lang_code in langs_word_detokenizers:
+        if lang_code != 'other':
+            lang_family = wl_conversion.get_lang_family(main, lang_code)
+            print(lang_code, lang_family)
+            if lang_family == 'Indo-European':
+                if lang_code not in langs_word_detokenizers_nltk:
+                    print(f'''Missing language code "{lang_code}" found for NLTK's Penn Treebank detokenizer!''')
+
+                    lang_missing = True
+            else:
+                if lang_code in langs_word_detokenizers_nltk:
+                    print(f'''Extra language code "{lang_code}" found for NLTK's Penn Treebank detokenizer!''')
+
+                    lang_extra = True
+
+    # Check for missing and extra languages for Sacremoses's Moses detokenizer
+    for lang_code, word_detokenizers in settings_word_detokenizers.items():
+        if lang_code != 'other' and any(['Sacremoses' in word_detokenizer for word_detokenizer in word_detokenizers]):
+            langs_word_detokenizers_sacremoses.append(lang_code)
+
+    for lang_code in langs_supported_sacremoses:
+        lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
+
+        if lang_code_639_3 not in langs_word_detokenizers_sacremoses:
+            print(f'''Missing language code "{lang_code} / {lang_code_639_3}" found for Sacremoses's Moses detokenizer!''')
+
+            lang_missing = True
+
+    for lang_code in langs_word_detokenizers_sacremoses:
+        lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
+
+        if lang_code_639_1 not in langs_supported_sacremoses:
+            print(f'''Extra language code "{lang_code} / {lang_code_639_1}" found for Sacremoses's Moses detokenizer!''')
+
+            lang_extra = True
 
     assert not lang_missing
     assert not lang_extra
