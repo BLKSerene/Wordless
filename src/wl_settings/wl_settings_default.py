@@ -1272,6 +1272,7 @@ def init_settings_default(main):
                 'ces': main.tr('Sacremoses - Moses Detokenizer'),
                 'nld': main.tr('Sacremoses - Moses Detokenizer'),
                 'eng': main.tr('Sacremoses - Moses Detokenizer'),
+                'est': main.tr('Sacremoses - Moses Detokenizer'),
                 'fin': main.tr('Sacremoses - Moses Detokenizer'),
                 'fra': main.tr('Sacremoses - Moses Detokenizer'),
                 'deu': main.tr('Sacremoses - Moses Detokenizer'),
