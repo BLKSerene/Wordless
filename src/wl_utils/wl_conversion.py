@@ -11,25 +11,32 @@
 
 def to_lang_code(main, lang_text):
     if type(lang_text) == list:
-        return [main.settings_global['langs'][item] for item in lang_text]
+        return [main.settings_global['langs'][item][0]
+                for item in lang_text]
     else:
-        return main.settings_global['langs'][lang_text]
+        return main.settings_global['langs'][lang_text][0]
 
 def to_lang_text(main, lang_code):
-    langs = {lang_code: lang_text for lang_text, lang_code in main.settings_global['langs'].items()}
+    def find_lang_text(code):
+        for lang_text, (lang_code_639_3, _, _) in main.settings_global['langs'].items():
+            if lang_code_639_3 == code:
+                return lang_text
 
     if type(lang_code) == list:
-        return [langs[item] for item in lang_code]
+        return [find_lang_text(item)
+                for item in lang_code]
     else:
-        return langs[lang_code]
+        return find_lang_text(lang_code)
 
 def to_iso_639_3(main, lang_code):
-    for lang_code_639_3, lang_code_639_1 in main.settings_global['lang_codes'].items():
-        if lang_code == lang_code_639_1:
+    for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
+        if lang_code_639_1 == lang_code:
             return lang_code_639_3
 
 def to_iso_639_1(main, lang_code):
-    return main.settings_global['lang_codes'][lang_code]
+    for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
+        if lang_code_639_3 == lang_code:
+            return lang_code_639_1
 
 def to_encoding_code(main, encoding_text):
     return main.settings_global['file_encodings'][encoding_text]
