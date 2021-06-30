@@ -1585,6 +1585,11 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
+            'amh': [
+                main.tr('spaCy - Amharic Stop Word List'),
+                main.tr('Custom List')
+            ],
+
             'ara': [
                 main.tr('extra-stopwords - Arabic Stop Word List'),
                 main.tr('NLTK - Arabic Stop Word List'),
@@ -1832,6 +1837,7 @@ def init_settings_global(main):
 
             'kor': [
                 main.tr('extra-stopwords - Korean Stop Word List'),
+                main.tr('spaCy - Japanese Stop Word List'),
                 main.tr('Stopwords ISO - Korean Stop Word List'),
                 main.tr('Custom List')
             ],
@@ -1839,6 +1845,11 @@ def init_settings_global(main):
             'kur': [
                 main.tr('extra-stopwords - Kurdish Stop Word List'),
                 main.tr('Stopwords ISO - Kurdish Stop Word List'),
+                main.tr('Custom List')
+            ],
+
+            'kir': [
+                main.tr('spaCy - Kyrgyz Stop Word List'),
                 main.tr('Custom List')
             ],
 
@@ -1868,6 +1879,11 @@ def init_settings_global(main):
 
             'ltz': [
                 main.tr('spaCy - Luxembourgish Stop Word List'),
+                main.tr('Custom List')
+            ],
+
+            'mkd': [
+                main.tr('spaCy - Macedonian Stop Word List'),
                 main.tr('Custom List')
             ],
 
@@ -1951,6 +1967,11 @@ def init_settings_global(main):
                 main.tr('NLTK - Russian Stop Word List'),
                 main.tr('spaCy - Russian Stop Word List'),
                 main.tr('Stopwords ISO - Russian Stop Word List'),
+                main.tr('Custom List')
+            ],
+
+            'san': [
+                main.tr('spaCy - Sanskrit Stop Word List'),
                 main.tr('Custom List')
             ],
 
@@ -2051,6 +2072,16 @@ def init_settings_global(main):
                 main.tr('PyThaiNLP - Thai Stop Word List'),
                 main.tr('spaCy - Thai Stop Word List'),
                 main.tr('Stopwords ISO - Thai Stop Word List'),
+                main.tr('Custom List')
+            ],
+
+            'tir': [
+                main.tr('spaCy - Tigrinya Stop Word List'),
+                main.tr('Custom List')
+            ],
+
+            'tsn': [
+                main.tr('spaCy - Tswana Stop Word List'),
                 main.tr('Custom List')
             ],
 
