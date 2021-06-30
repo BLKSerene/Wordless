@@ -46,7 +46,7 @@ def init_settings_global(main):
             main.tr('Dzongkha'):              ['dzo', 'dz', 'Sino-Tibetan'],
             main.tr('English'):               ['eng', 'en', 'Indo-European'],
             main.tr('Esperanto'):             ['epo', 'eo', 'Constructed'],
-            main.tr('Estonian'):              ['est', 'et', 'Estonian'],
+            main.tr('Estonian'):              ['est', 'et', 'Uralic'],
             main.tr('Faroese'):               ['fao', 'fo', 'Indo-European'],
             main.tr('Finnish'):               ['fin', 'fi', 'Uralic'],
             main.tr('French'):                ['fra', 'fr', 'Indo-European'],
@@ -860,10 +860,6 @@ def init_settings_global(main):
             ],
 
             'lij': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Ligurian Word Tokenizer')
             ],
 
@@ -885,6 +881,10 @@ def init_settings_global(main):
             ],
 
             'mkd': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Macedonian Word Tokenizer')
             ],
 
@@ -986,6 +986,10 @@ def init_settings_global(main):
             ],
 
             'san': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Sanskrit Word Tokenizer')
             ],
 
