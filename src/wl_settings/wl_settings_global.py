@@ -343,12 +343,10 @@ def init_settings_global(main):
             ],
 
             'zho_cn': [
-                main.tr('spaCy - Sentencizer'),
                 main.tr('Wordless - Chinese Sentence Tokenizer')
             ],
 
             'zho_tw': [
-                main.tr('spaCy - Sentencizer'),
                 main.tr('Wordless - Chinese Sentence Tokenizer')
             ],
 
@@ -627,6 +625,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Albanian Word Tokenizer')
             ],
 
+            'amh': [
+                main.tr('spaCy - Amharic Word Tokenizer')
+            ],
+
             'ara': [
                 main.tr('spaCy - Arabic Word Tokenizer')
             ],
@@ -844,6 +846,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Kannada Word Tokenizer')
             ],
 
+            'kir': [
+                main.tr('spaCy - Kyrgyz Word Tokenizer')
+            ],
+
             'lav': [
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NLTK Tokenizer'),
@@ -876,6 +882,10 @@ def init_settings_global(main):
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Luxembourgish Word Tokenizer')
+            ],
+
+            'mkd': [
+                main.tr('spaCy - Macedonian Word Tokenizer')
             ],
 
             'mal': [
@@ -973,6 +983,10 @@ def init_settings_global(main):
                 main.tr('razdel - Russian Word Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - Russian Word Tokenizer')
+            ],
+
+            'san': [
+                main.tr('spaCy - Sanskrit Word Tokenizer')
             ],
 
             'srp_cyrl': [
@@ -1076,6 +1090,14 @@ def init_settings_global(main):
 
             'bod': [
                 main.tr('botok - Tibetan Word Tokenizer')
+            ],
+
+            'tir': [
+                main.tr('spaCy - Tigrinya Word Tokenizer')
+            ],
+
+            'tsn': [
+                main.tr('spaCy - Tswana Word Tokenizer')
             ],
 
             'tur': [
