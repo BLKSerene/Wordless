@@ -1184,6 +1184,10 @@ def init_settings_global(main):
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
 
+            'est': [
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+
             'fin': [
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
