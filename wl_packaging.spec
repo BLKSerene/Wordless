@@ -56,6 +56,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('nl_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pl_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pt_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ro_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('ru_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('thinc'))
 # Tokenizer
 datas.extend(PyInstaller.utils.hooks.collect_data_files('tokenizer'))
@@ -136,7 +137,8 @@ hiddenimports = [
     'nl_core_news_sm',
     'pl_core_news_sm',
     'pt_core_news_sm',
-    'ro_core_news_sm'
+    'ro_core_news_sm',
+    'ru_core_news_sm'
 ]
 
 # Runtime hooks

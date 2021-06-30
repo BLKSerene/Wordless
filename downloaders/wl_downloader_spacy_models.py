@@ -27,6 +27,7 @@ langs = [
     ['Polish'          , 'pol', 'pl'],
     ['Portuguese'      , 'por', 'pt'],
     ['Romanian'        , 'ron', 'ro'],
+    ['Russian'         , 'rus', 'ru'],
     ['Spanish'         , 'spa', 'es']
 ]
 
