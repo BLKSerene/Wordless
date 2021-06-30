@@ -38,6 +38,11 @@ def to_iso_639_1(main, lang_code):
         if lang_code_639_3 == lang_code:
             return lang_code_639_1
 
+def get_lang_family(main, lang_code):
+    for lang_code_639_3, _, lang_family in main.settings_global['langs'].values():
+        if lang_code_639_3 == lang_code:
+            return lang_family
+
 def to_encoding_code(main, encoding_text):
     return main.settings_global['file_encodings'][encoding_text]
 

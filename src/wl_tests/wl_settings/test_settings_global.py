@@ -38,8 +38,10 @@ def test_settings_global():
     langs_sentence_tokenizers = list(settings_sentence_tokenizers.keys())
     langs_sentence_tokenizers_default = list(settings_sentence_tokenizers_default.keys())
     langs_sentence_tokenizers_spacy = []
+
     langs_word_tokenizers = list(settings_word_tokenizers.keys())
     langs_word_tokenizers_default = list(settings_word_tokenizers_default.keys())
+    langs_word_tokenizers_nltk = []
     langs_word_tokenizers_sacremoses = []
     langs_word_tokenizers_spacy = []
 
@@ -95,6 +97,26 @@ def test_settings_global():
             print(f'Extra language code "{lang_code_default}" found for the default settings of sentence tokenizers!')
 
             lang_default_extra = True
+
+    # Check for missing and extra languages for NLTK's word tokenizers
+    for lang_code, word_tokenizers in settings_word_tokenizers.items():
+        if lang_code != 'other' and any(['NLTK - NLTK Tokenizer' in word_tokenizer for word_tokenizer in word_tokenizers]):
+            langs_word_tokenizers_nltk.append(lang_code)
+
+    for lang_code in langs_word_tokenizers:
+        if lang_code != 'other':
+            lang_family = wl_conversion.get_lang_family(main, lang_code)
+
+            if lang_family == 'Indo-European':
+                if lang_code not in langs_word_tokenizers_nltk:
+                    print(f'''Missing language code "{lang_code}" found for NLTK's tokenizers!''')
+
+                    lang_missing = True
+            else:
+                if lang_code in langs_word_tokenizers_nltk:
+                    print(f'''Extra language code "{lang_code}" found for NLTK's tokenizers!''')
+
+                    lang_extra = True
 
     # Check for missing and extra languages for Sacremoses's Moses tokenizer
     for lang_code, word_tokenizers in settings_word_tokenizers.items():
