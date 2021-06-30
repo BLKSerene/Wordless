@@ -204,8 +204,12 @@ def init_spacy_models(main, lang, pipeline):
             main.__dict__[f'spacy_nlp_{lang}'] = model.load()
     # Languages without models
     else:
-        # Serbian (Cyrillic) & Serbian (Latin)
-        if lang in ['srp_cyrl', 'srp_latn']:
+        # Chinese
+        if lang in ['zho_cn', 'zho_tw']:
+            main.__dict__['spacy_nlp_zho_cn'] = spacy.blank('zh')
+            main.__dict__['spacy_nlp_zho_tw'] = spacy.blank('zh')
+        # Serbian
+        elif lang in ['srp_cyrl', 'srp_latn']:
             main.__dict__['spacy_nlp_srp_cyrl'] = spacy.blank('sr')
             main.__dict__['spacy_nlp_srp_latn'] = spacy.blank('sr')
         else:
