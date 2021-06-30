@@ -65,20 +65,20 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
     elif lang == 'ces':
         assert text == 'Čeština neboli český jazyk je západoslovanský jazyk, nejbližší slovenštině, poté lužické srbštině a polštině.'
     elif lang == 'nld':
-        assert text == 'Het Nederlands is een West-Germaanse taal en de moedertaal van de meeste inwoners van Nederland, België en Suriname.'
+        assert text == 'Het Nederlands is een West-Germaanse taal en de officiële taal van Nederland, Suriname en een van de drie officiële talen van België.'
     elif lang == 'eng':
         assert text == 'English is a West Germanic language originally spoken by the early medieval England.[3][4][5]'
     elif lang == 'fin':
         assert text == 'Suomen kieli (suomi) on uralilaisten kielten itämerensuomalaiseen ryhmään kuuluva kieli.'
     elif lang == 'fra':
-        assert text == 'Le français est une langue indo-européenne de la famille des langues romanes.'
+        assert text == 'Le français est une langue indo-européenne de la famille des langues romanes dont les locuteurs sont appelés francophones.'
     elif lang == 'deu':
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
-            assert text == 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ];abgekürzt dt . oder dtsch .) ist eine westgermanische Sprache.'
+            assert text == 'Die deutsche Sprache bzw. das Deutsche ([dɔɪ̯tʃ];[26] abgekürzt dt . oder dtsch .) ist eine westgermanische Sprache, die weltweit etwa 90 bis 105 Millionen Menschen als Muttersprache und weiteren rund 80 Millionen als Zweit- oder Fremdsprache dient.'
         elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
-            assert text == 'Die deutsche Sprache bzw. Deutsch ([dɔʏ̯t͡ʃ];abgekürzt dt. oder dtsch.) ist eine westgermanische Sprache.'
+            assert text == 'Die deutsche Sprache bzw. das Deutsche ([dɔɪ̯tʃ];[26] abgekürzt dt. oder dtsch.) ist eine westgermanische Sprache, die weltweit etwa 90 bis 105 Millionen Menschen als Muttersprache und weiteren rund 80 Millionen als Zweit- oder Fremdsprache dient.'
     elif lang == 'ell':
-        assert text == 'Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[9]και συγκεκριμένα στον ελληνικό κλάδο, μαζί με την τσακωνική, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.'
+        assert text == 'Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[10] και αποτελεί το μοναδικό μέλος του ελληνικού κλάδου, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.'
     elif lang == 'guj':
         assert text == 'ગુજરાતી ‍(/ɡʊdʒəˈrɑːti/[૭], રોમન લિપિમાં: Gujarātī, ઉચ્ચાર: [ɡudʒəˈɾɑːtiː]) ભારત દેશના ગુજરાત રાજ્યની ઇન્ડો-આર્યન ભાષા છે, અને મુખ્યત્વે ગુજરાતી લોકો દ્વારા બોલાય છે.'
     elif lang == 'hin':
@@ -95,7 +95,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
             assert text == "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
     elif lang == 'jpn':
-        assert text == '日本語(にほんご、にっぽんご[注1])は、主に日本国内や日本人同士の間で使用されている言語である。'
+        assert text == '日本語(にほんご、にっぽんご[注2]、英: Japanese)は、主に日本国内や日本人同士の間で使用されている言語。'
     elif lang == 'kan':
         assert text == 'ದ್ರಾವಿಡ ಭಾಷೆಗಳಲ್ಲಿ ಪ್ರಾಮುಖ್ಯವುಳ್ಳ ಭಾಷೆಯೂ ಭಾರತದ ಪುರಾತನವಾದ ಭಾಷೆಗಳಲ್ಲಿ ಒಂದೂ ಆಗಿರುವ ಕನ್ನಡ ಭಾಷೆಯನ್ನು ಅದರ ವಿವಿಧ ರೂಪಗಳಲ್ಲಿ ಸುಮಾರು ೪೫ ದಶಲಕ್ಷ ಜನರು ಆಡು ನುಡಿಯಾಗಿ ಬಳಸುತ್ತಲಿದ್ದಾರೆ.'
     elif lang == 'lav':
