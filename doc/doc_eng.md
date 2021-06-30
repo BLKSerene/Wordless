@@ -411,6 +411,7 @@ Language|Sentence Tokenization|Word Tokenization|Word Detokenization|POS Tagging
 :------:|:-------------------:|:---------------:|:-----------------:|:---------:|:-----------:|:--------:
 Afrikaans            |✔|✔|⭕️ |✖️|✖️|✔️
 Albanian             |✔|✔|⭕️ |✖️|✖️|✔️
+Amharic              |✔|✔|⭕️ |✖️|✖️|✔️
 Arabic               |✔|✔️|⭕️ |✖️|✖️|✔️
 Armenian             |✔|✔|⭕️ |✖️|✖️|✔️
 Assamese             |⭕️ |✔|✔|✖️|✖️|✖️
@@ -451,11 +452,13 @@ Kannada              |✔|✔️|✔|✖️|✖️|✔️
 Kazakh               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Korean               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Kurdish              |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
+Kyrgyz               |✔|✔|⭕️ |✖️|✖️|✔️
 Latin                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Latvian              |✔|✔️|✔️|✖️|✖️|✔️
 Ligurian             |✔|✔️|⭕️ |✖️|✖️|✔️
 Lithuanian           |✔️|✔️|✔️|✔️|✔️|✔️
 Luxembourgish        |✔️|✔️|⭕️ |✖️|✖️|✔️
+Macedonian           |✔|✔|⭕️ |✖️|✖️|✔️
 Malay                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Malayalam            |✔️|✔️|✔|✖️|✖️|✔️
 Manx                 |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
@@ -472,6 +475,7 @@ Portuguese           |✔|✔️|✔️|✔️|✔️|✔️
 Romanian             |✔|✔️|✔️|✔️|✔️|✔️
 Punjabi              |⭕️ |✔️|✔|✖️|✖️|✖️
 Russian              |✔️|✔️|✔️|✔️|✔️|✔️
+Sanskrit             |✔|✔|⭕️ |✖️|✖️|✔️
 Scottish Gaelic      |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
 Serbian (Cyrillic)   |⭕️ |✔️|⭕️ |✖️|✖️|✔️
 Serbian (Latin)      |⭕️ |✔️|⭕️ |✖️|✖️|✔️
@@ -490,6 +494,8 @@ Telugu               |✔|✔️|✔️|✖️|✖️|✔️
 Tetum                |⭕️ |✔️|✔|✖️|✖️|✖️
 Thai                 |✔|✔️|✔️|✔️|✖️|✔️
 Tibetan              |⭕️ |✔️|✔️|✔️|✔️|✖️
+Tigrinya             |✔|✔|⭕️ |✖️|✖️|✔️
+Tswana               |✔|✔|⭕️ |✖️|✖️|✔️
 Turkish              |✔|✔️|⭕️ |✖️|✖️|✔️
 Ukrainian            |✔|✔️|⭕️ |✔️|✔️|✔️
 Urdu                 |✔|✔️|⭕️ |✖️|✖️|✔️

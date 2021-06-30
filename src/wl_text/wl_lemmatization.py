@@ -39,7 +39,11 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
 
             tokens.remove(token)
 
-    wl_text_utils.init_lemmatizers(main, lang)
+    wl_text_utils.init_lemmatizers(
+        main,
+        lang = lang,
+        lemmatizer = lemmatizer
+    )
 
     if tokens and lang in main.settings_global['lemmatizers']:
         if lemmatizer == 'default':
