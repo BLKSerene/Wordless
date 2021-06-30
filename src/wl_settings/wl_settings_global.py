@@ -1407,7 +1407,8 @@ def init_settings_global(main):
 
             'rus': [
                 main.tr('NLTK - Perceptron POS Tagger'),
-                main.tr('pymorphy2 - Morphological Analyzer')
+                main.tr('pymorphy2 - Morphological Analyzer'),
+                main.tr('spaCy - Russian POS Tagger')
             ],
 
             'spa': [
@@ -1534,7 +1535,8 @@ def init_settings_global(main):
             ],
 
             'rus': [
-                main.tr('pymorphy2 - Morphological Analyzer')
+                main.tr('pymorphy2 - Morphological Analyzer'),
+                main.tr('spaCy - Russian Lemmatizer')
             ],
 
             'gla': [
