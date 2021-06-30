@@ -24,19 +24,40 @@ from wl_utils import wl_conversion
 
 main = wl_test_init.Wl_Test_Main()
 
+def check_missing_extra_langs_default(langs, langs_default, msg):
+    for lang_code in langs:
+        if lang_code not in langs_default:
+            print(f'Missing language code "{lang_code}" found in the default settings of {msg}!')
+
+            lang_default_missing = True
+
+    for lang_code_default in langs_default:
+        if lang_code_default not in langs:
+            print(f'Extra language code "{lang_code_default}" found in the default settings of {msg}!')
+
+            lang_default_extra = True
+
 def test_settings_global():
     settings_global = main.settings_global
     settings_default = main.settings_default
 
     settings_sentence_tokenizers = settings_global['sentence_tokenizers']
     settings_sentence_tokenizers_default = settings_default['sentence_tokenization']['sentence_tokenizers']
+
     settings_word_tokenizers = settings_global['word_tokenizers']
     settings_word_tokenizers_default = settings_default['word_tokenization']['word_tokenizers']
+
     settings_word_detokenizers = settings_global['word_detokenizers']
     settings_word_detokenizers_default = settings_default['word_detokenization']['word_detokenizers']
 
+    settings_stop_word_lists = settings_global['stop_word_lists']
+    settings_stop_word_lists_default = settings_default['stop_word_lists']['stop_word_lists']
+    settings_stop_word_lists_default_custom = settings_default['stop_word_lists']['custom_lists']
+
     langs_supported_sacremoses = []
     langs_supported_spacy = []
+    langs_supported_spacy_stop_words = []
+
     langs_sentence_tokenizers = list(settings_sentence_tokenizers.keys())
     langs_sentence_tokenizers_default = list(settings_sentence_tokenizers_default.keys())
     langs_sentence_tokenizers_spacy = []
@@ -52,6 +73,11 @@ def test_settings_global():
     langs_word_detokenizers_nltk = []
     langs_word_detokenizers_sacremoses = []
 
+    langs_stop_word_lists = list(settings_stop_word_lists.keys())
+    langs_stop_word_lists_default = list(settings_stop_word_lists_default.keys())
+    langs_stop_word_lists_default_custom = list(settings_stop_word_lists_default_custom.keys())
+    langs_stop_word_lists_spacy = []
+
     lang_missing = False
     lang_extra = False
     lang_default_missing = False
@@ -66,10 +92,27 @@ def test_settings_global():
 
     # Loading languages supported by spaCy
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
-        if lang.ispkg and lang.name not in ['ja', 'ko', 'sr', 'th', 'vi', 'zh', 'xx']:
-            langs_supported_spacy.append(lang.name)
+        if lang.ispkg:
+            if lang.name not in ['ja', 'ko', 'sr', 'th', 'vi', 'zh', 'xx']:
+                langs_supported_spacy.append(lang.name)
             # Serbian
-            langs_supported_spacy.extend(['sr_cyrl', 'sr_latn'])
+            elif lang.name == 'sr':
+                langs_supported_spacy.extend(['sr_cyrl', 'sr_latn'])
+
+    for lang in pkgutil.iter_modules(spacy.lang.__path__):
+        if lang.ispkg:
+            for file in os.listdir(f'{spacy.lang.__path__[0]}/{lang.name}/'):
+                if file == 'stop_words.py':
+                    if lang.name not in ['sr', 'zh', 'xx']:
+                        langs_supported_spacy_stop_words.append(lang.name)
+                    # Chinese
+                    elif lang.name == 'zh':
+                        langs_supported_spacy_stop_words.extend(['zh_cn', 'zh_tw'])
+                    # Serbian
+                    elif lang.name == 'sr':
+                        langs_supported_spacy_stop_words.extend(['sr_cyrl', 'sr_latn'])
+
+                    break
 
     # Check for missing and extra languages for spaCy's sentencizer
     for lang_code, sentence_tokenizers in settings_sentence_tokenizers.items():
@@ -91,19 +134,6 @@ def test_settings_global():
             print(f'''Extra language code "{lang_code} / {lang_code_639_1}" found for spaCy's sentencizer!''')
 
             lang_extra = True
-
-    # Check for missing and extra languages for the default settings of sentence tokenizers
-    for lang_code in langs_sentence_tokenizers:
-        if lang_code not in langs_sentence_tokenizers_default:
-            print(f'Missing language code "{lang_code}" found for the default settings of sentence tokenizers!')
-
-            lang_default_missing = True
-
-    for lang_code_default in langs_sentence_tokenizers_default:
-        if lang_code_default not in langs_sentence_tokenizers:
-            print(f'Extra language code "{lang_code_default}" found for the default settings of sentence tokenizers!')
-
-            lang_default_extra = True
 
     # Check for missing and extra languages for NLTK's word tokenizers
     for lang_code, word_tokenizers in settings_word_tokenizers.items():
@@ -167,19 +197,6 @@ def test_settings_global():
 
             lang_extra = True
 
-    # Check for missing and extra languages for the default settings of word tokenizers
-    for lang_code in langs_word_tokenizers:
-        if lang_code not in langs_word_tokenizers_default:
-            print(f'Missing language code "{lang_code}" found for the default settings of word tokenizers!')
-
-            lang_default_missing = True
-
-    for lang_code_default in langs_word_tokenizers_default:
-        if lang_code_default not in langs_word_tokenizers:
-            print(f'Extra language code "{lang_code_default}" found for the default settings of word tokenizers!')
-
-            lang_default_extra = True
-
     # Check for missing and extra languages for NLTK's Penn Treebank detokenizer
     for lang_code, word_detokenizers in settings_word_detokenizers.items():
         if lang_code != 'other' and any(['NLTK' in word_detokenizer for word_detokenizer in word_detokenizers]):
@@ -188,7 +205,7 @@ def test_settings_global():
     for lang_code in langs_word_detokenizers:
         if lang_code != 'other':
             lang_family = wl_conversion.get_lang_family(main, lang_code)
-            print(lang_code, lang_family)
+            
             if lang_family == 'Indo-European':
                 if lang_code not in langs_word_detokenizers_nltk:
                     print(f'''Missing language code "{lang_code}" found for NLTK's Penn Treebank detokenizer!''')
@@ -220,6 +237,34 @@ def test_settings_global():
             print(f'''Extra language code "{lang_code} / {lang_code_639_1}" found for Sacremoses's Moses detokenizer!''')
 
             lang_extra = True
+
+    # Check for missing and extra languages for spaCy's stop word lists
+    for lang_code, stop_word_lists in settings_stop_word_lists.items():
+        if lang_code != 'other' and any(['spaCy' in stop_word_list for stop_word_list in stop_word_lists]):
+            langs_stop_word_lists_spacy.append(lang_code)
+
+    for lang_code in langs_supported_spacy_stop_words:
+        lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
+
+        if lang_code_639_3 not in langs_stop_word_lists_spacy:
+            print(f'''Missing language code "{lang_code} / {lang_code_639_3}" found for spaCy's stop word lists!''')
+
+            lang_missing = True
+
+    for lang_code in langs_stop_word_lists_spacy:
+        lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
+
+        if lang_code_639_1 not in langs_supported_spacy_stop_words:
+            print(f'''Extra language code "{lang_code} / {lang_code_639_1}" found for spaCy's stop word lists!''')
+
+            lang_extra = True
+
+    # Check for missing and extra languages in default settings
+    check_missing_extra_langs_default(langs_sentence_tokenizers, langs_sentence_tokenizers_default, 'sentence tokenizers')
+    check_missing_extra_langs_default(langs_word_tokenizers, langs_word_tokenizers_default, 'word tokenizers')
+    check_missing_extra_langs_default(langs_word_detokenizers, langs_word_detokenizers_default, 'word detokenizers')
+    check_missing_extra_langs_default(langs_stop_word_lists, langs_stop_word_lists_default, 'stop word lists')
+    check_missing_extra_langs_default(langs_stop_word_lists_default, langs_stop_word_lists_default_custom, 'custom lists')
 
     assert not lang_missing
     assert not lang_extra
