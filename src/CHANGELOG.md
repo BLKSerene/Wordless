@@ -17,6 +17,7 @@
 - Utils: Add PyThaiNLP’s NERCut
 - Utils: Add PyThaiNLP’s perceptron tagger (LST20)
 - Utils: Add spaCy’s Amharic, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana word tokenizers
+- Utils: Add spaCy’s Amharic, Korean, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana stop word lists
 - Work Area: Add Concordancer (Parallel Mode)
 
 ### 📌 Bugfixes
