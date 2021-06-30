@@ -178,6 +178,7 @@ def init_spacy_models(main, lang, pipeline):
         'pol': 'pl_core_news_sm',
         'por': 'pt_core_news_sm',
         'ron': 'ro_core_news_sm',
+        'rus': 'ru_core_news_sm',
         'spa': 'es_core_news_sm',
         'other': 'en_core_web_sm'
     }
@@ -332,7 +333,7 @@ def init_lemmatizers(main, lang, lemmatizer = 'default'):
     if lang in main.settings_global['lemmatizers']:
         if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang]
-
+    
     # spaCy
     if 'spaCy' in lemmatizer:
         init_spacy_models(main, lang, pipeline = 'lemmatization')
@@ -342,7 +343,7 @@ def init_lemmatizers(main, lang, lemmatizer = 'default'):
             if 'pymorphy2_morphological_analyzer_rus' not in main.__dict__:
                 main.pymorphy2_morphological_analyzer_rus = pymorphy2.MorphAnalyzer(lang = 'ru')
         elif lang == 'ukr':
-            if 'pymorphy2_morphological_analyzer_urk' not in main.__dict__:
+            if 'pymorphy2_morphological_analyzer_ukr' not in main.__dict__:
                 main.pymorphy2_morphological_analyzer_ukr = pymorphy2.MorphAnalyzer(lang = 'uk')
 
 def record_boundary_sentences(sentences, text):
