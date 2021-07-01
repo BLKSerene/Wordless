@@ -1389,6 +1389,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Lithuanian POS Tagger')
             ],
 
+            'mkd': [
+                main.tr('spaCy - Macedonian POS Tagger')
+            ],
+
             'nob': [
                 main.tr('spaCy - Norwegian Bokmål POS Tagger')
             ],
@@ -1506,6 +1510,10 @@ def init_settings_global(main):
 
             'lit': [
                 main.tr('spaCy - Lithuanian Lemmatizer')
+            ],
+
+            'mkd': [
+                main.tr('spaCy - Macedonian Lemmatizer')
             ],
 
             'glv': [
