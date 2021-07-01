@@ -458,7 +458,7 @@ Latvian              |✔|✔️|✔️|✖️|✖️|✔️
 Ligurian             |✔|✔️|⭕️ |✖️|✖️|✔️
 Lithuanian           |✔️|✔️|✔️|✔️|✔️|✔️
 Luxembourgish        |✔️|✔️|⭕️ |✖️|✖️|✔️
-Macedonian           |✔|✔|⭕️ |✖️|✖️|✔️
+Macedonian           |✔|✔|⭕️ |✔|✔|✔️
 Malay                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔️
 Malayalam            |✔️|✔️|✔|✖️|✖️|✔️
 Manx                 |⭕️ |⭕️ |⭕️ |✖️|✔️|✖️
