@@ -50,6 +50,13 @@ def test_settings_global():
     settings_word_detokenizers = settings_global['word_detokenizers']
     settings_word_detokenizers_default = settings_default['word_detokenization']['word_detokenizers']
 
+    settings_pos_taggers = settings_global['pos_taggers']
+    settings_pos_taggers_default = settings_default['pos_tagging']['pos_taggers']
+    settings_tagsets_default = settings_default['tagsets']['preview_pos_tagger']
+
+    settings_lemmatizers = settings_global['lemmatizers']
+    settings_lemmatizers_default = settings_default['lemmatization']['lemmatizers']
+
     settings_stop_word_lists = settings_global['stop_word_lists']
     settings_stop_word_lists_default = settings_default['stop_word_lists']['stop_word_lists']
     settings_stop_word_lists_default_custom = settings_default['stop_word_lists']['custom_lists']
@@ -72,6 +79,13 @@ def test_settings_global():
     langs_word_detokenizers_default = list(settings_word_detokenizers_default.keys())
     langs_word_detokenizers_nltk = []
     langs_word_detokenizers_sacremoses = []
+
+    langs_pos_taggers = list(settings_pos_taggers.keys())
+    langs_pos_taggers_default = list(settings_pos_taggers_default.keys())
+    langs_tagsets_default = list(settings_tagsets_default.keys())
+
+    langs_lemmatizers = list(settings_lemmatizers.keys())
+    langs_lemmatizers_default = list(settings_lemmatizers_default.keys())
 
     langs_stop_word_lists = list(settings_stop_word_lists.keys())
     langs_stop_word_lists_default = list(settings_stop_word_lists_default.keys())
@@ -263,6 +277,9 @@ def test_settings_global():
     check_missing_extra_langs_default(langs_sentence_tokenizers, langs_sentence_tokenizers_default, 'sentence tokenizers')
     check_missing_extra_langs_default(langs_word_tokenizers, langs_word_tokenizers_default, 'word tokenizers')
     check_missing_extra_langs_default(langs_word_detokenizers, langs_word_detokenizers_default, 'word detokenizers')
+    check_missing_extra_langs_default(langs_pos_taggers, langs_pos_taggers_default, 'pos_taggers')
+    check_missing_extra_langs_default(langs_pos_taggers, langs_tagsets_default, 'tagsets')
+    check_missing_extra_langs_default(langs_lemmatizers, langs_lemmatizers_default, 'lemmatizers')
     check_missing_extra_langs_default(langs_stop_word_lists, langs_stop_word_lists_default, 'stop word lists')
     check_missing_extra_langs_default(langs_stop_word_lists_default, langs_stop_word_lists_default_custom, 'custom lists')
 

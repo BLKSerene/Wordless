@@ -1317,7 +1317,7 @@ def init_settings_default(main):
         'pos_tagging': {
             'pos_taggers': {
                 'zho_cn': main.tr('jieba - Chinese POS Tagger'),
-                'zho_tw':  main.tr('jieba - Chinese POS Tagger'),
+                'zho_tw': main.tr('jieba - Chinese POS Tagger'),
                 'dan': main.tr('spaCy - Danish POS Tagger'),
                 'nld': main.tr('spaCy - Dutch POS Tagger'),
                 'eng': main.tr('spaCy - English POS Tagger'),
@@ -1327,9 +1327,12 @@ def init_settings_default(main):
                 'ita': main.tr('spaCy - Italian POS Tagger'),
                 'jpn': main.tr('nagisa - Japanese POS Tagger'),
                 'lit': main.tr('spaCy - Lithuanian POS Tagger'),
+                'mkd': main.tr('spaCy - Macedonian POS Tagger'),
                 'nob': main.tr('spaCy - Norwegian Bokmål POS Tagger'),
+                'pol': main.tr('spaCy - Polish POS Tagger'),
                 'por': main.tr('spaCy - Portuguese POS Tagger'),
-                'rus': main.tr('pymorphy2 - Morphological Analyzer'),
+                'ron': main.tr('spaCy - Romanian POS Tagger'),
+                'rus': main.tr('spaCy - Russian POS Tagger'),
                 'spa': main.tr('spaCy - Spanish POS Tagger'),
                 'tha': main.tr('PyThaiNLP - Perceptron Tagger (PUD)'),
                 'bod': main.tr('botok - Tibetan POS Tagger'),
