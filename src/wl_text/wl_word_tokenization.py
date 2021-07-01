@@ -29,7 +29,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
-    wl_text_utils.init_tokenizers(
+    wl_text_utils.init_word_tokenizers(
         main,
         lang = lang,
         word_tokenizer = word_tokenizer
@@ -57,7 +57,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     # Sacremoses
     elif 'Sacremoses' in word_tokenizer:
         sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, text, lang)
-
+        
         for sentence in sentences:
             tokens_multilevel.append(main.__dict__[f'sacremoses_moses_tokenizer_{lang}'].tokenize(sentence, escape = False))
     # spaCy
