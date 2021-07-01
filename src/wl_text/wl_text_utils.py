@@ -164,7 +164,7 @@ SRP_LATN_TO_CYRL_DIGRAPHS = {
     'nj': 'њ'
 }
 
-def init_spacy_models(main, lang, pipeline):
+def init_spacy_models(main, lang):
     spacy_langs = {
         'dan': 'da_core_news_sm',
         'nld': 'nl_core_news_sm',
@@ -180,48 +180,43 @@ def init_spacy_models(main, lang, pipeline):
         'ron': 'ro_core_news_sm',
         'rus': 'ru_core_news_sm',
         'spa': 'es_core_news_sm',
+        
         'other': 'en_core_web_sm'
     }
 
-    # Remove unused pipelines to boost speed
-    if pipeline == 'word_tokenization':
-        nlp_pipelines = []
-    elif pipeline in ['sentence_tokenization', 'tokenization']:
-        nlp_pipelines = ['sentencizer']
-    elif pipeline == 'pos_tagging':
-        nlp_pipelines = []
-    elif pipeline == 'lemmatization':
-        nlp_pipelines = []
-
-    # Languages with models
-    if lang in spacy_langs:
-        if f'spacy_nlp_{lang}' in main.__dict__:
-            if main.__dict__[f'spacy_nlp_{lang}'].pipe_names != nlp_pipelines:
-                del main.__dict__[f'spacy_nlp_{lang}']
-
-        if f'spacy_nlp_{lang}' not in main.__dict__:
+    if f'spacy_nlp_{lang}' not in main.__dict__:
+        # Languages with models
+        if lang in spacy_langs:
             model = importlib.import_module(spacy_langs[lang])
 
-            main.__dict__[f'spacy_nlp_{lang}'] = model.load()
-    # Languages without models
-    else:
-        # Chinese
-        if lang in ['zho_cn', 'zho_tw']:
-            main.__dict__['spacy_nlp_zho_cn'] = spacy.blank('zh')
-            main.__dict__['spacy_nlp_zho_tw'] = spacy.blank('zh')
-        # Serbian
-        elif lang in ['srp_cyrl', 'srp_latn']:
-            main.__dict__['spacy_nlp_srp_cyrl'] = spacy.blank('sr')
-            main.__dict__['spacy_nlp_srp_latn'] = spacy.blank('sr')
-        else:
-            main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
-    
-    # Sentencizer
-    if 'sentencizer' in nlp_pipelines:
-        nlp = main.__dict__[f'spacy_nlp_{lang}']
+            main.__dict__[f'spacy_nlp_{lang}'] = model.load(disable = ['parser', 'ner'])
+            # Add sentencizer
+            main.__dict__[f'spacy_nlp_{lang}'].enable_pipe('senter')
 
-        if 'sentencizer' not in nlp.pipe_names:
-            nlp.add_pipe('sentencizer')
+        # Languages without models
+        else:
+            # Chinese
+            if lang == 'zho_cn':
+                main.__dict__['spacy_nlp_zho_cn'] = spacy.blank('zh')
+                # Add sentencizer
+                main.__dict__['spacy_nlp_zho_cn'].add_pipe('sentencizer')
+            elif lang == 'zho_tw':
+                main.__dict__['spacy_nlp_zho_tw'] = spacy.blank('zh')
+                # Add sentencizer
+                main.__dict__['spacy_nlp_zho_tw'].add_pipe('sentencizer')
+            # Serbian
+            elif lang == 'srp_cyrl':
+                main.__dict__['spacy_nlp_srp_cyrl'] = spacy.blank('sr')
+                # Add sentencizer
+                main.__dict__['spacy_nlp_srp_cyrl'].add_pipe('sentencizer')
+            elif lang == 'srp_latn':
+                main.__dict__['spacy_nlp_srp_latn'] = spacy.blank('sr')
+                # Add sentencizer
+                main.__dict__['spacy_nlp_srp_latn'].add_pipe('sentencizer')
+            else:
+                main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
+                # Add sentencizer
+                main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer')
     
 def init_sentence_tokenizers(main, lang, sentence_tokenizer = 'default'):
     if lang not in main.settings_global['sentence_tokenizers']:
@@ -232,7 +227,7 @@ def init_sentence_tokenizers(main, lang, sentence_tokenizer = 'default'):
 
     # spaCy
     if 'spaCy' in sentence_tokenizer:
-        init_spacy_models(main, lang, pipeline = 'sentence_tokenization')
+        init_spacy_models(main, lang)
 
 def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
     if lang not in main.settings_global['word_tokenizers']:
@@ -264,35 +259,18 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
             main.__dict__[f'sacremoses_moses_tokenizer_{lang}'] = sacremoses.MosesTokenizer(lang = wl_conversion.to_iso_639_1(main, lang))
     # spaCy
     elif 'spaCy' in word_tokenizer:
-        init_spacy_models(main, lang, pipeline = 'word_tokenization')
+        init_spacy_models(main, lang)
     # Chinese & Japanese
     elif 'pkuseg' in word_tokenizer:
         if 'pkuseg_word_tokenizer' not in main.__dict__:
             main.pkuseg_word_tokenizer = pkuseg.pkuseg()
     elif 'Wordless' in word_tokenizer:
-        init_spacy_models(main, 'eng', pipeline = 'word_tokenization')
-        init_spacy_models(main, 'other', pipeline = 'word_tokenization')
+        init_spacy_models(main, 'eng')
+        init_spacy_models(main, 'other')
     # Tibetan
     elif 'botok' in word_tokenizer:
         if 'botok_word_tokenizer' not in main.__dict__:
             main.botok_word_tokenizer = botok.WordTokenizer()
-
-def init_tokenizers(main, lang, word_tokenizer = 'default'):
-    if lang not in main.settings_global['word_tokenizers']:
-        lang = 'other'
-
-    if word_tokenizer == 'default':
-        word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
-
-    # spaCy
-    if 'spaCy' in word_tokenizer:
-        init_spacy_models(main, lang, pipeline = 'tokenization')
-    # Chinese & Japanese
-    elif 'Wordless' in word_tokenizer:
-        init_spacy_models(main, 'eng', pipeline = 'tokenization')
-        init_spacy_models(main, 'other', pipeline = 'tokenization')
-    else:
-        init_word_tokenizers(main, lang, word_tokenizer = word_tokenizer)
 
 def init_word_detokenizers(main, lang, word_detokenizer = 'default'):
     if lang not in main.settings_global['word_detokenizers']:
@@ -315,7 +293,7 @@ def init_pos_taggers(main, lang, pos_tagger = 'default'):
 
     # spaCy
     if 'spaCy' in pos_tagger:
-        init_spacy_models(main, lang, pipeline = 'pos_tagging')
+        init_spacy_models(main, lang)
     # Russian & Ukrainian
     elif pos_tagger == main.tr('pymorphy2 - Morphological Analyzer'):
         if lang == 'rus':
@@ -326,8 +304,8 @@ def init_pos_taggers(main, lang, pos_tagger = 'default'):
                 main.pymorphy2_morphological_analyzer_ukr = pymorphy2.MorphAnalyzer(lang = 'uk')
     # Chinese & Japanese
     elif lang in ['zho_cn', 'zho_tw', 'jpn']:
-        init_spacy_models(main, 'eng', pipeline = 'pos_tagging')
-        init_spacy_models(main, 'other', pipeline = 'pos_tagging')
+        init_spacy_models(main, 'eng')
+        init_spacy_models(main, 'other')
 
 def init_lemmatizers(main, lang, lemmatizer = 'default'):
     if lang in main.settings_global['lemmatizers']:
@@ -336,7 +314,7 @@ def init_lemmatizers(main, lang, lemmatizer = 'default'):
     
     # spaCy
     if 'spaCy' in lemmatizer:
-        init_spacy_models(main, lang, pipeline = 'lemmatization')
+        init_spacy_models(main, lang)
     # Russian & Ukrainian
     elif lemmatizer == main.tr('pymorphy2 - Morphological Analyzer'):
         if lang == 'rus':
