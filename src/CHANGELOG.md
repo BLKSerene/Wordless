@@ -39,6 +39,7 @@
 - Dependencies: Upgrade NLTK to 3.6.2
 - Dependencies: Upgrade PyQt to 5.15.4
 - Dependencies: Upgrade PyThaiNLP to 2.3.1
+- Dependencies: Upgrade Python 3.8.10
 - Dependencies: Upgrade python-docx to 0.8.11
 - Dependencies: Upgrade Sacremoses to 0.0.45
 - Dependencies: Upgrade spaCy to 3.0.6
