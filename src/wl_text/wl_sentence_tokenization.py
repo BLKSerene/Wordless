@@ -77,7 +77,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
         sentences = nltk.sent_tokenize(text, language = lang_texts[lang])
     # spaCy
-    elif sentence_tokenizer == main.tr('spaCy - Sentencizer'):
+    elif 'spaCy' in sentence_tokenizer:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
 
