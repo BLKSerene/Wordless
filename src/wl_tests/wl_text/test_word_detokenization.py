@@ -53,7 +53,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         print(text)
 
     if lang == 'asm':
-        assert text == 'অসমীয়া ভাষা হৈছে সকলোতকৈ পূৰ্বীয় ভাৰতীয়-আৰ্য ভাষা ।'
+        assert text == 'অসমীয়াভাষা হৈছে সকলোতকৈ পূৰ্বীয় ভাৰতীয়-আৰ্য ভাষা ।'
     elif lang == 'ben':
         assert text == 'বাংলা ভাষা (বাঙলা, বাঙ্গলা, তথা বাঙ্গালা নামগুলোতেও পরিচিত) একটি ইন্দো - আর্য ভাষা, যা দক্ষিণ এশিয়ার বাঙালি জাতির প্রধান কথ্য ও লেখ্য ভাষা ।'
     elif lang == 'cat':
@@ -109,7 +109,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
     elif lang == 'mar':
         assert text == 'मराठीभाषा ही इंडो - युरोपीय भाषाकुलातील एक भाषा आहे.'
     elif lang == 'mni':
-        assert text == 'ꯃꯤꯇꯩꯂꯣꯟꯍꯥꯏꯕꯁꯤꯏꯟꯗꯤꯌꯥ ꯑꯋꯥꯡ-ꯅꯣꯡꯄꯣꯛꯇ ꯂꯩꯕ ꯃꯅꯤꯄꯨꯔꯗ ꯃꯔꯨꯑꯣꯏꯅ ꯉꯥꯡꯅꯕ ꯇꯤꯕꯦꯇꯣ-ꯕꯔꯃꯟ ꯀꯥꯡꯂꯨꯞꯇ ꯆꯤꯡꯕ ꯂꯣꯟ ꯑꯃꯅꯤ ꯫ ꯚꯥꯔꯠ ꯂꯩꯉꯥꯛꯅꯥ ꯁꯛꯈꯪꯂꯕ ꯂꯣꯟ ꯲꯲ ꯁꯤꯡꯒꯤ ꯃꯅꯨꯡꯗ ꯃꯤꯇꯩꯂꯣꯟꯁꯤꯁꯨ ꯑꯃꯅꯤ ꯫ ꯃꯤꯇꯩꯂꯣꯟ ꯑꯁꯤ ꯏꯟꯗꯤꯌꯥꯒꯤ ꯁ ꯭ ꯇꯦꯠ ꯑꯣꯏꯔꯤꯕ ꯑꯁꯥꯝ ꯑꯃꯁꯨꯡ ꯇ ꯭ ꯔꯤꯄꯨꯔꯥ ꯑꯃꯗꯤ ꯑꯇꯩ ꯂꯩꯕꯥꯛꯁꯤꯡꯗ ꯍꯥꯏꯕꯗꯤꯕꯥꯡꯂꯥꯗꯦꯁ ꯑꯃꯁꯨꯡ ꯑꯋꯥꯗꯁꯨ ꯉꯥꯡꯅꯩ ꯫ ꯏꯪ ꯀꯨꯝꯖ ꯲꯰꯱꯱ ꯒꯤ ꯃꯤꯀꯣꯛ ꯊꯤꯕꯗ ꯃꯤꯇꯩꯂꯣꯟꯕꯨꯏꯃꯥꯂꯣꯟ ꯑꯣꯢꯅ ꯉꯥꯡꯕꯒꯤ ꯃꯤꯁꯤꯡ ꯂꯤꯆꯥ ꯱꯸ ꯃꯨꯛ ꯁꯨꯢ ꯫'
+        assert text == 'ꯃꯤꯇꯩꯂꯣꯟ ꯍꯥꯏꯕꯁꯤ ꯏꯟꯗꯤꯌꯥ ꯑꯋꯥꯡ-ꯅꯣꯡꯄꯣꯛꯇ ꯂꯩꯕ ꯃꯅꯤꯄꯨꯔꯗꯃꯔꯨꯑꯣꯏꯅ ꯉꯥꯡꯅꯕ ꯇꯤꯕꯦꯇꯣ-ꯕꯔꯃꯟ ꯀꯥꯡꯂꯨꯞꯇ ꯆꯤꯡꯕ ꯂꯣꯟ ꯑꯃꯅꯤ ꯫ ꯚꯥꯔꯠ ꯂꯩꯉꯥꯛꯅꯥ ꯁꯛꯈꯪꯂꯕ ꯂꯣꯟ ꯲꯲ ꯁꯤꯡꯒꯤ ꯃꯅꯨꯡꯗ ꯃꯤꯇꯩꯂꯣꯟꯁꯤꯁꯨ ꯑꯃꯅꯤ ꯫ ꯃꯤꯇꯩꯂꯣꯟ ꯑꯁꯤ ꯏꯟꯗꯤꯌꯥꯒꯤ ꯁ ꯭ ꯇꯦꯠ ꯑꯣꯏꯔꯤꯕ ꯑꯁꯥꯝ ꯑꯃꯁꯨꯡ ꯇ ꯭ ꯔꯤꯄꯨꯔꯥ ꯑꯃꯗꯤ ꯑꯇꯩ ꯂꯩꯕꯥꯛꯁꯤꯡꯗ ꯍꯥꯏꯕꯗꯤꯕꯥꯡꯂꯥꯗꯦꯁ ꯑꯃꯁꯨꯡ ꯑꯋꯥꯗꯁꯨ ꯉꯥꯡꯅꯩ ꯫ ꯏꯪ ꯀꯨꯝꯖ ꯲꯰꯱꯱ ꯒꯤ ꯃꯤꯀꯣꯛ ꯊꯤꯕꯗ ꯃꯤꯇꯩꯂꯣꯟꯕꯨ ꯏꯃꯥꯂꯣꯟ ꯑꯣꯢꯅ ꯉꯥꯡꯕꯒꯤ ꯃꯤꯁꯤꯡ ꯂꯤꯆꯥ ꯱꯸ ꯃꯨꯛ ꯁꯨꯢ ꯫'
     elif lang == 'ori':
         assert text == 'ଓଡ଼ିଆ (ଇଂରାଜୀ ଭାଷାରେ Odia / əˈdiːə / or Oriya / ɒˈriːə /,) ଏକ ଭାରତୀୟ ଭାଷା ଯାହା ଏକ ଇଣ୍ଡୋ-ଇଉରୋପୀୟ ଭାଷାଗୋଷ୍ଠୀ ଅନ୍ତର୍ଗତ ଇଣ୍ଡୋ-ଆର୍ଯ୍ୟ ଭାଷା ।'
     elif lang == 'pol':
@@ -117,7 +117,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
     elif lang == 'por':
         assert text == 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.'
     elif lang == 'pan':
-        assert text == 'ਪੰਜਾਬੀ ਭਾਸ਼ਾ / pʌnˈdʒɑːbi /(ਸ਼ਾਹਮੁਖੀ: ‎ پنجابی ‎) (ਗੁਰਮੁਖੀ: ਪੰਜਾਬੀ) ਪੰਜਾਬ ਦੀ ਭਾਸ਼ਾ, ਜਿਸ ਨੂੰ ਪੰਜਾਬ ਖੇਤਰ ਦੇ ਵਸਨੀਕ ਜਾਂ ਸੰਬੰਧਿਤ ਲੋਕ ਬੋਲਦੇ ਹਨ । [1]'
+        assert text == 'ਪੰਜਾਬੀ ਭਾਸ਼ਾ / pʌnˈdʒɑːbi /(ਸ਼ਾਹਮੁਖੀ:‎ پنجابی ‎) (ਗੁਰਮੁਖੀ: ਪੰਜਾਬੀ) ਪੰਜਾਬ ਦੀ ਭਾਸ਼ਾ, ਜਿਸ ਨੂੰ ਪੰਜਾਬ ਖੇਤਰ ਦੇ ਵਸਨੀਕ ਜਾਂ ਸੰਬੰਧਿਤ ਲੋਕ ਬੋਲਦੇ ਹਨ । [1]'
     elif lang == 'ron':
         assert text == 'Limba română este o limbă indo-europeană, din grupul italic și din subgrupul oriental al limbilor romanice.'
     elif lang == 'rus':

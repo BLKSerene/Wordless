@@ -15,7 +15,7 @@ on: push
 
 jobs:
   build-windows:
-    runs-on: windows-2019
+    runs-on: windows-2016
 
     steps:
     - uses: actions/checkout@v2
@@ -38,14 +38,14 @@ jobs:
       run: |
         cd src
 
-        pytest --full-trace wl_tests/wl_text/test_sentence_tokenization.py
-        pytest --full-trace wl_tests/wl_text/test_word_tokenization.py
-        pytest --full-trace wl_tests/wl_text/test_word_detokenization.py
-        pytest --full-trace wl_tests/wl_text/test_pos_tagging.py
-        pytest --full-trace wl_tests/wl_text/test_lemmatization.py
-        pytest --full-trace wl_tests/wl_text/test_stop_word_lists.py
+        pytest wl_tests/wl_text/test_sentence_tokenization.py
+        pytest wl_tests/wl_text/test_word_tokenization.py
+        pytest wl_tests/wl_text/test_word_detokenization.py
+        pytest wl_tests/wl_text/test_pos_tagging.py
+        pytest wl_tests/wl_text/test_lemmatization.py
+        pytest wl_tests/wl_text/test_stop_word_lists.py
         
-        pytest --full-trace --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/wl_text/test_stop_word_lists.py
+        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/wl_text/test_stop_word_lists.py
 
   build-macos:
     runs-on: macos-10.15
@@ -79,18 +79,18 @@ jobs:
     - name: Run Tests
       run: |
         cd src
+
+        pytest wl_tests/wl_text/test_sentence_tokenization.py
+        pytest wl_tests/wl_text/test_word_tokenization.py
+        pytest wl_tests/wl_text/test_word_detokenization.py
+        pytest wl_tests/wl_text/test_pos_tagging.py
+        pytest wl_tests/wl_text/test_lemmatization.py
+        pytest wl_tests/wl_text/test_stop_word_lists.py
         
-        pytest --full-trace wl_tests/wl_text/test_sentence_tokenization.py
-        pytest --full-trace wl_tests/wl_text/test_word_tokenization.py
-        pytest --full-trace wl_tests/wl_text/test_word_detokenization.py
-        pytest --full-trace wl_tests/wl_text/test_pos_tagging.py
-        pytest --full-trace wl_tests/wl_text/test_lemmatization.py
-        pytest --full-trace wl_tests/wl_text/test_stop_word_lists.py
-        
-        pytest --full-trace --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/wl_text/test_stop_word_lists.py
+        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/wl_text/test_stop_word_lists.py
 
   build-linux:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-18.04
 
     steps:
     - uses: actions/checkout@v2
@@ -114,11 +114,11 @@ jobs:
       run: |
         cd src
 
-        pytest --full-trace wl_tests/wl_text/test_sentence_tokenization.py
-        pytest --full-trace wl_tests/wl_text/test_word_tokenization.py
-        pytest --full-trace wl_tests/wl_text/test_word_detokenization.py
-        pytest --full-trace wl_tests/wl_text/test_pos_tagging.py
-        pytest --full-trace wl_tests/wl_text/test_lemmatization.py
-        pytest --full-trace wl_tests/wl_text/test_stop_word_lists.py
+        pytest wl_tests/wl_text/test_sentence_tokenization.py
+        pytest wl_tests/wl_text/test_word_tokenization.py
+        pytest wl_tests/wl_text/test_word_detokenization.py
+        pytest wl_tests/wl_text/test_pos_tagging.py
+        pytest wl_tests/wl_text/test_lemmatization.py
+        pytest wl_tests/wl_text/test_stop_word_lists.py
         
-        pytest --full-trace --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/wl_text/test_stop_word_lists.py
+        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/wl_text/test_stop_word_lists.py --ignore=wl_tests/test_overview.py
