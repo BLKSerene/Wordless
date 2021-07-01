@@ -361,17 +361,17 @@ def init_settings_global(main):
 
             'dan': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentence Recognizer')
             ],
 
             'nld': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentence Recognizer')
             ],
 
             'eng': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer'),
+                main.tr('spaCy - Sentence Recognizer'),
                 main.tr('syntok - Sentence Segmenter')
             ],
 
@@ -387,18 +387,18 @@ def init_settings_global(main):
 
             'fra': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentence Recognizer')
             ],
 
             'deu': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer'),
+                main.tr('spaCy - Sentence Recognizer'),
                 main.tr('syntok - Sentence Segmenter')
             ],
 
             'ell': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentence Recognizer')
             ],
 
             'guj': [
@@ -432,7 +432,7 @@ def init_settings_global(main):
 
             'ita': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentence Recognizer')
             ],
 
             'jpn': [
@@ -456,7 +456,7 @@ def init_settings_global(main):
             ],
 
             'lit': [
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentence Recognizer')
             ],
 
             'ltz': [
@@ -481,7 +481,7 @@ def init_settings_global(main):
 
             'nob': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentence Recognizer')
             ],
 
             'nno': [
@@ -494,22 +494,22 @@ def init_settings_global(main):
 
             'pol': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentence Recognizer')
             ],
 
             'por': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentence Recognizer')
             ],
 
             'ron': [
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentence Recognizer')
             ],
 
             'rus': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
                 main.tr('razdel - Russian Sentenizer'),
-                main.tr('spaCy - Sentencizer')
+                main.tr('spaCy - Sentence Recognizer')
             ],
 
             'san': [
@@ -539,7 +539,7 @@ def init_settings_global(main):
 
             'spa': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer'),
+                main.tr('spaCy - Sentence Recognizer'),
                 main.tr('syntok - Sentence Segmenter')
             ],
 
@@ -603,7 +603,7 @@ def init_settings_global(main):
 
             'other': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer'),
+                main.tr('spaCy - Sentence Recognizer'),
                 main.tr('syntok - Sentence Segmenter')
             ]
         },
