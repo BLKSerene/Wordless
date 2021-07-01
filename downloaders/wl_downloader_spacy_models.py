@@ -23,6 +23,7 @@ langs = [
     ['Greek'           , 'ell', 'el'],
     ['Italian'         , 'ita', 'it'],
     ['Lithuanian'      , 'lit', 'lt'],
+    ['Macedonian'      , 'mkd', 'mk'],
     ['Norwegian Bokmål', 'nob', 'nb'],
     ['Polish'          , 'pol', 'pl'],
     ['Portuguese'      , 'por', 'pt'],
@@ -39,10 +40,12 @@ model_name_deu = 'core_news_sm'
 model_name_ell = 'core_news_sm'
 model_name_ita = 'core_news_sm'
 model_name_lit = 'core_news_sm'
+model_name_mkd = 'core_news_sm'
 model_name_nob = 'core_news_sm'
 model_name_pol = 'core_news_sm'
 model_name_por = 'core_news_sm'
 model_name_ron = 'core_news_sm'
+model_name_rus = 'core_news_sm'
 model_name_spa = 'core_news_sm'
 
 model_ver_dan = '3.0.0'
@@ -53,10 +56,12 @@ model_ver_deu = '3.0.0'
 model_ver_ell = '3.0.0'
 model_ver_ita = '3.0.0'
 model_ver_lit = '3.0.0'
+model_ver_mkd = '3.0.0'
 model_ver_nob = '3.0.0'
 model_ver_pol = '3.0.0'
 model_ver_por = '3.0.0'
 model_ver_ron = '3.0.0'
+model_ver_rus = '3.0.0'
 model_ver_spa = '3.0.0'
 
 # Check updates

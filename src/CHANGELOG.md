@@ -18,6 +18,7 @@
 - Utils: Add PyThaiNLP’s perceptron tagger (LST20)
 - Utils: Add spaCy’s Amharic, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana word tokenizers
 - Utils: Add spaCy’s Amharic, Korean, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana stop word lists
+- Utils: Add spaCy’s Macedonian POS tagger and lemmatizer
 - Utils: Add spaCy’s Russian POS tagger and lemmatizer
 - Utils: Add spaCy’s sentence recognizer
 - Work Area: Add Concordancer (Parallel Mode)
