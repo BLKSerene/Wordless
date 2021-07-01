@@ -174,6 +174,7 @@ def init_spacy_models(main, lang):
         'ell': 'el_core_news_sm',
         'ita': 'it_core_news_sm',
         'lit': 'lt_core_news_sm',
+        'mkd': 'mk_core_news_sm',
         'nob': 'nb_core_news_sm',
         'pol': 'pl_core_news_sm',
         'por': 'pt_core_news_sm',
