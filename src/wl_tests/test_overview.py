@@ -44,6 +44,8 @@ def test_overview():
     )
     worker_overview_table.run()
 
+    main.app.quit()
+
     print(f'Testing of Overview has been completed! (In {round(time.time() - time_start, 2)} seconds)')
 
 def update_gui(texts_stats_files):
