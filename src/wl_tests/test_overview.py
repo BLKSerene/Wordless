@@ -48,7 +48,7 @@ def test_overview():
 
     print(f'Testing of Overview has been completed! (In {round(time.time() - time_start, 2)} seconds)')
 
-def update_gui(texts_stats_files):
+def update_gui(error_msg, texts_stats_files):
     count_tokens_lens = []
     count_sentences_lens = []
 
@@ -77,6 +77,14 @@ def update_gui(texts_stats_files):
         count_sentences_lens.append(collections.Counter(len_sentences))
 
         # Data validation
+        assert len_paras_in_sentence
+        assert len_paras_in_token
+        assert len_sentences
+        assert len_tokens
+        assert len_types
+        assert ttr
+        assert sttr
+
         assert numpy.mean(len_paras_in_sentence) == count_sentences / count_paras
         assert numpy.mean(len_paras_in_token) == count_tokens / count_paras
         assert numpy.mean(len_sentences) == count_tokens / count_sentences
