@@ -23,7 +23,7 @@ import nltk
 import numpy
 
 from wl_checking import wl_checking_file
-from wl_dialogs import wl_dialog_misc, wl_msg_box
+from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
 from wl_text import wl_matching, wl_text, wl_text_utils, wl_token_processing, wl_word_detokenization
 from wl_utils import wl_misc, wl_sorting, wl_threading
@@ -599,256 +599,260 @@ class Wrapper_Ngram(wl_layout.Wl_Wrapper):
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
 class Wl_Worker_Ngram(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(dict, dict, dict)
+    worker_done = pyqtSignal(str, dict, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)
 
+        self.error_msg = ''
         self.ngrams_freq_files = []
         self.ngrams_stats_files = []
         self.ngrams_text = {}
 
     def run(self):
-        texts = []
+        try:
+            texts = []
 
-        settings = self.main.settings_custom['ngram']
+            settings = self.main.settings_custom['ngram']
 
-        ngram_size_min = settings['generation_settings']['ngram_size_min']
-        ngram_size_max = settings['generation_settings']['ngram_size_max']
-        allow_skipped_tokens = settings['generation_settings']['allow_skipped_tokens']
-        allow_skipped_tokens_num = settings['generation_settings']['allow_skipped_tokens_num']
+            ngram_size_min = settings['generation_settings']['ngram_size_min']
+            ngram_size_max = settings['generation_settings']['ngram_size_max']
+            allow_skipped_tokens = settings['generation_settings']['allow_skipped_tokens']
+            allow_skipped_tokens_num = settings['generation_settings']['allow_skipped_tokens_num']
 
-        files = self.main.wl_files.get_selected_files()
+            files = self.main.wl_files.get_selected_files()
 
-        # Frequency
-        for file in files:
-            ngrams = []
+            # Frequency
+            for file in files:
+                ngrams = []
 
-            text = wl_text.Wl_Text(self.main, file)
-            text = wl_token_processing.wl_process_tokens_ngram(
-                text,
-                token_settings = settings['token_settings']
-            )
+                text = wl_text.Wl_Text(self.main, file)
+                text = wl_token_processing.wl_process_tokens_ngram(
+                    text,
+                    token_settings = settings['token_settings']
+                )
 
-            tokens = text.tokens_flat
+                tokens = text.tokens_flat
 
-            search_terms = wl_matching.match_search_terms(
-                self.main, tokens,
-                lang = text.lang,
-                tokenized = text.tokenized,
-                tagged = text.tagged,
-                token_settings = settings['token_settings'],
-                search_settings = settings['search_settings']
-            )
+                search_terms = wl_matching.match_search_terms(
+                    self.main, tokens,
+                    lang = text.lang,
+                    tokenized = text.tokenized,
+                    tagged = text.tagged,
+                    token_settings = settings['token_settings'],
+                    search_settings = settings['search_settings']
+                )
 
-            (search_terms_inclusion,
-             search_terms_exclusion) = wl_matching.match_search_terms_context(
-                self.main, tokens,
-                lang = text.lang,
-                tokenized = text.tokenized,
-                tagged = text.tagged,
-                token_settings = settings['token_settings'],
-                context_settings = settings['context_settings']
-            )
+                (search_terms_inclusion,
+                 search_terms_exclusion) = wl_matching.match_search_terms_context(
+                    self.main, tokens,
+                    lang = text.lang,
+                    tokenized = text.tokenized,
+                    tagged = text.tagged,
+                    token_settings = settings['token_settings'],
+                    context_settings = settings['context_settings']
+                )
 
-            if allow_skipped_tokens:
-                SENTINEL = object()
+                if allow_skipped_tokens:
+                    SENTINEL = object()
 
-                if settings['search_settings']['search_settings']:
-                    if settings['search_settings']['allow_skipped_tokens_within_search_terms']:
-                        for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                            ngrams.extend(nltk.skipgrams(tokens, ngram_size, allow_skipped_tokens))
+                    if settings['search_settings']['search_settings']:
+                        if settings['search_settings']['allow_skipped_tokens_within_search_terms']:
+                            for ngram_size in range(ngram_size_min, ngram_size_max + 1):
+                                ngrams.extend(nltk.skipgrams(tokens, ngram_size, allow_skipped_tokens))
+                        else:
+                            for ngram_size in range(ngram_size_min, ngram_size_max + 1):
+                                for search_term in search_terms:
+                                    len_search_term = len(search_term)
+
+                                    if len_search_term < ngram_size:
+                                        for i, ngram in enumerate(nltk.ngrams(
+                                                                      tokens,
+                                                                      ngram_size + allow_skipped_tokens,
+                                                                      pad_right = True,
+                                                                      right_pad_symbol = SENTINEL
+                                                                  )):
+                                            for j in range(ngram_size + allow_skipped_tokens - len_search_term + 1):
+                                                if ngram[j : j + len_search_term] == search_term:
+                                                    ngram_cur = list(ngram)
+                                                    ngram_cur[j : j + len_search_term] = [ngram_cur[j : j + len_search_term]]
+
+                                                    head = ngram_cur[0]
+                                                    tail = ngram_cur[1:]
+
+                                                    for skip_tail in itertools.combinations(tail, ngram_size - len_search_term):
+                                                        ngram_matched = []
+
+                                                        if type(head) == list:
+                                                            ngram_matched.extend(head)
+                                                        else:
+                                                            ngram_matched.append(head)
+
+                                                        for item in skip_tail:
+                                                            if type(item) == list:
+                                                                ngram_matched.extend(item)
+                                                            else:
+                                                                ngram_matched.append(item)
+
+                                                        if skip_tail and skip_tail[-1] != SENTINEL and len(ngram_matched) == ngram_size:
+                                                            if wl_matching.check_context(
+                                                                i + j, tokens,
+                                                                context_settings = settings['context_settings'],
+                                                                search_terms_inclusion = search_terms_inclusion,
+                                                                search_terms_exclusion = search_terms_exclusion
+                                                            ):
+                                                                ngrams.append(tuple(ngram_matched))
+                                    elif len_search_term == ngram_size:
+                                        for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
+                                            if ngram == search_term:
+                                                if wl_matching.check_context(
+                                                    i, tokens,
+                                                    context_settings = settings['context_settings'],
+                                                    search_terms_inclusion = search_terms_inclusion,
+                                                    search_terms_exclusion = search_terms_exclusion
+                                                ):
+                                                    ngrams.append(ngram)
                     else:
                         for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                            for search_term in search_terms:
-                                len_search_term = len(search_term)
+                            for i, ngram in enumerate(nltk.ngrams(
+                                                          tokens,
+                                                          ngram_size + allow_skipped_tokens,
+                                                          pad_right = True,
+                                                          right_pad_symbol = SENTINEL
+                                                      )):
+                                for j in range(ngram_size + allow_skipped_tokens):
+                                    head = ngram[0]
+                                    tail = ngram[1:]
 
-                                if len_search_term < ngram_size:
-                                    for i, ngram in enumerate(nltk.ngrams(
-                                                                  tokens,
-                                                                  ngram_size + allow_skipped_tokens,
-                                                                  pad_right = True,
-                                                                  right_pad_symbol = SENTINEL
-                                                              )):
-                                        for j in range(ngram_size + allow_skipped_tokens - len_search_term + 1):
-                                            if ngram[j : j + len_search_term] == search_term:
-                                                ngram_cur = list(ngram)
-                                                ngram_cur[j : j + len_search_term] = [ngram_cur[j : j + len_search_term]]
-
-                                                head = ngram_cur[0]
-                                                tail = ngram_cur[1:]
-
-                                                for skip_tail in itertools.combinations(tail, ngram_size - len_search_term):
-                                                    ngram_matched = []
-
-                                                    if type(head) == list:
-                                                        ngram_matched.extend(head)
-                                                    else:
-                                                        ngram_matched.append(head)
-
-                                                    for item in skip_tail:
-                                                        if type(item) == list:
-                                                            ngram_matched.extend(item)
-                                                        else:
-                                                            ngram_matched.append(item)
-
-                                                    if skip_tail and skip_tail[-1] != SENTINEL and len(ngram_matched) == ngram_size:
-                                                        if wl_matching.check_context(
-                                                            i + j, tokens,
-                                                            context_settings = settings['context_settings'],
-                                                            search_terms_inclusion = search_terms_inclusion,
-                                                            search_terms_exclusion = search_terms_exclusion
-                                                        ):
-                                                            ngrams.append(tuple(ngram_matched))
-                                elif len_search_term == ngram_size:
-                                    for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
-                                        if ngram == search_term:
+                                    for skip_tail in tail:
+                                        if skip_tail != SENTINEL:
                                             if wl_matching.check_context(
-                                                i, tokens,
+                                                i + j, tokens,
                                                 context_settings = settings['context_settings'],
                                                 search_terms_inclusion = search_terms_inclusion,
                                                 search_terms_exclusion = search_terms_exclusion
                                             ):
-                                                ngrams.append(ngram)
+                                                ngrams.append((head, skip_tail))
                 else:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                        for i, ngram in enumerate(nltk.ngrams(
-                                                      tokens,
-                                                      ngram_size + allow_skipped_tokens,
-                                                      pad_right = True,
-                                                      right_pad_symbol = SENTINEL
-                                                  )):
-                            for j in range(ngram_size + allow_skipped_tokens):
-                                head = ngram[0]
-                                tail = ngram[1:]
+                        for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
+                            if wl_matching.check_context(
+                                i, tokens,
+                                context_settings = settings['context_settings'],
+                                search_terms_inclusion = search_terms_inclusion,
+                                search_terms_exclusion = search_terms_exclusion
+                            ):
+                                ngrams.append(ngram)
 
-                                for skip_tail in tail:
-                                    if skip_tail != SENTINEL:
-                                        if wl_matching.check_context(
-                                            i + j, tokens,
-                                            context_settings = settings['context_settings'],
-                                            search_terms_inclusion = search_terms_inclusion,
-                                            search_terms_exclusion = search_terms_exclusion
-                                        ):
-                                            ngrams.append((head, skip_tail))
-            else:
-                for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                    for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
-                        if wl_matching.check_context(
-                            i, tokens,
-                            context_settings = settings['context_settings'],
-                            search_terms_inclusion = search_terms_inclusion,
-                            search_terms_exclusion = search_terms_exclusion
-                        ):
-                            ngrams.append(ngram)
+                # Remove n-grams with at least 1 empty token
+                ngrams_freq_file = collections.Counter([ngram for ngram in ngrams if all(ngram)])
 
-            # Remove n-grams with at least 1 empty token
-            ngrams_freq_file = collections.Counter([ngram for ngram in ngrams if all(ngram)])
+                # Filter search terms & search term positions
+                if settings['search_settings']['search_settings']:
+                    ngrams_freq_file_filtered = {}
 
-            # Filter search terms & search term positions
-            if settings['search_settings']['search_settings']:
-                ngrams_freq_file_filtered = {}
+                    if settings['search_settings']['search_term_position_min_no_limit']:
+                        search_term_position_min = 0
+                    else:
+                        search_term_position_min = settings['search_settings']['search_term_position_min'] - 1
 
-                if settings['search_settings']['search_term_position_min_no_limit']:
-                    search_term_position_min = 0
+                    if settings['search_settings']['search_term_position_max_no_limit']:
+                        search_term_position_max = ngram_size_max
+                    else:
+                        search_term_position_max = settings['search_settings']['search_term_position_max'] - 1
+
+                    for search_term in search_terms:
+                        len_search_term = len(search_term)
+
+                        for ngram, freq in ngrams_freq_file.items():
+                            for i in range(search_term_position_min, search_term_position_max + 1):
+                                if ngram[i : i + len_search_term] == search_term:
+                                    ngrams_freq_file_filtered[ngram] = freq
+
+                    self.ngrams_freq_files.append(ngrams_freq_file_filtered)
                 else:
-                    search_term_position_min = settings['search_settings']['search_term_position_min'] - 1
+                    self.ngrams_freq_files.append(ngrams_freq_file)
 
-                if settings['search_settings']['search_term_position_max_no_limit']:
-                    search_term_position_max = ngram_size_max
-                else:
-                    search_term_position_max = settings['search_settings']['search_term_position_max'] - 1
+                # N-grams Text
+                for ngram in ngrams_freq_file:
+                    self.ngrams_text[ngram] = wl_word_detokenization.wl_word_detokenize(
+                        self.main, ngram,
+                        lang = text.lang
+                    )
 
-                for search_term in search_terms:
-                    len_search_term = len(search_term)
+                texts.append(text)
 
-                    for ngram, freq in ngrams_freq_file.items():
-                        for i in range(search_term_position_min, search_term_position_max + 1):
-                            if ngram[i : i + len_search_term] == search_term:
-                                ngrams_freq_file_filtered[ngram] = freq
+            # Total
+            if len(files) > 1:
+                text_total = wl_text.Wl_Text_Blank()
+                text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
-                self.ngrams_freq_files.append(ngrams_freq_file_filtered)
-            else:
-                self.ngrams_freq_files.append(ngrams_freq_file)
-
-            # N-grams Text
-            for ngram in ngrams_freq_file:
-                self.ngrams_text[ngram] = wl_word_detokenization.wl_word_detokenize(
-                    self.main, ngram,
-                    lang = text.lang
+                self.ngrams_freq_files.append(
+                    sum([collections.Counter(ngrams_freq_file)
+                         for ngrams_freq_file in self.ngrams_freq_files],
+                        collections.Counter())
                 )
+                texts.append(text_total)
 
-            texts.append(text)
+            self.progress_updated.emit(self.tr('Processing data ...'))
 
-        # Total
-        if len(files) > 1:
-            text_total = wl_text.Wl_Text_Blank()
-            text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
+            # Dispersion & Adjusted Frequency
+            text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+            text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-            self.ngrams_freq_files.append(
-                sum([collections.Counter(ngrams_freq_file)
-                     for ngrams_freq_file in self.ngrams_freq_files],
-                    collections.Counter())
-            )
-            texts.append(text_total)
+            measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
+            measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
 
-        self.progress_updated.emit(self.tr('Processing data ...'))
+            ngrams_total = self.ngrams_freq_files[-1].keys()
 
-        # Dispersion & Adjusted Frequency
-        text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-        text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+            for text in texts:
+                ngrams_lens = {}
+                ngrams_stats_file = {}
 
-        measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
-        measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
+                if allow_skipped_tokens == 0:
+                    for ngram_size in range(ngram_size_min, ngram_size_max + 1):
+                        ngrams_lens[ngram_size] = list(nltk.ngrams(text.tokens_flat, ngram_size))
+                else:
+                    for ngram_size in range(ngram_size_min, ngram_size_max + 1):
+                        ngrams_lens[ngram_size] = list(nltk.skipgrams(text.tokens_flat, ngram_size, allow_skipped_tokens))
 
-        ngrams_total = self.ngrams_freq_files[-1].keys()
-
-        for text in texts:
-            ngrams_lens = {}
-            ngrams_stats_file = {}
-
-            if allow_skipped_tokens == 0:
-                for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                    ngrams_lens[ngram_size] = list(nltk.ngrams(text.tokens_flat, ngram_size))
-            else:
-                for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                    ngrams_lens[ngram_size] = list(nltk.skipgrams(text.tokens_flat, ngram_size, allow_skipped_tokens))
-
-            # Dispersion
-            number_sections = self.main.settings_custom['measures']['dispersion']['general']['number_sections']
-
-            sections_freq_lens = {}
-
-            for ngram_size, ngram_list in ngrams_lens.items():
-                sections_freq_lens[ngram_size] = [collections.Counter(section)
-                                                  for section in wl_text_utils.to_sections(ngram_list, number_sections)]
-
-            for ngram in ngrams_total:
-                counts = [section_freq[ngram] for section_freq in sections_freq_lens[len(ngram)]]
-
-                ngrams_stats_file[ngram] = [measure_dispersion(counts)]
-
-            # Adjusted Frequency
-            if not self.main.settings_custom['measures']['adjusted_freq']['general']['use_same_settings_dispersion']:
-                number_sections = self.main.settings_custom['measures']['adjusted_freq']['general']['number_sections']
+                # Dispersion
+                number_sections = self.main.settings_custom['measures']['dispersion']['general']['number_sections']
 
                 sections_freq_lens = {}
 
-                for ngram_size, ngrams in ngrams_lens.items():
+                for ngram_size, ngram_list in ngrams_lens.items():
                     sections_freq_lens[ngram_size] = [collections.Counter(section)
-                                                      for section in wl_text_utils.to_sections(ngrams, number_sections)]
+                                                      for section in wl_text_utils.to_sections(ngram_list, number_sections)]
 
-            for ngram in ngrams_total:
-                counts = [section_freq[ngram] for
-                          section_freq in sections_freq_lens[len(ngram)]]
+                for ngram in ngrams_total:
+                    counts = [section_freq[ngram] for section_freq in sections_freq_lens[len(ngram)]]
 
-                ngrams_stats_file[ngram].append(measure_adjusted_freq(counts))
+                    ngrams_stats_file[ngram] = [measure_dispersion(counts)]
 
-            self.ngrams_stats_files.append(ngrams_stats_file)
+                # Adjusted Frequency
+                if not self.main.settings_custom['measures']['adjusted_freq']['general']['use_same_settings_dispersion']:
+                    number_sections = self.main.settings_custom['measures']['adjusted_freq']['general']['number_sections']
 
-        if len(files) == 1:
-            self.ngrams_freq_files *= 2
-            self.ngrams_stats_files *= 2
+                    sections_freq_lens = {}
+
+                    for ngram_size, ngrams in ngrams_lens.items():
+                        sections_freq_lens[ngram_size] = [collections.Counter(section)
+                                                          for section in wl_text_utils.to_sections(ngrams, number_sections)]
+
+                for ngram in ngrams_total:
+                    counts = [section_freq[ngram] for
+                              section_freq in sections_freq_lens[len(ngram)]]
+
+                    ngrams_stats_file[ngram].append(measure_adjusted_freq(counts))
+
+                self.ngrams_stats_files.append(ngrams_stats_file)
+
+            if len(files) == 1:
+                self.ngrams_freq_files *= 2
+                self.ngrams_stats_files *= 2
+        except Exception as e:
+            self.error_msg = repr(e)
 
 class Wl_Worker_Ngram_Table(Wl_Worker_Ngram):
     def run(self):
@@ -858,9 +862,12 @@ class Wl_Worker_Ngram_Table(Wl_Worker_Ngram):
 
         time.sleep(0.1)
 
-        self.worker_done.emit(wl_misc.merge_dicts(self.ngrams_freq_files),
-                              wl_misc.merge_dicts(self.ngrams_stats_files),
-                              self.ngrams_text)
+        self.worker_done.emit(
+            self.error_msg,
+            wl_misc.merge_dicts(self.ngrams_freq_files),
+            wl_misc.merge_dicts(self.ngrams_stats_files),
+            self.ngrams_text
+        )
 
 class Wl_Worker_Ngram_Fig(Wl_Worker_Ngram):
     def run(self):
@@ -870,128 +877,136 @@ class Wl_Worker_Ngram_Fig(Wl_Worker_Ngram):
 
         time.sleep(0.1)
 
-        self.worker_done.emit(wl_misc.merge_dicts(self.ngrams_freq_files),
-                              wl_misc.merge_dicts(self.ngrams_stats_files),
-                              self.ngrams_text)
+        self.worker_done.emit(
+            self.error_msg,
+            wl_misc.merge_dicts(self.ngrams_freq_files),
+            wl_misc.merge_dicts(self.ngrams_stats_files),
+            self.ngrams_text
+        )
 
 @wl_misc.log_timing
 def generate_table(main, table):
-    def update_gui(ngrams_freq_files, ngrams_stats_files, ngrams_text):
-        if ngrams_freq_files:
-            table.clear_table()
-            
-            table.settings = main.settings_custom
+    def update_gui(error_msg, ngrams_freq_files, ngrams_stats_files, ngrams_text):
+        if not error_msg:
+            if ngrams_freq_files:
+                table.clear_table()
+                
+                table.settings = main.settings_custom
 
-            text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-            text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+                text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+                text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-            text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-            text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
+                text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
+                text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
-            # Insert columns (files)
-            for i, file in enumerate(files):
+                # Insert columns (files)
+                for i, file in enumerate(files):
+                    table.insert_col(table.columnCount() - 2,
+                                     main.tr(f'[{file["name"]}]\nFrequency'),
+                                     is_int = True, is_cumulative = True, is_breakdown = True)
+                    table.insert_col(table.columnCount() - 2,
+                                     main.tr(f'[{file["name"]}]\nFrequency %'),
+                                     is_pct = True, is_cumulative = True, is_breakdown = True)
+
+                    table.insert_col(table.columnCount() - 2,
+                                     main.tr(f'[{file["name"]}]\n{text_dispersion}'),
+                                     is_float = True, is_breakdown = True)
+
+                    table.insert_col(table.columnCount() - 2,
+                                     main.tr(f'[{file["name"]}]\n{text_adjusted_freq}'),
+                                     is_float = True, is_breakdown = True)
+
+                # Insert columns (total)
                 table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{file["name"]}]\nFrequency'),
-                                 is_int = True, is_cumulative = True, is_breakdown = True)
+                                 main.tr('Total\nFrequency'),
+                                 is_int = True, is_cumulative = True)
                 table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{file["name"]}]\nFrequency %'),
-                                 is_pct = True, is_cumulative = True, is_breakdown = True)
-
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{file["name"]}]\n{text_dispersion}'),
-                                 is_float = True, is_breakdown = True)
+                                 main.tr('Total\nFrequency %'),
+                                 is_pct = True, is_cumulative = True)
 
                 table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{file["name"]}]\n{text_adjusted_freq}'),
-                                 is_float = True, is_breakdown = True)
+                                 main.tr(f'Total\n{text_dispersion}'),
+                                 is_float = True)
 
-            # Insert columns (total)
-            table.insert_col(table.columnCount() - 2,
-                             main.tr('Total\nFrequency'),
-                             is_int = True, is_cumulative = True)
-            table.insert_col(table.columnCount() - 2,
-                             main.tr('Total\nFrequency %'),
-                             is_pct = True, is_cumulative = True)
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr(f'Total\n{text_adjusted_freq}'),
+                                 is_float = True)
 
-            table.insert_col(table.columnCount() - 2,
-                             main.tr(f'Total\n{text_dispersion}'),
-                             is_float = True)
+                # Sort by frequency of the first file
+                table.horizontalHeader().setSortIndicator(
+                    table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')),
+                    Qt.DescendingOrder
+                )
 
-            table.insert_col(table.columnCount() - 2,
-                             main.tr(f'Total\n{text_adjusted_freq}'),
-                             is_float = True)
+                table.blockSignals(True)
+                table.setSortingEnabled(False)
+                table.setUpdatesEnabled(False)
 
-            # Sort by frequency of the first file
-            table.horizontalHeader().setSortIndicator(
-                table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')),
-                Qt.DescendingOrder
-            )
+                cols_freq = table.find_cols(main.tr('\nFrequency'))
+                cols_freq_pct = table.find_cols(main.tr('\nFrequency %'))
 
-            table.blockSignals(True)
-            table.setSortingEnabled(False)
-            table.setUpdatesEnabled(False)
+                for col in cols_freq_pct:
+                    cols_freq.remove(col)
 
-            cols_freq = table.find_cols(main.tr('\nFrequency'))
-            cols_freq_pct = table.find_cols(main.tr('\nFrequency %'))
+                cols_dispersion = table.find_cols(main.tr(f'\n{text_dispersion}'))
+                cols_adjusted_freq = table.find_cols(main.tr(f'\n{text_adjusted_freq}'))
+                col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
+                col_files_found_pct = table.find_col(main.tr('Number of\nFiles Found %'))
 
-            for col in cols_freq_pct:
-                cols_freq.remove(col)
+                freq_totals = numpy.array(list(ngrams_freq_files.values())).sum(axis = 0)
+                len_files = len(files)
 
-            cols_dispersion = table.find_cols(main.tr(f'\n{text_dispersion}'))
-            cols_adjusted_freq = table.find_cols(main.tr(f'\n{text_adjusted_freq}'))
-            col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
-            col_files_found_pct = table.find_col(main.tr('Number of\nFiles Found %'))
+                table.setRowCount(len(ngrams_freq_files))
 
-            freq_totals = numpy.array(list(ngrams_freq_files.values())).sum(axis = 0)
-            len_files = len(files)
+                for i, (ngram, freq_files) in enumerate(wl_sorting.sorted_tokens_freq_files(ngrams_freq_files)):
+                    stats_files = ngrams_stats_files[ngram]
 
-            table.setRowCount(len(ngrams_freq_files))
+                    # Rank
+                    table.set_item_num(i, 0, -1)
 
-            for i, (ngram, freq_files) in enumerate(wl_sorting.sorted_tokens_freq_files(ngrams_freq_files)):
-                stats_files = ngrams_stats_files[ngram]
+                    # N-gram
+                    table.setItem(i, 1, wl_table.Wl_Table_Item(ngrams_text[ngram]))
 
-                # Rank
-                table.set_item_num(i, 0, -1)
+                    table.item(i, 1).text_raw = ngram
 
-                # N-gram
-                table.setItem(i, 1, wl_table.Wl_Table_Item(ngrams_text[ngram]))
+                    # Frequency
+                    for j, freq in enumerate(freq_files):
+                        table.set_item_num(i, cols_freq[j], freq)
+                        table.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
 
-                table.item(i, 1).text_raw = ngram
+                    for j, (dispersion, adjusted_freq) in enumerate(stats_files):
+                        # Dispersion
+                        table.set_item_num(i, cols_dispersion[j], dispersion)
 
-                # Frequency
-                for j, freq in enumerate(freq_files):
-                    table.set_item_num(i, cols_freq[j], freq)
-                    table.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
+                        # Adjusted Frequency
+                        table.set_item_num(i, cols_adjusted_freq[j], adjusted_freq)
 
-                for j, (dispersion, adjusted_freq) in enumerate(stats_files):
-                    # Dispersion
-                    table.set_item_num(i, cols_dispersion[j], dispersion)
+                    # Number of Files Found
+                    num_files_found = len([freq for freq in freq_files[:-1] if freq])
 
-                    # Adjusted Frequency
-                    table.set_item_num(i, cols_adjusted_freq[j], adjusted_freq)
+                    table.set_item_num(i, col_files_found, num_files_found)
+                    table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
 
-                # Number of Files Found
-                num_files_found = len([freq for freq in freq_files[:-1] if freq])
+                table.setSortingEnabled(True)
+                table.setUpdatesEnabled(True)
+                table.blockSignals(False)
 
-                table.set_item_num(i, col_files_found, num_files_found)
-                table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
+                table.toggle_pct()
+                table.toggle_cumulative()
+                table.toggle_breakdown()
+                table.update_ranks()
 
-            table.setSortingEnabled(True)
-            table.setUpdatesEnabled(True)
-            table.blockSignals(False)
+                table.itemChanged.emit(table.item(0, 0))
 
-            table.toggle_pct()
-            table.toggle_cumulative()
-            table.toggle_breakdown()
-            table.update_ranks()
+                wl_msg.wl_msg_generate_table_success(main)
+            else:
+                wl_msg_box.wl_msg_box_no_results(main)
 
-            table.itemChanged.emit(table.item(0, 0))
-
-            wl_msg.wl_msg_generate_table_success(main)
+                wl_msg.wl_msg_generate_table_error(main)
         else:
-            wl_msg_box.wl_msg_box_no_results(main)
+            wl_dialog_error.wl_dialog_error_processing_texts(main, error_msg)
 
-            wl_msg.wl_msg_generate_table_error(main)
+            wl_msg.wl_msg_processing_texts_error(main)
 
     settings = main.settings_custom['ngram']
     files = main.wl_files.get_selected_files()
@@ -1023,58 +1038,63 @@ def generate_table(main, table):
 
 @wl_misc.log_timing
 def generate_fig(main):
-    def update_gui(ngrams_freq_files, ngrams_stats_files, ngrams_text):
-        if ngrams_freq_files:
-            text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-            text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+    def update_gui(error_msg, ngrams_freq_files, ngrams_stats_files, ngrams_text):
+        if not error_msg:
+            if ngrams_freq_files:
+                text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+                text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-            text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-            text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
-            
-            if settings['fig_settings']['use_data'] == main.tr('Frequency'):
-                ngrams_freq_files = {
-                    ngrams_text[ngram]: freqs
-                    for ngram, freqs in ngrams_freq_files.items()
-                }
+                text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
+                text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
+                
+                if settings['fig_settings']['use_data'] == main.tr('Frequency'):
+                    ngrams_freq_files = {
+                        ngrams_text[ngram]: freqs
+                        for ngram, freqs in ngrams_freq_files.items()
+                    }
 
-                wl_fig_freq.wl_fig_freq(
-                    main, ngrams_freq_files,
-                    settings = settings['fig_settings'],
-                    label_x = main.tr('N-gram')
-                )
+                    wl_fig_freq.wl_fig_freq(
+                        main, ngrams_freq_files,
+                        settings = settings['fig_settings'],
+                        label_x = main.tr('N-gram')
+                    )
+                else:
+                    ngrams_stats_files = {
+                        ngrams_text[ngram]: stats
+                        for ngram, stats in ngrams_stats_files.items()
+                    }
+
+                    if settings['fig_settings']['use_data'] == text_dispersion:
+                        ngrams_stat_files = {
+                            ngram: numpy.array(stats_files)[:, 0]
+                            for ngram, stats_files in ngrams_stats_files.items()
+                        }
+
+                        label_y = text_dispersion
+                    elif settings['fig_settings']['use_data'] == text_adjusted_freq:
+                        ngrams_stat_files = {
+                            ngram: numpy.array(stats_files)[:, 1]
+                            for ngram, stats_files in ngrams_stats_files.items()
+                        }
+
+                        label_y = text_adjusted_freq
+
+                    wl_fig_stat.wl_fig_stat(
+                        main, ngrams_stat_files,
+                        settings = settings['fig_settings'],
+                        label_x = main.tr('N-gram'),
+                        label_y = label_y
+                    )
+
+                wl_msg.wl_msg_generate_fig_success(main)
             else:
-                ngrams_stats_files = {
-                    ngrams_text[ngram]: stats
-                    for ngram, stats in ngrams_stats_files.items()
-                }
+                wl_msg_box.wl_msg_box_no_results(main)
 
-                if settings['fig_settings']['use_data'] == text_dispersion:
-                    ngrams_stat_files = {
-                        ngram: numpy.array(stats_files)[:, 0]
-                        for ngram, stats_files in ngrams_stats_files.items()
-                    }
-
-                    label_y = text_dispersion
-                elif settings['fig_settings']['use_data'] == text_adjusted_freq:
-                    ngrams_stat_files = {
-                        ngram: numpy.array(stats_files)[:, 1]
-                        for ngram, stats_files in ngrams_stats_files.items()
-                    }
-
-                    label_y = text_adjusted_freq
-
-                wl_fig_stat.wl_fig_stat(
-                    main, ngrams_stat_files,
-                    settings = settings['fig_settings'],
-                    label_x = main.tr('N-gram'),
-                    label_y = label_y
-                )
-
-            wl_msg.wl_msg_generate_fig_success(main)
+                wl_msg.wl_msg_generate_fig_error(main)
         else:
-            wl_msg_box.wl_msg_box_no_results(main)
+            wl_dialog_error.wl_dialog_error_processing_texts(main, error_msg)
 
-            wl_msg.wl_msg_generate_fig_error(main)
+            wl_msg.wl_msg_processing_texts_error(main)
 
         dialog_progress.accept()
 
