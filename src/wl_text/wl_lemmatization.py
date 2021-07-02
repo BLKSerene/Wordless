@@ -52,7 +52,10 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
         # spaCy
         if 'spaCy' in lemmatizer:
             nlp = main.__dict__[f'spacy_nlp_{lang}']
-            doc = nlp(' '.join(tokens))
+            doc = spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens))
+            
+            for pipe_name in nlp.pipe_names:
+                nlp.get_pipe(pipe_name)(doc)
 
             lemmas = [token.lemma_ for token in doc]
         # English

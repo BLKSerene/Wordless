@@ -169,7 +169,7 @@ def wl_process_tokens_overview(text, token_settings):
 
     return text
 
-def wl_process_tokens_concordancer(text, token_settings):
+def wl_process_tokens_concordancer(text, token_settings, preserve_blank_lines = False):
     main = text.main
     tokens = text.tokens_flat.copy()
 
@@ -204,8 +204,9 @@ def wl_process_tokens_concordancer(text, token_settings):
                         text.tokens_flat.append(token)
 
         # Remove duplicate offsets
-        text.offsets_paras = sorted(set(text.offsets_paras))
-        text.offsets_sentences = sorted(set(text.offsets_sentences))
+        if not preserve_blank_lines:
+            text.offsets_paras = sorted(set(text.offsets_paras))
+            text.offsets_sentences = sorted(set(text.offsets_sentences))
 
         # Check if the first token is a punctuation mark
         if wl_checking_token.is_token_punc(text.tokens_flat[0]):
