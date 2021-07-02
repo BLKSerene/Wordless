@@ -25,7 +25,7 @@ import numpy
 import textblob
 
 from wl_checking import wl_checking_file
-from wl_dialogs import wl_dialog_misc, wl_msg_box
+from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
 from wl_figs import wl_fig
 from wl_text import wl_matching, wl_text, wl_text_utils, wl_token_processing, wl_word_detokenization
 from wl_utils import wl_misc, wl_threading
@@ -568,543 +568,556 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         settings['randomize_outputs'] = self.checkbox_randomize_outputs.isChecked()
 
 class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(list)
+    worker_done = pyqtSignal(str, list)
 
     def run(self):
+        error_msg = ''
         concordance_lines = []
 
-        settings = self.main.settings_custom['concordancer']
-        files = self.main.wl_files.get_selected_files()
+        try:
+            settings = self.main.settings_custom['concordancer']
+            files = self.main.wl_files.get_selected_files()
 
-        self.progress_updated.emit(self.tr('Searching in text ...'))
+            self.progress_updated.emit(self.tr('Searching in text ...'))
 
-        for file in files:
-            text = wl_text.Wl_Text(self.main, file)
+            for file in files:
+                text = wl_text.Wl_Text(self.main, file)
 
-            tokens = wl_token_processing.wl_process_tokens_concordancer(
-                text,
-                token_settings = settings['token_settings']
-            )
+                tokens = wl_token_processing.wl_process_tokens_concordancer(
+                    text,
+                    token_settings = settings['token_settings']
+                )
 
-            search_terms = wl_matching.match_search_terms(
-                self.main, tokens,
-                lang = text.lang,
-                tokenized = text.tokenized,
-                tagged = text.tagged,
-                token_settings = settings['token_settings'],
-                search_settings = settings['search_settings']
-            )
+                search_terms = wl_matching.match_search_terms(
+                    self.main, tokens,
+                    lang = text.lang,
+                    tokenized = text.tokenized,
+                    tagged = text.tagged,
+                    token_settings = settings['token_settings'],
+                    search_settings = settings['search_settings']
+                )
 
-            (search_terms_inclusion,
-             search_terms_exclusion) = wl_matching.match_search_terms_context(
-                self.main, tokens,
-                lang = text.lang,
-                tokenized = text.tokenized,
-                tagged = text.tagged,
-                token_settings = settings['token_settings'],
-                context_settings = settings['context_settings']
-            )
+                (search_terms_inclusion,
+                 search_terms_exclusion) = wl_matching.match_search_terms_context(
+                    self.main, tokens,
+                    lang = text.lang,
+                    tokenized = text.tokenized,
+                    tagged = text.tagged,
+                    token_settings = settings['token_settings'],
+                    context_settings = settings['context_settings']
+                )
 
-            if search_terms:
-                len_search_term_min = min([len(search_term) for search_term in search_terms])
-                len_search_term_max = max([len(search_term) for search_term in search_terms])
-            else:
-                len_search_term_min = 0
-                len_search_term_max = 0
+                if search_terms:
+                    len_search_term_min = min([len(search_term) for search_term in search_terms])
+                    len_search_term_max = max([len(search_term) for search_term in search_terms])
+                else:
+                    len_search_term_min = 0
+                    len_search_term_max = 0
 
-            len_paras = len(text.offsets_paras)
-            len_sentences = len(text.offsets_sentences)
-            len_tokens = len(text.tokens_flat)
+                len_paras = len(text.offsets_paras)
+                len_sentences = len(text.offsets_sentences)
+                len_tokens = len(text.tokens_flat)
 
-            for len_search_term in range(len_search_term_min, len_search_term_max + 1):
-                for i, ngram in enumerate(nltk.ngrams(tokens, len_search_term)):
-                    if (ngram in search_terms and
-                        wl_matching.check_context(
-                            i, tokens,
-                            context_settings = settings['context_settings'],
-                            search_terms_inclusion = search_terms_inclusion,
-                            search_terms_exclusion = search_terms_exclusion)
-                        ):
-                        concordance_line = []
+                for len_search_term in range(len_search_term_min, len_search_term_max + 1):
+                    for i, ngram in enumerate(nltk.ngrams(tokens, len_search_term)):
+                        if (ngram in search_terms and
+                            wl_matching.check_context(
+                                i, tokens,
+                                context_settings = settings['context_settings'],
+                                search_terms_inclusion = search_terms_inclusion,
+                                search_terms_exclusion = search_terms_exclusion)
+                            ):
+                            concordance_line = []
 
-                        # Sentence No.
-                        if text.offsets_sentences[-1] <= i:
-                            no_sentence = len_sentences
-                        else:
-                            for j, i_sentence in enumerate(text.offsets_sentences):
-                                if i_sentence > i:
-                                    no_sentence = j
-
-                                    break
-
-                        # Paragraph No.
-                        if text.offsets_paras[-1] <= i:
-                            no_para = len_paras
-                        else:
-                            for j, i_para in enumerate(text.offsets_paras):
-                                if i_para > i:
-                                    no_para = j
-
-                                    break
-
-                        # Search in Results (Node)
-                        text_search = list(ngram)
-
-                        if not settings['token_settings']['puncs']:
-                            ngram = text.tokens_flat[i : i + len_search_term]
-
-                        node_text = wl_word_detokenization.wl_word_detokenize(self.main, ngram, text.lang)
-                        node_text = wl_text_utils.text_escape(node_text)
-
-                        # Width Unit (Paragraph)
-                        if settings['generation_settings']['width_unit'] == self.tr('Paragraph'):
-                            width_left_para = settings['generation_settings']['width_left_para']
-                            width_right_para = settings['generation_settings']['width_right_para']
-
-                            offset_para_start = text.offsets_paras[max(0, no_para - 1 - width_left_para)]
-
-                            if no_para + width_right_para >= len_paras:
-                                offset_para_end = None
+                            # Sentence No.
+                            if text.offsets_sentences[-1] <= i:
+                                no_sentence = len_sentences
                             else:
-                                offset_para_end = text.offsets_paras[min(no_para + width_right_para, len_paras - 1)]
+                                for j, i_sentence in enumerate(text.offsets_sentences):
+                                    if i_sentence > i:
+                                        no_sentence = j
 
-                            context_left = text.tokens_flat[offset_para_start:i]
-                            context_right = text.tokens_flat[i + len_search_term : offset_para_end]
+                                        break
 
-                            # Search in Results (Left & Right)
-                            if settings['token_settings']['puncs']:
-                                text_search_left = copy.deepcopy(context_left)
-                                text_search_right = copy.deepcopy(context_right)
+                            # Paragraph No.
+                            if text.offsets_paras[-1] <= i:
+                                no_para = len_paras
                             else:
-                                text_search_left = tokens[offset_para_start:i]
-                                text_search_right = tokens[i + len_search_term : offset_para_end]
-                        # Width Unit (Sentence)
-                        elif settings['generation_settings']['width_unit'] == self.tr('Sentence'):
-                            width_left_sentence = settings['generation_settings']['width_left_sentence']
-                            width_right_sentence = settings['generation_settings']['width_right_sentence']
+                                for j, i_para in enumerate(text.offsets_paras):
+                                    if i_para > i:
+                                        no_para = j
 
-                            offset_sentence_start = text.offsets_sentences[max(0, no_sentence - 1 - width_left_sentence)]
+                                        break
 
-                            if no_sentence + width_right_sentence >= len_sentences:
-                                offset_sentence_end = None
-                            else:
-                                offset_sentence_end = text.offsets_sentences[min(no_sentence + width_right_sentence, len_sentences - 1)]
-
-                            context_left = text.tokens_flat[offset_sentence_start:i]
-                            context_right = text.tokens_flat[i + len_search_term : offset_sentence_end]
-
-                            # Search in Results (Left & Right)
-                            if settings['token_settings']['puncs']:
-                                text_search_left = copy.deepcopy(context_left)
-                                text_search_right = copy.deepcopy(context_right)
-                            else:
-                                text_search_left = tokens[offset_sentence_start:i]
-                                text_search_right = tokens[i + len_search_term : offset_sentence_end]
-                        # Width Unit (Token)
-                        elif settings['generation_settings']['width_unit'] == self.tr('Token'):
-                            width_left_token = settings['generation_settings']['width_left_token']
-                            width_right_token = settings['generation_settings']['width_right_token']
-
-                            context_left = text.tokens_flat[max(0, i - width_left_token) : i]
-                            context_right = text.tokens_flat[i + len_search_term : i + len_search_term + width_right_token]
-
-                            # Search in Results (Left & Right)
-                            if settings['token_settings']['puncs']:
-                                text_search_left = copy.deepcopy(context_left)
-                                text_search_right = copy.deepcopy(context_right)
-                            else:
-                                text_search_left = tokens[max(0, i - width_left_token) : i]
-                                text_search_right = tokens[i + len_search_term : i + len_search_term + width_right_token]
-                        # Width Unit (Character)
-                        elif settings['generation_settings']['width_unit'] == self.tr('Character'):
-                            len_context_left = 0
-                            len_context_right = 0
-
-                            context_left = []
-                            context_right = []
-
-                            width_left_char = settings['generation_settings']['width_left_char']
-                            width_right_char = settings['generation_settings']['width_right_char']
-
-                            while len_context_left < width_left_char:
-                                if i - 1 - len(context_left) < 0:
-                                    break
-                                else:
-                                    token_next = tokens[i - 1 - len(context_left)]
-                                    len_token_next = len(token_next)
-
-                                if len_context_left + len_token_next > width_left_char:
-                                    context_left.insert(0, token_next[-(width_left_char - len_context_left):])
-                                else:
-                                    context_left.insert(0, token_next)
-
-                                len_context_left += len_token_next
-
-                            while len_context_right < width_right_char:
-                                if i + 1 + len(context_right) > len(text.tokens_flat) - 1:
-                                    break
-                                else:
-                                    token_next = tokens[i + len_search_term + len(context_right)]
-                                    len_token_next = len(token_next)
-
-                                if len_context_right + len_token_next > width_right_char:
-                                    context_right.append(token_next[: width_right_char - len_context_right])
-                                else:
-                                    context_right.append(token_next)
-
-                                len_context_right += len(token_next)
-
-                            # Search in Results (Left & Right)
-                            text_search_left = copy.deepcopy(context_left)
-                            text_search_right = copy.deepcopy(context_right)
+                            # Search in Results (Node)
+                            text_search = list(ngram)
 
                             if not settings['token_settings']['puncs']:
-                                context_left_first_puncs = text.tokens_flat[i - len(context_left)]
-                                context_right_last_puncs = text.tokens_flat[i + len_search_term + len(context_right) - 1]
-                                context_left_first = ''
-                                context_right_last = ''
+                                ngram = text.tokens_flat[i : i + len_search_term]
 
-                                len_context_left_first = 0
-                                len_context_right_last = 0
+                            node_text = wl_word_detokenization.wl_word_detokenize(self.main, ngram, text.lang)
+                            node_text = wl_text_utils.text_escape(node_text)
 
-                                while len_context_left_first < len(context_left[0]):
-                                    char_next = context_left_first_puncs[-(len(context_left_first) + 1)]
+                            # Width Unit (Paragraph)
+                            if settings['generation_settings']['width_unit'] == self.tr('Paragraph'):
+                                width_left_para = settings['generation_settings']['width_left_para']
+                                width_right_para = settings['generation_settings']['width_right_para']
 
-                                    context_left_first = char_next + context_left_first
+                                offset_para_start = text.offsets_paras[max(0, no_para - 1 - width_left_para)]
 
-                                    if char_next.isalnum():
-                                        len_context_left_first += 1
+                                if no_para + width_right_para >= len_paras:
+                                    offset_para_end = None
+                                else:
+                                    offset_para_end = text.offsets_paras[min(no_para + width_right_para, len_paras - 1)]
 
-                                while len_context_right_last < len(context_right[-1]):
-                                    char_next = context_right_last_puncs[len(context_right_last)]
+                                context_left = text.tokens_flat[offset_para_start:i]
+                                context_right = text.tokens_flat[i + len_search_term : offset_para_end]
 
-                                    context_right_last += char_next
+                                # Search in Results (Left & Right)
+                                if settings['token_settings']['puncs']:
+                                    text_search_left = copy.deepcopy(context_left)
+                                    text_search_right = copy.deepcopy(context_right)
+                                else:
+                                    text_search_left = tokens[offset_para_start:i]
+                                    text_search_right = tokens[i + len_search_term : offset_para_end]
+                            # Width Unit (Sentence)
+                            elif settings['generation_settings']['width_unit'] == self.tr('Sentence'):
+                                width_left_sentence = settings['generation_settings']['width_left_sentence']
+                                width_right_sentence = settings['generation_settings']['width_right_sentence']
 
-                                    if char_next.isalnum():
-                                        len_context_right_last += 1
+                                offset_sentence_start = text.offsets_sentences[max(0, no_sentence - 1 - width_left_sentence)]
 
-                                context_left = ([context_left_first] +
-                                                text.tokens_flat[i - len(context_left) + 1: i])
-                                context_right = (text.tokens_flat[i + len_search_term : i + len_search_term + len(context_right) - 1] +
-                                                 [context_right_last])
+                                if no_sentence + width_right_sentence >= len_sentences:
+                                    offset_sentence_end = None
+                                else:
+                                    offset_sentence_end = text.offsets_sentences[min(no_sentence + width_right_sentence, len_sentences - 1)]
 
-                        context_left = wl_text_utils.text_escape(context_left)
-                        context_right = wl_text_utils.text_escape(context_right)
+                                context_left = text.tokens_flat[offset_sentence_start:i]
+                                context_right = text.tokens_flat[i + len_search_term : offset_sentence_end]
 
-                        context_left_text = wl_word_detokenization.wl_word_detokenize(
-                            self.main, context_left,
-                            lang = text.lang
-                        )
-                        context_right_text = wl_word_detokenization.wl_word_detokenize(
-                            self.main, context_right,
-                            lang = text.lang
-                        )
+                                # Search in Results (Left & Right)
+                                if settings['token_settings']['puncs']:
+                                    text_search_left = copy.deepcopy(context_left)
+                                    text_search_right = copy.deepcopy(context_right)
+                                else:
+                                    text_search_left = tokens[offset_sentence_start:i]
+                                    text_search_right = tokens[i + len_search_term : offset_sentence_end]
+                            # Width Unit (Token)
+                            elif settings['generation_settings']['width_unit'] == self.tr('Token'):
+                                width_left_token = settings['generation_settings']['width_left_token']
+                                width_right_token = settings['generation_settings']['width_right_token']
 
-                        # Left
-                        concordance_line.append([context_left_text, context_left, text_search_left])
-                        # Node
-                        concordance_line.append([node_text, list(ngram), text_search])
-                        # Right
-                        concordance_line.append([context_right_text, context_right, text_search_right])
-                        # Token No.
-                        concordance_line.append([i + 1, len_tokens])
-                        # Sentence No.
-                        concordance_line.append([no_sentence, len_sentences])
-                        # Paragraph No.
-                        concordance_line.append([no_para, len_paras])
-                        # File
-                        concordance_line.append(file['name'])
-                        # Sentiment
-                        if text.lang == 'eng':
-                            sentiment = textblob.TextBlob(context_left_text + node_text + context_right_text).sentiment.polarity
-                            concordance_line.append(f"{sentiment:.{self.main.settings_custom['data']['precision_decimal']}}")
-                        else:
-                            concordance_line.append('N/A')
+                                context_left = text.tokens_flat[max(0, i - width_left_token) : i]
+                                context_right = text.tokens_flat[i + len_search_term : i + len_search_term + width_right_token]
 
-                        concordance_lines.append(concordance_line)
+                                # Search in Results (Left & Right)
+                                if settings['token_settings']['puncs']:
+                                    text_search_left = copy.deepcopy(context_left)
+                                    text_search_right = copy.deepcopy(context_right)
+                                else:
+                                    text_search_left = tokens[max(0, i - width_left_token) : i]
+                                    text_search_right = tokens[i + len_search_term : i + len_search_term + width_right_token]
+                            # Width Unit (Character)
+                            elif settings['generation_settings']['width_unit'] == self.tr('Character'):
+                                len_context_left = 0
+                                len_context_right = 0
 
-        # Sampling - First n Lines
-        if settings['generation_settings']['sampling_method'] == self.tr('First n Lines'):
-            sample_size = settings['generation_settings']['sample_size_first_n_lines']
+                                context_left = []
+                                context_right = []
 
-            concordance_lines = concordance_lines[:sample_size]
-        # Sampling - Systematic (Fixed Interval)
-        elif settings['generation_settings']['sampling_method'] == self.tr('Systematic (Fixed Interval)'):
-            sampling_interval = settings['generation_settings']['sample_size_systematic_fixed_interval']
+                                width_left_char = settings['generation_settings']['width_left_char']
+                                width_right_char = settings['generation_settings']['width_right_char']
 
-            concordance_lines = [line
-                                 for i, line in enumerate(concordance_lines)
-                                 if i % sampling_interval == 0]
-        # Sampling - Systematic (Fixed Size)
-        elif settings['generation_settings']['sampling_method'] == self.tr('Systematic (Fixed Size)'):
-            sample_size = settings['generation_settings']['sample_size_systematic_fixed_size']
-            sampling_interval = len(concordance_lines) // sample_size
+                                while len_context_left < width_left_char:
+                                    if i - 1 - len(context_left) < 0:
+                                        break
+                                    else:
+                                        token_next = tokens[i - 1 - len(context_left)]
+                                        len_token_next = len(token_next)
 
-            if sampling_interval > 0:
-                concordance_lines_sampled = []
+                                    if len_context_left + len_token_next > width_left_char:
+                                        context_left.insert(0, token_next[-(width_left_char - len_context_left):])
+                                    else:
+                                        context_left.insert(0, token_next)
 
-                for i, line in enumerate(concordance_lines):
-                    if i % sampling_interval == 0:
-                        concordance_lines_sampled.append(line)
+                                    len_context_left += len_token_next
 
-                    if len(concordance_lines_sampled) >= sample_size:
-                        break
+                                while len_context_right < width_right_char:
+                                    if i + 1 + len(context_right) > len(text.tokens_flat) - 1:
+                                        break
+                                    else:
+                                        token_next = tokens[i + len_search_term + len(context_right)]
+                                        len_token_next = len(token_next)
 
-                concordance_lines = concordance_lines_sampled
-        # Sampling - Random
-        elif settings['generation_settings']['sampling_method'] == self.tr('Random'):
-            sample_size = settings['generation_settings']['sample_size_random']
+                                    if len_context_right + len_token_next > width_right_char:
+                                        context_right.append(token_next[: width_right_char - len_context_right])
+                                    else:
+                                        context_right.append(token_next)
 
-            if sample_size < len(concordance_lines):
-                concordance_lines_sampled = random.sample(concordance_lines, k = sample_size)
+                                    len_context_right += len(token_next)
+
+                                # Search in Results (Left & Right)
+                                text_search_left = copy.deepcopy(context_left)
+                                text_search_right = copy.deepcopy(context_right)
+
+                                if not settings['token_settings']['puncs']:
+                                    context_left_first_puncs = text.tokens_flat[i - len(context_left)]
+                                    context_right_last_puncs = text.tokens_flat[i + len_search_term + len(context_right) - 1]
+                                    context_left_first = ''
+                                    context_right_last = ''
+
+                                    len_context_left_first = 0
+                                    len_context_right_last = 0
+
+                                    while len_context_left_first < len(context_left[0]):
+                                        char_next = context_left_first_puncs[-(len(context_left_first) + 1)]
+
+                                        context_left_first = char_next + context_left_first
+
+                                        if char_next.isalnum():
+                                            len_context_left_first += 1
+
+                                    while len_context_right_last < len(context_right[-1]):
+                                        char_next = context_right_last_puncs[len(context_right_last)]
+
+                                        context_right_last += char_next
+
+                                        if char_next.isalnum():
+                                            len_context_right_last += 1
+
+                                    context_left = ([context_left_first] +
+                                                    text.tokens_flat[i - len(context_left) + 1: i])
+                                    context_right = (text.tokens_flat[i + len_search_term : i + len_search_term + len(context_right) - 1] +
+                                                     [context_right_last])
+
+                            context_left = wl_text_utils.text_escape(context_left)
+                            context_right = wl_text_utils.text_escape(context_right)
+
+                            context_left_text = wl_word_detokenization.wl_word_detokenize(
+                                self.main, context_left,
+                                lang = text.lang
+                            )
+                            context_right_text = wl_word_detokenization.wl_word_detokenize(
+                                self.main, context_right,
+                                lang = text.lang
+                            )
+
+                            # Left
+                            concordance_line.append([context_left_text, context_left, text_search_left])
+                            # Node
+                            concordance_line.append([node_text, list(ngram), text_search])
+                            # Right
+                            concordance_line.append([context_right_text, context_right, text_search_right])
+                            # Token No.
+                            concordance_line.append([i + 1, len_tokens])
+                            # Sentence No.
+                            concordance_line.append([no_sentence, len_sentences])
+                            # Paragraph No.
+                            concordance_line.append([no_para, len_paras])
+                            # File
+                            concordance_line.append(file['name'])
+                            # Sentiment
+                            if text.lang == 'eng':
+                                sentiment = textblob.TextBlob(context_left_text + node_text + context_right_text).sentiment.polarity
+                                concordance_line.append(f"{sentiment:.{self.main.settings_custom['data']['precision_decimal']}}")
+                            else:
+                                concordance_line.append('N/A')
+
+                            concordance_lines.append(concordance_line)
+
+            # Sampling - First n Lines
+            if settings['generation_settings']['sampling_method'] == self.tr('First n Lines'):
+                sample_size = settings['generation_settings']['sample_size_first_n_lines']
+
+                concordance_lines = concordance_lines[:sample_size]
+            # Sampling - Systematic (Fixed Interval)
+            elif settings['generation_settings']['sampling_method'] == self.tr('Systematic (Fixed Interval)'):
+                sampling_interval = settings['generation_settings']['sample_size_systematic_fixed_interval']
 
                 concordance_lines = [line
-                                     for line in concordance_lines
-                                     if line in concordance_lines_sampled]
+                                     for i, line in enumerate(concordance_lines)
+                                     if i % sampling_interval == 0]
+            # Sampling - Systematic (Fixed Size)
+            elif settings['generation_settings']['sampling_method'] == self.tr('Systematic (Fixed Size)'):
+                sample_size = settings['generation_settings']['sample_size_systematic_fixed_size']
+                sampling_interval = len(concordance_lines) // sample_size
+
+                if sampling_interval > 0:
+                    concordance_lines_sampled = []
+
+                    for i, line in enumerate(concordance_lines):
+                        if i % sampling_interval == 0:
+                            concordance_lines_sampled.append(line)
+
+                        if len(concordance_lines_sampled) >= sample_size:
+                            break
+
+                    concordance_lines = concordance_lines_sampled
+            # Sampling - Random
+            elif settings['generation_settings']['sampling_method'] == self.tr('Random'):
+                sample_size = settings['generation_settings']['sample_size_random']
+
+                if sample_size < len(concordance_lines):
+                    concordance_lines_sampled = random.sample(concordance_lines, k = sample_size)
+
+                    concordance_lines = [line
+                                         for line in concordance_lines
+                                         if line in concordance_lines_sampled]
+        except Exception as e:
+            error_msg = repr(e)
 
         self.progress_updated.emit(self.tr('Rendering table ...'))
 
         time.sleep(0.1)
 
-        self.worker_done.emit(concordance_lines)
+        self.worker_done.emit(error_msg, concordance_lines)
 
 class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(list, list)
+    worker_done = pyqtSignal(str, list, list)
 
     def run(self):
-        texts = []
-        search_terms_files = []
-        search_terms_total = set()
-        search_terms_labels = set()
-
+        error_msg = ''
         points = []
         labels = []
 
-        settings = self.main.settings_custom['concordancer']
-        files = sorted(self.main.wl_files.get_selected_files(), key = lambda item: item['name'])
+        try:
+            texts = []
+            search_terms_files = []
+            search_terms_total = set()
+            search_terms_labels = set()
 
-        for file in files:
-            text = wl_text.Wl_Text(self.main, file)
+            settings = self.main.settings_custom['concordancer']
+            files = sorted(self.main.wl_files.get_selected_files(), key = lambda item: item['name'])
 
-            wl_token_processing.wl_process_tokens_concordancer(
-                text,
-                token_settings = settings['token_settings']
-            )
+            for file in files:
+                text = wl_text.Wl_Text(self.main, file)
 
-            search_terms_file = wl_matching.match_search_terms(
-                self.main, text.tokens_flat,
-                lang = text.lang,
-                tokenized = text.tokenized,
-                tagged = text.tagged,
-                token_settings = settings['token_settings'],
-                search_settings = settings['search_settings']
-            )
+                wl_token_processing.wl_process_tokens_concordancer(
+                    text,
+                    token_settings = settings['token_settings']
+                )
 
-            search_terms_files.append(sorted(search_terms_file))
+                search_terms_file = wl_matching.match_search_terms(
+                    self.main, text.tokens_flat,
+                    lang = text.lang,
+                    tokenized = text.tokenized,
+                    tagged = text.tagged,
+                    token_settings = settings['token_settings'],
+                    search_settings = settings['search_settings']
+                )
 
-            for search_term in search_terms_file:
-                search_terms_total.add(search_term)
-                search_terms_labels.add(wl_word_detokenization.wl_word_detokenize(
-                                            self.main, search_term,
-                                            lang = text.lang
-                                        ))
+                search_terms_files.append(sorted(search_terms_file))
 
-            texts.append(text)
+                for search_term in search_terms_file:
+                    search_terms_total.add(search_term)
+                    search_terms_labels.add(wl_word_detokenization.wl_word_detokenize(
+                                                self.main, search_term,
+                                                lang = text.lang
+                                            ))
 
-        len_files = len(files)
-        len_tokens_total = sum([len(text.tokens_flat) for text in texts])
-        len_search_terms_total = len(search_terms_total)
+                texts.append(text)
 
-        if settings['fig_settings']['sort_results_by'] == self.tr('File'):
-            search_terms_total = sorted(search_terms_total)
-            search_terms_labels = sorted(search_terms_labels)
-
-            for i, search_term in enumerate(search_terms_total):
-                len_search_term = len(search_term)
-
-                x_start = len_tokens_total * i + 1
-                y_start = len_files
-
-                for j, text in enumerate(texts):
-                    if search_term in search_terms_files[j]:
-                        x_start_total = x_start + sum([len(text.tokens_flat)
-                                                       for k, text in enumerate(texts)
-                                                       if k < j])
-                        len_tokens = len(text.tokens_flat)
-
-                        for k, ngram in enumerate(nltk.ngrams(text.tokens_flat, len_search_term)):
-                            if ngram == search_term:
-                                points.append([x_start + k / len_tokens * len_tokens_total, y_start - j])
-                                # Total
-                                points.append([x_start_total + k, 0])
-        elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
-            search_terms_total = sorted(search_terms_total, reverse = True)
-            search_terms_labels = sorted(search_terms_labels, reverse = True)
-
-            for i, search_term in enumerate(search_terms_total):
-                len_search_term = len(search_term)
-
-                for j, text in enumerate(texts):
-                    if search_term in search_terms_files[j]:
-                        x_start = sum([len(text.tokens_flat)
-                                       for k, text in enumerate(texts)
-                                       if k < j]) + j + 2
-
-                        for k, ngram in enumerate(nltk.ngrams(text.tokens_flat, len_search_term)):
-                            if ngram == search_term:
-                                points.append([x_start + k, i])
-
-        if points:
-            x_ticks = [0]
-            x_tick_labels = ['']
+            len_files = len(files)
+            len_tokens_total = sum([len(text.tokens_flat) for text in texts])
+            len_search_terms_total = len(search_terms_total)
 
             if settings['fig_settings']['sort_results_by'] == self.tr('File'):
-                len_tokens_total = sum([len(text.tokens_flat) for text in texts])
+                search_terms_total = sorted(search_terms_total)
+                search_terms_labels = sorted(search_terms_labels)
 
                 for i, search_term in enumerate(search_terms_total):
-                    x_tick_start = len_tokens_total * i + i + 1
+                    len_search_term = len(search_term)
 
-                    # 1/2
-                    x_ticks.append(x_tick_start + len_tokens_total / 2)
-                    # Divider
-                    x_ticks.append(x_tick_start + len_tokens_total + 1)
+                    x_start = len_tokens_total * i + 1
+                    y_start = len_files
 
-                for search_term in search_terms_labels:
-                    # 1/2
-                    x_tick_labels.append(search_term)
-                    # Divider
-                    x_tick_labels.append('')
+                    for j, text in enumerate(texts):
+                        if search_term in search_terms_files[j]:
+                            x_start_total = x_start + sum([len(text.tokens_flat)
+                                                           for k, text in enumerate(texts)
+                                                           if k < j])
+                            len_tokens = len(text.tokens_flat)
 
-                labels.append(x_ticks)
-                labels.append(x_tick_labels)
-                labels.append(list(range(len(files) + 1)))
-                labels.append([self.tr('Total')] + [file['name'] for file in reversed(files)])
-                labels.append(len(files) + 1)
-
+                            for k, ngram in enumerate(nltk.ngrams(text.tokens_flat, len_search_term)):
+                                if ngram == search_term:
+                                    points.append([x_start + k / len_tokens * len_tokens_total, y_start - j])
+                                    # Total
+                                    points.append([x_start_total + k, 0])
             elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
-                len_search_terms_total = len(search_terms_total)
+                search_terms_total = sorted(search_terms_total, reverse = True)
+                search_terms_labels = sorted(search_terms_labels, reverse = True)
 
-                for i, text in enumerate(texts):
-                    x_tick_start = sum([len(text.tokens_flat)
-                                        for j, text in enumerate(texts)
-                                        if j < i]) + j + 1
+                for i, search_term in enumerate(search_terms_total):
+                    len_search_term = len(search_term)
 
-                    # 1/2
-                    x_ticks.append(x_tick_start + len(text.tokens_flat) / 2)
-                    # Divider
-                    x_ticks.append(x_tick_start + len(text.tokens_flat) + 1)
+                    for j, text in enumerate(texts):
+                        if search_term in search_terms_files[j]:
+                            x_start = sum([len(text.tokens_flat)
+                                           for k, text in enumerate(texts)
+                                           if k < j]) + j + 2
 
-                for file in files:
-                    # 1/2
-                    x_tick_labels.append(file['name'])
-                    # Divider
-                    x_tick_labels.append('')
+                            for k, ngram in enumerate(nltk.ngrams(text.tokens_flat, len_search_term)):
+                                if ngram == search_term:
+                                    points.append([x_start + k, i])
 
-                labels.append(x_ticks)
-                labels.append(x_tick_labels)
-                labels.append(list(range(len_search_terms_total)))
-                labels.append(search_terms_labels)
-                labels.append(len_search_terms_total)
+            if points:
+                x_ticks = [0]
+                x_tick_labels = ['']
+
+                if settings['fig_settings']['sort_results_by'] == self.tr('File'):
+                    len_tokens_total = sum([len(text.tokens_flat) for text in texts])
+
+                    for i, search_term in enumerate(search_terms_total):
+                        x_tick_start = len_tokens_total * i + i + 1
+
+                        # 1/2
+                        x_ticks.append(x_tick_start + len_tokens_total / 2)
+                        # Divider
+                        x_ticks.append(x_tick_start + len_tokens_total + 1)
+
+                    for search_term in search_terms_labels:
+                        # 1/2
+                        x_tick_labels.append(search_term)
+                        # Divider
+                        x_tick_labels.append('')
+
+                    labels.append(x_ticks)
+                    labels.append(x_tick_labels)
+                    labels.append(list(range(len(files) + 1)))
+                    labels.append([self.tr('Total')] + [file['name'] for file in reversed(files)])
+                    labels.append(len(files) + 1)
+
+                elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
+                    len_search_terms_total = len(search_terms_total)
+
+                    for i, text in enumerate(texts):
+                        x_tick_start = sum([len(text.tokens_flat)
+                                            for j, text in enumerate(texts)
+                                            if j < i]) + j + 1
+
+                        # 1/2
+                        x_ticks.append(x_tick_start + len(text.tokens_flat) / 2)
+                        # Divider
+                        x_ticks.append(x_tick_start + len(text.tokens_flat) + 1)
+
+                    for file in files:
+                        # 1/2
+                        x_tick_labels.append(file['name'])
+                        # Divider
+                        x_tick_labels.append('')
+
+                    labels.append(x_ticks)
+                    labels.append(x_tick_labels)
+                    labels.append(list(range(len_search_terms_total)))
+                    labels.append(search_terms_labels)
+                    labels.append(len_search_terms_total)
+        except Exception as e:
+            error_msg = repr(e)
 
         self.progress_updated.emit(self.tr('Rendering figure ...'))
 
         time.sleep(0.1)
 
-        self.worker_done.emit(points, labels)
+        self.worker_done.emit(error_msg, points, labels)
 
 @wl_misc.log_timing
 def generate_table(main, table):
-    def update_gui(concordance_lines):
-        node_color = settings['sort_results']['highlight_colors'][0]
+    def update_gui(error_msg, concordance_lines):
+        if not error_msg:
+            node_color = settings['sort_results']['highlight_colors'][0]
 
-        if concordance_lines:
-            table.settings = main.settings_custom
+            if concordance_lines:
+                table.settings = main.settings_custom
 
-            table.blockSignals(True)
-            table.setUpdatesEnabled(False)
+                table.blockSignals(True)
+                table.setUpdatesEnabled(False)
 
-            table.clear_table(0)
+                table.clear_table(0)
 
-            table.setRowCount(len(concordance_lines))
+                table.setRowCount(len(concordance_lines))
 
-            for i, concordance_line in enumerate(concordance_lines):
-                left_text, left_text_raw, left_text_search = concordance_line[0]
-                node_text, node_text_raw, node_text_search = concordance_line[1]
-                right_text, right_text_raw, right_text_search = concordance_line[2]
+                for i, concordance_line in enumerate(concordance_lines):
+                    left_text, left_text_raw, left_text_search = concordance_line[0]
+                    node_text, node_text_raw, node_text_search = concordance_line[1]
+                    right_text, right_text_raw, right_text_search = concordance_line[2]
 
-                no_token, len_tokens = concordance_line[3]
-                no_sentence, len_sentences = concordance_line[4]
-                no_para, len_paras = concordance_line[5]
-                file_name = concordance_line[6]
-                sentiment = concordance_line[7]
+                    no_token, len_tokens = concordance_line[3]
+                    no_sentence, len_sentences = concordance_line[4]
+                    no_para, len_paras = concordance_line[5]
+                    file_name = concordance_line[6]
+                    sentiment = concordance_line[7]
 
-                # Node
-                label_node = wl_label.Wl_Label_Html(
-                    f'''
-                        <span style="color: {node_color}; font-weight: bold;">
-                            &nbsp;{node_text}&nbsp;
-                        </span>
-                    ''',
-                    main
-                )
+                    # Node
+                    label_node = wl_label.Wl_Label_Html(
+                        f'''
+                            <span style="color: {node_color}; font-weight: bold;">
+                                &nbsp;{node_text}&nbsp;
+                            </span>
+                        ''',
+                        main
+                    )
 
-                table.setCellWidget(i, 1, label_node)
+                    table.setCellWidget(i, 1, label_node)
 
-                table.cellWidget(i, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                    table.cellWidget(i, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
-                table.cellWidget(i, 1).text_raw = node_text_raw
-                table.cellWidget(i, 1).text_search = node_text_search
+                    table.cellWidget(i, 1).text_raw = node_text_raw
+                    table.cellWidget(i, 1).text_search = node_text_search
 
-                # Left
-                table.setCellWidget(
-                    i, 0,
-                    wl_label.Wl_Label_Html(left_text, main)
-                )
+                    # Left
+                    table.setCellWidget(
+                        i, 0,
+                        wl_label.Wl_Label_Html(left_text, main)
+                    )
 
-                table.cellWidget(i, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    table.cellWidget(i, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-                table.cellWidget(i, 0).text_raw = left_text_raw
-                table.cellWidget(i, 0).text_search = left_text_search
+                    table.cellWidget(i, 0).text_raw = left_text_raw
+                    table.cellWidget(i, 0).text_search = left_text_search
 
-                # Right
-                table.setCellWidget(
-                    i, 2,
-                    wl_label.Wl_Label_Html(right_text, main)
-                )
+                    # Right
+                    table.setCellWidget(
+                        i, 2,
+                        wl_label.Wl_Label_Html(right_text, main)
+                    )
 
-                table.cellWidget(i, 2).text_raw = right_text_raw
-                table.cellWidget(i, 2).text_search = right_text_search
+                    table.cellWidget(i, 2).text_raw = right_text_raw
+                    table.cellWidget(i, 2).text_search = right_text_search
 
-                # Token No.
-                table.set_item_num(i, 3, no_token)
-                table.set_item_num(i, 4, no_token, len_tokens)
-                # Sentence No.
-                table.set_item_num(i, 5, no_sentence)
-                table.set_item_num(i, 6, no_sentence, len_sentences)
-                # Paragraph No.
-                table.set_item_num(i, 7, no_para)
-                table.set_item_num(i, 8, no_para, len_paras)
+                    # Token No.
+                    table.set_item_num(i, 3, no_token)
+                    table.set_item_num(i, 4, no_token, len_tokens)
+                    # Sentence No.
+                    table.set_item_num(i, 5, no_sentence)
+                    table.set_item_num(i, 6, no_sentence, len_sentences)
+                    # Paragraph No.
+                    table.set_item_num(i, 7, no_para)
+                    table.set_item_num(i, 8, no_para, len_paras)
 
-                # File
-                table.setItem(i, 9, QTableWidgetItem(file_name))
+                    # File
+                    table.setItem(i, 9, QTableWidgetItem(file_name))
 
-                # Sentiment
-                table.setItem(i, 10, QTableWidgetItem(sentiment))
+                    # Sentiment
+                    table.setItem(i, 10, QTableWidgetItem(sentiment))
 
-                table.item(i, 10).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    table.item(i, 10).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-            table.setUpdatesEnabled(True)
-            table.blockSignals(False)
+                table.setUpdatesEnabled(True)
+                table.blockSignals(False)
 
-            table.toggle_pct()
+                table.toggle_pct()
 
-            table.itemChanged.emit(table.item(0, 0))
+                table.itemChanged.emit(table.item(0, 0))
 
-            wl_msg.wl_msg_generate_table_success(main)
+                wl_msg.wl_msg_generate_table_success(main)
+            else:
+                wl_msg_box.wl_msg_box_no_results(main)
+
+                wl_msg.wl_msg_generate_table_error(main)
         else:
-            wl_msg_box.wl_msg_box_no_results(main)
+            wl_dialog_error.wl_dialog_error_processing_texts(main, error_msg)
 
-            wl_msg.wl_msg_generate_table_error(main)
+            wl_msg.wl_msg_processing_texts_error(main)
 
     settings = main.settings_custom['concordancer']
     files = main.wl_files.get_selected_files()
@@ -1135,50 +1148,55 @@ def generate_table(main, table):
 
 @wl_misc.log_timing
 def generate_fig(main):
-    def update_gui(points, labels):
-        if labels:
-            x_ticks = labels[0]
-            x_tick_labels = labels[1]
-            y_ticks = labels[2]
-            y_tick_labels = labels[3]
-            y_max = labels[4]
+    def update_gui(error_msg, points, labels):
+        if not error_msg:
+            if labels:
+                x_ticks = labels[0]
+                x_tick_labels = labels[1]
+                y_ticks = labels[2]
+                y_tick_labels = labels[3]
+                y_max = labels[4]
 
-        if points:
-            if settings['fig_settings']['sort_results_by'] == main.tr('File'):
-                matplotlib.pyplot.plot(
-                    numpy.array(points)[:, 0],
-                    numpy.array(points)[:, 1],
-                    'b|'
-                )
+            if points:
+                if settings['fig_settings']['sort_results_by'] == main.tr('File'):
+                    matplotlib.pyplot.plot(
+                        numpy.array(points)[:, 0],
+                        numpy.array(points)[:, 1],
+                        'b|'
+                    )
 
-                matplotlib.pyplot.xlabel(main.tr('Search Terms'))
-                matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r', rotation = 90)
+                    matplotlib.pyplot.xlabel(main.tr('Search Terms'))
+                    matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r', rotation = 90)
 
-                matplotlib.pyplot.ylabel(main.tr('Files'))
-                matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
-                matplotlib.pyplot.ylim(-1, y_max)
-            elif settings['fig_settings']['sort_results_by'] == main.tr('Search Term'):
-                matplotlib.pyplot.plot(
-                    numpy.array(points)[:, 0],
-                    numpy.array(points)[:, 1],
-                    'b|'
-                )
+                    matplotlib.pyplot.ylabel(main.tr('Files'))
+                    matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
+                    matplotlib.pyplot.ylim(-1, y_max)
+                elif settings['fig_settings']['sort_results_by'] == main.tr('Search Term'):
+                    matplotlib.pyplot.plot(
+                        numpy.array(points)[:, 0],
+                        numpy.array(points)[:, 1],
+                        'b|'
+                    )
 
-                matplotlib.pyplot.xlabel(main.tr('Files'))
-                matplotlib.pyplot.xticks(x_ticks, x_tick_labels, rotation = 90)
+                    matplotlib.pyplot.xlabel(main.tr('Files'))
+                    matplotlib.pyplot.xticks(x_ticks, x_tick_labels, rotation = 90)
 
-                matplotlib.pyplot.ylabel(main.tr('Search Terms'))
-                matplotlib.pyplot.yticks(y_ticks, y_tick_labels, color = 'r')
-                matplotlib.pyplot.ylim(-1, y_max)
+                    matplotlib.pyplot.ylabel(main.tr('Search Terms'))
+                    matplotlib.pyplot.yticks(y_ticks, y_tick_labels, color = 'r')
+                    matplotlib.pyplot.ylim(-1, y_max)
 
-            matplotlib.pyplot.title(main.tr('Dispersion Plot'))
-            matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
+                matplotlib.pyplot.title(main.tr('Dispersion Plot'))
+                matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
 
-            wl_msg.wl_msg_generate_fig_success(main)
+                wl_msg.wl_msg_generate_fig_success(main)
+            else:
+                wl_msg_box.wl_msg_box_no_results(main)
+
+                wl_msg.wl_msg_generate_fig_error(main)
         else:
-            wl_msg_box.wl_msg_box_no_results(main)
+            wl_dialog_error.wl_dialog_error_processing_texts(main, error_msg)
 
-            wl_msg.wl_msg_generate_fig_error(main)
+            wl_msg.wl_msg_processing_texts_error(main)
 
         dialog_progress.accept()
 
