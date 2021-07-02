@@ -84,10 +84,11 @@ class Wl_Table_Colligation(wl_table.Wl_Table_Data_Filter_Search):
 
         self.setUpdatesEnabled(True)
 
-    def clear_table(self, count = 1):
-        super().clear_table(count)
+    def clear_table(self, count_headers = 1, confirm = False):
+        confirmed = super().clear_table(count_headers = count_headers, confirm = confirm)
 
-        self.cols_breakdown_position = set()
+        if confirmed:
+            self.cols_breakdown_position = set()
 
 class Wrapper_Colligation(wl_layout.Wl_Wrapper):
     def __init__(self, main):

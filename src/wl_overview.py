@@ -105,10 +105,11 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
 
-    def clear_table(self, count_headers = 1):
-        super().clear_table(0)
+    def clear_table(self, count_headers = 1, confirm = False):
+        confirmed = super().clear_table(count_headers = count_headers, confirm = confirm)
 
-        self.insert_col(0, self.tr('Total'))
+        if confirmed:
+            self.setHorizontalHeaderLabels([self.tr('Total')])
 
 class Wrapper_Overview(wl_layout.Wl_Wrapper):
     def __init__(self, main):

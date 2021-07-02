@@ -41,7 +41,10 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'custom'):
     # spaCy
     if 'spaCy' in pos_tagger:
         nlp = main.__dict__[f'spacy_nlp_{lang}']
-        doc = nlp(' '.join(tokens))
+        doc = spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens))
+            
+        for pipe_name in nlp.pipe_names:
+            nlp.get_pipe(pipe_name)(doc)
 
         if tagset == 'custom':
             tokens_tagged = [(token.text, token.tag_) for token in doc]
