@@ -21,7 +21,7 @@ from PyQt5.QtWidgets import *
 import numpy
 
 from wl_checking import wl_checking_file
-from wl_dialogs import wl_dialog_misc, wl_msg_box
+from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
 from wl_text import wl_text, wl_text_utils, wl_token_processing
 from wl_utils import wl_misc, wl_sorting, wl_threading
@@ -391,141 +391,145 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
 class Wl_Worker_Keyword(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(dict, dict)
+    worker_done = pyqtSignal(str, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)
 
+        self.error_msg = ''
         self.keywords_freq_files = []
         self.keywords_stats_files = []
 
     def run(self):
-        texts = []
+        try:
+            texts = []
 
-        settings = self.main.settings_custom['keyword']
-        ref_file = self.main.wl_files.find_file_by_name(
-            settings['generation_settings']['ref_file'],
-            selected_only = True
-        )
-
-        files = [file
-                 for file in self.main.wl_files.get_selected_files()
-                 if file != ref_file]
-
-        # Frequency
-        for i, file in enumerate([ref_file] + files):
-            text = wl_text.Wl_Text(self.main, file)
-            text = wl_token_processing.wl_process_tokens_keyword(
-                text,
-                token_settings = settings['token_settings']
+            settings = self.main.settings_custom['keyword']
+            ref_file = self.main.wl_files.find_file_by_name(
+                settings['generation_settings']['ref_file'],
+                selected_only = True
             )
 
-            # Remove empty tokens
-            tokens = [token for token in text.tokens_flat if token]
+            files = [file
+                     for file in self.main.wl_files.get_selected_files()
+                     if file != ref_file]
 
-            self.keywords_freq_files.append(collections.Counter(tokens))
+            # Frequency
+            for i, file in enumerate([ref_file] + files):
+                text = wl_text.Wl_Text(self.main, file)
+                text = wl_token_processing.wl_process_tokens_keyword(
+                    text,
+                    token_settings = settings['token_settings']
+                )
 
-            if i > 0:
-                texts.append(text)
+                # Remove empty tokens
+                tokens = [token for token in text.tokens_flat if token]
+
+                self.keywords_freq_files.append(collections.Counter(tokens))
+
+                if i > 0:
+                    texts.append(text)
+                else:
+                    tokens_ref = text.tokens_flat.copy()
+                    len_tokens_ref = len(tokens_ref)
+
+            # Total
+            if len(files) > 1:
+                text_total = wl_text.Wl_Text_Blank()
+                text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
+
+                self.keywords_freq_files.append(sum(self.keywords_freq_files, collections.Counter()))
+
+                self.keywords_freq_files[0] = {token: freq
+                                               for token, freq in self.keywords_freq_files[0].items()
+                                               if token in text_total.tokens_flat}
+
+                texts.append(text_total)
             else:
-                tokens_ref = text.tokens_flat.copy()
-                len_tokens_ref = len(tokens_ref)
+                self.keywords_freq_files[0] = {token: freq
+                                               for token, freq in self.keywords_freq_files[0].items()
+                                               if token in self.keywords_freq_files[1]}
 
-        # Total
-        if len(files) > 1:
-            text_total = wl_text.Wl_Text_Blank()
-            text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
+            self.progress_updated.emit(self.tr('Processing data ...'))
 
-            self.keywords_freq_files.append(sum(self.keywords_freq_files, collections.Counter()))
+            # Keyness
+            text_test_significance = settings['generation_settings']['test_significance']
+            text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-            self.keywords_freq_files[0] = {token: freq
-                                           for token, freq in self.keywords_freq_files[0].items()
-                                           if token in text_total.tokens_flat}
+            test_significance = self.main.settings_global['tests_significance']['keyword'][text_test_significance]['func']
+            measure_effect_size = self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['func']
 
-            texts.append(text_total)
-        else:
-            self.keywords_freq_files[0] = {token: freq
-                                           for token, freq in self.keywords_freq_files[0].items()
-                                           if token in self.keywords_freq_files[1]}
+            keywords_freq_file_observed = self.keywords_freq_files[-1]
+            keywords_freq_file_ref = self.keywords_freq_files[0]
 
-        self.progress_updated.emit(self.tr('Processing data ...'))
+            for text in texts:
+                keywords_stats_file = {}
 
-        # Keyness
-        text_test_significance = settings['generation_settings']['test_significance']
-        text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+                tokens_observed = text.tokens_flat
+                len_tokens_observed = len(tokens_observed)
 
-        test_significance = self.main.settings_global['tests_significance']['keyword'][text_test_significance]['func']
-        measure_effect_size = self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['func']
-
-        keywords_freq_file_observed = self.keywords_freq_files[-1]
-        keywords_freq_file_ref = self.keywords_freq_files[0]
-
-        for text in texts:
-            keywords_stats_file = {}
-
-            tokens_observed = text.tokens_flat
-            len_tokens_observed = len(tokens_observed)
-
-            if text_test_significance in [self.tr('Student\'s t-test (Two-sample)'),
-                                          self.tr('Mann-Whitney U Test')]:
-                # Test Statistic, p-value & Bayes Factor
-                if text_test_significance == self.tr('Student\'s t-test (Two-sample)'):
-                    number_sections = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['number_sections']
-                    use_data = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['use_data']
-                elif text_test_significance == self.tr('Mann-Whitney U Test'):
-                    number_sections = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['number_sections']
-                    use_data = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']
-
-                sections_observed = wl_text_utils.to_sections(tokens_observed, number_sections)
-                sections_ref = wl_text_utils.to_sections(tokens_ref, number_sections)
-
-                sections_freq_observed = [collections.Counter(section) for section in sections_observed]
-                sections_freq_ref = [collections.Counter(section) for section in sections_observed]
-
-                len_sections_observed = [len(section) for section in sections_observed]
-                len_sections_ref = [len(section) for section in sections_ref]
-
-                if use_data == self.tr('Absolute Frequency'):
-                    for token in keywords_freq_file_observed:
-                        counts_observed = [section_freq.get(token, 0) for section_freq in sections_freq_observed]
-                        counts_ref = [section_freq.get(token, 0) for section_freq in sections_freq_ref]
-
-                        keywords_stats_file[token] = test_significance(self.main, counts_observed, counts_ref)
-                elif use_data == self.tr('Relative Frequency'):
-                    for token in keywords_freq_file_observed:
-                        counts_observed = [section_freq.get(token, 0) / len_sections_observed[i]
-                                           for i, section_freq in enumerate(sections_freq_observed)]
-                        counts_ref = [section_freq.get(token, 0) / len_sections_ref[i]
-                                      for i, section_freq in enumerate(sections_freq_ref)]
-
-                        keywords_stats_file[token] = test_significance(self.main, counts_observed, counts_ref)
-
-                # Effect Size
-                for token in keywords_freq_file_observed:
-                    c11 = keywords_freq_file_observed.get(token, 0)
-                    c12 = keywords_freq_file_ref.get(token, 0)
-                    c21 = len_tokens_observed - c11
-                    c22 = len_tokens_ref - c12
-
-                    keywords_stats_file[token].append(measure_effect_size(self.main, c11, c12, c21, c22))
-            else:
-                for token in keywords_freq_file_observed:
-                    c11 = keywords_freq_file_observed.get(token, 0)
-                    c12 = keywords_freq_file_ref.get(token, 0)
-                    c21 = len_tokens_observed - c11
-                    c22 = len_tokens_ref - c12
-
+                if text_test_significance in [self.tr('Student\'s t-test (Two-sample)'),
+                                              self.tr('Mann-Whitney U Test')]:
                     # Test Statistic, p-value & Bayes Factor
-                    keywords_stats_file[token] = test_significance(self.main, c11, c12, c21, c22)
+                    if text_test_significance == self.tr('Student\'s t-test (Two-sample)'):
+                        number_sections = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['number_sections']
+                        use_data = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['use_data']
+                    elif text_test_significance == self.tr('Mann-Whitney U Test'):
+                        number_sections = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['number_sections']
+                        use_data = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']
+
+                    sections_observed = wl_text_utils.to_sections(tokens_observed, number_sections)
+                    sections_ref = wl_text_utils.to_sections(tokens_ref, number_sections)
+
+                    sections_freq_observed = [collections.Counter(section) for section in sections_observed]
+                    sections_freq_ref = [collections.Counter(section) for section in sections_observed]
+
+                    len_sections_observed = [len(section) for section in sections_observed]
+                    len_sections_ref = [len(section) for section in sections_ref]
+
+                    if use_data == self.tr('Absolute Frequency'):
+                        for token in keywords_freq_file_observed:
+                            counts_observed = [section_freq.get(token, 0) for section_freq in sections_freq_observed]
+                            counts_ref = [section_freq.get(token, 0) for section_freq in sections_freq_ref]
+
+                            keywords_stats_file[token] = test_significance(self.main, counts_observed, counts_ref)
+                    elif use_data == self.tr('Relative Frequency'):
+                        for token in keywords_freq_file_observed:
+                            counts_observed = [section_freq.get(token, 0) / len_sections_observed[i]
+                                               for i, section_freq in enumerate(sections_freq_observed)]
+                            counts_ref = [section_freq.get(token, 0) / len_sections_ref[i]
+                                          for i, section_freq in enumerate(sections_freq_ref)]
+
+                            keywords_stats_file[token] = test_significance(self.main, counts_observed, counts_ref)
 
                     # Effect Size
-                    keywords_stats_file[token].append(measure_effect_size(self.main, c11, c12, c21, c22))
+                    for token in keywords_freq_file_observed:
+                        c11 = keywords_freq_file_observed.get(token, 0)
+                        c12 = keywords_freq_file_ref.get(token, 0)
+                        c21 = len_tokens_observed - c11
+                        c22 = len_tokens_ref - c12
 
-            self.keywords_stats_files.append(keywords_stats_file)
+                        keywords_stats_file[token].append(measure_effect_size(self.main, c11, c12, c21, c22))
+                else:
+                    for token in keywords_freq_file_observed:
+                        c11 = keywords_freq_file_observed.get(token, 0)
+                        c12 = keywords_freq_file_ref.get(token, 0)
+                        c21 = len_tokens_observed - c11
+                        c22 = len_tokens_ref - c12
 
-        if len(files) == 1:
-            self.keywords_freq_files.append(self.keywords_freq_files[1])
-            self.keywords_stats_files *= 2
+                        # Test Statistic, p-value & Bayes Factor
+                        keywords_stats_file[token] = test_significance(self.main, c11, c12, c21, c22)
+
+                        # Effect Size
+                        keywords_stats_file[token].append(measure_effect_size(self.main, c11, c12, c21, c22))
+
+                self.keywords_stats_files.append(keywords_stats_file)
+
+            if len(files) == 1:
+                self.keywords_freq_files.append(self.keywords_freq_files[1])
+                self.keywords_stats_files *= 2
+        except Exception as e:
+            self.error_msg = repr(e)
 
 class Wl_Worker_Keyword_Table(Wl_Worker_Keyword):
     def run(self):
@@ -535,8 +539,11 @@ class Wl_Worker_Keyword_Table(Wl_Worker_Keyword):
 
         time.sleep(0.1)
 
-        self.worker_done.emit(wl_misc.merge_dicts(self.keywords_freq_files),
-                              wl_misc.merge_dicts(self.keywords_stats_files))
+        self.worker_done.emit(
+            self.error_msg,
+            wl_misc.merge_dicts(self.keywords_freq_files),
+            wl_misc.merge_dicts(self.keywords_stats_files)
+        )
 
 class Wl_Worker_Keyword_Fig(Wl_Worker_Keyword):
     def run(self):
@@ -546,169 +553,177 @@ class Wl_Worker_Keyword_Fig(Wl_Worker_Keyword):
 
         time.sleep(0.1)
 
-        self.worker_done.emit(wl_misc.merge_dicts(self.keywords_freq_files),
-                              wl_misc.merge_dicts(self.keywords_stats_files))
+        self.worker_done.emit(
+            self.error_msg,
+            wl_misc.merge_dicts(self.keywords_freq_files),
+            wl_misc.merge_dicts(self.keywords_stats_files)
+        )
 
 @wl_misc.log_timing
 def generate_table(main, table):
-    def update_gui(keywords_freq_files, keywords_stats_files):
-        if keywords_freq_files:
-            table.clear_table()
+    def update_gui(error_msg, keywords_freq_files, keywords_stats_files):
+        if not error_msg:
+            if keywords_freq_files:
+                table.clear_table()
 
-            table.settings = copy.deepcopy(main.settings_custom)
+                table.settings = copy.deepcopy(main.settings_custom)
 
-            text_test_significance = settings['generation_settings']['test_significance']
-            text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+                text_test_significance = settings['generation_settings']['test_significance']
+                text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-            (text_test_stat,
-             text_p_value,
-             text_bayes_factor) = main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
-            text_effect_size =  main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
+                (text_test_stat,
+                 text_p_value,
+                 text_bayes_factor) = main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
+                text_effect_size =  main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
 
-            # Insert columns (files)
-            table.insert_col(table.columnCount() - 2,
-                             main.tr(f'[{ref_file["name"]}]\nFrequency'),
-                             is_int = True, is_cumulative = True)
-            table.insert_col(table.columnCount() - 2,
-                             main.tr(f'[{ref_file["name"]}]\nFrequency %'),
-                             is_pct = True, is_cumulative = True)
-
-            for file in files:
+                # Insert columns (files)
                 table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{file["name"]}]\nFrequency'),
-                                 is_int = True, is_cumulative = True, is_breakdown = True)
+                                 main.tr(f'[{ref_file["name"]}]\nFrequency'),
+                                 is_int = True, is_cumulative = True)
                 table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{file["name"]}]\nFrequency %'),
-                                 is_pct = True, is_cumulative = True, is_breakdown = True)
+                                 main.tr(f'[{ref_file["name"]}]\nFrequency %'),
+                                 is_pct = True, is_cumulative = True)
+
+                for file in files:
+                    table.insert_col(table.columnCount() - 2,
+                                     main.tr(f'[{file["name"]}]\nFrequency'),
+                                     is_int = True, is_cumulative = True, is_breakdown = True)
+                    table.insert_col(table.columnCount() - 2,
+                                     main.tr(f'[{file["name"]}]\nFrequency %'),
+                                     is_pct = True, is_cumulative = True, is_breakdown = True)
+
+                    if text_test_stat:
+                        table.insert_col(table.columnCount() - 2,
+                                         main.tr(f'[{file["name"]}]\n{text_test_stat}'),
+                                         is_float = True, is_breakdown = True)
+
+                    table.insert_col(table.columnCount() - 2,
+                                     main.tr(f'[{file["name"]}]\n{text_p_value}'),
+                                     is_float = True, is_breakdown = True)
+
+                    if text_bayes_factor:
+                        table.insert_col(table.columnCount() - 2,
+                                         main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
+                                         is_float = True, is_breakdown = True)
+
+                    table.insert_col(table.columnCount() - 2,
+                                     main.tr(f'[{file["name"]}]\n{text_effect_size}'),
+                                     is_float = True, is_breakdown = True)
+
+                # Insert columns (total)
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr('Total\nFrequency'),
+                                 is_int = True, is_cumulative = True)
+                table.insert_col(table.columnCount() - 2,
+                                 main.tr('Total\nFrequency %'),
+                                 is_pct = True, is_cumulative = True)
 
                 if text_test_stat:
                     table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\n{text_test_stat}'),
-                                     is_float = True, is_breakdown = True)
+                                     main.tr(f'Total\n{text_test_stat}'),
+                                     is_float = True)
 
                 table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{file["name"]}]\n{text_p_value}'),
-                                 is_float = True, is_breakdown = True)
+                                 main.tr(f'Total\n{text_p_value}'),
+                                 is_float = True)
 
                 if text_bayes_factor:
                     table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
-                                     is_float = True, is_breakdown = True)
+                                     main.tr(f'Total\n{text_bayes_factor}'),
+                                     is_float = True)
 
                 table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{file["name"]}]\n{text_effect_size}'),
-                                 is_float = True, is_breakdown = True)
-
-            # Insert columns (total)
-            table.insert_col(table.columnCount() - 2,
-                             main.tr('Total\nFrequency'),
-                             is_int = True, is_cumulative = True)
-            table.insert_col(table.columnCount() - 2,
-                             main.tr('Total\nFrequency %'),
-                             is_pct = True, is_cumulative = True)
-
-            if text_test_stat:
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'Total\n{text_test_stat}'),
+                                 main.tr(f'Total\n{text_effect_size}'),
                                  is_float = True)
 
-            table.insert_col(table.columnCount() - 2,
-                             main.tr(f'Total\n{text_p_value}'),
-                             is_float = True)
+                # Sort by p-value of the first file
+                table.horizontalHeader().setSortIndicator(
+                    table.find_col(main.tr(f'[{files[0]["name"]}]\n{text_p_value}')),
+                    Qt.AscendingOrder
+                )
 
-            if text_bayes_factor:
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'Total\n{text_bayes_factor}'),
-                                 is_float = True)
+                table.blockSignals(True)
+                table.setSortingEnabled(False)
+                table.setUpdatesEnabled(False)
 
-            table.insert_col(table.columnCount() - 2,
-                             main.tr(f'Total\n{text_effect_size}'),
-                             is_float = True)
+                cols_freq = table.find_cols(main.tr('\nFrequency'))
+                cols_freq_pct = table.find_cols(main.tr('\nFrequency %'))
 
-            # Sort by p-value of the first file
-            table.horizontalHeader().setSortIndicator(
-                table.find_col(main.tr(f'[{files[0]["name"]}]\n{text_p_value}')),
-                Qt.AscendingOrder
-            )
+                for col in cols_freq_pct:
+                    cols_freq.remove(col)
 
-            table.blockSignals(True)
-            table.setSortingEnabled(False)
-            table.setUpdatesEnabled(False)
+                if text_test_stat:
+                    cols_test_stat = table.find_cols(main.tr(f'\n{text_test_stat}'))
 
-            cols_freq = table.find_cols(main.tr('\nFrequency'))
-            cols_freq_pct = table.find_cols(main.tr('\nFrequency %'))
+                cols_p_value = table.find_cols(main.tr('\np-value'))
 
-            for col in cols_freq_pct:
-                cols_freq.remove(col)
+                if text_bayes_factor:
+                    cols_bayes_factor = table.find_cols(main.tr('\nBayes Factor'))
 
-            if text_test_stat:
-                cols_test_stat = table.find_cols(main.tr(f'\n{text_test_stat}'))
+                cols_effect_size = table.find_cols(f'\n{text_effect_size}')
+                col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
+                col_files_found_pct = table.find_col(main.tr('Number of\nFiles Found %'))
 
-            cols_p_value = table.find_cols(main.tr('\np-value'))
+                freq_totals = numpy.array(list(keywords_freq_files.values())).sum(axis = 0)
+                len_files = len(files)
 
-            if text_bayes_factor:
-                cols_bayes_factor = table.find_cols(main.tr('\nBayes Factor'))
+                table.setRowCount(len(keywords_freq_files))
 
-            cols_effect_size = table.find_cols(f'\n{text_effect_size}')
-            col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
-            col_files_found_pct = table.find_col(main.tr('Number of\nFiles Found %'))
+                for i, (keyword, stats_files) in enumerate(wl_sorting.sorted_keywords_stats_files(keywords_stats_files)):
+                    freq_files = keywords_freq_files[keyword]
 
-            freq_totals = numpy.array(list(keywords_freq_files.values())).sum(axis = 0)
-            len_files = len(files)
+                    # Rank
+                    table.set_item_num(i, 0, -1)
 
-            table.setRowCount(len(keywords_freq_files))
+                    # Keyword
+                    table.setItem(i, 1, wl_table.Wl_Table_Item(keyword))
 
-            for i, (keyword, stats_files) in enumerate(wl_sorting.sorted_keywords_stats_files(keywords_stats_files)):
-                freq_files = keywords_freq_files[keyword]
+                    # Frequency
+                    for j, freq in enumerate(freq_files):
+                        table.set_item_num(i, cols_freq[j], freq)
+                        table.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
 
-                # Rank
-                table.set_item_num(i, 0, -1)
+                    for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
+                        # Test Statistic
+                        if text_test_stat:
+                            table.set_item_num(i, cols_test_stat[j], test_stat)
 
-                # Keyword
-                table.setItem(i, 1, wl_table.Wl_Table_Item(keyword))
+                        # p-value
+                        table.set_item_num(i, cols_p_value[j], p_value)
 
-                # Frequency
-                for j, freq in enumerate(freq_files):
-                    table.set_item_num(i, cols_freq[j], freq)
-                    table.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
+                        # Bayes Factor
+                        if text_bayes_factor:
+                            table.set_item_num(i, cols_bayes_factor[j], bayes_factor)
 
-                for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
-                    # Test Statistic
-                    if text_test_stat:
-                        table.set_item_num(i, cols_test_stat[j], test_stat)
+                        # Effect Size
+                        table.set_item_num(i, cols_effect_size[j], effect_size)
 
-                    # p-value
-                    table.set_item_num(i, cols_p_value[j], p_value)
+                    # Number of Files Found
+                    num_files_found = len([freq for freq in freq_files[1:-1] if freq])
 
-                    # Bayes Factor
-                    if text_bayes_factor:
-                        table.set_item_num(i, cols_bayes_factor[j], bayes_factor)
+                    table.set_item_num(i, col_files_found, num_files_found)
+                    table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
 
-                    # Effect Size
-                    table.set_item_num(i, cols_effect_size[j], effect_size)
+                table.setSortingEnabled(True)
+                table.setUpdatesEnabled(True)
+                table.blockSignals(False)
 
-                # Number of Files Found
-                num_files_found = len([freq for freq in freq_files[1:-1] if freq])
+                table.toggle_pct()
+                table.toggle_cumulative()
+                table.toggle_breakdown()
+                table.update_ranks()
 
-                table.set_item_num(i, col_files_found, num_files_found)
-                table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
+                table.itemChanged.emit(table.item(0, 0))
 
-            table.setSortingEnabled(True)
-            table.setUpdatesEnabled(True)
-            table.blockSignals(False)
+                wl_msg.wl_msg_generate_table_success(main)
+            else:
+                wl_msg_box.wl_msg_box_no_results(main)
 
-            table.toggle_pct()
-            table.toggle_cumulative()
-            table.toggle_breakdown()
-            table.update_ranks()
-
-            table.itemChanged.emit(table.item(0, 0))
-
-            wl_msg.wl_msg_generate_table_success(main)
+                wl_msg.wl_msg_generate_table_error(main)
         else:
-            wl_msg_box.wl_msg_box_no_results(main)
+            wl_dialog_error.wl_dialog_error_processing_texts(main, error_msg)
 
-            wl_msg.wl_msg_generate_table_error(main)
+            wl_msg.wl_msg_processing_texts_error(main)
 
     settings = main.settings_custom['keyword']
     files = main.wl_files.get_selected_files()
@@ -747,65 +762,70 @@ def generate_table(main, table):
 
 @wl_misc.log_timing
 def generate_fig(main):
-    def update_gui(keywords_freq_files, keywords_stats_files):
-        if keywords_freq_files:
-            text_test_significance = settings['generation_settings']['test_significance']
-            text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+    def update_gui(error_msg, keywords_freq_files, keywords_stats_files):
+        if not error_msg:
+            if keywords_freq_files:
+                text_test_significance = settings['generation_settings']['test_significance']
+                text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-            (text_test_stat,
-             text_p_value,
-             text_bayes_factor) = main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
-            text_effect_size =  main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
+                (text_test_stat,
+                 text_p_value,
+                 text_bayes_factor) = main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
+                text_effect_size =  main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
 
-            if settings['fig_settings']['use_data'] == main.tr('Frequency'):
-                wl_fig_freq.wl_fig_freq_ref(
-                    main, keywords_freq_files,
-                    ref_file = ref_file,
-                    settings = settings['fig_settings'],
-                    label_x = main.tr('Keyword')
-                )
+                if settings['fig_settings']['use_data'] == main.tr('Frequency'):
+                    wl_fig_freq.wl_fig_freq_ref(
+                        main, keywords_freq_files,
+                        ref_file = ref_file,
+                        settings = settings['fig_settings'],
+                        label_x = main.tr('Keyword')
+                    )
+                else:
+                    if settings['fig_settings']['use_data'] == text_test_stat:
+                        keywords_stat_files = {
+                            keyword: numpy.array(stats_files)[:, 0]
+                            for keyword, stats_files in keywords_stats_files.items()
+                        }
+
+                        label_y = text_test_stat
+                    elif settings['fig_settings']['use_data'] == text_p_value:
+                        keywords_stat_files = {
+                            keyword: numpy.array(stats_files)[:, 1]
+                            for keyword, stats_files in keywords_stats_files.items()
+                        }
+
+                        label_y = text_p_value
+                    elif settings['fig_settings']['use_data'] == text_bayes_factor:
+                        keywords_stat_files = {
+                            keyword: numpy.array(stats_files)[:, 2]
+                            for keyword, stats_files in keywords_stats_files.items()
+                        }
+
+                        label_y = text_bayes_factor
+                    elif settings['fig_settings']['use_data'] == text_effect_size:
+                        keywords_stat_files = {
+                            keyword: numpy.array(stats_files)[:, 3]
+                            for keyword, stats_files in keywords_stats_files.items()
+                        }
+
+                        label_y = text_effect_size
+
+                    wl_fig_stat.wl_fig_stat_ref(
+                        main, keywords_stat_files,
+                        ref_file = ref_file,
+                        settings = settings['fig_settings'],
+                        label_y = label_y
+                    )
+
+                wl_msg.wl_msg_generate_fig_success(main)
             else:
-                if settings['fig_settings']['use_data'] == text_test_stat:
-                    keywords_stat_files = {
-                        keyword: numpy.array(stats_files)[:, 0]
-                        for keyword, stats_files in keywords_stats_files.items()
-                    }
+                wl_msg_box.wl_msg_box_no_results(main)
 
-                    label_y = text_test_stat
-                elif settings['fig_settings']['use_data'] == text_p_value:
-                    keywords_stat_files = {
-                        keyword: numpy.array(stats_files)[:, 1]
-                        for keyword, stats_files in keywords_stats_files.items()
-                    }
-
-                    label_y = text_p_value
-                elif settings['fig_settings']['use_data'] == text_bayes_factor:
-                    keywords_stat_files = {
-                        keyword: numpy.array(stats_files)[:, 2]
-                        for keyword, stats_files in keywords_stats_files.items()
-                    }
-
-                    label_y = text_bayes_factor
-                elif settings['fig_settings']['use_data'] == text_effect_size:
-                    keywords_stat_files = {
-                        keyword: numpy.array(stats_files)[:, 3]
-                        for keyword, stats_files in keywords_stats_files.items()
-                    }
-
-                    label_y = text_effect_size
-
-                wl_fig_stat.wl_fig_stat_ref(
-                    main, keywords_stat_files,
-                    ref_file = ref_file,
-                    settings = settings['fig_settings'],
-                    label_y = label_y
-                )
-
-            wl_msg.wl_msg_generate_fig_success(main)
+                wl_msg.wl_msg_generate_fig_error(main)
         else:
-            wl_msg_box.wl_msg_box_no_results(main)
+            wl_dialog_error.wl_dialog_error_processing_texts(main, error_msg)
 
-            wl_msg.wl_msg_generate_fig_error(main)
+            wl_msg.wl_msg_processing_texts_error(main)
 
         dialog_progress.accept()
 
