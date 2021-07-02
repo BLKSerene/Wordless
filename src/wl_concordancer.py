@@ -1025,7 +1025,9 @@ def generate_table(main, table):
 
             table.clear_table(0)
 
-            for concordance_line in concordance_lines:
+            table.setRowCount(len(concordance_lines))
+
+            for i, concordance_line in enumerate(concordance_lines):
                 left_text, left_text_raw, left_text_search = concordance_line[0]
                 node_text, node_text_raw, node_text_search = concordance_line[1]
                 right_text, right_text_raw, right_text_search = concordance_line[2]
@@ -1035,8 +1037,6 @@ def generate_table(main, table):
                 no_para, len_paras = concordance_line[5]
                 file_name = concordance_line[6]
                 sentiment = concordance_line[7]
-
-                table.setRowCount(table.rowCount() + 1)
 
                 # Node
                 label_node = wl_label.Wl_Label_Html(
@@ -1048,50 +1048,50 @@ def generate_table(main, table):
                     main
                 )
 
-                table.setCellWidget(table.rowCount() - 1, 1, label_node)
+                table.setCellWidget(i, 1, label_node)
 
-                table.cellWidget(table.rowCount() - 1, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                table.cellWidget(i, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
-                table.cellWidget(table.rowCount() - 1, 1).text_raw = node_text_raw
-                table.cellWidget(table.rowCount() - 1, 1).text_search = node_text_search
+                table.cellWidget(i, 1).text_raw = node_text_raw
+                table.cellWidget(i, 1).text_search = node_text_search
 
                 # Left
                 table.setCellWidget(
-                    table.rowCount() - 1, 0,
+                    i, 0,
                     wl_label.Wl_Label_Html(left_text, main)
                 )
 
-                table.cellWidget(table.rowCount() - 1, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                table.cellWidget(i, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-                table.cellWidget(table.rowCount() - 1, 0).text_raw = left_text_raw
-                table.cellWidget(table.rowCount() - 1, 0).text_search = left_text_search
+                table.cellWidget(i, 0).text_raw = left_text_raw
+                table.cellWidget(i, 0).text_search = left_text_search
 
                 # Right
                 table.setCellWidget(
-                    table.rowCount() - 1, 2,
+                    i, 2,
                     wl_label.Wl_Label_Html(right_text, main)
                 )
 
-                table.cellWidget(table.rowCount() - 1, 2).text_raw = right_text_raw
-                table.cellWidget(table.rowCount() - 1, 2).text_search = right_text_search
+                table.cellWidget(i, 2).text_raw = right_text_raw
+                table.cellWidget(i, 2).text_search = right_text_search
 
                 # Token No.
-                table.set_item_num(table.rowCount() - 1, 3, no_token)
-                table.set_item_num(table.rowCount() - 1, 4, no_token, len_tokens)
+                table.set_item_num(i, 3, no_token)
+                table.set_item_num(i, 4, no_token, len_tokens)
                 # Sentence No.
-                table.set_item_num(table.rowCount() - 1, 5, no_sentence)
-                table.set_item_num(table.rowCount() - 1, 6, no_sentence, len_sentences)
+                table.set_item_num(i, 5, no_sentence)
+                table.set_item_num(i, 6, no_sentence, len_sentences)
                 # Paragraph No.
-                table.set_item_num(table.rowCount() - 1, 7, no_para)
-                table.set_item_num(table.rowCount() - 1, 8, no_para, len_paras)
+                table.set_item_num(i, 7, no_para)
+                table.set_item_num(i, 8, no_para, len_paras)
 
                 # File
-                table.setItem(table.rowCount() - 1, 9, QTableWidgetItem(file_name))
+                table.setItem(i, 9, QTableWidgetItem(file_name))
 
                 # Sentiment
-                table.setItem(table.rowCount() - 1, 10, QTableWidgetItem(sentiment))
+                table.setItem(i, 10, QTableWidgetItem(sentiment))
 
-                table.item(table.rowCount() - 1, 10).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                table.item(i, 10).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
             table.setUpdatesEnabled(True)
             table.blockSignals(False)
@@ -1152,7 +1152,7 @@ def generate_fig(main):
                 )
 
                 matplotlib.pyplot.xlabel(main.tr('Search Terms'))
-                matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r')
+                matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r', rotation = 90)
 
                 matplotlib.pyplot.ylabel(main.tr('Files'))
                 matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
@@ -1165,7 +1165,7 @@ def generate_fig(main):
                 )
 
                 matplotlib.pyplot.xlabel(main.tr('Files'))
-                matplotlib.pyplot.xticks(x_ticks, x_tick_labels)
+                matplotlib.pyplot.xticks(x_ticks, x_tick_labels, rotation = 90)
 
                 matplotlib.pyplot.ylabel(main.tr('Search Terms'))
                 matplotlib.pyplot.yticks(y_ticks, y_tick_labels, color = 'r')
@@ -1194,7 +1194,8 @@ def generate_fig(main):
                 wl_msg_box.wl_msg_box_invalid_xml_file(main)
 
                 return
-    
+
+    # Check for empty search terms
     if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
         settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
         dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)

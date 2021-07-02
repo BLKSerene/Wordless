@@ -92,9 +92,73 @@ class Wl_Dialog_Progress_Fetch_Data(Wl_Dialog_Progress):
 
         self.label_progress.setText(self.tr('Fetching data ...'))
 
+class WL_Dialog_Clear_Table(wl_dialog.Wl_Dialog_Info):
+    def __init__(self, main):
+        super().__init__(main, main.tr('Clear Table(s)'),
+                         width = 420,
+                         no_button = True)
+
+        self.label_confirm_clear = wl_label.Wl_Label_Dialog(
+            self.tr('''
+                <div>
+                    The results in the table(s) have yet been exported. Do you really want to clear the table(s)?
+                </div>
+            '''),
+            self
+        )
+
+        self.button_yes = QPushButton(self.tr('Yes'), self)
+        self.button_no = QPushButton(self.tr('No'), self)
+
+        self.button_yes.clicked.connect(self.accept)
+        self.button_no.clicked.connect(self.reject)
+
+        self.wrapper_info.layout().addWidget(self.label_confirm_clear, 0, 0)
+
+        self.wrapper_buttons.layout().addWidget(self.button_yes, 0, 1)
+        self.wrapper_buttons.layout().addWidget(self.button_no, 0, 2)
+
+        self.wrapper_buttons.layout().setColumnStretch(0, 1)
+
+        self.set_fixed_height()
+
+class Wl_Dialog_Restart_Required(wl_dialog.Wl_Dialog_Info):
+    def __init__(self, main):
+        super().__init__(main, main.tr('Restart Wordless'),
+                         width = 420,
+                         no_button = True)
+
+        self.label_restart_exit = wl_label.Wl_Label_Dialog(
+            self.tr('''
+                <div>
+                    Restart is required for font settings to take effect. Do you want to restart Wordless now?
+                </div>
+
+                <div style="font-weight: bold;">
+                    Note: All unsaved data and figures will be lost.
+                </div>
+            '''),
+            self
+        )
+
+        self.button_restart = QPushButton(self.tr('Restart'), self)
+        self.button_cancel = QPushButton(self.tr('Cancel'), self)
+
+        self.button_restart.clicked.connect(self.accept)
+        self.button_cancel.clicked.connect(self.reject)
+
+        self.wrapper_info.layout().addWidget(self.label_restart_exit, 0, 0)
+
+        self.wrapper_buttons.layout().addWidget(self.button_restart, 0, 1)
+        self.wrapper_buttons.layout().addWidget(self.button_cancel, 0, 2)
+
+        self.wrapper_buttons.layout().setColumnStretch(0, 1)
+
+        self.set_fixed_height()
+
 class Wl_Dialog_Confirm_Exit(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):
-        super().__init__(main, main.tr('Exit'),
+        super().__init__(main, main.tr('Exit Wordless'),
                          width = 420,
                          no_button = True)
 
@@ -140,37 +204,3 @@ class Wl_Dialog_Confirm_Exit(wl_dialog.Wl_Dialog_Info):
         settings = self.main.settings_custom['general']['misc']
 
         settings['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
-
-class Wl_Dialog_Restart_Required(wl_dialog.Wl_Dialog_Info):
-    def __init__(self, main):
-        super().__init__(main, main.tr('Exit'),
-                         width = 420,
-                         no_button = True)
-
-        self.label_confirm_exit = wl_label.Wl_Label_Dialog(
-            self.tr('''
-                <div>
-                    Restart is required for font settings to take effect. Do you want to restart Wordless now?
-                </div>
-
-                <div style="font-weight: bold;">
-                    Note: All unsaved data and figures will be lost.
-                </div>
-            '''),
-            self
-        )
-
-        self.button_restart = QPushButton(self.tr('Restart'), self)
-        self.button_cancel = QPushButton(self.tr('Cancel'), self)
-
-        self.button_restart.clicked.connect(self.accept)
-        self.button_cancel.clicked.connect(self.reject)
-
-        self.wrapper_info.layout().addWidget(self.label_confirm_exit, 0, 0)
-
-        self.wrapper_buttons.layout().addWidget(self.button_restart, 0, 1)
-        self.wrapper_buttons.layout().addWidget(self.button_cancel, 0, 2)
-
-        self.wrapper_buttons.layout().setColumnStretch(0, 1)
-
-        self.set_fixed_height()

@@ -43,9 +43,11 @@ def match_ngrams(
     settings = copy.deepcopy(search_settings)
     re_tags = get_re_tags(main)
 
-    search_term_tokens = [search_term_token
-                          for search_term in search_terms
-                          for search_term_token in search_term.split()]
+    search_term_tokens = [
+        search_term_token
+        for search_term in search_terms
+        for search_term_token in search_term.split()
+    ]
 
     if search_settings['use_regex']:
         regexes_matched = {search_term_token: set() for search_term_token in search_term_tokens}
@@ -61,10 +63,6 @@ def match_ngrams(
     if token_settings['use_tags']:
         settings['match_inflected_forms'] = False
         settings['match_tags'] = False
-    else:
-        if token_settings['ignore_tags']:
-            settings['ignore_tags'] = False
-            settings['match_tags'] = False
 
     # Match tags only & Ignore tags
     if settings['match_tags']:
@@ -81,7 +79,7 @@ def match_ngrams(
                     tokens_searched = [re.sub(re_tags, '', token) for token in tokens]
         else:
             tokens_searched = tokens
-
+    
     if tokens_searched:
         if settings['use_regex']:
             for search_term_token in search_term_tokens:
@@ -114,7 +112,7 @@ def match_ngrams(
                 for token, token_searched in zip(tokens, tokens_searched):
                     if re.search(regex, token_searched, flags = flags):
                         tokens_matched[search_term_token].add(token)
-
+        
         if settings['match_inflected_forms']:
             lemmas_searched = wl_lemmatization.wl_lemmatize(main, tokens_searched, lang, tokenized, tagged)
             lemmas_matched = wl_lemmatization.wl_lemmatize(main, list(tokens_matched), lang, tokenized, tagged)
@@ -127,11 +125,11 @@ def match_ngrams(
                     flags = re.IGNORECASE
                 else:
                     flags = 0
-
+                
                 for token, lemma_searched in zip(tokens, lemmas_searched):
                     if re.search(lemma_matched, lemma_searched, flags = flags):
                         tokens_matched[token_matched].add(token)
-
+    
     if search_settings['use_regex']:
         for search_term in search_terms:
             search_term_tokens_matched = []
