@@ -220,6 +220,21 @@ def wl_msg_box_no_files_selected(main):
 
     msg_box_no_files_selected.open()
 
+class Wl_Msg_Box_Identical_Src_Tgt_Files(Wl_Msg_Box_Warning):
+    def __init__(self, main):
+        super().__init__(
+            main = main,
+            title = main.tr('Identical source and target files'),
+            text = main.tr('''
+                <div>The source and target file you have specified are identical. Please check your settings and try again.</div>
+            ''')
+        )
+
+def wl_msg_box_identical_src_tgt_files(main):
+    msg_box_identical_src_tgt_files = Wl_Msg_Box_Identical_Src_Tgt_Files(main)
+
+    msg_box_identical_src_tgt_files.open()
+
 class Wl_Msg_Box_Missing_Observed_File(Wl_Msg_Box_Warning):
     def __init__(self, main):
         super().__init__(
