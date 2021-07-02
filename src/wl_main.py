@@ -88,6 +88,10 @@ class Wl_Main(QMainWindow):
         self.loading_window = loading_window
         self.threads_check_updates = []
 
+        # Email
+        self.email = 'blkserene@gmail.com'
+        self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'
+
         # Version numbers
         self.ver = wl_misc.get_wl_ver()
         self.ver_major, self.ver_minor, self.ver_patch = wl_misc.split_wl_ver(self.ver)

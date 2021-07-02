@@ -96,7 +96,7 @@ class WL_Dialog_Clear_Table(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Clear Table(s)'),
                          width = 420,
-                         no_button = True)
+                         no_buttons = True)
 
         self.label_confirm_clear = wl_label.Wl_Label_Dialog(
             self.tr('''
@@ -126,7 +126,7 @@ class Wl_Dialog_Restart_Required(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Restart Wordless'),
                          width = 420,
-                         no_button = True)
+                         no_buttons = True)
 
         self.label_restart_exit = wl_label.Wl_Label_Dialog(
             self.tr('''
@@ -160,7 +160,7 @@ class Wl_Dialog_Confirm_Exit(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Exit Wordless'),
                          width = 420,
-                         no_button = True)
+                         no_buttons = True)
 
         self.label_confirm_exit = wl_label.Wl_Label_Dialog(
             self.tr('''

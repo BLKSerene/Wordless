@@ -22,7 +22,7 @@ from PyQt5.QtWidgets import *
 import numpy
 
 from wl_checking import wl_checking_file
-from wl_dialogs import wl_dialog_misc, wl_msg_box
+from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
 from wl_text import wl_text, wl_text_utils, wl_token_processing
 from wl_utils import wl_misc, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
@@ -106,10 +106,10 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
 
     def clear_table(self, count_headers = 1, confirm = False):
-        confirmed = super().clear_table(count_headers = count_headers, confirm = confirm)
+        confirmed = super().clear_table(count_headers = 0, confirm = confirm)
 
         if confirmed:
-            self.setHorizontalHeaderLabels([self.tr('Total')])
+            self.insert_col(0, self.tr('Total'))
 
 class Wrapper_Overview(wl_layout.Wl_Wrapper):
     def __init__(self, main):
@@ -283,11 +283,12 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
         settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
 class Wl_Worker_Overview(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(list)
+    worker_done = pyqtSignal(str, list)
 
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)
 
+        self.error_msg = ''
         self.texts_stats_files = []
 
     def run(self):
@@ -398,7 +399,7 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
 
                 self.texts_stats_files.append(texts_stats_file)
         except Exception as e:
-            print(f'Error occurred while processing texts: {e}')
+            self.error_msg = repr(e)
 
 class Wl_Worker_Overview_Table(Wl_Worker_Overview):
     def run(self):
@@ -408,191 +409,196 @@ class Wl_Worker_Overview_Table(Wl_Worker_Overview):
 
         time.sleep(0.1)
 
-        self.worker_done.emit(self.texts_stats_files)
+        self.worker_done.emit(self.error_msg, self.texts_stats_files)
 
 @wl_misc.log_timing
 def generate_table(main, table):
-    def update_gui(texts_stats_files):
-        if any(itertools.chain.from_iterable(texts_stats_files)):
-            table.settings = copy.deepcopy(main.settings_custom)
+    def update_gui(error_msg, texts_stats_files):
+        if not error_msg:
+            if any(itertools.chain.from_iterable(texts_stats_files)):
+                table.settings = copy.deepcopy(main.settings_custom)
 
-            table.blockSignals(True)
-            table.setUpdatesEnabled(False)
+                table.blockSignals(True)
+                table.setUpdatesEnabled(False)
 
-            table.clear_table()
+                table.clear_table()
 
-            count_tokens_lens = []
-            count_sentences_lens = []
+                count_tokens_lens = []
+                count_sentences_lens = []
 
-            # Insert column (total)
-            for i, file in enumerate(files):
-                table.insert_col(table.find_col(main.tr('Total')), file['name'],
-                                 is_breakdown = True)
+                # Insert column (total)
+                for i, file in enumerate(files):
+                    table.insert_col(table.find_col(main.tr('Total')), file['name'],
+                                     is_breakdown = True)
 
-            count_paras_total = len(texts_stats_files[-1][0])
-            count_sentences_total = len(texts_stats_files[-1][2])
-            count_tokens_total = len(texts_stats_files[-1][3])
-            count_types_total = len(texts_stats_files[-1][4])
-            count_chars_total = sum(texts_stats_files[-1][3])
+                count_paras_total = len(texts_stats_files[-1][0])
+                count_sentences_total = len(texts_stats_files[-1][2])
+                count_tokens_total = len(texts_stats_files[-1][3])
+                count_types_total = len(texts_stats_files[-1][4])
+                count_chars_total = sum(texts_stats_files[-1][3])
 
-            for i, stats in enumerate(texts_stats_files):
-                len_paras_in_sentence = stats[0]
-                len_paras_in_token = stats[1]
-                len_sentences = stats[2]
-                len_tokens = stats[3]
-                len_types = stats[4]
-                ttr = stats[5]
-                sttr = stats[6]
+                for i, stats in enumerate(texts_stats_files):
+                    len_paras_in_sentence = stats[0]
+                    len_paras_in_token = stats[1]
+                    len_sentences = stats[2]
+                    len_tokens = stats[3]
+                    len_types = stats[4]
+                    ttr = stats[5]
+                    sttr = stats[6]
 
-                count_paras = len(len_paras_in_sentence)
-                count_sentences = len(len_sentences)
-                count_tokens = len(len_tokens)
-                count_types = len(len_types)
-                count_chars = sum(len_tokens)
+                    count_paras = len(len_paras_in_sentence)
+                    count_sentences = len(len_sentences)
+                    count_tokens = len(len_tokens)
+                    count_types = len(len_types)
+                    count_chars = sum(len_tokens)
 
-                # Count of Paragraphs
-                table.set_item_num(0, i, count_paras)
-                table.set_item_num(1, i, count_paras, count_paras_total)
-                # Count of Sentences
-                table.set_item_num(2, i, count_sentences)
-                table.set_item_num(3, i, count_sentences, count_sentences_total)
-                # Count of Tokens
-                table.set_item_num(4, i, count_tokens)
-                table.set_item_num(5, i, count_tokens, count_tokens_total)
-                # Count of Types
-                table.set_item_num(6, i, count_types)
-                table.set_item_num(7, i, count_types, count_types_total)
-                # Count of Characters
-                table.set_item_num(8, i, count_chars)
-                table.set_item_num(9, i, count_chars, count_chars_total)
-                # Type-Token Ratio
-                table.set_item_num(10, i, ttr)
-                # Type-Token Ratio (Standardized)
-                table.set_item_num(11, i, sttr)
+                    # Count of Paragraphs
+                    table.set_item_num(0, i, count_paras)
+                    table.set_item_num(1, i, count_paras, count_paras_total)
+                    # Count of Sentences
+                    table.set_item_num(2, i, count_sentences)
+                    table.set_item_num(3, i, count_sentences, count_sentences_total)
+                    # Count of Tokens
+                    table.set_item_num(4, i, count_tokens)
+                    table.set_item_num(5, i, count_tokens, count_tokens_total)
+                    # Count of Types
+                    table.set_item_num(6, i, count_types)
+                    table.set_item_num(7, i, count_types, count_types_total)
+                    # Count of Characters
+                    table.set_item_num(8, i, count_chars)
+                    table.set_item_num(9, i, count_chars, count_chars_total)
+                    # Type-Token Ratio
+                    table.set_item_num(10, i, ttr)
+                    # Type-Token Ratio (Standardized)
+                    table.set_item_num(11, i, sttr)
 
-                # Paragraph Length
-                if count_paras == 0:
-                    table.set_item_num(12, i, 0)
-                    table.set_item_num(13, i, 0)
-                    table.set_item_num(14, i, 0)
-                    table.set_item_num(15, i, 0)
-                else:
-                    table.set_item_num(12, i, numpy.mean(len_paras_in_sentence))
-                    table.set_item_num(13, i, numpy.std(len_paras_in_sentence))
-                    table.set_item_num(14, i, numpy.mean(len_paras_in_token))
-                    table.set_item_num(15, i, numpy.std(len_paras_in_token))
+                    # Paragraph Length
+                    if count_paras == 0:
+                        table.set_item_num(12, i, 0)
+                        table.set_item_num(13, i, 0)
+                        table.set_item_num(14, i, 0)
+                        table.set_item_num(15, i, 0)
+                    else:
+                        table.set_item_num(12, i, numpy.mean(len_paras_in_sentence))
+                        table.set_item_num(13, i, numpy.std(len_paras_in_sentence))
+                        table.set_item_num(14, i, numpy.mean(len_paras_in_token))
+                        table.set_item_num(15, i, numpy.std(len_paras_in_token))
 
-                # Sentence Length
-                if count_sentences == 0:
-                    table.set_item_num(16, i, 0)
-                    table.set_item_num(17, i, 0)
-                else:
-                    table.set_item_num(16, i, numpy.mean(len_sentences))
-                    table.set_item_num(17, i, numpy.std(len_sentences))
+                    # Sentence Length
+                    if count_sentences == 0:
+                        table.set_item_num(16, i, 0)
+                        table.set_item_num(17, i, 0)
+                    else:
+                        table.set_item_num(16, i, numpy.mean(len_sentences))
+                        table.set_item_num(17, i, numpy.std(len_sentences))
 
-                # Token Length
-                if count_tokens == 0:
-                    table.set_item_num(18, i, 0)
-                    table.set_item_num(19, i, 0)
-                else:
-                    table.set_item_num(18, i, numpy.mean(len_tokens))
-                    table.set_item_num(19, i, numpy.std(len_tokens))
+                    # Token Length
+                    if count_tokens == 0:
+                        table.set_item_num(18, i, 0)
+                        table.set_item_num(19, i, 0)
+                    else:
+                        table.set_item_num(18, i, numpy.mean(len_tokens))
+                        table.set_item_num(19, i, numpy.std(len_tokens))
 
-                # Type Length
-                if count_types == 0:
-                    table.set_item_num(20, i, 0)
-                    table.set_item_num(21, i, 0)
-                else:
-                    table.set_item_num(20, i, numpy.mean(len_types))
-                    table.set_item_num(21, i, numpy.std(len_types))
+                    # Type Length
+                    if count_types == 0:
+                        table.set_item_num(20, i, 0)
+                        table.set_item_num(21, i, 0)
+                    else:
+                        table.set_item_num(20, i, numpy.mean(len_types))
+                        table.set_item_num(21, i, numpy.std(len_types))
 
-                count_tokens_lens.append(collections.Counter(len_tokens))
-                count_sentences_lens.append(collections.Counter(len_sentences))
+                    count_tokens_lens.append(collections.Counter(len_tokens))
+                    count_sentences_lens.append(collections.Counter(len_sentences))
 
-            # Count of n-length Tokens
-            if any(count_tokens_lens):
-                count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
-                count_tokens_lens_total = {
-                    len_token: count_tokens_files[-1]
-                    for len_token, count_tokens_files in count_tokens_lens_files.items()
-                }
-                count_tokens_lens = sorted(count_tokens_lens_files.keys())
+                # Count of n-length Tokens
+                if any(count_tokens_lens):
+                    count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
+                    count_tokens_lens_total = {
+                        len_token: count_tokens_files[-1]
+                        for len_token, count_tokens_files in count_tokens_lens_files.items()
+                    }
+                    count_tokens_lens = sorted(count_tokens_lens_files.keys())
 
-                header_labels = []
+                    header_labels = []
+                    
+                    for count_tokens_len in count_tokens_lens:
+                        header_labels.append([main.tr(f'Count of {count_tokens_len}-Length Tokens'),
+                                              True, False, False, True])
+                        header_labels.append([main.tr(f'Count of {count_tokens_len}-Length Tokens %'),
+                                              False, False, True, True])
+
+                    table.append_rows(header_labels)
+
+                    for i, count_tokens_len in enumerate(reversed(count_tokens_lens)):
+                        counts = count_tokens_lens_files[count_tokens_len]
+
+                        for j, count in enumerate(counts):
+                            table.set_item_num(
+                                row = table.rowCount() - 2 - i * 2,
+                                col = j,
+                                val = count
+                            )
+                            table.set_item_num(
+                                row = table.rowCount() - 1 - i * 2,
+                                col = j,
+                                val = count,
+                                total = count_tokens_lens_total[count_tokens_len]
+                            )
+
+                # Count of n-length Sentences
+                if any(count_sentences_lens):
+                    count_sentences_lens_files = wl_misc.merge_dicts(count_sentences_lens)
+                    count_sentences_lens_total = {
+                        len_sentence: count_sentences_files[-1]
+                        for len_sentence, count_sentences_files in count_sentences_lens_files.items()
+                    }
+                    count_sentences_lens = sorted(count_sentences_lens_files.keys())
+
+                    header_labels = []
+
+                    for count_sentences_len in count_sentences_lens:
+                        header_labels.append([main.tr(f'Count of {count_sentences_len}-Length Sentences'),
+                                              True, False, False, True])
+                        header_labels.append([main.tr(f'Count of {count_sentences_len}-Length Sentences %'),
+                                              False, False, True, True])
+
+                    table.append_rows(header_labels)
+                    
+                    for i, count_sentences_len in enumerate(reversed(count_sentences_lens)):
+                        counts = count_sentences_lens_files[count_sentences_len]
+
+                        for j, count in enumerate(counts):
+                            table.set_item_num(
+                                row = table.rowCount() - 2 - i * 2,
+                                col = j,
+                                val = count
+                            )
+                            table.set_item_num(
+                                row = table.rowCount() - 1 - i * 2,
+                                col = j,
+                                val = count,
+                                total = count_sentences_lens_total[count_sentences_len]
+                            )
+                    
+                table.setUpdatesEnabled(True)
+                table.blockSignals(False)
                 
-                for count_tokens_len in count_tokens_lens:
-                    header_labels.append([main.tr(f'Count of {count_tokens_len}-Length Tokens'),
-                                          True, False, False, True])
-                    header_labels.append([main.tr(f'Count of {count_tokens_len}-Length Tokens %'),
-                                          False, False, True, True])
-
-                table.append_rows(header_labels)
-
-                for i, count_tokens_len in enumerate(reversed(count_tokens_lens)):
-                    counts = count_tokens_lens_files[count_tokens_len]
-
-                    for j, count in enumerate(counts):
-                        table.set_item_num(
-                            row = table.rowCount() - 2 - i * 2,
-                            col = j,
-                            val = count
-                        )
-                        table.set_item_num(
-                            row = table.rowCount() - 1 - i * 2,
-                            col = j,
-                            val = count,
-                            total = count_tokens_lens_total[count_tokens_len]
-                        )
-
-            # Count of n-length Sentences
-            if any(count_sentences_lens):
-                count_sentences_lens_files = wl_misc.merge_dicts(count_sentences_lens)
-                count_sentences_lens_total = {
-                    len_sentence: count_sentences_files[-1]
-                    for len_sentence, count_sentences_files in count_sentences_lens_files.items()
-                }
-                count_sentences_lens = sorted(count_sentences_lens_files.keys())
-
-                header_labels = []
-
-                for count_sentences_len in count_sentences_lens:
-                    header_labels.append([main.tr(f'Count of {count_sentences_len}-Length Sentences'),
-                                          True, False, False, True])
-                    header_labels.append([main.tr(f'Count of {count_sentences_len}-Length Sentences %'),
-                                          False, False, True, True])
-
-                table.append_rows(header_labels)
+                table.toggle_pct()
+                table.toggle_cumulative()
+                table.toggle_breakdown()
                 
-                for i, count_sentences_len in enumerate(reversed(count_sentences_lens)):
-                    counts = count_sentences_lens_files[count_sentences_len]
+                table.itemChanged.emit(table.item(0, 0))
 
-                    for j, count in enumerate(counts):
-                        table.set_item_num(
-                            row = table.rowCount() - 2 - i * 2,
-                            col = j,
-                            val = count
-                        )
-                        table.set_item_num(
-                            row = table.rowCount() - 1 - i * 2,
-                            col = j,
-                            val = count,
-                            total = count_sentences_lens_total[count_sentences_len]
-                        )
-                
-            table.setUpdatesEnabled(True)
-            table.blockSignals(False)
-            
-            table.toggle_pct()
-            table.toggle_cumulative()
-            table.toggle_breakdown()
-            
-            table.itemChanged.emit(table.item(0, 0))
+                wl_msg.wl_msg_generate_table_success(main)
+            else:
+                wl_msg_box.wl_msg_box_no_results(main)
 
-            wl_msg.wl_msg_generate_table_success(main)
+                wl_msg.wl_msg_generate_table_error(main)
         else:
-            wl_msg_box.wl_msg_box_no_results(main)
+            wl_dialog_error.wl_dialog_error_processing_texts(main, error_msg)
 
-            wl_msg.wl_msg_generate_table_error(main)
+            wl_msg.wl_msg_processing_texts_error(main)
 
     settings = main.settings_custom['overview']
     files = main.wl_files.get_selected_files()
