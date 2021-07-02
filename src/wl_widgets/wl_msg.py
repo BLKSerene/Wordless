@@ -9,14 +9,17 @@
 # All other rights reserved.
 #
 
+def wl_msg_processing_texts_error(main):
+    main.statusBar().showMessage(main.tr('An error occurred while processing the texts!'))
+
 def wl_msg_generate_table_success(main):
     main.statusBar().showMessage(main.tr('The table has been successfully generated.'))
 
-def wl_msg_generate_fig_success(main):
-    main.statusBar().showMessage(main.tr('The figure has been successfully generated.'))
-
 def wl_msg_generate_table_error(main):
     main.statusBar().showMessage(main.tr('An error occured while the table is being generated!'))
+
+def wl_msg_generate_fig_success(main):
+    main.statusBar().showMessage(main.tr('The figure has been successfully generated.'))
 
 def wl_msg_generate_fig_error(main):
     main.statusBar().showMessage(main.tr('An error occured while the figure is being generated!'))

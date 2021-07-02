@@ -20,7 +20,7 @@ TABLE_ERROR_FILES_HEIGHT = 220
 
 class Wl_Dialog_Error(wl_dialog.Wl_Dialog_Error):
     def __init__(self, main, title, width = 0, height = 0):
-        super().__init__(main, title, width = 560, height = 320, no_button = True)
+        super().__init__(main, title, width = 560, height = 320, no_buttons = True)
 
         self.button_export = QPushButton(self.tr('Export'), self)
         self.button_ok = QPushButton(self.tr('OK'), self)
@@ -196,8 +196,8 @@ class Wl_Dialog_Error_Import(Wl_Dialog_Error):
         self.wrapper_info.layout().addWidget(self.table_error_files, 1, 0)
 
 def wl_dialog_error_import(main,
-                                 files_empty,
-                                 files_decoding_error):
+                           files_empty,
+                           files_decoding_error):
     if files_empty or files_decoding_error:
         dialog_error_import = Wl_Dialog_Error_Import(
             main,
@@ -206,3 +206,27 @@ def wl_dialog_error_import(main,
         )
 
         dialog_error_import.open()
+
+class Wl_Dialog_Error_Processing_Texts(Wl_Dialog_Error):
+    def __init__(self, main, error_msg):
+        super().__init__(main, main.tr('Error Processing Texts'))
+
+        self.label_error_msg = wl_label.Wl_Label_Dialog(
+            self.tr(f'''
+                <div>An error occurred while processing the texts, please check your files or <b>contact the author for support</b> by emailing to {self.main.email_html}.</div>
+            '''),
+            self
+        )
+        self.text_edit_error_msg = QTextEdit(error_msg, self)
+
+        self.text_edit_error_msg.setReadOnly(True)
+
+        self.wrapper_info.layout().addWidget(self.label_error_msg, 0, 0)
+        self.wrapper_info.layout().addWidget(self.text_edit_error_msg, 1, 0)
+
+        self.button_export.hide()
+
+def wl_dialog_error_processing_texts(main, error_msg):
+    dialog_error_processing_texts = Wl_Dialog_Error_Processing_Texts(main, error_msg)
+
+    dialog_error_processing_texts.open()
