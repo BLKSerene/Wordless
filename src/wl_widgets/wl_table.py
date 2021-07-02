@@ -47,17 +47,20 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
             if not self.rows_export:
                 self.rows_export = list(range(self.table.rowCount()))
 
+            file_path_src = re.sub(r'\.([a-z]+?)$', r'_source.\1', self.file_path)
+            file_path_tgt = re.sub(r'\.([a-z]+?)$', r'_target.\1', self.file_path)
+
             len_rows = len(self.rows_export)
 
             # CSV files
             if self.file_type == self.tr('CSV File (*.csv)'):
                 encoding = self.main.settings_custom['export']['tables']['default_encoding']
 
-                with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
-                    csv_writer = csv.writer(f)
+                # Concordancer
+                if self.table.name == 'concordancer':
+                    with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
+                        csv_writer = csv.writer(f)
 
-                    # Concordancer
-                    if self.table.name == 'concordancer':
                         # Horizontal Headers
                         csv_writer.writerow([self.table.horizontalHeaderItem(col).text().strip()
                                              for col in range(self.table.columnCount())])
@@ -78,7 +81,61 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                             csv_writer.writerow(row_to_export)
 
                             self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
-                    else:
+                # Concordancer (Parallel Mode)
+                elif 'concordancer_parallel' in self.table.name:
+                    # Source file
+                    with open(file_path_src, 'w', encoding = encoding, newline = '') as f:
+                        csv_writer = csv.writer(f)
+
+                        # Horizontal Headers
+                        csv_writer.writerow([self.table.linked_tables[0].horizontalHeaderItem(col).text().strip()
+                                             for col in range(self.table.linked_tables[0].columnCount())])
+
+                        # Cells
+                        for i, row in enumerate(self.rows_export):
+                            row_to_export = []
+
+                            for col in range(self.table.linked_tables[0].columnCount()):
+                                if self.table.linked_tables[0].item(row, col):
+                                    cell_text = self.table.linked_tables[0].item(row, col).text()
+                                else:
+                                    cell_text = self.table.linked_tables[0].cellWidget(row, col).text()
+                                    cell_text = wl_text_utils.html_to_text(cell_text)
+
+                                row_to_export.append(cell_text)
+
+                            csv_writer.writerow(row_to_export)
+
+                            self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows * 2})'))
+
+                    # Target file
+                    with open(file_path_tgt, 'w', encoding = encoding, newline = '') as f:
+                        csv_writer = csv.writer(f)
+
+                        # Horizontal Headers
+                        csv_writer.writerow([self.table.horizontalHeaderItem(col).text().strip()
+                                             for col in range(self.table.columnCount())])
+
+                        # Cells
+                        for i, row in enumerate(self.rows_export):
+                            row_to_export = []
+
+                            for col in range(self.table.columnCount()):
+                                if self.table.item(row, col):
+                                    cell_text = self.table.item(row, col).text()
+                                else:
+                                    cell_text = self.table.cellWidget(row, col).text()
+                                    cell_text = wl_text_utils.html_to_text(cell_text)
+
+                                row_to_export.append(cell_text)
+
+                            csv_writer.writerow(row_to_export)
+
+                            self.progress_updated.emit(self.tr(f'Exporting table ... ({len_rows + i + 1} / {len_rows * 2})'))
+                else:
+                    with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
+                        csv_writer = csv.writer(f)
+
                         if self.table.header_orientation == 'horizontal':
                             # Horizontal Headers
                             csv_writer.writerow([self.table.horizontalHeaderItem(col).text().strip()
@@ -112,20 +169,19 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                                 self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
             # Excel workbooks
             elif self.file_type == self.tr('Excel Workbook (*.xlsx)'):
-                workbook = openpyxl.Workbook()
-                worksheet = workbook.active
-
-                # Freeze panes
-                if self.table.name in ['error', 'concordancer']:
-                    worksheet.freeze_panes = 'A2'
-                else:
-                    worksheet.freeze_panes = 'B2'
-
                 dpi_horizontal = QApplication.primaryScreen().logicalDotsPerInchX()
                 dpi_vertical = QApplication.primaryScreen().logicalDotsPerInchY()
 
                 # Concordancer
                 if self.table.name == 'concordancer':
+                    workbook = openpyxl.Workbook()
+                    worksheet = workbook.active
+
+                    worksheet.freeze_panes = 'A2'
+
+                    dpi_horizontal = QApplication.primaryScreen().logicalDotsPerInchX()
+                    dpi_vertical = QApplication.primaryScreen().logicalDotsPerInchY()
+
                     # Horizontal Headers
                     for col in range(self.table.columnCount()):
                         cell = worksheet.cell(1, 1 + col)
@@ -211,7 +267,189 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                                     self.style_cell_text(cell, self.table.item(row_item, col))
 
                             self.progress_updated.emit(self.tr(f'Exporting table ... ({row_cell + 1} / {len_rows})'))
+
+                    # Row Height
+                    worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
+
+                    for i, _ in enumerate(worksheet.rows):
+                        worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
+
+                    self.progress_updated.emit(self.tr(f'Saving file ...'))
+
+                    workbook.save(self.file_path)
+                # Concordancer (Parallel Mode)
+                elif 'concordancer_parallel' in self.table.name:
+                    # Source file
+                    workbook = openpyxl.Workbook()
+                    worksheet = workbook.active
+
+                    worksheet.freeze_panes = 'A2'
+
+                    # Horizontal Headers
+                    for col in range(self.table.linked_tables[0].columnCount()):
+                        cell = worksheet.cell(1, 1 + col)
+                        cell.value = self.table.linked_tables[0].horizontalHeaderItem(col).text()
+
+                        self.style_header_horizontal(cell, self.table.linked_tables[0].horizontalHeaderItem(col))
+
+                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.table.linked_tables[0].horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
+
+                    # Cells
+                    for row_cell, row_item in enumerate(self.rows_export):
+                        for col in range(self.table.linked_tables[0].columnCount()):
+                            # Left
+                            if col == 0:
+                                cell = worksheet.cell(2 + row_cell, 1 + col)
+
+                                cell_val = wl_text_utils.html_to_text(self.table.linked_tables[0].cellWidget(row_item, col).text())
+                                # Remove illegal characters
+                                cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
+                                cell.value = cell_val
+
+                                cell.font = openpyxl.styles.Font(
+                                    name = self.table.linked_tables[0].cellWidget(row_item, col).font().family(),
+                                    size = 8,
+                                    color = '292929'
+                                )
+                                cell.alignment = openpyxl.styles.Alignment(
+                                    horizontal = 'right',
+                                    vertical = 'center'
+                                )
+                            # Node
+                            elif col == 1:
+                                cell = worksheet.cell(2 + row_cell, 1 + col)
+
+                                cell_val = wl_text_utils.html_to_text(self.table.linked_tables[0].cellWidget(row_item, col).text())
+                                # Remove illegal characters
+                                cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
+                                cell.value = cell_val
+
+                                self.style_cell_text(cell, self.table.linked_tables[0].cellWidget(row_item, col))
+
+                                cell.font = openpyxl.styles.Font(
+                                    name = self.table.linked_tables[0].cellWidget(row_item, col).font().family(),
+                                    size = 8,
+                                    bold = True,
+                                    color = 'FF0000'
+                                )
+                                cell.alignment = openpyxl.styles.Alignment(
+                                    horizontal = 'center',
+                                    vertical = 'center'
+                                )
+                            # Right
+                            elif col == 2:
+                                cell = worksheet.cell(2 + row_cell, 1 + col)
+
+                                cell_val = wl_text_utils.html_to_text(self.table.linked_tables[0].cellWidget(row_item, col).text())
+                                # Remove illegal characters
+                                cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
+                                cell.value = cell_val
+
+                                cell.font = openpyxl.styles.Font(
+                                    name = self.table.linked_tables[0].cellWidget(row_item, col).font().family(),
+                                    size = 8,
+                                    color = '292929'
+                                )
+                                cell.alignment = openpyxl.styles.Alignment(
+                                    horizontal = 'left',
+                                    vertical = 'center'
+                                )
+                            else:
+                                cell = worksheet.cell(2 + row_cell, 1 + col)
+
+                                cell_val = cell_text = self.table.linked_tables[0].item(row_item, col).text()
+                                # Remove illegal characters
+                                cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
+                                cell.value = cell_val
+
+                                if (col in self.table.linked_tables[0].headers_int or
+                                    col in self.table.linked_tables[0].headers_float or
+                                    col in self.table.linked_tables[0].headers_pct):
+                                    self.style_cell_num(cell, self.table.linked_tables[0].item(row_item, col))
+                                else:
+                                    self.style_cell_text(cell, self.table.linked_tables[0].item(row_item, col))
+
+                            self.progress_updated.emit(self.tr(f'Exporting table ... ({row_cell + 1} / {len_rows * 2})'))
+
+                    # Row Height
+                    worksheet.row_dimensions[1].height = self.table.linked_tables[0].horizontalHeader().height() / dpi_vertical * 72
+
+                    for i, _ in enumerate(worksheet.rows):
+                        worksheet.row_dimensions[2 + i].height = self.table.linked_tables[0].verticalHeader().sectionSize(0) / dpi_vertical * 72
+
+                    self.progress_updated.emit(self.tr(f'Saving source file ...'))
+
+                    workbook.save(file_path_src)
+
+                    # Source file
+                    workbook = openpyxl.Workbook()
+                    worksheet = workbook.active
+
+                    worksheet.freeze_panes = 'A2'
+
+                    # Horizontal Headers
+                    for col in range(self.table.columnCount()):
+                        cell = worksheet.cell(1, 1 + col)
+                        cell.value = self.table.horizontalHeaderItem(col).text()
+
+                        self.style_header_horizontal(cell, self.table.horizontalHeaderItem(col))
+
+                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.table.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
+
+                    # Cells
+                    for row_cell, row_item in enumerate(self.rows_export):
+                        for col in range(self.table.columnCount()):
+                            # Parallel Text
+                            if col == 0:
+                                cell = worksheet.cell(2 + row_cell, 1 + col)
+
+                                cell_val = wl_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+                                # Remove illegal characters
+                                cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
+                                cell.value = cell_val
+
+                                self.style_cell_text(cell, self.table.cellWidget(row_item, col))
+
+                                cell.font = openpyxl.styles.Font(
+                                    name = self.table.cellWidget(row_item, col).font().family(),
+                                    size = 8,
+                                )
+                                cell.alignment = openpyxl.styles.Alignment(
+                                    horizontal = 'center',
+                                    vertical = 'center'
+                                )
+                            else:
+                                cell = worksheet.cell(2 + row_cell, 1 + col)
+
+                                cell_val = cell_text = self.table.item(row_item, col).text()
+                                # Remove illegal characters
+                                cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
+                                cell.value = cell_val
+
+                                if (col in self.table.headers_int or
+                                    col in self.table.headers_float or
+                                    col in self.table.headers_pct):
+                                    self.style_cell_num(cell, self.table.item(row_item, col))
+                                else:
+                                    self.style_cell_text(cell, self.table.item(row_item, col))
+
+                            self.progress_updated.emit(self.tr(f'Exporting table ... ({len_rows + row_cell + 1} / {len_rows * 2})'))
+
+                    # Row Height
+                    worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
+
+                    for i, _ in enumerate(worksheet.rows):
+                        worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
+
+                    self.progress_updated.emit(self.tr(f'Saving target file ...'))
+
+                    workbook.save(file_path_tgt)
                 else:
+                    workbook = openpyxl.Workbook()
+                    worksheet = workbook.active
+
+                    worksheet.freeze_panes = 'B2'
+
                     if self.table.header_orientation == 'horizontal':
                         # Horizontal Headers
                         for col in range(self.table.columnCount()):
@@ -278,27 +516,38 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
 
                             self.progress_updated.emit(self.tr(f'Exporting table ... ({row_cell + 1} / {len_rows})'))
 
-                # Row Height
-                worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
+                    # Row Height
+                    worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
 
-                for i, _ in enumerate(worksheet.rows):
-                    worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
+                    for i, _ in enumerate(worksheet.rows):
+                        worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
 
-                self.progress_updated.emit(self.tr(f'Saving file ...'))
+                    self.progress_updated.emit(self.tr(f'Saving file ...'))
 
-                workbook.save(self.file_path)
+                    workbook.save(self.file_path)
             elif self.file_type == self.tr('Word Document (*.docx)'):
-                outputs = []
-                doc = docx.Document()
+                # Concordancer
+                if self.table.name == 'concordancer':
+                    outputs = []
 
-                for i, row in enumerate(self.rows_export):
-                    output = []
+                    doc = docx.Document()
 
-                    # Zapping
-                    if settings_concordancer['zapping']:
-                        # Discard position information
-                        if settings_concordancer['discard_position_info']:
-                            for j, col in enumerate(range(3)):
+                    for i, row in enumerate(self.rows_export):
+                        output = []
+
+                        # Zapping
+                        if settings_concordancer['zapping']:
+                            # Discard position information
+                            if settings_concordancer['discard_position_info']:
+                                for j, col in enumerate(range(3)):
+                                    if self.table.item(row, col):
+                                        cell_text = self.table.item(row, col).text()
+                                    else:
+                                        cell_text = self.table.cellWidget(row, col).text()
+                                        cell_text = wl_text_utils.html_to_text(cell_text)
+
+                                    output.append(cell_text)
+                            else:
                                 if self.table.item(row, col):
                                     cell_text = self.table.item(row, col).text()
                                 else:
@@ -306,53 +555,79 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                                     cell_text = wl_text_utils.html_to_text(cell_text)
 
                                 output.append(cell_text)
+
+                            output[1] = settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with']
+
+                            if settings_concordancer['add_line_nums']:
+                                output.insert(0, f'{i + 1}. ')
+
+                            outputs.append(output)
                         else:
-                            if self.table.item(row, col):
-                                cell_text = self.table.item(row, col).text()
-                            else:
+                            for j, col in enumerate(range(3)):
                                 cell_text = self.table.cellWidget(row, col).text()
                                 cell_text = wl_text_utils.html_to_text(cell_text)
 
-                            output.append(cell_text)
+                                output.append(cell_text)
 
-                        output[1] = settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with']
+                        if not settings_concordancer['zapping']:
+                            para = doc.add_paragraph(' '.join(output))
+                            para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
 
+                            self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
+
+                    # Randomize outputs
+                    if settings_concordancer['zapping'] and settings_concordancer['randomize_outputs']:
+                        random.shuffle(outputs)
+
+                        # Re-order line numbers
                         if settings_concordancer['add_line_nums']:
-                            output.insert(0, f'{i + 1}. ')
+                            for i, _ in enumerate(outputs):
+                                outputs[i][0] = f'{i + 1}. '
 
-                        outputs.append(output)
-                    else:
-                        for j, col in enumerate(range(3)):
-                            if self.table.item(row, col):
-                                cell_text = self.table.item(row, col).text()
-                            else:
-                                cell_text = self.table.cellWidget(row, col).text()
-                                cell_text = wl_text_utils.html_to_text(cell_text)
-
-                            output.append(cell_text)
-
-                    if not settings_concordancer['zapping']:
-                        para = doc.add_paragraph(' '.join(output))
-                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
+                        for i, para in enumerate(outputs):
+                            para = doc.add_paragraph(' '.join(para))
+                            para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
 
                         self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
 
-                # Randomize outputs
-                if settings_concordancer['zapping'] and settings_concordancer['randomize_outputs']:
-                    random.shuffle(outputs)
+                    self.progress_updated.emit(self.tr(f'Saving file ...'))
 
-                    # Re-order line numbers
-                    if settings_concordancer['add_line_nums']:
-                        for i, _ in enumerate(outputs):
-                            outputs[i][0] = f'{i + 1}. '
+                    doc.save(self.file_path)
+                # Concordancer (Parallel Mode)
+                elif 'concordancer_parallel' in self.table.name:
+                    # Source file
+                    doc = docx.Document()
 
-                    for i, para in enumerate(outputs):
-                        para = doc.add_paragraph(' '.join(para))
+                    for i, row in enumerate(self.rows_export):
+                        output = []
+
+                        for j, col in enumerate(range(3)):
+                            cell_text = self.table.linked_tables[0].cellWidget(row, col).text()
+                            cell_text = wl_text_utils.html_to_text(cell_text)
+
+                            output.append(cell_text)
+
+                        para = doc.add_paragraph(' '.join(output))
                         para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
 
-                    self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
+                        self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows * 2})'))
 
-                doc.save(self.file_path)
+                    doc.save(file_path_src)
+
+                    # Target file
+                    doc = docx.Document()
+
+                    for i, row in enumerate(self.rows_export):
+                        output = self.table.cellWidget(row, 0).text()
+
+                        para = doc.add_paragraph(output)
+                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
+
+                        self.progress_updated.emit(self.tr(f'Exporting table ... ({len_rows + i + 1} / {len_rows * 2})'))
+
+                    self.progress_updated.emit(self.tr(f'Saving file ...'))
+
+                    doc.save(file_path_tgt)
                 
             self.main.settings_custom['export']['tables']['default_path'] = wl_misc.get_normalized_dir(self.file_path)
             self.main.settings_custom['export']['tables']['default_type'] = self.file_type
@@ -464,9 +739,11 @@ class Wl_Table(QTableWidget):
     def __init__(self, parent, headers, header_orientation = 'horizontal',
                  cols_stretch = [], drag_drop_enabled = False):
         self.main = wl_misc.find_wl_main(parent)
+
         self.headers = headers
         self.header_orientation = header_orientation
         self.cols_stretch = cols_stretch
+
         self.settings = self.main.settings_custom
 
         if header_orientation == 'horizontal':
@@ -654,65 +931,6 @@ class Wl_Table(QTableWidget):
 
         self.setHorizontalHeaderItem(i, QTableWidgetItem(label))
 
-    def export_selected(self):
-        rows_export = sorted({index.row() for index in self.selectedIndexes()})
-
-        self.export_all(rows_export = rows_export)
-
-    def export_all(self, rows_export = []):
-        def update_gui(export_success, file_path):
-            if export_success:
-                wl_msg_box.wl_msg_box_export_table_success(self.main, file_path)
-            else:
-                wl_msg_box.wl_msg_box_export_table_error(self.main, file_path)
-
-        default_dir = self.main.settings_custom['export']['tables']['default_path']
-
-        if self.main.settings_custom['work_area_cur'] == 'Concordancer':
-            if self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
-                (file_path,
-                 file_type) = QFileDialog.getSaveFileName(
-                    self,
-                    self.tr('Export Table'),
-                    os.path.join(wl_checking_misc.check_dir(default_dir), 'outputs'),
-                    self.tr('Word Document (*.docx)'),
-                    self.main.settings_custom['export']['tables']['default_type']
-                )
-            else:
-                (file_path,
-                 file_type) = QFileDialog.getSaveFileName(
-                    self,
-                    self.tr('Export Table'),
-                    os.path.join(wl_checking_misc.check_dir(default_dir), 'outputs'),
-                    ';;'.join(self.main.settings_global['file_types']['export_tables_concordancer']),
-                    self.main.settings_custom['export']['tables']['default_type']
-                )
-        else:
-            (file_path,
-             file_type) = QFileDialog.getSaveFileName(
-                self,
-                self.tr('Export Table'),
-                os.path.join(wl_checking_misc.check_dir(default_dir), 'outputs'),
-                ';;'.join(self.main.settings_global['file_types']['export_tables']),
-                self.main.settings_custom['export']['tables']['default_type']
-            )
-
-        if file_path:
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Export_Table(self.main)
-
-            worker_export_table = Wl_Worker_Export_Table(
-                self.main,
-                dialog_progress = dialog_progress,
-                update_gui = update_gui,
-                table = self,
-                file_path = file_path,
-                file_type = file_type,
-                rows_export = rows_export
-            )
-
-            thread_export_table = wl_threading.Wl_Thread(worker_export_table)
-            thread_export_table.start_worker()
-
     def clear_table(self, header_count = 1):
         self.clearContents()
 
@@ -785,7 +1003,8 @@ class Wl_Table_Data(Wl_Table):
                  headers, header_orientation = 'horizontal',
                  headers_int = [], headers_float = [],
                  headers_pct = [], headers_cumulative = [], cols_breakdown = [],
-                 cols_stretch = [], sorting_enabled = False):
+                 cols_stretch = [], sorting_enabled = False,
+                 linked_tables = []):
         super().__init__(
             main, headers, header_orientation, cols_stretch,
             drag_drop_enabled = False
@@ -800,6 +1019,7 @@ class Wl_Table_Data(Wl_Table):
         self.cols_breakdown_old = cols_breakdown
 
         self.sorting_enabled = sorting_enabled
+        self.linked_tables = linked_tables
 
         if sorting_enabled:
             self.setSortingEnabled(True)
@@ -818,7 +1038,7 @@ class Wl_Table_Data(Wl_Table):
 
         self.button_export_selected.clicked.connect(self.export_selected)
         self.button_export_all.clicked.connect(self.export_all)
-        self.button_clear.clicked.connect(lambda: self.clear_table())
+        self.button_clear.clicked.connect(lambda: self.clear_table(confirm = True))
 
         self.clear_table()
 
@@ -835,10 +1055,13 @@ class Wl_Table_Data(Wl_Table):
         self.selection_changed()
 
     def selection_changed(self):
-        if self.selectedIndexes() and [i for i in range(self.columnCount()) if self.item(0, i)]:
-            self.button_export_selected.setEnabled(True)
-        else:
-            self.button_export_selected.setEnabled(False)
+        for table in [self] + self.linked_tables:
+            if table.selectedIndexes() and [i for i in range(table.columnCount()) if table.item(0, i)]:
+                self.button_export_selected.setEnabled(True)
+
+                break
+            else:
+                self.button_export_selected.setEnabled(False)
 
     def sorting_changed(self, logicalIndex, order):
         if [i for i in range(self.columnCount()) if self.item(0, i)]:
@@ -1167,45 +1390,132 @@ class Wl_Table_Data(Wl_Table):
 
         self.itemChanged.emit(self.item(0, 0))
 
-    def clear_table(self, header_count = 1):
-        self.clearContents()
+    def export_selected(self):
+        rows_export = sorted({index.row() for index in self.selectedIndexes()})
 
-        if self.header_orientation == 'horizontal':
-            self.horizontalHeader().blockSignals(True)
+        self.export_all(rows_export = rows_export)
 
-            self.setColumnCount(len(self.headers))
-            self.setRowCount(header_count)
+    def export_all(self, rows_export = []):
+        def update_gui(export_success, file_path):
+            self.results_exported = True
 
-            self.setHorizontalHeaderLabels(self.headers)
+            if export_success:
+                wl_msg_box.wl_msg_box_export_table_success(self.main, file_path)
+            else:
+                wl_msg_box.wl_msg_box_export_table_error(self.main, file_path)
 
-            self.horizontalHeader().blockSignals(False)
+        default_dir = self.main.settings_custom['export']['tables']['default_path']
 
-            self.horizontalHeader().sectionCountChanged.emit(0, header_count)
+        if self.main.settings_custom['work_area_cur'] == 'Concordancer':
+            if self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
+                (file_path,
+                 file_type) = QFileDialog.getSaveFileName(
+                    self,
+                    self.tr('Export Table'),
+                    os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
+                    self.tr('Word Document (*.docx)'),
+                    self.main.settings_custom['export']['tables']['default_type']
+                )
+            else:
+                (file_path,
+                 file_type) = QFileDialog.getSaveFileName(
+                    self,
+                    self.tr('Export Table'),
+                    os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
+                    ';;'.join(self.main.settings_global['file_types']['export_tables_concordancer']),
+                    self.main.settings_custom['export']['tables']['default_type']
+                )
         else:
-            self.verticalHeader().blockSignals(True)
+            (file_path,
+             file_type) = QFileDialog.getSaveFileName(
+                self,
+                self.tr('Export Table'),
+                os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
+                ';;'.join(self.main.settings_global['file_types']['export_tables']),
+                self.main.settings_custom['export']['tables']['default_type']
+            )
 
-            self.setRowCount(len(self.headers))
-            self.setColumnCount(header_count)
+        if file_path:
+            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Export_Table(self.main)
 
-            self.setVerticalHeaderLabels(self.headers)
+            worker_export_table = Wl_Worker_Export_Table(
+                self.main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui,
+                table = self,
+                file_path = file_path,
+                file_type = file_type,
+                rows_export = rows_export
+            )
 
-            self.verticalHeader().blockSignals(False)
+            thread_export_table = wl_threading.Wl_Thread(worker_export_table)
+            thread_export_table.start_worker()
 
-            self.verticalHeader().sectionCountChanged.emit(0, header_count)
+    def clear_table(self, count_headers = 1, confirm = False):
+        confirmed = True
 
-        for i in range(self.rowCount()):
-            self.showRow(i)
+        # Ask for confirmation if results have not been exported
+        if confirm:
+            if not self.results_exported and self.item(0, 0) or self.cellWidget(0, 0):
+                dialog_clear_table = wl_dialog_misc.WL_Dialog_Clear_Table(self.main)
+                result = dialog_clear_table.exec_()
 
-        for i in range(self.columnCount()):
-            self.showColumn(i)
+                if result == QDialog.Rejected:
+                    confirmed = False
 
-        self.headers_int = set(self.find_header(self.headers_int_old))
-        self.headers_float = set(self.find_header(self.headers_float_old))
-        self.headers_pct = set(self.find_header(self.headers_pct_old))
-        self.headers_cumulative = set(self.find_header(self.headers_cumulative_old))
-        self.cols_breakdown = set(self.find_col(self.cols_breakdown_old))
+        if confirmed:
+            for table in [self] + self.linked_tables:
+                table.clearContents()
 
-        self.item_changed()
+                if table.header_orientation == 'horizontal':
+                    table.horizontalHeader().blockSignals(True)
+
+                    table.setColumnCount(len(table.headers))
+                    table.setRowCount(count_headers)
+
+                    table.setHorizontalHeaderLabels(table.headers)
+
+                    table.horizontalHeader().blockSignals(False)
+
+                    table.horizontalHeader().sectionCountChanged.emit(0, count_headers)
+                else:
+                    table.verticalHeader().blockSignals(True)
+
+                    table.setRowCount(len(table.headers))
+                    table.setColumnCount(count_headers)
+
+                    table.setVerticalHeaderLabels(table.headers)
+
+                    table.verticalHeader().blockSignals(False)
+
+                    table.verticalHeader().sectionCountChanged.emit(0, count_headers)
+
+                for i in range(table.rowCount()):
+                    table.showRow(i)
+
+                for i in range(table.columnCount()):
+                    table.showColumn(i)
+
+                table.headers_int = set(table.find_header(table.headers_int_old))
+                table.headers_float = set(table.find_header(table.headers_float_old))
+                table.headers_pct = set(table.find_header(table.headers_pct_old))
+                table.headers_cumulative = set(table.find_header(table.headers_cumulative_old))
+                table.cols_breakdown = set(table.find_col(table.cols_breakdown_old))
+
+                table.results_exported = False
+
+                table.itemChanged.emit(table.item(0, 0))
+
+        return confirmed
+
+    def add_linked_table(self, table):
+        self.linked_tables.append(table)
+
+        table.itemSelectionChanged.connect(self.selection_changed)
+
+    def add_linked_tables(self, tables):
+        for table in tables:
+            self.add_linked_table(table)
 
 class Wl_Table_Data_Search(Wl_Table_Data):
     def __init__(self, main, tab,
