@@ -83,16 +83,18 @@ class Wrapper_Concordancer_Parallel(wl_layout.Wl_Wrapper):
         self.table_concordancer_parallel_upper.verticalScrollBar().valueChanged.connect(self.table_concordancer_parallel_lower.verticalScrollBar().setValue)
         self.table_concordancer_parallel_lower.verticalScrollBar().valueChanged.connect(self.table_concordancer_parallel_upper.verticalScrollBar().setValue)
 
+        self.table_concordancer_parallel_lower.add_linked_table(self.table_concordancer_parallel_upper)
+
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_figure = QPushButton(self.tr('Generate Figure'), self)
 
         self.button_generate_figure.setEnabled(False)
 
         self.button_generate_table.clicked.connect(lambda: generate_table(
-                                                       self.main,
-                                                       table_src = self.table_concordancer_parallel_upper,
-                                                       table_tgt = self.table_concordancer_parallel_lower
-                                                   ))
+            self.main,
+            table_src = self.table_concordancer_parallel_upper,
+            table_tgt = self.table_concordancer_parallel_lower
+        ))
 
         # Parallel Mode
         self.checkbox_parallel_mode = QCheckBox(self.tr('Parallel Mode'))
@@ -445,7 +447,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
     def run(self):
         concordance_lines = []
-
+        
         settings = self.main.settings_custom['concordancer_parallel']
         files = self.main.wl_files.get_selected_files()
 
@@ -457,16 +459,18 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
         self.progress_updated.emit(self.tr('Searching in texts ...'))
 
-        text_src = wl_text.Wl_Text(self.main, src_file)
-        text_tgt = wl_text.Wl_Text(self.main, tgt_file)
+        text_src = wl_text.Wl_Text(self.main, src_file, preserve_blank_lines = True)
+        text_tgt = wl_text.Wl_Text(self.main, tgt_file, preserve_blank_lines = True)
         
         tokens_src = wl_token_processing.wl_process_tokens_concordancer(
             text_src,
-            token_settings = settings['token_settings']
+            token_settings = settings['token_settings'],
+            preserve_blank_lines = True
         )
         tokens_tgt = wl_token_processing.wl_process_tokens_concordancer(
             text_tgt,
-            token_settings = settings['token_settings']
+            token_settings = settings['token_settings'],
+            preserve_blank_lines = True
         )
         
         search_terms = wl_matching.match_search_terms(
@@ -496,7 +500,8 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
             len_search_term_max = 0
 
         len_segs_src = len(text_src.offsets_paras)
-        len_segs_tgt = len(text_src.offsets_paras)
+        len_segs_tgt = len(text_tgt.offsets_paras)
+        len_segs = max([len_segs_src, len_segs_tgt])
         
         for len_search_term in range(len_search_term_min, len_search_term_max + 1):
             for i, ngram in enumerate(nltk.ngrams(tokens_src, len_search_term)):
@@ -529,9 +534,14 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                     node_text = wl_text_utils.text_escape(node_text)
 
                     offset_para_start_src = text_src.offsets_paras[max(0, no_seg - 1)]
-                    offset_para_start_tgt = text_tgt.offsets_paras[max(0, no_seg - 1)]
+                    if no_seg <= len_segs_tgt:
+                        offset_para_start_tgt = text_tgt.offsets_paras[max(0, no_seg - 1)]
+                    # Omission at the end of the source text
+                    else:
+                        offset_para_start_tgt = None
 
                     # Left & Right
+                        # Last paragraph
                     if no_seg >= len_segs_src:
                         offset_para_end = None
                     else:
@@ -561,12 +571,17 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                     )
 
                     # Parallel Text
-                    if no_seg >= len_segs_tgt:
-                        offset_para_end = None
-                    else:
-                        offset_para_end = text_tgt.offsets_paras[min(no_seg, len_segs_tgt - 1)]
+                    if no_seg <= len_segs_tgt:
+                        # Last paragraph
+                        if no_seg == len_segs_tgt:
+                            offset_para_end = None
+                        else:
+                            offset_para_end = text_tgt.offsets_paras[min(no_seg, len_segs_tgt - 1)]
 
-                    parallel_text = text_tgt.tokens_flat[offset_para_start_tgt:offset_para_end]
+                        parallel_text = text_tgt.tokens_flat[offset_para_start_tgt:offset_para_end]
+                    # Omission at the end of the source text
+                    elif no_seg > len_segs_tgt:
+                        parallel_text = []
 
                     # Search in Results (Parallel Text)
                     if settings['token_settings']['puncs']:
@@ -581,6 +596,8 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                         lang = text_tgt.lang
                     )
 
+                    len_segs = max([len_segs_src, len_segs_tgt])
+
                     # Left
                     concordance_line.append([context_left_text, context_left, text_search_left])
                     # Node
@@ -588,12 +605,11 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                     # Right
                     concordance_line.append([context_right_text, context_right, text_search_right])
                     # Segment No.
-                    concordance_line.append([no_seg, len_segs_src])
+                    # * The largest count of segments among source and target files should be passed here since there might be addition or omission during translation at the end of the source text
+                    concordance_line.append([no_seg, len_segs])
 
                     # Parallel Text
                     concordance_line.append([parallel_text_text, parallel_text, text_search_parallel_text])
-                    # Segment No.
-                    concordance_line.append([no_seg, len_segs_tgt])
 
                     concordance_lines.append(concordance_line)
 
@@ -666,11 +682,9 @@ def generate_table(main, table_src, table_tgt):
                 node_text, node_text_raw, node_text_search = concordance_line[1]
                 right_text, right_text_raw, right_text_search = concordance_line[2]
 
-                no_seg_src, len_segs_src = concordance_line[3]
+                no_seg, len_segs = concordance_line[3]
 
                 parallel_text_text, parallel_text_text_raw, parallel_text_text_search = concordance_line[4]
-
-                no_seg_tgt, len_segs_tgt = concordance_line[5]
 
                 # Node
                 label_node = wl_label.Wl_Label_Html(
@@ -710,8 +724,8 @@ def generate_table(main, table_src, table_tgt):
                 table_src.cellWidget(i, 2).text_search = right_text_search
 
                 # Segment No. (Source File)
-                table_src.set_item_num(i, 3, no_seg_src)
-                table_src.set_item_num(i, 4, no_seg_src, len_segs_src)
+                table_src.set_item_num(i, 3, no_seg)
+                table_src.set_item_num(i, 4, no_seg, len_segs)
 
                 # Parallel Text
                 table_tgt.setCellWidget(
@@ -725,8 +739,8 @@ def generate_table(main, table_src, table_tgt):
                 table_tgt.cellWidget(i, 0).text_search = parallel_text_text_search
 
                 # Segment No. (Target File)
-                table_tgt.set_item_num(i, 1, no_seg_tgt)
-                table_tgt.set_item_num(i, 2, no_seg_tgt, len_segs_tgt)
+                table_tgt.set_item_num(i, 1, no_seg)
+                table_tgt.set_item_num(i, 2, no_seg, len_segs)
 
             table_src.setUpdatesEnabled(True)
             table_tgt.setUpdatesEnabled(True)
@@ -755,19 +769,25 @@ def generate_table(main, table_src, table_tgt):
 
                 return
     
+    # Check for empty search terms
     if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
         settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+        # Check for identical source and target files
+        if settings['generation_settings']['src_file'] != settings['generation_settings']['tgt_file']:
+            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
-        worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
-            main,
-            dialog_progress = dialog_progress,
-            update_gui = update_gui
-        )
+            worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
+                main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui
+            )
 
-        
-        thread_concordancer_parallel_table = wl_threading.Wl_Thread(worker_concordancer_parallel_table)
-        thread_concordancer_parallel_table.start_worker()
+            thread_concordancer_parallel_table = wl_threading.Wl_Thread(worker_concordancer_parallel_table)
+            thread_concordancer_parallel_table.start_worker()
+        else:
+            wl_msg_box.wl_msg_box_identical_src_tgt_files(main)
+
+        wl_msg.wl_msg_generate_table_error(main)
     else:
         wl_msg_box.wl_msg_box_missing_search_term(main)
 

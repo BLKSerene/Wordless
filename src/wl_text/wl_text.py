@@ -30,7 +30,7 @@ class Wl_Text_Blank():
     pass
 
 class Wl_Text():
-    def __init__(self, main, file):
+    def __init__(self, main, file, preserve_blank_lines = False):
         self.main = main
         self.lang = file['lang']
         self.tokenized = file['tokenized']
@@ -50,18 +50,20 @@ class Wl_Text():
                 # Untokenized & Untagged
                 if self.tokenized == 'No' and self.tagged == 'No':
                     for line in f:
-                        text = line.rstrip()
+                        text = line.strip()
 
                         if text:
                             tokens = wl_word_tokenization.wl_word_tokenize(main, text, lang = self.lang)
 
                             self.tokens_multilevel.append(tokens)
                             self.tags.extend([[]] * len(list(wl_misc.flatten_list(tokens))))
+                        elif preserve_blank_lines:
+                            self.tokens_multilevel.append([])
                             
                 # Untokenized & Tagged
                 elif self.tokenized == 'No' and self.tagged == 'Yes':
                     for i, line in enumerate(f):
-                        text = line.rstrip()
+                        text = line.strip()
 
                         if text:
                             # Replace all tags with a whitespace to ensure no words run together
@@ -89,22 +91,26 @@ class Wl_Text():
                             # The last part of the text
                             if text:
                                 self.tokenize_text(text)
+                        elif preserve_blank_lines:
+                            self.tokens_multilevel.append([])
                 # Tokenized & Untagged
                 elif self.tokenized == 'Yes' and self.tagged == 'No':
                     for line in f:
-                        text = line.rstrip()
+                        text = line.strip()
 
                         if text:
                             self.tokens_multilevel.append([])
 
                             for sentence in wl_sentence_tokenization.wl_sentence_split(main, text):
                                 self.tokens_multilevel[-1].append(sentence.split())
+                        elif preserve_blank_lines:
+                            self.tokens_multilevel.append([])
 
                     self.tags = [[]] * len(list(wl_misc.flatten_list(self.tokens_multilevel)))
                 # Tokenized & Tagged
                 elif self.tokenized == 'Yes' and self.tagged == 'Yes':
                     for i, line in enumerate(f):
-                        text = line.rstrip()
+                        text = line.strip()
 
                         if text:
                             self.tokens_multilevel.append([])
@@ -134,6 +140,8 @@ class Wl_Text():
                             # The last part of the text
                             if text:
                                 self.tokenize_text(text)
+                        elif preserve_blank_lines:
+                            self.tokens_multilevel.append([])
         elif re.search(r'\.xml', file['path'], flags = re.IGNORECASE):
             text = ''
 
