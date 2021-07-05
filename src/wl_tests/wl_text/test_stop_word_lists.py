@@ -24,9 +24,8 @@ test_stop_word_lists = []
 main = wl_test_init.Wl_Test_Main()
 
 for lang, stop_word_lists in main.settings_global['stop_word_lists'].items():
-    # Check for missing custom lists
     if 'Custom List' not in stop_word_lists:
-        stop_word_lists.append([''])
+        stop_word_lists.append('Missing Custom List')
 
     for stop_word_list in stop_word_lists:
         test_stop_word_lists.append((lang, stop_word_list))
@@ -44,6 +43,8 @@ def test_get_stop_word_list(lang, stop_word_list, show_results = False):
         # Check if custom list is empty
         assert stop_words == []
     else:
+        # Check for missing custom lists
+        assert stop_word_list != 'Missing Custom List'
         # Check if the list is empty
         assert len(stop_words)
         # Check if there are empty tokens in the list

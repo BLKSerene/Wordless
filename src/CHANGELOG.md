@@ -14,6 +14,7 @@
 ## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - ??/??/2021
 
 ### 🎉 New Features
+- Utils: Add CLTK’s Akkadian, Arabic (Standard), Coptic, English (Middle), English (Old), French (Old), German (Middle High), Greek (Ancient), Hindi, Latin, Marathi (Old), Norse (Old), Punjabi, and Sanskrit stop word lists
 - Utils: Add PyThaiNLP’s NERCut
 - Utils: Add PyThaiNLP’s perceptron tagger (LST20)
 - Utils: Add spaCy’s Amharic, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana word tokenizers
@@ -30,6 +31,7 @@
 - Utils: Remove AttaCut’s Thai word tokenizer
 
 ### ⏫ Dependency Changes
+- Dependencies: Add CLTK
 - Dependencies: Remove AttaCut
 - Dependencies: Upgrade botok to 0.8.7
 - Dependencies: Upgrade langdetect to 1.0.9
