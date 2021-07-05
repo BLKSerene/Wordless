@@ -421,14 +421,14 @@ Asturian             |⭕️ |⭕️ |⭕️ |✖️|✔|✖️
 Azerbaijani          |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
 Basque               |✔|✔|⭕️ |✖️|✖️|✔
 Belarusian           |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
-Bengali              |✔|✔|✔|✖️|✖️|✔
+Bengali              |✔|✔|✔|✖️|✔|✔
 Breton               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
 Bulgarian            |✔|✔|⭕️ |✖️|✔|✔
 Catalan              |✔|✔|✔|✖️|✔|✔
 Chinese (Simplified) |✔|✔|✔|✔|✖️|✔
 Chinese (Traditional)|✔|✔|✔|✔|✖️|✔
 Coptic               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
-Croatian             |✔|✔|⭕️ |✖️|✖️|✔
+Croatian             |✔|✔|⭕️ |✖️|✔|✔
 Czech                |✔|✔|✔|✖️|✔|✔
 Danish               |✔|✔|⭕️ |✔|✔|✔
 Dutch                |✔|✔|✔|✔|✔|✔
@@ -451,7 +451,7 @@ Hebrew               |✔|✔|⭕️ |✖️|✖️|✔
 Hindi                |✔|✔|✔|✖️|✖️|✔
 Hungarian            |✔|✔|✔|✖️|✔|✔
 Icelandic            |✔|✔|✔|✖️|✖️|✔
-Indonesian           |✔|✔|⭕️ |✖️|✖️|✔
+Indonesian           |✔|✔|⭕️ |✖️|✔|✔
 Irish                |✔|✔|✔|✖️|✔|✔
 Italian              |✔|✔|✔|✔|✔|✔
 Japanese             |✔|✔|✔|✔|✖️|✔
@@ -464,7 +464,7 @@ Latin                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
 Latvian              |✔|✔|✔|✖️|✖️|✔
 Ligurian             |✔|✔|⭕️ |✖️|✖️|✔
 Lithuanian           |✔|✔|✔|✔|✔|✔
-Luxembourgish        |✔|✔|⭕️ |✖️|✖️|✔
+Luxembourgish        |✔|✔|⭕️ |✖️|✔|✔
 Macedonian           |✔|✔|⭕️ |✔|✔|✔
 Malay                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
 Malayalam            |✔|✔|✔|✖️|✖️|✔
@@ -486,7 +486,7 @@ Romanian             |✔|✔|✔|✔|✔|✔
 Russian              |✔|✔|✔|✔|✔|✔
 Sanskrit             |✔|✔|⭕️ |✖️|✖️|✔
 Scottish Gaelic      |⭕️ |⭕️ |⭕️ |✖️|✔|✖️
-Serbian (Cyrillic)   |✔|✔|⭕️ |✖️|✖️|✔
+Serbian (Cyrillic)   |✔|✔|⭕️ |✖️|✔|✔
 Serbian (Latin)      |✔|✔|⭕️ |✖️|✖️|✔
 Sinhala              |✔|✔|⭕️ |✖️|✖️|✔
 Slovak               |✔|✔|✔|✖️|✔|✔
@@ -496,7 +496,7 @@ Sotho (Southern)     |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
 Spanish              |✔|✔|✔|✔|✔|✔
 Swahili              |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
 Swedish              |✔|✔|✔|✖️|✔|✔
-Tagalog              |✔|✔|⭕️ |✖️|✖️|✔
+Tagalog              |✔|✔|⭕️ |✖️|✔|✔
 Tajik                |⭕️ |✔|⭕️ |✖️|✖️|✔
 Tamil                |✔|✔|✔|✖️|✖️|✔
 Tatar                |✔|✔|⭕️ |✖️|✖️|✔
@@ -506,9 +506,9 @@ Thai                 |✔|✔|✔|✔|✖️|✔
 Tibetan              |✔|✔|✔|✔|✔|✖️
 Tigrinya             |✔|✔|⭕️ |✖️|✖️|✔
 Tswana               |✔|✔|⭕️ |✖️|✖️|✔
-Turkish              |✔|✔|⭕️ |✖️|✖️|✔
+Turkish              |✔|✔|⭕️ |✖️|✔|✔
 Ukrainian            |✔|✔|⭕️ |✔|✔|✔
-Urdu                 |✔|✔|⭕️ |✖️|✖️|✔
+Urdu                 |✔|✔|⭕️ |✖️|✔|✔
 Vietnamese           |✔|✔|⭕️ |✔|✖️|✔
 Welsh                |⭕️ |⭕️ |⭕️ |✖️|✔|✖️
 Yoruba               |✔|✔|⭕️ |✖️|✖️|✔

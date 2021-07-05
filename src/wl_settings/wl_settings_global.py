@@ -1452,16 +1452,26 @@ def init_settings_global(main):
                 main.tr('Lemmatization Lists - Asturian Lemma List')
             ],
 
+            'ben': [
+                main.tr('spaCy - Bengali Lemmatizer')
+            ],
+
             'bul': [
                 main.tr('Lemmatization Lists - Bulgarian Lemma List')
             ],
 
             'cat': [
-                main.tr('Lemmatization Lists - Catalan Lemma List')
+                main.tr('Lemmatization Lists - Catalan Lemma List'),
+                main.tr('spaCy - Catalan Lemmatizer')
+            ],
+
+            'hrv': [
+                main.tr('spaCy - Croatian Lemmatizer')
             ],
 
             'ces': [
-                main.tr('Lemmatization Lists - Czech Lemma List')
+                main.tr('Lemmatization Lists - Czech Lemma List'),
+                main.tr('spaCy - Czech Lemmatizer')
             ],
 
             'dan': [
@@ -1505,7 +1515,12 @@ def init_settings_global(main):
             ],
 
             'hun': [
-                main.tr('Lemmatization Lists - Hungarian Lemma List')
+                main.tr('Lemmatization Lists - Hungarian Lemma List'),
+                main.tr('spaCy - Hungarian Lemmatizer')
+            ],
+
+            'ind': [
+                main.tr('spaCy - Indonesian Lemmatizer')
             ],
 
             'gle': [
@@ -1521,6 +1536,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Lithuanian Lemmatizer')
             ],
 
+            'ltz': [
+                main.tr('spaCy - Luxembourgish Lemmatizer')
+            ],
+
             'mkd': [
                 main.tr('spaCy - Macedonian Lemmatizer')
             ],
@@ -1534,7 +1553,8 @@ def init_settings_global(main):
             ],
 
             'fas': [
-                main.tr('Lemmatization Lists - Persian Lemma List')
+                main.tr('Lemmatization Lists - Persian Lemma List'),
+                main.tr('spaCy - Persian Lemmatizer')
             ],
 
             'pol': [
@@ -1560,6 +1580,10 @@ def init_settings_global(main):
                 main.tr('Lemmatization Lists - Scottish Gaelic Lemma List')
             ],
 
+            'srp_cyrl': [
+                main.tr('spaCy - Serbian (Cyrillic) Lemmatizer')
+            ],
+
             'slk': [
                 main.tr('Lemmatization Lists - Slovak Lemma List')
             ],
@@ -1574,16 +1598,29 @@ def init_settings_global(main):
             ],
 
             'swe': [
-                main.tr('Lemmatization Lists - Swedish Lemma List')
+                main.tr('Lemmatization Lists - Swedish Lemma List'),
+                main.tr('spaCy - Swedish Lemmatizer')
+            ],
+
+            'tgl': [
+                main.tr('spaCy - Tagalog Lemmatizer')
             ],
 
             'bod': [
                 main.tr('botok - Tibetan Lemmatizer')
             ],
 
+            'tur': [
+                main.tr('spaCy - Turkish Lemmatizer')
+            ],
+
             'ukr': [
                 main.tr('Lemmatization Lists - Ukrainian Lemma List'),
                 main.tr('pymorphy2 - Morphological Analyzer')
+            ],
+
+            'urd': [
+                main.tr('spaCy - Urdu Lemmatizer')
             ],
 
             'cym': [
