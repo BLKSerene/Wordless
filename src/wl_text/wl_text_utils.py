@@ -184,6 +184,7 @@ def init_spacy_models(main, lang):
         
         'other': 'en_core_web_sm'
     }
+    spacy_langs_lemmatizers = ['ben', 'cat', 'hrv', 'ces', 'hun', 'ind', 'ltz', 'fas', 'srp_cyrl', 'swe', 'tgl', 'tur', 'urd']
 
     if f'spacy_nlp_{lang}' not in main.__dict__:
         # Languages with models
@@ -191,7 +192,7 @@ def init_spacy_models(main, lang):
             model = importlib.import_module(spacy_langs[lang])
 
             main.__dict__[f'spacy_nlp_{lang}'] = model.load(disable = ['parser', 'ner'])
-            # Add sentencizer
+            # Add senter
             main.__dict__[f'spacy_nlp_{lang}'].enable_pipe('senter')
 
         # Languages without models
@@ -199,25 +200,23 @@ def init_spacy_models(main, lang):
             # Chinese
             if lang == 'zho_cn':
                 main.__dict__['spacy_nlp_zho_cn'] = spacy.blank('zh')
-                # Add sentencizer
-                main.__dict__['spacy_nlp_zho_cn'].add_pipe('sentencizer')
             elif lang == 'zho_tw':
                 main.__dict__['spacy_nlp_zho_tw'] = spacy.blank('zh')
-                # Add sentencizer
-                main.__dict__['spacy_nlp_zho_tw'].add_pipe('sentencizer')
             # Serbian
             elif lang == 'srp_cyrl':
                 main.__dict__['spacy_nlp_srp_cyrl'] = spacy.blank('sr')
-                # Add sentencizer
-                main.__dict__['spacy_nlp_srp_cyrl'].add_pipe('sentencizer')
             elif lang == 'srp_latn':
                 main.__dict__['spacy_nlp_srp_latn'] = spacy.blank('sr')
-                # Add sentencizer
-                main.__dict__['spacy_nlp_srp_latn'].add_pipe('sentencizer')
             else:
                 main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
-                # Add sentencizer
-                main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer')
+
+            # Add sentencizer and lemmatizer
+            main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer')
+
+            if lang in spacy_langs_lemmatizers:
+                main.__dict__[f'spacy_nlp_{lang}'].add_pipe('lemmatizer')
+
+                main.__dict__[f'spacy_nlp_{lang}'].initialize()
     
 def init_sentence_tokenizers(main, lang, sentence_tokenizer = 'default'):
     if lang not in main.settings_global['sentence_tokenizers']:
