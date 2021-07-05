@@ -11,6 +11,7 @@
 
 import os
 import pkgutil
+import re
 import sys
 
 sys.path.append('.')
@@ -18,11 +19,29 @@ sys.path.append('.')
 import pytest
 import sacremoses
 import spacy
+import spacy_lookups_data
 
 from wl_tests import wl_test_init
 from wl_utils import wl_conversion
 
 main = wl_test_init.Wl_Test_Main()
+
+def check_missing_extra_langs(langs_supported, langs_global, msg):
+    for lang_code in langs_supported:
+        lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
+
+        if lang_code_639_3 not in langs_global:
+            print(f'''Missing language code "{lang_code} / {lang_code_639_3}" found for {msg}!''')
+
+            lang_missing = True
+
+    for lang_code in langs_global:
+        lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
+
+        if lang_code_639_1 not in langs_supported:
+            print(f'''Extra language code "{lang_code} / {lang_code_639_1}" found for {msg}!''')
+
+            lang_extra = True
 
 def check_missing_extra_langs_default(langs, langs_default, msg):
     for lang_code in langs:
@@ -63,6 +82,7 @@ def test_settings_global():
 
     langs_supported_sacremoses = []
     langs_supported_spacy = []
+    langs_supported_spacy_lemmatizers = []
     langs_supported_spacy_stop_words = []
 
     langs_sentence_tokenizers = list(settings_sentence_tokenizers.keys())
@@ -86,6 +106,7 @@ def test_settings_global():
 
     langs_lemmatizers = list(settings_lemmatizers.keys())
     langs_lemmatizers_default = list(settings_lemmatizers_default.keys())
+    langs_lemmatizers_spacy = []
 
     langs_stop_word_lists = list(settings_stop_word_lists.keys())
     langs_stop_word_lists_default = list(settings_stop_word_lists_default.keys())
@@ -113,6 +134,20 @@ def test_settings_global():
             elif lang.name == 'sr':
                 langs_supported_spacy.extend(['sr_cyrl', 'sr_latn'])
 
+    # Lemmatizers
+    for file in os.listdir(f'{spacy_lookups_data.__path__[0]}/data/'):
+        if 'lemma' in file:
+            lang_code = re.search(r'^([a-z]{2,3})_', file).groups()[0]
+            
+            # Serbian
+            if lang_code == 'sr':
+                langs_supported_spacy_lemmatizers.append('sr_cyrl')
+            else:
+                langs_supported_spacy_lemmatizers.append(lang_code)
+
+    langs_supported_spacy_lemmatizers = sorted(set(langs_supported_spacy_lemmatizers))
+
+    # Stop word lists
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
         if lang.ispkg:
             for file in os.listdir(f'{spacy.lang.__path__[0]}/{lang.name}/'):
@@ -133,21 +168,7 @@ def test_settings_global():
         if lang_code != 'other' and any(['spaCy' in sentence_tokenizer for sentence_tokenizer in sentence_tokenizers]):
             langs_sentence_tokenizers_spacy.append(lang_code)
 
-    for lang_code in langs_supported_spacy:
-        lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
-
-        if lang_code_639_3 not in langs_sentence_tokenizers_spacy:
-            print(f'''Missing language code "{lang_code} / {lang_code_639_3}" found for spaCy's sentencizer!''')
-
-            lang_missing = True
-
-    for lang_code in langs_sentence_tokenizers_spacy:
-        lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
-
-        if lang_code_639_1 not in langs_supported_spacy:
-            print(f'''Extra language code "{lang_code} / {lang_code_639_1}" found for spaCy's sentencizer!''')
-
-            lang_extra = True
+    check_missing_extra_langs(langs_supported_spacy, langs_sentence_tokenizers_spacy, "spaCy's sentencizer")
 
     # Check for missing and extra languages for NLTK's word tokenizers
     for lang_code, word_tokenizers in settings_word_tokenizers.items():
@@ -174,42 +195,14 @@ def test_settings_global():
         if lang_code != 'other' and any(['Sacremoses' in word_tokenizer for word_tokenizer in word_tokenizers]):
             langs_word_tokenizers_sacremoses.append(lang_code)
 
-    for lang_code in langs_supported_sacremoses:
-        lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
-
-        if lang_code_639_3 not in langs_word_tokenizers_sacremoses:
-            print(f'''Missing language code "{lang_code} / {lang_code_639_3}" found for Sacremoses's Moses tokenizer!''')
-
-            lang_missing = True
-
-    for lang_code in langs_word_tokenizers_sacremoses:
-        lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
-
-        if lang_code_639_1 not in langs_supported_sacremoses:
-            print(f'''Extra language code "{lang_code} / {lang_code_639_1}" found for Sacremoses's Moses tokenizer!''')
-
-            lang_extra = True
+    check_missing_extra_langs(langs_supported_sacremoses, langs_word_tokenizers_sacremoses, "Sacremoses's Moses tokenizer")
 
     # Check for missing and extra languages for spaCy's word tokenizers
     for lang_code, word_tokenizers in settings_word_tokenizers.items():
         if lang_code != 'other' and any(['spaCy' in word_tokenizer for word_tokenizer in word_tokenizers]):
             langs_word_tokenizers_spacy.append(lang_code)
 
-    for lang_code in langs_supported_spacy:
-        lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
-
-        if lang_code_639_3 not in langs_word_tokenizers_spacy:
-            print(f'''Missing language code "{lang_code} / {lang_code_639_3}" found for spaCy word tokenizers!''')
-
-            lang_missing = True
-
-    for lang_code in langs_word_tokenizers_spacy:
-        lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
-
-        if lang_code_639_1 not in langs_supported_spacy:
-            print(f'''Extra language code "{lang_code} / {lang_code_639_1}" found for spaCy word tokenizers!''')
-
-            lang_extra = True
+    check_missing_extra_langs(langs_supported_spacy, langs_word_tokenizers_spacy, "spaCy's word tokenizers")
 
     # Check for missing and extra languages for NLTK's Penn Treebank detokenizer
     for lang_code, word_detokenizers in settings_word_detokenizers.items():
@@ -236,42 +229,21 @@ def test_settings_global():
         if lang_code != 'other' and any(['Sacremoses' in word_detokenizer for word_detokenizer in word_detokenizers]):
             langs_word_detokenizers_sacremoses.append(lang_code)
 
-    for lang_code in langs_supported_sacremoses:
-        lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
+    check_missing_extra_langs(langs_supported_sacremoses, langs_word_detokenizers_sacremoses, "Sacremoses's Moses detokenizer")
 
-        if lang_code_639_3 not in langs_word_detokenizers_sacremoses:
-            print(f'''Missing language code "{lang_code} / {lang_code_639_3}" found for Sacremoses's Moses detokenizer!''')
+    # Check for missing and extra languages for spaCy's lemmatizers
+    for lang_code, lemmatizers in settings_lemmatizers.items():
+        if lang_code != 'other' and any(['spaCy' in lemmatizer for lemmatizer in lemmatizers]):
+            langs_lemmatizers_spacy.append(lang_code)
 
-            lang_missing = True
-
-    for lang_code in langs_word_detokenizers_sacremoses:
-        lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
-
-        if lang_code_639_1 not in langs_supported_sacremoses:
-            print(f'''Extra language code "{lang_code} / {lang_code_639_1}" found for Sacremoses's Moses detokenizer!''')
-
-            lang_extra = True
+    check_missing_extra_langs(langs_supported_spacy_lemmatizers, langs_lemmatizers_spacy, "spaCy's lemmatizers")
 
     # Check for missing and extra languages for spaCy's stop word lists
     for lang_code, stop_word_lists in settings_stop_word_lists.items():
         if lang_code != 'other' and any(['spaCy' in stop_word_list for stop_word_list in stop_word_lists]):
             langs_stop_word_lists_spacy.append(lang_code)
 
-    for lang_code in langs_supported_spacy_stop_words:
-        lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
-
-        if lang_code_639_3 not in langs_stop_word_lists_spacy:
-            print(f'''Missing language code "{lang_code} / {lang_code_639_3}" found for spaCy's stop word lists!''')
-
-            lang_missing = True
-
-    for lang_code in langs_stop_word_lists_spacy:
-        lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
-
-        if lang_code_639_1 not in langs_supported_spacy_stop_words:
-            print(f'''Extra language code "{lang_code} / {lang_code_639_1}" found for spaCy's stop word lists!''')
-
-            lang_extra = True
+    check_missing_extra_langs(langs_supported_spacy_stop_words, langs_stop_word_lists_spacy, "spaCy's stop word lists")
 
     # Check for missing and extra languages in default settings
     check_missing_extra_langs_default(langs_sentence_tokenizers, langs_sentence_tokenizers_default, 'sentence tokenizers')
