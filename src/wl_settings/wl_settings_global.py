@@ -22,9 +22,11 @@ def init_settings_global(main):
     main.settings_global = {
         'langs': {
             main.tr('Afrikaans'):             ['afr', 'af', 'Indo-European'],
+            main.tr('Akkadian'):              ['akk', 'akk', 'Afro-Asiatic'],
             main.tr('Albanian'):              ['sqi', 'sq', 'Indo-European'],
             main.tr('Amharic'):               ['amh', 'am', 'Afro-Asiatic'],
             main.tr('Arabic'):                ['ara', 'ar', 'Afro-Asiatic'],
+            main.tr('Arabic (Standard)'):     ['arb', 'arb', 'Afro-Asiatic'],
             main.tr('Aragonese'):             ['arg', 'an', 'Indo-European'],
             main.tr('Armenian'):              ['hye', 'hy', 'Indo-European'],
             main.tr('Assamese'):              ['asm', 'as', 'Indo-European'],
@@ -39,20 +41,25 @@ def init_settings_global(main):
             main.tr('Catalan'):               ['cat', 'ca', 'Indo-European'],
             main.tr('Chinese (Simplified)'):  ['zho_cn', 'zh_cn', 'Sino-Tibetan'],
             main.tr('Chinese (Traditional)'): ['zho_tw', 'zh_tw', 'Sino-Tibetan'],
+            main.tr('Coptic'):                ['cop', 'cop', 'Unclassified'],
             main.tr('Croatian'):              ['hrv', 'hr', 'Indo-European'],
             main.tr('Czech'):                 ['ces', 'cs', 'Indo-European'],
             main.tr('Danish'):                ['dan', 'da', 'Indo-European'],
             main.tr('Dutch'):                 ['nld', 'nl', 'Indo-European'],
             main.tr('Dzongkha'):              ['dzo', 'dz', 'Sino-Tibetan'],
             main.tr('English'):               ['eng', 'en', 'Indo-European'],
+            main.tr('English (Middle)'):      ['enm', 'enm', 'Indo-European'],
+            main.tr('English (Old)'):         ['ang', 'ang', 'Indo-European'],
             main.tr('Esperanto'):             ['epo', 'eo', 'Constructed'],
             main.tr('Estonian'):              ['est', 'et', 'Uralic'],
             main.tr('Faroese'):               ['fao', 'fo', 'Indo-European'],
             main.tr('Finnish'):               ['fin', 'fi', 'Uralic'],
             main.tr('French'):                ['fra', 'fr', 'Indo-European'],
+            main.tr('French (Old)'):          ['fro', 'fro', 'Indo-European'],
             main.tr('Galician'):              ['glg', 'gl', 'Indo-European'],
             main.tr('Georgian'):              ['kat', 'ka', 'Kartvelian'],
             main.tr('German'):                ['deu', 'de', 'Indo-European'],
+            main.tr('German (Middle High)'):  ['gmh', 'gmh', 'Unclassified'],
             main.tr('Greek (Ancient)'):       ['grc', 'grc', 'Unclassified'],
             main.tr('Greek (Modern)'):        ['ell', 'el', 'Indo-European'],
             main.tr('Gujarati'):              ['guj', 'gu', 'Indo-European'],
@@ -87,9 +94,11 @@ def init_settings_global(main):
             main.tr('Maltese'):               ['mlt', 'mt', 'Afro-Asiatic'],
             main.tr('Manx'):                  ['glv', 'gv', 'Indo-European'],
             main.tr('Marathi'):               ['mar', 'mr', 'Indo-European'],
+            main.tr('Marathi (Old)'):         ['omr', 'omr', 'Unclassified'],
             main.tr('Meitei'):                ['mni', 'mni', 'Sino-Tibetan'],
             main.tr('Mongolian'):             ['mon', 'mn', 'Mongolic'],
             main.tr('Nepali'):                ['nep', 'ne', 'Indo-European'],
+            main.tr('Norse (Old)'):           ['non', 'non', 'Indo-European'],
             main.tr('Norwegian Bokmål'):      ['nob', 'nb', 'Indo-European'],
             main.tr('Norwegian Nynorsk'):     ['nno', 'nn', 'Indo-European'],
             main.tr('Occitan'):               ['oci', 'oc', 'Indo-European'],
@@ -1589,6 +1598,11 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
+            'akk': [
+                main.tr('CLTK - Akkadian Stop Word List'),
+                main.tr('Custom List')
+            ],
+
             'sqi': [
                 main.tr('extra-stopwords - Albanian Stop Word List'),
                 main.tr('spaCy - Albanian Stop Word List'),
@@ -1605,6 +1619,11 @@ def init_settings_global(main):
                 main.tr('NLTK - Arabic Stop Word List'),
                 main.tr('spaCy - Arabic Stop Word List'),
                 main.tr('Stopwords ISO - Arabic Stop Word List'),
+                main.tr('Custom List')
+            ],
+
+            'arb': [
+                main.tr('CLTK - Arabic (Standard) Stop Word List'),
                 main.tr('Custom List')
             ],
 
@@ -1672,6 +1691,11 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
+            'cop': [
+                main.tr('CLTK - Coptic Stop Word List'),
+                main.tr('Custom List')
+            ],
+
             'hrv': [
                 main.tr('extra-stopwords - Croatian Stop Word List'),
                 main.tr('spaCy - Croatian Stop Word List'),
@@ -1710,6 +1734,16 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
+            'enm': [
+                main.tr('CLTK - English (Middle) Stop Word List'),
+                main.tr('Custom List')
+            ],
+
+            'ang': [
+                main.tr('CLTK - English (Old) Stop Word List'),
+                main.tr('Custom List')
+            ],
+
             'epo': [
                 main.tr('Stopwords ISO - Esperanto Stop Word List'),
                 main.tr('Custom List')
@@ -1738,6 +1772,11 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
+            'fro': [
+                main.tr('CLTK - French (Old) Stop Word List'),
+                main.tr('Custom List')
+            ],
+
             'glg': [
                 main.tr('extra-stopwords - Galician Stop Word List'),
                 main.tr('Stopwords ISO - Galician Stop Word List'),
@@ -1752,8 +1791,13 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
+            'gmh': [
+                main.tr('CLTK - German (Middle High) Stop Word List'),
+                main.tr('Custom List')
+            ],
+
             'grc': [
-                main.tr('Stopwords ISO - Greek Stop Word List'),
+                main.tr('CLTK - Greek (Ancient) Stop Word List'),
                 main.tr('Custom List')
             ],
 
@@ -1761,7 +1805,7 @@ def init_settings_global(main):
                 main.tr('extra-stopwords - Greek (Modern) Stop Word List'),
                 main.tr('NLTK - Greek (Modern) Stop Word List'),
                 main.tr('spaCy - Greek (Modern) Stop Word List'),
-                main.tr('Stopwords ISO - Greek Stop Word List'),
+                main.tr('Stopwords ISO - Greek (Modern) Stop Word List'),
                 main.tr('Custom List')
             ],
 
@@ -1785,6 +1829,7 @@ def init_settings_global(main):
             ],
 
             'hin': [
+                main.tr('CLTK - Hindi Stop Word List'),
                 main.tr('extra-stopwords - Hindi Stop Word List'),
                 main.tr('spaCy - Hindi Stop Word List'),
                 main.tr('Stopwords ISO - Hindi Stop Word List'),
@@ -1864,6 +1909,7 @@ def init_settings_global(main):
             ],
 
             'lat': [
+                main.tr('CLTK - Latin Stop Word List'),
                 main.tr('Stopwords ISO - Latin Stop Word List'),
                 main.tr('Custom List')
             ],
@@ -1915,6 +1961,11 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
+            'omr': [
+                main.tr('CLTK - Marathi (Old) Stop Word List'),
+                main.tr('Custom List')
+            ],
+
             'mon': [
                 main.tr('extra-stopwords - Mongolian Stop Word List'),
                 main.tr('Custom List')
@@ -1924,6 +1975,11 @@ def init_settings_global(main):
                 main.tr('extra-stopwords - Nepali Stop Word List'),
                 main.tr('NLTK - Nepali Stop Word List'),
                 main.tr('spaCy - Nepali Stop Word List'),
+                main.tr('Custom List')
+            ],
+
+            'non': [
+                main.tr('CLTK - Norse (Old) Stop Word List'),
                 main.tr('Custom List')
             ],
 
@@ -1964,6 +2020,11 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
+            'pan': [
+                main.tr('CLTK - Punjabi Stop Word List'),
+                main.tr('Custom List')
+            ],
+
             'ron': [
                 main.tr('extra-stopwords - Romanian Stop Word List'),
                 main.tr('NLTK - Romanian Stop Word List'),
@@ -1981,6 +2042,7 @@ def init_settings_global(main):
             ],
 
             'san': [
+                main.tr('CLTK - Sanskrit Stop Word List'),
                 main.tr('spaCy - Sanskrit Stop Word List'),
                 main.tr('Custom List')
             ],
