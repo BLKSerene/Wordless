@@ -32,12 +32,13 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
     else:
         tags = [''] * len(tokens)
 
-    # Record empty tokens
+    # Record empty tokens with their tags
     for i, token in reversed(list(enumerate(tokens))):
         if not token.strip():
             empty_offsets.append(i)
 
-            tokens.remove(token)
+            del tokens[i]
+            del tags[i]
 
     wl_text_utils.init_lemmatizers(
         main,
@@ -127,8 +128,9 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
     if mapping_lemmas:
         lemmas = [mapping_lemmas.get(token, token) for token in tokens]
 
-    # Insert empty lemmas
+    # Insert empty lemmas with their tags
     for empty_offset in sorted(empty_offsets):
         lemmas.insert(empty_offset, '')
+        tags.insert(empty_offset, '')
 
     return [lemma + tag for lemma, tag in zip(lemmas, tags)]
