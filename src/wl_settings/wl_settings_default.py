@@ -648,6 +648,8 @@ def init_settings_default(main):
                 'window_left': -5,
                 'window_right': 5,
 
+                'limit_searching': main.tr('None'),
+
                 'test_significance': main.tr('Pearson\'s Chi-squared Test'),
                 'measure_effect_size': main.tr('Pointwise Mutual Information'),
             },
@@ -806,6 +808,8 @@ def init_settings_default(main):
                 'window_sync': False,
                 'window_left': -5,
                 'window_right': 5,
+
+                'limit_searching': main.tr('None'),
 
                 'test_significance': main.tr('Pearson\'s Chi-squared Test'),
                 'measure_effect_size': main.tr('Pointwise Mutual Information')

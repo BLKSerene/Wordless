@@ -23,6 +23,7 @@
 - Utils: Add spaCy’s Macedonian POS tagger and lemmatizer
 - Utils: Add spaCy’s Russian POS tagger and lemmatizer
 - Utils: Add spaCy’s sentence recognizer
+- Work Area: Add Collocation/Colligation - Generation Settings - Limit Searching
 - Work Area: Add Concordancer (Parallel Mode)
 
 ### 📌 Bugfixes
