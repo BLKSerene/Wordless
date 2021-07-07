@@ -48,6 +48,7 @@
 - Dependencies: Upgrade Python 3.8.10
 - Dependencies: Upgrade python-docx to 0.8.11
 - Dependencies: Upgrade Sacremoses to 0.0.45
+- Dependencies: Upgrade SciPy to 1.7.0
 - Dependencies: Upgrade spaCy to 3.0.6
 - Dependencies: Upgrade Tokenizer to 3.1.2
 
