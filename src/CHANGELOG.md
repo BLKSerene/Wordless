@@ -41,6 +41,7 @@
 - Dependencies: Upgrade Matplotlib to 3.4.2
 - Dependencies: Upgrade NetworkX to 2.5.1
 - Dependencies: Upgrade NLTK to 3.6.2
+- Dependencies: Upgrade openpyxl to 3.0.7
 - Dependencies: Upgrade PyQt to 5.15.4
 - Dependencies: Upgrade PyThaiNLP to 2.3.1
 - Dependencies: Upgrade Python 3.8.10
