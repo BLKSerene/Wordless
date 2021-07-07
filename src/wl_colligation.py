@@ -28,7 +28,7 @@ from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
 from wl_measures import wl_measures_statistical_significance
 from wl_text import wl_matching, wl_pos_tagging, wl_text, wl_token_processing, wl_word_detokenization
 from wl_utils import wl_misc, wl_sorting, wl_threading
-from wl_widgets import wl_layout, wl_msg, wl_table, wl_widgets
+from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
 
 class Wl_Table_Colligation(wl_table.Wl_Table_Data_Filter_Search):
     def __init__(self, parent):
@@ -242,6 +242,9 @@ class Wrapper_Colligation(wl_layout.Wl_Wrapper):
          self.label_window_right,
          self.spin_box_window_right) = wl_widgets.wl_widgets_window(self)
 
+        self.label_limit_searching = QLabel(self.tr('Limit Searching:'), self)
+        self.combo_box_limit_searching = wl_box.Wl_Combo_Box(self)
+
         (self.label_test_significance,
          self.combo_box_test_significance) = wl_widgets.wl_widgets_test_significance(self)
         (self.label_measure_effect_size,
@@ -253,6 +256,12 @@ class Wrapper_Colligation(wl_layout.Wl_Wrapper):
             tab = self.tr('Statistical Significance')
         )
 
+        self.combo_box_limit_searching.addItems([
+            self.tr('None'),
+            self.tr('Within Sentences'),
+            self.tr('Within Paragraphs')
+        ])
+
         self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['collocation'].keys()))
         self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['collocation'].keys()))
 
@@ -260,8 +269,16 @@ class Wrapper_Colligation(wl_layout.Wl_Wrapper):
         self.spin_box_window_left.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_window_right.valueChanged.connect(self.generation_settings_changed)
 
+        self.combo_box_limit_searching.currentTextChanged.connect(self.generation_settings_changed)
+
         self.combo_box_test_significance.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_effect_size.currentTextChanged.connect(self.generation_settings_changed)
+
+        layout_settings_limit_searching = wl_layout.Wl_Layout()
+        layout_settings_limit_searching.addWidget(self.label_limit_searching, 0, 0)
+        layout_settings_limit_searching.addWidget(self.combo_box_limit_searching, 0, 1)
+
+        layout_settings_limit_searching.setColumnStretch(1, 1)
 
         layout_settings_measures = wl_layout.Wl_Layout()
         layout_settings_measures.addWidget(self.label_settings_measures, 0, 0)
@@ -276,17 +293,18 @@ class Wrapper_Colligation(wl_layout.Wl_Wrapper):
         self.group_box_generation_settings.layout().addWidget(self.spin_box_window_left, 1, 1)
         self.group_box_generation_settings.layout().addWidget(self.label_window_right, 1, 2)
         self.group_box_generation_settings.layout().addWidget(self.spin_box_window_right, 1, 3)
+        self.group_box_generation_settings.layout().addLayout(layout_settings_limit_searching, 2, 0, 1, 4)
 
-        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 2, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 3, 0, 1, 4)
 
-        self.group_box_generation_settings.layout().addWidget(self.label_test_significance, 3, 0, 1, 4)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_test_significance, 4, 0, 1, 4)
-        self.group_box_generation_settings.layout().addWidget(self.label_measure_effect_size, 5, 0, 1, 4)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 6, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(self.label_test_significance, 4, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_test_significance, 5, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(self.label_measure_effect_size, 6, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 7, 0, 1, 4)
 
-        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 7, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 8, 0, 1, 4)
 
-        self.group_box_generation_settings.layout().addLayout(layout_settings_measures, 8, 0, 1, 4)
+        self.group_box_generation_settings.layout().addLayout(layout_settings_measures, 9, 0, 1, 4)
 
         self.group_box_generation_settings.layout().setColumnStretch(1, 1)
         self.group_box_generation_settings.layout().setColumnStretch(3, 1)
@@ -452,6 +470,8 @@ class Wrapper_Colligation(wl_layout.Wl_Wrapper):
             self.spin_box_window_right.setPrefix('R')
             self.spin_box_window_right.setValue(settings['generation_settings']['window_right'])
 
+        self.combo_box_limit_searching.setCurrentText(settings['generation_settings']['limit_searching'])
+
         self.combo_box_test_significance.setCurrentText(settings['generation_settings']['test_significance'])
         self.combo_box_measure_effect_size.setCurrentText(settings['generation_settings']['measure_effect_size'])
 
@@ -539,6 +559,8 @@ class Wrapper_Colligation(wl_layout.Wl_Wrapper):
             settings['window_right'] = - self.spin_box_window_right.value()
         else:
             settings['window_right'] = self.spin_box_window_right.value()
+
+        settings['limit_searching'] = self.combo_box_limit_searching.currentText()
 
         settings['test_significance'] = self.combo_box_test_significance.currentText()
         settings['measure_effect_size'] = self.combo_box_measure_effect_size.currentText()
@@ -671,14 +693,69 @@ class Wl_Worker_Colligation(wl_threading.Wl_Worker):
                     len_search_term_min = 1
                     len_search_term_max = 1
 
+                len_tokens = len(tokens)
+                settings_limit_searching = settings['generation_settings']['limit_searching']
+
                 for ngram_size in range(len_search_term_min, len_search_term_max + 1):
                     if ngram_size not in colligations_freqs_files_all:
                         colligations_freqs_file_all[ngram_size] = collections.Counter()
 
                     for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
+                        # Sentence span
+                        if text.offsets_sentences[-1] <= i:
+                            i_sentence_start = text.offsets_sentences[-1]
+                            i_sentence_end = len_tokens - 1
+                        else:
+                            for j, i_sentence in enumerate(text.offsets_sentences):
+                                if i_sentence > i:
+                                    i_sentence_start = text.offsets_sentences[j - 1]
+                                    i_sentence_end = i_sentence - 1
+
+                                    break
+
+                        # Paragraph span
+                        if text.offsets_paras[-1] <= i:
+                            i_para_start = text.offsets_paras[-1]
+                            i_para_end = len_tokens - 1
+                        else:
+                            for j, i_para in enumerate(text.offsets_paras):
+                                if i_para > i:
+                                    i_para_start = text.offsets_paras[j - 1]
+                                    i_para_end = i_para - 1
+
+                                    break
+
                         # Extract collocates
+                        tags_left = []
+                        tags_right = []
+
                         if window_left < 0 and window_right > 0:
-                            for j, collocate in enumerate(reversed(text.tags[max(0, i + window_left) : i])):
+                            # Limit Searching
+                            if settings_limit_searching == self.tr('None'):
+                                tags_left = text.tags[max(0, i + window_left) : i]
+                                tags_right = text.tags[i + ngram_size : i + ngram_size + window_right]
+                            elif settings_limit_searching == self.tr('Within Sentences'):
+                                # Span positions (Left)
+                                for position in range(max(0, i + window_left), i):
+                                    if i_sentence_start <= position <= i_sentence_end:
+                                        tags_left.append(text.tags[position])
+
+                                # Span positions (Right)
+                                for position in range(i + ngram_size, i + ngram_size + window_right):
+                                    if i_sentence_start <= position <= i_sentence_end:
+                                        tags_right.append(text.tags[position])
+                            elif settings_limit_searching == self.tr('Within Paragraphs'):
+                                # Span positions (Left)
+                                for position in range(max(0, i + window_left), i):
+                                    if i_para_start <= position <= i_para_end:
+                                        tags_left.append(text.tags[position])
+
+                                # Span positions (Right)
+                                for position in range(i + ngram_size, i + ngram_size + window_right):
+                                    if i_para_start <= position <= i_para_end:
+                                        tags_right.append(text.tags[position])
+
+                            for j, collocate in enumerate(reversed(tags_left)):
                                 if wl_matching.check_context(
                                     i, tokens,
                                     context_settings = settings['context_settings'],
@@ -692,7 +769,7 @@ class Wl_Worker_Colligation(wl_threading.Wl_Worker):
 
                                 colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
 
-                            for j, collocate in enumerate(text.tags[i + ngram_size : i + ngram_size + window_right]):
+                            for j, collocate in enumerate(tags_right):
                                 if wl_matching.check_context(
                                     i, tokens,
                                     context_settings = settings['context_settings'],
@@ -706,7 +783,21 @@ class Wl_Worker_Colligation(wl_threading.Wl_Worker):
 
                                 colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
                         elif window_left < 0 and window_right < 0:
-                            for j, collocate in enumerate(reversed(text.tags[max(0, i + window_left) : max(0, i + window_right + 1)])):
+                            # Limit Searching
+                            if settings_limit_searching == self.tr('None'):
+                                tags_left = text.tags[max(0, i + window_left) : max(0, i + window_right + 1)]
+                            elif settings_limit_searching == self.tr('Within Sentences'):
+                                # Span positions (Left)
+                                for position in range(max(0, i + window_left), max(0, i + window_right + 1)):
+                                    if i_sentence_start <= position <= i_sentence_end:
+                                        tags_left.append(text.tags[position])
+                            elif settings_limit_searching == self.tr('Within Paragraphs'):
+                                # Span positions (Left)
+                                for position in range(max(0, i + window_left), max(0, i + window_right + 1)):
+                                    if i_para_start <= position <= i_para_end:
+                                        tags_left.append(text.tags[position])
+
+                            for j, collocate in enumerate(reversed(tags_left)):
                                 if wl_matching.check_context(
                                     i, tokens,
                                     context_settings = settings['context_settings'],
@@ -720,7 +811,21 @@ class Wl_Worker_Colligation(wl_threading.Wl_Worker):
 
                                 colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
                         elif window_left > 0 and window_right > 0:
-                            for j, collocate in enumerate(text.tags[i + ngram_size + window_left - 1: i + ngram_size + window_right]):
+                            # Limit Searching
+                            if settings_limit_searching == self.tr('None'):
+                                tags_right = text.tags[i + ngram_size + window_left - 1 : i + ngram_size + window_right]
+                            elif settings_limit_searching == self.tr('Within Sentences'):
+                                # Span positions (Right)
+                                for position in range(i + ngram_size + window_left - 1, i + ngram_size + window_right):
+                                    if i_sentence_start <= position <= i_sentence_end:
+                                        tags_right.append(text.tags[position])
+                            elif settings_limit_searching == self.tr('Within Paragraphs'):
+                                # Span positions (Right)
+                                for position in range(i + ngram_size + window_left - 1, i + ngram_size + window_right):
+                                    if i_para_start <= position <= i_para_end:
+                                        tags_right.append(text.tags[position])
+
+                            for j, collocate in enumerate(tags_right):
                                 if wl_matching.check_context(
                                     i, tokens,
                                     context_settings = settings['context_settings'],
