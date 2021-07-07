@@ -41,6 +41,20 @@ def wl_process_tokens(text, token_settings):
 
         text.tags = [tags for tags in text.tags if tags != '']
 
+        # Update offsets
+        i_sentences = 0
+        i_tokens = 0
+
+        for i, para in enumerate(text.tokens_multilevel):
+            text.offsets_paras[i] = i_tokens
+
+            for j, sentence in enumerate(para):
+                text.offsets_sentences[i_sentences + j] = i_tokens
+
+                i_tokens += len(sentence)
+
+            i_sentences += len(para)
+
     # Lemmatize all tokens
     if not settings['use_tags'] and settings['lemmatize_tokens']:
         for para in text.tokens_multilevel:
@@ -181,6 +195,7 @@ def wl_process_tokens_concordancer(text, token_settings, preserve_blank_lines = 
                   for token in tokens
                   if not wl_checking_token.is_token_punc(token)]
 
+        # Update offsets
         text.offsets_paras = []
         text.offsets_sentences = []
         text.tokens_flat = []
