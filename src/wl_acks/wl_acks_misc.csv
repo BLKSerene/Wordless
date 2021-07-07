@@ -8,4 +8,4 @@ NumPy|https://www.numpy.org/|1.21.0|NumPy Developers|BSD-3-Clause|https://github
 openpyxl|https://foss.heptapod.net/openpyxl/openpyxl|3.0.7|Eric Gazoni, Charlie Clark|MIT|https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.0/LICENCE.rst
 python-docx|https://github.com/python-openxml/python-docx|0.8.11|Steve Canny|MIT|https://github.com/python-openxml/python-docx/blob/master/LICENSE
 requests|https://requests.readthedocs.io/|2.25.1|Kenneth Reitz|Apache-2.0|https://github.com/requests/requests/blob/master/LICENSE
-SciPy|https://scipy.org/scipylib/|1.6.0 |SciPy Developers|BSD-3-Clause|https://github.com/scipy/scipy/blob/master/LICENSE.txt
+SciPy|https://scipy.org/scipylib/|1.7.0|SciPy Developers|BSD-3-Clause|https://github.com/scipy/scipy/blob/master/LICENSE.txt
