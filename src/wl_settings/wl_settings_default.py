@@ -1320,6 +1320,7 @@ def init_settings_default(main):
 
         'pos_tagging': {
             'pos_taggers': {
+                'cat': main.tr('spaCy - Catalan POS Tagger'),
                 'zho_cn': main.tr('spaCy - Chinese POS Tagger'),
                 'zho_tw': main.tr('spaCy - Chinese POS Tagger'),
                 'dan': main.tr('spaCy - Danish POS Tagger'),
@@ -1355,6 +1356,7 @@ def init_settings_default(main):
             'preview_lang': 'eng',
 
             'preview_pos_tagger': {
+                'cat': main.tr('spaCy - Catalan POS Tagger'),
                 'zho_cn': main.tr('spaCy - Chinese POS Tagger'),
                 'zho_tw': main.tr('spaCy - Chinese POS Tagger'),
                 'dan': main.tr('spaCy - Danish POS Tagger'),
