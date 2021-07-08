@@ -424,7 +424,7 @@ Belarusian           |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
 Bengali              |✔|✔|✔|✖️|✔|✔
 Breton               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
 Bulgarian            |✔|✔|⭕️ |✖️|✔|✔
-Catalan              |✔|✔|✔|✖️|✔|✔
+Catalan              |✔|✔|✔|✔|✔|✔
 Chinese (Simplified) |✔|✔|✔|✔|✖️|✔
 Chinese (Traditional)|✔|✔|✔|✔|✖️|✔
 Coptic               |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
