@@ -78,6 +78,10 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         sentences = nltk.sent_tokenize(text, language = lang_texts[lang])
     # spaCy
     elif 'spaCy' in sentence_tokenizer:
+        # Chinese
+        if lang in ['zho_cn', 'zho_tw']:
+            lang = 'zho'
+        
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
 

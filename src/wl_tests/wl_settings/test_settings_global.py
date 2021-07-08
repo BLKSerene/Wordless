@@ -128,8 +128,11 @@ def test_settings_global():
     # Loading languages supported by spaCy
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
         if lang.ispkg:
-            if lang.name not in ['ja', 'ko', 'sr', 'th', 'vi', 'zh', 'xx']:
+            if lang.name not in ['ja', 'ko', 'sr', 'th', 'vi', 'zh', 'xx', 'az']:
                 langs_supported_spacy.append(lang.name)
+            # Chinese
+            elif lang.name == 'zh':
+                langs_supported_spacy.extend(['zh_cn', 'zh_tw'])
             # Serbian
             elif lang.name == 'sr':
                 langs_supported_spacy.extend(['sr_cyrl', 'sr_latn'])
@@ -152,7 +155,7 @@ def test_settings_global():
         if lang.ispkg:
             for file in os.listdir(f'{spacy.lang.__path__[0]}/{lang.name}/'):
                 if file == 'stop_words.py':
-                    if lang.name not in ['sr', 'zh', 'xx']:
+                    if lang.name not in ['sr', 'zh', 'xx', 'az']:
                         langs_supported_spacy_stop_words.append(lang.name)
                     # Chinese
                     elif lang.name == 'zh':
