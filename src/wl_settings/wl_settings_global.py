@@ -1357,6 +1357,10 @@ def init_settings_global(main):
         },
 
         'pos_taggers': {
+            'cat': [
+                main.tr('spaCy - Catalan POS Tagger')
+            ],
+
             'zho_cn': [
                 main.tr('jieba - Chinese POS Tagger'),
                 main.tr('spaCy - Chinese POS Tagger')
