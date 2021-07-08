@@ -166,6 +166,7 @@ SRP_LATN_TO_CYRL_DIGRAPHS = {
 
 def init_spacy_models(main, lang):
     spacy_langs = {
+        'zho': 'zh_core_web_sm',
         'dan': 'da_core_news_sm',
         'nld': 'nl_core_news_sm',
         'eng': 'en_core_web_sm',
@@ -186,6 +187,10 @@ def init_spacy_models(main, lang):
     }
     spacy_langs_lemmatizers = ['ben', 'cat', 'hrv', 'ces', 'hun', 'ind', 'ltz', 'fas', 'srp_cyrl', 'swe', 'tgl', 'tur', 'urd']
 
+    # Chinese
+    if lang in ['zho_cn', 'zho_tw']:
+        lang = 'zho'
+
     if f'spacy_nlp_{lang}' not in main.__dict__:
         # Languages with models
         if lang in spacy_langs:
@@ -197,13 +202,8 @@ def init_spacy_models(main, lang):
 
         # Languages without models
         else:
-            # Chinese
-            if lang == 'zho_cn':
-                main.__dict__['spacy_nlp_zho_cn'] = spacy.blank('zh')
-            elif lang == 'zho_tw':
-                main.__dict__['spacy_nlp_zho_tw'] = spacy.blank('zh')
             # Serbian
-            elif lang == 'srp_cyrl':
+            if lang == 'srp_cyrl':
                 main.__dict__['spacy_nlp_srp_cyrl'] = spacy.blank('sr')
             elif lang == 'srp_latn':
                 main.__dict__['spacy_nlp_srp_latn'] = spacy.blank('sr')
@@ -260,10 +260,11 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
     # spaCy
     elif 'spaCy' in word_tokenizer:
         init_spacy_models(main, lang)
-    # Chinese & Japanese
-    elif 'pkuseg' in word_tokenizer:
+    # Chinese
+    elif word_tokenizer == main.tr('pkuseg - Chinese Word Tokenizer'):
         if 'pkuseg_word_tokenizer' not in main.__dict__:
             main.pkuseg_word_tokenizer = pkuseg.pkuseg()
+    # Chinese & Japanese
     elif 'Wordless' in word_tokenizer:
         init_spacy_models(main, 'eng')
         init_spacy_models(main, 'other')

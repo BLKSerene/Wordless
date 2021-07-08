@@ -1114,8 +1114,8 @@ def init_settings_default(main):
                 'ben': main.tr('spaCy - Sentencizer'),
                 'bul': main.tr('spaCy - Sentencizer'),
                 'cat': main.tr('spaCy - Sentencizer'),
-                'zho_cn': main.tr('Wordless - Chinese Sentence Tokenizer'),
-                'zho_tw': main.tr('Wordless - Chinese Sentence Tokenizer'),
+                'zho_cn': main.tr('spaCy - Sentence Recognizer'),
+                'zho_tw': main.tr('spaCy - Sentence Recognizer'),
                 'hrv': main.tr('spaCy - Sentencizer'),
                 'ces': main.tr('NLTK - Punkt Sentence Tokenizer'),
                 'dan': main.tr('spaCy - Sentence Recognizer'),
@@ -1194,8 +1194,8 @@ def init_settings_default(main):
                 'ben': main.tr('spaCy - Bengali Word Tokenizer'),
                 'bul': main.tr('spaCy - Bulgarian Word Tokenizer'),
                 'cat': main.tr('spaCy - Catalan Word Tokenizer'),
-                'zho_cn': main.tr('pkuseg - Chinese Word Tokenizer'),
-                'zho_tw': main.tr('pkuseg - Chinese Word Tokenizer'),
+                'zho_cn': main.tr('spaCy - Chinese Word Tokenizer'),
+                'zho_tw': main.tr('spaCy - Chinese Word Tokenizer'),
                 'hrv': main.tr('spaCy - Croatian Word Tokenizer'),
                 'ces': main.tr('spaCy - Czech Word Tokenizer'),
                 'dan': main.tr('spaCy - Danish Word Tokenizer'),
@@ -1320,8 +1320,8 @@ def init_settings_default(main):
 
         'pos_tagging': {
             'pos_taggers': {
-                'zho_cn': main.tr('jieba - Chinese POS Tagger'),
-                'zho_tw': main.tr('jieba - Chinese POS Tagger'),
+                'zho_cn': main.tr('spaCy - Chinese POS Tagger'),
+                'zho_tw': main.tr('spaCy - Chinese POS Tagger'),
                 'dan': main.tr('spaCy - Danish POS Tagger'),
                 'nld': main.tr('spaCy - Dutch POS Tagger'),
                 'eng': main.tr('spaCy - English POS Tagger'),
@@ -1355,8 +1355,8 @@ def init_settings_default(main):
             'preview_lang': 'eng',
 
             'preview_pos_tagger': {
-                'zho_cn': main.tr('jieba - Chinese POS Tagger'),
-                'zho_tw': main.tr('jieba - Chinese POS Tagger'),
+                'zho_cn': main.tr('spaCy - Chinese POS Tagger'),
+                'zho_tw': main.tr('spaCy - Chinese POS Tagger'),
                 'dan': main.tr('spaCy - Danish POS Tagger'),
                 'nld': main.tr('spaCy - Dutch POS Tagger'),
                 'eng': main.tr('spaCy - English POS Tagger'),

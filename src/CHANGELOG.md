@@ -20,6 +20,7 @@
 - Utils: Add spaCy’s Amharic, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana word tokenizers
 - Utils: Add spaCy’s Amharic, Korean, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana stop word lists
 - Utils: Add spaCy’s Bengali, Catalan, Croatian, Czech, Hungarian, Indonesian, Luxembourgish, Persian, Serbian (Cyrillic), Swedish, Tagalog, Turkish, and Urdu lemmatizers
+- Utils: Add spaCy’s Chinese word tokenizer and POS tagger
 - Utils: Add spaCy’s Macedonian POS tagger and lemmatizer
 - Utils: Add spaCy’s Russian POS tagger and lemmatizer
 - Utils: Add spaCy’s sentence recognizer
