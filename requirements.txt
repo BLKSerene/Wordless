@@ -33,7 +33,7 @@ razdel == 0.5.0
 sacremoses == 0.0.45
 
 ## spaCy
-spacy == 3.0.6
+spacy == 3.1.0
 spacy-lookups-data == 1.0.2
 
 syntok == 1.3.1
