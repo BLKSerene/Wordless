@@ -57,7 +57,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
     elif lang == 'ben':
         assert text == 'বাংলা ভাষা (বাঙলা, বাঙ্গলা, তথা বাঙ্গালা নামগুলোতেও পরিচিত) একটি ইন্দো - আর্য ভাষা, যা দক্ষিণ এশিয়ার বাঙালি জাতির প্রধান কথ্য ও লেখ্য ভাষা ।'
     elif lang == 'cat':
-        assert text == "El català (denominació oficial a Catalunya, a les Illes Balears, a Andorra, a la ciutat de l' Alguer i tradicional a Catalunya Nord) o valencià (denominació oficial al País Valencià i tradicional al Carxe) és una llengua romànica parlada a Catalunya, el País Valencià (tret d' algunes comarques i localitats de l' interior), les Illes Balears, Andorra, la Franja de Ponent (a l' Aragó), la ciutat de l' Alguer (a l' illa de Sardenya), la Catalunya del Nord,[8] el Carxe (un petit territori de Múrcia poblat per immigrats valencians),[9][10] i en petites comunitats arreu del món (entre les quals destaca la de l' Argentina, amb 195.000 parlants).[11]"
+        assert text == "El català (denominació oficial a Catalunya, a les Illes Balears, a Andorra, a la ciutat de l' Alguer i tradicional a Catalunya Nord) o valencià (denominació oficial al País Valencià i tradicional al Carxe) és una llengua romànica parlada a Catalunya, el País Valencià (tret d' algunes comarques i localitats de l' interior), les Illes Balears, Andorra, la Franja de Ponent (a l' Aragó), la ciutat de l' Alguer (a l' illa de Sardenya), la Catalunya del Nord,[8] el Carxe (un petit territori de Múrcia poblat per immigrats valencians),[9][10] i en comunitats arreu del món (entre les quals destaca la de l' Argentina, amb 198.000 parlants).[11]"
     elif lang == 'zho_cn':
         assert text == '汉语，又称汉文、中文、中国话、中国语、华语、华文、唐话[2]，或被视为一个语族，或被视为隶属于汉藏语系汉语族之一种语言。'
     elif lang == 'zho_tw':

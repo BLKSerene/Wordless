@@ -166,6 +166,7 @@ SRP_LATN_TO_CYRL_DIGRAPHS = {
 
 def init_spacy_models(main, lang):
     spacy_langs = {
+        'cat': 'ca_core_news_sm',
         'zho': 'zh_core_web_sm',
         'dan': 'da_core_news_sm',
         'nld': 'nl_core_news_sm',
