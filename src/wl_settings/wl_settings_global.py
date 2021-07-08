@@ -352,10 +352,12 @@ def init_settings_global(main):
             ],
 
             'zho_cn': [
+                main.tr('spaCy - Sentence Recognizer'),
                 main.tr('Wordless - Chinese Sentence Tokenizer')
             ],
 
             'zho_tw': [
+                main.tr('spaCy - Sentence Recognizer'),
                 main.tr('Wordless - Chinese Sentence Tokenizer')
             ],
 
@@ -691,12 +693,14 @@ def init_settings_global(main):
             'zho_cn': [
                 main.tr('jieba - Chinese Word Tokenizer'),
                 main.tr('pkuseg - Chinese Word Tokenizer'),
+                main.tr('spaCy - Chinese Word Tokenizer'),
                 main.tr('Wordless - Chinese Character Tokenizer')
             ],
 
             'zho_tw': [
                 main.tr('jieba - Chinese Word Tokenizer'),
                 main.tr('pkuseg - Chinese Word Tokenizer'),
+                main.tr('spaCy - Chinese Word Tokenizer'),
                 main.tr('Wordless - Chinese Character Tokenizer')
             ],
 
@@ -1354,11 +1358,13 @@ def init_settings_global(main):
 
         'pos_taggers': {
             'zho_cn': [
-                main.tr('jieba - Chinese POS Tagger')
+                main.tr('jieba - Chinese POS Tagger'),
+                main.tr('spaCy - Chinese POS Tagger')
             ],
 
             'zho_tw': [
-                main.tr('jieba - Chinese POS Tagger')
+                main.tr('jieba - Chinese POS Tagger'),
+                main.tr('spaCy - Chinese POS Tagger')
             ],
 
             'dan': [

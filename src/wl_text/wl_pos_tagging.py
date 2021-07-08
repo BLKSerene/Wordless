@@ -40,6 +40,10 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'custom'):
 
     # spaCy
     if 'spaCy' in pos_tagger:
+        # Chinese
+        if lang in ['zho_cn', 'zho_tw']:
+            lang = 'zho'
+        
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens))
             
