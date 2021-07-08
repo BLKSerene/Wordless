@@ -15,6 +15,7 @@ import subprocess
 import sys
 
 langs = [
+    ['Chinese'         , 'zho', 'zh'],
     ['Danish'          , 'dan', 'da'],
     ['Dutch'           , 'nld', 'nl'],
     ['English'         , 'eng', 'en'],
@@ -32,6 +33,7 @@ langs = [
     ['Spanish'         , 'spa', 'es']
 ]
 
+model_name_zho = 'core_web_sm'
 model_name_dan = 'core_news_sm'
 model_name_nld = 'core_news_sm'
 model_name_eng = 'core_web_sm'
@@ -48,6 +50,7 @@ model_name_ron = 'core_news_sm'
 model_name_rus = 'core_news_sm'
 model_name_spa = 'core_news_sm'
 
+model_ver_zho = '3.1.0'
 model_ver_dan = '3.1.0'
 model_ver_nld = '3.1.0'
 model_ver_eng = '3.1.0'

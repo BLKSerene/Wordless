@@ -43,6 +43,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('sacremoses'))
 # spaCy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_lookups_data'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('zh_core_web_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('da_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('de_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('el_core_news_sm'))
@@ -126,6 +127,7 @@ hiddenimports = [
     'thinc.neural._custom_kernels',
 
     # spaCy models
+    'zh_core_web_sm',
     'da_core_news_sm',
     'de_core_news_sm',
     'el_core_news_sm',
