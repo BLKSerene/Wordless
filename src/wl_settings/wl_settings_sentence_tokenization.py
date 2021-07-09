@@ -74,25 +74,25 @@ class Wl_Settings_Sentence_Tokenization(wl_tree.Wl_Settings):
 
         self.label_sentence_tokenization_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_sentence_tokenization_preview_lang = wl_box.Wl_Combo_Box(self)
-        self.button_sentence_tokenization_start_processing = QPushButton(self.tr('Start processing'), self)
+        self.button_sentence_tokenization_show_preview = QPushButton(self.tr('Show preview'), self)
         self.text_edit_sentence_tokenization_preview_samples = QTextEdit(self)
         self.text_edit_sentence_tokenization_preview_results = QTextEdit(self)
 
         self.combo_box_sentence_tokenization_preview_lang.addItems(wl_conversion.to_lang_text(self.main, list(settings_global.keys())))
 
-        self.button_sentence_tokenization_start_processing.setFixedWidth(150)
+        self.button_sentence_tokenization_show_preview.setFixedWidth(130)
         self.text_edit_sentence_tokenization_preview_samples.setAcceptRichText(False)
         self.text_edit_sentence_tokenization_preview_results.setReadOnly(True)
 
         self.combo_box_sentence_tokenization_preview_lang.currentTextChanged.connect(self.preview_changed)
-        self.button_sentence_tokenization_start_processing.clicked.connect(self.preview_results_changed)
+        self.button_sentence_tokenization_show_preview.clicked.connect(self.preview_results_changed)
         self.text_edit_sentence_tokenization_preview_samples.textChanged.connect(self.preview_changed)
         self.text_edit_sentence_tokenization_preview_results.textChanged.connect(self.preview_changed)
 
         layout_preview_settings = wl_layout.Wl_Layout()
         layout_preview_settings.addWidget(self.label_sentence_tokenization_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_sentence_tokenization_preview_lang, 0, 1)
-        layout_preview_settings.addWidget(self.button_sentence_tokenization_start_processing, 0, 3)
+        layout_preview_settings.addWidget(self.button_sentence_tokenization_show_preview, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
@@ -123,10 +123,10 @@ class Wl_Settings_Sentence_Tokenization(wl_tree.Wl_Settings):
             if self.combo_box_sentence_tokenization_preview_lang.isEnabled():
                 self.__dict__[f"combo_box_sentence_tokenizer_{settings_custom['preview_lang']}"].setEnabled(False)
                 self.combo_box_sentence_tokenization_preview_lang.setEnabled(False)
-                self.button_sentence_tokenization_start_processing.setEnabled(False)
+                self.button_sentence_tokenization_show_preview.setEnabled(False)
                 self.text_edit_sentence_tokenization_preview_samples.setEnabled(False)
 
-                self.button_sentence_tokenization_start_processing.setText(self.tr('Processing ...'))
+                self.button_sentence_tokenization_show_preview.setText(self.tr('Processing ...'))
 
                 sentence_tokenizer = self.__dict__[f"combo_box_sentence_tokenizer_{settings_custom['preview_lang']}"].currentText()
 
@@ -146,10 +146,10 @@ class Wl_Settings_Sentence_Tokenization(wl_tree.Wl_Settings):
 
         self.__dict__[f"combo_box_sentence_tokenizer_{settings_custom['preview_lang']}"].setEnabled(True)
         self.combo_box_sentence_tokenization_preview_lang.setEnabled(True)
-        self.button_sentence_tokenization_start_processing.setEnabled(True)
+        self.button_sentence_tokenization_show_preview.setEnabled(True)
         self.text_edit_sentence_tokenization_preview_samples.setEnabled(True)
 
-        self.button_sentence_tokenization_start_processing.setText(self.tr('Start processing'))
+        self.button_sentence_tokenization_show_preview.setText(self.tr('Show preview'))
         self.text_edit_sentence_tokenization_preview_results.setPlainText('\n'.join(preview_results))
 
     def load_settings(self, defaults = False):
