@@ -46,6 +46,7 @@
 - Dependencies: Upgrade NumPy to 1.21.0
 - Dependencies: Upgrade openpyxl to 3.0.7
 - Dependencies: Upgrade PyQt to 5.15.4
+- Dependencies: Upgrade pytest to 6.2.4
 - Dependencies: Upgrade PyThaiNLP to 2.3.1
 - Dependencies: Upgrade Python 3.8.10
 - Dependencies: Upgrade python-docx to 0.8.11
