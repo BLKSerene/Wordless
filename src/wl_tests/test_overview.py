@@ -29,24 +29,32 @@ main = wl_test_init.Wl_Test_Main()
 wl_test_file_area.wl_test_file_area(main)
 
 def test_overview():
-    time_start = time.time()
+    time_start_total = time.time()
 
-    print('Start testing Overview...')
+    for i, file_test in enumerate(main.settings_custom['files']['files_open']):
+        for file in main.settings_custom['files']['files_open']:
+            file['selected'] = False
 
-    files = main.wl_files.get_selected_files()
+        main.settings_custom['files']['files_open'][i]['selected'] = True
 
-    dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+        print(f'''Start testing Overview for file "{file_test['name']}"... ''', end = '')
 
-    worker_overview_table = wl_overview.Wl_Worker_Overview_Table(
-        main,
-        dialog_progress = dialog_progress,
-        update_gui = update_gui
-    )
-    worker_overview_table.run()
+        time_start = time.time()
+
+        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+
+        worker_overview_table = wl_overview.Wl_Worker_Overview_Table(
+            main,
+            dialog_progress = dialog_progress,
+            update_gui = update_gui
+        )
+        worker_overview_table.run()
+
+        print(f'Done! (In {round(time.time() - time_start, 2)} seconds)')
+
+    print(f'Testing for Overview has been completed! (In {round(time.time() - time_start_total, 2)} seconds)')
 
     main.app.quit()
-
-    print(f'Testing of Overview has been completed! (In {round(time.time() - time_start, 2)} seconds)')
 
 def update_gui(error_msg, texts_stats_files):
     count_tokens_lens = []
