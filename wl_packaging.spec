@@ -18,9 +18,6 @@ import PyInstaller
 block_cipher = None
 datas = []
 
-# AttaCut
-datas.extend(PyInstaller.utils.hooks.collect_data_files('attacut'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('ssg'))
 # botok
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
 # jieba
@@ -38,7 +35,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_ru'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_uk'))
 # PyThaiNLP
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pythainlp'))
-# SacreMoses
+# Sacremoses
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sacremoses'))
 # spaCy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))
@@ -60,7 +57,8 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('pl_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pt_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ro_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ru_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('thinc'))
+# spaCy-pkuseg
+datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_pkuseg'))
 # Tokenizer
 datas.extend(PyInstaller.utils.hooks.collect_data_files('tokenizer'))
 # Underthesea
@@ -86,46 +84,9 @@ if platform.system() == 'Darwin':
 
 # Hidden imports
 hiddenimports = [
-    # AttaCut
-    'attacut.models.seq_sy_ch_conv_concat',
-
     # pymorphy2
     'pymorphy2_dicts_ru',
     'pymorphy2_dicts_uk',
-
-    # spaCy
-    'spacy.kb',
-    'spacy.lexeme',
-    'spacy.matcher._schemas',
-    'spacy.morphology',
-    'spacy.parts_of_speech',
-    'spacy.syntax._beam_utils',
-    'spacy.syntax._parser_model',
-    'spacy.syntax.arc_eager',
-    'spacy.syntax.ner',
-    'spacy.syntax.nn_parser',
-    'spacy.syntax.stateclass',
-    'spacy.syntax.transition_system',
-    'spacy.tokens._retokenize',
-    'spacy.tokens.morphanalysis',
-    'spacy.tokens.underscore',
-
-    'blis',
-    'blis.py',
-
-    'cymem',
-    'cymem.cymem',
-
-    'murmurhash',
-
-    'preshed.maps',
-
-    'srsly.msgpack.util',
-
-    'thinc.extra.search',
-    'thinc.linalg',
-    'thinc.neural._aligned_alloc',
-    'thinc.neural._custom_kernels',
 
     # spaCy models
     'ca_core_news_sm',
