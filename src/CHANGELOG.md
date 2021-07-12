@@ -41,7 +41,7 @@
 - Dependencies: Upgrade langdetect to 1.0.9
 - Dependencies: Upgrade lxml to 4.6.3
 - Dependencies: Upgrade Matplotlib to 3.4.2
-- Dependencies: Upgrade NetworkX to 2.5.1
+- Dependencies: Upgrade NetworkX to 2.6.1
 - Dependencies: Upgrade NLTK to 3.6.2
 - Dependencies: Upgrade NumPy to 1.21.0
 - Dependencies: Upgrade openpyxl to 3.0.7
