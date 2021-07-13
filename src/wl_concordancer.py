@@ -650,7 +650,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                         break
 
                             # Search in Results (Node)
-                            text_search = list(ngram)
+                            text_search_node = list(ngram)
 
                             if not settings['token_settings']['puncs']:
                                 ngram = text.tokens_flat[i : i + len_search_term]
@@ -805,7 +805,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             # Left
                             concordance_line.append([context_left_text, context_left, text_search_left])
                             # Node
-                            concordance_line.append([node_text, list(ngram), text_search])
+                            concordance_line.append([node_text, list(ngram), text_search_node])
                             # Right
                             concordance_line.append([context_right_text, context_right, text_search_right])
                             # Token No.
