@@ -19,6 +19,7 @@ from PyQt5.QtWidgets import *
 
 import nltk
 
+from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
 from wl_text import wl_matching, wl_text, wl_text_utils, wl_token_processing, wl_word_detokenization
 from wl_utils import wl_misc, wl_threading
@@ -771,34 +772,30 @@ def generate_table(main, table_src, table_tgt):
     settings = main.settings_custom['concordancer_parallel']
     files = main.wl_files.get_selected_files()
 
-    for file in files:
-        if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
-            if file['tokenized'] == 'No' or file['tagged'] == 'No':
-                wl_msg_box.wl_msg_box_invalid_xml_file(main)
 
-                return
-    
-    # Check for empty search terms
-    if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
-        settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+    if wl_checking_file.check_files_on_loading(main, files):
         # Check for identical source and target files
         if settings['generation_settings']['src_file'] != settings['generation_settings']['tgt_file']:
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+            # Check for empty search terms
+            if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
+                settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+                dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
-            worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
-                main,
-                dialog_progress = dialog_progress,
-                update_gui = update_gui
-            )
+                worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
+                    main,
+                    dialog_progress = dialog_progress,
+                    update_gui = update_gui
+                )
 
-            thread_concordancer_parallel_table = wl_threading.Wl_Thread(worker_concordancer_parallel_table)
-            thread_concordancer_parallel_table.start_worker()
+                thread_concordancer_parallel_table = wl_threading.Wl_Thread(worker_concordancer_parallel_table)
+                thread_concordancer_parallel_table.start_worker()
+            else:
+                wl_msg_box.wl_msg_box_missing_search_term(main)
+
+                wl_msg.wl_msg_generate_table_error(main)
         else:
             wl_msg_box.wl_msg_box_identical_src_tgt_files(main)
 
-        wl_msg.wl_msg_generate_table_error(main)
+            wl_msg.wl_msg_generate_table_error(main)
     else:
-        wl_msg_box.wl_msg_box_missing_search_term(main)
-
         wl_msg.wl_msg_generate_table_error(main)
-
