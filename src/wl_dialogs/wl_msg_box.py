@@ -210,8 +210,8 @@ class Wl_Msg_Box_No_Files_Selected(Wl_Msg_Box_Warning):
             main = main,
             title = main.tr('No Files Selected'),
             text = main.tr('''
-                <div>There are no files being currently selected.</div>
-                <div>Please check and try again.</div>
+                <div>There are no files being currently opened and selected.</div>
+                <div>Please open files first or check your file settings.</div>
             ''')
         )
 
@@ -241,7 +241,7 @@ class Wl_Msg_Box_Missing_Observed_File(Wl_Msg_Box_Warning):
             main = main,
             title = main.tr('Missing Observed File'),
             text = main.tr('''
-                <div>You have specified your reference file, but you haven't selected any observed file yet.</div>
+                <div>You have specified the reference file, but you haven't opened and selected any observed file yet.</div>
             ''')
         )
 
@@ -256,7 +256,7 @@ class Wl_Msg_Box_Invalid_Xml_File(Wl_Msg_Box_Warning):
             main = main,
             title = main.tr('Invalid XML File'),
             text = main.tr('''
-                <div>If the input is an XML file, it must be both tokenized and tagged!</div>
+                <div>If the input is an XML file, it must be both tokenized and tagged.</div>
             ''')
         )
 
