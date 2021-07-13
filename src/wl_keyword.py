@@ -728,36 +728,32 @@ def generate_table(main, table):
     settings = main.settings_custom['keyword']
     files = main.wl_files.get_selected_files()
 
-    for file in files:
-        if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
-            if file['tokenized'] == 'No' or file['tagged'] == 'No':
-                wl_msg_box.wl_msg_box_invalid_xml_file(main)
-
-                return
-
-    ref_file = main.wl_files.find_file_by_name(
-        settings['generation_settings']['ref_file'],
-        selected_only = True
-    )
-
-    files = [file
-             for file in main.wl_files.get_selected_files()
-             if file != ref_file]
-
-    if files:
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
-
-        worker_keyword_table = Wl_Worker_Keyword_Table(
-            main,
-            dialog_progress = dialog_progress,
-            update_gui = update_gui
+    if wl_checking_file.check_files_on_loading(main, files):
+        ref_file = main.wl_files.find_file_by_name(
+            settings['generation_settings']['ref_file'],
+            selected_only = True
         )
 
-        thread_keyword_table = wl_threading.Wl_Thread(worker_keyword_table)
-        thread_keyword_table.start_worker()
-    else:
-        wl_msg_box.wl_msg_box_missing_observed_file(main)
+        files = [file
+                 for file in main.wl_files.get_selected_files()
+                 if file != ref_file]
 
+        if files:
+            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+
+            worker_keyword_table = Wl_Worker_Keyword_Table(
+                main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui
+            )
+
+            thread_keyword_table = wl_threading.Wl_Thread(worker_keyword_table)
+            thread_keyword_table.start_worker()
+        else:
+            wl_msg_box.wl_msg_box_missing_observed_file(main)
+
+            wl_msg.wl_msg_generate_table_error(main)
+    else:
         wl_msg.wl_msg_generate_table_error(main)
 
 @wl_misc.log_timing
@@ -835,34 +831,30 @@ def generate_fig(main):
     settings = main.settings_custom['keyword']
     files = main.wl_files.get_selected_files()
 
-    for file in files:
-        if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
-            if file['tokenized'] == 'No' or file['tagged'] == 'No':
-                wl_msg_box.wl_msg_box_invalid_xml_file(main)
-
-                return
-    
-    ref_file = main.wl_files.find_file_by_name(
-        settings['generation_settings']['ref_file'],
-        selected_only = True
-    )
-
-    files = [file
-             for file in main.wl_files.get_selected_files()
-             if file != ref_file]
-
-    if files:
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
-
-        worker_keyword_fig = Wl_Worker_Keyword_Fig(
-            main,
-            dialog_progress = dialog_progress,
-            update_gui = update_gui
+    if wl_checking_file.check_files_on_loading(main, files):
+        ref_file = main.wl_files.find_file_by_name(
+            settings['generation_settings']['ref_file'],
+            selected_only = True
         )
 
-        thread_keyword_fig = wl_threading.Wl_Thread(worker_keyword_fig)
-        thread_keyword_fig.start_worker()
-    else:
-        wl_msg_box.wl_msg_box_missing_observed_file(main)
+        files = [file
+                 for file in main.wl_files.get_selected_files()
+                 if file != ref_file]
 
-        wl_msg.wl_msg_generate_fig_error(main)
+        if files:
+            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+
+            worker_keyword_fig = Wl_Worker_Keyword_Fig(
+                main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui
+            )
+
+            thread_keyword_fig = wl_threading.Wl_Thread(worker_keyword_fig)
+            thread_keyword_fig.start_worker()
+        else:
+            wl_msg_box.wl_msg_box_missing_observed_file(main)
+
+            wl_msg.wl_msg_generate_fig_error(main)
+    else:
+        wl_msg.wl_msg_generate_table_error(main)
