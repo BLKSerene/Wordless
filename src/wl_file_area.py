@@ -95,7 +95,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                     else:
                         # Detect encoding
                         if self.main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
-                            encoding_code, _ = wl_detection.detect_encoding(self.main, file_path)
+                            encoding_code = wl_detection.detect_encoding(self.main, file_path)
                         else:
                             encoding_code = self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
 
