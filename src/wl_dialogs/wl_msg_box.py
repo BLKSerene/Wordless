@@ -304,6 +304,25 @@ def wl_msg_box_missing_search_term_optional(main):
 
     msg_box_missing_search_term_optional.open()
 
+def wl_msg_box_missing_search_term_concordancer_parallel(main):
+    reply = QMessageBox.question(
+        main,
+        main.tr('Empty Search Term'),
+        main.tr(f'''
+            {main.settings_global['styles']['style_dialog']}
+            <body>
+                <div>You have not specified any search term. Do you want to search for additions in the target file?</div>
+            </body>
+        '''),
+        QMessageBox.Yes | QMessageBox.No,
+        QMessageBox.No
+    )
+
+    if reply == QMessageBox.Yes:
+        return True
+    else:
+        return False
+
 # Results
 class Wl_Msg_Box_No_Results(Wl_Msg_Box_Warning):
     def __init__(self, main):

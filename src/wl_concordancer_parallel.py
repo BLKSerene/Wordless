@@ -464,6 +464,10 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
             text_src = wl_text.Wl_Text(self.main, src_file, preserve_blank_lines = True)
             text_tgt = wl_text.Wl_Text(self.main, tgt_file, preserve_blank_lines = True)
+
+            len_segs_src = len(text_src.offsets_paras)
+            len_segs_tgt = len(text_tgt.offsets_paras)
+            len_segs = max([len_segs_src, len_segs_tgt])
             
             tokens_src = wl_token_processing.wl_process_tokens_concordancer(
                 text_src,
@@ -476,115 +480,162 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                 preserve_blank_lines = True
             )
             
-            search_terms = wl_matching.match_search_terms(
-                self.main, tokens_src,
-                lang = text_src.lang,
-                tokenized = text_src.tokenized,
-                tagged = text_src.tagged,
-                token_settings = settings['token_settings'],
-                search_settings = settings['search_settings']
-            )
-            
-            (search_terms_inclusion,
-             search_terms_exclusion) = wl_matching.match_search_terms_context(
-                self.main, tokens_src,
-                lang = text_src.lang,
-                tokenized = text_src.tokenized,
-                tagged = text_src.tagged,
-                token_settings = settings['token_settings'],
-                context_settings = settings['context_settings']
-            )
-            
-            if search_terms:
-                len_search_term_min = min([len(search_term) for search_term in search_terms])
-                len_search_term_max = max([len(search_term) for search_term in search_terms])
-            else:
-                len_search_term_min = 0
-                len_search_term_max = 0
+            if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
+                settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+                search_terms = wl_matching.match_search_terms(
+                    self.main, tokens_src,
+                    lang = text_src.lang,
+                    tokenized = text_src.tokenized,
+                    tagged = text_src.tagged,
+                    token_settings = settings['token_settings'],
+                    search_settings = settings['search_settings']
+                )
+                
+                (search_terms_inclusion,
+                 search_terms_exclusion) = wl_matching.match_search_terms_context(
+                    self.main, tokens_src,
+                    lang = text_src.lang,
+                    tokenized = text_src.tokenized,
+                    tagged = text_src.tagged,
+                    token_settings = settings['token_settings'],
+                    context_settings = settings['context_settings']
+                )
+                
+                if search_terms:
+                    len_search_term_min = min([len(search_term) for search_term in search_terms])
+                    len_search_term_max = max([len(search_term) for search_term in search_terms])
+                else:
+                    len_search_term_min = 0
+                    len_search_term_max = 0
+                
+                for len_search_term in range(len_search_term_min, len_search_term_max + 1):
+                    for i, ngram in enumerate(nltk.ngrams(tokens_src, len_search_term)):
+                        if (ngram in search_terms and
+                            wl_matching.check_context(
+                                i, tokens_src,
+                                context_settings = settings['context_settings'],
+                                search_terms_inclusion = search_terms_inclusion,
+                                search_terms_exclusion = search_terms_exclusion)
+                            ):
+                            concordance_line = []
 
-            len_segs_src = len(text_src.offsets_paras)
-            len_segs_tgt = len(text_tgt.offsets_paras)
-            len_segs = max([len_segs_src, len_segs_tgt])
-            
-            for len_search_term in range(len_search_term_min, len_search_term_max + 1):
-                for i, ngram in enumerate(nltk.ngrams(tokens_src, len_search_term)):
-                    if (ngram in search_terms and
-                        wl_matching.check_context(
-                            i, tokens_src,
-                            context_settings = settings['context_settings'],
-                            search_terms_inclusion = search_terms_inclusion,
-                            search_terms_exclusion = search_terms_exclusion)
-                        ):
-                        concordance_line = []
+                            # Segment No.
+                            if text_src.offsets_paras[-1] <= i:
+                                no_seg = len_segs_src
+                            else:
+                                for j, i_para in enumerate(text_src.offsets_paras):
+                                    if i_para > i:
+                                        no_seg = j
 
-                        # Segment No.
-                        if text_src.offsets_paras[-1] <= i:
-                            no_seg = len_segs_src
-                        else:
-                            for j, i_para in enumerate(text_src.offsets_paras):
-                                if i_para > i:
-                                    no_seg = j
+                                        break
 
-                                    break
+                            # Search in Results (Node)
+                            text_search_node = list(ngram)
 
-                        # Search in Results (Node)
-                        text_search = list(ngram)
+                            if not settings['token_settings']['puncs']:
+                                ngram = text_src.tokens_flat[i : i + len_search_term]
 
-                        if not settings['token_settings']['puncs']:
-                            ngram = text_src.tokens_flat[i : i + len_search_term]
+                            node_text = wl_word_detokenization.wl_word_detokenize(self.main, ngram, text_src.lang)
+                            node_text = wl_text_utils.text_escape(node_text)
 
-                        node_text = wl_word_detokenization.wl_word_detokenize(self.main, ngram, text_src.lang)
-                        node_text = wl_text_utils.text_escape(node_text)
+                            offset_para_start_src = text_src.offsets_paras[max(0, no_seg - 1)]
+                            if no_seg <= len_segs_tgt:
+                                offset_para_start_tgt = text_tgt.offsets_paras[max(0, no_seg - 1)]
+                            # Omission at the end of the source text
+                            else:
+                                offset_para_start_tgt = None
 
-                        offset_para_start_src = text_src.offsets_paras[max(0, no_seg - 1)]
-                        if no_seg <= len_segs_tgt:
-                            offset_para_start_tgt = text_tgt.offsets_paras[max(0, no_seg - 1)]
-                        # Omission at the end of the source text
-                        else:
-                            offset_para_start_tgt = None
-
-                        # Left & Right
-                            # Last paragraph
-                        if no_seg >= len_segs_src:
-                            offset_para_end = None
-                        else:
-                            offset_para_end = text_src.offsets_paras[min(no_seg, len_segs_src - 1)]
-
-                        context_left = text_src.tokens_flat[offset_para_start_src:i]
-                        context_right = text_src.tokens_flat[i + len_search_term : offset_para_end]
-
-                        # Search in Results (Left & Right)
-                        if settings['token_settings']['puncs']:
-                            text_search_left = copy.deepcopy(context_left)
-                            text_search_right = copy.deepcopy(context_right)
-                        else:
-                            text_search_left = tokens_src[offset_para_start_src:i]
-                            text_search_right = tokens_src[i + len_search_term : offset_para_end]
-
-                        context_left = wl_text_utils.text_escape(context_left)
-                        context_right = wl_text_utils.text_escape(context_right)
-
-                        context_left_text = wl_word_detokenization.wl_word_detokenize(
-                            self.main, context_left,
-                            lang = text_src.lang
-                        )
-                        context_right_text = wl_word_detokenization.wl_word_detokenize(
-                            self.main, context_right,
-                            lang = text_src.lang
-                        )
-
-                        # Parallel Text
-                        if no_seg <= len_segs_tgt:
-                            # Last paragraph
-                            if no_seg == len_segs_tgt:
+                            # Left & Right
+                                # Last paragraph
+                            if no_seg >= len_segs_src:
                                 offset_para_end = None
                             else:
-                                offset_para_end = text_tgt.offsets_paras[min(no_seg, len_segs_tgt - 1)]
+                                offset_para_end = text_src.offsets_paras[min(no_seg, len_segs_src - 1)]
 
-                            parallel_text = text_tgt.tokens_flat[offset_para_start_tgt:offset_para_end]
-                        # Omission at the end of the source text
-                        elif no_seg > len_segs_tgt:
-                            parallel_text = []
+                            context_left = text_src.tokens_flat[offset_para_start_src:i]
+                            context_right = text_src.tokens_flat[i + len_search_term : offset_para_end]
+
+                            # Search in Results (Left & Right)
+                            if settings['token_settings']['puncs']:
+                                text_search_left = copy.deepcopy(context_left)
+                                text_search_right = copy.deepcopy(context_right)
+                            else:
+                                text_search_left = tokens_src[offset_para_start_src:i]
+                                text_search_right = tokens_src[i + len_search_term : offset_para_end]
+
+                            context_left = wl_text_utils.text_escape(context_left)
+                            context_right = wl_text_utils.text_escape(context_right)
+
+                            context_left_text = wl_word_detokenization.wl_word_detokenize(
+                                self.main, context_left,
+                                lang = text_src.lang
+                            )
+                            context_right_text = wl_word_detokenization.wl_word_detokenize(
+                                self.main, context_right,
+                                lang = text_src.lang
+                            )
+
+                            # Parallel Text
+                            if no_seg <= len_segs_tgt:
+                                # Last paragraph
+                                if no_seg == len_segs_tgt:
+                                    offset_para_end = None
+                                else:
+                                    offset_para_end = text_tgt.offsets_paras[min(no_seg, len_segs_tgt - 1)]
+
+                                parallel_text = text_tgt.tokens_flat[offset_para_start_tgt:offset_para_end]
+                            # Omission at the end of the source text
+                            elif no_seg > len_segs_tgt:
+                                parallel_text = []
+
+                            # Search in Results (Parallel Text)
+                            if settings['token_settings']['puncs']:
+                                text_search_parallel_text = copy.deepcopy(parallel_text)
+                            else:
+                                text_search_parallel_text = tokens_tgt[offset_para_start_tgt:offset_para_end]
+
+                            parallel_text = wl_text_utils.text_escape(parallel_text)
+
+                            parallel_text_text = wl_word_detokenization.wl_word_detokenize(
+                                self.main, parallel_text,
+                                lang = text_tgt.lang
+                            )
+
+                            # Left
+                            concordance_line.append([context_left_text, context_left, text_search_left])
+                            # Node
+                            concordance_line.append([node_text, list(ngram), text_search_node])
+                            # Right
+                            concordance_line.append([context_right_text, context_right, text_search_right])
+                            # Segment No.
+                            # * The largest count of segments among source and target files should be passed here since there might be addition or omission during translation at the end of the source text
+                            concordance_line.append([no_seg, len_segs])
+
+                            # Parallel Text
+                            concordance_line.append([parallel_text_text, parallel_text, text_search_parallel_text])
+
+                            concordance_lines.append(concordance_line)
+            # Search for additions
+            else:
+                for i, para_tgt in enumerate(text_tgt.tokens_multilevel):
+                    if i <= len_segs_src - 1:
+                        para_src = text_src.tokens_multilevel[i]
+                    else:
+                        para_src = []
+
+                    if para_src == [] and para_tgt:
+                        concordance_line = []
+                        no_seg = i + 1
+
+                        offset_para_start_tgt = text_tgt.offsets_paras[max(0, no_seg - 1)]
+
+                        # Parallel Text
+                        if no_seg == len_segs_tgt:
+                            offset_para_end = None
+                        else:
+                            offset_para_end = text_tgt.offsets_paras[min(no_seg, len_segs_tgt - 1)]
+
+                        parallel_text = text_tgt.tokens_flat[offset_para_start_tgt:offset_para_end]
 
                         # Search in Results (Parallel Text)
                         if settings['token_settings']['puncs']:
@@ -599,16 +650,13 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                             lang = text_tgt.lang
                         )
 
-                        len_segs = max([len_segs_src, len_segs_tgt])
-
                         # Left
-                        concordance_line.append([context_left_text, context_left, text_search_left])
+                        concordance_line.append(['', [], []])
                         # Node
-                        concordance_line.append([node_text, list(ngram), text_search])
+                        concordance_line.append(['', [], []])
                         # Right
-                        concordance_line.append([context_right_text, context_right, text_search_right])
+                        concordance_line.append(['', [], []])
                         # Segment No.
-                        # * The largest count of segments among source and target files should be passed here since there might be addition or omission during translation at the end of the source text
                         concordance_line.append([no_seg, len_segs])
 
                         # Parallel Text
@@ -779,6 +827,12 @@ def generate_table(main, table_src, table_tgt):
             # Check for empty search terms
             if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
                 settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+                search_additions = True
+            else:
+                search_additions = wl_msg_box.wl_msg_box_missing_search_term_concordancer_parallel(main)
+
+            # Ask for confirmation
+            if search_additions:
                 dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
                 worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
@@ -790,8 +844,6 @@ def generate_table(main, table_src, table_tgt):
                 thread_concordancer_parallel_table = wl_threading.Wl_Thread(worker_concordancer_parallel_table)
                 thread_concordancer_parallel_table.start_worker()
             else:
-                wl_msg_box.wl_msg_box_missing_search_term(main)
-
                 wl_msg.wl_msg_generate_table_error(main)
         else:
             wl_msg_box.wl_msg_box_identical_src_tgt_files(main)
