@@ -861,7 +861,7 @@ class Wl_Worker_Ngram_Table(Wl_Worker_Ngram):
         self.progress_updated.emit(self.tr('Rendering table ...'))
 
         time.sleep(0.1)
-
+        
         self.worker_done.emit(
             self.error_msg,
             wl_misc.merge_dicts(self.ngrams_freq_files),
@@ -1011,29 +1011,25 @@ def generate_table(main, table):
     settings = main.settings_custom['ngram']
     files = main.wl_files.get_selected_files()
 
-    for file in files:
-        if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
-            if file['tokenized'] == 'No' or file['tagged'] == 'No':
-                wl_msg_box.wl_msg_box_invalid_xml_file(main)
+    if wl_checking_file.check_files_on_loading(main, files):
+        if (not settings['search_settings']['search_settings'] or
+            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
+            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
-                return
-    
-    if (not settings['search_settings']['search_settings'] or
-        not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
-        settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+            worker_ngram_table = Wl_Worker_Ngram_Table(
+                main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui
+            )
 
-        worker_ngram_table = Wl_Worker_Ngram_Table(
-            main,
-            dialog_progress = dialog_progress,
-            update_gui = update_gui
-        )
+            thread_ngram_table = wl_threading.Wl_Thread(worker_ngram_table)
+            thread_ngram_table.start_worker()
+        else:
+            wl_msg_box.wl_msg_box_missing_search_term_optional(main)
 
-        thread_ngram_table = wl_threading.Wl_Thread(worker_ngram_table)
-        thread_ngram_table.start_worker()
+            wl_msg.wl_msg_generate_table_error(main)
     else:
-        wl_msg_box.wl_msg_box_missing_search_term_optional(main)
-
         wl_msg.wl_msg_generate_table_error(main)
 
 @wl_misc.log_timing
@@ -1104,26 +1100,22 @@ def generate_fig(main):
     settings = main.settings_custom['ngram']
     files = main.wl_files.get_selected_files()
 
-    for file in files:
-        if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
-            if file['tokenized'] == 'No' or file['tagged'] == 'No':
-                wl_msg_box.wl_msg_box_invalid_xml_file(main)
+    if wl_checking_file.check_files_on_loading(main, files):
+        if (not settings['search_settings']['search_settings'] or
+            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
+            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
-                return
-                
-    if (not settings['search_settings']['search_settings'] or
-        not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
-        settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+            worker_ngram_fig = Wl_Worker_Ngram_Fig(
+                main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui
+            )
+            thread_ngram_fig = wl_threading.Wl_Thread(worker_ngram_fig)
+            thread_ngram_fig.start_worker()
+        else:
+            wl_msg_box.wl_msg_box_missing_search_term_optional(main)
 
-        worker_ngram_fig = Wl_Worker_Ngram_Fig(
-            main,
-            dialog_progress = dialog_progress,
-            update_gui = update_gui
-        )
-        thread_ngram_fig = wl_threading.Wl_Thread(worker_ngram_fig)
-        thread_ngram_fig.start_worker()
+            wl_msg.wl_msg_generate_fig_error(main)
     else:
-        wl_msg_box.wl_msg_box_missing_search_term_optional(main)
-
-        wl_msg.wl_msg_generate_fig_error(main)
+        wl_msg.wl_msg_generate_table_error(main)
