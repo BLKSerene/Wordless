@@ -159,7 +159,6 @@ def init_settings_global(main):
             main.tr('All Languages (UTF-32BE without BOM)'): 'utf_32_be',
             main.tr('All Languages (UTF-32LE without BOM)'): 'utf_32_le',
             main.tr('All Languages (UTF-7)'): 'utf_7',
-            main.tr('All Languages (CP65001)'): 'cp65001',
 
             main.tr('Arabic (CP720)'): 'cp720',
             main.tr('Arabic (CP864)'): 'cp864',
@@ -172,11 +171,6 @@ def init_settings_global(main):
             main.tr('Baltic Languages (Windows-1257)'): 'cp1257',
 
             main.tr('Celtic Languages (ISO-8859-14)'): 'iso8859_14',
-
-            main.tr('Central European (CP852)'): 'cp852',
-            main.tr('Central European (ISO-8859-2)'): 'iso8859_2',
-            main.tr('Central European (Mac OS Central European)'): 'mac_latin2',
-            main.tr('Central European (Windows-1250)'): 'cp1250',
 
             main.tr('Chinese (GB18030)'): 'gb18030',
             main.tr('Chinese (GBK)'): 'gbk',
@@ -200,9 +194,26 @@ def init_settings_global(main):
             main.tr('English (EBCDIC 037)'): 'cp037',
             main.tr('English (CP437)'): 'cp437',
 
-            main.tr('Esperanto/Maltese (ISO-8859-3)'): 'iso8859_3',
-
             main.tr('European (HP Roman-8)'): 'hp_roman8',
+
+            main.tr('European (Central) (CP852)'): 'cp852',
+            main.tr('European (Central) (ISO-8859-2)'): 'iso8859_2',
+            main.tr('European (Central) (Mac OS Central European)'): 'mac_latin2',
+            main.tr('European (Central) (Windows-1250)'): 'cp1250',
+
+            main.tr('European (Northern) (ISO-8859-4)'): 'iso8859_4',
+
+            main.tr('European (Southern) (ISO-8859-3)'): 'iso8859_3',
+            main.tr('European (South-Eastern) (ISO-8859-16)'): 'iso8859_16',
+
+            main.tr('European (Western) (EBCDIC 500)'): 'cp500',
+            main.tr('European (Western) (CP850)'): 'cp850',
+            main.tr('European (Western) (CP858)'): 'cp858',
+            main.tr('European (Western) (CP1140)'): 'cp1140',
+            main.tr('European (Western) (ISO-8859-1)'): 'latin_1',
+            main.tr('European (Western) (ISO-8859-15)'): 'iso8859_15',
+            main.tr('European (Western) (Mac OS Roman)'): 'mac_roman',
+            main.tr('European (Western) (Windows-1252)'): 'windows_1252',
 
             main.tr('French (CP863)'): 'cp863',
 
@@ -249,8 +260,6 @@ def init_settings_global(main):
             main.tr('Nordic Languages (CP865)'): 'cp865',
             main.tr('Nordic Languages (ISO-8859-10)'): 'iso8859_10',
 
-            main.tr('North European (ISO-8859-4)'): 'iso8859_4',
-
             main.tr('Persian/Urdu (Mac OS Farsi)'): 'mac_farsi',
 
             main.tr('Portuguese (CP860)'): 'cp860',
@@ -259,13 +268,10 @@ def init_settings_global(main):
 
             main.tr('Russian (KOI8-R)'): 'koi8_r',
 
-            main.tr('South-Eastern European (ISO-8859-16)'): 'iso8859_16',
-
             main.tr('Tajik (KOI8-T)'): 'koi8_t',
 
             main.tr('Thai (CP874)'): 'cp874',
             main.tr('Thai (ISO-8859-11)'): 'iso8859_11',
-            main.tr('Thai (TIS-620)'): 'tis_620',
 
             main.tr('Turkish (CP857)'): 'cp857',
             main.tr('Turkish (EBCDIC 1026)'): 'cp1026',
@@ -279,15 +285,6 @@ def init_settings_global(main):
             main.tr('Urdu (CP1006)'): 'cp1006',
 
             main.tr('Vietnamese (CP1258)'): 'cp1258',
-
-            main.tr('Western European (EBCDIC 500)'): 'cp500',
-            main.tr('Western European (CP850)'): 'cp850',
-            main.tr('Western European (CP858)'): 'cp858',
-            main.tr('Western European (CP1140)'): 'cp1140',
-            main.tr('Western European (ISO-8859-1)'): 'latin_1',
-            main.tr('Western European (ISO-8859-15)'): 'iso8859_15',
-            main.tr('Western European (Mac OS Roman)'): 'mac_roman',
-            main.tr('Western European (Windows-1252)'): 'windows_1252',
         },
 
         'file_types': {

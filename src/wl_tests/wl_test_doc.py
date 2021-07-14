@@ -9,6 +9,7 @@
 # All other rights reserved.
 #
 
+import re
 import sys
 
 sys.path.append('.')
@@ -76,7 +77,25 @@ def wl_test_supported_langs(main):
 
             print(doc_supported_lang)
 
+def wl_test_supported_encodings(main):
+    langs = []
+    encodings = []
+
+    for file_encoding in main.settings_global['file_encodings']:
+        lang = re.search(r'^.+(?= \()', file_encoding).group()
+        encoding = file_encoding.replace(lang, r'').replace(r' (', '').replace(r')', '')
+
+        langs.append(lang)
+        encodings.append(encoding)
+
+    len_max_langs = max([len(lang) for lang in langs])
+    len_max_encodings = max([len(encoding) for encoding in encodings])
+
+    for lang, encoding in zip(langs, encodings):
+        print(f'{lang:{len_max_langs}}|{encoding:{len_max_encodings}}|✔')
+
 if __name__ == '__main__':
     main = wl_test_init.Wl_Test_Main()
 
     wl_test_supported_langs(main)
+    wl_test_supported_encodings(main)
