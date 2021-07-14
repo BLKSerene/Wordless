@@ -147,14 +147,13 @@ I would like to extend my sincere gratitude to the following open-source project
 
 &nbsp;|Name|Author(s)
 -----:|----|---------
-1     |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)|Leonard Richardson
-2     |[cChardet](https://github.com/PyYoshi/cChardet)                 |Yoshihiro Misawa
-3     |[chardet](https://github.com/chardet/chardet)                   |Daniel Blanchard
-4     |[langdetect](https://github.com/Mimino666/langdetect)           |Michal Mimino Danilak
-5     |[langid.py](https://github.com/saffsd/langid.py)                |Marco Lui
-6     |[lxml](https://lxml.de)                                         |Stefan Behnel
-7     |[NumPy](https://numpy.org)                                      |NumPy Developers
-8     |[openpyxl](https://openpyxl.readthedocs.io/en/stable/)          |Eric Gazoni, Charlie Clark
-9     |[python-docx](https://github.com/python-openxml/python-docx)    |Steve Canny
-10    |[requests](https://python-requests.org)                         |Kenneth Reitz
-11    |[SciPy](https://www.scipy.org)                                  |SciPy Developers
+1     |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)  |Leonard Richardson
+2     |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)|TAHRI Ahmed R.
+3     |[langdetect](https://github.com/Mimino666/langdetect)             |Michal Mimino Danilak
+4     |[langid.py](https://github.com/saffsd/langid.py)                  |Marco Lui
+5     |[lxml](https://lxml.de)                                           |Stefan Behnel
+6     |[NumPy](https://numpy.org)                                        |NumPy Developers
+7     |[openpyxl](https://openpyxl.readthedocs.io/en/stable/)            |Eric Gazoni, Charlie Clark
+8     |[python-docx](https://github.com/python-openxml/python-docx)      |Steve Canny
+9     |[Requests](https://python-requests.org)                           |Kenneth Reitz
+10    |[SciPy](https://www.scipy.org)                                    |SciPy Developers

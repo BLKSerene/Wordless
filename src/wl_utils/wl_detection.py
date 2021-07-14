@@ -9,14 +9,11 @@
 # All other rights reserved.
 #
 
-import re
-
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-import chardet
-import cchardet
+import charset_normalizer
 import langdetect
 import langid
 
@@ -40,26 +37,11 @@ def detect_encoding(main, file_path):
                 else:
                     break
 
-        encoding = cchardet.detect(text)['encoding']
-
-        # Force ASCII be converted to UTF-8
-        if encoding == 'ASCII':
-            encoding = 'UTF-8'
-        # CP932
-        elif encoding == 'SHIFT_JIS':
-            encoding = chardet.detect(text)['encoding']
-
-            if encoding != 'CP932':
-                encoding = 'SHIFT_JIS'
-        if encoding == 'EUC-TW':
-            encoding = 'BIG5'
-        elif encoding == 'ISO-2022-CN':
-            encoding = 'GB18030'
-        elif encoding == None:
-            encoding = main.settings_custom['auto_detection']['default_settings']['default_encoding']
-
-    encoding = encoding.lower()
-    encoding = encoding.replace('-', '_')
+        results = charset_normalizer.from_bytes(text)
+        if results:
+            encoding = results.best().encoding
+        else:
+            encoding = 'utf_8'
 
     return encoding
 

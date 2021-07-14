@@ -28,15 +28,24 @@
 - Work Area: Add Collocation/Colligation - Generation Settings - Limit Searching
 - Work Area: Add Concordancer (Parallel Mode)
 
+### ✨ Improvements
+- Utils: Update encoding detection
+- Utils: Update NLTK’s word tokenizers
+- Utils: Update spaCy’s sentencizer, word tokenizers, POS taggers, and lemmatizers
+
 ### 📌 Bugfixes
+- Utils: Fix Sacremoses’s Moses tokenizer and Moses detokenizer
 - Work Area: Fix Concordancer - Sort Results - Order
 
 ### ❌ Removals
 - Utils: Remove AttaCut’s Thai word tokenizer
 
 ### ⏫ Dependency Changes
+- Dependencies: Add Charset Normalizer
 - Dependencies: Add CLTK
 - Dependencies: Remove AttaCut
+- Dependencies: Remove cChardet
+- Dependencies: Remove chardet
 - Dependencies: Upgrade botok to 0.8.7
 - Dependencies: Upgrade langdetect to 1.0.9
 - Dependencies: Upgrade lxml to 4.6.3
@@ -51,6 +60,7 @@
 - Dependencies: Upgrade PyThaiNLP to 2.3.1
 - Dependencies: Upgrade Python 3.8.10
 - Dependencies: Upgrade python-docx to 0.8.11
+- Dependencies: Upgrade Requests to 2.26.0
 - Dependencies: Upgrade Sacremoses to 0.0.45
 - Dependencies: Upgrade SciPy to 1.7.0
 - Dependencies: Upgrade spaCy to 3.1.0
@@ -67,6 +77,10 @@
 - Work Area: Add Collocation/Colligation - Generation Settings - Test of Statistical Significance - Berry-Rogghe’s z-score
 - Work Area: Add Concordancer - Sentiment
 - Work Area: Add Overview - Count of n-length Sentences
+
+### ✨ Improvements
+- File Area: Only load files that can be successfully decoded
+- Work Area: Overview/Concordancer - Rename “Clause” to “Sentence Segment”
 
 ### 📌 Bugfixes
 - Menu: Fix Preferences - Settings - Word Tokenization - Underthesea’s Vietnamese Word Tokenizer
@@ -90,7 +104,7 @@
 - Dependencies: Upgrade pytest to 6.2.1
 - Dependencies: Upgrade PyThaiNLP to 2.2.6
 - Dependencies: Upgrade Python to 3.8.7
-- Dependencies: Upgrade requests to 2.25.1
+- Dependencies: Upgrade Requests to 2.25.1
 - Dependencies: Upgrade SciPy to 1.6.0
 - Dependencies: Upgrade spaCy to 2.3.5
 
@@ -155,7 +169,7 @@
 - Dependencies: Upgrade PyThaiNLP to 2.2.5
 - Dependencies: Upgrade Python to 3.8.6
 - Dependencies: Upgrade razdel to 0.5.0
-- Dependencies: Upgrade requests to 2.25.0
+- Dependencies: Upgrade Requests to 2.25.0
 - Dependencies: Upgrade Sacremoses to 0.0.43
 - Dependencies: Upgrade SciPy to 1.5.4
 - Dependencies: Upgrade spaCy to 2.3.4
@@ -179,8 +193,6 @@
 - Work Area: Add Overview - Paragraph Length in Clause
 
 ### ✨ Improvements
-- File Area: Update hint messages
-- Main Window: Update error messages
 - Utils: Force consistent results for language detection
 - Utils: Update Sacremoses’s Moses tokenizer and detokenizer
 - Utils: Update Wordless’s sentence segment tokenizer
@@ -188,8 +200,6 @@
 - Work Area: Display numbers and percentages in different columns
 - Work Area: Do not add borders to exported Excel workbooks due to performance issues
 - Work Area: Remove illegal characters when exporting tables to Excel workbooks
-- Work Area: Show hint messages when exporting tables
-- Work Area: Show hint messages when sorting results
 
 ### 📌 Bugfixes
 - File Area / Utils: Fix encoding detection
@@ -267,7 +277,7 @@
 - Dependencies: Upgrade PyQt to 5.13.0
 - Dependencies: Upgrade PyThaiNLP to 2.0.7
 - Dependencies: Upgrade Python to 3.7.4
-- Dependencies: Upgrade requests to 2.22.0
+- Dependencies: Upgrade Requests to 2.22.0
 - Dependencies: Upgrade Sacremoses to 0.0.33
 - Dependencies: Upgrade SciPy to 1.3.1
 - Dependencies: Upgrade spaCy to 2.1.8
