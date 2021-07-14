@@ -48,7 +48,6 @@ wordcloud
 
 # ---------- Misc ----------
 beautifulsoup4
-cchardet
 langdetect
 langid
 lxml
