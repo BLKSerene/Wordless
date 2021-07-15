@@ -33,12 +33,9 @@ def wl_test_file_area(main):
     
     for file_path in glob.glob('wl_tests/files/wl_file_area/*.*'):
         if os.path.basename(file_path) not in file_path_loaded:
-            file_size_bytes = os.path.getsize(file_path)
-            file_size_mb = round(file_size_bytes / 1024 / 1024, 2)
-
             time_start = time.time()
 
-            print(f'Opening file "{os.path.split(file_path)[1]}" ({file_size_mb} MB)...', end = '')
+            print(f'Loading file "{os.path.split(file_path)[1]}"... ', end = '')
 
             new_file = main.wl_files._new_file(file_path)
             
@@ -51,7 +48,7 @@ def wl_test_file_area(main):
 
             new_files.append(new_file)
 
-            print(f' done (in {round(time.time() - time_start, 2)} seconds)!')
+            print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
     
     main.settings_custom['files']['files_open'].extend(new_files)
 
@@ -60,6 +57,10 @@ def wl_test_file_area(main):
         pickle.dump(main.settings_custom, f)
 
 if __name__ == '__main__':
+    # Reset custom settings
+    if os.path.exists('wl_tests/wl_settings.pickle'):
+        os.remove('wl_tests/wl_settings.pickle')
+
     main = wl_test_init.Wl_Test_Main()
 
     wl_test_file_area(main)
