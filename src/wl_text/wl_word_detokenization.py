@@ -19,7 +19,7 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
     sentence_start = 0
     sentences = []
     text = ''
-
+    
     if lang not in main.settings_global['word_detokenizers']:
         lang = 'other'
 

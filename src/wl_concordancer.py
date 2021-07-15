@@ -581,10 +581,10 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
             self.progress_updated.emit(self.tr('Searching in text ...'))
 
             for file in files:
-                text = wl_text.Wl_Text(self.main, file)
+                text = copy.deepcopy(file['text'])
 
                 tokens = wl_token_processing.wl_process_tokens_concordancer(
-                    text,
+                    self.main, text,
                     token_settings = settings['token_settings']
                 )
 
@@ -893,7 +893,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                 text = wl_text.Wl_Text(self.main, file)
 
                 wl_token_processing.wl_process_tokens_concordancer(
-                    text,
+                    self.main, text,
                     token_settings = settings['token_settings']
                 )
 
