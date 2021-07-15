@@ -11,6 +11,7 @@
 
 import glob
 import os
+import pickle
 import re
 import sys
 import time
@@ -28,10 +29,10 @@ def wl_test_file_area(main):
     for file in glob.glob('Import/*.*'):
         os.remove(file)
 
-    file_path_opened = [file['path'] for file in main.settings_custom['files']['files_open']]
-
+    file_path_loaded = [os.path.basename(file['path']) for file in main.settings_custom['files']['files_open']]
+    
     for file_path in glob.glob('wl_tests/files/wl_file_area/*.*'):
-        if file_path not in file_path_opened:
+        if os.path.basename(file_path) not in file_path_loaded:
             file_size_bytes = os.path.getsize(file_path)
             file_size_mb = round(file_size_bytes / 1024 / 1024, 2)
 
@@ -53,6 +54,10 @@ def wl_test_file_area(main):
             print(f' done (in {round(time.time() - time_start, 2)} seconds)!')
     
     main.settings_custom['files']['files_open'].extend(new_files)
+
+    # Save Settings
+    with open('wl_tests/wl_settings.pickle', 'wb') as f:
+        pickle.dump(main.settings_custom, f)
 
 if __name__ == '__main__':
     main = wl_test_init.Wl_Test_Main()

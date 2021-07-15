@@ -60,6 +60,8 @@ def update_gui(error_msg, texts_stats_files):
     count_tokens_lens = []
     count_sentences_lens = []
 
+    assert texts_stats_files
+
     count_paras_total = len(texts_stats_files[-1][0])
     count_sentences_total = len(texts_stats_files[-1][2])
     count_tokens_total = len(texts_stats_files[-1][3])

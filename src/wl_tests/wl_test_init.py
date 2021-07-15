@@ -10,6 +10,8 @@
 #
 
 import copy
+import os
+import pickle
 import platform
 import sys
 
@@ -31,9 +33,17 @@ if platform.system() in ['Windows', 'Darwin']:
 
             self.app = wl_app
 
-            # Settings
+            # Default settings
             wl_settings_default.init_settings_default(self)
-            self.settings_custom = copy.deepcopy(self.settings_default)
+            
+            # Custom settings
+            if os.path.exists('wl_tests/wl_settings.pickle'):
+                with open('wl_tests/wl_settings.pickle', 'rb') as f:
+                    self.settings_custom = pickle.load(f)
+            else:
+                self.settings_custom = copy.deepcopy(self.settings_default)
+
+            # Global settings
             wl_settings_global.init_settings_global(self)
 
             # Files

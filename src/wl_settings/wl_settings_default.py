@@ -346,8 +346,8 @@ def init_settings_default(main):
             },
 
             'generation_settings': {
-                'measure_dispersion': main.tr('Juilland\'s D'),
-                'measure_adjusted_freq': main.tr('Juilland\'s U')
+                'measure_dispersion': main.tr('Juilland’s D'),
+                'measure_adjusted_freq': main.tr('Juilland’s U')
             },
 
             'table_settings': {
@@ -650,7 +650,7 @@ def init_settings_default(main):
 
                 'limit_searching': main.tr('None'),
 
-                'test_significance': main.tr('Pearson\'s Chi-squared Test'),
+                'test_significance': main.tr('Pearson’s Chi-squared Test'),
                 'measure_effect_size': main.tr('Pointwise Mutual Information'),
             },
 
@@ -811,7 +811,7 @@ def init_settings_default(main):
 
                 'limit_searching': main.tr('None'),
 
-                'test_significance': main.tr('Pearson\'s Chi-squared Test'),
+                'test_significance': main.tr('Pearson’s Chi-squared Test'),
                 'measure_effect_size': main.tr('Pointwise Mutual Information')
             },
 
@@ -910,8 +910,7 @@ def init_settings_default(main):
             'generation_settings': {
                 'ref_file': '',
                 'test_significance': main.tr('Log-likelihood Ratio Test'),
-                'measure_effect_size': main.tr('Kilgarriff\'s Ratio'),
-                'measure_dispersion': main.tr('Juilland\'s D')
+                'measure_effect_size': main.tr('Kilgarriff’s Ratio'),
             },
             
             'table_settings': {
