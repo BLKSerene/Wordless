@@ -2249,64 +2249,64 @@ def init_settings_global(main):
 
         'measures_dispersion': {
             main.tr('Juilland’s D'): {
-                'col': main.tr('Juilland\'s D'),
+                'col': main.tr('Juilland’s D'),
                 'func': wl_measures_dispersion.juillands_d
             },
 
             main.tr('Carroll’s D₂'): {
-                'col': main.tr('Carroll\'s D₂'),
+                'col': main.tr('Carroll’s D₂'),
                 'func': wl_measures_dispersion.carrolls_d2
             },
 
             main.tr('Lyne’s D₃'): {
-                'col': main.tr('Lyne\'s D₃'),
+                'col': main.tr('Lyne’s D₃'),
                 'func': wl_measures_dispersion.lynes_d3
             },
 
             main.tr('Rosengren’s S'): {
-                'col': main.tr('Rosengren\'s S'),
+                'col': main.tr('Rosengren’s S'),
                 'func': wl_measures_dispersion.rosengrens_s
             },
 
             main.tr('Zhang’s Distributional Consistency'): {
-                'col': main.tr('Zhang\'s DC'),
+                'col': main.tr('Zhang’s DC'),
                 'func': wl_measures_dispersion.zhangs_distributional_consistency
             },
 
             main.tr('Gries’s DP'): {
-                'col': main.tr('Gries\'s DP'),
+                'col': main.tr('Gries’s DP'),
                 'func': wl_measures_dispersion.griess_dp
             },
 
             main.tr('Gries’s DPnorm'): {
-                'col': main.tr('Gries\'s DPnorm'),
+                'col': main.tr('Gries’s DPnorm'),
                 'func': wl_measures_dispersion.griess_dp_norm
             }
         },
 
         'measures_adjusted_freq': {
             main.tr('Juilland’s U'): {
-                'col': main.tr('Juilland\'s U'),
+                'col': main.tr('Juilland’s U'),
                 'func': wl_measures_adjusted_freq.juillands_u
             },
 
             main.tr('Carroll’s Um'): {
-                'col': main.tr('Carroll\'s Um'),
+                'col': main.tr('Carroll’s Um'),
                 'func': wl_measures_adjusted_freq.carrolls_um
             },
 
             main.tr('Rosengren’s KF'): {
-                'col': main.tr('Rosengren\'s KF'),
+                'col': main.tr('Rosengren’s KF'),
                 'func': wl_measures_adjusted_freq.rosengrens_kf
             },
 
             main.tr('Engwall’s FM'): {
-                'col': main.tr('Engwall\'s FM'),
+                'col': main.tr('Engwall’s FM'),
                 'func': wl_measures_adjusted_freq.engwalls_fm
             },
 
             main.tr('Kromer’s UR'): {
-                'col': main.tr('Kromer\'s UR'),
+                'col': main.tr('Kromer’s UR'),
                 'func': wl_measures_adjusted_freq.kromers_ur
             }
         },
