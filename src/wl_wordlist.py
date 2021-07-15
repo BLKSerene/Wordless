@@ -400,19 +400,19 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
                 texts.append(text_total)
 
             self.progress_updated.emit(self.tr('Processing data ...'))
-
+            
             # Dispersion & Adjusted Frequency
             text_measure_dispersion = settings['generation_settings']['measure_dispersion']
             text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
-
+            
             measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
             measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
-
+            
             tokens_total = self.tokens_freq_files[-1].keys()
-
+            
             for text in texts:
                 tokens_stats_file = {}
-
+                
                 # Dispersion
                 number_sections = self.main.settings_custom['measures']['dispersion']['general']['number_sections']
 
