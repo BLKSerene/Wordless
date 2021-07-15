@@ -31,6 +31,7 @@ import openpyxl
 
 from wl_checking import wl_checking_file, wl_checking_misc
 from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
+from wl_text import wl_text
 from wl_utils import wl_conversion, wl_detection, wl_misc, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_table
 
@@ -293,6 +294,15 @@ class Wl_Files():
 
             f.write(str(soup))
 
+        # Check for duplicate file names
+        file_names = [file['name'] for file in self.main.settings_custom['files']['files_open']]
+        new_file['name'] = new_file['name_old'] = wl_checking_misc.check_new_name(new_file['name'], file_names)
+
+        # Process texts
+        new_file['text'] = wl_text.Wl_Text(self.main, new_file)
+        # Remove the main object from all texts
+        new_file['text'].main = None
+
         return new_file
 
     @wl_misc.log_timing
@@ -300,11 +310,7 @@ class Wl_Files():
         def update_gui(new_files):
             len_files_old = len(self.main.settings_custom['files']['files_open'])
 
-            for new_file in new_files:
-                file_names = [file['name'] for file in self.main.settings_custom['files']['files_open']]
-                new_file['name'] = new_file['name_old'] = wl_checking_misc.check_new_name(new_file['name'], file_names)
-
-                self.main.settings_custom['files']['files_open'].append(new_file)
+            self.main.settings_custom['files']['files_open'].extend(new_files)
 
             self.update_table()
 
@@ -355,7 +361,7 @@ class Wl_Files():
         self.table.setUpdatesEnabled(False)
 
         files = self.main.settings_custom['files']['files_open']
-
+        
         if files:
             self.table.clear_table(len(files))
 
@@ -397,7 +403,7 @@ class Wl_Files():
 
     def get_selected_files(self):
         files_selected = [file for file in self.main.settings_custom['files']['files_open'] if file['selected']]
-
+        
         return files_selected
 
     def find_file_by_name(self, file_name, selected_only = False):
@@ -497,6 +503,8 @@ class Wl_Table_Files(wl_table.Wl_Table):
 
                     break
 
+            file_texts = {file['path']: file['text'] for file in self.main.settings_custom['files']['files_open']}
+
             self.main.settings_custom['files']['files_open'].clear()
 
             for row in range(self.rowCount()):
@@ -512,6 +520,7 @@ class Wl_Table_Files(wl_table.Wl_Table):
                 new_file['tagged'] = self.cellWidget(row, 3).currentText()
                 new_file['path'] = self.item(row, 4).text()
                 new_file['encoding'] = wl_conversion.to_encoding_code(self.main, encoding_text)
+                new_file['text'] = file_texts[new_file['path']]
 
                 self.main.settings_custom['files']['files_open'].append(new_file)
 

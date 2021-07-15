@@ -29,6 +29,7 @@
 - Work Area: Add Concordancer (Parallel Mode)
 
 ### ✨ Improvements
+- File Area: Cache loaded files
 - Utils: Update encoding detection
 - Utils: Update NLTK’s word tokenizers
 - Utils: Update spaCy’s sentencizer, word tokenizers, POS taggers, and lemmatizers

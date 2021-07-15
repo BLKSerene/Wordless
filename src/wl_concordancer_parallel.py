@@ -462,20 +462,20 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
             self.progress_updated.emit(self.tr('Searching in texts ...'))
 
-            text_src = wl_text.Wl_Text(self.main, src_file, preserve_blank_lines = True)
-            text_tgt = wl_text.Wl_Text(self.main, tgt_file, preserve_blank_lines = True)
+            text_src = copy.deepcopy(src_file['text'])
+            text_tgt = copy.deepcopy(tgt_file['text'])
 
             len_segs_src = len(text_src.offsets_paras)
             len_segs_tgt = len(text_tgt.offsets_paras)
             len_segs = max([len_segs_src, len_segs_tgt])
             
             tokens_src = wl_token_processing.wl_process_tokens_concordancer(
-                text_src,
+                self.main, text_src,
                 token_settings = settings['token_settings'],
                 preserve_blank_lines = True
             )
             tokens_tgt = wl_token_processing.wl_process_tokens_concordancer(
-                text_tgt,
+                self.main, text_tgt,
                 token_settings = settings['token_settings'],
                 preserve_blank_lines = True
             )
