@@ -299,9 +299,9 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
             files = self.main.wl_files.get_selected_files()
 
             for i, file in enumerate(files):
-                text = wl_text.Wl_Text(self.main, file)
+                text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens_overview(
-                    text,
+                    self.main, text,
                     token_settings = settings['token_settings']
                 )
 

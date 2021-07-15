@@ -648,7 +648,7 @@ class Wl_Worker_Colligation(wl_threading.Wl_Worker):
                 colligations_freqs_file = {}
                 colligations_freqs_file_all = {}
 
-                text = wl_text.Wl_Text(self.main, file)
+                text = copy.deepcopy(file['text'])
 
                 # Generate POS tags for files that are not POS tagged already
                 if file['tagged'] == 'No':
@@ -661,7 +661,7 @@ class Wl_Worker_Colligation(wl_threading.Wl_Worker):
                     text.tagged = 'Yes'
 
                 text = wl_token_processing.wl_process_tokens_colligation(
-                    text,
+                    self.main, text,
                     token_settings = settings['token_settings']
                 )
 

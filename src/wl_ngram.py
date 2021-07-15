@@ -626,9 +626,9 @@ class Wl_Worker_Ngram(wl_threading.Wl_Worker):
             for file in files:
                 ngrams = []
 
-                text = wl_text.Wl_Text(self.main, file)
+                text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens_ngram(
-                    text,
+                    self.main, text,
                     token_settings = settings['token_settings']
                 )
 
@@ -667,11 +667,11 @@ class Wl_Worker_Ngram(wl_threading.Wl_Worker):
 
                                     if len_search_term < ngram_size:
                                         for i, ngram in enumerate(nltk.ngrams(
-                                                                      tokens,
-                                                                      ngram_size + allow_skipped_tokens,
-                                                                      pad_right = True,
-                                                                      right_pad_symbol = SENTINEL
-                                                                  )):
+                                                            tokens,
+                                                            ngram_size + allow_skipped_tokens,
+                                                            pad_right = True,
+                                                            right_pad_symbol = SENTINEL
+                                                        )):
                                             for j in range(ngram_size + allow_skipped_tokens - len_search_term + 1):
                                                 if ngram[j : j + len_search_term] == search_term:
                                                     ngram_cur = list(ngram)

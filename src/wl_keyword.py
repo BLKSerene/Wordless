@@ -416,9 +416,9 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
 
             # Frequency
             for i, file in enumerate([ref_file] + files):
-                text = wl_text.Wl_Text(self.main, file)
+                text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens_keyword(
-                    text,
+                    self.main, text,
                     token_settings = settings['token_settings']
                 )
 

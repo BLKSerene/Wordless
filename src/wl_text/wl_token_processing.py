@@ -15,9 +15,12 @@ from wl_checking import wl_checking_token
 from wl_text import wl_lemmatization, wl_stop_word_lists, wl_text, wl_text_utils, wl_word_detokenization
 from wl_utils import wl_misc
 
-def wl_process_tokens(text, token_settings):
-    main = text.main
+def wl_process_tokens(main, text, token_settings):
     settings = copy.deepcopy(token_settings)
+
+    # Remove empty paragraphs
+    text.tokens_multilevel = [para
+                              for para in text.tokens_multilevel if para]
 
     # Punctuations
     if not settings['puncs']:
@@ -151,8 +154,8 @@ def wl_process_tokens(text, token_settings):
 
     return text
 
-def wl_process_tokens_overview(text, token_settings):
-    text = wl_process_tokens(text, token_settings)
+def wl_process_tokens_overview(main, text, token_settings):
+    text = wl_process_tokens(main, text, token_settings)
 
     # Remove empty tokens, sentences, and paragraphs
     text.tokens_multilevel = [[[token
@@ -183,8 +186,7 @@ def wl_process_tokens_overview(text, token_settings):
 
     return text
 
-def wl_process_tokens_concordancer(text, token_settings, preserve_blank_lines = False):
-    main = text.main
+def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_lines = False):
     tokens = text.tokens_flat.copy()
 
     settings = copy.deepcopy(token_settings)
@@ -199,7 +201,7 @@ def wl_process_tokens_concordancer(text, token_settings, preserve_blank_lines = 
         text.offsets_paras = []
         text.offsets_sentences = []
         text.tokens_flat = []
-
+        
         for para in text.tokens_multilevel:
             text.offsets_paras.append(len(text.tokens_flat))
             
@@ -253,23 +255,23 @@ def wl_process_tokens_concordancer(text, token_settings, preserve_blank_lines = 
 
     return tokens
 
-def wl_process_tokens_wordlist(text, token_settings):
-    text = wl_process_tokens(text, token_settings)
+def wl_process_tokens_wordlist(main, text, token_settings):
+    text = wl_process_tokens(main, text, token_settings)
 
     return text
 
-def wl_process_tokens_ngram(text, token_settings):
-    text = wl_process_tokens(text, token_settings)
+def wl_process_tokens_ngram(main, text, token_settings):
+    text = wl_process_tokens(main, text, token_settings)
 
     return text
 
-def wl_process_tokens_collocation(text, token_settings):
-    text = wl_process_tokens(text, token_settings)
+def wl_process_tokens_collocation(main, text, token_settings):
+    text = wl_process_tokens(main, text, token_settings)
 
     return text
 
-def wl_process_tokens_colligation(text, token_settings):
-    text = wl_process_tokens(text, token_settings)
+def wl_process_tokens_colligation(main, text, token_settings):
+    text = wl_process_tokens(main, text, token_settings)
 
     # Use tags Only
     if token_settings['use_tags']:
@@ -282,7 +284,7 @@ def wl_process_tokens_colligation(text, token_settings):
 
     return text
 
-def wl_process_tokens_keyword(text, token_settings):
-    text = wl_process_tokens(text, token_settings)
+def wl_process_tokens_keyword(main, text, token_settings):
+    text = wl_process_tokens(main, text, token_settings)
 
     return text
