@@ -43,9 +43,8 @@ jobs:
         pytest wl_tests/wl_text/test_word_detokenization.py
         pytest wl_tests/wl_text/test_pos_tagging.py
         pytest wl_tests/wl_text/test_lemmatization.py
-        pytest wl_tests/wl_text/test_stop_word_lists.py
         
-        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/wl_text/test_stop_word_lists.py
+        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py
 
   build-macos:
     runs-on: macos-10.15
@@ -85,9 +84,8 @@ jobs:
         pytest wl_tests/wl_text/test_word_detokenization.py
         pytest wl_tests/wl_text/test_pos_tagging.py
         pytest wl_tests/wl_text/test_lemmatization.py
-        pytest wl_tests/wl_text/test_stop_word_lists.py
         
-        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/wl_text/test_stop_word_lists.py
+        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py
 
   build-linux:
     runs-on: ubuntu-18.04
@@ -119,6 +117,5 @@ jobs:
         pytest wl_tests/wl_text/test_word_detokenization.py
         pytest wl_tests/wl_text/test_pos_tagging.py
         pytest wl_tests/wl_text/test_lemmatization.py
-        pytest wl_tests/wl_text/test_stop_word_lists.py
         
-        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/wl_text/test_stop_word_lists.py --ignore=wl_tests/test_overview.py
+        pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py
