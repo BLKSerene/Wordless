@@ -501,8 +501,8 @@ def init_settings_default(main):
                 'allow_skipped_tokens': False,
                 'allow_skipped_tokens_num': 1,
 
-                'measure_dispersion': main.tr('Juilland\'s D'),
-                'measure_adjusted_freq': main.tr('Juilland\'s U')
+                'measure_dispersion': main.tr('Juilland’s D'),
+                'measure_adjusted_freq': main.tr('Juilland’s U')
             },
 
             'table_settings': {
