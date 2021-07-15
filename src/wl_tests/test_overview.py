@@ -31,13 +31,15 @@ wl_test_file_area.wl_test_file_area(main)
 def test_overview():
     time_start_total = time.time()
 
+    print('Start testing Overview...')
+
     for i, file_test in enumerate(main.settings_custom['files']['files_open']):
         for file in main.settings_custom['files']['files_open']:
             file['selected'] = False
 
         main.settings_custom['files']['files_open'][i]['selected'] = True
 
-        print(f'''Start testing Overview for file "{file_test['name']}"... ''', end = '')
+        print(f'''Testing file "{file_test['name']}"... ''', end = '')
 
         time_start = time.time()
 
@@ -50,13 +52,15 @@ def test_overview():
         )
         worker_overview_table.run()
 
-        print(f'Done! (In {round(time.time() - time_start, 2)} seconds)')
+        print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
 
-    print(f'Testing for Overview has been completed! (In {round(time.time() - time_start_total, 2)} seconds)')
+    print(f'Testing completed! (In {round(time.time() - time_start_total, 2)} seconds)')
 
     main.app.quit()
 
 def update_gui(error_msg, texts_stats_files):
+    assert not error_msg
+    
     count_tokens_lens = []
     count_sentences_lens = []
 
