@@ -54,13 +54,17 @@ for:
       - cd src
     # Run tests
     test_script:
+      - pytest wl_tests/test_overview.py
+      - pytest wl_tests/test_wordlist.py
+      - pytest wl_tests/test_ngram.py
+
       - pytest wl_tests/wl_text/test_sentence_tokenization.py
       - pytest wl_tests/wl_text/test_word_tokenization.py
       - pytest wl_tests/wl_text/test_word_detokenization.py
       - pytest wl_tests/wl_text/test_pos_tagging.py
       - pytest wl_tests/wl_text/test_lemmatization.py
-      
-      - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py
+
+      - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py --ignore=wl_tests/test_ngram.py
 
   # macOS
   -
@@ -88,13 +92,17 @@ for:
       - cd src
     # Run tests
     test_script:
+      - pytest wl_tests/test_overview.py
+      - pytest wl_tests/test_wordlist.py
+      - pytest wl_tests/test_ngram.py
+
       - pytest wl_tests/wl_text/test_sentence_tokenization.py
       - pytest wl_tests/wl_text/test_word_tokenization.py
       - pytest wl_tests/wl_text/test_word_detokenization.py
       - pytest wl_tests/wl_text/test_pos_tagging.py
       - pytest wl_tests/wl_text/test_lemmatization.py
-      
-      - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py
+
+      - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py --ignore=wl_tests/test_ngram.py
 
   # Ubuntu
   - 
@@ -120,5 +128,5 @@ for:
       - pytest wl_tests/wl_text/test_word_detokenization.py
       - pytest wl_tests/wl_text/test_pos_tagging.py
       - pytest wl_tests/wl_text/test_lemmatization.py
-      
+
       - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py --ignore=wl_tests/test_ngram.py
