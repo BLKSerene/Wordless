@@ -25,7 +25,7 @@ import numpy
 from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
-from wl_text import wl_matching, wl_text, wl_text_utils, wl_token_processing, wl_word_detokenization
+from wl_text import wl_matching, wl_text, wl_text_utils, wl_token_processing
 from wl_utils import wl_misc, wl_sorting, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
 
@@ -773,12 +773,10 @@ class Wl_Worker_Ngram(wl_threading.Wl_Worker):
                 else:
                     self.ngrams_freq_files.append(ngrams_freq_file)
 
-                # N-grams Text
+                # N-gram Text
                 for ngram in ngrams_freq_file:
-                    self.ngrams_text[ngram] = wl_word_detokenization.wl_word_detokenize(
-                        self.main, ngram,
-                        lang = text.lang
-                    )
+                    if ngram not in self.ngrams_text:
+                        self.ngrams_text[ngram] = ' '.join(ngram)
 
                 texts.append(text)
 
