@@ -26,7 +26,7 @@ from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
 from wl_measures import wl_measures_statistical_significance
-from wl_text import wl_matching, wl_text, wl_token_processing, wl_word_detokenization
+from wl_text import wl_matching, wl_text, wl_token_processing
 from wl_utils import wl_misc, wl_sorting, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
 
@@ -852,7 +852,7 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
 
                 # Nodes Text
                 for (node, collocate) in collocations_freqs_file:
-                    self.nodes_text[node] = wl_word_detokenization.wl_word_detokenize(self.main, node, text.lang)
+                    self.nodes_text[node] = ' '.join(node)
 
                 texts.append(text)
 
