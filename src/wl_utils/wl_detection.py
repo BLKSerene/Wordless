@@ -27,12 +27,12 @@ def detect_encoding(main, file_path):
     text = b''
 
     with open(file_path, 'rb') as f:
-        if main.settings_custom['auto_detection']['detection_settings']['number_lines_no_limit']:
+        if main.settings_custom['files']['auto_detection_settings']['number_lines_no_limit']:
             for line in f:
                 text += line
         else:
             for i, line in enumerate(f):
-                if i < main.settings_custom['auto_detection']['detection_settings']['number_lines']:
+                if i < main.settings_custom['files']['auto_detection_settings']['number_lines']:
                     text += line
                 else:
                     break
@@ -50,12 +50,12 @@ def detect_lang(main, file):
 
     try:
         with open(file['path'], 'r', encoding = file['encoding']) as f:
-            if main.settings_custom['auto_detection']['detection_settings']['number_lines_no_limit']:
+            if main.settings_custom['files']['auto_detection_settings']['number_lines_no_limit']:
                 for line in f:
                     text += line
             else:
                 for i, line in enumerate(f):
-                    if i < main.settings_custom['auto_detection']['detection_settings']['number_lines']:
+                    if i < main.settings_custom['files']['auto_detection_settings']['number_lines']:
                         text += line
                     else:
                         break
@@ -81,6 +81,6 @@ def detect_lang(main, file):
 
         lang = wl_conversion.to_iso_639_3(main, lang_code_639_1)
     except:
-        lang = main.settings_custom['auto_detection']['default_settings']['default_lang']
+        lang = main.settings_custom['files']['default_settings']['default_lang']
 
     return lang

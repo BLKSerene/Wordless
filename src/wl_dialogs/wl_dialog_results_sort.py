@@ -266,7 +266,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialog.Wl_Dialog):
                     no_para, no_para_pct,
                     file,
                     sentiment) in enumerate(results):
-                for file_open in self.tables[0].settings['files']['files_open']:
+                for file_open in self.tables[0].settings['file_area']['files_open']:
                     if file_open['selected'] and file_open['name'] == file:
                         lang = file_open['lang']
 
@@ -414,7 +414,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialog.Wl_Dialog):
                      no_seg_tgt, no_seg_pct_tgt)) in enumerate(results):
                 src_file = settings['generation_settings']['src_file']
 
-                for file_open in self.tables[0].settings['files']['files_open']:
+                for file_open in self.tables[0].settings['file_area']['files_open']:
                     if file_open['selected'] and file_open['name'] == src_file:
                         lang = file_open['lang']
 
