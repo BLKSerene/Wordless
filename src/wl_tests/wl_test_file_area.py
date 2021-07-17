@@ -29,7 +29,7 @@ def wl_test_file_area(main):
     for file in glob.glob('Import/*.*'):
         os.remove(file)
 
-    file_path_loaded = [os.path.basename(file['path']) for file in main.settings_custom['files']['files_open']]
+    file_path_loaded = [os.path.basename(file['path']) for file in main.settings_custom['file_area']['files_open']]
     
     for file_path in glob.glob('wl_tests_files/wl_file_area/*.txt'):
         if os.path.basename(file_path) not in file_path_loaded:
@@ -50,7 +50,7 @@ def wl_test_file_area(main):
 
             print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
     
-    main.settings_custom['files']['files_open'].extend(new_files)
+    main.settings_custom['file_area']['files_open'].extend(new_files)
 
     # Save Settings
     with open('wl_tests/wl_settings.pickle', 'wb') as f:

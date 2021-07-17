@@ -95,7 +95,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                         new_paths = [new_path]
                     else:
                         # Detect encoding
-                        if self.main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
+                        if self.main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
                             encoding_code = wl_detection.detect_encoding(self.main, file_path)
                         else:
                             encoding_code = self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
@@ -263,20 +263,20 @@ class Wl_Files():
             new_file['tokenized'] = 'Yes'
             new_file['tagged'] = 'Yes'
         else:
-            new_file['tokenized'] = 'No'
-            new_file['tagged'] = 'No'
+            new_file['tokenized'] = self.main.settings_custom['files']['default_settings']['tokenized']
+            new_file['tagged'] = self.main.settings_custom['files']['default_settings']['tagged']
 
         new_file['name'], _ = os.path.splitext(os.path.basename(new_file['path']))
         new_file['name_old'] = new_file['name']
 
         # Detect encodings
-        if self.main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
+        if self.main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
             new_file['encoding'] = wl_detection.detect_encoding(self.main, new_file['path'])
         else:
             new_file['encoding'] = self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
 
         # Detect languages
-        if self.main.settings_custom['files']['auto_detection_settings']['detect_langs']:
+        if self.main.settings_custom['file_area']['auto_detection_settings']['detect_langs']:
             new_file['lang'] = wl_detection.detect_lang(self.main, new_file)
         else:
             new_file['lang'] = self.main.settings_custom['auto_detection']['default_settings']['default_lang']
@@ -310,7 +310,7 @@ class Wl_Files():
             f.write(str(soup))
 
         # Check for duplicate file names
-        file_names = [file['name'] for file in self.main.settings_custom['files']['files_open']]
+        file_names = [file['name'] for file in self.main.settings_custom['file_area']['files_open']]
         new_file['name'] = new_file['name_old'] = wl_checking_misc.check_new_name(new_file['name'], file_names)
 
         # Process texts
@@ -323,13 +323,13 @@ class Wl_Files():
     @wl_misc.log_timing
     def open_files(self, file_paths):
         def update_gui(new_files):
-            len_files_old = len(self.main.settings_custom['files']['files_open'])
+            len_files_old = len(self.main.settings_custom['file_area']['files_open'])
 
-            self.main.settings_custom['files']['files_open'].extend(new_files)
+            self.main.settings_custom['file_area']['files_open'].extend(new_files)
 
             self.update_table()
 
-            len_files_new = len(self.main.settings_custom['files']['files_open'])
+            len_files_new = len(self.main.settings_custom['file_area']['files_open'])
 
             if len_files_new - len_files_old == 0:
                 self.main.statusBar().showMessage('No files are newly opened!')
@@ -370,17 +370,17 @@ class Wl_Files():
         worker_reload_files = Wl_Worker_Reload_Files(
             self.main,
             dialog_progress = dialog_progress,
-            files = [self.main.settings_custom['files']['files_open'][i] for i in file_indexes]
+            files = [self.main.settings_custom['file_area']['files_open'][i] for i in file_indexes]
         )
         
         thread_reload_files = wl_threading.Wl_Thread(worker_reload_files)
         thread_reload_files.start_worker()
 
     def close_files(self, file_indexes):
-        self.main.settings_custom['files']['files_closed'].append([])
+        self.main.settings_custom['file_area']['files_closed'].append([])
 
         for i in reversed(file_indexes):
-            self.main.settings_custom['files']['files_closed'][-1].append(self.main.settings_custom['files']['files_open'].pop(i))
+            self.main.settings_custom['file_area']['files_closed'][-1].append(self.main.settings_custom['file_area']['files_open'].pop(i))
 
         self.update_table()
 
@@ -388,7 +388,7 @@ class Wl_Files():
         self.table.blockSignals(True)
         self.table.setUpdatesEnabled(False)
 
-        files = self.main.settings_custom['files']['files_open']
+        files = self.main.settings_custom['file_area']['files_open']
         
         if files:
             self.table.clear_table(len(files))
@@ -430,7 +430,7 @@ class Wl_Files():
         self.table.itemChanged.emit(self.table.item(0, 0))
 
     def get_selected_files(self):
-        files_selected = [file for file in self.main.settings_custom['files']['files_open'] if file['selected']]
+        files_selected = [file for file in self.main.settings_custom['file_area']['files_open'] if file['selected']]
         
         return files_selected
 
@@ -438,7 +438,7 @@ class Wl_Files():
         if selected_only:
             files = self.get_selected_files()
         else:
-            files = self.main.settings_custom['files']['files_open']
+            files = self.main.settings_custom['file_area']['files_open']
 
         for file in files:
             if file['name'] == file_name:
@@ -450,7 +450,7 @@ class Wl_Files():
         if selected_only:
             files = self.get_selected_files()
         else:
-            files = self.main.settings_custom['files']['files_open']
+            files = self.main.settings_custom['file_area']['files_open']
             
         for file in files:
             if os.path.normcase(file['path']) == os.path.normcase(file_path):
@@ -535,9 +535,9 @@ class Wl_Table_Files(wl_table.Wl_Table):
 
                     break
 
-            file_texts = {file['path']: file['text'] for file in self.main.settings_custom['files']['files_open']}
+            file_texts = {file['path']: file['text'] for file in self.main.settings_custom['file_area']['files_open']}
 
-            self.main.settings_custom['files']['files_open'].clear()
+            self.main.settings_custom['file_area']['files_open'].clear()
 
             for row in range(self.rowCount()):
                 new_file = {}
@@ -554,7 +554,7 @@ class Wl_Table_Files(wl_table.Wl_Table):
                 new_file['encoding'] = wl_conversion.to_encoding_code(self.main, encoding_text)
                 new_file['text'] = file_texts[new_file['path']]
 
-                self.main.settings_custom['files']['files_open'].append(new_file)
+                self.main.settings_custom['file_area']['files_open'].append(new_file)
 
             self.button_close_all.setEnabled(True)
         else:
@@ -578,7 +578,7 @@ class Wl_Table_Files(wl_table.Wl_Table):
 
             self.main.find_menu_item(self.tr('Close All')).setEnabled(False)
 
-        if self.main.settings_custom['files']['files_closed']:
+        if self.main.settings_custom['file_area']['files_closed']:
             self.main.find_menu_item(self.tr('Reopen Closed Files')).setEnabled(True)
         else:
             self.main.find_menu_item(self.tr('Reopen Closed Files')).setEnabled(False)
@@ -635,7 +635,7 @@ class Wl_Table_Files(wl_table.Wl_Table):
         )
 
         if file_dir:
-            if self.main.settings_custom['files']['folder_settings']['subfolders']:
+            if self.main.settings_custom['file_area']['folder_settings']['subfolders']:
                 for dir_path, dir_names, file_names in os.walk(file_dir):
                     for file_name in file_names:
                         file_paths.append(os.path.join(dir_path, file_name))
@@ -648,7 +648,7 @@ class Wl_Table_Files(wl_table.Wl_Table):
             self.main.wl_files.open_files(file_paths)
 
     def reopen(self):
-        files = self.main.settings_custom['files']['files_closed'].pop()
+        files = self.main.settings_custom['file_area']['files_closed'].pop()
 
         self.main.wl_files.open_files([file['path'] for file in files])
 
@@ -656,7 +656,7 @@ class Wl_Table_Files(wl_table.Wl_Table):
         self.main.wl_files.reload_files(self.get_selected_rows())
 
     def reload_all(self):
-        self.main.wl_files.reload_files(list(range(len(self.main.settings_custom['files']['files_open']))))
+        self.main.wl_files.reload_files(list(range(len(self.main.settings_custom['file_area']['files_open']))))
 
     def select_all(self):
         if self.item(0, 0):
@@ -682,7 +682,7 @@ class Wl_Table_Files(wl_table.Wl_Table):
         self.main.wl_files.close_files(self.get_selected_rows())
 
     def close_all(self):
-        self.main.wl_files.close_files(list(range(len(self.main.settings_custom['files']['files_open']))))
+        self.main.wl_files.close_files(list(range(len(self.main.settings_custom['file_area']['files_open']))))
 
 class Wrapper_File_Area(wl_layout.Wl_Wrapper_File_Area):
     def __init__(self, main):
@@ -735,9 +735,9 @@ class Wrapper_File_Area(wl_layout.Wl_Wrapper_File_Area):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default['files'])
+            settings = copy.deepcopy(self.main.settings_default['file_area'])
         else:
-            settings = copy.deepcopy(self.main.settings_custom['files'])
+            settings = copy.deepcopy(self.main.settings_custom['file_area'])
 
         self.checkbox_subfolders.setChecked(settings['folder_settings']['subfolders'])
 
@@ -748,12 +748,12 @@ class Wrapper_File_Area(wl_layout.Wl_Wrapper_File_Area):
         self.auto_detection_settings_changed()
 
     def folder_settings_changed(self):
-        settings = self.main.settings_custom['files']['folder_settings']
+        settings = self.main.settings_custom['file_area']['folder_settings']
 
         settings['subfolders'] = self.checkbox_subfolders.isChecked()
 
     def auto_detection_settings_changed(self):
-        settings = self.main.settings_custom['files']['auto_detection_settings']
+        settings = self.main.settings_custom['file_area']['auto_detection_settings']
 
         settings['detect_langs'] = self.checkbox_detect_langs.isChecked()
         settings['detect_encodings'] = self.checkbox_detect_encodings.isChecked()

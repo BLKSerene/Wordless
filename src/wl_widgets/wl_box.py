@@ -75,7 +75,7 @@ class Wl_Combo_Box_File_To_Filter(Wl_Combo_Box):
 
         self.clear()
 
-        for file in self.table.settings['files']['files_open']:
+        for file in self.table.settings['file_area']['files_open']:
             if file['selected']:
                 self.addItem(file['name'])
 

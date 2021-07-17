@@ -46,7 +46,6 @@ class Wl_Settings(QDialog):
         self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem([self.tr('Export')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Files')]))
-        self.tree_settings.topLevelItem(1).addChild(QTreeWidgetItem([self.tr('Auto-detection')]))
         self.tree_settings.topLevelItem(1).addChild(QTreeWidgetItem([self.tr('Tags')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Data')]))
@@ -80,7 +79,7 @@ class Wl_Settings(QDialog):
         self.settings_export = wl_settings_general.Wl_Settings_Export(self.main)
 
         # Files
-        self.settings_auto_detection = wl_settings_files.Wl_Settings_Auto_Detection(self.main)
+        self.settings_files = wl_settings_files.Wl_Settings_Files(self.main)
         self.settings_tags = wl_settings_files.Wl_Settings_Tags(self.main)
 
         self.settings_data = wl_settings_data.Wl_Settings_Data(self.main)
@@ -107,7 +106,7 @@ class Wl_Settings(QDialog):
             self.settings_general,
             self.settings_import,
             self.settings_export,
-            self.settings_auto_detection,
+            self.settings_files,
             self.settings_tags,
             self.settings_data,
             self.settings_sentence_tokenization,
@@ -178,9 +177,9 @@ class Wl_Settings(QDialog):
 
                 # Files
                 elif item_selected_text == self.tr('Files'):
-                    item_selected.setExpanded(True)
-                elif item_selected_text == self.tr('Auto-detection'):
                     self.stacked_widget_settings.setCurrentIndex(3)
+
+                    item_selected.setExpanded(True)
                 elif item_selected_text == self.tr('Tags'):
                     self.stacked_widget_settings.setCurrentIndex(4)
 

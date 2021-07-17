@@ -22,7 +22,7 @@ from wl_tests import wl_test_init
 from wl_utils import wl_detection
 
 main = wl_test_init.Wl_Test_Main()
-main.settings_custom['auto_detection']['detection_settings']['number_lines_no_limit'] = True
+main.settings_custom['files']['auto_detection_settings']['number_lines_no_limit'] = True
 
 # Encoding detection
 @pytest.mark.parametrize('file_path', glob.glob(f'wl_tests_files/wl_utils/wl_detection/encoding/*.txt'))

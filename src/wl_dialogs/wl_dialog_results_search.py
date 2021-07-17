@@ -43,7 +43,7 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
 
             items = [token for text in results.values() for token in text]
 
-            for file in table.settings['files']['files_open']:
+            for file in table.settings['file_area']['files_open']:
                 if file['selected']:
                     search_terms_file = wl_matching.match_search_terms(
                         self.main, items,

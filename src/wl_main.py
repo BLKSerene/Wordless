@@ -501,7 +501,7 @@ class Wl_Main(QMainWindow):
 
     def save_settings(self):
         # Clear history of closed files
-        self.settings_custom['files']['files_closed'].clear()
+        self.settings_custom['file_area']['files_closed'].clear()
 
         # Layouts
         self.settings_custom['layouts']['central_widget'] = self.centralWidget().sizes()
