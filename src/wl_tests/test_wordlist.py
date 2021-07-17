@@ -30,11 +30,11 @@ def test_wordlist():
 
     print('Start testing Wordlist...')
 
-    for i, file_test in enumerate(main.settings_custom['files']['files_open']):
-        for file in main.settings_custom['files']['files_open']:
+    for i, file_test in enumerate(main.settings_custom['file_area']['files_open']):
+        for file in main.settings_custom['file_area']['files_open']:
             file['selected'] = False
 
-        main.settings_custom['files']['files_open'][i]['selected'] = True
+        main.settings_custom['file_area']['files_open'][i]['selected'] = True
 
         print(f'''Testing file "{file_test['name']}"... ''', end = '')
 

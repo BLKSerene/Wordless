@@ -31,7 +31,7 @@ def init_settings_default(main):
             'central_widget': [main.height() - 100 - 210, 210]
         },
 
-        'files': {
+        'file_area': {
             'files_open': [],
             'files_closed': [],
 
@@ -1064,15 +1064,17 @@ def init_settings_default(main):
             }
         },
 
-        'auto_detection': {
-            'detection_settings': {
-                'number_lines': 100,
-                'number_lines_no_limit': False
+        'files': {
+            'default_settings': {
+                'lang': 'eng',
+                'tokenized': main.tr('No'),
+                'tagged': main.tr('No'),
+                'encoding': 'utf_8'
             },
 
-            'default_settings': {
-                'default_lang': 'eng',
-                'default_encoding': 'utf_8'
+            'auto_detection_settings': {
+                'number_lines': 100,
+                'number_lines_no_limit': False
             }
         },
 
