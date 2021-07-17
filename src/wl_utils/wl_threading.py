@@ -45,6 +45,23 @@ class Wl_Worker_No_Progress(QObject):
 
         self.worker_done.connect(update_gui)
 
+class Wl_Worker_No_Callback(QObject):
+    progress_updated = pyqtSignal(str)
+    worker_done = pyqtSignal()
+
+    def __init__(self, main, dialog_progress, **kwargs):
+        super().__init__()
+
+        self.main = main
+        self.dialog_progress = dialog_progress
+
+        # Additional arguments
+        for key, val in kwargs.items():
+            self.__dict__[key] = val
+
+        self.progress_updated.connect(self.dialog_progress.update_progress)
+        self.worker_done.connect(self.dialog_progress.accept)
+
 class Wl_Thread(QThread):
     def __init__(self, worker):
         super().__init__()

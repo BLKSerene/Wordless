@@ -578,8 +578,6 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
             settings = self.main.settings_custom['concordancer']
             files = self.main.wl_files.get_selected_files()
 
-            self.progress_updated.emit(self.tr('Searching in text ...'))
-
             for file in files:
                 text = copy.deepcopy(file['text'])
 
@@ -866,7 +864,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
         except Exception as e:
             error_msg = repr(e)
 
-        self.progress_updated.emit(self.tr('Rendering table ...'))
+        self.progress_updated.emit(self.tr('Rendering table...'))
 
         time.sleep(0.1)
 
@@ -1014,7 +1012,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
         except Exception as e:
             error_msg = repr(e)
 
-        self.progress_updated.emit(self.tr('Rendering figure ...'))
+        self.progress_updated.emit(self.tr('Rendering figure...'))
 
         time.sleep(0.1)
 

@@ -792,8 +792,6 @@ class Wl_Worker_Ngram(wl_threading.Wl_Worker):
                 )
                 texts.append(text_total)
 
-            self.progress_updated.emit(self.tr('Processing data ...'))
-
             # Dispersion & Adjusted Frequency
             text_measure_dispersion = settings['generation_settings']['measure_dispersion']
             text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
@@ -856,7 +854,7 @@ class Wl_Worker_Ngram_Table(Wl_Worker_Ngram):
     def run(self):
         super().run()
 
-        self.progress_updated.emit(self.tr('Rendering table ...'))
+        self.progress_updated.emit(self.tr('Rendering table...'))
 
         time.sleep(0.1)
         
@@ -871,7 +869,7 @@ class Wl_Worker_Ngram_Fig(Wl_Worker_Ngram):
     def run(self):
         super().run()
 
-        self.progress_updated.emit(self.tr('Rendering figure ...'))
+        self.progress_updated.emit(self.tr('Rendering figure...'))
 
         time.sleep(0.1)
 

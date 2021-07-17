@@ -54,43 +54,43 @@ class Wl_Dialog_Progress_Open_Files(Wl_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
-        self.label_progress.setText(self.tr('Opening files ...'))
+        self.label_progress.setText(self.tr('Loading files...'))
 
 class Wl_Dialog_Progress_Process_Data(Wl_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
-        self.label_progress.setText(self.tr('Loading files ...'))
+        self.label_progress.setText(self.tr('Processing data...'))
 
 class Wl_Dialog_Progress_Results_Sort(Wl_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
-        self.label_progress.setText(self.tr('Sorting results ...'))
+        self.label_progress.setText(self.tr('Sorting results...'))
 
 class Wl_Dialog_Progress_Results_Filter(Wl_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
-        self.label_progress.setText(self.tr('Filtering results ...'))
+        self.label_progress.setText(self.tr('Filtering results...'))
 
 class Wl_Dialog_Progress_Results_Search(Wl_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
-        self.label_progress.setText(self.tr('Searching in results ...'))
+        self.label_progress.setText(self.tr('Searching in results...'))
 
 class Wl_Dialog_Progress_Export_Table(Wl_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
-        self.label_progress.setText(self.tr('Exporting table ...'))
+        self.label_progress.setText(self.tr('Exporting table...'))
 
 class Wl_Dialog_Progress_Fetch_Data(Wl_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main)
 
-        self.label_progress.setText(self.tr('Fetching data ...'))
+        self.label_progress.setText(self.tr('Fetching data...'))
 
 class WL_Dialog_Clear_Table(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):

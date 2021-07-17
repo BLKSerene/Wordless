@@ -399,8 +399,6 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
                 self.tokens_freq_files.append(sum(self.tokens_freq_files, collections.Counter()))
                 texts.append(text_total)
 
-            self.progress_updated.emit(self.tr('Processing data ...'))
-            
             # Dispersion & Adjusted Frequency
             text_measure_dispersion = settings['generation_settings']['measure_dispersion']
             text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
@@ -452,7 +450,7 @@ class Wl_Worker_Wordlist_Table(Wl_Worker_Wordlist):
     def run(self):
         super().run()
 
-        self.progress_updated.emit(self.tr('Rendering table ...'))
+        self.progress_updated.emit(self.tr('Rendering table...'))
 
         time.sleep(0.1)
 
@@ -466,7 +464,7 @@ class Wl_Worker_Wordlist_Fig(Wl_Worker_Wordlist):
     def run(self):
         super().run()
 
-        self.progress_updated.emit(self.tr('Rendering figure ...'))
+        self.progress_updated.emit(self.tr('Rendering figure...'))
 
         time.sleep(0.1)
 

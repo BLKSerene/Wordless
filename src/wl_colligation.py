@@ -893,8 +893,6 @@ class Wl_Worker_Colligation(wl_threading.Wl_Worker):
 
                 texts.append(wl_text.Wl_Text_Blank())
 
-            self.progress_updated.emit(self.tr('Processing data ...'))
-
             # Statistiscal Significance & Effect Size
             text_test_significance = settings['generation_settings']['test_significance']
             text_measure_effect_size = settings['generation_settings']['measure_effect_size']
@@ -954,7 +952,7 @@ class Wl_Worker_Colligation_Table(Wl_Worker_Colligation):
     def run(self):
         super().run()
 
-        self.progress_updated.emit(self.tr('Rendering table ...'))
+        self.progress_updated.emit(self.tr('Rendering table...'))
 
         time.sleep(0.1)
 
@@ -969,7 +967,7 @@ class Wl_Worker_Colligation_Fig(Wl_Worker_Colligation):
     def run(self):
         super().run()
 
-        self.progress_updated.emit(self.tr('Rendering figure ...'))
+        self.progress_updated.emit(self.tr('Rendering figure...'))
 
         time.sleep(0.1)
 
