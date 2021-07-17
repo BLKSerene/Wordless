@@ -31,7 +31,7 @@ def wl_test_file_area(main):
 
     file_path_loaded = [os.path.basename(file['path']) for file in main.settings_custom['files']['files_open']]
     
-    for file_path in glob.glob('wl_tests/files/wl_file_area/*.*'):
+    for file_path in glob.glob('wl_tests_files/wl_file_area/*.txt'):
         if os.path.basename(file_path) not in file_path_loaded:
             time_start = time.time()
 
