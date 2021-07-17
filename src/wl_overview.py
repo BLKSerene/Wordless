@@ -334,8 +334,6 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
             else:
                 texts.append(texts[0])
 
-            self.progress_updated.emit(self.tr('Processing data ...'))
-
             base_sttr = settings['generation_settings']['base_sttr']
 
             for text in texts:
@@ -405,7 +403,7 @@ class Wl_Worker_Overview_Table(Wl_Worker_Overview):
     def run(self):
         super().run()
 
-        self.progress_updated.emit(self.tr('Rendering table ...'))
+        self.progress_updated.emit(self.tr('Rendering table...'))
 
         time.sleep(0.1)
 
