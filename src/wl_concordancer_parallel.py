@@ -460,8 +460,6 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
             src_file = self.main.wl_files.find_file_by_name(src_file_name, selected_only = True)
             tgt_file = self.main.wl_files.find_file_by_name(tgt_file_name, selected_only = True)
 
-            self.progress_updated.emit(self.tr('Searching in texts ...'))
-
             text_src = copy.deepcopy(src_file['text'])
             text_tgt = copy.deepcopy(tgt_file['text'])
 
@@ -705,7 +703,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
         except Exception as e:
             error_msg = repr(e)
 
-        self.progress_updated.emit(self.tr('Rendering table ...'))
+        self.progress_updated.emit(self.tr('Rendering table...'))
 
         time.sleep(0.1)
 
