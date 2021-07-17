@@ -450,8 +450,6 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
                                                for token, freq in self.keywords_freq_files[0].items()
                                                if token in self.keywords_freq_files[1]}
 
-            self.progress_updated.emit(self.tr('Processing data ...'))
-
             # Keyness
             text_test_significance = settings['generation_settings']['test_significance']
             text_measure_effect_size = settings['generation_settings']['measure_effect_size']
@@ -535,7 +533,7 @@ class Wl_Worker_Keyword_Table(Wl_Worker_Keyword):
     def run(self):
         super().run()
 
-        self.progress_updated.emit(self.tr('Rendering table ...'))
+        self.progress_updated.emit(self.tr('Rendering table...'))
 
         time.sleep(0.1)
 
@@ -549,7 +547,7 @@ class Wl_Worker_Keyword_Fig(Wl_Worker_Keyword):
     def run(self):
         super().run()
 
-        self.progress_updated.emit(self.tr('Rendering figure ...'))
+        self.progress_updated.emit(self.tr('Rendering figure...'))
 
         time.sleep(0.1)
 
