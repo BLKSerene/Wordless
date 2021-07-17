@@ -189,25 +189,25 @@ class Wl_Main(QMainWindow):
         # File
         menu_file_open_files = QAction(self.tr('Open File(s)...'), self)
         menu_file_open_files.setStatusTip(self.tr('Open file(s)'))
-
         menu_file_open_dir = QAction(self.tr('Open Folder...'), self)
         menu_file_open_dir.setStatusTip(self.tr('Open all files in folder'))
-
         menu_file_reopen = QAction(self.tr('Reopen Closed Files'), self)
         menu_file_reopen.setStatusTip(self.tr('Reopen closed files'))
 
+        menu_file_reload_selected = QAction(self.tr('Reload Selected'), self)
+        menu_file_reload_selected.setStatusTip(self.tr('Reload selected files'))
+        menu_file_reload_all = QAction(self.tr('Reload All'), self)
+        menu_file_reload_all.setStatusTip(self.tr('Reload all files'))
+
         menu_file_select_all = QAction(self.tr('Select All'), self)
         menu_file_select_all.setStatusTip(self.tr('Select all files'))
-
+        menu_file_deselect_all = QAction(self.tr('Deselect All'), self)
+        menu_file_deselect_all.setStatusTip(self.tr('Deselect all files'))
         menu_file_invert_selection = QAction(self.tr('Invert Selection'), self)
         menu_file_invert_selection.setStatusTip(self.tr('Invert file selection'))
 
-        menu_file_deselect_all = QAction(self.tr('Deselect All'), self)
-        menu_file_deselect_all.setStatusTip(self.tr('Deselect all files'))
-
         menu_file_close_selected = QAction(self.tr('Close Selected'), self)
         menu_file_close_selected.setStatusTip(self.tr('Close selected file(s)'))
-
         menu_file_close_all = QAction(self.tr('Close All'), self)
         menu_file_close_all.setStatusTip(self.tr('Close all files'))
 
@@ -217,12 +217,14 @@ class Wl_Main(QMainWindow):
 
         menu_file.addAction(menu_file_open_files)
         menu_file.addAction(menu_file_open_dir)
-        menu_file.addSeparator()
         menu_file.addAction(menu_file_reopen)
         menu_file.addSeparator()
+        menu_file.addAction(menu_file_reload_selected)
+        menu_file.addAction(menu_file_reload_all)
+        menu_file.addSeparator()
         menu_file.addAction(menu_file_select_all)
-        menu_file.addAction(menu_file_invert_selection)
         menu_file.addAction(menu_file_deselect_all)
+        menu_file.addAction(menu_file_invert_selection)
         menu_file.addSeparator()
         menu_file.addAction(menu_file_close_selected)
         menu_file.addAction(menu_file_close_all)
