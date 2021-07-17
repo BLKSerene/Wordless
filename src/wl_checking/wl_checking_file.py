@@ -47,7 +47,7 @@ def check_file_paths_empty(main, file_paths):
                 '.xml',
                 '.tmx'
             ]:
-                if main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
+                if main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
                     encoding = wl_detection.detect_encoding(main, file_path)
                 else:
                     encoding = main.settings_custom['auto_detection']['default_settings']['default_encoding']
@@ -113,7 +113,7 @@ def check_file_paths_parsing_error(main, file_paths):
                 '.tmx'
             ]:
 
-                if main.settings_custom['files']['auto_detection_settings']['detect_encodings']:
+                if main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
                     encoding = wl_detection.detect_encoding(main, file_path)
                 else:
                     encoding = main.settings_custom['auto_detection']['default_settings']['default_encoding']

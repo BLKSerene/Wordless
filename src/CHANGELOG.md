@@ -14,6 +14,7 @@
 ## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - ??/??/2021
 
 ### 🎉 New Features
+- Menu: Add Preferences - Settings - Files - Default Settings - Tokenized/Tagged
 - Utils: Add CLTK’s Akkadian, Arabic (Standard), Coptic, English (Middle), English (Old), French (Old), German (Middle High), Greek (Ancient), Hindi, Latin, Marathi (Old), Norse (Old), Punjabi, and Sanskrit stop word lists
 - Utils: Add PyThaiNLP’s NERCut
 - Utils: Add PyThaiNLP’s perceptron tagger (LST20)
