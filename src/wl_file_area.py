@@ -45,7 +45,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
             len_file_paths = len(self.file_paths)
 
             for i, file_path in enumerate(self.file_paths):
-                self.progress_updated.emit(self.tr(f'Opening files ... ({i + 1}/{len_file_paths})'))
+                self.progress_updated.emit(self.tr(f'Loading files... ({i + 1}/{len_file_paths})'))
 
                 default_dir = wl_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
                 default_encoding = self.main.settings_custom['import']['temp_files']['default_encoding']
@@ -169,7 +169,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
             self.main.settings_custom['import']['files']['default_path'] = wl_misc.get_normalized_dir(self.file_paths[0])
 
-        self.progress_updated.emit(self.tr('Updating table ...'))
+        self.progress_updated.emit(self.tr('Updating table...'))
 
         time.sleep(0.1)
 
@@ -229,6 +229,21 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
         return visual_cells
 
+class Wl_Worker_Reload_Files(wl_threading.Wl_Worker_No_Callback):
+    def run(self):
+        files_reloaded = []
+
+        len_files = len(self.files)
+
+        for i, file in enumerate(self.files):
+            self.progress_updated.emit(self.tr(f'Reloading files... ({i + 1}/{len_files})'))
+
+            # Re-process texts
+            file['text'] = wl_text.Wl_Text(self.main, file)
+            file['text'].main = None
+
+        self.worker_done.emit()
+
 class Wl_Files():
     def __init__(self, table):
         self.main = table.main
@@ -244,12 +259,12 @@ class Wl_Files():
 
         new_file['path'] = file_path
 
-        if new_file['path'].endswith('.txt'):
-            new_file['tokenized'] = 'No'
-            new_file['tagged'] = 'No'
-        elif new_file['path'].endswith('.xml'):
+        if new_file['path'].endswith('.xml'):
             new_file['tokenized'] = 'Yes'
             new_file['tagged'] = 'Yes'
+        else:
+            new_file['tokenized'] = 'No'
+            new_file['tagged'] = 'No'
 
         new_file['name'], _ = os.path.splitext(os.path.basename(new_file['path']))
         new_file['name_old'] = new_file['name']
@@ -348,10 +363,23 @@ class Wl_Files():
             file_paths_parsing_error = file_paths_parsing_error
         )
 
-    def close_files(self, indexes):
+    @wl_misc.log_timing
+    def reload_files(self, file_indexes):
+        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Open_Files(self.main)
+        
+        worker_reload_files = Wl_Worker_Reload_Files(
+            self.main,
+            dialog_progress = dialog_progress,
+            files = [self.main.settings_custom['files']['files_open'][i] for i in file_indexes]
+        )
+        
+        thread_reload_files = wl_threading.Wl_Thread(worker_reload_files)
+        thread_reload_files.start_worker()
+
+    def close_files(self, file_indexes):
         self.main.settings_custom['files']['files_closed'].append([])
 
-        for i in reversed(indexes):
+        for i in reversed(file_indexes):
             self.main.settings_custom['files']['files_closed'][-1].append(self.main.settings_custom['files']['files_open'].pop(i))
 
         self.update_table()
@@ -454,25 +482,29 @@ class Wl_Table_Files(wl_table.Wl_Table):
 
         self.button_open_files = QPushButton(self.tr('Open File(s)...'))
         self.button_open_dir = QPushButton(self.tr('Open Folder...'))
-        self.button_reopen = QPushButton(self.tr('Reopen Closed Files'))
+        self.button_reload_selected = QPushButton(self.tr('Reload Selected'))
+        self.button_reload_all = QPushButton(self.tr('Reload All'))
         self.button_close_selected = QPushButton(self.tr('Close Selected'))
         self.button_close_all = QPushButton(self.tr('Close All'))
 
         self.button_open_files.clicked.connect(self.open_files)
         self.button_open_dir.clicked.connect(self.open_dir)
-        self.button_reopen.clicked.connect(self.reopen)
+        self.button_reload_selected.clicked.connect(self.reload_selected)
+        self.button_reload_all.clicked.connect(self.reload_all)
         self.button_close_selected.clicked.connect(self.close_selected)
         self.button_close_all.clicked.connect(self.close_all)
 
         # Menu
         self.main.find_menu_item(self.tr('Open File(s)...')).triggered.connect(self.open_files)
         self.main.find_menu_item(self.tr('Open Folder...')).triggered.connect(self.open_dir)
-
         self.main.find_menu_item(self.tr('Reopen Closed Files')).triggered.connect(self.reopen)
 
+        self.main.find_menu_item(self.tr('Reload Selected')).triggered.connect(self.reload_selected)
+        self.main.find_menu_item(self.tr('Reload All')).triggered.connect(self.reload_all)
+
         self.main.find_menu_item(self.tr('Select All')).triggered.connect(self.select_all)
-        self.main.find_menu_item(self.tr('Invert Selection')).triggered.connect(self.invert_selection)
         self.main.find_menu_item(self.tr('Deselect All')).triggered.connect(self.deselect_all)
+        self.main.find_menu_item(self.tr('Invert Selection')).triggered.connect(self.invert_selection)
 
         self.main.find_menu_item(self.tr('Close Selected')).triggered.connect(self.close_selected)
         self.main.find_menu_item(self.tr('Close All')).triggered.connect(self.close_all)
@@ -528,22 +560,21 @@ class Wl_Table_Files(wl_table.Wl_Table):
         else:
             self.button_close_all.setEnabled(False)
 
-        if self.main.settings_custom['files']['files_closed']:
-            self.button_reopen.setEnabled(True)
-        else:
-            self.button_reopen.setEnabled(False)
-
         # Menu
         if any([self.item(0, i) for i in range(self.columnCount())]):
+            self.main.find_menu_item(self.tr('Reload All')).setEnabled(True)
+
             self.main.find_menu_item(self.tr('Select All')).setEnabled(True)
-            self.main.find_menu_item(self.tr('Invert Selection')).setEnabled(True)
             self.main.find_menu_item(self.tr('Deselect All')).setEnabled(True)
+            self.main.find_menu_item(self.tr('Invert Selection')).setEnabled(True)
 
             self.main.find_menu_item(self.tr('Close All')).setEnabled(True)
         else:
+            self.main.find_menu_item(self.tr('Reload All')).setEnabled(False)
+
             self.main.find_menu_item(self.tr('Select All')).setEnabled(False)
-            self.main.find_menu_item(self.tr('Invert Selection')).setEnabled(False)
             self.main.find_menu_item(self.tr('Deselect All')).setEnabled(False)
+            self.main.find_menu_item(self.tr('Invert Selection')).setEnabled(False)
 
             self.main.find_menu_item(self.tr('Close All')).setEnabled(False)
 
@@ -559,14 +590,18 @@ class Wl_Table_Files(wl_table.Wl_Table):
 
     def file_selection_changed(self):
         if any([self.item(0, i) for i in range(self.columnCount())]) and self.selectedIndexes():
+            self.button_reload_selected.setEnabled(True)
             self.button_close_selected.setEnabled(True)
-        else:
-            self.button_close_selected.setEnabled(False)
 
-        # Menu
-        if any([self.item(0, i) for i in range(self.columnCount())]) and self.selectedIndexes():
+            # Menu
+            self.main.find_menu_item(self.tr('Reload Selected')).setEnabled(True)
             self.main.find_menu_item(self.tr('Close Selected')).setEnabled(True)
         else:
+            self.button_reload_selected.setEnabled(False)
+            self.button_close_selected.setEnabled(False)
+
+            # Menu
+            self.main.find_menu_item(self.tr('Reload Selected')).setEnabled(False)
             self.main.find_menu_item(self.tr('Close Selected')).setEnabled(False)
 
     def cell_double_clicked(self, row, col):
@@ -617,11 +652,23 @@ class Wl_Table_Files(wl_table.Wl_Table):
 
         self.main.wl_files.open_files([file['path'] for file in files])
 
+    def reload_selected(self):
+        self.main.wl_files.reload_files(self.get_selected_rows())
+
+    def reload_all(self):
+        self.main.wl_files.reload_files(list(range(len(self.main.settings_custom['files']['files_open']))))
+
     def select_all(self):
         if self.item(0, 0):
             for i in range(self.rowCount()):
                 if self.item(i, 0).checkState() == Qt.Unchecked:
                     self.item(i, 0).setCheckState(Qt.Checked)
+
+    def deselect_all(self):
+        if self.item(0, 0):
+            for i in range(self.rowCount()):
+                if self.item(i, 0).checkState() == Qt.Checked:
+                    self.item(i, 0).setCheckState(Qt.Unchecked)
 
     def invert_selection(self):
         if self.item(0, 0):
@@ -630,12 +677,6 @@ class Wl_Table_Files(wl_table.Wl_Table):
                     self.item(i, 0).setCheckState(Qt.Unchecked)
                 else:
                     self.item(i, 0).setCheckState(Qt.Checked)
-
-    def deselect_all(self):
-        if self.item(0, 0):
-            for i in range(self.rowCount()):
-                if self.item(i, 0).checkState() == Qt.Checked:
-                    self.item(i, 0).setCheckState(Qt.Unchecked)
 
     def close_selected(self):
         self.main.wl_files.close_files(self.get_selected_rows())
@@ -650,12 +691,13 @@ class Wrapper_File_Area(wl_layout.Wl_Wrapper_File_Area):
         # Table
         self.table_files = Wl_Table_Files(self)
 
-        self.wrapper_table.layout().addWidget(self.table_files, 0, 0, 1, 5)
+        self.wrapper_table.layout().addWidget(self.table_files, 0, 0, 1, 6)
         self.wrapper_table.layout().addWidget(self.table_files.button_open_files, 1, 0)
         self.wrapper_table.layout().addWidget(self.table_files.button_open_dir, 1, 1)
-        self.wrapper_table.layout().addWidget(self.table_files.button_reopen, 1, 2)
-        self.wrapper_table.layout().addWidget(self.table_files.button_close_selected, 1, 3)
-        self.wrapper_table.layout().addWidget(self.table_files.button_close_all, 1, 4)
+        self.wrapper_table.layout().addWidget(self.table_files.button_reload_selected, 1, 2)
+        self.wrapper_table.layout().addWidget(self.table_files.button_reload_all, 1, 3)
+        self.wrapper_table.layout().addWidget(self.table_files.button_close_selected, 1, 4)
+        self.wrapper_table.layout().addWidget(self.table_files.button_close_all, 1, 5)
 
         # Folder Settings
         self.group_box_folder_settings = QGroupBox(self.tr('Folder Settings'), self)
