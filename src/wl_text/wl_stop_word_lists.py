@@ -188,12 +188,7 @@ def wl_filter_stop_words(main, items, lang):
 
     # Check if the list is empty
     if items:
-        if type(items[0]) == str:
-            items_filtered = [token for token in items if token not in stop_word_list]
-        elif type(items[0]) in [list, tuple, set]:
-            items_filtered = [ngram
-                              for ngram in items
-                              if not [token for token in ngram if token in stop_word_list]]
+        items_filtered = [token for token in items if token not in stop_word_list]
     else:
         items_filtered = []
 
