@@ -14,6 +14,7 @@ import platform
 import sys
 
 import PyInstaller
+import pythainlp
 
 block_cipher = None
 datas = []
@@ -68,9 +69,12 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('wordcloud'))
 
 # Custom data files
 datas.extend([
-    ('src/imgs', 'imgs'),
     ('src/lemmatization', 'lemmatization'),
     ('src/stop_word_lists', 'stop_word_lists'),
+    # PyThaiNLP
+    (pythainlp.tools.get_pythainlp_data_path(), 'pythainlp-data'),
+
+    ('src/imgs', 'imgs'),
     ('src/wl_acks', 'wl_acks'),
 
     ('src/CHANGELOG.md', '.'),
