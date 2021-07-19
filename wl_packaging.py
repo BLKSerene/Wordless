@@ -22,7 +22,7 @@ def print_with_elapsed_time(message):
 time_start = time.time()
 
 # Package
-print_with_elapsed_time('Start packaging ...')
+print_with_elapsed_time('Start packaging...')
 
 if platform.system() == 'Windows':
     return_val_packaging = subprocess.call('pyinstaller --noconfirm wl_packaging.spec', shell = True)
@@ -35,7 +35,7 @@ if return_val_packaging == 0:
     print_with_elapsed_time('Packaging done!')
 
     # Create folders
-    print_with_elapsed_time('Creating folders ...')
+    print_with_elapsed_time('Creating folders...')
 
     if not os.path.exists('dist/Wordless/Import'):
         os.mkdir('dist/Wordless/Import')
@@ -63,7 +63,7 @@ if return_val_packaging == 0:
         print_with_elapsed_time(f'Finished copying all files!')
 
     # Test
-    print_with_elapsed_time(f'Testing ...')
+    print_with_elapsed_time(f'Testing...')
 
     if platform.system() == 'Windows':
         os.chdir('dist/Wordless')
@@ -71,6 +71,7 @@ if return_val_packaging == 0:
         return_val_test = subprocess.call(os.path.join(os.getcwd(), 'Wordless.exe'), shell = True)
     elif platform.system() == 'Darwin':
         # See: https://github.com/pyinstaller/pyinstaller/issues/5062#issuecomment-683743556
+        # * The following command does not work on OS X 10.11
         subprocess.call(f"codesign --remove-signature {os.path.join(os.getcwd(), 'dist/Wordless.app/Contents/Macos/Python')}", shell = True)
         return_val_test = subprocess.call(os.path.join(os.getcwd(), 'dist/Wordless.app/Contents/Macos/Wordless'), shell = True)
     elif platform.system() == 'Linux':
