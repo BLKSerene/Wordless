@@ -56,7 +56,7 @@
 - Dependencies: Upgrade NLTK to 3.6.2
 - Dependencies: Upgrade NumPy to 1.21.1
 - Dependencies: Upgrade openpyxl to 3.0.7
-- Dependencies: Upgrade PyInstaller to 4.3
+- Dependencies: Upgrade PyInstaller to 4.4
 - Dependencies: Upgrade PyQt to 5.15.4
 - Dependencies: Upgrade pytest to 6.2.4
 - Dependencies: Upgrade PyThaiNLP to 2.3.1
