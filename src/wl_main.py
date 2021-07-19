@@ -28,10 +28,19 @@ from PyQt5.QtWidgets import *
 
 import matplotlib
 import nltk
+import pythainlp
 
+# Use Qt backend for Matplotlib
 matplotlib.use('Qt5Agg')
+
 # Force NLTK to prefer NLTK data under the Wordless folder
 nltk.data.path.insert(0, os.path.join(os.getcwd(), 'nltk_data'))
+
+# Redirect PyThaiNLP's data files
+if getattr(sys, '_MEIPASS', False):
+    PYTHAINLP_DEFAULT_DATA_DIR = os.path.realpath(pythainlp.tools.PYTHAINLP_DEFAULT_DATA_DIR)
+    pythainlp.corpus._CORPUS_DB_PATH = os.path.join(PYTHAINLP_DEFAULT_DATA_DIR, pythainlp.corpus._CORPUS_DB_FILENAME)
+    pythainlp.tools.path.get_pythainlp_data_path = lambda: PYTHAINLP_DEFAULT_DATA_DIR
 
 from wl_checking import wl_checking_misc
 from wl_dialogs import wl_dialog_misc, wl_dialog_help, wl_msg_box
