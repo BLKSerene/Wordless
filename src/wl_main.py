@@ -488,7 +488,7 @@ class Wl_Main(QMainWindow):
         self.settings_custom['work_area_cur'] = self.wl_work_area.tabText(self.wl_work_area.currentIndex())
         
         # Parallel mode
-        if platform.system() == 'Windows':
+        if platform.system() in ['Windows', 'Linux']:
             if self.wl_work_area.count() == 8:
                 if self.wl_work_area.currentIndex() == 1 and self.settings_custom['concordancer']['parallel_mode']:
                     self.wl_work_area.widget(2).checkbox_parallel_mode.setChecked(True)
@@ -504,7 +504,7 @@ class Wl_Main(QMainWindow):
                     self.wl_work_area.setTabVisible(2, False)
 
                     self.wl_work_area.setCurrentIndex(1)
-        elif platform.system() in ['Darwin', 'Linux']:
+        elif platform.system() == 'Darwin':
             if self.wl_work_area.count() == 7 and self.wl_work_area.currentIndex() == 1:
                 if self.wl_work_area.widget(1) == self.concordancer and self.settings_custom['concordancer']['parallel_mode']:
                     self.concordancer_parallel.checkbox_parallel_mode.setChecked(True)

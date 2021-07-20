@@ -35,53 +35,71 @@ if return_val_packaging == 0:
     print_with_elapsed_time('Packaging done!')
 
     # Create folders
-    print_with_elapsed_time('Creating folders...')
-
-    if not os.path.exists('dist/Wordless/Import'):
-        os.mkdir('dist/Wordless/Import')
-    if not os.path.exists('dist/Wordless/Export'):
-        os.mkdir('dist/Wordless/Export')
-
-    # Copy files
-    if platform.system() == 'Darwin':
-        for dir_src, dirs, files in os.walk('dist/Wordless/'):
-            dir_src = os.path.realpath(dir_src)
-            dir_app = dir_src.replace('dist/Wordless', 'dist/Wordless.app/Contents/MacOS')
-
-            print_with_elapsed_time(f'Copying folder {dir_app} ...')
-
-            if not os.path.exists(dir_app):
-                os.mkdir(dir_app)
-
-            for file in files:
-                path_src = os.path.join(dir_src, file)
-                path_app = os.path.join(dir_app, file)
-
-                if not os.path.exists(path_app):
-                    shutil.copy(path_src, path_app)
-
-        print_with_elapsed_time(f'Finished copying all files!')
-
-    # Test
-    print_with_elapsed_time(f'Testing...')
+    os.makedirs('dist/Wordless/Import', exist_ok = True)
+    os.makedirs('dist/Wordless/Export', exist_ok = True)
 
     if platform.system() == 'Windows':
-        os.chdir('dist/Wordless')
+        # Compress files
+        print_with_elapsed_time('Compressing files...')
 
+        os.chdir('dist')
+        if os.path.exists('Wordless_windows.zip'):
+            os.remove('Wordless_windows.zip')
+        # "7z.exe" and "7z.dll" should be put under "C:\Windows\System32" first
+        subprocess.call('7z a -tzip -mx9 wordless_windows.zip Wordless/', shell = True)
+
+        print_with_elapsed_time('Compressing done!')
+
+        # Test
+        print_with_elapsed_time(f'Start testing...')
+
+        os.chdir('Wordless')
         return_val_test = subprocess.call(os.path.join(os.getcwd(), 'Wordless.exe'), shell = True)
-    elif platform.system() == 'Darwin':
-        # See: https://github.com/pyinstaller/pyinstaller/issues/5062#issuecomment-683743556
-        # * The following command does not work on OS X 10.11
-        subprocess.call(f"codesign --remove-signature {os.path.join(os.getcwd(), 'dist/Wordless.app/Contents/Macos/Python')}", shell = True)
-        return_val_test = subprocess.call(os.path.join(os.getcwd(), 'dist/Wordless.app/Contents/Macos/Wordless'), shell = True)
-    elif platform.system() == 'Linux':
-        os.chdir('dist/Wordless')
 
+        # Remove custom settings file
+        if os.path.exists('wl_settings.pickle'):
+            os.remove('wl_settings.pickle')
+    elif platform.system() == 'Darwin':
+        # Compress files
+        print_with_elapsed_time('Compressing files...')
+
+        os.chdir('dist')
+        if os.path.exists('Wordless_macos.zip'):
+            os.remove('Wordless_macos.zip')
+        subprocess.call('ditto -c -k --sequesterRsrc --keepParent Wordless.app/ wordless_macos.zip', shell = True)
+
+        print_with_elapsed_time('Compressing done!')
+
+        # Test
+        print_with_elapsed_time(f'Start testing...')
+
+        return_val_test = subprocess.call(os.path.join(os.getcwd(), 'Wordless.app/Contents/Macos/Wordless'), shell = True)
+
+        # Remove custom settings file
+        if os.path.exists('Wordless.app/Contents/Macos/wl_settings.pickle'):
+            os.remove('Wordless.app/Contents/Macos/wl_settings.pickle')
+    elif platform.system() == 'Linux':
+        # Compress files
+        print_with_elapsed_time('Compressing files...')
+
+        os.chdir('dist')
+        subprocess.call('tar -czvf wordless_linux.tar.gz Wordless/', shell = True)
+
+        print_with_elapsed_time('Compressing done!')
+
+        # Test
+        print_with_elapsed_time(f'Start testing...')
+
+        os.chdir('Wordless')
         return_val_test = subprocess.call('./Wordless', shell = True)
 
+        # Remove custom settings file
+        if os.path.exists('wl_settings.pickle'):
+            os.remove('wl_settings.pickle')
+
     if return_val_test == 0:
-        print_with_elapsed_time(f'Pass!')
+        print_with_elapsed_time(f'Testing passed!')
     else:
-        print_with_elapsed_time(f'Fail!')
+        print_with_elapsed_time(f'Testing failed!')
 else:
     print_with_elapsed_time(f'Packaging failed!')
