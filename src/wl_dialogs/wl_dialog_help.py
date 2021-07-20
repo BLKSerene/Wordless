@@ -240,7 +240,7 @@ class Wl_Dialog_Need_Help(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Need Help?'),
                          width = 550,
-                         height = 500)
+                         height = 550)
 
         self.label_need_help = wl_label.Wl_Label_Dialog(
             self.tr('''
@@ -267,7 +267,7 @@ class Wl_Dialog_Need_Help(wl_dialog.Wl_Dialog_Info):
         )
 
         self.table_need_help.setFixedHeight(300)
-        self.table_need_help.setRowCount(4)
+        self.table_need_help.setRowCount(3)
         self.table_need_help.verticalHeader().setHidden(True)
 
         self.table_need_help.setCellWidget(0, 0, wl_label.Wl_Label_Html_Centered(self.tr('Documentation'), self))
