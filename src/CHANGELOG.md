@@ -11,7 +11,7 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - ??/??/2021
+## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - 07/21/2021
 
 ### 🎉 New Features
 - Menu: Add Preferences - Settings - Files - Default Settings - Tokenized/Tagged
