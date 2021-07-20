@@ -25,18 +25,22 @@ time_start = time.time()
 print_with_elapsed_time('Start packaging...')
 
 if platform.system() == 'Windows':
-    return_val_packaging = subprocess.call('pyinstaller --noconfirm wl_packaging.spec', shell = True)
+    return_val_packaging = subprocess.call('pyinstaller --noconfirm --clean wl_packaging.spec', shell = True)
 elif platform.system() == 'Darwin':
-    return_val_packaging = subprocess.call('python3 -m PyInstaller --noconfirm wl_packaging.spec', shell = True)
+    return_val_packaging = subprocess.call('python3 -m PyInstaller --noconfirm --clean wl_packaging.spec', shell = True)
 elif platform.system() == 'Linux':
-    return_val_packaging = subprocess.call('python3.8 -m PyInstaller --noconfirm wl_packaging.spec', shell = True)
+    return_val_packaging = subprocess.call('python3.8 -m PyInstaller --noconfirm --clean wl_packaging.spec', shell = True)
 
 if return_val_packaging == 0:
     print_with_elapsed_time('Packaging done!')
 
     # Create folders
-    os.makedirs('dist/Wordless/Import', exist_ok = True)
-    os.makedirs('dist/Wordless/Export', exist_ok = True)
+    if platform.system() in ['Windows', 'Linux']:
+        os.makedirs('dist/Wordless/Import')
+        os.makedirs('dist/Wordless/Export')
+    elif platform.system() == 'Darwin':
+        os.makedirs('dist/Wordless.app/Contents/Macos/Import')
+        os.makedirs('dist/Wordless.app/Contents/Macos/Export')
 
     if platform.system() == 'Windows':
         # Compress files
@@ -60,6 +64,10 @@ if return_val_packaging == 0:
         if os.path.exists('wl_settings.pickle'):
             os.remove('wl_settings.pickle')
     elif platform.system() == 'Darwin':
+        # See: https://github.com/pyinstaller/pyinstaller/issues/5062#issuecomment-683743556
+        # * The following command does not work on OS X 10.11
+        subprocess.call(f"codesign --remove-signature {os.path.join(os.getcwd(), 'Wordless.app/Contents/Macos/Python')}", shell = True)
+
         # Compress files
         print_with_elapsed_time('Compressing files...')
 
