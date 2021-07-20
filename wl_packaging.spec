@@ -163,6 +163,10 @@ exe = EXE(
     strip = False,
     upx = True,
     console = False,
+    disable_windowed_traceback = False,
+    target_arch = None,
+    codesign_identity = None,
+    entitlements_file = None,
     icon = icon
 )
 
@@ -174,13 +178,14 @@ coll = COLLECT(
     a.datas,
     strip = False,
     upx = True,
+    upx_exclude = [],
     name = 'Wordless'
 )
 
 # Bundle application on macOS
 if platform.system() == 'Darwin':
     app = BUNDLE(
-        exe,
+        coll,
         name = 'Wordless.app',
         icon = icon,
         bundle_identifier = None,
