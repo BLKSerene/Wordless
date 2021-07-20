@@ -299,7 +299,7 @@
 ### 📌 Bugfixes
 - File Area: Fix Open Folder
 - Menu: Fix Preferences - Settings - Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization - Preview
-- Startup: Fix checking for updates at startup
+- Startup: Fix checking for updates on startup
 - Utils: Fix spaCy’s sentence tokenizers and word tokenizers
 - Utils: Fix Wordless’s Chinese and Japanese character tokenizers
 - Work Area: Fix Concordancer - Search in Results
