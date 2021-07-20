@@ -280,7 +280,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialog.Wl_Dialog):
                 i_highlight_color_right = 1
 
                 for sorting_col, _ in sorting_rules:
-                    if 'L' in sorting_col and -int(sorting_col[1:]) <= len(text_left):
+                    if 'L' in sorting_col and int(sorting_col[1:]) <= len(text_left):
                         hightlight_color = highlight_colors[i_highlight_color_left % len(highlight_colors)]
 
                         text_left[-int(sorting_col[1:])] = f'''
@@ -428,7 +428,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialog.Wl_Dialog):
                 i_highlight_color_right = 1
 
                 for sorting_col, _ in sorting_rules:
-                    if 'L' in sorting_col and -int(sorting_col[1:]) <= len(text_left):
+                    if 'L' in sorting_col and int(sorting_col[1:]) <= len(text_left):
                         hightlight_color = highlight_colors[i_highlight_color_left % len(highlight_colors)]
 
                         text_left[-int(sorting_col[1:])] = f'''
