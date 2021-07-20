@@ -583,7 +583,9 @@ class Wl_Dialog_Changelog(wl_dialog.Wl_Dialog_Info):
                         })
                     # Changelog section lists
                     elif line.startswith('- '):
-                        changelog[-1]['changelog_sections'][-1]['section_list'].append(line.replace('-', '').strip())
+                        line = re.sub(r'^- ', r'', line).strip()
+                        
+                        changelog[-1]['changelog_sections'][-1]['section_list'].append(line)
         except:
             pass
 
