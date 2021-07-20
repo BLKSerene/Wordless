@@ -154,19 +154,13 @@ class Wl_Main(QMainWindow):
             }
         ''')
 
-        # Check for updates on startup
-        self.loading_window.show_message(self.tr('Check for updates ...'))
-
-        if self.settings_custom['general']['update_settings']['check_updates_on_startup']:
-            self.dialog_check_updates = self.help_check_updates(on_startup = True)
-
-        self.loading_window.show_message(self.tr('Starting Wordless ...'))
-
         self.load_settings()
 
         # Fix layout on macOS
         if platform.system() == 'Darwin':
             self.fix_macos_layout(self)
+
+        self.loading_window.show_message(self.tr('Starting Wordless ...'))
 
     def fix_macos_layout(self, parent):
         for widget in parent.children():
@@ -595,6 +589,18 @@ if __name__ == '__main__':
 
     wl_loading.fade_out()
     wl_loading.finish(wl_main)
+
+    # Check for updates on startup
+    if wl_main.settings_custom['general']['update_settings']['check_updates_on_startup']:
+        wl_main.dialog_check_updates = wl_main.help_check_updates(on_startup = True)
+
+    # Show changelog on first startup
+    # * Do not do this on macOSes since the popped-up changelog window cannot be closed sometimes
+    if platform.system() in ['Windows', 'Linux']:
+        if wl_main.settings_custom['1st_startup']:
+            wl_main.help_changelog()
+
+            wl_main.settings_custom['1st_startup'] = False
 
     wl_main.showMaximized()
 

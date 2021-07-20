@@ -25,6 +25,7 @@ from wl_utils import wl_misc
 
 def init_settings_default(main):
     main.settings_default = {
+        '1st_startup': True,
         'work_area_cur': main.tr('Overview'),
 
         'layouts': {
