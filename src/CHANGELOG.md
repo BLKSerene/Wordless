@@ -11,6 +11,11 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
+## [2.1.0](https://github.com/BLKSerene/Wordless/releases/tag/2.1.0) - 0?/??/2021
+
+### 📌 Bugfixes
+- File Area: Fix Auto-detection Settings
+
 ## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - 07/21/2021
 
 ### 🎉 New Features
