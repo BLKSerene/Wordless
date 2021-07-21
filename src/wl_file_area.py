@@ -273,13 +273,13 @@ class Wl_Files():
         if self.main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
             new_file['encoding'] = wl_detection.detect_encoding(self.main, new_file['path'])
         else:
-            new_file['encoding'] = self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
+            new_file['encoding'] = self.main.settings_custom['files']['default_settings']['encoding']
 
         # Detect languages
         if self.main.settings_custom['file_area']['auto_detection_settings']['detect_langs']:
             new_file['lang'] = wl_detection.detect_lang(self.main, new_file)
         else:
-            new_file['lang'] = self.main.settings_custom['auto_detection']['default_settings']['default_lang']
+            new_file['lang'] = self.main.settings_custom['files']['default_settings']['lang']
 
         if txt:
             default_dir = wl_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])

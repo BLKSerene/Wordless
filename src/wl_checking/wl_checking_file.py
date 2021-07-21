@@ -50,7 +50,7 @@ def check_file_paths_empty(main, file_paths):
                 if main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
                     encoding = wl_detection.detect_encoding(main, file_path)
                 else:
-                    encoding = main.settings_custom['auto_detection']['default_settings']['default_encoding']
+                    encoding = main.settings_custom['files']['default_settings']['encoding']
 
                 try:
                     with open(file_path, 'r', encoding = encoding) as f:
@@ -116,7 +116,7 @@ def check_file_paths_parsing_error(main, file_paths):
                 if main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
                     encoding = wl_detection.detect_encoding(main, file_path)
                 else:
-                    encoding = main.settings_custom['auto_detection']['default_settings']['default_encoding']
+                    encoding = main.settings_custom['files']['default_settings']['encoding']
 
                 try:
                     text = ''
