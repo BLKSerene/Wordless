@@ -931,6 +931,67 @@ class Wl_Table(QTableWidget):
 
         self.setHorizontalHeaderItem(i, QTableWidgetItem(label))
 
+    def export_selected(self):
+        rows_export = sorted({index.row() for index in self.selectedIndexes()})
+
+        self.export_all(rows_export = rows_export)
+
+    def export_all(self, rows_export = []):
+        def update_gui(export_success, file_path):
+            self.results_exported = True
+
+            if export_success:
+                wl_msg_box.wl_msg_box_export_table_success(self.main, file_path)
+            else:
+                wl_msg_box.wl_msg_box_export_table_error(self.main, file_path)
+
+        default_dir = self.main.settings_custom['export']['tables']['default_path']
+
+        if self.main.settings_custom['work_area_cur'] == 'Concordancer':
+            if self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
+                (file_path,
+                 file_type) = QFileDialog.getSaveFileName(
+                    self,
+                    self.tr('Export Table'),
+                    os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
+                    self.tr('Word Document (*.docx)'),
+                    self.main.settings_custom['export']['tables']['default_type']
+                )
+            else:
+                (file_path,
+                 file_type) = QFileDialog.getSaveFileName(
+                    self,
+                    self.tr('Export Table'),
+                    os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
+                    ';;'.join(self.main.settings_global['file_types']['export_tables_concordancer']),
+                    self.main.settings_custom['export']['tables']['default_type']
+                )
+        else:
+            (file_path,
+             file_type) = QFileDialog.getSaveFileName(
+                self,
+                self.tr('Export Table'),
+                os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
+                ';;'.join(self.main.settings_global['file_types']['export_tables']),
+                self.main.settings_custom['export']['tables']['default_type']
+            )
+
+        if file_path:
+            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Export_Table(self.main)
+
+            worker_export_table = Wl_Worker_Export_Table(
+                self.main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui,
+                table = self,
+                file_path = file_path,
+                file_type = file_type,
+                rows_export = rows_export
+            )
+
+            thread_export_table = wl_threading.Wl_Thread(worker_export_table)
+            thread_export_table.start_worker()
+
     def clear_table(self, header_count = 1):
         self.clearContents()
 
@@ -1389,67 +1450,6 @@ class Wl_Table_Data(Wl_Table):
         self.update_ranks()
 
         self.itemChanged.emit(self.item(0, 0))
-
-    def export_selected(self):
-        rows_export = sorted({index.row() for index in self.selectedIndexes()})
-
-        self.export_all(rows_export = rows_export)
-
-    def export_all(self, rows_export = []):
-        def update_gui(export_success, file_path):
-            self.results_exported = True
-
-            if export_success:
-                wl_msg_box.wl_msg_box_export_table_success(self.main, file_path)
-            else:
-                wl_msg_box.wl_msg_box_export_table_error(self.main, file_path)
-
-        default_dir = self.main.settings_custom['export']['tables']['default_path']
-
-        if self.main.settings_custom['work_area_cur'] == 'Concordancer':
-            if self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
-                (file_path,
-                 file_type) = QFileDialog.getSaveFileName(
-                    self,
-                    self.tr('Export Table'),
-                    os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
-                    self.tr('Word Document (*.docx)'),
-                    self.main.settings_custom['export']['tables']['default_type']
-                )
-            else:
-                (file_path,
-                 file_type) = QFileDialog.getSaveFileName(
-                    self,
-                    self.tr('Export Table'),
-                    os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
-                    ';;'.join(self.main.settings_global['file_types']['export_tables_concordancer']),
-                    self.main.settings_custom['export']['tables']['default_type']
-                )
-        else:
-            (file_path,
-             file_type) = QFileDialog.getSaveFileName(
-                self,
-                self.tr('Export Table'),
-                os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
-                ';;'.join(self.main.settings_global['file_types']['export_tables']),
-                self.main.settings_custom['export']['tables']['default_type']
-            )
-
-        if file_path:
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Export_Table(self.main)
-
-            worker_export_table = Wl_Worker_Export_Table(
-                self.main,
-                dialog_progress = dialog_progress,
-                update_gui = update_gui,
-                table = self,
-                file_path = file_path,
-                file_type = file_type,
-                rows_export = rows_export
-            )
-
-            thread_export_table = wl_threading.Wl_Thread(worker_export_table)
-            thread_export_table.start_worker()
 
     def clear_table(self, count_headers = 1, confirm = False):
         confirmed = True
