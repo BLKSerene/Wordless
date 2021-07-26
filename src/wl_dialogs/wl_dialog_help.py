@@ -240,7 +240,7 @@ class Wl_Dialog_Need_Help(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Need Help?'),
                          width = 550,
-                         height = 550)
+                         height = 450)
 
         self.label_need_help = wl_label.Wl_Label_Dialog(
             self.tr('''
@@ -277,18 +277,8 @@ class Wl_Dialog_Need_Help(wl_dialog.Wl_Dialog_Info):
         self.table_need_help.setCellWidget(2, 0, wl_label.Wl_Label_Html_Centered(self.tr('<a href="https://www.wechat.com/en/">WeChat</a><br>Official Account'), self))
         self.table_need_help.setCellWidget(2, 1, wl_label.Wl_Label_Html_Centered('<img src="imgs/wechat_official_account.jpg">', self))
 
-        self.label_need_help_note = wl_label.Wl_Label_Dialog(
-            self.tr('''
-                <div>
-                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>CANNOT GUARANTEE</b> that all emails will always be checked or replied in time. I <b>WILL NOT REPLY</b> to irrelevant emails and I reserve the right to <b>BLOCK AND/OR REPORT</b> people who send me spam emails.
-                </div>
-            '''),
-            self
-        )
-
         self.wrapper_info.layout().addWidget(self.label_need_help, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_need_help, 1, 0)
-        self.wrapper_info.layout().addWidget(self.label_need_help_note, 2, 0)
 
 class Wl_Dialog_Donating(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):

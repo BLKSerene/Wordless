@@ -60,8 +60,6 @@ Documentation|https://github.com/BLKSerene/Wordless#documentation
 Email        |blkserene@gmail.com
 [WeChat](https://www.wechat.com/en/) Official Account|![WeChat Official Account](/src/imgs/wechat_official_account.jpg)
 
-**Important Note**: I CANNOT GUARANTEE that all emails will always be checked or replied in time. I WILL NOT REPLY to irrelevant emails and I reserve the right to BLOCK AND/OR REPORT people who send me spam emails.
-
 ## Citing
 If you publish work that uses Wordless, please cite as follows.
 
