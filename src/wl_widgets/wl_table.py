@@ -947,31 +947,43 @@ class Wl_Table(QTableWidget):
 
         default_dir = self.main.settings_custom['export']['tables']['default_path']
 
-        if self.main.settings_custom['work_area_cur'] == 'Concordancer':
-            if self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
-                (file_path,
-                 file_type) = QFileDialog.getSaveFileName(
-                    self,
-                    self.tr('Export Table'),
-                    os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
-                    self.tr('Word Document (*.docx)'),
-                    self.main.settings_custom['export']['tables']['default_type']
-                )
+        # Work Area
+        if 'tab' in self.__dict__:
+            if self.main.settings_custom['work_area_cur'] == 'Concordancer':
+                if self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
+                    (file_path,
+                     file_type) = QFileDialog.getSaveFileName(
+                        self,
+                        self.tr('Export Table'),
+                        os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
+                        self.tr('Word Document (*.docx)'),
+                        self.main.settings_custom['export']['tables']['default_type']
+                    )
+                else:
+                    (file_path,
+                     file_type) = QFileDialog.getSaveFileName(
+                        self,
+                        self.tr('Export Table'),
+                        os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
+                        ';;'.join(self.main.settings_global['file_types']['export_tables_concordancer']),
+                        self.main.settings_custom['export']['tables']['default_type']
+                    )
             else:
                 (file_path,
                  file_type) = QFileDialog.getSaveFileName(
                     self,
                     self.tr('Export Table'),
                     os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
-                    ';;'.join(self.main.settings_global['file_types']['export_tables_concordancer']),
+                    ';;'.join(self.main.settings_global['file_types']['export_tables']),
                     self.main.settings_custom['export']['tables']['default_type']
                 )
+        # Search terms, stop word lists, etc.
         else:
             (file_path,
              file_type) = QFileDialog.getSaveFileName(
                 self,
                 self.tr('Export Table'),
-                os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_results_' + self.tab),
+                os.path.join(wl_checking_misc.check_dir(default_dir), 'Wordless_import_error'),
                 ';;'.join(self.main.settings_global['file_types']['export_tables']),
                 self.main.settings_custom['export']['tables']['default_type']
             )
