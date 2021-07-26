@@ -14,11 +14,12 @@
 ## [2.1.0](https://github.com/BLKSerene/Wordless/releases/tag/2.1.0) - 0?/??/2021
 ### 🎉 New Features
 - Menu: Add Preferences - Settings - Stop Word Lists - Preview - Insert
-- Work Area: Add Concordancer/N-gram/Collocation/Colligation - Search Settings - Multi-search Mode - Insert
+- Work Area: Add Work Area - Search Settings - Multi-search Mode - Insert
 
 ### 📌 Bugfixes
 - File Area: Fix Auto-detection Settings
 - Menu: Fix Preferences - Settings - POS Tagging - Tagsets - Mapping Settings - Reset All
+- Menu: Fix Preferences - Settings - Stop Word Lists - Stop Word Lists Settings - Custom List
 
 ## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - 07/21/2021
 
@@ -271,7 +272,7 @@
 - Work Area: Fix Collocation and Colligation
 - Work Area: Fix Concordancer - Export Selected/All
 - Work Area: Fix Concordancer - Sort Results
-- Work Area: Fix Concordancer/N-grams/Collocation/Colligation - Search Settings / Search in Results
+- Work Area: Fix Work Area - Search Settings / Search in Results
 
 ### ⏫ Dependency Changes
 - Dependencies: Add extra-stopwords
@@ -312,7 +313,7 @@
 - Utils: Fix spaCy’s sentence tokenizers and word tokenizers
 - Utils: Fix Wordless’s Chinese and Japanese character tokenizers
 - Work Area: Fix Concordancer - Search in Results
-- Work Area: Fix Concordancer/N-gram/Collocation/Colligation - Search Settings - Context Settings
+- Work Area: Fix Work Area - Search Settings - Context Settings
 
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade lxml to 4.3.3
