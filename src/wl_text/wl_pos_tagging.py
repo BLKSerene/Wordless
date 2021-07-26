@@ -18,7 +18,7 @@ import underthesea
 from wl_text import wl_text_utils, wl_word_detokenization
 from wl_utils import wl_conversion
 
-def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'custom'):
+def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'default'):
     tokens_tagged = []
 
     # Check if the first token is empty
@@ -100,7 +100,7 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'custom'):
 
     # Convert to Universal Tagset
     if pos_tagger.find('spaCy') == -1:
-        if (tagset == 'custom' and main.settings_custom['pos_tagging']['to_universal_pos_tags'] or
+        if (tagset == 'default' and main.settings_custom['pos_tagging']['to_universal_pos_tags'] or
             tagset == 'universal'):
 
             mappings = {tag: tag_universal
