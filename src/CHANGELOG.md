@@ -15,6 +15,7 @@
 
 ### 📌 Bugfixes
 - File Area: Fix Auto-detection Settings
+- Menu: Fix Preferences - Settings - POS Tagging - Tagsets - Mapping Settings - Reset All
 
 ## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - 07/21/2021
 

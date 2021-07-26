@@ -423,7 +423,6 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
         self.label_tagsets_num_pos_tags.setText(self.tr(f'Number of POS Tags: {self.table_mappings.rowCount()}'))
         self.label_tagsets_num_pos_tags.setStyleSheet(self.main.settings_global['styles']['style_normal'])
 
-
         self.combo_box_tagsets_lang.setEnabled(True)
         self.combo_box_tagsets_pos_tagger.setEnabled(True)
         self.button_tagsets_reset.setEnabled(True)
@@ -431,10 +430,11 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
 
     def reset_currently_shown_table(self):
         settings_custom = self.main.settings_custom['tagsets']
+        settings_default = self.main.settings_default['tagsets']
 
         preview_lang = settings_custom['preview_lang']
         preview_pos_tagger = settings_custom['preview_pos_tagger'][preview_lang]
-        mappings = copy.deepcopy(self.main.settings_default['tagsets']['mappings'][preview_lang][preview_pos_tagger])
+        mappings = copy.deepcopy(settings_default['mappings'][preview_lang][preview_pos_tagger])
 
         self.table_mappings.hide()
         self.table_mappings.blockSignals(True)
@@ -457,7 +457,7 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
 
     def reset_all_mappings(self):
         if wl_msg_box.wl_msg_box_reset_all_mappings(self.main):
-            settings_custom['mappings'] = copy.deepcopy(self.main.settings_default['tagsets']['mappings'])
+            self.main.settings_custom['tagsets']['mappings'] = copy.deepcopy(self.main.settings_default['tagsets']['mappings'])
 
             self.reset_currently_shown_table()
 
@@ -478,13 +478,15 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
             self.combo_box_tagsets_pos_tagger.blockSignals(False)
 
     def apply_settings(self):
-        settings = self.main.settings_custom
+        settings = self.main.settings_custom['tagsets']
 
         if self.pos_tag_mappings_loaded:
-            preview_lang = settings['tagsets']['preview_lang']
-            preview_pos_tagger = settings['tagsets']['preview_pos_tagger'][preview_lang]
+            # Save only when tag mappings are editable
+            if self.table_mappings.isEnabled():
+                preview_lang = settings['preview_lang']
+                preview_pos_tagger = settings['preview_pos_tagger'][preview_lang]
 
-            for i in range(self.table_mappings.rowCount()):
-                settings['tagsets']['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
+                for i in range(self.table_mappings.rowCount()):
+                    settings['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
 
         return True
