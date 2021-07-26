@@ -16,8 +16,8 @@ from wl_dialogs import wl_dialog_error, wl_msg_box
 from wl_utils import wl_detection, wl_misc
 
 def check_file_paths_missing(main, file_paths):
-    file_paths_missing = []
     file_paths_pass = []
+    file_paths_missing = []
 
     if file_paths:
         for file_path in file_paths:
@@ -31,8 +31,8 @@ def check_file_paths_missing(main, file_paths):
     return file_paths_pass, file_paths_missing
 
 def check_file_paths_empty(main, file_paths):
-    file_paths_empty = []
     file_paths_pass = []
+    file_paths_empty = []
 
     if file_paths:
         for file_path in file_paths:
@@ -77,9 +77,36 @@ def check_file_paths_empty(main, file_paths):
 
     return file_paths_pass, file_paths_empty
 
+def check_files_empty(main, files):
+    files_pass = []
+    files_empty = []
+
+    if files:
+        for file in files:
+            file_path = wl_misc.get_normalized_path(file['path'])
+
+            try:
+                with open(file_path, 'r', encoding = file['encoding']) as f:
+                    empty_file = True
+
+                    for line in f:
+                        if line.strip():
+                            empty_file = False
+
+                            break
+
+                    if empty_file:
+                        files_empty.append(file)
+                    else:
+                        files_pass.append(file)
+            except:
+                files_pass.append(file)
+
+    return files_pass, files_empty
+
 def check_file_paths_unsupported(main, file_paths):
-    file_paths_unsupported = []
     file_paths_pass = []
+    file_paths_unsupported = []
 
     file_exts = [ext
                  for file_type in main.settings_global['file_types']['files']
@@ -97,8 +124,8 @@ def check_file_paths_unsupported(main, file_paths):
     return file_paths_pass, file_paths_unsupported
 
 def check_file_paths_parsing_error(main, file_paths):
-    file_paths_parsing_error = []
     file_paths_pass = []
+    file_paths_parsing_error = []
 
     if file_paths:
         for file_path in file_paths:
@@ -134,6 +161,29 @@ def check_file_paths_parsing_error(main, file_paths):
                 file_paths_pass.append(file_path)
 
     return file_paths_pass, file_paths_parsing_error
+
+def check_files_parsing_error(main, files):
+    files_pass = []
+    files_parsing_error = []
+
+    if files:
+        for file in files:
+            file_path = wl_misc.get_normalized_path(file['path'])
+            
+            try:
+                text = ''
+
+                with open(file_path, 'r', encoding = file['encoding']) as f:
+                    for line in f:
+                        text += line
+            except Exception as e:
+                print(f'Parsing Error: {e}')
+
+                files_parsing_error.append(file)
+            else:
+                files_pass.append(file)
+
+    return files_pass, files_parsing_error
 
 def check_files_on_loading(main, files):
     loading_pass = True

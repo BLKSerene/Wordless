@@ -153,10 +153,8 @@ def wl_dialog_error_file_load_colligation(main, files_pos_tagging_unsupported):
 class Wl_Dialog_Error_Import(Wl_Dialog_Error):
     def __init__(self, main,
                  files_empty,
-                 files_decoding_error):
-        super().__init__(main, main.tr('Import Error'),
-                         width = DIALOG_ERROR_WIDTH,
-                         height = DIALOG_ERROR_HEIGHT)
+                 files_parsing_error):
+        super().__init__(main, main.tr('Import Error'))
 
         self.label_error = wl_label.Wl_Label_Dialog(
             self.tr('''
@@ -170,8 +168,8 @@ class Wl_Dialog_Error_Import(Wl_Dialog_Error):
         self.table_error_files = wl_table.Wl_Table_Error(
             self,
             headers = [
-                self.tr('Error Types'),
-                self.tr('Files')
+                self.tr('Error Type'),
+                self.tr('File')
             ]
         )
 
@@ -184,25 +182,25 @@ class Wl_Dialog_Error_Import(Wl_Dialog_Error):
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
 
             self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Empty File')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
+            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file['path']))
 
-        for file in files_decoding_error:
+        for file in files_parsing_error:
             self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
 
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Decoding Error')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
+            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Parsing Error')))
+            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file['path']))
 
         self.wrapper_info.layout().addWidget(self.label_error, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_error_files, 1, 0)
 
 def wl_dialog_error_import(main,
                            files_empty,
-                           files_decoding_error):
-    if files_empty or files_decoding_error:
+                           files_parsing_error):
+    if files_empty or files_parsing_error:
         dialog_error_import = Wl_Dialog_Error_Import(
             main,
             files_empty,
-            files_decoding_error
+            files_parsing_error
         )
 
         dialog_error_import.open()
