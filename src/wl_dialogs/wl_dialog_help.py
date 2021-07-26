@@ -296,14 +296,6 @@ class Wl_Dialog_Donating(wl_dialog.Wl_Dialog_Info):
         self.label_donating_via = QLabel(self.tr('Donating via:'), self)
         self.combo_box_donating_via = wl_box.Wl_Combo_Box(self)
         self.label_donating_via_img = wl_label.Wl_Label_Html('', self)
-        self.label_donating_note = wl_label.Wl_Label_Dialog(
-            self.tr('''
-                <div>
-                    <span style="color: #F00;"><b>Important Note</b></span>: I <b>WILL NOT PROVIDE</b> invoices, receipts, refund services, detailed spending reports, my contact information other than email addresses, my personal social media accounts, private email/phone support, or guarantees on bug fixes, enhancements, new features, or new releases of Wordless for donation.
-                </div>
-            '''),
-            self
-        )
 
         self.combo_box_donating_via.addItems([
             self.tr('PayPal'),
@@ -322,7 +314,6 @@ class Wl_Dialog_Donating(wl_dialog.Wl_Dialog_Info):
         self.wrapper_info.layout().addWidget(self.label_donating, 0, 0)
         self.wrapper_info.layout().addLayout(layout_donating_via, 1, 0)
         self.wrapper_info.layout().addWidget(self.label_donating_via_img, 2, 0, Qt.AlignHCenter | Qt.AlignVCenter)
-        self.wrapper_info.layout().addWidget(self.label_donating_note, 3, 0)
 
         # Calculate height
         donating_via_old = self.main.settings_custom['menu']['help']['donating']['donating_via']
