@@ -91,8 +91,6 @@ PayPal|Alipay|WeChat Pay
 ------|------|----------
 [![PayPal](/src/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|![Alipay](/src/imgs/donating_alipay.png)|![WeChat Pay](/src/imgs/donating_wechat_pay.png)
 
-**Important Note**: I WILL NOT PROVIDE invoices, receipts, refund services, detailed spending reports, my contact information other than email addresses, my personal social media accounts, private email/phone support, or guarantees on bug fixes, enhancements, new features, or new releases of Wordless for donation.
-
 ## Acknowledgments
 I would like to extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
 
