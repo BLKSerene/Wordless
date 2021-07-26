@@ -38,12 +38,14 @@ class Wl_List(QListWidget):
         self.itemSelectionChanged.connect(self.selection_changed)
 
         self.button_add = QPushButton(self.tr('Add'), self)
+        self.button_insert = QPushButton(self.tr('Insert'), self)
         self.button_remove = QPushButton(self.tr('Remove'), self)
         self.button_clear = QPushButton(self.tr('Clear'), self)
         self.button_import = QPushButton(self.tr('Import'), self)
         self.button_export = QPushButton(self.tr('Export'), self)
 
         self.button_add.clicked.connect(self.add_item)
+        self.button_insert.clicked.connect(self.insert_item)
         self.button_remove.clicked.connect(self.remove_item)
         self.button_clear.clicked.connect(self.clear_list)
         self.button_import.clicked.connect(self.import_list)
@@ -63,8 +65,10 @@ class Wl_List(QListWidget):
 
     def selection_changed(self):
         if self.selectedIndexes():
+            self.button_insert.setEnabled(True)
             self.button_remove.setEnabled(True)
         else:
+            self.button_insert.setEnabled(False)
             self.button_remove.setEnabled(False)
 
     def _new_item(self):
@@ -75,8 +79,19 @@ class Wl_List(QListWidget):
 
         self.addItem(new_item)
         self.editItem(new_item)
-            
+        
         self.item(self.count() - 1).setSelected(True)
+
+        self.itemChanged.emit(self.item(0))
+
+    def insert_item(self):
+        new_item = self._new_item()
+        selected_row_1st = self.selectedIndexes()[0].row()
+
+        self.insertItem(selected_row_1st, new_item)
+        self.editItem(new_item)
+
+        self.item(selected_row_1st).setSelected(True)
 
         self.itemChanged.emit(self.item(0))
 
@@ -101,7 +116,7 @@ class Wl_List(QListWidget):
 
         file_paths = QFileDialog.getOpenFileNames(
             self.main,
-            self.tr('Import from File(s)'),
+            self.tr('Import from Files'),
             default_dir,
             self.tr('Text File (*.txt)')
         )[0]
@@ -114,27 +129,23 @@ class Wl_List(QListWidget):
                 for file_path in file_paths:
                     files.append({
                         'path': wl_misc.get_normalized_path(file_path),
-                        'encoding': wl_detection.detect_encoding(self.main, file_path)[0]
+                        'encoding': wl_detection.detect_encoding(self.main, file_path)
                     })
             else:
                 for file_path in file_paths:
                     files.append({
                         'path': wl_misc.get_normalized_path(file_path),
-                        'encoding': self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
+                        'encoding': self.main.settings_custom['files']['default_settings']['encoding']
                     })
 
-            files_ok, files_empty = wl_checking_file.check_files_empty(self.main, files)
-            files_ok, files_decoding_error = wl_checking_file.check_files_decoding_error(self.main, files_ok)
+            files_pass, files_empty = wl_checking_file.check_files_empty(self.main, files)
+            files_pass, files_parsing_error = wl_checking_file.check_files_parsing_error(self.main, files_pass)
 
-            # Extract file paths
-            files_empty = [file['path'] for file in files_empty]
-            files_decoding_error = [file['path'] for file in files_decoding_error]
-
-            if files_empty or files_decoding_error:
+            if files_empty or files_parsing_error:
                 wl_dialog_error.wl_dialog_error_import(
                     self.main,
                     files_empty = files_empty,
-                    files_decoding_error = files_decoding_error
+                    files_parsing_error = files_parsing_error
                 )
 
                 wl_msg.wl_msg_import_list_error(self.main)
@@ -145,7 +156,7 @@ class Wl_List(QListWidget):
 
                 num_prev = len(items_cur)
 
-                for file in files_ok:
+                for file in files_pass:
                     with open(file['path'], 'r', encoding = file['encoding']) as f:
                         for line in f:
                             line = line.strip()
@@ -158,13 +169,13 @@ class Wl_List(QListWidget):
 
                 wl_msg.wl_msg_import_list_success(self.main, num_prev, len(self.get_items()))
 
-    def export_list(self, settings):
+    def export_list(self, settings, default_file_name):
         default_dir = self.main.settings_custom['export'][settings]['default_path']
 
         file_path = QFileDialog.getSaveFileName(
             self.main,
             self.tr('Export to File'),
-            wl_checking_misc.check_dir(default_dir),
+            os.path.join(wl_checking_misc.check_dir(default_dir), default_file_name),
             self.tr('Text File (*.txt)')
         )[0]
 
@@ -234,7 +245,7 @@ class Wl_List_Search_Terms(Wl_List):
         super().import_list(settings = 'search_terms')
 
     def export_list(self):
-        super().export_list(settings = 'search_terms')
+        super().export_list(settings = 'search_terms', default_file_name = 'Wordless_search_terms.txt')
 
 class Wl_List_Stop_Words(Wl_List):
     def item_changed(self, item = None):
@@ -263,6 +274,7 @@ class Wl_List_Stop_Words(Wl_List):
         self.button_export.setEnabled(True)
 
     def selection_changed_default(self):
+        self.button_insert.setEnabled(False)
         self.button_remove.setEnabled(False)
 
     def _new_item(self):
@@ -286,7 +298,7 @@ class Wl_List_Stop_Words(Wl_List):
         super().import_list(settings = 'stop_words')
 
     def export_list(self):
-        super().export_list(settings = 'stop_words')
+        super().export_list(settings = 'stop_words', default_file_name = 'Wordless_stop_words.txt')
 
     def load_stop_words(self, stop_words):
         self.clear_list()

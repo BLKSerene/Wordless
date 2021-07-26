@@ -207,12 +207,13 @@ def wl_widgets_search_settings(parent, tab):
     wrapper_search_terms = QWidget(parent)
 
     wrapper_search_terms.setLayout(wl_layout.Wl_Layout())
-    wrapper_search_terms.layout().addWidget(list_search_terms, 0, 0, 5, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms, 0, 0, 6, 1)
     wrapper_search_terms.layout().addWidget(list_search_terms.button_add, 0, 1)
-    wrapper_search_terms.layout().addWidget(list_search_terms.button_remove, 1, 1)
-    wrapper_search_terms.layout().addWidget(list_search_terms.button_clear, 2, 1)
-    wrapper_search_terms.layout().addWidget(list_search_terms.button_import, 3, 1)
-    wrapper_search_terms.layout().addWidget(list_search_terms.button_export, 4, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_insert, 1, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_remove, 2, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_clear, 3, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_import, 4, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_export, 5, 1)
 
     wrapper_search_terms.layout().setContentsMargins(0, 0, 0, 0)
 
