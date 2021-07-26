@@ -64,7 +64,7 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
         self.combo_box_stop_word_list_preview_lang.addItems(wl_conversion.to_lang_text(self.main, list(settings_global.keys())))
         self.label_stop_word_list_preview_count = QLabel('', self)
 
-        self.stop_word_list_preview_results = wl_list.Wl_List_Stop_Words(self)
+        self.list_stop_word_list_preview_results = wl_list.Wl_List_Stop_Words(self)
 
         self.combo_box_stop_word_list_preview_lang.currentTextChanged.connect(self.preview_settings_changed)
         self.combo_box_stop_word_list_preview_lang.currentTextChanged.connect(self.preview_results_changed)
@@ -78,13 +78,13 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
 
         group_box_preview.setLayout(wl_layout.Wl_Layout())
         group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 6)
-        group_box_preview.layout().addWidget(self.stop_word_list_preview_results, 1, 0, 1, 6)
-        group_box_preview.layout().addWidget(self.stop_word_list_preview_results.button_add, 2, 0)
-        group_box_preview.layout().addWidget(self.stop_word_list_preview_results.button_insert, 2, 1)
-        group_box_preview.layout().addWidget(self.stop_word_list_preview_results.button_remove, 2, 2)
-        group_box_preview.layout().addWidget(self.stop_word_list_preview_results.button_clear, 2, 3)
-        group_box_preview.layout().addWidget(self.stop_word_list_preview_results.button_import, 2, 4)
-        group_box_preview.layout().addWidget(self.stop_word_list_preview_results.button_export, 2, 5)
+        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results, 1, 0, 1, 6)
+        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_add, 2, 0)
+        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_insert, 2, 1)
+        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_remove, 2, 2)
+        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_clear, 2, 3)
+        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_import, 2, 4)
+        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_export, 2, 5)
 
         self.setLayout(wl_layout.Wl_Layout())
         self.layout().addWidget(group_box_stop_word_lists_settings, 0, 0)
@@ -112,16 +112,16 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
         list_stop_words = self.__dict__[f'combo_box_stop_word_list_{lang}'].currentText()
         
         stop_words = wl_stop_word_lists.wl_get_stop_word_list(self.main, lang, stop_word_list = list_stop_words)
-
-        self.stop_word_list_preview_results.load_stop_words(stop_words)
+        
+        self.list_stop_word_list_preview_results.load_stop_words(stop_words)
         self.label_stop_word_list_preview_count.setText(self.tr(f'Count of Stop Words: {len(stop_words)}'))
 
         if list_stop_words == self.tr('Custom List'):
-            self.stop_word_list_preview_results.switch_to_custom()
+            self.list_stop_word_list_preview_results.switch_to_custom()
 
-            self.stop_word_list_preview_results.itemChanged.connect(lambda: self.label_stop_word_list_preview_count.setText(self.tr(f'Count of Stop Words: {self.stop_word_list_preview_results.count()}')))
+            self.list_stop_word_list_preview_results.itemChanged.connect(lambda: self.label_stop_word_list_preview_count.setText(self.tr(f'Count of Stop Words: {self.list_stop_word_list_preview_results.count()}')))
         else:
-            self.stop_word_list_preview_results.switch_to_default()
+            self.list_stop_word_list_preview_results.switch_to_default()
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -147,6 +147,6 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
             settings['stop_word_lists']['stop_word_lists'][lang] = self.__dict__[f'combo_box_stop_word_list_{lang}'].currentText()
 
         if settings['stop_word_lists']['stop_word_lists'][settings['stop_word_lists']['preview_lang']] == self.tr('Custom List'):
-            settings['stop_word_lists']['custom_lists'][settings['stop_word_lists']['preview_lang']] = self.list_stop_words_preview_results.get_items()
+            settings['stop_word_lists']['custom_lists'][settings['stop_word_lists']['preview_lang']] = self.list_stop_word_list_preview_results.get_items()
 
         return True

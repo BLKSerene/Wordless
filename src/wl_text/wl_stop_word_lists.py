@@ -26,7 +26,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
     stop_words = []
     
     if stop_word_list == main.tr('Custom List'):
-        stop_word_list = main.settings_custom['stop_word_lists']['custom_lists'][lang]
+        stop_words = main.settings_custom['stop_word_lists']['custom_lists'][lang]
     else:
         lang_639_1 = wl_conversion.to_iso_639_1(main, lang)
 
