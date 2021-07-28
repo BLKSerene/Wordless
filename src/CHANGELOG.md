@@ -28,32 +28,32 @@
 
 ### 🎉 New Features
 - Menu: Add Preferences - Settings - Files - Default Settings - Tokenized/Tagged
-- Utils: Add CLTK’s Akkadian, Arabic (Standard), Coptic, English (Middle), English (Old), French (Old), German (Middle High), Greek (Ancient), Hindi, Latin, Marathi (Old), Norse (Old), Punjabi, and Sanskrit stop word lists
-- Utils: Add PyThaiNLP’s NERCut
-- Utils: Add PyThaiNLP’s perceptron tagger (LST20)
-- Utils: Add spaCy’s Amharic, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana word tokenizers
-- Utils: Add spaCy’s Amharic, Korean, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana stop word lists
-- Utils: Add spaCy’s Bengali, Croatian, Czech, Hungarian, Indonesian, Luxembourgish, Persian, Serbian (Cyrillic), Swedish, Tagalog, Turkish, and Urdu lemmatizers
-- Utils: Add spaCy’s Catalan POS tagger and lemmatizer
-- Utils: Add spaCy’s Chinese word tokenizer and POS tagger
-- Utils: Add spaCy’s Macedonian POS tagger and lemmatizer
-- Utils: Add spaCy’s Russian POS tagger and lemmatizer
-- Utils: Add spaCy’s sentence recognizer
+- Utils: Add CLTK's Akkadian, Arabic (Standard), Coptic, English (Middle), English (Old), French (Old), German (Middle High), Greek (Ancient), Hindi, Latin, Marathi (Old), Norse (Old), Punjabi, and Sanskrit stop word lists
+- Utils: Add PyThaiNLP's NERCut
+- Utils: Add PyThaiNLP's perceptron tagger (LST20)
+- Utils: Add spaCy's Amharic, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana word tokenizers
+- Utils: Add spaCy's Amharic, Korean, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana stop word lists
+- Utils: Add spaCy's Bengali, Croatian, Czech, Hungarian, Indonesian, Luxembourgish, Persian, Serbian (Cyrillic), Swedish, Tagalog, Turkish, and Urdu lemmatizers
+- Utils: Add spaCy's Catalan POS tagger and lemmatizer
+- Utils: Add spaCy's Chinese word tokenizer and POS tagger
+- Utils: Add spaCy's Macedonian POS tagger and lemmatizer
+- Utils: Add spaCy's Russian POS tagger and lemmatizer
+- Utils: Add spaCy's sentence recognizer
 - Work Area: Add Collocation/Colligation - Generation Settings - Limit Searching
 - Work Area: Add Concordancer (Parallel Mode)
 
 ### ✨ Improvements
 - File Area: Cache loaded files
 - Utils: Update encoding detection
-- Utils: Update NLTK’s word tokenizers
-- Utils: Update spaCy’s sentencizer, word tokenizers, POS taggers, and lemmatizers
+- Utils: Update NLTK's word tokenizers
+- Utils: Update spaCy's sentencizer, word tokenizers, POS taggers, and lemmatizers
 
 ### 📌 Bugfixes
-- Utils: Fix Sacremoses’s Moses tokenizer and Moses detokenizer
+- Utils: Fix Sacremoses's Moses tokenizer and Moses detokenizer
 - Work Area: Fix Concordancer - Sort Results - Order
 
 ### ❌ Removals
-- Utils: Remove AttaCut’s Thai word tokenizer
+- Utils: Remove AttaCut's Thai word tokenizer
 
 ### ⏫ Dependency Changes
 - Dependencies: Add Charset Normalizer
@@ -85,10 +85,10 @@
 ## [1.5.0](https://github.com/BLKSerene/Wordless/releases/tag/1.5.0) - 01/15/2021
 
 ### 🎉 New Features
-- Utils: Add AttaCut’s Thai word tokenizer
-- Utils: Add pkuseg’s Chinese word tokenizer
-- Utils: Add TextBlob’s English sentiment analyzer
-- Utils: Add Tokenizer’s Icelandic sentence tokenizer and word tokenizer
+- Utils: Add AttaCut's Thai word tokenizer
+- Utils: Add pkuseg's Chinese word tokenizer
+- Utils: Add TextBlob's English sentiment analyzer
+- Utils: Add Tokenizer's Icelandic sentence tokenizer and word tokenizer
 - Work Area: Add Collocation/Colligation - Generation Settings - Test of Statistical Significance - Berry-Rogghe’s z-score
 - Work Area: Add Concordancer - Sentiment
 - Work Area: Add Overview - Count of n-length Sentences
@@ -99,7 +99,7 @@
 
 ### 📌 Bugfixes
 - Menu: Fix Preferences - Settings - Word Tokenization - Underthesea’s Vietnamese Word Tokenizer
-- Utils: Fix NLTK’s Penn Treebank Detokenizer
+- Utils: Fix NLTK's Penn Treebank Detokenizer
 - Work Area: Fix Concordancer - Generate Figure
 
 ### ❌ Removals
@@ -129,38 +129,38 @@
 ### 🎉 New Features
 - Menu: Add Preferences - Settings - File - Tags - Header Tag Settings
 - Menu: Add Preferences - Settings - Data - Continue numbering after ties
-- Utils: Add botok’s Tibetan sentence tokenizer
-- Utils: Add NLTK’s NLTK tokenizer
-- Utils: Add PyThaiNLP’s maximum matching + TCC (safe mode)
-- Utils: Add spaCy’s Armenian, Basque, Estonian, Gujarati, Latvian, Ligurian, Malayalam, Nepali, and Yoruba word tokenizers
-- Utils: Add spaCy’s Armenian, Basque, Gujarati, Ligurian, Luxembourgish, Malayalam, Nepali, Slovak, Slovenian, and Yoruba stop word lists
-- Utils: Add spaCy’s Danish POS tagger and lemmatizer
-- Utils: Add spaCy’s Polish POS tagger and lemmatizer
-- Utils: Add spaCy’s Romanian POS tagger and lemmatizer
-- Utils: Add Stopwords ISO’s Gujarati and Lithuanian stop word lists
+- Utils: Add botok's Tibetan sentence tokenizer
+- Utils: Add NLTK's NLTK tokenizer
+- Utils: Add PyThaiNLP's maximum matching + TCC (safe mode)
+- Utils: Add spaCy's Armenian, Basque, Estonian, Gujarati, Latvian, Ligurian, Malayalam, Nepali, and Yoruba word tokenizers
+- Utils: Add spaCy's Armenian, Basque, Gujarati, Ligurian, Luxembourgish, Malayalam, Nepali, Slovak, Slovenian, and Yoruba stop word lists
+- Utils: Add spaCy's Danish POS tagger and lemmatizer
+- Utils: Add spaCy's Polish POS tagger and lemmatizer
+- Utils: Add spaCy's Romanian POS tagger and lemmatizer
+- Utils: Add Stopwords ISO's Gujarati and Lithuanian stop word lists
 - Work Area: Add Concordancer - Zapping Settings
 
 ### ✨ Improvements
 - File Area: Update File Table - Tokenized/Tagged
 - File Area: Update support for XML files
-- Menu: Disable editing of POS tag mappings for spaCy’s POS taggers
+- Menu: Disable editing of POS tag mappings for spaCy's POS taggers
 - Menu: Update Preferences - Settings - Files - Tags
-- Utils: Update botok’s Tibetan word tokenizer, POS tagger, and lemmatizer
+- Utils: Update botok's Tibetan word tokenizer, POS tagger, and lemmatizer
 - Utils: Update Chinese (Traditional) stop word lists
-- Utils: Update NLTK’s word tokenizers
-- Utils: Update POS tag mappings for spaCy’s POS taggers
-- Utils: Update PyThaiNLP’s CRFCut
-- Utils: Update PyThaiNLP’s POS taggers
-- Utils: Update PyThaiNLP’s Thai word tokenizers
-- Utils: Update Sacremoses’s Moses tokenizer
-- Utils: Update Stopwords ISO’s Greek and Norwegian stop word lists
+- Utils: Update NLTK's word tokenizers
+- Utils: Update POS tag mappings for spaCy's POS taggers
+- Utils: Update PyThaiNLP's CRFCut
+- Utils: Update PyThaiNLP's POS taggers
+- Utils: Update PyThaiNLP's Thai word tokenizers
+- Utils: Update Sacremoses's Moses tokenizer
+- Utils: Update Stopwords ISO's Greek and Norwegian stop word lists
 
 ### 📌 Bugfixes
 - Menu: Fix Preferences - Settings - POS Tagging
 - Overview: Fix batch processing of a large number of files
 
 ### ❌ Removals
-- Utils: Remove grk-stoplist’s Greek (Ancient) stop word list
+- Utils: Remove grk-stoplist's Greek (Ancient) stop word list
 
 ### ⏫ Dependency Changes
 - Dependencies: Add opencc-python
@@ -197,21 +197,21 @@
 ## [1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/1.3.0) - 11/30/2019
 
 ### 🎉 New Features
-- Utils: Add razdel’s Russian sentenizer and word tokenizer
-- Utils: Add spaCy’s Lithuanian word tokenizer, POS tagger, and lemmatizer
-- Utils: Add spaCy’s Luxembourgish word tokenizer
-- Utils: Add spaCy’s Norwegian Bokmål word tokenizer, POS tagger, and lemmatizer
-- Utils: Add syntok’s sentence segmenter and word tokenizer
-- Utils: Add Wordless’s sentence and sentence segment splitters
+- Utils: Add razdel's Russian sentenizer and word tokenizer
+- Utils: Add spaCy's Lithuanian word tokenizer, POS tagger, and lemmatizer
+- Utils: Add spaCy's Luxembourgish word tokenizer
+- Utils: Add spaCy's Norwegian Bokmål word tokenizer, POS tagger, and lemmatizer
+- Utils: Add syntok's sentence segmenter and word tokenizer
+- Utils: Add Wordless's sentence and sentence segment splitters
 - Work Area: Add Concordancer - Generation Settings - Sampling Method
 - Work Area: Add Concordancer - Generation Settings - Width Unit - Paragraph
 - Work Area: Add Overview - Paragraph Length in Clause
 
 ### ✨ Improvements
 - Utils: Force consistent results for language detection
-- Utils: Update Sacremoses’s Moses tokenizer and detokenizer
-- Utils: Update Wordless’s sentence segment tokenizer
-- Utils: Update spaCy’s sentencizer, word tokenizers, POS taggers, and lemmatizers
+- Utils: Update Sacremoses's Moses tokenizer and detokenizer
+- Utils: Update Wordless's sentence segment tokenizer
+- Utils: Update spaCy's sentencizer, word tokenizers, POS taggers, and lemmatizers
 - Work Area: Display numbers and percentages in different columns
 - Work Area: Do not add borders to exported Excel workbooks due to performance issues
 - Work Area: Remove illegal characters when exporting tables to Excel workbooks
@@ -224,7 +224,7 @@
 - Work Area: Fix Overview - Paragraph/Sentence Length
 
 ### ❌ Removals
-- Utils: Remove Sacremoses’s Penn Treebank tokenizer
+- Utils: Remove Sacremoses's Penn Treebank tokenizer
 
 ### ⏫ Dependency Changes
 - Dependencies: Add razdel
@@ -252,11 +252,11 @@
 ### 🎉 New Features
 - File Area: Add support for .xml files
 - Menu: Add Preferences - Settings - Figures - Line Chart / Word Cloud / Network Graph
-- Utils: Add extra-stopwords’s stop word lists
-- Utils: Add NLTK’s Punkt Sentence Tokenizer for Russian
-- Utils: Add NLTK’s Slovenian and Tajik stop word lists
-- Utils: Add spaCy’s Marathi word tokenizer and stop word list
-- Utils: Add spaCy’s Serbian word tokenizer and stop word list
+- Utils: Add extra-stopwords's stop word lists
+- Utils: Add NLTK's Punkt Sentence Tokenizer for Russian
+- Utils: Add NLTK's Slovenian and Tajik stop word lists
+- Utils: Add spaCy's Marathi word tokenizer and stop word list
+- Utils: Add spaCy's Serbian word tokenizer and stop word list
 - Work Area: Add Collocation/Colligation - Figure Settings - Graph Type - Network Graph
 - Work Area: Add Concordancer - Clause No.
 - Work Area: Add Concordancer - Generation Settings - Width Unit - Sentence/Clause
@@ -264,14 +264,14 @@
 
 ### ✨ Improvements
 - Main Window: Check file permissions when exporting tables
-- Utils: Update POS tag mappings for pybo’s Tibetan POS tagger
-- Utils: Update pybo’s Tibetan tokenizers, POS tagger, and lemmatizer
-- Utils: Update PyThaiNLP’s Thai stop word list
-- Utils: Update Sacremoses’s tokenizers and detokenizer
+- Utils: Update POS tag mappings for pybo's Tibetan POS tagger
+- Utils: Update pybo's Tibetan tokenizers, POS tagger, and lemmatizer
+- Utils: Update PyThaiNLP's Thai stop word list
+- Utils: Update Sacremoses's tokenizers and detokenizer
 
 ### 📌 Bugfixes
 - Menu: Fix Preferences - Settings - Stop Words - Preview - Count of Stop Words
-- Utils: Fix NLTK’s word tokenizers
+- Utils: Fix NLTK's word tokenizers
 - Work Area: Fix Collocation and Colligation
 - Work Area: Fix Concordancer - Export Selected/All
 - Work Area: Fix Concordancer - Sort Results
@@ -306,15 +306,15 @@
 
 ### ✨ Improvements
 - Main Window: Disable mouse wheel for combo boxes and spin boxes when they are not focused
-- Utils: Update spaCy’s sentencizer
-- Utils: Update POS tag mappings for spaCy’s English POS tagger
+- Utils: Update spaCy's sentencizer
+- Utils: Update POS tag mappings for spaCy's English POS tagger
 
 ### 📌 Bugfixes
 - File Area: Fix Open Folder
 - Menu: Fix Preferences - Settings - Sentence Tokenization / Word Tokenization / Word Detokenization / POS Tagging / Lemmatization - Preview
 - Startup: Fix checking for updates on startup
-- Utils: Fix spaCy’s sentence tokenizers and word tokenizers
-- Utils: Fix Wordless’s Chinese and Japanese character tokenizers
+- Utils: Fix spaCy's sentence tokenizers and word tokenizers
+- Utils: Fix Wordless's Chinese and Japanese character tokenizers
 - Work Area: Fix Concordancer - Search in Results
 - Work Area: Fix Work Area - Search Settings - Context Settings
 
