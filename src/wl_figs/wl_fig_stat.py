@@ -174,10 +174,10 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
             label_pos = 0.2
         )
 
-def wl_fig_stat_ref(main, keywords_stat_files, ref_file, settings, label_y):
+def wl_fig_stat_keyword(main, keywords_stat_files, files_ref, settings, label_y):
     files = main.wl_files.get_selected_files()
     files += [{'name': main.tr('Total')}]
-    files.remove(ref_file)
+    files = [file for file in files if file not in files_ref]
 
     if settings['rank_min_no_limit']:
         rank_min = 1

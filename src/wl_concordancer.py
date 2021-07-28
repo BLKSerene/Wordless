@@ -1134,7 +1134,7 @@ def generate_table(main, table):
             thread_concordancer_table = wl_threading.Wl_Thread(worker_concordancer_table)
             thread_concordancer_table.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_search_term(main)
+            wl_msg_box.wl_msg_box_missing_search_terms(main)
 
             wl_msg.wl_msg_generate_table_error(main)
     else:
@@ -1215,7 +1215,7 @@ def generate_fig(main):
             thread_concordancer_fig = wl_threading.Wl_Thread(worker_concordancer_fig)
             thread_concordancer_fig.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_search_term(main)
+            wl_msg_box.wl_msg_box_missing_search_terms(main)
 
             wl_msg.wl_msg_generate_fig_error(main)
     else:

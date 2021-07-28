@@ -1309,7 +1309,7 @@ class Wl_Dialog_Results_Filter_Keyword(Wl_Dialog_Results_Filter):
     def table_item_changed(self):
         settings = self.table.settings[self.tab]
 
-        ref_file = settings['generation_settings']['ref_file']
+        ref_files = settings['generation_settings']['ref_files']
 
         text_test_significance = settings['generation_settings']['test_significance']
         text_measure_effect_size = settings['generation_settings']['measure_effect_size']
@@ -1353,7 +1353,9 @@ class Wl_Dialog_Results_Filter_Keyword(Wl_Dialog_Results_Filter):
 
         self.label_effect_size.setText(f'{text_effect_size}:')
         
-        self.combo_box_file_to_filter.removeItem(self.combo_box_file_to_filter.findText(ref_file))
+        # Remove reference files from the file list
+        for ref_file in ref_files:
+            self.combo_box_file_to_filter.removeItem(self.combo_box_file_to_filter.findText(ref_file))
 
     @wl_misc.log_timing
     def filter_results(self):

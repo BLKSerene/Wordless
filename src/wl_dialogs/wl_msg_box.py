@@ -235,20 +235,35 @@ def wl_msg_box_identical_src_tgt_files(main):
 
     msg_box_identical_src_tgt_files.open()
 
-class Wl_Msg_Box_Missing_Observed_File(Wl_Msg_Box_Warning):
+class Wl_Msg_Box_Missing_Ref_Files(Wl_Msg_Box_Warning):
     def __init__(self, main):
         super().__init__(
             main = main,
-            title = main.tr('Missing Observed File'),
+            title = main.tr('Missing Reference Files'),
             text = main.tr('''
-                <div>You have specified the reference file, but you haven't opened and selected any observed file yet.</div>
+                <div>You have not specified any reference files yet.</div>
             ''')
         )
 
-def wl_msg_box_missing_observed_file(main):
-    msg_box_missing_observed_file = Wl_Msg_Box_Missing_Observed_File(main)
+def wl_msg_box_missing_ref_files(main):
+    msg_box_missing_ref_files = Wl_Msg_Box_Missing_Ref_Files(main)
 
-    msg_box_missing_observed_file.open()
+    msg_box_missing_ref_files.open()
+
+class Wl_Msg_Box_Missing_Observed_Files(Wl_Msg_Box_Warning):
+    def __init__(self, main):
+        super().__init__(
+            main = main,
+            title = main.tr('Missing Observed Files'),
+            text = main.tr('''
+                <div>You have specified reference files, but you have not opened and selected any observed files yet.</div>
+            ''')
+        )
+
+def wl_msg_box_missing_observed_files(main):
+    msg_box_missing_observed_files = Wl_Msg_Box_Missing_Observed_Files(main)
+
+    msg_box_missing_observed_files.open()
 
 class Wl_Msg_Box_Invalid_Xml_File(Wl_Msg_Box_Warning):
     def __init__(self, main):
@@ -265,32 +280,32 @@ def wl_msg_box_invalid_xml_file(main):
 
     msg_box_invalid_xml_file.open()
 
-# Search Terms
-class Wl_Msg_Box_Missing_Search_Term(Wl_Msg_Box_Warning):
+# Search terms
+class Wl_Msg_Box_Missing_Search_Terms(Wl_Msg_Box_Warning):
     def __init__(self, main):
         super().__init__(
             main = main,
-            title = main.tr('Missing Search Term'),
+            title = main.tr('Missing Search Terms'),
             text = main.tr('''
                 <div>
-                    You haven't specify any search term yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
+                    You have not specified any search terms yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
                 </div>
             ''')
         )
 
-def wl_msg_box_missing_search_term(main):
-    msg_box_missing_search_term = Wl_Msg_Box_Missing_Search_Term(main)
+def wl_msg_box_missing_search_terms(main):
+    msg_box_missing_search_terms = Wl_Msg_Box_Missing_Search_Terms(main)
 
-    msg_box_missing_search_term.open()
+    msg_box_missing_search_terms.open()
 
-class Wl_Msg_Box_Missing_Search_Term_Optional(Wl_Msg_Box_Warning):
+class Wl_Msg_Box_Missing_Search_Terms_Optional(Wl_Msg_Box_Warning):
     def __init__(self, main):
         super().__init__(
             main = main,
-            title = main.tr('Missing Search Term'),
+            title = main.tr('Missing Search Terms'),
             text = main.tr('''
                 <div>
-                    You haven't specified any search term yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
+                    You have not specified any search terms yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
                 </div>
 
                 <div>
@@ -299,19 +314,19 @@ class Wl_Msg_Box_Missing_Search_Term_Optional(Wl_Msg_Box_Warning):
             ''')
         )
 
-def wl_msg_box_missing_search_term_optional(main):
-    msg_box_missing_search_term_optional = Wl_Msg_Box_Missing_Search_Term_Optional(main)
+def wl_msg_box_missing_search_terms_optional(main):
+    msg_box_missing_search_terms_optional = Wl_Msg_Box_Missing_Search_Terms_Optional(main)
 
-    msg_box_missing_search_term_optional.open()
+    msg_box_missing_search_terms_optional.open()
 
-def wl_msg_box_missing_search_term_concordancer_parallel(main):
+def wl_msg_box_missing_search_terms_concordancer_parallel(main):
     reply = QMessageBox.question(
         main,
-        main.tr('Empty Search Term'),
+        main.tr('Empty Search Terms'),
         main.tr(f'''
             {main.settings_global['styles']['style_dialog']}
             <body>
-                <div>You have not specified any search term. Do you want to search for additions in the target file?</div>
+                <div>You have not specified any search terms. Do you want to search for additions in the target file?</div>
             </body>
         '''),
         QMessageBox.Yes | QMessageBox.No,

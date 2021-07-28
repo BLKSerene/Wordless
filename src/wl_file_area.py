@@ -90,7 +90,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
                                     for row in worksheet.rows:
                                         f.write('\t'.join([(cell.value if cell.value != None else '')
-                                                           for cell in row]) + '\n')
+                                                            for cell in row]) + '\n')
 
                         new_paths = [new_path]
                     else:
@@ -244,8 +244,10 @@ class Wl_Worker_Reload_Files(wl_threading.Wl_Worker_No_Callback):
 
         self.worker_done.emit()
 
-class Wl_Files():
+class Wl_Files(QObject):
     def __init__(self, table):
+        super().__init__()
+
         self.main = table.main
         self.table = table
 
@@ -445,6 +447,12 @@ class Wl_Files():
                 return file
 
         return None
+
+    def find_files_by_name(self, file_names, selected_only = False):
+        files = [self.find_file_by_name(file_name, selected_only = selected_only)
+                 for file_name in file_names]
+
+        return [file for file in files if file]
 
     def find_file_by_path(self, file_path, selected_only = False):
         if selected_only:

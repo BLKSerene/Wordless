@@ -169,9 +169,10 @@ def wl_fig_freq(main, tokens_freq_files, settings, label_x):
             label_pos = 0.2
         )
 
-def wl_fig_freq_ref(main, tokens_freq_files, ref_file, settings, label_x):
+def wl_fig_freq_keyword(main, tokens_freq_files, files_ref, settings, label_x):
     files = main.wl_files.get_selected_files()
     files += [{'name': main.tr('Total')}]
+    files = [file for file in files if file not in files_ref]
 
     if settings['rank_min_no_limit']:
         rank_min = 1
@@ -185,6 +186,8 @@ def wl_fig_freq_ref(main, tokens_freq_files, ref_file, settings, label_x):
 
     # Line Chart
     if settings['graph_type'] == main.tr('Line Chart'):
+        files.insert(0, {'name': main.tr('Reference Files')})
+
         tokens_freq_files = wl_sorting.sorted_tokens_freq_files_ref(tokens_freq_files)
 
         total_freqs = numpy.array([item[1] for item in tokens_freq_files]).sum(axis = 0)
@@ -236,8 +239,6 @@ def wl_fig_freq_ref(main, tokens_freq_files, ref_file, settings, label_x):
         matplotlib.pyplot.legend()
     # Word Cloud
     elif settings['graph_type'] == main.tr('Word Cloud'):
-        files.remove(ref_file)
-
         if rank_max == None:
             max_words = len(tokens_freq_files) - rank_min + 1
         else:

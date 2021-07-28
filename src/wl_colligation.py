@@ -1221,7 +1221,7 @@ def generate_table(main, table):
             thread_colligation_table = wl_threading.Wl_Thread(worker_colligation_table)
             thread_colligation_table.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_search_term_optional(main)
+            wl_msg_box.wl_msg_box_missing_search_terms_optional(main)
 
             wl_msg.wl_msg_generate_table_error(main)
     else:
@@ -1369,7 +1369,7 @@ def generate_fig(main):
             thread_colligation_fig = wl_threading.Wl_Thread(worker_colligation_fig)
             thread_colligation_fig.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_search_term_optional(main)
+            wl_msg_box.wl_msg_box_missing_search_terms_optional(main)
 
             wl_msg.wl_msg_generate_fig_error(main)
     else:

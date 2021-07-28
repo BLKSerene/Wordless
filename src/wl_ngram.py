@@ -1022,7 +1022,7 @@ def generate_table(main, table):
             thread_ngram_table = wl_threading.Wl_Thread(worker_ngram_table)
             thread_ngram_table.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_search_term_optional(main)
+            wl_msg_box.wl_msg_box_missing_search_terms_optional(main)
 
             wl_msg.wl_msg_generate_table_error(main)
     else:
@@ -1110,7 +1110,7 @@ def generate_fig(main):
             thread_ngram_fig = wl_threading.Wl_Thread(worker_ngram_fig)
             thread_ngram_fig.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_search_term_optional(main)
+            wl_msg_box.wl_msg_box_missing_search_terms_optional(main)
 
             wl_msg.wl_msg_generate_fig_error(main)
     else:

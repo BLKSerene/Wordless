@@ -345,7 +345,7 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
             thread_results_search = wl_threading.Wl_Thread(worker_results_search)
             thread_results_search.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_search_term(self.main)
+            wl_msg_box.wl_msg_box_missing_search_terms(self.main)
 
             wl_msg.wl_msg_results_search_error(self.main)
 

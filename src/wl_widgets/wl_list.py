@@ -19,7 +19,7 @@ from PyQt5.QtWidgets import *
 
 from wl_checking import wl_checking_file, wl_checking_misc
 from wl_dialogs import wl_dialog_error, wl_msg_box
-from wl_widgets import wl_msg
+from wl_widgets import wl_box, wl_msg
 from wl_utils import wl_detection, wl_misc
 
 class Wl_List(QListWidget):
@@ -202,27 +202,178 @@ class Wl_List(QListWidget):
     def get_items(self):
         return [self.item(i).text() for i in range(self.count())]
 
+class Wl_List_Files(QListWidget):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.main = wl_misc.find_wl_main(parent)
+
+        self.button_add = QPushButton(self.tr('Add'), self)
+        self.button_insert = QPushButton(self.tr('Insert'), self)
+        self.button_remove = QPushButton(self.tr('Remove'), self)
+        self.button_clear = QPushButton(self.tr('Clear'), self)
+
+        self.button_add.clicked.connect(self.add_item)
+        self.button_insert.clicked.connect(self.insert_item)
+        self.button_remove.clicked.connect(self.remove_item)
+        self.button_clear.clicked.connect(self.clear_list)
+
+        self.itemChanged.connect(self.item_changed)
+        self.itemSelectionChanged.connect(self.selection_changed)
+
+        self.main.wl_files.table.itemChanged.connect(self.wl_files_changed)
+
+        self.clear_list()
+
+    def item_changed(self):
+        if self.count():
+            self.button_clear.setEnabled(True)
+        else:
+            self.button_clear.setEnabled(False)
+
+        self.selection_changed()
+
+    def selection_changed(self):
+        if self.selectedIndexes():
+            self.button_insert.setEnabled(True)
+            self.button_remove.setEnabled(True)
+        else:
+            self.button_insert.setEnabled(False)
+            self.button_remove.setEnabled(False)
+
+        self.wl_files_changed()
+
+    def file_changed(self, combo_box_file):
+        for i in range(self.count()):
+            combo_box_cur = self.itemWidget(self.item(i))
+
+            if combo_box_file != combo_box_cur and combo_box_file.currentText() == combo_box_cur.currentText():
+                QMessageBox.warning(
+                    self.main,
+                    self.tr('Duplicate Reference Files'),
+                    self.tr(f'''
+                        {self.main.settings_global['styles']['style_dialog']}
+                        <body>
+                            <div>Please refrain from specifying two identical reference files!</div>
+                        </body>
+                    '''),
+                    QMessageBox.Ok
+                )
+
+                combo_box_file.setCurrentText(combo_box_file.text_old)
+                combo_box_file.showPopup()
+
+                return
+
+        combo_box_file.text_old = combo_box_file.currentText()
+
+    def wl_files_changed(self):
+        if self.count() >= len(self.main.wl_files.get_selected_files()):
+            self.button_add.setEnabled(False)
+            self.button_insert.setEnabled(False)
+        else:
+            self.button_add.setEnabled(True)
+            if self.selectedIndexes():
+                self.button_insert.setEnabled(True)
+
+    def wl_file_removed(self, combo_box_file):
+        for i in reversed(range(self.count())):
+            if self.itemWidget(self.item(i)) == combo_box_file:
+                self.takeItem(i)
+
+                self.itemChanged.emit(self.item(0))
+
+    def _new_item(self):
+        new_item = QListWidgetItem()
+        new_item_file = wl_box.Wl_Combo_Box_File_Ref(self.main, self)
+
+        new_item.setFlags(Qt.ItemIsSelectable |
+                          Qt.ItemIsEditable |
+                          Qt.ItemIsDragEnabled |
+                          Qt.ItemIsEnabled)
+
+        file_names = self.get_file_names()
+
+        for i in range(new_item_file.count()):
+            if new_item_file.itemText(i) not in file_names:
+                new_item_file.setCurrentIndex(i)
+
+                break
+
+        new_item_file.text_old = new_item_file.currentText()
+
+        return new_item, new_item_file
+
+    def add_item(self):
+        new_item, new_item_file = self._new_item()
+
+        self.addItem(new_item)
+        self.setItemWidget(new_item, new_item_file)
+
+        self.item(self.count() - 1).setSelected(True)
+
+        self.itemChanged.emit(self.item(0))
+
+    def insert_item(self):
+        new_item, new_item_file = self._new_item()
+
+        selected_row_1st = self.selectedIndexes()[0].row()
+
+        self.insertItem(selected_row_1st, new_item)
+        self.setItemWidget(new_item, new_item_file)
+
+        self.item(selected_row_1st).setSelected(True)
+
+        self.itemChanged.emit(self.item(0))
+
+    def remove_item(self):
+        for index in sorted(self.selectedIndexes(), reverse = True):
+            self.takeItem(index.row())
+
+        self.itemChanged.emit(self.item(0))
+
+    def clear_list(self):
+        self.clear()
+
+        self.itemChanged.emit(self.item(0))
+
+    def load_items(self, texts):
+        for text in texts:
+            new_item, new_item_file = self._new_item()
+
+            new_item_file.setCurrentText(text)
+
+            self.addItem(new_item)
+            self.setItemWidget(new_item, new_item_file)
+
+            new_item.text_old = new_item_file.currentText()
+
+        self.itemChanged.emit(self.item(0))
+
+    def get_file_names(self):
+        return [self.itemWidget(self.item(i)).currentText() for i in range(self.count())]
+
 class Wl_List_Search_Terms(Wl_List):
     def item_changed(self, item = None):
         super().item_changed()
 
         if item:
             if re.search(r'^\s*$', item.text()):
-                item.setText(item.old_text)
+                item.setText(item.text_old)
             else:
                 for i in range(self.count()):
                     if self.item(i) != item:
                         if item.text() == self.item(i).text():
                             wl_msg_box.wl_msg_box_duplicate_search_terms(self.main)
 
-                            item.setText(item.old_text)
+                            item.setText(item.text_old)
 
                             self.closePersistentEditor(item)
                             self.editItem(item)
 
                             break
 
-                item.old_text = item.text()
+                item.text_old = item.text()
 
     def _new_item(self):
         i = 1
@@ -233,7 +384,7 @@ class Wl_List_Search_Terms(Wl_List):
             else:
                 new_item = QListWidgetItem(self.tr('New Search Term ({})').format(i))
 
-                new_item.old_text = new_item.text()
+                new_item.text_old = new_item.text()
                 new_item.setFlags(Qt.ItemIsSelectable |
                                   Qt.ItemIsEditable |
                                   Qt.ItemIsDragEnabled |
@@ -253,21 +404,21 @@ class Wl_List_Stop_Words(Wl_List):
 
         if item:
             if re.search(r'^\s*$', item.text()):
-                item.setText(item.old_text)
+                item.setText(item.text_old)
             else:
                 for i in range(self.count()):
                     if self.item(i) != item:
                         if item.text() == self.item(i).text():
                             wl_msg_box.wl_msg_box_duplicate_stop_words(self.main)
 
-                            item.setText(item.old_text)
+                            item.setText(item.text_old)
 
                             self.closePersistentEditor(item)
                             self.editItem(item)
 
                             break
 
-                item.old_text = item.text()
+                item.text_old = item.text()
 
     def item_changed_default(self):
         self.button_clear.setEnabled(False)
@@ -286,7 +437,7 @@ class Wl_List_Stop_Words(Wl_List):
             else:
                 new_item = QListWidgetItem(self.tr('New Stop Word ({})').format(i))
 
-                new_item.old_text = new_item.text()
+                new_item.text_old = new_item.text()
                 new_item.setFlags(Qt.ItemIsSelectable |
                                   Qt.ItemIsEditable |
                                   Qt.ItemIsDragEnabled |

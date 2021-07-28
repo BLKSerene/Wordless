@@ -16,6 +16,9 @@
 - Menu: Add Preferences - Settings - Stop Word Lists - Preview - Insert
 - Work Area: Add Work Area - Search Settings - Multi-search Mode - Insert
 
+### ✨ Improvements
+- Work Area: Update Keyword - Generation Settings - Reference Files
+
 ### 📌 Bugfixes
 - File Area: Fix Auto-detection Settings
 - Menu: Fix Preferences - Settings - POS Tagging - Tagsets - Mapping Settings - Reset All
