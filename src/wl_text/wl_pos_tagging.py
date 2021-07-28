@@ -50,7 +50,7 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'default'):
         for pipe_name in nlp.pipe_names:
             nlp.get_pipe(pipe_name)(doc)
 
-        if tagset == 'custom':
+        if tagset == 'default':
             tokens_tagged = [(token.text, token.tag_) for token in doc]
         elif tagset == 'universal':
             tokens_tagged = [(token.text, token.pos_) for token in doc]
