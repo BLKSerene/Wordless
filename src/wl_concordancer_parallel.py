@@ -209,9 +209,9 @@ class Wrapper_Concordancer_Parallel(wl_layout.Wl_Wrapper):
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
 
         self.label_src_file = QLabel(self.tr('Source File:'), self)
-        self.combo_box_src_file = wl_box.Wl_Combo_Box_Ref_File(self)
+        self.combo_box_src_file = wl_box.Wl_Combo_Box_File_Concordancer(self)
         self.label_tgt_file = QLabel(self.tr('Target File:'), self)
-        self.combo_box_tgt_file = wl_box.Wl_Combo_Box_Ref_File(self)
+        self.combo_box_tgt_file = wl_box.Wl_Combo_Box_File_Concordancer(self)
 
         self.combo_box_src_file.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_tgt_file.currentTextChanged.connect(self.generation_settings_changed)
@@ -822,12 +822,12 @@ def generate_table(main, table_src, table_tgt):
     if wl_checking_file.check_files_on_loading(main, files):
         # Check for identical source and target files
         if settings['generation_settings']['src_file'] != settings['generation_settings']['tgt_file']:
-            # Check for empty search terms
+            # Check for empty search term
             if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
                 settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
                 search_additions = True
             else:
-                search_additions = wl_msg_box.wl_msg_box_missing_search_term_concordancer_parallel(main)
+                search_additions = wl_msg_box.wl_msg_box_missing_search_terms_concordancer_parallel(main)
 
             # Ask for confirmation
             if search_additions:

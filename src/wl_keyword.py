@@ -25,7 +25,7 @@ from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
 from wl_text import wl_text, wl_text_utils, wl_token_processing
 from wl_utils import wl_misc, wl_sorting, wl_threading
-from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
+from wl_widgets import wl_layout, wl_list, wl_msg, wl_table, wl_widgets
 
 class Wl_Table_Keyword(wl_table.Wl_Table_Data_Filter_Search):
     def __init__(self, parent):
@@ -131,8 +131,8 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
         # Generation Settings
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
 
-        self.label_ref_file = QLabel(self.tr('Reference File:'), self)
-        self.combo_box_ref_file = wl_box.Wl_Combo_Box_Ref_File(self)
+        self.label_ref_files = QLabel(self.tr('Reference Files:'), self)
+        self.list_ref_files = wl_list.Wl_List_Files(self)
         (self.label_test_significance,
          self.combo_box_test_significance) = wl_widgets.wl_widgets_test_significance(self)
         (self.label_measure_effect_size,
@@ -147,9 +147,16 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
         self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['keyword'].keys()))
         self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['keyword'].keys()))
 
-        self.combo_box_ref_file.currentTextChanged.connect(self.generation_settings_changed)
+        self.list_ref_files.itemChanged.connect(self.generation_settings_changed)
         self.combo_box_test_significance.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_effect_size.currentTextChanged.connect(self.generation_settings_changed)
+
+        layout_ref_files = wl_layout.Wl_Layout()
+        layout_ref_files.addWidget(self.list_ref_files, 0, 0, 4, 1)
+        layout_ref_files.addWidget(self.list_ref_files.button_add, 0, 1)
+        layout_ref_files.addWidget(self.list_ref_files.button_insert, 1, 1)
+        layout_ref_files.addWidget(self.list_ref_files.button_remove, 2, 1)
+        layout_ref_files.addWidget(self.list_ref_files.button_clear, 3, 1)
 
         layout_settings_measures = wl_layout.Wl_Layout()
         layout_settings_measures.addWidget(self.label_settings_measures, 0, 0)
@@ -158,16 +165,16 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
         layout_settings_measures.setColumnStretch(1, 1)
 
         self.group_box_generation_settings.setLayout(wl_layout.Wl_Layout())
-        self.group_box_generation_settings.layout().addWidget(self.label_ref_file, 0, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_ref_file, 1, 0)
-        self.group_box_generation_settings.layout().addWidget(self.label_test_significance, 3, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_test_significance, 4, 0)
-        self.group_box_generation_settings.layout().addWidget(self.label_measure_effect_size, 5, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 6, 0)
+        self.group_box_generation_settings.layout().addWidget(self.label_ref_files, 0, 0)
+        self.group_box_generation_settings.layout().addLayout(layout_ref_files, 1, 0)
+        self.group_box_generation_settings.layout().addWidget(self.label_test_significance, 2, 0)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_test_significance, 3, 0)
+        self.group_box_generation_settings.layout().addWidget(self.label_measure_effect_size, 4, 0)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 5, 0)
 
-        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 7, 0)
+        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 6, 0)
 
-        self.group_box_generation_settings.layout().addLayout(layout_settings_measures, 8, 0)
+        self.group_box_generation_settings.layout().addLayout(layout_settings_measures, 7, 0)
 
         # Table Settings
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))
@@ -282,7 +289,7 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Generation Settings
-        self.combo_box_ref_file.setCurrentText(settings['generation_settings']['ref_file'])
+        self.list_ref_files.load_items(settings['generation_settings']['ref_files'])
         self.combo_box_test_significance.setCurrentText(settings['generation_settings']['test_significance'])
         self.combo_box_measure_effect_size.setCurrentText(settings['generation_settings']['measure_effect_size'])
 
@@ -328,11 +335,7 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
     def generation_settings_changed(self):
         settings = self.main.settings_custom['keyword']['generation_settings']
 
-        if self.combo_box_ref_file.currentText() == self.tr('*** None ***'):
-            settings['ref_file'] = ''
-        else:
-            settings['ref_file'] = self.combo_box_ref_file.currentText()
-
+        settings['ref_files'] = self.list_ref_files.get_file_names()
         settings['test_significance'] = self.combo_box_test_significance.currentText()
         settings['measure_effect_size'] = self.combo_box_measure_effect_size.currentText()
 
@@ -341,7 +344,8 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
 
         self.combo_box_use_file.wl_files_changed()
 
-        self.combo_box_use_file.removeItem(self.combo_box_use_file.findText(settings['ref_file']))
+        for file_name in settings['ref_files']:
+            self.combo_box_use_file.removeItem(self.combo_box_use_file.findText(file_name))
 
         if self.combo_box_use_file.findText(use_file_old) > -1:
             self.combo_box_use_file.setCurrentText(use_file_old)
@@ -405,18 +409,40 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
             texts = []
 
             settings = self.main.settings_custom['keyword']
-            ref_file = self.main.wl_files.find_file_by_name(
-                settings['generation_settings']['ref_file'],
+
+            files_ref = self.main.wl_files.find_files_by_name(
+                settings['generation_settings']['ref_files'],
                 selected_only = True
             )
+            files_observed = [
+                file_observed
+                for file_observed in self.main.wl_files.get_selected_files()
+                if file_observed not in files_ref
+            ]
 
-            files = [file
-                     for file in self.main.wl_files.get_selected_files()
-                     if file != ref_file]
+            # Frequency (Reference files)
+            self.keywords_freq_files.append(collections.Counter())
+            tokens_ref = []
+            len_tokens_ref = 0
 
-            # Frequency
-            for i, file in enumerate([ref_file] + files):
-                text = copy.deepcopy(file['text'])
+            for file_ref in files_ref:
+                text = copy.deepcopy(file_ref['text'])
+                text = wl_token_processing.wl_process_tokens_keyword(
+                    self.main, text,
+                    token_settings = settings['token_settings']
+                )
+
+                # Remove empty tokens
+                tokens = [token for token in text.tokens_flat if token]
+
+                self.keywords_freq_files[0] += collections.Counter(tokens)
+
+                tokens_ref.extend(text.tokens_flat)
+                len_tokens_ref += len(tokens_ref)
+
+            # Frequency (Observed files)
+            for file_observed in files_observed:
+                text = copy.deepcopy(file_observed['text'])
                 text = wl_token_processing.wl_process_tokens_keyword(
                     self.main, text,
                     token_settings = settings['token_settings']
@@ -427,28 +453,21 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
 
                 self.keywords_freq_files.append(collections.Counter(tokens))
 
-                if i > 0:
-                    texts.append(text)
-                else:
-                    tokens_ref = text.tokens_flat.copy()
-                    len_tokens_ref = len(tokens_ref)
+                texts.append(text)
 
             # Total
-            if len(files) > 1:
+            if len(files_observed) > 1:
                 text_total = wl_text.Wl_Text_Blank()
                 text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
                 self.keywords_freq_files.append(sum(self.keywords_freq_files, collections.Counter()))
 
-                self.keywords_freq_files[0] = {token: freq
-                                               for token, freq in self.keywords_freq_files[0].items()
-                                               if token in text_total.tokens_flat}
-
                 texts.append(text_total)
-            else:
-                self.keywords_freq_files[0] = {token: freq
-                                               for token, freq in self.keywords_freq_files[0].items()
-                                               if token in self.keywords_freq_files[1]}
+
+            # Remove tokens that do not appear in any of the observed files
+            self.keywords_freq_files[0] = {token: freq
+                                           for token, freq in self.keywords_freq_files[0].items()
+                                           if token in self.keywords_freq_files[1]}
 
             # Keyness
             text_test_significance = settings['generation_settings']['test_significance']
@@ -523,7 +542,7 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
 
                 self.keywords_stats_files.append(keywords_stats_file)
 
-            if len(files) == 1:
+            if len(files_observed) == 1:
                 self.keywords_freq_files.append(self.keywords_freq_files[1])
                 self.keywords_stats_files *= 2
         except Exception as e:
@@ -576,36 +595,36 @@ def generate_table(main, table):
 
                 # Insert columns (files)
                 table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{ref_file["name"]}]\nFrequency'),
+                                 main.tr('[Reference Files]\nFrequency'),
                                  is_int = True, is_cumulative = True)
                 table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'[{ref_file["name"]}]\nFrequency %'),
+                                 main.tr('[Reference Files]\nFrequency %'),
                                  is_pct = True, is_cumulative = True)
 
-                for file in files:
+                for file_observed in files_observed:
                     table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\nFrequency'),
+                                     main.tr(f'[{file_observed["name"]}]\nFrequency'),
                                      is_int = True, is_cumulative = True, is_breakdown = True)
                     table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\nFrequency %'),
+                                     main.tr(f'[{file_observed["name"]}]\nFrequency %'),
                                      is_pct = True, is_cumulative = True, is_breakdown = True)
 
                     if text_test_stat:
                         table.insert_col(table.columnCount() - 2,
-                                         main.tr(f'[{file["name"]}]\n{text_test_stat}'),
+                                         main.tr(f'[{file_observed["name"]}]\n{text_test_stat}'),
                                          is_float = True, is_breakdown = True)
 
                     table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\n{text_p_value}'),
+                                     main.tr(f'[{file_observed["name"]}]\n{text_p_value}'),
                                      is_float = True, is_breakdown = True)
 
                     if text_bayes_factor:
                         table.insert_col(table.columnCount() - 2,
-                                         main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
+                                         main.tr(f'[{file_observed["name"]}]\n{text_bayes_factor}'),
                                          is_float = True, is_breakdown = True)
 
                     table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\n{text_effect_size}'),
+                                     main.tr(f'[{file_observed["name"]}]\n{text_effect_size}'),
                                      is_float = True, is_breakdown = True)
 
                 # Insert columns (total)
@@ -634,9 +653,9 @@ def generate_table(main, table):
                                  main.tr(f'Total\n{text_effect_size}'),
                                  is_float = True)
 
-                # Sort by p-value of the first file
+                # Sort by p-value of the first observed file
                 table.horizontalHeader().setSortIndicator(
-                    table.find_col(main.tr(f'[{files[0]["name"]}]\n{text_p_value}')),
+                    table.find_col(main.tr(f'[{files_observed[0]["name"]}]\n{text_p_value}')),
                     Qt.AscendingOrder
                 )
 
@@ -663,7 +682,7 @@ def generate_table(main, table):
                 col_files_found_pct = table.find_col(main.tr('Number of\nFiles Found %'))
 
                 freq_totals = numpy.array(list(keywords_freq_files.values())).sum(axis = 0)
-                len_files = len(files)
+                len_files_observed = len(files_observed)
 
                 table.setRowCount(len(keywords_freq_files))
 
@@ -700,7 +719,7 @@ def generate_table(main, table):
                     num_files_found = len([freq for freq in freq_files[1:-1] if freq])
 
                     table.set_item_num(i, col_files_found, num_files_found)
-                    table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
+                    table.set_item_num(i, col_files_found_pct, num_files_found, len_files_observed)
 
                 table.setSortingEnabled(True)
                 table.setUpdatesEnabled(True)
@@ -727,16 +746,17 @@ def generate_table(main, table):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading(main, files):
-        ref_file = main.wl_files.find_file_by_name(
-            settings['generation_settings']['ref_file'],
+        files_ref = main.wl_files.find_files_by_name(
+            settings['generation_settings']['ref_files'],
             selected_only = True
         )
+        files_observed = [
+            file_observed
+            for file_observed in main.wl_files.get_selected_files()
+            if file_observed not in files_ref
+        ]
 
-        files = [file
-                 for file in main.wl_files.get_selected_files()
-                 if file != ref_file]
-
-        if files:
+        if files_ref and files_observed:
             dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_keyword_table = Wl_Worker_Keyword_Table(
@@ -748,7 +768,10 @@ def generate_table(main, table):
             thread_keyword_table = wl_threading.Wl_Thread(worker_keyword_table)
             thread_keyword_table.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_observed_file(main)
+            if not files_ref:
+                wl_msg_box.wl_msg_box_missing_ref_files(main)
+            elif not files_observed:
+                wl_msg_box.wl_msg_box_missing_observed_files(main)
 
             wl_msg.wl_msg_generate_table_error(main)
     else:
@@ -768,9 +791,9 @@ def generate_fig(main):
                 text_effect_size =  main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
 
                 if settings['fig_settings']['use_data'] == main.tr('Frequency'):
-                    wl_fig_freq.wl_fig_freq_ref(
+                    wl_fig_freq.wl_fig_freq_keyword(
                         main, keywords_freq_files,
-                        ref_file = ref_file,
+                        files_ref = files_ref,
                         settings = settings['fig_settings'],
                         label_x = main.tr('Keyword')
                     )
@@ -804,9 +827,9 @@ def generate_fig(main):
 
                         label_y = text_effect_size
 
-                    wl_fig_stat.wl_fig_stat_ref(
+                    wl_fig_stat.wl_fig_stat_keyword(
                         main, keywords_stat_files,
-                        ref_file = ref_file,
+                        files_ref = files_ref,
                         settings = settings['fig_settings'],
                         label_y = label_y
                     )
@@ -830,16 +853,17 @@ def generate_fig(main):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading(main, files):
-        ref_file = main.wl_files.find_file_by_name(
-            settings['generation_settings']['ref_file'],
+        files_ref = main.wl_files.find_files_by_name(
+            settings['generation_settings']['ref_files'],
             selected_only = True
         )
+        files_observed = [
+            file_observed
+            for file_observed in main.wl_files.get_selected_files()
+            if file_observed not in files_ref
+        ]
 
-        files = [file
-                 for file in main.wl_files.get_selected_files()
-                 if file != ref_file]
-
-        if files:
+        if files_ref and files_observed:
             dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_keyword_fig = Wl_Worker_Keyword_Fig(
@@ -851,7 +875,10 @@ def generate_fig(main):
             thread_keyword_fig = wl_threading.Wl_Thread(worker_keyword_fig)
             thread_keyword_fig.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_observed_file(main)
+            if not files_ref:
+                wl_msg_box.wl_msg_box_missing_ref_files(main)
+            elif not files_observed:
+                wl_msg_box.wl_msg_box_missing_observed_files(main)
 
             wl_msg.wl_msg_generate_fig_error(main)
     else:
