@@ -2248,65 +2248,65 @@ def init_settings_global(main):
         },
 
         'measures_dispersion': {
-            main.tr('Juilland’s D'): {
-                'col': main.tr('Juilland’s D'),
+            main.tr("Juilland's D"): {
+                'col': main.tr("Juilland's D"),
                 'func': wl_measures_dispersion.juillands_d
             },
 
-            main.tr('Carroll’s D₂'): {
-                'col': main.tr('Carroll’s D₂'),
+            main.tr("Carroll's D₂"): {
+                'col': main.tr("Carroll's D₂"),
                 'func': wl_measures_dispersion.carrolls_d2
             },
 
-            main.tr('Lyne’s D₃'): {
-                'col': main.tr('Lyne’s D₃'),
+            main.tr("Lyne's D₃"): {
+                'col': main.tr("Lyne's D₃"),
                 'func': wl_measures_dispersion.lynes_d3
             },
 
-            main.tr('Rosengren’s S'): {
-                'col': main.tr('Rosengren’s S'),
+            main.tr("Rosengren's S"): {
+                'col': main.tr("Rosengren's S"),
                 'func': wl_measures_dispersion.rosengrens_s
             },
 
-            main.tr('Zhang’s Distributional Consistency'): {
-                'col': main.tr('Zhang’s DC'),
+            main.tr("Zhang's Distributional Consistency"): {
+                'col': main.tr("Zhang's DC"),
                 'func': wl_measures_dispersion.zhangs_distributional_consistency
             },
 
-            main.tr('Gries’s DP'): {
-                'col': main.tr('Gries’s DP'),
+            main.tr("Gries's DP"): {
+                'col': main.tr("Gries's DP"),
                 'func': wl_measures_dispersion.griess_dp
             },
 
-            main.tr('Gries’s DPnorm'): {
-                'col': main.tr('Gries’s DPnorm'),
+            main.tr("Gries's DPnorm"): {
+                'col': main.tr("Gries's DPnorm"),
                 'func': wl_measures_dispersion.griess_dp_norm
             }
         },
 
         'measures_adjusted_freq': {
-            main.tr('Juilland’s U'): {
-                'col': main.tr('Juilland’s U'),
+            main.tr("Juilland's U"): {
+                'col': main.tr("Juilland's U"),
                 'func': wl_measures_adjusted_freq.juillands_u
             },
 
-            main.tr('Carroll’s Um'): {
-                'col': main.tr('Carroll’s Um'),
+            main.tr("Carroll's Um"): {
+                'col': main.tr("Carroll's Um"),
                 'func': wl_measures_adjusted_freq.carrolls_um
             },
 
-            main.tr('Rosengren’s KF'): {
-                'col': main.tr('Rosengren’s KF'),
+            main.tr("Rosengren's KF"): {
+                'col': main.tr("Rosengren's KF"),
                 'func': wl_measures_adjusted_freq.rosengrens_kf
             },
 
-            main.tr('Engwall’s FM'): {
-                'col': main.tr('Engwall’s FM'),
+            main.tr("Engwall's FM"): {
+                'col': main.tr("Engwall's FM"),
                 'func': wl_measures_adjusted_freq.engwalls_fm
             },
 
-            main.tr('Kromer’s UR'): {
-                'col': main.tr('Kromer’s UR'),
+            main.tr("Kromer's UR"): {
+                'col': main.tr("Kromer's UR"),
                 'func': wl_measures_adjusted_freq.kromers_ur
             }
         },
@@ -2323,9 +2323,9 @@ def init_settings_global(main):
                     'func': wl_measures_statistical_significance.z_score
                 },
 
-                main.tr('Berry-Rogghe’s z-score'): {
+                main.tr("Berry-Rogghe's z-score"): {
                     'cols': [
-                        main.tr('Berry-Rogghe’s z-score'),
+                        main.tr("Berry-Rogghe's z-score"),
                         main.tr('p-value'),
                         None
                     ],
@@ -2333,7 +2333,7 @@ def init_settings_global(main):
                     'func': wl_measures_statistical_significance.berry_rogghes_z_score
                 },
 
-                main.tr('Student’s t-test (One-sample)'): {
+                main.tr("Student's t-test (One-sample)"): {
                     'cols': [
                         main.tr('t-statistic'),
                         main.tr('p-value'),
@@ -2343,7 +2343,7 @@ def init_settings_global(main):
                     'func': wl_measures_statistical_significance.students_t_test_1_sample
                 },
 
-                main.tr('Pearson’s Chi-squared Test'): {
+                main.tr("Pearson's Chi-squared Test"): {
                     'cols': [
                         main.tr('χ2'),
                         main.tr('p-value'),
@@ -2363,7 +2363,7 @@ def init_settings_global(main):
                     'func': wl_measures_statistical_significance.log_likehood_ratio_test
                 },
 
-                main.tr('Fisher’s Exact Test'): {
+                main.tr("Fisher's Exact Test"): {
                     'cols': [
                         None,
                         main.tr('p-value'),
@@ -2375,7 +2375,7 @@ def init_settings_global(main):
             },
 
             'keyword': {
-                main.tr('Student’s t-test (Two-sample)'): {
+                main.tr("Student's t-test (Two-sample)"): {
                     'cols': [
                         main.tr('t-statistic'),
                         main.tr('p-value'),
@@ -2385,7 +2385,7 @@ def init_settings_global(main):
                     'func': wl_measures_statistical_significance.students_t_test_2_sample
                 },
 
-                main.tr('Pearson’s Chi-squared Test'): {
+                main.tr("Pearson's Chi-squared Test"): {
                     'cols': [
                         main.tr('χ2'),
                         main.tr('p-value'),
@@ -2396,7 +2396,7 @@ def init_settings_global(main):
                 },
 
 
-                main.tr('Fisher’s Exact Test'): {
+                main.tr("Fisher's Exact Test"): {
                     'cols': [
                         None,
                         main.tr('p-value'),
