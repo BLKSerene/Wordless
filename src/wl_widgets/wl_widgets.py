@@ -453,33 +453,14 @@ def wl_widgets_fig_settings(parent, collocation = False):
                 checkbox_use_pct.setEnabled(False)
                 checkbox_use_cumulative.setEnabled(False)
 
-    def wl_files_changed():
-        if combo_box_use_file.count() == 1:
-            use_file_old = ''
-        else:
-            use_file_old = combo_box_use_file.currentText()
-
-        combo_box_use_file.clear()
-
-        for file in main.wl_files.get_selected_files():
-            combo_box_use_file.addItem(file['name'])
-
-        combo_box_use_file.addItem(parent.tr('Total'))
-
-        if use_file_old and combo_box_use_file.findText(use_file_old) > -1:
-            combo_box_use_file.setCurrentText(use_file_old)
-
     main = wl_misc.find_wl_main(parent)
 
     label_graph_type = QLabel(parent.tr('Graph Type:'), parent)
     combo_box_graph_type = wl_box.Wl_Combo_Box(parent)
     label_use_file = QLabel(parent.tr('Use File:'), parent)
-    combo_box_use_file = wl_box.Wl_Combo_Box(parent)
+    combo_box_use_file = wl_box.Wl_Combo_Box_File_Figure_Settings(parent)
     label_use_data = QLabel(parent.tr('Use Data:'), parent)
     combo_box_use_data = wl_box.Wl_Combo_Box(parent)
-
-    # Clip long file names
-    combo_box_use_file.setSizeAdjustPolicy(QComboBox.AdjustToMinimumContentsLengthWithIcon)
 
     checkbox_use_pct = QCheckBox(parent.tr('Use percentage data'), parent)
     checkbox_use_cumulative = QCheckBox(parent.tr('Use cumulative data'), parent)
@@ -494,13 +475,8 @@ def wl_widgets_fig_settings(parent, collocation = False):
     combo_box_graph_type.currentTextChanged.connect(graph_type_changed)
     combo_box_use_data.currentTextChanged.connect(use_data_changed)
 
-    main.wl_files.table.itemChanged.connect(wl_files_changed)
-
-    combo_box_use_file.wl_files_changed = wl_files_changed
-
     graph_type_changed()
     use_data_changed()
-    wl_files_changed()
 
     return (
         label_graph_type, combo_box_graph_type,
