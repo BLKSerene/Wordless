@@ -15,104 +15,17 @@ import re
 from wl_dialogs import wl_dialog_error, wl_msg_box
 from wl_utils import wl_detection, wl_misc
 
-def check_file_paths_missing(main, file_paths):
-    file_paths_pass = []
-    file_paths_missing = []
-
-    if file_paths:
-        for file_path in file_paths:
-            file_path = wl_misc.get_normalized_path(file_path)
-
-            if os.path.exists(file_path):
-                file_paths_pass.append(file_path)
-            else:
-                file_paths_missing.append(file_path)
-
-    return file_paths_pass, file_paths_missing
-
-def check_file_paths_empty(main, file_paths):
-    file_paths_pass = []
-    file_paths_empty = []
-
-    if file_paths:
-        for file_path in file_paths:
-            file_path = wl_misc.get_normalized_path(file_path)
-
-            # Text files
-            if os.path.splitext(file_path)[1] in [
-                '.txt',
-                '.csv',
-                '.htm',
-                '.html',
-                '.xml',
-                '.tmx'
-            ]:
-                if main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
-                    encoding = wl_detection.detect_encoding(main, file_path)
-                else:
-                    encoding = main.settings_custom['files']['default_settings']['encoding']
-
-                try:
-                    with open(file_path, 'r', encoding = encoding) as f:
-                        empty_file = True
-
-                        for line in f:
-                            if line.strip():
-                                empty_file = False
-
-                                break
-
-                        if empty_file:
-                            file_paths_empty.append(file_path)
-                        else:
-                            file_paths_pass.append(file_path)
-                except:
-                    file_paths_pass.append(file_path)
-            # Other file types
-            else:
-                if os.stat(file_path).st_size:
-                    file_paths_pass.append(file_path)
-                else:
-                    file_paths_empty.append(file_path)
-
-    return file_paths_pass, file_paths_empty
-
-def check_files_empty(main, files):
-    files_pass = []
-    files_empty = []
-
-    if files:
-        for file in files:
-            file_path = wl_misc.get_normalized_path(file['path'])
-
-            try:
-                with open(file_path, 'r', encoding = file['encoding']) as f:
-                    empty_file = True
-
-                    for line in f:
-                        if line.strip():
-                            empty_file = False
-
-                            break
-
-                    if empty_file:
-                        files_empty.append(file)
-                    else:
-                        files_pass.append(file)
-            except:
-                files_pass.append(file)
-
-    return files_pass, files_empty
-
 def check_file_paths_unsupported(main, file_paths):
     file_paths_pass = []
     file_paths_unsupported = []
 
-    file_exts = [ext
-                 for file_type in main.settings_global['file_types']['files']
-                 for ext in re.findall(r'(?<=\*)\.[a-z]+', file_type)]
-
     if file_paths:
+        file_exts = [
+            ext
+            for file_type in main.settings_global['file_types']['files']
+            for ext in re.findall(r'(?<=\*)\.[a-z]+', file_type)
+        ]
+
         for file_path in file_paths:
             file_path = wl_misc.get_normalized_path(file_path)
 
@@ -123,67 +36,50 @@ def check_file_paths_unsupported(main, file_paths):
 
     return file_paths_pass, file_paths_unsupported
 
-def check_file_paths_parsing_error(main, file_paths):
+def check_file_paths_empty(main, file_paths):
     file_paths_pass = []
-    file_paths_parsing_error = []
+    file_paths_empty = []
 
     if file_paths:
-        for file_path in file_paths:
+        for i, file_path in enumerate(file_paths):
             file_path = wl_misc.get_normalized_path(file_path)
 
-            if os.path.splitext(file_path)[1] in [
-                '.txt',
-                '.csv',
-                '.htm',
-                '.html',
-                '.xml',
-                '.tmx'
-            ]:
+            if os.stat(file_path).st_size:
+                file_paths_pass.append(file_path)
+            else:
+                file_paths_empty.append(file_path)
 
-                if main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
-                    encoding = wl_detection.detect_encoding(main, file_path)
-                else:
-                    encoding = main.settings_custom['files']['default_settings']['encoding']
+    return file_paths_pass, file_paths_empty
 
-                try:
-                    text = ''
+def check_file_paths_duplicate(main, file_paths):
+    file_paths_pass = []
+    file_paths_duplicate = []
 
-                    with open(file_path, 'r', encoding = encoding) as f:
-                        for line in f:
-                            text += line
-                except Exception as e:
-                    print(f'Parsing Error: {e}')
+    if file_paths:
+        file_paths_original = [file['path_original'] for file in main.settings_custom['file_area']['files_open']]
 
-                    file_paths_parsing_error.append(file_path)
-                else:
-                    file_paths_pass.append(file_path)
+        for file_path in file_paths:
+            if file_path in file_paths_original:
+                file_paths_duplicate.append(file_path)
             else:
                 file_paths_pass.append(file_path)
 
-    return file_paths_pass, file_paths_parsing_error
+    return file_paths_pass, file_paths_duplicate
 
-def check_files_parsing_error(main, files):
-    files_pass = []
-    files_parsing_error = []
+def check_file_path_decodable(main, file_path, encoding):
+    try:
+        with open(file_path, 'r', encoding = encoding) as f:
+            text = f.read()
+    # Fall back to UTF-8 if fail
+    except:
+        print(f'Warning: Fall back to UTF-8 for file "{file_path}"')
 
-    if files:
-        for file in files:
-            file_path = wl_misc.get_normalized_path(file['path'])
-            
-            try:
-                text = ''
+        encoding = 'utf_8'
 
-                with open(file_path, 'r', encoding = file['encoding']) as f:
-                    for line in f:
-                        text += line
-            except Exception as e:
-                print(f'Parsing Error: {e}')
+        with open(file_path, 'r', encoding = encoding, errors = 'replace') as f:
+            text = f.read()
 
-                files_parsing_error.append(file)
-            else:
-                files_pass.append(file)
-
-    return files_pass, files_parsing_error
+    return encoding, text
 
 def check_files_on_loading(main, files):
     loading_pass = True
