@@ -138,32 +138,6 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
                             new_paths = [new_path]
 
-                        # Translation memory files
-                        elif file_ext == '.tmx':
-                            lines_src = []
-                            lines_target = []
-
-                            soup = bs4.BeautifulSoup(text, 'lxml-xml')
-
-                            for tu in soup.find_all('tu'):
-                                seg_src, seg_target = tu.find_all('seg')
-
-                                lines_src.append(seg_src.get_text())
-                                lines_target.append(seg_target.get_text())
-
-                            path_src = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
-                            path_target = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
-
-                            with open(path_src, 'w', encoding = default_encoding) as f:
-                                f.write('\n'.join(lines_src))
-                                f.write('\n')
-
-                            with open(path_target, 'w', encoding = default_encoding) as f:
-                                f.write('\n'.join(lines_target))
-                                f.write('\n')
-
-                            new_paths = [path_src, path_target]
-
                     for new_path in new_paths:
                         new_files.append(self.main.wl_files._new_file(new_path, txt = False, encoding = encoding))
 
