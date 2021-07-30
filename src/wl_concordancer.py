@@ -1113,9 +1113,9 @@ def generate_table(main, table):
 
                 wl_msg.wl_msg_generate_table_error(main)
         else:
-            wl_dialog_error.wl_dialog_error_processing_texts(main, error_msg)
+            wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
 
-            wl_msg.wl_msg_processing_texts_error(main)
+            wl_msg.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['concordancer']
     files = main.wl_files.get_selected_files()
@@ -1188,9 +1188,9 @@ def generate_fig(main):
 
                 wl_msg.wl_msg_generate_fig_error(main)
         else:
-            wl_dialog_error.wl_dialog_error_processing_texts(main, error_msg)
+            wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
 
-            wl_msg.wl_msg_processing_texts_error(main)
+            wl_msg.wl_msg_fatal_error(main)
 
         dialog_progress.accept()
 

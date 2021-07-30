@@ -81,6 +81,6 @@ def detect_lang(main, file):
 
         lang = wl_conversion.to_iso_639_3(main, lang_code_639_1)
     except:
-        lang = main.settings_custom['files']['default_settings']['default_lang']
+        lang = main.settings_custom['files']['default_settings']['lang']
 
     return lang

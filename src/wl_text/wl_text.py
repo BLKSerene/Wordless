@@ -164,7 +164,7 @@ class Wl_Text():
                     tags_word.append(opening_tag[1:-1])
 
 
-            for para in div.select(','.join(tags_para)):
+            for para in soup.select(','.join(tags_para)):
                 self.tokens_multilevel.append([])
 
                 for sentence in para.select(','.join(tags_sentence)):

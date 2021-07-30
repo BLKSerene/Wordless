@@ -107,8 +107,6 @@ class Wl_List(QListWidget):
         self.itemChanged.emit(self.item(0))
 
     def import_list(self, settings):
-        files = []
-
         if os.path.exists(self.main.settings_custom['import'][settings]['default_path']):
             default_dir = self.main.settings_custom['import'][settings]['default_path']
         else:
@@ -122,30 +120,15 @@ class Wl_List(QListWidget):
         )[0]
 
         if file_paths:
+            # Modify default path
             self.main.settings_custom['import'][settings]['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
-            # Detect encodings
-            if self.main.settings_custom['import'][settings]['detect_encodings']:
-                for file_path in file_paths:
-                    files.append({
-                        'path': wl_misc.get_normalized_path(file_path),
-                        'encoding': wl_detection.detect_encoding(self.main, file_path)
-                    })
-            else:
-                for file_path in file_paths:
-                    files.append({
-                        'path': wl_misc.get_normalized_path(file_path),
-                        'encoding': self.main.settings_custom['files']['default_settings']['encoding']
-                    })
+            file_paths, file_paths_empty = wl_checking_file.check_file_paths_empty(self.main, file_paths)
 
-            files_pass, files_empty = wl_checking_file.check_files_empty(self.main, files)
-            files_pass, files_parsing_error = wl_checking_file.check_files_parsing_error(self.main, files_pass)
-
-            if files_empty or files_parsing_error:
+            if file_paths_empty:
                 wl_dialog_error.wl_dialog_error_import(
                     self.main,
-                    files_empty = files_empty,
-                    files_parsing_error = files_parsing_error
+                    file_paths_empty = file_paths_empty
                 )
 
                 wl_msg.wl_msg_import_list_error(self.main)
@@ -156,13 +139,21 @@ class Wl_List(QListWidget):
 
                 num_prev = len(items_cur)
 
-                for file in files_pass:
-                    with open(file['path'], 'r', encoding = file['encoding']) as f:
-                        for line in f:
-                            line = line.strip()
+                for file_path in file_paths:
+                    # Detect encodings
+                    if self.main.settings_custom['import'][settings]['detect_encodings']:
+                        encoding = wl_detection.detect_encoding(self.main, file_path)
+                    else:
+                        encoding = self.main.settings_custom['files']['default_settings']['encoding']
 
-                            if line not in items_cur:
-                                items_to_import.append(line)
+                    # Try decoding
+                    encoding, text = wl_checking_file.check_file_path_decodable(self.main, file_path, encoding)
+
+                    for line in text.split('\n'):
+                        line = line.strip()
+
+                        if line not in items_cur:
+                            items_to_import.append(line)
 
                 self.load_items(collections.OrderedDict.fromkeys(items_to_import))
                 self.itemChanged.emit(self.item(0))
@@ -188,6 +179,7 @@ class Wl_List(QListWidget):
 
             wl_msg_box.wl_msg_box_export_list(self.main, file_path)
 
+            # Modify default path
             self.main.settings_custom['export'][settings]['default_path'] = os.path.normpath(os.path.dirname(file_path))
 
     def load_items(self, texts):

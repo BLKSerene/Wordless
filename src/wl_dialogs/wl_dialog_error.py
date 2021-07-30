@@ -30,12 +30,35 @@ class Wl_Dialog_Error(wl_dialog.Wl_Dialog_Error):
         self.wrapper_buttons.layout().addWidget(self.button_export, 0, 0, Qt.AlignLeft)
         self.wrapper_buttons.layout().addWidget(self.button_ok, 0, 1, Qt.AlignRight)
 
+class Wl_Dialog_Error_Fatal(Wl_Dialog_Error):
+    def __init__(self, main, error_msg):
+        super().__init__(main, main.tr('Fatal Error'))
+
+        self.label_error_msg = wl_label.Wl_Label_Dialog(
+            self.tr(f'''
+                <div>A fatal error has occurred, please <b>contact the author for support</b> by emailing to {self.main.email_html}!</div>
+            '''),
+            self
+        )
+        self.text_edit_error_msg = QTextEdit(error_msg, self)
+
+        self.text_edit_error_msg.setReadOnly(True)
+
+        self.wrapper_info.layout().addWidget(self.label_error_msg, 0, 0)
+        self.wrapper_info.layout().addWidget(self.text_edit_error_msg, 1, 0)
+
+        self.button_export.hide()
+
+def wl_dialog_error_fatal(main, error_msg):
+    dialog_error_fatal = Wl_Dialog_Error_Fatal(main, error_msg)
+
+    dialog_error_fatal.open()
+
 class Wl_Dialog_Error_File_Open(Wl_Dialog_Error):
     def __init__(self, main,
-                 file_paths_missing,
                  file_paths_empty,
                  file_paths_unsupported,
-                 file_paths_parsing_error):
+                 file_paths_duplicate):
         super().__init__(main, main.tr('Error Opening Files'))
 
         self.label_error = wl_label.Wl_Label_Dialog(
@@ -60,47 +83,61 @@ class Wl_Dialog_Error_File_Open(Wl_Dialog_Error):
 
         self.button_export.clicked.connect(self.table_error_files.export_all)
 
-        for file in file_paths_missing:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
+        len_file_paths_empty = len(file_paths_empty)
+        len_file_paths_unsupported = len(file_paths_unsupported)
+        len_file_paths_duplicate = len(file_paths_duplicate)
 
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Missing File')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
+        self.table_error_files.setRowCount(self.table_error_files.rowCount() + len_file_paths_empty)
 
-        for file in file_paths_empty:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
+        for i, file_path in enumerate(file_paths_empty):
+            self.table_error_files.setItem(
+                self.table_error_files.rowCount() - len_file_paths_empty + i, 0,
+                QTableWidgetItem(self.tr('Empty File'))
+            )
+            self.table_error_files.setItem(
+                self.table_error_files.rowCount() - 1 - len_file_paths_empty + i, 1,
+                QTableWidgetItem(file_path)
+            )
 
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Empty File')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
+        self.table_error_files.setRowCount(self.table_error_files.rowCount() + len_file_paths_unsupported)
 
-        for file in file_paths_unsupported:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
+        for i, file_path in enumerate(file_paths_unsupported):
+            self.table_error_files.setItem(
+                self.table_error_files.rowCount() - len_file_paths_unsupported + i, 0,
+                QTableWidgetItem(self.tr('Unsupported File Type'))
+            )
+            self.table_error_files.setItem(
+                self.table_error_files.rowCount() - len_file_paths_unsupported + i, 1,
+                QTableWidgetItem(file_path)
+            )
 
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Unsupported File Type')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
+        self.table_error_files.setRowCount(self.table_error_files.rowCount() + len_file_paths_duplicate)
 
-        for file in file_paths_parsing_error:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
-
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Parsing Error')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file))
+        for i, file_path in enumerate(file_paths_duplicate):
+            self.table_error_files.setItem(
+                self.table_error_files.rowCount() - len_file_paths_duplicate + i, 0,
+                QTableWidgetItem(self.tr('Duplicate File'))
+            )
+            self.table_error_files.setItem(
+                self.table_error_files.rowCount() - len_file_paths_duplicate + i, 1,
+                QTableWidgetItem(file_path)
+            )
 
         self.wrapper_info.layout().addWidget(self.label_error, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_error_files, 1, 0)
 
 def wl_dialog_error_file_open(
     main,
-    file_paths_missing,
     file_paths_empty,
     file_paths_unsupported,
-    file_paths_parsing_error
+    file_paths_duplicate
 ):
-    if file_paths_missing or file_paths_empty or file_paths_unsupported or file_paths_parsing_error:
+    if file_paths_empty or file_paths_unsupported or file_paths_duplicate:
         dialog_error_file_open = Wl_Dialog_Error_File_Open(
             main,
-            file_paths_missing,
             file_paths_empty,
             file_paths_unsupported,
-            file_paths_parsing_error
+            file_paths_duplicate
         )
 
         dialog_error_file_open.open()
@@ -151,9 +188,7 @@ def wl_dialog_error_file_load_colligation(main, files_pos_tagging_unsupported):
         dialog_error_file_load_colligation.open()
 
 class Wl_Dialog_Error_Import(Wl_Dialog_Error):
-    def __init__(self, main,
-                 files_empty,
-                 files_parsing_error):
+    def __init__(self, main, file_paths_empty):
         super().__init__(main, main.tr('Import Error'))
 
         self.label_error = wl_label.Wl_Label_Dialog(
@@ -178,53 +213,25 @@ class Wl_Dialog_Error_Import(Wl_Dialog_Error):
 
         self.button_export.clicked.connect(self.table_error_files.export_all)
 
-        for file in files_empty:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
+        len_file_paths_empty = len(file_paths_empty)
 
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Empty File')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file['path']))
+        self.table_error_files.setRowCount(self.table_error_files.rowCount() + len_file_paths_empty)
 
-        for file in files_parsing_error:
-            self.table_error_files.setRowCount(self.table_error_files.rowCount() + 1)
-
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 0, QTableWidgetItem(self.tr('Parsing Error')))
-            self.table_error_files.setItem(self.table_error_files.rowCount() - 1, 1, QTableWidgetItem(file['path']))
+        for i, file_path in enumerate(file_paths_empty):
+            self.table_error_files.setItem(
+                self.table_error_files.rowCount() - len_file_paths_empty + i, 0,
+                QTableWidgetItem(self.tr('Empty File'))
+            )
+            self.table_error_files.setItem(
+                self.table_error_files.rowCount() - len_file_paths_empty + i, 1,
+                QTableWidgetItem(file_path)
+            )
 
         self.wrapper_info.layout().addWidget(self.label_error, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_error_files, 1, 0)
 
-def wl_dialog_error_import(main,
-                           files_empty,
-                           files_parsing_error):
-    if files_empty or files_parsing_error:
-        dialog_error_import = Wl_Dialog_Error_Import(
-            main,
-            files_empty,
-            files_parsing_error
-        )
+def wl_dialog_error_import(main, file_paths_empty):
+    if file_paths_empty:
+        dialog_error_import = Wl_Dialog_Error_Import(main, file_paths_empty)
 
         dialog_error_import.open()
-
-class Wl_Dialog_Error_Processing_Texts(Wl_Dialog_Error):
-    def __init__(self, main, error_msg):
-        super().__init__(main, main.tr('Error Processing Texts'))
-
-        self.label_error_msg = wl_label.Wl_Label_Dialog(
-            self.tr(f'''
-                <div>An error occurred while processing the texts, please check your files or <b>contact the author for support</b> by emailing to {self.main.email_html}.</div>
-            '''),
-            self
-        )
-        self.text_edit_error_msg = QTextEdit(error_msg, self)
-
-        self.text_edit_error_msg.setReadOnly(True)
-
-        self.wrapper_info.layout().addWidget(self.label_error_msg, 0, 0)
-        self.wrapper_info.layout().addWidget(self.text_edit_error_msg, 1, 0)
-
-        self.button_export.hide()
-
-def wl_dialog_error_processing_texts(main, error_msg):
-    dialog_error_processing_texts = Wl_Dialog_Error_Processing_Texts(main, error_msg)
-
-    dialog_error_processing_texts.open()
