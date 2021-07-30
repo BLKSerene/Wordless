@@ -36,12 +36,13 @@ from wl_utils import wl_conversion, wl_detection, wl_misc, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_table
 
 class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(list)
+    worker_done = pyqtSignal(str, list)
 
     def run(self):
+        error_msg = ''
         new_files = []
 
-        if self.file_paths:
+        try:
             len_file_paths = len(self.file_paths)
 
             for i, file_path in enumerate(self.file_paths):
@@ -58,7 +59,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                 if file_ext == '.txt':
                     new_files.append(self.main.wl_files._new_file(file_path))
                 else:
-                    if file_ext in ['.docx', '.xlsx', '.xls']:
+                    if file_ext in ['.docx', '.xlsx']:
                         new_path = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
 
                         # Word documents
@@ -96,17 +97,21 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                     else:
                         # Detect encoding
                         if self.main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
-                            encoding_code = wl_detection.detect_encoding(self.main, file_path)
+                            encoding = wl_detection.detect_encoding(self.main, file_path)
                         else:
-                            encoding_code = self.main.settings_custom['auto_detection']['default_settings']['default_encoding']
+                            encoding = self.main.settings_custom['files']['default_settings']['encoding']
+
+                        # Try decoding
+                        encoding, text = wl_checking_file.check_file_path_decodable(self.main, file_path, encoding)
 
                         # CSV files
                         if file_ext == '.csv':
                             new_path = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
 
                             with open(new_path, 'w', encoding = default_encoding) as f:
-                                with open(file_path, 'r', newline = '', encoding = encoding_code) as f_csv:
-                                    csv_reader = csv.reader(f_csv)
+                                with open(file_path, 'r', newline = '', encoding = encoding, errors = 'replace') as f_csv:
+                                    # Remove NULL bytes to avoid error
+                                    csv_reader = csv.reader([line.replace('\0', '') for line in f_csv])
 
                                     for row in csv_reader:
                                         f.write('\t'.join(row) + '\n')
@@ -115,8 +120,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
                         # HTML files
                         elif file_ext in ['.htm', '.html']:
-                            with open(file_path, 'r', encoding = encoding_code) as f:
-                                soup = bs4.BeautifulSoup(f.read(), 'lxml')
+                            soup = bs4.BeautifulSoup(text, 'lxml')
 
                             new_path = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
 
@@ -127,13 +131,10 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
                         # XML files
                         elif file_ext == '.xml':
-                            with open(file_path, 'r', encoding = encoding_code) as f:
-                                xml_text = f.read()
-
                             new_path = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.xml'))
 
                             with open(new_path, 'w', encoding = default_encoding) as f:
-                                f.write(xml_text)
+                                f.write(text)
 
                             new_paths = [new_path]
 
@@ -142,14 +143,13 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                             lines_src = []
                             lines_target = []
 
-                            with open(file_path, 'r', encoding = encoding_code) as f:
-                                soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
+                            soup = bs4.BeautifulSoup(text, 'lxml-xml')
 
-                                for tu in soup.find_all('tu'):
-                                    seg_src, seg_target = tu.find_all('seg')
+                            for tu in soup.find_all('tu'):
+                                seg_src, seg_target = tu.find_all('seg')
 
-                                    lines_src.append(seg_src.get_text())
-                                    lines_target.append(seg_target.get_text())
+                                lines_src.append(seg_src.get_text())
+                                lines_target.append(seg_target.get_text())
 
                             path_src = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
                             path_target = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
@@ -165,15 +165,22 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                             new_paths = [path_src, path_target]
 
                     for new_path in new_paths:
-                        new_files.append(self.main.wl_files._new_file(new_path, txt = False))
+                        new_files.append(self.main.wl_files._new_file(new_path, txt = False, encoding = encoding))
+
+                # Record original paths
+                for new_file in new_files:
+                    new_file['path_original'] = file_path
 
             self.main.settings_custom['import']['files']['default_path'] = wl_misc.get_normalized_dir(self.file_paths[0])
+        except Exception as e:
+            self.error_msg = repr(e)
+            print(repr(e))
 
         self.progress_updated.emit(self.tr('Updating table...'))
 
         time.sleep(0.1)
 
-        self.worker_done.emit(new_files)
+        self.worker_done.emit(error_msg, new_files)
 
     # python-docx/Issue #276: https://github.com/python-openxml/python-docx/issues/276
     def iter_block_items(self, parent):
@@ -251,7 +258,7 @@ class Wl_Files(QObject):
         self.main = table.main
         self.table = table
 
-    def _new_file(self, file_path, txt = True):
+    def _new_file(self, file_path, txt = True, encoding = ''):
         new_file = {}
 
         detect_pass_encoding = True
@@ -272,10 +279,14 @@ class Wl_Files(QObject):
         new_file['name_old'] = new_file['name']
 
         # Detect encodings
-        if self.main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
-            new_file['encoding'] = wl_detection.detect_encoding(self.main, new_file['path'])
+        if not encoding:
+            if self.main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
+                new_file['encoding'] = wl_detection.detect_encoding(self.main, new_file['path'])
+            else:
+                new_file['encoding'] = self.main.settings_custom['files']['default_settings']['encoding']
+        # Use explicit encoding for non-text files
         else:
-            new_file['encoding'] = self.main.settings_custom['files']['default_settings']['encoding']
+            new_file['encoding'] = encoding
 
         # Detect languages
         if self.main.settings_custom['file_area']['auto_detection_settings']['detect_langs']:
@@ -289,27 +300,25 @@ class Wl_Files(QObject):
             new_file['path'] = os.path.join(default_dir, re.split(r'[/\\]', file_path)[-1])
             new_file['path'] = wl_checking_misc.check_new_path(new_file['path'])
 
+        # Try decoding text files
+        new_file['encoding'], text = wl_checking_file.check_file_path_decodable(self.main, file_path, new_file['encoding'])
+
         # Remove header tags
         tags_header = []
 
         for _, _, tag_opening, _ in self.main.settings_custom['tags']['tags_header']:
             tags_header.append(tag_opening[1:-1])
 
-        text = ''
+        if tags_header:
+            # The "lxml" parser will add <html><body> to the text, which is undesirable
+            with open(new_file['path'], 'w', encoding = new_file['encoding']) as f:
+                soup = bs4.BeautifulSoup(text, features = 'html.parser')
 
-        with open(file_path, 'r', encoding = new_file['encoding']) as f:
-            for line in f:
-                text += line
+                for tag_header in tags_header:
+                    for header_element in soup.select(tag_header):
+                        header_element.decompose()
 
-        # The "lxml" parser will add <html><body> to the text, which is undesirable
-        with open(new_file['path'], 'w', encoding = 'utf_8') as f:
-            soup = bs4.BeautifulSoup(text, features = 'html.parser')
-
-            for tag_header in tags_header:
-                for header_element in soup.select(tag_header):
-                    header_element.decompose()
-
-            f.write(str(soup))
+                f.write(str(soup))
 
         # Check for duplicate file names
         file_names = [file['name'] for file in self.main.settings_custom['file_area']['files_open']]
@@ -324,28 +333,33 @@ class Wl_Files(QObject):
 
     @wl_misc.log_timing
     def open_files(self, file_paths):
-        def update_gui(new_files):
-            len_files_old = len(self.main.settings_custom['file_area']['files_open'])
+        def update_gui(error_msg, new_files):
+            if not error_msg:
+                len_files_old = len(self.main.settings_custom['file_area']['files_open'])
 
-            self.main.settings_custom['file_area']['files_open'].extend(new_files)
+                self.main.settings_custom['file_area']['files_open'].extend(new_files)
 
-            self.update_table()
+                self.update_table()
 
-            len_files_new = len(self.main.settings_custom['file_area']['files_open'])
+                len_files_new = len(self.main.settings_custom['file_area']['files_open'])
 
-            if len_files_new - len_files_old == 0:
-                self.main.statusBar().showMessage('No files are newly opened!')
-            elif len_files_new - len_files_old == 1:
-                self.main.statusBar().showMessage('1 file has been successfully opened.')
+                if len_files_new - len_files_old == 0:
+                    self.main.statusBar().showMessage('No files are newly opened!')
+                elif len_files_new - len_files_old == 1:
+                    self.main.statusBar().showMessage('1 file has been successfully opened.')
+                else:
+                    self.main.statusBar().showMessage(f'{len_files_new - len_files_old} files have been successfully opened.')
             else:
-                self.main.statusBar().showMessage(f'{len_files_new - len_files_old} files have been successfully opened.')
+                wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
 
-        file_paths, file_paths_missing = wl_checking_file.check_file_paths_missing(self.main, file_paths)
-        file_paths, file_paths_empty = wl_checking_file.check_file_paths_empty(self.main, file_paths)
-        file_paths, file_paths_unsupported = wl_checking_file.check_file_paths_unsupported(self.main, file_paths)
-        file_paths, file_paths_parsing_error = wl_checking_file.check_file_paths_parsing_error(self.main, file_paths)
+                wl_msg.wl_msg_fatal_error(main)
 
         dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Open_Files(self.main)
+        dialog_progress.update_progress(self.tr('Checking files...'))
+
+        file_paths, file_paths_unsupported = wl_checking_file.check_file_paths_unsupported(self.main, file_paths)
+        file_paths, file_paths_empty = wl_checking_file.check_file_paths_empty(self.main, file_paths)
+        file_paths, file_paths_duplicate = wl_checking_file.check_file_paths_duplicate(self.main, file_paths)
 
         worker_open_files = Wl_Worker_Open_Files(
             self.main,
@@ -359,10 +373,9 @@ class Wl_Files(QObject):
 
         wl_dialog_error.wl_dialog_error_file_open(
             self.main,
-            file_paths_missing = file_paths_missing,
             file_paths_empty = file_paths_empty,
             file_paths_unsupported = file_paths_unsupported,
-            file_paths_parsing_error = file_paths_parsing_error
+            file_paths_duplicate = file_paths_duplicate
         )
 
     @wl_misc.log_timing
@@ -543,7 +556,7 @@ class Wl_Table_Files(wl_table.Wl_Table):
 
                     break
 
-            file_texts = {file['path']: file['text'] for file in self.main.settings_custom['file_area']['files_open']}
+            files_old = {file['path']: file for file in self.main.settings_custom['file_area']['files_open']}
 
             self.main.settings_custom['file_area']['files_open'].clear()
 
@@ -559,8 +572,9 @@ class Wl_Table_Files(wl_table.Wl_Table):
                 new_file['tokenized'] = self.cellWidget(row, 2).currentText()
                 new_file['tagged'] = self.cellWidget(row, 3).currentText()
                 new_file['path'] = self.item(row, 4).text()
+                new_file['path_original'] = files_old[new_file['path']]['path_original']
                 new_file['encoding'] = wl_conversion.to_encoding_code(self.main, encoding_text)
-                new_file['text'] = file_texts[new_file['path']]
+                new_file['text'] = files_old[new_file['path']]['text']
 
                 self.main.settings_custom['file_area']['files_open'].append(new_file)
 
