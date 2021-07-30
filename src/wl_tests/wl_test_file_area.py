@@ -1,5 +1,5 @@
 #
-# Wordless: Tests - File Area
+# Wordless: Tests - File Area (Skip CI)
 #
 # Copyright (C) 2018-2021  Ye Lei (叶磊)
 #
@@ -18,9 +18,7 @@ import time
 
 sys.path.append('.')
 
-from wl_checking import wl_checking_misc
 from wl_tests import wl_test_init
-from wl_text import wl_text
 
 def wl_test_file_area(main):
     new_files = []
@@ -30,7 +28,7 @@ def wl_test_file_area(main):
         os.remove(file)
 
     file_path_loaded = [os.path.basename(file['path']) for file in main.settings_custom['file_area']['files_open']]
-    
+
     for file_path in glob.glob('wl_tests_files/wl_file_area/*.txt'):
         if os.path.basename(file_path) not in file_path_loaded:
             time_start = time.time()
