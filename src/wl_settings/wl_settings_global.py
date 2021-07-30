@@ -295,7 +295,6 @@ def init_settings_global(main):
                 main.tr('CSV File(*.csv)'),
                 main.tr('HTML Page (*.htm; *.html)'),
                 main.tr('XML File (*.xml)'),
-                main.tr('Translation Memory File (*.tmx)'),
                 main.tr('All Files (*.*)')
             ],
 
