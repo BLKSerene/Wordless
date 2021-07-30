@@ -530,7 +530,6 @@ Microsoft Excel Workbook|\*.xlsx
 CSV File                |\*.csv
 HTML Page               |\*.htm, \*.html
 XML File                |\*.xml
-Translation Memory File |\*.tmx
 
 \* Microsoft 97-03 Word documents (\*.doc) and Microsoft 97-03 Excel Workbooks (\*.xls) are not supported.<br>
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/Import/**). You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
