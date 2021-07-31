@@ -144,7 +144,7 @@ class Wl_List(QListWidget):
                     if self.main.settings_custom['import'][settings]['detect_encodings']:
                         encoding = wl_detection.detect_encoding(self.main, file_path)
                     else:
-                        encoding = self.main.settings_custom['files']['default_settings']['encoding']
+                        encoding = self.main.settings_custom['import'][settings]['default_encoding']
 
                     # Try decoding
                     encoding, text = wl_checking_file.check_file_path_decodable(self.main, file_path, encoding)

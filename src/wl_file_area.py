@@ -9,6 +9,8 @@
 # All other rights reserved.
 #
 
+import cProfile
+
 import collections
 import copy
 import csv
@@ -33,7 +35,7 @@ from wl_checking import wl_checking_file, wl_checking_misc
 from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
 from wl_text import wl_text
 from wl_utils import wl_conversion, wl_detection, wl_misc, wl_threading
-from wl_widgets import wl_box, wl_layout, wl_table
+from wl_widgets import wl_box, wl_layout, wl_msg, wl_table
 
 class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
@@ -49,106 +51,141 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                 self.progress_updated.emit(self.tr(f'Loading files... ({i + 1}/{len_file_paths})'))
 
                 default_dir = wl_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
-                default_encoding = self.main.settings_custom['import']['temp_files']['default_encoding']
+                default_encoding = self.main.settings_custom['files']['default_settings']['encoding']
 
                 file_path = wl_misc.get_normalized_path(file_path)
                 file_name, file_ext = os.path.splitext(os.path.basename(file_path))
                 file_ext = file_ext.lower()
 
-                # Text files
-                if file_ext == '.txt':
-                    new_files.append(self.main.wl_files._new_file(file_path))
+                lines = []
+
+                new_file = {'selected': True}
+
+                # Check for duplicate file names
+                file_names = [file['name'] for file in self.main.settings_custom['file_area']['files_open']]
+
+                new_file['name'] = new_file['name_old'] = wl_checking_misc.check_new_name(file_name, file_names)
+                new_file['name_old'] = new_file['name']
+
+                # XML files
+                if file_ext == '.xml':
+                    new_file['path'] = os.path.join(default_dir, f'{file_name}.xml')
+
+                    new_file['tokenized'] = 'Yes'
+                    new_file['tagged'] = 'Yes'
                 else:
-                    if file_ext in ['.docx', '.xlsx']:
-                        new_path = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+                    new_file['path'] = os.path.join(default_dir, f'{file_name}.txt')
 
-                        # Word documents
-                        if file_ext == '.docx':
-                            lines = []
+                    new_file['tokenized'] = self.main.settings_custom['files']['default_settings']['tokenized']
+                    new_file['tagged'] = self.main.settings_custom['files']['default_settings']['tagged']
 
-                            with open(new_path, 'w', encoding = default_encoding) as f:
-                                doc = docx.Document(file_path)
+                # Check for duplicate files
+                new_file['path'] = wl_checking_misc.check_new_path(new_file['path'])
+                # Record original file paths
+                new_file['path_original'] = file_path
 
-                                for block in self.iter_block_items(doc):
-                                    if type(block) == docx.text.paragraph.Paragraph:
-                                        f.write(f'{block.text}\n')
-                                    elif type(block) == docx.table.Table:
-                                        for row in self.iter_visual_cells(block):
-                                            cells = []
-
-                                            for cell in row:
-                                                cells.append(' '.join([item.text for item in self.iter_cell_items(cell)]))
-
-                                            f.write('\t'.join(cells) + '\n')
-
-                        # Excel workbooks
-                        elif file_ext == '.xlsx':
-                            with open(new_path, 'w', encoding = default_encoding) as f:
-                                workbook = openpyxl.load_workbook(file_path, data_only = True)
-
-                                for worksheet_name in workbook.sheetnames:
-                                    worksheet = workbook[worksheet_name]
-
-                                    for row in worksheet.rows:
-                                        f.write('\t'.join([(cell.value if cell.value != None else '')
-                                                            for cell in row]) + '\n')
-
-                        new_paths = [new_path]
+                if file_ext in ['.docx', '.xlsx']:
+                    new_file['encoding'] = default_encoding
+                else:
+                    # Detect encodings
+                    if self.main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
+                        new_file['encoding'] = wl_detection.detect_encoding(self.main, file_path)
                     else:
-                        # Detect encoding
-                        if self.main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
-                            encoding = wl_detection.detect_encoding(self.main, file_path)
-                        else:
-                            encoding = self.main.settings_custom['files']['default_settings']['encoding']
+                        new_file['encoding'] = default_encoding
 
-                        # Try decoding
-                        encoding, text = wl_checking_file.check_file_path_decodable(self.main, file_path, encoding)
+                    # Try decoding
+                    new_file['encoding'], text = wl_checking_file.check_file_path_decodable(self.main, file_path, new_file['encoding'])
 
-                        # CSV files
-                        if file_ext == '.csv':
-                            new_path = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+                # Text files & XML files
+                if file_ext in ['.txt', '.xml']:
+                    pass
+                # Word documents
+                elif file_ext == '.docx':
+                    doc = docx.Document(file_path)
 
-                            with open(new_path, 'w', encoding = default_encoding) as f:
-                                with open(file_path, 'r', newline = '', encoding = encoding, errors = 'replace') as f_csv:
-                                    # Remove NULL bytes to avoid error
-                                    csv_reader = csv.reader([line.replace('\0', '') for line in f_csv])
+                    for block in self.iter_block_items(doc):
+                        if type(block) == docx.text.paragraph.Paragraph:
+                            lines.append(block)
+                        elif type(block) == docx.table.Table:
+                            for row in self.iter_visual_cells(block):
+                                cells = []
 
-                                    for row in csv_reader:
-                                        f.write('\t'.join(row) + '\n')
+                                for cell in row:
+                                    cells.append(' '.join([item.text for item in self.iter_cell_items(cell)]))
 
-                            new_paths = [new_path]
+                                lines.append('\t'.join(cells))
 
-                        # HTML files
-                        elif file_ext in ['.htm', '.html']:
-                            soup = bs4.BeautifulSoup(text, 'lxml')
+                    text = '\n'.join(lines)
+                # Excel workbooks
+                elif file_ext == '.xlsx':
+                    workbook = openpyxl.load_workbook(file_path, data_only = True)
 
-                            new_path = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.txt'))
+                    for worksheet_name in workbook.sheetnames:
+                        worksheet = workbook[worksheet_name]
 
-                            with open(new_path, 'w', encoding = default_encoding) as f:
-                                f.write(soup.get_text())
+                        for row in worksheet.rows:
+                            cells = [(cell.value if cell.value != None else '')
+                                     for cell in row]
 
-                            new_paths = [new_path]
+                            lines.append('\t'.join(cells))
 
-                        # XML files
-                        elif file_ext == '.xml':
-                            new_path = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}.xml'))
+                    text = '\n'.join(lines)
+                # CSV files
+                elif file_ext == '.csv':
+                    with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace', newline = '') as f:
+                        # Remove NULL bytes to avoid error
+                        csv_reader = csv.reader([line.replace('\0', '') for line in f])
 
-                            with open(new_path, 'w', encoding = default_encoding) as f:
-                                f.write(text)
+                        for row in csv_reader:
+                            lines.append('\t'.join(row))
 
-                            new_paths = [new_path]
+                    text = '\n'.join(lines)
+                # HTML files
+                elif file_ext in ['.htm', '.html']:
+                    soup = bs4.BeautifulSoup(text, 'lxml')
 
-                    for new_path in new_paths:
-                        new_files.append(self.main.wl_files._new_file(new_path, txt = False, encoding = encoding))
+                    text = soup.get_text()
 
-                # Record original paths
-                for new_file in new_files:
-                    new_file['path_original'] = file_path
+                # Set file encoding to defaults if encoding detection is disabled
+                if not self.main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
+                    new_file['encoding'] = default_encoding
 
-            self.main.settings_custom['import']['files']['default_path'] = wl_misc.get_normalized_dir(self.file_paths[0])
+                # Remove header tags
+                tags_header = []
+
+                for _, _, tag_opening, _ in self.main.settings_custom['tags']['tags_header']:
+                    tags_header.append(tag_opening[1:-1])
+
+                with open(new_file['path'], 'w', encoding = new_file['encoding']) as f:
+                    if tags_header:
+                        # The "lxml" parser will add <html><body> to the text, which is undesirable
+                        soup = bs4.BeautifulSoup(text, features = 'html.parser')
+
+                        for tag_header in tags_header:
+                            for header_element in soup.select(tag_header):
+                                header_element.decompose()
+
+                        f.write(str(soup))
+                    else:
+                        f.write(text)
+
+                # Detect languages
+                if self.main.settings_custom['file_area']['auto_detection_settings']['detect_langs']:
+                    new_file['lang'] = wl_detection.detect_lang(self.main, new_file)
+                else:
+                    new_file['lang'] = self.main.settings_custom['files']['default_settings']['lang']
+
+                # Process texts
+                new_file['text'] = wl_text.Wl_Text(self.main, new_file)
+                # Remove the main object from all texts
+                new_file['text'].main = None
+
+                new_files.append(new_file)
+
+            if self.file_paths:
+                self.main.settings_custom['import']['files']['default_path'] = wl_misc.get_normalized_dir(self.file_paths[0])
         except Exception as e:
-            self.error_msg = repr(e)
-            print(repr(e))
+            error_msg = repr(e)
 
         self.progress_updated.emit(self.tr('Updating table...'))
 
@@ -232,79 +269,6 @@ class Wl_Files(QObject):
         self.main = table.main
         self.table = table
 
-    def _new_file(self, file_path, txt = True, encoding = ''):
-        new_file = {}
-
-        detect_pass_encoding = True
-        detect_pass_lang = True
-
-        new_file['selected'] = True
-
-        new_file['path'] = file_path
-
-        if new_file['path'].endswith('.xml'):
-            new_file['tokenized'] = 'Yes'
-            new_file['tagged'] = 'Yes'
-        else:
-            new_file['tokenized'] = self.main.settings_custom['files']['default_settings']['tokenized']
-            new_file['tagged'] = self.main.settings_custom['files']['default_settings']['tagged']
-
-        new_file['name'], _ = os.path.splitext(os.path.basename(new_file['path']))
-        new_file['name_old'] = new_file['name']
-
-        # Detect encodings
-        if not encoding:
-            if self.main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
-                new_file['encoding'] = wl_detection.detect_encoding(self.main, new_file['path'])
-            else:
-                new_file['encoding'] = self.main.settings_custom['files']['default_settings']['encoding']
-        # Use explicit encoding for non-text files
-        else:
-            new_file['encoding'] = encoding
-
-        # Detect languages
-        if self.main.settings_custom['file_area']['auto_detection_settings']['detect_langs']:
-            new_file['lang'] = wl_detection.detect_lang(self.main, new_file)
-        else:
-            new_file['lang'] = self.main.settings_custom['files']['default_settings']['lang']
-
-        if txt:
-            default_dir = wl_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
-
-            new_file['path'] = os.path.join(default_dir, re.split(r'[/\\]', file_path)[-1])
-            new_file['path'] = wl_checking_misc.check_new_path(new_file['path'])
-
-        # Try decoding text files
-        new_file['encoding'], text = wl_checking_file.check_file_path_decodable(self.main, file_path, new_file['encoding'])
-
-        # Remove header tags
-        tags_header = []
-
-        for _, _, tag_opening, _ in self.main.settings_custom['tags']['tags_header']:
-            tags_header.append(tag_opening[1:-1])
-
-        if tags_header:
-            # The "lxml" parser will add <html><body> to the text, which is undesirable
-            with open(new_file['path'], 'w', encoding = new_file['encoding']) as f:
-                soup = bs4.BeautifulSoup(text, features = 'html.parser')
-
-                for tag_header in tags_header:
-                    for header_element in soup.select(tag_header):
-                        header_element.decompose()
-
-                f.write(str(soup))
-
-        # Check for duplicate file names
-        file_names = [file['name'] for file in self.main.settings_custom['file_area']['files_open']]
-        new_file['name'] = new_file['name_old'] = wl_checking_misc.check_new_name(new_file['name'], file_names)
-
-        # Process texts
-        new_file['text'] = wl_text.Wl_Text(self.main, new_file)
-        # Remove the main object from all texts
-        new_file['text'].main = None
-
-        return new_file
-
     @wl_misc.log_timing
     def open_files(self, file_paths):
         def update_gui(error_msg, new_files):
@@ -324,9 +288,9 @@ class Wl_Files(QObject):
                 else:
                     self.main.statusBar().showMessage(f'{len_files_new - len_files_old} files have been successfully opened.')
             else:
-                wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
+                wl_dialog_error.wl_dialog_error_fatal(self.main, error_msg)
 
-                wl_msg.wl_msg_fatal_error(main)
+                wl_msg.wl_msg_fatal_error(self.main)
 
         dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Open_Files(self.main)
         dialog_progress.update_progress(self.tr('Checking files...'))
