@@ -18,7 +18,10 @@ import time
 
 sys.path.append('.')
 
+from wl_dialogs import wl_dialog_misc
 from wl_tests import wl_test_init
+
+import wl_file_area
 
 def wl_test_file_area(main):
     new_files = []
@@ -35,8 +38,18 @@ def wl_test_file_area(main):
 
             print(f'Loading file "{os.path.split(file_path)[1]}"... ', end = '')
 
-            new_file = main.wl_files._new_file(file_path)
-            
+            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Open_Files(main)
+
+            worker_open_files = wl_file_area.Wl_Worker_Open_Files(
+                main,
+                dialog_progress = dialog_progress,
+                update_gui = update_gui,
+                file_paths = [file_path]
+            )
+            worker_open_files.run()
+
+            new_file = main.settings_custom['file_area']['files_open'][-1]
+
             assert new_file['selected'] == True
             assert new_file['tokenized'] == 'No'
             assert new_file['tagged'] == 'No'
@@ -44,15 +57,16 @@ def wl_test_file_area(main):
             assert new_file['name_old'] == new_file['name']
             assert new_file['lang'] == re.search(r'\[([a-z_]+)\]', file_path).group(1)
 
-            new_files.append(new_file)
-
             print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
-    
-    main.settings_custom['file_area']['files_open'].extend(new_files)
 
     # Save Settings
     with open('wl_tests/wl_settings.pickle', 'wb') as f:
         pickle.dump(main.settings_custom, f)
+
+def update_gui(error_msg, new_files):
+    assert not error_msg
+
+    main.settings_custom['file_area']['files_open'].extend(new_files)
 
 if __name__ == '__main__':
     # Reset custom settings

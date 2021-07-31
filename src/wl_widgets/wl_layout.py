@@ -71,10 +71,10 @@ class Wl_Wrapper(QWidget):
     # If you subclass from QWidget, you need to provide a paintEvent for your custom QWidget as below.
     # See: https://doc.qt.io/qt-5/stylesheet-reference.html#list-of-stylable-widgets - QWidget
     def paintEvent(self, event):
-        opt = QStyleOption();
-        opt.initFrom(self);
-        p = QPainter(self);
-        self.style().drawPrimitive(QStyle.PE_Widget, opt, p, self);
+        opt = QStyleOption()
+        opt.initFrom(self)
+        p = QPainter(self)
+        self.style().drawPrimitive(QStyle.PE_Widget, opt, p, self)
         
     def load_settings(self, defaults = False):
         pass

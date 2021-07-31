@@ -144,15 +144,20 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
         self.label_import_search_terms_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_import_search_terms_default_path = QLineEdit(self)
         self.button_import_search_terms_browse = QPushButton(self.tr('Browse'), self)
+        self.label_import_search_terms_default_encoding = QLabel(self.tr('Default Encoding:'), self)
+        self.combo_box_import_search_terms_default_encoding = wl_box.Wl_Combo_Box_Encoding(self)
         self.checkbox_import_search_terms_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'))
 
         self.button_import_search_terms_browse.clicked.connect(self.browse_search_terms)
+        self.checkbox_import_search_terms_detect_encodings.stateChanged.connect(self.detect_encodings_changed)
 
         group_box_import_search_terms.setLayout(wl_layout.Wl_Layout())
         group_box_import_search_terms.layout().addWidget(self.label_import_search_terms_default_path, 0, 0)
         group_box_import_search_terms.layout().addWidget(self.line_edit_import_search_terms_default_path, 0, 1)
         group_box_import_search_terms.layout().addWidget(self.button_import_search_terms_browse, 0, 2)
-        group_box_import_search_terms.layout().addWidget(self.checkbox_import_search_terms_detect_encodings, 1, 0, 1, 3)
+        group_box_import_search_terms.layout().addWidget(self.label_import_search_terms_default_encoding, 1, 0)
+        group_box_import_search_terms.layout().addWidget(self.combo_box_import_search_terms_default_encoding, 1, 1, 1, 2)
+        group_box_import_search_terms.layout().addWidget(self.checkbox_import_search_terms_detect_encodings, 2, 0, 1, 3)
 
         # Stop Words
         group_box_import_stop_words = QGroupBox(self.tr('Stop Words'), self)
@@ -160,15 +165,20 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
         self.label_import_stop_words_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_import_stop_words_default_path = QLineEdit(self)
         self.button_import_stop_words_browse = QPushButton(self.tr('Browse'), self)
+        self.label_import_stop_words_default_encoding = QLabel(self.tr('Default Encoding:'), self)
+        self.combo_box_import_stop_words_default_encoding = wl_box.Wl_Combo_Box_Encoding(self)
         self.checkbox_import_stop_words_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'))
 
         self.button_import_stop_words_browse.clicked.connect(self.browse_stop_words)
+        self.checkbox_import_stop_words_detect_encodings.stateChanged.connect(self.detect_encodings_changed)
 
         group_box_import_stop_words.setLayout(wl_layout.Wl_Layout())
         group_box_import_stop_words.layout().addWidget(self.label_import_stop_words_default_path, 0, 0)
         group_box_import_stop_words.layout().addWidget(self.line_edit_import_stop_words_default_path, 0, 1)
         group_box_import_stop_words.layout().addWidget(self.button_import_stop_words_browse, 0, 2)
-        group_box_import_stop_words.layout().addWidget(self.checkbox_import_stop_words_detect_encodings, 1, 0, 1, 3)
+        group_box_import_stop_words.layout().addWidget(self.label_import_stop_words_default_encoding, 1, 0)
+        group_box_import_stop_words.layout().addWidget(self.combo_box_import_stop_words_default_encoding, 1, 1, 1, 2)
+        group_box_import_stop_words.layout().addWidget(self.checkbox_import_stop_words_detect_encodings, 2, 0, 1, 3)
 
         # Temporary Files
         group_box_import_temp_files = QGroupBox(self.tr('Temporary Files'), self)
@@ -176,8 +186,6 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
         self.label_import_temp_files_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_import_temp_files_default_path = QLineEdit(self)
         self.button_import_temp_files_browse = QPushButton(self.tr('Browse...'), self)
-        self.label_import_temp_files_default_encoding = QLabel(self.tr('Default Encoding:'), self)
-        self.combo_box_import_temp_files_default_encoding = wl_box.Wl_Combo_Box_Encoding(self)
 
         self.button_import_temp_files_browse.clicked.connect(self.browse_temp_files)
 
@@ -185,8 +193,6 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
         group_box_import_temp_files.layout().addWidget(self.label_import_temp_files_default_path, 0, 0)
         group_box_import_temp_files.layout().addWidget(self.line_edit_import_temp_files_default_path, 0, 1)
         group_box_import_temp_files.layout().addWidget(self.button_import_temp_files_browse, 0, 2)
-        group_box_import_temp_files.layout().addWidget(self.label_import_temp_files_default_encoding, 1, 0)
-        group_box_import_temp_files.layout().addWidget(self.combo_box_import_temp_files_default_encoding, 1, 1, 1, 2)
 
         self.setLayout(wl_layout.Wl_Layout())
         self.layout().addWidget(group_box_import_files, 0, 0)
@@ -234,33 +240,50 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
         if path_file:
             self.line_edit_import_temp_files_default_path.setText(wl_misc.get_normalized_path(path_file))
 
+    def detect_encodings_changed(self):
+        if self.checkbox_import_search_terms_detect_encodings.isChecked():
+            self.combo_box_import_search_terms_default_encoding.setEnabled(False)
+        else:
+            self.combo_box_import_search_terms_default_encoding.setEnabled(True)
+
+        if self.checkbox_import_stop_words_detect_encodings.isChecked():
+            self.combo_box_import_stop_words_default_encoding.setEnabled(False)
+        else:
+            self.combo_box_import_stop_words_default_encoding.setEnabled(True)
+
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.main.settings_default)
         else:
             settings = copy.deepcopy(self.main.settings_custom)
 
+        # Files
         if os.path.exists(settings['import']['files']['default_path']):
             self.line_edit_import_files_default_path.setText(settings['import']['files']['default_path'])
         else:
             self.line_edit_import_files_default_path.setText(self.main.settings_default['import']['files']['default_path'])
 
+        # Search Terms
         if os.path.exists(settings['import']['search_terms']['default_path']):
             self.line_edit_import_search_terms_default_path.setText(settings['import']['search_terms']['default_path'])
         else:
             self.line_edit_import_search_terms_default_path.setText(self.main.settings_default['import']['search_terms']['default_path'])
 
+        self.combo_box_import_search_terms_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['import']['stop_words']['default_encoding']))
         self.checkbox_import_search_terms_detect_encodings.setChecked(settings['import']['search_terms']['detect_encodings'])
 
+        # Stop Words
         if os.path.exists(settings['import']['stop_words']['default_path']):
             self.line_edit_import_stop_words_default_path.setText(settings['import']['stop_words']['default_path'])
         else:
             self.line_edit_import_stop_words_default_path.setText(self.main.settings_default['import']['stop_words']['default_path'])
-
+        self.combo_box_import_stop_words_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['import']['stop_words']['default_encoding']))
         self.checkbox_import_stop_words_detect_encodings.setChecked(settings['import']['stop_words']['detect_encodings'])
 
+        # Temporary Files
         self.line_edit_import_temp_files_default_path.setText(settings['import']['temp_files']['default_path'])
-        self.combo_box_import_temp_files_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['import']['temp_files']['default_encoding']))
+        
+        self.detect_encodings_changed()
 
     def validate_settings(self):
         if (self.validate_path(self.line_edit_import_files_default_path) and
@@ -274,16 +297,21 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
     def apply_settings(self):
         settings = self.main.settings_custom
 
+        # Files
         settings['import']['files']['default_path'] = self.line_edit_import_files_default_path.text()
 
+        # Search Terms
         settings['import']['search_terms']['default_path'] = self.line_edit_import_search_terms_default_path.text()
+        settings['import']['search_terms']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_import_search_terms_default_encoding.currentText())
         settings['import']['search_terms']['detect_encodings'] = self.checkbox_import_search_terms_detect_encodings.isChecked()
 
+        # Stop Words
         settings['import']['stop_words']['default_path'] = self.line_edit_import_stop_words_default_path.text()
+        settings['import']['stop_words']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_import_stop_words_default_encoding.currentText())
         settings['import']['stop_words']['detect_encodings'] = self.checkbox_import_stop_words_detect_encodings.isChecked()
 
+        # Temporary Files
         settings['import']['temp_files']['default_path'] = self.line_edit_import_temp_files_default_path.text()
-        settings['import']['temp_files']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_import_temp_files_default_encoding.currentText())
 
         return True
 

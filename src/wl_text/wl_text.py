@@ -10,6 +10,7 @@
 #
 
 import copy
+import os
 import re
 
 import bs4
@@ -43,10 +44,11 @@ class Wl_Text():
         self.tokens_flat = []
         self.tags = []
 
+        file_ext = os.path.splitext(file['path'])[1].lower()
         re_tags = wl_matching.get_re_tags(main)
         
-        if re.search(r'\.txt', file['path'], flags = re.IGNORECASE):
-            with open(file['path'], 'r', encoding = file['encoding']) as f:
+        if file_ext == '.txt':
+            with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
                 # Untokenized & Untagged
                 if self.tokenized == 'No' and self.tagged == 'No':
                     for line in f:
@@ -142,12 +144,9 @@ class Wl_Text():
                                 self.tokenize_text(text)
                         else:
                             self.tokens_multilevel.append([])
-        elif re.search(r'\.xml', file['path'], flags = re.IGNORECASE):
-            text = ''
-
-            with open(file['path'], 'r', encoding = file['encoding']) as f:
-                for line in f:
-                    text += line
+        elif file_ext == '.xml':
+            with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
+                text = f.read()
 
             soup = bs4.BeautifulSoup(text, features = 'lxml-xml')
 
@@ -162,7 +161,6 @@ class Wl_Text():
                     tags_sentence.append(opening_tag[1:-1])
                 elif level == 'Word':
                     tags_word.append(opening_tag[1:-1])
-
 
             for para in soup.select(','.join(tags_para)):
                 self.tokens_multilevel.append([])

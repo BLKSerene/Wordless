@@ -1033,17 +1033,18 @@ def init_settings_default(main):
 
             'search_terms': {
                 'default_path': wl_misc.get_normalized_path('.'),
+                'default_encoding': 'utf_8',
                 'detect_encodings': True
             },
 
             'stop_words': {
                 'default_path': wl_misc.get_normalized_path('.'),
+                'default_encoding': 'utf_8',
                 'detect_encodings': True
             },
 
             'temp_files': {
                 'default_path': wl_misc.get_normalized_path('Import/'),
-                'default_encoding': 'utf_8'
             }
         },
 
