@@ -31,7 +31,9 @@ for lang, word_detokenizers in main.settings_global['word_detokenizers'].items()
             test_word_detokenizers.append((lang, word_detokenizer))
 
 @pytest.mark.parametrize('lang, word_detokenizer', test_word_detokenizers)
-def test_word_detokenize(lang, word_detokenizer, show_results = False):
+def test_word_detokenize(lang, word_detokenizer):
+    print(f'{lang} / {word_detokenizer}:')
+
     lang_text = wl_conversion.to_lang_text(main, lang)
 
     tokens = wl_word_tokenization.wl_word_tokenize(
@@ -48,9 +50,7 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
         word_detokenizer = word_detokenizer
     )
 
-    if show_results:
-        print(f'{lang} / {word_detokenizer}:')
-        print(text)
+    print(text)
 
     if lang == 'asm':
         assert text == 'অসমীয়া ভাষা হৈছে সকলোতকৈ পূৰ্বীয় ভাৰতীয়-আৰ্যভাষা ।'
@@ -145,4 +145,4 @@ def test_word_detokenize(lang, word_detokenizer, show_results = False):
 
 if __name__ == '__main__':
     for lang, word_detokenizer in test_word_detokenizers:
-        test_word_detokenize(lang, word_detokenizer, show_results = True)
+        test_word_detokenize(lang, word_detokenizer)

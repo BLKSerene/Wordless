@@ -9,8 +9,6 @@
 # All other rights reserved.
 #
 
-import cProfile
-
 import collections
 import copy
 import csv
@@ -33,7 +31,7 @@ import openpyxl
 
 from wl_checking import wl_checking_file, wl_checking_misc
 from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
-from wl_text import wl_text
+from wl_text import wl_matching, wl_text
 from wl_utils import wl_conversion, wl_detection, wl_misc, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_msg, wl_table
 
@@ -46,6 +44,8 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
         try:
             len_file_paths = len(self.file_paths)
+            # Regex for headers
+            re_tags_header = wl_matching.get_re_tags_with_tokens(self.main, tag_type = 'header')
 
             for i, file_path in enumerate(self.file_paths):
                 self.progress_updated.emit(self.tr(f'Loading files... ({i + 1}/{len_file_paths})'))
@@ -105,7 +105,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
                     for block in self.iter_block_items(doc):
                         if type(block) == docx.text.paragraph.Paragraph:
-                            lines.append(block)
+                            lines.append(block.text)
                         elif type(block) == docx.table.Table:
                             for row in self.iter_visual_cells(block):
                                 cells = []
@@ -157,17 +157,12 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                     tags_header.append(tag_opening[1:-1])
 
                 with open(new_file['path'], 'w', encoding = new_file['encoding']) as f:
-                    if tags_header:
-                        # The "lxml" parser will add <html><body> to the text, which is undesirable
-                        soup = bs4.BeautifulSoup(text, features = 'html.parser')
-
-                        for tag_header in tags_header:
-                            for header_element in soup.select(tag_header):
-                                header_element.decompose()
-
-                        f.write(str(soup))
-                    else:
-                        f.write(text)
+                    if new_file['tagged'] == 'Yes' and tags_header:
+                        # Use regex here since BeautifulSoup will add tags including <html> and <body> to the text
+                        # See: https://www.crummy.com/software/BeautifulSoup/bs4/doc/#differences-between-parsers
+                        text = re.sub(re_tags_header, '', text)
+                        
+                    f.write(text)
 
                 # Detect languages
                 if self.main.settings_custom['file_area']['auto_detection_settings']['detect_langs']:
