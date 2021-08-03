@@ -125,12 +125,29 @@ class Wl_Settings_Files(wl_tree.Wl_Settings):
 
         group_box_auto_detection_settings.layout().setColumnStretch(3, 1)
 
+        # Miscellaneous
+        group_box_misc = QGroupBox(self.tr('Miscellaneous'), self)
+
+        self.label_read_files_in_chunks = QLabel(self.tr('Read files in chunks of'), self)
+        self.spin_box_read_files_in_chunks = wl_box.Wl_Spin_Box(self)
+        self.label_read_files_in_chunks_lines = QLabel(self.tr('lines'), self)
+
+        self.spin_box_read_files_in_chunks.setRange(1, 10000)
+
+        group_box_misc.setLayout(wl_layout.Wl_Layout())
+        group_box_misc.layout().addWidget(self.label_read_files_in_chunks, 0, 0)
+        group_box_misc.layout().addWidget(self.spin_box_read_files_in_chunks, 0, 1)
+        group_box_misc.layout().addWidget(self.label_read_files_in_chunks_lines, 0, 2)
+
+        group_box_auto_detection_settings.layout().setColumnStretch(3, 1)
+
         self.setLayout(wl_layout.Wl_Layout())
         self.layout().addWidget(group_box_default_settings, 0, 0)
         self.layout().addWidget(group_box_auto_detection_settings, 1, 0)
+        self.layout().addWidget(group_box_misc, 2, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(2, 1)
+        self.layout().setRowStretch(3, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -148,6 +165,9 @@ class Wl_Settings_Files(wl_tree.Wl_Settings):
         self.spin_box_files_number_lines.setValue(settings['files']['auto_detection_settings']['number_lines'])
         self.checkbox_files_number_lines_no_limit.setChecked(settings['files']['auto_detection_settings']['number_lines_no_limit'])
 
+        # Miscellaneous
+        self.spin_box_read_files_in_chunks.setValue(settings['files']['misc']['read_files_in_chunks'])
+
     def apply_settings(self):
         settings = self.main.settings_custom
 
@@ -160,6 +180,9 @@ class Wl_Settings_Files(wl_tree.Wl_Settings):
         # Auto-detection Settings
         settings['files']['auto_detection_settings']['number_lines'] = self.spin_box_files_number_lines.value()
         settings['files']['auto_detection_settings']['number_lines_no_limit'] = self.checkbox_files_number_lines_no_limit.isChecked()
+
+        # Miscellaneous
+        settings['files']['misc']['read_files_in_chunks'] = self.spin_box_read_files_in_chunks.value()
 
         return True
 

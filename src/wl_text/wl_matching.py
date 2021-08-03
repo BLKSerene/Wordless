@@ -23,12 +23,32 @@ def get_re_tags(main):
 
     for tag_type, _, tag_opening, tag_closing in main.settings_custom['tags']['tags_body']:
         if tag_type == main.tr('Embedded'):
-            tags_embedded.append(fr'{re.escape(tag_opening)}[^{tag_opening[0]}]+?(\s|$)')
-        elif tag_type == main.tr('Non-embedded'):
-            tag_opening = tag_opening.replace('*', '.+?')
-            tag_closing = tag_closing.replace('*', '.+?')
+            tag_opening = re.escape(tag_opening)
 
-            tags_non_embedded.append(fr'{tag_opening}[^{tag_closing[0]}]+?{tag_closing}')
+            tags_embedded.append(fr'{tag_opening}[^{tag_opening}]+?(?=\s|$)')
+        elif tag_type == main.tr('Non-embedded'):
+            tag_opening_start, tag_opening_end = tag_opening.split('*')
+            tag_opening_start = re.escape(tag_opening_start)
+            tag_opening_end = re.escape(tag_opening_end)
+
+            tags_non_embedded.append(fr'{tag_opening_start}/?[^{tag_opening_end}]*?{tag_opening_end}')
+
+    return '|'.join(tags_embedded + tags_non_embedded)
+
+def get_re_tags_with_tokens(main, tag_type):
+    tags_embedded = []
+    tags_non_embedded = []
+
+    for tag_type, _, tag_opening, tag_closing in main.settings_custom['tags'][f'tags_{tag_type}']:
+        if tag_type == main.tr('Embedded'):
+            tag_opening = re.escape(tag_opening)
+
+            tags_embedded.append(fr'(?<=^|\s)[^{tag_opening}]+?{tag_opening}[^{tag_opening}]+?(?=\s|$)')
+        elif tag_type == main.tr('Non-embedded'):
+            tag_opening = re.escape(tag_opening)
+            tag_closing = re.escape(tag_closing)
+
+            tags_non_embedded.append(fr'{tag_opening}.*?{tag_closing}')
 
     return '|'.join(tags_embedded + tags_non_embedded)
 

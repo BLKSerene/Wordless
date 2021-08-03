@@ -31,7 +31,9 @@ for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].ite
             test_sentence_tokenizers.append((lang, sentence_tokenizer))
 
 @pytest.mark.parametrize('lang, sentence_tokenizer', test_sentence_tokenizers)
-def test_sentence_tokenize(lang, sentence_tokenizer, show_results = False):
+def test_sentence_tokenize(lang, sentence_tokenizer):
+    print(f'{lang} / {sentence_tokenizer}:')
+
     lang_text = wl_conversion.to_lang_text(main, lang)
 
     sentences = wl_sentence_tokenization.wl_sentence_tokenize(
@@ -40,9 +42,7 @@ def test_sentence_tokenize(lang, sentence_tokenizer, show_results = False):
         lang = lang,
         sentence_tokenizer = sentence_tokenizer)
 
-    if show_results:
-        print(f'{lang} / {sentence_tokenizer}:')
-        print(sentences)
+    print(sentences)
 
     if lang == 'afr':
         assert sentences == ["Afrikaans is tipologies beskou 'n Indo-Europese, Wes-Germaanse, Nederfrankiese taal,[2] wat aan die suidpunt van Afrika onder invloed van verskeie ander tale en taalgroepe ontstaan het.", "Afrikaans is op 8 Mei 1925 as 'n amptelike taal van Suid-Afrika erken en is tans die derde jongste Germaanse taal wat amptelike status geniet, naas Faroëes wat in 1948 grondwetlik erken is en Luxemburgs wat hierdie status in 1984 verkry het."]
@@ -225,4 +225,4 @@ def test_sentence_tokenize(lang, sentence_tokenizer, show_results = False):
 
 if __name__ == '__main__':
     for lang, sentence_tokenizer in test_sentence_tokenizers:
-        test_sentence_tokenize(lang, sentence_tokenizer, show_results = True)
+        test_sentence_tokenize(lang, sentence_tokenizer)
