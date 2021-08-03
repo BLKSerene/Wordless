@@ -371,7 +371,7 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                 if count_tokens < base_sttr:
                     sttr = ttr
                 else:
-                    token_sections = wl_text_utils.to_sections_unequal(text.tokens_flat, base_sttr)
+                    token_sections = list(wl_text_utils.to_sections_unequal(text.tokens_flat, base_sttr))
 
                     # Discard the last section if number of tokens in it is smaller than the base of sttr
                     if len(token_sections[-1]) < base_sttr:

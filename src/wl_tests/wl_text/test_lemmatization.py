@@ -29,7 +29,9 @@ for lang, lemmatizers in main.settings_global['lemmatizers'].items():
             test_lemmatizers.append((lang, lemmatizer))
 
 @pytest.mark.parametrize('lang, lemmatizer', test_lemmatizers)
-def test_lemmatize(lang, lemmatizer, show_results = False):
+def test_lemmatize(lang, lemmatizer):
+    print(f'{lang} / {lemmatizer}:')
+
     lang_text = wl_conversion.to_lang_text(main, lang)
 
     tokens = wl_word_tokenization.wl_word_tokenize(
@@ -45,9 +47,7 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
         lemmatizer = lemmatizer
     )
 
-    if show_results:
-        print(f'{lang} / {lemmatizer}:')
-        print(lemmas)
+    print(lemmas)
 
     if lang == 'ast':
         assert lemmas == ["L'asturianu", 'ser', 'unu', 'llingua', 'romance', 'propiu', "d'Asturies,[1", ']', 'perteneciente', 'al', 'subgrupu', 'asturllionés', '.']
@@ -164,4 +164,4 @@ def test_lemmatize(lang, lemmatizer, show_results = False):
 
 if __name__ == '__main__':
     for lang, lemmatizer in test_lemmatizers:
-        test_lemmatize(lang, lemmatizer, show_results = True)
+        test_lemmatize(lang, lemmatizer)
