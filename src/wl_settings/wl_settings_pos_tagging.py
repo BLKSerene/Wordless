@@ -173,7 +173,7 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
                 if self.checkbox_to_universal_pos_tags.isChecked():
                     tagset = 'universal'
                 else:
-                    tagset = 'custom'
+                    tagset = 'default'
 
                 worker_preview_pos_tagger = Wl_Worker_Preview_Pos_Tagger(
                     self.main,

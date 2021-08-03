@@ -499,7 +499,7 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
                     sections_ref = wl_text_utils.to_sections(tokens_ref, number_sections)
 
                     sections_freq_observed = [collections.Counter(section) for section in sections_observed]
-                    sections_freq_ref = [collections.Counter(section) for section in sections_observed]
+                    sections_freq_ref = [collections.Counter(section) for section in sections_ref]
 
                     len_sections_observed = [len(section) for section in sections_observed]
                     len_sections_ref = [len(section) for section in sections_ref]

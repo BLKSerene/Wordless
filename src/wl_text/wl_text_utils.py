@@ -218,6 +218,9 @@ def init_spacy_models(main, lang):
                 main.__dict__[f'spacy_nlp_{lang}'].add_pipe('lemmatizer')
 
                 main.__dict__[f'spacy_nlp_{lang}'].initialize()
+
+        # Increase 'nlp.max_length' to avoid out of memory error (Default: 1,000,000)
+        main.__dict__[f'spacy_nlp_{lang}'].max_length = 1000 ** 3
     
 def init_sentence_tokenizers(main, lang, sentence_tokenizer = 'default'):
     if lang not in main.settings_global['sentence_tokenizers']:
@@ -367,16 +370,10 @@ def to_sections(tokens, num_sections):
     return sections
 
 def to_sections_unequal(tokens, section_size):
-    sections = []
-
-    for i in range(len(tokens)):
-        if (i + 1) % section_size == 0:
-            sections.append(tokens[i + 1 - section_size : i + 1])
-
-    if len(tokens) % section_size > 0:
-        sections.append(tokens[section_size * len(sections):])
-
-    return sections
+    tokens = list(tokens)
+    
+    for i in range(0, len(tokens), section_size):
+        yield tokens[i : i + section_size]
 
 # Serbian
 def to_srp_latn(tokens):

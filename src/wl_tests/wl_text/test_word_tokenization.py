@@ -36,7 +36,9 @@ for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
                 test_word_tokenizers.append((lang, word_tokenizer))
 
 @pytest.mark.parametrize('lang, word_tokenizer', test_word_tokenizers)
-def test_word_tokenize(lang, word_tokenizer, show_results = False):
+def test_word_tokenize(lang, word_tokenizer):
+    print(f'{lang} / {word_tokenizer}:')
+
     lang_text = wl_conversion.to_lang_text(main, lang)
 
     tokens = wl_word_tokenization.wl_word_tokenize(
@@ -47,9 +49,7 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
     )
     tokens = list(wl_misc.flatten_list(tokens))
 
-    if show_results:
-        print(f'{lang} / {word_tokenizer}:')
-        print(tokens)
+    print(tokens)
 
     if lang == 'afr':
         assert tokens == ['Afrikaans', 'is', 'tipologies', 'beskou', "'", 'n', 'Indo', '-', 'Europese', ',', 'Wes', '-', 'Germaanse', ',', 'Nederfrankiese', 'taal,[2', ']', 'wat', 'aan', 'die', 'suidpunt', 'van', 'Afrika', 'onder', 'invloed', 'van', 'verskeie', 'ander', 'tale', 'en', 'taalgroepe', 'ontstaan', 'het', '.']
@@ -282,4 +282,4 @@ def test_word_tokenize(lang, word_tokenizer, show_results = False):
 
 if __name__ == '__main__':
     for lang, word_tokenizer in test_word_tokenizers:
-        test_word_tokenize(lang, word_tokenizer, show_results = True)
+        test_word_tokenize(lang, word_tokenizer)

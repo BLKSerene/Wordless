@@ -1077,6 +1077,10 @@ def init_settings_default(main):
             'auto_detection_settings': {
                 'number_lines': 100,
                 'number_lines_no_limit': False
+            },
+
+            'misc': {
+                'read_files_in_chunks': 100
             }
         },
 

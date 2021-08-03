@@ -11,8 +11,9 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [2.1.0](https://github.com/BLKSerene/Wordless/releases/tag/2.1.0) - 0?/??/2021
+## [2.1.0](https://github.com/BLKSerene/Wordless/releases/tag/2.1.0) - ??/??/2021
 ### 🎉 New Features
+- Menu: Add Preferences - Settings - Files - Miscellaneous - Read files in chunks of lines
 - Menu: Add Preferences - Settings - Stop Word Lists - Preview - Insert
 - Work Area: Add Work Area - Search Settings - Multi-search Mode - Insert
 
