@@ -45,105 +45,107 @@ class Wl_Text():
         self.tags = []
 
         file_ext = os.path.splitext(file['path'])[1].lower()
-        re_tags = wl_matching.get_re_tags(main)
+        re_tags = re.compile(wl_matching.get_re_tags(main))
+        re_tags_start = re.compile(fr'\s*({wl_matching.get_re_tags(main)})')
+
+        len_sections = self.main.settings_custom['files']['misc']['read_files_in_chunks']
         
         if file_ext == '.txt':
             with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
-                # Untokenized & Untagged
-                if self.tokenized == 'No' and self.tagged == 'No':
-                    for line in f:
-                        text = line.strip()
+                # Read files in chunks to reduce memory usage
+                sections = wl_text_utils.to_sections_unequal(f.readlines(), len_sections)
 
+            for i, section in enumerate(sections):
+                text = ''.join(section)
+
+                if text:
+                    # Untokenized & Untagged
+                    if self.tokenized == 'No' and self.tagged == 'No':
+                        tokens = wl_word_tokenization.wl_word_tokenize(main, text, lang = self.lang)
+
+                        self.tokens_multilevel.extend(tokens)
+                    # Untokenized & Tagged
+                    elif self.tokenized == 'No' and self.tagged == 'Yes':
+                        # Replace all tags with a whitespace to ensure no words run together
+                        text_no_tags = re.sub(re_tags, ' ', text)
+
+                        tokens = wl_word_tokenization.wl_word_tokenize(main, text_no_tags, lang = self.lang)
+
+                        self.tokens_multilevel.extend(tokens)
+
+                        # Check if the first token in the text is a tag
+                        if i == 0 and re.match(re_tags_start, text):
+                            # Check if the first paragraph is empty
+                            if not self.tokens_multilevel[0]:
+                                self.tokens_multilevel[0].append([])
+
+                            self.tokens_multilevel[0][0].insert(0, '')
+                            self.tags.append([])
+
+                        # Extract tags
+                        for tag in re.findall(re_tags, text):
+                            i_tag = text.index(tag)
+
+                            self.tokenize_text(text[:i_tag])
+                            self.tags[-1].append(tag)
+
+                            text = text[i_tag + len(tag):]
+
+                        # The last part of the text
                         if text:
-                            tokens = wl_word_tokenization.wl_word_tokenize(main, text, lang = self.lang)
+                            self.tokenize_text(text)
+                    # Tokenized & Untagged
+                    elif self.tokenized == 'Yes' and self.tagged == 'No':
+                        # Split text into paragraphs excluding the last empty one
+                        paras = re.split(r'\n(?=.|\n)', text)
 
-                            self.tokens_multilevel.append(tokens)
-                            self.tags.extend([[]] * len(list(wl_misc.flatten_list(tokens))))
-                        else:
-                            self.tokens_multilevel.append([])
-                            
-                # Untokenized & Tagged
-                elif self.tokenized == 'No' and self.tagged == 'Yes':
-                    for i, line in enumerate(f):
-                        text = line.strip()
-
-                        if text:
-                            # Replace all tags with a whitespace to ensure no words run together
-                            text_no_tags = re.sub(re_tags, ' ', text)
-                            text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
-
-                            tokens = wl_word_tokenization.wl_word_tokenize(main, text_no_tags, lang = self.lang)
-
-                            self.tokens_multilevel.append(tokens)
-
-                            # Check if the first token in the text is a tag
-                            if i == 0 and re.match(re_tags, text):
-                                self.tokens_multilevel[0][0].insert(0, '')
-                                self.tags.append([])
-
-                            # Extract tags
-                            for tag in re.findall(re_tags, text):
-                                i_tag = text.index(tag)
-
-                                self.tokenize_text(text[:i_tag])
-                                self.tags[-1].append(tag)
-
-                                text = text[i_tag + len(tag):]
-
-                            # The last part of the text
-                            if text:
-                                self.tokenize_text(text)
-                        else:
-                            self.tokens_multilevel.append([])
-                # Tokenized & Untagged
-                elif self.tokenized == 'Yes' and self.tagged == 'No':
-                    for line in f:
-                        text = line.strip()
-
-                        if text:
+                        for para in paras:
                             self.tokens_multilevel.append([])
 
-                            for sentence in wl_sentence_tokenization.wl_sentence_split(main, text):
-                                self.tokens_multilevel[-1].append(sentence.split())
-                        else:
+                            if para:
+                                for sentence in wl_sentence_tokenization.wl_sentence_split(main, para):
+                                    self.tokens_multilevel[-1].append(sentence.split())
+                    # Tokenized & Tagged
+                    elif self.tokenized == 'Yes' and self.tagged == 'Yes':
+                        # Split text into paragraphs excluding the last empty one
+                        paras = re.split(r'\n(?=.|\n)', text)
+
+                        for j, para in enumerate(paras):
                             self.tokens_multilevel.append([])
 
-                    self.tags = [[]] * len(list(wl_misc.flatten_list(self.tokens_multilevel)))
-                # Tokenized & Tagged
-                elif self.tokenized == 'Yes' and self.tagged == 'Yes':
-                    for i, line in enumerate(f):
-                        text = line.strip()
+                            if para:
+                                # Replace all tags with a whitespace to ensure no words run together
+                                text_no_tags = re.sub(re_tags, ' ', para)
 
-                        if text:
-                            self.tokens_multilevel.append([])
+                                for sentence in wl_sentence_tokenization.wl_sentence_split(main, text_no_tags):
+                                    self.tokens_multilevel[-1].append(sentence.split())
 
-                            # Replace all tags with a whitespace to ensure no words run together
-                            text_no_tags = re.sub(re_tags, ' ', text)
-                            text_no_tags = re.sub(r'\s+', ' ', text_no_tags)
+                                # Check if the first token in the text is a tag
+                                if i == 0 and j == 0 and re.match(re_tags_start, para):
+                                    # Check if the first paragraph is empty
+                                    if not self.tokens_multilevel[0]:
+                                        self.tokens_multilevel[0].append([])
 
-                            for sentence in wl_sentence_tokenization.wl_sentence_split(main, text_no_tags):
-                                self.tokens_multilevel[-1].append(sentence.split())
+                                    self.tokens_multilevel[0][0].insert(0, '')
 
-                            # Check if the first token in the text is a tag
-                            if i == 0 and re.match(re_tags, text):
-                                self.tokens_multilevel[0][0].insert(0, '')
+                                    self.tags.append([])
 
-                                self.tags.append([])
+                                # Extract tags
+                                for tag in re.findall(re_tags, para):
+                                    i_tag = para.index(tag)
 
-                            # Extract tags
-                            for tag in re.findall(re_tags, text):
-                                i_tag = text.index(tag)
+                                    self.split_text(para[:i_tag])
+                                    self.tags[-1].append(tag)
 
-                                self.tokenize_text(text[:i_tag])
-                                self.tags[-1].append(tag)
+                                    para = para[i_tag + len(tag):]
 
-                                text = text[i_tag + len(tag):]
+                                # The last part of the text
+                                if para:
+                                    self.split_text(para)
 
-                            # The last part of the text
-                            if text:
-                                self.tokenize_text(text)
-                        else:
-                            self.tokens_multilevel.append([])
+            # Add empty tags for untagged files
+            if self.tagged == 'No':
+                self.tags.extend([[] for i in wl_misc.flatten_list(self.tokens_multilevel)])
         elif file_ext == '.xml':
             with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
                 text = f.read()
@@ -186,17 +188,20 @@ class Wl_Text():
         self.tags = [[tag.strip() for tag in tags] for tags in self.tags]
 
     def tokenize_text(self, text):
+        text = text.strip()
+
         if text:
             tokens = wl_word_tokenization.wl_word_tokenize(
                 self.main, text,
                 lang = self.lang
             )
 
-            self.tags.extend([[]] * len(list(wl_misc.flatten_list(tokens))))
+            self.tags.extend([[] for i in wl_misc.flatten_list(tokens)])
 
     def split_text(self, text):
+        text = text.strip()
+
         if text:
             tokens = text.split()
 
-            for i in range(len(tokens)):
-                self.tags.append([])
+            self.tags.extend([[] for i in tokens])

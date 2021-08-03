@@ -31,13 +31,13 @@ for lang, stop_word_lists in main.settings_global['stop_word_lists'].items():
         test_stop_word_lists.append((lang, stop_word_list))
 
 @pytest.mark.parametrize('lang, stop_word_list', test_stop_word_lists)
-def test_get_stop_word_list(lang, stop_word_list, show_results = False):
+def test_get_stop_word_list(lang, stop_word_list):
+    print(f'{lang} / {stop_word_list}:')
+
     lang_text = wl_conversion.to_lang_text(main, lang)
     stop_words = wl_stop_word_lists.wl_get_stop_word_list(main, lang, stop_word_list = stop_word_list)
 
-    if show_results:
-        print(f'{lang} / {stop_word_list}:')
-        print(stop_words)
+    print(stop_words)
 
     if stop_word_list == 'Custom List':
         # Check if custom list is empty
@@ -52,4 +52,4 @@ def test_get_stop_word_list(lang, stop_word_list, show_results = False):
 
 if __name__ == '__main__':
     for lang, stop_word_list in test_stop_word_lists:
-        test_get_stop_word_list(lang, stop_word_list, show_results = True)
+        test_get_stop_word_list(lang, stop_word_list)

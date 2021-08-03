@@ -1,0 +1,8 @@
+ <TAG1>
+
+ This <TAG2>is</TAG2> the first sentence. This_TAG3 is the second sentence.
+ 
+
+This is the third sentence.
+
+ <TAG4></TAG4>
