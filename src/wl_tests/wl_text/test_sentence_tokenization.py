@@ -44,6 +44,10 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
 
     print(sentences)
 
+    # The count of sentences should be more than 1
+    if lang not in ['hye', 'guj', 'isl', 'srp_cyrl', 'srp_latn']:
+        assert len(sentences) > 1
+
     if lang == 'afr':
         assert sentences == ["Afrikaans is tipologies beskou 'n Indo-Europese, Wes-Germaanse, Nederfrankiese taal,[2] wat aan die suidpunt van Afrika onder invloed van verskeie ander tale en taalgroepe ontstaan het.", "Afrikaans is op 8 Mei 1925 as 'n amptelike taal van Suid-Afrika erken en is tans die derde jongste Germaanse taal wat amptelike status geniet, naas Faroëes wat in 1948 grondwetlik erken is en Luxemburgs wat hierdie status in 1984 verkry het."]
     elif lang == 'sqi':
@@ -104,6 +108,8 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
             assert sentences == ['Das Deutsche ist ein plurizentrische Sprache, also enthält mehrere Standardvarietäten in verschiedenen Regionen.', 'Ihr Sprachgebiet umfasst Deutschland, Österreich, die Deutschschweiz, Liechtenstein, Luxemburg, Ostbelgien, Südtirol, das Elsass und Lothringen sowie Nordschleswig.', 'Außerdem ist Deutsch eine Minderheitensprache in einigen europäischen und außereuropäischen Ländern, z.', 'B. in Rumänien und Südafrika sowie Nationalsprache im afrikanischen Namibia.', 'Deutsch ist die meistgesprochene Muttersprache in der Europäischen Union (EU).', '[27]']
         elif sentence_tokenizer == 'spaCy - Sentence Recognizer':
             assert sentences == ['Das Deutsche ist ein plurizentrische Sprache, also enthält mehrere Standardvarietäten in verschiedenen Regionen.', 'Ihr Sprachgebiet umfasst Deutschland, Österreich, die Deutschschweiz, Liechtenstein, Luxemburg, Ostbelgien, Südtirol, das Elsass und Lothringen sowie Nordschleswig.', 'Außerdem ist Deutsch eine Minderheitensprache in einigen europäischen und außereuropäischen Ländern, z. B. in Rumänien und Südafrika sowie Nationalsprache im afrikanischen Namibia.', 'Deutsch ist die meistgesprochene Muttersprache in der Europäischen Union (EU).[27]']
+    elif lang == 'grc':
+        assert sentences == ["Ὅτι μὲν ὑμεῖς, ὦ ἄνδρες Ἀθηναῖοι, πεπόνθατε ὑπὸ τῶν ἐμῶν κατηγόρων, οὐκ οἶδα· ἐγὼ δ' οὖν καὶ αὐτὸς ὑπ' αὐτῶν ὀλίγου ἐμαυτοῦ ἐπελαθόμην, οὕτω πιθανῶς ἔλεγον.", 'Καίτοι ἀληθές γε ὡς ἔπος εἰπεῖν οὐδὲν εἰρήκασιν.']
     elif lang == 'ell':
         if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
             assert sentences == ['Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[10] και αποτελεί το μοναδικό μέλος του ελληνικού κλάδου, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.', 'Ανήκει επίσης στον βαλκανικό γλωσσικό δεσμό.', 'Στην ελληνική γλώσσα, έχουμε γραπτά κείμενα ήδη από τον 15ο αιώνα π.Χ.. Σαν Παγκόσμια Ημέρα Ελληνικής Γλώσσας έχει καθιερωθεί η 9η Φεβρουαρίου.']
@@ -220,10 +226,6 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
         assert sentences == ['Èdè Yorùbá Ni èdè tí ó ṣàkójọ pọ̀ gbogbo kú oótu o-ò-jíire bí, níapá ìwọ̀ Oòrùn ilẹ̀ Nàìjíríà, tí a bá wo èdè Yorùbá, àwọn onímọ̀ pín èdè náà sábẹ́ ẹ̀yà Kwa nínú ẹbí èdè Niger-Congo.', 'Wọ́n tún fìdí rẹ̀ múlẹ̀ pé ẹ̀yà Kwa yìí ló wọ́pọ̀ jùlọ ní sísọ, ní ìwọ̀ oòrùn aláwọ̀ dúdú fún ẹgbẹẹgbẹ̀rún ọdún.', 'Àwọn onímọ̀ èdè kan tilẹ̀ ti fi ìdí ọ̀rọ̀ múlẹ̀ pé láti orírun kan náà ni àwọn èdè bí Yorùbá, Kru, Banle, Twi, Ga, Ewe, Fon, Edo, Nupe, Igbo, Idoma, Efik àti Ijaw ti bẹ̀rẹ̀ sí yapa gẹ́gẹ́ bi èdè ọ̀tọ̀ọ̀tọ̀ tó dúró láti bí ẹgbẹ̀rún mẹ́ta ọ̀dún sẹ́yìn. [', '1] Ọ̀kan pàtàkì lára àwọn èdè orílẹ̀ èdè Nàìjíríà ni èdè Yorùbá.', 'Àwọn ìpínlẹ̀ tí a ti lè rí àwọn olùsọ èdè Yorùbá nílẹ̀ Nàìjíríà ni ìpínlẹ̀ Ẹdó, ìpínlẹ̀ Òndó, ìpínlẹ̀ Ọ̀ṣun, ìpínlẹ̀ Ọ̀yọ́, ìpínlẹ̀ Èkó, àti ìpínlẹ̀ Ògùn.', 'Ẹ̀wẹ̀ a tún rí àwọn orílẹ̀-èdè míràn bí Tógò apá kan ní Gúúsù ilẹ̀ Amẹ́ríkà bí i Cuba, Brasil, Haiti, Ghana, Sierra Leone,United Kingdom àti Trinidad, gbogbo orílẹ̀-èdè tí a dárúkọ wọ̀nyí, yàtọ̀ sí orílẹ̀-èdè Nàìjíríà, òwò ẹrú ni ó gbé àwọn ẹ̀yà Yorùbá dé ibẹ.[2]']
     else:
         raise Exception(f'Warning: language code "{lang}" is absent from the list!')
-
-    # The count of sentences should be more than 1
-    if lang not in ['hye', 'guj', 'isl', 'srp_cyrl', 'srp_latn']:
-        assert len(sentences) > 1
 
 if __name__ == '__main__':
     for lang, sentence_tokenizer in test_sentence_tokenizers:
