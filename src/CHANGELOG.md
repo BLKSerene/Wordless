@@ -15,6 +15,7 @@
 ### 🎉 New Features
 - Menu: Add Preferences - Settings - Files - Miscellaneous - Read files in chunks of lines
 - Menu: Add Preferences - Settings - Stop Word Lists - Preview - Insert
+- Utils: Add spaCy's Azerbaijani word tokenizer
 - Work Area: Add Work Area - Search Settings - Multi-search Mode - Insert
 
 ### ✨ Improvements

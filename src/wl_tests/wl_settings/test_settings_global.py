@@ -128,7 +128,7 @@ def test_settings_global():
     # Loading languages supported by spaCy
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
         if lang.ispkg:
-            if lang.name not in ['ja', 'ko', 'sr', 'th', 'vi', 'zh', 'xx', 'az']:
+            if lang.name not in ['ja', 'ko', 'sr', 'th', 'vi', 'zh', 'xx']:
                 langs_supported_spacy.append(lang.name)
             # Chinese
             elif lang.name == 'zh':

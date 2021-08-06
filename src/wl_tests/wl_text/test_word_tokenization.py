@@ -63,6 +63,8 @@ def test_word_tokenize(lang, word_tokenizer):
         assert tokens == ['Հայերեն', '(', 'ավանդական՝', 'հայերէն', ')', ',', 'հնդեվրոպական', 'լեզվաընտանիքի', 'առանձին', 'ճյուղ', 'հանդիսացող', 'լեզու։']
     elif lang == 'asm':
         assert tokens == ['অসমীয়া', 'ভাষা', 'হৈছে', 'সকলোতকৈ', 'পূৰ্বীয়', 'ভাৰতীয়-আৰ্য', 'ভাষা', '।']
+    elif lang == 'aze':
+        assert tokens == ['Azərbaycan', 'dili[1][2][3', ']', '—', 'Azərbaycan', 'Respublikasının', 'və', 'Rusiya', 'Federasiyasının', 'Dağıstan', 'Respublikasının[4', ']', 'rəsmi', 'dövlət', 'dilidir', '.']
     elif lang == 'eus':
         assert tokens == ['Euskara', 'Euskal', 'Herriko', 'hizkuntza', 'da.[5', ']']
     elif lang == 'ben':
