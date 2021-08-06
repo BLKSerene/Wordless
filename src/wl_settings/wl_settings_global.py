@@ -331,6 +331,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentencizer')
             ],
 
+            'aze': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'eus': [
                 main.tr('spaCy - Sentencizer')
             ],
@@ -654,6 +658,10 @@ def init_settings_global(main):
                 main.tr('NLTK - Penn Treebank Tokenizer'),
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('Sacremoses - Moses Tokenizer')
+            ],
+
+            'aze': [
+                main.tr('spaCy - Azerbaijani Word Tokenizer')
             ],
 
             'eus': [
