@@ -407,6 +407,10 @@ def init_settings_global(main):
                 main.tr('syntok - Sentence Segmenter')
             ],
 
+            'grc': [
+                main.tr('spaCy - Sentencizer')
+            ],
+
             'ell': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
                 main.tr('spaCy - Sentence Recognizer')
@@ -783,6 +787,10 @@ def init_settings_global(main):
                 main.tr('Sacremoses - Moses Tokenizer'),
                 main.tr('spaCy - German Word Tokenizer'),
                 main.tr('syntok - Word Tokenizer')
+            ],
+
+            'grc': [
+                main.tr('spaCy - Greek (Ancient) Word Tokenizer')
             ],
 
             'ell': [
@@ -1849,6 +1857,7 @@ def init_settings_global(main):
 
             'grc': [
                 main.tr('CLTK - Greek (Ancient) Stop Word List'),
+                main.tr('spaCy - Greek (Ancient) Stop Word List'),
                 main.tr('Custom List')
             ],
 
