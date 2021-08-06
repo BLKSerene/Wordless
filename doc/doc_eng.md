@@ -418,7 +418,7 @@ Arabic (Standard)    |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
 Armenian             |✔|✔|⭕️ |✖️|✖️|✔
 Assamese             |⭕️ |✔|✔|✖️|✖️|✖️
 Asturian             |⭕️ |⭕️ |⭕️ |✖️|✔|✖️
-Azerbaijani          |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
+Azerbaijani          |✔|✔|⭕️ |✖️|✖️|✔
 Basque               |✔|✔|⭕️ |✖️|✖️|✔
 Belarusian           |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
 Bengali              |✔|✔|✔|✖️|✔|✔
@@ -443,7 +443,7 @@ French (Old)         |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
 Galician             |⭕️ |⭕️ |⭕️ |✖️|✔|✔
 German               |✔|✔|✔|✔|✔|✔
 German (Middle High) |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
-Greek (Ancient)      |⭕️ |⭕️ |⭕️ |✖️|✔|✔
+Greek (Ancient)      |✔|✔|⭕️ |✖️|✔|✔
 Greek (Modern)       |✔|✔|✔|✔|✔|✔
 Gujarati             |✔|✔|✔|✖️|✖️|✔
 Hausa                |⭕️ |⭕️ |⭕️ |✖️|✖️|✔
