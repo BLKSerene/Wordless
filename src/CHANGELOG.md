@@ -28,6 +28,9 @@
 ### ❌ Removals
 - File Area: Remove support for .tmx files
 
+### ⏫ Dependency Changes
+- Dependencies: Upgrade Charset Normalizer to 2.0.4
+
 ## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - 07/21/2021
 
 ### 🎉 New Features
