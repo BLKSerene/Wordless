@@ -51,6 +51,9 @@ def test_word_tokenize(lang, word_tokenizer):
 
     print(tokens)
 
+    # The count of tokens should be more than 1
+    assert len(tokens) > 1
+
     if lang == 'afr':
         assert tokens == ['Afrikaans', 'is', 'tipologies', 'beskou', "'", 'n', 'Indo', '-', 'Europese', ',', 'Wes', '-', 'Germaanse', ',', 'Nederfrankiese', 'taal,[2', ']', 'wat', 'aan', 'die', 'suidpunt', 'van', 'Afrika', 'onder', 'invloed', 'van', 'verskeie', 'ander', 'tale', 'en', 'taalgroepe', 'ontstaan', 'het', '.']
     elif lang == 'sqi':
@@ -133,6 +136,8 @@ def test_word_tokenize(lang, word_tokenizer):
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'das', 'Deutsche', '(', '[', 'dɔɪ̯tʃ];[26', ']', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', ',', 'die', 'weltweit', 'etwa', '90', 'bis', '105', 'Millionen', 'Menschen', 'als', 'Muttersprache', 'und', 'weiteren', 'rund', '80', 'Millionen', 'als', 'Zweit-', 'oder', 'Fremdsprache', 'dient', '.']
         elif word_tokenizer == 'syntok - Word Tokenizer':
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'das', 'Deutsche', '(', '[', 'dɔɪ̯tʃ', ']', ';', '[', '26', ']', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', ',', 'die', 'weltweit', 'etwa', '90', 'bis', '105', 'Millionen', 'Menschen', 'als', 'Muttersprache', 'und', 'weiteren', 'rund', '80', 'Millionen', 'als', 'Zweit', '-', 'oder', 'Fremdsprache', 'dient', '.']
+    elif lang == 'grc':
+        assert tokens == ['Ὅτι', 'μὲν', 'ὑμεῖς', ',', 'ὦ', 'ἄνδρες', 'Ἀθηναῖοι', ',', 'πεπόνθατε', 'ὑπὸ', 'τῶν', 'ἐμῶν', 'κατηγόρων', ',', 'οὐκ', 'οἶδα', '·', 'ἐγὼ', "δ'", 'οὖν', 'καὶ', 'αὐτὸς', "ὑπ'", 'αὐτῶν', 'ὀλίγου', 'ἐμαυτοῦ', 'ἐπελαθόμην', ',', 'οὕτω', 'πιθανῶς', 'ἔλεγον', '.']
     elif lang == 'ell':
         if word_tokenizer == 'Sacremoses - Moses Tokenizer':
             assert tokens == ['Η', 'ελληνική', 'γλώσσα', 'ανήκει', 'στην', 'ινδοευρωπαϊκή', 'οικογένεια', '[', '10', ']', 'και', 'αποτελεί', 'το', 'μοναδικό', 'μέλος', 'του', 'ελληνικού', 'κλάδου', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδος', 'και', 'της', 'Κύπρου', '.']
