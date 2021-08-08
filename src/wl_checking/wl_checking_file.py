@@ -103,15 +103,7 @@ def check_files_on_loading_colligation(main, files):
     files_pos_tagging_unsupported = []
     loading_pass = True
 
-    if files:
-        # Check for invalid XML files
-        for file in files:
-            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
-                if file['tokenized'] == 'No' or file['tagged'] == 'No':
-                    wl_msg_box.wl_msg_box_invalid_xml_file(main)
-
-                    return False
-
+    if check_files_on_loading(main, files):
         for file in files:
             if file['lang'] not in main.settings_global['pos_taggers']:
                 files_pos_tagging_unsupported.append(file)
@@ -126,8 +118,6 @@ def check_files_on_loading_colligation(main, files):
         if files_pos_tagging_unsupported:
             loading_pass = False
     else:
-        wl_msg_box.wl_msg_box_no_files_selected(main)
-        
         loading_pass = False
 
     return loading_pass

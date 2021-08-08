@@ -1086,8 +1086,7 @@ def init_settings_default(main):
 
         'tags': {
             'tags_header': [
-                ['Non-embedded', 'Header', '<teiHeader>', '</teiHeader>'],
-                ['Non-embedded', 'Header', '<header>', '</header>']
+                ['Non-embedded', 'Header', '<teiHeader>', '</teiHeader>']
             ],
 
             'tags_body': [
@@ -1098,7 +1097,8 @@ def init_settings_default(main):
             'tags_xml': [
                 ['Non-embedded', 'Paragraph', '<p>', '</p>'],
                 ['Non-embedded', 'Sentence', '<s>', '</s>'],
-                ['Non-embedded', 'Word', '<w>', '</w>']
+                ['Non-embedded', 'Word', '<w>', '</w>'],
+                ['Non-embedded', 'Word', '<c>', '</c>']
             ]
         },
 
