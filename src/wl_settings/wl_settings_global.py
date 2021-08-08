@@ -2615,6 +2615,7 @@ def init_settings_global(main):
 
             'style_important': '''
                 color: #F00;
+                font-weight: bold;
             ''',
 
             'style_hint': '''
