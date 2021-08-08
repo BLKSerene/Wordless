@@ -10,6 +10,7 @@
 #
 
 import copy
+import re
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -34,7 +35,7 @@ class Wl_Table_Tags_Header(wl_table.Wl_Table_Tags):
         return new_item_level
 
     def reset_table(self):
-        super().reset_table()
+        self.clear_table(0)
 
         for tags in self.main.settings_default['tags']['tags_header']:
             self.add_item(texts = tags)
@@ -54,7 +55,7 @@ class Wl_Table_Tags_Body(wl_table.Wl_Table_Tags):
         return new_item_level
 
     def reset_table(self):
-        super().reset_table()
+        self.clear_table(0)
 
         for tags in self.main.settings_default['tags']['tags_body']:
             self.add_item(texts = tags)
@@ -64,7 +65,6 @@ class Wl_Table_Tags_Xml(wl_table.Wl_Table_Tags):
         new_item_level = wl_box.Wl_Combo_Box(self)
 
         new_item_level.addItems([
-            self.tr('Division'),
             self.tr('Paragraph'),
             self.tr('Sentence'),
             self.tr('Word')
@@ -75,8 +75,30 @@ class Wl_Table_Tags_Xml(wl_table.Wl_Table_Tags):
 
         return new_item_level
 
+    def item_changed(self, item = None):
+        self.blockSignals(True)
+
+        for row in range(self.rowCount()):
+            opening_tag_widget = self.cellWidget(row, 2)
+            opening_tag_text = opening_tag_widget.text()
+
+            # Check if the XML tags are valid
+            if opening_tag_text and not re.search(r'^\<[^<>/\s]+?\>$', opening_tag_text):
+                wl_msg_box.wl_msg_box_invalid_xml_tag(self.main)
+
+                opening_tag_widget.setText(opening_tag_widget.text_old)
+                opening_tag_widget.setFocus()
+
+                self.blockSignals(False)
+
+                return
+
+        self.blockSignals(False)
+
+        super().item_changed(item = item)
+
     def reset_table(self):
-        super().reset_table()
+        self.clear_table(0)
 
         for tags in self.main.settings_default['tags']['tags_xml']:
             self.add_item(texts = tags)
@@ -194,14 +216,16 @@ class Wl_Settings_Tags(wl_tree.Wl_Settings):
         group_box_header_tag_settings = QGroupBox(self.tr('Header Tag Settings'), self)
 
         self.table_tags_header = Wl_Table_Tags_Header(self)
-        self.label_tags_header = wl_label.Wl_Label_Important(self.tr('All contents surrounded by header tags will be ignored during text processing!'), self)
+        self.label_tags_header = wl_label.Wl_Label_Important(self.tr('Note: All contents surrounded by header tags will be discarded during text processing!'), self)
 
         group_box_header_tag_settings.setLayout(wl_layout.Wl_Layout())
-        group_box_header_tag_settings.layout().addWidget(self.table_tags_header, 0, 0, 1, 3)
+        group_box_header_tag_settings.layout().addWidget(self.table_tags_header, 0, 0, 1, 5)
         group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_add, 1, 0)
-        group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_remove, 1, 1)
-        group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_reset, 1, 2)
-        group_box_header_tag_settings.layout().addWidget(self.label_tags_header, 2, 0, 1, 3)
+        group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_insert, 1, 1)
+        group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_remove, 1, 2)
+        group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_clear, 1, 3)
+        group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_reset, 1, 4)
+        group_box_header_tag_settings.layout().addWidget(self.label_tags_header, 2, 0, 1, 5)
 
         group_box_header_tag_settings.layout().setRowStretch(3, 1)
 
@@ -212,11 +236,13 @@ class Wl_Settings_Tags(wl_tree.Wl_Settings):
         self.label_tags_body = wl_label.Wl_Label_Hint(self.tr('Use * to indicate any number of characters'), self)
 
         group_box_body_tag_settings.setLayout(wl_layout.Wl_Layout())
-        group_box_body_tag_settings.layout().addWidget(self.table_tags_body, 0, 0, 1, 3)
+        group_box_body_tag_settings.layout().addWidget(self.table_tags_body, 0, 0, 1, 5)
         group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_add, 1, 0)
-        group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_remove, 1, 1)
-        group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_reset, 1, 2)
-        group_box_body_tag_settings.layout().addWidget(self.label_tags_body, 2, 0, 1, 3)
+        group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_insert, 1, 1)
+        group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_remove, 1, 2)
+        group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_clear, 1, 3)
+        group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_reset, 1, 4)
+        group_box_body_tag_settings.layout().addWidget(self.label_tags_body, 2, 0, 1, 5)
 
         group_box_body_tag_settings.layout().setRowStretch(3, 1)
 
@@ -226,10 +252,12 @@ class Wl_Settings_Tags(wl_tree.Wl_Settings):
         self.table_tags_xml = Wl_Table_Tags_Xml(self)
 
         group_box_xml_tag_settings.setLayout(wl_layout.Wl_Layout())
-        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml, 0, 0, 1, 3)
+        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml, 0, 0, 1, 5)
         group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_add, 1, 0)
-        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_remove, 1, 1)
-        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_reset, 1, 2)
+        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_insert, 1, 1)
+        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_remove, 1, 2)
+        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_clear, 1, 3)
+        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_reset, 1, 4)
 
         group_box_xml_tag_settings.layout().setRowStretch(2, 1)
 
@@ -267,23 +295,4 @@ class Wl_Settings_Tags(wl_tree.Wl_Settings):
         settings['tags']['tags_body'] = self.table_tags_body.get_tags()
         settings['tags']['tags_xml'] = self.table_tags_xml.get_tags()
 
-        tag_paragraph = False
-        tag_sentence = False
-        tag_word = False
-
-        for _, level, _, _ in self.main.settings_custom['tags']['tags_xml']:
-            if level == 'Paragraph':
-                tag_paragraph = True
-            if level == 'Sentence':
-                tag_sentence = True
-            if level == 'Word':
-                tag_word = True
-
-        if not tag_paragraph or not tag_sentence or not tag_word:
-            self.table_tags_xml.reset_table()
-
-            wl_msg_box.wl_msg_box_invalid_xml_tags(self.main)
-
-            return False
-        else:
-            return True
+        return True

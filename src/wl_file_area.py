@@ -560,7 +560,7 @@ class Wl_Table_Files(wl_table.Wl_Table):
             self.main.find_menu_item(self.tr('Close Selected')).setEnabled(False)
 
     def cell_double_clicked(self, row, col):
-        if col == self.find_col(self.tr('File Name')):
+        if col == self.find_col(self.tr('Name')):
             self.editItem(self.item(row, col))
 
     def open_files(self):

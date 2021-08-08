@@ -64,7 +64,7 @@ class Wl_Worker_Fetch_Data_Tagsets(wl_threading.Wl_Worker):
         preview_pos_tagger = settings_custom['preview_pos_tagger'][preview_lang]
         mappings = settings_custom['mappings'][preview_lang][preview_pos_tagger]
 
-        self.progress_updated.emit(self.tr('Updating table ...'))
+        self.progress_updated.emit(self.tr('Updating table...'))
 
         time.sleep(0.1)
 
@@ -401,8 +401,8 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
                 'X'
             ])
 
-            combo_box_tag_univsersal.setCurrentText(tag_universal)
             combo_box_tag_univsersal.setEditable(True)
+            combo_box_tag_univsersal.setCurrentText(tag_universal)
 
             self.table_mappings.setItem(i, 0, QTableWidgetItem(tag))
             self.table_mappings.setCellWidget(i, 1, combo_box_tag_univsersal)

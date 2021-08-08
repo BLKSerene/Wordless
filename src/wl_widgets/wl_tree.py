@@ -53,7 +53,7 @@ class Wl_Settings(QWidget):
 
             return False
         elif not os.path.isdir(line_edit.text()):
-            wl_msg_box.wl_msge_box_path_not_dir(self.main, line_edit.text())
+            wl_msg_box.wl_msg_box_path_not_dir(self.main, line_edit.text())
 
             line_edit.setFocus()
             line_edit.selectAll()

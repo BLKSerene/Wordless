@@ -51,11 +51,40 @@ def test_file_area():
     # Disable encoding detection
     main.settings_custom['file_area']['auto_detection_settings']['detect_encodings'] = False
 
-    # File types
+    # File types (Non-XML)
+    files_non_xml = glob.glob('wl_tests_files/wl_file_area/file_types/*.*')
+    files_non_xml = [file for file in files_non_xml if not file.endswith('.xml')]
+
     open_file(
-        file_paths = glob.glob('wl_tests_files/wl_file_area/file_types/*.*'),
+        file_paths = files_non_xml,
         update_gui = update_gui_file_types
     )
+
+    # File types (XML)
+    for i in range(3):
+        if i == 0:
+            main.settings_custom['tags']['tags_xml'] = [
+                ['Non-embedded', 'Paragraph', '<p>', '</p>'],
+                ['Non-embedded', 'Paragraph', '<head>', '</head>'],
+                ['Non-embedded', 'Sentence', '<s>', '</s>'],
+                ['Non-embedded', 'Word', '<w>', '</w>'],
+                ['Non-embedded', 'Word', '<c>', '</c>']
+            ]
+        # XML tags unfound
+        elif i == 1:
+            main.settings_custom['tags']['tags_xml'] = [
+                ['Non-embedded', 'Paragraph', '<pp>', '</pp>'],
+                ['Non-embedded', 'Sentence', '<ss>', '</ss>'],
+                ['Non-embedded', 'Word', '<ww>', '</ww>'],
+            ]
+        # XML tags unspecified
+        elif i == 2:
+            main.settings_custom['tags']['tags_xml'] = []
+
+        open_file(
+            file_paths = glob.glob('wl_tests_files/wl_file_area/file_types/*.xml'),
+            update_gui = update_gui_file_types
+        )
 
     # UnicodeDecodeError
     open_file(
@@ -115,12 +144,17 @@ def update_gui_file_types(error_msg, new_files):
         assert file_text.tokens_flat == ['Heading', 'This', 'is', 'the', 'first', 'sentence', '.', 'This', 'is', 'the', 'second', 'sentence', '.', 'This', 'is', 'the', 'third', 'sentence', '.', '2', '-', '2', '&', '2', '-', '3', '2', '-', '4', '3', '-', '2', '&', '4', '-', '2', '3', '-', '3', '3', '-', '4', '4', '-', '3', '4', '-', '4', '5', '-', '2', '5', '-', '3', '5', '-', '4', '5', '-', '4', '-', '1', '5', '-', '4', '-', '2', '5', '-', '4', '-', '3', '5', '-', '4', '-', '4']
         assert file_text.offsets_paras == [0, 0, 0, 1, 1, 1, 13, 13, 13, 19, 19, 29, 42, 48, 77, 77, 77]
         assert file_text.offsets_sentences == [0, 1, 7, 13, 19, 29, 42, 48]
+    # XML
     elif file_name == 'XML File.xml':
-        pass
-        # assert file_text.tokens_multilevel == []
-        # assert file_text.tokens_flat == []
-        # assert file_text.offsets_paras == []
-        # assert file_text.offsets_sentences == []
+        assert file_text.tokens_multilevel == [[['FACTSHEET', 'WHAT', 'IS', 'AIDS', '?']], [['AIDS', '(', 'Acquired', 'Immune', 'Deficiency', 'Syndrome', ')', 'is', 'a', 'condition', 'caused', 'by', 'a', 'virus', 'called', 'HIV', '(', 'Human', 'Immuno', 'Deficiency', 'Virus', ')', '.'], ['This', 'virus', 'affects', 'the', 'body', "'s", 'defence', 'system', 'so', 'that', 'it', 'can', 'not', 'fight', 'infection', '.']]]
+        assert file_text.tokens_flat == ['FACTSHEET', 'WHAT', 'IS', 'AIDS', '?', 'AIDS', '(', 'Acquired', 'Immune', 'Deficiency', 'Syndrome', ')', 'is', 'a', 'condition', 'caused', 'by', 'a', 'virus', 'called', 'HIV', '(', 'Human', 'Immuno', 'Deficiency', 'Virus', ')', '.', 'This', 'virus', 'affects', 'the', 'body', "'s", 'defence', 'system', 'so', 'that', 'it', 'can', 'not', 'fight', 'infection', '.']
+        assert file_text.offsets_paras == [0, 5]
+        assert file_text.offsets_sentences == [0, 5, 28]
+    elif file_name in ['XML File (2).xml', 'XML File (3).xml']:
+        assert file_text.tokens_multilevel == [[], [], [['FACTSHEET', 'WHAT', 'IS', 'AIDS', '?']], [['AIDS', '(', 'Acquired', 'Immune', 'Deficiency', 'Syndrome)is', 'a', 'condition', 'caused', 'by', 'a', 'virus', 'called', 'HIV', '(', 'Human', 'Immuno', 'Deficiency', 'Virus', ')', '.']], [['This', 'virus', 'affects', 'the', 'body', "'s", 'defence', 'system', 'so', 'that', 'it', 'can', 'not', 'fight', 'infection', '.']]]
+        assert file_text.tokens_flat == ['FACTSHEET', 'WHAT', 'IS', 'AIDS', '?', 'AIDS', '(', 'Acquired', 'Immune', 'Deficiency', 'Syndrome)is', 'a', 'condition', 'caused', 'by', 'a', 'virus', 'called', 'HIV', '(', 'Human', 'Immuno', 'Deficiency', 'Virus', ')', '.', 'This', 'virus', 'affects', 'the', 'body', "'s", 'defence', 'system', 'so', 'that', 'it', 'can', 'not', 'fight', 'infection', '.']
+        assert file_text.offsets_paras == [0, 0, 0, 5, 26]
+        assert file_text.offsets_sentences == [0, 5, 26]
 
     assert file_text.tags == [[] for i in file_text.tokens_flat]
 

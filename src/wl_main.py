@@ -296,7 +296,7 @@ class Wl_Main(QMainWindow):
         menu_help.addAction(menu_help_changelog)
         menu_help.addAction(menu_help_about)
 
-    # Preferences -> Show Status Bar
+    # Preferences - Show Status Bar
     def prefs_show_status_bar(self):
         self.settings_custom['menu']['prefs']['show_status_bar'] = self.find_menu_item(self.tr('Show Status Bar')).isChecked()
 
@@ -305,30 +305,30 @@ class Wl_Main(QMainWindow):
         else:
             self.statusBar().hide()
 
-    # Preferences -> Reset Layouts
+    # Preferences - Reset Layouts
     def prefs_reset_layouts(self):
         if wl_msg_box.wl_msg_box_reset_layouts(self):
             self.centralWidget().setSizes([self.height() - 210, 210])
 
-    # Help -> Citing
+    # Help - Citing
     def help_citing(self):
         dialog_citing = wl_dialog_help.Wl_Dialog_Citing(self)
 
         dialog_citing.open()
 
-    # Help -> Acknowledgments
+    # Help - Acknowledgments
     def help_acks(self):
         dialog_acks = wl_dialog_help.Wl_Dialog_Acks(self)
 
         dialog_acks.open()
 
-    # Help -> Need Help?
+    # Help - Need Help?
     def help_need_help(self):
         dialog_need_help = wl_dialog_help.Wl_Dialog_Need_Help(self)
 
         dialog_need_help.open()
 
-    # Help -> Contributing
+    # Help - Contributing
     def help_contributing(self):
         msg_box = wl_msg_box.Wl_Msg_Box_Info_Help(
             main = self,
@@ -346,26 +346,26 @@ class Wl_Main(QMainWindow):
 
         msg_box.open()
 
-    # Help -> Donating
+    # Help - Donating
     def help_donating(self):
         dialog_donating = wl_dialog_help.Wl_Dialog_Donating(self)
 
         dialog_donating.open()
 
-    # Help -> Check for Updates
+    # Help - Check for Updates
     def help_check_updates(self, on_startup = False):
         dialog_check_updates = wl_dialog_help.Wl_Dialog_Check_Updates(self, on_startup = on_startup)
 
         if not on_startup:
             dialog_check_updates.open()
 
-    # Help -> Changelog
+    # Help - Changelog
     def help_changelog(self):
         dialog_changelog = wl_dialog_help.Wl_Dialog_Changelog(self)
 
         dialog_changelog.open()
 
-    # Help -> About Wordless
+    # Help - About Wordless
     def help_about(self):
         dialog_about = wl_dialog_help.Wl_Dialog_About(self)
 

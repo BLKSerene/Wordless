@@ -147,11 +147,6 @@ class Wl_Text():
             if self.tagged == 'No':
                 self.tags.extend([[] for i in wl_misc.flatten_list(self.tokens_multilevel)])
         elif file_ext == '.xml':
-            with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
-                text = f.read()
-
-            soup = bs4.BeautifulSoup(text, features = 'lxml-xml')
-
             tags_para = []
             tags_sentence = []
             tags_word = []
@@ -164,17 +159,33 @@ class Wl_Text():
                 elif level == 'Word':
                     tags_word.append(opening_tag[1:-1])
 
-            for para in soup.select(','.join(tags_para)):
-                self.tokens_multilevel.append([])
+            with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
+                soup = bs4.BeautifulSoup(f.read(), features = 'lxml-xml')
 
-                for sentence in para.select(','.join(tags_sentence)):
-                    self.tokens_multilevel[-1].append([])
+            tags_para = ','.join(tags_para)
+            tags_sentence = ','.join(tags_sentence)
+            tags_word = ','.join(tags_word)
 
-                    for word in sentence.select(','.join(tags_word)):
-                        self.tokens_multilevel[-1][-1].append(word.get_text())
+            if ((tags_para and tags_sentence and tags_word) and
+                (soup.select(tags_para) and soup.select(tags_sentence) and soup.select(tags_word))):
+                for para in soup.select(tags_para):
+                    self.tokens_multilevel.append([])
 
-                        self.tags.append([])
-        
+                    for sentence in para.select(tags_sentence):
+                        self.tokens_multilevel[-1].append([])
+
+                        for word in sentence.select(tags_word):
+                            self.tokens_multilevel[-1][-1].append(word.get_text().strip())
+            # XML tags unfound or unspecified
+            else:
+                text = soup.get_text()
+                tokens = wl_word_tokenization.wl_word_tokenize(main, text, lang = self.lang)
+
+                self.tokens_multilevel.extend(tokens)
+
+            # Add empty tags
+            self.tags.extend([[] for i in wl_misc.flatten_list(self.tokens_multilevel)])
+
         # Paragraph and sentence offsets
         for para in self.tokens_multilevel:
             self.offsets_paras.append(len(self.tokens_flat))
