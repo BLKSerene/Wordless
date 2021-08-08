@@ -1120,7 +1120,7 @@ def generate_table(main, table):
     settings = main.settings_custom['concordancer']
     files = main.wl_files.get_selected_files()
 
-    if wl_checking_file.check_files_on_loading_colligation(main, files):
+    if wl_checking_file.check_files_on_loading(main, files):
         if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
@@ -1200,7 +1200,7 @@ def generate_fig(main):
     settings = main.settings_custom['concordancer']
     files = main.wl_files.get_selected_files()
 
-    if wl_checking_file.check_files_on_loading_colligation(main, files):
+    if wl_checking_file.check_files_on_loading(main, files):
         # Check for empty search terms
         if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
