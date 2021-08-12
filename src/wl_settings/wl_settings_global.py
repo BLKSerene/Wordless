@@ -1793,6 +1793,7 @@ def init_settings_global(main):
 
             'aze': [
                 main.tr('NLTK - Azerbaijani Stop Word List'),
+                main.tr('spaCy - Azerbaijani Stop Word List'),
                 main.tr('Custom List')
             ],
 

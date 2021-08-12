@@ -16,7 +16,7 @@
 - Menu: Add Preferences - Settings - Files - Miscellaneous - Read files in chunks of lines
 - Menu: Add Preferences - Settings - Files - Tags - Header Tag Settings / Body Tag Settings / XML Tag Settings - Insert/Clear
 - Menu: Add Preferences - Settings - Stop Word Lists - Preview - Insert
-- Utils: Add spaCy's Azerbaijani word tokenizer
+- Utils: Add spaCy's Azerbaijani word tokenizer and stop word list
 - Utils: Add spaCy's Greek (Ancient) word tokenizer and stop word list
 - Work Area: Add Work Area - Search Settings - Multi-search Mode - Insert
 

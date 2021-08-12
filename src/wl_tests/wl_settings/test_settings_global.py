@@ -179,7 +179,7 @@ def test_settings_global():
         if lang.ispkg:
             for file in os.listdir(f'{spacy.lang.__path__[0]}/{lang.name}/'):
                 if file == 'stop_words.py':
-                    if lang.name not in ['sr', 'xx', 'az']:
+                    if lang.name not in ['sr', 'xx']:
                         langs_supported_spacy_stop_words.append(lang.name)
                     # Serbian
                     elif lang.name == 'sr':
