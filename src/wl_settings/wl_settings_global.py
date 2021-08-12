@@ -21,132 +21,136 @@ def init_settings_global(main):
 
     main.settings_global = {
         'langs': {
-            main.tr('Afrikaans'):             ['afr', 'af', 'Indo-European'],
-            main.tr('Akkadian'):              ['akk', 'akk', 'Afro-Asiatic'],
-            main.tr('Albanian'):              ['sqi', 'sq', 'Indo-European'],
-            main.tr('Amharic'):               ['amh', 'am', 'Afro-Asiatic'],
-            main.tr('Arabic'):                ['ara', 'ar', 'Afro-Asiatic'],
-            main.tr('Arabic (Standard)'):     ['arb', 'arb', 'Afro-Asiatic'],
-            main.tr('Aragonese'):             ['arg', 'an', 'Indo-European'],
-            main.tr('Armenian'):              ['hye', 'hy', 'Indo-European'],
-            main.tr('Assamese'):              ['asm', 'as', 'Indo-European'],
-            main.tr('Asturian'):              ['ast', 'ast', 'Indo-European'],
-            main.tr('Azerbaijani'):           ['aze', 'az', 'Turkic'],
-            main.tr('Basque'):                ['eus', 'eu', 'Language isolate'],
-            main.tr('Belarusian'):            ['bel', 'be', 'Indo-European'],
-            main.tr('Bengali'):               ['ben', 'bn', 'Indo-European'],
-            main.tr('Bosnian'):               ['bos', 'bs', 'Indo-European'],
-            main.tr('Breton'):                ['bre', 'br', 'Indo-European'],
-            main.tr('Bulgarian'):             ['bul', 'bg', 'Indo-European'],
-            main.tr('Catalan'):               ['cat', 'ca', 'Indo-European'],
-            main.tr('Chinese (Simplified)'):  ['zho_cn', 'zh_cn', 'Sino-Tibetan'],
-            main.tr('Chinese (Traditional)'): ['zho_tw', 'zh_tw', 'Sino-Tibetan'],
-            main.tr('Coptic'):                ['cop', 'cop', 'Unclassified'],
-            main.tr('Croatian'):              ['hrv', 'hr', 'Indo-European'],
-            main.tr('Czech'):                 ['ces', 'cs', 'Indo-European'],
-            main.tr('Danish'):                ['dan', 'da', 'Indo-European'],
-            main.tr('Dutch'):                 ['nld', 'nl', 'Indo-European'],
-            main.tr('Dzongkha'):              ['dzo', 'dz', 'Sino-Tibetan'],
-            main.tr('English'):               ['eng', 'en', 'Indo-European'],
-            main.tr('English (Middle)'):      ['enm', 'enm', 'Indo-European'],
-            main.tr('English (Old)'):         ['ang', 'ang', 'Indo-European'],
-            main.tr('Esperanto'):             ['epo', 'eo', 'Constructed'],
-            main.tr('Estonian'):              ['est', 'et', 'Uralic'],
-            main.tr('Faroese'):               ['fao', 'fo', 'Indo-European'],
-            main.tr('Finnish'):               ['fin', 'fi', 'Uralic'],
-            main.tr('French'):                ['fra', 'fr', 'Indo-European'],
-            main.tr('French (Old)'):          ['fro', 'fro', 'Indo-European'],
-            main.tr('Galician'):              ['glg', 'gl', 'Indo-European'],
-            main.tr('Georgian'):              ['kat', 'ka', 'Kartvelian'],
-            main.tr('German'):                ['deu', 'de', 'Indo-European'],
-            main.tr('German (Middle High)'):  ['gmh', 'gmh', 'Unclassified'],
-            main.tr('Greek (Ancient)'):       ['grc', 'grc', 'Unclassified'],
-            main.tr('Greek (Modern)'):        ['ell', 'el', 'Indo-European'],
-            main.tr('Gujarati'):              ['guj', 'gu', 'Indo-European'],
-            main.tr('Haitian'):               ['hat', 'ht', 'Creole'],
-            main.tr('Hausa'):                 ['hau', 'ha', 'Afro-Asiatic'],
-            main.tr('Hebrew'):                ['heb', 'he', 'Afro-Asiatic'],
-            main.tr('Hindi'):                 ['hin', 'hi', 'Indo-European'],
-            main.tr('Hungarian'):             ['hun', 'hu', 'Uralic'],
-            main.tr('Icelandic'):             ['isl', 'is', 'Indo-European'],
-            main.tr('Indonesian'):            ['ind', 'id', 'Austronesian'],
-            main.tr('Irish'):                 ['gle', 'ga', 'Indo-European'],
-            main.tr('Italian'):               ['ita', 'it', 'Indo-European'],
-            main.tr('Japanese'):              ['jpn', 'ja', 'Japonic'],
-            main.tr('Javanese'):              ['jav', 'jv', 'Austronesian'],
-            main.tr('Kannada'):               ['kan', 'kn', 'Dravidian'],
-            main.tr('Kazakh'):                ['kaz', 'kk', 'Turkic'],
-            main.tr('Khmer'):                 ['khm', 'km', 'Austroasiatic'],
-            main.tr('Kinyarwanda'):           ['kin', 'rw', 'Niger-Congo'],
-            main.tr('Korean'):                ['kor', 'ko', 'Koreanic'],
-            main.tr('Kurdish'):               ['kur', 'ku', 'Indo-European'],
-            main.tr('Kyrgyz'):                ['kir', 'ky', 'Turkic'],
-            main.tr('Lao'):                   ['lao', 'lo', 'Tai-Kadai'],
-            main.tr('Latin'):                 ['lat', 'la', 'Indo-European'],
-            main.tr('Latvian'):               ['lav', 'lv', 'Indo-European'],
-            main.tr('Ligurian'):              ['lij', 'lij', 'Unclassified'],
-            main.tr('Lithuanian'):            ['lit', 'lt', 'Indo-European'],
-            main.tr('Luxembourgish'):         ['ltz', 'lb', 'Indo-European'],
-            main.tr('Macedonian'):            ['mkd', 'mk', 'Indo-European'],
-            main.tr('Malagasy'):              ['mlg', 'mg', 'Austronesian'],
-            main.tr('Malay'):                 ['msa', 'ms', 'Austronesian'],
-            main.tr('Malayalam'):             ['mal', 'ml', 'Dravidian'],
-            main.tr('Maltese'):               ['mlt', 'mt', 'Afro-Asiatic'],
-            main.tr('Manx'):                  ['glv', 'gv', 'Indo-European'],
-            main.tr('Marathi'):               ['mar', 'mr', 'Indo-European'],
-            main.tr('Marathi (Old)'):         ['omr', 'omr', 'Unclassified'],
-            main.tr('Meitei'):                ['mni', 'mni', 'Sino-Tibetan'],
-            main.tr('Mongolian'):             ['mon', 'mn', 'Mongolic'],
-            main.tr('Nepali'):                ['nep', 'ne', 'Indo-European'],
-            main.tr('Norse (Old)'):           ['non', 'non', 'Indo-European'],
-            main.tr('Norwegian Bokmål'):      ['nob', 'nb', 'Indo-European'],
-            main.tr('Norwegian Nynorsk'):     ['nno', 'nn', 'Indo-European'],
-            main.tr('Occitan'):               ['oci', 'oc', 'Indo-European'],
-            main.tr('Oriya'):                 ['ori', 'or', 'Indo-European'],
-            main.tr('Pashto'):                ['pus', 'ps', 'Indo-European'],
-            main.tr('Persian'):               ['fas', 'fa', 'Indo-European'],
-            main.tr('Polish'):                ['pol', 'pl', 'Indo-European'],
-            main.tr('Portuguese'):            ['por', 'pt', 'Indo-European'],
-            main.tr('Punjabi'):               ['pan', 'pa', 'Indo-European'],
-            main.tr('Quechua'):               ['que', 'qu', 'Quechuan'],
-            main.tr('Romanian'):              ['ron', 'ro', 'Indo-European'],
-            main.tr('Russian'):               ['rus', 'ru', 'Indo-European'],
-            main.tr('Sami (Northern)'):       ['sme', 'se', 'Uralic'],
-            main.tr('Sanskrit'):              ['san', 'sa', 'Indo-European'],
-            main.tr('Scottish Gaelic'):       ['gla', 'gd', 'Indo-European'],
-            main.tr('Serbian (Cyrillic)'):    ['srp_cyrl', 'sr_cyrl', 'Indo-European'],
-            main.tr('Serbian (Latin)'):       ['srp_latn', 'sr_latn', 'Indo-European'],
-            main.tr('Sinhala'):               ['sin', 'si', 'Indo-European'],
-            main.tr('Slovak'):                ['slk', 'sk', 'Indo-European'],
-            main.tr('Slovenian'):             ['slv', 'sl', 'Indo-European'],
-            main.tr('Somali'):                ['som', 'so', 'Afro-Asiatic'],
-            main.tr('Sotho (Southern)'):      ['sot', 'st', 'Niger-Congo'],
-            main.tr('Spanish'):               ['spa', 'es', 'Indo-European'],
-            main.tr('Swahili'):               ['swa', 'sw', 'Niger-Congo'],
-            main.tr('Swedish'):               ['swe', 'sv', 'Indo-European'],
-            main.tr('Tagalog'):               ['tgl', 'tl', 'Austronesian'],
-            main.tr('Tajik'):                 ['tgk', 'tg', 'Indo-European'],
-            main.tr('Tamil'):                 ['tam', 'ta', 'Dravidian'],
-            main.tr('Tatar'):                 ['tat', 'tt', 'Turkic'],
-            main.tr('Telugu'):                ['tel', 'te', 'Dravidian'],
-            main.tr('Tetun Dili'):            ['tdt', 'tdt', 'Unclassified'],
-            main.tr('Thai'):                  ['tha', 'th', 'Tai-Kadai'],
-            main.tr('Tibetan'):               ['bod', 'bo', 'Sino-Tibetan'],
-            main.tr('Tigrinya'):              ['tir', 'ti', 'Afro-Asiatic'],
-            main.tr('Tswana'):                ['tsn', 'tn', 'Niger-Congo'],
-            main.tr('Turkish'):               ['tur', 'tr', 'Turkic'],
-            main.tr('Ukrainian'):             ['ukr', 'uk', 'Indo-European'],
-            main.tr('Urdu'):                  ['urd', 'ur', 'Indo-European'],
-            main.tr('Uyghur'):                ['uig', 'ug', 'Turkic'],
-            main.tr('Vietnamese'):            ['vie', 'vi', 'Austroasiatic'],
-            main.tr('Volapük'):               ['vol', 'vo', 'Constructed'],
-            main.tr('Walloon'):               ['wln', 'wa', 'Indo-European'],
-            main.tr('Welsh'):                 ['cym', 'cy', 'Indo-European'],
-            main.tr('Xhosa'):                 ['xho', 'xh', 'Niger-Congo'],
-            main.tr('Yoruba'):                ['yor', 'yo', 'Niger-Congo'],
-            main.tr('Zulu'):                  ['zul', 'zu', 'Niger-Congo'],
+            main.tr('Afrikaans'):               ['afr', 'af', 'Indo-European'],
+            main.tr('Akkadian'):                ['akk', 'akk', 'Afro-Asiatic'],
+            main.tr('Albanian'):                ['sqi', 'sq', 'Indo-European'],
+            main.tr('Amharic'):                 ['amh', 'am', 'Afro-Asiatic'],
+            main.tr('Arabic'):                  ['ara', 'ar', 'Afro-Asiatic'],
+            main.tr('Arabic (Standard)'):       ['arb', 'arb', 'Afro-Asiatic'],
+            main.tr('Aragonese'):               ['arg', 'an', 'Indo-European'],
+            main.tr('Armenian'):                ['hye', 'hy', 'Indo-European'],
+            main.tr('Assamese'):                ['asm', 'as', 'Indo-European'],
+            main.tr('Asturian'):                ['ast', 'ast', 'Indo-European'],
+            main.tr('Azerbaijani'):             ['aze', 'az', 'Turkic'],
+            main.tr('Basque'):                  ['eus', 'eu', 'Language isolate'],
+            main.tr('Belarusian'):              ['bel', 'be', 'Indo-European'],
+            main.tr('Bengali'):                 ['ben', 'bn', 'Indo-European'],
+            main.tr('Bosnian'):                 ['bos', 'bs', 'Indo-European'],
+            main.tr('Breton'):                  ['bre', 'br', 'Indo-European'],
+            main.tr('Bulgarian'):               ['bul', 'bg', 'Indo-European'],
+            main.tr('Catalan'):                 ['cat', 'ca', 'Indo-European'],
+            main.tr('Chinese (Simplified)'):    ['zho_cn', 'zh_cn', 'Sino-Tibetan'],
+            main.tr('Chinese (Traditional)'):   ['zho_tw', 'zh_tw', 'Sino-Tibetan'],
+            main.tr('Coptic'):                  ['cop', 'cop', 'Unclassified'],
+            main.tr('Croatian'):                ['hrv', 'hr', 'Indo-European'],
+            main.tr('Czech'):                   ['ces', 'cs', 'Indo-European'],
+            main.tr('Danish'):                  ['dan', 'da', 'Indo-European'],
+            main.tr('Dutch'):                   ['nld', 'nl', 'Indo-European'],
+            main.tr('Dzongkha'):                ['dzo', 'dz', 'Sino-Tibetan'],
+            main.tr('English (Middle)'):        ['enm', 'enm', 'Indo-European'],
+            main.tr('English (Old)'):           ['ang', 'ang', 'Indo-European'],
+            main.tr('English (United Kingdom)'):['eng_gb', 'en_gb', 'Indo-European'],
+            main.tr('English (United States)'): ['eng_us', 'en_us', 'Indo-European'],
+            main.tr('Esperanto'):               ['epo', 'eo', 'Constructed'],
+            main.tr('Estonian'):                ['est', 'et', 'Uralic'],
+            main.tr('Faroese'):                 ['fao', 'fo', 'Indo-European'],
+            main.tr('Finnish'):                 ['fin', 'fi', 'Uralic'],
+            main.tr('French'):                  ['fra', 'fr', 'Indo-European'],
+            main.tr('French (Old)'):            ['fro', 'fro', 'Indo-European'],
+            main.tr('Galician'):                ['glg', 'gl', 'Indo-European'],
+            main.tr('Georgian'):                ['kat', 'ka', 'Kartvelian'],
+            main.tr('German (Austria)'):        ['deu_at', 'de_at', 'Indo-European'],
+            main.tr('German (Germany)'):        ['deu_de', 'de_de', 'Indo-European'],
+            main.tr('German (Middle High)'):    ['gmh', 'gmh', 'Unclassified'],
+            main.tr('German (Switzerland)'):    ['deu_ch', 'de_ch', 'Indo-European'],
+            main.tr('Greek (Ancient)'):         ['grc', 'grc', 'Unclassified'],
+            main.tr('Greek (Modern)'):          ['ell', 'el', 'Indo-European'],
+            main.tr('Gujarati'):                ['guj', 'gu', 'Indo-European'],
+            main.tr('Haitian'):                 ['hat', 'ht', 'Creole'],
+            main.tr('Hausa'):                   ['hau', 'ha', 'Afro-Asiatic'],
+            main.tr('Hebrew'):                  ['heb', 'he', 'Afro-Asiatic'],
+            main.tr('Hindi'):                   ['hin', 'hi', 'Indo-European'],
+            main.tr('Hungarian'):               ['hun', 'hu', 'Uralic'],
+            main.tr('Icelandic'):               ['isl', 'is', 'Indo-European'],
+            main.tr('Indonesian'):              ['ind', 'id', 'Austronesian'],
+            main.tr('Irish'):                   ['gle', 'ga', 'Indo-European'],
+            main.tr('Italian'):                 ['ita', 'it', 'Indo-European'],
+            main.tr('Japanese'):                ['jpn', 'ja', 'Japonic'],
+            main.tr('Javanese'):                ['jav', 'jv', 'Austronesian'],
+            main.tr('Kannada'):                 ['kan', 'kn', 'Dravidian'],
+            main.tr('Kazakh'):                  ['kaz', 'kk', 'Turkic'],
+            main.tr('Khmer'):                   ['khm', 'km', 'Austroasiatic'],
+            main.tr('Kinyarwanda'):             ['kin', 'rw', 'Niger-Congo'],
+            main.tr('Korean'):                  ['kor', 'ko', 'Koreanic'],
+            main.tr('Kurdish'):                 ['kur', 'ku', 'Indo-European'],
+            main.tr('Kyrgyz'):                  ['kir', 'ky', 'Turkic'],
+            main.tr('Lao'):                     ['lao', 'lo', 'Tai-Kadai'],
+            main.tr('Latin'):                   ['lat', 'la', 'Indo-European'],
+            main.tr('Latvian'):                 ['lav', 'lv', 'Indo-European'],
+            main.tr('Ligurian'):                ['lij', 'lij', 'Unclassified'],
+            main.tr('Lithuanian'):              ['lit', 'lt', 'Indo-European'],
+            main.tr('Luxembourgish'):           ['ltz', 'lb', 'Indo-European'],
+            main.tr('Macedonian'):              ['mkd', 'mk', 'Indo-European'],
+            main.tr('Malagasy'):                ['mlg', 'mg', 'Austronesian'],
+            main.tr('Malay'):                   ['msa', 'ms', 'Austronesian'],
+            main.tr('Malayalam'):               ['mal', 'ml', 'Dravidian'],
+            main.tr('Maltese'):                 ['mlt', 'mt', 'Afro-Asiatic'],
+            main.tr('Manx'):                    ['glv', 'gv', 'Indo-European'],
+            main.tr('Marathi'):                 ['mar', 'mr', 'Indo-European'],
+            main.tr('Marathi (Old)'):           ['omr', 'omr', 'Unclassified'],
+            main.tr('Meitei'):                  ['mni', 'mni', 'Sino-Tibetan'],
+            main.tr('Mongolian'):               ['mon', 'mn', 'Mongolic'],
+            main.tr('Nepali'):                  ['nep', 'ne', 'Indo-European'],
+            main.tr('Norse (Old)'):             ['non', 'non', 'Indo-European'],
+            main.tr('Norwegian Bokmål'):        ['nob', 'nb', 'Indo-European'],
+            main.tr('Norwegian Nynorsk'):       ['nno', 'nn', 'Indo-European'],
+            main.tr('Occitan'):                 ['oci', 'oc', 'Indo-European'],
+            main.tr('Oriya'):                   ['ori', 'or', 'Indo-European'],
+            main.tr('Pashto'):                  ['pus', 'ps', 'Indo-European'],
+            main.tr('Persian'):                 ['fas', 'fa', 'Indo-European'],
+            main.tr('Polish'):                  ['pol', 'pl', 'Indo-European'],
+            main.tr('Portuguese (Brazil)'):     ['por_br', 'pt_br', 'Indo-European'],
+            main.tr('Portuguese (Portugal)'):   ['por_pt', 'pt_pt', 'Indo-European'],
+            main.tr('Punjabi'):                 ['pan', 'pa', 'Indo-European'],
+            main.tr('Quechua'):                 ['que', 'qu', 'Quechuan'],
+            main.tr('Romanian'):                ['ron', 'ro', 'Indo-European'],
+            main.tr('Russian'):                 ['rus', 'ru', 'Indo-European'],
+            main.tr('Sami (Northern)'):         ['sme', 'se', 'Uralic'],
+            main.tr('Sanskrit'):                ['san', 'sa', 'Indo-European'],
+            main.tr('Scottish Gaelic'):         ['gla', 'gd', 'Indo-European'],
+            main.tr('Serbian (Cyrillic)'):      ['srp_cyrl', 'sr_cyrl', 'Indo-European'],
+            main.tr('Serbian (Latin)'):         ['srp_latn', 'sr_latn', 'Indo-European'],
+            main.tr('Sinhala'):                 ['sin', 'si', 'Indo-European'],
+            main.tr('Slovak'):                  ['slk', 'sk', 'Indo-European'],
+            main.tr('Slovenian'):               ['slv', 'sl', 'Indo-European'],
+            main.tr('Somali'):                  ['som', 'so', 'Afro-Asiatic'],
+            main.tr('Sotho (Southern)'):        ['sot', 'st', 'Niger-Congo'],
+            main.tr('Spanish'):                 ['spa', 'es', 'Indo-European'],
+            main.tr('Swahili'):                 ['swa', 'sw', 'Niger-Congo'],
+            main.tr('Swedish'):                 ['swe', 'sv', 'Indo-European'],
+            main.tr('Tagalog'):                 ['tgl', 'tl', 'Austronesian'],
+            main.tr('Tajik'):                   ['tgk', 'tg', 'Indo-European'],
+            main.tr('Tamil'):                   ['tam', 'ta', 'Dravidian'],
+            main.tr('Tatar'):                   ['tat', 'tt', 'Turkic'],
+            main.tr('Telugu'):                  ['tel', 'te', 'Dravidian'],
+            main.tr('Tetun Dili'):              ['tdt', 'tdt', 'Unclassified'],
+            main.tr('Thai'):                    ['tha', 'th', 'Tai-Kadai'],
+            main.tr('Tibetan'):                 ['bod', 'bo', 'Sino-Tibetan'],
+            main.tr('Tigrinya'):                ['tir', 'ti', 'Afro-Asiatic'],
+            main.tr('Tswana'):                  ['tsn', 'tn', 'Niger-Congo'],
+            main.tr('Turkish'):                 ['tur', 'tr', 'Turkic'],
+            main.tr('Ukrainian'):               ['ukr', 'uk', 'Indo-European'],
+            main.tr('Urdu'):                    ['urd', 'ur', 'Indo-European'],
+            main.tr('Uyghur'):                  ['uig', 'ug', 'Turkic'],
+            main.tr('Vietnamese'):              ['vie', 'vi', 'Austroasiatic'],
+            main.tr('Volapük'):                 ['vol', 'vo', 'Constructed'],
+            main.tr('Walloon'):                 ['wln', 'wa', 'Indo-European'],
+            main.tr('Welsh'):                   ['cym', 'cy', 'Indo-European'],
+            main.tr('Xhosa'):                   ['xho', 'xh', 'Niger-Congo'],
+            main.tr('Yoruba'):                  ['yor', 'yo', 'Niger-Congo'],
+            main.tr('Zulu'):                    ['zul', 'zu', 'Niger-Congo'],
 
-            main.tr('Other Languages'): ['other', 'other', 'Unclassified']
+            main.tr('Other Languages'):         ['other', 'other', 'Unclassified']
         },
 
         'file_encodings': {
@@ -355,7 +359,6 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentence Recognizer'),
                 main.tr('Wordless - Chinese Sentence Tokenizer')
             ],
-
             'zho_tw': [
                 main.tr('spaCy - Sentence Recognizer'),
                 main.tr('Wordless - Chinese Sentence Tokenizer')
@@ -380,7 +383,12 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentence Recognizer')
             ],
 
-            'eng': [
+            'eng_gb': [
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentence Recognizer'),
+                main.tr('syntok - Sentence Segmenter')
+            ],
+            'eng_us': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
                 main.tr('spaCy - Sentence Recognizer'),
                 main.tr('syntok - Sentence Segmenter')
@@ -401,7 +409,17 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentence Recognizer')
             ],
 
-            'deu': [
+            'deu_at': [
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentence Recognizer'),
+                main.tr('syntok - Sentence Segmenter')
+            ],
+            'deu_de': [
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentence Recognizer'),
+                main.tr('syntok - Sentence Segmenter')
+            ],
+            'deu_ch': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
                 main.tr('spaCy - Sentence Recognizer'),
                 main.tr('syntok - Sentence Segmenter')
@@ -410,7 +428,6 @@ def init_settings_global(main):
             'grc': [
                 main.tr('spaCy - Sentencizer')
             ],
-
             'ell': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
                 main.tr('spaCy - Sentence Recognizer')
@@ -512,7 +529,11 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentence Recognizer')
             ],
 
-            'por': [
+            'por_br': [
+                main.tr('NLTK - Punkt Sentence Tokenizer'),
+                main.tr('spaCy - Sentence Recognizer')
+            ],
+            'por_pt': [
                 main.tr('NLTK - Punkt Sentence Tokenizer'),
                 main.tr('spaCy - Sentence Recognizer')
             ],
@@ -534,7 +555,6 @@ def init_settings_global(main):
             'srp_cyrl': [
                 main.tr('spaCy - Sentencizer')
             ],
-
             'srp_latn': [
                 main.tr('spaCy - Sentencizer')
             ],
@@ -704,7 +724,6 @@ def init_settings_global(main):
                 main.tr('spaCy - Chinese Word Tokenizer'),
                 main.tr('Wordless - Chinese Character Tokenizer')
             ],
-
             'zho_tw': [
                 main.tr('jieba - Chinese Word Tokenizer'),
                 main.tr('pkuseg - Chinese Word Tokenizer'),
@@ -747,7 +766,17 @@ def init_settings_global(main):
                 main.tr('spaCy - Dutch Word Tokenizer')
             ],
 
-            'eng': [
+            'eng_gb': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer'),
+                main.tr('spaCy - English Word Tokenizer'),
+                main.tr('syntok - Word Tokenizer')
+            ],
+            'eng_us': [
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NLTK Tokenizer'),
                 main.tr('NLTK - Penn Treebank Tokenizer'),
@@ -778,7 +807,27 @@ def init_settings_global(main):
                 main.tr('spaCy - French Word Tokenizer')
             ],
 
-            'deu': [
+            'deu_at': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer'),
+                main.tr('spaCy - German Word Tokenizer'),
+                main.tr('syntok - Word Tokenizer')
+            ],
+            'deu_de': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Tok-tok Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer'),
+                main.tr('spaCy - German Word Tokenizer'),
+                main.tr('syntok - Word Tokenizer')
+            ],
+            'deu_ch': [
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NLTK Tokenizer'),
                 main.tr('NLTK - Penn Treebank Tokenizer'),
@@ -792,7 +841,6 @@ def init_settings_global(main):
             'grc': [
                 main.tr('spaCy - Greek (Ancient) Word Tokenizer')
             ],
-
             'ell': [
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NLTK Tokenizer'),
@@ -973,7 +1021,15 @@ def init_settings_global(main):
                 main.tr('spaCy - Polish Word Tokenizer')
             ],
 
-            'por': [
+            'por_br': [
+                main.tr('NLTK - NIST Tokenizer'),
+                main.tr('NLTK - NLTK Tokenizer'),
+                main.tr('NLTK - Penn Treebank Tokenizer'),
+                main.tr('NLTK - Twitter Tokenizer'),
+                main.tr('Sacremoses - Moses Tokenizer'),
+                main.tr('spaCy - Portuguese Word Tokenizer')
+            ],
+            'por_pt': [
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NLTK Tokenizer'),
                 main.tr('NLTK - Penn Treebank Tokenizer'),
@@ -1025,7 +1081,6 @@ def init_settings_global(main):
                 main.tr('NLTK - Twitter Tokenizer'),
                 main.tr('spaCy - Serbian Word Tokenizer')
             ],
-
             'srp_latn': [
                 main.tr('NLTK - NIST Tokenizer'),
                 main.tr('NLTK - NLTK Tokenizer'),
@@ -1189,7 +1244,6 @@ def init_settings_global(main):
             'zho_cn': [
                 main.tr('Wordless - Chinese Word Detokenizer')
             ],
-
             'zho_tw': [
                 main.tr('Wordless - Chinese Word Detokenizer')
             ],
@@ -1204,7 +1258,11 @@ def init_settings_global(main):
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
 
-            'eng': [
+            'eng_gb': [
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+            'eng_us': [
                 main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
@@ -1222,7 +1280,15 @@ def init_settings_global(main):
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
 
-            'deu': [
+            'deu_at': [
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+            'deu_de': [
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+            'deu_ch': [
                 main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
@@ -1302,7 +1368,11 @@ def init_settings_global(main):
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
 
-            'por': [
+            'por_br': [
+                main.tr('NLTK - Penn Treebank Detokenizer'),
+                main.tr('Sacremoses - Moses Detokenizer')
+            ],
+            'por_pt': [
                 main.tr('NLTK - Penn Treebank Detokenizer'),
                 main.tr('Sacremoses - Moses Detokenizer')
             ],
@@ -1377,7 +1447,6 @@ def init_settings_global(main):
                 main.tr('jieba - Chinese POS Tagger'),
                 main.tr('spaCy - Chinese POS Tagger')
             ],
-
             'zho_tw': [
                 main.tr('jieba - Chinese POS Tagger'),
                 main.tr('spaCy - Chinese POS Tagger')
@@ -1391,7 +1460,11 @@ def init_settings_global(main):
                 main.tr('spaCy - Dutch POS Tagger')
             ],
 
-            'eng': [
+            'eng_gb': [
+                main.tr('NLTK - Perceptron POS Tagger'),
+                main.tr('spaCy - English POS Tagger')
+            ],
+            'eng_us': [
                 main.tr('NLTK - Perceptron POS Tagger'),
                 main.tr('spaCy - English POS Tagger')
             ],
@@ -1400,7 +1473,13 @@ def init_settings_global(main):
                 main.tr('spaCy - French POS Tagger')
             ],
 
-            'deu': [
+            'deu_at': [
+                main.tr('spaCy - German POS Tagger')
+            ],
+            'deu_de': [
+                main.tr('spaCy - German POS Tagger')
+            ],
+            'deu_ch': [
                 main.tr('spaCy - German POS Tagger')
             ],
 
@@ -1432,7 +1511,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Polish POS Tagger'),
             ],
 
-            'por': [
+            'por_br': [
+                main.tr('spaCy - Portuguese POS Tagger')
+            ],
+            'por_pt': [
                 main.tr('spaCy - Portuguese POS Tagger')
             ],
 
@@ -1504,7 +1586,12 @@ def init_settings_global(main):
                 main.tr('spaCy - Dutch Lemmatizer')
             ],
 
-            'eng': [
+            'eng_gb': [
+                main.tr('Lemmatization Lists - English Lemma List'),
+                main.tr('NLTK - WordNet Lemmatizer'),
+                main.tr('spaCy - English Lemmatizer')
+            ],
+            'eng_us': [
                 main.tr('Lemmatization Lists - English Lemma List'),
                 main.tr('NLTK - WordNet Lemmatizer'),
                 main.tr('spaCy - English Lemmatizer')
@@ -1523,7 +1610,15 @@ def init_settings_global(main):
                 main.tr('Lemmatization Lists - Galician Lemma List')
             ],
 
-            'deu': [
+            'deu_at': [
+                main.tr('Lemmatization Lists - German Lemma List'),
+                main.tr('spaCy - German Lemmatizer')
+            ],
+            'deu_de': [
+                main.tr('Lemmatization Lists - German Lemma List'),
+                main.tr('spaCy - German Lemmatizer')
+            ],
+            'deu_ch': [
                 main.tr('Lemmatization Lists - German Lemma List'),
                 main.tr('spaCy - German Lemmatizer')
             ],
@@ -1531,7 +1626,6 @@ def init_settings_global(main):
             'grc': [
                 main.tr('lemmalist-greek - Greek (Ancient) Lemma List')
             ],
-
             'ell': [
                 main.tr('spaCy - Greek (Modern) Lemmatizer')
             ],
@@ -1583,7 +1677,11 @@ def init_settings_global(main):
                 main.tr('spaCy - Polish Lemmatizer')
             ],
 
-            'por': [
+            'por_br': [
+                main.tr('Lemmatization Lists - Portuguese Lemma List'),
+                main.tr('spaCy - Portuguese Lemmatizer')
+            ],
+            'por_pt': [
                 main.tr('Lemmatization Lists - Portuguese Lemma List'),
                 main.tr('spaCy - Portuguese Lemmatizer')
             ],
@@ -1742,7 +1840,6 @@ def init_settings_global(main):
                 main.tr('Stopwords ISO - Chinese (Simplified) Stop Word List'),
                 main.tr('Custom List')
             ],
-
             'zho_tw': [
                 main.tr('extra-stopwords - Chinese (Traditional) Stop Word List'),
                 main.tr('spaCy - Chinese (Traditional) Stop Word List'),
@@ -1785,19 +1882,24 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
-            'eng': [
+            'eng_gb': [
                 main.tr('extra-stopwords - English Stop Word List'),
                 main.tr('NLTK - English Stop Word List'),
                 main.tr('spaCy - English Stop Word List'),
                 main.tr('Stopwords ISO - English Stop Word List'),
                 main.tr('Custom List')
             ],
-
+            'eng_us': [
+                main.tr('extra-stopwords - English Stop Word List'),
+                main.tr('NLTK - English Stop Word List'),
+                main.tr('spaCy - English Stop Word List'),
+                main.tr('Stopwords ISO - English Stop Word List'),
+                main.tr('Custom List')
+            ],
             'enm': [
                 main.tr('CLTK - English (Middle) Stop Word List'),
                 main.tr('Custom List')
             ],
-
             'ang': [
                 main.tr('CLTK - English (Old) Stop Word List'),
                 main.tr('Custom List')
@@ -1830,7 +1932,6 @@ def init_settings_global(main):
                 main.tr('Stopwords ISO - French Stop Word List'),
                 main.tr('Custom List')
             ],
-
             'fro': [
                 main.tr('CLTK - French (Old) Stop Word List'),
                 main.tr('Custom List')
@@ -1842,16 +1943,29 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
-            'deu': [
+            'deu_at': [
                 main.tr('extra-stopwords - German Stop Word List'),
                 main.tr('NLTK - German Stop Word List'),
                 main.tr('spaCy - German Stop Word List'),
                 main.tr('Stopwords ISO - German Stop Word List'),
                 main.tr('Custom List')
             ],
-
+            'deu_de': [
+                main.tr('extra-stopwords - German Stop Word List'),
+                main.tr('NLTK - German Stop Word List'),
+                main.tr('spaCy - German Stop Word List'),
+                main.tr('Stopwords ISO - German Stop Word List'),
+                main.tr('Custom List')
+            ],
             'gmh': [
                 main.tr('CLTK - German (Middle High) Stop Word List'),
+                main.tr('Custom List')
+            ],
+            'deu_ch': [
+                main.tr('extra-stopwords - German Stop Word List'),
+                main.tr('NLTK - German Stop Word List'),
+                main.tr('spaCy - German Stop Word List'),
+                main.tr('Stopwords ISO - German Stop Word List'),
                 main.tr('Custom List')
             ],
 
@@ -1860,7 +1974,6 @@ def init_settings_global(main):
                 main.tr('spaCy - Greek (Ancient) Stop Word List'),
                 main.tr('Custom List')
             ],
-
             'ell': [
                 main.tr('extra-stopwords - Greek (Modern) Stop Word List'),
                 main.tr('NLTK - Greek (Modern) Stop Word List'),
@@ -2042,7 +2155,6 @@ def init_settings_global(main):
                 main.tr('CLTK - Norse (Old) Stop Word List'),
                 main.tr('Custom List')
             ],
-
             'nob': [
                 main.tr('extra-stopwords - Norwegian Bokmål Stop Word List'),
                 main.tr('NLTK - Norwegian Bokmål Stop Word List'),
@@ -2050,7 +2162,6 @@ def init_settings_global(main):
                 main.tr('Stopwords ISO - Norwegian Stop Word List'),
                 main.tr('Custom List')
             ],
-
             'nno': [
                 main.tr('extra-stopwords - Norwegian Bokmål Stop Word List'),
                 main.tr('NLTK - Norwegian Nynorsk Stop Word List'),
@@ -2072,7 +2183,14 @@ def init_settings_global(main):
                 main.tr('Custom List')
             ],
 
-            'por': [
+            'por_br': [
+                main.tr('extra-stopwords - Portuguese Stop Word List'),
+                main.tr('NLTK - Portuguese Stop Word List'),
+                main.tr('spaCy - Portuguese Stop Word List'),
+                main.tr('Stopwords ISO - Portuguese Stop Word List'),
+                main.tr('Custom List')
+            ],
+            'por_pt': [
                 main.tr('extra-stopwords - Portuguese Stop Word List'),
                 main.tr('NLTK - Portuguese Stop Word List'),
                 main.tr('spaCy - Portuguese Stop Word List'),
@@ -2112,7 +2230,6 @@ def init_settings_global(main):
                 main.tr('spaCy - Serbian (Cyrillic) Stop Word List'),
                 main.tr('Custom List')
             ],
-
             'srp_latn': [
                 main.tr('extra-stopwords - Serbian (Latin) Stop Word List'),
                 main.tr('spaCy - Serbian (Latin) Stop Word List'),

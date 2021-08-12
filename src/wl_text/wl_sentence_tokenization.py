@@ -18,6 +18,7 @@ import tokenizer
 import underthesea
 
 from wl_text import wl_text, wl_text_utils, wl_word_detokenization
+from wl_utils import wl_conversion
 
 # Reference: https://stackoverflow.com/questions/9506869/are-there-character-collections-for-all-international-full-stop-punctuations/9508766#9508766
 TERMINATORS_SENTENCE = [
@@ -30,7 +31,8 @@ TERMINATORS_SENTENCE = [
     '𑃁', '𑅁', '𑅂', '𑅃', '𑇅', '𑇆', '𑇍', '𑇞', '𑇟', '𑈸', '𑈹', '𑈻', '𑈼',
     '𑊩', '𑑋', '𑑌', '𑗂', '𑗃', '𑗉', '𑗊', '𑗋', '𑗌', '𑗍', '𑗎', '𑗏', '𑗐',
     '𑗑', '𑗒', '𑗓', '𑗔', '𑗕', '𑗖', '𑗗', '𑙁', '𑙂', '𑜼', '𑜽', '𑜾', '𑩂',
-    '𑩃', '𑪛', '𑪜', '𑱁', '𑱂', '𖩮', '𖩯', '𖫵', '𖬷', '𖬸', '𖭄', '𛲟', '𝪈']
+    '𑩃', '𑪛', '𑪜', '𑱁', '𑱂', '𖩮', '𖩯', '𖫵', '𖬷', '𖬸', '𖭄', '𛲟', '𝪈'
+]
 
 def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     sentences = []
@@ -53,19 +55,25 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
             'ces': 'czech',
             'dan': 'danish',
             'nld': 'dutch',
-            'eng': 'english',
+            # English
+            'eng_gb': 'english',
+            'eng_us': 'english',
             'est': 'estonian',
             'fin': 'finnish',
             'fra': 'french',
-            'deu': 'german',
-            # Greek (Modern)
+            # German
+            'deu_at': 'german',
+            'deu_de': 'german',
+            'deu_ch': 'german',
             'ell': 'greek',
             'ita': 'italian',
-            # Norwegian Bokmål & Norwegian Nynorsk
+            # Norwegian
             'nob': 'norwegian',
             'nno': 'norwegian',
             'pol': 'polish',
-            'por': 'portuguese',
+            # Portuguese
+            'por_br': 'portuguese',
+            'por_pt': 'portuguese',
             'rus': 'russian',
             'slv': 'slovene',
             'spa': 'spanish',
@@ -78,9 +86,9 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         sentences = nltk.sent_tokenize(text, language = lang_texts[lang])
     # spaCy
     elif 'spaCy' in sentence_tokenizer:
-        # Chinese
-        if lang in ['zho_cn', 'zho_tw']:
-            lang = 'zho'
+        # Chinese, English, German, Portuguese
+        if lang.find('srp') == -1:
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)

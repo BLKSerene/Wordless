@@ -30,9 +30,10 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
     else:
         lang_639_1 = wl_conversion.to_iso_639_1(main, lang)
 
-        # Chinese (Simplified)
-        if lang_639_1 == 'zh_cn':
-            lang_639_1 = 'zh'
+        # Chinese (Simplified), English, German, Portuguese
+        if lang != 'zho_tw' and lang.find('srp') == -1:
+            lang_639_1 = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         # Chinese (Traditional)
         if lang_639_1 == 'zh_tw':
@@ -56,7 +57,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 'ben': 'bengali',
                 'bul': 'bulgarian',
                 'cat': 'catalan',
-                'zho_cn': 'chinese',
+                'zho': 'chinese',
                 'hrv': 'croatian',
                 'ces': 'czech',
                 'dan': 'danish',
@@ -85,7 +86,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 'mar': 'marathi',
                 'mon': 'mongolian',
                 'nep': 'nepali',
-                # Norwegian Bokmål & Norwegian Nynorsk
+                # Norwegian
                 'nob': 'norwegian',
                 'nno': 'norwegian',
                 'fas': 'persian',
@@ -93,6 +94,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 'por': 'portuguese',
                 'ron': 'romanian',
                 'rus': 'russian',
+                # Serbian
                 'srp_cyrl': 'serbian-cyrillic',
                 'srp_latn': 'serbian',
                 'slk': 'slovak',
@@ -129,7 +131,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 'ita': 'italian',
                 'kaz': 'kazakh',
                 'nep': 'nepali',
-                # Norwegian Bokmål & Norwegian Nynorsk
+                # Norwegian 
                 'nob': 'norwegian',
                 'nno': 'norwegian',
                 'por': 'portuguese',
@@ -145,7 +147,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
             stop_words = nltk.corpus.stopwords.words(LANG_TEXTS[lang])
         # spaCy
         elif 'spaCy' in stop_word_list:
-            # Serbian (Cyrillic) & Serbian (Latin)
+            # Serbian
             if lang_639_1 == 'sr_cyrl':
                 spacy_lang = importlib.import_module('spacy.lang.sr')
 
@@ -165,7 +167,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
             if lang_639_1 == 'grc':
                 lang_639_1 = 'el'
 
-            # Norwegian Bokmål & Norwegian Nynorsk
+            # Norwegian
             if lang_639_1 in ['nb', 'nn']:
                 lang_639_1 = 'no'
 

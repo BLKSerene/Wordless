@@ -37,9 +37,9 @@ for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
 
 @pytest.mark.parametrize('lang, word_tokenizer', test_word_tokenizers)
 def test_word_tokenize(lang, word_tokenizer):
-    print(f'{lang} / {word_tokenizer}:')
-
     lang_text = wl_conversion.to_lang_text(main, lang)
+
+    print(f'{lang_text} ({lang}) / {word_tokenizer}:')
 
     tokens = wl_word_tokenization.wl_word_tokenize(
         main,
@@ -53,6 +53,8 @@ def test_word_tokenize(lang, word_tokenizer):
 
     # The count of tokens should be more than 1
     assert len(tokens) > 1
+    # The count of tokens should be more than the length of tokens split by space
+    assert len(tokens) > len(f'SENTENCE_{lang.upper()}'.split())
 
     if lang == 'afr':
         assert tokens == ['Afrikaans', 'is', 'tipologies', 'beskou', "'", 'n', 'Indo', '-', 'Europese', ',', 'Wes', '-', 'Germaanse', ',', 'Nederfrankiese', 'taal,[2', ']', 'wat', 'aan', 'die', 'suidpunt', 'van', 'Afrika', 'onder', 'invloed', 'van', 'verskeie', 'ander', 'tale', 'en', 'taalgroepe', 'ontstaan', 'het', '.']
@@ -108,26 +110,26 @@ def test_word_tokenize(lang, word_tokenizer):
         assert tokens == ['Dansk', 'er', 'et', 'nordgermansk', 'sprog', 'af', 'den', 'østnordiske', '(', 'kontinentale', ')', 'gruppe', ',', 'der', 'tales', 'af', 'ca.', 'seks', 'millioner', 'mennesker', '.']
     elif lang == 'nld':
         assert tokens == ['Het', 'Nederlands', 'is', 'een', 'West-Germaanse', 'taal', 'en', 'de', 'officiële', 'taal', 'van', 'Nederland', ',', 'Suriname', 'en', 'een', 'van', 'de', 'drie', 'officiële', 'talen', 'van', 'België', '.']
-    elif lang == 'eng':
+    elif lang in ['eng_gb', 'eng_us']:
         if word_tokenizer in ['NLTK - NIST Tokenizer',
                               'NLTK - Twitter Tokenizer',
                               'Sacremoses - Moses Tokenizer']:
-            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'originally', 'spoken', 'by', 'the', 'early', 'medieval', 'England', '.', '[', '3', ']', '[', '4', ']', '[', '5', ']']
+            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'originally', 'spoken', 'by', 'the', 'inhabitants', 'of', 'early', 'medieval', 'England', '.', '[', '3', ']', '[', '4', ']', '[', '5', ']']
         elif word_tokenizer in ['NLTK - NLTK Tokenizer',
                                 'NLTK - Penn Treebank Tokenizer',
                                 'syntok - Word Tokenizer']:
-            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'originally', 'spoken', 'by', 'the', 'early', 'medieval', 'England.', '[', '3', ']', '[', '4', ']', '[', '5', ']']
+            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'originally', 'spoken', 'by', 'the', 'inhabitants', 'of', 'early', 'medieval', 'England.', '[', '3', ']', '[', '4', ']', '[', '5', ']']
         elif word_tokenizer == 'NLTK - Tok-tok Tokenizer':
-            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'originally', 'spoken', 'by', 'the', 'early', 'medieval', 'England.[', '3', ']', '[', '4', ']', '[', '5', ']']
+            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'originally', 'spoken', 'by', 'the', 'inhabitants', 'of', 'early', 'medieval', 'England.[', '3', ']', '[', '4', ']', '[', '5', ']']
         elif word_tokenizer == 'spaCy - English Word Tokenizer':
-            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'originally', 'spoken', 'by', 'the', 'early', 'medieval', 'England.[3][4][5', ']']
+            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'originally', 'spoken', 'by', 'the', 'inhabitants', 'of', 'early', 'medieval', 'England.[3][4][5', ']']
     elif lang == 'est':
         assert tokens == ['Eesti', 'keel', '(', 'varasem', 'nimetus', 'maakeel', ')', 'on', 'läänemeresoome', 'lõunarühma', 'kuuluv', 'keel', '.']
     elif lang == 'fin':
         assert tokens == ['Suomen', 'kieli', '(', 'suomi', ')', 'on', 'uralilaisten', 'kielten', 'itämerensuomalaiseen', 'ryhmään', 'kuuluva', 'kieli', '.']
     elif lang == 'fra':
         assert tokens == ['Le', 'français', 'est', 'une', 'langue', 'indo-européenne', 'de', 'la', 'famille', 'des', 'langues', 'romanes', 'dont', 'les', 'locuteurs', 'sont', 'appelés', 'francophones', '.']
-    elif lang == 'deu':
+    elif lang in ['deu_at', 'deu_de', 'deu_ch']:
         if word_tokenizer == 'NLTK - Tok-tok Tokenizer':
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'das', 'Deutsche', '(', '[', 'dɔɪ̯tʃ', ']', ';', '[', '26', ']', 'abgekürzt', 'dt', '.', 'oder', 'dtsch.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', ',', 'die', 'weltweit', 'etwa', '90', 'bis', '105', 'Millionen', 'Menschen', 'als', 'Muttersprache', 'und', 'weiteren', 'rund', '80', 'Millionen', 'als', 'Zweit-', 'oder', 'Fremdsprache', 'dient', '.']
         elif word_tokenizer == 'Sacremoses - Moses Tokenizer':
@@ -215,7 +217,7 @@ def test_word_tokenize(lang, word_tokenizer):
             assert tokens == ['فارسی', 'یا', 'پارسی', 'یکی', 'از', 'زبان\u200cهای', 'هندواروپایی', 'در', 'شاخهٔ', 'زبان\u200cهای', 'ایرانی', 'جنوب', 'غربی', 'است', 'که', 'در', 'کشورهای', 'ایران', '،', 'افغانستان،[۳', ']', 'تاجیکستان[۴', ']', 'و', 'ازبکستان[۵', ']', 'به', 'آن', 'سخن', 'می\u200cگویند', '.']
     elif lang == 'pol':
         assert tokens == ['Język', 'polski', ',', 'polszczyzna', '–', 'język', 'lechicki', 'z', 'grupy', 'zachodniosłowiańskiej', '(', 'do', 'której', 'należą', 'również', 'czeski', ',', 'kaszubski', ',', 'słowacki', 'i', 'języki', 'łużyckie', ')', ',', 'stanowiącej', 'część', 'rodziny', 'indoeuropejskiej', '.']
-    elif lang == 'por':
+    elif lang in ['por_br', 'por_pt']:
         assert tokens == ['A', 'língua', 'portuguesa', ',', 'também', 'designada', 'português', ',', 'é', 'uma', 'língua', 'românica', 'flexiva', 'ocidental', 'originada', 'no', 'galego-português', 'falado', 'no', 'Reino', 'da', 'Galiza', 'e', 'no', 'norte', 'de', 'Portugal', '.']
     elif lang == 'pan':
         assert tokens == ['ਪੰਜਾਬੀ', 'ਭਾਸ਼ਾ', '/', 'pʌnˈdʒɑːbi', '/', '(', 'ਸ਼ਾਹਮੁਖੀ', ':', '\u200e', 'پنجابی', '\u200e', ')', '(', 'ਗੁਰਮੁਖੀ', ':', 'ਪੰਜਾਬੀ', ')', 'ਪੰਜਾਬ', 'ਦੀ', 'ਭਾਸ਼ਾ', ',', 'ਜਿਸ', 'ਨੂੰ', 'ਪੰਜਾਬ', 'ਖੇਤਰ', 'ਦੇ', 'ਵਸਨੀਕ', 'ਜਾਂ', 'ਸੰਬੰਧਿਤ', 'ਲੋਕ', 'ਬੋਲਦੇ', 'ਹਨ', '।', '[', '1', ']']
