@@ -32,6 +32,7 @@
 - File Area: Remove support for .tmx files
 
 ### ⏫ Dependency Changes
+- Dependencies: Add Pyphen
 - Dependencies: Upgrade Charset Normalizer to 2.0.4
 - Dependencies: Upgrade spaCy to 3.1.1
 
