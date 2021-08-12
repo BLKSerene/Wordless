@@ -71,10 +71,18 @@ def detect_lang(main, file):
                     lang_code_639_1 = lang.lang.replace('-', '_')
 
                     break
+        # English
+        elif lang_code_639_1 == 'en':
+            lang_code_639_1 = 'en_us'
+        # German
+        elif lang_code_639_1 == 'de':
+            lang_code_639_1 = 'de_de'
         # Norwegian Bokmål
         elif lang_code_639_1 == 'no':
             lang_code_639_1 = 'nb'
-
+        # Portuguese
+        elif lang_code_639_1 == 'pt':
+            lang_code_639_1 = 'pt_pt'
         # Serbian (Cyrillic)
         elif lang_code_639_1 == 'sr':
             lang_code_639_1 = 'sr_cyrl'
