@@ -1520,7 +1520,7 @@ def init_settings_default(main):
                 'ara': main.tr('spaCy - Arabic Stop Word List'),
                 'arb': main.tr('CLTK - Arabic (Standard) Stop Word List'),
                 'hye': main.tr('spaCy - Armenian Stop Word List'),
-                'aze': main.tr('NLTK - Azerbaijani Stop Word List'),
+                'aze': main.tr('spaCy - Azerbaijani Stop Word List'),
                 'eus': main.tr('spaCy - Basque Stop Word List'),
                 'bel': main.tr('extra-stopwords - Belarusian Stop Word List'),
                 'ben': main.tr('spaCy - Bengali Stop Word List'),
