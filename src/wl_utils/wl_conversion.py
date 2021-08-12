@@ -38,6 +38,9 @@ def to_iso_639_1(main, lang_code):
         if lang_code_639_3 == lang_code:
             return lang_code_639_1
 
+def remove_lang_code_suffixes(main, lang_code):
+    return lang_code.split('_')[0]
+
 def get_lang_family(main, lang_code):
     for lang_code_639_3, _, lang_family in main.settings_global['langs'].values():
         if lang_code_639_3 == lang_code:

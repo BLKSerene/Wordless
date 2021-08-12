@@ -114,15 +114,16 @@ I would like to extend my sincere gratitude to the following open-source project
 5     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Edward Loper, Ewan Klein
 6     |[opencc-python](https://github.com/yichen0831/opencc-python)|Huang Yichen, Carbo Kuo (郭家宝)
 7     |[pkuseg](https://github.com/lancopku/pkuseg-python)         |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Bingzhen Wei (位冰镇), Xu Sun (孙栩)
-8     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
-9     |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)
-10    |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
-11    |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
-12    |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
-13    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
-14    |[TextBlob](https://textblob.readthedocs.io/)                |Steven Loria
-15    |[Tokenizer](https://github.com/mideind/Tokenizer)           |Vilhjálmur Þorsteinsson
-16    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
+8     |[Pyphen](https://pyphen.org/)                               |Guillaume Ayoub
+9     |[pymorphy2](https://github.com/kmike/pymorphy2)             |Mikhail Korobov
+10    |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)
+11    |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
+12    |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
+13    |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
+14    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
+15    |[TextBlob](https://textblob.readthedocs.io/)                |Steven Loria
+16    |[Tokenizer](https://github.com/mideind/Tokenizer)           |Vilhjálmur Þorsteinsson
+17    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
 
 ### Language Data
 
