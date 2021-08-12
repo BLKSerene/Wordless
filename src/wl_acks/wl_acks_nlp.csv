@@ -5,6 +5,7 @@ nagisa|https://github.com/taishi-i/nagisa|0.2.7|Taishi Ikeda (池田大志)|MIT|
 NLTK|http://www.nltk.org/|3.6.2|Steven Bird, Edward Loper, Ewan Klein|Apache-2.0|https://github.com/nltk/nltk/blob/develop/LICENSE.txt
 opencc-python|https://github.com/yichen0831/opencc-python|0.1.6|Huang Yichen, Carbo Kuo (郭家宝)|Apache-2.0|https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt
 pkuseg|https://github.com/lancopku/pkuseg-python|0.0.25|Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶),<br>Xuancheng Ren (任宣丞), Yi Zhang (张艺),<br>Bingzhen Wei (位冰镇), Xu Sun (孙栩)|MIT|https://github.com/lancopku/pkuseg-python/blob/master/LICENSE
+Pyphen|https://pyphen.org/|0.11.0|Guillaume Ayoub|GPL-2.0+/LGPL-2.1+/MPL-1.1|https://github.com/Kozea/Pyphen/blob/master/LICENSE
 pymorphy2|https://github.com/kmike/pymorphy2|0.9.1|Mikhail Korobov|MIT|https://github.com/kmike/pymorphy2/#pymorphy2
 PyThaiNLP|https://github.com/PyThaiNLP/pythainlp|2.3.1|Wannaphong Phatthiyaphaibun<br>(วรรณพงษ์ ภัททิยไพบูลย์)|Apache-2.0|https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE
 razdel|https://github.com/natasha/razdel|0.5.0|Alexander Kukushkin|MIT|https://github.com/natasha/razdel/blob/master/LICENSE
