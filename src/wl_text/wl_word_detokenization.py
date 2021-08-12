@@ -45,6 +45,8 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
         for sentence in sentences:
             text += main.nltk_treebank_detokenizer.tokenize(sentence)
     elif word_detokenizer == main.tr('Sacremoses - Moses Detokenizer'):
+        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+        
         for sentence in sentences:
             text += main.__dict__[f'sacremoses_moses_detokenizer_{lang}'].detokenize(sentence)
     # Chinese
@@ -65,7 +67,7 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
                             if i + j + 1 == len(tokens) or not wl_checking_unicode.is_eng_token(tokens[i + j + 1]):
                                 text += wl_word_detokenize(
                                     main, tokens[non_cjk_start : i + j + 1],
-                                    lang = 'eng'
+                                    lang = 'eng_us'
                                 )
 
                                 non_cjk_start = i + j + 1
@@ -84,6 +86,7 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
                                 non_cjk_start = i + j + 1
 
                                 break
+    # Japanese
     elif word_detokenizer == main.tr('Wordless - Japanese Word Detokenizer'):
         non_cjk_start = 0
 
@@ -104,7 +107,7 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
                         if i + j + 1 == len(tokens) or not wl_checking_unicode.is_eng_token(tokens[i + j + 1]):
                             text += wl_word_detokenize(
                                 main, tokens[non_cjk_start : i + j + 1],
-                                lang = 'eng'
+                                lang = 'eng_us'
                             )
 
                             non_cjk_start = i + j + 1
@@ -146,7 +149,7 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
                         if i + j + 1 == len(tokens) or not wl_checking_unicode.is_eng_token(tokens[i + j + 1]):
                             text += wl_word_detokenize(
                                 main, tokens[non_thai_start : i + j + 1],
-                                lang = 'eng'
+                                lang = 'eng_us'
                             )
 
                             non_thai_start = i + j + 1
@@ -189,7 +192,7 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
                         if i + j + 1 == len(tokens) or not wl_checking_unicode.is_eng_token(tokens[i + j + 1]):
                             text += wl_word_detokenize(
                                 main, tokens[non_tibetan_start : i + j + 1],
-                                lang = 'eng'
+                                lang = 'eng_us'
                             )
 
                             non_tibetan_start = i + j + 1

@@ -32,9 +32,9 @@ for lang, word_detokenizers in main.settings_global['word_detokenizers'].items()
 
 @pytest.mark.parametrize('lang, word_detokenizer', test_word_detokenizers)
 def test_word_detokenize(lang, word_detokenizer):
-    print(f'{lang} / {word_detokenizer}:')
-
     lang_text = wl_conversion.to_lang_text(main, lang)
+
+    print(f'{lang_text} ({lang}) / {word_detokenizer}:')
 
     tokens = wl_word_tokenization.wl_word_tokenize(
         main,
@@ -66,15 +66,15 @@ def test_word_detokenize(lang, word_detokenizer):
         assert text == 'Čeština neboli český jazyk je západoslovanský jazyk, nejbližší slovenštině, poté lužické srbštině a polštině.'
     elif lang == 'nld':
         assert text == 'Het Nederlands is een West-Germaanse taal en de officiële taal van Nederland, Suriname en een van de drie officiële talen van België.'
-    elif lang == 'eng':
-        assert text == 'English is a West Germanic language originally spoken by the early medieval England.[3][4][5]'
+    elif lang in ['eng_gb', 'eng_us']:
+        assert text == 'English is a West Germanic language originally spoken by the inhabitants of early medieval England.[3][4][5]'
     elif lang == 'est':
         assert text == 'Eesti keel (varasem nimetus maakeel) on läänemeresoome lõunarühma kuuluv keel.'
     elif lang == 'fin':
         assert text == 'Suomen kieli (suomi) on uralilaisten kielten itämerensuomalaiseen ryhmään kuuluva kieli.'
     elif lang == 'fra':
         assert text == 'Le français est une langue indo-européenne de la famille des langues romanes dont les locuteurs sont appelés francophones.'
-    elif lang == 'deu':
+    elif lang in ['deu_at', 'deu_de', 'deu_ch']:
         if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
             assert text == 'Die deutsche Sprache bzw. das Deutsche ([dɔɪ̯tʃ];[26] abgekürzt dt.oder dtsch .) ist eine westgermanische Sprache, die weltweit etwa 90 bis 105 Millionen Menschen als Muttersprache und weiteren rund 80 Millionen als Zweit- oder Fremdsprache dient.'
         elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
@@ -114,7 +114,7 @@ def test_word_detokenize(lang, word_detokenizer):
         assert text == 'ଓଡ଼ିଆ (ଇଂରାଜୀ ଭାଷାରେ Odia / əˈdiːə / or Oriya / ɒˈriːə /,) ଏକ ଭାରତୀୟ ଭାଷା ଯାହା ଏକ ଇଣ୍ଡୋ-ଇଉରୋପୀୟ ଭାଷାଗୋଷ୍ଠୀ ଅନ୍ତର୍ଗତ ଇଣ୍ଡୋ-ଆର୍ଯ୍ୟ ଭାଷା ।'
     elif lang == 'pol':
         assert text == 'Język polski, polszczyzna – język lechicki z grupy zachodniosłowiańskiej (do której należą również czeski, kaszubski, słowacki i języki łużyckie), stanowiącej część rodziny indoeuropejskiej.'
-    elif lang == 'por':
+    elif lang in ['por_br', 'por_pt']:
         assert text == 'A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.'
     elif lang == 'pan':
         assert text == 'ਪੰਜਾਬੀ ਭਾਸ਼ਾ / pʌnˈdʒɑːbi /(ਸ਼ਾਹਮੁਖੀ:‎ پنجابی ‎) (ਗੁਰਮੁਖੀ: ਪੰਜਾਬੀ) ਪੰਜਾਬ ਦੀ ਭਾਸ਼ਾ, ਜਿਸ ਨੂੰ ਪੰਜਾਬ ਖੇਤਰ ਦੇ ਵਸਨੀਕ ਜਾਂ ਸੰਬੰਧਿਤ ਲੋਕ ਬੋਲਦੇ ਹਨ । [1]'

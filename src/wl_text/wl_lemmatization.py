@@ -52,6 +52,10 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
 
         # spaCy
         if 'spaCy' in lemmatizer:
+            # English, German, Portuguese
+            if lang.find('srp') == -1:
+                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
             nlp = main.__dict__[f'spacy_nlp_{lang}']
             doc = spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens))
             
@@ -65,7 +69,7 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
 
             for token, pos in wl_pos_tagging.wl_pos_tag(
                 main, tokens,
-                lang = 'eng',
+                lang = 'eng_us',
                 pos_tagger = 'NLTK - Perceptron POS Tagger',
                 tagset = 'universal'
             ):
@@ -113,6 +117,8 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
         # Other Languages
         elif 'Lemmatization Lists' in lemmatizer:
             lang = wl_conversion.to_iso_639_1(main, lang)
+            # English, German, Portuguese
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
             with open(wl_misc.get_normalized_path(f'lemmatization/Lemmatization Lists/lemmatization-{lang}.txt'), 'r', encoding = 'utf_8_sig') as f:
                 for line in f:

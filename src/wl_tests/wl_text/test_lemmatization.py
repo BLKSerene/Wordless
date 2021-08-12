@@ -30,9 +30,9 @@ for lang, lemmatizers in main.settings_global['lemmatizers'].items():
 
 @pytest.mark.parametrize('lang, lemmatizer', test_lemmatizers)
 def test_lemmatize(lang, lemmatizer):
-    print(f'{lang} / {lemmatizer}:')
-
     lang_text = wl_conversion.to_lang_text(main, lang)
+
+    print(f'{lang_text} ({lang}) / {lemmatizer}:')
 
     tokens = wl_word_tokenization.wl_word_tokenize(
         main,
@@ -68,12 +68,12 @@ def test_lemmatize(lang, lemmatizer):
         assert lemmas == ['Dansk', 'være', 'en', 'nordgermansk', 'sprog', 'af', 'den', 'østnordiske', '(', 'kontinental', ')', 'gruppe', ',', 'der', 'tale', 'af', 'ca.', 'seks', 'million', 'menneske', '.']
     elif lang == 'nld':
         assert lemmas == ['het', 'nederlands', 'is', 'een', 'west-germaans', 'taal', 'en', 'de', 'officieel', 'taal', 'van', 'nederland', ',', 'suriname', 'en', 'e', 'van', 'de', 'drie', 'officieel', 'taal', 'van', 'belgië', '.']
-    elif lang == 'eng':
+    elif lang in ['eng_gb', 'eng_us']:
         if lemmatizer in ['Lemmatization Lists - English Lemma List',
                           'NLTK - WordNet Lemmatizer']:
-            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'originally', 'speak', 'by', 'the', 'early', 'medieval', 'England.[3][4][5', ']']
+            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'originally', 'speak', 'by', 'the', 'inhabitant', 'of', 'early', 'medieval', 'England.[3][4][5', ']']
         elif lemmatizer == 'spaCy - English Lemmatizer':
-            assert lemmas == ['English', 'be', 'a', 'west', 'germanic', 'language', 'originally', 'speak', 'by', 'the', 'early', 'medieval', 'England.[3][4][5', ']']
+            assert lemmas == ['English', 'be', 'a', 'west', 'germanic', 'language', 'originally', 'speak', 'by', 'the', 'inhabitant', 'of', 'early', 'medieval', 'England.[3][4][5', ']']
     elif lang == 'est':
         assert lemmas == ['Eesti', 'kee', '(', 'varasem', 'nimetu', 'maakeel', ')', 'olema', 'läänemeresoome', 'lõunarühma', 'kuuluma', 'kee', '.']
     elif lang == 'fra':
@@ -83,7 +83,7 @@ def test_lemmatize(lang, lemmatizer):
             assert lemmas == ['le', 'français', 'être', 'un', 'langue', 'indo-européen', 'de', 'le', 'famille', 'de', 'langue', 'roman', 'dont', 'le', 'locuteur', 'être', 'appeler', 'francophone', '.']
     elif lang == 'glg':
         assert lemmas == ['O', 'galego', '(', '[', 'ɡaˈleɣo̝', ']', ')', 'ser', 'un', 'lingua', 'indoeuropeo', 'que', 'pertencer', 'á', 'póla', 'de', 'lingua', 'románico', '.']
-    elif lang == 'deu':
+    elif lang in ['deu_at', 'deu_de', 'deu_ch']:
         if lemmatizer == 'Lemmatization Lists - German Lemma List':
             assert lemmas == ['Die', 'deutsch', 'Sprache', 'bzw.', 'der', 'deutschen', '(', '[', 'dɔɪ̯tʃ];[26', ']', 'abkürzen', 'dt', '.', 'oder', 'dtsch', '.', ')', 'sein', 'einen', 'westgermanische', 'Sprache', ',', 'der', 'weltweit', 'etwa', '90', 'bis', '105', 'Million', 'Mensch', 'als', 'Muttersprache', 'und', 'weit', 'rund', '80', 'Million', 'als', 'Zweit-', 'oder', 'Fremdsprache', 'dienen', '.']
         elif lemmatizer == 'spaCy - German Lemmatizer':
@@ -120,7 +120,7 @@ def test_lemmatize(lang, lemmatizer):
             assert lemmas == ['فارسی', 'یا', 'پارسی', 'یکی', 'از', 'زبان\u200cهای', 'هندواروپایی', 'در', 'شاخهٔ', 'زبان\u200cهای', 'ایرانی', 'جنوب', 'غربی', 'است', 'که', 'در', 'کشورهای', 'ایران', '،', 'افغانستان،[۳', ']', 'تاجیکستان[۴', ']', 'و', 'ازبکستان[۵', ']', 'به', 'آن', 'سخن', 'می\u200cگویند', '.']
     elif lang == 'pol':
         assert lemmas == ['język', 'polski', ',', 'polszczyzna', '–', 'język', 'lechicki', 'z', 'grupa', 'zachodniosłowiańskiej', '(', 'do', 'której', 'należeć', 'również', 'czeski', ',', 'kaszubski', ',', 'słowacki', 'i', 'język', 'łużycki', ')', ',', 'stanowiącej', 'część', 'rodzina', 'indoeuropejski', '.']
-    elif lang == 'por':
+    elif lang in ['por_br', 'por_pt']:
         assert lemmas == ['A', 'língua', 'portuguesar', ',', 'também', 'designar', 'português', ',', 'ser', 'umar', 'língua', 'românico', 'flexivo', 'ocidental', 'originar', 'o', 'galego-português', 'falar', 'o', 'Reino', 'da', 'Galiza', 'e', 'o', 'norte', 'de', 'Portugal', '.']
     elif lang == 'ron':
         assert lemmas == ['Limba', 'român', 'fi', 'vrea', 'limbă', 'indo-european', ',', 'din', 'grup', 'italic', 'și', 'din', 'subgrupul', 'oriental', 'al', 'limbă', 'romanice', '.']

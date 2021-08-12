@@ -26,6 +26,29 @@ from wl_utils import wl_conversion
 
 main = wl_test_init.Wl_Test_Main()
 
+def add_country_codes(lang_codes):
+    lang_codes = sorted(set(lang_codes))
+
+    for lang_code in lang_codes:
+        # Chinese
+        if lang_code == 'zh':
+            lang_codes.remove('zh')
+            lang_codes.extend(['zh_cn', 'zh_tw'])
+        # English
+        elif lang_code == 'en':
+            lang_codes.remove('en')
+            lang_codes.extend(['en_gb', 'en_us'])
+        # German
+        elif lang_code == 'de':
+            lang_codes.remove('de')
+            lang_codes.extend(['de_at', 'de_de', 'de_ch'])
+        # Portuguese
+        elif lang_code == 'pt':
+            lang_codes.remove('pt')
+            lang_codes.extend(['pt_br', 'pt_pt'])
+
+    return sorted(lang_codes)
+
 def check_missing_extra_langs(langs_supported, langs_global, msg):
     for lang_code in langs_supported:
         lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
@@ -125,17 +148,18 @@ def test_settings_global():
         if file_ext not in ['yue', 'zh']:
             langs_supported_sacremoses.append(file_ext)
 
+    langs_supported_sacremoses = add_country_codes(langs_supported_sacremoses)
+
     # Loading languages supported by spaCy
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
         if lang.ispkg:
-            if lang.name not in ['ja', 'ko', 'sr', 'th', 'vi', 'zh', 'xx']:
+            if lang.name not in ['ja', 'ko', 'sr', 'th', 'vi', 'xx']:
                 langs_supported_spacy.append(lang.name)
-            # Chinese
-            elif lang.name == 'zh':
-                langs_supported_spacy.extend(['zh_cn', 'zh_tw'])
             # Serbian
             elif lang.name == 'sr':
                 langs_supported_spacy.extend(['sr_cyrl', 'sr_latn'])
+
+    langs_supported_spacy = add_country_codes(langs_supported_spacy)
 
     # Lemmatizers
     for file in os.listdir(f'{spacy_lookups_data.__path__[0]}/data/'):
@@ -148,23 +172,22 @@ def test_settings_global():
             else:
                 langs_supported_spacy_lemmatizers.append(lang_code)
 
-    langs_supported_spacy_lemmatizers = sorted(set(langs_supported_spacy_lemmatizers))
+    langs_supported_spacy_lemmatizers = add_country_codes(langs_supported_spacy_lemmatizers)
 
     # Stop word lists
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
         if lang.ispkg:
             for file in os.listdir(f'{spacy.lang.__path__[0]}/{lang.name}/'):
                 if file == 'stop_words.py':
-                    if lang.name not in ['sr', 'zh', 'xx', 'az']:
+                    if lang.name not in ['sr', 'xx', 'az']:
                         langs_supported_spacy_stop_words.append(lang.name)
-                    # Chinese
-                    elif lang.name == 'zh':
-                        langs_supported_spacy_stop_words.extend(['zh_cn', 'zh_tw'])
                     # Serbian
                     elif lang.name == 'sr':
                         langs_supported_spacy_stop_words.extend(['sr_cyrl', 'sr_latn'])
 
                     break
+
+    langs_supported_spacy_stop_words = add_country_codes(langs_supported_spacy_stop_words)
 
     # Check for missing and extra languages for spaCy's sentencizer
     for lang_code, sentence_tokenizers in settings_sentence_tokenizers.items():
