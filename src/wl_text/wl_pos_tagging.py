@@ -40,9 +40,8 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'default'):
 
     # spaCy
     if 'spaCy' in pos_tagger:
-        # Chinese
-        if lang in ['zho_cn', 'zho_tw']:
-            lang = 'zho'
+        # Chinese, English, German, Portuguese
+        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens))
@@ -59,7 +58,13 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'default'):
         tokens_tagged = jieba.posseg.cut(' '.join(tokens))
     # English & Russian
     elif pos_tagger == main.tr('NLTK - Perceptron POS Tagger'):
-        tokens_tagged = nltk.pos_tag(tokens, lang = lang)
+        lang_codes = {
+            'eng_gb': 'eng',
+            'eng_us': 'eng',
+            'rus': 'rus'
+        }
+
+        tokens_tagged = nltk.pos_tag(tokens, lang = lang_codes[lang])
     # Japanese
     elif pos_tagger == main.tr('nagisa - Japanese POS Tagger'):
         import nagisa

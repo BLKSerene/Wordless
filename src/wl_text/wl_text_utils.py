@@ -188,9 +188,9 @@ def init_spacy_models(main, lang):
     }
     spacy_langs_lemmatizers = ['ben', 'cat', 'hrv', 'ces', 'hun', 'ind', 'ltz', 'fas', 'srp_cyrl', 'swe', 'tgl', 'tur', 'urd']
 
-    # Chinese
-    if lang in ['zho_cn', 'zho_tw']:
-        lang = 'zho'
+    # Chinese, English, German, Portuguese
+    if lang.find('srp') == -1:
+        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
     if f'spacy_nlp_{lang}' not in main.__dict__:
         # Languages with models
@@ -259,8 +259,11 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
                 main.nltk_tweet_tokenizer = nltk.TweetTokenizer()
     # Sacremoses
     elif 'Sacremoses' in word_tokenizer:
+        lang_sacremoses = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
+        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
         if f'sacremoses_moses_tokenizer_{lang}' not in main.__dict__:
-            main.__dict__[f'sacremoses_moses_tokenizer_{lang}'] = sacremoses.MosesTokenizer(lang = wl_conversion.to_iso_639_1(main, lang))
+            main.__dict__[f'sacremoses_moses_tokenizer_{lang}'] = sacremoses.MosesTokenizer(lang = lang_sacremoses)
     # spaCy
     elif 'spaCy' in word_tokenizer:
         init_spacy_models(main, lang)
@@ -270,7 +273,7 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
             main.pkuseg_word_tokenizer = pkuseg.pkuseg()
     # Chinese & Japanese
     elif 'Wordless' in word_tokenizer:
-        init_spacy_models(main, 'eng')
+        init_spacy_models(main, 'eng_us')
         init_spacy_models(main, 'other')
     # Tibetan
     elif 'botok' in word_tokenizer:
@@ -290,7 +293,10 @@ def init_word_detokenizers(main, lang, word_detokenizer = 'default'):
             main.nltk_treebank_detokenizer = nltk.tokenize.treebank.TreebankWordDetokenizer()
     elif word_detokenizer == main.tr('Sacremoses - Moses Detokenizer'):
         if f'sacremoses_moses_detokenizer_{lang}' not in main.__dict__:
-            main.__dict__[f'sacremoses_moses_detokenizer_{lang}'] = sacremoses.MosesDetokenizer(lang = wl_conversion.to_iso_639_1(main, lang))
+            lang_sacremoses = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+            main.__dict__[f'sacremoses_moses_detokenizer_{lang}'] = sacremoses.MosesDetokenizer(lang = lang_sacremoses)
 
 def init_pos_taggers(main, lang, pos_tagger = 'default'):
     if pos_tagger == 'default':
@@ -309,7 +315,7 @@ def init_pos_taggers(main, lang, pos_tagger = 'default'):
                 main.pymorphy2_morphological_analyzer_ukr = pymorphy2.MorphAnalyzer(lang = 'uk')
     # Chinese & Japanese
     elif lang in ['zho_cn', 'zho_tw', 'jpn']:
-        init_spacy_models(main, 'eng')
+        init_spacy_models(main, 'eng_us')
         init_spacy_models(main, 'other')
 
 def init_lemmatizers(main, lang, lemmatizer = 'default'):

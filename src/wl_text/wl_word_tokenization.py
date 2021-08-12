@@ -39,9 +39,9 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
     # spaCy
     if 'spaCy' in word_tokenizer:
-        # Chinese
-        if lang in ['zho_cn', 'zho_tw']:
-            lang = 'zho'
+        # Chinese, English, German, Portuguese
+        if lang.find('srp') == -1:
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
@@ -106,6 +106,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                             tokens_multilevel[-1].append(main.nltk_tweet_tokenizer.tokenize(sentence))
                 # Sacremoses
                 elif 'Sacremoses' in word_tokenizer:
+                    lang = wl_conversion.remove_lang_code_suffixes(main, lang)
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang)
                     
                     for sentence in sentences:
@@ -146,7 +147,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                             if i + j + 1 == len(sentence) or not wl_checking_unicode.is_eng(sentence[i + j + 1]):
                                                 tokens.extend(wl_word_tokenize(
                                                                   main, sentence[non_han_start : i + j + 1],
-                                                                  lang = 'eng')
+                                                                  lang = 'eng_us')
                                                               )
                                                 tokens = list(wl_misc.flatten_list(tokens))
 
@@ -209,7 +210,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                             if i + j + 1 == len(sentence) or not wl_checking_unicode.is_eng(sentence[i + j + 1]):
                                                 tokens.extend(wl_word_tokenize(
                                                                   main, sentence[non_han_start : i + j + 1],
-                                                                  lang = 'eng')
+                                                                  lang = 'eng_us')
                                                               )
                                                 tokens = list(wl_misc.flatten_list(tokens))
 
