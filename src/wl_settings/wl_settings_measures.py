@@ -22,6 +22,9 @@ class Wl_Settings_Dispersion(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
+        self.settings_default = self.main.settings_default['measures']['dispersion']
+        self.settings_custom = self.main.settings_custom['measures']['dispersion']
+
         # General
         group_box_general = QGroupBox(self.tr('General'), self)
 
@@ -44,16 +47,14 @@ class Wl_Settings_Dispersion(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
-        self.spin_box_dispersion_number_sections.setValue(settings['measures']['dispersion']['general']['number_sections'])
+        self.spin_box_dispersion_number_sections.setValue(settings['general']['number_sections'])
 
     def apply_settings(self):
-        settings = self.main.settings_custom
-
-        settings['measures']['dispersion']['general']['number_sections'] = self.spin_box_dispersion_number_sections.value()
+        self.settings_custom['general']['number_sections'] = self.spin_box_dispersion_number_sections.value()
 
         return True
 
@@ -61,6 +62,9 @@ class Wl_Settings_Dispersion(wl_tree.Wl_Settings):
 class Wl_Settings_Adjusted_Freq(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
+
+        self.settings_default = self.main.settings_default['measures']['adjusted_freq']
+        self.settings_custom = self.main.settings_custom['measures']['adjusted_freq']
 
         # General
         group_box_general = QGroupBox(self.tr('General'), self)
@@ -96,18 +100,16 @@ class Wl_Settings_Adjusted_Freq(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
-        self.spin_box_adjusted_freq_number_sections.setValue(settings['measures']['adjusted_freq']['general']['number_sections'])
-        self.checkbox_use_same_settings_dispersion.setChecked(settings['measures']['adjusted_freq']['general']['use_same_settings_dispersion'])
+        self.spin_box_adjusted_freq_number_sections.setValue(settings['general']['number_sections'])
+        self.checkbox_use_same_settings_dispersion.setChecked(settings['general']['use_same_settings_dispersion'])
 
     def apply_settings(self):
-        settings = self.main.settings_custom
-
-        settings['measures']['adjusted_freq']['general']['number_sections'] = self.spin_box_adjusted_freq_number_sections.value()
-        settings['measures']['adjusted_freq']['general']['use_same_settings_dispersion'] = self.checkbox_use_same_settings_dispersion.isChecked()
+        self.settings_custom['general']['number_sections'] = self.spin_box_adjusted_freq_number_sections.value()
+        self.settings_custom['general']['use_same_settings_dispersion'] = self.checkbox_use_same_settings_dispersion.isChecked()
 
         return True
 
@@ -115,6 +117,9 @@ class Wl_Settings_Adjusted_Freq(wl_tree.Wl_Settings):
 class Wl_Settings_Statistical_Significance(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
+
+        self.settings_default = self.main.settings_default['measures']['statistical_significance']
+        self.settings_custom = self.main.settings_custom['measures']['statistical_significance']
 
         # z-score
         group_box_z_score = QGroupBox(self.tr('z-score'), self)
@@ -230,42 +235,40 @@ class Wl_Settings_Statistical_Significance(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
-        self.combo_box_z_score_direction.setCurrentText(settings['measures']['statistical_significance']['z_score']['direction'])
+        self.combo_box_z_score_direction.setCurrentText(settings['z_score']['direction'])
 
-        self.spin_box_students_t_test_2_sample_number_sections.setValue(settings['measures']['statistical_significance']['students_t_test_2_sample']['number_sections'])
-        self.combo_box_students_t_test_2_sample_use_data.setCurrentText(settings['measures']['statistical_significance']['students_t_test_2_sample']['use_data'])
-        self.combo_box_students_t_test_2_sample_variances.setCurrentText(settings['measures']['statistical_significance']['students_t_test_2_sample']['variances'])
+        self.spin_box_students_t_test_2_sample_number_sections.setValue(settings['students_t_test_2_sample']['number_sections'])
+        self.combo_box_students_t_test_2_sample_use_data.setCurrentText(settings['students_t_test_2_sample']['use_data'])
+        self.combo_box_students_t_test_2_sample_variances.setCurrentText(settings['students_t_test_2_sample']['variances'])
 
-        self.checkbox_pearsons_chi_squared_test_apply_correction.setChecked(settings['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'])
+        self.checkbox_pearsons_chi_squared_test_apply_correction.setChecked(settings['pearsons_chi_squared_test']['apply_correction'])
 
-        self.combo_box_fishers_exact_test_direction.setCurrentText(settings['measures']['statistical_significance']['fishers_exact_test']['direction'])
+        self.combo_box_fishers_exact_test_direction.setCurrentText(settings['fishers_exact_test']['direction'])
 
-        self.spin_box_mann_whitney_u_test_number_sections.setValue(settings['measures']['statistical_significance']['mann_whitney_u_test']['number_sections'])
-        self.combo_box_mann_whitney_u_test_use_data.setCurrentText(settings['measures']['statistical_significance']['mann_whitney_u_test']['use_data'])
-        self.combo_box_mann_whitney_u_test_direction.setCurrentText(settings['measures']['statistical_significance']['mann_whitney_u_test']['direction'])
-        self.checkbox_mann_whitney_u_test_apply_correction.setChecked(settings['measures']['statistical_significance']['mann_whitney_u_test']['apply_correction'])
+        self.spin_box_mann_whitney_u_test_number_sections.setValue(settings['mann_whitney_u_test']['number_sections'])
+        self.combo_box_mann_whitney_u_test_use_data.setCurrentText(settings['mann_whitney_u_test']['use_data'])
+        self.combo_box_mann_whitney_u_test_direction.setCurrentText(settings['mann_whitney_u_test']['direction'])
+        self.checkbox_mann_whitney_u_test_apply_correction.setChecked(settings['mann_whitney_u_test']['apply_correction'])
 
     def apply_settings(self):
-        settings = self.main.settings_custom
+        self.settings_custom['z_score']['direction'] = self.combo_box_z_score_direction.currentText()
 
-        settings['measures']['statistical_significance']['z_score']['direction'] = self.combo_box_z_score_direction.currentText()
+        self.settings_custom['students_t_test_2_sample']['number_sections'] = self.spin_box_students_t_test_2_sample_number_sections.value()
+        self.settings_custom['students_t_test_2_sample']['use_data'] = self.combo_box_students_t_test_2_sample_use_data.currentText()
+        self.settings_custom['students_t_test_2_sample']['variances'] = self.combo_box_students_t_test_2_sample_variances.currentText()
 
-        settings['measures']['statistical_significance']['students_t_test_2_sample']['number_sections'] = self.spin_box_students_t_test_2_sample_number_sections.value()
-        settings['measures']['statistical_significance']['students_t_test_2_sample']['use_data'] = self.combo_box_students_t_test_2_sample_use_data.currentText()
-        settings['measures']['statistical_significance']['students_t_test_2_sample']['variances'] = self.combo_box_students_t_test_2_sample_variances.currentText()
+        self.settings_custom['pearsons_chi_squared_test']['apply_correction'] = self.checkbox_pearsons_chi_squared_test_apply_correction.isChecked()
 
-        settings['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'] = self.checkbox_pearsons_chi_squared_test_apply_correction.isChecked()
+        self.settings_custom['fishers_exact_test']['direction'] = self.combo_box_fishers_exact_test_direction.currentText()
 
-        settings['measures']['statistical_significance']['fishers_exact_test']['direction'] = self.combo_box_fishers_exact_test_direction.currentText()
-
-        settings['measures']['statistical_significance']['mann_whitney_u_test']['number_sections'] = self.spin_box_mann_whitney_u_test_number_sections.value()
-        settings['measures']['statistical_significance']['mann_whitney_u_test']['use_data'] = self.combo_box_mann_whitney_u_test_use_data.currentText()
-        settings['measures']['statistical_significance']['mann_whitney_u_test']['direction'] = self.combo_box_mann_whitney_u_test_direction.currentText()
-        settings['measures']['statistical_significance']['mann_whitney_u_test']['apply_correction'] = self.checkbox_mann_whitney_u_test_apply_correction.isChecked()
+        self.settings_custom['mann_whitney_u_test']['number_sections'] = self.spin_box_mann_whitney_u_test_number_sections.value()
+        self.settings_custom['mann_whitney_u_test']['use_data'] = self.combo_box_mann_whitney_u_test_use_data.currentText()
+        self.settings_custom['mann_whitney_u_test']['direction'] = self.combo_box_mann_whitney_u_test_direction.currentText()
+        self.settings_custom['mann_whitney_u_test']['apply_correction'] = self.checkbox_mann_whitney_u_test_apply_correction.isChecked()
 
         return True
 
@@ -273,6 +276,9 @@ class Wl_Settings_Statistical_Significance(wl_tree.Wl_Settings):
 class Wl_Settings_Effect_Size(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
+
+        self.settings_default = self.main.settings_default['measures']['effect_size']
+        self.settings_custom = self.main.settings_custom['measures']['effect_size']
 
         # Kilgarriff's Ratio
         group_box_kilgarriffs_ratio = QGroupBox(self.tr('Kilgarriff\'s Ratio'), self)
@@ -296,15 +302,13 @@ class Wl_Settings_Effect_Size(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
-        self.spin_box_kilgarriffs_ratio_smoothing_param.setValue(settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param'])
+        self.spin_box_kilgarriffs_ratio_smoothing_param.setValue(settings['kilgarriffs_ratio']['smoothing_param'])
 
     def apply_settings(self):
-        settings = self.main.settings_custom
-
-        settings['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param'] = self.spin_box_kilgarriffs_ratio_smoothing_param.value()
+        self.settings_custom['kilgarriffs_ratio']['smoothing_param'] = self.spin_box_kilgarriffs_ratio_smoothing_param.value()
 
         return True

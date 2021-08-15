@@ -19,6 +19,7 @@ import nltk
 import nltk.tokenize.nist
 import pkuseg
 import pymorphy2
+import pyphen
 import sacremoses
 import spacy
 
@@ -222,13 +223,7 @@ def init_spacy_models(main, lang):
         # Increase 'nlp.max_length' to avoid out of memory error (Default: 1,000,000)
         main.__dict__[f'spacy_nlp_{lang}'].max_length = 1000 ** 3
     
-def init_sentence_tokenizers(main, lang, sentence_tokenizer = 'default'):
-    if lang not in main.settings_global['sentence_tokenizers']:
-        lang = 'other'
-
-    if sentence_tokenizer == 'default':
-        word_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizers'][lang]
-
+def init_sentence_tokenizers(main, lang, sentence_tokenizer):
     # spaCy
     if 'spaCy' in sentence_tokenizer:
         init_spacy_models(main, lang)
@@ -280,17 +275,25 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
         if 'botok_word_tokenizer' not in main.__dict__:
             main.botok_word_tokenizer = botok.WordTokenizer()
 
-def init_word_detokenizers(main, lang, word_detokenizer = 'default'):
-    if lang not in main.settings_global['word_detokenizers']:
-        lang = 'other'
+def init_syl_tokenizers(main, lang, syl_tokenizer):
+    # Pyphen
+    if 'Pyphen' in syl_tokenizer:
+        if f'pyphen_syl_tokenizer_{lang}' not in main.__dict__:
+            lang_pyphen = wl_conversion.to_iso_639_1(main, lang)
 
-    if word_detokenizer == 'default':
-        word_detokenizer = main.settings_custom['word_detokenization']['word_detokenizers'][lang]
+            if lang.find('_') > -1:
+                lang_pyphen = f"{lang_pyphen.split('_')[0]}_{lang_pyphen.split('_')[1].upper()}"
+            else:
+                lang_pyphen = wl_conversion.to_iso_639_1(main, lang)
+            
+            main.__dict__[f'pyphen_syl_tokenizer_{lang}'] = pyphen.Pyphen(lang = lang_pyphen)
 
-    # English & Other Languages
+def init_word_detokenizers(main, lang, word_detokenizer):
+    # NLTK
     if word_detokenizer == main.tr('NLTK - Penn Treebank Detokenizer'):
         if 'nltk_treebank_detokenizer' not in main.__dict__:
             main.nltk_treebank_detokenizer = nltk.tokenize.treebank.TreebankWordDetokenizer()
+    # Sacremoses
     elif word_detokenizer == main.tr('Sacremoses - Moses Detokenizer'):
         if f'sacremoses_moses_detokenizer_{lang}' not in main.__dict__:
             lang_sacremoses = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
@@ -298,10 +301,7 @@ def init_word_detokenizers(main, lang, word_detokenizer = 'default'):
 
             main.__dict__[f'sacremoses_moses_detokenizer_{lang}'] = sacremoses.MosesDetokenizer(lang = lang_sacremoses)
 
-def init_pos_taggers(main, lang, pos_tagger = 'default'):
-    if pos_tagger == 'default':
-        pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang]
-
+def init_pos_taggers(main, lang, pos_tagger):
     # spaCy
     if 'spaCy' in pos_tagger:
         init_spacy_models(main, lang)
@@ -318,11 +318,7 @@ def init_pos_taggers(main, lang, pos_tagger = 'default'):
         init_spacy_models(main, 'eng_us')
         init_spacy_models(main, 'other')
 
-def init_lemmatizers(main, lang, lemmatizer = 'default'):
-    if lang in main.settings_global['lemmatizers']:
-        if lemmatizer == 'default':
-            lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang]
-    
+def init_lemmatizers(main, lang, lemmatizer):
     # spaCy
     if 'spaCy' in lemmatizer:
         init_spacy_models(main, lang)

@@ -89,6 +89,9 @@ def test_settings_global():
     settings_word_tokenizers = settings_global['word_tokenizers']
     settings_word_tokenizers_default = settings_default['word_tokenization']['word_tokenizers']
 
+    settings_syl_tokenizers = settings_global['syl_tokenizers']
+    settings_syl_tokenizers_default = settings_default['syl_tokenization']['syl_tokenizers']
+
     settings_word_detokenizers = settings_global['word_detokenizers']
     settings_word_detokenizers_default = settings_default['word_detokenization']['word_detokenizers']
 
@@ -117,6 +120,9 @@ def test_settings_global():
     langs_word_tokenizers_nltk = []
     langs_word_tokenizers_sacremoses = []
     langs_word_tokenizers_spacy = []
+
+    langs_syl_tokenizers = list(settings_syl_tokenizers.keys())
+    langs_syl_tokenizers_default = list(settings_syl_tokenizers_default.keys())
 
     langs_word_detokenizers = list(settings_word_detokenizers.keys())
     langs_word_detokenizers_default = list(settings_word_detokenizers_default.keys())
@@ -274,6 +280,7 @@ def test_settings_global():
     # Check for missing and extra languages in default settings
     check_missing_extra_langs_default(langs_sentence_tokenizers, langs_sentence_tokenizers_default, 'sentence tokenizers')
     check_missing_extra_langs_default(langs_word_tokenizers, langs_word_tokenizers_default, 'word tokenizers')
+    check_missing_extra_langs_default(langs_syl_tokenizers, langs_syl_tokenizers_default, 'syllable tokenizers')
     check_missing_extra_langs_default(langs_word_detokenizers, langs_word_detokenizers_default, 'word detokenizers')
     check_missing_extra_langs_default(langs_pos_taggers, langs_pos_taggers_default, 'pos_taggers')
     check_missing_extra_langs_default(langs_pos_taggers, langs_tagsets_default, 'tagsets')

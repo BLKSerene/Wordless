@@ -24,6 +24,9 @@ class Wl_Settings_General(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
+        self.settings_default = self.main.settings_default['general']
+        self.settings_custom = self.main.settings_custom['general']
+
         # Font Settings
         group_box_font_settings = QGroupBox(self.tr('Font Settings'), self)
 
@@ -66,24 +69,22 @@ class Wl_Settings_General(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
-        self.combo_box_font_family.setCurrentFont(QFont(settings['general']['font_settings']['font_family']))
-        self.combo_box_font_size.set_text(settings['general']['font_settings']['font_size'])
+        self.combo_box_font_family.setCurrentFont(QFont(settings['font_settings']['font_family']))
+        self.combo_box_font_size.set_text(settings['font_settings']['font_size'])
 
-        self.checkbox_check_updates_on_startup.setChecked(settings['general']['update_settings']['check_updates_on_startup'])
+        self.checkbox_check_updates_on_startup.setChecked(settings['update_settings']['check_updates_on_startup'])
 
-        self.checkbox_confirm_on_exit.setChecked(settings['general']['misc']['confirm_on_exit'])
+        self.checkbox_confirm_on_exit.setChecked(settings['misc']['confirm_on_exit'])
 
     def apply_settings(self):
-        settings = self.main.settings_custom
-
         # Check font settings
         font_old = [
-            settings['general']['font_settings']['font_family'],
-            settings['general']['font_settings']['font_size']
+            self.settings_custom['font_settings']['font_family'],
+            self.settings_custom['font_settings']['font_size']
         ]
 
         font_new = [
@@ -103,12 +104,12 @@ class Wl_Settings_General(wl_tree.Wl_Settings):
                 result = 'cancel'
 
         if result in ['skip', 'restart']:
-            settings['general']['font_settings']['font_family'] = self.combo_box_font_family.currentFont().family()
-            settings['general']['font_settings']['font_size'] = self.combo_box_font_size.get_val()
+            self.settings_custom['font_settings']['font_family'] = self.combo_box_font_family.currentFont().family()
+            self.settings_custom['font_settings']['font_size'] = self.combo_box_font_size.get_val()
 
-            settings['general']['update_settings']['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
+            self.settings_custom['update_settings']['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
 
-            settings['general']['misc']['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
+            self.settings_custom['misc']['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
 
             if result == 'restart':
                 self.main.restart()
@@ -123,6 +124,9 @@ class Wl_Settings_General(wl_tree.Wl_Settings):
 class Wl_Settings_Import(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
+
+        self.settings_default = self.main.settings_default['import']
+        self.settings_custom = self.main.settings_custom['import']
 
         # Files
         group_box_import_files = QGroupBox(self.tr('Files'), self)
@@ -207,7 +211,7 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
         path_file = QFileDialog.getExistingDirectory(
             self.main,
             self.tr('Select Folder'),
-            self.main.settings_custom['import']['files']['default_path']
+            self.settings_custom['files']['default_path']
         )
 
         if path_file:
@@ -217,7 +221,7 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
         path_file = QFileDialog.getExistingDirectory(
             self.main,
             self.tr('Select Folder'),
-            self.main.settings_custom['import']['search_terms']['default_path']
+            self.settings_custom['search_terms']['default_path']
         )
 
         if path_file:
@@ -227,14 +231,14 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
         path_file = QFileDialog.getExistingDirectory(
             self.main,
             self.tr('Select Folder'),
-            self.main.settings_custom['import']['stop_words']['default_path']
+            self.settings_custom['stop_words']['default_path']
         )
 
     def browse_temp_files(self):
         path_file = QFileDialog.getExistingDirectory(
             self.main,
             self.tr('Select Folder'),
-            self.main.settings_custom['import']['temp_files']['default_path']
+            self.settings_custom['temp_files']['default_path']
         )
 
         if path_file:
@@ -253,35 +257,35 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
         # Files
-        if os.path.exists(settings['import']['files']['default_path']):
-            self.line_edit_import_files_default_path.setText(settings['import']['files']['default_path'])
+        if os.path.exists(settings['files']['default_path']):
+            self.line_edit_import_files_default_path.setText(settings['files']['default_path'])
         else:
-            self.line_edit_import_files_default_path.setText(self.main.settings_default['import']['files']['default_path'])
+            self.line_edit_import_files_default_path.setText(self.main.settings_default['files']['default_path'])
 
         # Search Terms
-        if os.path.exists(settings['import']['search_terms']['default_path']):
-            self.line_edit_import_search_terms_default_path.setText(settings['import']['search_terms']['default_path'])
+        if os.path.exists(settings['search_terms']['default_path']):
+            self.line_edit_import_search_terms_default_path.setText(settings['search_terms']['default_path'])
         else:
-            self.line_edit_import_search_terms_default_path.setText(self.main.settings_default['import']['search_terms']['default_path'])
+            self.line_edit_import_search_terms_default_path.setText(self.main.settings_default['search_terms']['default_path'])
 
-        self.combo_box_import_search_terms_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['import']['stop_words']['default_encoding']))
-        self.checkbox_import_search_terms_detect_encodings.setChecked(settings['import']['search_terms']['detect_encodings'])
+        self.combo_box_import_search_terms_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['stop_words']['default_encoding']))
+        self.checkbox_import_search_terms_detect_encodings.setChecked(settings['search_terms']['detect_encodings'])
 
         # Stop Words
-        if os.path.exists(settings['import']['stop_words']['default_path']):
-            self.line_edit_import_stop_words_default_path.setText(settings['import']['stop_words']['default_path'])
+        if os.path.exists(settings['stop_words']['default_path']):
+            self.line_edit_import_stop_words_default_path.setText(settings['stop_words']['default_path'])
         else:
-            self.line_edit_import_stop_words_default_path.setText(self.main.settings_default['import']['stop_words']['default_path'])
-        self.combo_box_import_stop_words_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['import']['stop_words']['default_encoding']))
-        self.checkbox_import_stop_words_detect_encodings.setChecked(settings['import']['stop_words']['detect_encodings'])
+            self.line_edit_import_stop_words_default_path.setText(self.main.settings_default['stop_words']['default_path'])
+        self.combo_box_import_stop_words_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['stop_words']['default_encoding']))
+        self.checkbox_import_stop_words_detect_encodings.setChecked(settings['stop_words']['detect_encodings'])
 
         # Temporary Files
-        self.line_edit_import_temp_files_default_path.setText(settings['import']['temp_files']['default_path'])
+        self.line_edit_import_temp_files_default_path.setText(settings['temp_files']['default_path'])
         
         self.detect_encodings_changed()
 
@@ -295,29 +299,30 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
             return False
 
     def apply_settings(self):
-        settings = self.main.settings_custom
-
         # Files
-        settings['import']['files']['default_path'] = self.line_edit_import_files_default_path.text()
+        self.settings_custom['files']['default_path'] = self.line_edit_import_files_default_path.text()
 
         # Search Terms
-        settings['import']['search_terms']['default_path'] = self.line_edit_import_search_terms_default_path.text()
-        settings['import']['search_terms']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_import_search_terms_default_encoding.currentText())
-        settings['import']['search_terms']['detect_encodings'] = self.checkbox_import_search_terms_detect_encodings.isChecked()
+        self.settings_custom['search_terms']['default_path'] = self.line_edit_import_search_terms_default_path.text()
+        self.settings_custom['search_terms']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_import_search_terms_default_encoding.currentText())
+        self.settings_custom['search_terms']['detect_encodings'] = self.checkbox_import_search_terms_detect_encodings.isChecked()
 
         # Stop Words
-        settings['import']['stop_words']['default_path'] = self.line_edit_import_stop_words_default_path.text()
-        settings['import']['stop_words']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_import_stop_words_default_encoding.currentText())
-        settings['import']['stop_words']['detect_encodings'] = self.checkbox_import_stop_words_detect_encodings.isChecked()
+        self.settings_custom['stop_words']['default_path'] = self.line_edit_import_stop_words_default_path.text()
+        self.settings_custom['stop_words']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_import_stop_words_default_encoding.currentText())
+        self.settings_custom['stop_words']['detect_encodings'] = self.checkbox_import_stop_words_detect_encodings.isChecked()
 
         # Temporary Files
-        settings['import']['temp_files']['default_path'] = self.line_edit_import_temp_files_default_path.text()
+        self.settings_custom['temp_files']['default_path'] = self.line_edit_import_temp_files_default_path.text()
 
         return True
 
 class Wl_Settings_Export(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
+
+        self.settings_default = self.main.settings_default['export']
+        self.settings_custom = self.main.settings_custom['export']
 
         # Tables
         group_box_export_tables = QGroupBox(self.tr('Tables'), self)
@@ -400,7 +405,7 @@ class Wl_Settings_Export(wl_tree.Wl_Settings):
         path_file = QFileDialog.getExistingDirectory(
             self,
             self.tr('Select Folder'),
-            self.main.settings_custom['export']['tables']['default_path']
+            self.settings_custom['tables']['default_path']
         )
 
         if path_file:
@@ -410,7 +415,7 @@ class Wl_Settings_Export(wl_tree.Wl_Settings):
         path_file = QFileDialog.getExistingDirectory(
             self,
             self.tr('Select Folder'),
-            self.main.settings_custom['export']['search_terms']['default_path']
+            self.settings_custom['search_terms']['default_path']
         )
 
         if path_file:
@@ -420,7 +425,7 @@ class Wl_Settings_Export(wl_tree.Wl_Settings):
         path_file = QFileDialog.getExistingDirectory(
             self,
             self.tr('Select Folder'),
-            self.main.settings_custom['export']['stop_words']['default_path']
+            self.settings_custom['stop_words']['default_path']
         )
 
         if path_file:
@@ -428,19 +433,19 @@ class Wl_Settings_Export(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
-        self.line_edit_export_tables_default_path.setText(settings['export']['tables']['default_path'])
-        self.combo_box_export_tables_default_type.setCurrentText(settings['export']['tables']['default_type'])
-        self.combo_box_export_tables_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['export']['tables']['default_encoding']))
+        self.line_edit_export_tables_default_path.setText(settings['tables']['default_path'])
+        self.combo_box_export_tables_default_type.setCurrentText(settings['tables']['default_type'])
+        self.combo_box_export_tables_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['tables']['default_encoding']))
 
-        self.line_edit_export_search_terms_default_path.setText(settings['export']['search_terms']['default_path'])
-        self.combo_box_export_search_terms_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['export']['search_terms']['default_encoding']))
+        self.line_edit_export_search_terms_default_path.setText(settings['search_terms']['default_path'])
+        self.combo_box_export_search_terms_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['search_terms']['default_encoding']))
 
-        self.line_edit_export_stop_words_default_path.setText(settings['export']['stop_words']['default_path'])
-        self.combo_box_export_stop_words_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['export']['stop_words']['default_encoding']))
+        self.line_edit_export_stop_words_default_path.setText(settings['stop_words']['default_path'])
+        self.combo_box_export_stop_words_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['stop_words']['default_encoding']))
 
     def validate_settings(self):
         if (self.confirm_path(self.line_edit_export_tables_default_path) and
@@ -451,16 +456,14 @@ class Wl_Settings_Export(wl_tree.Wl_Settings):
             return False
 
     def apply_settings(self):
-        settings = self.main.settings_custom
+        self.settings_custom['tables']['default_path'] = self.line_edit_export_tables_default_path.text()
+        self.settings_custom['tables']['default_type'] = self.combo_box_export_tables_default_type.currentText()
+        self.settings_custom['tables']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_export_tables_default_encoding.currentText())
 
-        settings['export']['tables']['default_path'] = self.line_edit_export_tables_default_path.text()
-        settings['export']['tables']['default_type'] = self.combo_box_export_tables_default_type.currentText()
-        settings['export']['tables']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_export_tables_default_encoding.currentText())
+        self.settings_custom['search_terms']['default_path'] = self.line_edit_export_search_terms_default_path.text()
+        self.settings_custom['search_terms']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_export_search_terms_default_encoding.currentText())
 
-        settings['export']['search_terms']['default_path'] = self.line_edit_export_search_terms_default_path.text()
-        settings['export']['search_terms']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_export_search_terms_default_encoding.currentText())
-
-        settings['export']['stop_words']['default_path'] = self.line_edit_export_stop_words_default_path.text()
-        settings['export']['stop_words']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_export_stop_words_default_encoding.currentText())
+        self.settings_custom['stop_words']['default_path'] = self.line_edit_export_stop_words_default_path.text()
+        self.settings_custom['stop_words']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_export_stop_words_default_encoding.currentText())
 
         return True

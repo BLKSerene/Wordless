@@ -107,6 +107,9 @@ class Wl_Settings_Files(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
+        self.settings_default = self.main.settings_default['files']
+        self.settings_custom = self.main.settings_custom['files']
+
         # Default Settings
         group_box_default_settings = QGroupBox(self.tr('Default Settings'), self)
 
@@ -173,44 +176,45 @@ class Wl_Settings_Files(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
         # Default Settings
-        self.combo_box_files_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['files']['default_settings']['lang']))
-        self.combo_box_files_tokenized.setCurrentText(settings['files']['default_settings']['tokenized'])
-        self.combo_box_files_tagged.setCurrentText(settings['files']['default_settings']['tagged'])
-        self.combo_box_files_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['files']['default_settings']['encoding']))
+        self.combo_box_files_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['default_settings']['lang']))
+        self.combo_box_files_tokenized.setCurrentText(settings['default_settings']['tokenized'])
+        self.combo_box_files_tagged.setCurrentText(settings['default_settings']['tagged'])
+        self.combo_box_files_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['default_settings']['encoding']))
 
         # Auto-detection Settings
-        self.spin_box_files_number_lines.setValue(settings['files']['auto_detection_settings']['number_lines'])
-        self.checkbox_files_number_lines_no_limit.setChecked(settings['files']['auto_detection_settings']['number_lines_no_limit'])
+        self.spin_box_files_number_lines.setValue(settings['auto_detection_settings']['number_lines'])
+        self.checkbox_files_number_lines_no_limit.setChecked(settings['auto_detection_settings']['number_lines_no_limit'])
 
         # Miscellaneous
-        self.spin_box_read_files_in_chunks.setValue(settings['files']['misc']['read_files_in_chunks'])
+        self.spin_box_read_files_in_chunks.setValue(settings['misc']['read_files_in_chunks'])
 
     def apply_settings(self):
-        settings = self.main.settings_custom
-
         # Default Settings
-        settings['files']['default_settings']['lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_files_lang.currentText())
-        settings['files']['default_settings']['tokenized'] = self.combo_box_files_tokenized.currentText()
-        settings['files']['default_settings']['tagged'] = self.combo_box_files_tagged.currentText()
-        settings['files']['default_settings']['encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_files_encoding.currentText())
+        self.settings_custom['default_settings']['lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_files_lang.currentText())
+        self.settings_custom['default_settings']['tokenized'] = self.combo_box_files_tokenized.currentText()
+        self.settings_custom['default_settings']['tagged'] = self.combo_box_files_tagged.currentText()
+        self.settings_custom['default_settings']['encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_files_encoding.currentText())
 
         # Auto-detection Settings
-        settings['files']['auto_detection_settings']['number_lines'] = self.spin_box_files_number_lines.value()
-        settings['files']['auto_detection_settings']['number_lines_no_limit'] = self.checkbox_files_number_lines_no_limit.isChecked()
+        self.settings_custom['auto_detection_settings']['number_lines'] = self.spin_box_files_number_lines.value()
+        self.settings_custom['auto_detection_settings']['number_lines_no_limit'] = self.checkbox_files_number_lines_no_limit.isChecked()
 
         # Miscellaneous
-        settings['files']['misc']['read_files_in_chunks'] = self.spin_box_read_files_in_chunks.value()
+        self.settings_custom['misc']['read_files_in_chunks'] = self.spin_box_read_files_in_chunks.value()
 
         return True
 
 class Wl_Settings_Tags(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
+
+        self.settings_default = self.main.settings_default['tags']
+        self.settings_custom = self.main.settings_custom['tags']
 
         # Header Tag Settings
         group_box_header_tag_settings = QGroupBox(self.tr('Header Tag Settings'), self)
@@ -271,28 +275,26 @@ class Wl_Settings_Tags(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
         self.table_tags_header.clear_table(0)
         self.table_tags_body.clear_table(0)
         self.table_tags_xml.clear_table(0)
 
-        for tags in settings['tags']['tags_header']:
+        for tags in settings['tags_header']:
             self.table_tags_header.add_item(texts = tags)
 
-        for tags in settings['tags']['tags_body']:
+        for tags in settings['tags_body']:
             self.table_tags_body.add_item(texts = tags)
 
-        for tags in settings['tags']['tags_xml']:
+        for tags in settings['tags_xml']:
             self.table_tags_xml.add_item(texts = tags)
 
     def apply_settings(self):
-        settings = self.main.settings_custom
-
-        settings['tags']['tags_header'] = self.table_tags_header.get_tags()
-        settings['tags']['tags_body'] = self.table_tags_body.get_tags()
-        settings['tags']['tags_xml'] = self.table_tags_xml.get_tags()
+        self.settings_custom['tags_header'] = self.table_tags_header.get_tags()
+        self.settings_custom['tags_body'] = self.table_tags_body.get_tags()
+        self.settings_custom['tags_xml'] = self.table_tags_xml.get_tags()
 
         return True

@@ -54,7 +54,9 @@ class Wl_Settings_Word_Tokenization(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
-        settings_global = self.main.settings_global['word_tokenizers']
+        self.settings_global = self.main.settings_global['word_tokenizers']
+        self.settings_default = self.main.settings_default['word_tokenization']
+        self.settings_custom = self.main.settings_custom['word_tokenization']
 
         # Word Tokenizer Settings
         group_box_word_tokenizer_settings = QGroupBox(self.tr('Word Tokenizer Settings'), self)
@@ -71,13 +73,13 @@ class Wl_Settings_Word_Tokenization(wl_tree.Wl_Settings):
         )
 
         table_word_tokenizers.verticalHeader().setHidden(True)
-        table_word_tokenizers.setRowCount(len(settings_global))
+        table_word_tokenizers.setRowCount(len(self.settings_global))
 
-        for i, lang in enumerate(settings_global):
+        for i, lang in enumerate(self.settings_global):
             table_word_tokenizers.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
 
             self.__dict__[f'combo_box_word_tokenizer_{lang}'] = wl_box.Wl_Combo_Box(self)
-            self.__dict__[f'combo_box_word_tokenizer_{lang}'].addItems(settings_global[lang])
+            self.__dict__[f'combo_box_word_tokenizer_{lang}'].addItems(self.settings_global[lang])
 
             table_word_tokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_word_tokenizer_{lang}'])
 
@@ -93,7 +95,7 @@ class Wl_Settings_Word_Tokenization(wl_tree.Wl_Settings):
         self.text_edit_word_tokenization_preview_samples = QTextEdit(self)
         self.text_edit_word_tokenization_preview_results = QTextEdit(self)
 
-        self.combo_box_word_tokenization_preview_lang.addItems(wl_conversion.to_lang_text(self.main, list(settings_global.keys())))
+        self.combo_box_word_tokenization_preview_lang.addItems(wl_conversion.to_lang_text(self.main, list(self.settings_global.keys())))
 
         self.button_word_tokenization_show_preview.setFixedWidth(130)
         self.text_edit_word_tokenization_preview_samples.setAcceptRichText(False)
@@ -125,25 +127,21 @@ class Wl_Settings_Word_Tokenization(wl_tree.Wl_Settings):
         self.layout().setRowStretch(1, 2)
 
     def preview_changed(self):
-        settings_custom = self.main.settings_custom['word_tokenization']
-
-        settings_custom['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_word_tokenization_preview_lang.currentText())
-        settings_custom['preview_samples'] = self.text_edit_word_tokenization_preview_samples.toPlainText()
-        settings_custom['preview_results'] = self.text_edit_word_tokenization_preview_results.toPlainText()
+        self.settings_custom['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_word_tokenization_preview_lang.currentText())
+        self.settings_custom['preview_samples'] = self.text_edit_word_tokenization_preview_samples.toPlainText()
+        self.settings_custom['preview_results'] = self.text_edit_word_tokenization_preview_results.toPlainText()
 
     def preview_results_changed(self):
-        settings_custom = self.main.settings_custom['word_tokenization']
-
-        if settings_custom['preview_samples']:
+        if self.settings_custom['preview_samples']:
             if self.combo_box_word_tokenization_preview_lang.isEnabled():
-                self.__dict__[f"combo_box_word_tokenizer_{settings_custom['preview_lang']}"].setEnabled(False)
+                self.__dict__[f"combo_box_word_tokenizer_{self.settings_custom['preview_lang']}"].setEnabled(False)
                 self.combo_box_word_tokenization_preview_lang.setEnabled(False)
                 self.button_word_tokenization_show_preview.setEnabled(False)
                 self.text_edit_word_tokenization_preview_samples.setEnabled(False)
 
                 self.button_word_tokenization_show_preview.setText(self.tr('Processing ...'))
 
-                word_tokenizer = self.__dict__[f"combo_box_word_tokenizer_{settings_custom['preview_lang']}"].currentText()
+                word_tokenizer = self.__dict__[f"combo_box_word_tokenizer_{self.settings_custom['preview_lang']}"].currentText()
 
                 worker_preview_word_tokenizer = Wl_Worker_Preview_Word_Tokenizer(
                     self.main,
@@ -157,9 +155,7 @@ class Wl_Settings_Word_Tokenization(wl_tree.Wl_Settings):
             self.text_edit_word_tokenization_preview_results.clear()
 
     def update_gui(self, preview_samples, preview_results):
-        settings_custom = self.main.settings_custom['word_tokenization']
-
-        self.__dict__[f"combo_box_word_tokenizer_{settings_custom['preview_lang']}"].setEnabled(True)
+        self.__dict__[f"combo_box_word_tokenizer_{self.settings_custom['preview_lang']}"].setEnabled(True)
         self.combo_box_word_tokenization_preview_lang.setEnabled(True)
         self.button_word_tokenization_show_preview.setEnabled(True)
         self.text_edit_word_tokenization_preview_samples.setEnabled(True)
@@ -169,14 +165,14 @@ class Wl_Settings_Word_Tokenization(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
-        for lang in settings['word_tokenization']['word_tokenizers']:
+        for lang in settings['word_tokenizers']:
             self.__dict__[f'combo_box_word_tokenizer_{lang}'].blockSignals(True)
 
-            self.__dict__[f'combo_box_word_tokenizer_{lang}'].setCurrentText(settings['word_tokenization']['word_tokenizers'][lang])
+            self.__dict__[f'combo_box_word_tokenizer_{lang}'].setCurrentText(settings['word_tokenizers'][lang])
 
             self.__dict__[f'combo_box_word_tokenizer_{lang}'].blockSignals(False)
 
@@ -184,17 +180,15 @@ class Wl_Settings_Word_Tokenization(wl_tree.Wl_Settings):
             self.combo_box_word_tokenization_preview_lang.blockSignals(True)
             self.text_edit_word_tokenization_preview_samples.blockSignals(True)
 
-            self.combo_box_word_tokenization_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['word_tokenization']['preview_lang']))
-            self.text_edit_word_tokenization_preview_samples.setText(settings['word_tokenization']['preview_samples'])
-            self.text_edit_word_tokenization_preview_results.setText(settings['word_tokenization']['preview_results'])
+            self.combo_box_word_tokenization_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview_lang']))
+            self.text_edit_word_tokenization_preview_samples.setText(settings['preview_samples'])
+            self.text_edit_word_tokenization_preview_results.setText(settings['preview_results'])
 
             self.combo_box_word_tokenization_preview_lang.blockSignals(False)
             self.text_edit_word_tokenization_preview_samples.blockSignals(False)
 
     def apply_settings(self):
-        settings = self.main.settings_custom
-
-        for lang in settings['word_tokenization']['word_tokenizers']:
-            settings['word_tokenization']['word_tokenizers'][lang] = self.__dict__[f'combo_box_word_tokenizer_{lang}'].currentText()
+        for lang in self.settings_custom['word_tokenizers']:
+            self.settings_custom['word_tokenizers'][lang] = self.__dict__[f'combo_box_word_tokenizer_{lang}'].currentText()
 
         return True

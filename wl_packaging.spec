@@ -34,6 +34,8 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('pycrfsuite', include_py
 # pymorphy2
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_ru'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_uk'))
+# Pyphen
+datas.extend(PyInstaller.utils.hooks.collect_data_files('pyphen'))
 # PyThaiNLP
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pythainlp'))
 # Sacremoses
