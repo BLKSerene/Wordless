@@ -21,6 +21,9 @@ class Wl_Settings_Data(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
+        self.settings_default = self.main.settings_default['data']
+        self.settings_custom = self.main.settings_custom['data']
+
         # Rank Settings
         group_box_rank_settings = QGroupBox(self.tr('Rank Settings'), self)
 
@@ -64,23 +67,21 @@ class Wl_Settings_Data(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
-        self.checkbox_continue_numbering_after_ties.setChecked(settings['data']['continue_numbering_after_ties'])
+        self.checkbox_continue_numbering_after_ties.setChecked(settings['continue_numbering_after_ties'])
 
-        self.spin_box_precision_decimal.setValue(settings['data']['precision_decimal'])
-        self.spin_box_precision_pct.setValue(settings['data']['precision_pct'])
-        self.spin_box_precision_p_value.setValue(settings['data']['precision_p_value'])
+        self.spin_box_precision_decimal.setValue(settings['precision_decimal'])
+        self.spin_box_precision_pct.setValue(settings['precision_pct'])
+        self.spin_box_precision_p_value.setValue(settings['precision_p_value'])
 
     def apply_settings(self):
-        settings = self.main.settings_custom
+        self.settings_custom['continue_numbering_after_ties'] = self.checkbox_continue_numbering_after_ties.isChecked()
 
-        settings['data']['continue_numbering_after_ties'] = self.checkbox_continue_numbering_after_ties.isChecked()
-
-        settings['data']['precision_decimal'] = self.spin_box_precision_decimal.value()
-        settings['data']['precision_pct'] = self.spin_box_precision_pct.value()
-        settings['data']['precision_p_value'] = self.spin_box_precision_p_value.value()
+        self.settings_custom['precision_decimal'] = self.spin_box_precision_decimal.value()
+        self.settings_custom['precision_pct'] = self.spin_box_precision_pct.value()
+        self.settings_custom['precision_p_value'] = self.spin_box_precision_p_value.value()
 
         return True

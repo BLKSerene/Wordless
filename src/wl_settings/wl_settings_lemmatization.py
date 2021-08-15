@@ -59,7 +59,9 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
-        settings_global = self.main.settings_global['lemmatizers']
+        self.settings_global = self.main.settings_global['lemmatizers']
+        self.settings_default = self.main.settings_default['lemmatization']
+        self.settings_custom = self.main.settings_custom['lemmatization']
 
         # Lemmatizer Settings
         group_box_lemmatizer_settings = QGroupBox(self.tr('Lemmatizer Settings'), self)
@@ -76,13 +78,13 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
         )
 
         table_lemmatizers.verticalHeader().setHidden(True)
-        table_lemmatizers.setRowCount(len(settings_global))
+        table_lemmatizers.setRowCount(len(self.settings_global))
 
-        for i, lang in enumerate(settings_global):
+        for i, lang in enumerate(self.settings_global):
             table_lemmatizers.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
 
             self.__dict__[f'combo_box_lemmatizer_{lang}'] = wl_box.Wl_Combo_Box(self)
-            self.__dict__[f'combo_box_lemmatizer_{lang}'].addItems(settings_global[lang])
+            self.__dict__[f'combo_box_lemmatizer_{lang}'].addItems(self.settings_global[lang])
 
             table_lemmatizers.setCellWidget(i, 1, self.__dict__[f'combo_box_lemmatizer_{lang}'])
 
@@ -98,7 +100,7 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
         self.text_edit_lemmatization_preview_samples = QTextEdit(self)
         self.text_edit_lemmatization_preview_results = QTextEdit(self)
 
-        self.combo_box_lemmatization_preview_lang.addItems(wl_conversion.to_lang_text(self.main, list(settings_global.keys())))
+        self.combo_box_lemmatization_preview_lang.addItems(wl_conversion.to_lang_text(self.main, list(self.settings_global.keys())))
 
         self.button_lemmatization_show_preview.setFixedWidth(130)
         self.text_edit_lemmatization_preview_samples.setAcceptRichText(False)
@@ -130,31 +132,25 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
         self.layout().setRowStretch(1, 2)
 
     def lemmatizers_changed(self, lang):
-        settings_custom = self.main.settings_custom['lemmatization']
-
-        if lang == settings_custom['preview_lang']:
+        if lang == self.settings_custom['preview_lang']:
             self.preview_results_changed()
 
     def preview_changed(self):
-        settings_custom = self.main.settings_custom['lemmatization']
-
-        settings_custom['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_lemmatization_preview_lang.currentText())
-        settings_custom['preview_samples'] = self.text_edit_lemmatization_preview_samples.toPlainText()
-        settings_custom['preview_results'] = self.text_edit_lemmatization_preview_results.toPlainText()
+        self.settings_custom['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_lemmatization_preview_lang.currentText())
+        self.settings_custom['preview_samples'] = self.text_edit_lemmatization_preview_samples.toPlainText()
+        self.settings_custom['preview_results'] = self.text_edit_lemmatization_preview_results.toPlainText()
 
     def preview_results_changed(self):
-        settings_custom = self.main.settings_custom['lemmatization']
-
-        if settings_custom['preview_samples']:
+        if self.settings_custom['preview_samples']:
             if self.combo_box_lemmatization_preview_lang.isEnabled():
-                self.__dict__[f"combo_box_lemmatizer_{settings_custom['preview_lang']}"].setEnabled(False)
+                self.__dict__[f"combo_box_lemmatizer_{self.settings_custom['preview_lang']}"].setEnabled(False)
                 self.combo_box_lemmatization_preview_lang.setEnabled(False)
                 self.button_lemmatization_show_preview.setEnabled(False)
                 self.text_edit_lemmatization_preview_samples.setEnabled(False)
 
                 self.button_lemmatization_show_preview.setText(self.tr('Processing ...'))
 
-                lemmatizer = self.__dict__[f"combo_box_lemmatizer_{settings_custom['preview_lang']}"].currentText()
+                lemmatizer = self.__dict__[f"combo_box_lemmatizer_{self.settings_custom['preview_lang']}"].currentText()
 
                 worker_preview_lemmatizer = Wl_Worker_Preview_Lemmatizer(
                     self.main,
@@ -168,9 +164,7 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
             self.text_edit_lemmatization_preview_results.clear()
 
     def update_gui(self, preview_samples, preview_results):
-        settings_custom = self.main.settings_custom['lemmatization']
-
-        self.__dict__[f"combo_box_lemmatizer_{settings_custom['preview_lang']}"].setEnabled(True)
+        self.__dict__[f"combo_box_lemmatizer_{self.settings_custom['preview_lang']}"].setEnabled(True)
         self.combo_box_lemmatization_preview_lang.setEnabled(True)
         self.button_lemmatization_show_preview.setEnabled(True)
         self.text_edit_lemmatization_preview_samples.setEnabled(True)
@@ -180,14 +174,14 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
-        for lang in settings['lemmatization']['lemmatizers']:
+        for lang in settings['lemmatizers']:
             self.__dict__[f'combo_box_lemmatizer_{lang}'].blockSignals(True)
 
-            self.__dict__[f'combo_box_lemmatizer_{lang}'].setCurrentText(settings['lemmatization']['lemmatizers'][lang])
+            self.__dict__[f'combo_box_lemmatizer_{lang}'].setCurrentText(settings['lemmatizers'][lang])
 
             self.__dict__[f'combo_box_lemmatizer_{lang}'].blockSignals(False)
 
@@ -195,17 +189,15 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
             self.combo_box_lemmatization_preview_lang.blockSignals(True)
             self.text_edit_lemmatization_preview_samples.blockSignals(True)
 
-            self.combo_box_lemmatization_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['lemmatization']['preview_lang']))
-            self.text_edit_lemmatization_preview_samples.setText(settings['lemmatization']['preview_samples'])
-            self.text_edit_lemmatization_preview_results.setText(settings['lemmatization']['preview_results'])
+            self.combo_box_lemmatization_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview_lang']))
+            self.text_edit_lemmatization_preview_samples.setText(settings['preview_samples'])
+            self.text_edit_lemmatization_preview_results.setText(settings['preview_results'])
 
             self.combo_box_lemmatization_preview_lang.blockSignals(False)
             self.text_edit_lemmatization_preview_samples.blockSignals(False)
 
     def apply_settings(self):
-        settings = self.main.settings_custom
-
-        for lang in settings['lemmatization']['lemmatizers']:
-            settings['lemmatization']['lemmatizers'][lang] = self.__dict__[f'combo_box_lemmatizer_{lang}'].currentText()
+        for lang in self.settings_custom['lemmatizers']:
+            self.settings_custom['lemmatizers'][lang] = self.__dict__[f'combo_box_lemmatizer_{lang}'].currentText()
 
         return True
