@@ -1285,6 +1285,56 @@ def init_settings_default(main):
             'preview_results': ''
         },
 
+        'syl_tokenization': {
+            'syl_tokenizers': {
+                'afr': main.tr('Pyphen - Afrikaans Syllable Tokenizer'),
+                'sqi': main.tr('Pyphen - Albanian Syllable Tokenizer'),
+                'bel': main.tr('Pyphen - Belarusian Syllable Tokenizer'),
+                'bul': main.tr('Pyphen - Bulgarian Syllable Tokenizer'),
+                'hrv': main.tr('Pyphen - Croatian Syllable Tokenizer'),
+                'ces': main.tr('Pyphen - Czech Syllable Tokenizer'),
+                'dan': main.tr('Pyphen - Danish Syllable Tokenizer'),
+                'nld': main.tr('Pyphen - Dutch Syllable Tokenizer'),
+                'eng_gb': main.tr('Pyphen - English (United Kingdom) Syllable Tokenizer'),
+                'eng_us': main.tr('Pyphen - English (United States) Syllable Tokenizer'),
+                'epo': main.tr('Pyphen - Esporanto Syllable Tokenizer'),
+                'est': main.tr('Pyphen - Estonian Syllable Tokenizer'),
+                'fra': main.tr('Pyphen - French Syllable Tokenizer'),
+                'glg': main.tr('Pyphen - Galician Syllable Tokenizer'),
+                'deu_at': main.tr('Pyphen - German (Austria) Syllable Tokenizer'),
+                'deu_de': main.tr('Pyphen - German (Germany) Syllable Tokenizer'),
+                'deu_ch': main.tr('Pyphen - German (Switzerland) Syllable Tokenizer'),
+                'ell': main.tr('Pyphen - Greek (Modern) Syllable Tokenizer'),
+                'hun': main.tr('Pyphen - Hungarian Syllable Tokenizer'),
+                'isl': main.tr('Pyphen - Icelandic Syllable Tokenizer'),
+                'ind': main.tr('Pyphen - Indonesian Syllable Tokenizer'),
+                'ita': main.tr('Pyphen - Italian Syllable Tokenizer'),
+                'lit': main.tr('Pyphen - Lithuanian Syllable Tokenizer'),
+                'lav': main.tr('Pyphen - Latvian Syllable Tokenizer'),
+                'mon': main.tr('Pyphen - Mongolian Syllable Tokenizer'),
+                'nob': main.tr('Pyphen - Norwegian Bokmål Syllable Tokenizer'),
+                'nno': main.tr('Pyphen - Norwegian Nynorsk Syllable Tokenizer'),
+                'pol': main.tr('Pyphen - Polish Syllable Tokenizer'),
+                'por_br': main.tr('Pyphen - Portuguese (Brazil) Syllable Tokenizer'),
+                'por_pt': main.tr('Pyphen - Portuguese (Portugal) Syllable Tokenizer'),
+                'ron': main.tr('Pyphen - Romanian Syllable Tokenizer'),
+                'rus': main.tr('Pyphen - Russian Syllable Tokenizer'),
+                'srp_cyrl': main.tr('Pyphen - Serbian (Cyrillic) Syllable Tokenizer'),
+                'srp_latn': main.tr('Pyphen - Serbian (Latin) Syllable Tokenizer'),
+                'slk': main.tr('Pyphen - Slovak Syllable Tokenizer'),
+                'slv': main.tr('Pyphen - Slovenian Syllable Tokenizer'),
+                'spa': main.tr('Pyphen - Spanish Syllable Tokenizer'),
+                'swe': main.tr('Pyphen - Swedish Syllable Tokenizer'),
+                'tel': main.tr('Pyphen - Telugu Syllable Tokenizer'),
+                'ukr': main.tr('Pyphen - Ukrainian Syllable Tokenizer'),
+                'zul': main.tr('Pyphen - Zulu Syllable Tokenizer')
+            },
+
+            'preview_lang': 'eng_us',
+            'preview_samples': '',
+            'preview_results': ''
+        },
+
         'word_detokenization': {
             'word_detokenizers': {
                 'asm': main.tr('Sacremoses - Moses Detokenizer'),

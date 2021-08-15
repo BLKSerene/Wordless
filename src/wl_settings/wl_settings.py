@@ -19,6 +19,7 @@ from wl_settings import (
     wl_settings_data,
     wl_settings_sentence_tokenization,
     wl_settings_word_tokenization,
+    wl_settings_syl_tokenization,
     wl_settings_word_detokenization,
     wl_settings_pos_tagging,
     wl_settings_lemmatization,
@@ -51,19 +52,20 @@ class Wl_Settings(QDialog):
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Data')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Sentence Tokenization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Word Tokenization')]))
+        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Syllable Tokenization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Word Detokenization')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('POS Tagging')]))
-        self.tree_settings.topLevelItem(6).addChild(QTreeWidgetItem([self.tr('Tagsets')]))
+        self.tree_settings.topLevelItem(7).addChild(QTreeWidgetItem([self.tr('Tagsets')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Lemmatization')]))
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Stop Word Lists')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Measures')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
+        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
+        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
+        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
+        self.tree_settings.topLevelItem(10).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Figures')]))
 
@@ -85,6 +87,7 @@ class Wl_Settings(QDialog):
         self.settings_data = wl_settings_data.Wl_Settings_Data(self.main)
         self.settings_sentence_tokenization = wl_settings_sentence_tokenization.Wl_Settings_Sentence_Tokenization(self.main)
         self.settings_word_tokenization = wl_settings_word_tokenization.Wl_Settings_Word_Tokenization(self.main)
+        self.settings_syl_tokenization = wl_settings_syl_tokenization.Wl_Settings_Syl_Tokenization(self.main)
         self.settings_word_detokenization = wl_settings_word_detokenization.Wl_Settings_Word_Detokenization(self.main)
 
         # POS Tagging
@@ -111,6 +114,7 @@ class Wl_Settings(QDialog):
             self.settings_data,
             self.settings_sentence_tokenization,
             self.settings_word_tokenization,
+            self.settings_syl_tokenization,
             self.settings_word_detokenization,
             self.settings_pos_tagging,
             self.settings_tagsets,
@@ -189,36 +193,38 @@ class Wl_Settings(QDialog):
                     self.stacked_widget_settings.setCurrentIndex(6)
                 elif item_selected_text == self.tr('Word Tokenization'):
                     self.stacked_widget_settings.setCurrentIndex(7)
-                elif item_selected_text == self.tr('Word Detokenization'):
+                elif item_selected_text == self.tr('Syllable Tokenization'):
                     self.stacked_widget_settings.setCurrentIndex(8)
+                elif item_selected_text == self.tr('Word Detokenization'):
+                    self.stacked_widget_settings.setCurrentIndex(9)
 
                 # POS Tagging
                 elif item_selected_text == self.tr('POS Tagging'):
-                    self.stacked_widget_settings.setCurrentIndex(9)
+                    self.stacked_widget_settings.setCurrentIndex(10)
 
                     item_selected.setExpanded(True)
                 elif item_selected_text == self.tr('Tagsets'):
-                    self.stacked_widget_settings.setCurrentIndex(10)
+                    self.stacked_widget_settings.setCurrentIndex(11)
 
                 elif item_selected_text == self.tr('Lemmatization'):
-                    self.stacked_widget_settings.setCurrentIndex(11)
-                elif item_selected_text == self.tr('Stop Word Lists'):
                     self.stacked_widget_settings.setCurrentIndex(12)
+                elif item_selected_text == self.tr('Stop Word Lists'):
+                    self.stacked_widget_settings.setCurrentIndex(13)
 
                 # Measures
                 elif item_selected_text == self.tr('Measures'):
                     item_selected.setExpanded(True)
                 elif item_selected_text == self.tr('Dispersion'):
-                    self.stacked_widget_settings.setCurrentIndex(13)
-                elif item_selected_text == self.tr('Adjusted Frequency'):
                     self.stacked_widget_settings.setCurrentIndex(14)
-                elif item_selected_text == self.tr('Statistical Significance'):
+                elif item_selected_text == self.tr('Adjusted Frequency'):
                     self.stacked_widget_settings.setCurrentIndex(15)
-                elif item_selected_text == self.tr('Effect Size'):
+                elif item_selected_text == self.tr('Statistical Significance'):
                     self.stacked_widget_settings.setCurrentIndex(16)
+                elif item_selected_text == self.tr('Effect Size'):
+                    self.stacked_widget_settings.setCurrentIndex(17)
 
                 elif item_selected_text == self.tr('Figures'):
-                    self.stacked_widget_settings.setCurrentIndex(17)
+                    self.stacked_widget_settings.setCurrentIndex(18)
 
                 self.tree_settings.item_selected_old = item_selected
                 self.main.settings_custom['settings']['tab'] = item_selected_text

@@ -24,6 +24,9 @@ class Wl_Settings_Figs(wl_tree.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
+        self.settings_default = self.main.settings_default['figs']
+        self.settings_custom = self.main.settings_custom['figs']
+
         # Line Chart
         group_box_figs_line_chart = QGroupBox(self.tr('Line Chart'), self)
 
@@ -124,39 +127,37 @@ class Wl_Settings_Figs(wl_tree.Wl_Settings):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default)
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.main.settings_custom)
+            settings = copy.deepcopy(self.settings_custom)
 
-        self.combo_box_figs_line_chart_font.setCurrentText(settings['figs']['line_chart']['font'])
+        self.combo_box_figs_line_chart_font.setCurrentText(settings['line_chart']['font'])
 
-        self.combo_box_figs_word_cloud_font.setCurrentText(settings['figs']['word_cloud']['font'])
-        self.label_figs_word_cloud_bg_color_pick.set_color(settings['figs']['word_cloud']['bg_color'])
+        self.combo_box_figs_word_cloud_font.setCurrentText(settings['word_cloud']['font'])
+        self.label_figs_word_cloud_bg_color_pick.set_color(settings['word_cloud']['bg_color'])
 
-        self.combo_box_figs_network_graph_layout.setCurrentText(settings['figs']['network_graph']['layout'])
-        self.combo_box_figs_network_graph_node_font.setCurrentText(settings['figs']['network_graph']['node_font'])
-        self.spin_box_figs_network_graph_node_font_size.setValue(settings['figs']['network_graph']['node_font_size'])
-        self.combo_box_figs_network_graph_edge_font.setCurrentText(settings['figs']['network_graph']['edge_font'])
-        self.spin_box_figs_network_graph_edge_font_size.setValue(settings['figs']['network_graph']['edge_font_size'])
-        self.label_figs_network_graph_edge_color_pick.set_color(settings['figs']['network_graph']['edge_color'])
+        self.combo_box_figs_network_graph_layout.setCurrentText(settings['network_graph']['layout'])
+        self.combo_box_figs_network_graph_node_font.setCurrentText(settings['network_graph']['node_font'])
+        self.spin_box_figs_network_graph_node_font_size.setValue(settings['network_graph']['node_font_size'])
+        self.combo_box_figs_network_graph_edge_font.setCurrentText(settings['network_graph']['edge_font'])
+        self.spin_box_figs_network_graph_edge_font_size.setValue(settings['network_graph']['edge_font_size'])
+        self.label_figs_network_graph_edge_color_pick.set_color(settings['network_graph']['edge_color'])
 
         # Change wordcloud's default font
         self.change_wordcloud_font()
 
     def apply_settings(self):
-        settings = self.main.settings_custom
+        self.settings_custom['line_chart']['font'] = self.combo_box_figs_line_chart_font.currentText()
 
-        settings['figs']['line_chart']['font'] = self.combo_box_figs_line_chart_font.currentText()
+        self.settings_custom['word_cloud']['font'] = self.combo_box_figs_word_cloud_font.currentText()
+        self.settings_custom['word_cloud']['bg_color'] = self.label_figs_word_cloud_bg_color_pick.get_color()
 
-        settings['figs']['word_cloud']['font'] = self.combo_box_figs_word_cloud_font.currentText()
-        settings['figs']['word_cloud']['bg_color'] = self.label_figs_word_cloud_bg_color_pick.get_color()
-
-        settings['figs']['network_graph']['layout'] = self.combo_box_figs_network_graph_layout.currentText()
-        settings['figs']['network_graph']['node_font'] = self.combo_box_figs_network_graph_node_font.currentText()
-        settings['figs']['network_graph']['node_font_size'] = self.spin_box_figs_network_graph_node_font_size.value()
-        settings['figs']['network_graph']['edge_font'] = self.combo_box_figs_network_graph_edge_font.currentText()
-        settings['figs']['network_graph']['edge_font_size'] = self.spin_box_figs_network_graph_edge_font_size.value()
-        settings['figs']['network_graph']['edge_color'] = self.label_figs_network_graph_edge_color_pick.get_color()
+        self.settings_custom['network_graph']['layout'] = self.combo_box_figs_network_graph_layout.currentText()
+        self.settings_custom['network_graph']['node_font'] = self.combo_box_figs_network_graph_node_font.currentText()
+        self.settings_custom['network_graph']['node_font_size'] = self.spin_box_figs_network_graph_node_font_size.value()
+        self.settings_custom['network_graph']['edge_font'] = self.combo_box_figs_network_graph_edge_font.currentText()
+        self.settings_custom['network_graph']['edge_font_size'] = self.spin_box_figs_network_graph_edge_font_size.value()
+        self.settings_custom['network_graph']['edge_color'] = self.label_figs_network_graph_edge_color_pick.get_color()
 
         # Change wordcloud's default font
         self.change_wordcloud_font()

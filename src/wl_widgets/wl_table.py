@@ -2108,7 +2108,7 @@ class Wl_Table_Tags(Wl_Table):
                 self.cellWidget(row, 0).currentText(),
                 self.cellWidget(row, 1).currentText(),
                 self.cellWidget(row, 2).text(),
-                self.cellWidget(row, 3).text()
+                self.item(row, 3).text()
             ])
 
         return tags
