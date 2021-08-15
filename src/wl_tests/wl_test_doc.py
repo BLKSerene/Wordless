@@ -26,6 +26,7 @@ def wl_test_supported_langs(main):
 
     langs_sentence_tokenizers = main.settings_global['sentence_tokenizers'].keys()
     langs_word_tokenizers = main.settings_global['word_tokenizers'].keys()
+    langs_syl_tokenizers  = main.settings_global['syl_tokenizers'].keys()
     langs_word_detokenizers = main.settings_global['word_detokenizers'].keys()
     langs_pos_tagging = main.settings_global['pos_taggers'].keys()
     langs_lemmatizers = main.settings_global['lemmatizers'].keys()
@@ -36,6 +37,7 @@ def wl_test_supported_langs(main):
     for lang_name, lang_code_639_3 in langs_supported:
         if (lang_code_639_3 in langs_sentence_tokenizers or
             lang_code_639_3 in langs_word_tokenizers or
+            lang_code_639_3 in langs_syl_tokenizers or
             lang_code_639_3 in langs_word_detokenizers or
             lang_code_639_3 in langs_pos_tagging or
             lang_code_639_3 in langs_lemmatizers or
@@ -43,7 +45,7 @@ def wl_test_supported_langs(main):
             doc_supported_lang = f'{lang_name:{len_max_langs}s}'
 
             if lang_code_639_3 == 'other':
-                doc_supported_lang += '|⭕️ |⭕️ |⭕️ |✖️|✖️|✖️'
+                doc_supported_lang += '|⭕️ |⭕️ |✖️|⭕️ |✖️|✖️|✖️'
             else:
                 if lang_code_639_3 in langs_sentence_tokenizers:
                     doc_supported_lang += '|✔'
@@ -54,6 +56,11 @@ def wl_test_supported_langs(main):
                     doc_supported_lang += '|✔'
                 else:
                     doc_supported_lang += '|⭕️ '
+
+                if lang_code_639_3 in langs_syl_tokenizers:
+                    doc_supported_lang += '|✔'
+                else:
+                    doc_supported_lang += '|✖️'
 
                 if lang_code_639_3 in langs_word_detokenizers:
                     doc_supported_lang += '|✔'

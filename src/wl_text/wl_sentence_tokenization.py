@@ -17,7 +17,7 @@ import syntok.segmenter
 import tokenizer
 import underthesea
 
-from wl_text import wl_text, wl_text_utils, wl_word_detokenization
+from wl_text import wl_text_utils, wl_word_detokenization
 from wl_utils import wl_conversion
 
 # Reference: https://stackoverflow.com/questions/9506869/are-there-character-collections-for-all-international-full-stop-punctuations/9508766#9508766

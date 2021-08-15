@@ -40,15 +40,15 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
             del tokens[i]
             del tags[i]
 
-    wl_text_utils.init_lemmatizers(
-        main,
-        lang = lang,
-        lemmatizer = lemmatizer
-    )
-
     if tokens and lang in main.settings_global['lemmatizers']:
         if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang]
+
+        wl_text_utils.init_lemmatizers(
+            main,
+            lang = lang,
+            lemmatizer = lemmatizer
+        )
 
         # spaCy
         if 'spaCy' in lemmatizer:
