@@ -23,6 +23,8 @@ from wl_tests import wl_test_init
 
 import wl_file_area
 
+new_files_temp = []
+
 def wl_test_file_area(main):
     new_files = []
 
@@ -48,6 +50,7 @@ def wl_test_file_area(main):
             )
             worker_open_files.run()
 
+            main.settings_custom['file_area']['files_open'].extend(new_files_temp)
             new_file = main.settings_custom['file_area']['files_open'][-1]
 
             assert new_file['selected'] == True
@@ -64,9 +67,11 @@ def wl_test_file_area(main):
         pickle.dump(main.settings_custom, f)
 
 def update_gui(error_msg, new_files):
+    global new_files_temp
+
     assert not error_msg
 
-    main.settings_custom['file_area']['files_open'].extend(new_files)
+    new_files_temp = new_files
 
 if __name__ == '__main__':
     # Reset custom settings
