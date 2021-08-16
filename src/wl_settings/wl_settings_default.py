@@ -1326,6 +1326,7 @@ def init_settings_default(main):
                 'spa': main.tr('Pyphen - Spanish Syllable Tokenizer'),
                 'swe': main.tr('Pyphen - Swedish Syllable Tokenizer'),
                 'tel': main.tr('Pyphen - Telugu Syllable Tokenizer'),
+                'tha': main.tr('PyThaiNLP - Thai Syllable Tokenizer'),
                 'ukr': main.tr('Pyphen - Ukrainian Syllable Tokenizer'),
                 'zul': main.tr('Pyphen - Zulu Syllable Tokenizer')
             },

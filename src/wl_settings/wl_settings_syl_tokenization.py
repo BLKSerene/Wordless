@@ -44,10 +44,13 @@ class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
                     syl_tokenizer = self.syl_tokenizer
                 )
 
-                text = wl_word_detokenization.wl_word_detokenize(
-                    self.main, ['-'.join(syl) for syl in syls],
-                    lang = preview_lang
-                )
+                if preview_lang == 'tha':
+                    text = ' '.join(['-'.join(syl) for syl in syls])
+                else:
+                    text = wl_word_detokenization.wl_word_detokenize(
+                        self.main, ['-'.join(syl) for syl in syls],
+                        lang = preview_lang
+                    )
 
                 preview_results.append(text)
             else:

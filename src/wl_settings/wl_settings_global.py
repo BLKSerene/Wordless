@@ -1376,6 +1376,10 @@ def init_settings_global(main):
                 main.tr('Pyphen - Telugu Syllable Tokenizer')
             ],
 
+            'tha': [
+                main.tr('PyThaiNLP - Thai Syllable Tokenizer')
+            ],
+
             'ukr': [
                 main.tr('Pyphen - Ukrainian Syllable Tokenizer')
             ],

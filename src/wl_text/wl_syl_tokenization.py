@@ -11,6 +11,8 @@
 
 import re
 
+import pythainlp
+
 from wl_text import wl_text_utils
 
 def wl_syl_tokenize(main, tokens, lang, syl_tokenizer = 'default'):
@@ -28,11 +30,13 @@ def wl_syl_tokenize(main, tokens, lang, syl_tokenizer = 'default'):
         syl_tokenizer = syl_tokenizer
     )
 
-    # Pyphen
-    if 'Pyphen' in syl_tokenizer:
-        pyphen_syl_tokenizer = main.__dict__[f'pyphen_syl_tokenizer_{lang}']
+    for token in tokens:
+        # Pyphen
+        if 'Pyphen' in syl_tokenizer:
+            pyphen_syl_tokenizer = main.__dict__[f'pyphen_syl_tokenizer_{lang}']
 
-        for token in tokens:
             syls.append(re.split(r'\-+', pyphen_syl_tokenizer.inserted(token)))
+        elif syl_tokenizer == 'PyThaiNLP - Thai Syllable Tokenizer':
+            syls.append(pythainlp.syllable_tokenize(token))
 
     return syls
