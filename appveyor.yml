@@ -60,11 +60,12 @@ for:
 
       - pytest wl_tests/wl_text/test_sentence_tokenization.py
       - pytest wl_tests/wl_text/test_word_tokenization.py
+      - pytest wl_tests/wl_text/test_syl_tokenization.py
       - pytest wl_tests/wl_text/test_word_detokenization.py
       - pytest wl_tests/wl_text/test_pos_tagging.py
       - pytest wl_tests/wl_text/test_lemmatization.py
 
-      - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py --ignore=wl_tests/test_ngram.py --ignore=wl_tests/test_collocation.py
+      - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_syl_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py --ignore=wl_tests/test_ngram.py --ignore=wl_tests/test_collocation.py
 
   # macOS
   -
@@ -98,11 +99,12 @@ for:
 
       - pytest wl_tests/wl_text/test_sentence_tokenization.py
       - pytest wl_tests/wl_text/test_word_tokenization.py
+      - pytest wl_tests/wl_text/test_syl_tokenization.py
       - pytest wl_tests/wl_text/test_word_detokenization.py
       - pytest wl_tests/wl_text/test_pos_tagging.py
       - pytest wl_tests/wl_text/test_lemmatization.py
 
-      - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py --ignore=wl_tests/test_ngram.py --ignore=wl_tests/test_collocation.py
+      - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_syl_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py --ignore=wl_tests/test_ngram.py --ignore=wl_tests/test_collocation.py
 
   # Ubuntu
   - 
@@ -125,8 +127,9 @@ for:
     test_script:
       - pytest wl_tests/wl_text/test_sentence_tokenization.py
       - pytest wl_tests/wl_text/test_word_tokenization.py
+      - pytest wl_tests/wl_text/test_syl_tokenization.py
       - pytest wl_tests/wl_text/test_word_detokenization.py
       - pytest wl_tests/wl_text/test_pos_tagging.py
       - pytest wl_tests/wl_text/test_lemmatization.py
 
-      - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/test_file_area.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py --ignore=wl_tests/test_ngram.py --ignore=wl_tests/test_collocation.py
+      - pytest --ignore=wl_tests/wl_text/test_sentence_tokenization.py --ignore=wl_tests/wl_text/test_word_tokenization.py --ignore=wl_tests/wl_text/test_syl_tokenization.py --ignore=wl_tests/wl_text/test_word_detokenization.py --ignore=wl_tests/wl_text/test_pos_tagging.py --ignore=wl_tests/wl_text/test_lemmatization.py --ignore=wl_tests/test_file_area.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py --ignore=wl_tests/test_ngram.py --ignore=wl_tests/test_collocation.py
