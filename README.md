@@ -96,22 +96,22 @@ I would like to extend my sincere gratitude to the following open-source project
 
 ### General
 
-&nbsp;|Name|Author(s)
+&nbsp;|Name|Authors
 -----:|----|---------
-1     |[Python](https://www.python.org)                              |Guido van Rossum, Python Software Foundation
-2     |[PyInstaller](http://www.pyinstaller.org)                     |Hartmut Goebel
-3     |[PyQt](https://www.riverbankcomputing.com/software/pyqt/intro)|Riverbank Computing Limited
-4     |[pytest](https://pytest.org)                                  |Holger Krekel
+1     |[Python](https://www.python.org/)                    |Guido van Rossum, Python Software Foundation
+2     |[PyInstaller](http://www.pyinstaller.org/)           |Hartmut Goebel
+3     |[PyQt](https://riverbankcomputing.com/software/pyqt/)|Riverbank Computing Limited
+4     |[pytest](https://pytest.org/)                        |Holger Krekel
 
 ### Natural Language Processing
 
-&nbsp;|Name|Author(s)
+&nbsp;|Name|Authors
 -----:|----|---------
 1     |[botok](https://github.com/Esukhia/botok)                   |Hélios Drupchen Hildt
 2     |[CLTK](https://github.com/cltk/cltk)                        |Kyle P. Johnson, Patrick J. Burns, John Stewart,<br>Todd Cook, Clément Besnier, William J. B. Mattingly
-3     |[jieba<br>(结巴中文分词)](https://github.com/fxsjy/jieba)    |Sun Junyi (孙君意)
+3     |[jieba](https://github.com/fxsjy/jieba)                     |Sun Junyi (孙君意)
 4     |[nagisa](https://github.com/taishi-i/nagisa)                |Taishi Ikeda (池田大志)
-5     |[NLTK](http://www.nltk.org)                                 |Steven Bird, Edward Loper, Ewan Klein
+5     |[NLTK](http://www.nltk.org/)                                |Steven Bird, Edward Loper, Ewan Klein
 6     |[opencc-python](https://github.com/yichen0831/opencc-python)|Huang Yichen, Carbo Kuo (郭家宝)
 7     |[pkuseg](https://github.com/lancopku/pkuseg-python)         |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Bingzhen Wei (位冰镇), Xu Sun (孙栩)
 8     |[Pyphen](https://pyphen.org/)                               |Guillaume Ayoub
@@ -119,16 +119,16 @@ I would like to extend my sincere gratitude to the following open-source project
 10    |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)         |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)
 11    |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
 12    |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
-13    |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
+13    |[spaCy](https://spacy.io/)                                  |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
 14    |[ssg](https://github.com/ponrawee/ssg)                      |Ponrawee Prasertsom
 15    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
-16    |[TextBlob](https://textblob.readthedocs.io/)                |Steven Loria
+16    |[TextBlob](https://github.com/sloria/TextBlob)              |Steven Loria
 17    |[Tokenizer](https://github.com/mideind/Tokenizer)           |Vilhjálmur Þorsteinsson
 18    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
 
 ### Language Data
 
-&nbsp;|Name|Author(s)
+&nbsp;|Name|Authors
 -----:|----|---------
 1     |[extra-stopwords](https://github.com/Xangis/extra-stopwords)          |Jason Champion
 2     |[lemmalist-greek](https://github.com/stenskjaer/lemmalist-greek)      |Michael Stenskjær Christensen
@@ -137,23 +137,23 @@ I would like to extend my sincere gratitude to the following open-source project
 
 ### Plotting
 
-&nbsp;|Name|Author(s)
+&nbsp;|Name|Authors
 -----:|----|---------
-1     |[Matplotlib](https://matplotlib.org)               |Matplotlib Development Team
-2     |[NetworkX](http://networkx.github.io)              |Aric Hagberg, Dan Schult, Pieter Swart
-3     |[WordCloud](https://amueller.github.io/word_cloud/)|Andreas Christian Mueller
+1     |[Matplotlib](https://matplotlib.org/)              |Matplotlib Development Team
+2     |[NetworkX](https://networkx.org/)                  |Aric Hagberg, Dan Schult, Pieter Swart
+3     |[WordCloud](https://github.com/amueller/word_cloud)|Andreas Christian Mueller
 
 ### Miscellaneous
 
-&nbsp;|Name|Author(s)
+&nbsp;|Name|Authors
 -----:|----|---------
 1     |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)  |Leonard Richardson
 2     |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)|TAHRI Ahmed R.
-3     |[langdetect](https://github.com/Mimino666/langdetect)             |Michal Mimino Danilak
+3     |[langdetect](https://github.com/Mimino666/langdetect)             |中谷秀洋, Michal Danilák
 4     |[langid.py](https://github.com/saffsd/langid.py)                  |Marco Lui
-5     |[lxml](https://lxml.de)                                           |Stefan Behnel
-6     |[NumPy](https://numpy.org)                                        |NumPy Developers
-7     |[openpyxl](https://openpyxl.readthedocs.io/en/stable/)            |Eric Gazoni, Charlie Clark
+5     |[lxml](https://lxml.de/)                                          |Stefan Behnel
+6     |[NumPy](https://www.numpy.org/)                                   |NumPy Developers
+7     |[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)           |Eric Gazoni, Charlie Clark
 8     |[python-docx](https://github.com/python-openxml/python-docx)      |Steve Canny
-9     |[Requests](https://python-requests.org)                           |Kenneth Reitz
-10    |[SciPy](https://www.scipy.org)                                    |SciPy Developers
+9     |[Requests](https://github.com/psf/requests)                       |Kenneth Reitz
+10    |[SciPy](https://scipy.org/scipylib/)                              |SciPy Developers
