@@ -12,6 +12,7 @@
 import re
 
 import pythainlp
+import ssg
 
 from wl_text import wl_text_utils
 
@@ -36,7 +37,10 @@ def wl_syl_tokenize(main, tokens, lang, syl_tokenizer = 'default'):
             pyphen_syl_tokenizer = main.__dict__[f'pyphen_syl_tokenizer_{lang}']
 
             syls.append(re.split(r'\-+', pyphen_syl_tokenizer.inserted(token)))
+        # Thai
         elif syl_tokenizer == 'PyThaiNLP - Thai Syllable Tokenizer':
             syls.append(pythainlp.syllable_tokenize(token))
+        elif syl_tokenizer == 'ssg - Thai Syllable Tokenizer':
+            syls.append(ssg.syllable_tokenize(token))
 
     return syls
