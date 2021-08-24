@@ -14,7 +14,49 @@ import sys
 
 sys.path.append('.')
 
+import openpyxl
+
 from wl_tests import wl_test_init
+
+def print_acks(category, worksheet):
+    acks = []
+
+    LINE_HEADER = '&nbsp;|Name|Authors'
+    LINE_HEADER_SPLITTER = '-----:|----|---------'
+
+    print(f'### {category}')
+    print()
+    print(LINE_HEADER)
+    print(LINE_HEADER_SPLITTER)
+
+    for i, rows in enumerate(worksheet.rows):
+        if i > 0:
+            name = rows[0].value
+            home_page = rows[1].value
+            authors = rows[3].value.replace('\n', '<br>')
+
+            acks.append([name, home_page, authors])
+
+    len_names = max([len(name) + len(home_page) for name, home_page, _ in acks]) + 4
+
+    for i, (name, home_page, authors) in enumerate(acks):
+        len_name = len_names - len(name) - len(home_page) - 4
+
+        if len_name:
+            print(f"{i + 1 : <6}|[{name}]({home_page}){' ':{len_name}}|{authors}")
+        else:
+            print(f"{i + 1 : <6}|[{name}]({home_page})|{authors}")
+
+    print()
+
+def wl_test_readme_acks(main):
+    workbook = openpyxl.load_workbook('wl_acks.xlsx')
+
+    print_acks('General', workbook['General'])
+    print_acks('Natural Language Processing', workbook['NLP'])
+    print_acks('Language Data', workbook['Language Data'])
+    print_acks('Plotting', workbook['Plotting'])
+    print_acks('Miscellaneous', workbook['Miscellaneous'])
 
 def wl_test_supported_langs(main):
     settings = main.settings_global
@@ -104,5 +146,6 @@ def wl_test_supported_encodings(main):
 if __name__ == '__main__':
     main = wl_test_init.Wl_Test_Main()
 
+    wl_test_readme_acks(main)
     wl_test_supported_langs(main)
     wl_test_supported_encodings(main)
