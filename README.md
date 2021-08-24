@@ -120,10 +120,11 @@ I would like to extend my sincere gratitude to the following open-source project
 11    |[razdel](https://github.com/natasha/razdel)                 |Alexander Kukushkin
 12    |[Sacremoses](https://github.com/alvations/sacremoses)       |Liling Tan
 13    |[spaCy](https://spacy.io)                                   |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
-14    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
-15    |[TextBlob](https://textblob.readthedocs.io/)                |Steven Loria
-16    |[Tokenizer](https://github.com/mideind/Tokenizer)           |Vilhjálmur Þorsteinsson
-17    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
+14    |[ssg](https://github.com/ponrawee/ssg)                      |Ponrawee Prasertsom
+15    |[syntok](https://github.com/fnl/syntok)                     |Florian Leitner
+16    |[TextBlob](https://textblob.readthedocs.io/)                |Steven Loria
+17    |[Tokenizer](https://github.com/mideind/Tokenizer)           |Vilhjálmur Þorsteinsson
+18    |[Underthesea](https://github.com/undertheseanlp/underthesea)|Vu Anh
 
 ### Language Data
 

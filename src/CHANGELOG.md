@@ -21,6 +21,7 @@
 - Utils: Add PyThaiNLP's Thai syllable tokenizer
 - Utils: Add spaCy's Azerbaijani word tokenizer and stop word list
 - Utils: Add spaCy's Greek (Ancient) word tokenizer and stop word list
+- Utils: Add ssg's Thai syllable tokenizer
 - Work Area: Add Work Area - Search Settings - Multi-search Mode - Insert
 
 ### ✨ Improvements
@@ -36,6 +37,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Add Pyphen
+- Dependencies: Add ssg
 - Dependencies: Upgrade Charset Normalizer to 2.0.4
 - Dependencies: Upgrade spaCy to 3.1.1
 
