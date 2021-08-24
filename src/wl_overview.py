@@ -41,6 +41,8 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Count of Tokens %'),
                 parent.tr('Count of Types'),
                 parent.tr('Count of Types %'),
+                parent.tr('Count of Syllables'),
+                parent.tr('Count of Syllables %'),
                 parent.tr('Count of Characters'),
                 parent.tr('Count of Characters %'),
                 parent.tr('Type-Token Ratio'),
@@ -51,10 +53,16 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Paragraph Length in Token (Standard Deviation)'),
                 parent.tr('Sentence Length in Token (Mean)'),
                 parent.tr('Sentence Length in Token (Standard Deviation)'),
+                parent.tr('Token Length in Syllable (Mean)'),
+                parent.tr('Token Length in Syllable (Standard Deviation)'),
                 parent.tr('Token Length in Character (Mean)'),
                 parent.tr('Token Length in Character (Standard Deviation)'),
+                parent.tr('Type Length in Syllable (Mean)'),
+                parent.tr('Type Length in Syllable (Standard Deviation)'),
                 parent.tr('Type Length in Character (Mean)'),
-                parent.tr('Type Length in Character (Standard Deviation)')
+                parent.tr('Type Length in Character (Standard Deviation)'),
+                parent.tr('Syllable Length in Character (Mean)'),
+                parent.tr('Syllable Length in Character (Standard Deviation)')
             ],
             header_orientation = 'vertical',
             headers_int = [
@@ -62,6 +70,7 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Count of Sentences'),
                 parent.tr('Count of Tokens'),
                 parent.tr('Count of Types'),
+                parent.tr('Count of Syllables'),
                 parent.tr('Count of Characters')
             ],
             headers_float = [
@@ -73,16 +82,23 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Paragraph Length in Token (Standard Deviation)'),
                 parent.tr('Sentence Length in Token (Mean)'),
                 parent.tr('Sentence Length in Token (Standard Deviation)'),
+                parent.tr('Token Length in Syllable (Mean)'),
+                parent.tr('Token Length in Syllable (Standard Deviation)'),
                 parent.tr('Token Length in Character (Mean)'),
                 parent.tr('Token Length in Character (Standard Deviation)'),
+                parent.tr('Type Length in Syllable (Mean)'),
+                parent.tr('Type Length in Syllable (Standard Deviation)'),
                 parent.tr('Type Length in Character (Mean)'),
-                parent.tr('Type Length in Character (Standard Deviation)')
+                parent.tr('Type Length in Character (Standard Deviation)'),
+                parent.tr('Syllable Length in Character (Mean)'),
+                parent.tr('Syllable Length in Character (Standard Deviation)')
             ],
             headers_pct = [
                 parent.tr('Count of Paragraphs %'),
                 parent.tr('Count of Sentences %'),
                 parent.tr('Count of Tokens %'),
                 parent.tr('Count of Types %'),
+                parent.tr('Count of Syllables %'),
                 parent.tr('Count of Characters %')
             ],
             headers_cumulative = [
@@ -94,6 +110,8 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Count of Tokens %'),
                 parent.tr('Count of Types'),
                 parent.tr('Count of Types %'),
+                parent.tr('Count of Syllables'),
+                parent.tr('Count of Syllables %'),
                 parent.tr('Count of Characters'),
                 parent.tr('Count of Characters %')
             ]
@@ -329,6 +347,11 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                     for text in texts
                     for token in text.tokens_flat
                 ]
+                text_total.syls_flat = [
+                    syls
+                    for text in texts
+                    for syls in text.syls_flat
+                ]
 
                 texts.append(text_total)
             else:
@@ -354,12 +377,16 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                 ]
 
                 # Token length
-                len_tokens = [len(token) for token in text.tokens_flat]
+                len_tokens_in_syl = [len(syls) for syls in text.syls_flat]
+                len_tokens_in_char = [len(token) for token in text.tokens_flat]
                 # Type length
-                len_types = [len(token_type) for token_type in set(text.tokens_flat)]
+                len_types_in_syl = [len(syls) for syls in set([tuple(syls) for syls in text.syls_flat])]
+                len_types_in_char = [len(token_type) for token_type in set(text.tokens_flat)]
+                # Syllable length
+                len_syls = [len(syl) for syls in text.syls_flat for syl in syls]
 
-                count_tokens = len(len_tokens)
-                count_types = len(len_types)
+                count_tokens = len(len_tokens_in_char)
+                count_types = len(len_types_in_char)
 
                 # TTR
                 if count_tokens:
@@ -390,8 +417,11 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                 texts_stats_file.append(len_paras_in_sentence)
                 texts_stats_file.append(len_paras_in_token)
                 texts_stats_file.append(len_sentences)
-                texts_stats_file.append(len_tokens)
-                texts_stats_file.append(len_types)
+                texts_stats_file.append(len_tokens_in_syl)
+                texts_stats_file.append(len_tokens_in_char)
+                texts_stats_file.append(len_types_in_syl)
+                texts_stats_file.append(len_types_in_char)
+                texts_stats_file.append(len_syls)
                 texts_stats_file.append(ttr)
                 texts_stats_file.append(sttr)
 
@@ -431,82 +461,104 @@ def generate_table(main, table):
 
                 count_paras_total = len(texts_stats_files[-1][0])
                 count_sentences_total = len(texts_stats_files[-1][2])
-                count_tokens_total = len(texts_stats_files[-1][3])
-                count_types_total = len(texts_stats_files[-1][4])
-                count_chars_total = sum(texts_stats_files[-1][3])
+                count_tokens_total = len(texts_stats_files[-1][4])
+                count_types_total = len(texts_stats_files[-1][6])
+                count_syls_total = len(texts_stats_files[-1][7])
+                count_chars_total = sum(texts_stats_files[-1][4])
 
                 for i, stats in enumerate(texts_stats_files):
                     len_paras_in_sentence = stats[0]
                     len_paras_in_token = stats[1]
                     len_sentences = stats[2]
-                    len_tokens = stats[3]
-                    len_types = stats[4]
-                    ttr = stats[5]
-                    sttr = stats[6]
+                    len_tokens_in_syl = stats[3]
+                    len_tokens_in_char = stats[4]
+                    len_types_in_syl = stats[5]
+                    len_types_in_char = stats[6]
+                    len_syls = stats[7]
+                    ttr = stats[8]
+                    sttr = stats[9]
 
                     count_paras = len(len_paras_in_sentence)
                     count_sentences = len(len_sentences)
-                    count_tokens = len(len_tokens)
-                    count_types = len(len_types)
-                    count_chars = sum(len_tokens)
+                    count_tokens = len(len_tokens_in_char)
+                    count_types = len(len_types_in_char)
+                    count_syls = len(len_syls)
+                    count_chars = sum(len_tokens_in_char)
 
                     # Count of Paragraphs
                     table.set_item_num(0, i, count_paras)
                     table.set_item_num(1, i, count_paras, count_paras_total)
+
                     # Count of Sentences
                     table.set_item_num(2, i, count_sentences)
                     table.set_item_num(3, i, count_sentences, count_sentences_total)
+
                     # Count of Tokens
                     table.set_item_num(4, i, count_tokens)
                     table.set_item_num(5, i, count_tokens, count_tokens_total)
+
                     # Count of Types
                     table.set_item_num(6, i, count_types)
                     table.set_item_num(7, i, count_types, count_types_total)
+
+                    # Count of Syllables
+                    if count_syls:
+                        table.set_item_num(8, i, count_syls)
+                        table.set_item_num(9, i, count_syls, count_syls_total)
+                    else:
+                        table.set_item_no_support(8, i)
+                        table.set_item_no_support(9, i)
+
                     # Count of Characters
-                    table.set_item_num(8, i, count_chars)
-                    table.set_item_num(9, i, count_chars, count_chars_total)
+                    table.set_item_num(10, i, count_chars)
+                    table.set_item_num(11, i, count_chars, count_chars_total)
+
                     # Type-Token Ratio
-                    table.set_item_num(10, i, ttr)
+                    table.set_item_num(12, i, ttr)
                     # Type-Token Ratio (Standardized)
-                    table.set_item_num(11, i, sttr)
+                    table.set_item_num(13, i, sttr)
 
                     # Paragraph Length
-                    if count_paras == 0:
-                        table.set_item_num(12, i, 0)
-                        table.set_item_num(13, i, 0)
-                        table.set_item_num(14, i, 0)
-                        table.set_item_num(15, i, 0)
-                    else:
-                        table.set_item_num(12, i, numpy.mean(len_paras_in_sentence))
-                        table.set_item_num(13, i, numpy.std(len_paras_in_sentence))
-                        table.set_item_num(14, i, numpy.mean(len_paras_in_token))
-                        table.set_item_num(15, i, numpy.std(len_paras_in_token))
+                    table.set_item_num(14, i, numpy.mean(len_paras_in_sentence))
+                    table.set_item_num(15, i, numpy.std(len_paras_in_sentence))
+                    table.set_item_num(16, i, numpy.mean(len_paras_in_token))
+                    table.set_item_num(17, i, numpy.std(len_paras_in_token))
 
                     # Sentence Length
-                    if count_sentences == 0:
-                        table.set_item_num(16, i, 0)
-                        table.set_item_num(17, i, 0)
-                    else:
-                        table.set_item_num(16, i, numpy.mean(len_sentences))
-                        table.set_item_num(17, i, numpy.std(len_sentences))
+                    table.set_item_num(18, i, numpy.mean(len_sentences))
+                    table.set_item_num(19, i, numpy.std(len_sentences))
 
                     # Token Length
-                    if count_tokens == 0:
-                        table.set_item_num(18, i, 0)
-                        table.set_item_num(19, i, 0)
+                    if count_syls:
+                        table.set_item_num(20, i, numpy.mean(len_tokens_in_syl))
+                        table.set_item_num(21, i, numpy.std(len_tokens_in_syl))
                     else:
-                        table.set_item_num(18, i, numpy.mean(len_tokens))
-                        table.set_item_num(19, i, numpy.std(len_tokens))
+                        table.set_item_no_support(20, i)
+                        table.set_item_no_support(21, i)
+
+                    table.set_item_num(22, i, numpy.mean(len_tokens_in_char))
+                    table.set_item_num(23, i, numpy.std(len_tokens_in_char))
 
                     # Type Length
-                    if count_types == 0:
-                        table.set_item_num(20, i, 0)
-                        table.set_item_num(21, i, 0)
+                    if count_syls:
+                        table.set_item_num(24, i, numpy.mean(len_types_in_syl))
+                        table.set_item_num(25, i, numpy.std(len_types_in_syl))
                     else:
-                        table.set_item_num(20, i, numpy.mean(len_types))
-                        table.set_item_num(21, i, numpy.std(len_types))
+                        table.set_item_no_support(24, i)
+                        table.set_item_no_support(25, i)
 
-                    count_tokens_lens.append(collections.Counter(len_tokens))
+                    table.set_item_num(26, i, numpy.mean(len_types_in_char))
+                    table.set_item_num(27, i, numpy.std(len_types_in_char))
+
+                    # Syllable Length
+                    if count_syls:
+                        table.set_item_num(28, i, numpy.mean(len_syls))
+                        table.set_item_num(29, i, numpy.std(len_syls))
+                    else:
+                        table.set_item_no_support(28, i)
+                        table.set_item_no_support(29, i)
+
+                    count_tokens_lens.append(collections.Counter(len_tokens_in_char))
                     count_sentences_lens.append(collections.Counter(len_sentences))
 
                 # Count of n-length Tokens

@@ -12,7 +12,8 @@
 import copy
 
 from wl_checking import wl_checking_token
-from wl_text import wl_lemmatization, wl_stop_word_lists, wl_text, wl_text_utils, wl_word_detokenization
+from wl_text import (wl_lemmatization, wl_stop_word_lists, wl_syl_tokenization, wl_text, wl_text_utils,
+                     wl_word_detokenization)
 from wl_utils import wl_misc
 
 def wl_process_tokens(main, text, token_settings):
@@ -183,6 +184,9 @@ def wl_process_tokens_overview(main, text, token_settings):
             i_tokens += len(sentence)
 
         i_sentences += len(para)
+
+    # Syllable tokenization
+    text.syls_flat = wl_syl_tokenization.wl_syl_tokenize(main, text.tokens_flat, lang = text.lang)
 
     return text
 
