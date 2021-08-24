@@ -62,6 +62,8 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('ro_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ru_core_news_sm'))
 # spaCy-pkuseg
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_pkuseg'))
+# ssg
+datas.extend(PyInstaller.utils.hooks.collect_data_files('ssg'))
 # Tokenizer
 datas.extend(PyInstaller.utils.hooks.collect_data_files('tokenizer'))
 # Underthesea
