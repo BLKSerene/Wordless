@@ -10,6 +10,7 @@
 #
 
 import collections
+import re
 import sys
 import time
 
@@ -38,6 +39,8 @@ def test_overview():
             file['selected'] = False
 
         main.settings_custom['file_area']['files_open'][i]['selected'] = True
+        # Record current file name
+        main.settings_custom['file_cur'] = file_test['name']
 
         print(f'''Testing file "{file_test['name']}"... ''', end = '')
 
@@ -68,41 +71,60 @@ def update_gui(error_msg, texts_stats_files):
 
     count_paras_total = len(texts_stats_files[-1][0])
     count_sentences_total = len(texts_stats_files[-1][2])
-    count_tokens_total = len(texts_stats_files[-1][3])
-    count_types_total = len(texts_stats_files[-1][4])
-    count_chars_total = sum(texts_stats_files[-1][3])
+    count_tokens_total = len(texts_stats_files[-1][4])
+    count_types_total = len(texts_stats_files[-1][6])
+    count_syls_total = len(texts_stats_files[-1][7])
+    count_chars_total = sum(texts_stats_files[-1][4])
 
     for stats in texts_stats_files:
         len_paras_in_sentence = stats[0]
         len_paras_in_token = stats[1]
         len_sentences = stats[2]
-        len_tokens = stats[3]
-        len_types = stats[4]
-        ttr = stats[5]
-        sttr = stats[6]
+        len_tokens_in_syl = stats[3]
+        len_tokens_in_char = stats[4]
+        len_types_in_syl = stats[5]
+        len_types_in_char = stats[6]
+        len_syls = stats[7]
+        ttr = stats[8]
+        sttr = stats[9]
 
         count_paras = len(len_paras_in_sentence)
         count_sentences = len(len_sentences)
-        count_tokens = len(len_tokens)
-        count_types = len(len_types)
-        count_chars = sum(len_tokens)
+        count_tokens = len(len_tokens_in_char)
+        count_types = len(len_types_in_char)
+        count_syls = len(len_syls)
+        count_chars = sum(len_tokens_in_char)
 
-        count_tokens_lens.append(collections.Counter(len_tokens))
+        count_tokens_lens.append(collections.Counter(len_tokens_in_char))
         count_sentences_lens.append(collections.Counter(len_sentences))
 
         # Data validation
+        file_lang = re.search(r'\[([a-z_]+)\]', main.settings_custom['file_cur']).group(1)
+
         assert len_paras_in_sentence
         assert len_paras_in_token
         assert len_sentences
-        assert len_tokens
-        assert len_types
+
+        if file_lang in main.settings_global['syl_tokenizers']:
+            assert len_tokens_in_syl
+            assert len_types_in_syl
+        else:
+            assert not len_tokens_in_syl
+            assert not len_types_in_syl
+
+        assert len_tokens_in_char
+        assert len_types_in_char
         assert ttr
         assert sttr
 
         assert numpy.mean(len_paras_in_sentence) == count_sentences / count_paras
         assert numpy.mean(len_paras_in_token) == count_tokens / count_paras
         assert numpy.mean(len_sentences) == count_tokens / count_sentences
-        assert numpy.mean(len_tokens) == count_chars / count_tokens
+        if file_lang in main.settings_global['syl_tokenizers']:
+            assert numpy.mean(len_tokens_in_syl) == count_syls / count_tokens
+        else:
+            assert numpy.isnan(numpy.mean(len_tokens_in_syl))
+        assert numpy.mean(len_tokens_in_char) == count_chars / count_tokens
         
     # Count of n-length Tokens
     if any(count_tokens_lens):
@@ -114,7 +136,7 @@ def update_gui(error_msg, texts_stats_files):
             len_tokens_total = sum([values[i] * key
                                     for key, values in count_tokens_lens_files.items()])
 
-            assert len_tokens_total == sum(stats[3])
+            assert len_tokens_total == sum(len_tokens_in_char)
 
         # Token length should never be zero
         assert 0 not in count_tokens_lens
@@ -129,7 +151,7 @@ def update_gui(error_msg, texts_stats_files):
             len_sentences_total = sum([values[i] * key
                                        for key, values in count_sentences_lens_files.items()])
 
-            assert len_sentences_total == len(stats[3])
+            assert len_sentences_total == len(len_tokens_in_char)
 
         # Sentence length should never be zero
         assert 0 not in count_sentences_lens

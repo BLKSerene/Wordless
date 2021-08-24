@@ -19,28 +19,26 @@ from wl_text import wl_text_utils
 def wl_syl_tokenize(main, tokens, lang, syl_tokenizer = 'default'):
     syls = []
 
-    if lang not in main.settings_global['syl_tokenizers']:
-        lang = 'other'
+    if lang in main.settings_global['syl_tokenizers']:
+        if syl_tokenizer == 'default':
+            syl_tokenizer = main.settings_custom['syl_tokenization']['syl_tokenizers'][lang]
 
-    if syl_tokenizer == 'default':
-        syl_tokenizer = main.settings_custom['syl_tokenization']['syl_tokenizers'][lang]
+        wl_text_utils.init_syl_tokenizers(
+            main,
+            lang = lang,
+            syl_tokenizer = syl_tokenizer
+        )
 
-    wl_text_utils.init_syl_tokenizers(
-        main,
-        lang = lang,
-        syl_tokenizer = syl_tokenizer
-    )
+        for token in tokens:
+            # Pyphen
+            if 'Pyphen' in syl_tokenizer:
+                pyphen_syl_tokenizer = main.__dict__[f'pyphen_syl_tokenizer_{lang}']
 
-    for token in tokens:
-        # Pyphen
-        if 'Pyphen' in syl_tokenizer:
-            pyphen_syl_tokenizer = main.__dict__[f'pyphen_syl_tokenizer_{lang}']
-
-            syls.append(re.split(r'\-+', pyphen_syl_tokenizer.inserted(token)))
-        # Thai
-        elif syl_tokenizer == 'PyThaiNLP - Thai Syllable Tokenizer':
-            syls.append(pythainlp.syllable_tokenize(token))
-        elif syl_tokenizer == 'ssg - Thai Syllable Tokenizer':
-            syls.append(ssg.syllable_tokenize(token))
+                syls.append(re.split(r'\-+', pyphen_syl_tokenizer.inserted(token)))
+            # Thai
+            elif syl_tokenizer == 'PyThaiNLP - Thai Syllable Tokenizer':
+                syls.append(pythainlp.syllable_tokenize(token))
+            elif syl_tokenizer == 'ssg - Thai Syllable Tokenizer':
+                syls.append(ssg.syllable_tokenize(token))
 
     return syls
