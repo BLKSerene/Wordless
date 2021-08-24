@@ -735,6 +735,13 @@ class Wl_Table_Item(QTableWidgetItem):
     def __lt__(self, other):
         return self.read_data() < other.read_data()
 
+class Wl_Table_Item_No_Support(QTableWidgetItem):
+    def read_data(self):
+        return self.text()
+
+    def __lt__(self, other):
+        return self.read_data() < other.read_data()
+
 class Wl_Table(QTableWidget):
     def __init__(self, parent, headers, header_orientation = 'horizontal',
                  cols_stretch = [], drag_drop_enabled = False):
@@ -1244,6 +1251,17 @@ class Wl_Table_Data(Wl_Table):
 
         super().setItem(row, col, item)
 
+    def set_item_no_support(self, row, col):
+        item = Wl_Table_Item_No_Support(self.tr('No Support'))
+
+        item_font = QFont('Consolas')
+        item_font.setBold(True)
+
+        item.setFont(item_font)
+        item.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+
+        super().setItem(row, col, item)
+
     def update_ranks(self):
         data_prev = ''
         rank_prev = 1
@@ -1382,52 +1400,35 @@ class Wl_Table_Data(Wl_Table):
                 for row in self.headers_cumulative:
                     val_cumulative = 0
 
-                    # Integers
-                    if row in self.headers_int:
-                        for col in range(self.columnCount() - 1):
-                            if not self.isColumnHidden(col):
-                                item = self.item(row, col)
+                    for col in range(self.columnCount() - 1):
+                        item = self.item(row, col)
 
-                                val_cumulative += item.val
+                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_No_Support):
+                            val_cumulative += item.val
+
+                            # Integers
+                            if row in self.headers_int:
                                 item.setText(str(val_cumulative))
-                    # Floats
-                    elif row in self.headers_float:
-                        for col in range(self.columnCount() - 1):
-                            if not self.isColumnHidden(col):
-                                item = self.item(row, col)
-
-                                val_cumulative += item.val
+                            # Floats
+                            elif row in self.headers_float:
                                 item.setText(f'{val_cumulative:.{precision_decimal}}')
-                    # Percentages
-                    elif row in self.headers_pct:
-                        for col in range(self.columnCount() - 1):
-                            if not self.isColumnHidden(col):
-                                item = self.item(row, col)
-
-                                val_cumulative += item.val
+                            # Percentages
+                            elif row in self.headers_pct:
                                 item.setText(f'{val_cumulative:.{precision_pct}%}')
             else:
                 for row in self.headers_cumulative:
-                    # Integers
-                    if row in self.headers_int:
-                        for col in range(self.columnCount() - 1):
-                            if not self.isColumnHidden(col):
-                                item = self.item(row, col)
+                    for col in range(self.columnCount() - 1):
+                        item = self.item(row, col)
 
+                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_No_Support):
+                            # Integers
+                            if row in self.headers_int:
                                 item.setText(str(item.val))
-                    # Floats
-                    elif row in self.headers_float:
-                        for col in range(self.columnCount() - 1):
-                            if not self.isColumnHidden(col):
-                                item = self.item(row, col)
-
+                            # Floats
+                            elif row in self.headers_float:
                                 item.setText(f'{item.val:.{precision_decimal}}')
-                    # Percentages
-                    elif row in self.headers_pct:
-                        for col in range(self.columnCount() - 1):
-                            if not self.isColumnHidden(col):
-                                item = self.item(row, col)
-
+                            # Percentages
+                            elif row in self.headers_pct:
                                 item.setText(f'{item.val:.{precision_pct}%}')
 
         self.blockSignals(False)
