@@ -14,6 +14,7 @@ import csv
 import platform
 import re
 
+import openpyxl
 import requests
 
 from PyQt5.QtCore import *
@@ -104,32 +105,15 @@ class Wl_Dialog_Citing(wl_dialog.Wl_Dialog_Info):
 class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Acknowledgments'),
-                         width = 650)
+                         width = 600)
 
-        with open('wl_acks/wl_acks_general.csv', 'r', encoding = 'utf_8', newline = '') as f:
-            csv_reader = csv.reader(f, delimiter = '|')
+        workbook = openpyxl.load_workbook('wl_acks.xlsx')
 
-            self.ACKS_GENERAL = [row for row in csv_reader if row]
-
-        with open('wl_acks/wl_acks_nlp.csv', 'r', encoding = 'utf_8', newline = '') as f:
-            csv_reader = csv.reader(f, delimiter = '|')
-
-            self.ACKS_NLP = [row for row in csv_reader if row]
-
-        with open('wl_acks/wl_acks_lang_data.csv', 'r', encoding = 'utf_8', newline = '') as f:
-            csv_reader = csv.reader(f, delimiter = '|')
-
-            self.ACKS_LANG_DATA = [row for row in csv_reader if row]
-
-        with open('wl_acks/wl_acks_plotting.csv', 'r', encoding = 'utf_8', newline = '') as f:
-            csv_reader = csv.reader(f, delimiter = '|')
-
-            self.ACKS_PLOTTING = [row for row in csv_reader if row]
-
-        with open('wl_acks/wl_acks_misc.csv', 'r', encoding = 'utf_8', newline = '') as f:
-            csv_reader = csv.reader(f, delimiter = '|')
-
-            self.ACKS_MISC = [row for row in csv_reader if row]
+        self.acks_general = self.load_acks(workbook['General'])
+        self.acks_nlp = self.load_acks(workbook['NLP'])
+        self.acks_lang_data = self.load_acks(workbook['Language Data'])
+        self.acks_plotting = self.load_acks(workbook['Plotting'])
+        self.acks_misc = self.load_acks(workbook['Miscellaneous'])
 
         self.label_acks = wl_label.Wl_Label_Dialog(
             self.tr('''
@@ -147,11 +131,8 @@ class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
             headers = [
                 self.tr('Name'),
                 self.tr('Version'),
-                self.tr('Author(s)'),
+                self.tr('Authors'),
                 self.tr('License')
-            ],
-            cols_stretch = [
-                self.tr('Author(s)')
             ]
         )
 
@@ -181,6 +162,22 @@ class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
 
         self.set_fixed_height()
 
+    def load_acks(self, worksheet):
+        acks = []
+
+        for i, rows in enumerate(worksheet.rows):
+            if i > 0:
+                name = rows[0].value
+                home_page = rows[1].value
+                ver = str(rows[2].value)
+                authors = rows[3].value.replace('\n', '<br>')
+                license = rows[4].value
+                license_url = rows[5].value
+
+                acks.append([name, home_page, ver, authors, license, license_url])
+
+        return acks
+
     def load_settings(self):
         settings = copy.deepcopy(self.main.settings_custom['menu']['help']['acks'])
 
@@ -194,15 +191,15 @@ class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
         settings['browse_category'] = self.combo_box_browse_category.currentText()
 
         if settings['browse_category'] == self.tr('General'):
-            acks = self.ACKS_GENERAL
+            acks = self.acks_general
         elif settings['browse_category'] == self.tr('Natural Language Processing'):
-            acks = self.ACKS_NLP
+            acks = self.acks_nlp
         elif settings['browse_category'] == self.tr('Language Data'):
-            acks = self.ACKS_LANG_DATA
+            acks = self.acks_lang_data
         elif settings['browse_category'] == self.tr('Plotting'):
-            acks = self.ACKS_PLOTTING
+            acks = self.acks_plotting
         elif settings['browse_category'] == self.tr('Miscellaneous'):
-            acks = self.ACKS_MISC
+            acks = self.acks_misc
 
         self.table_acks.clear_table()
 
@@ -211,22 +208,22 @@ class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
 
         self.table_acks.setRowCount(len(acks))
 
-        for i, (project_name, project_url, ver, authors, license_name, licence_url) in enumerate(acks):
-            project = f'<a href="{project_url}">{project_name}</a>'
-            license = f'<a href="{licence_url}">{license_name}</a>'
+        for i, (name, home_page, ver, authors, license, licence_url) in enumerate(acks):
+            name = f'<a href="{home_page}">{name}</a>'
+            license = f'<a href="{licence_url}">{license}</a>'
 
             # Pad cells with whitespace
-            project = project.replace('<br>', '&nbsp;<br>&nbsp;')
+            name = name.replace('<br>', '&nbsp;<br>&nbsp;')
             ver = ver.replace('<br>', '&nbsp;<br>&nbsp;')
             authors = authors.replace('<br>', '&nbsp;<br>&nbsp;')
             license = license.replace('<br>', '&nbsp;<br>&nbsp;')
 
-            project = f'&nbsp;{project}&nbsp;'
+            name = f'&nbsp;{name}&nbsp;'
             ver = f'&nbsp;{ver}&nbsp;'
             authors = f'&nbsp;{authors}&nbsp;'
             license = f'&nbsp;{license}&nbsp;'
 
-            self.table_acks.setCellWidget(i, 0, wl_label.Wl_Label_Html(project, self))
+            self.table_acks.setCellWidget(i, 0, wl_label.Wl_Label_Html(name, self))
             self.table_acks.setCellWidget(i, 1, wl_label.Wl_Label_Html_Centered(ver, self))
             self.table_acks.setCellWidget(i, 2, wl_label.Wl_Label_Html(authors, self))
             self.table_acks.setCellWidget(i, 3, wl_label.Wl_Label_Html_Centered(license, self))
