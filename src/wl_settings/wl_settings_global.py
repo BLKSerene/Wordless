@@ -1377,7 +1377,8 @@ def init_settings_global(main):
             ],
 
             'tha': [
-                main.tr('PyThaiNLP - Thai Syllable Tokenizer')
+                main.tr('PyThaiNLP - Thai Syllable Tokenizer'),
+                main.tr('ssg - Thai Syllable Tokenizer')
             ],
 
             'ukr': [
