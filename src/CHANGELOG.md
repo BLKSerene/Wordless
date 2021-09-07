@@ -22,7 +22,7 @@
 - Utils: Add spaCy's Azerbaijani word tokenizer and stop word list
 - Utils: Add spaCy's Greek (Ancient) word tokenizer and stop word list
 - Utils: Add ssg's Thai syllable tokenizer
-- Work Area: Add Overview - Count of Syllables / Token Length in Syllable / Type Length in Syllable / Syllable Length in Character
+- Work Area: Add Overview - Automated Readability Index / Coleman-Liau Index / Dale-Chall Readability Score / Devereaux Readability Index / Flesch Reading Ease / Flesch Reading Ease (Simplified) / Flesch-Kincaid Grade Level / FORCAST Grade Level / Gunning Fog Index / SMOG Grade / Spache Grade Level / Write Score / Count of Syllables / Token Length in Syllable / Type Length in Syllable / Syllable Length in Character
 - Work Area: Add Work Area - Search Settings - Multi-search Mode - Insert
 
 ### ✨ Improvements

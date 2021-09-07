@@ -69,24 +69,25 @@ def update_gui(error_msg, texts_stats_files):
 
     assert texts_stats_files
 
-    count_paras_total = len(texts_stats_files[-1][0])
-    count_sentences_total = len(texts_stats_files[-1][2])
-    count_tokens_total = len(texts_stats_files[-1][4])
-    count_types_total = len(texts_stats_files[-1][6])
-    count_syls_total = len(texts_stats_files[-1][7])
-    count_chars_total = sum(texts_stats_files[-1][4])
+    count_paras_total = len(texts_stats_files[-1][1])
+    count_sentences_total = len(texts_stats_files[-1][3])
+    count_tokens_total = len(texts_stats_files[-1][5])
+    count_types_total = len(texts_stats_files[-1][7])
+    count_syls_total = len(texts_stats_files[-1][8])
+    count_chars_total = sum(texts_stats_files[-1][5])
 
     for stats in texts_stats_files:
-        len_paras_in_sentence = stats[0]
-        len_paras_in_token = stats[1]
-        len_sentences = stats[2]
-        len_tokens_in_syl = stats[3]
-        len_tokens_in_char = stats[4]
-        len_types_in_syl = stats[5]
-        len_types_in_char = stats[6]
-        len_syls = stats[7]
-        ttr = stats[8]
-        sttr = stats[9]
+        readability_statistics = stats[0]
+        len_paras_in_sentence = stats[1]
+        len_paras_in_token = stats[2]
+        len_sentences = stats[3]
+        len_tokens_in_syl = stats[4]
+        len_tokens_in_char = stats[5]
+        len_types_in_syl = stats[6]
+        len_types_in_char = stats[7]
+        len_syls = stats[8]
+        ttr = stats[9]
+        sttr = stats[10]
 
         count_paras = len(len_paras_in_sentence)
         count_sentences = len(len_sentences)
@@ -100,6 +101,10 @@ def update_gui(error_msg, texts_stats_files):
 
         # Data validation
         file_lang = re.search(r'\[([a-z_]+)\]', main.settings_custom['file_cur']).group(1)
+
+        assert readability_statistics
+        for statistic in readability_statistics:
+            assert statistic
 
         assert len_paras_in_sentence
         assert len_paras_in_token

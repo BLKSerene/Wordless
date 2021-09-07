@@ -14,6 +14,7 @@ import copy
 import operator
 import re
 import time
+import traceback
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -629,7 +630,7 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
         try:
             texts = []
             collocations_freqs_files_all = []
-
+            
             settings = self.main.settings_custom['collocation']
             files = self.main.wl_files.get_selected_files()
 
@@ -936,8 +937,8 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
             if len(files) == 1:
                 self.collocations_freqs_files *= 2
                 self.collocations_stats_files *= 2
-        except Exception as e:
-            self.error_msg = repr(e)
+        except Exception:
+            self.error_msg = traceback.format_exc()
 
 class Wl_Worker_Collocation_Table(Wl_Worker_Collocation):
     def run(self):
@@ -976,7 +977,7 @@ def generate_table(main, table):
             if collocations_freqs_files:
                 table.clear_table()
 
-                table.settings = main.settings_custom
+                table.settings = copy.deepcopy(main.settings_custom)
 
                 text_test_significance = settings['generation_settings']['test_significance']
                 text_measure_effect_size = settings['generation_settings']['measure_effect_size']
