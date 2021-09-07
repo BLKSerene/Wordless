@@ -18,36 +18,40 @@ from wl_measures import wl_measures_adjusted_freq
 
 main = wl_test_init.Wl_Test_Main()
 
-# [1] Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
-# [2] Rosengren, Inger. "The quantitative concept of language and its relation to the structure of frequency dictionaries." Études de linguistique appliquée, no. 1, 1971, p. 115.
-# [3] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français." Dissertation, Stockholm University, 1974, p. 122.
-def test_juillands_u():
-    assert round(wl_measures_adjusted_freq.juillands_u([0, 4, 3, 2, 1]), 2) == 6.46
-    assert round(wl_measures_adjusted_freq.juillands_u([2, 2, 2, 2, 2]), 0) == 10
-    assert round(wl_measures_adjusted_freq.juillands_u([4, 2, 1, 1, 0]), 3) == 4.609
-
-# [1] Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
-# [2] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français." Dissertation, Stockholm University, 1974, p. 122.
-# [3] Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
+# References:
+#     Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/
+#     Engwall, G. (1974). Fréquence et distribution du vocabulaire dans un choix de romans français [Unpublished doctoral dissertation]. Stockholm University. (p. 122)
+#     Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 409)
 def test_carrolls_um():
     assert round(wl_measures_adjusted_freq.carrolls_um([2, 1, 1, 1, 0]), 2) == 4.31
     assert round(wl_measures_adjusted_freq.carrolls_um([4, 2, 1, 1, 0]), 3) == 6.424
     assert round(wl_measures_adjusted_freq.carrolls_um([1, 2, 3, 4, 5]), 3) == 14.108
 
-# [1] Rosengren, Inger. "The quantitative concept of language and its relation to the structure of frequency dictionaries." Études de linguistique appliquée, no. 1, 1971, p. 117.
-# [2] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français." Dissertation, Stockholm University, 1974, p. 122.
-# [3] Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
+# References
+#     Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
+#     Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. Études de linguistique appliquée, 1, 103–127. (p. 115)
+#     Engwall, G. (1974). Fréquence et distribution du vocabulaire dans un choix de romans français [Unpublished doctoral dissertation]. Stockholm University. (p. 122)
+def test_juillands_u():
+    assert round(wl_measures_adjusted_freq.juillands_u([0, 4, 3, 2, 1]), 2) == 6.46
+    assert round(wl_measures_adjusted_freq.juillands_u([2, 2, 2, 2, 2]), 0) == 10
+    assert round(wl_measures_adjusted_freq.juillands_u([4, 2, 1, 1, 0]), 3) == 4.609
+
+# References:
+#     Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. Études de linguistique appliquée, 1, 103–127. (p. 117)
+#     Engwall, G. (1974). Fréquence et distribution du vocabulaire dans un choix de romans français [Unpublished doctoral dissertation]. Stockholm University. (p. 122)
+#     Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 409)
 def test_rosengres_kf():
     assert round(wl_measures_adjusted_freq.rosengrens_kf([2, 2, 2, 2, 1]), 2) == 8.86
     assert round(wl_measures_adjusted_freq.rosengrens_kf([4, 2, 1, 1, 0]), 3) == 5.863
     assert round(wl_measures_adjusted_freq.rosengrens_kf([1, 2, 3, 4, 5]), 3) == 14.053
 
-# [1] Engwall, Gunnel. "Fréquence Et Distribution Du Vocabulaire Dans Un Choix De Romans Français." Dissertation, Stockholm University, 1974, p. 122.
-# [2] Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
+# References:
+#     Engwall, G. (1974). Fréquence et distribution du vocabulaire dans un choix de romans français [Unpublished doctoral dissertation]. Stockholm University. (p. 122)
+#     Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 409)
 def test_engwalls_fm():
     assert round(wl_measures_adjusted_freq.engwalls_fm([4, 2, 1, 1, 0]), 1) == 6.4
     assert round(wl_measures_adjusted_freq.engwalls_fm([1, 2, 3, 4, 5]), 0) == 15
 
-# Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 409.
+# Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 409)
 def test_kromers_ur():
     assert round(wl_measures_adjusted_freq.kromers_ur([2, 1, 1, 1, 0]), 1) == 4.5

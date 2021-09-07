@@ -514,7 +514,7 @@ class Wl_Main(QMainWindow):
                 self.wl_work_area.setCurrentIndex(1)
 
     def load_settings(self):
-        settings = copy.deepcopy(self.settings_custom)
+        settings = self.settings_custom
 
         # Fonts
         self.setStyleSheet(f'''

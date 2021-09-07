@@ -31,7 +31,7 @@ def wl_process_tokens(main, text, token_settings):
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, token in enumerate(sentence):
-                    if wl_checking_token.is_token_punc(token):
+                    if wl_checking_token.is_punc(token):
                         sentence[i] = ''
 
                         text.tags[i_tokens + i] = ''
@@ -83,27 +83,27 @@ def wl_process_tokens(main, text, token_settings):
             for para in text.tokens_multilevel:
                 for sentence in para:
                     for i, token in enumerate(sentence):
-                        if wl_checking_token.is_token_word_lowercase(token):
+                        if wl_checking_token.is_word_lowercase(token):
                             sentence[i] = ''
         # Uppercase
         if not settings['uppercase']:
             for para in text.tokens_multilevel:
                 for sentence in para:
                     for i, token in enumerate(sentence):
-                        if wl_checking_token.is_token_word_uppercase(token):
+                        if wl_checking_token.is_word_uppercase(token):
                             sentence[i] = ''
         # Title Case
         if not settings['title_case']:
             for para in text.tokens_multilevel:
                 for sentence in para:
                     for i, token in enumerate(sentence):
-                        if wl_checking_token.is_token_word_title_case(token):
+                        if wl_checking_token.is_word_title_case(token):
                             sentence[i] = ''
     else:
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, token in enumerate(sentence):
-                    if wl_checking_token.is_token_word(token):
+                    if wl_checking_token.is_word_alphabetic(token):
                         sentence[i] = ''
 
     # Numerals
@@ -111,7 +111,7 @@ def wl_process_tokens(main, text, token_settings):
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, token in enumerate(sentence):
-                    if wl_checking_token.is_token_num(token):
+                    if wl_checking_token.is_num(token):
                         sentence[i] = ''
 
     # Filter stop words
@@ -186,7 +186,7 @@ def wl_process_tokens_overview(main, text, token_settings):
         i_sentences += len(para)
 
     # Syllable tokenization
-    text.syls_flat = wl_syl_tokenization.wl_syl_tokenize(main, text.tokens_flat, lang = text.lang)
+    text.syls_tokens = wl_syl_tokenization.wl_syl_tokenize_no_puncs(main, text.tokens_flat, lang = text.lang)
 
     return text
 
@@ -199,7 +199,7 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
     if not settings['puncs']:
         tokens = [token
                   for token in tokens
-                  if not wl_checking_token.is_token_punc(token)]
+                  if not wl_checking_token.is_punc(token)]
 
         # Update offsets
         text.offsets_paras = []
@@ -214,7 +214,7 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
 
                 for token in sentence:
                     if text.tokens_flat:
-                        if wl_checking_token.is_token_punc(token):
+                        if wl_checking_token.is_punc(token):
                             text.tokens_flat[-1] = wl_word_detokenization.wl_word_detokenize(
                                 main, [text.tokens_flat[-1], token],
                                 lang = text.lang
@@ -230,7 +230,7 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
             text.offsets_sentences = sorted(set(text.offsets_sentences))
 
         # Check if the first token is a punctuation mark
-        if wl_checking_token.is_token_punc(text.tokens_flat[0]):
+        if wl_checking_token.is_punc(text.tokens_flat[0]):
             tokens.insert(0, [])
 
     # Ignore tags

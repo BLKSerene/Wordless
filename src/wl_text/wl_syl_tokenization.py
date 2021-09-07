@@ -14,10 +14,11 @@ import re
 import pythainlp
 import ssg
 
+from wl_checking import wl_checking_token
 from wl_text import wl_text_utils
 
 def wl_syl_tokenize(main, tokens, lang, syl_tokenizer = 'default'):
-    syls = []
+    syls_tokens = []
 
     if lang in main.settings_global['syl_tokenizers']:
         if syl_tokenizer == 'default':
@@ -34,11 +35,21 @@ def wl_syl_tokenize(main, tokens, lang, syl_tokenizer = 'default'):
             if 'Pyphen' in syl_tokenizer:
                 pyphen_syl_tokenizer = main.__dict__[f'pyphen_syl_tokenizer_{lang}']
 
-                syls.append(re.split(r'\-+', pyphen_syl_tokenizer.inserted(token)))
+                syls_tokens.append(re.split(r'\-+', pyphen_syl_tokenizer.inserted(token)))
             # Thai
             elif syl_tokenizer == 'PyThaiNLP - Thai Syllable Tokenizer':
-                syls.append(pythainlp.syllable_tokenize(token))
+                syls_tokens.append(pythainlp.syllable_tokenize(token))
             elif syl_tokenizer == 'ssg - Thai Syllable Tokenizer':
-                syls.append(ssg.syllable_tokenize(token))
+                syls_tokens.append(ssg.syllable_tokenize(token))
 
-    return syls
+    return syls_tokens
+
+# Syllable tokenization excluding punctuations
+def wl_syl_tokenize_no_puncs(main, tokens, lang, syl_tokenizer = 'default'):
+    syls_tokens = wl_syl_tokenize(main, tokens, lang, syl_tokenizer = syl_tokenizer)
+
+    for i, syls in reversed(list(enumerate(syls_tokens))):
+        if len(syls) == 1 and wl_checking_token.is_punc(syls[0]):
+            del syls_tokens[i]
+
+    return syls_tokens

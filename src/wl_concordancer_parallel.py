@@ -12,6 +12,7 @@
 import copy
 import re
 import time
+import traceback
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -453,7 +454,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
         try:
             settings = self.main.settings_custom['concordancer_parallel']
             files = self.main.wl_files.get_selected_files()
-
+            
             src_file_name = settings['generation_settings']['src_file']
             tgt_file_name = settings['generation_settings']['tgt_file']
 
@@ -700,8 +701,8 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                     concordance_lines = [line
                                          for line in concordance_lines
                                          if line in concordance_lines_sampled]
-        except Exception as e:
-            error_msg = repr(e)
+        except Exception:
+            error_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
 
@@ -716,7 +717,7 @@ def generate_table(main, table_src, table_tgt):
             node_color = settings['sort_results']['highlight_colors'][0]
 
             if concordance_lines:
-                table_src.settings = main.settings_custom
+                table_src.settings = copy.deepcopy(main.settings_custom)
 
                 table_src.blockSignals(True)
                 table_tgt.blockSignals(True)
@@ -817,7 +818,6 @@ def generate_table(main, table_src, table_tgt):
 
     settings = main.settings_custom['concordancer_parallel']
     files = main.wl_files.get_selected_files()
-
 
     if wl_checking_file.check_files_on_loading(main, files):
         # Check for identical source and target files

@@ -13,6 +13,7 @@ import collections
 import copy
 import re
 import time
+import traceback
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -407,7 +408,7 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
     def run(self):
         try:
             texts = []
-
+            
             settings = self.main.settings_custom['keyword']
 
             files_ref = self.main.wl_files.find_files_by_name(
@@ -545,8 +546,8 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
             if len(files_observed) == 1:
                 self.keywords_freq_files.append(self.keywords_freq_files[1])
                 self.keywords_stats_files *= 2
-        except Exception as e:
-            self.error_msg = repr(e)
+        except Exception:
+            self.error_msg = traceback.format_exc()
 
 class Wl_Worker_Keyword_Table(Wl_Worker_Keyword):
     def run(self):

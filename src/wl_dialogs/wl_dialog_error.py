@@ -40,8 +40,9 @@ class Wl_Dialog_Error_Fatal(Wl_Dialog_Error):
             '''),
             self
         )
-        self.text_edit_error_msg = QTextEdit(error_msg, self)
+        self.text_edit_error_msg = QTextEdit(self)
 
+        self.text_edit_error_msg.setPlainText(error_msg)
         self.text_edit_error_msg.setReadOnly(True)
 
         self.wrapper_info.layout().addWidget(self.label_error_msg, 0, 0)
@@ -50,9 +51,7 @@ class Wl_Dialog_Error_Fatal(Wl_Dialog_Error):
         self.button_export.hide()
 
 def wl_dialog_error_fatal(main, error_msg):
-    dialog_error_fatal = Wl_Dialog_Error_Fatal(main, error_msg)
-
-    dialog_error_fatal.open()
+    Wl_Dialog_Error_Fatal(main, error_msg).open()
 
 class Wl_Dialog_Error_File_Open(Wl_Dialog_Error):
     def __init__(self, main,
@@ -133,14 +132,12 @@ def wl_dialog_error_file_open(
     file_paths_duplicate
 ):
     if file_paths_empty or file_paths_unsupported or file_paths_duplicate:
-        dialog_error_file_open = Wl_Dialog_Error_File_Open(
+        Wl_Dialog_Error_File_Open(
             main,
             file_paths_empty,
             file_paths_unsupported,
             file_paths_duplicate
-        )
-
-        dialog_error_file_open.open()
+        ).open()
 
 class Wl_Dialog_Error_File_Load_Colligation(Wl_Dialog_Error):
     def __init__(self, main, files_pos_tagging_unsupported):
@@ -180,12 +177,10 @@ class Wl_Dialog_Error_File_Load_Colligation(Wl_Dialog_Error):
 
 def wl_dialog_error_file_load_colligation(main, files_pos_tagging_unsupported):
     if files_pos_tagging_unsupported:
-        dialog_error_file_load_colligation = Wl_Dialog_Error_File_Load_Colligation(
+        Wl_Dialog_Error_File_Load_Colligation(
             main,
             files_pos_tagging_unsupported
-        )
-
-        dialog_error_file_load_colligation.open()
+        ).open()
 
 class Wl_Dialog_Error_Import(Wl_Dialog_Error):
     def __init__(self, main, file_paths_empty):
@@ -232,6 +227,4 @@ class Wl_Dialog_Error_Import(Wl_Dialog_Error):
 
 def wl_dialog_error_import(main, file_paths_empty):
     if file_paths_empty:
-        dialog_error_import = Wl_Dialog_Error_Import(main, file_paths_empty)
-
-        dialog_error_import.open()
+        Wl_Dialog_Error_Import(main, file_paths_empty).open()

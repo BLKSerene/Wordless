@@ -18,6 +18,6 @@ from wl_measures import wl_measures_bayes_factor
 
 main = wl_test_init.Wl_Test_Main()
 
-# Wilson, Andrew. "Embracing Bayes Factors for Key Item Analysis in Corpus Linguistics." New Approaches to the Study of Linguistic Variability, edited by Markus Bieswanger and Amei Koll-Stobbe, Peter Lang, 2013, p. 7.
+# Reference: Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger, & A. Koll-Stobbe (Eds.), New Approaches to the Study of Linguistic Variability (pp. 3–11). Peter Lang. (p. 7)
 def test_bayes_factor_log_likelihood_ratio_test():
     assert round(wl_measures_bayes_factor.bayes_factor_log_likelihood_ratio_test(22.22, 9611 + 144925), 2) == 10.27
