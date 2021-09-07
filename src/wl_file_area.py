@@ -172,8 +172,6 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
                 # Process texts
                 new_file['text'] = wl_text.Wl_Text(self.main, new_file)
-                # Remove the main object from all texts
-                new_file['text'].main = None
 
                 new_files.append(new_file)
 

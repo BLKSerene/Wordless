@@ -735,7 +735,7 @@ class Wl_Table_Item(QTableWidgetItem):
     def __lt__(self, other):
         return self.read_data() < other.read_data()
 
-class Wl_Table_Item_No_Support(QTableWidgetItem):
+class Wl_Table_Item_Error(QTableWidgetItem):
     def read_data(self):
         return self.text()
 
@@ -1251,8 +1251,8 @@ class Wl_Table_Data(Wl_Table):
 
         super().setItem(row, col, item)
 
-    def set_item_no_support(self, row, col):
-        item = Wl_Table_Item_No_Support(self.tr('No Support'))
+    def set_item_error(self, row, col, text):
+        item = Wl_Table_Item_Error(text)
 
         item_font = QFont('Consolas')
         item_font.setBold(True)
@@ -1403,7 +1403,7 @@ class Wl_Table_Data(Wl_Table):
                     for col in range(self.columnCount() - 1):
                         item = self.item(row, col)
 
-                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_No_Support):
+                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Error):
                             val_cumulative += item.val
 
                             # Integers
@@ -1420,7 +1420,7 @@ class Wl_Table_Data(Wl_Table):
                     for col in range(self.columnCount() - 1):
                         item = self.item(row, col)
 
-                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_No_Support):
+                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Error):
                             # Integers
                             if row in self.headers_int:
                                 item.setText(str(item.val))

@@ -14,6 +14,7 @@ import copy
 import itertools
 import re
 import time
+import traceback
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -23,6 +24,7 @@ import numpy
 
 from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
+from wl_measures import wl_measures_readability
 from wl_text import wl_text, wl_text_utils, wl_token_processing
 from wl_utils import wl_misc, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
@@ -33,6 +35,18 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
             parent,
             tab = 'overview',
             headers = [
+                parent.tr('Automated Readability Index'),
+                parent.tr('Coleman-Liau Index'),
+                parent.tr('Dale-Chall Readability Score'),
+                parent.tr('Devereaux Readability Index'),
+                parent.tr('Flesch Reading Ease'),
+                parent.tr('Flesch Reading Ease (Simplified)'),
+                parent.tr('Flesch-Kincaid Grade Level'),
+                parent.tr('FORCAST Grade Level'),
+                parent.tr('Gunning Fog Index'),
+                parent.tr('SMOG Grade'),
+                parent.tr('Spache Grade Level'),
+                parent.tr('Write Score'),
                 parent.tr('Count of Paragraphs'),
                 parent.tr('Count of Paragraphs %'),
                 parent.tr('Count of Sentences'),
@@ -47,22 +61,22 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Count of Characters %'),
                 parent.tr('Type-Token Ratio'),
                 parent.tr('Type-Token Ratio (Standardized)'),
-                parent.tr('Paragraph Length in Sentence (Mean)'),
-                parent.tr('Paragraph Length in Sentence (Standard Deviation)'),
-                parent.tr('Paragraph Length in Token (Mean)'),
-                parent.tr('Paragraph Length in Token (Standard Deviation)'),
-                parent.tr('Sentence Length in Token (Mean)'),
-                parent.tr('Sentence Length in Token (Standard Deviation)'),
-                parent.tr('Token Length in Syllable (Mean)'),
-                parent.tr('Token Length in Syllable (Standard Deviation)'),
-                parent.tr('Token Length in Character (Mean)'),
-                parent.tr('Token Length in Character (Standard Deviation)'),
-                parent.tr('Type Length in Syllable (Mean)'),
-                parent.tr('Type Length in Syllable (Standard Deviation)'),
-                parent.tr('Type Length in Character (Mean)'),
-                parent.tr('Type Length in Character (Standard Deviation)'),
-                parent.tr('Syllable Length in Character (Mean)'),
-                parent.tr('Syllable Length in Character (Standard Deviation)')
+                parent.tr('Paragraph Length in Sentences (Mean)'),
+                parent.tr('Paragraph Length in Sentences (Standard Deviation)'),
+                parent.tr('Paragraph Length in Tokens (Mean)'),
+                parent.tr('Paragraph Length in Tokens (Standard Deviation)'),
+                parent.tr('Sentence Length in Tokens (Mean)'),
+                parent.tr('Sentence Length in Tokens (Standard Deviation)'),
+                parent.tr('Token Length in Syllables (Mean)'),
+                parent.tr('Token Length in Syllables (Standard Deviation)'),
+                parent.tr('Token Length in Characters (Mean)'),
+                parent.tr('Token Length in Characters (Standard Deviation)'),
+                parent.tr('Type Length in Syllables (Mean)'),
+                parent.tr('Type Length in Syllables (Standard Deviation)'),
+                parent.tr('Type Length in Characters (Mean)'),
+                parent.tr('Type Length in Characters (Standard Deviation)'),
+                parent.tr('Syllable Length in Characters (Mean)'),
+                parent.tr('Syllable Length in Characters (Standard Deviation)')
             ],
             header_orientation = 'vertical',
             headers_int = [
@@ -74,24 +88,36 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Count of Characters')
             ],
             headers_float = [
+                parent.tr('Automated Readability Index'),
+                parent.tr('Coleman-Liau Index'),
+                parent.tr('Dale-Chall Readability Score'),
+                parent.tr('Devereaux Readability Index'),
+                parent.tr('Flesch Reading Ease'),
+                parent.tr('Flesch Reading Ease (Simplified)'),
+                parent.tr('Flesch-Kincaid Grade Level'),
+                parent.tr('FORCAST Grade Level'),
+                parent.tr('Gunning Fog Index'),
+                parent.tr('SMOG Grade'),
+                parent.tr('Spache Grade Level'),
+                parent.tr('Write Score'),
                 parent.tr('Type-Token Ratio'),
                 parent.tr('Type-Token Ratio (Standardized)'),
-                parent.tr('Paragraph Length in Sentence (Mean)'),
-                parent.tr('Paragraph Length in Sentence (Standard Deviation)'),
-                parent.tr('Paragraph Length in Token (Mean)'),
-                parent.tr('Paragraph Length in Token (Standard Deviation)'),
-                parent.tr('Sentence Length in Token (Mean)'),
-                parent.tr('Sentence Length in Token (Standard Deviation)'),
-                parent.tr('Token Length in Syllable (Mean)'),
-                parent.tr('Token Length in Syllable (Standard Deviation)'),
-                parent.tr('Token Length in Character (Mean)'),
-                parent.tr('Token Length in Character (Standard Deviation)'),
-                parent.tr('Type Length in Syllable (Mean)'),
-                parent.tr('Type Length in Syllable (Standard Deviation)'),
-                parent.tr('Type Length in Character (Mean)'),
-                parent.tr('Type Length in Character (Standard Deviation)'),
-                parent.tr('Syllable Length in Character (Mean)'),
-                parent.tr('Syllable Length in Character (Standard Deviation)')
+                parent.tr('Paragraph Length in Sentences (Mean)'),
+                parent.tr('Paragraph Length in Sentences (Standard Deviation)'),
+                parent.tr('Paragraph Length in Tokens (Mean)'),
+                parent.tr('Paragraph Length in Tokens (Standard Deviation)'),
+                parent.tr('Sentence Length in Tokens (Mean)'),
+                parent.tr('Sentence Length in Tokens (Standard Deviation)'),
+                parent.tr('Token Length in Syllables (Mean)'),
+                parent.tr('Token Length in Syllables (Standard Deviation)'),
+                parent.tr('Token Length in Characters (Mean)'),
+                parent.tr('Token Length in Characters (Standard Deviation)'),
+                parent.tr('Type Length in Syllables (Mean)'),
+                parent.tr('Type Length in Syllables (Standard Deviation)'),
+                parent.tr('Type Length in Characters (Mean)'),
+                parent.tr('Type Length in Characters (Standard Deviation)'),
+                parent.tr('Syllable Length in Characters (Mean)'),
+                parent.tr('Syllable Length in Characters (Standard Deviation)')
             ],
             headers_pct = [
                 parent.tr('Count of Paragraphs %'),
@@ -315,7 +341,7 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
 
             settings = self.main.settings_custom['overview']
             files = self.main.wl_files.get_selected_files()
-
+            
             for i, file in enumerate(files):
                 text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens_overview(
@@ -325,8 +351,16 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
 
                 texts.append(text)
 
+            # Total
             if len(files) > 1:
                 text_total = wl_text.Wl_Text_Blank()
+
+                # Set language for the combined text only if all texts are in the same language
+                if len(set([text.lang for text in texts])) == 1:
+                    text_total.lang = texts[0].lang
+                else:
+                    text_total.lang = 'other'
+
                 text_total.offsets_paras = [
                     offset
                     for text in texts
@@ -347,20 +381,34 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                     for text in texts
                     for token in text.tokens_flat
                 ]
-                text_total.syls_flat = [
+                text_total.syls_tokens = [
                     syls
                     for text in texts
-                    for syls in text.syls_flat
+                    for syls in text.syls_tokens
                 ]
 
                 texts.append(text_total)
-            else:
-                texts.append(texts[0])
 
             base_sttr = settings['generation_settings']['base_sttr']
 
             for text in texts:
                 texts_stats_file = []
+
+                # Readability
+                readability_statistics = [
+                    wl_measures_readability.automated_readability_index(self.main, text),
+                    wl_measures_readability.coleman_liau_index(self.main, text),
+                    wl_measures_readability.dale_chall_readability_score(self.main, text),
+                    wl_measures_readability.devereux_readability_index(self.main, text),
+                    wl_measures_readability.flesch_reading_ease(self.main, text),
+                    wl_measures_readability.flesch_reading_ease_simplified(self.main, text),
+                    wl_measures_readability.flesch_kincaid_grade_level(self.main, text),
+                    wl_measures_readability.forcast_grade_level(self.main, text),
+                    wl_measures_readability.gunning_fog_index(self.main, text),
+                    wl_measures_readability.smog_grade(self.main, text),
+                    wl_measures_readability.spache_grade_level(self.main, text),
+                    wl_measures_readability.write_score(self.main, text)
+                ]
 
                 # Paragraph length
                 len_paras_in_sentence = [len(para) for para in text.tokens_multilevel]
@@ -377,13 +425,13 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                 ]
 
                 # Token length
-                len_tokens_in_syl = [len(syls) for syls in text.syls_flat]
+                len_tokens_in_syl = [len(syls) for syls in text.syls_tokens]
                 len_tokens_in_char = [len(token) for token in text.tokens_flat]
                 # Type length
-                len_types_in_syl = [len(syls) for syls in set([tuple(syls) for syls in text.syls_flat])]
+                len_types_in_syl = [len(syls) for syls in set([tuple(syls) for syls in text.syls_tokens])]
                 len_types_in_char = [len(token_type) for token_type in set(text.tokens_flat)]
                 # Syllable length
-                len_syls = [len(syl) for syls in text.syls_flat for syl in syls]
+                len_syls = [len(syl) for syls in text.syls_tokens for syl in syls]
 
                 count_tokens = len(len_tokens_in_char)
                 count_types = len(len_types_in_char)
@@ -414,6 +462,7 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
 
                     sttr = sum(ttrs) / len(ttrs)
 
+                texts_stats_file.append(readability_statistics)
                 texts_stats_file.append(len_paras_in_sentence)
                 texts_stats_file.append(len_paras_in_token)
                 texts_stats_file.append(len_sentences)
@@ -426,8 +475,11 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                 texts_stats_file.append(sttr)
 
                 self.texts_stats_files.append(texts_stats_file)
-        except Exception as e:
-            self.error_msg = repr(e)
+
+            if len(files) == 1:
+                self.texts_stats_files *= 2
+        except Exception:
+            self.error_msg = traceback.format_exc()
 
 class Wl_Worker_Overview_Table(Wl_Worker_Overview):
     def run(self):
@@ -459,24 +511,25 @@ def generate_table(main, table):
                     table.insert_col(table.find_col(main.tr('Total')), file['name'],
                                      is_breakdown = True)
 
-                count_paras_total = len(texts_stats_files[-1][0])
-                count_sentences_total = len(texts_stats_files[-1][2])
-                count_tokens_total = len(texts_stats_files[-1][4])
-                count_types_total = len(texts_stats_files[-1][6])
-                count_syls_total = len(texts_stats_files[-1][7])
-                count_chars_total = sum(texts_stats_files[-1][4])
+                count_paras_total = len(texts_stats_files[-1][1])
+                count_sentences_total = len(texts_stats_files[-1][3])
+                count_tokens_total = len(texts_stats_files[-1][5])
+                count_types_total = len(texts_stats_files[-1][7])
+                count_syls_total = len(texts_stats_files[-1][8])
+                count_chars_total = sum(texts_stats_files[-1][5])
 
                 for i, stats in enumerate(texts_stats_files):
-                    len_paras_in_sentence = stats[0]
-                    len_paras_in_token = stats[1]
-                    len_sentences = stats[2]
-                    len_tokens_in_syl = stats[3]
-                    len_tokens_in_char = stats[4]
-                    len_types_in_syl = stats[5]
-                    len_types_in_char = stats[6]
-                    len_syls = stats[7]
-                    ttr = stats[8]
-                    sttr = stats[9]
+                    readability_statistics = stats[0]
+                    len_paras_in_sentence = stats[1]
+                    len_paras_in_token = stats[2]
+                    len_sentences = stats[3]
+                    len_tokens_in_syl = stats[4]
+                    len_tokens_in_char = stats[5]
+                    len_types_in_syl = stats[6]
+                    len_types_in_char = stats[7]
+                    len_syls = stats[8]
+                    ttr = stats[9]
+                    sttr = stats[10]
 
                     count_paras = len(len_paras_in_sentence)
                     count_sentences = len(len_sentences)
@@ -485,116 +538,89 @@ def generate_table(main, table):
                     count_syls = len(len_syls)
                     count_chars = sum(len_tokens_in_char)
 
+                    # Readibility
+                    for j, statistic in enumerate(readability_statistics):
+                        if statistic not in [wl_measures_readability.TEXT_TOO_SHORT,
+                                             wl_measures_readability.NO_SUPPORT]:
+                            table.set_item_num(j, i, statistic)
+                        else:
+                            table.set_item_error(j, i, statistic)
+
                     # Count of Paragraphs
-                    table.set_item_num(0, i, count_paras)
-                    table.set_item_num(1, i, count_paras, count_paras_total)
+                    table.set_item_num(12, i, count_paras)
+                    table.set_item_num(13, i, count_paras, count_paras_total)
 
                     # Count of Sentences
-                    table.set_item_num(2, i, count_sentences)
-                    table.set_item_num(3, i, count_sentences, count_sentences_total)
+                    table.set_item_num(14, i, count_sentences)
+                    table.set_item_num(15, i, count_sentences, count_sentences_total)
 
                     # Count of Tokens
-                    table.set_item_num(4, i, count_tokens)
-                    table.set_item_num(5, i, count_tokens, count_tokens_total)
+                    table.set_item_num(16, i, count_tokens)
+                    table.set_item_num(17, i, count_tokens, count_tokens_total)
 
                     # Count of Types
-                    table.set_item_num(6, i, count_types)
-                    table.set_item_num(7, i, count_types, count_types_total)
+                    table.set_item_num(18, i, count_types)
+                    table.set_item_num(19, i, count_types, count_types_total)
 
                     # Count of Syllables
                     if count_syls:
-                        table.set_item_num(8, i, count_syls)
-                        table.set_item_num(9, i, count_syls, count_syls_total)
+                        table.set_item_num(20, i, count_syls)
+                        table.set_item_num(21, i, count_syls, count_syls_total)
                     else:
-                        table.set_item_no_support(8, i)
-                        table.set_item_no_support(9, i)
+                        table.set_item_error(20, i, text = 'No Support')
+                        table.set_item_error(21, i, text = 'No Support')
 
                     # Count of Characters
-                    table.set_item_num(10, i, count_chars)
-                    table.set_item_num(11, i, count_chars, count_chars_total)
+                    table.set_item_num(22, i, count_chars)
+                    table.set_item_num(23, i, count_chars, count_chars_total)
 
                     # Type-Token Ratio
-                    table.set_item_num(12, i, ttr)
+                    table.set_item_num(24, i, ttr)
                     # Type-Token Ratio (Standardized)
-                    table.set_item_num(13, i, sttr)
+                    table.set_item_num(25, i, sttr)
 
                     # Paragraph Length
-                    table.set_item_num(14, i, numpy.mean(len_paras_in_sentence))
-                    table.set_item_num(15, i, numpy.std(len_paras_in_sentence))
-                    table.set_item_num(16, i, numpy.mean(len_paras_in_token))
-                    table.set_item_num(17, i, numpy.std(len_paras_in_token))
+                    table.set_item_num(26, i, numpy.mean(len_paras_in_sentence))
+                    table.set_item_num(27, i, numpy.std(len_paras_in_sentence))
+                    table.set_item_num(28, i, numpy.mean(len_paras_in_token))
+                    table.set_item_num(29, i, numpy.std(len_paras_in_token))
 
                     # Sentence Length
-                    table.set_item_num(18, i, numpy.mean(len_sentences))
-                    table.set_item_num(19, i, numpy.std(len_sentences))
+                    table.set_item_num(30, i, numpy.mean(len_sentences))
+                    table.set_item_num(31, i, numpy.std(len_sentences))
 
                     # Token Length
                     if count_syls:
-                        table.set_item_num(20, i, numpy.mean(len_tokens_in_syl))
-                        table.set_item_num(21, i, numpy.std(len_tokens_in_syl))
+                        table.set_item_num(32, i, numpy.mean(len_tokens_in_syl))
+                        table.set_item_num(33, i, numpy.std(len_tokens_in_syl))
                     else:
-                        table.set_item_no_support(20, i)
-                        table.set_item_no_support(21, i)
+                        table.set_item_error(32, i, text = 'No Support')
+                        table.set_item_error(33, i, text = 'No Support')
 
-                    table.set_item_num(22, i, numpy.mean(len_tokens_in_char))
-                    table.set_item_num(23, i, numpy.std(len_tokens_in_char))
+                    table.set_item_num(34, i, numpy.mean(len_tokens_in_char))
+                    table.set_item_num(35, i, numpy.std(len_tokens_in_char))
 
                     # Type Length
                     if count_syls:
-                        table.set_item_num(24, i, numpy.mean(len_types_in_syl))
-                        table.set_item_num(25, i, numpy.std(len_types_in_syl))
+                        table.set_item_num(36, i, numpy.mean(len_types_in_syl))
+                        table.set_item_num(37, i, numpy.std(len_types_in_syl))
                     else:
-                        table.set_item_no_support(24, i)
-                        table.set_item_no_support(25, i)
+                        table.set_item_error(36, i, text = 'No Support')
+                        table.set_item_error(37, i, text = 'No Support')
 
-                    table.set_item_num(26, i, numpy.mean(len_types_in_char))
-                    table.set_item_num(27, i, numpy.std(len_types_in_char))
+                    table.set_item_num(38, i, numpy.mean(len_types_in_char))
+                    table.set_item_num(39, i, numpy.std(len_types_in_char))
 
                     # Syllable Length
                     if count_syls:
-                        table.set_item_num(28, i, numpy.mean(len_syls))
-                        table.set_item_num(29, i, numpy.std(len_syls))
+                        table.set_item_num(40, i, numpy.mean(len_syls))
+                        table.set_item_num(41, i, numpy.std(len_syls))
                     else:
-                        table.set_item_no_support(28, i)
-                        table.set_item_no_support(29, i)
+                        table.set_item_error(40, i, text = 'No Support')
+                        table.set_item_error(41, i, text = 'No Support')
 
                     count_tokens_lens.append(collections.Counter(len_tokens_in_char))
                     count_sentences_lens.append(collections.Counter(len_sentences))
-
-                # Count of n-length Tokens
-                if any(count_tokens_lens):
-                    count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
-                    count_tokens_lens_total = {
-                        len_token: count_tokens_files[-1]
-                        for len_token, count_tokens_files in count_tokens_lens_files.items()
-                    }
-                    count_tokens_lens = sorted(count_tokens_lens_files.keys())
-
-                    header_labels = []
-                    
-                    for count_tokens_len in count_tokens_lens:
-                        header_labels.append([main.tr(f'Count of {count_tokens_len}-Length Tokens'),
-                                              True, False, False, True])
-                        header_labels.append([main.tr(f'Count of {count_tokens_len}-Length Tokens %'),
-                                              False, False, True, True])
-
-                    table.append_rows(header_labels)
-
-                    for i, count_tokens_len in enumerate(reversed(count_tokens_lens)):
-                        counts = count_tokens_lens_files[count_tokens_len]
-
-                        for j, count in enumerate(counts):
-                            table.set_item_num(
-                                row = table.rowCount() - 2 - i * 2,
-                                col = j,
-                                val = count
-                            )
-                            table.set_item_num(
-                                row = table.rowCount() - 1 - i * 2,
-                                col = j,
-                                val = count,
-                                total = count_tokens_lens_total[count_tokens_len]
-                            )
 
                 # Count of n-length Sentences
                 if any(count_sentences_lens):
@@ -629,6 +655,41 @@ def generate_table(main, table):
                                 col = j,
                                 val = count,
                                 total = count_sentences_lens_total[count_sentences_len]
+                            )
+
+                # Count of n-length Tokens
+                if any(count_tokens_lens):
+                    count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
+                    count_tokens_lens_total = {
+                        len_token: count_tokens_files[-1]
+                        for len_token, count_tokens_files in count_tokens_lens_files.items()
+                    }
+                    count_tokens_lens = sorted(count_tokens_lens_files.keys())
+
+                    header_labels = []
+                    
+                    for count_tokens_len in count_tokens_lens:
+                        header_labels.append([main.tr(f'Count of {count_tokens_len}-Length Tokens'),
+                                              True, False, False, True])
+                        header_labels.append([main.tr(f'Count of {count_tokens_len}-Length Tokens %'),
+                                              False, False, True, True])
+
+                    table.append_rows(header_labels)
+
+                    for i, count_tokens_len in enumerate(reversed(count_tokens_lens)):
+                        counts = count_tokens_lens_files[count_tokens_len]
+
+                        for j, count in enumerate(counts):
+                            table.set_item_num(
+                                row = table.rowCount() - 2 - i * 2,
+                                col = j,
+                                val = count
+                            )
+                            table.set_item_num(
+                                row = table.rowCount() - 1 - i * 2,
+                                col = j,
+                                val = count,
+                                total = count_tokens_lens_total[count_tokens_len]
                             )
                     
                 table.setUpdatesEnabled(True)

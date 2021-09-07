@@ -2547,14 +2547,24 @@ def init_settings_global(main):
         },
 
         'measures_dispersion': {
-            main.tr("Juilland's D"): {
-                'col': main.tr("Juilland's D"),
-                'func': wl_measures_dispersion.juillands_d
-            },
-
             main.tr("Carroll's D₂"): {
                 'col': main.tr("Carroll's D₂"),
                 'func': wl_measures_dispersion.carrolls_d2
+            },
+
+            main.tr("Gries's DP"): {
+                'col': main.tr("Gries's DP"),
+                'func': wl_measures_dispersion.griess_dp
+            },
+
+            main.tr("Gries's DPnorm"): {
+                'col': main.tr("Gries's DPnorm"),
+                'func': wl_measures_dispersion.griess_dp_norm
+            },
+
+            main.tr("Juilland's D"): {
+                'col': main.tr("Juilland's D"),
+                'func': wl_measures_dispersion.juillands_d
             },
 
             main.tr("Lyne's D₃"): {
@@ -2570,33 +2580,13 @@ def init_settings_global(main):
             main.tr("Zhang's Distributional Consistency"): {
                 'col': main.tr("Zhang's DC"),
                 'func': wl_measures_dispersion.zhangs_distributional_consistency
-            },
-
-            main.tr("Gries's DP"): {
-                'col': main.tr("Gries's DP"),
-                'func': wl_measures_dispersion.griess_dp
-            },
-
-            main.tr("Gries's DPnorm"): {
-                'col': main.tr("Gries's DPnorm"),
-                'func': wl_measures_dispersion.griess_dp_norm
             }
         },
 
         'measures_adjusted_freq': {
-            main.tr("Juilland's U"): {
-                'col': main.tr("Juilland's U"),
-                'func': wl_measures_adjusted_freq.juillands_u
-            },
-
             main.tr("Carroll's Um"): {
                 'col': main.tr("Carroll's Um"),
                 'func': wl_measures_adjusted_freq.carrolls_um
-            },
-
-            main.tr("Rosengren's KF"): {
-                'col': main.tr("Rosengren's KF"),
-                'func': wl_measures_adjusted_freq.rosengrens_kf
             },
 
             main.tr("Engwall's FM"): {
@@ -2604,24 +2594,24 @@ def init_settings_global(main):
                 'func': wl_measures_adjusted_freq.engwalls_fm
             },
 
+            main.tr("Juilland's U"): {
+                'col': main.tr("Juilland's U"),
+                'func': wl_measures_adjusted_freq.juillands_u
+            },
+
             main.tr("Kromer's UR"): {
                 'col': main.tr("Kromer's UR"),
                 'func': wl_measures_adjusted_freq.kromers_ur
+            },
+
+            main.tr("Rosengren's KF"): {
+                'col': main.tr("Rosengren's KF"),
+                'func': wl_measures_adjusted_freq.rosengrens_kf
             }
         },
 
         'tests_significance': {
             'collocation': {
-                main.tr('z-score'): {
-                    'cols': [
-                        main.tr('z-score'),
-                        main.tr('p-value'),
-                        None
-                    ],
-
-                    'func': wl_measures_statistical_significance.z_score
-                },
-
                 main.tr("Berry-Rogghe's z-score"): {
                     'cols': [
                         main.tr("Berry-Rogghe's z-score"),
@@ -2632,24 +2622,14 @@ def init_settings_global(main):
                     'func': wl_measures_statistical_significance.berry_rogghes_z_score
                 },
 
-                main.tr("Student's t-test (One-sample)"): {
+                main.tr("Fisher's Exact Test"): {
                     'cols': [
-                        main.tr('t-statistic'),
+                        None,
                         main.tr('p-value'),
                         None
                     ],
 
-                    'func': wl_measures_statistical_significance.students_t_test_1_sample
-                },
-
-                main.tr("Pearson's Chi-squared Test"): {
-                    'cols': [
-                        main.tr('χ2'),
-                        main.tr('p-value'),
-                        None
-                    ],
-
-                    'func': wl_measures_statistical_significance.pearsons_chi_squared_test
+                    'func': wl_measures_statistical_significance.fishers_exact_test
                 },
 
                 main.tr('Log-likelihood Ratio Test'): {
@@ -2662,28 +2642,6 @@ def init_settings_global(main):
                     'func': wl_measures_statistical_significance.log_likehood_ratio_test
                 },
 
-                main.tr("Fisher's Exact Test"): {
-                    'cols': [
-                        None,
-                        main.tr('p-value'),
-                        None
-                    ],
-
-                    'func': wl_measures_statistical_significance.fishers_exact_test
-                }
-            },
-
-            'keyword': {
-                main.tr("Student's t-test (Two-sample)"): {
-                    'cols': [
-                        main.tr('t-statistic'),
-                        main.tr('p-value'),
-                        main.tr('Bayes Factor')
-                    ],
-
-                    'func': wl_measures_statistical_significance.students_t_test_2_sample
-                },
-
                 main.tr("Pearson's Chi-squared Test"): {
                     'cols': [
                         main.tr('χ2'),
@@ -2694,7 +2652,28 @@ def init_settings_global(main):
                     'func': wl_measures_statistical_significance.pearsons_chi_squared_test
                 },
 
+                main.tr("Student's t-test (1-sample)"): {
+                    'cols': [
+                        main.tr('t-statistic'),
+                        main.tr('p-value'),
+                        None
+                    ],
 
+                    'func': wl_measures_statistical_significance.students_t_test_1_sample
+                },
+
+                main.tr('z-score'): {
+                    'cols': [
+                        main.tr('z-score'),
+                        main.tr('p-value'),
+                        None
+                    ],
+
+                    'func': wl_measures_statistical_significance.z_score
+                }
+            },
+
+            'keyword': {
                 main.tr("Fisher's Exact Test"): {
                     'cols': [
                         None,
@@ -2723,60 +2702,40 @@ def init_settings_global(main):
                     ],
 
                     'func': wl_measures_statistical_significance.mann_whitney_u_test
+                },
+
+                main.tr("Pearson's Chi-squared Test"): {
+                    'cols': [
+                        main.tr('χ2'),
+                        main.tr('p-value'),
+                        None
+                    ],
+
+                    'func': wl_measures_statistical_significance.pearsons_chi_squared_test
+                },
+
+                main.tr("Student's t-test (2-sample)"): {
+                    'cols': [
+                        main.tr('t-statistic'),
+                        main.tr('p-value'),
+                        main.tr('Bayes Factor')
+                    ],
+
+                    'func': wl_measures_statistical_significance.students_t_test_2_sample
                 }
             }
         },
 
         'measures_effect_size': {
             'collocation': {
-                main.tr('Pointwise Mutual Information'): {
-                    'col': main.tr('PMI'),
-                    'func': wl_measures_effect_size.pmi
-                },
-
-                main.tr('Mutual Dependency'): {
-                    'col': main.tr('MD'),
-                    'func': wl_measures_effect_size.md
-                },
-
-                main.tr('Log-Frequency Biased MD'): {
-                    'col': main.tr('LFMD'),
-                    'func': wl_measures_effect_size.lfmd
-                },
-
                 main.tr('Cubic Association Ratio'): {
                     'col': main.tr('IM³'),
                     'func': wl_measures_effect_size.im3
                 },
 
-                main.tr('MI.log-f'): {
-                    'col': main.tr('MI.log-f'),
-                    'func': wl_measures_effect_size.mi_log_f
-                },
-
-                main.tr('Mutual Information'): {
-                    'col': main.tr('MI'),
-                    'func': wl_measures_effect_size.mi
-                },
-
-                main.tr('Squared Phi Coefficient'): {
-                    'col': main.tr('φ2'),
-                    'func': wl_measures_effect_size.squared_phi_coeff
-                },
-
-                main.tr('Dice’s Coefficient'): {
-                    'col': main.tr('Dice’s Coefficient'),
+                main.tr("Dice's Coefficient"): {
+                    'col': main.tr("Dice's Coefficient"),
                     'func': wl_measures_effect_size.dices_coeff
-                },
-
-                main.tr('logDice'): {
-                    'col': main.tr('logDice'),
-                    'func': wl_measures_effect_size.log_dice
-                },
-
-                main.tr('Mutual Expectation'): {
-                    'col': main.tr('ME'),
-                    'func': wl_measures_effect_size.me
                 },
 
                 main.tr('Jaccard Index'): {
@@ -2784,31 +2743,61 @@ def init_settings_global(main):
                     'func': wl_measures_effect_size.jaccard_index
                 },
 
+                main.tr('Log-Frequency Biased MD'): {
+                    'col': main.tr('LFMD'),
+                    'func': wl_measures_effect_size.lfmd
+                },
+
+                main.tr('logDice'): {
+                    'col': main.tr('logDice'),
+                    'func': wl_measures_effect_size.log_dice
+                },
+
+                main.tr('MI.log-f'): {
+                    'col': main.tr('MI.log-f'),
+                    'func': wl_measures_effect_size.mi_log_f
+                },
+
                 main.tr('Minimum Sensitivity'): {
                     'col': main.tr('Minimum Sensitivity'),
                     'func': wl_measures_effect_size.min_sensitivity
                 },
 
+                main.tr('Mutual Dependency'): {
+                    'col': main.tr('MD'),
+                    'func': wl_measures_effect_size.md
+                },
+
+                main.tr('Mutual Expectation'): {
+                    'col': main.tr('ME'),
+                    'func': wl_measures_effect_size.me
+                },
+                
+                main.tr('Mutual Information'): {
+                    'col': main.tr('MI'),
+                    'func': wl_measures_effect_size.mi
+                },
+
+                main.tr('Pointwise Mutual Information'): {
+                    'col': main.tr('PMI'),
+                    'func': wl_measures_effect_size.pmi
+                },
+
                 main.tr('Poisson Collocation Measure'): {
                     'col': main.tr('Poisson Collocation Measure'),
                     'func': wl_measures_effect_size.poisson_collocation_measure
+                },
+
+                main.tr('Squared Phi Coefficient'): {
+                    'col': main.tr('φ2'),
+                    'func': wl_measures_effect_size.squared_phi_coeff
                 }
             },
 
             'keyword': {
-                main.tr('Kilgarriff’s Ratio'): {
-                    'col': main.tr('Kilgarriff’s Ratio'),
-                    'func': wl_measures_effect_size.kilgarriffs_ratio
-                },
-
-                main.tr('Odds Ratio'): {
-                    'col': main.tr('Odds Ratio'),
-                    'func': wl_measures_effect_size.odds_ratio
-                },
-
-                main.tr('Log Ratio'): {
-                    'col': main.tr('Log Ratio'),
-                    'func': wl_measures_effect_size.log_ratio
+                main.tr('%DIFF'): {
+                    'col': main.tr('%DIFF'),
+                    'func': wl_measures_effect_size.pct_diff
                 },
 
                 main.tr('Difference Coefficient'): {
@@ -2816,9 +2805,19 @@ def init_settings_global(main):
                     'func': wl_measures_effect_size.diff_coeff
                 },
 
-                main.tr('%DIFF'): {
-                    'col': main.tr('%DIFF'),
-                    'func': wl_measures_effect_size.pct_diff
+                main.tr("Kilgarriff's Ratio"): {
+                    'col': main.tr("Kilgarriff's Ratio"),
+                    'func': wl_measures_effect_size.kilgarriffs_ratio
+                },
+
+                main.tr('Log Ratio'): {
+                    'col': main.tr('Log Ratio'),
+                    'func': wl_measures_effect_size.log_ratio
+                },
+
+                main.tr('Odds Ratio'): {
+                    'col': main.tr('Odds Ratio'),
+                    'func': wl_measures_effect_size.odds_ratio
                 }
             }
         },
