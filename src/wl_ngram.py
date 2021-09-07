@@ -14,6 +14,7 @@ import copy
 import itertools
 import re
 import time
+import traceback
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -612,7 +613,7 @@ class Wl_Worker_Ngram(wl_threading.Wl_Worker):
     def run(self):
         try:
             texts = []
-
+            
             settings = self.main.settings_custom['ngram']
 
             ngram_size_min = settings['generation_settings']['ngram_size_min']
@@ -847,8 +848,8 @@ class Wl_Worker_Ngram(wl_threading.Wl_Worker):
             if len(files) == 1:
                 self.ngrams_freq_files *= 2
                 self.ngrams_stats_files *= 2
-        except Exception as e:
-            self.error_msg = repr(e)
+        except Exception:
+            self.error_msg = traceback.format_exc()
 
 class Wl_Worker_Ngram_Table(Wl_Worker_Ngram):
     def run(self):
@@ -887,7 +888,7 @@ def generate_table(main, table):
             if ngrams_freq_files:
                 table.clear_table()
                 
-                table.settings = main.settings_custom
+                table.settings = copy.deepcopy(main.settings_custom)
 
                 text_measure_dispersion = settings['generation_settings']['measure_dispersion']
                 text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
