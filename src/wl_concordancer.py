@@ -13,6 +13,7 @@ import copy
 import random
 import re
 import time
+import traceback
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -815,11 +816,11 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             # File
                             concordance_line.append(file['name'])
                             # Sentiment
-                            if text.lang == 'eng':
+                            if text.lang.startswith('eng'):
                                 sentiment = textblob.TextBlob(context_left_text + node_text + context_right_text).sentiment.polarity
                                 concordance_line.append(f"{sentiment:.{self.main.settings_custom['data']['precision_decimal']}}")
                             else:
-                                concordance_line.append('N/A')
+                                concordance_line.append(self.tr('No Support'))
 
                             concordance_lines.append(concordance_line)
 
@@ -861,8 +862,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                     concordance_lines = [line
                                          for line in concordance_lines
                                          if line in concordance_lines_sampled]
-        except Exception as e:
-            error_msg = repr(e)
+        except Exception:
+            error_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
 
@@ -883,12 +884,12 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
             search_terms_files = []
             search_terms_total = set()
             search_terms_labels = set()
-
+            
             settings = self.main.settings_custom['concordancer']
             files = sorted(self.main.wl_files.get_selected_files(), key = lambda item: item['name'])
 
             for file in files:
-                text = wl_text.Wl_Text(self.main, file)
+                text = copy.deepcopy(file['text'])
 
                 wl_token_processing.wl_process_tokens_concordancer(
                     self.main, text,
@@ -1009,8 +1010,8 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                     labels.append(list(range(len_search_terms_total)))
                     labels.append(search_terms_labels)
                     labels.append(len_search_terms_total)
-        except Exception as e:
-            error_msg = repr(e)
+        except Exception:
+            error_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering figure...'))
 
@@ -1025,7 +1026,7 @@ def generate_table(main, table):
             node_color = settings['sort_results']['highlight_colors'][0]
 
             if concordance_lines:
-                table.settings = main.settings_custom
+                table.settings = copy.deepcopy(main.settings_custom)
 
                 table.blockSignals(True)
                 table.setUpdatesEnabled(False)

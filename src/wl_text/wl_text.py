@@ -45,8 +45,8 @@ class Wl_Text():
         self.tags = []
 
         file_ext = os.path.splitext(file['path'])[1].lower()
-        re_tags = re.compile(wl_matching.get_re_tags(main))
-        re_tags_start = re.compile(fr'\s*({wl_matching.get_re_tags(main)})')
+        re_tags = re.compile(wl_matching.get_re_tags(self.main))
+        re_tags_start = re.compile(fr'\s*({wl_matching.get_re_tags(self.main)})')
 
         len_sections = self.main.settings_custom['files']['misc']['read_files_in_chunks']
         
@@ -61,7 +61,7 @@ class Wl_Text():
                 if text:
                     # Untokenized & Untagged
                     if self.tokenized == 'No' and self.tagged == 'No':
-                        tokens = wl_word_tokenization.wl_word_tokenize(main, text, lang = self.lang)
+                        tokens = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
 
                         self.tokens_multilevel.extend(tokens)
                     # Untokenized & Tagged
@@ -69,7 +69,7 @@ class Wl_Text():
                         # Replace all tags with a whitespace to ensure no words run together
                         text_no_tags = re.sub(re_tags, ' ', text)
 
-                        tokens = wl_word_tokenization.wl_word_tokenize(main, text_no_tags, lang = self.lang)
+                        tokens = wl_word_tokenization.wl_word_tokenize(self.main, text_no_tags, lang = self.lang)
 
                         self.tokens_multilevel.extend(tokens)
 
@@ -103,7 +103,7 @@ class Wl_Text():
                             self.tokens_multilevel.append([])
 
                             if para:
-                                for sentence in wl_sentence_tokenization.wl_sentence_split(main, para):
+                                for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, para):
                                     self.tokens_multilevel[-1].append(sentence.split())
                     # Tokenized & Tagged
                     elif self.tokenized == 'Yes' and self.tagged == 'Yes':
@@ -117,7 +117,7 @@ class Wl_Text():
                                 # Replace all tags with a whitespace to ensure no words run together
                                 text_no_tags = re.sub(re_tags, ' ', para)
 
-                                for sentence in wl_sentence_tokenization.wl_sentence_split(main, text_no_tags):
+                                for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, text_no_tags):
                                     self.tokens_multilevel[-1].append(sentence.split())
 
                                 # Check if the first token in the text is a tag
@@ -179,7 +179,7 @@ class Wl_Text():
             # XML tags unfound or unspecified
             else:
                 text = soup.get_text()
-                tokens = wl_word_tokenization.wl_word_tokenize(main, text, lang = self.lang)
+                tokens = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
 
                 self.tokens_multilevel.extend(tokens)
 
@@ -197,6 +197,9 @@ class Wl_Text():
         
         # Remove whitespace around all tags
         self.tags = [[tag.strip() for tag in tags] for tags in self.tags]
+
+        # Remove Wl_Main object from the text since it cannot be pickled
+        del self.main
 
     def tokenize_text(self, text):
         text = text.strip()
