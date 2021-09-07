@@ -9,24 +9,27 @@
 # All other rights reserved.
 #
 
-# At least one letter and no numerals
-def is_token_word(token):
-    return (any([char for char in token if char.isalnum()]) and
-            all([char for char in token if not char.isnumeric()]))
+# At least one letter
+def is_word_alphabetic(token):
+    return any([char for char in token if char.isalpha()])
 
-def is_token_word_lowercase(token):
+# At least one letter or numeral
+def is_word_alphanumeric(token):
+    return any([char for char in token if char.isalnum()])
+
+def is_word_lowercase(token):
     return token.islower()
 
-def is_token_word_uppercase(token):
+def is_word_uppercase(token):
     return token.isupper()
 
-def is_token_word_title_case(token):
+def is_word_title_case(token):
     return token.istitle()
 
 # At least one numeral
-def is_token_num(token):
+def is_num(token):
     return any(map(str.isnumeric, token))
 
 # All punctuation marks
-def is_token_punc(token):
+def is_punc(token):
     return token and not any(map(str.isalnum, token))

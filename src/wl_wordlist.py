@@ -13,6 +13,7 @@ import collections
 import copy
 import re
 import time
+import traceback
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -373,7 +374,7 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
     def run(self):
         try:
             texts = []
-
+            
             settings = self.main.settings_custom['wordlist']
             files = self.main.wl_files.get_selected_files()
 
@@ -443,8 +444,8 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
             if len(files) == 1:
                 self.tokens_freq_files *= 2
                 self.tokens_stats_files *= 2
-        except Exception as e:
-            self.error_msg = repr(e)
+        except Exception:
+            self.error_msg = traceback.format_exc()
 
 class Wl_Worker_Wordlist_Table(Wl_Worker_Wordlist):
     def run(self):

@@ -18,30 +18,30 @@ from wl_measures import wl_measures_dispersion
 
 main = wl_test_init.Wl_Test_Main()
 
-# Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
-def test_juillands_d():
-    assert round(wl_measures_dispersion.juillands_d([0, 4, 3, 2, 1]), 4) == 0.6464
-
-# Carroll, John B. "An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index." Computer Studies in the Humanities and Verbal Behaviour, vol.3, no. 2, 1970, pp. 61-65.
+# Reference: Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
 def test_carrolls_d2():
     assert round(wl_measures_dispersion.carrolls_d2([2, 1, 1, 1, 0]), 4) == 0.8277
 
-# Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 408.
-def test_lynes_d3():
-    assert round(wl_measures_dispersion.lynes_d3([1, 2, 3, 4, 5]), 3) == 0.944
-
-# Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 407.
-def test_rosengrens_s():
-    assert round(wl_measures_dispersion.rosengrens_s([1, 2, 3, 4, 5]), 3) == 0.937
-
-# Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 408.
-def test_zhangs_distributional_consistency():
-    assert round(wl_measures_dispersion.zhangs_distributional_consistency([1, 2, 3, 4, 5]), 3) == 0.937
-
-# Gries, Stefan Th. "Dispersions and Adjusted Frequencies in Corpora." International Journal of Corpus Linguistics, vol. 13, no. 4, 2008, p. 416.
+# Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 416)
 def test_griess_dp():
     assert round(wl_measures_dispersion.griess_dp([3, 3, 3]), 0) == 0
 
-# Lijffijt, Jefrey, and Stefan Th. Gries. "Correction to Stefan Th. Gries’ “Dispersions and adjusted frequencies in corpora”" International Journal of Corpus Linguistics, vol. 17, no. 1, 2012, pp. 148.
+# Reference: Lijffijt, J., & Gries, S. T. (2012). Correction to Stefan Th. Gries’ “dispersions and adjusted frequencies in corpora” International Journal of Corpus Linguistics, 17(1), 147–149. https://doi.org/10.1075/ijcl.17.1.08lij (p. 148)
 def test_griess_dp_norm():
     assert round(wl_measures_dispersion.griess_dp_norm([2, 1, 0]), 1) == 0.5
+
+# Reference: Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
+def test_juillands_d():
+    assert round(wl_measures_dispersion.juillands_d([0, 4, 3, 2, 1]), 4) == 0.6464
+
+# Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 408)
+def test_lynes_d3():
+    assert round(wl_measures_dispersion.lynes_d3([1, 2, 3, 4, 5]), 3) == 0.944
+
+# Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 407)
+def test_rosengrens_s():
+    assert round(wl_measures_dispersion.rosengrens_s([1, 2, 3, 4, 5]), 3) == 0.937
+
+# Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 408)
+def test_zhangs_distributional_consistency():
+    assert round(wl_measures_dispersion.zhangs_distributional_consistency([1, 2, 3, 4, 5]), 3) == 0.937
