@@ -28,8 +28,9 @@
     - 4.2 [Supported File Types](#doc-eng-4-2)
     - 4.3 [Supported File Encodings](#doc-eng-4-3)
     - 4.4 [Supported Measures](#doc-eng-4-4)
-        - 4.4.1 [Measures of Dispersion & Adjusted Frequency](#doc-eng-4-4-1)
-        - 4.4.2 [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-2)
+        - 4.4.1 [Measures of Readability](#doc-eng-4-4-1)
+        - 4.4.2 [Measures of Dispersion & Adjusted Frequency](#doc-eng-4-4-2)
+        - 4.4.3 [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3)
 - 5 [References](#doc-eng-5)
 
 <span id="doc-eng-1"></span>
@@ -52,129 +53,179 @@ The main window of *Wordless* is divided into several sections:
 ## 2 File Area [[Back to Contents]](#doc-eng)
 In most cases, the first thing to do in *Wordless* is open and select your files to be processed via **Menu → File** or by clicking the buttons residing under the *File Table*.
 
-Files are selected by default after being added to the *File Table*. **Only selected files will be processed by Wordless**. You can drag and drop files around the *File Table* to change their orders, which will be reflected in the results produced by Wordless.
+Files are loaded, cached and selected automatically after being added to the *File Table*. **Only selected files will be processed by *Wordless***. You can drag and drop files around the *File Table* to change their orders, which is reflected in the results.
 
-By default, Wordless will try to detect the language, text type and encoding of the file, you should check and make sure that the settings of each and every file is correct. If you do not want Wordless to detect the settings for you and prefer setting them manually, you can change the settings in **Auto-detection Settings** in the *Settings Area*.
+By default, *Wordless* tries to detect the language and encoding of the file, you should double check and make sure that the settings of each and every file are correct. If you do not want *Wordless* to detect the settings for you and prefer changing them manually, you can modify the settings via **Auto-detection Settings** in the *Settings Area*.
 
-- **2.1 Add File(s)**<br>
+If you have changed the settings of any file, do not forget to reload the file by clicking **Reload Selected** or **Reload All** so that the changes made can be reflected in the results.
+
+- **2.1 Open File(s)**<br>
     Add one single file or multiple files to the *File Table*.
 
     \* You can use the **Ctrl** key (**Command** key on macOS) and/or the **Shift** key to select multiple files.
 
-- **2.2 Add Folder**<br>
+- **2.2 Open Folder**<br>
     Add all files in the folder to the *File Table*.
 
-    By default, all files in subfolders (and subfolders of subfolders, and so on) will also be added to the *File Table*. If you do not want to add files in subfolders to the *File Table*, uncheck **Folder Settings → Subfolders** in the *Settings Area*.
+    By default, all files in the chosen folder and the subfolders of the chosen folder (and subfolders of subfolders, and so on) are added to the *File Table*. If you do not want to add files in subfolders to the *File Table*, you can modify the settings via **Folder Settings → Subfolders** in the *Settings Area*.
 
-- **2.3 Reopen Closed File(s)**<br>
+- **2.3 Reopen Closed Files**<br>
     Add file(s) that are closed the last time back to the *File Table*.
 
     \* The history of all closed files will be erased upon exit of *Wordless*.
 
-- **2.4 Select All**<br>
+- **2.4 Reload Selected**<br>
+    Reload files that are currently selected in the *File Table*
+
+- **2.5 Reload All**<br>
+    Reload all files in the *File Table*.
+
+- **2.6 Select All**<br>
     Select all files in the *File Table*.
 
-- **2.5 Invert Selection**<br>
-    Select all files that are not currently selected and deselect all currently selected files in the *File Table*.
-
-- **2.6 Deselect All**<br>
+- **2.7 Deselect All**<br>
     Deselect all files in the *File Table*.
 
-- **2.7 Close Selected**<br>
-    Remove all currently selected files in the *File Table*.
+- **2.8 Invert Selection**<br>
+    Select files that are not currently selected and deselect files that are currently selected in the *File Table*.
 
-- **2.8 Close All**<br>
-    Remove all files in the *File Table*.
+- **2.9 Close Selected**<br>
+    Remove files that are currently selected from the *File Table*.
+
+- **2.10 Close All**<br>
+    Remove all files from the *File Table*.
 
 <span id="doc-eng-3"></span>
 ## 3 Work Area [[Back to Contents]](#doc-eng)
 
 <span id="doc-eng-3-1"></span>
 ### 3.1 Overview [[Back to Contents]](#doc-eng)
-In *Overview*, you can check/compare the language features of different files.
+In *Overview*, you can check and compare general linguistic features of different files.
 
-- **3.1.1 Count of Paragraphs**<br>
-    Number of paragraphs in each file. Each line in the file will be counted as one paragraph. Blank lines and lines containing only spaces, tabs and other invisible characters are ignored.
+- **3.1.1 Automated Readability Index ~ Write Score**<br>
+    Readability statistics of each file calculated according to the different readability tests used. See [Measures of Readability](#doc-eng-4-4-1) for more details.
 
-- **3.1.2 Count of Sentences**<br>
-    Number of sentences in each file. *Wordless* will automatically apply the built-in sentence tokenizer according to the language of each file in order to calculate the number of sentences in each file. You can change the sentence tokenizer settings via **Menu → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
+- **3.1.2 Count of Paragraphs**<br>
+    The number of paragraphs in each file. Each line in the file is counted as one paragraph. Blank lines and lines containing only spaces, tabs and other invisible characters are not counted.
 
-- **3.1.3 Count of Sentence Segments**<br>
-    Number of sentence segments (delimited by commas, colons, semi-colons, question marks, exclamations marks, quotes, em-dashes, etc.) in each file. *Wordless* will automatically apply the built-in sentence segment tokenizer according to the language of each file in order to calculate the number of sentence segments in each file.
+- **3.1.3 Count of Paragraphs %**<br>
+    The percentage of the number of paragraphs in each file out of the total number of paragraphs in all files.
 
-- **3.1.4 Count of Tokens**<br>
-    Number of tokens in each file. *Wordless* will automatically apply the built-in word tokenizer according to the language of each file in order to calculate the number of tokens in each file. You can change the word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
+- **3.1.4 Count of Sentences**<br>
+    The number of sentences in each file. *Wordless* automatically applies the built-in sentence tokenizer according to the language of each file to calculate the number of sentences in each file. You can modify sentence tokenizer settings via **Menu → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
+
+- **3.1.5 Count of Sentences %**<br>
+    The percentage of the number of sentences in each file out of the total number of sentences in all files.
+
+- **3.1.6 Count of Tokens**<br>
+    The number of tokens in each file. *Wordless* automatically applies the built-in word tokenizer according to the language of each file to calculate the number of tokens in each file. You can modify word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
 
     You can specify what should be counted as a "token" via **Token Settings** in the *Settings Area*
 
-- **3.1.5 Count of Types**<br>
-    Number of token types in each file.
+- **3.1.7 Count of Tokens %**<br>
+    The percentage of the number of tokens in each file out of the total number of tokens in all files.
 
-- **3.1.6 Count of Characters**<br>
-    Number of single characters in each file. Spaces, tabs and all other invisible characters are ignored.
+- **3.1.8 Count of Types**<br>
+    The number of token types in each file.
 
-- **3.1.7 Type-Token Ratio**<br>
-    Number of token types divided by number of tokens.
+- **3.1.9 Count of Types %**<br>
+    The percentage of the number of token types in each file out of the total number of token types in all files.
 
-- **3.1.8 Type-Token Ratio (Standardized)**<br>
-    Standardized type-token ratio. Each file will be divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratio will be calculated for each part. The standardized type-token ratio of each file is then averaged out over all sub-sections. You can change the number of tokens in each sub-section via **Generation Settings → Base of standardized type-token ratio**.
+- **3.1.10 Count of Syllables**<br>
+    The number of syllables in each files. *Wordless* automatically applies the built-in syllable tokenizer according to the language of each file to calculate the number of syllable in each file. You can modify syllable tokenizer settings via **Menu → Preferences → Settings → Syllable Tokenization → Syllable Tokenizer Settings**.
 
-    The last section will be discarded if the number of tokens in it is smaller than the base of standardized type-token ratio in order to prevent the result from being affected by outliers (extreme values).
+- **3.1.11 Count of Syllables %**<br>
+    The percentage of the number of syllables in each file out of the total number of syllable in all files.
 
-- **3.1.9 Paragraph Length in Sentence (Mean)**<br>
+- **3.1.12 Count of Characters**<br>
+    The number of single characters in each file. Spaces, tabs and all other invisible characters are not counted.
+
+- **3.1.13 Count of Characters %**<br>
+    The percentage of the number of characters in each file out of the total number of characters in all files.
+
+- **3.1.14 Type-Token Ratio**<br>
+    The number of token types divided by the number of tokens in each file.
+
+- **3.1.15 Type-Token Ratio (Standardized)**<br>
+    Standardized type-token ratio. Each file is divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratios are calculated for each part. The standardized type-token ratio of each file is then averaged out over all sub-sections. You can change the number of tokens in each sub-section via **Generation Settings → Base of standardized type-token ratio**.
+
+    The last section is discarded if the number of tokens in it is smaller than the base of standardized type-token ratio in order to prevent the result from being affected by outliers (extreme values).
+
+- **3.1.16 Paragraph Length in Sentences (Mean)**<br>
     The average value of paragraph length expressed as the number of sentences.
 
-- **3.1.10 Paragraph Length in Sentence (Standard Deviation)**<br>
+- **3.1.17 Paragraph Length in Sentences (Standard Deviation)**<br>
     The standard deviation of paragraph length expressed as the number of sentences.
 
-- **3.1.11 Paragraph Length in Token (Mean)**<br>
+- **3.1.18 Paragraph Length in Tokens (Mean)**<br>
     The average value of paragraph length expressed as number of tokens.
 
-- **3.1.12 Paragraph Length in Token (Standard Deviation)**<br>
+- **3.1.19 Paragraph Length in Tokens (Standard Deviation)**<br>
     The standard deviation of paragraph length expressed as number of tokens.
 
-- **3.1.13 Sentence Length in Token (Mean)**<br>
+- **3.1.20 Sentence Length in Tokens (Mean)**<br>
     The average value of sentence length expressed as number of tokens.
 
-- **3.1.14 Sentence Length in Token (Standard Deviation)**<br>
+- **3.1.21 Sentence Length in Tokens (Standard Deviation)**<br>
     The standard deviation of sentence length expressed as number of tokens.
 
-- **3.1.15 Sentence Segment Length in Token (Mean)**<br>
-    The average value of sentence segment length expressed as number of tokens.
+- **3.1.22 Token Length in Syllables (Mean)**<br>
+    The average value of token length expressed as number of syllables.
 
-- **3.1.16 Sentence Segment Length in Token (Standard Deviation)**<br>
-    The standard deviation of sentence segment length expressed as number of tokens.
+- **3.1.23 Token Length in Syllables (Standard Deviation)**<br>
+    The standard deviation of token length expressed as number of syllables.
 
-- **3.1.17 Token Length in Character (Mean)**<br>
+- **3.1.24 Token Length in Characters (Mean)**<br>
     The average value of token length expressed as number of characters.
 
-- **3.1.18 Token Length in Character (Standard Deviation)**<br>
+- **3.1.25 Token Length in Characters (Standard Deviation)**<br>
     The standard deviation of token length expressed as number of characters.
 
-- **3.1.19 Type Length in Character (Mean)**<br>
-    The average value of type length expressed as number of characters.
+- **3.1.26 Type Length in Syllables (Mean)**<br>
+    The average value of token type length expressed as number of syllables.
 
-- **3.1.20 Type Length in Character (Standard Deviation)**<br>
-    The standard deviation of type length expressed as number of characters.
+- **3.1.27 Type Length in Syllables (Standard Deviation)**<br>
+    The standard deviation of token type length expressed as number of syllables.
 
-- **3.1.21 Count of n-length Tokens**<br>
+- **3.1.28 Type Length in Characters (Mean)**<br>
+    The average value of token type length expressed as number of characters.
+
+- **3.1.29 Type Length in Characters (Standard Deviation)**<br>
+    The standard deviation of token type length expressed as number of characters.
+
+- **3.1.30 Syllable Length in Characters (Mean)**<br>
+    The average value of syllable length expressed as number of characters.
+
+- **3.1.31 Syllable Length in Characters (Standard Deviation)**<br>
+    The standard deviation of syllable length expressed as number of characters.
+
+- **3.1.32 Count of n-length Sentences**<br>
+    The number of n-length sentences, where n = 1, 2, 3, etc.
+
+- **3.1.33 Count of n-length Sentences %**<br>
+    The percentage of the number of n-length sentences in each file out of the total number of n-length sentences in all files, where n = 1, 2, 3, etc.
+
+- **3.1.34 Count of n-length Tokens**<br>
     Number of n-length tokens, where n = 1, 2, 3, etc.
 
-![Overview Table](/doc/overview/overview_table.png)
+- **3.1.35 Count of n-length Tokens %**<br>
+    The percentage of the number of n-length tokens in each file out of the total number of n-length tokens in all files, where n = 1, 2, 3, etc.
+
+![Overview - Table](/doc/overview/overview_table.png)
 
 <span id="doc-eng-3-2"></span>
 ### 3.2 Concordancer [[Back to Contents]](#doc-eng)
-In *Concordancer*, you can search for any token in different files and generate concordance lines. You can adjust the settings for the generated data via **Generation Settings**.
+In *Concordancer*, you can search for tokens in different files and generate concordance lines. You can adjust the settings for the generated results via **Generation Settings**.
 
 After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
-In addition, you can generate concordance plots for any search term. You can modify the settings for the generated figure via **Figure Settings**. By default, data in concordance plot are sorted by file. You can sort the data by search term instead via **Figure Settings → Sort Results by**.
+You can generate concordance plots for all search terms. You can modify the settings for the generated figure via **Figure Settings**. By default, data in concordance plot are sorted by file. You can sort the data by search term instead via **Figure Settings → Sort Results by**.
 
 - **3.2.1 Left**<br>
     The context before each search term, which displays 10 tokens left to the **Node** by default. You can change this behavior via **Generation Settings**.
 
 - **3.2.2 Node**<br>
-    Nodes are search terms specified in **Search Settings → Search Term**.
+    The search term(s) specified in **Search Settings → Search Term**.
 
 - **3.2.3 Right**<br>
     The context after each search term, which displays 10 tokens right to the **Node** by default. You can change this behavior via **Generation Settings**.
@@ -182,29 +233,38 @@ In addition, you can generate concordance plots for any search term. You can mod
 - **3.2.4 Token No.**<br>
     The position of the first token of **Node** in each file.
 
-- **3.2.5 Sentence Segment No.**<br>
-    The position of the sentence segment in which the **Node** is found in each file.
+- **3.2.5 Token No. %**<br>
+    The percentage of the position of the first token of **Node** in each file.
 
 - **3.2.6 Sentence No.**<br>
     The position of the sentence in which the **Node** is found in each file.
 
-- **3.2.7 Paragraph No.**<br>
+- **3.2.7 Sentence No. %**<br>
+    The percentage of the position of the sentence in which the **Node** is found in each file.
+
+- **3.2.8 Paragraph No.**<br>
     The position of the paragraph in which the **Node** is found in each file.
 
-- **3.2.8 File**<br>
+- **3.2.9 Paragraph No. %**<br>
+    The percentage of the position of the paragraph in which the **Node** is found in each file.
+
+- **3.2.10 File**<br>
     The file in which the **Node** is found.
 
-![Concordance Table](/doc/concordancer/concordancer_table.png)
-![Concordance Figure - File](/doc/concordancer/concordancer_fig_file.png)
-![Concordance Figure - Search Term](/doc/concordancer/concordancer_fig_search_term.png)
+- **3.2.11 Sentiment**<br>
+    The sentiment of the **Node** combined with its context (**Left** and **Right**).
+
+![Concordance - Table](/doc/concordancer/concordancer_table.png)
+![Concordance - Figure - File](/doc/concordancer/concordancer_fig_file.png)
+![Concordance - Figure - Search Term](/doc/concordancer/concordancer_fig_search_term.png)
 
 <span id="doc-eng-3-3"></span>
 ### 3.3 Wordlist [[Back to Contents]](#doc-eng)
 In *Wordlist*, you can generate wordlists for different files and calculate the raw frequency, relative frequency, dispersion and adjusted frequency for each token.
 
-In addition, you can generate line charts or word clouds for wordlists using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
-Lastly, you can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+You can generate line charts or word clouds for wordlists using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
 - **3.3.1 Rank**<br>
     The rank of the token sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. 
@@ -216,27 +276,30 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
     The number of occurrences of the token in each file.
 
 - **3.3.4 Dispersion**<br>
-    The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+    The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-4-4-2) for more details.
 
 - **3.3.5 Adjusted Frequency**<br>
-    The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+    The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-4-4-2) for more details.
 
 - **3.3.6 Number of Files Found**<br>
     The number of files in which the token appears at least once.
 
-![Wordlist Table](/doc/wordlist/wordlist_table.png)
-![Wordlist Figure - Line Chart](/doc/wordlist/wordlist_fig_line_chart.png)
-![Wordlist Figure - Word Cloud](/doc/wordlist/wordlist_fig_word_cloud.png)
+- **3.3.7 Number of Files Found %**<br>
+    The percentage of the number of files in which the token appears at least once out of the total number of files that are cureently selected.
+
+![Wordlist - Table](/doc/wordlist/wordlist_table.png)
+![Wordlist - Figure - Line Chart](/doc/wordlist/wordlist_fig_line_chart.png)
+![Wordlist - Figure - Word Cloud](/doc/wordlist/wordlist_fig_word_cloud.png)
 
 <span id="doc-eng-3-4"></span>
 ### 3.4 N-gram [[Back to Contents]](#doc-eng)
-In *N-gram*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files, count and compute the raw frequency and relative frequency of each n-gram/skip-gram, and calculate the dispersion and adjusted frequency for each n-gram/skip-gram using different measures.  You can adjust the settings for the generated data via **Generation Settings**. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can also set constraints on the position of search terms in all n-grams via **Search Settings → Search Term Position**.
+In *N-gram*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files, count and compute the raw frequency and relative frequency of each n-gram/skip-gram, and calculate the dispersion and adjusted frequency for each n-gram/skip-gram using different measures.  You can adjust the settings for the generated results via **Generation Settings**. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can also set constraints on the position of search terms in all n-grams via **Search Settings → Search Term Position**.
 
-It is possible to disable searching altogether and generate an exhausted list of n-grams/skip-grams by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
+It is possible to disable searching altogether and generate an exhausted list of n-grams/skip-grams by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be too slow.
 
-In addition, you can generate line charts or word clouds for n-grams using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+You can generate line charts or word clouds for n-grams using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
-Lastly, you can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
 - **3.4.1 Rank**<br>
     The rank of the n-gram sorted by its frequency in the first file in descending order (by default). You can sort the results again by clicking the column headers. 
@@ -248,27 +311,30 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
     The number of occurrences of the n-gram in each file.
 
 - **3.4.4 Dispersion**<br>
-    The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+    The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-4-4-2) for more details.
 
 - **3.4.5 Adjusted Frequency**<br>
-    The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-supported-measures-dispersion-adjusted-freq) for more details.
+    The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-eng-4-4-2) for more details.
 
 - **3.4.6 Number of Files Found**<br>
     The number of files in which the n-gram appears at least once.
 
-![N-gram Table](/doc/ngram/ngram_table.png)
-![N-gram Figure - Line Chart](/doc/ngram/ngram_fig_line_chart.png)
-![N-gram Figure - Word Cloud](/doc/ngram/ngram_fig_word_cloud.png)
+- **3.4.7 Number of Files Found %**<br>
+    The percentage of the number of files in which the n-gram appears at least once out of the total number of files that are currently selected.
+
+![N-gram - Table](/doc/ngram/ngram_table.png)
+![N-gram - Figure - Line Chart](/doc/ngram/ngram_fig_line_chart.png)
+![N-gram - Figure - Word Cloud](/doc/ngram/ngram_fig_word_cloud.png)
 
 <span id="doc-eng-3-5"></span>
 ### 3.5 Collocation [[Back to Contents]](#doc-eng)
-In *Collocation*, you can search for patterns of collocation (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of tokens and calculate the effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
+In *Collocation*, you can search for patterns of collocation (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of collocates and calculate the effect size for each pair using different measures. You can adjust the settings for the generated results via **Generation Settings**.
 
-It is possible to disable searching altogether and generate an exhausted list of patterns of collocation by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
+It is possible to disable searching altogether and generate an exhausted list of patterns of collocation by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be too slow.
 
-In addition, you can generate line charts or word clouds for patterns of collocation using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+You can generate line charts, word clouds, and network graphs for patterns of collocation using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
-Lastly, you can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
 - **3.5.1 Rank**<br>
     The rank of the collocating token sorted by the p-value of the significance test conducted on the node and the collocating token in the first file in ascending order (by default). You can sort the results again by clicking the column headers. 
@@ -286,28 +352,31 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
     The total number of co-occurrences of the node and the collocating token with the collocating token at all possible positions in each file.
 
 - **3.5.6 Test Statistic**<br>
-    The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
     Please note that test statistic is not avilable for some tests of statistical significance.
 
 - **3.5.7 p-value**<br>
-    The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.5.8 Bayes Factor**<br>
-    The bayes factor of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The bayes factor of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
     Please note that bayes factor is not avilable for some tests of statistical significance.
 
 - **3.5.9 Effect Size**<br>
-    The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.5.10 Number of Files Found**<br>
-    The number of files in which the the node and the collocating token co-occur at least once.
+    The number of files in which the node and the collocating token co-occur at least once.
 
-![Collocation Table](/doc/collocation/collocation_table.png)
-![Collocation Figure - Line Chart](/doc/collocation/collocation_fig_line_chart.png)
-![Collocation Figure - Word Cloud](/doc/collocation/collocation_fig_word_cloud.png)
-![Collocation Figure - Network Graph](/doc/collocation/collocation_fig_network_graph.png)
+- **3.5.11 Number of Files Found %**<br>
+    The percentage of the number of files in which the node and the collocating token co-occur at least once out of the total number of files that are currently selected.
+
+![Collocation - Table](/doc/collocation/collocation_table.png)
+![Collocation - Figure - Line Chart](/doc/collocation/collocation_fig_line_chart.png)
+![Collocation - Figure - Word Cloud](/doc/collocation/collocation_fig_word_cloud.png)
+![Collocation - Figure - Network Graph](/doc/collocation/collocation_fig_network_graph.png)
 
 <span id="doc-eng-3-6"></span>
 ### 3.6 Colligation [[Back to Contents]](#doc-eng)
@@ -317,9 +386,9 @@ In *Colligation*, you can search for patterns of colligation (parts of speech th
 
 It is possible to disable searching altogether and generate an exhausted list of patterns of colligation by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
 
-In addition, you can generate line charts or word clouds for patterns of colligation using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+You can generate line charts or word clouds for patterns of colligation using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
-Lastly, you can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
 - **3.6.1 Rank**<br>
     The rank of the collocating part of speech sorted by the p-value of the significance test conducted on the node and the collocating part of speech in the first file in ascending order (by default). You can sort the results again by clicking the column headers. 
@@ -337,36 +406,39 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
     The total number of co-occurrences of the node and the collocating part of speech with the collocating part of speech at all possible positions in each file.
 
 - **3.6.6 Test Statistic**<br>
-    The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
     Please note that test statistic is not avilable for some tests of statistical significance.
 
 - **3.6.7 p-value**<br>
-    The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.6.8 Bayes Factor**<br>
-    The bayes factor of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The bayes factor of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
     Please note that bayes factor is not avilable for some tests of statistical significance.
 
 - **3.6.9 Effect Size**<br>
-    The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.6.10 Number of Files Found**<br>
-    The number of files in which the the node and the collocating part of speech co-occur at least once.
+    The number of files in which the node and the collocating part of speech co-occur at least once.
 
-![Colligation Table](/doc/colligation/colligation_table.png)
-![Colligation Figure - Line Chart](/doc/colligation/colligation_fig_line_chart.png)
-![Colligation Figure - Word Cloud](/doc/colligation/colligation_fig_word_cloud.png)
-![Colligation Figure - Network Graph](/doc/colligation/colligation_fig_network_graph.png)
+- **3.6.11 Number of Files Found %**<br>
+    The percentage of the number of files in which the node and the collocating part of speech co-occur at least once out of the total number of file that are currently selected.
+
+![Colligation - Table](/doc/colligation/colligation_table.png)
+![Colligation - Figure - Line Chart](/doc/colligation/colligation_fig_line_chart.png)
+![Colligation - Figure - Word Cloud](/doc/colligation/colligation_fig_word_cloud.png)
+![Colligation - Figure - Network Graph](/doc/colligation/colligation_fig_network_graph.png)
 
 <span id="doc-eng-3-7"></span>
 ### 3.7 Keyword [[Back to Contents]](#doc-eng)
 In *Keyword*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed file than in the reference file) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**.
 
-In addition, you can generate line charts or word clouds for keywords using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
+You can generate line charts or word clouds for keywords using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
-Lastly, you can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
 - **3.7.1 Rank**<br>
     The rank of the keyword sorted by the p-value of the significance test conducted on the keyword in the first file in ascending order (by default). You can sort the results again by clicking the column headers. 
@@ -381,25 +453,28 @@ Lastly, you can further filter the results as you see fit by clicking **Filter R
     The number of co-occurrences of the keywords in each observed file.
 
 - **3.7.5 Test Statistic**<br>
-    The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.7.6 p-value**<br>
-    The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.7.7 Bayes Factor**<br>
-    The bayes factor of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The bayes factor of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
     Please note that bayes factor is not avilable for some tests of statistical significance.
 
 - **3.7.8 Effect Size**<br>
-    The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-supported-measures-statistical-significance-effect-size) for more details.
+    The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.7.9 Number of Files Found**<br>
     The number of files in which the keyword appears at least once.
 
-![Keyword Table](/doc/keyword/keyword_table.png)
-![Keyword Figure - Line Chart](/doc/keyword/keyword_fig_line_chart.png)
-![Keyword Figure - Word Cloud](/doc/keyword/keyword_fig_word_cloud.png)
+- **3.7.10 Number of Files Found %**<br>
+    The percentage of the number of files in which the keyword appears at least once out of the total number of files that are currently selected.
+
+![Keyword - Table](/doc/keyword/keyword_table.png)
+![Keyword - Figure - Line Chart](/doc/keyword/keyword_fig_line_chart.png)
+![Keyword - Figure - Word Cloud](/doc/keyword/keyword_fig_word_cloud.png)
 
 <span id="doc-eng-4"></span>
 ## 4 Appendixes [[Back to Contents]](#doc-eng)
