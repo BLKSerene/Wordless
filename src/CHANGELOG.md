@@ -39,7 +39,7 @@
 ### ⏫ Dependency Changes
 - Dependencies: Add Pyphen
 - Dependencies: Add ssg
-- Dependencies: Upgrade Charset Normalizer to 2.0.4
+- Dependencies: Upgrade Charset Normalizer to 2.0.6
 - Dependencies: Upgrade spaCy to 3.1.1
 
 ## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - 07/21/2021
