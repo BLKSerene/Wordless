@@ -82,10 +82,10 @@ def wl_msg_box_reset_layouts(main):
         ''')
     )
 
-def wl_msg_box_reset_settings(main):
+def wl_msg_box_restore_default_settings(main):
     return wl_msg_box_question(
         main = main,
-        title = main.tr('Reset Settings'),
+        title = main.tr('Restore default settings'),
         text = main.tr(f'''
             <div>Do you really want to reset all settings to their defaults?</div>
         ''')

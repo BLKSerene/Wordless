@@ -88,16 +88,17 @@ class Wl_Button_Results_Search(Wl_Button):
     def add_tables(self, tables):
         self.dialog_results_search.add_tables(tables)
 
-class Wl_Button_Reset_Settings(Wl_Button):
+class Wl_Button_Restore_Default_Settings(Wl_Button):
     def __init__(self, parent):
-        super().__init__(parent.tr('Reset Settings'), parent)
+        # Pad with spaces
+        super().__init__(parent.tr(' Restore default settings '), parent)
 
         self.parent = parent
 
-        self.clicked.connect(self.reset_settings)
+        self.clicked.connect(self.restore_default_settings)
 
-    def reset_settings(self):
-        if wl_msg_box.wl_msg_box_reset_settings(self.main):
+    def restore_default_settings(self):
+        if wl_msg_box.wl_msg_box_restore_default_settings(self.main):
             self.parent.load_settings(defaults = True)
 
         self.parent.activateWindow()

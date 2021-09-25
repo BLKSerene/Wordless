@@ -375,19 +375,27 @@ class Wl_Main(QMainWindow):
         self.wl_file_area = wl_file_area.Wrapper_File_Area(self)
         self.init_work_area()
 
+        # Align work are and file area
         wrapper_file_area = QWidget()
 
         wrapper_file_area.setLayout(wl_layout.Wl_Layout())
         wrapper_file_area.layout().addWidget(self.wl_file_area, 0, 0)
 
+        margins = self.wl_file_area.layout().contentsMargins()
+
         if platform.system() == 'Windows':
-            self.wl_file_area.layout().setContentsMargins(2, 0, 2, 0)
             wrapper_file_area.layout().setContentsMargins(0, 0, 2, 0)
+
+            margins.setLeft(margins.left() + 2)
+            margins.setRight(margins.right() + 2)
         elif platform.system() == 'Darwin':
             wrapper_file_area.layout().setContentsMargins(3, 0, 3, 0)
         elif platform.system() == 'Linux':
-            self.wl_file_area.layout().setContentsMargins(0, 0, 2, 0)
             wrapper_file_area.layout().setContentsMargins(0, 0, 0, 0)
+
+            margins.setRight(margins.right() + 2)
+
+        self.wl_file_area.layout().setContentsMargins(margins)
 
         splitter_central_widget = wl_layout.Wl_Splitter(Qt.Vertical, self)
         splitter_central_widget.addWidget(self.wl_work_area)
