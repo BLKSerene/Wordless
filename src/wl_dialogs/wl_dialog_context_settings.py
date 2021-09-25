@@ -179,18 +179,21 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
         self.exclusion_group_box.layout().setColumnStretch(1, 1)
         self.exclusion_group_box.layout().setColumnStretch(3, 1)
 
-        self.button_reset_settings = wl_button.Wl_Button_Reset_Settings(self)
-        self.button_ok = QPushButton(self.tr('OK'), self)
+        self.button_restore_default_settings = wl_button.Wl_Button_Restore_Default_Settings(self)
+        self.button_close = QPushButton(self.tr('Close'), self)
 
-        self.button_ok.clicked.connect(self.accept)
+        self.button_close.clicked.connect(self.accept)
 
-        self.button_reset_settings.setFixedWidth(130)
+        layout_buttons = wl_layout.Wl_Layout()
+        layout_buttons.addWidget(self.button_restore_default_settings, 0, 0)
+        layout_buttons.addWidget(self.button_close, 0, 2)
+
+        layout_buttons.setColumnStretch(1, 1)
 
         self.setLayout(wl_layout.Wl_Layout())
-        self.layout().addWidget(self.inclusion_group_box, 0, 0, Qt.AlignTop)
-        self.layout().addWidget(self.exclusion_group_box, 0, 1, Qt.AlignTop)
-        self.layout().addWidget(self.button_reset_settings, 1, 0, Qt.AlignLeft)
-        self.layout().addWidget(self.button_ok, 1, 1, Qt.AlignRight)
+        self.layout().addWidget(self.inclusion_group_box, 0, 0)
+        self.layout().addWidget(self.exclusion_group_box, 0, 1)
+        self.layout().addLayout(layout_buttons, 1, 0, 1, 2)
 
         self.layout().setColumnStretch(0, 1)
         self.layout().setColumnStretch(1, 1)
@@ -236,7 +239,7 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
             self.inclusion_spin_box_context_window_right.setPrefix('R')
             self.inclusion_spin_box_context_window_right.setValue(settings['inclusion']['context_window_right'])
 
-        self.inclusion_line_edit_search_term.returnPressed.connect(self.button_ok.click)
+        self.inclusion_line_edit_search_term.returnPressed.connect(self.button_close.click)
 
         # Exclusion
         self.exclusion_group_box.setChecked(settings['exclusion']['exclusion'])
@@ -271,7 +274,7 @@ class Wl_Dialog_Context_Settings(wl_dialog.Wl_Dialog):
             self.exclusion_spin_box_context_window_right.setPrefix('R')
             self.exclusion_spin_box_context_window_right.setValue(settings['exclusion']['context_window_right'])
 
-        self.exclusion_line_edit_search_term.returnPressed.connect(self.button_ok.click)
+        self.exclusion_line_edit_search_term.returnPressed.connect(self.button_close.click)
 
         self.inclusion_changed()
         self.exclusion_changed()
