@@ -103,13 +103,11 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
         self.button_find_next = QPushButton(self.tr('Find Next'), self)
         self.button_find_prev = QPushButton(self.tr('Find Previous'), self)
         self.button_find_all = QPushButton(self.tr('Find All'), self)
+        # Pad with spaces
+        self.button_clear_hightlights = QPushButton(self.tr(' Clear Highlights '), self)
         
-        self.button_reset_settings = wl_button.Wl_Button_Reset_Settings(self)
-        self.button_clear_hightlights = QPushButton(self.tr('Clear Highlights'), self)
+        self.button_restore_default_settings = wl_button.Wl_Button_Restore_Default_Settings(self)
         self.button_close = QPushButton(self.tr('Close'), self)
-
-        self.button_reset_settings.setFixedWidth(130)
-        self.button_close.setFixedWidth(80)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
@@ -127,8 +125,8 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
         self.button_find_next.clicked.connect(lambda: self.find_next())
         self.button_find_prev.clicked.connect(lambda: self.find_prev())
         self.button_find_all.clicked.connect(lambda: self.find_all())
-
         self.button_clear_hightlights.clicked.connect(self.clear_highlights)
+        
         self.button_close.clicked.connect(self.reject)
 
         layout_buttons_right = wl_layout.Wl_Layout()
@@ -140,8 +138,10 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
         layout_buttons_right.setRowStretch(4, 1)
 
         layout_buttons_bottom = wl_layout.Wl_Layout()
-        layout_buttons_bottom.addWidget(self.button_reset_settings, 0, 0)
-        layout_buttons_bottom.addWidget(self.button_close, 0, 1, Qt.AlignRight)
+        layout_buttons_bottom.addWidget(self.button_restore_default_settings, 0, 0)
+        layout_buttons_bottom.addWidget(self.button_close, 0, 2)
+
+        layout_buttons_bottom.setColumnStretch(1, 1)
 
         self.setLayout(wl_layout.Wl_Layout())
         self.layout().addWidget(self.label_search_term, 0, 0)
@@ -158,11 +158,9 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
         self.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
         self.layout().addWidget(wl_layout.Wl_Separator(self, orientation = 'Vertical'), 0, 2, 9, 1)
-
         self.layout().addLayout(layout_buttons_right, 0, 3, 9, 1)
 
         self.layout().addWidget(wl_layout.Wl_Separator(self), 9, 0, 1, 4)
-
         self.layout().addLayout(layout_buttons_bottom, 10, 0, 1, 4)
 
         self.main.wl_work_area.currentChanged.connect(self.reject)

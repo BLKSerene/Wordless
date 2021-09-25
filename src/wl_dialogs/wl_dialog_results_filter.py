@@ -404,16 +404,11 @@ class Wl_Dialog_Results_Filter(wl_dialog.Wl_Dialog):
         self.combo_box_file_to_filter = wl_box.Wl_Combo_Box_File_To_Filter(self, self.table)
         self.button_filter = QPushButton(self.tr('Filter'), self)
 
-        self.button_reset_settings = wl_button.Wl_Button_Reset_Settings(self)
+        self.button_restore_default_settings = wl_button.Wl_Button_Restore_Default_Settings(self)
         self.button_close = QPushButton(self.tr('Close'), self)
-
-        self.button_filter.setFixedWidth(80)
-        self.button_reset_settings.setFixedWidth(120)
-        self.button_close.setFixedWidth(80)
 
         self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
         self.button_filter.clicked.connect(lambda: self.filter_results())
-
         self.button_close.clicked.connect(self.reject)
 
         self.main.wl_work_area.currentChanged.connect(self.reject)
@@ -428,13 +423,17 @@ class Wl_Dialog_Results_Filter(wl_dialog.Wl_Dialog):
         self.layout_filters = wl_layout.Wl_Layout()
 
         layout_buttons = wl_layout.Wl_Layout()
-        layout_buttons.addWidget(self.button_reset_settings, 0, 0)
-        layout_buttons.addWidget(self.button_close, 0, 1, Qt.AlignRight)
+        layout_buttons.addWidget(self.button_restore_default_settings, 0, 0)
+        layout_buttons.addWidget(self.button_close, 0, 2)
+
+        layout_buttons.setColumnStretch(1, 1)
 
         self.setLayout(wl_layout.Wl_Layout())
         self.layout().addLayout(layout_file_to_filter, 0, 0)
+
         self.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0)
         self.layout().addLayout(self.layout_filters, 2, 0)
+
         self.layout().addWidget(wl_layout.Wl_Separator(self), 3, 0)
         self.layout().addLayout(layout_buttons, 4, 0)
 
