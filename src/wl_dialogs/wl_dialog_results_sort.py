@@ -138,15 +138,11 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialog.Wl_Dialog):
 
         self.table_sort = wl_table.Wl_Table_Results_Sort_Conordancer(self, table = self.tables[0])
 
-        self.button_reset_settings = wl_button.Wl_Button_Reset_Settings(self)
+        self.button_restore_default_settings = wl_button.Wl_Button_Restore_Default_Settings(self)
         self.button_sort = QPushButton(self.tr('Sort'), self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
-        self.table_sort.setFixedWidth(280)
-
-        self.button_reset_settings.setFixedWidth(130)
-        self.button_sort.setFixedWidth(80)
-        self.button_close.setFixedWidth(80)
+        self.table_sort.setFixedWidth(300)
 
         self.table_sort.itemChanged.connect(self.sort_table_changed)
 
@@ -165,16 +161,18 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialog.Wl_Dialog):
 
         layout_table_sort.setRowStretch(3, 1)
 
+        layout_buttons = wl_layout.Wl_Layout()
+        layout_buttons.addWidget(self.button_restore_default_settings, 0, 0)
+        layout_buttons.addWidget(self.button_sort, 0, 2)
+        layout_buttons.addWidget(self.button_close, 0, 3)
+
+        layout_buttons.setColumnStretch(1, 1)
+
         self.setLayout(wl_layout.Wl_Layout())
-        self.layout().addLayout(layout_table_sort, 0, 0, 1, 4)
+        self.layout().addLayout(layout_table_sort, 0, 0)
 
-        self.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0, 1, 4)
-
-        self.layout().addWidget(self.button_reset_settings, 2, 0)
-        self.layout().addWidget(self.button_sort, 2, 2)
-        self.layout().addWidget(self.button_close, 2, 3)
-
-        self.layout().setColumnStretch(1, 1)
+        self.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0)
+        self.layout().addLayout(layout_buttons, 2, 0)
 
         self.set_fixed_size()
 
