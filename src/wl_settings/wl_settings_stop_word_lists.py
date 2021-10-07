@@ -15,7 +15,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_text import wl_stop_word_lists
+from wl_text import wl_stop_word_lists, wl_text_utils
 from wl_utils import wl_conversion
 from wl_widgets import wl_box, wl_layout, wl_list, wl_table, wl_tree
 
@@ -49,7 +49,11 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
 
             self.__dict__[f'combo_box_stop_word_list_{lang}'] = wl_box.Wl_Combo_Box(self)
 
-            self.__dict__[f'combo_box_stop_word_list_{lang}'].addItems(self.settings_global[lang])
+            self.__dict__[f'combo_box_stop_word_list_{lang}'].addItems(wl_text_utils.to_lang_util_texts(
+                self.main,
+                util_type = 'stop_word_lists',
+                util_codes = self.settings_global[lang]
+            ))
 
             self.__dict__[f'combo_box_stop_word_list_{lang}'].currentTextChanged.connect(lambda text, lang = lang: self.stop_word_list_changed(lang))
 
@@ -63,7 +67,7 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
 
         self.label_stop_word_list_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_stop_word_list_preview_lang = wl_box.Wl_Combo_Box(self)
-        self.combo_box_stop_word_list_preview_lang.addItems(wl_conversion.to_lang_text(self.main, list(self.settings_global.keys())))
+        self.combo_box_stop_word_list_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
         self.label_stop_word_list_preview_count = QLabel('', self)
 
         self.list_stop_word_list_preview_results = wl_list.Wl_List_Stop_Words(self)
@@ -107,14 +111,18 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
 
     def preview_results_changed(self):
         lang = wl_conversion.to_lang_code(self.main, self.combo_box_stop_word_list_preview_lang.currentText())
-        list_stop_words = self.__dict__[f'combo_box_stop_word_list_{lang}'].currentText()
+        list_stop_words = wl_text_utils.to_lang_util_code(
+            self.main,
+            util_type = 'stop_word_lists',
+            util_text = self.__dict__[f'combo_box_stop_word_list_{lang}'].currentText()
+        )
         
         stop_words = wl_stop_word_lists.wl_get_stop_word_list(self.main, lang, stop_word_list = list_stop_words)
         
         self.list_stop_word_list_preview_results.load_stop_words(stop_words)
         self.label_stop_word_list_preview_count.setText(self.tr(f'Count of Stop Words: {len(stop_words)}'))
 
-        if list_stop_words == self.tr('Custom List'):
+        if list_stop_words == 'custom':
             self.list_stop_word_list_preview_results.switch_to_custom()
 
             self.list_stop_word_list_preview_results.itemChanged.connect(lambda: self.label_stop_word_list_preview_count.setText(self.tr(f'Count of Stop Words: {self.list_stop_word_list_preview_results.count()}')))
@@ -128,7 +136,11 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
             settings = copy.deepcopy(self.settings_custom)
 
         for lang in settings['stop_word_lists']:
-            self.__dict__[f'combo_box_stop_word_list_{lang}'].setCurrentText(settings['stop_word_lists'][lang])
+            self.__dict__[f'combo_box_stop_word_list_{lang}'].setCurrentText(wl_text_utils.to_lang_util_text(
+                self.main,
+                util_type = 'stop_word_lists',
+                util_code = settings['stop_word_lists'][lang]
+            ))
 
         if not defaults:
             self.combo_box_stop_word_list_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview_lang']))
@@ -140,7 +152,11 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
 
     def apply_settings(self):
         for lang in self.settings_custom['stop_word_lists']:
-            self.settings_custom['stop_word_lists'][lang] = self.__dict__[f'combo_box_stop_word_list_{lang}'].currentText()
+            self.settings_custom['stop_word_lists'][lang] = wl_text_utils.to_lang_util_code(
+                self.main,
+                util_type = 'stop_word_lists',
+                util_text = self.__dict__[f'combo_box_stop_word_list_{lang}'].currentText()
+            )
 
         if self.settings_custom['stop_word_lists'][self.settings_custom['preview_lang']] == self.tr('Custom List'):
             self.settings_custom['custom_lists'][self.settings_custom['preview_lang']] = self.list_stop_word_list_preview_results.get_items()

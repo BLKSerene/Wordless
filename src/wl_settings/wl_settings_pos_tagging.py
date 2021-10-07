@@ -18,7 +18,7 @@ from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialog_misc, wl_msg_box
 from wl_tagsets import wl_tagset_universal
-from wl_text import wl_word_tokenization, wl_pos_tagging
+from wl_text import wl_pos_tagging, wl_text_utils, wl_word_tokenization
 from wl_utils import wl_conversion, wl_misc, wl_threading
 from wl_widgets import wl_box, wl_label, wl_layout, wl_table, wl_tree
 
@@ -102,7 +102,11 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
             self.table_pos_taggers.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
 
             self.__dict__[f'combo_box_pos_tagger_{lang}'] = wl_box.Wl_Combo_Box(self)
-            self.__dict__[f'combo_box_pos_tagger_{lang}'].addItems(self.settings_global[lang])
+            self.__dict__[f'combo_box_pos_tagger_{lang}'].addItems(wl_text_utils.to_lang_util_texts(
+                self.main,
+                util_type = 'pos_taggers',
+                util_codes = self.settings_global[lang]
+            ))
 
             self.table_pos_taggers.setCellWidget(i, 1, self.__dict__[f'combo_box_pos_tagger_{lang}'])
 
@@ -119,7 +123,7 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
         self.text_edit_pos_tagging_preview_samples = QTextEdit(self)
         self.text_edit_pos_tagging_preview_results = QTextEdit(self)
 
-        self.combo_box_pos_tagging_preview_lang.addItems(wl_conversion.to_lang_text(self.main, list(self.settings_global)))
+        self.combo_box_pos_tagging_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
         self.button_pos_tagging_show_preview.setFixedWidth(130)
         self.text_edit_pos_tagging_preview_samples.setAcceptRichText(False)
@@ -166,7 +170,11 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
 
                 self.button_pos_tagging_show_preview.setText(self.tr('Processing ...'))
 
-                pos_tagger = self.__dict__[f"combo_box_pos_tagger_{self.settings_custom['preview_lang']}"].currentText()
+                pos_tagger = wl_text_utils.to_lang_util_code(
+                    self.main,
+                    util_type = 'pos_taggers',
+                    util_text = self.__dict__[f"combo_box_pos_tagger_{self.settings_custom['preview_lang']}"].currentText()
+                )
 
                 if self.checkbox_to_universal_pos_tags.isChecked():
                     tagset = 'universal'
@@ -204,7 +212,11 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
         for lang in settings['pos_taggers']:
             self.__dict__[f'combo_box_pos_tagger_{lang}'].blockSignals(True)
 
-            self.__dict__[f'combo_box_pos_tagger_{lang}'].setCurrentText(settings['pos_taggers'][lang])
+            self.__dict__[f'combo_box_pos_tagger_{lang}'].setCurrentText(wl_text_utils.to_lang_util_text(
+                self.main,
+                util_type = 'pos_taggers',
+                util_code = settings['pos_taggers'][lang]
+            ))
 
             self.__dict__[f'combo_box_pos_tagger_{lang}'].blockSignals(False)
 
@@ -227,7 +239,11 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
 
     def apply_settings(self):
         for lang in self.settings_custom['pos_taggers']:
-            self.settings_custom['pos_taggers'][lang] = self.__dict__[f'combo_box_pos_tagger_{lang}'].currentText()
+            self.settings_custom['pos_taggers'][lang] = wl_text_utils.to_lang_util_code(
+                self.main,
+                util_type = 'pos_taggers',
+                util_text = self.__dict__[f'combo_box_pos_tagger_{lang}'].currentText()
+            )
 
         self.settings_custom['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
 
@@ -254,7 +270,7 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
         self.label_tagsets_pos_tagger = QLabel(self.tr('POS Tagger:'), self)
         self.combo_box_tagsets_pos_tagger = wl_box.Wl_Combo_Box_Adjustable(self)
 
-        self.combo_box_tagsets_lang.addItems(wl_conversion.to_lang_text(self.main, list(self.settings_global)))
+        self.combo_box_tagsets_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
         self.combo_box_tagsets_lang.currentTextChanged.connect(self.preview_lang_changed)
         self.combo_box_tagsets_pos_tagger.currentTextChanged.connect(self.preview_pos_tagger_changed)
@@ -316,17 +332,29 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
 
         self.combo_box_tagsets_pos_tagger.clear()
 
-        self.combo_box_tagsets_pos_tagger.addItems(self.settings_global[preview_lang])
-        self.combo_box_tagsets_pos_tagger.setCurrentText(self.settings_custom['preview_pos_tagger'][preview_lang])
+        self.combo_box_tagsets_pos_tagger.addItems(wl_text_utils.to_lang_util_texts(
+            self.main,
+            util_type = 'pos_taggers',
+            util_codes = self.settings_global[preview_lang])
+        )
+        self.combo_box_tagsets_pos_tagger.setCurrentText(wl_text_utils.to_lang_util_text(
+            self.main,
+            util_type = 'pos_taggers',
+            util_code = self.settings_custom['preview_pos_tagger'][preview_lang])
+        )
 
         self.combo_box_tagsets_pos_tagger.blockSignals(False)
 
         self.combo_box_tagsets_pos_tagger.currentTextChanged.emit('')
 
     def preview_pos_tagger_changed(self):
-        self.settings_custom['preview_pos_tagger'][self.settings_custom['preview_lang']] = self.combo_box_tagsets_pos_tagger.currentText()
+        self.settings_custom['preview_pos_tagger'][self.settings_custom['preview_lang']] = wl_text_utils.to_lang_util_code(
+            self.main,
+            util_type = 'pos_taggers',
+            util_text = self.combo_box_tagsets_pos_tagger.currentText()
+        )
 
-        if self.settings_custom['preview_pos_tagger'][self.settings_custom['preview_lang']].find('spaCy') == -1:
+        if 'spacy' not in self.settings_custom['preview_pos_tagger'][self.settings_custom['preview_lang']]:
             self.combo_box_tagsets_lang.setEnabled(False)
             self.combo_box_tagsets_pos_tagger.setEnabled(False)
             self.button_tagsets_reset.setEnabled(False)
@@ -460,7 +488,11 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
             self.combo_box_tagsets_pos_tagger.blockSignals(True)
 
             self.combo_box_tagsets_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview_lang']))
-            self.combo_box_tagsets_pos_tagger.setCurrentText(settings['preview_pos_tagger'][settings['preview_lang']])
+            self.combo_box_tagsets_pos_tagger.setCurrentText(wl_text_utils.to_lang_util_text(
+                self.main,
+                util_type = 'pos_taggers',
+                util_code = settings['preview_pos_tagger'][settings['preview_lang']]
+            ))
 
             self.combo_box_tagsets_lang.blockSignals(False)
             self.combo_box_tagsets_pos_tagger.blockSignals(False)
@@ -469,10 +501,10 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
         if self.pos_tag_mappings_loaded:
             # Save only when tag mappings are editable
             if self.table_mappings.isEnabled():
-                preview_lang = self.settings['preview_lang']
-                preview_pos_tagger = self.settings['preview_pos_tagger'][preview_lang]
+                preview_lang = self.settings_custom['preview_lang']
+                preview_pos_tagger = self.settings_custom['preview_pos_tagger'][preview_lang]
 
                 for i in range(self.table_mappings.rowCount()):
-                    self.settings['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
+                    self.settings_custom['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
 
         return True

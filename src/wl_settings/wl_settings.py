@@ -38,7 +38,7 @@ class Wl_Settings(QDialog):
         self.main = main
 
         self.setWindowTitle(self.tr('Settings'))
-        self.setFixedSize(900, 600)
+        self.setFixedSize(1024, 768)
 
         self.tree_settings = wl_tree.Wl_Tree(self)
 
@@ -140,11 +140,6 @@ class Wl_Settings(QDialog):
         button_save.clicked.connect(self.save_settings)
         button_apply.clicked.connect(self.apply_settings)
         button_cancel.clicked.connect(self.reject)
-
-        button_reset_settings.setFixedWidth(150)
-        button_save.setFixedWidth(80)
-        button_apply.setFixedWidth(80)
-        button_cancel.setFixedWidth(80)
 
         layout_buttons = wl_layout.Wl_Layout()
         layout_buttons.addWidget(button_reset_settings, 0, 0)
@@ -292,5 +287,12 @@ class Wl_Settings(QDialog):
 
         for node in self.tree_settings.get_nodes():
             node.setExpanded(False)
+
+        # Expand selected item
+        if item_selected.childCount():
+            item_selected.setExpanded(True)
+
+        if item_selected.parent():
+            item_selected.parent().setExpanded(True)
 
         self.exec_()

@@ -10,23 +10,21 @@
 #
 
 def to_lang_code(main, lang_text):
-    if type(lang_text) == list:
-        return [main.settings_global['langs'][item][0]
-                for item in lang_text]
-    else:
-        return main.settings_global['langs'][lang_text][0]
+    return main.settings_global['langs'][lang_text][0]
+
+def to_lang_codes(main, lang_texts):
+    return (main.settings_global['langs'][lang_text][0] for lang_text in lang_texts)
+
+def _to_lang_text(main, lang_code):
+    for lang_text, (lang_code_639_3, _, _) in main.settings_global['langs'].items():
+        if lang_code_639_3 == lang_code:
+            return lang_text
 
 def to_lang_text(main, lang_code):
-    def find_lang_text(code):
-        for lang_text, (lang_code_639_3, _, _) in main.settings_global['langs'].items():
-            if lang_code_639_3 == code:
-                return lang_text
+    return _to_lang_text(main, lang_code)
 
-    if type(lang_code) == list:
-        return [find_lang_text(item)
-                for item in lang_code]
-    else:
-        return find_lang_text(lang_code)
+def to_lang_texts(main, lang_codes):
+    return (_to_lang_text(main, lang_code) for lang_code in lang_codes)
 
 def to_iso_639_3(main, lang_code):
     for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
