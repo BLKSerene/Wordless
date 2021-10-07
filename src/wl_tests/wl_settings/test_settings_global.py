@@ -111,35 +111,35 @@ def test_settings_global():
     langs_supported_spacy_lemmatizers = []
     langs_supported_spacy_stop_words = []
 
-    langs_sentence_tokenizers = list(settings_sentence_tokenizers.keys())
-    langs_sentence_tokenizers_default = list(settings_sentence_tokenizers_default.keys())
+    langs_sentence_tokenizers = list(settings_sentence_tokenizers)
+    langs_sentence_tokenizers_default = list(settings_sentence_tokenizers_default)
     langs_sentence_tokenizers_spacy = []
 
-    langs_word_tokenizers = list(settings_word_tokenizers.keys())
-    langs_word_tokenizers_default = list(settings_word_tokenizers_default.keys())
+    langs_word_tokenizers = list(settings_word_tokenizers)
+    langs_word_tokenizers_default = list(settings_word_tokenizers_default)
     langs_word_tokenizers_nltk = []
     langs_word_tokenizers_sacremoses = []
     langs_word_tokenizers_spacy = []
 
-    langs_syl_tokenizers = list(settings_syl_tokenizers.keys())
-    langs_syl_tokenizers_default = list(settings_syl_tokenizers_default.keys())
+    langs_syl_tokenizers = list(settings_syl_tokenizers)
+    langs_syl_tokenizers_default = list(settings_syl_tokenizers_default)
 
-    langs_word_detokenizers = list(settings_word_detokenizers.keys())
-    langs_word_detokenizers_default = list(settings_word_detokenizers_default.keys())
+    langs_word_detokenizers = list(settings_word_detokenizers)
+    langs_word_detokenizers_default = list(settings_word_detokenizers_default)
     langs_word_detokenizers_nltk = []
     langs_word_detokenizers_sacremoses = []
 
-    langs_pos_taggers = list(settings_pos_taggers.keys())
-    langs_pos_taggers_default = list(settings_pos_taggers_default.keys())
-    langs_tagsets_default = list(settings_tagsets_default.keys())
+    langs_pos_taggers = list(settings_pos_taggers)
+    langs_pos_taggers_default = list(settings_pos_taggers_default)
+    langs_tagsets_default = list(settings_tagsets_default)
 
-    langs_lemmatizers = list(settings_lemmatizers.keys())
-    langs_lemmatizers_default = list(settings_lemmatizers_default.keys())
+    langs_lemmatizers = list(settings_lemmatizers)
+    langs_lemmatizers_default = list(settings_lemmatizers_default)
     langs_lemmatizers_spacy = []
 
-    langs_stop_word_lists = list(settings_stop_word_lists.keys())
-    langs_stop_word_lists_default = list(settings_stop_word_lists_default.keys())
-    langs_stop_word_lists_default_custom = list(settings_stop_word_lists_default_custom.keys())
+    langs_stop_word_lists = list(settings_stop_word_lists)
+    langs_stop_word_lists_default = list(settings_stop_word_lists_default)
+    langs_stop_word_lists_default_custom = list(settings_stop_word_lists_default_custom)
     langs_stop_word_lists_spacy = []
 
     lang_missing = False
@@ -197,14 +197,14 @@ def test_settings_global():
 
     # Check for missing and extra languages for spaCy's sentencizer
     for lang_code, sentence_tokenizers in settings_sentence_tokenizers.items():
-        if lang_code != 'other' and any(['spaCy' in sentence_tokenizer for sentence_tokenizer in sentence_tokenizers]):
+        if lang_code != 'other' and any(['spacy' in sentence_tokenizer for sentence_tokenizer in sentence_tokenizers]):
             langs_sentence_tokenizers_spacy.append(lang_code)
 
     check_missing_extra_langs(langs_supported_spacy, langs_sentence_tokenizers_spacy, "spaCy's sentencizer")
 
     # Check for missing and extra languages for NLTK's word tokenizers
     for lang_code, word_tokenizers in settings_word_tokenizers.items():
-        if lang_code != 'other' and any(['NLTK - NLTK Tokenizer' in word_tokenizer for word_tokenizer in word_tokenizers]):
+        if lang_code != 'other' and any(['nltk_nltk' in word_tokenizer for word_tokenizer in word_tokenizers]):
             langs_word_tokenizers_nltk.append(lang_code)
 
     for lang_code in langs_word_tokenizers:
@@ -224,21 +224,21 @@ def test_settings_global():
 
     # Check for missing and extra languages for Sacremoses's Moses tokenizer
     for lang_code, word_tokenizers in settings_word_tokenizers.items():
-        if lang_code != 'other' and any(['Sacremoses' in word_tokenizer for word_tokenizer in word_tokenizers]):
+        if lang_code != 'other' and any(['sacremoses' in word_tokenizer for word_tokenizer in word_tokenizers]):
             langs_word_tokenizers_sacremoses.append(lang_code)
 
     check_missing_extra_langs(langs_supported_sacremoses, langs_word_tokenizers_sacremoses, "Sacremoses's Moses tokenizer")
 
     # Check for missing and extra languages for spaCy's word tokenizers
     for lang_code, word_tokenizers in settings_word_tokenizers.items():
-        if lang_code != 'other' and any(['spaCy' in word_tokenizer for word_tokenizer in word_tokenizers]):
+        if lang_code != 'other' and any(['spacy' in word_tokenizer for word_tokenizer in word_tokenizers]):
             langs_word_tokenizers_spacy.append(lang_code)
 
     check_missing_extra_langs(langs_supported_spacy, langs_word_tokenizers_spacy, "spaCy's word tokenizers")
 
     # Check for missing and extra languages for NLTK's Penn Treebank detokenizer
     for lang_code, word_detokenizers in settings_word_detokenizers.items():
-        if lang_code != 'other' and any(['NLTK' in word_detokenizer for word_detokenizer in word_detokenizers]):
+        if lang_code != 'other' and any(['nltk' in word_detokenizer for word_detokenizer in word_detokenizers]):
             langs_word_detokenizers_nltk.append(lang_code)
 
     for lang_code in langs_word_detokenizers:
@@ -258,21 +258,21 @@ def test_settings_global():
 
     # Check for missing and extra languages for Sacremoses's Moses detokenizer
     for lang_code, word_detokenizers in settings_word_detokenizers.items():
-        if lang_code != 'other' and any(['Sacremoses' in word_detokenizer for word_detokenizer in word_detokenizers]):
+        if lang_code != 'other' and any(['sacremoses' in word_detokenizer for word_detokenizer in word_detokenizers]):
             langs_word_detokenizers_sacremoses.append(lang_code)
 
     check_missing_extra_langs(langs_supported_sacremoses, langs_word_detokenizers_sacremoses, "Sacremoses's Moses detokenizer")
 
     # Check for missing and extra languages for spaCy's lemmatizers
     for lang_code, lemmatizers in settings_lemmatizers.items():
-        if lang_code != 'other' and any(['spaCy' in lemmatizer for lemmatizer in lemmatizers]):
+        if lang_code != 'other' and any(['spacy' in lemmatizer for lemmatizer in lemmatizers]):
             langs_lemmatizers_spacy.append(lang_code)
 
     check_missing_extra_langs(langs_supported_spacy_lemmatizers, langs_lemmatizers_spacy, "spaCy's lemmatizers")
 
     # Check for missing and extra languages for spaCy's stop word lists
     for lang_code, stop_word_lists in settings_stop_word_lists.items():
-        if lang_code != 'other' and any(['spaCy' in stop_word_list for stop_word_list in stop_word_lists]):
+        if lang_code != 'other' and any(['spacy' in stop_word_list for stop_word_list in stop_word_lists]):
             langs_stop_word_lists_spacy.append(lang_code)
 
     check_missing_extra_langs(langs_supported_spacy_stop_words, langs_stop_word_lists_spacy, "spaCy's stop word lists")

@@ -75,10 +75,12 @@ def test_word_detokenize(lang, word_detokenizer):
     elif lang == 'fra':
         assert text == 'Le français est une langue indo-européenne de la famille des langues romanes dont les locuteurs sont appelés francophones.'
     elif lang in ['deu_at', 'deu_de', 'deu_ch']:
-        if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
+        if word_detokenizer == 'nltk_penn_treebank':
             assert text == 'Die deutsche Sprache bzw. das Deutsche ([dɔɪ̯tʃ];[26] abgekürzt dt.oder dtsch .) ist eine westgermanische Sprache, die weltweit etwa 90 bis 105 Millionen Menschen als Muttersprache und weiteren rund 80 Millionen als Zweit- oder Fremdsprache dient.'
-        elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
+        elif word_detokenizer == 'sacremoses_moses':
             assert text == 'Die deutsche Sprache bzw. das Deutsche ([dɔɪ̯tʃ];[26] abgekürzt dt.oder dtsch.) ist eine westgermanische Sprache, die weltweit etwa 90 bis 105 Millionen Menschen als Muttersprache und weiteren rund 80 Millionen als Zweit- oder Fremdsprache dient.'
+        else:
+            raise Exception(f'Error: Tests for word detokenizer "{word_detokenizer}" is skipped!')
     elif lang == 'ell':
         assert text == 'Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[10] και αποτελεί το μοναδικό μέλος του ελληνικού κλάδου, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.'
     elif lang == 'guj':
@@ -92,10 +94,12 @@ def test_word_detokenize(lang, word_detokenizer):
     elif lang == 'gle':
         assert text == 'Is ceann de na teangacha Ceilteacha í an Ghaeilge (nó Gaeilge na hÉireann mar a thugtar uirthi corruair), agus ceann den dtrí cinn de theangacha Ceilteacha ar a dtugtar na teangacha Gaelacha (.i. an Ghaeilge, Gaeilge na hAlban agus Gaeilge Mhanann) go háirithe.'
     elif lang == 'ita':
-        if word_detokenizer == 'NLTK - Penn Treebank Detokenizer':
+        if word_detokenizer == 'nltk_penn_treebank':
             assert text == "L' italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
-        elif word_detokenizer == 'Sacremoses - Moses Detokenizer':
+        elif word_detokenizer == 'sacremoses_moses':
             assert text == "L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia."
+        else:
+            raise Exception(f'Error: Tests for word detokenizer "{word_detokenizer}" is skipped!')
     elif lang == 'jpn':
         assert text == '日本語(にほんご、にっぽんご[注2]、英: Japanese)は、主に日本国内や日本人同士の間で使用されている言語。'
     elif lang == 'kan':
@@ -141,7 +145,7 @@ def test_word_detokenize(lang, word_detokenizer):
     elif lang == 'bod':
         assert text == 'བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་དེའི་ཉེ་འཁོར་གྱི་ས་ཁུལ་ཏེ།'
     else:
-        raise Exception(f'Warning: language code "{lang}" is absent from the list!')
+        raise Exception(f'Error: Tests for language "{lang}" is skipped!')
 
 if __name__ == '__main__':
     for lang, word_detokenizer in test_word_detokenizers:
