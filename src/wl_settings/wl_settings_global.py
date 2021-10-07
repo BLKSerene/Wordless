@@ -314,2235 +314,2574 @@ def init_settings_global(main):
             ]
         },
 
+        'lang_util_mappings': {
+            'sentence_tokenizers': {
+                main.tr('botok - Tibetan Sentence Tokenizer'): 'botok_bod',
+                main.tr('NLTK - Punkt Sentence Tokenizer'): 'nltk_punkt',
+                main.tr('PyThaiNLP - CRFCut'): 'pythainlp_crfcut',
+                main.tr('razdel - Russian Sentenizer'): 'razdel_rus',
+
+                main.tr('spaCy - Sentence Recognizer'): 'spacy_sentence_recognizer',
+                main.tr('spaCy - Sentencizer'): 'spacy_sentencizer',
+
+                main.tr('syntok - Sentence Segmenter'): 'syntok_sentence_segmenter',
+                main.tr('Tokenizer - Icelandic Sentence Tokenizer'): 'tokenizer_isl',
+                main.tr('Underthesea - Vietnamese Sentence Tokenizer'): 'underthesea_vie',
+
+                main.tr('Wordless - Chinese Sentence Tokenizer'): 'wordless_zho',
+                main.tr('Wordless - Japanese Sentence Tokenizer'): 'wordless_jpn'
+            },
+
+            'word_tokenizers': {
+                main.tr('botok - Tibetan Word Tokenizer'): 'botok_bod',
+                main.tr('jieba - Chinese Word Tokenizer'): 'jieba_zho',
+                main.tr('nagisa - Japanese Word Tokenizer'): 'nagisa_jpn',
+
+                main.tr('NLTK - NIST Tokenizer'): 'nltk_nist',
+                main.tr('NLTK - NLTK Tokenizer'): 'nltk_nltk',
+                main.tr('NLTK - Penn Treebank Tokenizer'): 'nltk_penn_treebank',
+                main.tr('NLTK - Tok-tok Tokenizer'): 'nltk_tok_tok',
+                main.tr('NLTK - Twitter Tokenizer'): 'nltk_twitter',
+
+                main.tr('pkuseg - Chinese Word Tokenizer'): 'pkuseg_zho',
+
+                main.tr('PyThaiNLP - Longest Matching'): 'pythainlp_longest_matching',
+                main.tr('PyThaiNLP - Maximum Matching'): 'pythainlp_max_matching',
+                main.tr('PyThaiNLP - Maximum Matching + TCC'): 'pythainlp_max_matching_tcc',
+                main.tr('PyThaiNLP - Maximum Matching + TCC (Safe Mode)'): 'pythainlp_max_matching_tcc_safe_mode',
+                main.tr('PyThaiNLP - NERCut'): 'pythainlp_nercut',
+
+                main.tr('razdel - Russian Word Tokenizer'): 'razdel_rus',
+                main.tr('Sacremoses - Moses Tokenizer'): 'sacremoses_moses',
+
+                main.tr('spaCy - Afrikaans Word Tokenizer'): 'spacy_afr',
+                main.tr('spaCy - Albanian Word Tokenizer'): 'spacy_sqi',
+                main.tr('spaCy - Amharic Word Tokenizer'): 'spacy_amh',
+                main.tr('spaCy - Arabic Word Tokenizer'): 'spacy_ara',
+                main.tr('spaCy - Armenian Word Tokenizer'): 'spacy_hye',
+                main.tr('spaCy - Azerbaijani Word Tokenizer'): 'spacy_aze',
+                main.tr('spaCy - Basque Word Tokenizer'): 'spacy_eus',
+                main.tr('spaCy - Bengali Word Tokenizer'): 'spacy_ben',
+                main.tr('spaCy - Bulgarian Word Tokenizer'): 'spacy_bul',
+                main.tr('spaCy - Catalan Word Tokenizer'): 'spacy_cat',
+                main.tr('spaCy - Chinese Word Tokenizer'): 'spacy_zho',
+                main.tr('spaCy - Croatian Word Tokenizer'): 'spacy_hrv',
+                main.tr('spaCy - Czech Word Tokenizer'): 'spacy_ces',
+                main.tr('spaCy - Danish Word Tokenizer'): 'spacy_dan',
+                main.tr('spaCy - Dutch Word Tokenizer'): 'spacy_nld',
+                main.tr('spaCy - English Word Tokenizer'): 'spacy_eng',
+                main.tr('spaCy - Estonian Word Tokenizer'): 'spacy_est',
+                main.tr('spaCy - Finnish Word Tokenizer'): 'spacy_fin',
+                main.tr('spaCy - French Word Tokenizer'): 'spacy_fra',
+                main.tr('spaCy - German Word Tokenizer'): 'spacy_deu',
+                main.tr('spaCy - Greek (Ancient) Word Tokenizer'): 'spacy_grc',
+                main.tr('spaCy - Greek (Modern) Word Tokenizer'): 'spacy_ell',
+                main.tr('spaCy - Gujarati Word Tokenizer'): 'spacy_guj',
+                main.tr('spaCy - Hebrew Word Tokenizer'): 'spacy_heb',
+                main.tr('spaCy - Hindi Word Tokenizer'): 'spacy_hin',
+                main.tr('spaCy - Hungarian Word Tokenizer'): 'spacy_hun',
+                main.tr('spaCy - Icelandic Word Tokenizer'): 'spacy_isl',
+                main.tr('spaCy - Indonesian Word Tokenizer'): 'spacy_ind',
+                main.tr('spaCy - Irish Word Tokenizer'): 'spacy_gle',
+                main.tr('spaCy - Italian Word Tokenizer'): 'spacy_ita',
+                main.tr('spaCy - Kannada Word Tokenizer'): 'spacy_kan',
+                main.tr('spaCy - Kyrgyz Word Tokenizer'): 'spacy_kir',
+                main.tr('spaCy - Latvian Word Tokenizer'): 'spacy_lav',
+                main.tr('spaCy - Ligurian Word Tokenizer'): 'spacy_lij',
+                main.tr('spaCy - Lithuanian Word Tokenizer'): 'spacy_lit',
+                main.tr('spaCy - Luxembourgish Word Tokenizer'): 'spacy_ltz',
+                main.tr('spaCy - Macedonian Word Tokenizer'): 'spacy_mkd',
+                main.tr('spaCy - Malayalam Word Tokenizer'): 'spacy_mal',
+                main.tr('spaCy - Marathi Word Tokenizer'): 'spacy_mar',
+                main.tr('spaCy - Nepali Word Tokenizer'): 'spacy_nep',
+                main.tr('spaCy - Norwegian Word Tokenizer'): 'spacy_nob',
+                main.tr('spaCy - Persian Word Tokenizer'): 'spacy_fas',
+                main.tr('spaCy - Polish Word Tokenizer'): 'spacy_pol',
+                main.tr('spaCy - Portuguese Word Tokenizer'): 'spacy_por',
+                main.tr('spaCy - Romanian Word Tokenizer'): 'spacy_ron',
+                main.tr('spaCy - Russian Word Tokenizer'): 'spacy_rus',
+                main.tr('spaCy - Sanskrit Word Tokenizer'): 'spacy_san',
+                main.tr('spaCy - Serbian Word Tokenizer'): 'spacy_srp',
+                main.tr('spaCy - Sinhala Word Tokenizer'): 'spacy_sin',
+                main.tr('spaCy - Slovak Word Tokenizer'): 'spacy_slk',
+                main.tr('spaCy - Slovenian Word Tokenizer'): 'spacy_slv',
+                main.tr('spaCy - Spanish Word Tokenizer'): 'spacy_spa',
+                main.tr('spaCy - Swedish Word Tokenizer'): 'spacy_swe',
+                main.tr('spaCy - Tagalog Word Tokenizer'): 'spacy_tgl',
+                main.tr('spaCy - Tamil Word Tokenizer'): 'spacy_tam',
+                main.tr('spaCy - Tatar Word Tokenizer'): 'spacy_tat',
+                main.tr('spaCy - Telugu Word Tokenizer'): 'spacy_tel',
+                main.tr('spaCy - Tigrinya Word Tokenizer'): 'spacy_tir',
+                main.tr('spaCy - Tswana Word Tokenizer'): 'spacy_tsn',
+                main.tr('spaCy - Turkish Word Tokenizer'): 'spacy_tur',
+                main.tr('spaCy - Ukrainian Word Tokenizer'): 'spacy_ukr',
+                main.tr('spaCy - Urdu Word Tokenizer'): 'spacy_urd',
+                main.tr('spaCy - Yoruba Word Tokenizer'): 'spacy_yor',
+
+                main.tr('syntok - Word Tokenizer'): 'syntok',
+                main.tr('Tokenizer - Icelandic Word Tokenizer'): 'tokenizer_isl',
+                main.tr('Underthesea - Vietnamese Word Tokenizer'): 'underthesea_vie',
+
+                main.tr('Wordless - Chinese Character Tokenizer'): 'wordless_zho_char',
+                main.tr('Wordless - Japanese Kanji Tokenizer'): 'wordless_jpn_kanji'
+            },
+
+            'syl_tokenizers': {
+                main.tr('Pyphen - Afrikaans Syllable Tokenizer'): 'pyphen_afr',
+                main.tr('Pyphen - Albanian Syllable Tokenizer'): 'pyphen_sqi',
+                main.tr('Pyphen - Belarusian Syllable Tokenizer'): 'pyphen_bel',
+                main.tr('Pyphen - Bulgarian Syllable Tokenizer'): 'pyphen_bul',
+                main.tr('Pyphen - Croatian Syllable Tokenizer'): 'pyphen_hrv',
+                main.tr('Pyphen - Czech Syllable Tokenizer'): 'pyphen_ces',
+                main.tr('Pyphen - Danish Syllable Tokenizer'): 'pyphen_dan',
+                main.tr('Pyphen - Dutch Syllable Tokenizer'): 'pyphen_nld',
+                main.tr('Pyphen - English (United Kingdom) Syllable Tokenizer'): 'pyphen_eng_gb',
+                main.tr('Pyphen - English (United States) Syllable Tokenizer'): 'pyphen_eng_us',
+                main.tr('Pyphen - Esporanto Syllable Tokenizer'): 'pyphen_epo',
+                main.tr('Pyphen - Estonian Syllable Tokenizer'): 'pyphen_est',
+                main.tr('Pyphen - French Syllable Tokenizer'): 'pyphen_fra',
+                main.tr('Pyphen - Galician Syllable Tokenizer'): 'pyphen_glg',
+                main.tr('Pyphen - German (Austria) Syllable Tokenizer'): 'pyphen_deu_at',
+                main.tr('Pyphen - German (Germany) Syllable Tokenizer'): 'pyphen_deu_de',
+                main.tr('Pyphen - German (Switzerland) Syllable Tokenizer'): 'pyphen_deu_ch',
+                main.tr('Pyphen - Greek (Modern) Syllable Tokenizer'): 'pyphen_ell',
+                main.tr('Pyphen - Hungarian Syllable Tokenizer'): 'pyphen_hun',
+                main.tr('Pyphen - Icelandic Syllable Tokenizer'): 'pyphen_isl',
+                main.tr('Pyphen - Indonesian Syllable Tokenizer'): 'pyphen_ind',
+                main.tr('Pyphen - Italian Syllable Tokenizer'): 'pyphen_ita',
+                main.tr('Pyphen - Lithuanian Syllable Tokenizer'): 'pyphen_lit',
+                main.tr('Pyphen - Latvian Syllable Tokenizer'): 'pyphen_lav',
+                main.tr('Pyphen - Mongolian Syllable Tokenizer'): 'pyphen_mon',
+                main.tr('Pyphen - Norwegian Bokmål Syllable Tokenizer'): 'pyphen_nob',
+                main.tr('Pyphen - Norwegian Nynorsk Syllable Tokenizer'): 'pyphen_nno',
+                main.tr('Pyphen - Polish Syllable Tokenizer'): 'pyphen_pol',
+                main.tr('Pyphen - Portuguese (Brazil) Syllable Tokenizer'): 'pyphen_por_br',
+                main.tr('Pyphen - Portuguese (Portugal) Syllable Tokenizer'): 'pyphen_por_pt',
+                main.tr('Pyphen - Romanian Syllable Tokenizer'): 'pyphen_ron',
+                main.tr('Pyphen - Russian Syllable Tokenizer'): 'pyphen_rus',
+                main.tr('Pyphen - Serbian (Cyrillic) Syllable Tokenizer'): 'pyphen_srp_cyrl',
+                main.tr('Pyphen - Serbian (Latin) Syllable Tokenizer'): 'pyphen_srp_latn',
+                main.tr('Pyphen - Slovak Syllable Tokenizer'): 'pyphen_slk',
+                main.tr('Pyphen - Slovenian Syllable Tokenizer'): 'pyphen_slv',
+                main.tr('Pyphen - Spanish Syllable Tokenizer'): 'pyphen_spa',
+                main.tr('Pyphen - Swedish Syllable Tokenizer'): 'pyphen_swe',
+                main.tr('Pyphen - Telugu Syllable Tokenizer'): 'pyphen_tel',
+                main.tr('Pyphen - Ukrainian Syllable Tokenizer'): 'pyphen_ukr',
+                main.tr('Pyphen - Zulu Syllable Tokenizer'): 'pyphen_zul',
+
+                main.tr('PyThaiNLP - Thai Syllable Tokenizer'): 'pythainlp_tha',
+                main.tr('ssg - Thai Syllable Tokenizer'): 'ssg_tha'
+            },
+
+            'word_detokenizers': {
+                main.tr('NLTK - Penn Treebank Detokenizer'): 'nltk_penn_treebank',
+                main.tr('Sacremoses - Moses Detokenizer'): 'sacremoses_moses',
+
+                main.tr('Wordless - Chinese Word Detokenizer'): 'wordless_zho',
+                main.tr('Wordless - Japanese Word Detokenizer'): 'wordless_jpn',
+                main.tr('Wordless - Thai Word Detokenizer'): 'wordless_tha',
+                main.tr('Wordless - Tibetan Word Detokenizer'): 'wordless_bod'
+            },
+
+            'pos_taggers': {
+                main.tr('botok - Tibetan POS Tagger'): 'botok_bod',
+                main.tr('jieba - Chinese POS Tagger'): 'jieba_zho',
+                main.tr('nagisa - Japanese POS Tagger'): 'nagisa_jpn',
+                main.tr('NLTK - Perceptron POS Tagger'): 'nltk_perceptron',
+                main.tr('pymorphy2 - Morphological Analyzer'): 'pymorphy2_morphological_analyzer',
+
+                main.tr('PyThaiNLP - Perceptron POS Tagger (LST20)'): 'pythainlp_perceptron_lst20',
+                main.tr('PyThaiNLP - Perceptron POS Tagger (ORCHID)'): 'pythainlp_perceptron_orchid',
+                main.tr('PyThaiNLP - Perceptron POS Tagger (PUD)'): 'pythainlp_perceptron_pud',
+
+                main.tr('spaCy - Catalan POS Tagger'): 'spacy_cat',
+                main.tr('spaCy - Chinese POS Tagger'): 'spacy_zho',
+                main.tr('spaCy - Danish POS Tagger'): 'spacy_dan',
+                main.tr('spaCy - Dutch POS Tagger'): 'spacy_nld',
+                main.tr('spaCy - English POS Tagger'): 'spacy_eng',
+                main.tr('spaCy - French POS Tagger'): 'spacy_fra',
+                main.tr('spaCy - German POS Tagger'): 'spacy_deu',
+                main.tr('spaCy - Greek (Modern) POS Tagger'): 'spacy_ell',
+                main.tr('spaCy - Italian POS Tagger'): 'spacy_ita',
+                main.tr('spaCy - Lithuanian POS Tagger'): 'spacy_lit',
+                main.tr('spaCy - Macedonian POS Tagger'): 'spacy_mkd',
+                main.tr('spaCy - Norwegian Bokmål POS Tagger'): 'spacy_nob',
+                main.tr('spaCy - Polish POS Tagger'): 'spacy_pol',
+                main.tr('spaCy - Portuguese POS Tagger'): 'spacy_por',
+                main.tr('spaCy - Romanian POS Tagger'): 'spacy_ron',
+                main.tr('spaCy - Russian POS Tagger'): 'spacy_rus',
+                main.tr('spaCy - Spanish POS Tagger'): 'spacy_spa',
+
+                main.tr('Underthesea - Vietnamese POS Tagger'): 'underthesea_vie'
+            },
+
+            'lemmatizers': {
+                main.tr('botok - Tibetan Lemmatizer'): 'botok_bod',
+                main.tr('lemmalist-greek - Greek (Ancient) Lemma List'): 'lemmalist_greek_grc',
+
+                main.tr('Lemmatization Lists - Asturian Lemma List'): 'lemmatization_lists_ast',
+                main.tr('Lemmatization Lists - Bulgarian Lemma List'): 'lemmatization_lists_bul',
+                main.tr('Lemmatization Lists - Catalan Lemma List'): 'lemmatization_lists_cat',
+                main.tr('Lemmatization Lists - Czech Lemma List'): 'lemmatization_lists_ces',
+                main.tr('Lemmatization Lists - English Lemma List'): 'lemmatization_lists_eng',
+                main.tr('Lemmatization Lists - Estonian Lemma List'): 'lemmatization_lists_est',
+                main.tr('Lemmatization Lists - French Lemma List'): 'lemmatization_lists_fra',
+                main.tr('Lemmatization Lists - Galician Lemma List'): 'lemmatization_lists_glg',
+                main.tr('Lemmatization Lists - German Lemma List'): 'lemmatization_lists_deu',
+                main.tr('Lemmatization Lists - Hungarian Lemma List'): 'lemmatization_lists_hun',
+                main.tr('Lemmatization Lists - Irish Lemma List'): 'lemmatization_lists_gle',
+                main.tr('Lemmatization Lists - Italian Lemma List'): 'lemmatization_lists_ita',
+                main.tr('Lemmatization Lists - Manx Lemma List'): 'lemmatization_lists_glv',
+                main.tr('Lemmatization Lists - Persian Lemma List'): 'lemmatization_lists_fas',
+                main.tr('Lemmatization Lists - Portuguese Lemma List'): 'lemmatization_lists_por',
+                main.tr('Lemmatization Lists - Romanian Lemma List'): 'lemmatization_lists_ron',
+                main.tr('Lemmatization Lists - Scottish Gaelic Lemma List'): 'lemmatization_lists_gla',
+                main.tr('Lemmatization Lists - Slovak Lemma List'): 'lemmatization_lists_slk',
+                main.tr('Lemmatization Lists - Slovenian Lemma List'): 'lemmatization_lists_slv',
+                main.tr('Lemmatization Lists - Spanish Lemma List'): 'lemmatization_lists_spa',
+                main.tr('Lemmatization Lists - Swedish Lemma List'): 'lemmatization_lists_swe',
+                main.tr('Lemmatization Lists - Ukrainian Lemma List'): 'lemmatization_lists_ukr',
+                main.tr('Lemmatization Lists - Welsh Lemma List'): 'lemmatization_lists_cym',
+
+                main.tr('NLTK - WordNet Lemmatizer'): 'nltk_wordnet',
+                main.tr('pymorphy2 - Morphological Analyzer'): 'pymorphy2_morphological_analyzer',
+
+                main.tr('spaCy - Bengali Lemmatizer'): 'spacy_ben',
+                main.tr('spaCy - Catalan Lemmatizer'): 'spacy_cat',
+                main.tr('spaCy - Croatian Lemmatizer'): 'spacy_hrv',
+                main.tr('spaCy - Czech Lemmatizer'): 'spacy_ces',
+                main.tr('spaCy - Danish Lemmatizer'): 'spacy_dan',
+                main.tr('spaCy - Dutch Lemmatizer'): 'spacy_nld',
+                main.tr('spaCy - English Lemmatizer'): 'spacy_eng',
+                main.tr('spaCy - French Lemmatizer'): 'spacy_fra',
+                main.tr('spaCy - German Lemmatizer'): 'spacy_deu',
+                main.tr('spaCy - Greek (Modern) Lemmatizer'): 'spacy_ell',
+                main.tr('spaCy - Hungarian Lemmatizer'): 'spacy_hun',
+                main.tr('spaCy - Indonesian Lemmatizer'): 'spacy_ind',
+                main.tr('spaCy - Italian Lemmatizer'): 'spacy_ita',
+                main.tr('spaCy - Lithuanian Lemmatizer'): 'spacy_lit',
+                main.tr('spaCy - Luxembourgish Lemmatizer'): 'spacy_ltz',
+                main.tr('spaCy - Macedonian Lemmatizer'): 'spacy_mkd',
+                main.tr('spaCy - Norwegian Bokmål Lemmatizer'): 'spacy_nob',
+                main.tr('spaCy - Persian Lemmatizer'): 'spacy_fas',
+                main.tr('spaCy - Polish Lemmatizer'): 'spacy_pol',
+                main.tr('spaCy - Portuguese Lemmatizer'): 'spacy_por',
+                main.tr('spaCy - Romanian Lemmatizer'): 'spacy_ron',
+                main.tr('spaCy - Russian Lemmatizer'): 'spacy_rus',
+                main.tr('spaCy - Serbian (Cyrillic) Lemmatizer'): 'spacy_srp_cyrl',
+                main.tr('spaCy - Spanish Lemmatizer'): 'spacy_spa',
+                main.tr('spaCy - Swedish Lemmatizer'): 'spacy_swe',
+                main.tr('spaCy - Tagalog Lemmatizer'): 'spacy_tgl',
+                main.tr('spaCy - Turkish Lemmatizer'): 'spacy_tur',
+                main.tr('spaCy - Urdu Lemmatizer'): 'spacy_urd'
+            },
+
+            'stop_word_lists': {
+                main.tr('Custom List'): 'custom',
+                main.tr('CLTK - Akkadian Stop Word List'): 'cltk_akk',
+                main.tr('CLTK - Arabic (Standard) Stop Word List'): 'cltk_arb',
+                main.tr('CLTK - Coptic Stop Word List'): 'cltk_cop',
+                main.tr('CLTK - English (Middle) Stop Word List'): 'cltk_enm',
+                main.tr('CLTK - English (Old) Stop Word List'): 'cltk_ang',
+                main.tr('CLTK - French (Old) Stop Word List'): 'cltk_fro',
+                main.tr('CLTK - German (Middle High) Stop Word List'): 'cltk_gmh',
+                main.tr('CLTK - Greek (Ancient) Stop Word List'): 'cltk_grc',
+                main.tr('CLTK - Hindi Stop Word List'): 'cltk_hin',
+                main.tr('CLTK - Latin Stop Word List'): 'cltk_lat',
+                main.tr('CLTK - Marathi (Old) Stop Word List'): 'cltk_omr',
+                main.tr('CLTK - Norse (Old) Stop Word List'): 'cltk_non',
+                main.tr('CLTK - Punjabi Stop Word List'): 'cltk_pan',
+                main.tr('CLTK - Sanskrit Stop Word List'): 'cltk_san',
+
+                main.tr('extra-stopwords - Albanian Stop Word List'): 'extra_stopwords_sqi',
+                main.tr('extra-stopwords - Arabic Stop Word List'): 'extra_stopwords_ara',
+                main.tr('extra-stopwords - Armenian Stop Word List'): 'extra_stopwords_hye',
+                main.tr('extra-stopwords - Basque Stop Word List'): 'extra_stopwords_eus',
+                main.tr('extra-stopwords - Belarusian Stop Word List'): 'extra_stopwords_bel',
+                main.tr('extra-stopwords - Bengali Stop Word List'): 'extra_stopwords_ben',
+                main.tr('extra-stopwords - Bulgarian Stop Word List'): 'extra_stopwords_bul',
+                main.tr('extra-stopwords - Catalan Stop Word List'): 'extra_stopwords_cat',
+                main.tr('extra-stopwords - Chinese (Simplified) Stop Word List'): 'extra_stopwords_zho_cn',
+                main.tr('extra-stopwords - Chinese (Traditional) Stop Word List'): 'extra_stopwords_zho_tw',
+                main.tr('extra-stopwords - Croatian Stop Word List'): 'extra_stopwords_hrv',
+                main.tr('extra-stopwords - Czech Stop Word List'): 'extra_stopwords_ces',
+                main.tr('extra-stopwords - Danish Stop Word List'): 'extra_stopwords_dan',
+                main.tr('extra-stopwords - Dutch Stop Word List'): 'extra_stopwords_nld',
+                main.tr('extra-stopwords - English Stop Word List'): 'extra_stopwords_eng',
+                main.tr('extra-stopwords - Estonian Stop Word List'): 'extra_stopwords_est',
+                main.tr('extra-stopwords - Finnish Stop Word List'): 'extra_stopwords_fin',
+                main.tr('extra-stopwords - French Stop Word List'): 'extra_stopwords_fra',
+                main.tr('extra-stopwords - Galician Stop Word List'): 'extra_stopwords_glg',
+                main.tr('extra-stopwords - German Stop Word List'): 'extra_stopwords_deu',
+                main.tr('extra-stopwords - Greek (Modern) Stop Word List'): 'extra_stopwords_ell',
+                main.tr('extra-stopwords - Hausa Stop Word List'): 'extra_stopwords_hau',
+                main.tr('extra-stopwords - Hebrew Stop Word List'): 'extra_stopwords_heb',
+                main.tr('extra-stopwords - Hindi Stop Word List'): 'extra_stopwords_hin',
+                main.tr('extra-stopwords - Hungarian Stop Word List'): 'extra_stopwords_hun',
+                main.tr('extra-stopwords - Icelandic Stop Word List'): 'extra_stopwords_isl',
+                main.tr('extra-stopwords - Indonesian Stop Word List'): 'extra_stopwords_ind',
+                main.tr('extra-stopwords - Irish Stop Word List'): 'extra_stopwords_gle',
+                main.tr('extra-stopwords - Italian Stop Word List'): 'extra_stopwords_ita',
+                main.tr('extra-stopwords - Japanese Stop Word List'): 'extra_stopwords_jpn',
+                main.tr('extra-stopwords - Korean Stop Word List'): 'extra_stopwords_kor',
+                main.tr('extra-stopwords - Kurdish Stop Word List'): 'extra_stopwords_kur',
+                main.tr('extra-stopwords - Latvian Stop Word List'): 'extra_stopwords_lav',
+                main.tr('extra-stopwords - Lithuanian Stop Word List'): 'extra_stopwords_lit',
+                main.tr('extra-stopwords - Malay Stop Word List'): 'extra_stopwords_msa',
+                main.tr('extra-stopwords - Marathi Stop Word List'): 'extra_stopwords_mar',
+                main.tr('extra-stopwords - Mongolian Stop Word List'): 'extra_stopwords_mon',
+                main.tr('extra-stopwords - Nepali Stop Word List'): 'extra_stopwords_nep',
+                main.tr('extra-stopwords - Norwegian Bokmål Stop Word List'): 'extra_stopwords_nob',
+                main.tr('extra-stopwords - Norwegian Bokmål Stop Word List'): 'extra_stopwords_nno',
+                main.tr('extra-stopwords - Persian Stop Word List'): 'extra_stopwords_fas',
+                main.tr('extra-stopwords - Polish Stop Word List'): 'extra_stopwords_pol',
+                main.tr('extra-stopwords - Portuguese Stop Word List'): 'extra_stopwords_por',
+                main.tr('extra-stopwords - Romanian Stop Word List'): 'extra_stopwords_ron',
+                main.tr('extra-stopwords - Russian Stop Word List'): 'extra_stopwords_rus',
+                main.tr('extra-stopwords - Serbian (Cyrillic) Stop Word List'): 'extra_stopwords_srp_cyrl',
+                main.tr('extra-stopwords - Serbian (Latin) Stop Word List'): 'extra_stopwords_srp_latn',
+                main.tr('extra-stopwords - Slovak Stop Word List'): 'extra_stopwords_slk',
+                main.tr('extra-stopwords - Slovenian Stop Word List'): 'extra_stopwords_slv',
+                main.tr('extra-stopwords - Spanish Stop Word List'): 'extra_stopwords_spa',
+                main.tr('extra-stopwords - Swahili Stop Word List'): 'extra_stopwords_swa',
+                main.tr('extra-stopwords - Swedish Stop Word List'): 'extra_stopwords_swe',
+                main.tr('extra-stopwords - Tagalog Stop Word List'): 'extra_stopwords_tgl',
+                main.tr('extra-stopwords - Telugu Stop Word List'): 'extra_stopwords_tel',
+                main.tr('extra-stopwords - Thai Stop Word List'): 'extra_stopwords_tha',
+                main.tr('extra-stopwords - Turkish Stop Word List'): 'extra_stopwords_tur',
+                main.tr('extra-stopwords - Ukrainian Stop Word List'): 'extra_stopwords_ukr',
+                main.tr('extra-stopwords - Urdu Stop Word List'): 'extra_stopwords_urd',
+                main.tr('extra-stopwords - Vietnamese Stop Word List'): 'extra_stopwords_vie',
+                main.tr('extra-stopwords - Yoruba Stop Word List'): 'extra_stopwords_yor',
+
+                main.tr('NLTK - Arabic Stop Word List'): 'nltk_ara',
+                main.tr('NLTK - Azerbaijani Stop Word List'): 'nltk_aze',
+                main.tr('NLTK - Danish Stop Word List'): 'nltk_dan',
+                main.tr('NLTK - Dutch Stop Word List'): 'nltk_nld',
+                main.tr('NLTK - English Stop Word List'): 'nltk_eng',
+                main.tr('NLTK - Finnish Stop Word List'): 'nltk_fin',
+                main.tr('NLTK - French Stop Word List'): 'nltk_fra',
+                main.tr('NLTK - German Stop Word List'): 'nltk_deu',
+                main.tr('NLTK - Greek (Modern) Stop Word List'): 'nltk_ell',
+                main.tr('NLTK - Hungarian Stop Word List'): 'nltk_hun',
+                main.tr('NLTK - Indonesian Stop Word List'): 'nltk_ind',
+                main.tr('NLTK - Italian Stop Word List'): 'nltk_ita',
+                main.tr('NLTK - Kazakh Stop Word List'): 'nltk_kaz',
+                main.tr('NLTK - Nepali Stop Word List'): 'nltk_nep',
+                main.tr('NLTK - Norwegian Bokmål Stop Word List'): 'nltk_nob',
+                main.tr('NLTK - Norwegian Nynorsk Stop Word List'): 'nltk_nno',
+                main.tr('NLTK - Portuguese Stop Word List'): 'nltk_por',
+                main.tr('NLTK - Romanian Stop Word List'): 'nltk_ron',
+                main.tr('NLTK - Russian Stop Word List'): 'nltk_rus',
+                main.tr('NLTK - Slovenian Stop Word List'): 'nltk_slv',
+                main.tr('NLTK - Spanish Stop Word List'): 'nltk_spa',
+                main.tr('NLTK - Swedish Stop Word List'): 'nltk_swe',
+                main.tr('NLTK - Tajik Stop Word List'): 'nltk_tgk',
+                main.tr('NLTK - Turkish Stop Word List'): 'nltk_tur',
+
+                main.tr('PyThaiNLP - Thai Stop Word List'): 'pythainlp_tha',
+            
+                main.tr('spaCy - Afrikaans Stop Word List'): 'spacy_afr',
+                main.tr('spaCy - Albanian Stop Word List'): 'spacy_sqi',
+                main.tr('spaCy - Amharic Stop Word List'): 'spacy_amh',
+                main.tr('spaCy - Arabic Stop Word List'): 'spacy_ara',
+                main.tr('spaCy - Armenian Stop Word List'): 'spacy_hye',
+                main.tr('spaCy - Azerbaijani Stop Word List'): 'spacy_aze',
+                main.tr('spaCy - Basque Stop Word List'): 'spacy_eus',
+                main.tr('spaCy - Bengali Stop Word List'): 'spacy_ben',
+                main.tr('spaCy - Bulgarian Stop Word List'): 'spacy_bul',
+                main.tr('spaCy - Catalan Stop Word List'): 'spacy_cat',
+                main.tr('spaCy - Chinese (Simplified) Stop Word List'): 'spacy_zho_cn',
+                main.tr('spaCy - Chinese (Traditional) Stop Word List'): 'spacy_zho_tw',
+                main.tr('spaCy - Croatian Stop Word List'): 'spacy_hrv',
+                main.tr('spaCy - Czech Stop Word List'): 'spacy_ces',
+                main.tr('spaCy - Danish Stop Word List'): 'spacy_dan',
+                main.tr('spaCy - Dutch Stop Word List'): 'spacy_nld',
+                main.tr('spaCy - English Stop Word List'): 'spacy_eng',
+                main.tr('spaCy - Estonian Stop Word List'): 'spacy_est',
+                main.tr('spaCy - Finnish Stop Word List'): 'spacy_fin',
+                main.tr('spaCy - French Stop Word List'): 'spacy_fra',
+                main.tr('spaCy - German Stop Word List'): 'spacy_deu',
+                main.tr('spaCy - Greek (Ancient) Stop Word List'): 'spacy_grc',
+                main.tr('spaCy - Greek (Modern) Stop Word List'): 'spacy_ell',
+                main.tr('spaCy - Gujarati Stop Word List'): 'spacy_guj',
+                main.tr('spaCy - Hebrew Stop Word List'): 'spacy_heb',
+                main.tr('spaCy - Hindi Stop Word List'): 'spacy_hin',
+                main.tr('spaCy - Hungarian Stop Word List'): 'spacy_hun',
+                main.tr('spaCy - Icelandic Stop Word List'): 'spacy_isl',
+                main.tr('spaCy - Indonesian Stop Word List'): 'spacy_ind',
+                main.tr('spaCy - Irish Stop Word List'): 'spacy_gle',
+                main.tr('spaCy - Italian Stop Word List'): 'spacy_ita',
+                main.tr('spaCy - Japanese Stop Word List'): 'spacy_jpn',
+                main.tr('spaCy - Kannada Stop Word List'): 'spacy_kan',
+                main.tr('spaCy - Korean Stop Word List'): 'spacy_kor',
+                main.tr('spaCy - Kyrgyz Stop Word List'): 'spacy_kir',
+                main.tr('spaCy - Latvian Stop Word List'): 'spacy_lav',
+                main.tr('spaCy - Ligurian Stop Word List'): 'spacy_lij',
+                main.tr('spaCy - Lithuanian Stop Word List'): 'spacy_lit',
+                main.tr('spaCy - Luxembourgish Stop Word List'): 'spacy_ltz',
+                main.tr('spaCy - Macedonian Stop Word List'): 'spacy_mkd',
+                main.tr('spaCy - Malayalam Stop Word List'): 'spacy_mal',
+                main.tr('spaCy - Marathi Stop Word List'): 'spacy_mar',
+                main.tr('spaCy - Nepali Stop Word List'): 'spacy_nep',
+                main.tr('spaCy - Norwegian Bokmål Stop Word List'): 'spacy_nob',
+                main.tr('spaCy - Persian Stop Word List'): 'spacy_fas',
+                main.tr('spaCy - Polish Stop Word List'): 'spacy_pol',
+                main.tr('spaCy - Portuguese Stop Word List'): 'spacy_por',
+                main.tr('spaCy - Romanian Stop Word List'): 'spacy_ron',
+                main.tr('spaCy - Russian Stop Word List'): 'spacy_rus',
+                main.tr('spaCy - Sanskrit Stop Word List'): 'spacy_san',
+                main.tr('spaCy - Serbian (Cyrillic) Stop Word List'): 'spacy_srp_cyrl',
+                main.tr('spaCy - Serbian (Latin) Stop Word List'): 'spacy_srp_latn',
+                main.tr('spaCy - Sinhala Stop Word List'): 'spacy_sin',
+                main.tr('spaCy - Slovak Stop Word List'): 'spacy_slk',
+                main.tr('spaCy - Slovenian Stop Word List'): 'spacy_slv',
+                main.tr('spaCy - Spanish Stop Word List'): 'spacy_spa',
+                main.tr('spaCy - Swedish Stop Word List'): 'spacy_swe',
+                main.tr('spaCy - Tagalog Stop Word List'): 'spacy_tgl',
+                main.tr('spaCy - Tamil Stop Word List'): 'spacy_tam',
+                main.tr('spaCy - Tatar Stop Word List'): 'spacy_tat',
+                main.tr('spaCy - Telugu Stop Word List'): 'spacy_tel',
+                main.tr('spaCy - Thai Stop Word List'): 'spacy_tha',
+                main.tr('spaCy - Tigrinya Stop Word List'): 'spacy_tir',
+                main.tr('spaCy - Tswana Stop Word List'): 'spacy_tsn',
+                main.tr('spaCy - Turkish Stop Word List'): 'spacy_tur',
+                main.tr('spaCy - Ukrainian Stop Word List'): 'spacy_ukr',
+                main.tr('spaCy - Urdu Stop Word List'): 'spacy_urd',
+                main.tr('spaCy - Vietnamese Stop Word List'): 'spacy_vie',
+                main.tr('spaCy - Yoruba Stop Word List'): 'spacy_yor',
+
+                main.tr('Stopwords ISO - Afrikaans Stop Word List'): 'stopwords_iso_afr',
+                main.tr('Stopwords ISO - Arabic Stop Word List'): 'stopwords_iso_ara',
+                main.tr('Stopwords ISO - Armenian Stop Word List'): 'stopwords_iso_hye',
+                main.tr('Stopwords ISO - Basque Stop Word List'): 'stopwords_iso_eus',
+                main.tr('Stopwords ISO - Bengali Stop Word List'): 'stopwords_iso_ben',
+                main.tr('Stopwords ISO - Breton Stop Word List'): 'stopwords_iso_bre',
+                main.tr('Stopwords ISO - Bulgarian Stop Word List'): 'stopwords_iso_bul',
+                main.tr('Stopwords ISO - Catalan Stop Word List'): 'stopwords_iso_cat',
+                main.tr('Stopwords ISO - Chinese (Simplified) Stop Word List'): 'stopwords_iso_zho_cn',
+                main.tr('Stopwords ISO - Chinese (Traditional) Stop Word List'): 'stopwords_iso_zho_tw',
+                main.tr('Stopwords ISO - Croatian Stop Word List'): 'stopwords_iso_hrv',
+                main.tr('Stopwords ISO - Czech Stop Word List'): 'stopwords_iso_ces',
+                main.tr('Stopwords ISO - Danish Stop Word List'): 'stopwords_iso_dan',
+                main.tr('Stopwords ISO - Dutch Stop Word List'): 'stopwords_iso_nld',
+                main.tr('Stopwords ISO - English Stop Word List'): 'stopwords_iso_eng',        
+                main.tr('Stopwords ISO - Esperanto Stop Word List'): 'stopwords_iso_epo',
+                main.tr('Stopwords ISO - Estonian Stop Word List'): 'stopwords_iso_est',
+                main.tr('Stopwords ISO - Finnish Stop Word List'): 'stopwords_iso_fin',
+                main.tr('Stopwords ISO - French Stop Word List'): 'stopwords_iso_fra',
+                main.tr('Stopwords ISO - Galician Stop Word List'): 'stopwords_iso_glg',
+                main.tr('Stopwords ISO - German Stop Word List'): 'stopwords_iso_deu',
+                main.tr('Stopwords ISO - Greek (Modern) Stop Word List'): 'stopwords_iso_ell',
+                main.tr('Stopwords ISO - Gujarati Stop Word List'): 'stopwords_iso_guj',
+                main.tr('Stopwords ISO - Hausa Stop Word List'): 'stopwords_iso_hau',
+                main.tr('Stopwords ISO - Hebrew Stop Word List'): 'stopwords_iso_heb',
+                main.tr('Stopwords ISO - Hindi Stop Word List'): 'stopwords_iso_hin',
+                main.tr('Stopwords ISO - Hungarian Stop Word List'): 'stopwords_iso_hun',
+                main.tr('Stopwords ISO - Indonesian Stop Word List'): 'stopwords_iso_ind',
+                main.tr('Stopwords ISO - Irish Stop Word List'): 'stopwords_iso_gle',
+                main.tr('Stopwords ISO - Italian Stop Word List'): 'stopwords_iso_ita',
+                main.tr('Stopwords ISO - Japanese Stop Word List'): 'stopwords_iso_jpn',
+                main.tr('Stopwords ISO - Korean Stop Word List'): 'stopwords_iso_kor',
+                main.tr('Stopwords ISO - Kurdish Stop Word List'): 'stopwords_iso_kur',
+                main.tr('Stopwords ISO - Latin Stop Word List'): 'stopwords_iso_lat',
+                main.tr('Stopwords ISO - Latvian Stop Word List'): 'stopwords_iso_lav',
+                main.tr('Stopwords ISO - Lithuanian Stop Word List'): 'stopwords_iso_lit',
+                main.tr('Stopwords ISO - Malay Stop Word List'): 'stopwords_iso_msa',
+                main.tr('Stopwords ISO - Marathi Stop Word List'): 'stopwords_iso_mar',
+                main.tr('Stopwords ISO - Norwegian Stop Word List'): 'stopwords_iso_nob',
+                main.tr('Stopwords ISO - Norwegian Stop Word List'): 'stopwords_iso_nno',
+                main.tr('Stopwords ISO - Persian Stop Word List'): 'stopwords_iso_fas',
+                main.tr('Stopwords ISO - Polish Stop Word List'): 'stopwords_iso_pol',
+                main.tr('Stopwords ISO - Portuguese Stop Word List'): 'stopwords_iso_por',
+                main.tr('Stopwords ISO - Romanian Stop Word List'): 'stopwords_iso_ron',
+                main.tr('Stopwords ISO - Russian Stop Word List'): 'stopwords_iso_rus',
+                main.tr('Stopwords ISO - Slovak Stop Word List'): 'stopwords_iso_slk',
+                main.tr('Stopwords ISO - Slovenian Stop Word List'): 'stopwords_iso_slv',
+                main.tr('Stopwords ISO - Somali Stop Word List'): 'stopwords_iso_som',
+                main.tr('Stopwords ISO - Sotho (Southern) Stop Word List'): 'stopwords_iso_sot',
+                main.tr('Stopwords ISO - Spanish Stop Word List'): 'stopwords_iso_spa',
+                main.tr('Stopwords ISO - Swahili Stop Word List'): 'stopwords_iso_swa',
+                main.tr('Stopwords ISO - Swedish Stop Word List'): 'stopwords_iso_swe',
+                main.tr('Stopwords ISO - Tagalog Stop Word List'): 'stopwords_iso_tgl',
+                main.tr('Stopwords ISO - Thai Stop Word List'): 'stopwords_iso_tha',
+                main.tr('Stopwords ISO - Turkish Stop Word List'): 'stopwords_iso_tur',
+                main.tr('Stopwords ISO - Ukrainian Stop Word List'): 'stopwords_iso_ukr',
+                main.tr('Stopwords ISO - Urdu Stop Word List'): 'stopwords_iso_urd',
+                main.tr('Stopwords ISO - Vietnamese Stop Word List'): 'stopwords_iso_vie',
+                main.tr('Stopwords ISO - Yoruba Stop Word List'): 'stopwords_iso_yor',
+                main.tr('Stopwords ISO - Zulu Stop Word List'): 'stopwords_iso_zul'
+            }
+        },
+
         'sentence_tokenizers': {
             'afr': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'sqi': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'amh': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'ara': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'hye': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'aze': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'eus': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'ben': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'bul': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'cat': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'zho_cn': [
-                main.tr('spaCy - Sentence Recognizer'),
-                main.tr('Wordless - Chinese Sentence Tokenizer')
+                'spacy_sentence_recognizer',
+                'wordless_zho'
             ],
             'zho_tw': [
-                main.tr('spaCy - Sentence Recognizer'),
-                main.tr('Wordless - Chinese Sentence Tokenizer')
+                'spacy_sentence_recognizer',
+                'wordless_zho'
             ],
 
             'hrv': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'ces': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                'nltk_punkt',
+                'spacy_sentencizer'
             ],
 
             'dan': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer')
+                'nltk_punkt',
+                'spacy_sentence_recognizer'
             ],
 
             'nld': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer')
+                'nltk_punkt',
+                'spacy_sentence_recognizer'
             ],
 
             'eng_gb': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer'),
-                main.tr('syntok - Sentence Segmenter')
+                'nltk_punkt',
+                'spacy_sentence_recognizer',
+                'syntok_sentence_segmenter'
             ],
             'eng_us': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer'),
-                main.tr('syntok - Sentence Segmenter')
+                'nltk_punkt',
+                'spacy_sentence_recognizer',
+                'syntok_sentence_segmenter'
             ],
 
             'est': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                'nltk_punkt',
+                'spacy_sentencizer'
             ],
 
             'fin': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                'nltk_punkt',
+                'spacy_sentencizer'
             ],
 
             'fra': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer')
+                'nltk_punkt',
+                'spacy_sentence_recognizer'
             ],
 
             'deu_at': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer'),
-                main.tr('syntok - Sentence Segmenter')
+                'nltk_punkt',
+                'spacy_sentence_recognizer',
+                'syntok_sentence_segmenter'
             ],
             'deu_de': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer'),
-                main.tr('syntok - Sentence Segmenter')
+                'nltk_punkt',
+                'spacy_sentence_recognizer',
+                'syntok_sentence_segmenter'
             ],
             'deu_ch': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer'),
-                main.tr('syntok - Sentence Segmenter')
+                'nltk_punkt',
+                'spacy_sentence_recognizer',
+                'syntok_sentence_segmenter'
             ],
 
             'grc': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
             'ell': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer')
+                'nltk_punkt',
+                'spacy_sentence_recognizer'
             ],
 
             'guj': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'heb': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'hin': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'hun': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'isl': [
-                main.tr('spaCy - Sentencizer'),
-                main.tr('Tokenizer - Icelandic Sentence Tokenizer')
+                'spacy_sentencizer',
+                'tokenizer_isl'
             ],
 
             'ind': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'gle': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'ita': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer')
+                'nltk_punkt',
+                'spacy_sentence_recognizer'
             ],
 
             'jpn': [
-                main.tr('Wordless - Japanese Sentence Tokenizer')
+                'wordless_jpn'
             ],
 
             'kan': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'kir': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'lav': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'lij': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'lit': [
-                main.tr('spaCy - Sentence Recognizer')
+                'spacy_sentence_recognizer'
             ],
 
             'ltz': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'mkd': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'mal': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'mar': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'nep': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'nob': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer')
+                'nltk_punkt',
+                'spacy_sentence_recognizer'
             ],
 
             'nno': [
-                main.tr('NLTK - Punkt Sentence Tokenizer')
+                'nltk_punkt'
             ],
 
             'fas': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'pol': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer')
+                'nltk_punkt',
+                'spacy_sentence_recognizer'
             ],
 
             'por_br': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer')
+                'nltk_punkt',
+                'spacy_sentence_recognizer'
             ],
             'por_pt': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer')
+                'nltk_punkt',
+                'spacy_sentence_recognizer'
             ],
 
             'ron': [
-                main.tr('spaCy - Sentence Recognizer')
+                'spacy_sentence_recognizer'
             ],
 
             'rus': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('razdel - Russian Sentenizer'),
-                main.tr('spaCy - Sentence Recognizer')
+                'nltk_punkt',
+                'razdel_rus',
+                'spacy_sentence_recognizer'
             ],
 
             'san': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'srp_cyrl': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
             'srp_latn': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'sin': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'slk': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'slv': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                'nltk_punkt',
+                'spacy_sentencizer'
             ],
 
             'spa': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer'),
-                main.tr('syntok - Sentence Segmenter')
+                'nltk_punkt',
+                'spacy_sentence_recognizer',
+                'syntok_sentence_segmenter'
             ],
 
             'swe': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                'nltk_punkt',
+                'spacy_sentencizer'
             ],
 
             'tgl': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'tam': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'tat': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'tel': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'tha': [
-                main.tr('PyThaiNLP - CRFCut')
+                'pythainlp_crfcut'
             ],
 
             'bod': [
-                main.tr('botok - Tibetan Sentence Tokenizer')
+                'botok_bod'
             ],
 
             'tir': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'tsn': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'tur': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentencizer')
+                'nltk_punkt',
+                'spacy_sentencizer'
             ],
 
             'ukr': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'urd': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'vie': [
-                main.tr('Underthesea - Vietnamese Sentence Tokenizer')
+                'underthesea_vie'
             ],
 
             'yor': [
-                main.tr('spaCy - Sentencizer')
+                'spacy_sentencizer'
             ],
 
             'other': [
-                main.tr('NLTK - Punkt Sentence Tokenizer'),
-                main.tr('spaCy - Sentence Recognizer'),
-                main.tr('syntok - Sentence Segmenter')
+                'nltk_punkt',
+                'spacy_sentence_recognizer',
+                'syntok_sentence_segmenter'
             ]
         },
 
         'word_tokenizers': {
             'afr': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Afrikaans Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_afr'
             ],
 
             'sqi': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Albanian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_sqi'
             ],
 
             'amh': [
-                main.tr('spaCy - Amharic Word Tokenizer')
+                'spacy_amh'
             ],
 
             'ara': [
-                main.tr('spaCy - Arabic Word Tokenizer')
+                'spacy_ara'
             ],
 
             'hye': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Armenian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_hye'
             ],
 
             'asm': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses'
             ],
 
             'aze': [
-                main.tr('spaCy - Azerbaijani Word Tokenizer')
+                'spacy_aze'
             ],
 
             'eus': [
-                main.tr('spaCy - Basque Word Tokenizer')
+                'spacy_eus'
             ],
 
             'ben': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Bengali Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_ben'
             ],
 
             'bul': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Bulgarian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_bul'
             ],
 
             'cat': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Catalan Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_cat'
             ],
 
             'zho_cn': [
-                main.tr('jieba - Chinese Word Tokenizer'),
-                main.tr('pkuseg - Chinese Word Tokenizer'),
-                main.tr('spaCy - Chinese Word Tokenizer'),
-                main.tr('Wordless - Chinese Character Tokenizer')
+                'jieba_zho',
+                'pkuseg_zho',
+                'spacy_zho',
+                'wordless_zho_char'
             ],
             'zho_tw': [
-                main.tr('jieba - Chinese Word Tokenizer'),
-                main.tr('pkuseg - Chinese Word Tokenizer'),
-                main.tr('spaCy - Chinese Word Tokenizer'),
-                main.tr('Wordless - Chinese Character Tokenizer')
+                'jieba_zho',
+                'pkuseg_zho',
+                'spacy_zho',
+                'wordless_zho_char'
             ],
 
             'hrv': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Croatian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_hrv'
             ],
 
             'ces': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Czech Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_ces'
             ],
 
             'dan': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Danish Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_dan'
             ],
 
             'nld': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Dutch Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_nld'
             ],
 
             'eng_gb': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - English Word Tokenizer'),
-                main.tr('syntok - Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_eng',
+                'syntok'
             ],
             'eng_us': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - English Word Tokenizer'),
-                main.tr('syntok - Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_eng',
+                'syntok'
             ],
 
             'est': [
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Estonian Word Tokenizer')
+                'sacremoses_moses',
+                'spacy_est'
             ],
 
             'fin': [
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Finnish Word Tokenizer')
+                'sacremoses_moses',
+                'spacy_fin'
             ],
 
             'fra': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - French Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_fra'
             ],
 
             'deu_at': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - German Word Tokenizer'),
-                main.tr('syntok - Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_deu',
+                'syntok'
             ],
             'deu_de': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - German Word Tokenizer'),
-                main.tr('syntok - Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_deu',
+                'syntok'
             ],
             'deu_ch': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - German Word Tokenizer'),
-                main.tr('syntok - Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_deu',
+                'syntok'
             ],
 
             'grc': [
-                main.tr('spaCy - Greek (Ancient) Word Tokenizer')
+                'spacy_grc'
             ],
             'ell': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Greek (Modern) Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_ell'
             ],
 
             'guj': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Gujarati Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_guj'
             ],
 
             'heb': [
-                main.tr('spaCy - Hebrew Word Tokenizer')
+                'spacy_heb'
             ],
 
             'hin': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Hindi Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_hin'
             ],
 
             'hun': [
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Hungarian Word Tokenizer')
+                'sacremoses_moses',
+                'spacy_hun'
             ],
 
             'isl': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Icelandic Word Tokenizer'),
-                main.tr('Tokenizer - Icelandic Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_isl',
+                'tokenizer_isl'
             ],
 
             'ind': [
-                main.tr('spaCy - Indonesian Word Tokenizer')
+                'spacy_ind'
             ],
 
             'gle': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Irish Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_gle'
             ],
 
             'ita': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Italian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_ita'
             ],
 
             'jpn': [
-                main.tr('nagisa - Japanese Word Tokenizer'),
-                main.tr('Wordless - Japanese Kanji Tokenizer')
+                'nagisa_jpn',
+                'wordless_jpn_kanji'
             ],
 
             'kan': [
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Kannada Word Tokenizer')
+                'sacremoses_moses',
+                'spacy_kan'
             ],
 
             'kir': [
-                main.tr('spaCy - Kyrgyz Word Tokenizer')
+                'spacy_kir'
             ],
 
             'lav': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Latvian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_lav'
             ],
 
             'lij': [
-                main.tr('spaCy - Ligurian Word Tokenizer')
+                'spacy_lij'
             ],
 
             'lit': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Lithuanian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_lit'
             ],
 
             'ltz': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Luxembourgish Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_ltz'
             ],
 
             'mkd': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Macedonian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_mkd'
             ],
 
             'mal': [
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Malayalam Word Tokenizer')
+                'sacremoses_moses',
+                'spacy_mal'
             ],
 
             'mar': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Marathi Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_mar'
             ],
 
             'mni': [
-                main.tr('Sacremoses - Moses Tokenizer')
+                'sacremoses_moses'
             ],
 
             'nep': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Nepali Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_nep'
             ],
 
             'nob': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Norwegian Bokmål Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_nob'
             ],
 
             'ori': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses'
             ],
 
             'fas': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Persian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'spacy_fas'
             ],
 
             'pol': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Polish Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_pol'
             ],
 
             'por_br': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Portuguese Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_por'
             ],
             'por_pt': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Portuguese Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_por'
             ],
 
             'pan': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses'
             ],
 
             'ron': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Romanian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_ron'
             ],
 
             'rus': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('razdel - Russian Word Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Russian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'razdel_rus',
+                'sacremoses_moses',
+                'spacy_rus'
             ],
 
             'san': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Sanskrit Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_san'
             ],
 
             'srp_cyrl': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Serbian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_srp'
             ],
             'srp_latn': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Serbian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_srp'
             ],
 
             'sin': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Sinhala Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_sin'
             ],
 
             'slk': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Slovak Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_slk'
             ],
 
             'slv': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Slovenian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_slv'
             ],
 
             'spa': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Spanish Word Tokenizer'),
-                main.tr('syntok - Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_spa'
+                'syntok'
             ],
 
             'swe': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Swedish Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_swe'
             ],
 
             'tgl': [
-                main.tr('spaCy - Tagalog Word Tokenizer')
+                'spacy_tgl'
             ],
 
             'tgk': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
             ],
 
             'tam': [
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Tamil Word Tokenizer')
+                'sacremoses_moses',
+                'spacy_tam'
             ],
 
             'tat': [
-                main.tr('spaCy - Tatar Word Tokenizer')
+                'spacy_tat'
             ],
 
             'tel': [
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - Telugu Word Tokenizer')
+                'sacremoses_moses',
+                'spacy_tel'
             ],
 
             'tdt': [
-                main.tr('Sacremoses - Moses Tokenizer')
+                'sacremoses_moses'
             ],
 
             'tha': [
-                main.tr('PyThaiNLP - Longest Matching'),
-                main.tr('PyThaiNLP - Maximum Matching'),
-                main.tr('PyThaiNLP - Maximum Matching + TCC'),
-                main.tr('PyThaiNLP - Maximum Matching + TCC (Safe Mode)'),
-                main.tr('PyThaiNLP - NERCut')
+                'pythainlp_longest_matching',
+                'pythainlp_max_matching',
+                'pythainlp_max_matching_tcc',
+                'pythainlp_max_matching_tcc_safe_mode',
+                'pythainlp_nercut'
             ],
 
             'bod': [
-                main.tr('botok - Tibetan Word Tokenizer')
+                'botok_bod'
             ],
 
             'tir': [
-                main.tr('spaCy - Tigrinya Word Tokenizer')
+                'spacy_tir'
             ],
 
             'tsn': [
-                main.tr('spaCy - Tswana Word Tokenizer')
+                'spacy_tsn'
             ],
 
             'tur': [
-                main.tr('spaCy - Turkish Word Tokenizer')
+                'spacy_tur'
             ],
 
             'ukr': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Ukrainian Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_ukr'
             ],
 
             'urd': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('spaCy - Urdu Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'spacy_urd'
             ],
 
             'vie': [
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('Underthesea - Vietnamese Word Tokenizer')
+                'nltk_tok_tok',
+                'underthesea_vie'
             ],
 
             'yor': [
-                main.tr('spaCy - Yoruba Word Tokenizer')
+                'spacy_yor'
             ],
 
             'other': [
-                main.tr('NLTK - NIST Tokenizer'),
-                main.tr('NLTK - NLTK Tokenizer'),
-                main.tr('NLTK - Penn Treebank Tokenizer'),
-                main.tr('NLTK - Tok-tok Tokenizer'),
-                main.tr('NLTK - Twitter Tokenizer'),
-                main.tr('Sacremoses - Moses Tokenizer'),
-                main.tr('spaCy - English Word Tokenizer'),
-                main.tr('syntok - Word Tokenizer')
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'sacremoses_moses',
+                'spacy_eng',
+                'syntok'
             ]
         },
 
         'syl_tokenizers': {
             'afr': [
-                main.tr('Pyphen - Afrikaans Syllable Tokenizer')
+                'pyphen_afr'
             ],
 
             'sqi': [
-                main.tr('Pyphen - Albanian Syllable Tokenizer')
+                'pyphen_sqi'
             ],
 
             'bel': [
-                main.tr('Pyphen - Belarusian Syllable Tokenizer')
+                'pyphen_bel'
             ],
 
             'bul': [
-                main.tr('Pyphen - Bulgarian Syllable Tokenizer')
+                'pyphen_bul'
             ],
 
             'hrv': [
-                main.tr('Pyphen - Croatian Syllable Tokenizer')
+                'pyphen_hrv'
             ],
 
             'ces': [
-                main.tr('Pyphen - Czech Syllable Tokenizer')
+                'pyphen_ces'
             ],
 
             'dan': [
-                main.tr('Pyphen - Danish Syllable Tokenizer')
+                'pyphen_dan'
             ],
 
             'nld': [
-                main.tr('Pyphen - Dutch Syllable Tokenizer')
+                'pyphen_nld'
             ],
 
             'eng_gb': [
-                main.tr('Pyphen - English (United Kingdom) Syllable Tokenizer')
+                'pyphen_eng_gb'
             ],
             'eng_us': [
-                main.tr('Pyphen - English (United States) Syllable Tokenizer')
+                'pyphen_eng_us'
             ],
 
             'epo': [
-                main.tr('Pyphen - Esporanto Syllable Tokenizer')
+                'pyphen_epo'
             ],
 
             'est': [
-                main.tr('Pyphen - Estonian Syllable Tokenizer')
+                'pyphen_est'
             ],
 
             'fra': [
-                main.tr('Pyphen - French Syllable Tokenizer')
+                'pyphen_fra'
             ],
 
             'glg': [
-                main.tr('Pyphen - Galician Syllable Tokenizer')
+                'pyphen_glg'
             ],
 
             'deu_at': [
-                main.tr('Pyphen - German (Austria) Syllable Tokenizer')
+                'pyphen_deu_at'
             ],
             'deu_de': [
-                main.tr('Pyphen - German (Germany) Syllable Tokenizer')
+                'pyphen_deu_de'
             ],
             'deu_ch': [
-                main.tr('Pyphen - German (Switzerland) Syllable Tokenizer')
+                'pyphen_deu_ch'
             ],
 
             'ell': [
-                main.tr('Pyphen - Greek (Modern) Syllable Tokenizer')
+                'pyphen_ell'
             ],
 
             'hun': [
-                main.tr('Pyphen - Hungarian Syllable Tokenizer')
+                'pyphen_hun'
             ],
 
             'isl': [
-                main.tr('Pyphen - Icelandic Syllable Tokenizer')
+                'pyphen_isl'
             ],
 
             'ind': [
-                main.tr('Pyphen - Indonesian Syllable Tokenizer')
+                'pyphen_ind'
             ],
 
             'ita': [
-                main.tr('Pyphen - Italian Syllable Tokenizer')
+                'pyphen_ita'
             ],
 
             'lit': [
-                main.tr('Pyphen - Lithuanian Syllable Tokenizer')
+                'pyphen_lit'
             ],
 
             'lav': [
-                main.tr('Pyphen - Latvian Syllable Tokenizer')
+                'pyphen_lav'
             ],
 
             'mon': [
-                main.tr('Pyphen - Mongolian Syllable Tokenizer')
+                'pyphen_mon'
             ],
 
             'nob': [
-                main.tr('Pyphen - Norwegian Bokmål Syllable Tokenizer')
+                'pyphen_nob'
             ],
             'nno': [
-                main.tr('Pyphen - Norwegian Nynorsk Syllable Tokenizer')
+                'pyphen_nno'
             ],
 
             'pol': [
-                main.tr('Pyphen - Polish Syllable Tokenizer')
+                'pyphen_pol'
             ],
 
             'por_br': [
-                main.tr('Pyphen - Portuguese (Brazil) Syllable Tokenizer')
+                'pyphen_por_br'
             ],
             'por_pt': [
-                main.tr('Pyphen - Portuguese (Portugal) Syllable Tokenizer')
+                'pyphen_por_pt'
             ],
 
             'ron': [
-                main.tr('Pyphen - Romanian Syllable Tokenizer')
+                'pyphen_ron'
             ],
 
             'rus': [
-                main.tr('Pyphen - Russian Syllable Tokenizer')
+                'pyphen_rus'
             ],
 
             'srp_cyrl': [
-                main.tr('Pyphen - Serbian (Cyrillic) Syllable Tokenizer')
+                'pyphen_srp_cyrl'
             ],
             'srp_latn': [
-                main.tr('Pyphen - Serbian (Latin) Syllable Tokenizer')
+                'pyphen_srp_latn'
             ],
 
             'slk': [
-                main.tr('Pyphen - Slovak Syllable Tokenizer')
+                'pyphen_slk'
             ],
 
             'slv': [
-                main.tr('Pyphen - Slovenian Syllable Tokenizer')
+                'pyphen_slv'
             ],
 
             'spa': [
-                main.tr('Pyphen - Spanish Syllable Tokenizer')
+                'pyphen_spa'
             ],
 
             'swe': [
-                main.tr('Pyphen - Swedish Syllable Tokenizer')
+                'pyphen_swe'
             ],
 
             'tel': [
-                main.tr('Pyphen - Telugu Syllable Tokenizer')
+                'pyphen_tel'
             ],
 
             'tha': [
-                main.tr('PyThaiNLP - Thai Syllable Tokenizer'),
-                main.tr('ssg - Thai Syllable Tokenizer')
+                'pythainlp_tha',
+                'ssg_tha'
             ],
 
             'ukr': [
-                main.tr('Pyphen - Ukrainian Syllable Tokenizer')
+                'pyphen_ukr'
             ],
 
             'zul': [
-                main.tr('Pyphen - Zulu Syllable Tokenizer')
+                'pyphen_zul'
             ]
         },
 
         'word_detokenizers': {
             'asm': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'ben': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'cat': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'zho_cn': [
-                main.tr('Wordless - Chinese Word Detokenizer')
+                'wordless_zho'
             ],
             'zho_tw': [
-                main.tr('Wordless - Chinese Word Detokenizer')
+                'wordless_zho'
             ],
 
             'ces': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'nld': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'eng_gb': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
             'eng_us': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'est': [
-                main.tr('Sacremoses - Moses Detokenizer')
+                'sacremoses_moses'
             ],
 
             'fin': [
-                main.tr('Sacremoses - Moses Detokenizer')
+                'sacremoses_moses'
             ],
 
             'fra': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'deu_at': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
             'deu_de': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
             'deu_ch': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'ell': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'guj': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'hin': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'hun': [
-                main.tr('Sacremoses - Moses Detokenizer')
+                'sacremoses_moses'
             ],
 
             'isl': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'gle': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'ita': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'jpn': [
-                main.tr('Wordless - Japanese Word Detokenizer')
+                'wordless_jpn'
             ],
 
             'kan': [
-                main.tr('Sacremoses - Moses Detokenizer')
+                'sacremoses_moses'
             ],
 
             'lav': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'lit': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'mal': [
-                main.tr('Sacremoses - Moses Detokenizer')
+                'sacremoses_moses'
             ],
 
             'mar': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'mni': [
-                main.tr('Sacremoses - Moses Detokenizer')
+                'sacremoses_moses'
             ],
 
             'ori': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'pol': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'por_br': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
             'por_pt': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'pan': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'ron': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'rus': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'slk': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'slv': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'spa': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'swe': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ],
 
             'tam': [
-                main.tr('Sacremoses - Moses Detokenizer')
+                'sacremoses_moses'
             ],
 
             'tel': [
-                main.tr('Sacremoses - Moses Detokenizer')
+                'sacremoses_moses'
             ],
 
             'tdt': [
-                main.tr('Sacremoses - Moses Detokenizer')
+                'sacremoses_moses'
             ],
 
             'tha': [
-                main.tr('Wordless - Thai Word Detokenizer')
+                'wordless_tha'
             ],
 
             'bod': [
-                main.tr('Wordless - Tibetan Word Detokenizer')
+                'wordless_bod'
             ],
 
             'other': [
-                main.tr('NLTK - Penn Treebank Detokenizer'),
-                main.tr('Sacremoses - Moses Detokenizer')
+                'nltk_penn_treebank',
+                'sacremoses_moses'
             ]
         },
 
         'pos_taggers': {
             'cat': [
-                main.tr('spaCy - Catalan POS Tagger')
+                'spacy_cat'
             ],
 
             'zho_cn': [
-                main.tr('jieba - Chinese POS Tagger'),
-                main.tr('spaCy - Chinese POS Tagger')
+                'jieba_zho',
+                'spacy_zho'
             ],
             'zho_tw': [
-                main.tr('jieba - Chinese POS Tagger'),
-                main.tr('spaCy - Chinese POS Tagger')
+                'jieba_zho',
+                'spacy_zho'
             ],
 
             'dan': [
-                main.tr('spaCy - Danish POS Tagger'),
+                'spacy_dan',
             ],
 
             'nld': [
-                main.tr('spaCy - Dutch POS Tagger')
+                'spacy_nld'
             ],
 
             'eng_gb': [
-                main.tr('NLTK - Perceptron POS Tagger'),
-                main.tr('spaCy - English POS Tagger')
+                'nltk_perceptron',
+                'spacy_eng'
             ],
             'eng_us': [
-                main.tr('NLTK - Perceptron POS Tagger'),
-                main.tr('spaCy - English POS Tagger')
+                'nltk_perceptron',
+                'spacy_eng'
             ],
 
             'fra': [
-                main.tr('spaCy - French POS Tagger')
+                'spacy_fra'
             ],
 
             'deu_at': [
-                main.tr('spaCy - German POS Tagger')
+                'spacy_deu'
             ],
             'deu_de': [
-                main.tr('spaCy - German POS Tagger')
+                'spacy_deu'
             ],
             'deu_ch': [
-                main.tr('spaCy - German POS Tagger')
+                'spacy_deu'
             ],
 
             'ell': [
-                main.tr('spaCy - Greek (Modern) POS Tagger')
+                'spacy_ell'
             ],
 
             'ita': [
-                main.tr('spaCy - Italian POS Tagger')
+                'spacy_ita'
             ],
 
             'jpn': [
-                main.tr('nagisa - Japanese POS Tagger')
+                'nagisa_jpn'
             ],
 
             'lit': [
-                main.tr('spaCy - Lithuanian POS Tagger')
+                'spacy_lit'
             ],
 
             'mkd': [
-                main.tr('spaCy - Macedonian POS Tagger')
+                'spacy_mkd'
             ],
 
             'nob': [
-                main.tr('spaCy - Norwegian Bokmål POS Tagger')
+                'spacy_nob'
             ],
 
             'pol': [
-                main.tr('spaCy - Polish POS Tagger'),
+                'spacy_pol'
             ],
 
             'por_br': [
-                main.tr('spaCy - Portuguese POS Tagger')
+                'spacy_por'
             ],
             'por_pt': [
-                main.tr('spaCy - Portuguese POS Tagger')
+                'spacy_por'
             ],
 
             'ron': [
-                main.tr('spaCy - Romanian POS Tagger')
+                'spacy_ron'
             ],
 
             'rus': [
-                main.tr('NLTK - Perceptron POS Tagger'),
-                main.tr('pymorphy2 - Morphological Analyzer'),
-                main.tr('spaCy - Russian POS Tagger')
+                'nltk_perceptron',
+                'pymorphy2_morphological_analyzer',
+                'spacy_rus'
             ],
 
             'spa': [
-                main.tr('spaCy - Spanish POS Tagger'),
+                'spacy_spa'
             ],
 
             'tha': [
-                main.tr('PyThaiNLP - Perceptron Tagger (LST20)'),
-                main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'),
-                main.tr('PyThaiNLP - Perceptron Tagger (PUD)')
+                'pythainlp_perceptron_lst20',
+                'pythainlp_perceptron_orchid',
+                'pythainlp_perceptron_pud'
             ],
 
             'bod': [
-                main.tr('botok - Tibetan POS Tagger')
+                'botok_bod'
             ],
 
             'ukr': [
-                main.tr('pymorphy2 - Morphological Analyzer')
+                'pymorphy2_morphological_analyzer'
             ],
 
             'vie': [
-                main.tr('Underthesea - Vietnamese POS Tagger')
+                'underthesea_vie'
             ]
         },
 
         'lemmatizers': {
             'ast': [
-                main.tr('Lemmatization Lists - Asturian Lemma List')
+                'lemmatization_lists_ast'
             ],
 
             'ben': [
-                main.tr('spaCy - Bengali Lemmatizer')
+                'spacy_ben'
             ],
 
             'bul': [
-                main.tr('Lemmatization Lists - Bulgarian Lemma List')
+                'lemmatization_lists_bul'
             ],
 
             'cat': [
-                main.tr('Lemmatization Lists - Catalan Lemma List'),
-                main.tr('spaCy - Catalan Lemmatizer')
+                'lemmatization_lists_cat',
+                'spacy_cat'
             ],
 
             'hrv': [
-                main.tr('spaCy - Croatian Lemmatizer')
+                'spacy_hrv'
             ],
 
             'ces': [
-                main.tr('Lemmatization Lists - Czech Lemma List'),
-                main.tr('spaCy - Czech Lemmatizer')
+                'lemmatization_lists_ces',
+                'spacy_ces'
             ],
 
             'dan': [
-                main.tr('spaCy - Danish Lemmatizer')
+                'spacy_dan'
             ],
 
             'nld': [
-                main.tr('spaCy - Dutch Lemmatizer')
+                'spacy_nld'
             ],
 
             'eng_gb': [
-                main.tr('Lemmatization Lists - English Lemma List'),
-                main.tr('NLTK - WordNet Lemmatizer'),
-                main.tr('spaCy - English Lemmatizer')
+                'lemmatization_lists_eng',
+                'nltk_wordnet',
+                'spacy_eng'
             ],
             'eng_us': [
-                main.tr('Lemmatization Lists - English Lemma List'),
-                main.tr('NLTK - WordNet Lemmatizer'),
-                main.tr('spaCy - English Lemmatizer')
+                'lemmatization_lists_eng',
+                'nltk_wordnet',
+                'spacy_eng'
             ],
 
             'est': [
-                main.tr('Lemmatization Lists - Estonian Lemma List')
+                'lemmatization_lists_est'
             ],
 
             'fra': [
-                main.tr('Lemmatization Lists - French Lemma List'),
-                main.tr('spaCy - French Lemmatizer')
+                'lemmatization_lists_fra',
+                'spacy_fra'
             ],
 
             'glg': [
-                main.tr('Lemmatization Lists - Galician Lemma List')
+                'lemmatization_lists_glg'
             ],
 
             'deu_at': [
-                main.tr('Lemmatization Lists - German Lemma List'),
-                main.tr('spaCy - German Lemmatizer')
+                'lemmatization_lists_deu',
+                'spacy_deu'
             ],
             'deu_de': [
-                main.tr('Lemmatization Lists - German Lemma List'),
-                main.tr('spaCy - German Lemmatizer')
+                'lemmatization_lists_deu',
+                'spacy_deu'
             ],
             'deu_ch': [
-                main.tr('Lemmatization Lists - German Lemma List'),
-                main.tr('spaCy - German Lemmatizer')
+                'lemmatization_lists_deu',
+                'spacy_deu'
             ],
 
             'grc': [
-                main.tr('lemmalist-greek - Greek (Ancient) Lemma List')
+                'lemmalist_greek_grc'
             ],
             'ell': [
-                main.tr('spaCy - Greek (Modern) Lemmatizer')
+                'spacy_ell'
             ],
 
             'hun': [
-                main.tr('Lemmatization Lists - Hungarian Lemma List'),
-                main.tr('spaCy - Hungarian Lemmatizer')
+                'lemmatization_lists_hun',
+                'spacy_hun'
             ],
 
             'ind': [
-                main.tr('spaCy - Indonesian Lemmatizer')
+                'spacy_ind'
             ],
 
             'gle': [
-                main.tr('Lemmatization Lists - Irish Lemma List')
+                'lemmatization_lists_gle'
             ],
 
             'ita': [
-                main.tr('Lemmatization Lists - Italian Lemma List'),
-                main.tr('spaCy - Italian Lemmatizer')
+                'lemmatization_lists_ita',
+                'spacy_ita'
             ],
 
             'lit': [
-                main.tr('spaCy - Lithuanian Lemmatizer')
+                'spacy_lit'
             ],
 
             'ltz': [
-                main.tr('spaCy - Luxembourgish Lemmatizer')
+                'spacy_ltz'
             ],
 
             'mkd': [
-                main.tr('spaCy - Macedonian Lemmatizer')
+                'spacy_mkd'
             ],
 
             'glv': [
-                main.tr('Lemmatization Lists - Manx Lemma List')
+                'lemmatization_lists_glv'
             ],
 
             'nob': [
-                main.tr('spaCy - Norwegian Bokmål Lemmatizer')
+                'spacy_nob'
             ],
 
             'fas': [
-                main.tr('Lemmatization Lists - Persian Lemma List'),
-                main.tr('spaCy - Persian Lemmatizer')
+                'lemmatization_lists_fas',
+                'spacy_fas'
             ],
 
             'pol': [
-                main.tr('spaCy - Polish Lemmatizer')
+                'spacy_pol'
             ],
 
             'por_br': [
-                main.tr('Lemmatization Lists - Portuguese Lemma List'),
-                main.tr('spaCy - Portuguese Lemmatizer')
+                'lemmatization_lists_por',
+                'spacy_por'
             ],
             'por_pt': [
-                main.tr('Lemmatization Lists - Portuguese Lemma List'),
-                main.tr('spaCy - Portuguese Lemmatizer')
+                'lemmatization_lists_por',
+                'spacy_por'
             ],
 
             'ron': [
-                main.tr('Lemmatization Lists - Romanian Lemma List'),
-                main.tr('spaCy - Romanian Lemmatizer')
+                'lemmatization_lists_ron',
+                'spacy_ron'
             ],
 
             'rus': [
-                main.tr('pymorphy2 - Morphological Analyzer'),
-                main.tr('spaCy - Russian Lemmatizer')
+                'pymorphy2_morphological_analyzer',
+                'spacy_rus'
             ],
 
             'gla': [
-                main.tr('Lemmatization Lists - Scottish Gaelic Lemma List')
+                'lemmatization_lists_gla'
             ],
 
             'srp_cyrl': [
-                main.tr('spaCy - Serbian (Cyrillic) Lemmatizer')
+                'spacy_srp_cyrl'
             ],
 
             'slk': [
-                main.tr('Lemmatization Lists - Slovak Lemma List')
+                'lemmatization_lists_slk'
             ],
 
             'slv': [
-                main.tr('Lemmatization Lists - Slovenian Lemma List')
+                'lemmatization_lists_slv'
             ],
 
             'spa': [
-                main.tr('Lemmatization Lists - Spanish Lemma List'),
-                main.tr('spaCy - Spanish Lemmatizer')
+                'lemmatization_lists_spa',
+                'spacy_spa'
             ],
 
             'swe': [
-                main.tr('Lemmatization Lists - Swedish Lemma List'),
-                main.tr('spaCy - Swedish Lemmatizer')
+                'lemmatization_lists_swe',
+                'spacy_swe'
             ],
 
             'tgl': [
-                main.tr('spaCy - Tagalog Lemmatizer')
+                'spacy_tgl'
             ],
 
             'bod': [
-                main.tr('botok - Tibetan Lemmatizer')
+                'botok_bod'
             ],
 
             'tur': [
-                main.tr('spaCy - Turkish Lemmatizer')
+                'spacy_tur'
             ],
 
             'ukr': [
-                main.tr('Lemmatization Lists - Ukrainian Lemma List'),
-                main.tr('pymorphy2 - Morphological Analyzer')
+                'lemmatization_lists_ukr',
+                'pymorphy2_morphological_analyzer'
             ],
 
             'urd': [
-                main.tr('spaCy - Urdu Lemmatizer')
+                'spacy_urd'
             ],
 
             'cym': [
-                main.tr('Lemmatization Lists - Welsh Lemma List')
+                'lemmatization_lists_cym'
             ]
         },
 
         'stop_word_lists': {
             'afr': [
-                main.tr('spaCy - Afrikaans Stop Word List'),
-                main.tr('Stopwords ISO - Afrikaans Stop Word List'),
-                main.tr('Custom List')
+                'spacy_afr',
+                'stopwords_iso_afr',
+                'custom'
             ],
 
             'akk': [
-                main.tr('CLTK - Akkadian Stop Word List'),
-                main.tr('Custom List')
+                'cltk_akk',
+                'custom'
             ],
 
             'sqi': [
-                main.tr('extra-stopwords - Albanian Stop Word List'),
-                main.tr('spaCy - Albanian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_sqi',
+                'spacy_sqi',
+                'custom'
             ],
 
             'amh': [
-                main.tr('spaCy - Amharic Stop Word List'),
-                main.tr('Custom List')
+                'spacy_amh',
+                'custom'
             ],
 
             'ara': [
-                main.tr('extra-stopwords - Arabic Stop Word List'),
-                main.tr('NLTK - Arabic Stop Word List'),
-                main.tr('spaCy - Arabic Stop Word List'),
-                main.tr('Stopwords ISO - Arabic Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_ara',
+                'nltk_ara',
+                'spacy_ara',
+                'stopwords_iso_ara',
+                'custom'
             ],
 
             'arb': [
-                main.tr('CLTK - Arabic (Standard) Stop Word List'),
-                main.tr('Custom List')
+                'cltk_arb',
+                'custom'
             ],
 
             'hye': [
-                main.tr('extra-stopwords - Armenian Stop Word List'),
-                main.tr('spaCy - Armenian Stop Word List'),
-                main.tr('Stopwords ISO - Armenian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_hye',
+                'spacy_hye',
+                'stopwords_iso_hye',
+                'custom'
             ],
 
             'aze': [
-                main.tr('NLTK - Azerbaijani Stop Word List'),
-                main.tr('spaCy - Azerbaijani Stop Word List'),
-                main.tr('Custom List')
+                'nltk_aze',
+                'spacy_aze',
+                'custom'
             ],
 
             'eus': [
-                main.tr('extra-stopwords - Basque Stop Word List'),
-                main.tr('spaCy - Basque Stop Word List'),
-                main.tr('Stopwords ISO - Basque Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_eus',
+                'spacy_eus',
+                'stopwords_iso_eus',
+                'custom'
             ],
 
             'bel': [
-                main.tr('extra-stopwords - Belarusian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_bel',
+                'custom'
             ],
 
             'ben': [
-                main.tr('extra-stopwords - Bengali Stop Word List'),
-                main.tr('spaCy - Bengali Stop Word List'),
-                main.tr('Stopwords ISO - Bengali Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_ben',
+                'spacy_ben',
+                'stopwords_iso_ben',
+                'custom'
             ],
 
             'bre': [
-                main.tr('Stopwords ISO - Breton Stop Word List'),
-                main.tr('Custom List')
+                'stopwords_iso_bre',
+                'custom'
             ],
 
             'bul': [
-                main.tr('extra-stopwords - Bulgarian Stop Word List'),
-                main.tr('spaCy - Bulgarian Stop Word List'),
-                main.tr('Stopwords ISO - Bulgarian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_bul',
+                'spacy_bul',
+                'stopwords_iso_bul',
+                'custom'
             ],
 
             'cat': [
-                main.tr('extra-stopwords - Catalan Stop Word List'),
-                main.tr('spaCy - Catalan Stop Word List'),
-                main.tr('Stopwords ISO - Catalan Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_cat',
+                'spacy_cat',
+                'stopwords_iso_cat',
+                'custom'
             ],
 
             'zho_cn': [
-                main.tr('extra-stopwords - Chinese (Simplified) Stop Word List'),
-                main.tr('spaCy - Chinese (Simplified) Stop Word List'),
-                main.tr('Stopwords ISO - Chinese (Simplified) Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_zho_cn',
+                'spacy_zho_cn',
+                'stopwords_iso_zho_cn',
+                'custom'
             ],
             'zho_tw': [
-                main.tr('extra-stopwords - Chinese (Traditional) Stop Word List'),
-                main.tr('spaCy - Chinese (Traditional) Stop Word List'),
-                main.tr('Stopwords ISO - Chinese (Traditional) Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_zho_tw',
+                'spacy_zho_tw',
+                'stopwords_iso_zho_tw',
+                'custom'
             ],
 
             'cop': [
-                main.tr('CLTK - Coptic Stop Word List'),
-                main.tr('Custom List')
+                'cltk_cop',
+                'custom'
             ],
 
             'hrv': [
-                main.tr('extra-stopwords - Croatian Stop Word List'),
-                main.tr('spaCy - Croatian Stop Word List'),
-                main.tr('Stopwords ISO - Croatian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_hrv',
+                'spacy_hrv',
+                'stopwords_iso_hrv',
+                'custom'
             ],
 
             'ces': [
-                main.tr('extra-stopwords - Czech Stop Word List'),
-                main.tr('spaCy - Czech Stop Word List'),
-                main.tr('Stopwords ISO - Czech Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_ces',
+                'spacy_ces',
+                'stopwords_iso_ces',
+                'custom'
             ],
 
             'dan': [
-                main.tr('extra-stopwords - Danish Stop Word List'),
-                main.tr('NLTK - Danish Stop Word List'),
-                main.tr('spaCy - Danish Stop Word List'),
-                main.tr('Stopwords ISO - Danish Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_dan',
+                'nltk_dan',
+                'spacy_dan',
+                'stopwords_iso_dan',
+                'custom'
             ],
 
             'nld': [
-                main.tr('extra-stopwords - Dutch Stop Word List'),
-                main.tr('NLTK - Dutch Stop Word List'),
-                main.tr('spaCy - Dutch Stop Word List'),
-                main.tr('Stopwords ISO - Dutch Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_nld',
+                'nltk_nld',
+                'spacy_nld',
+                'stopwords_iso_nld',
+                'custom'
             ],
 
             'eng_gb': [
-                main.tr('extra-stopwords - English Stop Word List'),
-                main.tr('NLTK - English Stop Word List'),
-                main.tr('spaCy - English Stop Word List'),
-                main.tr('Stopwords ISO - English Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_eng',
+                'nltk_eng',
+                'spacy_eng',
+                'stopwords_iso_eng',
+                'custom'
             ],
             'eng_us': [
-                main.tr('extra-stopwords - English Stop Word List'),
-                main.tr('NLTK - English Stop Word List'),
-                main.tr('spaCy - English Stop Word List'),
-                main.tr('Stopwords ISO - English Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_eng',
+                'nltk_eng',
+                'spacy_eng',
+                'stopwords_iso_eng',
+                'custom'
             ],
             'enm': [
-                main.tr('CLTK - English (Middle) Stop Word List'),
-                main.tr('Custom List')
+                'cltk_enm',
+                'custom'
             ],
             'ang': [
-                main.tr('CLTK - English (Old) Stop Word List'),
-                main.tr('Custom List')
+                'cltk_ang',
+                'custom'
             ],
 
             'epo': [
-                main.tr('Stopwords ISO - Esperanto Stop Word List'),
-                main.tr('Custom List')
+                'stopwords_iso_epo',
+                'custom'
             ],
 
             'est': [
-                main.tr('extra-stopwords - Estonian Stop Word List'),
-                main.tr('spaCy - Estonian Stop Word List'),
-                main.tr('Stopwords ISO - Estonian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_est',
+                'spacy_est',
+                'stopwords_iso_est',
+                'custom'
             ],
 
             'fin': [
-                main.tr('extra-stopwords - Finnish Stop Word List'),
-                main.tr('NLTK - Finnish Stop Word List'),
-                main.tr('spaCy - Finnish Stop Word List'),
-                main.tr('Stopwords ISO - Finnish Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_fin',
+                'nltk_fin',
+                'spacy_fin',
+                'stopwords_iso_fin',
+                'custom'
             ],
 
             'fra': [
-                main.tr('extra-stopwords - French Stop Word List'),
-                main.tr('NLTK - French Stop Word List'),
-                main.tr('spaCy - French Stop Word List'),
-                main.tr('Stopwords ISO - French Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_fra',
+                'nltk_fra',
+                'spacy_fra',
+                'stopwords_iso_fra',
+                'custom'
             ],
             'fro': [
-                main.tr('CLTK - French (Old) Stop Word List'),
-                main.tr('Custom List')
+                'cltk_fro',
+                'custom'
             ],
 
             'glg': [
-                main.tr('extra-stopwords - Galician Stop Word List'),
-                main.tr('Stopwords ISO - Galician Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_glg',
+                'stopwords_iso_glg',
+                'custom'
             ],
 
             'deu_at': [
-                main.tr('extra-stopwords - German Stop Word List'),
-                main.tr('NLTK - German Stop Word List'),
-                main.tr('spaCy - German Stop Word List'),
-                main.tr('Stopwords ISO - German Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_deu',
+                'nltk_deu',
+                'spacy_deu',
+                'stopwords_iso_deu',
+                'custom'
             ],
             'deu_de': [
-                main.tr('extra-stopwords - German Stop Word List'),
-                main.tr('NLTK - German Stop Word List'),
-                main.tr('spaCy - German Stop Word List'),
-                main.tr('Stopwords ISO - German Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_deu',
+                'nltk_deu',
+                'spacy_deu',
+                'stopwords_iso_deu',
+                'custom'
             ],
             'gmh': [
-                main.tr('CLTK - German (Middle High) Stop Word List'),
-                main.tr('Custom List')
+                'cltk_gmh',
+                'custom'
             ],
             'deu_ch': [
-                main.tr('extra-stopwords - German Stop Word List'),
-                main.tr('NLTK - German Stop Word List'),
-                main.tr('spaCy - German Stop Word List'),
-                main.tr('Stopwords ISO - German Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_deu',
+                'nltk_deu',
+                'spacy_deu',
+                'stopwords_iso_deu',
+                'custom'
             ],
 
             'grc': [
-                main.tr('CLTK - Greek (Ancient) Stop Word List'),
-                main.tr('spaCy - Greek (Ancient) Stop Word List'),
-                main.tr('Custom List')
+                'cltk_grc',
+                'spacy_grc',
+                'custom'
             ],
             'ell': [
-                main.tr('extra-stopwords - Greek (Modern) Stop Word List'),
-                main.tr('NLTK - Greek (Modern) Stop Word List'),
-                main.tr('spaCy - Greek (Modern) Stop Word List'),
-                main.tr('Stopwords ISO - Greek (Modern) Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_ell',
+                'nltk_ell',
+                'spacy_ell',
+                'stopwords_iso_ell',
+                'custom'
             ],
 
             'guj': [
-                main.tr('spaCy - Gujarati Stop Word List'),
-                main.tr('Stopwords ISO - Gujarati Stop Word List'),
-                main.tr('Custom List')
+                'spacy_guj',
+                'stopwords_iso_guj',
+                'custom'
             ],
 
             'hau': [
-                main.tr('extra-stopwords - Hausa Stop Word List'),
-                main.tr('Stopwords ISO - Hausa Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_hau',
+                'stopwords_iso_hau',
+                'custom'
             ],
 
             'heb': [
-                main.tr('extra-stopwords - Hebrew Stop Word List'),
-                main.tr('spaCy - Hebrew Stop Word List'),
-                main.tr('Stopwords ISO - Hebrew Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_heb',
+                'spacy_heb',
+                'stopwords_iso_heb',
+                'custom'
             ],
 
             'hin': [
-                main.tr('CLTK - Hindi Stop Word List'),
-                main.tr('extra-stopwords - Hindi Stop Word List'),
-                main.tr('spaCy - Hindi Stop Word List'),
-                main.tr('Stopwords ISO - Hindi Stop Word List'),
-                main.tr('Custom List')
+                'cltk_hin',
+                'extra_stopwords_hin',
+                'spacy_hin',
+                'stopwords_iso_hin',
+                'custom'
             ],
 
             'hun': [
-                main.tr('extra-stopwords - Hungarian Stop Word List'),
-                main.tr('NLTK - Hungarian Stop Word List'),
-                main.tr('spaCy - Hungarian Stop Word List'),
-                main.tr('Stopwords ISO - Hungarian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_hun',
+                'nltk_hun',
+                'spacy_hun',
+                'stopwords_iso_hun',
+                'custom'
             ],
 
             'isl': [
-                main.tr('extra-stopwords - Icelandic Stop Word List'),
-                main.tr('spaCy - Icelandic Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_isl',
+                'spacy_isl',
+                'custom'
             ],
 
             'ind': [
-                main.tr('extra-stopwords - Indonesian Stop Word List'),
-                main.tr('NLTK - Indonesian Stop Word List'),
-                main.tr('spaCy - Indonesian Stop Word List'),
-                main.tr('Stopwords ISO - Indonesian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_ind',
+                'nltk_ind',
+                'spacy_ind',
+                'stopwords_iso_ind',
+                'custom'
             ],
 
             'gle': [
-                main.tr('extra-stopwords - Irish Stop Word List'),
-                main.tr('spaCy - Irish Stop Word List'),
-                main.tr('Stopwords ISO - Irish Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_gle',
+                'spacy_gle',
+                'stopwords_iso_gle',
+                'custom'
             ],
 
             'ita': [
-                main.tr('extra-stopwords - Italian Stop Word List'),
-                main.tr('NLTK - Italian Stop Word List'),
-                main.tr('spaCy - Italian Stop Word List'),
-                main.tr('Stopwords ISO - Italian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_ita',
+                'nltk_ita',
+                'spacy_ita',
+                'stopwords_iso_ita',
+                'custom'
             ],
 
             'jpn': [
-                main.tr('extra-stopwords - Japanese Stop Word List'),
-                main.tr('spaCy - Japanese Stop Word List'),
-                main.tr('Stopwords ISO - Japanese Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_jpn',
+                'spacy_jpn',
+                'stopwords_iso_jpn',
+                'custom'
             ],
 
             'kan': [
-                main.tr('spaCy - Kannada Stop Word List'),
-                main.tr('Custom List')
+                'spacy_kan',
+                'custom'
             ],
 
             'kaz': [
-                main.tr('NLTK - Kazakh Stop Word List'),
-                main.tr('Custom List')
+                'nltk_kaz',
+                'custom'
             ],
 
             'kor': [
-                main.tr('extra-stopwords - Korean Stop Word List'),
-                main.tr('spaCy - Japanese Stop Word List'),
-                main.tr('Stopwords ISO - Korean Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_kor',
+                'spacy_kor',
+                'stopwords_iso_kor',
+                'custom'
             ],
 
             'kur': [
-                main.tr('extra-stopwords - Kurdish Stop Word List'),
-                main.tr('Stopwords ISO - Kurdish Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_kur',
+                'stopwords_iso_kur',
+                'custom'
             ],
 
             'kir': [
-                main.tr('spaCy - Kyrgyz Stop Word List'),
-                main.tr('Custom List')
+                'spacy_kir',
+                'custom'
             ],
 
             'lat': [
-                main.tr('CLTK - Latin Stop Word List'),
-                main.tr('Stopwords ISO - Latin Stop Word List'),
-                main.tr('Custom List')
+                'cltk_lat',
+                'stopwords_iso_lat',
+                'custom'
             ],
 
             'lav': [
-                main.tr('extra-stopwords - Latvian Stop Word List'),
-                main.tr('spaCy - Latvian Stop Word List'),
-                main.tr('Stopwords ISO - Latvian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_lav',
+                'spacy_lav',
+                'stopwords_iso_lav',
+                'custom'
             ],
 
             'lij': [
-                main.tr('spaCy - Ligurian Stop Word List'),
-                main.tr('Custom List')
+                'spacy_lij',
+                'custom'
             ],
 
             'lit': [
-                main.tr('extra-stopwords - Lithuanian Stop Word List'),
-                main.tr('spaCy - Lithuanian Stop Word List'),
-                main.tr('Stopwords ISO - Lithuanian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_lit',
+                'spacy_lit',
+                'stopwords_iso_lit',
+                'custom'
             ],
 
             'ltz': [
-                main.tr('spaCy - Luxembourgish Stop Word List'),
-                main.tr('Custom List')
+                'spacy_ltz',
+                'custom'
             ],
 
             'mkd': [
-                main.tr('spaCy - Macedonian Stop Word List'),
-                main.tr('Custom List')
+                'spacy_mkd',
+                'custom'
             ],
 
             'msa': [
-                main.tr('extra-stopwords - Malay Stop Word List'),
-                main.tr('Stopwords ISO - Malay Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_msa',
+                'stopwords_iso_msa',
+                'custom'
             ],
 
             'mal': [
-                main.tr('spaCy - Malayalam Stop Word List'),
-                main.tr('Custom List')
+                'spacy_mal',
+                'custom'
             ],
 
             'mar': [
-                main.tr('extra-stopwords - Marathi Stop Word List'),
-                main.tr('spaCy - Marathi Stop Word List'),
-                main.tr('Stopwords ISO - Marathi Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_mar',
+                'spacy_mar',
+                'stopwords_iso_mar',
+                'custom'
             ],
 
             'omr': [
-                main.tr('CLTK - Marathi (Old) Stop Word List'),
-                main.tr('Custom List')
+                'cltk_omr',
+                'custom'
             ],
 
             'mon': [
-                main.tr('extra-stopwords - Mongolian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_mon',
+                'custom'
             ],
 
             'nep': [
-                main.tr('extra-stopwords - Nepali Stop Word List'),
-                main.tr('NLTK - Nepali Stop Word List'),
-                main.tr('spaCy - Nepali Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_nep',
+                'nltk_nep',
+                'spacy_nep',
+                'custom'
             ],
 
             'non': [
-                main.tr('CLTK - Norse (Old) Stop Word List'),
-                main.tr('Custom List')
+                'cltk_non',
+                'custom'
             ],
             'nob': [
-                main.tr('extra-stopwords - Norwegian Bokmål Stop Word List'),
-                main.tr('NLTK - Norwegian Bokmål Stop Word List'),
-                main.tr('spaCy - Norwegian Bokmål Stop Word List'),
-                main.tr('Stopwords ISO - Norwegian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_nob',
+                'nltk_nob',
+                'spacy_nob',
+                'stopwords_iso_nob',
+                'custom'
             ],
             'nno': [
-                main.tr('extra-stopwords - Norwegian Bokmål Stop Word List'),
-                main.tr('NLTK - Norwegian Nynorsk Stop Word List'),
-                main.tr('Stopwords ISO - Norwegian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_nno',
+                'nltk_nno',
+                'stopwords_iso_nno',
+                'custom'
             ],
 
             'fas': [
-                main.tr('extra-stopwords - Persian Stop Word List'),
-                main.tr('spaCy - Persian Stop Word List'),
-                main.tr('Stopwords ISO - Persian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_fas',
+                'spacy_fas',
+                'stopwords_iso_fas',
+                'custom'
             ],
 
             'pol': [
-                main.tr('extra-stopwords - Polish Stop Word List'),
-                main.tr('spaCy - Polish Stop Word List'),
-                main.tr('Stopwords ISO - Polish Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_pol',
+                'spacy_pol',
+                'stopwords_iso_pol',
+                'custom'
             ],
 
             'por_br': [
-                main.tr('extra-stopwords - Portuguese Stop Word List'),
-                main.tr('NLTK - Portuguese Stop Word List'),
-                main.tr('spaCy - Portuguese Stop Word List'),
-                main.tr('Stopwords ISO - Portuguese Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_por',
+                'nltk_por',
+                'spacy_por',
+                'stopwords_iso_por',
+                'custom'
             ],
             'por_pt': [
-                main.tr('extra-stopwords - Portuguese Stop Word List'),
-                main.tr('NLTK - Portuguese Stop Word List'),
-                main.tr('spaCy - Portuguese Stop Word List'),
-                main.tr('Stopwords ISO - Portuguese Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_por',
+                'nltk_por',
+                'spacy_por',
+                'stopwords_iso_por',
+                'custom'
             ],
 
             'pan': [
-                main.tr('CLTK - Punjabi Stop Word List'),
-                main.tr('Custom List')
+                'cltk_pan',
+                'custom'
             ],
 
             'ron': [
-                main.tr('extra-stopwords - Romanian Stop Word List'),
-                main.tr('NLTK - Romanian Stop Word List'),
-                main.tr('spaCy - Romanian Stop Word List'),
-                main.tr('Stopwords ISO - Romanian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_ron',
+                'nltk_ron',
+                'spacy_ron',
+                'stopwords_iso_ron',
+                'custom'
             ],
 
             'rus': [
-                main.tr('extra-stopwords - Russian Stop Word List'),
-                main.tr('NLTK - Russian Stop Word List'),
-                main.tr('spaCy - Russian Stop Word List'),
-                main.tr('Stopwords ISO - Russian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_rus',
+                'nltk_rus',
+                'spacy_rus',
+                'stopwords_iso_rus',
+                'custom'
             ],
 
             'san': [
-                main.tr('CLTK - Sanskrit Stop Word List'),
-                main.tr('spaCy - Sanskrit Stop Word List'),
-                main.tr('Custom List')
+                'cltk_san',
+                'spacy_san',
+                'custom'
             ],
 
             'srp_cyrl': [
-                main.tr('extra-stopwords - Serbian (Cyrillic) Stop Word List'),
-                main.tr('spaCy - Serbian (Cyrillic) Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_srp_cyrl',
+                'spacy_srp_cyrl',
+                'custom'
             ],
             'srp_latn': [
-                main.tr('extra-stopwords - Serbian (Latin) Stop Word List'),
-                main.tr('spaCy - Serbian (Latin) Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_srp_latn',
+                'spacy_srp_latn',
+                'custom'
             ],
 
             'sin': [
-                main.tr('spaCy - Sinhala Stop Word List'),
-                main.tr('Custom List')
+                'spacy_sin',
+                'custom'
             ],
 
             'slk': [
-                main.tr('extra-stopwords - Slovak Stop Word List'),
-                main.tr('spaCy - Slovak Stop Word List'),
-                main.tr('Stopwords ISO - Slovak Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_slk',
+                'spacy_slk',
+                'stopwords_iso_slk',
+                'custom'
             ],
 
             'slv': [
-                main.tr('extra-stopwords - Slovenian Stop Word List'),
-                main.tr('NLTK - Slovenian Stop Word List'),
-                main.tr('spaCy - Slovenian Stop Word List'),
-                main.tr('Stopwords ISO - Slovenian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_slv',
+                'nltk_slv',
+                'spacy_slv',
+                'stopwords_iso_slv',
+                'custom'
             ],
 
             'som': [
-                main.tr('Stopwords ISO - Somali Stop Word List'),
-                main.tr('Custom List')
+                'stopwords_iso_som',
+                'custom'
             ],
 
             'sot': [
-                main.tr('Stopwords ISO - Sotho (Southern) Stop Word List'),
-                main.tr('Custom List')
+                'stopwords_iso_sot',
+                'custom'
             ],
 
             'spa': [
-                main.tr('extra-stopwords - Spanish Stop Word List'),
-                main.tr('NLTK - Spanish Stop Word List'),
-                main.tr('spaCy - Spanish Stop Word List'),
-                main.tr('Stopwords ISO - Spanish Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_spa',
+                'nltk_spa',
+                'spacy_spa',
+                'stopwords_iso_spa',
+                'custom'
             ],
 
             'swa': [
-                main.tr('extra-stopwords - Swahili Stop Word List'),
-                main.tr('Stopwords ISO - Swahili Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_swa',
+                'stopwords_iso_swa',
+                'custom'
             ],
 
             'swe': [
-                main.tr('extra-stopwords - Swedish Stop Word List'),
-                main.tr('NLTK - Swedish Stop Word List'),
-                main.tr('spaCy - Swedish Stop Word List'),
-                main.tr('Stopwords ISO - Swedish Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_swe',
+                'nltk_swe',
+                'spacy_swe',
+                'stopwords_iso_swe',
+                'custom'
             ],
 
             'tgl': [
-                main.tr('extra-stopwords - Tagalog Stop Word List'),
-                main.tr('spaCy - Tagalog Stop Word List'),
-                main.tr('Stopwords ISO - Tagalog Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_tgl',
+                'spacy_tgl',
+                'stopwords_iso_tgl',
+                'custom'
             ],
 
             'tgk': [
-                main.tr('NLTK - Tajik Stop Word List'),
-                main.tr('Custom List')
+                'nltk_tgk',
+                'custom'
             ],
 
             'tam': [
-                main.tr('spaCy - Tamil Stop Word List'),
-                main.tr('Custom List')
+                'spacy_tam',
+                'custom'
             ],
 
             'tat': [
-                main.tr('spaCy - Tatar Stop Word List'),
-                main.tr('Custom List')
+                'spacy_tat',
+                'custom'
             ],
 
             'tel': [
-                main.tr('extra-stopwords - Telugu Stop Word List'),
-                main.tr('spaCy - Telugu Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_tel',
+                'spacy_tel',
+                'custom'
             ],
 
             'tha': [
-                main.tr('extra-stopwords - Thai Stop Word List'),
-                main.tr('PyThaiNLP - Thai Stop Word List'),
-                main.tr('spaCy - Thai Stop Word List'),
-                main.tr('Stopwords ISO - Thai Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_tha',
+                'pythainlp_tha',
+                'spacy_tha',
+                'stopwords_iso_tha',
+                'custom'
             ],
 
             'tir': [
-                main.tr('spaCy - Tigrinya Stop Word List'),
-                main.tr('Custom List')
+                'spacy_tir',
+                'custom'
             ],
 
             'tsn': [
-                main.tr('spaCy - Tswana Stop Word List'),
-                main.tr('Custom List')
+                'spacy_tsn',
+                'custom'
             ],
 
             'tur': [
-                main.tr('extra-stopwords - Turkish Stop Word List'),
-                main.tr('NLTK - Turkish Stop Word List'),
-                main.tr('spaCy - Turkish Stop Word List'),
-                main.tr('Stopwords ISO - Turkish Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_tur',
+                'nltk_tur',
+                'spacy_tur',
+                'stopwords_iso_tur',
+                'custom'
             ],
 
             'ukr': [
-                main.tr('extra-stopwords - Ukrainian Stop Word List'),
-                main.tr('spaCy - Ukrainian Stop Word List'),
-                main.tr('Stopwords ISO - Ukrainian Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_ukr',
+                'spacy_ukr',
+                'stopwords_iso_ukr',
+                'custom'
             ],
 
             'urd': [
-                main.tr('extra-stopwords - Urdu Stop Word List'),
-                main.tr('spaCy - Urdu Stop Word List'),
-                main.tr('Stopwords ISO - Urdu Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_urd',
+                'spacy_urd',
+                'stopwords_iso_urd',
+                'custom'
             ],
 
             'vie': [
-                main.tr('extra-stopwords - Vietnamese Stop Word List'),
-                main.tr('spaCy - Vietnamese Stop Word List'),
-                main.tr('Stopwords ISO - Vietnamese Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_vie',
+                'spacy_vie',
+                'stopwords_iso_vie',
+                'custom'
             ],
 
             'yor': [
-                main.tr('extra-stopwords - Yoruba Stop Word List'),
-                main.tr('spaCy - Yoruba Stop Word List'),
-                main.tr('Stopwords ISO - Yoruba Stop Word List'),
-                main.tr('Custom List')
+                'extra_stopwords_yor',
+                'spacy_yor',
+                'stopwords_iso_yor',
+                'custom'
             ],
 
             'zul': [
-                main.tr('Stopwords ISO - Zulu Stop Word List'),
-                main.tr('Custom List')
+                'stopwords_iso_zul',
+                'custom'
             ],
 
             'other': [
-                main.tr('Custom List')
+                'custom'
             ]
         },
 

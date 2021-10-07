@@ -39,7 +39,7 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'default'):
     )
 
     # spaCy
-    if 'spaCy' in pos_tagger:
+    if 'spacy' in pos_tagger:
         # Chinese, English, German, Portuguese
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         
@@ -54,10 +54,10 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'default'):
         elif tagset == 'universal':
             tokens_tagged = [(token.text, token.pos_) for token in doc]
     # Chinese
-    elif pos_tagger == main.tr('jieba - Chinese POS Tagger'):
+    elif pos_tagger == 'jieba_zho':
         tokens_tagged = jieba.posseg.cut(' '.join(tokens))
     # English & Russian
-    elif pos_tagger == main.tr('NLTK - Perceptron POS Tagger'):
+    elif pos_tagger == 'nltk_perceptron':
         lang_codes = {
             'eng_gb': 'eng',
             'eng_us': 'eng',
@@ -66,12 +66,12 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'default'):
 
         tokens_tagged = nltk.pos_tag(tokens, lang = lang_codes[lang])
     # Japanese
-    elif pos_tagger == main.tr('nagisa - Japanese POS Tagger'):
+    elif pos_tagger == 'nagisa_jpn':
         import nagisa
 
         tokens_tagged = zip(tokens, nagisa.postagging(tokens))
     # Russian & Ukrainian
-    elif pos_tagger == main.tr('pymorphy2 - Morphological Analyzer'):
+    elif pos_tagger == 'pymorphy2_morphological_analyzer':
         if lang == 'rus':
             morphological_analyzer = main.pymorphy2_morphological_analyzer_rus
         elif lang == 'ukr':
@@ -80,14 +80,14 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'default'):
         for token in tokens:
             tokens_tagged.append((token, morphological_analyzer.parse(token)[0].tag._POS))
     # Thai
-    elif pos_tagger == main.tr('PyThaiNLP - Perceptron Tagger (LST20)'):
+    elif pos_tagger == 'pythainlp_perceptron_lst20':
         tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'lst20')
-    elif pos_tagger == main.tr('PyThaiNLP - Perceptron Tagger (ORCHID)'):
+    elif pos_tagger == 'pythainlp_perceptron_orchid':
         tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
-    elif pos_tagger == main.tr('PyThaiNLP - Perceptron Tagger (PUD)'):
+    elif pos_tagger == 'pythainlp_perceptron_pud':
         tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
     # Tibetan
-    elif pos_tagger == main.tr('botok - Tibetan POS Tagger'):
+    elif pos_tagger == 'botok_bod':
         wl_text_utils.init_word_tokenizers(
             main,
             lang = 'bod'
@@ -100,11 +100,11 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'default'):
             else:
                 tokens_tagged.append((token.text, token.chunk_type))
     # Vietnamese
-    elif pos_tagger == main.tr('Underthesea - Vietnamese POS Tagger'):
+    elif pos_tagger == 'underthesea_vie':
         tokens_tagged = underthesea.pos_tag(' '.join(tokens))
 
     # Convert to Universal Tagset
-    if pos_tagger.find('spaCy') == -1:
+    if 'spacy' not in pos_tagger:
         if (tagset == 'default' and main.settings_custom['pos_tagging']['to_universal_pos_tags'] or
             tagset == 'universal'):
 

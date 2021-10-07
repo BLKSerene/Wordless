@@ -165,6 +165,23 @@ SRP_LATN_TO_CYRL_DIGRAPHS = {
     'nj': 'њ'
 }
 
+def to_lang_util_code(main, util_type, util_text):
+    return main.settings_global['lang_util_mappings'][util_type][util_text]
+
+def to_lang_util_codes(main, util_type, util_texts):
+    return (main.settings_global['lang_util_mappings'][util_type][util_text] for util_text in util_texts)
+
+def _to_lang_util_text(main, util_type, util_code):
+    for text, code in main.settings_global['lang_util_mappings'][util_type].items():
+        if code == util_code:
+            return text
+
+def to_lang_util_text(main, util_type, util_code):
+    return _to_lang_util_text(main, util_type, util_code)
+
+def to_lang_util_texts(main, util_type, util_codes):
+    return (_to_lang_util_text(main, util_type, util_code) for util_code in util_codes)
+
 def init_spacy_models(main, lang):
     spacy_langs = {
         'cat': 'ca_core_news_sm',
@@ -201,7 +218,6 @@ def init_spacy_models(main, lang):
             main.__dict__[f'spacy_nlp_{lang}'] = model.load(disable = ['parser', 'ner'])
             # Add senter
             main.__dict__[f'spacy_nlp_{lang}'].enable_pipe('senter')
-
         # Languages without models
         else:
             # Serbian
@@ -225,7 +241,7 @@ def init_spacy_models(main, lang):
     
 def init_sentence_tokenizers(main, lang, sentence_tokenizer):
     # spaCy
-    if 'spaCy' in sentence_tokenizer:
+    if 'spacy' in sentence_tokenizer:
         init_spacy_models(main, lang)
 
 def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
@@ -236,48 +252,48 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
     # NLTK
-    if 'NLTK' in word_tokenizer:
-        if word_tokenizer == main.tr('NLTK - NIST Tokenizer'):
+    if 'nltk' in word_tokenizer:
+        if word_tokenizer == 'nltk_nist':
             if 'nltk_nist_tokenizer' not in main.__dict__:
                 main.nltk_nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
-        elif word_tokenizer == main.tr('NLTK - NLTK Tokenizer'):
+        elif word_tokenizer == 'nltk_nltk':
             if 'nltk_nltk_tokenizer' not in main.__dict__:
                 main.nltk_nltk_tokenizer = nltk.NLTKWordTokenizer()
-        elif word_tokenizer == main.tr('NLTK - Penn Treebank Tokenizer'):
+        elif word_tokenizer == 'nltk_penn_treebank':
             if 'nltk_treebank_tokenizer' not in main.__dict__:
                 main.nltk_treebank_tokenizer = nltk.TreebankWordTokenizer()
-        elif word_tokenizer == main.tr('NLTK - Tok-tok Tokenizer'):
+        elif word_tokenizer == 'nltk_tok_tok':
             if 'nltk_toktok_tokenizer' not in main.__dict__:
                 main.nltk_toktok_tokenizer = nltk.ToktokTokenizer()
-        elif word_tokenizer == main.tr('NLTK - Twitter Tokenizer'):
+        elif word_tokenizer == 'nltk_twitter':
             if 'nltk_tweet_tokenizer' not in main.__dict__:
                 main.nltk_tweet_tokenizer = nltk.TweetTokenizer()
     # Sacremoses
-    elif 'Sacremoses' in word_tokenizer:
+    elif word_tokenizer == 'sacremoses_moses':
         lang_sacremoses = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         if f'sacremoses_moses_tokenizer_{lang}' not in main.__dict__:
             main.__dict__[f'sacremoses_moses_tokenizer_{lang}'] = sacremoses.MosesTokenizer(lang = lang_sacremoses)
     # spaCy
-    elif 'spaCy' in word_tokenizer:
+    elif 'spacy' in word_tokenizer:
         init_spacy_models(main, lang)
     # Chinese
-    elif word_tokenizer == main.tr('pkuseg - Chinese Word Tokenizer'):
+    elif word_tokenizer == 'pkuseg_zho':
         if 'pkuseg_word_tokenizer' not in main.__dict__:
             main.pkuseg_word_tokenizer = pkuseg.pkuseg()
     # Chinese & Japanese
-    elif 'Wordless' in word_tokenizer:
+    elif 'wordless' in word_tokenizer:
         init_spacy_models(main, 'eng_us')
         init_spacy_models(main, 'other')
     # Tibetan
-    elif 'botok' in word_tokenizer:
+    elif word_tokenizer == 'botok_bod':
         if 'botok_word_tokenizer' not in main.__dict__:
             main.botok_word_tokenizer = botok.WordTokenizer()
 
 def init_syl_tokenizers(main, lang, syl_tokenizer):
     # Pyphen
-    if 'Pyphen' in syl_tokenizer:
+    if 'pyphen' in syl_tokenizer:
         if f'pyphen_syl_tokenizer_{lang}' not in main.__dict__:
             lang_pyphen = wl_conversion.to_iso_639_1(main, lang)
 
@@ -290,11 +306,11 @@ def init_syl_tokenizers(main, lang, syl_tokenizer):
 
 def init_word_detokenizers(main, lang, word_detokenizer):
     # NLTK
-    if word_detokenizer == main.tr('NLTK - Penn Treebank Detokenizer'):
+    if word_detokenizer == 'nltk_penn_treebank':
         if 'nltk_treebank_detokenizer' not in main.__dict__:
             main.nltk_treebank_detokenizer = nltk.tokenize.treebank.TreebankWordDetokenizer()
     # Sacremoses
-    elif word_detokenizer == main.tr('Sacremoses - Moses Detokenizer'):
+    elif word_detokenizer == 'sacremoses_moses':
         if f'sacremoses_moses_detokenizer_{lang}' not in main.__dict__:
             lang_sacremoses = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -303,10 +319,10 @@ def init_word_detokenizers(main, lang, word_detokenizer):
 
 def init_pos_taggers(main, lang, pos_tagger):
     # spaCy
-    if 'spaCy' in pos_tagger:
+    if 'spacy' in pos_tagger:
         init_spacy_models(main, lang)
     # Russian & Ukrainian
-    elif pos_tagger == main.tr('pymorphy2 - Morphological Analyzer'):
+    elif pos_tagger == 'pymorphy2_morphological_analyzer':
         if lang == 'rus':
             if 'pymorphy2_morphological_analyzer_rus' not in main.__dict__:
                 main.pymorphy2_morphological_analyzer_rus = pymorphy2.MorphAnalyzer(lang = 'ru')
@@ -320,10 +336,10 @@ def init_pos_taggers(main, lang, pos_tagger):
 
 def init_lemmatizers(main, lang, lemmatizer):
     # spaCy
-    if 'spaCy' in lemmatizer:
+    if 'spacy' in lemmatizer:
         init_spacy_models(main, lang)
     # Russian & Ukrainian
-    elif lemmatizer == main.tr('pymorphy2 - Morphological Analyzer'):
+    elif lemmatizer == 'pymorphy2_morphological_analyzer':
         if lang == 'rus':
             if 'pymorphy2_morphological_analyzer_rus' not in main.__dict__:
                 main.pymorphy2_morphological_analyzer_rus = pymorphy2.MorphAnalyzer(lang = 'ru')

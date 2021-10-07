@@ -39,7 +39,7 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
 
             del tokens[i]
             del tags[i]
-
+    
     if tokens and lang in main.settings_global['lemmatizers']:
         if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang]
@@ -51,9 +51,9 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
         )
 
         # spaCy
-        if 'spaCy' in lemmatizer:
+        if 'spacy' in lemmatizer:
             # English, German, Portuguese
-            if lang.find('srp') == -1:
+            if 'srp' not in lang:
                 lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
             nlp = main.__dict__[f'spacy_nlp_{lang}']
@@ -64,13 +64,13 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
 
             lemmas = [token.lemma_ for token in doc]
         # English
-        elif lemmatizer == main.tr('NLTK - WordNet Lemmatizer'):
+        elif lemmatizer == 'nltk_wordnet':
             word_net_lemmatizer = nltk.WordNetLemmatizer()
 
             for token, pos in wl_pos_tagging.wl_pos_tag(
                 main, tokens,
                 lang = 'eng_us',
-                pos_tagger = 'NLTK - Perceptron POS Tagger',
+                pos_tagger = 'nltk_perceptron',
                 tagset = 'universal'
             ):
                 if pos == 'ADJ':
@@ -84,7 +84,7 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
                 else:
                     lemmas.append(word_net_lemmatizer.lemmatize(token))
         # Greek (Ancient)
-        elif lemmatizer == main.tr('lemmalist-greek - Greek (Ancient) Lemma List'):
+        elif lemmatizer == 'lemmalist_greek_grc':
             with open(wl_misc.get_normalized_path('lemmatization/lemmalist-greek/lemmalist-greek.txt'), 'r', encoding = 'utf_8') as f:
                 for line in f.readlines():
                     line = line.rstrip()
@@ -95,7 +95,7 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
                         for word in words:
                             mapping_lemmas[word] = lemma
         # Russian & Ukrainian
-        elif lemmatizer == main.tr('pymorphy2 - Morphological Analyzer'):
+        elif lemmatizer == 'pymorphy2_morphological_analyzer':
             if lang == 'rus':
                 morphological_analyzer = main.pymorphy2_morphological_analyzer_rus
             elif lang == 'ukr':
@@ -104,7 +104,7 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
             for token in tokens:
                 lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
         # Tibetan
-        elif lemmatizer == main.tr('botok - Tibetan Lemmatizer'):
+        elif lemmatizer == 'botok_bod':
             wl_text_utils.init_word_tokenizers(main, lang = 'bod')
 
             tokens = main.botok_word_tokenizer.tokenize(' '.join(tokens))
@@ -115,7 +115,7 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
                 else:
                     lemmas.append(token.text)
         # Other Languages
-        elif 'Lemmatization Lists' in lemmatizer:
+        elif 'lemmatization_lists' in lemmatizer:
             lang = wl_conversion.to_iso_639_1(main, lang)
             # English, German, Portuguese
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)

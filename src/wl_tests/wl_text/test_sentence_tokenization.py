@@ -69,52 +69,68 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     elif lang == 'cat':
         assert sentences == ["El català (denominació oficial a Catalunya, a les Illes Balears, a Andorra, a la ciutat de l'Alguer i tradicional a Catalunya Nord) o valencià (denominació oficial al País Valencià i tradicional al Carxe) és una llengua romànica parlada a Catalunya, el País Valencià (tret d'algunes comarques i localitats de l'interior), les Illes Balears, Andorra, la Franja de Ponent (a l'Aragó), la ciutat de l'Alguer (a l'illa de Sardenya), la Catalunya del Nord,[8] el Carxe (un petit territori de Múrcia poblat per immigrats valencians),[9][10] i en comunitats arreu del món (entre les quals destaca la de l'Argentina, amb 198.000 parlants).[11] Té deu milions de parlants, dels quals quasi la meitat ho són de llengua materna; el seu domini lingüístic, amb una superfície de 68.730 km² i 13.529.127 d'habitants (2009),[12] inclou 1.687 termes municipals.", "Com a llengua materna, és parlada per quatre milions de persones (29% de la població del territori lingüístic), de les quals 2.263.000 a Catalunya,[13] 1.521.000 al País Valencià[14] i 417.000 a les Illes Balears.[15] Com les altres llengües romàniques, el català prové del llatí vulgar que parlaven els romans que s'establiren a Hispània durant l'edat antiga."]
     elif lang == 'zho_cn':
-        if sentence_tokenizer == 'spaCy - Sentence Recognizer':
+        if sentence_tokenizer == 'spacy_sentence_recognizer':
             assert sentences == ['汉语，又称中文[3]、唐话[4]、华语[5]，指整个汉语族或者其语族里的一种语言。', '汉语族为分析语的一支家族，属汉藏语系。', '汉语如视为单一语言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。', '其有多种分支，当中官话最为流行，其衍生而来的现代标准汉语，为中华人民共和国的普通话、以及中华民国的国语。', '此外，汉语还是联合国正式语文[6][3]，并被上海合作组织等国际组织采用为官方语言。', '汉语在以其做为母语的地方会有不同的通称，例如在台湾[7]、香港[8]及澳门[9]通称为“中文”，在马来西亚及新加坡通称为“华语”等（由此衍生华语的定义问题）', '[注 1]。']
-        elif sentence_tokenizer == 'Wordless - Chinese Sentence Tokenizer':
+        elif sentence_tokenizer == 'wordless_zho':
             assert sentences == ['汉语，又称中文[3]、唐话[4]、华语[5]，指整个汉语族或者其语族里的一种语言。', '汉语族为分析语的一支家族，属汉藏语系。', '汉语如视为单一语言，为世界使用人数最多的语言，目前世界有五分之一人口做为母语。', '其有多种分支，当中官话最为流行，其衍生而来的现代标准汉语，为中华人民共和国的普通话、以及中华民国的国语。', '此外，汉语还是联合国正式语文[6][3]，并被上海合作组织等国际组织采用为官方语言。', '汉语在以其做为母语的地方会有不同的通称，例如在台湾[7]、香港[8]及澳门[9]通称为“中文”，在马来西亚及新加坡通称为“华语”等（由此衍生华语的定义问题）[注 1]。']
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'zho_tw':
         assert sentences == ['漢語，又稱中文[3]、唐話[4]、華語[5]，指整個漢語族或者其語族里的一種語言。', '漢語族為分析語的一支家族，屬漢藏語系。', '漢語如視為單一語言，為世界使用人數最多的語言，目前世界有五分之一人口做為母語。', '其有多種分支，當中官話最為流行，其衍生而來的現代標準漢語，為中華人民共和國的普通話、以及中華民國的國語。', '此外，漢語還是聯合國正式語文[6][3]，並被上海合作組織等國際組織採用為官方語言。', '漢語在以其做為母語的地方會有不同的通稱，例如在臺灣[7]、香港[8]及澳門[9]通稱為「中文」，在馬來西亞及新加坡通稱為「華語」等（由此衍生華語的定義問題）[註 1]。']
     elif lang == 'hrv':
         assert sentences == ['Hrvatski jezik (ISO 639-3: hrv) skupni je naziv za nacionalni standardni jezik Hrvata, te za skup narječja i govora kojima govore ili su nekada govorili Hrvati.', 'Njime govori više od 5,5 milijuna ljudi, poglavito Hrvata u Hrvatskoj (3,980.000; popis iz 2001.)', 'i Bosni i Hercegovini (469.000; 2004.).[2] Hrvatski je materinski jezik za Hrvate u drugim zemljama; Sjedinjenim Američkim Državama (58.400; popis iz 2000.)[1]; Austriji, 19.400 (popis iz 2001.);', 'Srbiji 19.223 popis 2011.;', 'Mađarskoj, (14.300; popis iz 2001.);', 'Italiji (3.500; Vincent 1987.);', 'Crnoj Gori (6.810; 2006.);', 'Slovačkoj, 890; popis iz 2001.).']
     elif lang == 'ces':
-        if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
+        if sentence_tokenizer == 'nltk_punkt':
             assert sentences == ['Čeština neboli český jazyk je západoslovanský jazyk, nejbližší slovenštině, poté lužické srbštině a polštině.', 'Patří mezi slovanské jazyky, do rodiny jazyků indoevropských.', 'Čeština se vyvinula ze západních nářečí praslovanštiny na konci 10. století.', 'Je částečně ovlivněná latinou a němčinou.', 'Česky psaná literatura se objevuje od 14. století.', 'První písemné památky jsou však již z 12. století.']
-        elif sentence_tokenizer == 'spaCy - Sentencizer':
+        elif sentence_tokenizer == 'spacy_sentencizer':
             assert sentences == ['Čeština neboli český jazyk je západoslovanský jazyk, nejbližší slovenštině, poté lužické srbštině a polštině.', 'Patří mezi slovanské jazyky, do rodiny jazyků indoevropských.', 'Čeština se vyvinula ze západních nářečí praslovanštiny na konci 10.', 'století.', 'Je částečně ovlivněná latinou a němčinou.', 'Česky psaná literatura se objevuje od 14.', 'století.', 'První písemné památky jsou však již z 12.', 'století.']
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'dan':
-        if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
+        if sentence_tokenizer == 'nltk_punkt':
             assert sentences == ['Dansk er et nordgermansk sprog af den østnordiske (kontinentale) gruppe, der tales af ca. seks millioner mennesker.', 'Det er stærkt påvirket af plattysk.', 'Foruden Danmark tales dansk også i Sydslesvig (i Flensborg ca. 20 %) samt på Færøerne og Grønland [1].', 'Dansk er tæt forbundet med norsk.', 'Både dansk, norsk og svensk er skandinaviske sprog og minder meget om hinanden.']
-        elif sentence_tokenizer == 'spaCy - Sentence Recognizer':
+        elif sentence_tokenizer == 'spacy_sentence_recognizer':
             assert sentences == ['Dansk er et nordgermansk sprog af den østnordiske (kontinentale) gruppe, der tales af ca. seks millioner mennesker.', 'Det er stærkt påvirket af plattysk.', 'Foruden Danmark tales dansk også i Sydslesvig (i Flensborg ca. 20 %) samt på Færøerne og Grønland', '[1].', 'Dansk er tæt forbundet med norsk.', 'Både dansk, norsk og svensk er skandinaviske sprog og minder meget om hinanden.']
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'nld':
         assert sentences == ['Het Nederlands is een West-Germaanse taal en de officiële taal van Nederland, Suriname en een van de drie officiële talen van België.', 'Binnen het Koninkrijk der Nederlanden is het Nederlands ook een officiële taal van Aruba, Curaçao en Sint-Maarten.', 'Het Nederlands is de derde meest gesproken Germaanse taal.']
     elif lang in ['eng_gb', 'eng_us']:
-        if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
+        if sentence_tokenizer == 'nltk_punkt':
             assert sentences == ['English is a West Germanic language originally spoken by the inhabitants of early medieval England.', '[3][4][5] It is named after the Angles, one of the ancient Germanic peoples that migrated to the area of Great Britain that later took their name, England.', 'Both names derive from Anglia, a peninsula on the Baltic Sea.', 'English is most closely related to Frisian and Low Saxon, while its vocabulary has been significantly influenced by other Germanic languages, particularly Old Norse (a North Germanic language), as well as Latin and French.', '[6][7][8]']
-        elif sentence_tokenizer == 'spaCy - Sentence Recognizer':
+        elif sentence_tokenizer in ['spacy_sentence_recognizer', 'syntok_sentence_segmenter']:
             assert sentences == ['English is a West Germanic language originally spoken by the inhabitants of early medieval England.[3][4][5] It is named after the Angles, one of the ancient Germanic peoples that migrated to the area of Great Britain that later took their name, England.', 'Both names derive from Anglia, a peninsula on the Baltic Sea.', 'English is most closely related to Frisian and Low Saxon, while its vocabulary has been significantly influenced by other Germanic languages, particularly Old Norse (a North Germanic language), as well as Latin and French.[6][7][8]']
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'est':
-        if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
+        if sentence_tokenizer == 'nltk_punkt':
             assert sentences == ['2012. aasta seisuga kõneles eesti keelt emakeelena hinnanguliselt 922 000 inimest Eestis ja 160 000 mujal maailmas.', 'Võõrkeelena kõneles 2012. aasta seisuga eesti keelt 168 000 inimest.', '[1]']
-        elif sentence_tokenizer == 'spaCy - Sentencizer':
+        elif sentence_tokenizer == 'spacy_sentencizer':
             assert sentences == ['2012.', 'aasta seisuga kõneles eesti keelt emakeelena hinnanguliselt 922 000 inimest Eestis ja 160 000 mujal maailmas.', 'Võõrkeelena kõneles 2012.', 'aasta seisuga eesti keelt 168 000 inimest.[1]']
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'fin':
         assert sentences == ['Suomen kieli (suomi) on uralilaisten kielten itämerensuomalaiseen ryhmään kuuluva kieli.', 'Sitä puhuu äidinkielenään Suomessa 4,8 miljoonaa ja toisena kielenä 0,5 miljoonaa henkilöä.', 'Suurimmat suomea puhuvat vähemmistöt ovat Ruotsissa, Norjassa ja Venäjällä.']
     elif lang == 'fra':
         assert sentences == ["Le français est parlé, en 2018, sur tous les continents par environ 300 millions de personnes5,2 : 235 millions l'emploient quotidiennement, et 90 millions3 en sont des locuteurs natifs.", "En 2018, 80 millions d'élèves et étudiants s'instruisent en français dans le monde6.", "Selon l'Organisation internationale de la francophonie, il pourrait y avoir 700 millions de francophones sur Terre en 20507."]
     elif lang in ['deu_at', 'deu_de', 'deu_ch']:
-        if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
+        if sentence_tokenizer == 'nltk_punkt':
             assert sentences == ['Das Deutsche ist eine plurizentrische Sprache, enthält also mehrere Standardvarietäten in verschiedenen Regionen.', 'Ihr Sprachgebiet umfasst Deutschland, Österreich, die Deutschschweiz, Liechtenstein, Luxemburg, Ostbelgien, Südtirol, das Elsass und Lothringen sowie Nordschleswig.', 'Außerdem ist Deutsch eine Minderheitensprache in einigen europäischen und außereuropäischen Ländern, z.', 'B. in Rumänien und Südafrika sowie Nationalsprache im afrikanischen Namibia.', 'Deutsch ist die meistgesprochene Muttersprache in der Europäischen Union (EU).', '[27]']
-        elif sentence_tokenizer == 'spaCy - Sentence Recognizer':
+        elif sentence_tokenizer == 'spacy_sentence_recognizer':
             assert sentences == ['Das Deutsche ist eine plurizentrische Sprache, enthält also mehrere Standardvarietäten in verschiedenen Regionen.', 'Ihr Sprachgebiet umfasst Deutschland, Österreich, die Deutschschweiz, Liechtenstein, Luxemburg, Ostbelgien, Südtirol, das Elsass und Lothringen sowie Nordschleswig.', 'Außerdem ist Deutsch eine Minderheitensprache in einigen europäischen und außereuropäischen Ländern, z. B. in Rumänien und Südafrika sowie Nationalsprache im afrikanischen Namibia.', 'Deutsch ist die meistgesprochene Muttersprache in der Europäischen Union (EU).[27]']
+        elif sentence_tokenizer == 'syntok_sentence_segmenter':
+            assert sentences == ['Das Deutsche ist eine plurizentrische Sprache, enthält also mehrere Standardvarietäten in verschiedenen Regionen.', 'Ihr Sprachgebiet umfasst Deutschland, Österreich, die Deutschschweiz, Liechtenstein, Luxemburg, Ostbelgien, Südtirol, das Elsass und Lothringen sowie Nordschleswig.', 'Außerdem ist Deutsch eine Minderheitensprache in einigen europäischen und außereuropäischen Ländern, z.', 'B. in Rumänien und Südafrika sowie Nationalsprache im afrikanischen Namibia.', 'Deutsch ist die meistgesprochene Muttersprache in der Europäischen Union (EU).[27]']
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'grc':
         assert sentences == ["Ὅτι μὲν ὑμεῖς, ὦ ἄνδρες Ἀθηναῖοι, πεπόνθατε ὑπὸ τῶν ἐμῶν κατηγόρων, οὐκ οἶδα· ἐγὼ δ' οὖν καὶ αὐτὸς ὑπ' αὐτῶν ὀλίγου ἐμαυτοῦ ἐπελαθόμην, οὕτω πιθανῶς ἔλεγον.", 'Καίτοι ἀληθές γε ὡς ἔπος εἰπεῖν οὐδὲν εἰρήκασιν.']
     elif lang == 'ell':
-        if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
+        if sentence_tokenizer == 'nltk_punkt':
             assert sentences == ['Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[10] και αποτελεί το μοναδικό μέλος του ελληνικού κλάδου, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.', 'Ανήκει επίσης στον βαλκανικό γλωσσικό δεσμό.', 'Στην ελληνική γλώσσα, έχουμε γραπτά κείμενα ήδη από τον 15ο αιώνα π.Χ.. Σαν Παγκόσμια Ημέρα Ελληνικής Γλώσσας έχει καθιερωθεί η 9η Φεβρουαρίου.']
-        elif sentence_tokenizer == 'spaCy - Sentence Recognizer':
+        elif sentence_tokenizer == 'spacy_sentence_recognizer':
             assert sentences == ['Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[10] και αποτελεί το μοναδικό μέλος του ελληνικού κλάδου, ενώ είναι η επίσημη γλώσσα της Ελλάδος και της Κύπρου.', 'Ανήκει επίσης στον βαλκανικό γλωσσικό δεσμό.', 'Στην ελληνική γλώσσα, έχουμε γραπτά κείμενα ήδη από τον 15ο αιώνα π.', 'Χ..', 'Σαν Παγκόσμια Ημέρα Ελληνικής Γλώσσας έχει καθιερωθεί η 9η Φεβρουαρίου.']
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'guj':
         assert sentences == ['ગુજરાતી \u200d(/ɡʊdʒəˈrɑːti/[૭], રોમન લિપિમાં: Gujarātī, ઉચ્ચાર: [ɡudʒəˈɾɑːtiː]) ભારત દેશના ગુજરાત રાજ્યની ઇન્ડો-આર્યન ભાષા છે, અને મુખ્યત્વે ગુજરાતી લોકો દ્વારા બોલાય છે. તે બૃહદ ઇન્ડો-યુરોપિયન ભાષા કુટુંબનો ભાગ છે. ગુજરાતીનો ઉદ્ભવ જૂની ગુજરાતી ભાષા (આશરે ઇ.સ. ૧૧૦૦-૧૫૦૦)માંથી થયો છે. તે ગુજરાત રાજ્ય અને દીવ, દમણ અને દાદરા-નગર હવેલી કેન્દ્રશાસિત પ્રદેશોની અધિકૃત ભાષા છે.']
     elif lang == 'heb':
@@ -124,19 +140,23 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     elif lang == 'hun':
         assert sentences == ['A magyar nyelv az uráli nyelvcsalád tagja, a finnugor nyelvek közé tartozó ugor nyelvek egyike.', 'Legközelebbi rokonai a manysi és a hanti nyelv, majd utánuk az udmurt, a komi, a mari és a mordvin nyelvek.', 'Vannak olyan vélemények, melyek szerint a moldvai csángó önálló nyelv – különösen annak északi, középkori változata –, így ez volna a magyar legközelebbi rokonnyelve.[1]']
     elif lang == 'isl':
-        if sentence_tokenizer == 'spaCy - Sentencizer':
+        if sentence_tokenizer == 'spacy_sentencizer':
             assert sentences == ['Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.[5] Það hefur tekið minni breytingum frá fornnorrænu en önnur norræn mál[5] og er skyldara norsku og færeysku en sænsku og dönsku.[2][3]']
-        elif sentence_tokenizer == 'Tokenizer - Icelandic Sentence Tokenizer':
+        elif sentence_tokenizer == 'tokenizer_isl':
             assert sentences == ['Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.', '[5] Það hefur tekið minni breytingum frá fornnorrænu en önnur norræn mál [5] og er skyldara norsku og færeysku en sænsku og dönsku.', '[2] [3]']
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'ind':
         assert sentences == ['Bahasa Indonesia adalah bahasa resmi Republik Indonesia dan bahasa persatuan bangsa Indonesia.[8][9] Bahasa Indonesia adalah salah satu dari banyak varietas bahasa Melayu.[10] Bahasa Indonesia diresmikan penggunaannya setelah Proklamasi Kemerdekaan Indonesia, tepatnya sehari sesudahnya, bersamaan dengan mulai berlakunya konstitusi.', 'Di Timor Leste, bahasa Indonesia berstatus sebagai bahasa kerja.']
     elif lang == 'gle':
         assert sentences == ['Is ceann de na teangacha Ceilteacha í Gaeilge (nó Gaeilge na hÉireann mar a thugtar uirthi corruair), agus ceann den dtrí cinn de theangacha Ceilteacha ar a dtugtar na teangacha Gaelacha (Gaeilge,Gaeilge na hAlban agus Gaeilge Mhanann) go háirithe.', 'Labhraítear in Éirinn go príomha í, ach tá cainteoirí Gaeilge ina gcónaí in áiteanna eile ar fud an domhain.']
     elif lang == 'ita':
-        if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
+        if sentence_tokenizer == 'nltk_punkt':
             assert sentences == ['È classificato al 27º posto tra le lingue per numero di parlanti nel mondo e, in Italia, è utilizzato da circa 58 milioni di residenti.', "[2] Nel 2015 l'italiano era la lingua materna del 90,4% dei residenti in Italia,[3] che spesso lo acquisiscono e lo usano insieme alle varianti regionali dell'italiano, alle lingue regionali e ai dialetti.", "In Italia viene ampiamente usato per tutti i tipi di comunicazione della vita quotidiana ed è largamente prevalente nei mezzi di comunicazione nazionali, nell'amministrazione pubblica dello Stato italiano e nell'editoria."]
-        elif sentence_tokenizer == 'spaCy - Sentence Recognizer':
+        elif sentence_tokenizer == 'spacy_sentence_recognizer':
             assert sentences == ["È classificato al 27º posto tra le lingue per numero di parlanti nel mondo e, in Italia, è utilizzato da circa 58 milioni di residenti.[2] Nel 2015 l'italiano era la lingua materna del 90,4% dei residenti in Italia,[3] che spesso lo acquisiscono e lo usano insieme alle varianti regionali dell'italiano, alle lingue regionali e ai dialetti.", "In Italia viene ampiamente usato per tutti i tipi di comunicazione della vita quotidiana ed è largamente prevalente nei mezzi di comunicazione nazionali, nell'amministrazione pubblica dello Stato italiano e nell'editoria."]
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'jpn':
         assert sentences == ['日本語（にほんご、にっぽんご[注 2]、英: Japanese）は、主に日本国内や日本人同士の間で使用されている言語。', '日本は法令によって公用語を規定していないが、法令その他の公用文は全て日本語で記述され、各種法令[10]において日本語を用いることが規定され、学校教育においては「国語」の教科として学習を行う等、事実上、日本国内において唯一の公用語となっている。']
     elif lang == 'kan':
@@ -160,10 +180,12 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     elif lang == 'nep':
         assert sentences == ['नेपाली भाषा नेपालको सम्पर्क भाषा तथा भारत, भुटान र म्यानमारको केही भागमा मातृभाषाको रूपमा बोलिने भाषा हो।', 'यो भाषा भारोपेली भाषा परिवार समूहमा पर्दछ।', 'यो भाषा नेपाल र भारतको आधिकारिक (सरकारी कामकाजको) भाषा पनि हो।[५] खासगरि सन् १९९० पछि लाखौं संख्यामा नेपालीहरू आप्रवासीका रूपमा विदेशिन थालेपछि अस्ट्रेलिया, बेलायत, अमेरिका, क्यानडा, युरोपेली सङ्घ र खाडी मुलुकहरूमा नेपाली भाषीहरू छरिएका छन्।', 'नेपालका करिब आधा जनसङ्ख्याले आफ्नो मातृभाषाको रूपमा यो भाषा बोल्ने गर्दछन्।', 'देवनागरी लिपिमा लेखिने यो भाषामा २ किसिमका वर्णमाला छन्।', 'स्वरवर्णमा १२ र व्यञ्जनवर्णमा ३६ वटा वर्णहरू रहेका छन्।[६]']
     elif lang == 'nob':
-        if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
+        if sentence_tokenizer == 'nltk_punkt':
             assert sentences == ['Bokmål er en varietet av norsk skriftspråk.', 'Bokmål er en av to offisielle målformer av norsk skriftspråk, hvorav den andre er nynorsk.', 'I skrift benyttes bokmål av anslagsvis 90 % av befolkningen i Norge.', '[1][2] Etter skriftreformene av riksmål i 1987 og bokmål i 1981 og 2005 er det lite som skiller bokmål og riksmål i alminnelig bruk.']
-        elif sentence_tokenizer == 'spaCy - Sentence Recognizer':
+        elif sentence_tokenizer == 'spacy_sentence_recognizer':
             assert sentences == ['Bokmål er en varietet av norsk skriftspråk.', 'Bokmål er en av to offisielle målformer av norsk skriftspråk, hvorav den andre er nynorsk.', 'I skrift benyttes bokmål av anslagsvis 90 % av befolkningen i Norge.[1][2] Etter skriftreformene av riksmål i 1987 og bokmål i 1981 og 2005 er det lite som skiller bokmål og riksmål i alminnelig bruk.']
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'nno':
         assert sentences == ['Nynorsk, før 1929 offisielt kalla landsmål, er sidan jamstillingsvedtaket av 12. mai 1885 ei av dei to offisielle målformene av norsk; den andre forma er bokmål.', 'Nynorsk blir i dag nytta av om lag 10–15% av innbyggjarane[1][2] i Noreg.', 'Skriftspråket er basert på nynorsk talemål, det vil seie dei moderne norske dialektane til skilnad frå gamalnorsk og mellomnorsk.', 'Når ein seier at nokon snakkar nynorsk, meiner ein helst at dei snakkar nynorsk normaltalemål.', 'Dei færraste dialekttalande nordmenn seier at dei snakkar nynorsk, men det er ikkje uvanleg i kjerneområda til nynorsken.', 'Dette tilhøvet mellom tale og skrift ligg bak målrørsla sitt slagord sidan 1970-talet: «Snakk dialekt – skriv nynorsk!» Nynorske dialektar blir snakka over heile landet, men det er berre på Vestlandet utanom dei største byene og i dei austlandske fjellbygdene at skriftspråket står sterkt.', 'Det vil seie at dei fleste dialekttalarane har bokmål som det primære skriftspråket sitt.']
     elif lang == 'fas':
@@ -171,10 +193,12 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     elif lang == 'pol':
         assert sentences == ['Język polski, polszczyzna – język lechicki z grupy zachodniosłowiańskiej (do której należą również czeski, kaszubski, słowacki i języki łużyckie), stanowiącej część rodziny indoeuropejskiej.', 'Jest językiem urzędowym w Polsce oraz należy do oficjalnych języków Unii Europejskiej.', 'Ocenia się, że jest mową ojczystą ok. 44 mln ludzi na świecie[1] (w literaturze naukowej można spotkać szacunki od 39[2][3] do 48 mln[4]).', 'Językiem tym posługują się przede wszystkim mieszkańcy Polski oraz przedstawiciele tak zwanej Polonii, czyli ludność polska zamieszkała za granicą.']
     elif lang in ['por_br', 'por_pt']:
-        if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
+        if sentence_tokenizer == 'nltk_punkt':
             assert sentences == ['A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.', 'Com a criação do Reino de Portugal em 1139 e a expansão para o sul na sequência da Reconquista, deu-se a difusão da língua pelas terras conquistadas e mais tarde, com as descobertas portuguesas, para o Brasil, África e outras partes do mundo.', '[3] O português foi usado, naquela época, não somente nas cidades conquistadas pelos portugueses, mas também por muitos governantes locais nos seus contatos com outros estrangeiros poderosos.', 'Especialmente nessa altura a língua portuguesa também influenciou várias línguas.', '[4]']
-        elif sentence_tokenizer == 'spaCy - Sentence Recognizer':
+        elif sentence_tokenizer == 'spacy_sentence_recognizer':
             assert sentences == ['A língua portuguesa, também designada português, é uma língua românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.', 'Com a criação do Reino de Portugal em 1139 e a expansão para o sul na sequência da Reconquista, deu-se a difusão da língua pelas terras conquistadas e mais tarde, com as descobertas portuguesas, para o Brasil, África e outras partes do mundo.[3]', 'O português foi usado, naquela época, não somente nas cidades conquistadas pelos portugueses, mas também por muitos governantes locais nos seus contatos com outros estrangeiros poderosos.', 'Especialmente nessa altura a língua portuguesa também influenciou várias línguas.[4]']
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'ron':
         assert sentences == ['Limba română este o limbă indo-europeană, din grupul italic și din subgrupul oriental al limbilor romanice.', 'Printre limbile romanice, româna este a cincea după numărul de vorbitori, în urma spaniolei, portughezei, francezei și italienei.', 'Din motive de diferențiere tipologică, limba română mai este numită în lingvistica comparată limba dacoromână sau dialectul dacoromân.', 'De asemenea, este înregistrată ca limbă de stat atât în România cât și în Republica Moldova, unde circa 75% din populație o consideră limbă maternă (inclusiv sub denumirea de „limba moldovenească”).']
     elif lang == 'rus':
@@ -212,10 +236,12 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     elif lang == 'tsn':
         assert sentences == ['Setswana ke teme e e buiwang mo mafatsheng a Aforika Borwa, Botswana, Namibia le Zimbabwe.', 'Ke nngwe ya diteme tsa Bantu tse di welang kaha tlase ga tsa Niger-Congo, sone Setswana mme se wela mo kaleng ya Sotho-Tswana mo kaleng ya Kgaolo S (S.30), mme se sikana thata le diteme tsa Sesotho le Sepedi, gape le diteme tsa Sekgalagadi le Serotse.']
     elif lang == 'tur':
-        if sentence_tokenizer == 'NLTK - Punkt Sentence Tokenizer':
+        if sentence_tokenizer == 'nltk_punkt':
             assert sentences == ["Türkçe ya da Türk dili, Güneydoğu Avrupa ve Batı Asya'da konuşulan, Türk dilleri dil ailesine ait sondan eklemeli bir dil.", '[12] Türk dilleri ailesinin Oğuz dilleri grubundan bir Batı Oğuz dili olan Osmanlı Türkçesinin devamını oluşturur.', "Dil, başta Türkiye olmak üzere Balkanlar, Ege Adaları, Kıbrıs ve Orta Doğu'yu kapsayan eski Osmanlı İmparatorluğu coğrafyasında konuşulur.", "[12] Ethnologue'a göre Türkçe, yaklaşık 83 milyon konuşuru ile dünyada en çok konuşulan 20.", 'dildir.', "[13] Türkçe Türkiye, Kıbrıs Cumhuriyeti ve Kuzey Kıbrıs'ta ulusal resmî dil statüsüne sahiptir.", '[12]']
-        elif sentence_tokenizer == 'spaCy - Sentencizer':
+        elif sentence_tokenizer == 'spacy_sentencizer':
             assert sentences == ["Türkçe ya da Türk dili, Güneydoğu Avrupa ve Batı Asya'da konuşulan, Türk dilleri dil ailesine ait sondan eklemeli bir dil.[12] Türk dilleri ailesinin Oğuz dilleri grubundan bir Batı Oğuz dili olan Osmanlı Türkçesinin devamını oluşturur.", "Dil, başta Türkiye olmak üzere Balkanlar, Ege Adaları, Kıbrıs ve Orta Doğu'yu kapsayan eski Osmanlı İmparatorluğu coğrafyasında konuşulur.[12] Ethnologue'a göre Türkçe, yaklaşık 83 milyon konuşuru ile dünyada en çok konuşulan 20. dildir.[13] Türkçe Türkiye, Kıbrıs Cumhuriyeti ve Kuzey Kıbrıs'ta ulusal resmî dil statüsüne sahiptir.[12]"]
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'ukr':
         assert sentences == ['Украї́нська мо́ва (МФА: [ukrɑ̽ˈjɪnʲsʲkɑ̽ ˈmɔwɑ̽], історичні назви — ру́ська, руси́нська[9][10][11][* 2]) — національна мова українців.', "Належить до слов'янської групи індоєвропейської мовної сім'ї[* 3].", 'Є державною мовою в Україні[12].']
     elif lang == 'urd':
@@ -225,7 +251,7 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     elif lang == 'yor':
         assert sentences == ['Èdè Yorùbá Ni èdè tí ó ṣàkójọ pọ̀ gbogbo kú oótu o-ò-jíire bí, níapá ìwọ̀ Oòrùn ilẹ̀ Nàìjíríà, tí a bá wo èdè Yorùbá, àwọn onímọ̀ pín èdè náà sábẹ́ ẹ̀yà Kwa nínú ẹbí èdè Niger-Congo.', 'Wọ́n tún fìdí rẹ̀ múlẹ̀ pé ẹ̀yà Kwa yìí ló wọ́pọ̀ jùlọ ní sísọ, ní ìwọ̀ oòrùn aláwọ̀ dúdú fún ẹgbẹẹgbẹ̀rún ọdún.', 'Àwọn onímọ̀ èdè kan tilẹ̀ ti fi ìdí ọ̀rọ̀ múlẹ̀ pé láti orírun kan náà ni àwọn èdè bí Yorùbá, Kru, Banle, Twi, Ga, Ewe, Fon, Edo, Nupe, Igbo, Idoma, Efik àti Ijaw ti bẹ̀rẹ̀ sí yapa gẹ́gẹ́ bi èdè ọ̀tọ̀ọ̀tọ̀ tó dúró láti bí ẹgbẹ̀rún mẹ́ta ọ̀dún sẹ́yìn. [', '1] Ọ̀kan pàtàkì lára àwọn èdè orílẹ̀ èdè Nàìjíríà ni èdè Yorùbá.', 'Àwọn ìpínlẹ̀ tí a ti lè rí àwọn olùsọ èdè Yorùbá nílẹ̀ Nàìjíríà ni ìpínlẹ̀ Ẹdó, ìpínlẹ̀ Òndó, ìpínlẹ̀ Ọ̀ṣun, ìpínlẹ̀ Ọ̀yọ́, ìpínlẹ̀ Èkó, àti ìpínlẹ̀ Ògùn.', 'Ẹ̀wẹ̀ a tún rí àwọn orílẹ̀-èdè míràn bí Tógò apá kan ní Gúúsù ilẹ̀ Amẹ́ríkà bí i Cuba, Brasil, Haiti, Ghana, Sierra Leone,United Kingdom àti Trinidad, gbogbo orílẹ̀-èdè tí a dárúkọ wọ̀nyí, yàtọ̀ sí orílẹ̀-èdè Nàìjíríà, òwò ẹrú ni ó gbé àwọn ẹ̀yà Yorùbá dé ibẹ.[2]']
     else:
-        raise Exception(f'Warning: language code "{lang}" is absent from the list!')
+        raise Exception(f'Error: Tests for language "{lang}" is skipped!')
 
 if __name__ == '__main__':
     for lang, sentence_tokenizer in test_sentence_tokenizers:

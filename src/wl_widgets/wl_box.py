@@ -50,13 +50,13 @@ class Wl_Combo_Box_Lang(Wl_Combo_Box):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.addItems(list(self.main.settings_global['langs'].keys()))
+        self.addItems(list(self.main.settings_global['langs']))
 
 class Wl_Combo_Box_Encoding(Wl_Combo_Box):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.addItems(list(self.main.settings_global['file_encodings'].keys()))
+        self.addItems(list(self.main.settings_global['file_encodings']))
 
 class Wl_Combo_Box_File_To_Filter(Wl_Combo_Box):
     def __init__(self, parent, table):

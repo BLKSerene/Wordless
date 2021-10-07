@@ -32,14 +32,14 @@ def wl_syl_tokenize(main, tokens, lang, syl_tokenizer = 'default'):
 
         for token in tokens:
             # Pyphen
-            if 'Pyphen' in syl_tokenizer:
+            if 'pyphen' in syl_tokenizer:
                 pyphen_syl_tokenizer = main.__dict__[f'pyphen_syl_tokenizer_{lang}']
 
                 syls_tokens.append(re.split(r'\-+', pyphen_syl_tokenizer.inserted(token)))
             # Thai
-            elif syl_tokenizer == 'PyThaiNLP - Thai Syllable Tokenizer':
+            elif syl_tokenizer == 'pythainlp_tha':
                 syls_tokens.append(pythainlp.syllable_tokenize(token))
-            elif syl_tokenizer == 'ssg - Thai Syllable Tokenizer':
+            elif syl_tokenizer == 'ssg_tha':
                 syls_tokens.append(ssg.syllable_tokenize(token))
 
     return syls_tokens

@@ -134,7 +134,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
     elif lang == 'zul':
         assert syls == [['Zu', 'lu'], ['/ˈzu', 'ːlu', 'ː/'], [','], ['no', 'ma'], ['isi', 'Zu', 'lu'], ['wu', 'li', 'mi'], ['lwa', 'ba', 'ntu'], ['ba', 'se'], ['Ni', 'ngi', 'zi', 'mu'], ['neA', 'fri', 'ka'], ['aba', 'yi', 'ngxe', 'nye'], ['ya', 'ma', 'Ngu', 'ni'], ['.']]
     else:
-        raise Exception(f'Warning: language code "{lang}" is absent from the list!')
+        raise Exception(f'Error: Tests for language "{lang}" is skipped!')
 
 if __name__ == '__main__':
     for lang, syl_tokenizer in test_syl_tokenizers:
