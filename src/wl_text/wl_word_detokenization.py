@@ -41,16 +41,16 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
     )
 
     # English & Other Languages
-    if word_detokenizer == main.tr('NLTK - Penn Treebank Detokenizer'):
+    if word_detokenizer == 'nltk_penn_treebank':
         for sentence in sentences:
             text += main.nltk_treebank_detokenizer.tokenize(sentence)
-    elif word_detokenizer == main.tr('Sacremoses - Moses Detokenizer'):
+    elif word_detokenizer == 'sacremoses_moses':
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         
         for sentence in sentences:
             text += main.__dict__[f'sacremoses_moses_detokenizer_{lang}'].detokenize(sentence)
     # Chinese
-    elif word_detokenizer == main.tr('Wordless - Chinese Word Detokenizer'):
+    elif word_detokenizer == 'wordless_zho':
         non_cjk_start = 0
 
         for i, token in enumerate(tokens):
@@ -87,7 +87,7 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
 
                                 break
     # Japanese
-    elif word_detokenizer == main.tr('Wordless - Japanese Word Detokenizer'):
+    elif word_detokenizer == 'wordless_jpn':
         non_cjk_start = 0
 
         for i, token in enumerate(tokens):
@@ -128,7 +128,7 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
 
                             break
     # Thai
-    elif word_detokenizer in main.tr('Wordless - Thai Word Detokenizer'):
+    elif word_detokenizer in 'wordless_tha':
         non_thai_start = 0
 
         for i, token in enumerate(tokens):
@@ -169,7 +169,7 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
 
                             break
     # Tibetan
-    elif word_detokenizer == main.tr('Wordless - Tibetan Word Detokenizer'):
+    elif word_detokenizer == 'wordless_bod':
         non_tibetan_start = 0
 
         for i, token in enumerate(tokens):

@@ -48,9 +48,9 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         lang = lang,
         sentence_tokenizer = sentence_tokenizer
     )
-
+    
     # NLTK
-    if sentence_tokenizer == main.tr('NLTK - Punkt Sentence Tokenizer'):
+    if sentence_tokenizer == 'nltk_punkt':
         lang_texts = {
             'ces': 'czech',
             'dan': 'danish',
@@ -85,7 +85,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
         sentences = nltk.sent_tokenize(text, language = lang_texts[lang])
     # spaCy
-    elif 'spaCy' in sentence_tokenizer:
+    elif 'spacy' in sentence_tokenizer:
         # Chinese, English, German, Portuguese
         if lang.find('srp') == -1:
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -95,13 +95,12 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
         sentences = [sentence.text for sentence in doc.sents]
     # syntok
-    elif sentence_tokenizer == main.tr('syntok - Sentence Segmenter'):
+    elif sentence_tokenizer == 'syntok_sentence_segmenter':
         for para in syntok.segmenter.analyze(text):
             for sentence in para:
                 sentences.append(''.join([token.spacing + token.value for token in sentence]))
     # Chinese & Japanese
-    elif sentence_tokenizer in [main.tr('Wordless - Chinese Sentence Tokenizer'),
-                                main.tr('Wordless - Japanese Sentence Tokenizer')]:
+    elif sentence_tokenizer in ['wordless_zho', 'wordless_jpn']:
         for line in text.splitlines():
             sentence_start = 0
 
@@ -118,7 +117,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
             if sentence_start <= len(line):
                 sentences.append(line[sentence_start:])
     # Icelandic
-    elif sentence_tokenizer == main.tr('Tokenizer - Icelandic Sentence Tokenizer'):
+    elif sentence_tokenizer == 'tokenizer_isl':
         for sentence in tokenizer.split_into_sentences(text):
             sentences.append(wl_word_detokenization.wl_word_detokenize(
                 main,
@@ -127,13 +126,13 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
             )
 
     # Russian
-    elif sentence_tokenizer == main.tr('razdel - Russian Sentenizer'):
+    elif sentence_tokenizer == 'razdel_rus':
         sentences = [sentence.text for sentence in razdel.sentenize(text)]
     # Thai
-    elif sentence_tokenizer == main.tr('PyThaiNLP - CRFCut'):
+    elif sentence_tokenizer == 'pythainlp_crfcut':
         sentences = pythainlp.sent_tokenize(text)
     # Tibetan
-    elif sentence_tokenizer == main.tr('botok - Tibetan Sentence Tokenizer'):
+    elif sentence_tokenizer == 'botok_bod':
         wl_text_utils.init_word_tokenizers(main, lang = 'bod')
         
         tokens = main.botok_word_tokenizer.tokenize(text)
@@ -142,7 +141,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
             sentences.append(''.join([sentence_token.text
                                       for sentence_token in sentence_tokens[1]]))
     # Vietnamese
-    elif sentence_tokenizer == main.tr('Underthesea - Vietnamese Sentence Tokenizer'):
+    elif sentence_tokenizer == 'underthesea_vie':
         sentences = underthesea.sent_tokenize(text)
 
     # Strip spaces
