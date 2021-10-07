@@ -105,7 +105,8 @@ class Wl_Button_Restore_Default_Settings(Wl_Button):
 
 class Wl_Button_Reset_All_Settings(Wl_Button):
     def __init__(self, parent):
-        super().__init__(parent.tr('Reset All Settings'), parent)
+        # Pad with spaces
+        super().__init__(parent.tr(' Reset All Settings '), parent)
 
         self.parent = parent
 
