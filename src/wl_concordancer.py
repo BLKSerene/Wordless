@@ -42,19 +42,22 @@ class Wl_Table_Concordancer(wl_table.Wl_Table_Data_Sort_Search):
                 parent.tr('Left'),
                 parent.tr('Node'),
                 parent.tr('Right'),
+                parent.tr('Sentiment'),
                 parent.tr('Token No.'),
                 parent.tr('Token No. %'),
                 parent.tr('Sentence No.'),
                 parent.tr('Sentence No. %'),
                 parent.tr('Paragraph No.'),
                 parent.tr('Paragraph No. %'),
-                parent.tr('File'),
-                parent.tr('Sentiment')
+                parent.tr('File')
             ],
             headers_int = [
                 parent.tr('Token No.'),
                 parent.tr('Sentence No.'),
                 parent.tr('Paragraph No.')
+            ],
+            headers_float = [
+                parent.tr('Sentiment')
             ],
             headers_pct = [
                 parent.tr('Token No. %'),
@@ -62,8 +65,6 @@ class Wl_Table_Concordancer(wl_table.Wl_Table_Data_Sort_Search):
                 parent.tr('Paragraph No. %')
             ]
         )
-
-        self.name = 'concordancer'
 
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
@@ -807,6 +808,13 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             concordance_line.append([node_text, list(ngram), text_search_node])
                             # Right
                             concordance_line.append([context_right_text, context_right, text_search_right])
+
+                            # Sentiment
+                            if text.lang.startswith('eng'):
+                                concordance_line.append(textblob.TextBlob(context_left_text + node_text + context_right_text).sentiment.polarity)
+                            else:
+                                concordance_line.append(self.tr('No Support'))
+
                             # Token No.
                             concordance_line.append([i + 1, len_tokens])
                             # Sentence No.
@@ -815,12 +823,6 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             concordance_line.append([no_para, len_paras])
                             # File
                             concordance_line.append(file['name'])
-                            # Sentiment
-                            if text.lang.startswith('eng'):
-                                sentiment = textblob.TextBlob(context_left_text + node_text + context_right_text).sentiment.polarity
-                                concordance_line.append(f"{sentiment:.{self.main.settings_custom['data']['precision_decimal']}}")
-                            else:
-                                concordance_line.append(self.tr('No Support'))
 
                             concordance_lines.append(concordance_line)
 
@@ -910,9 +912,9 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                 for search_term in search_terms_file:
                     search_terms_total.add(search_term)
                     search_terms_labels.add(wl_word_detokenization.wl_word_detokenize(
-                                                self.main, search_term,
-                                                lang = text.lang
-                                            ))
+                        self.main, search_term,
+                        lang = text.lang
+                    ))
 
                 texts.append(text)
 
@@ -1040,11 +1042,11 @@ def generate_table(main, table):
                     node_text, node_text_raw, node_text_search = concordance_line[1]
                     right_text, right_text_raw, right_text_search = concordance_line[2]
 
-                    no_token, len_tokens = concordance_line[3]
-                    no_sentence, len_sentences = concordance_line[4]
-                    no_para, len_paras = concordance_line[5]
-                    file_name = concordance_line[6]
-                    sentiment = concordance_line[7]
+                    sentiment = concordance_line[3]
+                    no_token, len_tokens = concordance_line[4]
+                    no_sentence, len_sentences = concordance_line[5]
+                    no_para, len_paras = concordance_line[6]
+                    file_name = concordance_line[7]
 
                     # Node
                     label_node = wl_label.Wl_Label_Html(
@@ -1083,23 +1085,25 @@ def generate_table(main, table):
                     table.cellWidget(i, 2).text_raw = right_text_raw
                     table.cellWidget(i, 2).text_search = right_text_search
 
+                    # Sentiment
+                    if isinstance(sentiment, float):
+                        table.set_item_num(i, 3, sentiment)
+                    # No Support
+                    else:
+                        table.set_item_error(i, 3, text = sentiment)
+
                     # Token No.
-                    table.set_item_num(i, 3, no_token)
-                    table.set_item_num(i, 4, no_token, len_tokens)
+                    table.set_item_num(i, 4, no_token)
+                    table.set_item_num(i, 5, no_token, len_tokens)
                     # Sentence No.
-                    table.set_item_num(i, 5, no_sentence)
-                    table.set_item_num(i, 6, no_sentence, len_sentences)
+                    table.set_item_num(i, 6, no_sentence)
+                    table.set_item_num(i, 7, no_sentence, len_sentences)
                     # Paragraph No.
-                    table.set_item_num(i, 7, no_para)
-                    table.set_item_num(i, 8, no_para, len_paras)
+                    table.set_item_num(i, 8, no_para)
+                    table.set_item_num(i, 9, no_para, len_paras)
 
                     # File
-                    table.setItem(i, 9, QTableWidgetItem(file_name))
-
-                    # Sentiment
-                    table.setItem(i, 10, QTableWidgetItem(sentiment))
-
-                    table.item(i, 10).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    table.setItem(i, 10, QTableWidgetItem(file_name))
 
                 table.setUpdatesEnabled(True)
                 table.blockSignals(False)

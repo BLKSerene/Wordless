@@ -454,7 +454,7 @@ class Wl_Main(QMainWindow):
         )
 
         self.wl_work_area.currentChanged.connect(self.work_area_changed)
-
+        
         self.load_settings_work_area()
 
     def load_settings_work_area(self):
