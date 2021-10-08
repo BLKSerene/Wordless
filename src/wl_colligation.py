@@ -53,8 +53,6 @@ class Wl_Table_Colligation(wl_table.Wl_Table_Data_Filter_Search):
             sorting_enabled = True
         )
 
-        self.name = 'colligation'
-
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
 

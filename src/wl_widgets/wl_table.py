@@ -9,7 +9,6 @@
 # All other rights reserved.
 #
 
-import copy
 import csv
 import os
 import random
@@ -19,7 +18,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-import bs4
 import docx
 import openpyxl
 
@@ -57,7 +55,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                 encoding = self.main.settings_custom['export']['tables']['default_encoding']
 
                 # Concordancer
-                if self.table.name == 'concordancer':
+                if self.table.tab == 'concordancer':
                     with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
                         csv_writer = csv.writer(f)
 
@@ -82,7 +80,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
 
                             self.progress_updated.emit(self.tr(f'Exporting table ... ({i + 1} / {len_rows})'))
                 # Concordancer (Parallel Mode)
-                elif 'concordancer_parallel' in self.table.name:
+                elif self.table.tab == 'concordancer_parallel':
                     # Source file
                     with open(file_path_src, 'w', encoding = encoding, newline = '') as f:
                         csv_writer = csv.writer(f)
@@ -173,7 +171,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                 dpi_vertical = QApplication.primaryScreen().logicalDotsPerInchY()
 
                 # Concordancer
-                if self.table.name == 'concordancer':
+                if self.table.tab == 'concordancer':
                     workbook = openpyxl.Workbook()
                     worksheet = workbook.active
 
@@ -278,7 +276,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
 
                     workbook.save(self.file_path)
                 # Concordancer (Parallel Mode)
-                elif 'concordancer_parallel' in self.table.name:
+                elif self.table.tab == 'concordancer_parallel':
                     # Source file
                     workbook = openpyxl.Workbook()
                     worksheet = workbook.active
@@ -527,7 +525,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                     workbook.save(self.file_path)
             elif self.file_type == self.tr('Word Document (*.docx)'):
                 # Concordancer
-                if self.table.name == 'concordancer':
+                if self.table.tab == 'concordancer':
                     outputs = []
 
                     doc = docx.Document()
@@ -594,7 +592,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
 
                     doc.save(self.file_path)
                 # Concordancer (Parallel Mode)
-                elif 'concordancer_parallel' in self.table.name:
+                elif self.table.tab == 'concordancer_parallel':
                     # Source file
                     doc = docx.Document()
 
@@ -743,13 +741,17 @@ class Wl_Table_Item_Error(QTableWidgetItem):
         return self.read_data() < other.read_data()
 
 class Wl_Table(QTableWidget):
-    def __init__(self, parent, headers, header_orientation = 'horizontal',
-                 cols_stretch = [], drag_drop_enabled = False):
+    def __init__(
+        self, parent,
+        headers, header_orientation = 'horizontal',
+        cols_stretch = None,
+        drag_drop_enabled = False
+    ):
         self.main = wl_misc.find_wl_main(parent)
 
         self.headers = headers
         self.header_orientation = header_orientation
-        self.cols_stretch = cols_stretch
+        self.cols_stretch = cols_stretch or []
 
         self.settings = self.main.settings_custom
 
@@ -765,7 +767,7 @@ class Wl_Table(QTableWidget):
         self.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
         self.verticalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
 
-        for col in self.find_col(cols_stretch):
+        for col in self.find_col(self.cols_stretch):
             self.horizontalHeader().setSectionResizeMode(col, QHeaderView.Stretch)
 
         self.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -948,7 +950,7 @@ class Wl_Table(QTableWidget):
 
         self.export_all(rows_export = rows_export)
 
-    def export_all(self, rows_export = []):
+    def export_all(self, rows_export = None):
         def update_gui(export_success, file_path):
             self.results_exported = True
 
@@ -1010,7 +1012,7 @@ class Wl_Table(QTableWidget):
                 table = self,
                 file_path = file_path,
                 file_type = file_type,
-                rows_export = rows_export
+                rows_export = rows_export or []
             )
 
             thread_export_table = wl_threading.Wl_Thread(worker_export_table)
@@ -1047,9 +1049,11 @@ class Wl_Table(QTableWidget):
             return find(text)
 
     def find_rows(self, text):
-        return [row
-                for row in range(self.columnCount())
-                if text in self.verticalHeaderItem(row).text()]
+        return [
+            row
+            for row in range(self.columnCount())
+            if text in self.verticalHeaderItem(row).text()
+        ]
 
     def find_col(self, text):
         def find(text):
@@ -1063,9 +1067,11 @@ class Wl_Table(QTableWidget):
             return find(text)
 
     def find_cols(self, text):
-        return [col
-                for col in range(self.columnCount())
-                if text in self.horizontalHeaderItem(col).text()]
+        return [
+            col
+            for col in range(self.columnCount())
+            if text in self.horizontalHeaderItem(col).text()
+        ]
 
     def find_header(self, text):
         if self.header_orientation == 'horizontal':
@@ -1086,27 +1092,31 @@ class Wl_Table_Error(Wl_Table):
         self.name = 'error'
 
 class Wl_Table_Data(Wl_Table):
-    def __init__(self, main, tab,
-                 headers, header_orientation = 'horizontal',
-                 headers_int = [], headers_float = [],
-                 headers_pct = [], headers_cumulative = [], cols_breakdown = [],
-                 cols_stretch = [], sorting_enabled = False,
-                 linked_tables = []):
+    def __init__(
+        self, main, tab,
+        headers, header_orientation = 'horizontal',
+        headers_int = None, headers_float = None,
+        headers_pct = None, headers_cumulative = None, cols_breakdown = None,
+        cols_stretch = None,
+        sorting_enabled = False,
+        linked_tables = None
+    ):
         super().__init__(
-            main, headers, header_orientation, cols_stretch,
+            main, headers, header_orientation,
+            cols_stretch,
             drag_drop_enabled = False
         )
 
         self.tab = tab
 
-        self.headers_int_old = headers_int
-        self.headers_float_old = headers_float
-        self.headers_pct_old = headers_pct
-        self.headers_cumulative_old = headers_cumulative
-        self.cols_breakdown_old = cols_breakdown
+        self.headers_int_old = headers_int or []
+        self.headers_float_old = headers_float or []
+        self.headers_pct_old = headers_pct or []
+        self.headers_cumulative_old = headers_cumulative or []
+        self.cols_breakdown_old = cols_breakdown or []
 
         self.sorting_enabled = sorting_enabled
-        self.linked_tables = linked_tables
+        self.linked_tables = linked_tables or []
 
         if sorting_enabled:
             self.setSortingEnabled(True)
@@ -1180,9 +1190,11 @@ class Wl_Table_Data(Wl_Table):
         self.headers_pct = set(self.find_row(headers_pct))
         self.headers_cumulative = set(self.find_row(headers_cumulative))
 
-    def insert_col(self, i, label,
-                   is_int = False, is_float = False,
-                   is_pct = False, is_cumulative = False, is_breakdown = False):
+    def insert_col(
+        self, i, label,
+        is_int = False, is_float = False,
+        is_pct = False, is_cumulative = False, is_breakdown = False
+    ):
         if self.header_orientation == 'horizontal':
             headers_int = [self.horizontalHeaderItem(col).text() for col in self.headers_int]
             headers_float = [self.horizontalHeaderItem(col).text() for col in self.headers_float]
@@ -1250,6 +1262,31 @@ class Wl_Table_Data(Wl_Table):
         item.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
         super().setItem(row, col, item)
+
+    def set_item_num_val(self, row, col, val):
+        if self.header_orientation == 'horizontal':
+            header = col
+        else:
+            header = row
+
+        item = self.item(row, col)
+
+        # Integers
+        if header in self.headers_int:
+            item.setText(str(val))
+        # Floats
+        elif header in self.headers_float:
+            val = float(val)
+            precision = self.main.settings_custom['data']['precision_decimal']
+
+            item.setText(f'{val:.{precision}f}')
+        # Percentages
+        elif header in self.headers_pct:
+            precision = self.main.settings_custom['data']['precision_pct']
+
+            item.setText(f'{val:.{precision}%}')
+
+        item.val = val
 
     def set_item_error(self, row, col, text):
         item = Wl_Table_Item_Error(text)
@@ -1538,17 +1575,21 @@ class Wl_Table_Data(Wl_Table):
             self.add_linked_table(table)
 
 class Wl_Table_Data_Search(Wl_Table_Data):
-    def __init__(self, main, tab,
-                 headers, header_orientation = 'horizontal',
-                 headers_int = [], headers_float = [],
-                 headers_pct = [], headers_cumulative = [], cols_breakdown = [],
-                 cols_stretch = [], sorting_enabled = False):
+    def __init__(
+        self, main, tab,
+        headers, header_orientation = 'horizontal',
+        headers_int = None, headers_float = None,
+        headers_pct = None, headers_cumulative = None, cols_breakdown = None,
+        cols_stretch = None,
+        sorting_enabled = False
+    ):
         super().__init__(
             main, tab,
             headers, header_orientation,
             headers_int, headers_float,
             headers_pct, headers_cumulative, cols_breakdown,
-            cols_stretch, sorting_enabled
+            cols_stretch,
+            sorting_enabled
         )
 
         self.label_number_results = QLabel()
@@ -1575,16 +1616,22 @@ class Wl_Table_Data_Search(Wl_Table_Data):
             self.button_results_search.setEnabled(False)
 
 class Wl_Table_Data_Sort_Search(Wl_Table_Data):
-    def __init__(self, main, tab,
-                 headers, header_orientation = 'horizontal',
-                 headers_int = [], headers_float = [],
-                 headers_pct = [], headers_cumulative = [], cols_breakdown = [],
-                 cols_stretch = [], sorting_enabled = False):
-        super().__init__(main, tab,
-                         headers, header_orientation,
-                         headers_int, headers_float,
-                         headers_pct, headers_cumulative, cols_breakdown,
-                         cols_stretch, sorting_enabled)
+    def __init__(
+        self, main, tab,
+        headers, header_orientation = 'horizontal',
+        headers_int = None, headers_float = None,
+        headers_pct = None, headers_cumulative = None, cols_breakdown = None,
+        cols_stretch = None,
+        sorting_enabled = False
+    ):
+        super().__init__(
+            main, tab,
+            headers, header_orientation,
+            headers_int, headers_float,
+            headers_pct, headers_cumulative, cols_breakdown,
+            cols_stretch,
+            sorting_enabled
+        )
 
         self.label_number_results = QLabel()
         self.button_results_sort = wl_button.Wl_Button_Results_Sort(
@@ -1620,16 +1667,22 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
         self.button_results_search.add_tables(tables)
 
 class Wl_Table_Data_Filter_Search(Wl_Table_Data):
-    def __init__(self, main, tab,
-                 headers, header_orientation = 'horizontal',
-                 headers_int = [], headers_float = [],
-                 headers_pct = [], headers_cumulative = [], cols_breakdown = [],
-                 cols_stretch = [], sorting_enabled = False):
-        super().__init__(main, tab,
-                         headers, header_orientation,
-                         headers_int, headers_float,
-                         headers_pct, headers_cumulative, cols_breakdown,
-                         cols_stretch, sorting_enabled)
+    def __init__(
+        self, main, tab,
+        headers, header_orientation = 'horizontal',
+        headers_int = None, headers_float = None,
+        headers_pct = None, headers_cumulative = None, cols_breakdown = None,
+        cols_stretch = None,
+        sorting_enabled = False
+    ):
+        super().__init__(
+            main, tab,
+            headers, header_orientation,
+            headers_int, headers_float,
+            headers_pct, headers_cumulative, cols_breakdown,
+            cols_stretch,
+            sorting_enabled
+        )
 
         self.label_number_results = QLabel()
         self.button_results_filter = wl_button.Wl_Button_Results_Filter(
@@ -1661,234 +1714,20 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
             self.button_results_filter.setEnabled(False)
             self.button_results_search.setEnabled(False)
 
-class Wl_Table_Results_Sort_Conordancer(Wl_Table):
-    def __init__(self, parent, table):
-        super().__init__(parent,
-                         headers = [
-                             parent.tr('Columns'),
-                             parent.tr('Order')
-                         ],
-                         cols_stretch = [
-                             parent.tr('Order')
-                         ])
-
-        self.table = table
-        self.cols_sorting = []
-
-        self.button_add = QPushButton(self.tr('Add'), self)
-        self.button_insert = QPushButton(self.tr('Insert'), self)
-        self.button_remove = QPushButton(self.tr('Remove'), self)
-    
-        self.button_add.clicked.connect(self.add_row)
-        self.button_insert.clicked.connect(self.insert_row)
-        self.button_remove.clicked.connect(self.remove_row)
-
-        self.itemChanged.connect(self.item_changed)
-        self.itemSelectionChanged.connect(self.selection_changed)
-
-        self.table.itemChanged.connect(self.table_item_changed)
-
-        self.setFixedHeight(160)
-
-        self.clear_table(0)
-
-    def item_changed(self):
-        if self.rowCount() < len(self.cols_sorting):
-            self.button_add.setEnabled(True)
-        else:
-            self.button_add.setEnabled(False)
-
-        for i in range(self.rowCount()):
-            self.cellWidget(i, 0).text_old = self.cellWidget(i, 0).currentText()
-
-        self.selection_changed()
-
-    def selection_changed(self):
-        if self.selectedIndexes() and self.rowCount() < len(self.cols_sorting):
-            self.button_insert.setEnabled(True)
-        else:
-            self.button_insert.setEnabled(False)
-
-        if self.selectedIndexes() and len(self.get_selected_rows()) < self.rowCount():
-            self.button_remove.setEnabled(True)
-        else:
-            self.button_remove.setEnabled(False)
-
-    def table_item_changed(self):
-        sorting_rules = copy.deepcopy(self.main.settings_custom[self.table.tab]['sort_results']['sorting_rules'])
-
-        self.setRowCount(0)
-
-        # Columns to sort
-        if self.table.name == 'concordancer':
-            self.cols_sorting = [
-                self.tr('Node'),
-                self.tr('Token No.'),
-                self.tr('File')
-            ]
-
-            if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
-                if self.table.settings['concordancer']['generation_settings']['width_unit'] == self.tr('Token'):
-                    width_left = self.table.settings['concordancer']['generation_settings']['width_left_token']
-                    width_right = self.table.settings['concordancer']['generation_settings']['width_right_token']
-                else:
-                    col_left = self.table.find_col(self.tr('Left'))
-                    col_right = self.table.find_col(self.tr('Right'))
-
-                    width_left = max([len(self.table.cellWidget(row, col_left).text_raw)
-                                      for row in range(self.table.rowCount())])
-                    width_right = max([len(self.table.cellWidget(row, col_right).text_raw)
-                                       for row in range(self.table.rowCount())])
-
-                self.cols_sorting.extend([f'R{i + 1}' for i in range(width_right)])
-                self.cols_sorting.extend([f'L{i + 1}' for i in range(width_left)])
-        elif self.table.name == 'concordancer_parallel_upper':
-            self.cols_sorting = [
-                self.tr('Node'),
-                self.tr('Segment No.')
-            ]
-
-            if [i for i in range(self.table.columnCount()) if self.table.item(0, i)]:
-                col_left = self.table.find_col(self.tr('Left'))
-                col_right = self.table.find_col(self.tr('Right'))
-
-                width_left = max([len(self.table.cellWidget(row, col_left).text_raw)
-                                  for row in range(self.table.rowCount())])
-                width_right = max([len(self.table.cellWidget(row, col_right).text_raw)
-                                   for row in range(self.table.rowCount())])
-
-                self.cols_sorting.extend([f'R{i + 1}' for i in range(width_right)])
-                self.cols_sorting.extend([f'L{i + 1}' for i in range(width_left)])
-
-        # Check sorting settings
-        for sorting_col, sorting_order in sorting_rules:
-            if sorting_col in self.cols_sorting:
-                self.add_row()
-
-                self.cellWidget(self.rowCount() - 1, 0).setCurrentText(sorting_col)
-                self.cellWidget(self.rowCount() - 1, 1).setCurrentText(sorting_order)
-
-        self.itemChanged.emit(self.item(0, 0))
-
-    def sorting_col_changed(self, combo_box_sorting_col):
-        for i in range(self.rowCount()):
-            combo_box_cur = self.cellWidget(i, 0)
-
-            if combo_box_sorting_col != combo_box_cur and combo_box_sorting_col.currentText() == combo_box_cur.currentText():
-                QMessageBox.warning(
-                    self.main,
-                    self.tr('Column Sorted More Than Once'),
-                    self.tr(f'''
-                        {self.main.settings_global['styles']['style_dialog']}
-                        <body>
-                            <div>Please refrain from sorting the same column more than once!</div>
-                        </body>
-                    '''),
-                    QMessageBox.Ok
-                )
-
-                combo_box_sorting_col.setCurrentText(combo_box_sorting_col.text_old)
-                combo_box_sorting_col.showPopup()
-
-                return
-
-        combo_box_sorting_col.text_old = combo_box_sorting_col.currentText()
-
-    def _new_row(self):
-        combo_box_sorting_col = wl_box.Wl_Combo_Box(self)
-        combo_box_sorting_order = wl_box.Wl_Combo_Box(self)
-
-        combo_box_sorting_col.addItems(self.cols_sorting)
-        combo_box_sorting_order.addItems([
-            self.tr('Ascending'),
-            self.tr('Descending')
-        ])
-
-        if combo_box_sorting_col.findText('L1') > -1:
-            width_left = max([int(combo_box_sorting_col.itemText(i)[1:])
-                              for i in range(combo_box_sorting_col.count())
-                              if 'L' in combo_box_sorting_col.itemText(i)])
-        else:
-            width_left = 0
-
-        if combo_box_sorting_col.findText('R1') > -1:
-            width_right = max([int(combo_box_sorting_col.itemText(i)[1:])
-                               for i in range(combo_box_sorting_col.count())
-                               if 'R' in combo_box_sorting_col.itemText(i)])
-        else:
-            width_right = 0
-
-        cols_left = [int(self.cellWidget(i, 0).currentText()[1:])
-                     for i in range(self.rowCount())
-                     if 'L' in self.cellWidget(i, 0).currentText()]
-        cols_right = [int(self.cellWidget(i, 0).currentText()[1:])
-                      for i in range(self.rowCount())
-                      if 'R' in self.cellWidget(i, 0).currentText()]
-
-        if cols_left and max(cols_left) < width_left:
-            combo_box_sorting_col.setCurrentText(f'L{cols_left[-1] + 1}')
-        elif cols_right and max(cols_right) < width_right:
-            combo_box_sorting_col.setCurrentText(f'R{cols_right[-1] + 1}')
-        elif cols_right and max(cols_right) and not cols_left:
-            combo_box_sorting_col.setCurrentText(f'L1')
-        else:
-            for i in range(combo_box_sorting_col.count()):
-                text = combo_box_sorting_col.itemText(i)
-
-                if text not in [self.cellWidget(j, 0).currentText() for j in range(self.rowCount())]:
-                    combo_box_sorting_col.setCurrentText(text)
-
-                    break
-
-        combo_box_sorting_col.currentTextChanged.connect(lambda: self.sorting_col_changed(combo_box_sorting_col))
-        combo_box_sorting_col.currentTextChanged.connect(lambda: self.itemChanged.emit(self.item(0, 0)))
-        combo_box_sorting_order.currentTextChanged.connect(lambda: self.itemChanged.emit(self.item(0, 0)))
-
-        return (combo_box_sorting_col, combo_box_sorting_order)
-
-    def add_row(self):
-        combo_box_sorting_col, combo_box_sorting_order = self._new_row()
-        
-        self.setRowCount(self.rowCount() + 1)
-        self.setCellWidget(self.rowCount() - 1, 0, combo_box_sorting_col)
-        self.setCellWidget(self.rowCount() - 1, 1, combo_box_sorting_order)
-
-        self.selectRow(self.rowCount() - 1)
-
-        self.itemChanged.emit(self.item(0, 0))
-
-    def insert_row(self):
-        row = self.get_selected_rows()[0]
-
-        combo_box_sorting_col, combo_box_sorting_order = self._new_row()
-
-        self.insertRow(row)
-
-        self.setCellWidget(row, 0, combo_box_sorting_col)
-        self.setCellWidget(row, 1, combo_box_sorting_order)
-
-        self.selectRow(row)
-
-        self.itemChanged.emit(self.item(0, 0))
-
-    def remove_row(self):
-        for i in reversed(self.get_selected_rows()):
-            self.removeRow(i)
-
-        self.itemChanged.emit(self.item(0, 0))
-
 class Wl_Table_Tags(Wl_Table):
     def __init__(self, main):
-        super().__init__(main,
-                         headers = [
-                             main.tr('Type'),
-                             main.tr('Level'),
-                             main.tr('Opening Tag'),
-                             main.tr('Closing Tag'),
-                             main.tr('Preview')
-                         ],
-                         header_orientation = 'horizontal',
-                         drag_drop_enabled = True)
+        super().__init__(
+            main,
+            headers = [
+                main.tr('Type'),
+                main.tr('Level'),
+                main.tr('Opening Tag'),
+                main.tr('Closing Tag'),
+                main.tr('Preview')
+            ],
+            header_orientation = 'horizontal',
+            drag_drop_enabled = True
+        )
 
         self.verticalHeader().setHidden(True)
         self.setFixedHeight(125)
