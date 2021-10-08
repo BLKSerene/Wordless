@@ -143,8 +143,6 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
             ]
         )
         
-        self.name = 'overview'
-
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
@@ -508,8 +506,10 @@ def generate_table(main, table):
 
                 # Insert column (total)
                 for i, file in enumerate(files):
-                    table.insert_col(table.find_col(main.tr('Total')), file['name'],
-                                     is_breakdown = True)
+                    table.insert_col(
+                        table.find_col(main.tr('Total')), file['name'],
+                        is_breakdown = True
+                    )
 
                 count_paras_total = len(texts_stats_files[-1][1])
                 count_sentences_total = len(texts_stats_files[-1][3])
@@ -567,8 +567,8 @@ def generate_table(main, table):
                         table.set_item_num(20, i, count_syls)
                         table.set_item_num(21, i, count_syls, count_syls_total)
                     else:
-                        table.set_item_error(20, i, text = 'No Support')
-                        table.set_item_error(21, i, text = 'No Support')
+                        table.set_item_error(20, i, text = main.tr('No Support'))
+                        table.set_item_error(21, i, text = main.tr('No Support'))
 
                     # Count of Characters
                     table.set_item_num(22, i, count_chars)
@@ -594,8 +594,8 @@ def generate_table(main, table):
                         table.set_item_num(32, i, numpy.mean(len_tokens_in_syl))
                         table.set_item_num(33, i, numpy.std(len_tokens_in_syl))
                     else:
-                        table.set_item_error(32, i, text = 'No Support')
-                        table.set_item_error(33, i, text = 'No Support')
+                        table.set_item_error(32, i, text = main.tr('No Support'))
+                        table.set_item_error(33, i, text = main.tr('No Support'))
 
                     table.set_item_num(34, i, numpy.mean(len_tokens_in_char))
                     table.set_item_num(35, i, numpy.std(len_tokens_in_char))
@@ -605,8 +605,8 @@ def generate_table(main, table):
                         table.set_item_num(36, i, numpy.mean(len_types_in_syl))
                         table.set_item_num(37, i, numpy.std(len_types_in_syl))
                     else:
-                        table.set_item_error(36, i, text = 'No Support')
-                        table.set_item_error(37, i, text = 'No Support')
+                        table.set_item_error(36, i, text = main.tr('No Support'))
+                        table.set_item_error(37, i, text = main.tr('No Support'))
 
                     table.set_item_num(38, i, numpy.mean(len_types_in_char))
                     table.set_item_num(39, i, numpy.std(len_types_in_char))
@@ -616,8 +616,8 @@ def generate_table(main, table):
                         table.set_item_num(40, i, numpy.mean(len_syls))
                         table.set_item_num(41, i, numpy.std(len_syls))
                     else:
-                        table.set_item_error(40, i, text = 'No Support')
-                        table.set_item_error(41, i, text = 'No Support')
+                        table.set_item_error(40, i, text = main.tr('No Support'))
+                        table.set_item_error(41, i, text = main.tr('No Support'))
 
                     count_tokens_lens.append(collections.Counter(len_tokens_in_char))
                     count_sentences_lens.append(collections.Counter(len_sentences))
