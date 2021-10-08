@@ -176,9 +176,9 @@ def init_settings_default(main):
 
             'sort_results': {
                 'sorting_rules': [
-                    [main.tr('Node'), main.tr('Ascending')],
-                    [main.tr('File'), main.tr('Ascending')],
-                    [main.tr('Token No.'), main.tr('Ascending')]
+                    [main.tr('Node'), 0],
+                    [main.tr('File'), 0],
+                    [main.tr('Token No.'), 0]
                 ],
 
                 'highlight_colors': [
@@ -294,8 +294,8 @@ def init_settings_default(main):
 
             'sort_results': {
                 'sorting_rules': [
-                    [main.tr('Node'), main.tr('Ascending')],
-                    [main.tr('Segment No.'), main.tr('Ascending')]
+                    [main.tr('Node'), 0],
+                    [main.tr('Segment No.'), 0]
                 ],
 
                 'highlight_colors': [

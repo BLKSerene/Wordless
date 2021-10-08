@@ -47,8 +47,6 @@ class Wl_Table_Concordancer_Parallel_Upper(wl_table.Wl_Table_Data_Sort_Search):
             ]
         )
 
-        self.name = 'concordancer_parallel_upper'
-
         self.button_export_selected.hide()
         self.button_export_all.hide()
         self.button_clear.hide()
@@ -84,9 +82,9 @@ class Wrapper_Concordancer_Parallel(wl_layout.Wl_Wrapper):
 
         self.table_concordancer_parallel_upper.verticalScrollBar().valueChanged.connect(self.table_concordancer_parallel_lower.verticalScrollBar().setValue)
         self.table_concordancer_parallel_lower.verticalScrollBar().valueChanged.connect(self.table_concordancer_parallel_upper.verticalScrollBar().setValue)
-
+        
         self.table_concordancer_parallel_lower.add_linked_table(self.table_concordancer_parallel_upper)
-
+        
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_figure = QPushButton(self.tr('Generate Figure'), self)
 
@@ -300,7 +298,7 @@ class Wrapper_Concordancer_Parallel(wl_layout.Wl_Wrapper):
         self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 3, 0)
 
         self.wrapper_settings.layout().setRowStretch(4, 1)
-
+        
         self.load_settings()
 
         # Parallel Mode
