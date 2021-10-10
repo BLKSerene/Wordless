@@ -46,6 +46,7 @@
 - Dependencies: Upgrade NLTK to 3.6.4
 - Dependencies: Upgrade NumPy to 1.21.2
 - Dependencies: Upgrade openpyxl to 3.0.9
+- Dependencies: Upgrade PyThaiNLP to 2.3.2
 - Dependencies: Upgrade spaCy to 3.1.1
 
 ## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - 07/21/2021
