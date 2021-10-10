@@ -11,11 +11,7 @@
 # All other rights reserved.
 #
 
-# ---------- General ----------
-pyqt5
-pytest
-
-# ---------- NLP ----------
+# ---------- Version-pinned ----------
 botok == 0.8.7
 jieba == 0.42.1
 pkuseg == 0.0.25
@@ -43,18 +39,18 @@ textblob == 0.15.3
 tokenizer == 3.1.2
 underthesea == 1.2.2
 
-# ---------- Plotting ----------
-matplotlib
-networkx
-wordcloud
-
-# ---------- Misc ----------
+# ---------- Not version-pinned ----------
 beautifulsoup4
 langdetect
 langid
 lxml
+matplotlib
+networkx
 numpy
 openpyxl
+pyqt5
+pytest
 python-docx
 requests
 scipy
+wordcloud
