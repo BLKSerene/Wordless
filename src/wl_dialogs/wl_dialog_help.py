@@ -105,15 +105,7 @@ class Wl_Dialog_Citing(wl_dialog.Wl_Dialog_Info):
 class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, main.tr('Acknowledgments'),
-                         width = 600)
-
-        workbook = openpyxl.load_workbook('wl_acks.xlsx')
-
-        self.acks_general = self.load_acks(workbook['General'])
-        self.acks_nlp = self.load_acks(workbook['NLP'])
-        self.acks_lang_data = self.load_acks(workbook['Language Data'])
-        self.acks_plotting = self.load_acks(workbook['Plotting'])
-        self.acks_misc = self.load_acks(workbook['Miscellaneous'])
+                         width = 650)
 
         self.label_acks = wl_label.Wl_Label_Dialog(
             self.tr('''
@@ -123,9 +115,6 @@ class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
             '''),
             self
         )
-        self.label_browse_category = QLabel(self.tr('Browse by category:'), self)
-        self.combo_box_browse_category = wl_box.Wl_Combo_Box(self)
-
         self.table_acks = wl_table.Wl_Table(
             self,
             headers = [
@@ -136,34 +125,18 @@ class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
             ]
         )
 
-        self.combo_box_browse_category.addItems([
-            self.tr('General'),
-            self.tr('Natural Language Processing'),
-            self.tr('Language Data'),
-            self.tr('Plotting'),
-            self.tr('Miscellaneous')
-        ])
-
-        self.table_acks.setFixedHeight(250)
-
-        self.combo_box_browse_category.currentTextChanged.connect(self.browse_category_changed)
-
-        layout_browse_category = wl_layout.Wl_Layout()
-        layout_browse_category.addWidget(self.label_browse_category, 0, 0)
-        layout_browse_category.addWidget(self.combo_box_browse_category, 0, 1)
-
-        layout_browse_category.setColumnStretch(2, 1)
+        self.table_acks.setFixedHeight(300)
 
         self.wrapper_info.layout().addWidget(self.label_acks, 0, 0)
-        self.wrapper_info.layout().addLayout(layout_browse_category, 1, 0)
-        self.wrapper_info.layout().addWidget(self.table_acks, 2, 0)
-
-        self.load_settings()
+        self.wrapper_info.layout().addWidget(self.table_acks, 1, 0)
 
         self.set_fixed_height()
 
-    def load_acks(self, worksheet):
+        # Load acknowledgments
         acks = []
+
+        workbook = openpyxl.load_workbook('wl_acks.xlsx')
+        worksheet = workbook[workbook.sheetnames[0]]
 
         for i, rows in enumerate(worksheet.rows):
             if i > 0:
@@ -175,31 +148,6 @@ class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
                 license_url = rows[5].value
 
                 acks.append([name, home_page, ver, authors, license, license_url])
-
-        return acks
-
-    def load_settings(self):
-        settings = copy.deepcopy(self.main.settings_custom['menu']['help']['acks'])
-
-        self.combo_box_browse_category.setCurrentText(settings['browse_category'])
-
-        self.browse_category_changed()
-
-    def browse_category_changed(self):
-        settings = self.main.settings_custom['menu']['help']['acks']
-
-        settings['browse_category'] = self.combo_box_browse_category.currentText()
-
-        if settings['browse_category'] == self.tr('General'):
-            acks = self.acks_general
-        elif settings['browse_category'] == self.tr('Natural Language Processing'):
-            acks = self.acks_nlp
-        elif settings['browse_category'] == self.tr('Language Data'):
-            acks = self.acks_lang_data
-        elif settings['browse_category'] == self.tr('Plotting'):
-            acks = self.acks_plotting
-        elif settings['browse_category'] == self.tr('Miscellaneous'):
-            acks = self.acks_misc
 
         self.table_acks.clear_table()
 
@@ -230,8 +178,6 @@ class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
 
         self.table_acks.blockSignals(False)
         self.table_acks.setUpdatesEnabled(True)
-
-        self.table_acks.itemChanged.emit(self.table_acks.item(0, 0))
 
 class Wl_Dialog_Need_Help(wl_dialog.Wl_Dialog_Info):
     def __init__(self, main):

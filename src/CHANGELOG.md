@@ -98,7 +98,6 @@
 - Dependencies: Upgrade openpyxl to 3.0.7
 - Dependencies: Upgrade PyInstaller to 4.4
 - Dependencies: Upgrade PyQt to 5.15.4
-- Dependencies: Upgrade pytest to 6.2.4
 - Dependencies: Upgrade PyThaiNLP to 2.3.1
 - Dependencies: Upgrade Python 3.8.10
 - Dependencies: Upgrade python-docx to 0.8.11
@@ -143,7 +142,6 @@
 - Dependencies: Remove xlrd
 - Dependencies: Upgrade chardet to 4.0.0
 - Dependencies: Upgrade NumPy to 1.19.5
-- Dependencies: Upgrade pytest to 6.2.1
 - Dependencies: Upgrade PyThaiNLP to 2.2.6
 - Dependencies: Upgrade Python to 3.8.7
 - Dependencies: Upgrade Requests to 2.25.1
@@ -207,7 +205,6 @@
 - Dependencies: Upgrade PyInstaller to 4.1
 - Dependencies: Upgrade pymorphy2 to 0.9.1
 - Dependencies: Upgrade PyQt to 5.15.2
-- Dependencies: Upgrade pytest to 6.1.2
 - Dependencies: Upgrade PyThaiNLP to 2.2.5
 - Dependencies: Upgrade Python to 3.8.6
 - Dependencies: Upgrade razdel to 0.5.0
@@ -265,7 +262,6 @@
 - Dependencies: Upgrade NumPy to 1.17.4
 - Dependencies: Upgrade openpyxl to 3.0.2
 - Dependencies: Upgrade PyQt to 5.13.2
-- Dependencies: Upgrade pytest to 5.3.1
 - Dependencies: Upgrade Sacremoses to 0.0.35
 - Dependencies: Upgrade SciPy to 1.3.3
 - Dependencies: Upgrade spaCy to 2.2.3

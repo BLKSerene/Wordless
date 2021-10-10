@@ -997,10 +997,6 @@ def init_settings_default(main):
                     'citation_sys': main.tr('APA (7th Edition)')
                 },
 
-                'acks': {
-                    'browse_category': main.tr('General')
-                },
-
                 'donating': {
                     'donating_via': main.tr('PayPal')
                 }
