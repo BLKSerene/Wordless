@@ -39,6 +39,7 @@
 ### ⏫ Dependency Changes
 - Dependencies: Add Pyphen
 - Dependencies: Add ssg
+- Dependencies: Upgrade Beautiful Soup to 4.10.0
 - Dependencies: Upgrade Charset Normalizer to 2.0.6
 - Dependencies: Upgrade spaCy to 3.1.1
 
