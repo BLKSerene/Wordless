@@ -50,6 +50,7 @@
 - Dependencies: Upgrade Sacremoses to 0.0.46
 - Dependencies: Upgrade SciPy to 1.7.1
 - Dependencies: Upgrade spaCy to 3.1.3
+- Dependencies: Upgrade Tokenizer to 3.3.2
 
 ## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - 07/21/2021
 
