@@ -46,6 +46,7 @@
 - Dependencies: Upgrade NLTK to 3.6.4
 - Dependencies: Upgrade NumPy to 1.21.2
 - Dependencies: Upgrade openpyxl to 3.0.9
+- Dependencies: Upgrade PyInstaller to 4.5.1
 - Dependencies: Upgrade PyThaiNLP to 2.3.2
 - Dependencies: Upgrade Sacremoses to 0.0.46
 - Dependencies: Upgrade SciPy to 1.7.1
