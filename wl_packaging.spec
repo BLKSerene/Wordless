@@ -27,6 +27,8 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('jieba'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('langdetect'))
 # nagisa
 datas.extend(PyInstaller.utils.hooks.collect_data_files('nagisa', include_py_files = True))
+# OpenCC
+datas.extend(PyInstaller.utils.hooks.collect_data_files('opencc'))
 # pkuseg
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pkuseg'))
 # Python-scfsuite
