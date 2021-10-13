@@ -19,6 +19,12 @@ import time
 def print_with_elapsed_time(message):
     print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] {message}')
 
+# Version number
+with open('src/VERSION', 'r', encoding = 'utf_8') as f:
+    for line in f:
+        if line.strip() and not line.startswith('#'):
+            wl_ver = line.strip()
+
 time_start = time.time()
 
 # Package
@@ -50,7 +56,7 @@ if return_val_packaging == 0:
         if os.path.exists('Wordless_windows.zip'):
             os.remove('Wordless_windows.zip')
         # "7z.exe" and "7z.dll" should be put under "C:\Windows\System32" first
-        subprocess.call('7z a -tzip -mx9 wordless_windows.zip Wordless/', shell = True)
+        subprocess.call(f'7z a -tzip -mx9 wordless_{wl_ver}_windows.zip Wordless/', shell = True)
 
         print_with_elapsed_time('Compressing done!')
 
@@ -74,7 +80,7 @@ if return_val_packaging == 0:
         os.chdir('dist')
         if os.path.exists('Wordless_macos.zip'):
             os.remove('Wordless_macos.zip')
-        subprocess.call('ditto -c -k --sequesterRsrc --keepParent Wordless.app/ wordless_macos.zip', shell = True)
+        subprocess.call(f'ditto -c -k --sequesterRsrc --keepParent Wordless.app/ wordless_{wl_ver}_macos.zip', shell = True)
 
         print_with_elapsed_time('Compressing done!')
 
@@ -91,7 +97,7 @@ if return_val_packaging == 0:
         print_with_elapsed_time('Compressing files...')
 
         os.chdir('dist')
-        subprocess.call('tar -czvf wordless_linux.tar.gz Wordless/', shell = True)
+        subprocess.call(f'tar -czvf wordless_{wl_ver}_linux.tar.gz Wordless/', shell = True)
 
         print_with_elapsed_time('Compressing done!')
 
