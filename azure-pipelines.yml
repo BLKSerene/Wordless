@@ -35,7 +35,7 @@ jobs:
 
   # Download data
   - script: |
-      python downloaders/wl_downloader_ci.py
+      python utils/wl_downloader_ci.py
     displayName: 'Download data'
 
   # Run tests
@@ -88,7 +88,7 @@ jobs:
 
   # Download data
   - script: |
-      python3 downloaders/wl_downloader_ci.py
+      python3 utils/wl_downloader_ci.py
     displayName: 'Download data'
 
   # Run tests
@@ -134,7 +134,7 @@ jobs:
 
   # Download data
   - script: |
-      python3.8 downloaders/wl_downloader_ci.py
+      python3.8 utils/wl_downloader_ci.py
     displayName: 'Download data'
 
   # Run tests
