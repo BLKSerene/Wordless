@@ -139,7 +139,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
         for sentence_tokens in botok.sentence_tokenizer(tokens):
             sentences.append(''.join([sentence_token.text
-                                      for sentence_token in sentence_tokens[1]]))
+                                      for sentence_token in sentence_tokens['tokens']]))
     # Vietnamese
     elif sentence_tokenizer == 'underthesea_vie':
         sentences = underthesea.sent_tokenize(text)
