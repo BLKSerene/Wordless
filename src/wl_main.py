@@ -389,7 +389,9 @@ class Wl_Main(QMainWindow):
             margins.setLeft(margins.left() + 2)
             margins.setRight(margins.right() + 2)
         elif platform.system() == 'Darwin':
-            wrapper_file_area.layout().setContentsMargins(3, 0, 3, 0)
+            wrapper_file_area.layout().setContentsMargins(2, 0, 2, 0)
+            margins.setLeft(margins.left() + 1)
+            margins.setRight(margins.right() + 1)
         elif platform.system() == 'Linux':
             wrapper_file_area.layout().setContentsMargins(0, 0, 0, 0)
 
@@ -603,7 +605,7 @@ if __name__ == '__main__':
         wl_main.dialog_check_updates = wl_main.help_check_updates(on_startup = True)
 
     # Show changelog on first startup
-    # * Do not do this on macOSes since the popped-up changelog window cannot be closed sometimes
+    # * Do not do this on macOS since the popped-up changelog window cannot be closed sometimes
     if platform.system() in ['Windows', 'Linux']:
         if wl_main.settings_custom['1st_startup']:
             wl_main.help_changelog()
