@@ -9,8 +9,6 @@
 # All other rights reserved.
 #
 
-version: 2.0.0.{build}
-
 environment:
   matrix:
     # Windows
@@ -49,7 +47,7 @@ for:
       - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements.txt
       # Download data
-      - python downloaders/wl_downloader_ci.py
+      - python utils/wl_downloader_ci.py
     before_test:
       - cd src
     # Run tests
@@ -88,7 +86,7 @@ for:
       - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements.txt
       # Download data
-      - python downloaders/wl_downloader_ci.py
+      - python utils/wl_downloader_ci.py
     before_test:
       - cd src
     # Run tests
@@ -120,7 +118,7 @@ for:
       - pip install numpy
       - pip install --requirement requirements.txt
       # Download data
-      - python downloaders/wl_downloader_ci.py
+      - python utils/wl_downloader_ci.py
     before_test:
       - cd src
     # Run tests
