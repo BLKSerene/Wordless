@@ -44,7 +44,7 @@
 - Dependencies: Upgrade Charset Normalizer to 2.0.7
 - Dependencies: Upgrade Matplotlib to 3.4.3
 - Dependencies: Upgrade NetworkX to 2.6.3
-- Dependencies: Upgrade NLTK to 3.6.4
+- Dependencies: Upgrade NLTK to 3.6.5
 - Dependencies: Upgrade NumPy to 1.21.2
 - Dependencies: Upgrade openpyxl to 3.0.9
 - Dependencies: Upgrade PyInstaller to 4.5.1
