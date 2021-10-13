@@ -40,6 +40,7 @@
 - Dependencies: Add Pyphen
 - Dependencies: Add ssg
 - Dependencies: Upgrade Beautiful Soup to 4.10.0
+- Dependencies: Upgrade botok to 0.8.8
 - Dependencies: Upgrade Charset Normalizer to 2.0.6
 - Dependencies: Upgrade Matplotlib to 3.4.3
 - Dependencies: Upgrade NetworkX to 2.6.3
