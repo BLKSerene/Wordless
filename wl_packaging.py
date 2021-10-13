@@ -72,7 +72,7 @@ if return_val_packaging == 0:
     elif platform.system() == 'Darwin':
         # See: https://github.com/pyinstaller/pyinstaller/issues/5062#issuecomment-683743556
         # * The following command does not work on OS X 10.11
-        subprocess.call(f"codesign --remove-signature {os.path.join(os.getcwd(), 'Wordless.app/Contents/Macos/Python')}", shell = True)
+        subprocess.call(f"codesign --remove-signature {os.path.join(os.getcwd(), 'dist/Wordless.app/Contents/Macos/Python')}", shell = True)
 
         # Compress files
         print_with_elapsed_time('Compressing files...')
