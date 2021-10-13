@@ -468,13 +468,13 @@ class Wl_Main(QMainWindow):
                 break
 
         # Parallel mode
-        # * "setTabVisible" was added in Qt 5.15
-        if platform.system() == 'Windows':
+        # * Do not use "setTabVisible" on macOS which is only available for Qt 5.15+
+        if platform.system() in ['Windows', 'Linux']:
             if self.settings_custom['concordancer']['parallel_mode']:
                 self.wl_work_area.setTabVisible(1, False)
             else:
                 self.wl_work_area.setTabVisible(2, False)
-        elif platform.system() in ['Darwin', 'Linux']:
+        elif platform.system() == 'Darwin':
             self.concordancer = self.wl_work_area.widget(1)
             self.concordancer_parallel = self.wl_work_area.widget(2)
 
