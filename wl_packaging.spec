@@ -32,6 +32,8 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('pkuseg'))
 # Python-scfsuite
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pycrfsuite', include_py_files = True))
 # pymorphy2
+datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy2_dicts_ru'))
+datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy2_dicts_uk'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_ru'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_uk'))
 # Pyphen
@@ -42,7 +44,9 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('pythainlp'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sacremoses'))
 # spaCy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_lookups_data'))
+datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_lookups_data'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_lookups_data', include_py_files = True))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_pkuseg'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ca_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('zh_core_web_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('da_core_news_sm'))
@@ -60,10 +64,10 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('pl_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pt_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ro_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ru_core_news_sm'))
-# spaCy-pkuseg
-datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_pkuseg'))
 # ssg
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ssg'))
+# TextBlob
+datas.extend(PyInstaller.utils.hooks.collect_data_files('textblob'))
 # Tokenizer
 datas.extend(PyInstaller.utils.hooks.collect_data_files('tokenizer'))
 # Underthesea
@@ -75,11 +79,14 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('wordcloud'))
 datas.extend([
     ('src/lemmatization', 'lemmatization'),
     ('src/stop_word_lists', 'stop_word_lists'),
+    # Measures
+    ('src/wl_measures/dale_list_easy_words_769.txt', 'wl_measures'),
+    ('src/wl_measures/dale_list_easy_words_3000.txt', 'wl_measures'),
     # PyThaiNLP
     (pythainlp.tools.get_pythainlp_data_path(), 'pythainlp-data'),
 
     ('src/imgs', 'imgs'),
-    ('src/wl_acks', 'wl_acks'),
+    ('src/wl_acks.xlsx', '.'),
 
     ('src/CHANGELOG.md', '.'),
     ('src/VERSION', '.'),
@@ -116,11 +123,6 @@ hiddenimports = [
     'ru_core_news_sm'
 ]
 
-# Runtime hooks
-runtime_hooks = [
-    'wl_runtime_hook_pymorphy2.py'
-]
-
 # Exclusions
 if platform.system() in ['Windows', 'Linux']:
     excludes = []
@@ -142,7 +144,7 @@ a = Analysis(
     datas = datas,
     hiddenimports = hiddenimports,
     hookspath = [],
-    runtime_hooks = runtime_hooks,
+    runtime_hooks = [],
     excludes = excludes,
     win_no_prefer_redirects = False,
     win_private_assemblies = False,
