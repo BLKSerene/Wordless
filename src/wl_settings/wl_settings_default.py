@@ -1525,7 +1525,7 @@ def init_settings_default(main):
                 'ell': 'spacy_ell',
                 'hun': 'spacy_hun',
                 'ind': 'spacy_ind',
-                'gle': 'lemmatization_lists_gle',
+                'gle': 'spacy_gle',
                 'ita': 'spacy_ita',
                 'lit': 'spacy_lit',
                 'ltz': 'spacy_ltz',
