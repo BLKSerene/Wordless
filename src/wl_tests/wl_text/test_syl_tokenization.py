@@ -70,9 +70,9 @@ def test_syl_tokenize(lang, syl_tokenizer):
     elif lang == 'nld':
         assert syls == [['Het'], ['Ne', 'der', 'lands'], ['is'], ['een'], ['Wes', 't', 'Ger', 'maan', 'se'], ['taal'], ['en'], ['de'], ['of', 'fi', 'ci', 'ë', 'le'], ['taal'], ['van'], ['Ne', 'der', 'land'], [','], ['Su', 'ri', 'na', 'me'], ['en'], ['een'], ['van'], ['de'], ['drie'], ['of', 'fi', 'ci', 'ë', 'le'], ['ta', 'len'], ['van'], ['Bel', 'gië'], ['.']]
     elif lang == 'eng_gb':
-        assert syls == [['Eng', 'lish'], ['is'], ['a'], ['West'], ['Ger', 'man', 'ic'], ['lan', 'guage'], ['ori', 'gin', 'ally'], ['spoken'], ['by'], ['the'], ['in', 'hab', 'it', 'ants'], ['of'], ['early'], ['me', 'di', 'ev', 'al'], ['Eng', 'land.[3][4][5'], [']']]
+        assert syls == [['Eng', 'lish'], ['is'], ['a'], ['West'], ['Ger', 'man', 'ic'], ['lan', 'guage'], ['of'], ['the'], ['Indo'], ['', ''], ['European'], ['lan', 'guage'], ['fam', 'ily'], [','], ['ori', 'gin', 'ally'], ['spoken'], ['by'], ['the'], ['in', 'hab', 'it', 'ants'], ['of'], ['early'], ['me', 'di', 'ev', 'al'], ['Eng', 'land.[3][4][5'], [']']]
     elif lang == 'eng_us':
-        assert syls == [['Eng', 'lish'], ['is'], ['a'], ['West'], ['Ger', 'man', 'ic'], ['lan', 'guage'], ['orig', 'i', 'nal', 'ly'], ['spo', 'ken'], ['by'], ['the'], ['in', 'hab', 'i', 'tants'], ['of'], ['ear', 'ly'], ['me', 'dieval'], ['Eng', 'land.[3][4][5'], [']']]
+        assert syls == [['Eng', 'lish'], ['is'], ['a'], ['West'], ['Ger', 'man', 'ic'], ['lan', 'guage'], ['of'], ['the'], ['In', 'do'], ['', ''], ['Eu', 'ro', 'pean'], ['lan', 'guage'], ['fam', 'i', 'ly'], [','], ['orig', 'i', 'nal', 'ly'], ['spo', 'ken'], ['by'], ['the'], ['in', 'hab', 'i', 'tants'], ['of'], ['ear', 'ly'], ['me', 'dieval'], ['Eng', 'land.[3][4][5'], [']']]
     elif lang == 'epo':
         assert syls == [['Es', 'pe', 'r', 'anto'], [','], ['ori', 'gi', 'ne'], ['la'], ['Lin', 'g', 'vo'], ['In', 'ter', 'na', 'ci', 'a', ',[4'], [']'], ['es', 'tas'], ['la'], ['plej'], ['dis', 'vas', 't', 'iĝ', 'inta'], ['in', 'ter', 'na', 'cia'], ['plan', 'lin', 'g', 'vo', '.[5'], [']']]
     elif lang == 'est':
@@ -122,7 +122,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
     elif lang == 'slv':
         assert syls == [['Slo', 'ven', 'šči', 'na'], ['['], ['slo', 'vén', 'šči', 'na'], [']'], ['/'], ['['], ['slo', 'ˈʋe', 'nʃtʃi', 'na'], [']'], ['je'], ['zdru', 'že', 'ni'], ['na', 'ziv'], ['za'], ['ura', 'dni'], ['knji', 'žni'], ['je', 'zik'], ['Slo', 'ven', 'cev'], ['in'], ['sku', 'pno'], ['ime'], ['za'], ['na', 're', 'čja'], ['in'], ['go', 'vo', 're'], [','], ['ki'], ['jih'], ['go', 'vo', 'ri', 'jo'], ['ali'], ['so'], ['jih'], ['ne', 'koč'], ['go', 'vo', 'ri', 'li'], ['Slo', 'ven', 'ci'], ['.']]
     elif lang == 'spa':
-        assert syls == [['El'], ['es', 'pa', 'ñol'], ['o'], ['cas', 'te', 'llano'], ['es'], ['una'], ['len', 'gua'], ['ro', 'man', 'ce'], ['pro', 'ce', 'den', 'te'], ['del'], ['la', 'tín'], ['ha', 'bla', 'do'], ['.']]
+        assert syls == [['El'], ['es', 'pa', 'ñol'], ['o'], ['cas', 'te', 'llano'], ['es'], ['una'], ['len', 'gua'], ['ro', 'man', 'ce'], ['pro', 'ce', 'den', 'te'], ['del'], ['la', 'tín'], ['ha', 'bla', 'do'], [','], ['per', 'te', 'ne', 'cien', 'te'], ['a'], ['la'], ['fa', 'mi', 'lia'], ['de'], ['len', 'guas'], ['in', 'doeu', 'ro', 'peas'], ['.']]
     elif lang == 'swe':
         assert syls == [['Svens', 'ka'], ['('], ['svens', 'ka'], ['('], ['in', 'fo'], [')'], [')'], ['är'], ['ett'], ['öst', 'nor', 'diskt'], ['språk'], ['som'], ['ta', 'las'], ['av'], ['un', 'ge', 'fär'], ['tio'], ['mil', 'jo', 'ner'], ['per', 'so', 'ner'], ['främst'], ['i'], ['Sve', 'ri', 'ge'], ['där'], ['språ', 'ket'], ['har'], ['en'], ['do', 'mi', 'nant'], ['ställ', 'ning'], ['som'], ['hu', 'vud', 'språk'], [','], ['men'], ['även'], ['som'], ['det'], ['ena'], ['na', 'tio', 'nal', 'språ', 'ket'], ['i'], ['Fin', 'land'], ['och'], ['som'], ['en', 'da'], ['of', 'fi', 'ci', 'el', 'la'], ['språk'], ['på'], ['Åland'], ['.']]
     elif lang == 'tel':
