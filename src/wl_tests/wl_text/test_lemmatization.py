@@ -95,8 +95,6 @@ def test_lemmatize(lang, lemmatizer):
             assert lemmas == ['der', 'deutsch', 'Sprache', 'bzw.', 'der', 'deutschen', '(', '[', 'dɔɪ̯tʃ];[26', ']', 'abkürzen', 'dt', '.', 'oder', 'dtsch', '.', ')', 'sein', 'einen', 'westgermanische', 'Sprache', ',', 'der', 'weltweit', 'etwa', '90', 'bis', '105', 'Million', 'Mensch', 'als', 'Muttersprache', 'und', 'weit', 'rund', '80', 'Million', 'als', 'Zweit-', 'oder', 'Fremdsprache', 'dienen', '.']
         else:
             raise Exception(f'Error: Tests for lemmatizer "{lemmatizer}" is skipped!')
-    elif lang == 'grc':
-        assert lemmas == ['Ὅτι', 'μὲν', 'σύ', ',', 'ὦ', 'ἀνήρ', 'Ἀθηναῖοι', ',', 'πεπόνθατε', 'ὑπὸ', 'ὁ', 'ἐμός', 'κατηγόρων', ',', 'οὐ', 'οἶδα', '·', 'ἐγὼ', 'δέ', 'οὖν', 'καὶ', 'αὐτὸς', 'ὑπό', 'αὐτός', 'ὀλίγου', 'ἐμαυτοῦ', 'ἐπελαθόμην', ',', 'οὕτως', 'πιθανόω', 'λέγω', '.']
     elif lang == 'ell':
         assert lemmas == ['η', 'ελληνικός', 'γλώσσα', 'ανήκω', 'στην', 'ινδοευρωπαϊκός', 'οικογένεια[10', ']', 'και', 'αποτελώ', 'το', 'μοναδικό', 'μέλος', 'το', 'ελληνικός', 'κλάδος', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'ελλάδος', 'και', 'της', 'κύπρος', '.']
     elif lang == 'hun':

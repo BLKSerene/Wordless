@@ -96,41 +96,40 @@ I would like to extend my sincere gratitude to the following open-source project
 
 &nbsp;|Name|Authors
 -----:|----|---------
-1 |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)      |Leonard Richardson
-2 |[botok](https://github.com/Esukhia/botok)                             |Hélios Drupchen Hildt
-3 |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)    |TAHRI Ahmed R.
-4 |[CLTK](https://github.com/cltk/cltk)                                  |Kyle P. Johnson, Patrick J. Burns, John Stewart,<br>Todd Cook, Clément Besnier, William J. B. Mattingly
-5 |[extra-stopwords](https://github.com/Xangis/extra-stopwords)          |Jason Champion
-6 |[jieba](https://github.com/fxsjy/jieba)                               |Sun Junyi (孙君意)
-7 |[langdetect](https://github.com/Mimino666/langdetect)                 |中谷秀洋, Michal Danilák
-8 |[langid.py](https://github.com/saffsd/langid.py)                      |Marco Lui
-9 |[lemmalist-greek](https://github.com/stenskjaer/lemmalist-greek)      |Michael Stenskjær Christensen
-10|[Lemmatization Lists](https://github.com/michmech/lemmatization-lists)|Michal Boleslav Měchura
-11|[lxml](https://lxml.de/)                                              |Stefan Behnel
-12|[Matplotlib](https://matplotlib.org/)                                 |Matplotlib Development Team
-13|[nagisa](https://github.com/taishi-i/nagisa)                          |Taishi Ikeda (池田大志)
-14|[NetworkX](https://networkx.org/)                                     |Aric Hagberg, Dan Schult, Pieter Swart
-15|[NLTK](http://www.nltk.org/)                                          |Steven Bird, Edward Loper, Ewan Klein
-16|[NumPy](https://www.numpy.org/)                                       |NumPy Developers
-17|[opencc-python](https://github.com/yichen0831/opencc-python)          |Huang Yichen, Carbo Kuo (郭家宝)
-18|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)               |Eric Gazoni, Charlie Clark
-19|[pkuseg](https://github.com/lancopku/pkuseg-python)                   |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Bingzhen Wei (位冰镇), Xu Sun (孙栩)
-20|[PyInstaller](http://www.pyinstaller.org/)                            |Hartmut Goebel
-21|[pymorphy2](https://github.com/kmike/pymorphy2)                       |Mikhail Korobov
-22|[Pyphen](https://pyphen.org/)                                         |Guillaume Ayoub
-23|[PyQt](https://riverbankcomputing.com/software/pyqt/)                 |Riverbank Computing Limited
-24|[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)                   |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)
-25|[Python](https://www.python.org/)                                     |Guido van Rossum, Python Software Foundation
-26|[python-docx](https://github.com/python-openxml/python-docx)          |Steve Canny
-27|[razdel](https://github.com/natasha/razdel)                           |Alexander Kukushkin
-28|[Requests](https://github.com/psf/requests)                           |Kenneth Reitz
-29|[Sacremoses](https://github.com/alvations/sacremoses)                 |Liling Tan
-30|[SciPy](https://scipy.org/scipylib/)                                  |SciPy Developers
-31|[spaCy](https://spacy.io/)                                            |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
-32|[ssg](https://github.com/ponrawee/ssg)                                |Ponrawee Prasertsom
-33|[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
-34|[syntok](https://github.com/fnl/syntok)                               |Florian Leitner
-35|[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
-36|[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
-37|[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
-38|[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller
+1     |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)      |Leonard Richardson
+2     |[botok](https://github.com/Esukhia/botok)                             |Hélios Drupchen Hildt
+3     |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)    |TAHRI Ahmed R.
+4     |[CLTK](https://github.com/cltk/cltk)                                  |Kyle P. Johnson, Patrick J. Burns, John Stewart,<br>Todd Cook, Clément Besnier, William J. B. Mattingly
+5     |[extra-stopwords](https://github.com/Xangis/extra-stopwords)          |Jason Champion
+6     |[jieba](https://github.com/fxsjy/jieba)                               |Sun Junyi (孙君意)
+7     |[langdetect](https://github.com/Mimino666/langdetect)                 |中谷秀洋, Michal Danilák
+8     |[langid.py](https://github.com/saffsd/langid.py)                      |Marco Lui
+9     |[Lemmatization Lists](https://github.com/michmech/lemmatization-lists)|Michal Boleslav Měchura
+10    |[lxml](https://lxml.de/)                                              |Stefan Behnel
+11    |[Matplotlib](https://matplotlib.org/)                                 |Matplotlib Development Team
+12    |[nagisa](https://github.com/taishi-i/nagisa)                          |Taishi Ikeda (池田大志)
+13    |[NetworkX](https://networkx.org/)                                     |Aric Hagberg, Dan Schult, Pieter Swart
+14    |[NLTK](http://www.nltk.org/)                                          |Steven Bird, Edward Loper, Ewan Klein
+15    |[NumPy](https://www.numpy.org/)                                       |NumPy Developers
+16    |[opencc-python](https://github.com/yichen0831/opencc-python)          |Huang Yichen, Carbo Kuo (郭家宝)
+17    |[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)               |Eric Gazoni, Charlie Clark
+18    |[pkuseg](https://github.com/lancopku/pkuseg-python)                   |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Bingzhen Wei (位冰镇), Xu Sun (孙栩)
+19    |[PyInstaller](http://www.pyinstaller.org/)                            |Hartmut Goebel
+20    |[pymorphy2](https://github.com/kmike/pymorphy2)                       |Mikhail Korobov
+21    |[Pyphen](https://pyphen.org/)                                         |Guillaume Ayoub
+22    |[PyQt](https://riverbankcomputing.com/software/pyqt/)                 |Riverbank Computing Limited
+23    |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)                   |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)
+24    |[Python](https://www.python.org/)                                     |Guido van Rossum, Python Software Foundation
+25    |[python-docx](https://github.com/python-openxml/python-docx)          |Steve Canny
+26    |[razdel](https://github.com/natasha/razdel)                           |Alexander Kukushkin
+27    |[Requests](https://github.com/psf/requests)                           |Kenneth Reitz
+28    |[Sacremoses](https://github.com/alvations/sacremoses)                 |Liling Tan
+29    |[SciPy](https://scipy.org/scipylib/)                                  |SciPy Developers
+30    |[spaCy](https://spacy.io/)                                            |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
+31    |[ssg](https://github.com/ponrawee/ssg)                                |Ponrawee Prasertsom
+32    |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
+33    |[syntok](https://github.com/fnl/syntok)                               |Florian Leitner
+34    |[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
+35    |[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
+36    |[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
+37    |[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller
