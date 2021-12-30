@@ -18,14 +18,15 @@ import openpyxl
 
 from wl_tests import wl_test_init
 
-def print_acks(category, worksheet):
+def wl_test_readme_acks(main):
     acks = []
 
     LINE_HEADER = '&nbsp;|Name|Authors'
     LINE_HEADER_SPLITTER = '-----:|----|---------'
 
-    print(f'### {category}')
-    print()
+    workbook = openpyxl.load_workbook('wl_acks.xlsx')
+    worksheet = workbook[workbook.sheetnames[0]]
+
     print(LINE_HEADER)
     print(LINE_HEADER_SPLITTER)
 
@@ -46,17 +47,6 @@ def print_acks(category, worksheet):
             print(f"{i + 1 : <6}|[{name}]({home_page}){' ':{len_name}}|{authors}")
         else:
             print(f"{i + 1 : <6}|[{name}]({home_page})|{authors}")
-
-    print()
-
-def wl_test_readme_acks(main):
-    workbook = openpyxl.load_workbook('wl_acks.xlsx')
-
-    print_acks('General', workbook['General'])
-    print_acks('Natural Language Processing', workbook['NLP'])
-    print_acks('Language Data', workbook['Language Data'])
-    print_acks('Plotting', workbook['Plotting'])
-    print_acks('Miscellaneous', workbook['Miscellaneous'])
 
 def wl_test_supported_langs(main):
     settings = main.settings_global

@@ -83,17 +83,6 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
                     lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
                 else:
                     lemmas.append(word_net_lemmatizer.lemmatize(token))
-        # Greek (Ancient)
-        elif lemmatizer == 'lemmalist_greek_grc':
-            with open(wl_misc.get_normalized_path('lemmatization/lemmalist-greek/lemmalist-greek.txt'), 'r', encoding = 'utf_8') as f:
-                for line in f.readlines():
-                    line = line.rstrip()
-
-                    if line:
-                        lemma, *words = line.split()
-
-                        for word in words:
-                            mapping_lemmas[word] = lemma
         # Russian & Ukrainian
         elif lemmatizer == 'pymorphy2_morphological_analyzer':
             if lang == 'rus':

@@ -1521,7 +1521,6 @@ def init_settings_default(main):
                 'deu_at': 'spacy_deu',
                 'deu_de': 'spacy_deu',
                 'deu_ch': 'spacy_deu',
-                'grc': 'lemmalist_greek_grc',
                 'ell': 'spacy_ell',
                 'hun': 'spacy_hun',
                 'ind': 'spacy_ind',

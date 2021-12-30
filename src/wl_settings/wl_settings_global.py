@@ -518,7 +518,6 @@ def init_settings_global(main):
 
             'lemmatizers': {
                 main.tr('botok - Tibetan Lemmatizer'): 'botok_bod',
-                main.tr('lemmalist-greek - Greek (Ancient) Lemma List'): 'lemmalist_greek_grc',
 
                 main.tr('Lemmatization Lists - Asturian Lemma List'): 'lemmatization_lists_ast',
                 main.tr('Lemmatization Lists - Bulgarian Lemma List'): 'lemmatization_lists_bul',
@@ -2128,9 +2127,6 @@ def init_settings_global(main):
                 'spacy_deu'
             ],
 
-            'grc': [
-                'lemmalist_greek_grc'
-            ],
             'ell': [
                 'spacy_ell'
             ],

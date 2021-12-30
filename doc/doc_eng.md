@@ -521,7 +521,7 @@ German (Austria)        |✔|✔|✔|✔|✔|✔|✔
 German (Germany)        |✔|✔|✔|✔|✔|✔|✔
 German (Middle High)    |⭕️ |⭕️ |✖️|⭕️ |✖️|✖️|✔
 German (Switzerland)    |✔|✔|✔|✔|✔|✔|✔
-Greek (Ancient)         |✔|✔|✖️|⭕️ |✖️|✔|✔
+Greek (Ancient)         |✔|✔|✖️|⭕️ |✖️|✖️|✔
 Greek (Modern)          |✔|✔|✔|✔|✔|✔|✔
 Gujarati                |✔|✔|✖️|✔|✖️|✖️|✔
 Hausa                   |⭕️ |⭕️ |✖️|⭕️ |✖️|✖️|✔
