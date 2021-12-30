@@ -17,6 +17,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade Charset Normalizer to 2.0.9
+- Dependencies: Upgrade spaCy to 3.2.1
 
 ## [2.1.0](https://github.com/BLKSerene/Wordless/releases/tag/2.1.0) - 10/14/2021
 ### 🎉 New Features
