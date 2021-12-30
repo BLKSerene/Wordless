@@ -14,6 +14,7 @@
 ## [2.2.0](https://github.com/BLKSerene/Wordless/releases/tag/2.2.0) - ??/??/2022
 ### 🎉 New Features
 - File Area: Add support for .tmx files
+- Utils: Add Lemmatization Lists's Russian lemma list
 
 ### ❌ Removals
 - Utils: Remove lemmalist-greek's Greek (Ancient) lemma list
