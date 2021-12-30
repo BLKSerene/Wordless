@@ -183,7 +183,7 @@ def to_lang_util_texts(main, util_type, util_codes):
     return (_to_lang_util_text(main, util_type, util_code) for util_code in util_codes)
 
 def init_spacy_models(main, lang):
-    spacy_langs = {
+    SPACY_LANGS = {
         'cat': 'ca_core_news_sm',
         'zho': 'zh_core_web_sm',
         'dan': 'da_core_news_sm',
@@ -204,7 +204,7 @@ def init_spacy_models(main, lang):
         
         'other': 'en_core_web_sm'
     }
-    spacy_langs_lemmatizers = ['ben', 'cat', 'hrv', 'ces', 'grc', 'hun', 'ind', 'ltz', 'fas', 'srp_cyrl', 'swe', 'tgl', 'tur', 'urd']
+    SPACY_LANGS_LEMMATIZERS = ['ben', 'cat', 'hrv', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp_cyrl', 'swe', 'tgl', 'tur', 'urd']
 
     # Chinese, English, German, Portuguese
     if lang.find('srp') == -1:
@@ -212,8 +212,8 @@ def init_spacy_models(main, lang):
 
     if f'spacy_nlp_{lang}' not in main.__dict__:
         # Languages with models
-        if lang in spacy_langs:
-            model = importlib.import_module(spacy_langs[lang])
+        if lang in SPACY_LANGS:
+            model = importlib.import_module(SPACY_LANGS[lang])
 
             main.__dict__[f'spacy_nlp_{lang}'] = model.load(disable = ['parser', 'ner'])
             # Add senter
@@ -231,7 +231,7 @@ def init_spacy_models(main, lang):
             # Add sentencizer and lemmatizer
             main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer')
 
-            if lang in spacy_langs_lemmatizers:
+            if lang in SPACY_LANGS_LEMMATIZERS:
                 main.__dict__[f'spacy_nlp_{lang}'].add_pipe('lemmatizer')
 
                 main.__dict__[f'spacy_nlp_{lang}'].initialize()
