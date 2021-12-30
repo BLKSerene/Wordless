@@ -15,6 +15,7 @@
 ### 🎉 New Features
 - File Area: Add support for .tmx files
 - Utils: Add Lemmatization Lists's Russian lemma list
+- Utils: Add spaCy's Greek (Ancient) lemmatizer
 
 ### ❌ Removals
 - Utils: Remove lemmalist-greek's Greek (Ancient) lemma list
