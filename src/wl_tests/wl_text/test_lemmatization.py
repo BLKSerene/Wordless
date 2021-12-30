@@ -57,9 +57,9 @@ def test_lemmatize(lang, lemmatizer):
         assert lemmas == ['Бъ̀лгарският', 'езѝк', 'съм', 'индоевропейски', 'език', 'от', 'група', 'на', 'южнославянските', 'език', '.']
     elif lang == 'cat':
         if lemmatizer == 'lemmatization_lists_cat':
-            assert lemmas == ['El', 'català', '(', 'denominació', 'oficial', 'a', 'Catalunya', ',', 'a', 'ell', 'Illes', 'Balears', ',', 'a', 'Andorra', ',', 'a', 'ell', 'ciutat', 'de', 'ell', 'Alguer', 'i', 'tradicional', 'a', 'Catalunya', 'Nord', ')', 'o', 'valencià', '(', 'denominació', 'oficial', 'al', 'País', 'Valencià', 'i', 'tradicional', 'al', 'Carxe', ')', 'ser', 'un', 'llengua', 'romànic', 'parlar', 'a', 'Catalunya', ',', 'ell', 'País', 'Valencià', '(', 'treure', 'de', 'algun', 'comarca', 'i', 'localitat', 'de', 'ell', 'interior', ')', ',', 'ell', 'Illes', 'Balears', ',', 'Andorra', ',', 'ell', 'Franja', 'de', 'Ponent', '(', 'a', 'ell', 'Aragó', ')', ',', 'ell', 'ciutat', 'de', 'ell', 'Alguer', '(', 'a', 'ell', 'illa', 'de', 'Sardenya', ')', ',', 'ell', 'Catalunya', 'del', 'Nord,[8', ']', 'ell', 'Carxe', '(', 'un', 'petit', 'territori', 'de', 'Múrcia', 'poblar', 'per', 'immigrar', 'valencians),[9][10', ']', 'i', 'en', 'comunitat', 'arreu', 'del', 'món', '(', 'entrar', 'ell', 'qual', 'destacar', 'ell', 'de', 'ell', 'Argentina', ',', 'amb', '198.000', 'parlants).[11', ']']
+            assert lemmas == ['El', 'català', '(', 'denominació', 'oficial', 'a', 'Catalunya', ',', 'a', 'ell', 'Illes', 'Balears', ',', 'a', 'Andorra', ',', 'a', 'ell', 'ciutat', 'de', 'ell', 'Alguer', 'i', 'tradicional', 'a', 'Catalunya', 'Nord', ')', 'o', 'valencià', '(', 'denominació', 'oficial', 'a', 'litre', 'País', 'Valencià', 'i', 'tradicional', 'a', 'litre', 'Carxe', ')', 'ser', 'un', 'llengua', 'romànic', 'parlar', 'a', 'Catalunya', ',', 'ell', 'País', 'Valencià', '(', 'treure', 'de', 'algun', 'comarca', 'i', 'localitat', 'de', 'ell', 'interior', ')', ',', 'ell', 'Illes', 'Balears', ',', 'Andorra', ',', 'ell', 'Franja', 'de', 'Ponent', '(', 'a', 'ell', 'Aragó', ')', ',', 'ell', 'ciutat', 'de', 'ell', 'Alguer', '(', 'a', 'ell', 'illa', 'de', 'Sardenya', ')', ',', 'ell', 'Catalunya', 'd', 'ell', 'Nord,[8', ']', 'ell', 'Carxe', '(', 'un', 'petit', 'territori', 'de', 'Múrcia', 'poblar', 'per', 'immigrar', 'valencians),[9][10', ']', 'i', 'en', 'comunitat', 'arreu', 'd', 'ell', 'món', '(', 'entrar', 'ell', 'qual', 'destacar', 'ell', 'de', 'ell', 'Argentina', ',', 'amb', '198.000', 'parlants).[11', ']']
         elif lemmatizer == 'spacy_cat':
-            assert lemmas == ['el', 'català', '(', 'denominació', 'oficial', 'a', 'Catalunya', ',', 'a', 'el', 'Illes', 'Balears', ',', 'a', 'Andorra', ',', 'a', 'el', 'ciutat', 'de', 'el', 'Alguer', 'i', 'tradicional', 'a', 'Catalunya', 'Nord', ')', 'o', 'valencià', '(', 'denominació', 'oficial', 'al', 'País', 'Valencià', 'i', 'tradicional', 'al', 'Carxe', ')', 'és', 'un', 'llengua', 'romànic', 'parlad', 'a', 'Catalunya', ',', 'el', 'País', 'Valencià', '(', 'tret', "d'", 'algun', 'comarca', 'i', 'localitat', 'de', 'el', 'interior', ')', ',', 'el', 'Illes', 'Balears', ',', 'Andorra', ',', 'el', 'Franja', 'de', 'Ponent', '(', 'a', 'el', 'Aragó', ')', ',', 'el', 'ciutat', 'de', 'el', 'Alguer', '(', 'a', 'el', 'illa', 'de', 'Sardenya', ')', ',', 'el', 'Catalunya', 'del', 'Nord,[8', ']', 'el', 'Carxe', '(', 'un', 'petit', 'territori', 'de', 'Múrcia', 'poblat', 'per', 'immigrat', 'valencians),[9][10', ']', 'i', 'en', 'comunitat', 'arreu', 'del', 'món', '(', 'entre', 'el', 'quals', 'destacar', 'el', 'de', 'el', 'Argentina', ',', 'amb', '198.000', 'parlants).[11', ']']
+            assert lemmas == ['el', 'català', '(', 'denominació', 'oficial', 'a', 'Catalunya', ',', 'a', 'el', 'Illes', 'Balears', ',', 'a', 'Andorra', ',', 'a', 'el', 'ciutat', 'de', 'el', 'Alguer', 'i', 'tradicional', 'a', 'Catalunya', 'Nord', ')', 'o', 'valencià', '(', 'denominació', 'oficial', 'a', 'el', 'País', 'Valencià', 'i', 'tradicional', 'a', 'el', 'Carxe', ')', 'ser', 'un', 'llengua', 'romànic', 'parlat', 'a', 'Catalunya', ',', 'el', 'País', 'Valencià', '(', 'tret', 'de', 'algun', 'comarca', 'i', 'localitat', 'de', 'el', 'interior', ')', ',', 'el', 'Illes', 'Balears', ',', 'Andorra', ',', 'el', 'Franja', 'de', 'Ponent', '(', 'a', 'el', 'Aragó', ')', ',', 'el', 'ciutat', 'de', 'el', 'Alguer', '(', 'a', 'el', 'illa', 'de', 'Sardenya', ')', ',', 'el', 'Catalunya', 'de', 'el', 'Nord,[8', ']', 'el', 'Carxe', '(', 'un', 'petit', 'territori', 'de', 'Múrcia', 'poblat', 'per', 'immigrat', 'valencians),[9][10', ']', 'i', 'en', 'comunitat', 'arreu', 'de', 'el', 'món', '(', 'entre', 'el', 'qual', 'destacar', 'el', 'de', 'el', 'Argentina', ',', 'amb', '198.000', 'parlants).[11', ']']
         else:
             raise Exception(f'Error: Tests for lemmatizer "{lemmatizer}" is skipped!')
     elif lang == 'hrv':
@@ -72,9 +72,9 @@ def test_lemmatize(lang, lemmatizer):
         assert lemmas == ['het', 'nederlands', 'is', 'een', 'west-germaans', 'taal', 'en', 'de', 'officieel', 'taal', 'van', 'nederland', ',', 'suriname', 'en', 'e', 'van', 'de', 'drie', 'officieel', 'taal', 'van', 'belgië', '.']
     elif lang in ['eng_gb', 'eng_us']:
         if lemmatizer in ['lemmatization_lists_eng', 'nltk_wordnet']:
-            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'originally', 'speak', 'by', 'the', 'inhabitant', 'of', 'early', 'medieval', 'England.[3][4][5', ']']
+            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'of', 'the', 'Indo', '-', 'European', 'language', 'family', ',', 'originally', 'speak', 'by', 'the', 'inhabitant', 'of', 'early', 'medieval', 'England.[3][4][5', ']']
         elif lemmatizer == 'spacy_eng':
-            assert lemmas == ['English', 'be', 'a', 'west', 'germanic', 'language', 'originally', 'speak', 'by', 'the', 'inhabitant', 'of', 'early', 'medieval', 'England.[3][4][5', ']']
+            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'of', 'the', 'Indo', '-', 'european', 'language', 'family', ',', 'originally', 'speak', 'by', 'the', 'inhabitant', 'of', 'early', 'medieval', 'England.[3][4][5', ']']
         else:
             raise Exception(f'Error: Tests for lemmatizer "{lemmatizer}" is skipped!')
     elif lang == 'est':
@@ -83,7 +83,7 @@ def test_lemmatize(lang, lemmatizer):
         if lemmatizer == 'lemmatization_lists_fra':
             assert lemmas == ['Le', 'français', 'être', 'un', 'langue', 'indo-européen', 'de', 'le', 'famille', 'un', 'langue', 'roman', 'dont', 'le', 'locuteurs', 'être', 'appeler', 'francophone', '.']
         elif lemmatizer == 'spacy_fra':
-            assert lemmas == ['le', 'français', 'être', 'un', 'langue', 'indo-européen', 'de', 'le', 'famille', 'de', 'langue', 'roman', 'dont', 'le', 'locuteur', 'être', 'appeler', 'francophone', '.']
+            assert lemmas == ['le', 'français', 'être', 'un', 'langue', 'indo-européen', 'de', 'le', 'famille', 'de', 'langue', 'romane', 'dont', 'le', 'locuteur', 'être', 'appeler', 'francophone', '.']
         else:
             raise Exception(f'Error: Tests for lemmatizer "{lemmatizer}" is skipped!')
     elif lang == 'glg':
@@ -109,7 +109,7 @@ def test_lemmatize(lang, lemmatizer):
         if lemmatizer == 'lemmatization_lists_ita':
             assert lemmas == ["L'", 'italiano', '(', '[', 'itaˈljaːno][Nota', '1', ']', 'ascolta[?·info', ']', ')', 'essere', 'una', 'lingua', 'romanzo', 'parlato', 'principalmente', 'in', 'Italia', '.']
         elif lemmatizer == 'spacy_ita':
-            assert lemmas == ['il', 'italiano', '(', '[', 'itaˈljaːno][nota', '1', ']', 'ascolta[?·info', ']', ')', 'essere', 'uno', 'lingua', 'romanza', 'parlare', 'principalmente', 'in', 'Italia', '.']
+            assert lemmas == ['il', 'italiano', '(', '[', 'itaˈljaːno][nota', '1', ']', 'ascolta[?·info', ']', ')', 'essere', 'uno', 'lingua', 'romanza', 'parlato', 'principalmente', 'in', 'Italia', '.']
         else:
             raise Exception(f'Error: Tests for lemmatizer "{lemmatizer}" is skipped!')
     elif lang == 'lit':
@@ -147,9 +147,9 @@ def test_lemmatize(lang, lemmatizer):
         assert lemmas == ['Slovenščina', '[', 'slovénščina', ']', '/', '[', 'sloˈʋenʃtʃina', ']', 'onbiti', 'združen', 'naziv', 'za', 'uraden', 'knjižen', 'jezik', 'Slovenec', 'in', 'skupen', 'ime', 'za', 'narečje', 'in', 'govoriti', ',', 'ki', 'on', 'govoriti', 'ali', 'biti', 'on', 'nekoč', 'govoriti', 'Slovenec', '.']
     elif lang == 'spa':
         if lemmatizer == 'lemmatization_lists_spa':
-            assert lemmas == ['El', 'español', 'o', 'castellano', 'ser', 'uno', 'lengua', 'romance', 'procedente', 'del', 'latín', 'hablar', '.']
+            assert lemmas == ['El', 'español', 'o', 'castellano', 'ser', 'uno', 'lengua', 'romance', 'procedente', 'del', 'latín', 'hablar', ',', 'perteneciente', 'a', 'lo', 'familia', 'de', 'lengua', 'indoeuropeo', '.']
         elif lemmatizer == 'spacy_spa':
-            assert lemmas == ['el', 'español', 'o', 'castellano', 'ser', 'uno', 'lenguo', 'romance', 'procedente', 'del', 'latín', 'hablado', '.']
+            assert lemmas == ['el', 'español', 'o', 'castellano', 'ser', 'uno', 'lengua', 'romance', 'procedente', 'del', 'latín', 'hablado', ',', 'perteneciente', 'a', 'el', 'familia', 'de', 'lengua', 'indoeuropea', '.']
         else:
             raise Exception(f'Error: Tests for lemmatizer "{lemmatizer}" is skipped!')
     elif lang == 'swe':
