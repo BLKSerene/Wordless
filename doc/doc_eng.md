@@ -845,8 +845,9 @@ Gries's DPnorm:
 
 Juilland's D:
     \begin{align*}
-        CV &= \frac{\sum_{i = 1}^n \left(F_i - \overline{F}\right)^2}{\overline{F}} \\
-        D &= \frac{1 - CV}{\sqrt{i - 1}}
+        \sigma &= \sqrt{\frac{\sum_{i = 1}^n \left(F_i - \overline{F}\right)^2}{n}} \\
+        CV &= \frac{\sigma}{\overline{F}} \\
+        D &= \frac{1 - CV}{\sqrt{n - 1}}
     \end{align*}
 
 Lyne's D₃:
@@ -892,8 +893,9 @@ Engwall's FM:
 
 Juilland's U:
     \begin{align*}
-        CV &= \frac{\sum_{i = 1}^n \left(F_i - \overline{F}\right)^2}{\overline{F}} \\
-        D &= \frac{1 - CV}{\sqrt{i - 1}} \\
+        \sigma &= \sqrt{\frac{\sum_{i = 1}^n \left(F_i - \overline{F}\right)^2}{n}} \\
+        CV &= \frac{\sigma}{\overline{F}} \\
+        D &= \frac{1 - CV}{\sqrt{n - 1}} \\
         U &= D \times F
     \end{align*}
 
