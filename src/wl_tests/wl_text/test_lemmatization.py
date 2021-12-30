@@ -134,7 +134,12 @@ def test_lemmatize(lang, lemmatizer):
     elif lang == 'ron':
         assert lemmas == ['Limba', 'român', 'fi', 'vrea', 'limbă', 'indo-european', ',', 'din', 'grup', 'italic', 'și', 'din', 'subgrupul', 'oriental', 'al', 'limbă', 'romanice', '.']
     elif lang == 'rus':
-        assert lemmas == ['ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'информация', 'о', 'файл', 'слушать', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'один', 'из', 'восточнославянский', 'язык', ',', 'национальный', 'язык', 'русский', 'народ', '.']
+        if lemmatizer == 'lemmatization_lists_rus':
+            assert lemmas == ['Ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'Информация', 'о', 'файл', 'слушать', ')', '[', '~', '3', ']', '[', '⇨', ']', 'стальной', 'один', 'из', 'восточнославянский', 'языковый', ',', 'национальный', 'язык', 'русский', 'народ', '.']
+        elif lemmatizer in ['pymorphy2_morphological_analyzer', 'spacy_rus']:
+            assert lemmas == ['ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'информация', 'о', 'файл', 'слушать', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'один', 'из', 'восточнославянский', 'язык', ',', 'национальный', 'язык', 'русский', 'народ', '.']
+        else:
+            raise Exception(f'Error: Tests for lemmatizer "{lemmatizer}" is skipped!')
     elif lang == 'gla':
         assert lemmas == ["'S", 'i', 'cànan', 'dùthchasach', 'na', 'h', '-', 'Alba', 'a', 'th', "'", 'anns', 'a', "'", 'Ghàidhlig', '.']
     elif lang == 'srp_cyrl':

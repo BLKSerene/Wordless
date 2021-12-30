@@ -535,6 +535,7 @@ def init_settings_global(main):
                 main.tr('Lemmatization Lists - Persian Lemma List'): 'lemmatization_lists_fas',
                 main.tr('Lemmatization Lists - Portuguese Lemma List'): 'lemmatization_lists_por',
                 main.tr('Lemmatization Lists - Romanian Lemma List'): 'lemmatization_lists_ron',
+                main.tr('Lemmatization Lists - Russian Lemma List'): 'lemmatization_lists_rus',
                 main.tr('Lemmatization Lists - Scottish Gaelic Lemma List'): 'lemmatization_lists_gla',
                 main.tr('Lemmatization Lists - Slovak Lemma List'): 'lemmatization_lists_slk',
                 main.tr('Lemmatization Lists - Slovenian Lemma List'): 'lemmatization_lists_slv',
@@ -2193,6 +2194,7 @@ def init_settings_global(main):
             ],
 
             'rus': [
+                'lemmatization_lists_rus',
                 'pymorphy2_morphological_analyzer',
                 'spacy_rus'
             ],
