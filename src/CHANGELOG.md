@@ -11,6 +11,10 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
+## [2.2.0](https://github.com/BLKSerene/Wordless/releases/tag/2.2.0) - ??/??/2022
+### 🎉 New Features
+- File Area: Add support for .tmx files
+
 ## [2.1.0](https://github.com/BLKSerene/Wordless/releases/tag/2.1.0) - 10/14/2021
 ### 🎉 New Features
 - Menu: Add Preferences - Settings - Files - Miscellaneous - Read files in chunks of lines
