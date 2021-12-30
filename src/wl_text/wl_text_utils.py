@@ -204,7 +204,7 @@ def init_spacy_models(main, lang):
         
         'other': 'en_core_web_sm'
     }
-    spacy_langs_lemmatizers = ['ben', 'cat', 'hrv', 'ces', 'hun', 'ind', 'ltz', 'fas', 'srp_cyrl', 'swe', 'tgl', 'tur', 'urd']
+    spacy_langs_lemmatizers = ['ben', 'cat', 'hrv', 'ces', 'grc', 'hun', 'ind', 'ltz', 'fas', 'srp_cyrl', 'swe', 'tgl', 'tur', 'urd']
 
     # Chinese, English, German, Portuguese
     if lang.find('srp') == -1:
