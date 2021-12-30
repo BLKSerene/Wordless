@@ -556,6 +556,7 @@ def init_settings_global(main):
                 main.tr('spaCy - English Lemmatizer'): 'spacy_eng',
                 main.tr('spaCy - French Lemmatizer'): 'spacy_fra',
                 main.tr('spaCy - German Lemmatizer'): 'spacy_deu',
+                main.tr('spaCy - Greek (Ancient) Lemmatizer'): 'spacy_grc',
                 main.tr('spaCy - Greek (Modern) Lemmatizer'): 'spacy_ell',
                 main.tr('spaCy - Hungarian Lemmatizer'): 'spacy_hun',
                 main.tr('spaCy - Indonesian Lemmatizer'): 'spacy_ind',
@@ -2128,6 +2129,9 @@ def init_settings_global(main):
                 'spacy_deu'
             ],
 
+            'grc': [
+                'spacy_grc'
+            ],
             'ell': [
                 'spacy_ell'
             ],
