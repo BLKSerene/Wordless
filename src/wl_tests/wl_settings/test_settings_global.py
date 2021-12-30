@@ -106,6 +106,14 @@ def test_settings_global():
     settings_stop_word_lists_default = settings_default['stop_word_lists']['stop_word_lists']
     settings_stop_word_lists_default_custom = settings_default['stop_word_lists']['custom_lists']
 
+    print(len(settings_sentence_tokenizers), settings_sentence_tokenizers)
+    print(len(settings_word_tokenizers), settings_word_tokenizers)
+    print(len(settings_syl_tokenizers), settings_syl_tokenizers)
+    print(len(settings_word_detokenizers), settings_word_detokenizers)
+    print(len(settings_pos_taggers), settings_pos_taggers)
+    print(len(settings_lemmatizers), settings_lemmatizers)
+    print(len(settings_stop_word_lists), settings_stop_word_lists)
+
     langs_supported_sacremoses = []
     langs_supported_spacy = []
     langs_supported_spacy_lemmatizers = []

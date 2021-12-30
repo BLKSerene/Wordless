@@ -15,6 +15,7 @@ import csv
 import os
 import re
 import time
+import traceback
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -50,6 +51,9 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
             for i, file_path in enumerate(self.file_paths):
                 self.progress_updated.emit(self.tr(f'Loading files... ({i + 1}/{len_file_paths})'))
 
+                new_files_temp = []
+                lines = []
+
                 default_dir = wl_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
                 default_encoding = self.main.settings_custom['files']['default_settings']['encoding']
 
@@ -57,15 +61,12 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                 file_name, file_ext = os.path.splitext(os.path.basename(file_path))
                 file_ext = file_ext.lower()
 
-                lines = []
-
                 new_file = {'selected': True}
 
                 # Check for duplicate file names
                 file_names = [file['name'] for file in self.main.settings_custom['file_area']['files_open']]
 
                 new_file['name'] = new_file['name_old'] = wl_checking_misc.check_new_name(file_name, file_names)
-                new_file['name_old'] = new_file['name']
 
                 # XML files
                 if file_ext == '.xml':
@@ -92,14 +93,34 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                         new_file['encoding'] = wl_detection.detect_encoding(self.main, file_path)
                     else:
                         new_file['encoding'] = default_encoding
+                    
+                    with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
+                        text = f.read()
 
-                    # Try decoding
-                    new_file['encoding'], text = wl_checking_file.check_file_path_decodable(self.main, file_path, new_file['encoding'])
 
-                # Text files & XML files
                 if file_ext in ['.txt', '.xml']:
-                    pass
-                # Word documents
+                    with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
+                        new_file['text'] = f.read()
+
+                    new_files_temp.append(new_file)
+                # CSV files
+                elif file_ext == '.csv':
+                    with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace', newline = '') as f:
+                        # Remove NULL bytes to avoid error
+                        csv_reader = csv.reader([line.replace('\0', '') for line in f])
+
+                        for row in csv_reader:
+                            lines.append('\t'.join(row))
+
+                    new_file['text'] = '\n'.join(lines)
+                    new_files_temp.append(new_file)
+                # HTML pages
+                elif file_ext in ['.htm', '.html']:
+                    soup = bs4.BeautifulSoup(text, 'lxml')
+
+                    new_file['text'] = soup.get_text()
+                    new_files_temp.append(new_file)
+                # Microsoft Word documents
                 elif file_ext == '.docx':
                     doc = docx.Document(file_path)
 
@@ -115,8 +136,9 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
                                 lines.append('\t'.join(cells))
 
-                    text = '\n'.join(lines)
-                # Excel workbooks
+                    new_file['text'] = '\n'.join(lines)
+                    new_files_temp.append(new_file)
+                # Microsoft Excel workbooks
                 elif file_ext == '.xlsx':
                     workbook = openpyxl.load_workbook(file_path, data_only = True)
 
@@ -129,56 +151,79 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
                             lines.append('\t'.join(cells))
 
-                    text = '\n'.join(lines)
-                # CSV files
-                elif file_ext == '.csv':
-                    with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace', newline = '') as f:
-                        # Remove NULL bytes to avoid error
-                        csv_reader = csv.reader([line.replace('\0', '') for line in f])
+                    new_file['text'] = '\n'.join(lines)
+                    new_files_temp.append(new_file)
+                # Translation memory files
+                elif file_ext == '.tmx':
+                    lines_src = []
+                    lines_target = []
 
-                        for row in csv_reader:
-                            lines.append('\t'.join(row))
+                    new_file_src = copy.deepcopy(new_file)
+                    new_file_tgt = copy.deepcopy(new_file)
 
-                    text = '\n'.join(lines)
-                # HTML files
-                elif file_ext in ['.htm', '.html']:
-                    soup = bs4.BeautifulSoup(text, 'lxml')
+                    new_file_src['name'] = new_file_src['name_old'] = wl_checking_misc.check_new_name(f'{file_name}_source', file_names)
+                    new_file_tgt['name'] = new_file_tgt['name_old'] = wl_checking_misc.check_new_name(f'{file_name}_target', file_names)
 
-                    text = soup.get_text()
+                    soup = bs4.BeautifulSoup(text, 'lxml-xml')
 
-                # Set file encoding to defaults if encoding detection is disabled
-                if not self.main.settings_custom['file_area']['auto_detection_settings']['detect_encodings']:
-                    new_file['encoding'] = default_encoding
+                    # Extract source and target languages
+                    elements_tuv = soup.select(r'tu:first-child tuv[xml\:lang]')
 
-                # Remove header tags
-                tags_header = []
+                    if len(elements_tuv) == 2:
+                        new_file_src['lang'] = wl_conversion.to_iso_639_3(self.main, elements_tuv[0]['xml:lang'])
+                        new_file_tgt['lang'] = wl_conversion.to_iso_639_3(self.main, elements_tuv[1]['xml:lang'])
+                    else:
+                        new_file_src['lang'] = self.main.settings_custom['files']['default_settings']['lang']
+                        new_file_tgt['lang'] = self.main.settings_custom['files']['default_settings']['lang']
 
-                for _, _, tag_opening, _ in self.main.settings_custom['tags']['tags_header']:
-                    tags_header.append(tag_opening[1:-1])
+                    for elements_tu in soup.select('tu'):
+                        seg_src, seg_target = elements_tu.select('seg')
 
-                with open(new_file['path'], 'w', encoding = new_file['encoding']) as f:
-                    if new_file['tagged'] == 'Yes' and tags_header:
-                        # Use regex here since BeautifulSoup will add tags including <html> and <body> to the text
-                        # See: https://www.crummy.com/software/BeautifulSoup/bs4/doc/#differences-between-parsers
-                        text = re.sub(re_tags_header, '', text)
-                        
-                    f.write(text)
+                        lines_src.append(seg_src.get_text().replace(r'\n', ' ').strip())
+                        lines_target.append(seg_target.get_text().replace(r'\n', ' ').strip())
 
-                # Detect languages
-                if self.main.settings_custom['file_area']['auto_detection_settings']['detect_langs']:
-                    new_file['lang'] = wl_detection.detect_lang(self.main, new_file)
-                else:
-                    new_file['lang'] = self.main.settings_custom['files']['default_settings']['lang']
+                    new_file_src['path'] = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
+                    new_file_tgt['path'] = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
 
-                # Process texts
-                new_file['text'] = wl_text.Wl_Text(self.main, new_file)
+                    new_file_src['text'] = '\n'.join(lines_src)
+                    new_file_tgt['text'] = '\n'.join(lines_target)
 
-                new_files.append(new_file)
+                    new_files_temp.append(new_file_src)
+                    new_files_temp.append(new_file_tgt)
+
+                for new_file in new_files_temp:
+                    # Remove header tags
+                    tags_header = []
+
+                    for _, _, tag_opening, _ in self.main.settings_custom['tags']['tags_header']:
+                        tags_header.append(tag_opening[1:-1])
+
+                    with open(new_file['path'], 'w', encoding = new_file['encoding']) as f:
+                        text = new_file['text']
+
+                        if new_file['tagged'] == 'Yes' and tags_header:
+                            # Use regex here since BeautifulSoup will add tags including <html> and <body> to the text
+                            # See: https://www.crummy.com/software/BeautifulSoup/bs4/doc/#differences-between-parsers
+                            text = re.sub(re_tags_header, '', text)
+                            
+                        f.write(text)
+
+                    # Detect languages
+                    if file_ext != '.tmx':
+                        if self.main.settings_custom['file_area']['auto_detection_settings']['detect_langs']:
+                            new_file['lang'] = wl_detection.detect_lang(self.main, new_file)
+                        else:
+                            new_file['lang'] = self.main.settings_custom['files']['default_settings']['lang']
+
+                    # Process texts
+                    new_file['text'] = wl_text.Wl_Text(self.main, new_file)
+
+                    new_files.append(new_file)
 
             if self.file_paths:
                 self.main.settings_custom['import']['files']['default_path'] = wl_misc.get_normalized_dir(self.file_paths[0])
-        except Exception as e:
-            error_msg = repr(e)
+        except Exception:
+            error_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Updating table...'))
 
