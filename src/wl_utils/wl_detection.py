@@ -28,8 +28,7 @@ def detect_encoding(main, file_path):
 
     with open(file_path, 'rb') as f:
         if main.settings_custom['files']['auto_detection_settings']['number_lines_no_limit']:
-            for line in f:
-                text += line
+            text = f.read()
         else:
             for i, line in enumerate(f):
                 if i < main.settings_custom['files']['auto_detection_settings']['number_lines']:
@@ -37,10 +36,20 @@ def detect_encoding(main, file_path):
                 else:
                     break
 
-        results = charset_normalizer.from_bytes(text)
-        if results:
-            encoding = results.best().encoding
-        else:
+    results = charset_normalizer.from_bytes(text)
+
+    if results:
+        encoding = results.best().encoding
+    else:
+        encoding = 'utf_8'
+
+    # Test decodability
+    if encoding != 'utf_8':
+        try:
+            with open(file_path, 'r', encoding = encoding) as f:
+                text = f.read()
+        # Fall back to UTF-8 if fail
+        except:
             encoding = 'utf_8'
 
     return encoding
