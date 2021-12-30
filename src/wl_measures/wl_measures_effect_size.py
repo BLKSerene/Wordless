@@ -114,7 +114,7 @@ def log_ratio(main, c11, c12, c21, c22):
         return math.log((c11 / cx1) / (c12 / cx2), 2)
 
 # Log-Frequency Biased MD
-# Reference: Thanopoulos, A, Fakotakis, N., Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association.
+# Reference: Thanopoulos, A., Fakotakis, N., Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association.
 def lfmd(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
@@ -239,7 +239,7 @@ def pmi(main, c11, c12, c21, c22):
         return math.log(c11 / e11, 2)
 
 # Poisson Collocation Measure
-# Reference: Quasthoff, U, & Wolff, C. (2002). The poisson collocation measure and its applications. Proceedings of 2nd International Workshop on Computational Approaches to Collocations. IEEE.
+# Reference: Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. Proceedings of 2nd International Workshop on Computational Approaches to Collocations. IEEE.
 def poisson_collocation_measure(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)

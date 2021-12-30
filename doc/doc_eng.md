@@ -1178,7 +1178,7 @@ Squared Phi Coefficient      [[51]](#doc-eng-5-51)|![Formula](/doc/measures/effe
 <span id="doc-eng-5-16"></span>
 [16] Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri<br>
 <span id="doc-eng-5-17"></span>
-[17] Lijffijt, J., & Gries, S. T. (2012). Correction to Stefan Th. Gries’ “dispersions and adjusted frequencies in corpora” *International Journal of Corpus Linguistics*, *17*(1), 147–149. https://doi.org/10.1075/ijcl.17.1.08lij<br>
+[17] Lijffijt, J., & Gries, S. T. (2012). Correction to Stefan Th. Gries’ “dispersions and adjusted frequencies in corpora”. *International Journal of Corpus Linguistics*, *17*(1), 147–149. https://doi.org/10.1075/ijcl.17.1.08lij<br>
 <span id="doc-eng-5-18"></span>
 [18] Juilland, A., & Chang-Rodriguez, E. (1964). Frequency dictionary of spanish words. Mouton.<br>
 <span id="doc-eng-5-19"></span>
@@ -1204,7 +1204,7 @@ Squared Phi Coefficient      [[51]](#doc-eng-5-51)|![Formula](/doc/measures/effe
 <span id="doc-eng-5-29"></span>
 [29] Oakes, M. P. (1998). *Statistics for Corpus Linguistics*. Edinburgh University Press.<br>
 <span id="doc-eng-5-30"></span>
-[30] Church, K., Gale, W, Hanks P, & Hindle D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), *Lexical acquisition: Exploiting on-line resources to build a lexicon* (pp. 115–164). Psychology Press.<br>
+[30] Church, K., Gale, W., Hanks P., & Hindle D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), *Lexical acquisition: Exploiting on-line resources to build a lexicon* (pp. 115–164). Psychology Press.<br>
 <span id="doc-eng-5-31"></span>
 [31] Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. *Language and Computers*, *68*, 247–269.<br>
 <span id="doc-eng-5-32"></span>
@@ -1212,7 +1212,7 @@ Squared Phi Coefficient      [[51]](#doc-eng-5-51)|![Formula](/doc/measures/effe
 <span id="doc-eng-5-33"></span>
 [33] Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger, & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
 <span id="doc-eng-5-34"></span>
-[34] Gabrielatos, C., & Marchi, A. (2012, September 13–14). Keyness: Appropriate metrics and practical issues [Conference session]. CADS International Conference 2012, University of Bologna, Italy.
+[34] Gabrielatos, C., & Marchi, A. (2012, September 13–14). Keyness: Appropriate metrics and practical issues [Conference session]. CADS International Conference 2012, University of Bologna, Italy.<br>
 <span id="doc-eng-5-35"></span>
 [35] Daille, B. (1994). Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques [Doctoral thesis, Université Paris 7]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid=<br>
 <span id="doc-eng-5-36"></span>
@@ -1228,7 +1228,7 @@ Squared Phi Coefficient      [[51]](#doc-eng-5-51)|![Formula](/doc/measures/effe
 <span id="doc-eng-5-41"></span>
 [41] Hardie, A. (2014, April 28). Log ratio: An informal introduction. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.<br>
 <span id="doc-eng-5-42"></span>
-[42] Thanopoulos, A, Fakotakis, N., Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
+[42] Thanopoulos, A., Fakotakis, N., Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
 <span id="doc-eng-5-43"></span>
 [43] Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka, & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University<br>
 <span id="doc-eng-5-44"></span>
@@ -1244,6 +1244,6 @@ Squared Phi Coefficient      [[51]](#doc-eng-5-51)|![Formula](/doc/measures/effe
 <span id="doc-eng-5-49"></span>
 [49] Church, K. W., & Hanks, P. (1990). Word association norms, mutual information, and lexicography. *Computational Linguistics*, *16*(1), 22–29.<br>
 <span id="doc-eng-5-50"></span>
-[50] Quasthoff, U, & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.<br>
+[50] Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.<br>
 <span id="doc-eng-5-51"></span>
 [51] Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.<br>

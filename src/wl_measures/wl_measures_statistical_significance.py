@@ -33,7 +33,7 @@ def get_expected(c1x, c2x, cx1, cx2, cxx):
 
     return (e11, e12, e21, e22)
 
-# Overload scipy.stats.mannwhitneyu to fix wrong implementation
+# Overwrite scipy.stats.mannwhitneyu to fix wrong implementation
 def mannwhitneyu(x, y, use_continuity, alternative):
     # Check if all frequencies are equal
     if all([freq == x[0] for freq in x + y]):
@@ -209,7 +209,7 @@ def pearsons_chi_squared_test(main, c11, c12, c21, c22):
     return [chi_square, p_value, None]
 
 # Student's t-test (1-sample)
-# References: Church, K., Gale, W, Hanks P, & Hindle D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), Lexical acquisition: Exploiting on-line resources to build a lexicon (pp. 115–164). Psychology Press.
+# References: Church, K., Gale, W., Hanks P., & Hindle D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), Lexical acquisition: Exploiting on-line resources to build a lexicon (pp. 115–164). Psychology Press.
 def students_t_test_1_sample(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
