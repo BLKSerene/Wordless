@@ -1,4 +1,4 @@
-﻿#
+#
 # Wordless: Checking - File
 #
 # Copyright (C) 2018-2021  Ye Lei (叶磊)
@@ -65,21 +65,6 @@ def check_file_paths_duplicate(main, file_paths):
                 file_paths_pass.append(file_path)
 
     return file_paths_pass, file_paths_duplicate
-
-def check_file_path_decodable(main, file_path, encoding):
-    try:
-        with open(file_path, 'r', encoding = encoding) as f:
-            text = f.read()
-    # Fall back to UTF-8 if fail
-    except:
-        print(f'Warning: Fall back to UTF-8 for file "{file_path}"')
-
-        encoding = 'utf_8'
-
-        with open(file_path, 'r', encoding = encoding, errors = 'replace') as f:
-            text = f.read()
-
-    return encoding, text
 
 def check_files_on_loading(main, files):
     loading_pass = True

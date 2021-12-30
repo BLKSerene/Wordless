@@ -115,48 +115,86 @@ def test_file_area():
 def update_gui_file_types(error_msg, new_files):
     assert not error_msg
 
-    file_name = os.path.split(new_files[0]['path'])[1]
-    file_text = new_files[0]['text']
+    # Non-TMX files
+    if len(new_files) == 1:
+        file_name = os.path.split(new_files[0]['path'])[1]
+        file_text = new_files[0]['text']
 
-    print(file_text.tokens_multilevel)
-    print(file_text.tokens_flat)
-    print(file_text.tags)
-    print(file_text.offsets_paras)
-    print(file_text.offsets_sentences)
+        print(file_text.tokens_multilevel)
+        print(file_text.tokens_flat)
+        print(file_text.tags)
+        print(file_text.offsets_paras)
+        print(file_text.offsets_sentences)
 
-    if file_name == 'CSV File.txt':
-        assert file_text.tokens_multilevel == [[], [], [['3', '-', '2', '3', '-', '3']], [], [], [['6', '-', '2', '6', '-', '3']], [], []]
-        assert file_text.tokens_flat == ['3', '-', '2', '3', '-', '3', '6', '-', '2', '6', '-', '3']
-        assert file_text.offsets_paras == [0, 0, 0, 6, 6, 6, 12, 12]
-        assert file_text.offsets_sentences == [0, 6]
-    elif file_name == 'Excel Workbook.txt':
-        assert file_text.tokens_multilevel == [[], [['B2', '&', 'C2', 'D2']], [['B3', '&', 'B4', 'C3', 'D3']], [['C4', 'D4']], [['B5', 'C5', 'D5']], [], [], [['B2', '&', 'C2', 'D2']], [['B3', '&', 'B4', 'C3', 'D3']], [['C4', 'D4']], [['B5', 'C5', 'D5']]]
-        assert file_text.tokens_flat == ['B2', '&', 'C2', 'D2', 'B3', '&', 'B4', 'C3', 'D3', 'C4', 'D4', 'B5', 'C5', 'D5', 'B2', '&', 'C2', 'D2', 'B3', '&', 'B4', 'C3', 'D3', 'C4', 'D4', 'B5', 'C5', 'D5']
-        assert file_text.offsets_paras == [0, 0, 4, 9, 11, 14, 14, 14, 18, 23, 25]
-        assert file_text.offsets_sentences == [0, 4, 9, 11, 14, 18, 23, 25]
-    elif file_name == 'HTML Page.txt':
-        assert file_text.tokens_multilevel == [[], [], [['This', 'is', 'a', 'title']], [], [], [['Hello', 'world', '!']], [], []]
-        assert file_text.tokens_flat == ['This', 'is', 'a', 'title', 'Hello', 'world', '!']
-        assert file_text.offsets_paras == [0, 0, 0, 4, 4, 4, 7, 7]
-        assert file_text.offsets_sentences == [0, 4]
-    elif file_name == 'Word Document.txt':
-        assert file_text.tokens_multilevel == [[], [], [['Heading']], [], [], [['This', 'is', 'the', 'first', 'sentence', '.'], ['This', 'is', 'the', 'second', 'sentence', '.']], [], [], [['This', 'is', 'the', 'third', 'sentence', '.']], [], [['2', '-', '2', '&', '2', '-', '3', '2', '-', '4']], [['3', '-', '2', '&', '4', '-', '2', '3', '-', '3', '3', '-', '4']], [['4', '-', '3', '4', '-', '4']], [['5', '-', '2', '5', '-', '3', '5', '-', '4', '5', '-', '4', '-', '1', '5', '-', '4', '-', '2', '5', '-', '4', '-', '3', '5', '-', '4', '-', '4']], [], [], []]
-        assert file_text.tokens_flat == ['Heading', 'This', 'is', 'the', 'first', 'sentence', '.', 'This', 'is', 'the', 'second', 'sentence', '.', 'This', 'is', 'the', 'third', 'sentence', '.', '2', '-', '2', '&', '2', '-', '3', '2', '-', '4', '3', '-', '2', '&', '4', '-', '2', '3', '-', '3', '3', '-', '4', '4', '-', '3', '4', '-', '4', '5', '-', '2', '5', '-', '3', '5', '-', '4', '5', '-', '4', '-', '1', '5', '-', '4', '-', '2', '5', '-', '4', '-', '3', '5', '-', '4', '-', '4']
-        assert file_text.offsets_paras == [0, 0, 0, 1, 1, 1, 13, 13, 13, 19, 19, 29, 42, 48, 77, 77, 77]
-        assert file_text.offsets_sentences == [0, 1, 7, 13, 19, 29, 42, 48]
-    # XML
-    elif file_name == 'XML File.xml':
-        assert file_text.tokens_multilevel == [[['FACTSHEET', 'WHAT', 'IS', 'AIDS', '?']], [['AIDS', '(', 'Acquired', 'Immune', 'Deficiency', 'Syndrome', ')', 'is', 'a', 'condition', 'caused', 'by', 'a', 'virus', 'called', 'HIV', '(', 'Human', 'Immuno', 'Deficiency', 'Virus', ')', '.'], ['This', 'virus', 'affects', 'the', 'body', "'s", 'defence', 'system', 'so', 'that', 'it', 'can', 'not', 'fight', 'infection', '.']]]
-        assert file_text.tokens_flat == ['FACTSHEET', 'WHAT', 'IS', 'AIDS', '?', 'AIDS', '(', 'Acquired', 'Immune', 'Deficiency', 'Syndrome', ')', 'is', 'a', 'condition', 'caused', 'by', 'a', 'virus', 'called', 'HIV', '(', 'Human', 'Immuno', 'Deficiency', 'Virus', ')', '.', 'This', 'virus', 'affects', 'the', 'body', "'s", 'defence', 'system', 'so', 'that', 'it', 'can', 'not', 'fight', 'infection', '.']
-        assert file_text.offsets_paras == [0, 5]
-        assert file_text.offsets_sentences == [0, 5, 28]
-    elif file_name in ['XML File (2).xml', 'XML File (3).xml']:
-        assert file_text.tokens_multilevel == [[], [], [['FACTSHEET', 'WHAT', 'IS', 'AIDS', '?']], [['AIDS', '(', 'Acquired', 'Immune', 'Deficiency', 'Syndrome)is', 'a', 'condition', 'caused', 'by', 'a', 'virus', 'called', 'HIV', '(', 'Human', 'Immuno', 'Deficiency', 'Virus', ')', '.']], [['This', 'virus', 'affects', 'the', 'body', "'s", 'defence', 'system', 'so', 'that', 'it', 'can', 'not', 'fight', 'infection', '.']]]
-        assert file_text.tokens_flat == ['FACTSHEET', 'WHAT', 'IS', 'AIDS', '?', 'AIDS', '(', 'Acquired', 'Immune', 'Deficiency', 'Syndrome)is', 'a', 'condition', 'caused', 'by', 'a', 'virus', 'called', 'HIV', '(', 'Human', 'Immuno', 'Deficiency', 'Virus', ')', '.', 'This', 'virus', 'affects', 'the', 'body', "'s", 'defence', 'system', 'so', 'that', 'it', 'can', 'not', 'fight', 'infection', '.']
-        assert file_text.offsets_paras == [0, 0, 0, 5, 26]
-        assert file_text.offsets_sentences == [0, 5, 26]
+        # CSV files
+        if file_name == 'CSV File.txt':
+            assert file_text.tokens_multilevel == [[], [], [['3', '-', '2', '3', '-', '3']], [], [], [['6', '-', '2', '6', '-', '3']], [], []]
+            assert file_text.tokens_flat == ['3', '-', '2', '3', '-', '3', '6', '-', '2', '6', '-', '3']
+            assert file_text.offsets_paras == [0, 0, 0, 6, 6, 6, 12, 12]
+            assert file_text.offsets_sentences == [0, 6]
+        # Excel workbooks
+        elif file_name == 'Excel Workbook.txt':
+            assert file_text.tokens_multilevel == [[], [['B2', '&', 'C2', 'D2']], [['B3', '&', 'B4', 'C3', 'D3']], [['C4', 'D4']], [['B5', 'C5', 'D5']], [], [], [['B2', '&', 'C2', 'D2']], [['B3', '&', 'B4', 'C3', 'D3']], [['C4', 'D4']], [['B5', 'C5', 'D5']]]
+            assert file_text.tokens_flat == ['B2', '&', 'C2', 'D2', 'B3', '&', 'B4', 'C3', 'D3', 'C4', 'D4', 'B5', 'C5', 'D5', 'B2', '&', 'C2', 'D2', 'B3', '&', 'B4', 'C3', 'D3', 'C4', 'D4', 'B5', 'C5', 'D5']
+            assert file_text.offsets_paras == [0, 0, 4, 9, 11, 14, 14, 14, 18, 23, 25]
+            assert file_text.offsets_sentences == [0, 4, 9, 11, 14, 18, 23, 25]
+        # HTML pages
+        elif file_name == 'HTML Page.txt':
+            assert file_text.tokens_multilevel == [[], [], [['This', 'is', 'a', 'title']], [], [], [['Hello', 'world', '!']], [], []]
+            assert file_text.tokens_flat == ['This', 'is', 'a', 'title', 'Hello', 'world', '!']
+            assert file_text.offsets_paras == [0, 0, 0, 4, 4, 4, 7, 7]
+            assert file_text.offsets_sentences == [0, 4]
+        # Word documents
+        elif file_name == 'Word Document.txt':
+            assert file_text.tokens_multilevel == [[], [], [['Heading']], [], [], [['This', 'is', 'the', 'first', 'sentence', '.'], ['This', 'is', 'the', 'second', 'sentence', '.']], [], [], [['This', 'is', 'the', 'third', 'sentence', '.']], [], [['2', '-', '2', '&', '2', '-', '3', '2', '-', '4']], [['3', '-', '2', '&', '4', '-', '2', '3', '-', '3', '3', '-', '4']], [['4', '-', '3', '4', '-', '4']], [['5', '-', '2', '5', '-', '3', '5', '-', '4', '5', '-', '4', '-', '1', '5', '-', '4', '-', '2', '5', '-', '4', '-', '3', '5', '-', '4', '-', '4']], [], [], []]
+            assert file_text.tokens_flat == ['Heading', 'This', 'is', 'the', 'first', 'sentence', '.', 'This', 'is', 'the', 'second', 'sentence', '.', 'This', 'is', 'the', 'third', 'sentence', '.', '2', '-', '2', '&', '2', '-', '3', '2', '-', '4', '3', '-', '2', '&', '4', '-', '2', '3', '-', '3', '3', '-', '4', '4', '-', '3', '4', '-', '4', '5', '-', '2', '5', '-', '3', '5', '-', '4', '5', '-', '4', '-', '1', '5', '-', '4', '-', '2', '5', '-', '4', '-', '3', '5', '-', '4', '-', '4']
+            assert file_text.offsets_paras == [0, 0, 0, 1, 1, 1, 13, 13, 13, 19, 19, 29, 42, 48, 77, 77, 77]
+            assert file_text.offsets_sentences == [0, 1, 7, 13, 19, 29, 42, 48]
+        # XML files
+        elif file_name == 'XML File.xml':
+            assert file_text.tokens_multilevel == [[['FACTSHEET', 'WHAT', 'IS', 'AIDS', '?']], [['AIDS', '(', 'Acquired', 'Immune', 'Deficiency', 'Syndrome', ')', 'is', 'a', 'condition', 'caused', 'by', 'a', 'virus', 'called', 'HIV', '(', 'Human', 'Immuno', 'Deficiency', 'Virus', ')', '.'], ['This', 'virus', 'affects', 'the', 'body', "'s", 'defence', 'system', 'so', 'that', 'it', 'can', 'not', 'fight', 'infection', '.']]]
+            assert file_text.tokens_flat == ['FACTSHEET', 'WHAT', 'IS', 'AIDS', '?', 'AIDS', '(', 'Acquired', 'Immune', 'Deficiency', 'Syndrome', ')', 'is', 'a', 'condition', 'caused', 'by', 'a', 'virus', 'called', 'HIV', '(', 'Human', 'Immuno', 'Deficiency', 'Virus', ')', '.', 'This', 'virus', 'affects', 'the', 'body', "'s", 'defence', 'system', 'so', 'that', 'it', 'can', 'not', 'fight', 'infection', '.']
+            assert file_text.offsets_paras == [0, 5]
+            assert file_text.offsets_sentences == [0, 5, 28]
+        elif file_name in ['XML File (2).xml', 'XML File (3).xml']:
+            assert file_text.tokens_multilevel == [[], [], [['FACTSHEET', 'WHAT', 'IS', 'AIDS', '?']], [['AIDS', '(', 'Acquired', 'Immune', 'Deficiency', 'Syndrome)is', 'a', 'condition', 'caused', 'by', 'a', 'virus', 'called', 'HIV', '(', 'Human', 'Immuno', 'Deficiency', 'Virus', ')', '.']], [['This', 'virus', 'affects', 'the', 'body', "'s", 'defence', 'system', 'so', 'that', 'it', 'can', 'not', 'fight', 'infection', '.']]]
+            assert file_text.tokens_flat == ['FACTSHEET', 'WHAT', 'IS', 'AIDS', '?', 'AIDS', '(', 'Acquired', 'Immune', 'Deficiency', 'Syndrome)is', 'a', 'condition', 'caused', 'by', 'a', 'virus', 'called', 'HIV', '(', 'Human', 'Immuno', 'Deficiency', 'Virus', ')', '.', 'This', 'virus', 'affects', 'the', 'body', "'s", 'defence', 'system', 'so', 'that', 'it', 'can', 'not', 'fight', 'infection', '.']
+            assert file_text.offsets_paras == [0, 0, 0, 5, 26]
+            assert file_text.offsets_sentences == [0, 5, 26]
 
-    assert file_text.tags == [[] for i in file_text.tokens_flat]
+        assert file_text.tags == [[] for i in file_text.tokens_flat]
+    # TMX files
+    elif len(new_files) == 2:
+        file_text_src = new_files[0]['text']
+        file_text_tgt = new_files[1]['text']
+
+        # Source files
+        print(file_text_src.lang)
+        print(file_text_src.tokens_multilevel)
+        print(file_text_src.tokens_flat)
+        print(file_text_src.tags)
+        print(file_text_src.offsets_paras)
+        print(file_text_src.offsets_sentences)
+
+        assert file_text_src.lang == 'eng_gb'
+        assert file_text_src.tokens_multilevel == [[['Hello', 'world', '!']]]
+        assert file_text_src.tokens_flat == ['Hello', 'world', '!']
+        assert file_text_src.offsets_paras == [0]
+        assert file_text_src.offsets_sentences == [0]
+
+        # Target files
+        print(file_text_tgt.lang)
+        print(file_text_tgt.tokens_multilevel)
+        print(file_text_tgt.tokens_flat)
+        print(file_text_tgt.tags)
+        print(file_text_tgt.offsets_paras)
+        print(file_text_tgt.offsets_sentences)
+
+        assert file_text_tgt.lang == 'fra'
+        assert file_text_tgt.tokens_multilevel == [[['Bonjour', 'tout', 'le', 'monde', '!']]]
+        assert file_text_tgt.tokens_flat == ['Bonjour', 'tout', 'le', 'monde', '!']
+        assert file_text_tgt.offsets_paras == [0]
+        assert file_text_tgt.offsets_sentences == [0]
 
 def update_gui_unicode_decode_error(error_msg, new_files):
     assert not error_msg

@@ -1064,7 +1064,7 @@ def init_settings_default(main):
 
         'files': {
             'default_settings': {
-                'lang': 'eng',
+                'lang': 'eng_us',
                 'tokenized': main.tr('No'),
                 'tagged': main.tr('No'),
                 'encoding': 'utf_8'

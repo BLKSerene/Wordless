@@ -273,7 +273,7 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
         else:
             self.line_edit_import_search_terms_default_path.setText(self.main.settings_default['search_terms']['default_path'])
 
-        self.combo_box_import_search_terms_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['stop_words']['default_encoding']))
+        self.combo_box_import_search_terms_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['search_terms']['default_encoding']))
         self.checkbox_import_search_terms_detect_encodings.setChecked(settings['search_terms']['detect_encodings'])
 
         # Stop Words
@@ -281,6 +281,7 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
             self.line_edit_import_stop_words_default_path.setText(settings['stop_words']['default_path'])
         else:
             self.line_edit_import_stop_words_default_path.setText(self.main.settings_default['stop_words']['default_path'])
+        
         self.combo_box_import_stop_words_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['stop_words']['default_encoding']))
         self.checkbox_import_stop_words_detect_encodings.setChecked(settings['stop_words']['detect_encodings'])
 
