@@ -31,6 +31,11 @@ def to_iso_639_3(main, lang_code):
         if lang_code_639_1 == lang_code:
             return lang_code_639_3
 
+    # ISO 639-1 codes without country codes
+    for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
+        if lang_code_639_1.startswith(f'{lang_code}_'):
+            return lang_code_639_3
+
 def to_iso_639_1(main, lang_code):
     for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
         if lang_code_639_3 == lang_code:
