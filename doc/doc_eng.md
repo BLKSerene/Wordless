@@ -603,11 +603,12 @@ Other Languages         |⭕️ |⭕️ |✖️|⭕️ |✖️|✖️|✖️
 
 File Type               |File Extension(s)
 ------------------------|-----------------
-Text File               |\*.txt
-Microsoft Word Document |\*.docx
-Microsoft Excel Workbook|\*.xlsx
 CSV File                |\*.csv
 HTML Page               |\*.htm, \*.html
+Microsoft Word Document |\*.docx
+Microsoft Excel Workbook|\*.xlsx
+Text File               |\*.txt
+Translation Memory File |\*.tmx
 XML File                |\*.xml
 
 \* Microsoft 97-03 Word documents (\*.doc) and Microsoft 97-03 Excel Workbooks (\*.xls) are not supported.<br>

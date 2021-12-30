@@ -293,11 +293,12 @@ def init_settings_global(main):
 
         'file_types': {
             'files': [
-                main.tr('Text File (*.txt)'),
-                main.tr('Word Document (*.docx)'),
-                main.tr('Excel Workbook (*.xlsx)'),
                 main.tr('CSV File(*.csv)'),
+                main.tr('Excel Workbook (*.xlsx)'),
                 main.tr('HTML Page (*.htm; *.html)'),
+                main.tr('Text File (*.txt)'),
+                main.tr('Translation Memory File (*.tmx)'),
+                main.tr('Word Document (*.docx)'),
                 main.tr('XML File (*.xml)'),
                 main.tr('All Files (*.*)')
             ],

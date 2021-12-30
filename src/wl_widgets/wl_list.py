@@ -146,13 +146,13 @@ class Wl_List(QListWidget):
                     else:
                         encoding = self.main.settings_custom['import'][settings]['default_encoding']
 
-                    # Try decoding
-                    encoding, text = wl_checking_file.check_file_path_decodable(self.main, file_path, encoding)
+                    with open(file_path, 'r', encoding = encoding, errors = 'replace') as f:
+                        text = f.read()
 
                     for line in text.split('\n'):
                         line = line.strip()
 
-                        if line not in items_cur:
+                        if line and line not in items_cur:
                             items_to_import.append(line)
 
                 self.load_items(collections.OrderedDict.fromkeys(items_to_import))
