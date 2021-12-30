@@ -560,6 +560,7 @@ def init_settings_global(main):
                 main.tr('spaCy - Greek (Modern) Lemmatizer'): 'spacy_ell',
                 main.tr('spaCy - Hungarian Lemmatizer'): 'spacy_hun',
                 main.tr('spaCy - Indonesian Lemmatizer'): 'spacy_ind',
+                main.tr('spaCy - Irish Lemmatizer'): 'spacy_gle',
                 main.tr('spaCy - Italian Lemmatizer'): 'spacy_ita',
                 main.tr('spaCy - Lithuanian Lemmatizer'): 'spacy_lit',
                 main.tr('spaCy - Luxembourgish Lemmatizer'): 'spacy_ltz',
@@ -2146,7 +2147,8 @@ def init_settings_global(main):
             ],
 
             'gle': [
-                'lemmatization_lists_gle'
+                'lemmatization_lists_gle',
+                'spacy_gle'
             ],
 
             'ita': [
