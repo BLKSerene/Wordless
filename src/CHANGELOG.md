@@ -15,7 +15,11 @@
 ### 🎉 New Features
 - File Area: Add support for .tmx files
 
+### ❌ Removals
+- Utils: Remove lemmalist-greek's Greek (Ancient) lemma list
+
 ### ⏫ Dependency Changes
+- Dependencies: Remove lemmalist-greek
 - Dependencies: Upgrade Charset Normalizer to 2.0.9
 - Dependencies: Upgrade spaCy to 3.2.1
 
