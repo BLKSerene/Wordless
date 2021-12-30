@@ -15,6 +15,9 @@
 ### 🎉 New Features
 - File Area: Add support for .tmx files
 
+### ⏫ Dependency Changes
+- Dependencies: Upgrade Charset Normalizer to 2.0.9
+
 ## [2.1.0](https://github.com/BLKSerene/Wordless/releases/tag/2.1.0) - 10/14/2021
 ### 🎉 New Features
 - Menu: Add Preferences - Settings - Files - Miscellaneous - Read files in chunks of lines
