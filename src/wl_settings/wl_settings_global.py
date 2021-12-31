@@ -325,7 +325,6 @@ def init_settings_global(main):
                 main.tr('spaCy - Sentence Recognizer'): 'spacy_sentence_recognizer',
                 main.tr('spaCy - Sentencizer'): 'spacy_sentencizer',
 
-                main.tr('syntok - Sentence Segmenter'): 'syntok_sentence_segmenter',
                 main.tr('Tokenizer - Icelandic Sentence Tokenizer'): 'tokenizer_isl',
                 main.tr('Underthesea - Vietnamese Sentence Tokenizer'): 'underthesea_vie',
 
@@ -419,7 +418,6 @@ def init_settings_global(main):
                 main.tr('spaCy - Urdu Word Tokenizer'): 'spacy_urd',
                 main.tr('spaCy - Yoruba Word Tokenizer'): 'spacy_yor',
 
-                main.tr('syntok - Word Tokenizer'): 'syntok',
                 main.tr('Tokenizer - Icelandic Word Tokenizer'): 'tokenizer_isl',
                 main.tr('Underthesea - Vietnamese Word Tokenizer'): 'underthesea_vie',
 
@@ -888,13 +886,11 @@ def init_settings_global(main):
 
             'eng_gb': [
                 'nltk_punkt',
-                'spacy_sentence_recognizer',
-                'syntok_sentence_segmenter'
+                'spacy_sentence_recognizer'
             ],
             'eng_us': [
                 'nltk_punkt',
-                'spacy_sentence_recognizer',
-                'syntok_sentence_segmenter'
+                'spacy_sentence_recognizer'
             ],
 
             'est': [
@@ -914,18 +910,15 @@ def init_settings_global(main):
 
             'deu_at': [
                 'nltk_punkt',
-                'spacy_sentence_recognizer',
-                'syntok_sentence_segmenter'
+                'spacy_sentence_recognizer'
             ],
             'deu_de': [
                 'nltk_punkt',
-                'spacy_sentence_recognizer',
-                'syntok_sentence_segmenter'
+                'spacy_sentence_recognizer'
             ],
             'deu_ch': [
                 'nltk_punkt',
-                'spacy_sentence_recognizer',
-                'syntok_sentence_segmenter'
+                'spacy_sentence_recognizer'
             ],
 
             'grc': [
@@ -1077,8 +1070,7 @@ def init_settings_global(main):
 
             'spa': [
                 'nltk_punkt',
-                'spacy_sentence_recognizer',
-                'syntok_sentence_segmenter'
+                'spacy_sentence_recognizer'
             ],
 
             'swe': [
@@ -1141,8 +1133,7 @@ def init_settings_global(main):
 
             'other': [
                 'nltk_punkt',
-                'spacy_sentence_recognizer',
-                'syntok_sentence_segmenter'
+                'spacy_sentence_recognizer'
             ]
         },
 
@@ -1238,14 +1229,12 @@ def init_settings_global(main):
             'eng_gb': [
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
-                'spacy_eng',
-                'syntok'
+                'spacy_eng'
             ],
             'eng_us': [
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
-                'spacy_eng',
-                'syntok'
+                'spacy_eng'
             ],
 
             'est': [
@@ -1267,20 +1256,17 @@ def init_settings_global(main):
             'deu_at': [
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
-                'spacy_deu',
-                'syntok'
+                'spacy_deu'
             ],
             'deu_de': [
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
-                'spacy_deu',
-                'syntok'
+                'spacy_deu'
             ],
             'deu_ch': [
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
-                'spacy_deu',
-                'syntok'
+                'spacy_deu'
             ],
 
             'grc': [
@@ -1481,7 +1467,6 @@ def init_settings_global(main):
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_spa'
-                'syntok'
             ],
 
             'swe': [
@@ -1562,8 +1547,7 @@ def init_settings_global(main):
             'other': [
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
-                'spacy_eng',
-                'syntok'
+                'spacy_eng'
             ]
         },
 

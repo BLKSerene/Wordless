@@ -22,9 +22,11 @@
 
 ### ❌ Removals
 - Utils: Remove lemmalist-greek's Greek (Ancient) lemma list
+- Utils: Remove syntok's sentence segmenter and word tokenizer
 
 ### ⏫ Dependency Changes
 - Dependencies: Remove lemmalist-greek
+- Dependencies: Remove syntok
 - Dependencies: Upgrade Charset Normalizer to 2.0.9
 - Dependencies: Upgrade spaCy to 3.2.1
 
@@ -285,7 +287,6 @@
 - Dependencies: Upgrade Sacremoses to 0.0.35
 - Dependencies: Upgrade SciPy to 1.3.3
 - Dependencies: Upgrade spaCy to 2.2.3
-- Dependencies: Upgrade syntok to 1.2.2
 - Dependencies: Upgrade underthesea to 1.1.17
 - Dependencies: Upgrade WordCloud to 1.6.0
 

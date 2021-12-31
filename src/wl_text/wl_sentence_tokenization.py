@@ -13,7 +13,6 @@ import botok
 import nltk
 import pythainlp
 import razdel
-import syntok.segmenter
 import tokenizer
 import underthesea
 
@@ -94,11 +93,6 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         doc = nlp(text)
 
         sentences = [sentence.text for sentence in doc.sents]
-    # syntok
-    elif sentence_tokenizer == 'syntok_sentence_segmenter':
-        for para in syntok.segmenter.analyze(text):
-            for sentence in para:
-                sentences.append(''.join([token.spacing + token.value for token in sentence]))
     # Chinese & Japanese
     elif sentence_tokenizer in ['wordless_zho', 'wordless_jpn']:
         for line in text.splitlines():

@@ -21,14 +21,8 @@ from wl_tests import wl_test_init
 def wl_test_readme_acks(main):
     acks = []
 
-    LINE_HEADER = '&nbsp;|Name|Authors'
-    LINE_HEADER_SPLITTER = '-----:|----|---------'
-
     workbook = openpyxl.load_workbook('wl_acks.xlsx')
     worksheet = workbook[workbook.sheetnames[0]]
-
-    print(LINE_HEADER)
-    print(LINE_HEADER_SPLITTER)
 
     for i, rows in enumerate(worksheet.rows):
         if i > 0:

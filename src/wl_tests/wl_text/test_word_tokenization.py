@@ -121,7 +121,7 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang in ['eng_gb', 'eng_us']:
         if word_tokenizer in ['nltk_nist', 'nltk_twitter', 'sacremoses_moses']:
             assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'of', 'the', 'Indo-European', 'language', 'family', ',', 'originally', 'spoken', 'by', 'the', 'inhabitants', 'of', 'early', 'medieval', 'England', '.', '[', '3', ']', '[', '4', ']', '[', '5', ']']
-        elif word_tokenizer in ['nltk_nltk', 'nltk_penn_treebank', 'syntok']:
+        elif word_tokenizer in ['nltk_nltk', 'nltk_penn_treebank']:
             assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'of', 'the', 'Indo', 'European', 'language', 'family', ',', 'originally', 'spoken', 'by', 'the', 'inhabitants', 'of', 'early', 'medieval', 'England.', '[', '3', ']', '[', '4', ']', '[', '5', ']']
         elif word_tokenizer == 'nltk_tok_tok':
             assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'of', 'the', 'Indo-European', 'language', 'family', ',', 'originally', 'spoken', 'by', 'the', 'inhabitants', 'of', 'early', 'medieval', 'England.[', '3', ']', '[', '4', ']', '[', '5', ']']
@@ -142,8 +142,6 @@ def test_word_tokenize(lang, word_tokenizer):
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'das', 'Deutsche', '(', '[', 'dɔɪ', '̯', 'tʃ', ']', ';', '[', '26', ']', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', ',', 'die', 'weltweit', 'etwa', '90', 'bis', '105', 'Millionen', 'Menschen', 'als', 'Muttersprache', 'und', 'weiteren', 'rund', '80', 'Millionen', 'als', 'Zweit-', 'oder', 'Fremdsprache', 'dient', '.']
         elif word_tokenizer == 'spacy_deu':
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'das', 'Deutsche', '(', '[', 'dɔɪ̯tʃ];[26', ']', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', ',', 'die', 'weltweit', 'etwa', '90', 'bis', '105', 'Millionen', 'Menschen', 'als', 'Muttersprache', 'und', 'weiteren', 'rund', '80', 'Millionen', 'als', 'Zweit-', 'oder', 'Fremdsprache', 'dient', '.']
-        elif word_tokenizer == 'syntok':
-            assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw', '.', 'das', 'Deutsche', '(', '[', 'dɔɪ̯tʃ', ']', ';', '[', '26', ']', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', ',', 'die', 'weltweit', 'etwa', '90', 'bis', '105', 'Millionen', 'Menschen', 'als', 'Muttersprache', 'und', 'weiteren', 'rund', '80', 'Millionen', 'als', 'Zweit', '-', 'oder', 'Fremdsprache', 'dient', '.']
         else:
             raise Exception(f'Error: Tests for word tokenizer "{word_tokenizer}" is skipped!')
     elif lang == 'grc':

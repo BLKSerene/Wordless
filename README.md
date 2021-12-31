@@ -95,7 +95,7 @@ PayPal|Alipay|WeChat Pay
 I would like to extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
 
 &nbsp;|Name|Authors
------:|----|---------
+-----:|----|-------
 1     |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)      |Leonard Richardson
 2     |[botok](https://github.com/Esukhia/botok)                             |Hélios Drupchen Hildt
 3     |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)    |TAHRI Ahmed R.
@@ -128,8 +128,7 @@ I would like to extend my sincere gratitude to the following open-source project
 30    |[spaCy](https://spacy.io/)                                            |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
 31    |[ssg](https://github.com/ponrawee/ssg)                                |Ponrawee Prasertsom
 32    |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
-33    |[syntok](https://github.com/fnl/syntok)                               |Florian Leitner
-34    |[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
-35    |[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
-36    |[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
-37    |[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller
+33    |[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
+34    |[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
+35    |[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
+36    |[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller
