@@ -396,6 +396,9 @@ class Wl_Files(QObject):
                 else:
                     checkbox_name.setCheckState(Qt.Unchecked)
 
+                # Record file properties
+                checkbox_name.wl_file = file
+
                 combo_box_lang.setCurrentText(wl_conversion.to_lang_text(self.main, file['lang']))
                 combo_box_tokenized.setCurrentText(file['tokenized'])
                 combo_box_tagged.setCurrentText(file['tagged'])
@@ -410,7 +413,7 @@ class Wl_Files(QObject):
                 self.table.setCellWidget(i, 1, combo_box_lang)
                 self.table.setCellWidget(i, 2, combo_box_tokenized)
                 self.table.setCellWidget(i, 3, combo_box_tagged)
-                self.table.setItem(i, 4, QTableWidgetItem(file['path']))
+                self.table.setItem(i, 4, QTableWidgetItem(file['path_original']))
                 self.table.setCellWidget(i, 5, combo_box_encoding)
         else:
             self.table.clear_table(1)
@@ -512,10 +515,8 @@ class Wl_Table_Files(wl_table.Wl_Table):
         if any([self.item(0, i) for i in range(self.columnCount())]):
             # Check for duplicate file names
             for row in range(self.rowCount()):
+                file = self.item(row, 0).wl_file
                 file_name = self.item(row, 0).text()
-                file_path = self.item(row, 4).text()
-
-                file = self.main.wl_files.find_file_by_path(file_path)
 
                 if file_name != file['name_old']:
                     if self.main.wl_files.find_file_by_name(file_name):
@@ -532,27 +533,22 @@ class Wl_Table_Files(wl_table.Wl_Table):
 
                     break
 
-            files_old = {file['path']: file for file in self.main.settings_custom['file_area']['files_open']}
-
             self.main.settings_custom['file_area']['files_open'].clear()
 
             for row in range(self.rowCount()):
-                new_file = {}
+                file = self.item(row, 0).wl_file
 
                 lang_text = self.cellWidget(row, 1).currentText()
                 encoding_text = self.cellWidget(row, 5).currentText()
 
-                new_file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
-                new_file['name'] = new_file['name_old'] = self.item(row, 0).text()
-                new_file['lang'] = wl_conversion.to_lang_code(self.main, lang_text)
-                new_file['tokenized'] = self.cellWidget(row, 2).currentText()
-                new_file['tagged'] = self.cellWidget(row, 3).currentText()
-                new_file['path'] = self.item(row, 4).text()
-                new_file['path_original'] = files_old[new_file['path']]['path_original']
-                new_file['encoding'] = wl_conversion.to_encoding_code(self.main, encoding_text)
-                new_file['text'] = files_old[new_file['path']]['text']
+                file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
+                file['name'] = file['name_old'] = self.item(row, 0).text()
+                file['lang'] = wl_conversion.to_lang_code(self.main, lang_text)
+                file['tokenized'] = self.cellWidget(row, 2).currentText()
+                file['tagged'] = self.cellWidget(row, 3).currentText()
+                file['encoding'] = wl_conversion.to_encoding_code(self.main, encoding_text)
 
-                self.main.settings_custom['file_area']['files_open'].append(new_file)
+                self.main.settings_custom['file_area']['files_open'].append(file)
 
             self.button_close_all.setEnabled(True)
         else:

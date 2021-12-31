@@ -17,6 +17,9 @@
 - Utils: Add Lemmatization Lists's Russian lemma list
 - Utils: Add spaCy's Greek (Ancient) and Irish lemmatizers
 
+### ✨ Improvements
+- File Area: Show original file paths instead of modified ones
+
 ### ❌ Removals
 - Utils: Remove lemmalist-greek's Greek (Ancient) lemma list
 
