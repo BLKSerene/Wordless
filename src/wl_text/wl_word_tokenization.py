@@ -14,7 +14,6 @@ import re
 import jieba
 import pythainlp
 import razdel
-import syntok.segmenter
 import tokenizer
 import underthesea
 
@@ -111,11 +110,6 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                     
                     for sentence in sentences:
                         tokens_multilevel[-1].append(main.__dict__[f'sacremoses_moses_tokenizer_{lang}'].tokenize(sentence, escape = False))
-                # syntok
-                elif word_tokenizer == 'syntok':
-                    for para_syntok in syntok.segmenter.analyze(para):
-                        for sentence in para_syntok:
-                            tokens_multilevel[-1].append([token.value for token in sentence])
                 # Chinese
                 elif word_tokenizer == 'jieba_zho':
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = lang)
