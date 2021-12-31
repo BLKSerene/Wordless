@@ -904,7 +904,7 @@ class Wl_Table(QTableWidget):
                 if isinstance(item, QTableWidgetItem):
                     self.setItem(row_dropped + row, col, item)
 
-                    self.item(row, col).setSelected(True)
+                    self.item(row_dropped + row, col).setSelected(True)
                 elif isinstance(item, QComboBox):
                     item_combo_box = wl_box.Wl_Combo_Box(self)
                     item_combo_box.addItems([item.itemText(i) for i in range(item.count())])
