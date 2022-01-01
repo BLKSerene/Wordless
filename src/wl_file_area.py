@@ -371,7 +371,13 @@ class Wl_Files(QObject):
         self.main.settings_custom['file_area']['files_closed'].append([])
 
         for i in reversed(file_indexes):
-            self.main.settings_custom['file_area']['files_closed'][-1].append(self.main.settings_custom['file_area']['files_open'].pop(i))
+            file_removed = self.main.settings_custom['file_area']['files_open'].pop(i)
+
+            self.main.settings_custom['file_area']['files_closed'][-1].append(file_removed)
+
+            # Remove temporary files
+            if os.path.exists(file_removed['path']):
+                os.remove(file_removed['path'])
 
         self.update_table()
 
