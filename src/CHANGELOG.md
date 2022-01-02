@@ -113,7 +113,6 @@
 - Dependencies: Remove chardet
 - Dependencies: Upgrade botok to 0.8.7
 - Dependencies: Upgrade langdetect to 1.0.9
-- Dependencies: Upgrade lxml to 4.6.3
 - Dependencies: Upgrade Matplotlib to 3.4.2
 - Dependencies: Upgrade NetworkX to 2.6.1
 - Dependencies: Upgrade NLTK to 3.6.2
@@ -218,7 +217,6 @@
 - Dependencies: Upgrade cChardet to 2.1.7
 - Dependencies: Upgrade jieba to 0.42.1
 - Dependencies: Upgrade langdetect to 1.0.8
-- Dependencies: Upgrade lxml to 4.6.2
 - Dependencies: Upgrade Matplotlib to 3.3.3
 - Dependencies: Upgrade nagisa to 0.2.7
 - Dependencies: Upgrade NetworkX to 2.5
@@ -279,7 +277,6 @@
 - Dependencies: Upgrade Beautiful Soup to 4.8.1
 - Dependencies: Upgrade botok (originally named pybo) to 0.6.18
 - Dependencies: Upgrade cChardet to 2.1.5
-- Dependencies: Upgrade lxml to 4.4.2
 - Dependencies: Upgrade Matplotlib to 3.1.2
 - Dependencies: Upgrade NetworkX to 2.4
 - Dependencies: Upgrade NumPy to 1.17.4
@@ -326,7 +323,6 @@
 - Dependencies: Add extra-stopwords
 - Dependencies: Add NetworkX
 - Dependencies: Upgrade Beautiful Soup to 4.8.0
-- Dependencies: Upgrade lxml to 4.4.1
 - Dependencies: Upgrade Matplotlib to 3.1.1
 - Dependencies: Upgrade nagisa to 0.2.4
 - Dependencies: Upgrade NLTK to 3.4.5
@@ -364,7 +360,6 @@
 - Work Area: Fix Work Area - Search Settings - Context Settings
 
 ### ⏫ Dependency Changes
-- Dependencies: Upgrade lxml to 4.3.3
 - Dependencies: Upgrade PyQt to 5.12.1
 - Dependencies: Upgrade Sacremoses to 0.0.13
 - Dependencies: Upgrade spaCy to 2.1.3
