@@ -624,7 +624,7 @@ class Wl_Table_Files(wl_table.Wl_Table):
     def reopen(self):
         files = self.main.settings_custom['file_area']['files_closed'].pop()
 
-        self.main.wl_files.open_files([file['path'] for file in files])
+        self.main.wl_files.open_files(list(dict.fromkeys([file['path_original'] for file in files])))
 
     def reload_selected(self):
         self.main.wl_files.reload_files(self.get_selected_rows())
