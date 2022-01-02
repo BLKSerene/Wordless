@@ -486,20 +486,6 @@ class Wl_Table_Files(wl_table.Wl_Table):
         self.itemSelectionChanged.connect(self.file_selection_changed)
         self.cellDoubleClicked.connect(self.cell_double_clicked)
 
-        self.button_open_files = QPushButton(self.tr('Open File(s)...'))
-        self.button_open_dir = QPushButton(self.tr('Open Folder...'))
-        self.button_reload_selected = QPushButton(self.tr('Reload Selected'))
-        self.button_reload_all = QPushButton(self.tr('Reload All'))
-        self.button_close_selected = QPushButton(self.tr('Close Selected'))
-        self.button_close_all = QPushButton(self.tr('Close All'))
-
-        self.button_open_files.clicked.connect(self.open_files)
-        self.button_open_dir.clicked.connect(self.open_dir)
-        self.button_reload_selected.clicked.connect(self.reload_selected)
-        self.button_reload_all.clicked.connect(self.reload_all)
-        self.button_close_selected.clicked.connect(self.close_selected)
-        self.button_close_all.clicked.connect(self.close_all)
-
         # Menu
         self.main.find_menu_item(self.tr('Open File(s)...')).triggered.connect(self.open_files)
         self.main.find_menu_item(self.tr('Open Folder...')).triggered.connect(self.open_dir)
@@ -556,10 +542,6 @@ class Wl_Table_Files(wl_table.Wl_Table):
 
                 self.main.settings_custom['file_area']['files_open'].append(file)
 
-            self.button_close_all.setEnabled(True)
-        else:
-            self.button_close_all.setEnabled(False)
-
         # Menu
         if any([self.item(0, i) for i in range(self.columnCount())]):
             self.main.find_menu_item(self.tr('Reload All')).setEnabled(True)
@@ -590,17 +572,9 @@ class Wl_Table_Files(wl_table.Wl_Table):
 
     def file_selection_changed(self):
         if any([self.item(0, i) for i in range(self.columnCount())]) and self.selectedIndexes():
-            self.button_reload_selected.setEnabled(True)
-            self.button_close_selected.setEnabled(True)
-
-            # Menu
             self.main.find_menu_item(self.tr('Reload Selected')).setEnabled(True)
             self.main.find_menu_item(self.tr('Close Selected')).setEnabled(True)
         else:
-            self.button_reload_selected.setEnabled(False)
-            self.button_close_selected.setEnabled(False)
-
-            # Menu
             self.main.find_menu_item(self.tr('Reload Selected')).setEnabled(False)
             self.main.find_menu_item(self.tr('Close Selected')).setEnabled(False)
 
@@ -691,13 +665,7 @@ class Wrapper_File_Area(wl_layout.Wl_Wrapper_File_Area):
         # Table
         self.table_files = Wl_Table_Files(self)
 
-        self.wrapper_table.layout().addWidget(self.table_files, 0, 0, 1, 6)
-        self.wrapper_table.layout().addWidget(self.table_files.button_open_files, 1, 0)
-        self.wrapper_table.layout().addWidget(self.table_files.button_open_dir, 1, 1)
-        self.wrapper_table.layout().addWidget(self.table_files.button_reload_selected, 1, 2)
-        self.wrapper_table.layout().addWidget(self.table_files.button_reload_all, 1, 3)
-        self.wrapper_table.layout().addWidget(self.table_files.button_close_selected, 1, 4)
-        self.wrapper_table.layout().addWidget(self.table_files.button_close_all, 1, 5)
+        self.wrapper_table.layout().addWidget(self.table_files, 0, 0)
 
         # Folder Settings
         self.group_box_folder_settings = QGroupBox(self.tr('Folder Settings'), self)
