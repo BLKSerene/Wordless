@@ -22,6 +22,7 @@
 - File Area: Show original file paths instead of modified ones
 
 ### ❌ Removals
+- File Area: Remove Open File(s) / Open Folder / Reload Selected / Reload All / Close Selected / Close All
 - Utils: Remove lemmalist-greek's Greek (Ancient) lemma list
 - Utils: Remove syntok's sentence segmenter and word tokenizer
 
