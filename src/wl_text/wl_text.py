@@ -131,13 +131,15 @@ class Wl_Text():
                                     self.tags.append([])
 
                                 # Extract tags
-                                for tag in re.findall(re_tags, para):
-                                    i_tag = para.index(tag)
+                                tag_end = 0
 
-                                    self.split_text(para[:i_tag])
-                                    self.tags[-1].append(tag)
+                                for tag in re.finditer(re_tags, para):
+                                    self.split_text(para[tag_end:tag.start()])
+                                    self.tags[-1].append(tag.group())
 
-                                    para = para[i_tag + len(tag):]
+                                    tag_end = tag.end()
+
+                                para = para[tag_end:]
 
                                 # The last part of the text
                                 if para:
@@ -197,7 +199,7 @@ class Wl_Text():
         
         # Remove whitespace around all tags
         self.tags = [[tag.strip() for tag in tags] for tags in self.tags]
-
+        
         # Remove Wl_Main object from the text since it cannot be pickled
         del self.main
 

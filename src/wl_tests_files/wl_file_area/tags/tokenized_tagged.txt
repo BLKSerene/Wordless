@@ -1,6 +1,6 @@
  <TAG1>
  
- This <TAG2>is</TAG2> the first sentence . This_TAG3 is the second sentence .
+ This <TAG2>is</TAG2> the first sentence . This_TAG3RunningToken_TAG3 is the second sentence .
  
 
 This is the third sentence .

@@ -354,7 +354,7 @@ class Wl_Dialog_Results_Search(wl_dialog.Wl_Dialog):
                 table.blockSignals(True)
                 table.setUpdatesEnabled(False)
 
-            for table, row, col, in self.items_found:
+            for table, row, col in self.items_found:
                 if table.cellWidget(row, col):
                     table.cellWidget(row, col).setStyleSheet('border: 0')
                 else:
