@@ -34,6 +34,7 @@
 - Dependencies: Upgrade Pyphen to 0.12.0
 - Dependencies: Upgrade PyQt to 5.15.6
 - Dependencies: Upgrade spaCy to 3.2.1
+- Dependencies: Upgrade TextBlob to 0.17.1
 
 ## [2.1.0](https://github.com/BLKSerene/Wordless/releases/tag/2.1.0) - 10/14/2021
 ### 🎉 New Features
