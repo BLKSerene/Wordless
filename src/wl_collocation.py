@@ -114,19 +114,21 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
 
-        (self.checkbox_words,
-         self.checkbox_lowercase,
-         self.checkbox_uppercase,
-         self.checkbox_title_case,
-         self.checkbox_nums,
-         self.checkbox_puncs,
-
-         self.checkbox_treat_as_lowercase,
-         self.checkbox_lemmatize_tokens,
-         self.checkbox_filter_stop_words,
-
-         self.token_checkbox_ignore_tags,
-         self.checkbox_use_tags) = wl_widgets.wl_widgets_token_settings(self)
+        (
+            self.checkbox_words,
+            self.checkbox_lowercase,
+            self.checkbox_uppercase,
+            self.checkbox_title_case,
+            self.checkbox_nums,
+            self.checkbox_puncs,
+    
+            self.checkbox_treat_as_lowercase,
+            self.checkbox_lemmatize_tokens,
+            self.checkbox_filter_stop_words,
+    
+            self.token_checkbox_ignore_tags,
+            self.checkbox_use_tags
+        ) = wl_widgets.wl_widgets_token_settings(self)
 
         self.checkbox_words.stateChanged.connect(self.token_settings_changed)
         self.checkbox_lowercase.stateChanged.connect(self.token_settings_changed)
@@ -164,28 +166,32 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         # Search Settings
         self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
 
-        (self.label_search_term,
-         self.checkbox_multi_search_mode,
-
-         self.stacked_widget_search_term,
-         self.line_edit_search_term,
-         self.list_search_terms,
-
-         self.label_separator,
-
-         self.checkbox_ignore_case,
-         self.checkbox_match_inflected_forms,
-         self.checkbox_match_whole_words,
-         self.checkbox_use_regex,
-
-         self.search_checkbox_ignore_tags,
-         self.checkbox_match_tags) = wl_widgets.wl_widgets_search_settings(
+        (
+            self.label_search_term,
+            self.checkbox_multi_search_mode,
+    
+            self.stacked_widget_search_term,
+            self.line_edit_search_term,
+            self.list_search_terms,
+    
+            self.label_separator,
+    
+            self.checkbox_ignore_case,
+            self.checkbox_match_inflected_forms,
+            self.checkbox_match_whole_words,
+            self.checkbox_use_regex,
+    
+            self.search_checkbox_ignore_tags,
+            self.checkbox_match_tags
+        ) = wl_widgets.wl_widgets_search_settings(
             self,
             tab = 'collocation'
         )
 
-        (self.label_context_settings,
-         self.button_context_settings) = wl_widgets.wl_widgets_context_settings(
+        (
+            self.label_context_settings,
+            self.button_context_settings
+        ) = wl_widgets.wl_widgets_context_settings(
             self,
             tab = 'collocation'
         )
@@ -235,22 +241,30 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
 
         self.label_window = QLabel(self.tr('Collocational Window:'), self)
-        (self.checkbox_window_sync,
-         self.label_window_left,
-         self.spin_box_window_left,
-         self.label_window_right,
-         self.spin_box_window_right) = wl_widgets.wl_widgets_window(self)
+        (
+            self.checkbox_window_sync,
+            self.label_window_left,
+            self.spin_box_window_left,
+            self.label_window_right,
+            self.spin_box_window_right
+        ) = wl_widgets.wl_widgets_window(self)
 
         self.label_limit_searching = QLabel(self.tr('Limit Searching:'), self)
         self.combo_box_limit_searching = wl_box.Wl_Combo_Box(self)
 
-        (self.label_test_significance,
-         self.combo_box_test_significance) = wl_widgets.wl_widgets_test_significance(self)
-        (self.label_measure_effect_size,
-         self.combo_box_measure_effect_size) = wl_widgets.wl_widgets_measure_effect_size(self)
+        (
+            self.label_test_significance,
+            self.combo_box_test_significance
+        ) = wl_widgets.wl_widgets_test_significance(self)
+        (
+            self.label_measure_effect_size,
+            self.combo_box_measure_effect_size
+        ) = wl_widgets.wl_widgets_measure_effect_size(self)
 
-        (self.label_settings_measures,
-         self.button_settings_measures) = wl_widgets.wl_widgets_settings_measures(
+        (
+            self.label_settings_measures,
+            self.button_settings_measures
+        ) = wl_widgets.wl_widgets_settings_measures(
             self,
             tab = self.tr('Statistical Significance')
         )
@@ -311,9 +325,11 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         # Table Settings
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))
 
-        (self.checkbox_show_pct,
-         self.checkbox_show_cumulative,
-         self.checkbox_show_breakdown_file) = wl_widgets.wl_widgets_table_settings(
+        (
+            self.checkbox_show_pct,
+            self.checkbox_show_cumulative,
+            self.checkbox_show_breakdown_file
+        ) = wl_widgets.wl_widgets_table_settings(
             self,
             tables = [self.table_collocation]
         )
@@ -337,33 +353,36 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         # Figure Settings
         self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
 
-        (self.label_graph_type,
-         self.combo_box_graph_type,
-         self.label_use_file,
-         self.combo_box_use_file,
-         self.label_use_data,
-         self.combo_box_use_data,
-
-         self.checkbox_use_pct,
-         self.checkbox_use_cumulative) = wl_widgets.wl_widgets_fig_settings(
+        (
+            self.label_graph_type,
+            self.combo_box_graph_type,
+            self.label_sort_by_file,
+            self.combo_box_sort_by_file,
+            self.label_use_data,
+            self.combo_box_use_data,
+            self.checkbox_use_pct,
+            self.checkbox_use_cumulative
+        ) = wl_widgets.wl_widgets_fig_settings(
             self,
             collocation = True
         )
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
-        (self.label_rank_min,
-         self.spin_box_rank_min,
-         self.checkbox_rank_min_no_limit,
-         self.label_rank_max,
-         self.spin_box_rank_max,
-         self.checkbox_rank_max_no_limit) = wl_widgets.wl_widgets_filter(
+        (
+            self.label_rank_min,
+            self.spin_box_rank_min,
+            self.checkbox_rank_min_no_limit,
+            self.label_rank_max,
+            self.spin_box_rank_max,
+            self.checkbox_rank_max_no_limit
+        ) = wl_widgets.wl_widgets_filter(
             self,
             filter_min = 1,
             filter_max = 100000
         )
 
         self.combo_box_graph_type.currentTextChanged.connect(self.fig_settings_changed)
-        self.combo_box_use_file.currentTextChanged.connect(self.fig_settings_changed)
+        self.combo_box_sort_by_file.currentTextChanged.connect(self.fig_settings_changed)
         self.combo_box_use_data.currentTextChanged.connect(self.fig_settings_changed)
         self.checkbox_use_pct.stateChanged.connect(self.fig_settings_changed)
         self.checkbox_use_cumulative.stateChanged.connect(self.fig_settings_changed)
@@ -376,27 +395,27 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         layout_fig_settings_combo_boxes = wl_layout.Wl_Layout()
         layout_fig_settings_combo_boxes.addWidget(self.label_graph_type, 0, 0)
         layout_fig_settings_combo_boxes.addWidget(self.combo_box_graph_type, 0, 1)
-        layout_fig_settings_combo_boxes.addWidget(self.label_use_file, 1, 0)
-        layout_fig_settings_combo_boxes.addWidget(self.combo_box_use_file, 1, 1)
+        layout_fig_settings_combo_boxes.addWidget(self.label_sort_by_file, 1, 0)
+        layout_fig_settings_combo_boxes.addWidget(self.combo_box_sort_by_file, 1, 1)
         layout_fig_settings_combo_boxes.addWidget(self.label_use_data, 2, 0)
         layout_fig_settings_combo_boxes.addWidget(self.combo_box_use_data, 2, 1)
+        layout_fig_settings_combo_boxes.addWidget(self.checkbox_use_pct, 3, 0, 1, 2)
+        layout_fig_settings_combo_boxes.addWidget(self.checkbox_use_cumulative, 4, 0, 1, 2)
 
         layout_fig_settings_combo_boxes.setColumnStretch(1, 1)
 
         self.group_box_fig_settings.setLayout(wl_layout.Wl_Layout())
         self.group_box_fig_settings.layout().addLayout(layout_fig_settings_combo_boxes, 0, 0, 1, 3)
-        self.group_box_fig_settings.layout().addWidget(self.checkbox_use_pct, 1, 0, 1, 3)
-        self.group_box_fig_settings.layout().addWidget(self.checkbox_use_cumulative, 2, 0, 1, 3)
-        
-        self.group_box_fig_settings.layout().addWidget(wl_layout.Wl_Separator(self), 3, 0, 1, 3)
 
-        self.group_box_fig_settings.layout().addWidget(self.label_rank, 4, 0, 1, 3)
-        self.group_box_fig_settings.layout().addWidget(self.label_rank_min, 5, 0)
-        self.group_box_fig_settings.layout().addWidget(self.spin_box_rank_min, 5, 1)
-        self.group_box_fig_settings.layout().addWidget(self.checkbox_rank_min_no_limit, 5, 2)
-        self.group_box_fig_settings.layout().addWidget(self.label_rank_max, 6, 0)
-        self.group_box_fig_settings.layout().addWidget(self.spin_box_rank_max, 6, 1)
-        self.group_box_fig_settings.layout().addWidget(self.checkbox_rank_max_no_limit, 6, 2)
+        self.group_box_fig_settings.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0, 1, 3)
+
+        self.group_box_fig_settings.layout().addWidget(self.label_rank, 2, 0, 1, 3)
+        self.group_box_fig_settings.layout().addWidget(self.label_rank_min, 3, 0)
+        self.group_box_fig_settings.layout().addWidget(self.spin_box_rank_min, 3, 1)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_rank_min_no_limit, 3, 2)
+        self.group_box_fig_settings.layout().addWidget(self.label_rank_max, 4, 0)
+        self.group_box_fig_settings.layout().addWidget(self.spin_box_rank_max, 4, 1)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_rank_max_no_limit, 4, 2)
 
         self.group_box_fig_settings.layout().setColumnStretch(1, 1)
 
@@ -482,7 +501,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
 
         # Figure Settings
         self.combo_box_graph_type.setCurrentText(settings['fig_settings']['graph_type'])
-        self.combo_box_use_file.setCurrentText(settings['fig_settings']['use_file'])
+        self.combo_box_sort_by_file.setCurrentText(settings['fig_settings']['sort_by_file'])
         self.combo_box_use_data.setCurrentText(settings['fig_settings']['use_data'])
         self.checkbox_use_pct.setChecked(settings['fig_settings']['use_pct'])
         self.checkbox_use_cumulative.setChecked(settings['fig_settings']['use_cumulative'])
@@ -603,7 +622,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         settings = self.main.settings_custom['collocation']['fig_settings']
 
         settings['graph_type'] = self.combo_box_graph_type.currentText()
-        settings['use_file'] = self.combo_box_use_file.currentText()
+        settings['sort_by_file'] = self.combo_box_sort_by_file.currentText()
         settings['use_data'] = self.combo_box_use_data.currentText()
         settings['use_pct'] = self.checkbox_use_pct.isChecked()
         settings['use_cumulative'] = self.checkbox_use_cumulative.isChecked()
@@ -1122,7 +1141,7 @@ def generate_table(main, table):
                 len_files = len(files)
 
                 table.setRowCount(len(collocations_freqs_files))
-
+                print(list(collocations_stats_files.items())[:10])
                 for i, ((node, collocate), stats_files) in enumerate(wl_sorting.sorted_collocations_stats_files(collocations_stats_files)):
                     freqs_files = collocations_freqs_files[(node, collocate)]
 

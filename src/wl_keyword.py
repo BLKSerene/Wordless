@@ -80,19 +80,21 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
 
-        (self.checkbox_words,
-         self.checkbox_lowercase,
-         self.checkbox_uppercase,
-         self.checkbox_title_case,
-         self.checkbox_nums,
-         self.checkbox_puncs,
-
-         self.checkbox_treat_as_lowercase,
-         self.checkbox_lemmatize_tokens,
-         self.checkbox_filter_stop_words,
-
-         self.checkbox_ignore_tags,
-         self.checkbox_use_tags) = wl_widgets.wl_widgets_token_settings(self)
+        (
+            self.checkbox_words,
+            self.checkbox_lowercase,
+            self.checkbox_uppercase,
+            self.checkbox_title_case,
+            self.checkbox_nums,
+            self.checkbox_puncs,
+    
+            self.checkbox_treat_as_lowercase,
+            self.checkbox_lemmatize_tokens,
+            self.checkbox_filter_stop_words,
+    
+            self.checkbox_ignore_tags,
+            self.checkbox_use_tags
+        ) = wl_widgets.wl_widgets_token_settings(self)
 
         self.checkbox_words.stateChanged.connect(self.token_settings_changed)
         self.checkbox_lowercase.stateChanged.connect(self.token_settings_changed)
@@ -132,13 +134,19 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
 
         self.label_ref_files = QLabel(self.tr('Reference Files:'), self)
         self.list_ref_files = wl_list.Wl_List_Files(self)
-        (self.label_test_significance,
-         self.combo_box_test_significance) = wl_widgets.wl_widgets_test_significance(self)
-        (self.label_measure_effect_size,
-         self.combo_box_measure_effect_size) = wl_widgets.wl_widgets_measure_effect_size(self)
+        (
+            self.label_test_significance,
+            self.combo_box_test_significance
+        ) = wl_widgets.wl_widgets_test_significance(self)
+        (
+            self.label_measure_effect_size,
+            self.combo_box_measure_effect_size
+        ) = wl_widgets.wl_widgets_measure_effect_size(self)
 
-        (self.label_settings_measures,
-         self.button_settings_measures) = wl_widgets.wl_widgets_settings_measures(
+        (
+            self.label_settings_measures,
+            self.button_settings_measures
+        ) = wl_widgets.wl_widgets_settings_measures(
             self,
             tab = self.tr('Statistical Significance')
         )
@@ -178,9 +186,11 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
         # Table Settings
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))
 
-        (self.checkbox_show_pct,
-         self.checkbox_show_cumulative,
-         self.checkbox_show_breakdown) = wl_widgets.wl_widgets_table_settings(
+        (
+            self.checkbox_show_pct,
+            self.checkbox_show_cumulative,
+            self.checkbox_show_breakdown
+        ) = wl_widgets.wl_widgets_table_settings(
             self,
             tables = [self.table_keyword]
         )
@@ -197,30 +207,33 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
         # Figure Settings
         self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
 
-        (self.label_graph_type,
-         self.combo_box_graph_type,
-         self.label_use_file,
-         self.combo_box_use_file,
-         self.label_use_data,
-         self.combo_box_use_data,
-
-         self.checkbox_use_pct,
-         self.checkbox_use_cumulative) = wl_widgets.wl_widgets_fig_settings(self)
+        (
+            self.label_graph_type,
+            self.combo_box_graph_type,
+            self.label_sort_by_file,
+            self.combo_box_sort_by_file,
+            self.label_use_data,
+            self.combo_box_use_data,
+            self.checkbox_use_pct,
+            self.checkbox_use_cumulative
+        ) = wl_widgets.wl_widgets_fig_settings(self)
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
-        (self.label_rank_min,
-         self.spin_box_rank_min,
-         self.checkbox_rank_min_no_limit,
-         self.label_rank_max,
-         self.spin_box_rank_max,
-         self.checkbox_rank_max_no_limit) = wl_widgets.wl_widgets_filter(
+        (
+            self.label_rank_min,
+            self.spin_box_rank_min,
+            self.checkbox_rank_min_no_limit,
+            self.label_rank_max,
+            self.spin_box_rank_max,
+            self.checkbox_rank_max_no_limit
+        ) = wl_widgets.wl_widgets_filter(
             self,
             filter_min = 1,
             filter_max = 100000
         )
 
         self.combo_box_graph_type.currentTextChanged.connect(self.fig_settings_changed)
-        self.combo_box_use_file.currentTextChanged.connect(self.fig_settings_changed)
+        self.combo_box_sort_by_file.currentTextChanged.connect(self.fig_settings_changed)
         self.combo_box_use_data.currentTextChanged.connect(self.fig_settings_changed)
         self.checkbox_use_pct.stateChanged.connect(self.fig_settings_changed)
         self.checkbox_use_cumulative.stateChanged.connect(self.fig_settings_changed)
@@ -233,8 +246,8 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
         layout_fig_settings_combo_boxes = wl_layout.Wl_Layout()
         layout_fig_settings_combo_boxes.addWidget(self.label_graph_type, 0, 0)
         layout_fig_settings_combo_boxes.addWidget(self.combo_box_graph_type, 0, 1)
-        layout_fig_settings_combo_boxes.addWidget(self.label_use_file, 1, 0)
-        layout_fig_settings_combo_boxes.addWidget(self.combo_box_use_file, 1, 1)
+        layout_fig_settings_combo_boxes.addWidget(self.label_sort_by_file, 1, 0)
+        layout_fig_settings_combo_boxes.addWidget(self.combo_box_sort_by_file, 1, 1)
         layout_fig_settings_combo_boxes.addWidget(self.label_use_data, 2, 0)
         layout_fig_settings_combo_boxes.addWidget(self.combo_box_use_data, 2, 1)
 
@@ -299,7 +312,7 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
 
         # Figure Settings
         self.combo_box_graph_type.setCurrentText(settings['fig_settings']['graph_type'])
-        self.combo_box_use_file.setCurrentText(settings['fig_settings']['use_file'])
+        self.combo_box_sort_by_file.setCurrentText(settings['fig_settings']['sort_by_file'])
         self.combo_box_use_data.setCurrentText(settings['fig_settings']['use_data'])
         self.checkbox_use_pct.setChecked(settings['fig_settings']['use_pct'])
         self.checkbox_use_cumulative.setChecked(settings['fig_settings']['use_cumulative'])
@@ -338,18 +351,18 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
         settings['test_significance'] = self.combo_box_test_significance.currentText()
         settings['measure_effect_size'] = self.combo_box_measure_effect_size.currentText()
 
-        # Use File
-        use_file_old = self.combo_box_use_file.currentText()
+        # Sort by File
+        sort_by_file_old = self.combo_box_sort_by_file.currentText()
 
-        self.combo_box_use_file.wl_files_changed()
+        self.combo_box_sort_by_file.wl_files_changed()
 
         for file_name in settings['ref_files']:
-            self.combo_box_use_file.removeItem(self.combo_box_use_file.findText(file_name))
+            self.combo_box_sort_by_file.removeItem(self.combo_box_sort_by_file.findText(file_name))
 
-        if self.combo_box_use_file.findText(use_file_old) > -1:
-            self.combo_box_use_file.setCurrentText(use_file_old)
+        if self.combo_box_sort_by_file.findText(sort_by_file_old) > -1:
+            self.combo_box_sort_by_file.setCurrentText(sort_by_file_old)
         else:
-            self.combo_box_use_file.setCurrentIndex(0)
+            self.combo_box_sort_by_file.setCurrentIndex(0)
 
         # Use Data
         use_data_old = self.combo_box_use_data.currentText()
@@ -383,7 +396,7 @@ class Wrapper_Keyword(wl_layout.Wl_Wrapper):
         settings = self.main.settings_custom['keyword']['fig_settings']
 
         settings['graph_type'] = self.combo_box_graph_type.currentText()
-        settings['use_file'] = self.combo_box_use_file.currentText()
+        settings['sort_by_file'] = self.combo_box_sort_by_file.currentText()
         settings['use_data'] = self.combo_box_use_data.currentText()
         settings['use_pct'] = self.checkbox_use_pct.isChecked()
         settings['use_cumulative'] = self.checkbox_use_cumulative.isChecked()
@@ -852,17 +865,14 @@ def generate_fig(main):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading(main, files):
-        files_ref = main.wl_files.find_files_by_name(
-            settings['generation_settings']['ref_files'],
-            selected_only = True
-        )
-        files_observed = [
-            file_observed
-            for file_observed in main.wl_files.get_selected_files()
-            if file_observed not in files_ref
+        files_ref = settings['generation_settings']['ref_files']
+        file_names_observed = [
+            file_name
+            for file_name in main.wl_files.get_selected_file_names()
+            if file_name not in files_ref
         ]
 
-        if files_ref and files_observed:
+        if files_ref and file_names_observed:
             dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_keyword_fig = Wl_Worker_Keyword_Fig(
@@ -876,7 +886,7 @@ def generate_fig(main):
         else:
             if not files_ref:
                 wl_msg_box.wl_msg_box_missing_ref_files(main)
-            elif not files_observed:
+            elif not file_names_observed:
                 wl_msg_box.wl_msg_box_missing_observed_files(main)
 
             wl_msg.wl_msg_generate_fig_error(main)
