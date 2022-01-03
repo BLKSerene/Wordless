@@ -232,8 +232,8 @@ def update_gui_tags(error_msg, new_files):
         assert file_text.offsets_paras == [0, 0, 0, 12, 12, 12, 18, 18]
         assert file_text.offsets_sentences == [0, 6, 12]
     elif file_name == 'tokenized_tagged.txt':
-        assert file_text.tokens_multilevel == [[['']], [], [['This', 'is', 'the', 'first', 'sentence', '.'], ['This', 'is', 'the', 'second', 'sentence', '.']], [], [], [['This', 'is', 'the', 'third', 'sentence', '.']], [], []]
-        assert file_text.tokens_flat == ['', 'This', 'is', 'the', 'first', 'sentence', '.', 'This', 'is', 'the', 'second', 'sentence', '.', 'This', 'is', 'the', 'third', 'sentence', '.']
+        assert file_text.tokens_multilevel == [[['']], [], [['This', 'is', 'the', 'first', 'sentence', '.'], ['This_TAG3RunningToken', 'is', 'the', 'second', 'sentence', '.']], [], [], [['This', 'is', 'the', 'third', 'sentence', '.']], [], []]
+        assert file_text.tokens_flat == ['', 'This', 'is', 'the', 'first', 'sentence', '.', 'This_TAG3RunningToken', 'is', 'the', 'second', 'sentence', '.', 'This', 'is', 'the', 'third', 'sentence', '.']
         assert file_text.tags == [['<TAG1>'], ['<TAG2>'], ['</TAG2>'], [], [], [], [], ['_TAG3'], [], [], [], [], [], [], [], [], [], [], ['<TAG4>', '</TAG4>']]
         assert file_text.offsets_paras == [0, 1, 1, 13, 13, 13, 19, 19]
         assert file_text.offsets_sentences == [0, 1, 7, 13]
