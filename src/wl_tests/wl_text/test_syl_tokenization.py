@@ -139,4 +139,3 @@ def test_syl_tokenize(lang, syl_tokenizer):
 if __name__ == '__main__':
     for lang, syl_tokenizer in test_syl_tokenizers:
         test_syl_tokenize(lang, syl_tokenizer)
-
