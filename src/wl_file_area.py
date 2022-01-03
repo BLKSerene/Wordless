@@ -430,9 +430,21 @@ class Wl_Files(QObject):
         self.table.itemChanged.emit(self.table.item(0, 0))
 
     def get_selected_files(self):
-        files_selected = [file for file in self.main.settings_custom['file_area']['files_open'] if file['selected']]
+        files_selected = [
+            file
+            for file in self.main.settings_custom['file_area']['files_open']
+            if file['selected']
+        ]
         
         return files_selected
+
+    def get_selected_file_names(self):
+        file_names_selected = [
+            file['name']
+            for file in self.get_selected_files()
+        ]
+        
+        return file_names_selected
 
     def find_file_by_name(self, file_name, selected_only = False):
         if selected_only:

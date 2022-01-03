@@ -435,12 +435,11 @@ def wl_widgets_table_settings(parent, tables):
 def wl_widgets_fig_settings(parent, collocation = False):
     def graph_type_changed():
         if combo_box_graph_type.currentText() == parent.tr('Line Chart'):
-            combo_box_use_file.setEnabled(False)
+            combo_box_sort_by_file.setEnabled(True)
 
             use_data_changed()
         else:
-            combo_box_use_file.setEnabled(True)
-
+            combo_box_sort_by_file.setEnabled(True)
             checkbox_use_pct.setEnabled(False)
             checkbox_use_cumulative.setEnabled(False)
 
@@ -457,11 +456,10 @@ def wl_widgets_fig_settings(parent, collocation = False):
 
     label_graph_type = QLabel(parent.tr('Graph Type:'), parent)
     combo_box_graph_type = wl_box.Wl_Combo_Box(parent)
-    label_use_file = QLabel(parent.tr('Use File:'), parent)
-    combo_box_use_file = wl_box.Wl_Combo_Box_File_Figure_Settings(parent)
+    label_sort_by_file = QLabel(parent.tr('Sort by File:'), parent)
+    combo_box_sort_by_file = wl_box.Wl_Combo_Box_File_Figure_Settings(parent)
     label_use_data = QLabel(parent.tr('Use Data:'), parent)
     combo_box_use_data = wl_box.Wl_Combo_Box(parent)
-
     checkbox_use_pct = QCheckBox(parent.tr('Use percentage data'), parent)
     checkbox_use_cumulative = QCheckBox(parent.tr('Use cumulative data'), parent)
 
@@ -480,7 +478,7 @@ def wl_widgets_fig_settings(parent, collocation = False):
 
     return (
         label_graph_type, combo_box_graph_type,
-        label_use_file, combo_box_use_file,
+        label_sort_by_file, combo_box_sort_by_file,
         label_use_data, combo_box_use_data,
         checkbox_use_pct, checkbox_use_cumulative
     )

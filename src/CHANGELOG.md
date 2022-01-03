@@ -20,6 +20,7 @@
 ### ✨ Improvements
 - File Area: Remove temporary files when closing files
 - File Area: Show original file paths instead of modified ones
+- Work Area: Update Work Area - Figure Settings - Sort by File
 
 ### ❌ Removals
 - File Area: Remove Open File(s) / Open Folder / Reload Selected / Reload All / Close Selected / Close All

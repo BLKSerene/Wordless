@@ -359,7 +359,7 @@ def init_settings_default(main):
 
             'fig_settings': {
                 'graph_type': main.tr('Line Chart'),
-                'use_file': main.tr('Total'),
+                'sort_by_file': main.tr('Total'),
                 'use_data': main.tr('Frequency'),
                 'use_pct': False,
                 'use_cumulative': False,
@@ -514,7 +514,7 @@ def init_settings_default(main):
 
             'fig_settings': {
                 'graph_type': main.tr('Line Chart'),
-                'use_file': main.tr('Total'),
+                'sort_by_file': main.tr('Total'),
                 'use_data': main.tr('Frequency'),
                 'use_pct': False,
                 'use_cumulative': False,
@@ -664,7 +664,7 @@ def init_settings_default(main):
 
             'fig_settings': {
                 'graph_type': main.tr('Line Chart'),
-                'use_file': main.tr('Total'),
+                'sort_by_file': main.tr('Total'),
                 'use_data': main.tr('p-value'),
                 'use_pct': False,
                 'use_cumulative': False,
@@ -825,7 +825,7 @@ def init_settings_default(main):
 
             'fig_settings': {
                 'graph_type': main.tr('Line Chart'),
-                'use_file': main.tr('Total'),
+                'sort_by_file': main.tr('Total'),
                 'use_data': main.tr('p-value'),
                 'use_pct': False,
                 'use_cumulative': False,
@@ -922,7 +922,7 @@ def init_settings_default(main):
 
             'fig_settings': {
                 'graph_type': main.tr('Line Chart'),
-                'use_file': main.tr('Total'),
+                'sort_by_file': main.tr('Total'),
                 'use_data': main.tr('p-value'),
                 'use_pct': False,
                 'use_cumulative': False,

@@ -20,8 +20,20 @@ import wordcloud
 from wl_utils import wl_misc, wl_sorting
 
 def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
-    files = main.wl_files.get_selected_files()
-    files += [{'name': main.tr('Total')}]
+    file_names_selected = main.wl_files.get_selected_file_names() + [main.tr('Total')]
+    col_sort_by_file = file_names_selected.index(settings['sort_by_file'])
+
+    if label_y == main.tr('p-value'):
+        tokens_stat_files = wl_sorting.sorted_tokens_freq_files(
+            tokens_stat_files,
+            sort_by_col = col_sort_by_file,
+            reverse = True
+        )
+    else:
+        tokens_stat_files = wl_sorting.sorted_tokens_freq_files(
+            tokens_stat_files,
+            sort_by_col = col_sort_by_file
+        )
 
     if settings['rank_min_no_limit']:
         rank_min = 1
@@ -35,17 +47,14 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
 
     # Line Chart
     if settings['graph_type'] == main.tr('Line Chart'):
-        if label_y == main.tr('p-value'):
-            tokens_stat_files = list(reversed(wl_sorting.sorted_tokens_stat_files(tokens_stat_files)))
-        else:
-            tokens_stat_files = wl_sorting.sorted_tokens_stat_files(tokens_stat_files)
-
         tokens = [item[0] for item in tokens_stat_files[rank_min - 1 : rank_max]]
         stats = [item[1] for item in tokens_stat_files if item[0] in tokens]
 
-        for i, file in enumerate(files):
-            matplotlib.pyplot.plot([stat_files[i] for stat_files in stats],
-                                   label = file['name'])
+        for i, file_name in enumerate(file_names_selected):
+            matplotlib.pyplot.plot(
+                [stat_files[i] for stat_files in stats],
+                label = file_name
+            )
 
         matplotlib.pyplot.xlabel(label_x)
         matplotlib.pyplot.xticks(
@@ -73,22 +82,22 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
             max_words = max_words
         )
 
-        for i, file in enumerate(files):
-            if file['name'] == settings['use_file']:
-                if label_y == main.tr('p-value'):
-                    tokens_stat_files = list(reversed(wl_sorting.sorted_tokens_stat_file(tokens_stat_files, i)))
-                else:
-                    tokens_stat_files = wl_sorting.sorted_tokens_stat_file(tokens_stat_files, i)
-
-                tokens_stat_file = {token: stat_files[i]
-                                     for token, stat_files in tokens_stat_files[rank_min - 1 : rank_max]}
-
-                break
+        tokens_stat_file = {
+            token: stat_files[col_sort_by_file]
+            for token, stat_files in tokens_stat_files[rank_min - 1 : rank_max]
+        }
 
         # Fix zero frequencies
         for token, stat in tokens_stat_file.items():
             if stat == 0:
                 tokens_stat_file[token] += 0.000000000000001
+        
+        # WordCloud always display data descendingly
+        if label_y == main.tr('p-value'):
+            tokens_stat_file = {
+                token: 1 - p_value
+                for token, p_value in tokens_stat_file.items()
+            }
 
         word_cloud.generate_from_frequencies(tokens_stat_file)
 
@@ -96,17 +105,10 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
         matplotlib.pyplot.axis('off')
     # Network Graph
     elif settings['graph_type'] == main.tr('Network Graph'):
-        for i, file in enumerate(files):
-            if file['name'] == settings['use_file']:
-                if label_y == main.tr('p-value'):
-                    tokens_stat_files = list(reversed(wl_sorting.sorted_tokens_stat_file(tokens_stat_files, i)))
-                else:
-                    tokens_stat_files = wl_sorting.sorted_tokens_stat_file(tokens_stat_files, i)
-
-                tokens_stat_file = {token: stat_files[i]
-                                     for token, stat_files in tokens_stat_files[rank_min - 1 : rank_max]}
-
-                break
+        tokens_stat_file = {
+            token: stat_files[col_sort_by_file]
+            for token, stat_files in tokens_stat_files[rank_min - 1 : rank_max]
+        }
 
         graph = networkx.MultiDiGraph()
         graph.add_edges_from(tokens_stat_file)
@@ -175,9 +177,25 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
         )
 
 def wl_fig_stat_keyword(main, keywords_stat_files, files_ref, settings, label_y):
-    files = main.wl_files.get_selected_files()
-    files += [{'name': main.tr('Total')}]
-    files = [file for file in files if file not in files_ref]
+    file_names_selected = main.wl_files.get_selected_file_names() + [main.tr('Total')]
+    file_names_selected = [
+        file_name
+        for file_name in file_names_selected
+        if file_name not in files_ref
+    ]
+    col_sort_by_file = file_names_selected.index(settings['sort_by_file'])
+
+    if label_y == main.tr('p-value'):
+        keywords_stat_files = wl_sorting.sorted_tokens_freq_files(
+            keywords_stat_files,
+            sort_by_col = col_sort_by_file,
+            reverse = True
+        )
+    else:
+        keywords_stat_files = wl_sorting.sorted_tokens_freq_files(
+            keywords_stat_files,
+            sort_by_col = col_sort_by_file
+        )
 
     if settings['rank_min_no_limit']:
         rank_min = 1
@@ -190,18 +208,13 @@ def wl_fig_stat_keyword(main, keywords_stat_files, files_ref, settings, label_y)
         rank_max = settings['rank_max']
 
     if settings['graph_type'] == main.tr('Line Chart'):
-        if label_y == main.tr('p-value'):
-            keywords_stat_files = list(reversed(wl_sorting.sorted_keywords_stat_files(keywords_stat_files)))
-        else:
-            keywords_stat_files = wl_sorting.sorted_keywords_stat_files(keywords_stat_files)
-
         keywords = [item[0] for item in keywords_stat_files[rank_min - 1 : rank_max]]
         stats = [item[1] for item in keywords_stat_files if item[0] in keywords]
 
-        for i, file in enumerate(files):
+        for i, file_name in enumerate(file_names_selected):
             matplotlib.pyplot.plot(
                 [stats_files[i] for stats_files in stats],
-                label = file['name']
+                label = file_name
             )
 
         matplotlib.pyplot.xlabel(main.tr('Keyword'))
@@ -229,28 +242,22 @@ def wl_fig_stat_keyword(main, keywords_stat_files, files_ref, settings, label_y)
             max_words = max_words
         )
 
-        for i, file in enumerate(files):
-            if file['name'] == settings['use_file']:
-                if label_y == main.tr('p-value'):
-                    keywords_stat_files = list(reversed(wl_sorting.sorted_keywords_stat_file(keywords_stat_files, i)))
-                else:
-                    keywords_stat_files = wl_sorting.sorted_keywords_stat_file(keywords_stat_files, i)
-
-                keywords_stat_file = {keyword: stat_files[i]
-                                      for keyword, stat_files in keywords_stat_files[rank_min - 1 : rank_max]}
-
-                break
-
-        if label_y == main.tr('p-value'):
-            keywords_stat_file = {keyword: 1 - p_value
-                                  for keyword, p_value in keywords_stat_file.items()}
-
-        keywords_stat_file = {keyword: stat for keyword, stat in keywords_stat_file.items() if stat}
+        keywords_stat_file = {
+            keyword: stat_files[col_sort_by_file]
+            for keyword, stat_files in keywords_stat_files[rank_min - 1 : rank_max]
+        }
 
         # Fix zero frequencies
         for keyword, stat in keywords_stat_file.items():
             if stat == 0:
                 keywords_stat_file[keyword] += 0.000000000000001
+
+        # WordCloud always display data descendingly
+        if label_y == main.tr('p-value'):
+            keywords_stat_file = {
+                keyword: 1 - p_value
+                for keyword, p_value in keywords_stat_file.items()
+            }
         
         word_cloud.generate_from_frequencies(keywords_stat_file)
 
