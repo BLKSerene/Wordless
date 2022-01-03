@@ -10,27 +10,20 @@
 #
 
 # Frequency
-def sorted_tokens_freq_files(tokens_freq_files):
-    def key(item):
-        keys = []
-
-        for value in item[1]:
-            # Frequency
-            keys.append(-value)
-
-        # Tokens/N-grams
-        keys.append(item[0])
-
-        return keys
-
-    return sorted(tokens_freq_files.items(), key = key)
-
-def sorted_tokens_freq_file(tokens_freq_files, i_file):
+def sorted_tokens_freq_files(tokens_freq_files, sort_by_col = 0, reverse = False):
     def key(item):
         keys = []
 
         # Frequency
-        keys.append(-item[1][i_file])
+        for value in item[1]:
+            keys.append(-value)
+
+        keys.remove(-item[1][sort_by_col])
+
+        if reverse:
+            keys.insert(0, item[1][sort_by_col])
+        else:
+            keys.insert(0, -item[1][sort_by_col])
 
         # Tokens/N-grams
         keys.append(item[0])
@@ -39,7 +32,7 @@ def sorted_tokens_freq_file(tokens_freq_files, i_file):
 
     return sorted(tokens_freq_files.items(), key = key)
 
-def sorted_tokens_freq_files_ref(tokens_freq_files):
+def sorted_tokens_freq_files_ref(tokens_freq_files, sort_by_col = 0, reverse = False):
     def key(item):
         keys = []
 
@@ -47,6 +40,13 @@ def sorted_tokens_freq_files_ref(tokens_freq_files):
         for i, freq in enumerate(item[1]):
             if i > 0:
                 keys.append(-freq)
+
+        keys.remove(-item[1][sort_by_col])
+        
+        if reverse:
+            keys.insert(0, item[1][sort_by_col])
+        else:
+            keys.insert(0, -item[1][sort_by_col])
 
         # Frequency in reference file
         keys.append(-item[1][0])
@@ -57,36 +57,6 @@ def sorted_tokens_freq_files_ref(tokens_freq_files):
         return keys
 
     return sorted(tokens_freq_files.items(), key = key)
-
-# Statistic
-def sorted_tokens_stat_files(tokens_stat_files):
-    def key(item):
-        keys = []
-
-        # Statistic
-        for stat in item[1]:
-            keys.append(-stat)
-
-        # Tokens/N-gram
-        keys.append(item[0])
-
-        return keys
-
-    return sorted(tokens_stat_files.items(), key = key)
-
-def sorted_tokens_stat_file(tokens_stat_files, i_file):
-    def key(item):
-        keys = []
-
-        # Statistic
-        keys.append(-item[1][i_file])
-
-        # Token/N-gram
-        keys.append(item[0])
-
-        return keys
-
-    return sorted(tokens_stat_files.items(), key = key)
 
 # Association
 def sorted_collocations_stats_files(collocations_stats_files):
@@ -135,32 +105,3 @@ def sorted_keywords_stats_files(keywords_stats_files):
         return keys
 
     return sorted(keywords_stats_files.items(), key = key)
-
-def sorted_keywords_stat_files(keywords_stat_files):
-    def key(item):
-        keys = []
-
-        # Statistic
-        for stat in item[1]:
-            keys.append(-stat)
-
-        # Keywords
-        keys.append(item[0])
-
-        return keys
-
-    return sorted(keywords_stat_files.items(), key = key)
-
-def sorted_keywords_stat_file(keywords_stat_files, i_file):
-    def key(item):
-        keys = []
-
-        # Statistic
-        keys.append(-item[1][i_file])
-
-        # Keywords
-        keys.append(item[0])
-
-        return keys
-
-    return sorted(keywords_stat_files.items(), key = key)
