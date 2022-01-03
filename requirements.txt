@@ -16,7 +16,7 @@ botok == 0.8.8
 jieba == 0.42.1
 pkuseg == 0.0.25
 nagisa == 0.2.7
-nltk == 3.6.5
+nltk == 3.6.7
 opencc-python-reimplemented == 0.1.6
 
 ## pymorphy2
@@ -34,7 +34,7 @@ spacy == 3.2.1
 spacy-lookups-data == 1.0.3
 
 ssg == 0.0.8
-textblob == 0.15.3
+textblob == 0.17.1
 tokenizer == 3.3.2
 underthesea == 1.2.2
 
