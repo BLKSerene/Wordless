@@ -20,8 +20,13 @@ import wordcloud
 from wl_utils import wl_misc, wl_sorting
 
 def wl_fig_freq(main, tokens_freq_files, settings, label_x):
-    files = main.wl_files.get_selected_files()
-    files += [{'name': main.tr('Total')}]
+    file_names_selected = main.wl_files.get_selected_file_names() + [main.tr('Total')]
+    col_sort_by_file = file_names_selected.index(settings['sort_by_file'])
+
+    tokens_freq_files = wl_sorting.sorted_tokens_freq_files(
+        tokens_freq_files,
+        sort_by_col = col_sort_by_file
+    )
 
     if settings['rank_min_no_limit']:
         rank_min = 1
@@ -35,8 +40,6 @@ def wl_fig_freq(main, tokens_freq_files, settings, label_x):
 
     # Line Chart
     if settings['graph_type'] == main.tr('Line Chart'):
-        tokens_freq_files = wl_sorting.sorted_tokens_freq_files(tokens_freq_files)
-
         total_freqs = numpy.array(list(zip(*tokens_freq_files))[1]).sum(axis = 0)
         total_freq = sum(total_freqs)
 
@@ -57,23 +60,31 @@ def wl_fig_freq(main, tokens_freq_files, settings, label_x):
         if settings['use_cumulative']:
             for i, freq_files in enumerate(freqs):
                 if i >= 1:
-                    freqs[i] = [freq_cumulative + freq
-                                for freq_cumulative, freq in zip(freqs[i - 1], freq_files)]
+                    freqs[i] = [
+                        freq_cumulative + freq
+                        for freq_cumulative, freq in zip(freqs[i - 1], freq_files)
+                    ]
 
         if settings['use_pct']:
-            for i, file in enumerate(files):
-                matplotlib.pyplot.plot([freq_files[i] / total_freqs[i] * 100  for freq_files in freqs],
-                                       label = file['name'])
+            for i, file_name in enumerate(file_names_selected):
+                matplotlib.pyplot.plot(
+                    [freq_files[i] / total_freqs[i] * 100  for freq_files in freqs],
+                    label = file_name
+                )
         else:
-            for i, file in enumerate(files):
-                matplotlib.pyplot.plot([freq_files[i] for freq_files in freqs],
-                                       label = file['name'])
+            for i, file_name in enumerate(file_names_selected):
+                matplotlib.pyplot.plot(
+                    [freq_files[i] for freq_files in freqs],
+                    label = file_name
+                )
 
         matplotlib.pyplot.xlabel(label_x)
-        matplotlib.pyplot.xticks(range(len(tokens)),
-                                 labels = tokens,
-                                 fontproperties = main.settings_custom['figs']['line_chart']['font'],
-                                 rotation = 90)
+        matplotlib.pyplot.xticks(
+            range(len(tokens)),
+            labels = tokens,
+            fontproperties = main.settings_custom['figs']['line_chart']['font'],
+            rotation = 90
+        )
 
         matplotlib.pyplot.grid(True)
         matplotlib.pyplot.legend()
@@ -89,14 +100,10 @@ def wl_fig_freq(main, tokens_freq_files, settings, label_x):
                                          background_color = main.settings_custom['figs']['word_cloud']['bg_color'],
                                          max_words = max_words)
 
-        for i, file in enumerate(files):
-            if file['name'] == settings['use_file']:
-                tokens_freq_files = wl_sorting.sorted_tokens_freq_file(tokens_freq_files, i)
-
-                tokens_freq_file = {token: freqs[i]
-                                    for token, freqs in tokens_freq_files[rank_min - 1 : rank_max]}
-
-                break
+        tokens_freq_file = {
+            token: freqs[col_sort_by_file]
+            for token, freqs in tokens_freq_files[rank_min - 1 : rank_max]
+        }
 
         # Fix zero frequencies
         for token, freq in tokens_freq_file.items():
@@ -109,14 +116,10 @@ def wl_fig_freq(main, tokens_freq_files, settings, label_x):
         matplotlib.pyplot.axis('off')
     # Network Graph
     elif settings['graph_type'] == main.tr('Network Graph'):
-        for i, file in enumerate(files):
-            if file['name'] == settings['use_file']:
-                tokens_freq_files = wl_sorting.sorted_tokens_freq_file(tokens_freq_files, i)
-
-                tokens_freq_file = {token: freqs[i]
-                                    for token, freqs in tokens_freq_files[rank_min - 1 : rank_max]}
-
-                break
+        tokens_freq_file = {
+            token: freqs[col_sort_by_file]
+            for token, freqs in tokens_freq_files[rank_min - 1 : rank_max]
+        }
 
         graph = networkx.MultiDiGraph()
         graph.add_edges_from(tokens_freq_file)
@@ -170,9 +173,18 @@ def wl_fig_freq(main, tokens_freq_files, settings, label_x):
         )
 
 def wl_fig_freq_keyword(main, tokens_freq_files, files_ref, settings, label_x):
-    files = main.wl_files.get_selected_files()
-    files += [{'name': main.tr('Total')}]
-    files = [file for file in files if file not in files_ref]
+    file_names_selected = [main.tr('Reference Files')] + main.wl_files.get_selected_file_names() + [main.tr('Total')]
+    file_names_selected = [
+        file_name
+        for file_name in file_names_selected
+        if file_name not in files_ref
+    ]
+    col_sort_by_file = file_names_selected.index(settings['sort_by_file'])
+
+    tokens_freq_files = wl_sorting.sorted_tokens_freq_files_ref(
+        tokens_freq_files,
+        sort_by_col = col_sort_by_file
+    )
 
     if settings['rank_min_no_limit']:
         rank_min = 1
@@ -186,10 +198,6 @@ def wl_fig_freq_keyword(main, tokens_freq_files, files_ref, settings, label_x):
 
     # Line Chart
     if settings['graph_type'] == main.tr('Line Chart'):
-        files.insert(0, {'name': main.tr('Reference Files')})
-
-        tokens_freq_files = wl_sorting.sorted_tokens_freq_files_ref(tokens_freq_files)
-
         total_freqs = numpy.array([item[1] for item in tokens_freq_files]).sum(axis = 0)
         total_freq_ref = total_freqs[0]
         total_freq_total = total_freqs[-1]
@@ -211,20 +219,22 @@ def wl_fig_freq_keyword(main, tokens_freq_files, files_ref, settings, label_x):
         if settings['use_cumulative']:
             for i, freq_files in enumerate(freqs):
                 if i >= 1:
-                    freqs[i] = [freq_cumulative + freq
-                                for freq_cumulative, freq in zip(freqs[i - 1], freq_files)]
+                    freqs[i] = [
+                        freq_cumulative + freq
+                        for freq_cumulative, freq in zip(freqs[i - 1], freq_files)
+                    ]
 
         if settings['use_pct']:
-            for i, file in enumerate(files):
+            for i, file_name in enumerate(file_names_selected):
                 matplotlib.pyplot.plot(
                     [freq_files[i] / total_freqs[i] * 100  for freq_files in freqs],
-                    label = file['name']
+                    label = file_name
                 )
         else:
-            for i, file in enumerate(files):
+            for i, file_name in enumerate(file_names_selected):
                 matplotlib.pyplot.plot(
                     [freq_files[i] for freq_files in freqs],
-                    label = file['name']
+                    label = file_name
                 )
 
         matplotlib.pyplot.xlabel(label_x)
@@ -251,16 +261,10 @@ def wl_fig_freq_keyword(main, tokens_freq_files, files_ref, settings, label_x):
             max_words = max_words
         )
 
-        for i, file in enumerate(files):
-            if file['name'] == settings['use_file']:
-                tokens_freq_files = wl_sorting.sorted_tokens_freq_file(tokens_freq_files, i + 1)
-
-                tokens_freq_file = {token: freq_files[i + 1]
-                                    for token, freq_files in tokens_freq_files[rank_min - 1 : rank_max]}
-
-                break
-
-        tokens_freq_file = {token: freq for token, freq in tokens_freq_file.items() if freq}
+        tokens_freq_file = {
+            token: freq_files[col_sort_by_file]
+            for token, freq_files in tokens_freq_files[rank_min - 1 : rank_max]
+        }
 
         # Fix zero frequencies
         for token, freq in tokens_freq_file.items():
@@ -270,5 +274,4 @@ def wl_fig_freq_keyword(main, tokens_freq_files, files_ref, settings, label_x):
         word_cloud.generate_from_frequencies(tokens_freq_file)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
-
         matplotlib.pyplot.axis('off')
