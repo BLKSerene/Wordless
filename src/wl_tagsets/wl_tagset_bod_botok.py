@@ -9,12 +9,8 @@
 # All other rights reserved.
 #
 
-#
 # botok Tagset: https://github.com/Esukhia/botok/blob/master/botok/vars.py
-#
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
-#
-
 MAPPINGS = [
     ['ADJ', 'ADJ', 'Adjectives', ''],
     ['ADP', 'ADP', 'Adposition', ''],

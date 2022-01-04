@@ -418,6 +418,10 @@ def init_settings_global(main):
                 main.tr('spaCy - Urdu Word Tokenizer'): 'spacy_urd',
                 main.tr('spaCy - Yoruba Word Tokenizer'): 'spacy_yor',
 
+                main.tr('SudachiPy - Japanese Word Tokenizer (Split Mode A)'): 'sudachipy_jpn_split_mode_a',
+                main.tr('SudachiPy - Japanese Word Tokenizer (Split Mode B)'): 'sudachipy_jpn_split_mode_b',
+                main.tr('SudachiPy - Japanese Word Tokenizer (Split Mode C)'): 'sudachipy_jpn_split_mode_c',
+
                 main.tr('Tokenizer - Icelandic Word Tokenizer'): 'tokenizer_isl',
                 main.tr('Underthesea - Vietnamese Word Tokenizer'): 'underthesea_vie',
 
@@ -511,6 +515,8 @@ def init_settings_global(main):
                 main.tr('spaCy - Russian POS Tagger'): 'spacy_rus',
                 main.tr('spaCy - Spanish POS Tagger'): 'spacy_spa',
 
+                main.tr('SudachiPy - Japanese POS Tagger'): 'sudachipy_jpn',
+
                 main.tr('Underthesea - Vietnamese POS Tagger'): 'underthesea_vie'
             },
 
@@ -574,7 +580,9 @@ def init_settings_global(main):
                 main.tr('spaCy - Swedish Lemmatizer'): 'spacy_swe',
                 main.tr('spaCy - Tagalog Lemmatizer'): 'spacy_tgl',
                 main.tr('spaCy - Turkish Lemmatizer'): 'spacy_tur',
-                main.tr('spaCy - Urdu Lemmatizer'): 'spacy_urd'
+                main.tr('spaCy - Urdu Lemmatizer'): 'spacy_urd',
+
+                main.tr('SudachiPy - Japanese Lemmatizer'): 'sudachipy_jpn'
             },
 
             'stop_word_lists': {
@@ -1324,6 +1332,9 @@ def init_settings_global(main):
 
             'jpn': [
                 'nagisa_jpn',
+                'sudachipy_jpn_split_mode_a',
+                'sudachipy_jpn_split_mode_b',
+                'sudachipy_jpn_split_mode_c',
                 'wordless_jpn_kanji'
             ],
 
@@ -1983,7 +1994,8 @@ def init_settings_global(main):
             ],
 
             'jpn': [
-                'nagisa_jpn'
+                'nagisa_jpn',
+                'sudachipy_jpn'
             ],
 
             'lit': [
@@ -2138,6 +2150,10 @@ def init_settings_global(main):
             'ita': [
                 'lemmatization_lists_ita',
                 'spacy_ita'
+            ],
+
+            'jpn': [
+                'sudachipy_jpn'
             ],
 
             'lit': [

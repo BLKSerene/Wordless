@@ -127,7 +127,8 @@ I would like to extend my sincere gratitude to the following open-source project
 29    |[spaCy](https://spacy.io/)                                            |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
 30    |[ssg](https://github.com/ponrawee/ssg)                                |Ponrawee Prasertsom
 31    |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
-32    |[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
-33    |[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
-34    |[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
-35    |[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller
+32    |[SudachiPy](https://github.com/WorksApplications/sudachi.rs)          |Works Applications Co., Ltd.
+33    |[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
+34    |[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
+35    |[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
+36    |[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller

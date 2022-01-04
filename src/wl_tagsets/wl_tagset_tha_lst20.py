@@ -9,12 +9,8 @@
 # All other rights reserved.
 #
 
-#
 # LST20 Tagset: https://github.com/PyThaiNLP/pythainlp/blob/dev/docs/api/tag.rst#pythainlptag
-#
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
-#
-
 MAPPINGS = [
     ['AJ', 'ADJ', 'Adjective', 'ใหม่, พิเศษ , ก่อน, มาก, สูง'],
     ['AV', 'ADV', 'Adverb', 'ก่อน, ก็, เล็กน้อย, เลย, สุด'],

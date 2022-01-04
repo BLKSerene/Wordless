@@ -9,12 +9,8 @@
 # All other rights reserved.
 #
 
-#
 # Penn Treebank Tagset: https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
-#
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
-#
-
 MAPPINGS = [
     ['CC', 'CCONJ', 'Coordinating conjunction', ''],
     ['CD', 'NUM', 'Cardinal number', ''],

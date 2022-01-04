@@ -22,6 +22,7 @@ import pymorphy2
 import pyphen
 import sacremoses
 import spacy
+import sudachipy
 
 from wl_text import wl_text
 from wl_utils import wl_conversion
@@ -250,7 +251,7 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
 
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
-
+    
     # NLTK
     if 'nltk' in word_tokenizer:
         if word_tokenizer == 'nltk_nist':
@@ -286,6 +287,10 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
     elif 'wordless' in word_tokenizer:
         init_spacy_models(main, 'eng_us')
         init_spacy_models(main, 'other')
+    # Japanese
+    elif word_tokenizer.startswith('sudachipy_jpn'):
+        if 'sudachipy_word_tokenizer' not in main.__dict__:
+            main.sudachipy_word_tokenizer = sudachipy.Dictionary().create()
     # Tibetan
     elif word_tokenizer == 'botok_bod':
         if 'botok_word_tokenizer' not in main.__dict__:
