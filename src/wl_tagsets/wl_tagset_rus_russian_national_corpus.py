@@ -9,12 +9,8 @@
 # All other rights reserved.
 #
 
-#
 # Russian National Corpus Tagset: http://www.ruscorpora.ru/en/corpora-morph.html
-#
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
-#
-
 MAPPINGS = [
     ['S', 'NOUN', 'Noun', ''],
 

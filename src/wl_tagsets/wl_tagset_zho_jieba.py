@@ -9,12 +9,8 @@
 # All other rights reserved.
 #
 
-#
 # jieba Tagset: https://gist.github.com/hscspring/c985355e0814f01437eaf8fd55fd7998
-#
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
-#
-
 MAPPINGS = [
     ['a', 'ADJ', '形容词', ''],
     ['ad', 'ADJ', '副形词', ''],
