@@ -9,12 +9,8 @@
 # All other rights reserved.
 #
 
-#
 # ORCHID Tagset: https://github.com/PyThaiNLP/pythainlp/blob/dev/docs/api/tag.rst#pythainlptag
-#
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
-#
-
 MAPPINGS = [
     ['NPRP', 'PROPN', 'Proper noun', 'วินโดวส์ 95, โคโรน่า, โค้ก'],
     

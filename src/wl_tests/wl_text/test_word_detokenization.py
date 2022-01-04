@@ -101,7 +101,7 @@ def test_word_detokenize(lang, word_detokenizer):
         else:
             raise Exception(f'Error: Tests for word detokenizer "{word_detokenizer}" is skipped!')
     elif lang == 'jpn':
-        assert text == '日本語(にほんご、にっぽんご[注2]、英: Japanese)は、主に日本国内や日本人同士の間で使用されている言語。'
+        assert text == '日本語（にほんご、にっぽんご[注2]、英: Japanese）は、日本国内や、かつての日本領だった国、そして日本人同士の間で使用されている言語。'
     elif lang == 'kan':
         assert text == 'ದ್ರಾವಿಡ ಭಾಷೆಗಳಲ್ಲಿ ಪ್ರಾಮುಖ್ಯವುಳ್ಳ ಭಾಷೆಯೂ ಭಾರತದ ಪುರಾತನವಾದ ಭಾಷೆಗಳಲ್ಲಿ ಒಂದೂ ಆಗಿರುವ ಕನ್ನಡ ಭಾಷೆಯನ್ನು ಅದರ ವಿವಿಧ ರೂಪಗಳಲ್ಲಿ ಸುಮಾರು ೪೫ ದಶಲಕ್ಷ ಜನರು ಆಡು ನುಡಿಯಾಗಿ ಬಳಸುತ್ತಲಿದ್ದಾರೆ.'
     elif lang == 'lav':

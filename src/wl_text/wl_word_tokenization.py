@@ -14,6 +14,7 @@ import re
 import jieba
 import pythainlp
 import razdel
+import sudachipy
 import tokenizer
 import underthesea
 
@@ -171,6 +172,27 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
                     for sentence in sentences:
                         tokens_multilevel[-1].append(nagisa.tagging(str(sentence)).words)
+                elif word_tokenizer.startswith('sudachipy_jpn'):
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = lang)
+
+                    if word_tokenizer == 'sudachipy_jpn_split_mode_a':
+                        for sentence in sentences:
+                            tokens_multilevel[-1].append([
+                                token.surface()
+                                for token in main.sudachipy_word_tokenizer.tokenize(sentence, sudachipy.SplitMode.A)
+                            ])
+                    elif word_tokenizer == 'sudachipy_jpn_split_mode_b':
+                        for sentence in sentences:
+                            tokens_multilevel[-1].append([
+                                token.surface()
+                                for token in main.sudachipy_word_tokenizer.tokenize(sentence, sudachipy.SplitMode.B)
+                            ])
+                    elif word_tokenizer == 'sudachipy_jpn_split_mode_c':
+                        for sentence in sentences:
+                            tokens_multilevel[-1].append([
+                                token.surface()
+                                for token in main.sudachipy_word_tokenizer.tokenize(sentence, sudachipy.SplitMode.C)
+                            ])
                 elif word_tokenizer == 'wordless_jpn_kanji':
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = lang)
 
