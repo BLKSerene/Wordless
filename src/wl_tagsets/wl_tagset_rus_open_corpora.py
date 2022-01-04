@@ -9,12 +9,8 @@
 # All other rights reserved.
 #
 
-#
 # OpenCorpora Tagset: https://pymorphy2.readthedocs.io/en/latest/user/grammemes.html
-#
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
-#
-
 MAPPINGS = [
     ['NOUN', 'NOUN', 'Noun', 'хомяк'],
     ['ADJF', 'ADJ', 'Adjective (full)', 'хороший'],

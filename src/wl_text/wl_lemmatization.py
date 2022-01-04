@@ -44,6 +44,10 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
         if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang]
 
+        wl_text_utils.init_word_tokenizers(
+            main,
+            lang = lang
+        )
         wl_text_utils.init_lemmatizers(
             main,
             lang = lang,
@@ -83,6 +87,12 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
                     lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
                 else:
                     lemmas.append(word_net_lemmatizer.lemmatize(token))
+        # Japanese
+        elif lemmatizer == 'sudachipy_jpn':
+            lemmas = [
+                token.dictionary_form()
+                for token in main.sudachipy_word_tokenizer.tokenize(''.join(tokens))
+            ]
         # Russian & Ukrainian
         elif lemmatizer == 'pymorphy2_morphological_analyzer':
             if lang == 'rus':
@@ -94,8 +104,6 @@ def wl_lemmatize(main, tokens, lang, tokenized = 'No', tagged = 'No', lemmatizer
                 lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
         # Tibetan
         elif lemmatizer == 'botok_bod':
-            wl_text_utils.init_word_tokenizers(main, lang = 'bod')
-
             tokens = main.botok_word_tokenizer.tokenize(' '.join(tokens))
 
             for token in tokens:
