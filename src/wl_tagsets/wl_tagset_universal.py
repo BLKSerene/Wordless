@@ -9,10 +9,7 @@
 # All other rights reserved.
 #
 
-#
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
-#
-
 MAPPINGS = [
     ['ADJ', 'ADJ', 'Adjectives', 'big, old, green, African, incomprehensible\nfirst, second, third'],
     ['ADP', 'ADP', 'Adposition', 'in, to, during'],
