@@ -32,6 +32,10 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'default'):
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang]
 
+    wl_text_utils.init_word_tokenizers(
+        main,
+        lang = lang
+    )
     wl_text_utils.init_pos_taggers(
         main,
         lang = lang,
@@ -70,6 +74,11 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'default'):
         import nagisa
 
         tokens_tagged = zip(tokens, nagisa.postagging(tokens))
+    elif pos_tagger == 'sudachipy_jpn':
+        tokens_tagged = [
+            (token.surface(), '-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
+            for token in main.sudachipy_word_tokenizer.tokenize(' '.join(tokens))
+        ]
     # Russian & Ukrainian
     elif pos_tagger == 'pymorphy2_morphological_analyzer':
         if lang == 'rus':
@@ -88,10 +97,6 @@ def wl_pos_tag(main, tokens, lang, pos_tagger = 'default', tagset = 'default'):
         tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
     # Tibetan
     elif pos_tagger == 'botok_bod':
-        wl_text_utils.init_word_tokenizers(
-            main,
-            lang = 'bod'
-        )
         tokens = main.botok_word_tokenizer.tokenize(' '.join(tokens))
 
         for token in tokens:

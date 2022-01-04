@@ -117,6 +117,8 @@ def test_lemmatize(lang, lemmatizer):
             assert lemmas == ['il', 'italiano', '(', '[', 'itaˈljaːno][nota', '1', ']', 'ascolta[?·info', ']', ')', 'essere', 'uno', 'lingua', 'romanza', 'parlato', 'principalmente', 'in', 'Italia', '.']
         else:
             raise Exception(f'Error: Tests for lemmatizer "{lemmatizer}" is skipped!')
+    elif lang == 'jpn':
+        assert lemmas == ['日本語', '（', 'にほん', 'ご', '、', 'にっぽん', 'ご', '［', '注', '2', '］', '、', '英', '：', 'Japanese', ')', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だ', 'た', '国', '、', 'そして', '日本人', '同士', 'の', '間', 'で', '使用', 'する', 'れる', 'て', 'いる', '言語', '。']
     elif lang == 'lit':
         assert lemmas == ['lietuvė', 'kalbėti', '–', 'ižti', 'baltas', 'prokalbės', 'kilęs', 'lietuvė', 'tauta', 'kalbėti', ',', 'kuri', 'Lietuvoje', 'irti', 'valstybinis', ',', 'o', 'Europos', 'sąjunga', '–', 'viena', 'ižti', 'oficialus', 'kalbus', '.']
     elif lang == 'ltz':

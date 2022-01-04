@@ -16,6 +16,7 @@
 - File Area: Add support for .tmx files
 - Utils: Add Lemmatization Lists's Russian lemma list
 - Utils: Add spaCy's Greek (Ancient) and Irish lemmatizers
+- Utils: Add SudachiPy's Japanese word tokenizer, POS tagger, and lemmatizer
 
 ### ✨ Improvements
 - File Area: Remove temporary files when closing files
@@ -28,6 +29,7 @@
 - Utils: Remove syntok's sentence segmenter and word tokenizer
 
 ### ⏫ Dependency Changes
+- Dependencies: Add SudachiPy
 - Dependencies: Remove lemmalist-greek
 - Dependencies: Remove syntok
 - Dependencies: Upgrade Charset Normalizer to 2.0.9
