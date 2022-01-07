@@ -16,6 +16,7 @@
 - File Area: Add support for .tmx files
 - Utils: Add Lemmatization Lists's Russian lemma list
 - Utils: Add spaCy's Greek (Ancient) and Irish lemmatizers
+- Utils: Add spaCy's Japanese word tokenizer, POS tagger, and lemmatizer
 - Utils: Add SudachiPy's Japanese word tokenizer, POS tagger, and lemmatizer
 
 ### ✨ Improvements
