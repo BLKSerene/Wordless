@@ -186,7 +186,10 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'jpn':
         if word_tokenizer == 'nagisa_jpn':
             assert tokens == ['日本', '語', '(', 'にほんご', '、', 'にっぽん', 'ご', '[', '注', '2', ']', '、', '英', ':', 'Japanese', ')', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だっ', 'た', '国', '、', 'そして', '日本', '人', '同士', 'の', '間', 'で', '使用', 'さ', 'れ', 'て', 'いる', '言語', '。']
-        elif word_tokenizer == 'sudachipy_jpn_split_mode_a':
+        elif word_tokenizer in [
+            'spacy_jpn',
+            'sudachipy_jpn_split_mode_a'
+        ]:
             assert tokens == ['日本', '語', '（', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注', '2', ']', '、', '英', ':', 'Japanese', '）', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だっ', 'た', '国', '、', 'そして', '日本', '人', '同士', 'の', '間', 'で', '使用', 'さ', 'れ', 'て', 'いる', '言語', '。']
         elif word_tokenizer in [
             'sudachipy_jpn_split_mode_b',

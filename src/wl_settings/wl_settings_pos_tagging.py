@@ -35,14 +35,8 @@ class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
             line = line.strip()
 
             if line:
-                tokens = wl_word_tokenization.wl_word_tokenize(
-                    self.main, line,
-                    lang = preview_lang
-                )
-                tokens = list(wl_misc.flatten_list(tokens))
-
                 tokens_tagged = wl_pos_tagging.wl_pos_tag(
-                    self.main, tokens,
+                    self.main, line,
                     lang = preview_lang,
                     pos_tagger = self.pos_tagger,
                     tagset = self.tagset

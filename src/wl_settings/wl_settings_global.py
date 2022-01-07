@@ -384,6 +384,7 @@ def init_settings_global(main):
                 main.tr('spaCy - Indonesian Word Tokenizer'): 'spacy_ind',
                 main.tr('spaCy - Irish Word Tokenizer'): 'spacy_gle',
                 main.tr('spaCy - Italian Word Tokenizer'): 'spacy_ita',
+                main.tr('spaCy - Japanese Word Tokenizer'): 'spacy_jpn',
                 main.tr('spaCy - Kannada Word Tokenizer'): 'spacy_kan',
                 main.tr('spaCy - Kyrgyz Word Tokenizer'): 'spacy_kir',
                 main.tr('spaCy - Latvian Word Tokenizer'): 'spacy_lav',
@@ -506,6 +507,7 @@ def init_settings_global(main):
                 main.tr('spaCy - German POS Tagger'): 'spacy_deu',
                 main.tr('spaCy - Greek (Modern) POS Tagger'): 'spacy_ell',
                 main.tr('spaCy - Italian POS Tagger'): 'spacy_ita',
+                main.tr('spaCy - Japanese POS Tagger'): 'spacy_jpn',
                 main.tr('spaCy - Lithuanian POS Tagger'): 'spacy_lit',
                 main.tr('spaCy - Macedonian POS Tagger'): 'spacy_mkd',
                 main.tr('spaCy - Norwegian Bokmål POS Tagger'): 'spacy_nob',
@@ -566,6 +568,7 @@ def init_settings_global(main):
                 main.tr('spaCy - Indonesian Lemmatizer'): 'spacy_ind',
                 main.tr('spaCy - Irish Lemmatizer'): 'spacy_gle',
                 main.tr('spaCy - Italian Lemmatizer'): 'spacy_ita',
+                main.tr('spaCy - Japanese Lemmatizer'): 'spacy_jpn',
                 main.tr('spaCy - Lithuanian Lemmatizer'): 'spacy_lit',
                 main.tr('spaCy - Luxembourgish Lemmatizer'): 'spacy_ltz',
                 main.tr('spaCy - Macedonian Lemmatizer'): 'spacy_mkd',
@@ -1332,6 +1335,7 @@ def init_settings_global(main):
 
             'jpn': [
                 'nagisa_jpn',
+                'spacy_jpn',
                 'sudachipy_jpn_split_mode_a',
                 'sudachipy_jpn_split_mode_b',
                 'sudachipy_jpn_split_mode_c',
@@ -1995,6 +1999,7 @@ def init_settings_global(main):
 
             'jpn': [
                 'nagisa_jpn',
+                'spacy_jpn',
                 'sudachipy_jpn'
             ],
 
@@ -2153,6 +2158,7 @@ def init_settings_global(main):
             ],
 
             'jpn': [
+                'spacy_jpn',
                 'sudachipy_jpn'
             ],
 
