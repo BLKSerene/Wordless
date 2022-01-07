@@ -38,9 +38,9 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     )
     
     # spaCy
-    if 'spacy' in word_tokenizer:
+    if word_tokenizer.startswith('spacy_'):
         # Chinese, English, German, Portuguese
-        if lang.find('srp') == -1:
+        if not lang.startswith('srp_'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         
         nlp = main.__dict__[f'spacy_nlp_{lang}']
@@ -86,7 +86,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
             if para.strip():
                 # NLTK
-                if 'nltk' in word_tokenizer:
+                if word_tokenizer.startswith('nltk_'):
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang)
 
                     if word_tokenizer == 'nltk_nist':
@@ -269,7 +269,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                     for sentence in sentences:
                         tokens_multilevel[-1].append([token.text for token in razdel.tokenize(sentence)])
                 # Thai
-                elif 'pythainlp' in word_tokenizer:
+                elif word_tokenizer.startswith('pythainlp_'):
                     # Preserve sentence boundaries
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = 'tha')
 
@@ -309,9 +309,11 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     # Remove empty tokens and strip whitespace
     for para in tokens_multilevel:
         for i, sentence in enumerate(para):
-            para[i] = [token.strip()
-                       for token in sentence
-                       if token.strip()]
+            para[i] = [
+                token.strip()
+                for token in sentence
+                if token.strip()
+            ]
     
     # Record token boundaries
     if lang in ['zho_cn', 'zho_tw', 'jpn']:
@@ -326,3 +328,8 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                     sentence[-1] = wl_text.Wl_Token(sentence[-1], boundary = ' ', sentence_ending = True)
     
     return tokens_multilevel
+
+def wl_word_tokenize_flat(main, text, lang, word_tokenizer = 'default'):
+    tokens_multilevel = wl_word_tokenize(main, text, lang, word_tokenizer)
+
+    return list(wl_misc.flatten_list(tokens_multilevel))

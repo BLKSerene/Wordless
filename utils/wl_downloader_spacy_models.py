@@ -24,6 +24,7 @@ langs = [
     ['German'          , 'deu', 'de'],
     ['Greek'           , 'ell', 'el'],
     ['Italian'         , 'ita', 'it'],
+    ['Japanese'        , 'jpn', 'ja'],
     ['Lithuanian'      , 'lit', 'lt'],
     ['Macedonian'      , 'mkd', 'mk'],
     ['Norwegian Bokmål', 'nob', 'nb'],
@@ -43,6 +44,7 @@ model_name_fra = 'core_news_sm'
 model_name_deu = 'core_news_sm'
 model_name_ell = 'core_news_sm'
 model_name_ita = 'core_news_sm'
+model_name_jpn = 'core_news_sm'
 model_name_lit = 'core_news_sm'
 model_name_mkd = 'core_news_sm'
 model_name_nob = 'core_news_sm'
@@ -61,6 +63,7 @@ model_ver_fra = '3.2.0'
 model_ver_deu = '3.2.0'
 model_ver_ell = '3.2.0'
 model_ver_ita = '3.2.0'
+model_ver_jpn = '3.2.0'
 model_ver_lit = '3.2.0'
 model_ver_mkd = '3.2.0'
 model_ver_nob = '3.2.0'

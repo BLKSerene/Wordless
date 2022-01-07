@@ -84,9 +84,9 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
         sentences = nltk.sent_tokenize(text, language = lang_texts[lang])
     # spaCy
-    elif 'spacy' in sentence_tokenizer:
+    elif sentence_tokenizer.startswith('spacy_'):
         # Chinese, English, German, Portuguese
-        if lang.find('srp') == -1:
+        if not lang.startswith('srp_'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         
         nlp = main.__dict__[f'spacy_nlp_{lang}']

@@ -31,7 +31,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
         lang_639_1 = wl_conversion.to_iso_639_1(main, lang)
 
         # Chinese (Simplified), English, German, Portuguese
-        if lang != 'zho_tw' and 'srp' not in lang:
+        if lang != 'zho_tw' and not lang.startswith('srp_'):
             lang_639_1 = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
@@ -44,10 +44,10 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 lang = 'zho_cn',
                 stop_word_list = stop_word_list.replace('zho_tw', 'zho_cn'))
             stop_words = [cc.convert(stop_word) for stop_word in stop_words_zho_cn]
-        elif 'cltk' in stop_word_list:
+        elif stop_word_list.startswith('cltk_'):
             stop_words = importlib.import_module(f'stop_word_lists.cltk.{lang}').STOPS
         # extra-stopwords
-        elif 'extra_stopwords' in stop_word_list:
+        elif stop_word_list.startswith('extra_stopwords_'):
             LANG_TEXTS = {
                 'sqi': 'albanian',
                 'ara': 'arabic',
@@ -115,7 +115,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
             with open(wl_misc.get_normalized_path(f'stop_word_lists/extra-stopwords/{LANG_TEXTS[lang]}'), 'r', encoding = 'utf_8') as f:
                 stop_words = [line.rstrip() for line in f if not line.startswith('#')]
         # NLTK
-        elif 'nltk' in stop_word_list:
+        elif stop_word_list.startswith('nltk_'):
             LANG_TEXTS = {
                 'ara': 'arabic',
                 'aze': 'azerbaijani',
@@ -146,7 +146,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
 
             stop_words = nltk.corpus.stopwords.words(LANG_TEXTS[lang])
         # spaCy
-        elif 'spacy' in stop_word_list:
+        elif stop_word_list.startswith('spacy_'):
             # Serbian
             if lang_639_1 == 'sr_cyrl':
                 spacy_lang = importlib.import_module('spacy.lang.sr')
@@ -162,7 +162,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
 
                 stop_words = spacy_lang.STOP_WORDS
         # Stopwords ISO
-        elif 'stopwords_iso' in stop_word_list:
+        elif stop_word_list.startswith('stopwords_iso_'):
             # Greek (Ancient)
             if lang_639_1 == 'grc':
                 lang_639_1 = 'el'

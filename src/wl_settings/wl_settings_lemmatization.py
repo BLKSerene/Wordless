@@ -32,18 +32,11 @@ class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
             line = line.strip()
 
             if line:
-                tokens = wl_word_tokenization.wl_word_tokenize(
-                    self.main, line,
-                    lang = preview_lang
-                )
-                tokens = wl_misc.flatten_list(tokens)
-
                 lemmas = wl_lemmatization.wl_lemmatize(
-                    self.main, tokens,
+                    self.main, line,
                     lang = preview_lang,
                     lemmatizer = self.lemmatizer
                 )
-
                 text = wl_word_detokenization.wl_word_detokenize(
                     self.main, lemmas,
                     lang = preview_lang

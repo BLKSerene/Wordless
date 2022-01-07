@@ -194,6 +194,7 @@ def init_spacy_models(main, lang):
         'deu': 'de_core_news_sm',
         'ell': 'el_core_news_sm',
         'ita': 'it_core_news_sm',
+        'jpn': 'ja_core_news_sm',
         'lit': 'lt_core_news_sm',
         'mkd': 'mk_core_news_sm',
         'nob': 'nb_core_news_sm',
@@ -208,7 +209,7 @@ def init_spacy_models(main, lang):
     SPACY_LANGS_LEMMATIZERS = ['ben', 'cat', 'hrv', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp_cyrl', 'swe', 'tgl', 'tur', 'urd']
 
     # Chinese, English, German, Portuguese
-    if lang.find('srp') == -1:
+    if not lang.startswith('srp_'):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
     if f'spacy_nlp_{lang}' not in main.__dict__:
@@ -242,7 +243,7 @@ def init_spacy_models(main, lang):
     
 def init_sentence_tokenizers(main, lang, sentence_tokenizer):
     # spaCy
-    if 'spacy' in sentence_tokenizer:
+    if sentence_tokenizer.startswith('spacy_'):
         init_spacy_models(main, lang)
 
 def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
@@ -253,7 +254,7 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
     
     # NLTK
-    if 'nltk' in word_tokenizer:
+    if word_tokenizer.startswith('nltk_'):
         if word_tokenizer == 'nltk_nist':
             if 'nltk_nist_tokenizer' not in main.__dict__:
                 main.nltk_nist_tokenizer = nltk.tokenize.nist.NISTTokenizer()
@@ -277,14 +278,14 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
         if f'sacremoses_moses_tokenizer_{lang}' not in main.__dict__:
             main.__dict__[f'sacremoses_moses_tokenizer_{lang}'] = sacremoses.MosesTokenizer(lang = lang_sacremoses)
     # spaCy
-    elif 'spacy' in word_tokenizer:
+    elif word_tokenizer.startswith('spacy_'):
         init_spacy_models(main, lang)
     # Chinese
     elif word_tokenizer == 'pkuseg_zho':
         if 'pkuseg_word_tokenizer' not in main.__dict__:
             main.pkuseg_word_tokenizer = pkuseg.pkuseg()
     # Chinese & Japanese
-    elif 'wordless' in word_tokenizer:
+    elif word_tokenizer.startswith('wordless_'):
         init_spacy_models(main, 'eng_us')
         init_spacy_models(main, 'other')
     # Japanese
@@ -298,7 +299,7 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
 
 def init_syl_tokenizers(main, lang, syl_tokenizer):
     # Pyphen
-    if 'pyphen' in syl_tokenizer:
+    if syl_tokenizer.startswith('pyphen_'):
         if f'pyphen_syl_tokenizer_{lang}' not in main.__dict__:
             lang_pyphen = wl_conversion.to_iso_639_1(main, lang)
 
@@ -324,7 +325,7 @@ def init_word_detokenizers(main, lang, word_detokenizer):
 
 def init_pos_taggers(main, lang, pos_tagger):
     # spaCy
-    if 'spacy' in pos_tagger:
+    if pos_tagger.startswith('spacy_'):
         init_spacy_models(main, lang)
     # Russian & Ukrainian
     elif pos_tagger == 'pymorphy2_morphological_analyzer':
@@ -334,14 +335,14 @@ def init_pos_taggers(main, lang, pos_tagger):
         elif lang == 'ukr':
             if 'pymorphy2_morphological_analyzer_urk' not in main.__dict__:
                 main.pymorphy2_morphological_analyzer_ukr = pymorphy2.MorphAnalyzer(lang = 'uk')
-    # Chinese & Japanese
-    elif lang in ['zho_cn', 'zho_tw', 'jpn']:
-        init_spacy_models(main, 'eng_us')
-        init_spacy_models(main, 'other')
+    # Japanese
+    elif pos_tagger == 'sudachipy_jpn':
+        if 'sudachipy_word_tokenizer' not in main.__dict__:
+            main.sudachipy_word_tokenizer = sudachipy.Dictionary().create()
 
 def init_lemmatizers(main, lang, lemmatizer):
     # spaCy
-    if 'spacy' in lemmatizer:
+    if lemmatizer.startswith('spacy_'):
         init_spacy_models(main, lang)
     # Russian & Ukrainian
     elif lemmatizer == 'pymorphy2_morphological_analyzer':
@@ -351,6 +352,10 @@ def init_lemmatizers(main, lang, lemmatizer):
         elif lang == 'ukr':
             if 'pymorphy2_morphological_analyzer_ukr' not in main.__dict__:
                 main.pymorphy2_morphological_analyzer_ukr = pymorphy2.MorphAnalyzer(lang = 'uk')
+    # Japanese
+    elif lemmatizer == 'sudachipy_jpn':
+        if 'sudachipy_word_tokenizer' not in main.__dict__:
+            main.sudachipy_word_tokenizer = sudachipy.Dictionary().create()
 
 def record_boundary_sentences(sentences, text):
     sentence_start = 0
