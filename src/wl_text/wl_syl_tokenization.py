@@ -32,7 +32,7 @@ def wl_syl_tokenize(main, tokens, lang, syl_tokenizer = 'default'):
 
         for token in tokens:
             # Pyphen
-            if 'pyphen' in syl_tokenizer:
+            if syl_tokenizer.startswith('pyphen_'):
                 pyphen_syl_tokenizer = main.__dict__[f'pyphen_syl_tokenizer_{lang}']
 
                 syls_tokens.append(re.split(r'\-+', pyphen_syl_tokenizer.inserted(token)))

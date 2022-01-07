@@ -128,7 +128,7 @@ def wl_word_detokenize(main, tokens, lang, word_detokenizer = 'default'):
 
                             break
     # Thai
-    elif word_detokenizer in 'wordless_tha':
+    elif word_detokenizer == 'wordless_tha':
         non_thai_start = 0
 
         for i, token in enumerate(tokens):
