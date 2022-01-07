@@ -75,13 +75,5 @@ MAPPINGS = [
     ['記号-一般', 'SYM', 'General symbol', ''],
     ['記号-文字', 'SYM', 'Character', ''],
 
-    ['連体詞', 'PART', 'Adnominal', ''],
-    ['未知語', 'X', 'Unknown words', ''],
-    ['カタカナ文', 'X', 'Katakana', ''],
-    ['漢文', 'X', 'Chinese writing', ''],
-    ['言いよどみ', 'X', 'Hesitation', ''],
-    ['web誤脱', 'X', 'Errors and omissions', ''],
-    ['方言', 'X', 'Dialect', ''],
-    ['ローマ字文', 'X', 'Latin alphabet', ''],
-    ['新規未知語', 'X', 'New unknown word', '']
+    ['連体詞', 'PART', 'Adnominal', '']
 ]
