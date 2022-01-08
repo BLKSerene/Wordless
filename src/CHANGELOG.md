@@ -26,6 +26,7 @@
 
 ### ❌ Removals
 - File Area: Remove Open File(s) / Open Folder / Reload Selected / Reload All / Close Selected / Close All
+- Menu: Remove Preferences - Settings - Word Detokenization
 - Utils: Remove lemmalist-greek's Greek (Ancient) lemma list
 - Utils: Remove syntok's sentence segmenter and word tokenizer
 
