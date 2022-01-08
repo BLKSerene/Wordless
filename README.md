@@ -20,6 +20,7 @@ Wordless is an integrated corpus tool with multilingual support for the study of
     <a href="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_build/latest?definitionId=1&branchName=master">
         <img src="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_apis/build/status/BLKSerene.Wordless?branchName=master" alt="Azure Pipelines"></a>
     <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ATests" alt="Github Actions"><img src="https://github.com/BLKSerene/Wordless/workflows/Tests/badge.svg"></a>
+    <a href="https://codecov.io/gh/BLKSerene/Wordless" alt="Codecov"><img src="https://codecov.io/gh/BLKSerene/Wordless/branch/master/graph/badge.svg?token=ED6TW92A7G"></a>
 </div>
 
 <div align="center">
