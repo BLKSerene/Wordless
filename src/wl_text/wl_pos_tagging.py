@@ -19,6 +19,8 @@ from wl_text import wl_text_utils, wl_word_detokenization, wl_word_tokenization
 from wl_utils import wl_conversion
 
 def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
+    tokens_tagged = []
+
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang]
 
@@ -34,7 +36,14 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 
     # Untokenized
     if type(inputs) == str:
-        tokens_tagged = wl_pos_tag_text(main, inputs, lang, pos_tagger, tagset)
+        # Input of SudachiPy cannot be more than 49149 bytes
+        if lang == 'jpn' and pos_tagger in ['spacy_jpn', 'sudachipy_jpn'] and len(inputs) > 49149 // 4:
+            texts = re.split(r'\n(?=.|\n)', inputs)
+        else:
+            texts = [inputs]
+
+        for text in texts:
+            tokens_tagged.extend(wl_pos_tag_text(main, text, lang, pos_tagger, tagset))
     # Tokenized
     else:
         # Check if the first token is empty
@@ -44,7 +53,15 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
             first_token_empty = False
 
         inputs = [str(token) for token in inputs if token]
-        tokens_tagged = wl_pos_tag_tokens(main, inputs, lang, pos_tagger, tagset)
+
+        # Input of SudachiPy cannot be more than 49149 bytes
+        if lang == 'jpn' and pos_tagger in ['spacy_jpn', 'sudachipy_jpn']:
+            texts = wl_text_utils.to_sections_unequal(inputs, 4000)
+        else:
+            texts = [inputs]
+
+        for tokens in texts:
+            tokens_tagged.extend(wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset))
 
     # Convert to Universal Tagset
     if not pos_tagger.startswith('spacy_'):
