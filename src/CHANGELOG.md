@@ -25,6 +25,7 @@
 - Work Area: Update Work Area - Figure Settings - Sort by File
 
 ### ❌ Removals
+- Menu: Remove Preferences - Settings - Word Detokenization
 - Utils: Remove lemmalist-greek's Greek (Ancient) lemma list
 - Utils: Remove syntok's sentence segmenter and word tokenizer
 
