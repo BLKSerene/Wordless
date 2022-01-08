@@ -19,6 +19,8 @@ from wl_utils import wl_conversion, wl_misc
 
 def wl_lemmatize(main, inputs, lang, tokenized = 'No', tagged = 'No', lemmatizer = 'default'):
     if inputs and lang in main.settings_global['lemmatizers']:
+        lemmas = []
+
         if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang]
 
@@ -33,9 +35,23 @@ def wl_lemmatize(main, inputs, lang, tokenized = 'No', tagged = 'No', lemmatizer
         )
 
         if type(inputs) == str:
-            lemmas = wl_lemmatize_text(main, inputs, lang, tokenized, tagged, lemmatizer)
+            # Input of SudachiPy cannot be more than 49149 bytes
+            if lang == 'jpn' and lemmatizer in ['spacy_jpn', 'sudachipy_jpn'] and len(inputs) > 49149 // 4:
+                texts = re.split(r'\n(?=.|\n)', inputs)
+            else:
+                texts = [inputs]
+
+            for text in texts:
+                lemmas.extend(wl_lemmatize_text(main, text, lang, tokenized, tagged, lemmatizer))
         else:
-            lemmas = wl_lemmatize_tokens(main, inputs, lang, tokenized, tagged, lemmatizer)
+            # Input of SudachiPy cannot be more than 49149 bytes
+            if lang == 'jpn' and lemmatizer in ['spacy_jpn', 'sudachipy_jpn']:
+                texts = wl_text_utils.to_sections_unequal(inputs, 4000)
+            else:
+                texts = [inputs]
+
+            for tokens in texts:
+                lemmas.extend(wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer))
     else:
         if type(inputs) == str:
             lemmas = wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)
