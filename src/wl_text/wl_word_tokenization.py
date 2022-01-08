@@ -44,39 +44,47 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         
         nlp = main.__dict__[f'spacy_nlp_{lang}']
-        doc = nlp(text)
 
-        tokens_multilevel.append([])
+        # Input of SudachiPy cannot be more than 49149 bytes
+        if lang == 'jpn':
+            texts = re.split(r'\n(?=.|\n)', text)
+        else:
+            texts = [text]
 
-        len_sents = len(list(doc.sents))
-        
-        for i, sentence in enumerate(doc.sents):
-            tokens_sentence = []
+        for text in texts:
+            doc = nlp(text)
+
+            tokens_multilevel.append([])
+
+            len_sents = len(list(doc.sents))
             
-            tokens = [token.text for token in sentence]
-            len_tokens = len(tokens)
-            
-            for j, token in enumerate(tokens):
-                # Split paragraphs by new line character
-                len_lines = len(re.findall(r'\n', token))
+            for i, sentence in enumerate(doc.sents):
+                tokens_sentence = []
+                
+                tokens = [token.text for token in sentence]
+                len_tokens = len(tokens)
+                
+                for j, token in enumerate(tokens):
+                    # Split paragraphs by new line character
+                    len_lines = len(re.findall(r'\n', token))
 
-                if len_lines:
-                    # Check if the last paragraph is empty
-                    if i == len_sents - 1 and j == len_tokens - 1 and token.endswith('\n'):
-                        len_lines -= 1
+                    if len_lines:
+                        # Check if the last paragraph is empty
+                        if i == len_sents - 1 and j == len_tokens - 1 and token.endswith('\n'):
+                            len_lines -= 1
 
-                    if tokens_sentence:
-                        tokens_multilevel[-1].append(tokens_sentence)
+                        if tokens_sentence:
+                            tokens_multilevel[-1].append(tokens_sentence)
 
-                        tokens_sentence = []
+                            tokens_sentence = []
 
-                    tokens_multilevel.extend([[] for j in range(len_lines)])
-                else:
-                    if token.strip():
-                        tokens_sentence.append(token)
+                        tokens_multilevel.extend([[] for j in range(len_lines)])
+                    else:
+                        if token.strip():
+                            tokens_sentence.append(token)
 
-            if tokens_sentence:
-                tokens_multilevel[-1].append(tokens_sentence)
+                if tokens_sentence:
+                    tokens_multilevel[-1].append(tokens_sentence)
     else:
         # Split text into paragraphs
         text = re.split(r'\n(?=.|\n)', text)
