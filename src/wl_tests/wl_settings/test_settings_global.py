@@ -54,7 +54,7 @@ def check_missing_extra_langs(langs_supported, langs_global, msg):
         lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
 
         if lang_code_639_3 not in langs_global:
-            print(f'''Missing language code "{lang_code} / {lang_code_639_3}" found for {msg}!''')
+            print(f'''Missing language code "{lang_code_639_3}/{lang_code}" found for {msg}!''')
 
             lang_missing = True
 
@@ -62,7 +62,7 @@ def check_missing_extra_langs(langs_supported, langs_global, msg):
         lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
 
         if lang_code_639_1 not in langs_supported:
-            print(f'''Extra language code "{lang_code} / {lang_code_639_1}" found for {msg}!''')
+            print(f'''Extra language code "{lang_code}/{lang_code_639_1}" found for {msg}!''')
 
             lang_extra = True
 
@@ -92,9 +92,6 @@ def test_settings_global():
     settings_syl_tokenizers = settings_global['syl_tokenizers']
     settings_syl_tokenizers_default = settings_default['syl_tokenization']['syl_tokenizers']
 
-    settings_word_detokenizers = settings_global['word_detokenizers']
-    settings_word_detokenizers_default = settings_default['word_detokenization']['word_detokenizers']
-
     settings_pos_taggers = settings_global['pos_taggers']
     settings_pos_taggers_default = settings_default['pos_tagging']['pos_taggers']
     settings_tagsets_default = settings_default['tagsets']['preview_pos_tagger']
@@ -123,11 +120,6 @@ def test_settings_global():
 
     langs_syl_tokenizers = list(settings_syl_tokenizers)
     langs_syl_tokenizers_default = list(settings_syl_tokenizers_default)
-
-    langs_word_detokenizers = list(settings_word_detokenizers)
-    langs_word_detokenizers_default = list(settings_word_detokenizers_default)
-    langs_word_detokenizers_nltk = []
-    langs_word_detokenizers_sacremoses = []
 
     langs_pos_taggers = list(settings_pos_taggers)
     langs_pos_taggers_default = list(settings_pos_taggers_default)
@@ -159,7 +151,7 @@ def test_settings_global():
     # Loading languages supported by spaCy
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
         if lang.ispkg:
-            if lang.name not in ['ja', 'ko', 'sr', 'th', 'vi', 'xx']:
+            if lang.name not in ['ko', 'sr', 'th', 'vi', 'xx']:
                 langs_supported_spacy.append(lang.name)
             # Serbian
             elif lang.name == 'sr':
@@ -178,7 +170,8 @@ def test_settings_global():
             else:
                 langs_supported_spacy_lemmatizers.append(lang_code)
 
-    langs_supported_spacy_lemmatizers = add_country_codes(langs_supported_spacy_lemmatizers)
+    # The Japanese model takes POS tags directly from SudachiPy
+    langs_supported_spacy_lemmatizers = add_country_codes(langs_supported_spacy_lemmatizers) + ['ja']
 
     # Stop word lists
     for lang in pkgutil.iter_modules(spacy.lang.__path__):
@@ -236,33 +229,6 @@ def test_settings_global():
 
     check_missing_extra_langs(langs_supported_spacy, langs_word_tokenizers_spacy, "spaCy's word tokenizers")
 
-    # Check for missing and extra languages for NLTK's Penn Treebank detokenizer
-    for lang_code, word_detokenizers in settings_word_detokenizers.items():
-        if lang_code != 'other' and any(['nltk' in word_detokenizer for word_detokenizer in word_detokenizers]):
-            langs_word_detokenizers_nltk.append(lang_code)
-
-    for lang_code in langs_word_detokenizers:
-        if lang_code != 'other':
-            lang_family = wl_conversion.get_lang_family(main, lang_code)
-            
-            if lang_family == 'Indo-European':
-                if lang_code not in langs_word_detokenizers_nltk:
-                    print(f'''Missing language code "{lang_code}" found for NLTK's Penn Treebank detokenizer!''')
-
-                    lang_missing = True
-            else:
-                if lang_code in langs_word_detokenizers_nltk:
-                    print(f'''Extra language code "{lang_code}" found for NLTK's Penn Treebank detokenizer!''')
-
-                    lang_extra = True
-
-    # Check for missing and extra languages for Sacremoses's Moses detokenizer
-    for lang_code, word_detokenizers in settings_word_detokenizers.items():
-        if lang_code != 'other' and any(['sacremoses' in word_detokenizer for word_detokenizer in word_detokenizers]):
-            langs_word_detokenizers_sacremoses.append(lang_code)
-
-    check_missing_extra_langs(langs_supported_sacremoses, langs_word_detokenizers_sacremoses, "Sacremoses's Moses detokenizer")
-
     # Check for missing and extra languages for spaCy's lemmatizers
     for lang_code, lemmatizers in settings_lemmatizers.items():
         if lang_code != 'other' and any(['spacy' in lemmatizer for lemmatizer in lemmatizers]):
@@ -281,7 +247,6 @@ def test_settings_global():
     check_missing_extra_langs_default(langs_sentence_tokenizers, langs_sentence_tokenizers_default, 'sentence tokenizers')
     check_missing_extra_langs_default(langs_word_tokenizers, langs_word_tokenizers_default, 'word tokenizers')
     check_missing_extra_langs_default(langs_syl_tokenizers, langs_syl_tokenizers_default, 'syllable tokenizers')
-    check_missing_extra_langs_default(langs_word_detokenizers, langs_word_detokenizers_default, 'word detokenizers')
     check_missing_extra_langs_default(langs_pos_taggers, langs_pos_taggers_default, 'pos_taggers')
     check_missing_extra_langs_default(langs_pos_taggers, langs_tagsets_default, 'tagsets')
     check_missing_extra_langs_default(langs_lemmatizers, langs_lemmatizers_default, 'lemmatizers')

@@ -1334,62 +1334,6 @@ def init_settings_default(main):
             'preview_results': ''
         },
 
-        'word_detokenization': {
-            'word_detokenizers': {
-                'asm': 'sacremoses_moses',
-                'ben': 'sacremoses_moses',
-                'cat': 'sacremoses_moses',
-                'zho_cn': 'wordless_zho',
-                'zho_tw': 'wordless_zho',
-                'ces': 'sacremoses_moses',
-                'nld': 'sacremoses_moses',
-                'eng_gb': 'sacremoses_moses',
-                'eng_us': 'sacremoses_moses',
-                'est': 'sacremoses_moses',
-                'fin': 'sacremoses_moses',
-                'fra': 'sacremoses_moses',
-                'deu_at': 'sacremoses_moses',
-                'deu_de': 'sacremoses_moses',
-                'deu_ch': 'sacremoses_moses',
-                'ell': 'sacremoses_moses',
-                'guj': 'sacremoses_moses',
-                'hin': 'sacremoses_moses',
-                'hun': 'sacremoses_moses',
-                'isl': 'sacremoses_moses',
-                'gle': 'sacremoses_moses',
-                'ita': 'sacremoses_moses',
-                'jpn': 'wordless_jpn',
-                'kan': 'sacremoses_moses',
-                'lav': 'sacremoses_moses',
-                'lit': 'sacremoses_moses',
-                'mal': 'sacremoses_moses',
-                'mar': 'sacremoses_moses',
-                'mni': 'sacremoses_moses',
-                'ori': 'sacremoses_moses',
-                'pol': 'sacremoses_moses',
-                'por_br': 'sacremoses_moses',
-                'por_pt': 'sacremoses_moses',
-                'pan': 'sacremoses_moses',
-                'ron': 'sacremoses_moses',
-                'rus': 'sacremoses_moses',
-                'slk': 'sacremoses_moses',
-                'slv': 'sacremoses_moses',
-                'spa': 'sacremoses_moses',
-                'swe': 'sacremoses_moses',
-                'tam': 'sacremoses_moses',
-                'tel': 'sacremoses_moses',
-                'tdt': 'sacremoses_moses',
-                'tha': 'wordless_tha',
-                'bod': 'wordless_bod',
-
-                'other': 'sacremoses_moses'
-            },
-
-            'preview_lang': 'eng_us',
-            'preview_samples': '',
-            'preview_results': ''
-        },
-
         'pos_tagging': {
             'pos_taggers': {
                 'cat': 'spacy_cat',

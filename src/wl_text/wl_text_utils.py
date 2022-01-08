@@ -310,17 +310,13 @@ def init_syl_tokenizers(main, lang, syl_tokenizer):
             
             main.__dict__[f'pyphen_syl_tokenizer_{lang}'] = pyphen.Pyphen(lang = lang_pyphen)
 
-def init_word_detokenizers(main, lang, word_detokenizer):
-    # NLTK
-    if word_detokenizer == 'nltk_penn_treebank':
-        if 'nltk_treebank_detokenizer' not in main.__dict__:
-            main.nltk_treebank_detokenizer = nltk.tokenize.treebank.TreebankWordDetokenizer()
-    # Sacremoses
-    elif word_detokenizer == 'sacremoses_moses':
-        if f'sacremoses_moses_detokenizer_{lang}' not in main.__dict__:
-            lang_sacremoses = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+def init_word_detokenizers(main, lang):
+    if lang not in ['zho_cn', 'zho_tw', 'jpn', 'tha', 'bod']:
+        # Sacremoses
+        lang_sacremoses = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
+        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
+        if f'sacremoses_moses_detokenizer_{lang}' not in main.__dict__:
             main.__dict__[f'sacremoses_moses_detokenizer_{lang}'] = sacremoses.MosesDetokenizer(lang = lang_sacremoses)
 
 def init_pos_taggers(main, lang, pos_tagger):
