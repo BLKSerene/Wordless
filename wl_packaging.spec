@@ -15,6 +15,7 @@ import sys
 
 import PyInstaller
 import pythainlp
+import underthesea.file_utils
 
 block_cipher = None
 datas = []
@@ -86,6 +87,8 @@ datas.extend([
     ('src/wl_measures/dale_list_easy_words_3000.txt', 'wl_measures'),
     # PyThaiNLP
     (pythainlp.tools.get_pythainlp_data_path(), 'pythainlp-data'),
+    # Underthesea
+    (underthesea.file_utils.UNDERTHESEA_FOLDER, '.underthesea'),
 
     ('src/imgs', 'imgs'),
     ('src/wl_acks.xlsx', '.'),
