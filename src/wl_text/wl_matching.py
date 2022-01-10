@@ -104,7 +104,7 @@ def match_ngrams(
         if settings['use_regex']:
             for search_term_token in search_term_tokens:
                 if settings['match_whole_words']:
-                    regex = fr'(^|\s+){search_term_token}(\s+|$)'
+                    regex = fr'^{search_term_token}$'
                 else:
                     regex = search_term_token
 
@@ -122,7 +122,7 @@ def match_ngrams(
                 regex = re.escape(search_term_token)
 
                 if settings['match_whole_words']:
-                    regex = fr'(^|\s+){regex}(\s+|$)'
+                    regex = fr'^{regex}$'
 
                 if settings['ignore_case']:
                     flags = re.IGNORECASE
@@ -132,6 +132,8 @@ def match_ngrams(
                 for token, token_searched in zip(tokens, tokens_searched):
                     if re.search(regex, token_searched, flags = flags):
                         tokens_matched[search_term_token].add(token)
+
+                print('test', regex)
         
         if settings['match_inflected_forms']:
             lemmas_searched = wl_lemmatization.wl_lemmatize(main, tokens_searched, lang, tokenized, tagged)
@@ -139,7 +141,7 @@ def match_ngrams(
 
             for token_matched, lemma_matched in zip(list(tokens_matched), lemmas_matched):
                 lemma_matched = re.escape(lemma_matched)
-                lemma_matched = fr'(^|\s+){lemma_matched}(\s+|$)'
+                lemma_matched = fr'^{lemma_matched}$'
 
                 if settings['ignore_case']:
                     flags = re.IGNORECASE
@@ -172,7 +174,7 @@ def match_ngrams(
 
             for item in itertools.product(*search_term_tokens_matched):
                 search_terms_matched.add(item)
-
+    print(search_terms_matched)
     return search_terms_matched
 
 def match_search_terms(

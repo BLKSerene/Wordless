@@ -29,6 +29,7 @@ from PyQt5.QtWidgets import *
 import matplotlib
 import nltk
 import pythainlp
+import underthesea.file_utils
 
 # Use Qt backend for Matplotlib
 matplotlib.use('Qt5Agg')
@@ -36,11 +37,14 @@ matplotlib.use('Qt5Agg')
 # Force NLTK to prefer NLTK data under the Wordless folder
 nltk.data.path.insert(0, os.path.join(os.getcwd(), 'nltk_data'))
 
-# Redirect PyThaiNLP's data files
 if getattr(sys, '_MEIPASS', False):
+    # Modify the path of PyThaiNLP's data files
     PYTHAINLP_DEFAULT_DATA_DIR = os.path.realpath(pythainlp.tools.PYTHAINLP_DEFAULT_DATA_DIR)
     pythainlp.corpus._CORPUS_DB_PATH = os.path.join(PYTHAINLP_DEFAULT_DATA_DIR, pythainlp.corpus._CORPUS_DB_FILENAME)
     pythainlp.tools.path.get_pythainlp_data_path = lambda: PYTHAINLP_DEFAULT_DATA_DIR
+
+    # Modify the path of Underthesea's data files
+    underthesea.file_utils.UNDERTHESEA_FOLDER = '.underthesea'
 
 from wl_checking import wl_checking_misc
 from wl_dialogs import wl_dialog_misc, wl_dialog_help, wl_msg_box
