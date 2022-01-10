@@ -23,32 +23,24 @@ Wordless is an integrated corpus tool with multilingual support for the study of
 
 <div align="center">
     <a href="https://ci.appveyor.com/project/BLKSerene/wordless">
-        <img src="https://img.shields.io/appveyor/ci/BLKSerene/Wordless?label=AppVeyor&logo=appveyor" alt="AppVeyor">
-    </a>
+        <img src="https://ci.appveyor.com/api/projects/status/github/BLKSerene/Wordless?svg=true" alt="AppVeyor"></a>
     <a href="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_build/latest?definitionId=1&branchName=main">
-        <img src="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_apis/build/status/BLKSerene.Wordless?branchName=main" alt="Azure Pipelines">
-    </a>
+        <img src="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_apis/build/status/BLKSerene.Wordless?branchName=main" alt="Azure Pipelines"></a>
     <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ATests" alt="Github Actions">
-        <img src="https://github.com/BLKSerene/Wordless/workflows/Tests/badge.svg">
-    </a>
+        <img src="https://github.com/BLKSerene/Wordless/workflows/Tests/badge.svg"></a>
 </div>
 
 <div align="center">
     <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ACodeQL" alt="CodeQL">
-        <img src="https://github.com/BLKSerene/Wordless/workflows/CodeQL/badge.svg">
-    </a>
+        <img src="https://github.com/BLKSerene/Wordless/workflows/CodeQL/badge.svg"></a>
     <a href="https://codecov.io/gh/BLKSerene/Wordless" alt="Codecov">
-        <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graph/badge.svg?token=ED6TW92A7G">
-    </a>
+        <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graph/badge.svg?token=ED6TW92A7G"></a>
     <a href="https://github.com/BLKSerene/Wordless/blob/main/LICENSE.txt">
-        <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License">
-    </a>
+        <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License"></a>
     <a href="https://github.com/BLKSerene/Wordless/releases">
-        <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases&label=Release&sort=semver" alt="Release">
-    </a>
+        <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases&label=Release&sort=semver" alt="Release"></a>
     <a href="https://github.com/BLKSerene/Wordless#download">
-        <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total?label=Downloads" alt="Downloads">
-    </a>
+        <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total?label=Downloads" alt="Downloads"></a>
 </div>
 
 ## Download
