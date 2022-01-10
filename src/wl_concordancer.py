@@ -24,6 +24,7 @@ import matplotlib.pyplot
 import nltk
 import numpy
 import textblob
+import underthesea
 
 from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
@@ -810,8 +811,19 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             concordance_line.append([context_right_text, context_right, text_search_right])
 
                             # Sentiment
+                            context_text = ' '.join([context_left_text, node_text, context_right_text])
+
                             if text.lang.startswith('eng'):
-                                concordance_line.append(textblob.TextBlob(context_left_text + node_text + context_right_text).sentiment.polarity)
+                                concordance_line.append(textblob.TextBlob(context_text).sentiment.polarity)
+                            elif text.lang == 'vie':
+                                sentiment = underthesea.sentiment(context_text)
+
+                                if sentiment == 'positive':
+                                    concordance_line.append(1)
+                                elif sentiment == 'negative':
+                                    concordance_line.append(-1)
+                                else:
+                                    concordance_line.append(0)
                             else:
                                 concordance_line.append(self.tr('No Support'))
 
@@ -934,9 +946,11 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
 
                     for j, text in enumerate(texts):
                         if search_term in search_terms_files[j]:
-                            x_start_total = x_start + sum([len(text.tokens_flat)
-                                                           for k, text in enumerate(texts)
-                                                           if k < j])
+                            x_start_total = x_start + sum([
+                                len(text.tokens_flat)
+                                for k, text in enumerate(texts)
+                                if k < j
+                            ])
                             len_tokens = len(text.tokens_flat)
 
                             for k, ngram in enumerate(nltk.ngrams(text.tokens_flat, len_search_term)):
@@ -953,9 +967,11 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
 
                     for j, text in enumerate(texts):
                         if search_term in search_terms_files[j]:
-                            x_start = sum([len(text.tokens_flat)
-                                           for k, text in enumerate(texts)
-                                           if k < j]) + j + 2
+                            x_start = sum([
+                                len(text.tokens_flat)
+                                for k, text in enumerate(texts)
+                                if k < j
+                            ]) + j + 2
 
                             for k, ngram in enumerate(nltk.ngrams(text.tokens_flat, len_search_term)):
                                 if ngram == search_term:
@@ -992,9 +1008,11 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                     len_search_terms_total = len(search_terms_total)
 
                     for i, text in enumerate(texts):
-                        x_tick_start = sum([len(text.tokens_flat)
-                                            for j, text in enumerate(texts)
-                                            if j < i]) + j + 1
+                        x_tick_start = sum([
+                            len(text.tokens_flat)
+                            for j, text in enumerate(texts)
+                            if j < i
+                        ]) + j + 1
 
                         # 1/2
                         x_ticks.append(x_tick_start + len(text.tokens_flat) / 2)
@@ -1086,7 +1104,7 @@ def generate_table(main, table):
                     table.cellWidget(i, 2).text_search = right_text_search
 
                     # Sentiment
-                    if isinstance(sentiment, float):
+                    if not isinstance(sentiment, str):
                         table.set_item_num(i, 3, sentiment)
                     # No Support
                     else:
