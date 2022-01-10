@@ -266,7 +266,7 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'urd':
         assert tokens == ['اُردُو', 'لشکری', 'زبان[8', ']', '(', 'یا', 'جدید', 'معیاری', 'اردو', ')', 'برصغیر', 'کی', 'معیاری', 'زبانوں', 'میں', 'سے', 'ایک', 'ہے', '۔']
     elif lang == 'vie':
-        assert tokens == ['Tiếng', 'Việt', ',', 'còn', 'gọi', 'tiếng', 'Việt Nam', '[', '5', ']', ',', 'tiếng Kinh', 'hay', 'Việt ngữ', ',', 'là', 'ngôn ngữ', 'của', 'người', 'Việt', '(', 'dân tộc', 'Kinh', ')', 'và', 'là', 'ngôn ngữ', 'chính thức', 'tại', 'Việt Nam', '.']
+        assert tokens == ['Tiếng', 'Việt', ',', 'cũng', 'gọi là', 'tiếng', 'Việt Nam', '[', '5 ]', 'hay', 'Việt ngữ', 'là', 'ngôn ngữ', 'của', 'người', 'Việt', 'và', 'là', 'ngôn ngữ', 'chính thức', 'tại', 'Việt Nam', '.']
     elif lang == 'yor':
         assert tokens == ['Èdè', 'Yorùbá', 'Ni', 'èdè', 'tí', 'ó', 'ṣàkójọ', 'pọ̀', 'gbogbo', 'kú', 'oótu', 'o', '-', 'ò', '-', 'jíire', 'bí', ',', 'níapá', 'ìwọ̀', 'Oòrùn', 'ilẹ̀', 'Nàìjíríà', ',', 'tí', 'a', 'bá', 'wo', 'èdè', 'Yorùbá', ',', 'àwọn', 'onímọ̀', 'pín', 'èdè', 'náà', 'sábẹ́', 'ẹ̀yà', 'Kwa', 'nínú', 'ẹbí', 'èdè', 'Niger', '-', 'Congo', '.']
     else:
