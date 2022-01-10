@@ -16,26 +16,24 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import csv
 import re
 import sys
 
 sys.path.append('.')
-
-import openpyxl
 
 from wl_tests import wl_test_init
 
 def wl_test_readme_acks(main):
     acks = []
 
-    workbook = openpyxl.load_workbook('wl_acks.xlsx')
-    worksheet = workbook[workbook.sheetnames[0]]
+    with open(r'wl_acks.csv', 'r', encoding = 'utf_8', newline = '') as f:
+        reader = csv.reader(f)
 
-    for i, rows in enumerate(worksheet.rows):
-        if i > 0:
-            name = rows[0].value
-            home_page = rows[1].value
-            authors = rows[3].value.replace('\n', '<br>')
+        for row in reader:
+            name = row[0]
+            home_page = row[1]
+            authors = row[3]
 
             acks.append([name, home_page, authors])
 
