@@ -318,7 +318,7 @@ class Worker_Check_Updates(QObject):
         ver_new = ''
 
         try:
-            r = requests.get('https://raw.githubusercontent.com/BLKSerene/Wordless/master/src/VERSION', timeout = 10)
+            r = requests.get('https://raw.githubusercontent.com/BLKSerene/Wordless/main/src/VERSION', timeout = 10)
 
             if r.status_code == 200:
                 for line in r.text.splitlines():

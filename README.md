@@ -18,8 +18,8 @@ Wordless is an integrated corpus tool with multilingual support for the study of
     <a href="https://ci.appveyor.com/project/BLKSerene/wordless">
         <img src="https://img.shields.io/appveyor/ci/BLKSerene/Wordless?label=AppVeyor&logo=appveyor" alt="AppVeyor">
     </a>
-    <a href="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_build/latest?definitionId=1&branchName=master">
-        <img src="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_apis/build/status/BLKSerene.Wordless?branchName=master" alt="Azure Pipelines">
+    <a href="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_build/latest?definitionId=1&branchName=main">
+        <img src="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_apis/build/status/BLKSerene.Wordless?branchName=main" alt="Azure Pipelines">
     </a>
     <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ATests" alt="Github Actions">
         <img src="https://github.com/BLKSerene/Wordless/workflows/Tests/badge.svg">
@@ -31,9 +31,9 @@ Wordless is an integrated corpus tool with multilingual support for the study of
         <img src="https://github.com/BLKSerene/Wordless/workflows/CodeQL/badge.svg">
     </a>
     <a href="https://codecov.io/gh/BLKSerene/Wordless" alt="Codecov">
-        <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/master/graph/badge.svg?token=ED6TW92A7G">
+        <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graph/badge.svg?token=ED6TW92A7G">
     </a>
-    <a href="https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt">
+    <a href="https://github.com/BLKSerene/Wordless/blob/main/LICENSE.txt">
         <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License">
     </a>
     <a href="https://github.com/BLKSerene/Wordless/releases">
@@ -47,7 +47,7 @@ Wordless is an integrated corpus tool with multilingual support for the study of
 ## Download
 The latest version (**2.1.0**) of Wordless supports **Windows 7/8/8.1/10**, **macOS 10.11 or later**, and **Ubuntu 16.04 or later**, all **64-bit only**.
 
-For detailed changelog, please see [CHANGELOG.md](https://github.com/BLKSerene/Wordless/blob/master/src/CHANGELOG.md).
+For detailed changelog, please see [CHANGELOG.md](https://github.com/BLKSerene/Wordless/blob/main/src/CHANGELOG.md).
 
 [Download the latest version for Windows](https://github.com/BLKSerene/Wordless/releases/download/2.1.0/wordless_2.1.0_windows.zip) (unzip the file and double-click **Wordless/Wordless.exe** to run)<br>
 [Download the latest version  for macOS](https://github.com/BLKSerene/Wordless/releases/download/2.1.0/wordless_2.1.0_macos.zip) (unzip the file and double-click **Wordless.app** to run)<br>
@@ -59,7 +59,7 @@ Chinese users with slow connections to Github can [download from Baidu Netdisk](
 
 <span id="doc"></span>
 ## Documentation
-- [Documentation - English](https://github.com/BLKSerene/Wordless/blob/master/doc/doc_eng.md)
+- [Documentation - English](https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md)
 - 文档 - 汉语（待添加）
 
 ## Need Help?
