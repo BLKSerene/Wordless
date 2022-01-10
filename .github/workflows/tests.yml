@@ -18,7 +18,7 @@
 
 name: Tests
 
-on: push
+on: [push, pull_request]
 
 jobs:
   build-windows:
@@ -31,6 +31,7 @@ jobs:
       with:
         python-version: '3.8'
         architecture: 'x64'
+        cache: 'pip'
 
     - name: Check Python version
       run: python --version
@@ -73,6 +74,7 @@ jobs:
       with:
         python-version: '3.8'
         architecture: 'x64'
+        cache: 'pip'
 
     - name: Check Python version
       run: python --version
@@ -119,6 +121,7 @@ jobs:
       with:
         python-version: '3.8'
         architecture: 'x64'
+        cache: 'pip'
 
     - name: Check Python version
       run: python --version
