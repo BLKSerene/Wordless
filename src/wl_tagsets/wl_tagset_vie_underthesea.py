@@ -1,13 +1,20 @@
-#
+# ----------------------------------------------------------------------
 # Wordless: Tagsets - Underthesea Tagset
-#
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
-# This source file is licensed under GNU GPLv3.
-# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-# All other rights reserved.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# ----------------------------------------------------------------------
 
 # Underthesea Tagset: https://github.com/undertheseanlp/underthesea/wiki/M%C3%B4-t%E1%BA%A3-d%E1%BB%AF-li%E1%BB%87u-b%C3%A0i-to%C3%A1n-POS-Tag
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html

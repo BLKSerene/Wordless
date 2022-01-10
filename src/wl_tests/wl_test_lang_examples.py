@@ -1,13 +1,20 @@
-#
+# ----------------------------------------------------------------------
 # Wordless: Tests - Language Examples
-#
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
-# This source file is licensed under GNU GPLv3.
-# For details, see: https://github.com/BLKSerene/Wordless/blob/master/LICENSE.txt
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-# All other rights reserved.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# ----------------------------------------------------------------------
 
 # Texts
 TEXT_AFR = "Afrikaans is tipologies beskou 'n Indo-Europese, Wes-Germaanse, Nederfrankiese taal,[2] wat aan die suidpunt van Afrika onder invloed van verskeie ander tale en taalgroepe ontstaan het. Afrikaans is op 8 Mei 1925 as 'n amptelike taal van Suid-Afrika erken en is tans die derde jongste Germaanse taal wat amptelike status geniet, naas Faroëes wat in 1948 grondwetlik erken is en Luxemburgs wat hierdie status in 1984 verkry het."
