@@ -138,8 +138,10 @@ def update_gui(error_msg, texts_stats_files):
 
         # The total of counts of n-length tokens should be equal to the count of characters
         for i, stats in enumerate(texts_stats_files):
-            len_tokens_total = sum([values[i] * key
-                                    for key, values in count_tokens_lens_files.items()])
+            len_tokens_total = sum([
+                values[i] * key
+                for key, values in count_tokens_lens_files.items()
+            ])
 
             assert len_tokens_total == sum(len_tokens_in_char)
 
@@ -153,8 +155,10 @@ def update_gui(error_msg, texts_stats_files):
 
         # The total of counts of n-length sentences should be equal to the count of tokens
         for i, stats in enumerate(texts_stats_files):
-            len_sentences_total = sum([values[i] * key
-                                       for key, values in count_sentences_lens_files.items()])
+            len_sentences_total = sum([
+                values[i] * key
+                for key, values in count_sentences_lens_files.items()
+            ])
 
             assert len_sentences_total == len(len_tokens_in_char)
 

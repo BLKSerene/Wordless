@@ -24,7 +24,7 @@ import numpy
 
 from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
-from wl_measures import wl_measures_readability
+from wl_measures import wl_measures_misc, wl_measures_readability
 from wl_text import wl_text, wl_text_utils, wl_token_processing
 from wl_utils import wl_misc, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
@@ -35,6 +35,7 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
             parent,
             tab = 'overview',
             headers = [
+                # Readability
                 parent.tr('Automated Readability Index'),
                 parent.tr('Coleman-Liau Index'),
                 parent.tr('Dale-Chall Readability Score'),
@@ -47,6 +48,7 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('SMOG Grade'),
                 parent.tr('Spache Grade Level'),
                 parent.tr('Write Score'),
+                # Counts
                 parent.tr('Count of Paragraphs'),
                 parent.tr('Count of Paragraphs %'),
                 parent.tr('Count of Sentences'),
@@ -59,35 +61,136 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Count of Syllables %'),
                 parent.tr('Count of Characters'),
                 parent.tr('Count of Characters %'),
-                parent.tr('Type-Token Ratio'),
-                parent.tr('Type-Token Ratio (Standardized)'),
+                # TTR
+                parent.tr('Type-token Ratio'),
+                parent.tr('Type-token Ratio (Standardized)'),
+                # Paragraph length
                 parent.tr('Paragraph Length in Sentences (Mean)'),
                 parent.tr('Paragraph Length in Sentences (Standard Deviation)'),
+                parent.tr('Paragraph Length in Sentences (Variance)'),
+                parent.tr('Paragraph Length in Sentences (Minimum)'),
+                parent.tr('Paragraph Length in Sentences (25th Percentile)'),
+                parent.tr('Paragraph Length in Sentences (Median)'),
+                parent.tr('Paragraph Length in Sentences (75th Percentile)'),
+                parent.tr('Paragraph Length in Sentences (Maximum)'),
+                parent.tr('Paragraph Length in Sentences (Range)'),
+                parent.tr('Paragraph Length in Sentences (Modes)'),
                 parent.tr('Paragraph Length in Tokens (Mean)'),
                 parent.tr('Paragraph Length in Tokens (Standard Deviation)'),
+                parent.tr('Paragraph Length in Tokens (Variance)'),
+                parent.tr('Paragraph Length in Tokens (Minimum)'),
+                parent.tr('Paragraph Length in Tokens (25th Percentile)'),
+                parent.tr('Paragraph Length in Tokens (Median)'),
+                parent.tr('Paragraph Length in Tokens (75th Percentile)'),
+                parent.tr('Paragraph Length in Tokens (Maximum)'),
+                parent.tr('Paragraph Length in Tokens (Range)'),
+                parent.tr('Paragraph Length in Tokens (Modes)'),
+                # Sentence length
                 parent.tr('Sentence Length in Tokens (Mean)'),
                 parent.tr('Sentence Length in Tokens (Standard Deviation)'),
+                parent.tr('Sentence Length in Tokens (Variance)'),
+                parent.tr('Sentence Length in Tokens (Minimum)'),
+                parent.tr('Sentence Length in Tokens (25th Percentile)'),
+                parent.tr('Sentence Length in Tokens (Median)'),
+                parent.tr('Sentence Length in Tokens (75th Percentile)'),
+                parent.tr('Sentence Length in Tokens (Maximum)'),
+                parent.tr('Sentence Length in Tokens (Range)'),
+                parent.tr('Sentence Length in Tokens (Modes)'),
+                # Token length
                 parent.tr('Token Length in Syllables (Mean)'),
                 parent.tr('Token Length in Syllables (Standard Deviation)'),
+                parent.tr('Token Length in Syllables (Variance)'),
+                parent.tr('Token Length in Syllables (Minimum)'),
+                parent.tr('Token Length in Syllables (25th Percentile)'),
+                parent.tr('Token Length in Syllables (Median)'),
+                parent.tr('Token Length in Syllables (75th Percentile)'),
+                parent.tr('Token Length in Syllables (Maximum)'),
+                parent.tr('Token Length in Syllables (Range)'),
+                parent.tr('Token Length in Syllables (Modes)'),
                 parent.tr('Token Length in Characters (Mean)'),
                 parent.tr('Token Length in Characters (Standard Deviation)'),
+                parent.tr('Token Length in Characters (Variance)'),
+                parent.tr('Token Length in Characters (Minimum)'),
+                parent.tr('Token Length in Characters (25th Percentile)'),
+                parent.tr('Token Length in Characters (Median)'),
+                parent.tr('Token Length in Characters (75th Percentile)'),
+                parent.tr('Token Length in Characters (Maximum)'),
+                parent.tr('Token Length in Characters (Range)'),
+                parent.tr('Token Length in Characters (Modes)'),
+                # Type length
                 parent.tr('Type Length in Syllables (Mean)'),
                 parent.tr('Type Length in Syllables (Standard Deviation)'),
+                parent.tr('Type Length in Syllables (Variance)'),
+                parent.tr('Type Length in Syllables (Minimum)'),
+                parent.tr('Type Length in Syllables (25th Percentile)'),
+                parent.tr('Type Length in Syllables (Median)'),
+                parent.tr('Type Length in Syllables (75th Percentile)'),
+                parent.tr('Type Length in Syllables (Maximum)'),
+                parent.tr('Type Length in Syllables (Range)'),
+                parent.tr('Type Length in Syllables (Modes)'),
                 parent.tr('Type Length in Characters (Mean)'),
                 parent.tr('Type Length in Characters (Standard Deviation)'),
+                parent.tr('Type Length in Characters (Variance)'),
+                parent.tr('Type Length in Characters (Minimum)'),
+                parent.tr('Type Length in Characters (25th Percentile)'),
+                parent.tr('Type Length in Characters (Median)'),
+                parent.tr('Type Length in Characters (75th Percentile)'),
+                parent.tr('Type Length in Characters (Maximum)'),
+                parent.tr('Type Length in Characters (Range)'),
+                parent.tr('Type Length in Characters (Modes)'),
+                # Syllable length
                 parent.tr('Syllable Length in Characters (Mean)'),
-                parent.tr('Syllable Length in Characters (Standard Deviation)')
+                parent.tr('Syllable Length in Characters (Standard Deviation)'),
+                parent.tr('Syllable Length in Characters (Variance)'),
+                parent.tr('Syllable Length in Characters (Minimum)'),
+                parent.tr('Syllable Length in Characters (25th Percentile)'),
+                parent.tr('Syllable Length in Characters (Median)'),
+                parent.tr('Syllable Length in Characters (75th Percentile)'),
+                parent.tr('Syllable Length in Characters (Maximum)'),
+                parent.tr('Syllable Length in Characters (Range)'),
+                parent.tr('Syllable Length in Characters (Modes)')
             ],
             header_orientation = 'vertical',
             headers_int = [
+                # Counts
                 parent.tr('Count of Paragraphs'),
                 parent.tr('Count of Sentences'),
                 parent.tr('Count of Tokens'),
                 parent.tr('Count of Types'),
                 parent.tr('Count of Syllables'),
-                parent.tr('Count of Characters')
+                parent.tr('Count of Characters'),
+                # Paragraph length
+                parent.tr('Paragraph Length in Sentences (Minimum)'),
+                parent.tr('Paragraph Length in Sentences (Maximum)'),
+                parent.tr('Paragraph Length in Sentences (Range)'),
+                parent.tr('Paragraph Length in Tokens (Minimum)'),
+                parent.tr('Paragraph Length in Tokens (Maximum)'),
+                parent.tr('Paragraph Length in Tokens (Range)'),
+                # Sentence length
+                parent.tr('Sentence Length in Tokens (Minimum)'),
+                parent.tr('Sentence Length in Tokens (Maximum)'),
+                parent.tr('Sentence Length in Tokens (Range)'),
+                # Token length
+                parent.tr('Token Length in Syllables (Minimum)'),
+                parent.tr('Token Length in Syllables (Maximum)'),
+                parent.tr('Token Length in Syllables (Range)'),
+                parent.tr('Token Length in Characters (Minimum)'),
+                parent.tr('Token Length in Characters (Maximum)'),
+                parent.tr('Token Length in Characters (Range)'),
+                # Type length
+                parent.tr('Type Length in Syllables (Minimum)'),
+                parent.tr('Type Length in Syllables (Maximum)'),
+                parent.tr('Type Length in Syllables (Range)'),
+                parent.tr('Type Length in Characters (Minimum)'),
+                parent.tr('Type Length in Characters (Maximum)'),
+                parent.tr('Type Length in Characters (Range)'),
+                # Syllable length
+                parent.tr('Syllable Length in Characters (Minimum)'),
+                parent.tr('Syllable Length in Characters (Maximum)'),
+                parent.tr('Syllable Length in Characters (Range)')
             ],
             headers_float = [
+                # Readability
                 parent.tr('Automated Readability Index'),
                 parent.tr('Coleman-Liau Index'),
                 parent.tr('Dale-Chall Readability Score'),
@@ -100,26 +203,65 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('SMOG Grade'),
                 parent.tr('Spache Grade Level'),
                 parent.tr('Write Score'),
-                parent.tr('Type-Token Ratio'),
-                parent.tr('Type-Token Ratio (Standardized)'),
+                # TTR
+                parent.tr('Type-token Ratio'),
+                parent.tr('Type-token Ratio (Standardized)'),
+                # Paragraph length
                 parent.tr('Paragraph Length in Sentences (Mean)'),
                 parent.tr('Paragraph Length in Sentences (Standard Deviation)'),
+                parent.tr('Paragraph Length in Sentences (Variance)'),
+                parent.tr('Paragraph Length in Sentences (25th Percentile)'),
+                parent.tr('Paragraph Length in Sentences (Median)'),
+                parent.tr('Paragraph Length in Sentences (75th Percentile)'),
                 parent.tr('Paragraph Length in Tokens (Mean)'),
                 parent.tr('Paragraph Length in Tokens (Standard Deviation)'),
+                parent.tr('Paragraph Length in Tokens (Variance)'),
+                parent.tr('Paragraph Length in Tokens (25th Percentile)'),
+                parent.tr('Paragraph Length in Tokens (Median)'),
+                parent.tr('Paragraph Length in Tokens (75th Percentile)'),
+                # Sentence length
                 parent.tr('Sentence Length in Tokens (Mean)'),
                 parent.tr('Sentence Length in Tokens (Standard Deviation)'),
+                parent.tr('Sentence Length in Tokens (Variance)'),
+                parent.tr('Sentence Length in Tokens (25th Percentile)'),
+                parent.tr('Sentence Length in Tokens (Median)'),
+                parent.tr('Sentence Length in Tokens (75th Percentile)'),
+                # Token length
                 parent.tr('Token Length in Syllables (Mean)'),
                 parent.tr('Token Length in Syllables (Standard Deviation)'),
+                parent.tr('Token Length in Syllables (Variance)'),
+                parent.tr('Token Length in Syllables (25th Percentile)'),
+                parent.tr('Token Length in Syllables (Median)'),
+                parent.tr('Token Length in Syllables (75th Percentile)'),
                 parent.tr('Token Length in Characters (Mean)'),
                 parent.tr('Token Length in Characters (Standard Deviation)'),
+                parent.tr('Token Length in Characters (Variance)'),
+                parent.tr('Token Length in Characters (25th Percentile)'),
+                parent.tr('Token Length in Characters (Median)'),
+                parent.tr('Token Length in Characters (75th Percentile)'),
+                # Type length
                 parent.tr('Type Length in Syllables (Mean)'),
                 parent.tr('Type Length in Syllables (Standard Deviation)'),
+                parent.tr('Type Length in Syllables (Variance)'),
+                parent.tr('Type Length in Syllables (25th Percentile)'),
+                parent.tr('Type Length in Syllables (Median)'),
+                parent.tr('Type Length in Syllables (75th Percentile)'),
                 parent.tr('Type Length in Characters (Mean)'),
                 parent.tr('Type Length in Characters (Standard Deviation)'),
+                parent.tr('Type Length in Characters (Variance)'),
+                parent.tr('Type Length in Characters (25th Percentile)'),
+                parent.tr('Type Length in Characters (Median)'),
+                parent.tr('Type Length in Characters (75th Percentile)'),
+                # Syllable length
                 parent.tr('Syllable Length in Characters (Mean)'),
-                parent.tr('Syllable Length in Characters (Standard Deviation)')
+                parent.tr('Syllable Length in Characters (Standard Deviation)'),
+                parent.tr('Syllable Length in Characters (Variance)'),
+                parent.tr('Syllable Length in Characters (25th Percentile)'),
+                parent.tr('Syllable Length in Characters (Median)'),
+                parent.tr('Syllable Length in Characters (75th Percentile)')
             ],
             headers_pct = [
+                # Counts
                 parent.tr('Count of Paragraphs %'),
                 parent.tr('Count of Sentences %'),
                 parent.tr('Count of Tokens %'),
@@ -128,6 +270,7 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
                 parent.tr('Count of Characters %')
             ],
             headers_cumulative = [
+                # Counts
                 parent.tr('Count of Paragraphs'),
                 parent.tr('Count of Paragraphs %'),
                 parent.tr('Count of Sentences'),
@@ -409,8 +552,8 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                 ]
 
                 # Paragraph length
-                len_paras_in_sentence = [len(para) for para in text.tokens_multilevel]
-                len_paras_in_token = [
+                len_paras_sentences = [len(para) for para in text.tokens_multilevel]
+                len_paras_tokens = [
                     sum([len(sentence) for sentence in para])
                     for para in text.tokens_multilevel
                 ]
@@ -423,16 +566,16 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                 ]
 
                 # Token length
-                len_tokens_in_syl = [len(syls) for syls in text.syls_tokens]
-                len_tokens_in_char = [len(token) for token in text.tokens_flat]
+                len_tokens_syls = [len(syls) for syls in text.syls_tokens]
+                len_tokens_chars = [len(token) for token in text.tokens_flat]
                 # Type length
-                len_types_in_syl = [len(syls) for syls in set([tuple(syls) for syls in text.syls_tokens])]
-                len_types_in_char = [len(token_type) for token_type in set(text.tokens_flat)]
+                len_types_syls = [len(syls) for syls in set([tuple(syls) for syls in text.syls_tokens])]
+                len_types_chars = [len(token_type) for token_type in set(text.tokens_flat)]
                 # Syllable length
                 len_syls = [len(syl) for syls in text.syls_tokens for syl in syls]
 
-                count_tokens = len(len_tokens_in_char)
-                count_types = len(len_types_in_char)
+                count_tokens = len(len_tokens_chars)
+                count_types = len(len_types_chars)
 
                 # TTR
                 if count_tokens:
@@ -461,13 +604,13 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                     sttr = sum(ttrs) / len(ttrs)
 
                 texts_stats_file.append(readability_statistics)
-                texts_stats_file.append(len_paras_in_sentence)
-                texts_stats_file.append(len_paras_in_token)
+                texts_stats_file.append(len_paras_sentences)
+                texts_stats_file.append(len_paras_tokens)
                 texts_stats_file.append(len_sentences)
-                texts_stats_file.append(len_tokens_in_syl)
-                texts_stats_file.append(len_tokens_in_char)
-                texts_stats_file.append(len_types_in_syl)
-                texts_stats_file.append(len_types_in_char)
+                texts_stats_file.append(len_tokens_syls)
+                texts_stats_file.append(len_tokens_chars)
+                texts_stats_file.append(len_types_syls)
+                texts_stats_file.append(len_types_chars)
                 texts_stats_file.append(len_syls)
                 texts_stats_file.append(ttr)
                 texts_stats_file.append(sttr)
@@ -520,23 +663,32 @@ def generate_table(main, table):
 
                 for i, stats in enumerate(texts_stats_files):
                     readability_statistics = stats[0]
-                    len_paras_in_sentence = stats[1]
-                    len_paras_in_token = stats[2]
+                    len_paras_sentences = stats[1]
+                    len_paras_tokens = stats[2]
                     len_sentences = stats[3]
-                    len_tokens_in_syl = stats[4]
-                    len_tokens_in_char = stats[5]
-                    len_types_in_syl = stats[6]
-                    len_types_in_char = stats[7]
+                    len_tokens_syls = stats[4]
+                    len_tokens_chars = stats[5]
+                    len_types_syls = stats[6]
+                    len_types_chars = stats[7]
                     len_syls = stats[8]
                     ttr = stats[9]
                     sttr = stats[10]
 
-                    count_paras = len(len_paras_in_sentence)
+                    len_paras_sentences = numpy.array(len_paras_sentences)
+                    len_paras_tokens = numpy.array(len_paras_tokens)
+                    len_sentences = numpy.array(len_sentences)
+                    len_tokens_syls = numpy.array(len_tokens_syls)
+                    len_tokens_chars = numpy.array(len_tokens_chars)
+                    len_types_syls = numpy.array(len_types_syls)
+                    len_types_chars = numpy.array(len_types_chars)
+                    len_syls = numpy.array(len_syls)
+
+                    count_paras = len(len_paras_sentences)
                     count_sentences = len(len_sentences)
-                    count_tokens = len(len_tokens_in_char)
-                    count_types = len(len_types_in_char)
+                    count_tokens = len(len_tokens_chars)
+                    count_types = len(len_types_chars)
                     count_syls = len(len_syls)
-                    count_chars = sum(len_tokens_in_char)
+                    count_chars = numpy.sum(len_tokens_chars)
 
                     # Readibility
                     for j, statistic in enumerate(readability_statistics):
@@ -574,52 +726,144 @@ def generate_table(main, table):
                     table.set_item_num(22, i, count_chars)
                     table.set_item_num(23, i, count_chars, count_chars_total)
 
-                    # Type-Token Ratio
+                    # Type-token Ratio
                     table.set_item_num(24, i, ttr)
-                    # Type-Token Ratio (Standardized)
+                    # Type-token Ratio (Standardized)
                     table.set_item_num(25, i, sttr)
 
                     # Paragraph Length
-                    table.set_item_num(26, i, numpy.mean(len_paras_in_sentence))
-                    table.set_item_num(27, i, numpy.std(len_paras_in_sentence))
-                    table.set_item_num(28, i, numpy.mean(len_paras_in_token))
-                    table.set_item_num(29, i, numpy.std(len_paras_in_token))
+                    table.set_item_num(26, i, numpy.mean(len_paras_sentences))
+                    table.set_item_num(27, i, numpy.std(len_paras_sentences))
+                    table.set_item_num(28, i, numpy.var(len_paras_sentences))
+                    table.set_item_num(29, i, numpy.min(len_paras_sentences))
+                    table.set_item_num(30, i, numpy.percentile(len_paras_sentences, 25))
+                    table.set_item_num(31, i, numpy.median(len_paras_sentences))
+                    table.set_item_num(32, i, numpy.percentile(len_paras_sentences, 75))
+                    table.set_item_num(33, i, numpy.max(len_paras_sentences))
+                    table.set_item_num(34, i, numpy.ptp(len_paras_sentences))
+                    table.setItem(35, i, QTableWidgetItem(', '.join([
+                        str(mode) for mode in wl_measures_misc.modes(len_paras_sentences)
+                    ])))
+                    table.set_item_num(36, i, numpy.mean(len_paras_tokens))
+                    table.set_item_num(37, i, numpy.std(len_paras_tokens))
+                    table.set_item_num(38, i, numpy.var(len_paras_tokens))
+                    table.set_item_num(39, i, numpy.min(len_paras_tokens))
+                    table.set_item_num(40, i, numpy.percentile(len_paras_tokens, 25))
+                    table.set_item_num(41, i, numpy.median(len_paras_tokens))
+                    table.set_item_num(42, i, numpy.percentile(len_paras_tokens, 75))
+                    table.set_item_num(43, i, numpy.max(len_paras_tokens))
+                    table.set_item_num(44, i, numpy.ptp(len_paras_tokens))
+                    table.setItem(45, i, QTableWidgetItem(', '.join([
+                        str(mode) for mode in wl_measures_misc.modes(len_paras_tokens)
+                    ])))
+
+                    table.item(35, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    table.item(45, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                     # Sentence Length
-                    table.set_item_num(30, i, numpy.mean(len_sentences))
-                    table.set_item_num(31, i, numpy.std(len_sentences))
+                    table.set_item_num(46, i, numpy.mean(len_sentences))
+                    table.set_item_num(47, i, numpy.std(len_sentences))
+                    table.set_item_num(48, i, numpy.var(len_sentences))
+                    table.set_item_num(49, i, numpy.min(len_sentences))
+                    table.set_item_num(50, i, numpy.percentile(len_sentences, 25))
+                    table.set_item_num(51, i, numpy.median(len_sentences))
+                    table.set_item_num(52, i, numpy.percentile(len_sentences, 75))
+                    table.set_item_num(53, i, numpy.max(len_sentences))
+                    table.set_item_num(54, i, numpy.ptp(len_sentences))
+                    table.setItem(55, i, QTableWidgetItem(', '.join([
+                        str(mode) for mode in wl_measures_misc.modes(len_sentences)
+                    ])))
+
+                    table.item(55, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                     # Token Length
                     if count_syls:
-                        table.set_item_num(32, i, numpy.mean(len_tokens_in_syl))
-                        table.set_item_num(33, i, numpy.std(len_tokens_in_syl))
+                        table.set_item_num(56, i, numpy.mean(len_tokens_syls))
+                        table.set_item_num(57, i, numpy.std(len_tokens_syls))
                     else:
-                        table.set_item_error(32, i, text = main.tr('No Support'))
-                        table.set_item_error(33, i, text = main.tr('No Support'))
+                        table.set_item_error(56, i, text = main.tr('No Support'))
+                        table.set_item_error(57, i, text = main.tr('No Support'))
 
-                    table.set_item_num(34, i, numpy.mean(len_tokens_in_char))
-                    table.set_item_num(35, i, numpy.std(len_tokens_in_char))
+                    table.set_item_num(58, i, numpy.var(len_tokens_syls))
+                    table.set_item_num(59, i, numpy.min(len_tokens_syls))
+                    table.set_item_num(60, i, numpy.percentile(len_tokens_syls, 25))
+                    table.set_item_num(61, i, numpy.median(len_tokens_syls))
+                    table.set_item_num(62, i, numpy.percentile(len_tokens_syls, 75))
+                    table.set_item_num(63, i, numpy.max(len_tokens_syls))
+                    table.set_item_num(64, i, numpy.ptp(len_tokens_syls))
+                    table.setItem(65, i, QTableWidgetItem(', '.join([
+                        str(mode) for mode in wl_measures_misc.modes(len_tokens_syls)
+                    ])))
+                    table.set_item_num(66, i, numpy.mean(len_tokens_chars))
+                    table.set_item_num(67, i, numpy.std(len_tokens_chars))
+                    table.set_item_num(68, i, numpy.var(len_tokens_chars))
+                    table.set_item_num(69, i, numpy.min(len_tokens_chars))
+                    table.set_item_num(70, i, numpy.percentile(len_tokens_chars, 25))
+                    table.set_item_num(71, i, numpy.median(len_tokens_chars))
+                    table.set_item_num(72, i, numpy.percentile(len_tokens_chars, 75))
+                    table.set_item_num(73, i, numpy.max(len_tokens_chars))
+                    table.set_item_num(74, i, numpy.ptp(len_tokens_chars))
+                    table.setItem(75, i, QTableWidgetItem(', '.join([
+                        str(mode) for mode in wl_measures_misc.modes(len_tokens_chars)
+                    ])))
+
+                    table.item(65, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    table.item(75, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                     # Type Length
                     if count_syls:
-                        table.set_item_num(36, i, numpy.mean(len_types_in_syl))
-                        table.set_item_num(37, i, numpy.std(len_types_in_syl))
+                        table.set_item_num(76, i, numpy.mean(len_types_syls))
+                        table.set_item_num(77, i, numpy.std(len_types_syls))
                     else:
-                        table.set_item_error(36, i, text = main.tr('No Support'))
-                        table.set_item_error(37, i, text = main.tr('No Support'))
+                        table.set_item_error(76, i, text = main.tr('No Support'))
+                        table.set_item_error(77, i, text = main.tr('No Support'))
+                    table.set_item_num(78, i, numpy.var(len_types_syls))
+                    table.set_item_num(79, i, numpy.min(len_types_syls))
+                    table.set_item_num(80, i, numpy.percentile(len_types_syls, 25))
+                    table.set_item_num(81, i, numpy.median(len_types_syls))
+                    table.set_item_num(82, i, numpy.percentile(len_types_syls, 75))
+                    table.set_item_num(83, i, numpy.max(len_types_syls))
+                    table.set_item_num(84, i, numpy.ptp(len_types_syls))
+                    table.setItem(85, i, QTableWidgetItem(', '.join([
+                        str(mode) for mode in wl_measures_misc.modes(len_types_syls)
+                    ])))
+                    table.set_item_num(86, i, numpy.mean(len_types_chars))
+                    table.set_item_num(87, i, numpy.std(len_types_chars))
+                    table.set_item_num(88, i, numpy.var(len_types_chars))
+                    table.set_item_num(89, i, numpy.min(len_types_chars))
+                    table.set_item_num(90, i, numpy.percentile(len_types_chars, 25))
+                    table.set_item_num(91, i, numpy.median(len_types_chars))
+                    table.set_item_num(92, i, numpy.percentile(len_types_chars, 75))
+                    table.set_item_num(93, i, numpy.max(len_types_chars))
+                    table.set_item_num(94, i, numpy.ptp(len_types_chars))
+                    table.setItem(95, i, QTableWidgetItem(', '.join([
+                        str(mode) for mode in wl_measures_misc.modes(len_types_chars)
+                    ])))
 
-                    table.set_item_num(38, i, numpy.mean(len_types_in_char))
-                    table.set_item_num(39, i, numpy.std(len_types_in_char))
+                    table.item(85, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    table.item(95, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                     # Syllable Length
                     if count_syls:
-                        table.set_item_num(40, i, numpy.mean(len_syls))
-                        table.set_item_num(41, i, numpy.std(len_syls))
+                        table.set_item_num(96, i, numpy.mean(len_syls))
+                        table.set_item_num(97, i, numpy.std(len_syls))
                     else:
-                        table.set_item_error(40, i, text = main.tr('No Support'))
-                        table.set_item_error(41, i, text = main.tr('No Support'))
+                        table.set_item_error(96, i, text = main.tr('No Support'))
+                        table.set_item_error(97, i, text = main.tr('No Support'))
+                    table.set_item_num(98, i, numpy.var(len_syls))
+                    table.set_item_num(99, i, numpy.min(len_syls))
+                    table.set_item_num(100, i, numpy.percentile(len_syls, 25))
+                    table.set_item_num(101, i, numpy.median(len_syls))
+                    table.set_item_num(102, i, numpy.percentile(len_syls, 75))
+                    table.set_item_num(103, i, numpy.max(len_syls))
+                    table.set_item_num(104, i, numpy.ptp(len_syls))
+                    table.setItem(105, i, QTableWidgetItem(', '.join([
+                        str(mode) for mode in wl_measures_misc.modes(len_syls)
+                    ])))
 
-                    count_tokens_lens.append(collections.Counter(len_tokens_in_char))
+                    table.item(105, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+
+                    count_tokens_lens.append(collections.Counter(len_tokens_chars))
                     count_sentences_lens.append(collections.Counter(len_sentences))
 
                 # Count of n-length Sentences
@@ -634,9 +878,9 @@ def generate_table(main, table):
                     header_labels = []
 
                     for count_sentences_len in count_sentences_lens:
-                        header_labels.append([main.tr(f'Count of {count_sentences_len}-Length Sentences'),
+                        header_labels.append([main.tr(f'Count of {count_sentences_len}-length Sentences'),
                                               True, False, False, True])
-                        header_labels.append([main.tr(f'Count of {count_sentences_len}-Length Sentences %'),
+                        header_labels.append([main.tr(f'Count of {count_sentences_len}-length Sentences %'),
                                               False, False, True, True])
 
                     table.append_rows(header_labels)
