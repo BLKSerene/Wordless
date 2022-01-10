@@ -21,7 +21,6 @@ import csv
 import platform
 import re
 
-import openpyxl
 import requests
 
 from PyQt5.QtCore import *
@@ -142,17 +141,16 @@ class Wl_Dialog_Acks(wl_dialog.Wl_Dialog_Info):
         # Load acknowledgments
         acks = []
 
-        workbook = openpyxl.load_workbook('wl_acks.xlsx')
-        worksheet = workbook[workbook.sheetnames[0]]
+        with open(r'wl_acks.csv', 'r', encoding = 'utf_8', newline = '') as f:
+            reader = csv.reader(f)
 
-        for i, rows in enumerate(worksheet.rows):
-            if i > 0:
-                name = rows[0].value
-                home_page = rows[1].value
-                ver = str(rows[2].value)
-                authors = rows[3].value.replace('\n', '<br>')
-                license = rows[4].value
-                license_url = rows[5].value
+            for row in reader:
+                name = row[0]
+                home_page = row[1]
+                ver = row[2]
+                authors = row[3]
+                license = row[4]
+                license_url = row[5]
 
                 acks.append([name, home_page, ver, authors, license, license_url])
 
