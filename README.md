@@ -35,12 +35,14 @@ Wordless is an integrated corpus tool with multilingual support for the study of
         <img src="https://github.com/BLKSerene/Wordless/workflows/CodeQL/badge.svg"></a>
     <a href="https://codecov.io/gh/BLKSerene/Wordless" alt="Codecov">
         <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graph/badge.svg?token=ED6TW92A7G"></a>
-    <a href="https://github.com/BLKSerene/Wordless/blob/main/LICENSE.txt">
-        <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License"></a>
+    <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_shield" alt="FOSSA Status">
+        <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=shield"></a>
     <a href="https://github.com/BLKSerene/Wordless/releases">
         <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases&label=Release&sort=semver" alt="Release"></a>
     <a href="https://github.com/BLKSerene/Wordless#download">
         <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total?label=Downloads" alt="Downloads"></a>
+    <a href="https://github.com/BLKSerene/Wordless/blob/main/LICENSE.txt">
+        <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License"></a>
 </div>
 
 ## Download
@@ -98,6 +100,8 @@ MLA (8th Edition):
     
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large)
 
 ## Contributing
 If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements, or new features by [creating a pull request](https://github.com/BLKSerene/Wordless/pulls) on Github.
