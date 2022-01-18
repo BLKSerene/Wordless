@@ -28,11 +28,10 @@ from PyQt5.QtWidgets import *
 import nltk
 
 from wl_checking import wl_checking_file
-from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
+from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_text import wl_matching, wl_text, wl_text_utils, wl_token_processing, wl_word_detokenization
 from wl_utils import wl_misc, wl_threading
-from wl_widgets import (wl_box, wl_label, wl_layout, wl_msg, wl_table,
-                        wl_widgets)
+from wl_widgets import wl_box, wl_label, wl_layout, wl_msg, wl_table, wl_widgets
 
 class Wl_Table_Concordancer_Parallel_Upper(wl_table.Wl_Table_Data_Sort_Search):
     def __init__(self, parent):
@@ -453,7 +452,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
 
     def run(self):
-        error_msg = ''
+        err_msg = ''
         concordance_lines = []
 
         try:
@@ -465,7 +464,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
             src_file = self.main.wl_files.find_file_by_name(src_file_name, selected_only = True)
             tgt_file = self.main.wl_files.find_file_by_name(tgt_file_name, selected_only = True)
-
+            
             text_src = copy.deepcopy(src_file['text'])
             text_tgt = copy.deepcopy(tgt_file['text'])
 
@@ -707,18 +706,18 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                                          for line in concordance_lines
                                          if line in concordance_lines_sampled]
         except Exception:
-            error_msg = traceback.format_exc()
+            err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
 
         time.sleep(0.1)
 
-        self.worker_done.emit(error_msg, concordance_lines)
+        self.worker_done.emit(err_msg, concordance_lines)
 
 @wl_misc.log_timing
 def generate_table(main, table_src, table_tgt):
-    def update_gui(error_msg, concordance_lines):
-        if not error_msg:
+    def update_gui(err_msg, concordance_lines):
+        if not err_msg:
             node_color = settings['sort_results']['highlight_colors'][0]
 
             if concordance_lines:
@@ -813,11 +812,11 @@ def generate_table(main, table_src, table_tgt):
 
                 wl_msg.wl_msg_generate_table_success(main)
             else:
-                wl_msg_box.wl_msg_box_no_results(main)
+                wl_msg_boxes.wl_msg_box_no_results(main)
 
                 wl_msg.wl_msg_generate_table_error(main)
         else:
-            wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
             wl_msg.wl_msg_fatal_error(main)
 
@@ -832,11 +831,11 @@ def generate_table(main, table_src, table_tgt):
                 settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
                 search_additions = True
             else:
-                search_additions = wl_msg_box.wl_msg_box_missing_search_terms_concordancer_parallel(main)
+                search_additions = wl_msg_boxes.wl_msg_box_missing_search_terms_concordancer_parallel(main)
 
             # Ask for confirmation
             if search_additions:
-                dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
                 worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
                     main,
@@ -849,7 +848,7 @@ def generate_table(main, table_src, table_tgt):
             else:
                 wl_msg.wl_msg_generate_table_error(main)
         else:
-            wl_msg_box.wl_msg_box_identical_src_tgt_files(main)
+            wl_msg_boxes.wl_msg_box_identical_src_tgt_files(main)
 
             wl_msg.wl_msg_generate_table_error(main)
     else:

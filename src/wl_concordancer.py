@@ -34,7 +34,7 @@ import textblob
 import underthesea
 
 from wl_checking import wl_checking_file
-from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
+from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_fig
 from wl_text import wl_matching, wl_text, wl_text_utils, wl_token_processing, wl_word_detokenization
 from wl_utils import wl_misc, wl_threading
@@ -581,13 +581,13 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
 
     def run(self):
-        error_msg = ''
+        err_msg = ''
         concordance_lines = []
 
         try:
             settings = self.main.settings_custom['concordancer']
             files = self.main.wl_files.get_selected_files()
-
+            
             for file in files:
                 text = copy.deepcopy(file['text'])
 
@@ -884,19 +884,19 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                          for line in concordance_lines
                                          if line in concordance_lines_sampled]
         except Exception:
-            error_msg = traceback.format_exc()
+            err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
 
         time.sleep(0.1)
 
-        self.worker_done.emit(error_msg, concordance_lines)
+        self.worker_done.emit(err_msg, concordance_lines)
 
 class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list, list)
 
     def run(self):
-        error_msg = ''
+        err_msg = ''
         points = []
         labels = []
 
@@ -1038,18 +1038,18 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                     labels.append(search_terms_labels)
                     labels.append(len_search_terms_total)
         except Exception:
-            error_msg = traceback.format_exc()
+            err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering figure...'))
 
         time.sleep(0.1)
 
-        self.worker_done.emit(error_msg, points, labels)
+        self.worker_done.emit(err_msg, points, labels)
 
 @wl_misc.log_timing
 def generate_table(main, table):
-    def update_gui(error_msg, concordance_lines):
-        if not error_msg:
+    def update_gui(err_msg, concordance_lines):
+        if not err_msg:
             node_color = settings['sort_results']['highlight_colors'][0]
 
             if concordance_lines:
@@ -1139,11 +1139,11 @@ def generate_table(main, table):
 
                 wl_msg.wl_msg_generate_table_success(main)
             else:
-                wl_msg_box.wl_msg_box_no_results(main)
+                wl_msg_boxes.wl_msg_box_no_results(main)
 
                 wl_msg.wl_msg_generate_table_error(main)
         else:
-            wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
             wl_msg.wl_msg_fatal_error(main)
 
@@ -1153,7 +1153,7 @@ def generate_table(main, table):
     if wl_checking_file.check_files_on_loading(main, files):
         if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_concordancer_table = Wl_Worker_Concordancer_Table(
                 main,
@@ -1164,7 +1164,7 @@ def generate_table(main, table):
             thread_concordancer_table = wl_threading.Wl_Thread(worker_concordancer_table)
             thread_concordancer_table.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_search_terms(main)
+            wl_msg_boxes.wl_msg_box_missing_search_terms(main)
 
             wl_msg.wl_msg_generate_table_error(main)
     else:
@@ -1172,8 +1172,8 @@ def generate_table(main, table):
 
 @wl_misc.log_timing
 def generate_fig(main):
-    def update_gui(error_msg, points, labels):
-        if not error_msg:
+    def update_gui(err_msg, points, labels):
+        if not err_msg:
             if labels:
                 x_ticks = labels[0]
                 x_tick_labels = labels[1]
@@ -1214,11 +1214,11 @@ def generate_fig(main):
 
                 wl_msg.wl_msg_generate_fig_success(main)
             else:
-                wl_msg_box.wl_msg_box_no_results(main)
+                wl_msg_boxes.wl_msg_box_no_results(main)
 
                 wl_msg.wl_msg_generate_fig_error(main)
         else:
-            wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
             wl_msg.wl_msg_fatal_error(main)
 
@@ -1234,7 +1234,7 @@ def generate_fig(main):
         # Check for empty search terms
         if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_concordancer_fig = Wl_Worker_Concordancer_Fig(
                 main,
@@ -1245,7 +1245,7 @@ def generate_fig(main):
             thread_concordancer_fig = wl_threading.Wl_Thread(worker_concordancer_fig)
             thread_concordancer_fig.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_search_terms(main)
+            wl_msg_boxes.wl_msg_box_missing_search_terms(main)
 
             wl_msg.wl_msg_generate_fig_error(main)
     else:

@@ -23,7 +23,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_dialogs import wl_dialog_misc
+from wl_dialogs import wl_dialogs_misc
 from wl_utils import wl_conversion
 from wl_widgets import wl_box, wl_layout, wl_tree
 
@@ -102,7 +102,7 @@ class Wl_Settings_General(wl_tree.Wl_Settings):
         if font_new == font_old:
             result = 'skip'
         else:
-            dialog_restart_required = wl_dialog_misc.Wl_Dialog_Restart_Required(self.main)
+            dialog_restart_required = wl_dialogs_misc.Wl_Dialog_Restart_Required(self.main)
             result = dialog_restart_required.exec_()
 
             if result == QDialog.Accepted:

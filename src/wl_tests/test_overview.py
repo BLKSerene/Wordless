@@ -26,7 +26,7 @@ sys.path.append('.')
 import numpy
 import pytest
 
-from wl_dialogs import wl_dialog_misc
+from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_file_area, wl_test_init
 from wl_utils import wl_misc
 
@@ -53,7 +53,7 @@ def test_overview():
 
         time_start = time.time()
 
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
         worker_overview_table = wl_overview.Wl_Worker_Overview_Table(
             main,
