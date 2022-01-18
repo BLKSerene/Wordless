@@ -24,7 +24,7 @@ sys.path.append('.')
 
 import pytest
 
-from wl_dialogs import wl_dialog_misc
+from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_file_area, wl_test_init
 
 import wl_collocation
@@ -51,7 +51,7 @@ def test_collocation():
 
         time_start = time.time()
 
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
         worker_collocation_table = wl_collocation.Wl_Worker_Collocation_Table(
             main,

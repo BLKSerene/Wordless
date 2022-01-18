@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Dialogs - Dialog
+# Wordless: Dialogs - Dialogs
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,6 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_utils import wl_misc
-from wl_widgets import wl_layout
 
 class Wl_Dialog(QDialog):
     def __init__(self, main, title, width = 0, height = 0):
@@ -51,9 +50,13 @@ class Wl_Dialog(QDialog):
                   (self.main.height() - self.height()) / 2,)
 
 class Wl_Dialog_Frameless(Wl_Dialog):
-    def __init__(self, main):
-        super().__init__(main, '',
-                         width = 450)
+    def __init__(self, main, width = 0, height = 0):
+        super().__init__(
+            main,
+            title = '',
+            width = width,
+            height = height
+        )
 
         self.setWindowFlag(Qt.FramelessWindowHint, True)
         self.setObjectName('wl-dialog-frameless')
@@ -65,6 +68,9 @@ class Wl_Dialog_Frameless(Wl_Dialog):
 
 class Wl_Dialog_Info(Wl_Dialog):
     def __init__(self, main, title, width = 0, height = 0, no_buttons = False):
+        # Avoid circular imports
+        from wl_widgets import wl_layout
+
         super().__init__(main, title, width, height)
 
         self.setWindowFlag(Qt.MSWindowsFixedSizeDialogHint, True)
@@ -102,7 +108,7 @@ class Wl_Dialog_Info(Wl_Dialog):
         self.layout().setRowStretch(0, 1)
         self.layout().setContentsMargins(0, 0, 0, 0)
 
-class Wl_Dialog_Error(Wl_Dialog_Info):
+class Wl_Dialog_Err(Wl_Dialog_Info):
     def __init__(self, main, title, width = 0, height = 0, no_buttons = False):
         super().__init__(main, title, width, height, no_buttons)
 
