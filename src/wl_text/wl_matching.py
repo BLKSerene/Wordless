@@ -140,8 +140,6 @@ def match_ngrams(
                     if re.search(regex, token_searched, flags = flags):
                         tokens_matched[search_term_token].add(token)
 
-                print('test', regex)
-        
         if settings['match_inflected_forms']:
             lemmas_searched = wl_lemmatization.wl_lemmatize(main, tokens_searched, lang, tokenized, tagged)
             lemmas_matched = wl_lemmatization.wl_lemmatize(main, list(tokens_matched), lang, tokenized, tagged)
@@ -181,7 +179,7 @@ def match_ngrams(
 
             for item in itertools.product(*search_term_tokens_matched):
                 search_terms_matched.add(item)
-    print(search_terms_matched)
+    
     return search_terms_matched
 
 def match_search_terms(

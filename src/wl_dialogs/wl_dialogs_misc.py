@@ -24,18 +24,18 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_dialogs import wl_dialog
+from wl_dialogs import wl_dialogs
 from wl_widgets import wl_label, wl_layout
 
-class Wl_Dialog_Progress(wl_dialog.Wl_Dialog_Frameless):
-    def __init__(self, main):
-        super().__init__(main)
+class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
+    def __init__(self, main, text):
+        super().__init__(main, width = 450)
 
         self.time_start = time.time()
 
         self.timer_time_elapsed = QTimer(self)
 
-        self.label_progress = QLabel('', self)
+        self.label_progress = QLabel(text, self)
         self.label_time_elapsed = QLabel(self.tr('Elapsed Time: 0:00:00'), self)
         self.label_processing = wl_label.Wl_Label_Dialog(self.tr('Please wait. It may take a few seconds to several minutes for the operation to be completed.'), self)
 
@@ -57,58 +57,23 @@ class Wl_Dialog_Progress(wl_dialog.Wl_Dialog_Frameless):
     def update_progress(self, text):
         self.label_progress.setText(text)
 
-class Wl_Dialog_Progress_Open_Files(Wl_Dialog_Progress):
-    def __init__(self, main):
-        super().__init__(main)
-
-        self.label_progress.setText(self.tr('Loading files...'))
-
 class Wl_Dialog_Progress_Process_Data(Wl_Dialog_Progress):
     def __init__(self, main):
-        super().__init__(main)
+        super().__init__(main, text = main.tr('Processing data...'))
 
-        self.label_progress.setText(self.tr('Processing data...'))
-
-class Wl_Dialog_Progress_Results_Sort(Wl_Dialog_Progress):
+class WL_Dialog_Clear_Table(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
-        super().__init__(main)
-
-        self.label_progress.setText(self.tr('Sorting results...'))
-
-class Wl_Dialog_Progress_Results_Filter(Wl_Dialog_Progress):
-    def __init__(self, main):
-        super().__init__(main)
-
-        self.label_progress.setText(self.tr('Filtering results...'))
-
-class Wl_Dialog_Progress_Results_Search(Wl_Dialog_Progress):
-    def __init__(self, main):
-        super().__init__(main)
-
-        self.label_progress.setText(self.tr('Searching in results...'))
-
-class Wl_Dialog_Progress_Export_Table(Wl_Dialog_Progress):
-    def __init__(self, main):
-        super().__init__(main)
-
-        self.label_progress.setText(self.tr('Exporting table...'))
-
-class Wl_Dialog_Progress_Fetch_Data(Wl_Dialog_Progress):
-    def __init__(self, main):
-        super().__init__(main)
-
-        self.label_progress.setText(self.tr('Fetching data...'))
-
-class WL_Dialog_Clear_Table(wl_dialog.Wl_Dialog_Info):
-    def __init__(self, main):
-        super().__init__(main, main.tr('Clear Table(s)'),
-                         width = 420,
-                         no_buttons = True)
+        super().__init__(
+            main,
+            title = main.tr('Clear Table'),
+            width = 420,
+            no_buttons = True
+        )
 
         self.label_confirm_clear = wl_label.Wl_Label_Dialog(
             self.tr('''
                 <div>
-                    The results in the table(s) have yet been exported. Do you really want to clear the table(s)?
+                    The results in the table have yet been exported. Do you really want to clear the table?
                 </div>
             '''),
             self
@@ -129,11 +94,14 @@ class WL_Dialog_Clear_Table(wl_dialog.Wl_Dialog_Info):
 
         self.set_fixed_height()
 
-class Wl_Dialog_Restart_Required(wl_dialog.Wl_Dialog_Info):
+class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
-        super().__init__(main, main.tr('Restart Wordless'),
-                         width = 420,
-                         no_buttons = True)
+        super().__init__(
+            main,
+            title = main.tr('Restart Wordless'),
+            width = 420,
+            no_buttons = True
+        )
 
         self.label_restart_exit = wl_label.Wl_Label_Dialog(
             self.tr('''
@@ -163,18 +131,20 @@ class Wl_Dialog_Restart_Required(wl_dialog.Wl_Dialog_Info):
 
         self.set_fixed_height()
 
-class Wl_Dialog_Confirm_Exit(wl_dialog.Wl_Dialog_Info):
+class Wl_Dialog_Confirm_Exit(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
-        super().__init__(main, main.tr('Exit Wordless'),
-                         width = 420,
-                         no_buttons = True)
+        super().__init__(
+            main,
+            title = main.tr('Exit Wordless'),
+            width = 420,
+            no_buttons = True
+        )
 
         self.label_confirm_exit = wl_label.Wl_Label_Dialog(
             self.tr('''
                 <div>
                     Are you sure you want to exit Wordless?
                 </div>
-
                 <div style="font-weight: bold;">
                     Note: All unsaved data and figures will be lost.
                 </div>

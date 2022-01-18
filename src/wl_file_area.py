@@ -38,7 +38,7 @@ from docx.text.paragraph import Paragraph
 import openpyxl
 
 from wl_checking import wl_checking_file, wl_checking_misc
-from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
+from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_text import wl_matching, wl_text
 from wl_utils import wl_conversion, wl_detection, wl_misc, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_msg, wl_table
@@ -47,20 +47,20 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
 
     def run(self):
-        error_msg = ''
+        err_msg = ''
         new_files = []
 
         try:
             len_file_paths = len(self.file_paths)
             # Regex for headers
             re_tags_header = wl_matching.get_re_tags_with_tokens(self.main, tag_type = 'header')
-
+            
             for i, file_path in enumerate(self.file_paths):
                 self.progress_updated.emit(self.tr(f'Loading files... ({i + 1}/{len_file_paths})'))
 
                 new_files_temp = []
                 lines = []
-
+                
                 default_dir = wl_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
                 default_encoding = self.main.settings_custom['files']['default_settings']['encoding']
 
@@ -172,7 +172,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                     new_file_tgt['name'] = new_file_tgt['name_old'] = wl_checking_misc.check_new_name(f'{file_name}_target', file_names)
 
                     soup = bs4.BeautifulSoup(text, 'lxml-xml')
-
+                    
                     # Extract source and target languages
                     elements_tuv = soup.select(r'tu:first-child tuv[xml\:lang]')
 
@@ -230,13 +230,13 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
             if self.file_paths:
                 self.main.settings_custom['import']['files']['default_path'] = wl_misc.get_normalized_dir(self.file_paths[0])
         except Exception:
-            error_msg = traceback.format_exc()
+            err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Updating table...'))
 
         time.sleep(0.1)
 
-        self.worker_done.emit(error_msg, new_files)
+        self.worker_done.emit(err_msg, new_files)
 
     # python-docx/Issue #276: https://github.com/python-openxml/python-docx/issues/276
     def iter_block_items(self, parent):
@@ -316,8 +316,8 @@ class Wl_Files(QObject):
 
     @wl_misc.log_timing
     def open_files(self, file_paths):
-        def update_gui(error_msg, new_files):
-            if not error_msg:
+        def update_gui(err_msg, new_files):
+            if not err_msg:
                 len_files_old = len(self.main.settings_custom['file_area']['files_open'])
 
                 self.main.settings_custom['file_area']['files_open'].extend(new_files)
@@ -333,11 +333,11 @@ class Wl_Files(QObject):
                 else:
                     self.main.statusBar().showMessage(f'{len_files_new - len_files_old} files have been successfully opened.')
             else:
-                wl_dialog_error.wl_dialog_error_fatal(self.main, error_msg)
+                wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
 
                 wl_msg.wl_msg_fatal_error(self.main)
 
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Open_Files(self.main)
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Loading files...'))
         dialog_progress.update_progress(self.tr('Checking files...'))
 
         file_paths, file_paths_unsupported = wl_checking_file.check_file_paths_unsupported(self.main, file_paths)
@@ -354,16 +354,44 @@ class Wl_Files(QObject):
         thread_open_files = wl_threading.Wl_Thread(worker_open_files)
         thread_open_files.start_worker()
 
-        wl_dialog_error.wl_dialog_error_file_open(
-            self.main,
-            file_paths_empty = file_paths_empty,
-            file_paths_unsupported = file_paths_unsupported,
-            file_paths_duplicate = file_paths_duplicate
-        )
+        if file_paths_empty or file_paths_unsupported or file_paths_duplicate:
+            dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, title = self.tr('Error Opening Files'))
+
+            dialog_err_files.label_err.set_text(self.tr('''
+                <div>
+                    An error occurred while opening files, so the following file(s) are skipped and will not be added to the file table.
+                </div>
+            '''))
+
+            dialog_err_files.table_err_files.setRowCount(len(file_paths_empty) + len(file_paths_unsupported) + len(file_paths_duplicate))
+
+            for i, file_path in enumerate(file_paths_empty + file_paths_unsupported + file_paths_duplicate):
+                if file_path in file_paths_empty: 
+                    dialog_err_files.table_err_files.setItem(
+                        i, 0,
+                        QTableWidgetItem(self.tr('Empty File'))
+                    )
+                elif file_path in file_paths_unsupported: 
+                    dialog_err_files.table_err_files.setItem(
+                        i, 0,
+                        QTableWidgetItem(self.tr('Unsupported File Type'))
+                    )
+                elif file_path in file_paths_duplicate:
+                    dialog_err_files.table_err_files.setItem(
+                        i, 0,
+                        QTableWidgetItem(self.tr('Duplicate File'))
+                    )
+
+                dialog_err_files.table_err_files.setItem(
+                    i, 1,
+                    QTableWidgetItem(file_path)
+                )
+
+            dialog_err_files.open()
 
     @wl_misc.log_timing
     def reload_files(self, file_indexes):
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Open_Files(self.main)
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Loading files...'))
         
         worker_reload_files = Wl_Worker_Reload_Files(
             self.main,
@@ -537,7 +565,7 @@ class Wl_Table_Files(wl_table.Wl_Table):
                         
                         self.blockSignals(False)
 
-                        wl_msg_box.wl_msg_box_duplicate_file_name(self.main)
+                        wl_msg_boxes.wl_msg_box_duplicate_file_name(self.main)
 
                         self.closePersistentEditor(self.item(row, 0))
                         self.editItem(self.item(row, 0))

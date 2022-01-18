@@ -2971,11 +2971,17 @@ def init_settings_global(main):
                         }
 
                         div {
-                            margin-bottom: 5px;
+                            margin-bottom: 3px;
+                        }
+                        div:last-child {
+                            margin-bottom: 0;
                         }
 
                         ul {
-                            margin-bottom: 5px;
+                            margin-bottom: 3px;
+                        }
+                        ul:last-child {
+                            margin-bottom: 0;
                         }
 
                         li {

@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Dialogs - Message Box
+# Wordless: Dialogs - Message Boxes
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -38,27 +38,21 @@ class Wl_Msg_Box(QMessageBox):
 
 class Wl_Msg_Box_Info(Wl_Msg_Box):
     def __init__(self, main, title, text):
-        super().__init__(main = main,
-                         icon = QMessageBox.Information,
-                         title = title,
-                         text = text)
-
-class Wl_Msg_Box_Info_Help(Wl_Msg_Box):
-    def __init__(self, main, title, text):
-        super().__init__(main = main,
-                         icon = QMessageBox.Information,
-                         title = title,
-                         text = text)
-
-        self.setTextFormat(Qt.RichText)
-        self.setTextInteractionFlags(Qt.TextBrowserInteraction)
+        super().__init__(
+            main,
+            icon = QMessageBox.Information,
+            title = title,
+            text = text
+        )
 
 class Wl_Msg_Box_Warning(Wl_Msg_Box):
     def __init__(self, main, title, text):
-        super().__init__(main = main,
-                         icon = QMessageBox.Warning,
-                         title = title,
-                         text = text)
+        super().__init__(
+            main,
+            icon = QMessageBox.Warning,
+            title = title,
+            text = text
+        )
 
 def wl_msg_box_question(main, title, text):
     reply = QMessageBox.question(
@@ -82,7 +76,7 @@ def wl_msg_box_question(main, title, text):
 # Reset settings
 def wl_msg_box_reset_layouts(main):
     return wl_msg_box_question(
-        main = main,
+        main,
         title = main.tr('Reset Layouts'),
         text = main.tr(f'''
             <div>Do you really want to reset all layouts to their default settings?</div>
@@ -91,7 +85,7 @@ def wl_msg_box_reset_layouts(main):
 
 def wl_msg_box_restore_default_settings(main):
     return wl_msg_box_question(
-        main = main,
+        main,
         title = main.tr('Restore default settings'),
         text = main.tr(f'''
             <div>Do you really want to reset all settings to their defaults?</div>
@@ -100,7 +94,7 @@ def wl_msg_box_restore_default_settings(main):
 
 def wl_msg_box_reset_all_settings(main):
     return wl_msg_box_question(
-        main = main,
+        main,
         title = main.tr('Reset All Settings'),
         text = main.tr(f'''
             <div>Do you really want to reset all settings to their defaults?</div>
@@ -110,7 +104,7 @@ def wl_msg_box_reset_all_settings(main):
 
 def wl_msg_box_reset_mappings(main):
     return wl_msg_box_question(
-        main = main,
+        main,
         title = main.tr('Reset Mappings'),
         text = main.tr(f'''
             <div>Do you really want to reset all mappings to their defaults?</div>
@@ -120,7 +114,7 @@ def wl_msg_box_reset_mappings(main):
 
 def wl_msg_box_reset_all_mappings(main):
     return wl_msg_box_question(
-        main = main,
+        main,
         title = main.tr('Reset All Mappings'),
         text = main.tr(f'''
             <div>Do you really want to reset all mappings to their defaults?</div>
@@ -131,7 +125,7 @@ def wl_msg_box_reset_all_mappings(main):
 # Files
 def wl_msg_box_duplicate_file_name(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Duplicate File Name'),
         text = main.tr(f'''
             <div>There is already a file with the same name in the file area.</div>
@@ -141,7 +135,7 @@ def wl_msg_box_duplicate_file_name(main):
 
 def wl_msg_box_no_files_selected(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('No Files Selected'),
         text = main.tr('''
             <div>There are no files being currently opened and selected.</div>
@@ -151,7 +145,7 @@ def wl_msg_box_no_files_selected(main):
 
 def wl_msg_box_identical_src_tgt_files(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Identical source and target files'),
         text = main.tr('''
             <div>The source and target file you have specified are identical. Please check your settings and try again.</div>
@@ -160,7 +154,7 @@ def wl_msg_box_identical_src_tgt_files(main):
 
 def wl_msg_box_missing_ref_files(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Missing Reference Files'),
         text = main.tr('''
             <div>You have not specified any reference files yet.</div>
@@ -169,7 +163,7 @@ def wl_msg_box_missing_ref_files(main):
 
 def wl_msg_box_missing_observed_files(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Missing Observed Files'),
         text = main.tr('''
             <div>You have specified reference files, but you have not opened and selected any observed files yet.</div>
@@ -178,7 +172,7 @@ def wl_msg_box_missing_observed_files(main):
 
 def wl_msg_box_invalid_xml_file(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Invalid XML File'),
         text = main.tr('''
             <div>If the input is an XML file, it must be both tokenized and tagged.</div>
@@ -188,7 +182,7 @@ def wl_msg_box_invalid_xml_file(main):
 # Search terms
 def wl_msg_box_missing_search_terms(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Missing Search Terms'),
         text = main.tr('''
             <div>
@@ -199,7 +193,7 @@ def wl_msg_box_missing_search_terms(main):
 
 def wl_msg_box_missing_search_terms_optional(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Missing Search Terms'),
         text = main.tr('''
             <div>
@@ -214,7 +208,7 @@ def wl_msg_box_missing_search_terms_optional(main):
 
 def wl_msg_box_missing_search_terms_concordancer_parallel(main):
     return wl_msg_box_question(
-        main = main,
+        main,
         title = main.tr('Empty Search Terms'),
         text = main.tr(f'''
             <div>You have not specified any search terms. Do you want to search for additions in the target file?</div>
@@ -223,7 +217,7 @@ def wl_msg_box_missing_search_terms_concordancer_parallel(main):
 
 def wl_msg_box_duplicate_search_terms(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Duplicate Search Terms'),
         text = main.tr(f'''
             <div>The search term that you have specified already exists in the list!</div>
@@ -233,7 +227,7 @@ def wl_msg_box_duplicate_search_terms(main):
 # Results
 def wl_msg_box_no_results(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('No Results'),
         text = main.tr('''
             <div>Data processing has completed successfully, but there are no results to display.</div>
@@ -243,7 +237,7 @@ def wl_msg_box_no_results(main):
 
 def wl_msg_box_no_search_results(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('No Search Results'),
         text = main.tr('''
             <div>Searching has completed successfully, but there are no results found.</div>
@@ -254,7 +248,7 @@ def wl_msg_box_no_search_results(main):
 # Export
 def wl_msg_box_export_list(main, file_path):
     Wl_Msg_Box_Info(
-        main = main,
+        main,
         title = main.tr('Export Completed'),
         text = main.tr(f'''
             <div>The list has been successfully exported to "{file_path}".</div>
@@ -263,7 +257,7 @@ def wl_msg_box_export_list(main, file_path):
 
 def wl_msg_box_export_table_success(main, file_path):
     Wl_Msg_Box_Info(
-        main = main,
+        main,
         title = main.tr('Export Completed'),
         text = main.tr(f'''
             <div>The table has been successfully exported to "{file_path}".</div>
@@ -272,7 +266,7 @@ def wl_msg_box_export_table_success(main, file_path):
 
 def wl_msg_box_export_table_error(main, file_path):
     Wl_Msg_Box_Info(
-        main = main,
+        main,
         title = main.tr('Export Error'),
         text = main.tr(f'''
             <div>Access to "{file_path}" is denied, please specify another location or close the file and try again.</div>
@@ -282,7 +276,7 @@ def wl_msg_box_export_table_error(main, file_path):
 # Settings - General
 def wl_msg_box_path_not_exist(main, path):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Invalid Path'),
         text = main.tr(f'''
             <div>The specified path "{path}" does not exist!</div>
@@ -292,7 +286,7 @@ def wl_msg_box_path_not_exist(main, path):
 
 def wl_msg_box_path_not_dir(main, path):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Invalid Path'),
         text = main.tr(f'''
             <div>The specified path "{path}" should be a directory, not a file!</div>
@@ -324,7 +318,7 @@ def wl_msg_box_path_not_exist_confirm(main, path):
 # Settings - Files - Tags
 def wl_msg_box_duplicate_tags(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Duplicate Tags'),
         text = main.tr(f'''
             <div>The tag that you have specified already exists in the table!</div>
@@ -333,7 +327,7 @@ def wl_msg_box_duplicate_tags(main):
 
 def wl_msg_box_empty_opening_tag(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Empty Opening Tag'),
         text = main.tr(f'''
             <div>The opening tag should not be left empty!</div>
@@ -342,7 +336,7 @@ def wl_msg_box_empty_opening_tag(main):
 
 def wl_msg_box_invalid_xml_tag(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Invalid XML Tag'),
         text = main.tr(f'''
             <div>The specified XML tag is invalid!</div>
@@ -352,7 +346,7 @@ def wl_msg_box_invalid_xml_tag(main):
 # Settings - Stop Word Lists
 def wl_msg_box_duplicate_stop_words(main):
     Wl_Msg_Box_Warning(
-        main = main,
+        main,
         title = main.tr('Duplicate Stop Words'),
         text = main.tr(f'''
             <div>The stop word that you have specified already exists in the list!</div>

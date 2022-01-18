@@ -23,7 +23,7 @@ sys.path.append('.')
 
 import pytest
 
-from wl_dialogs import wl_dialog_misc
+from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_file_area, wl_test_init
 
 import wl_wordlist
@@ -47,7 +47,7 @@ def test_wordlist():
 
         time_start = time.time()
 
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
         worker_wordlist_table = wl_wordlist.Wl_Worker_Wordlist_Table(
             main,

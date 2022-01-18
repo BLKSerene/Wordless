@@ -22,7 +22,6 @@ import re
 
 import bs4
 
-from wl_dialogs import wl_msg_box
 from wl_text import wl_matching, wl_sentence_tokenization, wl_text_utils, wl_word_tokenization
 from wl_utils import wl_misc
 

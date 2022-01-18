@@ -25,7 +25,7 @@ import time
 
 sys.path.append('.')
 
-from wl_dialogs import wl_dialog_misc
+from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_init
 
 import wl_file_area
@@ -47,7 +47,7 @@ def wl_test_file_area(main):
 
             print(f'Loading file "{os.path.split(file_path)[1]}"... ', end = '')
 
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Open_Files(main)
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = '')
 
             worker_open_files = wl_file_area.Wl_Worker_Open_Files(
                 main,

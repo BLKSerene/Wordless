@@ -29,7 +29,7 @@ from PyQt5.QtWidgets import *
 import numpy
 
 from wl_checking import wl_checking_file
-from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
+from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
 from wl_text import wl_text, wl_text_utils, wl_token_processing
 from wl_utils import wl_misc, wl_sorting, wl_threading
@@ -385,14 +385,14 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)
 
-        self.error_msg = ''
+        self.err_msg = ''
         self.tokens_freq_files = []
         self.tokens_stats_files = []
 
     def run(self):
         try:
             texts = []
-            
+
             settings = self.main.settings_custom['wordlist']
             files = self.main.wl_files.get_selected_files()
 
@@ -463,7 +463,7 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
                 self.tokens_freq_files *= 2
                 self.tokens_stats_files *= 2
         except Exception:
-            self.error_msg = traceback.format_exc()
+            self.err_msg = traceback.format_exc()
 
 class Wl_Worker_Wordlist_Table(Wl_Worker_Wordlist):
     def run(self):
@@ -474,7 +474,7 @@ class Wl_Worker_Wordlist_Table(Wl_Worker_Wordlist):
         time.sleep(0.1)
 
         self.worker_done.emit(
-            self.error_msg,
+            self.err_msg,
             wl_misc.merge_dicts(self.tokens_freq_files),
             wl_misc.merge_dicts(self.tokens_stats_files)
         )
@@ -488,15 +488,15 @@ class Wl_Worker_Wordlist_Fig(Wl_Worker_Wordlist):
         time.sleep(0.1)
 
         self.worker_done.emit(
-            self.error_msg,
+            self.err_msg,
             wl_misc.merge_dicts(self.tokens_freq_files),
             wl_misc.merge_dicts(self.tokens_stats_files)
         )
 
 @wl_misc.log_timing
 def generate_table(main, table):
-    def update_gui(error_msg, tokens_freq_files, tokens_stats_files):
-        if not error_msg:
+    def update_gui(err_msg, tokens_freq_files, tokens_stats_files):
+        if not err_msg:
             if tokens_freq_files:
                 table.clear_table()
 
@@ -626,11 +626,11 @@ def generate_table(main, table):
 
                 wl_msg.wl_msg_generate_table_success(main)
             else:
-                wl_msg_box.wl_msg_box_no_results(main)
+                wl_msg_boxes.wl_msg_box_no_results(main)
 
                 wl_msg.wl_msg_generate_table_error(main)
         else:
-            wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
             wl_msg.wl_msg_fatal_error(main)
 
@@ -638,7 +638,7 @@ def generate_table(main, table):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading(main, files):
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
         worker_wordlist_table = Wl_Worker_Wordlist_Table(
             main,
@@ -653,8 +653,8 @@ def generate_table(main, table):
 
 @wl_misc.log_timing
 def generate_fig(main):
-    def update_gui(error_msg, tokens_freq_files, tokens_stats_files):
-        if not error_msg:
+    def update_gui(err_msg, tokens_freq_files, tokens_stats_files):
+        if not err_msg:
             if tokens_freq_files:
                 measure_dispersion = settings['generation_settings']['measure_dispersion']
                 measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
@@ -693,11 +693,11 @@ def generate_fig(main):
 
                 wl_msg.wl_msg_generate_fig_success(main)
             else:
-                wl_msg_box.wl_msg_box_no_results(main)
+                wl_msg_boxes.wl_msg_box_no_results(main)
 
                 wl_msg.wl_msg_generate_fig_error(main)
         else:
-            wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
             wl_msg.wl_msg_fatal_error(main)
 
@@ -710,7 +710,7 @@ def generate_fig(main):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_file.check_files_on_loading(main, files):
-        dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
         worker_wordlist_fig = Wl_Worker_Wordlist_Fig(
             main,

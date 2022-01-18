@@ -23,10 +23,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_dialogs import wl_msg_box
+from wl_dialogs import wl_msg_boxes
 from wl_utils import wl_conversion
-from wl_widgets import (wl_box, wl_label, wl_layout, wl_table, wl_tree,
-                        wl_widgets)
+from wl_widgets import wl_box, wl_label, wl_layout, wl_table, wl_tree, wl_widgets
 
 class Wl_Table_Tags_Header(wl_table.Wl_Table_Tags):
     def _new_item_level(self, text = None):
@@ -91,7 +90,7 @@ class Wl_Table_Tags_Xml(wl_table.Wl_Table_Tags):
 
             # Check if the XML tags are valid
             if opening_tag_text and not re.search(r'^\<[^<>/\s]+?\>$', opening_tag_text):
-                wl_msg_box.wl_msg_box_invalid_xml_tag(self.main)
+                wl_msg_boxes.wl_msg_box_invalid_xml_tag(self.main)
 
                 opening_tag_widget.setText(opening_tag_widget.text_old)
                 opening_tag_widget.setFocus()

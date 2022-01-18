@@ -23,7 +23,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_dialogs import wl_dialog_misc, wl_msg_box
+from wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wl_tagsets import wl_tagset_universal
 from wl_text import wl_pos_tagging, wl_text_utils, wl_word_tokenization
 from wl_utils import wl_conversion, wl_misc, wl_threading
@@ -362,7 +362,7 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
             self.button_tagsets_reset_all.setEnabled(False)
             self.table_mappings.setEnabled(True)
 
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Fetch_Data(self.main)
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Fetching data...'))
 
             worker_fetch_data = Wl_Worker_Fetch_Data_Tagsets(
                 self.main,
@@ -469,11 +469,11 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
         self.settings_custom['mappings'][preview_lang][preview_pos_tagger] = mappings
 
     def reset_mappings(self):
-        if wl_msg_box.wl_msg_box_reset_mappings(self.main):
+        if wl_msg_boxes.wl_msg_box_reset_mappings(self.main):
             self.reset_currently_shown_table()
 
     def reset_all_mappings(self):
-        if wl_msg_box.wl_msg_box_reset_all_mappings(self.main):
+        if wl_msg_boxes.wl_msg_box_reset_all_mappings(self.main):
             self.settings_custom['mappings'] = copy.deepcopy(self.settings_default['mappings'])
 
             self.reset_currently_shown_table()

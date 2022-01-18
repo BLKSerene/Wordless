@@ -29,7 +29,7 @@ from PyQt5.QtWidgets import *
 import numpy
 
 from wl_checking import wl_checking_file
-from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
+from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
 from wl_text import wl_text, wl_text_utils, wl_token_processing
 from wl_utils import wl_misc, wl_sorting, wl_threading
@@ -419,7 +419,7 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)
 
-        self.error_msg = ''
+        self.err_msg = ''
         self.keywords_freq_files = []
         self.keywords_stats_files = []
 
@@ -428,7 +428,7 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
             texts = []
             
             settings = self.main.settings_custom['keyword']
-
+            
             files_ref = self.main.wl_files.find_files_by_name(
                 settings['generation_settings']['ref_files'],
                 selected_only = True
@@ -565,7 +565,7 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
                 self.keywords_freq_files.append(self.keywords_freq_files[1])
                 self.keywords_stats_files *= 2
         except Exception:
-            self.error_msg = traceback.format_exc()
+            self.err_msg = traceback.format_exc()
 
 class Wl_Worker_Keyword_Table(Wl_Worker_Keyword):
     def run(self):
@@ -576,7 +576,7 @@ class Wl_Worker_Keyword_Table(Wl_Worker_Keyword):
         time.sleep(0.1)
 
         self.worker_done.emit(
-            self.error_msg,
+            self.err_msg,
             wl_misc.merge_dicts(self.keywords_freq_files),
             wl_misc.merge_dicts(self.keywords_stats_files)
         )
@@ -590,15 +590,15 @@ class Wl_Worker_Keyword_Fig(Wl_Worker_Keyword):
         time.sleep(0.1)
 
         self.worker_done.emit(
-            self.error_msg,
+            self.err_msg,
             wl_misc.merge_dicts(self.keywords_freq_files),
             wl_misc.merge_dicts(self.keywords_stats_files)
         )
 
 @wl_misc.log_timing
 def generate_table(main, table):
-    def update_gui(error_msg, keywords_freq_files, keywords_stats_files):
-        if not error_msg:
+    def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
+        if not err_msg:
             if keywords_freq_files:
                 table.clear_table()
 
@@ -753,11 +753,11 @@ def generate_table(main, table):
 
                 wl_msg.wl_msg_generate_table_success(main)
             else:
-                wl_msg_box.wl_msg_box_no_results(main)
+                wl_msg_boxes.wl_msg_box_no_results(main)
 
                 wl_msg.wl_msg_generate_table_error(main)
         else:
-            wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
             wl_msg.wl_msg_fatal_error(main)
 
@@ -776,7 +776,7 @@ def generate_table(main, table):
         ]
 
         if files_ref and files_observed:
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_keyword_table = Wl_Worker_Keyword_Table(
                 main,
@@ -788,9 +788,9 @@ def generate_table(main, table):
             thread_keyword_table.start_worker()
         else:
             if not files_ref:
-                wl_msg_box.wl_msg_box_missing_ref_files(main)
+                wl_msg_boxes.wl_msg_box_missing_ref_files(main)
             elif not files_observed:
-                wl_msg_box.wl_msg_box_missing_observed_files(main)
+                wl_msg_boxes.wl_msg_box_missing_observed_files(main)
 
             wl_msg.wl_msg_generate_table_error(main)
     else:
@@ -798,8 +798,8 @@ def generate_table(main, table):
 
 @wl_misc.log_timing
 def generate_fig(main):
-    def update_gui(error_msg, keywords_freq_files, keywords_stats_files):
-        if not error_msg:
+    def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
+        if not err_msg:
             if keywords_freq_files:
                 text_test_significance = settings['generation_settings']['test_significance']
                 text_measure_effect_size = settings['generation_settings']['measure_effect_size']
@@ -855,11 +855,11 @@ def generate_fig(main):
 
                 wl_msg.wl_msg_generate_fig_success(main)
             else:
-                wl_msg_box.wl_msg_box_no_results(main)
+                wl_msg_boxes.wl_msg_box_no_results(main)
 
                 wl_msg.wl_msg_generate_fig_error(main)
         else:
-            wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
             wl_msg.wl_msg_fatal_error(main)
 
@@ -880,7 +880,7 @@ def generate_fig(main):
         ]
 
         if files_ref and file_names_observed:
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_keyword_fig = Wl_Worker_Keyword_Fig(
                 main,
@@ -892,9 +892,9 @@ def generate_fig(main):
             thread_keyword_fig.start_worker()
         else:
             if not files_ref:
-                wl_msg_box.wl_msg_box_missing_ref_files(main)
+                wl_msg_boxes.wl_msg_box_missing_ref_files(main)
             elif not file_names_observed:
-                wl_msg_box.wl_msg_box_missing_observed_files(main)
+                wl_msg_boxes.wl_msg_box_missing_observed_files(main)
 
             wl_msg.wl_msg_generate_fig_error(main)
     else:

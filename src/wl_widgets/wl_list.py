@@ -25,7 +25,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_checking import wl_checking_file, wl_checking_misc
-from wl_dialogs import wl_dialog_error, wl_msg_box
+from wl_dialogs import wl_dialogs_errs, wl_msg_boxes
 from wl_widgets import wl_box, wl_msg
 from wl_utils import wl_detection, wl_misc
 
@@ -133,10 +133,27 @@ class Wl_List(QListWidget):
             file_paths, file_paths_empty = wl_checking_file.check_file_paths_empty(self.main, file_paths)
 
             if file_paths_empty:
-                wl_dialog_error.wl_dialog_error_import(
-                    self.main,
-                    file_paths_empty = file_paths_empty
-                )
+                dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, self.tr('Import Error'))
+
+                dialog_err_files.label_err.set_text(self.tr('''
+                    <div>
+                        An error occurred during import, please check the following files and try again.
+                    </div>
+                '''))
+
+                dialog_err_files.table_err_files.setRowCount(len(file_paths_empty))
+
+                for i, file_path in enumerate(file_paths_empty):
+                    dialog_err_files.table_err_files.setItem(
+                        i, 0,
+                        QTableWidgetItem(self.tr('Empty File'))
+                    )
+                    dialog_err_files.table_err_files.setItem(
+                        i, 1,
+                        QTableWidgetItem(file_path)
+                    )
+
+                dialog_err_files.open()
 
                 wl_msg.wl_msg_import_list_error(self.main)
             else:
@@ -184,7 +201,7 @@ class Wl_List(QListWidget):
                 for item in self.get_items():
                     f.write(item + '\n')
 
-            wl_msg_box.wl_msg_box_export_list(self.main, file_path)
+            wl_msg_boxes.wl_msg_box_export_list(self.main, file_path)
 
             # Modify default path
             self.main.settings_custom['export'][settings]['default_path'] = os.path.normpath(os.path.dirname(file_path))
@@ -363,7 +380,7 @@ class Wl_List_Search_Terms(Wl_List):
                 for i in range(self.count()):
                     if self.item(i) != item:
                         if item.text() == self.item(i).text():
-                            wl_msg_box.wl_msg_box_duplicate_search_terms(self.main)
+                            wl_msg_boxes.wl_msg_box_duplicate_search_terms(self.main)
 
                             item.setText(item.text_old)
 
@@ -408,7 +425,7 @@ class Wl_List_Stop_Words(Wl_List):
                 for i in range(self.count()):
                     if self.item(i) != item:
                         if item.text() == self.item(i).text():
-                            wl_msg_box.wl_msg_box_duplicate_stop_words(self.main)
+                            wl_msg_boxes.wl_msg_box_duplicate_stop_words(self.main)
 
                             item.setText(item.text_old)
 
