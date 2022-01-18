@@ -315,34 +315,6 @@ def wl_msg_box_path_not_exist_confirm(main, path):
 
     return reply
 
-# Settings - Files - Tags
-def wl_msg_box_duplicate_tags(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('Duplicate Tags'),
-        text = main.tr(f'''
-            <div>The tag that you have specified already exists in the table!</div>
-        ''')
-    ).open()
-
-def wl_msg_box_empty_opening_tag(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('Empty Opening Tag'),
-        text = main.tr(f'''
-            <div>The opening tag should not be left empty!</div>
-        ''')
-    ).open()
-
-def wl_msg_box_invalid_xml_tag(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('Invalid XML Tag'),
-        text = main.tr(f'''
-            <div>The specified XML tag is invalid!</div>
-        ''')
-    ).open()
-
 # Settings - Stop Word Lists
 def wl_msg_box_duplicate_stop_words(main):
     Wl_Msg_Box_Warning(
