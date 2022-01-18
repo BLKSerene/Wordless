@@ -31,7 +31,7 @@ import nltk
 import numpy
 
 from wl_checking import wl_checking_file
-from wl_dialogs import wl_dialog_error, wl_dialog_misc, wl_msg_box
+from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
 from wl_measures import wl_measures_statistical_significance
 from wl_text import wl_matching, wl_pos_tagging, wl_text, wl_token_processing
@@ -646,7 +646,7 @@ class Wl_Worker_Colligation(wl_threading.Wl_Worker):
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)
 
-        self.error_msg = ''
+        self.err_msg = ''
         self.colligations_freqs_files = []
         self.colligations_stats_files = []
         self.nodes_text = {}
@@ -655,7 +655,7 @@ class Wl_Worker_Colligation(wl_threading.Wl_Worker):
         try:
             texts = []
             colligations_freqs_files_all = []
-            
+
             settings = self.main.settings_custom['colligation']
             files = self.main.wl_files.get_selected_files()
 
@@ -971,7 +971,7 @@ class Wl_Worker_Colligation(wl_threading.Wl_Worker):
                 self.colligations_freqs_files *= 2
                 self.colligations_stats_files *= 2
         except Exception:
-            self.error_msg = traceback.format_exc()
+            self.err_msg = traceback.format_exc()
 
 class Wl_Worker_Colligation_Table(Wl_Worker_Colligation):
     def run(self):
@@ -982,7 +982,7 @@ class Wl_Worker_Colligation_Table(Wl_Worker_Colligation):
         time.sleep(0.1)
 
         self.worker_done.emit(
-            self.error_msg,
+            self.err_msg,
             wl_misc.merge_dicts(self.colligations_freqs_files),
             wl_misc.merge_dicts(self.colligations_stats_files),
             self.nodes_text
@@ -997,7 +997,7 @@ class Wl_Worker_Colligation_Fig(Wl_Worker_Colligation):
         time.sleep(0.1)
 
         self.worker_done.emit(
-            self.error_msg,
+            self.err_msg,
             wl_misc.merge_dicts(self.colligations_freqs_files),
             wl_misc.merge_dicts(self.colligations_stats_files),
             self.nodes_text
@@ -1005,8 +1005,8 @@ class Wl_Worker_Colligation_Fig(Wl_Worker_Colligation):
 
 @wl_misc.log_timing
 def generate_table(main, table):
-    def update_gui(error_msg, colligations_freqs_files, colligations_stats_files, nodes_text):
-        if not error_msg:
+    def update_gui(err_msg, colligations_freqs_files, colligations_stats_files, nodes_text):
+        if not err_msg:
             if colligations_freqs_files:
                 table.clear_table()
 
@@ -1220,11 +1220,11 @@ def generate_table(main, table):
 
                 wl_msg.wl_msg_generate_table_success(main)
             else:
-                wl_msg_box.wl_msg_box_no_results(main)
+                wl_msg_boxes.wl_msg_box_no_results(main)
 
                 wl_msg.wl_msg_generate_table_error(main)
         else:
-            wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
             wl_msg.wl_msg_fatal_error(main)
 
@@ -1235,7 +1235,7 @@ def generate_table(main, table):
         if (not settings['search_settings']['search_settings'] or
             not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_colligation_table = Wl_Worker_Colligation_Table(
                 main,
@@ -1246,7 +1246,7 @@ def generate_table(main, table):
             thread_colligation_table = wl_threading.Wl_Thread(worker_colligation_table)
             thread_colligation_table.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_search_terms_optional(main)
+            wl_msg_boxes.wl_msg_box_missing_search_terms_optional(main)
 
             wl_msg.wl_msg_generate_table_error(main)
     else:
@@ -1254,8 +1254,8 @@ def generate_table(main, table):
 
 @wl_misc.log_timing
 def generate_fig(main):
-    def update_gui(error_msg, colligations_freqs_file, colligations_stats_files, nodes_text):
-        if not error_msg:
+    def update_gui(err_msg, colligations_freqs_file, colligations_stats_files, nodes_text):
+        if not err_msg:
             if colligations_freqs_file:
                 text_test_significance = settings['generation_settings']['test_significance']
                 text_measure_effect_size = settings['generation_settings']['measure_effect_size']
@@ -1363,11 +1363,11 @@ def generate_fig(main):
 
                 wl_msg.wl_msg_generate_fig_success(main)
             else:
-                wl_msg_box.wl_msg_box_no_results(main)
+                wl_msg_boxes.wl_msg_box_no_results(main)
 
                 wl_msg.wl_msg_generate_fig_error(main)
         else:
-            wl_dialog_error.wl_dialog_error_fatal(main, error_msg)
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
             wl_msg.wl_msg_fatal_error(main)
 
@@ -1383,7 +1383,7 @@ def generate_fig(main):
         if (not settings['search_settings']['search_settings'] or
             not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
-            dialog_progress = wl_dialog_misc.Wl_Dialog_Progress_Process_Data(main)
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_colligation_fig = Wl_Worker_Colligation_Fig(
                 main,
@@ -1394,7 +1394,7 @@ def generate_fig(main):
             thread_colligation_fig = wl_threading.Wl_Thread(worker_colligation_fig)
             thread_colligation_fig.start_worker()
         else:
-            wl_msg_box.wl_msg_box_missing_search_terms_optional(main)
+            wl_msg_boxes.wl_msg_box_missing_search_terms_optional(main)
 
             wl_msg.wl_msg_generate_fig_error(main)
     else:
