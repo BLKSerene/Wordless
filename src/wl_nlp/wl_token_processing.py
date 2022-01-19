@@ -18,7 +18,7 @@
 
 import copy
 
-from wl_checking import wl_checking_token
+from wl_checking import wl_checking_tokens
 from wl_nlp import wl_lemmatization, wl_stop_word_lists, wl_syl_tokenization, wl_word_detokenization
 from wl_utils import wl_misc
 
@@ -40,7 +40,7 @@ def wl_process_tokens(main, text, token_settings):
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, token in enumerate(sentence):
-                    if wl_checking_token.is_punc(token):
+                    if wl_checking_tokens.is_punc(token):
                         sentence[i] = ''
 
                         text.tags[i_tokens + i] = ''
@@ -92,27 +92,27 @@ def wl_process_tokens(main, text, token_settings):
             for para in text.tokens_multilevel:
                 for sentence in para:
                     for i, token in enumerate(sentence):
-                        if wl_checking_token.is_word_lowercase(token):
+                        if wl_checking_tokens.is_word_lowercase(token):
                             sentence[i] = ''
         # Uppercase
         if not settings['uppercase']:
             for para in text.tokens_multilevel:
                 for sentence in para:
                     for i, token in enumerate(sentence):
-                        if wl_checking_token.is_word_uppercase(token):
+                        if wl_checking_tokens.is_word_uppercase(token):
                             sentence[i] = ''
         # Title Case
         if not settings['title_case']:
             for para in text.tokens_multilevel:
                 for sentence in para:
                     for i, token in enumerate(sentence):
-                        if wl_checking_token.is_word_title_case(token):
+                        if wl_checking_tokens.is_word_title_case(token):
                             sentence[i] = ''
     else:
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, token in enumerate(sentence):
-                    if wl_checking_token.is_word_alphabetic(token):
+                    if wl_checking_tokens.is_word_alphabetic(token):
                         sentence[i] = ''
 
     # Numerals
@@ -120,7 +120,7 @@ def wl_process_tokens(main, text, token_settings):
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, token in enumerate(sentence):
-                    if wl_checking_token.is_num(token):
+                    if wl_checking_tokens.is_num(token):
                         sentence[i] = ''
 
     # Filter stop words
