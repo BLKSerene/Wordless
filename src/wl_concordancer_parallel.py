@@ -29,7 +29,7 @@ import nltk
 
 from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
-from wl_text import wl_matching, wl_text, wl_text_utils, wl_token_processing, wl_word_detokenization
+from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing, wl_word_detokenization
 from wl_utils import wl_misc, wl_threading
 from wl_widgets import wl_box, wl_label, wl_layout, wl_msg, wl_table, wl_widgets
 
@@ -539,7 +539,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                                 ngram = text_src.tokens_flat[i : i + len_search_term]
 
                             node_text = wl_word_detokenization.wl_word_detokenize(self.main, ngram, text_src.lang)
-                            node_text = wl_text_utils.text_escape(node_text)
+                            node_text = wl_nlp_utils.text_escape(node_text)
 
                             offset_para_start_src = text_src.offsets_paras[max(0, no_seg - 1)]
                             if no_seg <= len_segs_tgt:
@@ -566,8 +566,8 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                                 text_search_left = tokens_src[offset_para_start_src:i]
                                 text_search_right = tokens_src[i + len_search_term : offset_para_end]
 
-                            context_left = wl_text_utils.text_escape(context_left)
-                            context_right = wl_text_utils.text_escape(context_right)
+                            context_left = wl_nlp_utils.text_escape(context_left)
+                            context_right = wl_nlp_utils.text_escape(context_right)
 
                             context_left_text = wl_word_detokenization.wl_word_detokenize(
                                 self.main, context_left,
@@ -597,7 +597,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                             else:
                                 text_search_parallel_text = tokens_tgt[offset_para_start_tgt:offset_para_end]
 
-                            parallel_text = wl_text_utils.text_escape(parallel_text)
+                            parallel_text = wl_nlp_utils.text_escape(parallel_text)
 
                             parallel_text_text = wl_word_detokenization.wl_word_detokenize(
                                 self.main, parallel_text,
@@ -646,7 +646,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                         else:
                             text_search_parallel_text = tokens_tgt[offset_para_start_tgt:offset_para_end]
 
-                        parallel_text = wl_text_utils.text_escape(parallel_text)
+                        parallel_text = wl_nlp_utils.text_escape(parallel_text)
 
                         parallel_text_text = wl_word_detokenization.wl_word_detokenize(
                             self.main, parallel_text,

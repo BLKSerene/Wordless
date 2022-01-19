@@ -33,7 +33,7 @@ import openpyxl
 
 from wl_checking import wl_checking_misc
 from wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
-from wl_text import wl_matching, wl_text_utils, wl_word_detokenization
+from wl_nlp import wl_matching, wl_nlp_utils, wl_word_detokenization
 from wl_utils import wl_misc, wl_threading
 from wl_widgets import wl_box, wl_button, wl_label, wl_layout, wl_msg, wl_widgets
 
@@ -82,7 +82,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                                     cell_text = self.table.item(row, col).text()
                                 else:
                                     cell_text = self.table.cellWidget(row, col).text()
-                                    cell_text = wl_text_utils.html_to_text(cell_text)
+                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
 
                                 row_to_export.append(cell_text)
 
@@ -108,7 +108,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                                     cell_text = self.table.linked_tables[0].item(row, col).text()
                                 else:
                                     cell_text = self.table.linked_tables[0].cellWidget(row, col).text()
-                                    cell_text = wl_text_utils.html_to_text(cell_text)
+                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
 
                                 row_to_export.append(cell_text)
 
@@ -133,7 +133,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                                     cell_text = self.table.item(row, col).text()
                                 else:
                                     cell_text = self.table.cellWidget(row, col).text()
-                                    cell_text = wl_text_utils.html_to_text(cell_text)
+                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
 
                                 row_to_export.append(cell_text)
 
@@ -206,7 +206,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                             if col == 0:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
 
-                                cell_val = wl_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+                                cell_val = wl_nlp_utils.html_to_text(self.table.cellWidget(row_item, col).text())
                                 # Remove illegal characters
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
@@ -224,7 +224,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                             elif col == 1:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
 
-                                cell_val = wl_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+                                cell_val = wl_nlp_utils.html_to_text(self.table.cellWidget(row_item, col).text())
                                 # Remove illegal characters
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
@@ -245,7 +245,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                             elif col == 2:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
 
-                                cell_val = wl_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+                                cell_val = wl_nlp_utils.html_to_text(self.table.cellWidget(row_item, col).text())
                                 # Remove illegal characters
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
@@ -309,7 +309,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                             if col == 0:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
 
-                                cell_val = wl_text_utils.html_to_text(self.table.linked_tables[0].cellWidget(row_item, col).text())
+                                cell_val = wl_nlp_utils.html_to_text(self.table.linked_tables[0].cellWidget(row_item, col).text())
                                 # Remove illegal characters
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
@@ -327,7 +327,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                             elif col == 1:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
 
-                                cell_val = wl_text_utils.html_to_text(self.table.linked_tables[0].cellWidget(row_item, col).text())
+                                cell_val = wl_nlp_utils.html_to_text(self.table.linked_tables[0].cellWidget(row_item, col).text())
                                 # Remove illegal characters
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
@@ -348,7 +348,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                             elif col == 2:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
 
-                                cell_val = wl_text_utils.html_to_text(self.table.linked_tables[0].cellWidget(row_item, col).text())
+                                cell_val = wl_nlp_utils.html_to_text(self.table.linked_tables[0].cellWidget(row_item, col).text())
                                 # Remove illegal characters
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
@@ -411,7 +411,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                             if col == 0:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
 
-                                cell_val = wl_text_utils.html_to_text(self.table.cellWidget(row_item, col).text())
+                                cell_val = wl_nlp_utils.html_to_text(self.table.cellWidget(row_item, col).text())
                                 # Remove illegal characters
                                 cell_val = re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', cell_val)
                                 cell.value = cell_val
@@ -552,7 +552,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                                         cell_text = self.table.item(row, col).text()
                                     else:
                                         cell_text = self.table.cellWidget(row, col).text()
-                                        cell_text = wl_text_utils.html_to_text(cell_text)
+                                        cell_text = wl_nlp_utils.html_to_text(cell_text)
 
                                     output.append(cell_text)
                             else:
@@ -560,7 +560,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                                     cell_text = self.table.item(row, col).text()
                                 else:
                                     cell_text = self.table.cellWidget(row, col).text()
-                                    cell_text = wl_text_utils.html_to_text(cell_text)
+                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
 
                                 output.append(cell_text)
 
@@ -573,7 +573,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
                         else:
                             for j, col in enumerate(range(3)):
                                 cell_text = self.table.cellWidget(row, col).text()
-                                cell_text = wl_text_utils.html_to_text(cell_text)
+                                cell_text = wl_nlp_utils.html_to_text(cell_text)
 
                                 output.append(cell_text)
 
@@ -611,7 +611,7 @@ class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
 
                         for j, col in enumerate(range(3)):
                             cell_text = self.table.linked_tables[0].cellWidget(row, col).text()
-                            cell_text = wl_text_utils.html_to_text(cell_text)
+                            cell_text = wl_nlp_utils.html_to_text(cell_text)
 
                             output.append(cell_text)
 

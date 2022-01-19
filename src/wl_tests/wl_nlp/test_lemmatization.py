@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Text - Lemmatization
+# Wordless: Tests - NLP - Lemmatization
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -22,9 +22,9 @@ sys.path.append('.')
 
 import pytest
 
+from wl_nlp import wl_lemmatization, wl_word_tokenization
 from wl_tests import wl_test_init, wl_test_lang_examples
-from wl_text import wl_lemmatization, wl_word_tokenization
-from wl_utils import wl_conversion, wl_misc
+from wl_utils import wl_conversion
 
 test_lemmatizers = []
 
@@ -67,7 +67,8 @@ def test_lemmatize(lang, lemmatizer):
     # Check for missing lemmas
     assert all(lemmas)
     assert all(lemmas_tokenized)
-
+    
+    # Tokenization should not be modified
     assert len(tokens) == len(lemmas_tokenized)
 
     if lang == 'ast':

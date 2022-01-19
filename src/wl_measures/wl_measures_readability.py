@@ -22,8 +22,8 @@ import random
 import numpy
 
 from wl_checking import wl_checking_token
+from wl_nlp import wl_pos_tagging, wl_syl_tokenization
 from wl_utils import wl_misc
-from wl_text import wl_pos_tagging, wl_syl_tokenization
 
 NO_SUPPORT = 'No Support'
 TEXT_TOO_SHORT = 'Text is Too Short'
