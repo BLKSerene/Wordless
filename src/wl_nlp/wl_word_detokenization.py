@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Text - Word Detokenization
+# Wordless: NLP - Word Detokenization
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@
 import re
 
 from wl_checking import wl_checking_unicode
-from wl_text import wl_text, wl_text_utils
+from wl_nlp import wl_nlp_utils, wl_texts
 from wl_utils import wl_conversion
 
 def wl_word_detokenize(main, tokens, lang):
@@ -28,7 +28,7 @@ def wl_word_detokenize(main, tokens, lang):
     text = ''
 
     for i, token in enumerate(tokens):
-        if type(token) == wl_text.Wl_Token and token.sentence_ending:
+        if type(token) == wl_texts.Wl_Token and token.sentence_ending:
             sentences.append(tokens[sentence_start : i + 1])
 
             sentence_start = i + 1
@@ -38,7 +38,7 @@ def wl_word_detokenize(main, tokens, lang):
     if lang == 'other':
         lang = 'eng_gb'
 
-    wl_text_utils.init_word_detokenizers(
+    wl_nlp_utils.init_word_detokenizers(
         main,
         lang = lang
     )
@@ -112,7 +112,7 @@ def wl_word_detokenize(main, tokens, lang):
                 continue
 
             if wl_checking_unicode.has_thai(token):
-                if type(token) == wl_text.Wl_Token:
+                if type(token) == wl_texts.Wl_Token:
                     text += token + token.boundary
                 else:
                     text += token

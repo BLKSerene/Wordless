@@ -32,7 +32,7 @@ import numpy
 from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_measures import wl_measures_misc, wl_measures_readability
-from wl_text import wl_text, wl_text_utils, wl_token_processing
+from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
 
@@ -501,7 +501,7 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
 
             # Total
             if len(files) > 1:
-                text_total = wl_text.Wl_Text_Blank()
+                text_total = wl_texts.Wl_Text_Blank()
 
                 # Set language for the combined text only if all texts are in the same language
                 if len(set([text.lang for text in texts])) == 1:
@@ -594,7 +594,7 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                 if count_tokens < base_sttr:
                     sttr = ttr
                 else:
-                    token_sections = list(wl_text_utils.to_sections_unequal(text.tokens_flat, base_sttr))
+                    token_sections = list(wl_nlp_utils.to_sections_unequal(text.tokens_flat, base_sttr))
 
                     # Discard the last section if number of tokens in it is smaller than the base of sttr
                     if len(token_sections[-1]) < base_sttr:

@@ -31,7 +31,7 @@ import numpy
 from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
-from wl_text import wl_text, wl_text_utils, wl_token_processing
+from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_sorting, wl_threading
 from wl_widgets import wl_layout, wl_msg, wl_table, wl_widgets
 
@@ -412,7 +412,7 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
 
             # Total
             if len(files) > 1:
-                text_total = wl_text.Wl_Text_Blank()
+                text_total = wl_texts.Wl_Text_Blank()
                 text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
                 self.tokens_freq_files.append(sum(self.tokens_freq_files, collections.Counter()))
@@ -435,7 +435,7 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
 
                 sections_freq = [
                     collections.Counter(section)
-                    for section in wl_text_utils.to_sections(text.tokens_flat, number_sections)
+                    for section in wl_nlp_utils.to_sections(text.tokens_flat, number_sections)
                 ]
 
                 for token in tokens_total:
@@ -449,7 +449,7 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
 
                     sections_freq = [
                         collections.Counter(section)
-                        for section in wl_text_utils.to_sections(text.tokens_flat, number_sections)
+                        for section in wl_nlp_utils.to_sections(text.tokens_flat, number_sections)
                     ]
 
                 for token in tokens_total:

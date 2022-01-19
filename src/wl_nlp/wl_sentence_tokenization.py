@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Text - Sentence Tokenization
+# Wordless: NLP - Sentence Tokenization
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@ import razdel
 import tokenizer
 import underthesea
 
-from wl_text import wl_text_utils, wl_word_detokenization
+from wl_nlp import wl_nlp_utils, wl_word_detokenization
 from wl_utils import wl_conversion
 
 # Reference: https://stackoverflow.com/questions/9506869/are-there-character-collections-for-all-international-full-stop-punctuations/9508766#9508766
@@ -49,7 +49,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     if sentence_tokenizer == 'default':
         sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizers'][lang]
 
-    wl_text_utils.init_sentence_tokenizers(
+    wl_nlp_utils.init_sentence_tokenizers(
         main,
         lang = lang,
         sentence_tokenizer = sentence_tokenizer
@@ -134,7 +134,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         sentences = pythainlp.sent_tokenize(text)
     # Tibetan
     elif sentence_tokenizer == 'botok_bod':
-        wl_text_utils.init_word_tokenizers(main, lang = 'bod')
+        wl_nlp_utils.init_word_tokenizers(main, lang = 'bod')
         
         tokens = main.botok_word_tokenizer.tokenize(text)
 
@@ -148,7 +148,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     # Strip spaces
     sentences = [sentence.strip() for sentence in sentences]
 
-    sentences = wl_text_utils.record_boundary_sentences(sentences, text)
+    sentences = wl_nlp_utils.record_boundary_sentences(sentences, text)
 
     return sentences
 
