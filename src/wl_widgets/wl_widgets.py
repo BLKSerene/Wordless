@@ -25,7 +25,7 @@ from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialogs
 from wl_utils import wl_misc
-from wl_widgets import wl_box, wl_button, wl_label, wl_layout, wl_list, wl_widgets
+from wl_widgets import wl_boxes, wl_buttons, wl_labels, wl_layouts, wl_lists, wl_widgets
 
 class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
     def __init__(self, main, tab):
@@ -87,11 +87,11 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.inclusion_spin_box_context_window_left.valueChanged.connect(self.inclusion_changed)
         self.inclusion_spin_box_context_window_right.valueChanged.connect(self.inclusion_changed)
 
-        inclusion_layout_multi_search_mode = wl_layout.Wl_Layout()
+        inclusion_layout_multi_search_mode = wl_layouts.Wl_Layout()
         inclusion_layout_multi_search_mode.addWidget(self.inclusion_label_search_term, 0, 0)
         inclusion_layout_multi_search_mode.addWidget(self.inclusion_checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
 
-        self.inclusion_group_box.setLayout(wl_layout.Wl_Layout())
+        self.inclusion_group_box.setLayout(wl_layouts.Wl_Layout())
         self.inclusion_group_box.layout().addLayout(inclusion_layout_multi_search_mode, 0, 0, 1, 4)
         self.inclusion_group_box.layout().addWidget(self.inclusion_stacked_widget_search_term, 1, 0, 1, 4)
         self.inclusion_group_box.layout().addWidget(self.inclusion_label_separator, 2, 0, 1, 4)
@@ -103,7 +103,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_ignore_tags, 7, 0, 1, 4)
         self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_match_tags, 8, 0, 1, 4)
 
-        self.inclusion_group_box.layout().addWidget(wl_layout.Wl_Separator(self), 9, 0, 1, 4)
+        self.inclusion_group_box.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 4)
 
         self.inclusion_group_box.layout().addWidget(self.inclusion_label_context_window, 10, 0, 1, 3)
         self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_context_window_sync, 10, 3, Qt.AlignRight)
@@ -166,11 +166,11 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.exclusion_spin_box_context_window_left.valueChanged.connect(self.exclusion_changed)
         self.exclusion_spin_box_context_window_right.valueChanged.connect(self.exclusion_changed)
 
-        exclusion_layout_multi_search_mode = wl_layout.Wl_Layout()
+        exclusion_layout_multi_search_mode = wl_layouts.Wl_Layout()
         exclusion_layout_multi_search_mode.addWidget(self.exclusion_label_search_term, 0, 0)
         exclusion_layout_multi_search_mode.addWidget(self.exclusion_checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
 
-        self.exclusion_group_box.setLayout(wl_layout.Wl_Layout())
+        self.exclusion_group_box.setLayout(wl_layouts.Wl_Layout())
         self.exclusion_group_box.layout().addLayout(exclusion_layout_multi_search_mode, 0, 0, 1, 4)
         self.exclusion_group_box.layout().addWidget(self.exclusion_stacked_widget_search_term, 1, 0, 1, 4)
         self.exclusion_group_box.layout().addWidget(self.exclusion_label_separator, 2, 0, 1, 4)
@@ -182,7 +182,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_ignore_tags, 7, 0, 1, 4)
         self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_match_tags, 8, 0, 1, 4)
 
-        self.exclusion_group_box.layout().addWidget(wl_layout.Wl_Separator(self), 9, 0, 1, 4)
+        self.exclusion_group_box.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 4)
 
         self.exclusion_group_box.layout().addWidget(self.exclusion_label_context_window, 10, 0, 1, 3)
         self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_context_window_sync, 10, 3, Qt.AlignRight)
@@ -194,18 +194,18 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.exclusion_group_box.layout().setColumnStretch(1, 1)
         self.exclusion_group_box.layout().setColumnStretch(3, 1)
 
-        self.button_restore_default_settings = wl_button.Wl_Button_Restore_Default_Settings(self)
+        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
         self.button_close.clicked.connect(self.accept)
 
-        layout_buttons = wl_layout.Wl_Layout()
+        layout_buttons = wl_layouts.Wl_Layout()
         layout_buttons.addWidget(self.button_restore_default_settings, 0, 0)
         layout_buttons.addWidget(self.button_close, 0, 2)
 
         layout_buttons.setColumnStretch(1, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.inclusion_group_box, 0, 0)
         self.layout().addWidget(self.exclusion_group_box, 0, 1)
         self.layout().addLayout(layout_buttons, 1, 0, 1, 2)
@@ -413,9 +413,9 @@ def wl_widgets_no_limit(parent, double = False):
             spin_box_no_limit.setEnabled(True)
 
     if double:
-        spin_box_no_limit = wl_box.Wl_Double_Spin_Box(parent)
+        spin_box_no_limit = wl_boxes.Wl_Double_Spin_Box(parent)
     else:
-        spin_box_no_limit = wl_box.Wl_Spin_Box(parent)
+        spin_box_no_limit = wl_boxes.Wl_Spin_Box(parent)
 
     checkbox_no_limit = QCheckBox(parent.tr('No Limit'), parent)
 
@@ -579,8 +579,8 @@ def wl_widgets_search_settings(parent, tab):
     label_search_term = QLabel(parent.tr('Search Term:'), parent)
     checkbox_multi_search_mode = QCheckBox(parent.tr('Multi-search Mode'), parent)
     line_edit_search_term = QLineEdit(parent)
-    list_search_terms = wl_list.Wl_List_Search_Terms(parent)
-    label_separator = wl_label.Wl_Label_Hint(parent.tr('* Use space to separate multiple tokens'), parent)
+    list_search_terms = wl_lists.Wl_List_Search_Terms(parent)
+    label_separator = wl_labels.Wl_Label_Hint(parent.tr('* Use space to separate multiple tokens'), parent)
 
     checkbox_ignore_case = QCheckBox(parent.tr('Ignore case'), parent)
     checkbox_match_inflected_forms = QCheckBox(parent.tr('Match all inflected forms'), parent)
@@ -592,7 +592,7 @@ def wl_widgets_search_settings(parent, tab):
 
     wrapper_search_terms = QWidget(parent)
 
-    wrapper_search_terms.setLayout(wl_layout.Wl_Layout())
+    wrapper_search_terms.setLayout(wl_layouts.Wl_Layout())
     wrapper_search_terms.layout().addWidget(list_search_terms, 0, 0, 6, 1)
     wrapper_search_terms.layout().addWidget(list_search_terms.button_add, 0, 1)
     wrapper_search_terms.layout().addWidget(list_search_terms.button_insert, 1, 1)
@@ -603,7 +603,7 @@ def wl_widgets_search_settings(parent, tab):
 
     wrapper_search_terms.layout().setContentsMargins(0, 0, 0, 0)
 
-    stacked_widget_search_term = wl_layout.Wl_Stacked_Widget(parent)
+    stacked_widget_search_term = wl_layouts.Wl_Stacked_Widget(parent)
     stacked_widget_search_term.addWidget(line_edit_search_term)
     stacked_widget_search_term.addWidget(wrapper_search_terms)
 
@@ -666,9 +666,9 @@ def wl_widgets_size(parent, size_min = 1, size_max = 100):
 
     checkbox_size_sync = QCheckBox(parent.tr('Sync'), parent)
     label_size_min = QLabel(parent.tr('From'), parent)
-    spin_box_size_min = wl_box.Wl_Spin_Box(parent)
+    spin_box_size_min = wl_boxes.Wl_Spin_Box(parent)
     label_size_max = QLabel(parent.tr('To'), parent)
-    spin_box_size_max = wl_box.Wl_Spin_Box(parent)
+    spin_box_size_max = wl_boxes.Wl_Spin_Box(parent)
 
     spin_box_size_min.setRange(size_min, size_max)
     spin_box_size_max.setRange(size_min, size_max)
@@ -717,9 +717,9 @@ def wl_widgets_window(parent):
 
     checkbox_window_sync = QCheckBox(parent.tr('Sync'), parent)
     label_window_left = QLabel(parent.tr('From'), parent)
-    spin_box_window_left = wl_box.Wl_Spin_Box_Window(parent)
+    spin_box_window_left = wl_boxes.Wl_Spin_Box_Window(parent)
     label_window_right = QLabel(parent.tr('To'), parent)
-    spin_box_window_right = wl_box.Wl_Spin_Box_Window(parent)
+    spin_box_window_right = wl_boxes.Wl_Spin_Box_Window(parent)
 
     spin_box_window_left.setRange(-100, 100)
     spin_box_window_right.setRange(-100, 100)
@@ -738,7 +738,7 @@ def wl_widgets_measure_dispersion(parent):
     main = wl_misc.find_wl_main(parent)
 
     label_measure_dispersion = QLabel(parent.tr('Measure of Dispersion:'), parent)
-    combo_box_measure_dispersion = wl_box.Wl_Combo_Box(parent)
+    combo_box_measure_dispersion = wl_boxes.Wl_Combo_Box(parent)
 
     combo_box_measure_dispersion.addItems(list(main.settings_global['measures_dispersion'].keys()))
 
@@ -749,7 +749,7 @@ def wl_widgets_measure_adjusted_freq(parent):
     main = wl_misc.find_wl_main(parent)
 
     label_measure_adjusted_freq = QLabel(parent.tr('Measure of Adjusted Frequency:'), parent)
-    combo_box_measure_adjusted_freq = wl_box.Wl_Combo_Box(parent)
+    combo_box_measure_adjusted_freq = wl_boxes.Wl_Combo_Box(parent)
 
     combo_box_measure_adjusted_freq.addItems(list(main.settings_global['measures_adjusted_freq'].keys()))
 
@@ -758,14 +758,14 @@ def wl_widgets_measure_adjusted_freq(parent):
 
 def wl_widgets_test_significance(parent):
     label_test_significance = QLabel(parent.tr('Test of Statistical Significance:'), parent)
-    combo_box_test_significance = wl_box.Wl_Combo_Box(parent)
+    combo_box_test_significance = wl_boxes.Wl_Combo_Box(parent)
 
     return (label_test_significance,
             combo_box_test_significance)
 
 def wl_widgets_measure_effect_size(parent):
     label_measure_effect_size = QLabel(parent.tr('Measure of Effect Size:'), parent)
-    combo_box_measure_effect_size = wl_box.Wl_Combo_Box(parent)
+    combo_box_measure_effect_size = wl_boxes.Wl_Combo_Box(parent)
 
     return (label_measure_effect_size,
             combo_box_measure_effect_size)
@@ -817,6 +817,23 @@ def wl_widgets_table_settings(parent, tables):
     return checkbox_show_pct, checkbox_show_cumulative, checkbox_show_breakdown
 
 # Figure Settings
+class Wl_Combo_Box_File_Figure_Settings(wl_boxes.Wl_Combo_Box_File):
+    def wl_files_changed(self):
+        if self.count() == 1:
+            file_old = ''
+        else:
+            file_old = self.currentText()
+
+        self.clear()
+
+        for file in self.main.wl_files.get_selected_files():
+            self.addItem(file['name'])
+
+        self.addItem(self.tr('Total'))
+
+        if file_old and self.findText(file_old) > -1:
+            self.setCurrentText(file_old)
+
 def wl_widgets_fig_settings(parent, collocation = False):
     def graph_type_changed():
         if combo_box_graph_type.currentText() == parent.tr('Line Chart'):
@@ -840,11 +857,11 @@ def wl_widgets_fig_settings(parent, collocation = False):
     main = wl_misc.find_wl_main(parent)
 
     label_graph_type = QLabel(parent.tr('Graph Type:'), parent)
-    combo_box_graph_type = wl_box.Wl_Combo_Box(parent)
+    combo_box_graph_type = wl_boxes.Wl_Combo_Box(parent)
     label_sort_by_file = QLabel(parent.tr('Sort by File:'), parent)
-    combo_box_sort_by_file = wl_box.Wl_Combo_Box_File_Figure_Settings(parent)
+    combo_box_sort_by_file = Wl_Combo_Box_File_Figure_Settings(parent)
     label_use_data = QLabel(parent.tr('Use Data:'), parent)
-    combo_box_use_data = wl_box.Wl_Combo_Box(parent)
+    combo_box_use_data = wl_boxes.Wl_Combo_Box(parent)
     checkbox_use_pct = QCheckBox(parent.tr('Use percentage data'), parent)
     checkbox_use_cumulative = QCheckBox(parent.tr('Use cumulative data'), parent)
 
@@ -1009,7 +1026,7 @@ def wl_widgets_filter_results(parent, table):
             combo_box_filter_file.setCurrentText(file_old)
 
     label_filter_file = QLabel(parent.tr('Filter File:'), parent)
-    combo_box_filter_file = wl_box.Wl_Combo_Box(parent)
+    combo_box_filter_file = wl_boxes.Wl_Combo_Box(parent)
     button_filter_results = QPushButton(parent.tr('Filter Results in Table'), parent)
 
     button_filter_results.clicked.connect(lambda: table.update_filters())
@@ -1024,7 +1041,7 @@ def wl_widgets_filter_results(parent, table):
 # Settings -> Measures
 def wl_widgets_number_sections(parent):
     label_divide = QLabel(parent.tr('Divide each text into'), parent)
-    spin_box_number_sections = wl_box.Wl_Spin_Box(parent)
+    spin_box_number_sections = wl_boxes.Wl_Spin_Box(parent)
     label_sections = QLabel(parent.tr('sections'), parent)
 
     spin_box_number_sections.setRange(2, 1000)
@@ -1033,7 +1050,7 @@ def wl_widgets_number_sections(parent):
 
 def wl_widgets_use_data_freq(parent):
     label_use_data = QLabel(parent.tr('Use Data:'), parent)
-    combo_box_use_data = wl_box.Wl_Combo_Box(parent)
+    combo_box_use_data = wl_boxes.Wl_Combo_Box(parent)
 
     combo_box_use_data.addItems([
         parent.tr('Absolute Frequency'),
@@ -1044,7 +1061,7 @@ def wl_widgets_use_data_freq(parent):
 
 def wl_widgets_direction(parent):
     label_direction = QLabel(parent.tr('Direction:'), parent)
-    combo_box_direction = wl_box.Wl_Combo_Box(parent)
+    combo_box_direction = wl_boxes.Wl_Combo_Box(parent)
 
     combo_box_direction.addItems([
         parent.tr('Two-tailed'),
@@ -1056,7 +1073,7 @@ def wl_widgets_direction(parent):
 
 def wl_widgets_direction_2(parent):
     label_direction = QLabel(parent.tr('Direction:'), parent)
-    combo_box_direction = wl_box.Wl_Combo_Box(parent)
+    combo_box_direction = wl_boxes.Wl_Combo_Box(parent)
 
     combo_box_direction.addItems([
         parent.tr('Two-tailed'),
@@ -1079,7 +1096,7 @@ def wl_widgets_pick_color(parent):
         if color_picked.isValid():
             label_pick_color.set_color(color_picked.name())
 
-    label_pick_color = wl_label.Wl_Label_Html('', parent)
+    label_pick_color = wl_labels.Wl_Label_Html('', parent)
     button_pick_color = QPushButton(parent.tr('Pick Color...'), parent)
 
     label_pick_color.get_color = get_color

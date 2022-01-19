@@ -35,12 +35,12 @@ import underthesea
 
 from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
-from wl_figs import wl_fig
-from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing, wl_word_detokenization
-from wl_utils import wl_misc, wl_threading
-from wl_widgets import wl_box, wl_label, wl_layout, wl_msg, wl_table, wl_widgets
+from wl_figs import wl_figs
+from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing
+from wl_utils import wl_misc, wl_msgs, wl_threading
+from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_widgets
 
-class Wl_Table_Concordancer(wl_table.Wl_Table_Data_Sort_Search):
+class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -79,7 +79,7 @@ class Wl_Table_Concordancer(wl_table.Wl_Table_Data_Sort_Search):
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
 
-class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
+class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
@@ -90,7 +90,7 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
 
         self.checkbox_parallel_mode.stateChanged.connect(self.parallel_mode_changed)
 
-        layout_results = wl_layout.Wl_Layout()
+        layout_results = wl_layouts.Wl_Layout()
         layout_results.addWidget(self.table_concordancer.label_number_results, 0, 0)
         layout_results.addWidget(self.table_concordancer.button_results_sort, 0, 2)
         layout_results.addWidget(self.table_concordancer.button_results_search, 0, 3)
@@ -119,10 +119,10 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         self.token_checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
-        self.group_box_token_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 0, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.token_checkbox_ignore_tags, 2, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 2, 1)
@@ -168,13 +168,13 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         self.search_checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
 
-        layout_context_settings = wl_layout.Wl_Layout()
+        layout_context_settings = wl_layouts.Wl_Layout()
         layout_context_settings.addWidget(self.label_context_settings, 0, 0)
         layout_context_settings.addWidget(self.button_context_settings, 0, 1)
 
         layout_context_settings.setColumnStretch(1, 1)
 
-        self.group_box_search_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_search_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
         self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
         self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
@@ -188,7 +188,7 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         self.group_box_search_settings.layout().addWidget(self.search_checkbox_ignore_tags, 7, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addWidget(wl_layout.Wl_Separator(self), 9, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 2)
 
         self.group_box_search_settings.layout().addLayout(layout_context_settings, 10, 0, 1, 2)
 
@@ -196,32 +196,32 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
 
         self.label_width_left = QLabel(self.tr('Width (Left):'), self)
-        self.stacked_widget_width_left = wl_layout.Wl_Stacked_Widget(self)
-        self.spin_box_width_left_para = wl_box.Wl_Spin_Box(self)
-        self.spin_box_width_left_sentence = wl_box.Wl_Spin_Box(self)
-        self.spin_box_width_left_token = wl_box.Wl_Spin_Box(self)
-        self.spin_box_width_left_char = wl_box.Wl_Spin_Box(self)
+        self.stacked_widget_width_left = wl_layouts.Wl_Stacked_Widget(self)
+        self.spin_box_width_left_para = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_left_sentence = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_left_token = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_left_char = wl_boxes.Wl_Spin_Box(self)
         self.label_width_right = QLabel(self.tr('Width (Right):'), self)
-        self.stacked_widget_width_right = wl_layout.Wl_Stacked_Widget(self)
-        self.spin_box_width_right_para = wl_box.Wl_Spin_Box(self)
-        self.spin_box_width_right_sentence = wl_box.Wl_Spin_Box(self)
-        self.spin_box_width_right_token = wl_box.Wl_Spin_Box(self)
-        self.spin_box_width_right_char = wl_box.Wl_Spin_Box(self)
+        self.stacked_widget_width_right = wl_layouts.Wl_Stacked_Widget(self)
+        self.spin_box_width_right_para = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_right_sentence = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_right_token = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_right_char = wl_boxes.Wl_Spin_Box(self)
         self.label_width_unit = QLabel(self.tr('Width Unit:'), self)
-        self.combo_box_width_unit = wl_box.Wl_Combo_Box(self)
+        self.combo_box_width_unit = wl_boxes.Wl_Combo_Box(self)
 
         self.label_sampling_method = QLabel(self.tr('Sampling Method:'), self)
-        self.combo_box_sampling_method = wl_box.Wl_Combo_Box(self)
-        self.stacked_widget_sample_size_text = wl_layout.Wl_Stacked_Widget(self)
+        self.combo_box_sampling_method = wl_boxes.Wl_Combo_Box(self)
+        self.stacked_widget_sample_size_text = wl_layouts.Wl_Stacked_Widget(self)
         self.label_sample_size_first_n_lines = QLabel(self.tr('Sample Size:'), self)
         self.label_sample_size_systematic_fixed_interval = QLabel(self.tr('Sampling Interval:'), self)
         self.label_sample_size_systematic_fixed_size = QLabel(self.tr('Sample Size:'), self)
         self.label_sample_size_random = QLabel(self.tr('Sample Size:'), self)
-        self.stacked_widget_sample_size_val = wl_layout.Wl_Stacked_Widget(self)
-        self.spin_box_sample_size_first_n_lines = wl_box.Wl_Spin_Box(self)
-        self.spin_box_sample_size_systematic_fixed_interval = wl_box.Wl_Spin_Box(self)
-        self.spin_box_sample_size_systematic_fixed_size = wl_box.Wl_Spin_Box(self)
-        self.spin_box_sample_size_random = wl_box.Wl_Spin_Box(self)
+        self.stacked_widget_sample_size_val = wl_layouts.Wl_Stacked_Widget(self)
+        self.spin_box_sample_size_first_n_lines = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_sample_size_systematic_fixed_interval = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_sample_size_systematic_fixed_size = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_sample_size_random = wl_boxes.Wl_Spin_Box(self)
 
         self.stacked_widget_width_left.addWidget(self.spin_box_width_left_para)
         self.stacked_widget_width_left.addWidget(self.spin_box_width_left_sentence)
@@ -286,7 +286,7 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         self.spin_box_sample_size_systematic_fixed_size.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_sample_size_random.valueChanged.connect(self.generation_settings_changed)
 
-        layout_width = wl_layout.Wl_Layout()
+        layout_width = wl_layouts.Wl_Layout()
         layout_width.addWidget(self.label_width_left, 0, 0)
         layout_width.addWidget(self.stacked_widget_width_left, 0, 1)
         layout_width.addWidget(self.label_width_right, 1, 0)
@@ -296,10 +296,10 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
 
         layout_width.setColumnStretch(1, 1)
 
-        self.group_box_generation_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_generation_settings.layout().addLayout(layout_width, 0, 0, 1, 2)
 
-        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0, 1, 2)
+        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 2)
 
         self.group_box_generation_settings.layout().addWidget(self.label_sampling_method, 2, 0)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_sampling_method, 2, 1)
@@ -323,14 +323,14 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
 
-        self.group_box_table_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
 
         # Figure Settings
         self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
 
         self.label_sort_results_by = QLabel(self.tr('Sort results by:'), self)
-        self.combo_box_sort_results_by = wl_box.Wl_Combo_Box(self)
+        self.combo_box_sort_results_by = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_sort_results_by.addItems([
             self.tr('File'),
@@ -339,7 +339,7 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
 
         self.combo_box_sort_results_by.currentTextChanged.connect(self.fig_settings_changed)
 
-        self.group_box_fig_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_fig_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_fig_settings.layout().addWidget(self.label_sort_results_by, 0, 0)
         self.group_box_fig_settings.layout().addWidget(self.combo_box_sort_results_by, 0, 1)
 
@@ -349,7 +349,7 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         self.group_box_zapping_settings = QGroupBox(self.tr('Zapping Settings'), self)
 
         self.label_replace_keywords_with = QLabel(self.tr('Replace keywords with'), self)
-        self.spin_box_replace_keywords_with = wl_box.Wl_Spin_Box(self)
+        self.spin_box_replace_keywords_with = wl_boxes.Wl_Spin_Box(self)
         self.line_edit_replace_keywords_with = QLineEdit('_', self)
         self.checkbox_add_line_nums = QCheckBox(self.tr('Add line numbers'), self)
         self.checkbox_discard_position_info = QCheckBox(self.tr('Discard position information'), self)
@@ -365,7 +365,7 @@ class Wrapper_Concordancer(wl_layout.Wl_Wrapper):
         self.checkbox_discard_position_info.clicked.connect(self.zapping_settings_changed)
         self.checkbox_randomize_outputs.clicked.connect(self.zapping_settings_changed)
 
-        self.group_box_zapping_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_zapping_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_zapping_settings.layout().addWidget(self.label_replace_keywords_with, 0, 0)
         self.group_box_zapping_settings.layout().addWidget(self.spin_box_replace_keywords_with, 0, 1)
         self.group_box_zapping_settings.layout().addWidget(self.line_edit_replace_keywords_with, 0, 2)
@@ -662,7 +662,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             if not settings['token_settings']['puncs']:
                                 ngram = text.tokens_flat[i : i + len_search_term]
 
-                            node_text = wl_word_detokenization.wl_word_detokenize(self.main, ngram, text.lang)
+                            node_text = ' '.join(ngram)
                             node_text = wl_nlp_utils.text_escape(node_text)
 
                             # Width Unit (Paragraph)
@@ -800,14 +800,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             context_left = wl_nlp_utils.text_escape(context_left)
                             context_right = wl_nlp_utils.text_escape(context_right)
 
-                            context_left_text = wl_word_detokenization.wl_word_detokenize(
-                                self.main, context_left,
-                                lang = text.lang
-                            )
-                            context_right_text = wl_word_detokenization.wl_word_detokenize(
-                                self.main, context_right,
-                                lang = text.lang
-                            )
+                            context_left_text = ' '.join(context_left)
+                            context_right_text = ' '.join(context_right)
 
                             # Left
                             concordance_line.append([context_left_text, context_left, text_search_left])
@@ -929,10 +923,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
 
                 for search_term in search_terms_file:
                     search_terms_total.add(search_term)
-                    search_terms_labels.add(wl_word_detokenization.wl_word_detokenize(
-                        self.main, search_term,
-                        lang = text.lang
-                    ))
+                    search_terms_labels.add(' '.join(search_term))
 
                 texts.append(text)
 
@@ -1073,7 +1064,7 @@ def generate_table(main, table):
                     file_name = concordance_line[7]
 
                     # Node
-                    label_node = wl_label.Wl_Label_Html(
+                    label_node = wl_labels.Wl_Label_Html(
                         f'''
                             <span style="color: {node_color}; font-weight: bold;">
                                 &nbsp;{node_text}&nbsp;
@@ -1092,7 +1083,7 @@ def generate_table(main, table):
                     # Left
                     table.setCellWidget(
                         i, 0,
-                        wl_label.Wl_Label_Html(left_text, main)
+                        wl_labels.Wl_Label_Html(left_text, main)
                     )
 
                     table.cellWidget(i, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
@@ -1103,7 +1094,7 @@ def generate_table(main, table):
                     # Right
                     table.setCellWidget(
                         i, 2,
-                        wl_label.Wl_Label_Html(right_text, main)
+                        wl_labels.Wl_Label_Html(right_text, main)
                     )
 
                     table.cellWidget(i, 2).text_raw = right_text_raw
@@ -1136,15 +1127,15 @@ def generate_table(main, table):
 
                 table.itemChanged.emit(table.item(0, 0))
 
-                wl_msg.wl_msg_generate_table_success(main)
+                wl_msgs.wl_msg_generate_table_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
 
-                wl_msg.wl_msg_generate_table_error(main)
+                wl_msgs.wl_msg_generate_table_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
-            wl_msg.wl_msg_fatal_error(main)
+            wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['concordancer']
     files = main.wl_files.get_selected_files()
@@ -1165,9 +1156,9 @@ def generate_table(main, table):
         else:
             wl_msg_boxes.wl_msg_box_missing_search_terms(main)
 
-            wl_msg.wl_msg_generate_table_error(main)
+            wl_msgs.wl_msg_generate_table_error(main)
     else:
-        wl_msg.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_table_error(main)
 
 @wl_misc.log_timing
 def generate_fig(main):
@@ -1211,20 +1202,20 @@ def generate_fig(main):
                 matplotlib.pyplot.title(main.tr('Dispersion Plot'))
                 matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
 
-                wl_msg.wl_msg_generate_fig_success(main)
+                wl_msgs.wl_msg_generate_fig_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
 
-                wl_msg.wl_msg_generate_fig_error(main)
+                wl_msgs.wl_msg_generate_fig_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
-            wl_msg.wl_msg_fatal_error(main)
+            wl_msgs.wl_msg_fatal_error(main)
 
         dialog_progress.accept()
 
         if points:
-            wl_fig.show_fig()
+            wl_figs.show_fig()
 
     settings = main.settings_custom['concordancer']
     files = main.wl_files.get_selected_files()
@@ -1246,6 +1237,6 @@ def generate_fig(main):
         else:
             wl_msg_boxes.wl_msg_box_missing_search_terms(main)
 
-            wl_msg.wl_msg_generate_fig_error(main)
+            wl_msgs.wl_msg_generate_fig_error(main)
     else:
-        wl_msg.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_table_error(main)

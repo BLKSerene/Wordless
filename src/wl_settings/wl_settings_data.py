@@ -22,9 +22,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_widgets import wl_box, wl_layout, wl_tree
+from wl_widgets import wl_boxes, wl_layouts, wl_trees
 
-class Wl_Settings_Data(wl_tree.Wl_Settings):
+class Wl_Settings_Data(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -36,7 +36,7 @@ class Wl_Settings_Data(wl_tree.Wl_Settings):
 
         self.checkbox_continue_numbering_after_ties = QCheckBox(self.tr('Continue numbering after ties'), self)
 
-        group_box_rank_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_rank_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_rank_settings.layout().addWidget(self.checkbox_continue_numbering_after_ties, 0, 0)
 
         group_box_rank_settings.layout().setRowStretch(1, 0)
@@ -45,17 +45,17 @@ class Wl_Settings_Data(wl_tree.Wl_Settings):
         group_box_precision_settings = QGroupBox(self.tr('Precision Settings'), self)
 
         self.label_precision_decimal = QLabel(self.tr('Decimal:'), self)
-        self.spin_box_precision_decimal = wl_box.Wl_Spin_Box(self)
+        self.spin_box_precision_decimal = wl_boxes.Wl_Spin_Box(self)
         self.label_precision_pct = QLabel(self.tr('Percentage:'), self)
-        self.spin_box_precision_pct = wl_box.Wl_Spin_Box(self)
+        self.spin_box_precision_pct = wl_boxes.Wl_Spin_Box(self)
         self.label_precision_p_value = QLabel(self.tr('p-value:'), self)
-        self.spin_box_precision_p_value = wl_box.Wl_Spin_Box(self)
+        self.spin_box_precision_p_value = wl_boxes.Wl_Spin_Box(self)
 
         self.spin_box_precision_decimal.setRange(0, 10)
         self.spin_box_precision_pct.setRange(0, 10)
         self.spin_box_precision_p_value.setRange(0, 15)
 
-        group_box_precision_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_precision_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_precision_settings.layout().addWidget(self.label_precision_decimal, 0, 0)
         group_box_precision_settings.layout().addWidget(self.spin_box_precision_decimal, 0, 1)
         group_box_precision_settings.layout().addWidget(self.label_precision_pct, 1, 0)
@@ -65,7 +65,7 @@ class Wl_Settings_Data(wl_tree.Wl_Settings):
 
         group_box_precision_settings.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_rank_settings, 0, 0)
         self.layout().addWidget(group_box_precision_settings, 1, 0)
 

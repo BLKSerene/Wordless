@@ -83,7 +83,10 @@ def wl_process_tokens(main, text, token_settings):
             for i, sentence in enumerate(para):
                 para[i] = [token.lower() for token in sentence]
 
-        text.tags = [[tag.lower() for tag in tags] for tags in text.tags]
+        text.tags = [
+            [tag.lower() for tag in tags]
+            for tags in text.tags
+        ]
 
     # Words
     if settings['words']:
@@ -214,7 +217,7 @@ def wl_process_tokens_overview(main, text, token_settings):
 
     # Syllable tokenization
     text.syls_tokens = wl_syl_tokenization.wl_syl_tokenize_no_puncs(main, text.tokens_flat, lang = text.lang)
-
+    
     return text
 
 def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_lines = False):
@@ -227,7 +230,7 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
         tokens = [
             token
             for token in tokens
-            if not wl_checking_token.is_punc(token)
+            if not wl_checking_tokens.is_punc(token)
         ]
 
         # Update offsets
@@ -243,7 +246,7 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
 
                 for token in sentence:
                     if text.tokens_flat:
-                        if wl_checking_token.is_punc(token):
+                        if wl_checking_tokens.is_punc(token):
                             text.tokens_flat[-1] = wl_word_detokenization.wl_word_detokenize(
                                 main, [text.tokens_flat[-1], token],
                                 lang = text.lang
@@ -259,7 +262,7 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
             text.offsets_sentences = sorted(set(text.offsets_sentences))
 
         # Check if the first token is a punctuation mark
-        if wl_checking_token.is_punc(text.tokens_flat[0]):
+        if wl_checking_tokens.is_punc(text.tokens_flat[0]):
             tokens.insert(0, [])
 
     # Ignore tags

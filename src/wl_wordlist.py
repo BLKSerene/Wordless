@@ -30,12 +30,12 @@ import numpy
 
 from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
-from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
+from wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
-from wl_utils import wl_misc, wl_sorting, wl_threading
-from wl_widgets import wl_layout, wl_msg, wl_table, wl_widgets
+from wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
+from wl_widgets import wl_layouts, wl_tables, wl_widgets
 
-class Wl_Table_Wordlist(wl_table.Wl_Table_Data_Filter_Search):
+class Wl_Table_Wordlist(wl_tables.Wl_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -64,14 +64,14 @@ class Wl_Table_Wordlist(wl_table.Wl_Table_Data_Filter_Search):
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
 
-class Wrapper_Wordlist(wl_layout.Wl_Wrapper):
+class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
         # Table
         self.table_wordlist = Wl_Table_Wordlist(self)
 
-        layout_results = wl_layout.Wl_Layout()
+        layout_results = wl_layouts.Wl_Layout()
         layout_results.addWidget(self.table_wordlist.label_number_results, 0, 0)
         layout_results.addWidget(self.table_wordlist.button_results_filter, 0, 2)
         layout_results.addWidget(self.table_wordlist.button_results_search, 0, 3)
@@ -119,7 +119,7 @@ class Wrapper_Wordlist(wl_layout.Wl_Wrapper):
         self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
-        self.group_box_token_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lowercase, 0, 1)
         self.group_box_token_settings.layout().addWidget(self.checkbox_uppercase, 1, 0)
@@ -127,13 +127,13 @@ class Wrapper_Wordlist(wl_layout.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_nums, 2, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 2, 1)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 3, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.checkbox_treat_as_lowercase, 4, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lemmatize_tokens, 5, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_filter_stop_words, 6, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 7, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 7, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 8, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
@@ -160,19 +160,19 @@ class Wrapper_Wordlist(wl_layout.Wl_Wrapper):
         self.combo_box_measure_dispersion.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_adjusted_freq.currentTextChanged.connect(self.generation_settings_changed)
 
-        layout_settings_measures = wl_layout.Wl_Layout()
+        layout_settings_measures = wl_layouts.Wl_Layout()
         layout_settings_measures.addWidget(self.label_settings_measures, 0, 0)
         layout_settings_measures.addWidget(self.button_settings_measures, 0, 1)
 
         layout_settings_measures.setColumnStretch(1, 1)
 
-        self.group_box_generation_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_measure_dispersion, 0, 0)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_dispersion, 1, 0)
         self.group_box_generation_settings.layout().addWidget(self.label_measure_adjusted_freq, 2, 0)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_adjusted_freq, 3, 0)
 
-        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 4, 0)
+        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 4, 0)
 
         self.group_box_generation_settings.layout().addLayout(layout_settings_measures, 5, 0)
 
@@ -192,7 +192,7 @@ class Wrapper_Wordlist(wl_layout.Wl_Wrapper):
         self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_breakdown.stateChanged.connect(self.table_settings_changed)
 
-        self.group_box_table_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
@@ -235,7 +235,7 @@ class Wrapper_Wordlist(wl_layout.Wl_Wrapper):
         self.spin_box_rank_max.valueChanged.connect(self.fig_settings_changed)
         self.checkbox_rank_max_no_limit.stateChanged.connect(self.fig_settings_changed)
 
-        layout_fig_settings_combo_boxes = wl_layout.Wl_Layout()
+        layout_fig_settings_combo_boxes = wl_layouts.Wl_Layout()
         layout_fig_settings_combo_boxes.addWidget(self.label_graph_type, 0, 0)
         layout_fig_settings_combo_boxes.addWidget(self.combo_box_graph_type, 0, 1)
         layout_fig_settings_combo_boxes.addWidget(self.label_sort_by_file, 1, 0)
@@ -247,10 +247,10 @@ class Wrapper_Wordlist(wl_layout.Wl_Wrapper):
 
         layout_fig_settings_combo_boxes.setColumnStretch(1, 1)
 
-        self.group_box_fig_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_fig_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_fig_settings.layout().addLayout(layout_fig_settings_combo_boxes, 0, 0, 1, 3)
 
-        self.group_box_fig_settings.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0, 1, 3)
+        self.group_box_fig_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 3)
 
         self.group_box_fig_settings.layout().addWidget(self.label_rank, 2, 0, 1, 3)
         self.group_box_fig_settings.layout().addWidget(self.label_rank_min, 3, 0)
@@ -593,7 +593,7 @@ def generate_table(main, table):
                     table.set_item_num(i, 0, -1)
 
                     # Token
-                    table.setItem(i, 1, wl_table.Wl_Table_Item(token))
+                    table.setItem(i, 1, wl_tables.Wl_Table_Item(token))
 
                     # Frequency
                     for j, freq in enumerate(freq_files):
@@ -624,15 +624,15 @@ def generate_table(main, table):
 
                 table.itemChanged.emit(table.item(0, 0))
 
-                wl_msg.wl_msg_generate_table_success(main)
+                wl_msgs.wl_msg_generate_table_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
 
-                wl_msg.wl_msg_generate_table_error(main)
+                wl_msgs.wl_msg_generate_table_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
-            wl_msg.wl_msg_fatal_error(main)
+            wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['wordlist']
     files = main.wl_files.get_selected_files()
@@ -649,7 +649,7 @@ def generate_table(main, table):
         thread_wordlist_table = wl_threading.Wl_Thread(worker_wordlist_table)
         thread_wordlist_table.start_worker()
     else:
-        wl_msg.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_table_error(main)
 
 @wl_misc.log_timing
 def generate_fig(main):
@@ -663,7 +663,7 @@ def generate_fig(main):
                 col_adjusted_freq = main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col']
                 
                 if settings['fig_settings']['use_data'] == main.tr('Frequency'):
-                    wl_fig_freq.wl_fig_freq(
+                    wl_figs_freqs.wl_fig_freq(
                         main, tokens_freq_files,
                         settings = settings['fig_settings'],
                         label_x = main.tr('Token')
@@ -684,27 +684,27 @@ def generate_fig(main):
 
                         label_y = col_adjusted_freq
 
-                    wl_fig_stat.wl_fig_stat(
+                    wl_figs_stats.wl_fig_stat(
                         main, tokens_stat_files,
                         settings = settings['fig_settings'],
                         label_x = main.tr('Token'),
                         label_y = label_y
                     )
 
-                wl_msg.wl_msg_generate_fig_success(main)
+                wl_msgs.wl_msg_generate_fig_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
 
-                wl_msg.wl_msg_generate_fig_error(main)
+                wl_msgs.wl_msg_generate_fig_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
-            wl_msg.wl_msg_fatal_error(main)
+            wl_msgs.wl_msg_fatal_error(main)
 
         dialog_progress.accept()
 
         if tokens_freq_files:
-            wl_fig.show_fig()
+            wl_figs.show_fig()
 
     settings = main.settings_custom['wordlist']
     files = main.wl_files.get_selected_files()
@@ -721,4 +721,4 @@ def generate_fig(main):
         thread_wordlist_fig = wl_threading.Wl_Thread(worker_wordlist_fig)
         thread_wordlist_fig.start_worker()
     else:
-        wl_msg.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_table_error(main)
