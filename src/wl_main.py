@@ -697,17 +697,6 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
             name = f'<a href="{home_page}">{name}</a>'
             license = f'<a href="{licence_url}">{license}</a>'
 
-            # Pad cells with whitespace
-            name = name.replace('<br>', '&nbsp;<br>&nbsp;')
-            ver = ver.replace('<br>', '&nbsp;<br>&nbsp;')
-            authors = authors.replace('<br>', '&nbsp;<br>&nbsp;')
-            license = license.replace('<br>', '&nbsp;<br>&nbsp;')
-
-            name = f'&nbsp;{name}&nbsp;'
-            ver = f'&nbsp;{ver}&nbsp;'
-            authors = f'&nbsp;{authors}&nbsp;'
-            license = f'&nbsp;{license}&nbsp;'
-
             self.table_acks.setCellWidget(i, 0, wl_label.Wl_Label_Html(name, self))
             self.table_acks.setCellWidget(i, 1, wl_label.Wl_Label_Html_Centered(ver, self))
             self.table_acks.setCellWidget(i, 2, wl_label.Wl_Label_Html(authors, self))
