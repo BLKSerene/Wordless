@@ -30,7 +30,7 @@ from PyQt5.QtWidgets import *
 import nltk
 import numpy
 
-from wl_checking import wl_checking_file
+from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
 from wl_measures import wl_measures_statistical_significance
@@ -1214,7 +1214,7 @@ def generate_table(main, table):
     settings = main.settings_custom['collocation']
     files = main.wl_files.get_selected_files()
 
-    if wl_checking_file.check_files_on_loading(main, files):
+    if wl_checking_files.check_files_on_loading(main, files):
         if (not settings['search_settings']['search_settings'] or
             not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
@@ -1362,7 +1362,7 @@ def generate_fig(main):
     settings = main.settings_custom['collocation']
     files = main.wl_files.get_selected_files()
 
-    if wl_checking_file.check_files_on_loading(main, files):
+    if wl_checking_files.check_files_on_loading(main, files):
         if (not settings['search_settings']['search_settings'] or
             not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
