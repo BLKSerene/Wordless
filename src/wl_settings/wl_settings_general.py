@@ -25,9 +25,9 @@ from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialogs_misc
 from wl_utils import wl_conversion
-from wl_widgets import wl_box, wl_layout, wl_tree
+from wl_widgets import wl_boxes, wl_layouts, wl_trees
 
-class Wl_Settings_General(wl_tree.Wl_Settings):
+class Wl_Settings_General(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -38,9 +38,9 @@ class Wl_Settings_General(wl_tree.Wl_Settings):
         group_box_font_settings = QGroupBox(self.tr('Font Settings'), self)
 
         self.label_font_family = QLabel(self.tr('Font Family:'), self)
-        self.combo_box_font_family = wl_box.Wl_Combo_Box_Font_Family(self)
+        self.combo_box_font_family = wl_boxes.Wl_Combo_Box_Font_Family(self)
         self.label_font_size = QLabel(self.tr('Font Size:'), self)
-        self.combo_box_font_size = wl_box.Wl_Combo_Box_Font_Size(self)
+        self.combo_box_font_size = wl_boxes.Wl_Combo_Box_Font_Size(self)
 
         group_box_font_settings.setLayout(QGridLayout())
         group_box_font_settings.layout().addWidget(self.label_font_family, 0, 0)
@@ -55,7 +55,7 @@ class Wl_Settings_General(wl_tree.Wl_Settings):
 
         self.checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for updates on startup'), self)
 
-        group_box_update_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_update_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_update_settings.layout().addWidget(self.checkbox_check_updates_on_startup, 0, 0)
 
         # Miscellaneous
@@ -63,10 +63,10 @@ class Wl_Settings_General(wl_tree.Wl_Settings):
 
         self.checkbox_confirm_on_exit = QCheckBox(self.tr('Always confirm on exit'), self)
 
-        group_box_misc.setLayout(wl_layout.Wl_Layout())
+        group_box_misc.setLayout(wl_layouts.Wl_Layout())
         group_box_misc.layout().addWidget(self.checkbox_confirm_on_exit, 0, 0)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_font_settings, 0, 0)
         self.layout().addWidget(group_box_update_settings, 1, 0)
         self.layout().addWidget(group_box_misc, 2, 0)
@@ -128,7 +128,7 @@ class Wl_Settings_General(wl_tree.Wl_Settings):
 
             return False
 
-class Wl_Settings_Import(wl_tree.Wl_Settings):
+class Wl_Settings_Import(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -144,7 +144,7 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
 
         self.button_import_files_browse.clicked.connect(self.browse_files)
 
-        group_box_import_files.setLayout(wl_layout.Wl_Layout())
+        group_box_import_files.setLayout(wl_layouts.Wl_Layout())
         group_box_import_files.layout().addWidget(self.label_import_files_default_path, 0, 0)
         group_box_import_files.layout().addWidget(self.line_edit_import_files_default_path, 0, 1)
         group_box_import_files.layout().addWidget(self.button_import_files_browse, 0, 2)
@@ -156,13 +156,13 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
         self.line_edit_import_search_terms_default_path = QLineEdit(self)
         self.button_import_search_terms_browse = QPushButton(self.tr('Browse'), self)
         self.label_import_search_terms_default_encoding = QLabel(self.tr('Default Encoding:'), self)
-        self.combo_box_import_search_terms_default_encoding = wl_box.Wl_Combo_Box_Encoding(self)
+        self.combo_box_import_search_terms_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
         self.checkbox_import_search_terms_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'))
 
         self.button_import_search_terms_browse.clicked.connect(self.browse_search_terms)
         self.checkbox_import_search_terms_detect_encodings.stateChanged.connect(self.detect_encodings_changed)
 
-        group_box_import_search_terms.setLayout(wl_layout.Wl_Layout())
+        group_box_import_search_terms.setLayout(wl_layouts.Wl_Layout())
         group_box_import_search_terms.layout().addWidget(self.label_import_search_terms_default_path, 0, 0)
         group_box_import_search_terms.layout().addWidget(self.line_edit_import_search_terms_default_path, 0, 1)
         group_box_import_search_terms.layout().addWidget(self.button_import_search_terms_browse, 0, 2)
@@ -177,13 +177,13 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
         self.line_edit_import_stop_words_default_path = QLineEdit(self)
         self.button_import_stop_words_browse = QPushButton(self.tr('Browse'), self)
         self.label_import_stop_words_default_encoding = QLabel(self.tr('Default Encoding:'), self)
-        self.combo_box_import_stop_words_default_encoding = wl_box.Wl_Combo_Box_Encoding(self)
+        self.combo_box_import_stop_words_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
         self.checkbox_import_stop_words_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'))
 
         self.button_import_stop_words_browse.clicked.connect(self.browse_stop_words)
         self.checkbox_import_stop_words_detect_encodings.stateChanged.connect(self.detect_encodings_changed)
 
-        group_box_import_stop_words.setLayout(wl_layout.Wl_Layout())
+        group_box_import_stop_words.setLayout(wl_layouts.Wl_Layout())
         group_box_import_stop_words.layout().addWidget(self.label_import_stop_words_default_path, 0, 0)
         group_box_import_stop_words.layout().addWidget(self.line_edit_import_stop_words_default_path, 0, 1)
         group_box_import_stop_words.layout().addWidget(self.button_import_stop_words_browse, 0, 2)
@@ -200,12 +200,12 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
 
         self.button_import_temp_files_browse.clicked.connect(self.browse_temp_files)
 
-        group_box_import_temp_files.setLayout(wl_layout.Wl_Layout())
+        group_box_import_temp_files.setLayout(wl_layouts.Wl_Layout())
         group_box_import_temp_files.layout().addWidget(self.label_import_temp_files_default_path, 0, 0)
         group_box_import_temp_files.layout().addWidget(self.line_edit_import_temp_files_default_path, 0, 1)
         group_box_import_temp_files.layout().addWidget(self.button_import_temp_files_browse, 0, 2)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_import_files, 0, 0)
         self.layout().addWidget(group_box_import_search_terms, 1, 0)
         self.layout().addWidget(group_box_import_stop_words, 2, 0)
@@ -325,7 +325,7 @@ class Wl_Settings_Import(wl_tree.Wl_Settings):
 
         return True
 
-class Wl_Settings_Export(wl_tree.Wl_Settings):
+class Wl_Settings_Export(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -339,16 +339,16 @@ class Wl_Settings_Export(wl_tree.Wl_Settings):
         self.line_edit_export_tables_default_path = QLineEdit(self)
         self.button_export_tables_default_path = QPushButton(self.tr('Browse'), self)
         self.label_export_tables_default_type = QLabel(self.tr('Default Type:'), self)
-        self.combo_box_export_tables_default_type = wl_box.Wl_Combo_Box(self)
+        self.combo_box_export_tables_default_type = wl_boxes.Wl_Combo_Box(self)
         self.label_export_tables_default_encoding = QLabel(self.tr('Default Encoding:'), self)
-        self.combo_box_export_tables_default_encoding = wl_box.Wl_Combo_Box_Encoding(self.main)
+        self.combo_box_export_tables_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self.main)
 
         self.combo_box_export_tables_default_type.addItems(self.main.settings_global['file_types']['export_tables'])
 
         self.button_export_tables_default_path.clicked.connect(self.browse_tables)
         self.combo_box_export_tables_default_type.currentTextChanged.connect(self.tables_default_type_changed)
 
-        group_box_export_tables.setLayout(wl_layout.Wl_Layout())
+        group_box_export_tables.setLayout(wl_layouts.Wl_Layout())
         group_box_export_tables.layout().addWidget(self.label_export_tables_default_path, 0, 0)
         group_box_export_tables.layout().addWidget(self.line_edit_export_tables_default_path, 0, 1)
         group_box_export_tables.layout().addWidget(self.button_export_tables_default_path, 0, 2)
@@ -364,11 +364,11 @@ class Wl_Settings_Export(wl_tree.Wl_Settings):
         self.line_edit_export_search_terms_default_path = QLineEdit(self)
         self.button_export_search_terms_default_path = QPushButton(self.tr('Browse'), self)
         self.label_export_search_terms_default_encoding = QLabel(self.tr('Default Encoding:'), self)
-        self.combo_box_export_search_terms_default_encoding = wl_box.Wl_Combo_Box_Encoding(self)
+        self.combo_box_export_search_terms_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
 
         self.button_export_search_terms_default_path.clicked.connect(self.browse_search_terms)
 
-        group_box_export_search_terms.setLayout(wl_layout.Wl_Layout())
+        group_box_export_search_terms.setLayout(wl_layouts.Wl_Layout())
         group_box_export_search_terms.layout().addWidget(self.label_export_search_terms_default_path, 0, 0)
         group_box_export_search_terms.layout().addWidget(self.line_edit_export_search_terms_default_path, 0, 1)
         group_box_export_search_terms.layout().addWidget(self.button_export_search_terms_default_path, 0, 2)
@@ -382,18 +382,18 @@ class Wl_Settings_Export(wl_tree.Wl_Settings):
         self.line_edit_export_stop_words_default_path = QLineEdit(self)
         self.button_export_stop_words_default_path = QPushButton(self.tr('Browse'), self)
         self.label_export_stop_words_default_encoding = QLabel(self.tr('Default Encoding:'), self)
-        self.combo_box_export_stop_words_default_encoding = wl_box.Wl_Combo_Box_Encoding(self)
+        self.combo_box_export_stop_words_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
 
         self.button_export_stop_words_default_path.clicked.connect(self.browse_stop_words)
 
-        group_box_export_stop_words.setLayout(wl_layout.Wl_Layout())
+        group_box_export_stop_words.setLayout(wl_layouts.Wl_Layout())
         group_box_export_stop_words.layout().addWidget(self.label_export_stop_words_default_path, 0, 0)
         group_box_export_stop_words.layout().addWidget(self.line_edit_export_stop_words_default_path, 0, 1)
         group_box_export_stop_words.layout().addWidget(self.button_export_stop_words_default_path, 0, 2)
         group_box_export_stop_words.layout().addWidget(self.label_export_stop_words_default_encoding, 1, 0)
         group_box_export_stop_words.layout().addWidget(self.combo_box_export_stop_words_default_encoding, 1, 1, 1, 2)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_export_tables, 0, 0)
         self.layout().addWidget(group_box_export_search_terms, 1, 0)
         self.layout().addWidget(group_box_export_stop_words, 2, 0)

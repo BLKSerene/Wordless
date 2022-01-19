@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Widgets - Message
+# Wordless: Utilities - Messages
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -47,16 +47,3 @@ def wl_msg_results_search_error(main):
 
 def wl_msg_results_sort(main):
     main.statusBar().showMessage(main.tr('The results in the table has been successfully sorted.'))
-
-def wl_msg_import_list_success(main, num_prev, num_cur):
-    num_imported = num_cur - num_prev
-
-    if num_imported == 0:
-        main.statusBar().showMessage(main.tr('No items were imported into the list.'))
-    elif num_imported == 1:
-        main.statusBar().showMessage(main.tr('1 item has been successfully imported into the list.'))
-    else:
-        main.statusBar().showMessage(main.tr(f'{num_imported:,} items have been successfully imported into the list.'))
-
-def wl_msg_import_list_error(main):
-    main.statusBar().showMessage(main.tr('An error occured during import!'))

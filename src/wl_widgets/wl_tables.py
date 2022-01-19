@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Widgets - Table
+# Wordless: Widgets - Tables
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -34,8 +34,8 @@ import openpyxl
 from wl_checking import wl_checking_misc
 from wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
 from wl_nlp import wl_matching, wl_nlp_utils, wl_word_detokenization
-from wl_utils import wl_misc, wl_threading
-from wl_widgets import wl_box, wl_button, wl_label, wl_layout, wl_msg, wl_widgets
+from wl_utils import wl_misc, wl_msgs, wl_threading
+from wl_widgets import wl_boxes, wl_buttons, wl_labels, wl_layouts, wl_widgets
 
 class Wl_Worker_Export_Table(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(bool, str)
@@ -916,7 +916,7 @@ class Wl_Table(QTableWidget):
 
                     self.item(row_dropped + row, col).setSelected(True)
                 elif isinstance(item, QComboBox):
-                    item_combo_box = wl_box.Wl_Combo_Box(self)
+                    item_combo_box = wl_boxes.Wl_Combo_Box(self)
                     item_combo_box.addItems([item.itemText(i) for i in range(item.count())])
                     item_combo_box.setCurrentText(item.currentText())
 
@@ -1157,13 +1157,18 @@ class Wl_Table_Data(Wl_Table):
         else:
             self.button_export_all.setEnabled(False)
 
+        if [i for i in range(self.columnCount()) if self.item(0, i)]:
+            self.button_clear.setEnabled(True)
+        else:
+            self.button_clear.setEnabled(False)
+
         super().item_changed()
 
         self.selection_changed()
 
     def selection_changed(self):
         for table in [self] + self.linked_tables:
-            if table.selectedIndexes() and [i for i in range(table.columnCount()) if table.item(0, i)]:
+            if [i for i in range(table.columnCount()) if table.item(0, i)] and [i for i in range(self.rowCount()) if not self.isRowHidden(i)] and table.selectedIndexes():
                 self.button_export_selected.setEnabled(True)
 
                 break
@@ -1523,7 +1528,7 @@ class Wl_Table_Data(Wl_Table):
 
         # Ask for confirmation if results have not been exported
         if confirm:
-            if not self.results_exported and self.item(0, 0) or self.cellWidget(0, 0):
+            if not self.results_exported and (self.item(0, 0) or self.cellWidget(0, 0)):
                 dialog_clear_table = wl_dialogs_misc.WL_Dialog_Clear_Table(self.main)
                 result = dialog_clear_table.exec_()
 
@@ -1668,7 +1673,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         # Pad with spaces
         self.button_clear_hightlights = QPushButton(self.tr(' Clear Highlights '), self)
         
-        self.button_restore_default_settings = wl_button.Wl_Button_Restore_Default_Settings(self)
+        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
@@ -1691,7 +1696,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         
         self.button_close.clicked.connect(self.reject)
 
-        layout_buttons_right = wl_layout.Wl_Layout()
+        layout_buttons_right = wl_layouts.Wl_Layout()
         layout_buttons_right.addWidget(self.button_find_next, 0, 0)
         layout_buttons_right.addWidget(self.button_find_prev, 1, 0)
         layout_buttons_right.addWidget(self.button_find_all, 2, 0)
@@ -1699,13 +1704,13 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
 
         layout_buttons_right.setRowStretch(4, 1)
 
-        layout_buttons_bottom = wl_layout.Wl_Layout()
+        layout_buttons_bottom = wl_layouts.Wl_Layout()
         layout_buttons_bottom.addWidget(self.button_restore_default_settings, 0, 0)
         layout_buttons_bottom.addWidget(self.button_close, 0, 2)
 
         layout_buttons_bottom.setColumnStretch(1, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.label_search_term, 0, 0)
         self.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
         self.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
@@ -1719,10 +1724,10 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.layout().addWidget(self.checkbox_ignore_tags, 7, 0, 1, 2)
         self.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
-        self.layout().addWidget(wl_layout.Wl_Separator(self, orientation = 'Vertical'), 0, 2, 9, 1)
+        self.layout().addWidget(wl_layouts.Wl_Separator(self, orientation = 'Vertical'), 0, 2, 9, 1)
         self.layout().addLayout(layout_buttons_right, 0, 3, 9, 1)
 
-        self.layout().addWidget(wl_layout.Wl_Separator(self), 9, 0, 1, 4)
+        self.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 4)
         self.layout().addLayout(layout_buttons_bottom, 10, 0, 1, 4)
 
         self.main.wl_work_area.currentChanged.connect(self.reject)
@@ -1887,7 +1892,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             else:
                 wl_msg_boxes.wl_msg_box_no_search_results(self.main)
 
-            wl_msg.wl_msg_results_search_success(self.main, self.items_found)
+            wl_msgs.wl_msg_results_search_success(self.main, self.items_found)
 
         if (not self.settings['multi_search_mode'] and self.settings['search_term'] or
             self.settings['multi_search_mode'] and self.settings['search_terms']):
@@ -1907,7 +1912,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         else:
             wl_msg_boxes.wl_msg_box_missing_search_terms(self.main)
 
-            wl_msg.wl_msg_results_search_error(self.main)
+            wl_msgs.wl_msg_results_search_error(self.main)
 
     def clear_highlights(self):
         if self.items_found:
@@ -1952,7 +1957,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
     def add_tables(self, tables):
         self.tables.extend(tables)
 
-class Wl_Button_Results_Search(wl_button.Wl_Button):
+class Wl_Button_Results_Search(wl_buttons.Wl_Button):
     def __init__(self, parent, tab, table):
         super().__init__(parent.tr('Search in Results'), parent)
 
@@ -1988,7 +1993,7 @@ class Wl_Table_Data_Search(Wl_Table_Data):
         )
 
         self.label_number_results = QLabel()
-        self.button_results_search = wl_button.Wl_Button_Results_Search(
+        self.button_results_search = wl_buttons.Wl_Button_Results_Search(
             self,
             tab = self.tab,
             table = self
@@ -2273,8 +2278,8 @@ class Wl_Table_Results_Sort_Conordancer(Wl_Table):
         combo_box_sorting_col.text_old = combo_box_sorting_col.currentText()
 
     def _new_row(self):
-        combo_box_sorting_col = wl_box.Wl_Combo_Box(self)
-        combo_box_sorting_order = wl_box.Wl_Combo_Box(self)
+        combo_box_sorting_col = wl_boxes.Wl_Combo_Box(self)
+        combo_box_sorting_order = wl_boxes.Wl_Combo_Box(self)
 
         combo_box_sorting_col.addItems(self.cols_to_sort)
         combo_box_sorting_order.addItems([
@@ -2388,7 +2393,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
         self.table_sort = Wl_Table_Results_Sort_Conordancer(self, table = self.tables[0])
 
-        self.button_restore_default_settings = wl_button.Wl_Button_Restore_Default_Settings(self)
+        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self)
         self.button_sort = QPushButton(self.tr('Sort'), self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
@@ -2402,7 +2407,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
         self.button_close.clicked.connect(self.reject)
 
-        layout_table_sort = wl_layout.Wl_Layout()
+        layout_table_sort = wl_layouts.Wl_Layout()
         layout_table_sort.addWidget(self.table_sort, 0, 0, 4, 1)
         layout_table_sort.addWidget(self.table_sort.button_add, 0, 1)
         layout_table_sort.addWidget(self.table_sort.button_insert, 1, 1)
@@ -2410,17 +2415,17 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
         layout_table_sort.setRowStretch(3, 1)
 
-        layout_buttons = wl_layout.Wl_Layout()
+        layout_buttons = wl_layouts.Wl_Layout()
         layout_buttons.addWidget(self.button_restore_default_settings, 0, 0)
         layout_buttons.addWidget(self.button_sort, 0, 2)
         layout_buttons.addWidget(self.button_close, 0, 3)
 
         layout_buttons.setColumnStretch(1, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addLayout(layout_table_sort, 0, 0)
 
-        self.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0)
+        self.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0)
         self.layout().addLayout(layout_buttons, 2, 0)
 
         self.set_fixed_size()
@@ -2435,9 +2440,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             # Create new labels
             for i, (left_old, node_old, right_old,
                     _, _, _, _, _, _, _, _) in enumerate(results):
-                left_new = wl_label.Wl_Label_Html('', self.tables[0])
-                node_new = wl_label.Wl_Label_Html(node_old.text(), self.tables[0])
-                right_new = wl_label.Wl_Label_Html('', self.tables[0])
+                left_new = wl_labels.Wl_Label_Html('', self.tables[0])
+                node_new = wl_labels.Wl_Label_Html(node_old.text(), self.tables[0])
+                right_new = wl_labels.Wl_Label_Html('', self.tables[0])
 
                 left_new.text_raw = left_old.text_raw.copy()
                 node_new.text_raw = node_old.text_raw.copy()
@@ -2562,7 +2567,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             thread_results_sort_concordancer = wl_threading.Wl_Thread(worker_results_sort_concordancer)
             thread_results_sort_concordancer.start_worker()
 
-        wl_msg.wl_msg_results_sort(self.main)
+        wl_msgs.wl_msg_results_sort(self.main)
 
     @wl_misc.log_timing
     def sort_results_parallel(self):
@@ -2574,10 +2579,10 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                   no_seg_src, no_seg_pct_src),
                  (parallel_text_old,
                   no_seg_tgt, no_seg_pct_tgt)) in zip(results_src, results_tgt):
-                left_new = wl_label.Wl_Label_Html('', self.tables[0])
-                node_new = wl_label.Wl_Label_Html(node_old.text(), self.tables[0])
-                right_new = wl_label.Wl_Label_Html('', self.tables[0])
-                parallel_text_new = wl_label.Wl_Label_Html(parallel_text_old.text(), self.tables[1])
+                left_new = wl_labels.Wl_Label_Html('', self.tables[0])
+                node_new = wl_labels.Wl_Label_Html(node_old.text(), self.tables[0])
+                right_new = wl_labels.Wl_Label_Html('', self.tables[0])
+                parallel_text_new = wl_labels.Wl_Label_Html(parallel_text_old.text(), self.tables[1])
 
                 left_new.text_raw = left_old.text_raw.copy()
                 node_new.text_raw = node_old.text_raw.copy()
@@ -2701,12 +2706,12 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             thread_results_sort_concordancer_parallel = wl_threading.Wl_Thread(worker_results_sort_concordancer_parallel)
             thread_results_sort_concordancer_parallel.start_worker()
 
-        wl_msg.wl_msg_results_sort(self.main)
+        wl_msgs.wl_msg_results_sort(self.main)
 
     def add_tables(self, tables):
         self.tables.extend(tables)
 
-class Wl_Button_Results_Sort(wl_button.Wl_Button):
+class Wl_Button_Results_Sort(wl_buttons.Wl_Button):
     def __init__(self, parent, table):
         super().__init__(parent.tr('Sort Results'), parent)
 
@@ -3246,10 +3251,10 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         self.settings = self.main.settings_custom[self.tab]['filter_results']
 
         self.label_file_to_filter = QLabel(self.tr('File to Filter:'), self)
-        self.combo_box_file_to_filter = wl_box.Wl_Combo_Box_File_To_Filter(self, self.table)
+        self.combo_box_file_to_filter = wl_boxes.Wl_Combo_Box_File_To_Filter(self, self.table)
         self.button_filter = QPushButton(self.tr('Filter'), self)
 
-        self.button_restore_default_settings = wl_button.Wl_Button_Restore_Default_Settings(self)
+        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
         self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
@@ -3258,28 +3263,28 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
 
         self.main.wl_work_area.currentChanged.connect(self.reject)
 
-        layout_file_to_filter = wl_layout.Wl_Layout()
+        layout_file_to_filter = wl_layouts.Wl_Layout()
         layout_file_to_filter.addWidget(self.label_file_to_filter, 0, 0)
         layout_file_to_filter.addWidget(self.combo_box_file_to_filter, 0, 1)
         layout_file_to_filter.addWidget(self.button_filter, 0, 2)
 
         layout_file_to_filter.setColumnStretch(1, 1)
 
-        self.layout_filters = wl_layout.Wl_Layout()
+        self.layout_filters = wl_layouts.Wl_Layout()
 
-        layout_buttons = wl_layout.Wl_Layout()
+        layout_buttons = wl_layouts.Wl_Layout()
         layout_buttons.addWidget(self.button_restore_default_settings, 0, 0)
         layout_buttons.addWidget(self.button_close, 0, 2)
 
         layout_buttons.setColumnStretch(1, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addLayout(layout_file_to_filter, 0, 0)
 
-        self.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0)
+        self.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0)
         self.layout().addLayout(self.layout_filters, 2, 0)
 
-        self.layout().addWidget(wl_layout.Wl_Separator(self), 3, 0)
+        self.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0)
         self.layout().addLayout(layout_buttons, 4, 0)
 
         self.set_fixed_size()
@@ -3469,7 +3474,7 @@ class Wl_Dialog_Results_Filter_Wordlist(Wl_Dialog_Results_Filter):
         self.layout_filters.addWidget(self.spin_box_num_files_found_max, 8, 1)
         self.layout_filters.addWidget(self.checkbox_num_files_found_max_no_limit, 8, 2)
 
-        self.layout_filters.addWidget(wl_layout.Wl_Separator(self, orientation = 'Vertical'), 0, 3, 9, 1)
+        self.layout_filters.addWidget(wl_layouts.Wl_Separator(self, orientation = 'Vertical'), 0, 3, 9, 1)
 
         self.load_settings()
 
@@ -3561,7 +3566,7 @@ class Wl_Dialog_Results_Filter_Wordlist(Wl_Dialog_Results_Filter):
         def update_gui():
             self.table.filter_table()
 
-            wl_msg.wl_msg_results_filter_success(self.main)
+            wl_msgs.wl_msg_results_filter_success(self.main)
 
         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Filtering results...'))
 
@@ -3594,7 +3599,7 @@ class Wl_Dialog_Results_Filter_Collocation(Wl_Dialog_Results_Filter):
         )
 
         self.label_freq = QLabel(self.tr('Frequency:'), self)
-        self.combo_box_freq_position = wl_box.Wl_Combo_Box(self)
+        self.combo_box_freq_position = wl_boxes.Wl_Combo_Box(self)
         (
             self.label_freq_min,
             self.spin_box_freq_min,
@@ -3700,7 +3705,7 @@ class Wl_Dialog_Results_Filter_Collocation(Wl_Dialog_Results_Filter):
 
         self.table.itemChanged.connect(self.table_item_changed)
 
-        layout_freq_position = wl_layout.Wl_Layout()
+        layout_freq_position = wl_layouts.Wl_Layout()
         layout_freq_position.addWidget(self.label_freq, 0, 0)
         layout_freq_position.addWidget(self.combo_box_freq_position, 0, 1, Qt.AlignRight)
 
@@ -3760,7 +3765,7 @@ class Wl_Dialog_Results_Filter_Collocation(Wl_Dialog_Results_Filter):
         self.layout_filters.addWidget(self.spin_box_num_files_found_max, 11, 1)
         self.layout_filters.addWidget(self.checkbox_num_files_found_max_no_limit, 11, 2)
 
-        self.layout_filters.addWidget(wl_layout.Wl_Separator(self, orientation = 'Vertical'), 0, 3, 12, 1)
+        self.layout_filters.addWidget(wl_layouts.Wl_Separator(self, orientation = 'Vertical'), 0, 3, 12, 1)
 
         self.load_settings()
 
@@ -3916,7 +3921,7 @@ class Wl_Dialog_Results_Filter_Collocation(Wl_Dialog_Results_Filter):
         def update_gui():
             self.table.filter_table()
 
-            wl_msg.wl_msg_results_filter_success(self.main)
+            wl_msgs.wl_msg_results_filter_success(self.main)
 
         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Filtering results...'))
 
@@ -4109,7 +4114,7 @@ class Wl_Dialog_Results_Filter_Keyword(Wl_Dialog_Results_Filter):
         self.layout_filters.addWidget(self.spin_box_num_files_found_max, 11, 1)
         self.layout_filters.addWidget(self.checkbox_num_files_found_max_no_limit, 11, 2)
 
-        self.layout_filters.addWidget(wl_layout.Wl_Separator(self, orientation = 'Vertical'), 0, 3, 12, 1)
+        self.layout_filters.addWidget(wl_layouts.Wl_Separator(self, orientation = 'Vertical'), 0, 3, 12, 1)
 
         self.load_settings()
 
@@ -4250,7 +4255,7 @@ class Wl_Dialog_Results_Filter_Keyword(Wl_Dialog_Results_Filter):
         def update_gui():
             self.table.filter_table()
 
-            wl_msg.wl_msg_results_filter_success(self.main)
+            wl_msgs.wl_msg_results_filter_success(self.main)
 
         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Filtering results...'))
 
@@ -4264,7 +4269,7 @@ class Wl_Dialog_Results_Filter_Keyword(Wl_Dialog_Results_Filter):
         thread_search_results = wl_threading.Wl_Thread(worker_search_results)
         thread_search_results.start_worker()
 
-class Wl_Button_Results_Filter(wl_button.Wl_Button):
+class Wl_Button_Results_Filter(wl_buttons.Wl_Button):
     def __init__(self, parent, tab, table):
         super().__init__(parent.tr('Filter Results'), parent)
 
@@ -4316,13 +4321,16 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
     def results_changed(self):
         rows_visible = len([i for i in range(self.rowCount()) if not self.isRowHidden(i)])
 
-        if [i for i in range(self.columnCount()) if self.item(0, i)] and rows_visible:
+        if [i for i in range(self.columnCount()) if self.item(0, i)]:
             self.label_number_results.setText(self.tr(f'Number of Results: {rows_visible}'))
 
             self.button_results_filter.setEnabled(True)
-            self.button_results_search.setEnabled(True)
         else:
             self.label_number_results.setText(self.tr('Number of Results: 0'))
 
             self.button_results_filter.setEnabled(False)
+
+        if [i for i in range(self.columnCount()) if self.item(0, i)] and rows_visible:
+            self.button_results_search.setEnabled(True)
+        else:
             self.button_results_search.setEnabled(False)

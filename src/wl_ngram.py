@@ -32,12 +32,12 @@ import numpy
 
 from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
-from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
+from wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wl_nlp import wl_matching, wl_nlp_utils, wl_texts, wl_token_processing
-from wl_utils import wl_misc, wl_sorting, wl_threading
-from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
+from wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
+from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
-class Wl_Table_Ngram(wl_table.Wl_Table_Data_Filter_Search):
+class Wl_Table_Ngram(wl_tables.Wl_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -64,14 +64,14 @@ class Wl_Table_Ngram(wl_table.Wl_Table_Data_Filter_Search):
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
 
-class Wrapper_Ngram(wl_layout.Wl_Wrapper):
+class Wrapper_Ngram(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
         # Table
         self.table_ngram = Wl_Table_Ngram(self)
 
-        layout_results = wl_layout.Wl_Layout()
+        layout_results = wl_layouts.Wl_Layout()
         layout_results.addWidget(self.table_ngram.label_number_results, 0, 0)
         layout_results.addWidget(self.table_ngram.button_results_filter, 0, 2)
         layout_results.addWidget(self.table_ngram.button_results_search, 0, 3)
@@ -119,7 +119,7 @@ class Wrapper_Ngram(wl_layout.Wl_Wrapper):
         self.token_checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
-        self.group_box_token_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lowercase, 0, 1)
         self.group_box_token_settings.layout().addWidget(self.checkbox_uppercase, 1, 0)
@@ -127,13 +127,13 @@ class Wrapper_Ngram(wl_layout.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_nums, 2, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 2, 1)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 3, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.checkbox_treat_as_lowercase, 4, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lemmatize_tokens, 5, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_filter_stop_words, 6, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 7, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 7, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.token_checkbox_ignore_tags, 8, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
@@ -209,7 +209,7 @@ class Wrapper_Ngram(wl_layout.Wl_Wrapper):
         self.checkbox_search_term_position_max_no_limit.stateChanged.connect(self.search_settings_changed)
         self.checkbox_allow_skipped_tokens_within_search_terms.stateChanged.connect(self.search_settings_changed)
 
-        layout_search_term_position = wl_layout.Wl_Layout()
+        layout_search_term_position = wl_layouts.Wl_Layout()
         layout_search_term_position.addWidget(self.label_search_term_position, 0, 0, 1, 3)
         layout_search_term_position.addWidget(self.label_search_term_position_min, 1, 0)
         layout_search_term_position.addWidget(self.spin_box_search_term_position_min, 1, 1)
@@ -220,13 +220,13 @@ class Wrapper_Ngram(wl_layout.Wl_Wrapper):
 
         layout_search_term_position.setColumnStretch(1, 1)
 
-        layout_context_settings = wl_layout.Wl_Layout()
+        layout_context_settings = wl_layouts.Wl_Layout()
         layout_context_settings.addWidget(self.label_context_settings, 0, 0)
         layout_context_settings.addWidget(self.button_context_settings, 0, 1)
 
         layout_context_settings.setColumnStretch(1, 1)
 
-        self.group_box_search_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_search_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
         self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
         self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
@@ -240,12 +240,12 @@ class Wrapper_Ngram(wl_layout.Wl_Wrapper):
         self.group_box_search_settings.layout().addWidget(self.search_checkbox_ignore_tags, 7, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addWidget(wl_layout.Wl_Separator(self), 9, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 2)
 
         self.group_box_search_settings.layout().addLayout(layout_search_term_position, 10, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_allow_skipped_tokens_within_search_terms, 11, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addWidget(wl_layout.Wl_Separator(self), 12, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 12, 0, 1, 2)
 
         self.group_box_search_settings.layout().addLayout(layout_context_settings, 13, 0, 1, 2)
 
@@ -261,7 +261,7 @@ class Wrapper_Ngram(wl_layout.Wl_Wrapper):
             self.spin_box_ngram_size_max
         ) = wl_widgets.wl_widgets_size(self)
         self.checkbox_allow_skipped_tokens = QCheckBox(self.tr('Allow skipped tokens:'), self)
-        self.spin_box_allow_skipped_tokens = wl_box.Wl_Spin_Box(self)
+        self.spin_box_allow_skipped_tokens = wl_boxes.Wl_Spin_Box(self)
 
         (
             self.label_measure_dispersion,
@@ -291,19 +291,19 @@ class Wrapper_Ngram(wl_layout.Wl_Wrapper):
         self.combo_box_measure_dispersion.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_adjusted_freq.currentTextChanged.connect(self.generation_settings_changed)
 
-        layout_allow_skipped_tokens = wl_layout.Wl_Layout()
+        layout_allow_skipped_tokens = wl_layouts.Wl_Layout()
         layout_allow_skipped_tokens.addWidget(self.checkbox_allow_skipped_tokens, 0, 0)
         layout_allow_skipped_tokens.addWidget(self.spin_box_allow_skipped_tokens, 0, 1)
 
         layout_allow_skipped_tokens.setColumnStretch(2, 1)
 
-        layout_settings_measures = wl_layout.Wl_Layout()
+        layout_settings_measures = wl_layouts.Wl_Layout()
         layout_settings_measures.addWidget(self.label_settings_measures, 0, 0)
         layout_settings_measures.addWidget(self.button_settings_measures, 0, 1)
 
         layout_settings_measures.setColumnStretch(1, 1)
 
-        self.group_box_generation_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_ngram_size, 0, 0, 1, 3)
         self.group_box_generation_settings.layout().addWidget(self.checkbox_ngram_size_sync, 0, 3, Qt.AlignRight)
         self.group_box_generation_settings.layout().addWidget(self.label_ngram_size_min, 1, 0)
@@ -312,14 +312,14 @@ class Wrapper_Ngram(wl_layout.Wl_Wrapper):
         self.group_box_generation_settings.layout().addWidget(self.spin_box_ngram_size_max, 1, 3)
         self.group_box_generation_settings.layout().addLayout(layout_allow_skipped_tokens, 2, 0, 1, 4)
 
-        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 3, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 4)
 
         self.group_box_generation_settings.layout().addWidget(self.label_measure_dispersion, 4, 0, 1, 4)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_dispersion, 5, 0, 1, 4)
         self.group_box_generation_settings.layout().addWidget(self.label_measure_adjusted_freq, 6, 0, 1, 4)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_adjusted_freq, 7, 0, 1, 4)
 
-        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 8, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 8, 0, 1, 4)
 
         self.group_box_generation_settings.layout().addLayout(layout_settings_measures, 9, 0, 1, 4)
 
@@ -342,7 +342,7 @@ class Wrapper_Ngram(wl_layout.Wl_Wrapper):
         self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_breakdown.stateChanged.connect(self.table_settings_changed)
 
-        self.group_box_table_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
@@ -386,7 +386,7 @@ class Wrapper_Ngram(wl_layout.Wl_Wrapper):
         self.spin_box_rank_max.valueChanged.connect(self.fig_settings_changed)
         self.checkbox_rank_max_no_limit.stateChanged.connect(self.fig_settings_changed)
 
-        layout_fig_settings_combo_boxes = wl_layout.Wl_Layout()
+        layout_fig_settings_combo_boxes = wl_layouts.Wl_Layout()
         layout_fig_settings_combo_boxes.addWidget(self.label_graph_type, 0, 0)
         layout_fig_settings_combo_boxes.addWidget(self.combo_box_graph_type, 0, 1)
         layout_fig_settings_combo_boxes.addWidget(self.label_sort_by_file, 1, 0)
@@ -398,10 +398,10 @@ class Wrapper_Ngram(wl_layout.Wl_Wrapper):
 
         layout_fig_settings_combo_boxes.setColumnStretch(1, 1)
 
-        self.group_box_fig_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_fig_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_fig_settings.layout().addLayout(layout_fig_settings_combo_boxes, 0, 0, 1, 3)
 
-        self.group_box_fig_settings.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0, 1, 3)
+        self.group_box_fig_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 3)
 
         self.group_box_fig_settings.layout().addWidget(self.label_rank, 2, 0, 1, 3)
         self.group_box_fig_settings.layout().addWidget(self.label_rank_min, 3, 0)
@@ -988,7 +988,7 @@ def generate_table(main, table):
                     table.set_item_num(i, 0, -1)
 
                     # N-gram
-                    table.setItem(i, 1, wl_table.Wl_Table_Item(ngrams_text[ngram]))
+                    table.setItem(i, 1, wl_tables.Wl_Table_Item(ngrams_text[ngram]))
 
                     table.item(i, 1).text_raw = ngram
 
@@ -1021,15 +1021,15 @@ def generate_table(main, table):
 
                 table.itemChanged.emit(table.item(0, 0))
 
-                wl_msg.wl_msg_generate_table_success(main)
+                wl_msgs.wl_msg_generate_table_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
 
-                wl_msg.wl_msg_generate_table_error(main)
+                wl_msgs.wl_msg_generate_table_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
-            wl_msg.wl_msg_fatal_error(main)
+            wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['ngram']
     files = main.wl_files.get_selected_files()
@@ -1051,9 +1051,9 @@ def generate_table(main, table):
         else:
             wl_msg_boxes.wl_msg_box_missing_search_terms_optional(main)
 
-            wl_msg.wl_msg_generate_table_error(main)
+            wl_msgs.wl_msg_generate_table_error(main)
     else:
-        wl_msg.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_table_error(main)
 
 @wl_misc.log_timing
 def generate_fig(main):
@@ -1072,7 +1072,7 @@ def generate_fig(main):
                         for ngram, freqs in ngrams_freq_files.items()
                     }
 
-                    wl_fig_freq.wl_fig_freq(
+                    wl_figs_freqs.wl_fig_freq(
                         main, ngrams_freq_files,
                         settings = settings['fig_settings'],
                         label_x = main.tr('N-gram')
@@ -1098,27 +1098,27 @@ def generate_fig(main):
 
                         label_y = text_adjusted_freq
 
-                    wl_fig_stat.wl_fig_stat(
+                    wl_figs_stats.wl_fig_stat(
                         main, ngrams_stat_files,
                         settings = settings['fig_settings'],
                         label_x = main.tr('N-gram'),
                         label_y = label_y
                     )
 
-                wl_msg.wl_msg_generate_fig_success(main)
+                wl_msgs.wl_msg_generate_fig_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
 
-                wl_msg.wl_msg_generate_fig_error(main)
+                wl_msgs.wl_msg_generate_fig_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
-            wl_msg.wl_msg_fatal_error(main)
+            wl_msgs.wl_msg_fatal_error(main)
 
         dialog_progress.accept()
 
         if ngrams_freq_files:
-            wl_fig.show_fig()
+            wl_figs.show_fig()
 
     settings = main.settings_custom['ngram']
     files = main.wl_files.get_selected_files()
@@ -1139,6 +1139,6 @@ def generate_fig(main):
         else:
             wl_msg_boxes.wl_msg_box_missing_search_terms_optional(main)
 
-            wl_msg.wl_msg_generate_fig_error(main)
+            wl_msgs.wl_msg_generate_fig_error(main)
     else:
-        wl_msg.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_table_error(main)

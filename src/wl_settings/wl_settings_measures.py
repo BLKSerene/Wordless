@@ -22,10 +22,10 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_widgets import wl_box, wl_label, wl_layout, wl_tree, wl_widgets
+from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_trees, wl_widgets
 
 # Measures - Dispersion
-class Wl_Settings_Dispersion(wl_tree.Wl_Settings):
+class Wl_Settings_Dispersion(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -39,14 +39,14 @@ class Wl_Settings_Dispersion(wl_tree.Wl_Settings):
          self.spin_box_dispersion_number_sections,
          self.label_dispersion_sections) = wl_widgets.wl_widgets_number_sections(self)
 
-        group_box_general.setLayout(wl_layout.Wl_Layout())
+        group_box_general.setLayout(wl_layouts.Wl_Layout())
         group_box_general.layout().addWidget(self.label_dispersion_divide, 0, 0)
         group_box_general.layout().addWidget(self.spin_box_dispersion_number_sections, 0, 1)
         group_box_general.layout().addWidget(self.label_dispersion_sections, 0, 2)
 
         group_box_general.layout().setColumnStretch(3, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_general, 0, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
@@ -66,7 +66,7 @@ class Wl_Settings_Dispersion(wl_tree.Wl_Settings):
         return True
 
 # Measures - Adjusted Frequency
-class Wl_Settings_Adjusted_Freq(wl_tree.Wl_Settings):
+class Wl_Settings_Adjusted_Freq(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -83,7 +83,7 @@ class Wl_Settings_Adjusted_Freq(wl_tree.Wl_Settings):
 
         self.checkbox_use_same_settings_dispersion.stateChanged.connect(self.use_same_settings_changed)
 
-        group_box_general.setLayout(wl_layout.Wl_Layout())
+        group_box_general.setLayout(wl_layouts.Wl_Layout())
         group_box_general.layout().addWidget(self.label_adjusted_freq_divide, 0, 0)
         group_box_general.layout().addWidget(self.spin_box_adjusted_freq_number_sections, 0, 1)
         group_box_general.layout().addWidget(self.label_adjusted_freq_sections, 0, 2)
@@ -91,7 +91,7 @@ class Wl_Settings_Adjusted_Freq(wl_tree.Wl_Settings):
 
         group_box_general.layout().setColumnStretch(3, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_general, 0, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
@@ -121,7 +121,7 @@ class Wl_Settings_Adjusted_Freq(wl_tree.Wl_Settings):
         return True
 
 # Measures - Statistical Significance
-class Wl_Settings_Statistical_Significance(wl_tree.Wl_Settings):
+class Wl_Settings_Statistical_Significance(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -134,7 +134,7 @@ class Wl_Settings_Statistical_Significance(wl_tree.Wl_Settings):
         (self.label_z_score_direction,
          self.combo_box_z_score_direction) = wl_widgets.wl_widgets_direction_2(self)
 
-        group_box_z_score.setLayout(wl_layout.Wl_Layout())
+        group_box_z_score.setLayout(wl_layouts.Wl_Layout())
         group_box_z_score.layout().addWidget(self.label_z_score_direction, 0, 0)
         group_box_z_score.layout().addWidget(self.combo_box_z_score_direction, 0, 1)
 
@@ -151,7 +151,7 @@ class Wl_Settings_Statistical_Significance(wl_tree.Wl_Settings):
          self.combo_box_students_t_test_2_sample_use_data) = wl_widgets.wl_widgets_use_data_freq(self)
         self.label_students_t_test_2_sample_variances = QLabel(self.tr('Variances:'), self)
         self.combo_box_students_t_test_2_sample_variances = QComboBox(self)
-        self.label_welchs_t_test = wl_label.Wl_Label_Hint(
+        self.label_welchs_t_test = wl_labels.Wl_Label_Hint(
             self.tr('''
                 <p>
                     * If variances are set to "Unequal", the Welch\'s t-test will be performed instead.
@@ -163,14 +163,14 @@ class Wl_Settings_Statistical_Significance(wl_tree.Wl_Settings):
             self.tr('Unequal')
         ])
 
-        layout_students_t_test_2_sample_number_sections = wl_layout.Wl_Layout()
+        layout_students_t_test_2_sample_number_sections = wl_layouts.Wl_Layout()
         layout_students_t_test_2_sample_number_sections.addWidget(self.label_students_t_test_2_sample_divide, 0, 0)
         layout_students_t_test_2_sample_number_sections.addWidget(self.spin_box_students_t_test_2_sample_number_sections, 0, 1)
         layout_students_t_test_2_sample_number_sections.addWidget(self.label_students_t_test_2_sample_sections, 0, 2)
 
         layout_students_t_test_2_sample_number_sections.setColumnStretch(3, 1)
 
-        group_box_students_t_test_2_sample.setLayout(wl_layout.Wl_Layout())
+        group_box_students_t_test_2_sample.setLayout(wl_layouts.Wl_Layout())
         group_box_students_t_test_2_sample.layout().addLayout(layout_students_t_test_2_sample_number_sections, 0, 0, 1, 3)
         group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_use_data, 1, 0)
         group_box_students_t_test_2_sample.layout().addWidget(self.combo_box_students_t_test_2_sample_use_data, 1, 1)
@@ -185,7 +185,7 @@ class Wl_Settings_Statistical_Significance(wl_tree.Wl_Settings):
 
         self.checkbox_pearsons_chi_squared_test_apply_correction = QCheckBox(self.tr('Apply Yates\'s correction for continuity'))
 
-        group_box_pearsons_chi_squared_test.setLayout(wl_layout.Wl_Layout())
+        group_box_pearsons_chi_squared_test.setLayout(wl_layouts.Wl_Layout())
         group_box_pearsons_chi_squared_test.layout().addWidget(self.checkbox_pearsons_chi_squared_test_apply_correction, 0, 0)
 
         # Fisher's Exact Test
@@ -194,7 +194,7 @@ class Wl_Settings_Statistical_Significance(wl_tree.Wl_Settings):
         (self.label_fishers_exact_test_direction,
          self.combo_box_fishers_exact_test_direction) = wl_widgets.wl_widgets_direction(self)
 
-        group_box_fishers_exact_test.setLayout(wl_layout.Wl_Layout())
+        group_box_fishers_exact_test.setLayout(wl_layouts.Wl_Layout())
         group_box_fishers_exact_test.layout().addWidget(self.label_fishers_exact_test_direction, 0, 0)
         group_box_fishers_exact_test.layout().addWidget(self.combo_box_fishers_exact_test_direction, 0, 1)
 
@@ -213,14 +213,14 @@ class Wl_Settings_Statistical_Significance(wl_tree.Wl_Settings):
          self.combo_box_mann_whitney_u_test_direction) = wl_widgets.wl_widgets_direction(self)
         self.checkbox_mann_whitney_u_test_apply_correction = QCheckBox(self.tr('Apply continuity correction'), self)
 
-        layout_mann_whitney_u_test_number_sections = wl_layout.Wl_Layout()
+        layout_mann_whitney_u_test_number_sections = wl_layouts.Wl_Layout()
         layout_mann_whitney_u_test_number_sections.addWidget(self.label_mann_whitney_u_test_divide, 0, 0)
         layout_mann_whitney_u_test_number_sections.addWidget(self.spin_box_mann_whitney_u_test_number_sections, 0, 1)
         layout_mann_whitney_u_test_number_sections.addWidget(self.label_mann_whitney_u_test_sections, 0, 2)
 
         layout_mann_whitney_u_test_number_sections.setColumnStretch(3, 1)
 
-        group_box_mann_whitney_u_test.setLayout(wl_layout.Wl_Layout())
+        group_box_mann_whitney_u_test.setLayout(wl_layouts.Wl_Layout())
         group_box_mann_whitney_u_test.layout().addLayout(layout_mann_whitney_u_test_number_sections, 0, 0, 1, 3)
         group_box_mann_whitney_u_test.layout().addWidget(self.label_mann_whitney_u_test_use_data, 1, 0)
         group_box_mann_whitney_u_test.layout().addWidget(self.combo_box_mann_whitney_u_test_use_data, 1, 1)
@@ -230,7 +230,7 @@ class Wl_Settings_Statistical_Significance(wl_tree.Wl_Settings):
 
         group_box_mann_whitney_u_test.layout().setColumnStretch(3, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_z_score, 0, 0)
         self.layout().addWidget(group_box_students_t_test_2_sample, 1, 0)
         self.layout().addWidget(group_box_pearsons_chi_squared_test, 2, 0)
@@ -280,7 +280,7 @@ class Wl_Settings_Statistical_Significance(wl_tree.Wl_Settings):
         return True
 
 # Measures - Effect Size
-class Wl_Settings_Effect_Size(wl_tree.Wl_Settings):
+class Wl_Settings_Effect_Size(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -291,17 +291,17 @@ class Wl_Settings_Effect_Size(wl_tree.Wl_Settings):
         group_box_kilgarriffs_ratio = QGroupBox(self.tr('Kilgarriff\'s Ratio'), self)
 
         self.label_kilgarriffs_ratio_smoothing_param = QLabel(self.tr('Smoothing Parameter:'), self)
-        self.spin_box_kilgarriffs_ratio_smoothing_param = wl_box.Wl_Double_Spin_Box(self)
+        self.spin_box_kilgarriffs_ratio_smoothing_param = wl_boxes.Wl_Double_Spin_Box(self)
 
         self.spin_box_kilgarriffs_ratio_smoothing_param.setRange(0.01, 10000)
 
-        group_box_kilgarriffs_ratio.setLayout(wl_layout.Wl_Layout())
+        group_box_kilgarriffs_ratio.setLayout(wl_layouts.Wl_Layout())
         group_box_kilgarriffs_ratio.layout().addWidget(self.label_kilgarriffs_ratio_smoothing_param, 0, 0)
         group_box_kilgarriffs_ratio.layout().addWidget(self.spin_box_kilgarriffs_ratio_smoothing_param, 0, 1)
 
         group_box_kilgarriffs_ratio.layout().setColumnStretch(2, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_kilgarriffs_ratio, 0, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)

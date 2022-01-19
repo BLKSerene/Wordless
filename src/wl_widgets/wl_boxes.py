@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Widgets - Box
+# Wordless: Widgets - Boxes
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -113,68 +113,6 @@ class Wl_Combo_Box_File(Wl_Combo_Box):
 
     def get_file(self):
         return self.main.wl_files.find_file_by_name(self.currentText(), selected_only = True)
-
-class Wl_Combo_Box_File_Figure_Settings(Wl_Combo_Box_File):
-    def wl_files_changed(self):
-        if self.count() == 1:
-            file_old = ''
-        else:
-            file_old = self.currentText()
-
-        self.clear()
-
-        for file in self.main.wl_files.get_selected_files():
-            self.addItem(file['name'])
-
-        self.addItem(self.tr('Total'))
-
-        if file_old and self.findText(file_old) > -1:
-            self.setCurrentText(file_old)
-
-class Wl_Combo_Box_File_Concordancer(Wl_Combo_Box_File):
-    def wl_files_changed(self):
-        if self.currentText() == self.tr('*** None ***'):
-            file_old = ''
-        else:
-            file_old = self.currentText()
-
-        self.clear()
-
-        for file in self.main.wl_files.get_selected_files():
-            self.addItem(file['name'])
-
-        if self.count() > 0:
-            if self.findText(file_old) > -1:
-                self.setCurrentText(file_old)
-        else:
-            self.addItem(self.tr('*** None ***'))
-
-class Wl_Combo_Box_File_Ref(Wl_Combo_Box_File):
-    def __init__(self, parent, list_files):
-        super().__init__(parent)
-
-        self.list_files = list_files
-
-        self.currentTextChanged.connect(lambda: self.list_files.itemChanged.emit(self.list_files.item(0)))
-        self.currentTextChanged.connect(lambda: self.list_files.file_changed(self))
-
-    def wl_files_changed(self):
-        file_old = self.currentText()
-        files_selected = self.main.wl_files.get_selected_files()
-
-        if file_old in [file['name'] for file in files_selected]:
-            self.blockSignals(True)
-
-            self.clear()
-
-            for file in files_selected:
-                self.addItem(file['name'])
-
-            self.setCurrentText(file_old)
-
-            self.blockSignals(False)
-        else:
-            self.list_files.wl_file_removed(self)
 
 class Wl_Combo_Box_Font_Family(QFontComboBox):
     def __init__(self, parent):

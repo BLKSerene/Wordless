@@ -85,25 +85,25 @@ def update_gui(error_msg, texts_stats_files):
 
     for stats in texts_stats_files:
         readability_statistics = stats[0]
-        len_paras_in_sentence = stats[1]
-        len_paras_in_token = stats[2]
+        len_paras_in_sentences = stats[1]
+        len_paras_in_tokens = stats[2]
         len_sentences = stats[3]
-        len_tokens_in_syl = stats[4]
-        len_tokens_in_char = stats[5]
-        len_types_in_syl = stats[6]
-        len_types_in_char = stats[7]
+        len_tokens_in_syls = stats[4]
+        len_tokens_in_chars = stats[5]
+        len_types_in_syls = stats[6]
+        len_types_in_chars = stats[7]
         len_syls = stats[8]
         ttr = stats[9]
         sttr = stats[10]
 
-        count_paras = len(len_paras_in_sentence)
+        count_paras = len(len_paras_in_sentences)
         count_sentences = len(len_sentences)
-        count_tokens = len(len_tokens_in_char)
-        count_types = len(len_types_in_char)
+        count_tokens = len(len_tokens_in_chars)
+        count_types = len(len_types_in_chars)
         count_syls = len(len_syls)
-        count_chars = sum(len_tokens_in_char)
+        count_chars = sum(len_tokens_in_chars)
 
-        count_tokens_lens.append(collections.Counter(len_tokens_in_char))
+        count_tokens_lens.append(collections.Counter(len_tokens_in_chars))
         count_sentences_lens.append(collections.Counter(len_sentences))
 
         # Data validation
@@ -113,30 +113,27 @@ def update_gui(error_msg, texts_stats_files):
         for statistic in readability_statistics:
             assert statistic
 
-        assert len_paras_in_sentence
-        assert len_paras_in_token
+        assert len_paras_in_sentences
+        assert len_paras_in_tokens
         assert len_sentences
 
-        if file_lang in main.settings_global['syl_tokenizers']:
-            assert len_tokens_in_syl
-            assert len_types_in_syl
-        else:
-            assert not len_tokens_in_syl
-            assert not len_types_in_syl
+        assert len_tokens_in_syls
+        assert len_tokens_in_chars
+        assert len_types_in_syls
+        assert len_types_in_chars
 
-        assert len_tokens_in_char
-        assert len_types_in_char
+        if file_lang not in main.settings_global['syl_tokenizers']:
+            assert all([len_syls == 1 for len_syls in len_tokens_in_syls])
+            assert all([len_syls == 1 for len_syls in len_types_in_syls])
+
         assert ttr
         assert sttr
 
-        assert numpy.mean(len_paras_in_sentence) == count_sentences / count_paras
-        assert numpy.mean(len_paras_in_token) == count_tokens / count_paras
+        assert numpy.mean(len_paras_in_sentences) == count_sentences / count_paras
+        assert numpy.mean(len_paras_in_tokens) == count_tokens / count_paras
         assert numpy.mean(len_sentences) == count_tokens / count_sentences
-        if file_lang in main.settings_global['syl_tokenizers']:
-            assert numpy.mean(len_tokens_in_syl) == count_syls / count_tokens
-        else:
-            assert numpy.isnan(numpy.mean(len_tokens_in_syl))
-        assert numpy.mean(len_tokens_in_char) == count_chars / count_tokens
+        assert numpy.mean(len_tokens_in_syls) == count_syls / count_tokens
+        assert numpy.mean(len_tokens_in_chars) == count_chars / count_tokens
         
     # Count of n-length Tokens
     if any(count_tokens_lens):
@@ -150,7 +147,7 @@ def update_gui(error_msg, texts_stats_files):
                 for key, values in count_tokens_lens_files.items()
             ])
 
-            assert len_tokens_total == sum(len_tokens_in_char)
+            assert len_tokens_total == sum(len_tokens_in_chars)
 
         # Token length should never be zero
         assert 0 not in count_tokens_lens
@@ -167,7 +164,7 @@ def update_gui(error_msg, texts_stats_files):
                 for key, values in count_sentences_lens_files.items()
             ])
 
-            assert len_sentences_total == len(len_tokens_in_char)
+            assert len_sentences_total == len(len_tokens_in_chars)
 
         # Sentence length should never be zero
         assert 0 not in count_sentences_lens

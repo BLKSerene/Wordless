@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Widgets - Layout
+# Wordless: Widgets - Layouts
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_utils import wl_misc
-from wl_widgets import wl_button
+from wl_widgets import wl_buttons
 
 class Wl_Layout(QGridLayout):
     def __init__(self):
@@ -51,7 +51,7 @@ class Wl_Wrapper(QWidget):
         self.wrapper_table.layout().setContentsMargins(0, 0, 0, 0)
 
         self.scroll_area_settings = Wl_Scroll_Area(self)
-        self.button_restore_default_settings = wl_button.Wl_Button_Restore_Default_Settings(self)
+        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self)
 
         self.scroll_area_settings.setFixedWidth(400)
 

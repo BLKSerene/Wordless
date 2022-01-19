@@ -40,8 +40,8 @@ import openpyxl
 from wl_checking import wl_checking_files, wl_checking_misc
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_nlp import wl_matching, wl_texts
-from wl_utils import wl_conversion, wl_detection, wl_misc, wl_threading
-from wl_widgets import wl_box, wl_layout, wl_msg, wl_table
+from wl_utils import wl_conversion, wl_detection, wl_misc, wl_msgs, wl_threading
+from wl_widgets import wl_boxes, wl_layouts, wl_tables
 
 class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
@@ -335,7 +335,7 @@ class Wl_Files(QObject):
             else:
                 wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
 
-                wl_msg.wl_msg_fatal_error(self.main)
+                wl_msgs.wl_msg_fatal_error(self.main)
 
         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Loading files...'))
         dialog_progress.update_progress(self.tr('Checking files...'))
@@ -427,10 +427,10 @@ class Wl_Files(QObject):
 
             for i, file in enumerate(files):
                 checkbox_name = QTableWidgetItem(file['name'])
-                combo_box_lang = wl_box.Wl_Combo_Box_Lang(self.table)
-                combo_box_tokenized = wl_box.Wl_Combo_Box_Yes_No(self.table)
-                combo_box_tagged = wl_box.Wl_Combo_Box_Yes_No(self.table)
-                combo_box_encoding = wl_box.Wl_Combo_Box_Encoding(self.table)
+                combo_box_lang = wl_boxes.Wl_Combo_Box_Lang(self.table)
+                combo_box_tokenized = wl_boxes.Wl_Combo_Box_Yes_No(self.table)
+                combo_box_tagged = wl_boxes.Wl_Combo_Box_Yes_No(self.table)
+                combo_box_encoding = wl_boxes.Wl_Combo_Box_Encoding(self.table)
 
                 if file['selected']:
                     checkbox_name.setCheckState(Qt.Checked)
@@ -511,7 +511,7 @@ class Wl_Files(QObject):
 
         return None
 
-class Wl_Table_Files(wl_table.Wl_Table):
+class Wl_Table_Files(wl_tables.Wl_Table):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -705,7 +705,7 @@ class Wl_Table_Files(wl_table.Wl_Table):
     def close_all(self):
         self.main.wl_files.close_files(list(range(len(self.main.settings_custom['file_area']['files_open']))))
 
-class Wrapper_File_Area(wl_layout.Wl_Wrapper_File_Area):
+class Wrapper_File_Area(wl_layouts.Wl_Wrapper_File_Area):
     def __init__(self, main):
         super().__init__(main)
 
@@ -721,7 +721,7 @@ class Wrapper_File_Area(wl_layout.Wl_Wrapper_File_Area):
 
         self.checkbox_subfolders.stateChanged.connect(self.folder_settings_changed)
 
-        self.group_box_folder_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_folder_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_folder_settings.layout().addWidget(self.checkbox_subfolders, 0, 0)
 
         # Auto-detection Settings
@@ -733,7 +733,7 @@ class Wrapper_File_Area(wl_layout.Wl_Wrapper_File_Area):
         self.checkbox_detect_langs.stateChanged.connect(self.auto_detection_settings_changed)
         self.checkbox_detect_encodings.stateChanged.connect(self.auto_detection_settings_changed)
 
-        self.group_box_auto_detection_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_auto_detection_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_langs, 0, 0)
         self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_detect_encodings, 0, 1)
 

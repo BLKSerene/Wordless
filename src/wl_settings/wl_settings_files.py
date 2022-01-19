@@ -25,9 +25,9 @@ from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_msg_boxes
 from wl_utils import wl_conversion
-from wl_widgets import wl_box, wl_label, wl_layout, wl_table, wl_tree, wl_widgets
+from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_trees, wl_widgets
 
-class Wl_Settings_Files(wl_tree.Wl_Settings):
+class Wl_Settings_Files(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -38,15 +38,15 @@ class Wl_Settings_Files(wl_tree.Wl_Settings):
         group_box_default_settings = QGroupBox(self.tr('Default Settings'), self)
 
         self.label_files_lang = QLabel(self.tr('Language:'), self)
-        self.combo_box_files_lang = wl_box.Wl_Combo_Box_Lang(self)
+        self.combo_box_files_lang = wl_boxes.Wl_Combo_Box_Lang(self)
         self.label_files_tokenized = QLabel(self.tr('Tokenized:'), self)
-        self.combo_box_files_tokenized = wl_box.Wl_Combo_Box_Yes_No(self)
+        self.combo_box_files_tokenized = wl_boxes.Wl_Combo_Box_Yes_No(self)
         self.label_files_tagged = QLabel(self.tr('Tagged:'), self)
-        self.combo_box_files_tagged = wl_box.Wl_Combo_Box_Yes_No(self)
+        self.combo_box_files_tagged = wl_boxes.Wl_Combo_Box_Yes_No(self)
         self.label_files_encoding = QLabel(self.tr('Encoding:'), self)
-        self.combo_box_files_encoding = wl_box.Wl_Combo_Box_Encoding(self)
+        self.combo_box_files_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
 
-        group_box_default_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_default_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_default_settings.layout().addWidget(self.label_files_lang, 0, 0)
         group_box_default_settings.layout().addWidget(self.combo_box_files_lang, 0, 1)
         group_box_default_settings.layout().addWidget(self.label_files_tokenized, 1, 0)
@@ -67,7 +67,7 @@ class Wl_Settings_Files(wl_tree.Wl_Settings):
 
         self.spin_box_files_number_lines.setRange(1, 1000000)
 
-        group_box_auto_detection_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_auto_detection_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_auto_detection_settings.layout().addWidget(self.label_files_number_lines, 0, 0)
         group_box_auto_detection_settings.layout().addWidget(self.spin_box_files_number_lines, 0, 1)
         group_box_auto_detection_settings.layout().addWidget(self.checkbox_files_number_lines_no_limit, 0, 2)
@@ -78,19 +78,19 @@ class Wl_Settings_Files(wl_tree.Wl_Settings):
         group_box_misc = QGroupBox(self.tr('Miscellaneous'), self)
 
         self.label_read_files_in_chunks = QLabel(self.tr('Read files in chunks of'), self)
-        self.spin_box_read_files_in_chunks = wl_box.Wl_Spin_Box(self)
+        self.spin_box_read_files_in_chunks = wl_boxes.Wl_Spin_Box(self)
         self.label_read_files_in_chunks_lines = QLabel(self.tr('lines'), self)
 
         self.spin_box_read_files_in_chunks.setRange(1, 10000)
 
-        group_box_misc.setLayout(wl_layout.Wl_Layout())
+        group_box_misc.setLayout(wl_layouts.Wl_Layout())
         group_box_misc.layout().addWidget(self.label_read_files_in_chunks, 0, 0)
         group_box_misc.layout().addWidget(self.spin_box_read_files_in_chunks, 0, 1)
         group_box_misc.layout().addWidget(self.label_read_files_in_chunks_lines, 0, 2)
 
         group_box_auto_detection_settings.layout().setColumnStretch(3, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_default_settings, 0, 0)
         self.layout().addWidget(group_box_auto_detection_settings, 1, 0)
         self.layout().addWidget(group_box_misc, 2, 0)
@@ -133,7 +133,7 @@ class Wl_Settings_Files(wl_tree.Wl_Settings):
 
         return True
 
-class Wl_Table_Tags(wl_table.Wl_Table):
+class Wl_Table_Tags(wl_tables.Wl_Table):
     def __init__(self, main):
         super().__init__(
             main,
@@ -267,7 +267,7 @@ class Wl_Table_Tags(wl_table.Wl_Table):
             self.button_remove.setEnabled(False)
 
     def _new_item_type(self):
-        new_item_type = wl_box.Wl_Combo_Box(self)
+        new_item_type = wl_boxes.Wl_Combo_Box(self)
 
         new_item_type.addItems([
             self.tr('Embedded'),
@@ -388,7 +388,7 @@ class Wl_Table_Tags(wl_table.Wl_Table):
 
 class Wl_Table_Tags_Header(Wl_Table_Tags):
     def _new_item_level(self, text = None):
-        new_item_level = wl_box.Wl_Combo_Box(self)
+        new_item_level = wl_boxes.Wl_Combo_Box(self)
 
         new_item_level.addItems([
             self.tr('Header')
@@ -407,7 +407,7 @@ class Wl_Table_Tags_Header(Wl_Table_Tags):
 
 class Wl_Table_Tags_Body(Wl_Table_Tags):
     def _new_item_level(self, text = None):
-        new_item_level = wl_box.Wl_Combo_Box(self)
+        new_item_level = wl_boxes.Wl_Combo_Box(self)
 
         new_item_level.addItems([
             self.tr('Part of Speech'),
@@ -427,7 +427,7 @@ class Wl_Table_Tags_Body(Wl_Table_Tags):
 
 class Wl_Table_Tags_Xml(Wl_Table_Tags):
     def _new_item_level(self, text = None):
-        new_item_level = wl_box.Wl_Combo_Box(self)
+        new_item_level = wl_boxes.Wl_Combo_Box(self)
 
         new_item_level.addItems([
             self.tr('Paragraph'),
@@ -474,7 +474,7 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
         for tags in self.main.settings_default['tags']['tags_xml']:
             self.add_item(texts = tags)
 
-class Wl_Settings_Tags(wl_tree.Wl_Settings):
+class Wl_Settings_Tags(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -485,9 +485,9 @@ class Wl_Settings_Tags(wl_tree.Wl_Settings):
         group_box_header_tag_settings = QGroupBox(self.tr('Header Tag Settings'), self)
 
         self.table_tags_header = Wl_Table_Tags_Header(self)
-        self.label_tags_header = wl_label.Wl_Label_Important(self.tr('Note: All contents surrounded by header tags will be discarded during text processing!'), self)
+        self.label_tags_header = wl_labels.Wl_Label_Important(self.tr('Note: All contents surrounded by header tags will be discarded during text processing!'), self)
 
-        group_box_header_tag_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_header_tag_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_header_tag_settings.layout().addWidget(self.table_tags_header, 0, 0, 1, 5)
         group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_add, 1, 0)
         group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_insert, 1, 1)
@@ -502,9 +502,9 @@ class Wl_Settings_Tags(wl_tree.Wl_Settings):
         group_box_body_tag_settings = QGroupBox(self.tr('Body Tag Settings'), self)
 
         self.table_tags_body = Wl_Table_Tags_Body(self)
-        self.label_tags_body = wl_label.Wl_Label_Hint(self.tr('Use * to indicate any number of characters'), self)
+        self.label_tags_body = wl_labels.Wl_Label_Hint(self.tr('Use * to indicate any number of characters'), self)
 
-        group_box_body_tag_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_body_tag_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_body_tag_settings.layout().addWidget(self.table_tags_body, 0, 0, 1, 5)
         group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_add, 1, 0)
         group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_insert, 1, 1)
@@ -520,7 +520,7 @@ class Wl_Settings_Tags(wl_tree.Wl_Settings):
 
         self.table_tags_xml = Wl_Table_Tags_Xml(self)
 
-        group_box_xml_tag_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_xml_tag_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml, 0, 0, 1, 5)
         group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_add, 1, 0)
         group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_insert, 1, 1)
@@ -530,7 +530,7 @@ class Wl_Settings_Tags(wl_tree.Wl_Settings):
 
         group_box_xml_tag_settings.layout().setRowStretch(2, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_header_tag_settings, 0, 0)
         self.layout().addWidget(group_box_body_tag_settings, 1, 0)
         self.layout().addWidget(group_box_xml_tag_settings, 2, 0)

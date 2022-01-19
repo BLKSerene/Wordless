@@ -21,7 +21,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialogs
-from wl_widgets import wl_label, wl_table
+from wl_widgets import wl_labels, wl_tables
 
 class Wl_Dialog_Err(wl_dialogs.Wl_Dialog_Err):
     def __init__(self, main, title, width = 0, height = 0):
@@ -39,7 +39,7 @@ class Wl_Dialog_Err_Fatal(Wl_Dialog_Err):
     def __init__(self, main, err_msg):
         super().__init__(main, main.tr('Fatal Error'))
 
-        self.label_error_msg = wl_label.Wl_Label_Dialog(
+        self.label_error_msg = wl_labels.Wl_Label_Dialog(
             self.tr(f'''
                 <div>A fatal error has occurred, please <b>contact the author for support</b> by emailing to {self.main.email_html}!</div>
             '''),
@@ -59,8 +59,8 @@ class Wl_Dialog_Err_Files(wl_dialogs.Wl_Dialog_Err):
     def __init__(self, main, title):
         super().__init__(main, title, width = 560, height = 320, no_buttons = True)
 
-        self.label_err = wl_label.Wl_Label_Dialog('', self)
-        self.table_err_files = wl_table.Wl_Table_Error(
+        self.label_err = wl_labels.Wl_Label_Dialog('', self)
+        self.table_err_files = wl_tables.Wl_Table_Error(
             self,
             headers = [
                 self.tr('Error Type'),

@@ -69,7 +69,7 @@ class Wl_Dialog_Frameless(Wl_Dialog):
 class Wl_Dialog_Info(Wl_Dialog):
     def __init__(self, main, title, width = 0, height = 0, no_buttons = False):
         # Avoid circular imports
-        from wl_widgets import wl_layout
+        from wl_widgets import wl_layouts
 
         super().__init__(main, title, width, height)
 
@@ -86,12 +86,12 @@ class Wl_Dialog_Info(Wl_Dialog):
             }
         ''')
 
-        self.wrapper_info.setLayout(wl_layout.Wl_Layout())
+        self.wrapper_info.setLayout(wl_layouts.Wl_Layout())
         self.wrapper_info.layout().setContentsMargins(20, 10, 20, 10)
 
         self.wrapper_buttons = QWidget(self)
 
-        self.wrapper_buttons.setLayout(wl_layout.Wl_Layout())
+        self.wrapper_buttons.setLayout(wl_layouts.Wl_Layout())
         self.wrapper_buttons.layout().setContentsMargins(11, 0, 11, 11)
 
         if not no_buttons:
@@ -101,7 +101,7 @@ class Wl_Dialog_Info(Wl_Dialog):
 
             self.wrapper_buttons.layout().addWidget(self.button_ok, 0, 0, Qt.AlignRight)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.wrapper_info, 0, 0)
         self.layout().addWidget(self.wrapper_buttons, 1, 0)
 
