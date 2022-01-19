@@ -32,13 +32,13 @@ import numpy
 
 from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
-from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
+from wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wl_measures import wl_measures_statistical_significance
 from wl_nlp import wl_matching, wl_texts, wl_token_processing
-from wl_utils import wl_misc, wl_sorting, wl_threading
-from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
+from wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
+from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
-class Wl_Table_Collocation(wl_table.Wl_Table_Data_Filter_Search):
+class Wl_Table_Collocation(wl_tables.Wl_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -96,14 +96,14 @@ class Wl_Table_Collocation(wl_table.Wl_Table_Data_Filter_Search):
         if confirmed:
             self.cols_breakdown_position = set()
 
-class Wrapper_Collocation(wl_layout.Wl_Wrapper):
+class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
         # Table
         self.table_collocation = Wl_Table_Collocation(self)
 
-        layout_results = wl_layout.Wl_Layout()
+        layout_results = wl_layouts.Wl_Layout()
         layout_results.addWidget(self.table_collocation.label_number_results, 0, 0)
         layout_results.addWidget(self.table_collocation.button_results_filter, 0, 2)
         layout_results.addWidget(self.table_collocation.button_results_search, 0, 3)
@@ -151,7 +151,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.token_checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
-        self.group_box_token_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lowercase, 0, 1)
         self.group_box_token_settings.layout().addWidget(self.checkbox_uppercase, 1, 0)
@@ -159,13 +159,13 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_nums, 2, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 2, 1)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 3, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.checkbox_treat_as_lowercase, 4, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lemmatize_tokens, 5, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_filter_stop_words, 6, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 7, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 7, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.token_checkbox_ignore_tags, 8, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
@@ -220,13 +220,13 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.search_checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
 
-        layout_context_settings = wl_layout.Wl_Layout()
+        layout_context_settings = wl_layouts.Wl_Layout()
         layout_context_settings.addWidget(self.label_context_settings, 0, 0)
         layout_context_settings.addWidget(self.button_context_settings, 0, 1)
 
         layout_context_settings.setColumnStretch(1, 1)
 
-        self.group_box_search_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_search_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
         self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
         self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
@@ -240,7 +240,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.group_box_search_settings.layout().addWidget(self.search_checkbox_ignore_tags, 7, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addWidget(wl_layout.Wl_Separator(self), 9, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 2)
 
         self.group_box_search_settings.layout().addLayout(layout_context_settings, 10, 0, 1, 2)
 
@@ -257,7 +257,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         ) = wl_widgets.wl_widgets_window(self)
 
         self.label_limit_searching = QLabel(self.tr('Limit Searching:'), self)
-        self.combo_box_limit_searching = wl_box.Wl_Combo_Box(self)
+        self.combo_box_limit_searching = wl_boxes.Wl_Combo_Box(self)
 
         (
             self.label_test_significance,
@@ -294,19 +294,19 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.combo_box_test_significance.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_effect_size.currentTextChanged.connect(self.generation_settings_changed)
 
-        layout_settings_limit_searching = wl_layout.Wl_Layout()
+        layout_settings_limit_searching = wl_layouts.Wl_Layout()
         layout_settings_limit_searching.addWidget(self.label_limit_searching, 0, 0)
         layout_settings_limit_searching.addWidget(self.combo_box_limit_searching, 0, 1)
 
         layout_settings_limit_searching.setColumnStretch(1, 1)
 
-        layout_settings_measures = wl_layout.Wl_Layout()
+        layout_settings_measures = wl_layouts.Wl_Layout()
         layout_settings_measures.addWidget(self.label_settings_measures, 0, 0)
         layout_settings_measures.addWidget(self.button_settings_measures, 0, 1)
 
         layout_settings_measures.setColumnStretch(1, 1)
 
-        self.group_box_generation_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_window, 0, 0, 1, 3)
         self.group_box_generation_settings.layout().addWidget(self.checkbox_window_sync, 0, 3, Qt.AlignRight)
         self.group_box_generation_settings.layout().addWidget(self.label_window_left, 1, 0)
@@ -315,14 +315,14 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.group_box_generation_settings.layout().addWidget(self.spin_box_window_right, 1, 3)
         self.group_box_generation_settings.layout().addLayout(layout_settings_limit_searching, 2, 0, 1, 4)
 
-        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 3, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 4)
 
         self.group_box_generation_settings.layout().addWidget(self.label_test_significance, 4, 0, 1, 4)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_test_significance, 5, 0, 1, 4)
         self.group_box_generation_settings.layout().addWidget(self.label_measure_effect_size, 6, 0, 1, 4)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 7, 0, 1, 4)
 
-        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 8, 0, 1, 4)
+        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 8, 0, 1, 4)
 
         self.group_box_generation_settings.layout().addLayout(layout_settings_measures, 9, 0, 1, 4)
 
@@ -351,7 +351,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.checkbox_show_breakdown_file.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_breakdown_file.stateChanged.connect(self.table_collocation.toggle_breakdown)
 
-        self.group_box_table_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_position, 2, 0)
@@ -399,7 +399,7 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
         self.spin_box_rank_max.valueChanged.connect(self.fig_settings_changed)
         self.checkbox_rank_max_no_limit.stateChanged.connect(self.fig_settings_changed)
 
-        layout_fig_settings_combo_boxes = wl_layout.Wl_Layout()
+        layout_fig_settings_combo_boxes = wl_layouts.Wl_Layout()
         layout_fig_settings_combo_boxes.addWidget(self.label_graph_type, 0, 0)
         layout_fig_settings_combo_boxes.addWidget(self.combo_box_graph_type, 0, 1)
         layout_fig_settings_combo_boxes.addWidget(self.label_sort_by_file, 1, 0)
@@ -411,10 +411,10 @@ class Wrapper_Collocation(wl_layout.Wl_Wrapper):
 
         layout_fig_settings_combo_boxes.setColumnStretch(1, 1)
 
-        self.group_box_fig_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_fig_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_fig_settings.layout().addLayout(layout_fig_settings_combo_boxes, 0, 0, 1, 3)
 
-        self.group_box_fig_settings.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0, 1, 3)
+        self.group_box_fig_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 3)
 
         self.group_box_fig_settings.layout().addWidget(self.label_rank, 2, 0, 1, 3)
         self.group_box_fig_settings.layout().addWidget(self.label_rank_min, 3, 0)
@@ -1156,9 +1156,9 @@ def generate_table(main, table):
                     table.set_item_num(i, 0, -1)
 
                     # Node
-                    table.setItem(i, 1, wl_table.Wl_Table_Item(nodes_text[node]))
+                    table.setItem(i, 1, wl_tables.Wl_Table_Item(nodes_text[node]))
                     # Collocate
-                    table.setItem(i, 2, wl_table.Wl_Table_Item(collocate))
+                    table.setItem(i, 2, wl_tables.Wl_Table_Item(collocate))
 
                     # Frequency
                     for j, freqs_file in enumerate(freqs_files):
@@ -1201,15 +1201,15 @@ def generate_table(main, table):
 
                 table.itemChanged.emit(table.item(0, 0))
 
-                wl_msg.wl_msg_generate_table_success(main)
+                wl_msgs.wl_msg_generate_table_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
 
-                wl_msg.wl_msg_generate_table_error(main)
+                wl_msgs.wl_msg_generate_table_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
-            wl_msg.wl_msg_fatal_error(main)
+            wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['collocation']
     files = main.wl_files.get_selected_files()
@@ -1231,9 +1231,9 @@ def generate_table(main, table):
         else:
             wl_msg_boxes.wl_msg_box_missing_search_terms_optional(main)
 
-            wl_msg.wl_msg_generate_table_error(main)
+            wl_msgs.wl_msg_generate_table_error(main)
     else:
-        wl_msg.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_table_error(main)
 
 @wl_misc.log_timing
 def generate_fig(main):
@@ -1270,7 +1270,7 @@ def generate_fig(main):
                             for (node, collocate), freqs in collocations_freqs_files.items()
                         }
 
-                    wl_fig_freq.wl_fig_freq(
+                    wl_figs_freqs.wl_fig_freq(
                         main, collocates_freq_files,
                         settings = settings['fig_settings'],
                         label_x = main.tr('Collocation')
@@ -1289,7 +1289,7 @@ def generate_fig(main):
                             for (node, collocate), freqs in collocations_freqs_files.items()
                         }
 
-                    wl_fig_freq.wl_fig_freq(
+                    wl_figs_freqs.wl_fig_freq(
                         main, collocates_freq_files,
                         settings = settings['fig_settings'],
                         label_x = main.tr('Collocation')
@@ -1337,27 +1337,27 @@ def generate_fig(main):
 
                         label_y = text_effect_size
 
-                    wl_fig_stat.wl_fig_stat(
+                    wl_figs_stats.wl_fig_stat(
                         main, collocates_stat_files,
                         settings = settings['fig_settings'],
                         label_x = main.tr('Collocation'),
                         label_y = label_y
                     )
 
-                wl_msg.wl_msg_generate_fig_success(main)
+                wl_msgs.wl_msg_generate_fig_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
 
-                wl_msg.wl_msg_generate_fig_error(main)
+                wl_msgs.wl_msg_generate_fig_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
-            wl_msg.wl_msg_fatal_error(main)
+            wl_msgs.wl_msg_fatal_error(main)
 
         dialog_progress.accept()
 
         if collocations_freqs_files:
-            wl_fig.show_fig()
+            wl_figs.show_fig()
 
     settings = main.settings_custom['collocation']
     files = main.wl_files.get_selected_files()
@@ -1379,6 +1379,6 @@ def generate_fig(main):
         else:
             wl_msg_boxes.wl_msg_box_missing_search_terms_optional(main)
 
-            wl_msg.wl_msg_generate_fig_error(main)
+            wl_msgs.wl_msg_generate_fig_error(main)
     else:
-        wl_msg.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_table_error(main)

@@ -29,11 +29,11 @@ import nltk
 
 from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
-from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing, wl_word_detokenization
-from wl_utils import wl_misc, wl_threading
-from wl_widgets import wl_box, wl_label, wl_layout, wl_msg, wl_table, wl_widgets
+from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing
+from wl_utils import wl_misc, wl_msgs, wl_threading
+from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_widgets
 
-class Wl_Table_Concordancer_Parallel_Upper(wl_table.Wl_Table_Data_Sort_Search):
+class Wl_Table_Concordancer_Parallel_Upper(wl_tables.Wl_Table_Data_Sort_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -57,7 +57,7 @@ class Wl_Table_Concordancer_Parallel_Upper(wl_table.Wl_Table_Data_Sort_Search):
         self.button_export_all.hide()
         self.button_clear.hide()
 
-class Wl_Table_Concordancer_Parallel_Lower(wl_table.Wl_Table_Data):
+class Wl_Table_Concordancer_Parallel_Lower(wl_tables.Wl_Table_Data):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -77,7 +77,25 @@ class Wl_Table_Concordancer_Parallel_Lower(wl_table.Wl_Table_Data):
 
         self.name = 'concordancer_parallel_lower'
 
-class Wrapper_Concordancer_Parallel(wl_layout.Wl_Wrapper):
+class Wl_Combo_Box_File_Concordancer(wl_boxes.Wl_Combo_Box_File):
+    def wl_files_changed(self):
+        if self.currentText() == self.tr('*** None ***'):
+            file_old = ''
+        else:
+            file_old = self.currentText()
+
+        self.clear()
+
+        for file in self.main.wl_files.get_selected_files():
+            self.addItem(file['name'])
+
+        if self.count() > 0:
+            if self.findText(file_old) > -1:
+                self.setCurrentText(file_old)
+        else:
+            self.addItem(self.tr('*** None ***'))
+
+class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
@@ -107,7 +125,7 @@ class Wrapper_Concordancer_Parallel(wl_layout.Wl_Wrapper):
 
         self.checkbox_parallel_mode.stateChanged.connect(self.parallel_mode_changed)
 
-        layout_results = wl_layout.Wl_Layout()
+        layout_results = wl_layouts.Wl_Layout()
         layout_results.addWidget(self.table_concordancer_parallel_upper.label_number_results, 0, 0)
         layout_results.addWidget(self.table_concordancer_parallel_upper.button_results_sort, 0, 3)
         layout_results.addWidget(self.table_concordancer_parallel_upper.button_results_search, 0, 4)
@@ -137,10 +155,10 @@ class Wrapper_Concordancer_Parallel(wl_layout.Wl_Wrapper):
         self.token_checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
-        self.group_box_token_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 0, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 1, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.token_checkbox_ignore_tags, 2, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 2, 1)
@@ -186,13 +204,13 @@ class Wrapper_Concordancer_Parallel(wl_layout.Wl_Wrapper):
         self.search_checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
 
-        layout_context_settings = wl_layout.Wl_Layout()
+        layout_context_settings = wl_layouts.Wl_Layout()
         layout_context_settings.addWidget(self.label_context_settings, 0, 0)
         layout_context_settings.addWidget(self.button_context_settings, 0, 1)
 
         layout_context_settings.setColumnStretch(1, 1)
 
-        self.group_box_search_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_search_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
         self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
         self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
@@ -206,7 +224,7 @@ class Wrapper_Concordancer_Parallel(wl_layout.Wl_Wrapper):
         self.group_box_search_settings.layout().addWidget(self.search_checkbox_ignore_tags, 7, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addWidget(wl_layout.Wl_Separator(self), 9, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 2)
 
         self.group_box_search_settings.layout().addLayout(layout_context_settings, 10, 0, 1, 2)
 
@@ -214,25 +232,25 @@ class Wrapper_Concordancer_Parallel(wl_layout.Wl_Wrapper):
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
 
         self.label_src_file = QLabel(self.tr('Source File:'), self)
-        self.combo_box_src_file = wl_box.Wl_Combo_Box_File_Concordancer(self)
+        self.combo_box_src_file = Wl_Combo_Box_File_Concordancer(self)
         self.label_tgt_file = QLabel(self.tr('Target File:'), self)
-        self.combo_box_tgt_file = wl_box.Wl_Combo_Box_File_Concordancer(self)
+        self.combo_box_tgt_file = Wl_Combo_Box_File_Concordancer(self)
 
         self.combo_box_src_file.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_tgt_file.currentTextChanged.connect(self.generation_settings_changed)
 
         self.label_sampling_method = QLabel(self.tr('Sampling Method:'), self)
-        self.combo_box_sampling_method = wl_box.Wl_Combo_Box(self)
-        self.stacked_widget_sample_size_text = wl_layout.Wl_Stacked_Widget(self)
+        self.combo_box_sampling_method = wl_boxes.Wl_Combo_Box(self)
+        self.stacked_widget_sample_size_text = wl_layouts.Wl_Stacked_Widget(self)
         self.label_sample_size_first_n_lines = QLabel(self.tr('Sample Size:'), self)
         self.label_sample_size_systematic_fixed_interval = QLabel(self.tr('Sampling Interval:'), self)
         self.label_sample_size_systematic_fixed_size = QLabel(self.tr('Sample Size:'), self)
         self.label_sample_size_random = QLabel(self.tr('Sample Size:'), self)
-        self.stacked_widget_sample_size_val = wl_layout.Wl_Stacked_Widget(self)
-        self.spin_box_sample_size_first_n_lines = wl_box.Wl_Spin_Box(self)
-        self.spin_box_sample_size_systematic_fixed_interval = wl_box.Wl_Spin_Box(self)
-        self.spin_box_sample_size_systematic_fixed_size = wl_box.Wl_Spin_Box(self)
-        self.spin_box_sample_size_random = wl_box.Wl_Spin_Box(self)
+        self.stacked_widget_sample_size_val = wl_layouts.Wl_Stacked_Widget(self)
+        self.spin_box_sample_size_first_n_lines = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_sample_size_systematic_fixed_interval = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_sample_size_systematic_fixed_size = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_sample_size_random = wl_boxes.Wl_Spin_Box(self)
 
         self.stacked_widget_sample_size_text.addWidget(self.label_sample_size_first_n_lines)
         self.stacked_widget_sample_size_text.addWidget(self.label_sample_size_systematic_fixed_interval)
@@ -262,13 +280,13 @@ class Wrapper_Concordancer_Parallel(wl_layout.Wl_Wrapper):
         self.spin_box_sample_size_systematic_fixed_size.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_sample_size_random.valueChanged.connect(self.generation_settings_changed)
 
-        self.group_box_generation_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_src_file, 0, 0, 1, 2)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_src_file, 1, 0, 1, 2)
         self.group_box_generation_settings.layout().addWidget(self.label_tgt_file, 2, 0, 1, 2)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_tgt_file, 3, 0, 1, 2)
 
-        self.group_box_generation_settings.layout().addWidget(wl_layout.Wl_Separator(self), 4, 0, 1, 2)
+        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 4, 0, 1, 2)
 
         self.group_box_generation_settings.layout().addWidget(self.label_sampling_method, 5, 0)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_sampling_method, 5, 1)
@@ -295,7 +313,7 @@ class Wrapper_Concordancer_Parallel(wl_layout.Wl_Wrapper):
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
 
-        self.group_box_table_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
 
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
@@ -538,7 +556,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                             if not settings['token_settings']['puncs']:
                                 ngram = text_src.tokens_flat[i : i + len_search_term]
 
-                            node_text = wl_word_detokenization.wl_word_detokenize(self.main, ngram, text_src.lang)
+                            node_text = ' '.join(ngram)
                             node_text = wl_nlp_utils.text_escape(node_text)
 
                             offset_para_start_src = text_src.offsets_paras[max(0, no_seg - 1)]
@@ -569,14 +587,8 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                             context_left = wl_nlp_utils.text_escape(context_left)
                             context_right = wl_nlp_utils.text_escape(context_right)
 
-                            context_left_text = wl_word_detokenization.wl_word_detokenize(
-                                self.main, context_left,
-                                lang = text_src.lang
-                            )
-                            context_right_text = wl_word_detokenization.wl_word_detokenize(
-                                self.main, context_right,
-                                lang = text_src.lang
-                            )
+                            context_left_text = ' '.join(context_left)
+                            context_right_text = ' '.join(context_right)
 
                             # Parallel Text
                             if no_seg <= len_segs_tgt:
@@ -599,10 +611,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
                             parallel_text = wl_nlp_utils.text_escape(parallel_text)
 
-                            parallel_text_text = wl_word_detokenization.wl_word_detokenize(
-                                self.main, parallel_text,
-                                lang = text_tgt.lang
-                            )
+                            parallel_text_text = ' '.join(parallel_text)
 
                             # Left
                             concordance_line.append([context_left_text, context_left, text_search_left])
@@ -648,10 +657,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
                         parallel_text = wl_nlp_utils.text_escape(parallel_text)
 
-                        parallel_text_text = wl_word_detokenization.wl_word_detokenize(
-                            self.main, parallel_text,
-                            lang = text_tgt.lang
-                        )
+                        parallel_text_text = ' '.join(parallel_text)
 
                         # Left
                         concordance_line.append(['', [], []])
@@ -744,7 +750,7 @@ def generate_table(main, table_src, table_tgt):
                     parallel_text_text, parallel_text_text_raw, parallel_text_text_search = concordance_line[4]
 
                     # Node
-                    label_node = wl_label.Wl_Label_Html(
+                    label_node = wl_labels.Wl_Label_Html(
                         f'''
                             <span style="color: {node_color}; font-weight: bold;">
                                 &nbsp;{node_text}&nbsp;
@@ -763,7 +769,7 @@ def generate_table(main, table_src, table_tgt):
                     # Left
                     table_src.setCellWidget(
                         i, 0,
-                        wl_label.Wl_Label_Html(left_text, main)
+                        wl_labels.Wl_Label_Html(left_text, main)
                     )
 
                     table_src.cellWidget(i, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
@@ -774,7 +780,7 @@ def generate_table(main, table_src, table_tgt):
                     # Right
                     table_src.setCellWidget(
                         i, 2,
-                        wl_label.Wl_Label_Html(right_text, main)
+                        wl_labels.Wl_Label_Html(right_text, main)
                     )
 
                     table_src.cellWidget(i, 2).text_raw = right_text_raw
@@ -787,7 +793,7 @@ def generate_table(main, table_src, table_tgt):
                     # Parallel Text
                     table_tgt.setCellWidget(
                         i, 0,
-                        wl_label.Wl_Label_Html(parallel_text_text, main)
+                        wl_labels.Wl_Label_Html(parallel_text_text, main)
                     )
 
                     table_tgt.cellWidget(i, 0).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
@@ -810,15 +816,15 @@ def generate_table(main, table_src, table_tgt):
                 table_src.itemChanged.emit(table_src.item(0, 0))
                 table_tgt.itemChanged.emit(table_tgt.item(0, 0))
 
-                wl_msg.wl_msg_generate_table_success(main)
+                wl_msgs.wl_msg_generate_table_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
 
-                wl_msg.wl_msg_generate_table_error(main)
+                wl_msgs.wl_msg_generate_table_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
-            wl_msg.wl_msg_fatal_error(main)
+            wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['concordancer_parallel']
     files = main.wl_files.get_selected_files()
@@ -846,10 +852,10 @@ def generate_table(main, table_src, table_tgt):
                 thread_concordancer_parallel_table = wl_threading.Wl_Thread(worker_concordancer_parallel_table)
                 thread_concordancer_parallel_table.start_worker()
             else:
-                wl_msg.wl_msg_generate_table_error(main)
+                wl_msgs.wl_msg_generate_table_error(main)
         else:
             wl_msg_boxes.wl_msg_box_identical_src_tgt_files(main)
 
-            wl_msg.wl_msg_generate_table_error(main)
+            wl_msgs.wl_msg_generate_table_error(main)
     else:
-        wl_msg.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_table_error(main)
