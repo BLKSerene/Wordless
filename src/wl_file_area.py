@@ -37,7 +37,7 @@ from docx.table import _Cell, Table
 from docx.text.paragraph import Paragraph
 import openpyxl
 
-from wl_checking import wl_checking_file, wl_checking_misc
+from wl_checking import wl_checking_files, wl_checking_misc
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_nlp import wl_matching, wl_texts
 from wl_utils import wl_conversion, wl_detection, wl_misc, wl_threading
@@ -340,9 +340,9 @@ class Wl_Files(QObject):
         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Loading files...'))
         dialog_progress.update_progress(self.tr('Checking files...'))
 
-        file_paths, file_paths_unsupported = wl_checking_file.check_file_paths_unsupported(self.main, file_paths)
-        file_paths, file_paths_empty = wl_checking_file.check_file_paths_empty(self.main, file_paths)
-        file_paths, file_paths_duplicate = wl_checking_file.check_file_paths_duplicate(self.main, file_paths)
+        file_paths, file_paths_unsupported = wl_checking_files.check_file_paths_unsupported(self.main, file_paths)
+        file_paths, file_paths_empty = wl_checking_files.check_file_paths_empty(self.main, file_paths)
+        file_paths, file_paths_duplicate = wl_checking_files.check_file_paths_duplicate(self.main, file_paths)
 
         worker_open_files = Wl_Worker_Open_Files(
             self.main,

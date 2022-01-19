@@ -24,7 +24,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_checking import wl_checking_file, wl_checking_misc
+from wl_checking import wl_checking_files, wl_checking_misc
 from wl_dialogs import wl_dialogs_errs, wl_msg_boxes
 from wl_widgets import wl_box, wl_msg
 from wl_utils import wl_detection, wl_misc
@@ -130,7 +130,7 @@ class Wl_List(QListWidget):
             # Modify default path
             self.main.settings_custom['import'][settings]['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
-            file_paths, file_paths_empty = wl_checking_file.check_file_paths_empty(self.main, file_paths)
+            file_paths, file_paths_empty = wl_checking_files.check_file_paths_empty(self.main, file_paths)
 
             if file_paths_empty:
                 dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, self.tr('Import Error'))

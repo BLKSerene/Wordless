@@ -33,7 +33,7 @@ import numpy
 import textblob
 import underthesea
 
-from wl_checking import wl_checking_file
+from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_fig
 from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing, wl_word_detokenization
@@ -1149,7 +1149,7 @@ def generate_table(main, table):
     settings = main.settings_custom['concordancer']
     files = main.wl_files.get_selected_files()
 
-    if wl_checking_file.check_files_on_loading(main, files):
+    if wl_checking_files.check_files_on_loading(main, files):
         if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
@@ -1229,7 +1229,7 @@ def generate_fig(main):
     settings = main.settings_custom['concordancer']
     files = main.wl_files.get_selected_files()
 
-    if wl_checking_file.check_files_on_loading(main, files):
+    if wl_checking_files.check_files_on_loading(main, files):
         # Check for empty search terms
         if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):

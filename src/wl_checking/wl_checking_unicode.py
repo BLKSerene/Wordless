@@ -108,8 +108,10 @@ def is_han(char):
         (0x2F800, 0x2FA1F)
     ]
 
-    return any([unicode_start <= ord(char) <= unicode_end
-                for unicode_start, unicode_end in unicode_han])
+    return any([
+        unicode_start <= ord(char) <= unicode_end
+        for unicode_start, unicode_end in unicode_han
+    ])
 
 def is_eng(char):
     # Basic Latin:
@@ -148,8 +150,10 @@ def is_kana(char):
         (0x1B100, 0x1B12F)
     ]
 
-    return any([unicode_start <= ord(char) <= unicode_end
-                for unicode_start, unicode_end in unicode_kana])
+    return any([
+        unicode_start <= ord(char) <= unicode_end
+        for unicode_start, unicode_end in unicode_kana
+    ])
 
 def is_thai(char):
     # Thai:

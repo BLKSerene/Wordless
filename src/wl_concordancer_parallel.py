@@ -27,7 +27,7 @@ from PyQt5.QtWidgets import *
 
 import nltk
 
-from wl_checking import wl_checking_file
+from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing, wl_word_detokenization
 from wl_utils import wl_misc, wl_threading
@@ -823,7 +823,7 @@ def generate_table(main, table_src, table_tgt):
     settings = main.settings_custom['concordancer_parallel']
     files = main.wl_files.get_selected_files()
 
-    if wl_checking_file.check_files_on_loading(main, files):
+    if wl_checking_files.check_files_on_loading(main, files):
         # Check for identical source and target files
         if settings['generation_settings']['src_file'] != settings['generation_settings']['tgt_file']:
             # Check for empty search term

@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Checking - File
+# Wordless: Checking - Files
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialogs_errs, wl_msg_boxes
-from wl_utils import wl_detection, wl_misc
+from wl_utils import wl_misc
 
 def check_file_paths_unsupported(main, file_paths):
     file_paths_pass = []

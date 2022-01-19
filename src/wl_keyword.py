@@ -28,7 +28,7 @@ from PyQt5.QtWidgets import *
 
 import numpy
 
-from wl_checking import wl_checking_file
+from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
 from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
@@ -764,7 +764,7 @@ def generate_table(main, table):
     settings = main.settings_custom['keyword']
     files = main.wl_files.get_selected_files()
 
-    if wl_checking_file.check_files_on_loading(main, files):
+    if wl_checking_files.check_files_on_loading(main, files):
         files_ref = main.wl_files.find_files_by_name(
             settings['generation_settings']['ref_files'],
             selected_only = True
@@ -871,7 +871,7 @@ def generate_fig(main):
     settings = main.settings_custom['keyword']
     files = main.wl_files.get_selected_files()
 
-    if wl_checking_file.check_files_on_loading(main, files):
+    if wl_checking_files.check_files_on_loading(main, files):
         files_ref = settings['generation_settings']['ref_files']
         file_names_observed = [
             file_name

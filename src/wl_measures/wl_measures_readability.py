@@ -21,7 +21,7 @@ import random
 
 import numpy
 
-from wl_checking import wl_checking_token
+from wl_checking import wl_checking_tokens
 from wl_nlp import wl_pos_tagging, wl_syl_tokenization
 from wl_utils import wl_misc
 
@@ -37,7 +37,7 @@ def get_counts(main, text):
             text.words_multilevel.append([])
 
             for sentence in para:
-                text.words_multilevel[-1].append([token for token in sentence if wl_checking_token.is_word_alphanumeric(token)])
+                text.words_multilevel[-1].append([token for token in sentence if wl_checking_tokens.is_word_alphanumeric(token)])
 
         text.sentences = [sentence for para in text.words_multilevel for sentence in para]
         text.count_sentences = len(text.sentences)
