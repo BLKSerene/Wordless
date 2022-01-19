@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Text - Text Utilities
+# Wordless: NLP - NLP Utilities
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ import sacremoses
 import spacy
 import sudachipy
 
-from wl_text import wl_text
+from wl_nlp import wl_texts
 from wl_utils import wl_conversion
 
 SRP_CYRL_TO_LATN = {
@@ -374,7 +374,7 @@ def record_boundary_sentences(sentences, text):
         else:
             boundary = boundary.group()
 
-        sentences[i] = wl_text.Wl_Token(sentences[i], boundary = boundary)
+        sentences[i] = wl_texts.Wl_Token(sentences[i], boundary = boundary)
 
         sentence_start += len(sentence) + len(boundary)
 

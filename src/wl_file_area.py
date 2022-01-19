@@ -39,7 +39,7 @@ import openpyxl
 
 from wl_checking import wl_checking_file, wl_checking_misc
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
-from wl_text import wl_matching, wl_text
+from wl_nlp import wl_matching, wl_texts
 from wl_utils import wl_conversion, wl_detection, wl_misc, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_msg, wl_table
 
@@ -223,7 +223,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                             new_file['lang'] = self.main.settings_custom['files']['default_settings']['lang']
 
                     # Process texts
-                    new_file['text'] = wl_text.Wl_Text(self.main, new_file)
+                    new_file['text'] = wl_texts.Wl_Text(self.main, new_file)
 
                     new_files.append(new_file)
 
@@ -302,7 +302,7 @@ class Wl_Worker_Reload_Files(wl_threading.Wl_Worker_No_Callback):
             self.progress_updated.emit(self.tr(f'Reloading files... ({i + 1}/{len_files})'))
 
             # Re-process texts
-            file['text'] = wl_text.Wl_Text(self.main, file)
+            file['text'] = wl_texts.Wl_Text(self.main, file)
             file['text'].main = None
 
         self.worker_done.emit()

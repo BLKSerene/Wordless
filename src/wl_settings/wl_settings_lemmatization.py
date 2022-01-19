@@ -22,8 +22,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_text import wl_lemmatization, wl_text_utils, wl_word_detokenization, wl_word_tokenization
-from wl_utils import wl_conversion, wl_misc, wl_threading
+from wl_nlp import wl_lemmatization, wl_nlp_utils, wl_word_detokenization
+from wl_utils import wl_conversion, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_table, wl_tree
 
 class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
@@ -84,7 +84,7 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
             table_lemmatizers.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
 
             self.__dict__[f'combo_box_lemmatizer_{lang}'] = wl_box.Wl_Combo_Box(self)
-            self.__dict__[f'combo_box_lemmatizer_{lang}'].addItems(wl_text_utils.to_lang_util_texts(
+            self.__dict__[f'combo_box_lemmatizer_{lang}'].addItems(wl_nlp_utils.to_lang_util_texts(
                 self.main,
                 util_type = 'lemmatizers',
                 util_codes = self.settings_global[lang]
@@ -154,7 +154,7 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
 
                 self.button_lemmatization_show_preview.setText(self.tr('Processing ...'))
 
-                lemmatizer = wl_text_utils.to_lang_util_code(
+                lemmatizer = wl_nlp_utils.to_lang_util_code(
                     self.main,
                     util_type = 'lemmatizers',
                     util_text = self.__dict__[f"combo_box_lemmatizer_{self.settings_custom['preview_lang']}"].currentText()
@@ -189,7 +189,7 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
         for lang in settings['lemmatizers']:
             self.__dict__[f'combo_box_lemmatizer_{lang}'].blockSignals(True)
 
-            self.__dict__[f'combo_box_lemmatizer_{lang}'].setCurrentText(wl_text_utils.to_lang_util_text(
+            self.__dict__[f'combo_box_lemmatizer_{lang}'].setCurrentText(wl_nlp_utils.to_lang_util_text(
                 self.main,
                 util_type = 'lemmatizers',
                 util_code = settings['lemmatizers'][lang]
@@ -210,7 +210,7 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
 
     def apply_settings(self):
         for lang in self.settings_custom['lemmatizers']:
-            self.settings_custom['lemmatizers'][lang] = wl_text_utils.to_lang_util_code(
+            self.settings_custom['lemmatizers'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
                 util_type = 'lemmatizers',
                 util_text = self.__dict__[f'combo_box_lemmatizer_{lang}'].currentText()

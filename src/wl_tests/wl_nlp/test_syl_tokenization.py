@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Text - Syllable Tokenization
+# Wordless: Tests - NLP - Syllable Tokenization
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -22,9 +22,9 @@ sys.path.append('.')
 
 import pytest
 
+from wl_nlp import wl_syl_tokenization, wl_word_tokenization
 from wl_tests import wl_test_init, wl_test_lang_examples
-from wl_text import wl_syl_tokenization, wl_word_tokenization
-from wl_utils import wl_conversion, wl_misc
+from wl_utils import wl_conversion
 
 test_syl_tokenizers = []
 
@@ -41,24 +41,37 @@ def test_syl_tokenize(lang, syl_tokenizer):
 
     print(f'{lang_text} ({lang}) / {syl_tokenizer}:')
 
-    tokens = wl_word_tokenization.wl_word_tokenize(
+    # Untokenized
+    syls = wl_syl_tokenization.wl_syl_tokenize(
+        main,
+        inputs = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}'),
+        lang = lang,
+        syl_tokenizer = syl_tokenizer
+    )
+
+    # Tokenized
+    tokens = wl_word_tokenization.wl_word_tokenize_flat(
         main,
         text = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}'),
         lang = lang
     )
-    tokens = list(wl_misc.flatten_list(tokens))
-    
-    syls = wl_syl_tokenization.wl_syl_tokenize(
+    syls_tokenized = wl_syl_tokenization.wl_syl_tokenize(
         main,
-        tokens = tokens,
+        inputs = tokens,
         lang = lang,
         syl_tokenizer = syl_tokenizer
     )
 
     print(syls)
 
+    # Check for missing syllables
+    assert all(True for syls_token in syls if all(syls_token))
+
     # The count of syllables should be more than 1
     assert sum([len(syls_token) for syls_token in syls]) > 1
+
+    # Tokenization should not be modified
+    assert len(tokens) == len(syls_tokenized)
 
     if lang == 'afr':
         assert syls == [['Afri', 'kaans'], ['is'], ['ti', 'po', 'lo', 'gies'], ['be', 'skou'], ["'"], ['n'], ['In', 'do'], ['', ''], ['Eu', 'ro', 'pe', 'se'], [','], ['Wes'], ['', ''], ['Ger', 'maan', 'se'], [','], ['Ne', 'derfran', 'kie', 'se'], ['taal', ',[2'], [']'], ['wat'], ['aan'], ['die'], ['suid', 'punt'], ['van'], ['Afri', 'ka'], ['on', 'der'], ['in', 'vloed'], ['van'], ['ver', 'skeie'], ['an', 'der'], ['ta', 'le'], ['en'], ['taal', 'groe', 'pe'], ['ont', 'staan'], ['het'], ['.']]

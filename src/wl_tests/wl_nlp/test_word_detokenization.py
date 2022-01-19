@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Text - Word Detokenization
+# Wordless: Tests - NLP - Word Detokenization
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -22,9 +22,9 @@ sys.path.append('.')
 
 import pytest
 
+from wl_nlp import wl_word_detokenization, wl_word_tokenization
 from wl_tests import wl_test_init, wl_test_lang_examples
-from wl_text import wl_word_detokenization, wl_word_tokenization
-from wl_utils import wl_conversion, wl_misc
+from wl_utils import wl_conversion
 
 main = wl_test_init.Wl_Test_Main()
 
