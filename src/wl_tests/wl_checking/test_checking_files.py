@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Checking - File
+# Wordless: Tests - Checking - Files
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -21,12 +21,12 @@ import sys
 
 sys.path.append('.')
 
-from wl_checking import wl_checking_file
+from wl_checking import wl_checking_files
 from wl_utils import wl_misc
 from wl_tests import wl_test_init
 
 def get_normalized_file_path(file_name):
-    return wl_misc.get_normalized_path(f'wl_tests_files/wl_checking/wl_checking_file/{file_name}')
+    return wl_misc.get_normalized_path(f'wl_tests_files/wl_checking/wl_checking_files/{file_name}')
 
 main = wl_test_init.Wl_Test_Main()
 main.settings_custom['file_area']['files_open'] = [
@@ -47,17 +47,17 @@ FILE_PATHS_DUPLICATE = [
 ]
 
 def test_check_file_paths_unsupported():
-    _, files_unsupported = wl_checking_file.check_file_paths_unsupported(main, FILE_PATHS_UNSUPPORTED)
+    _, files_unsupported = wl_checking_files.check_file_paths_unsupported(main, FILE_PATHS_UNSUPPORTED)
 
     assert files_unsupported == FILE_PATHS_UNSUPPORTED
 
 def test_check_file_paths_empty():
-    _, files_empty = wl_checking_file.check_file_paths_empty(main, FILE_PATHS_EMPTY)
+    _, files_empty = wl_checking_files.check_file_paths_empty(main, FILE_PATHS_EMPTY)
 
     assert files_empty == FILE_PATHS_EMPTY
 
 def test_check_file_paths_duplicate():
-    _, files_duplicate = wl_checking_file.check_file_paths_duplicate(main, FILE_PATHS_DUPLICATE)
+    _, files_duplicate = wl_checking_files.check_file_paths_duplicate(main, FILE_PATHS_DUPLICATE)
     
     assert files_duplicate == FILE_PATHS_DUPLICATE
 
