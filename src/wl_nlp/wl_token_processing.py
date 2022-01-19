@@ -83,7 +83,10 @@ def wl_process_tokens(main, text, token_settings):
             for i, sentence in enumerate(para):
                 para[i] = [token.lower() for token in sentence]
 
-        text.tags = [[tag.lower() for tag in tags] for tags in text.tags]
+        text.tags = [
+            [tag.lower() for tag in tags]
+            for tags in text.tags
+        ]
 
     # Words
     if settings['words']:
@@ -214,7 +217,7 @@ def wl_process_tokens_overview(main, text, token_settings):
 
     # Syllable tokenization
     text.syls_tokens = wl_syl_tokenization.wl_syl_tokenize_no_puncs(main, text.tokens_flat, lang = text.lang)
-
+    
     return text
 
 def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_lines = False):
