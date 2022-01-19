@@ -61,7 +61,7 @@ from wl_checking import wl_checking_misc
 from wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
 from wl_settings import wl_settings, wl_settings_default, wl_settings_global
 from wl_utils import wl_misc, wl_threading
-from wl_widgets import wl_box, wl_label, wl_layout, wl_table
+from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables
 
 import wl_file_area
 import wl_overview
@@ -350,7 +350,7 @@ class Wl_Main(QMainWindow):
         # Align work are and file area
         wrapper_file_area = QWidget()
 
-        wrapper_file_area.setLayout(wl_layout.Wl_Layout())
+        wrapper_file_area.setLayout(wl_layouts.Wl_Layout())
         wrapper_file_area.layout().addWidget(self.wl_file_area, 0, 0)
 
         margins = self.wl_file_area.layout().contentsMargins()
@@ -371,7 +371,7 @@ class Wl_Main(QMainWindow):
 
         self.wl_file_area.layout().setContentsMargins(margins)
 
-        splitter_central_widget = wl_layout.Wl_Splitter(Qt.Vertical, self)
+        splitter_central_widget = wl_layouts.Wl_Splitter(Qt.Vertical, self)
         splitter_central_widget.addWidget(self.wl_work_area)
         splitter_central_widget.addWidget(wrapper_file_area)
 
@@ -566,7 +566,7 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
             no_buttons = True
         )
 
-        self.label_citing = wl_label.Wl_Label_Dialog(
+        self.label_citing = wl_labels.Wl_Label_Dialog(
             self.tr('''
                 <div>
                     If you publish work that uses Wordless, please cite as follows.
@@ -576,7 +576,7 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
         )
 
         self.label_citation_sys = QLabel(self.tr('Citation System:'), self)
-        self.combo_box_citation_sys = wl_box.Wl_Combo_Box(self)
+        self.combo_box_citation_sys = wl_boxes.Wl_Combo_Box(self)
         self.text_edit_citing = QTextEdit(self)
     
         self.button_copy = QPushButton(self.tr('Copy'), self)
@@ -598,7 +598,7 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
         self.button_copy.clicked.connect(self.copy)
         self.button_close.clicked.connect(self.accept)
     
-        layout_citation_sys = wl_layout.Wl_Layout()
+        layout_citation_sys = wl_layouts.Wl_Layout()
         layout_citation_sys.addWidget(self.label_citation_sys, 0, 0)
         layout_citation_sys.addWidget(self.combo_box_citation_sys, 0, 1)
     
@@ -645,7 +645,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
             width = 650
         )
 
-        self.label_acks = wl_label.Wl_Label_Dialog(
+        self.label_acks = wl_labels.Wl_Label_Dialog(
             self.tr('''
                 <div>
                     I would like to extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
@@ -653,7 +653,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
             '''),
             self
         )
-        self.table_acks = wl_table.Wl_Table(
+        self.table_acks = wl_tables.Wl_Table(
             self,
             headers = [
                 self.tr('Name'),
@@ -697,10 +697,10 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
             name = f'<a href="{home_page}">{name}</a>'
             license = f'<a href="{licence_url}">{license}</a>'
 
-            self.table_acks.setCellWidget(i, 0, wl_label.Wl_Label_Html(name, self))
-            self.table_acks.setCellWidget(i, 1, wl_label.Wl_Label_Html_Centered(ver, self))
-            self.table_acks.setCellWidget(i, 2, wl_label.Wl_Label_Html(authors, self))
-            self.table_acks.setCellWidget(i, 3, wl_label.Wl_Label_Html_Centered(license, self))
+            self.table_acks.setCellWidget(i, 0, wl_labels.Wl_Label_Html(name, self))
+            self.table_acks.setCellWidget(i, 1, wl_labels.Wl_Label_Html_Centered(ver, self))
+            self.table_acks.setCellWidget(i, 2, wl_labels.Wl_Label_Html(authors, self))
+            self.table_acks.setCellWidget(i, 3, wl_labels.Wl_Label_Html_Centered(license, self))
 
         self.table_acks.blockSignals(False)
         self.table_acks.setUpdatesEnabled(True)
@@ -714,7 +714,7 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
             height = 450
         )
 
-        self.label_need_help = wl_label.Wl_Label_Dialog(
+        self.label_need_help = wl_labels.Wl_Label_Dialog(
             self.tr('''
                 <div>
                     If you encounter a problem, find a bug, or require any further information, feel free to ask questions, submit bug reports, or provide feedback by <a href="https://github.com/BLKSerene/Wordless/issues/new">creating an issue</a> on Github if you fail to find the answer by searching <a href="https://github.com/BLKSerene/Wordless/issues">existing issues</a> first.
@@ -727,7 +727,7 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
             self
         )
 
-        self.table_need_help = wl_table.Wl_Table(
+        self.table_need_help = wl_tables.Wl_Table(
             self,
             headers = [
                 self.tr('Channel'),
@@ -742,12 +742,12 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
         self.table_need_help.setRowCount(3)
         self.table_need_help.verticalHeader().setHidden(True)
 
-        self.table_need_help.setCellWidget(0, 0, wl_label.Wl_Label_Html_Centered(self.tr('Documentation'), self))
-        self.table_need_help.setCellWidget(0, 1, wl_label.Wl_Label_Html('<a href="https://github.com/BLKSerene/Wordless#documentation">https://github.com/BLKSerene/Wordless#documentation</a>', self))
-        self.table_need_help.setCellWidget(1, 0, wl_label.Wl_Label_Html_Centered(self.tr('Email'), self))
-        self.table_need_help.setCellWidget(1, 1, wl_label.Wl_Label_Html(self.main.email_html, self))
-        self.table_need_help.setCellWidget(2, 0, wl_label.Wl_Label_Html_Centered(self.tr('<a href="https://www.wechat.com/en/">WeChat</a><br>Official Account'), self))
-        self.table_need_help.setCellWidget(2, 1, wl_label.Wl_Label_Html_Centered('<img src="imgs/wechat_official_account.jpg">', self))
+        self.table_need_help.setCellWidget(0, 0, wl_labels.Wl_Label_Html_Centered(self.tr('Documentation'), self))
+        self.table_need_help.setCellWidget(0, 1, wl_labels.Wl_Label_Html('<a href="https://github.com/BLKSerene/Wordless#documentation">https://github.com/BLKSerene/Wordless#documentation</a>', self))
+        self.table_need_help.setCellWidget(1, 0, wl_labels.Wl_Label_Html_Centered(self.tr('Email'), self))
+        self.table_need_help.setCellWidget(1, 1, wl_labels.Wl_Label_Html(self.main.email_html, self))
+        self.table_need_help.setCellWidget(2, 0, wl_labels.Wl_Label_Html_Centered(self.tr('<a href="https://www.wechat.com/en/">WeChat</a><br>Official Account'), self))
+        self.table_need_help.setCellWidget(2, 1, wl_labels.Wl_Label_Html_Centered('<img src="imgs/wechat_official_account.jpg">', self))
 
         self.wrapper_info.layout().addWidget(self.label_need_help, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_need_help, 1, 0)
@@ -779,7 +779,7 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
             width = 450
         )
 
-        self.label_donating = wl_label.Wl_Label_Dialog(
+        self.label_donating = wl_labels.Wl_Label_Dialog(
             self.tr('''
                 <div>
                     If you would like to support the development of Wordless, you may donate via <a href="https://www.paypal.com/">PayPal</a>, <a href="https://global.alipay.com/">Alipay</a>, or <a href="https://pay.weixin.qq.com/index.php/public/wechatpay_en">WeChat Pay</a>.
@@ -788,8 +788,8 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
             self
         )
         self.label_donating_via = QLabel(self.tr('Donating via:'), self)
-        self.combo_box_donating_via = wl_box.Wl_Combo_Box(self)
-        self.label_donating_via_img = wl_label.Wl_Label_Html('', self)
+        self.combo_box_donating_via = wl_boxes.Wl_Combo_Box(self)
+        self.label_donating_via_img = wl_labels.Wl_Label_Html('', self)
 
         self.combo_box_donating_via.addItems([
             self.tr('PayPal'),
@@ -799,7 +799,7 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
 
         self.combo_box_donating_via.currentTextChanged.connect(self.donating_via_changed)
 
-        layout_donating_via = wl_layout.Wl_Layout()
+        layout_donating_via = wl_layouts.Wl_Layout()
         layout_donating_via.addWidget(self.label_donating_via, 0, 0)
         layout_donating_via.addWidget(self.combo_box_donating_via, 0, 1)
 
@@ -916,9 +916,9 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
 
         self.on_startup = on_startup
 
-        self.label_checking_status = wl_label.Wl_Label_Dialog('', self)
-        self.label_cur_ver = wl_label.Wl_Label_Dialog(self.tr(f'Current Version: {self.main.ver}'), self)
-        self.label_latest_ver = wl_label.Wl_Label_Dialog('', self)
+        self.label_checking_status = wl_labels.Wl_Label_Dialog('', self)
+        self.label_cur_ver = wl_labels.Wl_Label_Dialog(self.tr(f'Current Version: {self.main.ver}'), self)
+        self.label_latest_ver = wl_labels.Wl_Label_Dialog('', self)
 
         self.checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for updates on startup'), self)
         self.button_try_again = QPushButton(self.tr('Try Again'), self)
@@ -1106,7 +1106,7 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
             height = 420
         )
 
-        text_edit_changelog = wl_box.Wl_Text_Browser(self)
+        text_edit_changelog = wl_boxes.Wl_Text_Browser(self)
         text_edit_changelog.setHtml(changelog_text)
 
         self.wrapper_info.layout().addWidget(text_edit_changelog, 0, 0)
@@ -1121,7 +1121,7 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
         label_about_icon = QLabel('', self)
         label_about_icon.setPixmap(img_wl_icon)
 
-        label_about_title = wl_label.Wl_Label_Dialog_No_Wrap(
+        label_about_title = wl_labels.Wl_Label_Dialog_No_Wrap(
             self.tr(f'''
                 <div style="text-align: center;">
                     <h2>Wordless {main.ver}</h2>
@@ -1133,7 +1133,7 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
             '''),
             self
         )
-        label_about_copyright = wl_label.Wl_Label_Dialog_No_Wrap(
+        label_about_copyright = wl_labels.Wl_Label_Dialog_No_Wrap(
             self.tr('''
                 <hr>
                 <div style="text-align: center;">

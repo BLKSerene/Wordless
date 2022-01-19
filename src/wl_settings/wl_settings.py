@@ -33,7 +33,7 @@ from wl_settings import (
     wl_settings_measures,
     wl_settings_figs
 )
-from wl_widgets import wl_button, wl_layout, wl_tree
+from wl_widgets import wl_buttons, wl_layouts, wl_trees
 
 class Wl_Settings(QDialog):
     wl_settings_changed = pyqtSignal()
@@ -46,7 +46,7 @@ class Wl_Settings(QDialog):
         self.setWindowTitle(self.tr('Settings'))
         self.setFixedSize(1024, 768)
 
-        self.tree_settings = wl_tree.Wl_Tree(self)
+        self.tree_settings = wl_trees.Wl_Tree(self)
 
         self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('General')]))
         self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem([self.tr('Import')]))
@@ -76,7 +76,7 @@ class Wl_Settings(QDialog):
 
         self.tree_settings.itemSelectionChanged.connect(self.selection_changed)
 
-        self.scroll_area_settings = wl_layout.Wl_Scroll_Area(self)
+        self.scroll_area_settings = wl_layouts.Wl_Scroll_Area(self)
 
         self.stacked_widget_settings = QStackedWidget(self)
 
@@ -135,7 +135,7 @@ class Wl_Settings(QDialog):
 
         self.scroll_area_settings.setWidget(self.stacked_widget_settings)
 
-        button_reset_settings = wl_button.Wl_Button_Reset_All_Settings(self)
+        button_reset_settings = wl_buttons.Wl_Button_Reset_All_Settings(self)
         button_save = QPushButton(self.tr('Save'), self)
         button_apply = QPushButton(self.tr('Apply'), self)
         button_cancel = QPushButton(self.tr('Cancel'), self)
@@ -144,7 +144,7 @@ class Wl_Settings(QDialog):
         button_apply.clicked.connect(self.apply_settings)
         button_cancel.clicked.connect(self.reject)
 
-        layout_buttons = wl_layout.Wl_Layout()
+        layout_buttons = wl_layouts.Wl_Layout()
         layout_buttons.addWidget(button_reset_settings, 0, 0)
         layout_buttons.addWidget(button_save, 0, 2)
         layout_buttons.addWidget(button_apply, 0, 3)
@@ -152,7 +152,7 @@ class Wl_Settings(QDialog):
 
         layout_buttons.setColumnStretch(1, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.tree_settings, 0, 0)
         self.layout().addWidget(self.scroll_area_settings, 0, 1)
         self.layout().addLayout(layout_buttons, 1, 0, 1, 2)

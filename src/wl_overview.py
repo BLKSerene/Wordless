@@ -33,10 +33,10 @@ from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_measures import wl_measures_misc, wl_measures_readability
 from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
-from wl_utils import wl_misc, wl_threading
-from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
+from wl_utils import wl_misc, wl_msgs, wl_threading
+from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
-class Wl_Table_Overview(wl_table.Wl_Table_Data):
+class Wl_Table_Overview(wl_tables.Wl_Table_Data):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -303,7 +303,7 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
         if confirmed:
             self.insert_col(0, self.tr('Total'))
 
-class Wrapper_Overview(wl_layout.Wl_Wrapper):
+class Wrapper_Overview(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
@@ -347,7 +347,7 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
         self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
-        self.group_box_token_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lowercase, 0, 1)
         self.group_box_token_settings.layout().addWidget(self.checkbox_uppercase, 1, 0)
@@ -355,13 +355,13 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_nums, 2, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 2, 1)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 3, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.checkbox_treat_as_lowercase, 4, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lemmatize_tokens, 5, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_filter_stop_words, 6, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 7, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 7, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 8, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
@@ -370,13 +370,13 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
 
         self.label_base_sttr = QLabel(self.tr('Base of standardized type-token ratio:'), self)
-        self.spin_box_base_sttr = wl_box.Wl_Spin_Box(self)
+        self.spin_box_base_sttr = wl_boxes.Wl_Spin_Box(self)
 
         self.spin_box_base_sttr.setRange(100, 10000)
 
         self.spin_box_base_sttr.valueChanged.connect(self.generation_settings_changed)
 
-        self.group_box_generation_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_base_sttr, 0, 0)
         self.group_box_generation_settings.layout().addWidget(self.spin_box_base_sttr, 1, 0)
 
@@ -394,7 +394,7 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
         self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_breakdown.stateChanged.connect(self.table_settings_changed)
 
-        self.group_box_table_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
@@ -669,6 +669,15 @@ def generate_table(main, table):
                 count_chars_total = sum(texts_stats_files[-1][5])
 
                 for i, stats in enumerate(texts_stats_files):
+                    if i < len(files):
+                        file_lang = files[i]['lang']
+                    # Total
+                    else:
+                        if len(set([file['lang'] for file in files])) == 1:
+                            file_lang = files[0]['lang']
+                        else:
+                            file_lang = 'other'
+
                     readability_statistics = stats[0]
                     len_paras_sentences = stats[1]
                     len_paras_tokens = stats[2]
@@ -699,8 +708,10 @@ def generate_table(main, table):
 
                     # Readibility
                     for j, statistic in enumerate(readability_statistics):
-                        if statistic not in [wl_measures_readability.TEXT_TOO_SHORT,
-                                             wl_measures_readability.NO_SUPPORT]:
+                        if statistic not in [
+                            wl_measures_readability.TEXT_TOO_SHORT,
+                            wl_measures_readability.NO_SUPPORT
+                        ]:
                             table.set_item_num(j, i, statistic)
                         else:
                             table.set_item_error(j, i, statistic)
@@ -722,7 +733,7 @@ def generate_table(main, table):
                     table.set_item_num(19, i, count_types, count_types_total)
 
                     # Count of Syllables
-                    if count_syls:
+                    if file_lang in main.settings_global['syl_tokenizers']:
                         table.set_item_num(20, i, count_syls)
                         table.set_item_num(21, i, count_syls, count_syls_total)
                     else:
@@ -784,23 +795,33 @@ def generate_table(main, table):
                     table.item(55, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                     # Token Length
-                    if count_syls:
+                    if file_lang in main.settings_global['syl_tokenizers']:
                         table.set_item_num(56, i, numpy.mean(len_tokens_syls))
                         table.set_item_num(57, i, numpy.std(len_tokens_syls))
+                        table.set_item_num(58, i, numpy.var(len_tokens_syls))
+                        table.set_item_num(59, i, numpy.min(len_tokens_syls))
+                        table.set_item_num(60, i, numpy.percentile(len_tokens_syls, 25))
+                        table.set_item_num(61, i, numpy.median(len_tokens_syls))
+                        table.set_item_num(62, i, numpy.percentile(len_tokens_syls, 75))
+                        table.set_item_num(63, i, numpy.max(len_tokens_syls))
+                        table.set_item_num(64, i, numpy.ptp(len_tokens_syls))
+                        table.setItem(65, i, QTableWidgetItem(', '.join([
+                            str(mode) for mode in wl_measures_misc.modes(len_tokens_syls)
+                        ])))
+
+                        table.item(65, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                     else:
                         table.set_item_error(56, i, text = main.tr('No Support'))
                         table.set_item_error(57, i, text = main.tr('No Support'))
+                        table.set_item_error(58, i, text = main.tr('No Support'))
+                        table.set_item_error(59, i, text = main.tr('No Support'))
+                        table.set_item_error(60, i, text = main.tr('No Support'))
+                        table.set_item_error(61, i, text = main.tr('No Support'))
+                        table.set_item_error(62, i, text = main.tr('No Support'))
+                        table.set_item_error(63, i, text = main.tr('No Support'))
+                        table.set_item_error(64, i, text = main.tr('No Support'))
+                        table.set_item_error(65, i, text = main.tr('No Support'))
 
-                    table.set_item_num(58, i, numpy.var(len_tokens_syls))
-                    table.set_item_num(59, i, numpy.min(len_tokens_syls))
-                    table.set_item_num(60, i, numpy.percentile(len_tokens_syls, 25))
-                    table.set_item_num(61, i, numpy.median(len_tokens_syls))
-                    table.set_item_num(62, i, numpy.percentile(len_tokens_syls, 75))
-                    table.set_item_num(63, i, numpy.max(len_tokens_syls))
-                    table.set_item_num(64, i, numpy.ptp(len_tokens_syls))
-                    table.setItem(65, i, QTableWidgetItem(', '.join([
-                        str(mode) for mode in wl_measures_misc.modes(len_tokens_syls)
-                    ])))
                     table.set_item_num(66, i, numpy.mean(len_tokens_chars))
                     table.set_item_num(67, i, numpy.std(len_tokens_chars))
                     table.set_item_num(68, i, numpy.var(len_tokens_chars))
@@ -814,26 +835,36 @@ def generate_table(main, table):
                         str(mode) for mode in wl_measures_misc.modes(len_tokens_chars)
                     ])))
 
-                    table.item(65, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                     table.item(75, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                     # Type Length
-                    if count_syls:
+                    if file_lang in main.settings_global['syl_tokenizers']:
                         table.set_item_num(76, i, numpy.mean(len_types_syls))
                         table.set_item_num(77, i, numpy.std(len_types_syls))
+                        table.set_item_num(78, i, numpy.var(len_types_syls))
+                        table.set_item_num(79, i, numpy.min(len_types_syls))
+                        table.set_item_num(80, i, numpy.percentile(len_types_syls, 25))
+                        table.set_item_num(81, i, numpy.median(len_types_syls))
+                        table.set_item_num(82, i, numpy.percentile(len_types_syls, 75))
+                        table.set_item_num(83, i, numpy.max(len_types_syls))
+                        table.set_item_num(84, i, numpy.ptp(len_types_syls))
+                        table.setItem(85, i, QTableWidgetItem(', '.join([
+                            str(mode) for mode in wl_measures_misc.modes(len_types_syls)
+                        ])))
+
+                        table.item(85, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                     else:
                         table.set_item_error(76, i, text = main.tr('No Support'))
                         table.set_item_error(77, i, text = main.tr('No Support'))
-                    table.set_item_num(78, i, numpy.var(len_types_syls))
-                    table.set_item_num(79, i, numpy.min(len_types_syls))
-                    table.set_item_num(80, i, numpy.percentile(len_types_syls, 25))
-                    table.set_item_num(81, i, numpy.median(len_types_syls))
-                    table.set_item_num(82, i, numpy.percentile(len_types_syls, 75))
-                    table.set_item_num(83, i, numpy.max(len_types_syls))
-                    table.set_item_num(84, i, numpy.ptp(len_types_syls))
-                    table.setItem(85, i, QTableWidgetItem(', '.join([
-                        str(mode) for mode in wl_measures_misc.modes(len_types_syls)
-                    ])))
+                        table.set_item_error(78, i, text = main.tr('No Support'))
+                        table.set_item_error(79, i, text = main.tr('No Support'))
+                        table.set_item_error(80, i, text = main.tr('No Support'))
+                        table.set_item_error(81, i, text = main.tr('No Support'))
+                        table.set_item_error(82, i, text = main.tr('No Support'))
+                        table.set_item_error(83, i, text = main.tr('No Support'))
+                        table.set_item_error(84, i, text = main.tr('No Support'))
+                        table.set_item_error(85, i, text = main.tr('No Support'))
+
                     table.set_item_num(86, i, numpy.mean(len_types_chars))
                     table.set_item_num(87, i, numpy.std(len_types_chars))
                     table.set_item_num(88, i, numpy.var(len_types_chars))
@@ -847,28 +878,35 @@ def generate_table(main, table):
                         str(mode) for mode in wl_measures_misc.modes(len_types_chars)
                     ])))
 
-                    table.item(85, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                     table.item(95, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                     # Syllable Length
-                    if count_syls:
+                    if file_lang in main.settings_global['syl_tokenizers']:
                         table.set_item_num(96, i, numpy.mean(len_syls))
                         table.set_item_num(97, i, numpy.std(len_syls))
+                        table.set_item_num(98, i, numpy.var(len_syls))
+                        table.set_item_num(99, i, numpy.min(len_syls))
+                        table.set_item_num(100, i, numpy.percentile(len_syls, 25))
+                        table.set_item_num(101, i, numpy.median(len_syls))
+                        table.set_item_num(102, i, numpy.percentile(len_syls, 75))
+                        table.set_item_num(103, i, numpy.max(len_syls))
+                        table.set_item_num(104, i, numpy.ptp(len_syls))
+                        table.setItem(105, i, QTableWidgetItem(', '.join([
+                            str(mode) for mode in wl_measures_misc.modes(len_syls)
+                        ])))
+
+                        table.item(105, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                     else:
                         table.set_item_error(96, i, text = main.tr('No Support'))
                         table.set_item_error(97, i, text = main.tr('No Support'))
-                    table.set_item_num(98, i, numpy.var(len_syls))
-                    table.set_item_num(99, i, numpy.min(len_syls))
-                    table.set_item_num(100, i, numpy.percentile(len_syls, 25))
-                    table.set_item_num(101, i, numpy.median(len_syls))
-                    table.set_item_num(102, i, numpy.percentile(len_syls, 75))
-                    table.set_item_num(103, i, numpy.max(len_syls))
-                    table.set_item_num(104, i, numpy.ptp(len_syls))
-                    table.setItem(105, i, QTableWidgetItem(', '.join([
-                        str(mode) for mode in wl_measures_misc.modes(len_syls)
-                    ])))
-
-                    table.item(105, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.set_item_error(98, i, text = main.tr('No Support'))
+                        table.set_item_error(99, i, text = main.tr('No Support'))
+                        table.set_item_error(100, i, text = main.tr('No Support'))
+                        table.set_item_error(101, i, text = main.tr('No Support'))
+                        table.set_item_error(102, i, text = main.tr('No Support'))
+                        table.set_item_error(103, i, text = main.tr('No Support'))
+                        table.set_item_error(104, i, text = main.tr('No Support'))
+                        table.set_item_error(105, i, text = main.tr('No Support'))
 
                     count_tokens_lens.append(collections.Counter(len_tokens_chars))
                     count_sentences_lens.append(collections.Counter(len_sentences))
@@ -952,15 +990,15 @@ def generate_table(main, table):
                 
                 table.itemChanged.emit(table.item(0, 0))
 
-                wl_msg.wl_msg_generate_table_success(main)
+                wl_msgs.wl_msg_generate_table_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
 
-                wl_msg.wl_msg_generate_table_error(main)
+                wl_msgs.wl_msg_generate_table_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
-            wl_msg.wl_msg_fatal_error(main)
+            wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['overview']
     files = main.wl_files.get_selected_files()
@@ -977,4 +1015,4 @@ def generate_table(main, table):
         thread_overview_table = wl_threading.Wl_Thread(worker_overview_table)
         thread_overview_table.start_worker()
     else:
-        wl_msg.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_table_error(main)
