@@ -22,8 +22,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_text import wl_syl_tokenization, wl_text_utils, wl_word_detokenization, wl_word_tokenization
-from wl_utils import wl_conversion, wl_misc, wl_threading
+from wl_nlp import wl_nlp_utils, wl_syl_tokenization, wl_word_detokenization
+from wl_utils import wl_conversion, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_table, wl_tree
 
 class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
@@ -39,14 +39,8 @@ class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
             line = line.strip()
 
             if line:
-                tokens = wl_word_tokenization.wl_word_tokenize(
-                    self.main, line,
-                    lang = preview_lang
-                )
-                tokens = wl_misc.flatten_list(tokens)
-
                 syls = wl_syl_tokenization.wl_syl_tokenize(
-                    self.main, tokens,
+                    self.main, line,
                     lang = preview_lang,
                     syl_tokenizer = self.syl_tokenizer
                 )
@@ -94,7 +88,7 @@ class Wl_Settings_Syl_Tokenization(wl_tree.Wl_Settings):
             table_syl_tokenizers.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
 
             self.__dict__[f'combo_box_syl_tokenizer_{lang}'] = wl_box.Wl_Combo_Box(self)
-            self.__dict__[f'combo_box_syl_tokenizer_{lang}'].addItems(wl_text_utils.to_lang_util_texts(
+            self.__dict__[f'combo_box_syl_tokenizer_{lang}'].addItems(wl_nlp_utils.to_lang_util_texts(
                 self.main,
                 util_type = 'syl_tokenizers',
                 util_codes = self.settings_global[lang]
@@ -160,7 +154,7 @@ class Wl_Settings_Syl_Tokenization(wl_tree.Wl_Settings):
 
                 self.button_syl_tokenization_show_preview.setText(self.tr('Processing ...'))
 
-                syl_tokenizer = wl_text_utils.to_lang_util_code(
+                syl_tokenizer = wl_nlp_utils.to_lang_util_code(
                     self.main,
                     util_type = 'syl_tokenizers',
                     util_text = self.__dict__[f"combo_box_syl_tokenizer_{self.settings_custom['preview_lang']}"].currentText()
@@ -195,7 +189,7 @@ class Wl_Settings_Syl_Tokenization(wl_tree.Wl_Settings):
         for lang in settings['syl_tokenizers']:
             self.__dict__[f'combo_box_syl_tokenizer_{lang}'].blockSignals(True)
 
-            self.__dict__[f'combo_box_syl_tokenizer_{lang}'].setCurrentText(wl_text_utils.to_lang_util_text(
+            self.__dict__[f'combo_box_syl_tokenizer_{lang}'].setCurrentText(wl_nlp_utils.to_lang_util_text(
                 self.main,
                 util_type = 'syl_tokenizers',
                 util_code = settings['syl_tokenizers'][lang]
@@ -216,7 +210,7 @@ class Wl_Settings_Syl_Tokenization(wl_tree.Wl_Settings):
 
     def apply_settings(self):
         for lang in self.settings_custom['syl_tokenizers']:
-            self.settings_custom['syl_tokenizers'][lang] = wl_text_utils.to_lang_util_code(
+            self.settings_custom['syl_tokenizers'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
                 util_type = 'syl_tokenizers',
                 util_text = self.__dict__[f'combo_box_syl_tokenizer_{lang}'].currentText()

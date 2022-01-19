@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Text - Text Utilities
+# Wordless: Tests - NLP - NLP Utilities
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -20,8 +20,8 @@ import sys
 
 sys.path.append('.')
 
+from wl_nlp import wl_nlp_utils
 from wl_tests import wl_test_init
-from wl_text import wl_text_utils
 
 main = wl_test_init.Wl_Test_Main()
 
@@ -31,26 +31,26 @@ SENTENCE_SRP_LATN = 'Srpski jezik pripada slovenskoj grupi jezika porodice indoe
 def test_to_sections():
     tokens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-    token_sections = wl_text_utils.to_sections(tokens, num_sections = 5)
+    token_sections = wl_nlp_utils.to_sections(tokens, num_sections = 5)
 
     assert token_sections == [[1, 2, 3], [4, 5, 6], [7, 8], [9, 10], [11, 12]]
 
 def test_to_sections_unequal():
     tokens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-    token_sections = list(wl_text_utils.to_sections_unequal(tokens, section_size = 5))
+    token_sections = list(wl_nlp_utils.to_sections_unequal(tokens, section_size = 5))
     
     assert token_sections == [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12]]
 
 def test_srp_cyrl_to_latn():
     tokens_srp_cyrl = SENTENCE_SRP_CYRL.split()
 
-    assert ' '.join(wl_text_utils.to_srp_latn(tokens_srp_cyrl)) == SENTENCE_SRP_LATN
+    assert ' '.join(wl_nlp_utils.to_srp_latn(tokens_srp_cyrl)) == SENTENCE_SRP_LATN
 
 def test_srp_latn_to_cyrl():
     tokens_srp_latn = SENTENCE_SRP_LATN.split()
 
-    assert ' '.join(wl_text_utils.to_srp_cyrl(tokens_srp_latn)) == SENTENCE_SRP_CYRL
+    assert ' '.join(wl_nlp_utils.to_srp_cyrl(tokens_srp_latn)) == SENTENCE_SRP_CYRL
 
 if __name__ == '__main__':
     test_to_sections()

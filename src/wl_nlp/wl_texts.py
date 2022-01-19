@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Text - Text
+# Wordless: NLP - Texts
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ import re
 
 import bs4
 
-from wl_text import wl_matching, wl_sentence_tokenization, wl_text_utils, wl_word_tokenization
+from wl_nlp import wl_matching, wl_nlp_utils, wl_sentence_tokenization, wl_word_tokenization
 from wl_utils import wl_misc
 
 class Wl_Token(str):
@@ -59,7 +59,7 @@ class Wl_Text():
         if file_ext == '.txt':
             with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
                 # Read files in chunks to reduce memory usage
-                sections = wl_text_utils.to_sections_unequal(f.readlines(), len_sections)
+                sections = wl_nlp_utils.to_sections_unequal(f.readlines(), len_sections)
 
             for i, section in enumerate(sections):
                 text = ''.join(section)
@@ -174,8 +174,10 @@ class Wl_Text():
             tags_sentence = ','.join(tags_sentence)
             tags_word = ','.join(tags_word)
 
-            if ((tags_para and tags_sentence and tags_word) and
-                (soup.select(tags_para) and soup.select(tags_sentence) and soup.select(tags_word))):
+            if (
+                (tags_para and tags_sentence and tags_word) and
+                (soup.select(tags_para) and soup.select(tags_sentence) and soup.select(tags_word))
+            ):
                 for para in soup.select(tags_para):
                     self.tokens_multilevel.append([])
 

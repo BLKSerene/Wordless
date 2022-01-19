@@ -22,7 +22,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_text import wl_sentence_tokenization, wl_text_utils
+from wl_nlp import wl_nlp_utils, wl_sentence_tokenization
 from wl_utils import wl_conversion, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_table, wl_tree
 
@@ -71,7 +71,7 @@ class Wl_Settings_Sentence_Tokenization(wl_tree.Wl_Settings):
             table_sentence_tokenizers.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
 
             self.__dict__[f'combo_box_sentence_tokenizer_{lang}'] = wl_box.Wl_Combo_Box(self)
-            self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].addItems(wl_text_utils.to_lang_util_texts(
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].addItems(wl_nlp_utils.to_lang_util_texts(
                 self.main,
                 util_type = 'sentence_tokenizers',
                 util_codes = self.settings_global[lang])
@@ -137,7 +137,7 @@ class Wl_Settings_Sentence_Tokenization(wl_tree.Wl_Settings):
 
                 self.button_sentence_tokenization_show_preview.setText(self.tr('Processing ...'))
 
-                sentence_tokenizer = wl_text_utils.to_lang_util_code(
+                sentence_tokenizer = wl_nlp_utils.to_lang_util_code(
                     self.main,
                     util_type = 'sentence_tokenizers',
                     util_text = self.__dict__[f"combo_box_sentence_tokenizer_{self.settings_custom['preview_lang']}"].currentText()
@@ -172,7 +172,7 @@ class Wl_Settings_Sentence_Tokenization(wl_tree.Wl_Settings):
         for lang in settings['sentence_tokenizers']:
             self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].blockSignals(True)
 
-            self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].setCurrentText(wl_text_utils.to_lang_util_text(
+            self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].setCurrentText(wl_nlp_utils.to_lang_util_text(
                 self.main,
                 util_type = 'sentence_tokenizers',
                 util_code = settings['sentence_tokenizers'][lang]
@@ -193,7 +193,7 @@ class Wl_Settings_Sentence_Tokenization(wl_tree.Wl_Settings):
 
     def apply_settings(self):
         for lang in self.settings_custom['sentence_tokenizers']:
-            self.settings_custom['sentence_tokenizers'][lang] = wl_text_utils.to_lang_util_code(
+            self.settings_custom['sentence_tokenizers'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
                 util_type = 'sentence_tokenizers',
                 util_text = self.__dict__[f'combo_box_sentence_tokenizer_{lang}'].currentText()

@@ -34,7 +34,7 @@ from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
 from wl_measures import wl_measures_statistical_significance
-from wl_text import wl_matching, wl_text, wl_token_processing
+from wl_nlp import wl_matching, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_sorting, wl_threading
 from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
 
@@ -905,7 +905,7 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
                 self.collocations_freqs_files.append(collocations_freqs_total)
                 collocations_freqs_files_all.append(collocations_freqs_total_all)
 
-                texts.append(wl_text.Wl_Text_Blank())
+                texts.append(wl_texts.Wl_Text_Blank())
 
             # Statistiscal Significance & Effect Size
             text_test_significance = settings['generation_settings']['test_significance']
