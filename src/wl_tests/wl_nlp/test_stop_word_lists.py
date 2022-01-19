@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Text - Stop Word Lists
+# Wordless: Tests - NLP - Stop Word Lists
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -22,8 +22,8 @@ sys.path.append('.')
 
 import pytest
 
+from wl_nlp import wl_stop_word_lists
 from wl_tests import wl_test_init
-from wl_text import wl_stop_word_lists
 from wl_utils import wl_conversion
 
 test_stop_word_lists = []

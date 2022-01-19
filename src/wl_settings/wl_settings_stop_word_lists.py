@@ -22,7 +22,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_text import wl_stop_word_lists, wl_text_utils
+from wl_nlp import wl_nlp_utils, wl_stop_word_lists
 from wl_utils import wl_conversion
 from wl_widgets import wl_box, wl_layout, wl_list, wl_table, wl_tree
 
@@ -56,7 +56,7 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
 
             self.__dict__[f'combo_box_stop_word_list_{lang}'] = wl_box.Wl_Combo_Box(self)
 
-            self.__dict__[f'combo_box_stop_word_list_{lang}'].addItems(wl_text_utils.to_lang_util_texts(
+            self.__dict__[f'combo_box_stop_word_list_{lang}'].addItems(wl_nlp_utils.to_lang_util_texts(
                 self.main,
                 util_type = 'stop_word_lists',
                 util_codes = self.settings_global[lang]
@@ -118,7 +118,7 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
 
     def preview_results_changed(self):
         lang = wl_conversion.to_lang_code(self.main, self.combo_box_stop_word_list_preview_lang.currentText())
-        list_stop_words = wl_text_utils.to_lang_util_code(
+        list_stop_words = wl_nlp_utils.to_lang_util_code(
             self.main,
             util_type = 'stop_word_lists',
             util_text = self.__dict__[f'combo_box_stop_word_list_{lang}'].currentText()
@@ -143,7 +143,7 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
             settings = copy.deepcopy(self.settings_custom)
 
         for lang in settings['stop_word_lists']:
-            self.__dict__[f'combo_box_stop_word_list_{lang}'].setCurrentText(wl_text_utils.to_lang_util_text(
+            self.__dict__[f'combo_box_stop_word_list_{lang}'].setCurrentText(wl_nlp_utils.to_lang_util_text(
                 self.main,
                 util_type = 'stop_word_lists',
                 util_code = settings['stop_word_lists'][lang]
@@ -159,7 +159,7 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
 
     def apply_settings(self):
         for lang in self.settings_custom['stop_word_lists']:
-            self.settings_custom['stop_word_lists'][lang] = wl_text_utils.to_lang_util_code(
+            self.settings_custom['stop_word_lists'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
                 util_type = 'stop_word_lists',
                 util_text = self.__dict__[f'combo_box_stop_word_list_{lang}'].currentText()

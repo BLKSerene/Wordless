@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Text - Lemmatization
+# Wordless: NLP - Lemmatization
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@ import re
 import nltk
 import spacy
 
-from wl_text import wl_matching, wl_pos_tagging, wl_text_utils, wl_word_tokenization
+from wl_nlp import wl_matching, wl_nlp_utils, wl_pos_tagging, wl_word_tokenization
 from wl_utils import wl_conversion, wl_misc
 
 def wl_lemmatize(main, inputs, lang, tokenized = 'No', tagged = 'No', lemmatizer = 'default'):
@@ -31,11 +31,11 @@ def wl_lemmatize(main, inputs, lang, tokenized = 'No', tagged = 'No', lemmatizer
         if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang]
 
-        wl_text_utils.init_word_tokenizers(
+        wl_nlp_utils.init_word_tokenizers(
             main,
             lang = lang
         )
-        wl_text_utils.init_lemmatizers(
+        wl_nlp_utils.init_lemmatizers(
             main,
             lang = lang,
             lemmatizer = lemmatizer
@@ -53,7 +53,7 @@ def wl_lemmatize(main, inputs, lang, tokenized = 'No', tagged = 'No', lemmatizer
         else:
             # Input of SudachiPy cannot be more than 49149 bytes
             if lang == 'jpn' and lemmatizer in ['spacy_jpn', 'sudachipy_jpn']:
-                texts = wl_text_utils.to_sections_unequal(inputs, 4000)
+                texts = wl_nlp_utils.to_sections_unequal(inputs, 4000)
             else:
                 texts = [inputs]
 

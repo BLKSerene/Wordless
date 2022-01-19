@@ -24,7 +24,7 @@ import charset_normalizer
 import langdetect
 import langid
 
-from wl_text import wl_matching
+from wl_nlp import wl_matching
 from wl_utils import wl_conversion, wl_misc
 
 # Force consistent results for language detection

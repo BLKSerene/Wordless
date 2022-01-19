@@ -36,10 +36,9 @@ import underthesea
 from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_fig
-from wl_text import wl_matching, wl_text, wl_text_utils, wl_token_processing, wl_word_detokenization
+from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing, wl_word_detokenization
 from wl_utils import wl_misc, wl_threading
-from wl_widgets import (wl_box, wl_label, wl_layout, wl_msg, wl_table,
-                        wl_widgets)
+from wl_widgets import wl_box, wl_label, wl_layout, wl_msg, wl_table, wl_widgets
 
 class Wl_Table_Concordancer(wl_table.Wl_Table_Data_Sort_Search):
     def __init__(self, parent):
@@ -664,7 +663,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 ngram = text.tokens_flat[i : i + len_search_term]
 
                             node_text = wl_word_detokenization.wl_word_detokenize(self.main, ngram, text.lang)
-                            node_text = wl_text_utils.text_escape(node_text)
+                            node_text = wl_nlp_utils.text_escape(node_text)
 
                             # Width Unit (Paragraph)
                             if settings['generation_settings']['width_unit'] == self.tr('Paragraph'):
@@ -798,8 +797,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                     context_right = (text.tokens_flat[i + len_search_term : i + len_search_term + len(context_right) - 1] +
                                                      [context_right_last])
 
-                            context_left = wl_text_utils.text_escape(context_left)
-                            context_right = wl_text_utils.text_escape(context_right)
+                            context_left = wl_nlp_utils.text_escape(context_left)
+                            context_right = wl_nlp_utils.text_escape(context_right)
 
                             context_left_text = wl_word_detokenization.wl_word_detokenize(
                                 self.main, context_left,

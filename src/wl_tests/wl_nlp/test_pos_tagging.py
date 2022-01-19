@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Text - POS Tagging
+# Wordless: Tests - NLP - POS Tagging
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -22,9 +22,9 @@ sys.path.append('.')
 
 import pytest
 
+from wl_nlp import wl_pos_tagging, wl_word_tokenization
 from wl_tests import wl_test_init, wl_test_lang_examples
-from wl_text import wl_pos_tagging, wl_word_tokenization
-from wl_utils import wl_conversion, wl_misc
+from wl_utils import wl_conversion
 
 test_pos_taggers = []
 
@@ -87,7 +87,8 @@ def test_pos_tag(lang, pos_tagger):
     # Universal tags should not all be "X"
     assert any([tag for token, tag in tokens_tagged_universal if tag != 'X'])
     assert any([tag for token, tag in tokens_tagged_universal_tokenized if tag != 'X'])
-
+    
+    # Tokenization should not be modified
     assert len(tokens) == len(tokens_tagged_tokenized) == len(tokens_tagged_universal_tokenized)
 
     if lang == 'cat':

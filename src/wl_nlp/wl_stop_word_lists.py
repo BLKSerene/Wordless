@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Text - Stop Word Lists
+# Wordless: NLP - Stop Word Lists
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@ import nltk
 import opencc
 import pythainlp
 
-from wl_text import wl_text_utils
+from wl_nlp import wl_nlp_utils
 from wl_utils import wl_conversion, wl_misc
 
 def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
@@ -163,7 +163,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 spacy_lang = importlib.import_module('spacy.lang.sr')
 
                 stop_words = spacy_lang.STOP_WORDS
-                stop_words = wl_text_utils.to_srp_latn(stop_words)
+                stop_words = wl_nlp_utils.to_srp_latn(stop_words)
             else:
                 spacy_lang = importlib.import_module(f'spacy.lang.{lang_639_1}')
 

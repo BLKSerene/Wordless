@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Text - POS Tagging
+# Wordless: NLP - POS Tagging
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ import pythainlp
 import spacy
 import underthesea
 
-from wl_text import wl_text_utils, wl_word_detokenization, wl_word_tokenization
+from wl_nlp import wl_nlp_utils, wl_word_tokenization
 from wl_utils import wl_conversion
 
 def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
@@ -31,11 +31,11 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang]
 
-    wl_text_utils.init_word_tokenizers(
+    wl_nlp_utils.init_word_tokenizers(
         main,
         lang = lang
     )
-    wl_text_utils.init_pos_taggers(
+    wl_nlp_utils.init_pos_taggers(
         main,
         lang = lang,
         pos_tagger = pos_tagger
@@ -63,7 +63,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 
         # Input of SudachiPy cannot be more than 49149 bytes
         if lang == 'jpn' and pos_tagger in ['spacy_jpn', 'sudachipy_jpn']:
-            texts = wl_text_utils.to_sections_unequal(inputs, 4000)
+            texts = wl_nlp_utils.to_sections_unequal(inputs, 4000)
         else:
             texts = [inputs]
 

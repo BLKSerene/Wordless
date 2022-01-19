@@ -31,7 +31,7 @@ import numpy
 from wl_checking import wl_checking_file
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_fig, wl_fig_freq, wl_fig_stat
-from wl_text import wl_text, wl_text_utils, wl_token_processing
+from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_sorting, wl_threading
 from wl_widgets import wl_layout, wl_list, wl_msg, wl_table, wl_widgets
 
@@ -476,7 +476,7 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
 
             # Total
             if len(files_observed) > 1:
-                text_total = wl_text.Wl_Text_Blank()
+                text_total = wl_texts.Wl_Text_Blank()
                 text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
                 self.keywords_freq_files.append(sum(self.keywords_freq_files, collections.Counter()))
@@ -514,8 +514,8 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
                         number_sections = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['number_sections']
                         use_data = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']
 
-                    sections_observed = wl_text_utils.to_sections(tokens_observed, number_sections)
-                    sections_ref = wl_text_utils.to_sections(tokens_ref, number_sections)
+                    sections_observed = wl_nlp_utils.to_sections(tokens_observed, number_sections)
+                    sections_ref = wl_nlp_utils.to_sections(tokens_ref, number_sections)
 
                     sections_freq_observed = [collections.Counter(section) for section in sections_observed]
                     sections_freq_ref = [collections.Counter(section) for section in sections_ref]

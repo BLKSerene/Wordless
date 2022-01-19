@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # ----------------------------------------------------------------------
-# Wordless: Tests - Text - Sentence Tokenization
+# Wordless: Tests - NLP - Sentence Tokenization
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -24,8 +24,8 @@ sys.path.append('.')
 
 import pytest
 
+from wl_nlp import wl_sentence_tokenization
 from wl_tests import wl_test_init, wl_test_lang_examples
-from wl_text import wl_sentence_tokenization
 from wl_utils import wl_conversion
 
 test_sentence_tokenizers = []

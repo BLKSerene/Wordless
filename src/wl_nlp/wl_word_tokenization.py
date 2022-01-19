@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Text - Word Tokenization
+# Wordless: NLP - Word Tokenization
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,7 @@ import tokenizer
 import underthesea
 
 from wl_checking import wl_checking_unicode
-from wl_text import wl_sentence_tokenization, wl_text, wl_text_utils
+from wl_nlp import wl_nlp_utils, wl_sentence_tokenization, wl_texts
 from wl_utils import wl_conversion, wl_misc
 
 def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
@@ -38,7 +38,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
 
-    wl_text_utils.init_word_tokenizers(
+    wl_nlp_utils.init_word_tokenizers(
         main,
         lang = lang,
         word_tokenizer = word_tokenizer
@@ -335,12 +335,12 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         for para in tokens_multilevel:
             for sentence in para:
                 if sentence:
-                    sentence[-1] = wl_text.Wl_Token(sentence[-1], boundary = '', sentence_ending = True)
+                    sentence[-1] = wl_texts.Wl_Token(sentence[-1], boundary = '', sentence_ending = True)
     else:
         for para in tokens_multilevel:
             for sentence in para:
                 if sentence:
-                    sentence[-1] = wl_text.Wl_Token(sentence[-1], boundary = ' ', sentence_ending = True)
+                    sentence[-1] = wl_texts.Wl_Token(sentence[-1], boundary = ' ', sentence_ending = True)
     
     return tokens_multilevel
 

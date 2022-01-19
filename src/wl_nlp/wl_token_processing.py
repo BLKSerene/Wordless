@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Text - Token Processing
+# Wordless: NLP - Token Processing
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -19,16 +19,18 @@
 import copy
 
 from wl_checking import wl_checking_token
-from wl_text import (wl_lemmatization, wl_stop_word_lists, wl_syl_tokenization, wl_text, wl_text_utils,
-                     wl_word_detokenization)
+from wl_nlp import wl_lemmatization, wl_stop_word_lists, wl_syl_tokenization, wl_word_detokenization
 from wl_utils import wl_misc
 
 def wl_process_tokens(main, text, token_settings):
     settings = copy.deepcopy(token_settings)
 
     # Remove empty paragraphs
-    text.tokens_multilevel = [para
-                              for para in text.tokens_multilevel if para]
+    text.tokens_multilevel = [
+        para
+        for para in text.tokens_multilevel
+        if para
+    ]
 
     # Punctuations
     if not settings['puncs']:
@@ -166,17 +168,35 @@ def wl_process_tokens_overview(main, text, token_settings):
     text = wl_process_tokens(main, text, token_settings)
 
     # Remove empty tokens, sentences, and paragraphs
-    text.tokens_multilevel = [[[token
-                                for token in sentence if token]
-                               for sentence in para]
-                              for para in text.tokens_multilevel]
-    text.tokens_multilevel = [[sentence
-                               for sentence in para if sentence]
-                              for para in text.tokens_multilevel]
-    text.tokens_multilevel = [para
-                              for para in text.tokens_multilevel if para]
-    text.tokens_flat = [token
-                        for token in text.tokens_flat if token]
+    text.tokens_multilevel = [
+        [
+            [
+                token
+                for token in sentence
+                if token
+            ]
+            for sentence in para
+        ]
+        for para in text.tokens_multilevel
+    ]
+    text.tokens_multilevel = [
+        [
+            sentence
+            for sentence in para
+            if sentence
+        ]
+        for para in text.tokens_multilevel
+    ]
+    text.tokens_multilevel = [
+        para
+        for para in text.tokens_multilevel
+        if para
+    ]
+    text.tokens_flat = [
+        token
+        for token in text.tokens_flat
+        if token
+    ]
 
     # Update offsets
     i_sentences = 0
@@ -204,9 +224,11 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
 
     # Punctuations
     if not settings['puncs']:
-        tokens = [token
-                  for token in tokens
-                  if not wl_checking_token.is_punc(token)]
+        tokens = [
+            token
+            for token in tokens
+            if not wl_checking_token.is_punc(token)
+        ]
 
         # Update offsets
         text.offsets_paras = []
@@ -242,27 +264,43 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
 
     # Ignore tags
     if settings['ignore_tags']:
-        tokens = [(token, [])
-                  for token in tokens]
-        text.tokens_flat = [(token, [])
-                            for token in text.tokens_flat]
+        tokens = [
+            (token, [])
+            for token in tokens
+        ]
+        text.tokens_flat = [
+            (token, [])
+            for token in text.tokens_flat
+        ]
     else:
-        tokens = [(token, tags)
-                  for token, tags in zip(tokens, text.tags)]
-        text.tokens_flat = [(token, tags)
-                            for token, tags in zip(text.tokens_flat, text.tags)]
+        tokens = [
+            (token, tags)
+            for token, tags in zip(tokens, text.tags)
+        ]
+        text.tokens_flat = [
+            (token, tags)
+            for token, tags in zip(text.tokens_flat, text.tags)
+        ]
 
     # Use tags only
     if settings['use_tags']:
-        tokens = [''.join(tags)
-                  for _, tags in tokens]
-        text.tokens_flat = [''.join(tags)
-                            for _, tags in text.tokens_flat]
+        tokens = [
+            ''.join(tags)
+            for _, tags in tokens
+        ]
+        text.tokens_flat = [
+            ''.join(tags)
+            for _, tags in text.tokens_flat
+        ]
     else:
-        tokens = [f"{token}{''.join(tags)}"
-                  for token, tags in tokens]
-        text.tokens_flat = [f"{token}{''.join(tags)}"
-                            for token, tags in text.tokens_flat]
+        tokens = [
+            f"{token}{''.join(tags)}"
+            for token, tags in tokens
+        ]
+        text.tokens_flat = [
+            f"{token}{''.join(tags)}"
+            for token, tags in text.tokens_flat
+        ]
 
     return tokens
 
@@ -286,12 +324,16 @@ def wl_process_tokens_colligation(main, text, token_settings):
 
     # Use tags Only
     if token_settings['use_tags']:
-        text.tags = [tag
-                     for tags in text.tags
-                     for tag in tags]
+        text.tags = [
+            tag
+            for tags in text.tags
+            for tag in tags
+        ]
     else:
-        text.tags = [''.join(tags)
-                     for tags in text.tags]
+        text.tags = [
+            ''.join(tags)
+            for tags in text.tags
+        ]
 
     return text
 

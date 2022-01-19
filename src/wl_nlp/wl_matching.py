@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Text - Matching
+# Wordless: NLP - Matching
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -20,9 +20,7 @@ import copy
 import itertools
 import re
 
-import nltk
-
-from wl_text import wl_lemmatization, wl_text_utils
+from wl_nlp import wl_lemmatization
 
 def get_re_tags(main):
     tags_embedded = []

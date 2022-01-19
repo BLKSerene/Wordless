@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # ----------------------------------------------------------------------
-# Wordless: Tests - Text - Word Tokenization
+# Wordless: Tests - NLP - Word Tokenization
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -25,9 +25,9 @@ sys.path.append('.')
 
 import pytest
 
+from wl_nlp import wl_word_tokenization
 from wl_tests import wl_test_init, wl_test_lang_examples
-from wl_text import wl_word_tokenization
-from wl_utils import wl_conversion, wl_misc
+from wl_utils import wl_conversion
 
 test_word_tokenizers = []
 
@@ -49,13 +49,12 @@ def test_word_tokenize(lang, word_tokenizer):
 
     print(f'{lang_text} ({lang}) / {word_tokenizer}:')
 
-    tokens = wl_word_tokenization.wl_word_tokenize(
+    tokens = wl_word_tokenization.wl_word_tokenize_flat(
         main,
         text = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}'),
         lang = lang,
         word_tokenizer = word_tokenizer
     )
-    tokens = list(wl_misc.flatten_list(tokens))
 
     print(tokens)
 
