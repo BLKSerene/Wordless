@@ -36,7 +36,7 @@ import underthesea
 from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_figs
-from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing, wl_word_detokenization
+from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_threading
 from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_widgets
 
@@ -662,7 +662,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             if not settings['token_settings']['puncs']:
                                 ngram = text.tokens_flat[i : i + len_search_term]
 
-                            node_text = wl_word_detokenization.wl_word_detokenize(self.main, ngram, text.lang)
+                            node_text = ' '.join(ngram)
                             node_text = wl_nlp_utils.text_escape(node_text)
 
                             # Width Unit (Paragraph)
@@ -800,14 +800,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             context_left = wl_nlp_utils.text_escape(context_left)
                             context_right = wl_nlp_utils.text_escape(context_right)
 
-                            context_left_text = wl_word_detokenization.wl_word_detokenize(
-                                self.main, context_left,
-                                lang = text.lang
-                            )
-                            context_right_text = wl_word_detokenization.wl_word_detokenize(
-                                self.main, context_right,
-                                lang = text.lang
-                            )
+                            context_left_text = ' '.join(context_left)
+                            context_right_text = ' '.join(context_right)
 
                             # Left
                             concordance_line.append([context_left_text, context_left, text_search_left])
@@ -929,10 +923,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
 
                 for search_term in search_terms_file:
                     search_terms_total.add(search_term)
-                    search_terms_labels.add(wl_word_detokenization.wl_word_detokenize(
-                        self.main, search_term,
-                        lang = text.lang
-                    ))
+                    search_terms_labels.add(' '.join(search_term))
 
                 texts.append(text)
 
