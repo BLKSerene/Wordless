@@ -59,6 +59,7 @@ for:
       - python utils/wl_downloader_ci.py
     before_test:
       - cd src
+      - set PYTHONPATH=%PYTHONPATH%;%cd%
     # Run tests
     test_script:
       - pytest wl_tests/test_overview.py
@@ -98,6 +99,7 @@ for:
       - python utils/wl_downloader_ci.py
     before_test:
       - cd src
+      - export PYTHONPATH="$PYTHONPATH;$PWD"
     # Run tests
     test_script:
       - pytest wl_tests/test_overview.py
@@ -130,6 +132,7 @@ for:
       - python utils/wl_downloader_ci.py
     before_test:
       - cd src
+      - export PYTHONPATH="$PYTHONPATH;$PWD"
     # Run tests
     test_script:
       - pytest wl_tests/wl_nlp/test_sentence_tokenization.py

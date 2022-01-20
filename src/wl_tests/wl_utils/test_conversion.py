@@ -17,9 +17,6 @@
 # ----------------------------------------------------------------------
 
 import os
-import sys
-
-sys.path.append('.')
 
 import pytest
 
@@ -92,20 +89,26 @@ def test_get_lang_family():
 
 def test_to_encoding_code():
     for encoding_text in settings_file_encodings.keys():
-        len_encoding_text = max([len(encoding_text)
-                                 for encoding_text in settings_file_encodings])
+        len_encoding_text = max([
+            len(encoding_text)
+            for encoding_text in settings_file_encodings
+        ])
         encoding_code = wl_conversion.to_encoding_code(main, encoding_text)
 
         assert encoding_code == settings_file_encodings[encoding_text]
 
 def test_to_encoding_text():
     for encoding_code in settings_file_encodings.values():
-        len_encoding_code = max([len(encoding_code)
-                                 for encoding_code in settings_file_encodings.values()])
+        len_encoding_code = max([
+            len(encoding_code)
+            for encoding_code in settings_file_encodings.values()
+        ])
         encoding_text = wl_conversion.to_encoding_text(main, encoding_code)
 
-        assert encoding_text == {encoding_code: encoding_text
-                                 for encoding_text, encoding_code in settings_file_encodings.items()}[encoding_code]
+        assert encoding_text == {
+            encoding_code: encoding_text
+            for encoding_text, encoding_code in settings_file_encodings.items()
+        }[encoding_code]
 
 if __name__ == '__main__':
     test_to_lang_code()
@@ -119,4 +122,3 @@ if __name__ == '__main__':
 
     test_to_encoding_code()
     test_to_encoding_text()
-

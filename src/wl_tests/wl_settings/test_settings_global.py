@@ -19,9 +19,6 @@
 import os
 import pkgutil
 import re
-import sys
-
-sys.path.append('.')
 
 import pytest
 import sacremoses

@@ -18,10 +18,7 @@
 
 import collections
 import re
-import sys
 import time
-
-sys.path.append('.')
 
 import numpy
 import pytest

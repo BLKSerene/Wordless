@@ -25,8 +25,6 @@ import sys
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 
-sys.path.append('.')
-
 from wl_settings import wl_settings_default, wl_settings_global
 
 import wl_file_area

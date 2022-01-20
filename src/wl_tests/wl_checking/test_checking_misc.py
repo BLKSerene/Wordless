@@ -18,9 +18,6 @@
 
 import os
 import shutil
-import sys
-
-sys.path.append('.')
 
 from wl_checking import wl_checking_misc
 

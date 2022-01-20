@@ -19,9 +19,6 @@
 # ----------------------------------------------------------------------
 
 import re
-import sys
-
-sys.path.append('.')
 
 import pytest
 

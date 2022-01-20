@@ -16,10 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import sys
-
-sys.path.append('.')
-
 from wl_utils import wl_misc
 
 def test_split_wl_ver():

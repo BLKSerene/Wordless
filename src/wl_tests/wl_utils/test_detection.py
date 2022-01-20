@@ -19,9 +19,6 @@
 import glob
 import os
 import re
-import sys
-
-sys.path.append('.')
 
 import pytest
 

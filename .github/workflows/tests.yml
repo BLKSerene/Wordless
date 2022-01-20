@@ -40,13 +40,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip setuptools
         pip install -r requirements.txt
+        pip install pytest-cov
         python utils/wl_downloader_ci.py
 
     - name: Run Tests and collect coverage
       run: |
         cd src
-
-        pip install pytest-cov
+        $env:PYTHONPATH += $PWD
 
         pytest --cov=./ --cov-report=xml wl_tests/test_overview.py
         pytest --cov=./ --cov-report=xml wl_tests/test_wordlist.py
@@ -97,6 +97,7 @@ jobs:
     - name: Run Tests
       run: |
         cd src
+        export PYTHONPATH="$PYTHONPATH;$PWD"
 
         pytest wl_tests/test_overview.py
         pytest wl_tests/test_wordlist.py
@@ -136,6 +137,7 @@ jobs:
     - name: Run Tests
       run: |
         cd src
+        export PYTHONPATH="$PYTHONPATH;$PWD"
 
         pytest wl_tests/wl_nlp/test_sentence_tokenization.py
         pytest wl_tests/wl_nlp/test_word_tokenization.py

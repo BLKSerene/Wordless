@@ -16,10 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import sys
-
-sys.path.append('.')
-
 from wl_nlp import wl_nlp_utils
 from wl_tests import wl_test_init
 

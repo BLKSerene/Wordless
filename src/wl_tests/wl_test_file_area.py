@@ -20,10 +20,7 @@ import glob
 import os
 import pickle
 import re
-import sys
 import time
-
-sys.path.append('.')
 
 from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_init

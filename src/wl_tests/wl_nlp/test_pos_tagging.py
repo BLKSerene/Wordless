@@ -16,10 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import sys
-
-sys.path.append('.')
-
 import pytest
 
 from wl_nlp import wl_pos_tagging, wl_word_tokenization
