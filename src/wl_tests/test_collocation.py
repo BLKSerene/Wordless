@@ -17,10 +17,7 @@
 # ----------------------------------------------------------------------
 
 import random
-import sys
 import time
-
-sys.path.append('.')
 
 import pytest
 

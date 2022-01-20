@@ -16,10 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import sys
-
-sys.path.append('.')
-
 from wl_checking import wl_checking_unicode
 
 def test_is_han():
