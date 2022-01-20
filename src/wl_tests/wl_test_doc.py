@@ -18,9 +18,6 @@
 
 import csv
 import re
-import sys
-
-sys.path.append('.')
 
 from wl_tests import wl_test_init
 

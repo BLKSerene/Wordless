@@ -60,6 +60,7 @@ jobs:
   # Run tests
   - script: |
       cd src
+      set PYTHONPATH=%PYTHONPATH%;%cd%
 
       pytest wl_tests/test_overview.py
       pytest wl_tests/test_wordlist.py
@@ -122,6 +123,7 @@ jobs:
   # Run tests
   - script: |
       cd src
+      export PYTHONPATH="$PYTHONPATH;$PWD"
 
       pytest wl_tests/test_overview.py
       pytest wl_tests/test_wordlist.py
@@ -177,6 +179,7 @@ jobs:
   # Run tests
   - script: |
       cd src
+      export PYTHONPATH="$PYTHONPATH;$PWD"
 
       pytest wl_tests/wl_nlp/test_sentence_tokenization.py
       pytest wl_tests/wl_nlp/test_word_tokenization.py
