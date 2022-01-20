@@ -17,9 +17,6 @@
 # ----------------------------------------------------------------------
 
 import os
-import sys
-
-sys.path.append('.')
 
 from wl_checking import wl_checking_files
 from wl_utils import wl_misc
