@@ -16,11 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import sys
-
 import numpy
-
-sys.path.append('.')
 
 from wl_tests import wl_test_init
 from wl_measures import wl_measures_readability
