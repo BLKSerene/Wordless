@@ -152,7 +152,7 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
                     tokens_stat_file.values(),
                     normalized_min = 1,
                     normalized_max = 5,
-                    normalized_reversed = True
+                    reverse = True
                 )
             )
         else:
