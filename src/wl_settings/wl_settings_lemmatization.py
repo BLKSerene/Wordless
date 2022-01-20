@@ -24,7 +24,7 @@ from PyQt5.QtWidgets import *
 
 from wl_nlp import wl_lemmatization, wl_nlp_utils, wl_word_detokenization
 from wl_utils import wl_conversion, wl_threading
-from wl_widgets import wl_box, wl_layout, wl_table, wl_tree
+from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_trees
 
 class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
     worker_done = pyqtSignal(str, list)
@@ -55,7 +55,7 @@ class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
 
         self.worker_done.emit(preview_samples, preview_results)
 
-class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
+class Wl_Settings_Lemmatization(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -66,7 +66,7 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
         # Lemmatizer Settings
         group_box_lemmatizer_settings = QGroupBox(self.tr('Lemmatizer Settings'), self)
 
-        table_lemmatizers = wl_table.Wl_Table(
+        table_lemmatizers = wl_tables.Wl_Table(
             self,
             headers = [
                 self.tr('Language'),
@@ -83,7 +83,7 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
         for i, lang in enumerate(self.settings_global):
             table_lemmatizers.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
 
-            self.__dict__[f'combo_box_lemmatizer_{lang}'] = wl_box.Wl_Combo_Box(self)
+            self.__dict__[f'combo_box_lemmatizer_{lang}'] = wl_boxes.Wl_Combo_Box(self)
             self.__dict__[f'combo_box_lemmatizer_{lang}'].addItems(wl_nlp_utils.to_lang_util_texts(
                 self.main,
                 util_type = 'lemmatizers',
@@ -92,14 +92,14 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
 
             table_lemmatizers.setCellWidget(i, 1, self.__dict__[f'combo_box_lemmatizer_{lang}'])
 
-        group_box_lemmatizer_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_lemmatizer_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_lemmatizer_settings.layout().addWidget(table_lemmatizers, 0, 0)
 
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
         self.label_lemmatization_preview_lang = QLabel(self.tr('Select language:'), self)
-        self.combo_box_lemmatization_preview_lang = wl_box.Wl_Combo_Box(self)
+        self.combo_box_lemmatization_preview_lang = wl_boxes.Wl_Combo_Box(self)
         self.button_lemmatization_show_preview = QPushButton(self.tr('Show preview'), self)
         self.text_edit_lemmatization_preview_samples = QTextEdit(self)
         self.text_edit_lemmatization_preview_results = QTextEdit(self)
@@ -115,19 +115,19 @@ class Wl_Settings_Lemmatization(wl_tree.Wl_Settings):
         self.text_edit_lemmatization_preview_samples.textChanged.connect(self.preview_changed)
         self.text_edit_lemmatization_preview_results.textChanged.connect(self.preview_changed)
 
-        layout_preview_settings = wl_layout.Wl_Layout()
+        layout_preview_settings = wl_layouts.Wl_Layout()
         layout_preview_settings.addWidget(self.label_lemmatization_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_lemmatization_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.button_lemmatization_show_preview, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
-        group_box_preview.setLayout(wl_layout.Wl_Layout())
+        group_box_preview.setLayout(wl_layouts.Wl_Layout())
         group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
         group_box_preview.layout().addWidget(self.text_edit_lemmatization_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_lemmatization_preview_results, 1, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_lemmatizer_settings, 0, 0)
         self.layout().addWidget(group_box_preview, 1, 0)
 

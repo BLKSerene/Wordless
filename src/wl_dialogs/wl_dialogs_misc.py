@@ -25,7 +25,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialogs
-from wl_widgets import wl_label, wl_layout
+from wl_widgets import wl_labels, wl_layouts
 
 class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
     def __init__(self, main, text):
@@ -37,12 +37,12 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
 
         self.label_progress = QLabel(text, self)
         self.label_time_elapsed = QLabel(self.tr('Elapsed Time: 0:00:00'), self)
-        self.label_processing = wl_label.Wl_Label_Dialog(self.tr('Please wait. It may take a few seconds to several minutes for the operation to be completed.'), self)
+        self.label_processing = wl_labels.Wl_Label_Dialog(self.tr('Please wait. It may take a few seconds to several minutes for the operation to be completed.'), self)
 
         self.timer_time_elapsed.timeout.connect(self.update_elapsed_time)
         self.timer_time_elapsed.start(1000)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.label_progress, 0, 0)
         self.layout().addWidget(self.label_time_elapsed, 0, 1, Qt.AlignRight)
         self.layout().addWidget(self.label_processing, 1, 0, 1, 2)
@@ -70,7 +70,7 @@ class WL_Dialog_Clear_Table(wl_dialogs.Wl_Dialog_Info):
             no_buttons = True
         )
 
-        self.label_confirm_clear = wl_label.Wl_Label_Dialog(
+        self.label_confirm_clear = wl_labels.Wl_Label_Dialog(
             self.tr('''
                 <div>
                     The results in the table have yet been exported. Do you really want to clear the table?
@@ -103,7 +103,7 @@ class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
             no_buttons = True
         )
 
-        self.label_restart_exit = wl_label.Wl_Label_Dialog(
+        self.label_restart_exit = wl_labels.Wl_Label_Dialog(
             self.tr('''
                 <div>
                     Restart is required for font settings to take effect. Do you want to restart Wordless now?
@@ -140,7 +140,7 @@ class Wl_Dialog_Confirm_Exit(wl_dialogs.Wl_Dialog_Info):
             no_buttons = True
         )
 
-        self.label_confirm_exit = wl_label.Wl_Label_Dialog(
+        self.label_confirm_exit = wl_labels.Wl_Label_Dialog(
             self.tr('''
                 <div>
                     Are you sure you want to exit Wordless?

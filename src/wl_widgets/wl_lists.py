@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Widgets - List
+# Wordless: Widgets - Lists
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -26,8 +26,8 @@ from PyQt5.QtWidgets import *
 
 from wl_checking import wl_checking_files, wl_checking_misc
 from wl_dialogs import wl_dialogs_errs, wl_msg_boxes
-from wl_widgets import wl_box, wl_msg
-from wl_utils import wl_detection, wl_misc
+from wl_widgets import wl_boxes
+from wl_utils import wl_detection, wl_misc, wl_msgs
 
 class Wl_List(QListWidget):
     def __init__(self, parent):
@@ -155,7 +155,7 @@ class Wl_List(QListWidget):
 
                 dialog_err_files.open()
 
-                wl_msg.wl_msg_import_list_error(self.main)
+                self.main.statusBar().showMessage(self.tr('An error occured during import!'))
             else:
                 # Check duplicate items
                 items_to_import = []
@@ -182,7 +182,14 @@ class Wl_List(QListWidget):
                 self.load_items(collections.OrderedDict.fromkeys(items_to_import))
                 self.itemChanged.emit(self.item(0))
 
-                wl_msg.wl_msg_import_list_success(self.main, num_prev, len(self.get_items()))
+                num_imported = len(self.get_items()) - num_prev
+
+                if num_imported == 0:
+                    self.main.statusBar().showMessage(self.tr('No items were imported into the list.'))
+                elif num_imported == 1:
+                    self.main.statusBar().showMessage(self.tr('1 item has been successfully imported into the list.'))
+                else:
+                    self.main.statusBar().showMessage(self.tr(f'{num_imported:,} items have been successfully imported into the list.'))
 
     def export_list(self, settings, default_file_name):
         default_dir = self.main.settings_custom['export'][settings]['default_path']
@@ -217,6 +224,33 @@ class Wl_List(QListWidget):
 
     def get_items(self):
         return [self.item(i).text() for i in range(self.count())]
+
+class Wl_Combo_Box_File_Ref(wl_boxes.Wl_Combo_Box_File):
+    def __init__(self, parent, list_files):
+        super().__init__(parent)
+
+        self.list_files = list_files
+
+        self.currentTextChanged.connect(lambda: self.list_files.itemChanged.emit(self.list_files.item(0)))
+        self.currentTextChanged.connect(lambda: self.list_files.file_changed(self))
+
+    def wl_files_changed(self):
+        file_old = self.currentText()
+        files_selected = self.main.wl_files.get_selected_files()
+
+        if file_old in [file['name'] for file in files_selected]:
+            self.blockSignals(True)
+
+            self.clear()
+
+            for file in files_selected:
+                self.addItem(file['name'])
+
+            self.setCurrentText(file_old)
+
+            self.blockSignals(False)
+        else:
+            self.list_files.wl_file_removed(self)
 
 class Wl_List_Files(QListWidget):
     def __init__(self, parent):
@@ -301,7 +335,7 @@ class Wl_List_Files(QListWidget):
 
     def _new_item(self):
         new_item = QListWidgetItem()
-        new_item_file = wl_box.Wl_Combo_Box_File_Ref(self.main, self)
+        new_item_file = Wl_Combo_Box_File_Ref(self.main, self)
 
         new_item.setFlags(Qt.ItemIsSelectable |
                           Qt.ItemIsEditable |

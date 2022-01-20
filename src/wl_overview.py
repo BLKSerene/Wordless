@@ -33,10 +33,10 @@ from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_measures import wl_measures_misc, wl_measures_readability
 from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
-from wl_utils import wl_misc, wl_threading
-from wl_widgets import wl_box, wl_layout, wl_msg, wl_table, wl_widgets
+from wl_utils import wl_misc, wl_msgs, wl_threading
+from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
-class Wl_Table_Overview(wl_table.Wl_Table_Data):
+class Wl_Table_Overview(wl_tables.Wl_Table_Data):
     def __init__(self, parent):
         super().__init__(
             parent,
@@ -303,7 +303,7 @@ class Wl_Table_Overview(wl_table.Wl_Table_Data):
         if confirmed:
             self.insert_col(0, self.tr('Total'))
 
-class Wrapper_Overview(wl_layout.Wl_Wrapper):
+class Wrapper_Overview(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
@@ -347,7 +347,7 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
         self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
-        self.group_box_token_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lowercase, 0, 1)
         self.group_box_token_settings.layout().addWidget(self.checkbox_uppercase, 1, 0)
@@ -355,13 +355,13 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_nums, 2, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 2, 1)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 3, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.checkbox_treat_as_lowercase, 4, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lemmatize_tokens, 5, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_filter_stop_words, 6, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(wl_layout.Wl_Separator(self), 7, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 7, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 8, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
@@ -370,13 +370,13 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
 
         self.label_base_sttr = QLabel(self.tr('Base of standardized type-token ratio:'), self)
-        self.spin_box_base_sttr = wl_box.Wl_Spin_Box(self)
+        self.spin_box_base_sttr = wl_boxes.Wl_Spin_Box(self)
 
         self.spin_box_base_sttr.setRange(100, 10000)
 
         self.spin_box_base_sttr.valueChanged.connect(self.generation_settings_changed)
 
-        self.group_box_generation_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_base_sttr, 0, 0)
         self.group_box_generation_settings.layout().addWidget(self.spin_box_base_sttr, 1, 0)
 
@@ -394,7 +394,7 @@ class Wrapper_Overview(wl_layout.Wl_Wrapper):
         self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_breakdown.stateChanged.connect(self.table_settings_changed)
 
-        self.group_box_table_settings.setLayout(wl_layout.Wl_Layout())
+        self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
@@ -990,15 +990,15 @@ def generate_table(main, table):
                 
                 table.itemChanged.emit(table.item(0, 0))
 
-                wl_msg.wl_msg_generate_table_success(main)
+                wl_msgs.wl_msg_generate_table_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
 
-                wl_msg.wl_msg_generate_table_error(main)
+                wl_msgs.wl_msg_generate_table_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
-            wl_msg.wl_msg_fatal_error(main)
+            wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['overview']
     files = main.wl_files.get_selected_files()
@@ -1015,4 +1015,4 @@ def generate_table(main, table):
         thread_overview_table = wl_threading.Wl_Thread(worker_overview_table)
         thread_overview_table.start_worker()
     else:
-        wl_msg.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_table_error(main)

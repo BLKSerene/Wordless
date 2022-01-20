@@ -24,9 +24,9 @@ from PyQt5.QtWidgets import *
 
 from wl_nlp import wl_nlp_utils, wl_stop_word_lists
 from wl_utils import wl_conversion
-from wl_widgets import wl_box, wl_layout, wl_list, wl_table, wl_tree
+from wl_widgets import wl_boxes, wl_layouts, wl_lists, wl_tables, wl_trees
 
-class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
+class Wl_Settings_Stop_Word_Lists(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -37,7 +37,7 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
         # Stop Word Lists Settings
         group_box_stop_word_lists_settings = QGroupBox(self.tr('Stop Word Lists Settings'), self)
 
-        table_stop_word_lists = wl_table.Wl_Table(
+        table_stop_word_lists = wl_tables.Wl_Table(
             self,
             headers = [
                 self.tr('Language'),
@@ -54,7 +54,7 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
         for i, lang in enumerate(self.settings_global):
             table_stop_word_lists.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
 
-            self.__dict__[f'combo_box_stop_word_list_{lang}'] = wl_box.Wl_Combo_Box(self)
+            self.__dict__[f'combo_box_stop_word_list_{lang}'] = wl_boxes.Wl_Combo_Box(self)
 
             self.__dict__[f'combo_box_stop_word_list_{lang}'].addItems(wl_nlp_utils.to_lang_util_texts(
                 self.main,
@@ -66,30 +66,30 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
 
             table_stop_word_lists.setCellWidget(i, 1, self.__dict__[f'combo_box_stop_word_list_{lang}'])
 
-        group_box_stop_word_lists_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_stop_word_lists_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_stop_word_lists_settings.layout().addWidget(table_stop_word_lists, 0, 0)
 
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
         self.label_stop_word_list_preview_lang = QLabel(self.tr('Select language:'), self)
-        self.combo_box_stop_word_list_preview_lang = wl_box.Wl_Combo_Box(self)
+        self.combo_box_stop_word_list_preview_lang = wl_boxes.Wl_Combo_Box(self)
         self.combo_box_stop_word_list_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
         self.label_stop_word_list_preview_count = QLabel('', self)
 
-        self.list_stop_word_list_preview_results = wl_list.Wl_List_Stop_Words(self)
+        self.list_stop_word_list_preview_results = wl_lists.Wl_List_Stop_Words(self)
 
         self.combo_box_stop_word_list_preview_lang.currentTextChanged.connect(self.preview_settings_changed)
         self.combo_box_stop_word_list_preview_lang.currentTextChanged.connect(self.preview_results_changed)
 
-        layout_preview_settings = wl_layout.Wl_Layout()
+        layout_preview_settings = wl_layouts.Wl_Layout()
         layout_preview_settings.addWidget(self.label_stop_word_list_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_stop_word_list_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.label_stop_word_list_preview_count, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
-        group_box_preview.setLayout(wl_layout.Wl_Layout())
+        group_box_preview.setLayout(wl_layouts.Wl_Layout())
         group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 6)
         group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results, 1, 0, 1, 6)
         group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_add, 2, 0)
@@ -99,7 +99,7 @@ class Wl_Settings_Stop_Word_Lists(wl_tree.Wl_Settings):
         group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_import, 2, 4)
         group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_export, 2, 5)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_stop_word_lists_settings, 0, 0)
         self.layout().addWidget(group_box_preview, 1, 0)
 

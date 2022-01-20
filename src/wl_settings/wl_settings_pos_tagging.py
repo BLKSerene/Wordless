@@ -27,7 +27,7 @@ from wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wl_nlp import wl_nlp_utils, wl_pos_tagging
 from wl_tagsets import wl_tagset_universal
 from wl_utils import wl_conversion, wl_threading
-from wl_widgets import wl_box, wl_layout, wl_table, wl_tree
+from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_trees
 
 class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
     worker_done = pyqtSignal(str, list)
@@ -72,7 +72,7 @@ class Wl_Worker_Fetch_Data_Tagsets(wl_threading.Wl_Worker):
         self.worker_done.emit(mappings)
 
 # POS Tagging
-class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
+class Wl_Settings_Pos_Tagging(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -83,7 +83,7 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
         # POS Tagger Settings
         group_box_pos_tagger_settings = QGroupBox(self.tr('POS Tagger Settings'), self)
 
-        self.table_pos_taggers = wl_table.Wl_Table(
+        self.table_pos_taggers = wl_tables.Wl_Table(
             self,
             headers = [
                 self.tr('Language'),
@@ -102,7 +102,7 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
         for i, lang in enumerate(self.settings_global):
             self.table_pos_taggers.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
 
-            self.__dict__[f'combo_box_pos_tagger_{lang}'] = wl_box.Wl_Combo_Box(self)
+            self.__dict__[f'combo_box_pos_tagger_{lang}'] = wl_boxes.Wl_Combo_Box(self)
             self.__dict__[f'combo_box_pos_tagger_{lang}'].addItems(wl_nlp_utils.to_lang_util_texts(
                 self.main,
                 util_type = 'pos_taggers',
@@ -111,7 +111,7 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
 
             self.table_pos_taggers.setCellWidget(i, 1, self.__dict__[f'combo_box_pos_tagger_{lang}'])
 
-        group_box_pos_tagger_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_pos_tagger_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_pos_tagger_settings.layout().addWidget(self.table_pos_taggers, 0, 0)
         group_box_pos_tagger_settings.layout().addWidget(self.checkbox_to_universal_pos_tags, 1, 0)
 
@@ -119,7 +119,7 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
         group_box_preview = QGroupBox(self.tr('Preview'), self)
 
         self.label_pos_tagging_preview_lang = QLabel(self.tr('Select language:'), self)
-        self.combo_box_pos_tagging_preview_lang = wl_box.Wl_Combo_Box(self)
+        self.combo_box_pos_tagging_preview_lang = wl_boxes.Wl_Combo_Box(self)
         self.button_pos_tagging_show_preview = QPushButton(self.tr('Show preview'), self)
         self.text_edit_pos_tagging_preview_samples = QTextEdit(self)
         self.text_edit_pos_tagging_preview_results = QTextEdit(self)
@@ -135,19 +135,19 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
         self.text_edit_pos_tagging_preview_samples.textChanged.connect(self.preview_changed)
         self.text_edit_pos_tagging_preview_results.textChanged.connect(self.preview_changed)
 
-        layout_preview_settings = wl_layout.Wl_Layout()
+        layout_preview_settings = wl_layouts.Wl_Layout()
         layout_preview_settings.addWidget(self.label_pos_tagging_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_pos_tagging_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.button_pos_tagging_show_preview, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
-        group_box_preview.setLayout(wl_layout.Wl_Layout())
+        group_box_preview.setLayout(wl_layouts.Wl_Layout())
         group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
         group_box_preview.layout().addWidget(self.text_edit_pos_tagging_preview_samples, 1, 0)
         group_box_preview.layout().addWidget(self.text_edit_pos_tagging_preview_results, 1, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_pos_tagger_settings, 0, 0)
         self.layout().addWidget(group_box_preview, 1, 0)
 
@@ -251,7 +251,7 @@ class Wl_Settings_Pos_Tagging(wl_tree.Wl_Settings):
         return True
 
 # POS Tagging - Tagsets
-class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
+class Wl_Settings_Tagsets(wl_trees.Wl_Settings):
     def __init__(self, main):
         super().__init__(main)
 
@@ -267,16 +267,16 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
         group_box_preview_settings = QGroupBox(self.tr('Preview Settings:'), self)
 
         self.label_tagsets_lang = QLabel(self.tr('Language:'), self)
-        self.combo_box_tagsets_lang = wl_box.Wl_Combo_Box(self)
+        self.combo_box_tagsets_lang = wl_boxes.Wl_Combo_Box(self)
         self.label_tagsets_pos_tagger = QLabel(self.tr('POS Tagger:'), self)
-        self.combo_box_tagsets_pos_tagger = wl_box.Wl_Combo_Box_Adjustable(self)
+        self.combo_box_tagsets_pos_tagger = wl_boxes.Wl_Combo_Box_Adjustable(self)
 
         self.combo_box_tagsets_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
         self.combo_box_tagsets_lang.currentTextChanged.connect(self.preview_lang_changed)
         self.combo_box_tagsets_pos_tagger.currentTextChanged.connect(self.preview_pos_tagger_changed)
 
-        group_box_preview_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_preview_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_preview_settings.layout().addWidget(self.label_tagsets_lang, 0, 0)
         group_box_preview_settings.layout().addWidget(self.combo_box_tagsets_lang, 0, 1, Qt.AlignLeft)
         group_box_preview_settings.layout().addWidget(self.label_tagsets_pos_tagger, 1, 0)
@@ -290,7 +290,7 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
         self.label_tagsets_num_pos_tags = QLabel('', self)
         self.button_tagsets_reset = QPushButton(self.tr('Reset'), self)
         self.button_tagsets_reset_all = QPushButton(self.tr('Reset All'), self)
-        self.table_mappings = wl_table.Wl_Table(
+        self.table_mappings = wl_tables.Wl_Table(
             self,
             headers = [
                 self.tr('POS Tag'),
@@ -306,7 +306,7 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
         self.button_tagsets_reset.clicked.connect(self.reset_mappings)
         self.button_tagsets_reset_all.clicked.connect(self.reset_all_mappings)
 
-        group_box_mapping_settings.setLayout(wl_layout.Wl_Layout())
+        group_box_mapping_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_mapping_settings.layout().addWidget(self.label_tagsets_num_pos_tags, 0, 0)
         group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset, 0, 2)
         group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset_all, 0, 3)
@@ -314,7 +314,7 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
 
         group_box_mapping_settings.layout().setColumnStretch(1, 1)
 
-        self.setLayout(wl_layout.Wl_Layout())
+        self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_preview_settings, 0, 0)
         self.layout().addWidget(group_box_mapping_settings, 1, 0)
 
@@ -397,7 +397,7 @@ class Wl_Settings_Tagsets(wl_tree.Wl_Settings):
         self.table_mappings.setRowCount(len(mappings))
 
         for i, (tag, tag_universal, description, examples) in enumerate(mappings):
-            combo_box_tag_univsersal = wl_box.Wl_Combo_Box(self.main)
+            combo_box_tag_univsersal = wl_boxes.Wl_Combo_Box(self.main)
 
             combo_box_tag_univsersal.addItems([
                 'ADJ',
