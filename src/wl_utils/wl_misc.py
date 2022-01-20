@@ -67,19 +67,23 @@ def flatten_list(list_to_flatten):
         else:
             yield item
 
-def normalize_nums(nums, normalized_min, normalized_max, normalized_reversed = False):
+def normalize_nums(nums, normalized_min, normalized_max, reverse = False):
     nums_min = min(nums)
     nums_max = max(nums)
 
     if nums_max - nums_min == 0:
         nums_normalized = [normalized_min] * len(nums)
     else:
-        if normalized_reversed:
-            nums_normalized = [numpy.interp(num, [nums_min, nums_max], [normalized_max, normalized_min])
-                               for num in nums]
+        if reverse:
+            nums_normalized = [
+                numpy.interp(num, [nums_min, nums_max], [normalized_max, normalized_min])
+                for num in nums
+            ]
         else:
-            nums_normalized = [numpy.interp(num, [nums_min, nums_max], [normalized_min, normalized_max])
-                               for num in nums]
+            nums_normalized = [
+                numpy.interp(num, [nums_min, nums_max], [normalized_min, normalized_max])
+                for num in nums
+            ]
 
     return nums_normalized
 
