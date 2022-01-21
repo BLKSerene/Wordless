@@ -24,10 +24,11 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_msg_boxes
+from wl_settings import wl_settings
 from wl_utils import wl_conversion
-from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_trees, wl_widgets
+from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_widgets
 
-class Wl_Settings_Files(wl_trees.Wl_Settings):
+class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
@@ -474,7 +475,7 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
         for tags in self.main.settings_default['tags']['tags_xml']:
             self.add_item(texts = tags)
 
-class Wl_Settings_Tags(wl_trees.Wl_Settings):
+class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 

@@ -155,7 +155,7 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
             self.button_settings_measures
         ) = wl_widgets.wl_widgets_settings_measures(
             self,
-            tab = self.tr('Statistical Significance')
+            node = self.tr('Statistical Significance')
         )
 
         self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['keyword'].keys()))

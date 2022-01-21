@@ -23,10 +23,11 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_nlp import wl_nlp_utils, wl_stop_word_lists
+from wl_settings import wl_settings
 from wl_utils import wl_conversion
-from wl_widgets import wl_boxes, wl_layouts, wl_lists, wl_tables, wl_trees
+from wl_widgets import wl_boxes, wl_layouts, wl_lists, wl_tables
 
-class Wl_Settings_Stop_Word_Lists(wl_trees.Wl_Settings):
+class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 

@@ -22,10 +22,11 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_trees, wl_widgets
+from wl_settings import wl_settings
+from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_widgets
 
 # Measures - Dispersion
-class Wl_Settings_Dispersion(wl_trees.Wl_Settings):
+class Wl_Settings_Dispersion(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
@@ -66,7 +67,7 @@ class Wl_Settings_Dispersion(wl_trees.Wl_Settings):
         return True
 
 # Measures - Adjusted Frequency
-class Wl_Settings_Adjusted_Freq(wl_trees.Wl_Settings):
+class Wl_Settings_Adjusted_Freq(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
@@ -121,7 +122,7 @@ class Wl_Settings_Adjusted_Freq(wl_trees.Wl_Settings):
         return True
 
 # Measures - Statistical Significance
-class Wl_Settings_Statistical_Significance(wl_trees.Wl_Settings):
+class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
@@ -280,7 +281,7 @@ class Wl_Settings_Statistical_Significance(wl_trees.Wl_Settings):
         return True
 
 # Measures - Effect Size
-class Wl_Settings_Effect_Size(wl_trees.Wl_Settings):
+class Wl_Settings_Effect_Size(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
