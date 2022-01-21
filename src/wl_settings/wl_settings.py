@@ -16,24 +16,65 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import os
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_settings import (
-    wl_settings_general,
-    wl_settings_files,
-    wl_settings_data,
-    wl_settings_sentence_tokenization,
-    wl_settings_word_tokenization,
-    wl_settings_syl_tokenization,
-    wl_settings_pos_tagging,
-    wl_settings_lemmatization,
-    wl_settings_stop_word_lists,
-    wl_settings_measures,
-    wl_settings_figs
-)
-from wl_widgets import wl_buttons, wl_layouts, wl_trees
+from wl_dialogs import wl_msg_boxes
+from wl_widgets import wl_buttons, wl_layouts
+
+class Wl_Settings_Node(QWidget):
+    def __init__(self, main):
+        super().__init__()
+
+        self.main = main
+
+    def validate_path(self, line_edit):
+        if not os.path.exists(line_edit.text()):
+            wl_msg_boxes.wl_msg_box_path_not_exist(self.main, line_edit.text())
+
+            line_edit.setFocus()
+            line_edit.selectAll()
+
+            return False
+        elif not os.path.isdir(line_edit.text()):
+            wl_msg_boxes.wl_msg_box_path_not_dir(self.main, line_edit.text())
+
+            line_edit.setFocus()
+            line_edit.selectAll()
+
+            return False
+        else:
+            return True
+
+    def confirm_path(self, line_edit):
+        if not os.path.exists(line_edit.text()):
+            reply = wl_msg_boxes.wl_msg_box_path_not_exist_confirm(self.main, line_edit.text())
+
+            if reply == QMessageBox.Yes:
+                return True
+            else:
+                line_edit.setFocus()
+                line_edit.selectAll()
+
+                return False
+        elif not os.path.isdir(line_edit.text()):
+            wl_msg_boxes.wl_msg_box_path_not_dir(self.main, line_edit.text())
+
+            line_edit.setFocus()
+            line_edit.selectAll()
+
+            return False
+        else:
+            return True
+
+    def validate_settings(self):
+        return True
+
+    def apply_settings(self):
+        return True
 
 class Wl_Settings(QDialog):
     wl_settings_changed = pyqtSignal()
@@ -41,40 +82,71 @@ class Wl_Settings(QDialog):
     def __init__(self, main):
         super().__init__(main)
 
+        # Avoid circular imports
+        from wl_settings import (
+            wl_settings_general,
+            wl_settings_files,
+            wl_settings_data,
+            wl_settings_sentence_tokenization,
+            wl_settings_word_tokenization,
+            wl_settings_syl_tokenization,
+            wl_settings_pos_tagging,
+            wl_settings_lemmatization,
+            wl_settings_stop_word_lists,
+            wl_settings_measures,
+            wl_settings_figs
+        )
+
         self.main = main
 
         self.setWindowTitle(self.tr('Settings'))
         self.setFixedSize(1024, 768)
 
-        self.tree_settings = wl_trees.Wl_Tree(self)
+        self.tree_settings = QTreeView(self)
+        self.tree_settings.setModel(QStandardItemModel())
 
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('General')]))
-        self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem([self.tr('Import')]))
-        self.tree_settings.topLevelItem(0).addChild(QTreeWidgetItem([self.tr('Export')]))
+        self.tree_settings.setHeaderHidden(True)
+        self.tree_settings.header().setSectionResizeMode(QHeaderView.ResizeToContents)
+        self.tree_settings.header().setStretchLastSection(False)
 
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Files')]))
-        self.tree_settings.topLevelItem(1).addChild(QTreeWidgetItem([self.tr('Tags')]))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('General')))
+        self.tree_settings.model().item(0).appendRow([
+            QStandardItem(self.tr('Import')),
+            QStandardItem(self.tr('Export'))
+        ])
 
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Data')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Sentence Tokenization')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Word Tokenization')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Syllable Tokenization')]))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Files')))
+        self.tree_settings.model().item(1).appendRow(QStandardItem(self.tr('Tags')))
 
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('POS Tagging')]))
-        self.tree_settings.topLevelItem(6).addChild(QTreeWidgetItem([self.tr('Tagsets')]))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Data')))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Sentence Tokenization')))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Word Tokenization')))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Syllable Tokenization')))
 
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Lemmatization')]))
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Stop Word Lists')]))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('POS Tagging')))
+        self.tree_settings.model().item(6).appendRow(QStandardItem(self.tr('Tagsets')))
 
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Measures')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Dispersion')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Adjusted Frequency')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Statistical Significance')]))
-        self.tree_settings.topLevelItem(9).addChild(QTreeWidgetItem([self.tr('Effect Size')]))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Lemmatization')))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Stop Word Lists')))
 
-        self.tree_settings.addTopLevelItem(QTreeWidgetItem([self.tr('Figures')]))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Measures')))
+        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Dispersion')))
+        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Adjusted Frequency')))
+        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Statistical Significance')))
+        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Effect Size')))
 
-        self.tree_settings.itemSelectionChanged.connect(self.selection_changed)
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Figures')))
+
+        # Calculate width
+        for i in range(self.tree_settings.model().rowCount()):
+            self.tree_settings.setExpanded(self.tree_settings.model().item(i, 0).index(), True)
+
+        self.tree_settings.setFixedWidth(self.tree_settings.columnWidth(0) + 10)
+
+        for i in range(self.tree_settings.model().rowCount()):
+            self.tree_settings.setExpanded(self.tree_settings.model().item(i, 0).index(), False)
+
+        self.tree_settings.selectionModel().selectionChanged.connect(self.selection_changed)
 
         self.scroll_area_settings = wl_layouts.Wl_Scroll_Area(self)
 
@@ -157,76 +229,71 @@ class Wl_Settings(QDialog):
         self.layout().addWidget(self.scroll_area_settings, 0, 1)
         self.layout().addLayout(layout_buttons, 1, 0, 1, 2)
 
-        self.tree_settings.item_selected_old = self.tree_settings.topLevelItem(0)
+        self.tree_settings.node_selected_old = self.tree_settings.model().item(0)
 
     def selection_changed(self):
-        settings_cur = None
+        if self.tree_settings.selectionModel().selectedIndexes():
+            i_selected = self.tree_settings.selectionModel().currentIndex()
 
-        if self.tree_settings.selectedItems():
             if self.validate_settings():
-                item_selected = self.tree_settings.selectedItems()[0]
-                item_selected_text = item_selected.text(0)
+                node_selected = self.tree_settings.model().itemFromIndex(i_selected)
+                node_selected_text = node_selected.text()
 
                 # General
-                if item_selected_text == self.tr('General'):
+                if node_selected_text == self.tr('General'):
                     self.stacked_widget_settings.setCurrentIndex(0)
-
-                    item_selected.setExpanded(True)
-                elif item_selected_text == self.tr('Import'):
+                elif node_selected_text == self.tr('Import'):
                     self.stacked_widget_settings.setCurrentIndex(1)
-                elif item_selected_text == self.tr('Export'):
+                elif node_selected_text == self.tr('Export'):
                     self.stacked_widget_settings.setCurrentIndex(2)
 
                 # Files
-                elif item_selected_text == self.tr('Files'):
+                elif node_selected_text == self.tr('Files'):
                     self.stacked_widget_settings.setCurrentIndex(3)
-
-                    item_selected.setExpanded(True)
-                elif item_selected_text == self.tr('Tags'):
+                elif node_selected_text == self.tr('Tags'):
                     self.stacked_widget_settings.setCurrentIndex(4)
 
-                elif item_selected_text == self.tr('Data'):
+                elif node_selected_text == self.tr('Data'):
                     self.stacked_widget_settings.setCurrentIndex(5)
-                elif item_selected_text == self.tr('Sentence Tokenization'):
+                elif node_selected_text == self.tr('Sentence Tokenization'):
                     self.stacked_widget_settings.setCurrentIndex(6)
-                elif item_selected_text == self.tr('Word Tokenization'):
+                elif node_selected_text == self.tr('Word Tokenization'):
                     self.stacked_widget_settings.setCurrentIndex(7)
-                elif item_selected_text == self.tr('Syllable Tokenization'):
+                elif node_selected_text == self.tr('Syllable Tokenization'):
                     self.stacked_widget_settings.setCurrentIndex(8)
 
                 # POS Tagging
-                elif item_selected_text == self.tr('POS Tagging'):
+                elif node_selected_text == self.tr('POS Tagging'):
                     self.stacked_widget_settings.setCurrentIndex(9)
-
-                    item_selected.setExpanded(True)
-                elif item_selected_text == self.tr('Tagsets'):
+                elif node_selected_text == self.tr('Tagsets'):
                     self.stacked_widget_settings.setCurrentIndex(10)
 
-                elif item_selected_text == self.tr('Lemmatization'):
+                elif node_selected_text == self.tr('Lemmatization'):
                     self.stacked_widget_settings.setCurrentIndex(11)
-                elif item_selected_text == self.tr('Stop Word Lists'):
+                elif node_selected_text == self.tr('Stop Word Lists'):
                     self.stacked_widget_settings.setCurrentIndex(12)
 
                 # Measures
-                elif item_selected_text == self.tr('Measures'):
-                    item_selected.setExpanded(True)
-                elif item_selected_text == self.tr('Dispersion'):
+                elif node_selected_text == self.tr('Dispersion'):
                     self.stacked_widget_settings.setCurrentIndex(13)
-                elif item_selected_text == self.tr('Adjusted Frequency'):
+                elif node_selected_text == self.tr('Adjusted Frequency'):
                     self.stacked_widget_settings.setCurrentIndex(14)
-                elif item_selected_text == self.tr('Statistical Significance'):
+                elif node_selected_text == self.tr('Statistical Significance'):
                     self.stacked_widget_settings.setCurrentIndex(15)
-                elif item_selected_text == self.tr('Effect Size'):
+                elif node_selected_text == self.tr('Effect Size'):
                     self.stacked_widget_settings.setCurrentIndex(16)
 
-                elif item_selected_text == self.tr('Figures'):
+                elif node_selected_text == self.tr('Figures'):
                     self.stacked_widget_settings.setCurrentIndex(17)
 
-                self.tree_settings.item_selected_old = item_selected
-                self.main.settings_custom['settings']['tab'] = item_selected_text
+                if node_selected.hasChildren():
+                    self.tree_settings.setExpanded(i_selected, True)
+
+                self.tree_settings.node_selected_old = node_selected
+                self.main.settings_custom['settings']['node_cur'] = node_selected_text
 
                 # Delay loading of POS tag mappings
-                if item_selected_text == self.tr('Tagsets') and not self.settings_tagsets.pos_tag_mappings_loaded:
+                if node_selected_text == self.tr('Tagsets') and not self.settings_tagsets.pos_tag_mappings_loaded:
                     self.settings_tagsets.combo_box_tagsets_lang.currentTextChanged.emit(self.settings_tagsets.combo_box_tagsets_lang.currentText())
 
                     self.settings_tagsets.pos_tag_mappings_loaded = True
@@ -234,7 +301,7 @@ class Wl_Settings(QDialog):
                 self.tree_settings.blockSignals(True)
 
                 self.tree_settings.clearSelection()
-                self.tree_settings.item_selected_old.setSelected(True)
+                self.tree_settings.selectionModel().setCurrentIndex(i_selected)
 
                 self.tree_settings.blockSignals(False)
 
@@ -265,35 +332,22 @@ class Wl_Settings(QDialog):
         else:
             return False
 
-    def load(self, tab = None):
+    def load(self, node = None):
         self.load_settings()
 
-        if tab:
-            item_selected = self.tree_settings.findItems(tab, Qt.MatchRecursive)[0]
+        self.tree_settings.clearSelection()
 
-            self.tree_settings.clearSelection()
-            item_selected.setSelected(True)
-
-            if not self.tree_settings.findItems(tab, Qt.MatchExactly):
-                item_selected.parent().setExpanded(True)
+        if node:
+            self.tree_settings.selectionModel().setCurrentIndex(self.tree_settings.model().findItems(node, Qt.MatchRecursive)[0].index(), QItemSelectionModel.Select)
         else:
-            item_selected = self.tree_settings.findItems(self.main.settings_custom['settings']['tab'], Qt.MatchRecursive)[0]
-            item_selected.setSelected(True)
+            self.tree_settings.selectionModel().setCurrentIndex(self.tree_settings.model().findItems(self.main.settings_custom['settings']['node_cur'], Qt.MatchRecursive)[0].index(), QItemSelectionModel.Select)
 
-        # Calculate width
-        for node in self.tree_settings.get_nodes():
-            node.setExpanded(True)
+        # Expand current node
+        node_cur = self.tree_settings.model().itemFromIndex(self.tree_settings.selectionModel().currentIndex())
 
-        self.tree_settings.setFixedWidth(self.tree_settings.columnWidth(0) + 10)
+        self.tree_settings.setExpanded(node_cur.index(), True)
 
-        for node in self.tree_settings.get_nodes():
-            node.setExpanded(False)
-
-        # Expand selected item
-        if item_selected.childCount():
-            item_selected.setExpanded(True)
-
-        if item_selected.parent():
-            item_selected.parent().setExpanded(True)
+        if node_cur.parent():
+            self.tree_settings.setExpanded(node_cur.parent().index(), True)
 
         self.exec_()

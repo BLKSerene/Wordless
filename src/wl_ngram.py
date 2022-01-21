@@ -277,7 +277,7 @@ class Wrapper_Ngram(wl_layouts.Wl_Wrapper):
             self.button_settings_measures
         ) = wl_widgets.wl_widgets_settings_measures(
             self,
-            tab = self.tr('Dispersion')
+            node = self.tr('Dispersion')
         )
 
         self.spin_box_allow_skipped_tokens.setRange(1, 20)

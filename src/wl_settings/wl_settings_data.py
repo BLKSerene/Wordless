@@ -22,9 +22,10 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_widgets import wl_boxes, wl_layouts, wl_trees
+from wl_settings import wl_settings
+from wl_widgets import wl_boxes, wl_layouts
 
-class Wl_Settings_Data(wl_trees.Wl_Settings):
+class Wl_Settings_Data(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
