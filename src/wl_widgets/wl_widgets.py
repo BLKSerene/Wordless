@@ -770,13 +770,13 @@ def wl_widgets_measure_effect_size(parent):
     return (label_measure_effect_size,
             combo_box_measure_effect_size)
 
-def wl_widgets_settings_measures(parent, tab):
+def wl_widgets_settings_measures(parent, node):
     main = wl_misc.find_wl_main(parent)
 
     label_settings_measures = QLabel(parent.tr('Advanced Settings:'), parent)
     button_settings_measures = QPushButton(parent.tr('Settings...'), parent)
 
-    button_settings_measures.clicked.connect(lambda: main.wl_settings.load(tab = tab))
+    button_settings_measures.clicked.connect(lambda: main.wl_settings.load(node = node))
 
     return label_settings_measures, button_settings_measures
 

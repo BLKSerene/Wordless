@@ -25,9 +25,10 @@ from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wl_nlp import wl_nlp_utils, wl_pos_tagging
+from wl_settings import wl_settings
 from wl_tagsets import wl_tagset_universal
 from wl_utils import wl_conversion, wl_threading
-from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_trees
+from wl_widgets import wl_boxes, wl_layouts, wl_tables
 
 class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
     worker_done = pyqtSignal(str, list)
@@ -72,7 +73,7 @@ class Wl_Worker_Fetch_Data_Tagsets(wl_threading.Wl_Worker):
         self.worker_done.emit(mappings)
 
 # POS Tagging
-class Wl_Settings_Pos_Tagging(wl_trees.Wl_Settings):
+class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
@@ -251,7 +252,7 @@ class Wl_Settings_Pos_Tagging(wl_trees.Wl_Settings):
         return True
 
 # POS Tagging - Tagsets
-class Wl_Settings_Tagsets(wl_trees.Wl_Settings):
+class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 

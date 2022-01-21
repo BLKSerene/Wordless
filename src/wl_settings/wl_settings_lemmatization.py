@@ -23,8 +23,9 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_nlp import wl_lemmatization, wl_nlp_utils, wl_word_detokenization
+from wl_settings import wl_settings
 from wl_utils import wl_conversion, wl_threading
-from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_trees
+from wl_widgets import wl_boxes, wl_layouts, wl_tables
 
 class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
     worker_done = pyqtSignal(str, list)
@@ -55,7 +56,7 @@ class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
 
         self.worker_done.emit(preview_samples, preview_results)
 
-class Wl_Settings_Lemmatization(wl_trees.Wl_Settings):
+class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
