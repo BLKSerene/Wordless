@@ -1012,7 +1012,7 @@ def init_settings_default(main):
         },
 
         'settings': {
-            'tab': 'General'
+            'node_cur': main.tr('General')
         },
 
         'general': {

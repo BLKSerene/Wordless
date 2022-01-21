@@ -154,7 +154,7 @@ class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
             self.button_settings_measures
         ) = wl_widgets.wl_widgets_settings_measures(
             self,
-            tab = self.tr('Dispersion')
+            node = self.tr('Dispersion')
         )
 
         self.combo_box_measure_dispersion.currentTextChanged.connect(self.generation_settings_changed)
