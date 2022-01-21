@@ -24,10 +24,11 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialogs_misc
+from wl_settings import wl_settings
 from wl_utils import wl_conversion
-from wl_widgets import wl_boxes, wl_layouts, wl_trees
+from wl_widgets import wl_boxes, wl_layouts
 
-class Wl_Settings_General(wl_trees.Wl_Settings):
+class Wl_Settings_General(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
@@ -128,7 +129,7 @@ class Wl_Settings_General(wl_trees.Wl_Settings):
 
             return False
 
-class Wl_Settings_Import(wl_trees.Wl_Settings):
+class Wl_Settings_Import(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
@@ -325,7 +326,7 @@ class Wl_Settings_Import(wl_trees.Wl_Settings):
 
         return True
 
-class Wl_Settings_Export(wl_trees.Wl_Settings):
+class Wl_Settings_Export(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
