@@ -1679,7 +1679,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.returnPressed.connect(self.button_find_next.click)
-        self.list_search_terms.itemChanged.connect(self.search_settings_changed)
+        self.list_search_terms.model().dataChanged.connect(self.search_settings_changed)
 
         self.checkbox_ignore_case.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
@@ -1759,7 +1759,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
     def search_settings_changed(self):
         self.settings['multi_search_mode'] = self.checkbox_multi_search_mode.isChecked()
         self.settings['search_term'] = self.line_edit_search_term.text()
-        self.settings['search_terms'] = self.list_search_terms.get_items()
+        self.settings['search_terms'] = self.list_search_terms.model().stringList()
 
         self.settings['ignore_case'] = self.checkbox_ignore_case.isChecked()
         self.settings['match_inflected_forms'] = self.checkbox_match_inflected_forms.isChecked()

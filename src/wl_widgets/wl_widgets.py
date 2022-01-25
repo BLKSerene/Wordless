@@ -73,7 +73,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.inclusion_checkbox_multi_search_mode.stateChanged.connect(self.inclusion_changed)
         self.inclusion_checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
         self.inclusion_line_edit_search_term.textChanged.connect(self.inclusion_changed)
-        self.inclusion_list_search_terms.itemChanged.connect(self.inclusion_changed)
+        self.inclusion_list_search_terms.model().dataChanged.connect(self.inclusion_changed)
 
         self.inclusion_checkbox_ignore_case.stateChanged.connect(self.inclusion_changed)
         self.inclusion_checkbox_match_inflected_forms.stateChanged.connect(self.inclusion_changed)
@@ -152,7 +152,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.exclusion_checkbox_multi_search_mode.stateChanged.connect(self.exclusion_changed)
         self.exclusion_checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
         self.exclusion_line_edit_search_term.textChanged.connect(self.exclusion_changed)
-        self.exclusion_list_search_terms.itemChanged.connect(self.exclusion_changed)
+        self.exclusion_list_search_terms.model().dataChanged.connect(self.exclusion_changed)
 
         self.exclusion_checkbox_ignore_case.stateChanged.connect(self.exclusion_changed)
         self.exclusion_checkbox_match_inflected_forms.stateChanged.connect(self.exclusion_changed)
@@ -300,7 +300,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
 
         self.settings['inclusion']['multi_search_mode'] = self.inclusion_checkbox_multi_search_mode.isChecked()
         self.settings['inclusion']['search_term'] = self.inclusion_line_edit_search_term.text()
-        self.settings['inclusion']['search_terms'] = self.inclusion_list_search_terms.get_items()
+        self.settings['inclusion']['search_terms'] = self.inclusion_list_search_terms.model().stringList()
 
         self.settings['inclusion']['ignore_case'] = self.inclusion_checkbox_ignore_case.isChecked()
         self.settings['inclusion']['match_inflected_forms'] = self.inclusion_checkbox_match_inflected_forms.isChecked()
@@ -327,7 +327,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
 
         self.settings['exclusion']['multi_search_mode'] = self.exclusion_checkbox_multi_search_mode.isChecked()
         self.settings['exclusion']['search_term'] = self.exclusion_line_edit_search_term.text()
-        self.settings['exclusion']['search_terms'] = self.exclusion_list_search_terms.get_items()
+        self.settings['exclusion']['search_terms'] = self.exclusion_list_search_terms.model().stringList()
 
         self.settings['exclusion']['ignore_case'] = self.exclusion_checkbox_ignore_case.isChecked()
         self.settings['exclusion']['match_inflected_forms'] = self.exclusion_checkbox_match_inflected_forms.isChecked()
@@ -595,11 +595,11 @@ def wl_widgets_search_settings(parent, tab):
     wrapper_search_terms.setLayout(wl_layouts.Wl_Layout())
     wrapper_search_terms.layout().addWidget(list_search_terms, 0, 0, 6, 1)
     wrapper_search_terms.layout().addWidget(list_search_terms.button_add, 0, 1)
-    wrapper_search_terms.layout().addWidget(list_search_terms.button_insert, 1, 1)
-    wrapper_search_terms.layout().addWidget(list_search_terms.button_remove, 2, 1)
-    wrapper_search_terms.layout().addWidget(list_search_terms.button_clear, 3, 1)
-    wrapper_search_terms.layout().addWidget(list_search_terms.button_import, 4, 1)
-    wrapper_search_terms.layout().addWidget(list_search_terms.button_export, 5, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_ins, 1, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_del, 2, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_clr, 3, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_imp, 4, 1)
+    wrapper_search_terms.layout().addWidget(list_search_terms.button_exp, 5, 1)
 
     wrapper_search_terms.layout().setContentsMargins(0, 0, 0, 0)
 

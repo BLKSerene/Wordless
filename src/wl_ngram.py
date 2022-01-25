@@ -193,7 +193,7 @@ class Wrapper_Ngram(wl_layouts.Wl_Wrapper):
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.returnPressed.connect(self.table_ngram.button_generate_table.click)
-        self.list_search_terms.itemChanged.connect(self.search_settings_changed)
+        self.list_search_terms.model().dataChanged.connect(self.search_settings_changed)
 
         self.checkbox_ignore_case.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
@@ -540,7 +540,7 @@ class Wrapper_Ngram(wl_layouts.Wl_Wrapper):
 
         settings['multi_search_mode'] = self.checkbox_multi_search_mode.isChecked()
         settings['search_term'] = self.line_edit_search_term.text()
-        settings['search_terms'] = self.list_search_terms.get_items()
+        settings['search_terms'] = self.list_search_terms.model().stringList()
 
         settings['ignore_case'] = self.checkbox_ignore_case.isChecked()
         settings['match_inflected_forms'] = self.checkbox_match_inflected_forms.isChecked()
