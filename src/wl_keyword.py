@@ -161,16 +161,16 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
         self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['keyword'].keys()))
         self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['keyword'].keys()))
 
-        self.list_ref_files.itemChanged.connect(self.generation_settings_changed)
+        self.list_ref_files.model().dataChanged.connect(self.generation_settings_changed)
         self.combo_box_test_significance.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_effect_size.currentTextChanged.connect(self.generation_settings_changed)
 
         layout_ref_files = wl_layouts.Wl_Layout()
         layout_ref_files.addWidget(self.list_ref_files, 0, 0, 4, 1)
         layout_ref_files.addWidget(self.list_ref_files.button_add, 0, 1)
-        layout_ref_files.addWidget(self.list_ref_files.button_insert, 1, 1)
-        layout_ref_files.addWidget(self.list_ref_files.button_remove, 2, 1)
-        layout_ref_files.addWidget(self.list_ref_files.button_clear, 3, 1)
+        layout_ref_files.addWidget(self.list_ref_files.button_ins, 1, 1)
+        layout_ref_files.addWidget(self.list_ref_files.button_del, 2, 1)
+        layout_ref_files.addWidget(self.list_ref_files.button_clr, 3, 1)
 
         layout_settings_measures = wl_layouts.Wl_Layout()
         layout_settings_measures.addWidget(self.label_settings_measures, 0, 0)
@@ -354,7 +354,7 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
     def generation_settings_changed(self):
         settings = self.main.settings_custom['keyword']['generation_settings']
 
-        settings['ref_files'] = self.list_ref_files.get_file_names()
+        settings['ref_files'] = self.list_ref_files.model().stringList()
         settings['test_significance'] = self.combo_box_test_significance.currentText()
         settings['measure_effect_size'] = self.combo_box_measure_effect_size.currentText()
 

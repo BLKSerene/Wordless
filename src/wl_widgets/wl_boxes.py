@@ -101,8 +101,7 @@ class Wl_Combo_Box_File(Wl_Combo_Box):
         # Clip long file names
         self.setSizeAdjustPolicy(QComboBox.AdjustToMinimumContentsLengthWithIcon)
 
-        for file in self.main.wl_files.get_selected_files():
-            self.addItem(file['name'])
+        self.addItems(self.main.wl_files.get_selected_file_names())
 
         self.main.wl_files.table.itemChanged.connect(self.wl_files_changed)
 

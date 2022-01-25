@@ -552,6 +552,9 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
     def file_item_changed(self):
         if any([self.item(0, i) for i in range(self.columnCount())]):
+            # Record old file names that might be useful for other slots
+            self.main.wl_files.file_names_old = self.main.wl_files.get_selected_file_names()
+
             # Check for duplicate file names
             for row in range(self.rowCount()):
                 file = self.item(row, 0).wl_file
