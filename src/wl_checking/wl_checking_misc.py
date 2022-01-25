@@ -48,6 +48,7 @@ def check_dir(dir_name):
 
 def check_new_name(new_name, names):
     i = 2
+    names = set(names)
 
     if new_name in names:
         while True:

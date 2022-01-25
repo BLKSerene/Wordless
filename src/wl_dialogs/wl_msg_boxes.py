@@ -132,7 +132,7 @@ def wl_msg_box_duplicate_file_name(main):
             <div>Please specify a different file name.</div>
         ''')
     ).open()
-
+    
 def wl_msg_box_no_files_selected(main):
     Wl_Msg_Box_Warning(
         main,
@@ -214,15 +214,6 @@ def wl_msg_box_missing_search_terms_concordancer_parallel(main):
             <div>You have not specified any search terms. Do you want to search for additions in the target file?</div>
         ''')
     )
-
-def wl_msg_box_duplicate_search_terms(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('Duplicate Search Terms'),
-        text = main.tr(f'''
-            <div>The search term that you have specified already exists in the list!</div>
-        ''')
-    ).open()
 
 # Results
 def wl_msg_box_no_results(main):
@@ -314,13 +305,3 @@ def wl_msg_box_path_not_exist_confirm(main, path):
         wl_checking_misc.check_dir(path)
 
     return reply
-
-# Settings - Stop Word Lists
-def wl_msg_box_duplicate_stop_words(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('Duplicate Stop Words'),
-        text = main.tr(f'''
-            <div>The stop word that you have specified already exists in the list!</div>
-        ''')
-    ).open()
