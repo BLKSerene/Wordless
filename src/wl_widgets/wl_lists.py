@@ -29,95 +29,232 @@ from wl_dialogs import wl_dialogs_errs, wl_msg_boxes
 from wl_widgets import wl_boxes
 from wl_utils import wl_detection, wl_misc, wl_msgs
 
-class Wl_List(QListWidget):
-    def __init__(self, parent):
+class Wl_List_Add_Ins_Del_Clr(QListView):
+    def __init__(
+        self, parent,
+        new_item_text = '',
+        editable = True, drag_drop = True
+    ):
         super().__init__(parent)
 
         self.main = wl_misc.find_wl_main(parent)
+        self.new_item_text = new_item_text if new_item_text else self.tr('New item')
+        self.items_old = []
 
         self.setSelectionMode(QAbstractItemView.ExtendedSelection)
-        self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked)
-        self.setDragEnabled(True)
-        self.setAcceptDrops(True)
-        self.setDragDropMode(QAbstractItemView.InternalMove)
 
-        self.itemChanged.connect(self.item_changed)
-        self.itemSelectionChanged.connect(self.selection_changed)
+        if editable:
+            self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked)
+        else:
+            self.setEditTriggers(QAbstractItemView.NoEditTriggers)
+
+        if drag_drop:
+            self.setDragDropMode(QAbstractItemView.InternalMove)
+
+        self.setModel(QStringListModel(self))
+
+        self.model().dataChanged.connect(self.data_changed)
+        self.selectionModel().selectionChanged.connect(self.selection_changed)
 
         self.button_add = QPushButton(self.tr('Add'), self)
-        self.button_insert = QPushButton(self.tr('Insert'), self)
-        self.button_remove = QPushButton(self.tr('Remove'), self)
-        self.button_clear = QPushButton(self.tr('Clear'), self)
-        self.button_import = QPushButton(self.tr('Import'), self)
-        self.button_export = QPushButton(self.tr('Export'), self)
+        self.button_ins = QPushButton(self.tr('Insert'), self)
+        self.button_del = QPushButton(self.tr('Remove'), self)
+        self.button_clr = QPushButton(self.tr('Clear'), self)
 
         self.button_add.clicked.connect(self.add_item)
-        self.button_insert.clicked.connect(self.insert_item)
-        self.button_remove.clicked.connect(self.remove_item)
-        self.button_clear.clicked.connect(self.clear_list)
-        self.button_import.clicked.connect(self.import_list)
-        self.button_export.clicked.connect(self.export_list)
+        self.button_ins.clicked.connect(self.ins_item)
+        self.button_del.clicked.connect(self.del_item)
+        self.button_clr.clicked.connect(self.clr_list)
 
-        self.clear_list()
-
-    def item_changed(self):
-        if self.count():
-            self.button_clear.setEnabled(True)
-            self.button_export.setEnabled(True)
+    # There seems to be a bug with QAbstractItemView.InternalMove
+    # See: https://bugreports.qt.io/browse/QTBUG-87057
+    def dropEvent(self, event):
+        if self.indexAt(event.pos()).row() == -1:
+            row_dropped_on = self.model().rowCount()
         else:
-            self.button_clear.setEnabled(False)
-            self.button_export.setEnabled(False)
+            row_dropped_on = self.indexAt(event.pos()).row()
+
+        data = self.model().stringList()
+        items_selected = []
+
+        for row in sorted([index.row() for index in self.selectionModel().selectedRows()]):
+            items_selected.append(data[row])
+            data[row] = ''
+
+        for item in reversed(items_selected):
+            data.insert(row_dropped_on, item)
+
+        self.model().setStringList([datum for datum in data if datum])
+
+        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+
+        event.accept()
+
+    def data_changed(self, topLeft = None, bottomRight = None):
+        if self.model().rowCount():
+            self.button_clr.setEnabled(True)
+        else:
+            self.button_clr.setEnabled(False)
+
+        # Check for duplicate items
+        if topLeft:
+            item_row = topLeft.row()
+
+            if item_row != -1:
+                item_text = self.model().stringList()[item_row]
+
+                if re.search(r'^\s*$', item_text):
+                    self.model().stringList()[item_row] = self.items_old[item_row]
+                else:
+                    for i, text in enumerate(self.model().stringList()):
+                        if i != item_row and item_text == text:
+                            wl_msg_boxes.Wl_Msg_Box_Warning(
+                                self.main,
+                                title = self.tr('Duplicates Found'),
+                                text = self.tr(f'''
+                                    <div>The item that you have just edited already exists in the list, please specify another one!</div>
+                                ''')
+                            ).exec_()
+
+                            data = self.model().stringList()
+                            data[item_row] = self.items_old[item_row]
+
+                            self.model().setStringList(data)
+
+                            self.setCurrentIndex(topLeft)
+                            self.closePersistentEditor(topLeft)
+                            self.edit(topLeft)
+
+                            break
+
+                    self.items_old[item_row] = self.model().stringList()[item_row]
 
         self.selection_changed()
 
     def selection_changed(self):
-        if self.selectedIndexes():
-            self.button_insert.setEnabled(True)
-            self.button_remove.setEnabled(True)
+        if self.selectionModel().selectedIndexes():
+            self.button_ins.setEnabled(True)
+            self.button_del.setEnabled(True)
         else:
-            self.button_insert.setEnabled(False)
-            self.button_remove.setEnabled(False)
+            self.button_ins.setEnabled(False)
+            self.button_del.setEnabled(False)
 
-    def _new_item(self):
-        pass
-
-    def add_item(self):
-        new_item = self._new_item()
-
-        self.addItem(new_item)
-        self.editItem(new_item)
-        
-        self.item(self.count() - 1).setSelected(True)
-
-        self.itemChanged.emit(self.item(0))
-
-    def insert_item(self):
-        new_item = self._new_item()
-        selected_row_1st = self.selectedIndexes()[0].row()
-
-        self.insertItem(selected_row_1st, new_item)
-        self.editItem(new_item)
-
-        self.item(selected_row_1st).setSelected(True)
-
-        self.itemChanged.emit(self.item(0))
-
-    def remove_item(self):
-        for index in sorted(self.selectedIndexes(), reverse = True):
-            self.takeItem(index.row())
-
-        self.itemChanged.emit(self.item(0))
-
-    def clear_list(self):
-        self.clear()
-
-        self.itemChanged.emit(self.item(0))
-
-    def import_list(self, settings):
-        if os.path.exists(self.main.settings_custom['import'][settings]['default_path']):
-            default_dir = self.main.settings_custom['import'][settings]['default_path']
+    def _add_item(self, text = '', row = None):
+        if text:
+            item_text = wl_checking_misc.check_new_name(text, self.model().stringList())
         else:
-            default_dir = self.main.settings_default['import'][settings]['default_path']
+            item_text = wl_checking_misc.check_new_name(self.new_item_text, self.model().stringList())
+
+        data = self.model().stringList()
+
+        if row == None:
+            data.append(item_text)
+            self.items_old.append(item_text)
+        else:
+            data.insert(row, item_text)
+            self.items_old.insert(row, item_text)
+
+        self.model().setStringList(data)
+
+        if row == None:
+            self.setCurrentIndex(self.model().index(self.model().rowCount() - 1))
+        else:
+            self.setCurrentIndex(self.model().index(row))
+
+        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+
+    def _add_items(self, texts, row = None):
+        data = self.model().stringList()
+        texts = [wl_checking_misc.check_new_name(text, data) for text in list(dict.fromkeys(texts))]
+
+        if row == None:
+            data.extend(texts)
+            self.items_old.extend(texts)
+
+            self.model().setStringList(data)
+        else:
+            data[row:row] = texts
+            self.items_old[row:row] = texts
+
+            self.model().setStringList(data)
+
+        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+
+    def add_item(self, text = ''):
+        self._add_item(text = text)
+
+    def add_items(self, texts):
+        self._add_items(texts = texts)
+
+    def ins_item(self, text = ''):
+        self._add_item(text = text, row = self.selectionModel().selectedRows()[0].row())
+
+    def ins_items(self, texts):
+        self._add_items(texts = reversed(texts), row = self.selectionModel().selectedRows()[0].row())
+
+    def del_item(self):
+        data = self.model().stringList()
+
+        for row in reversed(self.selectionModel().selectedRows()):
+            del data[row.row()]
+            del self.items_old[row.row()]
+
+        self.model().setStringList(data)
+
+        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+
+    def clr_list(self):
+        self.model().setStringList([])
+        self.items_old = []
+
+        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+
+    def load_items(self, texts):
+        self.clr_list()
+
+        self.add_items(texts)
+        self.scrollToTop()
+
+class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
+    def __init__(
+        self, parent,
+        new_item_text,
+        settings, exp_file_name,
+        editable = True, drag_drop = True
+    ):
+        super().__init__(
+            parent,
+            new_item_text = new_item_text,
+            editable = editable,
+            drag_drop = drag_drop
+        )
+
+        self.settings = settings
+        self.exp_file_name = exp_file_name
+
+        self.button_imp = QPushButton(self.tr('Import'), self)
+        self.button_exp = QPushButton(self.tr('Export'), self)
+
+        self.button_imp.clicked.connect(self.imp_list)
+        self.button_exp.clicked.connect(self.exp_list)
+
+    def data_changed(self, topLeft = None, bottomRight = None):
+        super().data_changed(topLeft, bottomRight)
+
+        if self.model().rowCount():
+            self.button_exp.setEnabled(True)
+        else:
+            self.button_exp.setEnabled(False)
+
+    def imp_list(self):
+        if os.path.exists(self.main.settings_custom['import'][self.settings]['default_path']):
+            default_dir = self.main.settings_custom['import'][self.settings]['default_path']
+        else:
+            default_dir = self.main.settings_default['import'][self.settings]['default_path']
 
         file_paths = QFileDialog.getOpenFileNames(
             self.main,
@@ -128,7 +265,7 @@ class Wl_List(QListWidget):
 
         if file_paths:
             # Modify default path
-            self.main.settings_custom['import'][settings]['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
+            self.main.settings_custom['import'][self.settings]['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
             file_paths, file_paths_empty = wl_checking_files.check_file_paths_empty(self.main, file_paths)
 
@@ -159,16 +296,16 @@ class Wl_List(QListWidget):
             else:
                 # Check duplicate items
                 items_to_import = []
-                items_cur = self.get_items()
+                items_cur = self.model().stringList()
 
                 num_prev = len(items_cur)
 
                 for file_path in file_paths:
                     # Detect encodings
-                    if self.main.settings_custom['import'][settings]['detect_encodings']:
+                    if self.main.settings_custom['import'][self.settings]['detect_encodings']:
                         encoding = wl_detection.detect_encoding(self.main, file_path)
                     else:
-                        encoding = self.main.settings_custom['import'][settings]['default_encoding']
+                        encoding = self.main.settings_custom['import'][self.settings]['default_encoding']
 
                     with open(file_path, 'r', encoding = encoding, errors = 'replace') as f:
                         text = f.read()
@@ -179,10 +316,9 @@ class Wl_List(QListWidget):
                         if line and line not in items_cur:
                             items_to_import.append(line)
 
-                self.load_items(collections.OrderedDict.fromkeys(items_to_import))
-                self.itemChanged.emit(self.item(0))
+                self.add_items(items_to_import)
 
-                num_imported = len(self.get_items()) - num_prev
+                num_imported = self.model().rowCount() - num_prev
 
                 if num_imported == 0:
                     self.main.statusBar().showMessage(self.tr('No items were imported into the list.'))
@@ -191,357 +327,186 @@ class Wl_List(QListWidget):
                 else:
                     self.main.statusBar().showMessage(self.tr(f'{num_imported:,} items have been successfully imported into the list.'))
 
-    def export_list(self, settings, default_file_name):
-        default_dir = self.main.settings_custom['export'][settings]['default_path']
+    def exp_list(self):
+        default_dir = self.main.settings_custom['export'][self.settings]['default_path']
 
         file_path = QFileDialog.getSaveFileName(
             self.main,
             self.tr('Export to File'),
-            os.path.join(wl_checking_misc.check_dir(default_dir), default_file_name),
+            os.path.join(wl_checking_misc.check_dir(default_dir), self.exp_file_name),
             self.tr('Text File (*.txt)')
         )[0]
 
         if file_path:
-            encoding = self.main.settings_custom['export'][settings]['default_encoding']
+            encoding = self.main.settings_custom['export'][self.settings]['default_encoding']
 
             with open(file_path, 'w', encoding = encoding) as f:
-                for item in self.get_items():
+                for item in self.model().stringList():
                     f.write(item + '\n')
 
             wl_msg_boxes.wl_msg_box_export_list(self.main, file_path)
 
             # Modify default path
-            self.main.settings_custom['export'][settings]['default_path'] = os.path.normpath(os.path.dirname(file_path))
+            self.main.settings_custom['export'][self.settings]['default_path'] = os.path.normpath(os.path.dirname(file_path))
 
-    def load_items(self, texts):
-        for text in texts:
-            new_item = self._new_item()
-            new_item.setText(text)
-
-            self.addItem(new_item)
-
-        self.itemChanged.emit(self.item(0))
-
-    def get_items(self):
-        return [self.item(i).text() for i in range(self.count())]
-
-class Wl_Combo_Box_File_Ref(wl_boxes.Wl_Combo_Box_File):
-    def __init__(self, parent, list_files):
-        super().__init__(parent)
-
-        self.list_files = list_files
-
-        self.currentTextChanged.connect(lambda: self.list_files.itemChanged.emit(self.list_files.item(0)))
-        self.currentTextChanged.connect(lambda: self.list_files.file_changed(self))
-
-    def wl_files_changed(self):
-        file_old = self.currentText()
-        files_selected = self.main.wl_files.get_selected_files()
-
-        if file_old in [file['name'] for file in files_selected]:
-            self.blockSignals(True)
-
-            self.clear()
-
-            for file in files_selected:
-                self.addItem(file['name'])
-
-            self.setCurrentText(file_old)
-
-            self.blockSignals(False)
-        else:
-            self.list_files.wl_file_removed(self)
-
-class Wl_List_Files(QListWidget):
+class Wl_List_Search_Terms(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
     def __init__(self, parent):
-        super().__init__(parent)
+        super().__init__(
+            parent,
+            new_item_text = parent.tr('New search term'),
+            settings = 'search_terms',
+            exp_file_name = 'wordless_search_terms.txt'
+        )
 
-        self.main = wl_misc.find_wl_main(parent)
+class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            new_item_text = parent.tr('New stop word'),
+            settings = 'stop_words',
+            exp_file_name = 'wordless_stop_words.txt'
+        )
 
-        self.button_add = QPushButton(self.tr('Add'), self)
-        self.button_insert = QPushButton(self.tr('Insert'), self)
-        self.button_remove = QPushButton(self.tr('Remove'), self)
-        self.button_clear = QPushButton(self.tr('Clear'), self)
+    def data_changed_default(self):
+        super().data_changed()
 
-        self.button_add.clicked.connect(self.add_item)
-        self.button_insert.clicked.connect(self.insert_item)
-        self.button_remove.clicked.connect(self.remove_item)
-        self.button_clear.clicked.connect(self.clear_list)
-
-        self.itemChanged.connect(self.item_changed)
-        self.itemSelectionChanged.connect(self.selection_changed)
-
-        self.main.wl_files.table.itemChanged.connect(self.wl_files_changed)
-
-        self.clear_list()
-
-    def item_changed(self):
-        if self.count():
-            self.button_clear.setEnabled(True)
-        else:
-            self.button_clear.setEnabled(False)
-
-        self.selection_changed()
-
-    def selection_changed(self):
-        if self.selectedIndexes():
-            self.button_insert.setEnabled(True)
-            self.button_remove.setEnabled(True)
-        else:
-            self.button_insert.setEnabled(False)
-            self.button_remove.setEnabled(False)
-
-        self.wl_files_changed()
-
-    def file_changed(self, combo_box_file):
-        for i in range(self.count()):
-            combo_box_cur = self.itemWidget(self.item(i))
-
-            if combo_box_file != combo_box_cur and combo_box_file.currentText() == combo_box_cur.currentText():
-                QMessageBox.warning(
-                    self.main,
-                    self.tr('Duplicate Reference Files'),
-                    self.tr(f'''
-                        {self.main.settings_global['styles']['style_dialog']}
-                        <body>
-                            <div>Please refrain from specifying two identical reference files!</div>
-                        </body>
-                    '''),
-                    QMessageBox.Ok
-                )
-
-                combo_box_file.setCurrentText(combo_box_file.text_old)
-                combo_box_file.showPopup()
-
-                return
-
-        combo_box_file.text_old = combo_box_file.currentText()
-
-    def wl_files_changed(self):
-        if self.count() >= len(self.main.wl_files.get_selected_files()):
-            self.button_add.setEnabled(False)
-            self.button_insert.setEnabled(False)
-        else:
-            self.button_add.setEnabled(True)
-            if self.selectedIndexes():
-                self.button_insert.setEnabled(True)
-
-    def wl_file_removed(self, combo_box_file):
-        for i in reversed(range(self.count())):
-            if self.itemWidget(self.item(i)) == combo_box_file:
-                self.takeItem(i)
-
-                self.itemChanged.emit(self.item(0))
-
-    def _new_item(self):
-        new_item = QListWidgetItem()
-        new_item_file = Wl_Combo_Box_File_Ref(self.main, self)
-
-        new_item.setFlags(Qt.ItemIsSelectable |
-                          Qt.ItemIsEditable |
-                          Qt.ItemIsDragEnabled |
-                          Qt.ItemIsEnabled)
-
-        file_names = self.get_file_names()
-
-        for i in range(new_item_file.count()):
-            if new_item_file.itemText(i) not in file_names:
-                new_item_file.setCurrentIndex(i)
-
-                break
-
-        new_item_file.text_old = new_item_file.currentText()
-
-        return new_item, new_item_file
-
-    def add_item(self):
-        new_item, new_item_file = self._new_item()
-
-        self.addItem(new_item)
-        self.setItemWidget(new_item, new_item_file)
-
-        self.item(self.count() - 1).setSelected(True)
-
-        self.itemChanged.emit(self.item(0))
-
-    def insert_item(self):
-        new_item, new_item_file = self._new_item()
-
-        selected_row_1st = self.selectedIndexes()[0].row()
-
-        self.insertItem(selected_row_1st, new_item)
-        self.setItemWidget(new_item, new_item_file)
-
-        self.item(selected_row_1st).setSelected(True)
-
-        self.itemChanged.emit(self.item(0))
-
-    def remove_item(self):
-        for index in sorted(self.selectedIndexes(), reverse = True):
-            self.takeItem(index.row())
-
-        self.itemChanged.emit(self.item(0))
-
-    def clear_list(self):
-        self.clear()
-
-        self.itemChanged.emit(self.item(0))
-
-    def load_items(self, texts):
-        for text in texts:
-            new_item, new_item_file = self._new_item()
-
-            new_item_file.setCurrentText(text)
-
-            self.addItem(new_item)
-            self.setItemWidget(new_item, new_item_file)
-
-            new_item.text_old = new_item_file.currentText()
-
-        self.itemChanged.emit(self.item(0))
-
-    def get_file_names(self):
-        return [self.itemWidget(self.item(i)).currentText() for i in range(self.count())]
-
-class Wl_List_Search_Terms(Wl_List):
-    def item_changed(self, item = None):
-        super().item_changed()
-
-        if item:
-            if re.search(r'^\s*$', item.text()):
-                item.setText(item.text_old)
-            else:
-                for i in range(self.count()):
-                    if self.item(i) != item:
-                        if item.text() == self.item(i).text():
-                            wl_msg_boxes.wl_msg_box_duplicate_search_terms(self.main)
-
-                            item.setText(item.text_old)
-
-                            self.closePersistentEditor(item)
-                            self.editItem(item)
-
-                            break
-
-                item.text_old = item.text()
-
-    def _new_item(self):
-        i = 1
-
-        while True:
-            if self.findItems(self.tr(f'New Search Term ({i})'), Qt.MatchExactly):
-                i += 1
-            else:
-                new_item = QListWidgetItem(self.tr('New Search Term ({})').format(i))
-
-                new_item.text_old = new_item.text()
-                new_item.setFlags(Qt.ItemIsSelectable |
-                                  Qt.ItemIsEditable |
-                                  Qt.ItemIsDragEnabled |
-                                  Qt.ItemIsEnabled)
-
-                return new_item
-
-    def import_list(self):
-        super().import_list(settings = 'search_terms')
-
-    def export_list(self):
-        super().export_list(settings = 'search_terms', default_file_name = 'Wordless_search_terms.txt')
-
-class Wl_List_Stop_Words(Wl_List):
-    def item_changed(self, item = None):
-        super().item_changed()
-
-        if item:
-            if re.search(r'^\s*$', item.text()):
-                item.setText(item.text_old)
-            else:
-                for i in range(self.count()):
-                    if self.item(i) != item:
-                        if item.text() == self.item(i).text():
-                            wl_msg_boxes.wl_msg_box_duplicate_stop_words(self.main)
-
-                            item.setText(item.text_old)
-
-                            self.closePersistentEditor(item)
-                            self.editItem(item)
-
-                            break
-
-                item.text_old = item.text()
-
-    def item_changed_default(self):
-        self.button_clear.setEnabled(False)
-        self.button_export.setEnabled(True)
+        self.button_clr.setEnabled(False)
 
     def selection_changed_default(self):
-        self.button_insert.setEnabled(False)
-        self.button_remove.setEnabled(False)
+        super().selection_changed()
 
-    def _new_item(self):
-        i = 1
-
-        while True:
-            if self.findItems(self.tr(f'New Stop Word ({i})'), Qt.MatchExactly):
-                i += 1
-            else:
-                new_item = QListWidgetItem(self.tr('New Stop Word ({})').format(i))
-
-                new_item.text_old = new_item.text()
-                new_item.setFlags(Qt.ItemIsSelectable |
-                                  Qt.ItemIsEditable |
-                                  Qt.ItemIsDragEnabled |
-                                  Qt.ItemIsEnabled)
-
-                return new_item
-
-    def import_list(self):
-        super().import_list(settings = 'stop_words')
-
-    def export_list(self):
-        super().export_list(settings = 'stop_words', default_file_name = 'Wordless_stop_words.txt')
-
-    def load_stop_words(self, stop_words):
-        self.clear_list()
-
-        self.addItems(sorted(stop_words))
-
-        self.scrollToTop()
+        self.button_ins.setEnabled(False)
+        self.button_del.setEnabled(False)
 
     def switch_to_custom(self):
+        self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked)
         self.setDragEnabled(True)
 
-        for i in range(self.count()):
-            self.item(0).setFlags(Qt.ItemIsSelectable |
-                                  Qt.ItemIsEditable |
-                                  Qt.ItemIsDragEnabled |
-                                  Qt.ItemIsEnabled)
-
         self.button_add.setEnabled(True)
-        self.button_import.setEnabled(True)
+        self.button_imp.setEnabled(True)
 
-        self.itemChanged.disconnect()
-        self.itemSelectionChanged.disconnect()
+        self.model().dataChanged.disconnect()
+        self.selectionModel().selectionChanged.disconnect()
 
-        self.itemChanged.connect(self.item_changed)
-        self.itemSelectionChanged.connect(self.selection_changed)
+        self.model().dataChanged.connect(self.data_changed)
+        self.selectionModel().selectionChanged.connect(self.selection_changed)
 
-        self.item_changed()
-        self.selection_changed()
+        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
     def switch_to_default(self):
+        self.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.setDragEnabled(False)
 
         self.button_add.setEnabled(False)
-        self.button_import.setEnabled(False)
+        self.button_imp.setEnabled(False)
 
-        self.itemChanged.disconnect()
-        self.itemSelectionChanged.disconnect()
+        self.model().dataChanged.disconnect()
+        self.selectionModel().selectionChanged.disconnect()
 
-        self.itemChanged.connect(self.item_changed)
-        self.itemChanged.connect(self.item_changed_default)
-        self.itemSelectionChanged.connect(self.selection_changed)
-        self.itemSelectionChanged.connect(self.selection_changed_default)
+        self.model().dataChanged.connect(self.data_changed)
+        self.model().dataChanged.connect(self.data_changed_default)
+        self.selectionModel().selectionChanged.connect(self.selection_changed)
+        self.selectionModel().selectionChanged.connect(self.selection_changed_default)
 
-        self.item_changed_default()
-        self.selection_changed_default()
+        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+
+class Combo_Box_File(QStyledItemDelegate):
+    def createEditor(self, parent, option, index):
+        return wl_boxes.Wl_Combo_Box_File(parent)
+
+class Wl_List_Files(Wl_List_Add_Ins_Del_Clr):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.setItemDelegate(Combo_Box_File(self))
+
+        self.main.wl_files.table.itemChanged.connect(self.wl_files_changed_buttons)
+        self.main.wl_files.table.itemChanged.connect(self.wl_files_changed_items)
+
+    def selection_changed(self):
+        super().selection_changed()
+
+        self.wl_files_changed_buttons()
+
+    def wl_files_changed_buttons(self):
+        if self.model().rowCount() >= len(self.main.wl_files.get_selected_files()):
+            self.button_add.setEnabled(False)
+            self.button_ins.setEnabled(False)
+        else:
+            self.button_add.setEnabled(True)
+
+            if self.selectionModel().selectedIndexes():
+                self.button_ins.setEnabled(True)
+
+    def wl_files_changed_items(self):
+        data = self.model().stringList()
+        rows_selected = [index.row() for index in self.selectionModel().selectedIndexes()]
+        file_names_old = self.main.wl_files.file_names_old
+        file_names_selected = self.main.wl_files.get_selected_file_names()
+
+        # Files renamed or reordered
+        if len(file_names_selected) == len(file_names_old):
+            # Files renamed
+            if len([
+                True
+                for file_name_selected, file_name_old in zip(file_names_selected, file_names_old)
+                if file_name_selected != file_name_old
+            ]) == 1:
+                for file_name_selected, file_name_old in zip(file_names_selected, file_names_old):
+                    if file_name_selected != file_name_old and file_name_old in data:
+                        data[data.index(file_name_old)] = file_name_selected
+
+                        break
+        # Files added or removed
+        else:
+            for i, item in reversed(list(enumerate(data))):
+                if item not in file_names_selected:
+                    # Adjust current selection
+                    for j, row in reversed(list(enumerate(rows_selected))):
+                        if row == i:
+                            del rows_selected[j]
+                        elif row > i:
+                            rows_selected[j] -= 1
+
+                    del data[i]
+                    del self.items_old[i]
+
+        self.model().setStringList(data)
+
+        for row in rows_selected:
+            self.selectionModel().select(self.model().index(row), QItemSelectionModel.Select)
+
+        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+
+    def _add_item(self, text = '', row = None):
+        data = self.model().stringList()
+
+        if text:
+            item_text = text
+        else:
+            file_names = set(data)
+
+            for file_name in self.main.wl_files.get_selected_file_names():
+                if file_name not in file_names:
+                    item_text = file_name
+
+                    break
+
+        if row == None:
+            data.append(item_text)
+            self.items_old.append(item_text)
+        else:
+            data.insert(row, item_text)
+            self.items_old.insert(row, item_text)
+
+        self.model().setStringList(data)
+
+        if row == None:
+            self.setCurrentIndex(self.model().index(self.model().rowCount() - 1))
+        else:
+            self.setCurrentIndex(self.model().index(row))
+
+        self.model().dataChanged.emit(QModelIndex(), QModelIndex())
+        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
