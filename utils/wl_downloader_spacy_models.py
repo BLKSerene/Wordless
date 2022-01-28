@@ -19,7 +19,6 @@
 import importlib
 import platform
 import subprocess
-import sys
 
 langs = [
     ['Catalan'         , 'cat', 'ca'],
@@ -90,7 +89,7 @@ for lang_text, lang_code_639_3, lang_code_639_1 in langs:
 
         if model.__version__ != globals()[f'model_ver_{lang_code_639_3}']:
             globals()[f'updates_available_{lang_code_639_3}'] = True
-    except:
+    except ModuleNotFoundError:
         globals()[f'updates_available_{lang_code_639_3}'] = True
 
 # Download models
