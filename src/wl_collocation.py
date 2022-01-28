@@ -20,15 +20,13 @@ import collections
 import copy
 import operator
 import re
-import time
 import traceback
-
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
 
 import nltk
 import numpy
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
@@ -90,8 +88,8 @@ class Wl_Table_Collocation(wl_tables.Wl_Table_Data_Filter_Search):
 
         self.setUpdatesEnabled(True)
 
-    def clear_table(self, count_headers = 1, confirm = False):
-        confirmed = super().clear_table(count_headers = count_headers, confirm = confirm)
+    def clr_table(self, count_headers = 1, confirm = False):
+        confirmed = super().clr_table(count_headers = count_headers, confirm = confirm)
 
         if confirmed:
             self.cols_breakdown_position = set()
@@ -114,9 +112,9 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_collocation, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_collocation.button_generate_table, 2, 0)
         self.wrapper_table.layout().addWidget(self.table_collocation.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_collocation.button_export_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_collocation.button_export_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_collocation.button_clear, 2, 4)
+        self.wrapper_table.layout().addWidget(self.table_collocation.button_exp_selected, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_collocation.button_exp_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_collocation.button_clr, 2, 4)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -128,11 +126,11 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
             self.checkbox_title_case,
             self.checkbox_nums,
             self.checkbox_puncs,
-    
+
             self.checkbox_treat_as_lowercase,
             self.checkbox_lemmatize_tokens,
             self.checkbox_filter_stop_words,
-    
+
             self.token_checkbox_ignore_tags,
             self.checkbox_use_tags
         ) = wl_widgets.wl_widgets_token_settings(self)
@@ -176,18 +174,18 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
         (
             self.label_search_term,
             self.checkbox_multi_search_mode,
-    
+
             self.stacked_widget_search_term,
             self.line_edit_search_term,
             self.list_search_terms,
-    
+
             self.label_separator,
-    
+
             self.checkbox_ignore_case,
             self.checkbox_match_inflected_forms,
             self.checkbox_match_whole_words,
             self.checkbox_use_regex,
-    
+
             self.search_checkbox_ignore_tags,
             self.checkbox_match_tags
         ) = wl_widgets.wl_widgets_search_settings(
@@ -461,7 +459,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
         self.group_box_search_settings.setChecked(settings['search_settings']['search_settings'])
 
         self.checkbox_multi_search_mode.setChecked(settings['search_settings']['multi_search_mode'])
-        
+
         if not defaults:
             self.line_edit_search_term.setText(settings['search_settings']['search_term'])
             self.list_search_terms.load_items(settings['search_settings']['search_terms'])
@@ -550,7 +548,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
             self.checkbox_match_tags.token_settings_changed()
 
             self.group_box_search_settings.setChecked(False)
-        
+
         self.main.wl_context_settings_collocation.token_settings_changed()
 
     def search_settings_changed(self):
@@ -852,9 +850,11 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
 
                                 collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
 
-                collocations_freqs_file = {(ngram, collocate): freqs
-                                           for (ngram, collocate), freqs in collocations_freqs_file.items()
-                                           if all(ngram) and collocate}
+                collocations_freqs_file = {
+                    (ngram, collocate): freqs
+                    for (ngram, collocate), freqs in collocations_freqs_file.items()
+                    if all(ngram) and collocate
+                }
 
                 # Filter search terms
                 if settings['search_settings']['search_settings']:
@@ -969,9 +969,6 @@ class Wl_Worker_Collocation_Table(Wl_Worker_Collocation):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-
-        time.sleep(0.1)
-
         self.worker_done.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.collocations_freqs_files),
@@ -984,9 +981,6 @@ class Wl_Worker_Collocation_Fig(Wl_Worker_Collocation):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering figure...'))
-
-        time.sleep(0.1)
-
         self.worker_done.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.collocations_freqs_files),
@@ -999,112 +993,154 @@ def generate_table(main, table):
     def update_gui(err_msg, collocations_freqs_files, collocations_stats_files, nodes_text):
         if not err_msg:
             if collocations_freqs_files:
-                table.clear_table()
-
                 table.settings = copy.deepcopy(main.settings_custom)
 
                 text_test_significance = settings['generation_settings']['test_significance']
                 text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-                (text_test_stat,
-                 text_p_value,
-                 text_bayes_factor) = main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
-                text_effect_size =  main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
+                (
+                    text_test_stat,
+                    text_p_value,
+                    text_bayes_factor
+                ) = main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
+                text_effect_size = main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
+
+                table.clr_table()
 
                 # Insert columns (files)
                 for i, file in enumerate(files):
                     for i in range(settings['generation_settings']['window_left'],
                                    settings['generation_settings']['window_right'] + 1):
                         if i < 0:
-                            table.insert_col(table.columnCount() - 2,
-                                             main.tr(f'[{file["name"]}]\nL{-i}'),
-                                             is_int = True, is_cumulative = True, is_breakdown = True)
-                            table.insert_col(table.columnCount() - 2,
-                                             main.tr(f'[{file["name"]}]\nL{-i} %'),
-                                             is_pct = True, is_cumulative = True, is_breakdown = True)
+                            table.ins_col(
+                                table.model().columnCount() - 2,
+                                main.tr(f'[{file["name"]}]\nL{-i}'),
+                                is_int = True, is_cumulative = True, is_breakdown = True
+                            )
+                            table.ins_col(
+                                table.model().columnCount() - 2,
+                                main.tr(f'[{file["name"]}]\nL{-i} %'),
+                                is_pct = True, is_cumulative = True, is_breakdown = True
+                            )
                         elif i > 0:
-                            table.insert_col(table.columnCount() - 2,
-                                             main.tr(f'[{file["name"]}]\nR{i}'),
-                                             is_int = True, is_cumulative = True, is_breakdown = True)
-                            table.insert_col(table.columnCount() - 2,
-                                             main.tr(f'[{file["name"]}]\nR{i} %'),
-                                             is_pct = True, is_cumulative = True, is_breakdown = True)
+                            table.ins_col(
+                                table.model().columnCount() - 2,
+                                main.tr(f'[{file["name"]}]\nR{i}'),
+                                is_int = True, is_cumulative = True, is_breakdown = True
+                            )
+                            table.ins_col(
+                                table.model().columnCount() - 2,
+                                main.tr(f'[{file["name"]}]\nR{i} %'),
+                                is_pct = True, is_cumulative = True, is_breakdown = True
+                            )
 
                         # Show breakdown by span position
-                        table.cols_breakdown_position.add(table.columnCount() - 3)
-                        table.cols_breakdown_position.add(table.columnCount() - 4)
+                        table.cols_breakdown_position.add(table.model().columnCount() - 3)
+                        table.cols_breakdown_position.add(table.model().columnCount() - 4)
 
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\nFrequency'),
-                                     is_int = True, is_cumulative = True, is_breakdown = True)
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\nFrequency %'),
-                                     is_pct = True, is_cumulative = True, is_breakdown = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'[{file["name"]}]\nFrequency'),
+                        is_int = True, is_cumulative = True, is_breakdown = True
+                    )
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'[{file["name"]}]\nFrequency %'),
+                        is_pct = True, is_cumulative = True, is_breakdown = True
+                    )
 
                     if text_test_stat:
-                        table.insert_col(table.columnCount() - 2,
-                                         main.tr(f'[{file["name"]}]\n{text_test_stat}'),
-                                         is_float = True, is_breakdown = True)
+                        table.ins_col(
+                            table.model().columnCount() - 2,
+                            main.tr(f'[{file["name"]}]\n{text_test_stat}'),
+                            is_float = True, is_breakdown = True
+                        )
 
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\n{text_p_value}'),
-                                     is_float = True, is_breakdown = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'[{file["name"]}]\n{text_p_value}'),
+                        is_float = True, is_breakdown = True
+                    )
 
                     if text_bayes_factor:
-                        table.insert_col(table.columnCount() - 2,
-                                         main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
-                                         is_float = True, is_breakdown = True)
+                        table.ins_col(
+                            table.model().columnCount() - 2,
+                            main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
+                            is_float = True, is_breakdown = True
+                        )
 
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\n{text_effect_size}'),
-                                     is_float = True, is_breakdown = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'[{file["name"]}]\n{text_effect_size}'),
+                        is_float = True, is_breakdown = True
+                    )
 
                 # Insert columns (total)
                 for i in range(settings['generation_settings']['window_left'],
                                settings['generation_settings']['window_right'] + 1):
                     if i < 0:
-                        table.insert_col(table.columnCount() - 2,
-                                         main.tr(f'Total\nL{-i}'),
-                                         is_int = True, is_cumulative = True)
-                        table.insert_col(table.columnCount() - 2,
-                                         main.tr(f'Total\nL{-i} %'),
-                                         is_pct = True, is_cumulative = True)
+                        table.ins_col(
+                            table.model().columnCount() - 2,
+                            main.tr(f'Total\nL{-i}'),
+                            is_int = True, is_cumulative = True
+                        )
+                        table.ins_col(
+                            table.model().columnCount() - 2,
+                            main.tr(f'Total\nL{-i} %'),
+                            is_pct = True, is_cumulative = True
+                        )
                     elif i > 0:
-                        table.insert_col(table.columnCount() - 2,
-                                         main.tr(f'Total\nR{i}'),
-                                         is_int = True, is_cumulative = True)
-                        table.insert_col(table.columnCount() - 2,
-                                         main.tr(f'Total\nR{i} %'),
-                                         is_pct = True, is_cumulative = True)
+                        table.ins_col(
+                            table.model().columnCount() - 2,
+                            main.tr(f'Total\nR{i}'),
+                            is_int = True, is_cumulative = True
+                        )
+                        table.ins_col(
+                            table.model().columnCount() - 2,
+                            main.tr(f'Total\nR{i} %'),
+                            is_pct = True, is_cumulative = True
+                        )
 
                     # Show breakdown by span position
-                    table.cols_breakdown_position.add(table.columnCount() - 3)
-                    table.cols_breakdown_position.add(table.columnCount() - 4)
+                    table.cols_breakdown_position.add(table.model().columnCount() - 3)
+                    table.cols_breakdown_position.add(table.model().columnCount() - 4)
 
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr('Total\nFrequency'),
-                                 is_int = True, is_cumulative = True)
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr('Total\nFrequency %'),
-                                 is_pct = True, is_cumulative = True)
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr('Total\nFrequency'),
+                    is_int = True, is_cumulative = True
+                )
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr('Total\nFrequency %'),
+                    is_pct = True, is_cumulative = True
+                )
 
                 if text_test_stat:
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'Total\n{text_test_stat}'),
-                                     is_float = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'Total\n{text_test_stat}'),
+                        is_float = True
+                    )
 
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'Total\n{text_p_value}'),
-                                 is_float = True)
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr(f'Total\n{text_p_value}'),
+                    is_float = True
+                )
 
                 if text_bayes_factor:
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'Total\n{text_bayes_factor}'),
-                                     is_float = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'Total\n{text_bayes_factor}'),
+                        is_float = True
+                    )
 
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'Total\n{text_effect_size}'),
-                                 is_float = True)
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr(f'Total\n{text_effect_size}'),
+                    is_float = True
+                )
 
                 # Sort by p-value of the first file
                 table.horizontalHeader().setSortIndicator(
@@ -1112,17 +1148,17 @@ def generate_table(main, table):
                     Qt.AscendingOrder
                 )
 
-                table.blockSignals(True)
-                table.setSortingEnabled(False)
-                table.setUpdatesEnabled(False)
-
-                if settings['generation_settings']['window_left'] < 0:  
-                    cols_freqs_start = [table.find_col(f'[{file["name"]}]\nL{-settings["generation_settings"]["window_left"]}')
-                                        for file in files]
+                if settings['generation_settings']['window_left'] < 0:
+                    cols_freqs_start = [
+                        table.find_col(f'[{file["name"]}]\nL{-settings["generation_settings"]["window_left"]}')
+                        for file in files
+                    ]
                     cols_freqs_start.append(table.find_col(f'Total\nL{-settings["generation_settings"]["window_left"]}'))
                 else:
-                    cols_freqs_start = [table.find_col(f'[{file["name"]}]\nR{settings["generation_settings"]["window_left"]}')
-                                        for file in files]
+                    cols_freqs_start = [
+                        table.find_col(f'[{file["name"]}]\nR{settings["generation_settings"]["window_left"]}')
+                        for file in files
+                    ]
                     cols_freqs_start.append(table.find_col(f'Total\nR{settings["generation_settings"]["window_left"]}'))
 
                 cols_freq = table.find_cols(main.tr('\nFrequency'))
@@ -1147,8 +1183,10 @@ def generate_table(main, table):
                 freq_totals = numpy.array(list(collocations_freqs_files.values())).sum(axis = 2).sum(axis = 0)
                 len_files = len(files)
 
-                table.setRowCount(len(collocations_freqs_files))
-                
+                table.model().setRowCount(len(collocations_freqs_files))
+
+                table.disable_updates()
+
                 for i, ((node, collocate), stats_files) in enumerate(wl_sorting.sorted_collocations_stats_files(collocations_stats_files)):
                     freqs_files = collocations_freqs_files[(node, collocate)]
 
@@ -1156,9 +1194,9 @@ def generate_table(main, table):
                     table.set_item_num(i, 0, -1)
 
                     # Node
-                    table.setItem(i, 1, wl_tables.Wl_Table_Item(nodes_text[node]))
+                    table.model().setItem(i, 1, wl_tables.Wl_Table_Item(nodes_text[node]))
                     # Collocate
-                    table.setItem(i, 2, wl_tables.Wl_Table_Item(collocate))
+                    table.model().setItem(i, 2, wl_tables.Wl_Table_Item(collocate))
 
                     # Frequency
                     for j, freqs_file in enumerate(freqs_files):
@@ -1190,16 +1228,12 @@ def generate_table(main, table):
                     table.set_item_num(i, col_files_found, num_files_found)
                     table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
 
-                table.setSortingEnabled(True)
-                table.setUpdatesEnabled(True)
-                table.blockSignals(False)
+                table.enable_updates()
 
                 table.toggle_pct()
                 table.toggle_cumulative()
                 table.toggle_breakdown()
                 table.update_ranks()
-
-                table.itemChanged.emit(table.item(0, 0))
 
                 wl_msgs.wl_msg_generate_table_success(main)
             else:
@@ -1215,9 +1249,11 @@ def generate_table(main, table):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_files.check_files_on_loading(main, files):
-        if (not settings['search_settings']['search_settings'] or
-            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
-            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+        if (
+            not settings['search_settings']['search_settings']
+            or not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
+            or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
+        ):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_collocation_table = Wl_Worker_Collocation_Table(
@@ -1246,11 +1282,13 @@ def generate_fig(main):
                 (text_test_stat,
                  text_p_value,
                  text_bayes_factor) = main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
-                text_effect_size =  main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
+                text_effect_size = main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
 
                 if re.search(r'^[LR][0-9]+$', settings['fig_settings']['use_data']):
-                    span_positions = (list(range(settings['generation_settings']['window_left'], 0)) +
-                                      list(range(1, settings['generation_settings']['window_right'] + 1)))
+                    span_positions = (
+                        list(range(settings['generation_settings']['window_left'], 0))
+                        + list(range(1, settings['generation_settings']['window_right'] + 1))
+                    )
 
                     if 'L' in settings['fig_settings']['use_data']:
                         span_position = span_positions.index(-int(settings['fig_settings']['use_data'][1:]))
@@ -1363,9 +1401,11 @@ def generate_fig(main):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_files.check_files_on_loading(main, files):
-        if (not settings['search_settings']['search_settings'] or
-            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
-            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+        if (
+            not settings['search_settings']['search_settings']
+            or not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
+            or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
+        ):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_collocation_fig = Wl_Worker_Collocation_Fig(

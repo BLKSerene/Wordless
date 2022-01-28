@@ -18,15 +18,12 @@
 
 import collections
 import copy
-import re
-import time
 import traceback
 
+import numpy
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-
-import numpy
 
 from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
@@ -80,9 +77,9 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_keyword, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_keyword.button_generate_table, 2, 0)
         self.wrapper_table.layout().addWidget(self.table_keyword.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_keyword.button_export_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_keyword.button_export_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_keyword.button_clear, 2, 4)
+        self.wrapper_table.layout().addWidget(self.table_keyword.button_exp_selected, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_keyword.button_exp_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_keyword.button_clr, 2, 4)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -94,11 +91,11 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
             self.checkbox_title_case,
             self.checkbox_nums,
             self.checkbox_puncs,
-    
+
             self.checkbox_treat_as_lowercase,
             self.checkbox_lemmatize_tokens,
             self.checkbox_filter_stop_words,
-    
+
             self.checkbox_ignore_tags,
             self.checkbox_use_tags
         ) = wl_widgets.wl_widgets_token_settings(self)
@@ -264,7 +261,7 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
         self.group_box_fig_settings.layout().addLayout(layout_fig_settings_combo_boxes, 0, 0, 1, 3)
         self.group_box_fig_settings.layout().addWidget(self.checkbox_use_pct, 1, 0, 1, 3)
         self.group_box_fig_settings.layout().addWidget(self.checkbox_use_cumulative, 2, 0, 1, 3)
-        
+
         self.group_box_fig_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 3)
 
         self.group_box_fig_settings.layout().addWidget(self.label_rank, 4, 0, 1, 3)
@@ -426,9 +423,9 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
     def run(self):
         try:
             texts = []
-            
+
             settings = self.main.settings_custom['keyword']
-            
+
             files_ref = self.main.wl_files.find_files_by_name(
                 settings['generation_settings']['ref_files'],
                 selected_only = True
@@ -572,9 +569,6 @@ class Wl_Worker_Keyword_Table(Wl_Worker_Keyword):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-
-        time.sleep(0.1)
-
         self.worker_done.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.keywords_freq_files),
@@ -586,9 +580,6 @@ class Wl_Worker_Keyword_Fig(Wl_Worker_Keyword):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering figure...'))
-
-        time.sleep(0.1)
-
         self.worker_done.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.keywords_freq_files),
@@ -600,87 +591,113 @@ def generate_table(main, table):
     def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
         if not err_msg:
             if keywords_freq_files:
-                table.clear_table()
-
                 table.settings = copy.deepcopy(main.settings_custom)
 
                 text_test_significance = settings['generation_settings']['test_significance']
                 text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-                (text_test_stat,
-                 text_p_value,
-                 text_bayes_factor) = main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
-                text_effect_size =  main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
+                (
+                    text_test_stat,
+                    text_p_value,
+                    text_bayes_factor
+                ) = main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
+                text_effect_size = main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
+
+                table.clr_table()
 
                 # Insert columns (files)
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr('[Reference Files]\nFrequency'),
-                                 is_int = True, is_cumulative = True)
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr('[Reference Files]\nFrequency %'),
-                                 is_pct = True, is_cumulative = True)
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr('[Reference Files]\nFrequency'),
+                    is_int = True, is_cumulative = True
+                )
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr('[Reference Files]\nFrequency %'),
+                    is_pct = True, is_cumulative = True
+                )
 
                 for file_observed in files_observed:
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file_observed["name"]}]\nFrequency'),
-                                     is_int = True, is_cumulative = True, is_breakdown = True)
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file_observed["name"]}]\nFrequency %'),
-                                     is_pct = True, is_cumulative = True, is_breakdown = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'[{file_observed["name"]}]\nFrequency'),
+                        is_int = True, is_cumulative = True, is_breakdown = True
+                    )
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'[{file_observed["name"]}]\nFrequency %'),
+                        is_pct = True, is_cumulative = True, is_breakdown = True
+                    )
 
                     if text_test_stat:
-                        table.insert_col(table.columnCount() - 2,
-                                         main.tr(f'[{file_observed["name"]}]\n{text_test_stat}'),
-                                         is_float = True, is_breakdown = True)
+                        table.ins_col(
+                            table.model().columnCount() - 2,
+                            main.tr(f'[{file_observed["name"]}]\n{text_test_stat}'),
+                            is_float = True, is_breakdown = True
+                        )
 
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file_observed["name"]}]\n{text_p_value}'),
-                                     is_float = True, is_breakdown = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'[{file_observed["name"]}]\n{text_p_value}'),
+                        is_float = True, is_breakdown = True
+                    )
 
                     if text_bayes_factor:
-                        table.insert_col(table.columnCount() - 2,
-                                         main.tr(f'[{file_observed["name"]}]\n{text_bayes_factor}'),
-                                         is_float = True, is_breakdown = True)
+                        table.ins_col(
+                            table.model().columnCount() - 2,
+                            main.tr(f'[{file_observed["name"]}]\n{text_bayes_factor}'),
+                            is_float = True, is_breakdown = True
+                        )
 
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file_observed["name"]}]\n{text_effect_size}'),
-                                     is_float = True, is_breakdown = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'[{file_observed["name"]}]\n{text_effect_size}'),
+                        is_float = True, is_breakdown = True
+                    )
 
                 # Insert columns (total)
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr('Total\nFrequency'),
-                                 is_int = True, is_cumulative = True)
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr('Total\nFrequency %'),
-                                 is_pct = True, is_cumulative = True)
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr('Total\nFrequency'),
+                    is_int = True, is_cumulative = True
+                )
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr('Total\nFrequency %'),
+                    is_pct = True, is_cumulative = True
+                )
 
                 if text_test_stat:
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'Total\n{text_test_stat}'),
-                                     is_float = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'Total\n{text_test_stat}'),
+                        is_float = True
+                    )
 
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'Total\n{text_p_value}'),
-                                 is_float = True)
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr(f'Total\n{text_p_value}'),
+                    is_float = True
+                )
 
                 if text_bayes_factor:
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'Total\n{text_bayes_factor}'),
-                                     is_float = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'Total\n{text_bayes_factor}'),
+                        is_float = True
+                    )
 
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'Total\n{text_effect_size}'),
-                                 is_float = True)
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr(f'Total\n{text_effect_size}'),
+                    is_float = True
+                )
 
                 # Sort by p-value of the first observed file
                 table.horizontalHeader().setSortIndicator(
                     table.find_col(main.tr(f'[{files_observed[0]["name"]}]\n{text_p_value}')),
                     Qt.AscendingOrder
                 )
-
-                table.blockSignals(True)
-                table.setSortingEnabled(False)
-                table.setUpdatesEnabled(False)
 
                 cols_freq = table.find_cols(main.tr('\nFrequency'))
                 cols_freq_pct = table.find_cols(main.tr('\nFrequency %'))
@@ -703,7 +720,9 @@ def generate_table(main, table):
                 freq_totals = numpy.array(list(keywords_freq_files.values())).sum(axis = 0)
                 len_files_observed = len(files_observed)
 
-                table.setRowCount(len(keywords_freq_files))
+                table.model().setRowCount(len(keywords_freq_files))
+
+                table.disable_updates()
 
                 for i, (keyword, stats_files) in enumerate(wl_sorting.sorted_keywords_stats_files(keywords_stats_files)):
                     freq_files = keywords_freq_files[keyword]
@@ -712,7 +731,7 @@ def generate_table(main, table):
                     table.set_item_num(i, 0, -1)
 
                     # Keyword
-                    table.setItem(i, 1, wl_tables.Wl_Table_Item(keyword))
+                    table.model().setItem(i, 1, wl_tables.Wl_Table_Item(keyword))
 
                     # Frequency
                     for j, freq in enumerate(freq_files):
@@ -740,16 +759,12 @@ def generate_table(main, table):
                     table.set_item_num(i, col_files_found, num_files_found)
                     table.set_item_num(i, col_files_found_pct, num_files_found, len_files_observed)
 
-                table.setSortingEnabled(True)
-                table.setUpdatesEnabled(True)
-                table.blockSignals(False)
+                table.enable_updates()
 
                 table.toggle_pct()
                 table.toggle_cumulative()
                 table.toggle_breakdown()
                 table.update_ranks()
-
-                table.itemChanged.emit(table.item(0, 0))
 
                 wl_msgs.wl_msg_generate_table_success(main)
             else:
@@ -807,7 +822,7 @@ def generate_fig(main):
                 (text_test_stat,
                  text_p_value,
                  text_bayes_factor) = main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
-                text_effect_size =  main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
+                text_effect_size = main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
 
                 if settings['fig_settings']['use_data'] == main.tr('Frequency'):
                     wl_figs_freqs.wl_fig_freq_keyword(

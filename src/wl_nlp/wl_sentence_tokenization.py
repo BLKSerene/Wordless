@@ -54,7 +54,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         lang = lang,
         sentence_tokenizer = sentence_tokenizer
     )
-    
+
     # NLTK
     if sentence_tokenizer == 'nltk_punkt':
         lang_texts = {
@@ -95,7 +95,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         # Chinese, English, German, Portuguese
         if not lang.startswith('srp_'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-        
+
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
 
@@ -135,7 +135,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     # Tibetan
     elif sentence_tokenizer == 'botok_bod':
         wl_nlp_utils.init_word_tokenizers(main, lang = 'bod')
-        
+
         tokens = main.botok_word_tokenizer.tokenize(text)
 
         for sentence_tokens in botok.sentence_tokenizer(tokens):

@@ -210,7 +210,7 @@ def init_spacy_models(main, lang):
         'ron': 'ro_core_news_sm',
         'rus': 'ru_core_news_sm',
         'spa': 'es_core_news_sm',
-        
+
         'other': 'en_core_web_sm'
     }
     SPACY_LANGS_LEMMATIZERS = ['ben', 'cat', 'hrv', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp_cyrl', 'swe', 'tgl', 'tur', 'urd']
@@ -247,7 +247,7 @@ def init_spacy_models(main, lang):
 
         # Increase 'nlp.max_length' to avoid out of memory error (Default: 1,000,000)
         main.__dict__[f'spacy_nlp_{lang}'].max_length = 1000 ** 3
-    
+
 def init_sentence_tokenizers(main, lang, sentence_tokenizer):
     # spaCy
     if sentence_tokenizer.startswith('spacy_'):
@@ -259,7 +259,7 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
 
     if word_tokenizer == 'default':
         word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
-    
+
     # NLTK
     if word_tokenizer.startswith('nltk_'):
         if word_tokenizer == 'nltk_nist':
@@ -314,7 +314,7 @@ def init_syl_tokenizers(main, lang, syl_tokenizer):
                 lang_pyphen = f"{lang_pyphen.split('_')[0]}_{lang_pyphen.split('_')[1].upper()}"
             else:
                 lang_pyphen = wl_conversion.to_iso_639_1(main, lang)
-            
+
             main.__dict__[f'pyphen_syl_tokenizer_{lang}'] = pyphen.Pyphen(lang = lang_pyphen)
 
 def init_word_detokenizers(main, lang):
@@ -369,7 +369,7 @@ def record_boundary_sentences(sentences, text):
     for i, sentence in enumerate(sentences):
         boundary = re.search(r'^\s+', text[sentence_start + len(sentence):])
 
-        if boundary == None:
+        if boundary is None:
             boundary = ''
         else:
             boundary = boundary.group()
@@ -402,7 +402,7 @@ def to_sections(tokens, num_sections):
 
 def to_sections_unequal(tokens, section_size):
     tokens = list(tokens)
-    
+
     for i in range(0, len(tokens), section_size):
         yield tokens[i : i + section_size]
 
@@ -418,7 +418,7 @@ def to_srp_latn(tokens):
                 token_latn += char
             else:
                 token_latn += SRP_CYRL_TO_LATN[char]
-                
+
         tokens_latn.append(token_latn)
 
     return tokens_latn
@@ -443,13 +443,11 @@ def to_srp_cyrl(tokens):
     return tokens_cyrl
 
 # HTML
-def text_escape(text):
-    if type(text) == str:
-        return html.escape(text).strip()
-    elif type(text) in [list, tuple, dict]:
-        return [html.escape(token).strip() for token in text]
+def text_escape(inputs):
+    if type(inputs) == str:
+        return html.escape(inputs).strip()
     else:
-        raise Exception('The input must be a string or a list of tokens!')
+        return [html.escape(token).strip() for token in inputs]
 
 def html_to_text(text):
     # Remove tags and unescape character entities

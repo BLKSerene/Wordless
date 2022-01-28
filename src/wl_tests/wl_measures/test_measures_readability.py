@@ -52,7 +52,7 @@ def test_automated_readability_index():
     ari_spa_12 = wl_measures_readability.automated_readability_index(main, test_text_spa_12)
     ari_other_12 = wl_measures_readability.automated_readability_index(main, test_text_other_12)
 
-    print(f'Automated Readability Index:')
+    print('Automated Readability Index:')
     print(f'\t{ari_eng_12} (eng/12)')
     print(f'\t{ari_spa_12} (spa/12)')
     print(f'\t{ari_other_12} (other/12)')
@@ -64,7 +64,7 @@ def test_coleman_liau_index():
     grade_level_spa_12 = wl_measures_readability.coleman_liau_index(main, test_text_spa_12)
     grade_level_other_12 = wl_measures_readability.coleman_liau_index(main, test_text_other_12)
 
-    print(f'Coleman-Liau Index:')
+    print('Coleman-Liau Index:')
     print(f'\t{grade_level_eng_12} (eng/12)')
     print(f'\t{grade_level_spa_12} (spa/12)')
     print(f'\t{grade_level_other_12} (other/12)')
@@ -78,7 +78,7 @@ def test_dale_chall_readability_score():
     x_c50_spa_12 = wl_measures_readability.dale_chall_readability_score(main, test_text_spa_12)
     x_c50_other_12 = wl_measures_readability.dale_chall_readability_score(main, test_text_other_12)
 
-    print(f'Dale-Chall Readibility Score:')
+    print('Dale-Chall Readibility Score:')
     print(f'\t{x_c50_eng_12} (eng/12)')
     print(f'\t{x_c50_spa_12} (spa/12)')
     print(f'\t{x_c50_other_12} (other/12)')
@@ -91,7 +91,7 @@ def test_devereux_readability_index():
     grade_placement_spa_12 = wl_measures_readability.devereux_readability_index(main, test_text_spa_12)
     grade_placement_other_12 = wl_measures_readability.devereux_readability_index(main, test_text_other_12)
 
-    print(f'Devereux Readability Index:')
+    print('Devereux Readability Index:')
     print(f'\t{grade_placement_eng_12} (eng/12)')
     print(f'\t{grade_placement_spa_12} (spa/12)')
     print(f'\t{grade_placement_other_12} (other/12)')
@@ -103,7 +103,7 @@ def test_flesch_reading_ease():
     flesch_re_spa_12 = wl_measures_readability.flesch_reading_ease(main, test_text_spa_12)
     flesch_re_other_12 = wl_measures_readability.flesch_reading_ease(main, test_text_other_12)
 
-    print(f'Flesch Reading Ease:')
+    print('Flesch Reading Ease:')
     print(f'\t{flesch_re_eng_12} (eng/12)')
     print(f'\t{flesch_re_spa_12} (spa/12)')
     print(f'\t{flesch_re_other_12} (other/12)')
@@ -117,7 +117,7 @@ def test_flesch_reading_ease_simplified():
     flesch_re_simplified_spa_12 = wl_measures_readability.flesch_reading_ease_simplified(main, test_text_spa_12)
     flesch_re_simplified_other_12 = wl_measures_readability.flesch_reading_ease_simplified(main, test_text_other_12)
 
-    print(f'Flesch Reading Ease (Simplified):')
+    print('Flesch Reading Ease (Simplified):')
     print(f'\t{flesch_re_simplified_eng_12} (eng/12)')
     print(f'\t{flesch_re_simplified_spa_12} (spa/12)')
     print(f'\t{flesch_re_simplified_other_12} (other/12)')
@@ -131,7 +131,7 @@ def test_flesch_kincaid_grade_level():
     gl_spa_12 = wl_measures_readability.flesch_kincaid_grade_level(main, test_text_spa_12)
     gl_other_12 = wl_measures_readability.flesch_kincaid_grade_level(main, test_text_other_12)
 
-    print(f'Flesch-Kincaid Grade Level:')
+    print('Flesch-Kincaid Grade Level:')
     print(f'\t{gl_eng_12} (eng/12)')
     print(f'\t{gl_spa_12} (spa/12)')
     print(f'\t{gl_other_12} (other/12)')
@@ -146,7 +146,7 @@ def test_forcast_grade_level():
     rgl_spa_150 = wl_measures_readability.forcast_grade_level(main, test_text_spa_150)
     rgl_other_12 = wl_measures_readability.forcast_grade_level(main, test_text_other_12)
 
-    print(f'FORCAST Grade Level:')
+    print('FORCAST Grade Level:')
     print(f'\t{rgl_eng_12} (eng/12)')
     print(f'\t{rgl_eng_150} (eng/150)')
     print(f'\t{rgl_spa_150} (spa/150)')
@@ -162,7 +162,7 @@ def test_gunning_fog_index():
     fog_index_spa_12 = wl_measures_readability.gunning_fog_index(main, test_text_spa_12)
     fog_index_other_12 = wl_measures_readability.gunning_fog_index(main, test_text_other_12)
 
-    print(f'Gunning Fog Index:')
+    print('Gunning Fog Index:')
     print(f'\t{fog_index_eng_12_propn} (eng/12)')
     print(f'\t{fog_index_spa_12} (spa/12)')
     print(f'\t{fog_index_other_12} (other/12)')
@@ -176,7 +176,7 @@ def test_smog_grade():
     g_spa_120 = wl_measures_readability.smog_grade(main, test_text_spa_120)
     g_other_12 = wl_measures_readability.smog_grade(main, test_text_other_12)
 
-    print(f'SMOG Grade:')
+    print('SMOG Grade:')
     print(f'\t{g_eng_12} (eng/12)')
     print(f'\t{g_eng_120} (eng/120)')
     print(f'\t{g_spa_120} (spa/120)')
@@ -193,7 +193,7 @@ def test_spache_grade_level():
     grade_level_spa_12 = wl_measures_readability.spache_grade_level(main, test_text_spa_12)
     grade_level_other_12 = wl_measures_readability.spache_grade_level(main, test_text_other_12)
 
-    print(f'Spache Grade Level:')
+    print('Spache Grade Level:')
     print(f'\t{grade_level_eng_12} (eng/12)')
     print(f'\t{grade_level_eng_100} (eng/100)')
     print(f'\t{grade_level_spa_12} (spa/12)')
@@ -209,7 +209,7 @@ def test_write_score():
     score_spa_12 = wl_measures_readability.write_score(main, test_text_spa_12)
     score_other_12 = wl_measures_readability.write_score(main, test_text_other_12)
 
-    print(f'Write Score:')
+    print('Write Score:')
     print(f'\t{score_eng_12} (eng/12)')
     print(f'\t{score_eng_100} (eng/100)')
     print(f'\t{score_spa_12} (spa/12)')

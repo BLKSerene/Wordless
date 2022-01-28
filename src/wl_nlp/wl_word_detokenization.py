@@ -50,8 +50,8 @@ def wl_word_detokenize(main, tokens, lang):
         for i, token in enumerate(tokens):
             if i >= non_cjk_start:
                 if (
-                    wl_checking_unicode.has_han(token) or
-                    all(map(str.isnumeric, token))
+                    wl_checking_unicode.has_han(token)
+                    or all(map(str.isnumeric, token))
                 ):
                     text += token
 
@@ -60,8 +60,8 @@ def wl_word_detokenize(main, tokens, lang):
                     # Non-Chinese
                     for j, token in enumerate(tokens[i:]):
                         if (
-                            i + j + 1 == len(tokens) or
-                            wl_checking_unicode.has_han(tokens[i + j + 1])
+                            i + j + 1 == len(tokens)
+                            or wl_checking_unicode.has_han(tokens[i + j + 1])
                         ):
                             text += wl_word_detokenize(
                                 main, tokens[non_cjk_start : i + j + 1],
@@ -80,9 +80,9 @@ def wl_word_detokenize(main, tokens, lang):
                 continue
 
             if (
-                wl_checking_unicode.has_han(token) or
-                wl_checking_unicode.has_kana(token) or
-                all(map(str.isnumeric, token))
+                wl_checking_unicode.has_han(token)
+                or wl_checking_unicode.has_kana(token)
+                or all(map(str.isnumeric, token))
             ):
                 text += token
 
@@ -91,9 +91,9 @@ def wl_word_detokenize(main, tokens, lang):
                 # Non-Japanese
                 for j, token in enumerate(tokens[i:]):
                     if (
-                        i + j + 1 == len(tokens) or
-                        wl_checking_unicode.has_han(tokens[i + j + 1]) or
-                        wl_checking_unicode.has_kana(tokens[i + j + 1])
+                        i + j + 1 == len(tokens)
+                        or wl_checking_unicode.has_han(tokens[i + j + 1])
+                        or wl_checking_unicode.has_kana(tokens[i + j + 1])
                     ):
                         text += wl_word_detokenize(
                             main, tokens[non_cjk_start : i + j + 1],
@@ -122,8 +122,8 @@ def wl_word_detokenize(main, tokens, lang):
                 # Non-Thai
                 for j, token in enumerate(tokens[i:]):
                     if (
-                        i + j + 1 == len(tokens) or
-                        wl_checking_unicode.has_thai(tokens[i + j + 1])
+                        i + j + 1 == len(tokens)
+                        or wl_checking_unicode.has_thai(tokens[i + j + 1])
                     ):
                         text += wl_word_detokenize(
                             main, tokens[non_thai_start : i + j + 1],
@@ -154,8 +154,8 @@ def wl_word_detokenize(main, tokens, lang):
                 # Non-Tibetan
                 for j, token in enumerate(tokens[i:]):
                     if (
-                        i + j + 1 == len(tokens) or
-                        wl_checking_unicode.has_tibetan(tokens[i + j + 1])
+                        i + j + 1 == len(tokens)
+                        or wl_checking_unicode.has_tibetan(tokens[i + j + 1])
                     ):
                         text += wl_word_detokenize(
                             main, tokens[non_tibetan_start : i + j + 1],
@@ -167,7 +167,7 @@ def wl_word_detokenize(main, tokens, lang):
                         break
     else:
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-        
+
         for sentence in sentences:
             text += main.__dict__[f'sacremoses_moses_detokenizer_{lang}'].detokenize(sentence)
 

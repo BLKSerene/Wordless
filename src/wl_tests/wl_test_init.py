@@ -40,7 +40,7 @@ if platform.system() in ['Windows', 'Darwin']:
 
             # Default settings
             wl_settings_default.init_settings_default(self)
-            
+
             # Custom settings
             if os.path.exists('wl_tests/wl_settings.pickle'):
                 with open('wl_tests/wl_settings.pickle', 'rb') as f:

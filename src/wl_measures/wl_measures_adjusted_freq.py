@@ -18,7 +18,6 @@
 
 import math
 
-import numpy
 import scipy.special
 
 from wl_measures import wl_measures_dispersion

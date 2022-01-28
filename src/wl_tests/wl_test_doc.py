@@ -45,8 +45,6 @@ def wl_test_readme_acks(main):
             print(f"{i + 1 : <6}|[{name}]({home_page})|{authors}")
 
 def wl_test_supported_langs(main):
-    settings = main.settings_global
-
     langs_supported = [
         (lang_name, lang_code_639_3)
         for lang_name, (lang_code_639_3, _, _) in main.settings_global['langs'].items()
@@ -63,12 +61,12 @@ def wl_test_supported_langs(main):
 
     for lang_name, lang_code_639_3 in langs_supported:
         if (
-            lang_code_639_3 in langs_sentence_tokenizers or
-            lang_code_639_3 in langs_word_tokenizers or
-            lang_code_639_3 in langs_syl_tokenizers or
-            lang_code_639_3 in langs_pos_tagging or
-            lang_code_639_3 in langs_lemmatizers or
-            lang_code_639_3 in langs_stop_word_lists
+            lang_code_639_3 in langs_sentence_tokenizers
+            or lang_code_639_3 in langs_word_tokenizers
+            or lang_code_639_3 in langs_syl_tokenizers
+            or lang_code_639_3 in langs_pos_tagging
+            or lang_code_639_3 in langs_lemmatizers
+            or lang_code_639_3 in langs_stop_word_lists
         ):
             doc_supported_lang = f'{lang_name:{len_max_langs}s}'
 

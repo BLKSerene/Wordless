@@ -30,8 +30,6 @@ import wl_file_area
 new_files_temp = []
 
 def wl_test_file_area(main):
-    new_files = []
-
     # Clean cached files
     for file in glob.glob('Import/*.*'):
         os.remove(file)

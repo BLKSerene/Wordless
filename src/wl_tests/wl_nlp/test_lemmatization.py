@@ -63,7 +63,7 @@ def test_lemmatize(lang, lemmatizer):
     # Check for missing lemmas
     assert all(lemmas)
     assert all(lemmas_tokenized)
-    
+
     # Tokenization should not be modified
     assert len(tokens) == len(lemmas_tokenized)
 

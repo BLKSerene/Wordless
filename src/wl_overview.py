@@ -19,15 +19,12 @@
 import collections
 import copy
 import itertools
-import re
-import time
 import traceback
 
+import numpy
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-
-import numpy
 
 from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
@@ -292,16 +289,16 @@ class Wl_Table_Overview(wl_tables.Wl_Table_Data):
                 parent.tr('Count of Characters %')
             ]
         )
-        
+
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
 
-    def clear_table(self, count_headers = 1, confirm = False):
-        confirmed = super().clear_table(count_headers = 0, confirm = confirm)
+    def clr_table(self, count_headers = 1, confirm = False):
+        confirmed = super().clr_table(count_headers = 0, confirm = confirm)
 
         if confirmed:
-            self.insert_col(0, self.tr('Total'))
+            self.ins_col(0, self.tr('Total'))
 
 class Wrapper_Overview(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -312,10 +309,10 @@ class Wrapper_Overview(wl_layouts.Wl_Wrapper):
 
         self.wrapper_table.layout().addWidget(self.table_overview, 0, 0, 1, 4)
         self.wrapper_table.layout().addWidget(self.table_overview.button_generate_table, 1, 0)
-        self.wrapper_table.layout().addWidget(self.table_overview.button_export_selected, 1, 1)
-        self.wrapper_table.layout().addWidget(self.table_overview.button_export_all, 1, 2)
-        self.wrapper_table.layout().addWidget(self.table_overview.button_clear, 1, 3)
-        
+        self.wrapper_table.layout().addWidget(self.table_overview.button_exp_selected, 1, 1)
+        self.wrapper_table.layout().addWidget(self.table_overview.button_exp_all, 1, 2)
+        self.wrapper_table.layout().addWidget(self.table_overview.button_clr, 1, 3)
+
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
 
@@ -383,9 +380,11 @@ class Wrapper_Overview(wl_layouts.Wl_Wrapper):
         # Table Settings
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
 
-        (self.checkbox_show_pct,
-         self.checkbox_show_cumulative,
-         self.checkbox_show_breakdown) = wl_widgets.wl_widgets_table_settings(
+        (
+            self.checkbox_show_pct,
+            self.checkbox_show_cumulative,
+            self.checkbox_show_breakdown
+        ) = wl_widgets.wl_widgets_table_settings(
             self,
             tables = [self.table_overview]
         )
@@ -489,7 +488,7 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
 
             settings = self.main.settings_custom['overview']
             files = self.main.wl_files.get_selected_files()
-            
+
             for i, file in enumerate(files):
                 text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens_overview(
@@ -538,7 +537,7 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
                 texts.append(text_total)
 
             base_sttr = settings['generation_settings']['base_sttr']
-            
+
             for text in texts:
                 texts_stats_file = []
 
@@ -634,9 +633,6 @@ class Wl_Worker_Overview_Table(Wl_Worker_Overview):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-
-        time.sleep(0.1)
-
         self.worker_done.emit(self.err_msg, self.texts_stats_files)
 
 @wl_misc.log_timing
@@ -646,20 +642,19 @@ def generate_table(main, table):
             if any(itertools.chain.from_iterable(texts_stats_files)):
                 table.settings = copy.deepcopy(main.settings_custom)
 
-                table.blockSignals(True)
-                table.setUpdatesEnabled(False)
-
-                table.clear_table()
+                table.clr_table()
 
                 count_tokens_lens = []
                 count_sentences_lens = []
 
                 # Insert column (total)
                 for i, file in enumerate(files):
-                    table.insert_col(
+                    table.ins_col(
                         table.find_col(main.tr('Total')), file['name'],
                         is_breakdown = True
                     )
+
+                table.disable_updates()
 
                 count_paras_total = len(texts_stats_files[-1][1])
                 count_sentences_total = len(texts_stats_files[-1][3])
@@ -759,7 +754,7 @@ def generate_table(main, table):
                     table.set_item_num(32, i, numpy.percentile(len_paras_sentences, 75))
                     table.set_item_num(33, i, numpy.max(len_paras_sentences))
                     table.set_item_num(34, i, numpy.ptp(len_paras_sentences))
-                    table.setItem(35, i, QTableWidgetItem(', '.join([
+                    table.model().setItem(35, i, QStandardItem(', '.join([
                         str(mode) for mode in wl_measures_misc.modes(len_paras_sentences)
                     ])))
                     table.set_item_num(36, i, numpy.mean(len_paras_tokens))
@@ -771,12 +766,12 @@ def generate_table(main, table):
                     table.set_item_num(42, i, numpy.percentile(len_paras_tokens, 75))
                     table.set_item_num(43, i, numpy.max(len_paras_tokens))
                     table.set_item_num(44, i, numpy.ptp(len_paras_tokens))
-                    table.setItem(45, i, QTableWidgetItem(', '.join([
+                    table.model().setItem(45, i, QStandardItem(', '.join([
                         str(mode) for mode in wl_measures_misc.modes(len_paras_tokens)
                     ])))
 
-                    table.item(35, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-                    table.item(45, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    table.model().item(35, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    table.model().item(45, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                     # Sentence Length
                     table.set_item_num(46, i, numpy.mean(len_sentences))
@@ -788,11 +783,11 @@ def generate_table(main, table):
                     table.set_item_num(52, i, numpy.percentile(len_sentences, 75))
                     table.set_item_num(53, i, numpy.max(len_sentences))
                     table.set_item_num(54, i, numpy.ptp(len_sentences))
-                    table.setItem(55, i, QTableWidgetItem(', '.join([
+                    table.model().setItem(55, i, QStandardItem(', '.join([
                         str(mode) for mode in wl_measures_misc.modes(len_sentences)
                     ])))
 
-                    table.item(55, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    table.model().item(55, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                     # Token Length
                     if file_lang in main.settings_global['syl_tokenizers']:
@@ -805,11 +800,11 @@ def generate_table(main, table):
                         table.set_item_num(62, i, numpy.percentile(len_tokens_syls, 75))
                         table.set_item_num(63, i, numpy.max(len_tokens_syls))
                         table.set_item_num(64, i, numpy.ptp(len_tokens_syls))
-                        table.setItem(65, i, QTableWidgetItem(', '.join([
+                        table.model().setItem(65, i, QStandardItem(', '.join([
                             str(mode) for mode in wl_measures_misc.modes(len_tokens_syls)
                         ])))
 
-                        table.item(65, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.model().item(65, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                     else:
                         table.set_item_error(56, i, text = main.tr('No Support'))
                         table.set_item_error(57, i, text = main.tr('No Support'))
@@ -831,11 +826,11 @@ def generate_table(main, table):
                     table.set_item_num(72, i, numpy.percentile(len_tokens_chars, 75))
                     table.set_item_num(73, i, numpy.max(len_tokens_chars))
                     table.set_item_num(74, i, numpy.ptp(len_tokens_chars))
-                    table.setItem(75, i, QTableWidgetItem(', '.join([
+                    table.model().setItem(75, i, QStandardItem(', '.join([
                         str(mode) for mode in wl_measures_misc.modes(len_tokens_chars)
                     ])))
 
-                    table.item(75, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    table.model().item(75, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                     # Type Length
                     if file_lang in main.settings_global['syl_tokenizers']:
@@ -848,11 +843,11 @@ def generate_table(main, table):
                         table.set_item_num(82, i, numpy.percentile(len_types_syls, 75))
                         table.set_item_num(83, i, numpy.max(len_types_syls))
                         table.set_item_num(84, i, numpy.ptp(len_types_syls))
-                        table.setItem(85, i, QTableWidgetItem(', '.join([
+                        table.model().setItem(85, i, QStandardItem(', '.join([
                             str(mode) for mode in wl_measures_misc.modes(len_types_syls)
                         ])))
 
-                        table.item(85, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.model().item(85, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                     else:
                         table.set_item_error(76, i, text = main.tr('No Support'))
                         table.set_item_error(77, i, text = main.tr('No Support'))
@@ -874,11 +869,11 @@ def generate_table(main, table):
                     table.set_item_num(92, i, numpy.percentile(len_types_chars, 75))
                     table.set_item_num(93, i, numpy.max(len_types_chars))
                     table.set_item_num(94, i, numpy.ptp(len_types_chars))
-                    table.setItem(95, i, QTableWidgetItem(', '.join([
+                    table.model().setItem(95, i, QStandardItem(', '.join([
                         str(mode) for mode in wl_measures_misc.modes(len_types_chars)
                     ])))
 
-                    table.item(95, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    table.model().item(95, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                     # Syllable Length
                     if file_lang in main.settings_global['syl_tokenizers']:
@@ -891,11 +886,11 @@ def generate_table(main, table):
                         table.set_item_num(102, i, numpy.percentile(len_syls, 75))
                         table.set_item_num(103, i, numpy.max(len_syls))
                         table.set_item_num(104, i, numpy.ptp(len_syls))
-                        table.setItem(105, i, QTableWidgetItem(', '.join([
+                        table.model().setItem(105, i, QStandardItem(', '.join([
                             str(mode) for mode in wl_measures_misc.modes(len_syls)
                         ])))
 
-                        table.item(105, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.model().item(105, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                     else:
                         table.set_item_error(96, i, text = main.tr('No Support'))
                         table.set_item_error(97, i, text = main.tr('No Support'))
@@ -923,24 +918,28 @@ def generate_table(main, table):
                     header_labels = []
 
                     for count_sentences_len in count_sentences_lens:
-                        header_labels.append([main.tr(f'Count of {count_sentences_len}-length Sentences'),
-                                              True, False, False, True])
-                        header_labels.append([main.tr(f'Count of {count_sentences_len}-length Sentences %'),
-                                              False, False, True, True])
+                        header_labels.append([
+                            main.tr(f'Count of {count_sentences_len}-length Sentences'),
+                            True, False, False, True
+                        ])
+                        header_labels.append([
+                            main.tr(f'Count of {count_sentences_len}-length Sentences %'),
+                            False, False, True, True
+                        ])
 
-                    table.append_rows(header_labels)
-                    
+                    table.add_rows(header_labels)
+
                     for i, count_sentences_len in enumerate(reversed(count_sentences_lens)):
                         counts = count_sentences_lens_files[count_sentences_len]
 
                         for j, count in enumerate(counts):
                             table.set_item_num(
-                                row = table.rowCount() - 2 - i * 2,
+                                row = table.model().rowCount() - 2 - i * 2,
                                 col = j,
                                 val = count
                             )
                             table.set_item_num(
-                                row = table.rowCount() - 1 - i * 2,
+                                row = table.model().rowCount() - 1 - i * 2,
                                 col = j,
                                 val = count,
                                 total = count_sentences_lens_total[count_sentences_len]
@@ -956,39 +955,40 @@ def generate_table(main, table):
                     count_tokens_lens = sorted(count_tokens_lens_files.keys())
 
                     header_labels = []
-                    
-                    for count_tokens_len in count_tokens_lens:
-                        header_labels.append([main.tr(f'Count of {count_tokens_len}-Length Tokens'),
-                                              True, False, False, True])
-                        header_labels.append([main.tr(f'Count of {count_tokens_len}-Length Tokens %'),
-                                              False, False, True, True])
 
-                    table.append_rows(header_labels)
+                    for count_tokens_len in count_tokens_lens:
+                        header_labels.append([
+                            main.tr(f'Count of {count_tokens_len}-Length Tokens'),
+                            True, False, False, True
+                        ])
+                        header_labels.append([
+                            main.tr(f'Count of {count_tokens_len}-Length Tokens %'),
+                            False, False, True, True
+                        ])
+
+                    table.add_rows(header_labels)
 
                     for i, count_tokens_len in enumerate(reversed(count_tokens_lens)):
                         counts = count_tokens_lens_files[count_tokens_len]
 
                         for j, count in enumerate(counts):
                             table.set_item_num(
-                                row = table.rowCount() - 2 - i * 2,
+                                row = table.model().rowCount() - 2 - i * 2,
                                 col = j,
                                 val = count
                             )
                             table.set_item_num(
-                                row = table.rowCount() - 1 - i * 2,
+                                row = table.model().rowCount() - 1 - i * 2,
                                 col = j,
                                 val = count,
                                 total = count_tokens_lens_total[count_tokens_len]
                             )
-                    
-                table.setUpdatesEnabled(True)
-                table.blockSignals(False)
-                
+
+                table.enable_updates()
+
                 table.toggle_pct()
                 table.toggle_cumulative()
                 table.toggle_breakdown()
-                
-                table.itemChanged.emit(table.item(0, 0))
 
                 wl_msgs.wl_msg_generate_table_success(main)
             else:
@@ -1000,7 +1000,6 @@ def generate_table(main, table):
 
             wl_msgs.wl_msg_fatal_error(main)
 
-    settings = main.settings_custom['overview']
     files = main.wl_files.get_selected_files()
 
     if wl_checking_files.check_files_on_loading(main, files):

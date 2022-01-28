@@ -120,7 +120,8 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
 
         self.exclusion_group_box.setCheckable(True)
 
-        (   self.exclusion_label_search_term,
+        (
+            self.exclusion_label_search_term,
             self.exclusion_checkbox_multi_search_mode,
 
             self.exclusion_stacked_widget_search_term,
@@ -281,7 +282,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         else:
             self.exclusion_spin_box_context_window_left.setPrefix('R')
             self.exclusion_spin_box_context_window_left.setValue(settings['exclusion']['context_window_left'])
-            
+
         if settings['exclusion']['context_window_right'] < 0:
             self.exclusion_spin_box_context_window_right.setPrefix('L')
             self.exclusion_spin_box_context_window_right.setValue(-settings['exclusion']['context_window_right'])
@@ -309,14 +310,14 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
 
         self.settings['inclusion']['ignore_tags'] = self.inclusion_checkbox_ignore_tags.isChecked()
         self.settings['inclusion']['match_tags'] = self.inclusion_checkbox_match_tags.isChecked()
-        
+
         self.settings['inclusion']['context_window_sync'] = self.inclusion_checkbox_context_window_sync.isChecked()
 
         if self.inclusion_spin_box_context_window_left.prefix() == 'L':
             self.settings['inclusion']['context_window_left'] = -self.inclusion_spin_box_context_window_left.value()
         else:
             self.settings['inclusion']['context_window_left'] = self.inclusion_spin_box_context_window_left.value()
-            
+
         if self.inclusion_spin_box_context_window_right.prefix() == 'L':
             self.settings['inclusion']['context_window_right'] = -self.inclusion_spin_box_context_window_right.value()
         else:
@@ -336,14 +337,14 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
 
         self.settings['exclusion']['ignore_tags'] = self.exclusion_checkbox_ignore_tags.isChecked()
         self.settings['exclusion']['match_tags'] = self.exclusion_checkbox_match_tags.isChecked()
-        
+
         self.settings['exclusion']['context_window_sync'] = self.exclusion_checkbox_context_window_sync.isChecked()
-        
+
         if self.exclusion_spin_box_context_window_left.prefix() == 'L':
             self.settings['exclusion']['context_window_left'] = -self.exclusion_spin_box_context_window_left.value()
         else:
             self.settings['exclusion']['context_window_left'] = self.exclusion_spin_box_context_window_left.value()
-            
+
         if self.exclusion_spin_box_context_window_right.prefix() == 'L':
             self.settings['exclusion']['context_window_right'] = -self.exclusion_spin_box_context_window_right.value()
         else:
@@ -388,7 +389,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
             self.inclusion_group_box.adjustSize()
             self.exclusion_group_box.adjustSize()
             self.adjustSize()
-            
+
             self.size_normal = self.size()
 
             self.inclusion_checkbox_multi_search_mode.setChecked(True)
@@ -526,7 +527,7 @@ def wl_widgets_search_settings(parent, tab):
         if checkbox_multi_search_mode.isChecked():
             label_search_term.setText(parent.tr('Search Terms:'))
 
-            if line_edit_search_term.text() and list_search_terms.count() == 0:
+            if line_edit_search_term.text() and list_search_terms.model().rowCount() == 0:
                 list_search_terms.load_items([line_edit_search_term.text()])
 
             stacked_widget_search_term.setCurrentIndex(1)
@@ -694,11 +695,11 @@ def wl_widgets_window(parent):
             spin_box_window_right.setPrefix(spin_box_window_left.prefix())
             spin_box_window_right.setValue(spin_box_window_left.value())
         else:
-            if (spin_box_window_left.prefix() == 'L' and spin_box_window_right.prefix() == 'L' and
-                spin_box_window_left.value() < spin_box_window_right.value() or
-                spin_box_window_left.prefix() == 'R' and spin_box_window_right.prefix() == 'R' and
-                spin_box_window_left.value() > spin_box_window_right.value() or
-                spin_box_window_left.prefix() == 'R' and spin_box_window_right.prefix() == 'L'):
+            if (
+                spin_box_window_left.prefix() == 'L' and spin_box_window_right.prefix() == 'L' and spin_box_window_left.value() < spin_box_window_right.value()
+                or spin_box_window_left.prefix() == 'R' and spin_box_window_right.prefix() == 'R' and spin_box_window_left.value() > spin_box_window_right.value()
+                or spin_box_window_left.prefix() == 'R' and spin_box_window_right.prefix() == 'L'
+            ):
                 spin_box_window_right.setPrefix(spin_box_window_left.prefix())
                 spin_box_window_right.setValue(spin_box_window_left.value())
 
@@ -707,11 +708,11 @@ def wl_widgets_window(parent):
             spin_box_window_left.setPrefix(spin_box_window_right.prefix())
             spin_box_window_left.setValue(spin_box_window_right.value())
         else:
-            if (spin_box_window_left.prefix() == 'L' and spin_box_window_right.prefix() == 'L' and
-                spin_box_window_left.value() < spin_box_window_right.value() or
-                spin_box_window_left.prefix() == 'R' and spin_box_window_right.prefix() == 'R' and
-                spin_box_window_left.value() > spin_box_window_right.value() or
-                spin_box_window_left.prefix() == 'R' and spin_box_window_right.prefix() == 'L'):
+            if (
+                spin_box_window_left.prefix() == 'L' and spin_box_window_right.prefix() == 'L' and spin_box_window_left.value() < spin_box_window_right.value()
+                or spin_box_window_left.prefix() == 'R' and spin_box_window_right.prefix() == 'R' and spin_box_window_left.value() > spin_box_window_right.value()
+                or spin_box_window_left.prefix() == 'R' and spin_box_window_right.prefix() == 'L'
+            ):
                 spin_box_window_left.setPrefix(spin_box_window_right.prefix())
                 spin_box_window_left.setValue(spin_box_window_right.value())
 
@@ -786,14 +787,14 @@ def wl_widgets_table_settings(parent, tables):
         for table in tables:
             table.show_pct = checkbox_show_pct.isChecked()
 
-            if any([table.item(0, i) for i in range(table.columnCount())]):
+            if any([table.model().item(0, i) for i in range(table.model().columnCount())]):
                 table.toggle_pct()
 
     def show_cumulative_changed():
         for table in tables:
             table.show_cumulative = checkbox_show_cumulative.isChecked()
 
-            if any([table.item(0, i) for i in range(table.columnCount())]):
+            if any([table.model().item(0, i) for i in range(table.model().columnCount())]):
                 table.toggle_cumulative()
 
     def show_breakdown_changed():
@@ -853,8 +854,6 @@ def wl_widgets_fig_settings(parent, collocation = False):
             else:
                 checkbox_use_pct.setEnabled(False)
                 checkbox_use_cumulative.setEnabled(False)
-
-    main = wl_misc.find_wl_main(parent)
 
     label_graph_type = QLabel(parent.tr('Graph Type:'), parent)
     combo_box_graph_type = wl_boxes.Wl_Combo_Box(parent)
@@ -953,7 +952,7 @@ def wl_widgets_filter_measures(parent, filter_min = -10000, filter_max = 10000):
 
     min_changed()
     max_changed()
-    
+
     precision_changed()
 
     return (

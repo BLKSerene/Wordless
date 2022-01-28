@@ -58,7 +58,7 @@ def is_han(char):
         # CJK Unified Ideographs:
         #     https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_(Unicode_block)
         (0x4E00, 0x9FFF),
-        
+
         # Yi Syllables:
         #     https://en.wikipedia.org/wiki/Yi_Syllables
         (0xA000, 0xA48F),
@@ -141,7 +141,7 @@ def is_kana(char):
         # Halfwidth and Fullwidth Forms:
         #     https://en.wikipedia.org/wiki/Halfwidth_and_fullwidth_forms#In_Unicode
         (0xFF65, 0xFF9F),
-        
+
         # Kana Supplement:
         #     https://en.wikipedia.org/wiki/Kana_Supplement
         (0x1B000, 0x1B0FF),

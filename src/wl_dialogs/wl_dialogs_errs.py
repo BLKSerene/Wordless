@@ -60,7 +60,7 @@ class Wl_Dialog_Err_Files(wl_dialogs.Wl_Dialog_Err):
         super().__init__(main, title, width = 560, height = 320, no_buttons = True)
 
         self.label_err = wl_labels.Wl_Label_Dialog('', self)
-        self.table_err_files = wl_tables.Wl_Table_Error(
+        self.table_err_files = wl_tables.Wl_Table(
             self,
             headers = [
                 self.tr('Error Type'),
@@ -68,13 +68,15 @@ class Wl_Dialog_Err_Files(wl_dialogs.Wl_Dialog_Err):
             ]
         )
 
+        self.table_err_files.tab = 'err'
+
         self.table_err_files.setFixedHeight(220)
-        self.table_err_files.setRowCount(0)
+        self.table_err_files.model().setRowCount(0)
 
         self.button_export = QPushButton(self.tr('Export'), self)
         self.button_ok = QPushButton(self.tr('OK'), self)
 
-        self.button_export.clicked.connect(self.table_err_files.export_all)
+        self.button_export.clicked.connect(self.table_err_files.exp_all)
         self.button_ok.clicked.connect(self.accept)
 
         self.wrapper_info.layout().addWidget(self.label_err, 0, 0)

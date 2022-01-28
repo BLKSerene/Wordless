@@ -24,8 +24,7 @@ import charset_normalizer
 import langdetect
 import langid
 
-from wl_nlp import wl_matching
-from wl_utils import wl_conversion, wl_misc
+from wl_utils import wl_conversion
 
 # Force consistent results for language detection
 langdetect.DetectorFactory.seed = 0
@@ -56,7 +55,7 @@ def detect_encoding(main, file_path):
             with open(file_path, 'r', encoding = encoding) as f:
                 text = f.read()
         # Fall back to UTF-8 if fail
-        except:
+        except UnicodeDecodeError:
             encoding = 'utf_8'
 
     return encoding
@@ -104,7 +103,7 @@ def detect_lang(main, file):
             lang_code_639_1 = 'sr_cyrl'
 
         lang = wl_conversion.to_iso_639_3(main, lang_code_639_1)
-    except:
+    except UnicodeDecodeError:
         lang = main.settings_custom['files']['default_settings']['lang']
 
     return lang

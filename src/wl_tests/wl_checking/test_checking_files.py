@@ -16,8 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import os
-
 from wl_checking import wl_checking_files
 from wl_utils import wl_misc
 from wl_tests import wl_test_init
@@ -55,7 +53,7 @@ def test_check_file_paths_empty():
 
 def test_check_file_paths_duplicate():
     _, files_duplicate = wl_checking_files.check_file_paths_duplicate(main, FILE_PATHS_DUPLICATE)
-    
+
     assert files_duplicate == FILE_PATHS_DUPLICATE
 
 if __name__ == '__main__':

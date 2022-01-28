@@ -48,7 +48,6 @@ def wl_fig_freq(main, tokens_freq_files, settings, label_x):
     # Line Chart
     if settings['graph_type'] == main.tr('Line Chart'):
         total_freqs = numpy.array(list(zip(*tokens_freq_files))[1]).sum(axis = 0)
-        total_freq = sum(total_freqs)
 
         tokens = [item[0] for item in tokens_freq_files[rank_min - 1 : rank_max]]
         freqs = [item[1] for item in tokens_freq_files if item[0] in tokens]
@@ -75,7 +74,7 @@ def wl_fig_freq(main, tokens_freq_files, settings, label_x):
         if settings['use_pct']:
             for i, file_name in enumerate(file_names_selected):
                 matplotlib.pyplot.plot(
-                    [freq_files[i] / total_freqs[i] * 100  for freq_files in freqs],
+                    [freq_files[i] / total_freqs[i] * 100 for freq_files in freqs],
                     label = file_name
                 )
         else:
@@ -97,15 +96,17 @@ def wl_fig_freq(main, tokens_freq_files, settings, label_x):
         matplotlib.pyplot.legend()
     # Word Cloud
     elif settings['graph_type'] == main.tr('Word Cloud'):
-        if rank_max == None:
+        if rank_max is None:
             max_words = len(tokens_freq_files) - rank_min + 1
         else:
             max_words = rank_max - rank_min + 1
 
-        word_cloud = wordcloud.WordCloud(width = QDesktopWidget().width(),
-                                         height = QDesktopWidget().height(),
-                                         background_color = main.settings_custom['figs']['word_cloud']['bg_color'],
-                                         max_words = max_words)
+        word_cloud = wordcloud.WordCloud(
+            width = QDesktopWidget().width(),
+            height = QDesktopWidget().height(),
+            background_color = main.settings_custom['figs']['word_cloud']['bg_color'],
+            max_words = max_words
+        )
 
         tokens_freq_file = {
             token: freqs[col_sort_by_file]
@@ -206,8 +207,6 @@ def wl_fig_freq_keyword(main, tokens_freq_files, files_ref, settings, label_x):
     # Line Chart
     if settings['graph_type'] == main.tr('Line Chart'):
         total_freqs = numpy.array([item[1] for item in tokens_freq_files]).sum(axis = 0)
-        total_freq_ref = total_freqs[0]
-        total_freq_total = total_freqs[-1]
 
         tokens = [item[0] for item in tokens_freq_files[rank_min - 1 : rank_max]]
         freqs = [item[1] for item in tokens_freq_files if item[0] in tokens]
@@ -234,7 +233,7 @@ def wl_fig_freq_keyword(main, tokens_freq_files, files_ref, settings, label_x):
         if settings['use_pct']:
             for i, file_name in enumerate(file_names_selected):
                 matplotlib.pyplot.plot(
-                    [freq_files[i] / total_freqs[i] * 100  for freq_files in freqs],
+                    [freq_files[i] / total_freqs[i] * 100 for freq_files in freqs],
                     label = file_name
                 )
         else:
@@ -256,7 +255,7 @@ def wl_fig_freq_keyword(main, tokens_freq_files, files_ref, settings, label_x):
         matplotlib.pyplot.legend()
     # Word Cloud
     elif settings['graph_type'] == main.tr('Word Cloud'):
-        if rank_max == None:
+        if rank_max is None:
             max_words = len(tokens_freq_files) - rank_min + 1
         else:
             max_words = rank_max - rank_min + 1

@@ -18,8 +18,6 @@
 
 import time
 
-import pytest
-
 from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_file_area, wl_test_init
 

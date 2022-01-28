@@ -217,7 +217,7 @@ def wl_process_tokens_overview(main, text, token_settings):
 
     # Syllable tokenization
     text.syls_tokens = wl_syl_tokenization.wl_syl_tokenize_no_puncs(main, text.tokens_flat, lang = text.lang)
-    
+
     return text
 
 def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_lines = False):
@@ -237,10 +237,10 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
         text.offsets_paras = []
         text.offsets_sentences = []
         text.tokens_flat = []
-        
+
         for para in text.tokens_multilevel:
             text.offsets_paras.append(len(text.tokens_flat))
-            
+
             for sentence in para:
                 text.offsets_sentences.append(len(text.tokens_flat))
 

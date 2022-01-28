@@ -16,17 +16,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import collections
 import copy
 import csv
 import os
 import re
-import time
 import traceback
-
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
 
 import bs4
 import docx
@@ -36,6 +30,9 @@ from docx.oxml.text.paragraph import CT_P
 from docx.table import _Cell, Table
 from docx.text.paragraph import Paragraph
 import openpyxl
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 from wl_checking import wl_checking_files, wl_checking_misc
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
@@ -54,13 +51,13 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
             len_file_paths = len(self.file_paths)
             # Regex for headers
             re_tags_header = wl_matching.get_re_tags_with_tokens(self.main, tag_type = 'header')
-            
+
             for i, file_path in enumerate(self.file_paths):
                 self.progress_updated.emit(self.tr(f'Loading files... ({i + 1}/{len_file_paths})'))
 
                 new_files_temp = []
                 lines = []
-                
+
                 default_dir = wl_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
                 default_encoding = self.main.settings_custom['files']['default_settings']['encoding']
 
@@ -100,10 +97,9 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                         new_file['encoding'] = wl_detection.detect_encoding(self.main, file_path)
                     else:
                         new_file['encoding'] = default_encoding
-                    
+
                     with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
                         text = f.read()
-
 
                 if file_ext in ['.txt', '.xml']:
                     with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
@@ -172,7 +168,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                     new_file_tgt['name'] = new_file_tgt['name_old'] = wl_checking_misc.check_new_name(f'{file_name}_target', file_names)
 
                     soup = bs4.BeautifulSoup(text, 'lxml-xml')
-                    
+
                     # Extract source and target languages
                     elements_tuv = soup.select(r'tu:first-child tuv[xml\:lang]')
 
@@ -202,7 +198,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                     # Remove header tags
                     tags_header = []
 
-                    for _, _, tag_opening, _ in self.main.settings_custom['tags']['tags_header']:
+                    for _, _, tag_opening in self.main.settings_custom['tags']['tags_header']:
                         tags_header.append(tag_opening[1:-1])
 
                     with open(new_file['path'], 'w', encoding = new_file['encoding']) as f:
@@ -212,7 +208,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                             # Use regex here since BeautifulSoup will add tags including <html> and <body> to the text
                             # See: https://www.crummy.com/software/BeautifulSoup/bs4/doc/#differences-between-parsers
                             text = re.sub(re_tags_header, '', text)
-                            
+
                         f.write(text)
 
                     # Detect languages
@@ -233,9 +229,6 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
             err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Updating table...'))
-
-        time.sleep(0.1)
-
         self.worker_done.emit(err_msg, new_files)
 
     # python-docx/Issue #276: https://github.com/python-openxml/python-docx/issues/276
@@ -294,8 +287,6 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
 
 class Wl_Worker_Reload_Files(wl_threading.Wl_Worker_No_Callback):
     def run(self):
-        files_reloaded = []
-
         len_files = len(self.files)
 
         for i, file in enumerate(self.files):
@@ -313,6 +304,7 @@ class Wl_Files(QObject):
 
         self.main = table.main
         self.table = table
+        self.file_names_old = []
 
     @wl_misc.log_timing
     def open_files(self, file_paths):
@@ -337,8 +329,7 @@ class Wl_Files(QObject):
 
                 wl_msgs.wl_msg_fatal_error(self.main)
 
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Loading files...'))
-        dialog_progress.update_progress(self.tr('Checking files...'))
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Checking files...'))
 
         file_paths, file_paths_unsupported = wl_checking_files.check_file_paths_unsupported(self.main, file_paths)
         file_paths, file_paths_empty = wl_checking_files.check_file_paths_empty(self.main, file_paths)
@@ -363,42 +354,46 @@ class Wl_Files(QObject):
                 </div>
             '''))
 
-            dialog_err_files.table_err_files.setRowCount(len(file_paths_empty) + len(file_paths_unsupported) + len(file_paths_duplicate))
+            dialog_err_files.table_err_files.model().setRowCount(len(file_paths_empty) + len(file_paths_unsupported) + len(file_paths_duplicate))
+
+            dialog_err_files.table_err_files.disable_updates()
 
             for i, file_path in enumerate(file_paths_empty + file_paths_unsupported + file_paths_duplicate):
-                if file_path in file_paths_empty: 
-                    dialog_err_files.table_err_files.setItem(
+                if file_path in file_paths_empty:
+                    dialog_err_files.table_err_files.model().setItem(
                         i, 0,
-                        QTableWidgetItem(self.tr('Empty File'))
+                        QStandardItem(self.tr('Empty File'))
                     )
-                elif file_path in file_paths_unsupported: 
-                    dialog_err_files.table_err_files.setItem(
+                elif file_path in file_paths_unsupported:
+                    dialog_err_files.table_err_files.model().setItem(
                         i, 0,
-                        QTableWidgetItem(self.tr('Unsupported File Type'))
+                        QStandardItem(self.tr('Unsupported File Type'))
                     )
                 elif file_path in file_paths_duplicate:
-                    dialog_err_files.table_err_files.setItem(
+                    dialog_err_files.table_err_files.model().setItem(
                         i, 0,
-                        QTableWidgetItem(self.tr('Duplicate File'))
+                        QStandardItem(self.tr('Duplicate File'))
                     )
 
-                dialog_err_files.table_err_files.setItem(
+                dialog_err_files.table_err_files.model().setItem(
                     i, 1,
-                    QTableWidgetItem(file_path)
+                    QStandardItem(file_path)
                 )
+
+            dialog_err_files.table_err_files.enable_updates()
 
             dialog_err_files.open()
 
     @wl_misc.log_timing
     def reload_files(self, file_indexes):
         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Loading files...'))
-        
+
         worker_reload_files = Wl_Worker_Reload_Files(
             self.main,
             dialog_progress = dialog_progress,
             files = [self.main.settings_custom['file_area']['files_open'][i] for i in file_indexes]
         )
-        
+
         thread_reload_files = wl_threading.Wl_Thread(worker_reload_files)
         thread_reload_files.start_worker()
 
@@ -417,52 +412,34 @@ class Wl_Files(QObject):
         self.update_table()
 
     def update_table(self):
-        self.table.blockSignals(True)
-        self.table.setUpdatesEnabled(False)
-
         files = self.main.settings_custom['file_area']['files_open']
-        
+
         if files:
-            self.table.clear_table(len(files))
+            self.table.clr_table(len(files))
+
+            self.table.disable_updates()
 
             for i, file in enumerate(files):
-                checkbox_name = QTableWidgetItem(file['name'])
-                combo_box_lang = wl_boxes.Wl_Combo_Box_Lang(self.table)
-                combo_box_tokenized = wl_boxes.Wl_Combo_Box_Yes_No(self.table)
-                combo_box_tagged = wl_boxes.Wl_Combo_Box_Yes_No(self.table)
-                combo_box_encoding = wl_boxes.Wl_Combo_Box_Encoding(self.table)
+                item_name = QStandardItem(file['name'])
+                # Record file properties
+                item_name.wl_file = file
+                item_name.setCheckable(True)
 
                 if file['selected']:
-                    checkbox_name.setCheckState(Qt.Checked)
+                    item_name.setCheckState(Qt.Checked)
                 else:
-                    checkbox_name.setCheckState(Qt.Unchecked)
+                    item_name.setCheckState(Qt.Unchecked)
 
-                # Record file properties
-                checkbox_name.wl_file = file
+                self.table.model().setItem(i, 0, item_name)
+                self.table.model().setItem(i, 1, QStandardItem(wl_conversion.to_lang_text(self.main, file['lang'])))
+                self.table.model().setItem(i, 2, QStandardItem(file['tokenized']))
+                self.table.model().setItem(i, 3, QStandardItem(file['tagged']))
+                self.table.model().setItem(i, 4, QStandardItem(file['path_original']))
+                self.table.model().setItem(i, 5, QStandardItem(wl_conversion.to_encoding_text(self.main, file['encoding'])))
 
-                combo_box_lang.setCurrentText(wl_conversion.to_lang_text(self.main, file['lang']))
-                combo_box_tokenized.setCurrentText(file['tokenized'])
-                combo_box_tagged.setCurrentText(file['tagged'])
-                combo_box_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, file['encoding']))
-
-                combo_box_lang.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 1)))
-                combo_box_tokenized.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 2)))
-                combo_box_tagged.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 3)))
-                combo_box_encoding.currentTextChanged.connect(lambda: self.table.itemChanged.emit(self.table.item(i, 5)))
-
-                self.table.setItem(i, 0, checkbox_name)
-                self.table.setCellWidget(i, 1, combo_box_lang)
-                self.table.setCellWidget(i, 2, combo_box_tokenized)
-                self.table.setCellWidget(i, 3, combo_box_tagged)
-                self.table.setItem(i, 4, QTableWidgetItem(file['path_original']))
-                self.table.setCellWidget(i, 5, combo_box_encoding)
+            self.table.enable_updates()
         else:
-            self.table.clear_table(1)
-
-        self.table.blockSignals(False)
-        self.table.setUpdatesEnabled(True)
-
-        self.table.itemChanged.emit(self.table.item(0, 0))
+            self.table.clr_table(1)
 
     def get_selected_files(self):
         files_selected = [
@@ -470,7 +447,7 @@ class Wl_Files(QObject):
             for file in self.main.settings_custom['file_area']['files_open']
             if file['selected']
         ]
-        
+
         return files_selected
 
     def get_selected_file_names(self):
@@ -478,7 +455,7 @@ class Wl_Files(QObject):
             file['name']
             for file in self.get_selected_files()
         ]
-        
+
         return file_names_selected
 
     def find_file_by_name(self, file_name, selected_only = False):
@@ -504,7 +481,7 @@ class Wl_Files(QObject):
             files = self.get_selected_files()
         else:
             files = self.main.settings_custom['file_area']['files_open']
-            
+
         for file in files:
             if os.path.normcase(file['path']) == os.path.normcase(file_path):
                 return file
@@ -523,15 +500,18 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                 parent.tr('Path'),
                 parent.tr('Encoding')
             ],
-            drag_drop_enabled = True
+            editable = True,
+            drag_drop = True
         )
 
-        self.name = 'file_area'
+        self.setItemDelegateForColumn(1, wl_boxes.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_Lang))
+        self.setItemDelegateForColumn(2, wl_boxes.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_Yes_No))
+        self.setItemDelegateForColumn(3, wl_boxes.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_Yes_No))
+        self.setItemDelegateForColumn(4, wl_tables.Wl_Item_Delegate_Uneditable(self))
+        self.setItemDelegateForColumn(5, wl_boxes.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_Encoding))
 
-        self.itemChanged.connect(self.file_item_changed)
-        self.itemClicked.connect(self.file_item_changed)
-        self.itemSelectionChanged.connect(self.file_selection_changed)
-        self.cellDoubleClicked.connect(self.cell_double_clicked)
+        self.selectionModel().selectionChanged.connect(self.selection_changed)
+        self.clicked.connect(self.item_clicked)
 
         # Menu
         self.main.find_menu_item(self.tr('Open File(s)...')).triggered.connect(self.open_files)
@@ -548,52 +528,60 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self.main.find_menu_item(self.tr('Close Selected')).triggered.connect(self.close_selected)
         self.main.find_menu_item(self.tr('Close All')).triggered.connect(self.close_all)
 
-        self.file_item_changed()
+    def item_changed(self, item):
+        super().item_changed(item)
 
-    def file_item_changed(self):
-        if any([self.item(0, i) for i in range(self.columnCount())]):
+        if not self.is_empty():
             # Record old file names that might be useful for other slots
             self.main.wl_files.file_names_old = self.main.wl_files.get_selected_file_names()
 
             # Check for duplicate file names
-            for row in range(self.rowCount()):
-                file = self.item(row, 0).wl_file
-                file_name = self.item(row, 0).text()
+            for row in range(self.model().rowCount()):
+                file = self.model().item(row, 0).wl_file
+                file_name = self.model().item(row, 0).text()
 
                 if file_name != file['name_old']:
                     if self.main.wl_files.find_file_by_name(file_name):
-                        self.blockSignals(True)
+                        self.disable_updates()
 
-                        self.item(row, 0).setText(file['name_old'])
-                        
-                        self.blockSignals(False)
+                        self.model().item(row, 0).setText(file['name_old'])
 
-                        wl_msg_boxes.wl_msg_box_duplicate_file_name(self.main)
+                        self.enable_updates()
 
-                        self.closePersistentEditor(self.item(row, 0))
-                        self.editItem(self.item(row, 0))
+                        wl_msg_boxes.Wl_Msg_Box_Warning(
+                            self.main,
+                            title = self.tr('Duplicate File Names Found'),
+                            text = self.tr('''
+                                <div>There is already a file with the same name in the file area.</div>
+                                <div>Please specify a different file name.</div>
+                            ''')
+                        ).open()
+
+                        self.setCurrentIndex(self.model().index(row, 0))
+                        self.closePersistentEditor(self.model().index(row, 0))
+                        self.edit(self.model().index(row, 0))
 
                     break
 
             self.main.settings_custom['file_area']['files_open'].clear()
 
-            for row in range(self.rowCount()):
-                file = self.item(row, 0).wl_file
+            for row in range(self.model().rowCount()):
+                file = self.model().item(row, 0).wl_file
 
-                lang_text = self.cellWidget(row, 1).currentText()
-                encoding_text = self.cellWidget(row, 5).currentText()
+                lang_text = self.model().item(row, 1).text()
+                encoding_text = self.model().item(row, 5).text()
 
-                file['selected'] = True if self.item(row, 0).checkState() == Qt.Checked else False
-                file['name'] = file['name_old'] = self.item(row, 0).text()
+                file['selected'] = True if self.model().item(row, 0).checkState() == Qt.Checked else False
+                file['name'] = file['name_old'] = self.model().item(row, 0).text()
                 file['lang'] = wl_conversion.to_lang_code(self.main, lang_text)
-                file['tokenized'] = self.cellWidget(row, 2).currentText()
-                file['tagged'] = self.cellWidget(row, 3).currentText()
+                file['tokenized'] = self.model().item(row, 2).text()
+                file['tagged'] = self.model().item(row, 3).text()
                 file['encoding'] = wl_conversion.to_encoding_code(self.main, encoding_text)
 
                 self.main.settings_custom['file_area']['files_open'].append(file)
 
         # Menu
-        if any([self.item(0, i) for i in range(self.columnCount())]):
+        if not self.is_empty():
             self.main.find_menu_item(self.tr('Reload All')).setEnabled(True)
 
             self.main.find_menu_item(self.tr('Select All')).setEnabled(True)
@@ -615,22 +603,20 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         else:
             self.main.find_menu_item(self.tr('Reopen Closed Files')).setEnabled(False)
 
-        if self.rowCount() == 0:
-            self.setRowCount(1)
+        self.selection_changed()
 
-        self.file_selection_changed()
+    def item_clicked(self):
+        if not self.is_empty():
+            for row in range(self.model().rowCount()):
+                self.main.settings_custom['file_area']['files_open'][row]['selected'] = True if self.model().item(row, 0).checkState() == Qt.Checked else False
 
-    def file_selection_changed(self):
-        if any([self.item(0, i) for i in range(self.columnCount())]) and self.selectedIndexes():
+    def selection_changed(self):
+        if self.get_selected_rows():
             self.main.find_menu_item(self.tr('Reload Selected')).setEnabled(True)
             self.main.find_menu_item(self.tr('Close Selected')).setEnabled(True)
         else:
             self.main.find_menu_item(self.tr('Reload Selected')).setEnabled(False)
             self.main.find_menu_item(self.tr('Close Selected')).setEnabled(False)
-
-    def cell_double_clicked(self, row, col):
-        if col == self.find_col(self.tr('Name')):
-            self.editItem(self.item(row, col))
 
     def open_files(self):
         if os.path.exists(self.main.settings_custom['import']['files']['default_path']):
@@ -683,24 +669,24 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self.main.wl_files.reload_files(list(range(len(self.main.settings_custom['file_area']['files_open']))))
 
     def select_all(self):
-        if self.item(0, 0):
-            for i in range(self.rowCount()):
-                if self.item(i, 0).checkState() == Qt.Unchecked:
-                    self.item(i, 0).setCheckState(Qt.Checked)
+        if self.model().item(0, 0):
+            for i in range(self.model().rowCount()):
+                if self.model().item(i, 0).checkState() == Qt.Unchecked:
+                    self.model().item(i, 0).setCheckState(Qt.Checked)
 
     def deselect_all(self):
-        if self.item(0, 0):
-            for i in range(self.rowCount()):
-                if self.item(i, 0).checkState() == Qt.Checked:
-                    self.item(i, 0).setCheckState(Qt.Unchecked)
+        if self.model().item(0, 0):
+            for i in range(self.model().rowCount()):
+                if self.model().item(i, 0).checkState() == Qt.Checked:
+                    self.model().item(i, 0).setCheckState(Qt.Unchecked)
 
     def invert_selection(self):
-        if self.item(0, 0):
-            for i in range(self.rowCount()):
-                if self.item(i, 0).checkState() == Qt.Checked:
-                    self.item(i, 0).setCheckState(Qt.Unchecked)
+        if self.model().item(0, 0):
+            for i in range(self.model().rowCount()):
+                if self.model().item(i, 0).checkState() == Qt.Checked:
+                    self.model().item(i, 0).setCheckState(Qt.Unchecked)
                 else:
-                    self.item(i, 0).setCheckState(Qt.Checked)
+                    self.model().item(i, 0).setCheckState(Qt.Checked)
 
     def close_selected(self):
         self.main.wl_files.close_files(self.get_selected_rows())

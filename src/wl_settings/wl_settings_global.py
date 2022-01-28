@@ -310,12 +310,12 @@ def init_settings_global(main):
                 main.tr('All Files (*.*)')
             ],
 
-            'export_tables': [
+            'exp_tables': [
                 main.tr('CSV File (*.csv)'),
                 main.tr('Excel Workbook (*.xlsx)')
             ],
 
-            'export_tables_concordancer': [
+            'exp_tables_concordancer': [
                 main.tr('CSV File (*.csv)'),
                 main.tr('Excel Workbook (*.xlsx)'),
                 main.tr('Word Document (*.docx)')
@@ -689,7 +689,7 @@ def init_settings_global(main):
                 main.tr('NLTK - Turkish Stop Word List'): 'nltk_tur',
 
                 main.tr('PyThaiNLP - Thai Stop Word List'): 'pythainlp_tha',
-            
+
                 main.tr('spaCy - Afrikaans Stop Word List'): 'spacy_afr',
                 main.tr('spaCy - Albanian Stop Word List'): 'spacy_sqi',
                 main.tr('spaCy - Amharic Stop Word List'): 'spacy_amh',
@@ -774,7 +774,7 @@ def init_settings_global(main):
                 main.tr('Stopwords ISO - Czech Stop Word List'): 'stopwords_iso_ces',
                 main.tr('Stopwords ISO - Danish Stop Word List'): 'stopwords_iso_dan',
                 main.tr('Stopwords ISO - Dutch Stop Word List'): 'stopwords_iso_nld',
-                main.tr('Stopwords ISO - English Stop Word List'): 'stopwords_iso_eng',        
+                main.tr('Stopwords ISO - English Stop Word List'): 'stopwords_iso_eng',
                 main.tr('Stopwords ISO - Esperanto Stop Word List'): 'stopwords_iso_epo',
                 main.tr('Stopwords ISO - Estonian Stop Word List'): 'stopwords_iso_est',
                 main.tr('Stopwords ISO - Finnish Stop Word List'): 'stopwords_iso_fin',
@@ -2182,6 +2182,14 @@ def init_settings_global(main):
                 'custom'
             ],
 
+            'enm': [
+                'cltk_enm',
+                'custom'
+            ],
+            'ang': [
+                'cltk_ang',
+                'custom'
+            ],
             'eng_gb': [
                 'extra_stopwords_eng',
                 'nltk_eng',
@@ -2194,14 +2202,6 @@ def init_settings_global(main):
                 'nltk_eng',
                 'spacy_eng',
                 'stopwords_iso_eng',
-                'custom'
-            ],
-            'enm': [
-                'cltk_enm',
-                'custom'
-            ],
-            'ang': [
-                'cltk_ang',
                 'custom'
             ],
 
@@ -2906,7 +2906,7 @@ def init_settings_global(main):
                     'col': main.tr('ME'),
                     'func': wl_measures_effect_size.me
                 },
-                
+
                 main.tr('Mutual Information'): {
                     'col': main.tr('MI'),
                     'func': wl_measures_effect_size.mi

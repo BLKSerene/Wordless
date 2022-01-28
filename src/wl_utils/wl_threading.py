@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import time
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -35,6 +37,9 @@ class Wl_Worker(QObject):
             self.__dict__[key] = val
 
         self.progress_updated.connect(self.dialog_progress.update_progress)
+
+        # Wait for updating of the progress label
+        self.worker_done.connect(lambda: time.sleep(.01), Qt.DirectConnection)
         self.worker_done.connect(update_gui)
         self.worker_done.connect(self.dialog_progress.accept)
 

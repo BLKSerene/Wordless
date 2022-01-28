@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import math
 import random
 
 import numpy
@@ -216,7 +215,7 @@ def gunning_fog_index(main, text):
     return fog_index
 
 # SMOG Grade
-# Reference: McLaughlin, G. H. (1969). SMOG grading: A new readability formula. Journal of Reading, 12(8), pp. 639–646. 
+# Reference: McLaughlin, G. H. (1969). SMOG grading: A new readability formula. Journal of Reading, 12(8), pp. 639–646.
 def smog_grade(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         get_counts(main, text)
@@ -285,7 +284,7 @@ def spache_grade_level(main, text):
         # Text is too short
         else:
             grade_level = TEXT_TOO_SHORT
-    # No language support 
+    # No language support
     else:
         grade_level = NO_SUPPORT
 

@@ -28,7 +28,7 @@ def check_custom_settings(settings_custom, settings_default):
                 get_keys(value, keys)
 
         return keys
-    
+
     keys_custom = []
     keys_default = []
 
@@ -64,18 +64,18 @@ def check_new_name(new_name, names):
     return new_name_valid
 
 def check_new_path(new_path):
-	i = 2
+    i = 2
 
-	if os.path.exists(new_path) and os.path.isfile(new_path):
-		while True:
-			path_head, ext = os.path.splitext(new_path)
-			new_path_valid = f'{path_head} ({i}){ext}'
+    if os.path.exists(new_path) and os.path.isfile(new_path):
+        while True:
+            path_head, ext = os.path.splitext(new_path)
+            new_path_valid = f'{path_head} ({i}){ext}'
 
-			if os.path.exists(new_path_valid) and os.path.isfile(new_path_valid):
-				i += 1
-			else:
-				break
-	else:
-		new_path_valid = new_path
+            if os.path.exists(new_path_valid) and os.path.isfile(new_path_valid):
+                i += 1
+            else:
+                break
+    else:
+        new_path_valid = new_path
 
-	return new_path_valid
+    return new_path_valid

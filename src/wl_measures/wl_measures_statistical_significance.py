@@ -54,11 +54,11 @@ def mannwhitneyu(x, y, use_continuity, alternative):
     ranked = scipy.stats.rankdata(numpy.concatenate((x, y)))
     rankx = ranked[0:n1]  # get the x-ranks
     u1 = numpy.sum(rankx, axis = 0) - (n1 * (n1 + 1)) / 2.0 # calc U for x
-    u2 = n1*n2 - u1  # remainder is U for y
+    u2 = n1 * n2 - u1  # remainder is U for y
     T = scipy.stats.tiecorrect(ranked)
     if T == 0:
         raise ValueError('All numbers are identical in mannwhitneyu')
-    sd = numpy.sqrt(T * n1 * n2 * (n1+n2+1) / 12.0)
+    sd = numpy.sqrt(T * n1 * n2 * (n1 + n2 + 1) / 12.0)
 
     meanrank = n1 * n2 / 2.0 + 0.5 * use_continuity
     if alternative == 'two-sided':
@@ -99,7 +99,7 @@ def berry_rogghes_z_score(main, c11, c12, c21, c22, span):
     else:
         z_score = (k - e) / math.sqrt(e * (1 - p))
 
-    p_value = scipy.stats.distributions.norm.sf(z_score) 
+    p_value = scipy.stats.distributions.norm.sf(z_score)
 
     return [z_score, p_value, None]
 
@@ -115,8 +115,10 @@ def fishers_exact_test(main, c11, c12, c21, c22):
     elif direction == main.tr('Right-tailed'):
         alternative = 'greater'
 
-    _, p_value = scipy.stats.fisher_exact([[c11, c12], [c21, c22]],
-                                          alternative = alternative)
+    _, p_value = scipy.stats.fisher_exact(
+        [[c11, c12], [c21, c22]],
+        alternative = alternative
+    )
 
     return [None, p_value, None]
 
@@ -146,10 +148,12 @@ def log_likehood_ratio_test(main, c11, c12, c21, c22):
     else:
         log_likelihood_ratio_22 = c22 * math.log(c22 / e22)
 
-    log_likelihood_ratio = 2 * (log_likelihood_ratio_11 +
-                                log_likelihood_ratio_12 +
-                                log_likelihood_ratio_21 +
-                                log_likelihood_ratio_22)
+    log_likelihood_ratio = 2 * (
+        log_likelihood_ratio_11
+        + log_likelihood_ratio_12
+        + log_likelihood_ratio_21
+        + log_likelihood_ratio_22
+    )
 
     p_value = scipy.stats.distributions.chi2.sf(log_likelihood_ratio, 1)
 
@@ -170,9 +174,11 @@ def mann_whitney_u_test(main, counts_observed, counts_ref):
     elif direction == main.tr('Right-tailed'):
         alternative = 'greater'
 
-    u_stat, p_value = mannwhitneyu(counts_observed, counts_ref,
-                                   use_continuity = apply_correction,
-                                   alternative = alternative)
+    u_stat, p_value = mannwhitneyu(
+        counts_observed, counts_ref,
+        use_continuity = apply_correction,
+        alternative = alternative
+    )
 
     return [u_stat, p_value, None]
 

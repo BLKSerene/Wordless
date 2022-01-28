@@ -115,17 +115,21 @@ def check_files_on_loading_colligation(main, files):
                 </div>
             '''))
 
-            dialog_err_files.table_err_files.setRowCount(len(file_paths_pos_tagging_unsupported))
+            dialog_err_files.table_err_files.model().setRowCount(len(file_paths_pos_tagging_unsupported))
+
+            dialog_err_files.table_err_files.disable_updates()
 
             for i, file_path in enumerate(file_paths_pos_tagging_unsupported):
-                dialog_err_files.table_err_files.setItem(
+                dialog_err_files.table_err_files.model().setItem(
                     i, 0,
-                    QTableWidgetItem(main.tr('POS Tagging Unsupported'))
+                    QStandardItem(main.tr('POS Tagging Unsupported'))
                 )
-                dialog_err_files.table_err_files.setItem(
+                dialog_err_files.table_err_files.model().setItem(
                     i, 1,
-                    QTableWidgetItem(file_path)
+                    QStandardItem(file_path)
                 )
+
+            dialog_err_files.table_err_files.enable_updates()
 
             dialog_err_files.open()
 

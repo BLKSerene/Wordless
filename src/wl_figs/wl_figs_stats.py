@@ -21,7 +21,6 @@ from PyQt5.QtWidgets import *
 import matplotlib
 import matplotlib.pyplot
 import networkx
-import numpy
 import wordcloud
 
 from wl_utils import wl_misc, wl_sorting
@@ -77,8 +76,8 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
         matplotlib.pyplot.legend()
     # Word Cloud
     elif settings['graph_type'] == main.tr('Word Cloud'):
-        if rank_max == None:
-            max_words = len(tokens_freq_files) - rank_min + 1
+        if rank_max is None:
+            max_words = len(tokens_stat_files) - rank_min + 1
         else:
             max_words = rank_max - rank_min + 1
 
@@ -98,7 +97,7 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
         for token, stat in tokens_stat_file.items():
             if stat == 0:
                 tokens_stat_file[token] += 0.000000000000001
-        
+
         # WordCloud always display data descendingly
         if label_y == main.tr('p-value'):
             tokens_stat_file = {
@@ -237,8 +236,8 @@ def wl_fig_stat_keyword(main, keywords_stat_files, files_ref, settings, label_y)
         matplotlib.pyplot.grid(True, color = 'silver')
         matplotlib.pyplot.legend()
     elif settings['graph_type'] == main.tr('Word Cloud'):
-        if rank_max == None:
-            max_words = len(tokens_freq_files) - rank_min + 1
+        if rank_max is None:
+            max_words = len(tokens_stat_files) - rank_min + 1
         else:
             max_words = rank_max - rank_min + 1
 
@@ -265,9 +264,8 @@ def wl_fig_stat_keyword(main, keywords_stat_files, files_ref, settings, label_y)
                 keyword: 1 - p_value
                 for keyword, p_value in keywords_stat_file.items()
             }
-        
+
         word_cloud.generate_from_frequencies(keywords_stat_file)
 
         matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
         matplotlib.pyplot.axis('off')
-        

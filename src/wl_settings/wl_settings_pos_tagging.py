@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 import copy
-import time
 
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -31,7 +30,7 @@ from wl_utils import wl_conversion, wl_threading
 from wl_widgets import wl_boxes, wl_layouts, wl_tables
 
 class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal(str, list)
+    worker_done = pyqtSignal(list)
 
     def run(self):
         preview_results = []
@@ -54,7 +53,7 @@ class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
             else:
                 preview_results.append('')
 
-        self.worker_done.emit(preview_samples, preview_results)
+        self.worker_done.emit(preview_results)
 
 class Wl_Worker_Fetch_Data_Tagsets(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(list)
@@ -67,9 +66,6 @@ class Wl_Worker_Fetch_Data_Tagsets(wl_threading.Wl_Worker):
         mappings = settings_custom['mappings'][preview_lang][preview_pos_tagger]
 
         self.progress_updated.emit(self.tr('Updating table...'))
-
-        time.sleep(0.1)
-
         self.worker_done.emit(mappings)
 
 # POS Tagging
@@ -90,27 +86,31 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
                 self.tr('Language'),
                 self.tr('POS Taggers')
             ],
-            cols_stretch = [
-                self.tr('POS Taggers')
-            ]
+            editable = True
         )
 
         self.checkbox_to_universal_pos_tags = QCheckBox(self.tr('Convert all POS tags to universal POS tags'))
 
         self.table_pos_taggers.verticalHeader().setHidden(True)
-        self.table_pos_taggers.setRowCount(len(self.settings_global))
+        self.table_pos_taggers.model().setRowCount(len(self.settings_global))
+
+        self.table_pos_taggers.disable_updates()
 
         for i, lang in enumerate(self.settings_global):
-            self.table_pos_taggers.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
+            self.table_pos_taggers.model().setItem(i, 0, QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
+            self.table_pos_taggers.model().setItem(i, 1, QStandardItem())
 
-            self.__dict__[f'combo_box_pos_tagger_{lang}'] = wl_boxes.Wl_Combo_Box(self)
-            self.__dict__[f'combo_box_pos_tagger_{lang}'].addItems(wl_nlp_utils.to_lang_util_texts(
-                self.main,
-                util_type = 'pos_taggers',
-                util_codes = self.settings_global[lang]
+            self.table_pos_taggers.setItemDelegateForRow(i, wl_boxes.Wl_Item_Delegate_Combo_Box(
+                parent = self.table_pos_taggers,
+                items = list(wl_nlp_utils.to_lang_util_texts(
+                    self.main,
+                    util_type = 'pos_taggers',
+                    util_codes = self.settings_global[lang]
+                )),
+                col = 1
             ))
 
-            self.table_pos_taggers.setCellWidget(i, 1, self.__dict__[f'combo_box_pos_tagger_{lang}'])
+        self.table_pos_taggers.enable_updates()
 
         group_box_pos_tagger_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_pos_tagger_settings.layout().addWidget(self.table_pos_taggers, 0, 0)
@@ -127,7 +127,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
 
         self.combo_box_pos_tagging_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
-        self.button_pos_tagging_show_preview.setFixedWidth(130)
+        self.button_pos_tagging_show_preview.setFixedWidth(150)
         self.text_edit_pos_tagging_preview_samples.setAcceptRichText(False)
         self.text_edit_pos_tagging_preview_results.setReadOnly(True)
 
@@ -164,7 +164,9 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
     def preview_results_changed(self):
         if self.settings_custom['preview_samples']:
             if self.combo_box_pos_tagging_preview_lang.isEnabled():
-                self.__dict__[f"combo_box_pos_tagger_{self.settings_custom['preview_lang']}"].setEnabled(False)
+                row = list(self.settings_global.keys()).index(self.settings_custom['preview_lang'])
+
+                self.table_pos_taggers.itemDelegateForRow(row).set_enabled(False)
                 self.combo_box_pos_tagging_preview_lang.setEnabled(False)
                 self.button_pos_tagging_show_preview.setEnabled(False)
                 self.text_edit_pos_tagging_preview_samples.setEnabled(False)
@@ -175,7 +177,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
                 pos_tagger = wl_nlp_utils.to_lang_util_code(
                     self.main,
                     util_type = 'pos_taggers',
-                    util_text = self.__dict__[f"combo_box_pos_tagger_{self.settings_custom['preview_lang']}"].currentText()
+                    util_text = self.table_pos_taggers.model().item(row, 1).text()
                 )
 
                 if self.checkbox_to_universal_pos_tags.isChecked():
@@ -195,15 +197,17 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         else:
             self.text_edit_pos_tagging_preview_results.clear()
 
-    def update_gui(self, preview_samples, preview_results):
-        self.__dict__[f"combo_box_pos_tagger_{self.settings_custom['preview_lang']}"].setEnabled(True)
+    def update_gui(self, preview_results):
+        self.button_pos_tagging_show_preview.setText(self.tr('Show preview'))
+        self.text_edit_pos_tagging_preview_results.setPlainText('\n'.join(preview_results))
+
+        row = list(self.settings_global.keys()).index(self.settings_custom['preview_lang'])
+
+        self.table_pos_taggers.itemDelegateForRow(row).set_enabled(True)
         self.combo_box_pos_tagging_preview_lang.setEnabled(True)
         self.button_pos_tagging_show_preview.setEnabled(True)
         self.text_edit_pos_tagging_preview_samples.setEnabled(True)
         self.checkbox_to_universal_pos_tags.setEnabled(True)
-
-        self.button_pos_tagging_show_preview.setText(self.tr('Show preview'))
-        self.text_edit_pos_tagging_preview_results.setPlainText('\n'.join(preview_results))
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -211,16 +215,16 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
-        for lang in settings['pos_taggers']:
-            self.__dict__[f'combo_box_pos_tagger_{lang}'].blockSignals(True)
+        self.table_pos_taggers.disable_updates()
 
-            self.__dict__[f'combo_box_pos_tagger_{lang}'].setCurrentText(wl_nlp_utils.to_lang_util_text(
+        for i, lang in enumerate(settings['pos_taggers']):
+            self.table_pos_taggers.model().item(i, 1).setText(wl_nlp_utils.to_lang_util_text(
                 self.main,
                 util_type = 'pos_taggers',
                 util_code = settings['pos_taggers'][lang]
             ))
 
-            self.__dict__[f'combo_box_pos_tagger_{lang}'].blockSignals(False)
+        self.table_pos_taggers.enable_updates()
 
         self.checkbox_to_universal_pos_tags.blockSignals(True)
 
@@ -240,11 +244,11 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             self.text_edit_pos_tagging_preview_samples.blockSignals(False)
 
     def apply_settings(self):
-        for lang in self.settings_custom['pos_taggers']:
+        for i, lang in enumerate(self.settings_custom['pos_taggers']):
             self.settings_custom['pos_taggers'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
                 util_type = 'pos_taggers',
-                util_text = self.__dict__[f'combo_box_pos_tagger_{lang}'].currentText()
+                util_text = self.table_pos_taggers.model().item(i, 1).text()
             )
 
         self.settings_custom['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
@@ -298,11 +302,38 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
                 self.tr('Universal POS Tag'),
                 self.tr('Description'),
                 self.tr('Examples')
-            ]
+            ],
+            editable = True
         )
 
-        self.button_tagsets_reset.setFixedWidth(100)
-        self.button_tagsets_reset_all.setFixedWidth(100)
+        self.table_mappings.setItemDelegate(wl_boxes.Wl_Item_Delegate_Combo_Box(
+            parent = self.table_mappings,
+            items = [
+                'ADJ',
+                'ADP',
+                'ADV',
+                'AUX',
+                'CONJ', # Coordinating/Subordinating conjunctions
+                'CCONJ',
+                'SCONJ',
+                'DET',
+                'INTJ',
+                'NOUN',
+                'PROPN',
+                'NUM',
+                'PART',
+                'PRON',
+                'VERB',
+                'PUNCT',
+                'SYM',
+                'X'
+            ],
+            col = 1,
+            editable = True
+        ))
+
+        self.button_tagsets_reset.setFixedWidth(120)
+        self.button_tagsets_reset_all.setFixedWidth(120)
 
         self.button_tagsets_reset.clicked.connect(self.reset_mappings)
         self.button_tagsets_reset_all.clicked.connect(self.reset_all_mappings)
@@ -386,62 +417,29 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
             self.button_tagsets_reset.setEnabled(False)
             self.button_tagsets_reset_all.setEnabled(False)
 
-            self.table_mappings.clear_table()
+            self.table_mappings.clr_table()
             self.table_mappings.setEnabled(False)
 
     def update_gui(self, mappings):
-        self.table_mappings.hide()
-        self.table_mappings.blockSignals(True)
-        self.table_mappings.setUpdatesEnabled(False)
+        self.table_mappings.clr_table(len(mappings))
 
-        self.table_mappings.clear_table()
-        self.table_mappings.setRowCount(len(mappings))
+        self.table_mappings.disable_updates()
 
         for i, (tag, tag_universal, description, examples) in enumerate(mappings):
-            combo_box_tag_univsersal = wl_boxes.Wl_Combo_Box(self.main)
+            self.table_mappings.model().setItem(i, 0, QStandardItem(tag))
+            self.table_mappings.model().setItem(i, 1, QStandardItem(tag_universal))
+            self.table_mappings.model().setItem(i, 2, QStandardItem(description))
+            self.table_mappings.model().setItem(i, 3, QStandardItem(examples))
 
-            combo_box_tag_univsersal.addItems([
-                'ADJ',
-                'ADP',
-                'ADV',
-                'AUX',
-                'CONJ', # Coordinating/Subordinating Conjunctions
-                'CCONJ',
-                'SCONJ',
-                'DET',
-                'INTJ',
-                'NOUN',
-                'PROPN',
-                'NUM',
-                'PART',
-                'PRON',
-                'VERB',
-
-                'PUNCT',
-                'SYM',
-                'X'
-            ])
-
-            combo_box_tag_univsersal.setEditable(True)
-            combo_box_tag_univsersal.setCurrentText(tag_universal)
-
-            self.table_mappings.setItem(i, 0, QTableWidgetItem(tag))
-            self.table_mappings.setCellWidget(i, 1, combo_box_tag_univsersal)
-            self.table_mappings.setItem(i, 2, QTableWidgetItem(description))
-            self.table_mappings.setItem(i, 3, QTableWidgetItem(examples))
-
-        self.table_mappings.blockSignals(False)
-        self.table_mappings.setUpdatesEnabled(True)
-        self.table_mappings.show()
-
-        self.table_mappings.itemChanged.emit(self.table_mappings.item(0, 0))
+        self.table_mappings.enable_updates()
 
         # Disable editing if the default tagset is Universal POS tags
         if mappings == wl_tagset_universal.MAPPINGS:
-            for i in range(self.table_mappings.rowCount()):
-                self.table_mappings.cellWidget(i, 1).setEnabled(False)
+            self.table_mappings.setEnabled(False)
+        else:
+            self.table_mappings.setEnabled(True)
 
-        self.label_tagsets_num_pos_tags.setText(self.tr(f'Number of POS Tags: {self.table_mappings.rowCount()}'))
+        self.label_tagsets_num_pos_tags.setText(self.tr(f'Number of POS Tags: {self.table_mappings.model().rowCount()}'))
         self.label_tagsets_num_pos_tags.setStyleSheet(self.main.settings_global['styles']['style_normal'])
 
         self.combo_box_tagsets_lang.setEnabled(True)
@@ -454,18 +452,12 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         preview_pos_tagger = self.settings_custom['preview_pos_tagger'][preview_lang]
         mappings = copy.deepcopy(self.settings_default['mappings'][preview_lang][preview_pos_tagger])
 
-        self.table_mappings.hide()
-        self.table_mappings.blockSignals(True)
-        self.table_mappings.setUpdatesEnabled(False)
+        self.table_mappings.disable_updates()
 
-        for i in range(self.table_mappings.rowCount()):
-            self.table_mappings.cellWidget(i, 1).setCurrentText(mappings[i][1])
+        for i in range(self.table_mappings.model().rowCount()):
+            self.table_mappings.model().item(i, 1).setText(mappings[i][1])
 
-        self.table_mappings.blockSignals(False)
-        self.table_mappings.setUpdatesEnabled(True)
-        self.table_mappings.show()
-
-        self.table_mappings.itemChanged.emit(self.table_mappings.item(0, 0))
+        self.table_mappings.enable_updates()
 
         self.settings_custom['mappings'][preview_lang][preview_pos_tagger] = mappings
 
@@ -506,7 +498,7 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
                 preview_lang = self.settings_custom['preview_lang']
                 preview_pos_tagger = self.settings_custom['preview_pos_tagger'][preview_lang]
 
-                for i in range(self.table_mappings.rowCount()):
-                    self.settings_custom['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.cellWidget(i, 1).currentText()
+                for i in range(self.table_mappings.model().rowCount()):
+                    self.settings_custom['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.model().item(i, 1).text()
 
         return True
