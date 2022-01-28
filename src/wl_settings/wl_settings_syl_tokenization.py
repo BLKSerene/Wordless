@@ -28,7 +28,7 @@ from wl_utils import wl_conversion, wl_threading
 from wl_widgets import wl_boxes, wl_layouts, wl_tables
 
 class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal(str, list)
+    worker_done = pyqtSignal(list)
 
     def run(self):
         preview_results = []
@@ -58,7 +58,7 @@ class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
             else:
                 preview_results.append('')
 
-        self.worker_done.emit(preview_samples, preview_results)
+        self.worker_done.emit(preview_results)
 
 class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
@@ -71,34 +71,38 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         # Syllable Tokenizer Settings
         group_box_syl_tokenizer_settings = QGroupBox(self.tr('Syllable Tokenizer Settings'), self)
 
-        table_syl_tokenizers = wl_tables.Wl_Table(
+        self.table_syl_tokenizers = wl_tables.Wl_Table(
             self,
             headers = [
                 self.tr('Language'),
                 self.tr('Syllable Tokenizers')
             ],
-            cols_stretch = [
-                self.tr('Syllable Tokenizers')
-            ]
+            editable = True
         )
 
-        table_syl_tokenizers.verticalHeader().setHidden(True)
-        table_syl_tokenizers.setRowCount(len(self.settings_global))
+        self.table_syl_tokenizers.verticalHeader().setHidden(True)
+        self.table_syl_tokenizers.model().setRowCount(len(self.settings_global))
+
+        self.table_syl_tokenizers.disable_updates()
 
         for i, lang in enumerate(self.settings_global):
-            table_syl_tokenizers.setItem(i, 0, QTableWidgetItem(wl_conversion.to_lang_text(self.main, lang)))
+            self.table_syl_tokenizers.model().setItem(i, 0, QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
+            self.table_syl_tokenizers.model().setItem(i, 1, QStandardItem())
 
-            self.__dict__[f'combo_box_syl_tokenizer_{lang}'] = wl_boxes.Wl_Combo_Box(self)
-            self.__dict__[f'combo_box_syl_tokenizer_{lang}'].addItems(wl_nlp_utils.to_lang_util_texts(
-                self.main,
-                util_type = 'syl_tokenizers',
-                util_codes = self.settings_global[lang]
+            self.table_syl_tokenizers.setItemDelegateForRow(i, wl_boxes.Wl_Item_Delegate_Combo_Box(
+                parent = self.table_syl_tokenizers,
+                items = list(wl_nlp_utils.to_lang_util_texts(
+                    self.main,
+                    util_type = 'syl_tokenizers',
+                    util_codes = self.settings_global[lang]
+                )),
+                col = 1
             ))
 
-            table_syl_tokenizers.setCellWidget(i, 1, self.__dict__[f'combo_box_syl_tokenizer_{lang}'])
+        self.table_syl_tokenizers.enable_updates()
 
         group_box_syl_tokenizer_settings.setLayout(wl_layouts.Wl_Layout())
-        group_box_syl_tokenizer_settings.layout().addWidget(table_syl_tokenizers, 0, 0)
+        group_box_syl_tokenizer_settings.layout().addWidget(self.table_syl_tokenizers, 0, 0)
 
         # Preview
         group_box_preview = QGroupBox(self.tr('Preview'), self)
@@ -111,7 +115,7 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
 
         self.combo_box_syl_tokenization_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
-        self.button_syl_tokenization_show_preview.setFixedWidth(130)
+        self.button_syl_tokenization_show_preview.setFixedWidth(150)
         self.text_edit_syl_tokenization_preview_samples.setAcceptRichText(False)
         self.text_edit_syl_tokenization_preview_results.setReadOnly(True)
 
@@ -148,7 +152,9 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
     def preview_results_changed(self):
         if self.settings_custom['preview_samples']:
             if self.combo_box_syl_tokenization_preview_lang.isEnabled():
-                self.__dict__[f"combo_box_syl_tokenizer_{self.settings_custom['preview_lang']}"].setEnabled(False)
+                row = list(self.settings_global.keys()).index(self.settings_custom['preview_lang'])
+
+                self.table_syl_tokenizers.itemDelegateForRow(row).set_enabled(False)
                 self.combo_box_syl_tokenization_preview_lang.setEnabled(False)
                 self.button_syl_tokenization_show_preview.setEnabled(False)
                 self.text_edit_syl_tokenization_preview_samples.setEnabled(False)
@@ -158,7 +164,7 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
                 syl_tokenizer = wl_nlp_utils.to_lang_util_code(
                     self.main,
                     util_type = 'syl_tokenizers',
-                    util_text = self.__dict__[f"combo_box_syl_tokenizer_{self.settings_custom['preview_lang']}"].currentText()
+                    util_text = self.table_syl_tokenizers.model().item(row, 1).text()
                 )
 
                 worker_preview_syl_tokenizer = Wl_Worker_Preview_Syl_Tokenizer(
@@ -172,14 +178,16 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         else:
             self.text_edit_syl_tokenization_preview_results.clear()
 
-    def update_gui(self, preview_samples, preview_results):
-        self.__dict__[f"combo_box_syl_tokenizer_{self.settings_custom['preview_lang']}"].setEnabled(True)
+    def update_gui(self, preview_results):
+        self.button_syl_tokenization_show_preview.setText(self.tr('Show preview'))
+        self.text_edit_syl_tokenization_preview_results.setPlainText('\n'.join(preview_results))
+
+        row = list(self.settings_global.keys()).index(self.settings_custom['preview_lang'])
+
+        self.table_syl_tokenizers.itemDelegateForRow(row).set_enabled(True)
         self.combo_box_syl_tokenization_preview_lang.setEnabled(True)
         self.button_syl_tokenization_show_preview.setEnabled(True)
         self.text_edit_syl_tokenization_preview_samples.setEnabled(True)
-
-        self.button_syl_tokenization_show_preview.setText(self.tr('Show preview'))
-        self.text_edit_syl_tokenization_preview_results.setPlainText('\n'.join(preview_results))
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -187,16 +195,16 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
-        for lang in settings['syl_tokenizers']:
-            self.__dict__[f'combo_box_syl_tokenizer_{lang}'].blockSignals(True)
+        self.table_syl_tokenizers.disable_updates()
 
-            self.__dict__[f'combo_box_syl_tokenizer_{lang}'].setCurrentText(wl_nlp_utils.to_lang_util_text(
+        for i, lang in enumerate(settings['syl_tokenizers']):
+            self.table_syl_tokenizers.model().item(i, 1).setText(wl_nlp_utils.to_lang_util_text(
                 self.main,
                 util_type = 'syl_tokenizers',
                 util_code = settings['syl_tokenizers'][lang]
             ))
 
-            self.__dict__[f'combo_box_syl_tokenizer_{lang}'].blockSignals(False)
+        self.table_syl_tokenizers.enable_updates()
 
         if not defaults:
             self.combo_box_syl_tokenization_preview_lang.blockSignals(True)
@@ -210,11 +218,11 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
             self.text_edit_syl_tokenization_preview_samples.blockSignals(False)
 
     def apply_settings(self):
-        for lang in self.settings_custom['syl_tokenizers']:
+        for i, lang in enumerate(self.settings_custom['syl_tokenizers']):
             self.settings_custom['syl_tokenizers'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
                 util_type = 'syl_tokenizers',
-                util_text = self.__dict__[f'combo_box_syl_tokenizer_{lang}'].currentText()
+                util_text = self.table_syl_tokenizers.model().item(i, 1).text()
             )
 
         return True

@@ -16,9 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import copy
-import time
-
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -61,4 +58,3 @@ class Wl_Button_Reset_All_Settings(Wl_Button):
             self.parent.load_settings(defaults = True)
 
         self.parent.activateWindow()
-        

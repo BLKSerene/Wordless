@@ -19,16 +19,13 @@
 import collections
 import copy
 import itertools
-import re
-import time
 import traceback
-
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
 
 import nltk
 import numpy
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 
 from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
@@ -82,9 +79,9 @@ class Wrapper_Ngram(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_ngram, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_ngram.button_generate_table, 2, 0)
         self.wrapper_table.layout().addWidget(self.table_ngram.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_ngram.button_export_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_ngram.button_export_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_ngram.button_clear, 2, 4)
+        self.wrapper_table.layout().addWidget(self.table_ngram.button_exp_selected, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_ngram.button_exp_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_ngram.button_clr, 2, 4)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -96,11 +93,11 @@ class Wrapper_Ngram(wl_layouts.Wl_Wrapper):
             self.checkbox_title_case,
             self.checkbox_nums,
             self.checkbox_puncs,
-    
+
             self.checkbox_treat_as_lowercase,
             self.checkbox_lemmatize_tokens,
             self.checkbox_filter_stop_words,
-    
+
             self.token_checkbox_ignore_tags,
             self.checkbox_use_tags
         ) = wl_widgets.wl_widgets_token_settings(self)
@@ -144,18 +141,18 @@ class Wrapper_Ngram(wl_layouts.Wl_Wrapper):
         (
             self.label_search_term,
             self.checkbox_multi_search_mode,
-    
+
             self.stacked_widget_search_term,
             self.line_edit_search_term,
             self.list_search_terms,
-    
+
             self.label_separator,
-    
+
             self.checkbox_ignore_case,
             self.checkbox_match_inflected_forms,
             self.checkbox_match_whole_words,
             self.checkbox_use_regex,
-    
+
             self.search_checkbox_ignore_tags,
             self.checkbox_match_tags
         ) = wl_widgets.wl_widgets_search_settings(
@@ -446,7 +443,7 @@ class Wrapper_Ngram(wl_layouts.Wl_Wrapper):
 
         # Search Settings
         self.group_box_search_settings.setChecked(settings['search_settings']['search_settings'])
-        
+
         self.checkbox_multi_search_mode.setChecked(settings['search_settings']['multi_search_mode'])
 
         if not defaults:
@@ -686,7 +683,7 @@ class Wl_Worker_Ngram(wl_threading.Wl_Worker):
                     if settings['search_settings']['search_settings']:
                         if settings['search_settings']['allow_skipped_tokens_within_search_terms']:
                             for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                                ngrams.extend(nltk.skipgrams(tokens, ngram_size, allow_skipped_tokens))
+                                ngrams.extend(nltk.skipgrams(tokens, ngram_size, allow_skipped_tokens_num))
                         else:
                             for ngram_size in range(ngram_size_min, ngram_size_max + 1):
                                 for search_term in search_terms:
@@ -694,12 +691,12 @@ class Wl_Worker_Ngram(wl_threading.Wl_Worker):
 
                                     if len_search_term < ngram_size:
                                         for i, ngram in enumerate(nltk.ngrams(
-                                                            tokens,
-                                                            ngram_size + allow_skipped_tokens,
-                                                            pad_right = True,
-                                                            right_pad_symbol = SENTINEL
-                                                        )):
-                                            for j in range(ngram_size + allow_skipped_tokens - len_search_term + 1):
+                                            tokens,
+                                            ngram_size + allow_skipped_tokens_num,
+                                            pad_right = True,
+                                            right_pad_symbol = SENTINEL
+                                        )):
+                                            for j in range(ngram_size + allow_skipped_tokens_num - len_search_term + 1):
                                                 if ngram[j : j + len_search_term] == search_term:
                                                     ngram_cur = list(ngram)
                                                     ngram_cur[j : j + len_search_term] = [ngram_cur[j : j + len_search_term]]
@@ -742,12 +739,12 @@ class Wl_Worker_Ngram(wl_threading.Wl_Worker):
                     else:
                         for ngram_size in range(ngram_size_min, ngram_size_max + 1):
                             for i, ngram in enumerate(nltk.ngrams(
-                                                          tokens,
-                                                          ngram_size + allow_skipped_tokens,
-                                                          pad_right = True,
-                                                          right_pad_symbol = SENTINEL
-                                                      )):
-                                for j in range(ngram_size + allow_skipped_tokens):
+                                tokens,
+                                ngram_size + allow_skipped_tokens_num,
+                                pad_right = True,
+                                right_pad_symbol = SENTINEL
+                            )):
+                                for j in range(ngram_size + allow_skipped_tokens_num):
                                     head = ngram[0]
                                     tail = ngram[1:]
 
@@ -882,9 +879,6 @@ class Wl_Worker_Ngram_Table(Wl_Worker_Ngram):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-
-        time.sleep(0.1)
-        
         self.worker_done.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.ngrams_freq_files),
@@ -897,9 +891,6 @@ class Wl_Worker_Ngram_Fig(Wl_Worker_Ngram):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering figure...'))
-
-        time.sleep(0.1)
-
         self.worker_done.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.ngrams_freq_files),
@@ -912,8 +903,6 @@ def generate_table(main, table):
     def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files, ngrams_text):
         if not err_msg:
             if ngrams_freq_files:
-                table.clear_table()
-                
                 table.settings = copy.deepcopy(main.settings_custom)
 
                 text_measure_dispersion = settings['generation_settings']['measure_dispersion']
@@ -922,48 +911,62 @@ def generate_table(main, table):
                 text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
                 text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
+                table.clr_table()
+
                 # Insert columns (files)
                 for i, file in enumerate(files):
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\nFrequency'),
-                                     is_int = True, is_cumulative = True, is_breakdown = True)
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\nFrequency %'),
-                                     is_pct = True, is_cumulative = True, is_breakdown = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'[{file["name"]}]\nFrequency'),
+                        is_int = True, is_cumulative = True, is_breakdown = True
+                    )
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'[{file["name"]}]\nFrequency %'),
+                        is_pct = True, is_cumulative = True, is_breakdown = True
+                    )
 
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\n{text_dispersion}'),
-                                     is_float = True, is_breakdown = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'[{file["name"]}]\n{text_dispersion}'),
+                        is_float = True, is_breakdown = True
+                    )
 
-                    table.insert_col(table.columnCount() - 2,
-                                     main.tr(f'[{file["name"]}]\n{text_adjusted_freq}'),
-                                     is_float = True, is_breakdown = True)
+                    table.ins_col(
+                        table.model().columnCount() - 2,
+                        main.tr(f'[{file["name"]}]\n{text_adjusted_freq}'),
+                        is_float = True, is_breakdown = True
+                    )
 
                 # Insert columns (total)
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr('Total\nFrequency'),
-                                 is_int = True, is_cumulative = True)
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr('Total\nFrequency %'),
-                                 is_pct = True, is_cumulative = True)
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr('Total\nFrequency'),
+                    is_int = True, is_cumulative = True
+                )
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr('Total\nFrequency %'),
+                    is_pct = True, is_cumulative = True
+                )
 
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'Total\n{text_dispersion}'),
-                                 is_float = True)
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr(f'Total\n{text_dispersion}'),
+                    is_float = True
+                )
 
-                table.insert_col(table.columnCount() - 2,
-                                 main.tr(f'Total\n{text_adjusted_freq}'),
-                                 is_float = True)
+                table.ins_col(
+                    table.model().columnCount() - 2,
+                    main.tr(f'Total\n{text_adjusted_freq}'),
+                    is_float = True
+                )
 
                 # Sort by frequency of the first file
                 table.horizontalHeader().setSortIndicator(
                     table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')),
                     Qt.DescendingOrder
                 )
-
-                table.blockSignals(True)
-                table.setSortingEnabled(False)
-                table.setUpdatesEnabled(False)
 
                 cols_freq = table.find_cols(main.tr('\nFrequency'))
                 cols_freq_pct = table.find_cols(main.tr('\nFrequency %'))
@@ -979,7 +982,9 @@ def generate_table(main, table):
                 freq_totals = numpy.array(list(ngrams_freq_files.values())).sum(axis = 0)
                 len_files = len(files)
 
-                table.setRowCount(len(ngrams_freq_files))
+                table.model().setRowCount(len(ngrams_freq_files))
+
+                table.disable_updates()
 
                 for i, (ngram, freq_files) in enumerate(wl_sorting.sorted_tokens_freq_files(ngrams_freq_files)):
                     stats_files = ngrams_stats_files[ngram]
@@ -988,9 +993,9 @@ def generate_table(main, table):
                     table.set_item_num(i, 0, -1)
 
                     # N-gram
-                    table.setItem(i, 1, wl_tables.Wl_Table_Item(ngrams_text[ngram]))
+                    table.model().setItem(i, 1, wl_tables.Wl_Table_Item(ngrams_text[ngram]))
 
-                    table.item(i, 1).text_raw = ngram
+                    table.model().item(i, 1).text_raw = ngram
 
                     # Frequency
                     for j, freq in enumerate(freq_files):
@@ -1010,16 +1015,12 @@ def generate_table(main, table):
                     table.set_item_num(i, col_files_found, num_files_found)
                     table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
 
-                table.setSortingEnabled(True)
-                table.setUpdatesEnabled(True)
-                table.blockSignals(False)
+                table.enable_updates()
 
                 table.toggle_pct()
                 table.toggle_cumulative()
                 table.toggle_breakdown()
                 table.update_ranks()
-
-                table.itemChanged.emit(table.item(0, 0))
 
                 wl_msgs.wl_msg_generate_table_success(main)
             else:
@@ -1035,9 +1036,11 @@ def generate_table(main, table):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_files.check_files_on_loading(main, files):
-        if (not settings['search_settings']['search_settings'] or
-            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
-            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+        if (
+            not settings['search_settings']['search_settings']
+            or not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
+            or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
+        ):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_ngram_table = Wl_Worker_Ngram_Table(
@@ -1065,7 +1068,7 @@ def generate_fig(main):
 
                 text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
                 text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
-                
+
                 if settings['fig_settings']['use_data'] == main.tr('Frequency'):
                     ngrams_freq_files = {
                         ngrams_text[ngram]: freqs
@@ -1124,9 +1127,11 @@ def generate_fig(main):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_files.check_files_on_loading(main, files):
-        if (not settings['search_settings']['search_settings'] or
-            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
-            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+        if (
+            not settings['search_settings']['search_settings']
+            or not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
+            or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
+        ):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_ngram_fig = Wl_Worker_Ngram_Fig(

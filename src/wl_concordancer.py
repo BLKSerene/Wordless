@@ -18,18 +18,15 @@
 
 import copy
 import random
-import re
-import time
 import traceback
-
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
 
 import matplotlib
 import matplotlib.pyplot
 import nltk
 import numpy
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 import textblob
 import underthesea
 
@@ -102,17 +99,19 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_concordancer, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_table, 2, 0)
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_export_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_export_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_clear, 2, 4)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_exp_selected, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_exp_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_clr, 2, 4)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
 
-        (self.checkbox_puncs,
+        (
+            self.checkbox_puncs,
 
-         self.token_checkbox_ignore_tags,
-         self.checkbox_use_tags) = wl_widgets.wl_widgets_token_settings_concordancer(self)
+            self.token_checkbox_ignore_tags,
+            self.checkbox_use_tags
+        ) = wl_widgets.wl_widgets_token_settings_concordancer(self)
 
         self.checkbox_puncs.stateChanged.connect(self.token_settings_changed)
 
@@ -130,27 +129,31 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         # Search Settings
         self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
 
-        (self.label_search_term,
-         self.checkbox_multi_search_mode,
+        (
+            self.label_search_term,
+            self.checkbox_multi_search_mode,
 
-         self.stacked_widget_search_term,
-         self.line_edit_search_term,
-         self.list_search_terms,
-         self.label_separator,
+            self.stacked_widget_search_term,
+            self.line_edit_search_term,
+            self.list_search_terms,
+            self.label_separator,
 
-         self.checkbox_ignore_case,
-         self.checkbox_match_inflected_forms,
-         self.checkbox_match_whole_words,
-         self.checkbox_use_regex,
+            self.checkbox_ignore_case,
+            self.checkbox_match_inflected_forms,
+            self.checkbox_match_whole_words,
+            self.checkbox_use_regex,
 
-         self.search_checkbox_ignore_tags,
-         self.checkbox_match_tags) = wl_widgets.wl_widgets_search_settings(
+            self.search_checkbox_ignore_tags,
+            self.checkbox_match_tags
+        ) = wl_widgets.wl_widgets_search_settings(
             self,
             tab = 'concordancer'
         )
 
-        (self.label_context_settings,
-         self.button_context_settings) = wl_widgets.wl_widgets_context_settings(
+        (
+            self.label_context_settings,
+            self.button_context_settings
+        ) = wl_widgets.wl_widgets_context_settings(
             self,
             tab = 'concordancer'
         )
@@ -311,9 +314,11 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         # Table Settings
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
 
-        (self.checkbox_show_pct,
-         self.checkbox_show_cumulative,
-         self.checkbox_show_breakdown) = wl_widgets.wl_widgets_table_settings(
+        (
+            self.checkbox_show_pct,
+            self.checkbox_show_cumulative,
+            self.checkbox_show_breakdown
+        ) = wl_widgets.wl_widgets_table_settings(
             self,
             tables = [self.table_concordancer]
         )
@@ -394,7 +399,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
             settings = copy.deepcopy(self.main.settings_default['concordancer'])
         else:
             settings = copy.deepcopy(self.main.settings_custom['concordancer'])
-            
+
         # Parallel Mode
         self.checkbox_parallel_mode.setChecked(settings['parallel_mode'])
 
@@ -484,7 +489,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
             self.checkbox_match_tags.token_settings_changed()
 
             self.group_box_search_settings.setChecked(False)
-        
+
         self.main.wl_context_settings_concordancer.token_settings_changed()
 
     def search_settings_changed(self):
@@ -586,7 +591,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
         try:
             settings = self.main.settings_custom['concordancer']
             files = self.main.wl_files.get_selected_files()
-            
+
             for file in files:
                 text = copy.deepcopy(file['text'])
 
@@ -627,13 +632,15 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
                 for len_search_term in range(len_search_term_min, len_search_term_max + 1):
                     for i, ngram in enumerate(nltk.ngrams(tokens, len_search_term)):
-                        if (ngram in search_terms and
-                            wl_matching.check_context(
+                        if (
+                            ngram in search_terms
+                            and wl_matching.check_context(
                                 i, tokens,
                                 context_settings = settings['context_settings'],
                                 search_terms_inclusion = search_terms_inclusion,
-                                search_terms_exclusion = search_terms_exclusion)
-                            ):
+                                search_terms_exclusion = search_terms_exclusion
+                            )
+                        ):
                             concordance_line = []
 
                             # Sentence No.
@@ -792,10 +799,14 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                         if char_next.isalnum():
                                             len_context_right_last += 1
 
-                                    context_left = ([context_left_first] +
-                                                    text.tokens_flat[i - len(context_left) + 1: i])
-                                    context_right = (text.tokens_flat[i + len_search_term : i + len_search_term + len(context_right) - 1] +
-                                                     [context_right_last])
+                                    context_left = (
+                                        [context_left_first]
+                                        + text.tokens_flat[i - len(context_left) + 1: i]
+                                    )
+                                    context_right = (
+                                        text.tokens_flat[i + len_search_term : i + len_search_term + len(context_right) - 1]
+                                        + [context_right_last]
+                                    )
 
                             context_left = wl_nlp_utils.text_escape(context_left)
                             context_right = wl_nlp_utils.text_escape(context_right)
@@ -847,9 +858,11 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
             elif settings['generation_settings']['sampling_method'] == self.tr('Systematic (Fixed Interval)'):
                 sampling_interval = settings['generation_settings']['sample_size_systematic_fixed_interval']
 
-                concordance_lines = [line
-                                     for i, line in enumerate(concordance_lines)
-                                     if i % sampling_interval == 0]
+                concordance_lines = [
+                    line
+                    for i, line in enumerate(concordance_lines)
+                    if i % sampling_interval == 0
+                ]
             # Sampling - Systematic (Fixed Size)
             elif settings['generation_settings']['sampling_method'] == self.tr('Systematic (Fixed Size)'):
                 sample_size = settings['generation_settings']['sample_size_systematic_fixed_size']
@@ -873,16 +886,15 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                 if sample_size < len(concordance_lines):
                     concordance_lines_sampled = random.sample(concordance_lines, k = sample_size)
 
-                    concordance_lines = [line
-                                         for line in concordance_lines
-                                         if line in concordance_lines_sampled]
+                    concordance_lines = [
+                        line
+                        for line in concordance_lines
+                        if line in concordance_lines_sampled
+                    ]
         except Exception:
             err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-
-        time.sleep(0.1)
-
         self.worker_done.emit(err_msg, concordance_lines)
 
 class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
@@ -898,7 +910,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
             search_terms_files = []
             search_terms_total = set()
             search_terms_labels = set()
-            
+
             settings = self.main.settings_custom['concordancer']
             files = sorted(self.main.wl_files.get_selected_files(), key = lambda item: item['name'])
 
@@ -1031,9 +1043,6 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
             err_msg = traceback.format_exc()
 
         self.progress_updated.emit(self.tr('Rendering figure...'))
-
-        time.sleep(0.1)
-
         self.worker_done.emit(err_msg, points, labels)
 
 @wl_misc.log_timing
@@ -1045,12 +1054,10 @@ def generate_table(main, table):
             if concordance_lines:
                 table.settings = copy.deepcopy(main.settings_custom)
 
-                table.blockSignals(True)
-                table.setUpdatesEnabled(False)
+                table.clr_table(0)
+                table.model().setRowCount(len(concordance_lines))
 
-                table.clear_table(0)
-
-                table.setRowCount(len(concordance_lines))
+                table.disable_updates()
 
                 for i, concordance_line in enumerate(concordance_lines):
                     left_text, left_text_raw, left_text_search = concordance_line[0]
@@ -1073,32 +1080,32 @@ def generate_table(main, table):
                         main
                     )
 
-                    table.setCellWidget(i, 1, label_node)
+                    table.setIndexWidget(table.model().index(i, 1), label_node)
 
-                    table.cellWidget(i, 1).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                    table.indexWidget(table.model().index(i, 1)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
-                    table.cellWidget(i, 1).text_raw = node_text_raw
-                    table.cellWidget(i, 1).text_search = node_text_search
+                    table.indexWidget(table.model().index(i, 1)).text_raw = node_text_raw
+                    table.indexWidget(table.model().index(i, 1)).text_search = node_text_search
 
                     # Left
-                    table.setCellWidget(
-                        i, 0,
+                    table.setIndexWidget(
+                        table.model().index(i, 0),
                         wl_labels.Wl_Label_Html(left_text, main)
                     )
 
-                    table.cellWidget(i, 0).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                    table.indexWidget(table.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-                    table.cellWidget(i, 0).text_raw = left_text_raw
-                    table.cellWidget(i, 0).text_search = left_text_search
+                    table.indexWidget(table.model().index(i, 0)).text_raw = left_text_raw
+                    table.indexWidget(table.model().index(i, 0)).text_search = left_text_search
 
                     # Right
-                    table.setCellWidget(
-                        i, 2,
+                    table.setIndexWidget(
+                        table.model().index(i, 2),
                         wl_labels.Wl_Label_Html(right_text, main)
                     )
 
-                    table.cellWidget(i, 2).text_raw = right_text_raw
-                    table.cellWidget(i, 2).text_search = right_text_search
+                    table.indexWidget(table.model().index(i, 2)).text_raw = right_text_raw
+                    table.indexWidget(table.model().index(i, 2)).text_search = right_text_search
 
                     # Sentiment
                     if not isinstance(sentiment, str):
@@ -1118,14 +1125,11 @@ def generate_table(main, table):
                     table.set_item_num(i, 9, no_para, len_paras)
 
                     # File
-                    table.setItem(i, 10, QTableWidgetItem(file_name))
+                    table.model().setItem(i, 10, QStandardItem(file_name))
 
-                table.setUpdatesEnabled(True)
-                table.blockSignals(False)
+                table.enable_updates()
 
                 table.toggle_pct()
-
-                table.itemChanged.emit(table.item(0, 0))
 
                 wl_msgs.wl_msg_generate_table_success(main)
             else:
@@ -1141,8 +1145,10 @@ def generate_table(main, table):
     files = main.wl_files.get_selected_files()
 
     if wl_checking_files.check_files_on_loading(main, files):
-        if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
-            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+        if (
+            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
+            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
+        ):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_concordancer_table = Wl_Worker_Concordancer_Table(
@@ -1222,8 +1228,10 @@ def generate_fig(main):
 
     if wl_checking_files.check_files_on_loading(main, files):
         # Check for empty search terms
-        if (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
-            settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']):
+        if (
+            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
+            or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
+        ):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
             worker_concordancer_fig = Wl_Worker_Concordancer_Fig(

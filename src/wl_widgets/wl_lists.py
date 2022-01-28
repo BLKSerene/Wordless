@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import collections
 import os
 import re
 
@@ -27,7 +26,7 @@ from PyQt5.QtWidgets import *
 from wl_checking import wl_checking_files, wl_checking_misc
 from wl_dialogs import wl_dialogs_errs, wl_msg_boxes
 from wl_widgets import wl_boxes
-from wl_utils import wl_detection, wl_misc, wl_msgs
+from wl_utils import wl_detection, wl_misc
 
 class Wl_List_Add_Ins_Del_Clr(QListView):
     def __init__(
@@ -41,8 +40,6 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
         self.new_item_text = new_item_text if new_item_text else self.tr('New item')
         self.items_old = []
 
-        self.setSelectionMode(QAbstractItemView.ExtendedSelection)
-
         if editable:
             self.setEditTriggers(QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked)
         else:
@@ -50,6 +47,8 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
         if drag_drop:
             self.setDragDropMode(QAbstractItemView.InternalMove)
+
+        self.setSelectionMode(QAbstractItemView.ExtendedSelection)
 
         self.setModel(QStringListModel(self))
 
@@ -111,7 +110,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
                             wl_msg_boxes.Wl_Msg_Box_Warning(
                                 self.main,
                                 title = self.tr('Duplicates Found'),
-                                text = self.tr(f'''
+                                text = self.tr('''
                                     <div>The item that you have just edited already exists in the list, please specify another one!</div>
                                 ''')
                             ).exec_()
@@ -278,17 +277,21 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
                     </div>
                 '''))
 
-                dialog_err_files.table_err_files.setRowCount(len(file_paths_empty))
+                dialog_err_files.table_err_files.model().setRowCount(len(file_paths_empty))
+
+                dialog_err_files.table_err_files.disable_updates()
 
                 for i, file_path in enumerate(file_paths_empty):
-                    dialog_err_files.table_err_files.setItem(
+                    dialog_err_files.table_err_files.model().setItem(
                         i, 0,
-                        QTableWidgetItem(self.tr('Empty File'))
+                        QStandardItem(self.tr('Empty File'))
                     )
-                    dialog_err_files.table_err_files.setItem(
+                    dialog_err_files.table_err_files.model().setItem(
                         i, 1,
-                        QTableWidgetItem(file_path)
+                        QStandardItem(file_path)
                     )
+
+                dialog_err_files.table_err_files.enable_updates()
 
                 dialog_err_files.open()
 
@@ -412,18 +415,14 @@ class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
         self.model().dataChanged.emit(QModelIndex(), QModelIndex())
         self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
-class Combo_Box_File(QStyledItemDelegate):
-    def createEditor(self, parent, option, index):
-        return wl_boxes.Wl_Combo_Box_File(parent)
-
 class Wl_List_Files(Wl_List_Add_Ins_Del_Clr):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.setItemDelegate(Combo_Box_File(self))
+        self.setItemDelegate(wl_boxes.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_File))
 
-        self.main.wl_files.table.itemChanged.connect(self.wl_files_changed_buttons)
-        self.main.wl_files.table.itemChanged.connect(self.wl_files_changed_items)
+        self.main.wl_files.table.model().itemChanged.connect(self.wl_files_changed_buttons)
+        self.main.wl_files.table.model().itemChanged.connect(self.wl_files_changed_items)
 
     def selection_changed(self):
         super().selection_changed()
@@ -494,7 +493,7 @@ class Wl_List_Files(Wl_List_Add_Ins_Del_Clr):
 
                     break
 
-        if row == None:
+        if row is None:
             data.append(item_text)
             self.items_old.append(item_text)
         else:
@@ -503,7 +502,7 @@ class Wl_List_Files(Wl_List_Add_Ins_Del_Clr):
 
         self.model().setStringList(data)
 
-        if row == None:
+        if row is None:
             self.setCurrentIndex(self.model().index(self.model().rowCount() - 1))
         else:
             self.setCurrentIndex(self.model().index(row))

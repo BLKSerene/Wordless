@@ -16,10 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import os
-
-import pytest
-
 from wl_tests import wl_test_init
 from wl_utils import wl_conversion
 
@@ -89,20 +85,12 @@ def test_get_lang_family():
 
 def test_to_encoding_code():
     for encoding_text in settings_file_encodings.keys():
-        len_encoding_text = max([
-            len(encoding_text)
-            for encoding_text in settings_file_encodings
-        ])
         encoding_code = wl_conversion.to_encoding_code(main, encoding_text)
 
         assert encoding_code == settings_file_encodings[encoding_text]
 
 def test_to_encoding_text():
     for encoding_code in settings_file_encodings.values():
-        len_encoding_code = max([
-            len(encoding_code)
-            for encoding_code in settings_file_encodings.values()
-        ])
         encoding_text = wl_conversion.to_encoding_text(main, encoding_code)
 
         assert encoding_text == {

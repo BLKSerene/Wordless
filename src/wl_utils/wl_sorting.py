@@ -49,7 +49,7 @@ def sorted_tokens_freq_files_ref(tokens_freq_files, sort_by_col = 0, reverse = F
                 keys.append(-freq)
 
         keys.remove(-item[1][sort_by_col])
-        
+
         if reverse:
             keys.insert(0, item[1][sort_by_col])
         else:

@@ -78,7 +78,7 @@ def wl_msg_box_reset_layouts(main):
     return wl_msg_box_question(
         main,
         title = main.tr('Reset Layouts'),
-        text = main.tr(f'''
+        text = main.tr('''
             <div>Do you really want to reset all layouts to their default settings?</div>
         ''')
     )
@@ -87,7 +87,7 @@ def wl_msg_box_restore_default_settings(main):
     return wl_msg_box_question(
         main,
         title = main.tr('Restore default settings'),
-        text = main.tr(f'''
+        text = main.tr('''
             <div>Do you really want to reset all settings to their defaults?</div>
         ''')
     )
@@ -96,7 +96,7 @@ def wl_msg_box_reset_all_settings(main):
     return wl_msg_box_question(
         main,
         title = main.tr('Reset All Settings'),
-        text = main.tr(f'''
+        text = main.tr('''
             <div>Do you really want to reset all settings to their defaults?</div>
             <div><b>Warning: This will affect settings on all pages!</b></div>
         ''')
@@ -106,7 +106,7 @@ def wl_msg_box_reset_mappings(main):
     return wl_msg_box_question(
         main,
         title = main.tr('Reset Mappings'),
-        text = main.tr(f'''
+        text = main.tr('''
             <div>Do you really want to reset all mappings to their defaults?</div>
             <div><b>Note: This will only affect the mapping settings in the currently shown table.</b></div>
         ''')
@@ -116,23 +116,13 @@ def wl_msg_box_reset_all_mappings(main):
     return wl_msg_box_question(
         main,
         title = main.tr('Reset All Mappings'),
-        text = main.tr(f'''
+        text = main.tr('''
             <div>Do you really want to reset all mappings to their defaults?</div>
             <div><b>Warning: This will affect the mapping settings in all tables!</b></div>
         ''')
     )
 
 # Files
-def wl_msg_box_duplicate_file_name(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('Duplicate File Name'),
-        text = main.tr(f'''
-            <div>There is already a file with the same name in the file area.</div>
-            <div>Please specify a different file name.</div>
-        ''')
-    ).open()
-    
 def wl_msg_box_no_files_selected(main):
     Wl_Msg_Box_Warning(
         main,
@@ -210,7 +200,7 @@ def wl_msg_box_missing_search_terms_concordancer_parallel(main):
     return wl_msg_box_question(
         main,
         title = main.tr('Empty Search Terms'),
-        text = main.tr(f'''
+        text = main.tr('''
             <div>You have not specified any search terms. Do you want to search for additions in the target file?</div>
         ''')
     )
