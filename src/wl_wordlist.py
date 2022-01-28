@@ -18,15 +18,12 @@
 
 import collections
 import copy
-import re
-import time
 import traceback
 
+import numpy
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-
-import numpy
 
 from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
@@ -82,9 +79,9 @@ class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_wordlist, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_wordlist.button_generate_table, 2, 0)
         self.wrapper_table.layout().addWidget(self.table_wordlist.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_wordlist.button_export_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_wordlist.button_export_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_wordlist.button_clear, 2, 4)
+        self.wrapper_table.layout().addWidget(self.table_wordlist.button_exp_selected, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_wordlist.button_exp_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_wordlist.button_clr, 2, 4)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -96,11 +93,11 @@ class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
             self.checkbox_title_case,
             self.checkbox_nums,
             self.checkbox_puncs,
-    
+
             self.checkbox_treat_as_lowercase,
             self.checkbox_lemmatize_tokens,
             self.checkbox_filter_stop_words,
-    
+
             self.checkbox_ignore_tags,
             self.checkbox_use_tags
         ) = wl_widgets.wl_widgets_token_settings(self)
@@ -145,7 +142,8 @@ class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
             self.label_measure_dispersion,
             self.combo_box_measure_dispersion
         ) = wl_widgets.wl_widgets_measure_dispersion(self)
-        (   self.label_measure_adjusted_freq,
+        (
+            self.label_measure_adjusted_freq,
             self.combo_box_measure_adjusted_freq
         ) = wl_widgets.wl_widgets_measure_adjusted_freq(self)
 
@@ -200,7 +198,8 @@ class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
         # Figure Settings
         self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
 
-        (   self.label_graph_type,
+        (
+            self.label_graph_type,
             self.combo_box_graph_type,
             self.label_sort_by_file,
             self.combo_box_sort_by_file,
@@ -421,15 +420,15 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
             # Dispersion & Adjusted Frequency
             text_measure_dispersion = settings['generation_settings']['measure_dispersion']
             text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
-            
+
             measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
             measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
-            
+
             tokens_total = self.tokens_freq_files[-1].keys()
-            
+
             for text in texts:
                 tokens_stats_file = {}
-                
+
                 # Dispersion
                 number_sections = self.main.settings_custom['measures']['dispersion']['general']['number_sections']
 
@@ -470,9 +469,6 @@ class Wl_Worker_Wordlist_Table(Wl_Worker_Wordlist):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering table...'))
-
-        time.sleep(0.1)
-
         self.worker_done.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.tokens_freq_files),
@@ -484,9 +480,6 @@ class Wl_Worker_Wordlist_Fig(Wl_Worker_Wordlist):
         super().run()
 
         self.progress_updated.emit(self.tr('Rendering figure...'))
-
-        time.sleep(0.1)
-
         self.worker_done.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.tokens_freq_files),
@@ -498,8 +491,6 @@ def generate_table(main, table):
     def update_gui(err_msg, tokens_freq_files, tokens_stats_files):
         if not err_msg:
             if tokens_freq_files:
-                table.clear_table()
-
                 table.settings = copy.deepcopy(main.settings_custom)
 
                 text_measure_dispersion = settings['generation_settings']['measure_dispersion']
@@ -511,51 +502,53 @@ def generate_table(main, table):
                 if settings['token_settings']['use_tags']:
                     table.horizontalHeaderItem(1).setText(main.tr('Tag'))
 
+                table.clr_table()
+
                 # Insert columns (files)
                 for file in files:
-                    table.insert_col(
-                        table.columnCount() - 2,
+                    table.ins_col(
+                        table.model().columnCount() - 2,
                         main.tr(f'[{file["name"]}]\nFrequency'),
                         is_int = True, is_cumulative = True, is_breakdown = True
                     )
-                    table.insert_col(
-                        table.columnCount() - 2,
+                    table.ins_col(
+                        table.model().columnCount() - 2,
                         main.tr(f'[{file["name"]}]\nFrequency %'),
                         is_pct = True, is_cumulative = True, is_breakdown = True
                     )
 
-                    table.insert_col(
-                        table.columnCount() - 2,
+                    table.ins_col(
+                        table.model().columnCount() - 2,
                         main.tr(f'[{file["name"]}]\n{text_dispersion}'),
                         is_float = True, is_breakdown = True
                     )
 
-                    table.insert_col(
-                        table.columnCount() - 2,
+                    table.ins_col(
+                        table.model().columnCount() - 2,
                         main.tr(f'[{file["name"]}]\n{text_adjusted_freq}'),
                         is_float = True, is_breakdown = True
                     )
 
                 # Insert columns (total)
-                table.insert_col(
-                    table.columnCount() - 2,
+                table.ins_col(
+                    table.model().columnCount() - 2,
                     main.tr('Total\nFrequency'),
                     is_int = True, is_cumulative = True
                 )
-                table.insert_col(
-                    table.columnCount() - 2,
+                table.ins_col(
+                    table.model().columnCount() - 2,
                     main.tr('Total\nFrequency %'),
                     is_pct = True, is_cumulative = True
                 )
 
-                table.insert_col(
-                    table.columnCount() - 2,
+                table.ins_col(
+                    table.model().columnCount() - 2,
                     main.tr(f'Total\n{text_dispersion}'),
                     is_float = True
                 )
 
-                table.insert_col(
-                    table.columnCount() - 2,
+                table.ins_col(
+                    table.model().columnCount() - 2,
                     main.tr(f'Total\n{text_adjusted_freq}'),
                     is_float = True
                 )
@@ -565,10 +558,6 @@ def generate_table(main, table):
                     table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')),
                     Qt.DescendingOrder
                 )
-
-                table.blockSignals(True)
-                table.setSortingEnabled(False)
-                table.setUpdatesEnabled(False)
 
                 cols_freq = table.find_cols(main.tr('\nFrequency'))
                 cols_freq_pct = table.find_cols(main.tr('\nFrequency %'))
@@ -584,7 +573,9 @@ def generate_table(main, table):
                 freq_totals = numpy.array(list(tokens_freq_files.values())).sum(axis = 0)
                 len_files = len(files)
 
-                table.setRowCount(len(tokens_freq_files))
+                table.model().setRowCount(len(tokens_freq_files))
+
+                table.disable_updates()
 
                 for i, (token, freq_files) in enumerate(wl_sorting.sorted_tokens_freq_files(tokens_freq_files)):
                     stats_files = tokens_stats_files[token]
@@ -593,7 +584,7 @@ def generate_table(main, table):
                     table.set_item_num(i, 0, -1)
 
                     # Token
-                    table.setItem(i, 1, wl_tables.Wl_Table_Item(token))
+                    table.model().setItem(i, 1, wl_tables.Wl_Table_Item(token))
 
                     # Frequency
                     for j, freq in enumerate(freq_files):
@@ -613,16 +604,12 @@ def generate_table(main, table):
                     table.set_item_num(i, col_files_found, num_files_found)
                     table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
 
-                table.setSortingEnabled(True)
-                table.setUpdatesEnabled(True)
-                table.blockSignals(False)
+                table.enable_updates()
 
                 table.toggle_pct()
                 table.toggle_cumulative()
                 table.toggle_breakdown()
                 table.update_ranks()
-
-                table.itemChanged.emit(table.item(0, 0))
 
                 wl_msgs.wl_msg_generate_table_success(main)
             else:
@@ -661,7 +648,7 @@ def generate_fig(main):
 
                 col_dispersion = main.settings_global['measures_dispersion'][measure_dispersion]['col']
                 col_adjusted_freq = main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col']
-                
+
                 if settings['fig_settings']['use_data'] == main.tr('Frequency'):
                     wl_figs_freqs.wl_fig_freq(
                         main, tokens_freq_files,

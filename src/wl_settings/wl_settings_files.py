@@ -23,6 +23,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wl_checking import wl_checking_misc
 from wl_dialogs import wl_msg_boxes
 from wl_settings import wl_settings
 from wl_utils import wl_conversion
@@ -135,345 +136,289 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         return True
 
 class Wl_Table_Tags(wl_tables.Wl_Table):
-    def __init__(self, main):
+    def __init__(self, parent, settings_tags, default_type, default_level):
         super().__init__(
-            main,
+            parent,
             headers = [
-                main.tr('Type'),
-                main.tr('Level'),
-                main.tr('Opening Tag'),
-                main.tr('Closing Tag'),
-                main.tr('Preview')
+                parent.tr('Type'),
+                parent.tr('Level'),
+                parent.tr('Opening Tag'),
+                parent.tr('Closing Tag'),
+                parent.tr('Preview')
             ],
             header_orientation = 'horizontal',
-            drag_drop_enabled = True
+            editable = True,
+            drag_drop = True
         )
+
+        self.settings_tags = settings_tags
+        self.default_type = default_type
+        self.default_level = default_level
 
         self.verticalHeader().setHidden(True)
         self.setFixedHeight(125)
 
-        self.itemChanged.connect(self.item_changed)
-        self.itemSelectionChanged.connect(self.selection_changed)
+        self.setItemDelegateForColumn(0, wl_boxes.Wl_Item_Delegate_Combo_Box(
+            parent = self,
+            items = [
+                self.tr('Embedded'),
+                self.tr('Non-embedded')
+            ]
+        ))
+        self.setItemDelegateForColumn(3, wl_tables.Wl_Item_Delegate_Uneditable(self))
+        self.setItemDelegateForColumn(4, wl_tables.Wl_Item_Delegate_Uneditable(self))
+
+        self.model().itemChanged.connect(self.item_changed)
+        self.selectionModel().selectionChanged.connect(self.selection_changed)
 
         self.button_add = QPushButton(self.tr('Add'), self)
-        self.button_insert = QPushButton(self.tr('Insert'), self)
-        self.button_remove = QPushButton(self.tr('Remove'), self)
-        self.button_clear = QPushButton(self.tr('Clear'), self)
+        self.button_ins = QPushButton(self.tr('Insert'), self)
+        self.button_del = QPushButton(self.tr('Remove'), self)
+        self.button_clr = QPushButton(self.tr('Clear'), self)
         self.button_reset = QPushButton(self.tr('Reset'), self)
 
-        self.button_add.clicked.connect(self.add_item)
-        self.button_insert.clicked.connect(self.insert_item)
-        self.button_remove.clicked.connect(self.remove_item)
-        self.button_clear.clicked.connect(lambda: self.clear_table(0))
+        self.button_add.clicked.connect(self.add_row)
+        self.button_ins.clicked.connect(self.ins_row)
+        self.button_del.clicked.connect(self.del_row)
+        self.button_clr.clicked.connect(lambda: self.clr_table(0))
         self.button_reset.clicked.connect(self.reset_table)
 
         self.reset_table()
 
-    def item_changed(self, item = None):
-        self.blockSignals(True)
+    def item_changed(self, item):
+        super().item_changed(item)
 
-        for row in range(self.rowCount()):
-            opening_tag_widget = self.cellWidget(row, 2)
+        if not self.is_empty():
+            for row in range(self.model().rowCount()):
+                item_opening_tag = self.model().item(row, 2)
 
-            # Opening Tag
-            if re.search(r'^\s*$', opening_tag_widget.text()):
-                wl_msg_boxes.Wl_Msg_Box_Warning(
-                    self.main,
-                    title = self.tr('Empty Opening Tag'),
-                    text = self.tr(f'''
-                        <div>The opening tag should not be left empty!</div>
-                    ''')
-                ).open()
+                # Opening Tag
+                if re.search(r'^\s*$', item_opening_tag.text()):
+                    wl_msg_boxes.Wl_Msg_Box_Warning(
+                        self.main,
+                        title = self.tr('Empty Opening Tag'),
+                        text = self.tr('''
+                            <div>The opening tag should not be left empty!</div>
+                        ''')
+                    ).exec_()
 
-                opening_tag_widget.setText(opening_tag_widget.text_old)
-                opening_tag_widget.setFocus()
+                    item_opening_tag.setText(item_opening_tag.text_old)
 
-                self.blockSignals(False)
+                    self.closePersistentEditor(item_opening_tag.index())
+                    self.edit(item_opening_tag.index())
 
-                return
+                    return
 
-        # Check for duplicate tags
-        if item:
-            item_row = item.row()
-            item_col = item.column()
+            # Check for duplicate tags
+            if item.column() == 2:
+                for row in range(self.model().rowCount()):
+                    if row != item.row() and self.model().item(row, 2).text() == item.text():
+                        wl_msg_boxes.Wl_Msg_Box_Warning(
+                            self.main,
+                            title = self.tr('Duplicate Tags'),
+                            text = self.tr('''
+                                <div>The tag that you have specified already exists in the table!</div>
+                            ''')
+                        ).exec_()
 
-            if item_col == 2:
-                item_widget = self.cellWidget(item_row, 2)
+                        item.setText(item.text_old)
 
-                for row in range(self.rowCount()):
-                    if row != item_row:
-                        if self.cellWidget(row, 2).text() == item_widget.text():
-                            wl_msg_boxes.Wl_Msg_Box_Warning(
-                                self.main,
-                                title = self.tr('Duplicate Tags'),
-                                text = self.tr(f'''
-                                    <div>The tag that you have specified already exists in the table!</div>
-                                ''')
-                            ).open()
+                        self.closePersistentEditor(item.index())
+                        self.edit(item.index())
 
-                            item_widget.setText(item_widget.text_old)
-                            item_widget.setFocus()
+                        break
 
-                            self.blockSignals(False)
+                item.text_old = item.text()
 
-                            return
+            if item.column() in [0, 1, 2]:
+                self.disable_updates()
 
-        for row in range(self.rowCount()):
-            type_text = self.cellWidget(row, 0).currentText()
-            opening_tag_text = self.cellWidget(row, 2).text()
-            closing_tag = self.item(row, 3)
-            preview = self.item(row, 4)
+                for row in range(self.model().rowCount()):
+                    type_text = self.model().item(row, 0).text()
+                    opening_tag_text = self.model().item(row, 2).text()
+                    closing_tag = self.model().item(row, 3)
+                    preview = self.model().item(row, 4)
 
-            # Closing Tag
-            if type_text == self.tr('Embedded'):
-                closing_tag.setText(self.tr('N/A'))
-            elif type_text == self.tr('Non-embedded'):
-                # Add a "/" before the first non-punctuation character
-                re_non_punc = re.search(r'\w|\*', opening_tag_text)
+                    # Closing Tag
+                    if type_text == self.tr('Embedded'):
+                        closing_tag.setText(self.tr('N/A'))
+                    elif type_text == self.tr('Non-embedded'):
+                        # Add a "/" before the first non-punctuation character
+                        re_non_punc = re.search(r'\w|\*', opening_tag_text)
 
-                if re_non_punc:
-                    i_non_punc = re_non_punc.start()
-                else:
-                    i_non_punc = 1
+                        if re_non_punc:
+                            i_non_punc = re_non_punc.start()
+                        else:
+                            i_non_punc = 1
 
-                closing_tag.setText(f'{opening_tag_text[:i_non_punc]}/{opening_tag_text[i_non_punc:]}')
+                        closing_tag.setText(f'{opening_tag_text[:i_non_punc]}/{opening_tag_text[i_non_punc:]}')
 
-            # Preview
-            if type_text == self.tr('Embedded'):
-                preview.setText(self.tr(f'token{opening_tag_text}TAG'))
-            elif type_text == self.tr('Non-embedded'):
-                preview.setText(self.tr(f'{opening_tag_text}token{self.item(row, 3).text()}'))
+                    # Preview
+                    if type_text == self.tr('Embedded'):
+                        preview.setText(self.tr(f'token{opening_tag_text}TAG'))
+                    elif type_text == self.tr('Non-embedded'):
+                        preview.setText(self.tr(f'{opening_tag_text}token{self.model().item(row, 3).text()}'))
 
-        self.blockSignals(False)
+                self.enable_updates()
 
-        if self.rowCount():
-            self.button_remove.setEnabled(True)
-            self.button_clear.setEnabled(True)
+        if self.model().rowCount():
+            self.button_del.setEnabled(True)
+            self.button_clr.setEnabled(True)
         else:
-            self.button_remove.setEnabled(False)
-            self.button_clear.setEnabled(False)
+            self.button_del.setEnabled(False)
+            self.button_clr.setEnabled(False)
 
         self.selection_changed()
 
     def selection_changed(self):
-        if self.selectedIndexes():
-            self.button_insert.setEnabled(True)
+        if self.selectionModel().selectedIndexes():
+            self.button_ins.setEnabled(True)
 
-            if self.rowCount():
-                self.button_remove.setEnabled(True)
+            if self.model().rowCount():
+                self.button_del.setEnabled(True)
             else:
-                self.button_remove.setEnabled(False)
+                self.button_del.setEnabled(False)
         else:
-            self.button_insert.setEnabled(False)
-            self.button_remove.setEnabled(False)
+            self.button_ins.setEnabled(False)
+            self.button_del.setEnabled(False)
 
-    def _new_item_type(self):
-        new_item_type = wl_boxes.Wl_Combo_Box(self)
+    def _add_row(self, row = None, type_ = '', level = '', opening_tag = ''):
+        if not type_:
+            type_ = self.default_type
+        if not level:
+            level = self.default_level
+        if not opening_tag:
+            opening_tags = [self.model().item(i, 2).text() for i in range(self.model().rowCount())]
+            opening_tag = wl_checking_misc.check_new_name(self.tr('Tag'), opening_tags)
 
-        new_item_type.addItems([
-            self.tr('Embedded'),
-            self.tr('Non-embedded')
-        ])
+        item_opening_tag = QStandardItem(opening_tag)
+        item_opening_tag.text_old = opening_tag
 
-        return new_item_type
+        if row is None:
+            self.model().appendRow([
+                QStandardItem(type_),
+                QStandardItem(level),
+                item_opening_tag,
+                QStandardItem(),
+                QStandardItem()
+            ])
+        else:
+            self.model().insertRow(row, [
+                QStandardItem(type_),
+                QStandardItem(level),
+                item_opening_tag,
+                QStandardItem(),
+                QStandardItem()
+            ])
 
-    def _new_item_level(self):
-        pass
+        self.model().itemChanged.emit(item_opening_tag)
 
-    def _new_item_opening_tag(self, item_row):
-        i = 1
+    def add_row(self, type_ = '', level = '', opening_tag = ''):
+        self._add_row(type_, level, opening_tag)
+        self.setCurrentIndex(self.model().index(self.model().rowCount(), 0))
 
-        # Check for duplicate tag names if there are more than 1 row after the new row is added to the table
-        dup = True
+    def ins_row(self, type_ = '', level = '', opening_tag = ''):
+        row = self.get_selected_rows()[0]
 
-        while dup:
-            if self.rowCount() > 1:
-                for j in range(self.rowCount()):
-                    if j != item_row and self.cellWidget(j, 2).text() == f'Tag_{i}':
-                        i += 1
+        self._add_row(row = row, type_ = type_, level = level, opening_tag = opening_tag)
+        self.setCurrentIndex(self.model().index(row, 0))
 
-                        break
-                    elif j == self.rowCount() - 1:
-                        dup = False
-            else:
-                dup = False
-
-        new_item = QLineEdit(f'Tag_{i}')
-        new_item.text_old = new_item.text()
-        
-        return new_item
-
-    def add_item(self, texts = []):
-        self.blockSignals(True)
-
-        self.setRowCount(self.rowCount() + 1)
-
-        row = self.rowCount() - 1
-        
-        self.setCellWidget(row, 0, self._new_item_type())
-        self.setCellWidget(row, 1, self._new_item_level())
-        self.setCellWidget(row, 2, self._new_item_opening_tag(row))
-        self.setItem(row, 0, QTableWidgetItem())
-        self.setItem(row, 1, QTableWidgetItem())
-        self.setItem(row, 2, QTableWidgetItem())
-
-        self.setItem(row, 3, QTableWidgetItem())
-        self.setItem(row, 4, QTableWidgetItem())
-
-        if texts:
-            self.cellWidget(row, 0).setCurrentText(texts[0])
-            self.cellWidget(row, 1).setCurrentText(texts[1])
-            self.cellWidget(row, 2).setText(texts[2])
-            self.cellWidget(row, 2).text_old = texts[2]
-
-        self.cellWidget(row, 0).currentTextChanged.connect(lambda: self.item_changed(item = self.item(row, 0)))
-        self.cellWidget(row, 1).currentTextChanged.connect(lambda: self.item_changed(item = self.item(row, 1)))
-        self.cellWidget(row, 2).editingFinished.connect(lambda: self.item_changed(item = self.item(row, 2)))
-
-        self.blockSignals(False)
-
-        self.item_changed()
-
-    def insert_item(self):
-        self.blockSignals(True)
-
-        row = self.selectedIndexes()[0].row()
-
-        self.insertRow(row)
-
-        self.setCellWidget(row, 0, self._new_item_type())
-        self.setCellWidget(row, 1, self._new_item_level())
-        self.setCellWidget(row, 2, self._new_item_opening_tag(row))
-        self.setItem(row, 0, QTableWidgetItem())
-        self.setItem(row, 1, QTableWidgetItem())
-        self.setItem(row, 2, QTableWidgetItem())
-
-        self.setItem(row, 3, QTableWidgetItem())
-        self.setItem(row, 4, QTableWidgetItem())
-
-        self.cellWidget(row, 0).currentTextChanged.connect(lambda: self.item_changed(item = self.item(row, 0)))
-        self.cellWidget(row, 1).currentTextChanged.connect(lambda: self.item_changed(item = self.item(row, 1)))
-        self.cellWidget(row, 2).editingFinished.connect(lambda: self.item_changed(item = self.item(row, 2)))
-
-        self.blockSignals(False)
-
-        self.item_changed()
-
-    def remove_item(self):
-        self.blockSignals(True)
-
+    def del_row(self):
         for i in reversed(self.get_selected_rows()):
-            self.removeRow(i)
+            self.model().removeRow(i)
 
-        self.blockSignals(False)
-
-        self.item_changed()
+        self.model().itemChanged.emit(QStandardItem())
 
     def reset_table(self):
-        pass
+        self.clr_table(0)
+
+        for type_, level, opening_tag in self.main.settings_default['tags'][self.settings_tags]:
+            self._add_row(type_ = type_, level = level, opening_tag = opening_tag)
 
     def get_tags(self):
         tags = []
 
-        for row in range(self.rowCount()):
+        for row in range(self.model().rowCount()):
             tags.append([
-                self.cellWidget(row, 0).currentText(),
-                self.cellWidget(row, 1).currentText(),
-                self.cellWidget(row, 2).text(),
-                self.item(row, 3).text()
+                self.model().item(row, 0).text(),
+                self.model().item(row, 1).text(),
+                self.model().item(row, 2).text()
             ])
-
-            self.cellWidget(row, 2).text_old = self.cellWidget(row, 2).text()
 
         return tags
 
 class Wl_Table_Tags_Header(Wl_Table_Tags):
-    def _new_item_level(self, text = None):
-        new_item_level = wl_boxes.Wl_Combo_Box(self)
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            settings_tags = 'tags_header',
+            default_type = parent.tr('Non-embedded'),
+            default_level = parent.tr('Header')
+        )
 
-        new_item_level.addItems([
-            self.tr('Header')
-        ])
-
-        if text:
-            new_item_level.setCurrentText(text)
-
-        return new_item_level
-
-    def reset_table(self):
-        self.clear_table(0)
-
-        for tags in self.main.settings_default['tags']['tags_header']:
-            self.add_item(texts = tags)
+        self.setItemDelegateForColumn(1, wl_boxes.Wl_Item_Delegate_Combo_Box(
+            parent = self,
+            items = [
+                self.tr('Header')
+            ]
+        ))
 
 class Wl_Table_Tags_Body(Wl_Table_Tags):
-    def _new_item_level(self, text = None):
-        new_item_level = wl_boxes.Wl_Combo_Box(self)
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            settings_tags = 'tags_body',
+            default_type = parent.tr('Embedded'),
+            default_level = parent.tr('Part of Speech')
+        )
 
-        new_item_level.addItems([
-            self.tr('Part of Speech'),
-            self.tr('Others')
-        ])
-
-        if text:
-            new_item_level.setCurrentText(text)
-
-        return new_item_level
-
-    def reset_table(self):
-        self.clear_table(0)
-
-        for tags in self.main.settings_default['tags']['tags_body']:
-            self.add_item(texts = tags)
+        self.setItemDelegateForColumn(1, wl_boxes.Wl_Item_Delegate_Combo_Box(
+            parent = self,
+            items = [
+                self.tr('Part of Speech'),
+                self.tr('Others')
+            ]
+        ))
 
 class Wl_Table_Tags_Xml(Wl_Table_Tags):
-    def _new_item_level(self, text = None):
-        new_item_level = wl_boxes.Wl_Combo_Box(self)
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            settings_tags = 'tags_xml',
+            default_type = parent.tr('Non-embedded'),
+            default_level = parent.tr('Paragraph')
+        )
 
-        new_item_level.addItems([
-            self.tr('Paragraph'),
-            self.tr('Sentence'),
-            self.tr('Word')
-        ])
+        self.setItemDelegateForColumn(1, wl_boxes.Wl_Item_Delegate_Combo_Box(
+            parent = self,
+            items = [
+                self.tr('Paragraph'),
+                self.tr('Sentence'),
+                self.tr('Word')
+            ]
+        ))
 
-        if text:
-            new_item_level.setCurrentText(text)
-
-        return new_item_level
-
-    def item_changed(self, item = None):
-        self.blockSignals(True)
-
-        for row in range(self.rowCount()):
-            opening_tag_widget = self.cellWidget(row, 2)
-            opening_tag_text = opening_tag_widget.text()
+    def item_changed(self, item):
+        for row in range(self.model().rowCount()):
+            opening_tag_item = self.model().item(row, 2)
+            opening_tag_text = opening_tag_item.text()
 
             # Check if the XML tags are valid
             if opening_tag_text and not re.search(r'^\<[^<>/\s]+?\>$', opening_tag_text):
                 wl_msg_boxes.Wl_Msg_Box_Warning(
                     self.main,
                     title = self.tr('Invalid XML Tag'),
-                    text = self.tr(f'''
+                    text = self.tr('''
                         <div>The specified XML tag is invalid!</div>
                     ''')
                 ).open()
 
-                opening_tag_widget.setText(opening_tag_widget.text_old)
-                opening_tag_widget.setFocus()
-
-                self.blockSignals(False)
+                self.closePersistentEditor(opening_tag_item.index())
+                self.edit(opening_tag_item.index())
 
                 return
 
-        self.blockSignals(False)
-
         super().item_changed(item = item)
-
-    def reset_table(self):
-        self.clear_table(0)
-
-        for tags in self.main.settings_default['tags']['tags_xml']:
-            self.add_item(texts = tags)
 
 class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
@@ -491,9 +436,9 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         group_box_header_tag_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_header_tag_settings.layout().addWidget(self.table_tags_header, 0, 0, 1, 5)
         group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_add, 1, 0)
-        group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_insert, 1, 1)
-        group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_remove, 1, 2)
-        group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_clear, 1, 3)
+        group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_ins, 1, 1)
+        group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_del, 1, 2)
+        group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_clr, 1, 3)
         group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_reset, 1, 4)
         group_box_header_tag_settings.layout().addWidget(self.label_tags_header, 2, 0, 1, 5)
 
@@ -508,9 +453,9 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         group_box_body_tag_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_body_tag_settings.layout().addWidget(self.table_tags_body, 0, 0, 1, 5)
         group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_add, 1, 0)
-        group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_insert, 1, 1)
-        group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_remove, 1, 2)
-        group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_clear, 1, 3)
+        group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_ins, 1, 1)
+        group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_del, 1, 2)
+        group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_clr, 1, 3)
         group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_reset, 1, 4)
         group_box_body_tag_settings.layout().addWidget(self.label_tags_body, 2, 0, 1, 5)
 
@@ -524,9 +469,9 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         group_box_xml_tag_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml, 0, 0, 1, 5)
         group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_add, 1, 0)
-        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_insert, 1, 1)
-        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_remove, 1, 2)
-        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_clear, 1, 3)
+        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_ins, 1, 1)
+        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_del, 1, 2)
+        group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_clr, 1, 3)
         group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_reset, 1, 4)
 
         group_box_xml_tag_settings.layout().setRowStretch(2, 1)
@@ -545,18 +490,18 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
-        self.table_tags_header.clear_table(0)
-        self.table_tags_body.clear_table(0)
-        self.table_tags_xml.clear_table(0)
+        self.table_tags_header.clr_table(0)
+        self.table_tags_body.clr_table(0)
+        self.table_tags_xml.clr_table(0)
 
-        for tags in settings['tags_header']:
-            self.table_tags_header.add_item(texts = tags)
+        for type_, level, opening_tag in settings['tags_header']:
+            self.table_tags_header._add_row(type_ = type_, level = level, opening_tag = opening_tag)
 
-        for tags in settings['tags_body']:
-            self.table_tags_body.add_item(texts = tags)
+        for type_, level, opening_tag in settings['tags_body']:
+            self.table_tags_body._add_row(type_ = type_, level = level, opening_tag = opening_tag)
 
-        for tags in settings['tags_xml']:
-            self.table_tags_xml.add_item(texts = tags)
+        for type_, level, opening_tag in settings['tags_xml']:
+            self.table_tags_xml._add_row(type_ = type_, level = level, opening_tag = opening_tag)
 
     def apply_settings(self):
         self.settings_custom['tags_header'] = self.table_tags_header.get_tags()

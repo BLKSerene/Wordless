@@ -83,7 +83,7 @@ def test_pos_tag(lang, pos_tagger):
     # Universal tags should not all be "X"
     assert any([tag for token, tag in tokens_tagged_universal if tag != 'X'])
     assert any([tag for token, tag in tokens_tagged_universal_tokenized if tag != 'X'])
-    
+
     # Tokenization should not be modified
     assert len(tokens) == len(tokens_tagged_tokenized) == len(tokens_tagged_universal_tokenized)
 

@@ -26,15 +26,15 @@ def get_re_tags(main):
     tags_embedded = []
     tags_non_embedded = []
 
-    for tag_type, _, tag_opening, tag_closing in main.settings_custom['tags']['tags_body']:
+    for tag_type, _, tag_opening in main.settings_custom['tags']['tags_body']:
         if tag_type == main.tr('Embedded'):
             tag_opening = re.escape(tag_opening)
 
             tags_embedded.append(fr'{tag_opening}[^{tag_opening}]+?(?=\s|$)')
         elif tag_type == main.tr('Non-embedded'):
-            tag_opening_start, tag_opening_end = tag_opening.split('*')
-            tag_opening_start = re.escape(tag_opening_start)
-            tag_opening_end = re.escape(tag_opening_end)
+            tags_opening = re.split(r'[\w*]+', tag_opening)
+            tag_opening_start = re.escape(tags_opening[0])
+            tag_opening_end = re.escape(tags_opening[-1])
 
             tags_non_embedded.append(fr'{tag_opening_start}/?[^{tag_opening_end}]*?{tag_opening_end}')
 
@@ -44,12 +44,22 @@ def get_re_tags_with_tokens(main, tag_type):
     tags_embedded = []
     tags_non_embedded = []
 
-    for tag_type, _, tag_opening, tag_closing in main.settings_custom['tags'][f'tags_{tag_type}']:
+    for tag_type, _, tag_opening in main.settings_custom['tags'][f'tags_{tag_type}']:
         if tag_type == main.tr('Embedded'):
             tag_opening = re.escape(tag_opening)
 
             tags_embedded.append(fr'(?<=^|\s)[^{tag_opening}]+?{tag_opening}[^{tag_opening}]+?(?=\s|$)')
         elif tag_type == main.tr('Non-embedded'):
+            # Closing tags
+            re_non_punc = re.search(r'\w|\*', tag_opening)
+
+            if re_non_punc:
+                i_non_punc = re_non_punc.start()
+            else:
+                i_non_punc = 1
+
+            tag_closing = f'{tag_opening[:i_non_punc]}/{tag_opening[i_non_punc:]}'
+
             tag_opening = re.escape(tag_opening)
             tag_closing = re.escape(tag_closing)
 
@@ -104,7 +114,7 @@ def match_ngrams(
                     tokens_searched = [re.sub(re_tags, '', token) for token in tokens]
         else:
             tokens_searched = tokens
-    
+
     if tokens_searched:
         if settings['use_regex']:
             for search_term_token in search_term_tokens:
@@ -150,11 +160,11 @@ def match_ngrams(
                     flags = re.IGNORECASE
                 else:
                     flags = 0
-                
+
                 for token, lemma_searched in zip(tokens, lemmas_searched):
                     if re.search(lemma_matched, lemma_searched, flags = flags):
                         tokens_matched[token_matched].add(token)
-    
+
     if search_settings['use_regex']:
         for search_term in search_terms:
             search_term_tokens_matched = []
@@ -177,7 +187,7 @@ def match_ngrams(
 
             for item in itertools.product(*search_term_tokens_matched):
                 search_terms_matched.add(item)
-    
+
     return search_terms_matched
 
 def match_search_terms(
@@ -185,8 +195,10 @@ def match_search_terms(
     lang, tokenized, tagged,
     token_settings, search_settings
 ):
-    if ('search_settings' in search_settings and search_settings['search_settings'] or
-        'search_settings' not in search_settings):
+    if (
+        'search_settings' in search_settings and search_settings['search_settings']
+        or 'search_settings' not in search_settings
+    ):
         if search_settings['multi_search_mode']:
             search_terms = search_settings['search_terms']
         else:

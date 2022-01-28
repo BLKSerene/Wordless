@@ -43,13 +43,13 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         lang = lang,
         word_tokenizer = word_tokenizer
     )
-    
+
     # spaCy
     if word_tokenizer.startswith('spacy_'):
         # Chinese, English, German, Portuguese
         if not lang.startswith('srp_'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-        
+
         nlp = main.__dict__[f'spacy_nlp_{lang}']
 
         # Input of SudachiPy cannot be more than 49149 bytes
@@ -64,13 +64,13 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
             tokens_multilevel.append([])
 
             len_sents = len(list(doc.sents))
-            
+
             for i, sentence in enumerate(doc.sents):
                 tokens_sentence = []
-                
+
                 tokens = [token.text for token in sentence]
                 len_tokens = len(tokens)
-                
+
                 for j, token in enumerate(tokens):
                     # Split paragraphs by new line character
                     len_lines = len(re.findall(r'\n', token))
@@ -123,7 +123,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                 elif word_tokenizer == 'sacremoses_moses':
                     lang = wl_conversion.remove_lang_code_suffixes(main, lang)
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang)
-                    
+
                     for sentence in sentences:
                         tokens_multilevel[-1].append(main.__dict__[f'sacremoses_moses_tokenizer_{lang}'].tokenize(sentence, escape = False))
                 # Chinese
@@ -227,8 +227,8 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                         for j, char in enumerate(sentence[i:]):
                                             if i + j + 1 == len(sentence) or not wl_checking_unicode.is_kana(sentence[i + j + 1]):
                                                 tokens.extend(wl_word_tokenize(
-                                                     main, sentence[non_han_start : i + j + 1],
-                                                     lang = 'jpn'
+                                                    main, sentence[non_han_start : i + j + 1],
+                                                    lang = 'jpn'
                                                 ))
                                                 tokens = list(wl_misc.flatten_list(tokens))
 
@@ -320,7 +320,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
                     for sentence in sentences:
                         tokens_multilevel[-1].append(underthesea.word_tokenize(str(sentence)))
-    
+
     # Remove empty tokens and strip whitespace
     for para in tokens_multilevel:
         for i, sentence in enumerate(para):
@@ -329,7 +329,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                 for token in sentence
                 if token.strip()
             ]
-    
+
     # Record token boundaries
     if lang in ['zho_cn', 'zho_tw', 'jpn']:
         for para in tokens_multilevel:
@@ -341,7 +341,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
             for sentence in para:
                 if sentence:
                     sentence[-1] = wl_texts.Wl_Token(sentence[-1], boundary = ' ', sentence_ending = True)
-    
+
     return tokens_multilevel
 
 def wl_word_tokenize_flat(main, text, lang, word_tokenizer = 'default'):

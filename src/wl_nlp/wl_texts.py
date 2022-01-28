@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import copy
 import os
 import re
 
@@ -55,7 +54,7 @@ class Wl_Text():
         re_tags_start = re.compile(fr'\s*({wl_matching.get_re_tags(self.main)})')
 
         len_sections = self.main.settings_custom['files']['misc']['read_files_in_chunks']
-        
+
         if file_ext == '.txt':
             with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
                 # Read files in chunks to reduce memory usage
@@ -175,8 +174,8 @@ class Wl_Text():
             tags_word = ','.join(tags_word)
 
             if (
-                (tags_para and tags_sentence and tags_word) and
-                (soup.select(tags_para) and soup.select(tags_sentence) and soup.select(tags_word))
+                (tags_para and tags_sentence and tags_word)
+                and (soup.select(tags_para) and soup.select(tags_sentence) and soup.select(tags_word))
             ):
                 for para in soup.select(tags_para):
                     self.tokens_multilevel.append([])
@@ -204,10 +203,10 @@ class Wl_Text():
                 self.offsets_sentences.append(len(self.tokens_flat))
 
                 self.tokens_flat.extend(sentence)
-        
+
         # Remove whitespace around all tags
         self.tags = [[tag.strip() for tag in tags] for tags in self.tags]
-        
+
         # Remove Wl_Main object from the text since it cannot be pickled
         del self.main
 

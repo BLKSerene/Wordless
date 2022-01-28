@@ -21,7 +21,6 @@ import re
 import time
 
 import numpy
-import pytest
 
 from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_file_area, wl_test_init
@@ -67,7 +66,7 @@ def test_overview():
 
 def update_gui(error_msg, texts_stats_files):
     assert not error_msg
-    
+
     count_tokens_lens = []
     count_sentences_lens = []
 
@@ -131,7 +130,7 @@ def update_gui(error_msg, texts_stats_files):
         assert numpy.mean(len_sentences) == count_tokens / count_sentences
         assert numpy.mean(len_tokens_in_syls) == count_syls / count_tokens
         assert numpy.mean(len_tokens_in_chars) == count_chars / count_tokens
-        
+
     # Count of n-length Tokens
     if any(count_tokens_lens):
         count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
@@ -165,6 +164,6 @@ def update_gui(error_msg, texts_stats_files):
 
         # Sentence length should never be zero
         assert 0 not in count_sentences_lens
-    
+
 if __name__ == '__main__':
     test_overview()

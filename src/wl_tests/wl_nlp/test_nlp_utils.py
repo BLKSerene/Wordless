@@ -35,7 +35,7 @@ def test_to_sections_unequal():
     tokens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
     token_sections = list(wl_nlp_utils.to_sections_unequal(tokens, section_size = 5))
-    
+
     assert token_sections == [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12]]
 
 def test_srp_cyrl_to_latn():

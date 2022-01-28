@@ -68,7 +68,7 @@ def juillands_d(freqs):
         d = 0
     else:
         cv = numpy.std(freqs) / numpy.mean(freqs)
-    
+
         d = 1 - cv / math.sqrt(len(freqs) - 1)
 
     return max(0, d)
@@ -102,7 +102,9 @@ def zhangs_distributional_consistency(freqs):
     else:
         num_sections = len(freqs)
 
-        dc = ((sum([math.sqrt(freq) for freq in freqs]) / num_sections) ** 2 /
-              (sum(freqs) / num_sections))
+        dc = (
+            (sum([math.sqrt(freq) for freq in freqs]) / num_sections) ** 2
+            / (sum(freqs) / num_sections)
+        )
 
     return dc
