@@ -48,18 +48,20 @@ jobs:
         cd src
         $env:PYTHONPATH += $PWD
 
-        pytest --cov=./ --cov-report=xml wl_tests/test_overview.py
-        pytest --cov=./ --cov-report=xml wl_tests/test_wordlist.py
-        pytest --cov=./ --cov-report=xml wl_tests/test_ngram.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_overview.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_wordlist.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_ngram.py
 
-        pytest --cov=./ --cov-report=xml wl_tests/wl_nlp/test_sentence_tokenization.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_nlp/test_word_tokenization.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_nlp/test_syl_tokenization.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_nlp/test_word_detokenization.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_nlp/test_pos_tagging.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_nlp/test_lemmatization.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_lemmatization.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_nlp_utils.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_pos_tagging.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_sentence_tokenization.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_stop_word_lists.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_syl_tokenization.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_word_detokenization.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_word_tokenization.py
         
-        pytest --cov=./ --cov-report=xml --ignore=wl_tests/wl_nlp/test_sentence_tokenization.py --ignore=wl_tests/wl_nlp/test_word_tokenization.py --ignore=wl_tests/wl_nlp/test_syl_tokenization.py --ignore=wl_tests/wl_nlp/test_word_detokenization.py --ignore=wl_tests/wl_nlp/test_pos_tagging.py --ignore=wl_tests/wl_nlp/test_lemmatization.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py --ignore=wl_tests/test_ngram.py --ignore=wl_tests/test_collocation.py
+        pytest --cov=./ --cov-report=xml --ignore=wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_nlp
 
     - name: "Upload coverage to Codecov"
       uses: codecov/codecov-action@v2
@@ -99,18 +101,20 @@ jobs:
         cd src
         export PYTHONPATH="$PYTHONPATH;$PWD"
 
-        pytest wl_tests/test_overview.py
-        pytest wl_tests/test_wordlist.py
-        pytest wl_tests/test_ngram.py
+        pytest wl_tests/wl_tests_work_area/test_overview.py
+        pytest wl_tests/wl_tests_work_area/test_wordlist.py
+        pytest wl_tests/wl_tests_work_area/test_ngram.py
 
-        pytest wl_tests/wl_nlp/test_sentence_tokenization.py
-        pytest wl_tests/wl_nlp/test_word_tokenization.py
-        pytest wl_tests/wl_nlp/test_syl_tokenization.py
-        pytest wl_tests/wl_nlp/test_word_detokenization.py
-        pytest wl_tests/wl_nlp/test_pos_tagging.py
-        pytest wl_tests/wl_nlp/test_lemmatization.py
+        pytest wl_tests/wl_tests_nlp/test_lemmatization.py
+        pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
+        pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
+        pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
+        pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
+        pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
+        pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
+        pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
         
-        pytest --ignore=wl_tests/wl_nlp/test_sentence_tokenization.py --ignore=wl_tests/wl_nlp/test_word_tokenization.py --ignore=wl_tests/wl_nlp/test_syl_tokenization.py --ignore=wl_tests/wl_nlp/test_word_detokenization.py --ignore=wl_tests/wl_nlp/test_pos_tagging.py --ignore=wl_tests/wl_nlp/test_lemmatization.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py --ignore=wl_tests/test_ngram.py --ignore=wl_tests/test_collocation.py
+        pytest --ignore=wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_nlp
 
   build-linux:
     runs-on: ubuntu-18.04
@@ -139,11 +143,13 @@ jobs:
         cd src
         export PYTHONPATH="$PYTHONPATH;$PWD"
 
-        pytest wl_tests/wl_nlp/test_sentence_tokenization.py
-        pytest wl_tests/wl_nlp/test_word_tokenization.py
-        pytest wl_tests/wl_nlp/test_syl_tokenization.py
-        pytest wl_tests/wl_nlp/test_word_detokenization.py
-        pytest wl_tests/wl_nlp/test_pos_tagging.py
-        pytest wl_tests/wl_nlp/test_lemmatization.py
+        pytest wl_tests/wl_tests_nlp/test_lemmatization.py
+        pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
+        pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
+        pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
+        pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
+        pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
+        pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
+        pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
         
-        pytest --ignore=wl_tests/wl_nlp/test_sentence_tokenization.py --ignore=wl_tests/wl_nlp/test_word_tokenization.py --ignore=wl_tests/wl_nlp/test_syl_tokenization.py --ignore=wl_tests/wl_nlp/test_word_detokenization.py --ignore=wl_tests/wl_nlp/test_pos_tagging.py --ignore=wl_tests/wl_nlp/test_lemmatization.py --ignore=wl_tests/test_file_area.py --ignore=wl_tests/test_overview.py --ignore=wl_tests/test_wordlist.py --ignore=wl_tests/test_ngram.py --ignore=wl_tests/test_collocation.py
+        pytest --ignore=wl_tests/test_file_area.py --ignore=wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_nlp

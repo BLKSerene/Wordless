@@ -16,10 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-#
 # Standard encodings: https://docs.python.org/3/library/codecs.html#standard-encodings
 # Python specific encodings: https://docs.python.org/3/library/codecs.html#python-specific-encodings
-#
 
 import encodings
 import pkgutil
