@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 import os
-import re
 import shutil
 import subprocess
 import zipfile
@@ -34,7 +33,7 @@ os.environ['MACOSX_DEPLOYMENT_TARGET'] = '10.11'
 
 # Recompile the macOS bootloader
 os.chdir(f'{PYINSTALLER_PACKAGE_NAME}/bootloader')
-subprocess.call(f'python3 waf all', shell = True)
+subprocess.call('python3 waf all', shell = True)
 
 # Compress files back into package
 os.chdir('..')
